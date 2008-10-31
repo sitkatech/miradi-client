@@ -26,7 +26,6 @@ import javax.swing.event.ListSelectionEvent;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.MultiTableUpperPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.threatrating.properties.StressBasedThreatRatingPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
@@ -37,12 +36,12 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 {
-	public static ThreatRatingUpperPanel createThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel threatStressRatingMultiTablePanel, StressBasedThreatRatingPropertiesPanel propertiesPanel) throws Exception
+	public static ThreatRatingUpperPanel createThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel threatStressRatingMultiTablePanel, ObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		return new ThreatRatingUpperPanel(mainWindowToUse, threatStressRatingMultiTablePanel, propertiesPanel);
 	}
 	
-	private ThreatRatingUpperPanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel multiTablePanelToUse, StressBasedThreatRatingPropertiesPanel propertiesPanelToUse)
+	private ThreatRatingUpperPanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel multiTablePanelToUse, ObjectDataInputPanel propertiesPanelToUse)
 	{
 		super(mainWindowToUse, multiTablePanelToUse.getObjectPicker());
 
