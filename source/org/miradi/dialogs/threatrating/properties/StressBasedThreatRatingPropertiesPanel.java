@@ -42,7 +42,7 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
 		setLayout(new OneColumnGridLayout());
 		
-		threatStressRatingFieldPanel = new ThreatStressRatingFieldPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()); 
+		threatStressRatingFieldPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()); 
 		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
 		add(threatStressRatingFieldPanel);
 		add(editorComponent);
@@ -101,5 +101,5 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	}
 	
 	private ThreatStressRatingEditorComponent editorComponent;
-	private ThreatStressRatingFieldPanel threatStressRatingFieldPanel;
+	private ThreatRatingCommonPropertiesSubpanel threatStressRatingFieldPanel;
 }
