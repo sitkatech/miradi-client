@@ -30,6 +30,8 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 	public AbstractDataValueListComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
 	{
 		super(questionToUse, columnCount, listener);
+		
+		listSelectionListener = listener;
 	}
 	
 	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)
@@ -46,4 +48,5 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 	abstract public void setText(String codesToUse);
 	
 	protected boolean skipNotice;
+	protected ListSelectionListener listSelectionListener;
 }

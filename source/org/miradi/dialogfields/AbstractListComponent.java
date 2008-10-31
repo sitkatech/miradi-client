@@ -39,7 +39,6 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 	public AbstractListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
 	{
 		setLayout(new BasicGridLayout(0,columnCount));
-		listSelectionListener = listener;
 		question = questionToUse;
 		ChoiceItem[] choices = questionToUse.getChoices();
 		choiceItems = new ChoiceItem[choices.length];
@@ -99,6 +98,5 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 	
 	protected JCheckBox checkBoxes[];
 	protected ChoiceItem choiceItems[];
-	protected ListSelectionListener listSelectionListener;
 	private ChoiceQuestion question;
 }
