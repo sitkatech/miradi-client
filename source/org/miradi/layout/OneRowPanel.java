@@ -34,6 +34,11 @@ public class OneRowPanel extends JPanel
 		getGridLayout().setMargins(margin);
 	}
 	
+	public void setVerticalMargin(int margin)
+	{
+		getGridLayout().setVerticalMargin(margin);
+	}
+
 	public void setGaps(int gap)
 	{
 		getGridLayout().setGaps(gap);

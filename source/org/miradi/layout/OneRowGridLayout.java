@@ -34,6 +34,11 @@ public class OneRowGridLayout extends GridLayoutPlus
 	public void setMargins(int margin)
 	{
 		hMargin = margin;
+		setVerticalMargin(margin);
+	}
+	
+	public void setVerticalMargin(int margin)
+	{
 		vMargin = margin;
 	}
 	
