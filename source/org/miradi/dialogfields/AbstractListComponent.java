@@ -97,10 +97,6 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 	
 	}
 
-	abstract public String getText();
-	
-	abstract public void setText(String codesToUse); 
-	
 	protected JCheckBox checkBoxes[];
 	protected ChoiceItem choiceItems[];
 	protected ListSelectionListener listSelectionListener;

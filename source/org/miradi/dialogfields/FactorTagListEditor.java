@@ -29,15 +29,4 @@ public class FactorTagListEditor extends AbstractListComponent
 	{
 		super(questionToUse, columnCount, listener);
 	}
-
-	@Override
-	public String getText()
-	{
-		return null;
-	}
-
-	@Override
-	public void setText(String codesToUse)
-	{
-	}
 }
