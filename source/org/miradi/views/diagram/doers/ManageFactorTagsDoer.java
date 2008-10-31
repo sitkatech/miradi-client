@@ -19,17 +19,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.diagram.cells.FactorCell;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
 
-public class ManageFactorTagsFromMenuDoer extends AbstractManageFactorTagDoer
-{	
+public class ManageFactorTagsDoer extends AbstractManageFactorTagDoer
+{
 	protected Factor getSingleSelectedFactor()
 	{
-		FactorCell[] selectedCells = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
-		if (selectedCells.length == 0)
+		ORefList[] selectedHierarchies = getSelectedHierarchies();
+		if (selectedHierarchies.length == 0)
 			return null;
-	
-		return selectedCells[0].getUnderlyingObject();
+		
+		ORefList selectedHierarchy = selectedHierarchies[0];
+		if (selectedHierarchy.size() == 0)
+			return null;
+		
+		ORef selectedRef = selectedHierarchy.get(0);
+		return Factor.findFactor(getProject(), selectedRef);
 	}
 }
