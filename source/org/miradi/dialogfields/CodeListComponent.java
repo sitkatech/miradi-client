@@ -28,7 +28,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
-public class CodeListComponent extends AbstractListComponent
+public class CodeListComponent extends AbstractDataValueListComponent
 {
 	public CodeListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
 	{
