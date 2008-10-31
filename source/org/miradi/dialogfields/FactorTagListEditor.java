@@ -55,8 +55,7 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 	{
 		String refAsCode = choiceItem.getCode();
 		ORef taggedObjectSetRef = ORef.createFromString(refAsCode);
-		TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
-		ORefList taggedSet = new ORefList(taggedObjectSet.getTaggedObjectRefs());
+		ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
 		taggedSet.remove(getFactorToTag().getRef());
 		if (isSelected)
 			taggedSet.add(getFactorToTag().getRef());
@@ -78,11 +77,16 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 			String label = checkBoxes[checkBoxIndex].getText();
 			ChoiceItem choiceItem = getQuestion().findChoiceByLabel(label);
 			ORef taggedObjectSetRef = ORef.createFromString(choiceItem.getCode());
-			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
-			ORefList taggedSet = taggedObjectSet.getTaggedObjectRefs();
+			ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
 			boolean contains = taggedSet.contains(getFactorToTag().getRef());
 			checkBoxes[checkBoxIndex].setSelected(contains);
 		}
+	}
+
+	private ORefList getTaggedObjectRefs(ORef taggedObjectSetRef)
+	{
+		TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+		return new ORefList(taggedObjectSet.getTaggedObjectRefs());
 	}
 		
 	private Project getProject()
