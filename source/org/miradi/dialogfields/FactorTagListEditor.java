@@ -21,6 +21,7 @@ package org.miradi.dialogfields;
 
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 //FIXME this class needs implementation
 public class FactorTagListEditor extends AbstractListComponent
@@ -30,8 +31,7 @@ public class FactorTagListEditor extends AbstractListComponent
 		super(questionToUse, columnCount, listener);
 	}
 	
-	protected void valueChanged()
+	protected void valueChanged(ChoiceItem choiceItem, boolean isSelected)
 	{
-		
 	}
 }

@@ -22,6 +22,7 @@ package org.miradi.dialogfields;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 abstract public class AbstractDataValueListComponent extends AbstractListComponent
@@ -31,7 +32,7 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 		super(questionToUse, columnCount, listener);
 	}
 	
-	public void valueChanged()
+	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)
 	{
 		if (!skipNotice)
 		{
