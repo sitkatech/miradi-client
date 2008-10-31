@@ -54,7 +54,7 @@ public class AboutDoer extends MainWindowDoer
 	public static String buildMainSection()
 	{
 		String text = loadHtmlFile("AboutPart1.html");
-		text +=  VersionConstants.VERSION_STRING;
+		text +=  VersionConstants.getVersionAndTimestamp();
 		text += loadHtmlFile("AboutPart2.html");
 		return text;
 	}

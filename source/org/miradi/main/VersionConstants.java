@@ -26,19 +26,29 @@ import org.martus.util.UnicodeReader;
 
 public class VersionConstants
 {
+	public static String getVersionAndTimestamp()
+	{
+		return VERSION_STRING + " " + TIMESTAMP_STRING;
+	}
+
 	public static void setVersionString() throws IOException
 	{
-		InputStream in = VersionConstants.class.getResourceAsStream(VERSION_FILENAME);
+		VERSION_STRING = readFile(VERSION_FILENAME);
+		TIMESTAMP_STRING = readFile(TIMESTAMP_FILENAME);
+	}
+	
+	private static String readFile(String filename) throws IOException
+	{
+		InputStream in = VersionConstants.class.getResourceAsStream(filename);
 		if(in == null)
 		{
-			EAM.logWarning(VERSION_FILENAME + " not found");
-			VERSION_STRING = "(unknown)";
-			return;
+			EAM.logWarning(filename + " not found");
+			return "(unknown)";
 		}
 		UnicodeReader reader = new UnicodeReader(in);
 		try
 		{
-			VERSION_STRING = reader.readLine();
+			return reader.readLine();
 		}
 		finally
 		{
@@ -47,5 +57,7 @@ public class VersionConstants
 	}
 	
 	private static final String VERSION_FILENAME = "/miradi.version.txt";
+	private static final String TIMESTAMP_FILENAME = "/miradi.timestamp.txt";
 	public static String VERSION_STRING;
+	public static String TIMESTAMP_STRING;
 }

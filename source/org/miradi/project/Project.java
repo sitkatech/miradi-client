@@ -539,7 +539,7 @@ public class Project
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
 		if (commandLogFile.exists())
 			commandLogFile.delete();
-		writeLogLine("Project Opened by Miradi " + VersionConstants.VERSION_STRING);
+		writeLogLine("Project Opened by Miradi " + VersionConstants.getVersionAndTimestamp());
 	}
 
 	public void writeLogLine(String logLine) throws IOException

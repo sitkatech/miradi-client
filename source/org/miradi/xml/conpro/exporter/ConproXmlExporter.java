@@ -726,7 +726,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private String getMiradiVersionAsToken()
 	{
-		String versionToken = VersionConstants.VERSION_STRING;
+		String versionToken = VersionConstants.getVersionAndTimestamp();
 		versionToken = versionToken.replaceAll(" ", "_");
 		versionToken = versionToken.replaceAll("\\(", "");
 		versionToken = versionToken.replaceAll("\\)", "");

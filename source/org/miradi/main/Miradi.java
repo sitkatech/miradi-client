@@ -59,7 +59,7 @@ public class Miradi
 		List<String> argsAsList = Arrays.asList(args);
 
 		EAM.setLogLevel(EAM.LOG_VERBOSE);
-		EAM.logDebug("Miradi " + VersionConstants.VERSION_STRING);
+		EAM.logDebug("Miradi " + VersionConstants.getVersionAndTimestamp());
 		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		for(String arg : argsAsList)
