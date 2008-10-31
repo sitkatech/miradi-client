@@ -34,9 +34,9 @@ import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatRatingQuestion;
 
-public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
+public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 {
-	public ThreatStressRatingFieldPanel(Project projectToUse, Actions actions) throws Exception
+	public ThreatRatingCommonPropertiesSubpanel(Project projectToUse, Actions actions) throws Exception
 	{
 		super(projectToUse, ORef.INVALID);
 		
@@ -104,7 +104,7 @@ public class ThreatStressRatingFieldPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return "ThreatStressRatingFieldPanel";
+		return "ThreatRatingCommonPropertiesSubpanel";
 	}
 	
 	private PanelTitleLabel fromLabel;
