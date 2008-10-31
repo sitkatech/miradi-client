@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningTreePropertiesPanel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
@@ -35,7 +35,7 @@ import org.miradi.utils.BufferedImageFactory;
 
 public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
-	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreePropertiesPanel planningTreePropertiesPanel) throws Exception
+	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 		mainWindow = mainWindowToUse;
