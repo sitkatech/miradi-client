@@ -25,7 +25,6 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
@@ -64,15 +63,6 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 	    }
 	}
 
-	public void valueChanged()
-	{
-		if (!skipNotice)
-		{
-			ListSelectionEvent event = new ListSelectionEvent("DUMMY EVENT",0,0, false);
-			listSelectionListener.valueChanged(event);
-		}
-	}
-
 	public void setEnabled(boolean isValidObject)
 	{
 		super.setEnabled(isValidObject);
@@ -97,8 +87,9 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 	
 	}
 
+	abstract protected void valueChanged();
+	
 	protected JCheckBox checkBoxes[];
 	protected ChoiceItem choiceItems[];
 	protected ListSelectionListener listSelectionListener;
-	protected boolean skipNotice;
 }
