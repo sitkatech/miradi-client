@@ -29,7 +29,7 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 {
 	public AbstractDataValueListComponent(ChoiceQuestion questionToUse,	int columnCount, ListSelectionListener listener)
 	{
-		super(questionToUse, columnCount, listener);
+		super(questionToUse, columnCount);
 		
 		listSelectionListener = listener;
 	}
