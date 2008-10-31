@@ -29,4 +29,8 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 	{
 		super(questionToUse, columnCount, listener);
 	}
+	
+	abstract public String getText();
+	
+	abstract public void setText(String codesToUse); 
 }
