@@ -25,7 +25,6 @@ import java.awt.event.ItemListener;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
-import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
 import org.miradi.main.EAM;
@@ -36,7 +35,7 @@ import com.jhlabs.awt.BasicGridLayout;
 
 abstract public class AbstractListComponent extends JPanel implements ItemListener
 {
-	public AbstractListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
+	public AbstractListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		setLayout(new BasicGridLayout(0,columnCount));
 		question = questionToUse;

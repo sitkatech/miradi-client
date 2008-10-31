@@ -28,7 +28,7 @@ public class FactorTagListEditor extends AbstractListComponent
 {
 	public FactorTagListEditor(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
 	{
-		super(questionToUse, columnCount, listener);
+		super(questionToUse, columnCount);
 	}
 	
 	protected void valueChanged(ChoiceItem choiceItem, boolean isSelected)
