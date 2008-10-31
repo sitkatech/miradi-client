@@ -43,6 +43,12 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		setEnabled();
 	}
 	
+	//FIXME this needs to get called when window is closed.
+	public void dispose()
+	{
+		getProject().removeCommandExecutedListener(this);
+	}
+	
 	protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
 		String refAsCode = choiceItem.getCode();
