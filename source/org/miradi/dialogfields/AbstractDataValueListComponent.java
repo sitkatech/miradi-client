@@ -34,7 +34,7 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 		listSelectionListener = listener;
 	}
 	
-	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)
+	public void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
 		if (!skipNotice)
 		{
