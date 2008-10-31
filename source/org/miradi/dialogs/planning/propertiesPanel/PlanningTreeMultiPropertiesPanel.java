@@ -44,9 +44,9 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningTreePropertiesPanel extends ObjectDataInputPanel
+public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 {
-	public PlanningTreePropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
+	public PlanningTreeMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), orefToUse);
 		mainWindow = mainWindowToUse;
