@@ -19,14 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import javax.swing.event.ListSelectionListener;
-
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 //FIXME this class needs implementation
 public class FactorTagListEditor extends AbstractListComponent
 {
-	public FactorTagListEditor(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
+	public FactorTagListEditor(ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(questionToUse, columnCount);
 	}
