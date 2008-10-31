@@ -53,14 +53,21 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 		}
 	}
 	
-	public void itemStateChanged(ItemEvent e)
+	public void itemStateChanged(ItemEvent event)
 	{
-	    if (e.getStateChange() == ItemEvent.SELECTED || 
-	    	e.getStateChange() == ItemEvent.DESELECTED)
+	    if (event.getStateChange() == ItemEvent.SELECTED ||	event.getStateChange() == ItemEvent.DESELECTED)
 	    {
-	    	PanelCheckBox item = (PanelCheckBox) e.getItem();
+	    	PanelCheckBox item = (PanelCheckBox) event.getItem();
 	    	ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
-	    	valueChanged(choiceItem, item.isSelected());
+	    	try
+	    	{
+	    		valueChanged(choiceItem, item.isSelected());
+	    	}
+	    	catch (Exception e)
+	    	{
+	    		EAM.logException(e);
+	    		//TODO does this need to notify user with error dialog?
+	    	}
 	    }
 	}
 
@@ -93,7 +100,7 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 		return question;
 	}
 	
-	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected);
+	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
 	protected JCheckBox checkBoxes[];
 	protected ChoiceItem choiceItems[];
