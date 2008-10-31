@@ -40,6 +40,7 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 	{
 		setLayout(new BasicGridLayout(0,columnCount));
 		listSelectionListener = listener;
+		question = questionToUse;
 		ChoiceItem[] choices = questionToUse.getChoices();
 		choiceItems = new ChoiceItem[choices.length];
 		checkBoxes = new PanelCheckBox[choices.length];
@@ -59,7 +60,9 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 	    if (e.getStateChange() == ItemEvent.SELECTED || 
 	    	e.getStateChange() == ItemEvent.DESELECTED)
 	    {
-	    	valueChanged();
+	    	PanelCheckBox item = (PanelCheckBox) e.getItem();
+	    	ChoiceItem choiceItem = getQuestion().findChoiceByLabel(item.getText());
+	    	valueChanged(choiceItem, item.isSelected());
 	    }
 	}
 
@@ -86,10 +89,16 @@ abstract public class AbstractListComponent extends JPanel implements ItemListen
 			checkBox.setBackground(bg);
 	
 	}
-
-	abstract protected void valueChanged();
+	
+	protected ChoiceQuestion getQuestion()
+	{
+		return question;
+	}
+	
+	abstract protected void valueChanged(ChoiceItem choiceItem, boolean isSelected);
 	
 	protected JCheckBox checkBoxes[];
 	protected ChoiceItem choiceItems[];
 	protected ListSelectionListener listSelectionListener;
+	private ChoiceQuestion question;
 }
