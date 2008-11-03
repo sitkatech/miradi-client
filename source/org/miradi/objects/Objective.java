@@ -232,6 +232,18 @@ public class Objective extends Desire
 
 		return calculateRefList(relevantRefList, relevantOverrides);
 	}
+	
+	public ORefList getRawRelevantIndicatorRefs() throws Exception
+	{
+		ORefList rawRelevantIndicatorOverrideList = new ORefList();
+		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
+		for(RelevancyOverride relevancyOverride : relevantOverrides)
+		{
+			rawRelevantIndicatorOverrideList.add(relevancyOverride.getRef());
+		}
+		
+		return rawRelevantIndicatorOverrideList;
+	}
 
 	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
 	{
