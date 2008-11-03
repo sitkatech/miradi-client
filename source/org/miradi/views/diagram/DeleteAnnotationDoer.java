@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -43,6 +44,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -100,6 +102,9 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
+		if (Indicator.is(annotationToDelete))
+			commands.addAll(createCommandsToRemoveFromRelevancyList(project, annotationToDelete));
+		
 		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
 		return (Command[])commands.toArray(new Command[0]);
@@ -130,16 +135,14 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static Vector<Command> buildCommandsToDeleteReferringObjects(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws Exception
 	{
 		Vector<Command> commands = new Vector<Command>();
-		commands.addAll(createCommandsToDeleteStressDiagramFactors(project, annotationToDelete));
+		if (Stress.is(annotationToDelete.getType()))
+			commands.addAll(createCommandsToDeleteStressDiagramFactors(project, annotationToDelete));
 		
 		return commands;
 	}
 
 	private static Vector<Command> createCommandsToDeleteStressDiagramFactors(Project project, BaseObject annotationToDelete) throws Exception
 	{
-		if (!Stress.is(annotationToDelete.getType()))
-			return new Vector();
-		
 		Vector<Command> commandsToHide = new Vector();
 		ORefList diagramFactorRefs = annotationToDelete.findObjectsThatReferToUs(DiagramFactor.getObjectType());
 		for (int index = 0; index < diagramFactorRefs.size(); ++index)
@@ -155,7 +158,28 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		
 		return commandsToHide;
 	}
-		
+	
+	private static Vector<Command> createCommandsToRemoveFromRelevancyList(Project project, BaseObject annotationToDelete) throws Exception
+	{
+		Vector<Command> removeFromRelevancyListCommands = new Vector();
+		ORefList allObjectiveRefs = project.getObjectivePool().getORefList();
+		for (int index = 0; index < allObjectiveRefs.size(); ++index)
+		{
+			Objective objective = Objective.find(project, allObjectiveRefs.get(index));
+			ORefList relevantIndicatorRefs = objective.getRelevantIndicatorRefList();
+			if (relevantIndicatorRefs.contains(annotationToDelete.getRef()))
+			{
+				ORefList listToRemoveFrom = new ORefList(relevantIndicatorRefs);
+				listToRemoveFrom.remove(annotationToDelete.getRef());
+				RelevancyOverrideSet relevancySet = objective.getCalculatedRelevantIndicatorOverrides(listToRemoveFrom);	
+				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objective.getRef(), Objective.TAG_RELEVANT_INDICATOR_SET, relevancySet.toString());
+				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
+			}
+		}
+
+		return removeFromRelevancyListCommands;
+	}
+
 	public static CommandSetObjectData buildCommandToRemoveAnnotationFromObject(BaseObject owner, String annotationIdListTag, ORef refToRemove) throws ParseException
 	{
 		ObjectData objectData = owner.getField(annotationIdListTag);
