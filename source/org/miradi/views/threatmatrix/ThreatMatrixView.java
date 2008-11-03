@@ -48,7 +48,9 @@ import org.miradi.views.diagram.doers.CloneStressDoer;
 import org.miradi.views.diagram.doers.CreateStressDoer;
 import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
 import org.miradi.views.diagram.doers.DeleteStressDoer;
+import org.miradi.views.threatmatrix.doers.HideCellRatingsDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
+import org.miradi.views.threatmatrix.doers.ShowCellRatingsDoer;
 
 
 public class ThreatMatrixView extends CardedView

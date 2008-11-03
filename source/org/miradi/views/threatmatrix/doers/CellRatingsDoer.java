@@ -17,27 +17,21 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.threatmatrix;
+package org.miradi.views.threatmatrix.doers;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.AppPreferences;
+import org.miradi.views.ViewDoer;
 
-public class HideCellRatingsDoer extends CellRatingsDoer
+abstract public class CellRatingsDoer extends ViewDoer
 {
-	public boolean isAvailable()
+	public boolean isCellRatingVisible()
 	{
-		if (isCellRatingVisible())
-			return true;
-		
-		return false;
+		return getMainWindow().getBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
+	}
+	
+	public void updateToolBar()
+	{
+		getMainWindow().updateToolBar();
 	}
 
-	public void doIt() throws CommandFailedException
-	{
-		if (!isAvailable())
-			return;
-		
-		getMainWindow().setBooleanPreference(AppPreferences.TAG_CELL_RATINGS_VISIBLE, false);
-		updateToolBar();
-	}
 }
