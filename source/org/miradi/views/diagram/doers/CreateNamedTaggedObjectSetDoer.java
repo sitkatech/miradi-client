@@ -29,7 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.views.ObjectsDoer;
 
-public class StandaloneCreateTagDoer extends ObjectsDoer
+public class CreateNamedTaggedObjectSetDoer extends ObjectsDoer
 {
 	@Override
 	public boolean isAvailable()
