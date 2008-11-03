@@ -35,16 +35,20 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
 		setLayout(new OneColumnGridLayout());
 		
-		threatStressRatingFieldPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()); 
-		add(threatStressRatingFieldPanel);
-		updateFieldsFromProject();
+		commonPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
+		dropdownsPanel = new SimpleThreatRatingDropdownsPanel(mainWindowToUse.getProject());
 		
+		add(commonPanel);
+		add(dropdownsPanel);
+		
+		updateFieldsFromProject();
 	}
 
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
-		threatStressRatingFieldPanel.setObjectRefs(hierarchyToSelectedRef);
+		commonPanel.setObjectRefs(hierarchyToSelectedRef);
+		dropdownsPanel.setObjectRefs(hierarchyToSelectedRef);
 	}
 
 	@Override
@@ -53,5 +57,6 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		return EAM.text("Title|Simple Threat Rating");
 	}
 
-	private ThreatRatingCommonPropertiesSubpanel threatStressRatingFieldPanel;
+	private ThreatRatingCommonPropertiesSubpanel commonPanel;
+	private SimpleThreatRatingDropdownsPanel dropdownsPanel;
 }
