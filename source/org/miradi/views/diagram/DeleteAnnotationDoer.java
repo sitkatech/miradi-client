@@ -34,6 +34,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
@@ -166,7 +167,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		for (int index = 0; index < allObjectiveRefs.size(); ++index)
 		{
 			Objective objective = Objective.find(project, allObjectiveRefs.get(index));
-			ORefList relevantIndicatorRefs = objective.getAllIndicatorRefsFromRelevancyOverrides();
+			ORefSet relevantIndicatorRefs = objective.getAllIndicatorRefsFromRelevancyOverrides();
 			if (relevantIndicatorRefs.contains(annotationToDelete.getRef()))
 			{
 				ORefList listToRemoveFrom = new ORefList(relevantIndicatorRefs);
