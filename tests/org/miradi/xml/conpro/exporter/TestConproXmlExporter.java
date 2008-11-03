@@ -58,7 +58,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	{
 		TestTranslations.setTestLocale();
 		verifyExport();
-		Translation.isDefaultLocalization();
+		Translation.restoreDefaultLocalization();
 	}
 
 	private void verifyExportInEnglish() throws IOException, Exception,	FileNotFoundException
