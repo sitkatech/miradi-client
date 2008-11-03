@@ -22,7 +22,7 @@ package org.miradi.views.diagram.doers;
 import javax.swing.Box;
 
 import org.martus.swing.Utilities;
-import org.miradi.actions.ActionNamedTaggedObjectSet;
+import org.miradi.actions.ActionCreateNamedTaggedObjectSet;
 import org.miradi.dialogfields.FactorTagListEditor;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
@@ -70,7 +70,7 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 			super.addAdditionalButtons(buttonBar);
 			
 			DisposablePanel wrappedEditPanel = (DisposablePanel) getWrappedPanel();
-			createButton = wrappedEditPanel.createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionNamedTaggedObjectSet.class), getPicker());
+			createButton = wrappedEditPanel.createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionCreateNamedTaggedObjectSet.class), getPicker());
 			buttonBar.add(createButton);
 		}
 		

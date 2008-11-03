@@ -23,9 +23,9 @@ import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionNamedTaggedObjectSet extends ObjectsAction
+public class ActionCreateNamedTaggedObjectSet extends ObjectsAction
 {
-	public ActionNamedTaggedObjectSet(MainWindow mainWindowToUse)
+	public ActionCreateNamedTaggedObjectSet(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new TaggedObjectSetIcon());
 	}
