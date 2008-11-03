@@ -38,7 +38,7 @@ abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColum
 	private void setColumnRenderers()
 	{
 		MainThreatTableModel model = (MainThreatTableModel) getModel();
-		ThreatRatingTableCellRendererFactory renderer = new ThreatRatingTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
+		ThreatRatingTableCellRendererFactory renderer = new ThreatRatingTableCellRendererFactory(getMainWindow().getAppPreferences(), model, new DefaultFontProvider(getMainWindow()));
 		for (int i = 0; i < getColumnCount(); ++i)
 		{
 			getColumnModel().getColumn(i).setCellRenderer(renderer);
