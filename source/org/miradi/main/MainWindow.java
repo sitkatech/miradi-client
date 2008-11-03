@@ -87,7 +87,7 @@ import org.miradi.views.reports.ReportsView;
 import org.miradi.views.schedule.ScheduleView;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.views.targetviability.TargetViabilityView;
-import org.miradi.views.threatmatrix.ThreatRatingView;
+import org.miradi.views.threatmatrix.ThreatMatrixView;
 import org.miradi.views.umbrella.Definition;
 import org.miradi.views.umbrella.DefinitionCommonTerms;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -176,7 +176,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		noProjectView = new NoProjectView(this);
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
-		threatMatrixView = new ThreatRatingView(this);
+		threatMatrixView = new ThreatMatrixView(this);
 		mapView = new MapView(this);
 		calendarView = new ScheduleView(this);
 		libraryView = new LibraryView(this);
@@ -496,7 +496,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return diagramView;
 	}
 	
-	public ThreatRatingView getThreatView()
+	public ThreatMatrixView getThreatView()
 	{
 		return threatMatrixView;
 	}
@@ -1011,7 +1011,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private NoProjectView noProjectView;
 	private UmbrellaView summaryView;
 	private DiagramView diagramView;
-	private ThreatRatingView threatMatrixView;
+	private ThreatMatrixView threatMatrixView;
 	private MapView mapView;
 	private ScheduleView calendarView;
 	private LibraryView libraryView;
