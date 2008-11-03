@@ -53,9 +53,9 @@ import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
 import org.miradi.views.threatmatrix.doers.ShowCellRatingsDoer;
 
 
-public class ThreatMatrixView extends CardedView
+public class ThreatRatingView extends CardedView
 {
-	public ThreatMatrixView(MainWindow mainWindowToUse)
+	public ThreatRatingView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		
@@ -64,7 +64,7 @@ public class ThreatMatrixView extends CardedView
 
 	public JToolBar createToolBar()
 	{
-		return new ThreatMatrixToolBar(getMainWindow(), isCellRatingsVisible());
+		return new ThreatRatingToolBar(getMainWindow(), isCellRatingsVisible());
 	}
 
 	private boolean isCellRatingsVisible()

@@ -19,13 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard;
 
-import org.miradi.views.threatmatrix.ThreatMatrixView;
+import org.miradi.views.threatmatrix.ThreatRatingView;
 
 public abstract class ThreatRatingWizardStep extends SplitWizardStep
 {
 	public ThreatRatingWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, ThreatMatrixView.getViewName());
+		super(wizardToUse, ThreatRatingView.getViewName());
 	}
 
 	protected boolean isProjectInStressMode()

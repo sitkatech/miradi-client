@@ -41,9 +41,9 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.ToolBarButton;
 
-public class ThreatMatrixToolBar extends EAMToolBar
+public class ThreatRatingToolBar extends EAMToolBar
 {
-	public ThreatMatrixToolBar(MainWindow mainWindowToUse, boolean isCellRatingVisible)
+	public ThreatRatingToolBar(MainWindow mainWindowToUse, boolean isCellRatingVisible)
 	{
 		super(mainWindowToUse.getActions(), ActionViewThreatMatrix.class, createButtons(mainWindowToUse, isCellRatingVisible));
 	}
