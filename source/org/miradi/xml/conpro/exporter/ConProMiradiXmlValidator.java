@@ -37,7 +37,7 @@ public class ConProMiradiXmlValidator
 	public boolean isValid(InputStream xmlInputStream) throws Exception
 	{
 		PropertyMapBuilder properties = getValidatorProperties();
-		URL resourceURL = ResourcesHandler.getResourceURL(MIRADI_CONPRO_SCHEMA_FILE_NAME);
+		URL resourceURL = ResourcesHandler.getEnglishResourceURL(MIRADI_CONPRO_SCHEMA_FILE_NAME);
 		if(resourceURL == null)
 			throw new Exception("Schema not found: " + MIRADI_CONPRO_SCHEMA_FILE_NAME);
 		

@@ -30,6 +30,8 @@ import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.utils.TestTranslations;
+import org.miradi.utils.Translation;
 
 public class TestConproXmlExporter extends TestCaseWithProject
 {
@@ -48,7 +50,27 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	
 	public void testValidatedExport() throws Exception
 	{
+		verifyExportInEnglish();
+		verifyExportInNonEglish();
+	}
+
+	private void verifyExportInNonEglish() throws Exception, IOException, FileNotFoundException
+	{
+		TestTranslations.setTestLocale();
 		verifyExport();
+		Translation.isDefaultLocalization();
+	}
+
+	private void verifyExportInEnglish() throws IOException, Exception,	FileNotFoundException
+	{
+		verifyLanguageIsInEnglish();
+		verifyExport();
+		verifyLanguageIsInEnglish();
+	}
+
+	private void verifyLanguageIsInEnglish()
+	{
+		assertTrue("is not in eglish?", Translation.isDefaultLocalization());
 	}
 
 	public void testValidatedExportInStressMode() throws Exception
