@@ -43,6 +43,16 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		
 		updateFieldsFromProject();
 	}
+	
+	@Override
+	public void dispose()
+	{
+		commonPanel.dispose();
+		commonPanel = null;
+		dropdownsPanel.dispose();
+		dropdownsPanel = null;
+		super.dispose();
+	}
 
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
