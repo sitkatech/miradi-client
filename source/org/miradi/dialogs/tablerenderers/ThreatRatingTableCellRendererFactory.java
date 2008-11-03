@@ -21,9 +21,9 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Color;
 
-public class ChoiceItemWithGrayCellsTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
+public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
 {
-	public ChoiceItemWithGrayCellsTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public ThreatRatingTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}
