@@ -23,10 +23,10 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.views.threatmatrix.AbstractThreatTargetTableModel;
 
 public class MainThreatTableModelExporter extends AbstractTableExporter
 {

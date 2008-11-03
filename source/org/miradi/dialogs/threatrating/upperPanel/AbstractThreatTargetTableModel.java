@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.threatmatrix;
+package org.miradi.dialogs.threatrating.upperPanel;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -41,7 +41,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		targetColumns =  getProject().getTargetPool().getTargets();
 	}
 	
-	protected boolean isPopupSupportableCell(int row, int modelColumn)
+	public boolean isPopupSupportableCell(int row, int modelColumn)
 	{
 		return true;
 	}
