@@ -166,7 +166,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		for (int index = 0; index < allObjectiveRefs.size(); ++index)
 		{
 			Objective objective = Objective.find(project, allObjectiveRefs.get(index));
-			ORefList relevantIndicatorRefs = objective.getRelevantIndicatorRefList();
+			ORefList relevantIndicatorRefs = objective.getRawRelevantIndicatorRefs();
 			if (relevantIndicatorRefs.contains(annotationToDelete.getRef()))
 			{
 				ORefList listToRemoveFrom = new ORefList(relevantIndicatorRefs);
