@@ -24,15 +24,24 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 
 public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 {
 	public TestStressBasedThreatRatingFramework(String name)
 	{
 		super(name);
+	}
+	
+	@Override
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		getProject().setMetadata(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 	}
 
 	public void testGetSummaryRating() throws Exception
