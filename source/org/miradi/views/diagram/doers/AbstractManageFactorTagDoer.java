@@ -54,6 +54,7 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor);
 		EditTagWithCreateTagButtonDialog dialog = new EditTagWithCreateTagButtonDialog(EAM.getMainWindow(), factorTagListEditor, EAM.text("Edit Dialog"));
 		Utilities.centerDlg(dialog);
+		dialog.setSize(250, 300);
 		dialog.setVisible(true);			
 	}
 	
