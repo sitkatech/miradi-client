@@ -51,9 +51,9 @@ import org.miradi.actions.ActionDeleteGroupBox;
 import org.miradi.actions.ActionDeleteResultsChain;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionExit;
-import org.miradi.actions.ActionExportRtf;
 import org.miradi.actions.ActionExportConProXml;
 import org.miradi.actions.ActionExportProjectXml;
+import org.miradi.actions.ActionExportRtf;
 import org.miradi.actions.ActionExportTable;
 import org.miradi.actions.ActionExportZippedProjectFile;
 import org.miradi.actions.ActionGroupBoxAddFactor;
@@ -80,6 +80,7 @@ import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
 import org.miradi.actions.ActionInsertThreatReductionResult;
+import org.miradi.actions.ActionManageFactorTagsFromMenu;
 import org.miradi.actions.ActionPaste;
 import org.miradi.actions.ActionPasteFactorContent;
 import org.miradi.actions.ActionPasteWithoutLinks;
@@ -263,6 +264,7 @@ public class MainMenuBar extends JMenuBar
 		
 		addMenuItem(actions, menu, ActionCreateIncomingJunction.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionCreateOutgoingJunction.class, KeyEvent.VK_O);
+		addMenuItem(actions, menu, ActionManageFactorTagsFromMenu.class, KeyEvent.VK_G);
 		
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionShowConceptualModel.class, KeyEvent.VK_A);
