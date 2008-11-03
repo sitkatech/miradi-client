@@ -25,10 +25,6 @@ import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.MainThreatTableModelExporter;
-import org.miradi.utils.MultiTableCombinedAsOneExporter;
-import org.miradi.views.threatmatrix.ThreatMatrixRowHeaderTableModel;
-import org.miradi.views.threatmatrix.ThreatMatrixTableModel;
 
 public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 {
@@ -47,12 +43,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 
 	private void exportThreatRating(RtfWriter writer) throws Exception
 	{
-		if (getProject().isStressBaseMode())
-			exportStressBasedThreatRating(writer);
-		else
-			exportSimpleThreatRating(writer);
-		
-			
+		exportStressBasedThreatRating(writer);
 	}
 
 	private void exportStressBasedThreatRating(RtfWriter writer) throws Exception
@@ -61,14 +52,4 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 		exportTable(writer, tableExporter, ReportTemplateContentQuestion.getThreatRatingsLabel());
 	}
 	
-	private void exportSimpleThreatRating(RtfWriter writer) throws Exception
-	{
-		ThreatMatrixTableModel model = new ThreatMatrixTableModel(getProject());
-		ThreatMatrixRowHeaderTableModel newRowHeaderData = new ThreatMatrixRowHeaderTableModel(getProject(), model);
-		
-		MultiTableCombinedAsOneExporter multiTableExporter = new MultiTableCombinedAsOneExporter();
-		multiTableExporter.addExportable(new MainThreatTableModelExporter(newRowHeaderData));
-		multiTableExporter.addExportable(new MainThreatTableModelExporter(model));
-		exportTable(writer, multiTableExporter, ReportTemplateContentQuestion.getThreatRatingsLabel());
-	}
 }

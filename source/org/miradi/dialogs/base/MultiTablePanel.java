@@ -43,7 +43,6 @@ import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
 import org.miradi.utils.TableWithRowHeightSaver;
-import org.miradi.views.threatmatrix.ThreatGridPanel;
 import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class MultiTablePanel extends DisposablePanel implements ObjectPicker
@@ -162,7 +161,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		public Dimension getPreferredSize()
 		{
 			Dimension preferredSize = content.getPreferredSize();
-			return new Dimension(preferredSize.width, ThreatGridPanel.ROW_HEIGHT);
+			return new Dimension(preferredSize.width, ROW_HEIGHT);
 		}
 		
 		private Component content;
@@ -239,6 +238,10 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	public void valueChanged(ListSelectionEvent arg0)
 	{
 	}
+	
+	public final static int ABOUT_ONE_LINE = 20;
+	public final static int ROW_HEIGHT = 2 * ABOUT_ONE_LINE;
+
 
 	private MainWindow mainWindow;
 	protected MultipleTableSelectionController selectionController;
