@@ -19,11 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.threatmatrix;
 
-import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCloneStress;
@@ -33,32 +30,19 @@ import org.miradi.actions.ActionDeleteStress;
 import org.miradi.actions.ActionHideCellRatings;
 import org.miradi.actions.ActionManageStresses;
 import org.miradi.actions.ActionShowCellRatings;
-import org.miradi.commands.Command;
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.dialogs.threatrating.ThreatRatingManagementPanel;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.ValueOption;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.SimpleThreatRatingFramework;
-import org.miradi.project.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.CardedView;
 import org.miradi.views.diagram.doers.CloneStressDoer;
 import org.miradi.views.diagram.doers.CreateStressDoer;
@@ -115,10 +99,7 @@ public class ThreatMatrixView extends CardedView
 
 	public BufferedImage getImage() throws Exception
 	{
-		if(isStressBasedMode())
-			return createStressBasedImage();
-
-		return MatrixTableImageCreator.createImage(getProject(), grid.getThreatMatrixTable(),grid.getRowHeaderTable());
+		return createStressBasedImage();
 	}
 
 	private BufferedImage createStressBasedImage() throws Exception
@@ -133,30 +114,13 @@ public class ThreatMatrixView extends CardedView
 
 	public void createCards() throws Exception
 	{
-		model = new ThreatMatrixTableModel(getProject());
-		createThreatMatrixPanel();
-		addCard(threatMatrixPanel, getThreatMatrixCardName());
-		
 		threatStressRatingManagementPanel = ThreatRatingManagementPanel.create(getMainWindow()); 
 		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());
 	}
 	
 	protected void showCurrentCard(String code)
 	{
-		if (isStressBasedMode(code))
-			showCard(getThreatStressRatingCardName());
-		else
-			showCard(getThreatMatrixCardName());
-	}
-	
-	private boolean isStressBasedMode()
-	{
-		return isStressBasedMode(getCurrentCardChoiceName());
-	}
-
-	private boolean isStressBasedMode(String code)
-	{
-		return code.equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
+		showCard(getThreatStressRatingCardName());
 	}
 	
 	public void deleteCards() throws Exception
@@ -167,38 +131,18 @@ public class ThreatMatrixView extends CardedView
 	@Override
 	public boolean isRtfExportable()
 	{
-		if(isStressBasedMode())
-			return threatStressRatingManagementPanel.isRtfExportable();
-
-		return grid.isRtfExportable();
+		return threatStressRatingManagementPanel.isRtfExportable();
 	}
 	
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
-		if(isStressBasedMode())
-			threatStressRatingManagementPanel.exportRtf(writer);
-		else
-			grid.exportRtf(writer);
+		threatStressRatingManagementPanel.exportRtf(writer);
 	}
 	
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();			
-		selectBundle(null);
-		grid.establishPriorSortState();
 		threatStressRatingManagementPanel.updateSplitterLocation();
-	}
-
-	private void createThreatMatrixPanel() throws Exception
-	{
-		grid = new ThreatGridPanel(this, model);
-		details = new ThreatRatingBundlePanel(this);
-		
-		threatMatrixPanel = new JPanel(new BorderLayout());
-		threatMatrixPanel.setBackground(AppPreferences.getDarkPanelBackgroundColor());
-		threatMatrixPanel.setBorder(BorderFactory.createEmptyBorder(3,3,3,3));
-		threatMatrixPanel.add(new MiradiScrollPane(details), BorderLayout.AFTER_LINE_ENDS);
-		threatMatrixPanel.add(grid, BorderLayout.CENTER); 
 	}
 
 	protected String getCurrentCardChoiceName()
@@ -206,74 +150,15 @@ public class ThreatMatrixView extends CardedView
 		return getProject().getMetadata().getData(ProjectMetadata.TAG_THREAT_RATING_MODE);
 	}
 	
-	public void becomeInactive() throws Exception
-	{
-		// TODO: Should clear ALL view data
-		grid = null;
-		details.dispose();
-		
-		super.becomeInactive();
-	}
-
-	public ThreatMatrixTableModel getModel()
-	{
-		return model;
-	}
-	
 	public SimpleThreatRatingFramework getThreatRatingFramework()
 	{
 		return getProject().getSimpleThreatRatingFramework();
-	}
-	
-	public void selectBundle(ThreatRatingBundle bundle) throws Exception
-	{
-		details.selectBundle(bundle);
-		grid.selectBundle(bundle);
-		getMainWindow().getWizard().refresh();
-		invalidate();
-		validate();
-	}
-	
-	public ThreatRatingBundle getBundle()
-	{
-		return details.getBundle();
-	}
-	
-	public void setBundleValue(RatingCriterion criterion, ValueOption value) throws Exception
-	{
-		ThreatRatingBundle bundle = grid.getSelectedBundle();
-		if(bundle == null)
-			return;
-		
-		FactorId threatId = bundle.getThreatId();
-		FactorId targetId = bundle.getTargetId();
-		BaseId criterionId = criterion.getId();
-		BaseId valueId = value.getId();
-		setBundleValue(threatId, targetId, criterionId, valueId);
-	}
-
-	private void setBundleValue(FactorId threatId, FactorId targetId, BaseId criterionId, BaseId valueId) throws CommandFailedException
-	{
-		try
-		{
-			ThreatRatingBundle bundle = getThreatRatingFramework().getBundle(threatId, targetId);
-			if(bundle.getValueId(criterionId).equals(valueId))
-				return;
-			CommandSetThreatRating cmd = new CommandSetThreatRating(threatId, targetId, criterionId, valueId);
-			getProject().executeCommand(cmd);
-
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}		
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
 		updateCardToShow(event);
-		updateAfterCommand(event.getCommand());
 	}
 
 	private void updateCardToShow(CommandExecutedEvent event)
@@ -288,79 +173,12 @@ public class ThreatMatrixView extends CardedView
 		getMainWindow().updateToolBar();
 	}
 
-	private String getThreatMatrixCardName()
-	{
-		return THREAT_MATRIX_CARD_NAME;
-	}
-
 	private String getThreatStressRatingCardName()
 	{
 		return threatStressRatingManagementPanel.getPanelDescription();
 	}
 
-	private void updateAfterCommand(Command rawCommand)
-	{
-		try
-		{
-			String commandName = rawCommand.getCommandName();
-			if(commandName.equals(CommandCreateObject.COMMAND_NAME))
-				updateAfterCreateOrUndo((CommandCreateObject)rawCommand);
-			if(rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
-				updateAfterDeleteOrUndo((CommandDeleteObject)rawCommand);
-			if(rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-				updateSortIfNeeded((CommandSetObjectData)rawCommand);
-		
-			snapUiToExecutedCommand(rawCommand);
-			if(grid != null)
-			{
-				selectBundle(grid.getSelectedBundle());
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
 	
-	private void updateSortIfNeeded(CommandSetObjectData data) throws Exception
-	{
-		if(data.getObjectType() != ViewData.getObjectType())
-			return;
-		
-		String tag = data.getFieldTag();
-		if(tag.equals(ViewData.TAG_CURRENT_SORT_BY) || 
-				data.getFieldTag().equals(ViewData.TAG_CURRENT_SORT_DIRECTION))
-		{
-			grid.establishPriorSortState();
-		}
-	}
-
-	private void updateAfterCreateOrUndo(CommandCreateObject commandDoneOrUndone)
-	{
-		model.fireTableDataChanged();
-	}
-	
-	private void updateAfterDeleteOrUndo(CommandDeleteObject commandDoneOrUndone)
-	{
-		model.fireTableDataChanged();
-	}
-	
-	private void snapUiToExecutedCommand(Command executedCommand) throws Exception
-	{
-		if(executedCommand.getCommandName().equals(CommandSetThreatRating.COMMAND_NAME))
-		{
-			CommandSetThreatRating cmd = (CommandSetThreatRating)executedCommand;
-			ThreatRatingBundle bundle = model.getBundle(cmd.getThreatId(), cmd.getTargetId());
-			selectBundle(bundle);
-		}
-	}
-	
-	private static final String THREAT_MATRIX_CARD_NAME = "ThreatMatrix";
-
-	private ThreatMatrixTableModel model;
-	private ThreatGridPanel grid;
-	private ThreatRatingBundlePanel details;
 	private ThreatRatingManagementPanel threatStressRatingManagementPanel;
-	private JPanel threatMatrixPanel;
 }
 
