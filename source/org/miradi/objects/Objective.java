@@ -233,9 +233,9 @@ public class Objective extends Desire
 		return calculateRefList(relevantRefList, relevantOverrides);
 	}
 	
-	public ORefList getAllIndicatorRefsFromRelevancyOverrides() throws Exception
+	public ORefSet getAllIndicatorRefsFromRelevancyOverrides() throws Exception
 	{
-		ORefList rawRelevantIndicatorOverrideList = new ORefList();
+		ORefSet rawRelevantIndicatorOverrideList = new ORefSet();
 		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
 		for(RelevancyOverride relevancyOverride : relevantOverrides)
 		{
