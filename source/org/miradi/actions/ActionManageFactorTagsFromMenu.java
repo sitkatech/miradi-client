@@ -32,7 +32,7 @@ public class ActionManageFactorTagsFromMenu extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Choose...");
+		return EAM.text("Action|Tag/Untag...");
 	}
 
 	public String getToolTipText()
