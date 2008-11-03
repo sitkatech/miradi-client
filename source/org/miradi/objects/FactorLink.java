@@ -288,6 +288,11 @@ public class FactorLink extends BaseObject
 	{
 		return threatStressRatingRefs.getORefList();
 	}
+	
+	public static boolean is(BaseObject object)
+	{
+		return is(object.getType());
+	}
 
 	public static boolean is(ORef ref)
 	{
