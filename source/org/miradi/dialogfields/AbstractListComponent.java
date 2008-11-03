@@ -44,7 +44,13 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 	{
 		setLayout(new BasicGridLayout(0,columnCount));
 		question = questionToUse;
-		ChoiceItem[] choices = questionToUse.getChoices();
+		rebuildCheckBoxes();
+	}
+
+	protected void rebuildCheckBoxes()
+	{
+		removeAll();
+		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItems = new ChoiceItem[choices.length];
 		checkBoxes = new PanelCheckBox[choices.length];
 		
@@ -56,6 +62,9 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 			checkBoxes[i] = checkBox;
 			add(checkBox);
 		}
+	
+		revalidate();
+		repaint();
 	}
 	
 	public void itemStateChanged(ItemEvent event)

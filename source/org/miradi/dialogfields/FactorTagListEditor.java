@@ -28,13 +28,13 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.TaggedObjectSetQuestion;
 
 public class FactorTagListEditor extends AbstractListComponent implements CommandExecutedListener
 {
-	public FactorTagListEditor(Project projectToUse, Factor selectedFactorToUse, ChoiceQuestion questionToUse)
+	public FactorTagListEditor(Project projectToUse, Factor selectedFactorToUse)
 	{
-		super(questionToUse);
+		super(createQuestion(projectToUse));
 		
 		project = projectToUse;
 		selectedFactor = selectedFactorToUse;
@@ -66,12 +66,28 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
-			updateCheckboxesToMatchDatabase();
+		if (isTaggedObjectRelatedCommand(event))
+			updateCheckboxesToMatchDatabase();		
 	}
 	
+	private boolean isTaggedObjectRelatedCommand(CommandExecutedEvent event)
+	{
+		if (event.isCreateCommandForThisType(TaggedObjectSet.getObjectType()))
+			return true;
+
+		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_LABEL))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
+			return true;
+		
+		return false;
+	}
+
 	public void updateCheckboxesToMatchDatabase()
 	{
+		reloadQuestion();
+		rebuildCheckBoxes();
 		for (int checkBoxIndex = 0; checkBoxIndex < checkBoxes.length; ++checkBoxIndex)
 		{
 			String label = checkBoxes[checkBoxIndex].getText();
@@ -81,6 +97,11 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 			boolean isSelected = taggedSet.contains(getFactorToTag().getRef());
 			checkBoxes[checkBoxIndex].setSelected(isSelected);
 		}
+	}
+
+	private void reloadQuestion()
+	{
+		((TaggedObjectSetQuestion)getQuestion()).reloadQuestion();
 	}
 
 	private ORefList getTaggedObjectRefs(ORef taggedObjectSetRef)
@@ -97,6 +118,11 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 	private Factor getFactorToTag()
 	{
 		return selectedFactor;
+	}
+	
+	private static TaggedObjectSetQuestion createQuestion(Project projectToUse)
+	{
+		return new TaggedObjectSetQuestion(projectToUse);
 	}
 	
 	private Project project;

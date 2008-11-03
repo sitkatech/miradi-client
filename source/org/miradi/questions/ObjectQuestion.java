@@ -28,7 +28,7 @@ abstract public class ObjectQuestion extends DynamicChoiceQuestion
 {
 	public ObjectQuestion(BaseObject[] objectsToUse)
 	{
-		objects = objectsToUse;
+		setObjects(objectsToUse);
 	}
 	
 	@Override
@@ -50,6 +50,11 @@ abstract public class ObjectQuestion extends DynamicChoiceQuestion
 	protected String getStringToDisplay(BaseObject thisObject)
 	{
 		return thisObject.getFullName();
+	}
+	
+	public void setObjects(BaseObject[] objectsToUse)
+	{
+		objects = objectsToUse;
 	}
 	
 	private BaseObject[] objects;

@@ -26,14 +26,23 @@ import org.miradi.project.Project;
 
 public class TaggedObjectSetQuestion extends ObjectQuestion
 {
-	public TaggedObjectSetQuestion(Project project)
+	public TaggedObjectSetQuestion(Project projectToUse)
 	{
-		super(getAllTaggedObjectSet(project));
+		super(getAllTaggedObjectSet(projectToUse));
+		
+		project = projectToUse;
 	}
 	
 	private static TaggedObjectSet[] getAllTaggedObjectSet(Project project)
 	{
 		Vector<TaggedObjectSet> allTaggedObjectSets = project.getTaggedObjectSetPool().getAllTaggedObjectSets();
 		return allTaggedObjectSets.toArray(new TaggedObjectSet[0]);
-	}	
+	}
+	
+	public void reloadQuestion()
+	{
+		setObjects(getAllTaggedObjectSet(project));
+	}
+	
+	private Project project;
 }
