@@ -185,6 +185,28 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	}
 	
 
+	public int getScopeNumericValue(ThreatRatingBundle bundle)
+	{
+		return getNumericValue(bundle, getScopeCriterion());
+	}
+
+	public int getSeverityNumericValue(ThreatRatingBundle bundle)
+	{
+		return getNumericValue(bundle, getSeverityCriterion());
+	}
+
+	public int getIrreversibilityNumericValue(ThreatRatingBundle bundle)
+	{
+		return getNumericValue(bundle, getIrreversibilityCriterion());
+	}
+
+	private int getNumericValue(ThreatRatingBundle bundle, RatingCriterion criterion)
+	{
+		BaseId valueId = bundle.getValueId(criterion.getId());
+		ValueOption valueOption = (ValueOption)getProject().findObject(ValueOption.getObjectType(), valueId);
+		return valueOption.getNumericValue();
+	}
+
 	public ValueOption getBundleValue(ThreatRatingBundle bundle)
 	{
 		SimpleThreatFormula formula = getSimpleThreatFormula();

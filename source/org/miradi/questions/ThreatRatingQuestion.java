@@ -40,4 +40,12 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 				new ChoiceItem("4", EAM.text("Very High"), COLOR_ALERT),
 		};
 	}
+
+	public ChoiceItem findChoiceByNumericValue(int value)
+	{
+		String code = "";
+		if(value > 0)
+			code = Integer.toString(value);
+		return findChoiceByCode(code);
+	}
 }

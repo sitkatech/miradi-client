@@ -120,6 +120,11 @@ public class AppPreferences
 		return languageCode;
 	}
 	
+	public boolean getIsCellRatingsVisible()
+	{
+		return getBoolean(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
+	}
+	
 	public Color getColor(String tag)
 	{
 		if(tag.equals(TAG_COLOR_STRATEGY))
