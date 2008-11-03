@@ -26,8 +26,8 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.project.SimpleThreatRatingFramework;
-import org.miradi.project.ThreatRatingBundle;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class CommandSetThreatRating extends Command
 {

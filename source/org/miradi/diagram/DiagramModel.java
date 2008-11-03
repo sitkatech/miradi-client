@@ -79,7 +79,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
-import org.miradi.project.ThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;

@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.project.StressBasedThreatFormula;
+import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;

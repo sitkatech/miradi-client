@@ -25,7 +25,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
-import org.miradi.project.StressBasedThreatRatingFramework;
+import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.ColumnTagProvider;

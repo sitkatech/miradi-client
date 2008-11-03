@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.project;
+package org.miradi.project.threatrating;
 
 import java.awt.Color;
 import java.io.IOException;
@@ -44,6 +44,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ValueOption;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;

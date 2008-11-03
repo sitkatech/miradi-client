@@ -41,8 +41,8 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
-import org.miradi.project.SimpleThreatRatingFramework;
-import org.miradi.project.ThreatRatingBundle;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceQuestion;
 
 public class TestSimpleThreatRatingFramework extends EAMTestCase

@@ -21,7 +21,7 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.project.StressBasedThreatRatingFramework;
+import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 
 public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 {

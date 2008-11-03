@@ -56,7 +56,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.project.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestCommands extends EAMTestCase
