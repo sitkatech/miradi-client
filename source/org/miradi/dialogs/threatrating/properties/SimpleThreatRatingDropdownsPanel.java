@@ -104,8 +104,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 
 	private FactorLink getLink()
 	{
-		int linkType = FactorLink.getObjectType();
-		ORef linkRef = new ORef(linkType, getObjectIdForType(linkType));
+		ORef linkRef = getRefForType(FactorLink.getObjectType());
 		if(linkRef.isInvalid())
 			return null;
 		FactorLink link = (FactorLink)getProject().findObject(linkRef);
