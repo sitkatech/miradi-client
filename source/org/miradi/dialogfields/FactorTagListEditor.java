@@ -60,9 +60,14 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		if (isSelected)
 			taggedSet.add(getFactorToTag().getRef());
 		
-		taggedSet.sort();
+		sortToKeepOrderInSyncWithDisk(taggedSet);
 		CommandSetObjectData tagFactorCommand = new CommandSetObjectData(taggedObjectSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedSet.toString());
 		getProject().executeCommand(tagFactorCommand);
+	}
+
+	private void sortToKeepOrderInSyncWithDisk(ORefList taggedSet)
+	{
+		taggedSet.sort();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
