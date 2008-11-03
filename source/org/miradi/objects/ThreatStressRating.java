@@ -29,7 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.project.StressBasedThreatFormula;
+import org.miradi.project.threatrating.StressBasedThreatFormula;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;

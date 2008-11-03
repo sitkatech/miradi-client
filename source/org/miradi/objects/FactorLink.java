@@ -35,8 +35,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.project.SimpleThreatRatingFramework;
-import org.miradi.project.ThreatRatingBundle;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 

@@ -86,7 +86,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.project.ThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.HtmlUtilities;

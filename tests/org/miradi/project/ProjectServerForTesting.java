@@ -28,7 +28,7 @@ import org.martus.util.TestCaseEnhanced;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.database.HybridFileBasedProjectServer;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 
 public class ProjectServerForTesting extends HybridFileBasedProjectServer
 {

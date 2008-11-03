@@ -30,8 +30,8 @@ import org.miradi.ids.BaseId;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectInfo;
-import org.miradi.project.SimpleThreatRatingFramework;
-import org.miradi.project.ThreatRatingBundle;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class ProjectServer

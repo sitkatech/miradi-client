@@ -44,7 +44,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectServerForTesting;
-import org.miradi.project.ThreatRatingBundle;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class TestProjectServer extends TestCaseWithProject
 {

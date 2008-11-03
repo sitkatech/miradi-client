@@ -88,6 +88,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.SubTarget;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 
 public class ObjectManager
 {

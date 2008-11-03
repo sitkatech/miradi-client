@@ -22,7 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAMTestCase;
-import org.miradi.project.ThreatRatingBundle;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestThreatRatingBundle extends EAMTestCase

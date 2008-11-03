@@ -28,6 +28,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 
 public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
