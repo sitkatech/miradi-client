@@ -21,7 +21,9 @@ package org.miradi.views.diagram.doers;
 
 import javax.swing.JOptionPane;
 
+import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -47,12 +49,20 @@ public class CreateNamedTaggedObjectSetDoer extends ObjectsDoer
 		boolean dialogWasCanceled = (newTagName == null);
 		if (dialogWasCanceled)
 			return;
-			
-		CommandCreateObject createCommand = new CommandCreateObject(TaggedObjectSet.getObjectType());
-		getProject().executeCommand(createCommand);
 		
-		ORef newlyCreateTagRef = createCommand.getObjectRef();
-		CommandSetObjectData setTagName = new CommandSetObjectData(newlyCreateTagRef, TaggedObjectSet.TAG_LABEL, newTagName);
-		getProject().executeCommand(setTagName);
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			CommandCreateObject createCommand = new CommandCreateObject(TaggedObjectSet.getObjectType());
+			getProject().executeCommand(createCommand);
+			
+			ORef newlyCreateTagRef = createCommand.getObjectRef();
+			CommandSetObjectData setTagName = new CommandSetObjectData(newlyCreateTagRef, TaggedObjectSet.TAG_LABEL, newTagName);
+			getProject().executeCommand(setTagName);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 }
