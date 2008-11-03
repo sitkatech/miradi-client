@@ -60,6 +60,7 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		if (isSelected)
 			taggedSet.add(getFactorToTag().getRef());
 		
+		taggedSet.sort();
 		CommandSetObjectData tagFactorCommand = new CommandSetObjectData(taggedObjectSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedSet.toString());
 		getProject().executeCommand(tagFactorCommand);
 	}
