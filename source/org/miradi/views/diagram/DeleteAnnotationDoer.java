@@ -129,10 +129,10 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	
 	private static Vector<Command> buildCommandsToDeleteReferringObjects(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws Exception
 	{
-		Vector<Command> vector = new Vector<Command>();
-		vector.addAll(createCommandsToDeleteStressDiagramFactors(project, annotationToDelete));
+		Vector<Command> commands = new Vector<Command>();
+		commands.addAll(createCommandsToDeleteStressDiagramFactors(project, annotationToDelete));
 		
-		return vector;
+		return commands;
 	}
 
 	private static Vector<Command> createCommandsToDeleteStressDiagramFactors(Project project, BaseObject annotationToDelete) throws Exception
