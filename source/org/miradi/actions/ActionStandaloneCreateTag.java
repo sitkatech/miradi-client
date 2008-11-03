@@ -32,11 +32,11 @@ public class ActionStandaloneCreateTag extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create");
+		return EAM.text("Action|Create New Tag...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a Tag");
+		return EAM.text("TT|Create a new tag");
 	}
 }
