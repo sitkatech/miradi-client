@@ -19,24 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard.threatmatrix;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-
 import org.miradi.actions.jump.ActionJumpThreatMatrixOverviewStep;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Target;
-import org.miradi.project.ThreatRatingBundle;
-import org.miradi.views.threatmatrix.ThreatMatrixTableModel;
-import org.miradi.views.threatmatrix.ThreatMatrixView;
 import org.miradi.wizard.ThreatRatingWizardStep;
 import org.miradi.wizard.WizardPanel;
 
@@ -58,144 +43,12 @@ public class ThreatRatingWizardChooseBundle extends ThreatRatingWizardStep
 		return ActionJumpThreatMatrixOverviewStep.class;
 	}
 	
-	public ThreatRatingBundle getSelectedBundle() throws Exception
-	{
-		ThreatMatrixTableModel model = getThreatView().getModel();
-		FactorId threatId = model.findThreatByName(threatBox.getSelectedItem().toString());
-		FactorId targetId = model.findTargetByName(targetBox.getSelectedItem().toString());
-		ThreatRatingBundle bundle = model.getBundle(threatId, targetId);
-		return bundle;
-	}
-
-	private ThreatMatrixView getThreatView()
-	{
-		return getMainWindow().getThreatView();
-	}
-	
-
-	private String getName(ORef factorRef)
-	{
-		return Factor.findFactor(getMainWindow().getProject(), factorRef).getLabel();
-	}
 	
 	
-	public void setComponent(String name, JComponent component)
-	{
-		try
-		{
-			ThreatRatingBundle bundle = getThreatView().getBundle();
-			if (name.equals("Threat"))
-			{
-				threatBox = (JComboBox)component;
-				DefaultComboBoxModel cbm = new DefaultComboBoxModel(getThreatNames());
-				threatBox.setModel(cbm);
-				if (bundle!=null) 
-					threatBox.setSelectedItem(getName(new ORef(Cause.getObjectType(), bundle.getThreatId())));
-			}
-
-			if (name.equals("Target")) 
-			{
-				targetBox = (JComboBox)component;
-				DefaultComboBoxModel cbm = new DefaultComboBoxModel(getTargetNames());
-				targetBox.setModel(cbm);
-				if (bundle!=null) 
-					targetBox.setSelectedItem(getName(new ORef(Target.getObjectType(), bundle.getTargetId())));
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-				
-		((JComboBox)component).addItemListener(new RatingItemListener());
-	}
-	
-	
-	private String[] getTargetNames()
-	{
-		String[] targetNames = getThreatView().getModel().getTargetNames();
-		String[] choices = new String[targetNames.length+ 1];
-		System.arraycopy(targetNames, 0, choices, 1, targetNames.length);
-		choices[0] = SELECT_A_TARGET;
-		return choices;
-	}
-
-	private String[] getThreatNames()
-	{
-		String[] threatNames = getThreatView().getModel().getThreatNames();
-		String[] choices = new String[threatNames.length + 1];
-		System.arraycopy(threatNames, 0, choices, 1, threatNames.length);
-		choices[0] = SELECT_A_THREAT;
-		return choices;
-	}
-
-	public void buttonPressed(String buttonName)
-	{
-		if (buttonName.equals("Next"))
-		{
-			try
-			{
-				if (!isTargetAndThreatSelected())
-				{
-					EAM.errorDialog(EAM.text("Please select a threat and target"));
-					return;
-				}
-			
-				if(getSelectedBundle() == null)
-				{
-					EAM.errorDialog(EAM.text("This threat is not currently linked to the selected target.  " +
-					"To create a link, click in the associated gray box in the threat table"));
-					return;
-				}
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog("Internal Error bundle not found");
-				return;
-			}
-		}
-		
-		super.buttonPressed(buttonName);
-	}
-	
-	class RatingItemListener implements ItemListener
-	{
-		public void itemStateChanged(ItemEvent arg0)
-		{
-			if (!isTargetAndThreatSelected())
-				return;
-			
-			try
-			{	
-				ThreatRatingBundle bundle = getSelectedBundle();
-				if (bundle!=null)
-					getThreatView().selectBundle(bundle);
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-
-		}
-
-		ThreatRatingWizardChooseBundle wizard;
-	}
-	
-	private boolean isTargetAndThreatSelected()
-	{
-		return (threatBox.getSelectedIndex()) > 0 && (targetBox.getSelectedIndex() > 0);
-	}
 	
 	public String getSubHeading()
 	{
 		return EAM.text("1) Select target and threat to work on");
 	}
 
-	static final String SELECT_A_TARGET = EAM.text("--Select a Target");
-	static final String SELECT_A_THREAT = EAM.text("--Select a Threat");
-
-
-	JComboBox threatBox;
-	JComboBox targetBox;
 }
