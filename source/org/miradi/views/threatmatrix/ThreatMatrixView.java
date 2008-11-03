@@ -53,9 +53,9 @@ import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
 import org.miradi.views.threatmatrix.doers.ShowCellRatingsDoer;
 
 
-public class ThreatRatingView extends CardedView
+public class ThreatMatrixView extends CardedView
 {
-	public ThreatRatingView(MainWindow mainWindowToUse)
+	public ThreatMatrixView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		

@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.views.threatmatrix.ThreatRatingView;
+import org.miradi.views.threatmatrix.ThreatMatrixView;
 
 public class SwitchToThreatRatingViewDoer extends ViewSwitchDoer
 {
 	protected String getViewName()
 	{
-		return ThreatRatingView.getViewName();
+		return ThreatMatrixView.getViewName();
 	}
 }
