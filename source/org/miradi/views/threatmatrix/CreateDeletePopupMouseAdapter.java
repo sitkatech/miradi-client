@@ -29,6 +29,7 @@ import javax.swing.JTable;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;

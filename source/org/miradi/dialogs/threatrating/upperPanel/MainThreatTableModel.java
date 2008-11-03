@@ -29,7 +29,6 @@ import org.miradi.project.StressBasedThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.ColumnTagProvider;
-import org.miradi.views.threatmatrix.AbstractThreatTargetTableModel;
 
 abstract public class MainThreatTableModel extends AbstractThreatTargetTableModel implements ColumnTagProvider, RowColumnBaseObjectProvider
 {
