@@ -24,12 +24,27 @@ import org.miradi.objects.Factor;
 
 public class ManageFactorTagsFromMenuDoer extends AbstractManageFactorTagDoer
 {	
+	@Override
+	public boolean isAvailable()
+	{
+		boolean superIsAvailable = super.isAvailable();
+		if (!superIsAvailable)
+			return false;
+		
+		return getOnlySelectedFactorCells().length == 1;
+	}
+	
 	protected Factor getSingleSelectedFactor()
 	{
-		FactorCell[] selectedCells = getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
+		FactorCell[] selectedCells = getOnlySelectedFactorCells();
 		if (selectedCells.length == 0)
 			return null;
 	
 		return selectedCells[0].getUnderlyingObject();
+	}
+
+	private FactorCell[] getOnlySelectedFactorCells()
+	{
+		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 	}
 }
