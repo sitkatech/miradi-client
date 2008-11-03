@@ -57,6 +57,7 @@ import org.miradi.actions.ActionCreateSlide;
 import org.miradi.actions.ActionCreateStress;
 import org.miradi.actions.ActionCreateStressFromKea;
 import org.miradi.actions.ActionCreateSubTarget;
+import org.miradi.actions.ActionStandaloneCreateTag;
 import org.miradi.actions.ActionCreateTaggedObjectSet;
 import org.miradi.actions.ActionCut;
 import org.miradi.actions.ActionDelete;
@@ -191,6 +192,7 @@ import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShareActivityDoer;
 import org.miradi.views.diagram.doers.ShowActityBubbleDoer;
 import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
+import org.miradi.views.diagram.doers.StandaloneCreateTagDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
@@ -413,6 +415,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionEditTaggedObjectSet.class, new EditTaggedObjectSetDoer());
 		addDoerToMap(ActionManageFactorTagsFromMenu.class, new ManageFactorTagsFromMenuDoer());
 		addDoerToMap(ActionManageFactorTags.class, new ManageFactorTagsDoer());
+		addDoerToMap(ActionStandaloneCreateTag.class, new StandaloneCreateTagDoer());
 	}
 	
 	public void tabWasSelected()

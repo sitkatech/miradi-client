@@ -19,13 +19,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import javax.swing.Box;
+
 import org.martus.swing.Utilities;
+import org.miradi.actions.ActionStandaloneCreateTag;
 import org.miradi.dialogfields.FactorTagListEditor;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Factor;
 import org.miradi.questions.TaggedObjectSetQuestion;
+import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
@@ -47,9 +53,29 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 		
 		Factor selectedFactor = getSingleSelectedFactor();
 		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor, new TaggedObjectSetQuestion(getProject()));
-		ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), factorTagListEditor, EAM.text("Edit Dialog"));
+		EditTagWithCreateTagButtonDialog dialog = new EditTagWithCreateTagButtonDialog(EAM.getMainWindow(), factorTagListEditor, EAM.text("Edit Dialog"));
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);			
+	}
+	
+	class EditTagWithCreateTagButtonDialog extends ModalDialogWithClose
+	{
+		public EditTagWithCreateTagButtonDialog(MainWindow parent, DisposablePanel panel, String headingText)
+		{
+			super(parent, panel, headingText);
+		}
+		
+		@Override
+		public void addAdditionalButtons(Box buttonBar)
+		{
+			super.addAdditionalButtons(buttonBar);
+			
+			DisposablePanel wrappedEditPanel = (DisposablePanel) getWrappedPanel();
+			createButton = wrappedEditPanel.createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionStandaloneCreateTag.class), getPicker());
+			buttonBar.add(createButton);
+		}
+		
+		private ObjectsActionButton createButton; 
 	}
 	
 	abstract protected Factor getSingleSelectedFactor();
