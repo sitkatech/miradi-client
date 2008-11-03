@@ -34,7 +34,7 @@ public class CreateNamedTaggedObjectSetDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return isInDiagram();
+		return true;
 	}
 
 	@Override
