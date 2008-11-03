@@ -40,6 +40,11 @@ public class Translation
 		restoreDefaultLocalization();
 	}
 	
+	public static boolean isDefaultLocalization()
+	{
+		return textTranslations == null;
+	}
+	
 	public static void restoreDefaultLocalization() throws IOException
 	{
 		textTranslations = null;

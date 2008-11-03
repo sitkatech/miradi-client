@@ -64,9 +64,7 @@ public class TestTranslations extends EAMTestCase
 
 	public void testOtherLocale() throws Exception
 	{
-		URL localizationForTesting = Translation.class.getResource("/translations/test/Miradi-test.zip");
-		assertNotNull("Can't find localization for testing", localizationForTesting);
-		EAM.setLocalization(localizationForTesting, "test");
+		setTestLocale();
 		
 		EAM.setLogToString();
 		String sampleText = "should indicate non-translated";
@@ -74,6 +72,13 @@ public class TestTranslations extends EAMTestCase
 		
 		assertEquals(FAKE_TRANSLATION, EAM.text(ENGLISH_STRING));
 		assertEquals(FAKE_FIELD_LABEL, EAM.fieldLabel(3, Task.TAG_LABEL));
+	}
+
+	public static void setTestLocale() throws Exception
+	{
+		URL localizationForTesting = Translation.class.getResource("/translations/test/Miradi-test.zip");
+		assertNotNull("Can't find localization for testing", localizationForTesting);
+		EAM.setLocalization(localizationForTesting, "test");
 	}
 	
 	public void testFieldLabel() throws Exception
