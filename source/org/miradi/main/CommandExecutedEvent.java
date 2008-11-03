@@ -63,6 +63,14 @@ public class CommandExecutedEvent
 		return (rawCommand.getCommandName().equals(string));
 	}
 
+	public boolean isCreateCommandForThisType(int objectType)
+	{
+		if (!isCreateObjectCommand())
+			return false;
+		
+		CommandCreateObject createCommand = (CommandCreateObject) getCommand();
+		return createCommand.getObjectType() == objectType;		
+	}
 
 	public boolean isSetDataCommandWithThisTypeAndTag(int objectType, String tag)
 	{

@@ -30,7 +30,6 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Factor;
-import org.miradi.questions.TaggedObjectSetQuestion;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.ObjectsDoer;
 
@@ -52,7 +51,7 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 			return;
 		
 		Factor selectedFactor = getSingleSelectedFactor();
-		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor, new TaggedObjectSetQuestion(getProject()));
+		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor);
 		EditTagWithCreateTagButtonDialog dialog = new EditTagWithCreateTagButtonDialog(EAM.getMainWindow(), factorTagListEditor, EAM.text("Edit Dialog"));
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);			
