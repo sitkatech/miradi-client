@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.objecthelpers.ORef;
@@ -49,6 +50,12 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		super.dispose();
 		
 		getProject().removeCommandExecutedListener(this);
+	}
+	
+	protected void addAdditinalComponent()
+	{
+		if (selectedFactor != null)
+			add(new PanelTitleLabel(selectedFactor.toString()));
 	}
 	
 	protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception

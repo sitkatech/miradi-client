@@ -50,6 +50,7 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 	protected void rebuildCheckBoxes()
 	{
 		removeAll();
+		addAdditinalComponent();
 		ChoiceItem[] choices = getQuestion().getChoices();
 		choiceItems = new ChoiceItem[choices.length];
 		checkBoxes = new PanelCheckBox[choices.length];
@@ -67,6 +68,10 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 		repaint();
 	}
 	
+	protected void addAdditinalComponent()
+	{
+	}
+
 	public void itemStateChanged(ItemEvent event)
 	{
 	    if (event.getStateChange() == ItemEvent.SELECTED ||	event.getStateChange() == ItemEvent.DESELECTED)
