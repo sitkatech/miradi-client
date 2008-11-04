@@ -19,10 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import javax.swing.Icon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
@@ -55,7 +62,31 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 	protected void addAdditinalComponent()
 	{
 		if (selectedFactor != null)
-			add(new PanelTitleLabel(selectedFactor.toString()));
+			add(createFactorLabelPanelWithIcon());
+	}
+	
+	private JPanel createFactorLabelPanelWithIcon()
+	{
+		TwoColumnPanel labelPanelWithIcon = new TwoColumnPanel();
+		addEmptySpace(labelPanelWithIcon);
+		addEmptySpace(labelPanelWithIcon);
+		addEmptySpace(labelPanelWithIcon);
+		try
+		{
+			Icon factorIcon = FactorType.getFactorIcon(selectedFactor);
+			labelPanelWithIcon.add(new PanelTitleLabel(selectedFactor.toString(), factorIcon));
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return labelPanelWithIcon;
+	}
+
+	private void addEmptySpace(TwoColumnPanel labelPanelWithIcon)
+	{
+		labelPanelWithIcon.add(new JLabel(" "));
 	}
 	
 	protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
