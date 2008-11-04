@@ -37,7 +37,7 @@ public class ActionCloneObjective extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Clone a Objective");
+		return EAM.text("TT|Clone an Objective");
 	}
 
 }
