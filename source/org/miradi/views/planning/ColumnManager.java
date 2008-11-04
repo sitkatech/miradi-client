@@ -257,7 +257,7 @@ public class ColumnManager
 		if (propertyName.equals(Target.OBJECT_NAME))
 			return ColumnManager.getTargetColumns();
 		
-		if (propertyName.equals(Cause.OBJECT_NAME_THREAT))
+		if (propertyName.equals(Cause.OBJECT_NAME_THREAT) || propertyName.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
 			return ColumnManager.getDirectThreatsColumns();
 		
 		if (propertyName.equals(ThreatReductionResult.OBJECT_NAME))

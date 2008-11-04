@@ -53,6 +53,7 @@ public class RowManager
 		masterRowList.add(Goal.OBJECT_NAME);
 		masterRowList.add(Objective.OBJECT_NAME);
 		masterRowList.add(Cause.OBJECT_NAME_THREAT);
+		masterRowList.add(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
 		masterRowList.add(ThreatReductionResult.OBJECT_NAME);
 		masterRowList.add(IntermediateResult.OBJECT_NAME);
 		masterRowList.add(Strategy.OBJECT_NAME);
