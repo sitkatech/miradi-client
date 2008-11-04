@@ -20,10 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import org.miradi.commands.Command;
-import org.miradi.commands.CommandJump;
+import org.miradi.commands.CommandCreateObject;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
+import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 
@@ -36,7 +35,7 @@ public class TestCommandExecutedEvents extends EAMTestCase
 
 	public void testBasics()
 	{
-		Command cmd = new CommandJump(5);
+		Command cmd = new CommandCreateObject(Stress.getObjectType());
 		CommandExecutedEvent event = new CommandExecutedEvent(cmd);
 		assertEquals(cmd, event.getCommand());
 	}
@@ -58,10 +57,9 @@ public class TestCommandExecutedEvents extends EAMTestCase
 		project.addCommandExecutedListener(listener);
 		assertEquals("executed not zero to start?", 0, listener.timesExecuted);
 		
-		Command cmd = new CommandJump(5);
-		project.executeCommand(cmd);
+		project.executeCommand(new CommandCreateObject(Stress.getObjectType()));
 		assertEquals("execute didn't fire?", 1, listener.timesExecuted);
-		project.executeCommand(cmd);
+		project.executeCommand(new CommandCreateObject(Stress.getObjectType()));
 		assertEquals("execute didn't fire again?", 2, listener.timesExecuted);
 
 		project.undo();
