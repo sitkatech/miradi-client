@@ -27,6 +27,7 @@ import org.miradi.actions.ActionTreeCreateTaskIconOnly;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.icons.ConceptualModelIcon;
+import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
@@ -89,6 +90,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		addIconLineWithCheckBox(panel, Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon());
 		addIconLineWithCheckBox(panel, Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon());
 		addIconLineWithCheckBox(panel, Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon());
+		addIconLineWithCheckBox(panel, Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon());
 		addIconLineWithCheckBox(panel, ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon());
 		addIconLineWithCheckBox(panel, IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, new IntermediateResultIcon());
 		addIconLineWithCheckBox(panel, Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon());

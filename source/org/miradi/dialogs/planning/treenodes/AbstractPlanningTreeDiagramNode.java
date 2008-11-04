@@ -48,7 +48,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
 			Factor factor = diagramFactor.getWrappedFactor();
 			int type = factor.getType();
-			if(factor.isTarget() || factor.isDirectThreat() ||  
+			if(factor.isTarget() || factor.isDirectThreat() || factor.isContributingFactor() ||  
 					type == ThreatReductionResult.getObjectType() || 
 					type == IntermediateResult.getObjectType())
 			{

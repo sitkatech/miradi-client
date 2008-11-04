@@ -67,6 +67,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		measurementPropertiesPanel.dispose();
 		targetPropertiesPanel.dispose();
 		threatPropertiesPanel.dispose();
+		contributingFactorPropertiesPanel.dispose();
 		intermediateResultPropertiesPanel.dispose();
 		threatReductionResultPropertiesPanel.dispose();
 		blankPropertiesPanel.dispose();
@@ -82,6 +83,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		targetPropertiesPanel = new PlanningViewTargetPropertiesPanel(getProject());
 		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
+		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
 		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
 		threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
@@ -94,6 +96,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		add(measurementPropertiesPanel);
 		add(targetPropertiesPanel);
 		add(threatPropertiesPanel);
+		add(contributingFactorPropertiesPanel);
 		add(intermediateResultPropertiesPanel);
 		add(threatReductionResultPropertiesPanel);
 		add(blankPropertiesPanel);
@@ -122,6 +125,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
 		targetPropertiesPanel.setObjectRefs(orefsToUse);
 		threatPropertiesPanel.setObjectRefs(orefsToUse);
+		contributingFactorPropertiesPanel.setObjectRefs(orefsToUse);
 		intermediateResultPropertiesPanel.setObjectRefs(orefsToUse);
 		threatReductionResultPropertiesPanel.setObjectRefs(orefsToUse);
 		
@@ -164,7 +168,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 			return targetPropertiesPanel;
 		
 		if (Cause.getObjectType() == objectType)
-			return threatPropertiesPanel;
+			return getCausePropertiesPanel(firstRef);
 		
 		if (IntermediateResult.getObjectType() == objectType)
 			return intermediateResultPropertiesPanel;
@@ -176,6 +180,15 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		return blankPropertiesPanel;
 	}
 	
+	private MinimalFactorPropertiesPanel getCausePropertiesPanel(ORef causeRef)
+	{
+		Cause cause = Cause.find(getProject(), causeRef);
+		if (cause.isDirectThreat())
+			return threatPropertiesPanel;
+		
+		return contributingFactorPropertiesPanel;
+	}
+
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
@@ -211,6 +224,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
 	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
+	private PlanningViewContributingFactorPropertiesPanel contributingFactorPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }
