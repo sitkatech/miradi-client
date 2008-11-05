@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 
-//FIXME this needs to be renamed to ConceptualModelPropertiesPanel
 public class ConceptualModelPropertiesPanel extends ObjectDataInputPanel
 {
 	public ConceptualModelPropertiesPanel(Project projectToUse, ORef diagramObjectRef)
