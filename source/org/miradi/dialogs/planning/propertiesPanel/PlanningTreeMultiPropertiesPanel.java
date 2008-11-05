@@ -24,6 +24,7 @@ import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.dialogs.diagram.StrategyPropertiesPanel;
 import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
@@ -38,6 +39,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -70,6 +72,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		contributingFactorPropertiesPanel.dispose();
 		intermediateResultPropertiesPanel.dispose();
 		threatReductionResultPropertiesPanel.dispose();
+		resultsChainPropertiesPanel.dispose();
 		blankPropertiesPanel.dispose();
 	}
 	
@@ -86,6 +89,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
 		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
 		threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
+		resultsChainPropertiesPanel = new ResultsChainPropertiesPanel(getProject(), ORef.INVALID);
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
 		add(goalPropertiesPanel);
@@ -99,6 +103,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		add(contributingFactorPropertiesPanel);
 		add(intermediateResultPropertiesPanel);
 		add(threatReductionResultPropertiesPanel);
+		add(resultsChainPropertiesPanel);
 		add(blankPropertiesPanel);
 	}
 	
@@ -128,6 +133,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		contributingFactorPropertiesPanel.setObjectRefs(orefsToUse);
 		intermediateResultPropertiesPanel.setObjectRefs(orefsToUse);
 		threatReductionResultPropertiesPanel.setObjectRefs(orefsToUse);
+		resultsChainPropertiesPanel.setObjectRefs(orefsToUse);
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
@@ -176,6 +182,8 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		if (ThreatReductionResult.getObjectType() == objectType)
 			return threatReductionResultPropertiesPanel;
 	
+		if (ResultsChainDiagram.is(objectType))
+			return resultsChainPropertiesPanel;
 		
 		return blankPropertiesPanel;
 	}
@@ -226,5 +234,6 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
 	private PlanningViewContributingFactorPropertiesPanel contributingFactorPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
+	private ResultsChainPropertiesPanel resultsChainPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

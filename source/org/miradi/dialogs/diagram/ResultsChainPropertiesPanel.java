@@ -24,26 +24,26 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
 
-//FIXME this needs to be renamed to ConceptualModelPropertiesPanel
-public class DiagramPropertiesPanel extends ObjectDataInputPanel
+public class ResultsChainPropertiesPanel extends ObjectDataInputPanel
 {
-	public DiagramPropertiesPanel(Project projectToUse, ORef diagramObjectRef)
+	public ResultsChainPropertiesPanel(Project projectToUse, ORef resultsChainRef)
 	{
-		super(projectToUse, diagramObjectRef);
+		super(projectToUse, resultsChainRef);
 		
-		ObjectDataInputField shortLabelField = createShortStringField(DiagramObject.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createMediumStringField(DiagramObject.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createShortStringField(ResultsChainDiagram.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createMediumStringField(ResultsChainDiagram.getObjectType(), DiagramObject.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
-		addField(createMultilineField(DiagramObject.TAG_DETAIL));
+		addField(createMultilineField(ResultsChainDiagram.getObjectType(), DiagramObject.TAG_DETAIL));
 
 		updateFieldsFromProject();
 	}
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Diagram Properties");
+		return EAM.text("Title|Results Chain Properties");
 	}
 }
