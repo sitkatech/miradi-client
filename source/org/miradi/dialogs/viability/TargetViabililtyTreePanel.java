@@ -27,7 +27,7 @@ import org.miradi.actions.ActionDeleteIndicatorMeasurement;
 import org.miradi.dialogs.diagram.FactorTreeTableNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.viability.nodes.TargetViabilityRoot;
-import org.miradi.dialogs.viability.nodes.ViabilityProjectNode;
+import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -42,7 +42,7 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 
 	public static TargetViabililtyTreePanel createTargetViabilityPoolPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityProjectNode(mainWindowToUse.getProject()));
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(mainWindowToUse.getProject()));
 		return getTargetViabililtyTreePanel(mainWindowToUse, mainWindowToUse.getProject(), model);
 	}
 
