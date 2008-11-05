@@ -42,6 +42,7 @@ import org.miradi.icons.MethodIcon;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.StrategyIcon;
+import org.miradi.icons.StressIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
@@ -92,6 +93,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		activityRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(activityRenderer, new ActivityIcon(), getPlainFont());
 
+		stressRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(stressRenderer, new StressIcon(), getPlainFont());
+		
 		keyEcologicalAttributeRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(keyEcologicalAttributeRenderer, new KeyEcologicalAttributeIcon(), getPlainFont());
 		
@@ -170,6 +174,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = getTaskRenderer((Task)node.getObject());
 		else if(node.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			renderer = keyEcologicalAttributeRenderer;
+		else if(node.getType() == ObjectType.STRESS)
+			renderer = stressRenderer;
 		else if(node.getType() == ObjectType.MEASUREMENT)
 			renderer = measurementRenderer;
 		else if(node.getType() == ProjectMetadata.getObjectType())
@@ -247,6 +253,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	protected VariableHeightTreeCellRenderer goalRenderer;
 	protected VariableHeightTreeCellRenderer indicatorRenderer;
 	private VariableHeightTreeCellRenderer activityRenderer;
+	private VariableHeightTreeCellRenderer stressRenderer;
 	private VariableHeightTreeCellRenderer methodRenderer;
 	private VariableHeightTreeCellRenderer taskRenderer;
 	private VariableHeightTreeCellRenderer conceptualModelRenderer;
