@@ -32,19 +32,20 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 	}
 	
 	@Override
-	public Icon getIconAt(int row, int column)
+	public Icon getIconAt(int row, int tableColumn)
 	{
-		Object valueAt = getViabilityTreeTable().getValueAt(row, column);
+		Object valueAt = getViabilityTreeTable().getValueAt(row, tableColumn);
 		if (valueAt == null)
 			return null;
-		
-		if (getViabilityTreeTable().isChoiceItemCell(row, column))
+
+		int modelColumn = getViabilityTreeTable().convertColumnIndexToModel(tableColumn);
+		if (getViabilityTreeTable().isChoiceItemCell(row, modelColumn))
 		{
 			ChoiceItem choiceItem = (ChoiceItem) valueAt;
 			return choiceItem.getIcon();	
 		}
 		
-		return super.getIconAt(row, column);
+		return super.getIconAt(row, modelColumn);
 	}
 	
 	private TargetViabilityTreeTable getViabilityTreeTable()
