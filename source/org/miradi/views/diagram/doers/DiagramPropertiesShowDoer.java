@@ -21,7 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.diagram.DiagramPropertiesPanel;
+import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
@@ -55,6 +55,6 @@ public class DiagramPropertiesShowDoer extends ObjectsDoer
 		if (ResultsChainDiagram.is(diagramObjectRef))
 			return new ResultsChainPropertiesPanel(getProject(), diagramObjectRef);
 		
-		return new DiagramPropertiesPanel(getProject(), diagramObjectRef);
+		return new ConceptualModelPropertiesPanel(getProject(), diagramObjectRef);
 	}
 }
