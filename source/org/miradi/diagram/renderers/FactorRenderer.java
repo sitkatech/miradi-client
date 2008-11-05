@@ -80,7 +80,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -138,7 +137,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			{
 				IdList indicators = node.getUnderlyingObject().getDirectOrIndirectIndicators();
 				if(indicators.size() == 1)
-					indicatorText = model.getProject().getObjectData(ObjectType.INDICATOR, indicators.get(0), Indicator.TAG_SHORT_LABEL);
+					indicatorText = "";
 				else if(indicators.size() > 1)
 					indicatorText = "+";
 			}
