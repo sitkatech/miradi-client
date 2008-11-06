@@ -652,6 +652,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	public static void hideFactorsForMode(DiagramComponent diagramComponent, String newMode) throws Exception
 	{
+		diagramComponent.getDiagramModel().updateGroupBoxCells();
 		ORefList hiddenORefs = new ORefList();
 		diagramComponent.setToDefaultBackgroundColor();
 		if (newMode.equals(ViewData.MODE_STRATEGY_BRAINSTORM))

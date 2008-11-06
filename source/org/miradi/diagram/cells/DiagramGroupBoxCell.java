@@ -31,6 +31,7 @@ import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.DiagramModelEvent;
 import org.miradi.diagram.DiagramModelListener;
+import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -126,11 +127,15 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public Rectangle2D computeCurrentChildrenBounds()
 	{
+		boolean isDefaultMode = FactorSummaryCorePanel.inDefaultMode(getProject());
 		Rectangle bounds = null;
 		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < groupBoxChildren.size(); ++childIndex)
 		{
 			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(childIndex));
+			if (groupBoxChild.getWrappedFactor().isStatusDraft() && isDefaultMode)
+				continue;
+			
 			Rectangle childBounds = (Rectangle) groupBoxChild.getBounds().clone();
 			if (bounds == null)
 				bounds = childBounds;

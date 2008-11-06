@@ -106,18 +106,18 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 
 	private void addOptionalDraftStatusCheckBox(String tag)
 	{
-		if (!inChainMode())
+		if (!inChainMode(getProject()))
 			return;
 		
 		ObjectDataInputField field = createCheckBoxField(tag, Strategy.STATUS_DRAFT, Strategy.STATUS_REAL);
 		addField(field);
 	}
 
-	private boolean inChainMode()
+	public static boolean inChainMode(Project project)
 	{
 		try
 		{
-			String mode = getProject().getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
+			String mode = project.getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
 			return (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM));
 		}
 		catch (Exception e)
@@ -128,6 +128,10 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		return false;
 	}
 
+	public static boolean inDefaultMode(Project project)
+	{
+		return !inChainMode(project); 
+	}
 
 	@Override
 	public String getPanelDescription()
