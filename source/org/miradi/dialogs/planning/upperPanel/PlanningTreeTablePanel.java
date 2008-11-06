@@ -238,12 +238,23 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		int type = setCommand.getObjectType();
 		String tag = setCommand.getFieldTag();
-		if(Factor.isFactor(type) && tag.equals(Factor.TAG_INDICATOR_IDS))
-			return true;
+		if(Factor.isFactor(type))
+			return isValidFactorTag(tag);
 		
 		if(type == KeyEcologicalAttribute.getObjectType() && tag.equals(KeyEcologicalAttribute.TAG_INDICATOR_IDS))
 			return true;
 				
+		return false;
+	}
+	
+	private boolean isValidFactorTag(String tag)
+	{
+		if (tag.equals(Factor.TAG_INDICATOR_IDS))
+				return true;
+		
+		if (tag.equals(Factor.TAG_OBJECTIVE_IDS))
+			return true;
+		
 		return false;
 	}
 
