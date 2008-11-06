@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Task;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 import org.miradi.views.umbrella.DeleteActivity;
@@ -49,7 +50,10 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		if (Indicator.is(selected.getType()))
 			return true;
 		
-		return selected.getType() == Task.getObjectType();
+		if (Objective.is(selected.getType()))
+			return true;
+		
+		return Task.is(selected.getType());
 	}
 
 	public void doIt() throws CommandFailedException
@@ -69,7 +73,10 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 				deleteTask(selected);
 			
 			if (Indicator.is(selected.getType()))
-				deleteIndicator(selected);
+				deleteAnnotation(selected, Factor.TAG_INDICATOR_IDS);
+			
+			if (Objective.is(selected.getType()))
+				deleteAnnotation(selected, Factor.TAG_OBJECTIVE_IDS);
 		}
 		catch (Exception e)
 		{
@@ -77,7 +84,7 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		}
 	}
 
-	private void deleteIndicator(BaseObject selected) throws Exception
+	private void deleteAnnotation(BaseObject selected, String annotationListTag) throws Exception
 	{
 		Vector commands = new Vector();
 		ORefList ownerRefs = selected.findObjectsThatReferToUs();
@@ -85,7 +92,7 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		{
 			ORef ownerRef = ownerRefs.get(refIndex);
 			BaseObject owner = getProject().findObject(ownerRef);
-			commands.add(DeleteAnnotationDoer.buildCommandToRemoveAnnotationFromObject(owner, Factor.TAG_INDICATOR_IDS, selected.getRef()));
+			commands.add(DeleteAnnotationDoer.buildCommandToRemoveAnnotationFromObject(owner, annotationListTag, selected.getRef()));
 		}
 		
 		commands.addAll(Arrays.asList(selected.createCommandsToClear()));
