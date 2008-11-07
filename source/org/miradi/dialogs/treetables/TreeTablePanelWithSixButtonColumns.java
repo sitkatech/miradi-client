@@ -23,7 +23,6 @@ import org.miradi.main.MainWindow;
 
 import com.jhlabs.awt.GridLayoutPlus;
 
-//FIXME refacto rename this to be TreeTablePanelWithSixButtonColumns
 abstract public class TreeTablePanelWithSixButtonColumns extends MultiTreeTablePanel
 {
 	public TreeTablePanelWithSixButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
