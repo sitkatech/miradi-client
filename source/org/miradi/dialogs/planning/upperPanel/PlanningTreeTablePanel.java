@@ -40,7 +40,7 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
-import org.miradi.dialogs.treetables.TreeTablePanelWithFiveButtonColumns;
+import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -68,7 +68,7 @@ import org.miradi.views.planning.PlanningView;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
-public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
+public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
 	{
