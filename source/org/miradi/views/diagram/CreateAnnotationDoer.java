@@ -49,17 +49,16 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			return;
 		
 		BaseObject parent = getSelectedParent();
-		ObjectPicker picker = getPicker();
-		String annotationListTag = getAnnotationListTag();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			ORef createRef = createObject();
-			CommandSetObjectData appendCommand = createAppendCommand(parent, createRef, annotationListTag);
+			CommandSetObjectData appendCommand = createAppendCommand(parent, createRef, getAnnotationListTag());
 			getProject().executeCommand(appendCommand);
 			doExtraWork(createRef);
-			
+		
+			ObjectPicker picker = getPicker();
 			if(picker != null)
 				picker.ensureObjectVisible(createRef);
 		}
