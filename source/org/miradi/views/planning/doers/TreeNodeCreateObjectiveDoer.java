@@ -19,20 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.exceptions.CommandFailedException;
+import org.miradi.objects.Factor;
+import org.miradi.objects.Objective;
 
-public class TreeNodeCreateObjectiveDoer extends AbstractTreeNodeDoer
+public class TreeNodeCreateObjectiveDoer extends AbstractTreeCreateAnnotationDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected int getAnnotationType()
 	{
-		return false;
+		return Objective.getObjectType();
 	}
 
 	@Override
-	public void doIt() throws CommandFailedException
+	protected String getAnnotationTag()
 	{
-		if (!isAvailable())
-			return;
+		return Factor.TAG_OBJECTIVE_IDS;
 	}
 }
