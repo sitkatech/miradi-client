@@ -30,7 +30,9 @@ import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionTreeCreateActivity;
+import org.miradi.actions.ActionTreeCreateIndicator;
 import org.miradi.actions.ActionTreeCreateMethod;
+import org.miradi.actions.ActionTreeCreateObjective;
 import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
@@ -156,12 +158,14 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithFiveButtonColumns
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
+			ActionTreeCreateIndicator.class,
 			ActionTreeCreateActivity.class,
 			ActionTreeCreateMethod.class,
 			ActionTreeCreateTask.class,			
 			ActionTreeNodeUp.class,
 			ActionExpandAllNodes.class,
 			
+			ActionTreeCreateObjective.class,
 			ActionTreeShareActivity.class,
 			ActionTreeShareMethod.class,
 			ActionDeletePlanningViewTreeNode.class,
