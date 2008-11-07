@@ -49,16 +49,16 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 			return;
 		
 		BaseObject parent = getSelectedParent();
+		ObjectPicker picker = getPicker();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
 			ORef createRef = createObject();
-			CommandSetObjectData appendCommand = createAppendCommand(parent, createRef);
+			CommandSetObjectData appendCommand = createAppendCommand(parent, createRef, getAnnotationListTag());
 			getProject().executeCommand(appendCommand);
 			doExtraWork(createRef);
 			
-			ObjectPicker picker = getPicker();
 			if(picker != null)
 				picker.ensureObjectVisible(createRef);
 		}
@@ -77,12 +77,12 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	{
 	}
 
-	protected CommandSetObjectData createAppendCommand(BaseObject parent, ORef refToAppend) throws ParseException
+	public static CommandSetObjectData createAppendCommand(BaseObject parent, ORef refToAppend, String listTag) throws ParseException
 	{
-		if (parent.isRefList(getAnnotationListTag()))
-			return CommandSetObjectData.createAppendORefCommand(parent, getAnnotationListTag(), refToAppend);
+		if (parent.isRefList(listTag))
+			return CommandSetObjectData.createAppendORefCommand(parent, listTag, refToAppend);
 		
-		return CommandSetObjectData.createAppendIdCommand(parent, getAnnotationListTag(), refToAppend.getObjectId());
+		return CommandSetObjectData.createAppendIdCommand(parent, listTag, refToAppend.getObjectId());
 	}
 
 	protected ORef createObject() throws CommandFailedException
