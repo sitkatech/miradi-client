@@ -175,6 +175,11 @@ abstract public class Factor extends BaseObject
 			throw new RuntimeException(factorRef + " is not a factor ref");
 	}
 	
+	public static boolean isFactor(BaseObject baseObject)
+	{
+		return isFactor(baseObject.getType());
+	}
+	
 	public static boolean isFactor(ORef refToUse)
 	{
 		return isFactor(refToUse.getObjectType());
