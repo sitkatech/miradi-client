@@ -365,7 +365,7 @@ public class Project
 		return getViewPool().find(createdId);
 	}
 	
-	public static boolean inChainMode(Project project)
+	public static boolean isChainMode(Project project)
 	{
 		try
 		{
@@ -380,9 +380,9 @@ public class Project
 		return false;
 	}
 
-	public static boolean inDefaultMode(Project project)
+	public static boolean isNonChainMode(Project project)
 	{
-		return !inChainMode(project); 
+		return !isChainMode(project); 
 	}
 	
 	public SimpleThreatRatingFramework getSimpleThreatRatingFramework()
