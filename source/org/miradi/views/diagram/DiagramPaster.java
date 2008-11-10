@@ -208,7 +208,7 @@ abstract public class DiagramPaster
 		{
 			ORef oldRef = relevancyOverride.getRef();
 			ORef newRef = fixupSingleRef(pastedObjectMap, oldRef);
-			if (isValidRef(oldRef))
+			if (isValidRef(newRef))
 			{
 				RelevancyOverride override = new RelevancyOverride(newRef, relevancyOverride.isOverride());
 				newOverrideSet.add(override);
@@ -218,9 +218,9 @@ abstract public class DiagramPaster
 		return new CommandSetObjectData(newObject.getRef(), tag, newOverrideSet.toString());
 	}
 
-	private boolean isValidRef(ORef oldRef)
+	private boolean isValidRef(ORef newRef)
 	{
-		if (oldRef.isInvalid())
+		if (newRef.isInvalid())
 			return false;
 		
 		return true;
