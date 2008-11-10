@@ -251,12 +251,12 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		return false;
 	}
 	
-	private boolean isValidFactorTag(String tag)
+	private boolean isValidFactorTag(String isRelevantFactorTag)
 	{
-		if (tag.equals(Factor.TAG_INDICATOR_IDS))
+		if (isRelevantFactorTag.equals(Factor.TAG_INDICATOR_IDS))
 				return true;
 		
-		if (tag.equals(Factor.TAG_OBJECTIVE_IDS))
+		if (isRelevantFactorTag.equals(Factor.TAG_OBJECTIVE_IDS))
 			return true;
 		
 		return false;
