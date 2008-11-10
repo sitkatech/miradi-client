@@ -34,6 +34,7 @@ import javax.swing.JTable;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramObject;
 import org.miradi.views.diagram.DiagramSplitPane;
@@ -133,7 +134,8 @@ public  class BufferedImageFactory
 		DiagramComponent diagram =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
 		String currentMode = mainWindow.getProject().getDiagramViewData().getCurrentMode();
 		DiagramView.hideFactorsForMode(diagram, currentMode);
-		diagram.setScale(1.0);
+		double currentZoomSetting = mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM);
+		diagram.setScale(currentZoomSetting);
 		diagram.getDiagramModel().updateVisibilityOfFactorsAndLinks();
 		
 		// TODO: This is here because setting a factor/link to be visible also has
