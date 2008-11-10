@@ -32,7 +32,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
@@ -106,31 +105,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 
 	private void addOptionalDraftStatusCheckBox(String tag)
 	{
-		if (!inChainMode(getProject()))
+		if (!Project.inChainMode(getProject()))
 			return;
 		
 		ObjectDataInputField field = createCheckBoxField(tag, Strategy.STATUS_DRAFT, Strategy.STATUS_REAL);
 		addField(field);
-	}
-
-	public static boolean inChainMode(Project project)
-	{
-		try
-		{
-			String mode = project.getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
-			return (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM));
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		
-		return false;
-	}
-
-	public static boolean inDefaultMode(Project project)
-	{
-		return !inChainMode(project); 
 	}
 
 	@Override
