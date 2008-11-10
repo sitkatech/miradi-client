@@ -72,7 +72,16 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 		if (isTopRowTable(row))
 			return super.getIconAt(row, column);
 		
-		return null;
+		int columnWithinSummaryTable = convertToSummaryTableColumn(column);		
+		if (isColumnWithinSummaryTable(columnWithinSummaryTable))
+			return targetSummaryRowTable.getIconAt(0, columnWithinSummaryTable);
+		
+		return overallProjectRatingSummaryTable.getIconAt(0, 0);
+	}
+
+	private boolean isColumnWithinSummaryTable(int columnWithinSummaryTable)
+	{
+		return columnWithinSummaryTable < targetSummaryRowTable.getColumnCount();
 	}
 
 	@Override
@@ -102,7 +111,7 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 			return "";
 
 		int columnWithinSummaryTable = convertToSummaryTableColumn(column);		
-		if (columnWithinSummaryTable < targetSummaryRowTable.getColumnCount() )
+		if (isColumnWithinSummaryTable(columnWithinSummaryTable) )
 			return targetSummaryRowTable.getTextAt(0, columnWithinSummaryTable);
 		
 		return overallProjectRatingSummaryTable.getTextAt(0, 0);
