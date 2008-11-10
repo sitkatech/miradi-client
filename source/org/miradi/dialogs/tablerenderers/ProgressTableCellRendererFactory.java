@@ -25,7 +25,9 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 
 public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFactory
 {
@@ -65,7 +67,16 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellRendererFac
 
 	private boolean isChoiceItemRow(BaseObject baseObject)
 	{
-		return Strategy.is(baseObject);
+		if (Strategy.is(baseObject))
+			return true;
+		
+		if (Indicator.is(baseObject))
+			return true;
+		
+		if (Task.isActivity(baseObject))
+			return true;
+		
+		return false;
 	}
 	
 	private ChoiceItemTableCellRendererFactory choiceItemRendererFactory;
