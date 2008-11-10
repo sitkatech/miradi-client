@@ -71,7 +71,10 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	{
 		if (isTopRowTable(row))
 			return super.getIconAt(row, column);
-		
+
+		if (isFirstBlankTableSummaryRow(column))
+			return null;
+
 		int columnWithinSummaryTable = convertToSummaryTableColumn(column);		
 		if (isColumnWithinSummaryTable(columnWithinSummaryTable))
 			return targetSummaryRowTable.getIconAt(0, columnWithinSummaryTable);
