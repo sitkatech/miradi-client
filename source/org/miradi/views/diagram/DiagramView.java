@@ -652,7 +652,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	public static void hideFactorsForMode(DiagramComponent diagramComponent, String newMode) throws Exception
 	{
-		if (diagramComponent.getDiagramModel().getDiagramObject().isResultsChain())
+		if (diagramComponent.getDiagramObject().isResultsChain())
 			return;
 		
 		diagramComponent.getDiagramModel().updateGroupBoxCells();
