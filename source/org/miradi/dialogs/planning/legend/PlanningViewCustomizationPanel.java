@@ -72,7 +72,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error Occurred While in Planning View Leged Panel"));
+			EAM.errorDialog(EAM.text("Error Occurred While in Planning View Legend Panel"));
 		}
 	}
 	
