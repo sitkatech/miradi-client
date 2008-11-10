@@ -481,6 +481,14 @@ public class Task extends Factor
 		throw new Exception("getTaskIdsTag called for non-task container type " + type);
 	}
 
+	public static boolean isActivity(BaseObject baseObject)
+	{
+		if (is(baseObject))
+			return ((Task) baseObject).isActivity();
+			
+		return false;
+	}
+	
 	public static boolean is(BaseObject object)
 	{
 		if(object == null)
