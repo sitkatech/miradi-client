@@ -65,6 +65,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
@@ -199,6 +200,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			EAM.logWarning("DiagramComponent.setModel() was called after the model was already set.");
 		
 		super.setModel(newModel);
+	}
+	
+	public DiagramObject getDiagramObject()
+	{
+		return getDiagramModel().getDiagramObject();
 	}
 	
 	public DiagramModel getDiagramModel()
