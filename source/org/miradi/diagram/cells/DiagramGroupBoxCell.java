@@ -133,7 +133,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		for (int childIndex = 0; childIndex < groupBoxChildren.size(); ++childIndex)
 		{
 			DiagramFactor groupBoxChild = DiagramFactor.find(getProject(), groupBoxChildren.get(childIndex));
-			if (groupBoxChild.getWrappedFactor().isStatusDraft() && shouldIgnoreDrafts)
+			if (shouldIgnoreDrafts && groupBoxChild.getWrappedFactor().isStatusDraft())
 				continue;
 			
 			Rectangle childBounds = (Rectangle) groupBoxChild.getBounds().clone();
