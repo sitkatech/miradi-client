@@ -365,6 +365,26 @@ public class Project
 		return getViewPool().find(createdId);
 	}
 	
+	public static boolean inChainMode(Project project)
+	{
+		try
+		{
+			String mode = project.getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
+			return (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM));
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+		
+		return false;
+	}
+
+	public static boolean inDefaultMode(Project project)
+	{
+		return !inChainMode(project); 
+	}
+	
 	public SimpleThreatRatingFramework getSimpleThreatRatingFramework()
 	{
 		return simpleThreatFramework;
