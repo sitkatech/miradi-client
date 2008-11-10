@@ -105,7 +105,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 
 	private void addOptionalDraftStatusCheckBox(String tag)
 	{
-		if (!Project.inChainMode(getProject()))
+		if (!Project.isChainMode(getProject()))
 			return;
 		
 		ObjectDataInputField field = createCheckBoxField(tag, Strategy.STATUS_DRAFT, Strategy.STATUS_REAL);

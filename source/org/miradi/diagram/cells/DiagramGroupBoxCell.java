@@ -126,7 +126,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public Rectangle2D computeCurrentChildrenBounds()
 	{
-		boolean shouldIgnoreDrafts = Project.inDefaultMode(getProject());
+		boolean shouldIgnoreDrafts = Project.isNonChainMode(getProject());
 		Rectangle bounds = null;
 		ORefList groupBoxChildren = getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int childIndex = 0; childIndex < groupBoxChildren.size(); ++childIndex)
