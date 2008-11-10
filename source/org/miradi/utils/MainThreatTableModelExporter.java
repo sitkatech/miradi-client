@@ -24,15 +24,19 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
+import org.miradi.icons.ColoredIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ThreatRatingQuestion;
 
 public class MainThreatTableModelExporter extends AbstractTableExporter
 {
 	public MainThreatTableModelExporter(AbstractThreatTargetTableModel mainThreatTableModelToUse)
 	{
 		mainThreatTableModel = mainThreatTableModelToUse;
+		threatRatingQuestion = (ThreatRatingQuestion) mainThreatTableModel.getProject().getQuestion(ThreatRatingQuestion.class);
 	}
 	
 	@Override
@@ -76,7 +80,18 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
-		return null;
+		Object value = mainThreatTableModel.getValueAt(row, column);
+		if (value == null)
+			return null;
+		
+		ChoiceItem foundChoiceItem = threatRatingQuestion.findChoiceByLabel(value.toString());
+		if (foundChoiceItem == null)
+			return null;
+		
+		ColoredIcon rowRatingIcon = new ColoredIcon();
+		rowRatingIcon.setColor(foundChoiceItem.getColor());
+		
+		return rowRatingIcon;
 	}
 
 	@Override
@@ -104,4 +119,5 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 	
 	private AbstractThreatTargetTableModel mainThreatTableModel;
+	private ThreatRatingQuestion threatRatingQuestion;
 }
