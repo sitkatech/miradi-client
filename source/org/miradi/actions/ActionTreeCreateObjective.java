@@ -42,6 +42,6 @@ public class ActionTreeCreateObjective extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create an Objective for the selected Item");
+		return EAM.text("TT|Create an Objective for the selected factor");
 	}
 }

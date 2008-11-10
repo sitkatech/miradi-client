@@ -42,6 +42,6 @@ public class ActionTreeCreateIndicator extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create an Indicator for the selected Item");
+		return EAM.text("TT|Create an Indicator for the selected factor");
 	}
 }
