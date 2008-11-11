@@ -23,7 +23,6 @@ import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractEditListDoer extends ObjectsDoer
@@ -44,18 +43,14 @@ abstract public class AbstractEditListDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
-		ORef ref = getSelectionRef();
-		ObjectDataInputPanel panel = createPickListPanel(ref);
-		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), panel, getDialogTitle());
+		ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), getEditPanel(), getDialogTitle());
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
 	}
-	
-	abstract protected ORef getSelectionRef();
 
 	abstract protected boolean isInvalidSelection();
 	
 	abstract protected String getDialogTitle();
 	
-	abstract protected ObjectDataInputPanel createPickListPanel(ORef objectiveRef);
+	abstract protected ObjectDataInputPanel getEditPanel();
 }
