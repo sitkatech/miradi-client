@@ -17,28 +17,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
+package org.miradi.views.umbrella;
 
-import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
-import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.diagram.RelevancyIndicatorPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.Objective;
+import org.miradi.objecthelpers.ORef;
 
-public class EditStrategyActivityRelevacyListDoer extends AbstractEditLisDoer
+public class EditObjectiveIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
-	protected AbstractEditableTreeTablePanel getEditPanel() throws Exception
+	protected ObjectDataInputPanel createPickListPanel(ORef objectiveRef)
 	{
-		Objective objective = (Objective) getSelectedObject();
-		return StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), objective);
+		return new RelevancyIndicatorPanel(getProject(), objectiveRef);
 	}
 
-	protected int getObjectType()
-	{
-		return Objective.getObjectType();
-	}
-	
 	protected String getDialogTitle()
 	{
-		return EAM.text("Relevant Strategies and Activities");
+		return EAM.text("Choose Relevant Indicator(s)");
 	}
 }

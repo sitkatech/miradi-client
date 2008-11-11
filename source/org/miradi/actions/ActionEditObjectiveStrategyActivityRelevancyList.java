@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionEditStrategyActivityRelevancyList extends ObjectsAction
+public class ActionEditObjectiveStrategyActivityRelevancyList extends ObjectsAction
 {
-	public ActionEditStrategyActivityRelevancyList(MainWindow mainWindow)
+	public ActionEditObjectiveStrategyActivityRelevancyList(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}
