@@ -53,10 +53,10 @@ import org.miradi.actions.ActionDeleteStrategyProgressReport;
 import org.miradi.actions.ActionEditActivityProgressReports;
 import org.miradi.actions.ActionEditEstimatedResource;
 import org.miradi.actions.ActionEditIndicatorProgressReports;
-import org.miradi.actions.ActionEditIndicatorRelevancyList;
+import org.miradi.actions.ActionEditObjectiveIndicatorRelevancyList;
 import org.miradi.actions.ActionEditMethods;
 import org.miradi.actions.ActionEditProgressPercent;
-import org.miradi.actions.ActionEditStrategyActivityRelevancyList;
+import org.miradi.actions.ActionEditObjectiveStrategyActivityRelevancyList;
 import org.miradi.actions.ActionEditStrategyProgressReports;
 import org.miradi.actions.ActionExit;
 import org.miradi.actions.ActionExpandAllNodes;
@@ -201,7 +201,7 @@ import org.miradi.views.umbrella.doers.CreateMethodDoer;
 import org.miradi.views.umbrella.doers.DeleteLegacyTncStrategyRankingDoer;
 import org.miradi.views.umbrella.doers.DeleteMethodDoer;
 import org.miradi.views.umbrella.doers.EditMethodsDoer;
-import org.miradi.views.umbrella.doers.EditStrategyActivityRelevacyListDoer;
+import org.miradi.views.umbrella.doers.EditObjectiveStrategyActivityRelevacyListDoer;
 import org.miradi.views.umbrella.doers.ExpandAllNodesDoer;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportRtfDoer;
@@ -402,8 +402,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
 		addDoerToMap(ActionViewReports.class, new SwitchToReportViewDoer());
 		
-		addDoerToMap(ActionEditIndicatorRelevancyList.class, new EditIndicatorRelevancyListDoer());
-		addDoerToMap(ActionEditStrategyActivityRelevancyList.class, new EditStrategyActivityRelevacyListDoer());
+		addDoerToMap(ActionEditObjectiveIndicatorRelevancyList.class, new EditObjectiveIndicatorRelevancyListDoer());
+		addDoerToMap(ActionEditObjectiveStrategyActivityRelevancyList.class, new EditObjectiveStrategyActivityRelevacyListDoer());
 		
 		addDoerToMap(ActionViewLegacyTncStrategtyRanking.class, new ViewLegacyTncStrategyRankingDoer());
 		addDoerToMap(ActionDeleteLegacyTncStrategyRanking.class, new DeleteLegacyTncStrategyRankingDoer());

@@ -17,22 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella;
+package org.miradi.actions;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.diagram.RelevancyIndicatorPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
+import org.miradi.main.MainWindow;
 
-public class EditIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
+public class ActionEditObjectiveIndicatorRelevancyList extends ObjectsAction
 {
-	protected ObjectDataInputPanel createPickListPanel(ORef objectiveRef)
+	public ActionEditObjectiveIndicatorRelevancyList(MainWindow mainWindow)
 	{
-		return new RelevancyIndicatorPanel(getProject(), objectiveRef);
+		super(mainWindow, getLabel());
 	}
 
-	protected String getDialogTitle()
+	private static String getLabel()
 	{
-		return EAM.text("Choose Relevant Indicator(s)");
+		return EAM.text("Action|Choose...");
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Choose which indicators are relevant to this objective");
 	}
 }
