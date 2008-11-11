@@ -24,9 +24,10 @@ import org.miradi.dialogs.diagram.RelevancyIndicatorPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.views.umbrella.doers.AbstractEditLisDoer;
 
 
-abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
+abstract public class AbstractRelevancyEditListDoer extends AbstractEditLisDoer
 {
 	protected boolean isInvalidSelection()
 	{	
