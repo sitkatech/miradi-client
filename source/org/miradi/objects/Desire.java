@@ -23,12 +23,16 @@ import java.util.Arrays;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.RelevancyOverride;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.utils.EnhancedJsonObject;
@@ -79,6 +83,12 @@ abstract public class Desire extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
 			return getOwner().getLabel();
 		
+		if (fieldTag.equals(PSEUDO_RELEVANT_INDICATOR_REFS))
+			return getRelevantIndicatorRefsAsString();
+	
+		if (fieldTag.equals(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS))
+			return getRelevantStrategyActivityRefsAsString();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -117,26 +127,187 @@ abstract public class Desire extends BaseObject
 		
 	}
 
+	public boolean isRelevancyOverrideSet(String tag)
+	{
+		if (tag.equals(TAG_RELEVANT_INDICATOR_SET))
+			return true;
+		
+		if (tag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+		
+		return false;
+	}
+
+	protected String getRelevantIndicatorRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantIndicatorRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	protected String getRelevantStrategyActivityRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantStrategyAndActivityRefs();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	private ORefList getDirectlyUpstreamNonDraftStrategies()
+	{
+		Factor owningFactor = getDirectOrIndirectOwningFactor();
+		if(owningFactor == null)
+			return new ORefList();
+		
+		ORefList nonDraftStrategyRefs = new ORefList();
+		if (isNonDraftStrategy(owningFactor))
+			nonDraftStrategyRefs.add(owningFactor.getRef());
+		
+		ORefList relatedFactorLinkRefs = owningFactor.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int index = 0; index < relatedFactorLinkRefs.size(); ++index)
+		{
+			FactorLink relatedFactorLink = FactorLink.find(getProject(), relatedFactorLinkRefs.get(index));
+			Factor fromFactor = relatedFactorLink.getFromFactor();
+			if(isNonDraftStrategy(fromFactor))
+				nonDraftStrategyRefs.add(fromFactor.getRef());
+		}
+		
+		return nonDraftStrategyRefs;
+	}
+	
+	boolean isNonDraftStrategy(Factor factor)
+	{
+		return factor.isStrategy() && !factor.isStatusDraft();
+	}
+	
+	public RelevancyOverrideSet getCalculatedRelevantIndicatorOverrides(ORefList all) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = getIndicatorsOnSameFactor();
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
+	
+		return relevantOverrides;
+	}
+
+	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList all) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = getDirectlyUpstreamNonDraftStrategies();
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));	
+	
+		return relevantOverrides;
+	}
+
+	public RelevancyOverrideSet computeRelevancyOverrides(ORefList refList1, ORefList refList2,	boolean relevancyValue)
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList overrideRefs = ORefList.subtract(refList1, refList2);
+		for (int i = 0; i < overrideRefs.size(); ++i)
+		{
+			RelevancyOverride thisOverride = new RelevancyOverride(overrideRefs.get(i), relevancyValue);
+			relevantOverrides.add(thisOverride);
+		}
+		
+		return relevantOverrides;
+	}
+
+	public ORefList getRelevantIndicatorRefList() throws Exception
+	{
+		ORefSet relevantRefList = indicatorsOnSameFactorAsRefSet();
+		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
+	
+		return calculateRefList(relevantRefList, relevantOverrides);
+	}
+
+	public ORefSet getAllIndicatorRefsFromRelevancyOverrides() throws Exception
+	{
+		ORefSet rawRelevantIndicatorOverrideList = new ORefSet();
+		RelevancyOverrideSet relevantOverrides = relevantIndicatorOverrides.getRawRelevancyOverrideSet();
+		for(RelevancyOverride relevancyOverride : relevantOverrides)
+		{
+			rawRelevantIndicatorOverrideList.add(relevancyOverride.getRef());
+		}
+		
+		return rawRelevantIndicatorOverrideList;
+	}
+
+	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
+	{
+		ORefSet relevantRefList = new ORefSet(getDirectlyUpstreamNonDraftStrategies());
+		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
+	
+		return calculateRefList(relevantRefList, relevantOverrides);
+	}
+
+	public RelevancyOverrideSet getStrategyActivityRelevancyOverrideSet()
+	{
+		return relevantStrategyActivityOverrides.getRawRelevancyOverrideSet();
+	}
+
+	private ORefList calculateRefList(ORefSet relevantRefList, RelevancyOverrideSet relevantOverrides)
+	{
+		for(RelevancyOverride override : relevantOverrides)
+		{
+			if (getProject().findObject(override.getRef()) == null)
+				continue;
+			
+			if (override.isOverride())
+				relevantRefList.add(override.getRef());
+			else
+				relevantRefList.remove(override.getRef());
+		}
+		return new ORefList(relevantRefList);
+	}
+
 	void clear()
 	{
 		super.clear();
+
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		fullText = new StringData(TAG_FULL_TEXT);
 		comments = new StringData(TAG_COMMENTS);
+		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
+		relevantStrategyActivityOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
+		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
+		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS);
+	
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_FULL_TEXT, fullText);
 		addField(TAG_COMMENTS, comments);
+		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicatorOverrides);
+		addField(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantStrategyActivityOverrides);
+	
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
 		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
+		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
+		addField(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
 	}
-	
+		
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
 	public final static String TAG_COMMENTS = "Comments";
@@ -146,6 +317,10 @@ abstract public class Desire extends BaseObject
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	
 	public static final String OBJECT_NAME = "Desire";
+	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
+	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
+	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
+	public static final String PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
 
 	private StringData shortLabel;
 	private StringData fullText;
@@ -154,4 +329,8 @@ abstract public class Desire extends BaseObject
 	private PseudoStringData multiLineDirectThreats;
 	private PseudoStringData multiLineStrategies;
 	private PseudoStringData multiLineFactor;
+	private RelevancyOverrideSetData relevantStrategyActivityOverrides;
+	private RelevancyOverrideSetData relevantIndicatorOverrides;
+	private PseudoORefListData relevantIndicatorRefs;
+	private PseudoORefListData relevantStrategyRefs;
 }
