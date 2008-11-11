@@ -69,6 +69,11 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		delegateFormHandler = handlerToUse;
 		mainWindow = mainWindowToUse;
 	}
+	
+	protected MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
 
 	
 	public void showAsOkDialog()
