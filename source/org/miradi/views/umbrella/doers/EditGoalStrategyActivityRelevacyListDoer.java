@@ -19,28 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
-import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
-import org.miradi.main.EAM;
 import org.miradi.objects.Goal;
-import org.miradi.objects.Objective;
 
-public class EditGoalStrategyActivityRelevacyListDoer extends AbstractEditLisDoer
+public class EditGoalStrategyActivityRelevacyListDoer extends AbstractStrategyActivityRelevancyListDoer
 {
-	protected AbstractEditableTreeTablePanel getEditPanel() throws Exception
-	{
-		//FIXME this needs to be a goal.  
-		Objective objective = (Objective) getSelectedObject();
-		return StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), objective);
-	}
-
+	@Override
 	protected int getObjectType()
 	{
 		return Goal.getObjectType();
-	}
-	
-	protected String getDialogTitle()
-	{
-		return EAM.text("Relevant Strategies and Activities");
 	}
 }

@@ -24,27 +24,27 @@ import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Objective;
+import org.miradi.objects.Desire;
 
 public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTreeTablePanel
 {
-	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
+	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Desire desire) throws Exception
 	{
 		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject());
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
 		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindowToUse, treeTableModel);
 		
-		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, objective);
+		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, desire);
 	}
 	
-	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, Objective objective) throws Exception
+	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, Desire desire) throws Exception
 	{
-		super(mainWindowToUse, modelToUse, treeTable, objective);		
+		super(mainWindowToUse, modelToUse, treeTable, desire);		
 	}
 	
 	protected SingleBooleanColumnEditableModel createEditableTableModel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject)
 	{
-		return new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable,  (Objective)baseObject);
+		return new StrategyActivityRelevancyTableModel(mainWindowToUse.getProject(), treeTable,  (Desire)baseObject);
 	}
 	
 	protected EditableObjectTable createEditableTable(MainWindow mainWindowToUse)
