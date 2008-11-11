@@ -41,7 +41,7 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 	protected ORef getSelectionRef()
 	{
 		ORefList refList = getSelectedHierarchies()[0];
-		ORef ref = refList.getRefForType(getTypeToUse());
+		ORef ref = refList.getRefForType(getObjectType());
 		return ref;
 	}
 	
@@ -50,5 +50,5 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return EAM.text("Choose Relevant Indicator(s)");
 	}
 	
-	abstract protected int getTypeToUse();
+	abstract protected int getObjectType();
 }
