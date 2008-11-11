@@ -208,7 +208,7 @@ abstract public class DiagramPaster
 		{
 			ORef oldRef = relevancyOverride.getRef();
 			ORef newRef = fixupSingleRef(pastedObjectMap, oldRef);
-			if (isValidNewRef(newRef))
+			if (!newRef.isInvalid())
 			{
 				RelevancyOverride override = new RelevancyOverride(newRef, relevancyOverride.isOverride());
 				newOverrideSet.add(override);
@@ -216,14 +216,6 @@ abstract public class DiagramPaster
 		}
 		
 		return new CommandSetObjectData(newObject.getRef(), tag, newOverrideSet.toString());
-	}
-
-	private boolean isValidNewRef(ORef newRef)
-	{
-		if (newRef.isInvalid())
-			return false;
-		
-		return true;
 	}
 
 	private Command fixUpIdList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag, int annotationType) throws Exception
