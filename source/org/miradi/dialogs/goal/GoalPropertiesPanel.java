@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.goal;
 
+import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.GoalIcon;
@@ -29,20 +30,16 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.project.Project;
+import org.miradi.views.umbrella.ObjectPicker;
 
 public class GoalPropertiesPanel extends ObjectDataInputPanel
 {
-	public GoalPropertiesPanel(Project projectToUse) throws Exception
+	public GoalPropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
-		this(projectToUse, new GoalId(BaseId.INVALID.asInt()));
+		this(projectToUse, new GoalId(BaseId.INVALID.asInt()), actionsToUse, picker);
 	}
 	
-	public GoalPropertiesPanel(Project projectToUse, Goal goal) throws Exception
-	{
-		this(projectToUse, (GoalId)goal.getId());
-	}
-	
-	public GoalPropertiesPanel(Project projectToUse, GoalId idToShow) throws Exception
+	public GoalPropertiesPanel(Project projectToUse, GoalId idToShow, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
 		super(projectToUse, ObjectType.GOAL, idToShow);
 		
@@ -55,6 +52,9 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
+		
+		//FIXME uncomment this when the field is ready to be generic for goal
+		//addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		
 		updateFieldsFromProject();

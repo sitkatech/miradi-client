@@ -31,10 +31,9 @@ import org.miradi.objecthelpers.ORef;
 
 public class GoalListManagementPanel extends ObjectListManagementPanel
 {
-	public GoalListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions) throws Exception
+	public GoalListManagementPanel(MainWindow mainWindowToUse, GoalListTablePanel goalListPanel, ORef nodeRef, Actions actions) throws Exception
 	{
-		super(mainWindowToUse, new GoalListTablePanel(mainWindowToUse, nodeRef),
-				new GoalPropertiesPanel(mainWindowToUse.getProject()));
+		super(mainWindowToUse, goalListPanel, new GoalPropertiesPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions(), goalListPanel.getPicker()));
 	}
 
 	public String getSplitterDescription()

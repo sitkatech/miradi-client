@@ -35,6 +35,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.goal.GoalListManagementPanel;
+import org.miradi.dialogs.goal.GoalListTablePanel;
 import org.miradi.dialogs.indicator.SimpleViabilityPanel;
 import org.miradi.dialogs.objective.ObjectiveListManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListTablePanel;
@@ -195,7 +196,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if(factor.canHaveGoal())
 		{
-			goalsTab = new GoalListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
+			GoalListTablePanel goalListPanel = new GoalListTablePanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
+			goalsTab = new GoalListManagementPanel(mainWindow, goalListPanel, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
 		}
 		
