@@ -33,9 +33,9 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return getSelectionRef().isInvalid();
 	}
 	
-	protected ObjectDataInputPanel createPickListPanel(ORef annotationRef)
+	protected ObjectDataInputPanel getEditPanel()
 	{
-		return new RelevancyIndicatorPanel(getProject(), annotationRef);
+		return new RelevancyIndicatorPanel(getProject(), getSelectionRef());
 	}
 	
 	protected ORef getSelectionRef()
