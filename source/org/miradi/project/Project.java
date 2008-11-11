@@ -365,11 +365,11 @@ public class Project
 		return getViewPool().find(createdId);
 	}
 	
-	public static boolean isChainMode(Project project)
+	public boolean isChainMode()
 	{
 		try
 		{
-			String mode = project.getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
+			String mode = getCurrentViewData().getData(ViewData.TAG_CURRENT_MODE);
 			return (mode.equals(ViewData.MODE_STRATEGY_BRAINSTORM));
 		}
 		catch (Exception e)
@@ -380,9 +380,9 @@ public class Project
 		return false;
 	}
 
-	public static boolean isNonChainMode(Project project)
+	public  boolean isNonChainMode()
 	{
-		return !isChainMode(project); 
+		return !isChainMode(); 
 	}
 	
 	public SimpleThreatRatingFramework getSimpleThreatRatingFramework()
