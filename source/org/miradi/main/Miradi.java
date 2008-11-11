@@ -103,7 +103,7 @@ public class Miradi
 		{
 			public boolean accept(File dir, String name)
 			{
-				String regexp = LANGUAGE_PACK_PREFIX.replaceAll("\\.", "\\\\.") + "..\\.jar";
+				String regexp = Miradi.LANGUAGE_PACK_PREFIX.replaceAll("\\.", "\\\\.") + "..\\.jar";
 				if(name.matches(regexp))
 					return true;
 				
@@ -232,6 +232,6 @@ public class Miradi
 		String[] args;
 	}
 
-	private static final String MAIN_VERSION = "2.3";
-	private static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + MAIN_VERSION + "-";
+	public static final String MAIN_VERSION = "2.3";
+	public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + MAIN_VERSION + "-";
 }
