@@ -23,8 +23,8 @@ import java.awt.Dimension;
 
 
 import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.ModalDialogWithCloseButNoMainScrollPane;
@@ -69,7 +69,7 @@ public abstract class AbstractEditLisDoer extends ObjectsDoer
 
 	abstract protected int getObjectType();
 	
-	abstract protected AbstractEditableTreeTablePanel getEditPanel() throws Exception;
+	abstract protected DisposablePanel getEditPanel() throws Exception;
 	
 	abstract protected String getDialogTitle();
 }

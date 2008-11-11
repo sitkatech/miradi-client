@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.dialogs.treeRelevancy.AbstractEditableTreeTablePanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Desire;
@@ -33,7 +33,7 @@ abstract public class AbstractStrategyActivityRelevancyListDoer extends Abstract
 	}
 
 	@Override
-	protected AbstractEditableTreeTablePanel getEditPanel() throws Exception
+	protected DisposablePanel getEditPanel() throws Exception
 	{
 		Desire desire = (Desire) getSelectedObject();
 		return StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), desire);
