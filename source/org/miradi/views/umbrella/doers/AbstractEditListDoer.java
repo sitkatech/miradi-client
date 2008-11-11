@@ -28,7 +28,7 @@ import org.miradi.utils.ModalDialogWithCloseButNoMainScrollPane;
 import org.miradi.views.ObjectsDoer;
 
 //FIXME what is the difference between this class and AbstractEditListDoer?  notice the missing t in list 
-public abstract class AbstractEditLisDoer extends ObjectsDoer
+public abstract class AbstractEditListDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{

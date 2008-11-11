@@ -27,7 +27,7 @@ import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Desire;
 
-abstract public class AbstractStrategyActivityRelevancyListDoer extends AbstractEditLisDoer
+abstract public class AbstractStrategyActivityRelevancyListDoer extends AbstractEditListDoer
 {
 	@Override
 	protected void setDialogPreferredSize(ModalDialogWithClose dialog)
