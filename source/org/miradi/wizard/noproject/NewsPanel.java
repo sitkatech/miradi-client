@@ -19,10 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard.noproject;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.SwingUtilities;
@@ -31,6 +28,7 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.RemoteHtmlRetriever;
 import org.miradi.utils.Translation;
 import org.miradi.wizard.WizardRightSideHtmlViewer;
 
@@ -40,31 +38,32 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 	{
 		super(mainWindow, hyperLinkHandler);
 		setBackground(AppPreferences.getSideBarBackgroundColor());
-		new NewsRetriever().start();
+		try
+		{
+			new NewsRetriever().start();
+		}
+		catch(MalformedURLException e)
+		{
+			EAM.logException(e);
+		}
 	}
-
-	class NewsRetriever extends Thread
+	
+	class NewsRetriever extends RemoteHtmlRetriever
 	{
+		public NewsRetriever() throws MalformedURLException
+		{
+			super(new URL("https://miradi.org/rest/latestnews"));
+		}
 
 		public void run()
 		{
-			newsHtml = loadRemoteHtml();
+			super.run();
+			newsHtml = getResults();
+			if(newsHtml == null)
+				newsHtml = getNoNewsText();
 			SwingUtilities.invokeLater(new NewsUpdater());
 		}
 		
-		private String loadRemoteHtml()
-		{
-			try
-			{
-				URL url = new URL("https://miradi.org/rest/latestnews");
-				return readContext((InputStream)url.getContent());
-			}
-			catch(Exception e)
-			{
-				return getNoNewsText();
-			}
-		}
-
 		private String getNoNewsText() 
 		{
 			try
@@ -79,18 +78,6 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 			}
 		}
 		
-		private String readContext(InputStream inputStream) throws IOException
-		{
-			InputStreamReader isr = new InputStreamReader(inputStream);
-			String returnLine = "";
-			String thisLine;
-			BufferedReader br = new BufferedReader(isr);
-			while((thisLine = br.readLine()) != null)
-			{
-				returnLine = returnLine + thisLine;
-			}
-			return returnLine;
-		}
 	}
 	
 	private class NewsUpdater implements Runnable
