@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.goal;
 
+import org.miradi.actions.ActionEditGoalIndicatorRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -53,8 +54,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
 		
-		//FIXME uncomment this when the field is ready to be generic for goal
-		//addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		
 		updateFieldsFromProject();
