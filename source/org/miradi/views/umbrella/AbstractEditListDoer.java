@@ -20,8 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella;
 
 import org.martus.swing.Utilities;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.views.ObjectsDoer;
 
@@ -52,5 +52,5 @@ abstract public class AbstractEditListDoer extends ObjectsDoer
 	
 	abstract protected String getDialogTitle();
 	
-	abstract protected ObjectDataInputPanel getEditPanel();
+	abstract protected DisposablePanel getEditPanel();
 }

@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.diagram.RelevancyIndicatorPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -33,7 +33,7 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return getSelectionRef().isInvalid();
 	}
 	
-	protected ObjectDataInputPanel getEditPanel()
+	protected DisposablePanel getEditPanel()
 	{
 		return new RelevancyIndicatorPanel(getProject(), getSelectionRef());
 	}
