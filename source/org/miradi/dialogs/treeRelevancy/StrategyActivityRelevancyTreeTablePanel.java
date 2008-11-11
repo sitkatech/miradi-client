@@ -30,7 +30,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 {
 	public static StrategyActivityRelevancyTreeTablePanel createStrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, Objective objective) throws Exception
 	{
-		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject(), objective);
+		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindowToUse.getProject());
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
 		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindowToUse, treeTableModel);
 		
