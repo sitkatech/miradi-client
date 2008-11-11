@@ -23,7 +23,7 @@ import org.miradi.objects.Objective;
 
 public class EditObjectiveIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
-	protected int getTypeToUse()
+	protected int getObjectType()
 	{
 		return Objective.getObjectType();
 	}
