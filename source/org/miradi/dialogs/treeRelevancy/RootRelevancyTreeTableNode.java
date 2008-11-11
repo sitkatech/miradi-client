@@ -26,13 +26,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 
 public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 {
-	public RootRelevancyTreeTableNode(Project project, Objective objective) throws Exception
+	public RootRelevancyTreeTableNode(Project project) throws Exception
 	{
 		super(project);
 		
