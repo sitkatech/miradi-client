@@ -24,16 +24,16 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.Objective;
+import org.miradi.objects.Desire;
 import org.miradi.project.Project;
 
 public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEditableModel
 {
-	public StrategyActivityRelevancyTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, Objective objectiveAsParentToUse)
+	public StrategyActivityRelevancyTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, Desire desireAsParentToUse)
 	{
 		super(projectToUse, providerToUse);
 		
-		objectiveAsParent = objectiveAsParentToUse;
+		desireAsParent = desireAsParentToUse;
 	}
 
 	public String getColumnName(int column)
@@ -49,8 +49,8 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 		try
 		{
 			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value, row);
-			RelevancyOverrideSet relevancySet = objectiveAsParent.getCalculatedRelevantStrategyActivityOverrides(selectedRefs);	
-			setValueUsingCommand(objectiveAsParent.getRef(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
+			RelevancyOverrideSet relevancySet = desireAsParent.getCalculatedRelevantStrategyActivityOverrides(selectedRefs);	
+			setValueUsingCommand(desireAsParent.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
 		}
 		catch (Exception e)
 		{
@@ -60,7 +60,7 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 
 	private ORefList getRelevantStrategyActivityRefs() throws Exception
 	{
-		return new ORefList(objectiveAsParent.getRelevantStrategyAndActivityRefs());
+		return new ORefList(desireAsParent.getRelevantStrategyAndActivityRefs());
 	}
 	
 	protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception
@@ -68,5 +68,5 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 		return getRelevantStrategyActivityRefs();
 	}
 	
-	private Objective objectiveAsParent;
+	private Desire desireAsParent;
 }
