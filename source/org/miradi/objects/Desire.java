@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Desire extends BaseObject
@@ -274,6 +275,16 @@ abstract public class Desire extends BaseObject
 				relevantRefList.remove(override.getRef());
 		}
 		return new ORefList(relevantRefList);
+	}
+	
+	public static Desire findDesire(ObjectManager objectManager, ORef desireRef)
+	{
+		return (Desire) objectManager.findObject(desireRef);
+	}
+	
+	public static Desire findDesire(Project project, ORef desireRef)
+	{
+		return findDesire(project.getObjectManager(), desireRef);
 	}
 
 	void clear()
