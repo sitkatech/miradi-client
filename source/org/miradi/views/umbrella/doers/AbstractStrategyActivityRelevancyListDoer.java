@@ -19,13 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.awt.Dimension;
+
 import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Desire;
 
 abstract public class AbstractStrategyActivityRelevancyListDoer extends AbstractEditLisDoer
 {
+	@Override
+	protected void setDialogPreferredSize(ModalDialogWithClose dialog)
+	{
+		dialog.setPreferredSize(new Dimension(600, 600));
+	}
+	
 	@Override
 	protected String getDialogTitle()
 	{
