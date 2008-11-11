@@ -483,7 +483,7 @@ public class Task extends Factor
 
 	public static boolean isActivity(BaseObject baseObject)
 	{
-		if (is(baseObject))
+		if (Task.is(baseObject))
 			return ((Task) baseObject).isActivity();
 			
 		return false;
