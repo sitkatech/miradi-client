@@ -19,9 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.diagram.RelevancyIndicatorPanel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Objective;
 
 
 abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
@@ -31,6 +33,11 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return getSelectionRef().isInvalid();
 	}
 	
+	protected ObjectDataInputPanel createPickListPanel(ORef annotationRef)
+	{
+		return new RelevancyIndicatorPanel(getProject(), annotationRef);
+	}
+	
 	protected ORef getSelectionRef()
 	{
 		ORefList refList = getSelectedHierarchies()[0];
@@ -38,8 +45,10 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return ref;
 	}
 	
-	protected int getTypeToUse()
+	protected String getDialogTitle()
 	{
-		return Objective.getObjectType();
+		return EAM.text("Choose Relevant Indicator(s)");
 	}
+	
+	abstract protected int getTypeToUse();
 }
