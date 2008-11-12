@@ -184,7 +184,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 
 	public BufferedImage getImage() throws Exception
 	{
-		return BufferedImageFactory.createImageFromDiagram(mainWindow, getDiagramObject());
+		return BufferedImageFactory.createImageFromDiagramWithCurrentSettings(mainWindow, getDiagramObject());
 	}
 
 	public boolean isImageAvailable()

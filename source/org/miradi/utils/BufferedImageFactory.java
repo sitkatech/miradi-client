@@ -94,7 +94,17 @@ public  class BufferedImageFactory
 	public static BufferedImage createImageFromDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		DiagramComponent diagram = BufferedImageFactory.createDiagramComponent(mainWindow, diagramObject);
-
+		return createImageFromDiagram(diagram);
+	}
+	
+	public static BufferedImage createImageFromDiagramWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	{
+		DiagramComponent diagram = BufferedImageFactory.createDiagramComponentWithCurrentSettings(mainWindow, diagramObject);
+		return createImageFromDiagram(diagram);
+	}
+	
+	private static BufferedImage createImageFromDiagram(DiagramComponent diagram)
+	{
 		Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
 		diagram.toScreen(bounds);
 		diagram.setToDefaultBackgroundColor();
@@ -134,9 +144,8 @@ public  class BufferedImageFactory
 		DiagramComponent diagram =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
 		String currentMode = mainWindow.getProject().getDiagramViewData().getCurrentMode();
 		DiagramView.hideFactorsForMode(diagram, currentMode);
-		double currentZoomSetting = mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM);
-		diagram.setScale(currentZoomSetting);
 		diagram.getDiagramModel().updateVisibilityOfFactorsAndLinks();
+		diagram.setScale(1.0);
 		
 		// TODO: This is here because setting a factor/link to be visible also has
 		// the side effect of selecting it, so the last item added is selected but 
@@ -144,6 +153,15 @@ public  class BufferedImageFactory
 		// Cleaner fixes ran into strange problems where Windows and Linux systems
 		// behaved differently. SEE ALSO DiagramSplitPane.showCard()
 		diagram.clearSelection();
+		
+		return diagram;
+	}
+	
+	public static DiagramComponent createDiagramComponentWithCurrentSettings(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	{
+		DiagramComponent diagram = createDiagramComponent(mainWindow, diagramObject);
+		double currentZoomSetting = mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM);
+		diagram.setScale(currentZoomSetting);
 		
 		return diagram;
 	}
