@@ -33,6 +33,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.FactorMoveHandler;
+import org.miradi.project.Project;
 import org.miradi.utils.PointList;
 
 public class NudgeDoer extends LocationDoer
@@ -82,7 +83,7 @@ public class NudgeDoer extends LocationDoer
 					break;
 			}
 			EAM.logVerbose("NudgeNodes ("+deltaX + ","+deltaY+")");
-			moveSelectedItems(deltaX, deltaY);
+			moveSelectedItems(getProject(), getDiagramView().getDiagramPanel(), deltaX, deltaY);
 		}
 		catch (Exception e)
 		{
@@ -90,7 +91,7 @@ public class NudgeDoer extends LocationDoer
 		}
 	}
 
-	private boolean isFutureCellLocationInsideDiagramBounds(Point currentLocation, int deltaX, int deltaY)
+	private static boolean isFutureCellLocationInsideDiagramBounds(Point currentLocation, int deltaX, int deltaY)
 	{
 		int futureX = currentLocation.x + deltaX;
 		int futureY = currentLocation.y + deltaY;
@@ -101,9 +102,8 @@ public class NudgeDoer extends LocationDoer
 		return true;
 	}
 	
-	private void moveSelectedItems(int deltaX, int deltaY) throws Exception
+	public static void moveSelectedItems(Project project, DiagramPanel diagramPanel, int deltaX, int deltaY) throws Exception
 	{
-		DiagramPanel diagramPanel = getDiagramView().getDiagramPanel();
 		FactorCell[] factorCells = diagramPanel.getOnlySelectedFactorCells();
 		HashSet<FactorCell> selectedFactorAndChildren = diagramPanel.getOnlySelectedFactorAndGroupChildCells();
 		
@@ -126,13 +126,13 @@ public class NudgeDoer extends LocationDoer
 		if (wouldMoveBendPointsOutOfBounds(allLinkCells.toArray(new LinkCell[0]), deltaX, deltaY))
 			return;
 		
-		getProject().executeCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
 			diagramPanel.moveFactors(deltaX, deltaY, diagramFactorRefs);
-			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagramView().getDiagramModel());
+			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(project, diagramPanel.getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(diagramFactorRefs);
-			moveBendPoints(allLinkCells.toArray(new LinkCell[0]), deltaY, deltaX);
+			moveBendPoints(project, allLinkCells.toArray(new LinkCell[0]), deltaY, deltaX);
 			factorMoveHandler.ensureLevelSegementToFirstBendPoint(diagramFactorRefs);
 		}
 		catch (Exception e)
@@ -142,17 +142,17 @@ public class NudgeDoer extends LocationDoer
 		}
 		finally
 		{
-			getProject().executeCommand(new CommandEndTransaction());
+			project.executeCommand(new CommandEndTransaction());
 		}
 	}
 
-	private void moveBendPoints(LinkCell[] links, int deltaY, int deltaX) throws Exception
+	private static void moveBendPoints(Project project, LinkCell[] links, int deltaY, int deltaX) throws Exception
 	{
-		LinkBendPointsMoveHandler bendPointsMoveHandler = new LinkBendPointsMoveHandler(getProject());
+		LinkBendPointsMoveHandler bendPointsMoveHandler = new LinkBendPointsMoveHandler(project);
 		bendPointsMoveHandler.moveLinkBendPoints(links, deltaX, deltaY);
 	}
 
-	private boolean wouldMoveBendPointsOutOfBounds(LinkCell[] links, int deltaX, int deltaY)
+	private static boolean wouldMoveBendPointsOutOfBounds(LinkCell[] links, int deltaX, int deltaY)
 	{
 		for (int i = 0; i < links.length; ++i)
 		{
@@ -163,7 +163,7 @@ public class NudgeDoer extends LocationDoer
 		return false;
 	}
 
-	private boolean wouldMoveBendPointsOutOfBounds(LinkCell linkCell, int deltaX, int deltaY)
+	private static boolean wouldMoveBendPointsOutOfBounds(LinkCell linkCell, int deltaX, int deltaY)
 	{
 		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
 		int[] selectedIndexes = linkCell.getSelectedBendPointIndexes();
