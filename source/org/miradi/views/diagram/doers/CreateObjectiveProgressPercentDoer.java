@@ -19,33 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ProgressPercent;
-import org.miradi.views.diagram.CreateAnnotationDoer;
+import org.miradi.views.umbrella.doers.AbstractCreateProgressPercent;
 
-public class CreateObjectiveProgressPercentDoer extends CreateAnnotationDoer
+public class CreateObjectiveProgressPercentDoer extends AbstractCreateProgressPercent
 {
-	public BaseObject getSelectedParent()
+	protected int getParentType()
 	{
-		if (getPicker() == null)
-			return null;
-		
-		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
-		ORef parentRef = selectionRefs.getRefForType(Objective.getObjectType());
-		
-		return Objective.find(getProject(), parentRef);
-	}
-	
-	public String getAnnotationListTag()
-	{
-		return Objective.TAG_PROGRESS_PERCENT_REFS;
-	}
-
-	public int getAnnotationType()
-	{
-		return ProgressPercent.getObjectType();
+		return Objective.getObjectType();
 	}
 }

@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.actions.ActionCreateObjectiveProgressPercent;
-import org.miradi.actions.ActionDeleteObjectiveProgressPercent;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.progressPercent.ProgressPercentManagementPanel;
 import org.miradi.main.EAM;
@@ -39,11 +37,8 @@ abstract public class AbstractEditProgressDoer extends AbstractPopUpEditDoer
 	{
 		ORef parentRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
 		
-		return new ProgressPercentManagementPanel(getMainWindow(), parentRef, Desire.TAG_PROGRESS_PERCENT_REFS, getMainWindow().getActions(), buttonActionClasses);
+		return new ProgressPercentManagementPanel(getMainWindow(), parentRef, Desire.TAG_PROGRESS_PERCENT_REFS, getMainWindow().getActions(), getCreateDeleteActions());
 	}
-	
-	static Class[] buttonActionClasses = new Class[] {
-		ActionCreateObjectiveProgressPercent.class,
-		ActionDeleteObjectiveProgressPercent.class,
-	};
+
+	abstract protected Class[] getCreateDeleteActions();
 }

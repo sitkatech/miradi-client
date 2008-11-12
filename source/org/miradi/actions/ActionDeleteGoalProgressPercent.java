@@ -17,24 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
+package org.miradi.actions;
 
-import org.miradi.actions.ActionCreateGoalProgressPercent;
-import org.miradi.actions.ActionDeleteGoalProgressPercent;
-import org.miradi.objects.Goal;
+import org.miradi.icons.DeleteIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class EditGoalProgressPercentDoer extends AbstractEditProgressDoer
+public class ActionDeleteGoalProgressPercent extends ObjectsAction
 {
-	public EditGoalProgressPercentDoer()
+	public ActionDeleteGoalProgressPercent(MainWindow mainWindowToUse)
 	{
-		super(Goal.getObjectType());
+		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
-	
-	protected Class[] getCreateDeleteActions()
+
+	private static String getLabel()
 	{
-		return new Class[] {
-				ActionCreateGoalProgressPercent.class,
-				ActionDeleteGoalProgressPercent.class,
-			};
+		return EAM.text("Action|Manage|Delete Progress Percent");
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Delete Progress Percent");
 	}
 }
