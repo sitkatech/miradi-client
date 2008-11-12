@@ -22,6 +22,7 @@ package org.miradi.views.diagram;
 import javax.swing.JComponent;
 
 import org.miradi.actions.ActionCopy;
+import org.miradi.actions.ActionCreateDiagramMargin;
 import org.miradi.actions.ActionCreateOrShowResultsChain;
 import org.miradi.actions.ActionCut;
 import org.miradi.actions.ActionDelete;
@@ -61,6 +62,7 @@ public class DiagramToolBar extends EAMToolBar
 				new ToolBarButton(actions, ActionZoomIn.class),
 				new ToolBarButton(actions, ActionZoomOut.class),
 				new ToolBarButton(actions, ActionZoomToFit.class),
+				new ToolBarButton(actions, ActionCreateDiagramMargin.class),
 			},
 			{
 				getModeSwitchButton(actions, diagramView),
