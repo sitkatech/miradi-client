@@ -19,22 +19,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.actions.ActionCreateGoalProgressPercent;
-import org.miradi.actions.ActionDeleteGoalProgressPercent;
-import org.miradi.objects.Goal;
+import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Desire;
+import org.miradi.objects.ProgressPercent;
+import org.miradi.views.diagram.DeleteAnnotationDoer;
 
-public class EditGoalProgressPercentDoer extends AbstractEditProgressDoer
+abstract public class AbstractDeleteProgressPercentDoer extends DeleteAnnotationDoer
 {
-	public EditGoalProgressPercentDoer()
+	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
-		super(Goal.getObjectType());
+		return getSingleSelected(getParentType());  
+	}
+
+	public String getAnnotationIdListTag()
+	{
+		return Desire.TAG_PROGRESS_PERCENT_REFS;
+	}
+
+	public int getAnnotationType()
+	{
+		return ProgressPercent.getObjectType();
+	}
+
+	public String[] getDialogText()
+	{
+		return new String[] { EAM.text("Are you sure you want to delete this Progress Percent?"),};
 	}
 	
-	protected Class[] getCreateDeleteActions()
-	{
-		return new Class[] {
-				ActionCreateGoalProgressPercent.class,
-				ActionDeleteGoalProgressPercent.class,
-			};
-	}
+	abstract protected int getParentType();
 }

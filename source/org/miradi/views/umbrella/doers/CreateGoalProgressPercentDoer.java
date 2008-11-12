@@ -19,22 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.actions.ActionCreateGoalProgressPercent;
-import org.miradi.actions.ActionDeleteGoalProgressPercent;
 import org.miradi.objects.Goal;
 
-public class EditGoalProgressPercentDoer extends AbstractEditProgressDoer
+
+public class CreateGoalProgressPercentDoer extends AbstractCreateProgressPercent
 {
-	public EditGoalProgressPercentDoer()
+	@Override
+	protected int getParentType()
 	{
-		super(Goal.getObjectType());
-	}
-	
-	protected Class[] getCreateDeleteActions()
-	{
-		return new Class[] {
-				ActionCreateGoalProgressPercent.class,
-				ActionDeleteGoalProgressPercent.class,
-			};
+		return Goal.getObjectType();
 	}
 }

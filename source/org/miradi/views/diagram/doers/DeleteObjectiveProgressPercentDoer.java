@@ -19,31 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.main.EAM;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ProgressPercent;
-import org.miradi.views.diagram.DeleteAnnotationDoer;
+import org.miradi.views.umbrella.doers.AbstractDeleteProgressPercentDoer;
 
-public class DeleteObjectiveProgressPercentDoer extends DeleteAnnotationDoer
+public class DeleteObjectiveProgressPercentDoer extends AbstractDeleteProgressPercentDoer
 {
-	protected BaseObject getParent(BaseObject annotationToDelete)
+	protected int getParentType()
 	{
-		return getSingleSelected(Objective.getObjectType());  
-	}
-
-	public String getAnnotationIdListTag()
-	{
-		return Objective.TAG_PROGRESS_PERCENT_REFS;
-	}
-
-	public int getAnnotationType()
-	{
-		return ProgressPercent.getObjectType();
-	}
-
-	public String[] getDialogText()
-	{
-		return new String[] { EAM.text("Are you sure you want to delete this Progress Percent?"),};
+		return Objective.getObjectType();
 	}
 }

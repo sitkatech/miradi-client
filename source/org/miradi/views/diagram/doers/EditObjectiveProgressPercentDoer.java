@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import org.miradi.actions.ActionCreateObjectiveProgressPercent;
+import org.miradi.actions.ActionDeleteObjectiveProgressPercent;
 import org.miradi.objects.Objective;
 import org.miradi.views.umbrella.doers.AbstractEditProgressDoer;
 
@@ -27,5 +29,13 @@ public class EditObjectiveProgressPercentDoer extends AbstractEditProgressDoer
 	public EditObjectiveProgressPercentDoer()
 	{
 		super(Objective.getObjectType());
-	}	
+	}
+	
+	protected Class[] getCreateDeleteActions()
+	{
+		return new Class[] {
+				ActionCreateObjectiveProgressPercent.class,
+				ActionDeleteObjectiveProgressPercent.class,
+			};
+	}
 }

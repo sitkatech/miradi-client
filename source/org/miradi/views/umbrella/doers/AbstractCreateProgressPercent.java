@@ -19,22 +19,35 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.actions.ActionCreateGoalProgressPercent;
-import org.miradi.actions.ActionDeleteGoalProgressPercent;
-import org.miradi.objects.Goal;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Desire;
+import org.miradi.objects.ProgressPercent;
+import org.miradi.views.diagram.CreateAnnotationDoer;
 
-public class EditGoalProgressPercentDoer extends AbstractEditProgressDoer
+abstract public class AbstractCreateProgressPercent extends CreateAnnotationDoer
 {
-	public EditGoalProgressPercentDoer()
+	public BaseObject getSelectedParent()
 	{
-		super(Goal.getObjectType());
+		if (getPicker() == null)
+			return null;
+		
+		ORefList selectionRefs = getPicker().getSelectedHierarchies()[0];
+		ORef parentRef = selectionRefs.getRefForType(getParentType());
+		
+		return Desire.findDesire(getProject(), parentRef);
 	}
 	
-	protected Class[] getCreateDeleteActions()
+	public String getAnnotationListTag()
 	{
-		return new Class[] {
-				ActionCreateGoalProgressPercent.class,
-				ActionDeleteGoalProgressPercent.class,
-			};
+		return Desire.TAG_PROGRESS_PERCENT_REFS;
 	}
+
+	public int getAnnotationType()
+	{
+		return ProgressPercent.getObjectType();
+	}
+	
+	abstract protected int getParentType();
 }
