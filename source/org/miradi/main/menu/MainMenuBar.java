@@ -39,6 +39,7 @@ import org.miradi.actions.ActionCopy;
 import org.miradi.actions.ActionCopyProjectTo;
 import org.miradi.actions.ActionCreateBendPoint;
 import org.miradi.actions.ActionCreateConceptualModel;
+import org.miradi.actions.ActionCreateDiagramMargin;
 import org.miradi.actions.ActionCreateIncomingJunction;
 import org.miradi.actions.ActionCreateOutgoingJunction;
 import org.miradi.actions.ActionCreateResultsChain;
@@ -315,6 +316,8 @@ public class MainMenuBar extends JMenuBar
 		setControlKeyAccelerator(zoomOut, '-');
 		JMenuItem zoomToFit = addMenuItem(actions, menu, ActionZoomToFit.class, KeyEvent.VK_Z);
 		setControlKeyAccelerator(zoomToFit, '0');
+		JMenuItem createMargin = addMenuItem(actions, menu, ActionCreateDiagramMargin.class, KeyEvent.VK_M);
+		setControlKeyAccelerator(createMargin, 'M');		
 
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
