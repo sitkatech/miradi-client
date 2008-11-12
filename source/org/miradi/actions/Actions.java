@@ -419,7 +419,7 @@ public class Actions
 		registerAction(new ActionEditActivityProgressReports(mainWindow));
 		registerAction(new ActionCreateActivityProgressReport(mainWindow));
 		registerAction(new ActionDeleteActivityProgressReport(mainWindow));
-		registerAction(new ActionEditProgressPercent(mainWindow));
+		registerAction(new ActionEditObjectiveProgressPercent(mainWindow));
 		registerAction(new ActionEditGoalProgressPercent(mainWindow));
 		registerAction(new ActionCreateObjectiveProgressPercent(mainWindow));
 		registerAction(new ActionDeleteObjectiveProgressPercent(mainWindow));

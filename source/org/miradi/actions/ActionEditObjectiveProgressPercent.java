@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionEditProgressPercent extends ObjectsAction
+public class ActionEditObjectiveProgressPercent extends ObjectsAction
 {
-	public ActionEditProgressPercent(MainWindow mainWindow)
+	public ActionEditObjectiveProgressPercent(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}
