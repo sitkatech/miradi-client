@@ -17,15 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.diagram.doers;
+package org.miradi.actions;
 
-import org.miradi.objects.Objective;
-import org.miradi.views.umbrella.doers.AbstractEditProgressDoer;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class EditProgressPercentDoer extends AbstractEditProgressDoer
+public class ActionEditGoalProgressPercent extends ObjectsAction
 {
-	public EditProgressPercentDoer()
+	public ActionEditGoalProgressPercent(MainWindow mainWindow)
 	{
-		super(Objective.getObjectType());
-	}	
+		super(mainWindow, getLabel());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Edit Progress Percents...");
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Edit the list of progress percents for this goal.");
+	}
 }
