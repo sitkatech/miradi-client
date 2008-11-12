@@ -42,7 +42,7 @@ abstract public class AbstractStrategyActivityRelevancyListDoer extends Abstract
 	}
 
 	@Override
-	protected DisposablePanel getEditPanel() throws Exception
+	protected DisposablePanel createEditPanel() throws Exception
 	{
 		Desire desire = (Desire) getSelectedObject();
 		return StrategyActivityRelevancyTreeTablePanel.createStrategyActivityRelevancyTreeTablePanel(getMainWindow(), desire);

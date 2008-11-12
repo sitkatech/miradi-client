@@ -34,7 +34,7 @@ abstract public class AbstractRelevancyEditListDoer extends AbstractEditListDoer
 		return getSelectionRef().isInvalid();
 	}
 	
-	protected DisposablePanel getEditPanel()
+	protected DisposablePanel createEditPanel()
 	{
 		return new RelevancyIndicatorPanel(getProject(), getSelectionRef());
 	}
