@@ -37,6 +37,6 @@ public class ActionCreateDiagramMargin extends ObjectsAction
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Move factors right and down to create extra margin");
+		return EAM.text("TT|Move factors right and down as needed to create margins");
 	}
 }
