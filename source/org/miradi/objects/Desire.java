@@ -24,6 +24,7 @@ import java.util.Arrays;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
@@ -51,6 +52,22 @@ abstract public class Desire extends BaseObject
 		super(objectManager, idToUse, json);
 	}
 
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
+			return ProgressPercent.getObjectType();
+				
+		return super.getAnnotationType(tag);
+	}
+	
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_PROGRESS_PERCENT_REFS))
+			return true;
+				
+		return super.isRefList(tag);
+	}
+	
 	abstract public int getType();
 
 	public String getShortLabel()
@@ -89,6 +106,12 @@ abstract public class Desire extends BaseObject
 	
 		if (fieldTag.equals(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS))
 			return getRelevantStrategyActivityRefsAsString();
+		
+		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
+			return getLatestProgressPercentComplete();
+		
+		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS))
+			return getLatestProgressPercentDetails();
 		
 		return super.getPseudoData(fieldTag);
 	}
@@ -277,6 +300,29 @@ abstract public class Desire extends BaseObject
 		return new ORefList(relevantRefList);
 	}
 	
+	private String getLatestProgressPercentDetails()
+	{
+		ProgressPercent latestProgressPercent = getLatestProgressPercent();
+		if(latestProgressPercent == null)
+			return "";
+		
+		return latestProgressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+	}
+
+	private String getLatestProgressPercentComplete()
+	{
+		ProgressPercent latestProgressPercent = getLatestProgressPercent();
+		if(latestProgressPercent == null)
+			return "";
+		
+		return latestProgressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE);
+	}
+
+	private ProgressPercent getLatestProgressPercent()
+	{
+		return (ProgressPercent) getLatestObject(getObjectManager(), progressPercentRefs.getORefList(), ProgressPercent.TAG_DATE);
+	}
+	
 	public static Desire findDesire(ObjectManager objectManager, ORef desireRef)
 	{
 		return (Desire) objectManager.findObject(desireRef);
@@ -296,6 +342,7 @@ abstract public class Desire extends BaseObject
 		comments = new StringData(TAG_COMMENTS);
 		relevantIndicatorOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_INDICATOR_SET);
 		relevantStrategyActivityOverrides = new RelevancyOverrideSetData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+		progressPercentRefs = new ORefListData(TAG_PROGRESS_PERCENT_REFS);
 		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
@@ -303,13 +350,16 @@ abstract public class Desire extends BaseObject
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
 		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS);
-	
+		latestProgressPercentComplete = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
+		latestProgressPercentDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
+		
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_FULL_TEXT, fullText);
 		addField(TAG_COMMENTS, comments);
 		addField(TAG_RELEVANT_INDICATOR_SET, relevantIndicatorOverrides);
 		addField(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantStrategyActivityOverrides);
+		addField(TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
 	
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
@@ -317,6 +367,8 @@ abstract public class Desire extends BaseObject
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
 		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
 		addField(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
+		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE, latestProgressPercentComplete);
+		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS, latestProgressPercentDetails);
 	}
 		
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
@@ -332,6 +384,9 @@ abstract public class Desire extends BaseObject
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
 	public static final String PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
+	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE = "PseudoLatestProgressPercentComplete";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";
 
 	private StringData shortLabel;
 	private StringData fullText;
@@ -344,4 +399,7 @@ abstract public class Desire extends BaseObject
 	private RelevancyOverrideSetData relevantIndicatorOverrides;
 	private PseudoORefListData relevantIndicatorRefs;
 	private PseudoORefListData relevantStrategyRefs;
+	private ORefListData progressPercentRefs;
+	private PseudoStringData latestProgressPercentComplete;
+	private PseudoStringData latestProgressPercentDetails;
 }
