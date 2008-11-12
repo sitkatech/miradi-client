@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.goal;
 
 import org.miradi.actions.ActionEditGoalIndicatorRelevancyList;
+import org.miradi.actions.ActionEditGoalProgressPercent;
 import org.miradi.actions.ActionEditGoalStrategyActivityRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.GoalIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.GoalId;
@@ -31,7 +33,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
+import org.miradi.objects.ProgressPercent;
 import org.miradi.project.Project;
+import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class GoalPropertiesPanel extends ObjectDataInputPanel
@@ -57,6 +61,13 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), picker));
+		
+		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
+		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
+		ObjectDataInputField readOnlyProgressPercentsList = createReadOnlyObjectListTableField(Goal.getObjectType(), Goal.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), columnTags);
+		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalProgressPercent.class), getPicker());
+		addFieldWithEditButton(progressPercentsLabel, readOnlyProgressPercentsList, editProgressPercentButton);
+		
 		addField(createMultilineField(Goal.TAG_COMMENTS));
 		
 		updateFieldsFromProject();

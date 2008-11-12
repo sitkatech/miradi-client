@@ -17,15 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.diagram.doers;
+package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Objective;
-import org.miradi.views.umbrella.doers.AbstractEditProgressDoer;
+import org.miradi.objects.Goal;
 
-public class EditProgressPercentDoer extends AbstractEditProgressDoer
+public class EditGoalProgressPercentDoer extends AbstractEditProgressDoer
 {
-	public EditProgressPercentDoer()
+	public EditGoalProgressPercentDoer()
 	{
-		super(Objective.getObjectType());
-	}	
+		super(Goal.getObjectType());
+	}
 }
