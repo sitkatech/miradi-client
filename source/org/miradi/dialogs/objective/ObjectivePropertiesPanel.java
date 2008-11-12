@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.objective;
 
 import org.miradi.actions.ActionEditObjectiveIndicatorRelevancyList;
-import org.miradi.actions.ActionEditProgressPercent;
+import org.miradi.actions.ActionEditObjectiveProgressPercent;
 import org.miradi.actions.ActionEditObjectiveStrategyActivityRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -63,7 +63,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
 		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
 		ObjectDataInputField readOnlyProgressPercentsList = createReadOnlyObjectListTableField(Objective.getObjectType(), Objective.TAG_PROGRESS_PERCENT_REFS, ProgressPercent.getObjectType(), columnTags);
-		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditProgressPercent.class), getPicker());
+		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveProgressPercent.class), getPicker());
 		addFieldWithEditButton(progressPercentsLabel, readOnlyProgressPercentsList, editProgressPercentButton);
 		
 		addField(createMultilineField(Goal.TAG_COMMENTS));

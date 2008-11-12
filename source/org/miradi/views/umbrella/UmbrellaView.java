@@ -59,7 +59,7 @@ import org.miradi.actions.ActionEditIndicatorProgressReports;
 import org.miradi.actions.ActionEditMethods;
 import org.miradi.actions.ActionEditObjectiveIndicatorRelevancyList;
 import org.miradi.actions.ActionEditObjectiveStrategyActivityRelevancyList;
-import org.miradi.actions.ActionEditProgressPercent;
+import org.miradi.actions.ActionEditObjectiveProgressPercent;
 import org.miradi.actions.ActionEditStrategyProgressReports;
 import org.miradi.actions.ActionExit;
 import org.miradi.actions.ActionExpandAllNodes;
@@ -392,7 +392,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionCreateActivityProgressReport.class, new CreateActivityProgressReportDoer());
 		addDoerToMap(ActionDeleteActivityProgressReport.class, new DeleteActivityProgressReportDoer());
 
-		addDoerToMap(ActionEditProgressPercent.class, new EditProgressPercentDoer());
+		addDoerToMap(ActionEditObjectiveProgressPercent.class, new EditProgressPercentDoer());
 		addDoerToMap(ActionEditGoalProgressPercent.class, new EditGoalProgressPercentDoer());
 		addDoerToMap(ActionCreateObjectiveProgressPercent.class, new CreateObjectiveProgressPercentDoer());
 		addDoerToMap(ActionDeleteObjectiveProgressPercent.class, new DeleteObjectiveProgressPercentDoer());
