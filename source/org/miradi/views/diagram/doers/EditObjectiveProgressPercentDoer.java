@@ -22,9 +22,9 @@ package org.miradi.views.diagram.doers;
 import org.miradi.objects.Objective;
 import org.miradi.views.umbrella.doers.AbstractEditProgressDoer;
 
-public class EditProgressPercentDoer extends AbstractEditProgressDoer
+public class EditObjectiveProgressPercentDoer extends AbstractEditProgressDoer
 {
-	public EditProgressPercentDoer()
+	public EditObjectiveProgressPercentDoer()
 	{
 		super(Objective.getObjectType());
 	}	
