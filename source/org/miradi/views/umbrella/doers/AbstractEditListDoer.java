@@ -42,7 +42,7 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		
 		try
 		{
-			ModalDialogWithClose dialog = new ModalDialogWithCloseButNoMainScrollPane(getMainWindow(), getEditPanel(), getDialogTitle());
+			ModalDialogWithClose dialog = new ModalDialogWithCloseButNoMainScrollPane(getMainWindow(), createEditPanel(), getDialogTitle());
 			setDialogPreferredSize(dialog);
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
@@ -69,7 +69,7 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 
 	abstract protected int getObjectType();
 	
-	abstract protected DisposablePanel getEditPanel() throws Exception;
+	abstract protected DisposablePanel createEditPanel() throws Exception;
 	
 	abstract protected String getDialogTitle();
 }
