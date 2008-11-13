@@ -71,6 +71,9 @@ public class CreateMarginDoer extends ObjectsDoer
 	private boolean allowMargin()
 	{
 		Rectangle diagramFactorBounds = getDiagramFactorBounds();
+		if (diagramFactorBounds == null)
+			return false;
+		
 		if (diagramFactorBounds.getX() < MINIMUM_LEFT_MARGIN)
 			return true;
 		
