@@ -125,8 +125,8 @@ public class ReportXmlExporter extends XmlExporter
 		{
 			fieldTagsToIncludeInXml.remove(Objective.TAG_RELEVANT_INDICATOR_SET);
 			fieldTagsToIncludeInXml.remove(Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-			fieldTagsToIncludeInXml.add(Objective.PSEUDO_RELEVANT_INDICATOR_REFS);
-			fieldTagsToIncludeInXml.add(Objective.PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS);
+			fieldTagsToIncludeInXml.add(Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
+			fieldTagsToIncludeInXml.add(Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		}
 		
 		return fieldTagsToIncludeInXml;

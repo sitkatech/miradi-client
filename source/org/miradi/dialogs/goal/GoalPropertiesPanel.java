@@ -59,8 +59,8 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
 		
-		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
-		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), picker));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
+		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), picker));
 		
 		String[] columnTags = new String[]{ProgressPercent.TAG_DATE, ProgressPercent.TAG_PERCENT_COMPLETE, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES};
 		PanelTitleLabel progressPercentsLabel = new PanelTitleLabel(EAM.text("Progress Percents"));
