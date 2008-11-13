@@ -373,33 +373,33 @@ abstract public class Desire extends BaseObject
 		
 	public final static String TAG_SHORT_LABEL = "ShortLabel";
 	public final static String TAG_FULL_TEXT = "FullText";
-	public final static String TAG_COMMENTS = "Comments";
+	public final static String TAG_COMMENTS = "Comments";	
+	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
+	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
+	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
+	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
+	public static final String PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE = "PseudoLatestProgressPercentComplete";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public final static String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public final static String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
-	
+
 	public static final String OBJECT_NAME = "Desire";
-	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
-	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
-	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
-	public static final String PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
-	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
-	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE = "PseudoLatestProgressPercentComplete";
-	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";
 
 	private StringData shortLabel;
 	private StringData fullText;
 	private StringData comments;
+	private RelevancyOverrideSetData relevantStrategyActivityOverrides;
+	private RelevancyOverrideSetData relevantIndicatorOverrides;
+	private ORefListData progressPercentRefs;
 	private PseudoStringData multiLineTargets;
 	private PseudoStringData multiLineDirectThreats;
 	private PseudoStringData multiLineStrategies;
 	private PseudoStringData multiLineFactor;
-	private RelevancyOverrideSetData relevantStrategyActivityOverrides;
-	private RelevancyOverrideSetData relevantIndicatorOverrides;
 	private PseudoORefListData relevantIndicatorRefs;
 	private PseudoORefListData relevantStrategyRefs;
-	private ORefListData progressPercentRefs;
 	private PseudoStringData latestProgressPercentComplete;
 	private PseudoStringData latestProgressPercentDetails;
 }
