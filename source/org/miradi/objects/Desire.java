@@ -68,6 +68,19 @@ abstract public class Desire extends BaseObject
 		return super.isRefList(tag);
 	}
 	
+	public ORefList getAllObjectsToDeepCopy()
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		deepObjectRefsToCopy.addAll(getProgressPercentRefs());
+		
+		return deepObjectRefsToCopy;
+	}
+
+	private ORefList getProgressPercentRefs()
+	{
+		return progressPercentRefs.getORefList();
+	}
+	
 	abstract public int getType();
 
 	public String getShortLabel()
@@ -320,7 +333,7 @@ abstract public class Desire extends BaseObject
 
 	private ProgressPercent getLatestProgressPercent()
 	{
-		return (ProgressPercent) getLatestObject(getObjectManager(), progressPercentRefs.getORefList(), ProgressPercent.TAG_DATE);
+		return (ProgressPercent) getLatestObject(getObjectManager(), getProgressPercentRefs(), ProgressPercent.TAG_DATE);
 	}
 	
 	public static Desire findDesire(ObjectManager objectManager, ORef desireRef)
