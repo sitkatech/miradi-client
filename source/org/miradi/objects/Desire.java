@@ -101,10 +101,10 @@ abstract public class Desire extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
 			return getOwner().getLabel();
 		
-		if (fieldTag.equals(PSEUDO_RELEVANT_INDICATOR_REFS))
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 			return getRelevantIndicatorRefsAsString();
 	
-		if (fieldTag.equals(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS))
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS))
 			return getRelevantStrategyActivityRefsAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
@@ -348,8 +348,8 @@ abstract public class Desire extends BaseObject
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
-		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_RELEVANT_INDICATOR_REFS);
-		relevantStrategyRefs = new PseudoORefListData(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS);
+		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
+		relevantStrategyRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		latestProgressPercentComplete = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE);
 		latestProgressPercentDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS);
 		
@@ -365,8 +365,8 @@ abstract public class Desire extends BaseObject
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
 		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
-		addField(PSEUDO_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
-		addField(PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
+		addField(PSEUDO_TAG_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
+		addField(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE, latestProgressPercentComplete);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS, latestProgressPercentDetails);
 	}
@@ -377,8 +377,8 @@ abstract public class Desire extends BaseObject
 	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 	public static final String TAG_PROGRESS_PERCENT_REFS = "ProgressPrecentRefs";
-	public static final String PSEUDO_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
-	public static final String PSEUDO_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
+	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
+	public static final String PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoRelevantStrategyRefs";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE = "PseudoLatestProgressPercentComplete";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
