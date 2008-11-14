@@ -35,6 +35,9 @@ public class CreateMarginDoer extends ObjectsDoer
 		if (!isInDiagram())
 			return false;
 		
+		if (getAllFactorCells().size() <= 0)
+			return false;
+		
 		return allowMargin();
 	}
 
@@ -84,7 +87,7 @@ public class CreateMarginDoer extends ObjectsDoer
 
 	private Rectangle getDiagramFactorBounds()
 	{
-		Vector<FactorCell> allFactorCells = getDiagramView().getDiagramModel().getAllFactorCells();
+		Vector<FactorCell> allFactorCells = getAllFactorCells();
 		Rectangle allCellsBound = null;
 		for (int index = 0; index < allFactorCells.size(); ++index)
 		{
@@ -96,6 +99,11 @@ public class CreateMarginDoer extends ObjectsDoer
 		}
 		
 		return allCellsBound;
+	}
+
+	private Vector getAllFactorCells()
+	{
+		return getDiagramView().getDiagramModel().getAllFactorCells();
 	}
 	
 	private static final int MINIMUM_TOP_MARGIN = 30;
