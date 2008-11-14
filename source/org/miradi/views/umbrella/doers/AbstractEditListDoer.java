@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.awt.Dimension;
+
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
@@ -53,10 +55,17 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		}
 	}
 
-	protected void setDialogPreferredSize(ModalDialogWithClose dialog)
+	protected Dimension getDialogPreferredSize()
 	{
+		return null;
 	}
 	
+	protected void setDialogPreferredSize(ModalDialogWithClose dialog)
+	{
+		if (getDialogPreferredSize() != null)
+			dialog.setPreferredSize(getDialogPreferredSize());
+	}
+		
 	protected BaseObject getSelectedObject()
 	{
 		BaseObject singleSelected = getSingleSelected(getObjectType());
