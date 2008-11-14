@@ -22,7 +22,6 @@ package org.miradi.views.umbrella.doers;
 import java.awt.Dimension;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.Desire;
@@ -30,9 +29,9 @@ import org.miradi.objects.Desire;
 abstract public class AbstractStrategyActivityRelevancyListDoer extends AbstractEditListDoer
 {
 	@Override
-	protected void setDialogPreferredSize(ModalDialogWithClose dialog)
+	protected Dimension getDialogPreferredSize()
 	{
-		dialog.setPreferredSize(new Dimension(600, 600));
+		return new Dimension(600, 600);
 	}
 	
 	@Override
