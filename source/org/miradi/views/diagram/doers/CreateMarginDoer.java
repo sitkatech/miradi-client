@@ -52,7 +52,6 @@ public class CreateMarginDoer extends ObjectsDoer
 			
 			getDiagramView().getCurrentDiagramComponent().selectAll();
 			NudgeDoer.moveSelectedItems(getProject(), getDiagramView().getDiagramPanel(), deltaToEnsureLeftMargin, deltaToEnsureTopMargin);
-			getDiagramView().getCurrentDiagramComponent().clearSelection();
 		}
 		catch (Exception e)
 		{
