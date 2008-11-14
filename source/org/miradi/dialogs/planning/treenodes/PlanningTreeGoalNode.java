@@ -35,20 +35,15 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class PlanningTreeGoalNode extends AbstractPlanningTreeNode
+public class PlanningTreeGoalNode extends PlanningTreeAbstractDesireNode
 {
 	public PlanningTreeGoalNode(Project projectToUse, DiagramObject diagramToUse, ORef goalRef, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse, visibleRowsToUse);
+		super(projectToUse, diagramToUse, visibleRowsToUse, goalRef);
 		goal = (Goal)project.findObject(goalRef);
 		rebuild();
 	}
 	
-	public void rebuild() throws Exception
-	{
-		// Goals have no children
-	}
-
 	protected int[] getNodeSortOrder()
 	{
 		return new int[] {
