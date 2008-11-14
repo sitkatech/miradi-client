@@ -47,11 +47,11 @@ public class CreateMarginDoer extends ObjectsDoer
 		try
 		{
 			Rectangle allDiagramFactorBounds = getDiagramFactorBounds();
-			int leftMarginToCreate = getCreateMarginAmount(allDiagramFactorBounds.x, MINIMUM_LEFT_MARGIN);
-			int topMarginToCreate = getCreateMarginAmount(allDiagramFactorBounds.y, MINIMUM_TOP_MARGIN);
+			int deltaToEnsureLeftMargin = getCreateMarginAmount(allDiagramFactorBounds.x, MINIMUM_LEFT_MARGIN);
+			int deltaToEnsureTopMargin = getCreateMarginAmount(allDiagramFactorBounds.y, MINIMUM_TOP_MARGIN);
 			
 			getDiagramView().getCurrentDiagramComponent().selectAll();
-			NudgeDoer.moveSelectedItems(getProject(), getDiagramView().getDiagramPanel(), leftMarginToCreate, topMarginToCreate);
+			NudgeDoer.moveSelectedItems(getProject(), getDiagramView().getDiagramPanel(), deltaToEnsureLeftMargin, deltaToEnsureTopMargin);
 			getDiagramView().getCurrentDiagramComponent().clearSelection();
 		}
 		catch (Exception e)
