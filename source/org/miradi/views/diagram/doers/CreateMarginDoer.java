@@ -62,7 +62,7 @@ public class CreateMarginDoer extends ObjectsDoer
 	private int getCreateMarginAmount(int currentPosition, int minimumMargin)
 	{
 		if (currentPosition < minimumMargin)
-			return CREATE_MARGIN_AMOUNT;
+			return minimumMargin - currentPosition;
 		
 		return 0;
 	}
@@ -100,5 +100,4 @@ public class CreateMarginDoer extends ObjectsDoer
 	
 	private static final int MINIMUM_TOP_MARGIN = 30;
 	private static final int MINIMUM_LEFT_MARGIN = 30;
-	private static final int CREATE_MARGIN_AMOUNT = 30;
 }
