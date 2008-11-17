@@ -45,7 +45,7 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		try
 		{
 			ModalDialogWithClose dialog = new ModalDialogWithCloseButNoMainScrollPane(getMainWindow(), createEditPanel(), getDialogTitle());
-			setDialogPreferredSize(dialog);
+			setPreferredSizeOfDialog(dialog);
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);
 		}
@@ -60,7 +60,7 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		return null;
 	}
 	
-	protected void setDialogPreferredSize(ModalDialogWithClose dialog)
+	protected void setPreferredSizeOfDialog(ModalDialogWithClose dialog)
 	{
 		if (getDialogPreferredSize() != null)
 			dialog.setPreferredSize(getDialogPreferredSize());
