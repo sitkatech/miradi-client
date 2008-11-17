@@ -92,6 +92,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	public void setThreats(Factor[] threats)
 	{
 		threatRows = threats;
+		fireTableDataChanged();
 	}
 	
 	protected Factor[] getTargets()

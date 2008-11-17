@@ -64,7 +64,6 @@ public class MultiTableRowSortController
 				JTable table = tablesToSort.get(index);
 				AbstractThreatTargetTableModel modelToSetThreats = (AbstractThreatTargetTableModel)table.getModel();
 				modelToSetThreats.setThreats(sortedThreats);
-				modelToSetThreats.fireTableDataChanged();
 				table.revalidate();
 				table.repaint();
 			}
