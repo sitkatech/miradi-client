@@ -30,14 +30,14 @@ import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.KeyStroke;
 
-public class EAMDialog extends JDialog
+public class DialogWithEscapeToClose extends JDialog
 {
-	public EAMDialog(JFrame parent)
+	public DialogWithEscapeToClose(JFrame parent)
 	{
 		super(parent);
 	}
 	
-	public EAMDialog(JFrame parent, String heading)
+	public DialogWithEscapeToClose(JFrame parent, String heading)
 	{
 		this(parent);
 		setTitle(heading);

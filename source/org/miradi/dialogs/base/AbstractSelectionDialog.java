@@ -39,7 +39,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.MiradiScrollPane;
 
-abstract public class AbstractSelectionDialog extends EAMDialog implements ListSelectionListener
+abstract public class AbstractSelectionDialog extends DialogWithEscapeToClose implements ListSelectionListener
 {
 	public AbstractSelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{

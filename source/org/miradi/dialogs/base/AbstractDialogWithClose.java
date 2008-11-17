@@ -41,7 +41,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 
-abstract public class AbstractDialogWithClose extends EAMDialog implements WindowListener
+abstract public class AbstractDialogWithClose extends DialogWithEscapeToClose implements WindowListener
 {
 	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{

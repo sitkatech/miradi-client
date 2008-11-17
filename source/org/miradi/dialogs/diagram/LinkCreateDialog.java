@@ -39,7 +39,7 @@ import org.martus.swing.Utilities;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.dialogs.base.EAMDialog;
+import org.miradi.dialogs.base.DialogWithEscapeToClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
@@ -56,7 +56,7 @@ import org.miradi.views.diagram.LinkCreator;
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class LinkCreateDialog extends EAMDialog implements ActionListener
+public class LinkCreateDialog extends DialogWithEscapeToClose implements ActionListener
 {
 	public LinkCreateDialog(MainWindow parent, DiagramPanel panelToUse) throws HeadlessException
 	{

@@ -43,7 +43,7 @@ import org.martus.swing.UiTextField;
 import org.martus.swing.Utilities;
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
-import org.miradi.dialogs.base.EAMDialog;
+import org.miradi.dialogs.base.DialogWithEscapeToClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
@@ -51,7 +51,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.ProjectNameRestrictedTextField;
 
-public class CreateProjectDialog extends EAMDialog implements ActionListener,
+public class CreateProjectDialog extends DialogWithEscapeToClose implements ActionListener,
 		ListSelectionListener
 {
 	public CreateProjectDialog(MainWindow parent) throws HeadlessException
