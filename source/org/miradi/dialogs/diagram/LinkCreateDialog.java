@@ -39,7 +39,7 @@ import org.martus.swing.Utilities;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.dialogs.base.DialogWithEscapeToClose;
+import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
@@ -56,7 +56,7 @@ import org.miradi.views.diagram.LinkCreator;
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
 
-public class LinkCreateDialog extends DialogWithEscapeToClose implements ActionListener
+public class LinkCreateDialog extends DialogWithButtonBar implements ActionListener
 {
 	public LinkCreateDialog(MainWindow parent, DiagramPanel panelToUse) throws HeadlessException
 	{
@@ -65,11 +65,10 @@ public class LinkCreateDialog extends DialogWithEscapeToClose implements ActionL
 		diagramPanel = panelToUse;
 		UiVBox bigBox = new UiVBox();
 		bigBox.add(createFromToBox());
-		bigBox.addSpace();
-		bigBox.add(createButtonBar());
 
 		Container contents = getContentPane();
 		contents.add(bigBox);
+		setButtons(getButtonComponents());
 		Utilities.centerDlg(this);
 		setResizable(true);
 		setModal(true);
@@ -222,7 +221,7 @@ public class LinkCreateDialog extends DialogWithEscapeToClose implements ActionL
 		private DiagramFactor diagramFactor;
 	}
 
-	private Box createButtonBar()
+	private Vector<Component> getButtonComponents()
 	{
 		okButton = new PanelButton(EAM.text("Button|OK"));
 		okButton.addActionListener(this);
@@ -230,10 +229,12 @@ public class LinkCreateDialog extends DialogWithEscapeToClose implements ActionL
 		cancelButton = new PanelButton(EAM.text("Button|Cancel"));
 		cancelButton.addActionListener(this);
 
-		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), okButton, cancelButton};
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
-		return buttonBar;
+		Vector<Component> buttons = new Vector<Component>();
+		buttons.add(Box.createHorizontalGlue());
+		buttons.add(okButton);
+		buttons.add(Box.createHorizontalStrut(10));
+		buttons.add(cancelButton);
+		return buttons;
 	}
 
 	public void actionPerformed(ActionEvent event)
