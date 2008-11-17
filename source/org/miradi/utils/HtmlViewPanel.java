@@ -33,7 +33,7 @@ import javax.swing.JPopupMenu;
 
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
-import org.miradi.dialogs.base.EAMDialog;
+import org.miradi.dialogs.base.DialogWithEscapeToClose;
 import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -78,7 +78,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	
 	public void showAsOkDialog()
 	{
-		EAMDialog dlg = createDialog();
+		DialogWithEscapeToClose dlg = createDialog();
 		dlg.setModal(true);
 
 		showDialog(dlg);
@@ -86,18 +86,18 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	
 	public void showAsModelessOkDialog()
 	{
-		EAMDialog dlg = createDialog();
+		DialogWithEscapeToClose dlg = createDialog();
 		dlg.setModal(false);
 
 		showDialog(dlg);
 	}
 
-	private EAMDialog createDialog()
+	private DialogWithEscapeToClose createDialog()
 	{
-		return new EAMDialog(mainWindow, viewTitle);
+		return new DialogWithEscapeToClose(mainWindow, viewTitle);
 	}
 
-	private void showDialog(EAMDialog dlg)
+	private void showDialog(DialogWithEscapeToClose dlg)
 	{
 		String body = htmlText;
 		if (body == null)
@@ -135,7 +135,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 		return null;
 	}
 
-	private void calculateHeight(EAMDialog dlg, Container contents, HtmlFormViewer bodyComponent, JComponent buttonBar)
+	private void calculateHeight(DialogWithEscapeToClose dlg, Container contents, HtmlFormViewer bodyComponent, JComponent buttonBar)
 	{
 		// Compute dialog size based on that fixed content width
 		bodyComponent.setFixedWidth(bodyComponent, forcedWidth);
@@ -160,7 +160,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	}
 
 
-	protected JComponent createButtonBar(EAMDialog dlg)
+	protected JComponent createButtonBar(DialogWithEscapeToClose dlg)
 	{
 		close = new JButton(new CloseAction(dlg));
 		dlg.getRootPane().setDefaultButton(close);

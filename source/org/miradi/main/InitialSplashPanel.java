@@ -38,7 +38,7 @@ import org.martus.swing.UiLabel;
 import org.martus.util.StreamCopier;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.dialogfields.AbstractListComponent;
-import org.miradi.dialogs.base.EAMDialog;
+import org.miradi.dialogs.base.DialogWithEscapeToClose;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBoxWithMaxAsPreferredSize;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -62,7 +62,7 @@ public class InitialSplashPanel extends HelpAboutPanel
 	}
 
 	@Override
-	protected JComponent createButtonBar(EAMDialog dlg)
+	protected JComponent createButtonBar(DialogWithEscapeToClose dlg)
 	{
 		UiButton close = new UiButton(new CloseAction(dlg, EAM.text("Button|Continue")));
 
