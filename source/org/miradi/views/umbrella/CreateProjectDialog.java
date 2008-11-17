@@ -28,6 +28,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.event.DocumentEvent;
@@ -40,10 +41,9 @@ import org.martus.swing.UiList;
 import org.martus.swing.UiParagraphPanel;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
-import org.martus.swing.Utilities;
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
-import org.miradi.dialogs.base.DialogWithEscapeToClose;
+import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
@@ -51,12 +51,12 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.ProjectNameRestrictedTextField;
 
-public class CreateProjectDialog extends DialogWithEscapeToClose implements ActionListener,
+public class CreateProjectDialog extends DialogWithButtonBar implements ActionListener,
 		ListSelectionListener
 {
-	public CreateProjectDialog(MainWindow parent) throws HeadlessException
+	public CreateProjectDialog(MainWindow parent, String title) throws HeadlessException
 	{
-		super(parent);
+		super(parent, title);
 		setModal(true);
 		setResizable(true);
 
@@ -73,20 +73,14 @@ public class CreateProjectDialog extends DialogWithEscapeToClose implements Acti
 		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField.getPreferredSize().width, 200));
 		panel.addComponents(new PanelTitleLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
 		panel.addComponents(new PanelTitleLabel(EAM.text("New Project Filename: ")), projectFilenameField);
-		panel.addOnNewLine(createButtonBar());
 		getContentPane().add(panel);
 
 		getRootPane().setDefaultButton(okButton);
+		setButtons(getButtonComponents());
 	}
 
 	public boolean showCreateDialog(String buttonLabel)
 	{
-		return showCreateDialog(EAM.text("Title|Create New Project"), buttonLabel);
-	}
-
-	public boolean showCreateDialog(String title, String buttonLabel)
-	{
-		setTitle(title);
 		okButton.setText(buttonLabel);
 		return showDialog();
 	}
@@ -181,7 +175,7 @@ public class CreateProjectDialog extends DialogWithEscapeToClose implements Acti
 		}
 	}
 
-	private Box createButtonBar()
+	private Vector<Component> getButtonComponents()
 	{
 		okButton = new PanelButton("");
 		okButton.addActionListener(this);
@@ -190,11 +184,13 @@ public class CreateProjectDialog extends DialogWithEscapeToClose implements Acti
 		cancelButton = new PanelButton(EAM.text("Button|Cancel"));
 		cancelButton.addActionListener(this);
 
-		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] { Box.createHorizontalGlue(),
-				okButton, cancelButton };
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
-		return buttonBar;
+		Vector<Component> buttons = new Vector<Component>();
+		buttons.add(Box.createHorizontalGlue());
+		buttons.add(okButton);
+		buttons.add(Box.createHorizontalStrut(10));
+		buttons.add(cancelButton);
+		
+		return buttons;
 	}
 
 	public boolean getResult()
