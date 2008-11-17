@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -82,7 +83,9 @@ public class ObjectEditableObjectListField extends ObjectDataInputField
 			int annotationType = foundObject.getAnnotationType(getTag());
 			ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), getORef(), getTag(), annotationType);
 			
-			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), editListPanel, EAM.text("Edit Dialog"));
+			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Edit Dialog"));
+			dialog.setScrollableMainPanel(editListPanel);
+			dialog.setPreferredSize(new Dimension(400, 400));
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);	
 		}

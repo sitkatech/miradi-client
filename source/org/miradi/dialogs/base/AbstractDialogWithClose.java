@@ -19,55 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.util.Vector;
 
 import javax.swing.Box;
-import javax.swing.JComponent;
-import javax.swing.JPanel;
 
 import org.martus.swing.UiButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.MiradiScrollPane;
 
-abstract public class AbstractDialogWithClose extends DialogWithButtonBar implements WindowListener
+abstract public class AbstractDialogWithClose extends DialogWithDisposablePanelAndMainWindowUpdating
 {
-	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
+	protected AbstractDialogWithClose(MainWindow parent, String headingText)
 	{
 		super(parent, headingText);
-		
-		setTitle(headingText);
-		mainWindow = parent;
-		wrappedPanel = panel;
-	
-		getContentPane().add(createMainPanel());
-		addWindowListener(this);
+		setButtons(getButtonBarComponents());
 	}
 	
-	protected JComponent createMainPanel()
+	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{
-		JPanel mainPanel = new JPanel(new BorderLayout());
-		mainPanel.add(wrappedPanel, BorderLayout.CENTER);
-		JComponent mainScrollPane = possiblyWrapInScrollPane(mainPanel);
-		return mainScrollPane;
-	}
-
-	// TODO: Should probably have AbstractDialogWithClose and also 
-	// AbstractDialogWithScrollingAndClose as separate classes
-	protected JComponent possiblyWrapInScrollPane(JPanel mainPanel)
-	{
-		MiradiScrollPane mainScrollPane = new MiradiScrollPane(mainPanel);
-		return mainScrollPane;
-	}
-	
-	public JPanel getWrappedPanel()
-	{
-		return wrappedPanel;
+		super(parent, headingText, panel);
+		setButtons(getButtonBarComponents());
 	}
 	
 	protected Vector<Component> getButtonBarComponents()
@@ -82,52 +55,4 @@ abstract public class AbstractDialogWithClose extends DialogWithButtonBar implem
 		return components;
 	}
 	
-	public void dispose()
-	{
-		if(wrappedPanel == null)
-			return;
-		
-		wrappedPanel.dispose();
-		wrappedPanel = null;
-		super.dispose();
-	}
-	
-	public void windowActivated(WindowEvent arg0)
-	{
-		mainWindow.updateActionStates();
-	}
-
-	public void windowClosed(WindowEvent arg0)
-	{
-	}
-
-	public void windowClosing(WindowEvent arg0)
-	{
-	}
-
-	public void windowDeactivated(WindowEvent arg0)
-	{
-	}
-
-	public void windowDeiconified(WindowEvent arg0)
-	{
-	}
-
-	public void windowIconified(WindowEvent arg0)
-	{
-	}
-
-	public void windowOpened(WindowEvent arg0)
-	{
-		mainWindow.updateActionStates();
-	}
-	
-	public MainWindow getMainWindow()
-	{
-		return mainWindow;
-	}
-	
-
-	private MainWindow mainWindow;
-	private DisposablePanel wrappedPanel;
 }

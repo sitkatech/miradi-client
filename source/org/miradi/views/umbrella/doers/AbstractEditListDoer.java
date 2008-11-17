@@ -26,7 +26,6 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.ModalDialogWithCloseButNoMainScrollPane;
 import org.miradi.views.ObjectsDoer;
  
 public abstract class AbstractEditListDoer extends ObjectsDoer
@@ -44,7 +43,8 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		
 		try
 		{
-			ModalDialogWithClose dialog = new ModalDialogWithCloseButNoMainScrollPane(getMainWindow(), createEditPanel(), getDialogTitle());
+			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), getDialogTitle());
+			dialog.setScrollableMainPanel(createEditPanel());
 			setPreferredSizeOfDialog(dialog);
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);

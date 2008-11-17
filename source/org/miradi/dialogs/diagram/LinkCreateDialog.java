@@ -67,7 +67,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		bigBox.add(createFromToBox());
 
 		Container contents = getContentPane();
-		contents.add(bigBox);
+		contents.add(new MiradiScrollPane(bigBox));
 		setButtons(getButtonComponents());
 		Utilities.centerDlg(this);
 		setResizable(true);

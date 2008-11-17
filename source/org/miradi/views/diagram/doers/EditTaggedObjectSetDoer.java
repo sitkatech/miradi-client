@@ -48,6 +48,6 @@ public class EditTaggedObjectSetDoer extends AbstractEditListDoer
 	@Override
 	protected Dimension getDialogPreferredSize()
 	{
-		return new Dimension(400, 400);
+		return new Dimension(800, 400);
 	}
 }

@@ -23,12 +23,16 @@ import org.miradi.main.MainWindow;
 
 public class ModelessDialogWithClose extends AbstractDialogWithClose
 {
+	public ModelessDialogWithClose(MainWindow parent, String headingText)
+	{
+		super(parent, headingText);
+		setModal(false);
+	}
+	
 	public ModelessDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{
 		super(parent, panel, headingText);
 		setModal(false);
-
-		setButtons(getButtonBarComponents());
 	}
 	
 	protected DisposablePanel getMainPanel()

@@ -134,7 +134,8 @@ public class PropertiesDoer extends LocationDoer
 	{
 		public ScopePropertiesDialog(MainWindow parent, ProjectScopePanel panel)
 		{
-			super(parent, panel, panel.getPanelDescription());
+			super(parent, panel.getPanelDescription());
+			setScrollableMainPanel(panel);
 		}
 	}
 

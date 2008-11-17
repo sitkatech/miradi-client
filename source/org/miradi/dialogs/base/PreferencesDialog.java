@@ -25,8 +25,8 @@ public class PreferencesDialog extends ModelessDialogWithClose
 {
 	public PreferencesDialog(MainWindow mainWindowToUse, DisposablePanel disposablePanelToUse, String headingText)
 	{
-		super(mainWindowToUse, disposablePanelToUse, headingText);
-		disposablePanel = disposablePanelToUse;
+		super(mainWindowToUse, headingText);
+		setScrollableMainPanel(disposablePanelToUse);
 	}
 	
 	public void dispose()

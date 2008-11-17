@@ -23,11 +23,15 @@ import org.miradi.main.MainWindow;
 
 public class ModalDialogWithClose extends AbstractDialogWithClose
 {
+	public ModalDialogWithClose(MainWindow parent, String headingText)
+	{
+		super(parent, headingText);
+		setModal(true);
+	}
+
 	public ModalDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{
 		super(parent, panel, headingText);
 		setModal(true);
-
-		setButtons(getButtonBarComponents());
 	}
 }

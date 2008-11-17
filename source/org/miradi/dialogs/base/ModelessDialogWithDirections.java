@@ -34,6 +34,11 @@ import org.miradi.main.MainWindow;
 
 public class ModelessDialogWithDirections extends ModelessDialogWithClose
 {
+	public ModelessDialogWithDirections(MainWindow parent, String headingText)
+	{
+		super(parent, headingText);
+	}
+
 	public ModelessDialogWithDirections(MainWindow parent, DisposablePanel panel, String headingText)
 	{
 		super(parent, panel, headingText);

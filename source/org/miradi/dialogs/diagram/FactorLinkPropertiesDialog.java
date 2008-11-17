@@ -28,8 +28,9 @@ public class FactorLinkPropertiesDialog extends ModelessDialogWithDirections
 
 	public FactorLinkPropertiesDialog(MainWindow parent, ModelessDialogPanel panel, String headingText)
 	{
-		super(parent, panel, headingText);
+		super(parent, headingText);
 		factorPanel = panel;
+		setScrollableMainPanel(factorPanel);
 	}
 	
 	protected Class getJumpAction()
