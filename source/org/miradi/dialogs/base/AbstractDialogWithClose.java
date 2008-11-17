@@ -21,8 +21,6 @@ package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Vector;
@@ -75,8 +73,7 @@ abstract public class AbstractDialogWithClose extends DialogWithButtonBar implem
 	protected Vector<Component> getButtonBarComponents()
 	{
 		UiButton closeButton = new PanelButton(EAM.text("Button|Close"));
-		closeButton.setSelected(true);
-		closeButton.addActionListener(new DialogCloseListener());
+		setSimpleCloseButton(closeButton);
 		
 		Vector<Component> components = new Vector<Component>(); 
 		components.add(Box.createHorizontalGlue());
@@ -85,14 +82,6 @@ abstract public class AbstractDialogWithClose extends DialogWithButtonBar implem
 		return components;
 	}
 	
-	private final class DialogCloseListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e)
-		{
-			dispose();
-		}
-	}
-
 	public void dispose()
 	{
 		if(wrappedPanel == null)
@@ -114,7 +103,6 @@ abstract public class AbstractDialogWithClose extends DialogWithButtonBar implem
 
 	public void windowClosing(WindowEvent arg0)
 	{
-		dispose();
 	}
 
 	public void windowDeactivated(WindowEvent arg0)
