@@ -25,13 +25,14 @@ import java.awt.Component;
 import java.awt.Container;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import org.martus.swing.Utilities;
 
-public class DialogWithButtonBar extends DialogWithEscapeToClose
+public class DialogWithButtonBar extends MiradiDialog
 {
 	public DialogWithButtonBar(JFrame parent, String heading)
 	{
@@ -52,6 +53,7 @@ public class DialogWithButtonBar extends DialogWithEscapeToClose
 	private Box createButtonBar(Vector<Component> boxComponents)
 	{
 		Box buttonBar = Box.createHorizontalBox();
+		buttonBar.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		Utilities.addComponentsRespectingOrientation(buttonBar, boxComponents.toArray(new Component[0]));
 
 		int boxComponentCount = boxComponents.size();
