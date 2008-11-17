@@ -461,6 +461,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importField(projectSumaryNode, GOAL_COMMENT, metadataRef, ProjectMetadata.TAG_PROJECT_VISION);
 		importField(projectSumaryNode, PLANNING_TEAM_COMMENT, metadataRef, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 		importField(projectSumaryNode, LESSONS_LEARNED, metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+		importThreatRatingValueInMode(projectSumaryNode, STRESSLESS_THREAT_RANK, metadataRef, ProjectMetadata.TAG_THREAT_RATING_MODE);
 		importTeamMembers(projectSumaryNode, metadataRef);
 		
 		String[] ecoRegionElementHierarchy = new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, ECOREGIONS, ECOREGION_CODE}; 
@@ -703,6 +704,20 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(objectRef, tag, codes.toString());
 	}
 
+	private void importThreatRatingValueInMode(Node node, String path, ORef ref, String tag) throws Exception
+	{
+		String generatedPath = generatePath(new String[]{path});
+		String data = getXPath().evaluate(generatedPath, node);
+		String mode = "";
+		if (data.length() == 0)
+		{
+			ChoiceQuestion question = getProject().getQuestion(ThreatRatingModeChoiceQuestion.class);
+			mode = ((ThreatRatingModeChoiceQuestion)question).STRESS_BASED_CODE;
+		}
+		
+		setData(ref, ProjectMetadata.TAG_THREAT_RATING_MODE, mode);
+	}
+	
 	private void importField(Node node, String path, ORef ref, String tag) throws Exception
 	{
 		importField(node, new String[]{path,}, ref, tag);

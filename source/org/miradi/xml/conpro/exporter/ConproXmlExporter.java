@@ -706,7 +706,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalElement(out, PLANNING_TEAM_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 			writeOptionalElement(out, LESSONS_LEARNED, getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			
-			writeOptionalElement(out, STRESSLESS_THREAT_RANK, getSimpleOverallProjectRating());
+			if (getProject().isSimpleThreatRatingMode())
+				writeOptionalElement(out, STRESSLESS_THREAT_RANK, getSimpleOverallProjectRating());
+
 			writeOptionalElement(out, PROJECT_THREAT_RANK, getStressBasedOverallProjectRating());
 			writeOptionalElement(out, PROJECT_VIABILITY_RANK, getComputedTncViability());
 			writeTeamMembers(out);
