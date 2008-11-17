@@ -33,7 +33,6 @@ import javax.swing.JPanel;
 
 import org.martus.swing.UiButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
@@ -49,7 +48,6 @@ abstract public class AbstractDialogWithClose extends DialogWithButtonBar implem
 		wrappedPanel = panel;
 	
 		getContentPane().add(createMainPanel());
-		getContentPane().setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		addWindowListener(this);
 	}
 	
