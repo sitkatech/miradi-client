@@ -24,7 +24,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.net.URL;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Collections;
 import java.util.Vector;
 
@@ -35,11 +36,15 @@ import javax.swing.border.EmptyBorder;
 import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.util.StreamCopier;
+import org.martus.util.UnicodeStringReader;
+import org.miradi.dialogfields.AbstractListComponent;
 import org.miradi.dialogs.base.EAMDialog;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBoxWithMaxAsPreferredSize;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DynamicChoiceQuestion;
+import org.miradi.questions.LanguageQuestion;
 import org.miradi.utils.LanguagePackFileChooser;
-import org.miradi.utils.RemoteHtmlRetriever;
 import org.miradi.views.umbrella.AboutDoer;
 import org.miradi.views.umbrella.HelpAboutPanel;
 
@@ -185,36 +190,29 @@ public class InitialSplashPanel extends HelpAboutPanel
 
 		private void installNetworkLanguagePack()
 		{
-			ChoiceItem[] availableLanguages = getListOfOfficialLanguagePacks();
-			if(availableLanguages == null)
-			{
-				EAM.errorDialog(EAM.text("Unable to retrieve list of available language packs"));
-				return;
-			}
-			if(availableLanguages.length == 0)
+			AvailableLanguagePacksQuestion question = new AvailableLanguagePacksQuestion();
+			if(question.size() == 0)
 			{
 				EAM.errorDialog(EAM.text("No additional language packs are available at this time"));
 				return;
 			}
 			
-			EAM.notifyDialog("This feature is not yet complete");
+			EAM.notifyDialog(EAM.text("This feature is not yet available"));
 		}
 		
-		private ChoiceItem[] getListOfOfficialLanguagePacks()
+	}
+	
+	class AvailableLanguagePacksQuestion extends DynamicChoiceQuestion
+	{
+		@Override
+		public ChoiceItem[] getChoices()
 		{
 			try
 			{
-				URL url = new URL("https://miradi.org/rest/languagepacks-" + Miradi.MAIN_VERSION);
-				RemoteHtmlRetriever thread = new RemoteHtmlRetriever(url);
-				thread.start();
-				long TWO_SECONDS_IN_MILLIS = 2 * 1000;
-				thread.join(TWO_SECONDS_IN_MILLIS);
-				String languageListText = thread.getResults();
-				// each row is a URL, from which we can extract the language code
-				System.out.println(languageListText);
-				
-				Vector<ChoiceItem> languageChoices = new Vector<ChoiceItem>();
-				// ChoiceItems:  code=URL, value=Friendly language name
+				String languageListText = getListOfAvailableLanguagePacks();
+				EAM.logDebug("Official available languages: \n" + languageListText);
+				Vector<String> languageEntries = extractLanguageEntries(languageListText);
+				Vector<ChoiceItem> languageChoices = extractChoicesFromLanguageEntries(languageEntries);
 				return languageChoices.toArray(new ChoiceItem[0]);
 			}
 			catch(Exception e)
@@ -223,6 +221,71 @@ public class InitialSplashPanel extends HelpAboutPanel
 			}
 		}
 
+		private String getListOfAvailableLanguagePacks() throws MalformedURLException, InterruptedException
+		{
+			return "/files/languagepacks/" + Miradi.MAIN_VERSION + "-es\n" + 
+				"/files/languagepacks/" + Miradi.MAIN_VERSION + "-zh\n";
+			// FIXME: Call real server as soon as it supports this functionality
+//			private static final String SERVER = "https://miradi.org";
+//			URL url = new URL(SERVER + "/rest/languagepacks/" + Miradi.MAIN_VERSION);
+//			RemoteHtmlRetriever thread = new RemoteHtmlRetriever(url);
+//			thread.start();
+//			long TWO_SECONDS_IN_MILLIS = 2 * 1000;
+//			thread.join(TWO_SECONDS_IN_MILLIS);
+//			String languageListText = thread.getResults();
+//			return languageListText;
+		}
+
+		private Vector<String> extractLanguageEntries(String languageListText) throws IOException
+		{
+			Vector<String> languageEntries = new Vector<String>();
+			UnicodeStringReader reader = new UnicodeStringReader(languageListText);
+			while(true)
+			{
+				String line = reader.readLine();
+				if(line == null)
+					break;
+				EAM.logDebug("Available language pack: " + line);
+				languageEntries.add(line);
+			}
+			
+			return languageEntries;
+		}
+		
+		private Vector<ChoiceItem> extractChoicesFromLanguageEntries(Vector<String> languageEntries)
+		{
+			ChoiceQuestion languageQuestion = getMainWindow().getProject().getQuestion(LanguageQuestion.class);
+			Vector<ChoiceItem> languageChoices = new Vector<ChoiceItem>();
+			for(String languageEntry : languageEntries)
+			{
+				int codeAt = languageEntry.lastIndexOf('-');
+				if(codeAt < 0)
+					EAM.logWarning("Official language pack no language code: " + languageEntry);
+				String languageCode = languageEntry.substring(codeAt+1);
+				ChoiceItem choice = languageQuestion.findChoiceByCode(languageCode);
+				if(choice == null)
+					EAM.logWarning("Official language pack unknown language: " + languageCode);
+				else
+					languageChoices.add(new ChoiceItem(languageEntry, choice.getLabel()));
+			}
+			
+			return languageChoices;
+		}
+
+	}
+	
+	public static class LanguagePackListComponent extends AbstractListComponent
+	{
+		public LanguagePackListComponent(AvailableLanguagePacksQuestion question)
+		{
+			super(question);
+		}
+
+		@Override
+		protected void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
+		{
+		}
+		
 	}
 
 	private static final String OTHER_LANGUAGE_CODE = "xxx";
