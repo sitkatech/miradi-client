@@ -57,7 +57,7 @@ public class MultiTableRowSortController
 		private void sortByTableColumn(JTable tableClickedOn, int sortByTableColumn)
 		{
 			AbstractThreatTargetTableModel model = (AbstractThreatTargetTableModel)tableClickedOn.getModel();
-			Factor[] sortedThreats = model.sortThreats(tableClickedOn.convertColumnIndexToModel(sortByTableColumn));
+			Factor[] sortedThreats = model.getThreatsSortedBy(tableClickedOn.convertColumnIndexToModel(sortByTableColumn));
 			
 			for (int index = 0; index < tablesToSort.size(); ++index)
 			{

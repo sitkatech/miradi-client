@@ -45,7 +45,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		targetColumns =  getProject().getTargetPool().getTargets();
 	}
 	
-	public Factor[] sortThreats(int sortByTableColumn)
+	public Factor[] getThreatsSortedBy(int sortByTableColumn)
 	{	
 		Vector<Integer> rows = new Vector();
 		for(int index = 0; index < getRowCount(); ++index)
