@@ -708,7 +708,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		String generatedPath = generatePath(new String[]{path});
 		String data = getXPath().evaluate(generatedPath, node);
-		String mode = "";
+		String mode = ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE;
 		if (data.length() == 0)
 		{
 			ChoiceQuestion question = getProject().getQuestion(ThreatRatingModeChoiceQuestion.class);
