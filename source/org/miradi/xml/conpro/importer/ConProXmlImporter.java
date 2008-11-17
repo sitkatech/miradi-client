@@ -30,6 +30,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
 import org.martus.util.MultiCalendar;
@@ -706,8 +707,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importThreatRatingValueInMode(Node node, String path, ORef ref, String tag) throws Exception
 	{
-		String generatedPath = generatePath(new String[]{path});
-		String data = getXPath().evaluate(generatedPath, node);
+		String data = getPathData(node, new String[]{path});
 		String mode = ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE;
 		if (data.length() == 0)
 		{
@@ -725,9 +725,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void importField(Node node, String[] elements, ORef ref, String tag) throws Exception 
 	{
-		String generatedPath = generatePath(elements);
-		String data = getXPath().evaluate(generatedPath, node);
+		String data = getPathData(node, elements);
 		importField(ref, tag, data);
+	}
+
+	private String getPathData(Node node, String[] elements) throws XPathExpressionException
+	{
+		String generatedPath = generatePath(elements);
+		return getXPath().evaluate(generatedPath, node);
 	}
 
 	private void importField(ORef ref, String tag, String data)	throws Exception
@@ -742,8 +747,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void importCodeField(Node node, String[] elements, ORef ref, String tag, HashMap<String, String> map) throws Exception
 	{
-		String generatedPath = generatePath(elements);
-		String rawCode = getXPath().evaluate(generatedPath, node);
+		String rawCode = getPathData(node, elements);
 		importCodeField(ref, tag, map, rawCode);
 	}
 
