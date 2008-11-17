@@ -49,6 +49,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.ProjectNameRestrictedTextField;
 
 public class CreateProjectDialog extends DialogWithButtonBar implements ActionListener,
@@ -73,7 +74,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField.getPreferredSize().width, 200));
 		panel.addComponents(new PanelTitleLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
 		panel.addComponents(new PanelTitleLabel(EAM.text("New Project Filename: ")), projectFilenameField);
-		getContentPane().add(panel);
+		getContentPane().add(new MiradiScrollPane(panel));
 
 		getRootPane().setDefaultButton(okButton);
 		setButtons(getButtonComponents());

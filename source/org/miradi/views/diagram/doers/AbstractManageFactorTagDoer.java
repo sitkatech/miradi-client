@@ -64,6 +64,7 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 		public EditTagWithCreateTagButtonDialog(MainWindow parent, DisposablePanel panel, String headingText)
 		{
 			super(parent, panel, headingText);
+			setScrollableMainPanel(panel);
 		}
 		
 		

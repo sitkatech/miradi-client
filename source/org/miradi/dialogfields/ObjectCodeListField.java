@@ -89,7 +89,8 @@ public class ObjectCodeListField extends ObjectDataInputField
 		public void actionPerformed(ActionEvent event)
 		{
 			CodeListEditorPanel codeListPanel = new CodeListEditorPanel(getProject(), getORef(), getTag(), question, 1);
-			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), codeListPanel, EAM.text("Selection Dialog"));
+			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
+			dialog.setScrollableMainPanel(codeListPanel);
 			Utilities.centerDlg(dialog);
 			dialog.setVisible(true);	
 		}
