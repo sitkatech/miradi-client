@@ -33,10 +33,11 @@ public class ThreatRatingModeChoiceQuestion extends StaticChoiceQuestion
 	public static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", EAM.text("Simple Threat Rating Mode"), new MiradiResourceImageIcon("icons/showRatings.png")),
+				new ChoiceItem(SIMPLE_BASED_CODE, EAM.text("Simple Threat Rating Mode"), new MiradiResourceImageIcon("icons/showRatings.png")),
 				new ChoiceItem(STRESS_BASED_CODE, EAM.text("Stress Based Threat Rating Mode"), new StressIcon()),
 		};
 	}
 	
 	public static final String STRESS_BASED_CODE = "StressBased";
+	public static final String SIMPLE_BASED_CODE = "";
 }
