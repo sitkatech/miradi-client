@@ -24,10 +24,10 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.Box;
-import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -39,23 +39,20 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.MiradiScrollPane;
 
-abstract public class AbstractSelectionDialog extends DialogWithEscapeToClose implements ListSelectionListener
+abstract public class AbstractSelectionDialog extends DialogWithButtonBar implements ListSelectionListener
 {
 	public AbstractSelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
 	{
-		super(mainWindow);
+		super(mainWindow, title);
 		list = poolTable;
 		list.getTable().addListSelectionListener(this);
 		Box box = Box.createVerticalBox();
 		box.add(new PanelTitleLabel(getPanelTitleInstructions()));
 		box.add(list, BorderLayout.AFTER_LAST_LINE);
-		
-		setTitle(title);
-		JComponent buttonBar = createButtonBar();
+
 		Container contents = getContentPane();
-		contents.setLayout(new BorderLayout());
 		contents.add(new MiradiScrollPane(box), BorderLayout.CENTER);
-		contents.add(buttonBar, BorderLayout.AFTER_LAST_LINE);
+		setButtons(getButtonComponents());
 		setModal(true);
 		setPreferredSize(new Dimension(900,400));
 		Utilities.centerDlg(this);
@@ -66,16 +63,18 @@ abstract public class AbstractSelectionDialog extends DialogWithEscapeToClose im
 		return objectSelected;
 	}
 	
-	private Box createButtonBar()
+	private Vector<Component> getButtonComponents()
 	{
 		PanelButton cancelButton = new PanelButton(new CancelAction());
 		customButton = new PanelButton(new CustomAction(createCustomButtonLabel()));
 		customButton.setEnabled(false);
-		getRootPane().setDefaultButton(cancelButton);
-		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), customButton,  Box.createHorizontalStrut(10), cancelButton};
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
-		return buttonBar;
+		
+		Vector<Component> buttons = new Vector<Component>();
+		buttons.add(Box.createHorizontalGlue());
+		buttons.add(customButton);
+		buttons.add(Box.createHorizontalStrut(10));
+		buttons.add(cancelButton);
+		return buttons;
 	}
 	
 	public void valueChanged(ListSelectionEvent e)
