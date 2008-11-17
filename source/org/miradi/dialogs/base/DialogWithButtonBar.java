@@ -23,6 +23,8 @@ package org.miradi.dialogs.base;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -42,12 +44,17 @@ public class DialogWithButtonBar extends MiradiDialog
 		contents.setLayout(new BorderLayout());
 	}
 	
-	public void setButtons(Vector<Component> buttons)
+	protected void setButtons(Vector<Component> buttons)
 	{
 		Container contents = getContentPane();
 		contents.add(createButtonBar(buttons), BorderLayout.AFTER_LAST_LINE);
 		pack();
 		Utilities.fitInScreen(this);
+	}
+	
+	protected void setSimpleCloseButton(JButton closeButton)
+	{
+		closeButton.addActionListener(new DialogCloseListener());
 	}
 
 	private Box createButtonBar(Vector<Component> boxComponents)
@@ -63,4 +70,12 @@ public class DialogWithButtonBar extends MiradiDialog
 		return buttonBar;
 	}
 	
+	private final class DialogCloseListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			dispose();
+		}
+	}
+
 }
