@@ -42,8 +42,8 @@ public class CopyProjectToDoer extends MainWindowDoer
 	{
 		while(true)
 		{
-			CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow());
-			if(!dlg.showCreateDialog(EAM.text("Copy Project To"), EAM.text("Button|Copy To")))
+			CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow(), EAM.text("Copy Project To"));
+			if(!dlg.showCreateDialog(EAM.text("Button|Copy To")))
 				return;
 
 			File chosen = dlg.getSelectedFile();
