@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.awt.Dimension;
+
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetTreeTablePanel;
 import org.miradi.main.EAM;
@@ -41,5 +43,11 @@ public class EditTaggedObjectSetDoer extends AbstractEditListDoer
 	protected String getDialogTitle()
 	{
 		return EAM.text("Tagged Items");
+	}
+	
+	@Override
+	protected Dimension getDialogPreferredSize()
+	{
+		return new Dimension(400, 400);
 	}
 }
