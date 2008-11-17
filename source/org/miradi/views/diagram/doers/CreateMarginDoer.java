@@ -41,6 +41,23 @@ public class CreateMarginDoer extends ObjectsDoer
 		return allowMargin();
 	}
 
+	private boolean allowMargin()
+	{
+		Rectangle diagramFactorBounds = getDiagramFactorBounds();
+		int deltaToEnsureLeftMargin = getCreateMarginAmount(diagramFactorBounds.x, MINIMUM_LEFT_MARGIN);
+		int deltaToEnsureTopMargin = getCreateMarginAmount(diagramFactorBounds.y, MINIMUM_TOP_MARGIN);
+		
+		boolean canHaveLeftMargin = canHaveMargin(deltaToEnsureLeftMargin);
+		boolean canHaveTopMargin = canHaveMargin(deltaToEnsureTopMargin);
+		
+		return canHaveLeftMargin && canHaveTopMargin;
+	}
+
+	private boolean canHaveMargin(int deltaToEnsureLeftMargin)
+	{
+		return deltaToEnsureLeftMargin > 0;
+	}
+
 	@Override
 	public void doIt() throws CommandFailedException
 	{
@@ -70,18 +87,6 @@ public class CreateMarginDoer extends ObjectsDoer
 		return 0;
 	}
 	
-	private boolean allowMargin()
-	{
-		Rectangle diagramFactorBounds = getDiagramFactorBounds();
-		if (diagramFactorBounds.getX() < MINIMUM_LEFT_MARGIN)
-			return true;
-		
-		if (diagramFactorBounds.getY() < MINIMUM_TOP_MARGIN)
-			return true;
-		
-		return false;
-	}
-
 	private Rectangle getDiagramFactorBounds()
 	{
 		Vector<FactorCell> allFactorCells = getAllFactorCells();
