@@ -25,48 +25,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.martus.swing.UiButton;
-import org.martus.swing.Utilities;
-import org.miradi.actions.EAMAction;
-import org.miradi.actions.MainWindowAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 
-abstract public class AbstractDialogWithClose extends DialogWithEscapeToClose implements WindowListener
+abstract public class AbstractDialogWithClose extends DialogWithButtonBar implements WindowListener
 {
 	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
 	{
-		super(parent);
+		super(parent, headingText);
 		
 		setTitle(headingText);
 		mainWindow = parent;
 		wrappedPanel = panel;
 	
 		getContentPane().add(createMainPanel());
-		getContentPane().add(createButtonBar(), BorderLayout.AFTER_LAST_LINE);
-		pack();
-		Utilities.fitInScreen(this);
 		getContentPane().setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		addWindowListener(this);
 	}
 	
-	@Override
-	public void setVisible(boolean b)
-	{
-		if(b)
-			updateDirectionsEnabledState();
-		super.setVisible(b);
-	}
-
 	protected JComponent createMainPanel()
 	{
 		JPanel mainPanel = new JPanel(new BorderLayout());
@@ -88,26 +74,18 @@ abstract public class AbstractDialogWithClose extends DialogWithEscapeToClose im
 		return wrappedPanel;
 	}
 	
-	private Box createButtonBar()
+	protected Vector<Component> getButtonBarComponents()
 	{
 		UiButton closeButton = new PanelButton(EAM.text("Button|Close"));
 		closeButton.setSelected(true);
 		closeButton.addActionListener(new DialogCloseListener());
 		
-		getRootPane().setDefaultButton(closeButton);
+		Vector<Component> components = new Vector<Component>(); 
+		components.add(Box.createHorizontalGlue());
+		components.add(closeButton);
 		
-		Box buttonBar = Box.createHorizontalBox();
-		Component[] components = new Component[] {Box.createHorizontalGlue(), closeButton};
-		addAdditionalButtons(buttonBar);
-		Utilities.addComponentsRespectingOrientation(buttonBar, components);
-		return buttonBar;
+		return components;
 	}
-	
-	public void addAdditionalButtons(Box buttonBar)
-	{
-		createDirectionsButton(buttonBar);
-	}
-	
 	
 	private final class DialogCloseListener implements ActionListener
 	{
@@ -127,75 +105,6 @@ abstract public class AbstractDialogWithClose extends DialogWithEscapeToClose im
 		super.dispose();
 	}
 	
-	protected void createDirectionsButton(Box buttonBarToUse)
-	{
-		actionDirections = new ActionDirections(mainWindow);
-		UiButton  help = new PanelButton(actionDirections);
-		Component[] components = new Component[] {help};
-		Utilities.addComponentsRespectingOrientation(buttonBarToUse, components);
-	}
-	
-	public void updateDirectionsEnabledState()
-	{
-		actionDirections.updateEnabledState();
-	}
-
-	protected Class getJumpAction()
-	{
-		return null;
-	}
-	
-	
-	
-	protected class ActionDirections extends MainWindowAction
-	{
-
-		public ActionDirections(MainWindow mainWindowToUse)
-		{
-			super(mainWindowToUse, EAM.text("Instructions"), "icons/directions.png");
-		}
-		
-		public void doAction() throws CommandFailedException
-		{
-			EAMAction action = getRealJumpAction();
-			if(action == null)
-				return;
-			
-			action.doAction();
-		}
-		
-		public void actionPerformed(ActionEvent e)
-		{
-			try
-			{
-				doAction();
-			}
-			catch(CommandFailedException e1)
-			{
-				EAM.logException(e1);
-			}
-		}
-		
-		@Override
-		public boolean shouldBeEnabled()
-		{
-			EAMAction action = getRealJumpAction();
-			if(action == null)
-				return false;
-			
-			return action.shouldBeEnabled();
-		}
-		
-		private EAMAction getRealJumpAction()
-		{
-			Class jumpActionClass = getJumpAction();
-			if (jumpActionClass == null)
-				return null;
-			
-			return mainWindow.getActions().get(jumpActionClass);
-		}
-	}
-
 	public void windowActivated(WindowEvent arg0)
 	{
 		mainWindow.updateActionStates();
@@ -227,8 +136,12 @@ abstract public class AbstractDialogWithClose extends DialogWithEscapeToClose im
 		mainWindow.updateActionStates();
 	}
 	
+	public MainWindow getMainWindow()
+	{
+		return mainWindow;
+	}
+	
 
 	private MainWindow mainWindow;
 	private DisposablePanel wrappedPanel;
-	private ActionDirections actionDirections;
 }

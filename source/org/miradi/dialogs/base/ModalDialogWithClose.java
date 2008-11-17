@@ -27,5 +27,7 @@ public class ModalDialogWithClose extends AbstractDialogWithClose
 	{
 		super(parent, panel, headingText);
 		setModal(true);
+
+		setButtons(getButtonBarComponents());
 	}
 }
