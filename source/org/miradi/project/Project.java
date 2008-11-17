@@ -403,6 +403,11 @@ public class Project
 		return simpleThreatFramework;
 	}
 
+	public boolean isSimpleThreatRatingMode()
+	{
+		return !isStressBaseMode();
+	}
+	
 	public boolean isStressBaseMode()
 	{
 		return getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
