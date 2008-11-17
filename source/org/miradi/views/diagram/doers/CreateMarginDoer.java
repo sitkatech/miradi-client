@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.util.Vector;
 
@@ -43,19 +44,29 @@ public class CreateMarginDoer extends ObjectsDoer
 
 	private boolean allowMargin()
 	{
-		Rectangle diagramFactorBounds = getDiagramFactorBounds();
-		int deltaToEnsureLeftMargin = getCreateMarginAmount(diagramFactorBounds.x, MINIMUM_LEFT_MARGIN);
-		int deltaToEnsureTopMargin = getCreateMarginAmount(diagramFactorBounds.y, MINIMUM_TOP_MARGIN);
+		Dimension deltaMargin = getDeltasToEnsureMargins();
+		if (deltaMargin.width > 0)
+			return true;
 		
-		boolean canHaveLeftMargin = canHaveMargin(deltaToEnsureLeftMargin);
-		boolean canHaveTopMargin = canHaveMargin(deltaToEnsureTopMargin);
+		if (deltaMargin.height > 0)
+			return true;
 		
-		return canHaveLeftMargin && canHaveTopMargin;
+		return false;
 	}
 
-	private boolean canHaveMargin(int deltaToEnsureLeftMargin)
+	private Dimension getDeltasToEnsureMargins()
 	{
-		return deltaToEnsureLeftMargin > 0;
+		Rectangle diagramFactorBounds = getDiagramFactorBounds();
+		
+		int deltaX = 0;
+		int deltaY = 0;
+		if (diagramFactorBounds.x < MINIMUM_LEFT_MARGIN)
+			 deltaX = MINIMUM_LEFT_MARGIN - diagramFactorBounds.x;
+		
+		if (diagramFactorBounds.y < MINIMUM_TOP_MARGIN)
+			 deltaY = MINIMUM_TOP_MARGIN - diagramFactorBounds.y;
+
+		return new Dimension(deltaX, deltaY);
 	}
 
 	@Override
@@ -66,25 +77,14 @@ public class CreateMarginDoer extends ObjectsDoer
 		
 		try
 		{
-			Rectangle allDiagramFactorBounds = getDiagramFactorBounds();
-			int deltaToEnsureLeftMargin = getCreateMarginAmount(allDiagramFactorBounds.x, MINIMUM_LEFT_MARGIN);
-			int deltaToEnsureTopMargin = getCreateMarginAmount(allDiagramFactorBounds.y, MINIMUM_TOP_MARGIN);
-			
+			Dimension deltaMargin = getDeltasToEnsureMargins();
 			getDiagramView().getCurrentDiagramComponent().selectAll();
-			NudgeDoer.moveSelectedItems(getProject(), getDiagramView().getDiagramPanel(), deltaToEnsureLeftMargin, deltaToEnsureTopMargin);
+			NudgeDoer.moveSelectedItems(getProject(), getDiagramView().getDiagramPanel(), deltaMargin.width, deltaMargin.height);
 		}
 		catch (Exception e)
 		{
 			throw new CommandFailedException(e);
 		}
-	}
-	
-	private int getCreateMarginAmount(int currentPosition, int minimumMargin)
-	{
-		if (currentPosition < minimumMargin)
-			return minimumMargin - currentPosition;
-		
-		return 0;
 	}
 	
 	private Rectangle getDiagramFactorBounds()
