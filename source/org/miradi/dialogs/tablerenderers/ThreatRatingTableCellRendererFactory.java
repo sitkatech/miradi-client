@@ -54,7 +54,8 @@ public class ThreatRatingTableCellRendererFactory extends SingleLineObjectTableC
 
 		renderer.setText(labelText);
 
-		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, tableColumn);
+		int modelColumn = table.convertColumnIndexToModel(tableColumn);
+		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, modelColumn);
 		Icon configuredIcon = getConfiguredIcon(object, getChoiceItem(value));
 		renderer.setIcon(configuredIcon);
 		return renderer;
