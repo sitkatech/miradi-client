@@ -19,12 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.slideshow;
 
-import javax.swing.Box;
-
-import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.base.ModelessDialogWithDirections;
 import org.miradi.main.MainWindow;
 
-public class SlideShowDialog extends ModelessDialogWithClose
+public class SlideShowDialog extends ModelessDialogWithDirections
 {
 
 	public SlideShowDialog(MainWindow parent, SlideListManagementPanel panel, String headingText)
@@ -33,11 +31,6 @@ public class SlideShowDialog extends ModelessDialogWithClose
 		slideShowPanel = panel;
 	}
 	
-	public void addAdditionalButtons(Box buttonBar)
-	{
-		createDirectionsButton(buttonBar);
-	}
-
 	SlideListManagementPanel slideShowPanel;
 }
 

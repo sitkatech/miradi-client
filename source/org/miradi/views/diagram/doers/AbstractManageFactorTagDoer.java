@@ -19,7 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import javax.swing.Box;
+import java.awt.Component;
+import java.util.Vector;
 
 import org.martus.swing.Utilities;
 import org.miradi.actions.ActionCreateNamedTaggedObjectSet;
@@ -65,14 +66,17 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 			super(parent, panel, headingText);
 		}
 		
+		
 		@Override
-		public void addAdditionalButtons(Box buttonBar)
+		protected Vector<Component> getButtonBarComponents()
 		{
-			super.addAdditionalButtons(buttonBar);
-			
 			DisposablePanel wrappedEditPanel = (DisposablePanel) getWrappedPanel();
 			createButton = wrappedEditPanel.createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionCreateNamedTaggedObjectSet.class), getPicker());
-			buttonBar.add(createButton);
+
+			Vector<Component> components = new Vector<Component>();
+			components.add(createButton);
+			components.addAll(super.getButtonBarComponents());
+			return components;
 		}
 		
 		private ObjectsActionButton createButton; 

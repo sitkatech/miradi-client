@@ -23,8 +23,6 @@ import java.awt.Point;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import javax.swing.Box;
-
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
@@ -33,6 +31,7 @@ import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.base.ModelessDialogWithDirections;
 import org.miradi.dialogs.diagram.FactorLinkPropertiesDialog;
 import org.miradi.dialogs.diagram.FactorLinkPropertiesPanel;
 import org.miradi.dialogs.diagram.FactorPropertiesPanel;
@@ -131,17 +130,11 @@ public class PropertiesDoer extends LocationDoer
 		return new HashSet();
 	}
 	
-	class ScopePropertiesDialog extends ModelessDialogWithClose
+	class ScopePropertiesDialog extends ModelessDialogWithDirections
 	{
 		public ScopePropertiesDialog(MainWindow parent, ProjectScopePanel panel)
 		{
 			super(parent, panel, panel.getPanelDescription());
-		}
-		
-		@Override
-		public void addAdditionalButtons(Box buttonBarToUse)
-		{
-			super.addAdditionalButtons(buttonBarToUse);
 		}
 	}
 

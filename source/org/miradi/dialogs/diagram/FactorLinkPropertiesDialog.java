@@ -19,13 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.diagram;
 
-import javax.swing.Box;
-
 import org.miradi.dialogs.base.ModelessDialogPanel;
-import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.base.ModelessDialogWithDirections;
 import org.miradi.main.MainWindow;
 
-public class FactorLinkPropertiesDialog extends ModelessDialogWithClose
+public class FactorLinkPropertiesDialog extends ModelessDialogWithDirections
 {
 
 	public FactorLinkPropertiesDialog(MainWindow parent, ModelessDialogPanel panel, String headingText)
@@ -34,11 +32,6 @@ public class FactorLinkPropertiesDialog extends ModelessDialogWithClose
 		factorPanel = panel;
 	}
 	
-	public void addAdditionalButtons(Box buttonBar)
-	{
-		createDirectionsButton(buttonBar);
-	}
-
 	protected Class getJumpAction()
 	{
 		if(factorPanel == null)
