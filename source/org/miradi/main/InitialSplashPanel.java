@@ -124,7 +124,8 @@ public class InitialSplashPanel extends HelpAboutPanel
 			String cancel = EAM.text("Button|Cancel");
 			String[] buttonLabels = {
 					local, 
-					internet, 
+// FIXME: Not ready for alpha test yet
+//					internet, 
 					cancel
 					};
 			String text = EAM.text("<html>" +
