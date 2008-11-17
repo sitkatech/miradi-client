@@ -25,6 +25,7 @@ import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -40,6 +41,7 @@ import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableHorizontalScrollController;
 import org.miradi.utils.MultiTableRowHeightController;
+import org.miradi.utils.MultiTableRowSortController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
 import org.miradi.utils.TableWithRowHeightSaver;
@@ -56,6 +58,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
+		rowSortController = new MultiTableRowSortController();
 	}
 	
 	public MainWindow getMainWindow()
@@ -66,6 +69,11 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	public Project getProject()
 	{
 		return getMainWindow().getProject();
+	}
+	
+	protected void addRowSortControlledTable(JTable tableToSort)
+	{
+		rowSortController.addTableToSort(tableToSort);
 	}
 	
 	protected void addRowHeightControlledTable(TableWithRowHeightSaver tableToAdd)
@@ -248,4 +256,5 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	protected MultiTableVerticalScrollController verticalController;
 	protected MultiTableHorizontalScrollController horizontalController;
 	private MultiTableRowHeightController rowHeightController;
+	private MultiTableRowSortController rowSortController;
 }

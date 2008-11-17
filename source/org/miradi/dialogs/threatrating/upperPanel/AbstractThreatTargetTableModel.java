@@ -19,6 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Vector;
+
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.ids.FactorId;
@@ -41,6 +45,30 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		targetColumns =  getProject().getTargetPool().getTargets();
 	}
 	
+	public Factor[] sortThreats(int sortByTableColumn)
+	{	
+		Vector<Integer> rows = new Vector();
+		for(int index = 0; index < getRowCount(); ++index)
+		{
+			rows.add(new Integer(index));
+		}
+		
+		Vector unsortedRows = (Vector)rows.clone();
+		Collections.sort(rows, getComparator(sortByTableColumn));
+		
+		if (rows.equals(unsortedRows))
+			Collections.reverse(rows);
+		
+		Vector<Factor> newSortedThreatList = new Vector();
+		for(int index = 0; index < rows.size(); ++index)
+		{
+			int nextExistingRowIndex = rows.get(index).intValue();
+			newSortedThreatList.add(getDirectThreat(nextExistingRowIndex));
+		}
+		
+		return newSortedThreatList.toArray(new Factor[0]);
+	}
+	
 	public boolean isPopupSupportableCell(int row, int modelColumn)
 	{
 		return true;
@@ -59,6 +87,11 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		Factor threat = getDirectThreats()[threatIndex];
 		Factor target = getTargets()[targetIndex];
 		return getProject().areLinked(threat, target);
+	}
+	
+	public void setThreats(Factor[] threats)
+	{
+		threatRows = threats;
 	}
 	
 	protected Factor[] getTargets()
@@ -109,6 +142,11 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	public FactorId getTargetId(int targetIndex)
 	{
 		return getTargets()[targetIndex].getFactorId();
+	}
+		
+	public Comparator getComparator(int columnToSortOn)
+	{
+		return new TableModelStringComparator(this, columnToSortOn);
 	}
 	
 	private Project project;

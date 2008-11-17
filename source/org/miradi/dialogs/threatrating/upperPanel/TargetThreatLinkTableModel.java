@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import java.util.Comparator;
+
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -92,5 +94,10 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 			return getFactorLink(row, column);
 			
 		return null;
+	}
+	
+	public Comparator getComparator(int columnToSortOn)
+	{
+		return new TableModelChoiceItemComparator(this, columnToSortOn);
 	}
 }

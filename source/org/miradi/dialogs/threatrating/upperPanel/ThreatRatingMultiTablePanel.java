@@ -102,18 +102,21 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		threatTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		addToVerticalController(threatTableScroller);
 		addRowHeightControlledTable(threatNameTable);
+		addRowSortControlledTable(threatNameTable);
 		
 		JScrollPane targetThreatLinkTableScroller = new ScrollPaneWithInvisibleVerticalScrollBar(targetThreatLinkTable);
 		targetThreatLinkTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		addToVerticalController(targetThreatLinkTableScroller);
 		addToHorizontalController(targetThreatLinkTableScroller);
 		addRowHeightControlledTable(targetThreatLinkTable);
+		addRowSortControlledTable(targetThreatLinkTable);
 		
 		JScrollPane threatSummaryColumnTableScroller = new FixedWidthScrollPane(threatSummaryColumnTable);
 		addToVerticalController(threatSummaryColumnTableScroller);
 		threatSummaryColumnTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		threatSummaryColumnTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		addRowHeightControlledTable(threatSummaryColumnTable);
+		addRowSortControlledTable(threatSummaryColumnTable);
 		
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.VERTICAL;
