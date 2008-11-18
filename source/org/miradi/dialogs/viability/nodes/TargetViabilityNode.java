@@ -27,7 +27,9 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
@@ -99,7 +101,29 @@ public class TargetViabilityNode extends TreeTableNode
 	
 	public void rebuild() throws Exception
 	{
-		children = getKeaNodes(target);
+		children = buildChildrenNodes();
+	}
+
+	private TreeTableNode[] buildChildrenNodes() throws Exception
+	{
+		if (target.isViabilityModeTNC())
+			return getKeaNodes(target);
+		
+		return getTargetIndicatorNodes();
+	}
+
+	private ViabilityIndicatorNode[] getTargetIndicatorNodes() throws Exception
+	{
+		Vector<ViabilityIndicatorNode> viabilityIndicatorNodes = new Vector();
+		ORefList indicatorRefs = target.getIndicatorRefs();
+		for (int index = 0; index < indicatorRefs.size(); ++index)
+		{
+			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(index));
+			ViabilityIndicatorNode viabilityIndicatorNode = new ViabilityIndicatorNode(getProject(), this, indicator);
+			viabilityIndicatorNodes.add(viabilityIndicatorNode);
+		}
+		
+		return viabilityIndicatorNodes.toArray(new ViabilityIndicatorNode[0]);
 	}
 
 	static public KeyEcologicalAttributeNode[] getKeaNodes(Target target) throws Exception
@@ -126,6 +150,11 @@ public class TargetViabilityNode extends TreeTableNode
 		Arrays.sort(objectList, comparator);
 	}
 	
+	private Project getProject()
+	{
+		return project;
+	}
+	
 	public static final String[] COLUMN_TAGS = {
 		Target.TAG_EMPTY, 
 		Target.TAG_VIABILITY_MODE, 
@@ -141,5 +170,5 @@ public class TargetViabilityNode extends TreeTableNode
 	
 	private Project project;
 	private Target target;
-	private KeyEcologicalAttributeNode[] children;
+	private TreeTableNode[] children;
 }
