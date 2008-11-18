@@ -37,6 +37,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
+import org.miradi.objects.Target;
 
 public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputPanel
 {
@@ -48,11 +49,14 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 		setLayout(cardLayout);
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
+		targetPropertiesPanel = new NonDiagramTargetPropertiesPanel(getProject());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(mainWindow);
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
+		
 		add(blankPropertiesPanel);
+		add(targetPropertiesPanel);
 		add(targetViabilityKeaPropertiesPanel);
 		add(targetViabilityIndicatorPropertiesPanel);
 		add(targetViabilityMeasurementPropertiesPanel);
@@ -65,6 +69,7 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 	{
 		super.dispose();
 		blankPropertiesPanel.dispose();
+		targetPropertiesPanel.dispose();
 		targetViabilityKeaPropertiesPanel.dispose();
 		targetViabilityIndicatorPropertiesPanel.dispose();
 		targetViabilityMeasurementPropertiesPanel.dispose();
@@ -83,6 +88,7 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 		String panelDescription = currentCard.getPanelDescription();
 		cardLayout.show(this, panelDescription);
 
+		targetPropertiesPanel.setObjectRefs(orefsToUse);
 		targetViabilityKeaPropertiesPanel.setObjectRefs(orefsToUse);
 		targetViabilityIndicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		targetViabilityMeasurementPropertiesPanel.setObjectRefs(orefsToUse);
@@ -104,6 +110,8 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 			return blankPropertiesPanel;
 		
 		int objectType = orefsToUse[0].getObjectType();
+		if(Target.is(objectType))
+			return targetPropertiesPanel;
 		if(objectType == KeyEcologicalAttribute.getObjectType())
 			return targetViabilityKeaPropertiesPanel;
 		if(objectType == Indicator.getObjectType())
@@ -130,6 +138,7 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 	private CardLayout cardLayout;
 	private ObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
+	private NonDiagramTargetPropertiesPanel targetPropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private IndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
