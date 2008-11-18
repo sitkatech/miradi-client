@@ -24,14 +24,11 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.dialogs.viability.nodes.KeyEcologicalAttributeNode;
-import org.miradi.dialogs.viability.nodes.ViabilityIndicatorNode;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
@@ -50,18 +47,12 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcolog
 		if(!isAvailable())
 			return;
 	
-		ViabilityIndicatorNode selectedIndicatorNode = (ViabilityIndicatorNode)getSelectedTreeNodes()[0];
-		deleteIndicator(getProject(), selectedIndicatorNode);
-	}
-
-	public static void deleteIndicator(Project project, ViabilityIndicatorNode selectedIndicatorNode) throws CommandFailedException
-	{
-
-		project.executeCommand(new CommandBeginTransaction());
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Command[] commands = createDeleteCommands(project, selectedIndicatorNode); 
-			project.executeCommandsWithoutTransaction(commands);
+			TreeTableNode selectedIndicatorNode = getSelectedTreeNodes()[0];
+			Command[] commands = createDeleteCommands(getProject(), selectedIndicatorNode); 
+			getProject().executeCommandsWithoutTransaction(commands);
 		}
 		catch(Exception e)
 		{
@@ -70,14 +61,14 @@ public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcolog
 		}
 		finally
 		{
-			project.executeCommand(new CommandEndTransaction());
+			getProject().executeCommand(new CommandEndTransaction());
 		}
 	}
 
-	public static Command[] createDeleteCommands(Project project, ViabilityIndicatorNode selectedIndicatorNode) throws Exception
+	public static Command[] createDeleteCommands(Project project, TreeTableNode selectedIndicatorNode) throws Exception
 	{
-		KeyEcologicalAttributeNode  keaNode = (KeyEcologicalAttributeNode)selectedIndicatorNode.getParentNode();
-		BaseObject thisAnnotation = project.findObject(ObjectType.INDICATOR, selectedIndicatorNode.getObject().getId());
-		return DeleteIndicator.buildCommandsToDeleteAnnotation(project, keaNode.getObject(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, thisAnnotation);
+		TreeTableNode parentNode = selectedIndicatorNode.getParentNode();
+		BaseObject thisAnnotation = selectedIndicatorNode.getObject();
+		return DeleteIndicator.buildCommandsToDeleteAnnotation(project, parentNode.getObject(), getIndicatorListTag(parentNode.getObject()), thisAnnotation);
 	}
 }
