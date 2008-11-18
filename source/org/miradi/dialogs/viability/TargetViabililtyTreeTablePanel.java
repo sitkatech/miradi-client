@@ -83,7 +83,10 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 												wereIndicatorNodesAddedOrRemoved ||
 												wereMeasuremetNodesAddedOrRemoved ||
 												wereFactorIndicatorNodesAddedOrRemoved;
-		if( wereNodesAddedOrRemoved)
+		
+		final boolean wasTargetModeChanged = event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE);
+		
+		if(wereNodesAddedOrRemoved || wasTargetModeChanged)
 		{
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
