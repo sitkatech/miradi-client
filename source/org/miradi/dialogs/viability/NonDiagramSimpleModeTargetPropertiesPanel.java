@@ -29,9 +29,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.StatusQuestion;
 
-public class NonDiagramTargetPropertiesPanel extends ObjectDataInputPanel
+public class NonDiagramSimpleModeTargetPropertiesPanel extends ObjectDataInputPanel
 {
-	public NonDiagramTargetPropertiesPanel(Project projectToUse)
+	public NonDiagramSimpleModeTargetPropertiesPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
 		
