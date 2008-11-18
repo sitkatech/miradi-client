@@ -153,7 +153,12 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		return getLabel();
 	}
-	
+
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
