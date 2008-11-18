@@ -102,15 +102,4 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		
 		throw new RuntimeException("This method is only for kea or targets.");
 	}
-
-	private String getIndicatorListTag(BaseObject baseObject)
-	{
-		if (Target.is(baseObject))
-			return Target.TAG_INDICATOR_IDS;
-		
-		if (KeyEcologicalAttribute.is(baseObject))
-			return KeyEcologicalAttribute.TAG_INDICATOR_IDS;
-		
-		throw new RuntimeException("Can only add indicators to targets and keas");
-	}
 }
