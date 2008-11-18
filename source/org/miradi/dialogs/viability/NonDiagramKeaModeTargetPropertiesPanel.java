@@ -19,22 +19,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.icons.TargetIcon;
+import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.StatusQuestion;
 
-public class TargetCoreSubPanel extends ObjectDataInputPanel
+public class NonDiagramKeaModeTargetPropertiesPanel extends ObjectDataInputPanel
 {
-	public TargetCoreSubPanel(Project projectToUse)
+	public NonDiagramKeaModeTargetPropertiesPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
-	
-		ObjectDataInputField shortLabelField = createShortStringField(Target.getObjectType(), Target.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createExpandableField(Target.getObjectType(), Target.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Target"), new TargetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		
+		setLayout(new OneColumnGridLayout());
+		
+		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
+		addSubPanel(targetCoreSubPanel);
+		add(targetCoreSubPanel);
+		
+		addField(createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion()));
+		
+		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
+		addSubPanel(modelessTargetSubPanel);
+		add(modelessTargetSubPanel);
 		
 		updateFieldsFromProject();
 	}
@@ -42,6 +51,6 @@ public class TargetCoreSubPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return null;
+		return EAM.text("Title|Target Properties");
 	}
 }
