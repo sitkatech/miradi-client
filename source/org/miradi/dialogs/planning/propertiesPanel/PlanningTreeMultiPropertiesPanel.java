@@ -30,6 +30,7 @@ import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
+import org.miradi.dialogs.viability.NonDiagramKeaModeTargetPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramSimpleModeTargetPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -86,6 +87,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		targetPropertiesPanel = new NonDiagramSimpleModeTargetPropertiesPanel(getProject());
+		targetKeaModePropertiesPanel = new NonDiagramKeaModeTargetPropertiesPanel(getProject());
 		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
 		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
 		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
@@ -100,6 +102,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		add(taskPropertiesInputPanel);
 		add(measurementPropertiesPanel);
 		add(targetPropertiesPanel);
+		add(targetKeaModePropertiesPanel);
 		add(threatPropertiesPanel);
 		add(contributingFactorPropertiesPanel);
 		add(intermediateResultPropertiesPanel);
@@ -130,6 +133,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
 		targetPropertiesPanel.setObjectRefs(orefsToUse);
+		targetKeaModePropertiesPanel.setObjectRefs(orefsToUse);
 		threatPropertiesPanel.setObjectRefs(orefsToUse);
 		contributingFactorPropertiesPanel.setObjectRefs(orefsToUse);
 		intermediateResultPropertiesPanel.setObjectRefs(orefsToUse);
@@ -172,7 +176,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 			return measurementPropertiesPanel;
 		
 		if (Target.getObjectType() == objectType)
-			return targetPropertiesPanel;
+			return getTargetPropertiesPanel(firstRef);
 		
 		if (Cause.getObjectType() == objectType)
 			return getCausePropertiesPanel(firstRef);
@@ -187,6 +191,15 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 			return resultsChainPropertiesPanel;
 		
 		return blankPropertiesPanel;
+	}
+
+	private ObjectDataInputPanel getTargetPropertiesPanel(ORef targetRef)
+	{
+		Target target = Target.find(getProject(), targetRef);
+		if (target.isViabilityModeTNC())
+			return targetKeaModePropertiesPanel;
+		
+		return targetPropertiesPanel;
 	}
 	
 	private MinimalFactorPropertiesPanel getCausePropertiesPanel(ORef causeRef)
@@ -230,6 +243,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private NonDiagramSimpleModeTargetPropertiesPanel targetPropertiesPanel;
+	private NonDiagramKeaModeTargetPropertiesPanel targetKeaModePropertiesPanel;
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
 	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
