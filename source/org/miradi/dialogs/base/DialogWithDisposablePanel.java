@@ -29,17 +29,11 @@ import org.miradi.utils.MiradiScrollPane;
 
 public class DialogWithDisposablePanel extends DialogWithButtonBar
 {
-	public DialogWithDisposablePanel(JFrame parent, String heading)
+	public DialogWithDisposablePanel(JFrame parent)
 	{
-		super(parent, heading);
+		super(parent);
 	}
 	
-	public DialogWithDisposablePanel(JFrame parent, String heading, DisposablePanel panelToUse)
-	{
-		this(parent, heading);
-		setMainPanel(panelToUse);
-	}
-
 	public void setMainPanel(DisposablePanel panelToUse)
 	{
 		wrappedPanel = panelToUse;

@@ -31,15 +31,15 @@ import org.miradi.main.MainWindow;
 
 abstract public class AbstractDialogWithClose extends DialogWithDisposablePanelAndMainWindowUpdating
 {
-	protected AbstractDialogWithClose(MainWindow parent, String headingText)
+	protected AbstractDialogWithClose(MainWindow parent)
 	{
-		super(parent, headingText);
+		super(parent);
 		setButtons(getButtonBarComponents());
 	}
 	
-	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel, String headingText)
+	protected AbstractDialogWithClose(MainWindow parent, DisposablePanel panel)
 	{
-		super(parent, headingText, panel);
+		super(parent, panel);
 		setButtons(getButtonBarComponents());
 	}
 	

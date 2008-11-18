@@ -94,7 +94,9 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 
 	private DialogWithEscapeToClose createDialog()
 	{
-		return new DialogWithEscapeToClose(mainWindow, viewTitle);
+		DialogWithEscapeToClose dialog = new DialogWithEscapeToClose(mainWindow);
+		dialog.setTitle(viewTitle);
+		return dialog;
 	}
 
 	private void showDialog(DialogWithEscapeToClose dlg)

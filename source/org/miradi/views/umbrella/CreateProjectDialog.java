@@ -57,7 +57,8 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 {
 	public CreateProjectDialog(MainWindow parent, String title) throws HeadlessException
 	{
-		super(parent, title);
+		super(parent);
+		setTitle(title);
 		setModal(true);
 		setResizable(true);
 

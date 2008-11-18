@@ -31,9 +31,9 @@ import org.miradi.main.AppPreferences;
 
 public class MiradiDialog extends DialogWithEscapeToClose
 {
-	public MiradiDialog(JFrame parent, String heading)
+	public MiradiDialog(JFrame parent)
 	{
-		super(parent, heading);
+		super(parent);
 		getContentPane().setBackground(AppPreferences.getDarkPanelBackgroundColor());
 
 		addWindowListener(new WindowEventHandler(this));

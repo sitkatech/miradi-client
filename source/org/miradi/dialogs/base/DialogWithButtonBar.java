@@ -36,9 +36,9 @@ import org.martus.swing.Utilities;
 
 public class DialogWithButtonBar extends MiradiDialog
 {
-	public DialogWithButtonBar(JFrame parent, String heading)
+	public DialogWithButtonBar(JFrame parent)
 	{
-		super(parent, heading);
+		super(parent);
 
 		Container contents = getContentPane();
 		contents.setLayout(new BorderLayout());
