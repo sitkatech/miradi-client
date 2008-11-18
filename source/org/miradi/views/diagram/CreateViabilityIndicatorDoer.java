@@ -71,12 +71,12 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{		
-			BaseObject baseObject = getObjects()[0];
+			BaseObject parentOfNewIndicator = getObjects()[0];
 			CommandCreateObject create = new CommandCreateObject(ObjectType.INDICATOR);
 			getProject().executeCommand(create);
 			
 			ORef createdRef = create.getObjectRef();
-			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(baseObject,	getIndicatorListTag(baseObject), createdRef.getObjectId(), getIndicatorIndex(baseObject));
+			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(parentOfNewIndicator,	getIndicatorListTag(parentOfNewIndicator), createdRef.getObjectId(), getIndicatorIndex(parentOfNewIndicator));
 			getProject().executeCommand(addChild);
 			
 			getPicker().ensureObjectVisible(createdRef);
