@@ -180,7 +180,7 @@ public class Target extends Factor
 	public IdList getDirectOrIndirectIndicators()
 	{
 		if(!isViabilityModeTNC())
-			return super.getIndicators();
+			return super.getIndicatorIds();
 		
 		return findAllKeaIndicators();
 	}
