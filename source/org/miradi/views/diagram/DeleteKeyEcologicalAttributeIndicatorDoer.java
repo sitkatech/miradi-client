@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import java.util.Vector;
+
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
@@ -28,15 +30,19 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
 public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
 {	
-	public int getRequiredObjectType()
+	public Vector<Integer> getRequiredObjectType()
 	{
-		return ObjectType.INDICATOR;
+		Vector<Integer> types = new Vector(1);
+		types.add(Indicator.getObjectType());
+
+		return types;
 	}
 
 	public void doIt() throws CommandFailedException

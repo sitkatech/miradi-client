@@ -328,6 +328,11 @@ public class Target extends Factor
 	{
 		return find(project.getObjectManager(), targetRef);
 	}
+
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
 	
 	public static boolean is(int objectType)
 	{

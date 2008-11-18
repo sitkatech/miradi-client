@@ -19,24 +19,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.targetviability.doers;
 
+import java.util.Vector;
+
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
 import org.miradi.dialogs.viability.nodes.ViabilityIndicatorNode;
+import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 
 public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
-	public int getRequiredObjectType()
+	public Vector<Integer> getRequiredObjectType()
 	{
-		return ObjectType.MEASUREMENT;
+		Vector<Integer> types = new Vector(1);
+		types.add(Measurement.getObjectType());
+
+		return types;
+
 	}
 
 	public void doIt() throws CommandFailedException

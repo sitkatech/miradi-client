@@ -19,69 +19,80 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.text.ParseException;
+import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Indicator;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.project.Project;
+import org.miradi.objects.Target;
 import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
 public class CreateKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
 {	
-	public int getRequiredObjectType()
+	public Vector<Integer> getRequiredObjectType()
 	{
-		return ObjectType.KEY_ECOLOGICAL_ATTRIBUTE;
+		Vector<Integer> types = new Vector();
+		types.add(Target.getObjectType());
+		types.add(KeyEcologicalAttribute.getObjectType());
+
+		return types;
 	}
 
 	public void doIt() throws CommandFailedException
 	{
-		doInsertKEAIndicator();
-	}
-
-	private void doInsertKEAIndicator() throws CommandFailedException
-	{
 		if(!isAvailable())
 			return;
 
-		KeyEcologicalAttribute kea = (KeyEcologicalAttribute)getObjects()[0];
-
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
-		{
-			insertKEAIndicator(getProject(), kea, kea.getIndicatorIds().size());
+		{		
+			BaseObject baseObject = getObjects()[0];
+			CommandCreateObject create = new CommandCreateObject(ObjectType.INDICATOR);
+			getProject().executeCommand(create);
+			
+			ORef createdRef = create.getObjectRef();
+			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(baseObject,	getIndicatorListTag(baseObject), createdRef.getObjectId(), getIndicatorIndex(baseObject));
+			getProject().executeCommand(addChild);
+			
+			getPicker().ensureObjectVisible(createdRef);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
-	}
-
-	public void insertKEAIndicator(Project project, KeyEcologicalAttribute kea, int childIndex) throws CommandFailedException, ParseException, Exception
-	{
-		project.executeCommand(new CommandBeginTransaction());
-		try
-		{
-			CommandCreateObject create = new CommandCreateObject(ObjectType.INDICATOR);
-			project.executeCommand(create);
-			BaseId createdId = create.getCreatedId();
-	
-			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(kea, 
-					KeyEcologicalAttribute.TAG_INDICATOR_IDS, createdId, childIndex);
-			project.executeCommand(addChild);
-			getPicker().ensureObjectVisible(new ORef(Indicator.getObjectType(), createdId));
-		}
 		finally
 		{
-			project.executeCommand(new CommandEndTransaction());
+			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private int getIndicatorIndex(BaseObject baseObject)
+	{
+		if (Target.is(baseObject))
+			return ((Target)baseObject).getIndicatorRefs().size();
+		
+		if (KeyEcologicalAttribute.is(baseObject))
+			return ((KeyEcologicalAttribute)baseObject).getIndicatorRefs().size();
+		
+		throw new RuntimeException("This method is only for kea or targets.");
+	}
+
+	private String getIndicatorListTag(BaseObject baseObject)
+	{
+		if (Target.is(baseObject))
+			return Target.TAG_INDICATOR_IDS;
+		
+		if (KeyEcologicalAttribute.is(baseObject))
+			return KeyEcologicalAttribute.TAG_INDICATOR_IDS;
+		
+		throw new RuntimeException("Can only add indicators to targets and keas");
 	}
 }

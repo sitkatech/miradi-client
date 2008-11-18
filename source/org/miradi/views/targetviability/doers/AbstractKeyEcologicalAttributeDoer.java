@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.targetviability.doers;
 
+import java.util.Vector;
+
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractKeyEcologicalAttributeDoer extends ObjectsDoer
@@ -31,11 +33,8 @@ abstract public class AbstractKeyEcologicalAttributeDoer extends ObjectsDoer
 		if ((getObjects().length != 1))
 			return false;
 		
-		if (getSelectedObjectType() != getRequiredObjectType())
-			return false;
-		
-		return true;
+		return getRequiredObjectType().contains(getSelectedObjectType());
 	}
 	
-	abstract public int getRequiredObjectType();
+	abstract public Vector<Integer> getRequiredObjectType();
 }

@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.targetviability.doers;
 
+import java.util.Vector;
+
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
@@ -30,9 +32,12 @@ import org.miradi.objects.Indicator;
 
 public class CreateKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
-	public int getRequiredObjectType()
+	public Vector<Integer> getRequiredObjectType()
 	{
-		return ObjectType.INDICATOR;
+		Vector<Integer> types = new Vector(1);
+		types.add(Indicator.getObjectType());
+
+		return types;
 	}
 
 	public void doIt() throws CommandFailedException
