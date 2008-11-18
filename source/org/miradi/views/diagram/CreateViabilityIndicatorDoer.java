@@ -34,7 +34,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Target;
 import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
-public class CreateKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
+public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
 {	
 	public Vector<Integer> getRequiredObjectType()
 	{
