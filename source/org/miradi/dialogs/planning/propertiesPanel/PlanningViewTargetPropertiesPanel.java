@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
+//FIXME remove this class
 public class PlanningViewTargetPropertiesPanel extends MinimalFactorPropertiesPanel
 {
 	public PlanningViewTargetPropertiesPanel(Project projectToUse)

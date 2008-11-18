@@ -30,6 +30,7 @@ import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
+import org.miradi.dialogs.viability.NonDiagramTargetPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -84,7 +85,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		targetPropertiesPanel = new PlanningViewTargetPropertiesPanel(getProject());
+		targetPropertiesPanel = new NonDiagramTargetPropertiesPanel(getProject());
 		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
 		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
 		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
@@ -228,7 +229,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
-	private PlanningViewTargetPropertiesPanel targetPropertiesPanel;
+	private NonDiagramTargetPropertiesPanel targetPropertiesPanel;
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
 	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
