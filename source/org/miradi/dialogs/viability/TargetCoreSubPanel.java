@@ -21,38 +21,28 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.questions.StatusQuestion;
 
-public class NonDiagramSimpleModeTargetPropertiesPanel extends ObjectDataInputPanel
+public class TargetCoreSubPanel extends ObjectDataInputPanel
 {
-	public NonDiagramSimpleModeTargetPropertiesPanel(Project projectToUse)
+	public TargetCoreSubPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
-		
-		setLayout(new OneColumnGridLayout());
-		
-		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
-		addSubPanel(targetCoreSubPanel);
-		add(targetCoreSubPanel);
 	
-		//TODO is this ok to have ""
-		ObjectDataInputField ratingChoiceField = createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
-		addFieldsOnOneLine("", new ObjectDataInputField[]{ratingChoiceField});
+		ObjectDataInputField shortLabelField = createShortStringField(Target.getObjectType(), Target.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createExpandableField(Target.getObjectType(), Target.TAG_LABEL);
+		addFieldsOnOneLine(EAM.text("Target"), new TargetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		
-		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
-		addSubPanel(modelessTargetSubPanel);
-		add(modelessTargetSubPanel);
-		
+	
 		updateFieldsFromProject();
 	}
 
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Target Properties");
+		return null;
 	}
 }

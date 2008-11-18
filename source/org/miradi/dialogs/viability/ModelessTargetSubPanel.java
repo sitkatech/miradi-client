@@ -19,40 +19,34 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.layout.OneColumnGridLayout;
-import org.miradi.main.EAM;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.HabitatAssociationQuestion;
 
-public class NonDiagramSimpleModeTargetPropertiesPanel extends ObjectDataInputPanel
+public class ModelessTargetSubPanel extends ObjectDataInputPanel
 {
-	public NonDiagramSimpleModeTargetPropertiesPanel(Project projectToUse)
+	public ModelessTargetSubPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
 		
-		setLayout(new OneColumnGridLayout());
+		addField(createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 		
-		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
-		addSubPanel(targetCoreSubPanel);
-		add(targetCoreSubPanel);
-	
-		//TODO is this ok to have ""
-		ObjectDataInputField ratingChoiceField = createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
-		addFieldsOnOneLine("", new ObjectDataInputField[]{ratingChoiceField});
-		
-		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
-		addSubPanel(modelessTargetSubPanel);
-		add(modelessTargetSubPanel);
-		
+		addField(createStringField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME));
+		addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, getProject().getQuestion(HabitatAssociationQuestion.class), 1));
+		addField(createReadOnlyObjectList(Target.getObjectType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
+
+		addField(createMultilineField(Target.getObjectType(), Factor.TAG_TEXT));
+		addField(createMultilineField(Target.getObjectType(), Factor.TAG_COMMENT));
+
 		updateFieldsFromProject();
 	}
 
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Target Properties");
+		return null;
 	}
+
 }
