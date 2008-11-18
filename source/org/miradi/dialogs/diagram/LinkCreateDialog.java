@@ -60,7 +60,8 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 {
 	public LinkCreateDialog(MainWindow parent, DiagramPanel panelToUse) throws HeadlessException
 	{
-		super(parent, EAM.text("Title|Link Create Dialog"));
+		super(parent);
+		setTitle(EAM.text("Title|Link Create Dialog"));
 		
 		diagramPanel = panelToUse;
 		UiVBox bigBox = new UiVBox();

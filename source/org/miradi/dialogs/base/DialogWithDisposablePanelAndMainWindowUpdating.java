@@ -28,20 +28,18 @@ import org.miradi.main.MainWindow;
 public class DialogWithDisposablePanelAndMainWindowUpdating extends
 		DialogWithDisposablePanel
 {
-	public DialogWithDisposablePanelAndMainWindowUpdating(MainWindow parent, String heading)
+	public DialogWithDisposablePanelAndMainWindowUpdating(MainWindow parent)
 	{
-		super(parent, heading);
+		super(parent);
 		mainWindow = parent;
 		
 		addWindowListener(new WindowEventHandler(mainWindow));
 	}
 	
-	public DialogWithDisposablePanelAndMainWindowUpdating(MainWindow parent, String heading, DisposablePanel panelToUse)
+	public DialogWithDisposablePanelAndMainWindowUpdating(MainWindow parent, DisposablePanel panelToUse)
 	{
-		super(parent, heading, panelToUse);
-		mainWindow = parent;
-		
-		addWindowListener(new WindowEventHandler(mainWindow));
+		this(parent);
+		setMainPanel(panelToUse);
 	}
 
 	public MainWindow getMainWindow()

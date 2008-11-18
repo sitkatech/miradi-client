@@ -28,7 +28,7 @@ public class ManageStressesDialog extends AbstractDialogWithClose
 {
 	public ManageStressesDialog(MainWindow parent, Target target, StressListManagementPanel stressListManagementPanel)
 	{
-		super(parent, stressListManagementPanel, "");
+		super(parent, stressListManagementPanel);
 		setTitle(EAM.text("Manage Stresses for ") + target.combineShortLabelAndLabel());
 
 		setModal(true);

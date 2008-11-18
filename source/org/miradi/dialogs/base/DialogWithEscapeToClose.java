@@ -32,10 +32,9 @@ import javax.swing.KeyStroke;
 
 public class DialogWithEscapeToClose extends JDialog
 {
-	public DialogWithEscapeToClose(JFrame parent, String heading)
+	public DialogWithEscapeToClose(JFrame parent)
 	{
 		super(parent);
-		setTitle(heading);
 	}
 	
 	protected JRootPane createRootPane() 
