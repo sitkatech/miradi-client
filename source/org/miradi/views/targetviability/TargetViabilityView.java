@@ -36,7 +36,7 @@ import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.CreateViabilityIndicatorDoer;
 import org.miradi.views.diagram.CreateViabilityKeyEcologicalAttributeDoer;
 import org.miradi.views.diagram.DeleteKeyEcologicalAttributeDoer;
-import org.miradi.views.diagram.DeleteKeyEcologicalAttributeIndicatorDoer;
+import org.miradi.views.diagram.DeleteViabilityIndicatorDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 
@@ -88,7 +88,7 @@ public class TargetViabilityView extends TabbedView
 		addDoerToMap(ActionCreateKeyEcologicalAttribute.class, new CreateViabilityKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttribute.class, new DeleteKeyEcologicalAttributeDoer());
 		addDoerToMap(ActionCreateKeyEcologicalAttributeIndicator.class, new CreateViabilityIndicatorDoer());
-		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteKeyEcologicalAttributeIndicatorDoer());
+		addDoerToMap(ActionDeleteKeyEcologicalAttributeIndicator.class, new DeleteViabilityIndicatorDoer());
 		addDoerToMap(ActionCreateKeyEcologicalAttributeMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionDeleteKeyEcologicalAttributeMeasurement.class, new DeleteKeyEcologicalAttributeMeasurementDoer());
 	}

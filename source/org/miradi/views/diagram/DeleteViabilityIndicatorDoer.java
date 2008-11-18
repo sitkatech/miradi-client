@@ -32,7 +32,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer;
 
-public class DeleteKeyEcologicalAttributeIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
+public class DeleteViabilityIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
 {	
 	public Vector<Integer> getRequiredObjectType()
 	{
