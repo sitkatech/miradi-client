@@ -36,6 +36,24 @@ import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer
 
 public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
 {	
+	@Override
+	public boolean isAvailable()
+	{
+		boolean superIsAvailable = super.isAvailable();
+		if (!superIsAvailable)
+			return false;
+		
+		BaseObject baseObject = getObjects()[0];
+		if (!Target.is(baseObject))
+			return true;
+		
+		Target target = (Target) baseObject;
+		if (target.isViabilityModeTNC())
+			return false;
+		
+		return true;
+	}
+	
 	public Vector<Integer> getRequiredObjectType()
 	{
 		Vector<Integer> types = new Vector();
