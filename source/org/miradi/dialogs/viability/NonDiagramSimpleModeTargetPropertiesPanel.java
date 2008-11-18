@@ -53,6 +53,6 @@ public class NonDiagramSimpleModeTargetPropertiesPanel extends ObjectDataInputPa
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Target Properties");
+		return EAM.text("Title|Simple Mode Target Properties");
 	}
 }

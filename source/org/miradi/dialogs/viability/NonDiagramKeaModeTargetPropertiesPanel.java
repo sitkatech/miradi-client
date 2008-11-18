@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
@@ -39,7 +40,8 @@ public class NonDiagramKeaModeTargetPropertiesPanel extends ObjectDataInputPanel
 		addSubPanel(targetCoreSubPanel);
 		add(targetCoreSubPanel);
 		
-		addField(createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion()));
+		ObjectDataInputField ratingChoiceField = createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion());
+		addFieldsOnOneLine("", new ObjectDataInputField[]{ratingChoiceField});
 		
 		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
 		addSubPanel(modelessTargetSubPanel);
@@ -51,6 +53,6 @@ public class NonDiagramKeaModeTargetPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Target Properties");
+		return EAM.text("Title|Key Attribute Mode Target Properties");
 	}
 }
