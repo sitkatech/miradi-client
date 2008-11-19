@@ -36,8 +36,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
-import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
-import org.miradi.views.umbrella.PersistentSplitPane;
 
 public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 {
@@ -91,38 +89,9 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 
 	public void restoreSplitters()
 	{
-		if(areAllSplittersAtDefaultLocation())
-			restoreSplittersToGoodDefaults();
-		else
-			restoreSplittersToSavedLocations();
+		// FIXME: Delete this if we don't implement it
 	}
 
-	private void restoreSplittersToSavedLocations()
-	{
-		resourceOtherSplitter.restoreSavedLocation();
-		numbersSplitter.restoreSavedLocation();
-		detailsSplitter.restoreSavedLocation();
-	}
-
-	private void restoreSplittersToGoodDefaults()
-	{
-		detailsSplitter.resetToPreferredSizes();
-		numbersSplitter.resetToPreferredSizes();
-		resourceOtherSplitter.resetToPreferredSizes();
-	}
-
-	private boolean areAllSplittersAtDefaultLocation()
-	{
-		if(!resourceOtherSplitter.isSavedLocationDefault())
-			return false;
-		if(!numbersSplitter.isSavedLocationDefault())
-			return false;
-		if(!detailsSplitter.isSavedLocationDefault())
-			return false;
-		
-		return true;
-	}
-	
 	private void createTables() throws Exception
 	{
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
@@ -159,29 +128,20 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		JScrollPane budgetTotalsScroller = new ScrollPaneWithInvisibleVerticalScrollBar(budgetTotalsTable);
 		addToVerticalController(budgetTotalsScroller);
 
-		resourceOtherSplitter = new PersistentHorizontalSplitPane(this, mainWindow, getSplitterName("Assignment"));
-		numbersSplitter = new PersistentHorizontalSplitPane(resourceOtherSplitter, mainWindow, getSplitterName("Numbers"));
-		detailsSplitter = new PersistentHorizontalSplitPane(numbersSplitter, mainWindow, getSplitterName("Details"));
-
-		detailsSplitter.setLeftComponent(workPlanScroller);
-		detailsSplitter.setRightComponent(budgetScroller);
-		
-		numbersSplitter.setLeftComponent(detailsSplitter);
-		numbersSplitter.setRightComponent(budgetTotalsScroller);
-		
-		resourceOtherSplitter.setLeftComponent(resourceScroller);
-		resourceOtherSplitter.setRightComponent(numbersSplitter);
-		
-		add(resourceOtherSplitter, BorderLayout.CENTER);
+		OneRowPanel tables = new OneRowPanel();
+		tables.add(resourceScroller);
+		tables.add(new WidthSetterComponent(resourceScroller));
+		tables.add(workPlanScroller);
+		tables.add(new WidthSetterComponent(workPlanScroller));
+		tables.add(budgetScroller);
+		tables.add(new WidthSetterComponent(budgetScroller));
+		tables.add(budgetTotalsScroller);
+		tables.add(new WidthSetterComponent(budgetTotalsScroller));
+		add(tables, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 
 	}
 	
-	private String getSplitterName(String subName)
-	{
-		return "PlanningViewAssignmentTable.Splitter." + subName;
-	}
-			
 	protected void addTablesToSelectionController()
 	{
 		selectionController.addTable(resourceTable);
@@ -255,9 +215,5 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 	private PlanningViewBudgetTableModel budgetModel;
 	private PlanningViewBudgetTotalsTableModel budgetTotalsModel;
 	
-	private PersistentSplitPane resourceOtherSplitter;
-	private PersistentSplitPane numbersSplitter;
-	private PersistentSplitPane detailsSplitter;
-
 	private ObjectPicker objectPicker;
 }
