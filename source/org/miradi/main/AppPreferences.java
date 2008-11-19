@@ -120,6 +120,26 @@ public class AppPreferences
 		return languageCode;
 	}
 	
+	public void setNewsText(String newsTextToUse)
+	{
+		newsText = newsTextToUse;
+	}
+	
+	public String getNewsText()
+	{
+		return newsText;
+	}
+	
+	public void setNewsDate(String newsDateToUse)
+	{
+		newsDate = newsDateToUse;
+	}
+	
+	public String getNewsDate()
+	{
+		return newsDate;
+	}
+	
 	public boolean getIsCellRatingsVisible()
 	{
 		return getBoolean(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
@@ -300,6 +320,8 @@ public class AppPreferences
 		json.put(TAG_GRID_VISIBLE, isGridVisible);
 		json.put(TAG_CELL_RATINGS_VISIBLE, isCellRatingsVisible);
 		json.put(TAG_LANGUAGE_CODE, languageCode);
+		json.put(TAG_NEWS_TEXT, newsText);
+		json.put(TAG_NEWS_DATE, newsDate);
 		
 		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
 		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
@@ -360,6 +382,8 @@ public class AppPreferences
 		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, DEFAULT_MAIN_WINDOW_Y_POSITION);
 		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, DEFAULT_IS_CELL_RATING_VISIBLE);
 		languageCode = json.optString(TAG_LANGUAGE_CODE, DEFAULT_LANGUAGE_CODE);
+		newsText = json.optString(TAG_NEWS_TEXT);
+		newsDate = json.optString(TAG_NEWS_DATE);
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
@@ -496,6 +520,8 @@ public class AppPreferences
 	public static final String TAG_MAIN_WINDOW_WIDTH = "MainWindowWidth";
 	public static final String TAG_MAIN_WINDOW_X_POSITION = "MainwWindowX";
 	public static final String TAG_MAIN_WINDOW_Y_POSITION = "MainwWindowY";
+	public static final String TAG_NEWS_TEXT = "NewsText";
+	public static final String TAG_NEWS_DATE = "NewsDate";
 	
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
@@ -561,6 +587,8 @@ public class AppPreferences
 	private int mainWindowXPosition;
 	private int mainWindowYPosition;
 	private String languageCode;
+	private String newsText;
+	private String newsDate;
 	
 	private double diagramZoomSetting;
 	
