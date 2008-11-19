@@ -990,7 +990,7 @@ public class Project
 	
 	public void executeInsideListener(Command command) throws CommandFailedException
 	{
-		if(!inCommandSideEffectMode)
+		if(!isInCommandSideEffectMode())
 		{
 			EAM.internalError(EAM.text("Attempt to execute command from outside command listener"));
 		}
@@ -1001,7 +1001,7 @@ public class Project
 	public void recordCommand(Command command)
 	{
 		Command lastCommand = undoRedoState.getLastRecordedCommand();
-		if(inCommandSideEffectMode)
+		if(isInCommandSideEffectMode())
 		{
 			EAM.internalError(
 					EAM.text("Attempt to execute command from command listener: " + command.getCommandName() +
@@ -1051,7 +1051,7 @@ public class Project
 	void fireCommandExecuted(Command command)
 	{
 		EAM.logVerbose("fireCommandExecuted: " + command.toString());
-		inCommandSideEffectMode = true;
+		beginCommandSideEffectMode();
 		try
 		{
 			CommandExecutedEvent event = new CommandExecutedEvent(command);
@@ -1063,7 +1063,7 @@ public class Project
 		}
 		finally
 		{
-			inCommandSideEffectMode = false;
+			endCommandSideEffectMode();
 		}
 	}
 	
@@ -1307,6 +1307,21 @@ public class Project
 		
 		return size;
 
+	}
+
+	private void beginCommandSideEffectMode()
+	{
+		inCommandSideEffectMode = true;
+	}
+
+	private void endCommandSideEffectMode()
+	{
+		inCommandSideEffectMode = false;
+	}
+
+	private boolean isInCommandSideEffectMode()
+	{
+		return inCommandSideEffectMode;
 	}
 
 	public static final String LIBRARY_VIEW_NAME = "Library";
