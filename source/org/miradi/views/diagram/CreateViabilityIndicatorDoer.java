@@ -28,6 +28,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -43,11 +44,20 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		if (!superIsAvailable)
 			return false;
 		
-		BaseObject baseObject = getObjects()[0];
-		if (!Target.is(baseObject))
+		ORefList[] selectedHierarchies = getSelectedHierarchies();
+		if (selectedHierarchies.length != 1)
+			return false;
+		
+		ORefList selectedHierarchy = selectedHierarchies[0];
+		ORef keaRef = selectedHierarchy.getRefForType(KeyEcologicalAttribute.getObjectType());
+		if (!keaRef.isInvalid())
 			return true;
 		
-		Target target = (Target) baseObject;
+		ORef targetRef = selectedHierarchy.getRefForType(Target.getObjectType());
+		if (targetRef.isInvalid())
+			return false;
+		
+		Target target = Target.find(getProject(), targetRef);
 		if (target.isViabilityModeTNC())
 			return false;
 		
