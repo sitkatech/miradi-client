@@ -37,6 +37,7 @@ import org.miradi.dialogs.viability.NonDiagramSimpleModeTargetPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
@@ -159,7 +160,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
 		
-		ORef firstRef = orefsToUse[0];
+		ORef firstRef = orefsToUse[DEEPEST_INDEX];
 		int objectType = firstRef.getObjectType();
 		if (Goal.getObjectType() == objectType)
 			return goalPropertiesPanel;
@@ -227,7 +228,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 
 	private void showCorrectTargetPropertiesPanel(CommandSetObjectData setCommand)
 	{
-		setObjectRefs(new ORef[]{setCommand.getObjectORef()});
+		ORefList selectedRefs = getSelectedRefs(); 
+		selectedRefs.add(DEEPEST_INDEX, setCommand.getObjectORef());
+		setObjectRefs(selectedRefs.toArray());
 	}
 	
 	public void updateTable()
@@ -250,6 +253,8 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	}
 		
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
+	
+	private static final int DEEPEST_INDEX = 0; 
 	
 	private MainWindow mainWindow;
 	private ObjectPicker objectPicker;
