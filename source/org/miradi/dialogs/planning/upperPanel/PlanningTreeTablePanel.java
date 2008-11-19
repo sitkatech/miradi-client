@@ -210,6 +210,9 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		if (didAffectRelevancyInTree(event))
 			return true;
 		
+		if (isLabelOrIdChange(event))
+			return true;
+		
 		return false;
 	}
 	
