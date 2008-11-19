@@ -69,7 +69,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel.dispose();
 		taskPropertiesInputPanel.dispose();
 		measurementPropertiesPanel.dispose();
-		targetPropertiesPanel.dispose();
+		targetSimpleModePropertiesPanel.dispose();
 		targetKeaModePropertiesPanel.dispose();
 		threatPropertiesPanel.dispose();
 		contributingFactorPropertiesPanel.dispose();
@@ -87,7 +87,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		targetPropertiesPanel = new NonDiagramSimpleModeTargetPropertiesPanel(getProject());
+		targetSimpleModePropertiesPanel = new NonDiagramSimpleModeTargetPropertiesPanel(getProject());
 		targetKeaModePropertiesPanel = new NonDiagramKeaModeTargetPropertiesPanel(getProject());
 		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
 		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
@@ -102,7 +102,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		add(strategyPropertiesPanel);
 		add(taskPropertiesInputPanel);
 		add(measurementPropertiesPanel);
-		add(targetPropertiesPanel);
+		add(targetSimpleModePropertiesPanel);
 		add(targetKeaModePropertiesPanel);
 		add(threatPropertiesPanel);
 		add(contributingFactorPropertiesPanel);
@@ -133,7 +133,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		strategyPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
-		targetPropertiesPanel.setObjectRefs(orefsToUse);
+		targetSimpleModePropertiesPanel.setObjectRefs(orefsToUse);
 		targetKeaModePropertiesPanel.setObjectRefs(orefsToUse);
 		threatPropertiesPanel.setObjectRefs(orefsToUse);
 		contributingFactorPropertiesPanel.setObjectRefs(orefsToUse);
@@ -200,7 +200,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		if (target.isViabilityModeTNC())
 			return targetKeaModePropertiesPanel;
 		
-		return targetPropertiesPanel;
+		return targetSimpleModePropertiesPanel;
 	}
 	
 	private MinimalFactorPropertiesPanel getCausePropertiesPanel(ORef causeRef)
@@ -243,7 +243,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
-	private NonDiagramSimpleModeTargetPropertiesPanel targetPropertiesPanel;
+	private NonDiagramSimpleModeTargetPropertiesPanel targetSimpleModePropertiesPanel;
 	private NonDiagramKeaModeTargetPropertiesPanel targetKeaModePropertiesPanel;
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
