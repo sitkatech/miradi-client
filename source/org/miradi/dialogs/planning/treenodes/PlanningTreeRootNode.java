@@ -111,7 +111,8 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 
 	private void addConceptualModel() throws Exception
 	{
-		children.add(new PlanningTreeConceptualModelNode(project, visibleRows));
+		ORefList conceptualModelRefs = project.getConceptualModelDiagramPool().getORefList();
+		createAndAddChildren(conceptualModelRefs, null);
 	}
 
 	private void addResultsChainDiagrams() throws Exception
