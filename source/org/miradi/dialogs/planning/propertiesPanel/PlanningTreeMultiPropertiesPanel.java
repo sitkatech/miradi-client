@@ -70,6 +70,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		taskPropertiesInputPanel.dispose();
 		measurementPropertiesPanel.dispose();
 		targetPropertiesPanel.dispose();
+		targetKeaModePropertiesPanel.dispose();
 		threatPropertiesPanel.dispose();
 		contributingFactorPropertiesPanel.dispose();
 		intermediateResultPropertiesPanel.dispose();
