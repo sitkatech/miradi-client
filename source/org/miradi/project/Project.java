@@ -1330,25 +1330,25 @@ public class Project
 	
 	private static final String COMMAND_LOG_FILE_NAME = "command.log";
 	
-	ProjectInfo projectInfo;
-	ObjectManager objectManager;
-	UndoRedoState undoRedoState;
-	boolean isExecuting;
-	boolean inCommandSideEffectMode;
+	private ProjectInfo projectInfo;
+	private ObjectManager objectManager;
+	private UndoRedoState undoRedoState;
+	private boolean isExecuting;
+	private boolean inCommandSideEffectMode;
 
-	SimpleThreatRatingFramework simpleThreatFramework;
-	StressBasedThreatRatingFramework stressBasedThreatFramework;
+	private SimpleThreatRatingFramework simpleThreatFramework;
+	private StressBasedThreatRatingFramework stressBasedThreatFramework;
 	
-	ProjectServer database;
-	DiagramClipboard diagramClipboard;
+	private ProjectServer database;
+	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
 
-	Vector commandExecutedListeners;
+	private Vector commandExecutedListeners;
 	
-	boolean inTransaction;
+	private boolean inTransaction;
 	
 	// FIXME: This should go away, but it's difficult
-	String currentViewName;
+	private String currentViewName;
 	
 	public static final int PROJECT_WAS_CREATED = 100;
 	public static final int PROJECT_WAS_OPENED = 200;
