@@ -22,8 +22,8 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
+import org.martus.swing.UiScrollPane;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
 import org.miradi.utils.ObjectsActionButton;
+import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
@@ -109,37 +110,25 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 	
 	private void addTables()
 	{
-		addRowHeightControlledTable(resourceTable);
-		addRowHeightControlledTable(workplanTable);
-		addRowHeightControlledTable(budgetTable);
-		addRowHeightControlledTable(budgetTotalsTable);
-
-		JScrollPane resourceScroller = new ScrollPaneWithInvisibleVerticalScrollBar(resourceTable);
-		addToVerticalController(resourceScroller);
-
-		JScrollPane workPlanScroller = new ScrollPaneWithInvisibleVerticalScrollBar(workplanTable);
-		addToHorizontalController(workPlanScroller);
-		addToVerticalController(workPlanScroller);
-
-		JScrollPane budgetScroller = new ScrollPaneWithInvisibleVerticalScrollBar(budgetTable);
-		addToHorizontalController(budgetScroller);
-		addToVerticalController(budgetScroller);
-
-		JScrollPane budgetTotalsScroller = new ScrollPaneWithInvisibleVerticalScrollBar(budgetTotalsTable);
-		addToVerticalController(budgetTotalsScroller);
-
 		OneRowPanel tables = new OneRowPanel();
-		tables.add(resourceScroller);
-		tables.add(new WidthSetterComponent(resourceScroller));
-		tables.add(workPlanScroller);
-		tables.add(new WidthSetterComponent(workPlanScroller));
-		tables.add(budgetScroller);
-		tables.add(new WidthSetterComponent(budgetScroller));
-		tables.add(budgetTotalsScroller);
-		tables.add(new WidthSetterComponent(budgetTotalsScroller));
+
+		addTableToPanel(tables, resourceTable);
+		addToHorizontalController(addTableToPanel(tables, workplanTable));
+		addToHorizontalController(addTableToPanel(tables, budgetTable));
+		addTableToPanel(tables, budgetTotalsTable);
+		
 		add(tables, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
+	}
 
+	private UiScrollPane addTableToPanel(OneRowPanel tables, TableWithRowHeightSaver table)
+	{
+		addRowHeightControlledTable(table);
+		UiScrollPane scroller = new ScrollPaneWithInvisibleVerticalScrollBar(table);
+		addToVerticalController(scroller);
+		tables.add(scroller);
+		tables.add(new WidthSetterComponent(scroller));
+		return scroller;
 	}
 	
 	protected void addTablesToSelectionController()
