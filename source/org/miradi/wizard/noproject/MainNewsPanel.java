@@ -135,7 +135,7 @@ public class MainNewsPanel extends DisposablePanel
 	private CardLayout cardLayout;
 	private static final String NEW_NEWS_PANEL_DESCRIPTION = "NewNewsPanelDescription";
 	private static final String OLD_NEWS_PANEL_DESCRIPTION = "OldNewsPanelDescription";
-	private static final String NO_NEWS_MESSAGE_HTML_FILE_NAME = "NoNewsMessage.html";
+	private static final String NO_NEWS_MESSAGE_HTML_FILE_NAME = "OldNewsMessage.html";
 	private static final String DATE_TOKEN = "$DATE$";
 	private static final String HTML_NAVIGATION_TAG = "<div class='navigation'>";
 }
