@@ -38,7 +38,7 @@ import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.Translation;
 import org.miradi.wizard.MiradiHtmlViewer;
 
-public class MainNewsPanel extends DisposablePanel implements ActionListener
+public class MainNewsPanel extends DisposablePanel
 {
 	public MainNewsPanel(MainWindow mainWindowToUse, HyperlinkHandler hyperLinkHandlerToUse) throws Exception
 	{
@@ -49,7 +49,7 @@ public class MainNewsPanel extends DisposablePanel implements ActionListener
 		cardLayout = new CardLayout();
 		setLayout(cardLayout);
 
-		OldNewsPanel oldNewsPanel = new OldNewsPanel(this);
+		OldNewsPanel oldNewsPanel = new OldNewsPanel();
 		addPanelAsCard(oldNewsPanel, OLD_NEWS_PANEL_DESCRIPTION);
 		
 		NewsPanel newNewsPanel = new NewsPanel(mainWindow, hyperLinkHandler, this);
@@ -65,12 +65,6 @@ public class MainNewsPanel extends DisposablePanel implements ActionListener
 		add(oldNewsScrollPane, NEW_NEWS_PANEL_DESCRIPTION);
 	}
 	
-	public void actionPerformed(ActionEvent e)
-	{
-		cardLayout.show(this, NEW_NEWS_PANEL_DESCRIPTION);
-		validate();
-		repaint();
-	}
 	
 	public void updateNewNewsText(String newsHtml)
 	{
@@ -84,6 +78,13 @@ public class MainNewsPanel extends DisposablePanel implements ActionListener
 		getAppPreferences().setNewsDate(new MultiCalendar().toIsoDateString());
 	}
 	
+	private void showNewNewsPanel()
+	{
+		cardLayout.show(this, NEW_NEWS_PANEL_DESCRIPTION);
+		validate();
+		repaint();
+	}	
+		
 	private AppPreferences getAppPreferences()
 	{
 		return getMainWindow().getAppPreferences();
@@ -93,14 +94,21 @@ public class MainNewsPanel extends DisposablePanel implements ActionListener
 	{
 		return mainWindow;
 	}
-		
+	
+	class ViewNewsButtonHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			showNewNewsPanel();
+		}
+	}
+	
 	class OldNewsPanel extends OneColumnPanel
 	{
-		public OldNewsPanel(MainNewsPanel parentPanelToUse) throws Exception
+		public OldNewsPanel() throws Exception
 		{
 			super();
 			
-			parentPanel = parentPanelToUse;
 			setBackground(AppPreferences.getSideBarBackgroundColor());
 			addComponents();
 		}	
@@ -115,12 +123,11 @@ public class MainNewsPanel extends DisposablePanel implements ActionListener
 			htmlViewer.setText(HTML_NAVIGATION_TAG + html);
 			add(htmlViewer);
 			viewNewsButton = new PanelButton(EAM.text("View News"));
-			viewNewsButton.addActionListener(parentPanel);
+			viewNewsButton.addActionListener(new ViewNewsButtonHandler());
 			add(viewNewsButton);
 		}
 		
 		private PanelButton viewNewsButton;
-		private MainNewsPanel parentPanel;
 	}
 
 	private HyperlinkHandler hyperLinkHandler;
