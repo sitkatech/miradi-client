@@ -70,19 +70,23 @@ public class WidthSetterComponent extends JComponent
 		g2.drawLine(getWidth() - RIGHT_INDENT, 0, getWidth() - RIGHT_INDENT, getHeight() - 1);
 	}
 	
+	protected void updateWidth(int width)
+	{
+		Dimension newSize = new Dimension(width, controlled.getSize().height);
+		controlled.setSize(newSize);
+		controlled.setPreferredSize(newSize);
+		controlled.setMaximumSize(newSize);
+		controlled.setMinimumSize(newSize);
+		getTopLevelAncestor().validate();
+	}
+
 	class MouseEventHandler extends MouseAdapter implements MouseMotionListener
 	{
 		public void mouseDragged(MouseEvent e)
 		{
-			Dimension oldSize = controlled.getSize();
-			int width = oldSize.width + e.getX();
+			int width = controlled.getSize().width + e.getX();
 			width = Math.max(width, 0);
-			Dimension newSize = new Dimension(width, oldSize.height);
-			controlled.setSize(newSize);
-			controlled.setPreferredSize(newSize);
-			controlled.setMaximumSize(newSize);
-			controlled.setMinimumSize(newSize);
-			getTopLevelAncestor().validate();
+			updateWidth(width);
 		}
 
 		public void mouseMoved(MouseEvent e)
