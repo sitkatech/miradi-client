@@ -175,8 +175,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{
 			subPanel.setObjectRefs(orefsToUse);
 		}
-		orefs = orefsToUse;
-		picker.setObjectRefs(orefs);
+		selectedRefs = orefsToUse;
+		picker.setObjectRefs(selectedRefs);
 	}
 	
 	public DisposablePanel getTabContentsComponent()
@@ -577,7 +577,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public BaseId getObjectIdForType(int objectType)
 	{
-		for (int i=0; i<orefs.length; ++i)
+		for (int i=0; i<selectedRefs.length; ++i)
 		{
 			int type = getORef(i).getObjectType();
 			if (objectType == type)
@@ -588,7 +588,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public ORef getORef(int index)
 	{
-		return orefs[index];
+		return selectedRefs[index];
 	}
 	
 	
@@ -655,14 +655,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public void deleteObjectFromList(BaseId baseId)
 	{
-		Vector orefList = new Vector(Arrays.asList(orefs));
-		for (int i=0; i<orefs.length; ++i)
+		Vector orefList = new Vector(Arrays.asList(selectedRefs));
+		for (int i=0; i<selectedRefs.length; ++i)
 		{
 			BaseId objectId = getORef(i).getObjectId();
 			if (objectId.equals(baseId))
 				orefList.remove(i);
 		}
-		orefs = (ORef[])orefList.toArray(new ORef[0]);
+		selectedRefs = (ORef[])orefList.toArray(new ORef[0]);
 	}
 
 	boolean wasOurObjectJustDeleted(CommandExecutedEvent event)
@@ -683,12 +683,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	public BaseId getObjectId()
 	{
-		return getORef(orefs.length-1).getObjectId();
+		return getORef(selectedRefs.length-1).getObjectId();
 	}
 	
 	public ORefList getSelectedRefs()
 	{
-		return new ORefList(orefs);
+		return new ORefList(selectedRefs);
 	}
 	
 	class Picker implements ObjectPicker
@@ -700,21 +700,21 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 		public ORefList[] getSelectedHierarchies()
 		{
-			return new ORefList[] {new ORefList(orefs)};
+			return new ORefList[] {new ORefList(selectedRefs)};
 		}
 
 		public BaseObject[] getSelectedObjects()
 		{
 			Vector<BaseObject> objects = new Vector<BaseObject>();
-			for(int i = 0; i < orefs.length; ++i)
-				objects.add(getProject().findObject(orefs[i]));
+			for(int i = 0; i < selectedRefs.length; ++i)
+				objects.add(getProject().findObject(selectedRefs[i]));
 			
 			return objects.toArray(new BaseObject[0]);
 		}
 
 		public ORefList getSelectionHierarchy()
 		{
-			return new ORefList(orefs);
+			return new ORefList(selectedRefs);
 		}
 
 		public void clearSelection()
@@ -774,7 +774,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	private Project project;
 	private Picker picker;
-	private ORef[] orefs;
+	private ORef[] selectedRefs;
 	private Vector fields;
 	private Vector<AbstractObjectDataInputPanel> subPanels;
 }
