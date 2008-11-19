@@ -76,7 +76,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 			getProject().executeCommand(create);
 			
 			ORef createdRef = create.getObjectRef();
-			CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(parentOfNewIndicator,	getIndicatorListTag(parentOfNewIndicator), createdRef.getObjectId(), getIndicatorIndex(parentOfNewIndicator));
+			CommandSetObjectData addChild = CommandSetObjectData.createAppendIdCommand(parentOfNewIndicator, getIndicatorListTag(parentOfNewIndicator), createdRef.getObjectId());
 			getProject().executeCommand(addChild);
 			
 			getPicker().ensureObjectVisible(createdRef);
@@ -90,16 +90,5 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
-	}
-
-	private int getIndicatorIndex(BaseObject baseObject)
-	{
-		if (Target.is(baseObject))
-			return ((Target)baseObject).getIndicatorRefs().size();
-		
-		if (KeyEcologicalAttribute.is(baseObject))
-			return ((KeyEcologicalAttribute)baseObject).getIndicatorRefs().size();
-		
-		throw new RuntimeException("This method is only for kea or targets.");
 	}
 }
