@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.base.DisposablePanelWithDescription;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.task.TaskPropertiesInputPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
@@ -28,11 +28,13 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningViewTaskPropertiesPanel extends DisposablePanelWithDescription
+public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanel
 {
 	public PlanningViewTaskPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(new OneColumnGridLayout());
+		super(mainWindowToUse.getProject(), ORef.INVALID);
+
+		setLayout(new OneColumnGridLayout());
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		taskPropertiesInputPanel = TaskPropertiesInputPanel.createWithoutVisibilityPanel(mainWindowToUse);
