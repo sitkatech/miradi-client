@@ -59,11 +59,20 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	public void addObjectToExpandedList(ORef ref) throws Exception
 	{
 		ORefList expandedList = getExpandedNodeList();
-		if(expandedList.contains(ref))
-			return;
-		
-		expandedList.add(ref);
+		addToExpandedList(expandedList, ref);
 		saveExpandedPath(expandedList);
+	}
+
+	private void addToExpandedList(ORefList expandedList, ORef refToAdd)
+	{
+		if(!expandedList.contains(refToAdd))
+			expandedList.add(refToAdd);
+	}
+	
+	private void removeFromExpandedList(ORefList expandedList, ORef refToRemove)
+	{
+		if(expandedList.contains(refToRemove))
+			expandedList.remove(refToRemove);
 	}
 	
 	public void restoreTreeState() throws Exception
@@ -79,13 +88,16 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		ignoreNotifications = true;
 		try
 		{
+			int fallbackRow = getSelectedRow();
 			TreePath selectedPath = tree.getSelectionPath();
+			ORef selectedRef = getObjectRefFromPath(selectedPath);
+			
 			TreeTableNode root = (TreeTableNode)tree.getModel().getRoot();
 			TreePath rootPath = new TreePath(root);
 			if(recursiveChangeNodeExpansionState(expandedNodeRefs, rootPath))
 			{
 				treeTableModelAdapter.fireTableDataChanged();
-				tree.addSelectionPath(selectedPath);
+				selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, fallbackRow);
 			}
 		}
 		finally
@@ -93,6 +105,18 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 			ignoreNotifications = false;
 			updateAutomaticRowHeights();
 		}
+	}
+
+	private ORef getObjectRefFromPath(TreePath path)
+	{
+		if(path == null)
+			return ORef.INVALID;
+		
+		TreeTableNode node = (TreeTableNode)path.getLastPathComponent();
+		if(node == null)
+			return ORef.INVALID;
+		
+		return node.getObjectReference();
 	}
 	
 	public void expandAll(ViewData viewData) throws Exception
@@ -163,54 +187,38 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 
 	public void treeCollapsed(TreeExpansionEvent event)
 	{
-		swingTreeExpansionWasChanged();
+		swingTreeExpansionWasChanged(event.getPath());
 	}
 
 	public void treeExpanded(TreeExpansionEvent event)
 	{
-		swingTreeExpansionWasChanged();
+		swingTreeExpansionWasChanged(event.getPath());
 	}
 	
-	private void swingTreeExpansionWasChanged()
+	private void swingTreeExpansionWasChanged(TreePath path)
 	{
 		if(ignoreNotifications)
 			return;
 	
 		try
 		{
-			int rowCount = tree.getRowCount();
+			ORef ref = getObjectRefFromPath(path);
+			int fallbackRow = tree.getRowForPath(path);
+
 			ORefList newExpansionRefs = getExpandedNodeList();
-			for (int i = 0; i < rowCount; i ++)
-			{
-				TreePath treePath = tree.getPathForRow(i);
-				if (tree.isExpanded(treePath))
-				{
-					TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
-					ORef nodeRef = node.getObjectReference();
-					if (nodeRef != null && !newExpansionRefs.contains(nodeRef))
-						newExpansionRefs.add(nodeRef);
-				}
-				
-				if (tree.isCollapsed(treePath))
-				{
-					TreeTableNode node = (TreeTableNode)treePath.getLastPathComponent();
-					ORef nodeRef = node.getObjectReference();
-					if (newExpansionRefs.contains(nodeRef) && isParentNode(node))
-						newExpansionRefs.remove(nodeRef);
-				}
-			}
+			if(tree.isExpanded(path))
+				addToExpandedList(newExpansionRefs, ref);
+			else
+				removeFromExpandedList(newExpansionRefs, ref);
+
 			saveExpandedPath(newExpansionRefs);
+			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref, fallbackRow);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog("Unexpected error has occurred saving tree expansion state");
 		}
-	}
-
-	private boolean isParentNode(TreeTableNode node)
-	{
-		return node.getChildCount() != 0;
 	}
 
 	private void saveExpandedPath(ORefList newObjRefList) throws Exception
