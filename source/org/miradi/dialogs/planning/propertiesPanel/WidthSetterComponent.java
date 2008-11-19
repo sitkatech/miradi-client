@@ -47,7 +47,7 @@ public class WidthSetterComponent extends JComponent
 	public Dimension getSize()
 	{
 		Dimension size = new Dimension(controlled.getSize());
-		size.width = DEFAULT_WIDTH;
+		size.width = DEFAULT_SETTER_WIDTH;
 		return size;
 	}
 	
@@ -55,7 +55,7 @@ public class WidthSetterComponent extends JComponent
 	public Dimension getPreferredSize()
 	{
 		Dimension size = new Dimension(controlled.getPreferredSize());
-		size.width = DEFAULT_WIDTH;
+		size.width = DEFAULT_SETTER_WIDTH;
 		return size;
 	}
 	
@@ -77,7 +77,8 @@ public class WidthSetterComponent extends JComponent
 		controlled.setPreferredSize(newSize);
 		controlled.setMaximumSize(newSize);
 		controlled.setMinimumSize(newSize);
-		getTopLevelAncestor().validate();
+		if(getTopLevelAncestor() != null)
+			getTopLevelAncestor().validate();
 	}
 
 	class MouseEventHandler extends MouseAdapter implements MouseMotionListener
@@ -85,7 +86,7 @@ public class WidthSetterComponent extends JComponent
 		public void mouseDragged(MouseEvent e)
 		{
 			int width = controlled.getSize().width + e.getX();
-			width = Math.max(width, 0);
+			width = Math.max(width, MINIMUM_WIDTH);
 			updateWidth(width);
 		}
 
@@ -94,7 +95,8 @@ public class WidthSetterComponent extends JComponent
 		}
 	}
 	
-	private static final int DEFAULT_WIDTH = 10;
+	private static final int MINIMUM_WIDTH = 5;
+	private static final int DEFAULT_SETTER_WIDTH = 10;
 	private static final int RIGHT_INDENT = 4;
 	
 	private JComponent controlled;
