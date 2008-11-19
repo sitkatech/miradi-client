@@ -25,6 +25,7 @@ import java.awt.Rectangle;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.dialogs.diagram.StrategyPropertiesPanel;
 import org.miradi.dialogs.goal.GoalPropertiesPanel;
@@ -49,7 +50,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
+public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPanel
 {
 	public PlanningTreeMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
@@ -126,7 +127,8 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
-		cardLayout.show(this, findPanel(orefsToUse).getPanelDescription());
+		currentCard = findPanel(orefsToUse);
+		cardLayout.show(this, currentCard.getPanelDescription());
 	
 		taskPropertiesInputPanel.setObjectRefs(orefsToUse);
 		goalPropertiesPanel.setObjectRefs(orefsToUse);
@@ -152,7 +154,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		repaint();
 	}
 	
-	private DisposablePanelWithDescription findPanel(ORef[] orefsToUse)
+	private ObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
@@ -236,6 +238,12 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		taskPropertiesInputPanel.dataWasChanged();
 	}
 	
+	@Override
+	public void setFocusOnFirstField()
+	{
+		currentCard.setFocusOnFirstField();
+	}
+	
 	public MainWindow getMainWindow()
 	{
 		return mainWindow;
@@ -246,6 +254,7 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 	private MainWindow mainWindow;
 	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
+	private ObjectDataInputPanel currentCard;
 	
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
