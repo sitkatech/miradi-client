@@ -990,7 +990,7 @@ public class Project
 	
 	public void executeInsideListener(Command command) throws CommandFailedException
 	{
-		if(!firingCommandExecutedEvents)
+		if(!inCommandSideEffectMode)
 		{
 			EAM.internalError(EAM.text("Attempt to execute command from outside command listener"));
 		}
@@ -1001,7 +1001,7 @@ public class Project
 	public void recordCommand(Command command)
 	{
 		Command lastCommand = undoRedoState.getLastRecordedCommand();
-		if(firingCommandExecutedEvents)
+		if(inCommandSideEffectMode)
 		{
 			EAM.internalError(
 					EAM.text("Attempt to execute command from command listener: " + command.getCommandName() +
@@ -1051,7 +1051,7 @@ public class Project
 	void fireCommandExecuted(Command command)
 	{
 		EAM.logVerbose("fireCommandExecuted: " + command.toString());
-		firingCommandExecutedEvents = true;
+		inCommandSideEffectMode = true;
 		try
 		{
 			CommandExecutedEvent event = new CommandExecutedEvent(command);
@@ -1063,7 +1063,7 @@ public class Project
 		}
 		finally
 		{
-			firingCommandExecutedEvents = false;
+			inCommandSideEffectMode = false;
 		}
 	}
 	
@@ -1334,7 +1334,7 @@ public class Project
 	ObjectManager objectManager;
 	UndoRedoState undoRedoState;
 	boolean isExecuting;
-	boolean firingCommandExecutedEvents;
+	boolean inCommandSideEffectMode;
 
 	SimpleThreatRatingFramework simpleThreatFramework;
 	StressBasedThreatRatingFramework stressBasedThreatFramework;
