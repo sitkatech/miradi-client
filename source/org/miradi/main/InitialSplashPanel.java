@@ -53,12 +53,16 @@ public class InitialSplashPanel extends HelpAboutPanel
 	public InitialSplashPanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, AboutDoer.buildMainSection() + AboutDoer.buildEndSection());
-		selectedLanguageCode = mainWindowToUse.getAppPreferences().getLanguageCode();
+		previousLanguageCode = mainWindowToUse.getAppPreferences().getLanguageCode();
 	}
 	
 	public String getSelectedLanguageCode()
 	{
-		return selectedLanguageCode;
+		int selected = languageDropdown.getSelectedIndex();
+		if(selected >= 0)
+			return languageDropdown.getChoiceItemAt(selected).getCode();
+
+		return null;
 	}
 
 	@Override
@@ -67,7 +71,7 @@ public class InitialSplashPanel extends HelpAboutPanel
 		UiButton close = new UiButton(new CloseAction(dlg, EAM.text("Button|Continue")));
 
 		languageDropdown = new ChoiceItemComboBoxWithMaxAsPreferredSize(getAvailableLanguageChoices());
-		languageDropdown.setSelectedCode(selectedLanguageCode);
+		selectLanguage(previousLanguageCode);
 		languageDropdown.addActionListener(new LanguageSelectionListener());
 
 		Box buttonBar = Box.createHorizontalBox();
@@ -80,6 +84,13 @@ public class InitialSplashPanel extends HelpAboutPanel
 
 		setCloseButton(close);
 		return buttonBar;
+	}
+
+	private void selectLanguage(String codeToSelect)
+	{
+		languageDropdown.setSelectedCode(codeToSelect);
+		if(languageDropdown.getSelectedIndex() < 0)
+			languageDropdown.setSelectedIndex(0);
 	}
 
 	private ChoiceItem[] getAvailableLanguageChoices()
@@ -103,11 +114,11 @@ public class InitialSplashPanel extends HelpAboutPanel
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			int selected = languageDropdown.getSelectedIndex();
-			if(selected >= 0)
-				selectedLanguageCode = languageDropdown.getChoiceItemAt(selected).getCode();
+			String languageCode = getSelectedLanguageCode();
+			if(languageCode == null)
+				return;
 			
-			if(selectedLanguageCode.equals(OTHER_LANGUAGE_CODE))
+			if(languageCode.equals(OTHER_LANGUAGE_CODE))
 			{
 				tryToInstallOtherLanguages();
 				languageDropdown.removeAllItems();
@@ -292,5 +303,5 @@ public class InitialSplashPanel extends HelpAboutPanel
 	private static final String OTHER_LANGUAGE_CODE = "xxx";
 
 	private ChoiceItemComboBoxWithMaxAsPreferredSize languageDropdown;
-	private String selectedLanguageCode;
+	private String previousLanguageCode;
 }
