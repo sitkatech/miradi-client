@@ -35,7 +35,7 @@ import org.miradi.objects.Measurement;
 
 public class DeleteKeyEcologicalAttributeMeasurementDoer extends AbstractKeyEcologicalAttributeDoer
 {
-	public Vector<Integer> getRequiredObjectType()
+	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector(1);
 		types.add(Measurement.getObjectType());

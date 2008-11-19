@@ -36,7 +36,7 @@ abstract public class AbstractKeyEcologicalAttributeDoer extends ObjectsDoer
 		if ((getObjects().length != 1))
 			return false;
 		
-		return getRequiredObjectType().contains(getSelectedObjectType());
+		return getRequiredObjectTypes().contains(getSelectedObjectType());
 	}
 	
 	protected static String getIndicatorListTag(BaseObject baseObject)
@@ -50,5 +50,5 @@ abstract public class AbstractKeyEcologicalAttributeDoer extends ObjectsDoer
 		throw new RuntimeException("Can only add indicators to targets and keas");
 	}
 	
-	abstract public Vector<Integer> getRequiredObjectType();
+	abstract public Vector<Integer> getRequiredObjectTypes();
 }
