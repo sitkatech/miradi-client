@@ -166,7 +166,9 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		for(TreePath treePath : fullExpandedNodeList)
 		{
 			TreeTableNode node = (TreeTableNode) treePath.getLastPathComponent();
-			fullyExpandedObjectRefs.add(node.getObjectReference());
+			ORef ref = node.getObjectReference();
+			if(!fullyExpandedObjectRefs.contains(ref))
+				fullyExpandedObjectRefs.add(ref);
 		}
 		
 		return fullyExpandedObjectRefs;
