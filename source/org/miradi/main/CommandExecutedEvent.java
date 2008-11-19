@@ -74,11 +74,16 @@ public class CommandExecutedEvent
 
 	public boolean isSetDataCommandWithThisTypeAndTag(int objectType, String tag)
 	{
+		return isSetDataCommandWithThisType(objectType) && isSetDataCommandWithThisTag(tag);
+	}
+	
+	public boolean isSetDataCommandWithThisTag(String tag)
+	{
 		if(!isSetDataCommand())
 			return false;
 
 		CommandSetObjectData cmd = (CommandSetObjectData)getCommand();
-		return (cmd.getObjectType() == objectType && cmd.getFieldTag().equals(tag));
+		return (cmd.getFieldTag().equals(tag));
 	}
 	
 	public boolean isSetDataCommandWithThisType(int objectType)
@@ -100,4 +105,5 @@ public class CommandExecutedEvent
 	}
 	
 	private Command command;
+
 }
