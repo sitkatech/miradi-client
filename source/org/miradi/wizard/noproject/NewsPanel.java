@@ -34,9 +34,11 @@ import org.miradi.wizard.WizardRightSideHtmlViewer;
 
 public class NewsPanel extends WizardRightSideHtmlViewer
 {
-	public NewsPanel(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler)
+	public NewsPanel(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler, MainNewsPanel mainNewsPanelToUse)
 	{
 		super(mainWindow, hyperLinkHandler);
+		
+		mainNewsPanel = mainNewsPanelToUse;
 		setBackground(AppPreferences.getSideBarBackgroundColor());
 		try
 		{
@@ -93,7 +95,9 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 	private void updateText()
 	{
 		setText("<div class='navigation'>" + newsHtml);
+		mainNewsPanel.updateNewNewsText(newsHtml);
 	}
 	
 	private String newsHtml;
+	private MainNewsPanel mainNewsPanel;
 }
