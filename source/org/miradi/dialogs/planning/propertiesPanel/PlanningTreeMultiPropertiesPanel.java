@@ -22,7 +22,6 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
@@ -37,7 +36,6 @@ import org.miradi.dialogs.viability.NonDiagramSimpleModeTargetPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
@@ -223,16 +221,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			updateTable();
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
-			showCorrectTargetPropertiesPanel((CommandSetObjectData) event.getCommand());		
+			reloadSelectedRefs();		
 	}
 
-	private void showCorrectTargetPropertiesPanel(CommandSetObjectData setCommand)
-	{
-		ORefList selectedRefs = getSelectedRefs(); 
-		selectedRefs.add(DEEPEST_INDEX, setCommand.getObjectORef());
-		setObjectRefs(selectedRefs.toArray());
-	}
-	
 	public void updateTable()
 	{
 		if (taskPropertiesInputPanel == null)

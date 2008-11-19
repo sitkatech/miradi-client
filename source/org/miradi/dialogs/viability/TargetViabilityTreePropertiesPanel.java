@@ -22,7 +22,6 @@ package org.miradi.dialogs.viability;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
@@ -155,12 +154,7 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 	{
 		super.commandExecuted(event);
 		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
-			showCorrectTargetPropertiesPanel((CommandSetObjectData) event.getCommand());		
-	}
-
-	private void showCorrectTargetPropertiesPanel(CommandSetObjectData setCommand)
-	{
-		setObjectRefs(new ORef[]{setCommand.getObjectORef()});
+			reloadSelectedRefs();		
 	}
 
 	private CardLayout cardLayout;

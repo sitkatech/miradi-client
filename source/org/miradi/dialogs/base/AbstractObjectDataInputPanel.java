@@ -150,6 +150,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		return picker;
 	}
+
+	public void reloadSelectedRefs()
+	{
+		setObjectRefs(getSelectedRefs().toArray());
+	}
 	
 	public void setObjectRef(ORef oref)
 	{
