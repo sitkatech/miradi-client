@@ -35,6 +35,7 @@ public class MethodListTableModel extends ObjectListTableModel
 
 	private static String[] COLUMN_TAGS = {
 		Task.TAG_LABEL,
+		Task.TAG_SHORT_LABEL,
 	};
 
 }
