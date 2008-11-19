@@ -35,6 +35,7 @@ import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -84,12 +85,21 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 												wereMeasuremetNodesAddedOrRemoved ||
 												wereFactorIndicatorNodesAddedOrRemoved;
 		
+		final boolean needsReSort = isLabelOrIdChange(event);
+		
 		final boolean wasTargetModeChanged = event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE);
 		
-		if(wereNodesAddedOrRemoved || wasTargetModeChanged)
+		if(wereNodesAddedOrRemoved || wasTargetModeChanged || needsReSort)
 		{
+			ORef selectedRef = ORef.INVALID;
+			BaseObject selectedObject = getSelectedObject();
+			if(selectedObject != null)
+				selectedRef = selectedObject.getRef();
+				
 			treeTableModel.rebuildEntireTree();
 			restoreTreeExpansionState();
+			
+			tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, 0);
 		} 
 		else if(isTreeExpansionCommand(event))
 		{
