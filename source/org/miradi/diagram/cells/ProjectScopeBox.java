@@ -73,7 +73,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public String getToolTipString() 
 	{
 		String toolTip = "<HTML>" + getText() +  
-						 "<BR> Vision: " + getVision();
+						 "<BR>" + EAM.text("Vision") + ": " + getProjectVision();
 
 		return toolTip;
 	}
@@ -96,11 +96,18 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	
 	public String getVision()
 	{
-		ProjectMetadata metadata = getProject().getMetadata();
-		if (metadata.getProjectVision().length() == 0)
+		String projectVision = getProjectVision();
+		if (projectVision.length() == 0)
 			return "";
 		
 		return EAM.text("Vision");
+	}
+
+	private String getProjectVision()
+	{
+		ProjectMetadata metadata = getProject().getMetadata();
+		String projectVision = metadata.getProjectVision();
+		return projectVision;
 	}
 
 	private Project getProject()
