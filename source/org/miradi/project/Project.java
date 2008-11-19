@@ -988,11 +988,11 @@ public class Project
 		}
 	}
 	
-	public void executeInsideListener(Command command) throws CommandFailedException
+	public void executeAsSideEffect(Command command) throws CommandFailedException
 	{
 		if(!isInCommandSideEffectMode())
 		{
-			EAM.internalError(EAM.text("Attempt to execute command from outside command listener"));
+			EAM.internalError(EAM.text("Attempt to execute command as side effect when not in that mode"));
 		}
 		
 		executeWithoutRecording(command);
@@ -1004,7 +1004,7 @@ public class Project
 		if(isInCommandSideEffectMode())
 		{
 			EAM.internalError(
-					EAM.text("Attempt to execute command from command listener: " + command.getCommandName() +
+					EAM.text("Attempt to execute command while in side effect mode: " + command.getCommandName() +
 					EAM.text(" within ") + lastCommand.getCommandName())
 					);
 		}
