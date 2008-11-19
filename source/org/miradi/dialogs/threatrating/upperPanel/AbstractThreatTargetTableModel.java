@@ -26,6 +26,10 @@ import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
 import org.miradi.ids.FactorId;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
@@ -42,7 +46,22 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	public void resetTargetAndThreats()
 	{
 		threatRows =  getProject().getCausePool().getDirectThreats();
-		targetColumns =  getProject().getTargetPool().getTargets();
+		targetColumns = getOnlyTargetsInConceptualModelDiagrams().toArray(new Target[0]);
+	}
+
+	private Vector<Target> getOnlyTargetsInConceptualModelDiagrams()
+	{
+		Vector<Target> targetsInConceptualModelDiagrams = new Vector();
+		Target[] allTargets =  getProject().getTargetPool().getTargets();
+		for (int index = 0; index < allTargets.length; ++index)
+		{
+			ORefList diagramRefsContainingTarget = DiagramObject.getDiagramRefsContainingFactor(getProject(), allTargets[index].getRef());
+			ORef conceptualModelDiagramRef = diagramRefsContainingTarget.getRefForType(ConceptualModelDiagram.getObjectType());
+			if (!conceptualModelDiagramRef.isInvalid())
+				targetsInConceptualModelDiagrams.add(allTargets[index]);
+		}
+		
+		return targetsInConceptualModelDiagrams;
 	}
 	
 	public Factor[] getThreatsSortedBy(int sortByTableColumn)
