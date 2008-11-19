@@ -118,10 +118,9 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		try
 		{
 			addObjectToExpandedList(ref);
+			super.ensureObjectVisible(ref);
 			selectObjectAfterSwingClearsItDueToTreeStructureChange(ref, 0);
 			
-			// TODO: This isn't working...probably also needs to be run in a thread like select
-			super.ensureObjectVisible(ref);
 		}
 		catch (Exception e)
 		{

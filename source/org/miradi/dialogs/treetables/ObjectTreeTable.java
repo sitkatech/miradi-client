@@ -177,6 +177,8 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	{
 		// NOTE: This code hasn't been proven to work...we believe it needs to be called
 		// from inside invokeLater and that it will work if we do that
+		// NOTE: This code might not even be needed any more, because 
+		// selecting an object now automatically also scrolls it to be visible
 		TreePath path = getTreeTableModel().findObject(getTreeTableModel().getPathToRoot(), ref);
 		getTree().scrollPathToVisible(path);
 	}
@@ -254,6 +256,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		public void run()
 		{
 			treeTable.selectObject(ref, row);
+			treeTable.ensureSelectedRowVisible();
 		}
 		
 		private ObjectTreeTable treeTable;
