@@ -34,8 +34,6 @@ import javax.swing.tree.TreePath;
 
 import org.martus.swing.UiButton;
 import org.miradi.actions.Actions;
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.ObjectCollectionPanel;
@@ -171,30 +169,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	{
 	}
 	
-	protected boolean isDeleteCommand(CommandExecutedEvent event, int type)
-	{
-		if (! event.isDeleteObjectCommand())
-			return false;
-		
-		CommandDeleteObject deleteCommand = (CommandDeleteObject) event.getCommand();
-		if (deleteCommand.getObjectType() != type)
-			return false;
-		
-		return true;
-	}
-
-	protected boolean isCreateCommand(CommandExecutedEvent event, int type)
-	{
-		if (! event.isCreateObjectCommand())
-			return false;
-	
-		CommandCreateObject createCommand = (CommandCreateObject) event.getCommand();
-		if (createCommand.getObjectType() != type)
-			return false;
-		
-		return true;
-	}
-
 	protected boolean isSelectedObjectModification(CommandExecutedEvent event, int typeToCheck)
 	{
 		if (! event.isSetDataCommand())
