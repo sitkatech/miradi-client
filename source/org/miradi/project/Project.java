@@ -1309,12 +1309,12 @@ public class Project
 
 	}
 
-	private void beginCommandSideEffectMode()
+	public void beginCommandSideEffectMode()
 	{
 		inCommandSideEffectMode = true;
 	}
 
-	private void endCommandSideEffectMode()
+	public void endCommandSideEffectMode()
 	{
 		inCommandSideEffectMode = false;
 	}
