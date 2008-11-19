@@ -34,7 +34,7 @@ import org.miradi.views.targetviability.doers.AbstractKeyEcologicalAttributeDoer
 
 public class DeleteViabilityIndicatorDoer extends AbstractKeyEcologicalAttributeDoer
 {	
-	public Vector<Integer> getRequiredObjectType()
+	public Vector<Integer> getRequiredObjectTypes()
 	{
 		Vector<Integer> types = new Vector(1);
 		types.add(Indicator.getObjectType());
