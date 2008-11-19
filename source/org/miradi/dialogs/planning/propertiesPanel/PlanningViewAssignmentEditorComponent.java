@@ -127,7 +127,8 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		UiScrollPane scroller = new ScrollPaneWithInvisibleVerticalScrollBar(table);
 		addToVerticalController(scroller);
 		tables.add(scroller);
-		tables.add(new WidthSetterComponent(scroller));
+		PersistentWidthSetterComponent widthSetter = new PersistentWidthSetterComponent(getMainWindow(), scroller, table.getUniqueTableIdentifier());
+		tables.add(widthSetter);
 		return scroller;
 	}
 	
