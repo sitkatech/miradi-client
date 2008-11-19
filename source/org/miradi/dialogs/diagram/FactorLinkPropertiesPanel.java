@@ -171,7 +171,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 			if (!bidirectionalMode.equals(childLinkBidirectionalMode))
 			{
 				CommandSetObjectData setBidirectionality = new CommandSetObjectData(childLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, bidirectionalMode);
-				getProject().executeInsideListener(setBidirectionality);
+				getProject().executeAsSideEffect(setBidirectionality);
 			}
 		}
 	}

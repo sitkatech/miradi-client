@@ -112,10 +112,10 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		try
 		{
 			CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
-			model.getProject().executeInsideListener(setLocation);
+			model.getProject().executeAsSideEffect(setLocation);
 			
 			CommandSetObjectData setSize = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(size));
-			model.getProject().executeInsideListener(setSize);
+			model.getProject().executeAsSideEffect(setSize);
 		}
 		catch (Exception e)
 		{

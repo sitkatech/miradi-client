@@ -64,7 +64,7 @@ public class DiagramProjectPreferencesPanel extends ObjectDataInputPanel
 				return;
 			
 			CommandSetObjectData changeToDefaultMode = new CommandSetObjectData(getProject().getCurrentViewData().getRef(), ViewData.TAG_CURRENT_MODE, ViewData.MODE_DEFAULT);
-			getProject().executeInsideListener(changeToDefaultMode);
+			getProject().executeAsSideEffect(changeToDefaultMode);
 
 			mainWindow.getCurrentView().refresh();
 		}
