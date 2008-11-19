@@ -32,10 +32,4 @@ public class PlanningTreeConceptualModelPageNode extends AbstractPlanningTreeDia
 		diagramObject = (ConceptualModelDiagram)project.findObject(refToUse);
 		rebuild();
 	}
-
-	public String getObjectTypeName()
-	{
-		return "Never Visible";
-	}
-
 }
