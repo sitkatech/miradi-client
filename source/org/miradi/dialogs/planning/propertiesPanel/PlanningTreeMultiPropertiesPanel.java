@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
@@ -217,6 +218,14 @@ public class PlanningTreeMultiPropertiesPanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		if (event.isSetDataCommand())
 			updateTable();
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+			showCorrectTargetPropertiesPanel((CommandSetObjectData) event.getCommand());		
+	}
+
+	private void showCorrectTargetPropertiesPanel(CommandSetObjectData setCommand)
+	{
+		setObjectRefs(new ORef[]{setCommand.getObjectORef()});
 	}
 	
 	public void updateTable()
