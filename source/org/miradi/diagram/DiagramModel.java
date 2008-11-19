@@ -893,7 +893,7 @@ public class DiagramModel extends DefaultGraphModel
 	public void updateProjectScopeBox()
 	{
 		String newText = getProject().getMetadata().getShortProjectScope();
-		getProjectScopeBox().setText(EAM.text("Project Scope: " + newText));
+		getProjectScopeBox().setText(EAM.text("Project Scope") + ": " + newText);
 		getProjectScopeBox().autoSurroundTargets();
 	}
 
