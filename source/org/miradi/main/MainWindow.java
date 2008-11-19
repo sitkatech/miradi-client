@@ -438,6 +438,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	public void createOrOpenProject(File projectDirectory)
 	{
 		preventActionUpdates();
+		project.beginCommandSideEffectMode();
 		try
 		{
 			int projectAction = project.createOrOpen(projectDirectory);
@@ -488,6 +489,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			allowActionUpdates();
 			updateActionsAndStatusBar();
+			project.endCommandSideEffectMode();
 		}
 	}
 	
