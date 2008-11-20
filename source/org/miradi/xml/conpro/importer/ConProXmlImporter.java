@@ -664,8 +664,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private void populateThreatStressRatings(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
 	{
 		NodeList threatStressRatingNodes = getNodes(stressNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
-		if (threatStressRatingNodes.getLength() > 0)
-			setData(getProject().getMetadata().getRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 		
 		for (int nodeIndex = 0; nodeIndex < threatStressRatingNodes.getLength(); ++nodeIndex)
 		{
