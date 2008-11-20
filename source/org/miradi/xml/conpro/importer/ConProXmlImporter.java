@@ -462,7 +462,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importField(projectSumaryNode, GOAL_COMMENT, metadataRef, ProjectMetadata.TAG_PROJECT_VISION);
 		importField(projectSumaryNode, PLANNING_TEAM_COMMENT, metadataRef, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 		importField(projectSumaryNode, LESSONS_LEARNED, metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
-		importThreatRatingValueInMode(projectSumaryNode, STRESSLESS_THREAT_RANK, metadataRef, ProjectMetadata.TAG_THREAT_RATING_MODE);
+		importThreatRatingValueInMode(projectSumaryNode, metadataRef);
 		importTeamMembers(projectSumaryNode, metadataRef);
 		
 		String[] ecoRegionElementHierarchy = new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, ECOREGIONS, ECOREGION_CODE}; 
@@ -703,17 +703,19 @@ public class ConProXmlImporter implements ConProMiradiXml
 		setData(objectRef, tag, codes.toString());
 	}
 
-	private void importThreatRatingValueInMode(Node node, String path, ORef ref, String tag) throws Exception
+	private void importThreatRatingValueInMode(Node projectSummaryNode, ORef metadataRef) throws Exception
 	{
-		String stresslessThreatRating = getPathData(node, new String[]{path});
-		String mode = ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE;
+		String stresslessThreatRatingValue = getPathData(projectSummaryNode, new String[]{STRESSLESS_THREAT_RANK, });
+		String threatRatingModeCode = getThreatRatingMode(stresslessThreatRatingValue);
+		setData(metadataRef, ProjectMetadata.TAG_THREAT_RATING_MODE, threatRatingModeCode);
+	}
+
+	private String getThreatRatingMode(String stresslessThreatRating)
+	{
 		if (stresslessThreatRating.length() > 0)
-		{
-			ChoiceQuestion question = getProject().getQuestion(ThreatRatingModeChoiceQuestion.class);
-			mode = ((ThreatRatingModeChoiceQuestion)question).SIMPLE_BASED_CODE;
-		}
+			return ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE;
 		
-		setData(ref, tag, mode);
+		return ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE;
 	}
 	
 	private void importField(Node node, String path, ORef ref, String tag) throws Exception
