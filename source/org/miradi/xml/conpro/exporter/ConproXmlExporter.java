@@ -121,10 +121,31 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
 		writeOptionalProgressReportStatus(out, indicator);
 		writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
-		writeOptionalElement(out, ANNUAL_COST, Double.toString(indicator.getProportionalBudgetCost())); 
+		writeOptionalElement(out, ANNUAL_COST, getAnnualCost(indicator)); 
 		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
 
 		writeEndElement(out, INDICATOR);
+	}
+
+	private String getAnnualCost(Indicator indicator) throws Exception
+	{
+		if (indicator.isBudgetOverrideMode())
+			return getBudgetOverrideValue(indicator); 
+	
+		return getIndicatorProportionalBudgetCost(indicator);
+	}
+
+	private String getBudgetOverrideValue(Indicator indicator) throws Exception
+	{
+		if (indicator.isEmptyBudgetCostOverride())
+			return null;
+	
+		return getIndicatorProportionalBudgetCost(indicator);
+	}
+	
+	private String getIndicatorProportionalBudgetCost(Indicator indicator) throws Exception
+	{
+		return Double.toString(indicator.getProportionalBudgetCost());
 	}
 
 	private void writeOptionalProgressReportStatus(UnicodeWriter out, BaseObject baseObject) throws Exception
