@@ -507,11 +507,15 @@ abstract public class BaseObject
 
 	private double getBudgetCostOverrideValue() throws Exception
 	{
-		String override = budgetCostOverride.get();
-		if (override.length() == 0)
+		if (isEmptyBudgetCostOverride())
 			return 0;
 		
-		return Double.parseDouble(override);
+		return Double.parseDouble(budgetCostOverride.get());
+	}
+
+	public boolean isEmptyBudgetCostOverride()
+	{
+		return budgetCostOverride.get().length() == 0;
 	}
 	
 	
