@@ -136,8 +136,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 	public static final String GOOD = StatusQuestion.GOOD;
 	public static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
 	
-	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY,
-												Measurement.TAG_EMPTY, 
+	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY, 
 												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,
@@ -145,7 +144,8 @@ public class ViabilityMeasurementNode extends TreeTableNode
 												FAIR,
 												GOOD,
 												VERY_GOOD,
-												Measurement.TAG_STATUS_CONFIDENCE};
+												Measurement.TAG_STATUS_CONFIDENCE,
+												Measurement.TAG_EMPTY,};
 	
 	private Measurement measurement;
 	private ViabilityIndicatorNode parentNode;	

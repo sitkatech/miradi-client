@@ -146,7 +146,6 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		Indicator.TAG_LABEL,
 		Indicator.TAG_EMPTY,
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
-		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		Indicator.TAG_EMPTY,
 		
 		Indicator.TAG_INDICATOR_THRESHOLD,
@@ -155,6 +154,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		Indicator.TAG_INDICATOR_THRESHOLD,
 		
 		Indicator.TAG_RATING_SOURCE,
+		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 	};
 	
 	private Project project;
