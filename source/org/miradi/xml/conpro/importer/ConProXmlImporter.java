@@ -715,7 +715,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			mode = ((ThreatRatingModeChoiceQuestion)question).STRESS_BASED_CODE;
 		}
 		
-		setData(ref, ProjectMetadata.TAG_THREAT_RATING_MODE, mode);
+		setData(ref, tag, mode);
 	}
 	
 	private void importField(Node node, String path, ORef ref, String tag) throws Exception
