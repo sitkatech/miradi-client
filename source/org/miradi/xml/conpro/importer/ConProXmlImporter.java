@@ -705,9 +705,9 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void importThreatRatingValueInMode(Node node, String path, ORef ref, String tag) throws Exception
 	{
-		String data = getPathData(node, new String[]{path});
+		String stresslessThreatRating = getPathData(node, new String[]{path});
 		String mode = ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE;
-		if (data.length() > 0)
+		if (stresslessThreatRating.length() > 0)
 		{
 			ChoiceQuestion question = getProject().getQuestion(ThreatRatingModeChoiceQuestion.class);
 			mode = ((ThreatRatingModeChoiceQuestion)question).SIMPLE_BASED_CODE;
