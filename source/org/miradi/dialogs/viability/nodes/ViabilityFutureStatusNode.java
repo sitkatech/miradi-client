@@ -104,13 +104,13 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
-		Goal.TAG_EMPTY,
 		
 		StatusQuestion.POOR,
 		StatusQuestion.FAIR,
 		StatusQuestion.GOOD,
 	    StatusQuestion.VERY_GOOD,
 
+		Goal.TAG_EMPTY,
 		Goal.TAG_EMPTY,
 	};
 	
