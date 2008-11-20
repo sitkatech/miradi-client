@@ -46,6 +46,7 @@ public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanel
 	
 	public void dispose()
 	{
+		super.dispose();
 		taskPropertiesInputPanel.dispose();
 		taskPropertiesInputPanel = null;
 		
