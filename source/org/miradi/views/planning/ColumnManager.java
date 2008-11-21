@@ -187,6 +187,7 @@ public class ColumnManager
 	{
 		String[] list = {
 				Assignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL,
+				Assignment.PSEUDO_TAG_OWNING_TASK_NAME,
 				};
 		return new CodeList(list);
 	}

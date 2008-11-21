@@ -76,9 +76,21 @@ public class Assignment extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_LABEL))
 			return getProjectResourceLabel();
 		
+		if (fieldTag.equals(PSEUDO_TAG_OWNING_TASK_NAME))
+			return getOwningTaskName();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getOwningTaskName()
+	{
+		Factor owningFactor = getDirectOrIndirectOwningFactor();
+		if (owningFactor == null)
+			return "";
+		
+		return owningFactor.toString();
+	}
+
 	private String getProjectResourceLabel()
 	{
 		ProjectResource projectResource = ProjectResource.find(getProject(), getResourceRef());
@@ -147,12 +159,14 @@ public class Assignment extends BaseObject
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
 		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
+		pseudoOwningTaskNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_TASK_NAME);
 		
 		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
+		addField(PSEUDO_TAG_OWNING_TASK_NAME, pseudoOwningTaskNameLabel);
 	}
 	
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
@@ -160,6 +174,8 @@ public class Assignment extends BaseObject
 	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
+	public static final String PSEUDO_TAG_OWNING_TASK_NAME = "PseudoTagOwningTaskName";
+	
 	
 	public static final String OBJECT_NAME = "Assignment";
 	
@@ -168,4 +184,5 @@ public class Assignment extends BaseObject
 	private BaseIdData accountingIdData;
 	private BaseIdData fundingIdData;
 	private PseudoStringData pseudoProjectResourceLabel;
+	private PseudoStringData pseudoOwningTaskNameLabel;
 }
