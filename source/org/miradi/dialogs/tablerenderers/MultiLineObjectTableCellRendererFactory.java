@@ -53,7 +53,7 @@ public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRend
 
 	public int getPreferredHeight(JTable table, int row, int column, Object value)
 	{
-		TableCellPreferredHeightProvider viewer = (TableCellPreferredHeightProvider)getRendererComponent(table, false, false, row, column, value);
+		TableCellPreferredHeightProvider viewer = (TableCellPreferredHeightProvider)getTableCellRendererComponent(table, value, false, false, row, column);
 
 		return viewer.getPreferredHeight(table, row, column, value);
 	}
