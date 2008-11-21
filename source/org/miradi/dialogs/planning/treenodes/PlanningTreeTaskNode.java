@@ -42,6 +42,12 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		if(!visibleRows.contains(Task.OBJECT_NAME))
 			return;
 		
+		ORefList assignmentRefs = task.getAssignmentRefs();
+		for (int index = 0; index < assignmentRefs.size(); ++index)
+		{
+			children.add(new PlanningTreeAssignmentNode(project, assignmentRefs.get(index), visibleRows));
+		}
+		
 		ORefList subtaskRefs = task.getSubtaskRefs();
 		for(int i = 0; i < subtaskRefs.size(); ++i)
 		{

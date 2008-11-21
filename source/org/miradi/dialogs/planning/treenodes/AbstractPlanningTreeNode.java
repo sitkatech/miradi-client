@@ -28,6 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
@@ -297,6 +298,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
 		if (type == Task.getObjectType())
 			return new PlanningTreeTaskNode(project, refToAdd, visibleRows);
+		if (type == Assignment.getObjectType())
+			return new PlanningTreeAssignmentNode(project, refToAdd, visibleRows);
+		
 				
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}

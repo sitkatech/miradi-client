@@ -26,6 +26,7 @@ import org.miradi.actions.ActionTreeCreateMethodIconOnly;
 import org.miradi.actions.ActionTreeCreateTaskIconOnly;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
+import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
@@ -42,6 +43,7 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
@@ -100,6 +102,7 @@ public class PlanningViewRowsLegendPanel extends AbstractPlanningViewLegendPanel
 		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.METHOD_NAME, actions.getObjectsAction(ActionTreeCreateMethodIconOnly.class), picker);
 		addPickerButtonLineWithCheckBox(panel, Task.getObjectType(), Task.OBJECT_NAME, actions.getObjectsAction(ActionTreeCreateTaskIconOnly.class), picker);
 		addIconLineWithCheckBox(panel, Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon());
+		addIconLineWithCheckBox(panel, Assignment.getObjectType(), Assignment.OBJECT_NAME, new AssignmentIcon());
 		
 		return panel;
 	}
