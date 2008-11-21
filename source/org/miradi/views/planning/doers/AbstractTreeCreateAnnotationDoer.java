@@ -40,10 +40,7 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 		if (!Factor.isFactor(selectedObject))
 			return false;
 		
-		if (canHaveIndicators((Factor) selectedObject))
-			return true;
-				
-		return canHaveObjectives((Factor) selectedObject);
+		return isAvailableForFactor((Factor) selectedObject);
 	}
 	
 	@Override
@@ -78,7 +75,5 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 	
 	abstract protected String getAnnotationTag();
 	
-	abstract protected boolean canHaveObjectives(Factor factor);
-	
-	abstract protected boolean canHaveIndicators(Factor factor);
+	abstract protected boolean isAvailableForFactor(Factor factor);
 }

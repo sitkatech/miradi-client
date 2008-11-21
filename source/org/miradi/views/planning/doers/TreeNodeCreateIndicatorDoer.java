@@ -35,14 +35,8 @@ public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoe
 	}
 
 	@Override
-	protected boolean canHaveIndicators(Factor factor)
+	protected boolean isAvailableForFactor(Factor factor)
 	{
 		return factor.canHaveIndicators();
-	}
-
-	@Override
-	protected boolean canHaveObjectives(Factor factor)
-	{
-		return false;
 	}
 }
