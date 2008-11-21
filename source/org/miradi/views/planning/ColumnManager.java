@@ -189,6 +189,7 @@ public class ColumnManager
 				Assignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL,
 				Assignment.PSEUDO_TAG_OWNING_TASK_NAME,
 				Assignment.PSEUDO_TAG_WHEN,
+				Assignment.PSEUDO_TAG_BUDGET_TOTAL,
 				};
 		return new CodeList(list);
 	}
