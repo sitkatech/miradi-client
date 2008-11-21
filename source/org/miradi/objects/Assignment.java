@@ -80,7 +80,7 @@ public class Assignment extends BaseObject
 			return getProjectResourceLabel();
 		
 		if (fieldTag.equals(PSEUDO_TAG_OWNING_FACTOR_NAME))
-			return getOwningTaskName();
+			return getOwningFactorName();
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHEN))
 			return getWhen();
@@ -127,7 +127,7 @@ public class Assignment extends BaseObject
 		}
 	}
 
-	private String getOwningTaskName()
+	private String getOwningFactorName()
 	{
 		Factor owningFactor = getDirectOrIndirectOwningFactor();
 		if (owningFactor == null)
@@ -204,7 +204,7 @@ public class Assignment extends BaseObject
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
 		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
-		pseudoOwningTaskNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME);
+		pseudoOwningFactorNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME);
 		pseudoWhen = new PseudoStringData(PSEUDO_TAG_WHEN);
 		pseudoBudgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		
@@ -213,7 +213,7 @@ public class Assignment extends BaseObject
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
-		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, pseudoOwningTaskNameLabel);
+		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, pseudoOwningFactorNameLabel);
 		addField(PSEUDO_TAG_WHEN, pseudoWhen);
 		addField(PSEUDO_TAG_BUDGET_TOTAL, pseudoBudgetTotal);
 	}
@@ -223,7 +223,7 @@ public class Assignment extends BaseObject
 	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
-	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningTaskName";
+	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
 	public static final String PSEUDO_TAG_WHEN = "PseudoWhen";
 	public static final String PSEUDO_TAG_BUDGET_TOTAL = "PseudoBudgetTotal";
 	
@@ -235,7 +235,7 @@ public class Assignment extends BaseObject
 	private BaseIdData accountingIdData;
 	private BaseIdData fundingIdData;
 	private PseudoStringData pseudoProjectResourceLabel;
-	private PseudoStringData pseudoOwningTaskNameLabel;
+	private PseudoStringData pseudoOwningFactorNameLabel;
 	private PseudoStringData pseudoWhen;
 	private PseudoStringData pseudoBudgetTotal;
 }
