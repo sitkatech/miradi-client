@@ -28,6 +28,8 @@ import org.miradi.objectdata.DateRangeEffortListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.project.BudgetCalculator;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
@@ -83,14 +85,40 @@ public class Assignment extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_WHEN))
 			return getWhen();
 		
+		if (fieldTag.equals(PSEUDO_TAG_BUDGET_TOTAL))
+			return getBudgetTotal();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getBudgetTotal()
+	{
+		try
+		{
+			//TODO should these variables be only initialized once in project?
+			BudgetCalculator totalsCalculator = new BudgetCalculator(getProject());
+			DateRange dateRange = getProject().getProjectCalendar().combineStartToEndProjectRange();
+			CurrencyFormat currencyFormatter = getProject().getCurrencyFormatterWithCommas();
+
+			double totalCost = totalsCalculator.getTotalCost(this, dateRange);
+			return currencyFormatter.format(totalCost);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "Error";
+		}
+	}
+
 	private String getWhen()
 	{
 		try
 		{
-			return getDetails().getCombinedDateRange().toString();
+			DateRange combinedDateRange = getDetails().getCombinedDateRange();
+			if (combinedDateRange != null)
+				return combinedDateRange.toString();
+			
+			return "";
 		}
 		catch (Exception e)
 		{
@@ -178,6 +206,7 @@ public class Assignment extends BaseObject
 		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		pseudoOwningTaskNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_TASK_NAME);
 		pseudoWhen = new PseudoStringData(PSEUDO_TAG_WHEN);
+		pseudoBudgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		
 		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
@@ -186,6 +215,7 @@ public class Assignment extends BaseObject
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
 		addField(PSEUDO_TAG_OWNING_TASK_NAME, pseudoOwningTaskNameLabel);
 		addField(PSEUDO_TAG_WHEN, pseudoWhen);
+		addField(PSEUDO_TAG_BUDGET_TOTAL, pseudoBudgetTotal);
 	}
 	
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
@@ -195,6 +225,7 @@ public class Assignment extends BaseObject
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	public static final String PSEUDO_TAG_OWNING_TASK_NAME = "PseudoTagOwningTaskName";
 	public static final String PSEUDO_TAG_WHEN = "PseudoWhen";
+	public static final String PSEUDO_TAG_BUDGET_TOTAL = "PseudoBudgetTotal";
 	
 	
 	public static final String OBJECT_NAME = "Assignment";
@@ -206,4 +237,5 @@ public class Assignment extends BaseObject
 	private PseudoStringData pseudoProjectResourceLabel;
 	private PseudoStringData pseudoOwningTaskNameLabel;
 	private PseudoStringData pseudoWhen;
+	private PseudoStringData pseudoBudgetTotal;
 }
