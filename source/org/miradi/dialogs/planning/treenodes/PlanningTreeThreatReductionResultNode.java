@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Indicator;
@@ -58,6 +59,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 				IntermediateResult.getObjectType(),
 				Task.getObjectType(),
 				Measurement.getObjectType(),
+				Assignment.getObjectType(),
 			};
 	}
 
