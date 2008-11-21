@@ -144,8 +144,6 @@ public class ViewData extends BaseObject
 		currentMode = new StringData(TAG_CURRENT_MODE);
 		chainModeFactorRefs = new ORefListData(TAG_CHAIN_MODE_FACTOR_REFS);
 		currentTab = new IntegerData(TAG_CURRENT_TAB);
-		currentSortBy = new StringData(TAG_CURRENT_SORT_BY);
-		currentSortDirecton = new StringData(TAG_CURRENT_SORT_DIRECTION);
 		expandedNodesList = new ORefListData(TAG_CURRENT_EXPANSION_LIST);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
@@ -159,8 +157,6 @@ public class ViewData extends BaseObject
 		addField(TAG_CURRENT_MODE, currentMode);
 		addField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
 		addField(TAG_CURRENT_TAB, currentTab);
-		addField(TAG_CURRENT_SORT_BY, currentSortBy);
-		addField(TAG_CURRENT_SORT_DIRECTION, currentSortDirecton);
 		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		
@@ -174,8 +170,6 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
-	public static final String TAG_CURRENT_SORT_BY = "CurrentSortBy";
-	public static final String TAG_CURRENT_SORT_DIRECTION = "CurrentSortDirecton";
 	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
 	
@@ -186,19 +180,11 @@ public class ViewData extends BaseObject
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
 
-	public static final String SORT_ASCENDING = "ASCENDING";
-	public static final String SORT_DESCENDING = "DESCENDING";
-	public static final String SORT_SUMMARY = "SUMMARY";
-	public static final String SORT_TARGETS = "TARGETS";
-	public static final String SORT_THREATS = "THREATS";
-	
 	public static final String OBJECT_NAME = "ViewData";
 	
 	private IntegerData currentTab;
 	private StringData currentMode;
 	private ORefListData chainModeFactorRefs;
-	private StringData currentSortBy;
-	private StringData currentSortDirecton;
 	private ORefData currentResultsChainRef;
 	private ORefData currentConceptualModelRef;
 	private ORefListData expandedNodesList;
