@@ -23,6 +23,7 @@ import java.awt.Dimension;
 
 import javax.swing.JTable;
 
+import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.main.MainWindow;
 
@@ -33,7 +34,7 @@ public class ThreatStressRatingTable extends EditableObjectTable
 		super(mainWindowToUse, threatStressRatingTableModel);
 		rebuildColumnEditorsAndRenderers();
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-
+		listenForColumnWidthChanges(this);
 		//TODO shouldn't set row height to constant value
 		setRowHeight(26);
 	}
@@ -78,6 +79,11 @@ public class ThreatStressRatingTable extends EditableObjectTable
 			if (threatStressRatingTableModel.isThreatRatingColumn(modelColumn))
 				createReadonlyComboQuestionColumn(threatStressRatingTableModel.createThreatStressRatingQuestion(modelColumn), tableColumn);
 		}
+	}
+
+	protected void listenForColumnWidthChanges(JTable table)
+	{
+		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 
 	public String getUniqueTableIdentifier()
