@@ -239,6 +239,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
 				return Assignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
+			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
+				return Assignment.PSEUDO_TAG_OWNING_TASK_NAME;
 		}
 		
 		return columnTag;
