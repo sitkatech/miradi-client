@@ -70,6 +70,24 @@ public class Assignment extends BaseObject
 		return detailListData.getDateRangeEffortList();
 	}
 	
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_LABEL))
+			return getProjectResourceLabel();
+		
+		return super.getPseudoData(fieldTag);
+	}
+	
+	private String getProjectResourceLabel()
+	{
+		ProjectResource projectResource = ProjectResource.find(getProject(), getResourceRef());
+		if (projectResource == null)
+			return "";
+		
+		return projectResource.getInitials();
+	}
+
 	public DateRange getCombinedEffortListDateRange() throws Exception
 	{
 		return getDetails().getCombinedDateRange();
@@ -128,17 +146,20 @@ public class Assignment extends BaseObject
 		detailListData = new DateRangeEffortListData(TAG_DATERANGE_EFFORTS);
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
+		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		
 		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
+		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
 	}
 	
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
+	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	
 	public static final String OBJECT_NAME = "Assignment";
 	
@@ -146,4 +167,5 @@ public class Assignment extends BaseObject
 	private DateRangeEffortListData detailListData;
 	private BaseIdData accountingIdData;
 	private BaseIdData fundingIdData;
+	private PseudoStringData pseudoProjectResourceLabel;
 }

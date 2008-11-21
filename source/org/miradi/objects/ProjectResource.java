@@ -119,7 +119,7 @@ public class ProjectResource extends BaseObject
 		return EAM.text("Label|(Undefined Resource)");
 	}
 
-	private String getInitials()
+	public String getInitials()
 	{
 		return initials.get();
 	}

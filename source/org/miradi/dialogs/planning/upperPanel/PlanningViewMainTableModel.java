@@ -24,6 +24,7 @@ import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -232,6 +233,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return Measurement.TAG_DETAIL;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
+		}
+		
+		if(Assignment.is(nodeType))
+		{
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+				return Assignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 		}
 		
 		return columnTag;
