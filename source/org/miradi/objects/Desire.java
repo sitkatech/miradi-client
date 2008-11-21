@@ -27,7 +27,6 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.DirectThreatSet;
-import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -107,9 +106,6 @@ abstract public class Desire extends BaseObject
 		
 		if(fieldTag.equals(PSEUDO_TAG_DIRECT_THREATS))
 			return getRelatedLabelsAsMultiLine(new DirectThreatSet());
-		
-		if(fieldTag.equals(PSEUDO_TAG_STRATEGIES))
-			return getRelatedLabelsAsMultiLine(new NonDraftStrategySet());
 		
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
 			return getOwner().getLabel();
@@ -359,7 +355,6 @@ abstract public class Desire extends BaseObject
 		
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		multiLineDirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
-		multiLineStrategies = new PseudoStringData(PSEUDO_TAG_STRATEGIES);
 		multiLineFactor = new PseudoStringData(PSEUDO_TAG_FACTOR);
 		relevantIndicatorRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 		relevantStrategyRefs = new PseudoORefListData(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
@@ -376,7 +371,6 @@ abstract public class Desire extends BaseObject
 	
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDirectThreats);
-		addField(PSEUDO_TAG_STRATEGIES, multiLineStrategies);
 		addField(PSEUDO_TAG_FACTOR, multiLineFactor);
 		addField(PSEUDO_TAG_RELEVANT_INDICATOR_REFS, relevantIndicatorRefs);
 		addField(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS, relevantStrategyRefs);
@@ -396,7 +390,6 @@ abstract public class Desire extends BaseObject
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS = "PseudoLatestProgressPercentDetails";
 	public final static String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public final static String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
-	public final static String PSEUDO_TAG_STRATEGIES = "PseudoTagStrategies";
 	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 
 	public static final String OBJECT_NAME = "Desire";
@@ -409,7 +402,6 @@ abstract public class Desire extends BaseObject
 	private ORefListData progressPercentRefs;
 	private PseudoStringData multiLineTargets;
 	private PseudoStringData multiLineDirectThreats;
-	private PseudoStringData multiLineStrategies;
 	private PseudoStringData multiLineFactor;
 	private PseudoORefListData relevantIndicatorRefs;
 	private PseudoORefListData relevantStrategyRefs;
