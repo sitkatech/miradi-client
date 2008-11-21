@@ -52,7 +52,6 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Objective.getObjectType(), Desire.TAG_FULL_TEXT));
 
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_FACTOR));
-		addField(createReadonlyTextField(Objective.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
 		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		

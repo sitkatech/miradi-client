@@ -56,7 +56,6 @@ public class GoalPropertiesPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Goal.getObjectType(), Desire.TAG_FULL_TEXT));
 		
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));
-		addField(createReadonlyTextField(Goal.PSEUDO_TAG_STRATEGIES));
 		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
 		
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
