@@ -26,7 +26,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Task;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeDoer
@@ -41,17 +40,12 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 		if (!Factor.isFactor(selectedObject))
 			return false;
 		
-		return canHaveIndicatorsObjectiveAnnotations((Factor) selectedObject);
+		if (canHaveIndicators((Factor) selectedObject))
+			return true;
+				
+		return canHaveObjectives((Factor) selectedObject);
 	}
-
-	protected boolean canHaveIndicatorsObjectiveAnnotations(Factor selectedFactor)
-	{
-		if (Task.is(selectedFactor))
-			return ((Task)selectedFactor).canHaveIndicators();
-		
-		return selectedFactor.canHaveObjectives();
-	}
-
+	
 	@Override
 	public void doIt() throws CommandFailedException
 	{
@@ -83,4 +77,8 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 	abstract protected int getAnnotationType();
 	
 	abstract protected String getAnnotationTag();
+	
+	abstract protected boolean canHaveObjectives(Factor factor);
+	
+	abstract protected boolean canHaveIndicators(Factor factor);
 }
