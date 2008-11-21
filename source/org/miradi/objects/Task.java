@@ -128,6 +128,11 @@ public class Task extends Factor
 		return ObjectType.TASK;
 	}
 	
+	public boolean canHaveIndicators()
+	{
+		return false;
+	}
+	
 	public static boolean canOwnThisType(int type)
 	{
 		switch(type)
