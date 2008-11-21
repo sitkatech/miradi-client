@@ -79,7 +79,7 @@ public class Assignment extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_LABEL))
 			return getProjectResourceLabel();
 		
-		if (fieldTag.equals(PSEUDO_TAG_OWNING_TASK_NAME))
+		if (fieldTag.equals(PSEUDO_TAG_OWNING_FACTOR_NAME))
 			return getOwningTaskName();
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHEN))
@@ -204,7 +204,7 @@ public class Assignment extends BaseObject
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
 		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
-		pseudoOwningTaskNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_TASK_NAME);
+		pseudoOwningTaskNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME);
 		pseudoWhen = new PseudoStringData(PSEUDO_TAG_WHEN);
 		pseudoBudgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		
@@ -213,7 +213,7 @@ public class Assignment extends BaseObject
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
-		addField(PSEUDO_TAG_OWNING_TASK_NAME, pseudoOwningTaskNameLabel);
+		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, pseudoOwningTaskNameLabel);
 		addField(PSEUDO_TAG_WHEN, pseudoWhen);
 		addField(PSEUDO_TAG_BUDGET_TOTAL, pseudoBudgetTotal);
 	}
@@ -223,7 +223,7 @@ public class Assignment extends BaseObject
 	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
-	public static final String PSEUDO_TAG_OWNING_TASK_NAME = "PseudoTagOwningTaskName";
+	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningTaskName";
 	public static final String PSEUDO_TAG_WHEN = "PseudoWhen";
 	public static final String PSEUDO_TAG_BUDGET_TOTAL = "PseudoBudgetTotal";
 	
