@@ -50,20 +50,6 @@ public class TestViewData extends TestCaseWithProject
 	}
 
 	
-	public void testCurrentSortData() throws Exception
-	{
-		
-		ViewData vd1 = new ViewData(getObjectManager(), new BaseId(33));
-		vd1.setData(ViewData.TAG_CURRENT_SORT_BY, "TAREGT");
-		assertEquals("TAREGT", vd1.getData(ViewData.TAG_CURRENT_SORT_BY));
-
-		ViewData vd2 = new ViewData(getObjectManager(), new BaseId(34));
-		vd2.setData(ViewData.TAG_CURRENT_SORT_DIRECTION, "ASCENDING");
-		assertEquals("ASCENDING", vd2.getData(ViewData.TAG_CURRENT_SORT_DIRECTION));
-		
-	}
-	
-	
 	public void testMode() throws Exception
 	{
 		ViewData vd = new ViewData(getObjectManager(), new BaseId(33));
