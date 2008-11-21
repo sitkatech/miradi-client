@@ -33,4 +33,16 @@ public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoe
 	{
 		return Factor.TAG_INDICATOR_IDS;
 	}
+
+	@Override
+	protected boolean canHaveIndicators(Factor factor)
+	{
+		return factor.canHaveIndicators();
+	}
+
+	@Override
+	protected boolean canHaveObjectives(Factor factor)
+	{
+		return false;
+	}
 }
