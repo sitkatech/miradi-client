@@ -116,7 +116,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		add(createLegendButtonPanel(mainWindow.getActions()));
 		
 		DiagramObject diagramObject = getCurrentDiagramObject();
-		if (diagramObject != null && getMainWindow().isDemoMode())
+		if (diagramObject != null)
 			addTaggedObjectSetPanel(diagramObject);
 		
 		updateCheckBoxes();
