@@ -60,7 +60,6 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FundingSource;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
@@ -366,12 +365,6 @@ abstract public class DiagramPaster
 
 			BaseId oldId = json.getId(BaseObject.TAG_ID);
 			ORef oldObjectRef = new ORef(type, oldId);
-
-			//FIXME this needs to be resolved with a better solution.  Currently waiting for feed back
-			//Note,  there are two of these FIXME s that are needed to disable the sharing of GBs
-			boolean IS_PASTE_GROUP_BOXES_AS_SHARED_TEMP_DISABLED = GroupBox.is(oldObjectRef);
-			if (IS_PASTE_GROUP_BOXES_AS_SHARED_TEMP_DISABLED)
-				continue;
 			
 			if (!shouldCreateObject(oldObjectRef))
 				continue;
@@ -430,12 +423,6 @@ abstract public class DiagramPaster
 		
 		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 		ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
-		
-		//FIXME this needs to be resolved with a better solution.  Currently waiting for feed back
-		//Note,  there are two of these FIXME s that are needed to disable the sharing of GBs
-		boolean IS_PASTE_GROUP_BOXES_AS_SHARED_TEMP_DISABLED = oldWrappedRef.equals(newWrappedRef) && GroupBox.is(oldWrappedRef);
-		if (IS_PASTE_GROUP_BOXES_AS_SHARED_TEMP_DISABLED)
-			return;
 		
 		if (diagramAlreadyContainsAlias(newWrappedRef))
 		{

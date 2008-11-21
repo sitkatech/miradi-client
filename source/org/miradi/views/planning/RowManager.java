@@ -25,6 +25,7 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
@@ -62,6 +63,7 @@ public class RowManager
 		masterRowList.add(Task.METHOD_NAME);
 		masterRowList.add(Task.OBJECT_NAME);
 		masterRowList.add(Measurement.OBJECT_NAME);
+		masterRowList.add(Assignment.OBJECT_NAME);
 	
 		return masterRowList;
 	}

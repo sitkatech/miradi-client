@@ -28,6 +28,7 @@ import javax.swing.JTree;
 import javax.swing.tree.TreeCellRenderer;
 
 import org.miradi.icons.ActivityIcon;
+import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
@@ -48,6 +49,7 @@ import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
@@ -128,6 +130,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		contributingFactorRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(contributingFactorRenderer, new ContributingFactorIcon(), getPlainFont());
+		
+		assignmentRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(assignmentRenderer, new AssignmentIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -184,6 +189,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = textBoxRenderer;
 		else if(node.getType() == GroupBox.getObjectType())
 			renderer = groupBoxRenderer;
+		else if(Assignment.is(node.getType()))
+			renderer = assignmentRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -268,4 +275,5 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private	VariableHeightTreeCellRenderer textBoxRenderer;
 	private	VariableHeightTreeCellRenderer groupBoxRenderer;
 	private VariableHeightTreeCellRenderer contributingFactorRenderer;
+	private VariableHeightTreeCellRenderer assignmentRenderer;
 }

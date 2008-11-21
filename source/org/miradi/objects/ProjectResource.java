@@ -134,7 +134,7 @@ public class ProjectResource extends BaseObject
 		return result;
 	}
 	
-	String getGivenName()
+	public String getGivenName()
 	{
 		return givenName.get();
 	}
