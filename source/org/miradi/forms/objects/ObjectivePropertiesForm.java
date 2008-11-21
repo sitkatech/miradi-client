@@ -33,7 +33,6 @@ public class ObjectivePropertiesForm extends FieldPanelSpec
 		addLabelAndFieldsWithLabels(EAM.text("Objective"), type, new String[]{Objective.TAG_SHORT_LABEL, Objective.TAG_LABEL});
 		addLabelAndField(type, Desire.TAG_FULL_TEXT);
 		addLabelAndField(type, Objective.PSEUDO_TAG_FACTOR);
-		addLabelAndField(type, Objective.PSEUDO_TAG_STRATEGIES);
 		addLabelAndField(type, Objective.PSEUDO_TAG_DIRECT_THREATS);
 		addLabelAndField(type, Objective.PSEUDO_TAG_TARGETS);
 		addLabelAndField(type, Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);

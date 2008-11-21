@@ -32,7 +32,6 @@ public class GoalPropertiesForm extends FieldPanelSpec
 		addLabelAndField(Goal.getObjectType(), Desire.TAG_FULL_TEXT);
 		
 		addLabelAndField(Goal.getObjectType(), Desire.PSEUDO_TAG_FACTOR);
-		addLabelAndField(Goal.getObjectType(), Desire.PSEUDO_TAG_STRATEGIES);
 		addLabelAndField(Goal.getObjectType(), Desire.PSEUDO_TAG_DIRECT_THREATS);
 		addLabelAndField(Goal.getObjectType(), Desire.TAG_COMMENTS);
 	}
