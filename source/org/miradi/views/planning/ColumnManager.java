@@ -25,6 +25,7 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
@@ -181,6 +182,14 @@ public class ColumnManager
 				};
 		return new CodeList(list);		
 	}
+	
+	private static CodeList getAssignmentColumns()
+	{
+		String[] list = {
+				Assignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL,
+				};
+		return new CodeList(list);
+	}
 
 	public static CodeList getVisibleColumnCodes(ViewData viewData)
 	{
@@ -262,6 +271,9 @@ public class ColumnManager
 		
 		if (propertyName.equals(ThreatReductionResult.OBJECT_NAME))
 			return ColumnManager.getThreatReductionResultColumns();
+		
+		if (propertyName.equals(Assignment.OBJECT_NAME))
+			return ColumnManager.getAssignmentColumns();
 		
 		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);
 		return new CodeList();
