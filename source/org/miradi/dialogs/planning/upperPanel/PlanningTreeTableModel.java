@@ -84,8 +84,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	public String getColumnTagForNode(int nodeType, int column)
 	{
-		String columnTag = getColumnTag(column);
-		return columnTag;
+		return getColumnTag(column);
 	}
 
 	protected void rebuildNode()
