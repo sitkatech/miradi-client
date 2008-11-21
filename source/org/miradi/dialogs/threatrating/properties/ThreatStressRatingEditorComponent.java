@@ -22,6 +22,7 @@ package org.miradi.dialogs.threatrating.properties;
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import org.miradi.actions.ActionManageStresses;
 import org.miradi.actions.Actions;
@@ -68,8 +69,9 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 	
 	private void addTablesWithManageStressesButton()
 	{
-		MiradiScrollPane resourceScroller = new MiradiScrollPane(threatStressRatingTable);
-		add(resourceScroller, BorderLayout.CENTER);
+		MiradiScrollPane scroller = new MiradiScrollPane(threatStressRatingTable);
+		scroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		add(scroller, BorderLayout.CENTER);
 		
 		JPanel manageStressesPanel = createManageStressesComponent(mainWindow.getActions());
 		add(manageStressesPanel, BorderLayout.BEFORE_FIRST_LINE);
