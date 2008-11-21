@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.AssignmentId;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.TaskId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.DateRangeEffortListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
@@ -79,9 +80,25 @@ public class Assignment extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_OWNING_TASK_NAME))
 			return getOwningTaskName();
 		
+		if (fieldTag.equals(PSEUDO_TAG_WHEN))
+			return getWhen();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getWhen()
+	{
+		try
+		{
+			return getDetails().getCombinedDateRange().toString();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
 	private String getOwningTaskName()
 	{
 		Factor owningFactor = getDirectOrIndirectOwningFactor();
@@ -160,6 +177,7 @@ public class Assignment extends BaseObject
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
 		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		pseudoOwningTaskNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_TASK_NAME);
+		pseudoWhen = new PseudoStringData(PSEUDO_TAG_WHEN);
 		
 		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
@@ -167,6 +185,7 @@ public class Assignment extends BaseObject
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
 		addField(PSEUDO_TAG_OWNING_TASK_NAME, pseudoOwningTaskNameLabel);
+		addField(PSEUDO_TAG_WHEN, pseudoWhen);
 	}
 	
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
@@ -175,6 +194,7 @@ public class Assignment extends BaseObject
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	public static final String PSEUDO_TAG_OWNING_TASK_NAME = "PseudoTagOwningTaskName";
+	public static final String PSEUDO_TAG_WHEN = "PseudoWhen";
 	
 	
 	public static final String OBJECT_NAME = "Assignment";
@@ -185,4 +205,5 @@ public class Assignment extends BaseObject
 	private BaseIdData fundingIdData;
 	private PseudoStringData pseudoProjectResourceLabel;
 	private PseudoStringData pseudoOwningTaskNameLabel;
+	private PseudoStringData pseudoWhen;
 }
