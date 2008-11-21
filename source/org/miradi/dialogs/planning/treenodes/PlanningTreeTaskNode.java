@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -38,15 +39,28 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 
 	public void rebuild() throws Exception
 	{
+		buildAssignmentNodes();
+		buildTaskNodes();
+	}
+
+	private void buildAssignmentNodes() throws Exception
+	{
 		// NOTE: Speed optimization
-		if(!visibleRows.contains(Task.OBJECT_NAME))
+		if(!visibleRows.contains(Assignment.OBJECT_NAME))
 			return;
-		
+
 		ORefList assignmentRefs = task.getAssignmentRefs();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
 			children.add(new PlanningTreeAssignmentNode(project, assignmentRefs.get(index), visibleRows));
 		}
+	}
+
+	private void buildTaskNodes() throws Exception
+	{
+		// NOTE: Speed optimization
+		if(!visibleRows.contains(Task.OBJECT_NAME))
+			return;
 		
 		ORefList subtaskRefs = task.getSubtaskRefs();
 		for(int i = 0; i < subtaskRefs.size(); ++i)
