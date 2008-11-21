@@ -26,6 +26,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.Task;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeDoer
@@ -37,7 +38,18 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 		if (selectedObject == null)
 			return false;
 		
-		return Factor.isFactor(selectedObject);
+		if (!Factor.isFactor(selectedObject))
+			return false;
+		
+		return canHaveIndicatorsObjectiveAnnotations((Factor) selectedObject);
+	}
+
+	protected boolean canHaveIndicatorsObjectiveAnnotations(Factor selectedFactor)
+	{
+		if (Task.is(selectedFactor))
+			return ((Task)selectedFactor).canHaveIndicators();
+		
+		return selectedFactor.canHaveObjectives();
 	}
 
 	@Override
