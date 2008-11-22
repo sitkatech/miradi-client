@@ -27,6 +27,6 @@ public class BaseObjectByFullNameSorter implements Comparator<BaseObject>
 {
 	public int compare(BaseObject o1, BaseObject o2)
 	{
-		return o1.getFullName().compareTo(o2.getFullName());
+		return o1.getFullName().compareToIgnoreCase(o2.getFullName());
 	}	
 }
