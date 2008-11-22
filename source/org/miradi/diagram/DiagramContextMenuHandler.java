@@ -21,9 +21,12 @@ package org.miradi.diagram;
 
 import java.awt.Font;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
+import java.util.Vector;
 
+import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
@@ -70,8 +73,16 @@ import org.miradi.actions.Actions;
 import org.miradi.actions.EAMAction;
 import org.miradi.actions.LocationAction;
 import org.miradi.actions.MainWindowAction;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objectpools.TaggedObjectSetPool;
+import org.miradi.objects.TaggedObjectSet;
+import org.miradi.project.Project;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.diagram.DiagramView;
@@ -102,9 +113,13 @@ public class DiagramContextMenuHandler
 		if (objectsAction.isEnabled())
 			menu.add(createMenuItem(ActionDeleteBendPoint.class, menuInvokedAt));
 		
+		int selectedFactorCount = diagramComponent.getOnlySelectedFactors().length;
 		menu.add(createMenuItem(ActionCreateIncomingJunction.class, menuInvokedAt));
 		menu.add(createMenuItem(ActionCreateOutgoingJunction.class, menuInvokedAt));
-		menu.add(createMenuItem(ActionManageFactorTagsFromMenu.class, menuInvokedAt));
+		if(selectedFactorCount == 1)
+			menu.add(createMenuItem(ActionManageFactorTagsFromMenu.class, menuInvokedAt));
+		if(selectedFactorCount > 0)
+			menu.add(createTagFactorsMenu());
 		
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionUndo.class)));
@@ -126,6 +141,61 @@ public class DiagramContextMenuHandler
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDiagramProperties.class)));
 		return menu;
+	}
+	
+	private UiMenu createTagFactorsMenu()
+	{
+		class ActionTagFactor extends AbstractAction
+		{
+			public ActionTagFactor(ORefSet factorRefsToTag, TaggedObjectSet tagSetToApply)
+			{
+				super(tagSetToApply.getLabel(), new TaggedObjectSetIcon());
+				factorRefs = factorRefsToTag;
+				tagSetRef = tagSetToApply.getRef();
+				
+			}
+
+			public void actionPerformed(ActionEvent event)
+			{
+				try
+				{
+					String refsAsString = getProject().getObjectData(tagSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS);
+					ORefSet refs = new ORefSet(new ORefList(refsAsString));
+					refs.addAll(factorRefs);
+					refsAsString = new ORefList(refs).toString();
+					CommandSetObjectData command = new CommandSetObjectData(tagSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, refsAsString);
+					getProject().executeCommand(command);
+				}
+				catch(Exception e)
+				{
+					EAM.errorDialog(EAM.text("Unexpected error prevented the tagging"));
+				}
+			}
+			
+			private ORefSet factorRefs;
+			private ORef tagSetRef;
+		}
+		
+		ORefSet factorRefs = new ORefSet(new ORefList(diagramComponent.getOnlySelectedFactors()));
+
+		String template = EAM.text("Menu|Tag %n Factor(s) with");
+		String label = EAM.substitute(template, "%n", Integer.toString(factorRefs.size()));
+		UiMenu menu = new UiMenu(label);
+
+		TaggedObjectSetPool pool = getProject().getTaggedObjectSetPool();
+		Vector<TaggedObjectSet> tags = pool.getAllTaggedObjectSets();
+		for(TaggedObjectSet set : tags)
+		{
+			ActionTagFactor action = new ActionTagFactor(factorRefs, set);
+			menu.add(new MenuItemWithoutLocation(action));
+		}
+		
+		return menu;
+	}
+
+	private Project getProject()
+	{
+		return mainWindow.getProject();
 	}
 
 	public UiMenu getGroupBoxMenu(Point menuInvokedAt)
