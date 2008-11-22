@@ -24,6 +24,7 @@ import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
+import java.util.Collections;
 import java.util.Vector;
 
 import javax.swing.AbstractAction;
@@ -77,6 +78,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -119,7 +121,10 @@ public class DiagramContextMenuHandler
 		if(selectedFactorCount == 1)
 			menu.add(createMenuItem(ActionManageFactorTagsFromMenu.class, menuInvokedAt));
 		if(selectedFactorCount > 0)
+		{
 			menu.add(createTagFactorsMenu());
+			menu.add(createUntagFactorsMenu());
+		}
 		
 		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionUndo.class)));
@@ -142,51 +147,120 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDiagramProperties.class)));
 		return menu;
 	}
-	
-	private UiMenu createTagFactorsMenu()
-	{
-		class ActionTagFactor extends AbstractAction
-		{
-			public ActionTagFactor(ORefSet factorRefsToTag, TaggedObjectSet tagSetToApply)
-			{
-				super(tagSetToApply.getLabel(), new TaggedObjectSetIcon());
-				factorRefs = factorRefsToTag;
-				tagSetRef = tagSetToApply.getRef();
-				
-			}
 
-			public void actionPerformed(ActionEvent event)
+	abstract class AbstractActionTagUntagFactor extends AbstractAction
+	{
+		public AbstractActionTagUntagFactor(ORefSet factorRefsToTag, TaggedObjectSet tagSetToApply)
+		{
+			super(tagSetToApply.getLabel(), new TaggedObjectSetIcon());
+			factorRefs = factorRefsToTag;
+			tagSetRef = tagSetToApply.getRef();
+		}
+
+		public void actionPerformed(ActionEvent event)
+		{
+			try
 			{
-				try
-				{
-					String refsAsString = getProject().getObjectData(tagSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS);
-					ORefSet refs = new ORefSet(new ORefList(refsAsString));
-					refs.addAll(factorRefs);
-					refsAsString = new ORefList(refs).toString();
-					CommandSetObjectData command = new CommandSetObjectData(tagSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, refsAsString);
-					getProject().executeCommand(command);
-				}
-				catch(Exception e)
-				{
-					EAM.errorDialog(EAM.text("Unexpected error prevented the tagging"));
-				}
+				String refsAsString = getProject().getObjectData(tagSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS);
+				ORefSet refs = new ORefSet(new ORefList(refsAsString));
+				updateRefsWithFactorRefs(refs);
+				refsAsString = new ORefList(refs).toString();
+				CommandSetObjectData command = new CommandSetObjectData(tagSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, refsAsString);
+				getProject().executeCommand(command);
 			}
-			
-			private ORefSet factorRefs;
-			private ORef tagSetRef;
+			catch(Exception e)
+			{
+				EAM.errorDialog(EAM.text("Unexpected error prevented the tag operation from succeeding"));
+			}
 		}
 		
+		protected ORefSet getFactorRefs()
+		{
+			return factorRefs;
+		}
+
+		abstract protected void updateRefsWithFactorRefs(ORefSet refsToUpdate);
+		
+		private ORefSet factorRefs;
+		private ORef tagSetRef;
+	}
+	
+	class ActionTagFactors extends AbstractActionTagUntagFactor
+	{
+		public ActionTagFactors(ORefSet factorRefsToTag, TaggedObjectSet tagSetToApply)
+		{
+			super(factorRefsToTag, tagSetToApply);
+		}
+
+		@Override
+		protected void updateRefsWithFactorRefs(ORefSet refsToUpdate)
+		{
+			refsToUpdate.addAll(getFactorRefs());
+		}
+		
+	}
+
+	class ActionUntagFactors extends AbstractActionTagUntagFactor
+	{
+		public ActionUntagFactors(ORefSet factorRefsToTag, TaggedObjectSet tagSetToApply)
+		{
+			super(factorRefsToTag, tagSetToApply);
+		}
+
+		@Override
+		protected void updateRefsWithFactorRefs(ORefSet refsToUpdate)
+		{
+			refsToUpdate.removeAll(getFactorRefs());
+		}
+		
+	}
+	
+	interface ActionCreator
+	{
+		public Action createAction(ORefSet factorRefs, TaggedObjectSet set);
+	}
+	
+	class TagActionCreator implements ActionCreator
+	{
+		public Action createAction(ORefSet factorRefs, TaggedObjectSet set)
+		{
+			return new ActionTagFactors(factorRefs, set);	
+		}
+	}
+
+	class UntagActionCreator implements ActionCreator
+	{
+		public Action createAction(ORefSet factorRefs, TaggedObjectSet set)
+		{
+			return new ActionUntagFactors(factorRefs, set);		
+		}
+	}
+
+	private UiMenu createTagFactorsMenu()
+	{
+		String template = EAM.text("Menu|Add Tag to %n Selected Item(s)");
+		return createTagUntagFactorsMenu(template, new TagActionCreator());
+	}
+
+	private UiMenu createUntagFactorsMenu()
+	{
+		String template = EAM.text("Menu|Remove Tag from %n Selected Item(s)");
+		return createTagUntagFactorsMenu(template, new UntagActionCreator());
+	}
+
+	private UiMenu createTagUntagFactorsMenu(String template, ActionCreator actionCreator)
+	{
 		ORefSet factorRefs = new ORefSet(new ORefList(diagramComponent.getOnlySelectedFactors()));
 
-		String template = EAM.text("Menu|Tag %n Factor(s) with");
 		String label = EAM.substitute(template, "%n", Integer.toString(factorRefs.size()));
 		UiMenu menu = new UiMenu(label);
 
 		TaggedObjectSetPool pool = getProject().getTaggedObjectSetPool();
 		Vector<TaggedObjectSet> tags = pool.getAllTaggedObjectSets();
+		Collections.sort(tags, new BaseObjectByFullNameSorter());
 		for(TaggedObjectSet set : tags)
 		{
-			ActionTagFactor action = new ActionTagFactor(factorRefs, set);
+			Action action = actionCreator.createAction(factorRefs, set);
 			menu.add(new MenuItemWithoutLocation(action));
 		}
 		
