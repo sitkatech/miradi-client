@@ -43,11 +43,11 @@ import org.miradi.utils.StringMapData;
 public class RtfFormExporter
 {
 	//TODO rname refs to hierarchy
-	public RtfFormExporter(Project projectToUse, RtfWriter writerToUse, ORefList refsToUse)
+	public RtfFormExporter(Project projectToUse, RtfWriter writerToUse, ORefList hierarchyRefsToUse)
 	{
 		project = projectToUse;
 		writer = writerToUse;
-		refs = refsToUse;
+		hierarchyRefs = hierarchyRefsToUse;
 	}
 	
 	public RtfFormExporter(Project projectToUse, RtfWriter writerToUse, ORef refToUse)
@@ -228,12 +228,12 @@ public class RtfFormExporter
 	
 	private ORefList getRefs()
 	{
-		return refs;
+		return hierarchyRefs;
 	}
 	
 	private static final String FIELD_SPACING = "     ";
 	
 	private Project project;
 	private RtfWriter writer;
-	private ORefList refs;
+	private ORefList hierarchyRefs;
 }
