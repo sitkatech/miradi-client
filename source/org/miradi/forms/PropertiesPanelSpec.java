@@ -22,7 +22,15 @@ package org.miradi.forms;
 
 abstract public class PropertiesPanelSpec
 {
-	abstract public int getPanelCount();
+	public int getPanelCount()
+	{
+		return 0;
+	}
+	
+	public int getFieldRowCount()
+	{
+		return 0;
+	}
 	
 	abstract public FieldPanelSpec getPanel(int index);
 }

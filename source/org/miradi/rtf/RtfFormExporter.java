@@ -25,6 +25,7 @@ import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
+import org.miradi.forms.PanelHolderSpec;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
@@ -54,18 +55,23 @@ public class RtfFormExporter
 		this(projectToUse, writerToUse, new ORefList(refToUse));
 	}
 	
-	public void exportForm(PropertiesPanelSpec panelHolderSpec) throws Exception
+	public void exportForm(PropertiesPanelSpec propertiesPanelSpec) throws Exception
 	{
-		for (int index = 0; index < panelHolderSpec.getPanelCount(); ++index)
+		for (int index = 0; index < propertiesPanelSpec.getFieldRowCount(); ++index)
 		{
-			FieldPanelSpec fieldPanelSpec = panelHolderSpec.getPanel(index);
+			FormRow formRow = ((FieldPanelSpec)propertiesPanelSpec).getFormRow(index);
+			writeFormRowColumns(formRow);	
+		}
+		
+		for (int index = 0; index < propertiesPanelSpec.getPanelCount(); ++index)
+		{
+			FieldPanelSpec fieldPanelSpec = ((PanelHolderSpec) propertiesPanelSpec).getPanel(index);
 			if (fieldPanelSpec.hasBorder())
 				writeTitle(fieldPanelSpec);
 			
 			exportForm(fieldPanelSpec);
 			writer.newParagraph();
 		}
-		
 		writer.pageBreak();
 	}
 
@@ -79,15 +85,6 @@ public class RtfFormExporter
 		writer.newParagraph();
 	}
 	
-	private void exportForm(FieldPanelSpec fieldPanelSpec) throws Exception
-	{
-		for (int row = 0; row < fieldPanelSpec.getRowCount(); ++row)
-		{
-			FormRow formRow = fieldPanelSpec.getFormRow(row);
-			writeFormRowColumns(formRow);
-		}
-	}
-
 	private void writeFormRowColumns(FormRow formRow) throws Exception
 	{
 		StringBuffer encodedRowContent = new StringBuffer();

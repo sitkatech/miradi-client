@@ -31,15 +31,15 @@ public class TestFieldPanelSpec extends TestCaseEnhanced
 	public void testBasics() throws Exception
 	{
 		FieldPanelSpec spec = new FieldPanelSpec();
-		assertEquals("Not empty to start?", 0, spec.getRowCount());
+		assertEquals("Not empty to start?", 0, spec.getFieldRowCount());
 		
 		FormRow firstRow = new FormRow();
 		spec.addFormRow(firstRow);
-		assertEquals("row not added?", 1, spec.getRowCount());
+		assertEquals("row not added?", 1, spec.getFieldRowCount());
 
 		FormRow secondRow = new FormRow();
 		spec.addFormRow(secondRow);
-		assertEquals("second row not added?", 2, spec.getRowCount());
+		assertEquals("second row not added?", 2, spec.getFieldRowCount());
 		
 		assertEquals("Wrong first row?", firstRow, spec.getFormRow(0));
 		assertEquals("Wrong second row?", secondRow, spec.getFormRow(1));

@@ -28,20 +28,16 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		rows = new Vector<FormRow>();
 		translatedTitle = "";
 	}
-
-	public int getPanelCount()
+	
+	@Override
+	public int getFieldRowCount()
 	{
-		return 1;
+		return rows.size();
 	}
 
 	public FieldPanelSpec getPanel(int index)
 	{
 		return this;
-	}
-
-	public int getRowCount()
-	{
-		return rows.size();
 	}
 
 	public void addFormRow(FormRow rowToAdd)
