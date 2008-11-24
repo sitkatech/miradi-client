@@ -23,7 +23,6 @@ package org.miradi.dialogs.task;
 import java.awt.Component;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
@@ -40,18 +39,12 @@ import org.miradi.objects.Task;
 
 public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 {
-	public static TaskPropertiesInputPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
+	public TaskPropertiesInputPanel(MainWindow mainWindow, BaseId idToEdit) throws Exception
 	{
-		ActivityFactorVisibilityControlPanel visibilityPanel = new ActivityFactorVisibilityControlPanel(mainWindow);
-		return new TaskPropertiesInputPanel(mainWindow, visibilityPanel, BaseId.INVALID);
-	}
-	
-	public static TaskPropertiesInputPanel createWithoutVisibilityPanel(MainWindow mainWindow) throws Exception
-	{
-		return new TaskPropertiesInputPanel(mainWindow, null, BaseId.INVALID);
+		this(mainWindow, null, idToEdit);
 	}
 
-	private TaskPropertiesInputPanel(MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel, BaseId idToEdit) throws Exception
+	public TaskPropertiesInputPanel(MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel, BaseId idToEdit) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.TASK, idToEdit);
 		setLayout(new OneColumnGridLayout());

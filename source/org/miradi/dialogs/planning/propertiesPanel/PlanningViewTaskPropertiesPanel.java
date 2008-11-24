@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.task.TaskPropertiesInputPanel;
+import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -37,7 +38,7 @@ public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanel
 		setLayout(new OneColumnGridLayout());
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
-		taskPropertiesInputPanel = TaskPropertiesInputPanel.createWithoutVisibilityPanel(mainWindowToUse);
+		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse, null, BaseId.INVALID);
 		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, objectPickerToUse);
 	
 		add(taskPropertiesInputPanel);

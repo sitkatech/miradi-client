@@ -23,7 +23,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.task.TaskPropertiesPanel;
+import org.miradi.dialogs.task.MethodPropertiesPanel;
 import org.miradi.icons.MethodIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -34,7 +34,7 @@ public class MethodListManagementPanel extends ObjectListManagementPanel
 	public MethodListManagementPanel(MainWindow mainWindow, ORef nodeRef) throws Exception
 	{
 		super(mainWindow, new MethodListTablePanel(mainWindow, nodeRef),
-				TaskPropertiesPanel.createWithoutVisibilityPanel(mainWindow));
+				MethodPropertiesPanel.createWithoutVisibilityPanel(mainWindow));
 	}
 	
 	public String getSplitterDescription()

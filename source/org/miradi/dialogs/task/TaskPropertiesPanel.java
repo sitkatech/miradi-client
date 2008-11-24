@@ -30,21 +30,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 
-public class TaskPropertiesPanel extends ObjectDataInputPanel
+public abstract class TaskPropertiesPanel extends ObjectDataInputPanel
 {
-	public static TaskPropertiesPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
-	{
-		TaskPropertiesInputPanel inputPanelWithVisibilityPanel = TaskPropertiesInputPanel.createWithVisibilityPanel(mainWindow);
-		return new TaskPropertiesPanel(mainWindow, inputPanelWithVisibilityPanel);
-	}
-	
-	public static TaskPropertiesPanel createWithoutVisibilityPanel(MainWindow mainWindow) throws Exception
-	{
-		TaskPropertiesInputPanel inputPanelWithoutVisibilityPanel = TaskPropertiesInputPanel.createWithoutVisibilityPanel(mainWindow);
-		return new TaskPropertiesPanel(mainWindow, inputPanelWithoutVisibilityPanel);
-	}
-	
-	private TaskPropertiesPanel(MainWindow mainWindow, TaskPropertiesInputPanel inputPanelToUse) throws Exception
+	protected TaskPropertiesPanel(MainWindow mainWindow, TaskPropertiesInputPanel inputPanelToUse) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.TASK, BaseId.INVALID);
 		
@@ -60,11 +48,6 @@ public class TaskPropertiesPanel extends ObjectDataInputPanel
 		add(new PanelTitleLabel(hintAboutPlanningView));
 	}
 	
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Task Properties");
-	}
-		
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);

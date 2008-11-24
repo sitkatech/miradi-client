@@ -44,6 +44,7 @@ import org.miradi.dialogs.groupboxLink.GroupBoxLinkTableModel;
 import org.miradi.dialogs.stress.StressPropertiesPanel;
 import org.miradi.dialogs.task.TaskPropertiesInputPanel;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -259,7 +260,7 @@ public class PropertiesDoer extends LocationDoer
 	
 	private void doActivityProperties(DiagramFactor diagramFactor) throws Exception
 	{
-		TaskPropertiesInputPanel panel = TaskPropertiesInputPanel.createWithoutVisibilityPanel(getMainWindow());
+		TaskPropertiesInputPanel panel = new TaskPropertiesInputPanel(getMainWindow(), null, BaseId.INVALID);
 
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}
