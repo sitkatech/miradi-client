@@ -45,6 +45,7 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -492,6 +493,14 @@ abstract public class BaseObject
 	public double getBudgetCostAllocation() throws Exception
 	{
 		return 1.0;
+	}
+	
+	protected double getTotaUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
+	{
+		if (dateRangeToUse != null)
+			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
+		
+		return (effortList.getTotalUnitQuantity() * costPerUnit);
 	}
 	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
