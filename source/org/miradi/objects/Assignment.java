@@ -106,7 +106,7 @@ public class Assignment extends BaseObject
 			workUnitTotal.append(getDateRangeEffortList().getTotalUnitQuantity());
 			workUnitTotal.append(" ");
 			
-			String costUnit = projectResource.getCostUnitCode();
+			String costUnit = projectResource.getCostUnitValue();
 			workUnitTotal.append(costUnit);
 
 			return workUnitTotal.toString();

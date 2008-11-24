@@ -173,7 +173,7 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 		if (resource == null)
 			return "";
 		
-		return resource.getCostUnitCode();
+		return resource.getCostUnitValue();
 	}
 	
 	private BaseObject findObject(ORef ref)

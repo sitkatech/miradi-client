@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.BudgetCostUnitQuestion;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.utils.CodeList;
@@ -156,9 +157,15 @@ public class ProjectResource extends BaseObject
 		return Double.parseDouble(costPerUnit.toString());
 	}
 	
-	public String getCostUnitCode()
+	private String getCostUnitCode()
 	{
 		return costUnit.get();
+	}
+	
+	public String getCostUnitValue()
+	{
+		ChoiceQuestion question = getProject().getQuestion(BudgetCostUnitQuestion.class);
+		return question.findChoiceByCode(getCostUnitCode()).getLabel();
 	}
 	
 	public static String getResourcesAsString(Project project, ORefSet resourceRefs)
