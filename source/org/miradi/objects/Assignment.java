@@ -88,9 +88,36 @@ public class Assignment extends BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_TOTAL))
 			return getBudgetTotal();
 		
+		if (fieldTag.equals(PSEUDO_TAG_WORK_UNIT_TOTAL))
+			return getWorkUnitTotal();
+		
 		return super.getPseudoData(fieldTag);
 	}
 	
+	private String getWorkUnitTotal()
+	{
+		StringBuffer workUnitTotal = new StringBuffer("");
+		ProjectResource projectResource = getProjectResource();
+		if (projectResource == null)
+			return workUnitTotal.toString();
+
+		try
+		{	
+			workUnitTotal.append(getDateRangeEffortList().getTotalUnitQuantity());
+			workUnitTotal.append(" ");
+			
+			String costUnit = projectResource.getCostUnit();
+			workUnitTotal.append(costUnit);
+
+			return workUnitTotal.toString();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return null;
+		}
+	}
+
 	private String getBudgetTotal()
 	{
 		try
@@ -138,11 +165,16 @@ public class Assignment extends BaseObject
 
 	private String getProjectResourceLabel()
 	{
-		ProjectResource projectResource = ProjectResource.find(getProject(), getResourceRef());
+		ProjectResource projectResource = getProjectResource();
 		if (projectResource == null)
 			return "";
 		
 		return projectResource.getInitials();
+	}
+
+	private ProjectResource getProjectResource()
+	{
+		return ProjectResource.find(getProject(), getResourceRef());
 	}
 	
 	@Override
@@ -154,7 +186,7 @@ public class Assignment extends BaseObject
 	public double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
 	{
 		double cost = 0;
-		ProjectResource projectResource = ProjectResource.find(getProject(), getResourceRef());
+		ProjectResource projectResource = getProjectResource();
 		if (projectResource != null)
 		{
 			DateRangeEffortList effortList = getDateRangeEffortList();
@@ -240,6 +272,7 @@ public class Assignment extends BaseObject
 		pseudoOwningFactorNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME);
 		pseudoWhen = new PseudoStringData(PSEUDO_TAG_WHEN);
 		pseudoBudgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
+		pseudoWorkUnitTotal = new PseudoStringData(PSEUDO_TAG_WORK_UNIT_TOTAL);
 		
 		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
@@ -249,6 +282,7 @@ public class Assignment extends BaseObject
 		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, pseudoOwningFactorNameLabel);
 		addField(PSEUDO_TAG_WHEN, pseudoWhen);
 		addField(PSEUDO_TAG_BUDGET_TOTAL, pseudoBudgetTotal);
+		addField(PSEUDO_TAG_WORK_UNIT_TOTAL, pseudoWorkUnitTotal);
 	}
 	
 	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
@@ -259,6 +293,7 @@ public class Assignment extends BaseObject
 	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
 	public static final String PSEUDO_TAG_WHEN = "PseudoWhen";
 	public static final String PSEUDO_TAG_BUDGET_TOTAL = "PseudoBudgetTotal";
+	public static final String PSEUDO_TAG_WORK_UNIT_TOTAL = "PseudoWorkUnitTotal";
 	
 	
 	public static final String OBJECT_NAME = "Assignment";
@@ -271,4 +306,5 @@ public class Assignment extends BaseObject
 	private PseudoStringData pseudoOwningFactorNameLabel;
 	private PseudoStringData pseudoWhen;
 	private PseudoStringData pseudoBudgetTotal;
+	private PseudoStringData pseudoWorkUnitTotal;
 }
