@@ -35,6 +35,7 @@ public class PanelHolderSpec extends PropertiesPanelSpec
 		return panels.size();
 	}
 
+	@Override
 	public FieldPanelSpec getPanel(int index)
 	{
 		return panels.get(index);
