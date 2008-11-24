@@ -23,7 +23,7 @@ import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.task.TaskPropertiesPanel;
+import org.miradi.dialogs.task.ActivityPropertiesPanel;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -34,7 +34,7 @@ public class ActivityListManagementPanel extends ObjectListManagementPanel
 	public ActivityListManagementPanel(MainWindow mainWindow, ORef nodeRef) throws Exception
 	{
 		super(mainWindow, new ActivityListTablePanel(mainWindow, nodeRef),
-				TaskPropertiesPanel.createWithVisibilityPanel(mainWindow));
+				ActivityPropertiesPanel.createWithVisibilityPanel(mainWindow));
 	}
 	
 	public String getSplitterDescription()
