@@ -284,6 +284,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		final int RIGHT = 0;
 		Border cushion = BorderFactory.createEmptyBorder(TOP, LEFT, BOTTOM, RIGHT);
 		subPanel.setBorder(BorderFactory.createCompoundBorder(cushion, titledBorder));
+		addSubPanelWithoutTitledBorder(subPanel);
+	}
+
+
+	public void addSubPanelWithoutTitledBorder(AbstractObjectDataInputPanel subPanel)
+	{
 		addSubPanel(subPanel);
 		add(subPanel);
 	}
