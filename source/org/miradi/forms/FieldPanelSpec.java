@@ -35,6 +35,7 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		return rows.size();
 	}
 
+	@Override
 	public FieldPanelSpec getPanel(int index)
 	{
 		return this;

@@ -32,5 +32,8 @@ abstract public class PropertiesPanelSpec
 		return 0;
 	}
 	
-	abstract public FieldPanelSpec getPanel(int index);
+	public FieldPanelSpec getPanel(int index)
+	{
+		throw new RuntimeException("Sub classes need to override this method.");
+	}
 }

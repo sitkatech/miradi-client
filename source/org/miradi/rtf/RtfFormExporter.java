@@ -25,7 +25,6 @@ import org.miradi.forms.FormFieldData;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
-import org.miradi.forms.PanelHolderSpec;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
@@ -65,7 +64,7 @@ public class RtfFormExporter
 		
 		for (int index = 0; index < propertiesPanelSpec.getPanelCount(); ++index)
 		{
-			FieldPanelSpec fieldPanelSpec = ((PanelHolderSpec) propertiesPanelSpec).getPanel(index);
+			FieldPanelSpec fieldPanelSpec = propertiesPanelSpec.getPanel(index);
 			if (fieldPanelSpec.hasBorder())
 				writeTitle(fieldPanelSpec);
 			
