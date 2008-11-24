@@ -158,7 +158,7 @@ public class Assignment extends BaseObject
 		if (projectResource != null)
 		{
 			DateRangeEffortList effortList = getDateRangeEffortList();
-			double totalCostPerAssignment = getTotaUnitQuantity(dateRangeToUse, projectResource.getCostPerUnit(), effortList);
+			double totalCostPerAssignment = getTotalUnitQuantity(dateRangeToUse, projectResource.getCostPerUnit(), effortList);
 			cost += totalCostPerAssignment;
 		}
 		
