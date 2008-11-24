@@ -38,6 +38,7 @@ import org.miradi.forms.objects.TargetPropertiesForm;
 import org.miradi.forms.objects.TaskPropertiesForm;
 import org.miradi.forms.objects.ThreatPropertiesForm;
 import org.miradi.forms.objects.ThreatReductionResultPropertiesForm;
+import org.miradi.forms.summary.ProjectTabForm;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -49,6 +50,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Organization;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
@@ -108,6 +110,9 @@ public class ObjectToFormMap
 		
 		if (ResultsChainDiagram.is(objectType))
 			return new ResultsChainPropertiesForm();
+		
+		if (ProjectMetadata.is(objectType))
+			return new ProjectTabForm();
 
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}

@@ -265,10 +265,13 @@ public class RtfWriter
 	
 	public void insertIndents(int padCount) throws Exception
 	{
-		final int EIGHTH_OF_AN_INCH = 180;
-		final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
-		int indentInTwips = (padCount * EIGHTH_OF_AN_INCH) + QUARTER_INCH;
+		int indentInTwips = convertToTwips(padCount);
 		writeRaw("\\fi-" + QUARTER_INCH+ "\\li" + indentInTwips + "\\tx" + indentInTwips + "\\ri0");
+	}
+
+	public int convertToTwips(int padCount)
+	{
+		return (padCount * EIGHTH_OF_AN_INCH) + QUARTER_INCH;
 	}
 	
 	public void writeHeading1Style() throws Exception
@@ -449,5 +452,9 @@ public class RtfWriter
 	public static final String PRE_TABLE_HEADER_CELL_COMMAND = "\\intbl\\qc ";
 	public static final String PRE_CELL_COMMAND  = "\\pard\\intbl\\plain ";
 	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "";
-	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";										  																	
+	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";
+	
+	public static final int EIGHTH_OF_AN_INCH = 180;
+	public static final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
+	
 }
