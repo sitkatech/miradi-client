@@ -495,7 +495,7 @@ abstract public class BaseObject
 		return 1.0;
 	}
 	
-	protected double getTotaUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
+	protected double getTotalUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
 	{
 		if (dateRangeToUse != null)
 			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
