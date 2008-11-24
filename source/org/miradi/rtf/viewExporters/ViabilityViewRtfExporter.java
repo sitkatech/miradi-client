@@ -49,7 +49,6 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 		}
 	}
 	
-	//TODO rename method
 	private void exportFormsForRows(RtfWriter writer, TreeTableModelExporter treeTableModelExporter) throws Exception
 	{
 		int FIRST_COLUMN_INDEX = 0;
