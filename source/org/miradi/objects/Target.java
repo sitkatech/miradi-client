@@ -129,6 +129,15 @@ public class Target extends Factor
 		return true;
 	}
 	
+	@Override
+	public boolean canHaveIndicators()
+	{
+		if (isViabilityModeTNC())
+			return false;
+		
+		return true;
+	}
+	
 	public boolean canHaveKeyEcologicalAttribures()
 	{
 		return true;
