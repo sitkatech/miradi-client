@@ -53,6 +53,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
@@ -213,7 +214,15 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		if (isLabelOrIdChange(event))
 			return true;
 		
+		if (isTargetModeChange(event))
+			return true;
+		
 		return false;
+	}
+	
+	private boolean isTargetModeChange (CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE);
 	}
 	
 	private boolean didAffectRelevancyInTree(CommandExecutedEvent event)
