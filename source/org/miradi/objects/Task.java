@@ -74,6 +74,7 @@ public class Task extends Factor
 		return deleteIds;
 	}
 	
+	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_SUBTASK_IDS))
@@ -88,6 +89,7 @@ public class Task extends Factor
 		return super.getAnnotationType(tag);
 	}
 
+	@Override
 	public boolean isIdListTag(String tag)
 	{
 		if (tag.equals(TAG_SUBTASK_IDS))
@@ -99,6 +101,7 @@ public class Task extends Factor
 		return false;
 	}
 
+	@Override
 	public boolean isRefList(String tag)
 	{
 		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
@@ -118,6 +121,7 @@ public class Task extends Factor
 		return cachedObjectTypeName;
 	}
 	
+	@Override
 	public String getDetails()
 	{
 		return details.get();
@@ -128,6 +132,7 @@ public class Task extends Factor
 		return ObjectType.TASK;
 	}
 	
+	@Override
 	public boolean canHaveIndicators()
 	{
 		return false;
@@ -147,7 +152,7 @@ public class Task extends Factor
 	}
 	
 	
-
+	@Override
 	public ORefList getOwnedObjects(int objectType)
 	{
 		ORefList list = super.getOwnedObjects(objectType);
@@ -172,6 +177,7 @@ public class Task extends Factor
 		return (OBJECT_NAME.equals(cachedObjectTypeName));
 	}
 
+	@Override
 	public boolean isActivity()
 	{
 		ensureCachedTypeStringIsValid();
@@ -263,13 +269,14 @@ public class Task extends Factor
 	{
 		return new ORefList(Assignment.getObjectType(), getAssignmentIdList());
 	}
-	
+
+	@Override
 	public String toString()
 	{
 		return getLabel();
 	}
 	
-	
+	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_STRATEGY_LABEL))
@@ -281,6 +288,7 @@ public class Task extends Factor
 		return super.getPseudoData(fieldTag);
 	}
 
+	@Override
 	public DateRange getWhenRollup() throws Exception
 	{
 		if (getSubtaskCount() > 0)
@@ -289,6 +297,7 @@ public class Task extends Factor
 		return combineAssignmentEffortListDateRanges();
 	}
 	
+	@Override
 	public ORefSet getWhoRollup() throws Exception
 	{
 		if (getSubtaskCount() > 0)
@@ -358,6 +367,7 @@ public class Task extends Factor
 		return OBJECT_NAME;
 	}
 	
+	@Override
 	public double getBudgetCostAllocation() throws Exception
 	{
 		int type = getTypeOfParent();
@@ -386,6 +396,7 @@ public class Task extends Factor
 		throw new RuntimeException("Unknown task type: " + getRef());
 	}
 
+	@Override
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		if (getSubtaskCount() == 0)
@@ -521,6 +532,7 @@ public class Task extends Factor
 		return find(project.getObjectManager(), taskRef);
 	}
 	
+	@Override
 	public void clear()
 	{
 		super.clear();
