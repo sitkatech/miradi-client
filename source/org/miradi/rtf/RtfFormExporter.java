@@ -42,7 +42,6 @@ import org.miradi.utils.StringMapData;
 
 public class RtfFormExporter
 {
-	//TODO rname refs to hierarchy
 	public RtfFormExporter(Project projectToUse, RtfWriter writerToUse, ORefList hierarchyRefsToUse)
 	{
 		project = projectToUse;
