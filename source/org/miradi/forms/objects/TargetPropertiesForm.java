@@ -20,13 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.icons.TargetIcon;
+import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 
 public class TargetPropertiesForm extends FieldPanelSpec
 {
 	public TargetPropertiesForm()
 	{
-		addLabelAndField(Target.getObjectType(), Target.TAG_LABEL);
+		int type = Target.getObjectType();
+		addStandardNameRow(new TargetIcon(), EAM.text("Target"), type, new String[]{Target.TAG_SHORT_LABEL, Target.TAG_LABEL});
 		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
 		addLabelAndField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION);
 	}

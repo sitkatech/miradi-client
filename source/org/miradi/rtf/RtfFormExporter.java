@@ -19,9 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
+import java.awt.image.BufferedImage;
+
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
+import org.miradi.forms.FormImage;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
 import org.miradi.forms.FormRow;
@@ -107,6 +110,11 @@ public class RtfFormExporter
 			else if (formItem.isFormFieldLabel())
 			{
 				encodedRowContent.append(writer.encode(getFieldLabel((FormFieldLabel)formItem)) + FIELD_SPACING);					
+			}
+			else if (formItem.isFormFieldImage())
+			{
+				BufferedImage image = ((FormImage)formItem).getImage();
+				writer.writeImage(image);
 			}
 		}
 		
