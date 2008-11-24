@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.awt.Dimension;
-
 import javax.swing.JComponent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -39,12 +37,6 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 		tag = tagToUse;
 		refListEditor = new RefListComponent(questionToUse, 1, this);
 		refListScroller = new MiradiScrollPane(refListEditor);
-		Dimension preferredSize = refListScroller.getPreferredSize();
-		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
-		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 200;
-		int width = Math.min(preferredSize.width, ARBITRARY_REASONABLE_MAX_WIDTH);
-		int height = Math.min(preferredSize.height, ARBITRARY_REASONABLE_MAX_HEIGHT);
-		refListScroller.getViewport().setPreferredSize(new Dimension(width, height));
 	}
 	
 	public JComponent getComponent()
