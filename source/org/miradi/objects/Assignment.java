@@ -165,6 +165,14 @@ public class Assignment extends BaseObject
 		return cost;
 	}
 	
+	private double getTotalUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
+	{
+		if (dateRangeToUse != null)
+			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
+		
+		return (effortList.getTotalUnitQuantity() * costPerUnit);
+	}
+	
 	public DateRange getCombinedEffortListDateRange() throws Exception
 	{
 		return getDetails().getCombinedDateRange();
