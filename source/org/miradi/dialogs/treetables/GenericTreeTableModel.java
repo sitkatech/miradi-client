@@ -27,6 +27,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.utils.ColumnTagProvider;
 
 import com.java.sun.jtreetable.AbstractTreeTableModel;
@@ -167,11 +168,16 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		{
 			TreeTableNode node = (TreeTableNode) treePath.getLastPathComponent();
 			ORef ref = node.getObjectReference();
-			if(!fullyExpandedObjectRefs.contains(ref))
-				fullyExpandedObjectRefs.add(ref);
+			fullyExpandedObjectRefs.add(ref);
 		}
 		
 		return fullyExpandedObjectRefs;
+	}
+	
+	public ORefSet getFullyExpandedRefSet() throws Exception
+	{
+		ORefList fullyExpandedObjectRefs = getFullyExpandedRefList();
+		return new ORefSet(fullyExpandedObjectRefs);
 	}
 	
 	public Vector<TreePath> getFullyExpandedTreePathList() throws Exception
