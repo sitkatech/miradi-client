@@ -29,6 +29,7 @@ public class PanelHolderSpec extends PropertiesPanelSpec
 		panels = new Vector<FieldPanelSpec>();
 	}
 	
+	@Override
 	public int getPanelCount()
 	{
 		return panels.size();
