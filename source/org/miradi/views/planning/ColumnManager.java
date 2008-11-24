@@ -62,6 +62,7 @@ public class ColumnManager
 		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
 		masterColumnList.add(Measurement.META_COLUMN_TAG);
 		masterColumnList.add(Indicator.META_COLUMN_TAG);
+		masterColumnList.add(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL);
 			
 		return masterColumnList;
 	}
@@ -190,6 +191,7 @@ public class ColumnManager
 				Assignment.PSEUDO_TAG_OWNING_FACTOR_NAME,
 				Assignment.PSEUDO_TAG_WHEN,
 				Assignment.PSEUDO_TAG_BUDGET_TOTAL,
+				Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL,
 				};
 		return new CodeList(list);
 	}
