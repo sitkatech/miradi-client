@@ -47,7 +47,7 @@ public class PlanningTreeAssignmentNode extends AbstractPlanningTreeNode
 	public String toRawString()
 	{
 		if (projectResource != null)
-			return projectResource.getLabel() + " " + projectResource.getGivenName();
+			return projectResource.getFullName();
 		
 		return null;
 	}
