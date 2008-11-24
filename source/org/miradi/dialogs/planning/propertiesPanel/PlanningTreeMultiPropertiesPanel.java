@@ -25,6 +25,7 @@ import java.awt.Rectangle;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
+import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.dialogs.diagram.StrategyPropertiesPanel;
 import org.miradi.dialogs.goal.GoalPropertiesPanel;
@@ -37,6 +38,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
@@ -77,6 +79,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		intermediateResultPropertiesPanel.dispose();
 		threatReductionResultPropertiesPanel.dispose();
 		resultsChainPropertiesPanel.dispose();
+		conceptualModelPropertiesPanel.dispose();
 		blankPropertiesPanel.dispose();
 	}
 	
@@ -95,6 +98,8 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
 		threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
 		resultsChainPropertiesPanel = new ResultsChainPropertiesPanel(getProject(), ORef.INVALID);
+		conceptualModelPropertiesPanel = new ConceptualModelPropertiesPanel(getProject(), ORef.INVALID);
+		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
 		add(goalPropertiesPanel);
@@ -110,6 +115,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		add(intermediateResultPropertiesPanel);
 		add(threatReductionResultPropertiesPanel);
 		add(resultsChainPropertiesPanel);
+		add(conceptualModelPropertiesPanel);
 		add(blankPropertiesPanel);
 	}
 	
@@ -142,6 +148,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		intermediateResultPropertiesPanel.setObjectRefs(orefsToUse);
 		threatReductionResultPropertiesPanel.setObjectRefs(orefsToUse);
 		resultsChainPropertiesPanel.setObjectRefs(orefsToUse);
+		conceptualModelPropertiesPanel.setObjectRefs(orefsToUse);
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
@@ -192,6 +199,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	
 		if (ResultsChainDiagram.is(objectType))
 			return resultsChainPropertiesPanel;
+		
+		if (ConceptualModelDiagram.is(objectType))
+			return conceptualModelPropertiesPanel;
 		
 		return blankPropertiesPanel;
 	}
@@ -265,5 +275,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private PlanningViewContributingFactorPropertiesPanel contributingFactorPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
 	private ResultsChainPropertiesPanel resultsChainPropertiesPanel;
+	private ConceptualModelPropertiesPanel conceptualModelPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

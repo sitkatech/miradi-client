@@ -23,6 +23,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 
@@ -32,11 +33,11 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, diagramObjectRef);
 		
-		ObjectDataInputField shortLabelField = createShortStringField(DiagramObject.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createMediumStringField(DiagramObject.TAG_LABEL);
+		ObjectDataInputField shortLabelField = createShortStringField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createMediumStringField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
-		addField(createMultilineField(DiagramObject.TAG_DETAIL));
+		addField(createMultilineField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_DETAIL));
 
 		updateFieldsFromProject();
 	}
