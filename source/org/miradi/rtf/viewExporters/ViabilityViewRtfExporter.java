@@ -22,8 +22,12 @@ package org.miradi.rtf.viewExporters;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
 import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.dialogs.viability.nodes.ViabilityProjectNode;
+import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
 import org.miradi.questions.ReportTemplateContentQuestion;
+import org.miradi.rtf.ObjectToFormMap;
+import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
 
@@ -38,7 +42,27 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE))
-			exportTable(writer, new TreeTableModelExporter(getProject(), createModel()), ReportTemplateContentQuestion.getTargetViabilityLabel());
+		{
+			TreeTableModelExporter treeTableModelExporter = new TreeTableModelExporter(getProject(), createModel());
+			exportTable(writer, treeTableModelExporter, ReportTemplateContentQuestion.getTargetViabilityLabel());
+			exportTreeTableModel(writer, treeTableModelExporter);	
+		}
+	}
+	
+	//TODO rename method
+	private void exportTreeTableModel(RtfWriter writer, TreeTableModelExporter treeTableModelExporter) throws Exception
+	{
+		int FIRST_COLUMN_INDEX = 0;
+		for (int row = FIRST_COLUMN_INDEX; row < treeTableModelExporter.getRowCount(); ++row)
+		{
+			BaseObject baseObjectForRow = treeTableModelExporter.getBaseObjectForRow(row);
+			if (baseObjectForRow == null)
+				continue; 
+
+			int indentation = treeTableModelExporter.getDepth(row, FIRST_COLUMN_INDEX);
+			PropertiesPanelSpec form = ObjectToFormMap.getForm(baseObjectForRow);
+			new RtfFormExporter(getProject(), writer, baseObjectForRow.getRef()).exportForm(form, indentation);
+		}
 	}
 	
 	private ViabilityTreeModel createModel() throws Exception

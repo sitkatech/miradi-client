@@ -42,6 +42,7 @@ import org.miradi.utils.StringMapData;
 
 public class RtfFormExporter
 {
+	//TODO rname refs to hierarchy
 	public RtfFormExporter(Project projectToUse, RtfWriter writerToUse, ORefList refsToUse)
 	{
 		project = projectToUse;
@@ -56,10 +57,15 @@ public class RtfFormExporter
 	
 	public void exportForm(PropertiesPanelSpec propertiesPanelSpec) throws Exception
 	{
+		exportForm(propertiesPanelSpec, 0);
+	}
+	
+	public void exportForm(PropertiesPanelSpec propertiesPanelSpec, int indentation) throws Exception
+	{
 		for (int index = 0; index < propertiesPanelSpec.getFieldRowCount(); ++index)
 		{
 			FormRow formRow = ((FieldPanelSpec)propertiesPanelSpec).getFormRow(index);
-			writeFormRowColumns(formRow);	
+			writeFormRowColumns(formRow, indentation);	
 		}
 		
 		for (int index = 0; index < propertiesPanelSpec.getPanelCount(); ++index)
@@ -68,9 +74,9 @@ public class RtfFormExporter
 			if (fieldPanelSpec.hasBorder())
 				writeTitle(fieldPanelSpec);
 			
-			exportForm(fieldPanelSpec);
-			writer.newParagraph();
+			exportForm(fieldPanelSpec, indentation);
 		}
+		
 		writer.pageBreak();
 	}
 
@@ -84,10 +90,12 @@ public class RtfFormExporter
 		writer.newParagraph();
 	}
 	
-	private void writeFormRowColumns(FormRow formRow) throws Exception
+	private void writeFormRowColumns(FormRow formRow, int indentation) throws Exception
 	{
 		StringBuffer encodedRowContent = new StringBuffer();
 		StringBuffer rowFormatting = new StringBuffer(RtfWriter.ROW_HEADER);
+		rowFormatting.append("\\trleft");
+		rowFormatting.append(getWriter().convertToTwips(indentation));
 		
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
 		{
