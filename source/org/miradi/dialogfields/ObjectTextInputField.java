@@ -31,6 +31,7 @@ import javax.swing.Action;
 import javax.swing.JComponent;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.KeyStroke;
 import javax.swing.text.DefaultCaret;
 import javax.swing.text.JTextComponent;
 
@@ -179,25 +180,32 @@ public class ObjectTextInputField extends ObjectDataInputField
 		{
 			JPopupMenu menu = new JPopupMenu();
 			
-			JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(field), "icons/copy.gif");
-			menuItemCopy.setText(EAM.text("Copy"));
-			menu.add(menuItemCopy);
-		
-			JMenuItem menuItemCut = createMenuItem(new CutTextAction(field), "icons/cut.gif");
-			menuItemCut.setText(EAM.text("Cut"));
-			menu.add(menuItemCut);
+			Action undoAction = getUndoAction();
+			MenuItemWithoutLocation menuItemUndo = new MenuItemWithoutLocation(undoAction);
+			menuItemUndo.setAccelerator(KeyStroke.getKeyStroke('Z', KeyEvent.CTRL_DOWN_MASK));
+			menu.add(menuItemUndo);
 			
-			JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(field), "icons/paste.gif");
-			menuItemPaste.setText(EAM.text("Paste"));
-			menu.add(menuItemPaste);
+			Action redoAction = getRedoAction();
+			MenuItemWithoutLocation menuItemRedo = new MenuItemWithoutLocation(redoAction);
+			menuItemRedo.setAccelerator(KeyStroke.getKeyStroke('Y', KeyEvent.CTRL_DOWN_MASK));
+			menu.add(menuItemRedo);
 			
 			menu.addSeparator();
 			
-			Action undoAction = getUndoAction();
-			menu.add(new MenuItemWithoutLocation(undoAction));
+			JMenuItem menuItemCut = createMenuItem(new CutTextAction(field), "icons/cut.gif");
+			menuItemCut.setText(EAM.text("Cut"));
+			menuItemCut.setAccelerator(KeyStroke.getKeyStroke('X', KeyEvent.CTRL_DOWN_MASK));
+			menu.add(menuItemCut);
 			
-			Action redoAction = getRedoAction();
-			menu.add(new MenuItemWithoutLocation(redoAction));
+			JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(field), "icons/copy.gif");
+			menuItemCopy.setText(EAM.text("Copy"));
+			menuItemCopy.setAccelerator(KeyStroke.getKeyStroke('C', KeyEvent.CTRL_DOWN_MASK));
+			menu.add(menuItemCopy);
+		
+			JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(field), "icons/paste.gif");
+			menuItemPaste.setText(EAM.text("Paste"));
+			menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
+			menu.add(menuItemPaste);
 			
 			return menu;
 		}
