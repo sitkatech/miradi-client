@@ -156,7 +156,7 @@ public class ProjectResource extends BaseObject
 		return Double.parseDouble(costPerUnit.toString());
 	}
 	
-	public String getCostUnit()
+	public String getCostUnitCode()
 	{
 		return costUnit.get();
 	}
