@@ -45,12 +45,12 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 		{
 			TreeTableModelExporter treeTableModelExporter = new TreeTableModelExporter(getProject(), createModel());
 			exportTable(writer, treeTableModelExporter, ReportTemplateContentQuestion.getTargetViabilityLabel());
-			exportTreeTableModel(writer, treeTableModelExporter);	
+			exportFormsForRows(writer, treeTableModelExporter);	
 		}
 	}
 	
 	//TODO rename method
-	private void exportTreeTableModel(RtfWriter writer, TreeTableModelExporter treeTableModelExporter) throws Exception
+	private void exportFormsForRows(RtfWriter writer, TreeTableModelExporter treeTableModelExporter) throws Exception
 	{
 		int FIRST_COLUMN_INDEX = 0;
 		for (int row = FIRST_COLUMN_INDEX; row < treeTableModelExporter.getRowCount(); ++row)
