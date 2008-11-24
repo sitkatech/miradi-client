@@ -31,7 +31,6 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -426,26 +425,10 @@ public class Task extends Factor
 		for (int i = 0; i < idList.size(); i++)
 		{
 			Assignment assignment = (Assignment)getProject().findObject(ObjectType.ASSIGNMENT, idList.get(i));
-			ProjectResource resource = getProjectResource(idList.get(i));
-			if (resource != null)
-			{
-				String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
-				DateRangeEffortList effortList = new DateRangeEffortList(effortListAsString);
-				double totalCostPerAssignment = getTotaUnitQuantity(dateRangeToUse, resource.getCostPerUnit(), effortList);
-				cost += totalCostPerAssignment;
-			}
+			cost += assignment.getTotalAssignmentCost(dateRangeToUse);
 		}
 		
 		return cost;
-	}
-	
-	private ProjectResource getProjectResource(BaseId assignmentId)
-	{
-		String stringId = getProject().getObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID);
-		BaseId resourceId = new BaseId(stringId);
-		ProjectResource resource = (ProjectResource)getProject().findObject(ObjectType.PROJECT_RESOURCE, resourceId);
-		
-		return resource;
 	}
 	
 	private String getLabelOfTaskParent()

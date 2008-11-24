@@ -151,7 +151,7 @@ public class Assignment extends BaseObject
 		return getTotalAssignmentCost(dateRangeToUse);
 	}
 	
-	private double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
+	public double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
 	{
 		double cost = 0;
 		ProjectResource projectResource = ProjectResource.find(getProject(), getResourceRef());
