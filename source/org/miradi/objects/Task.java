@@ -420,15 +420,15 @@ public class Task extends Factor
 	
 	public double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
 	{
-		double cost = 0;
-		IdList idList = getAssignmentIdList();
-		for (int i = 0; i < idList.size(); i++)
+		double totalAssignmentsCost = 0;
+		ORefList assignmentRefs = getAssignmentRefs();
+		for (int index = 0; index < assignmentRefs.size(); index++)
 		{
-			Assignment assignment = (Assignment)getProject().findObject(ObjectType.ASSIGNMENT, idList.get(i));
-			cost += assignment.getTotalAssignmentCost(dateRangeToUse);
+			Assignment assignment = Assignment.find(getProject(), assignmentRefs.get(index));
+			totalAssignmentsCost += assignment.getTotalAssignmentCost(dateRangeToUse);
 		}
 		
-		return cost;
+		return totalAssignmentsCost;
 	}
 	
 	private String getLabelOfTaskParent()
