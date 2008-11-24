@@ -447,14 +447,6 @@ public class Task extends Factor
 		
 		return resource;
 	}
-
-	private double getTotaUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
-	{
-		if (dateRangeToUse != null)
-			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
-		
-		return (effortList.getTotalUnitQuantity() * costPerUnit);
-	}
 	
 	private String getLabelOfTaskParent()
 	{

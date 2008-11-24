@@ -144,7 +144,27 @@ public class Assignment extends BaseObject
 		
 		return projectResource.getInitials();
 	}
-
+	
+	@Override
+	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
+	{
+		return getTotalAssignmentCost(dateRangeToUse);
+	}
+	
+	private double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
+	{
+		double cost = 0;
+		ProjectResource projectResource = ProjectResource.find(getProject(), getResourceRef());
+		if (projectResource != null)
+		{
+			DateRangeEffortList effortList = getDateRangeEffortList();
+			double totalCostPerAssignment = getTotaUnitQuantity(dateRangeToUse, projectResource.getCostPerUnit(), effortList);
+			cost += totalCostPerAssignment;
+		}
+		
+		return cost;
+	}
+	
 	public DateRange getCombinedEffortListDateRange() throws Exception
 	{
 		return getDetails().getCombinedDateRange();
@@ -174,6 +194,11 @@ public class Assignment extends BaseObject
 	{
 		String dREffortListAsString = getData(Assignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(dREffortListAsString);
+	}
+
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
 	}
 	
 	public static boolean is(ORef ref)

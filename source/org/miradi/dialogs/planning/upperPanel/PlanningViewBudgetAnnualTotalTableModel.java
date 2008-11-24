@@ -73,14 +73,13 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return getValueAt(object, column);
 	}
 
-	public Object getValueAt(Object rawObject, int column)
+	private Object getValueAt(BaseObject object, int column)
 	{
-		if (rawObject == null)
+		if (object == null)
 			return "";
 		
 		try
 		{
-			BaseObject object = (BaseObject) rawObject;
 			if (isGrandTotalColumn(column))
 				return getGrandTotalCost(object);
 		
