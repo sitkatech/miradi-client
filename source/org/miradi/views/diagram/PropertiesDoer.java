@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import java.awt.Point;
-import java.util.Arrays;
 import java.util.HashSet;
 
 import org.miradi.diagram.DiagramComponent;
@@ -63,21 +62,34 @@ public class PropertiesDoer extends LocationDoer
 {
 	public boolean isAvailable()
 	{
-		if(!getProject().isOpen())
-			return false;
-		
-		if (! isInDiagram())
-			return false;
-		
-		EAMGraphCell[] selected = getSelectedCellsWithoutGroupBoxCoveredLinks();
-		if(selected.length != 1)
-			return false;
-		
-		if(selected[0].isFactor() || selected[0].isProjectScope())
-			return true;
-		
-		if(selected[0].isFactorLink())
-			return true;
+		try
+		{
+			if(!getProject().isOpen())
+				return false;
+			
+			if (! isInDiagram())
+				return false;
+			
+			FactorCell[] selectedFactorCells = getDiagramComponent().getOnlySelectedFactorCells();
+			HashSet<LinkCell> selectedLinkCells = getSelectedLinksExcludingInternalGroupBoxLinks();
+
+			if(selectedLinkCells.size() + selectedFactorCells.length != 1)
+				return false;
+			
+			EAMGraphCell selected = getCorrectCellToShowPropertiesFor();
+			if(selected == null)
+				return false;
+			
+			if(selected.isFactor() || selected.isProjectScope())
+				return true;
+			
+			if(selected.isFactorLink())
+				return true;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 		
 		return false;
 	}
@@ -107,20 +119,30 @@ public class PropertiesDoer extends LocationDoer
 
 	private EAMGraphCell getCorrectCellToShowPropertiesFor() throws Exception
 	{
-		EAMGraphCell selected = getSelectedCellsWithoutGroupBoxCoveredLinks()[0];
-		if (!selected.isFactor())
+		EAMGraphCell[] selectedCells = getDiagramComponent().getOnlySelectedCells();
+		if(selectedCells.length == 0)
+			return null;
+		
+		EAMGraphCell selected = selectedCells[0];
+		HashSet<FactorCell> children = getChildrenIfAny(selected);
+
+		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
+		if(topCellAtClickPoint == null)
 			return selected;
 		
-		EAMGraphCell topCellAtClickPoint = (EAMGraphCell) getDiagramComponent().getFirstCellForLocation(getLocation().x, getLocation().y);
-		HashSet<FactorCell> children = getChildrenIfAny(selected);
 		if (children.contains(topCellAtClickPoint))
 			return topCellAtClickPoint;
+		if (topCellAtClickPoint.isFactorLink())
+			return topCellAtClickPoint; 
 		
 		return selected;
 	}
 
 	private HashSet<FactorCell> getChildrenIfAny(EAMGraphCell selected) throws Exception
 	{
+		if(selected.isFactorLink())
+			return new HashSet();
+		
 		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
 		if (selected.isProjectScope())
 			return new HashSet(model.getAllDiagramTargets());
@@ -307,23 +329,26 @@ public class PropertiesDoer extends LocationDoer
 		return FactorPropertiesPanel.TAB_DETAILS;
 	}
 	
-	private EAMGraphCell[] getSelectedCellsWithoutGroupBoxCoveredLinks()
+	private HashSet<LinkCell> getSelectedLinksExcludingInternalGroupBoxLinks()
+	{
+		HashSet<LinkCell> selectedLinkCells = new HashSet(getDiagramComponent().getOnlySelectedLinkCells());
+		HashSet<LinkCell> selectedInternalGroupBoxLinks = getInternalGroupBoxLinks();
+		selectedLinkCells.removeAll(selectedInternalGroupBoxLinks);
+		return selectedLinkCells;
+	}
+
+	private HashSet<LinkCell> getInternalGroupBoxLinks()
 	{
 		try
 		{
-			EAMGraphCell[] selectedCells = getDiagramComponent().getOnlySelectedCells();
 			HashSet<FactorCell> groupBoxesAndChildren = getDiagramComponent().getOnlySelectedFactorAndGroupChildCells();
 			HashSet<LinkCell> linkInsideGroupBox = getDiagramComponent().getAllLinksInsideGroupBox(groupBoxesAndChildren);
-			HashSet<EAMGraphCell> selectedFactorsWithoutGroupBoxLinks = new HashSet();
-			selectedFactorsWithoutGroupBoxLinks.addAll(Arrays.asList(selectedCells));
-			selectedFactorsWithoutGroupBoxLinks.removeAll(linkInsideGroupBox);
-			
-			return selectedFactorsWithoutGroupBoxLinks.toArray(new EAMGraphCell[0]);
+			return linkInsideGroupBox;
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new EAMGraphCell[0];
+			return new HashSet();
 		}
 	}
 
