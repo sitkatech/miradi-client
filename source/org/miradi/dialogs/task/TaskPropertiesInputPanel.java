@@ -70,7 +70,7 @@ public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 	
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Task Properties");
+		return EAM.text("Title|Summary");
 	}
 		
 	public void updateTable()
