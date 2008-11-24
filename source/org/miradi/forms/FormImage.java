@@ -17,22 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.forms.objects;
+package org.miradi.forms;
 
-import org.miradi.forms.FieldPanelSpec;
-import org.miradi.icons.KeyEcologicalAttributeIcon;
-import org.miradi.main.EAM;
-import org.miradi.objects.KeyEcologicalAttribute;
+import java.awt.image.BufferedImage;
 
-public class KeyEcologicalAttributePropertiesForm extends FieldPanelSpec
+public class FormImage extends FormItem
 {
-	public KeyEcologicalAttributePropertiesForm()
+	public FormImage(BufferedImage bufferedImageToUse)
 	{
-		int type = KeyEcologicalAttribute.getObjectType();
-		addStandardNameRow(new KeyEcologicalAttributeIcon(), EAM.text("KEA"), type, new String[]{KeyEcologicalAttribute.TAG_SHORT_LABEL, KeyEcologicalAttribute.TAG_LABEL});
-		
-		addLabelAndField(type, KeyEcologicalAttribute.TAG_DETAILS);
-		addLabelAndField(type, KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
-		addLabelAndField(type, KeyEcologicalAttribute.TAG_DESCRIPTION);
+		bufferedImage = bufferedImageToUse;
 	}
+	
+	public boolean isFormFieldImage()
+	{
+		return true;
+	}
+	
+	public BufferedImage getImage()
+	{
+		return bufferedImage;
+	}
+	
+	private BufferedImage bufferedImage;
 }

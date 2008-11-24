@@ -21,6 +21,10 @@ package org.miradi.forms;
 
 import java.util.Vector;
 
+import javax.swing.Icon;
+
+import org.miradi.utils.BufferedImageFactory;
+
 public class FieldPanelSpec extends PropertiesPanelSpec
 {
 	public FieldPanelSpec()
@@ -88,14 +92,26 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		addLabelAndFieldsWithLabels(translatedLabel, type, new String[]{fieldTag});
 	}
 	
-	protected void addLabelAndFieldsWithLabels(String translatedLabel, int type, String[] strings)
+	protected void addLabelAndFieldsWithLabels(String translatedLabel, int type, String[] tags)
 	{
 		FormRow formRow = new FormRow();
+		addTags(formRow, translatedLabel, type, tags);
+	}
+	
+	protected void addStandardNameRow(Icon icon, String translatedLabel, int type, String[] tags)
+	{
+		FormRow formRow = new FormRow();
+		formRow.addLeftFormItem(new FormImage(BufferedImageFactory.getImage(icon)));
+		addTags(formRow, translatedLabel, type, tags);
+	}
+
+	private void addTags(FormRow formRow, String translatedLabel, int type, String[] tags)
+	{
 		formRow.addLeftFormItem(new FormConstant(translatedLabel));
-		for(int index = 0; index < strings.length; ++index)
+		for(int index = 0; index < tags.length; ++index)
 		{
-			formRow.addRightFormItem(new FormFieldLabel(type, strings[index]));
-			formRow.addRightFormItem(new FormFieldData(type, strings[index]));
+			formRow.addRightFormItem(new FormFieldLabel(type, tags[index]));
+			formRow.addRightFormItem(new FormFieldData(type, tags[index]));
 		}
 		addFormRow(formRow);
 	}

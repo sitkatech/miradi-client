@@ -35,4 +35,9 @@ abstract public class FormItem
 	{
 		return false;
 	}
+	
+	public boolean isFormFieldImage()
+	{
+		return false;
+	}
 }
