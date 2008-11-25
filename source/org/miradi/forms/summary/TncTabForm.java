@@ -42,10 +42,7 @@ public class TncTabForm extends FieldPanelSpec
 		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITY);
 		
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_COUNTRY);
-		addLabelAndField(projectMetadataType, ProjectMetadata.LEGACY_TAG_TNC_OPERATING_UNITS);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_ECOREGION);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
