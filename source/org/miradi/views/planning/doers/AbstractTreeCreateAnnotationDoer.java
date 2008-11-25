@@ -24,6 +24,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.views.diagram.CreateAnnotationDoer;
@@ -33,14 +34,25 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 	@Override
 	public boolean isAvailable()
 	{
-		BaseObject selectedObject = getSingleSelectedObject();
-		if (selectedObject == null)
+		try
+		{
+			BaseObject selectedObject = getSingleSelectedObject();
+			if (selectedObject == null)
+				return false;
+
+			if (!Factor.isFactor(selectedObject))
+				return false;
+
+			if(!childWouldBeVisible(getObjectName()))
+				return false;
+
+			return isAvailableForFactor((Factor) selectedObject);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
 			return false;
-		
-		if (!Factor.isFactor(selectedObject))
-			return false;
-		
-		return isAvailableForFactor((Factor) selectedObject);
+		}
 	}
 	
 	@Override
@@ -76,4 +88,6 @@ abstract public class AbstractTreeCreateAnnotationDoer extends AbstractTreeNodeD
 	abstract protected String getAnnotationTag();
 	
 	abstract protected boolean isAvailableForFactor(Factor factor);
+	
+	abstract protected String getObjectName();
 }

@@ -22,10 +22,6 @@ package org.miradi.views.planning.doers;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
-import org.miradi.utils.CodeList;
-import org.miradi.views.planning.PlanningView;
-import org.miradi.views.planning.RowManager;
 
 
 abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoer
@@ -39,7 +35,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 				return false;
 			if(!canOwnTask(selected))
 				return false;
-			if(!childTaskWouldBeVisible(selected.getType()))
+			if(!childWouldBeVisible(Task.getChildTaskTypeCode(selected.getType())))
 				return false;
 			
 			return true;
@@ -57,12 +53,5 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 			return true;
 		
 		return false;
-	}
-
-	private boolean childTaskWouldBeVisible(int parentType) throws Exception
-	{
-		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
-		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
-		return (visibleRowCodes.contains(Task.getChildTaskTypeCode(parentType)));
 	}
 }
