@@ -101,6 +101,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 	{
 		super.refresh();
 		newProjectNameField.requestFocusInWindow();
+		newProjectNameField.removeKeyListener(this);
 		newProjectNameField.addKeyListener(this);
 	}
 	
