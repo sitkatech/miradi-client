@@ -20,13 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.icons.GoalIcon;
 import org.miradi.objects.Indicator;
 
 public class IndicatorFutureStatusSubForm extends FieldPanelSpec
 {
 	public IndicatorFutureStatusSubForm()
 	{
-		addLabelAndFieldsWithLabels("", Indicator.getObjectType(), new String[]{Indicator.TAG_FUTURE_STATUS_DATE, 
+		addStandardNameRow(new GoalIcon(), "", Indicator.getObjectType(), new String[]{Indicator.TAG_FUTURE_STATUS_DATE, 
 																				Indicator.TAG_FUTURE_STATUS_SUMMARY,
 																				Indicator.TAG_FUTURE_STATUS_RATING,});
 		
