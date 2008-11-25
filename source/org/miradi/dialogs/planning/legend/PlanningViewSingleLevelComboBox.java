@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.legend;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -82,6 +84,12 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 
 		if (propertyName.equals(Task.OBJECT_NAME))
 			return ColumnManager.getTaskColumns();
+		
+		if (propertyName.equals(Target.OBJECT_NAME))
+			return ColumnManager.getTargetColumns();
+		
+		if (propertyName.equals(Cause.OBJECT_NAME_THREAT))
+			return ColumnManager.getDirectThreatsColumns();
 		
 		return new CodeList();
 	}

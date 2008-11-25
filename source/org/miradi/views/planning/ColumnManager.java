@@ -158,20 +158,18 @@ public class ColumnManager
 		return new CodeList(list);		
 	}
 	
-	private static CodeList getTargetColumns()
+	public static CodeList getTargetColumns()
 	{
 		String[] list = {
-				Target.TAG_TARGET_STATUS,
-				Target.PSEUDO_TAG_BUDGET_TOTAL,
+				Target.TAG_TEXT,
 				};
 		return new CodeList(list);		
 	}
 
-	private static CodeList getDirectThreatsColumns()
+	public static CodeList getDirectThreatsColumns()
 	{
 		String[] list = {
-				Cause.TAG_TAXONOMY_CODE,
-				Cause.PSEUDO_TAG_BUDGET_TOTAL
+				Cause.TAG_TEXT,
 				};
 		return new CodeList(list);		
 	}
