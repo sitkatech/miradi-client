@@ -87,8 +87,15 @@ public class ConceptualModelByTargetSplitter
 		
 		ORef newConceptualModelRef = createPage.getObjectRef();
 		setDiagramObjectLabel(newConceptualModelRef, targetNameUsedAsDiagramName);
+		updateDiagramTags(newConceptualModelRef);
 		
 		return ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
+	}
+
+	private void updateDiagramTags(ORef newConceptualModelRef) throws Exception
+	{
+		CommandSetObjectData setTags = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, getDiagramObject().getSelectedTaggedObjectSetRefs().toString());
+		getProject().executeCommand(setTags);
 	}
 
 	private void setDiagramObjectLabel(ORef newConceptualModelRef, String targetNameUsedAsDiagramName) throws CommandFailedException
