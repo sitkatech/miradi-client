@@ -14,6 +14,7 @@ import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
@@ -70,6 +71,9 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 		
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
 			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
+		
+		if(columnTag.equals(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL))
+			return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
 			
 		return Color.white;
 	}
