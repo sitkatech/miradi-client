@@ -123,6 +123,20 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 	public void importConProProject(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
+		loadXml(projectAsInputStream);
+		importXml();
+	}
+	
+	public void importConProjectNumbers(InputStreamWithSeek projectAsInputStream) throws Exception
+	{
+		loadXml(projectAsInputStream);
+		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
+		ORef metadataRef = getProject().getMetadata().getRef();
+		importProjectId(projectSumaryNode, metadataRef);
+	}
+
+	private void loadXml(InputStreamWithSeek projectAsInputStream) throws Exception
+	{
 		InputSource inputSource = new InputSource(projectAsInputStream);
 		document = createDocument(inputSource);
 				
@@ -144,7 +158,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 		
 		xPath = createXPath();
-		importXml();
 	}
 
 	private void importXml() throws Exception
