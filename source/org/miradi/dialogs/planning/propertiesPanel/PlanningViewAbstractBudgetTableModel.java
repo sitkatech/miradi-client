@@ -32,7 +32,7 @@ import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
-abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewAbstractAssignmentTabelModel implements ColumnTagProvider
+abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
 {
 	public PlanningViewAbstractBudgetTableModel(Project projectToUse) throws Exception
 	{

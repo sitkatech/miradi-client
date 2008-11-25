@@ -22,7 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
 
-abstract public class PlanningViewAbstractTotalsTableModel extends PlanningViewAbstractAssignmentTabelModel implements ColumnTagProvider
+abstract public class PlanningViewAbstractTotalsTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
 {
 	public PlanningViewAbstractTotalsTableModel(Project projectToUse)
 	{
