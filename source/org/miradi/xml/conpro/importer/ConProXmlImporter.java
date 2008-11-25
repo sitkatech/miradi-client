@@ -1116,7 +1116,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 		CodeList highOrAboveRatingCodes = createAboveMediumThreatRatingCodeList();
 		addThreatChainsToTag(highOrAboveRatingCodes, highOrAboveRankedThreatsTag, mediumOrBelowRankedThreatsTag);
-		addTagsToConceptualModels(new ORefList(highOrAboveRankedThreatsTag));
+		addHighOrAboveTagToConceptualModel(new ORefList(highOrAboveRankedThreatsTag));
 	}
 
 	private void addThreatChainsToTag(CodeList highOrAboveCodes, ORef highOrAboveRankedThreatsTag, ORef mediumOrBelowRankedThreatsTag) throws Exception
@@ -1168,7 +1168,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		getProject().executeCommand(tagFactors);
 	}
 	
-	private void addTagsToConceptualModels(ORefList tagRefs) throws Exception
+	private void addHighOrAboveTagToConceptualModel(ORefList tagRefs) throws Exception
 	{
 		CommandSetObjectData addTags = new CommandSetObjectData(getFirstAndOnlyDiagramObjectRef(), ConceptualModelDiagram.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefs.toString());
 		getProject().executeCommand(addTags);
