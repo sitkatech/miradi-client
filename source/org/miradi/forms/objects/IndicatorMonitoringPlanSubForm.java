@@ -30,6 +30,5 @@ public class IndicatorMonitoringPlanSubForm extends FieldPanelSpec
 		addLabelAndField(type, Indicator.PSEUDO_TAG_FACTOR);
 		addLabelAndField(type, Indicator.PSEUDO_TAG_METHODS);
 		addLabelAndField(type, Indicator.TAG_PRIORITY);
-		addLabelAndField(type, Indicator.TAG_PROGRESS_REPORT_REFS);
 	}
 }
