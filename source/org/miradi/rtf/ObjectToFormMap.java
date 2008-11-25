@@ -24,7 +24,7 @@ import org.miradi.forms.objects.AccountingCodePropertiesForm;
 import org.miradi.forms.objects.ActivityPropertiesForm;
 import org.miradi.forms.objects.FundingSourcePropertiesForm;
 import org.miradi.forms.objects.GoalPropertiesForm;
-import org.miradi.forms.objects.IndicatorPropertiesForm;
+import org.miradi.forms.objects.ViabilityIndicatorPropertiesForm;
 import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
 import org.miradi.forms.objects.KeyEcologicalAttributePropertiesForm;
 import org.miradi.forms.objects.MeasurementPropertiesForm;
@@ -117,11 +117,11 @@ public class ObjectToFormMap
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
 
-	private static IndicatorPropertiesForm getIndicatorForm(Indicator indicator)
+	private static ViabilityIndicatorPropertiesForm getIndicatorForm(Indicator indicator)
 	{
 		//FIXME uncomment this if and return the properer indicator properties panel.
 		//if (indicator.isViabilityIndicator())
-			return new IndicatorPropertiesForm();
+			return new ViabilityIndicatorPropertiesForm();
 		
 	}
 
