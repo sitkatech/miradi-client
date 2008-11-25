@@ -19,7 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import javax.swing.tree.TreePath;
+
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -45,6 +48,16 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	public int getRowCount()
 	{
 		return rowObjectRefs.size();
+	}
+	
+	public int getProportionShares(int row)
+	{
+		ORef rowObjectRef = rowObjectRefs.get(row);
+		if (rowObjectRef.isInvalid())
+			return 1;
+		TreePath path = findObject(new TreePath(getRootNode()), rowObjectRef);
+		TreeTableNode node = (TreeTableNode) path.getLastPathComponent();
+		return node.getProportionShares();
 	}
 	
 	private ORefList rowObjectRefs;

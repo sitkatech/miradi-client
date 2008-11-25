@@ -23,7 +23,7 @@ import org.miradi.objects.BaseObject;
 
 public interface RowColumnBaseObjectProvider
 {
-	public BaseObject getBaseObjectForRowColumn(int row, int column);
-	
 	public int getRowCount();
+	public BaseObject getBaseObjectForRowColumn(int row, int column);
+	public int getProportionShares(int row);
 }

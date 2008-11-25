@@ -72,6 +72,11 @@ abstract public class EditableObjectTableModel extends AbstractTableModel implem
 			EAM.logException(e);
 		}
 	}
+	
+	public int getProportionShares(int row)
+	{
+		return 1;
+	}
 		
 	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
 	

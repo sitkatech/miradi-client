@@ -47,4 +47,9 @@ abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable 
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		return getSyncedModel().getColumnTag(modelColumn);
 	}
+	
+	public int getProportionShares(int row)
+	{
+		return getSyncedModel().getProportionShares(row);
+	}
 }

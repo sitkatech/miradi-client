@@ -55,5 +55,10 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 		scrollRectToVisible(rect);
 	}
 	
+	public int getProportionShares(int row)
+	{
+		return getNodeForRow(row).getProportionShares();
+	}
+	
 	public static final String UNIQUE_IDENTIFIER = "PlanningTreeTable";
 }

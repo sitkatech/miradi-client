@@ -59,6 +59,12 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return getBaseObjectForRowColumn(row, 0);
 	}
 	
+	@Override
+	public int getProportionShares(int row)
+	{
+		return objectProvider.getProportionShares(row);
+	}
+	
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }
