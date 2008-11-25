@@ -53,6 +53,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		project = projectToUse;
 		visibleRows = visibleRowsToUse;
 		children = new Vector();
+		proportionShares = 1;
 	}
 	
 	public ORef getObjectReference()
@@ -80,6 +81,16 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	public int getChildCount()
 	{
 		return children.size();
+	}
+	
+	public int getProportionShares()
+	{
+		return proportionShares;
+	}
+	
+	public void addProportionShares(TreeTableNode otherNode)
+	{
+		proportionShares += otherNode.getProportionShares();
 	}
 
 	public Object getValueAt(int column)
@@ -133,9 +144,14 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			
 			boolean isChildVisible = objectTypesToShow.contains(child.getObjectTypeName());
 			if(isChildVisible)
+			{
 				mergeChildIntoList(newChildren, child);
+			}
 			else
+			{
 				addChildrenOfNodeToList(newChildren, child);
+				addProportionShares(child);
+			}
 		}
 		
 		if(shouldSortChildren())
@@ -159,6 +175,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		
 		destination = existingNode.getChildren();
 		addChildrenOfNodeToList(destination, newChild);
+		existingNode.addProportionShares(newChild);
 
 		if(existingNode.shouldSortChildren())
 			Collections.sort(destination, existingNode.createNodeSorter());
@@ -431,4 +448,5 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected Project project;
 	protected CodeList visibleRows;
 	protected Vector<AbstractPlanningTreeNode> children;
+	private int proportionShares;
 }

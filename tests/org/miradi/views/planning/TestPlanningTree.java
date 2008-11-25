@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
@@ -70,6 +72,9 @@ abstract public class TestPlanningTree extends EAMTestCase
 		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_TASK_IDS);
 		activityId = project.addActivityToStrateyList(diagramStrategy.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
 		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
+		
+		IdList indicatorIds = new IdList(Indicator.getObjectType(), new BaseId[] {indicatorId});
+		project.setObjectData(diagramStrategy.getWrappedORef(), Factor.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 	
 	public Goal getGoal()
