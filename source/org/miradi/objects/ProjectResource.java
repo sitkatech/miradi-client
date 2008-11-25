@@ -96,7 +96,7 @@ public class ProjectResource extends BaseObject
 	
 	public String toString()
 	{
-		return getWho();
+		return getFullName();
 	}
 	
 	public String getWho()
