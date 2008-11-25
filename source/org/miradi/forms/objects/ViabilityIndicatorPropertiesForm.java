@@ -22,9 +22,9 @@ package org.miradi.forms.objects;
 import org.miradi.forms.PanelHolderSpec;
 import org.miradi.objects.Indicator;
 
-public class IndicatorPropertiesForm extends PanelHolderSpec
+public class ViabilityIndicatorPropertiesForm extends PanelHolderSpec
 {
-	public IndicatorPropertiesForm()
+	public ViabilityIndicatorPropertiesForm()
 	{
 		addPanel(new IndicatorSubForm());
 		addPanel(new IndicatorViabilityRatingsSubForm());
