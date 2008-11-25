@@ -94,7 +94,8 @@ public class ConceptualModelByTargetSplitter
 
 	private void updateDiagramTags(ORef newConceptualModelRef) throws Exception
 	{
-		CommandSetObjectData setTags = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, getDiagramObject().getSelectedTaggedObjectSetRefs().toString());
+		String tagRefsAsString = getDiagramObject().getSelectedTaggedObjectSetRefs().toString();
+		CommandSetObjectData setTags = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefsAsString);
 		getProject().executeCommand(setTags);
 	}
 
