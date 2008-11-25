@@ -1116,6 +1116,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 		CodeList highOrAboveRatingCodes = createAboveMediumThreatRatingCodeList();
 		addThreatChainsToTag(highOrAboveRatingCodes, highOrAboveRankedThreatsTag, mediumOrBelowRankedThreatsTag);
+		addTagsToConceptualModels(new ORefList(highOrAboveRankedThreatsTag));
 	}
 
 	private void addThreatChainsToTag(CodeList highOrAboveCodes, ORef highOrAboveRankedThreatsTag, ORef mediumOrBelowRankedThreatsTag) throws Exception
@@ -1142,8 +1143,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 		
 		tagFactors(highOrAboveRankedThreatsTag, highOrAboveRankedThreatRefs);
 		tagFactors(mediumOrBelowRankedThreatsTag, mediumOrBelowRankedThreatRefs);
-		
-		addTagsToConceptualModels(new ORefList(highOrAboveRankedThreatsTag));
 	}
 
 	private ORefSet getAllNonChainedStrategyAndTargets(ORefSet mediumOrBelowRankedThreatRefs, ORefSet highOrAboveRankedThreatRefs)
