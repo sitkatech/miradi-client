@@ -29,9 +29,9 @@ import org.miradi.objects.Task;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 
-abstract public class PlanningViewAbstractAssignmentTabelModel extends EditableObjectTableModel
+abstract public class PlanningViewAbstractAssignmentTableModel extends EditableObjectTableModel
 {
-	public PlanningViewAbstractAssignmentTabelModel(Project projectToUse)
+	public PlanningViewAbstractAssignmentTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 		assignmentRefs = new ORefList();
