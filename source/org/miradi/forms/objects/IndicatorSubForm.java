@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.icons.IndicatorIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Indicator;
 
@@ -28,7 +29,7 @@ public class IndicatorSubForm extends FieldPanelSpec
 	public IndicatorSubForm()
 	{
 		int type = Indicator.getObjectType();
-		addLabelAndFieldsWithLabels(EAM.text("Indicator"), type, new String[]{Indicator.TAG_SHORT_LABEL, Indicator.TAG_LABEL});
+		addStandardNameRow(new IndicatorIcon(), EAM.text("Indicator"), type, new String[]{Indicator.TAG_SHORT_LABEL, Indicator.TAG_LABEL});
 		addLabelAndField(type, Indicator.TAG_DETAIL);
 		addLabelAndField(type, Indicator.TAG_COMMENT);
 	}
