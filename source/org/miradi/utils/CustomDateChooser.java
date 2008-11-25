@@ -197,7 +197,16 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		{
 			try 
 			{
-				Date thisDate = dateFormatter.parse(getText());
+				final String YEAR_REGEXP = "\\d{4}";
+				final String MONTH_REGEXP = "\\d{2}";
+
+				String newValue = getText();
+				if(newValue.matches(YEAR_REGEXP))
+					newValue += "-01";
+				if(newValue.matches(YEAR_REGEXP + "-" + MONTH_REGEXP))
+					newValue += "-01";
+
+				Date thisDate = dateFormatter.parse(newValue);
 				setDate(thisDate, true);
 			} 
 			catch (Exception e) 
