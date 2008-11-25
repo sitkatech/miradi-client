@@ -78,6 +78,11 @@ public abstract class TreeTableNode implements Comparable
 		return false;
 	}
 	
+	public int getProportionShares()
+	{
+		return 1;
+	}
+
 	public void sortChildren(TreeTableNode[] nodes)
 	{
 		Arrays.sort(nodes);

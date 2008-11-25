@@ -19,10 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
+import org.miradi.utils.CodeList;
 
 public class TestPlanningTreeIndicatorNode extends TestPlanningTree
 {
@@ -37,6 +39,15 @@ public class TestPlanningTreeIndicatorNode extends TestPlanningTree
 		ORefList methodRefs = new ORefList(relatedMethods);
 		assertEquals("wrong method count?", 1, methodRefs.size());
 		assertTrue("wrong type returned?", isMethod(methodRefs.get(0)));
+	}
+	
+	public void testMerging() throws Exception
+	{
+		CodeList rowCodes = new CodeList();
+		rowCodes.add(Indicator.OBJECT_NAME);
+		PlanningTreeRootNode root = new PlanningTreeRootNode(project, rowCodes);
+		assertEquals(1, root.getChildCount());
+		assertEquals(2, root.getChild(0).getProportionShares());
 	}
 
 	private boolean isMethod(ORef ref)
