@@ -41,4 +41,10 @@ public class TreeNodeCreateObjectiveDoer extends AbstractTreeCreateAnnotationDoe
 	{
 		return factor.canHaveObjectives();
 	}
+
+	@Override
+	protected String getObjectName()
+	{
+		return Objective.OBJECT_NAME;
+	}
 }

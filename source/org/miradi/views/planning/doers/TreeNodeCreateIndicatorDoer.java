@@ -39,4 +39,10 @@ public class TreeNodeCreateIndicatorDoer extends AbstractTreeCreateAnnotationDoe
 	{
 		return factor.canHaveIndicators();
 	}
+
+	@Override
+	protected String getObjectName()
+	{
+		return Indicator.OBJECT_NAME;
+	}
 }
