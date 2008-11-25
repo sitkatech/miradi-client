@@ -185,11 +185,10 @@ public class ColumnManager
 	private static CodeList getAssignmentColumns()
 	{
 		String[] list = {
-				Assignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL,
-				Assignment.PSEUDO_TAG_OWNING_FACTOR_NAME,
-				Assignment.PSEUDO_TAG_WHEN,
-				Assignment.PSEUDO_TAG_BUDGET_TOTAL,
+				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				Assignment.PSEUDO_TAG_WHEN_TOTAL,
 				Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL,
+				Indicator.PSEUDO_TAG_FACTOR,
 				};
 		return new CodeList(list);
 	}
