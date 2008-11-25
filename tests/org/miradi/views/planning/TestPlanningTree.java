@@ -25,7 +25,6 @@ import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
@@ -59,22 +58,23 @@ abstract public class TestPlanningTree extends EAMTestCase
 	private void setupFactors() throws Exception
 	{
 		projectMetadata = project.getMetadata();
-		diagramStrategy = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
+		diagramStrategy1 = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
+		diagramStrategy2 = project.createDiagramFactorAndAddToDiagram(Strategy.getObjectType());		
 		diagramCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		diagramTarget = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		
-		stratToCauseLinkId = project.createDiagramLinkAndAddToDiagram(diagramStrategy, diagramCause).getObjectId();		
+		stratToCauseLinkId = project.createDiagramLinkAndAddToDiagram(diagramStrategy1, diagramCause).getObjectId();		
 		causeToTargetLinkId = project.createDiagramLinkAndAddToDiagram(diagramCause, diagramTarget).getObjectId();
 		
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
 		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
 		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_TASK_IDS);
-		activityId = project.addActivityToStrateyList(diagramStrategy.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
+		activityId = project.addActivityToStrateyList(diagramStrategy1.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
 		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
 		
-		IdList indicatorIds = new IdList(Indicator.getObjectType(), new BaseId[] {indicatorId});
-		project.setObjectData(diagramStrategy.getWrappedORef(), Factor.TAG_INDICATOR_IDS, indicatorIds.toString());
+		IdList activityIds = new IdList(Task.getObjectType(), new BaseId[] {activityId});
+		project.setObjectData(diagramStrategy2.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
 	}
 	
 	public Goal getGoal()
@@ -89,7 +89,12 @@ abstract public class TestPlanningTree extends EAMTestCase
 	
 	public Strategy getStrategy()
 	{
-		return (Strategy) project.findObject(diagramStrategy.getWrappedORef());
+		return (Strategy) project.findObject(diagramStrategy1.getWrappedORef());
+	}
+	
+	public Strategy getStrategy2()
+	{
+		return (Strategy) project.findObject(diagramStrategy2.getWrappedORef());
 	}
 	
 	public Indicator getIndicator()
@@ -124,7 +129,8 @@ abstract public class TestPlanningTree extends EAMTestCase
 	
 	ProjectForTesting project;
 	ProjectMetadata projectMetadata;
-	DiagramFactor diagramStrategy;		
+	DiagramFactor diagramStrategy1;		
+	DiagramFactor diagramStrategy2;		
 	DiagramFactor diagramCause;
 	DiagramFactor diagramTarget;
 	

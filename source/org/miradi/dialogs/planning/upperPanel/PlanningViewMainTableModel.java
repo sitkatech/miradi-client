@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
-import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
@@ -95,30 +94,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return EAM.fieldLabel(ObjectType.FAKE, getColumnTag(column));
 	}
 	
-	public Object getValueAt(Object rawNode, int col)
-	{
-		AbstractPlanningTreeNode treeNode = (AbstractPlanningTreeNode) rawNode;
-		BaseObject baseObject = treeNode.getObject();
-		return getValueAt(baseObject, col);
-	}
-
 	public Object getValueAt(int row, int column)
 	{
-		BaseObject object = getBaseObjectForRow(row);
-		if(object == null)
+		BaseObject baseObject = getBaseObjectForRow(row);
+		if(baseObject == null)
 			return "";
 		
-		return getValueAt(object, column);
-	}
-
-	public Object getValueAt(BaseObject baseObject, int col)
-	{
 		try
 		{	
-			if(baseObject == null)
-				return "";
-
-			String columnTag = getColumnTagForNode(baseObject.getType(), col);
+			String columnTag = getColumnTagForNode(baseObject.getType(), column);
 			if (! baseObject.doesFieldExist(columnTag))
 				return "";
 
@@ -140,6 +124,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Strategy.TAG_TAXONOMY_CODE))
 				return new StrategyClassificationQuestion().findChoiceByCode(rawValue);
 
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
+				return Double.toString(calculateProportion(row, rawValue));
+				
 			return rawValue;
 		}
 		catch (Exception e)
@@ -147,6 +134,17 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			EAM.logException(e);
 			return "[Error]";
 		}
+	}
+
+	private double calculateProportion(int row, String rawValue)
+	{
+		if(rawValue == null || rawValue.length() == 0)
+			return 0.0;
+		
+		Double value = Double.parseDouble(rawValue);
+		int totalShares = getBaseObjectForRow(row).getTotalShareCount();
+		int proportionShares = getProportionShares(row);
+		return value * proportionShares / totalShares;
 	}
 
 	private String getColumnTagForNode(int nodeType, int column)

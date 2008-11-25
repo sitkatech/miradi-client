@@ -132,7 +132,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		if (indicator.isBudgetOverrideMode() && indicator.isEmptyBudgetCostOverride())
 			return null; 
 	
-		return Double.toString(indicator.getProportionalBudgetCost());
+		return Double.toString(indicator.getTotalBudgetCost());
 	}
 
 	private void writeOptionalProgressReportStatus(UnicodeWriter out, BaseObject baseObject) throws Exception

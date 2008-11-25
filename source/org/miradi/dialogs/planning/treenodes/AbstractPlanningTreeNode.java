@@ -53,7 +53,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		project = projectToUse;
 		visibleRows = visibleRowsToUse;
 		children = new Vector();
-		proportionShares = 1;
 	}
 	
 	public ORef getObjectReference()
@@ -83,14 +82,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return children.size();
 	}
 	
-	public int getProportionShares()
+	protected void addProportionShares(TreeTableNode otherNode)
 	{
-		return proportionShares;
-	}
-	
-	public void addProportionShares(TreeTableNode otherNode)
-	{
-		proportionShares += otherNode.getProportionShares();
 	}
 
 	public Object getValueAt(int column)
@@ -447,5 +440,4 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected Project project;
 	protected CodeList visibleRows;
 	protected Vector<AbstractPlanningTreeNode> children;
-	private int proportionShares;
 }

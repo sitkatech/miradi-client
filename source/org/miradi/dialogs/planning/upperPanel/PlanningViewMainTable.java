@@ -20,6 +20,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.utils.TableWithTreeTableNodes;
 
 public class PlanningViewMainTable extends TableWithTreeTableNodes
@@ -28,6 +29,7 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 	{
 		super(mainWindowToUse, modelToUse);
 		fontProvider = fontProviderToUse;
+		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 		setTableColumnRenderers();
 	}
 
@@ -52,7 +54,7 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 		if(columnTag.equals(Strategy.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE) || columnTag.equals(Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
 			return new ProgressTableCellRendererFactory(this, fontProvider);
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
+			return new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
 		if(isQuestionColumn(columnTag))
 			return new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		return new MultiLineObjectTableCellRendererFactory(this, fontProvider);
@@ -123,4 +125,5 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewMainTable";
 
 	private FontForObjectTypeProvider fontProvider;
+	private CurrencyFormat currencyFormatter;
 }

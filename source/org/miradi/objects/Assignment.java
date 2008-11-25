@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.BudgetCalculator;
-import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
@@ -125,10 +124,9 @@ public class Assignment extends BaseObject
 			//TODO should these variables be only initialized once in project?
 			BudgetCalculator totalsCalculator = new BudgetCalculator(getProject());
 			DateRange dateRange = getProject().getProjectCalendar().combineStartToEndProjectRange();
-			CurrencyFormat currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 
 			double totalCost = totalsCalculator.getTotalCost(this, dateRange);
-			return currencyFormatter.format(totalCost);
+			return Double.toString(totalCost);
 		}
 		catch (Exception e)
 		{

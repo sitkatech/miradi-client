@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
+import org.miradi.utils.CodeList;
 
 public class TestPlanningTreeActivityNode extends TestPlanningTree
 {
@@ -35,4 +38,17 @@ public class TestPlanningTreeActivityNode extends TestPlanningTree
 		assertEquals("wrong subtask count?", 1, taskRefs.size());
 		assertEquals("wrong type returned?", Task.getObjectType(), taskRefs.get(0).getObjectType());
 	}
+
+	public void testMerging() throws Exception
+	{
+		CodeList rowCodes = new CodeList();
+		rowCodes.add(Task.ACTIVITY_NAME);
+		PlanningTreeRootNode root = new PlanningTreeRootNode(project, rowCodes);
+		assertEquals(1, root.getChildCount());
+
+		final TreeTableNode firstChild = root.getChild(0);
+		assertEquals(Task.getObjectType(), firstChild.getType());
+		assertEquals(2, firstChild.getProportionShares());
+	}
+
 }
