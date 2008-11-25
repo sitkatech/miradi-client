@@ -36,8 +36,8 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
 				new ChoiceItem("1", EAM.text("Low"), COLOR_GREAT),
 				new ChoiceItem("2", EAM.text("Medium"), COLOR_OK),
-				new ChoiceItem("3", EAM.text("High"), COLOR_CAUTION),
-				new ChoiceItem("4", EAM.text("Very High"), COLOR_ALERT),
+				new ChoiceItem(HIGH_RATING_CODE, EAM.text("High"), COLOR_CAUTION),
+				new ChoiceItem(VERY_HIGH_RATING_CODE, EAM.text("Very High"), COLOR_ALERT),
 		};
 	}
 
@@ -48,4 +48,7 @@ public class ThreatRatingQuestion extends StaticChoiceQuestion
 			code = Integer.toString(value);
 		return findChoiceByCode(code);
 	}
+	
+	public static final String HIGH_RATING_CODE = "3";
+	public static final String VERY_HIGH_RATING_CODE = "4";
 }

@@ -75,12 +75,14 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectChainObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.BudgetCostModeQuestion;
@@ -89,6 +91,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
@@ -160,6 +163,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		attachObjectivesToHolder();
 		attachIndicatorsToHolder();
 		updateObjectiveRelevantStrategyList();
+		createTaggedThreatChains();
 	}
 
 	private void importStrategies() throws Exception
@@ -1105,6 +1109,94 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 	}
 	
+	private void createTaggedThreatChains() throws Exception
+	{
+		ORef highOrAboveRankedThreatsTag = createLabeledTag(EAM.text("Very High / High Threat Chains"));
+		ORef mediumOrBelowRankedThreatsTag = createLabeledTag(EAM.text("Medium / Low Threat Chains"));
+		
+		CodeList highOrAboveRatingCodes = createAboveMediumThreatRatingCodeList();
+		addThreatChainsToTag(highOrAboveRatingCodes, highOrAboveRankedThreatsTag, mediumOrBelowRankedThreatsTag);
+	}
+
+	private void addThreatChainsToTag(CodeList highOrAboveCodes, ORef highOrAboveRankedThreatsTag, ORef mediumOrBelowRankedThreatsTag) throws Exception
+	{
+		ORefSet mediumOrBelowRankedThreatRefs = new ORefSet();
+		ORefSet highOrAboveRankedThreatRefs = new ORefSet();
+		
+		ProjectChainObject chainObject = new ProjectChainObject();
+		Cause[] threats = getProject().getCausePool().getDirectThreats();
+		for (int index = 0; index < threats.length; ++index)
+		{
+			Cause threat = threats[index];
+			ChoiceItem threatRatingChoice = getProject().getThreatRatingFramework().getThreatThreatRatingValue(threat.getRef());			
+			ORefSet factorRefsInChain = chainObject.buildNormalChainAndGetFactorRefs(threat);;
+			if (highOrAboveCodes.contains(threatRatingChoice.getCode()))
+				highOrAboveRankedThreatRefs.addAll(factorRefsInChain);
+			else
+				mediumOrBelowRankedThreatRefs.addAll(factorRefsInChain);
+		}
+		
+		ORefSet allLeftOverStrategyTargetRefs = getAllNonChainedStrategyAndTargets(mediumOrBelowRankedThreatRefs, highOrAboveRankedThreatRefs);
+		highOrAboveRankedThreatRefs.addAll(allLeftOverStrategyTargetRefs);
+		mediumOrBelowRankedThreatRefs.addAll(allLeftOverStrategyTargetRefs);
+		
+		tagFactors(highOrAboveRankedThreatsTag, highOrAboveRankedThreatRefs);
+		tagFactors(mediumOrBelowRankedThreatsTag, mediumOrBelowRankedThreatRefs);
+		
+		ORefList tagRefs = new ORefList(new ORef[]{highOrAboveRankedThreatsTag, mediumOrBelowRankedThreatsTag});
+		addTagsToConceptualModels(tagRefs);
+	}
+
+	private ORefSet getAllNonChainedStrategyAndTargets(ORefSet mediumOrBelowRankedThreatRefs, ORefSet highOrAboveRankedThreatRefs)
+	{
+		ORefList targetRefs = getProject().getTargetPool().getORefList();
+		ORefList strategyRefs = getProject().getStrategyPool().getORefList();
+		ORefSet allLeftOverStrategyTargetRefs = new ORefSet();
+		allLeftOverStrategyTargetRefs.addAllRefs(targetRefs);
+		allLeftOverStrategyTargetRefs.addAllRefs(strategyRefs);
+		
+		ORefSet allChainedRefs = new ORefSet();
+		allChainedRefs.addAll(highOrAboveRankedThreatRefs);
+		allChainedRefs.addAll(mediumOrBelowRankedThreatRefs);
+		
+		allLeftOverStrategyTargetRefs.removeAll(allChainedRefs);
+		
+		return allLeftOverStrategyTargetRefs;
+	}
+
+	private void tagFactors(ORef tagRef, ORefSet factorRefs) throws CommandFailedException
+	{
+		CommandSetObjectData tagFactors = new CommandSetObjectData(tagRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, factorRefs.toRefList().toString());
+		getProject().executeCommand(tagFactors);
+	}
+	
+	private void addTagsToConceptualModels(ORefList tagRefs) throws Exception
+	{
+		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
+		for (int index = 0; index < conceptualModelRefs.size(); ++index)
+		{
+			CommandSetObjectData addTags = new CommandSetObjectData(conceptualModelRefs.get(index), ConceptualModelDiagram.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefs.toString());
+			getProject().executeCommand(addTags);
+		}
+	}
+
+	private CodeList createAboveMediumThreatRatingCodeList()
+	{
+		return new CodeList(new String[]{ThreatRatingQuestion.HIGH_RATING_CODE, ThreatRatingQuestion.VERY_HIGH_RATING_CODE});
+	}
+	
+	private ORef createLabeledTag(String tagLabel) throws CommandFailedException
+	{
+		CommandCreateObject createCommand = new CommandCreateObject(TaggedObjectSet.getObjectType());
+		getProject().executeCommand(createCommand);
+		
+		ORef tagRef = createCommand.getObjectRef();
+		CommandSetObjectData setLabel = new CommandSetObjectData(tagRef, TaggedObjectSet.TAG_LABEL, tagLabel);
+		getProject().executeCommand(setLabel);
+		
+		return tagRef;
+	}
+		
 	private ORef getObjectiveHolderRef()
 	{
 		return objectiveHolderRef;

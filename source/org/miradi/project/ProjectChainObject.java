@@ -26,6 +26,7 @@ import java.util.Vector;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
@@ -59,6 +60,12 @@ public class ProjectChainObject  extends ChainObject
 	{
 		buildNormalChain(factor);
 		return getFactors();
+	}
+	
+	public ORefSet buildNormalChainAndGetFactorRefs(Factor factor)
+	{
+		buildNormalChain(factor);
+		return getFactors().getFactorRefs();
 	}
 	
 	private void buildDirectThreatChain(Factor factor)
