@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
@@ -43,7 +42,6 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 	public CodeList getRowListToShow()
 	{
 		return new CodeList(new String[] {
-				ConceptualModelDiagram.OBJECT_NAME,
 				ResultsChainDiagram.OBJECT_NAME,
 				Strategy.OBJECT_NAME,
 				Task.ACTIVITY_NAME,
