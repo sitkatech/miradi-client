@@ -44,6 +44,11 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 	{
 		return threatRows.length;
 	}
+	
+	public int getProportionShares(int row)
+	{
+		return 1;
+	}
 
 	public ORef getLinkRef(Factor from, Factor to)
 	{

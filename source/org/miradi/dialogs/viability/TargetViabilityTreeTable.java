@@ -70,6 +70,11 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		return UNIQUE_IDENTIFIER;
 	}
 	
+	public int getProportionShares(int row)
+	{
+		return getNodeForRow(row).getProportionShares();
+	}
+	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();

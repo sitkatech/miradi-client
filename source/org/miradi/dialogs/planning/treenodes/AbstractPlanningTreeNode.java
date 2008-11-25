@@ -150,7 +150,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			else
 			{
 				addChildrenOfNodeToList(newChildren, child);
-				addProportionShares(child);
 			}
 		}
 		

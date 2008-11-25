@@ -168,6 +168,11 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return getObjectTableModel().getProject();
 	}
 	
+	public int getProportionShares(int row)
+	{
+		return 1;
+	}
+	
 	public void ensureObjectVisible(ORef ref)
 	{
 		setSelectedRow(ref);
