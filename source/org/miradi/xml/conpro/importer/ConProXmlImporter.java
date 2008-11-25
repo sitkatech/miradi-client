@@ -1143,8 +1143,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		tagFactors(highOrAboveRankedThreatsTag, highOrAboveRankedThreatRefs);
 		tagFactors(mediumOrBelowRankedThreatsTag, mediumOrBelowRankedThreatRefs);
 		
-		ORefList tagRefs = new ORefList(new ORef[]{highOrAboveRankedThreatsTag, mediumOrBelowRankedThreatsTag});
-		addTagsToConceptualModels(tagRefs);
+		addTagsToConceptualModels(new ORefList(highOrAboveRankedThreatsTag));
 	}
 
 	private ORefSet getAllNonChainedStrategyAndTargets(ORefSet mediumOrBelowRankedThreatRefs, ORefSet highOrAboveRankedThreatRefs)
