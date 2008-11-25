@@ -46,6 +46,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 {
 	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject) throws Exception
 	{
+		// FIXME: Much duplicated code with PlanningTreeTablePanel
 		super(mainWindowToUse, treeTable);
 
 		model = modelToUse;
