@@ -229,7 +229,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		JCheckBox checkBox = (JCheckBox)event.getSource();
 		String property = (String) checkBox.getClientProperty(LAYER);
 		LayerManager manager = getLayerManager();
-		setLegendVisibilityOfFacactorCheckBoxes(manager, property);
+		setLegendVisibilityOfFactorCheckBoxes(manager, property);
 		updateVisiblity();
 		saveSettingsToProject(DiagramObject.TAG_HIDDEN_TYPES);
 	}
@@ -266,7 +266,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	}
 	
 	//FIXME refactor rename to setLegendVisibilityOfFactorCheckBoxes
-	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
+	protected void setLegendVisibilityOfFactorCheckBoxes(LayerManager manager, String property)
 	{
 		JCheckBox checkBox = findCheckBox(property);
 		
@@ -364,13 +364,13 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		for (int i=0; i<keys.length; ++i)
 		{
 			findCheckBox(keys[i]).setSelected(true);
-			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), keys[i].toString());
+			setLegendVisibilityOfFactorCheckBoxes(getLayerManager(), keys[i].toString());
 		}
 		
 		for (int i=0; i<hiddenTypes.size(); ++i)
 		{
 			findCheckBox(hiddenTypes.get(i)).setSelected(false);
-			setLegendVisibilityOfFacactorCheckBoxes(getLayerManager(), hiddenTypes.get(i));
+			setLegendVisibilityOfFactorCheckBoxes(getLayerManager(), hiddenTypes.get(i));
 		}
 
 		updateVisiblity();
