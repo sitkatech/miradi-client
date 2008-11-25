@@ -88,7 +88,7 @@ public class ObjectToFormMap
 			return getTaskForm((Task) baseObject);
 		
 		if (Indicator.is(objectType))
-			return new IndicatorPropertiesForm();
+			return getIndicatorForm((Indicator) baseObject);
 		
 		if (Measurement.is(objectType))
 			return new MeasurementPropertiesForm();
@@ -115,6 +115,14 @@ public class ObjectToFormMap
 			return new ProjectTabForm();
 
 		throw new RuntimeException("Form not found for type:" + objectType);
+	}
+
+	private static IndicatorPropertiesForm getIndicatorForm(Indicator indicator)
+	{
+		//FIXME uncomment this if and return the properer indicator properties panel.
+		//if (indicator.isViabilityIndicator())
+			return new IndicatorPropertiesForm();
+		
 	}
 
 	private static PropertiesPanelSpec getCauseForm(Cause baseObject)
