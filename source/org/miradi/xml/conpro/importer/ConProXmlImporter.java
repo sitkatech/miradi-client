@@ -1114,7 +1114,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		ORef highOrAboveRankedThreatsTag = createLabeledTag(EAM.text("Very High / High Threat Chains"));
 		ORef mediumOrBelowRankedThreatsTag = createLabeledTag(EAM.text("Medium / Low Threat Chains"));
 		
-		CodeList highOrAboveRatingCodes = createAboveMediumThreatRatingCodeList();
+		CodeList highOrAboveRatingCodes = createHighAndAboveThreatRatingCodeList();
 		addThreatChainsToTag(highOrAboveRatingCodes, highOrAboveRankedThreatsTag, mediumOrBelowRankedThreatsTag);
 		addHighOrAboveTagToConceptualModel(new ORefList(highOrAboveRankedThreatsTag));
 	}
@@ -1174,7 +1174,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		getProject().executeCommand(addTags);
 	}
 
-	private CodeList createAboveMediumThreatRatingCodeList()
+	private CodeList createHighAndAboveThreatRatingCodeList()
 	{
 		return new CodeList(new String[]{ThreatRatingQuestion.HIGH_RATING_CODE, ThreatRatingQuestion.VERY_HIGH_RATING_CODE});
 	}
