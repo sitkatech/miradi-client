@@ -21,15 +21,16 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.PanelHolderSpec;
 
-public class ViabilityIndicatorPropertiesForm extends PanelHolderSpec
+public class IndicatorPropertiesForm extends PanelHolderSpec
 {
-	public ViabilityIndicatorPropertiesForm()
+	public IndicatorPropertiesForm()
 	{
 		addPanel(new IndicatorSubForm());
-		addPanel(new IndicatorViabilityRatingsSubForm());
-		addPanel(new IndicatorFutureStatusSubForm());
 		addPanel(new IndicatorMonitoringPlanSubForm());
-		//TODO need to put this back in some day
+		//TODO need to someday add this back in
 		//addAllPanels(new ForecastSubForm(Indicator.getObjectType()));
+		addPanel(new IndicatorFutureStatusSubForm());
+		
+		
 	}
 }
