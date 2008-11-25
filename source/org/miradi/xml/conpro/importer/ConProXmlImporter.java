@@ -1171,12 +1171,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void addTagsToConceptualModels(ORefList tagRefs) throws Exception
 	{
-		ORefList conceptualModelRefs = getProject().getConceptualModelDiagramPool().getORefList();
-		for (int index = 0; index < conceptualModelRefs.size(); ++index)
-		{
-			CommandSetObjectData addTags = new CommandSetObjectData(conceptualModelRefs.get(index), ConceptualModelDiagram.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefs.toString());
-			getProject().executeCommand(addTags);
-		}
+		CommandSetObjectData addTags = new CommandSetObjectData(getFirstAndOnlyDiagramObjectRef(), ConceptualModelDiagram.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefs.toString());
+		getProject().executeCommand(addTags);
 	}
 
 	private CodeList createAboveMediumThreatRatingCodeList()
