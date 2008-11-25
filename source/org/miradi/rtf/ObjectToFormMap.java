@@ -19,11 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
+import org.miradi.forms.PanelHolderSpec;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.AccountingCodePropertiesForm;
 import org.miradi.forms.objects.ActivityPropertiesForm;
 import org.miradi.forms.objects.FundingSourcePropertiesForm;
 import org.miradi.forms.objects.GoalPropertiesForm;
+import org.miradi.forms.objects.IndicatorPropertiesForm;
 import org.miradi.forms.objects.ViabilityIndicatorPropertiesForm;
 import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
 import org.miradi.forms.objects.KeyEcologicalAttributePropertiesForm;
@@ -117,12 +119,12 @@ public class ObjectToFormMap
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
 
-	private static ViabilityIndicatorPropertiesForm getIndicatorForm(Indicator indicator)
+	private static PanelHolderSpec getIndicatorForm(Indicator indicator)
 	{
-		//FIXME uncomment this if and return the properer indicator properties panel.
-		//if (indicator.isViabilityIndicator())
+		if (indicator.isViabilityIndicator())
 			return new ViabilityIndicatorPropertiesForm();
 		
+		return new IndicatorPropertiesForm();
 	}
 
 	private static PropertiesPanelSpec getCauseForm(Cause baseObject)
