@@ -73,7 +73,19 @@ public class FactorSet implements Collection<Factor>
 	public Factor[] toFactorArray()
 	{
 		return (Factor[])nodes.toArray(new Factor[0]);
-
+	}
+	
+	public ORefSet getFactorRefs()
+	{
+		ORefSet factorRefs = new ORefSet();
+		Iterator factors = nodes.iterator();
+		while (factors.hasNext())
+		{
+			Factor factor = (Factor) factors.next();
+			factorRefs.add(factor.getRef());
+		}
+		
+		return factorRefs;
 	}
 	
 	public boolean contains(Factor node)

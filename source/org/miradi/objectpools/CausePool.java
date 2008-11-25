@@ -30,7 +30,6 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
 import org.miradi.project.ObjectManager;
 
 public class CausePool extends EAMNormalObjectPool
@@ -60,17 +59,17 @@ public class CausePool extends EAMNormalObjectPool
 		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
 	}
 	
-	public Factor[] getDirectThreats()
+	public Cause[] getDirectThreats()
 	{
-		Vector cmNodes = new Vector();
+		Vector<Cause> cmNodes = new Vector();
 		FactorId[] ids = getModelNodeIds();
 		Arrays.sort(ids);
 		for(int i = 0; i < ids.length; ++i)
 		{
-			Factor cmNode = (Factor)getRawObject(ids[i]);
-			if(cmNode.isDirectThreat())
-				cmNodes.add(cmNode);
+			Cause cause = (Cause)getRawObject(ids[i]);
+			if(cause.isDirectThreat())
+				cmNodes.add(cause);
 		}
-		return (Factor[])cmNodes.toArray(new Factor[0]);
+		return cmNodes.toArray(new Cause[0]);
 	}
 }
