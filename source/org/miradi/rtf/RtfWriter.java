@@ -453,7 +453,7 @@ public class RtfWriter
 	public static final String PRE_CELL_COMMAND  = "\\pard\\intbl\\plain ";
 	public static final String PRE_TABLE_HEADER_CELL_DATA_COMMAND = "";
 	public static final String CELL_BORDER = "\\clbrdrt\\brdrs\\brdrw1\\brdrcf1\\clbrdrl\\brdrs\\brdrw1\\brdrcf1\\clbrdrb\\brdrs\\brdrw1\\brdrcf1\\clbrdrr\\brdrs\\brdrw1\\brdrcf1 ";
-	public static final String TR_LEFT_COMMAND = "\\trleft";
+	public static final String TABLE_LEFT_INDENT = "\\trleft";
 	
 	public static final int EIGHTH_OF_AN_INCH = 180;
 	public static final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
