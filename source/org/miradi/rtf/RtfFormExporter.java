@@ -96,7 +96,7 @@ public class RtfFormExporter
 	{
 		StringBuffer encodedRowContent = new StringBuffer();
 		StringBuffer rowFormatting = new StringBuffer(RtfWriter.ROW_HEADER);
-		rowFormatting.append(RtfWriter.TR_LEFT_COMMAND);
+		rowFormatting.append(RtfWriter.TABLE_LEFT_INDENT);
 		rowFormatting.append(getWriter().convertToTwips(indentation));
 		
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
