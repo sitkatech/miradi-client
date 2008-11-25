@@ -25,15 +25,19 @@ import java.awt.Rectangle;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Stress;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.project.FactorCommandHelper;
@@ -151,10 +155,25 @@ abstract public class InsertFactorDoer extends LocationDoer
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(newDiagramFactorRef);
 		doExtraSetup(diagramFactor, selectedNodes);
 
+		includeNewFactorInActiveTags(diagramFactor.getWrappedORef());
 		forceVisibleInLayerManager();
 		getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
 		
 		return diagramFactor;
+	}
+	private void includeNewFactorInActiveTags(ORef newFactorRefToTag) throws Exception
+	{
+		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
+		ORefList activeTags = diagramObject.getSelectedTaggedObjectSetRefs();
+		for (int index = 0; index < activeTags.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), activeTags.get(index));
+			ORefList currentTaggedFactorRefs = new ORefList(taggedObjectSet.getTaggedObjectRefs());
+			currentTaggedFactorRefs.add(newFactorRefToTag);
+			
+			CommandSetObjectData setTaggedFactors = new CommandSetObjectData(activeTags.get(index), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, currentTaggedFactorRefs.toString());
+			getProject().executeCommand(setTaggedFactors);
+		}
 	}
 	
 	private Point getDeltaPoint(Point createAt, FactorCell[] selectedFactors, int factorType, int factorWidth) throws Exception
