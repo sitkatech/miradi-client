@@ -50,7 +50,7 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 		addIconLineWithCheckBox(jpanel, Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon());
 	}
 	
-	protected void setLegendVisibilityOfFacactorCheckBoxes(LayerManager manager, String property)
+	protected void setLegendVisibilityOfFactorCheckBoxes(LayerManager manager, String property)
 	{		
 		JCheckBox checkBox = (JCheckBox)checkBoxes.get(property);
 		
@@ -64,7 +64,7 @@ public class ResultsChainDiagramLegendPanel extends DiagramLegendPanel
 			manager.setActivitiesVisible(checkBox.isSelected());
 	
 		
-		super.setLegendVisibilityOfFacactorCheckBoxes(manager, property);
+		super.setLegendVisibilityOfFactorCheckBoxes(manager, property);
 	}
 	
 	public void updateCheckBox(LayerManager manager, String property)
