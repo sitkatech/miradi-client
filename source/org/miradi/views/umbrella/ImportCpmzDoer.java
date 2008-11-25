@@ -107,12 +107,26 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		{
 			inputStream.close();
 		}
+		
+		importConproProjectNumbers(projectToFill, zipFile);
+	}
+
+	private void importConproProjectNumbers(Project projectToFill, ZipFile zipFile) throws Exception
+	{
+		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+		try
+		{
+			new ConProXmlImporter(projectToFill).importConProjectNumbers(projectAsInputStream);
+		}
+		finally
+		{
+			projectAsInputStream.close();
+		}
 	}
 
 	private void importProjectFromXmlEntry(Project projectToFill, ZipFile zipFile) throws Exception, IOException
 	{
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
-		ByteArrayInputStreamWithSeek projectAsInputStream = new ByteArrayInputStreamWithSeek(extractXmlBytes);
+		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
 			new ConProXmlImporter(projectToFill).importConProProject(projectAsInputStream);
@@ -122,6 +136,12 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		{
 			projectAsInputStream.close();
 		}
+	}
+	
+	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
+	{
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
 	}
 
 	private void splitMainDiagramByTargets(Project filledProject) throws Exception
