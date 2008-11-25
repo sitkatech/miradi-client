@@ -40,4 +40,9 @@ abstract public class FormItem
 	{
 		return false;
 	}
+	
+	public boolean isFormQuestionFieldData()
+	{
+		return false;
+	}
 }
