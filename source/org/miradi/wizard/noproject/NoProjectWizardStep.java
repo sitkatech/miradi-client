@@ -195,18 +195,18 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	
 	public void keyPressed(KeyEvent keyEvent)
 	{
-		if (keyEvent.getKeyCode() ==KeyEvent.VK_ENTER)
-		{
-			buttonPressed(WizardManager.CONTROL_NEXT);
-		}
 	}
 
 	public void keyReleased(KeyEvent e)
 	{
 	}
 
-	public void keyTyped(KeyEvent e)
+	public void keyTyped(KeyEvent keyEvent)
 	{
+		if (keyEvent.getKeyChar() == KeyEvent.VK_ENTER)
+		{
+			buttonPressed(WizardManager.CONTROL_NEXT);
+		}
 	}
 	
 	private void renameProject(File projectDirectory) throws Exception
