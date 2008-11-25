@@ -103,20 +103,7 @@ public class RtfFormExporter
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
 		{
 			FormItem  formItem = formRow.getLeftFormItem(leftColumn);
-			if (formItem.isFormConstant())
-			{
-				FormConstant formConstant = (FormConstant) formItem;
-				encodedRowContent.append(writer.encode(formConstant.getConstant()) + FIELD_SPACING);				
-			}
-			else if (formItem.isFormFieldLabel())
-			{
-				encodedRowContent.append(writer.encode(getFieldLabel((FormFieldLabel)formItem)) + FIELD_SPACING);					
-			}
-			else if (formItem.isFormFieldImage())
-			{
-				BufferedImage image = ((FormImage)formItem).getImage();
-				writer.writeImage(image);
-			}
+			encodedRowContent.append(createFormItem(formRow, formItem));
 		}
 		
 		encodedRowContent.append(RtfWriter.CELL_COMMAND);
@@ -129,29 +116,7 @@ public class RtfFormExporter
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
 		{
 			FormItem formItem = formRow.getRightFormItem(rightColumn);
-			if (formItem.isFormConstant())
-			{
-				FormConstant formConstant = (FormConstant) formItem;
-				encodedRowContent.append(writer.encode(formConstant.getConstant()) + FIELD_SPACING);				
-			}
-			if (formItem.isFormFieldLabel())
-			{
-				String rawFieldLabel = getFieldLabel((FormFieldLabel)formItem);
-				encodedRowContent.append(writer.encode(rawFieldLabel) + FIELD_SPACING);							
-			}
-			if (formItem.isFormFieldData())
-			{
-				String rawFieldData = getFieldData((FormFieldData) formItem, formRow);
-				encodedRowContent.append(writer.encode(rawFieldData) + FIELD_SPACING);							
-			}
-			if (formItem.isFormQuestionFieldData())
-			{
-				FormFieldQuestionData formFieldQuestionData = (FormFieldQuestionData) formItem;
-				String code = getFieldData((FormFieldQuestionData) formItem, formRow);
-				ChoiceItem choiceItem = formFieldQuestionData.getQuestion().findChoiceByCode(code);
-				if (choiceItem != null)
-					encodedRowContent.append(writer.encode(choiceItem.toString()) + FIELD_SPACING);
-			}
+			encodedRowContent.append(createFormItem(formRow, formItem));
 		}
 		
 		rowFormatting.append(getCellxCommand(INCHES_FROM_LEFT_MARGIN_TO_SECOND_COLUMN_RIGHT_EDGE_MINUS_ONE));
@@ -160,6 +125,40 @@ public class RtfFormExporter
 		getWriter().writeRaw(encodedRowContent.toString());
 		getWriter().writeRaw(RtfWriter.ROW_COMMAND);
 		getWriter().newLine();
+	}
+
+	private StringBuffer createFormItem(FormRow formRow, FormItem formItem) throws Exception
+	{
+		StringBuffer encodedRowContent = new StringBuffer();
+		if (formItem.isFormConstant())
+		{
+			FormConstant formConstant = (FormConstant) formItem;
+			encodedRowContent.append(writer.encode(formConstant.getConstant()) + FIELD_SPACING);				
+		}
+		else if (formItem.isFormFieldLabel())
+		{
+			encodedRowContent.append(writer.encode(getFieldLabel((FormFieldLabel)formItem)) + FIELD_SPACING);					
+		}
+		if (formItem.isFormFieldData())
+		{
+			String rawFieldData = getFieldData((FormFieldData) formItem, formRow);
+			encodedRowContent.append(writer.encode(rawFieldData) + FIELD_SPACING);							
+		}
+		else if (formItem.isFormFieldImage())
+		{
+			BufferedImage image = ((FormImage)formItem).getImage();
+			writer.writeImage(image);
+		}
+		if (formItem.isFormQuestionFieldData())
+		{
+			FormFieldQuestionData formFieldQuestionData = (FormFieldQuestionData) formItem;
+			String code = getFieldData((FormFieldQuestionData) formItem, formRow);
+			ChoiceItem choiceItem = formFieldQuestionData.getQuestion().findChoiceByCode(code);
+			if (choiceItem != null)
+				encodedRowContent.append(writer.encode(choiceItem.toString()) + FIELD_SPACING);
+		}
+		
+		return encodedRowContent;
 	}
 
 	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
