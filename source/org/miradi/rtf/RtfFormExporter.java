@@ -24,6 +24,7 @@ import java.awt.image.BufferedImage;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormFieldData;
+import org.miradi.forms.FormFieldQuestionData;
 import org.miradi.forms.FormImage;
 import org.miradi.forms.FormFieldLabel;
 import org.miradi.forms.FormItem;
@@ -142,6 +143,14 @@ public class RtfFormExporter
 			{
 				String rawFieldData = getFieldData((FormFieldData) formItem, formRow);
 				encodedRowContent.append(writer.encode(rawFieldData) + FIELD_SPACING);							
+			}
+			if (formItem.isFormQuestionFieldData())
+			{
+				FormFieldQuestionData formFieldQuestionData = (FormFieldQuestionData) formItem;
+				String code = getFieldData((FormFieldQuestionData) formItem, formRow);
+				ChoiceItem choiceItem = formFieldQuestionData.getQuestion().findChoiceByCode(code);
+				if (choiceItem != null)
+					encodedRowContent.append(writer.encode(choiceItem.toString()) + FIELD_SPACING);
 			}
 		}
 		

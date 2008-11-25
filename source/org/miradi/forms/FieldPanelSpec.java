@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import javax.swing.Icon;
 
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.BufferedImageFactory;
 
 public class FieldPanelSpec extends PropertiesPanelSpec
@@ -80,11 +81,20 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		addFormRow(new FormRow());
 	}
 
+	protected void addChoiceField(int type, String fieldTag, ChoiceQuestion question)
+	{
+		addField(type, fieldTag, new FormFieldQuestionData(type, fieldTag, question));
+	}
+
 	protected void addLabelAndField(int type, String fieldTag)
 	{
+		addField(type, fieldTag, new FormFieldData(type, fieldTag));
+	}
+	
+	private void addField(int type, String fieldTag, FormFieldData formFieldData)
+	{
 		FormFieldLabel label = new FormFieldLabel(type, fieldTag);
-		FormFieldData data = new FormFieldData(type, fieldTag);
-		addFormRow(new FormRow(label, data));
+		addFormRow(new FormRow(label, formFieldData));
 	}
 
 	protected void addLabelAndFieldWithLabel(String translatedLabel, int type, String fieldTag)

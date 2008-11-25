@@ -23,6 +23,8 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
+import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.ViabilityModeQuestion;
 
 public class TargetPropertiesForm extends FieldPanelSpec
 {
@@ -30,7 +32,12 @@ public class TargetPropertiesForm extends FieldPanelSpec
 	{
 		int type = Target.getObjectType();
 		addStandardNameRow(new TargetIcon(), EAM.text("Target"), type, new String[]{Target.TAG_SHORT_LABEL, Target.TAG_LABEL});
+		addChoiceField(type, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
+		addChoiceField(type, Target.TAG_TARGET_STATUS, new StatusQuestion());
+		addLabelAndField(type, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
 		addLabelAndField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION);
+		addLabelAndField(Target.getObjectType(), Target.TAG_TEXT);
+		addLabelAndField(Target.getObjectType(), Target.TAG_COMMENT);
 	}
 }
