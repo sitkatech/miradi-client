@@ -25,7 +25,6 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateRange;
@@ -38,7 +37,6 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 		yearlyDateRanges = getProjectCalendar().getYearlyDateRanges();
 		combinedDataRange = getProjectCalendar().combineStartToEndProjectRange();
-		currencyFormatter = project.getCurrencyFormatterWithCommas();
 	}
 
 	private ProjectCalendar getProjectCalendar() throws Exception
@@ -70,20 +68,16 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	public Object getValueAt(int row, int column)
 	{
 		BaseObject object = getBaseObjectForRowColumn(row, column);
-		return getValueAt(object, column);
-	}
-
-	private Object getValueAt(BaseObject object, int column)
-	{
 		if (object == null)
 			return "";
 		
 		try
 		{
+			int shares = getProportionShares(row);
 			if (isGrandTotalColumn(column))
-				return getGrandTotalCost(object);
+				return getGrandTotalCost(object, shares);
 		
-			return getYearlyTotalCost(object, column);
+			return getYearlyTotalCost(object, column, shares);
 		}
 		catch (Exception e)
 		{
@@ -91,32 +85,33 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 			return EAM.text("[ERROR]");
 		}
 	}
-	
-	private Object getYearlyTotalCost(BaseObject objectForRow, int column) throws Exception
+
+	private Object getYearlyTotalCost(BaseObject objectForRow, int column, int shares) throws Exception
 	{	
-		return getBudgetCost(objectForRow, (DateRange)yearlyDateRanges.get(column));
+		return getBudgetCost(objectForRow, (DateRange)yearlyDateRanges.get(column), shares);
 	}
 
-	private Object getGrandTotalCost(BaseObject objectForRow) throws Exception
+	private Object getGrandTotalCost(BaseObject objectForRow, int shares) throws Exception
 	{
-		return getBudgetCost(objectForRow, combinedDataRange);		
+		return getBudgetCost(objectForRow, combinedDataRange, shares);
 	}
 	
-	private Object getBudgetCost(BaseObject object, DateRange dateRange) throws Exception
+	private Object getBudgetCost(BaseObject object, DateRange dateRange, int shares) throws Exception
 	{
-		double totalCost = object.getProportionalBudgetCost(dateRange);      
+		double totalCost = object.getBudgetCost(dateRange);
         if (totalCost == 0)
         	return "";
         
-		return  currencyFormatter.format(totalCost);
+        int totalShareCount = object.getTotalShareCount();
+        double thisCost = totalCost * shares / totalShareCount;
+        
+		return  Double.toString(thisCost);
 	}
 
 	private boolean isGrandTotalColumn(int column)
 	{
 		return column == getColumnCount() - 1;
 	}
-	
-	private CurrencyFormat currencyFormatter;
 	
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;

@@ -29,6 +29,7 @@ import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.utils.TableWithTreeTableNodes;
 
 
@@ -37,7 +38,8 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public PlanningViewBudgetAnnualTotalsTable(MainWindow mainWindowToUse, PlanningViewBudgetAnnualTotalTableModel model, FontForObjectTypeProvider fontProvider)
 	{
 		super(mainWindowToUse, model);
-		renderer = new BudgetCostTreeTableCellRendererFactory(model, fontProvider);
+		CurrencyFormat currencyFormatter = getProject().getCurrencyFormatterWithCommas();
+		renderer = new BudgetCostTreeTableCellRendererFactory(model, fontProvider, currencyFormatter);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int column)

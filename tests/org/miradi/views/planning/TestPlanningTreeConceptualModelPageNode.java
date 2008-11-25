@@ -32,8 +32,9 @@ public class TestPlanningTreeConceptualModelPageNode extends TestPlanningTree
 	public void testPlanningTreeConceptualModelPageNode() throws Exception
 	{
 		PlanningTreeConceptualModelPageNode node = new PlanningTreeConceptualModelPageNode(project, project.getTestingDiagramObject().getRef(), new CodeList());
-		assertEquals(2, node.getChildCount());
+		assertEquals(3, node.getChildCount());
 		assertEquals(getThreat().getRef(), node.getChild(0).getObjectReference());
 		assertEquals(getTarget().getRef(), node.getChild(1).getObjectReference());
+		assertEquals(getStrategy2().getRef(), node.getChild(2).getObjectReference());
 	}
 }

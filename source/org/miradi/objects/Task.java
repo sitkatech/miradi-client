@@ -367,7 +367,7 @@ public class Task extends Factor
 	}
 	
 	@Override
-	public double getBudgetCostAllocation() throws Exception
+	public int getTotalShareCount()
 	{
 		int type = getTypeOfParent();
 		ORefList parentRefs = findObjectsThatReferToUs(type); 
@@ -375,10 +375,10 @@ public class Task extends Factor
 		{
 			ORef parentRef = parentRefs.get(0);
 			Task parentTask = Task.find(getObjectManager(), parentRef);
-			return parentTask.getBudgetCostAllocation();
+			return parentTask.getTotalShareCount();
 		}
 		
-		return 1.0 / parentRefs.size();
+		return parentRefs.size();
 	}
 	
 	private int getTypeOfParent()

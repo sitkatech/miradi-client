@@ -26,26 +26,53 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import org.miradi.icons.AllocatedCostIcon;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
+import org.miradi.project.CurrencyFormat;
 
 public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRendererFactory
 {
-	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		allocatedIcon = new AllocatedCostIcon();
+		currencyFormatter = currencyFormatterToUse;
 	}
 
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
+	public Component getTableCellRendererComponent(JTable table, Object rawValue, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
+		String value = formatCurrency(rawValue.toString());
+		
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		String text = annotateIfOverride(row, tableColumn, renderer, value); 
 		annotateIfAllocated(row, tableColumn, renderer, text);
 		
 		return renderer;
 	}
+	
+	public String formatCurrency(String costAsString)
+	{
+		try
+		{
+			if(costAsString == null || costAsString.length() == 0)
+				return "";
+
+			double cost = Double.parseDouble(costAsString);
+			if(cost == 0.0)
+				return "";
+			
+			return currencyFormatter.format(cost);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("(Error)");
+		}
+	}
+	
+
 
 	private void annotateIfAllocated(int row, int tableColumn, JLabel labelComponent, String text)
 	{
@@ -90,4 +117,5 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 	}
 	
 	Icon allocatedIcon;
+	private CurrencyFormat currencyFormatter;
 }

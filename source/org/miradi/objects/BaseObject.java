@@ -451,14 +451,14 @@ abstract public class BaseObject
 	}
 	
 	
-	public double getProportionalBudgetCost() throws Exception
+	public double getTotalBudgetCost() throws Exception
 	{
-		return getProportionalBudgetCost(null);
+		return getTotalBudgetCost(null);
 	}
 
-	public double getProportionalBudgetCost(DateRange dateRange) throws Exception
+	public double getTotalBudgetCost(DateRange dateRange) throws Exception
 	{
-		return getBudgetCost(dateRange) * getBudgetCostAllocation();
+		return getBudgetCost(dateRange);
 	}
 	
 	public double getBudgetCost(DateRange dateRange) throws Exception
@@ -478,7 +478,7 @@ abstract public class BaseObject
 		for(int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task task = Task.find(getProject(), taskRefs.get(i));
-			total += task.getProportionalBudgetCost(dateRangeToUse);
+			total += task.getTotalBudgetCost(dateRangeToUse);
 		}
 
 		return total;
@@ -489,9 +489,9 @@ abstract public class BaseObject
 		return 0;
 	}
 	
-	public double getBudgetCostAllocation() throws Exception
+	public int getTotalShareCount()
 	{
-		return 1.0;
+		return 1;
 	}
 	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
@@ -519,11 +519,11 @@ abstract public class BaseObject
 	}
 	
 	
-	public String getProportionalBudgetCostAsString()
+	public String getBudgetCostAsString()
 	{
 		try
 		{
-			return formatCurrency(getProportionalBudgetCost());
+			return Double.toString(getTotalBudgetCost());
 		}
 		catch (Exception e)
 		{
@@ -588,7 +588,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return formatCurrency(getBudgetCostRollup(null));
+			return Double.toString(getBudgetCostRollup(null));
 		}
 		catch(Exception e)
 		{
@@ -1166,7 +1166,7 @@ abstract public class BaseObject
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_BUDGET_TOTAL))
-			return getProportionalBudgetCostAsString();
+			return getBudgetCostAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
 			return getBudgetCostRollupAsString();

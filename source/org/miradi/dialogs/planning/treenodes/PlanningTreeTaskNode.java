@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -33,10 +34,12 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	{
 		super(projectToUse, visibleRowsToUse);
 		task = (Task)project.findObject(taskRef);
+		proportionShares = 1;
 		
 		rebuild();
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 		buildAssignmentNodes();
@@ -80,10 +83,25 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		return (Task) getObject();
 	}
 	
+	@Override
 	boolean shouldSortChildren()
 	{
 		return false;
 	}
      	
+	@Override
+	public int getProportionShares()
+	{
+		return proportionShares;
+	}
+	
+	@Override
+	public void addProportionShares(TreeTableNode otherNode)
+	{
+		proportionShares += otherNode.getProportionShares();
+	}
+
 	private Task task;
+	private int proportionShares;
+
 }
