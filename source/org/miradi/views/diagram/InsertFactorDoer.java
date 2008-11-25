@@ -167,11 +167,8 @@ abstract public class InsertFactorDoer extends LocationDoer
 		ORefList activeTags = diagramObject.getSelectedTaggedObjectSetRefs();
 		for (int index = 0; index < activeTags.size(); ++index)
 		{
-			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), activeTags.get(index));
-			ORefList currentTaggedFactorRefs = new ORefList(taggedObjectSet.getTaggedObjectRefs());
-			currentTaggedFactorRefs.add(newFactorRefToTag);
-			
-			CommandSetObjectData setTaggedFactors = new CommandSetObjectData(activeTags.get(index), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, currentTaggedFactorRefs.toString());
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), activeTags.get(index));			
+			CommandSetObjectData setTaggedFactors = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, newFactorRefToTag);
 			getProject().executeCommand(setTaggedFactors);
 		}
 	}
