@@ -23,6 +23,7 @@ import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
@@ -108,6 +109,7 @@ public class MainNewsPanel extends DisposablePanel
 		public OldNewsPanel() throws Exception
 		{
 			super();
+			setBorder(BorderFactory.createEmptyBorder(EMPTY_BORDER_THICKNESS, EMPTY_BORDER_THICKNESS, EMPTY_BORDER_THICKNESS, EMPTY_BORDER_THICKNESS));
 			
 			setBackground(AppPreferences.getSideBarBackgroundColor());
 			addComponents();
@@ -138,4 +140,5 @@ public class MainNewsPanel extends DisposablePanel
 	private static final String NO_NEWS_MESSAGE_HTML_FILE_NAME = "OldNewsMessage.html";
 	private static final String DATE_TOKEN = "$DATE$";
 	private static final String HTML_NAVIGATION_TAG = "<div class='navigation'>";
+	private static final int EMPTY_BORDER_THICKNESS = 10;
 }
