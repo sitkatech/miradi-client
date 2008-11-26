@@ -95,21 +95,21 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		super(mainWindowToUse, treeToUse, buttonActions);
 		model = modelToUse;
 		
-		rowHeightController = new MultiTableRowHeightController(getMainWindow());
+		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeToUse);
 		
-		selectionController = new MultipleTableSelectionController();
+		MultipleTableSelectionController selectionController = new MultipleTableSelectionController();
 		selectionController.addTable(treeToUse);
 		
-		scrollController = new MultiTableVerticalScrollController();
+		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(treeTableScrollPane);
 		
 		multiTableExporter = new MultiTableCombinedAsOneExporter();		
-		fontProvider = new PlanningViewFontProvider(getMainWindow());
+		PlanningViewFontProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		
 		listenForColumnWidthChanges(getTree());
 		
-		masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
+		JScrollBar masterScrollBar = new MasterVerticalScrollBar(treeTableScrollPane);
 		scrollController.addScrollBar(masterScrollBar);
 		treeTableScrollPane.addMouseWheelListener(new MouseWheelHandler(masterScrollBar));
 		
@@ -130,9 +130,9 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		futureStatusScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeToUse, futureStatusTable);
 		
 		
-		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
+		JPanel treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
-		treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
+		ScrollPaneWithHideableScrollBar treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
 		treesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		treesScrollPane.hideVerticalScrollBar();
 		
@@ -141,7 +141,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tablesScrollPane.hideVerticalScrollBar();
 
-		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, "PlanningViewTreesPlusTables");
+		PersistentHorizontalSplitPane treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, "PlanningViewTreesPlusTables");
 		treePlusTablesPanel.setDividerSize(5);
 		// FIXME: Remove this when persistence actually works!
 		treePlusTablesPanel.setDividerLocationWithoutNotifications(200);
@@ -373,9 +373,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		return reformatted;
 	}
 
-	private PlanningViewFontProvider fontProvider;
-	private PersistentHorizontalSplitPane treePlusTablesPanel;
-	private JPanel treesPanel;
 	private JPanel tablesPanel;
 	
 	private PlanningViewMainTableModel mainModel;
@@ -387,15 +384,10 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 	private PlanningViewFutureStatusTable futureStatusTable;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
 
-	private JScrollBar masterScrollBar;
-	private ScrollPaneWithHideableScrollBar treesScrollPane;
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	private ScrollPaneWithHideableScrollBar annualTotalsScrollPane;
 	private ScrollPaneWithHideableScrollBar measurementScrollPane;
 	private ScrollPaneWithHideableScrollBar futureStatusScrollPane;
 	
-	private MultipleTableSelectionController selectionController;
-	private MultiTableRowHeightController rowHeightController;
 	private MultiTableCombinedAsOneExporter multiTableExporter;
-	private MultiTableVerticalScrollController scrollController;
 }
