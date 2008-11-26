@@ -44,7 +44,7 @@ public abstract class EAMFileSaveChooser
 		
 		JFileChooser dlg = new JFileChooser(currentDirectory);
 
-		dlg.setDialogTitle(EAM.text(getDialogApproveTitleText()));
+		dlg.setDialogTitle(getDialogApproveTitleText());
 		FileFilter[] filters = getFileFilter();
 		for (int i=0; i<filters.length; ++i)
 		{
