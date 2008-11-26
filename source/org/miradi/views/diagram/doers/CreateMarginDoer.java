@@ -25,6 +25,8 @@ import java.util.Vector;
 
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.NudgeDoer;
 
@@ -60,11 +62,11 @@ public class CreateMarginDoer extends ObjectsDoer
 		
 		int deltaX = 0;
 		int deltaY = 0;
-		if (diagramFactorBounds.x < MINIMUM_LEFT_MARGIN)
-			 deltaX = MINIMUM_LEFT_MARGIN - diagramFactorBounds.x;
+		if (diagramFactorBounds.x < getLeftMargin())
+			 deltaX = getLeftMargin() - diagramFactorBounds.x;
 		
-		if (diagramFactorBounds.y < MINIMUM_TOP_MARGIN)
-			 deltaY = MINIMUM_TOP_MARGIN - diagramFactorBounds.y;
+		if (diagramFactorBounds.y < getTopMargin())
+			 deltaY = getTopMargin() - diagramFactorBounds.y;
 
 		return new Dimension(deltaX, deltaY);
 	}
@@ -108,6 +110,13 @@ public class CreateMarginDoer extends ObjectsDoer
 		return getDiagramView().getDiagramModel().getAllFactorCells();
 	}
 	
-	private static final int MINIMUM_TOP_MARGIN = 30;
-	private static final int MINIMUM_LEFT_MARGIN = 30;
+	private int getTopMargin()
+	{
+		return 2 * (DiagramFactor.getDefaultSize().height + Project.DEFAULT_GRID_SIZE);
+	}
+	
+	private int getLeftMargin()
+	{
+		return 2 * (DiagramFactor.getDefaultSize().width  + Project.DEFAULT_GRID_SIZE);
+	} 
 }
