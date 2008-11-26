@@ -20,15 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Vector;
 
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
+import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.PointList;
 import org.miradi.views.ObjectsDoer;
-import org.miradi.views.diagram.NudgeDoer;
 
 public class CreateMarginDoer extends ObjectsDoer
 {
@@ -77,18 +84,51 @@ public class CreateMarginDoer extends ObjectsDoer
 		if (!isAvailable())
 			return;
 		
+		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
+			DiagramModel model = getDiagramView().getDiagramModel();
 			Dimension deltaMargin = getDeltasToEnsureMargins();
-			getDiagramView().getCurrentDiagramComponent().selectAll();
-			NudgeDoer.moveSelectedItems(getProject(), getDiagramView().getDiagramPanel(), deltaMargin.width, deltaMargin.height);
+			moveDiagramFactors(model.getAllDiagramFactors(), deltaMargin);
+			moveBendPoints(model.getAllDiagramFactorLinks(), deltaMargin);
 		}
 		catch (Exception e)
 		{
 			throw new CommandFailedException(e);
 		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 	
+	private void moveBendPoints(Vector<DiagramLink> allDiagramFactorLinks, Dimension deltaMargin) throws Exception
+	{
+		for (int index = 0; index < allDiagramFactorLinks.size(); ++index)
+		{
+			DiagramLink diagramLink = allDiagramFactorLinks.get(index);
+			PointList bendPoints = diagramLink.getBendPoints().createClone();
+			bendPoints.translateAll(deltaMargin.width, deltaMargin.height);
+			
+			CommandSetObjectData setLinkBendPointsCommand = new CommandSetObjectData(diagramLink.getRef(), DiagramLink.TAG_BEND_POINTS, bendPoints.toString());
+			getProject().executeCommand(setLinkBendPointsCommand);
+		}
+	}
+
+	private void moveDiagramFactors(Vector<DiagramFactor> allDiagramFactors, Dimension deltaMargin) throws Exception
+	{
+		for (int index = 0; index < allDiagramFactors.size(); ++index)
+		{
+			DiagramFactor diagramFactor = allDiagramFactors.get(index);
+			Point currentLocation = (Point) diagramFactor.getLocation().clone();
+			currentLocation.translate(deltaMargin.width, deltaMargin.height);
+			String currentLocationAsString = EnhancedJsonObject.convertFromPoint(currentLocation);
+			
+			CommandSetObjectData setNewLocationCommand = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, currentLocationAsString);
+			getProject().executeCommand(setNewLocationCommand);
+		}
+	}
+
 	private Rectangle getDiagramFactorBounds()
 	{
 		Vector<FactorCell> allFactorCells = getAllFactorCells();
