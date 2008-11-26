@@ -475,9 +475,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		Vector allDiagramFactors = getDiagramModel().getAllFactorCells();
 		for (int i  = 0; i < allDiagramFactors.size(); i++)
 		{
-			FactorCell diagramFactor = (FactorCell)allDiagramFactors.elementAt(i);
-			if (glc.isVisible(diagramFactor))
-				addSelectionCell(diagramFactor);
+			FactorCell factorCell = (FactorCell)allDiagramFactors.elementAt(i);
+			if (glc.isVisible(factorCell))
+				addSelectionCell(factorCell);
 		}
 	}
 	
