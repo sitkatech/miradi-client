@@ -41,6 +41,11 @@ public class ORefSet extends HashSet<ORef>
 		addAll(Arrays.asList(refList.toArray()));
 	}
 
+	public ORefSet(ORefSet other)
+	{
+		super(other);
+	}
+
 	public void addAllRefs(ORefList refs)
 	{
 		addAll(Arrays.asList(refs.toArray()));
@@ -57,7 +62,18 @@ public class ORefSet extends HashSet<ORef>
 
 		return result;
 	}
-	
+
+	public boolean containsAny(ORefSet other)
+	{
+		for(ORef ref : other)
+		{
+			if(contains(ref))
+				return true;
+		}
+		
+		return false;
+	}
+
 	public ORefList toRefList()
 	{
 		return new ORefList(toArray(new ORef[0]));

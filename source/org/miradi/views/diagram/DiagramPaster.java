@@ -46,6 +46,7 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
@@ -425,11 +426,16 @@ abstract public class DiagramPaster
 		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 		ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
 		
-		//FIXME this needs to be resolved with a better solution.  Currently waiting for feed back
-		//Note,  there are two of these FIXME s that are needed to disable the sharing of GBs
-		boolean IS_PASTE_GROUP_BOXES_AS_SHARED_TEMP_DISABLED = oldWrappedRef.equals(newWrappedRef) && GroupBox.is(oldWrappedRef);
-		if (IS_PASTE_GROUP_BOXES_AS_SHARED_TEMP_DISABLED)
-			return;
+		boolean isShared = oldWrappedRef.equals(newWrappedRef);
+		boolean isGroupBox = GroupBox.is(oldWrappedRef);
+		if (isShared && isGroupBox)
+		{
+			if(childrenAreAlreadyInGroupsHere(diagramFactorRef))
+			{
+				EAM.logDebug("Omitting GB " + diagramFactorRef + " because a child is already in a GB in this diagram");
+				return;
+			}
+		}
 		
 		if (diagramAlreadyContainsAlias(newWrappedRef))
 		{
@@ -454,6 +460,40 @@ abstract public class DiagramPaster
 		fixupRefs(getOldToNewObjectRefMap(), newDiagramFactor);
 		addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 		addDiagramFactorToSelection(newDiagramFactorRef);
+	}
+
+	private boolean childrenAreAlreadyInGroupsHere(ORef oldGroupBoxDiagramFactorRef) throws Exception
+	{
+		DiagramFactor.ensureType(oldGroupBoxDiagramFactorRef);
+		
+		ORefSet oldChildren = getWrappedChildrenOfGroupBox(oldGroupBoxDiagramFactorRef);
+		ORefList diagramFactorRefs = getDiagramObject().getAllDiagramFactorRefs();
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(i));
+			if(!diagramFactor.isGroupBoxFactor())
+				continue;
+			
+			ORefSet children = getWrappedChildrenOfGroupBox(diagramFactor.getRef());
+			if(children.containsAny(oldChildren))
+				return true;
+		}
+
+		return false;
+	}
+
+	private ORefSet getWrappedChildrenOfGroupBox(ORef groupBoxDiagramFactorRef) throws Exception
+	{
+		DiagramFactor.ensureType(groupBoxDiagramFactorRef);
+
+		ORefSet wrappedRefs = new ORefSet();
+		ORefList diagramFactorRefs = new ORefList(getProject().getObjectData(groupBoxDiagramFactorRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS));
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRefs.get(i));
+			wrappedRefs.add(diagramFactor.getWrappedORef());
+		}
+		return wrappedRefs;
 	}
 
 	protected void createNewFactorLinks() throws Exception
