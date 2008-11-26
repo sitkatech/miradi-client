@@ -105,7 +105,7 @@ public  class BufferedImageFactory
 	
 	private static BufferedImage createImageFromDiagram(DiagramComponent diagram)
 	{
-		Rectangle bounds = new Rectangle(diagram.getTotalBoundsUsed().getBounds());
+		Rectangle bounds = new Rectangle(diagram.getTotalBoundsIgnoringVisibilityOfFactors().getBounds());
 		diagram.toScreen(bounds);
 		diagram.setToDefaultBackgroundColor();
 		diagram.setGridVisible(false);
