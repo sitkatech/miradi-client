@@ -41,7 +41,6 @@ import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
-import org.miradi.layout.OneRowPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -67,6 +66,8 @@ import org.miradi.utils.TableWithTreeTableNodeExporter;
 import org.miradi.utils.TreeTableExporter;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
+import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
+import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
 public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
@@ -93,8 +94,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		model = modelToUse;
-		
-		treeToUse.setAutoResizeMode(treeToUse.AUTO_RESIZE_OFF);
 		
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeToUse);
@@ -131,20 +130,24 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		futureStatusScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeToUse, futureStatusTable);
 		
 		
-		treesPanel = new OneRowPanel();
+		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
 		treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
 		treesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		treesScrollPane.hideVerticalScrollBar();
 		
-		tablesPanel = new OneRowPanel();
+		tablesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		ScrollPaneWithHideableScrollBar tablesScrollPane = new ScrollPaneWithHideableScrollBar(tablesPanel);
 		tablesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		tablesScrollPane.hideVerticalScrollBar();
 
-		treePlusTablesPanel = new OneRowPanel();
-		treePlusTablesPanel.add(treesScrollPane);
-		treePlusTablesPanel.add(tablesScrollPane);
+		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, "PlanningViewTreesPlusTables");
+		treePlusTablesPanel.setDividerSize(5);
+		// FIXME: Remove this when persistence actually works!
+		treePlusTablesPanel.setDividerLocationWithoutNotifications(200);
+		treePlusTablesPanel.setTopComponent(treesScrollPane);
+		treePlusTablesPanel.setBottomComponent(tablesScrollPane);
+		treePlusTablesPanel.setOneTouchExpandable(false);
 
 		// NOTE: Replace treeScrollPane that super constructor put in CENTER
 		add(treePlusTablesPanel, BorderLayout.CENTER);
@@ -374,7 +377,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 	}
 
 	private PlanningViewFontProvider fontProvider;
-	private JPanel treePlusTablesPanel;
+	private PersistentHorizontalSplitPane treePlusTablesPanel;
 	private JPanel treesPanel;
 	private JPanel tablesPanel;
 	
