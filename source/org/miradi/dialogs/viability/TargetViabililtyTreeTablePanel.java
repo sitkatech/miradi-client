@@ -85,11 +85,9 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 												wereMeasuremetNodesAddedOrRemoved ||
 												wereFactorIndicatorNodesAddedOrRemoved;
 		
-		final boolean needsReSort = isLabelOrIdChange(event);
-		
 		final boolean wasTargetModeChanged = event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE);
 		
-		if(wereNodesAddedOrRemoved || wasTargetModeChanged || needsReSort)
+		if(wereNodesAddedOrRemoved || wasTargetModeChanged)
 		{
 			ORef selectedRef = ORef.INVALID;
 			BaseObject selectedObject = getSelectedObject();

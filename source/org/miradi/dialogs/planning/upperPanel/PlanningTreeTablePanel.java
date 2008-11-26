@@ -211,9 +211,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		if (didAffectRelevancyInTree(event))
 			return true;
 		
-		if (isLabelOrIdChange(event))
-			return true;
-		
 		if (isTargetModeChange(event))
 			return true;
 		
