@@ -481,6 +481,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		}
 	}
 	
+	public boolean isCellVisible(Object cell)
+	{
+		GraphLayoutCache glc = getGraphLayoutCache();
+		return glc.isVisible(cell);
+	}
+	
 	public void selectAllFactorLinks()
 	{
 		GraphLayoutCache glc = getGraphLayoutCache();
