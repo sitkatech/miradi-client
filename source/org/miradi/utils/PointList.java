@@ -83,7 +83,7 @@ public class PointList
 		
 	public Point get(int index)
 	{
-		return (Point)data.get(index);
+		return data.get(index);
 	}
 	
 	public void set(int index, Point point)
@@ -183,10 +183,10 @@ public class PointList
 		if (size() == 0)
 			return new Point(0, 0);
 		
-		Point closestPoint = (Point) data.get(0);
+		Point closestPoint = data.get(0);
 		for (int i = 0; i < data.size(); ++i)
 		{
-			Point currentPoint = (Point) data.get(i);
+			Point currentPoint = data.get(i);
 			double currentDistance2Point = currentPoint.distance(point);
 			double closestDistance2Point = closestPoint.distance(point);
 			if (currentDistance2Point < closestDistance2Point)
@@ -219,6 +219,15 @@ public class PointList
 		return allLineSegments;
 	}
 	
+	public void translateAll(int deltaX, int deltaY)
+	{
+		for (int index = 0; index < data.size(); ++index)
+		{
+			data.get(index).translate(deltaX, deltaY);
+		}
+	}
+	
 	protected static final String TAG_POINTS = "Points";
-	private Vector data;
+	//TODO rename data to points
+	private Vector<Point> data;
 }
