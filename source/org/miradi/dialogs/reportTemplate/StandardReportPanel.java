@@ -114,7 +114,7 @@ public class StandardReportPanel extends TwoColumnPanel
 		PanelButton runButton = new PanelButton(EAM.text("Run..."));
 		runButton.addActionListener(new ActionHandler(standardReportCodeList));
 		
-		panel.add(new PanelTitleLabel(EAM.text(standardReportLabel)));
+		panel.add(new PanelTitleLabel(standardReportLabel));
 		panel.add(runButton);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
