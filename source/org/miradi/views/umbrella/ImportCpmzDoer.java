@@ -29,6 +29,7 @@ import java.util.zip.ZipFile;
 
 import javax.swing.filechooser.FileFilter;
 
+import org.martus.util.DirectoryUtils;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
@@ -68,10 +69,18 @@ public class ImportCpmzDoer extends ImportProjectDoer
 			throw new Exception("Illegal project name: " + newProjectFilename);
 		
 		Project projectToFill = new Project();
-		projectToFill.createOrOpen(new File(EAM.getHomeDirectory(), newProjectFilename));
+		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectFilename);
+		projectToFill.createOrOpen(newProjectDir);
 		try 
 		{
 			importProject(importFile, projectToFill);
+		}
+		catch (Exception e)
+		{
+			projectToFill.close();
+			DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
+
+			throw new Exception(e);
 		}
 		finally
 		{
