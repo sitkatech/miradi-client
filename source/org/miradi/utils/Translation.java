@@ -45,8 +45,14 @@ public class Translation
 		return textTranslations == null;
 	}
 	
+	public static String getCurrentLanguageCode()
+	{
+		return currentLanguageCode;
+	}
+	
 	public static void restoreDefaultLocalization() throws IOException
 	{
+		currentLanguageCode = "en";
 		textTranslations = null;
 		fieldLabelTranslations = loadProperties(getEnglishTranslationFileURL("FieldLabels.properties"));
 	}
@@ -58,6 +64,7 @@ public class Translation
 		{
 			textTranslations = loadPOFile(zip, "miradi_" + languageCode + ".po");
 			QuestionManager.initialize();
+			currentLanguageCode = languageCode;
 		}
 		catch(IOException e)
 		{
@@ -226,6 +233,13 @@ public class Translation
 			if(line == null)
 				break;
 			
+			if(line.startsWith("\"PO-Revision-Date: "))
+			{
+				int dateStart = line.indexOf(':') + 2;
+				String date = line.substring(dateStart);
+				properties.put(TRANSLATION_VERSION_KEY, date);
+			}
+			
 			if(line.startsWith("msgid"))
 			{
 				if(id.length() > 0 && str.length() > 0)
@@ -280,6 +294,9 @@ public class Translation
 		return result;
 	}
 
+	public final static String TRANSLATION_VERSION_KEY = "TranslationVersion";
+
+	private static String currentLanguageCode;
 	private static HashMap<String, String> textTranslations;
 	private static Properties fieldLabelTranslations;
 }
