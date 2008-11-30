@@ -1049,7 +1049,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			return true;
 			
 		boolean cellWasMadeVisible = getCurrentDiagramComponent().isCellVisible(selectedNode);
-		System.out.println(cellWasMadeVisible);
+		
 		return cellWasMadeVisible;
 	}
 
