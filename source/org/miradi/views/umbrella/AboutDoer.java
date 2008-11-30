@@ -54,7 +54,20 @@ public class AboutDoer extends MainWindowDoer
 	public static String buildMainSection()
 	{
 		String text = loadHtmlFile("AboutPart1.html");
-		text +=  VersionConstants.getVersionAndTimestamp();
+		text += "<p>";
+		{
+			String template = EAM.text("<strong>Version: %s</strong>");
+			String translationVersion = VersionConstants.getVersionAndTimestamp();
+			text += " " + EAM.substitute(template, translationVersion);
+		}
+		if(!Translation.isDefaultLocalization())
+		{
+			String textToDisplay = EAM.text("(Translation: %code %date)");
+			textToDisplay = EAM.substitute(textToDisplay, "%code", Translation.getCurrentLanguageCode());
+			textToDisplay = EAM.substitute(textToDisplay, "%date", EAM.text(Translation.TRANSLATION_VERSION_KEY));
+			text += " " + textToDisplay;
+		}
+		text += "</p>";
 		text += loadHtmlFile("AboutPart2.html");
 		return text;
 	}
