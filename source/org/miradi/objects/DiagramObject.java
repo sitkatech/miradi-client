@@ -254,7 +254,7 @@ abstract public class DiagramObject extends BaseObject
 		for (int index = 0; index < allDiagramFactorRefs.size(); ++index)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(index));
-			Rectangle diagramFactorBounds = (Rectangle) diagramFactor.getBounds().clone();
+			Rectangle diagramFactorBounds = diagramFactor.getBounds();
 			if (bounds == null)
 				bounds = new Rectangle(diagramFactorBounds);
 			
@@ -269,11 +269,10 @@ abstract public class DiagramObject extends BaseObject
 			if (bendPointBounds == null)
 				continue;
 			
-			Rectangle clonedBendPointBounds = (Rectangle) bendPointBounds.clone();
 			if (bounds == null)
-				bounds = clonedBendPointBounds;
+				bounds = new Rectangle(bendPointBounds);
 			
-			bounds.add(clonedBendPointBounds);
+			bounds.add(bendPointBounds);
 		}
 		
 		return bounds;
