@@ -99,7 +99,11 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		Task task = getTask();
 		if(task == null)
 			return "";
-		return task.getTypeName();
+		if(task.isActivity())
+			return EAM.text("Activity");
+		if(task.isMethod())
+			return EAM.text("Method");
+		return EAM.text("Task");
 	}
 	
 	private Task getTask()
