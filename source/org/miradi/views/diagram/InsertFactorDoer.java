@@ -264,6 +264,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 		for(int i = 0; i < nodesToLinkTo.length; ++i)
 		{
 			DiagramFactor to = nodesToLinkTo[i].getDiagramFactor();
+			if (getDiagramModel().areLinked(newlyInserted.getWrappedORef(), to.getWrappedORef()))
+				continue;
+			
 			if (newlyInserted.isGroupBoxFactor() || to.isGroupBoxFactor())
 				linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), newlyInserted, to);
 			else
