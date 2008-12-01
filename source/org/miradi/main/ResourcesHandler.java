@@ -48,7 +48,7 @@ public class ResourcesHandler
 	public static URL getEnglishResourceURL(String resourceFileName) throws RuntimeException
 	{
 		if(!resourceFileName.startsWith("/"))
-			resourceFileName = "/resources/" + resourceFileName;
+			resourceFileName = RESOURCES_PATH + resourceFileName;
 
 		Class thisClass = ResourcesHandler.class;
 		URL url = thisClass.getResource(resourceFileName);
@@ -60,7 +60,7 @@ public class ResourcesHandler
 		try
 		{
 			if(!resourceFileName.startsWith("/"))
-				resourceFileName = "/resources/" + resourceFileName;
+				resourceFileName = RESOURCES_PATH + resourceFileName;
 			return new URL("jar:" + urlOfResourcesZip.toExternalForm() + "!" + resourceFileName);
 		}
 		catch(Exception e)
@@ -109,6 +109,8 @@ public class ResourcesHandler
 			return null;
 		}
 	}
+	
+	public static String RESOURCES_PATH = "/resources/";
 
 	private static URL urlOfResourcesZip;
 
