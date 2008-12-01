@@ -247,21 +247,36 @@ abstract public class DiagramObject extends BaseObject
 		return factors;
 	}
 	
-	public Rectangle getDiagramFactorBounds()
+	public Rectangle getBoundsOfFactorsAndBendPoints()
 	{
 		ORefList allDiagramFactorRefs = getAllDiagramFactorRefs();
-		Rectangle allCellsBound = null;
+		Rectangle bounds = null;
 		for (int index = 0; index < allDiagramFactorRefs.size(); ++index)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(index));
 			Rectangle factorCellBounds = (Rectangle) diagramFactor.getBounds().clone();
-			if (allCellsBound == null)
-				allCellsBound = new Rectangle(factorCellBounds);
+			if (bounds == null)
+				bounds = new Rectangle(factorCellBounds);
 			
-			allCellsBound = allCellsBound.union(factorCellBounds);			
+			bounds = bounds.union(factorCellBounds);			
 		}
 		
-		return allCellsBound;
+		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
+		for (int index = 0; index < allDiagramLinkRefs.size(); ++index)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), allDiagramLinkRefs.get(index));
+			Rectangle bendPointBounds = diagramLink.getBendPointBounds();
+			if (bendPointBounds == null)
+				continue;
+			
+			Rectangle clonedBendPointBounds = (Rectangle) bendPointBounds.clone();
+			if (bounds == null)
+				bounds = clonedBendPointBounds;
+			
+			bounds.add(clonedBendPointBounds);
+		}
+		
+		return bounds;
 	}
 	
 	//TODO write test for this method

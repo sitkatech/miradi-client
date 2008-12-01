@@ -64,7 +64,7 @@ public class CreateMarginDoer extends ObjectsDoer
 
 	private Dimension getDeltasToEnsureMargins()
 	{
-		Rectangle diagramFactorBounds = getDiagramView().getCurrentDiagramObject().getDiagramFactorBounds();
+		Rectangle diagramFactorBounds = getDiagramView().getCurrentDiagramObject().getBoundsOfFactorsAndBendPoints();
 		
 		int deltaX = 0;
 		int deltaY = 0;

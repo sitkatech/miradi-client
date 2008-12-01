@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.awt.Color;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -410,6 +411,11 @@ public class DiagramLink extends BaseObject
 	public PointList getBendPoints()
 	{
 		return bendPoints.getPointList();
+	}
+	
+	public Rectangle getBendPointBounds()
+	{
+		return getBendPoints().getBounds();
 	}
 	
 	public Color getColor()
