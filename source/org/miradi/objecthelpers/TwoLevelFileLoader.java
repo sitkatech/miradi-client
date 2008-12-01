@@ -38,7 +38,8 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	
 	public TwoLevelEntry[] load() throws Exception
 	{
-		URL english = ResourcesHandler.getEnglishResourceURL("fieldoptions/" + fileName);
+		String path = ResourcesHandler.RESOURCES_PATH + "fieldoptions/";
+		URL english = ResourcesHandler.getEnglishResourceURL(path + fileName);
 		Reader reader = new UnicodeReader(english.openStream());
 		try
 		{
