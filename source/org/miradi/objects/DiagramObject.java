@@ -254,11 +254,11 @@ abstract public class DiagramObject extends BaseObject
 		for (int index = 0; index < allDiagramFactorRefs.size(); ++index)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(index));
-			Rectangle factorCellBounds = (Rectangle) diagramFactor.getBounds().clone();
+			Rectangle diagramFactorBounds = (Rectangle) diagramFactor.getBounds().clone();
 			if (bounds == null)
-				bounds = new Rectangle(factorCellBounds);
+				bounds = new Rectangle(diagramFactorBounds);
 			
-			bounds = bounds.union(factorCellBounds);			
+			bounds = bounds.union(diagramFactorBounds);			
 		}
 		
 		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
