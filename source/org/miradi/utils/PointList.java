@@ -35,7 +35,7 @@ public class PointList
 	
 	public PointList(PointList copyFrom)
 	{
-		this(copyFrom.createClone().data);
+		this(copyFrom.createClone().points);
 	}
 	
 	public PointList(EnhancedJsonObject json) throws Exception
@@ -59,65 +59,65 @@ public class PointList
 	
 	private PointList(List dataToUse)
 	{
-		data = new Vector(dataToUse);
+		points = new Vector(dataToUse);
 	}
 	
 	public int size()
 	{
-		return data.size();
+		return points.size();
 	}
 	
 	public void insertAt(Point point, int index)
 	{
-		data.insertElementAt(point, index);
+		points.insertElementAt(point, index);
 	}
 	
 	public void add(Point point)
 	{
-		data.add(point);
+		points.add(point);
 	}
 	
 	public void addAll(List listToAdd)
 	{
-		data.addAll(listToAdd);
+		points.addAll(listToAdd);
 	}
 		
 	public Point get(int index)
 	{
-		return data.get(index);
+		return points.get(index);
 	}
 	
 	public void set(int index, Point point)
 	{
-		data.set(index, point);
+		points.set(index, point);
 	}
 	
 	public Vector getAllPoints()
 	{
-		return data;
+		return points;
 	}
 	
 	public boolean contains(Point point)
 	{
-		return data.contains(point);
+		return points.contains(point);
 	}
 	
 	public int find(Point point)
 	{
-		return data.indexOf(point);
+		return points.indexOf(point);
 	}
 	
 	public void removePoint(int index)
 	{
-		data.remove(index);
+		points.remove(index);
 	}
 	
 	public void removePoint(Point point)
 	{
-		if(!data.contains(point))
+		if(!points.contains(point))
 			throw new RuntimeException("Attempted to remove non-existant point: " + point + " from: " + toString());
 		
-		data.remove(point);
+		points.remove(point);
 	}
 	
 	public void subtract(PointList other)
@@ -158,12 +158,12 @@ public class PointList
 			return false;
 		
 		PointList other = (PointList)rawOther;
-		return data.equals(other.data);
+		return points.equals(other.points);
 	}
 	
 	public int hashCode()
 	{
-		return data.hashCode();
+		return points.hashCode();
 	}
 	
 	public PointList createClone()
@@ -184,10 +184,10 @@ public class PointList
 		if (size() == 0)
 			return new Point(0, 0);
 		
-		Point closestPoint = data.get(0);
-		for (int i = 0; i < data.size(); ++i)
+		Point closestPoint = points.get(0);
+		for (int i = 0; i < points.size(); ++i)
 		{
-			Point currentPoint = data.get(i);
+			Point currentPoint = points.get(i);
 			double currentDistance2Point = currentPoint.distance(point);
 			double closestDistance2Point = closestPoint.distance(point);
 			if (currentDistance2Point < closestDistance2Point)
@@ -222,18 +222,18 @@ public class PointList
 	
 	public void translateAll(int deltaX, int deltaY)
 	{
-		for (int index = 0; index < data.size(); ++index)
+		for (int index = 0; index < points.size(); ++index)
 		{
-			data.get(index).translate(deltaX, deltaY);
+			points.get(index).translate(deltaX, deltaY);
 		}
 	}
 	
 	public Rectangle getBounds()
 	{
 		Rectangle pointBounds = null;
-		for (int index = 0; index < data.size(); ++index)
+		for (int index = 0; index < points.size(); ++index)
 		{
-			Point point = data.get(index);
+			Point point = points.get(index);
 			if (pointBounds == null)
 				pointBounds = new Rectangle(point.x, point.y, 0 , 0);
 			
@@ -245,5 +245,5 @@ public class PointList
 	
 	protected static final String TAG_POINTS = "Points";
 	//TODO rename data to points
-	private Vector<Point> data;
+	private Vector<Point> points;
 }
