@@ -28,12 +28,12 @@ public class EcoRegionsFileLoader extends TwoLevelFileLoader
 		super(fileNameToUse);
 	}
 	
-	protected Vector processVector(Vector fileVector)
+	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
 	{
 		Vector entries = new Vector();
 		for (int i  = 0; i < fileVector.size(); ++i)
 		{
-			Vector row = (Vector) fileVector.get(i);
+			Vector row = fileVector.get(i);
 
 			String regionCode = (String) row.get(0);
 			String regionName = (String) row.get(1) + " - " + (String) row.get(2) + " - " +(String) row.get(3);
