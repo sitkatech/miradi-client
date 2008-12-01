@@ -20,10 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import org.miradi.main.EAMTestCase;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.PointList;
 
 public class TestPointList extends EAMTestCase
 {
@@ -147,5 +146,17 @@ public class TestPointList extends EAMTestCase
 		assertEquals(new Point(0, 0), emptyList.getClosestPoint(point2));
 	}
 	
-	
+	public void testPointsBounds()
+	{
+		PointList sampleList = createSamplePointList();
+		Rectangle expectedRectangle = new Rectangle(1, 1,  2, 2);
+		assertEquals("wrong bounds?", expectedRectangle, sampleList.getBounds());
+		
+		assertEquals("should be null bounds for empty point list?", null, new PointList().getBounds());
+		
+		PointList points = new PointList();
+		points.add(new Point(1, 1));
+		Rectangle expectedRectangle2 = new Rectangle(1, 1, 0, 0);
+		assertEquals("wrong bounds for one point?", expectedRectangle2, points.getBounds());
+	}
 }

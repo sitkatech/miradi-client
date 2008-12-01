@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.List;
@@ -225,6 +226,21 @@ public class PointList
 		{
 			data.get(index).translate(deltaX, deltaY);
 		}
+	}
+	
+	public Rectangle getBounds()
+	{
+		Rectangle pointBounds = null;
+		for (int index = 0; index < data.size(); ++index)
+		{
+			Point point = data.get(index);
+			if (pointBounds == null)
+				pointBounds = new Rectangle(point.x, point.y, 0 , 0);
+			
+			pointBounds.add(point);
+		}
+		
+		return pointBounds;
 	}
 	
 	protected static final String TAG_POINTS = "Points";
