@@ -24,6 +24,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
@@ -91,6 +92,6 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 
 	public static String getConfigurationDefaultLabel(Project project)
 	{
-		return "[Custom " + project.getPlanningViewConfigurationPool().size() + "]"; 
+		return "[" + EAM.text("PlanningSubViewName|Custom") + " " + project.getPlanningViewConfigurationPool().size() + "]"; 
 	}
 }
