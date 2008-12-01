@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.awt.Rectangle;
 import java.util.HashSet;
 
 import org.miradi.ids.BaseId;
@@ -244,6 +245,23 @@ abstract public class DiagramObject extends BaseObject
 		}
 		
 		return factors;
+	}
+	
+	public Rectangle getDiagramFactorBounds()
+	{
+		ORefList allDiagramFactorRefs = getAllDiagramFactorRefs();
+		Rectangle allCellsBound = null;
+		for (int index = 0; index < allDiagramFactorRefs.size(); ++index)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), allDiagramFactorRefs.get(index));
+			Rectangle factorCellBounds = (Rectangle) diagramFactor.getBounds().clone();
+			if (allCellsBound == null)
+				allCellsBound = new Rectangle(factorCellBounds);
+			
+			allCellsBound = allCellsBound.union(factorCellBounds);			
+		}
+		
+		return allCellsBound;
 	}
 	
 	//TODO write test for this method
