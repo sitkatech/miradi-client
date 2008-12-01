@@ -238,9 +238,10 @@ public class DefinitionCommonTerms
 		"As a general rule, you should have one file for each real-world project you are managing, " +
 		"although for certain large and complex projects, " +
 		"you may wish to have one file for each target or for other subdivisions. " +
-		"Miradi's default setting is to create a folder " +
-		"with the name of the project in the Miradi directory " +
-		"(in Windows, the default path is C:\\Documents and Settings\\<i>YourUserName</i>\\Miradi)."));
+		"\n\n" +
+		"<p>To see where your projects are being stored, " +
+		"use the <code class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, " +
+		"and look at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</code> tab."));
 		defs.put("Definition:Project", def);
 		
 		
