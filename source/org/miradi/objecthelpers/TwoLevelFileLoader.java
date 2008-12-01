@@ -19,10 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.util.Vector;
@@ -45,7 +42,7 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 		Reader reader = new UnicodeReader(english.openStream());
 		try
 		{
-			TwoLevelEntry[] table = getTaxomonies(reader);
+			TwoLevelEntry[] table = load(reader);
 			return table;
 		}
 		finally
@@ -54,15 +51,7 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 		}
 	}
 
-	public TwoLevelEntry[] load(InputStream is) throws Exception
-	{
-		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-		TwoLevelEntry[] table = getTaxomonies(reader);
-		reader.close();
-		return table;
-	}
-	
-	public TwoLevelEntry[] load(BufferedReader reader) throws Exception
+	public TwoLevelEntry[] load(Reader reader) throws Exception
 	{
 		return getTaxomonies(reader);
 	}

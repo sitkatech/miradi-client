@@ -30,7 +30,6 @@ import java.awt.datatransfer.Transferable;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
@@ -47,6 +46,7 @@ import javax.swing.ToolTipManager;
 import org.martus.swing.HyperlinkHandler;
 import org.martus.util.DirectoryLock;
 import org.martus.util.MultiCalendar;
+import org.martus.util.UnicodeReader;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
@@ -222,9 +222,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		try
 		{
 			File home = EAM.getHomeDirectory();
-			FileInputStream is = new FileInputStream(new File(home, "colors.txt"));
+			UnicodeReader reader = new UnicodeReader(new File(home, "colors.txt"));
 			ColorsFileLoader colorsLoader = new ColorsFileLoader();
-			TwoLevelEntry[] colors = colorsLoader.load(is);
+			TwoLevelEntry[] colors = colorsLoader.load(reader);
 			for (int i = 0; i < colors.length; ++i)
 			{
 				TwoLevelEntry colorEntry = colors[i];
