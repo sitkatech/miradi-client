@@ -84,6 +84,11 @@ abstract public class ObjectDataInputField implements FocusListener
 		objectType = newType;
 	}
 	
+	public void setTag(String tagToUse)
+	{
+		tag = tagToUse;
+	}
+	
 	public BaseId getObjectId()
 	{
 		return objectId;
