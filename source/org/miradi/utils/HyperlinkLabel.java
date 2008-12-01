@@ -72,7 +72,7 @@ public class HyperlinkLabel extends PanelTitleLabel implements MouseListener
 			if (handler == null)
 			{
 				String[] array = {popUpText};
-				EAM.okDialog(EAM.text("Hyperlink Label"), array);
+				EAM.okDialog(EAM.text("Title|Information"), array);
 			}
 			else
 				handler.linkClicked(url);
