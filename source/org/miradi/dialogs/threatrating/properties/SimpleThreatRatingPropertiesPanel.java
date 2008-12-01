@@ -25,14 +25,14 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.FactorLink;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 {
 	public SimpleThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
+		super(mainWindowToUse.getProject(), FactorLink.getObjectType(), BaseId.INVALID);
 		setLayout(new OneColumnGridLayout());
 		
 		commonPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
@@ -57,6 +57,8 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
+		super.setObjectRefs(hierarchyToSelectedRef);
+		
 		commonPanel.setObjectRefs(hierarchyToSelectedRef);
 		dropdownsPanel.setObjectRefs(hierarchyToSelectedRef);
 	}
