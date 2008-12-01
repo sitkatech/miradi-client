@@ -50,8 +50,8 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 
 		addField(createCheckBoxField(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 
-		
-		addField(createMultilineField(FactorLink.getObjectType(), FactorLink.TAG_COMMENT));
+		commentsField = createMultilineField(FactorLink.getObjectType(), getCommentTagForMode());
+		addField(commentsField);
 		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, new ThreatRatingQuestion()));
 
 		addBlankHorizontalLine();
@@ -95,11 +95,20 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 			toLabel.setText(FactorType.getFactorTypeLabel(toFactor));
 			toLabel.setIcon(FactorType.getFactorIcon(toFactor));
 			toNameField.setObjectType(toFactor.getType());
+			commentsField.setTag(getCommentTagForMode());	
 		}
 		catch(Exception e)
 		{
 			EAM.panic(e);
 		}
+	}
+
+	private String getCommentTagForMode()
+	{
+		if (getProject().isStressBaseMode())
+			return FactorLink.TAG_COMMENT;
+		
+		return FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT;
 	}
 
 	public String getPanelDescription()
@@ -109,6 +118,7 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 	
 	private PanelTitleLabel fromLabel;
 	private PanelTitleLabel toLabel;
-	ObjectDataInputField fromNameField;
-	ObjectDataInputField toNameField;
+	private ObjectDataInputField fromNameField;
+	private ObjectDataInputField toNameField;
+	private ObjectDataInputField commentsField;
 }
