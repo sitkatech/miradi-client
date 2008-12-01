@@ -247,11 +247,11 @@ abstract public class ObjectDataInputField implements FocusListener
 		}
 		catch (InvalidNumberException ine)
 		{
-			EAM.errorDialog(EAM.text(NUMERIC_ERROR_MESSEGE));
+			EAM.errorDialog(getNumericErrorMessage());
 		}
 		catch(NumberFormatException nfe)
 		{
-			EAM.errorDialog(EAM.text(NUMERIC_ERROR_MESSEGE));
+			EAM.errorDialog(getNumericErrorMessage());
 		}
 		catch(Throwable e)
 		{
@@ -259,6 +259,12 @@ abstract public class ObjectDataInputField implements FocusListener
 		}
 	}
 	
+	private String getNumericErrorMessage()
+	{
+		return "<html>" + EAM.text("This value must be numeric<br><br>" +
+		"Currency symbols and percent signs are not allowed");
+	}
+
 	public Project getProject()
 	{
 		return project;
@@ -287,8 +293,6 @@ abstract public class ObjectDataInputField implements FocusListener
 		}
 	}
 
-	private static final String NUMERIC_ERROR_MESSEGE = "<html>This value must be numeric<br><br>" +
-			"Currency symbols and percent signs are not allowed";
 	Project project;
 	private int objectType;
 	private BaseId objectId;
