@@ -312,7 +312,7 @@ public class DefinitionCommonTerms
 		def = Definition.createDefinitionFromTextString(EAM.text("AcceptableRangeofVariation"), EAM.text("Acceptable Range of Variation - Key ecological attributes of focal targets naturally vary over time. The acceptable range defines the limits of this variation which constitute the minimum conditions for persistence of the target (note that persistence may still require human management interventions).  This concept of an acceptable range of variation establishes the minimum criteria for identifying a conservation target as \"conserved\" or not.  If the attribute lies outside this acceptable range, it is a \"degraded\" attribute."));
 		defs.put("Definition:ViabilityRatings", def);
 
-		def = Definition.createDefinitionFromTextString(EAM.text("Measurement"), EAM.text("Measurement - A n assessment of an indicator at a given point in time. Measurements can be either quantitative or qualitative."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Measurement"), EAM.text("Measurement - An assessment of an indicator at a given point in time. Measurements can be either quantitative or qualitative."));
 		defs.put("Definition:Measurement", def);	
 
 		def = Definition.createDefinitionFromTextString(EAM.text("PriorityRating"), EAM.text("Priority Rating - An assesment of the importance or urgency or collecting measurements for a given indicator."));
