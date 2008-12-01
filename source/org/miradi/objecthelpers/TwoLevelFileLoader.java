@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.net.URL;
 import java.util.Vector;
@@ -38,8 +37,7 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	
 	public TwoLevelEntry[] load() throws Exception
 	{
-		String path = ResourcesHandler.RESOURCES_PATH + "fieldoptions/";
-		URL english = ResourcesHandler.getEnglishResourceURL(path + fileName);
+		URL english = ResourcesHandler.getEnglishResourceURL(getPath());
 		Reader reader = new UnicodeReader(english.openStream());
 		try
 		{
@@ -54,11 +52,6 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 
 	public TwoLevelEntry[] load(Reader reader) throws Exception
 	{
-		return getTaxomonies(reader);
-	}
-	
-	private TwoLevelEntry[] getTaxomonies(Reader reader) throws IOException
-	{
 		Vector<Vector<String>> fileVector = getDelimitedContents(reader);
 		Vector<TwoLevelEntry> taxonomyItems = processVector(fileVector);
 		return taxonomyItems.toArray(new TwoLevelEntry[0]);
@@ -67,7 +60,8 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	@Override
 	protected String translateLine(String line)
 	{
-		return Translation.translateTabDelimited("choice|" + getFileName() + "|", line);
+		final String prefix = "choice|" + getPath() + "|";
+		return Translation.translateTabDelimited(prefix, line);
 	}
 	
 	public String getFileName()
@@ -75,6 +69,12 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 		return fileName;
 	}
 	
+	private String getPath()
+	{
+		String path = ResourcesHandler.RESOURCES_PATH + "fieldoptions/" + getFileName();
+		return path;
+	}
+
 	abstract protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector);
 
 	private String fileName;

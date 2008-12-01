@@ -159,9 +159,8 @@ public class Translation
 
 	public static String translateTabDelimited(String prefix, String thisLine)
 	{
-		final String tabSubstitute = "___";
-		if(thisLine.indexOf(tabSubstitute) >= 0)
-			throw new RuntimeException("Unexpected " + tabSubstitute + " in: " + thisLine);
+		if(thisLine.indexOf(TAB_SUBSTITUTE) >= 0)
+			throw new RuntimeException("Unexpected " + TAB_SUBSTITUTE + " in: " + thisLine);
 		
 		if(textTranslations == null)
 			return thisLine;
@@ -171,13 +170,13 @@ public class Translation
 		String code = thisLine.substring(0, firstTabAt);
 		thisLine = thisLine.substring(firstTabAt + 1);
 		
-		thisLine = thisLine.replaceAll("\\t", tabSubstitute);
+		thisLine = thisLine.replaceAll("\\t", TAB_SUBSTITUTE);
 		String translated = textTranslations.get(prefix + thisLine);
 		if(translated == null)
-			thisLine = thisLine.replaceAll(tabSubstitute, tabSubstitute + "~");
-
-		thisLine = code + tabSubstitute + thisLine;
-		thisLine = thisLine.replaceAll(tabSubstitute, "\\\t");
+			thisLine = thisLine.replaceAll(TAB_SUBSTITUTE, TAB_SUBSTITUTE + "~");
+		else
+			thisLine = code + TAB_SUBSTITUTE + translated;
+		thisLine = thisLine.replaceAll(TAB_SUBSTITUTE, "\\\t");
 		return thisLine;
 	}
 
@@ -242,8 +241,7 @@ public class Translation
 			
 			if(line.startsWith("msgid"))
 			{
-				if(id.length() > 0 && str.length() > 0)
-					properties.put(matchPOEscapedCharacters(id), matchPOEscapedCharacters(str));
+				addPoEntryToHash(properties, id, str);
 				
 				id.setLength(0);
 				str.setLength(0);
@@ -263,10 +261,17 @@ public class Translation
 			}
 		}
 		
-		if(id.length() > 0 && str.length() > 0)
-			properties.put(matchPOEscapedCharacters(id), matchPOEscapedCharacters(str));
+		addPoEntryToHash(properties, id, str);
 
 		return properties;
+	}
+
+	private static void addPoEntryToHash(HashMap<String, String> properties, StringBuffer id, StringBuffer str)
+	{
+		if(id.length() == 0 || str.length() == 0)
+			return;
+		
+		properties.put(matchPOEscapedCharacters(id), matchPOEscapedCharacters(str));
 	}
 
 	private static String matchPOEscapedCharacters(StringBuffer str)
@@ -294,6 +299,7 @@ public class Translation
 		return result;
 	}
 
+	public final static String TAB_SUBSTITUTE = "___";
 	public final static String TRANSLATION_VERSION_KEY = "TranslationVersion";
 
 	private static String currentLanguageCode;
