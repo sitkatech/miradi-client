@@ -33,12 +33,12 @@ public class DelimitedFileLoader
 	
 	static String COMMENT = "#";
 
-	public Vector getDelimitedContents(Reader rawReader)
+	public Vector<Vector<String>> getDelimitedContents(Reader rawReader)
 			throws IOException
 	{
 		BufferedReader reader = new BufferedReader(rawReader);
 		
-		Vector lineVector = new Vector();
+		Vector<Vector<String>> lineVector = new Vector();
 		while(reader.ready())
 		{
 			String line = reader.readLine();
@@ -50,7 +50,7 @@ public class DelimitedFileLoader
 			
 			line = translateLine(line);
 			StringTokenizer st = new StringTokenizer(line, TAB);
-			Vector thisLine = new Vector();
+			Vector<String> thisLine = new Vector();
 			while(st.hasMoreTokens())
 			{
 				String token = st.nextToken().trim();
