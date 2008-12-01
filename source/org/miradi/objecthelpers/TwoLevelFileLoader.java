@@ -69,9 +69,9 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	
 	private TwoLevelEntry[] getTaxomonies(Reader reader) throws IOException
 	{
-		Vector fileVector = getDelimitedContents(reader);
-		Vector taxonomyItems = processVector(fileVector);
-		return (TwoLevelEntry[]) taxonomyItems.toArray(new TwoLevelEntry[0]);
+		Vector<Vector<String>> fileVector = getDelimitedContents(reader);
+		Vector<TwoLevelEntry> taxonomyItems = processVector(fileVector);
+		return taxonomyItems.toArray(new TwoLevelEntry[0]);
 	}
 	
 	@Override
@@ -85,7 +85,7 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 		return fileName;
 	}
 	
-	abstract protected Vector processVector(Vector fileVector);
+	abstract protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector);
 
 	private String fileName;
 	public final static String COUNTRIES_FILE = "Countries.tsv";

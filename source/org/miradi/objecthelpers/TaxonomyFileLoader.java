@@ -30,7 +30,7 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 		super(fileNameToUse);
 	}
 
-	protected Vector processVector(Vector fileVector)
+	protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
 	{
 		Vector taxonomyItems = new Vector();
 		taxonomyItems.add(new TwoLevelEntry("", EAM.text("--Select a classification--")));
@@ -40,7 +40,7 @@ public class TaxonomyFileLoader extends TwoLevelFileLoader
 		int level2Index = 0;
 		for(int i = 0; i < fileVector.size(); ++i)
 		{
-			Vector row = (Vector) fileVector.get(i);
+			Vector row = fileVector.get(i);
 			String code = (String) row.get(0);
 			String level1Descriptor = (String) row.get(1);
 			String level2Descriptor = (String) row.get(2);
