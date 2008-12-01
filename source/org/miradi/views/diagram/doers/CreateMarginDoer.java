@@ -28,7 +28,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
-import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -65,7 +64,7 @@ public class CreateMarginDoer extends ObjectsDoer
 
 	private Dimension getDeltasToEnsureMargins()
 	{
-		Rectangle diagramFactorBounds = getDiagramFactorBounds();
+		Rectangle diagramFactorBounds = getDiagramView().getCurrentDiagramObject().getDiagramFactorBounds();
 		
 		int deltaX = 0;
 		int deltaY = 0;
@@ -127,22 +126,6 @@ public class CreateMarginDoer extends ObjectsDoer
 			CommandSetObjectData setNewLocationCommand = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, currentLocationAsString);
 			getProject().executeCommand(setNewLocationCommand);
 		}
-	}
-
-	private Rectangle getDiagramFactorBounds()
-	{
-		Vector<FactorCell> allFactorCells = getAllFactorCells();
-		Rectangle allCellsBound = null;
-		for (int index = 0; index < allFactorCells.size(); ++index)
-		{
-			Rectangle factorCellBounds = (Rectangle) allFactorCells.get(index).getDiagramFactor().getBounds().clone();
-			if (allCellsBound == null)
-				allCellsBound = new Rectangle(factorCellBounds);
-			
-			allCellsBound = allCellsBound.union(factorCellBounds);			
-		}
-		
-		return allCellsBound;
 	}
 
 	private Vector getAllFactorCells()
