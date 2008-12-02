@@ -103,10 +103,11 @@ public class RtfFormExporter
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
 		{
 			FormItem  formItem = formRow.getLeftFormItem(leftColumn);
-			if (leftColumn != 0)
+			String formItemAsString = createFormItem(formRow, formItem);
+			if (leftColumn != 0 && formItemHasValue(formItemAsString))
 				encodedRowContent.append(FIELD_SPACING);
 			
-			encodedRowContent.append(createFormItem(formRow, formItem));
+			encodedRowContent.append(formItemAsString);
 		}
 		
 		encodedRowContent.append(RtfWriter.CELL_COMMAND);
@@ -119,10 +120,11 @@ public class RtfFormExporter
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
 		{
 			FormItem formItem = formRow.getRightFormItem(rightColumn);
-			if (rightColumn != 0)
+			String formItemAsString = createFormItem(formRow, formItem);
+			if (rightColumn != 0 && formItemHasValue(formItemAsString))
 				encodedRowContent.append(FIELD_SPACING);
 			
-			encodedRowContent.append(createFormItem(formRow, formItem));
+			encodedRowContent.append(formItemAsString);
 		}
 		
 		rowFormatting.append(getCellxCommand(INCHES_FROM_LEFT_MARGIN_TO_SECOND_COLUMN_RIGHT_EDGE_MINUS_ONE));
@@ -133,22 +135,26 @@ public class RtfFormExporter
 		getWriter().newLine();
 	}
 
-	private StringBuffer createFormItem(FormRow formRow, FormItem formItem) throws Exception
+	private boolean formItemHasValue(String formItemAsString)
 	{
-		StringBuffer encodedRowContent = new StringBuffer();
+		return formItemAsString.length() > 0;
+	}
+
+	private String createFormItem(FormRow formRow, FormItem formItem) throws Exception
+	{
 		if (formItem.isFormConstant())
 		{
 			FormConstant formConstant = (FormConstant) formItem;
-			encodedRowContent.append(writer.encode(formConstant.getConstant()));				
+			return writer.encode(formConstant.getConstant());				
 		}
 		else if (formItem.isFormFieldLabel())
 		{
-			encodedRowContent.append(writer.encode(getFieldLabel((FormFieldLabel)formItem)));					
+			return writer.encode(getFieldLabel((FormFieldLabel)formItem));					
 		}
 		else if (formItem.isFormFieldData())
 		{
 			String rawFieldData = getFieldData((FormFieldData) formItem, formRow);
-			encodedRowContent.append(writer.encode(rawFieldData));							
+			return writer.encode(rawFieldData);							
 		}
 		else if (formItem.isFormFieldImage())
 		{
@@ -161,10 +167,10 @@ public class RtfFormExporter
 			String code = getFieldData((FormFieldQuestionData) formItem, formRow);
 			ChoiceItem choiceItem = formFieldQuestionData.getQuestion().findChoiceByCode(code);
 			if (choiceItem != null)
-				encodedRowContent.append(writer.encode(choiceItem.toString()));
+				return writer.encode(choiceItem.toString());
 		}
 		
-		return encodedRowContent;
+		return "";
 	}
 
 	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
