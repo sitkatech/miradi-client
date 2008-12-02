@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Collections;
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ProjectResourceId;
 import org.miradi.main.EAM;
@@ -27,6 +30,7 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
@@ -170,11 +174,18 @@ public class ProjectResource extends BaseObject
 	
 	public static String getResourcesAsString(Project project, ORefSet resourceRefs)
 	{
+		Vector<ProjectResource> sortedProjectResources = new Vector();
+		for(ORef projectResourceRef : resourceRefs)
+		{
+			ProjectResource projectResource = ProjectResource.find(project, projectResourceRef);
+			sortedProjectResources.add(projectResource);
+		}
+		Collections.sort(sortedProjectResources, new BaseObjectByFullNameSorter());
+		
 		boolean isFirstIteration = true; 
 		String appendedResources = "";
-		for(ORef ref : resourceRefs)
+		for(ProjectResource resource : sortedProjectResources)
 		{
-			ProjectResource resource = find(project, ref);
 			if (resource == null)
 				continue;
 			
