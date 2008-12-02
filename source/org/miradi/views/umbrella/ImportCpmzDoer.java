@@ -73,7 +73,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		projectToFill.createOrOpen(newProjectDir);
 		try 
 		{
-			importProject(importFile, projectToFill);
+			importProject(importFile, projectToFill, newProjectDir);
 		}
 		catch (Exception e)
 		{
@@ -88,13 +88,14 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 	}
 
-	private void importProject(File zipFileToImport, Project projectToFill) throws ZipException, IOException, Exception, ValidationException
+	//TODO this method needs to have a project dir parameter only.  the project should not created when importing mpz,  just when importing project.xml
+	private void importProject(File zipFileToImport, Project projectToFill, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		try
 		{
 			if (zipContainsMpzProject(zipFile))
-				importProjectFromMpzEntry(projectToFill, zipFile);
+				importProjectFromMpzEntry(projectToFill, zipFile, newProjectDir);
 			else
 				importProjectFromXmlEntry(projectToFill, zipFile);
 		}
@@ -104,7 +105,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 	}
 
-	private void importProjectFromMpzEntry(Project projectToFill, ZipFile zipFile) throws Exception
+	private void importProjectFromMpzEntry(Project projectToFill, ZipFile zipFile, File newProjectDir) throws Exception
 	{
 		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
@@ -114,14 +115,16 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 		finally
 		{
+			projectToFill.close();
 			inputStream.close();
 		}
 		
-		importConproProjectNumbers(projectToFill, zipFile);
+		importConproProjectNumbers(projectToFill, zipFile, newProjectDir);
 	}
 
-	private void importConproProjectNumbers(Project projectToFill, ZipFile zipFile) throws Exception
+	private void importConproProjectNumbers(Project projectToFill, ZipFile zipFile, File newProjectDir) throws Exception
 	{
+		projectToFill.openProject(newProjectDir);
 		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
