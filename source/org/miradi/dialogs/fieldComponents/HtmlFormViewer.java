@@ -89,7 +89,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 		return getMainWindow().getWizardFontSize();
 	}
 	
-	public String getFontFamily()
+	public String getFontFamilyCode()
 	{
 		return getMainWindow().getWizardFontFamily();
 	}
@@ -161,7 +161,7 @@ public class HtmlFormViewer extends UiEditorPane implements HyperlinkListener, M
 	
 	public void addRuleFontFamily(StyleSheet style)
 	{
-		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion().findChoiceByCode(getFontFamily())+";}"));
+		style.addRule(makeSureRuleHasRightPrefix("body {font-family:"+new FontFamiliyQuestion().findChoiceByCode(getFontFamilyCode())+";}"));
 	}
 	
 	public String makeSureRuleHasRightPrefix(String rule)

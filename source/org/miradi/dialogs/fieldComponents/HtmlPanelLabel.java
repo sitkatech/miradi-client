@@ -30,13 +30,15 @@ public class HtmlPanelLabel extends HtmlFormViewer
 		super(mainWindow, htmlSource, hyperLinkHandler);
 	}
 
+	@Override
 	public int getFontSize()
 	{
 		return getMainWindow().getDataPanelFontSize();
 	}
 	
 	//TODO should not use static ref here
-	public String getFontFamily()
+	@Override
+	public String getFontFamilyCode()
 	{
 		return getMainWindow().getDataPanelFontFamily();
 	}
