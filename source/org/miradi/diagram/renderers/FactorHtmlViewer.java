@@ -60,7 +60,8 @@ public class FactorHtmlViewer extends HtmlFormViewer
 		style.addRule(makeSureRuleHasRightPrefix("body {background-color:"+convertColorToHTMLColor(color)+";}"));
 	}
 
-	public String getFontFamily()
+	@Override
+	public String getFontFamilyCode()
 	{
 		return getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
 	}
