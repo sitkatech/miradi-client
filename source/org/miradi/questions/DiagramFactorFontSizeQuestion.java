@@ -37,7 +37,7 @@ public class DiagramFactorFontSizeQuestion extends StaticChoiceQuestion
 				new ChoiceItem("0.75", EAM.text("Very Small")),
 				new ChoiceItem("0.9", EAM.text("Small")),
 				new ChoiceItem("1.25", EAM.text("Large")),
-				new ChoiceItem("1.50", EAM.text("Very Large")),
+				new ChoiceItem("1.75", EAM.text("Very Large")),
 				new ChoiceItem("2.5", EAM.text("Largest")),
 		};
 	}
