@@ -62,7 +62,6 @@ import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.RadioButtonsField;
-import org.miradi.dialogfields.ResourcesOverridenListField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -455,11 +454,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createOverridenObjectListField(String tag, ChoiceQuestion question)
 	{
 		return new ObjectOverridenListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, question);
-	}
-	
-	public ObjectDataInputField createOverridenResourcesListField(ChoiceQuestion question)
-	{
-		return new ResourcesOverridenListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
 	}
 	
 	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
