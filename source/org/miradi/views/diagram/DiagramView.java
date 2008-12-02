@@ -991,7 +991,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		newPropertiesPanel.selectTab(startingTabIdentifier);
 		newDialog.pack();
 		Rectangle screenRect = Utilities.getViewableRectangle();
-		int tenPercentWiderDiaglogWidth = newDialog.getWidth() + ((int)(newDialog.getWidth() * 0.1));
+		int tenPercentWiderDiaglogWidth = newDialog.getWidth() * 11 / 10;
 		int width = Math.min(tenPercentWiderDiaglogWidth, screenRect.width * 9 / 10);
 		int height = Math.min(newDialog.getHeight(), screenRect.height * 9 / 10);
 		Dimension size = new Dimension(width, height);
