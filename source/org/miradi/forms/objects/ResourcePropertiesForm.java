@@ -32,7 +32,7 @@ public class ResourcePropertiesForm extends FieldPanelSpec
 		addLabelAndFieldsWithLabels(EAM.text("Label|Resource"), type, new String[]{ProjectResource.TAG_GIVEN_NAME, ProjectResource.TAG_SUR_NAME, ProjectResource.TAG_INITIALS});		
 		addLabelAndFieldsWithLabels(EAM.text("Label|Roles (people only)"), type, new String[]{ProjectResource.TAG_ORGANIZATION, ProjectResource.TAG_POSITION, ProjectResource.TAG_LOCATION});
 		addLabelAndFieldsWithLabels(EAM.text("Label|Phone Numbers"), type, new String[]{ProjectResource.TAG_PHONE_NUMBER, ProjectResource.TAG_PHONE_NUMBER_MOBILE, });
-		addLabelAndFieldsWithLabels(EAM.text(" "), type, new String[]{ProjectResource.TAG_PHONE_NUMBER_HOME, ProjectResource.TAG_PHONE_NUMBER_OTHER, });
+		addLabelAndFieldsWithLabels(" ", type, new String[]{ProjectResource.TAG_PHONE_NUMBER_HOME, ProjectResource.TAG_PHONE_NUMBER_OTHER, });
 		addLabelAndField(type, ProjectResource.TAG_EMAIL);
 		addLabelAndField(type, ProjectResource.TAG_ALTERNATIVE_EMAIL);
 		addLabelAndFieldsWithLabels(EAM.text("Label|IM Address"), type, new String[]{ProjectResource.TAG_IM_ADDRESS, ProjectResource.TAG_IM_SERVICE, });
