@@ -29,7 +29,6 @@ import org.miradi.dialogs.fieldComponents.HtmlFormViewer;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.FontFamiliyQuestion;
 
 public class FactorHtmlViewer extends HtmlFormViewer
 {
@@ -63,9 +62,7 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	public String getFontFamily()
 	{
-		String fontFamilCode = getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
-		String fontFamily = new FontFamiliyQuestion().findChoiceByCode(fontFamilCode).getLabel();
-		return fontFamily;
+		return getProject().getMetadata().getData(ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY);
 	}
 
 	public int getFontSize()
