@@ -103,6 +103,9 @@ public class RtfFormExporter
 		for (int leftColumn = 0; leftColumn < formRow.getLeftFormItemsCount(); ++leftColumn)
 		{
 			FormItem  formItem = formRow.getLeftFormItem(leftColumn);
+			if (leftColumn != 0)
+				encodedRowContent.append(FIELD_SPACING);
+			
 			encodedRowContent.append(createFormItem(formRow, formItem));
 		}
 		
@@ -116,6 +119,9 @@ public class RtfFormExporter
 		for (int rightColumn = 0; rightColumn < formRow.getRightFormItemsCount(); ++rightColumn)
 		{
 			FormItem formItem = formRow.getRightFormItem(rightColumn);
+			if (rightColumn != 0)
+				encodedRowContent.append(FIELD_SPACING);
+			
 			encodedRowContent.append(createFormItem(formRow, formItem));
 		}
 		
@@ -133,29 +139,29 @@ public class RtfFormExporter
 		if (formItem.isFormConstant())
 		{
 			FormConstant formConstant = (FormConstant) formItem;
-			encodedRowContent.append(writer.encode(formConstant.getConstant()) + FIELD_SPACING);				
+			encodedRowContent.append(writer.encode(formConstant.getConstant()));				
 		}
 		else if (formItem.isFormFieldLabel())
 		{
-			encodedRowContent.append(writer.encode(getFieldLabel((FormFieldLabel)formItem)) + FIELD_SPACING);					
+			encodedRowContent.append(writer.encode(getFieldLabel((FormFieldLabel)formItem)));					
 		}
-		if (formItem.isFormFieldData())
+		else if (formItem.isFormFieldData())
 		{
 			String rawFieldData = getFieldData((FormFieldData) formItem, formRow);
-			encodedRowContent.append(writer.encode(rawFieldData) + FIELD_SPACING);							
+			encodedRowContent.append(writer.encode(rawFieldData));							
 		}
 		else if (formItem.isFormFieldImage())
 		{
 			BufferedImage image = ((FormImage)formItem).getImage();
 			writer.writeImage(image);
 		}
-		if (formItem.isFormQuestionFieldData())
+		else if (formItem.isFormQuestionFieldData())
 		{
 			FormFieldQuestionData formFieldQuestionData = (FormFieldQuestionData) formItem;
 			String code = getFieldData((FormFieldQuestionData) formItem, formRow);
 			ChoiceItem choiceItem = formFieldQuestionData.getQuestion().findChoiceByCode(code);
 			if (choiceItem != null)
-				encodedRowContent.append(writer.encode(choiceItem.toString()) + FIELD_SPACING);
+				encodedRowContent.append(writer.encode(choiceItem.toString()));
 		}
 		
 		return encodedRowContent;
