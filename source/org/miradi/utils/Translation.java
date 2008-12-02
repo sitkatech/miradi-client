@@ -101,7 +101,7 @@ public class Translation
 			EAM.logStackTrace("Could not find tag in fieldLabels file: " + objectType + "." + fieldTag + " = " + fieldTag);
 			label = fieldTag;
 		}
-		if(textTranslations == null)
+		if(textTranslations == null || label.length() == 0)
 			return label;
 
 		return text("FieldLabel|" + fullTag + "|" + label);
