@@ -173,9 +173,8 @@ public class Translation
 		thisLine = thisLine.replaceAll("\\t", TAB_SUBSTITUTE);
 		String translated = textTranslations.get(prefix + thisLine);
 		if(translated == null)
-			thisLine = thisLine.replaceAll(TAB_SUBSTITUTE, TAB_SUBSTITUTE + "~");
-		else
-			thisLine = code + TAB_SUBSTITUTE + translated;
+			translated = thisLine.replaceAll(TAB_SUBSTITUTE, TAB_SUBSTITUTE + "~");
+		thisLine = code + TAB_SUBSTITUTE + translated;
 		thisLine = thisLine.replaceAll(TAB_SUBSTITUTE, "\\\t");
 		return thisLine;
 	}
