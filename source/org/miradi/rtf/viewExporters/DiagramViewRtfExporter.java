@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import java.awt.image.BufferedImage;
+
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramObject;
@@ -50,10 +52,15 @@ public class DiagramViewRtfExporter extends RtfViewExporter
 		{
 			writer.newParagraph();
 			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
+			BufferedImage diagramAsImage = BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject);
+			if (diagramAsImage == null)
+				continue;
+			
 			writer.writeRaw(RtfWriter.BOLD_DIAGRAM_HEADER_FONT_COMMAND);
 			writer.writeEncoded(diagramObject.toString());
 			writer.newParagraph();
-			writer.writeImage(BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject));
+			
+			writer.writeImage(diagramAsImage);
 			
 			writer.pageBreak();
 		}
