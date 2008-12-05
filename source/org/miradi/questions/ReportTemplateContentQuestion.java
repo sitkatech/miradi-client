@@ -46,7 +46,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Conceptual Model")),
 				new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, EAM.text("Results Chains")),
 				
-				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, getTargetViabilityLabel()),
+				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_CODE, getTargetViabilityTableLabel()),
 				
 				new ChoiceItem(THREAT_RATING_VIEW_CODE, getThreatRatingsLabel()),
 				
@@ -61,7 +61,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 		};
 	}
 
-	public static String getTargetViabilityLabel()
+	public static String getTargetViabilityTableLabel()
 	{
 		return EAM.text("Viability - Table");
 	}
