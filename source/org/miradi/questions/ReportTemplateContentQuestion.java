@@ -46,8 +46,8 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 				new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Conceptual Model")),
 				new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, EAM.text("Results Chains")),
 				
-				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE, getTargetViabilityTableLabel()),
-				new ChoiceItem(VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE, getTargetViabilityDetailsLabel()),
+				new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE, getTargetViabilityTableLabel()),
+				new ChoiceItem(TARGET_VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE, getTargetViabilityDetailsLabel()),
 				
 				new ChoiceItem(THREAT_RATING_VIEW_CODE, getThreatRatingsLabel()),
 				
@@ -64,12 +64,12 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 
 	public static String getTargetViabilityTableLabel()
 	{
-		return EAM.text("Viability - Table");
+		return EAM.text("Target Viability - Table");
 	}
 	
 	public static String getTargetViabilityDetailsLabel()
 	{
-		return EAM.text("Viability - Details");
+		return EAM.text("Target Viability - Details");
 	}
 
 	public static String getLegendTableLabel()
@@ -140,8 +140,8 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 	public static final String SUMMARY_VIEW_FOS_TAB_CODE = "SummaryViewFosTab";
 	public static final String DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE = "DiagramViewConceptualModelTab";
 	public static final String DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE = "DiagramViewResultsChainTab";
-	public static final String VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE = "ViabilityViewViabilityTab";
-	public static final String VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE = "ViabilityViewViabilityTabDetails";
+	public static final String TARGET_VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE = "ViabilityViewViabilityTab";
+	public static final String TARGET_VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE = "ViabilityViewViabilityTabDetails";
 	public static final String THREAT_RATING_VIEW_CODE = "ThreatRatings";
 	public static final String PLANNING_VIEW_STRATEGIC_PLAN_CODE = "PlanningViewStrategicPlan";
 	public static final String PLANNING_VIEW_MONITORING_PLAN_CODE = "PlanningViewMonitoringPlan";
