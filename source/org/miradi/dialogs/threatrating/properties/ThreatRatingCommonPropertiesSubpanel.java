@@ -24,6 +24,7 @@ import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
@@ -31,6 +32,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatRatingQuestion;
 
@@ -57,6 +59,16 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		addBlankHorizontalLine();
 		
 		updateFieldsFromProject();
+	}
+	
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+		{
+			setObjectRefs(getSelectedRefs());
+		}
 	}
 	
 	@Override
