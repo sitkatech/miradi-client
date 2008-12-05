@@ -72,8 +72,13 @@ public class PropertiesDoer extends LocationDoer
 			
 			FactorCell[] selectedFactorCells = getDiagramComponent().getOnlySelectedFactorCells();
 			HashSet<LinkCell> selectedLinkCells = getSelectedLinksExcludingInternalGroupBoxLinks();
-
-			if(selectedLinkCells.size() + selectedFactorCells.length != 1)
+			final int selectedFactorAndLinkCount = selectedLinkCells.size() + selectedFactorCells.length;
+			boolean isScopeSelected = isScopeBoxSelected();
+			
+			if(selectedFactorAndLinkCount == 0 && isScopeSelected)
+				return true;
+			
+			if(selectedFactorAndLinkCount != 1)
 				return false;
 			
 			EAMGraphCell selected = getCorrectCellToShowPropertiesFor();
@@ -91,6 +96,18 @@ public class PropertiesDoer extends LocationDoer
 			EAM.logException(e);
 		}
 		
+		return false;
+	}
+
+	private boolean isScopeBoxSelected()
+	{
+		Object[] selectedCells = getDiagramComponent().getSelectionCells();
+		for(Object object : selectedCells)
+		{
+			EAMGraphCell cell = (EAMGraphCell)object;
+			if(cell.isProjectScope())
+				return true;
+		}
 		return false;
 	}
 
