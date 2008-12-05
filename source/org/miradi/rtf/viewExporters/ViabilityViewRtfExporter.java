@@ -44,7 +44,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE))
 		{
 			TreeTableModelExporter treeTableModelExporter = new TreeTableModelExporter(getProject(), createModel());
-			exportTable(writer, treeTableModelExporter, ReportTemplateContentQuestion.getTargetViabilityLabel());
+			exportTable(writer, treeTableModelExporter, ReportTemplateContentQuestion.getTargetViabilityTableLabel());
 			exportFormsForRows(writer, treeTableModelExporter);	
 		}
 	}
