@@ -814,23 +814,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return totalBounds;
 	}
 	
-	public Rectangle getTotalBoundsIgnoringVisibilityOfFactors()
-	{
-		Rectangle totalBounds = null;
-		DiagramFactor[] allDiagramFactors = getDiagramModel().getAllDiagramFactorsAsArray();
-		for (int i = 0 ; i < allDiagramFactors.length; ++i)
-		{
-			Rectangle bounds = allDiagramFactors[i].getBounds();
-			if (totalBounds == null)
-				totalBounds = bounds;
-			
-			if (bounds != null)
-				totalBounds.add(bounds);
-		}
-		
-		return totalBounds;
-	}
-	
 	private MainWindow mainWindow;
 	private Color defaultBackgroundColor;
 	private Project project;

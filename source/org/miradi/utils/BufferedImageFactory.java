@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
@@ -105,11 +106,13 @@ public  class BufferedImageFactory
 	
 	private static BufferedImage createImageFromDiagram(DiagramComponent diagram)
 	{
-		Rectangle totalBoundsIgnoringVisibilityOfFactors = diagram.getTotalBoundsIgnoringVisibilityOfFactors();
+		Rectangle totalBoundsIgnoringVisibilityOfFactors = diagram.getDiagramObject().getBoundsOfFactorsAndBendPoints();
 		if (totalBoundsIgnoringVisibilityOfFactors == null)
 			return null;
 		
 		Rectangle bounds = new Rectangle(totalBoundsIgnoringVisibilityOfFactors.getBounds());
+		final Dimension size = bounds.getSize();
+		forceDiagramSize(diagram, size);
 		diagram.toScreen(bounds);
 		diagram.setToDefaultBackgroundColor();
 		diagram.setGridVisible(false);
@@ -122,6 +125,17 @@ public  class BufferedImageFactory
 		int imageHeight = image.getHeight() - y;
 
 		return image.getSubimage(x, y, imageWidth, imageHeight);
+	}
+
+	private static void forceDiagramSize(DiagramComponent diagram, final Dimension size)
+	{
+		diagram.setAutoResizeGraph(false);
+		size.width += diagram.getGridSize();
+		size.height += diagram.getGridSize();
+		diagram.setSize(size);
+		diagram.setPreferredSize(size);
+		diagram.setMinimumSize(size);
+		diagram.setMaximumSize(size);
 	}
 	
 	private static void toScreen(Rectangle2D rect) 
