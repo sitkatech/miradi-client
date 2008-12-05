@@ -121,7 +121,10 @@ public class StandardReportPanel extends TwoColumnPanel
 	
 	private CodeList getFullReportCodeList()
 	{
-		return getContentQuestion().getAllCodes();
+		CodeList fullReportCodes = getContentQuestion().getAllCodes();
+		fullReportCodes.removeCode(ReportTemplateContentQuestion.TARGET_VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE);
+		
+		return fullReportCodes;
 	}
 	
 	private CodeList getSummaryCodeList()
