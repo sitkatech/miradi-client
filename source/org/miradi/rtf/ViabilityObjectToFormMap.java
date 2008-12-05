@@ -26,7 +26,6 @@ import org.miradi.forms.objects.ActivityPropertiesForm;
 import org.miradi.forms.objects.FundingSourcePropertiesForm;
 import org.miradi.forms.objects.GoalPropertiesForm;
 import org.miradi.forms.objects.IndicatorPropertiesForm;
-import org.miradi.forms.objects.ViabilityIndicatorPropertiesForm;
 import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
 import org.miradi.forms.objects.KeyEcologicalAttributePropertiesForm;
 import org.miradi.forms.objects.MeasurementPropertiesForm;
@@ -40,7 +39,8 @@ import org.miradi.forms.objects.TargetPropertiesForm;
 import org.miradi.forms.objects.TaskPropertiesForm;
 import org.miradi.forms.objects.ThreatPropertiesForm;
 import org.miradi.forms.objects.ThreatReductionResultPropertiesForm;
-import org.miradi.forms.summary.ProjectTabForm;
+import org.miradi.forms.objects.ViabilityIndicatorPropertiesForm;
+import org.miradi.forms.objects.ViabilityProjectForm;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -114,7 +114,7 @@ public class ViabilityObjectToFormMap
 			return new ResultsChainPropertiesForm();
 		
 		if (ProjectMetadata.is(objectType))
-			return new ProjectTabForm();
+			return new ViabilityProjectForm();
 
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
