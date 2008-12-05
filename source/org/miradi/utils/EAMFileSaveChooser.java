@@ -52,8 +52,8 @@ public abstract class EAMFileSaveChooser
 		}
 		
 		dlg.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		dlg.setApproveButtonToolTipText(EAM.text(getApproveButtonToolTipText()));
-		if (dlg.showDialog(mainWindow, EAM.text(getDialogApprovelButtonText())) != JFileChooser.APPROVE_OPTION)
+		dlg.setApproveButtonToolTipText(getApproveButtonToolTipText());
+		if (dlg.showDialog(mainWindow, getDialogApprovelButtonText()) != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		File chosen = dlg.getSelectedFile();
@@ -61,8 +61,8 @@ public abstract class EAMFileSaveChooser
 
 		if (chosen.exists())
 		{
-			String title = EAM.text(getDialogOverwriteTitleText());
-			String[] body = { EAM.text(getDialogOverwriteBodyText()) };
+			String title = getDialogOverwriteTitleText();
+			String[] body = { getDialogOverwriteBodyText() };
 			if (!EAM.confirmDialog(title, body))
 				return null;
 			chosen.delete();
