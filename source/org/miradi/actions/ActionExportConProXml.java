@@ -31,7 +31,7 @@ public class ActionExportConProXml extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Export|ConPro (CPMZ) File (BETA)");
+		return EAM.text("Action|Export|ConPro (CPMZ) File");
 	}
 
 	public String getToolTipText()
