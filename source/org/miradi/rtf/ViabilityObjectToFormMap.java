@@ -60,7 +60,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 
-public class ObjectToFormMap
+public class ViabilityObjectToFormMap
 {
 	public static PropertiesPanelSpec getForm(BaseObject baseObject)
 	{

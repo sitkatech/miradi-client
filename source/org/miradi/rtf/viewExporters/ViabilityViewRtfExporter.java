@@ -26,7 +26,7 @@ import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ReportTemplateContentQuestion;
-import org.miradi.rtf.ObjectToFormMap;
+import org.miradi.rtf.ViabilityObjectToFormMap;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
@@ -59,7 +59,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 				continue; 
 
 			int indentation = treeTableModelExporter.getDepth(row, FIRST_COLUMN_INDEX);
-			PropertiesPanelSpec form = ObjectToFormMap.getForm(baseObjectForRow);
+			PropertiesPanelSpec form = ViabilityObjectToFormMap.getForm(baseObjectForRow);
 			new RtfFormExporter(getProject(), writer, baseObjectForRow.getRef()).exportForm(form, indentation);
 		}
 	}
