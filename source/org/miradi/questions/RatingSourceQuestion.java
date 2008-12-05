@@ -34,7 +34,7 @@ public class RatingSourceQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("Not Specified")),
 			new ChoiceItem("RoughGuess", EAM.text("Rough Guess")),
-			new ChoiceItem("ExpertKnowlege", EAM.text("Expert Knowlege")),
+			new ChoiceItem("ExpertKnowlege", EAM.text("Expert Knowledge")),
 			new ChoiceItem("ExternalResearch", EAM.text("External Research")),
 			new ChoiceItem("OnsiteResearch", EAM.text("Onsite Research")),
 		};
