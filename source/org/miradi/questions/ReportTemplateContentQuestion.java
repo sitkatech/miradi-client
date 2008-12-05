@@ -63,7 +63,7 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 
 	public static String getTargetViabilityLabel()
 	{
-		return EAM.text("Target Viability");
+		return EAM.text("Viability - Table");
 	}
 
 	public static String getLegendTableLabel()
