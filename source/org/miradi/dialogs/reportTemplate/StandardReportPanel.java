@@ -64,7 +64,7 @@ public class StandardReportPanel extends TwoColumnPanel
 		addStandardReport(reports, ReportTemplateContentQuestion.DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE);
 		addStandardReport(reports, ReportTemplateContentQuestion.DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE);
 		addStandardReport(reports, ReportTemplateContentQuestion.THREAT_RATING_VIEW_CODE);
-		addStandardReport(reports, getViabilityCodeList(), EAM.text("Target Viability"));
+		addStandardReport(reports, ReportTemplateContentQuestion.TARGET_VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE);
 		addStandardReport(reports, ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE);
 		addStandardReport(reports, ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE);	
 		addStandardReport(reports, ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE);
@@ -140,11 +140,6 @@ public class StandardReportPanel extends TwoColumnPanel
 		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_FOS_TAB_CODE);
 		
 		return summaryCodes;
-	}
-
-	private CodeList getViabilityCodeList()
-	{
-		return new CodeList(new String[]{ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE, ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE, ReportTemplateContentQuestion.LEGEND_TABLE_REPORT_CODE} );
 	}
 
 	private ChoiceQuestion getContentQuestion()
