@@ -41,12 +41,12 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	@Override
 	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_CODE))
-		{
-			TreeTableModelExporter treeTableModelExporter = new TreeTableModelExporter(getProject(), createModel());
+		TreeTableModelExporter treeTableModelExporter = new TreeTableModelExporter(getProject(), createModel());
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE)) 
 			exportTable(writer, treeTableModelExporter, ReportTemplateContentQuestion.getTargetViabilityTableLabel());
+
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.VIABILITY_VIEW_VIABILITY_TAB_DETAILS_CODE))
 			exportFormsForRows(writer, treeTableModelExporter);	
-		}
 	}
 	
 	private void exportFormsForRows(RtfWriter writer, TreeTableModelExporter treeTableModelExporter) throws Exception
