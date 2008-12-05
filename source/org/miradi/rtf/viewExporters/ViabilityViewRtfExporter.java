@@ -62,6 +62,8 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 			PropertiesPanelSpec form = ViabilityObjectToFormMap.getForm(baseObjectForRow);
 			new RtfFormExporter(getProject(), writer, baseObjectForRow.getRef()).exportForm(form, indentation);
 		}
+		
+		writer.pageBreak();
 	}
 	
 	private ViabilityTreeModel createModel() throws Exception
