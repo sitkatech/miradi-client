@@ -61,6 +61,7 @@ public class RtfFormExporter
 	public void exportForm(PropertiesPanelSpec propertiesPanelSpec) throws Exception
 	{
 		exportForm(propertiesPanelSpec, 0);
+		writer.pageBreak();
 	}
 	
 	public void exportForm(PropertiesPanelSpec propertiesPanelSpec, int indentation) throws Exception
@@ -80,7 +81,7 @@ public class RtfFormExporter
 			exportForm(fieldPanelSpec, indentation);
 		}
 		
-		writer.pageBreak();
+		writer.newParagraph();
 	}
 
 	private void writeTitle(FieldPanelSpec fieldPanelSpec) throws Exception
