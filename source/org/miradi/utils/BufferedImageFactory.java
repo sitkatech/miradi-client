@@ -111,7 +111,7 @@ public  class BufferedImageFactory
 			return null;
 		
 		Rectangle bounds = new Rectangle(totalBoundsIgnoringVisibilityOfFactors.getBounds());
-		final Dimension size = bounds.getSize();
+		final Dimension size = new Dimension(bounds.x + bounds.width, bounds.y + bounds.height);
 		forceDiagramSize(diagram, size);
 		diagram.toScreen(bounds);
 		diagram.setToDefaultBackgroundColor();
