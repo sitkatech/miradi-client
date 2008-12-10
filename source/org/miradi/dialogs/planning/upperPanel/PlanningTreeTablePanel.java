@@ -130,7 +130,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		futureStatusScrollPane = integrateTable(masterScrollBar, scrollController, rowHeightController, selectionController, treeToUse, futureStatusTable);
 		
 		
-		JPanel treesPanel = new ShrinkToFitVerticallyHorizontalBox();
+		treesPanel = new ShrinkToFitVerticallyHorizontalBox();
 		treesPanel.add(treeTableScrollPane);
 		ScrollPaneWithHideableScrollBar treesScrollPane = new ScrollPaneWithHideableScrollBar(treesPanel);
 		treesScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -366,14 +366,18 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow);
 
 		JPanel reformatted = new JPanel(new BorderLayout());
-		reformatted.add(wholePanel.tree, BorderLayout.BEFORE_LINE_BEGINS);
+		wholePanel.treesPanel.disableShrinking();
+		wholePanel.tablesPanel.disableShrinking();
+		
+		reformatted.add(wholePanel.treesPanel, BorderLayout.BEFORE_LINE_BEGINS);
 		reformatted.add(wholePanel.tablesPanel, BorderLayout.CENTER);
 		
 		wholePanel.dispose();
 		return reformatted;
 	}
 
-	private JPanel tablesPanel;
+	private ShrinkToFitVerticallyHorizontalBox tablesPanel;
+	private ShrinkToFitVerticallyHorizontalBox treesPanel;
 	
 	private PlanningViewMainTableModel mainModel;
 	private PlanningViewMainTable mainTable;
