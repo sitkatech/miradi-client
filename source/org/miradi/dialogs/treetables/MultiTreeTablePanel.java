@@ -149,6 +149,23 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel
 		{
 			BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
 			setLayout(layout);
+			
+			enableShrinking();
+		}
+		
+		public void disableShrinking()
+		{
+			shouldShrink = false;
+		}
+		
+		public void enableShrinking()
+		{
+			shouldShrink = true;
+		}
+		
+		private boolean shouldShrink()
+		{
+			return shouldShrink;
 		}
 		
 		@Override
@@ -160,6 +177,9 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel
 		@Override
 		public Dimension getPreferredSize()
 		{
+			if (!shouldShrink())
+				return super.getPreferredSize();
+			
 			if(overriddenPreferredSize != null)
 				return overriddenPreferredSize;
 			
@@ -176,6 +196,7 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel
 		}
 		
 		private Dimension overriddenPreferredSize;
+		private boolean shouldShrink;
 	}
 
 	public static class ScrollPaneWithHideableScrollBar extends MiradiScrollPane
