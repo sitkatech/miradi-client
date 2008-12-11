@@ -300,7 +300,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:FundingSources", def);
 
 
-		def = Definition.createDefinitionFromTextString(EAM.text("ThreatReductionResult"), EAM.text("Threat Reduction Result - A factor in a results chain that describes the desired change in a direct threat that results from implementing one or more conservation strategies. In Miradi, at threat reduction result is represented by a purple rectangle."));
+		def = Definition.createDefinitionFromTextString(EAM.text("ThreatReductionResult"), EAM.text("Threat Reduction Result - A factor in a results chain that describes the desired change in a direct threat that results from implementing one or more conservation strategies. In Miradi, a threat reduction result is represented by a purple rectangle."));
 		defs.put("Definition:ThreatReductionResult", def);
 
 		def = Definition.createDefinitionFromTextString(EAM.text("IntermediateResult"), EAM.text("Intermediate Result - A factor in a results chain that describes a specific outcome that results from implementing one or more conservation strategies. In Miradi, an intermediate result is represented by a blue rectangle."));
