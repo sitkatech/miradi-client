@@ -144,7 +144,7 @@ public class DefinitionCommonTerms
 		
 
 		def = Definition.createDefinitionFromTextString(EAM.text("Monitoring Plan"), EAM.text("Monitoring Plan - A plan for collecting information that you and others " +
-		"need to know about your project. A good play includes " +
+		"need to know about your project. A good plan includes " +
 		"the indicators that you will track over time as well as " +
 		"the methods that you will use."));
 		defs.put("Definition:MonitoringPlan", def);
