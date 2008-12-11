@@ -115,6 +115,8 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		}
 	}
 
+	//FIXME this is duplicate method from ThreatRatingCommonPropertiesSubpanel, ProjectForTesting, ConProXmlImporter  this method seems to 
+	//belong in FactorLink
 	private String getCommentTagForMode()
 	{
 		if (getProject().isStressBaseMode())
