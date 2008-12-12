@@ -75,14 +75,22 @@ public class StandardReportPanel extends TwoColumnPanel
 	
 	private JComponent createHintPanel()
 	{	
-		String htmlFormatting = "<div class='DataPanel'><span class='hint'>";
+		String htmlFormatting = "<div class='DataPanel'>";
 		String text = htmlFormatting + EAM.text("Select the report that you want to run. " +
 				"Miradi will then prompt you to save the report as a Rich Text Format (RTF) file. " +
 				"Once you have created this file, " +
-				"you can edit or print it using a word processing program such as MS Word or Open Office Writer. <br></br><br></br>" +
+				"you can edit or print it using a word processing program such as MS Word or Open Office Writer. " +
+				"<br></br><br></br>" +
 				"Note that if you edit the report in your word processor, " +
 				"your changes will not be maintained the next time you generate a report. " +
-				"As a result, try to make the edits in the appropriate Miradi fields where possible.");
+				"As a result, try to make the edits in the appropriate Miradi fields where possible." +
+				"<br></br><br></br>" +
+				"<span class='hint'>" +
+				"<b>Hint:</B> If you want to export a customized table, do not use report view. " +
+				"Instead, in any view, configure the table and then use the " +
+				"<code class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;As.../ RTF&nbsp;File&gt;</code> " +
+				"menu command from within that view." +
+				"</span>");
 		MiradiHtmlViewer helpfulText = new MiradiHtmlViewer(getMainWindow(), new DefaultHyperlinkHandler(getMainWindow()));
 		helpfulText.setTextWithoutScrollingToMakeFieldVisible(text);
 		int arbitraryWidth = 500;
