@@ -177,6 +177,8 @@ public class ProjectResource extends BaseObject
 		Vector<ProjectResource> sortedProjectResources = new Vector();
 		for(ORef projectResourceRef : resourceRefs)
 		{
+			if(projectResourceRef.isInvalid())
+				continue;
 			ProjectResource projectResource = ProjectResource.find(project, projectResourceRef);
 			sortedProjectResources.add(projectResource);
 		}
