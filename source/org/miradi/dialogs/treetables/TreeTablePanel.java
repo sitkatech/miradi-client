@@ -213,6 +213,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		
 		CommandSetObjectData command = (CommandSetObjectData)event.getCommand();
 		String tag = command.getFieldTag();
+		//FIXME  we need to also check for other IDs as well, since for example, id in Factor is
+		//ShortLabel
 		if(tag.equals(BaseObject.TAG_ID) || tag.equals(BaseObject.TAG_LABEL))
 			return true;
 		return false;
