@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.project.FactorDeleteHelper;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramCopyPaster;
 
@@ -68,13 +69,20 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
-		{
+		{	
+			ORef selectedFactorRefToPasteContentInto = getSingleSelectedFactor().getWrappedFactorRef();
+			Factor selectedFactorToPasteContentInto = Factor.findFactor(getProject(), selectedFactorRefToPasteContentInto);
+			
 			DiagramCopyPaster paster = new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), getTransferableMiradiList());
 			paster.pasteFactors(getLocation());
 			
+			FactorDeleteHelper factorDeleteHelper = new FactorDeleteHelper(getDiagramPanel().getCurrentDiagramComponent());
+			factorDeleteHelper.deleteAnnotations(selectedFactorToPasteContentInto);
+			Vector<Command> commandsToClear = new Vector(selectedFactorToPasteContentInto.createCommandsToClearAsList());
+			getProject().executeCommandsWithoutTransaction(commandsToClear);
+			
 			DiagramFactor newlyPastedDiagramFactor = getNewlyPastedFactor(paster);
-			ORef selectedFactorRef = getSingleSelectedFactor().getWrappedFactorRef();
-			Vector<Command> commands = buildCommandsToFill(selectedFactorRef, newlyPastedDiagramFactor.getWrappedFactor());
+			Vector<Command> commands = buildCommandsToFill(selectedFactorRefToPasteContentInto, newlyPastedDiagramFactor.getWrappedFactor());
 			getProject().executeCommandsWithoutTransaction(commands);
 			
 			shallowDeleteDiagramFactorAndUnderlyingFactor(newlyPastedDiagramFactor);
@@ -170,8 +178,9 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		Vector<String> allTags = newlyPastedFactor.getStoredFieldTags();
 		for (int tagIndex = 0; tagIndex < allTags.size(); ++tagIndex)
 		{			
-			String dataToTransfer = newlyPastedFactor.getData(allTags.get(tagIndex));
-			commands.add(new CommandSetObjectData(selectedFactorRef, allTags.get(tagIndex), dataToTransfer));
+			String tag = allTags.get(tagIndex);
+			String dataToTransfer = newlyPastedFactor.getData(tag);
+			commands.add(new CommandSetObjectData(selectedFactorRef, tag, dataToTransfer));
 		}
 		
 		return commands;
