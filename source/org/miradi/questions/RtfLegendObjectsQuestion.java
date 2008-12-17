@@ -66,46 +66,25 @@ public class RtfLegendObjectsQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getAllChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(ProjectMetadata.OBJECT_NAME, PROJECT_LABEL, new MiradiApplicationIcon()),
-				new ChoiceItem(ConceptualModelDiagram.OBJECT_NAME, CONCEPTUAL_MODEL_LABEL, new ConceptualModelIcon()),
-				new ChoiceItem(ResultsChainDiagram.OBJECT_NAME, RESULTS_CHAIN_LABEL, new ResultsChainIcon()),
-				new ChoiceItem(Target.OBJECT_NAME, TARGET_LABEL, new TargetIcon()),
-				new ChoiceItem(Cause.OBJECT_NAME_THREAT, DIRECT_THREAT_LABEL, new DirectThreatIcon()),
-				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, CONTRIBUTING_FACTOR_LABEL, new ContributingFactorIcon()),
-				new ChoiceItem(IntermediateResult.OBJECT_NAME, INTERMEDIATE_RESULT_LABEL, new IntermediateResultIcon()),
-				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, THREAT_REDUCTION_RESULT_LABEL, new ThreatReductionResultIcon()),
-				new ChoiceItem(Strategy.OBJECT_NAME, STRATEGY_LABEL, new StrategyIcon()),
-				new ChoiceItem(Goal.OBJECT_NAME, GOAL_LABEL, new GoalIcon()),
-				new ChoiceItem(Objective.OBJECT_NAME, OBJECTIVE_LABEL, new ObjectiveIcon()),
-				new ChoiceItem(Indicator.OBJECT_NAME, INDICATOR_LABEL, new IndicatorIcon()),
-				new ChoiceItem(Stress.OBJECT_NAME, STRESS_LABEL, new StressIcon()),
-				new ChoiceItem(TextBox.OBJECT_NAME, TEXT_BOX_LABEL, new TextBoxIcon()),
-				new ChoiceItem(GroupBox.OBJECT_NAME, GROUP_BOX, new GroupBoxIcon()),
-				new ChoiceItem(Task.OBJECT_NAME, TASK_LABEL, new TaskIcon()),
-				new ChoiceItem(Task.METHOD_NAME, METHOD_LABEL, new MethodIcon()),
-				new ChoiceItem(Task.ACTIVITY_NAME, ACTIVITY_LABEL, new ActivityIcon()),
-				new ChoiceItem(Measurement.OBJECT_NAME, MEASUREMENT_ICON, new MeasurementIcon()),
+				new ChoiceItem(ProjectMetadata.OBJECT_NAME, EAM.text("Project"), new MiradiApplicationIcon()),
+				new ChoiceItem(ConceptualModelDiagram.OBJECT_NAME, EAM.text("Conceptual Model"), new ConceptualModelIcon()),
+				new ChoiceItem(ResultsChainDiagram.OBJECT_NAME, EAM.text("Results Chain"), new ResultsChainIcon()),
+				new ChoiceItem(Target.OBJECT_NAME, EAM.text("Target"), new TargetIcon()),
+				new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threat"), new DirectThreatIcon()),
+				new ChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, EAM.text("Contributing Factor"), new ContributingFactorIcon()),
+				new ChoiceItem(IntermediateResult.OBJECT_NAME, EAM.text("Intermediate Result"), new IntermediateResultIcon()),
+				new ChoiceItem(ThreatReductionResult.OBJECT_NAME, EAM.text("Threat Reduction Result"), new ThreatReductionResultIcon()),
+				new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategy"), new StrategyIcon()),
+				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goal"), new GoalIcon()),
+				new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objective"), new ObjectiveIcon()),
+				new ChoiceItem(Indicator.OBJECT_NAME, EAM.text("Indicator"), new IndicatorIcon()),
+				new ChoiceItem(Stress.OBJECT_NAME, EAM.text("Stress"), new StressIcon()),
+				new ChoiceItem(TextBox.OBJECT_NAME, EAM.text("Text Box"), new TextBoxIcon()),
+				new ChoiceItem(GroupBox.OBJECT_NAME, EAM.text("Group Box"), new GroupBoxIcon()),
+				new ChoiceItem(Task.OBJECT_NAME, EAM.text("Task"), new TaskIcon()),
+				new ChoiceItem(Task.METHOD_NAME, EAM.text("Method"), new MethodIcon()),
+				new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activity"), new ActivityIcon()),
+				new ChoiceItem(Measurement.OBJECT_NAME, EAM.text("Measurement"), new MeasurementIcon()),
 		};
 	}
-	
-	public static final String PROJECT_LABEL = EAM.text("Project");
-	public static final String CONCEPTUAL_MODEL_LABEL = EAM.text("Conceptual Model");
-	public static final String RESULTS_CHAIN_LABEL = EAM.text("Results Chain");
-	public static final String DIRECT_THREAT_LABEL = EAM.text("Direct Threat");
-	public static final String CONTRIBUTING_FACTOR_LABEL = EAM.text("Contributing Factor");
-	public static final String TARGET_LABEL = EAM.text("Target");
-	public static final String INTERMEDIATE_RESULT_LABEL = EAM.text("Intermediate Result");
-	public static final String THREAT_REDUCTION_RESULT_LABEL = EAM.text("Threat Reduction Result");
-	public static final String STRATEGY_LABEL = EAM.text("Strategy");
-	public static final String GOAL_LABEL = EAM.text("Goal");
-	public static final String OBJECTIVE_LABEL = EAM.text("Objective");
-	public static final String INDICATOR_LABEL = EAM.text("Indicator");
-	public static final String STRESS_LABEL = EAM.text("Stress");
-	public static final String TEXT_BOX_LABEL = EAM.text("Text Box");
-	public static final String GROUP_BOX = EAM.text("Group Box");
-	public static final String TASK_LABEL = EAM.text("Task");
-	public static final String METHOD_LABEL = EAM.text("Method");
-	public static final String ACTIVITY_LABEL = EAM.text("Activity");
-	
-	public static final String MEASUREMENT_ICON = "Measurement";
 }
