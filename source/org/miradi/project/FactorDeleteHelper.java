@@ -206,7 +206,7 @@ public class FactorDeleteHelper
 		getProject().executeCommand(new CommandDeleteObject(factorToDelete.getType(), factorToDelete.getFactorId()));
 	}
 	
-	private void deleteAnnotations(Factor factorToDelete) throws Exception
+	public void deleteAnnotations(Factor factorToDelete) throws Exception
 	{
 		deleteAnnotationIds(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
 		deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
