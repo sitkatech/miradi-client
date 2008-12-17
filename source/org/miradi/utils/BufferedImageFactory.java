@@ -109,8 +109,14 @@ public  class BufferedImageFactory
 		Rectangle totalBoundsIgnoringVisibilityOfFactors = diagram.getDiagramObject().getBoundsOfFactorsAndBendPoints();
 		if (totalBoundsIgnoringVisibilityOfFactors == null)
 			return null;
-		
+
 		Rectangle bounds = new Rectangle(totalBoundsIgnoringVisibilityOfFactors.getBounds());
+
+		//FIXME: This is a quick hack for the 2.3 release (but maybe not a bad one)
+		final Rectangle2D scopeBounds = diagram.getDiagramModel().getProjectScopeBox().getBounds();
+		if(scopeBounds != null)
+			Rectangle.union(bounds, scopeBounds, bounds);
+
 		//FIXME: At a minimum, rename methods and variables to be clear about scaled vs. unscaled
 		final double scale = diagram.getScale();
 		bounds.x *= scale;
