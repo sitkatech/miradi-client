@@ -29,15 +29,20 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
-import org.miradi.views.ViewDoer;
+import org.miradi.views.ObjectsDoer;
 
-public class CreateActivityDoer extends ViewDoer
+public class CreateActivityDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		return true;
+		BaseObject selectedParent = getSelectedParent();
+		if (selectedParent == null)
+			return false;
+			
+		return Strategy.is(selectedParent);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -50,7 +55,7 @@ public class CreateActivityDoer extends ViewDoer
 		if(!isAvailable())
 			return;
 
-		Strategy strategy = (Strategy)getView().getSelectedObject();
+		Strategy strategy = (Strategy) getSelectedParent();
 
 		try
 		{

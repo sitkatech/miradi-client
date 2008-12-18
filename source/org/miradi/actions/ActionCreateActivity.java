@@ -23,7 +23,7 @@ import org.miradi.icons.ActivityIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateActivity extends MainWindowAction
+public class ActionCreateActivity extends ObjectsAction
 {
 	public ActionCreateActivity(MainWindow mainWindowToUse)
 	{

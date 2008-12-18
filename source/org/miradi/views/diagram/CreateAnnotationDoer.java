@@ -30,9 +30,7 @@ import org.miradi.dialogs.base.ObjectTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -116,26 +114,6 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 	protected BaseObject getAnnotationToClone()
 	{
 		return objectToClone;
-	}
-	
-	public BaseObject getSelectedParent()
-	{		
-		for (int refListIndex = 0; refListIndex < getSelectedHierarchies().length; ++refListIndex)
-		{
-			ORefList selectedHierarchyRefs =  getSelectedHierarchies()[refListIndex];
-			for (int refIndex = 0; refIndex <  selectedHierarchyRefs.size(); ++refIndex)
-			{
-				if (selectedHierarchyRefs.get(refIndex) != null && Factor.isFactor(selectedHierarchyRefs.get(refIndex)))
-				{
-					Factor factor = (Factor) getProject().findObject(selectedHierarchyRefs.get(refIndex));
-					//FIXME this is a hack,  we need to exclude factors that are not parents
-					if (!factor.isStress())
-						return factor;
-				}
-			}
-		}
-		
-		return null;
 	}
 	
 	protected boolean validUserChoiceForObjectToClone(ObjectTablePanel tablePanel, String panelText) throws CommandFailedException
