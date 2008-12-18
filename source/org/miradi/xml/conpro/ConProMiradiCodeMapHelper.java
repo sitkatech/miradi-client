@@ -25,6 +25,7 @@ import java.util.Set;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 
@@ -73,6 +74,10 @@ public class ConProMiradiCodeMapHelper
 		viabilityModeMap = new HashMap<String, String>();
 		viabilityModeMap.put(ViabilityModeQuestion.SIMPLE_MODE_CODE, CONPRO_TARGET_SIMPLE_MODE_VALUE);
 		viabilityModeMap.put(ViabilityModeQuestion.TNC_STYLE_CODE, "kea");
+		
+		tncProjectSharingMap = new HashMap<String, String>();
+		tncProjectSharingMap.put(TncProjectSharingQuestion.NO_CODE, "false");
+		tncProjectSharingMap.put(TncProjectSharingQuestion.YES_CODE, "true");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -117,6 +122,11 @@ public class ConProMiradiCodeMapHelper
 	public HashMap<String, String> getConProToMiradiViabilityModeMap()
 	{
 		return reverseMap(viabilityModeMap);
+	}
+	
+	public HashMap<String, String> getConProToMiradiTncProjectSharingMap()
+	{
+		return reverseMap(tncProjectSharingMap);
 	}
 	
 	public static HashMap<String, String> reverseMap(HashMap<String, String> map)
@@ -167,6 +177,11 @@ public class ConProMiradiCodeMapHelper
 		return viabilityModeMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProTncProjectSharingMap()
+	{
+		return tncProjectSharingMap;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
@@ -174,6 +189,7 @@ public class ConProMiradiCodeMapHelper
 	private HashMap<String, String> keaTypeMap;
 	private HashMap<String, String> statusConfidenceMap;
 	private HashMap<String, String> viabilityModeMap;
+	private HashMap<String, String> tncProjectSharingMap;
 	
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_MAJOR_ISSUES_VALUE = "Major Issues";

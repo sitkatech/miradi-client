@@ -68,14 +68,18 @@ public class TncProjectData extends BaseObject
 		super.clear();
 		
 		organizationalPriority = new StringData(TAG_ORGANIZATIONAL_PRIORITY);
+		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
 		
 		addField(organizationalPriority);
+		addField(projectSharingCode);
 	}
 	
 	public static final String OBJECT_NAME = "TncProjectData";
 
 	public final static String TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriority";
+	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
 	
 	public StringData organizationalPriority;
+	public StringData projectSharingCode;
 
 }

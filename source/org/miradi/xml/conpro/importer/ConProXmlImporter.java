@@ -79,6 +79,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
@@ -468,6 +469,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		ORef metadataRef = getProject().getMetadata().getRef();
 		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
+		
+		String tncProjectSharingXmlValue = getAttributeValue(projectSumaryNode, SHARE_OUTSIDE_ORGANIZATION);
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		importCodeField(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, getCodeMapHelper().getConProToMiradiTncProjectSharingMap(), tncProjectSharingXmlValue);
 		
 		importField(projectSumaryNode, NAME, metadataRef,ProjectMetadata.TAG_PROJECT_NAME);
 		importProjectId(projectSumaryNode, metadataRef);
