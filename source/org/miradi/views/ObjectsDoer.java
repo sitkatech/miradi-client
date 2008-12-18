@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class ObjectsDoer extends ViewDoer
@@ -130,6 +131,26 @@ abstract public class ObjectsDoer extends ViewDoer
 		return selected.getRef();
 	}
 	
+	public BaseObject getSelectedParent()
+	{		
+		for (int refListIndex = 0; refListIndex < getSelectedHierarchies().length; ++refListIndex)
+		{
+			ORefList selectedHierarchyRefs =  getSelectedHierarchies()[refListIndex];
+			for (int refIndex = 0; refIndex <  selectedHierarchyRefs.size(); ++refIndex)
+			{
+				if (selectedHierarchyRefs.get(refIndex) != null && Factor.isFactor(selectedHierarchyRefs.get(refIndex)))
+				{
+					Factor factor = (Factor) getProject().findObject(selectedHierarchyRefs.get(refIndex));
+					//FIXME this is a hack,  we need to exclude factors that are not parents
+					if (!factor.isStress() && !factor.isActivity())
+						return factor;
+				}
+			}
+		}
+		
+		return null;
+	}
+		
 	public void clearSelection()
 	{
 		picker.clearSelection();

@@ -1034,24 +1034,16 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if(isRelatedActivitySelected())
 			return;
 		
-		if(isCellVisibilityChange())
-			return;
-		
-		FactorCell selectedNode = getCurrentDiagramComponent().getSingleSelectedFactor();
-		if(selectedNode == null || !selectedNode.getDiagramFactorRef().equals(nodePropertiesPanel.getCurrentDiagramFactor().getRef()))
+		if(wasAnotherFactorSelected())
 			disposeOfNodePropertiesDialog();
 	}
-	
-	private boolean isCellVisibilityChange()
+
+	private boolean wasAnotherFactorSelected()
 	{
 		FactorCell selectedNode = getCurrentDiagramComponent().getSingleSelectedFactor();
-		boolean selectionWasLostDueToCellBecomingInvisible = selectedNode == null;
-		if(selectionWasLostDueToCellBecomingInvisible)
-			return true;
-			
-		boolean cellWasMadeVisible = getCurrentDiagramComponent().isCellVisible(selectedNode);
-		
-		return cellWasMadeVisible;
+		ORef factorRefForPropertiesDialog = nodePropertiesPanel.getCurrentDiagramFactor().getRef();
+
+		return (selectedNode != null && !selectedNode.getDiagramFactorRef().equals(factorRefForPropertiesDialog));
 	}
 
 	public boolean isRelatedStressSelected()
