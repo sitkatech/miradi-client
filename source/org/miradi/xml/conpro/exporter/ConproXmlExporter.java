@@ -59,6 +59,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
@@ -694,7 +695,9 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeoutProjectSummaryElement(UnicodeWriter out) throws Exception
 	{
-		out.writeln("<" + PROJECT_SUMMARY + " " + SHARE_OUTSIDE_ORGANIZATION + "='false'>");
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		String tncProjectSharingCode = getProject().getObjectData(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE);
+		out.writeln("<" + PROJECT_SUMMARY + " " + SHARE_OUTSIDE_ORGANIZATION + "='" + tncProjectSharingToXmlValue(tncProjectSharingCode) + "'>");
 	
 			writeProjectId(out);
 			
@@ -982,6 +985,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	{
 		HashMap<String, String> statusConfidenceMap = getCodeMapHelper().getMiradiToConProStatusConfidenceMap();
 		return getCodeMapHelper().getSafeXmlCode(statusConfidenceMap, code);
+	}
+	
+	private String tncProjectSharingToXmlValue(String code)
+	{
+		HashMap<String, String> tncProjectSharingMap = getCodeMapHelper().getMiradiToConProTncProjectSharingMap();
+		return getCodeMapHelper().getSafeXmlCode(tncProjectSharingMap, code);
 	}
 	
 	private String keyEcologicalAttributeTypeToXmlValue(String type)

@@ -82,6 +82,7 @@ public class QuestionManager
 		addQuestion(new TableRowHeightModeQuestion());
 		addQuestion(new ReportTemplateContentQuestion());
 		addQuestion(new RtfLegendObjectsQuestion());
+		addQuestion(new TncProjectSharingQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

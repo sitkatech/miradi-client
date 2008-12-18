@@ -24,6 +24,7 @@ import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -86,6 +87,25 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		return super.addField(field);
 	}
 	
+	public ObjectDataInputField addRawFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] components)
+	{
+		super.addField(field);
+		
+		Box box = Box.createHorizontalBox();
+		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		box.add(Box.createHorizontalStrut(20));
+		box.add(new PanelTitleLabel(customLabel));
+		for(JComponent component : components)
+		{
+			box.add(component);	
+		}
+		
+		addLabel(field.getObjectType(), field.getTag());
+		addFieldComponent(box);
+		
+		return field;
+	}
+
 	public ObjectDataInputField addField(ObjectDataInputField field)
 	{
 		super.addField(field);
