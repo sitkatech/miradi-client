@@ -50,5 +50,5 @@ public class FactorPropertiesDialog extends ModelessDialogWithDirections
 		return selectedComponent.getJumpActionClass();
 	}
 	
-	FactorPropertiesPanel factorPanel;
+	private FactorPropertiesPanel factorPanel;
 }
