@@ -315,55 +315,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
 
-	private ORefList extractDirectThreatRefs(Factor[] factors)
-	{
-		ORefSet upstreamDirectThreatRefs = new ORefSet();
-		for(int i = 0; i < factors.length; ++i)
-		{
-			Factor factor = factors[i];
-			if(!factor.isDirectThreat())
-				continue;
-			
-			upstreamDirectThreatRefs.add(factor.getRef());
-		}
-		
-		// FIXME: method needs to return refset
-		return upstreamDirectThreatRefs.toRefList();
-	}
-
-	private ORefList extractThreatReductionResultRefs(Factor[] factors)
-	{
-		ORefSet upstreamThreatReductionResultRefs = new ORefSet();
-		for(int i = 0; i < factors.length; ++i)
-		{
-			Factor factor = factors[i];
-			if(!factor.isThreatReductionResult())
-				continue;
-			
-			upstreamThreatReductionResultRefs.add(factor.getRef());
-		}
-		
-		// FIXME: method needs to return refset	
-		return upstreamThreatReductionResultRefs.toRefList();
-	}
-
-	private ORefSet extractIntermediateResultsRefs(Factor[] factors)
-	{
-		return extractType(factors, IntermediateResult.getObjectType());
-	}
-	
-	private ORefSet extractType(Factor[] factors, int typeToExtract)
-	{
-		ORefSet extractedRefs = new ORefSet();
-		for(int i = 0; i < factors.length; ++i)
-		{
-			Factor factor = factors[i];
-			if(factor.getType() == typeToExtract)
-				extractedRefs.add(factor.getRef());
-		}
-		return extractedRefs;
-	}
-	
 	protected ORefList extractNonDraftStrategyRefs(Factor[] factors)
 	{
 		ORefSet upstreamStrategyRefs = new ORefSet();
@@ -395,51 +346,6 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		
 		// FIXME: method needs to return refset
 		return potentialChildIndicatorRefs.toRefList();
-	}
-
-	private ORefList extractObjectiveRefs(Factor[] upstreamFactors)
-	{
-		ORefSet potentialChildObjectiveRefs = new ORefSet();
-		for(int i = 0; i < upstreamFactors.length; ++i)
-		{
-			Factor factor = upstreamFactors[i];
-			ORefList objectiveRefs = new ORefList(Objective.getObjectType(), factor.getObjectiveIds());
-			potentialChildObjectiveRefs.addAll(new ORefSet(objectiveRefs));
-		}
-		
-		// FIXME: method needs to return refset
-		return potentialChildObjectiveRefs.toRefList();
-	}
-
-	protected void addMissingUpstreamObjectives(DiagramObject diagram) throws Exception
-	{
-		addMissingChildren(extractObjectiveRefs(getObject().getUpstreamFactors(diagram)), diagram);
-	}
-
-	protected void addMissingUpstreamDirectThreats(DiagramObject diagram) throws Exception
-	{
-		addMissingChildren(extractDirectThreatRefs(getObject().getUpstreamFactors(diagram)), diagram);
-	}
-
-	protected void addMissingUpstreamThreatReductionResults(DiagramObject diagram) throws Exception
-	{
-		addMissingChildren(extractThreatReductionResultRefs(getObject().getUpstreamFactors(diagram)), diagram);
-	}
-	
-	protected void addMissingUpstreamIntermediateResults(DiagramObject diagram) throws Exception
-	{
-		ORefSet intermediateResultsRefSet = extractIntermediateResultsRefs(getObject().getUpstreamFactors(diagram));
-		addMissingChildren(intermediateResultsRefSet.toRefList(), diagram);
-	}
-
-	protected void addMissingUpstreamNonDraftStrategies(DiagramObject diagram) throws Exception
-	{
-		addMissingChildren(extractNonDraftStrategyRefs(getObject().getUpstreamFactors(diagram)), diagram);
-	}
-
-	protected void addMissingUpstreamIndicators(DiagramObject diagram) throws Exception
-	{
-		addMissingChildren(extractIndicatorRefs(getObject().getUpstreamFactors(diagram)), diagram);
 	}
 
 	protected Project project;
