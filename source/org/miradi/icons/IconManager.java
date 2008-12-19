@@ -21,6 +21,7 @@ package org.miradi.icons;
 
 import javax.swing.Icon;
 
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
@@ -74,6 +75,9 @@ public class IconManager
 		
 		if (ResultsChainDiagram.is(type))
 			return getResultsChainIcon();
+		
+		if (Assignment.is(type))
+			return new AssignmentIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
