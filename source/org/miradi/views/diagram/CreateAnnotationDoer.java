@@ -38,7 +38,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 {	
 	public boolean isAvailable()
 	{
-		return (getSelectedParent() != null);
+		return (getSelectedParentFactor() != null);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -46,7 +46,7 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 		
-		BaseObject parent = getSelectedParent();
+		BaseObject parent = getSelectedParentFactor();
 		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try

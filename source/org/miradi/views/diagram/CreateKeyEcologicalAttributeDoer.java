@@ -31,7 +31,7 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 		if (!super.isAvailable())
 			return false;
 		
-		BaseObject selectedParent = getSelectedParent();
+		BaseObject selectedParent = getSelectedParentFactor();
 		if (!Factor.isFactor(selectedParent.getRef()))
 			return false;
 		
