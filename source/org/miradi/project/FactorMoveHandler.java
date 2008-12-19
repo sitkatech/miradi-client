@@ -241,7 +241,7 @@ public class FactorMoveHandler
 			currentLocation.translate(deltaX, deltaY);
 			Point snappedLocation = getProject().getSnapped(currentLocation);
 			String snappedLocationAsJson = EnhancedJsonObject.convertFromPoint(snappedLocation);
-			//FIXME DO not use new DiagramFactorId(ref.asInt);
+			groupChildRef.ensureType(DiagramFactor.getObjectType());
 			commandsToMove.add(new CommandSetObjectData(DiagramFactor.getObjectType(), new DiagramFactorId(groupChildRef.getObjectId().asInt()), DiagramFactor.TAG_LOCATION, snappedLocationAsJson));
 		}
 				
