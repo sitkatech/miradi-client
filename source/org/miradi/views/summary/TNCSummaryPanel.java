@@ -51,8 +51,8 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		
 		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(TncProjectSharingQuestion.class);
 		RadioButtonsField projectSharingField = createRadioButtonsField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion);
-		JComponent noRadioButton = projectSharingField.getComponent(tncProjectSharingQuestion.findIndexByCode(TncProjectSharingQuestion.NO_CODE));
-		JComponent yesRadioButton = projectSharingField.getComponent(tncProjectSharingQuestion.findIndexByCode(TncProjectSharingQuestion.YES_CODE));
+		JComponent noRadioButton = projectSharingField.getComponent(tncProjectSharingQuestion.findIndexByCode(TncProjectSharingQuestion.SHARE_TNC_ONLY));
+		JComponent yesRadioButton = projectSharingField.getComponent(tncProjectSharingQuestion.findIndexByCode(TncProjectSharingQuestion.SHARE_WITH_ANYONE));
 		addRawFieldWithCustomLabel(projectSharingField, EAM.text("Share Outside of TNC?"), new JComponent[]{noRadioButton, yesRadioButton, });
 		
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
