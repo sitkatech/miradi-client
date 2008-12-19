@@ -33,7 +33,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.ObjectTableExporter;
+import org.miradi.utils.ObjectTableModelExporter;
 
 public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
@@ -78,12 +78,17 @@ public class ResourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return new ObjectTableExporter(createTable());
+		return new ObjectTableModelExporter(createTableModel());
 	}
 
 	private ResourcePoolTable createTable()
 	{
-		return new ResourcePoolTable(getMainWindow(), new ResourcePoolTableModel(getProject()));
+		return new ResourcePoolTable(getMainWindow(), createTableModel());
+	}
+
+	private ResourcePoolTableModel createTableModel()
+	{
+		return new ResourcePoolTableModel(getProject());
 	}
 	
 	@Override

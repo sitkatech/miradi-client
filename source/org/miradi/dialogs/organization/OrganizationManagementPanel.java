@@ -29,7 +29,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.ObjectTableExporter;
+import org.miradi.utils.ObjectTableModelExporter;
 
 public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 {
@@ -57,12 +57,17 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return new ObjectTableExporter(createTable());
+		return new ObjectTableModelExporter(createTableModel());
 	}
 
 	private OrganizationPoolTable createTable()
 	{
-		return new OrganizationPoolTable(getMainWindow(), new OrganizationPoolTableModel(getProject()));
+		return new OrganizationPoolTable(getMainWindow(), createTableModel());
+	}
+
+	private OrganizationPoolTableModel createTableModel()
+	{
+		return new OrganizationPoolTableModel(getProject());
 	}
 	
 	@Override
