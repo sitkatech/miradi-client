@@ -317,6 +317,9 @@ abstract public class BaseObject
 			case ObjectType.TAGGED_OBJECT_SET:
 				return new TaggedObjectSet(objectManager, idAsInt, json);
 				
+			case ObjectType.TABLE_SETTINGS:
+				return new TableSettings(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
