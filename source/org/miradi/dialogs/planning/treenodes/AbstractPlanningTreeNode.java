@@ -319,7 +319,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
 
-	protected ORefList extractNonDraftStrategyRefs(Factor[] factors)
+	protected ORefSet extractNonDraftStrategyRefs(Factor[] factors)
 	{
 		ORefSet upstreamStrategyRefs = new ORefSet();
 		for(int i = 0; i < factors.length; ++i)
@@ -334,11 +334,10 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			upstreamStrategyRefs.add(factor.getRef());
 		}
 		
-		// FIXME: method needs to return refset
-		return upstreamStrategyRefs.toRefList();
+		return upstreamStrategyRefs;
 	}
 
-	protected ORefList extractIndicatorRefs(Factor[] upstreamFactors)
+	protected ORefSet extractIndicatorRefs(Factor[] upstreamFactors)
 	{
 		ORefSet potentialChildIndicatorRefs = new ORefSet();
 		for(int i = 0; i < upstreamFactors.length; ++i)
@@ -348,8 +347,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			potentialChildIndicatorRefs.addAll(new ORefSet(indicatorRefs));
 		}
 		
-		// FIXME: method needs to return refset
-		return potentialChildIndicatorRefs.toRefList();
+		return potentialChildIndicatorRefs;
 	}
 
 	protected Project project;
