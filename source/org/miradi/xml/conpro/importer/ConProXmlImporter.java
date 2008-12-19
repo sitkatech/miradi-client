@@ -614,20 +614,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importThreatRatingField(threatTargetAssociationNode, THREAT_IRREVERSIBILITY, framework, bundle, ThreatStressRating.TAG_IRREVERSIBILITY);			
 			framework.saveBundle(bundle);
 			
-			importField(threatTargetAssociationNode, THREAT_TARGET_COMMENT, factorLinkRef, getCommentTagForMode());
+			importField(threatTargetAssociationNode, THREAT_TARGET_COMMENT, factorLinkRef, FactorLink.getCommentTagForMode(getProject()));
 		}
 	}
 	
-	//FIXME this is duplicate method from ThreatRatingCommonPropertiesSubpanel, ProjectForTesting, ConProXmlImporter  this method seems to 
-	//belong in FactorLink
-	private String getCommentTagForMode()
-	{
-		if (getProject().isStressBaseMode())
-			return FactorLink.TAG_COMMENT;
-		
-		return FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT;
-	}
-
 	private void importThreatRatingField(Node threatTargetAssociationNode, String element, SimpleThreatRatingFramework framework, ThreatRatingBundle bundle, String criterionLabel) throws Exception
 	{
 		String rawCode = getNodeContent(threatTargetAssociationNode, element);
