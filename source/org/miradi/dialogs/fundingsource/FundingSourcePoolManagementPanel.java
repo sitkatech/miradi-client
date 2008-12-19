@@ -33,7 +33,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.ObjectTableExporter;
+import org.miradi.utils.ObjectTableModelExporter;
 
 public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 {
@@ -69,7 +69,12 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 
 	private FundingSourcePoolTable createTable()
 	{
-		return new FundingSourcePoolTable(getMainWindow(), new FundingSourcePoolTableModel(getProject()));
+		return new FundingSourcePoolTable(getMainWindow(), createTableModel());
+	}
+
+	private FundingSourcePoolTableModel createTableModel()
+	{
+		return new FundingSourcePoolTableModel(getProject());
 	}
 	
 	@Override
@@ -81,7 +86,7 @@ public class FundingSourcePoolManagementPanel extends ObjectPoolManagementPanel
 	@Override
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return new ObjectTableExporter(createTable());
+		return new ObjectTableModelExporter(createTableModel());
 	}
 	
 	@Override

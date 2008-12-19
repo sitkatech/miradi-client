@@ -33,7 +33,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.ObjectTableExporter;
+import org.miradi.utils.ObjectTableModelExporter;
 
 public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 {
@@ -75,12 +75,17 @@ public class AccountingCodePoolManagementPanel extends ObjectPoolManagementPanel
 	
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return new ObjectTableExporter(createTable());
+		return new ObjectTableModelExporter(createTableModel());
 	}
 	
 	private AccountingCodePoolTable createTable()
 	{
-		return new AccountingCodePoolTable(getMainWindow(), new AccountingCodePoolTableModel(getProject()));
+		return new AccountingCodePoolTable(getMainWindow(), createTableModel());
+	}
+
+	private AccountingCodePoolTableModel createTableModel()
+	{
+		return new AccountingCodePoolTableModel(getProject());
 	}
 	
 	@Override
