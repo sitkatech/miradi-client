@@ -141,7 +141,7 @@ abstract public class ObjectsDoer extends ViewDoer
 				ORef factorRef = selectedHierarchyRefs.get(refIndex);
 				if (Factor.isFactor(factorRef))
 				{
-					Factor factor = (Factor) getProject().findObject(factorRef);
+					Factor factor = Factor.findFactor(getProject(), factorRef);
 					//FIXME this is a hack,  we need to exclude factors that are not parents
 					if (!factor.isStress() && !factor.isActivity())
 						return factor;
