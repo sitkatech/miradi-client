@@ -461,17 +461,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		}
 		
 		fillObjectUsingCommand(directThreatLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
-		fillObjectUsingCommand(directThreatLink, getCommentTagForMode(), "Some FactorLink comment");
-	}
-	
-	//FIXME this is duplicate method from ThreatRatingCommonPropertiesSubpanel, ProjectForTesting, ConProXmlImporter  this method seems to 
-	//belong in FactorLink
-	private String getCommentTagForMode()
-	{
-		if (isStressBaseMode())
-			return FactorLink.TAG_COMMENT;
-		
-		return FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT;
+		fillObjectUsingCommand(directThreatLink, FactorLink.getCommentTagForMode(this), "Some FactorLink comment");
 	}
 	
 	public void populateThreatStressRating(ThreatStressRating threatStressRating) throws Exception

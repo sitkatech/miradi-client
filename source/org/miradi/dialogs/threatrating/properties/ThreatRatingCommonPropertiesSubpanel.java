@@ -52,7 +52,7 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 
 		addField(createCheckBoxField(FactorLink.getObjectType(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 
-		commentsField = createMultilineField(FactorLink.getObjectType(), getCommentTagForMode());
+		commentsField = createMultilineField(FactorLink.getObjectType(), FactorLink.getCommentTagForMode(getProject()));
 		addField(commentsField);
 		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, new ThreatRatingQuestion()));
 
@@ -107,22 +107,12 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 			toLabel.setText(FactorType.getFactorTypeLabel(toFactor));
 			toLabel.setIcon(FactorType.getFactorIcon(toFactor));
 			toNameField.setObjectType(toFactor.getType());
-			commentsField.setTag(getCommentTagForMode());	
+			commentsField.setTag(FactorLink.getCommentTagForMode(getProject()));	
 		}
 		catch(Exception e)
 		{
 			EAM.panic(e);
 		}
-	}
-
-	//FIXME this is duplicate method from ThreatRatingCommonPropertiesSubpanel, ProjectForTesting, ConProXmlImporter  this method seems to 
-	//belong in FactorLink
-	private String getCommentTagForMode()
-	{
-		if (getProject().isStressBaseMode())
-			return FactorLink.TAG_COMMENT;
-		
-		return FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT;
 	}
 
 	public String getPanelDescription()

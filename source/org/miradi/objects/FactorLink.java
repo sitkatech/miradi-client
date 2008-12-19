@@ -266,6 +266,14 @@ public class FactorLink extends BaseObject
 		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
 	}
 	
+	public static String getCommentTagForMode(Project project)
+	{
+		if (project.isStressBaseMode())
+			return FactorLink.TAG_COMMENT;
+		
+		return FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT;
+	}
+	
 	public ORef getFactorRef(int direction)
 	{
 		if(direction == FROM)
