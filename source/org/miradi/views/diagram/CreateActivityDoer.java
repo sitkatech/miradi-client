@@ -38,7 +38,7 @@ public class CreateActivityDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		BaseObject selectedParent = getSelectedParent();
+		BaseObject selectedParent = getSelectedParentFactor();
 		if (selectedParent == null)
 			return false;
 			
@@ -55,7 +55,7 @@ public class CreateActivityDoer extends ObjectsDoer
 		if(!isAvailable())
 			return;
 
-		Strategy strategy = (Strategy) getSelectedParent();
+		Strategy strategy = (Strategy) getSelectedParentFactor();
 
 		try
 		{

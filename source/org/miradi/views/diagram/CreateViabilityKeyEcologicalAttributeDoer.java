@@ -45,7 +45,7 @@ public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotation
 		return false;
 	}
 
-	public Factor getSelectedParent()
+	public Factor getSelectedParentFactor()
 	{
 		if (selectedObject().getType() == ObjectType.TARGET)
 			return (Factor) selectedObject();

@@ -28,7 +28,7 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 abstract public class AbstractCreateProgressPercent extends CreateAnnotationDoer
 {
-	public BaseObject getSelectedParent()
+	public BaseObject getSelectedParentFactor()
 	{
 		if (getPicker() == null)
 			return null;

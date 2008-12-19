@@ -131,7 +131,7 @@ abstract public class ObjectsDoer extends ViewDoer
 		return selected.getRef();
 	}
 	
-	public BaseObject getSelectedParent()
+	public BaseObject getSelectedParentFactor()
 	{		
 		for (int refListIndex = 0; refListIndex < getSelectedHierarchies().length; ++refListIndex)
 		{

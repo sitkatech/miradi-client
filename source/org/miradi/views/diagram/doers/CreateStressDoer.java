@@ -36,7 +36,7 @@ public class CreateStressDoer extends CreateAnnotationDoer
 {
 	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
 	{
-		Factor selectedFactor = (Factor) getSelectedParent();
+		Factor selectedFactor = (Factor) getSelectedParentFactor();
 		createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, selectedFactor);
 	}
 

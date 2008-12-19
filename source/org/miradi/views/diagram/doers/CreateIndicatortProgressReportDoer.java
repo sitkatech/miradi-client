@@ -28,7 +28,7 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateIndicatortProgressReportDoer extends CreateAnnotationDoer
 {
-	public BaseObject getSelectedParent()
+	public BaseObject getSelectedParentFactor()
 	{
 		if (getPicker() == null)
 			return null;
