@@ -76,8 +76,8 @@ public class ConProMiradiCodeMapHelper
 		viabilityModeMap.put(ViabilityModeQuestion.TNC_STYLE_CODE, "kea");
 		
 		tncProjectSharingMap = new HashMap<String, String>();
-		tncProjectSharingMap.put(TncProjectSharingQuestion.NO_CODE, "false");
-		tncProjectSharingMap.put(TncProjectSharingQuestion.YES_CODE, "true");
+		tncProjectSharingMap.put(TncProjectSharingQuestion.SHARE_TNC_ONLY, "false");
+		tncProjectSharingMap.put(TncProjectSharingQuestion.SHARE_WITH_ANYONE, "true");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)

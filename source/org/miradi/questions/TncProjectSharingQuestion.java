@@ -31,11 +31,11 @@ public class TncProjectSharingQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getSharingCodes()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(NO_CODE, EAM.text("No")),
-				new ChoiceItem(YES_CODE, EAM.text("Yes")),
+				new ChoiceItem(SHARE_TNC_ONLY, EAM.text("No")),
+				new ChoiceItem(SHARE_WITH_ANYONE, EAM.text("Yes")),
 		};
 	}
 	
-	public static final String NO_CODE = "";
-	public static final String YES_CODE = "Yes";
+	public static final String SHARE_TNC_ONLY = "";
+	public static final String SHARE_WITH_ANYONE = "ShareWithAnyone";
 }
