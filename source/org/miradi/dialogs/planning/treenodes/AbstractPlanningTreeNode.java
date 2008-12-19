@@ -250,15 +250,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	protected void addMissingChildren(ORefList potentialChildRefs, DiagramObject diagram) throws Exception
 	{
-		ORefSet everythingInTree = getAllRefsInTree();
-		for(int i = 0; i < potentialChildRefs.size(); ++i)
-		{
-			ORef ref = potentialChildRefs.get(i);
-			if(everythingInTree.contains(ref))
-				continue;
-			
-			createAndAddChild(ref, diagram);
-		}
+		addMissingChildren(new ORefSet(potentialChildRefs), diagram);
 	}
 	
 	protected void addMissingChildren(ORefSet potentialChildRefs, DiagramObject diagram) throws Exception
