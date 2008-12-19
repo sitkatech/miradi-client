@@ -317,8 +317,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	protected ORefList extractDirectThreatRefs(Factor[] factors)
 	{
-		// FIXME: Probably should use a HashSet to avoid dupes
-		ORefList upstreamDirectThreatRefs = new ORefList();
+		ORefSet upstreamDirectThreatRefs = new ORefSet();
 		for(int i = 0; i < factors.length; ++i)
 		{
 			Factor factor = factors[i];
@@ -327,13 +326,14 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			
 			upstreamDirectThreatRefs.add(factor.getRef());
 		}
-		return upstreamDirectThreatRefs;
+		
+		// FIXME: method needs to return refset
+		return upstreamDirectThreatRefs.toRefList();
 	}
 
 	protected ORefList extractThreatReductionResultRefs(Factor[] factors)
 	{
-		// FIXME: Probably should use a HashSet to avoid dupes
-		ORefList upstreamThreatReductionResultRefs = new ORefList();
+		ORefSet upstreamThreatReductionResultRefs = new ORefSet();
 		for(int i = 0; i < factors.length; ++i)
 		{
 			Factor factor = factors[i];
@@ -342,7 +342,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			
 			upstreamThreatReductionResultRefs.add(factor.getRef());
 		}
-		return upstreamThreatReductionResultRefs;
+		
+		// FIXME: method needs to return refset	
+		return upstreamThreatReductionResultRefs.toRefList();
 	}
 
 	protected ORefSet extractIntermediateResultsRefs(Factor[] factors)
@@ -364,8 +366,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	protected ORefList extractNonDraftStrategyRefs(Factor[] factors)
 	{
-		// FIXME: Probably should use a HashSet to avoid dupes
-		ORefList upstreamStrategyRefs = new ORefList();
+		ORefSet upstreamStrategyRefs = new ORefSet();
 		for(int i = 0; i < factors.length; ++i)
 		{
 			Factor factor = factors[i];
@@ -377,33 +378,37 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			
 			upstreamStrategyRefs.add(factor.getRef());
 		}
-		return upstreamStrategyRefs;
+		
+		// FIXME: method needs to return refset
+		return upstreamStrategyRefs.toRefList();
 	}
 
 	protected ORefList extractIndicatorRefs(Factor[] upstreamFactors)
 	{
-		// FIXME: Probably should use a HashSet to avoid dupes
-		ORefList potentialChildIndicatorRefs = new ORefList();
+		ORefSet potentialChildIndicatorRefs = new ORefSet();
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
 			Factor factor = upstreamFactors[i];
 			ORefList indicatorRefs = new ORefList(Indicator.getObjectType(), factor.getDirectOrIndirectIndicators());
-			potentialChildIndicatorRefs.addAll(indicatorRefs);
+			potentialChildIndicatorRefs.addAll(new ORefSet(indicatorRefs));
 		}
-		return potentialChildIndicatorRefs;
+		
+		// FIXME: method needs to return refset
+		return potentialChildIndicatorRefs.toRefList();
 	}
 
 	protected ORefList extractObjectiveRefs(Factor[] upstreamFactors)
 	{
-		// FIXME: Probably should use a HashSet to avoid dupes
-		ORefList potentialChildObjectiveRefs = new ORefList();
+		ORefSet potentialChildObjectiveRefs = new ORefSet();
 		for(int i = 0; i < upstreamFactors.length; ++i)
 		{
 			Factor factor = upstreamFactors[i];
 			ORefList objectiveRefs = new ORefList(Objective.getObjectType(), factor.getObjectiveIds());
-			potentialChildObjectiveRefs.addAll(objectiveRefs);
+			potentialChildObjectiveRefs.addAll(new ORefSet(objectiveRefs));
 		}
-		return potentialChildObjectiveRefs;
+		
+		// FIXME: method needs to return refset
+		return potentialChildObjectiveRefs.toRefList();
 	}
 
 	protected void addMissingUpstreamObjectives(DiagramObject diagram) throws Exception
