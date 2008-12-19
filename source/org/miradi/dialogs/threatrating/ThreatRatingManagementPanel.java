@@ -64,7 +64,6 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	
 	public Icon getIcon()
 	{
-		//FIXME add new icon
 		return new StressIcon();
 	}
 	
