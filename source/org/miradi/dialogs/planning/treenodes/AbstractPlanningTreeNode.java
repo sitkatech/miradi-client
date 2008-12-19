@@ -315,7 +315,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);
 	}
 
-	protected ORefList extractDirectThreatRefs(Factor[] factors)
+	private ORefList extractDirectThreatRefs(Factor[] factors)
 	{
 		ORefSet upstreamDirectThreatRefs = new ORefSet();
 		for(int i = 0; i < factors.length; ++i)
@@ -331,7 +331,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return upstreamDirectThreatRefs.toRefList();
 	}
 
-	protected ORefList extractThreatReductionResultRefs(Factor[] factors)
+	private ORefList extractThreatReductionResultRefs(Factor[] factors)
 	{
 		ORefSet upstreamThreatReductionResultRefs = new ORefSet();
 		for(int i = 0; i < factors.length; ++i)
@@ -347,7 +347,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return upstreamThreatReductionResultRefs.toRefList();
 	}
 
-	protected ORefSet extractIntermediateResultsRefs(Factor[] factors)
+	private ORefSet extractIntermediateResultsRefs(Factor[] factors)
 	{
 		return extractType(factors, IntermediateResult.getObjectType());
 	}
@@ -397,7 +397,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return potentialChildIndicatorRefs.toRefList();
 	}
 
-	protected ORefList extractObjectiveRefs(Factor[] upstreamFactors)
+	private ORefList extractObjectiveRefs(Factor[] upstreamFactors)
 	{
 		ORefSet potentialChildObjectiveRefs = new ORefSet();
 		for(int i = 0; i < upstreamFactors.length; ++i)
