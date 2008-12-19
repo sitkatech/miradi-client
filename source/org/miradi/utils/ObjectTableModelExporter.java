@@ -29,7 +29,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-//FIXME this is almost a duplicate of ObjectTableExporter.  ObjectTableExporter needs to go away
 public class ObjectTableModelExporter extends AbstractTableExporter
 {
 	public ObjectTableModelExporter(ObjectTableModel objectTableModelToUse)
