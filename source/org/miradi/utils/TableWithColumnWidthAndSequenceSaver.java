@@ -24,9 +24,9 @@ import javax.swing.table.TableModel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
+abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver
 {
-	public TableWithColumnWidthSaver(MainWindow mainWindowToUse, TableModel model)
+	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(mainWindowToUse, model);
 	

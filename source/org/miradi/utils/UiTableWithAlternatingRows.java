@@ -29,7 +29,7 @@ import javax.swing.table.TableModel;
 
 import org.miradi.main.MainWindow;
 
-abstract public class UiTableWithAlternatingRows extends TableWithColumnWidthSaver
+abstract public class UiTableWithAlternatingRows extends TableWithColumnWidthAndSequenceSaver
 {
 	public UiTableWithAlternatingRows(MainWindow mainWindowToUse, TableModel model)
 	{

@@ -24,9 +24,9 @@ import javax.swing.table.TableModel;
 import org.miradi.dialogs.tablerenderers.ThreatRatingTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.TableWithColumnWidthSaver;
+import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
-abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthSaver
+abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthAndSequenceSaver
 {
 	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, TableModel model)
 	{

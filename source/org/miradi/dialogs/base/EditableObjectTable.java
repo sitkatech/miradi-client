@@ -48,10 +48,10 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StaticChoiceQuestion;
-import org.miradi.utils.TableWithColumnWidthSaver;
+import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class EditableObjectTable extends TableWithColumnWidthSaver  implements ObjectPicker
+abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenceSaver  implements ObjectPicker
 {
 	public EditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
