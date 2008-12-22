@@ -31,9 +31,9 @@ import org.miradi.main.MainWindow;
 
 abstract public class UiTableWithAlternatingRows extends TableWithColumnWidthAndSequenceSaver
 {
-	public UiTableWithAlternatingRows(MainWindow mainWindowToUse, TableModel model)
+	public UiTableWithAlternatingRows(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 		initialize();
 	}
 	

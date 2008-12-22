@@ -31,7 +31,7 @@ public class ThreatStressRatingTable extends EditableObjectTable
 {
 	public ThreatStressRatingTable(MainWindow mainWindowToUse, ThreatStressRatingTableModel threatStressRatingTableModel)
 	{
-		super(mainWindowToUse, threatStressRatingTableModel);
+		super(mainWindowToUse, threatStressRatingTableModel, UNIQUE_IDENTIFIER);
 		rebuildColumnEditorsAndRenderers();
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		listenForColumnWidthChanges(this);
@@ -84,11 +84,6 @@ public class ThreatStressRatingTable extends EditableObjectTable
 	protected void listenForColumnWidthChanges(JTable table)
 	{
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
-	}
-
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "ThreatStressRatingTable";

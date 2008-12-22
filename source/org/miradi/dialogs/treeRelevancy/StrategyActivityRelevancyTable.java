@@ -29,7 +29,7 @@ public class StrategyActivityRelevancyTable extends EditableObjectTable
 {
 	public StrategyActivityRelevancyTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		for(int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
@@ -40,12 +40,6 @@ public class StrategyActivityRelevancyTable extends EditableObjectTable
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		return getPreferredSize();
-	}
-
-	@Override
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "StrategyActivityRelevancyTable";

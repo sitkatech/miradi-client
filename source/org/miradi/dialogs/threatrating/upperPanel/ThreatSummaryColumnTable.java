@@ -27,13 +27,8 @@ public class ThreatSummaryColumnTable extends AbstractTableWithChoiceItemRendere
 {
 	public ThreatSummaryColumnTable(MainWindow mainWindowToUse, ThreatSummaryColumnTableModel model)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 	}
 	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}
-
 	public static final String UNIQUE_IDENTIFIER = "ThreatSummaryColumnTable";	
 }

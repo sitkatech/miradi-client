@@ -26,9 +26,9 @@ import org.miradi.main.MainWindow;
 
 abstract public class PlanningViewFullSizeTable extends	PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewFullSizeTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public PlanningViewFullSizeTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 	}
 	
 	public Dimension getPreferredScrollableViewportSize()

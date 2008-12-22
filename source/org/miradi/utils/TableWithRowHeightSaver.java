@@ -32,15 +32,17 @@ import org.miradi.main.MainWindow;
 
 abstract public class TableWithRowHeightSaver extends PanelTable implements TableWithRowHeightManagement
 {
-	public TableWithRowHeightSaver(MainWindow mainWindowToUse, TableModel model)
+	public TableWithRowHeightSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, model);
+		
+		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 		
 		defaultCellRendererFactory = new DefaultTableCellRendererWithPreferredHeightFactory();
 		booleanRendererFactory = new BooleanTableCellRendererFactoryWithPreferredHeight();
 		
 		rowHeightSaver = new TableRowHeightSaver();
-		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
+		rowHeightSaver.manage(getMainWindow(), this, uniqueTableIdentifier);
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 		
@@ -151,9 +153,12 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		return this;
 	}
 	
-
-	abstract public String getUniqueTableIdentifier();
+	public String getUniqueTableIdentifier()
+	{
+		return uniqueTableIdentifier;
+	}
 	
+	private String uniqueTableIdentifier;
 	private TableRowHeightSaver rowHeightSaver;
 	private SingleTableRowHeightController rowHeightController;
 	private DefaultTableCellRendererWithPreferredHeightFactory defaultCellRendererFactory;

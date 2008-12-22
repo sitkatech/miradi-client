@@ -37,7 +37,7 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 {
 	public PlanningViewWorkPlanTable(MainWindow mainWindowToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		setBackground(getColumnBackGroundColor(0));	
 		setSingleCellEditor();
 		renderer = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
@@ -73,11 +73,6 @@ public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPref
 	public int getColumnAlignment()
 	{
 		return JLabel.RIGHT;
-	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewWorkPlanTable";

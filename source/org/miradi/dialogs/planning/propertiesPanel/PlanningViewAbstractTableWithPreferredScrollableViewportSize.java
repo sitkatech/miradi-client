@@ -26,9 +26,9 @@ import org.miradi.main.MainWindow;
 
 abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSize extends PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 	}
 	
 	@Override
