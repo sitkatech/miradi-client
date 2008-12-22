@@ -25,11 +25,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTable;
 
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 
 public class ColumnSequenceSaver extends MouseAdapter
 {
-	public ColumnSequenceSaver(JTable tableToUse, ColumnTagProvider tagProviderToUse, String uniqueTableIdentifierToUse)
+	public ColumnSequenceSaver(Project projectToUse, JTable tableToUse, ColumnTagProvider tagProviderToUse, String uniqueTableIdentifierToUse)
 	{
+		project = projectToUse;
 		table = tableToUse;
 		tagProvider = tagProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
@@ -56,6 +58,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 			if(currentLocation != destination)
 				table.getColumnModel().moveColumn(currentLocation, destination);
 		}
+	}
+
+	public Project getProject()
+	{
+		return project;
 	}
 
 	private int findCurrentTagLocation(String tagToFind)
@@ -97,6 +104,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		table.repaint();
 	}
 
+	private Project project;
 	private JTable table;
 	private ColumnTagProvider tagProvider;
 	private String uniqueTableIdentifier;

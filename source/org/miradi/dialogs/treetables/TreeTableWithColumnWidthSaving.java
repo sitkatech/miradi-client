@@ -28,8 +28,8 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 	public TreeTableWithColumnWidthSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
-		columnWidthSaver = new ColumnWidthSaver(this, treeTableModel, getUniqueTableIdentifier());
-		columnSequenceSaver = new ColumnSequenceSaver(this, treeTableModel, getUniqueTableIdentifier());
+		columnWidthSaver = new ColumnWidthSaver(mainWindowToUse.getProject(), this, treeTableModel, getUniqueTableIdentifier());
+		columnSequenceSaver = new ColumnSequenceSaver(mainWindowToUse.getProject(), this, treeTableModel, getUniqueTableIdentifier());
 
 		getTableHeader().addMouseListener(columnWidthSaver);
 		getTableHeader().addMouseListener(columnSequenceSaver);
