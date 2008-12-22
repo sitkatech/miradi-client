@@ -25,9 +25,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.TableSettings;
+import org.miradi.project.Project;
 
 public class ColumnWidthSaver extends MouseAdapter
 {
@@ -40,34 +44,59 @@ public class ColumnWidthSaver extends MouseAdapter
 	
 	public void restoreColumnWidths()
 	{
-		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
-		{	
-			TableColumn column = table.getColumnModel().getColumn(tableColumn);
-			int width = getColumnWidth(tableColumn);
-			column.setWidth(width);
-			column.setPreferredWidth(width);
+		try
+		{
+			for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
+			{	
+				TableColumn column = table.getColumnModel().getColumn(tableColumn);
+				int width = getColumnWidth(tableColumn);
+				column.setWidth(width);
+				column.setPreferredWidth(width);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
 		}
 	}
-	
-	protected int getColumnWidth(int tableColumn)
+
+	protected int getColumnWidth(int tableColumn) throws Exception
 	{
 		int modelColumn = table.convertColumnIndexToModel(tableColumn);
 		String columnTag = tagProvider.getColumnTag(modelColumn);
-		int columnWidth = EAM.getMainWindow().getAppPreferences().getTaggedInt(getColumnWidthKey(modelColumn));
+		
+		TableSettings tableSettings = getTableSettings();
+		StringMap columnWidthMap = tableSettings.getColumnWidthMap();
+		String columnWidthAsString = columnWidthMap.get(columnTag);
+		
+		return getColumnWidth(tableColumn, columnTag, columnWidthAsString);
+	}
+
+	private int getColumnWidth(int tableColumn, String columnTag, String columnWidthAsString)
+	{
 		int columnHeaderWidth = TableWithHelperMethods.getColumnHeaderWidth(table, tableColumn);
+		int defaultColumnWidth = getDefaultColumnWidth(columnTag, columnHeaderWidth);
+		if (columnWidthAsString.length() == 0)
+			return defaultColumnWidth;
+		
+		int columnWidth = Integer.parseInt(columnWidthAsString);
 		if (columnWidth > 0)
 			return columnWidth;
 		
-		else if (isWideColumn(columnTag))
+		return defaultColumnWidth;
+	}
+
+	private int getDefaultColumnWidth(String columnTag, int columnHeaderWidth)
+	{
+		if (isWideColumn(columnTag))
 			return DEFAULT_WIDE_COLUMN_WIDTH;
 		
 		else if (columnHeaderWidth < DEFAULT_NARROW_COLUMN_WIDTH)
 			return DEFAULT_NARROW_COLUMN_WIDTH;
 		
-		else
-			return columnHeaderWidth;
+		return columnHeaderWidth;
 	}
-
+	
 	private boolean isWideColumn(String columnTag)
 	{
 		if (columnTag.equals(GenericTreeTableModel.DEFAULT_COLUMN))
@@ -81,23 +110,50 @@ public class ColumnWidthSaver extends MouseAdapter
 
 	public void mouseReleased(MouseEvent e)
 	{
-		saveColumnWidths();
+		try
+		{
+			saveColumnWidths();
+		}
+		catch(Exception e1)
+		{
+			EAM.logException(e1);
+		}
 	}
 	
-	private void saveColumnWidths()
+	private void saveColumnWidths() throws Exception
 	{
+		
+		StringMap columnWidthMap = new StringMap();
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{		
 			int modelColumn = table.convertColumnIndexToModel(tableColumn);
 			TableColumn column = table.getColumnModel().getColumn(tableColumn);
-			EAM.getMainWindow().getAppPreferences().setTaggedInt(getColumnWidthKey(modelColumn), column.getWidth());
+			columnWidthMap.add(getColumnWidthKey(modelColumn), Integer.toString(column.getWidth()));
 		}
+		
+		TableSettings tableSettings = getTableSettings();
+		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_WIDTHS, columnWidthMap.toString());
+		getProject().executeCommand(setColumnWidths);
+	}
+	
+	private TableSettings getTableSettings() throws Exception
+	{
+		return TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
+	}
+
+	private Project getProject()
+	{
+		return EAM.getMainWindow().getProject();
 	}
 	
 	private String getColumnWidthKey(int modelColumn)
 	{
-		String columnTag = tagProvider.getColumnTag(modelColumn);
-		return uniqueTableIdentifier + "." + columnTag;
+		return tagProvider.getColumnTag(modelColumn);
+	}
+	
+	private String getUniqueTableIdentifier()
+	{
+		return uniqueTableIdentifier;
 	}
 
 	private JTable table;

@@ -70,7 +70,7 @@ abstract public class TableWithColumnWidthSaver extends TableWithRowHeightSaver
 			columnSequenceSaver.restoreColumnSequences();
 	}
 	
-	protected int getSavedColumnWidth(int tableColumn)
+	protected int getSavedColumnWidth(int tableColumn) throws Exception
 	{
 		return columnWidthSaver.getColumnWidth(tableColumn);
 	}
