@@ -73,7 +73,6 @@ public class FactorDeleteHelper
 		if (Strategy.is(diagramFactorToDelete.getWrappedType()))
 		{
 			Strategy strategy = (Strategy) diagramFactorToDelete.getWrappedFactor();
-			removeStrategyFromObjectiveRelevancyList(diagramFactorToDelete);
 			deleteRelatedFactorDiagramFactors(strategy.getActivityRefs());
 		}
 		
@@ -150,6 +149,7 @@ public class FactorDeleteHelper
 		if (underlyingFactor.mustBeDeletedBecauseParentIsGone())
 			return;
 
+		removeStrategyFromObjectiveRelevancyList(diagramFactorToDelete);
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
 	}
