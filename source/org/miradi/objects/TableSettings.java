@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.IntegerData;
+import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.StringMapData;
 
 public class TableSettings extends BaseObject
 {
@@ -78,7 +81,22 @@ public class TableSettings extends BaseObject
 	{
 		super.clear();
 		
+		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
+		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
+		rowHeights = new IntegerData(TAG_ROW_HEIGHTS);
+		
+		addField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
+		addField(TAG_COLUMN_WIDTHS, columnWidths);
+		addField(TAG_ROW_HEIGHTS, rowHeights);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
+	
+	public static final String TAG_COLUMN_SEQUENCE_CODES = "ColumnSequenceCodes";
+	public static final String TAG_COLUMN_WIDTHS = "ColumnWidths";
+	public static final String TAG_ROW_HEIGHTS = "RowHeights";
+	
+	private TagListData columnSequenceCodes;
+	private StringMapData columnWidths;
+	private IntegerData rowHeights;
 }
