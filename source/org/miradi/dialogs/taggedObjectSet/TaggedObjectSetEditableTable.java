@@ -32,7 +32,7 @@ public class TaggedObjectSetEditableTable extends EditableObjectTable
 {
 	public TaggedObjectSetEditableTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		for(int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
@@ -54,11 +54,5 @@ public class TaggedObjectSetEditableTable extends EditableObjectTable
 		return new AlwaysEmptyCellRendererFactory();
 	}
 	
-	@Override
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}
-
 	public static final String UNIQUE_IDENTIFIER = "TaggedObjectSetEditTable";
 }

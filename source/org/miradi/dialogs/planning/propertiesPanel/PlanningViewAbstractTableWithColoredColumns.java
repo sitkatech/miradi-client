@@ -29,9 +29,9 @@ import org.miradi.main.MainWindow;
 
 abstract public class PlanningViewAbstractTableWithColoredColumns extends EditableObjectTable
 {
-	public PlanningViewAbstractTableWithColoredColumns(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public PlanningViewAbstractTableWithColoredColumns(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 		

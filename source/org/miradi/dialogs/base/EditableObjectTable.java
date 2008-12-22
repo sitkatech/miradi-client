@@ -53,9 +53,9 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenceSaver  implements ObjectPicker
 {
-	public EditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse)
+	public EditableObjectTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		
 		model = modelToUse;
 		selectionListeners = new Vector();

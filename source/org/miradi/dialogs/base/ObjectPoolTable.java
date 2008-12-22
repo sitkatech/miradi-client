@@ -28,7 +28,7 @@ public class ObjectPoolTable extends ObjectTable
 {
 	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
 	}
@@ -55,11 +55,6 @@ public class ObjectPoolTable extends ObjectTable
 		super.updateTableAfterObjectDeleted(deletedObjectRef);
 		getObjectPoolTableModel().rowsWereAddedOrRemoved();
 	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}	
 	
 	public static final String UNIQUE_IDENTIFIER = "ObjectPoolTable";
 }

@@ -35,7 +35,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 {
 	public PlanningViewResourceTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		model = modelToUse;
 		
 		setBackground(getColumnBackGroundColor(0));
@@ -93,11 +93,6 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 	public int getColumnAlignment()
 	{
 		return JLabel.RIGHT;
-	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 	
 	public ProjectResource[] getAllProjectResources()

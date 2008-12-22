@@ -28,9 +28,9 @@ import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 abstract public class AbstractTableWithChoiceItemRenderer extends TableWithColumnWidthAndSequenceSaver
 {
-	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, TableModel model)
+	public AbstractTableWithChoiceItemRenderer(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 		
 		setColumnRenderers();
 	}

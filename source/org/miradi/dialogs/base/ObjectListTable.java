@@ -35,7 +35,8 @@ public class ObjectListTable extends ObjectTable
 {
 	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, getUniqueTableIdentifier((ObjectListTableModel) modelToUse));
+		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
 	}
@@ -46,10 +47,9 @@ public class ObjectListTable extends ObjectTable
 		sort(sortColumn);
 	}
 	
-	public String getUniqueTableIdentifier()
+	private static String getUniqueTableIdentifier(ObjectListTableModel objectListTableModel)
 	{
-		String identifier = UNIQUE_IDENTIFIER + "." + getObjectListTableModel().getContainingObjectType() + "." + getObjectTableModel().getRowObjectType();
-		return identifier;
+		return UNIQUE_IDENTIFIER + "." + objectListTableModel.getContainingObjectType() + "." + objectListTableModel.getRowObjectType();
 	}
 	
 	public ObjectListTableModel getObjectListTableModel()

@@ -37,7 +37,7 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 {
 	public PlanningViewBudgetAnnualTotalsTable(MainWindow mainWindowToUse, PlanningViewBudgetAnnualTotalTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 		CurrencyFormat currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 		renderer = new BudgetCostTreeTableCellRendererFactory(model, fontProvider, currencyFormatter);
 	}
@@ -66,11 +66,6 @@ public class PlanningViewBudgetAnnualTotalsTable extends TableWithTreeTableNodes
 	public int getColumnAlignment()
 	{
 		return JLabel.RIGHT;
-	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 	
 	private BasicTableCellRendererFactory renderer;

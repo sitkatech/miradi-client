@@ -36,7 +36,7 @@ public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 {
 	public PlanningViewMeasurementTable(MainWindow mainWindowToUse, PlanningViewMeasurementTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(mainWindowToUse, model);	
+		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);	
 		otherRenderer = new SingleLineObjectTableCellRendererFactory(this, new PlanningViewFontProvider(getMainWindow()));
 		otherRenderer.setCellBackgroundColor(getBackgroundColor());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(model, fontProvider, getBackgroundColor());
@@ -57,11 +57,6 @@ public class PlanningViewMeasurementTable extends TableWithTreeTableNodes
 	public Color getColumnBackGroundColor(int column)
 	{
 		return getBackgroundColor();
-	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 	
 	public PlanningViewMeasurementTableModel getMeasurementModel()

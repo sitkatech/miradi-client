@@ -29,7 +29,7 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 {
 	public TargetSummaryRowTable(MainWindow mainWindowToUse, TargetSummaryRowTableModel model)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
@@ -40,10 +40,5 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		return false;
 	}
 	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}
-
 	public static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTable";
 }

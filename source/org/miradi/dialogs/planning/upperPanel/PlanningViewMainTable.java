@@ -27,7 +27,7 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 {
 	public PlanningViewMainTable(MainWindow mainWindowToUse, PlanningViewMainTableModel modelToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		fontProvider = fontProviderToUse;
 		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 		setTableColumnRenderers();
@@ -116,12 +116,6 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 		}
 	}
 
-	@Override
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}
-	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewMainTable";
 
 	private FontForObjectTypeProvider fontProvider;

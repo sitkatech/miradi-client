@@ -34,7 +34,7 @@ public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 {
 	public PlanningViewFutureStatusTable(MainWindow mainWindowToUse, PlanningViewFutureStatusTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 		renderer = new SingleLineObjectTableCellRendererFactory(model, fontProvider);
 	}
 	
@@ -47,11 +47,6 @@ public class PlanningViewFutureStatusTable extends TableWithTreeTableNodes
 	public Color getColumnBackGroundColor(int tableColumn)
 	{
 		return FactorRenderer.ANNOTATIONS_COLOR;
-	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewFutureStatusTable";

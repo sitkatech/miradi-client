@@ -27,9 +27,9 @@ import org.miradi.objects.BaseObject;
 
 abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable implements RowColumnBaseObjectProvider
 {
-	public TableWithTreeTableNodes(MainWindow mainWindowToUse, PlanningViewAbstractTreeTableSyncedTableModel modelToUse)
+	public TableWithTreeTableNodes(MainWindow mainWindowToUse, PlanningViewAbstractTreeTableSyncedTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 	}
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

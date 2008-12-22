@@ -30,14 +30,11 @@ public class OverallProjectSummaryCellTable extends AbstractTableWithChoiceItemR
 {
 	public OverallProjectSummaryCellTable(MainWindow mainWindowToUse, TableModel model)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
 	}
-
-	public String getUniqueTableIdentifier()
-	{
-		return "";
-	}
+	
+	public static final String UNIQUE_IDENTIFIER = "";
 }

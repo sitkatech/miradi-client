@@ -25,29 +25,61 @@ import javax.swing.tree.TreePath;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.TableSettings;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EAMTreeTableModelAdapter;
 
-abstract public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener
+abstract public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener, CommandExecutedListener
 {
 	public TreeTableWithStateSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
 		treeTableModelAdapter = new EAMTreeTableModelAdapter(mainWindowToUse.getProject(), treeTableModel, tree);
 		
+		getProject().addCommandExecutedListener(this);
 		tree.addTreeExpansionListener(this);
 	}
 	
 	public void dispose()
 	{
 		tree.removeTreeExpansionListener(this);
+		getProject().removeCommandExecutedListener(this);
 	}
 	
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			if (isRebuildTreeCommand(event))
+				rebuildTableCompletely();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private boolean isRebuildTreeCommand(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SEQUENCE_CODES))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_WIDTHS))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_ROW_HEIGHTS))
+			return true;
+			
+		return false;
+	}
+
 	@Override
 	public void updateAutomaticRowHeights()
 	{

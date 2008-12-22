@@ -35,7 +35,7 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 {
 	public PlanningViewBudgetTotalsTable(MainWindow mainWindowToUse, PlanningViewBudgetTotalsTableModel model)
 	{
-		super(mainWindowToUse, model);
+		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 		setBackground(getColumnBackGroundColor(0));
 		renderer = new NumericTableCellRendererFactory(model, new DefaultFontProvider(getMainWindow()));
 	}
@@ -64,11 +64,6 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 	public int getColumnAlignment()
 	{
 		return JLabel.RIGHT;
-	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "PlanningViewBudgetTotalsTable";

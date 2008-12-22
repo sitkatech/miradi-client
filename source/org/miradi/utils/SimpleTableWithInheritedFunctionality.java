@@ -27,15 +27,6 @@ public class SimpleTableWithInheritedFunctionality extends TableWithColumnWidthA
 {
 	public SimpleTableWithInheritedFunctionality(MainWindow mainWindowToUse, TableModel model, String uniqueIdentifierToUse)
 	{	
-		super(mainWindowToUse, model);
-		
-		uniqueIdentifier = uniqueIdentifierToUse;
+		super(mainWindowToUse, model, uniqueIdentifierToUse);
 	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return uniqueIdentifier;
-	}
-	
-	private String uniqueIdentifier;
 }
