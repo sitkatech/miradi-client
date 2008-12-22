@@ -24,7 +24,9 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JTable;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 
 public class ColumnSequenceSaver extends MouseAdapter
@@ -40,7 +42,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	public void restoreColumnSequences() throws Exception
 	{
 		CodeList currentColumnTagSequences = getCurrentSequence();		
-		CodeList storedColumnTagSequences = new CodeList(EAM.getMainWindow().getAppPreferences().getTaggedString(uniqueTableIdentifier));
+		CodeList storedColumnTagSequences = new CodeList(getStoredColumnSequenceCodes());
 		storedColumnTagSequences.retainAll(currentColumnTagSequences);
 		currentColumnTagSequences.subtract(storedColumnTagSequences);
 
@@ -60,6 +62,16 @@ public class ColumnSequenceSaver extends MouseAdapter
 		}
 	}
 
+	private CodeList getStoredColumnSequenceCodes() throws Exception
+	{
+		return getTableSettings().getCodeList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
+	}
+
+	private TableSettings getTableSettings() throws Exception
+	{
+		return TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
+	}
+	
 	public Project getProject()
 	{
 		return project;
@@ -92,16 +104,24 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return currentColumnTagSequences;
 	}
 	
-	private void saveColumnSequences()
+	private void saveColumnSequences() throws Exception
 	{		
-		String currentColumnSquenceTags = getCurrentSequence().toString();
-		EAM.getMainWindow().getAppPreferences().setTaggedString(uniqueTableIdentifier, currentColumnSquenceTags);
+		TableSettings tableSettings = getTableSettings();
+		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, getCurrentSequence().toString());
+		getProject().executeCommand(setColumnSequence);
 	}
 
-	public void mouseReleased(MouseEvent e)
+	public void mouseReleased(MouseEvent event)
 	{
-		saveColumnSequences();
-		table.repaint();
+		try
+		{
+			saveColumnSequences();
+			table.repaint();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 
 	private Project project;
