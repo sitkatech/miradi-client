@@ -51,7 +51,7 @@ public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWith
 		return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 	}
 
-	int getPreferredScrollableViewportWidth()
+	int getPreferredScrollableViewportWidth() throws Exception
 	{
 		return getSavedColumnWidth(0);
 	}

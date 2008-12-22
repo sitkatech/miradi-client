@@ -21,9 +21,12 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.IntegerData;
+import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
@@ -51,10 +54,41 @@ public class TableSettings extends BaseObject
 	{
 		return OBJECT_NAME;
 	}
+	
+	public StringMap getColumnWidthMap()
+	{
+		return columnWidths.getStringMap();
+	}
 
 	public static int getObjectType()
 	{
 		return ObjectType.TABLE_SETTINGS;
+	}
+	
+	public static TableSettings findOrCreate(Project projectToUse, String uniqueTableIdentifier) throws Exception
+	{
+		TableSettings foundTableSettings = find(projectToUse, uniqueTableIdentifier);
+		if (foundTableSettings != null)
+			return foundTableSettings;
+		
+		ORef newlyCreateTableSettings = projectToUse.createObject(TableSettings.getObjectType());
+		projectToUse.setObjectData(newlyCreateTableSettings, TableSettings.TAG_TABLE_IDENTIFIER, uniqueTableIdentifier);
+		
+		return TableSettings.find(projectToUse, newlyCreateTableSettings);
+	}
+
+	public static TableSettings find(Project projectToUse,	String uniqueTableIdentifier)
+	{
+		ORefList tableSettingsRefs = projectToUse.getTableSettingsPool().getORefList();
+		for(int index = 0; index < tableSettingsRefs.size(); ++index)
+		{
+			TableSettings tableSettings = find(projectToUse, tableSettingsRefs.get(index));
+			String thisTableIdentifier = tableSettings.getData(TableSettings.TAG_TABLE_IDENTIFIER);
+			if (uniqueTableIdentifier.equals(thisTableIdentifier))
+				return tableSettings;
+		}
+		
+		return null;
 	}
 	
 	public static boolean is(ORef ref)
@@ -80,11 +114,13 @@ public class TableSettings extends BaseObject
 	void clear()
 	{
 		super.clear();
-		
+
+		tableIdentifier = new StringData(TAG_TABLE_IDENTIFIER);
 		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
 		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
 		rowHeights = new IntegerData(TAG_ROW_HEIGHTS);
 		
+		addField(TAG_TABLE_IDENTIFIER, tableIdentifier);
 		addField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
 		addField(TAG_COLUMN_WIDTHS, columnWidths);
 		addField(TAG_ROW_HEIGHTS, rowHeights);
@@ -92,10 +128,12 @@ public class TableSettings extends BaseObject
 	
 	public static final String OBJECT_NAME = "TableSettings";
 	
+	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";
 	public static final String TAG_COLUMN_SEQUENCE_CODES = "ColumnSequenceCodes";
 	public static final String TAG_COLUMN_WIDTHS = "ColumnWidths";
 	public static final String TAG_ROW_HEIGHTS = "RowHeights";
 	
+	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
 	private StringMapData columnWidths;
 	private IntegerData rowHeights;
