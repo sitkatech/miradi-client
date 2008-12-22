@@ -52,6 +52,13 @@ public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 		add(multiTablePanelToUse, BorderLayout.CENTER);
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		multiTablePanel.dispose();
+	}
+	
 	public ThreatRatingMultiTablePanel getMultiTablePanel()
 	{
 		return multiTablePanel;

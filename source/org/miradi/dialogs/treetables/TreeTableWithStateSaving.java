@@ -57,7 +57,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	{
 		try
 		{
-			if (isRebuildTreeCommand(event))
+			if (isRebuildTreeDueToSettingsChangeCommand(event))
 				rebuildTableCompletely();
 		}
 		catch (Exception e)
@@ -66,7 +66,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		}
 	}
 	
-	private boolean isRebuildTreeCommand(CommandExecutedEvent event)
+	public static boolean isRebuildTreeDueToSettingsChangeCommand(CommandExecutedEvent event)
 	{
 		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SEQUENCE_CODES))
 			return true;

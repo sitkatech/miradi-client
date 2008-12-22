@@ -42,6 +42,13 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		getTable().dispose();
+	}
+	
 	public BaseObject getSelectedObject()
 	{
 		BaseObject[] selected = table.getSelectedObjects();

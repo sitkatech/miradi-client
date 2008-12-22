@@ -156,6 +156,17 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		rebuildEntireTreeTable();
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		mainTable.dispose();
+		annualTotalsTable.dispose();
+		measurementTable.dispose();
+		futureStatusTable.dispose();		
+	}
+	
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {

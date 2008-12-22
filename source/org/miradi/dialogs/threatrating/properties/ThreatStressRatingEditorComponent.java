@@ -48,6 +48,13 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 		addTablesWithManageStressesButton();
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		threatStressRatingTable.dispose();
+	}
+	
 	protected JPanel createManageStressesComponent(Actions actions)
 	{
 		OneRowPanel buttonPanel = new OneRowPanel();
