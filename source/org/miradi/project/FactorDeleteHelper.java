@@ -65,18 +65,22 @@ public class FactorDeleteHelper
 		clearSelection();
 		
 		if (Target.is(diagramFactorToDelete.getWrappedType()))
-		{	
-			Target target = (Target) diagramFactorToDelete.getWrappedFactor();
-			deleteRelatedFactorDiagramFactors(target.getStressRefs());
-		}
+			deleteAnyRelatedStressBubbles((Target) diagramFactorToDelete.getWrappedFactor());
 		
 		if (Strategy.is(diagramFactorToDelete.getWrappedType()))
-		{
-			Strategy strategy = (Strategy) diagramFactorToDelete.getWrappedFactor();
-			deleteRelatedFactorDiagramFactors(strategy.getActivityRefs());
-		}
+			deleteAnyRelatedActivityBubbles((Strategy) diagramFactorToDelete.getWrappedFactor());
 		
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
+	}
+
+	private void deleteAnyRelatedActivityBubbles(Strategy strategy) throws Exception
+	{
+		deleteRelatedFactorDiagramFactors(strategy.getActivityRefs());
+	}
+
+	private void deleteAnyRelatedStressBubbles(Target target) throws Exception
+	{
+		deleteRelatedFactorDiagramFactors(target.getStressRefs());
 	}
 
 	public Vector<Command> buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
