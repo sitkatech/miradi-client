@@ -25,15 +25,17 @@ import org.miradi.main.MainWindow;
 
 public class SimpleTableWithInheritedFunctionality extends TableWithColumnWidthAndSequenceSaver
 {
-	public SimpleTableWithInheritedFunctionality(MainWindow mainWindowToUse, TableModel model)
+	public SimpleTableWithInheritedFunctionality(MainWindow mainWindowToUse, TableModel model, String uniqueIdentifierToUse)
 	{	
 		super(mainWindowToUse, model);
+		
+		uniqueIdentifier = uniqueIdentifierToUse;
 	}
 	
 	public String getUniqueTableIdentifier()
 	{
-		return UNIQUE_IDENTIFIER;
+		return uniqueIdentifier;
 	}
 	
-	public static final String UNIQUE_IDENTIFIER = "SimpleTableWithInheritedFunctionality";
+	private String uniqueIdentifier;
 }
