@@ -23,7 +23,7 @@ import javax.swing.table.TableModel;
 
 import org.miradi.main.MainWindow;
 
-public class SimpleTableWithInheritedFunctionality extends TableWithColumnWidthSaver
+public class SimpleTableWithInheritedFunctionality extends TableWithColumnWidthAndSequenceSaver
 {
 	public SimpleTableWithInheritedFunctionality(MainWindow mainWindowToUse, TableModel model)
 	{	
