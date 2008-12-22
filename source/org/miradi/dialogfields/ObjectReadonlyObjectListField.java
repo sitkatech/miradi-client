@@ -46,6 +46,13 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		table.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		table.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		table.dispose();
+	}
 
 	public String getText()
 	{

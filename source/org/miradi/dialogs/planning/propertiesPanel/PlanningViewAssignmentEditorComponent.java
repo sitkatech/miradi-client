@@ -52,6 +52,17 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		addTablesToSelectionController();
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		resourceTable.dispose();
+		workplanTable.dispose();
+		budgetTable.dispose();
+		budgetTotalsTable.dispose();	
+	}
+	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
 		savePendingEdits();

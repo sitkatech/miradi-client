@@ -21,17 +21,40 @@ package org.miradi.utils;
 
 import javax.swing.table.TableModel;
 
+import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver
+abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener
 {
 	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, model, uniqueTableIdentifierToUse);
 	
+		mainWindowToUse.getProject().addCommandExecutedListener(this);
+		
 		addColumnWidthSaver();
 		addColumnSequenceSaver();
+	}
+	
+	public void dispose()
+	{
+		getMainWindow().getProject().removeCommandExecutedListener(this);
+	}
+
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			if (TreeTableWithStateSaving.isRebuildTreeDueToSettingsChangeCommand(event))
+				restoreWidthsAndSequence();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
 	private void addColumnWidthSaver()

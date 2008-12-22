@@ -48,6 +48,18 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		synchTableColumns();
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		threatNameTable.dispose();
+		targetThreatLinkTable.dispose();
+		threatSummaryColumnTable.dispose();
+		targetSummaryRowTable.dispose();
+		overallProjectSummaryCellTable.dispose();	
+	}
+	
 	private void addTablesToSelectionController()
 	{
 		selectionController.addTable(threatNameTable);

@@ -93,6 +93,13 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 
 		rebuildEntireTreeTable();
 	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		editableTable.dispose();
+	}
 
 	private void configureSplitter(ScrollPaneWithHideableScrollBar tablesScrollPane)
 	{
