@@ -35,8 +35,9 @@ import org.miradi.project.Project;
 
 public class ColumnWidthSaver extends MouseAdapter
 {
-	public ColumnWidthSaver(JTable tableToUse, ColumnTagProvider tagProviderToUse, String uniqueTableIdentifierToUse)
+	public ColumnWidthSaver(Project projectToUse, JTable tableToUse, ColumnTagProvider tagProviderToUse, String uniqueTableIdentifierToUse)
 	{
+		project = projectToUse;
 		table = tableToUse;
 		tagProvider = tagProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
@@ -143,7 +144,7 @@ public class ColumnWidthSaver extends MouseAdapter
 
 	private Project getProject()
 	{
-		return EAM.getMainWindow().getProject();
+		return project;
 	}
 	
 	private String getColumnWidthKey(int modelColumn)
@@ -156,6 +157,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		return uniqueTableIdentifier;
 	}
 
+	private Project project;
 	private JTable table;
 	private ColumnTagProvider tagProvider;
 	private String uniqueTableIdentifier;
