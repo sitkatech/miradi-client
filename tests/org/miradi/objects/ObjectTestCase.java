@@ -43,6 +43,7 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
@@ -274,6 +275,14 @@ public class ObjectTestCase extends TestCaseWithProject
 			codeList.add("B1");
 			return codeList.toString();
 			
+		}
+		else if (field instanceof TagListData)
+		{
+			TagListData tagList = new TagListData("tag");
+			tagList.add("Code1A");
+			tagList.add("Code2A");
+			
+			return tagList.toString();
 		}
 		else if (field instanceof BooleanData)
 		{
