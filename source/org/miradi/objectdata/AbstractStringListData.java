@@ -29,7 +29,7 @@ abstract public class AbstractStringListData extends ObjectData
 	{
 		super(tagToUse);
 		
-		codes = new CodeList();
+		data = new CodeList();
 	}
 	
 	public void set(String newValue) throws ParseException
@@ -39,37 +39,37 @@ abstract public class AbstractStringListData extends ObjectData
 	
 	public String get()
 	{
-		return codes.toString();
+		return data.toString();
 	}
 	
 	public void set(CodeList newCodes)
 	{
-		codes = newCodes;
+		data = newCodes;
 	}
 	
 	public CodeList getCodeList()
 	{
-		return codes;
+		return data;
 	}
 	
 	public int size()
 	{
-		return codes.size();
+		return data.size();
 	}
 	
 	public String get(int index)
 	{
-		return codes.get(index);
+		return data.get(index);
 	}
 	
 	public void add(String code)
 	{
-		codes.add(code);
+		data.add(code);
 	}
 	
 	public void removeCode(String code)
 	{
-		codes.removeCode(code);
+		data.removeCode(code);
 	}
 	
 	public boolean equals(Object rawOther)
@@ -78,13 +78,13 @@ abstract public class AbstractStringListData extends ObjectData
 			return false;
 		
 		AbstractStringListData other = (AbstractStringListData)rawOther;
-		return codes.equals(other.codes);
+		return data.equals(other.data);
 	}
 
 	public int hashCode()
 	{
-		return codes.hashCode();
+		return data.hashCode();
 	}
 
-	private CodeList codes;
+	private CodeList data;
 }
