@@ -62,7 +62,7 @@ public class TableSettings extends BaseObject
 	
 	public int getRowHeight()
 	{
-		return rowHeights.asInt();
+		return rowHeight.asInt();
 	}
 
 	public static int getObjectType()
@@ -123,12 +123,12 @@ public class TableSettings extends BaseObject
 		tableIdentifier = new StringData(TAG_TABLE_IDENTIFIER);
 		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
 		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
-		rowHeights = new IntegerData(TAG_ROW_HEIGHTS);
+		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
 		
 		addField(TAG_TABLE_IDENTIFIER, tableIdentifier);
 		addField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
 		addField(TAG_COLUMN_WIDTHS, columnWidths);
-		addField(TAG_ROW_HEIGHTS, rowHeights);
+		addField(TAG_ROW_HEIGHT, rowHeight);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
@@ -136,10 +136,10 @@ public class TableSettings extends BaseObject
 	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";
 	public static final String TAG_COLUMN_SEQUENCE_CODES = "ColumnSequenceCodes";
 	public static final String TAG_COLUMN_WIDTHS = "ColumnWidths";
-	public static final String TAG_ROW_HEIGHTS = "RowHeights";
+	public static final String TAG_ROW_HEIGHT = "RowHeight";
 	
 	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
 	private StringMapData columnWidths;
-	private IntegerData rowHeights;
+	private IntegerData rowHeight;
 }
