@@ -59,6 +59,11 @@ public class TableSettings extends BaseObject
 	{
 		return columnWidths.getStringMap();
 	}
+	
+	public int getRowHeight()
+	{
+		return rowHeights.asInt();
+	}
 
 	public static int getObjectType()
 	{
