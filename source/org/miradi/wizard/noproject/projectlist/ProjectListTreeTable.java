@@ -72,6 +72,24 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		dateRenderer = new BorderlessTableCellRendererFactory();
 	}
 
+	@Override
+	public boolean shouldSaveRowHeight()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean shouldSaveColumnWidth()
+	{
+		return false;
+	}
+	
 	public String getUniqueTableIdentifier()
 	{
 		return EAM.text("Project List");

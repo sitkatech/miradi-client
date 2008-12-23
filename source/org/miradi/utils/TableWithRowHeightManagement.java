@@ -35,5 +35,5 @@ public interface TableWithRowHeightManagement
 	public int getRowCount();
 	public void setVariableRowHeight();
 	public void updateAutomaticRowHeights();
-
+	public boolean shouldSaveRowHeight();
 }

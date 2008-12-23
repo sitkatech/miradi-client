@@ -41,7 +41,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		defaultCellRendererFactory = new DefaultTableCellRendererWithPreferredHeightFactory();
 		booleanRendererFactory = new BooleanTableCellRendererFactoryWithPreferredHeight();
 		
-		rowHeightSaver = new TableRowHeightSaver();
+		rowHeightSaver = new TableRowHeightSaver(getMainWindow().getProject());
 		rowHeightSaver.manage(getMainWindow(), this, uniqueTableIdentifier);
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
@@ -50,6 +50,11 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	}
 	
 	public boolean allowUserToSetRowHeight()
+	{
+		return true;
+	}
+	
+	public boolean shouldSaveRowHeight()
 	{
 		return true;
 	}

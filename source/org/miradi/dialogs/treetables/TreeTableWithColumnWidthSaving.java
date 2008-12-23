@@ -38,10 +38,24 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
-		columnWidthSaver.restoreColumnWidths();
-		columnSequenceSaver.restoreColumnSequences();
+		
+		if (shouldSaveColumnWidth()) 
+			columnWidthSaver.restoreColumnWidths();
+		
+		if (shouldSaveColumnSequence())
+			columnSequenceSaver.restoreColumnSequences();
 	}
 	
+	public boolean shouldSaveColumnWidth()
+	{
+		return true;
+	}
+	
+	public boolean shouldSaveColumnSequence()
+	{
+		return true;
+	}
+		
 	private ColumnWidthSaver columnWidthSaver;
 	private ColumnSequenceSaver columnSequenceSaver;
 }

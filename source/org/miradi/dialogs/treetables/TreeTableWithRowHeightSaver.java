@@ -41,7 +41,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		super(mainWindowToUse, treeTableModelToUse);
 
 		treeTableModel = treeTableModelToUse;
-		rowHeightSaver = new TableRowHeightSaver();
+		rowHeightSaver = new TableRowHeightSaver(getMainWindow().getProject());
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
@@ -55,6 +55,11 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	}
 	
 	public boolean allowUserToSetRowHeight()
+	{
+		return true;
+	}
+	
+	public boolean shouldSaveRowHeight()
 	{
 		return true;
 	}
