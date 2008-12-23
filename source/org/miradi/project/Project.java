@@ -1009,9 +1009,13 @@ public class Project
 		Command lastCommand = undoRedoState.getLastRecordedCommand();
 		if(isInCommandSideEffectMode())
 		{
+			String lastCommandName = "null (lastCommand Was null)";
+			if (lastCommand != null)
+				lastCommandName = lastCommand.getCommandName();
+			
 			EAM.internalError(
 					EAM.text("Attempt to execute command while in side effect mode: " + command.getCommandName() +
-					EAM.text(" within ") + lastCommand.getCommandName())
+					EAM.text(" within ") + lastCommandName)
 					);
 		}
 		
