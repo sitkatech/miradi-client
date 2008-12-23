@@ -22,13 +22,13 @@ package org.miradi.objectdata;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.CodeList;
 
-public class CodeListData extends TagListData
+public class CodeListData extends AbstractStringListData
 {
 	public CodeListData(String tagToUse, ChoiceQuestion questionToUse)
 	{
 		super(tagToUse);
+		
 		question = questionToUse;
 	}
 	
@@ -46,9 +46,9 @@ public class CodeListData extends TagListData
 	{
 		startTagToXml(out);
 		out.writeln("<CodeList>");
-		for(int i = 0; i < codes.size(); ++i)
+		for(int i = 0; i < getCodeList().size(); ++i)
 		{
-			String code = codes.get(i);
+			String code = getCodeList().get(i);
 			String value = question.getValue(code);
 			
 			out.writeln("<Entry>");
@@ -62,5 +62,4 @@ public class CodeListData extends TagListData
 	}
 	
 	private ChoiceQuestion question;
-	private CodeList codes;
 }

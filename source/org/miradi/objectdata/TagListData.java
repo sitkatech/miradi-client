@@ -19,77 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
-import java.text.ParseException;
 
-import org.miradi.utils.CodeList;
-
-public class TagListData extends ObjectData
+public class TagListData extends AbstractStringListData
 {
 	public TagListData(String tagToUse)
 	{
 		super(tagToUse);
-		
-		codes = new CodeList();
-	}
-	
-	public void set(String newValue) throws ParseException
-	{
-		set(new CodeList(newValue));
-	}
-	
-	public String get()
-	{
-		return codes.toString();
 	}
 	
 	public boolean isTagListData()
 	{
 		return true;
 	}
-	
-	public void set(CodeList newCodes)
-	{
-		codes = newCodes;
-	}
-	
-	public CodeList getCodeList()
-	{
-		return codes;
-	}
-	
-	public int size()
-	{
-		return codes.size();
-	}
-	
-	public String get(int index)
-	{
-		return codes.get(index);
-	}
-	
-	public void add(String code)
-	{
-		codes.add(code);
-	}
-	
-	public void removeCode(String code)
-	{
-		codes.removeCode(code);
-	}
-	
-	public boolean equals(Object rawOther)
-	{
-		if(!(rawOther instanceof TagListData))
-			return false;
-		
-		TagListData other = (TagListData)rawOther;
-		return codes.equals(other.codes);
-	}
-
-	public int hashCode()
-	{
-		return codes.hashCode();
-	}
-
-	private CodeList codes;
 }
