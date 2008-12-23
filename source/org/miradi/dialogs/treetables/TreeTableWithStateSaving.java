@@ -74,7 +74,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_WIDTHS))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_ROW_HEIGHTS))
+		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_ROW_HEIGHT))
 			return true;
 			
 		return false;

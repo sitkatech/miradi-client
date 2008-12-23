@@ -117,7 +117,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	{
 		EAM.logVerbose("saveRowHeight " + getUniqueTableIdentifier() + ": " + table.getRowHeight());
 		TableSettings tableSettings = getTableSettings();
-		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_ROW_HEIGHTS, Integer.toString(table.getRowHeight()));
+		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_ROW_HEIGHT, Integer.toString(table.getRowHeight()));
 		getProject().executeCommand(setColumnWidths);
 	}
 	
