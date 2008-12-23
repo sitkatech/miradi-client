@@ -27,13 +27,8 @@ public class ReportTemplatePoolTable extends ObjectPoolTable
 {
 	public ReportTemplatePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}	
 	
 	public static final String UNIQUE_IDENTIFIER = "ReportTemplatePoolTable";
 }

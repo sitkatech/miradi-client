@@ -27,14 +27,8 @@ public class AccountingCodePoolTable extends ObjectPoolTable
 {
 	public AccountingCodePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 	}
 	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}	
-	
 	public static final String UNIQUE_IDENTIFIER = "AccountingCodePoolTable";
-
 }

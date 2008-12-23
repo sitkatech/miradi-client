@@ -45,9 +45,9 @@ import org.miradi.project.Project;
 
 abstract public class DiagramPageList extends ObjectPoolTable
 {
-	public DiagramPageList(MainWindow mainWindowToUse, ObjectPoolTableModel objectPoolTableModel)
+	public DiagramPageList(MainWindow mainWindowToUse, ObjectPoolTableModel objectPoolTableModel, String uniqueTableIdentifier)
 	{
-		super(mainWindowToUse, objectPoolTableModel, SORTABLE_COLUMN_INDEX);
+		super(mainWindowToUse, objectPoolTableModel, SORTABLE_COLUMN_INDEX, uniqueTableIdentifier);
 		project = mainWindowToUse.getProject();
 		
 		getSelectionModel().addListSelectionListener(new DiagramObjectListSelectionListener(project));
