@@ -27,13 +27,8 @@ public class OrganizationPoolTable extends ObjectPoolTable
 {
 	public OrganizationPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, DEFAULT_SORT_COLUMN);
+		super(mainWindowToUse, modelToUse, DEFAULT_SORT_COLUMN, UNIQUE_IDENTIFIER);
 	}
-	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}	
 	
 	private static final int DEFAULT_SORT_COLUMN = 0;
 	public static final String UNIQUE_IDENTIFIER = "OrganizationPoolTable";

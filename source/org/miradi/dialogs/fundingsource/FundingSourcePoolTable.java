@@ -27,14 +27,8 @@ public class FundingSourcePoolTable extends ObjectPoolTable
 {
 	public FundingSourcePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 	}
 	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}	
-	
 	public static final String UNIQUE_IDENTIFIER = "FundingSourcePoolTable";
-
 }

@@ -28,7 +28,7 @@ public class ResultsChainPageList extends DiagramPageList
 {
 	public ResultsChainPageList(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ObjectPoolTableModel(mainWindowToUse.getProject(), ObjectType.RESULTS_CHAIN_DIAGRAM, getTags()));
+		super(mainWindowToUse, new ObjectPoolTableModel(mainWindowToUse.getProject(), ObjectType.RESULTS_CHAIN_DIAGRAM, getTags()), UNIQUE_IDENTIFIER);
 	}
 	
 	private static String[] getTags()
@@ -50,4 +50,6 @@ public class ResultsChainPageList extends DiagramPageList
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
+	
+	public static final String UNIQUE_IDENTIFIER = "ResultsChainPageList";
 }

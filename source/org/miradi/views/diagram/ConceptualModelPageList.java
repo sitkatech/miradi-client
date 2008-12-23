@@ -29,7 +29,7 @@ public class ConceptualModelPageList extends DiagramPageList
 {
 	public ConceptualModelPageList(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ConceptualModelPoolTableModel(mainWindowToUse.getProject(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()));
+		super(mainWindowToUse, new ConceptualModelPoolTableModel(mainWindowToUse.getProject(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()), UNIQUE_IDENTIFIER);
 	}
 
 	private static String[] getTags()
@@ -51,4 +51,6 @@ public class ConceptualModelPageList extends DiagramPageList
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
+	
+	public static final String UNIQUE_IDENTIFIER = "ConceptualModelPageList";
 }

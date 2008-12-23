@@ -23,9 +23,9 @@ import org.miradi.main.MainWindow;
 
 abstract public class ObjectPoolTablePanel extends ObjectTablePanel
 {
-	public ObjectPoolTablePanel(MainWindow mainWindowToUse, int objectTypeToUse, ObjectPoolTableModel model)
+	public ObjectPoolTablePanel(MainWindow mainWindowToUse, int objectTypeToUse, ObjectPoolTableModel model, String uniqueTableIdentifier)
 	{
-		super(mainWindowToUse, new ObjectPoolTable(mainWindowToUse, model, DEFAULT_SORT_COLUMN));
+		super(mainWindowToUse, new ObjectPoolTable(mainWindowToUse, model, DEFAULT_SORT_COLUMN, uniqueTableIdentifier));
 	}
 	
 	private static final int DEFAULT_SORT_COLUMN = 0;
