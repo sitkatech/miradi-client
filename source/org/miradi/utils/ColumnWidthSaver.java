@@ -66,9 +66,13 @@ public class ColumnWidthSaver extends MouseAdapter
 		int modelColumn = table.convertColumnIndexToModel(tableColumn);
 		String columnTag = tagProvider.getColumnTag(modelColumn);
 		
-		TableSettings tableSettings = getTableSettings();
-		StringMap columnWidthMap = tableSettings.getColumnWidthMap();
-		String columnWidthAsString = columnWidthMap.get(columnTag);
+		String columnWidthAsString = "";
+		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueTableIdentifier());
+		if (tableSettings != null)
+		{
+			StringMap columnWidthMap = tableSettings.getColumnWidthMap();
+			columnWidthAsString = columnWidthMap.get(columnTag);
+		}
 		
 		return getColumnWidth(tableColumn, columnTag, columnWidthAsString);
 	}
@@ -132,16 +136,11 @@ public class ColumnWidthSaver extends MouseAdapter
 			columnWidthMap.add(getColumnWidthKey(modelColumn), Integer.toString(column.getWidth()));
 		}
 		
-		TableSettings tableSettings = getTableSettings();
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
 		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_WIDTHS, columnWidthMap.toString());
 		getProject().executeCommand(setColumnWidths);
 	}
 	
-	private TableSettings getTableSettings() throws Exception
-	{
-		return TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
-	}
-
 	private Project getProject()
 	{
 		return project;

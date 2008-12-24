@@ -133,38 +133,12 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	}
 
 	@Override
-	public void setRowHeight(int rowHeight)
-	{
-		super.setRowHeight(rowHeight);
-		if(getMainWindow() == null)
-			return;
-		
-		if(getMainWindow().isRowHeightModeAutomatic())
-			return;
-		
-		if(rowHeightSaver == null)
-			return;
-		
-		rowHeightSaver.rowHeightChanged(rowHeight);
-	}
-	
-	@Override
 	public void tableChanged(TableModelEvent e)
 	{
 		super.tableChanged(e);
 		updateAutomaticRowHeights();
 	}
-	
-	@Override
-	public void setRowHeight(int row, int rowHeight)
-	{
-		super.setRowHeight(row, rowHeight);
-		if(rowHeightSaver == null)
-			return;
 		
-		rowHeightSaver.rowHeightChanged(row, rowHeight);
-	}
-	
 	public JTable asTable()
 	{
 		return this;

@@ -99,7 +99,10 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		
 		try
 		{
-			TableSettings tableSettings = getTableSettings();
+			TableSettings tableSettings = TableSettings.find(getProject(), getUniqueTableIdentifier());
+			if (tableSettings == null)
+				return;
+			
 			int rowHeight = tableSettings.getRowHeight();
 			if(rowHeight > 0)
 			{
@@ -112,18 +115,25 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 			EAM.logException(e);
 		}
 	}
+
+	private void saveRowHeightHelper()
+	{
+		try
+		{
+			saveRowHeight();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
 	
 	private void saveRowHeight() throws Exception
 	{
 		EAM.logVerbose("saveRowHeight " + getUniqueTableIdentifier() + ": " + table.getRowHeight());
-		TableSettings tableSettings = getTableSettings();
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
 		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_ROW_HEIGHT, Integer.toString(table.getRowHeight()));
 		getProject().executeCommand(setColumnWidths);
-	}
-	
-	private TableSettings getTableSettings() throws Exception
-	{
-		return TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
 	}
 	
 	public void mouseClicked(MouseEvent e)
@@ -171,6 +181,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		int eventY = e.getY() + table.getY();
 		sizeDeltaY = eventY - dragStartedY;
 		table.setRowHeight(rowBeingResized, getNewRowHeight());
+		saveRowHeightHelper();		
 		e.consume();
 	}
 
@@ -227,6 +238,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		restoreDefaultCursor();
 		int newHeight = getNewRowHeight();
 		table.setRowHeight(newHeight);
+		saveRowHeightHelper();
 		Point point = new Point(0, rowBeingResized * newHeight);
 		Rectangle resized = new Rectangle(point, new Dimension(1, newHeight));
 		table.scrollRectToVisible(resized);
