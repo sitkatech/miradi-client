@@ -44,7 +44,7 @@ public class MultiTableRowHeightController extends TableRowHeightController
 		if(isSetRowHeightInProgress)
 			return;
 		
-		isSetRowHeightInProgress = true;
+		enableRowHeightInProgress();
 		try
 		{
 			for(TableWithRowHeightManagement table : tables)
@@ -58,9 +58,39 @@ public class MultiTableRowHeightController extends TableRowHeightController
 		}
 		finally
 		{
-			isSetRowHeightInProgress = false;
+			disableRowHeightInProgress();
 		}
 	}
+	
+	public void saveNewRowHeight(int newHeight)
+	{
+		if(isSetRowHeightInProgress)
+			return;
+		
+		enableRowHeightInProgress();
+		try
+		{
+			for(TableWithRowHeightManagement table : tables)
+			{
+				table.saveRowHeight(newHeight);
+			}
+		}
+		finally
+		{
+			disableRowHeightInProgress();
+		}
+	}
+
+	private void disableRowHeightInProgress()
+	{
+		isSetRowHeightInProgress = false;
+	}
+
+	private void enableRowHeightInProgress()
+	{
+		isSetRowHeightInProgress = true;
+	}
+
 	
 	public void rowHeightChanged(int newHeight)
 	{

@@ -29,6 +29,8 @@ import java.awt.event.MouseMotionListener;
 
 import javax.swing.JTable;
 
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -68,28 +70,14 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 
 	public void rowHeightChanged(int newRowHeight)
 	{
-		try
-		{
-			if (tableWithRowManagement.shouldSaveRowHeight())
-				saveRowHeight();
-
-			if(multiTableController == null)
-				return;
-
+		if(multiTableController != null)
 			multiTableController.rowHeightChanged(newRowHeight);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
 	}
 	
 	public void rowHeightChanged(int row, int newRowHeight)
 	{
-		if(multiTableController == null)
-			return;
-		
-		multiTableController.rowHeightChanged(row, newRowHeight);
+		if(multiTableController != null)
+			multiTableController.rowHeightChanged(row, newRowHeight);
 	}
 	
 	private void restoreRowHeight()
@@ -116,7 +104,7 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		}
 	}
 
-	private void saveRowHeightHelper()
+	public void saveRowHeightHelper()
 	{
 		try
 		{
@@ -130,9 +118,10 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 	
 	private void saveRowHeight() throws Exception
 	{
-		EAM.logVerbose("saveRowHeight " + getUniqueTableIdentifier() + ": " + table.getRowHeight());
+		int currentRowHeight = table.getRowHeight();
+		EAM.logVerbose("saveRowHeight " + getUniqueTableIdentifier() + ": " + currentRowHeight);
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
-		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_ROW_HEIGHT, Integer.toString(table.getRowHeight()));
+		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_ROW_HEIGHT, Integer.toString(currentRowHeight));
 		getProject().executeCommand(setColumnWidths);
 	}
 	
@@ -181,7 +170,6 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		int eventY = e.getY() + table.getY();
 		sizeDeltaY = eventY - dragStartedY;
 		table.setRowHeight(rowBeingResized, getNewRowHeight());
-		saveRowHeightHelper();		
 		e.consume();
 	}
 
@@ -232,19 +220,42 @@ public class TableRowHeightSaver implements MouseListener, MouseMotionListener
 		setResizeCursor();
 	}
 
-	void endResizing(MouseEvent event)
+	private void endResizing(MouseEvent event)
 	{
 		resizeInProgress = false;
 		restoreDefaultCursor();
 		int newHeight = getNewRowHeight();
 		table.setRowHeight(newHeight);
-		saveRowHeightHelper();
+		try
+		{
+			saveRowHeightAsTransaction(newHeight);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+
 		Point point = new Point(0, rowBeingResized * newHeight);
 		Rectangle resized = new Rectangle(point, new Dimension(1, newHeight));
 		table.scrollRectToVisible(resized);
 		table.getSelectionModel().setSelectionInterval(rowBeingResized, rowBeingResized);
 		table.getTopLevelAncestor().repaint();
 		table.setEnabled(true);
+	}
+
+	private void saveRowHeightAsTransaction(int newHeight) throws Exception
+	{
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			saveRowHeightHelper();
+		if(multiTableController != null)
+			multiTableController.saveNewRowHeight(newHeight);
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
 	}
 
 	private int getNewRowHeight()
