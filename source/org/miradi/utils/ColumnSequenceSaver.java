@@ -64,14 +64,13 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private CodeList getStoredColumnSequenceCodes() throws Exception
 	{
-		return getTableSettings().getCodeList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
+		TableSettings tableSettings = TableSettings.find(getProject(), uniqueTableIdentifier);
+		if (tableSettings == null)
+			return new CodeList();
+		
+		return tableSettings.getCodeList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
 	}
 
-	private TableSettings getTableSettings() throws Exception
-	{
-		return TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
-	}
-	
 	public Project getProject()
 	{
 		return project;
@@ -106,7 +105,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	private void saveColumnSequences() throws Exception
 	{		
-		TableSettings tableSettings = getTableSettings();
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
 		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, getCurrentSequence().toString());
 		getProject().executeCommand(setColumnSequence);
 	}
