@@ -48,6 +48,29 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		
 		getTableHeader().addMouseListener(new ColumnChangeHandler(this));
 	}
+
+	public void saveRowHeight(int newRowHeight)
+	{
+		rowHeightSaver.saveRowHeightHelper();
+	}
+	
+	public void setRowHeight(int rowHeight)
+	{
+		super.setRowHeight(rowHeight);
+		if(rowHeightSaver == null)
+			return;
+		
+		rowHeightSaver.rowHeightChanged(rowHeight);
+	}
+	
+	public void setRowHeight(int row, int rowHeight)
+	{
+		super.setRowHeight(row, rowHeight);
+		if(rowHeightSaver == null)
+			return;
+		
+		rowHeightSaver.rowHeightChanged(row, rowHeight);
+	}
 	
 	public boolean allowUserToSetRowHeight()
 	{
