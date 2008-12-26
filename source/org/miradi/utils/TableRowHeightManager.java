@@ -104,7 +104,7 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 		}
 	}
 
-	public void saveRowHeightHelper()
+	public void saveRowHeightIgnoreExceptions()
 	{
 		try
 		{
@@ -248,7 +248,7 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			saveRowHeightHelper();
+			saveRowHeightIgnoreExceptions();
 		if(multiTableController != null)
 			multiTableController.saveNewRowHeight(newHeight);
 		}
