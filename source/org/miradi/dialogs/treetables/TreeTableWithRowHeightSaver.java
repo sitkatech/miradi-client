@@ -41,8 +41,8 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		super(mainWindowToUse, treeTableModelToUse);
 
 		treeTableModel = treeTableModelToUse;
-		rowHeightSaver = new TableRowHeightManager(getMainWindow().getProject());
-		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
+		rowHeightManager = new TableRowHeightManager(getMainWindow().getProject());
+		rowHeightManager.manage(getMainWindow(), this, getUniqueTableIdentifier());
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 		
@@ -80,7 +80,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
 		rowHeightController.setMultiTableRowHeightController(listener);
-		rowHeightSaver.setMultiTableRowHeightController(listener);
+		rowHeightManager.setMultiTableRowHeightController(listener);
 	}
 	
 	public void setVariableRowHeight()
@@ -134,7 +134,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	public void saveRowHeight(int newRowHeight)
 	{
-		rowHeightSaver.saveRowHeightHelper();
+		rowHeightManager.saveRowHeightHelper();
 	}
 
 	@Override
@@ -148,10 +148,10 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void setRowHeight(int row, int rowHeight)
 	{
 		super.setRowHeight(row, rowHeight);
-		if(rowHeightSaver == null)
+		if(rowHeightManager == null)
 			return;
 		
-		rowHeightSaver.rowHeightChanged(row, rowHeight);
+		rowHeightManager.rowHeightChanged(row, rowHeight);
 	}
 	
 	@Override
@@ -164,10 +164,10 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		if(getMainWindow().isRowHeightModeAutomatic())
 			return;
 		
-		if(rowHeightSaver == null)
+		if(rowHeightManager == null)
 			return;
 		
-		rowHeightSaver.rowHeightChanged(rowHeight);
+		rowHeightManager.rowHeightChanged(rowHeight);
 	}
 		
 	public JTable asTable()
@@ -179,6 +179,6 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	abstract public String getUniqueTableIdentifier();
 	
 	private GenericTreeTableModel treeTableModel;
-	private TableRowHeightManager rowHeightSaver;
+	private TableRowHeightManager rowHeightManager;
 	private SingleTableRowHeightController rowHeightController;
 }
