@@ -136,7 +136,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	public void saveRowHeight(int newRowHeight)
 	{
-		rowHeightSaver.saveRowHeightHelper();
+		rowHeightSaver.saveRowHeightIgnoreExceptions();
 	}
 
 	@Override
