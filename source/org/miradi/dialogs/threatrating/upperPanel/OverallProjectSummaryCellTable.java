@@ -36,5 +36,5 @@ public class OverallProjectSummaryCellTable extends AbstractTableWithChoiceItemR
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
 	}
 	
-	public static final String UNIQUE_IDENTIFIER = "";
+	public static final String UNIQUE_IDENTIFIER = "OverallProjectSummaryCellTable";
 }
