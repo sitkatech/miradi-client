@@ -46,6 +46,11 @@ public class PanelTable extends TableWithHelperMethods
 	{
 		return mainWindow;
 	}
+	
+	public void reloadTable() throws Exception
+	{
+		invalidate();
+	}
 
 	private static final int INTERCELL_LINE_SIZE = 3;
 	private static final int VERTICAL_FONT_CUSHION = INTERCELL_LINE_SIZE + 

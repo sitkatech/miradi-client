@@ -41,8 +41,8 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		super(mainWindowToUse, treeTableModelToUse);
 
 		treeTableModel = treeTableModelToUse;
-		rowHeightManager = new TableRowHeightManager(getMainWindow().getProject());
-		rowHeightManager.manage(getMainWindow(), this, getUniqueTableIdentifier());
+		rowHeightSaver = new TableRowHeightManager(getMainWindow().getProject());
+		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 		
@@ -67,6 +67,8 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void rebuildTableCompletely() throws Exception
 	{
 		super.rebuildTableCompletely();
+		
+		rowHeightSaver.restoreRowHeight();
 	}
 
 	public void updateAutomaticRowHeights()
@@ -80,7 +82,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
 		rowHeightController.setMultiTableRowHeightController(listener);
-		rowHeightManager.setMultiTableRowHeightController(listener);
+		rowHeightSaver.setMultiTableRowHeightController(listener);
 	}
 	
 	public void setVariableRowHeight()
@@ -134,7 +136,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	
 	public void saveRowHeight(int newRowHeight)
 	{
-		rowHeightManager.saveRowHeightHelper();
+		rowHeightSaver.saveRowHeightHelper();
 	}
 
 	@Override
@@ -148,10 +150,10 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	public void setRowHeight(int row, int rowHeight)
 	{
 		super.setRowHeight(row, rowHeight);
-		if(rowHeightManager == null)
+		if(rowHeightSaver == null)
 			return;
 		
-		rowHeightManager.rowHeightChanged(row, rowHeight);
+		rowHeightSaver.rowHeightChanged(row, rowHeight);
 	}
 	
 	@Override
@@ -164,10 +166,10 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		if(getMainWindow().isRowHeightModeAutomatic())
 			return;
 		
-		if(rowHeightManager == null)
+		if(rowHeightSaver == null)
 			return;
 		
-		rowHeightManager.rowHeightChanged(rowHeight);
+		rowHeightSaver.rowHeightChanged(rowHeight);
 	}
 		
 	public JTable asTable()
@@ -179,6 +181,6 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	abstract public String getUniqueTableIdentifier();
 	
 	private GenericTreeTableModel treeTableModel;
-	private TableRowHeightManager rowHeightManager;
+	private TableRowHeightManager rowHeightSaver;
 	private SingleTableRowHeightController rowHeightController;
 }

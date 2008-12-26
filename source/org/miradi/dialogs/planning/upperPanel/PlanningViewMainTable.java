@@ -108,7 +108,7 @@ public class PlanningViewMainTable extends TableWithTreeTableNodes
 		setColumnRenderer(column);
 		try
 		{
-			restoreWidthsAndSequence();
+			reloadTable();
 		}
 		catch(Exception e)
 		{
