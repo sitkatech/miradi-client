@@ -37,6 +37,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		super(mainWindowToUse, model);
 		
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
+		verifyUniqueTableIdentifier();
 		
 		defaultCellRendererFactory = new DefaultTableCellRendererWithPreferredHeightFactory();
 		booleanRendererFactory = new BooleanTableCellRendererFactoryWithPreferredHeight();
@@ -47,6 +48,12 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 		
 		getTableHeader().addMouseListener(new ColumnChangeHandler(this));
+	}
+
+	private void verifyUniqueTableIdentifier()
+	{
+		if (uniqueTableIdentifier.length() == 0)
+			EAM.logWarning("A unique table identifier has been passed in with 0 length");
 	}
 	
 	@Override
