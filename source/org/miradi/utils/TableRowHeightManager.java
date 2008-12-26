@@ -39,9 +39,10 @@ import org.miradi.project.Project;
 
 public class TableRowHeightManager implements MouseListener, MouseMotionListener
 {
-	public TableRowHeightManager(Project projectToUse)
+	public TableRowHeightManager(Project projectToUse, int defaultRowHeightToUse)
 	{
 		project = projectToUse;
+		defaultRowHeight = defaultRowHeightToUse;
 	}
 	
 	public void manage(MainWindow mainWindowToUse, TableWithRowHeightManagement tableToManage, String uniqueTableIdentifierToUse)
@@ -92,11 +93,11 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 				return;
 			
 			int rowHeight = tableSettings.getRowHeight();
-			if(rowHeight > 0)
-			{
-				table.setRowHeight(rowHeight);
-				EAM.logVerbose("restoreRowHeight " + getUniqueTableIdentifier() + ": " + table.getRowHeight());
-			}
+			if(rowHeight == 0)
+				rowHeight = defaultRowHeight;
+				
+			table.setRowHeight(rowHeight);
+			EAM.logVerbose("restoreRowHeight " + getUniqueTableIdentifier() + ": " + table.getRowHeight());
 		}
 		catch (Exception e)
 		{
@@ -249,8 +250,8 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 		try
 		{
 			saveRowHeightIgnoreExceptions();
-		if(multiTableController != null)
-			multiTableController.saveNewRowHeight(newHeight);
+			if(multiTableController != null)
+				multiTableController.saveNewRowHeight(newHeight);
 		}
 		finally
 		{
@@ -293,6 +294,7 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
     public final static int ROW_RESIZE_MARGIN = 2;
 
     private Project project;
+    private int defaultRowHeight;
     private MainWindow mainWindow;
     private TableWithRowHeightManagement tableWithRowManagement;
     private JTable table;
