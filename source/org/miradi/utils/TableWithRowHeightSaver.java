@@ -41,8 +41,8 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		defaultCellRendererFactory = new DefaultTableCellRendererWithPreferredHeightFactory();
 		booleanRendererFactory = new BooleanTableCellRendererFactoryWithPreferredHeight();
 		
-		rowHeightSaver = new TableRowHeightManager(getMainWindow().getProject());
-		rowHeightSaver.manage(getMainWindow(), this, uniqueTableIdentifier);
+		rowHeightManager = new TableRowHeightManager(getMainWindow().getProject());
+		rowHeightManager.manage(getMainWindow(), this, uniqueTableIdentifier);
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
 		
@@ -51,25 +51,25 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 
 	public void saveRowHeight(int newRowHeight)
 	{
-		rowHeightSaver.saveRowHeightHelper();
+		rowHeightManager.saveRowHeightHelper();
 	}
 	
 	public void setRowHeight(int rowHeight)
 	{
 		super.setRowHeight(rowHeight);
-		if(rowHeightSaver == null)
+		if(rowHeightManager == null)
 			return;
 		
-		rowHeightSaver.rowHeightChanged(rowHeight);
+		rowHeightManager.rowHeightChanged(rowHeight);
 	}
 	
 	public void setRowHeight(int row, int rowHeight)
 	{
 		super.setRowHeight(row, rowHeight);
-		if(rowHeightSaver == null)
+		if(rowHeightManager == null)
 			return;
 		
-		rowHeightSaver.rowHeightChanged(row, rowHeight);
+		rowHeightManager.rowHeightChanged(row, rowHeight);
 	}
 	
 	public boolean allowUserToSetRowHeight()
@@ -85,7 +85,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	public void setMultiTableRowHeightController(MultiTableRowHeightController listener)
 	{
 		rowHeightController.setMultiTableRowHeightController(listener);
-		rowHeightSaver.setMultiTableRowHeightController(listener);
+		rowHeightManager.setMultiTableRowHeightController(listener);
 	}
 	
 	public void updateAutomaticRowHeights()
@@ -169,7 +169,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	}
 	
 	private String uniqueTableIdentifier;
-	private TableRowHeightManager rowHeightSaver;
+	private TableRowHeightManager rowHeightManager;
 	private SingleTableRowHeightController rowHeightController;
 	private DefaultTableCellRendererWithPreferredHeightFactory defaultCellRendererFactory;
 	private BooleanTableCellRendererFactoryWithPreferredHeight booleanRendererFactory;
