@@ -57,10 +57,7 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 			table.addMouseMotionListener(this);
 		}
 
-		if (tableWithRowManagement.shouldSaveRowHeight())
-		{
-			restoreRowHeight();
-		}
+		restoreRowHeight();
 	}
 	
 	public void setMultiTableRowHeightController(MultiTableRowHeightController controller)
@@ -80,9 +77,12 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 			multiTableController.rowHeightChanged(row, newRowHeight);
 	}
 	
-	private void restoreRowHeight()
+	public void restoreRowHeight()
 	{
 		if(isRowHeightAutomatic())
+			return;
+		
+		if (!tableWithRowManagement.shouldSaveRowHeight())
 			return;
 		
 		try

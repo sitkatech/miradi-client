@@ -49,7 +49,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		try
 		{
 			if (TreeTableWithStateSaving.isRebuildTreeDueToSettingsChangeCommand(event))
-				restoreWidthsAndSequence();
+				reloadTable();
 		}
 		catch (Exception e)
 		{
@@ -85,10 +85,13 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		}
 	}
 	
-	protected void restoreWidthsAndSequence() throws Exception
+	public void reloadTable() throws Exception
 	{
+		super.reloadTable();
+		
 		if(columnWidthSaver != null)
 			columnWidthSaver.restoreColumnWidths();
+		
 		if(columnSequenceSaver != null)
 			columnSequenceSaver.restoreColumnSequences();
 	}

@@ -48,6 +48,15 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		
 		getTableHeader().addMouseListener(new ColumnChangeHandler(this));
 	}
+	
+	@Override
+	public void reloadTable() throws Exception
+	{
+		super.reloadTable();
+		
+		if (shouldSaveRowHeight())
+			rowHeightManager.restoreRowHeight();
+	}
 
 	public void saveRowHeight(int newRowHeight)
 	{
