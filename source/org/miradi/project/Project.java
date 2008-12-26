@@ -1010,9 +1010,9 @@ public class Project
 		if(isInCommandSideEffectMode())
 		{
 			String lastCommandName = "null (lastCommand Was null)";
-			if (lastCommand != null)
-				lastCommandName = lastCommand.getCommandName();
-			
+			if(lastCommand == null)
+				EAM.internalError("Attempted to execute command as side effect before any command had been executed ");
+
 			EAM.internalError(
 					EAM.text("Attempt to execute command while in side effect mode: " + command.getCommandName() +
 					EAM.text(" within ") + lastCommandName)
