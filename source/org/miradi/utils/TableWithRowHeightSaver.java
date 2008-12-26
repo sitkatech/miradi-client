@@ -53,7 +53,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 	private void verifyUniqueTableIdentifier()
 	{
 		if (uniqueTableIdentifier.length() == 0)
-			EAM.logWarning("A unique table identifier has been passed in with 0 length");
+			EAM.logError("A unique table identifier has been passed in with 0 length");
 	}
 	
 	@Override
