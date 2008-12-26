@@ -30,7 +30,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.utils.ColumnChangeHandler;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.SingleTableRowHeightController;
-import org.miradi.utils.TableRowHeightSaver;
+import org.miradi.utils.TableRowHeightManager;
 import org.miradi.utils.TableWithRowHeightManagement;
 import org.miradi.utils.TableWithRowHeightSaver;
 
@@ -41,7 +41,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		super(mainWindowToUse, treeTableModelToUse);
 
 		treeTableModel = treeTableModelToUse;
-		rowHeightSaver = new TableRowHeightSaver(getMainWindow().getProject());
+		rowHeightSaver = new TableRowHeightManager(getMainWindow().getProject());
 		rowHeightSaver.manage(getMainWindow(), this, getUniqueTableIdentifier());
 		
 		rowHeightController = new SingleTableRowHeightController(getMainWindow(), this);
@@ -179,6 +179,6 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 	abstract public String getUniqueTableIdentifier();
 	
 	private GenericTreeTableModel treeTableModel;
-	private TableRowHeightSaver rowHeightSaver;
+	private TableRowHeightManager rowHeightSaver;
 	private SingleTableRowHeightController rowHeightController;
 }

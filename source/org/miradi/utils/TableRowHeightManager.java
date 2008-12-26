@@ -37,9 +37,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 
-public class TableRowHeightSaver implements MouseListener, MouseMotionListener
+public class TableRowHeightManager implements MouseListener, MouseMotionListener
 {
-	public TableRowHeightSaver(Project projectToUse)
+	public TableRowHeightManager(Project projectToUse)
 	{
 		project = projectToUse;
 	}
