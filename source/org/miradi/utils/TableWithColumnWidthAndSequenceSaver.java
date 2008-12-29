@@ -21,11 +21,11 @@ package org.miradi.utils;
 
 import javax.swing.table.TableModel;
 
-import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.TableSettings;
 
 abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener
 {
@@ -48,8 +48,14 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	{
 		try
 		{
-			if (TreeTableWithStateSaving.isRebuildTreeDueToSettingsChangeCommand(event))
-				reloadTable();
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_SEQUENCE_CODES))
+				reloadColumnSequences();
+			
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_COLUMN_WIDTHS))
+				reloadColumnWidths();
+			
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_ROW_HEIGHT))
+				reloadRowHeights();
 		}
 		catch (Exception e)
 		{
@@ -85,15 +91,20 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		}
 	}
 	
-	public void reloadTable() throws Exception
+	public void reloadColumnSequences() throws Exception
 	{
-		super.reloadTable();
+		if(columnSequenceSaver != null)
+			columnSequenceSaver.restoreColumnSequences();
 		
+		invalidate();
+	}
+
+	public void reloadColumnWidths()
+	{
 		if(columnWidthSaver != null)
 			columnWidthSaver.restoreColumnWidths();
 		
-		if(columnSequenceSaver != null)
-			columnSequenceSaver.restoreColumnSequences();
+		invalidate();
 	}
 	
 	protected int getSavedColumnWidth(int tableColumn) throws Exception

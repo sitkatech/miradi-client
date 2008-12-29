@@ -56,11 +56,8 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 			EAM.logError("A unique table identifier has been passed in with 0 length");
 	}
 	
-	@Override
-	public void reloadTable() throws Exception
+	public void reloadRowHeights()
 	{
-		super.reloadTable();
-		
 		if (shouldSaveRowHeight())
 			rowHeightManager.restoreRowHeight();
 	}

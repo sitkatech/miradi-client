@@ -37,8 +37,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 		table = tableToUse;
 		tagProvider = tagProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
-		
-		defaultColumnSequenceList = getCurrentSequence();
 	}
 	
 	public void restoreColumnSequences() throws Exception
@@ -47,12 +45,10 @@ public class ColumnSequenceSaver extends MouseAdapter
 		CodeList storedColumnTagSequences = new CodeList(getStoredColumnSequenceCodes());
 		storedColumnTagSequences.retainAll(currentColumnTagSequences);
 		currentColumnTagSequences.subtract(storedColumnTagSequences);
-
 		
 		CodeList newSequenceList = new CodeList();
 		newSequenceList.addAll(storedColumnTagSequences);
 		newSequenceList.addAll(currentColumnTagSequences);
-		
 		for (int codeIndex = 0; codeIndex < newSequenceList.size(); ++codeIndex)
 		{			
 			int currentLocation = findCurrentTagLocation(newSequenceList.get(codeIndex));
@@ -72,7 +68,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		
 		CodeList storedColumnSequences = tableSettings.getCodeList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
 		if (storedColumnSequences.size() == 0)
-			return defaultColumnSequenceList;
+			return getDefaultSequence();
 
 		return storedColumnSequences;
 	}
@@ -109,6 +105,18 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return currentColumnTagSequences;
 	}
 	
+	private CodeList getDefaultSequence()
+	{
+		CodeList defaultColumnTagSequence = new CodeList();
+		for (int column = 0; column < table.getColumnCount(); ++column)
+		{
+			String columnTag = tagProvider.getColumnTag(column);
+			defaultColumnTagSequence.add(columnTag);
+		}
+		
+		return defaultColumnTagSequence;
+	}
+	
 	private void saveColumnSequences() throws Exception
 	{		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
@@ -130,7 +138,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 	}
 
 	private Project project;
-	private CodeList defaultColumnSequenceList;
 	private JTable table;
 	private ColumnTagProvider tagProvider;
 	private String uniqueTableIdentifier;
