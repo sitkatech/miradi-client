@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -59,6 +60,21 @@ public class TaggedObjectSetPool extends EAMNormalObjectPool
 			
 		return allTaggedObjectSets;
 	}
+	
+	public Vector<TaggedObjectSet> findTaggedObjectSetsWithFactor(ORef factorRef) throws Exception
+	{
+		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = new Vector();
+		ORefList taggedObjectRefs = getORefList();
+		for (int index = 0; index < taggedObjectRefs.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = find(taggedObjectRefs.get(index).getObjectId());
+			if (taggedObjectSet.getTaggedObjectRefs().contains(factorRef))
+				taggedObjectSetsWithFactor.add(taggedObjectSet);
+		}
+		
+		return taggedObjectSetsWithFactor;
+	}
+
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
