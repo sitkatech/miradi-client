@@ -41,6 +41,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
@@ -153,11 +154,23 @@ public class FactorDeleteHelper
 		if (underlyingFactor.mustBeDeletedBecauseParentIsGone())
 			return;
 
+		removeFromTaggedObjectSet(underlyingFactor);
 		removeStrategyFromObjectiveRelevancyList(underlyingFactor);
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
 	}
 	
+	private void removeFromTaggedObjectSet(Factor underlyingFactor) throws Exception
+	{
+		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = getProject().getTaggedObjectSetPool().findTaggedObjectSetsWithFactor(underlyingFactor.getRef());
+		for (int index = 0; index < taggedObjectSetsWithFactor.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = taggedObjectSetsWithFactor.get(index);
+			CommandSetObjectData removeFromTaggedObjectSet = CommandSetObjectData.createRemoveORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, underlyingFactor.getRef());
+			getProject().executeCommand(removeFromTaggedObjectSet);
+		}
+	}
+
 	private void removeFromDiagramAndDelete(DiagramFactor diagramFactor) throws Exception
 	{
 		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());
