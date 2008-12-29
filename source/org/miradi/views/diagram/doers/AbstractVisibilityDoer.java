@@ -26,6 +26,7 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
@@ -36,6 +37,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.FactorDeleteHelperForTesting;
@@ -161,6 +163,19 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		setLocation(helper, annotationDiagramFactorId);
 		setSize(helper, annotationDiagramFactorId, defaultSize);
 		selectParentDiagramFactor();
+		
+		includeBubbleInSelectedTags(selectedAnnotationRef);
+	}
+
+	private void includeBubbleInSelectedTags(ORef selectedAnnotationRef) throws Exception
+	{
+		ORefList selectedTaggedObjectSetRefs = getDiagramObject().getSelectedTaggedObjectSetRefs();
+		for (int index = 0; index < selectedTaggedObjectSetRefs.size(); ++index)
+		{
+			TaggedObjectSet selectedTaggedObjectSet = TaggedObjectSet.find(getProject(), selectedTaggedObjectSetRefs.get(index));
+			CommandSetObjectData tagFactorCommand = CommandSetObjectData.createAppendORefCommand(selectedTaggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, selectedAnnotationRef);
+			getProject().executeCommand(tagFactorCommand);
+		}
 	}
 
 	protected void hideBubble() throws Exception, CommandFailedException
