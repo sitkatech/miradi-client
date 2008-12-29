@@ -38,7 +38,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		tagProvider = tagProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 		
-		defaultColumnSequencList = getCurrentSequence();
+		defaultColumnSequenceList = getCurrentSequence();
 	}
 	
 	public void restoreColumnSequences() throws Exception
@@ -72,7 +72,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		
 		CodeList storedColumnSequences = tableSettings.getCodeList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
 		if (storedColumnSequences.size() == 0)
-			return defaultColumnSequencList;
+			return defaultColumnSequenceList;
 
 		return storedColumnSequences;
 	}
@@ -130,7 +130,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	}
 
 	private Project project;
-	private CodeList defaultColumnSequencList;
+	private CodeList defaultColumnSequenceList;
 	private JTable table;
 	private ColumnTagProvider tagProvider;
 	private String uniqueTableIdentifier;
