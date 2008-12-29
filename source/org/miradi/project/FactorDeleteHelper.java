@@ -154,19 +154,19 @@ public class FactorDeleteHelper
 		if (underlyingFactor.mustBeDeletedBecauseParentIsGone())
 			return;
 
-		removeFromTaggedObjectSet(underlyingFactor);
+		removeFromTaggedObjectSet(underlyingFactor.getRef());
 		removeStrategyFromObjectiveRelevancyList(underlyingFactor);
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
 	}
 	
-	private void removeFromTaggedObjectSet(Factor underlyingFactor) throws Exception
+	private void removeFromTaggedObjectSet(ORef refToUntag) throws Exception
 	{
-		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = getProject().getTaggedObjectSetPool().findTaggedObjectSetsWithFactor(underlyingFactor.getRef());
+		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = getProject().getTaggedObjectSetPool().findTaggedObjectSetsWithFactor(refToUntag);
 		for (int index = 0; index < taggedObjectSetsWithFactor.size(); ++index)
 		{
 			TaggedObjectSet taggedObjectSet = taggedObjectSetsWithFactor.get(index);
-			CommandSetObjectData removeFromTaggedObjectSet = CommandSetObjectData.createRemoveORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, underlyingFactor.getRef());
+			CommandSetObjectData removeFromTaggedObjectSet = CommandSetObjectData.createRemoveORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, refToUntag);
 			getProject().executeCommand(removeFromTaggedObjectSet);
 		}
 	}
