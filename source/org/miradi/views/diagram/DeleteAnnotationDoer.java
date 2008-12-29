@@ -47,6 +47,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Stress;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
@@ -100,6 +101,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	public static Command[] buildCommandsToDeleteAnnotation(Project project, BaseObject owner, String annotationIdListTag, BaseObject annotationToDelete) throws CommandFailedException, ParseException, Exception
 	{
 		Vector commands = new Vector();
+		commands.addAll(buildCommandsToUntag(project, annotationToDelete.getRef()));
 		commands.addAll(Arrays.asList(annotationToDelete.createCommandsToClear()));
 		commands.addAll(buildCommandsToDeleteReferredObjects(project, owner, annotationIdListTag, annotationToDelete));
 		commands.addAll(buildCommandsToDeleteReferringObjects(project, owner, annotationIdListTag, annotationToDelete));
@@ -109,6 +111,20 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		commands.add(new CommandDeleteObject(annotationToDelete.getRef()));
 		
 		return (Command[])commands.toArray(new Command[0]);
+	}
+
+	public static Vector<Command> buildCommandsToUntag(Project project, ORef refToUntag) throws Exception
+	{
+		Vector<TaggedObjectSet> taggedObjectSetsWithFactor = project.getTaggedObjectSetPool().findTaggedObjectSetsWithFactor(refToUntag);
+		Vector<Command> commandsToUntag = new Vector();
+		for (int index = 0; index < taggedObjectSetsWithFactor.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = taggedObjectSetsWithFactor.get(index);
+			CommandSetObjectData removeFromTaggedObjectSet = CommandSetObjectData.createRemoveORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, refToUntag);
+			commandsToUntag.add(removeFromTaggedObjectSet);
+		}
+		
+		return commandsToUntag;
 	}
 
 	private static Vector buildCommandsToDeleteReferredObjects(Project project, BaseObject owner, String annotationIdListTag,	BaseObject annotationToDelete) throws Exception
