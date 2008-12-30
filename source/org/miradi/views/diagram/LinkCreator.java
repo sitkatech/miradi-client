@@ -331,7 +331,7 @@ public class LinkCreator
 		return createThreatStressRating.getObjectRef();
 	}
 
-	public void createDiagramLinks(ORef factorLinkRef) throws Exception
+	private void createDiagramLinks(ORef factorLinkRef) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
 		Factor toFactor = getFactor(factorLink.getToFactorRef());
