@@ -111,9 +111,16 @@ public  class BufferedImageFactory
 			return null;
 		
 		Rectangle bounds = new Rectangle(totalBoundsIgnoringVisibilityOfFactors.getBounds());
+		//FIXME: At a minimum, rename methods and variables to be clear about scaled vs. unscaled
+		final double scale = diagram.getScale();
+		bounds.x *= scale;
+		bounds.y *= scale;
+		bounds.width *= scale;
+		bounds.height *= scale;
+		
+		bounds.grow((int)diagram.getGridSize(), (int)diagram.getGridSize());
 		final Dimension size = new Dimension(bounds.x + bounds.width, bounds.y + bounds.height);
 		forceDiagramSize(diagram, size);
-		diagram.toScreen(bounds);
 		diagram.setToDefaultBackgroundColor();
 		diagram.setGridVisible(false);
 
@@ -130,8 +137,6 @@ public  class BufferedImageFactory
 	private static void forceDiagramSize(DiagramComponent diagram, final Dimension size)
 	{
 		diagram.setAutoResizeGraph(false);
-		size.width += diagram.getGridSize();
-		size.height += diagram.getGridSize();
 		diagram.setSize(size);
 		diagram.setPreferredSize(size);
 		diagram.setMinimumSize(size);
