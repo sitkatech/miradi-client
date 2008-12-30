@@ -226,15 +226,10 @@ public class DeleteActivity extends ObjectsDoer
 		for (int index = 0; index < objectiveRefs.size(); ++index)
 		{
 			Objective objective = Objective.find(project, objectiveRefs.get(index));
-			ORefList relevantStrategyAndActivityRefs = objective.getRelevantStrategyAndActivityRefs();
-			if (relevantStrategyAndActivityRefs.contains(objectToRemove.getRef()))
-			{
-				ORefList listToRemoveFrom = new ORefList(relevantStrategyAndActivityRefs);
-				listToRemoveFrom.remove(objectToRemove.getRef());
-				RelevancyOverrideSet relevancySet = objective.getCalculatedRelevantStrategyActivityOverrides(listToRemoveFrom);	
-				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objective.getRef(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
-				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
-			}
+			RelevancyOverrideSet relevancyOverrideSet = objective.getStrategyActivityRelevancyOverrideSet();
+			relevancyOverrideSet.remove(objectToRemove.getRef());
+			CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objective.getRef(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
+			removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
 		}
 		
 		return removeFromRelevancyListCommands;
