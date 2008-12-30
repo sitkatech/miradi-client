@@ -75,13 +75,13 @@ public class LinkDeletor
 		}
 	}
 	
-	public void deleteDiagramLinkAndFactorLink(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	public void deleteDiagramLinkAndFactorLinkAndDiagramLinkReferrers(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
 		deleteDiagramLink(diagramLink);
 		if(factorLink == null)
 		{
-			EAM.logWarning("DiagramLink has no wrapped link to delete");
+			EAM.logWarning(HAS_NO_WRAPPED_LINK_MESSAGE);
 			return;
 		}
 		
@@ -90,7 +90,32 @@ public class LinkDeletor
 
 		deleteFactorLinkIfOrphaned(factorLink);
 	}
+	
+	public void deleteDiagramLinkAndFactorLink(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	{
+		FactorLink factorLink = diagramLink.getUnderlyingLink();
+		deleteDiagramLink(diagramLink);
+		if(factorLink == null)
+		{
+			EAM.logWarning(HAS_NO_WRAPPED_LINK_MESSAGE);
+			return;
+		}
+		
+		deleteFactorLinkIfOrphaned(factorLink);
+	}
 
+	public void deleteFactorLinksAndGroupBoxDiagramLinksAndReferringDiagramLinks(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	{
+		ORefList groupBoxLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
+		deleteDiagramLink(diagramLink);
+		
+		for (int i = 0; i < groupBoxLinkChildRefs.size(); ++i)
+		{
+			DiagramLink childDiagramLink = DiagramLink.find(getProject(), groupBoxLinkChildRefs.get(i));
+			deleteDiagramLinkAndFactorLinkAndDiagramLinkReferrers(diagramFactorsAboutToBeDeleted, childDiagramLink);
+		}
+	}
+	
 	public void deleteFactorLinksAndGroupBoxDiagramLinks(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		ORefList groupBoxLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
@@ -207,6 +232,8 @@ public class LinkDeletor
 	{
 		return project;
 	}
+	
+	private static final String HAS_NO_WRAPPED_LINK_MESSAGE = "DiagramLink has no wrapped link to delete";
 	
 	private Project project;
 }
