@@ -28,11 +28,24 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 	public TreeTableWithColumnWidthSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
 		super(mainWindowToUse, treeTableModel);
-		columnWidthSaver = new ColumnWidthSaver(mainWindowToUse.getProject(), this, treeTableModel, getUniqueTableIdentifier());
-		columnSequenceSaver = new ColumnSequenceSaver(mainWindowToUse.getProject(), this, treeTableModel, getUniqueTableIdentifier());
+		
+		if (shouldSaveColumnWidth())
+			addColumnWidthSaver(mainWindowToUse, treeTableModel);
+		
+		if (shouldSaveColumnSequence())
+			addColumnSequenceSaver(mainWindowToUse, treeTableModel);
+	}
 
-		getTableHeader().addMouseListener(columnWidthSaver);
+	private void addColumnSequenceSaver(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
+	{
+		columnSequenceSaver = new ColumnSequenceSaver(mainWindowToUse.getProject(), this, treeTableModel, getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnSequenceSaver);
+	}
+
+	private void addColumnWidthSaver(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
+	{
+		columnWidthSaver = new ColumnWidthSaver(mainWindowToUse.getProject(), this, treeTableModel, getUniqueTableIdentifier());
+		getTableHeader().addMouseListener(columnWidthSaver);
 	}
 	
 	public void rebuildTableCompletely() throws Exception
