@@ -154,7 +154,7 @@ public class FactorDeleteHelper
 			return;
 
 		removeFromTaggedObjectSets(underlyingFactor.getRef());
-		removeFromRelevancyOverrideSet(underlyingFactor);
+		removeFromRelevancyOverrideSets(underlyingFactor);
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
 	}
@@ -204,7 +204,7 @@ public class FactorDeleteHelper
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 	
-	private void removeFromRelevancyOverrideSet(Factor factorToDelete) throws Exception
+	private void removeFromRelevancyOverrideSets(Factor factorToDelete) throws Exception
 	{
 		getProject().executeCommandsWithoutTransaction(DeleteActivity.buildRemoveFromRelevancyListCommands(getProject(), factorToDelete.getRef()));
 	}
