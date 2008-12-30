@@ -39,6 +39,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -206,7 +207,7 @@ public class FactorDeleteHelper
 	
 	private void removeStrategyFromObjectiveRelevancyList(Factor factorToDelete) throws Exception
 	{
-		getProject().executeCommandsWithoutTransaction(DeleteActivity.buildRemoveFromObjectiveRelevancyListCommands(getProject(), factorToDelete));
+		getProject().executeCommandsWithoutTransaction(DeleteActivity.buildRemoveFromObjectiveRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, factorToDelete.getRef()));
 	}
 
 	private void deleteUnderlyingNode(Factor factorToDelete) throws CommandFailedException

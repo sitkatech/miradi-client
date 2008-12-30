@@ -124,7 +124,7 @@ public class DeleteActivity extends ObjectsDoer
 		
 		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
-		commandsToDeleteTasks.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, task));
+		commandsToDeleteTasks.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, task.getRef()));
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierachy, task));
@@ -219,17 +219,21 @@ public class DeleteActivity extends ObjectsDoer
 		return removeCommands;		
 	}
 
-	public static Vector<Command> buildRemoveFromObjectiveRelevancyListCommands(Project project, BaseObject objectToRemove) throws Exception
+	public static Vector<Command> buildRemoveFromObjectiveRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		ORefList objectiveRefs = project.getObjectivePool().getORefList();
-		for (int index = 0; index < objectiveRefs.size(); ++index)
+		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevacnyOverrideSetList).getORefList();
+		for (int index = 0; index < objectRefsWithRelevancyOverrides.size(); ++index)
 		{
-			Objective objective = Objective.find(project, objectiveRefs.get(index));
-			RelevancyOverrideSet relevancyOverrideSet = objective.getStrategyActivityRelevancyOverrideSet();
-			relevancyOverrideSet.remove(objectToRemove.getRef());
-			CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objective.getRef(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
-			removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
+			BaseObject objectWithRelevancyOverrides = BaseObject.find(project, objectRefsWithRelevancyOverrides.get(index));
+			String relevancySetAsString = objectWithRelevancyOverrides.getData(relevancyTag);
+			RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet(relevancySetAsString);
+			if (relevancyOverrideSet.contains(relevantObjectRefToRemove))
+			{
+				relevancyOverrideSet.remove(relevantObjectRefToRemove);
+				CommandSetObjectData removeFromRelevancyListCommand = new CommandSetObjectData(objectWithRelevancyOverrides.getRef(), relevancyTag, relevancyOverrideSet.toString());
+				removeFromRelevancyListCommands.add(removeFromRelevancyListCommand);
+			}
 		}
 		
 		return removeFromRelevancyListCommands;
