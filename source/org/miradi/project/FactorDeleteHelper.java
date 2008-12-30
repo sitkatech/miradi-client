@@ -155,7 +155,7 @@ public class FactorDeleteHelper
 			return;
 
 		removeFromTaggedObjectSet(underlyingFactor.getRef());
-		removeStrategyFromObjectiveRelevancyList(underlyingFactor);
+		removeFromRelevancyOverrideSet(underlyingFactor);
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
 	}
@@ -205,7 +205,7 @@ public class FactorDeleteHelper
 			getProject().executeCommand(commandsToRemoveFromView[i]);
 	}
 	
-	private void removeStrategyFromObjectiveRelevancyList(Factor factorToDelete) throws Exception
+	private void removeFromRelevancyOverrideSet(Factor factorToDelete) throws Exception
 	{
 		getProject().executeCommandsWithoutTransaction(DeleteActivity.buildRemoveFromObjectiveRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, factorToDelete.getRef()));
 	}
