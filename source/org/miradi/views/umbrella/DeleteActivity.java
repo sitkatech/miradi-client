@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
@@ -124,7 +125,7 @@ public class DeleteActivity extends ObjectsDoer
 		
 		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
-		commandsToDeleteTasks.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, task.getRef()));
+		commandsToDeleteTasks.addAll(buildRemoveFromRelevancyListCommands(project, task.getRef()));
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierachy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierachy, task));
@@ -219,6 +220,15 @@ public class DeleteActivity extends ObjectsDoer
 		return removeCommands;		
 	}
 
+	public static Vector<Command> buildRemoveFromRelevancyListCommands(Project project, ORef relevantObjectRefToRemove) throws Exception
+	{
+		Vector<Command> removeFromRelevancyListCommands = new Vector();
+		removeFromRelevancyListCommands.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		
+		return removeFromRelevancyListCommands;
+	}
+	
 	public static Vector<Command> buildRemoveFromObjectiveRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
