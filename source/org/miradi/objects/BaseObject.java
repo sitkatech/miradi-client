@@ -1291,7 +1291,16 @@ abstract public class BaseObject
 		return choice.getCode().equals(BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
 	}
 	
-
+	public static BaseObject find(ObjectManager objectManager, ORef objectRef)
+	{
+		return objectManager.findObject(objectRef);
+	}
+	
+	public static BaseObject find(Project project, ORef objectRef)
+	{
+		return find(project.getObjectManager(), objectRef);
+	}
+	
 	//FIXME move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{
