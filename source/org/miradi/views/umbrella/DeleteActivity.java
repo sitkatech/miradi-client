@@ -223,13 +223,13 @@ public class DeleteActivity extends ObjectsDoer
 	public static Vector<Command> buildRemoveFromRelevancyListCommands(Project project, ORef relevantObjectRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
-		removeFromRelevancyListCommands.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
-		removeFromRelevancyListCommands.addAll(buildRemoveFromObjectiveRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+		removeFromRelevancyListCommands.addAll(buildRemoveObjectFromRelevancyListCommands(project, Goal.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		
 		return removeFromRelevancyListCommands;
 	}
 	
-	public static Vector<Command> buildRemoveFromObjectiveRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
+	public static Vector<Command> buildRemoveObjectFromRelevancyListCommands(Project project, int typeWithRelevacnyOverrideSetList, String relevancyTag, ORef relevantObjectRefToRemove) throws Exception
 	{
 		Vector<Command> removeFromRelevancyListCommands = new Vector();
 		ORefList objectRefsWithRelevancyOverrides = project.getPool(typeWithRelevacnyOverrideSetList).getORefList();
