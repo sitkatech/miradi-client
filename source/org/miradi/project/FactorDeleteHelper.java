@@ -153,13 +153,13 @@ public class FactorDeleteHelper
 		if (underlyingFactor.mustBeDeletedBecauseParentIsGone())
 			return;
 
-		removeFromTaggedObjectSet(underlyingFactor.getRef());
+		removeFromTaggedObjectSets(underlyingFactor.getRef());
 		removeFromRelevancyOverrideSet(underlyingFactor);
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
 	}
 	
-	private void removeFromTaggedObjectSet(ORef refToUntag) throws Exception
+	private void removeFromTaggedObjectSets(ORef refToUntag) throws Exception
 	{
 		getProject().executeCommandsWithoutTransaction(DeleteAnnotationDoer.buildCommandsToUntag(getProject(), refToUntag));
 	}
