@@ -25,6 +25,5 @@ public class PasteWithoutLinks extends PasteDoer
 	public void paste(DiagramPaster diagramPaster) throws Exception 
 	{
 		diagramPaster.pasteFactors(getLocation());
-		diagramPaster.wrapExistingLinksForDiagramFactorsInAllDiagramObjects();
 	}
 }
