@@ -110,24 +110,25 @@ public  class BufferedImageFactory
 		if (totalBoundsIgnoringVisibilityOfFactors == null)
 			return null;
 		
-		Rectangle bounds = new Rectangle(totalBoundsIgnoringVisibilityOfFactors.getBounds());
-		//FIXME: At a minimum, rename methods and variables to be clear about scaled vs. unscaled
 		final double scale = diagram.getScale();
-		bounds.x *= scale;
-		bounds.y *= scale;
-		bounds.width *= scale;
-		bounds.height *= scale;
+		final Rectangle unscaledBounds = totalBoundsIgnoringVisibilityOfFactors.getBounds();
+
+		Rectangle scaledBounds = new Rectangle(unscaledBounds);
+		scaledBounds.x *= scale;
+		scaledBounds.y *= scale;
+		scaledBounds.width *= scale;
+		scaledBounds.height *= scale;
 		
-		bounds.grow((int)diagram.getGridSize(), (int)diagram.getGridSize());
-		final Dimension size = new Dimension(bounds.x + bounds.width, bounds.y + bounds.height);
+		scaledBounds.grow((int)diagram.getGridSize(), (int)diagram.getGridSize());
+		final Dimension size = new Dimension(scaledBounds.x + scaledBounds.width, scaledBounds.y + scaledBounds.height);
 		forceDiagramSize(diagram, size);
 		diagram.setToDefaultBackgroundColor();
 		diagram.setGridVisible(false);
 
 		BufferedImage image = BufferedImageFactory.getImage(diagram, 5);
 
-		int x = Math.max(bounds.x, 0);
-		int y = Math.max(bounds.y, 0);
+		int x = Math.max(scaledBounds.x, 0);
+		int y = Math.max(scaledBounds.y, 0);
 		int imageWidth = image.getWidth() - x; 
 		int imageHeight = image.getHeight() - y;
 
