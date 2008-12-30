@@ -134,7 +134,7 @@ public class TestDeleteActivity extends EAMTestCase
 		
 		assertEquals("relevancy override was not set?", 1, objective.getRelevantStrategyAndActivityRefs().size());
 																	   
-		Vector<Command> commandsToUpdateRelevancyList = DeleteActivity.buildRemoveFromObjectiveRelevancyListCommands(project, strategy);
+		Vector<Command> commandsToUpdateRelevancyList = DeleteActivity.buildRemoveFromObjectiveRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategy.getRef());
 		project.executeCommandsWithoutTransaction(commandsToUpdateRelevancyList);
 		
 		assertEquals("relevancy override was not updated after delete?", 0, objective.getRelevantStrategyAndActivityRefs().size());
