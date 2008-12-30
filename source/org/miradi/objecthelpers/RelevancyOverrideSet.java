@@ -79,6 +79,12 @@ public class RelevancyOverrideSet extends HashSet<RelevancyOverride>
 		return null;
 	}
 	
+	public void remove(ORef ref)
+	{
+		RelevancyOverride relevancyOverride = find(ref);
+		remove(relevancyOverride);
+	}
+	
 	public String toString()
 	{
 		if(size() == 0)
