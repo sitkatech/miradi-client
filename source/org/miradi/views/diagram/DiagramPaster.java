@@ -748,48 +748,6 @@ abstract public class DiagramPaster
 		return false;
 	}
 	
-	public void wrapExistingLinksForDiagramFactorsInAllDiagramObjects() throws Exception
-	{
-		ORefList allDiagramObjects = GroupOfDiagrams.getAllDiagramObjects(getProject());
-		for (int i = 0; i < allDiagramObjects.size(); ++i)
-		{
-			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjects.get(i));
-			wrapExistingLinksForDiagramFactors(diagramObject);
-		}
-	}
-	
-	private void wrapExistingLinksForDiagramFactors(DiagramObject diagramObjectToUse) throws Exception
-	{
-		ORefList diagramFactorRefs = diagramObjectToUse.getAllDiagramFactorRefs();
-		for (int i= 0; i < diagramFactorRefs.size(); ++i)
-		{
-			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));			
-			wrapExistingLinksForThisFactor(diagramObjectToUse, diagramFactor.getWrappedORef());
-		}
-	}
-	
-	private void wrapExistingLinksForThisFactor(DiagramObject diagramObjectToUse, ORef factorRef) throws Exception
-	{
-		Factor factor = (Factor) getProject().findObject(factorRef);
-		ORefList factorLinks = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for (int i = 0; i < factorLinks.size(); ++i)
-		{
-			FactorLink factorLink = (FactorLink) getProject().findObject(factorLinks.get(i));
-			DiagramFactor fromDiagramFactor = diagramObjectToUse.getDiagramFactor(factorLink.getFromFactorRef());
-			DiagramFactor toDiagramFactor = diagramObjectToUse.getDiagramFactor(factorLink.getToFactorRef());
-			if (fromDiagramFactor == null || toDiagramFactor == null)
-				continue;
-			
-			if (diagramObjectToUse.areDiagramFactorsLinked(fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId()))
-				continue;
-			
-			CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLink.getFactorLinkId(), fromDiagramFactor.getDiagramFactorId(), toDiagramFactor.getDiagramFactorId());
-			DiagramLink newDiagramLink = (DiagramLink) createObject(DiagramLink.getObjectType(), extraInfo);	
-			ORef newDiagramLinkRef = newDiagramLink.getRef();
-			addToDiagramObject(diagramObjectToUse, newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
-			addDiagramLinkToSelection(newDiagramLinkRef);		
-		}
-	}
 
 	private DiagramFactorId getDiagramFactorId(EnhancedJsonObject json, String tag)
 	{
