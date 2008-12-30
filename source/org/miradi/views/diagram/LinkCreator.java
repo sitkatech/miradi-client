@@ -238,18 +238,18 @@ public class LinkCreator
 		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
 	}
 	
-	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
+	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		Factor fromFactor = Factor.findFactor(getProject(), diagramFactorFrom.getWrappedORef());
-		Factor toFactor = Factor.findFactor(getProject(), diagramFactorTo.getWrappedORef());
+		Factor fromFactor = Factor.findFactor(getProject(), fromDiagramFactor.getWrappedORef());
+		Factor toFactor = Factor.findFactor(getProject(), toDiagramFactor.getWrappedORef());
 		ORef factorLinkRef = project.getFactorLinkPool().getLinkedRef(fromFactor, toFactor);
 		
 		if(!factorLinkRef.isInvalid())
 			ensureLinkGoesOurWay(factorLinkRef, fromFactor.getFactorId());
 		else
-			factorLinkRef = createFactorLink(diagramFactorFrom, diagramFactorTo);
-		
-		createDiagramLinks(factorLinkRef);
+			factorLinkRef = createFactorLink(fromDiagramFactor, toDiagramFactor);
+
+		createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromDiagramFactor.getRef(), toDiagramFactor.getRef(), factorLinkRef));
 		return factorLinkRef; 
 	}
 
@@ -331,50 +331,6 @@ public class LinkCreator
 		return createThreatStressRating.getObjectRef();
 	}
 
-	private void createDiagramLinks(ORef factorLinkRef) throws Exception
-	{
-		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
-		Factor toFactor = getFactor(factorLink.getToFactorRef());
-		Factor fromFactor = getFactor(factorLink.getFromFactorRef());
-		
-		ORefList toDiagramFactors = toFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);  
-		ORefList fromDiagramFactors = fromFactor.findObjectsThatReferToUs(ObjectType.DIAGRAM_FACTOR);
-		
-		ORefList allDiagramObjects = project.getAllDiagramObjectRefs();
-		for (int i = 0; i < allDiagramObjects.size(); ++i)
-		{
-			ORef diagramObjectORef = allDiagramObjects.get(i);
-			DiagramObject diagramObject = (DiagramObject) project.findObject(diagramObjectORef);
-			ORef toORef = findDiagramFactor(diagramObject, toDiagramFactors); 
-			if (toORef == null)
-				continue;
-			
-			ORef fromORef = findDiagramFactor(diagramObject, fromDiagramFactors);
-			if (fromORef == null)
-				continue;
-			
-			createDiagramLink(diagramObject, createDiagramFactorLinkParameter(fromORef, toORef, factorLinkRef));
-		}
-	}
-
-	//TODO check to see if this method occurs else where
-	private ORef findDiagramFactor(DiagramObject diagramObject, ORefList diagramFactors)
-	{
-		for (int i = 0 ; i < diagramFactors.size(); ++i)
-		{
-			ORef diagramFactorORef = diagramFactors.get(i);
-			if (diagramObject.containsDiagramFactor((DiagramFactorId) diagramFactorORef.getObjectId()))
-				return diagramFactorORef;
-		}
-		
-		return null;
-	}
-
-	private Factor getFactor(ORef factorRef)
-	{
-		return (Factor) project.findObject(factorRef);
-	}
-	
 	private void createDiagramLinkWithChildren(DiagramObject diagramObject, ORefList allLinkRefs, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
 		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
