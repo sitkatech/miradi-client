@@ -134,14 +134,13 @@ public class DeleteSelectedItemDoer extends ViewDoer
 
 	private boolean isDeleteFromAllDiagramsChoice(String deleteDiagramReferrerChoice)
 	{
-		return deleteDiagramReferrerChoice.equals(FROM_ALL_DIAGRAMS_CHOICE);
+		return deleteDiagramReferrerChoice.equals(getFromAllDiagramsChoice());
 	}
-	
+
 	private boolean isCancelChoice(String deleteDiagramReferrerChoice)
 	{
-		return deleteDiagramReferrerChoice.equals(CANCEL_CHOICE);
-	}	
-
+		return deleteDiagramReferrerChoice.equals(getCancelChoice());
+	}
 
 	private String confirmReferringDiagramLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
 	{
@@ -151,11 +150,11 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		HashSet<DiagramObject> singleItemSet = new HashSet();
 		singleItemSet.add(getDiagramView().getCurrentDiagramObject());
 		if (diagramObjects.size() <= 1)
-			return JUST_THIS_DIAGRAM_CHOICE;
+			return getJustThisDiagramChoice();
 
-		String userChoiceResult = EAM.choiceDialog(EAM.text("Delete Link"), new String[]{createDiagramNamesList(diagramObjects)}, new String[]{CANCEL_CHOICE, JUST_THIS_DIAGRAM_CHOICE, FROM_ALL_DIAGRAMS_CHOICE});
+		String userChoiceResult = EAM.choiceDialog(EAM.text("Delete Link"), new String[]{createDiagramNamesList(diagramObjects)}, new String[]{getCancelChoice(), getJustThisDiagramChoice(), getFromAllDiagramsChoice()});
 		if (userChoiceResult.length() == 0)
-			return CANCEL_CHOICE;
+			return getCancelChoice();
 		
 		return userChoiceResult;
 	}
@@ -272,10 +271,21 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return diagramLinks;
 	}
 	
+	private String getJustThisDiagramChoice()
+	{
+		return EAM.text("Just This Diagram");
+	}
+	
+	private String getFromAllDiagramsChoice()
+	{
+		return EAM.text("From All Diagrams");
+	}
+	
+	private String getCancelChoice()
+	{
+		return EAM.text("Cancel");
+	}	
+
 	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
 	  															  " and Results Chains, not just this one. ");
-	
-	public static final String JUST_THIS_DIAGRAM_CHOICE = "Just This Diagram";
-	public static final String FROM_ALL_DIAGRAMS_CHOICE = "From All Diagrams";
-	public static final String CANCEL_CHOICE = "Cancel";
 }
