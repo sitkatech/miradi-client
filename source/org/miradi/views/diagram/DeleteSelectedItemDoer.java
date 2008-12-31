@@ -153,7 +153,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		if (diagramObjects.size() <= 1)
 			return JUST_THIS_DIAGRAM_CHOICE;
 
-		String userChoiceResult = EAM.choiceDialog(EAM.text(""), new String[]{createDiagramNamesList(diagramObjects)}, new String[]{CANCEL_CHOICE, JUST_THIS_DIAGRAM_CHOICE, FROM_ALL_DIAGRAMS_CHOICE});
+		String userChoiceResult = EAM.choiceDialog(EAM.text("Delete Link"), new String[]{createDiagramNamesList(diagramObjects)}, new String[]{CANCEL_CHOICE, JUST_THIS_DIAGRAM_CHOICE, FROM_ALL_DIAGRAMS_CHOICE});
 		if (userChoiceResult.length() == 0)
 			return CANCEL_CHOICE;
 		
