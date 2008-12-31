@@ -26,7 +26,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverride;
@@ -36,11 +36,10 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectForTesting;
 import org.miradi.views.umbrella.DeleteActivity;
 import org.miradi.views.umbrella.Undo;
 
-public class TestDeleteActivity extends EAMTestCase
+public class TestDeleteActivity extends TestCaseWithProject
 {
 	public TestDeleteActivity(String name)
 	{
@@ -49,55 +48,47 @@ public class TestDeleteActivity extends EAMTestCase
 
 	public void testDeleteActivity() throws Exception
 	{
-		Project project = new ProjectForTesting(getName());
-		try
-		{
-			ORef strategyRef = project.createObject(Strategy.getObjectType());
-			Strategy strategy = (Strategy)project.findObject(strategyRef);
+			ORef strategyRef = getProject().createObject(Strategy.getObjectType());
+			Strategy strategy = (Strategy)getProject().findObject(strategyRef);
 
-			ORef parentHasChildRef = project.createObject(Task.getObjectType());
-			Task parentHasChild = (Task)project.findObject(parentHasChildRef);
+			ORef parentHasChildRef = getProject().createObject(Task.getObjectType());
+			Task parentHasChild = (Task)getProject().findObject(parentHasChildRef);
 			
-			ORef parentHasNoChildRef  = project.createObject(Task.getObjectType());
-			Task parentNoChild = (Task)project.findObject(parentHasNoChildRef);
+			ORef parentHasNoChildRef  = getProject().createObject(Task.getObjectType());
+			Task parentNoChild = (Task)getProject().findObject(parentHasNoChildRef);
 			
-			ORef leafChildRef = project.createObject(Task.getObjectType());
-			Task leafChild = (Task)project.findObject(leafChildRef);
+			ORef leafChildRef = getProject().createObject(Task.getObjectType());
+			Task leafChild = (Task)getProject().findObject(leafChildRef);
 			
 			CommandSetObjectData addResource1 = CommandSetObjectData.createAppendIdCommand(strategy, Strategy.TAG_ACTIVITY_IDS, parentNoChild.getId());
-			project.executeCommand(addResource1);
+			getProject().executeCommand(addResource1);
 			
 			CommandSetObjectData addResource2 = CommandSetObjectData.createAppendIdCommand(strategy, Strategy.TAG_ACTIVITY_IDS, parentHasChild.getId());
-			project.executeCommand(addResource2);
+			getProject().executeCommand(addResource2);
 			
 			CommandSetObjectData addResource3 = CommandSetObjectData.createAppendIdCommand(parentHasChild, Task.TAG_SUBTASK_IDS, leafChild.getId());
-			project.executeCommand(addResource3);
+			getProject().executeCommand(addResource3);
 			
 			assertEquals("Parent doesn't have child?", 1, parentHasChild.getSubtaskCount());
-			transactionDeleteTask(project, parentHasChildRef, leafChild);
+			transactionDeleteTask(getProject(), parentHasChildRef, leafChild);
 			assertEquals("Didn't delete subtasks?", 0, parentHasChild.getSubtaskCount());
-			Undo.undo(project);
+			Undo.undo(getProject());
 			assertEquals("Didn't restore subtasks?", 1, parentHasChild.getSubtaskCount());
 			
-			transactionDeleteTask(project, strategy.getRef(), parentNoChild);
+			transactionDeleteTask(getProject(), strategy.getRef(), parentNoChild);
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
-			Undo.undo(project);
+			Undo.undo(getProject());
 			assertEquals("Didn't restore activity?", 2, strategy.getActivityIds().size());
 			
-			transactionDeleteTask(project, strategy.getRef(), parentHasChild);
+			transactionDeleteTask(getProject(), strategy.getRef(), parentHasChild);
 			parentHasChild = null;
 		
 			assertEquals("Didn't delete activity?", 1, strategy.getActivityIds().size());
-			Undo.undo(project);
+			Undo.undo(getProject());
 			assertEquals("Didn't delete activity?", 2, strategy.getActivityIds().size());
 			
-			parentHasChild = (Task)project.findObject(parentHasChildRef);
+			parentHasChild = (Task)getProject().findObject(parentHasChildRef);
 			assertEquals("Didn't restore child?", 1, parentHasChild.getSubtaskCount());
-		}
-		finally
-		{
-			project.close();
-		}
 	}
 
 	private void transactionDeleteTask(Project project, ORef parentRef, Task leafChild) throws Exception
@@ -118,24 +109,23 @@ public class TestDeleteActivity extends EAMTestCase
 	
 	public void testBuildRemoveFromObjectiveRelevancyListCommands() throws Exception
 	{
-		ProjectForTesting project = new ProjectForTesting(getName());
-		ORef objectiveRef = project.createObject(Objective.getObjectType());
-		Cause cause = project.createCause();
+		ORef objectiveRef = getProject().createObject(Objective.getObjectType());
+		Cause cause = getProject().createCause();
 		IdList objectiveIdList = new ORefList(objectiveRef).convertToIdList(Objective.getObjectType());
 		cause.setData(Cause.TAG_OBJECTIVE_IDS, objectiveIdList.toString());
 		
-		Strategy strategy = project.createAndPopulateStrategy();
+		Strategy strategy = getProject().createAndPopulateStrategy();
 		RelevancyOverrideSet relevancyOverrideSet = new RelevancyOverrideSet();
 		RelevancyOverride relevancyOverride = new RelevancyOverride(strategy.getRef(), true);
 		relevancyOverrideSet.add(relevancyOverride);
 		
-		Objective objective = Objective.find(project, objectiveRef);
+		Objective objective = Objective.find(getProject(), objectiveRef);
 		objective.setData(Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrideSet.toString());
 		
 		assertEquals("relevancy override was not set?", 1, objective.getRelevantStrategyAndActivityRefs().size());
 																	   
-		Vector<Command> commandsToUpdateRelevancyList = DeleteActivity.buildRemoveObjectFromRelevancyListCommands(project, Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategy.getRef());
-		project.executeCommandsWithoutTransaction(commandsToUpdateRelevancyList);
+		Vector<Command> commandsToUpdateRelevancyList = DeleteActivity.buildRemoveObjectFromRelevancyListCommands(getProject(), Objective.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, strategy.getRef());
+		getProject().executeCommandsWithoutTransaction(commandsToUpdateRelevancyList);
 		
 		assertEquals("relevancy override was not updated after delete?", 0, objective.getRelevantStrategyAndActivityRefs().size());
 	}
