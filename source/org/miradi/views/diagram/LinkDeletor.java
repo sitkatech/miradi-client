@@ -91,7 +91,7 @@ public class LinkDeletor
 		deleteFactorLinkIfOrphaned(factorLink);
 	}
 	
-	public void deleteDiagramLinkAndFactorLink(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
+	public void deleteDiagramLinkAndOrphandFactorLink(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
 		deleteDiagramLink(diagramLink);
@@ -124,7 +124,7 @@ public class LinkDeletor
 		for (int i = 0; i < groupBoxLinkChildRefs.size(); ++i)
 		{
 			DiagramLink childDiagramLink = DiagramLink.find(getProject(), groupBoxLinkChildRefs.get(i));
-			deleteDiagramLinkAndFactorLink(diagramFactorsAboutToBeDeleted, childDiagramLink);
+			deleteDiagramLinkAndOrphandFactorLink(diagramFactorsAboutToBeDeleted, childDiagramLink);
 		}
 	}
 	
