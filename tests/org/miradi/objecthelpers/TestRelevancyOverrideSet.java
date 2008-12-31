@@ -84,6 +84,9 @@ public class TestRelevancyOverrideSet extends EAMTestCase
 		relevancyOverrides.remove(ref1);
 		assertEquals("wrong count after remove?", 1, relevancyOverrides.size());
 		assertTrue("wrong ref removed?", relevancyOverrides.find(ref2) != null);
+		
+		ORef refNotInList = new ORef(Cause.getObjectType(), new BaseId(33));
+		relevancyOverrides.remove(refNotInList);
 	}
 	
 	public void testContains()
