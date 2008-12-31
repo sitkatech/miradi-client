@@ -129,7 +129,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		if (isDeleteFromAllDiagramsChoice(deleteDiagramReferrerChoice))
 			linkDeletor.deleteDiagramLinkAndFactorLinkAndDiagramLinkReferrers(diagramFactorsAboutToBeDeleted, diagramLink);
 		else 
-			linkDeletor.deleteDiagramLinkAndFactorLink(diagramFactorsAboutToBeDeleted, diagramLink);
+			linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramFactorsAboutToBeDeleted, diagramLink);
 	}
 
 	private boolean isDeleteFromAllDiagramsChoice(String deleteDiagramReferrerChoice)
