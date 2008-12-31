@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
@@ -28,12 +27,8 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.views.ViewDoer;
 
@@ -57,17 +52,13 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			return;
 		
 		EAMGraphCell[] selectedRelatedCells = getDiagramView().getDiagramPanel().getSelectedAndRelatedCells();
-		String deleteDiagramReferrerChoice = confirmReferringDiagramLinksBeingDeleted(selectedRelatedCells);
-		if (isCancelChoice(deleteDiagramReferrerChoice))
-			return;
-		
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{	
 			Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
 			Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
 		
-			deleteSelectedLinks(deleteDiagramReferrerChoice, diagramLinks, diagramFactors);
+			deleteSelectedLinks(diagramLinks, diagramFactors);
 			deleteSelectedFactors(diagramFactors);
 		}
 		catch (Exception e)
@@ -88,11 +79,11 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		}
 	}
 
-	private void deleteSelectedLinks(String deleteDiagramReferrerChoice, Vector<DiagramLink> diagramLinks, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
+	private void deleteSelectedLinks(Vector<DiagramLink> diagramLinks, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
 	{
 		for(int i = 0; i < diagramLinks.size(); ++i)
 		{
-			deleteLink(deleteDiagramReferrerChoice, diagramLinks.get(i), diagramFactorsAboutToBeDeleted);
+			deleteLink(diagramLinks.get(i), diagramFactorsAboutToBeDeleted);
 		}
 	}
 
@@ -102,7 +93,7 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		new FactorDeleteHelper(diagram).deleteFactorAndDiagramFactor(diagramFactor);
 	}
 
-	private void deleteLink(String deleteDiagramReferrerChoice, DiagramLink diagramLink, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
+	private void deleteLink(DiagramLink diagramLink, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted) throws Exception
 	{
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		DiagramLink found = DiagramLink.find(getProject(), diagramLink.getRef());
@@ -111,100 +102,9 @@ public class DeleteSelectedItemDoer extends ViewDoer
 			return;
 		
 		if (diagramLink.isGroupBoxLink())
-			deleteGroupBoxDiagramLink(deleteDiagramReferrerChoice, diagramLink,	diagramFactorsAboutToBeDeleted, linkDeletor);
-		else 
-			deleteNonGroupBoxDiagramLink(deleteDiagramReferrerChoice, diagramLink, diagramFactorsAboutToBeDeleted, linkDeletor);
-	}
-
-	private void deleteGroupBoxDiagramLink(String deleteDiagramReferrerChoice, DiagramLink diagramLink,	Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, LinkDeletor linkDeletor) throws Exception
-	{
-		if (isDeleteFromAllDiagramsChoice(deleteDiagramReferrerChoice))
-			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinksAndReferringDiagramLinks(diagramFactorsAboutToBeDeleted, diagramLink);
-		else
 			linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(diagramFactorsAboutToBeDeleted, diagramLink);
-	}
-
-	private void deleteNonGroupBoxDiagramLink(String deleteDiagramReferrerChoice, DiagramLink diagramLink, Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, LinkDeletor linkDeletor) throws Exception
-	{
-		if (isDeleteFromAllDiagramsChoice(deleteDiagramReferrerChoice))
-			linkDeletor.deleteDiagramLinkAndFactorLinkAndDiagramLinkReferrers(diagramFactorsAboutToBeDeleted, diagramLink);
-		else 
+		else
 			linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramFactorsAboutToBeDeleted, diagramLink);
-	}
-
-	private boolean isDeleteFromAllDiagramsChoice(String deleteDiagramReferrerChoice)
-	{
-		return deleteDiagramReferrerChoice.equals(getFromAllDiagramsChoice());
-	}
-
-	private boolean isCancelChoice(String deleteDiagramReferrerChoice)
-	{
-		return deleteDiagramReferrerChoice.equals(getCancelChoice());
-	}
-
-	private String confirmReferringDiagramLinksBeingDeleted(EAMGraphCell[] selectedRelatedCells)
-	{
-		Vector<DiagramLink> diagramLinks = extractDiagramLinks(selectedRelatedCells);
-		Vector<DiagramLink> diagramLinksWithGroupBoxes = getDiagramLinksAndGroupboxChildrenLinks(diagramLinks);
-		HashSet<DiagramObject> diagramObjects = getDiagramNamesAffectedByThisDelete(diagramLinksWithGroupBoxes, extractDiagramFactorsRefs(selectedRelatedCells));
-		HashSet<DiagramObject> singleItemSet = new HashSet();
-		singleItemSet.add(getDiagramView().getCurrentDiagramObject());
-		if (diagramObjects.size() <= 1)
-			return getJustThisDiagramChoice();
-
-		String userChoiceResult = EAM.choiceDialog(EAM.text("Delete Link"), new String[]{createDiagramNamesList(diagramObjects)}, new String[]{getCancelChoice(), getJustThisDiagramChoice(), getFromAllDiagramsChoice()});
-		if (userChoiceResult.length() == 0)
-			return getCancelChoice();
-		
-		return userChoiceResult;
-	}
-
-	private String createDiagramNamesList(HashSet<DiagramObject> diagramObjects)
-	{
-		String notifyDiaglogText = LINK_DELETE_NOTIFY_TEXT;
-		for(DiagramObject diagramObject : diagramObjects)
-		{
-			notifyDiaglogText += " \n - " + diagramObject.toString();			
-		}
-		return notifyDiaglogText;
-	}
-
-	private HashSet<DiagramObject> getDiagramNamesAffectedByThisDelete(Vector<DiagramLink> diagramLinks, ORefList diagramFactorRefs)
-	{	
-		HashSet<DiagramObject> diagramObjects = new HashSet(); 
-		for (int i = 0; i < diagramLinks.size(); ++i)
-		{
-			DiagramLink diagramLink = diagramLinks.get(i);
-			FactorLink factorLink = diagramLink.getUnderlyingLink();
-			if(factorLink == null)
-			{
-				EAM.logWarning("DiagramLink without FactorLink: " + diagramLink.getRef());
-				continue;
-			}
-			
-			ORef fromDiagramFactorRef =  diagramLink.getFromDiagramFactorRef();
-			ORef toDiagramFactorRef = diagramLink.getToDiagramFactorRef();
-			ORefList diagramLinkRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
-			boolean containsBothFromAndTo = !diagramFactorRefs.contains(fromDiagramFactorRef) && !diagramFactorRefs.contains(toDiagramFactorRef);
-			boolean hasMoreThanOneRefferer = diagramLinkRefs.size() > 1;
-			if (hasMoreThanOneRefferer && containsBothFromAndTo)
-				diagramObjects.addAll(getAllDiagramsThatRefer(factorLink));
-		}
-		
-		return diagramObjects;
-	}
-	
-	private HashSet<DiagramObject> getAllDiagramsThatRefer(FactorLink factorLink)
-	{
-		HashSet<DiagramObject> diagramObjects = new HashSet();
-		ORefList diagramRefs = DiagramObject.getDiagramRefsContainingLink(getProject(), factorLink.getRef());
-		for (int i = 0; i < diagramRefs.size(); ++i)
-		{
-			DiagramObject diagramObject = (DiagramObject) getProject().findObject(diagramRefs.get(i));
-			diagramObjects.add(diagramObject);
-		}
-		
-		return diagramObjects;
 	}
 
 	private Vector<DiagramLink> extractDiagramLinks(EAMGraphCell[] selectedRelatedCells)
@@ -235,56 +135,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		
 		return filteredList;
 	}
-	
-	private ORefList extractDiagramFactorsRefs(EAMGraphCell[] selectedRelatedCells)
-	{
-		Vector<DiagramFactor> diagramFactors = extractDiagramFactors(selectedRelatedCells);
-		ORefList diagramFactorRefList = new ORefList(diagramFactors.toArray(new DiagramFactor[0]));
-		
-		return diagramFactorRefList;
-	}
-	
-	private Vector<DiagramLink> getDiagramLinksAndGroupboxChildrenLinks(Vector<DiagramLink> diagramLinks)
-	{
-		Vector<DiagramLink> diagramLinksWithPossibleGroupBoxLinks = new Vector();
-		for (int i = 0; i < diagramLinks.size(); ++i)
-		{
-			DiagramLink diagramLink = diagramLinks.get(i);
-			ORefList selfOrChildren = diagramLink.getSelfOrChildren();
-			if (selfOrChildren.contains(diagramLink.getRef()))
-				diagramLinksWithPossibleGroupBoxLinks.add(diagramLink);
-			else 
-				diagramLinksWithPossibleGroupBoxLinks.addAll(convertToDiagramLinks(selfOrChildren));
-		}
-		
-		return diagramLinksWithPossibleGroupBoxLinks;
-	}
-	
-	private Vector<DiagramLink> convertToDiagramLinks(ORefList diagramLinkRefs)
-	{
-		Vector<DiagramLink> diagramLinks = new Vector();
-		for (int i = 0; i < diagramLinkRefs.size(); ++i)
-		{
-			diagramLinks.add(DiagramLink.find(getProject(), diagramLinkRefs.get(i)));
-		}
-		
-		return diagramLinks;
-	}
-	
-	private String getJustThisDiagramChoice()
-	{
-		return EAM.text("Just This Diagram");
-	}
-	
-	private String getFromAllDiagramsChoice()
-	{
-		return EAM.text("From All Diagrams");
-	}
-	
-	private String getCancelChoice()
-	{
-		return EAM.text("Cancel");
-	}	
 
 	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
 	  															  " and Results Chains, not just this one. ");

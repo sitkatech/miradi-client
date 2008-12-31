@@ -75,22 +75,6 @@ public class LinkDeletor
 		}
 	}
 	
-	public void deleteDiagramLinkAndFactorLinkAndDiagramLinkReferrers(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
-	{
-		FactorLink factorLink = diagramLink.getUnderlyingLink();
-		deleteDiagramLink(diagramLink);
-		if(factorLink == null)
-		{
-			EAM.logWarning(HAS_NO_WRAPPED_LINK_MESSAGE);
-			return;
-		}
-		
-		if (!isToOrFromFactorBeingDeleted(diagramFactorsAboutToBeDeleted, factorLink))
-			deleteAllReferrerDiagramLinks(factorLink);
-
-		deleteFactorLinkIfOrphaned(factorLink);
-	}
-	
 	public void deleteDiagramLinkAndOrphandFactorLink(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		FactorLink factorLink = diagramLink.getUnderlyingLink();
@@ -104,18 +88,6 @@ public class LinkDeletor
 		deleteFactorLinkIfOrphaned(factorLink);
 	}
 
-	public void deleteFactorLinksAndGroupBoxDiagramLinksAndReferringDiagramLinks(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
-	{
-		ORefList groupBoxLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
-		deleteDiagramLink(diagramLink);
-		
-		for (int i = 0; i < groupBoxLinkChildRefs.size(); ++i)
-		{
-			DiagramLink childDiagramLink = DiagramLink.find(getProject(), groupBoxLinkChildRefs.get(i));
-			deleteDiagramLinkAndFactorLinkAndDiagramLinkReferrers(diagramFactorsAboutToBeDeleted, childDiagramLink);
-		}
-	}
-	
 	public void deleteFactorLinksAndGroupBoxDiagramLinks(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
 		ORefList groupBoxLinkChildRefs = diagramLink.getGroupedDiagramLinkRefs();
@@ -126,13 +98,6 @@ public class LinkDeletor
 			DiagramLink childDiagramLink = DiagramLink.find(getProject(), groupBoxLinkChildRefs.get(i));
 			deleteDiagramLinkAndOrphandFactorLink(diagramFactorsAboutToBeDeleted, childDiagramLink);
 		}
-	}
-	
-	private void deleteAllReferrerDiagramLinks(FactorLink factorLink) throws Exception
-	{
-		ObjectManager objectManager = project.getObjectManager();
-		ORefList diagramLinkreferrers = factorLink.findObjectsThatReferToUs(objectManager, ObjectType.DIAGRAM_LINK, factorLink.getRef());
-		deleteDiagramLinks(diagramLinkreferrers);
 	}
 
 	public void deleteDiagramLinks(ORefList diagramLinkORefs) throws Exception
@@ -212,20 +177,6 @@ public class LinkDeletor
 		
 		CommandDeleteObject deleteThreatStressRating = new CommandDeleteObject(threatStressRating.getRef());
 		project.executeCommand(deleteThreatStressRating);
-	}
-
-	private boolean isToOrFromFactorBeingDeleted(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, FactorLink factorLink)
-	{
-		for (int i = 0; i < diagramFactorsAboutToBeDeleted.size(); ++i)
-		{
-			ORef factorRefToBeDeleted = diagramFactorsAboutToBeDeleted.get(i).getWrappedORef();
-			ORef toRef = factorLink.getToFactorRef();
-			ORef fromRef = factorLink.getFromFactorRef();
-			if (toRef.equals(factorRefToBeDeleted) || fromRef.equals(factorRefToBeDeleted))
-				return true;
-		}
-		
-		return false;
 	}
 
 	private Project getProject()
