@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.util.Vector;
 
 import javax.swing.Icon;
+import javax.swing.table.TableModel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
@@ -31,9 +32,10 @@ import org.miradi.utils.AbstractTableExporter;
 
 public class PlanningViewMainModelExporter extends AbstractTableExporter
 {
-	public PlanningViewMainModelExporter(PlanningViewAbstractTreeTableSyncedTableModel modelToUse)
+	public PlanningViewMainModelExporter(TableModel modelToUse, RowColumnBaseObjectProvider objectProviderToUse)
 	{
 		model = modelToUse;
+		objectProvider = objectProviderToUse;
 	}
 	
 	public int getRowCount()
@@ -43,14 +45,9 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return getModel().getBaseObjectForRowColumn(row, column);
+		return objectProvider.getBaseObjectForRowColumn(row, column);
 	}
 	
-	public RowColumnBaseObjectProvider getTreeTableModelAdapter()
-	{
-		return getModel();
-	}
-
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		return getBaseObjectForRowColumn(row, 0);
@@ -96,7 +93,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return getSafeValue(value);
 	}
 
-	private PlanningViewAbstractTreeTableSyncedTableModel getModel()
+	private TableModel getModel()
 	{
 		return model;
 	}
@@ -115,5 +112,6 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return new Vector<Integer>();
 	}
 
-	private PlanningViewAbstractTreeTableSyncedTableModel model;
+	private TableModel model;
+	private RowColumnBaseObjectProvider objectProvider;
 }
