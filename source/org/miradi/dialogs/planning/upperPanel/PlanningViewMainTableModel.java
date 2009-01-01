@@ -90,6 +90,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 		return null;
 	}
+	
+	@Override
+	public boolean isCurrencyColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
+			return true;
+		
+		return false;
+	}
 
 	private void omitColumnTagsRepresentedByColumnTables()
 	{
