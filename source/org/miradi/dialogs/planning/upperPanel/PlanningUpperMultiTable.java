@@ -25,9 +25,9 @@ import javax.swing.table.TableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
-public class PlanningViewMultiTable extends TableWithColumnWidthAndSequenceSaver
+public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver
 {
-	public PlanningViewMultiTable(MainWindow mainWindowToUse, TableModel model)
+	public PlanningUpperMultiTable(MainWindow mainWindowToUse, TableModel model)
 	{
 		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 		setAutoResizeMode(AUTO_RESIZE_OFF);

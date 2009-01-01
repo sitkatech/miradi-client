@@ -114,7 +114,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
 		
-		mainTable = new PlanningViewMultiTable(mainWindowToUse, multiModel);
+		mainTable = new PlanningUpperMultiTable(mainWindowToUse, multiModel);
 		
 		mainTableScrollPane = integrateTable(treeTableScrollPane.getVerticalScrollBar(), scrollController, rowHeightController, selectionController, treeToUse, mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -352,7 +352,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
-	private PlanningViewMultiTable mainTable;
+	private PlanningUpperMultiTable mainTable;
 
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewMeasurementTableModel measurementModel;
