@@ -66,6 +66,12 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	{
 		return yearlyDateRanges.size() + 1;
 	}
+
+	@Override
+	public boolean isCurrencyColumn(int column)
+	{
+		return true;
+	}
 	
 	public Object getValueAt(int row, int column)
 	{
