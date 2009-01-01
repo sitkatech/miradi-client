@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.awt.Color;
+
 import javax.swing.table.TableModel;
 
 import org.miradi.utils.ColumnTagProvider;
@@ -42,6 +44,11 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 	public String getColumnTag(int column)
 	{
 		return getCastedModel(column).getColumnTag(findColumnWithinSubTable(column));
+	}
+	
+	public Color getCellBackgroundColor(int row, int column)
+	{
+		return getCastedModel(column).getCellBackgroundColor(findColumnWithinSubTable(column));
 	}
 
 	private PlanningUpperTableModelInterface getCastedModel(int column)

@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.awt.Color;
+
+import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
@@ -52,5 +55,11 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 		return objectForRow.getData(columnTags[column]);
 	}
 	
+	public Color getCellBackgroundColor(int column)
+	{
+		return FactorRenderer.ANNOTATIONS_COLOR;
+	}
+
 	public final static String[] columnTags = {Indicator.TAG_FUTURE_STATUS_DATE, Indicator.TAG_FUTURE_STATUS_SUMMARY};
+
 }

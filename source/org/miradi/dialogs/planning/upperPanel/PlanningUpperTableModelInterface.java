@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.awt.Color;
+
 import javax.swing.table.TableModel;
 
 import org.miradi.utils.ColumnTagProvider;
 
 public interface PlanningUpperTableModelInterface extends TableModel, ColumnTagProvider
 {
+	Color getCellBackgroundColor(int column);
 }

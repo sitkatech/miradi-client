@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.awt.Color;
+
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
@@ -44,7 +46,15 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		final ObjectTableCellRendererFactory factory = rendererFactory;
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
+		factory.setCellBackgroundColor(background);
 		return factory;
+	}
+
+	private PlanningTreeMultiTableModel getCastedModel()
+	{
+		return (PlanningTreeMultiTableModel)getModel();
 	}
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

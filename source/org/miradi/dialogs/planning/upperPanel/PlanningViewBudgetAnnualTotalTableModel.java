@@ -19,10 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.awt.Color;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -113,8 +115,19 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		return column == getColumnCount() - 1;
 	}
 	
+	public Color getCellBackgroundColor(int column)
+	{
+		int columnCount = getColumnCount();
+		final int TOTALS_COLUMN = columnCount - 1;
+		if (column == TOTALS_COLUMN)
+			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
+		
+		return AppPreferences.BUDGET_TABLE_BACKGROUND;
+	}
+
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;
 	
 	public static final String GRAND_TOTAL_COLUMN_NAME = EAM.text("Budget Total");
+
 }
