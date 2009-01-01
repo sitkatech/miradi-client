@@ -40,7 +40,7 @@ public class ChoiceItemTableCellRendererFactory extends SingleLineObjectTableCel
 	{
 		super(providerToUse, fontProviderToUse);
 		icon = new ColoredIcon();
-		defaultBackgroundColor = defaultBackgroundColorToUse;
+		setCellBackgroundColor(defaultBackgroundColorToUse);
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
@@ -87,7 +87,8 @@ public class ChoiceItemTableCellRendererFactory extends SingleLineObjectTableCel
 	protected Color getBackgroundColor(ChoiceItem choice)
 	{
 		if(choice == null || choice.getColor() == null)
-			return defaultBackgroundColor;
+			return getCellBackgroundColor();
+		
 		return choice.getColor();
 	}
 	
@@ -99,5 +100,4 @@ public class ChoiceItemTableCellRendererFactory extends SingleLineObjectTableCel
 	}
 
 	private ColoredIcon icon;
-	private Color defaultBackgroundColor;
 }
