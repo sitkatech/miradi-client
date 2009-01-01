@@ -24,7 +24,7 @@ import javax.swing.table.TableModel;
 
 import org.miradi.utils.ColumnTagProvider;
 
-public interface TableModelWithColumnTagProvider extends TableModel,
+public interface PlanningUpperTableModelInterface extends TableModel,
 		ColumnTagProvider
 {
 

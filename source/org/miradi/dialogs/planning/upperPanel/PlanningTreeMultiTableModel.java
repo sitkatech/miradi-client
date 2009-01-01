@@ -32,7 +32,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		throw new RuntimeException(getClass().getName() + ".addModel: Model must be a ColumnTagProvider");
 	}
 	
-	public void addModel(TableModelWithColumnTagProvider modelToAdd)
+	public void addModel(PlanningUpperTableModelInterface modelToAdd)
 	{
 		// TODO Auto-generated method stub
 		super.addModel(modelToAdd);

@@ -32,7 +32,7 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.utils.CodeList;
 
-public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements TableModelWithColumnTagProvider
+public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements PlanningUpperTableModelInterface
 {
 	public PlanningViewMeasurementTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse) throws Exception
 	{

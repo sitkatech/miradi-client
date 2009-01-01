@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 
-public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements TableModelWithColumnTagProvider
+public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements PlanningUpperTableModelInterface
 {
 	public PlanningViewFutureStatusTableModel(Project projectToUse, RowColumnBaseObjectProvider adapterToUse) throws Exception
 	{
