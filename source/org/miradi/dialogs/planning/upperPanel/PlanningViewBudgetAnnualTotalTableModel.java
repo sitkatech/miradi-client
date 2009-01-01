@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateRange;
 
-public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements PlanningUpperTableModelInterface
+public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
 	public PlanningViewBudgetAnnualTotalTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
