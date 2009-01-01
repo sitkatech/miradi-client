@@ -61,6 +61,11 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		return getCastedModel(modelColumn).isChoiceItemColumn(findColumnWithinSubTable(modelColumn));
 	}
 
+	public boolean isProgressColumn(int modelColumn)
+	{
+		return getCastedModel(modelColumn).isProgressColumn(findColumnWithinSubTable(modelColumn));
+	}
+
 	private PlanningUpperTableModelInterface getCastedModel(int column)
 	{
 		return (PlanningUpperTableModelInterface) findTable(column);

@@ -111,7 +111,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(columnTag.equals(Indicator.TAG_PRIORITY))
 			return true;
 		
-		if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+		return false;
+	}
+	
+	@Override
+	public boolean isProgressColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if(columnTag.equals(Strategy.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			return true;
+		if(columnTag.equals(Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
 			return true;
 		
 		return false;
