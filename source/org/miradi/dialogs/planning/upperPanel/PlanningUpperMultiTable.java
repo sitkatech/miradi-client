@@ -41,7 +41,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 
 		masterTree = masterTreeToUse;
-		rendererFactory = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
+		defaultRendererFactory = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
 
 		CurrencyFormat currencyFormatter = masterTree.getProject().getCurrencyFormatterWithCommas();
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
@@ -52,7 +52,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
 
-		BasicTableCellRendererFactory factory = rendererFactory;
+		BasicTableCellRendererFactory factory = defaultRendererFactory;
 		if(getCastedModel().isCurrencyColumn(modelColumn))
 			factory = currencyRendererFactory;
 		
@@ -79,6 +79,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private static final String UNIQUE_IDENTIFIER = "PlanningUpperMultiTable";
 	
 	private PlanningTreeTable masterTree;
-	private BasicTableCellRendererFactory rendererFactory;
+	private BasicTableCellRendererFactory defaultRendererFactory;
 	private BasicTableCellRendererFactory currencyRendererFactory;
 }
