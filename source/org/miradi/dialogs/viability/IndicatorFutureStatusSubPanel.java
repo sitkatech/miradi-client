@@ -49,9 +49,9 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 
-		PanelFieldLabel dateLabel = new PanelFieldLabel(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_DATE);
+		PanelTitleLabel dateLabel = new PanelTitleLabel(EAM.text("Date"));
 		ObjectDataInputField futureStatusDateField = createDateChooserField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_DATE);
-		PanelFieldLabel valueLabel = new PanelFieldLabel(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_SUMMARY);
+		PanelTitleLabel valueLabel = new PanelTitleLabel(EAM.text("Value"));
 		ObjectDataInputField futureStatusSummaryField = createMediumStringField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_SUMMARY);
 
 		futureStatusRatingLabelField = new PanelFieldLabel(ObjectType.INDICATOR, Indicator.TAG_FUTURE_STATUS_RATING);

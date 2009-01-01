@@ -35,11 +35,10 @@ import org.miradi.project.Project;
 
 public class ColumnWidthSaver extends MouseAdapter
 {
-	public ColumnWidthSaver(Project projectToUse, JTable tableToUse, ColumnTagProvider tagProviderToUse, String uniqueTableIdentifierToUse)
+	public ColumnWidthSaver(Project projectToUse, JTable tableToUse, String uniqueTableIdentifierToUse)
 	{
 		project = projectToUse;
 		table = tableToUse;
-		tagProvider = tagProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 	}
 	
@@ -63,18 +62,17 @@ public class ColumnWidthSaver extends MouseAdapter
 
 	protected int getColumnWidth(int tableColumn) throws Exception
 	{
-		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		String columnTag = tagProvider.getColumnTag(modelColumn);
+		String columnKey = getColumnWidthKey(tableColumn);
 		
 		String columnWidthAsString = "";
 		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueTableIdentifier());
 		if (tableSettings != null)
 		{
 			StringMap columnWidthMap = tableSettings.getColumnWidthMap();
-			columnWidthAsString = columnWidthMap.get(columnTag);
+			columnWidthAsString = columnWidthMap.get(columnKey);
 		}
 		
-		return getColumnWidth(tableColumn, columnTag, columnWidthAsString);
+		return getColumnWidth(tableColumn, columnKey, columnWidthAsString);
 	}
 
 	private int getColumnWidth(int tableColumn, String columnTag, String columnWidthAsString)
@@ -131,9 +129,8 @@ public class ColumnWidthSaver extends MouseAdapter
 		StringMap columnWidthMap = new StringMap();
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{		
-			int modelColumn = table.convertColumnIndexToModel(tableColumn);
 			TableColumn column = table.getColumnModel().getColumn(tableColumn);
-			columnWidthMap.add(getColumnWidthKey(modelColumn), Integer.toString(column.getWidth()));
+			columnWidthMap.add(getColumnWidthKey(tableColumn), Integer.toString(column.getWidth()));
 		}
 		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
@@ -146,9 +143,9 @@ public class ColumnWidthSaver extends MouseAdapter
 		return project;
 	}
 	
-	private String getColumnWidthKey(int modelColumn)
+	private String getColumnWidthKey(int tableColumn)
 	{
-		return tagProvider.getColumnTag(modelColumn);
+		return table.getColumnName(tableColumn);
 	}
 	
 	private String getUniqueTableIdentifier()
@@ -158,7 +155,6 @@ public class ColumnWidthSaver extends MouseAdapter
 
 	private Project project;
 	private JTable table;
-	private ColumnTagProvider tagProvider;
 	private String uniqueTableIdentifier;
 	public static final int DEFAULT_NARROW_COLUMN_WIDTH = 75;
 	public static final int DEFAULT_WIDE_COLUMN_WIDTH = 200;
