@@ -30,4 +30,5 @@ public interface PlanningUpperTableModelInterface extends TableModel, ColumnTagP
 {
 	Color getCellBackgroundColor(int column);
 	boolean isCurrencyColumn(int column);
+	boolean isChoiceItemColumn(int findColumnWithinSubTable);
 }

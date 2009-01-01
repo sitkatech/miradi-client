@@ -71,6 +71,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	public boolean isChoiceItemColumn(int column)
+	{
+		return false;
+	}
+	
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }
