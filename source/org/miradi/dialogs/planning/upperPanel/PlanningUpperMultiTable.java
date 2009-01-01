@@ -26,6 +26,7 @@ import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
@@ -45,6 +46,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 		CurrencyFormat currencyFormatter = masterTree.getProject().getCurrencyFormatterWithCommas();
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
+
+		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 	}
 	
 	@Override
@@ -55,6 +58,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		BasicTableCellRendererFactory factory = defaultRendererFactory;
 		if(getCastedModel().isCurrencyColumn(modelColumn))
 			factory = currencyRendererFactory;
+		else if(getCastedModel().isChoiceColumn(modelColumn))
+			factory = choiceRendererFactory;
 		
 		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
 		factory.setCellBackgroundColor(background);
@@ -81,4 +86,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private PlanningTreeTable masterTree;
 	private BasicTableCellRendererFactory defaultRendererFactory;
 	private BasicTableCellRendererFactory currencyRendererFactory;
+	private BasicTableCellRendererFactory choiceRendererFactory;
 }

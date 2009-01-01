@@ -100,6 +100,22 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		return false;
 	}
+	
+	@Override
+	public boolean isChoiceItemColumn(int column)
+	{
+		String columnTag = getColumnTag(column);
+		if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
+			return true;
+		
+		if(columnTag.equals(Indicator.TAG_PRIORITY))
+			return true;
+		
+		if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			return true;
+		
+		return false;
+	}
 
 	private void omitColumnTagsRepresentedByColumnTables()
 	{
