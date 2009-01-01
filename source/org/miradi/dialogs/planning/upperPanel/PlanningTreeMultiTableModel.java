@@ -34,15 +34,19 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 	
 	public void addModel(PlanningUpperTableModelInterface modelToAdd)
 	{
-		// TODO Auto-generated method stub
+		// NOTE: We are calling a DIFFERENT variant in super!
+		// This is NOT a do-nothing method!!
 		super.addModel(modelToAdd);
 	}
 	
 	public String getColumnTag(int column)
 	{
-		final ColumnTagProvider provider = (ColumnTagProvider) findTable(column);
-		return provider.getColumnTag(findColumnWithinSubTable(column));
+		return getCastedModel(column).getColumnTag(findColumnWithinSubTable(column));
 	}
 
+	private PlanningUpperTableModelInterface getCastedModel(int column)
+	{
+		return (PlanningUpperTableModelInterface) findTable(column);
+	}
 
 }
