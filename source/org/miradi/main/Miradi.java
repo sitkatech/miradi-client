@@ -232,6 +232,6 @@ public class Miradi
 		String[] args;
 	}
 
-	public static final String MAIN_VERSION = "2.3";
+	public static final String MAIN_VERSION = "2.4";
 	public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + MAIN_VERSION + "-";
 }
