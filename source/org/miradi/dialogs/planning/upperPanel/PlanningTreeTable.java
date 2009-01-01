@@ -32,6 +32,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 	public PlanningTreeTable(MainWindow mainWindowToUse, PlanningTreeTableModel planningTreeModelToUse)
 	{
 		super(mainWindowToUse, planningTreeModelToUse);
+		setAutoResizeMode(AUTO_RESIZE_OFF);
 	}
 	
 	public String getUniqueTableIdentifier()

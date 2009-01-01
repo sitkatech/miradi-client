@@ -95,22 +95,22 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		multiModelExporter.addExportable(new TreeTableModelExporter(project, model));
 		
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, columnsToShow);
-		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel));
+		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel, model));
 			
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(project, model);	
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(annualTotalsModel));
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(annualTotalsModel, model));
 		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(project, model);
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(measurementModel));
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(measurementModel, model));
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(project, model);
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(futureStatusModel));
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(futureStatusModel, model));
 		}
 		
 		return multiModelExporter;
