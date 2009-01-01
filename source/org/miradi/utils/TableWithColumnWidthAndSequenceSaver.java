@@ -68,7 +68,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		if (! shouldSaveColumnWidth())
 			return; 
 		
-		columnWidthSaver = new ColumnWidthSaver(getMainWindow().getProject(), this, (ColumnTagProvider)getModel(), getUniqueTableIdentifier());
+		columnWidthSaver = new ColumnWidthSaver(getMainWindow().getProject(), this, getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
 		columnWidthSaver.restoreColumnWidths();
 	}
@@ -80,7 +80,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		
 		try
 		{
-			columnSequenceSaver = new ColumnSequenceSaver(getMainWindow().getProject(), this, (ColumnTagProvider)getModel(), getUniqueTableIdentifier());
+			columnSequenceSaver = new ColumnSequenceSaver(getMainWindow().getProject(), this, getUniqueTableIdentifier());
 			getTableHeader().addMouseListener(columnSequenceSaver);
 			columnSequenceSaver.restoreColumnSequences();
 		}

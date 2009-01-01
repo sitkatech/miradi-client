@@ -42,9 +42,12 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, Measurement.getObjectType(), BaseId.INVALID);
 
+		PanelTitleLabel measurementLabel = new PanelTitleLabel(EAM.text("Measurement"), new MeasurementIcon());
+		PanelTitleLabel dateLabel = new PanelTitleLabel(EAM.text("Date"));
 		ObjectDataInputField dateField = createDateChooserField(ObjectType.MEASUREMENT, Measurement.TAG_DATE);
+		PanelTitleLabel valueLabel = new PanelTitleLabel(EAM.text("Value"));
 		ObjectDataInputField summaryField = createMediumStringField(Measurement.TAG_SUMMARY);
-		addFieldsOnOneLine(EAM.text("Measurement"), new MeasurementIcon(), new ObjectDataInputField[]{dateField, summaryField,});
+		addFieldsOnOneLine(measurementLabel, new Object[]{dateLabel, dateField, valueLabel, summaryField,});
 
 		addField(createMultilineField(Measurement.TAG_DETAIL));		
 		

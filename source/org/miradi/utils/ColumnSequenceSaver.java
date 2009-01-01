@@ -31,11 +31,10 @@ import org.miradi.project.Project;
 
 public class ColumnSequenceSaver extends MouseAdapter
 {
-	public ColumnSequenceSaver(Project projectToUse, JTable tableToUse, ColumnTagProvider tagProviderToUse, String uniqueTableIdentifierToUse)
+	public ColumnSequenceSaver(Project projectToUse, JTable tableToUse, String uniqueTableIdentifierToUse)
 	{
 		project = projectToUse;
 		table = tableToUse;
-		tagProvider = tagProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 	}
 	
@@ -78,13 +77,12 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return project;
 	}
 
-	private int findCurrentTagLocation(String tagToFind)
+	private int findCurrentTagLocation(String keyToFind)
 	{
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{
-			int modelColumn = table.convertColumnIndexToModel(tableColumn);
-			String thisTag = tagProvider.getColumnTag(modelColumn);
-			if (thisTag.equals(tagToFind))
+			String thisTag = getColumnSequenceKey(tableColumn);
+			if (thisTag.equals(keyToFind))
 			{
 				return tableColumn;
 			}
@@ -92,14 +90,13 @@ public class ColumnSequenceSaver extends MouseAdapter
 		
 		return -1;
 	}
-	
+
 	private CodeList getCurrentSequence()
 	{
 		CodeList currentColumnTagSequences = new CodeList();
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{	
-			int modelColumn = table.convertColumnIndexToModel(tableColumn);
-			currentColumnTagSequences.add(tagProvider.getColumnTag(modelColumn));
+			currentColumnTagSequences.add(getColumnSequenceKey(tableColumn));
 		}
 		
 		return currentColumnTagSequences;
@@ -110,7 +107,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		CodeList defaultColumnTagSequence = new CodeList();
 		for (int column = 0; column < table.getColumnCount(); ++column)
 		{
-			String columnTag = tagProvider.getColumnTag(column);
+			String columnTag = getColumnSequenceKey(column);
 			defaultColumnTagSequence.add(columnTag);
 		}
 		
@@ -124,6 +121,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 		getProject().executeCommand(setColumnSequence);
 	}
 
+	private String getColumnSequenceKey(int tableColumn)
+	{
+		return table.getColumnName(tableColumn);
+	}
+	
 	public void mouseReleased(MouseEvent event)
 	{
 		try
@@ -139,7 +141,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private Project project;
 	private JTable table;
-	private ColumnTagProvider tagProvider;
 	private String uniqueTableIdentifier;
 	public static final int DEFAULT_NARROW_COLUMN_WIDTH = 75;
 	public static final int DEFAULT_WIDE_COLUMN_WIDTH = 200;
