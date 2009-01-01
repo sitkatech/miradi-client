@@ -24,11 +24,13 @@ import java.awt.Color;
 
 import javax.swing.table.TableCellRenderer;
 
+import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
-import org.miradi.dialogs.tablerenderers.ObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellRendererFactory;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider
@@ -40,13 +42,20 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 		masterTree = masterTreeToUse;
 		rendererFactory = new SingleLineObjectTableCellRendererFactory(this, fontProvider);
+
+		CurrencyFormat currencyFormatter = masterTree.getProject().getCurrencyFormatterWithCommas();
+		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
 	}
 	
 	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
-		final ObjectTableCellRendererFactory factory = rendererFactory;
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
+
+		BasicTableCellRendererFactory factory = rendererFactory;
+		if(getCastedModel().isCurrencyColumn(modelColumn))
+			factory = currencyRendererFactory;
+		
 		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
 		factory.setCellBackgroundColor(background);
 		return factory;
@@ -70,5 +79,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private static final String UNIQUE_IDENTIFIER = "PlanningUpperMultiTable";
 	
 	private PlanningTreeTable masterTree;
-	private ObjectTableCellRendererFactory rendererFactory;
+	private BasicTableCellRendererFactory rendererFactory;
+	private BasicTableCellRendererFactory currencyRendererFactory;
 }

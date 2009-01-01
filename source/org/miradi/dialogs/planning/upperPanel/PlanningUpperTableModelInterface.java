@@ -29,4 +29,5 @@ import org.miradi.utils.ColumnTagProvider;
 public interface PlanningUpperTableModelInterface extends TableModel, ColumnTagProvider
 {
 	Color getCellBackgroundColor(int column);
+	boolean isCurrencyColumn(int column);
 }

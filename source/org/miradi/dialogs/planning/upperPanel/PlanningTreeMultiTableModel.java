@@ -50,6 +50,11 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 	{
 		return getCastedModel(column).getCellBackgroundColor(findColumnWithinSubTable(column));
 	}
+	
+	public boolean isCurrencyColumn(int column)
+	{
+		return getCastedModel(column).isCurrencyColumn(findColumnWithinSubTable(column));
+	}
 
 	private PlanningUpperTableModelInterface getCastedModel(int column)
 	{
