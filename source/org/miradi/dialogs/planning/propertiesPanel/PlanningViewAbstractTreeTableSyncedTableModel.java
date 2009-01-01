@@ -76,6 +76,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	public boolean isProgressColumn(int column)
+	{
+		return false;
+	}
+	
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }
