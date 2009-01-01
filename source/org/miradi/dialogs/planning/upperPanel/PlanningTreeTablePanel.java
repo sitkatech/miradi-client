@@ -106,7 +106,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		listenForColumnWidthChanges(getTree());
 		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse);
-		multiModel = new MultiTableModel();
+		multiModel = new PlanningTreeMultiTableModel();
 
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		
@@ -351,7 +351,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 	}
 
 	private PlanningViewMainTableModel mainModel;
-	private MultiTableModel multiModel;
+	private PlanningTreeMultiTableModel multiModel;
 	private PlanningViewMultiTable mainTable;
 
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;

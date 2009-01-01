@@ -27,9 +27,7 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
-import org.miradi.utils.ColumnTagProvider;
-
-public class MultiTableModel extends AbstractTableModel implements ColumnTagProvider
+public class MultiTableModel extends AbstractTableModel
 {
 	public MultiTableModel()
 	{
@@ -41,7 +39,7 @@ public class MultiTableModel extends AbstractTableModel implements ColumnTagProv
 		models.clear();
 	}
 
-	public void addModel(TableModelWithColumnTagProvider modelToAdd)
+	public void addModel(TableModel modelToAdd)
 	{
 		models.add(modelToAdd);
 		modelToAdd.addTableModelListener(new EventPropagator());
@@ -82,11 +80,6 @@ public class MultiTableModel extends AbstractTableModel implements ColumnTagProv
 		return findTable(columnIndex).getValueAt(rowIndex, findColumnWithinSubTable(columnIndex));
 	}
 
-	public String getColumnTag(int column)
-	{
-		return findTable(column).getColumnTag(findColumnWithinSubTable(column));
-	}
-
 	@Override
 	public Class<?> getColumnClass(int columnIndex)
 	{
@@ -99,10 +92,10 @@ public class MultiTableModel extends AbstractTableModel implements ColumnTagProv
 		return findTable(columnIndex).getColumnName(findColumnWithinSubTable(columnIndex));
 	}
 
-	TableModelWithColumnTagProvider findTable(int column)
+	TableModel findTable(int column)
 	{
 		int originalColumn = column;
-		for(TableModelWithColumnTagProvider model : models)
+		for(TableModel model : models)
 		{
 			if(column < model.getColumnCount())
 				return model;
@@ -124,5 +117,5 @@ public class MultiTableModel extends AbstractTableModel implements ColumnTagProv
 		throw new RuntimeException("MultiTable.findColumnWithinSubTable: Table column out of bounds: " + originalColumn);
 	}
 
-	Vector<TableModelWithColumnTagProvider> models;
+	Vector<TableModel> models;
 }
