@@ -45,7 +45,7 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
 
-public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements PlanningUpperTableModelInterface
+public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
 	public PlanningViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
