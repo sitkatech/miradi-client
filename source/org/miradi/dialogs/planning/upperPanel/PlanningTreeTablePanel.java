@@ -39,6 +39,8 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
+import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
+import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -114,7 +116,8 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
 		
-		mainTable = new PlanningUpperMultiTable(mainWindowToUse, multiModel);
+		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
+		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
 		
 		mainTableScrollPane = integrateTable(treeTableScrollPane.getVerticalScrollBar(), scrollController, rowHeightController, selectionController, treeToUse, mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
