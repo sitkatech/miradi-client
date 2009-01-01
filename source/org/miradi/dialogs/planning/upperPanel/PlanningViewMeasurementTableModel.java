@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import java.awt.Color;
+
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -131,10 +134,16 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		return null;
 	}
 	
+	public Color getCellBackgroundColor(int column)
+	{
+		return AppPreferences.MEASUREMENT_COLOR_BACKGROUND;
+	}
+
 	public final static String[] columnTags = {
 		Measurement.TAG_DATE, 
 		Measurement.TAG_SUMMARY, 
 		Measurement.TAG_TREND, 
 		Measurement.TAG_STATUS_CONFIDENCE
 		};
+
 }
