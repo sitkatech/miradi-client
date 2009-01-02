@@ -68,11 +68,7 @@ public class MultiTableModel extends AbstractTableModel
 		if(models.size() == 0)
 			return 0;
 		
-		int count = models.get(0).getRowCount();
-		for(TableModel model : models)
-			count = Math.min(count, model.getRowCount());
-
-		return count;
+		return models.get(0).getRowCount();
 	}
 
 	public Object getValueAt(int rowIndex, int columnIndex)
