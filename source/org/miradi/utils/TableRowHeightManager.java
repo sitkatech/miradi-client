@@ -106,11 +106,11 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 		}
 	}
 
-	public void saveRowHeightIgnoreExceptions()
+	public void saveRowHeightIgnoreExceptions(int newRowHeight)
 	{
 		try
 		{
-			saveRowHeight();
+			saveRowHeight(newRowHeight);
 		}
 		catch (Exception e)
 		{
@@ -118,12 +118,11 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 		}
 	}
 	
-	private void saveRowHeight() throws Exception
+	private void saveRowHeight(int newRowHeight) throws Exception
 	{
-		int currentRowHeight = table.getRowHeight();
-		EAM.logVerbose("saveRowHeight " + getUniqueTableIdentifier() + ": " + currentRowHeight);
+		EAM.logVerbose("saveRowHeight " + getUniqueTableIdentifier() + ": " + newRowHeight);
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
-		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_ROW_HEIGHT, Integer.toString(currentRowHeight));
+		CommandSetObjectData setColumnWidths = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_ROW_HEIGHT, Integer.toString(newRowHeight));
 		getProject().executeCommand(setColumnWidths);
 	}
 	
@@ -251,7 +250,7 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			saveRowHeightIgnoreExceptions();
+			saveRowHeightIgnoreExceptions(newHeight);
 			if(multiTableController != null)
 				multiTableController.saveNewRowHeight(newHeight);
 		}

@@ -64,7 +64,7 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 
 	public void saveRowHeight(int newRowHeight)
 	{
-		rowHeightManager.saveRowHeightIgnoreExceptions();
+		rowHeightManager.saveRowHeightIgnoreExceptions(newRowHeight);
 	}
 	
 	public void setRowHeight(int rowHeight)
