@@ -229,12 +229,12 @@ public class TestGroupBoxLinking extends TestCaseWithProject
 	
 	public void verifyCanCreateLink(String message, DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		assertTrue("cannot create link " + message + "?", linkCreator.canBeLinked(from, to));
+		assertTrue("cannot create link " + message + "?", linkCreator.canBeLinked(getDiagramModel().getDiagramObject(), from, to));
 	}
 	
 	public void verifyCannotCreateLink(String message, DiagramFactor from, DiagramFactor to) throws Exception
 	{
-		assertFalse("can create link " + message + "?", linkCreator.canBeLinked(from, to));
+		assertFalse("can create link " + message + "?", linkCreator.canBeLinked(getDiagramModel().getDiagramObject(), from, to));
 	}
 	
 	private void createGroupBoxLinkWithChildren(DiagramFactor from, DiagramFactor to, ORef[] diagramLinkRefs) throws Exception

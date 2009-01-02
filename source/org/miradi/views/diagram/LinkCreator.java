@@ -97,7 +97,7 @@ public class LinkCreator
 		if (linkWasRejected)
 			return true;
 		
-		return !canBeLinked(fromDiagramFactor, toDiagramFactor);  
+		return !canBeLinked(model.getDiagramObject(), fromDiagramFactor, toDiagramFactor);  
 	}
 	
 	private boolean linkWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
@@ -138,12 +138,12 @@ public class LinkCreator
 		return false;		
 	}
 	
-	public boolean canBeLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	public boolean canBeLinked(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		if (areDiagramFactorsLinked(fromDiagramFactor, toDiagramFactor))
 			return false;
 	
-		if (areWrappedFactorsLinked(fromDiagramFactor, toDiagramFactor))
+		if (areWrappedFactorsLinkedInDiagram(diagramObject, fromDiagramFactor, toDiagramFactor))
 			return false;
 		
 		boolean isFromGroupBox = fromDiagramFactor.isGroupBoxFactor();
@@ -178,9 +178,14 @@ public class LinkCreator
 		return getProject().areDiagramFactorsLinked(fromDiagramFactor.getRef(), toDiagramFactor.getRef());
 	}
 
-	private boolean areWrappedFactorsLinked(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor)
+	private boolean areWrappedFactorsLinkedInDiagram(DiagramObject diagramObject, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor)
 	{
-		return getProject().areLinked(fromDiagramFactor.getWrappedFactor(), toDiagramFactor.getWrappedFactor());
+		ORef factorLinkRef = getProject().getFactorLinkPool().getLinkedRef(fromDiagramFactor.getWrappedFactor(), toDiagramFactor.getWrappedFactor());
+		if (factorLinkRef.isInvalid())
+			return false;
+		
+		DiagramLink diagramLink = diagramObject.getDiagramFactorLink(factorLinkRef);
+		return diagramLink != null;
 	}
 	
 	private boolean isLinkedToAnyGroupBoxChildren(DiagramFactor from, DiagramFactor toGroupBox) throws Exception

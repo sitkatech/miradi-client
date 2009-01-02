@@ -26,7 +26,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IdListData;
@@ -68,13 +67,13 @@ abstract public class DiagramObject extends BaseObject
 		return filteredFactorsByType;
 	}
 	
-	public DiagramLink getDiagramFactorLink(FactorLinkId factorLinkId)
+	public DiagramLink getDiagramFactorLink(ORef factorLinkRef)
 	{
-		IdList diagramFactorLinkIds = getAllDiagramFactorLinkIds();
-		for (int i = 0; i < diagramFactorLinkIds.size(); i++)
+		ORefList diagramLinkRefs = getAllDiagramLinkRefs();
+		for (int index = 0; index < diagramLinkRefs.size(); index++)
 		{
-			DiagramLink diagramFactorLink = (DiagramLink) getObjectManager().findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramFactorLinkIds.get(i)));
-			if (diagramFactorLink.getWrappedId().equals(factorLinkId))
+			DiagramLink diagramFactorLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
+			if (diagramFactorLink.getWrappedRef().equals(factorLinkRef))
 				return diagramFactorLink;
 		}
 		
