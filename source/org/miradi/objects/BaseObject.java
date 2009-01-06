@@ -707,6 +707,7 @@ abstract public class BaseObject
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
+		nonUserDataFields = new HashMap();
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		
@@ -755,7 +756,7 @@ abstract public class BaseObject
 	
 	public boolean isUserDataCommand(String tag)
 	{
-		return false;
+		return nonUserDataFields.containsKey(tag);
 	}
 	
 	public String[] getFieldTags()
