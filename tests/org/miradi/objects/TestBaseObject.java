@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -92,6 +93,15 @@ public class TestBaseObject extends EAMTestCase
 		ORef taskRef = project.createObject(Task.getObjectType());
 		Task task = Task.find(project, taskRef);
 		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
+	}
+	
+	public void testIsUserDataCommand() throws Exception
+	{
+		String someNonUserDefinedTag = "SomeTag";
+		Cause cause = project.createCause();
+		cause.addNonUserDataField(someNonUserDefinedTag, new StringData(someNonUserDefinedTag));
+		assertTrue("is user tag?" , cause.isUserDataCommand(someNonUserDefinedTag));
+		assertFalse("is non user tag?", cause.isUserDataCommand(Cause.TAG_LABEL));
 	}
 	
 	ProjectForTesting project;
