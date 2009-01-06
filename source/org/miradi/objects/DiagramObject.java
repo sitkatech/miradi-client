@@ -384,6 +384,22 @@ abstract public class DiagramObject extends BaseObject
 		return findDiagramObject(project.getObjectManager(), diagramObjectRef);
 	}
 	
+	public static boolean isDiagramObject(ORef ref)
+	{
+		return isDiagramObject(ref.getObjectType());
+	}
+	
+	public static boolean isDiagramObject(int objectType)
+	{
+		if (ConceptualModelDiagram.is(objectType))
+			return true;
+		
+		if (ResultsChainDiagram.is(objectType))
+			return true;
+		
+		return false;
+	}
+	
 	public void clear()
 	{
 		super.clear();
