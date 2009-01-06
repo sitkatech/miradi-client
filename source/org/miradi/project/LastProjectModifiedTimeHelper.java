@@ -53,7 +53,7 @@ public class LastProjectModifiedTimeHelper
 		}
 	}
 	
-	public void writeCurrentTime()
+	public void attemptToWriteCurrentTime()
 	{
 		try
 		{
