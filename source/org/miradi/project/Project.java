@@ -911,6 +911,10 @@ public class Project
 			executeWithoutRecording(command);
 			recordCommand(command);
 		}
+		catch (Exception e)
+		{
+			throw new CommandFailedException(e);
+		}
 		finally
 		{
 			isExecuting = false;

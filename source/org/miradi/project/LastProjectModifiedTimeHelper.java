@@ -53,19 +53,7 @@ public class LastProjectModifiedTimeHelper
 		}
 	}
 	
-	public void attemptToWriteCurrentTime()
-	{
-		try
-		{
-			writeTime();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-
-	private void writeTime() throws Exception
+	public void attemptToWriteCurrentTime() throws Exception
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
