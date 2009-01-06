@@ -30,6 +30,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.LastProjectModifiedTimeHelper;
 
 public class FileSystemTreeNode extends TreeTableNode
 {
@@ -71,8 +72,7 @@ public class FileSystemTreeNode extends TreeTableNode
 			if(!isProjectDirectory())
 				return null;
 			
-			long lastModifiedMillis = thisFile.lastModified();
-			return timestampToString(lastModifiedMillis);
+			return LastProjectModifiedTimeHelper.readLastModifiedProjectTime(thisFile);
 		}
 		
 		throw new RuntimeException("Unknown column: " + column);
