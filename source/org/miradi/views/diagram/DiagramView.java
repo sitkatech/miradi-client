@@ -124,7 +124,6 @@ import org.miradi.actions.ActionZoomIn;
 import org.miradi.actions.ActionZoomOut;
 import org.miradi.actions.ActionZoomToFit;
 import org.miradi.actions.EAMAction;
-import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
@@ -141,6 +140,7 @@ import org.miradi.dialogs.diagram.ResultsChainDiagramPanel;
 import org.miradi.dialogs.slideshow.SlideListManagementPanel;
 import org.miradi.dialogs.slideshow.SlideShowDialog;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -762,21 +762,43 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		Command rawCommand = event.getCommand();
-		
-		if(!rawCommand.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+
+		if (!event.isSetDataCommand())
 			return;
 
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		try
 		{
-			CommandSetObjectData cmd = (CommandSetObjectData)rawCommand;
-			updateAllTabs(cmd);
-			setToDefaultMode(cmd);
+			if(isDeleteVisibleDiagramFactorCommand(setCommand))
+				disposeOfNodePropertiesDialog();
+			
+			updateAllTabs(setCommand);
+			setToDefaultMode(setCommand);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+
+
+	private boolean isDeleteVisibleDiagramFactorCommand(CommandSetObjectData setCommand) throws Exception
+	{		
+		if (!DiagramObject.isDiagramObject(setCommand.getObjectORef()))
+			return false;
+		
+		if (!setCommand.getFieldTag().equals(DiagramObject.TAG_DIAGRAM_FACTOR_IDS))
+			return false;
+			
+		if (nodePropertiesPanel == null)
+			return false;
+					
+		DiagramFactor diagramFactorRefForPropertiesDialog = nodePropertiesPanel.getCurrentDiagramFactor();
+		if (diagramFactorRefForPropertiesDialog == null)
+			return true;
+		
+		IdList currentList = new IdList(DiagramFactor.getObjectType(), setCommand.getDataValue());
+		return !currentList.contains(diagramFactorRefForPropertiesDialog.getRef());
 	}
 
 	private void setToDefaultMode(CommandSetObjectData cmd) throws Exception
