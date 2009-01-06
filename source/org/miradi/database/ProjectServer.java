@@ -262,7 +262,7 @@ abstract public class ProjectServer
 		modifiedDateWriter = new LastProjectModifiedTimeHelper(getJsonDirectory());
 	}
 		
-	public void updateLastModifiedTime()
+	public void updateLastModifiedTime() throws Exception
 	{
 		if (modifiedDateWriter != null)
 			modifiedDateWriter.attemptToWriteCurrentTime();
