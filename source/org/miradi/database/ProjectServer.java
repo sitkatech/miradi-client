@@ -28,6 +28,7 @@ import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.ids.BaseId;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.LastProjectModifiedTimeHelper;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectInfo;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -256,6 +257,17 @@ abstract public class ProjectServer
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
 	
+	protected void createModifiedProjectTimeHelper()
+	{
+		modifiedDateWriter = new LastProjectModifiedTimeHelper(getJsonDirectory());
+	}
+		
+	public void updateLastModifiedTime()
+	{
+		if (modifiedDateWriter != null)
+			modifiedDateWriter.writeCurrentTime();
+	}
+	
 	static String JSON_DIRECTORY = "json";
 	static String THREATRATINGS_DIRECTORY = "threatratings";
 	static String VERSION_FILE = "version";
@@ -271,4 +283,5 @@ abstract public class ProjectServer
 	protected File topDirectory;
 	protected String name;
 	protected DirectoryLock lock;
+	protected LastProjectModifiedTimeHelper modifiedDateWriter;
 }
