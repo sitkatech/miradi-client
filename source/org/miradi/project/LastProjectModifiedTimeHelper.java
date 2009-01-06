@@ -24,7 +24,6 @@ import java.io.FileOutputStream;
 import java.util.Calendar;
 
 import org.martus.util.UnicodeStringReader;
-import org.martus.util.UnicodeStringWriter;
 import org.miradi.main.EAM;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
@@ -55,18 +54,8 @@ public class LastProjectModifiedTimeHelper
 	
 	public void attemptToWriteCurrentTime() throws Exception
 	{
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		try
-		{
-			String currentTime = FileSystemTreeNode.timestampToString(Calendar.getInstance().getTimeInMillis());
-			writer.write(currentTime);
-		}
-		finally
-		{
-			writer.close();
-		}
-		
-		byte[] bytes = writer.toString().getBytes("UTF-8");
+		String currentTime = FileSystemTreeNode.timestampToString(Calendar.getInstance().getTimeInMillis());
+		byte[] bytes = currentTime.getBytes("UTF-8");
 		File projectLastModifiedTimeFile = getProjectLastModifiedTimeFile();
 		FileOutputStream outputStream = new FileOutputStream(projectLastModifiedTimeFile);
 		try
