@@ -741,11 +741,21 @@ abstract public class BaseObject
 		fields.put(tag, data);
 	}
 	
+	protected void addNonUserDataField(String tag, ObjectData data)
+	{
+		addField(tag, data);
+		nonUserDataFields.put(tag, data);
+	}
 	
-	void addNoClearField(String tag, ObjectData data)
+	protected void addNoClearField(String tag, ObjectData data)
 	{
 		nonClearedFieldTags.add(tag);
 		fields.put(tag, data);
+	}
+	
+	public boolean isUserDataCommand(String tag)
+	{
+		return false;
 	}
 	
 	public String[] getFieldTags()
@@ -1473,6 +1483,7 @@ abstract public class BaseObject
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
+	private HashMap<String, ObjectData> nonUserDataFields; 
 	private Vector<String> nonClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
