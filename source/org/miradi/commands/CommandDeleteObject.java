@@ -56,6 +56,11 @@ public class CommandDeleteObject extends Command
 	{
 		return id;
 	}
+	
+	public ORef getObjectRef()
+	{
+		return new ORef(getObjectType(), getObjectId());
+	}
 
 	public String getCommandName()
 	{
