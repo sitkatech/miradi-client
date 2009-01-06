@@ -729,12 +729,12 @@ abstract public class BaseObject
 		return getProject().getQuestion(questionClass);
 	}
 	
-	void addField(ObjectData data)
+	protected void addField(ObjectData data)
 	{
 		addField(data.getTag(), data);
 	}
 
-	void addField(String tag, ObjectData data)
+	protected void addField(String tag, ObjectData data)
 	{
 		if(!data.getTag().equals(tag))
 			throw new RuntimeException("Wrong tag: " + tag + " in " + data.getTag() + " for " + getRef());
