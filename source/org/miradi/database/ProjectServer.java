@@ -265,7 +265,7 @@ abstract public class ProjectServer
 	public void updateLastModifiedTime()
 	{
 		if (modifiedDateWriter != null)
-			modifiedDateWriter.writeCurrentTime();
+			modifiedDateWriter.attemptToWriteCurrentTime();
 	}
 	
 	static String JSON_DIRECTORY = "json";
