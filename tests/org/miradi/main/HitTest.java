@@ -37,7 +37,7 @@ public class HitTest
 		shape.moveTo(0, 0);
 		shape.lineTo(0, 100);
 		shape.lineTo(100, 100);
-		System.out.println(g2.hit(new Rectangle(50, 50, 100, 100), shape, true));
-		System.out.println(g2.hit(new Rectangle(50, 50, 10, 10), shape, true));
+		System.out.println("Should be true:  " + g2.hit(new Rectangle(50, 50, 100, 100), shape, true));
+		System.out.println("Should be false: " + g2.hit(new Rectangle(50, 50, 10, 10), shape, true));
 	}
 }
