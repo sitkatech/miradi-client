@@ -53,6 +53,7 @@ public class FileBasedProjectServer extends ProjectServer
 			throw new IOException("Can't open non-project, non-empty directory");
 
 		openNonDatabaseStore(directory);
+		createModifiedProjectTimeHelper();
 	}
 	
 	public void close() throws IOException

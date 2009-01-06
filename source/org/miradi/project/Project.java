@@ -132,7 +132,6 @@ public class Project
 		database = databaseToUse;
 		commandExecutedListeners = new Vector();
 		projectCalendar = new ProjectCalendar(this);
-		modifiedDateWriter = new LastProjectModifiedTimeHelper(this);
 
 		clear();
 	}
@@ -908,7 +907,7 @@ public class Project
 		isExecuting = true;
 		try
 		{
-			modifiedDateWriter.writeCurrentTime();
+			getDatabase().updateLastModifiedTime();
 			executeWithoutRecording(command);
 			recordCommand(command);
 		}
@@ -1369,7 +1368,6 @@ public class Project
 	private ProjectServer database;
 	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
-	private LastProjectModifiedTimeHelper modifiedDateWriter;
 
 	private Vector commandExecutedListeners;
 	

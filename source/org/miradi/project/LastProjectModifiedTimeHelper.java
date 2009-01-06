@@ -30,9 +30,9 @@ import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class LastProjectModifiedTimeHelper
 {
-	public LastProjectModifiedTimeHelper(Project projectToUse)
+	public LastProjectModifiedTimeHelper(File projectDirToUse)
 	{
-		project = projectToUse;
+		projectDir = projectDirToUse;
 	}
 	
 	public static String readLastModifiedProjectTime(File projectDir)
@@ -79,7 +79,8 @@ public class LastProjectModifiedTimeHelper
 		}
 		
 		byte[] bytes = writer.toString().getBytes("UTF-8");
-		FileOutputStream outputStream = new FileOutputStream(getProjectLastModifiedTimeFile());
+		File projectLastModifiedTimeFile = getProjectLastModifiedTimeFile();
+		FileOutputStream outputStream = new FileOutputStream(projectLastModifiedTimeFile);
 		try
 		{
 			outputStream.write(bytes);
@@ -92,16 +93,10 @@ public class LastProjectModifiedTimeHelper
 
 	private File getProjectLastModifiedTimeFile()
 	{
-		File projectDir = new File(EAM.getHomeDirectory(), getProject().getFilename());
 		return new File(projectDir, LAST_MODIFIED_FILE_NAME);
-	}
-	
-	private Project getProject()
-	{
-		return project;
 	}
 	
 	private static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
 	
-	private Project project;
+	private File projectDir;
 }
