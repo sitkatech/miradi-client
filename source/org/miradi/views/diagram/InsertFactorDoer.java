@@ -120,33 +120,54 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
 		DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+		boolean isBidirectional = diagramLink.isBidirectional();
 		
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(new Vector(), diagramLink);
 		
 		LinkCreator linkCreator = new LinkCreator(getProject());
+		ORefList diagramLinkRefsToChangeBiDirectionality = new ORefList();
+		ORefList factorLinkRefsToChangeBiDirectionality = new ORefList();
 		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
 		{
-			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), fromDiagramFactor, diagramFactor);
-			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, toDiagramFactor);
+			ORef factorLinkRef1 = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef1);
+			
+			ORef factorLinkRef2 = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, toDiagramFactor);
+			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef2);
 		}
 		else if (fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
 		{
-			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), fromDiagramFactor, diagramFactor);
-			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, toDiagramFactor);
+			ORefList diagramLinkRefsToUse = linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse);
+			
+			ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, toDiagramFactor);
+			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef);
 		}
 		else if (!fromDiagramFactor.isGroupBoxFactor() && toDiagramFactor.isGroupBoxFactor())
 		{
-			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), fromDiagramFactor, diagramFactor);
-			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor, toDiagramFactor);
+			ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef);
+			
+			ORefList diagramLinkRefsToUse = linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor, toDiagramFactor);
+			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse);
 		}
 		else
 		{
-			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), fromDiagramFactor, diagramFactor);
-			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor, toDiagramFactor);
+			ORefList diagramLinkRefsToUse1 = linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse1);
+			
+			ORefList diagramLinkRefsToUse2 = linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor, toDiagramFactor);
+			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse2);
 		}
+		
+		if (isBidirectional)
+		{
+			linkCreator.enableBidirectional(diagramLinkRefsToChangeBiDirectionality);
+			linkCreator.enableBidirectionalityForFactorLinks(factorLinkRefsToChangeBiDirectionality);
+		}	
 	}
-	
+		
 	private void ensureNewFactorIsVisible(DiagramFactor diagramFactor) throws Exception
 	{
 		FactorCell newCell = getDiagramModel().getFactorCellByRef(diagramFactor.getRef());
