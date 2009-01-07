@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
@@ -35,6 +36,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
@@ -70,6 +72,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		
 		Project project = getProject();
 		FactorCell[] selectedFactors = getSelectedFactorCells();
+		DiagramLink[] selectedDiagramLinks = getSelectedDiagramLinks();
 		DiagramFactor diagramFactor = null;
 		project.executeCommand(new CommandBeginTransaction());
 		try
@@ -86,27 +89,18 @@ abstract public class InsertFactorDoer extends LocationDoer
 			project.executeCommand(new CommandEndTransaction());
 		}
 
+		// NOTE: Set up a second transaction, so the link creation is independently undoable
+		getProject().executeBeginTransaction();
 		try
 		{
 			ORef factorRef = diagramFactor.getWrappedORef();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET) && (getTypeToInsert()!= ObjectType.GROUP_BOX))
-			{
-				// NOTE: Set up a second transaction, so the link creation is independently undoable
-				project.executeCommand(new CommandBeginTransaction());
-				try
-				{
-					linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
-				}
-				finally
-				{
-					project.executeCommand(new CommandEndTransaction());
-				}
-			}
+				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
+			else if (selectedFactors.length == 0 && selectedDiagramLinks.length == 1)
+				splitSelectedLinkToIncludeFactor(selectedDiagramLinks[0], diagramFactor);
 			else
-			{
 				notLinkingToAnyFactors();
-			}
-
+			
 			selectNewFactor(factorRef);
 			ensureNewFactorIsVisible(diagramFactor);
 			launchPropertiesEditor(diagramFactor);
@@ -116,7 +110,43 @@ abstract public class InsertFactorDoer extends LocationDoer
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
+		finally
+		{
+			getProject().executeEndTransaction();
+		}
 	}
+	
+	private void splitSelectedLinkToIncludeFactor(DiagramLink diagramLink, DiagramFactor diagramFactor) throws Exception
+	{
+		DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+		DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+		
+		LinkDeletor linkDeletor = new LinkDeletor(getProject());
+		linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(new Vector(), diagramLink);
+		
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
+		{
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, toDiagramFactor);
+		}
+		else if (fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
+		{
+			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, toDiagramFactor);
+		}
+		else if (!fromDiagramFactor.isGroupBoxFactor() && toDiagramFactor.isGroupBoxFactor())
+		{
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor, toDiagramFactor);
+		}
+		else
+		{
+			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), fromDiagramFactor, diagramFactor);
+			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor, toDiagramFactor);
+		}
+	}
+	
 	private void ensureNewFactorIsVisible(DiagramFactor diagramFactor) throws Exception
 	{
 		FactorCell newCell = getDiagramModel().getFactorCellByRef(diagramFactor.getRef());
@@ -126,6 +156,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 	protected FactorCell[] getSelectedFactorCells()
 	{
 		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
+	}
+	
+	protected DiagramLink[] getSelectedDiagramLinks()
+	{
+		return getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 	}
 	
 	protected void selectNewFactor(ORef factorRef)

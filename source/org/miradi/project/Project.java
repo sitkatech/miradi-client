@@ -946,6 +946,16 @@ public class Project
 		return !baseObject.isPresentationDataField(setCommand.getFieldTag());
 	}
 	
+	public void executeEndTransaction() throws CommandFailedException
+	{
+		executeCommand(new CommandEndTransaction());
+	}
+	
+	public void executeBeginTransaction() throws CommandFailedException
+	{
+		executeCommand(new CommandBeginTransaction());
+	}
+	
 	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
 	{
 		for(int i = 0; i < commands.length; ++i)
