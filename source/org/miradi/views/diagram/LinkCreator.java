@@ -379,7 +379,7 @@ public class LinkCreator
 			deleteRelatedGroupBoxLinks(model, toDiagramFactorToUse, fromDiagramFactorToUse.getGroupBoxChildrenRefs());
 		}
 		
-		ORefList allDiagramLinkRefs = new ORefList();
+		ORefList allNonGroupBoxDiagramLinkRefs = new ORefList();
 		ORefList fromDiagramFactorRefs = fromDiagramFactorToUse.getSelfOrChildren();
 		ORefList toDiagramFactorRefs = toDiagramFactorToUse.getSelfOrChildren();
 		DiagramObject diagramObject = model.getDiagramObject();
@@ -392,28 +392,28 @@ public class LinkCreator
 				if (model.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
 				{
 					DiagramLink diagramLink = model.getDiagramLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
-					allDiagramLinkRefs.add(diagramLink.getRef());
+					allNonGroupBoxDiagramLinkRefs.add(diagramLink.getRef());
 					continue;
 				}
 				
 				ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 				DiagramLink diagramLink = model.getDiagramLinkByWrappedRef(factorLinkRef);
-				allDiagramLinkRefs.add(diagramLink.getRef());
+				allNonGroupBoxDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
 		
 		if (model.areLinked(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
 		{
 			DiagramLink groupBoxDiagramLink = model.getDiagramLink(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef());
-			updateGroupBoxChildrenRefs(allDiagramLinkRefs, groupBoxDiagramLink.getRef());
+			updateGroupBoxChildrenRefs(allNonGroupBoxDiagramLinkRefs, groupBoxDiagramLink.getRef());
 		}
 		else
 		{
-			createDiagramLinkWithChildren(diagramObject, allDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
+			createDiagramLinkWithChildren(diagramObject, allNonGroupBoxDiagramLinkRefs, fromDiagramFactorToUse.getRef(), toDiagramFactorToUse.getRef());
 		}
 		
-		if (anyOppositeLinks(allDiagramLinkRefs, fromDiagramFactorRefs, toDiagramFactorRefs))
-			enableBidirectional(allDiagramLinkRefs);
+		if (anyOppositeLinks(allNonGroupBoxDiagramLinkRefs, fromDiagramFactorRefs, toDiagramFactorRefs))
+			enableBidirectional(allNonGroupBoxDiagramLinkRefs);
 	}
 	
 	private void enableBidirectional(ORefList createdDiagramLinkRefs) throws Exception
