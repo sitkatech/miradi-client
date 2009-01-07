@@ -238,7 +238,7 @@ abstract public class ProjectServer
 	
 	protected void createModifiedProjectTimeHelper()
 	{
-		modifiedDateWriter = new LastProjectModifiedTimeHelper(getJsonDirectory());
+		modifiedDateWriter = new LastProjectModifiedTimeHelper(getTopDirectory());
 	}
 		
 	public void updateLastModifiedTime() throws Exception
