@@ -100,8 +100,8 @@ public class TestBaseObject extends EAMTestCase
 		String someNonUserDefinedTag = "SomeTag";
 		Cause cause = project.createCause();
 		cause.addNonUserDataField(someNonUserDefinedTag, new StringData(someNonUserDefinedTag));
-		assertTrue("is user tag?" , cause.isUserDataCommand(someNonUserDefinedTag));
-		assertFalse("is non user tag?", cause.isUserDataCommand(Cause.TAG_LABEL));
+		assertTrue("is user tag?" , cause.isUserDataField(someNonUserDefinedTag));
+		assertFalse("is non user tag?", cause.isUserDataField(Cause.TAG_LABEL));
 	}
 	
 	ProjectForTesting project;
