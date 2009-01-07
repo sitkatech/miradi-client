@@ -41,17 +41,6 @@ abstract public class ProjectServer
 	{
 	}
 
-	abstract public void create(File directory) throws Exception;
-	abstract public void open(File directory) throws IOException, AlreadyLockedException;
-	abstract public void close() throws IOException;
-	abstract public boolean isOpen();
-	abstract public boolean doesFileExist(File infoFile);
-
-	abstract void writeJsonFile(File file, JSONObject json) throws IOException;
-	abstract EnhancedJsonObject readJsonFile(File file) throws IOException, ParseException;
-	abstract boolean deleteJsonFile(File objectFile);
-	
-
 	public int readDataVersion(File projectDirectory) throws IOException, ParseException
 	{
 		File versionFile = getVersionFile(projectDirectory);
@@ -72,9 +61,7 @@ abstract public class ProjectServer
 		
 		return (getVersionFile(projectDirectory).exists());
 	}
-	
-
-	
+		
 	public String getName()
 	{
 		return name;
@@ -93,8 +80,6 @@ abstract public class ProjectServer
 		writeJsonFile(getVersionFile(), version);
 	}
 
-	abstract void openNonDatabaseStore(File directory) throws IOException, AlreadyLockedException;
-
 	public File getTopDirectory()
 	{
 		if(topDirectory == null)
@@ -106,9 +91,6 @@ abstract public class ProjectServer
 	{
 		topDirectory = directory;
 	}
-
-	
-	
 	
 	public void writeProjectInfo(ProjectInfo info) throws IOException
 	{
@@ -135,7 +117,6 @@ abstract public class ProjectServer
 			return null;
 		return new ThreatRatingBundle(readJsonFile(threatBundleFile));
 	}
-	
 	
 	public void writeThreatRatingFramework(SimpleThreatRatingFramework framework) throws IOException
 	{
@@ -198,7 +179,6 @@ abstract public class ProjectServer
 	{
 		writeJsonFile(getObjectManifestFile(type), manifest.toJson());
 	}
-	
 
 	protected File getJsonDirectory()
 	{
@@ -253,7 +233,6 @@ abstract public class ProjectServer
 	
 	protected File getObjectManifestFile(int type)
 	{
-	
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
 	
@@ -268,6 +247,24 @@ abstract public class ProjectServer
 			modifiedDateWriter.attemptToWriteCurrentTime();
 	}
 	
+	abstract public void create(File directory) throws Exception;
+	
+	abstract public void open(File directory) throws IOException, AlreadyLockedException;
+	
+	abstract public void close() throws IOException;
+	
+	abstract public boolean isOpen();
+	
+	abstract public boolean doesFileExist(File infoFile);
+
+	abstract void writeJsonFile(File file, JSONObject json) throws IOException;
+	
+	abstract EnhancedJsonObject readJsonFile(File file) throws IOException, ParseException;
+	
+	abstract boolean deleteJsonFile(File objectFile);
+	
+	abstract void openNonDatabaseStore(File directory) throws IOException, AlreadyLockedException;	
+
 	static String JSON_DIRECTORY = "json";
 	static String THREATRATINGS_DIRECTORY = "threatratings";
 	static String VERSION_FILE = "version";
