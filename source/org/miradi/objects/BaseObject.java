@@ -708,7 +708,7 @@ abstract public class BaseObject
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
-		nonUserDataFields = new HashSet();
+		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		
@@ -743,10 +743,10 @@ abstract public class BaseObject
 		fields.put(tag, data);
 	}
 	
-	protected void addNonUserDataField(String tag, ObjectData data)
+	protected void addPresentationDataField(String tag, ObjectData data)
 	{
 		addField(tag, data);
-		nonUserDataFields.add(tag);
+		presentationDataFields.add(tag);
 	}
 	
 	protected void addNoClearField(String tag, ObjectData data)
@@ -755,9 +755,9 @@ abstract public class BaseObject
 		fields.put(tag, data);
 	}
 	
-	public boolean isUserDataField(String tag)
+	public boolean isPresentationDataField(String tag)
 	{
-		return nonUserDataFields.contains(tag);
+		return presentationDataFields.contains(tag);
 	}
 	
 	public String[] getFieldTags()
@@ -1485,7 +1485,7 @@ abstract public class BaseObject
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
-	private HashSet<String> nonUserDataFields; 
+	private HashSet<String> presentationDataFields; 
 	private Vector<String> nonClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
