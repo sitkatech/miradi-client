@@ -755,7 +755,7 @@ abstract public class BaseObject
 		fields.put(tag, data);
 	}
 	
-	public boolean isUserDataCommand(String tag)
+	public boolean isUserDataField(String tag)
 	{
 		return nonUserDataFields.contains(tag);
 	}
