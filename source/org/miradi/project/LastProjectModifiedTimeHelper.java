@@ -29,16 +29,15 @@ import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class LastProjectModifiedTimeHelper
 {
-	public LastProjectModifiedTimeHelper(File projectDirToUse)
+	public LastProjectModifiedTimeHelper()
 	{
-		projectDir = projectDirToUse;
 	}
 	
 	public static String readLastModifiedProjectTime(File projectDir)
 	{
 		try
 		{
-			File lastModifiedTimeFile = new File(projectDir, LAST_MODIFIED_FILE_NAME);
+			File lastModifiedTimeFile = createLastModifiedTimeFile(projectDir);
 			if (lastModifiedTimeFile.exists())
 				return UnicodeStringReader.getFileContents(lastModifiedTimeFile);
 			
@@ -52,11 +51,11 @@ public class LastProjectModifiedTimeHelper
 		}
 	}
 	
-	public void attemptToWriteCurrentTime() throws Exception
+	public void attemptToWriteCurrentTime(File projectDir) throws Exception
 	{
 		String currentTime = FileSystemTreeNode.timestampToString(Calendar.getInstance().getTimeInMillis());
 		byte[] bytes = currentTime.getBytes("UTF-8");
-		File projectLastModifiedTimeFile = getProjectLastModifiedTimeFile();
+		File projectLastModifiedTimeFile = createLastModifiedTimeFile(projectDir);
 		FileOutputStream outputStream = new FileOutputStream(projectLastModifiedTimeFile);
 		try
 		{
@@ -68,12 +67,10 @@ public class LastProjectModifiedTimeHelper
 		}
 	}
 
-	private File getProjectLastModifiedTimeFile()
+	private static File createLastModifiedTimeFile(File projectDir)
 	{
 		return new File(projectDir, LAST_MODIFIED_FILE_NAME);
 	}
-	
+
 	private static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
-	
-	private File projectDir;
 }

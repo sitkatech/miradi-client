@@ -39,6 +39,7 @@ abstract public class ProjectServer
 {
 	public ProjectServer() throws IOException
 	{
+		modifiedDateWriter = new LastProjectModifiedTimeHelper();
 	}
 
 	public int readDataVersion(File projectDirectory) throws IOException, ParseException
@@ -236,15 +237,9 @@ abstract public class ProjectServer
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
 	
-	protected void createModifiedProjectTimeHelper()
-	{
-		modifiedDateWriter = new LastProjectModifiedTimeHelper(getTopDirectory());
-	}
-		
 	public void updateLastModifiedTime() throws Exception
 	{
-		if (modifiedDateWriter != null)
-			modifiedDateWriter.attemptToWriteCurrentTime();
+		modifiedDateWriter.attemptToWriteCurrentTime(getTopDirectory());
 	}
 	
 	abstract public void create(File directory) throws Exception;
