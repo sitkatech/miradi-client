@@ -95,7 +95,7 @@ public class TestBaseObject extends EAMTestCase
 		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
 	}
 	
-	public void testIsUserDataCommand() throws Exception
+	public void testIsUserDataField() throws Exception
 	{
 		String someNonUserDefinedTag = "SomeTag";
 		Cause cause = project.createCause();
