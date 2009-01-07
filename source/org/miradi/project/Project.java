@@ -907,7 +907,7 @@ public class Project
 		isExecuting = true;
 		try
 		{
-			getDatabase().updateLastModifiedTime();
+			updateLastModifiedData(command);
 			executeWithoutRecording(command);
 			recordCommand(command);
 		}
@@ -919,6 +919,19 @@ public class Project
 		{
 			isExecuting = false;
 		}
+	}
+
+	private void updateLastModifiedData(Command command) throws Exception
+	{
+		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
+			return;
+
+		CommandSetObjectData setCommand = ((CommandSetObjectData) command);
+		BaseObject baseObject = BaseObject.find(this, setCommand.getObjectORef());
+		if (baseObject.isUserDataField(setCommand.getFieldTag()))
+			return;
+		
+		getDatabase().updateLastModifiedTime();
 	}
 	
 	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
