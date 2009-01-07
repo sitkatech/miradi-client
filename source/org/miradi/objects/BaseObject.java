@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -707,7 +708,7 @@ abstract public class BaseObject
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
-		nonUserDataFields = new HashMap();
+		nonUserDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		
@@ -745,7 +746,7 @@ abstract public class BaseObject
 	protected void addNonUserDataField(String tag, ObjectData data)
 	{
 		addField(tag, data);
-		nonUserDataFields.put(tag, data);
+		nonUserDataFields.add(tag);
 	}
 	
 	protected void addNoClearField(String tag, ObjectData data)
@@ -756,7 +757,7 @@ abstract public class BaseObject
 	
 	public boolean isUserDataCommand(String tag)
 	{
-		return nonUserDataFields.containsKey(tag);
+		return nonUserDataFields.contains(tag);
 	}
 	
 	public String[] getFieldTags()
@@ -1484,7 +1485,7 @@ abstract public class BaseObject
 	private ORef cachedOwnerRef;
 	protected ObjectManager objectManager;
 	private HashMap<String, ObjectData> fields;
-	private HashMap<String, ObjectData> nonUserDataFields; 
+	private HashSet<String> nonUserDataFields; 
 	private Vector<String> nonClearedFieldTags;
 	protected NumberData budgetCostOverride;
 	protected ChoiceData budgetCostMode;
