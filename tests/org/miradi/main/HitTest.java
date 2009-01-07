@@ -30,14 +30,22 @@ public class HitTest
 {
 	public static void main(String[] args)
 	{
+		final int startX = 0;
+		final int startY = 0;
+		final int endX = 100;
+		final int endY = 100;
+		final int curveRadius = 10;
+		
 		JDialog dialog = new JDialog();
 		dialog.setVisible(true);
 		Graphics2D g2 = (Graphics2D) dialog.getGraphics();
 		GeneralPath shape = new GeneralPath();
-		shape.moveTo(0, 0);
-		shape.lineTo(0, 100);
-		shape.lineTo(100, 100);
+		shape.moveTo(startX, startY);
+		shape.lineTo(startX, endY - curveRadius);
+		shape.quadTo(startX, endY, startX + curveRadius, endY);
+		shape.lineTo(endX, endY);
 		System.out.println("Should be true:  " + g2.hit(new Rectangle(50, 50, 100, 100), shape, true));
 		System.out.println("Should be false: " + g2.hit(new Rectangle(50, 50, 10, 10), shape, true));
+		dialog.dispose();
 	}
 }
