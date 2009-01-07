@@ -928,7 +928,7 @@ public class Project
 
 		CommandSetObjectData setCommand = ((CommandSetObjectData) command);
 		BaseObject baseObject = BaseObject.find(this, setCommand.getObjectORef());
-		if (baseObject.isUserDataField(setCommand.getFieldTag()))
+		if (baseObject.isPresentationDataField(setCommand.getFieldTag()))
 			return;
 		
 		getDatabase().updateLastModifiedTime();

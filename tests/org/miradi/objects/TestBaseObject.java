@@ -95,13 +95,13 @@ public class TestBaseObject extends EAMTestCase
 		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
 	}
 	
-	public void testIsUserDataField() throws Exception
+	public void testIsPresentationDataField() throws Exception
 	{
 		String someNonUserDefinedTag = "SomeTag";
 		Cause cause = project.createCause();
-		cause.addNonUserDataField(someNonUserDefinedTag, new StringData(someNonUserDefinedTag));
-		assertTrue("is user tag?" , cause.isUserDataField(someNonUserDefinedTag));
-		assertFalse("is non user tag?", cause.isUserDataField(Cause.TAG_LABEL));
+		cause.addPresentationDataField(someNonUserDefinedTag, new StringData(someNonUserDefinedTag));
+		assertTrue("is user tag?" , cause.isPresentationDataField(someNonUserDefinedTag));
+		assertFalse("is non user tag?", cause.isPresentationDataField(Cause.TAG_LABEL));
 	}
 	
 	ProjectForTesting project;
