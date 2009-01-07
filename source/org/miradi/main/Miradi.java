@@ -22,6 +22,7 @@ package org.miradi.main;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -147,27 +148,30 @@ public class Miradi
 	{
 		String jarSubdirectoryName = "ThirdParty";
 		File miradiDirectory = getAppCodeDirectory();
-		EAM.logVerbose("Miradi code running from: " + miradiDirectory.getAbsolutePath());
 		File thirdPartyDirectory = new File(miradiDirectory, jarSubdirectoryName);
-		EAM.logVerbose("Adding jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
 		RuntimeJarLoader.addJarsInSubdirectoryToClasspath(thirdPartyDirectory);
+		System.out.println("Miradi code running from: " + miradiDirectory.getAbsolutePath());
+		System.out.println("Added jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
 	}
 	
 	private static File getAppCodeDirectory() throws URISyntaxException
 	{
-		String imagesURIString = Miradi.class.getResource("/resources/images").toURI().toString();
+		final URL resourceUrl = Miradi.class.getResource("/resources");
+		String imagesURIString = resourceUrl.toURI().getSchemeSpecificPart();
 		String imagesPathString = stripPrefix(imagesURIString);
-	
+		
 		int bangAt = imagesPathString.indexOf('!');
 		if(bangAt < 0)
 		{
-			File imagesDirectory = new File(stripPrefix(imagesURIString));
-			return imagesDirectory.getParentFile();
+			File imagesDirectory = new File(imagesPathString);
+			final File directory = imagesDirectory.getParentFile();
+			return directory;
 		}
 		
 		String jarURIString = imagesPathString.substring(0, bangAt);
-		File jarFile = new File(stripPrefix(jarURIString));
-		return jarFile.getParentFile();
+		File jarFile = new File(jarURIString);
+		final File directory = jarFile.getParentFile();
+		return directory;
 	}
 
 	private static String stripPrefix(String uri)
