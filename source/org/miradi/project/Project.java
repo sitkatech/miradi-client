@@ -31,8 +31,11 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.FileBasedProjectServer;
 import org.miradi.database.ProjectServer;
@@ -907,7 +910,9 @@ public class Project
 		isExecuting = true;
 		try
 		{
-			updateLastModifiedData(command);
+			if (shouldUpdateLastModfiedTime(command))
+				getDatabase().updateLastModifiedTime();
+			
 			executeWithoutRecording(command);
 			recordCommand(command);
 		}
@@ -921,17 +926,24 @@ public class Project
 		}
 	}
 
-	private void updateLastModifiedData(Command command) throws Exception
+	private boolean shouldUpdateLastModfiedTime(Command command)
 	{
+		if (command.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
+			return true;
+		
+		if (command.getCommandName().equals(CommandCreateObject.COMMAND_NAME))
+			return true;
+		
+		if (command.getCommandName().equals(CommandSetThreatRating.COMMAND_NAME))
+			return true;
+		
 		if (!command.getCommandName().equals(CommandSetObjectData.COMMAND_NAME))
-			return;
+			return false;
 
 		CommandSetObjectData setCommand = ((CommandSetObjectData) command);
 		BaseObject baseObject = BaseObject.find(this, setCommand.getObjectORef());
-		if (baseObject.isPresentationDataField(setCommand.getFieldTag()))
-			return;
 		
-		getDatabase().updateLastModifiedTime();
+		return !baseObject.isPresentationDataField(setCommand.getFieldTag());
 	}
 	
 	public void executeCommandsWithoutTransaction(Command[] commands) throws CommandFailedException
