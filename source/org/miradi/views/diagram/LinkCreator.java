@@ -371,7 +371,7 @@ public class LinkCreator
 		return diagramLinkExtraInfo;
 	}
 	
-	public void createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
+	public ORefList createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
 		if (fromDiagramFactorToUse.isGroupBoxFactor() && toDiagramFactorToUse.isGroupBoxFactor())
 		{
@@ -414,14 +414,24 @@ public class LinkCreator
 		
 		if (anyOppositeLinks(allNonGroupBoxDiagramLinkRefs, fromDiagramFactorRefs, toDiagramFactorRefs))
 			enableBidirectional(allNonGroupBoxDiagramLinkRefs);
+		
+		return allNonGroupBoxDiagramLinkRefs;
 	}
 	
-	private void enableBidirectional(ORefList createdDiagramLinkRefs) throws Exception
+	public void enableBidirectional(ORefList createdDiagramLinkRefs) throws Exception
 	{
 		for (int i = 0; i < createdDiagramLinkRefs.size(); ++i)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), createdDiagramLinkRefs.get(i));
 			enableBidirectional(diagramLink);
+		}
+	}
+	
+	public void enableBidirectionalityForFactorLinks(ORefList factorLinkRefs) throws Exception
+	{
+		for (int index = 0; index < factorLinkRefs.size(); ++index)
+		{
+			enableBidirectional(factorLinkRefs.get(index));		
 		}
 	}
 
