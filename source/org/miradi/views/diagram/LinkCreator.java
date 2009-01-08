@@ -582,6 +582,14 @@ public class LinkCreator
 		return factorLinkRefs;
 	}
 	
+	public void createFactorLinkAndDiagramLink(DiagramModel model, DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		if (!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
+			createFactorLinkAndAddToDiagramUsingCommands(model, from, to);
+		else
+			createGroupBoxChildrenDiagramLinks(model, from, to);
+	}
+	
 	private Project getProject()
 	{
 		return project;
