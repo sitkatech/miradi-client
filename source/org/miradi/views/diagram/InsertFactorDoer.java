@@ -21,7 +21,6 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
@@ -93,11 +92,12 @@ abstract public class InsertFactorDoer extends LocationDoer
 		getProject().executeBeginTransaction();
 		try
 		{
+			LinkCreator linkCreator = new LinkCreator(getProject());
 			ORef factorRef = diagramFactor.getWrappedORef();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET) && (getTypeToInsert()!= ObjectType.GROUP_BOX))
 				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
 			else if (selectedFactors.length == 0 && selectedDiagramLinks.length == 1)
-				splitSelectedLinkToIncludeFactor(selectedDiagramLinks[0], diagramFactor);
+				linkCreator.splitSelectedLinkToIncludeFactor(getDiagramModel(), selectedDiagramLinks[0], diagramFactor);
 			else
 				notLinkingToAnyFactors();
 			
@@ -114,76 +114,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			getProject().executeEndTransaction();
 		}
-	}
-	
-	private void splitSelectedLinkToIncludeFactor(DiagramLink diagramLink, DiagramFactor diagramFactor) throws Exception
-	{
-		DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
-		DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
-		boolean isBidirectional = diagramLink.isBidirectional();
-		
-		LinkDeletor linkDeletor = new LinkDeletor(getProject());
-		linkDeletor.deleteFactorLinksAndGroupBoxDiagramLinks(new Vector(), diagramLink);
-		
-		LinkCreator linkCreator = new LinkCreator(getProject());
-		ORefList diagramLinkRefsToChangeBiDirectionality = new ORefList();
-		ORefList factorLinkRefsToChangeBiDirectionality = new ORefList();
-		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
-		{
-			ORef factorLinkRef1 = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), fromDiagramFactor, diagramFactor);
-			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef1);
-			
-			ORef factorLinkRef2 = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, toDiagramFactor);
-			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef2);
-		}
-		else if (fromDiagramFactor.isGroupBoxFactor() && toDiagramFactor.isGroupBoxFactor())
-		{
-			ORefList diagramLinkRefsToUse1 = linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), fromDiagramFactor, diagramFactor);
-			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse1);
-			
-			ORefList diagramLinkRefsToUse2 = linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor, toDiagramFactor);
-			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse2);	
-		}
-		else
-		{
-			ORefList factorLinkRefs1 = createDiagramLinks(linkCreator, diagramFactor, fromDiagramFactor, toDiagramFactor);
-			factorLinkRefsToChangeBiDirectionality.addAll(factorLinkRefs1);
-			
-			ORefList factorLinkRefs2 = createDiagramLinks(linkCreator, diagramFactor, toDiagramFactor, fromDiagramFactor);
-			factorLinkRefsToChangeBiDirectionality.addAll(factorLinkRefs2);
-		}
-		
-		if (isBidirectional)
-		{
-			linkCreator.enableBidirectional(diagramLinkRefsToChangeBiDirectionality);
-			linkCreator.enableBidirectionalityForFactorLinks(factorLinkRefsToChangeBiDirectionality);
-		}	
-	}
-	private ORefList createDiagramLinks(LinkCreator linkCreator, DiagramFactor diagramFactor, DiagramFactor diagramFactor1, DiagramFactor diagramFactor2) throws Exception
-	{
-		ORefList factorLinkRefs = new ORefList();
-		if (diagramFactor1.isGroupBoxFactor() && !diagramFactor2.isGroupBoxFactor())
-		{
-			ORefList diagramLinkRefs = linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), diagramFactor1, diagramFactor);
-			factorLinkRefs.addAll(convertToFactorLinks(diagramLinkRefs));
-		
-			ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), diagramFactor, diagramFactor2);
-			factorLinkRefs.add(factorLinkRef);
-		}
-		
-		return factorLinkRefs;
-	}
-		
-	private ORefList convertToFactorLinks(ORefList diagramLinkRefs)
-	{
-		ORefList factorLinkRefs = new ORefList();
-		for (int index = 0; index < diagramLinkRefs.size(); ++index)
-		{
-			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
-			factorLinkRefs.add(diagramLink.getWrappedRef());
-		}
-		
-		return factorLinkRefs;
 	}
 	
 	private void ensureNewFactorIsVisible(DiagramFactor diagramFactor) throws Exception
