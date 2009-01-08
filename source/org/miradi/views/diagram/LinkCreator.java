@@ -501,40 +501,60 @@ public class LinkCreator
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramLink);
 		
-		ORefList diagramLinkRefsToChangeBiDirectionality = new ORefList();
-		ORefList factorLinkRefsToChangeBiDirectionality = new ORefList();
 		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
 		{
 			ORef factorLinkRef1 = createFactorLinkAndAddToDiagramUsingCommands(diagramModel, fromDiagramFactor, diagramFactor);
-			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef1);
+			ensureFactorLinkBidirectionality(factorLinkRef1, isBidirectional);
 			
 			ORef factorLinkRef2 = createFactorLinkAndAddToDiagramUsingCommands(diagramModel, diagramFactor, toDiagramFactor);
-			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef2);
+			ensureFactorLinkBidirectionality(factorLinkRef2, isBidirectional);
 		}
 		else if (fromDiagramFactor.isGroupBoxFactor() && toDiagramFactor.isGroupBoxFactor())
 		{
 			ORefList diagramLinkRefsToUse1 = createGroupBoxChildrenDiagramLinks(diagramModel, fromDiagramFactor, diagramFactor);
-			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse1);
+			ensureDiagramLinkBidirectionality(diagramLinkRefsToUse1, isBidirectional);
 			
 			ORefList diagramLinkRefsToUse2 = createGroupBoxChildrenDiagramLinks(diagramModel, diagramFactor, toDiagramFactor);
-			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse2);	
+			ensureDiagramLinkBidirectionality(diagramLinkRefsToUse2, isBidirectional);
 		}
 		else
 		{
 			ORefList factorLinkRefs1 = createDiagramLinks(diagramModel, diagramFactor, fromDiagramFactor, toDiagramFactor);
-			factorLinkRefsToChangeBiDirectionality.addAll(factorLinkRefs1);
+			ensureFactorLinkBidirectionality(factorLinkRefs1, isBidirectional);
 			
 			ORefList factorLinkRefs2 = createDiagramLinks(diagramModel, diagramFactor, toDiagramFactor, fromDiagramFactor);
-			factorLinkRefsToChangeBiDirectionality.addAll(factorLinkRefs2);
+			ensureFactorLinkBidirectionality(factorLinkRefs2, isBidirectional);
 		}
-		
-		if (isBidirectional)
-		{
-			enableBidirectional(diagramLinkRefsToChangeBiDirectionality);
-			enableBidirectionalityForFactorLinks(factorLinkRefsToChangeBiDirectionality);
-		}	
 	}
 	
+	private void ensureDiagramLinkBidirectionality(ORefList diagramLinkRefs, boolean isBidirectional) throws Exception
+	{
+		if (!isBidirectional)
+			return;
+		
+		for (int index = 0; index < diagramLinkRefs.size(); ++index)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
+			enableBidirectional(diagramLink);
+		}
+	}
+	
+	private void ensureFactorLinkBidirectionality(ORefList factorLinkRefs, boolean isBidirectional) throws Exception
+	{
+		if (!isBidirectional)
+			return;
+		
+		for (int index = 0; index < factorLinkRefs.size(); ++index)
+		{
+			enableBidirectional(factorLinkRefs.get(index));
+		}
+	}
+
+	private void ensureFactorLinkBidirectionality(ORef factorLinkRef, boolean isBidirectional) throws Exception
+	{
+		ensureFactorLinkBidirectionality(new ORefList(factorLinkRef), isBidirectional);
+	}
+
 	private ORefList createDiagramLinks(DiagramModel diagramModel, DiagramFactor diagramFactor, DiagramFactor diagramFactor1, DiagramFactor diagramFactor2) throws Exception
 	{
 		ORefList factorLinkRefs = new ORefList();
