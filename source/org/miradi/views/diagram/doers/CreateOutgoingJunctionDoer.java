@@ -31,7 +31,7 @@ public class CreateOutgoingJunctionDoer extends AbstractCreateJunctionDoer
 		return FactorLink.FROM;
 	}
 	
-	protected int getClosestBendPointIndex(PointList bendPoints)
+	protected int getInsertBendPointAtIndex(PointList bendPoints)
 	{
 		return 0;
 	}
