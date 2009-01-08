@@ -342,7 +342,7 @@ public class ProjectMetadata extends BaseObject
 		projectStatus = new StringData(TAG_PROJECT_STATUS);
 		nextSteps = new StringData(TAG_NEXT_STEPS);
 
-		addField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
+		addPresentationDataField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
 		addField(TAG_PROJECT_SCOPE, projectScope);
 		addField(TAG_SHORT_PROJECT_SCOPE, shortProjectScope);
