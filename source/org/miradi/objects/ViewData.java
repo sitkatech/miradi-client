@@ -152,17 +152,17 @@ public class ViewData extends BaseObject
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		planningCustomChoiceRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);
 		
-		addField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
-		addField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
-		addField(TAG_CURRENT_MODE, currentMode);
-		addField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
-		addField(TAG_CURRENT_TAB, currentTab);
-		addField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
-		addField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
+		addPresentationDataField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
+		addPresentationDataField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
+		addPresentationDataField(TAG_CURRENT_MODE, currentMode);
+		addPresentationDataField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
+		addPresentationDataField(TAG_CURRENT_TAB, currentTab);
+		addPresentationDataField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
+		addPresentationDataField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		
-		addField(TAG_PLANNING_STYLE_CHOICE, planningStyleChoice);
-		addField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
-		addField(TAG_PLANNING_CUSTOM_PLAN_REF, planningCustomChoiceRef);
+		addPresentationDataField(TAG_PLANNING_STYLE_CHOICE, planningStyleChoice);
+		addPresentationDataField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
+		addPresentationDataField(TAG_PLANNING_CUSTOM_PLAN_REF, planningCustomChoiceRef);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";

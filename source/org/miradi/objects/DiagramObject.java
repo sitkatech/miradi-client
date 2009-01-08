@@ -416,8 +416,8 @@ abstract public class DiagramObject extends BaseObject
 		addField(TAG_DIAGRAM_FACTOR_LINK_IDS, allDiagramFactorLinkIds);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, details);
-		addField(TAG_HIDDEN_TYPES, hiddenTypes);
-		addField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS, selectedTaggedObjectSetRefs);
+		addPresentationDataField(TAG_HIDDEN_TYPES, hiddenTypes);
+		addPresentationDataField(TAG_SELECTED_TAGGED_OBJECT_SET_REFS, selectedTaggedObjectSetRefs);
 		addField(PSEUDO_COMBINED_LABEL, combinedLabel);
 	}
 	
