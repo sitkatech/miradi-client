@@ -46,6 +46,14 @@ public class LinkDeletor
 		project = projectToUse;
 	}
 
+	public void deleteDiagramLinkAndOrphandFactorLink(DiagramLink diagramLink) throws Exception
+	{
+		if (diagramLink.isGroupBoxLink())
+			deleteFactorLinksAndGroupBoxDiagramLinks(new Vector(), diagramLink);
+		else
+			deleteDiagramLinkAndOrphandFactorLink(new Vector(), diagramLink);
+	}
+	
 	public void deleteFactorLinkAndAllRefferers(FactorLinkId factorLinkId) throws Exception
 	{
 		FactorLink factorLink = (FactorLink) project.findObject(new ORef(ObjectType.FACTOR_LINK, factorLinkId));

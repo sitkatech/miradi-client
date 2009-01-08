@@ -491,7 +491,77 @@ public class LinkCreator
 		
 		return linkableTypes;
 	}
-
+	
+	public void splitSelectedLinkToIncludeFactor(DiagramModel diagramModel, DiagramLink diagramLink, DiagramFactor diagramFactor) throws Exception
+	{
+		DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+		DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+		boolean isBidirectional = diagramLink.isBidirectional();
+		
+		LinkDeletor linkDeletor = new LinkDeletor(getProject());
+		linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramLink);
+		
+		ORefList diagramLinkRefsToChangeBiDirectionality = new ORefList();
+		ORefList factorLinkRefsToChangeBiDirectionality = new ORefList();
+		if (!fromDiagramFactor.isGroupBoxFactor() && !toDiagramFactor.isGroupBoxFactor())
+		{
+			ORef factorLinkRef1 = createFactorLinkAndAddToDiagramUsingCommands(diagramModel, fromDiagramFactor, diagramFactor);
+			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef1);
+			
+			ORef factorLinkRef2 = createFactorLinkAndAddToDiagramUsingCommands(diagramModel, diagramFactor, toDiagramFactor);
+			factorLinkRefsToChangeBiDirectionality.add(factorLinkRef2);
+		}
+		else if (fromDiagramFactor.isGroupBoxFactor() && toDiagramFactor.isGroupBoxFactor())
+		{
+			ORefList diagramLinkRefsToUse1 = createGroupBoxChildrenDiagramLinks(diagramModel, fromDiagramFactor, diagramFactor);
+			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse1);
+			
+			ORefList diagramLinkRefsToUse2 = createGroupBoxChildrenDiagramLinks(diagramModel, diagramFactor, toDiagramFactor);
+			diagramLinkRefsToChangeBiDirectionality.addAll(diagramLinkRefsToUse2);	
+		}
+		else
+		{
+			ORefList factorLinkRefs1 = createDiagramLinks(diagramModel, diagramFactor, fromDiagramFactor, toDiagramFactor);
+			factorLinkRefsToChangeBiDirectionality.addAll(factorLinkRefs1);
+			
+			ORefList factorLinkRefs2 = createDiagramLinks(diagramModel, diagramFactor, toDiagramFactor, fromDiagramFactor);
+			factorLinkRefsToChangeBiDirectionality.addAll(factorLinkRefs2);
+		}
+		
+		if (isBidirectional)
+		{
+			enableBidirectional(diagramLinkRefsToChangeBiDirectionality);
+			enableBidirectionalityForFactorLinks(factorLinkRefsToChangeBiDirectionality);
+		}	
+	}
+	
+	private ORefList createDiagramLinks(DiagramModel diagramModel, DiagramFactor diagramFactor, DiagramFactor diagramFactor1, DiagramFactor diagramFactor2) throws Exception
+	{
+		ORefList factorLinkRefs = new ORefList();
+		if (diagramFactor1.isGroupBoxFactor() && !diagramFactor2.isGroupBoxFactor())
+		{
+			ORefList diagramLinkRefs = createGroupBoxChildrenDiagramLinks(diagramModel, diagramFactor1, diagramFactor);
+			factorLinkRefs.addAll(convertToFactorLinks(diagramLinkRefs));
+		
+			ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramModel, diagramFactor, diagramFactor2);
+			factorLinkRefs.add(factorLinkRef);
+		}
+		
+		return factorLinkRefs;
+	}
+	
+	private ORefList convertToFactorLinks(ORefList diagramLinkRefs)
+	{
+		ORefList factorLinkRefs = new ORefList();
+		for (int index = 0; index < diagramLinkRefs.size(); ++index)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
+			factorLinkRefs.add(diagramLink.getWrappedRef());
+		}
+		
+		return factorLinkRefs;
+	}
+	
 	private Project getProject()
 	{
 		return project;
