@@ -122,6 +122,11 @@ public class FileBasedProjectServer extends ProjectServer
 	{
 		getJsonDirectory().mkdirs();
 	}
+	
+	public void updateLastModifiedTime() throws Exception
+	{
+		modifiedDateWriter.attemptToWriteCurrentTime(getTopDirectory());
+	}
 
 	private DirectoryLock lock;
 	private int jsonFileWriteCount;
