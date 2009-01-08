@@ -41,6 +41,11 @@ public class ORefList
 		this(new Vector());
 	}
 	
+	public ORefList(BaseObject baseObject)
+	{
+		this(baseObject.getRef());
+	}
+	
 	public ORefList(ORef orefToAdd)
 	{
 		this();

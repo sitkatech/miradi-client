@@ -48,6 +48,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -282,6 +283,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateXenodata(xenodata, xenoDataProjectId);
 		
 		return xenodata;
+	}
+	
+	public DiagramFactor createAndPopulateDiagramFactorGroupBox(DiagramFactor groupBoxChild) throws Exception
+	{
+		DiagramFactor diagramFactorGroupBox = createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		populateDiagramFactorGroupBox(diagramFactorGroupBox, groupBoxChild);
+		
+		return diagramFactorGroupBox;	 
 	}
 	
 	public ProjectResource createProjectResource() throws Exception
@@ -609,6 +618,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception
 	{
 		setObjectData(xenodata.getRef(), Xenodata.TAG_PROJECT_ID, xenoDataProjectId);
+	}
+	
+	public void populateDiagramFactorGroupBox(DiagramFactor groupBoxDiagramFactor, DiagramFactor groupBoxChild) throws Exception
+	{
+		ORefList groupBoxChildren = new ORefList(groupBoxChild);
+		fillObjectUsingCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildren.toString());
 	}
 	
 	public void populateEverything() throws Exception

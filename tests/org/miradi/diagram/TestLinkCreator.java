@@ -102,4 +102,60 @@ public class TestLinkCreator extends TestCaseWithProject
 		assertTrue("child of groupBox covered cause is not linked to target diagramFactor?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), toDiagramFactor, groupBoxDiagramFactor));
 		assertTrue("from is not linked to to diagramFactor?", linkCreator.areGroupBoxOwnedFactorsLinked(getDiagramModel(), fromDiagramFactor, toDiagramFactor));
 	}
+	
+	public void testSplitSelectedLinkToIncludeFactor() throws Exception
+	{
+		verifyNonGroupBoxLinkedDiagramFactors();
+		verifyGroupBoxLinkedDiagramFactors();
+	}
+
+	private void verifyGroupBoxLinkedDiagramFactors() throws Exception
+	{
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor groupBoxDiagramFactor = getProject().createAndPopulateDiagramFactorGroupBox(cause);
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		
+		ORef groupBoxDiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(groupBoxDiagramFactor, strategy);
+		DiagramLink groupBoxDiagramLink = DiagramLink.find(getProject(), groupBoxDiagramLinkRef);
+		ORefList groupBoxChildrenDiagramLinkRefs = groupBoxDiagramLink.getGroupedDiagramLinkRefs();
+		assertTrue("is not groupbox link?", groupBoxDiagramLink.isGroupBoxLink());
+		LinkCreator linkCreator = new LinkCreator(getProject());
+	
+		DiagramFactor newCauseToBeLinkedIn = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		linkCreator.splitSelectedLinkToIncludeFactor(getDiagramModel(), groupBoxDiagramLink, newCauseToBeLinkedIn);
+		
+		DiagramLink deletedDiagramLink = DiagramLink.find(getProject(), groupBoxDiagramLinkRef);
+		assertNull("diagram link was not deleted?", deletedDiagramLink);
+		
+		for (int index = 0; index < groupBoxChildrenDiagramLinkRefs.size(); ++index)
+		{
+			DiagramLink childDiagramLink = DiagramLink.find(getProject(), groupBoxChildrenDiagramLinkRefs.get(index));
+			assertNull("groupbox child not deleted?", childDiagramLink);
+		}
+		
+		assertTrue("diagram factors are not linked?" , getProject().areDiagramFactorsLinked(cause.getRef(), newCauseToBeLinkedIn.getRef()));
+		assertTrue("diagram factors are not linked?" , getProject().areDiagramFactorsLinked(newCauseToBeLinkedIn.getRef(), strategy.getRef()));
+	}
+
+	private void verifyNonGroupBoxLinkedDiagramFactors() throws Exception
+	{
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(cause, strategy);
+		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+		ORef factorLinkRef = diagramLink.getWrappedRef();
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		
+		DiagramFactor newCauseToBeLinkedIn = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		linkCreator.splitSelectedLinkToIncludeFactor(getDiagramModel(), diagramLink, newCauseToBeLinkedIn);
+		
+		DiagramLink deletedDiagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+		assertNull("diagram link was not deleted?", deletedDiagramLink);
+		
+		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+		assertNull("factor link was not deleted?", factorLink);
+		
+		assertTrue("diagram factors are not linked?" , getProject().areDiagramFactorsLinked(cause.getRef(), newCauseToBeLinkedIn.getRef()));
+		assertTrue("diagram factors are not linked?" , getProject().areDiagramFactorsLinked(newCauseToBeLinkedIn.getRef(), strategy.getRef()));
+	}
 }
