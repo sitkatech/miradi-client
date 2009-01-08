@@ -237,10 +237,7 @@ abstract public class ProjectServer
 		return new File(getObjectDirectory(type), MANIFEST_FILE);
 	}
 	
-	public void updateLastModifiedTime() throws Exception
-	{
-		modifiedDateWriter.attemptToWriteCurrentTime(getTopDirectory());
-	}
+	abstract public void updateLastModifiedTime() throws Exception;
 	
 	abstract public void create(File directory) throws Exception;
 	
