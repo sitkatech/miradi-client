@@ -122,8 +122,8 @@ public class LinkDeletor
 		Command[] commandsToClearDiagramLink = diagramLink.createCommandsToClear();
 		project.executeCommandsWithoutTransaction(commandsToClearDiagramLink);
 
-		CommandDeleteObject removeFactorLinkCommand = new CommandDeleteObject(diagramLink.getRef());
-		project.executeCommand(removeFactorLinkCommand);
+		CommandDeleteObject deleteDiagramLinkCommand = new CommandDeleteObject(diagramLink.getRef());
+		project.executeCommand(deleteDiagramLinkCommand);
 	}
 
 	private void removeFromGroupBoxDiagramLinkChildren(DiagramLink diagramLink) throws Exception
