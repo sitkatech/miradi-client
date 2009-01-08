@@ -48,10 +48,11 @@ public class LinkDeletor
 
 	public void deleteDiagramLinkAndOrphandFactorLink(DiagramLink diagramLink) throws Exception
 	{
+		Vector<DiagramFactor> diagramFactorsAboutToBeDeleted = new Vector();
 		if (diagramLink.isGroupBoxLink())
-			deleteFactorLinksAndGroupBoxDiagramLinks(new Vector(), diagramLink);
+			deleteFactorLinksAndGroupBoxDiagramLinks(diagramFactorsAboutToBeDeleted, diagramLink);
 		else
-			deleteDiagramLinkAndOrphandFactorLink(new Vector(), diagramLink);
+			deleteDiagramLinkAndOrphandFactorLink(diagramFactorsAboutToBeDeleted, diagramLink);
 	}
 	
 	public void deleteFactorLinkAndAllRefferers(FactorLinkId factorLinkId) throws Exception
