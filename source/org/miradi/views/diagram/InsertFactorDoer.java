@@ -271,11 +271,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			if (getDiagramModel().areLinked(newlyInserted.getWrappedORef(), to.getWrappedORef()))
 				continue;
 			
-			if (!newlyInserted.isGroupBoxFactor() && !to.isGroupBoxFactor())
-				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(getDiagramModel(), newlyInserted, to);
-			else
-				linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramModel(), newlyInserted, to);
-				
+			linkCreator.createFactorLinkAndDiagramLink(getDiagramModel(), newlyInserted, to);
 		}
 	}
 
