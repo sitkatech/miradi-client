@@ -86,7 +86,7 @@ abstract public class AbstractCreateJunctionDoer extends LocationDoer
 			return; 
 		
 		if (bendPoints.size() > 0)
-			bendPoints.set(getClosestBendPointIndex(bendPoints), junctionPoint);
+			bendPoints.insertAt(junctionPoint, getClosestBendPointIndex(bendPoints));
 		else
 			bendPoints.add(junctionPoint);
 		

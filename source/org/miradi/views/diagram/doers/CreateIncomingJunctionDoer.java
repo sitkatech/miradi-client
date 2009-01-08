@@ -33,7 +33,7 @@ public class CreateIncomingJunctionDoer extends AbstractCreateJunctionDoer
 	
 	protected int getClosestBendPointIndex(PointList bendPoints)
 	{
-		return bendPoints.size() - 1;
+		return bendPoints.size();
 	}
 	
 	protected int calculateJunctionX(Rectangle bounds)
