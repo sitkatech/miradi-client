@@ -125,10 +125,10 @@ public class TableSettings extends BaseObject
 		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
 		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
 		
-		addField(TAG_TABLE_IDENTIFIER, tableIdentifier);
-		addField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
-		addField(TAG_COLUMN_WIDTHS, columnWidths);
-		addField(TAG_ROW_HEIGHT, rowHeight);
+		addPresentationDataField(TAG_TABLE_IDENTIFIER, tableIdentifier);
+		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
+		addPresentationDataField(TAG_COLUMN_WIDTHS, columnWidths);
+		addPresentationDataField(TAG_ROW_HEIGHT, rowHeight);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
