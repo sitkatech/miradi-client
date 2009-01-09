@@ -56,7 +56,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			throw new CommandFailedException("CopyProjectToDoer: Possible Write Protected:" + e);
+			throw new CommandFailedException("Unexpected error during Save As: " + e);
 		}
 	}
 
