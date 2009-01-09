@@ -25,6 +25,7 @@ import javax.swing.Icon;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
 
 public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 {
@@ -97,6 +98,11 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	}
 	
 	@Override
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
+		return null;
+	}
+	
 	public String getStyleTagAt(int row, int column)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);		

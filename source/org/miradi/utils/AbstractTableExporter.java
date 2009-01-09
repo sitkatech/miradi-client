@@ -36,6 +36,7 @@ public abstract class AbstractTableExporter
 	abstract public int getRowCount();
 	abstract public String getTextAt(int row, int column);
 	abstract public Icon getIconAt(int row, int column);
+	abstract public ChoiceItem getChoiceItemAt(int row, int column);
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
 	abstract public String getHeaderFor(int column);

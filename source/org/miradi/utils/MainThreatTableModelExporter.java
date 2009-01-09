@@ -93,6 +93,12 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 		
 		return rowRatingIcon;
 	}
+	
+	@Override
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
+		return null;
+	}
 
 	@Override
 	public int getMaxDepthCount()
