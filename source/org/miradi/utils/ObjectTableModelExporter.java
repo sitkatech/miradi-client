@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.SimpleStringChoiceItem;
 
 public class ObjectTableModelExporter extends AbstractTableExporter
 {
@@ -74,12 +75,7 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		//FIXME is there a better way to get the choice time rather than instanceof
-		Object value = getObjectTableModel().getValueAt(row, column);
-		if (value instanceof ChoiceItem)
-			return ((ChoiceItem)value);
-			
-		return null;
+		return new SimpleStringChoiceItem(getTextAt(row, column), getIconAt(row, column));
 	}
 
 	@Override

@@ -28,6 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.SimpleStringChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 
@@ -86,7 +87,7 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return null;
+		return new SimpleStringChoiceItem(getTextAt(row, column), getIconAt(row, column));
 	}
 
 	private boolean isColumnWithinSummaryTable(int columnWithinSummaryTable)
