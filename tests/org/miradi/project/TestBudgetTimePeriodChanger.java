@@ -41,6 +41,8 @@ public class TestBudgetTimePeriodChanger extends TestCaseWithProject
 	public void testConvertQuarterlyToYearly() throws Exception
 	{
 		getProject().getMetadata().setData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE);
+		getProject().getMetadata().setData(ProjectMetadata.TAG_WORKPLAN_START_DATE, "2006-01-01");
+		getProject().getMetadata().setData(ProjectMetadata.TAG_WORKPLAN_END_DATE, "2009-12-31");
 		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "7");
 		getProjectCalendar().clearDateRanges();
 
