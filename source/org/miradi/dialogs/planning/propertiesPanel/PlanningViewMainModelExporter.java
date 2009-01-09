@@ -28,6 +28,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 
 public class PlanningViewMainModelExporter extends AbstractTableExporter
@@ -76,6 +77,12 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 
 	@Override
 	public Icon getIconAt(int row, int column)
+	{
+		return null;
+	}
+	
+	@Override
+	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
 		return null;
 	}

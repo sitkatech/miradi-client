@@ -111,6 +111,12 @@ class LegendModelExporter extends AbstractTableExporter
 		
 		return null;
 	}
+	
+	@Override
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
+		return null;
+	}
 
 	@Override
 	public int getMaxDepthCount()
