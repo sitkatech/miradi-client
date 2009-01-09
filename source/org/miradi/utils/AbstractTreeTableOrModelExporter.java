@@ -30,6 +30,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.SimpleStringChoiceItem;
 import org.miradi.rtf.RtfStyleManager;
 
 
@@ -92,6 +94,12 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 		}
 		//FIXME this needs to return correct cell icon
 		return null;
+	}
+	
+	@Override
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
+		return new SimpleStringChoiceItem(getTextAt(row, column), getIconAt(row, column));
 	}
 
 	protected boolean isTreeColumn(int column)
