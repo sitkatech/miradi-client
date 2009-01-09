@@ -21,6 +21,7 @@ package org.miradi.utils;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -83,6 +84,13 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	public String getDateAsString()
 	{
 		return convertDateToIsoString(getDate());
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e)
+	{
+		ObjectDataInputField.saveFocusedFieldPendingEdits();
+		super.actionPerformed(e);
 	}
 
 	private static String convertDateToIsoString(Date date)
