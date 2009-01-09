@@ -30,7 +30,7 @@ import org.miradi.utils.ZIPFileFilter;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.views.umbrella.CreateProjectDialog;
 
-public class CopyProjectToDoer extends MainWindowDoer
+public class SaveProjectAsDoer extends MainWindowDoer
 {
 	public boolean isAvailable()
 	{
