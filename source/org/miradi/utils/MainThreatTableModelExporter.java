@@ -97,7 +97,12 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return null;
+		Object value = mainThreatTableModel.getValueAt(row, column);
+		if (value == null)
+			return null;
+		
+		ChoiceItem foundChoiceItem = threatRatingQuestion.findChoiceByLabel(value.toString());
+		return foundChoiceItem;
 	}
 
 	@Override

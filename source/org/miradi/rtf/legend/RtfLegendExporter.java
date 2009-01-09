@@ -115,6 +115,9 @@ class LegendModelExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
+		if (isIconColumn(column))
+			return getChoice(row);
+
 		return null;
 	}
 

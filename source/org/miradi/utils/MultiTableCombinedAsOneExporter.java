@@ -100,7 +100,8 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return null;
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);		
+		return tableAndColumnHolder.getTable().getChoiceItemAt(row, tableAndColumnHolder.getColumn());
 	}
 	
 	public String getStyleTagAt(int row, int column)
