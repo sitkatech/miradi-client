@@ -51,7 +51,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		File chosen = dlg.getSelectedFile();
 		try
 		{
-			saveAsProject(chosen.getName());
+			saveAsAndOpen(chosen.getName());
 		}
 		catch(Exception e)
 		{
@@ -60,7 +60,7 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		}
 	}
 
-	private void saveAsProject(String newProjectName) throws Exception
+	private void saveAsAndOpen(String newProjectName) throws Exception
 	{
 		File projectDirToCopy = getProject().getDatabase().getTopDirectory();
 		File homeDir = EAM.getHomeDirectory();
