@@ -25,9 +25,9 @@ import java.awt.event.ActionEvent;
 import org.miradi.main.EAM;
 import org.miradi.views.noproject.CopyProject;
 
-class ProjectListCopyToAction extends ProjectListAction
+class ProjectListSaveAsAction extends ProjectListAction
 {
-	public ProjectListCopyToAction(ProjectListTreeTable tableToUse)
+	public ProjectListSaveAsAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Save As..."));
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));

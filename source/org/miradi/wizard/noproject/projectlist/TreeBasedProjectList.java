@@ -53,7 +53,7 @@ public class TreeBasedProjectList extends JPanel
 		actions.add(new ProjectListOpenAction(table));
 		actions.add(new ProjectListRenameAction(table));
 		actions.add(new ProjectListDeleteAction(table));
-		actions.add(new ProjectListCopyToAction(table));
+		actions.add(new ProjectListSaveAsAction(table));
 		actions.add(new ProjectListExportAction(table));
 		
 		OneRowPanel buttonBar = new OneRowPanel();
