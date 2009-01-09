@@ -45,5 +45,5 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		return COLUMN_NAMES[column];
 	}
 
-	String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Opened"), };
+	String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Modified"), };
 }
