@@ -71,7 +71,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		//TODO budget code -  move project start/end code to Project
 		String startDate = getPlanningStartDate();
-		int firstCalendarYear = 2006;
+		int firstCalendarYear = new MultiCalendar().getGregorianYear();
 		int firstCalendarMonth = project.getMetadata().getFiscalYearFirstMonth();
 
 		if (startDate.length() > 0 )
