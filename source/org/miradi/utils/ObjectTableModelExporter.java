@@ -74,6 +74,11 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
+		//FIXME is there a better way to get the choice time rather than instanceof
+		Object value = getObjectTableModel().getValueAt(row, column);
+		if (value instanceof ChoiceItem)
+			return ((ChoiceItem)value);
+			
 		return null;
 	}
 
