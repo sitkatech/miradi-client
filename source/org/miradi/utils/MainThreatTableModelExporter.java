@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 
 public class MainThreatTableModelExporter extends AbstractTableExporter
@@ -99,10 +100,9 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	{
 		Object value = mainThreatTableModel.getValueAt(row, column);
 		if (value == null)
-			return null;
+			return new EmptyChoiceItem();
 		
-		ChoiceItem foundChoiceItem = threatRatingQuestion.findChoiceByLabel(value.toString());
-		return foundChoiceItem;
+		return threatRatingQuestion.findChoiceByLabel(value.toString());
 	}
 
 	@Override
