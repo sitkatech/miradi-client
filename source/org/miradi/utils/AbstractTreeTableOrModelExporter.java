@@ -31,7 +31,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.SimpleStringChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.rtf.RtfStyleManager;
 
 
@@ -99,7 +99,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return new SimpleStringChoiceItem(getTextAt(row, column), getIconAt(row, column));
+		return new TaglessChoiceItem(getTextAt(row, column), getIconAt(row, column));
 	}
 
 	protected boolean isTreeColumn(int column)

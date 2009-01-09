@@ -21,9 +21,9 @@ package org.miradi.questions;
 
 import javax.swing.Icon;
 
-public class SimpleStringChoiceItem extends ChoiceItem
+public class TaglessChoiceItem extends ChoiceItem
 {
-	public SimpleStringChoiceItem(String labelToUse, Icon iconToUse)
+	public TaglessChoiceItem(String labelToUse, Icon iconToUse)
 	{
 		super(EMPTY_CHOICE_ITEM_CODE, labelToUse, iconToUse);
 	}
