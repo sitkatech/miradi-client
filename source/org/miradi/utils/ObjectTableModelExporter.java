@@ -28,7 +28,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.SimpleStringChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 
 public class ObjectTableModelExporter extends AbstractTableExporter
 {
@@ -75,7 +75,7 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return new SimpleStringChoiceItem(getTextAt(row, column), getIconAt(row, column));
+		return new TaglessChoiceItem(getTextAt(row, column), getIconAt(row, column));
 	}
 
 	@Override

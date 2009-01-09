@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-public class EmptyChoiceItem extends SimpleStringChoiceItem
+public class EmptyChoiceItem extends TaglessChoiceItem
 {
 	public EmptyChoiceItem()
 	{
