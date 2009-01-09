@@ -29,6 +29,7 @@ import org.miradi.project.ProjectZipper;
 import org.miradi.utils.ZIPFileFilter;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.views.umbrella.CreateProjectDialog;
+import org.miradi.wizard.noproject.projectlist.ProjectListTreeTable;
 
 public class SaveProjectAsDoer extends MainWindowDoer
 {
@@ -70,6 +71,6 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		
 		getMainWindow().closeProject();
 		File newProjectDir = new File(homeDir, newProjectName);
-		getMainWindow().createOrOpenProject(newProjectDir);
+		ProjectListTreeTable.doProjectOpen(newProjectDir);
 	}
 }
