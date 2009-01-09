@@ -26,6 +26,7 @@ import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.SimpleStringChoiceItem;
 
 import com.java.sun.jtreetable.JTreeTable;
 
@@ -77,7 +78,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return null;
+		return new SimpleStringChoiceItem(getTextAt(row, column), getIconAt(row, column));
 	}
 	
 	@Override

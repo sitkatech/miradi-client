@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.SimpleStringChoiceItem;
 
 public class TableWithTreeTableNodeExporter extends AbstractTableExporter
 {
@@ -68,7 +69,7 @@ public class TableWithTreeTableNodeExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return null;
+		return new SimpleStringChoiceItem(getTextAt(row, column), getIconAt(row, column));
 	}
 
 	@Override
