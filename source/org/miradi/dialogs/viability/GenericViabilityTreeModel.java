@@ -73,7 +73,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 		return KeyEcologicalAttribute.getObjectType();
 	}
 	
-	boolean isChoiceItemColumn(String columnTag)
+	public boolean isChoiceItemColumn(String columnTag)
 	{
 		ChoiceItem choiceItem = statusQuestion.findChoiceByCode(columnTag);
 		return (choiceItem != null);
