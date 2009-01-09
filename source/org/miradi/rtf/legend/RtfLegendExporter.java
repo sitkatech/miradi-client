@@ -30,7 +30,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.RtfLegendObjectsQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
@@ -98,28 +97,19 @@ class LegendModelExporter extends AbstractTableExporter
 	@Override
 	public String getHeaderFor(int column)
 	{
-		if (isIconColumn(column))
-			return EAM.text("Legend Table");
-		
-		return "";
+		return EAM.text("Legend Table");
 	}
 
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
-		if (isIconColumn(column))
-			return getChoice(row).getIcon();
-		
 		return null;
 	}
 	
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		if (isIconColumn(column))
-			return getChoice(row);
-
-		return new EmptyChoiceItem();
+		return getChoice(row);
 	}
 
 	@Override
@@ -143,9 +133,6 @@ class LegendModelExporter extends AbstractTableExporter
 	@Override
 	public String getTextAt(int row, int column)
 	{
-		if (isLabelColumn(column))
-			return getChoice(row).getLabel();
-			
 		return "";
 	}
 	
@@ -154,18 +141,6 @@ class LegendModelExporter extends AbstractTableExporter
 		return choices[row];
 	}
 		
-	private boolean isIconColumn(int column)
-	{
-		return column == ICON_COLUMN_INDEX;
-	}
-	
-	private boolean isLabelColumn(int column)
-	{
-		return column == LABEL_COLUMN_INDEX;
-	}
-	
-	private static final int ICON_COLUMN_INDEX = 0;
-	private static final int LABEL_COLUMN_INDEX = 1;
-	private static final int COLUMN_COUNT = 2;
+	private static final int COLUMN_COUNT = 1;
 	private ChoiceItem[] choices;
 }

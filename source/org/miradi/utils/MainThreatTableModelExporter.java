@@ -102,7 +102,11 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 		if (value == null)
 			return new EmptyChoiceItem();
 		
-		return threatRatingQuestion.findChoiceByLabel(value.toString());
+		ChoiceItem foundChoiceItem = threatRatingQuestion.findChoiceByLabel(value.toString());
+		if (foundChoiceItem != null)
+			return foundChoiceItem;
+		
+		return new EmptyChoiceItem();
 	}
 
 	@Override

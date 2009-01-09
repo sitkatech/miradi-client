@@ -27,6 +27,7 @@ import java.io.IOException;
 import javax.swing.Icon;
 
 import org.martus.util.UnicodeWriter;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
@@ -177,7 +178,8 @@ public class RtfWriter
 		{
 			writeRaw(PRE_CELL_COMMAND);
 		
-			Icon cellIcon = exportableTable.getIconAt(row, column);
+			ChoiceItem choiceItem = exportableTable.getChoiceItemAt(row, column);
+			Icon cellIcon = choiceItem.getIcon();
 			if (cellIcon != null)
 			{
 				int paddingCount = exportableTable.getDepth(row, column);
@@ -189,7 +191,7 @@ public class RtfWriter
 			String cellStyleTag = exportableTable.getStyleTagAt(row, column);
 			String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(cellStyleTag);
 			writeRaw(styleFormattingCommand);
-			writeEncoded(exportableTable.getTextAt(row, column));
+			writeEncoded(choiceItem.getLabel());
 			
 			writeRaw(CELL_COMMAND);
 			newLine();
