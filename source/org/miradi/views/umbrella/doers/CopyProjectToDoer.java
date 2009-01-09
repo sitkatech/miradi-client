@@ -40,26 +40,22 @@ public class CopyProjectToDoer extends MainWindowDoer
 
 	public void doIt() throws CommandFailedException
 	{
-		while(true)
-		{
-			CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow(), EAM.text("Copy Project To"));
-			if(!dlg.showCreateDialog(EAM.text("Button|Copy To")))
-				return;
-
-			File chosen = dlg.getSelectedFile();
-
-			try
-			{
-				saveAsProject(chosen.getName());
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-				throw new CommandFailedException(
-						"CopyProjectToDoer: Possible Write Protected:" + e);
-			}
-
+		if (!isAvailable())
 			return;
+		
+		CreateProjectDialog dlg = new CreateProjectDialog(getMainWindow(), EAM.text("Save As..."));
+		if(!dlg.showCreateDialog(EAM.text("Button|Save As...")))
+			return;
+
+		File chosen = dlg.getSelectedFile();
+		try
+		{
+			saveAsProject(chosen.getName());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException("CopyProjectToDoer: Possible Write Protected:" + e);
 		}
 	}
 
@@ -71,5 +67,9 @@ public class CopyProjectToDoer extends MainWindowDoer
 		ProjectZipper.createProjectZipFile(tempZipFile, newProjectName, projectDirToCopy);
 		ProjectUnzipper.unzipToProjectDirectory(tempZipFile, homeDir, newProjectName);
 		tempZipFile.delete();
+		
+		getMainWindow().closeProject();
+		File newProjectDir = new File(homeDir, newProjectName);
+		getMainWindow().createOrOpenProject(newProjectDir);
 	}
 }
