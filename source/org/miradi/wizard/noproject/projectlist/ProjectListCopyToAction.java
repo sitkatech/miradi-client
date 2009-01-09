@@ -29,7 +29,7 @@ class ProjectListCopyToAction extends ProjectListAction
 {
 	public ProjectListCopyToAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Save Copy As..."));
+		super(tableToUse, EAM.text("Save As..."));
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 
