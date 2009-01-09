@@ -29,7 +29,12 @@ public class ColoredIcon extends AbstractMiradiIcon
 {
 	public ColoredIcon()
 	{
-		setColor(Color.BLACK);
+		this(Color.BLACK);
+	}
+	
+	public ColoredIcon(Color colorToUse)
+	{
+		color = colorToUse;
 	}
 	
 	public void setColor(Color colorToUse)
