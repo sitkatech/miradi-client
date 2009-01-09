@@ -68,6 +68,11 @@ public class ChoiceItem implements Comparable
 		return icon;
 	}
 	
+	public void setIcon(Icon iconToUse)
+	{
+		icon = iconToUse;
+	}
+	
 	public String toString()
 	{
 		return getLabel();

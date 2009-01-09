@@ -104,7 +104,13 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 		
 		ChoiceItem foundChoiceItem = threatRatingQuestion.findChoiceByLabel(value.toString());
 		if (foundChoiceItem != null)
+		{
+			ColoredIcon rowRatingIcon = new ColoredIcon();
+			rowRatingIcon.setColor(foundChoiceItem.getColor());
+			foundChoiceItem.setIcon(rowRatingIcon);
+			
 			return foundChoiceItem;
+		}
 		
 		return new EmptyChoiceItem();
 	}
