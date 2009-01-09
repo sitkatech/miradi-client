@@ -506,17 +506,16 @@ public class LinkCreator
 	
 
 		ORefList newFactorLinkRefs1 = createFactorLinkAndDiagramLink(diagramModel, fromDiagramFactor, newlyInsertedDiagramFactor);
-		enableBidirectionality(newFactorLinkRefs1, isBidirectional);
+		if (isBidirectional)
+			enableBidirectionality(newFactorLinkRefs1);
 		
 		ORefList newFactorLinkRefs2 = createFactorLinkAndDiagramLink(diagramModel, newlyInsertedDiagramFactor, toDiagramFactor);
-		enableBidirectionality(newFactorLinkRefs2, isBidirectional);
+		if (isBidirectional)
+			enableBidirectionality(newFactorLinkRefs2);
 	}
 	
-	private void enableBidirectionality(ORefList factorLinkRefs, boolean isBidirectional) throws Exception
+	private void enableBidirectionality(ORefList factorLinkRefs) throws Exception
 	{
-		if (!isBidirectional)
-			return;
-		
 		for (int index = 0; index < factorLinkRefs.size(); ++index)
 		{
 			enableBidirectional(factorLinkRefs.get(index));
