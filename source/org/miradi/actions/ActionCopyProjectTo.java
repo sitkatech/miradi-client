@@ -31,12 +31,12 @@ public class ActionCopyProjectTo extends MainWindowAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Save Copy As...");
+		return EAM.text("Action|Save As...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a copy of this project under a different name");
+		return EAM.text("TT|Save a copy of this project under a different name and open it");
 	}
 
 }
