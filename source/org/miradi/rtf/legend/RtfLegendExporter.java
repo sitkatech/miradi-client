@@ -30,6 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.RtfLegendObjectsQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
@@ -118,7 +119,7 @@ class LegendModelExporter extends AbstractTableExporter
 		if (isIconColumn(column))
 			return getChoice(row);
 
-		return null;
+		return new EmptyChoiceItem();
 	}
 
 	@Override
