@@ -144,7 +144,7 @@ public class Miradi
 		return null;
 	}
 	
-	private static void addThirdPartyJarsToClasspath() throws Exception
+	static void addThirdPartyJarsToClasspath() throws Exception
 	{
 		String jarSubdirectoryName = "ThirdParty";
 		File miradiDirectory = getAppCodeDirectory();

@@ -47,6 +47,7 @@ public class ListAllFields
 {
 	public static void main(String[] args) throws Exception
 	{
+		Miradi.addThirdPartyJarsToClasspath();
 		Translation.initialize();
 		
 		File tempDirectory = File.createTempFile("$$$Miradi-ListAllFields", null);
