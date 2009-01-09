@@ -36,7 +36,7 @@ import org.miradi.actions.ActionAboutCMP;
 import org.miradi.actions.ActionClose;
 import org.miradi.actions.ActionConfigureLayers;
 import org.miradi.actions.ActionCopy;
-import org.miradi.actions.ActionCopyProjectTo;
+import org.miradi.actions.ActionSaveProjectAs;
 import org.miradi.actions.ActionCreateBendPoint;
 import org.miradi.actions.ActionCreateConceptualModel;
 import org.miradi.actions.ActionCreateDiagramMargin;
@@ -143,7 +143,7 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = new JMenu(EAM.text("MenuBar|File"));
 		menu.setMnemonic(KeyEvent.VK_F);
 		
-		addMenuItem(actions, menu, ActionCopyProjectTo.class, KeyEvent.VK_A);
+		addMenuItem(actions, menu, ActionSaveProjectAs.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionHowToSave.class, KeyEvent.VK_H);
 		addMenuItem(actions, menu, ActionClose.class, KeyEvent.VK_C);
 		menu.addSeparator();
