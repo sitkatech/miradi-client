@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCopyProjectTo extends MainWindowAction
+public class ActionSaveProjectAs extends MainWindowAction
 {
-	public ActionCopyProjectTo(MainWindow mainWindowToUse)
+	public ActionSaveProjectAs(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
