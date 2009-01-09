@@ -19,14 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import javax.swing.Icon;
-
-public class SimpleStringChoiceItem extends ChoiceItem
+public class EmptyChoiceItem extends SimpleStringChoiceItem
 {
-	public SimpleStringChoiceItem(String labelToUse, Icon iconToUse)
+	public EmptyChoiceItem()
 	{
-		super(EMPTY_CHOICE_ITEM_CODE, labelToUse, iconToUse);
+		super(EMPTY_CHOICE_ITEM_CODE, null);
 	}
-	
-	protected static final String EMPTY_CHOICE_ITEM_CODE = "";
 }

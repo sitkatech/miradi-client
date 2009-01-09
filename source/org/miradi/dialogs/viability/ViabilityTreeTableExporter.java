@@ -22,6 +22,7 @@ package org.miradi.dialogs.viability;
 import javax.swing.Icon;
 
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.TreeTableExporter;
 
 public class ViabilityTreeTableExporter extends TreeTableExporter
@@ -53,7 +54,7 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 	{
 		Object valueAt = getViabilityTreeTable().getValueAt(row, column);
 		if (valueAt == null)
-			return null;
+			return new EmptyChoiceItem();
 
 		int modelColumn = getViabilityTreeTable().convertColumnIndexToModel(column);
 		if (getViabilityTreeTable().isChoiceItemCell(row, modelColumn))
