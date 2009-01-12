@@ -24,9 +24,10 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
+import org.miradi.dialogs.base.ObjectCollectionPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.main.EAM;
@@ -42,36 +43,40 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 {
 	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
 	{
-		super(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), factorRef),
+		this(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), factorRef),
 				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	
 	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
-		super(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(mainWindow),
+		this(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(mainWindow),
 				new TargetViabilityTreePropertiesPanel(mainWindow));
 	}
 	
 	protected TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
-		super(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
+		this(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
 				new DirectIndicatorPropertiesPanel(mainWindowToUse, ORef.INVALID));
 	}  
 	
 	//TODO should use this contructor instead of the constructor that creates DirectIndicatorPropertiesPanel, would be better to have a PlanningTreePropertiesPanel
-	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, TargetViabililtyTreePanel treePanel, PlanningTreeMultiPropertiesPanel propertiesPanel) throws Exception
+	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel treePanel, ObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, treePanel, propertiesPanel);
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;
 		icon = new IndicatorIcon();
+		
+		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
+		targetViabilityTreeTableExporter = new TargetViabilityTreeTable(getMainWindow(), model);
+		targetViabilityTreeTableExporter.restoreTreeState();
 	}
-	
+
 	@Override
 	public void dispose()
 	{
 		super.dispose();
-		if (targetViabilityTreeTableExporter != null)
-			targetViabilityTreeTableExporter.dispose();
+		
+		targetViabilityTreeTableExporter.dispose();
 	}
 	
 	public String getPanelDescription()
@@ -94,7 +99,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		BufferedImage image = BufferedImageFactory.createImageFromTable(createTreeTable());
+		BufferedImage image = BufferedImageFactory.createImageFromTable(targetViabilityTreeTableExporter);
 		return image;
 	}
 	
@@ -109,14 +114,6 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	{
 		return new ViabilityTreeTableExporter(targetViabilityTreeTableExporter);
 	}
-
-	private TargetViabilityTreeTable createTreeTable() throws Exception
-	{
-		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
-		targetViabilityTreeTableExporter = new TargetViabilityTreeTable(getMainWindow(), model);
-		targetViabilityTreeTableExporter.restoreTreeState();
-		return targetViabilityTreeTableExporter;
-	}
 	
 	@Override
 	public boolean isPrintable()
@@ -127,7 +124,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return createTreeTable();
+		return targetViabilityTreeTableExporter;
 	}
 	
 	public boolean isRtfExportable()
