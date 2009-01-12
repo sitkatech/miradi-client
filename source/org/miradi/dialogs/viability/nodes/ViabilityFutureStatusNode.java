@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
-import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TextAndIconChoiceItem;
 
@@ -92,7 +92,7 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		if (tag.equals(StatusQuestion.VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
 			return textAndIconChoiceItem;
 		
-		return new ChoiceItem("", "");
+		return new EmptyChoiceItem();
 	}
 
 	public void rebuild() throws Exception

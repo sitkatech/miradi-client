@@ -28,6 +28,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TextAndIconChoiceItem;
@@ -104,7 +105,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return createStatusConfidenceChoiceItem(tag);
 		
-		return new ChoiceItem("", "");
+		return new EmptyChoiceItem();
 	}
 
 	private Object createStatusConfidenceChoiceItem(String tag)
