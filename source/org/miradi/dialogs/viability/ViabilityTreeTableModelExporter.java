@@ -19,9 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
+import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.icons.IconManager;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 
 public class ViabilityTreeTableModelExporter extends TreeTableModelExporter
 {
@@ -33,7 +39,20 @@ public class ViabilityTreeTableModelExporter extends TreeTableModelExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		Object valueAt = getTreeTableNodeForRow(row).getValueAt(column);
-		return (ChoiceItem) valueAt;
+		TreeTableNode node = getTreeTableNodeForRow(row);
+		if (isTreeColumn(column))
+			return new TaglessChoiceItem(node.toRawString(), getNodeIcon(row));
+
+		return (ChoiceItem) node.getValueAt(column);
+	}
+
+	private Icon getNodeIcon(int row)
+	{
+		BaseObject baseObject = getBaseObjectForRow(row);
+		if (baseObject != null)
+			return IconManager.getImage(baseObject);
+		
+		int rowType = getRowType(row);
+		return IconManager.getImage(rowType);
 	}	
 }
