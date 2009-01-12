@@ -30,8 +30,10 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TaglessChoiceItem;
 
 public class KeyEcologicalAttributeNode extends TreeTableNode
 {
@@ -78,16 +80,16 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
 		
 		if(tag.equals(KeyEcologicalAttribute.TAG_EMPTY))
-			return new ChoiceItem("", "");
+			return new EmptyChoiceItem();
 		
-		return kea.getData(tag);
+		return new TaglessChoiceItem(kea.getData(tag));
 	}
 
 
 	@Override
 	public String toRawString()
 	{
-		return (String)getValueAt(0);
+		return ((ChoiceItem)getValueAt(0)).getLabel();
 	}
 	
 	public BaseId getId()

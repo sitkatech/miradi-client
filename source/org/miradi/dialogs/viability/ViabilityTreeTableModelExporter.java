@@ -20,10 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
-import org.miradi.icons.ColoredIcon;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.EmptyChoiceItem;
 
 public class ViabilityTreeTableModelExporter extends TreeTableModelExporter
 {
@@ -35,19 +33,7 @@ public class ViabilityTreeTableModelExporter extends TreeTableModelExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		Object valueAt = getModel().getValueAt(row, column);
-		if (valueAt == null)
-			return new EmptyChoiceItem();
-		
-		if (((ViabilityTreeModel)getModel()).isChoiceItemColumn(getModel().getColumnTag(column)))
-		{
-			ChoiceItem choiceItem = (ChoiceItem) valueAt;
-			ColoredIcon rowRatingIcon = new ColoredIcon(choiceItem.getColor());
-			choiceItem.setIcon(rowRatingIcon);
-						
-			return choiceItem;	
-		}
-		
-		return new EmptyChoiceItem();
-	}
+		Object valueAt = getTreeTableNodeForRow(row).getValueAt(column);
+		return (ChoiceItem) valueAt;
+	}	
 }

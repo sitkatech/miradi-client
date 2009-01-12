@@ -23,6 +23,8 @@ public class EmptyChoiceItem extends TaglessChoiceItem
 {
 	public EmptyChoiceItem()
 	{
-		super(EMPTY_CHOICE_ITEM_CODE, null);
+		super(EMPTY_CHOICE_ITEM_LABEL);
 	}
+	
+	private static final String EMPTY_CHOICE_ITEM_LABEL = "";
 }

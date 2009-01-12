@@ -19,16 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
 import org.miradi.dialogs.viability.ViabilityTreeModel;
+import org.miradi.dialogs.viability.ViabilityTreeTableModelExporter;
 import org.miradi.dialogs.viability.nodes.ViabilityProjectNode;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ReportTemplateContentQuestion;
-import org.miradi.rtf.ViabilityObjectToFormMap;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.rtf.ViabilityObjectToFormMap;
 import org.miradi.utils.CodeList;
 
 public class ViabilityViewRtfExporter extends RtfViewExporter
@@ -41,7 +41,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	@Override
 	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
-		TreeTableModelExporter treeTableModelExporter = new TreeTableModelExporter(getProject(), createModel());
+		ViabilityTreeTableModelExporter treeTableModelExporter = new ViabilityTreeTableModelExporter(getProject(), createModel());
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.TARGET_VIABILITY_VIEW_VIABILITY_TAB_TABLE_CODE)) 
 			exportTable(writer, treeTableModelExporter, ReportTemplateContentQuestion.getTargetViabilityTableLabel());
 
@@ -49,7 +49,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 			exportFormsForRows(writer, treeTableModelExporter);	
 	}
 	
-	private void exportFormsForRows(RtfWriter writer, TreeTableModelExporter treeTableModelExporter) throws Exception
+	private void exportFormsForRows(RtfWriter writer, ViabilityTreeTableModelExporter treeTableModelExporter) throws Exception
 	{
 		int FIRST_COLUMN_INDEX = 0;
 		for (int row = FIRST_COLUMN_INDEX; row < treeTableModelExporter.getRowCount(); ++row)
