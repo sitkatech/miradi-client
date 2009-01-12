@@ -66,6 +66,13 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 		icon = new IndicatorIcon();
 	}
 	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		if (targetViabilityTreeTableExporter != null)
+			targetViabilityTreeTableExporter.dispose();
+	}
 	
 	public String getPanelDescription()
 	{
@@ -87,7 +94,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	@Override
 	public BufferedImage getImage() throws Exception
 	{
-		BufferedImage image = BufferedImageFactory.createImageFromTable(getTreeTable());
+		BufferedImage image = BufferedImageFactory.createImageFromTable(createTreeTable());
 		return image;
 	}
 	
@@ -100,15 +107,15 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	@Override
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		return new ViabilityTreeTableExporter(getTreeTable());
+		return new ViabilityTreeTableExporter(targetViabilityTreeTableExporter);
 	}
 
-	private TargetViabilityTreeTable getTreeTable() throws Exception
+	private TargetViabilityTreeTable createTreeTable() throws Exception
 	{
 		ViabilityTreeModel model = new ViabilityTreeModel(new ViabilityRoot(getProject()));
-		TargetViabilityTreeTable treeTable = new TargetViabilityTreeTable(getMainWindow(), model);
-		treeTable.restoreTreeState();
-		return treeTable;
+		targetViabilityTreeTableExporter = new TargetViabilityTreeTable(getMainWindow(), model);
+		targetViabilityTreeTableExporter.restoreTreeState();
+		return targetViabilityTreeTableExporter;
 	}
 	
 	@Override
@@ -120,7 +127,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return getTreeTable();
+		return createTreeTable();
 	}
 	
 	public boolean isRtfExportable()
@@ -135,6 +142,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 			
 	protected String panelDescription;
 	protected Icon icon;
+	private TargetViabilityTreeTable targetViabilityTreeTableExporter;
 	
 	private static String PANEL_DESCRIPTION_INDICATORS = EAM.text("Tab|Indicators"); 
 }
