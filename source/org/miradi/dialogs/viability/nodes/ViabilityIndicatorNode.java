@@ -30,10 +30,11 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.BaseObjectDateAndIdComparator;
 
 public class ViabilityIndicatorNode extends TreeTableNode
@@ -92,7 +93,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 			return new ProgressReportStatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
 		
 		if(tag.equals(Indicator.TAG_EMPTY))
-			return new ChoiceItem("", "");
+			return new EmptyChoiceItem();
 		
 		String data = getObject().getData(tag);
 		
@@ -102,10 +103,12 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		if (tag.equals(Indicator.TAG_INDICATOR_THRESHOLD))
 		{
 			int threasholdColumn = (column + 1) - getFirstIndexOfThreshold();
-			return indicator.getThreshold().getStringMap().get(Integer.toString(threasholdColumn));
+			String threashold = indicator.getThreshold().getStringMap().get(Integer.toString(threasholdColumn));
+			
+			return new TaglessChoiceItem(threashold);
 		}
 		
-		return data;
+		return new TaglessChoiceItem(data);
 	}
 	
 	private int getFirstIndexOfThreshold()

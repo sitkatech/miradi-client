@@ -23,6 +23,11 @@ import javax.swing.Icon;
 
 public class TaglessChoiceItem extends ChoiceItem
 {
+	public TaglessChoiceItem(String labelToUse)
+	{
+		super(EMPTY_CHOICE_ITEM_CODE, labelToUse);
+	}
+	
 	public TaglessChoiceItem(String labelToUse, Icon iconToUse)
 	{
 		super(EMPTY_CHOICE_ITEM_CODE, labelToUse, iconToUse);
