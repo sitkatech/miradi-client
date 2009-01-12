@@ -30,7 +30,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusQuestion;
 
 public class ViabilityProjectNode extends TreeTableNode
@@ -75,7 +75,7 @@ public class ViabilityProjectNode extends TreeTableNode
 			return statusQuestion.findChoiceByCode(code);
 		}
 		
-		return new ChoiceItem("", "");
+		return new EmptyChoiceItem();
 	}
 
 	@Override
