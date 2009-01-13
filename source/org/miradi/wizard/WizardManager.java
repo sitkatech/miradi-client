@@ -27,6 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.summary.SummaryView;
@@ -34,8 +35,9 @@ import org.miradi.wizard.diagram.DescribeTargetStatusStep;
 import org.miradi.wizard.diagram.DevelopDraftStrategiesStep;
 import org.miradi.wizard.diagram.DiagramOverviewStep;
 import org.miradi.wizard.diagram.DiagramWizardCompleteResultsChainLinks;
-import org.miradi.wizard.diagram.DiagramWizardCreateInitialModelStep;
 import org.miradi.wizard.diagram.DiagramWizardConstructInitialResultsChain;
+import org.miradi.wizard.diagram.DiagramWizardCreateInitialModelStep;
+import org.miradi.wizard.diagram.DiagramWizardDefineAudienceStep;
 import org.miradi.wizard.diagram.DiagramWizardDefineTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardGoodResultsChainCriteriaReview;
 import org.miradi.wizard.diagram.DiagramWizardIdentifyDirectThreatStep;
@@ -47,7 +49,6 @@ import org.miradi.wizard.diagram.DiagramWizardReviewAndModifyTargetsStep;
 import org.miradi.wizard.diagram.DiagramWizardReviewModelAndAdjustStep;
 import org.miradi.wizard.diagram.DiagramWizardVisionStep;
 import org.miradi.wizard.diagram.MonitoringWizardDefineIndicatorsStep;
-import org.miradi.wizard.diagram.DiagramWizardDefineAudienceStep;
 import org.miradi.wizard.diagram.RankDraftStrategiesStep;
 import org.miradi.wizard.diagram.SelectChainStep;
 import org.miradi.wizard.diagram.StrategicPlanDevelopGoalStep;
@@ -77,13 +78,13 @@ import org.miradi.wizard.summary.SummaryWizardDefineProjecScope;
 import org.miradi.wizard.summary.SummaryWizardDefineProjectVision;
 import org.miradi.wizard.summary.SummaryWizardDefineTeamMembers;
 import org.miradi.wizard.summary.SummaryWizardRolesAndResponsibilities;
-import org.miradi.wizard.targetviability.TargetViabilityDetermineKeyAttributesStep;
-import org.miradi.wizard.targetviability.TargetViabilityIdentifyIndicatorsStep;
-import org.miradi.wizard.targetviability.TargetViabilityDevelopDraftIndicatorsStep;
-import org.miradi.wizard.targetviability.TargetViabilityRefineIndicatorRatingsStep;
-import org.miradi.wizard.targetviability.TargetViabilityRecordInitialMeasurementStep;
 import org.miradi.wizard.targetviability.TargetViabilityDetermineDesiredStatusStep;
+import org.miradi.wizard.targetviability.TargetViabilityDetermineKeyAttributesStep;
+import org.miradi.wizard.targetviability.TargetViabilityDevelopDraftIndicatorsStep;
+import org.miradi.wizard.targetviability.TargetViabilityIdentifyIndicatorsStep;
 import org.miradi.wizard.targetviability.TargetViabilityOverviewStep;
+import org.miradi.wizard.targetviability.TargetViabilityRecordInitialMeasurementStep;
+import org.miradi.wizard.targetviability.TargetViabilityRefineIndicatorRatingsStep;
 import org.miradi.wizard.threatmatrix.ThreatMatrixOverviewStep;
 import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckBundleStep;
 import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckTotalsStep;
@@ -142,8 +143,10 @@ public class WizardManager
 			return;
 		}
 		
+		ViewData viewData = getProject().getCurrentViewData();
 		ORef projectMetadataRef = metadata.getRef();
 		getProject().executeCommand(new CommandSetObjectData(projectMetadataRef, ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME, newStepName));
+		getProject().executeCommand(new CommandSetObjectData(viewData, ViewData.TAG_CURRENT_WIZARD_STEP, newStepName));
 		
 		if(mainWindow.isDeveloperMode())
 			EAM.logDebug(newStepName);
