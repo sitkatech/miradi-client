@@ -663,7 +663,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			{
 				repaint(view.getBounds().getBounds());
 				link.update(this);
-				view.update();
+				view.update(glc);
 				repaint(view.getBounds().getBounds());
 				link.autoSelect(this);
 			}
