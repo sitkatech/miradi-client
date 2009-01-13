@@ -151,6 +151,7 @@ public class ViewData extends BaseObject
 		planningStyleChoice = new StringData(TAG_PLANNING_STYLE_CHOICE);
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		planningCustomChoiceRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);
+		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);
 		
 		addPresentationDataField(TAG_CURRENT_CONCEPTUAL_MODEL_REF, currentConceptualModelRef);
 		addPresentationDataField(TAG_CURRENT_RESULTS_CHAIN_REF, currentResultsChainRef);
@@ -163,6 +164,7 @@ public class ViewData extends BaseObject
 		addPresentationDataField(TAG_PLANNING_STYLE_CHOICE, planningStyleChoice);
 		addPresentationDataField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
 		addPresentationDataField(TAG_PLANNING_CUSTOM_PLAN_REF, planningCustomChoiceRef);
+		addPresentationDataField(TAG_CURRENT_WIZARD_STEP, currentWizardStep);
 	}
 
 	public static final String TAG_CURRENT_CONCEPTUAL_MODEL_REF = "CurrentConceptualModelRef";
@@ -176,6 +178,7 @@ public class ViewData extends BaseObject
 	public static final String TAG_PLANNING_STYLE_CHOICE = "PlanningStyleChoice";
 	public static final String TAG_PLANNING_SINGLE_LEVEL_CHOICE = "SingleLevelChoice";
 	public static final String TAG_PLANNING_CUSTOM_PLAN_REF = "CustomPlanRef";
+	public static final String TAG_CURRENT_WIZARD_STEP = "CurrentWizardStep";
 	
 	public static final String MODE_DEFAULT = "";
 	public static final String MODE_STRATEGY_BRAINSTORM = "StrategyBrainstorm";
@@ -192,4 +195,5 @@ public class ViewData extends BaseObject
 	private StringData planningStyleChoice;
 	private StringData planningSingleLevelChoice;
 	private ORefData planningCustomChoiceRef;
+	private StringData currentWizardStep;
 }
