@@ -39,9 +39,15 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Factor.TAG_LABEL);
 		addFieldsOnOneLine(translatedNameLabel, icon, new ObjectDataInputField[]{shortLabelField, labelField,});
-
+		
+		addCustomInBetweenFields();
+		
 		addField(createMultilineField(Factor.TAG_TEXT));
 		addField(createMultilineField(Factor.TAG_COMMENT));
+	}
+
+	protected void addCustomInBetweenFields()
+	{
 	}
 
 	@Override
