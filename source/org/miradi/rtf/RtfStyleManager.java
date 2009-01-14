@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
+import java.awt.Color;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ObjectType;
@@ -50,6 +51,7 @@ public class RtfStyleManager
 	private void clear()
 	{
 		sortedStyles = new Vector();
+		resetColorKeys();
 		
 		createNewStyle(NORMAL_STYLE_TAG,                    	FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");		
 		createNewStyle(HEADING_1_STYLE_TAG,						S_1_RTF_ID, HEADING_1_STYLE, "Heading 1");
@@ -144,8 +146,29 @@ public class RtfStyleManager
 	{
 		return sortedStyles;
 	}
+	
+	private void resetColorKeys()
+	{
+		colorKeys = new Vector();
+		
+		colorKeys.add(Color.black);
+		colorKeys.add(Color.blue);
+		colorKeys.add(Color.cyan);
+		colorKeys.add(Color.green);
+		colorKeys.add(Color.magenta);
+		colorKeys.add(Color.red);
+		colorKeys.add(Color.yellow);
+		colorKeys.add(Color.white);
+	}
+	
+	public Vector<Color> getColorKeys()
+	{
+		return colorKeys;
+	}
+	
 			
 	private Vector<RtfStyle> sortedStyles;
+	private Vector<Color> colorKeys;
 	
 	public static final String MIRADI_STYLE_PREFIX = "Miradi: ";
 	public static final String COLUMN_HEADER_STYLE_TAG = "ColumnHeaderStyle";
