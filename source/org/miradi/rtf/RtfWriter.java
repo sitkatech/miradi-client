@@ -19,10 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
 import javax.swing.Icon;
 
@@ -179,6 +181,7 @@ public class RtfWriter
 			writeRaw(PRE_CELL_COMMAND);
 		
 			ChoiceItem choiceItem = exportableTable.getChoiceItemAt(row, column);
+			writeCellBackgroundColorCommand(choiceItem);
 			Icon cellIcon = choiceItem.getIcon();
 			if (cellIcon != null)
 			{
@@ -202,6 +205,16 @@ public class RtfWriter
 		newLine();
 	}
 
+	private void writeCellBackgroundColorCommand(ChoiceItem choiceItem) throws Exception
+	{
+		Color backgroundColor = DEFAULT_CELL_BACKGROUND_COLOR;
+		if (choiceItem.getColor() != null)
+			backgroundColor = choiceItem.getColor();
+		
+		String backgroundColorAsString = colorToRtfFormat(backgroundColor);
+		writeRaw(backgroundColorAsString);
+	}
+
 	private void writeCellCommands(AbstractTableExporter exportableTable) throws Exception
 	{
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
@@ -213,6 +226,11 @@ public class RtfWriter
 	public String createCellxCommand(final int column)
 	{
 		return CELL_BORDER + CELL_X_COMMAND + ((column  + 1) * ONE_INCH_IN_TWIPS );
+	}
+
+	private String colorToRtfFormat(Color backgroundColor)
+	{
+		return BACKGROUND_COLOR_COMMAND + getColorIndex(backgroundColor) + " ";
 	}
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
@@ -339,26 +357,43 @@ public class RtfWriter
 		writelnRaw("}");
 	}
 
+	private int getColorIndex(Color color)
+	{	
+		int colorIndex = getRtfStyleManager().getColorKeys().indexOf(color);
+		if (colorIndex < 0)
+			return getRtfStyleManager().getColorKeys().size();
+		
+		final int INCREMENT_COUNT_TO_MATCH_RTF_TABLE_INDEX = 1;
+		
+		return colorIndex + INCREMENT_COUNT_TO_MATCH_RTF_TABLE_INDEX;
+	}
+	
 	private void writeColorTable() throws Exception
 	{
 		newLine();
-		writelnRaw("{\\colortbl;" +
-				"\\red0\\green0\\blue0;" +
-				"\\red0\\green0\\blue255;" +
-				"\\red0\\green255\\blue255;" +
-				"\\red0\\green255\\blue0;" +
-				"\\red255\\green0\\blue255;" +
-				"\\red255\\green0\\blue0;" +
-				"\\red255\\green255\\blue0;" +
-				"\\red255\\green255\\blue255;" +
-				"\\red0\\green0\\blue128;" +
-				"\\red0\\green128\\blue128;" +
-				"\\red0\\green128\\blue0;" +
-				"\\red128\\green0\\blue128;" +
-				"\\red128\\green0\\blue0;" +
-				"\\red128\\green128\\blue0;" +
-				"\\red128\\green128\\blue128;" +
-				"\\red192\\green192\\blue192;}");
+		Vector<Color> colorKeys = getRtfStyleManager().getColorKeys();
+		
+		StringBuffer colorTableString = new StringBuffer();
+		colorTableString.append(START_BLOCK);
+		colorTableString.append(COLOR_TABLE_COMMAND);
+		colorTableString.append(SEMI_COLON);
+		for (int index = 0; index < colorKeys.size(); ++index)
+		{
+			Color color = colorKeys.get(index);
+			colorTableString.append(createRtfColor(RED_COLOR_NAME, color.getRed()));
+			colorTableString.append(createRtfColor(GREEN_COLOR_NAME, color.getGreen()));
+			colorTableString.append(createRtfColor(BLUE_COLOR_NAME, color.getBlue()));
+			
+			colorTableString.append(SEMI_COLON);
+		}
+		
+		colorTableString.append(END_BLOCK);
+		writelnRaw(colorTableString.toString());
+	}
+
+	private String createRtfColor(String colorName, int colorValue)
+	{
+		return FORWARD_SLASH + colorName + colorValue; 
 	}
 
 	private void writeInfo() throws Exception
@@ -439,6 +474,10 @@ public class RtfWriter
 	public static final int ONE_INCH_IN_TWIPS = 1440;
 	public static final String START_BLOCK = "{";
 	public static final String END_BLOCK = "}";
+	public static final String SEMI_COLON = ";";
+	public static final String FORWARD_SLASH = "\\";
+	public static final String COLOR_TABLE_COMMAND = "\\colortbl";
+	public static final String BACKGROUND_COLOR_COMMAND = "\\cbpat";
 	public static final String CELL_X_COMMAND = "\\clftsWidth1\\cellx";
 	public static final String CELL_COMMAND = "\\cell \\pard ";
 	public static final String ROW_COMMAND = "\\row \\pard";
@@ -460,4 +499,8 @@ public class RtfWriter
 	public static final int EIGHTH_OF_AN_INCH = 180;
 	public static final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
 	
+	private static final Color DEFAULT_CELL_BACKGROUND_COLOR = Color.WHITE;
+	public static final String RED_COLOR_NAME = "red";
+	public static final String GREEN_COLOR_NAME = "green";
+	public static final String BLUE_COLOR_NAME = "blue";	
 }
