@@ -181,6 +181,8 @@ public class Cause extends Factor
 	}	
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	//FIXME is this a problem that this field value matches exactly Strategy's PSEUDO_TAG_TAXONOMY_CODE_VALUE,
+	//I noticed it can be an issue in PlanningViewMainTableModel.getValueAt's cascading ifs comparing tags
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	
 	public static final String OBJECT_NAME = "Cause";
