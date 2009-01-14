@@ -121,11 +121,6 @@ public class ProjectMetadata extends BaseObject
 		return projectVision.get();
 	}
 	
-	public String getShortProjectVision()
-	{
-		return shortProjectVision.get();
-	}
-	
 	public MultiCalendar getWorkPlanStartDate()
 	{
 		return workPlanStartDate.getDate();
@@ -301,7 +296,6 @@ public class ProjectMetadata extends BaseObject
 		projectScope = new StringData(TAG_PROJECT_SCOPE);
 		shortProjectScope = new StringData(TAG_SHORT_PROJECT_SCOPE);
 		projectVision = new StringData(TAG_PROJECT_VISION);
-		shortProjectVision = new StringData(TAG_SHORT_PROJECT_VISION);
 		startDate = new DateData(TAG_START_DATE);
 		expectedEndDate = new DateData(TAG_EXPECTED_END_DATE);
 		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
@@ -347,7 +341,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_PROJECT_SCOPE, projectScope);
 		addField(TAG_SHORT_PROJECT_SCOPE, shortProjectScope);
 		addField(TAG_PROJECT_VISION, projectVision);
-		addField(TAG_SHORT_PROJECT_VISION, shortProjectVision);
 		addField(TAG_START_DATE, startDate);
 		addField(TAG_EXPECTED_END_DATE, expectedEndDate);
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
@@ -432,7 +425,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_PROJECT_SCOPE = "ProjectScope";
 	public static final String TAG_SHORT_PROJECT_SCOPE = "ShortProjectScope";
 	public static final String TAG_PROJECT_VISION = "ProjectVision";
-	public static final String TAG_SHORT_PROJECT_VISION = "ShortProjectVision";
 	public static final String TAG_START_DATE = "StartDate";
 	public static final String TAG_EXPECTED_END_DATE = "ExpectedEndDate";
 	public static final String TAG_DATA_EFFECTIVE_DATE = "DataEffectiveDate";
@@ -502,7 +494,6 @@ public class ProjectMetadata extends BaseObject
 	private StringData projectScope;
 	private StringData shortProjectScope;
 	private StringData projectVision;
-	private StringData shortProjectVision;
 	private DateData startDate;
 	private DateData expectedEndDate;
 	private DateData effectiveDate;
