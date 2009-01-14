@@ -94,6 +94,7 @@ public class ColumnManager
 		String[] list = {
 				Indicator.TAG_PRIORITY,
 				Strategy.TAG_TAXONOMY_CODE,
+				Strategy.TAG_TEXT,
 //				Task.PSEUDO_TAG_ASSIGNED_RESOURCES_HTML,
 //				Task.PSEUDO_TAG_COMBINED_EFFORT_DATES,
 //				Task.PSEUDO_TAG_TASK_TOTAL, 
