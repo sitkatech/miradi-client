@@ -40,6 +40,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.questions.ChoiceQuestion;
 
 public class RtfStyleManager
 {
@@ -154,11 +155,13 @@ public class RtfStyleManager
 		colorKeys.add(Color.black);
 		colorKeys.add(Color.blue);
 		colorKeys.add(Color.cyan);
-		colorKeys.add(Color.green);
 		colorKeys.add(Color.magenta);
 		colorKeys.add(Color.red);
 		colorKeys.add(Color.yellow);
 		colorKeys.add(Color.white);
+		colorKeys.add(ChoiceQuestion.DARK_GREEN);
+		colorKeys.add(ChoiceQuestion.LIGHT_GREEN);
+		colorKeys.add(ChoiceQuestion.DARK_YELLOW);
 	}
 	
 	public Vector<Color> getColorKeys()
