@@ -160,7 +160,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 	{
 		try
 		{		
-			if (doesCommandForceRebuild(event) || doesCommandAffectRowHeight(event))
+			if (doesCommandForceRebuild(event))
 				rebuildEntireTreeTable();
 			else if(isTreeExpansionCommand(event))
 				restoreTreeExpansionState();
