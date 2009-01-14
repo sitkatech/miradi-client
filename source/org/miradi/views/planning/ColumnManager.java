@@ -55,6 +55,7 @@ public class ColumnManager
 		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
+		masterColumnList.add(Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		
 		masterColumnList.add(BaseObject.PSEUDO_TAG_WHO_TOTAL);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
@@ -171,6 +172,7 @@ public class ColumnManager
 	{
 		String[] list = {
 				Cause.TAG_TEXT,
+				Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
 				};
 		return new CodeList(list);		
 	}
