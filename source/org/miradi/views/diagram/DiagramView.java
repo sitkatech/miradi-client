@@ -979,8 +979,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		if (cmd.getObjectType() != ObjectType.PROJECT_METADATA)
 			return false;
 		
-		return (cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE) ||
-				cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_VISION));
+		return cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 	}
 
 	private boolean isFactorBoundsChange(CommandSetObjectData cmd)

@@ -38,7 +38,6 @@ public class TestProjectMetadata extends TestCaseWithProject
 		verifyDataField(ProjectMetadata.TAG_PROJECT_SCOPE, "Entire Upper Yucatan");
 		verifyDataField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE, "Half of Yucatan");
 		verifyDataField(ProjectMetadata.TAG_PROJECT_VISION, "Coral reefs returned to natural state");
-		verifyDataField(ProjectMetadata.TAG_SHORT_PROJECT_VISION, "Increase in Sea Life");
 		verifyDataField(ProjectMetadata.TAG_START_DATE, "2006-05-22");
 		verifyDataField(ProjectMetadata.TAG_EXPECTED_END_DATE, "2006-05-22");
 		verifyDataField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
