@@ -103,14 +103,6 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 		{
 			restoreTreeExpansionState();	
 		}
-		else if(doesCommandAffectRowHeight(event))
-		{
-			BaseObject selected = getSelectedObject();
-			treeTableModel.rebuildEntireTree();
-			restoreTreeExpansionState();
-			if(selected != null)
-				getTree().selectObjectAfterSwingClearsItDueToTreeStructureChange(selected.getRef(), -1);
-		}
 		
 		validateModifiedObject(event, KeyEcologicalAttribute.getObjectType());
 		validateModifiedObject(event, Target.getObjectType());
