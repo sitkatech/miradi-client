@@ -24,6 +24,7 @@ import java.io.IOException;
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.ColorManager;
 
 
 public abstract class ChoiceQuestion
@@ -111,12 +112,8 @@ public abstract class ChoiceQuestion
 		out.writeln("</Choices>");
 	}
 
-	public static final Color DARK_YELLOW = new Color(255, 230, 0);
-	public static final Color LIGHT_GREEN = new Color(128, 255, 0); 
-	public static final Color DARK_GREEN = new Color(0, 160, 0);
-		
 	public static final Color COLOR_ALERT = Color.RED;
-	public static final Color COLOR_CAUTION = DARK_YELLOW;
-	public static final Color COLOR_OK = LIGHT_GREEN;
-	public static final Color COLOR_GREAT = DARK_GREEN;
+	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
+	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;
+	public static final Color COLOR_GREAT = ColorManager.DARK_GREEN;
 }

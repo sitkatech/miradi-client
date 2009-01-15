@@ -40,10 +40,9 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
-import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.ColorManager;
 
 public class TestSimpleThreatRatingFramework extends EAMTestCase
 {
@@ -122,7 +121,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		// NOTE: options are: [0]:1/VH, [1]:2/H, [2]:3/M, [3]:4/L, [4]:0/NONE 
 		assertEquals("wrong order or label?", "Very High", options[0].getLabel());
 		assertEquals("wrong numeric value? ", 3, options[1].getNumericValue());
-		assertEquals("bad color?", ChoiceQuestion.LIGHT_GREEN, options[2].getColor());
+		assertEquals("bad color?", ColorManager.LIGHT_GREEN, options[2].getColor());
 	}
 	
 	public void testFindValueOptionByNumericValue()
