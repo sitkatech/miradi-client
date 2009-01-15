@@ -28,9 +28,15 @@ import javax.swing.JList;
 
 import org.miradi.icons.RatingIcon;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 
 public class ChoiceItemComboBox extends PanelComboBox
-{
+{	
+	public ChoiceItemComboBox(ChoiceQuestion question)
+	{
+		this(question.getChoices());
+	}
+
 	public ChoiceItemComboBox(ChoiceItem[] items)
 	{
 		super(items);

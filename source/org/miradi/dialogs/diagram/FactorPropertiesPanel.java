@@ -21,6 +21,8 @@ package org.miradi.dialogs.diagram;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
@@ -28,10 +30,12 @@ import javax.swing.SwingUtilities;
 
 import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.goal.GoalListManagementPanel;
@@ -63,6 +67,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
@@ -71,6 +76,9 @@ import org.miradi.objects.Target;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CurrentDiagramFactorsQuestion;
 import org.miradi.questions.DirectThreatQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -347,7 +355,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		Factor factor = (Factor) getProject().findObject(factorORef);
 		grid = new FactorInputPanel(getProject(), factorORef);
 		
-		grid.addFieldWithCustomLabel(grid.createExpandableField(Factor.TAG_LABEL), createFactorTypeLabel(factor));
+		grid.addLabel(createFactorTypeLabel(factor));
+		grid.addFieldComponent(new CurrentFactorChangerComboBox(new CurrentDiagramFactorsQuestion(getDiagramObject())));
 		
 		if (factor.isTarget())
 		{
@@ -424,6 +433,11 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		return diagram;
 	}
+	
+	private DiagramObject getDiagramObject()
+	{
+		return getDiagram().getDiagramObject();
+	}
 
 	public BaseObject getObject()
 	{
@@ -459,6 +473,52 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				simpleViabilityTab.updateSplitterLocation();
 			
 			validate();
+		}
+	}
+	
+	class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
+	{
+		public CurrentFactorChangerComboBox(ChoiceQuestion question)
+		{
+			super(question);
+			
+			addItemListener(this);
+			ORef wrappedRef = getCurrentDiagramFactor().getWrappedORef();
+			ChoiceItem choiceItemToSelect = question.findChoiceByCode(wrappedRef.toString());
+			setSelectedItem(choiceItemToSelect);
+		}
+		
+		public void itemStateChanged(ItemEvent e)
+		{
+			int selectedIndex = getSelectedIndex();
+			if (selectedIndex < 0)
+				return;
+			
+			ChoiceItem selectedChoiceItem = (ChoiceItem) getSelectedItem();
+			ORef selectedFactorRef = ORef.createFromString(selectedChoiceItem.getCode());
+			ORef currentDiagramFactorRef = getCurrentDiagramFactor().getRef();
+			
+			DiagramFactor diagramFactorToSelect = getDiagram().getDiagramObject().getDiagramFactor(selectedFactorRef);
+			if (currentDiagramFactorRef.equals(diagramFactorToSelect.getRef()))
+				return;
+		
+			setCurrentDiagramFactor(getDiagram(), diagramFactorToSelect);
+			selectNewlyChoiceDiagramFactor(diagramFactorToSelect);
+			getFactorPropertiesDialog().pack();
+		}
+
+		private void selectNewlyChoiceDiagramFactor(DiagramFactor diagramFactorToSelect)
+		{
+			try
+			{
+				FactorCell factorCell = getDiagram().getDiagramModel().getFactorCellByRef(diagramFactorToSelect.getRef());
+				getDiagram().clearSelection();
+				getDiagram().addSelectionCell(factorCell);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}	
 		}
 	}
 
