@@ -52,7 +52,7 @@ public class RtfStyleManager
 	private void clear()
 	{
 		sortedStyles = new Vector();
-		resetColorKeys();
+		resetColors();
 		
 		createNewStyle(NORMAL_STYLE_TAG,                    	FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");		
 		createNewStyle(HEADING_1_STYLE_TAG,						S_1_RTF_ID, HEADING_1_STYLE, "Heading 1");
@@ -148,7 +148,7 @@ public class RtfStyleManager
 		return sortedStyles;
 	}
 	
-	private void resetColorKeys()
+	private void resetColors()
 	{
 		colorKeys = new Vector();
 		
