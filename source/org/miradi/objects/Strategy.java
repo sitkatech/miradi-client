@@ -316,7 +316,6 @@ public class Strategy extends Factor
 		legacyTncStrategyRanking = new StringData(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
-		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
 		impactRatingLabel = new PseudoQuestionData(PSEUDO_TAG_IMPACT_RATING_VALUE, new StrategyImpactQuestion());
 		feasibilityRatingLabel = new PseudoQuestionData(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, new StrategyFeasibilityQuestion());
 		tagRatingSummaryLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SUMMARY_VALUE, new StrategyRatingSummaryQuestion());
@@ -331,7 +330,6 @@ public class Strategy extends Factor
 		addField(TAG_LEGACY_TNC_STRATEGY_RANKING, legacyTncStrategyRanking);
 		
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
-		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 		addField(PSEUDO_TAG_IMPACT_RATING_VALUE, impactRatingLabel);
 		addField(PSEUDO_TAG_FEASIBILITY_RATING_VALUE, feasibilityRatingLabel);
 		addField(PSEUDO_TAG_RATING_SUMMARY_VALUE, tagRatingSummaryLabel);
@@ -349,7 +347,6 @@ public class Strategy extends Factor
 	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";
 	
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
-	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";
 	public static final String PSEUDO_TAG_FEASIBILITY_RATING_VALUE = "FeasibilityRatingValue";
 	public static final String PSEUDO_TAG_RATING_SUMMARY_VALUE = "RatingSummaryValue";
@@ -367,7 +364,6 @@ public class Strategy extends Factor
 	private StringData legacyTncStrategyRanking;
 	
 	private PseudoStringData tagRatingSummary;
-	private PseudoQuestionData taxonomyCodeLabel;
 	private PseudoQuestionData impactRatingLabel;
 	private PseudoQuestionData feasibilityRatingLabel;
 	private PseudoQuestionData tagRatingSummaryLabel;
