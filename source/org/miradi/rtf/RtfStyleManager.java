@@ -164,7 +164,7 @@ public class RtfStyleManager
 		colorKeys.add(ChoiceQuestion.DARK_YELLOW);
 	}
 	
-	public Vector<Color> getColorKeys()
+	public Vector<Color> getAvailableColors()
 	{
 		return colorKeys;
 	}

@@ -359,9 +359,9 @@ public class RtfWriter
 
 	private int getColorIndex(Color color)
 	{	
-		int colorIndex = getRtfStyleManager().getColorKeys().indexOf(color);
+		int colorIndex = getRtfStyleManager().getAvailableColors().indexOf(color);
 		if (colorIndex < 0)
-			return getRtfStyleManager().getColorKeys().size();
+			return getRtfStyleManager().getAvailableColors().size();
 		
 		final int INCREMENT_COUNT_TO_MATCH_RTF_TABLE_INDEX = 1;
 		
@@ -371,7 +371,7 @@ public class RtfWriter
 	private void writeColorTable() throws Exception
 	{
 		newLine();
-		Vector<Color> colorKeys = getRtfStyleManager().getColorKeys();
+		Vector<Color> colorKeys = getRtfStyleManager().getAvailableColors();
 		
 		StringBuffer colorTableString = new StringBuffer();
 		colorTableString.append(START_BLOCK);
