@@ -26,7 +26,6 @@ import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
-import javax.swing.SwingUtilities;
 
 import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramComponent;
@@ -331,6 +330,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			add(createLabelBar(currentDiagramFactor),	BorderLayout.BEFORE_FIRST_LINE);
 			add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
+			getFactorPropertiesDialog().pack();
 		}
 		catch(Exception e)
 		{
@@ -456,7 +456,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			rebuildPanel();
 			
-			SwingUtilities.getWindowAncestor(detailsTab).pack();
 			if(viabilityTab != null)
 				viabilityTab.updateSplitterLocation();
 			
@@ -471,9 +470,10 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			
 			if (simpleViabilityTab != null)
 				simpleViabilityTab.updateSplitterLocation();
-			
-			validate();
 		}
+		
+		if (event.isSetDataCommandWithThisTag(Factor.TAG_LABEL)  || event.isSetDataCommandWithThisTag(Factor.TAG_SHORT_LABEL))
+			rebuildPanel();
 	}
 	
 	class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
@@ -504,7 +504,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 			setCurrentDiagramFactor(getDiagram(), diagramFactorToSelect);
 			selectNewlyChoiceDiagramFactor(diagramFactorToSelect);
-			getFactorPropertiesDialog().pack();
 		}
 
 		private void selectNewlyChoiceDiagramFactor(DiagramFactor diagramFactorToSelect)
