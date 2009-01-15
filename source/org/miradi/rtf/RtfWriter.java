@@ -392,7 +392,7 @@ public class RtfWriter
 
 	private String createRtfColor(String colorName, int colorValue)
 	{
-		return FORWARD_SLASH + colorName + colorValue; 
+		return colorName + colorValue; 
 	}
 
 	private void writeInfo() throws Exception
@@ -474,7 +474,6 @@ public class RtfWriter
 	public static final String START_BLOCK = "{";
 	public static final String END_BLOCK = "}";
 	public static final String SEMI_COLON = ";";
-	public static final String FORWARD_SLASH = "\\";
 	public static final String COLOR_TABLE_COMMAND = "\\colortbl";
 	public static final String BACKGROUND_COLOR_COMMAND = "\\cbpat";
 	public static final String CELL_X_COMMAND = "\\clftsWidth1\\cellx";
@@ -498,7 +497,7 @@ public class RtfWriter
 	public static final int EIGHTH_OF_AN_INCH = 180;
 	public static final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
 	
-	public static final String RED_COLOR_NAME = "red";
-	public static final String GREEN_COLOR_NAME = "green";
-	public static final String BLUE_COLOR_NAME = "blue";	
+	public static final String RED_COLOR_NAME = "\\red";
+	public static final String GREEN_COLOR_NAME = "\\green";
+	public static final String BLUE_COLOR_NAME = "\\blue";	
 }
