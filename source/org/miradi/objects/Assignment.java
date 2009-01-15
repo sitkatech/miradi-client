@@ -233,6 +233,16 @@ public class Assignment extends BaseObject
 		String dREffortListAsString = getData(Assignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(dREffortListAsString);
 	}
+	
+	@Override
+	public String toString()
+	{
+		ProjectResource projectResource = getProjectResource();
+		if (projectResource == null)
+			return "";
+		
+		return projectResource.getFullName();
+	}
 
 	public static boolean is(BaseObject baseObject)
 	{

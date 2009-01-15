@@ -22,7 +22,6 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -32,7 +31,6 @@ public class PlanningTreeAssignmentNode extends AbstractPlanningTreeNode
 	{
 		super(projectToUse, visibleRowsToUse);
 		assignment = Assignment.find(projectToUse, assignmentRef);
-		projectResource = ProjectResource.find(project, assignment.getResourceRef());
 	}
 
 	public void rebuild() throws Exception
@@ -46,13 +44,8 @@ public class PlanningTreeAssignmentNode extends AbstractPlanningTreeNode
 	
 	public String toRawString()
 	{
-		if (projectResource != null)
-			return projectResource.getFullName();
-		
-		return null;
+		return assignment.toString();
 	}
 	
-     	
 	private Assignment assignment;
-	private ProjectResource projectResource;
 }
