@@ -169,6 +169,10 @@ public class RtfStyleManager
 		return availableColors;
 	}
 	
+	public int getColorIndex(Color color)
+	{	
+		return getAvailableColors().indexOf(color);
+	}	
 			
 	private Vector<RtfStyle> sortedStyles;
 	private Vector<Color> availableColors;
