@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import java.awt.Color;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ObjectType;
@@ -40,7 +39,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
-import org.miradi.questions.ChoiceQuestion;
 
 public class RtfStyleManager
 {
@@ -52,8 +50,7 @@ public class RtfStyleManager
 	private void clear()
 	{
 		sortedStyles = new Vector();
-		resetColors();
-		
+
 		createNewStyle(NORMAL_STYLE_TAG,                    	FS_20_RTF_ID," \\sbasedon222\\snext0{\\*\\keycode \\shift\\ctrl n} ", "Normal");		
 		createNewStyle(HEADING_1_STYLE_TAG,						S_1_RTF_ID, HEADING_1_STYLE, "Heading 1");
 		createNewStyle(HEADING_2_STYLE_TAG,						S_2_RTF_ID, HEADING_2_STYLE, "Heading 2");
@@ -148,34 +145,7 @@ public class RtfStyleManager
 		return sortedStyles;
 	}
 	
-	private void resetColors()
-	{
-		availableColors = new Vector();
-		
-		availableColors.add(Color.black);
-		availableColors.add(Color.blue);
-		availableColors.add(Color.cyan);
-		availableColors.add(Color.magenta);
-		availableColors.add(Color.red);
-		availableColors.add(Color.yellow);
-		availableColors.add(Color.white);
-		availableColors.add(ChoiceQuestion.DARK_GREEN);
-		availableColors.add(ChoiceQuestion.LIGHT_GREEN);
-		availableColors.add(ChoiceQuestion.DARK_YELLOW);
-	}
-	
-	public Vector<Color> getAvailableColors()
-	{
-		return availableColors;
-	}
-	
-	public int getColorIndex(Color color)
-	{	
-		return getAvailableColors().indexOf(color);
-	}	
-			
 	private Vector<RtfStyle> sortedStyles;
-	private Vector<Color> availableColors;
 	
 	public static final String MIRADI_STYLE_PREFIX = "Miradi: ";
 	public static final String COLUMN_HEADER_STYLE_TAG = "ColumnHeaderStyle";

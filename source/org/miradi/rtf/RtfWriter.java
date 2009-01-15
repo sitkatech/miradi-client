@@ -29,10 +29,10 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.martus.util.UnicodeWriter;
-import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.ColorManager;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class RtfWriter
@@ -212,12 +212,9 @@ public class RtfWriter
 			return;
 			
 		Color backgroundColor = choiceItem.getColor();
-		int rawColorIndex = getRtfStyleManager().getColorIndex(backgroundColor);
+		int rawColorIndex = ColorManager.instance().getColorIndex(backgroundColor);
 		if (rawColorIndex < 0)
-		{
-			EAM.logError("No Available color found in rtf available colors");
 			return;
-		}
 		
 		final int CONVERT_TO_ONE_BASED_TO_MATCH_RTF_INDEX = 1;
 		int convertedToBaseOneColorIndex = + rawColorIndex + CONVERT_TO_ONE_BASED_TO_MATCH_RTF_INDEX;
@@ -370,7 +367,7 @@ public class RtfWriter
 	private void writeColorTable() throws Exception
 	{
 		newLine();
-		Vector<Color> colorKeys = getRtfStyleManager().getAvailableColors();
+		Vector<Color> colorKeys = ColorManager.instance().getAvailableColors();
 		
 		StringBuffer colorTableString = new StringBuffer();
 		colorTableString.append(START_BLOCK);
