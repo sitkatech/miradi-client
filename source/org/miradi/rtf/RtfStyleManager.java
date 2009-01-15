@@ -150,28 +150,28 @@ public class RtfStyleManager
 	
 	private void resetColors()
 	{
-		colorKeys = new Vector();
+		availableColors = new Vector();
 		
-		colorKeys.add(Color.black);
-		colorKeys.add(Color.blue);
-		colorKeys.add(Color.cyan);
-		colorKeys.add(Color.magenta);
-		colorKeys.add(Color.red);
-		colorKeys.add(Color.yellow);
-		colorKeys.add(Color.white);
-		colorKeys.add(ChoiceQuestion.DARK_GREEN);
-		colorKeys.add(ChoiceQuestion.LIGHT_GREEN);
-		colorKeys.add(ChoiceQuestion.DARK_YELLOW);
+		availableColors.add(Color.black);
+		availableColors.add(Color.blue);
+		availableColors.add(Color.cyan);
+		availableColors.add(Color.magenta);
+		availableColors.add(Color.red);
+		availableColors.add(Color.yellow);
+		availableColors.add(Color.white);
+		availableColors.add(ChoiceQuestion.DARK_GREEN);
+		availableColors.add(ChoiceQuestion.LIGHT_GREEN);
+		availableColors.add(ChoiceQuestion.DARK_YELLOW);
 	}
 	
 	public Vector<Color> getAvailableColors()
 	{
-		return colorKeys;
+		return availableColors;
 	}
 	
 			
 	private Vector<RtfStyle> sortedStyles;
-	private Vector<Color> colorKeys;
+	private Vector<Color> availableColors;
 	
 	public static final String MIRADI_STYLE_PREFIX = "Miradi: ";
 	public static final String COLUMN_HEADER_STYLE_TAG = "ColumnHeaderStyle";
