@@ -212,7 +212,7 @@ public class RtfWriter
 			return;
 			
 		Color backgroundColor = choiceItem.getColor();
-		int rawColorIndex = getColorIndex(backgroundColor);
+		int rawColorIndex = getRtfStyleManager().getColorIndex(backgroundColor);
 		if (rawColorIndex < 0)
 		{
 			EAM.logError("No Available color found in rtf available colors");
@@ -367,11 +367,6 @@ public class RtfWriter
 		writelnRaw("}");
 	}
 
-	private int getColorIndex(Color color)
-	{	
-		return getRtfStyleManager().getAvailableColors().indexOf(color);
-	}
-	
 	private void writeColorTable() throws Exception
 	{
 		newLine();
