@@ -207,11 +207,17 @@ public class RtfWriter
 
 	private void writeCellBackgroundColorCommand(ChoiceItem choiceItem) throws Exception
 	{
-		Color backgroundColor = DEFAULT_CELL_BACKGROUND_COLOR;
-		if (choiceItem.getColor() != null)
-			backgroundColor = choiceItem.getColor();
+		if (choiceItem.getColor() == null)
+			return;
+			
+		Color backgroundColor = choiceItem.getColor();
+		int rawColorIndex = getColorIndex(backgroundColor);
+		if (rawColorIndex < 0)
+			return;
 		
-		String backgroundColorAsString = colorToRtfFormat(backgroundColor);
+		final int CONVERT_TO_ONE_BASED_TO_MATCH_RTF_INDEX = 1;
+		int convertedToBaseOneColorIndex = + rawColorIndex + CONVERT_TO_ONE_BASED_TO_MATCH_RTF_INDEX;
+		String backgroundColorAsString = colorToRtfFormat(convertedToBaseOneColorIndex);
 		writeRaw(backgroundColorAsString);
 	}
 
@@ -228,9 +234,9 @@ public class RtfWriter
 		return CELL_BORDER + CELL_X_COMMAND + ((column  + 1) * ONE_INCH_IN_TWIPS );
 	}
 
-	private String colorToRtfFormat(Color backgroundColor)
+	private String colorToRtfFormat(int colorIndex)
 	{
-		return BACKGROUND_COLOR_COMMAND + getColorIndex(backgroundColor) + " ";
+		return BACKGROUND_COLOR_COMMAND + colorIndex + " ";
 	}
 
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
@@ -359,13 +365,7 @@ public class RtfWriter
 
 	private int getColorIndex(Color color)
 	{	
-		int colorIndex = getRtfStyleManager().getAvailableColors().indexOf(color);
-		if (colorIndex < 0)
-			return getRtfStyleManager().getAvailableColors().size();
-		
-		final int INCREMENT_COUNT_TO_MATCH_RTF_TABLE_INDEX = 1;
-		
-		return colorIndex + INCREMENT_COUNT_TO_MATCH_RTF_TABLE_INDEX;
+		return getRtfStyleManager().getAvailableColors().indexOf(color);
 	}
 	
 	private void writeColorTable() throws Exception
@@ -499,7 +499,6 @@ public class RtfWriter
 	public static final int EIGHTH_OF_AN_INCH = 180;
 	public static final int QUARTER_INCH = EIGHTH_OF_AN_INCH * 2;
 	
-	private static final Color DEFAULT_CELL_BACKGROUND_COLOR = Color.WHITE;
 	public static final String RED_COLOR_NAME = "red";
 	public static final String GREEN_COLOR_NAME = "green";
 	public static final String BLUE_COLOR_NAME = "blue";	
