@@ -174,21 +174,14 @@ public class Cause extends Factor
 	{
 		super.clear();
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
-		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new ThreatClassificationQuestion());
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
-		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 	}	
 	
-	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
-	//FIXME is this a problem that this field value matches exactly Strategy's PSEUDO_TAG_TAXONOMY_CODE_VALUE,
-	//I noticed it can be an issue in PlanningViewMainTableModel.getValueAt's cascading ifs comparing tags
-	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
-	
+	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";	
 	public static final String OBJECT_NAME = "Cause";
 	
 	private ChoiceData taxonomyCode; 
-	private PseudoQuestionData taxonomyCodeLabel;
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";
 	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "ContributingFactor";
