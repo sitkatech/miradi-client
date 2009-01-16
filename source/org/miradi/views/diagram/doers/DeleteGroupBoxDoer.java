@@ -56,7 +56,7 @@ public class DeleteGroupBoxDoer extends LocationDoer
 		try
 		{
 			LinkDeletor linkDeletor = new LinkDeletor(getProject());
-			FactorDeleteHelper deleteHelper = new FactorDeleteHelper(getDiagramView().getCurrentDiagramComponent());
+			FactorDeleteHelper deleteHelper = FactorDeleteHelper.createFactorDeleteHelper(getDiagramView().getCurrentDiagramComponent());
 			HashSet<FactorCell> groupBoxCells = getDiagramView().getCurrentDiagramComponent().getOnlySelectedGroupBoxCells();
 			for(FactorCell groupBoxCell : groupBoxCells)
 			{

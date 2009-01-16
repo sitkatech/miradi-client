@@ -76,7 +76,7 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 			DiagramCopyPaster paster = new DiagramCopyPaster(getDiagramPanel(), getDiagramModel(), getTransferableMiradiList());
 			paster.pasteFactors(getLocation());
 			
-			FactorDeleteHelper factorDeleteHelper = new FactorDeleteHelper(getDiagramPanel().getCurrentDiagramComponent());
+			FactorDeleteHelper factorDeleteHelper = FactorDeleteHelper.createFactorDeleteHelper(getDiagramPanel().getCurrentDiagramComponent());
 			factorDeleteHelper.deleteAnnotations(selectedFactorToPasteContentInto);
 			Vector<Command> commandsToClear = new Vector(selectedFactorToPasteContentInto.createCommandsToClearAsList());
 			getProject().executeCommandsWithoutTransaction(commandsToClear);
