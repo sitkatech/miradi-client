@@ -504,10 +504,10 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				return;
 		
 			setCurrentDiagramFactor(getDiagram(), diagramFactorToSelect);
-			selectNewlyChoiceDiagramFactor(diagramFactorToSelect);
+			selectNewlyChosenDiagramFactor(diagramFactorToSelect);
 		}
 
-		private void selectNewlyChoiceDiagramFactor(DiagramFactor diagramFactorToSelect)
+		private void selectNewlyChosenDiagramFactor(DiagramFactor diagramFactorToSelect)
 		{
 			try
 			{
