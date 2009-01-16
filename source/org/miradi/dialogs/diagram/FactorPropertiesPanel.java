@@ -356,7 +356,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		grid = new FactorInputPanel(getProject(), factorORef);
 		
 		grid.addLabel(createFactorTypeLabel(factor));
-		grid.addFieldComponent(new CurrentFactorChangerComboBox(new CurrentDiagramFactorsQuestion(getDiagramObject())));
+		CurrentDiagramFactorsQuestion currentDiagramFactorsQuestion = new CurrentDiagramFactorsQuestion(getDiagramObject());
+		grid.addFieldComponent(new CurrentFactorChangerComboBox(currentDiagramFactorsQuestion));
 		
 		if (factor.isTarget())
 		{
