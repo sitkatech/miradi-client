@@ -321,6 +321,14 @@ abstract public class DiagramObject extends BaseObject
 		return list;
 	}
 	
+	public static ORefList getDiagramRefsContainingFactor(Project projectToUse, int parentDiagramType, ORef factorRef)
+	{
+		Vector<Integer> diagramTypesToFilterBy = new Vector();
+		diagramTypesToFilterBy.add(parentDiagramType);
+		
+		return findOwnersOfObject(projectToUse, diagramTypesToFilterBy, factorRef, DiagramFactor.getObjectType());
+	}
+		
 	//TODO not sure this the right place for this method
 	public static ORefList getDiagramRefsContainingFactor(Project projectToUse, ORef factorRef)
 	{
@@ -337,8 +345,23 @@ abstract public class DiagramObject extends BaseObject
 
 		return findOwnersOfObject(projectToUse, factorLinkRef, DiagramLink.getObjectType());
 	}
-
+	
+	private static Vector<Integer> createFilterWithBothDiagramTypes()
+	{
+		Vector<Integer> diagramTypesToFilterBy = new Vector();
+		diagramTypesToFilterBy.add(ConceptualModelDiagram.getObjectType());
+		diagramTypesToFilterBy.add(ResultsChainDiagram.getObjectType());
+		
+		return diagramTypesToFilterBy;
+	}
+	
 	private static ORefList findOwnersOfObject(Project projectToUse, ORef ref, int objectType)
+	{
+		Vector<Integer> filterWithBothDiagramTypes = createFilterWithBothDiagramTypes();
+		return findOwnersOfObject(projectToUse, filterWithBothDiagramTypes, ref, objectType);
+	}
+	
+	private static ORefList findOwnersOfObject(Project projectToUse, Vector<Integer> diagramTypesToFilterBy, ORef ref, int objectType)
 	{
 		ORefList referrers = new ORefList();
 		BaseObject underlyingFactorOrLink = projectToUse.findObject(ref);
@@ -346,7 +369,9 @@ abstract public class DiagramObject extends BaseObject
 		for(int i = 0; i < referrerRefs.size(); ++i)
 		{
 			BaseObject object = projectToUse.findObject(referrerRefs.get(i));
-			referrers.add(object.getOwnerRef());
+			ORef ownerRef = object.getOwnerRef();
+			if (diagramTypesToFilterBy.contains(ownerRef.getObjectType()))
+				referrers.add(ownerRef);
 		}
 		
 		return referrers;

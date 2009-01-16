@@ -404,7 +404,10 @@ abstract public class Factor extends BaseObject
 				return getFactorRelatedTargets();
 			
 			if(fieldTag.equals(PSEUDO_TAG_DIAGRAM_REFS))
-				return DiagramObject.getDiagramRefsContainingFactor(getProject(), getRef()).toString();
+				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ConceptualModelDiagram.getObjectType(), getRef()).toString();
+			
+			if(fieldTag.equals(PSEUDO_TAG_RESULTS_CHAIN_REFS))
+				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ResultsChainDiagram.getObjectType(), getRef()).toString();
 			
 			if(fieldTag.equals(PSEUDO_TAG_REFERRING_TAG_REFS))
 				return getReferringTags();
@@ -497,6 +500,7 @@ abstract public class Factor extends BaseObject
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		pseudoDiagramRefs = new PseudoORefListData(PSEUDO_TAG_DIAGRAM_REFS);
+		pseudoResultsChainRefs = new PseudoORefListData(PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);
 		
 		addField(TAG_COMMENT, comment);
@@ -511,6 +515,7 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIAGRAM_REFS, pseudoDiagramRefs);
+		addField(PSEUDO_TAG_RESULTS_CHAIN_REFS, pseudoResultsChainRefs);
 		addField(PSEUDO_TAG_REFERRING_TAG_REFS, pseudoTagReferringTagRefs);
 	}
 
@@ -537,6 +542,7 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_DIAGRAM_REFS = "PseudoTagDiagramRefs";
+	public static final String PSEUDO_TAG_RESULTS_CHAIN_REFS = "PseudoTagResultsChainDiagramRefs";
 	public static final String PSEUDO_TAG_REFERRING_TAG_REFS = "PseudoTagReferringTagRefs";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	
@@ -555,5 +561,6 @@ abstract public class Factor extends BaseObject
 	PseudoStringData multiLineDeirectThreats;
 	PseudoStringData multiLineTargets;
 	private PseudoORefListData pseudoDiagramRefs;
+	private PseudoORefListData pseudoResultsChainRefs;
 	private PseudoORefListData pseudoTagReferringTagRefs;
 }
