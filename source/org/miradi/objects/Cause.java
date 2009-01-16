@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -174,14 +175,19 @@ public class Cause extends Factor
 	{
 		super.clear();
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
+		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 	}	
 	
-	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";	
+	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
+	
 	public static final String OBJECT_NAME = "Cause";
 	
-	private ChoiceData taxonomyCode; 
+	private ChoiceData taxonomyCode;
+	private PseudoQuestionData taxonomyCodeLabel;
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";
 	public static final String OBJECT_NAME_CONTRIBUTING_FACTOR = "ContributingFactor";

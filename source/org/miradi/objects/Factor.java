@@ -46,7 +46,6 @@ import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectChainObject;
-import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Factor extends BaseObject
@@ -499,7 +498,6 @@ abstract public class Factor extends BaseObject
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
 		pseudoDiagramRefs = new PseudoORefListData(PSEUDO_TAG_DIAGRAM_REFS);
 		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);
-		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
 		
 		addField(TAG_COMMENT, comment);
 		addField(TAG_TEXT, text);
@@ -514,7 +512,6 @@ abstract public class Factor extends BaseObject
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
 		addField(PSEUDO_TAG_DIAGRAM_REFS, pseudoDiagramRefs);
 		addField(PSEUDO_TAG_REFERRING_TAG_REFS, pseudoTagReferringTagRefs);
-		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 	}
 
 	public static final FactorType TYPE_ACTIVITY = new FactorTypeActivity();
@@ -541,7 +538,6 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_DIAGRAM_REFS = "PseudoTagDiagramRefs";
 	public static final String PSEUDO_TAG_REFERRING_TAG_REFS = "PseudoTagReferringTagRefs";
-	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	
 	private FactorType type;
 	private StringData comment;
@@ -559,5 +555,4 @@ abstract public class Factor extends BaseObject
 	PseudoStringData multiLineTargets;
 	private PseudoORefListData pseudoDiagramRefs;
 	private PseudoORefListData pseudoTagReferringTagRefs;
-	private PseudoQuestionData taxonomyCodeLabel;
 }
