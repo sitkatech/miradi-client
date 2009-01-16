@@ -236,10 +236,10 @@ abstract public class DiagramObject extends BaseObject
 	
 	public Factor[] getAllWrappedFactors()
 	{
-		return getFilteredWrappedFactors(new Vector());
+		return getFactorsExcludingTypes(new Vector());
 	}
 	
-	public Factor[] getFilteredWrappedFactors(Vector<Integer> typesToFilterBy)
+	public Factor[] getFactorsExcludingTypes(Vector<Integer> typesToFilterBy)
 	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
 		Vector<Factor> factors = new Vector();

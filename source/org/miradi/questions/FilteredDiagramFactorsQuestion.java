@@ -31,7 +31,7 @@ public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 {
 	public FilteredDiagramFactorsQuestion(DiagramObject diagramObject)
 	{
-		super(diagramObject.getFilteredWrappedFactors(getTypesWithSpecialProperties()));
+		super(diagramObject.getFactorsExcludingTypes(getTypesWithSpecialProperties()));
 	}
 	
 	private static Vector<Integer> getTypesWithSpecialProperties()
