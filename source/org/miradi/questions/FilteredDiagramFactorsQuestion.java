@@ -23,6 +23,8 @@ import java.util.Vector;
 
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.Stress;
+import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 
 public class FilteredDiagramFactorsQuestion extends ObjectQuestion
@@ -37,6 +39,8 @@ public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 		Vector<Integer> typesToFilterBy = new Vector();
 		typesToFilterBy.add(TextBox.getObjectType());
 		typesToFilterBy.add(GroupBox.getObjectType());
+		typesToFilterBy.add(Stress.getObjectType());
+		typesToFilterBy.add(Task.getObjectType());
 		
 		return typesToFilterBy;
 	}
