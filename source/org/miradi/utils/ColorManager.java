@@ -26,7 +26,7 @@ import org.miradi.main.EAM;
 
 public class ColorManager
 {
-	public ColorManager()
+	private ColorManager()
 	{
 		clear();
 	}
