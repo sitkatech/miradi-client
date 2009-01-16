@@ -183,9 +183,11 @@ public class Target extends Factor
 		CodeList habitatCodes = habitatAssociation.getCodeList();
 		for(int index = 0; index < habitatCodes.size(); ++index)
 		{
+			if (index > 0)
+				appendedChoiceValues.append(";");
+			
 			ChoiceItem choiceItem = question.findChoiceByCode(habitatCodes.get(index));
 			appendedChoiceValues.append(choiceItem);
-			appendedChoiceValues.append(";");
 		}
 		
 		return appendedChoiceValues.toString();
