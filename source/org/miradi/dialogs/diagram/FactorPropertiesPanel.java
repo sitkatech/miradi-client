@@ -78,7 +78,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.CurrentDiagramFactorsQuestion;
+import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.DirectThreatQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -362,7 +362,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		grid = new FactorInputPanel(getProject(), factorORef);
 		
 		grid.addLabel(createFactorTypeLabel(factor));
-		CurrentDiagramFactorsQuestion currentDiagramFactorsQuestion = new CurrentDiagramFactorsQuestion(getDiagramObject());
+		FilteredDiagramFactorsQuestion currentDiagramFactorsQuestion = new FilteredDiagramFactorsQuestion(getDiagramObject());
 		currentFactorChangerComboBox = new CurrentFactorChangerComboBox(currentDiagramFactorsQuestion);
 		grid.addFieldComponent(currentFactorChangerComboBox);
 		
@@ -496,7 +496,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 		public void rebuild()
 		{
-			CurrentDiagramFactorsQuestion currentDiagramFactorsQuestion = new CurrentDiagramFactorsQuestion(getDiagramObject());
+			FilteredDiagramFactorsQuestion currentDiagramFactorsQuestion = new FilteredDiagramFactorsQuestion(getDiagramObject());
 			reloadComboBox(currentDiagramFactorsQuestion);
 			setSelectedItemToMatchCurrentFactor(currentDiagramFactorsQuestion);
 		}
