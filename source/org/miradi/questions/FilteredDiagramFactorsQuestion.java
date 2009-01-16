@@ -31,10 +31,10 @@ public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 {
 	public FilteredDiagramFactorsQuestion(DiagramObject diagramObject)
 	{
-		super(diagramObject.getFilteredWrappedFactors(getNonPropertiesHavingTypesFilter()));
+		super(diagramObject.getFilteredWrappedFactors(getTypesWithSpecialProperties()));
 	}
 	
-	private static Vector<Integer> getNonPropertiesHavingTypesFilter()
+	private static Vector<Integer> getTypesWithSpecialProperties()
 	{
 		Vector<Integer> typesToExclude = new Vector();
 		typesToExclude.add(TextBox.getObjectType());
