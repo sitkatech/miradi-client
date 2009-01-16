@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.awt.Rectangle;
 import java.util.HashSet;
+import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramContentsId;
@@ -235,15 +236,24 @@ abstract public class DiagramObject extends BaseObject
 	
 	public Factor[] getAllWrappedFactors()
 	{
+		return getFilteredWrappedFactors(new Vector());
+	}
+	
+	public Factor[] getFilteredWrappedFactors(Vector<Integer> typesToFilterBy)
+	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
-		Factor[] factors = new Factor[diagramFactorRefs.size()];
+		Vector<Factor> factors = new Vector();
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));
-			factors[i] = Factor.findFactor(getProject(), diagramFactor.getWrappedORef());
+			ORef wrappedRef = diagramFactor.getWrappedORef();
+			if (typesToFilterBy.contains(wrappedRef.getObjectType()))
+				continue;
+			
+			factors.add(Factor.findFactor(getProject(), wrappedRef));
 		}
 		
-		return factors;
+		return factors.toArray(new Factor[0]); 
 	}
 	
 	public Rectangle getBoundsOfFactorsAndBendPoints()

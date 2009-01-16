@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -76,6 +78,26 @@ public class TestDiagramObject extends ObjectTestCase
 		target.setData(Target.TAG_STRESS_REFS, stressRefs.toString());
 		ORefList foundTargetReferrerRefs2 = diagramObject.findReferrersOnSameDiagram(stressRef, Target.getObjectType());
 		assertEquals("has no referrers?", 1, foundTargetReferrerRefs2.size());
+	}
+	
+	public void testGetFilteredWrappedFactors() throws Exception
+	{
+		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		assertEquals("diagram was not empty", 0, diagramObject.getAllWrappedFactors().length);
+		getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		getProject().createAndAddFactorToDiagram(Target.getObjectType());
+		
+		Factor[] allWrappedFactors = diagramObject.getAllWrappedFactors();
+		assertEquals("wrong factor count?", 2, allWrappedFactors.length);
+		
+		Vector<Integer> typesToFilterBy = new Vector();
+		typesToFilterBy.add(Target.getObjectType());
+		
+		Factor[] filteredFactors = diagramObject.getFilteredWrappedFactors(typesToFilterBy);
+		assertEquals("wrong factor count?", 1, filteredFactors.length);
+		
+		Factor factor = filteredFactors[0];
+		assertTrue("is not cause?", Cause.isFactor(factor));
 	}
 	
 	ProjectForTesting project;
