@@ -29,6 +29,7 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -54,7 +55,7 @@ public class ColumnManager
 		masterColumnList.add(Indicator.TAG_PRIORITY);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
-		masterColumnList.add(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
+		masterColumnList.add(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
 		
 		masterColumnList.add(BaseObject.PSEUDO_TAG_WHO_TOTAL);
 		masterColumnList.add(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
@@ -163,7 +164,7 @@ public class ColumnManager
 	{
 		String[] list = {
 				Target.TAG_TEXT,
-				Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
+				Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
 				};
 		return new CodeList(list);		
 	}

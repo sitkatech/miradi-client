@@ -31,6 +31,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Desire;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -229,7 +230,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return Target.TAG_TEXT;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
-			if (columnTag.equals(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE))
+			if (columnTag.equals(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE))
 				return Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE;
 		}
 
