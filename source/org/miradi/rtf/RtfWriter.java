@@ -217,7 +217,7 @@ public class RtfWriter
 			return;
 		
 		final int CONVERT_TO_ONE_BASED_TO_MATCH_RTF_INDEX = 1;
-		int convertedToBaseOneColorIndex = + rawColorIndex + CONVERT_TO_ONE_BASED_TO_MATCH_RTF_INDEX;
+		int convertedToBaseOneColorIndex = rawColorIndex + CONVERT_TO_ONE_BASED_TO_MATCH_RTF_INDEX;
 		String backgroundColorAsString = colorToRtfFormat(convertedToBaseOneColorIndex);
 		writeRaw(backgroundColorAsString);
 	}
