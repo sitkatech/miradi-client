@@ -25,9 +25,9 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.TextBox;
 
-public class CurrentDiagramFactorsQuestion extends ObjectQuestion
+public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 {
-	public CurrentDiagramFactorsQuestion(DiagramObject diagramObject)
+	public FilteredDiagramFactorsQuestion(DiagramObject diagramObject)
 	{
 		super(diagramObject.getFilteredWrappedFactors(getNonPropertiesHavingTypesFilter()));
 	}
