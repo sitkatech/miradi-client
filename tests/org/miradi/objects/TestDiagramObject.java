@@ -93,7 +93,7 @@ public class TestDiagramObject extends ObjectTestCase
 		Vector<Integer> typesToFilterBy = new Vector();
 		typesToFilterBy.add(Target.getObjectType());
 		
-		Factor[] filteredFactors = diagramObject.getFilteredWrappedFactors(typesToFilterBy);
+		Factor[] filteredFactors = diagramObject.getFactorsExcludingTypes(typesToFilterBy);
 		assertEquals("wrong factor count?", 1, filteredFactors.length);
 		
 		Factor factor = filteredFactors[0];
