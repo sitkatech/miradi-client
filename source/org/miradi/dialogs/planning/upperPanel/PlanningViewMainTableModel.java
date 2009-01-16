@@ -229,6 +229,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return Target.TAG_TEXT;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
+			if (columnTag.equals(Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE))
+				return Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE;
 		}
 
 		if(Goal.is(nodeType))

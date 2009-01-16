@@ -163,6 +163,7 @@ public class ColumnManager
 	{
 		String[] list = {
 				Target.TAG_TEXT,
+				Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
 				};
 		return new CodeList(list);		
 	}
