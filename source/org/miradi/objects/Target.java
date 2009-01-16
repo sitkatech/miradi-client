@@ -169,7 +169,26 @@ public class Target extends Factor
 	{
 		if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
 			return getTargetViability();
+		
+		if(fieldTag.equals(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE))
+			return getHabitatAssociationValue();
+		
 		return super.getPseudoData(fieldTag);
+	}
+
+	private String getHabitatAssociationValue()
+	{
+		StringBuffer appendedChoiceValues = new StringBuffer();
+		ChoiceQuestion question = getHabitatAssociationQuestion();
+		CodeList habitatCodes = habitatAssociation.getCodeList();
+		for(int index = 0; index < habitatCodes.size(); ++index)
+		{
+			ChoiceItem choiceItem = question.findChoiceByCode(habitatCodes.get(index));
+			appendedChoiceValues.append(choiceItem);
+			appendedChoiceValues.append(";");
+		}
+		
+		return appendedChoiceValues.toString();
 	}
 
 	public FactorLinkSet getThreatTargetFactorLinks()
@@ -362,12 +381,13 @@ public class Target extends Factor
 		stressRefs = new ORefListData(TAG_STRESS_REFS);
 		speciesLatinName = new StringData(TAG_SPECIES_LATIN_NAME);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
-		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getQuestion(HabitatAssociationQuestion.class));
+		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
 		
 		
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
 		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, new ViabilityModeQuestion());
+		habitatAssociationLabel = new PseudoQuestionData(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, getHabitatAssociationQuestion());
 		
 		addField(TAG_TARGET_STATUS, targetStatus);
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
@@ -380,6 +400,12 @@ public class Target extends Factor
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
 		addField(PSEUDO_TAG_VIABILITY_MODE_VALUE, viabiltyModeLabel);
+		addField(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, habitatAssociationLabel);
+	}
+
+	private ChoiceQuestion getHabitatAssociationQuestion()
+	{
+		return getQuestion(HabitatAssociationQuestion.class);
 	}
 	
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
@@ -395,6 +421,7 @@ public class Target extends Factor
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
+	public static final String PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE = "HabitatAssociationValue";
 	
 	private ChoiceData targetStatus;
 	private ChoiceData viabiltyMode;
@@ -406,5 +433,6 @@ public class Target extends Factor
 	
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
-	PseudoQuestionData viabiltyModeLabel;
+	private PseudoQuestionData viabiltyModeLabel;
+	private PseudoQuestionData habitatAssociationLabel;
 }
