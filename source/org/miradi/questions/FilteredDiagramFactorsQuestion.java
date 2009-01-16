@@ -36,12 +36,12 @@ public class FilteredDiagramFactorsQuestion extends ObjectQuestion
 	
 	private static Vector<Integer> getNonPropertiesHavingTypesFilter()
 	{
-		Vector<Integer> typesToFilterBy = new Vector();
-		typesToFilterBy.add(TextBox.getObjectType());
-		typesToFilterBy.add(GroupBox.getObjectType());
-		typesToFilterBy.add(Stress.getObjectType());
-		typesToFilterBy.add(Task.getObjectType());
+		Vector<Integer> typesToExclude = new Vector();
+		typesToExclude.add(TextBox.getObjectType());
+		typesToExclude.add(GroupBox.getObjectType());
+		typesToExclude.add(Stress.getObjectType());
+		typesToExclude.add(Task.getObjectType());
 		
-		return typesToFilterBy;
+		return typesToExclude;
 	}
 }
