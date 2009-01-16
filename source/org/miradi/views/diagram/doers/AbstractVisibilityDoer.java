@@ -95,14 +95,14 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 			if (diagramObject.getAllDiagramFactorRefs().contains(diagramFactorRef))
 			{
 				DiagramFactor diagramFactorToDelete = DiagramFactor.find(diagramObject.getProject(), diagramFactorRef);
-				commandsToHide.addAll(createCommandsToHideDiagramFactor(diagramObject, diagramFactorToDelete));
+				commandsToHide.addAll(createCommandsToHideDiagramFactorInNonCurrentDiagramContents(diagramObject, diagramFactorToDelete));
 			}
 		}
 		
 		return commandsToHide;
 	}
 
-	public static Vector<Command> createCommandsToHideDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
+	public static Vector<Command> createCommandsToHideDiagramFactorInNonCurrentDiagramContents(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		Vector<Command> commandsToHide = new Vector();
 		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelperForNonCurrentDiagramContents(diagramObject);

@@ -169,7 +169,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 			for (int diagramRefIndex = 0; diagramRefIndex < conceptualModelRefs.size(); ++diagramRefIndex)
 			{
 				ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(project, conceptualModelRefs.get(diagramRefIndex));
-				commandsToHide.addAll(HideStressBubbleDoer.createCommandsToHideDiagramFactor(conceptualModel, diagramFactor));
+				commandsToHide.addAll(HideStressBubbleDoer.createCommandsToHideDiagramFactorInNonCurrentDiagramContents(conceptualModel, diagramFactor));
 			}
 		}
 		
