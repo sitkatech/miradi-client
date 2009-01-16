@@ -29,6 +29,7 @@ import javax.swing.JTabbedPane;
 
 import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
@@ -504,14 +505,15 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				return;
 		
 			setCurrentDiagramFactor(getDiagram(), diagramFactorToSelect);
-			selectNewlyChosenDiagramFactor(diagramFactorToSelect);
+			selectNewlyChosenDiagramFactor(diagramFactorToSelect.getRef());
 		}
 
-		private void selectNewlyChosenDiagramFactor(DiagramFactor diagramFactorToSelect)
+		private void selectNewlyChosenDiagramFactor(ORef diagramFactorToSelectRef)
 		{
 			try
 			{
-				FactorCell factorCell = getDiagram().getDiagramModel().getFactorCellByRef(diagramFactorToSelect.getRef());
+				DiagramModel diagramModel = getDiagram().getDiagramModel();
+				FactorCell factorCell = diagramModel.getFactorCellByRef(diagramFactorToSelectRef);
 				getDiagram().clearSelection();
 				getDiagram().addSelectionCell(factorCell);
 			}
