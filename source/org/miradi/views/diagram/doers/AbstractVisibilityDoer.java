@@ -40,7 +40,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.FactorDeleteHelper;
-import org.miradi.project.FactorDeleteHelperForTesting;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractVisibilityDoer extends ObjectsDoer
@@ -106,7 +105,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	public static Vector<Command> createCommandsToHideDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		Vector<Command> commandsToHide = new Vector();
-		FactorDeleteHelper helper = new FactorDeleteHelperForTesting(diagramObject);
+		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelper(diagramObject);
 		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId()));
 		commandsToHide.addAll(helper.buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
 		

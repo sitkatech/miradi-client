@@ -54,13 +54,19 @@ public class FactorDeleteHelper
 		return new FactorDeleteHelper(diagramToUse);
 	}
 	
+	public static FactorDeleteHelper createFactorDeleteHelper(DiagramObject diagramObjectToUse)
+	{
+		return new FactorDeleteHelper(diagramObjectToUse);
+	}
+		
 	private FactorDeleteHelper(DiagramComponent diagramToUse)
 	{
-		this(diagramToUse.getDiagramModel().getDiagramObject());
+		this(diagramToUse.getDiagramObject());
+		
 		selectionModel = diagramToUse.getSelectionModel();
 	}
 
-	protected FactorDeleteHelper(DiagramObject diagramObjectToUse)
+	private FactorDeleteHelper(DiagramObject diagramObjectToUse)
 	{
 		diagramObject = diagramObjectToUse;
 	}
