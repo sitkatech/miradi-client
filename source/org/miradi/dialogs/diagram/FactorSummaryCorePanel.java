@@ -96,7 +96,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, new HabitatAssociationQuestion(), 1));
 		}
 		
-		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_DIAGRAM_REFS));
+		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
 
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(actions.getObjectsAction(ActionManageFactorTags.class), getPicker());
