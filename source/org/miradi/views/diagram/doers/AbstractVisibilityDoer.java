@@ -105,7 +105,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	public static Vector<Command> createCommandsToHideDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		Vector<Command> commandsToHide = new Vector();
-		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelper(diagramObject);
+		FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelperForNonCurrentDiagramContents(diagramObject);
 		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(diagramObject, diagramFactorToDelete.getDiagramFactorId()));
 		commandsToHide.addAll(helper.buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
 		

@@ -54,7 +54,7 @@ public class FactorDeleteHelper
 		return new FactorDeleteHelper(diagramToUse);
 	}
 	
-	public static FactorDeleteHelper createFactorDeleteHelper(DiagramObject diagramObjectToUse)
+	public static FactorDeleteHelper createFactorDeleteHelperForNonCurrentDiagramContents(DiagramObject diagramObjectToUse)
 	{
 		return new FactorDeleteHelper(diagramObjectToUse);
 	}
