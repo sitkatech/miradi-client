@@ -22,6 +22,7 @@ package org.miradi.dialogs.fieldComponents;
 import java.awt.Color;
 import java.awt.Component;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.Icon;
 import javax.swing.JList;
@@ -41,6 +42,14 @@ public class ChoiceItemComboBox extends PanelComboBox
 	{
 		super(items);
 		setRenderer(new ChoiceItemRenderer());
+	}
+	
+	public void reloadComboBox(ChoiceQuestion question)
+	{
+		removeAllItems();
+		
+		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(question.getChoices());
+		setModel(comboBoxModel);
 	}
 
 	static class ChoiceItemRenderer extends DefaultListCellRenderer

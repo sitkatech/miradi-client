@@ -349,6 +349,11 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		return getCurrentDiagramFactor().getWrappedId();
 	}
+	
+	private void rebuildFactorChangerComboBox()
+	{
+		currentFactorChangerComboBox.rebuild();
+	}
 
 	private Component createLabelBar(DiagramFactor diagramFactor)
 	{
@@ -358,7 +363,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		grid.addLabel(createFactorTypeLabel(factor));
 		CurrentDiagramFactorsQuestion currentDiagramFactorsQuestion = new CurrentDiagramFactorsQuestion(getDiagramObject());
-		grid.addFieldComponent(new CurrentFactorChangerComboBox(currentDiagramFactorsQuestion));
+		currentFactorChangerComboBox = new CurrentFactorChangerComboBox(currentDiagramFactorsQuestion);
+		grid.addFieldComponent(currentFactorChangerComboBox);
 		
 		if (factor.isTarget())
 		{
@@ -475,7 +481,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		}
 		
 		if (event.isSetDataCommandWithThisTag(Factor.TAG_LABEL)  || event.isSetDataCommandWithThisTag(Factor.TAG_SHORT_LABEL))
-			rebuildPanel();
+			rebuildFactorChangerComboBox();
 	}
 	
 	class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
@@ -483,8 +489,20 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		public CurrentFactorChangerComboBox(ChoiceQuestion question)
 		{
 			super(question);
-			
+
 			addItemListener(this);
+			setSelectedItemToMatchCurrentFactor(question);
+		}
+
+		public void rebuild()
+		{
+			CurrentDiagramFactorsQuestion currentDiagramFactorsQuestion = new CurrentDiagramFactorsQuestion(getDiagramObject());
+			reloadComboBox(currentDiagramFactorsQuestion);
+			setSelectedItemToMatchCurrentFactor(currentDiagramFactorsQuestion);
+		}
+		
+		private void setSelectedItemToMatchCurrentFactor(ChoiceQuestion question)
+		{
 			ORef wrappedRef = getCurrentDiagramFactor().getWrappedORef();
 			ChoiceItem choiceItemToSelect = question.findChoiceByCode(wrappedRef.toString());
 			setSelectedItem(choiceItemToSelect);
@@ -547,4 +565,5 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private DiagramComponent diagram;
 	private DiagramFactor currentDiagramFactor;
 	private FactorInputPanel grid;
+	private CurrentFactorChangerComboBox currentFactorChangerComboBox;
 }
