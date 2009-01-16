@@ -19,12 +19,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import java.util.Vector;
+
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.GroupBox;
+import org.miradi.objects.TextBox;
 
 public class CurrentDiagramFactorsQuestion extends ObjectQuestion
 {
 	public CurrentDiagramFactorsQuestion(DiagramObject diagramObject)
 	{
-		super(diagramObject.getAllWrappedFactors());
+		super(diagramObject.getFilteredWrappedFactors(getNonPropertiesHavingTypesFilter()));
+	}
+	
+	private static Vector<Integer> getNonPropertiesHavingTypesFilter()
+	{
+		Vector<Integer> typesToFilterBy = new Vector();
+		typesToFilterBy.add(TextBox.getObjectType());
+		typesToFilterBy.add(GroupBox.getObjectType());
+		
+		return typesToFilterBy;
 	}
 }
