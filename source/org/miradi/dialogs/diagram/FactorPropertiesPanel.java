@@ -499,7 +499,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			ORef selectedFactorRef = ORef.createFromString(selectedChoiceItem.getCode());
 			ORef currentDiagramFactorRef = getCurrentDiagramFactor().getRef();
 			
-			DiagramFactor diagramFactorToSelect = getDiagram().getDiagramObject().getDiagramFactor(selectedFactorRef);
+			DiagramFactor diagramFactorToSelect = getDiagramObject().getDiagramFactor(selectedFactorRef);
 			if (currentDiagramFactorRef.equals(diagramFactorToSelect.getRef()))
 				return;
 		
