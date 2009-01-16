@@ -49,7 +49,12 @@ import org.miradi.views.umbrella.DeleteActivity;
 
 public class FactorDeleteHelper
 {
-	public FactorDeleteHelper(DiagramComponent diagramToUse)
+	public static FactorDeleteHelper createFactorDeleteHelper(DiagramComponent diagramToUse)
+	{
+		return new FactorDeleteHelper(diagramToUse);
+	}
+	
+	private FactorDeleteHelper(DiagramComponent diagramToUse)
 	{
 		this(diagramToUse.getDiagramModel().getDiagramObject());
 		selectionModel = diagramToUse.getSelectionModel();
