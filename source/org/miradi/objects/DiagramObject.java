@@ -34,6 +34,7 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -323,10 +324,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public static ORefList getDiagramRefsContainingFactor(Project projectToUse, int parentDiagramType, ORef factorRef)
 	{
-		Vector<Integer> diagramTypesToFilterBy = new Vector();
-		diagramTypesToFilterBy.add(parentDiagramType);
-		
-		return findOwnersOfObject(projectToUse, diagramTypesToFilterBy, factorRef, DiagramFactor.getObjectType());
+		return findOwnersOfObject(projectToUse, parentDiagramType, factorRef, DiagramFactor.getObjectType());
 	}
 		
 	//TODO not sure this the right place for this method
@@ -346,22 +344,16 @@ abstract public class DiagramObject extends BaseObject
 		return findOwnersOfObject(projectToUse, factorLinkRef, DiagramLink.getObjectType());
 	}
 	
-	private static Vector<Integer> createFilterWithBothDiagramTypes()
-	{
-		Vector<Integer> diagramTypesToFilterBy = new Vector();
-		diagramTypesToFilterBy.add(ConceptualModelDiagram.getObjectType());
-		diagramTypesToFilterBy.add(ResultsChainDiagram.getObjectType());
-		
-		return diagramTypesToFilterBy;
-	}
-	
 	private static ORefList findOwnersOfObject(Project projectToUse, ORef ref, int objectType)
 	{
-		Vector<Integer> filterWithBothDiagramTypes = createFilterWithBothDiagramTypes();
-		return findOwnersOfObject(projectToUse, filterWithBothDiagramTypes, ref, objectType);
+		ORefSet diagrams = new ORefSet();
+		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ConceptualModelDiagram.getObjectType(), ref, objectType));
+		diagrams.addAllRefs(findOwnersOfObject(projectToUse, ResultsChainDiagram.getObjectType(), ref, objectType));
+		
+		return diagrams.toRefList();
 	}
 	
-	private static ORefList findOwnersOfObject(Project projectToUse, Vector<Integer> diagramTypesToFilterBy, ORef ref, int objectType)
+	private static ORefList findOwnersOfObject(Project projectToUse, int diagramTypeToFilterBy, ORef ref, int objectType)
 	{
 		ORefList referrers = new ORefList();
 		BaseObject underlyingFactorOrLink = projectToUse.findObject(ref);
@@ -370,7 +362,7 @@ abstract public class DiagramObject extends BaseObject
 		{
 			BaseObject object = projectToUse.findObject(referrerRefs.get(i));
 			ORef ownerRef = object.getOwnerRef();
-			if (diagramTypesToFilterBy.contains(ownerRef.getObjectType()))
+			if (diagramTypeToFilterBy == ownerRef.getObjectType())
 				referrers.add(ownerRef);
 		}
 		
