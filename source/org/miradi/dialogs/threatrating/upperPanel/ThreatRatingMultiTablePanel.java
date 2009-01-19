@@ -145,33 +145,33 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.VERTICAL;
 		constraints.anchor = GridBagConstraints.WEST;
-		addToPanelFixedWidth(mainPanel, threatTableScroller, constraints, 0, 0, 1, 1, 0, 100);
+		addToPanelFixedWidth(mainPanel, threatTableScroller, constraints, 0, 0, 0, 100);
 		
 		constraints.fill = GridBagConstraints.BOTH;
 		constraints.anchor = GridBagConstraints.CENTER;
-		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, constraints, 1, 0, 1, 1, 100, 100);
+		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, constraints, 1, 0, 100, 100);
 		
 		constraints.fill = GridBagConstraints.VERTICAL;
 		constraints.anchor = GridBagConstraints.WEST;
-		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0, 1, 1, 0, 100);
+		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0, 0, 100);
 
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTH;
-		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, 1, 1, 100, 0);
+		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, 100, 0);
 		
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTHWEST;
-		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, 1, 1, 0, 0);
+		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, 0, 0);
 		
 		add(mainPanel);
 	}
 
-	public static void addToPanelFixedWidth(JPanel p, Component c, GridBagConstraints gbc, int x, int y, int w, int h, int weightX, int weightY) 
+	public static void addToPanelFixedWidth(JPanel p, Component c, GridBagConstraints gbc, int x, int y, int weightX, int weightY) 
 	{
 		gbc.gridx = x;
 		gbc.gridy = y;
-		gbc.gridwidth = w;
-		gbc.gridheight = h;
+		gbc.gridwidth = 1;
+		gbc.gridheight = 1;
 		gbc.weightx = weightX;
 		gbc.weighty = weightY;
 		p.add(c,gbc);
