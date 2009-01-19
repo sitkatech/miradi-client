@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 
 public class MainThreatTableModelExporter extends AbstractTableExporter
@@ -111,7 +112,7 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 			return foundChoiceItem;
 		}
 		
-		return new EmptyChoiceItem();
+		return new TaglessChoiceItem(value.toString());
 	}
 
 	@Override
