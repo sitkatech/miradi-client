@@ -142,18 +142,18 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		
 		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
 
-		GridBagConstraints constraints = new GridBagConstraints();
-		addToPanelFixedWidth(mainPanel, threatTableScroller, constraints, 0, 0, GridBagConstraints.VERTICAL);
-		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, constraints, 1, 0, GridBagConstraints.BOTH);
-		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0, GridBagConstraints.VERTICAL);
-		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, GridBagConstraints.HORIZONTAL);
-		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, GridBagConstraints.NONE);
+		addToPanelFixedWidth(mainPanel, threatTableScroller, 0, 0, GridBagConstraints.VERTICAL);
+		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, 1, 0, GridBagConstraints.BOTH);
+		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, 2, 0, GridBagConstraints.VERTICAL);
+		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, 1, 1, GridBagConstraints.HORIZONTAL);
+		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, 2, 1, GridBagConstraints.NONE);
 		
 		add(mainPanel);
 	}
 
-	public static void addToPanelFixedWidth(JPanel p, Component c, GridBagConstraints gbc, int x, int y, int fill) 
+	public static void addToPanelFixedWidth(JPanel p, Component c, int x, int y, int fill) 
 	{
+		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = x;
 		gbc.gridy = y;
 		gbc.fill = fill;
