@@ -155,8 +155,11 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 				createGridBagConstraints(TOP, RIGHT, GridBagConstraints.VERTICAL));
 		mainPanel.add(targetSummaryRowTableScroller,
 				createGridBagConstraints(BOTTOM, MIDDLE, GridBagConstraints.HORIZONTAL));
+		
+		final GridBagConstraints lowerRightConstraints = createGridBagConstraints(BOTTOM, RIGHT, GridBagConstraints.NONE);
+		lowerRightConstraints.fill = GridBagConstraints.HORIZONTAL;
 		mainPanel.add(overallProjectSummaryCellTableScroller,
-				createGridBagConstraints(BOTTOM, RIGHT, GridBagConstraints.NONE));
+				lowerRightConstraints);
 		
 		add(mainPanel);
 	}
