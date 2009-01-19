@@ -38,7 +38,6 @@ import org.miradi.actions.ActionAboutCMP;
 import org.miradi.actions.ActionClose;
 import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionConfigureExport;
-import org.miradi.actions.ActionSaveProjectAs;
 import org.miradi.actions.ActionCreateActivityProgressReport;
 import org.miradi.actions.ActionCreateGoalProgressPercent;
 import org.miradi.actions.ActionCreateMethod;
@@ -88,6 +87,7 @@ import org.miradi.actions.ActionRedo;
 import org.miradi.actions.ActionReportsDemo;
 import org.miradi.actions.ActionSaveImageJPEG;
 import org.miradi.actions.ActionSaveImagePng;
+import org.miradi.actions.ActionSaveProjectAs;
 import org.miradi.actions.ActionShareMethod;
 import org.miradi.actions.ActionShowCurrentWizardFileName;
 import org.miradi.actions.ActionUndo;
@@ -201,7 +201,6 @@ import org.miradi.views.diagram.doers.EditObjectiveProgressPercentDoer;
 import org.miradi.views.diagram.doers.EditStrategyProgressReportDoer;
 import org.miradi.views.planning.doers.ShareMethodDoer;
 import org.miradi.views.umbrella.doers.CollapseAllNodesDoer;
-import org.miradi.views.umbrella.doers.SaveProjectAsDoer;
 import org.miradi.views.umbrella.doers.CreateGoalProgressPercentDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
 import org.miradi.views.umbrella.doers.DeleteGoalProgressPercentDoer;
@@ -217,9 +216,11 @@ import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportRtfDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
+import org.miradi.views.umbrella.doers.SaveProjectAsDoer;
 import org.miradi.views.umbrella.doers.ShowCurrentWizardFileNameDoer;
 import org.miradi.views.umbrella.doers.SwitchToReportViewDoer;
 import org.miradi.views.umbrella.doers.ViewLegacyTncStrategyRankingDoer;
+import org.miradi.wizard.SkeletonWizardStep;
 
 abstract public class UmbrellaView extends JPanel implements CommandExecutedListener
 {
@@ -234,6 +235,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	abstract public String cardName();
 	
+	public void updateViewBasedFromWizardStep(SkeletonWizardStep step)
+	{
+	}
 	
 	public void refresh() throws Exception
 	{

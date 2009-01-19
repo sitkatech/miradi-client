@@ -54,7 +54,7 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
-import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.legend.PlanningViewControlPanel;
@@ -135,7 +135,7 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 	
-	class MainPlanningPanel extends DisposablePanel implements MiradiTabContentsPanelInterface
+	class MainPlanningPanel extends DisposablePanelWithDescription implements MiradiTabContentsPanelInterface
 	{
 		public MainPlanningPanel(MiradiScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
 		{
@@ -162,7 +162,7 @@ public class PlanningView extends TabbedView
 			return planningManagementPanel.getIcon();
 		}
 
-		public DisposablePanel getTabContentsComponent()
+		public DisposablePanelWithDescription getTabContentsComponent()
 		{
 			return this;
 		}
@@ -205,6 +205,12 @@ public class PlanningView extends TabbedView
 		public void exportRtf(RtfWriter writer) throws Exception
 		{
 			planningManagementPanel.exportRtf(writer);
+		}
+		
+		@Override
+		public String getPanelDescription()
+		{
+			return planningManagementPanel.getPanelDescription();
 		}
 		
 		private PlanningTreeManagementPanel planningManagementPanel;

@@ -24,7 +24,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
-import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
 
@@ -32,7 +32,7 @@ public interface MiradiTabContentsPanelInterface
 {
 	public String getTabName();
 	public Icon getIcon();
-	public DisposablePanel getTabContentsComponent();
+	public DisposablePanelWithDescription getTabContentsComponent();
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
 	public boolean isExportableTableAvailable();

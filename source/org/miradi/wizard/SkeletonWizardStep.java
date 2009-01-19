@@ -41,12 +41,19 @@ import org.miradi.views.umbrella.UmbrellaView;
 
 public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEventHandler
 {
-	public SkeletonWizardStep(WizardPanel wizardToUse, String viewNameToUse)
+	public SkeletonWizardStep(WizardPanel wizardToUse, String viewNameToUse, String tabIdentifierToUse)
 	{
 		super(new BorderLayout());
 		wizard = wizardToUse;
 		viewName = viewNameToUse;
+		tabIdentifier = tabIdentifierToUse;
+		
 		controls = new Hashtable();
+	}
+	
+	public SkeletonWizardStep(WizardPanel wizardToUse, String viewNameToUse)
+	{
+		this(wizardToUse, viewNameToUse, null);
 	}
 	
 	abstract public void refresh() throws Exception;
@@ -81,6 +88,11 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	public String getViewName()
 	{
 		return viewName;
+	}
+	
+	public String getTabIdentifier()
+	{
+		return tabIdentifier;
 	}
 	
 	public String getSubHeading()
@@ -246,4 +258,5 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	private Hashtable controls;
 	private WizardPanel wizard;
 	private String viewName;
+	private String tabIdentifier;
 }

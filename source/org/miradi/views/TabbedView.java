@@ -55,6 +55,7 @@ import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.umbrella.UmbrellaView;
+import org.miradi.wizard.SkeletonWizardStep;
 
 abstract public class TabbedView extends UmbrellaView
 {
@@ -79,6 +80,19 @@ abstract public class TabbedView extends UmbrellaView
 	public JPopupMenu getTabPopupMenu()
 	{
 		return null;
+	}
+	
+	public void updateViewBasedFromWizardStep(SkeletonWizardStep step)
+	{
+		String tabIdentifier = step.getTabIdentifier();
+		for (int index = 0; index < getTabCount(); ++index)
+		{
+			String tabName = getTabTitle(index);
+			MiradiTabContentsPanelInterface tabContentsPanel = getTabPanel(tabName);
+			String thisTabIdentifier = tabContentsPanel.getTabContentsComponent().getPanelIdentifier();
+			if (thisTabIdentifier.equals(tabIdentifier))
+				setTab(index);
+		}
 	}
 	
 	public void becomeActive() throws Exception
