@@ -486,13 +486,13 @@ public class WizardManager
 		return (stepEntries.get(name)!=null);
 	}
 	
-	public SkeletonWizardStep findStepWithIdentifier(String identifier)
+	public SkeletonWizardStep findStepWithIdentifier(String tabIdentifierToUse)
 	{
 		Collection<SkeletonWizardStep> skeletonWizardSteps = stepEntries.values();
 		for(SkeletonWizardStep skeletonWizardStep : skeletonWizardSteps)
 		{
 			String tabIdentifier = skeletonWizardStep.getTabIdentifier();
-			if (tabIdentifier != null && tabIdentifier.equals(identifier))
+			if (tabIdentifier != null && tabIdentifier.equals(tabIdentifierToUse))
 				return skeletonWizardStep;
 		}
 		
