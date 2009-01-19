@@ -43,6 +43,8 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		super(mainWindowToUse);
 		
 		createTables();
+		createExporter();
+		
 		addTableToGridBag();
 		addTablesToSelectionController();
 		synchTableColumns();
@@ -88,13 +90,16 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(getMainWindow(), overallProjectSummaryCellTableModel);
 		overallProjectSummaryCellTable.resizeTable(1);
 
+	}
+
+	private void createExporter()
+	{
 		multiTableExporter = new ThreatRatingMultiTableAsOneExporter();
 		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(threatNameTableModel));
 		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(targetThreatLinkTableModel));
 		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(threatSummaryColumnTableModel));
 		multiTableExporter.setTargetSummaryRowTable(new MainThreatTableModelExporter(targetSummaryRowTableModel));
 		multiTableExporter.setOverallSummaryRowTable(new MainThreatTableModelExporter(overallProjectSummaryCellTableModel));
-		
 	}
 	
 	public AbstractTableExporter getTableForExporting()
