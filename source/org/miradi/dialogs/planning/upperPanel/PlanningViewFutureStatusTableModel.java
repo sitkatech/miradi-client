@@ -28,6 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 
 public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -48,11 +51,16 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	
 	public Object getValueAt(int row, int column)
 	{
+		return getChoiceItemAt(row, column);
+	}
+	
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
 		BaseObject objectForRow = getBaseObjectForRowColumn(row, column);
 		if (!Indicator.is(objectForRow))
-			return "";
+			return new EmptyChoiceItem();
 		
-		return objectForRow.getData(columnTags[column]);
+		return new TaglessChoiceItem(objectForRow.getData(columnTags[column]));
 	}
 	
 	public Color getCellBackgroundColor(int column)
@@ -61,5 +69,4 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	}
 
 	public final static String[] columnTags = {Indicator.TAG_FUTURE_STATUS_DATE, Indicator.TAG_FUTURE_STATUS_SUMMARY};
-
 }

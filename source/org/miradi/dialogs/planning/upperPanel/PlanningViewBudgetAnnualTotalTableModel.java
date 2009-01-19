@@ -29,6 +29,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateRange;
 
 public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
@@ -75,22 +78,27 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	
 	public Object getValueAt(int row, int column)
 	{
+		return getChoiceItemAt(row, column);
+	}
+	
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
 		BaseObject object = getBaseObjectForRowColumn(row, column);
 		if (object == null)
-			return "";
+			return new EmptyChoiceItem();
 		
 		try
 		{
 			int shares = getProportionShares(row);
 			if (isGrandTotalColumn(column))
-				return getGrandTotalCost(object, shares);
+				return new TaglessChoiceItem(getGrandTotalCost(object, shares));
 		
-			return getYearlyTotalCost(object, column, shares);
+			return new TaglessChoiceItem(getYearlyTotalCost(object, column, shares));
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.text("[ERROR]");
+			return new TaglessChoiceItem(EAM.text("[ERROR]"));
 		}
 	}
 
@@ -135,5 +143,4 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 	private Vector yearlyDateRanges;
 	
 	public static final String GRAND_TOTAL_COLUMN_NAME = EAM.text("Budget Total");
-
 }

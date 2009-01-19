@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperTableModelInterface;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
@@ -26,7 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements PlanningUpperTableModelInterface
+abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements PlanningUpperTableModelInterface, ChoiceItemTableModel
 {
 	public PlanningViewAbstractTreeTableSyncedTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{

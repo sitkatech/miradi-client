@@ -30,8 +30,11 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.utils.CodeList;
 
@@ -60,9 +63,14 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	
 	public Object getValueAt(int row, int column)
 	{
+		return getChoiceItemAt(row, column);
+	}
+
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
 		Measurement measurement = getMeasurementOrLatestIndicatorMeasurement(row, column);
 		if (measurement == null)
-			return "";
+			return new EmptyChoiceItem();
 		
 		String columnTag = getColumnTag(column);
 		String data = measurement.getData(columnTag);
@@ -71,7 +79,7 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		if(question != null)
 			return question.findChoiceByCode(data);
 		
-		return data;
+		return new TaglessChoiceItem(data);
 	}
 
 	private Measurement getMeasurementOrLatestIndicatorMeasurement(int row, int column)
@@ -145,5 +153,4 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		Measurement.TAG_TREND, 
 		Measurement.TAG_STATUS_CONFIDENCE
 		};
-
 }
