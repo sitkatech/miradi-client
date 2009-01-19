@@ -148,24 +148,24 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		final int BOTTOM = 1;
 		
 		mainPanel.add(threatTableScroller,
-				createGridBagConstraints(LEFT, TOP, GridBagConstraints.VERTICAL));
+				createGridBagConstraints(TOP, LEFT, GridBagConstraints.VERTICAL));
 		mainPanel.add(targetThreatLinkTableScroller,
-				createGridBagConstraints(MIDDLE, TOP, GridBagConstraints.BOTH));
+				createGridBagConstraints(TOP, MIDDLE, GridBagConstraints.BOTH));
 		mainPanel.add(threatSummaryColumnTableScroller,
-				createGridBagConstraints(RIGHT, TOP, GridBagConstraints.VERTICAL));
+				createGridBagConstraints(TOP, RIGHT, GridBagConstraints.VERTICAL));
 		mainPanel.add(targetSummaryRowTableScroller,
-				createGridBagConstraints(MIDDLE, BOTTOM, GridBagConstraints.HORIZONTAL));
+				createGridBagConstraints(BOTTOM, MIDDLE, GridBagConstraints.HORIZONTAL));
 		mainPanel.add(overallProjectSummaryCellTableScroller,
-				createGridBagConstraints(RIGHT, BOTTOM, GridBagConstraints.NONE));
+				createGridBagConstraints(BOTTOM, RIGHT, GridBagConstraints.NONE));
 		
 		add(mainPanel);
 	}
 
-	private static GridBagConstraints createGridBagConstraints(int x, int y, int fill)
+	private static GridBagConstraints createGridBagConstraints(int row, int column, int fill)
 	{
 		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridx = x;
-		gbc.gridy = y;
+		gbc.gridx = column;
+		gbc.gridy = row;
 		gbc.fill = fill;
 		
 		gbc.anchor = gbc.CENTER;
