@@ -331,7 +331,9 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			add(createLabelBar(currentDiagramFactor),	BorderLayout.BEFORE_FIRST_LINE);
 			add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
+			
 			getFactorPropertiesDialog().pack();
+			updateAllSplitterLocations();
 		}
 		catch(Exception e)
 		{
