@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard;
 
+import java.util.Collection;
 import java.util.Hashtable;
 
 import org.miradi.commands.CommandSetObjectData;
@@ -483,6 +484,19 @@ public class WizardManager
 	{
 		String name = stripJumpPrefix(stepMarker);
 		return (stepEntries.get(name)!=null);
+	}
+	
+	public SkeletonWizardStep findStepWithIdentifier(String identifier)
+	{
+		Collection<SkeletonWizardStep> skeletonWizardSteps = stepEntries.values();
+		for(SkeletonWizardStep skeletonWizardStep : skeletonWizardSteps)
+		{
+			String tabIdentifier = skeletonWizardStep.getTabIdentifier();
+			if (tabIdentifier != null && tabIdentifier.equals(identifier))
+				return skeletonWizardStep;
+		}
+		
+		return null;
 	}
 	
 	public SkeletonWizardStep findStep(String stepName)
