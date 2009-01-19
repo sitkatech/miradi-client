@@ -85,6 +85,9 @@ abstract public class TabbedView extends UmbrellaView
 	public void updateViewBasedFromWizardStep(SkeletonWizardStep step)
 	{
 		String tabIdentifier = step.getTabIdentifier();
+		if (tabIdentifier == null)
+			return;
+		
 		for (int index = 0; index < getTabCount(); ++index)
 		{
 			String tabName = getTabTitle(index);
