@@ -27,7 +27,7 @@ import javax.swing.JComponent;
 
 import org.martus.swing.HyperlinkHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
@@ -35,7 +35,7 @@ import org.miradi.utils.Translation;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.wizard.MiradiHtmlViewer;
 
-public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabContentsPanelInterface
+public class MemberOrgTabPanel extends DisposablePanelWithDescription implements MiradiTabContentsPanelInterface
 {
 	public MemberOrgTabPanel(MainWindow mainWindowToUse, String htmlResourceName, AbstractObjectDataInputPanel dataPanelToUse) throws Exception
 	{
@@ -57,7 +57,7 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 		dataPanel.dispose();
 	}
 	
-	public DisposablePanel getTabContentsComponent()
+	public DisposablePanelWithDescription getTabContentsComponent()
 	{
 		return this;
 	}
@@ -110,6 +110,12 @@ public class MemberOrgTabPanel extends DisposablePanel implements MiradiTabConte
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		dataPanel.exportRtf(writer);
+	}
+	
+	@Override
+	public String getPanelDescription()
+	{
+		return dataPanel.getPanelDescription();
 	}
 
 	private AbstractObjectDataInputPanel dataPanel;

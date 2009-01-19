@@ -31,7 +31,7 @@ import org.miradi.diagram.EAMGraphSelectionModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -40,13 +40,13 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.diagram.DiagramLegendPanel;
 import org.miradi.views.diagram.DiagramSplitPane;
 
-abstract public class DiagramPanel extends DisposablePanel implements MiradiTabContentsPanelInterface
+abstract public class DiagramPanel extends DisposablePanelWithDescription implements MiradiTabContentsPanelInterface
 {
 	public DiagramPanel(MainWindow mainWindowToUse) throws Exception
 	{
@@ -177,7 +177,7 @@ abstract public class DiagramPanel extends DisposablePanel implements MiradiTabC
 	}
 	
 	
-	public DisposablePanel getTabContentsComponent()
+	public DisposablePanelWithDescription getTabContentsComponent()
 	{
 		return this;
 	}
