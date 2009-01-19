@@ -487,7 +487,7 @@ public class WizardManager
 	
 	public SkeletonWizardStep findStep(String stepName)
 	{
-		SkeletonWizardStep step =(SkeletonWizardStep)stepEntries.get(stepName);
+		SkeletonWizardStep step = stepEntries.get(stepName);
 		if (step==null)
 			EAM.logVerbose("ENTRY NOT FOUND FOR STEP NAME=:" + stepName);
 		return step;
@@ -562,7 +562,7 @@ public class WizardManager
 	public static String CONTROL_BACK = "Back";
 
 	private MainWindow mainWindow;
-	private Hashtable stepEntries;
+	private Hashtable<String, SkeletonWizardStep> stepEntries;
 	
 	private String nonProjectCurrentStepName;
 }
