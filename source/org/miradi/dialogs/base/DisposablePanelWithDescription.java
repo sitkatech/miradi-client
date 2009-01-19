@@ -33,6 +33,11 @@ abstract public class DisposablePanelWithDescription extends DisposablePanel
 	{
 		super(layoutToUse);
 	}
+	
+	public String getPanelIdentifier()
+	{
+		return getClass().getSimpleName();
+	}
 
 	public abstract String getPanelDescription();
 }
