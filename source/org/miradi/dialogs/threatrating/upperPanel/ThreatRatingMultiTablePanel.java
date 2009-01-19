@@ -143,19 +143,10 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
 
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.anchor = GridBagConstraints.WEST;
 		addToPanelFixedWidth(mainPanel, threatTableScroller, constraints, 0, 0, GridBagConstraints.VERTICAL);
-		
-		constraints.anchor = GridBagConstraints.CENTER;
 		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, constraints, 1, 0, GridBagConstraints.BOTH);
-		
-		constraints.anchor = GridBagConstraints.WEST;
 		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0, GridBagConstraints.VERTICAL);
-
-		constraints.anchor = GridBagConstraints.NORTH;
 		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, GridBagConstraints.HORIZONTAL);
-		
-		constraints.anchor = GridBagConstraints.NORTHWEST;
 		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, GridBagConstraints.NONE);
 		
 		add(mainPanel);
@@ -167,6 +158,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		gbc.gridy = y;
 		gbc.fill = fill;
 		
+		gbc.anchor = gbc.CENTER;
 		gbc.gridwidth = 1;
 		gbc.gridheight = 1;
 		
