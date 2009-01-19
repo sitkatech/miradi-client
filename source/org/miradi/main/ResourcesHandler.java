@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -49,6 +50,19 @@ public class ResourcesHandler
 	{
 		if(!resourceFileName.startsWith("/"))
 			resourceFileName = RESOURCES_PATH + resourceFileName;
+		
+		try
+		{
+			File fileInMagicDirectory = new File(EAM.getHomeDirectory(), EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME + resourceFileName);
+			if(fileInMagicDirectory.exists())
+				return fileInMagicDirectory.toURL();
+
+			EAM.logVerbose("Magic file not found: " + fileInMagicDirectory.getAbsolutePath());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 
 		Class thisClass = ResourcesHandler.class;
 		URL url = thisClass.getResource(resourceFileName);
