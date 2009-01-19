@@ -221,11 +221,10 @@ abstract public class TabbedView extends UmbrellaView
 		private Class jumpActionClass;
 	}
 	
-		public MiradiTabContentsPanelInterface getTabPanel(String tabName)
+	public MiradiTabContentsPanelInterface getTabPanel(String tabName)
 	{
 		return tabPanels.get(tabName);
 	}
-	
 	
 	public void addTab(String name, Component contents)
 	{
