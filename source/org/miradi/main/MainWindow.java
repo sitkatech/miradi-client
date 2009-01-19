@@ -534,8 +534,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	private void setTabForStep(SkeletonWizardStep step)
 	{
-		if(step.getTabIdentifier() != null)
-			currentView.updateViewBasedFromWizardStep(step);
+		currentView.updateViewBasedFromWizardStep(step);
 	}
 
 	private void setViewForStep(SkeletonWizardStep step) throws Exception
