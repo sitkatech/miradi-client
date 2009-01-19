@@ -90,8 +90,7 @@ abstract public class TabbedView extends UmbrellaView
 		
 		for (int index = 0; index < getTabCount(); ++index)
 		{
-			String tabName = getTabTitle(index);
-			MiradiTabContentsPanelInterface tabContentsPanel = getTabPanel(tabName);
+			MiradiTabContentsPanelInterface tabContentsPanel = getTabPanel(index);
 			String thisTabIdentifier = tabContentsPanel.getTabContentsComponent().getPanelIdentifier();
 			if (thisTabIdentifier.equals(tabIdentifier))
 				setTab(index);
@@ -162,6 +161,12 @@ abstract public class TabbedView extends UmbrellaView
 		return getTabTitle(selectedTabIndex);
 	}
 
+	private MiradiTabContentsPanelInterface getTabPanel(int index)
+	{
+		String tabName = getTabTitle(index);
+		return getTabPanel(tabName);
+	}
+		
 	public String getTabTitle(int selectedTabIndex)
 	{
 		return tabs.getTitleAt(selectedTabIndex);
