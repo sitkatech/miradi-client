@@ -137,6 +137,11 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		addRowHeightControlledTable(threatSummaryColumnTable);
 		addRowSortControlledTable(threatSummaryColumnTable);
 		
+		JScrollPane targetSummaryRowTableScroller = new FixedHeightScrollPane(targetSummaryRowTable);
+		addToHorizontalController(targetSummaryRowTableScroller);
+		
+		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
+
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.VERTICAL;
 		constraints.anchor = GridBagConstraints.WEST;
@@ -150,16 +155,12 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		constraints.anchor = GridBagConstraints.WEST;
 		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0, 1, 1, 0, 100);
 
-		JScrollPane targetSummaryRowTableScroller = new FixedHeightScrollPane(targetSummaryRowTable);
-		addToHorizontalController(targetSummaryRowTableScroller);
-		
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTH;
 		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, 1, 1, 100, 0);
 		
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTHWEST;
-		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
 		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, 1, 1, 0, 0);
 		
 		add(mainPanel);
