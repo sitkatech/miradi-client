@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -142,16 +141,22 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		
 		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
 
+		final int LEFT = 0;
+		final int MIDDLE = 1;
+		final int RIGHT = 2;
+		final int TOP = 0;
+		final int BOTTOM = 1;
+		
 		mainPanel.add(threatTableScroller,
-				createGridBagConstraints(0, 0, GridBagConstraints.VERTICAL));
+				createGridBagConstraints(LEFT, TOP, GridBagConstraints.VERTICAL));
 		mainPanel.add(targetThreatLinkTableScroller,
-				createGridBagConstraints(1, 0, GridBagConstraints.BOTH));
+				createGridBagConstraints(MIDDLE, TOP, GridBagConstraints.BOTH));
 		mainPanel.add(threatSummaryColumnTableScroller,
-				createGridBagConstraints(2, 0, GridBagConstraints.VERTICAL));
+				createGridBagConstraints(RIGHT, TOP, GridBagConstraints.VERTICAL));
 		mainPanel.add(targetSummaryRowTableScroller,
-				createGridBagConstraints(1, 1, GridBagConstraints.HORIZONTAL));
+				createGridBagConstraints(MIDDLE, BOTTOM, GridBagConstraints.HORIZONTAL));
 		mainPanel.add(overallProjectSummaryCellTableScroller,
-				createGridBagConstraints(2, 1, GridBagConstraints.NONE));
+				createGridBagConstraints(RIGHT, BOTTOM, GridBagConstraints.NONE));
 		
 		add(mainPanel);
 	}
