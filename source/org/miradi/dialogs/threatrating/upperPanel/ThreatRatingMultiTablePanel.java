@@ -143,42 +143,39 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
 
 		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.fill = GridBagConstraints.VERTICAL;
 		constraints.anchor = GridBagConstraints.WEST;
-		addToPanelFixedWidth(mainPanel, threatTableScroller, constraints, 0, 0);
+		addToPanelFixedWidth(mainPanel, threatTableScroller, constraints, 0, 0, GridBagConstraints.VERTICAL);
 		
-		constraints.fill = GridBagConstraints.BOTH;
 		constraints.anchor = GridBagConstraints.CENTER;
-		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, constraints, 1, 0);
+		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, constraints, 1, 0, GridBagConstraints.BOTH);
 		
-		constraints.fill = GridBagConstraints.VERTICAL;
 		constraints.anchor = GridBagConstraints.WEST;
-		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0);
+		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, constraints, 2, 0, GridBagConstraints.VERTICAL);
 
-		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTH;
-		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1);
+		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, constraints, 1, 1, GridBagConstraints.HORIZONTAL);
 		
-		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.anchor = GridBagConstraints.NORTHWEST;
-		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1);
+		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, constraints, 2, 1, GridBagConstraints.NONE);
 		
 		add(mainPanel);
 	}
 
-	public static void addToPanelFixedWidth(JPanel p, Component c, GridBagConstraints gbc, int x, int y) 
+	public static void addToPanelFixedWidth(JPanel p, Component c, GridBagConstraints gbc, int x, int y, int fill) 
 	{
 		gbc.gridx = x;
 		gbc.gridy = y;
+		gbc.fill = fill;
+		
 		gbc.gridwidth = 1;
 		gbc.gridheight = 1;
 		
 		gbc.weightx = 0;
-		if(gbc.fill == gbc.HORIZONTAL || gbc.fill == gbc.BOTH)
+		if(fill == gbc.HORIZONTAL || fill == gbc.BOTH)
 			gbc.weightx = 100;
 		
 		gbc.weighty = 0;
-		if(gbc.fill == gbc.VERTICAL || gbc.fill == gbc.BOTH)
+		if(fill == gbc.VERTICAL || fill == gbc.BOTH)
 			gbc.weighty = 100;
 		
 		p.add(c,gbc);
