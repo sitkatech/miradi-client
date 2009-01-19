@@ -142,16 +142,21 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		
 		JScrollPane overallProjectSummaryCellTableScroller = new FixedHeightScrollPane(overallProjectSummaryCellTable);
 
-		addToPanelFixedWidth(mainPanel, threatTableScroller, 0, 0, GridBagConstraints.VERTICAL);
-		addToPanelFixedWidth(mainPanel, targetThreatLinkTableScroller, 1, 0, GridBagConstraints.BOTH);
-		addToPanelFixedWidth(mainPanel, threatSummaryColumnTableScroller, 2, 0, GridBagConstraints.VERTICAL);
-		addToPanelFixedWidth(mainPanel, targetSummaryRowTableScroller, 1, 1, GridBagConstraints.HORIZONTAL);
-		addToPanelFixedWidth(mainPanel, overallProjectSummaryCellTableScroller, 2, 1, GridBagConstraints.NONE);
+		mainPanel.add(threatTableScroller,
+				createGridBagConstraints(0, 0, GridBagConstraints.VERTICAL));
+		mainPanel.add(targetThreatLinkTableScroller,
+				createGridBagConstraints(1, 0, GridBagConstraints.BOTH));
+		mainPanel.add(threatSummaryColumnTableScroller,
+				createGridBagConstraints(2, 0, GridBagConstraints.VERTICAL));
+		mainPanel.add(targetSummaryRowTableScroller,
+				createGridBagConstraints(1, 1, GridBagConstraints.HORIZONTAL));
+		mainPanel.add(overallProjectSummaryCellTableScroller,
+				createGridBagConstraints(2, 1, GridBagConstraints.NONE));
 		
 		add(mainPanel);
 	}
 
-	public static void addToPanelFixedWidth(JPanel p, Component c, int x, int y, int fill) 
+	private static GridBagConstraints createGridBagConstraints(int x, int y, int fill)
 	{
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.gridx = x;
@@ -169,8 +174,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		gbc.weighty = 0;
 		if(fill == gbc.VERTICAL || fill == gbc.BOTH)
 			gbc.weighty = 100;
-		
-		p.add(c,gbc);
+		return gbc;
 	}
 	
 	private void synchTableColumns()
