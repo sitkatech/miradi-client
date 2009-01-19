@@ -27,7 +27,10 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 
-public class MultiTableModel extends AbstractTableModel
+import org.miradi.dialogs.base.ChoiceItemTableModel;
+import org.miradi.questions.ChoiceItem;
+
+public class MultiTableModel extends AbstractTableModel implements ChoiceItemTableModel 
 {
 	public MultiTableModel()
 	{
@@ -39,7 +42,7 @@ public class MultiTableModel extends AbstractTableModel
 		models.clear();
 	}
 
-	public void addModel(TableModel modelToAdd)
+	public void addModel(ChoiceItemTableModel modelToAdd)
 	{
 		models.add(modelToAdd);
 		modelToAdd.addTableModelListener(new EventPropagator());
@@ -73,7 +76,12 @@ public class MultiTableModel extends AbstractTableModel
 
 	public Object getValueAt(int rowIndex, int columnIndex)
 	{
-		return findTable(columnIndex).getValueAt(rowIndex, findColumnWithinSubTable(columnIndex));
+		return getChoiceItemAt(rowIndex, columnIndex);
+	}
+
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
+		return findTable(column).getChoiceItemAt(row, findColumnWithinSubTable(column));
 	}
 
 	@Override
@@ -88,10 +96,10 @@ public class MultiTableModel extends AbstractTableModel
 		return findTable(columnIndex).getColumnName(findColumnWithinSubTable(columnIndex));
 	}
 
-	TableModel findTable(int column)
+	ChoiceItemTableModel findTable(int column)
 	{
 		int originalColumn = column;
-		for(TableModel model : models)
+		for(ChoiceItemTableModel model : models)
 		{
 			if(column < model.getColumnCount())
 				return model;
@@ -113,5 +121,5 @@ public class MultiTableModel extends AbstractTableModel
 		throw new RuntimeException("MultiTable.findColumnWithinSubTable: Table column out of bounds: " + originalColumn);
 	}
 
-	Vector<TableModel> models;
+	private Vector<ChoiceItemTableModel> models;
 }

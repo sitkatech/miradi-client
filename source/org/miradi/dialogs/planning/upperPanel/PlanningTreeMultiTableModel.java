@@ -22,14 +22,13 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
 
-import javax.swing.table.TableModel;
-
+import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.utils.ColumnTagProvider;
 
 public class PlanningTreeMultiTableModel extends MultiTableModel implements ColumnTagProvider
 {
 	@Override
-	public void addModel(TableModel modelToAdd)
+	public void addModel(ChoiceItemTableModel modelToAdd)
 	{
 		throw new RuntimeException(getClass().getName() + ".addModel: Model must be a ColumnTagProvider");
 	}

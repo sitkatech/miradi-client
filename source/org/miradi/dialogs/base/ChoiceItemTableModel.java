@@ -17,31 +17,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.questions;
+package org.miradi.dialogs.base;
 
-import javax.swing.Icon;
+import javax.swing.table.TableModel;
 
-public class TaglessChoiceItem extends ChoiceItem
+import org.miradi.questions.ChoiceItem;
+
+public interface ChoiceItemTableModel extends TableModel
 {
-	public TaglessChoiceItem(Object rawObject)
-	{
-		super(EMPTY_CHOICE_ITEM_CODE, rawObject.toString());
-	}
-	
-	public TaglessChoiceItem(double labelAsDouble)
-	{
-		super(EMPTY_CHOICE_ITEM_CODE, Double.toString(labelAsDouble));
-	}
-	
-	public TaglessChoiceItem(String labelToUse)
-	{
-		super(EMPTY_CHOICE_ITEM_CODE, labelToUse);
-	}
-	
-	public TaglessChoiceItem(String labelToUse, Icon iconToUse)
-	{
-		super(EMPTY_CHOICE_ITEM_CODE, labelToUse, iconToUse);
-	}
-	
-	protected static final String EMPTY_CHOICE_ITEM_CODE = "";
+	public ChoiceItem getChoiceItemAt(int row, int column);	
 }

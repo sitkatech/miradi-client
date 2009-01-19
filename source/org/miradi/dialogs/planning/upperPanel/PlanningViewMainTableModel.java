@@ -42,9 +42,12 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
 
@@ -154,17 +157,17 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return EAM.fieldLabel(ObjectType.FAKE, getColumnTag(column));
 	}
 	
-	public Object getValueAt(int row, int column)
+	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if(baseObject == null)
-			return "";
+			return new EmptyChoiceItem();
 		
 		try
 		{	
 			String columnTag = getColumnTagForNode(baseObject.getType(), column);
 			if (! baseObject.doesFieldExist(columnTag))
-				return "";
+				return new EmptyChoiceItem();
 
 			String rawValue = "";
 			if (baseObject.isPseudoField(columnTag))
@@ -182,15 +185,20 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
-				return Double.toString(calculateProportion(row, rawValue));
+				return new TaglessChoiceItem(calculateProportion(row, rawValue));
 				
-			return rawValue;
+			return new TaglessChoiceItem(rawValue);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return "[Error]";
+			return new TaglessChoiceItem(EAM.text("[Error]"));
 		}
+	}
+	
+	public Object getValueAt(int row, int column)
+	{
+		return getChoiceItemAt(row, column);
 	}
 
 	private double calculateProportion(int row, String rawValue)
@@ -318,5 +326,4 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	}
 
 	private CodeList columnsToShow;
-
 }

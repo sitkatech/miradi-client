@@ -22,11 +22,10 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
 
-import javax.swing.table.TableModel;
-
+import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.utils.ColumnTagProvider;
 
-public interface PlanningUpperTableModelInterface extends TableModel, ColumnTagProvider
+public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, ColumnTagProvider
 {
 	Color getCellBackgroundColor(int column);
 	boolean isCurrencyColumn(int column);

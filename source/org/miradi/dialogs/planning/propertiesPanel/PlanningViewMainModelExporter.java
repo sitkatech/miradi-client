@@ -22,21 +22,20 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.util.Vector;
 
 import javax.swing.Icon;
-import javax.swing.table.TableModel;
 
+import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 
 public class PlanningViewMainModelExporter extends AbstractTableExporter
 {
-	public PlanningViewMainModelExporter(TableModel modelToUse, RowColumnBaseObjectProvider objectProviderToUse)
+	public PlanningViewMainModelExporter(ChoiceItemTableModel choiceItemTableModelToUse, RowColumnBaseObjectProvider objectProviderToUse)
 	{
-		model = modelToUse;
+		choiceItemTableModel = choiceItemTableModelToUse;
 		objectProvider = objectProviderToUse;
 	}
 	
@@ -85,7 +84,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return new TaglessChoiceItem(getTextAt(row, column), getIconAt(row, column));
+		return getModel().getChoiceItemAt(row, column);
 	}
 
 	@Override
@@ -101,9 +100,9 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return getSafeValue(value);
 	}
 
-	private TableModel getModel()
+	private ChoiceItemTableModel getModel()
 	{
-		return model;
+		return choiceItemTableModel;
 	}
 	
 	@Override
@@ -120,6 +119,6 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return new Vector<Integer>();
 	}
 
-	private TableModel model;
+	private ChoiceItemTableModel choiceItemTableModel;
 	private RowColumnBaseObjectProvider objectProvider;
 }
