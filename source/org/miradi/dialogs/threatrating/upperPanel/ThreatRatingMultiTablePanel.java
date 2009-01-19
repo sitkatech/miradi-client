@@ -69,31 +69,32 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	
 	private void createTables() throws Exception
 	{
-		multiTableExporter = new ThreatRatingMultiTableAsOneExporter();
-		
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
 		threatNameTable = new ThreatNameColumnTable(getMainWindow(), threatNameTableModel);
 		
-		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(threatNameTableModel));
 		listenForColumnWidthChanges(threatNameTable);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(getMainWindow(), targetThreatLinkTableModel);
-		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(targetThreatLinkTableModel));
 
 		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
 		threatSummaryColumnTable = new ThreatSummaryColumnTable(getMainWindow(), threatSummaryColumnTableModel);
-		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(threatSummaryColumnTableModel));
 		
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(getMainWindow(), targetSummaryRowTableModel);
-		multiTableExporter.setTargetSummaryRowTable(new MainThreatTableModelExporter(targetSummaryRowTableModel));
 		targetSummaryRowTable.resizeTable(1);
 		
 		overallProjectSummaryCellTableModel = new OverallProjectSummaryCellTableModel(getProject());
 		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(getMainWindow(), overallProjectSummaryCellTableModel);
-		multiTableExporter.setOverallSummaryRowTable(new MainThreatTableModelExporter(overallProjectSummaryCellTableModel));
 		overallProjectSummaryCellTable.resizeTable(1);
+
+		multiTableExporter = new ThreatRatingMultiTableAsOneExporter();
+		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(threatNameTableModel));
+		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(targetThreatLinkTableModel));
+		multiTableExporter.addAsTopRowTable(new MainThreatTableModelExporter(threatSummaryColumnTableModel));
+		multiTableExporter.setTargetSummaryRowTable(new MainThreatTableModelExporter(targetSummaryRowTableModel));
+		multiTableExporter.setOverallSummaryRowTable(new MainThreatTableModelExporter(overallProjectSummaryCellTableModel));
+		
 	}
 	
 	public AbstractTableExporter getTableForExporting()
