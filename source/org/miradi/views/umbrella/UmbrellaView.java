@@ -235,7 +235,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	abstract public String cardName();
 	
-	public void updateViewBasedFromWizardStep(SkeletonWizardStep step)
+	public void setTabForStep(SkeletonWizardStep step)
 	{
 	}
 	

@@ -82,7 +82,7 @@ abstract public class TabbedView extends UmbrellaView
 		return null;
 	}
 	
-	public void updateViewBasedFromWizardStep(SkeletonWizardStep step)
+	public void setTabForStep(SkeletonWizardStep step)
 	{
 		String tabIdentifier = step.getTabIdentifier();
 		if (tabIdentifier == null)
