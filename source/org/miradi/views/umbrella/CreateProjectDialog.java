@@ -260,13 +260,9 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 				.getSelectedValue());
 	}
 
-	boolean result;
-
-	UiList existingProjectList;
-
-	UiTextField projectFilenameField;
-
-	UiButton okButton;
-
-	UiButton cancelButton;
+	private boolean result;
+	private UiList existingProjectList;
+	private UiTextField projectFilenameField;
+	private UiButton okButton;
+	private UiButton cancelButton;
 }
