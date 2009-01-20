@@ -51,13 +51,18 @@ public class SaveProjectAsDoer extends MainWindowDoer
 		File chosen = dlg.getSelectedFile();
 		try
 		{
-			saveAsAndOpen(chosen.getName());
+			saveAsAndOpen(getTrimmedFileName(chosen));
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			throw new CommandFailedException("Unexpected error during Save As: " + e);
 		}
+	}
+
+	private String getTrimmedFileName(File chosen)
+	{
+		return chosen.getName().trim();
 	}
 
 	private void saveAsAndOpen(String newProjectName) throws Exception
