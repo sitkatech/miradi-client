@@ -146,7 +146,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 	private UiTextField createTextArea()
 	{
-		ProjectNameRestrictedTextField textField = new ProjectNameRestrictedTextField(40);
+		ProjectNameRestrictedTextField textField = new ProjectNameRestrictedTextField(Project.MAX_PROJECT_FILENAME_LENGTH);
 		textField.requestFocus(true);
 		textField.selectAll();
 		textField.getDocument().addDocumentListener(new TextFieldListener());
