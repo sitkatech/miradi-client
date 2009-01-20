@@ -87,7 +87,7 @@ public class WelcomeCreateStep extends NoProjectWizardStep
 
 		private void addTextFieldPanel()
 		{
-			newProjectNameField = new ProjectNameRestrictedTextField(32);
+			newProjectNameField = new ProjectNameRestrictedTextField(Project.MAX_PROJECT_FILENAME_LENGTH);
 			TwoColumnPanel textFieldPanel = new TwoColumnPanel();
 			textFieldPanel.setBackground(AppPreferences.getWizardBackgroundColor());
 			textFieldPanel.add(new PanelTitleLabel(EAM.text("New Project Filename:")));
