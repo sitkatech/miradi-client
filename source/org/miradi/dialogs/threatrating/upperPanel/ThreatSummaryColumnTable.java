@@ -19,15 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import javax.swing.JTable;
+
 import org.miradi.main.MainWindow;
 
 
 
-public class ThreatSummaryColumnTable extends AbstractTableWithChoiceItemRenderer
+public class ThreatSummaryColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 {
 	public ThreatSummaryColumnTable(MainWindow mainWindowToUse, ThreatSummaryColumnTableModel model)
 	{
 		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "ThreatSummaryColumnTable";	
