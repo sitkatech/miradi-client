@@ -22,23 +22,54 @@ package org.miradi.dialogs.threatrating.upperPanel;
 import java.awt.Dimension;
 
 import javax.swing.JTable;
+import javax.swing.table.TableColumn;
 
 import org.miradi.main.MainWindow;
 
 public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 {
-	public TargetSummaryRowTable(MainWindow mainWindowToUse, TargetSummaryRowTableModel model)
+	public TargetSummaryRowTable(MainWindow mainWindowToUse, TargetSummaryRowTableModel model, JTable tableThatControlsColumns)
 	{
 		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
+		columnController = tableThatControlsColumns;
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
+	}
+	
+	@Override
+	public int convertColumnIndexToModel(int viewColumnIndex)
+	{
+		// TODO Auto-generated method stub
+		return super.convertColumnIndexToModel(viewColumnIndex);
 	}
 	
 	public boolean shouldSaveColumnSequence()
 	{
 		return false;
 	}
+	
+	@Override
+	public int convertColumnIndexToView(int modelColumnIndex)
+	{
+		return columnController.convertColumnIndexToView(modelColumnIndex);
+	}
+	
+	@Override
+	public void reloadColumnWidths()
+	{
+		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
+		{	
+			TableColumn thisColumn = getColumnModel().getColumn(tableColumn);
+			TableColumn thatColumn = columnController.getColumnModel().getColumn(tableColumn);
+			thisColumn.setWidth(thatColumn.getWidth());
+			thisColumn.setPreferredWidth(thatColumn.getPreferredWidth());
+		}
+	}
+
+	
+	
+	private JTable columnController;
 	
 	public static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTable";
 }

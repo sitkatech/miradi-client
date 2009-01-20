@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import java.awt.Dimension;
+
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
@@ -44,6 +46,18 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		addMouseListener(new CreateDeletePopupMouseAdapter(tableModel.getProject(), tableModel));
 	}
 	
+	@Override
+	public Dimension getPreferredScrollableViewportSize()
+	{
+		return getPreferredSize();
+	}
+	
+	@Override
+	public Dimension getMaximumSize()
+	{
+		return getPreferredSize();
+	}
+
 	private void setColumnWidths()
 	{
 		for (int i = 0; i < getColumnCount(); ++i)
