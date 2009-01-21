@@ -52,7 +52,14 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 	{
 		EAMFileSaveChooser eamFileChooser = new EAMZipFileChooser(mainWindow);
 		File chosen = eamFileChooser.displayChooser();
-		if (chosen==null) return;
+		if (chosen == null)
+			return;
+		
+		if (isChosenFileInsideProjectHomeDir(chosen))
+		{
+			EAM.errorDialog(EAM.text("Cannot save inside another project dir"));
+			return;
+		}
 		
 		try 
 		{
@@ -65,5 +72,8 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 		}
 	}
 
-
+	private static boolean isChosenFileInsideProjectHomeDir(File chosen)
+	{
+		return EAM.isFileInsideDir(EAM.getHomeDirectory(), chosen);
+	}
 }

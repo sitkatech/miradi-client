@@ -84,6 +84,14 @@ public class EAM
 		
 		return defaultHomeDirectory;
 	}
+	
+	public static boolean isFileInsideDir(File containingDir, File dirToTest)
+	{
+		String homeDirectory = containingDir.getAbsolutePath();
+		String parentOfChosen = dirToTest.getAbsolutePath();
+		
+		return parentOfChosen.startsWith(homeDirectory);
+	}
 
 	private static void alertIfHomeIsNotOnC()
 	{
