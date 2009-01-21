@@ -27,6 +27,9 @@ import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import org.miradi.main.EAM;
+import org.miradi.utils.MPZFileFilter;
+
 public class ProjectZipper
 {
 	public static void createProjectZipFile(File destination, String zipTopLevelDirectory, File projectDirectory) throws FileNotFoundException, Exception, IOException
@@ -58,6 +61,12 @@ public class ProjectZipper
 			}
 			else
 			{
+				if (thisFile.getAbsolutePath().endsWith(MPZFileFilter.EXTENSION))
+				{
+					EAM.logVerbose("Ignoring zipping file = " + thisFile.getAbsolutePath());
+					continue;
+				}
+				
 				ZipEntry entry = new ZipEntry(entryName);
 				int size = (int) thisFile.length();
 				entry.setSize(size);
