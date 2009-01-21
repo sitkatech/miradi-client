@@ -74,15 +74,20 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	{
 		threatNameTableModel = new ThreatNameColumnTableModel(getProject());
 		threatNameTable = new ThreatNameColumnTable(getMainWindow(), threatNameTableModel);
-		
+		addRowHeightControlledTable(threatNameTable);
+		addRowSortControlledTable(threatNameTable);
 		listenForColumnWidthChanges(threatNameTable);
 
 		targetThreatLinkTableModel = new TargetThreatLinkTableModel(getProject());
 		targetThreatLinkTable = new TargetThreatLinkTable(getMainWindow(), targetThreatLinkTableModel);
+		addRowHeightControlledTable(targetThreatLinkTable);
+		addRowSortControlledTable(targetThreatLinkTable);
 
 		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
 		threatSummaryColumnTable = new ThreatSummaryColumnTable(getMainWindow(), threatSummaryColumnTableModel);
-		
+		addRowHeightControlledTable(threatSummaryColumnTable);
+		addRowSortControlledTable(threatSummaryColumnTable);
+
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(getMainWindow(), targetSummaryRowTableModel, targetThreatLinkTable);
 		targetSummaryRowTable.resizeTable(1);
@@ -291,8 +296,6 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		threatTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		threatTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		addToVerticalController(threatTableScroller);
-		addRowHeightControlledTable(threatNameTable);
-		addRowSortControlledTable(threatNameTable);
 		
 		ScrollPaneWithSizeConstraints targetThreatLinkTableScroller = new ScrollPaneWithSizeConstraints(targetThreatLinkTable);
 		targetThreatLinkTableScroller.capMaxWidth();
@@ -300,8 +303,6 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		targetThreatLinkTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		addToVerticalController(targetThreatLinkTableScroller);
 		addToHorizontalController(targetThreatLinkTableScroller);
-		addRowHeightControlledTable(targetThreatLinkTable);
-		addRowSortControlledTable(targetThreatLinkTable);
 		
 		ScrollPaneWithSizeConstraints threatSummaryColumnTableScroller = new ScrollPaneWithSizeConstraints(threatSummaryColumnTable);
 		threatSummaryColumnTableScroller.capMinWidth();
@@ -309,8 +310,6 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		addToVerticalController(threatSummaryColumnTableScroller);
 		threatSummaryColumnTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		threatSummaryColumnTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		addRowHeightControlledTable(threatSummaryColumnTable);
-		addRowSortControlledTable(threatSummaryColumnTable);
 		
 		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithWidthMatchingForSingleRowTable(targetSummaryRowTable, targetThreatLinkTableScroller);
 		addToHorizontalController(targetSummaryRowTableScroller);
