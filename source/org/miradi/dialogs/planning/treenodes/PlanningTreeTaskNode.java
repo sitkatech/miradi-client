@@ -98,8 +98,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	@Override
 	public void addProportionShares(TreeTableNode otherNode)
 	{
-		if (!otherNode.getObjectReference().equals(getObjectReference()))
-			proportionShares += otherNode.getProportionShares();
+		proportionShares += otherNode.getProportionShares();
 	}
 
 	private Task task;
