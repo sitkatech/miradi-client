@@ -108,7 +108,7 @@ public  class BufferedImageFactory
 	{
 		Rectangle totalBoundsIgnoringVisibilityOfFactors = diagram.getDiagramObject().getBoundsOfFactorsAndBendPoints();
 		if (totalBoundsIgnoringVisibilityOfFactors == null)
-			return null;
+			totalBoundsIgnoringVisibilityOfFactors = new Rectangle();
 		
 		final double scale = diagram.getScale();
 		final Rectangle unscaledBounds = totalBoundsIgnoringVisibilityOfFactors.getBounds();
