@@ -34,17 +34,4 @@ public class TestEAM extends EAMTestCase
 		String expectedText = "some text with some more text";
 		assertEquals("didnt substitude correctly?", expectedText, substitudedText); 
 	}
-	
-	public void testIsLegalFileName()
-	{
-		String goodFileName = "GoodFile_name. -";
-		assertTrue("should be valid file name?" , EAM.isLegalFileName(goodFileName));
-		
-		String badFileName = "!@#$%^&*()<>,?/:;''[]{}+=|\"`~";
-		for (int i = 0; i < badFileName.length(); ++i)
-		{
-			String characterAsString = Character.toString(badFileName.charAt(i));
-			assertFalse("should be invalid character?", EAM.isLegalFileName(characterAsString));	
-		}
-	}
 }

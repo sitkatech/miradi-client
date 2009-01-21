@@ -127,9 +127,6 @@ public class RenameProjectDoer
 	{
 		if (project.isValidProjectFilename(projectName))
 			return true;
-			
-		if (EAM.isLegalFileName(projectName))
-			return true;
 		
 		return false;
 	}
