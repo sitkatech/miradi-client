@@ -31,6 +31,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -38,11 +39,13 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilter;
 import org.miradi.utils.HtmlViewPanelWithMargins;
+import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 public class ImportCpmzDoer extends ImportProjectDoer
@@ -162,6 +165,18 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
 		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel);
+		
+		selectFirstDiagramInAlphabeticallySortedList(filledProject);
+	}
+
+	private void selectFirstDiagramInAlphabeticallySortedList(Project filledProject) throws Exception
+	{
+		ORefList sortedConceptualModelRefs = filledProject.getConceptualModelDiagramPool().getSortedRefList();
+		final int FIRST_REF_INDEX = 0;
+		ORef firstRefInAlphabeticallySortedList = sortedConceptualModelRefs.get(FIRST_REF_INDEX);
+		ViewData viewData = filledProject.getViewData(DiagramView.getViewName());
+		CommandSetObjectData setCurrentDiagramCommand = new CommandSetObjectData(viewData, ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF, firstRefInAlphabeticallySortedList.toString());
+		filledProject.executeCommand(setCurrentDiagramCommand);
 	}
 
 	public static byte[] extractXmlBytes(ZipFile zipFile, String entryName) throws Exception
