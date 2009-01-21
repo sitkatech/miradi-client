@@ -101,7 +101,7 @@ public class RenameProjectDoer
 				continue;
 			}
 			
-			if (!isLegalValidProjectName(mainWindow.getProject(), projectName))
+			if (!mainWindow.getProject().isValidProjectFilename(projectName))
 			{
 				EAM.errorDialog(EAM.text("Invalid project name:") + projectName);
 				continue;
@@ -118,14 +118,6 @@ public class RenameProjectDoer
 			return true;
 		
 		if(newFile.exists())
-			return true;
-		
-		return false;
-	}
-	
-	private static boolean isLegalValidProjectName(Project project, String projectName)
-	{
-		if (project.isValidProjectFilename(projectName))
 			return true;
 		
 		return false;
