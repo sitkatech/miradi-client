@@ -25,7 +25,6 @@ import java.awt.Dimension;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -71,7 +70,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		return getMainWindow().getProject();
 	}
 	
-	protected void addRowSortControlledTable(JTable tableToSort)
+	protected void addRowSortControlledTable(TableWithRowHeightSaver tableToSort)
 	{
 		rowSortController.addTableToSort(tableToSort);
 	}

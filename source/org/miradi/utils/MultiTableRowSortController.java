@@ -36,7 +36,7 @@ public class MultiTableRowSortController
 		tablesToSort = new Vector();
 	}
 	
-	public void addTableToSort(JTable tableToSort)
+	public void addTableToSort(TableWithRowHeightSaver tableToSort)
 	{
 		JTableHeader columnHeader = tableToSort.getTableHeader();
 		ColumnSortListener sortListener = new ColumnSortListener();
@@ -61,14 +61,15 @@ public class MultiTableRowSortController
 			
 			for (int index = 0; index < tablesToSort.size(); ++index)
 			{
-				JTable table = tablesToSort.get(index);
+				TableWithRowHeightSaver table = tablesToSort.get(index);
 				AbstractThreatTargetTableModel modelToSetThreats = (AbstractThreatTargetTableModel)table.getModel();
 				modelToSetThreats.setThreats(sortedThreats);
+				table.updateAutomaticRowHeights();
 				table.revalidate();
 				table.repaint();
 			}
 		}
 	}
 	
-	private Vector<JTable> tablesToSort;
+	private Vector<TableWithRowHeightSaver> tablesToSort;
 }
