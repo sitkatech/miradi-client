@@ -29,16 +29,14 @@ import org.miradi.project.Project;
 
 public class ProjectNameRestrictedTextField extends PanelTextField
 {
-	public ProjectNameRestrictedTextField(int columns)
+	public ProjectNameRestrictedTextField()
 	{
-		super(columns);
-		
-		initialize("");
+		this("");
 	}
-	
+
 	public ProjectNameRestrictedTextField(String initialValue)
 	{
-		this(Project.MAX_PROJECT_FILENAME_LENGTH);
+		super(Project.MAX_PROJECT_FILENAME_LENGTH);
 		
 		initialize(initialValue);
 	}
