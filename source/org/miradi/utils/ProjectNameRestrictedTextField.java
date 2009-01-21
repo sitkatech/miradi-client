@@ -51,6 +51,9 @@ public class ProjectNameRestrictedTextField extends PanelTextField
 	{
 		public void insertString(int offset, String value, AttributeSet as) throws BadLocationException
 		{
+			if (offset >= Project.MAX_PROJECT_FILENAME_LENGTH)
+				return;
+			
 			String newValue = removeIllegalCharacters(value);
 			super.insertString(offset, newValue, as);
 		}
