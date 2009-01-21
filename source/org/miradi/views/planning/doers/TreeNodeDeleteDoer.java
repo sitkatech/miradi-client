@@ -26,9 +26,11 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Task;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
@@ -47,10 +49,16 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 
 	private boolean canDelete(BaseObject selected)
 	{
-		if (Indicator.is(selected.getType()))
+		if (Indicator.is(selected))
 			return true;
 		
-		if (Objective.is(selected.getType()))
+		if (Objective.is(selected))
+			return true;
+		
+		if (Measurement.is(selected))
+			return true;
+		
+		if (Assignment.is(selected))
 			return true;
 		
 		return Task.is(selected.getType());
@@ -69,14 +77,20 @@ public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
 		
 		try
 		{
-			if (Task.is(selected.getType()))
+			if (Task.is(selected))
 				deleteTask(selected);
 			
-			if (Indicator.is(selected.getType()))
+			if (Indicator.is(selected))
 				deleteAnnotation(selected, Factor.TAG_INDICATOR_IDS);
 			
-			if (Objective.is(selected.getType()))
+			if (Objective.is(selected))
 				deleteAnnotation(selected, Factor.TAG_OBJECTIVE_IDS);
+			
+			if (Measurement.is(selected))
+				deleteAnnotation(selected, Indicator.TAG_MEASUREMENT_REFS);
+			
+			if (Assignment.is(selected))
+				deleteAnnotation(selected, Task.TAG_ASSIGNMENT_IDS);
 		}
 		catch (Exception e)
 		{

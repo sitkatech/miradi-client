@@ -195,9 +195,17 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		if (isTargetModeChange(event))
 			return true;
 		
+		if (didAffectMeasurementInTree(event))
+			return true;
+		
 		return false;
 	}
 	
+	private boolean didAffectMeasurementInTree(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS);
+	}
+
 	private boolean isTargetModeChange (CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE);
