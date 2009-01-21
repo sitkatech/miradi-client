@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
+import java.io.File;
+
 public class TestEAM extends EAMTestCase
 {
 	public TestEAM(String name)
@@ -33,5 +35,17 @@ public class TestEAM extends EAMTestCase
 		String substitudedText = EAM.substitute(beforeSubstitute, substituteString);
 		String expectedText = "some text with some more text";
 		assertEquals("didnt substitude correctly?", expectedText, substitudedText); 
+	}
+	
+	public void testIsFileInsideDir()
+	{
+		File homeDir = new File("C:\\Users\\Nima\\Documents\\Miradi");
+		File file1 = new File("C:\\Users\\Nima\\Documents\\Miradi\\somefile.txt");
+		assertTrue("file inside other folder", EAM.isFileInsideDir(homeDir, file1));
+		
+		assertTrue("file is same and should be inside itself?", EAM.isFileInsideDir(homeDir, homeDir));
+		
+		File file2 = new File("C:\\Users\\Nima\\Documents\\somefile.txt");
+		assertFalse("file is not inside other folder", EAM.isFileInsideDir(homeDir, file2));
 	}
 }
