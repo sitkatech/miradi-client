@@ -48,7 +48,7 @@ public class TestPlanningTreeActivityNode extends TestPlanningTree
 
 		final TreeTableNode firstChild = root.getChild(0);
 		assertEquals(Task.getObjectType(), firstChild.getType());
-		assertEquals(2, firstChild.getProportionShares());
+		assertEquals(1, firstChild.getProportionShares());
 	}
 
 }
