@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treeRelevancy;
 
-import java.util.Vector;
-
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -42,13 +40,13 @@ public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 	@Override
 	public TreeTableNode getChild(int index)
 	{
-		return strategyChildren.get(index);
+		return strategyChildren[index];
 	}
 
 	@Override
 	public int getChildCount()
 	{
-		return strategyChildren.size();
+		return strategyChildren.length;
 	}
 
 	@Override
@@ -78,15 +76,17 @@ public class RootRelevancyTreeTableNode extends AbstractRelevancyNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		strategyChildren = new Vector();
+		strategyChildren = new StrategyRelevancyNode[strategyRefs.size()];
 		for (int index = 0; index < strategyRefs.size(); ++index)
 		{
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(index));
 			StrategyRelevancyNode strategyChildNode = new StrategyRelevancyNode(getProject(), strategy);
-			strategyChildren.add(strategyChildNode);
+			strategyChildren[index] = strategyChildNode;
 		}
+		
+		sortChildren(strategyChildren);
 	}
 
 	private ORefList strategyRefs;
-	private Vector<StrategyRelevancyNode> strategyChildren;
+	private StrategyRelevancyNode[] strategyChildren;
 }
