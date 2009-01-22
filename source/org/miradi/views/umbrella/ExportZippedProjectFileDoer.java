@@ -74,6 +74,6 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 
 	private static boolean isChosenFileInsideProjectHomeDir(File chosen)
 	{
-		return EAM.isFileInsideDir(EAM.getHomeDirectory(), chosen);
+		return EAM.isOneFileInsideTheOther(EAM.getHomeDirectory(), chosen);
 	}
 }
