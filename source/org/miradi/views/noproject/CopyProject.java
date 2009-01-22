@@ -26,8 +26,7 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.project.Project;
-import org.miradi.utils.ModalRenameDialog;
+import org.miradi.views.umbrella.CreateProjectDialog;
 
 public class CopyProject
 {
@@ -50,25 +49,21 @@ public class CopyProject
 
 		try
 		{
-			String newName = ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT);
-			if (newName == null)
+			CreateProjectDialog dlg = new CreateProjectDialog(mainWindow, EAM.text("Save As..."), projectToCopy.getName());
+			if(!dlg.showSaveAsDialog())
 				return;
+
+			File chosen = dlg.getSelectedFile();
+			String newName = chosen.getName();
 			
-			Project.validateNewProject(newName);
-			
-			final String INDENT = "  ";
-			String[] body = {EAM.text("This will copy the project"), INDENT + projectToCopy.getName(), EAM.text("to"), INDENT + newName};
-			String[] buttons = {EAM.text("Copy"), EAM.text("Cancel"), };
-			if(!EAM.confirmDialog(EAM.text("Copy Project"), body, buttons))
-				return;
-		
 			directoryLock.close();
 			File newFile = new File(projectToCopy.getParentFile(),newName);
 			DirectoryUtils.copyDirectoryTree(projectToCopy, newFile);
 		}
 		catch (Exception e)
 		{
-			EAM.notifyDialog("Copy Failed:" +e.getMessage());
+			EAM.logException(e);
+			EAM.notifyDialog("Save Failed with unexpected error: " +e.getMessage());
 		}
 		finally
 		{

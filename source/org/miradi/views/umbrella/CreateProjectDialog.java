@@ -28,9 +28,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Arrays;
 import java.util.Vector;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.JLabel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
@@ -38,52 +41,76 @@ import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiButton;
 import org.martus.swing.UiList;
-import org.martus.swing.UiParagraphPanel;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.base.DialogWithButtonBar;
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.IgnoreCaseStringComparator;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.ProjectNameRestrictedTextField;
+
+import com.jhlabs.awt.GridLayoutPlus;
 
 public class CreateProjectDialog extends DialogWithButtonBar implements ActionListener,
 		ListSelectionListener
 {
-	public CreateProjectDialog(MainWindow parent, String title) throws HeadlessException
+	public CreateProjectDialog(MainWindow parent, String title, String originalProjectName) throws HeadlessException
 	{
 		super(parent);
 		setTitle(title);
+		oldName = originalProjectName;
+		
 		setModal(true);
 		setResizable(true);
 
-		projectFilenameField = createTextArea();
-		existingProjectList = createExistingProjectList();
+		final Vector<Component> buttons = createButtonComponents();
 
-		UiParagraphPanel panel = new UiParagraphPanel();
-		panel.addOnNewLine(new PanelTitleLabel("<HTML>This command saves a copy of your project under a new filename. <BR>" +
-												  "You are still in your original file - to switch to the copy with the new filename, <BR>" +
-												  "you have to close this project and open the new one.<HTML>"));
+		final PanelTextField oldNameField = new PanelTextField(oldName);
+		oldNameField.setEditable(false);
+
+		projectFilenameField = createTextArea();
+		projectFilenameField.setText(oldName);
 		
-		panel.addOnNewLine(new PanelTitleLabel(EAM.getHomeDirectory().getAbsolutePath()));
+		existingProjectList = createExistingProjectList();
 		UiScrollPane uiScrollPane = new UiScrollPane(existingProjectList);
 		uiScrollPane.setPreferredSize(new Dimension(projectFilenameField.getPreferredSize().width, 200));
-		panel.addComponents(new PanelTitleLabel(EAM.text("Label|Existing Projects:")), uiScrollPane);
-		panel.addComponents(new PanelTitleLabel(EAM.text("New Project Filename: ")), projectFilenameField);
-		getContentPane().add(new MiradiScrollPane(panel));
 
+		MiradiPanel panel = new MiradiPanel(new GridLayoutPlus(0, 2));
+		panel.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+		
+		panel.add(new PanelTitleLabel(EAM.text("Current project name:")));
+		panel.add(oldNameField);
+		
+		panel.add(new PanelTitleLabel(EAM.text("New project name: ")));
+		panel.add(projectFilenameField);
+		
+		panel.add(new JLabel(" "));
+		panel.add(new JLabel(" "));
+
+		panel.add(new PanelTitleLabel(EAM.text("Miradi data directory:")));
+		panel.add(new PanelTitleLabel(EAM.getHomeDirectory().getAbsolutePath()));
+		
+		panel.add(new PanelTitleLabel(EAM.text("Label|Existing Projects:")));
+		panel.add(uiScrollPane);
+		
+		getContentPane().add(new MiradiScrollPane(panel));
 		getRootPane().setDefaultButton(okButton);
-		setButtons(getButtonComponents());
+		setButtons(buttons);
+		
+		projectFilenameField.requestFocusInWindow();
 	}
 
-	public boolean showCreateDialog(String buttonLabel)
+	public boolean showSaveAsDialog()
 	{
-		okButton.setText(buttonLabel);
+		okButton.setText(EAM.text("Button|Save"));
 		return showDialog();
 	}
 
@@ -107,7 +134,9 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 	private UiList createExistingProjectList()
 	{
 		File home = EAM.getHomeDirectory();
-		UiList list = new UiList(home.list(new DirectoryFilter()));
+		final String[] fileList = home.list(new DirectoryFilter());
+		Arrays.sort(fileList, new IgnoreCaseStringComparator());
+		UiList list = new UiList(fileList);
 		list.addListSelectionListener(this);
 		list.addMouseListener(new DoubleClickHandler(this));
 		return list;
@@ -170,14 +199,15 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 			enableOkButtonIfNotEmpty();
 		}
 
-		public void enableOkButtonIfNotEmpty()
-		{
-			boolean isNotEmpty = (projectFilenameField.getText().length() > 0);
-			okButton.setEnabled(isNotEmpty);
-		}
 	}
 
-	private Vector<Component> getButtonComponents()
+	private void enableOkButtonIfNotEmpty()
+	{
+		boolean isNotEmpty = (projectFilenameField.getText().length() > 0);
+		okButton.setEnabled(isNotEmpty);
+	}
+
+	private Vector<Component> createButtonComponents()
 	{
 		okButton = new PanelButton("");
 		okButton.addActionListener(this);
@@ -210,7 +240,14 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 	public void ok()
 	{
-		if(!Project.isValidProjectFilename(getSelectedFilename()))
+		final String newName = getSelectedFilename();
+		if(newName.equals(oldName))
+		{
+			EAM.errorDialog(EAM.text("Cannot save a project back to its existing name"));
+			return;
+		}
+		
+		if(!Project.isValidProjectFilename(newName))
 		{
 			String body = EAM
 					.text("Project filenames cannot contain punctuation other than dots, dashes, and spaces; and they cannot be longer than 32 characters. ");
@@ -222,7 +259,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		{
 			Project project = ((MainWindow)getOwner()).getProject();
 			if(project.isOpen()
-					&& getSelectedFilename().equals(project.getFilename()))
+					&& newName.equals(project.getFilename()))
 			{
 				String body = EAM.text("Cannot overwrite an open project");
 				EAM.errorDialog(body);
@@ -260,6 +297,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 				.getSelectedValue());
 	}
 
+	private String oldName;
 	private boolean result;
 	private UiList existingProjectList;
 	private UiTextField projectFilenameField;
