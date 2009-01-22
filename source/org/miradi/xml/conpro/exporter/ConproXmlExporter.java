@@ -43,6 +43,7 @@ import org.miradi.objecthelpers.ObjectToStringSorter;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
+import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
@@ -263,34 +264,65 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeObjective(out, objectiveRef);
 		}
 		
+		writeTargetGoalsAsObjectives(out);
+		
 		writeEndElement(out, OBJECTIVES);
 	}
 
-	private void writeObjective(UnicodeWriter out, ORef objectiveRef) throws Exception
+	private void writeTargetGoalsAsObjectives(UnicodeWriter out) throws Exception
 	{
-		Objective objective = Objective.find(getProject(), objectiveRef);
-		out.writeln("<" + OBJECTIVE + " " + ID + "='" + objective.getId().toString() + "'>");
+		ORefList targetRefs = getProject().getTargetPool().getRefList();
+		for (int index = 0; index < targetRefs.size(); ++index)
+		{
+			Target target = Target.find(getProject(), targetRefs.get(index));
+			ORefList goalRefs = target.getGoalRefs();
+			writeGoalsAsObjectives(out, goalRefs, target.toString());
+		}
+	}
 
-		writeIndicatorIds(out, objective);
-		writeElement(out, NAME, buildObjectiveExportableName(objective));
-		writeOptionalElement(out, COMMENT, objective, Objective.TAG_COMMENTS);
+	private void writeGoalsAsObjectives(UnicodeWriter out, ORefList goalRefs, String targetName) throws Exception
+	{
+		for (int index = 0; index < goalRefs.size(); ++index)
+		{
+			writeObjective(out, goalRefs.get(index), targetName);
+		}
+	}
+
+	private void writeObjective(UnicodeWriter out, ORef desireRef) throws Exception
+	{
+		String NO_TARGET_NAME = "";
+		writeObjective(out, desireRef, NO_TARGET_NAME);
+	}
+	
+	private void writeObjective(UnicodeWriter out, ORef desireRef, String optionalTargetName) throws Exception
+	{
+		Desire desire = Desire.findDesire(getProject(), desireRef);
+		out.writeln("<" + OBJECTIVE + " " + ID + "='" + desire.getId().toString() + "'>");
+
+		writeIndicatorIds(out, desire);
+		writeElement(out, NAME, buildObjectiveExportableName(desire, optionalTargetName));
+		writeOptionalElement(out, COMMENT, desire, Objective.TAG_COMMENTS);
 		writeEndElement(out, OBJECTIVE);
 	}
 
-	private String buildObjectiveExportableName(Objective objective)
+	private String buildObjectiveExportableName(Desire desire, String optionalTargetName)
 	{
-		String shortLabel = objective.getShortLabel();
-		String label = objective.getLabel();
-		String fullText = objective.getData(Objective.TAG_FULL_TEXT);		
+		String shortLabel = desire.getShortLabel();
+		String label = desire.getLabel();
+		String fullText = desire.getData(Objective.TAG_FULL_TEXT);		
 		
 		final String DELIMITER_TAG = "|";
-		return shortLabel + DELIMITER_TAG + label + DELIMITER_TAG + fullText;
+		String name = shortLabel + DELIMITER_TAG + label + DELIMITER_TAG + fullText;
+		if (optionalTargetName.length() > 0)
+			name += " (" + EAM.text("Target") + " = " + optionalTargetName + ")";
+		
+		return name;
 	}
 
-	private void writeIndicatorIds(UnicodeWriter out, Objective objective) throws Exception
+	private void writeIndicatorIds(UnicodeWriter out, Desire desire) throws Exception
 	{
 		writeStartElement(out, INDICATORS);
-		writeIds(out, INDICATOR_ID, objective.getRelevantIndicatorRefList());
+		writeIds(out, INDICATOR_ID, desire.getRelevantIndicatorRefList());
 		
 		writeEndElement(out, INDICATORS);
 	}
