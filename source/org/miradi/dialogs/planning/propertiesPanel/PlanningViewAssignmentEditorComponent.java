@@ -170,7 +170,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		return mainWindow.getActions();
 	}
 	
-	public void dataWasChanged()
+	public void dataWasChanged() throws Exception
 	{
 		resourceTableModel.dataWasChanged();
 		workPlanModel.dataWasChanged();
