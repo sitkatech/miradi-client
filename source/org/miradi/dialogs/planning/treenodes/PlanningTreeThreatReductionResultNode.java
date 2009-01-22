@@ -48,6 +48,7 @@ public class PlanningTreeThreatReductionResultNode extends AbstractPlanningTreeN
 		DiagramObject diagram = diagramObject;
 		
 		createAndAddChildren(threatReductionResult.getObjectiveRefs(), diagram);
+		addMissingChildren(threatReductionResult.getIndicatorRefs(), diagram);
 	}
 
 	protected int[] getNodeSortOrder()
