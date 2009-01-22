@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import java.awt.Container;
+
 import javax.swing.JComponent;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
@@ -59,10 +61,10 @@ public class ColumnMarginResizeListenerValidator implements TableColumnModelList
 	
 	private void resizeTablesToExactlyFitAllColumns() 
 	{
-		if(componentToValidate.getTopLevelAncestor() != null)
-			componentToValidate.getTopLevelAncestor().validate();
-		else
-			componentToValidate.validate();
+		Container topLevel = componentToValidate.getTopLevelAncestor();
+		if(topLevel == null)
+			topLevel = componentToValidate;
+		topLevel.validate();
 	}
 	
 	private JComponent componentToValidate;
