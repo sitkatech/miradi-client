@@ -64,6 +64,7 @@ public class ColumnManager
 		masterColumnList.add(Measurement.META_COLUMN_TAG);
 		masterColumnList.add(Indicator.META_COLUMN_TAG);
 		masterColumnList.add(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL);
+		masterColumnList.add(Factor.TAG_COMMENT);
 			
 		return masterColumnList;
 	}
