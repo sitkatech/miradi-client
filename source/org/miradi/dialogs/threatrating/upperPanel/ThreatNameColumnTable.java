@@ -33,6 +33,13 @@ public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 		super(mainWindowToUse, tableModel, UNIQUE_IDENTIFIER);
 		getColumnModel().getColumn(0).setCellRenderer(new MultiLineObjectTableCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow())));
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		getTableHeader().setReorderingAllowed(false);
+	}
+	
+	@Override
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
 	}
 		
 	public static final String UNIQUE_IDENTIFIER = "ThreatsTable"; 

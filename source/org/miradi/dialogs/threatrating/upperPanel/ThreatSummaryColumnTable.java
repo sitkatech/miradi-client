@@ -31,7 +31,14 @@ public class ThreatSummaryColumnTable extends TableWhoseScrollPaneAlwaysExactlyF
 	{
 		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		getTableHeader().setReorderingAllowed(false);
 	}
 	
+	@Override
+	public boolean shouldSaveColumnSequence()
+	{
+		return false;
+	}
+		
 	public static final String UNIQUE_IDENTIFIER = "ThreatSummaryColumnTable";	
 }
