@@ -90,10 +90,13 @@ public class EAM
 		String file1AsString = file1.getAbsolutePath();
 		String file2AsString = file2.getAbsolutePath();
 		
-		if (file1AsString.length() <= file2AsString.length())
-			return file2AsString.startsWith(file1AsString);
+		if (file1AsString.startsWith(file2AsString))
+			return true;
 		
-		return file1AsString.startsWith(file2AsString);
+		if (file2AsString.startsWith(file1AsString))
+			return true;
+		
+		return false;
 	}
 
 	private static void alertIfHomeIsNotOnC()
