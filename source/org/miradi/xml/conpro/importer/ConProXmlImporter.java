@@ -1026,6 +1026,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 		CommandCreateObject createResultsChain = new CommandCreateObject(ResultsChainDiagram.getObjectType());
 		getProject().executeCommand(createResultsChain);
 		
+		String DEFAUL_RESULTS_CHAIN_LABEL = EAM.text("Placeholder - From ConPro");
+		CommandSetObjectData setResultsChainLabel = new CommandSetObjectData(createResultsChain.getObjectRef(), ResultsChainDiagram.TAG_LABEL, DEFAUL_RESULTS_CHAIN_LABEL);
+		getProject().executeCommand(setResultsChainLabel);
+		
 		final String OBJECTIVE_CONTAINER_LABEL = "Objective Holder";
 		final Point OBJECTIVE_CONTAINER_LOCATION = new Point(30, 30);
 		ORef objectiveHolderDiagramFactoRef = createIntermediateResultAsContainer(OBJECTIVE_CONTAINER_LABEL, OBJECTIVE_CONTAINER_LOCATION);
