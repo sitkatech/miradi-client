@@ -66,7 +66,7 @@ public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanel
 		return EAM.text("Task Properties");
 	}
 	
-	public void dataWasChanged()
+	public void dataWasChanged() throws Exception
 	{
 		assignmentEditor.dataWasChanged();
 	}

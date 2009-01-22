@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.AccountingCode;
@@ -33,7 +34,7 @@ import org.miradi.objects.ProjectResource;
 
 public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
 {
-	public PlanningViewResourceTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse)
+	public PlanningViewResourceTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		model = modelToUse;
@@ -47,7 +48,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 	}
 
-	public void rebuildColumnEditorsAndRenderers()
+	public void rebuildColumnEditorsAndRenderers() throws Exception
 	{
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
@@ -68,7 +69,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		createComboColumn(accountingCodes, tableColumn, invalidAccountingCode);
 	}
 	
-	private void createResourceCombo(int tableColumn)
+	private void createResourceCombo(int tableColumn) throws Exception
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		if (! model.isResourceColumn(modelColumn))
@@ -76,6 +77,7 @@ public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPref
 		
 		ProjectResource[] resources = getAllProjectResources();
 		ProjectResource invalidResource = new ProjectResource(getObjectManager(), BaseId.INVALID);
+		invalidResource.setData(ProjectResource.TAG_GIVEN_NAME, EAM.text("(not specified)"));
 		createComboColumn(resources, tableColumn, invalidResource);
 	}
 	
