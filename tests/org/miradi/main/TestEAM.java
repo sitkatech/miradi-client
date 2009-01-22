@@ -42,10 +42,13 @@ public class TestEAM extends EAMTestCase
 		File homeDir = new File("C:\\Users\\Nima\\Documents\\Miradi");
 		File file1 = new File("C:\\Users\\Nima\\Documents\\Miradi\\somefile.txt");
 		assertTrueFileInsideOther(homeDir, file1);
+		assertTrueFileInsideOther(file1, homeDir);
+		
 		assertTrueFileInsideOther(homeDir, homeDir);
 		
 		File file2 = new File("C:\\Users\\Nima\\Documents\\somefile.txt");
 		assertFalseFileInsideOther(homeDir, file2);
+		assertFalseFileInsideOther(file2, homeDir);
 	}
 
 	private void assertTrueFileInsideOther(File file1, File file2)
