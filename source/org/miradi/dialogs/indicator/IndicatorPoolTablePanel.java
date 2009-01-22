@@ -28,9 +28,10 @@ public class IndicatorPoolTablePanel extends ObjectPoolTablePanel
 	public IndicatorPoolTablePanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, ObjectType.INDICATOR, 
-				new IndicatorPoolTableModel(mainWindowToUse.getProject()), UNIQUE_IDENTIFIER
+				new IndicatorPoolTableModel(mainWindowToUse.getProject()), NAME_COLUMN_INDEX_TO_SORT_BY, UNIQUE_IDENTIFIER
 		);
 	}
 	
-	public static final String UNIQUE_IDENTIFIER = "IndicatorPoolTablePanel";	
+	public static final String UNIQUE_IDENTIFIER = "IndicatorPoolTablePanel";
+	private static final int NAME_COLUMN_INDEX_TO_SORT_BY = 1;
 }
