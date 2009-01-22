@@ -21,6 +21,8 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
@@ -82,17 +84,17 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		targetThreatLinkTable = new TargetThreatLinkTable(getMainWindow(), targetThreatLinkTableModel);
 		addRowHeightControlledTable(targetThreatLinkTable);
 		addRowSortControlledTable(targetThreatLinkTable);
+		listenForColumnWidthChanges(targetThreatLinkTable);
 
 		threatSummaryColumnTableModel = new ThreatSummaryColumnTableModel(getProject());
 		threatSummaryColumnTable = new ThreatSummaryColumnTable(getMainWindow(), threatSummaryColumnTableModel);
 		addRowHeightControlledTable(threatSummaryColumnTable);
 		addRowSortControlledTable(threatSummaryColumnTable);
+		listenForColumnWidthChanges(threatSummaryColumnTable);
 
 		targetSummaryRowTableModel = new TargetSummaryRowTableModel(getProject());
 		targetSummaryRowTable = new TargetSummaryRowTable(getMainWindow(), targetSummaryRowTableModel, targetThreatLinkTable);
 		targetSummaryRowTable.resizeTable(1);
-		
-		listenForColumnWidthChanges(targetSummaryRowTable);
 		
 		overallProjectSummaryCellTableModel = new OverallProjectSummaryCellTableModel(getProject());
 		overallProjectSummaryCellTable = new OverallProjectSummaryCellTable(getMainWindow(), overallProjectSummaryCellTableModel);
@@ -149,16 +151,22 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		}
 		
 		@Override
+		public Dimension getPreferredSize()
+		{
+			lastKnownPreferredSize = super.getPreferredSize();
+			return lastKnownPreferredSize;
+		}
+		
+		@Override
 		public Dimension getMaximumSize()
 		{
 			final Dimension max = super.getMaximumSize();
-			final Dimension preferred = getPreferredSize();
 			int width = max.width;
-			if(capMaxWidth)
-				width = Math.min(width, preferred.width);
+			if(capMaxWidth && lastKnownPreferredSize != null)
+				width = Math.min(width, lastKnownPreferredSize.width);
 			int height = max.height;
-			if(capMaxHeight)
-				height = Math.min(height, preferred.height);
+			if(capMaxHeight && lastKnownPreferredSize != null)
+				height = Math.min(height, lastKnownPreferredSize.height);
 			return new Dimension(width, height);
 		}
 
@@ -166,13 +174,12 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		public Dimension getMinimumSize()
 		{
 			final Dimension min = super.getMinimumSize();
-			final Dimension preferred = getPreferredSize();
 			int width = min.width;
-			if(capMinWidth)
-				width = Math.max(width, preferred.width);
+			if(capMinWidth && lastKnownPreferredSize != null)
+				width = Math.max(width, lastKnownPreferredSize.width);
 			int height = min.height;
-			if(capMinHeight)
-				height = Math.max(height, preferred.height);
+			if(capMinHeight && lastKnownPreferredSize != null)
+				height = Math.max(height, lastKnownPreferredSize.height);
 			return new Dimension(width, height);
 		}
 
@@ -180,30 +187,19 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		private boolean capMaxHeight;
 		private boolean capMinWidth;
 		private boolean capMinHeight;
-	}
-	
-	static class ComponentSizeMatcher
-	{
-		public ComponentSizeMatcher(JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
-		{
-			matchWidthOf = matchWidthOfComponent;
-			matchHeightOf = matchHeightOfComponent;
-		}
-		
-		public Dimension getSize()
-		{
-			return new Dimension(matchWidthOf.getWidth(), matchHeightOf.getHeight());
-		}
-		
-		private JComponent matchWidthOf;
-		private JComponent matchHeightOf;
+		private Dimension lastKnownPreferredSize;
 	}
 	
 	static class CornerFillerComponent extends JComponent
 	{
 		public CornerFillerComponent(JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
 		{
-			matcher = new ComponentSizeMatcher(matchWidthOfComponent, matchHeightOfComponent);
+			matchWidthOf = matchWidthOfComponent;
+			matchHeightOf = matchHeightOfComponent;
+			
+			ResizeHandlerToForceLayoutWhenDraggingColumnWidths handler = new ResizeHandlerToForceLayoutWhenDraggingColumnWidths();
+			matchWidthOf.addComponentListener(handler);
+			matchHeightOf.addComponentListener(handler);
 		}
 		
 		@Override
@@ -221,37 +217,50 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		@Override
 		public Dimension getSize()
 		{
-			return matcher.getSize();
+			return new Dimension(matchWidthOf.getPreferredSize().width, matchHeightOf.getPreferredSize().height);
 		}
 		
 		@Override
 		public Dimension getPreferredSize()
 		{
-			return getSize();
+			return new Dimension(matchWidthOf.getPreferredSize().width, matchHeightOf.getPreferredSize().height);
 		}
 		
 		@Override
 		public Dimension getMaximumSize()
 		{
-			return getSize();
+			return new Dimension(matchWidthOf.getMaximumSize().width, matchHeightOf.getMaximumSize().height);
 		}
 		
 		@Override
 		public Dimension getMinimumSize()
 		{
-			return getSize();
+			return new Dimension(matchWidthOf.getMinimumSize().width, matchHeightOf.getMinimumSize().height);
 		}
 		
-		private ComponentSizeMatcher matcher;
+		class ResizeHandlerToForceLayoutWhenDraggingColumnWidths implements ComponentListener
+		{
+			public void componentResized(ComponentEvent e)
+			{
+				getParent().invalidate();
+			}
+
+			public void componentHidden(ComponentEvent e)	{}
+			public void componentMoved(ComponentEvent e)	{}
+			public void componentShown(ComponentEvent e)	{}
+		}
+		
+		private JComponent matchWidthOf;
+		private JComponent matchHeightOf;
 	}
 	
 	static class ScrollPaneWithWidthMatchingForSingleRowTable extends FastScrollPane
 	{
-		public ScrollPaneWithWidthMatchingForSingleRowTable(JTable view, JComponent matchWidthOf)
+		public ScrollPaneWithWidthMatchingForSingleRowTable(JTable view, JComponent matchWidthOfComponent)
 		{
 			super(view);
 			table = view;
-			matcher = new ComponentSizeMatcher(matchWidthOf, this);
+			matchWidthOf = matchWidthOfComponent;
 		}
 		
 		@Override
@@ -263,29 +272,31 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		@Override
 		public Dimension getSize()
 		{
-			return new Dimension(matcher.getSize().width, super.getSize().height);
+			return new Dimension(matchWidthOf.getSize().width, super.getSize().height);
 		}
 		
 		@Override
 		public Dimension getPreferredSize()
 		{
-			return new Dimension(matcher.getSize().width, super.getPreferredSize().height);
+			return new Dimension(matchWidthOf.getPreferredSize().width, super.getPreferredSize().height);
 		}
 		
 		@Override
 		public Dimension getMaximumSize()
 		{
-			return new Dimension(matcher.getSize().width, table.getRowHeight(0) + getHorizontalScrollBar().getPreferredSize().height);
+			return new Dimension(matchWidthOf.getMaximumSize().width, table.getRowHeight(0) + getHorizontalScrollBar().getPreferredSize().height);
 		}
 		
 		@Override
 		public Dimension getMinimumSize()
 		{
-			return new Dimension(matcher.getSize().width, super.getMinimumSize().height);
+			final int matchWidth = matchWidthOf.getMinimumSize().width;
+			final int superHeight = super.getMinimumSize().height;
+			return new Dimension(matchWidth, superHeight);
 		}
 		
 		private JTable table;
-		private ComponentSizeMatcher matcher;
+		private JComponent matchWidthOf;
 	}
 	
 	private void addTableToGridBag()
