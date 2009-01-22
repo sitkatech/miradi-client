@@ -85,11 +85,11 @@ public class EAM
 		return defaultHomeDirectory;
 	}
 	
-	public static boolean isFileInsideDir(File containingDir, File dirToTest)
+	public static boolean isOneFileInsideTheOther(File containingDir, File dirToTest)
 	{
 		String homeDirectory = containingDir.getAbsolutePath();
 		String parentOfChosen = dirToTest.getAbsolutePath();
-		
+		//FIXME make sure this method goes the other way around as well
 		return parentOfChosen.startsWith(homeDirectory);
 	}
 

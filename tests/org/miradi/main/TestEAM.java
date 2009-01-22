@@ -37,15 +37,24 @@ public class TestEAM extends EAMTestCase
 		assertEquals("didnt substitude correctly?", expectedText, substitudedText); 
 	}
 	
-	public void testIsFileInsideDir()
+	public void testIsOneFileInsideTheOther()
 	{
 		File homeDir = new File("C:\\Users\\Nima\\Documents\\Miradi");
 		File file1 = new File("C:\\Users\\Nima\\Documents\\Miradi\\somefile.txt");
-		assertTrue("file inside other folder", EAM.isFileInsideDir(homeDir, file1));
-		
-		assertTrue("file is same and should be inside itself?", EAM.isFileInsideDir(homeDir, homeDir));
+		assertTrueFileInsideOther(homeDir, file1);
+		assertTrueFileInsideOther(homeDir, homeDir);
 		
 		File file2 = new File("C:\\Users\\Nima\\Documents\\somefile.txt");
-		assertFalse("file is not inside other folder", EAM.isFileInsideDir(homeDir, file2));
+		assertFalseFileInsideOther(homeDir, file2);
+	}
+
+	private void assertTrueFileInsideOther(File file1, File file2)
+	{		
+		assertTrue("file inside other folder", EAM.isOneFileInsideTheOther(file1, file2));
+	}
+	
+	private void assertFalseFileInsideOther(File file1, File file2)
+	{		
+		assertFalse("file is not inside other folder", EAM.isOneFileInsideTheOther(file1, file2));
 	}
 }
