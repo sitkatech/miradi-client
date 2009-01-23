@@ -99,6 +99,14 @@ public class ThreatReductionResult extends Factor
 		return relatedDirectThreat.get();
 	}
 	
+	public ORef getRelatedThreatRef()
+	{
+		if (relatedDirectThreat.get().length() == 0)
+			return ORef.INVALID;
+		
+		return ORef.createFromString(relatedDirectThreat.get());
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

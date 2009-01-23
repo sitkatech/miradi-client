@@ -59,6 +59,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
@@ -276,7 +277,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		{
 			Target target = Target.find(getProject(), targetRefs.get(index));
 			ORefList goalRefs = target.getGoalRefs();
-			writeGoalsAsObjectives(out, goalRefs, target.toString());
+			String targetAnnotationLabel = " (" + EAM.text("Target") + " = " + target.getLabel() + ")";
+			writeGoalsAsObjectives(out, goalRefs, targetAnnotationLabel);
 		}
 	}
 
@@ -290,22 +292,66 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeObjective(UnicodeWriter out, ORef desireRef) throws Exception
 	{
-		String NO_TARGET_NAME = "";
-		writeObjective(out, desireRef, NO_TARGET_NAME);
+		writeObjective(out, desireRef, createThreatOrThreatReductionResultAnnotationLabel(desireRef));
+	}
+
+	private String createThreatOrThreatReductionResultAnnotationLabel(ORef desireRef)
+	{
+		Desire desire = Desire.findDesire(getProject(), desireRef);
+		ORefList factorReferrerRefs = getThreatOrThreatReductionResultReferrers(desire);
+		if (factorReferrerRefs.isEmpty())
+			return "";
+
+		final int FIRST_REF_INDEX = 0;
+		ORef factorRef = factorReferrerRefs.get(FIRST_REF_INDEX);
+		Factor factor = Factor.findFactor(getProject(), factorRef);
+		String threatLabel = EAM.text("Threat");
+		if (factor.isDirectThreat())
+			return createThreatAnnotationLabel(factor, threatLabel);
+		
+		if (factor.isThreatReductionResult())
+			return createThreatReductionResultsAnnotationLabel(factor, threatLabel);
+		
+		return "";
+	}
+
+	private String createThreatReductionResultsAnnotationLabel(Factor factor, String translatedThreatLabel)
+	{
+		ThreatReductionResult threatReductionResult = (ThreatReductionResult) factor;
+		ORef relatedThreatRef = threatReductionResult.getRelatedThreatRef();
+		if (relatedThreatRef.isInvalid())
+			return " (" + translatedThreatLabel + ")";
+		
+		Cause threat = Cause.find(getProject(), relatedThreatRef);
+		return createThreatAnnotationLabel(threat, translatedThreatLabel);
+	}
+
+	private String createThreatAnnotationLabel(Factor threat, String translatedThreatLabel)
+	{
+		return " (" + translatedThreatLabel + " = " + threat.getLabel() + ")";
+	}
+
+	private ORefList getThreatOrThreatReductionResultReferrers(Desire desire)
+	{
+		ORefList causeReferrerRefs = desire.findObjectsThatReferToUs(Cause.getObjectType());
+		if (causeReferrerRefs.size() == 1)
+			return causeReferrerRefs;
+		
+		return desire.findObjectsThatReferToUs(ThreatReductionResult.getObjectType());
 	}
 	
-	private void writeObjective(UnicodeWriter out, ORef desireRef, String optionalTargetName) throws Exception
+	private void writeObjective(UnicodeWriter out, ORef desireRef, String optionalAnnotationLabel) throws Exception
 	{
 		Desire desire = Desire.findDesire(getProject(), desireRef);
 		out.writeln("<" + OBJECTIVE + " " + ID + "='" + desire.getId().toString() + "'>");
 
 		writeIndicatorIds(out, desire);
-		writeElement(out, NAME, buildObjectiveExportableName(desire, optionalTargetName));
+		writeElement(out, NAME, buildObjectiveExportableName(desire, optionalAnnotationLabel));
 		writeOptionalElement(out, COMMENT, desire, Objective.TAG_COMMENTS);
 		writeEndElement(out, OBJECTIVE);
 	}
 
-	private String buildObjectiveExportableName(Desire desire, String optionalTargetName)
+	private String buildObjectiveExportableName(Desire desire, String optionalAnnotationLabel)
 	{
 		String shortLabel = desire.getShortLabel();
 		String label = desire.getLabel();
@@ -313,8 +359,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		
 		final String DELIMITER_TAG = "|";
 		String name = shortLabel + DELIMITER_TAG + label + DELIMITER_TAG + fullText;
-		if (optionalTargetName.length() > 0)
-			name += " (" + EAM.text("Target") + " = " + optionalTargetName + ")";
+		if (optionalAnnotationLabel.length() > 0)
+			name += optionalAnnotationLabel;
 		
 		return name;
 	}
