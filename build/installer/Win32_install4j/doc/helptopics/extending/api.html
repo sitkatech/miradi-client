@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Developing with the install4j API</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Developing with the install4j API</h2>
+</td><td valign="top" align="right"><a href="../../../doc/helptopics/extending/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/extending/extensions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<h3>1. Introduction</h3>
+    
+      There are two different circumstances where you might want to use the install4j API: Within
+      <a href="../../../doc/steps/installerGui/dialogs/javaCode.html">expression/script properties</a>
+      in the configuration GUI and for the development of custom elements in install4j. The development
+      of custom elements in install4j is rarely necessary for typical installers, most simple custom actions can
+      be performed with a "Run script" action and most custom forms can be realized with a "Customizable form" screen.
+    <br>
+    
+<p>
+      If you would not like to miss your IDE while writing more complex custom code, you can put a single call to
+      custom code into expression/script properties. The location of your custom code classes must
+      <a href="../../../doc/steps/installerGui/customCode.html">configured</a>, so
+      install4j will package it with the installer and put in into the class path. In this way you can completely avoid
+      the use of the interfaces required to extend install4j.
+    </p>
+    
+<p>
+      When you want to use install4j classes within your IDE, you can add
+      <i><tt>$INSTALL4J_HOME/resource/i4jruntime.jar</tt></i> to your classpath (in your IDE). Do not distribute this
+      jar file with your application, install4j will handle this for you.
+    </p>
+
+    
+<h3>2. Expression/script properties</h3>
+    
+<p>
+      Using expression/script properties in install4j is required for
+      <a href="../../../doc/helptopics/concepts/screensAndActions.html">wiring together screens and actions</a> as well as
+      for the conditional execution of screens and actions. The most important element in this respect is
+      the <b>context</b> which is an instance of
+      <ul>
+<li>
+<font color="#5A4E87"><b>com.api.install4j.context.InstallerContext</b></font>
+<br>
+          in an installer
+        </li>
+<li>
+<font color="#5A4E87"><b>com.api.install4j.context.UninstallerContext</b></font>
+<br>
+          in an uninstaller
+        </li>
+</ul>
+      The context allows you to query the environment and the configuration of the installer as well as to perform some
+      common tasks.
+    </p>
+    
+<p>
+      Please see the documentation of the
+      <a href="../../../doc/api/javadoc/com/install4j/api/context/package-summary.html">com.install4j.api.context package</a>
+      for the complete documentation of all methods in the context. Some common applications include:
+    </p>
+    
+<ul>
+<li>
+<font color="#5A4E87"><b>Setting the installation directory</b></font>
+<br>
+        By using <code>context.setInstallationDirectory(File installationDirectory)</code> in the installer context,
+        you can change the default installation directory for the installer. Typically, this call is placed into a
+        "Run script" action on the "Startup" screen.
+      </li>
+<li>
+<font color="#5A4E87"><b>Getting and setting installer variables</b></font>
+<br>
+        The <code>getVariable(String variableName)</code> and <code>setVariable(String variableName, Object value)</code>
+        methods allow you to query and modify installer variables. Note that besides the "Run script" action, there is also a
+        "Set a variable action" where you don't have to call <code>setVariable</code> yourself.
+      </li>
+<li>
+<font color="#5A4E87"><b>Conditionally executing screens or actions</b></font>
+<br>
+        Often, condition expressions for screens and actions check the values of variables. In addition,
+        the context provides a number of boolean getters that you can use for conditionally executing screens
+        and actions depending on the installer mode and environment. These methods include
+        <code>isConsole()</code>, <code>isUnattended()</code> and others.
+      </li>
+<li>
+<font color="#5A4E87"><b>Navigating between screens</b></font>
+<br>
+        Depending on the user selection on a screen, you might want to skip a number of screens. The
+        <code>goForward(...)</code>, <code>goBack(...)</code> and <code>goBackInHistory(...)</code>
+        methods provide the easiest way to achieve this.
+      </li>
+</ul>
+    
+<p>
+      Many other context methods are only useful if you develop custom elements for install4j.
+    </p>
+    
+<p>
+      Also have a look at the <code>com.install4j.api.Util</code> class which offers a number of utility methods
+      that are useful in expression/script properties.
+    </p>
+
+    
+<h3>3. Developing custom elements for install4j</h3>
+    
+<p>
+      For a general overview on how to start developing with the install4j API, how to set up your IDE and
+      how to debug your custom elements, please see the
+      <a href="../../../doc/api/javadoc/overview-summary.html">API overview in the javadoc</a>.
+    </p>
+    
+<p>
+      install4j provides three extension points:
+    </p>
+    
+<ul>
+<li>
+<a href="../../../doc/steps/installerGui/actions.html">Actions</a>
+<br>
+        Please see the documentation of the
+        <a href="../../../doc/api/javadoc/com/install4j/api/actions/package-summary.html">com.install4j.api.actions package</a>
+        for the complete documentation on how to develop actions.
+      </li>
+<li>
+<a href="../../../doc/steps/installerGui/screens.html">Screens</a>
+<br>
+        Please see the documentation of the
+        <a href="../../../doc/api/javadoc/com/install4j/api/screens/package-summary.html">com.install4j.api.screens package</a>
+        for the complete documentation on how to develop screens.
+      </li>
+<li>
+<a href="../../../doc/steps/installerGui/formComponents.html">Form components</a>
+<br>
+        Please see the documentation of the
+        <a href="../../../doc/api/javadoc/com/install4j/api/formcomponents/package-summary.html">com.install4j.api.formcomponents package</a>
+        for the complete documentation on how to develop form components.
+      </li>
+</ul>
+    
+<p>
+      All actions, screens and form components in install4j use this API themselves. To make your custom elements
+      selectable in the install4j IDE, you first have to
+      <a href="../../../doc/steps/installerGui/customCode.html">configure the custom code locations</a>. When you add
+      an action, screen or form component, the first popup gives you the choice on whether to add a standard element
+      or <a href="../../../doc/steps/installerGui/dialogs/classSelector.html">search for suitable elements in your custom code</a>.
+    </p>
+    
+<p>
+      If you use your custom code in multiple projects, consider packaging an
+      <a href="../../../doc/helptopics/extending/extensions.html">install4j extension</a>,
+      which displays your custom elements alongside the standard elements that are provided by install4j and allows you
+      to ship them easily to third parties.
+    </p>
+
+    
+<h3>4. Serialization</h3>
+    
+<p>
+      install4j serializes all instances of screens, actions and form components with the default serialization mechanism for
+      JavaBeans that is present in Java since version 1.4. The install4j runtime includes its own implementation of
+      <code>java.beans.XMLDecoder</code>, so the generated installers can work with Java 1.3 JREs as well if your
+      <a href="../../../doc/steps/general/javaVersion.html">Java version constraints</a> are configured to allow this.
+    </p>
+    
+<p>
+      To learn more about JavaBeans serialization, please visit
+      <ul>
+<li>
+          
+<a target="_blank" href="http://java.sun.com/j2se/1.4.2/docs/api/java/beans/XMLEncoder.html">http://java.sun.com/j2se/1.4.2/docs/api/java/beans/XMLEncoder.html</a>
+          for API documentation on the long-term persistence mechanism for JavaBeans.
+        </li>
+<li>
+          
+<a target="_blank" href="http://java.sun.com/products/jfc/tsc/articles/persistence3/">http://java.sun.com/products/jfc/tsc/articles/persistence3/</a>
+          for information on the format of the XML serialization.
+        </li>
+<li>
+          
+<a target="_blank" href="http://java.sun.com/products/jfc/tsc/articles/persistence4/">http://java.sun.com/products/jfc/tsc/articles/persistence4/</a>
+          for information on how to write your own persistence delegates. In your bean infos for screens, actions and form components
+          you can specify a list of additional persistence delegates for non-default types.
+        </li>
+</ul>
+    
+</p>
+    
+<p>
+      Compiler variables are replaced in the serialized representation of a bean. In this way, compiler variable
+      replacement is automatically available for all properties of type <tt>java.lang.String</tt>.
+      The values of installer variables and localization keys are determined at runtime, so you
+      have to call the utility methods in <tt>com.install4j.api.beans.AbstractBean</tt> before you use the values in the installer or uninstaller.
+      For more information on variables, please see the <a href="../../../doc/helptopics/concepts/variables.html">separate help topic</a>.
+    </p>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/helptopics/extending/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/extending/extensions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

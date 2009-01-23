@@ -1,0 +1,14 @@
+option batch on
+option confirm off
+open miradi-deployment@miradi.org
+option transfer binary
+cd /var/www/domains/miradi.org/downloadable_files/untested/
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\README
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\miradi.jar
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\MiradiSetup.exe
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\Miradi-Mac.zip
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\Miradi-Linux.zip
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\MarineExample*.mpz
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\Miradi-Thirdparty-Source.zip
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\Miradi-Source.zip
+put C:\users\nima\projects\eclipse\miradi\binaries-miradi\dist\MiradiContent*.jar

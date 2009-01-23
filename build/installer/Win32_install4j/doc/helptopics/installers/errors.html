@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Error Handling</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Error Handling</h2>
+</td><td valign="top" align="right"><a href="../../../doc/helptopics/installers/updates.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/installers/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<h3>1. Damaged JREs</h3>
+    
+      If the <a href="../../../doc/helptopics/installers/jre.html">JRE search sequence</a> of the installer selects
+      a damaged JRE, the installer might fail to start up correctly.
+      The next time the installer is executed, the installer will ask the user whether the automatic search
+      should be performed again or if a JRE should be manually located or downloaded.
+    <br>
+    
+<p>
+      
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/damaged_jre.png">
+    </p>
+    
+<p>
+      If the user chooses
+      manual location or download, the same dialog will be displayed as for in the
+      <a href="../../../doc/helptopics/installers/jre.html">failure to find a JRE</a>.
+    </p>
+    
+<p>
+      
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/installer_no_jre_found.png">
+    </p>
+    
+<p>
+      The download option is only available if a JRE has been
+      dynamically bundled in the <a href="../../../doc/steps/media/steps/bundledJre.html">Bundled JRE</a>
+      step of the <a href="../../../doc/steps/media/wizard.html">media file wizard</a>. A JRE that has
+      been located or downloaded in this way will also be used by your installed application.
+    </p>
+
+    
+<h3>2. Error logs</h3>
+    
+<p>
+      On Windows, when an installer is executed it always generates a log file in the temp directory that contains
+      information about the JRE search sequence and can be used for debugging purposes. The name of the log file
+      starts with <tt>i4j_nlog_</tt>. If you have a problem
+      with JRE detection or the installer startup, please send this log file along with your support request.
+    </p>
+    
+<p>
+      It is also possible to generate this log for the JRE detection of the generated Windows launchers.
+      In order to switch on logging, please define the environment variable
+      <tt>INSTALL4J_LOG=yes</tt> and look for the newest text file whose name starts with
+      <tt>i4j_nlog_</tt> in the temp directory.
+    </p>
+    
+<p>
+      If an exception is thrown in the installer, it prepares an error log and informs the user about its location
+    </p>
+    
+<p>
+      
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/installer_error.png">
+    </p>
+    
+<p>
+      You can force the installer to print exceptions to stderr for debugging purposes with the
+      <tt>-Dinstall4j.debug=true</tt> <a href="../../../doc/helptopics/installers/options.html">command line option</a>.
+    </p>
+
+    
+<h3>3. Installation log</h3>
+    
+<p>
+      Additionally, all installers and uninstaller generate an installation log that can be used for
+      debugging purposes. After a successful installation it is located in <i><tt>[installation dir]/.install4j/installation.log</tt></i>.
+      For uninstallation or if the end of the installation cannot be reached, you can find it in your temp directory if
+      you pass <tt>-Dinstall4j.keepLog=true</tt> to the installer or uninstaller. The file is prefixed <i><tt>i4j_log</tt></i>.
+      If you would like the installer to log to stderr as well, you can pass <tt>-Dinstall4j.logToStderr=true</tt> to the
+      installer. Both arguments can also be useful for debug installers and uninstallers, where they have to be passed as VM parameters.  
+    </p>
+
+    
+<h3>4. Error handling of Actions</h3>
+    
+<p>
+      You can define the error handling for every installation or uninstallation action separately. Please find
+      more information in the <a href="../../../doc/helptopics/concepts/screensAndActions.html">Screens and Actions help topic</a>.
+    </p>
+
+    
+<h3>5. Return values</h3>
+    
+<p>
+      The process of an installer returns <tt>0</tt> if the installation was completed successfully,
+      <tt>1</tt> if the installation fails and <tt>83</tt> if the installer could not find
+      a suitable JVM to run. These exit codes are especially useful to check the result of an
+      <a href="../../../doc/helptopics/installers/installerModes.html">unattended installer run</a>.
+    </p>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/helptopics/installers/updates.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/installers/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

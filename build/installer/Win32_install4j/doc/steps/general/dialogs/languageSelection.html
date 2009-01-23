@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Language Selection Dialog</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Language Selection Dialog</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/general/dialogs/searchSequence.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/general/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/general/dialogs/variableSelection.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The variable selection dialog is displayed when you click on the
+      <img style="vertical-align: middle" align="middle" border="0" src="../../../../doc/images/add.png">&nbsp;<b>[Add Language]</b>
+      button on the
+      <a href="../../../../doc/steps/general/languages.html">Languages tab</a>
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Select one of the supported languages with a double-click or the <b>[OK]</b> button. Next to each language
+      the ISO code is displayed that is required if you override the principal language from the command line
+      with the <a href="../../../../doc/cli/options.html">LANGUAGE_ID variable</a>.
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/general/dialogs/searchSequence.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/general/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/general/dialogs/variableSelection.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

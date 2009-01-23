@@ -1,0 +1,2508 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Installer - Available Actions</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Installer - Available Actions</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/actions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/groups.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Control</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Run script</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Runs a custom script. The script must return a boolean value. If it returns false, the installation will be canceled.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Optional Rollback Script</b></font>
+<br>The script that will be executed in case of a rollback. The return type is void.</li>
+<li>
+<font color="#5A4E87"><b>Script</b></font>
+<br>The script that will be executed. The script must return a boolean value. If it returns false, the installation will be canceled.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set a variable</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Sets a variable by running a custom script. The script must return a String.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Fail if value is null</b></font>
+<br>If selected, the action will fail if a null value is returned from the script.</li>
+<li>
+<font color="#5A4E87"><b>Only if undefined</b></font>
+<br>The variable will only be set if it was previously undefined. This is useful for variables that your user can pass via -V or -varfile at the command line.</li>
+<li>
+<font color="#5A4E87"><b>Script</b></font>
+<br>The script that will be executed. The script must return a String.</li>
+<li>
+<font color="#5A4E87"><b>Variable name</b></font>
+<br>The name of the variable that will be set. Enter the variable without the installer prefix and the percent signs.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set messages</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Sets the messages in the progress interface.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Detail message</b></font>
+<br>The detail message.</li>
+<li>
+<font color="#5A4E87"><b>Status message</b></font>
+<br>The status message.</li>
+<li>
+<font color="#5A4E87"><b>Use detail</b></font>
+<br>If the detail message should be set.</li>
+<li>
+<font color="#5A4E87"><b>Use status</b></font>
+<br>If the status message should be set.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set the progress bar</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Change the value of the progress bar or set it to indeterminate mode.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Percent value</b></font>
+<br>The progress value from 0 to 100. This property is only used when a percentage value is set or added.</li>
+<li>
+<font color="#5A4E87"><b>Type of change</b></font>
+<br>Change the progress bar either to a percentage value, add progress, set it to indeterminate mode, start a timer, or return from indeterminate mode and show the last percentage value.</li>
+<li>
+<font color="#5A4E87"><b>Timer maximum value</b></font>
+<br>The maximum progress value to be set by the timer. This property is only used when the timer is started.</li>
+<li>
+<font color="#5A4E87"><b>Timer period</b></font>
+<br>The time in milliseconds for one percent. This property is only used when the timer is started.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Sleep</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Sleep a specified number of milliseconds. This is useful to ensure that a progess screen is displayed for at least a certain period of time.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Sleep time</b></font>
+<br>The sleep time in milliseconds.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Desktop integration</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Add a desktop link</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Create a link on the desktop to an installed executable or file. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Create for all users</b></font>
+<br>If the desktop link should be created for all users. If unselected, the link will be created for the current user only. If a "Create program group" screen is present, the "Create shortcuts for all users" check box will override this property.</li>
+<li>
+<font color="#5A4E87"><b>Arguments</b></font>
+<br>Optional arguments to the executable for Windows and Unix.</li>
+<li>
+<font color="#5A4E87"><b>Tooltip description</b></font>
+<br>An optional description for Windows that will be displayed in the tooltip.</li>
+<li>
+<font color="#5A4E87"><b>Target file</b></font>
+<br>The installed file or executable for which a link will be created on the desktop</li>
+<li>
+<font color="#5A4E87"><b>Target is Single Bundle</b></font>
+<br>If selected and the media set is a single bundle installer, the desktop icon will point to the bundle instead.</li>
+<li>
+<font color="#5A4E87"><b>Name</b></font>
+<br>The name of the desktop icon</li>
+<li>
+<font color="#5A4E87"><b>Icon file</b></font>
+<br>An optional different icon (*.ico) for the link on Windows.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Add an executable to the startup folder on Windows</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Add an installed executable to the startup folder on Windows so that it will be started automatically when the user logs in. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Create for all users</b></font>
+<br>If the startup item should be created for all users. If unselected, the link will be created for the current user only.</li>
+<li>
+<font color="#5A4E87"><b>Startup executable</b></font>
+<br>The executable that should be started when the user logs in</li>
+<li>
+<font color="#5A4E87"><b>Entry name</b></font>
+<br>The name of the entry in the startup folder</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Create a file association</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Create an association between a file extension and a launcher, so that the launcher is invoked when the user double-clicks a file with the selected extension. On Windows, if the application has not yet been started, the arguments to the main method will contain the file name. Subsequent invocations and all invocations on Mac OS X can be intercepted with the com.install4j.api.launcher.StartupNotification class. Only effective on Windows and Mac OS X. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Description</b></font>
+<br>A description that is presented to the user as the text next to the corresponding checkbox in the "File associations" screen.</li>
+<li>
+<font color="#5A4E87"><b>File extension</b></font>
+<br>The file extension for which the file association should be created. Must not include the leading dot.</li>
+<li>
+<font color="#5A4E87"><b>Launcher</b></font>
+<br>The launcher that will be invoked when the file association is invoked by the user.</li>
+<li>
+<font color="#5A4E87"><b>Execute on Mac OS X</b></font>
+<br>If the file association should be performed on Mac OS X.</li>
+<li>
+<font color="#5A4E87"><b>Icon file for Mac OS X</b></font>
+<br>An optional icon file (*.icns) for the file association on Mac OS X. If empty, a default icon will be used.</li>
+<li>
+<font color="#5A4E87"><b>Restart Finder</b></font>
+<br>If true the Finder should be restarted at the end of the installation. This might be necessary for the icon (and sometimes the association itself) to be picked up immediately. Note that users might find this restart disruptive. Additionally, it you launch an application at the end of the installation it can be hidden by Finder windows.</li>
+<li>
+<font color="#5A4E87"><b>Selected</b></font>
+<br>If the file association is selected in the "File associations" screen.</li>
+<li>
+<font color="#5A4E87"><b>Execute on Windows</b></font>
+<br>If the file association should be performed on Windows.</li>
+<li>
+<font color="#5A4E87"><b>Icon file for Windows</b></font>
+<br>An optional icon file (*.ico) for the file association on Windows. If empty, a default icon will be used.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Create a quick launch icon</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Create a link in the quick launch section of the Windows task bar to an installed executable or file. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Arguments</b></font>
+<br>Optional arguments that should be passed to the executable when started with the quick launch link.</li>
+<li>
+<font color="#5A4E87"><b>Description</b></font>
+<br>The description that will be displayed in the tool tip</li>
+<li>
+<font color="#5A4E87"><b>Target file</b></font>
+<br>The installed file or executable for which a link will be created on the quick launch bar</li>
+<li>
+<font color="#5A4E87"><b>Icon file</b></font>
+<br>An optional icon file (*.ico) for the quick launch link. If empty, the default icon will be used.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Create program group</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Create standard program group entries on Windows and freedesktop.org compatible UNIX desktops. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Add default launcher links</b></font>
+<br>If generated launchers are placed into the program group automatically with their default menu untegration properties. You can rename and move the default menu integrations in the program group entries tree. If you delete them, the default menu integration can be enabled again on the "Executable info-&gt;Menu integration" step of the launcher wizard.</li>
+<li>
+<font color="#5A4E87"><b>Add uninstaller</b></font>
+<br>If the uninstaller should be added to the program group, too.</li>
+<li>
+<font color="#5A4E87"><b>Create for all users</b></font>
+<br>If the program group is created for all users or only for the current user.  If a "Create program group" screen is present, the "Create shortcuts for all users" check box will override this property.</li>
+<li>
+<font color="#5A4E87"><b>Application categories</b></font>
+<br>The freedesktop.org (KDE, GNOME) application categories used to determine the best place in the applications menu. Multiple categories can be separated with a semicolon.</li>
+<li>
+<font color="#5A4E87"><b>Enabled</b></font>
+<br>If the program group creation should be performed by default. Note that if you set this property to false and the "Create program group" screen is not present, the program group will never be created.</li>
+<li>
+<font color="#5A4E87"><b>Directory for links</b></font>
+<br>The default value for the directory in which links for all relevant launchers (those with "menu integration" enabled) will be created on UNIX.</li>
+<li>
+<font color="#5A4E87"><b>Program group entries</b></font>
+<br>
+<p>On Windows, the entries in the program group tree will be created in the start menu by the installer. </p>
+<p>The control buttons allow you to modify the contents of the list of program group entries. You can add new sub-folders and new file links.In the edit dialog, you have to fill in the <b>display name</b> of the program group entry.as wellas the <b>target file</b> for the of the program group link. This has to be a file or directory relative to the distribution root directory. Please note that if you select a directory as the target, it will not "fly out" in the program group, but a separate explorer window will be opened if the user clicks on it. To display all files in a directory, please add all of them as separate program group entries.</p>
+<p>Optionally, you can specify an <b>icon</b> that is used for this program group entry. The icon file must point to an <tt>*.ico</tt> file. If the file name is relative, it is interpreted as relative to the project file. If you do not specify an icon, the default icon is determined by the system.</p>
+</li>
+<li>
+<font color="#5A4E87"><b>Program group name</b></font>
+<br>The default value for the program group where entries for all relevant launchers (those with "menu integration" enabled) will be created. If the "Create program group" screen is present, the user can change this selection. If you leave this property empty your links will be created at the top level.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Create start menu entry</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Create a start menu entry on Windows. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Create for all users</b></font>
+<br>If the program group is created for all users or only for the current user.</li>
+<li>
+<font color="#5A4E87"><b>Arguments</b></font>
+<br>Optional arguments that should be passed to the executable when started with this entry.</li>
+<li>
+<font color="#5A4E87"><b>Entry name</b></font>
+<br>The entry name in the start menu. The name can contain sub-folders with backslashes.</li>
+<li>
+<font color="#5A4E87"><b>Target file</b></font>
+<br>The installed file or executable for which a start menu entry will be created</li>
+<li>
+<font color="#5A4E87"><b>Icon file</b></font>
+<br>An optional icon file (*.ico) for the entry. If empty, the default icon will be used.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Register Add/Remove item</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Register an Add/Remove item in the Windows software registry. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Icon</b></font>
+<br>An optional icon file (*.ico).</li>
+<li>
+<font color="#5A4E87"><b>Item name</b></font>
+<br>The name of the item that is displayed in the Windows software registry.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: File operations</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Add Windows file rights</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Adds access rights to a file or directory on Windows.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>All</b></font>
+<br>All available rights.</li>
+<li>
+<font color="#5A4E87"><b>Execute</b></font>
+<br>The right to execute the object.</li>
+<li>
+<font color="#5A4E87"><b>File or Directory</b></font>
+<br>The file or directory which rights should be modified. The rights for a directory will be inherited by all subdirectories and included files.</li>
+<li>
+<font color="#5A4E87"><b>Group</b></font>
+<br>The group for which the access right should be granted.</li>
+<li>
+<font color="#5A4E87"><b>Read</b></font>
+<br>The right to read the object.</li>
+<li>
+<font color="#5A4E87"><b>Write</b></font>
+<br>The right to write to the object.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Copy a file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Copy a file. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Delay if necessary</b></font>
+<br>If selected and the destination file cannot be replaced, the operation will be scheduled for the next reboot. The variable sys.rebootRequired will be set to Boolean.TRUE in this case.</li>
+<li>
+<font color="#5A4E87"><b>Destination file</b></font>
+<br>The destination file.</li>
+<li>
+<font color="#5A4E87"><b>Access mode</b></font>
+<br>The UNIX access mode.</li>
+<li>
+<font color="#5A4E87"><b>Overwrite mode</b></font>
+<br>How to handle an existing destination file.</li>
+<li>
+<font color="#5A4E87"><b>Shared file</b></font>
+<br>If the file should be registered as a shared file.</li>
+<li>
+<font color="#5A4E87"><b>Source file</b></font>
+<br>The file to be copied.</li>
+<li>
+<font color="#5A4E87"><b>Trigger reboot if required</b></font>
+<br>If selected and the operation is delayed until reboot, the user will be asked for a reboot automatically at the end of installation.</li>
+<li>
+<font color="#5A4E87"><b>Uninstall mode</b></font>
+<br>The mode how the uninstaller should handle the file created with this action.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Create a symbolic link</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Creates a symbolic link. This action has no effect on Windows.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file or directory that the symbolic link should point to.</li>
+<li>
+<font color="#5A4E87"><b>Link file</b></font>
+<br>The link file that should be created.</li>
+<li>
+<font color="#5A4E87"><b>Remove on uninstall</b></font>
+<br>If the link should be deleted by the 'Uninstall files' action in the uninstaller.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Delete a file or directory</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Deletes a file or directory. The directory can be deleted recursively.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Backup for rollback</b></font>
+<br>If checked a backup of the files to be deleted will be made and restored in case of rollback.</li>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file to be deleted</li>
+<li>
+<font color="#5A4E87"><b>Recurse into directories</b></font>
+<br>If checked and the file is a directory the action will delete all content of this directory.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Install content of a zip file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Installs the content of an external zip file to an arbitrary location. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Delay if necessary</b></font>
+<br>If selected and a destination file cannot be replaced, the operation will be scheduled for the next reboot. The variable sys.rebootRequired will be set to Boolean.TRUE in this case.</li>
+<li>
+<font color="#5A4E87"><b>Destination directory</b></font>
+<br>The destination directory. Relative directory information in the zip file will be added to this value</li>
+<li>
+<font color="#5A4E87"><b>Dir access mode</b></font>
+<br>The UNIX access mode of installed directories.</li>
+<li>
+<font color="#5A4E87"><b>File access mode</b></font>
+<br>The UNIX access mode of installed files.</li>
+<li>
+<font color="#5A4E87"><b>Overwrite mode</b></font>
+<br>How to handle an existing destination file.</li>
+<li>
+<font color="#5A4E87"><b>Shared file</b></font>
+<br>If the file should be registered as a shared file.</li>
+<li>
+<font color="#5A4E87"><b>Show progress</b></font>
+<br>If the action should show its progress with the progress bar and the detail message.</li>
+<li>
+<font color="#5A4E87"><b>Trigger reboot if required</b></font>
+<br>If selected and an operation is delayed until reboot, the user will be asked for a reboot automatically at the end of installation.</li>
+<li>
+<font color="#5A4E87"><b>Uninstall mode</b></font>
+<br>The mode how the uninstaller should handle files created with this action.</li>
+<li>
+<font color="#5A4E87"><b>Zip file</b></font>
+<br>The zip file that contains the content to be installed.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Move a file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Moves a file. The newly created file is subject to removal by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Delay if necessary</b></font>
+<br>If selected and the destination file cannot be replaced, the operation will be scheduled for the next reboot. The variable sys.rebootRequired will be set to Boolean.TRUE in this case.</li>
+<li>
+<font color="#5A4E87"><b>Destination file</b></font>
+<br>The destination file.</li>
+<li>
+<font color="#5A4E87"><b>Access mode</b></font>
+<br>The UNIX access mode.</li>
+<li>
+<font color="#5A4E87"><b>Overwrite mode</b></font>
+<br>How to handle an existing destination file.</li>
+<li>
+<font color="#5A4E87"><b>Shared file</b></font>
+<br>If the file should be registered as a shared file.</li>
+<li>
+<font color="#5A4E87"><b>Source file</b></font>
+<br>The file to be moved.</li>
+<li>
+<font color="#5A4E87"><b>Trigger reboot if required</b></font>
+<br>If selected and the operation is delayed until reboot, the user will be asked for a reboot automatically at the end of installation.</li>
+<li>
+<font color="#5A4E87"><b>Uninstall mode</b></font>
+<br>The mode how the uninstaller should handle the file created with this action.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set the UNIX access mode of a file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Sets the UNIX access mode of a file. This action has no effect on Windows.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file or directory that the access mode should be set for.</li>
+<li>
+<font color="#5A4E87"><b>Mode</b></font>
+<br>The mode to be set. This can be any string that can be used with chmod.</li>
+<li>
+<font color="#5A4E87"><b>Recursive</b></font>
+<br>If true and file is a directory the operation will be performed recursively.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set the modification time of a file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Sets the modification time of a file.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file or directory that the modification time should be set for.</li>
+<li>
+<font color="#5A4E87"><b>Time</b></font>
+<br>The new modification time.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set the owner of a file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Sets the owner and optionally the group of a file. This action has no effect on Windows.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file or directory that the owner should be set for.</li>
+<li>
+<font color="#5A4E87"><b>Owner</b></font>
+<br>The owner to be set. If you want to set the group, too, please add it with a colon (example: user:group).</li>
+<li>
+<font color="#5A4E87"><b>Recursive</b></font>
+<br>If true and file is a directory the operation will be performed recursively.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Final options</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Create a response file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Create a response file at an arbitrary location to save user input for subsequent installations. This file can be used with the -varfile command line option.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Excluded variables</b></font>
+<br>The variable that should be excluded from the response file. If empty all variables will be used. The items in the list must be separated by semicolons. If you click on the edit button in the property editor, you can enter one item per line in a separate dialog. Entries that are installer variables with array values (e.g. String[] or Object[]) are expanded as separate entries, this allows you to build a variable length list of entries at runtime.</li>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file that the text should be appended to. If it doesn't exist it will be created.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Execute launcher</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Execute an installed launcher and return immediately. This action is intended to be placed on the "Finish" screen. A confirmation can be added automatically to the "Finish" screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Launcher</b></font>
+<br>The launcher that will be executed. Service launchers are not shown.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Reboot computer</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Reboot the computer on Microsoft Windows. This action will trigger a reboot that takes place at the end of installation or uninstallation. By default, the user will be asked whether to reboot or not.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Ask user</b></font>
+<br>Ask the user whether the reboot should be performed or not.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Show URL</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Show a URL in the default browser. This action is intended to be placed on the "Finish" or the "Uninstallation success" screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>URL</b></font>
+<br>The URL that will be shown.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Show file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Show a file with the associated application. Usually, a text file or an HTML file is appropriate. This action is intended to be placed on the "Finish" screen. A confirmation can be added automatically to the "Finish" screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file that will be shown.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Miscellaneous</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Add VM options</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Adds VM options for a launcher by modifying or creating a *.vmoptions file or by changing the Info.plist file. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Launcher</b></font>
+<br>The launcher that the VM options should be added for.</li>
+<li>
+<font color="#5A4E87"><b>VM options</b></font>
+<br>The unquoted options that should be added. Note that system property defnitions must be prefixed with -D just as on the command line, e.g. -Dkey=value. The items in the list must be separated by semicolons. If you click on the edit button in the property editor, you can enter one item per line in a separate dialog. VM options that are installer variables with array values (e.g. String[] or Object[]) are expanded as separate VM options, this allows you to build a variable length list of VM options at runtime.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Modify an environment variable on Windows</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Sets, appends to, or prepends to an environment variable on Windows.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Modification type</b></font>
+<br>Modification type</li>
+<li>
+<font color="#5A4E87"><b>User specific</b></font>
+<br>If the variable is user specific or system wide. This has no effect on Windows 9x.</li>
+<li>
+<font color="#5A4E87"><b>Value</b></font>
+<br>The value to be set, appended or prepended.</li>
+<li>
+<font color="#5A4E87"><b>Variable name</b></font>
+<br>The name of the variable that should be modified.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Modify classpath</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Changes the classpath of a launcher by modifying or creating a *.vmoptions file or by changing the Info.plist file. This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Classpath entries</b></font>
+<br>The classpath entries. The items in the list must be separated by semicolons. If you click on the edit button in the property editor, you can enter one item per line in a separate dialog. Entries that are installer variables with array values (e.g. String[] or Object[]) are expanded as separate entries, this allows you to build a variable length list of entries at runtime.</li>
+<li>
+<font color="#5A4E87"><b>Launcher</b></font>
+<br>The launcher that the classpath should be changed for.</li>
+<li>
+<font color="#5A4E87"><b>Modification type</b></font>
+<br>Modification type</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Require admin user</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Requires that an admin user executes the installer otherwise fails. On Mac OS X, you can optionally restart the installer as the root user.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Restart as root user</b></font>
+<br>If selected and the user is an administrator, he will be asked for his password and the installer will be restarted with root privileges.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Run executable or batch file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Runs an executable or a Windows batch file. The action can optionally wait for termination of the executable.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Arguments</b></font>
+<br>The arguments passed to the executable. Please note that in the property sheet, arguments have to be separated by semicolons (;) and in the edit dialog each argument starts on a new line. The items in the list must be separated by semicolons. If you click on the edit button in the property editor, you can enter one item per line in a separate dialog. Arguments that are installer variables with array values (e.g. String[] or Object[]) are expanded as separate arguments, this allows you to build a variable length list of arguments at runtime.</li>
+<li>
+<font color="#5A4E87"><b>Executable</b></font>
+<br>The file that should be executed. Please do not add arguments here, there is a separate "Arguments" property.</li>
+<li>
+<font color="#5A4E87"><b>Fail for redirection errors</b></font>
+<br>If selected, the action fails if the redirection files cannot be accessed. Otherwise, those errors are silently ignored.</li>
+<li>
+<font color="#5A4E87"><b>Log arguments</b></font>
+<br>If the arguments should be written into the log file or not. Disabled by default due to security reasons.</li>
+<li>
+<font color="#5A4E87"><b>Redirection file for stderr</b></font>
+<br>A file to which the stderr output of the executed process is saved. If empty, the stderr output will be discarded.</li>
+<li>
+<font color="#5A4E87"><b>Redirection file for stdin</b></font>
+<br>A file which should be fed to the input stream of the executed process. If empty, the stdin input will be empty.</li>
+<li>
+<font color="#5A4E87"><b>Redirection file for stdout</b></font>
+<br>A file to which the stdout output of the executed process is saved. If empty, the stdout output will be discarded.</li>
+<li>
+<font color="#5A4E87"><b>Wait for termination</b></font>
+<br>If the action should wait for termination of the process and check if the return value is 0.</li>
+<li>
+<font color="#5A4E87"><b>Working directory</b></font>
+<br>The working directory for the execution.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Registry modifications</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Add access rights for a key in the Windows registry</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Add access rights for a key in the Windows registry.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>All</b></font>
+<br>All available rights.</li>
+<li>
+<font color="#5A4E87"><b>Execute</b></font>
+<br>The right to execute the object.</li>
+<li>
+<font color="#5A4E87"><b>Group</b></font>
+<br>The group for which the access right should be granted.</li>
+<li>
+<font color="#5A4E87"><b>Key name</b></font>
+<br>The name of the registry key without a leading backslash.</li>
+<li>
+<font color="#5A4E87"><b>Read</b></font>
+<br>The right to read the object.</li>
+<li>
+<font color="#5A4E87"><b>Registry root</b></font>
+<br>The Windows registry root where the key is located.</li>
+<li>
+<font color="#5A4E87"><b>Write</b></font>
+<br>The right to write to the object.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Delete a key or value in the Windows registry</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Delete a key or value in the Windows registry.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Key name</b></font>
+<br>The name of the registry key that should be deleted or contains the value to be deleted without a leading backslash.</li>
+<li>
+<font color="#5A4E87"><b>Only if empty</b></font>
+<br>If a key should only be deleted when it contains no sub-keys or values.</li>
+<li>
+<font color="#5A4E87"><b>Registry root</b></font>
+<br>The Windows registry root where the key or value should be deleted.</li>
+<li>
+<font color="#5A4E87"><b>Value name</b></font>
+<br>The name of the registry value that should be deleted. If you leave this empty, the key will be deleted instead.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Delete a node or key in the Java preference store</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Delete an entire package node or a key-value pair in the Java preference store.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Minimum Java requirement:</b> 1.4</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Key</b></font>
+<br>The key that should be deleted. If you leave this empty, the entire package node will be deleted instead. The action does not return an error if this key does not exist.</li>
+<li>
+<font color="#5A4E87"><b>Only if empty</b></font>
+<br>If a node should only be deleted when it contains no sub-nodes or keys.</li>
+<li>
+<font color="#5A4E87"><b>Package name</b></font>
+<br>The name of the package node in the preference store that should be deleted or contains the key-value pair to be deleted. The action does not return an error if this package node does not exist.</li>
+<li>
+<font color="#5A4E87"><b>Preference root</b></font>
+<br>If you want to delete the node or key-value pair for the current user, all users, or both.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set a key in the Java preference store</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Set a key-value pair in the Java preference store. The package node is created if necessary. This is the most convenient way to communicate settings to your launchers.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Minimum Java requirement:</b> 1.4</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Key</b></font>
+<br>The key for which a value should be set.</li>
+<li>
+<font color="#5A4E87"><b>Package name</b></font>
+<br>The name of the package node in the preference store where the key-value pair should be set.</li>
+<li>
+<font color="#5A4E87"><b>Preference root</b></font>
+<br>If you want to set the key for the current user only or for all users. Due to access rights it can happen that the system preference registry is not writable, in that case a fallback to the user specific registry can be tried.</li>
+<li>
+<font color="#5A4E87"><b>Value</b></font>
+<br>The string value that should be set for the key.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Set a value in the Windows registry</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Set a value in the Windows registry. This action can also create the appropriate key if necessary.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Create key</b></font>
+<br>If set the key will be created if it doesn't exist.</li>
+<li>
+<font color="#5A4E87"><b>Key name</b></font>
+<br>The name of the registry key that contains the value or that should be created without a leading backslash.</li>
+<li>
+<font color="#5A4E87"><b>Registry root</b></font>
+<br>The Windows registry root where the key should be created</li>
+<li>
+<font color="#5A4E87"><b>Value</b></font>
+<br>The value that should be written into the registry.</li>
+<li>
+<font color="#5A4E87"><b>Value name</b></font>
+<br>The name of the registry value.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Services</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Install a service</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Installs a service. On Windows, this is done by executing the service launcher with the appropriate arguments. On Unix, a link will be placed in /etc/init.d. On Mac OS, a StartupItem will be created.  This action will be automatically reverted by the 'Uninstall files' action.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Add to "Services" screen</b></font>
+<br>Ask the user in the "Services" screen whether this action should be performed or not.</li>
+<li>
+<font color="#5A4E87"><b>Allow user to change start type</b></font>
+<br>allow user to change the start type on the "Services screen"</li>
+<li>
+<font color="#5A4E87"><b>Service</b></font>
+<br>The service launcher that will be invoked.</li>
+<li>
+<font color="#5A4E87"><b>Initially selected</b></font>
+<br>Initially selected for installation on the "Services screen". Note that if this property is set to "false" and the "Services screen" is not present, this action will never be performed.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Start a service</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Starts a service by executing the service launcher with the appropriate arguments.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Autostart only</b></font>
+<br>If selected the service will only be started when it is installed as autostart service.</li>
+<li>
+<font color="#5A4E87"><b>Service</b></font>
+<br>The service launcher that will be started.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Stop a service</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Stops a service by executing the service launcher with the appropriate arguments.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Service</b></font>
+<br>The service launcher that will be stopped.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Text files</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Append text to a file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Append text to a file or write text to a new file.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Encoding</b></font>
+<br>The encoding of the file. If you leave this empty the system default will be used.</li>
+<li>
+<font color="#5A4E87"><b>Escaped text</b></font>
+<br>If selected escape sequences like \n,\t or \u1234 in the text property will be replaced.</li>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file that the text should be appended to. If it doesn't exist it will be created.</li>
+<li>
+<font color="#5A4E87"><b>Text</b></font>
+<br>The text that should be appended.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Fix line feeds</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Changes the line feeds of a text file to the platform specific type.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>File</b></font>
+<br>The file or directory that the line feeds should be fixed for.</li>
+<li>
+<font color="#5A4E87"><b>Recursive</b></font>
+<br>If true and file is a directory the operation will be performed recursively. If false and file is a directory the files in this directory will be fixed, but no subdirectories will be entered.</li>
+<li>
+<font color="#5A4E87"><b>Suffixes</b></font>
+<br>The suffixes with a leading dot of the files to be fixed if the "File" property is a directory. If empty, all files will be used.  The items in the list must be separated by semicolons. If you click on the edit button in the property editor, you can enter one item per line in a separate dialog. Suffixes that are installer variables with array values (e.g. String[] or Object[]) are expanded as separate suffixes, this allows you to build a variable length list of suffixes at runtime.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Modify a text file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Modify an installed text file by replacing a search value in the file.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Encoding</b></font>
+<br>The encoding of the file. If you leave this empty the system default will be used.</li>
+<li>
+<font color="#5A4E87"><b>Escape for property file</b></font>
+<br>If set, the replaced value will be escaped for use in a Java property file.</li>
+<li>
+<font color="#5A4E87"><b>Text file</b></font>
+<br>The text file that should be modified</li>
+<li>
+<font color="#5A4E87"><b>Replace value</b></font>
+<br>The value that should be used instead</li>
+<li>
+<font color="#5A4E87"><b>Search value</b></font>
+<br>The value that should be searched</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Modify a text file with regular expressions</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Modify an installed text file by applying a regular expression.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Minimum Java requirement:</b> 1.4</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Encoding</b></font>
+<br>The encoding of the file. If you leave this empty the system default will be used.</li>
+<li>
+<font color="#5A4E87"><b>Escape for property file</b></font>
+<br>If set, the replaced value will be escaped for use in a Java property file.</li>
+<li>
+<font color="#5A4E87"><b>Text file</b></font>
+<br>The text file that should be modified.</li>
+<li>
+<font color="#5A4E87"><b>Quote variables</b></font>
+<br>If values of installer variables in the match and replacement expressions should be quoted. This means that the characters of replaced installer variables will be treated literally instead of modifying the search or replace expressions with special charaters such as \ or $.</li>
+<li>
+<font color="#5A4E87"><b>Match expression</b></font>
+<br>The match expression.</li>
+<li>
+<font color="#5A4E87"><b>Replace all</b></font>
+<br>If all occurrences should be replaced or only the first one.</li>
+<li>
+<font color="#5A4E87"><b>Replacement</b></font>
+<br>The replacement.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Update</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Check for update</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Load the update descriptor from the a URL and save it to the a variable. If sucessful, the variable will contain an instance of com.install4j.api.UpdateDescriptor
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Show error message</b></font>
+<br>Show a default error message if the download fails.</li>
+<li>
+<font color="#5A4E87"><b>Update descriptor URL</b></font>
+<br>The URL from which the update descriptor for this project can be downloaded. The update descriptor file is automatically created when compiling the project and can be found in the media output directory. The URL must start with http://.</li>
+<li>
+<font color="#5A4E87"><b>Variable</b></font>
+<br>The installer variable to which an instance of class com.install4j.api.UpdateDescriptor will be saved if the action is sucessful.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Download file</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Download a URL and save it to a file
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Delete downloaded file on exit</b></font>
+<br>If selected, the downloaded file will be deleted when the installer application terminates.</li>
+<li>
+<font color="#5A4E87"><b>Show error message</b></font>
+<br>Show a default error message if the download fails.</li>
+<li>
+<font color="#5A4E87"><b>Show file name</b></font>
+<br>If selected, the name of the downloaded file and the target directory will be displayed. This setting has no effect if "Show progress" is not selected.</li>
+<li>
+<font color="#5A4E87"><b>Show progress</b></font>
+<br>If the action should show its progress with the progress bar.</li>
+<li>
+<font color="#5A4E87"><b>Target file</b></font>
+<br>The file to which the downloaded URL will be saved.</li>
+<li>
+<font color="#5A4E87"><b>URL</b></font>
+<br>The URL from which the file should be downloaded. The URL must start with http://.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Shut down calling launcher</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Shut down the launcher that called this application if it was started with the com.install4j.api.launcher.ApplicationLauncher API.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Timeout</b></font>
+<br>The timeout in seconds this action will wait if the 'Wait' property is true. If set to 0 there will be no timeout.</li>
+<li>
+<font color="#5A4E87"><b>Wait</b></font>
+<br>If selected the action will wait for the calling launcher to exit.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: XML files</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Apply an XSLT transform</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Transform an installed file by applying an XSLT stylesheet.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Minimum Java requirement:</b> 1.4</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Download external entities</b></font>
+<br>If selected, a DTD referenced with an HTTP system ID will be downloaded as the document is parsed. The success of the action requires a direct internet connection in that case.</li>
+<li>
+<font color="#5A4E87"><b>Destination file</b></font>
+<br>The output of the transformation. This can be the same file as the source.</li>
+<li>
+<font color="#5A4E87"><b>Source file</b></font>
+<br>The source for the transformation. This can be the same file as the destination.</li>
+<li>
+<font color="#5A4E87"><b>Validate XML file</b></font>
+<br>If selected, the XML parser will validate the document according to a associated DTD or XML schema. If the validation is unsuccessful, the action will fail.</li>
+<li>
+<font color="#5A4E87"><b>Stylesheet</b></font>
+<br>The XSLT stylesheet to apply.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/action_16.png">&nbsp;<b>Replace text in XML files</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Modify an installed XML file by selecting nodes with an XPath expression and applying a regular expression on the selected values.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation, Uninstallation</td>
+</tr>
+
+<tr>
+<td align=""><b>Minimum Java requirement:</b> 1.4</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Download external entities</b></font>
+<br>If selected, a DTD referenced with an HTTP system ID will be downloaded as the document is parsed. The success of the action requires a direct internet connection in that case.</li>
+<li>
+<font color="#5A4E87"><b>XML file</b></font>
+<br>The XML file that should be modified.</li>
+<li>
+<font color="#5A4E87"><b>Quote variables</b></font>
+<br>If values of installer variables in the match and replacement expressions should be quoted. This means that the characters of replaced installer variables will be treated literally instead of modifying the search or replace expressions with special charaters such as \ or $.</li>
+<li>
+<font color="#5A4E87"><b>Match expression</b></font>
+<br>The match expression.</li>
+<li>
+<font color="#5A4E87"><b>Replace all</b></font>
+<br>If all occurrences should be replaced or only the first one.</li>
+<li>
+<font color="#5A4E87"><b>Replacement</b></font>
+<br>The replacement.</li>
+<li>
+<font color="#5A4E87"><b>Validate XML file</b></font>
+<br>If selected, the XML parser will validate the document according to a associated DTD or XML schema. If the validation is unsuccessful, the action will fail.</li>
+<li>
+<font color="#5A4E87"><b>XPath expression</b></font>
+<br>The XPath expression to selected DOM nodes that have a value (this includes attributes and text). Example for replacing text in an attribute: '/myRootNode/myChildNode/@myAttribute'. Example for replacing text in an element: '/myRootNode/myChildNode/text()'</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/files_install_16.png">&nbsp;<b>Install files</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Install all files in the distribution tree that are contained in the selected installation components.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Insufficient disk space warning</b></font>
+<br>Show a warning message if there is not sufficent disk space for the installation on the selected target drive.</li>
+<li>
+<font color="#5A4E87"><b>Delay if necessary</b></font>
+<br>If selected and a destination file cannot be replaced, the operation will be scheduled for the next reboot. The variable sys.rebootRequired will be set to Boolean.TRUE in this case.</li>
+<li>
+<font color="#5A4E87"><b>Directory resolver</b></font>
+<br>Expression or script that resolves the actual installation directory separately for each installed file. Return null, if you would like to choose the standard installation directory for a file.</li>
+<li>
+<font color="#5A4E87"><b>File filter</b></font>
+<br>Expression or script that is invoked for each file to decide whether to install the file or not.</li>
+<li>
+<font color="#5A4E87"><b>Install runtime</b></font>
+<br>Create the installation directory and install the install4j runtime. If your installer just modifies some folders and does not need launchers, an uninstaller or custom installer applications, you can deselect this option and use other installation roots in the distribution tree to install files.</li>
+<li>
+<font color="#5A4E87"><b>Show file names</b></font>
+<br>If set, the names of the files that are installed will be shown during the installation.</li>
+<li>
+<font color="#5A4E87"><b>Installation size calculator</b></font>
+<br>Expression or script that calculates a custom installation size in bytes. The default size in bytes is passed as a parameter.</li>
+<li>
+<font color="#5A4E87"><b>Trigger reboot if required</b></font>
+<br>If selected and an operation is delayed until reboot, the user will be asked for a reboot automatically at the end of installation.</li>
+<li>
+<font color="#5A4E87"><b>Validate application id</b></font>
+<br>Check if another application is installed in the selected directory or if the application is not the correct target for an add-on installer. If you have an "installation location" screen, you don't have to select this option.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/files_uninstall_16.png">&nbsp;<b>Uninstall files</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Uninstall all installed files.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Uninstallation</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/files_uninstall_16.png">&nbsp;<b>Uninstall previous installation</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+Uninstalls the previous installation of this application in the selected installation directory.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installation</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+ 
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/actions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/groups.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

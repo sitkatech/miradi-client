@@ -1,0 +1,410 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Variables</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Variables</h2>
+</td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/formScreens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/vmParameters.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<h3>1. Introduction</h3>
+    
+      With variables you can customize many aspects of install4j. They can be used in all text fields and text properties
+      in the install4j IDE as well as from the <a href="../../../doc/helptopics/extending/api.html">install4j API</a>.
+      The general variable syntax is
+      <pre>
+    ${prefix:variableName}
+      </pre>
+      where prefix denotes the functionality scope of the variable and is one of
+      <ul>
+<li>
+<font color="#5A4E87"><b>compiler</b></font>
+<br>
+          Compiler variables are replaced by the install4j compiler when the project is built.
+        </li>
+<li>
+<font color="#5A4E87"><b>installer</b></font>
+<br>
+          Installer variables are evaluated when the installer or uninstaller is running.
+        </li>
+<li>
+<font color="#5A4E87"><b>launcher</b></font>
+<br>
+          Launcher variables are evaluated when a generated application launcher is started.
+        </li>
+<li>
+<font color="#5A4E87"><b>i18n</b></font>
+<br>
+          Custom localization keys are evaluated at runtime and depend on the chosen installer
+          language.
+        </li>
+<li>
+<font color="#5A4E87"><b>(no prefix)</b></font>
+<br>
+          Variables with no prefix resolve to environment variables when used in the launcher configuration.
+        </li>
+</ul>
+    
+<br>
+    
+<p>
+      Text fields in the install4j IDE where you can use variables have a
+      <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/variable_chooser_12.png">&nbsp;
+      <a href="../../../doc/steps/general/dialogs/variableSelection.html">variable selector</a>
+      next to them. The variable selection dialog shows all known variables that can be used in the current context.
+    </p>
+    
+<p>
+      
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/variable_selection.png">
+    </p>
+    
+<p>
+      The above dialog, for example, is shown when clicking on the <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/variable_chooser_12.png">
+      button in a text property of an <a href="../../../doc/steps/installerGui/screensAndActions.html">installer element</a> or
+      <a href="../../../doc/steps/installerGui/formComponents.html">form component</a>. 
+      There, you can use compiler variables, installer variables and custom localization keys, but not launcher variables.
+    </p>
+    
+<p>
+      For both compiler and installer variables install4j offers a fixed set of "system variables". These
+      variables are prefixed with "sys.". These variables are not writable and it is discouraged to use this prefix
+      for your own variables.
+    </p>
+    
+<a name="compiler"></a>
+    
+<h3>2. Compiler variables</h3>
+    
+<p>
+      Compiler variables are written as
+      <pre>
+    ${compiler:variableName}
+      </pre>
+      The value of a compiler variable is a string that is known and replaced at compile time. The installer runtime or the generated launchers
+      do not see this variable, but just the value that was substituted at runtime.
+    </p>
+    
+<p>
+      You can use compiler variables for various purposes. The most common usage of a compiler
+      variable is the possibility to define a string in one place and use it in many other places. You can then change the
+      string in one place instead of having to look up all its usages. An example of this is the pre-defined
+      "sys.version" variable that contains the value of the text field where you enter the
+      <a href="../../../doc/steps/general/appInfo.html">application version</a>. Another usage for compiler variables
+      is to override certain project settings on a per-media file basis. For example, if you want to include one
+      directory in the distribution tree for Windows but another one for Mac OS X, you can use a compiler variable
+      for that directory and <a href="../../../doc/steps/media/steps/customize.html">override it</a> in the media file wizard.
+      Finally, compiler variables can be overridden from the
+      <a href="../../../doc/cli/cli.html">command line compiler</a> and the <a href="../../../doc/cli/ant.html">ant task</a>.
+    </p>
+    
+<p>
+      When you use a compiler variable in your project that is not a system variable, it must be defined in
+      on the <a href="../../../doc/steps/general/variables.html">Compiler Variables tab</a> of the
+      <a href="../../../doc/steps/general/general.html">General Settings step</a>. If an unknown variable is encountered,
+      the build will fail. You can use other variables in the value of a variable. Recursive definitions are
+      detected and lead to a failure of the build. It is not possible to define compiler variables with the
+      name of a system variable.
+    </p>
+    
+<p>
+      install4j provides a number of system compiler variables. They include:
+    </p>
+    
+<ul>
+<li>
+<font color="#5A4E87"><b>sys.version</b></font>
+<br>
+        The application version as entered on the <a href="../../../doc/steps/general/appInfo.html">Application Info tab</a>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.shortName</b></font>
+<br>
+        The short name of the application as entered on the <a href="../../../doc/steps/general/appInfo.html">Application Info tab</a>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.fullName</b></font>
+<br>
+        The full name of the application as entered on the <a href="../../../doc/steps/general/appInfo.html">Application Info tab</a>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.setName</b></font>
+<br>
+        The name of the media file definition. If the default name of the media set is not suitable, you can
+        <a href="../../../doc/steps/media/media.html">rename the media set</a>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.platform</b></font>
+<br>
+        A short identifier for the platform (windows, linux, unix, macos).
+        The value of this variable depends on your choice in the <a href="../../../doc/steps/media/steps/platform.html">platform step</a>
+        of the <a href="../../../doc/steps/media/wizard.html">media file wizard</a>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.languageId</b></font>
+<br>
+        The 2-letter ISO 639 code (see
+        <a target="_blank" href="http://www.w3.org/WAI/ER/IG/ert/iso639.htm">http://www.w3.org/WAI/ER/IG/ert/iso639.htm</a>)
+        for the principal language of the installer. This variable can be overidden on the command line or the
+        <a href="../../../doc/cli/ant.html">ant task</a> which is useful if you build different installers for different
+        languages.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.withJre</b></font>
+<br>
+        A variable that contains "_with_jre" if a JRE is statically bundled with a media file and the
+        empty string if not. This is useful if media files with and without JRE are built.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.date</b></font>
+<br>
+        The current date in the format  <tt>YYYYMMDD</tt> (e.g. "20060910")
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.javaMinVersion</b></font>
+<br>
+        The minimum Java version as entered on the <a href="../../../doc/steps/general/javaVersion.html">Java Version tab</a>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.javaMaxVersion</b></font>
+<br>
+        The maximum Java version as entered on the <a href="../../../doc/steps/general/javaVersion.html">Java Version tab</a>.
+      </li>
+</ul>
+    
+<p>
+      You can access environment variables on the build machine with the syntax
+      <pre>
+    ${compiler:env.environmentVariableName}
+      </pre>
+      where "environmentVariableName" is the name of an environment variable. This only works if no
+      compiler variable with the same name is defined on the Compiler Variables tab. This is
+      resolved at build time, not at run time.
+    </p>
+    
+<p>
+      In order to debug problems with compiler variables, you can switch on the <tt>extra verbose output</tt>
+      flag in the <a href="../../../doc/steps/build/build.html">Build step</a>. All variable replacements will be printed to
+      the build console.
+    </p>
+    
+<h3>3. Installer variables</h3>
+    
+<p>
+      Installer variables are written as
+      <pre>
+    ${installer:variableName}
+      </pre>
+      The value of an installer variable is an arbitrary object that is not known at compile time. Installer variables
+      are evaluated when requested in the installer or uninstaller.
+      Installer variables are not pre-defined in the install4j IDE like compiler variables. Unlike with compiler variables,
+      it is not an error if an installer variable is accessed that has not been defined. Undefined installer variables have
+      a <tt>null</tt> value.
+    </p>
+    
+<p>
+      Installer variables are used to wire together actions, screens and form components at runtime.
+      The user input in screens is saved to variables, which can be used in the properties of certain actions.
+      Furthermore, variables are routinely used in condition and validation expressions. Some examples
+      are given in the help topic on <a href="../../../doc/helptopics/concepts/formScreens.html">form screens</a>.
+      In expression/script properties, you retrieve variables by invoking
+      <pre>
+    context.getVariable(String variableName)
+      </pre>
+    Variable value can be set with the installer API by invoking
+      <pre>
+    context.setVariable(String variableName, Object variableValue)
+      </pre>
+    
+</p>
+    
+<p>
+      A common scenario is the need to calculate a variable value at runtime with some custom code and
+      use the result as the initial value of a component in a screen. To achieve this you can add a
+      "Set a variable" action to the startup screen and set its "Variable name" property to some variable name.
+      In contexts where a variable name is expected by install4j, you must not use the
+      <tt>${installer:variableName}</tt> syntax but specify <tt>variableName</tt> only. The
+      return value of the "Script" property is written to the variable.
+      If, for example,  the variable represents the initial directory that is displayed for a customizable "Directory selection"
+      screen, you then set the "Initial Directory" property of that screen to <tt>${installer:variableName}</tt>.
+      In this way you have wired an action with a screen.
+    </p>
+    
+<p>
+      Another important use of installer variables is for the locations of
+      <a href="../../../doc/steps/files/definition/definition.html">custom installation roots</a>.
+      In most cases a custom installation root contains an installer variable that is resolved at runtime. Often, one
+      of the system installer variables that represent a "magic" folder can be used, such as the Windows
+      <i><tt>system32</tt></i> directory.
+    </p>
+    
+<p>
+      Installer variables can be passed to the installer or uninstaller from the command line prefixed with -V (for example -VmyVar=test).
+      Alternatively, you can specify a property file containing installer variables with -varfile (for example -varfile myfile.prop).
+      The variables will be String objects.
+    </p>
+    
+<p>
+      install4j provides a number of system installer variables. They include:
+    </p>
+    
+<ul>
+<li>
+<font color="#5A4E87"><b>sys.installationDir</b></font>
+<br>
+        The installation directory for the current installation as a string. The value of this variable can change in the installer as
+        the user selects an installation directory in the "Installation directory" screen or the installation
+        directory is set via <code>context.setInstallationDirectory(File installationDirectory)</code>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.userDir</b></font>
+<br>
+        The user home directory as a string, typically something like <i><tt>C:\Documents and Settings\$USER</tt></i> on Windows or
+        <i><tt>/home/$USER</tt></i> on Unix platforms.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.windowsDir</b></font>
+<br>
+        The Windows installation directory as a string, typically  <i><tt>C:\WINDOWS</tt></i>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.system32Dir</b></font>
+<br>
+        The system32 directory of your Windows installation as a string, typically  <i><tt>C:\WINDOWS\system32</tt></i>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.programFilesDir</b></font>
+<br>
+        The directory in your Windows installation where programs are installed as a string, typically something like
+        <i><tt>c:\Program Files</tt></i>.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.programGroupDir</b></font>
+<br>
+        The directory of the program group that will be or was created by the "Create standard program group" action as a string.
+        If this action is not present, the value will be <code>null</code>. The value of this variable can change
+        in the installer as the user selects a program group on the "Create program group" screen.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.mediaFile</b></font>
+<br>
+        The path of your media file as a string. Not available for uninstallers.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.mediaDirectory</b></font>
+<br>
+        The path of the directory where your media file is located as a string. Not available for uninstallers.
+      </li>
+</ul>
+
+    
+<a name="launcher"></a>
+    
+<h3>4. Launcher variables</h3>
+    
+<p>
+      Launcher variables are written as
+      <pre>
+    ${launcher:variableName}
+      </pre>
+      The value of a launcher variable is a string that is not known at compile time.
+      Launcher variables are evaluated when a generated application launcher is started.
+      Launcher variables can only be used in the
+      <a href="../../../doc/steps/launcher/wizard/java.html">VM parameters text field</a>
+      of the <a href="../../../doc/steps/launcher/wizard.html">launcher wizard</a>. No
+      user-defined launcher variables exist, the available system launcher variables
+      include:
+    </p>
+    
+<ul>
+<li>
+<font color="#5A4E87"><b>sys.launcherDirectory</b></font>
+<br>
+        The directory in which your launcher is located.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.jvmHome</b></font>
+<br>
+        The home directory of the JVM that your launcher is running with. This is useful
+        to put JAR files from the JRE into your boot classpath.
+      </li>
+<li>
+<font color="#5A4E87"><b>sys.pathlistSeparator</b></font>
+<br>
+        The platform-dependent separator for lists of directories. On Window, this is a semicolon (";"),
+        on Unix a colon (":").
+      </li>
+</ul>
+
+    
+<h3>5. Custom localization keys</h3>
+    
+<p>
+      Custom localization keys are written as
+      <pre>
+    ${i18n:keyName}
+      </pre>
+      The value of a custom localization key depends on the language that is selected for the installer.
+      You can use this facility to localize messages in your installers if they support
+      <a href="../../../doc/steps/general/languages.html">multiple languages</a>.
+      You can supply key value pairs for internationalization in the custom localization file.
+      The variable selection dialog shows all keys in the custom localization file for the principal
+      language of your project.
+    </p>
+    
+<p>
+      All standard messages displayed by install4j can be referenced with this syntax as well. You
+      can locate the key name in one of the <i><tt>message_*.utf8</tt></i> files in the
+      <i><tt>$INSTALL4J_HOME/resource/messages</tt></i> directory and use it anywhere in your project.
+      The standard messages can be overwritten by your custom localization files.
+    </p>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/formScreens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/vmParameters.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

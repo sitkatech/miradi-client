@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>File Wizard</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>File Wizard</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/files/definition/definition.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/files/definition/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/files/definition/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The file wizard is displayed when you invoke the
+      <img style="vertical-align: middle" align="middle" border="0" src="../../../../doc/images/file.png">&nbsp;<b>[Add files and directories]</b>
+      action in the <img style="vertical-align: middle" align="middle" border="0" src="../../../../doc/images/add.png">&nbsp;add menu on the right side of the 
+      file definition tree. To get more information about the distribution tree and related concepts, please see the
+      <a href="../../../../doc/steps/files/definition/definition.html">overview</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In the first step of the file wizard you choose whether you want to add
+      <ul>
+<li>
+<font color="#5A4E87"><b>the contents of a directory and its subdirectories</b></font>
+<br>
+          
+<p>
+            Choose this wizard type if you want to recursively add the contents of a directory.
+            You will have the possibility of excluding certain files and subdirectories and exclude
+            files based on their file suffix. If you would like to specify different settings for
+            one or several files in the included directory, you have to exclude them and add them as single files
+            in the appropriate directory.
+          </p>
+          
+<p>
+            The subsequent steps in the wizard for this selection are:
+            <ul>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/selectDirectory.html">Select directory</a>
+<br>
+                Choose the directory that should be distributed.
+              </li>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/installOptions.html">Install options</a>
+<br>
+                Select installation options like access rights or overwrite policy.
+              </li>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/uninstallOptions.html">Uninstall options</a>
+<br>
+                Select uninstallation options such as whether to unstall files.
+              </li>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/exclude.html">Exclude files and directories</a>
+<br>
+                Select files or directories that should not be distributed.
+              </li>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/excludeSuffixes.html">Exclude suffixes</a>
+<br>
+                Enter a list of file suffixes that should be ignored,
+              </li>
+</ul>
+          
+</p>
+        
+</li>
+<li>
+<font color="#5A4E87"><b>a number of single files</b></font>
+<br>
+          
+<p>
+            Choose this wizard type if you collect a small number of files (possibly from different
+            locations) into a single directory. Example: a number of support libraries from different
+            directories are added into the top level directory <i><tt>lib</tt></i>.
+          </p>
+          
+<p>
+            The subsequent steps in the wizard for this selection are:
+            <ul>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/selectFiles.html">Select files</a>
+<br>
+                Choose the files that should be distributed.
+              </li>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/installOptions.html">Install options</a>
+<br>
+                Select installation options like access rights or overwrite policy.
+              </li>
+<li>
+<a href="../../../../doc/steps/files/definition/steps/uninstallOptions.html">Uninstall options</a>
+<br>
+                Select uninstallation options such as whether to unstall files.
+              </li>
+</ul>
+          
+</p>
+        
+</li>
+</ul>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/files/definition/definition.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/files/definition/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/files/definition/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

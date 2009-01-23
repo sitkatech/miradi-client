@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Class Selector Dialog</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Class Selector Dialog</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/customCodeEntry.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/registry.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+      The custom class selection dialog is shown when you add
+      <a href="../../../../doc/steps/installerGui/actions.html">an action</a>,
+      <a href="../../../../doc/steps/installerGui/screens.html">a screen</a> or
+      <a href="../../../../doc/steps/installerGui/formComponents.html">a form component</a>
+      from your custom code.
+    <br>
+    
+<p>
+      The custom class selector shows all classes that implement the appropriate interface, depending on the context:
+    </p>
+    
+<ul>
+<li>
+        
+<tt>com.install4j.api.actions.InstallAction</tt>
+        for actions in the installation mode.
+      </li>
+<li>
+        
+<tt>com.install4j.api.actions.UninstallAction</tt>
+        for actions in the uninstallation mode.
+      </li>
+<li>
+        
+<tt>com.install4j.api.screens.InstallerScreen</tt>
+        for screens in the installation mode.
+      </li>
+<li>
+        
+<tt>com.install4j.api.screens.UninstallerScreen</tt>
+        for screens in the uninstallation mode.
+      </li>
+<li>
+        
+<tt>com.install4j.api.formcomponents.FormComponent</tt>
+        for form components.
+      </li>
+</ul>
+    
+<p>
+      Note that you usually do not implement these interface directly but rather extend one of the abstract
+      classes in the respective packages.
+    </p>
+    
+<p>
+      Please see the <a href="../../../../doc/api/javadoc/com/install4j/api/package-summary.html">API description</a>
+      for a detailed explanation of these base classes.
+    </p>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/customCodeEntry.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/registry.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

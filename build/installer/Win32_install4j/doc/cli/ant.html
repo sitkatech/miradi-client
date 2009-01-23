@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Using install4j with ant</title>
+<link href="../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Using install4j with ant</h2>
+</td><td valign="top" align="right"><a href="../../doc/cli/options.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../doc/cli/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../doc/cli/relative.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        Integrating install4j with your ant script (read about ant at
+        <a target="_blank" href="http://ant.apache.org">ant.apache.org</a>)
+        is easy. Just use the <b><tt>install4j</tt></b> task 
+        that is provided in <i><tt>$INSTALL4J_HOME/bin/ant.jar</tt></i>
+        and set the <tt>projectfile</tt> parameter to the install4j project 
+        file that you want to build.
+      
+      <p>
+        To make the <b><tt>install4j</tt></b> task available to ant, you
+        must first insert a <b><tt>taskdef</tt></b> element that tells
+        ant where to find the task definition. Here is an example of using the
+        task in an ant build file:
+      </p>
+      
+<pre>
+      &lt;taskdef name="install4j"
+               classname="com.install4j.Install4JTask"
+               classpath="C:\Program Files\install4j\bin\ant.jar"/&gt;
+               
+      &lt;target name="media"&gt;
+        &lt;install4j projectfile="myapp.install4j"/&gt;
+      &lt;/target&gt;
+      </pre>
+      
+<p>
+        The <b><tt>taskdef</tt></b> definition must occur only once per
+        ant-build file and can appear anywhere on the top level below the 
+        <b><tt>project</tt></b> element.
+      </p>
+      
+<p>
+        
+<b>Note:</b> it is <b>not possible</b> to copy the <i><tt>ant.jar</tt></i> archive to
+        the <i><tt>lib</tt></i> folder of your ant distribution. You have to reference a full
+        installation of install4j in the task definition.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        The <tt>install4j</tt> task supports the following parameters:
+      <div>&nbsp;</div>
+      
+<table cellpadding="4" border="1">
+        
+        
+        
+<tr>
+          
+<th align="">Attribute</th>
+          <th align="">Description</th>
+          <th align="">Required</th>
+        
+</tr>
+        
+<tr>
+          
+<td align="">projectfile</td>
+          <td align="">The install4j project file that should be build.</td>
+          <td align="center">Yes</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">verbose</td>
+          <td align="">
+            Corresponds to the <tt>--verbose</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Either <tt>true</tt> or <tt>false</tt>.
+          </td>
+          <td rowspan="2" align="center">
+            No, verbose and quiet cannot <b>both</b> be <tt>true</tt>
+          </td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">quiet</td>
+          <td align="">
+            Corresponds to the <tt>--quiet</tt>
+            <a href="../../doc/cli/options.html">command line option</a>. 
+            Either <tt>true</tt> or <tt>false</tt>.
+          </td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">test</td>
+          <td align="">
+            Corresponds to the <tt>--test</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Either <tt>true</tt> or <tt>false</tt>.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">debug</td>
+          <td align="">
+            Corresponds to the <tt>--debug</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Either <tt>true</tt> or <tt>false</tt>.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">faster</td>
+          <td align="">
+            Corresponds to the <tt>--faster</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Either <tt>true</tt> or <tt>false</tt>.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">release</td>
+          <td align="">
+            Corresponds to the <tt>--release</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Enter a version number like "<tt>3.1.2</tt>".
+            The version number may only contain numbers and dots.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">destination</td>
+          <td align="">
+            Corresponds to the <tt>--destination</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Enter a directory where the generated media files should be placed.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">buildselected</td>
+          <td align="">
+            Corresponds to the <tt>--build-selected</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Either <tt>true</tt> or <tt>false</tt>.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">buildids</td>
+          <td align="">
+            Corresponds to the <tt>--build-ids</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Enter a list of media file ids. The IDs for media files can be shown in the install4j IDE by choosing
+            <i>Media-&gt;Show media file IDs</i> from the main menu when the 
+            <a href="../../doc/steps/media/media.html">media file step</a> is visible.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">mediatypes</td>
+          <td align="">
+            Corresponds to the <tt>--media-types</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Enter a list of media types.  To see the list of supported media
+            types, execute <b><tt>install4jc --list-media-types</tt></b>.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">variablefile</td>
+          <td align="">
+            Corresponds to the <tt>--var-file</tt>
+            <a href="../../doc/cli/options.html">command line option</a>.
+            Enter the name of file with variable definitions.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+      
+</table>
+      
+<p>
+        
+<b>Contained elements:</b>
+<br>
+<br>
+        The <tt>install4j</tt> task can contain <tt>variable</tt> elements.
+        These elements override <a href="../../doc/helptopics/concepts/variables.html">compiler variables</a>
+        in the project and correspond to the <tt>-D</tt>
+        <a href="../../doc/cli/options.html">command line option</a>. Definitions with
+        <tt>variable</tt> elements take precedence before definitions in
+        the variable file referenced by the <tt>variablefile</tt> parameter.
+      </p>
+      
+<p>
+        The <tt>variable</tt> element supports the following parameters:
+      </p>
+<div>&nbsp;</div>
+      
+<table cellpadding="4" border="1">
+        
+        
+        
+<tr>
+          
+<th align="">Attribute</th>
+          <th align="">Description</th>
+          <th align="">Required</th>
+        
+</tr>
+        
+<tr>
+          
+<td align="">name</td>
+          <td align="">
+            The name of the variable. This must be the name of a variable that has been defined on the
+            <a href="../../doc/steps/general/variables.html">Compiler Variables tab</a> of the
+            <a href="../../doc/steps/general/general.html">General Settings step</a>.
+          </td>
+          <td align="center">Yes</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">value</td>
+          <td align="">
+            The value for the variable. The value may be empty.
+          </td>
+          <td align="center">Yes</td>
+        
+</tr>
+        
+<tr>
+          
+<td align="">mediafileid</td>
+          <td align="">
+            The ID of the media file for which the variable should be overridden. The IDs for media files
+            can be shown in the install4j IDE by choosing
+            <i>Media-&gt;Show media file IDs</i>
+            from the main menu when the <a href="../../doc/steps/media/media.html">media file step</a>
+            is visible.
+          </td>
+          <td align="center">No</td>
+        
+</tr>
+      
+</table>
+      
+<p>
+        Example:
+        <pre>
+      &lt;install4j projectfile="myapp.install4j"&gt;
+        &lt;variable name="MYVARIABLE" value="15"/&gt;
+        &lt;variable name="OTHERVARIABLE" value="test" mediafileid="8"/&gt;
+      &lt;/install4j&gt;
+        </pre>
+      
+</p>
+
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../doc/cli/options.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../doc/cli/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../doc/cli/relative.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

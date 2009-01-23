@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>install4j Projects</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>install4j Projects</h2>
+</td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/files.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<h3>1. Project files</h3>
+    
+      A project in install4j is the collection of all information required to build media files.
+      A project is saved to a single XML file with an <i><tt>.install4j</tt></i> extension. Project files
+      are platform-independent, you can open and compile them on any supported platform.
+      Any paths that you enter in install4j are saved as absolute paths by default. This allows you
+      to move the project file to a different location on your computer and the compilation will still work.
+      If you wish to use your project file on multiple computers or platforms or compile your launchers by automatic
+      build agents, it is more convenient to use relative paths. install4j provides an option to
+      <a href="../../../doc/steps/general/projectOptions.html">convert all paths to relative paths</a>
+      when you save your project.
+    <br>
+    
+<p>
+      install4j keeps a list of recently opened projects under <i>Project-&gt;Reopen</i>.
+      By default, install4j opens the last project on startup. This behavior can be changed in the
+      <a href="../../../doc/preferences.html">preferences dialog</a>.
+      You can pass the name of a project file as a command line parameter to install4j to open it on startup.
+      Also, the <a href="../../../doc/cli/cli.html">command line compiler</a> expects the project file name as its argument.
+    </p>
+    
+<h3>2. Contents of a project</h3>
+    
+<p>
+      The following paragraphs give a high-level overview of the elements that you can configure in install4j.
+      Each of the configuration sections in install4j as seen in the screenshot below represents
+      a top-level concept in install4j.
+    </p>
+    
+<p>
+      
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/main_window.png">
+    </p>
+    
+<p>
+      Typically, a project defines the distribution of a single application. An application has an automatically
+      generated <a href="../../../doc/steps/installerGui/updateOptions.html">application ID</a> that allows installers
+      to recognize previous installations.
+    </p>
+    
+<p>
+      At the core of the project definition is the sequence of
+      <a href="../../../doc/helptopics/concepts/screensAndActions.html">installer screens and actions</a>. They
+      determine what the users see, what information they can enter and what the installer does.
+      install4j offers a lot of flexibility regarding the configuration of of your installer. Besides creating traditional
+      application installers, install4j is equally suited
+      to create small applications that modify the target system in some way.
+      The install4j runtime is localized into many languages. You can configure your installers to
+      <a href="../../../doc/steps/general/languages.html">support one or multiple languages</a>.
+    </p>
+    
+<p>
+      Most installers install files to a dedicated directory and optionally to several existing directories
+      on the target computer. That's what the <a href="../../../doc/steps/files/files.html">"Files" section</a> in
+      the install4j IDE is for. Here, you define a "distribution tree", and optionally "installation components"
+      which can also be <a href="../../../doc/steps/media/steps/dataFiles.html">downloaded on demand</a>.
+      The actual installation of these files is handled by a special action (the "Install files" action) which
+      is part of the default project template. If your installers should not install any files, you can remove that
+      action and ignore the "Files" configuration section.
+      When the the "Install files" action is executed, it creates an uninstaller. The uninstaller offers the same
+      flexibility as the installer and is configured in the same way.
+    </p>
+    
+<p>
+      Unless the installed files are only static data, you will need application launchers to allow the user to
+      start your application. You can define one or several application launchers in the
+      <a href="../../../doc/steps/launcher/launcher.html">"Launchers" section</a>. Launchers generated by install4j have a rich set
+      of configuration options including an optional splash screen or advanced features like a single instance mode.
+      Configured launchers can also be "services" that run independently of logged-on users. install4j
+      offers special installation screens and actions for services.
+    </p>
+    
+<p>
+      install4j has many advanced features concerning the runtime-detection or bundling of JREs. You define
+      <a href="../../../doc/steps/general/javaVersion.html">Java version constraints and a search sequence</a> for
+      both your installers and your generated launchers. In this way, you ensure that the launchers run with the same
+      JRE as your installers. Bundling of JREs is configured on a
+      <a href="../../../doc/steps/media/steps/bundledJre.html">per-media set basis</a> and includes an optional
+      on-demand download of a JRE.
+    </p>
+    
+<p>
+      Finally, the media file definitions define the actual executables that you distribute. They capture platform-specific
+      information and provide several ways to override project settings. You typically define one media file for each
+      platform. Multiple media files for the same platform can be added as needed. Media files are either installers
+      or archives. Archives simply capture the launchers and the distribution tree. Archives are a limited
+      way to create a distribution and might not be suitable if you rely on the flexibility that is offered by installers.
+    </p>
+    
+<h3>3. Project reports</h3>
+    
+<p>
+      A project, and especially the definition of the installer and uninstaller, is very hierarchical and possibly
+      quite complex. In order to check all your projects settings on a single page, or to print out your project
+      definition, install4j offers a <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/report_16.png">&nbsp;project report.
+      This action is available from the menu and toolbar. When you generate a report, an HTML file is written to disk.
+      In addition, a directory named <tt>install4j_images</tt> is created which holds all required icons.
+      The export directory for project reports is remembered across restarts of install4j. install4j will suggest
+      a file name based on the project name. If that file already exists, a number will be appended to
+       make the file name unique.
+    </p>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/files.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

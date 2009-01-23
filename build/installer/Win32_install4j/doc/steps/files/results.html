@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Files - Viewing the Results</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Files - Viewing the Results</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/files/definition/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/components.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      On this tab you can check the results of your
+      <a href="../../../doc/steps/files/definition/definition.html">definition of the distribution tree</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The tree shows all files that will be distributed in the 
+      <a href="../../../doc/steps/media/media.html">generated media files</a>.
+      <p>
+        You cannot remove files from this tree or add them to it. If you would like to
+        remove a file that has been added with a directory entry, you have to use the 
+        <a href="../../../doc/steps/files/definition/steps/exclude.html">excluded files and directories step</a>
+        or the <a href="../../../doc/steps/files/definition/steps/excludeSuffixes.html">excluded suffixes step</a>
+        in the files directory wizard. To exclude files and directories on a per-media set basis,
+        please see the <a href="../../../doc/steps/media/steps/customize.html">customize project defaults</a> step in the
+        <a href="../../../doc/steps/media/wizard.html">media file wizard</a>.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      On activating this tab, the file tree is re-read if the 
+      <a href="../../../doc/steps/files/definition/definition.html">definition of the distribution tree</a>
+      has changed since the last time the file tree was shown. This background process can take a short while 
+      and is indicated by a <tt>"Please wait ..."</tt> entry in the result tree.
+      <p>
+        Should the contents of your hard disk have been modified in the meantime, you can use the
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/refresh.png"><b>[Refresh]</b> button to re-read
+        the displayed file tree.
+      </p>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/files/definition/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/components.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

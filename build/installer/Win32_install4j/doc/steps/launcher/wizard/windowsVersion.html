@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Launcher Wizard: Configure Windows Version Info Resource</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Launcher Wizard: Configure Windows Version Info Resource</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/launcher/wizard/serviceOptions.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/launcher/wizard/$advancedFolder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/launcher/wizard/executionLevel.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In this step of the <a href="../../../../doc/steps/launcher/wizard.html">launcher wizard</a>,
+      you can configure whether a version info resource should be generated for the Microsoft Windows 
+      executable and what values the version info fields should take. <b>This step is only
+      relevant for Microsoft Windows</b> and is important if your application wants to obtain
+      the "Designed for Windows" logo.
+      <p>
+        
+<b>Note:</b> this advanced option screen is reachable by selecting the
+        <a href="../../../../doc/steps/launcher/wizard/executable.html">"Executable" step</a> and choosing
+        "Windows version info" from the <b>[Advanced options]</b>
+        popup menu or by clicking directly on the index.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        A version info resource will enable the Windows operating system to determine
+        meta information about your executable. This information is displayed in various
+        locations. For example, when opening the property dialog for the executable in the 
+        Windows explorer, a "Version" tab will be present in the property dialog if
+        you have chosen to generate the version info resource.
+      
+      <p>
+        The version info resource consists of several pieces of information.
+        If you check <tt>Generate version info resource</tt>, there are several 
+        fields whose values must be entered in the text fields on this step. Note
+        that the "original file name", the "company name", the "product name" and 
+        the "product version" fields in the version info resource are filled in 
+        automatically by install4j.
+      </p>
+      
+<ul>
+<li>
+<font color="#5A4E87"><b>File version</b></font>
+<br>
+          If you want to specify a version for the file which is a different from the product version,
+          you can do it here. If this field is left empty, the product version entered on the
+          <a href="../../../../doc/steps/general/appInfo.html">Application Info tab</a> of the
+          <a href="../../../../doc/steps/general/general.html">General Settings step</a> will be used
+          for the file version.
+        </li>
+<li>
+<font color="#5A4E87"><b>Internal name</b></font>
+<br>
+          Choose a short internal name for identifying your application.
+        </li>
+<li>
+<font color="#5A4E87"><b>File description</b></font>
+<br>
+          Enter a description of the application.
+        </li>
+<li>
+<font color="#5A4E87"><b>Legal copyright</b></font>
+<br>
+          Enter a copyright statement for your application.
+        </li>
+</ul>    
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/launcher/wizard/serviceOptions.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/launcher/wizard/$advancedFolder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/launcher/wizard/executionLevel.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Steps for Configuring an install4j Project</title>
+<link href="../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Steps for Configuring an install4j Project</h2>
+</td><td valign="top" align="right"><a href="../../doc/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../doc/steps/general/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      To learn more about install4j projects, please see the
+      <a href="../../doc/helptopics/concepts/projects.html">corresponding help topic</a> or other
+      <a href="../../doc/helptopics/concepts/$folder$.html">help topics about concepts in install4j</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      install4j's main window is organized into 6 steps that are required to build a set 
+      of media files. The side bar on the left as well as the forward and back buttons in the top right corner
+      let you navigate between these steps:
+      <ul>
+<li>
+<a href="../../doc/steps/general/general.html">Step 1: General Settings</a>
+<br>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../doc/images/general_small.png">
+          (<code>CTRL-1</code>) In the <b>General Settings step</b>, you provide important information
+          about your application and the build preferences, such as the name of your application, the JRE search
+          sequence and the directory where the media files should be placed.
+        </li>
+<li>
+<a href="../../doc/steps/files/files.html">Step 2: Files</a>
+<br>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../doc/images/files_small.png">
+          (<code>CTRL-2</code>) In the <b>Files step</b>, you define your <b>distribution tree</b>,
+          that means you collect files from different places to be distributed in the generated media files.
+          You can optionally define installation components.
+        </li>
+<li>
+<a href="../../doc/steps/launcher/launcher.html">Step 3: Launchers</a>
+<br>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../doc/images/launcher_small.png">
+          (<code>CTRL-3</code>) In the <b>Launchers step</b>, you define the properties of the
+          <b>native launchers</b> that will enable your users to start your application.
+        </li>
+<li>
+<a href="../../doc/steps/installerGui/installerGui.html">Step 4: Installer</a>
+<br>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../doc/images/installer_small.png">
+          (<code>CTRL-4</code>) In the <b>Installer step</b>, you configure the installer
+          screens and actions.
+        </li>
+<li>
+<a href="../../doc/steps/media/media.html">Step 5: Media</a>
+<br>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../doc/images/media_small.png">
+          (<code>CTRL-5</code>) In the <b>Media step</b>, you define the <b>media files</b>
+          that will be created to distribute your application to your end users.
+        </li>
+<li>
+<a href="../../doc/steps/build/build.html">Step 6: Build</a>
+<br>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../doc/images/launcher_small.png">
+          (<code>CTRL-6</code>) In the <b>Build step</b>, you start the actual generation of the
+          media files.
+        </li>
+</ul>
+      
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../doc/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../doc/steps/general/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

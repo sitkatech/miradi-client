@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Folder properties dialog</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Folder properties dialog</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/files/dialogs/chooser.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/files/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The folder properties dialog is displayed when you
+      <a href="../../../../doc/steps/files/definition/definition.html">edit a folder in the distribution tree</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In the folder properties dialog you can set the <b>access rights</b> for the selected folder.
+      On Unix-like platforms (including Linux and Mac OS X), the file mode governs the access
+      rights to the installed directories. The access mode is composed of three octal numbers (0-7)
+      and each number completely expresses the access rights for a particular group of users:
+      <ul>
+<li>
+<font color="#5A4E87"><b>First number</b></font>
+<br>
+          The first octal number contains the access rights for the <b>owner of the file</b>.
+        </li>
+<li>
+<font color="#5A4E87"><b>Second number</b></font>
+<br>
+          The first octal number contains the access rights for the <b>user group</b> that the
+          file is attached to.
+        </li>
+<li>
+<font color="#5A4E87"><b>Third number</b></font>
+<br>
+          The third octal number contains the access rights for <b>all other users</b>.
+        </li>
+</ul>
+      
+<p>
+        For a desired combination of access rights, the octal number is calculated by adding:
+      </p>
+      
+<ul>
+<li>
+<font color="#5A4E87"><b>1</b></font>
+<br>
+          For the right to <b>browse</b> the directory.
+        </li>
+<li>
+<font color="#5A4E87"><b>2</b></font>
+<br>
+          For the right to <b>write</b> to the directory.
+        </li>
+<li>
+<font color="#5A4E87"><b>4</b></font>
+<br>
+          For the right to <b>read</b> from the directory.
+        </li>
+</ul>
+      
+<p>
+        The <b>default access rights for directories</b> are 755, i.e. the owner can read and write and browse
+        the directory and all others can only read and browse it. Since usually applications on Unix-like systems
+        are installed by the administrator (usually called root), this means that except for
+        root, users will only be able to browse directories and read from them but they will not be able to
+        create files in them. If you have directories that your users should be able to create files in, you have to
+        set a different access mode for them. For example, 777 would allow all users to
+        create, read, write and delete files in the directory.
+        You can reset the default mode with the <b>[Reset to default]</b> button.
+      </p>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/files/dialogs/chooser.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/files/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

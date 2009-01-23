@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Response files</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Response files</h2>
+</td><td valign="top" align="right"><a href="../../../doc/helptopics/installers/options.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/installers/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/installers/jre.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<h3>1. Introduction</h3>
+    
+      With a response file you can change the default user selection in all screens.
+      A response file is a text file with name value pairs that represent certain installer variables.
+      All screens provided be install4j ensure that they write all user selections to appropriate installer variables
+      and bind their user interface components to these variables. This includes
+      <a href="../../../doc/steps/installerGui/formComponents.html">form screens</a>.
+    <br>
+    
+<p>
+      Installer variable values are of the general type <tt>java.lang.Object</tt>. In a response file,
+      only variables with values of certain types are included: The default type is <tt>java.lang.String</tt>.
+      In addition the types <tt>java.lang.Boolean</tt>, <tt>java.lang.Integer</tt>,
+      <tt>java.lang.String[]</tt> and <tt>int[]</tt> are supported. In order to let the installer
+      runtime know about these non-default types, the variable name in the response file is followed by a '$' sign and an encoding
+      specifier like 'Integer' or 'Boolean'.
+    </p>
+    
+<p>
+      All installer variables live in the same name space. If you use an installer variable more than once for
+      different user inputs, the response file only captures the last user input and may lead to erroneous behavior
+      when the installer is run with a response file. If you would like to optimize your installers for
+      use with a response file, you have to make sure that the relevant variable names are unique within your installer.
+    </p>
+    
+<p>
+      A response file can be used to
+    </p>
+    
+<ul>
+<li>Configure the installer for unattended execution mode</li>
+<li>Change the default settings in the GUI and console installer</li>
+<li>Get additional debugging information for an installation</li>
+</ul>
+    
+<p>
+      When applying a response file to an installer, all variable definitions are translated into
+      <a href="../../../doc/helptopics/concepts/variables.html">installer variables</a>.
+      The response file shares the same mechanism with the variable file offered by the
+      <a href="../../../doc/helptopics/installers/options.html">-varfile</a> installer option.
+      You can add the contents of a response file to a variable file and vice versa.
+    </p>
+    
+<h3>2. Generating response files</h3>
+    
+<p>
+      There are two ways to generate a response file:
+      <ul>
+<li>
+          A response file is generated automatically after an installation is finished. The
+          generated response file is found in the <i><tt>.install4j</tt></i> directory inside the
+          installation directory and is named <i><tt>response.varfile</tt></i>. When you request
+          debugging information from a user, you should request this file in addition to the installer log file.
+        </li>
+<li>
+          install4j offers a "Create a response file" <a href="../../../doc/steps/installerGui/actions.html">action</a>
+          that allows you to save the reponse file to a different file in addition to the automatically generated
+          response file. Here, you can also specify variables that you would not like to be included in the reponse file.
+          Together with an appropriate form component on the "Additional confimations" screen you can query the user whether
+          to create such a response file or not.
+        </li>
+</ul>
+    
+</p>
+    
+<h3>3. Applying response files</h3>
+    
+<p>
+      When an installer is executed, it checks whether a file with the same name and the extension <b>.varfile</b>
+      can be found in the same directory and loads that file as the response file. For example, if an installer is called
+      <i><tt>hello_setup.exe</tt></i> on Windows, the response file next to it has to be named <i><tt>hello_setup.varfile</tt></i>.
+    </p>
+    
+<p>
+      You can also specify a response file explicitly with the <a href="../../../doc/helptopics/installers/options.html">-varfile</a>
+      installer option.
+    </p>
+    
+<p>
+      Response files work with all three <a href="../../../doc/helptopics/installers/installerModes.html">installer modes</a>,
+      GUI, console and unattended.
+    </p>
+    
+<h3>4. Response file variables</h3>
+    
+<p>
+      The variables that you see in the response file exist at runtime independently of the response file. You can use these
+      installer variables to access or change user selections on system screens. For example, the "Create program group"
+      screen on Windows binds the user selection for the check box that asks the user whether to create the program group
+      for all users to the variable <b>sys.programGroup.allUsers</b>. To access the current user selection from
+      somewhere else, you can use the expression
+    </p>
+
+<pre>
+      context.getBooleanVariable("sys.programGroup.allUsers")
+</pre>
+    
+<p>
+      To change that selection, you can invoke
+    </p>
+
+<pre>
+     context.setVariable("sys.programGroup.allUsers", Boolean.FALSE)
+</pre>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/helptopics/installers/options.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/installers/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/installers/jre.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Installer - Configuring Screens</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Installer - Configuring Screens</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/applications.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/availableScreens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+      Screens are configured on the <a href="../../../doc/steps/installerGui/screensAndActions.html">screens &amp; and actions tab</a>.
+      
+      Please see the <a href="../../../doc/steps/installerGui/availableScreens.html">list of available screens</a> that come with install4j.
+    </td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        A screen is a <b>single step in an installer application</b>. It displays information to the user or gathers
+        user input.
+      
+      <p>
+        If a screen has attached <a href="../../../doc/steps/installerGui/actions.html">actions</a>, there will be an expand
+        control to the left of the screen icon that allows you to show the associated actions.
+      </p>
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Common properties of screens are:
+      <ul>
+<li>
+<font color="#5A4E87"><b>Condition expression</b></font>
+<br>
+          This expression is evaluated just before the screen is shown. If the expression or script returns false,
+          the screen will be skipped.
+        </li>
+<li>
+<font color="#5A4E87"><b>Validation expression</b></font>
+<br>
+          This expression or script is called when the user clicks the next button. If it returns false,
+          the current screen will be displayed again. You can use this to validate user input.
+          Error messages are not displayed automatically, you can use the
+          <code>Util.showErrorMessage(String errorMessage)</code> method in your script.
+        </li>
+<li>
+<font color="#5A4E87"><b>Rollback barrier</b></font>
+<br>
+          If the screen should be a rollback barrier. When a rollback barrier is completed,
+          none of the preceding actions will be rolled back. You can use this property to
+          prevent an incomplete rollback of complex changes or to protect actions from rollback when the user hits
+          "Cancel" in the post-install phase. The installation screen is a rollback barrier by default.
+        </li>
+<li>
+<font color="#5A4E87"><b>Quit after screen</b></font>
+<br>
+          If the screen should have a "Finish" button instead of a "Next" button. The installer or uninstaller will
+          quit after this screen. The "Cancel" button will not be visible if this option is checked.
+        </li>
+<li>
+<font color="#5A4E87"><b>Back button</b></font>
+<br>
+          Allowing the user to go back to previous screens can be problematic if the previous
+          screen has actions attached, since by default every action is just executed once. The default behavior
+          is the "Safe back button", where the back button is hidden if the previous screen has actions attached.
+          If you <a href="../../../doc/steps/installerGui/actions.html">configure your actions</a> to be executed
+          multiple times, you might want to choose the "Always visible" setting. With the "Always hidden" setting
+          you can prevent the user from going back to the previous screen.
+        </li>
+<li>
+<font color="#5A4E87"><b>Pre-activation script</b></font>
+<br>
+          This script is executed just before the screen is displayed. If the screen relies on variables that
+          are not yet initialized (for example, a form screen), you can perform the initialization here.
+          Also you can use the API to change certain properties of the screen. Please see the examples
+          given by the <a href="../../../doc/steps/installerGui/dialogs/codeGallery.html">code gallery</a> in the install4j IDE.
+        </li>
+<li>
+<font color="#5A4E87"><b>Post-activation script</b></font>
+<br>
+          This script is executed just after the screen is displayed. Here, you could display a message box if required.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        Some screens only make sense when corresponding actions are used later on in the installer or uninstaller.
+        For example, the "Services" screen will only be displayed at runtime if there are "Install a service"
+        actions present on a subsequent screen. If such a dependency is not fulfilled after adding a screen,
+        a corresponding notification is displayed.
+      
+    </td>
+</tr>
+</table>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/applications.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/availableScreens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

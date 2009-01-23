@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Media File Wizard: Data Files</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Media File Wizard: Data Files</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/media/steps/installerOptions.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/bundledJre.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In this step of the <a href="../../../../doc/steps/media/wizard.html">media file wizard</a>
+      you define where the installer data should be placed.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Typically, installers are single files that contain all data that they install on the user's request.
+      There are three common use cases where this is not the case:
+      <ul>
+<li>
+<font color="#5A4E87"><b>CD/DVD installers with large data files</b></font>
+<br>
+          If your application relies on large amounts of data, it is often distributed on a CD or DVD.
+          In that case, you typically ship a number of external data files that you do not wish to package
+          inside the installer. The installer should start up quickly and the data files should not be extracted
+          from the installer in order to save time. The user might decide to install only certain components, so some
+          data files might not be needed at all. If they are included in the installer executable, all this data
+          would have to be read from disk.
+        </li>
+<li>
+<font color="#5A4E87"><b>Installers with large optional components</b></font>
+<br>
+          Some applications have large optional components that are not relevant for the typical user. To
+          reduce download size for the majority, the optional component should be downloadable on demand.
+        </li>
+<li>
+<font color="#5A4E87"><b>Net installers</b></font>
+<br>
+          Some application are highly modular, so it is not feasible to build a set of installers for typical use cases.
+          A net installer lets the user select the desired components and downloads them on demand. The download size
+          of the net installer is small since no parts of the application are contained in the installer itself.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      To accommodate the above use cases, install4j offers three different ways to handle the installer data files:
+      <ul>
+<li>
+<font color="#5A4E87"><b>Included in media file</b></font>
+<br>
+          All data files are included in the installer so you can ship it as a single download.
+        </li>
+<li>
+<font color="#5A4E87"><b>External</b></font>
+<br>
+          This mode covers the "CD/DVD installers with large data files" use case.
+          <p>
+            All data files are placed in a directory next to your installer that has the name of your installer
+            with the extension <b>.dat</b>. For example, if your media file name is <i><tt>hello_4_0</tt></i> (resulting
+            in a Windows installer executable <i><tt>hello_4_0.exe</tt></i>), the directory containing the external data files is
+            named <i><tt>hello_4_0.dat</tt></i>. You have to ship this directory in the same relative location on your CD or DVD.
+          </p>
+          
+<p>
+            The number of data files depends the definition of your installation components. The data files are generated in
+            such a way that
+            <ul>
+<li>
+                the files for an installation component are contained in one or more data files
+              </li>
+<li>
+                there are no files in those data files that do not belong to this installation component
+              </li>
+</ul>
+            
+<p>
+              If components do not overlap, there's a one-to-one correspondence between data files and installation
+              components.
+            </p>
+          
+</p>
+        
+</li>
+<li>
+<font color="#5A4E87"><b>Downloadable</b></font>
+<br>
+          This mode covers the "Installers with large optional components"  and "Net installers" use cases.
+          It can only be used if you define <a href="../../../../doc/steps/files/components.html">installation components</a>.
+          <p>
+            Data files are generated just like for the "External" mode, but only for installation components that
+            have been <b>marked as downloadable</b> in the
+            <a href="../../../../doc/steps/files/components.html">installation component definition</a>. If no installation
+            components are marked as "downloadable", this mode will behave like the "Included in media file" mode.
+            For a "net installer", all installation components are "downloadable".
+          </p>
+          
+<p>
+            For this mode, you have to enter a <b>HTTP download URL</b>, so the installer knows from where it should
+            download the data files at runtime if the user requests downloadable components. The URL must
+            begin with http:// and point to a directory where you place the data files. For example, if the
+            data file <i><tt>hello_windows_4_0.000</tt></i> is downloadable and the download URL is
+            <i><tt>http://www.test.com/components</tt></i>, the data file must be uploaded to the web server, so
+            that the installer can download the data file from the URL
+            <i><tt>http://www.test.com/components/hello_windows_4_0.000</tt></i>.
+          </p>
+          
+<p>
+            Any data files that you leave in the data file directory next to the installer will not be downloaded.
+            This means that if you test your installer directory from the location where it was generated, the
+            installer finds all data files in the data file directory and does not try to download them.
+          </p>
+        
+</li>
+</ul>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/media/steps/installerOptions.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/bundledJre.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

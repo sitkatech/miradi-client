@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>String Edit Dialog</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>String Edit Dialog</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/applicationTemplates.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/javaCode.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    The string edit dialog is shown from the
+    <a href="../../../../doc/steps/installerGui/actions.html">action</a>,
+    <a href="../../../../doc/steps/installerGui/screens.html">screen</a> or
+    <a href="../../../../doc/steps/installerGui/formComponents.html">form component</a>
+    editors when you click on the <b>[...]</b> for a
+    <ul>
+<li>
+        a "multi-line string" property. Multi-line strings cannot be edited inline in the property sheet.
+      </li>
+<li>
+        a "list of strings" property. While the inline editor in the property sheet accepts items separated by
+        semicolons (';'), this dialog separates item by line breaks. When you wish to enter a new item, you have to put
+        it on a new line.
+      </li>
+</ul>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      All key bindings in the editor are configurable. Choose <i>Settings-&gt;Key Map</i>
+      to display the <a href="../../../../doc/steps/installerGui/dialogs/keyMap.html">Key map editor</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        The editing functionality in the <i>Edit</i> menu includes:
+      
+      <ul>
+<li>
+<font color="#5A4E87"><b>Undo/Redo</b></font>
+<br>
+</li>
+<li>
+<font color="#5A4E87"><b>Copy/Cut/Paste</b></font>
+<br>The "Paste with dialog" action shows previous selections.</li>
+<li>
+<font color="#5A4E87"><b>Rectangular selections</b></font>
+<br>
+</li>
+<li>
+<font color="#5A4E87"><b>Extended selection and deletion</b></font>
+<br>This included actions like "Select word" and "Delete line".</li>
+<li>
+<font color="#5A4E87"><b>Join lines</b></font>
+<br>
+</li>
+<li>
+<font color="#5A4E87"><b>Duplicate lines</b></font>
+<br>
+</li>
+<li>
+<font color="#5A4E87"><b>Indent/Unindent selection</b></font>
+<br>
+</li>
+<li>
+<font color="#5A4E87"><b>Toggle case</b></font>
+<br>
+</li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      By choosing <i>Edit-&gt;Insert Variable</i> from the menu, you can add a compiler variable or custom
+      localization key at the current cursor position. It will be added with the text field variable syntax, like
+      ${i18n:myKey} for a custom localization key or ${compiler:myVariable} for a compiler variable.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        The search functionality in the <i>Search</i> menu includes:
+      
+      <ul>
+<li>
+<font color="#5A4E87"><b>Find</b></font>
+<br>
+          Find simple or regular expressions in the selected or the entire text with options
+          of case sensitivity and word matching. With "Find next occurrence" and "Find previous occurrence"
+          you can quickly move among the search results.
+        </li>
+<li>
+<font color="#5A4E87"><b>Replace</b></font>
+<br>Same as "Find" with an option to replace the found items.</li>
+<li>
+<font color="#5A4E87"><b>Quick search</b></font>
+<br>Search text by typing directly in the editor and highlighting the search results as you type.</li>
+</ul>
+
+    
+</td>
+</tr>
+</table>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/applicationTemplates.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/javaCode.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

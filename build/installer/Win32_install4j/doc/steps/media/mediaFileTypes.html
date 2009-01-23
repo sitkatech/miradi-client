@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Available Media File Types</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Available Media File Types</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/media/media.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/wizard.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        There are two fundamentally different types of media files:
+      
+      <ul>
+<li>
+<font color="#5A4E87"><b>Installers</b></font>
+<br>
+          
+<p>
+            The media file is an executable that invokes the installer. Optionally, the installer
+            can be executed as an unattended installer or as a console installer. Please see
+            the <a href="../../../doc/helptopics/installers/installerModes.html">corresponding help topic</a>
+            for more information.
+          </p>
+          
+<ul>
+<li>
+<font color="#5A4E87"><b>Windows media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_win32_16.png">
+              a media file for Windows is a native setup executable that installs your application
+              with an installer wizard.
+              <p>
+                
+<b>The installer can download a JRE</b> if no suitable JRE is found on the target system.
+              </p>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Mac OS X single bundle media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_macos_bundle_16.png">
+              a single bundle media file for Mac OS X is a .dmg file that extracts an installer wizard
+              (by double clicking on it).
+              The wizard installs your application as a <b>single application bundle</b>.
+              If you wish to support multiple launchers, please choose the "Mac OS X folder media wizard"
+              (see below).
+              <p>
+                The default JRE (which is always present on Mac OS X) is used during the
+                installation phase.
+              </p>
+              
+<p>
+                If you would like to create a separate directory next to the generated application bundle
+                that contains user files, you cannot add it directory to the "Installation directory" root
+                of the distribution tree, since all files under that node will end up in the application bundle.
+                The solution to this problem is to use the single bundle installer and to add another
+                installation root to the distribution directory, that root should be set to
+              </p>
+
+<pre>
+      ${installer:sys.installationDir}/My Application Documents
+</pre>
+              
+<p>
+                if you want to call the additional folder "My Application Documents".
+                That folder will be created next to the installed application bundle.
+              </p>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Mac OS X folder media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_macos_folder_16.png">
+              a folder media file for Mac OS X is a .dmg file that extracts an installer wizard
+              (by double clicking on it).
+              The wizard installs your application as a folder that contains the entire distribution
+              tree and <b>multiple application bundles</b> for each included launcher.
+              <p>
+                The default JRE (which is always present on Mac OS X) is used during the
+                installation phase.
+              </p>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Unix/Linux GUI installer media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_unix_gui_16.png">
+              a Unix/Linux GUI installer media file is an executable shell script that extracts
+              an installer and installs your application with an installer wizard.
+              <p>
+                
+<b>The installer can download a JRE</b> if no suitable JRE is found on the target system.
+              </p>
+            
+</li>
+</ul>
+
+        
+<a name="archives"></a>
+        
+</li>
+<li>
+<font color="#5A4E87"><b>Archives</b></font>
+<br>
+          
+<p>
+            The media file is an archive that the user can extract to an arbitrary location.
+            No screens are shown and no actions are executed. If you define additional
+            installation roots, the files in them are not installed. No components can be downloaded.
+          </p>
+          
+<p>
+            Archives are intended
+            as a fallback or as additional packages such as documentation bundles. If your
+            installer heavily relies on actions, screens and additional installation roots,
+            you should not use archives to distribute your application. The main advantages of archives
+            such as the ability to install them at the command line is also available from
+            installers by using their <a href="../../../doc/helptopics/installers/installerModes.html">unattended or
+            console installation modes</a>.
+          </p>
+          
+<ul>
+<li>
+<font color="#5A4E87"><b>Windows archive media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_win32_archive_16.png">
+              an archive media file for Windows is a ZIP-file that contains your application.
+              <p>
+                
+<b>Note:</b> This media file type <b>does not have a GUI installer</b>. If
+                you wish to create a GUI installer for Windows, please choose the
+                "Windows media wizard" (see above).
+              </p>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Mac OS X single bundle archive media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_macos_bundle_archive_16.png">
+              a single bundle media file for Mac OS X is a .tgz archive that extracts a <b>single
+              bundle</b> for your application.
+              If you wish to support multiple launchers, please choose the "Mac OS X folder archive media wizard"
+              (see below).
+              <p>
+                
+<b>Note:</b> This media file type <b>does not have a GUI installer</b>. If
+                you wish to create a GUI installer for Mac OS X, please choose the
+                "Mac OS X single bundle media wizard" (see above).
+              </p>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Mac OS X folder archive media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_macos_folder_archive_16.png">
+              a folder media file for Mac OS X is a .tgz archive that contains the entire distribution
+              tree and <b>multiple application bundles</b> for each included launcher.
+              <p>
+                
+<b>Note:</b> This media file type <b>does not have a GUI installer</b>. If
+                you wish to create a GUI installer for Mac OS X, please choose the
+                "Mac OS X folder media wizard" (see above).
+              </p>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Linux RPM media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_linux_rpm_16.png">
+              an RPM archive for Linux can be installed and uninstalled with the
+              <i><tt>rpm</tt></i> command on the most popular Linux distributions. There are also a
+              large number of graphical package management tools that Linux users can use to install
+              an RPM archive.
+              <p>
+                If you do not wish to use RPM for your Linux media file or if you wish
+                to provide an alternative installation package which does not use RPM, please use the
+                Unix/Linux archive media wizard (see below).
+              </p>
+              
+<p>
+                
+<b>Note:</b> This media file type <b>does not have a GUI installer</b>. If
+                you wish to create a GUI installer for Linux, please choose the
+                "Unix/Linux GUI installer media wizard" (see below).
+              </p>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Unix/Linux archive media file</b></font>
+<br>
+              
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/media_unix_archive_16.png">
+              a Unix/Linux archive media file is a gzipped TAR archive that
+              contains your application.
+              <p>
+                
+<b>Note:</b> This media file type <b>does not have a GUI installer</b>. If
+                you wish to create a GUI installer for Unix or Linux, please choose the
+                "Unix/Linux GUI installer media wizard" (see above).
+              </p>
+            
+</li>
+</ul>
+
+        
+</li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      <b>Note:</b> GUI launchers on Mac OS X only start a single instance of your application.
+      Subsequent launches will not start additional JVMs. You can use the
+      <tt>com.install4j.api.launcher.StartupNotification</tt> from the
+      <a href="../../../doc/api/javadoc/overview-summary.html">install4j API</a> to be informed about those
+      invocations.
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/media/media.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/wizard.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Auto-Update Functionality</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Auto-Update Functionality</h2>
+</td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/jreBundles.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<h3>1. Introduction</h3>
+    
+      install4j can help you to include auto-updating functionality into your application. Auto-updating means two things:
+      First, there must be a way to check if there is a newer version available for download. This check can be
+      initiated by the user in various ways or the check can be triggered automatically by your application.
+      Second, there must be a way to download and execute an appropriate installer for the new version.
+    <br>
+    
+<p>
+      install4j creates a special file <i><tt>updates.xml</tt></i> in the media output directory when you
+      build the project. This file describes the media files of the current version. If you want to
+      use install4j's auto-update functionality, you have to upload this file to a web server.
+      This file is downloaded by deployed installations as described below and delivers information
+      about the current version.
+    </p>
+    
+<p>
+      Downloading and installing the new version is done with a
+      <a href="../../../doc/steps/installerGui/applications.html">custom installer application</a>.
+       install4j offers several templates for updaters that
+      correspond to the update strategies outlined below in this help topic.
+    </p>
+    
+<p>
+      
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/application_templates.png">
+    </p>
+
+    
+<h3>2. updates.xml</h3>
+    
+<p>
+      The <i><tt>updates.xml</tt></i> file is created in the media output directory each time you build the project.
+      You can use this file as is, however, some situations require that you modify the file
+      before uploading it to the web server. The file looks like the sample below:
+    </p>
+
+<pre>
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;updateDescriptor baseUrl=""&gt;
+  &lt;entry targetMediaFileId="8" updatableVersionMin="" updatableVersionMax="" fileName="hello_windows_4_0.exe"
+         newVersion="4.0" newMediaFileId="8" fileSize="2014720" bundledJre=""&gt;
+    &lt;comment /&gt;
+  &lt;/entry&gt;
+  &lt;entry targetMediaFileId="9" updatableVersionMin="" updatableVersionMax="" fileName="hello_linux_4_0.rpm"
+         newVersion="4.0" newMediaFileId="9" fileSize="817758" bundledJre=""&gt;
+    &lt;comment /&gt;
+  &lt;/entry&gt;
+  &lt;entry targetMediaFileId="10" updatableVersionMin="" updatableVersionMax="" fileName="hello_macos_4_0.dmg"
+         newVersion="4.0" newMediaFileId="10" fileSize="1359872" bundledJre=""&gt;
+    &lt;comment /&gt;
+  &lt;/entry&gt;
+&lt;/updateDescriptor&gt;
+
+</pre>
+    
+<p>
+      The root of the <i><tt>updates.xml</tt></i> file is the <tt>updateDescriptor</tt> element. It contains the
+      <tt>baseUrl</tt> attribute that can be used to specify an alternate download URL for the installers.
+      By default, it is empty which means that the installers must be located in the same directory as the
+      <i><tt>updates.xml</tt></i> file. The <tt>updateDescriptor</tt> element contains one or more
+      <tt>entry</tt> elements which correspond to the media files that were created by the build.
+    </p>
+    
+<p>
+      When install4j determines whether an entry in the update descriptor is a match for the current installation,
+      it looks at three attributes of the <tt>entry</tt> element: Most importantly, the <tt>targetMediaFileId</tt>
+      attribute has to match the media file ID of the current installation. You can show media file IDs by invoking
+      <i>Media-&gt;Show IDs</i> in the <a href="../../../doc/steps/media/media.html">media section</a> of the
+      install4j IDE. If you discontinue a media file, you can migrate users of that media file to a different media file
+      by duplicating the desired entry in <i><tt>updates.xml</tt></i> and changing the <tt>targetMediaFileId</tt>
+      attribute to that of the discontinued media file. Another criterion is the installed version of the application.
+      Depending on that version, you might want to offer different updates. The <tt>updatableVersionMin</tt> and the
+      <tt>updatableVersionMax</tt> attributes can set lower and upper limits for the installed versions that should
+      download the associated entry in the update descriptor. By default, these attributes are empty, so no
+      version restrictions apply.
+    </p>
+    
+<p>
+      Attributes that describe the update installer include <tt>fileName</tt> which is necessary to construct the download URL,
+      and <tt>fileSize</tt> which contains the size of the file in bytes. <tt>newVersion</tt> contains
+      the available version while <tt>newMediaFileId</tt> is the media file ID
+      of the update installer which is the same as <tt>targetMediaFileId</tt> unless you changed it yourself.
+      Lastly, <tt>bundledJre</tt> contains the original file name of the JRE bundle without the <i><tt>.tar.gz</tt></i>
+      extension or the empty string if no JRE is bundled in the installer. In addition to the above attributes,
+      the nested <tt>comment</tt> element can contain a description that should be displayed to the user.
+      All of this information can be used for custom logic to select a suitable update installer or be displayed to
+      the user in the updater. In addition, you can add any number arbitrary attributes to the <tt>entry</tt>
+      element yourself.
+    </p>
+
+    
+<h3>3. The update descriptor</h3>
+    
+<p>
+      The install4j runtime API contains the <tt>com.install4j.api.update.UpdateChecker</tt> utility class
+      that can download the <i><tt>updates.xml</tt></i> file and translate it to an instance of
+      <tt>com.install4j.api.update.UpdateDescriptor</tt>. From there, you can get a suitable
+      <tt>com.install4j.api.update.UpdateDescriptorEntry</tt> with a single method call. Please see the Javadoc
+      for more detailed information. The above API is primarily intended for use in your application. The install4j runtime
+      API contained in <i><tt>resource/i4jruntime.jar</tt></i> is always on the class path for a generated launcher.
+    </p>
+    
+<p>
+      In a custom installer application, you would rather use a "Check for update" action that performs the same
+      actions as <tt>UpdateChecker</tt> and saves the downloaded
+      <tt>UpdateDescriptor</tt> to an installer variable. All updater templates
+      included with install4j execute the "Check for update" action at some point.
+    </p>
+    
+<p>
+      Instances of <tt>UpdateDescriptorEntry</tt> expose all attributes of the corresponding
+      <tt>entry</tt> element in the <i><tt>updates.xml</tt></i> file. They also give access to additional
+      attributes added to the <tt>entry</tt> element  so you can implement custom logic to find a suitable
+      update. The most important method of the <tt>UpdateDescriptorEntry</tt> class is the <tt>getUrl()</tt>
+      method that constructs the full URL from which the update installer can be downloaded. If no <tt>baseUrl</tt>
+      has been specified on the <tt>updateDescriptor</tt> root element, the URL starts with the the parent directory
+      from which the <i><tt>updates.xml</tt></i> file has been downloaded.
+    </p>
+
+    
+<h3>4. Strategy 1: Standalone updater</h3>
+    
+<p>
+      The easiest way to provide auto-update functionality to your users is to create a self-contained updater
+      application. This is done by adding an application on the
+      <a href="../../../doc/steps/installerGui/screensAndActions.html">screens &amp; actions tab</a> and choosing the
+      "Standalone updater" application template. Such an auto-updater can by invoked manually by the user, on Windows,
+      it can also be added to the start menu. No changes in in your application code are required so far.
+    </p>
+    
+<p>
+      If you have a GUI application, you could provide integration with the updater by offering a "Check for update"
+      menu item or similar that invokes the updater. One problem in this scenario is that if the updater downloads
+      and executes the update installer, your application will still be running and the user will receive a corresponding
+      warning message in the installer. The solution to this problem is to use the <tt>com.install4j.api.launcher.ApplicationLauncher</tt>
+      class to launch the updater. With this utility class you can launch the update installer by passing its ID as an argument.
+      IDs can be shown on the screens &amp; action tab by toggling the "Show IDs" tool bar button. If you launch
+      an installer application such as an updater that way, the "Shut down calling launcher" action will be able
+      to close your application. To react to the shutdown, for example, to invoke your own shutdown routine,
+      you can pass a callback to the <code>ApplicationLauncher.launchApplication(...)</code> call. After you were
+      notified through the call back, your application will be terminated with a call to <code>System.exit()</code>.
+    </p>
+
+    
+<h3>5. Strategy 2: Updater with silent version check</h3>
+    
+<p>
+      In this scenario, you invoke the updater like in strategy 1, but rather than offering a "Check for update" menu item,
+      you do so on a regular schedule. For example, you automatically check for updates every week or each time the user starts the
+      application. In that case, the standalone updater template is not suitable since you only want to give the
+      user feedback if there is actually a new version available. However, the standalone updater always starts with
+      a "Welcome" screen, verbosely checks for updates and informs the user that no new version is available.
+      Most likely, your users will be bothered if this is done automatically.
+    </p>
+    
+<p>
+      The "Updater with silent version check" application template is intended for this use case. It checks for
+      an update in the startup sequence and terminates the updater if no new version is available. This means that
+      if there is no new version available, your users will not see that a check has taken place. Only if a new version is
+      available will the updater display its window and inform the user of the possibility to download the update installer.
+    </p>
+    
+<p>
+      For such an automatic check you will likely want to invoke the updater in a blocking fashion. If you
+      call <code>ApplicationLauncher.launchApplication(...)</code> with the <code>blocking</code> argument set to
+      <code>true</code>, the method will not return until the update installer has exited. If the user
+      decides to run the installer on the "Finish" screen, your application will terminate as explained in strategy 1.
+    </p>
+
+    
+<h3>6. Strategy 3: Updater without version check</h3>
+    
+<p>
+      If you want to take the integration one step further and display the availability of a new version
+      in your application yourself, you can use the <tt>com.install4j.api.update.UpdateChecker</tt>
+      class as explained under the "updates.xml" heading. In this way, you can create your
+      own panel that announces the new version and lets the user decide whether to download it or not.
+      If the user decides to download, the "Updater with silent version check" template is not suitable
+      since it informs the user about the new version once more.
+    </p>
+    
+<p>
+      The "Updater without version check" application template is intended for this use case. It immediately starts downloading the
+      new version and then proceeds to the "Finish" screen where the user can decide to start the downloaded installer.
+      In the other two templates the user can choose the directory where the downloaded installer should be saved.
+      That screen is omitted in this template and the installer is downloaded to the user home directory by default.
+      You can change this default directory be passing the argument <tt>-DupdaterDownloadLocation=[directory]</tt>
+      to the <code>ApplicationLauncher.launchApplication(...)</code> call. Again, the updater will terminate your
+      application if the user starts the installer as explained for strategy 1.
+    </p>
+
+    
+<h3>7. Update schedule registry</h3>
+    
+<p>
+      For strategy 2 and 3 above, you check for an update on a regular schedule. install4j comes with a standard
+      implementation of an update schedule registry that frees you of the task to implement one yourself.
+      The <tt>com.install4j.api.update.UpdateScheduleRegistry</tt> class is intended to be used in your
+      application. You configure an <tt>com.install4j.api.update.UpdateSchedule</tt> with a call to
+      <tt>UpdateScheduleRegistry.setUpdateSchedule(...)</tt> and call
+      <tt>UpdateScheduleRegistry.checkAndReset()</tt> each time your application is started. If you get
+      a positive response, you can start a suitable updater as explained above. Please see the Javadoc
+      for more information.
+    </p>
+    
+<p>
+      To facilitate the configuration of the update schedule in your installer, install4j offers a special
+      "Update schedule selector" form component whose initial value is set to the current setting (if any) and
+      automatically updates the setting for the installed application when the user clicks "Next".
+    </p>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/jreBundles.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

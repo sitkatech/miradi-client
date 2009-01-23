@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Configure JDKs Dialog</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Configure JDKs Dialog</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/general/dialogs/inputDialog.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/general/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The JDK configuration dialog is displayed when you click the
+      <b>[Configure JDKs]</b> button on the <a href="../../../../doc/steps/general/javaVersion.html">Java version</a>
+      tab or in the <a href="../../../../doc/steps/installerGui/dialogs/javaEditorSettings.html">Java editor settings dialog</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In this dialog, you can add one or more JDKs that will be available for the purposes outlined on the
+      <a href="../../../../doc/steps/general/javaVersion.html">Java version</a> help page. The JDK configurations are
+      <b>not saved in the project</b>, they are saved globally for your install4j installation.
+      <p>
+        When you add a new JDK, you are asked for the home directory of the JDK that you want to enter. Instead of
+        a JDK, you can also select a JRE, in which case no parameter names will be available in the code completion
+        proposals of JDK methods. After you select the home directory, install4j will check whether the directory
+        contains a JDK or JRE and runs <b><tt>java -version</tt></b> to determine the version of the
+        selected JDK or JRE.
+      </p>
+      
+<p>
+        The table that shows the configured JDKs has several columns:
+      </p>
+      
+<ul>
+<li>
+<font color="#5A4E87"><b>Name</b></font>
+<br>
+          This is a symbolic name that describes the JDK, like "JDK 1.6" When you select a design time JDK on the
+          <a href="../../../../doc/steps/general/javaVersion.html">Java version</a> tab or in the
+          <a href="../../../../doc/steps/installerGui/dialogs/javaEditorSettings.html">Java editor settings dialog</a>,
+          only this symbolic name will be saved in the project file. When users on other computers and other platforms
+          configure a JDK with the same symbolic name in their install4j installation, it will be used automatically for
+          code compilation and code completion.
+          <p>
+            When you add a JDK, the name "JDK [major version].[minor version]" will be suggested by default. If the selection
+            is a JRE, "JRE [major version].[minor version]" will be suggested instead. The name of the JDK configuration
+            must be unique.
+          </p>
+        
+</li>
+<li>
+<font color="#5A4E87"><b>Java Home Directory</b></font>
+<br>
+          This is the Java home directory that you selected when you added the configuration. You
+          can change the Java home directory by editing this column. The Java version check will be performed
+          again and the version displayed in the "Java Version" column will be updated. The symbolic name
+          of the configuration will not be changed.
+        </li>
+<li>
+<font color="#5A4E87"><b>Javadoc Directory</b></font>
+<br>
+          In this column, you can enter the location of the Javadoc that should be associated with this JDK configuration.
+          The Javadoc directory can remain empty in which case no context-sensitive Javadoc help will be available
+          for classes from the runtime library.
+        </li>
+<li>
+<font color="#5A4E87"><b>Java Version</b></font>
+<br>
+          This uneditable column shows the version of the selected JDK configuration.
+        </li>
+</ul>
+      
+<p>
+        When you delete the JDK configuration that is currently used by the project, the project will still
+        reference the same configured symbolic name for the JDK. It will then be shown in red color with a
+        [not configured] message attached.
+      </p>
+      
+<p>
+        Changing the order of JDK configuration changes the order in the drop-down list on the
+        <a href="../../../../doc/steps/general/javaVersion.html">Java version</a> tab or in the
+        <a href="../../../../doc/steps/installerGui/dialogs/javaEditorSettings.html">Java editor settings dialog</a>.
+      </p>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/general/dialogs/inputDialog.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/general/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

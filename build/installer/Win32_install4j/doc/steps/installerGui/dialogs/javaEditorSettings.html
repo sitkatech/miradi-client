@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Java Editor Settings</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Java Editor Settings</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/javaCode.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/codeGallery.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    The Java editor settings dialog is shown when you select
+    <i>Settings-&gt;Java Editor Settings</i> from the menu in the
+    <a href="../../../../doc/steps/installerGui/dialogs/javaCode.html">Java code editor dialog</a>.
+    <table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In the <b>code completion popup settings</b> section, you can configure the following options:
+      <ul>
+<li>
+<font color="#5A4E87"><b>Auto-popup code completion after dot</b></font>
+<br>
+          If selected, each time you type a dot (".") in the Java code editor, the code completion popup
+          will be displayed after a certain delay unless you type another character in the meantime.
+        </li>
+<li>
+<font color="#5A4E87"><b>Delay</b></font>
+<br>
+          The "Auto-popup code completion after dot" feature above uses a configurable delay. By default, the delay
+          is set to 1000 ms.
+        </li>
+<li>
+<font color="#5A4E87"><b>Popup height</b></font>
+<br>
+          The height of the completion popup in number of entries is configurable.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In the <b>display code problems</b> section, you can configure the threshold for which code problems
+      are shown in the editor.
+      <ul>
+<li>
+<font color="#5A4E87"><b>None</b></font>
+<br>
+          No code problems are displayed at all.
+        </li>
+<li>
+<font color="#5A4E87"><b>Errors only</b></font>
+<br>
+          Only problems that prevent code compilation are displayed. Errors show as red underlines in the editor
+          and red stripes in the right gutter.
+        </li>
+<li>
+<font color="#5A4E87"><b>Errors and warnings</b></font>
+<br>
+          In addition to errors, warnings are displayed. Warnings cover all kinds of suspicious conditions that could be
+          sources of bugs such as an unused local variable. Warnings are displayed as yellow backgrounds in the editor
+          and yellow stripes in the right gutter.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The <b>design time JDK</b> section mirrors the design time JDK configuration on the
+      <a href="../../../../doc/steps/general/javaVersion.html#designTimeJDK">Java version</a> tab of the
+      <a href="../../../../doc/steps/general/general.html">general settings</a>.
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/javaCode.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/codeGallery.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

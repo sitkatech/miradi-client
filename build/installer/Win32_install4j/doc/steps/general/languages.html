@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>General Settings - Languages</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>General Settings - Languages</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/general/javaVersion.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/mediaOptions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      On this tab of the <a href="../../../doc/steps/general/general.html">General Settings step</a>
+      you define the principal language as well as additional languages supported by
+      your <a href="../../../doc/steps/installerGui/installerGui.html">installers</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        The following options are available:
+      
+      <ul>
+<li>
+<font color="#5A4E87"><b>Principal language</b></font>
+<br>
+          The principal language is the language that your installer defaults to if no other
+          supported languages match the locale at runtime.
+        </li>
+<li>
+<font color="#5A4E87"><b>Custom localization file</b></font>
+<br>
+          A custom localization file is text file with key-message pairs in the format of
+          <ul>
+<li>
+<font color="#5A4E87"><b>a Java properties file</b></font>
+<br>
+              a Java properties file has ISO 8859-1 encoding, all other characters must be
+              represented as Unicode escape sequences, like <tt>\u0823</tt>.
+            </li>
+<li>
+<font color="#5A4E87"><b>a properties file with UTF-8 encoding</b></font>
+<br>
+              A properties file with UTF-8 encoding has the advantage that you do not have to use
+              escape sequences. However it might not be supported by i18n tools.
+            </li>
+</ul>
+          
+<p>
+            A custom localization file can be used to
+          </p>
+          
+<ul>
+<li>
+<font color="#5A4E87"><b>override system messages</b></font>
+<br>
+              If any of the default messages in the installer is not appropriate for your use-case, you can
+              change it by looking up the corresponding keys in the appropriate
+              <i><tt>$INSTALL4J_HOME/resource/messages/messages_*.utf8</tt></i> file and define the same
+              key in your custom localization file to override that message.
+            </li>
+<li>
+<font color="#5A4E87"><b>localize your installer</b></font>
+<br>
+              Anywhere in the install4j IDE where you can enter text that is used at runtime, you can use
+              <a href="../../../doc/helptopics/concepts/variables.html">custom localization keys</a>, i.e.
+              variables of the form <tt>${i18n:myKey}</tt>. Those keys are read from
+              your custom localization file and offered by the
+              <a href="../../../doc/steps/general/dialogs/variableSelection.html">variable selection dialog</a>.
+            </li>
+</ul>
+          
+<p>
+            If required, you can use parameters for your messages by using the usual <tt>{n}</tt>
+            syntax in the value and listing the parameters in function-like manner after the key name in the variable
+            instance. For example, if your key name is <tt>myKey</tt> and your message value is
+            <pre>
+      Create {0} entries of type {1}
+            </pre>
+            you can use a variable
+            <pre>
+      ${i18n:myKey("5", "foo")}
+            </pre>
+            in order to fill the parameters, so that the actual message becomes
+            <pre>
+      Create 5 entries of type foo
+            </pre>
+            However, in the context of localizing an installer this is rarely necessary.
+          </p>
+        
+</li>
+<li>
+<font color="#5A4E87"><b>Additional languages</b></font>
+<br>
+          With install4j, you can build multi-language installers that offer the user a choice between a number
+          of languages. If you
+          <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/add.png">&nbsp;add languages to the
+          additional languages table, the installer becomes a multi-language installer, otherwise is is a
+          fixed-language installer. When you add a new language, the
+          <a href="../../../doc/steps/general/dialogs/languageSelection.html">language selection dialog</a>
+          is displayed. A new entry is then added to the table and you can configure the
+          custom localization file by double-clicking on the appropriate cell.
+        </li>
+<li>
+<font color="#5A4E87"><b>Skip language selection dialog if auto-detected locale matches a supported language</b></font>
+<br>
+          This check box ensures that the language selection is only displayed if the installer cannot find
+          a match between a supported language (either principal or additional language) and the auto-detected
+          locale at runtime. By default this option is not selected and the language selection dialog is always
+          displayed.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The principal language and the associated custom localization file can be
+      <a href="../../../doc/steps/media/steps/customize.html">overridden for each media file</a>. In this
+      way you can <b>build multiple fixed-language installers each with a different language</b>.
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/general/javaVersion.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/mediaOptions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

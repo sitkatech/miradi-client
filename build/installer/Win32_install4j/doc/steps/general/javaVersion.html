@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>General Settings - Java Version</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>General Settings - Java Version</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/general/appInfo.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/languages.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      On this tab of the <a href="../../../doc/steps/general/general.html">General Settings step</a>
+      you enter the version requirements and the search sequence for the JRE or JDK that 
+      apply to your <a href="../../../doc/steps/installerGui/installerGui.html">installers</a> and
+      <a href="../../../doc/steps/launcher/launcher.html">application launchers</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In the <tt>Java version</tt> section, you can constrain the version of the
+      Java VM.
+      <ul>
+<li>
+          The <b>minimum Java version</b> must be specified.
+          For example, enter a value of <tt>1.3</tt>.
+        </li>
+<li>
+          The <b>maximum Java version</b> can optionally be specified.
+          For example, enter a value of <tt>1.4</tt>.
+        </li>
+</ul>
+      
+<p>
+        The maximum Java version can be entered with less numeric detail than the
+        minimum Java version to prevent the use of a higher major or minor release.
+        For example, a minimum version of 1.4.1 and a maximum version of 1.4 ensures that
+        the highest available 1.4.x &gt;= 1.4.1 JRE is used, but not a 1.5 JRE.
+        Similarly, a minimum version of 1.4.1_03 and a maximum version of 1.4.1 ensures that
+        the highest available 1.4.1 &gt;= 1.4.1_03 JRE is used, but not a 1.4.2 JRE.
+      </p>
+      
+<p>
+        By default, JREs with a beta version number or JREs from an early access release cycle
+        will not be used by the launcher. If you would like to enable the use of these JREs,
+        please check the option <tt>allow JREs with a beta version number</tt>.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        The JRE search sequence determines how install4j searches for a JRE on the target system.
+        New configurations get a pre-defined default search sequence.
+        install4j has a special mechanism which allows you to bundle JREs with your media files.
+        If you
+        <a href="../../../doc/steps/media/steps/bundledJre.html">choose a particular JRE for bundling</a>
+        in one of the <a href="../../../doc/steps/media/wizard.html">media file wizards</a>,
+        this JRE will always be used first and you do not need to adjust the search sequence yourself.
+      
+      <p>
+        If you have problems with JRE detection at runtime, please see the
+        <a href="../../../doc/helptopics/installers/errors.html">help topic on error handling</a>
+        for a description on how to get diagnostic information.
+      </p>
+      
+<p>
+        The following types of
+        <a href="../../../doc/steps/general/dialogs/searchSequence.html">search sequence entries</a> are 
+        available:
+      </p>
+      
+<ul>
+<li>
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/sse_registry.png">&nbsp;Search registry</li>
+<li>
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/sse_directory.png">&nbsp;Directory</li>
+<li>
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/sse_envvar.png">&nbsp;Environment variable</li>
+</ul>
+      
+<p>
+        The control buttons on the right allow you to modify the contents of the 
+        search sequence list:
+      </p>
+      
+<ul>
+<li>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/add.png">&nbsp;Add search sequence entry (key <code>INS</code>)<br>
+          Invokes the 
+          <a href="../../../doc/steps/general/dialogs/searchSequence.html">search sequence entry dialog</a>.
+          Upon closing the search sequence entry dialog with the <b>[OK]</b> button, 
+          a new search sequence entry will be appended to the bottom of the search sequence
+          list. 
+        </li>
+<li>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/remove.png">&nbsp;Remove search sequence entry (key <code>DEL</code>)<br>
+          Removes the currently selected search sequence entry without
+          further confirmation.
+        </li>
+<li>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/up.png">&nbsp;Move search sequence entry up (key <code>ALT-UP</code>)<br>
+          Moves the selected search sequence entry up one position in the class path list.
+        </li>
+<li>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/down.png">&nbsp;Move search sequence entry down (key <code>ALT-DOWN</code>)<br>
+          Moves the selected search sequence entry down one position in the class path list.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<a name="designTimeJDK"></a>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        The <b>design time JDK</b> determines which JDK or JRE is used for the following purposes:
+      
+      <ul>
+<li>
+<font color="#5A4E87"><b>Code compilation</b></font>
+<br>
+          install4j uses a bundled eclipse compiler, so it does not need this functionality from a JDK. However it needs
+          a runtime library against which scripts entered in the <a href="../../../doc/steps/installerGui/installerGui.html">installer configuration</a>
+          are compiled. The version of that JDK should correspond to the minimum Java version for the project configured above.
+          <p>
+            By default, the <i><tt>rt.jar</tt></i> runtime library of the JRE that is is used to run the install4j IDE is used
+            for code compilation. If your minimum Java version is lower than the the Java version used to run install4j,
+            runtime errors can occur if you accidentally use newer classes and method.
+          </p>
+        
+</li>
+<li>
+<font color="#5A4E87"><b>Context-sensitive Javadoc help</b></font>
+<br>
+          If you configure a separate design-time JDK or JRE, you can enter a Javadoc directory to get context-sensitive
+          Javadoc help for the runtime library in the <a href="../../../doc/steps/installerGui/dialogs/javaCode.html">Java code editor</a>.
+          By default, context-sensitive Javadoc help is only available for the <a href="../../../doc/api/javadoc/overview-summary.html">install4j API</a>.
+        </li>
+<li>
+<font color="#5A4E87"><b>Enhanced code completion functionality</b></font>
+<br>
+          If you configure a separate design-time JDK (and not a JRE), the
+          <a href="../../../doc/steps/installerGui/dialogs/javaCode.html">Java code editor</a> will show completion proposals
+          for methods in the runtime library with parameter names. By default, parameter names for methods in the
+          runtime library are not available.
+        </li>
+</ul>
+      
+<p>
+        The drop-down list next to the <tt>JDK</tt> option shows the name of all configured JDKs together
+        with their Java versions. In order to configure a new design time JDK, select the <tt>JDK</tt> option,
+        and click on <b>[Configure JDKs]</b>. This shows the
+        <a href="../../../doc/steps/general/dialogs/configureJdks.html">Configure JDKs dialog</a>.
+      </p>
+      
+<p>
+        The list of available design time JDK is saved globally for your entire install4j installation and not
+        for the current project. The only information saved in your project is the name of the JDK configuration. In this way,
+        you can bind a suitable JDK on another installation and on other platforms. If the JDK name saved in the project
+        cannot be found in your install4j installation, the name will be displayed in red color with a "[not configured]"
+        message attached. In that case, when clicking on <b>[Configure JDKs]</b>, you will be asked if you would
+        like to configure this JDK. 
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      A build will not be possible until all required fields have been completed. If a required
+      field is missing when <a href="../../../doc/steps/build/build.html">starting a build</a>, this
+      tab will be displayed with a warning message.
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/general/appInfo.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/general/languages.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

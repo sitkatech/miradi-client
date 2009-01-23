@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Installer - Configuring Actions</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Installer - Configuring Actions</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/availableScreens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/availableActions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        Actions are configured on the <a href="../../../doc/steps/installerGui/screensAndActions.html">screens &amp; and actions tab</a>.
+      
+      <p>
+        Please see the <a href="../../../doc/steps/installerGui/availableActions.html">list of available actions</a> that come with install4j.
+      </p>
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        An action performs a <b>configurable unit of work</b> of the installer application.
+      
+      <p>
+        Actions are attached to <a href="../../../doc/steps/installerGui/screens.html">screens</a> or they are part
+        of the <b>startup sequence</b> that allows you to perform actions before the installer or
+        uninstaller is displayed. If any of these actions fails and has a "Quit on failure" failure strategy,
+        the installer application will not be shown.
+      </p>
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Common properties of actions are:
+      <ul>
+<li>
+<font color="#5A4E87"><b>Condition expression</b></font>
+<br>
+          This expression is evaluated just before the action is executed. If the expression or script returns false,
+          the action will be skipped.
+        </li>
+<li>
+<font color="#5A4E87"><b>Rollback barrier</b></font>
+<br>
+          If the action should be a rollback barrier. When a rollback barrier is completed,
+          none of the preceding actions will be rolled back. You can use this property to
+          prevent an incomplete rollback of complex changes or to protect actions from rollback when the user hits
+          "Cancel" in the post-install phase.
+        </li>
+<li>
+<font color="#5A4E87"><b>Can be executed multiple times</b></font>
+<br>
+          If the action can be executed multiple times. If unselected, the action will only be executed once
+          and do nothing for subsequent invocations of the containing screen. The default settings for
+          screens ensure that a screen with actions is only shown once. However, if the
+          <a href="../../../doc/steps/installerGui/screens.html">"Back button" property of a screen</a>
+          is changed of if you skip screens programatically, a screen with actions might be shown multiple times.
+        </li>
+<li>
+<font color="#5A4E87"><b>Failure strategy</b></font>
+<br>
+          If an action fails (i.e. returns 'false'), the installer or uninstaller can continue, quit,
+          or ask the user what to do. If you select something other than 'Continue on failure', you should enter an
+          error message in the "Error message" property unless the action displays the error itself.
+        </li>
+<li>
+<font color="#5A4E87"><b>Error message</b></font>
+<br>
+          If the action fails, this error message is displayed to the user, otherwise the action fails silently.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        Most often, actions are added to the "Installation" or "Uninstallation" screens.
+        The advantage of those screens is that they have a progress and status bar that is utilized by actions. If a
+        screen does not expose a progress interface, the status and progress messages of attached actions are lost.
+        This is no problem for near-instantaneous actions such as setting an environment variable, but for
+        time-consuming operations the user should be informed about progress, even if it is only an indeterminate
+        progress bar. As an alternative to the  "Installation" or "Uninstallation" screens, you can use
+        "Display progress" screens to create additional installation phases.
+      
+      <p>
+        Some actions have an <b>"affinity" to a particular screen</b> and
+        will suggest to add themselves to that screen, such as the actions in the "Final options" category which
+        would like to go to the "Finish" screen. However, this is only a suggestion to guide you for the most
+        common use case.
+      </p>
+      
+<p>
+        Some actions have an <b>associated screen</b> that allows the user to modify the behavior of the action.
+        For example, the "Install a service" action has a corresponding "Services" screen that allows the user
+        to decide whether the service should be installed and started on bootup. If such a relationship exists,
+        a corresponding notification is displayed after adding an action.
+      </p>
+    
+</td>
+</tr>
+</table>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/availableScreens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/availableActions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

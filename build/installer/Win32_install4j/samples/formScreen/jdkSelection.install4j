@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<install4j version="@VERSION@" transformSequenceNumber="2">
+  <directoryPresets config="./media" />
+  <application name="Sample App" distributionSourceDir="" applicationId="5340-5932-4994-0799" mediaDir="./media" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="sample" publisher="ej-technologies GmbH" publisherWeb="http://www.ej-technologies.com" version="1.0" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" javaMinVersion="1.4" javaMaxVersion="" allowBetaVM="false" jdkMode="jdk" jdkName="JDK 1.6">
+    <languages skipLanguageSelection="false">
+      <principalLanguage id="en" customLocalizationFile="" />
+      <additionalLanguages />
+    </languages>
+    <searchSequence>
+      <registry />
+      <envVar name="JAVA_HOME" />
+      <envVar name="JDK_HOME" />
+    </searchSequence>
+    <variables />
+  </application>
+  <files>
+    <filesets />
+    <roots />
+    <mountPoints />
+    <entries />
+    <components />
+  </files>
+  <launchers />
+  <installerGui installerType="1" suggestPreviousProgramGroup="false" addOnAppId="" suggestPreviousLocations="true">
+    <customCode useInstalledFiles="false" />
+    <applications>
+      <application name="" id="installer" beanClass="com.install4j.runtime.beans.applications.InstallerApplication" enabled="true" commentSet="false" comment="" customIcnsFile="" customIcoFile="">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.applications.InstallerApplication">
+              <void property="frameHeight">
+                <int>550</int>
+              </void>
+              <void property="frameWidth">
+                <int>600</int>
+              </void>
+            </object>
+          </java>
+        </serializedBean>
+        <startup>
+          <screen name="" id="9" beanClass="com.install4j.runtime.beans.screens.StartupScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.StartupScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
+        </startup>
+        <screens>
+          <screen name="" id="1512" beanClass="com.install4j.runtime.beans.screens.WelcomeScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.WelcomeScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
+          <screen name="Search for JDKs" id="2677" beanClass="com.install4j.runtime.beans.screens.CustomizableProgressScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.CustomizableProgressScreen">
+                  <void property="subTitle">
+                    <string>Please wait while the installer searches your system</string>
+                  </void>
+                  <void property="title">
+                    <string>Search for JDKs</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>!Util.isMacOS() &amp;&amp; !context.isUnattended()</condition>
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions>
+              <action name="" id="2679" beanClass="com.install4j.runtime.beans.actions.control.SetProgressAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.control.SetProgressAction">
+                      <void property="progressChangeType">
+                        <object class="com.install4j.runtime.beans.actions.control.ProgressChangeType" field="SET_INDETERMINATE" />
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="2705" beanClass="com.install4j.runtime.beans.actions.control.SetMessageAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.control.SetMessageAction">
+                      <void property="statusMessage">
+                        <string>Searching for suitable JDKs</string>
+                      </void>
+                      <void property="useDetail">
+                        <boolean>true</boolean>
+                      </void>
+                      <void property="useStatus">
+                        <boolean>true</boolean>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="2678" beanClass="com.install4j.runtime.beans.actions.control.RunScriptAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.control.RunScriptAction">
+                      <void property="script">
+                        <object class="com.install4j.api.beans.ScriptProperty">
+                          <void property="value">
+                            <string>JVMSelector.JVMLocation[] locations = JVMSelector.getJVMLocations("${compiler:sys.javaMinVersion}", "${compiler:sys.javaMaxVersion}", true, null);
+context.setVariable("jvmLocations", locations);
+context.setVariable("jvmCount", new Integer(locations.length));
+if (Util.isWindows() &amp;&amp; !context.isConsole()) {
+    Thread.sleep(1500);
+}
+return true;</string>
+                          </void>
+                        </object>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+            </actions>
+            <formComponents />
+          </screen>
+          <screen name="JDK Selection" id="2454" beanClass="com.install4j.runtime.beans.screens.FormScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="1" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.FormScreen">
+                  <void property="scrollable">
+                    <boolean>false</boolean>
+                  </void>
+                  <void property="subTitle">
+                    <string>Which JDK do you want to use?</string>
+                  </void>
+                  <void property="title">
+                    <string>JDK Selection</string>
+                  </void>
+                </object>
+              </java>
+            </serializedBean>
+            <condition>!Util.isMacOS()</condition>
+            <validation>import java.io.*;
+
+if (((Boolean)context.getVariable("otherJDK")).booleanValue()) {
+    String otherBaseDir = (String)context.getVariable("otherBaseDir");
+    if (otherBaseDir.trim().length() == 0) {
+        Util.showErrorMessage("Please specify a location");
+        return false;
+    } else {
+        if (JVMSelector.getJVMLocation(new File(otherBaseDir), "${compiler:sys.javaMinVersion}", "${compiler:sys.javaMaxVersion}", true) != null) {
+            JVMSelector.setPreferredJVM(new File(otherBaseDir).getAbsolutePath());
+            return true;
+        } else if (context.isUnattended()) {
+            Util.logInfo(null, "The location\n" + otherBaseDir + "\ndoes not contain a suitable JDK");
+            return true;
+        } else {
+            Util.showErrorMessage("The location\n" + otherBaseDir + "\ndoes not contain a suitable JDK");
+            return false;
+        }
+    }
+}
+
+JVMSelector.JVMLocation[] locations = (JVMSelector.JVMLocation[])context.getVariable("jvmLocations");
+Integer jvmIndex = (Integer)context.getVariable("jvmIndex");
+
+if (jvmIndex != null &amp;&amp; locations != null &amp;&amp; jvmIndex.intValue() &gt;= 0 &amp;&amp; jvmIndex.intValue() &lt; locations.length) {
+    String jdkDir = locations[jvmIndex.intValue()].getJavaHome().getAbsolutePath();
+    JVMSelector.setPreferredJVM(jdkDir);
+    context.setVariable("otherBaseDir", jdkDir);
+    return true;
+} else {
+    Util.showErrorMessage("Please specify a location");
+    return false;
+}</validation>
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents>
+              <formComponent name="" id="3807" beanClass="com.install4j.runtime.beans.formcomponents.MultilineHtmlLabelComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.MultilineHtmlLabelComponent">
+                      <void property="labelHtml">
+                        <string>&lt;html&gt;Found &lt;b&gt;${installer:jvmCount}&lt;/b&gt; JDKs:</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+              </formComponent>
+              <formComponent name="" id="3740" beanClass="com.install4j.runtime.beans.formcomponents.ListComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.ListComponent">
+                      <void property="fillVertical">
+                        <boolean>true</boolean>
+                      </void>
+                      <void property="listEntries">
+                        <array class="java.lang.String" length="1">
+                          <void index="0">
+                            <string>${installer:jvmLocations}</string>
+                          </void>
+                        </array>
+                      </void>
+                      <void property="multiSelection">
+                        <boolean>false</boolean>
+                      </void>
+                      <void property="variableName">
+                        <string>jvmIndex</string>
+                      </void>
+                      <void property="visibleRows">
+                        <int>5</int>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript>if (configurationObject.getModel().getSize() &gt; 0) {
+    configurationObject.setSelectedIndex(0);
+}</initScript>
+              </formComponent>
+              <formComponent name="" id="3741" beanClass="com.install4j.runtime.beans.formcomponents.SeparatorComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.SeparatorComponent" />
+                  </java>
+                </serializedBean>
+                <initScript />
+              </formComponent>
+              <formComponent name="" id="3742" beanClass="com.install4j.runtime.beans.formcomponents.CheckboxComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.CheckboxComponent">
+                      <void property="checkboxText">
+                        <string>Specify alternative JDK base directory</string>
+                      </void>
+                      <void property="coupledComponentIds">
+                        <void method="add">
+                          <string>3743</string>
+                        </void>
+                      </void>
+                      <void property="variableName">
+                        <string>otherJDK</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript>final JVMSelector.JVMLocation[] locations = (JVMSelector.JVMLocation[])context.getVariable("jvmLocations");
+
+Object savedDir = context.getVariable("otherBaseDir");
+if ((locations != null &amp;&amp; locations.length == 0) || (savedDir != null &amp;&amp; savedDir instanceof String)) {
+    configurationObject.setSelected(true);
+}</initScript>
+              </formComponent>
+              <formComponent name="" id="3743" beanClass="com.install4j.runtime.beans.formcomponents.DirectoryChooserComponent" enabled="true" commentSet="false" comment="" insetTop="" insetLeft="" insetBottom="" insetRight="" resetInitOnPrevious="false">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.formcomponents.DirectoryChooserComponent">
+                      <void property="variableName">
+                        <string>otherBaseDir</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <initScript />
+              </formComponent>
+            </formComponents>
+          </screen>
+          <screen name="" id="1946" beanClass="com.install4j.runtime.beans.screens.FinishedScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="true">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.FinishedScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
+        </screens>
+      </application>
+      <application name="" id="uninstaller" beanClass="com.install4j.runtime.beans.applications.UninstallerApplication" enabled="true" commentSet="false" comment="" customIcnsFile="" customIcoFile="">
+        <serializedBean>
+          <java class="java.beans.XMLDecoder">
+            <object class="com.install4j.runtime.beans.applications.UninstallerApplication">
+              <void property="frameHeight">
+                <int>550</int>
+              </void>
+              <void property="frameWidth">
+                <int>600</int>
+              </void>
+            </object>
+          </java>
+        </serializedBean>
+        <startup>
+          <screen name="" id="10" beanClass="com.install4j.runtime.beans.screens.StartupScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.StartupScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
+        </startup>
+        <screens>
+          <screen name="" id="515" beanClass="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.UninstallWelcomeScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
+          <screen name="" id="7" beanClass="com.install4j.runtime.beans.screens.UninstallationScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.UninstallationScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions>
+              <action name="" id="8" beanClass="com.install4j.runtime.beans.actions.UninstallFilesAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.UninstallFilesAction" />
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+            </actions>
+            <formComponents />
+          </screen>
+          <screen name="" id="516" beanClass="com.install4j.runtime.beans.screens.UninstallFailureScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.UninstallFailureScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
+          <screen name="" id="517" beanClass="com.install4j.runtime.beans.screens.UninstallSuccessScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
+            <serializedBean>
+              <java class="java.beans.XMLDecoder">
+                <object class="com.install4j.runtime.beans.screens.UninstallSuccessScreen" />
+              </java>
+            </serializedBean>
+            <condition />
+            <validation />
+            <preActivation />
+            <postActivation />
+            <actions />
+            <formComponents />
+          </screen>
+        </screens>
+      </application>
+    </applications>
+  </installerGui>
+  <mediaSets>
+    <win32 name="Windows" id="8" mediaFileName="" installDir="hello" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="false">
+      <excludedLaunchers />
+      <excludedComponents />
+      <excludedBeans />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+    </win32>
+    <macosFolder name="Mac OS X Folder" id="11" mediaFileName="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}_folder" installDir="hello" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="">
+      <excludedLaunchers />
+      <excludedComponents />
+      <excludedBeans />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+    </macosFolder>
+    <unixInstaller name="Unix Installer" id="12" mediaFileName="" installDir="hello" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="" manualJREEntry="false" bundleType="1" jreURL="" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="">
+      <excludedLaunchers />
+      <excludedComponents />
+      <excludedBeans />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+      <installerScript mode="1" file="">
+        <scriptLines />
+      </installerScript>
+    </unixInstaller>
+  </mediaSets>
+  <buildIds buildAll="true" />
+</install4j>
+

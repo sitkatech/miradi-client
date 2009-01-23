@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Installer - Screens and Actions Groups</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Installer - Screens and Actions Groups</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/availableActions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/formComponents.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Screen and action groups can be configured on the
+      <a href="../../../doc/steps/installerGui/screensAndActions.html">screens &amp; and actions tab</a>.
+    </td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        Actions and screens can be grouped in the tree of installer elements. Groups of the same type can be nested,
+        meaning that you can put a screen group into a screen group or an action group into an action group.
+      
+      <p>
+        You can nest as many levels of groups as you wish. Next to the label of the screen or action group in the tree
+        of installer elements, the number of all contained screens or actions is shown in bold font.
+        Elements in nested groups are counted as well.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+      Grouping has the following common benefits for screens and actions:
+      
+      <ul>
+<li>
+<font color="#5A4E87"><b>Organization</b></font>
+<br>
+          If you have many screens or actions, groups emphasize which elements belong together.
+          You can add a common comment to the group.
+        </li>
+<li>
+<font color="#5A4E87"><b>Common condition</b></font>
+<br>
+          Groups have a "Condition expression" property that allows you to skip the group with a common condition
+          instead of having to repeat the condition for each contained element.
+        </li>
+<li>
+<font color="#5A4E87"><b>Single link target</b></font>
+<br>
+          If you want to reuse a set of adjacent screens or actions in a different part of your project,
+          you can put them in a group and add a single link to that group instead of linking to each element
+          separately.
+        </li>
+<li>
+<font color="#5A4E87"><b>Looping</b></font>
+<br>
+          A group has a "Loop expression" property that allows you to execute the group repeatedly until the loop
+          expression returns <code>false</code>.
+        </li>
+</ul>
+      
+<p>
+        The following benefits are exclusive to screen groups:
+      </p>
+      
+<ul>
+<li>
+<font color="#5A4E87"><b>Jump targets</b></font>
+<br>
+          When you jump to a screen programmatically (with <code>context.gotoScreen(...)</code>), it is more maintainable
+          to jump to a group instead of to a single screen. You can think of the group as taking the function of
+          a label in this case.
+        </li>
+</ul>
+      
+<p>
+        The following benefits are exclusive to action groups:
+      </p>
+      
+<ul>
+<li>
+<font color="#5A4E87"><b>Break group on error</b></font>
+<br>
+          Action groups have a boolean "On error break group" property. If selected, and one of the contained actions
+          returns with an error, the control flow will step out of the action group and continue with the next element
+          after the group. This behavior only takes effect if the problematic action has its failure strategy set
+          to "Continue on failure".
+        </li>
+<li>
+<font color="#5A4E87"><b>Default error message</b></font>
+<br>
+          You can define a "Default error message" for the group that is used for all actions that do not
+          have their own error message configured.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/availableActions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/formComponents.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>
