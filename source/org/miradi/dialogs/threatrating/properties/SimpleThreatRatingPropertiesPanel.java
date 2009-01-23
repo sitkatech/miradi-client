@@ -26,6 +26,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.FactorLink;
+import org.miradi.project.Project;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
@@ -35,11 +36,14 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		super(mainWindowToUse.getProject(), FactorLink.getObjectType(), BaseId.INVALID);
 		setLayout(new OneColumnGridLayout());
 		
-		commonPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
-		dropdownsPanel = new SimpleThreatRatingDropdownsPanel(mainWindowToUse.getProject());
+		final Project project = mainWindowToUse.getProject();
+		factorNamesPanel = new LinkPropertiesFactorsSubpanel(project, mainWindowToUse.getActions());
+		dropdownsPanel = new SimpleThreatRatingDropdownsPanel(project);
+		commentsPanel = new ThreatRatingCommentsSubpanel(project, mainWindowToUse.getActions());
 		
-		add(commonPanel);
+		add(factorNamesPanel);
 		add(dropdownsPanel);
+		add(commentsPanel);
 		
 		updateFieldsFromProject();
 	}
@@ -47,8 +51,8 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public void dispose()
 	{
-		commonPanel.dispose();
-		commonPanel = null;
+		factorNamesPanel.dispose();
+		factorNamesPanel = null;
 		dropdownsPanel.dispose();
 		dropdownsPanel = null;
 		super.dispose();
@@ -59,7 +63,7 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	{
 		super.setObjectRefs(hierarchyToSelectedRef);
 		
-		commonPanel.setObjectRefs(hierarchyToSelectedRef);
+		factorNamesPanel.setObjectRefs(hierarchyToSelectedRef);
 		dropdownsPanel.setObjectRefs(hierarchyToSelectedRef);
 	}
 
@@ -69,6 +73,7 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		return EAM.text("Title|Simple Threat Rating");
 	}
 
-	private ThreatRatingCommonPropertiesSubpanel commonPanel;
+	private LinkPropertiesFactorsSubpanel factorNamesPanel;
 	private SimpleThreatRatingDropdownsPanel dropdownsPanel;
+	private ThreatRatingCommentsSubpanel commentsPanel;
 }
