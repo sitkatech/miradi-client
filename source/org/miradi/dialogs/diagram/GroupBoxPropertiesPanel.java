@@ -21,10 +21,15 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.GroupBox;
 import org.miradi.project.Project;
+import org.miradi.questions.DiagramFactorBackgroundQuestion;
+import org.miradi.questions.DiagramFactorFontColorQuestion;
+import org.miradi.questions.DiagramFactorFontSizeQuestion;
+import org.miradi.questions.DiagramFactorFontStyleQuestion;
 
 public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 {
@@ -32,7 +37,14 @@ public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.GROUP_BOX, diagramFactor.getWrappedId());
 
+		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
+		
 		addField(createStringField(GroupBox.TAG_LABEL));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion()));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion()));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
+		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
+
 		updateFieldsFromProject();
 	}
 
