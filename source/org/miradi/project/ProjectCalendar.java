@@ -72,7 +72,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		//TODO budget code -  move project start/end code to Project
 		startDate = getPlanningStartDate();
 		int firstCalendarYear = new MultiCalendar().getGregorianYear();
-		int firstCalendarMonth = project.getMetadata().getFiscalYearFirstMonth();
+		firstCalendarMonth = getFiscalYearFirstMonth();
 
 		if (startDate.length() > 0 )
 		{
@@ -98,6 +98,11 @@ public class ProjectCalendar implements CommandExecutedListener
 					planningStartDate.getGregorianMonth(), 
 					planningStartDate.getGregorianDay());
 		}
+	}
+
+	private int getFiscalYearFirstMonth()
+	{
+		return project.getMetadata().getFiscalYearFirstMonth();
 	}
 
 	public String getPlanningStartDate()
@@ -160,7 +165,8 @@ public class ProjectCalendar implements CommandExecutedListener
 			startingDate = nextQuarter(startingDate);
 		}
 		
-		if(getProject().getMetadata().isBudgetTimePeriodQuarterly())
+		isBudgetTimePeriodQuarterly = isBudgetTimePeriodQuarterly();
+		if(isBudgetTimePeriodQuarterly)
 		{
 			dateRanges.addAll(quarterlyRanges);
 			editableDateRanges.addAll(quarterlyRanges);
@@ -177,6 +183,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		{
 			editableDateRanges.add(yearRange);
 		}
+	}
+
+	private boolean isBudgetTimePeriodQuarterly()
+	{
+		return getProject().getMetadata().isBudgetTimePeriodQuarterly();
 	}
 
 	public DateRange createYear(String isoYearStart) throws Exception
@@ -277,6 +288,12 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (!getPlanningEndDate().equals(endDate))
 			return true;
 		
+		if (firstCalendarMonth != getFiscalYearFirstMonth())
+			return true;
+		
+		if (isBudgetTimePeriodQuarterly == isBudgetTimePeriodQuarterly())
+			return true;
+		
 		return false;
 	}
 
@@ -375,4 +392,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	private String startDate;
 	private String endDate;
+	private int firstCalendarMonth;
+	private boolean isBudgetTimePeriodQuarterly;
 }
