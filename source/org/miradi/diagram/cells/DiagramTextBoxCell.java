@@ -25,6 +25,7 @@ import org.miradi.diagram.DiagramConstants;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.TextBox;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 
 public class DiagramTextBoxCell extends FactorCell
@@ -33,7 +34,7 @@ public class DiagramTextBoxCell extends FactorCell
 	{
 		super(cmFactor, diagramFactorToUse);
 		
-		diagramFactorBackgroundQuestion = new DiagramFactorBackgroundQuestion();
+		diagramFactorBackgroundQuestion = cmFactor.getProject().getQuestion(DiagramFactorBackgroundQuestion.class);
 	}
 
 	public Color getColor()
@@ -45,5 +46,5 @@ public class DiagramTextBoxCell extends FactorCell
 		return choiceItem.getColor();
 	}
 	
-	private DiagramFactorBackgroundQuestion diagramFactorBackgroundQuestion;
+	private ChoiceQuestion diagramFactorBackgroundQuestion;
 }
