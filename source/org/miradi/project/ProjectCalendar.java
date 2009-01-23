@@ -70,7 +70,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	public void rebuildProjectDateRanges() throws Exception
 	{
 		//TODO budget code -  move project start/end code to Project
-		String startDate = getPlanningStartDate();
+		startDate = getPlanningStartDate();
 		int firstCalendarYear = new MultiCalendar().getGregorianYear();
 		int firstCalendarMonth = project.getMetadata().getFiscalYearFirstMonth();
 
@@ -125,7 +125,7 @@ public class ProjectCalendar implements CommandExecutedListener
 				planningStartDate.getGregorianDay());
 		defaultEndDate.addDays(-1);
 		
-		String endDate = getPlanningEndDate();
+		endDate = getPlanningEndDate();
 		if (endDate.length() <= 0)
 			return defaultEndDate;
 		
@@ -251,18 +251,35 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	private DateRange[] getDateRanges() throws Exception
 	{
-		if(dateRanges == null)
+		if(isInvalidProjectCalendar())
 			rebuildProjectDateRanges();
 		return dateRanges.toArray(new DateRange[0]);
 	}
 
 	public Vector<DateRange> getYearlyDateRanges() throws Exception
 	{
-		if(yearlyDateRanges == null)
+		if(isInvalidProjectCalendar())
 			rebuildProjectDateRanges();
 		return yearlyDateRanges;
 	}
 	
+	private boolean isInvalidProjectCalendar()
+	{
+		if (dateRanges == null)
+			return true;
+		
+		if (yearlyDateRanges == null)
+			return true;
+			
+		if (!getPlanningStartDate().equals(startDate))
+			return true;
+		
+		if (!getPlanningEndDate().equals(endDate))
+			return true;
+		
+		return false;
+	}
+
 	public boolean isDateRangeEditable(DateRange dateRange)
 	{
 		return editableDateRanges.contains(dateRange);
@@ -355,4 +372,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	private Vector<DateRange> dateRanges;
 	private Vector<DateRange> yearlyDateRanges;
 	private Vector<DateRange> editableDateRanges;
+	
+	private String startDate;
+	private String endDate;
 }

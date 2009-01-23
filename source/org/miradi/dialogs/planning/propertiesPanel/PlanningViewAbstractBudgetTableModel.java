@@ -38,8 +38,21 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 	{
 		super(projectToUse);
 		
-		dateRanges = getProjectCalendar().getQuarterlyDateRanges();
+		rebuildDateRanges();
 		decimalFormatter = getProject().getDecimalFormatter();
+	}
+	
+	@Override
+	public void dataWasChanged() throws Exception
+	{
+		rebuildDateRanges();
+		super.dataWasChanged();
+		
+	}
+
+	private void rebuildDateRanges() throws Exception
+	{
+		dateRanges = getProjectCalendar().getQuarterlyDateRanges();
 	}
 
 	private ProjectCalendar getProjectCalendar() throws Exception
