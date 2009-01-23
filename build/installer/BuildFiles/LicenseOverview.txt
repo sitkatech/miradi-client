@@ -1,0 +1,18 @@
+﻿Miradi (TM)
+
+Copyright 2005-2008, Foundations of Success, Bethesda, Maryland
+     (on behalf of the Conservation Measures Partnership, "CMP") and
+     Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
+
+License and Copying
+Miradi is distributed under the terms of the GNU General Public License version 3, as published by the Free Software Foundation.  Miradi is distributed in the hope that it will be useful, but without any warranty;  without even the implied warranty of merchantability or fitness for a particular purpose.
+
+Updates and More Information
+Before running this program, check that you have the latest version at https://miradi.org/download
+
+You can also find more information about this software program at www.miradi.org
+or by e-mailing info@miradi.org. Please send suggestions and bug reports to feedback@miradi.org
+
+About Miradi
+This software program is being developed to assist conservation practitioners to go through the adaptive management process outlined in the CMP's Open Standards for the Practice of Conservation. To obtain a copy of the latest version of these standards, go to www.conservationmeasures.org 
+
