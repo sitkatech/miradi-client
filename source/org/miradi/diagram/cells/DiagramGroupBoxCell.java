@@ -38,6 +38,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -54,6 +57,8 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		GraphConstants.setOpaque(getAttributes(), true);
 
 		model.addDiagramModelListener(this);
+		
+		diagramFactorBackgroundQuestion = getProject().getQuestion(DiagramFactorBackgroundQuestion.class);
 	}
 	
 	public void setText(String text)
@@ -68,7 +73,11 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public Color getColor()
 	{
-		return DiagramConstants.GROUP_BOX_COLOR;
+		ChoiceItem choiceItem = diagramFactorBackgroundQuestion.findChoiceByCode(getDiagramFactor().getBackgroundColor());
+		if (choiceItem == null)
+			return DiagramConstants.GROUP_BOX_COLOR;
+		
+		return choiceItem.getColor();
 	}
 
 	private Project getProject()
@@ -199,4 +208,5 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	private DiagramFactor diagramFactor;
 	private DiagramModel model;
 	private int shortScopeHeight;
+	private ChoiceQuestion diagramFactorBackgroundQuestion;
 }
