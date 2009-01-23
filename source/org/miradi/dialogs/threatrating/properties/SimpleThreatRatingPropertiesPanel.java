@@ -55,6 +55,8 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		factorNamesPanel = null;
 		dropdownsPanel.dispose();
 		dropdownsPanel = null;
+		commentsPanel.dispose();
+		commentsPanel = null;
 		super.dispose();
 	}
 
