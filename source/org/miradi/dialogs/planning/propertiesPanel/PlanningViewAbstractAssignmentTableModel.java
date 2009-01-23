@@ -65,7 +65,7 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		updateAssignmentIdList();	
 	}
 	
-	public void dataWasChanged()
+	public void dataWasChanged() throws Exception
 	{
 		if (isAlreadyCurrentAssignmentIdList())
 			return;

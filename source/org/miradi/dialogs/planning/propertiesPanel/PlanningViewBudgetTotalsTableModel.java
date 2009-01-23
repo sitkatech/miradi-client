@@ -33,10 +33,23 @@ public class PlanningViewBudgetTotalsTableModel extends PlanningViewAbstractTota
 		super(projectToUse);
 		
 		totalsCalculator = new BudgetCalculator(getProject());
-		dateRange = getProject().getProjectCalendar().combineStartToEndProjectRange();
+		rebuildDateRange();
 		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 	}
+
+	@Override
+	public void dataWasChanged() throws Exception
+	{
+		rebuildDateRange();
+		
+		super.dataWasChanged();
+	}
 	
+	private void rebuildDateRange() throws Exception
+	{
+		dateRange = getProject().getProjectCalendar().combineStartToEndProjectRange();
+	}
+		
 	public String getColumnName(int column)
 	{
 		return EAM.text("Total");
