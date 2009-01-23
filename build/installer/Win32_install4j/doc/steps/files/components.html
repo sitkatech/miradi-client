@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Files - Defining Installation Components</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Files - Defining Installation Components</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/files/results.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        On this tab you can optionally define installation components.
+      
+      <p>
+        Installation components can be used to allow the user to customize the installation. GUI installers
+        will present a step that lists all available installation components in a tree with check boxes and lets the user
+        choose which components to install. Console installers will also present a list of installation components to
+        the user for selection. If no installation components are defined, that step will
+        be omitted and the entire distribution tree is installed.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        On the left side you configure a tree of
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/component_16.png">&nbsp;installation components and
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/folder_closed.png">&nbsp;component folders. To every component
+        folder you can add installation components and component folders as child nodes.
+        The component tree is <b>drag-and drop enabled</b>.
+      
+      <p>
+        In the component tree you can
+      </p>
+      
+<ul>
+<li>
+<font color="#5A4E87"><b>Move entries</b></font>
+<br>
+          Components or component folders are moved by dragging them with the mouse to the desired location. To select
+          a target folder inside a closed component folder while dragging, hover with the mouse over the closed
+          component folder and it will open after a short delay. While dragging, the insertion bar shows you where
+          the entry would be dropped.
+        </li>
+<li>
+<font color="#5A4E87"><b>Add installation components</b></font>
+<br>
+          With the <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/add.png"><b>[Add Installation Component]</b> action,
+          a new installation component is added to the currently selected component folder, or at the top-level if no
+          component folder is selected. The name of the installation component can be edited in-place immediately.
+        </li>
+<li>
+<font color="#5A4E87"><b>Add component folders</b></font>
+<br>
+          With the <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/new_folder_small.png"><b>[Add Component Folder]</b> action,
+          a new component folder is added to the currently selected component folder, or at the top-level if no
+          component folder is selected. The name of the component folder can be edited in-place immediately.
+        </li>
+<li>
+<font color="#5A4E87"><b>Delete entries</b></font>
+<br>
+          With the <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/remove.png">&nbsp;<b>[Delete]</b> action
+          or the <code>DEL</code> key, you can remove the currently selected installation component or component folder.
+          All child nodes of component folders are removed as well.
+        </li>
+<li>
+<font color="#5A4E87"><b>Rename entries</b></font>
+<br>
+          With the <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/name_edit_16.png">&nbsp;<b>[Rename]</b> action, you can
+          rename an installation component or a component folder.
+        </li>
+</ul>
+      
+<p>
+        To internationalize the name of the component for different media files, please use
+        <a href="../../../doc/helptopics/concepts/variables.html">custom localization keys</a>.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+    
+      When using the <a href="../../../doc/api/javadoc/overview-summary.html">install4j API</a>, you reference installation components
+      with IDs. You can show IDs in the component tree by activating the
+      <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/id_16.png">&nbsp;<b>[Show IDs]</b> button on the lower right side of
+      the component tree. The automatically generated numerical IDs are then shown in brackets.
+      The selection will be remembered across restarts of install4j.
+    <br>
+  
+      
+        This ID can be used in expressions, scripts and custom code when you want to
+        check if the installation component has been selected for installation. A typical condition
+        expression for an action would be
+        <code>context.getInstallationComponentById("123").isSelected()</code> if the ID of
+        the component is "123". In this way you can conditionally execute actions depending
+        on whether a component is selected or not.
+      
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The right pane displays the properties of the selected element in the component tree. The options are organized
+      into several tabs. There are different configuration options, depending on whether you've selected an
+      installation component or a component folder:
+      <ul>
+<li>
+<font color="#5A4E87"><b>Installation component</b></font>
+<br>
+          Installation components have the following specific tabs:
+          <ul>
+<li>
+<font color="#5A4E87"><b>Files</b></font>
+<br>
+              To choose the contents of an installation component, you first have to decide whether the component
+              contains all files or just a selection of files or directories. For a selection of files and directories,
+              you then choose the desired contents in the tree. Installation components are not mutually exclusive
+              and you can include the same files in multiple installation components.
+            </li>
+<li>
+<font color="#5A4E87"><b>Options</b></font>
+<br>
+              The available options are:
+              <ul>
+<li>
+<font color="#5A4E87"><b>Initially selected for installation</b></font>
+<br>
+                  Whether the check box for the currently selected installation component is selected or not.
+                </li>
+<li>
+<font color="#5A4E87"><b>Mandatory component</b></font>
+<br>
+                  Whether the currently selected component must be installed or not. If the component is
+                  mandatory, the user cannot deselect it and the check box in the installer is grayed out.
+                </li>
+<li>
+<font color="#5A4E87"><b>Downloadable component</b></font>
+<br>
+                  Whether the currently selected component should be externalized for installers whose
+                  <a href="../../../doc/steps/media/steps/dataFiles.html">data file type</a> is set to "Downloadable".
+                  These components can then be placed on a web server and are downloaded on demand if the users selects
+                  them.
+                </li>
+</ul>
+            
+</li>
+<li>
+<font color="#5A4E87"><b>Dependencies</b></font>
+<br>
+              If the currently selected installation component only works if a number of other components
+              are installed as well, you can select those components on the "Dependencies" tab. When
+              this installation component is selected, the dependencies become automatically selected and mandatory.
+              When this installation component is deselected again, the previous selection state of the
+              dependencies is restored. The list of components in the "Dependencies" tab only shows components
+              that will not lead to circular dependencies.
+            </li>
+</ul>
+        
+</li>
+<li>
+<font color="#5A4E87"><b>Component folder</b></font>
+<br>
+          Component folders have an "Options" tab where you can configure whether the component folder
+          should be initially expanded or not.
+        </li>
+</ul>
+      
+<p>
+        Both installation components and component folders also have a <b>Description</b> tab.
+        You can optionally display a description below each component in the installer. Any
+        component or component folder with a description will have a toggle button with help icon on the right side.
+        This toggle button controls whether the description is displayed below the element. You can also
+        use the <code>F1</code> key to toggle the visibility of the description. The
+        <b>Expand description automatically</b> check box allows you to show descriptions by default.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        <b>Note:</b> The user can only select which installation components should be installed if the "Installation components" screen
+        or the "Installation type" screen is part of the <a href="../../../doc/steps/installerGui/screensAndActions.html">screen sequence</a>.
+      
+      <p>
+        The "Installation type" screen offers a selection between sets of installation components, such
+        as "Full", "Standard" and "Custom", while the "Installation components" screen shows the tree of components that you define
+        on this tab with check boxes in front of each node. The "Installation components"
+        screen has a number of properties that let you customize the appearance of the descriptions. If both are present,
+        the "Installation components" screen will only be shown if the selected installation type was configured to be
+        customizable.
+      </p>
+    
+</td>
+</tr>
+</table>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/files/results.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/files/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

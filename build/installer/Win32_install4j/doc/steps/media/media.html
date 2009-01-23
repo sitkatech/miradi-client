@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Step 5: Configure Media</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Step 5: Configure Media</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/media/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/mediaFileTypes.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Media files are the final output of install4j: single installer files that are used to distribute
+      your application to your users. The creation of a media file has platform dependent options, so for
+      each platform, you have to define a media file. It also makes sense to define several media files
+      for one platform in case you wish to distribute different subsets of your distribution tree, or
+      if you distribute your application with and without a bundled JRE.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      To define a new media file, you double-click on the
+      <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/new_media_small.png">&nbsp;new media file entry in the list of defined
+      media files or choose <i>Media-&gt;New media file</i> from install4j's main menu.
+      The first step of the media wizard will then be displayed.
+      <a href="../../../doc/steps/media/wizard.html">The subsequent steps</a> depend on your choice of the
+      <a href="../../../doc/steps/media/mediaFileTypes.html">media file type</a> in this first step.
+      <p>
+        Once you have completed all steps of the media wizard and clicked <b>[OK]</b> in the
+        final step, a new media file entry will be displayed in the list of media files.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In the list of media files, you can
+      <ul>
+<li>
+<font color="#5A4E87"><b>Reorder media file definitions</b></font>
+<br>
+          Media file definitions are reordered by dragging them with the mouse to the desired location.
+          While dragging, the insertion bar shows you where the media file definition would be dropped.
+          The order of media files determines the order in which the media files are generated. Reordering is
+          mainly provided for the purpose of letting you arrange the media file definitions according to
+          your personal preferences.
+        </li>
+<li>
+<font color="#5A4E87"><b>Copy media file definitions</b></font>
+<br>
+          Media file definitions can be copied by copy-dragging a media file definition or using
+          the corresponding tool bar button or menu entry. The name of the copied media
+          file definition will be prefixed with "Copy of".
+        </li>
+<li>
+<font color="#5A4E87"><b>Rename media file definitions</b></font>
+<br>
+          Media file definitions can be renamed by using the corresponding tool bar button or menu entry.
+          An input dialog will be displayed where the current name can be edited. Please note that except for the
+          <code>%SETNAME%</code> variable used in the
+          <a href="../../../doc/steps/general/mediaOptions.html">media file options</a>,
+          the name of the media file is not used in the distribution but is for your own information only.
+        </li>
+<li>
+<font color="#5A4E87"><b>Delete media files definitions</b></font>
+<br>
+          Media file definitions can be deleted by hitting the <code>DEL</code> key or using the corresponding
+          tool bar button or menu entry.
+        </li>
+<li>
+<font color="#5A4E87"><b>Edit a media file definition</b></font>
+<br>
+          Media file definitions can be edited by hitting the <code>ENTER</code> key or using the corresponding
+          tool bar button or menu entry.
+          <p>
+            The appropriate <a href="../../../doc/steps/media/media.html">media wizard</a> will be
+            displayed for the selected media file definition. Note that you can directly
+            access any step in the wizard by clicking on it in the index.
+          </p>
+        
+</li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Each media file definitions has an ID which can be used to select certain media files when
+      <a href="../../../doc/cli/options.html">building the project from the command line</a>.
+      To show all IDs, choose <i>Media-&gt;Show media file IDs</i> from
+      the main menu. The IDs will then be shown in square brackets next to the names of the media
+      file definitions.
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/media/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/mediaFileTypes.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Step 6: Build the Project</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Step 6: Build the Project</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/build/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/build/options.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        In the <b>Build step</b>, all defined
+        <a href="../../../doc/steps/media/media.html">media files</a> are generated. There are two different
+        build modes:
+      
+      <ul>
+<li>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/build_small.png">&nbsp;<b>Regular build</b>
+<div>&nbsp;</div>
+          Build the media files and place them in the
+          <a href="../../../doc/steps/general/mediaOptions.html">media file output directory</a>.
+        </li>
+<li>
+          
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/build_test_small.png">&nbsp;<b>Test build</b>
+<div>&nbsp;</div>
+          Build the media files in the temporary directory only. This mode allows you to check
+          whether your configuration is ok while not making any changes to your file system.
+        </li>
+</ul>
+      
+<p>
+        When a build or a test build is started, important status messages are displayed in the
+        text area labeled <tt>build output</tt>. A progress bar appears in the status bar
+        of install4j's main menu which indicates what percentage of the total build has been completed 
+        so far. The build process is asychroneous, so you can change to other steps while it is running.
+        The status bar will inform you when the build process has finished.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        With the <tt>Build selection</tt> section you can choose which media files should
+        actually be built. This can be useful for testing purposes, or if you have defined media files
+        that should not be built by default.
+      
+      <p>
+        With the standard setting, all media files will be built. If you select the radio button 
+        <tt>build selected</tt>, only the media files that are selected in the adjacent list
+        will be built.
+      </p>
+      
+<p>
+        These settings are persistent and are saved in your project file, however, when you build from
+        the command line, your build selection will be ignored unless you specify a special parameter.
+        Please see the <a href="../../../doc/cli/options.html">help on the command line compiler options</a> for
+        further details.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        Also, have a look at the available <a href="../../../doc/steps/build/options.html">build options</a>.
+      
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/build/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/build/options.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

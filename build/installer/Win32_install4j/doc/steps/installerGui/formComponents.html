@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Installer - Configuring Form Components</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Installer - Configuring Form Components</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/groups.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/availableFormComponents.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        For more information on form screens and related concepts, please see the corresponding
+        <a href="../../../doc/helptopics/concepts/formScreens.html">help topic</a>.
+      
+      <p>
+        Please see the <a href="../../../doc/steps/installerGui/availableFormComponents.html">list of available form components</a>
+        that come with install4j.
+      </p>
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+    
+      If you select a single form component in the list of form components, you can
+      edit its properties on the right side.
+      
+    <br>
+    
+<p>
+      When the configuration area is focused, you can transfer the focus back to the list of form components
+      with the keyboard by pressing <code>ALT-F1</code>.
+    </p>
+    
+<p>
+      The list of form components provides the following actions in the toolbar on the right that operate on the
+      current selection. You can also access these actions from the context menu or use the associated keyboard
+      shortcuts.
+    </p>
+    
+<ul>
+<li>
+<font color="#5A4E87"><b>Delete</b></font>
+<br>
+        All selected form components will be deleted after a confirmation dialog when invoking the
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/remove.png">&nbsp;<b>[Delete]</b> action. The deleted
+        form components cannot be restored.
+      </li>
+<li>
+<font color="#5A4E87"><b>Rename</b></font>
+<br>
+        After you add a form component, the list of form components shows it with its
+        default name. This is often enough, however, if you have multiple instances of the
+        same form component alongside, a custom name makes it easier to distinguish these
+        instances. You can assign a custom name to each form component with the
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/name_edit_16.png">&nbsp;<b>[Rename]</b> action.
+        The default name is still displayed in brackets after the custom name. To revert to the
+        default, just enter an empty custom name in the rename dialog.
+      </li>
+<li>
+<font color="#5A4E87"><b>Comment</b></font>
+<br>
+        By default, form components have no comments associated with them.
+        You can add comments to selected form components with the
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/comment_16.png">&nbsp;<b>[Add Comments]</b> action.
+        When a comment is added, the affected form components will receive a "Comments" tab.
+        After adding a comment to a single form component, the comment area is focused automatically.
+        Likewise, you can remove comments from one or more form components with the
+        <b>[Remove Comments]</b> action.
+        <p>
+          In order to visit all comments, you can use the <b>[Show next comment]</b> and
+          <b>[Show previous comment]</b> actions. These actions will focus the comment area automatically
+          and wrap around if no further comments can be found.
+        </p>
+      
+</li>
+<li>
+<font color="#5A4E87"><b>Disable</b></font>
+<br>
+        
+<a name="disable"></a>
+        In order to "comment out" form components, you can use the
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/checkbox_16.png">&nbsp;<b>[Disable]</b> action. The
+        configuration of the disabled form components will not be displayed, their
+        entries in the list of form components will be shown in gray and they will not be checked
+        for errors when the project is built.
+      </li>
+<li>
+<font color="#5A4E87"><b>Copy and paste</b></font>
+<br>
+        install4j offers an inter-process clipboard for form components. You can
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/cut_16.png">&nbsp;<b>[Cut]</b> or
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/copy_16.png">&nbsp;<b>[Copy]</b>
+        form components to the clipboard and
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/paste_16.png">&nbsp;<b>[Paste]</b> them in the same or a different instance
+        of install4j. Note that references to launchers or references to files in the distribution tree might
+        not be valid after pasting to a different project.
+        <p>
+          Pasted form components are appended to the end of the list of form components.
+          
+        </p>
+      
+</li>
+<li>
+<font color="#5A4E87"><b>Reorder</b></font>
+<br>
+        If your selection is a single contiguous interval, you can move the entire block
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/up.png">&nbsp;up or
+        <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/down.png">&nbsp;down in the list.
+        
+      </li>
+</ul>
+
+  
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Common properties of form components are:
+      <ul>
+<li>
+<font color="#5A4E87"><b>Initialization script</b></font>
+<br>
+          A script that initializes the form component. To configure the contained principal component, such as
+          a JCheckBox, use the configurationObject parameter (if available). This script will run
+          after the internal initialization of the form component, just before the component appears on the screen.
+        </li>
+<li>
+<font color="#5A4E87"><b>Reset initialization on previous</b></font>
+<br>
+          If set, the component will be initialized each time the user enters in the forward direction. Otherwise,
+          the initialization will be performed only once. This setting affects both the internal initialization
+          as well as the initialization script.
+        </li>
+<li>
+<font color="#5A4E87"><b>Insets</b></font>
+<br>
+          The "Top", "Left", "Bottom" and "Right" properties allow you to specify insets around the form component.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      You can preview a form screen with the
+      <img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/form_preview_16.png">&nbsp;<b>[Preview]</b> button which is
+      also available on the property page of a screen. The preview <b>does not show the actual screen</b>,
+      it shows an installer window with typical elements and a form that fills the entire content area of the screen.
+      The actual screen might have a different visual appearance and the form might be smaller. However, the layout
+      of the form itself will be the same at runtime.
+    </td>
+</tr>
+</table>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/groups.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/availableFormComponents.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Key Map Editor</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Key Map Editor</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/codeGallery.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    The key map editor is displayed by choosing
+    <i>Settings-&gt;Key map</i> from the menu in the
+    <a href="../../../../doc/steps/installerGui/dialogs/javaCode.html">Java code editor dialog</a> or the
+    <a href="../../../../doc/steps/installerGui/dialogs/strings.html">string edit dialog</a>.
+    <table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The active key map controls all key bindings in the editor. By default, the <b>[Default]</b> key map
+      is active. The default key map cannot be edited directly. To customize key bindings, you first have to copy
+      the default key map. Except for the default key map, the name of a key map can be edited by double-clicking on
+      it.
+      <p>
+        When assigning new keystrokes or removing existing key strokes from a copied map, the changes to the base
+        key map will be shown as "overridden" in the list of bindings.
+      </p>
+      
+<p>
+        The key map editor also features search functionality for locating bindings as well a conflict resolution
+        mechanism.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      Key bindings are saved in the file <i><tt>$HOME/.install4j4/editor_keymap.xml</tt></i>. This file only exists if the
+      default key map has been copied. When migrating an install4j installation to a different computer, you can copy this file.
+    </td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/installerGui/dialogs/codeGallery.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/installerGui/dialogs/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

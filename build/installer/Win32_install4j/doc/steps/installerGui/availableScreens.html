@@ -1,0 +1,1079 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Installer - Available Screens</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Installer - Available Screens</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/screens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/actions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Customizable screens</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/custom_screen_16.png">&nbsp;<b>Banner screen</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that has a banner on the left side and some text on white background on the right side. Banner screens are suitable for start and finish screens.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Background color for banner</b></font>
+<br>If you specify a custom banner, you might want to adjust the background color of the banner panel, the default value is suitable for the standard banner. Set to "None" in order to reset to the default value.</li>
+<li>
+<font color="#5A4E87"><b>Image for banner</b></font>
+<br>Specify a PNG or GIF image file for your custom banner. Clear to reset to the default banner.</li>
+<li>
+<font color="#5A4E87"><b>Info text</b></font>
+<br>A paragraph that explains to the user what this screen is about. This message is shown in the body of the screen.</li>
+<li>
+<font color="#5A4E87"><b>Screen title</b></font>
+<br>The title of the screen, shown in a bold and larger font. Should be a concise subject. This question is also used by the console installer for presenting the screen.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/custom_screen_16.png">&nbsp;<b>Directory selection</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that asks the user to select a directory. All displayed messages are configurable.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Allow spaces in directory name</b></font>
+<br>If selected, spaces are valid characters in the directory name for Unix/Linux installers, otherwise an error message is displayed if the user chooses a directory with spaces in it.</li>
+<li>
+<font color="#5A4E87"><b>Directory description</b></font>
+<br>The description of the kind of directory that use should select in a few words, e.g. "ABC directory".</li>
+<li>
+<font color="#5A4E87"><b>Info text</b></font>
+<br>A paragraph that explains to the user what this screen is about. This message is shown in the body of the screen.</li>
+<li>
+<font color="#5A4E87"><b>Initial directory</b></font>
+<br>The initially selected directory. Can be empty if no directory should be initially selected.</li>
+<li>
+<font color="#5A4E87"><b>Only accept writable directories</b></font>
+<br>If selected, non-writable directories will be rejected.</li>
+<li>
+<font color="#5A4E87"><b>Standard directory</b></font>
+<br>A directory name that should be appended to the user selection in the directory browser. Should be empty if an existing directory has to be selected.</li>
+<li>
+<font color="#5A4E87"><b>Screen subtitle</b></font>
+<br>The subtitle of the screen, shown below the title in a normal font. Should be a short question. This question is also used by the console installer for presenting the screen.</li>
+<li>
+<font color="#5A4E87"><b>Screen title</b></font>
+<br>The title of the screen, shown in a bold and larger font. Should be a concise subject.</li>
+<li>
+<font color="#5A4E87"><b>Variable name for selection</b></font>
+<br>The name of the variable to which the selected directory is saved when the user advances to the next screen.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/custom_screen_16.png">&nbsp;<b>Display progress</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays a progress bar with a status line capturing the progress information of associated actions. The associated actions are executed immediately when the screen is activated. All displayed messages are configurable.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Cancel enabled</b></font>
+<br>If the cancel button should be enabled.</li>
+<li>
+<font color="#5A4E87"><b>Initial status message</b></font>
+<br>The initial status message displayed by the progress screen. You can change this message with "Set messages" actions or by invoking Context.getProgressInterface().setStatusMessage("...").</li>
+<li>
+<font color="#5A4E87"><b>Screen subtitle</b></font>
+<br>The subtitle of the screen, shown below the title in a normal font. Should be a short question. This question is also used by the console installer for presenting the screen.</li>
+<li>
+<font color="#5A4E87"><b>Screen title</b></font>
+<br>The title of the screen, shown in a bold and larger font. Should be a concise subject.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/custom_screen_16.png">&nbsp;<b>Display text</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays text to the user, either plain text or HTML. All displayed messages are configurable.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Displayed text</b></font>
+<br>The text that is displayed in the screen, either plain text or HTML. For HTML, the value should start with &lt;html&gt;, otherwise the plain text will be displayed. The text is displayed in a scrollable text area.</li>
+<li>
+<font color="#5A4E87"><b>Load displayed text from file</b></font>
+<br>Same as the "Displayed text" property, only that the text is loaded from a file. This property is only used if the "Displayed text" property is empty. You can also specify a zip file containing files named after the ISO language code (i.e. en.txt, de.txt or en.html). The text will then be chosen automatically depending on the installer language.</li>
+<li>
+<font color="#5A4E87"><b>Info text</b></font>
+<br>A paragraph that explains to the user what this screen is about. This message is shown in the body of the screen.</li>
+<li>
+<font color="#5A4E87"><b>Screen subtitle</b></font>
+<br>The subtitle of the screen, shown below the title in a normal font. Should be a short question. This question is also used by the console installer for presenting the screen.</li>
+<li>
+<font color="#5A4E87"><b>Screen title</b></font>
+<br>The title of the screen, shown in a bold and larger font. Should be a concise subject.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/custom_screen_16.png">&nbsp;<b>Program group selection</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that allows the user to select a program group on Microsoft Windows. All displayed messages are configurable.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Program groups for all users</b></font>
+<br>If selected, the program groups for all users are shown, otherwise the program groups for the current user are shown.</li>
+<li>
+<font color="#5A4E87"><b>Info text</b></font>
+<br>A paragraph that explains to the user what this screen is about. This message is shown in the body of the screen.</li>
+<li>
+<font color="#5A4E87"><b>Initial program group</b></font>
+<br>The initially selected program group. Can be empty if no program group should be initially selected.</li>
+<li>
+<font color="#5A4E87"><b>Screen subtitle</b></font>
+<br>The subtitle of the screen, shown below the title in a normal font. Should be a short question. This question is also used by the console installer for presenting the screen.</li>
+<li>
+<font color="#5A4E87"><b>Screen title</b></font>
+<br>The title of the screen, shown in a bold and larger font. Should be a concise subject.</li>
+<li>
+<font color="#5A4E87"><b>Variable name for selection</b></font>
+<br>The name of the variable to which the selected program group is saved when the user advances to the next screen.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Free forms</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/form_screen_16.png">&nbsp;<b>Configurable banner form</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen where form elements can be configured along the vertical axis. Most types of information that you would like to query from a user during the installation can be easily expressed with this screen. The screen has a banner on the left side and a white background on the right side. Banner screens are suitable for start and finish screens.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Background color for banner</b></font>
+<br>If you specify a custom banner, you might want to adjust the background color of the banner panel, the default value is suitable for the standard banner. Set to "None" in order to reset to the default value.</li>
+<li>
+<font color="#5A4E87"><b>Image for banner</b></font>
+<br>Specify a PNG or GIF image file for your custom banner. Clear to reset to the default banner.</li>
+<li>
+<font color="#5A4E87"><b>Fill horizontally</b></font>
+<br>If set, the form will fill the entire horizontal extent of the screen. Otherwise, it will be centered horizontally and all form components will not be wider than their preferred widths.</li>
+<li>
+<font color="#5A4E87"><b>Fill vertically</b></font>
+<br>If set, the form will fill the entire vertical extent of the screen. Otherwise, it will be centered vertically. Note that form components always have their preferred heights when the "Scrollable" property is selected. If "Fill vertically" is selected, the form starts at the top and any remaining space is empty.</li>
+<li>
+<font color="#5A4E87"><b>Info text</b></font>
+<br>A paragraph that explains to the user what this screen is about. This message is shown in the body of the screen.</li>
+<li>
+<font color="#5A4E87"><b>Scrollable</b></font>
+<br>If set, the form will be wrapped in a scroll pane. If not set, certain form components which can grow in the vertical direction (like the text area form component) can claim remaining vertical space. Please note that those components have to be configured accordingly.</li>
+<li>
+<font color="#5A4E87"><b>Screen title</b></font>
+<br>The title of the screen, shown in a bold and larger font. Should be a concise subject. This question is also used by the console installer for presenting the screen.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/form_screen_16.png">&nbsp;<b>Configurable form</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen where form elements can be configured along the vertical axis. Most types of information that you would like to query from a user during the installation can be easily expressed with this screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Fill horizontally</b></font>
+<br>If set, the form will fill the entire horizontal extent of the screen. Otherwise, it will be centered horizontally and all form components will not be wider than their preferred widths.</li>
+<li>
+<font color="#5A4E87"><b>Fill vertically</b></font>
+<br>If set, the form will fill the entire vertical extent of the screen. Otherwise, it will be centered vertically. Note that form components always have their preferred heights when the "Scrollable" property is selected. If "Fill vertically" is selected, the form starts at the top and any remaining space is empty.</li>
+<li>
+<font color="#5A4E87"><b>Scrollable</b></font>
+<br>If set, the form will be wrapped in a scroll pane. If not set, certain form components which can grow in the vertical direction (like the text area form component) can claim remaining vertical space. Please note that those components have to be configured accordingly.</li>
+<li>
+<font color="#5A4E87"><b>Screen subtitle</b></font>
+<br>The subtitle of the screen, shown below the title in a normal font. Should be a short question. This question is also used by the console installer for presenting the screen.</li>
+<li>
+<font color="#5A4E87"><b>Screen title</b></font>
+<br>The title of the screen, shown in a bold and larger font. Should be a concise subject.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td><b>Category: Standard screens</b>
+<div>&nbsp;</div>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Welcome</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that welcomes the user to the installation of your application. This screen should be placed at the beginning of the installation
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Background color for banner</b></font>
+<br>If you specify a custom banner, you might want to adjust the background color of the banner panel, the default value is suitable for the standard banner. Set to "None" in order to reset to the default value.</li>
+<li>
+<font color="#5A4E87"><b>Image for banner</b></font>
+<br>Specify a PNG or GIF image file for your custom banner. Clear to reset to the default banner.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Display license agreement</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays a license agreement to the user, either plain text or HTML. The license agreement must be accepted before the installation continues.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Initially accepted</b></font>
+<br>If selected, the "Accept" radio button is initially selected.</li>
+<li>
+<font color="#5A4E87"><b>Displayed license</b></font>
+<br>The license that is displayed in the screen, either plain text or HTML. For HTML, the value should start with &lt;html&gt;, otherwise the plain text will be displayed. The text is displayed in a scrollable text area.</li>
+<li>
+<font color="#5A4E87"><b>Load displayed license from file</b></font>
+<br>Same as the "Displayed license" property, only that the text is loaded from a file. This property is only used if the "Displayed license" property is empty. You can also specify a zip file containing files named after the ISO language code (i.e. en.txt, de.txt or en.html). The text will then be chosen automatically depending on the installer language.</li>
+<li>
+<font color="#5A4E87"><b>User must scroll to bottom</b></font>
+<br>If selected, the user can only accept the license if the text area with the license text has been previously scrolled to the bottom. Has no effect if the "Initially selected" property is selected.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Installation location</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+The screen that asks the user where to install the application. This determines the principal installation directory.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Allow spaces in directory name</b></font>
+<br>If selected, spaces are valid characters in the installation directory name for Unix/Linux installers, otherwise an error message is displayed if the user chooses a directory with spaces in it. Some JREs do no work on Unix if installed to a path that contains spaces, so spaces are disallowed by default.</li>
+<li>
+<font color="#5A4E87"><b>Insufficient disk space warning</b></font>
+<br>Show a warning message if there is not sufficent disk space for the installation on the selected target drive.</li>
+<li>
+<font color="#5A4E87"><b>Existing directory warning</b></font>
+<br>Ask the user whether to install the application in the selected directory if it already exists and the installation is not an update.</li>
+<li>
+<font color="#5A4E87"><b>Show free disk space</b></font>
+<br>Show the disk space that is available on the selected drive or partition. This setting is only effective for Windows, Mac OS X and Linux.</li>
+<li>
+<font color="#5A4E87"><b>Show required disk space</b></font>
+<br>Show the disk space that is required for the installation. You should switch this off if your installation includes other data sources.</li>
+<li>
+<font color="#5A4E87"><b>Suggest application directory</b></font>
+<br>When the user chooses a directory, always append the default application directory configured in the media file wizard. You should only switch this off if you substitute a different installation directory in the screen validation.</li>
+<li>
+<font color="#5A4E87"><b>Validate application id</b></font>
+<br>Check if another application is installed in the selected directory or if the application is not the correct target for an add-on installer.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Installation type</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays a list of installation types that correspond to configurable component sets. The default types "Full","Standard" and "Customize" are provided by default. The "Installation components" screen may be hidden by this screen, depending on the installation type selected by the user. This screen will not be shown if no installation components are defined.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Bold font</b></font>
+<br>Use a bold font for the descriptions</li>
+<li>
+<font color="#5A4E87"><b>Installation types</b></font>
+<br>
+<p>Installation types are principally defined by a configurable set of components. The first installation type is selected by default in the installer. </p>
+<p>Each installation type has the following configurable properties:</p>
+<ul>
+<li>A name for the installation type. This name is presented to the user</li>
+<li>An optional description of the installation type. This description is displayed below the name and can be shown or hidden by the user</li>
+<li>If the description is displayed by default or not</li>
+<li>If the installation type is customizable or not. If the user-selected installation type is customizable, the "Installation components" screen will be shown if present, otherwise that screen will be skipped.</li>
+<li>A set of installation components. Installation components are configured in the install4j IDE on the Files-&gt;Installation Components tab.You can choose between the options of installing all defined components, the default selected components as configured on the Files-&gt;Installation Components tab, or directly select a number of installation components in a check tree.</li>
+</ul>
+<p>By default, 3 universally useable installation types are added whose names and descriptions are internationalized. You can change or delete the default installation types as well as add new ones.</p>
+</li>
+<li>
+<font color="#5A4E87"><b>Italic font</b></font>
+<br>Use an italic font for the descriptions</li>
+<li>
+<font color="#5A4E87"><b>Smaller font</b></font>
+<br>Use a smaller font for the descriptions</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Installation components</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays all installation components and asks the user which components should be installed. This screen will not be shown if no installation components are defined.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Allow spaces in directory name</b></font>
+<br>If selected, spaces are valid characters in the installation directory name for Unix/Linux installers, otherwise an error message is displayed if the user chooses a directory with spaces in it. Some JREs do no work on Unix if installed to a path that contains spaces, so spaces are disallowed by default.</li>
+<li>
+<font color="#5A4E87"><b>Bold font</b></font>
+<br>Use a bold font for the descriptions</li>
+<li>
+<font color="#5A4E87"><b>Insufficient disk space warning</b></font>
+<br>Show a warning message if there is not sufficent disk space for the installation on the selected target drive.</li>
+<li>
+<font color="#5A4E87"><b>Existing directory warning</b></font>
+<br>Ask the user whether to install the application in the selected directory if it already exists and the installation is not an update.</li>
+<li>
+<font color="#5A4E87"><b>Italic font</b></font>
+<br>Use an italic font for the descriptions</li>
+<li>
+<font color="#5A4E87"><b>Show free disk space</b></font>
+<br>Show the disk space that is available on the selected drive or partition. This setting is only effective for Windows, Mac OS X and Linux.</li>
+<li>
+<font color="#5A4E87"><b>Show installation directory chooser</b></font>
+<br>Show the installation directory chooser below the component selector.</li>
+<li>
+<font color="#5A4E87"><b>Show required disk space</b></font>
+<br>Show the disk space that is required for the installation. You should switch this off if your installation includes other data sources.</li>
+<li>
+<font color="#5A4E87"><b>Smaller font</b></font>
+<br>Use a smaller font for the descriptions</li>
+<li>
+<font color="#5A4E87"><b>Suggest application directory</b></font>
+<br>When the user chooses a directory, always append the default application directory configured in the media file wizard. You should only switch this off if you substitute a different installation directory in the screen validation.</li>
+<li>
+<font color="#5A4E87"><b>Validate application id</b></font>
+<br>Check if another application is installed in the selected directory or if the application is not the correct target for an add-on installer.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Create program group</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that allows the user to select the default program group. The "Create standard program group" action is bound to this selection, other program group actions are bound to this selection if their program group property is empty. This screen will not be shown if the "Create standard program group" is not present.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>User can change "all users"</b></font>
+<br>If the user can change the default value of the "All users" property in the  "Create standard program group action". This change affects all program group actions that rely on a default program group.</li>
+<li>
+<font color="#5A4E87"><b>User can disable creation</b></font>
+<br>If the user can disable all program group actions that rely on a default program group, such as the "Create standard program group action".</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>File associations</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays a list of all subsequent file association actions and asks the user which associations should be made. This screen will not be shown if there are no corresponding file association actions after this screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Show selection buttons</b></font>
+<br>If selected, the screen will show buttons for selecting and unselecting all file associations.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Services</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that allows the user to select what services should be installed. This screen will not be shown if no service executables are installed after this screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Additional confirmations</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays a list of confirmations as check boxes whose results can be used in condition expressions for actions. While other types of form components can be added to this screen, only check boxes and other simple elements are consistent with the displayed text. For arbitrary forms, use the "Configurable form" screen instead.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/files_install_16.png">&nbsp;<b>Installation</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+The screen that displays displays the installation progress. Where possible, installation actions should be added to this screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Cancel enabled</b></font>
+<br>If the cancel button should be enabled.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Display information</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that displays text to the user, either plain text or HTML. In contrast to the "Display text" screen, all messages on this screen are pre-defined and localized.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer, Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Displayed text</b></font>
+<br>The text that is displayed in the screen, either plain text or HTML. For HTML, the value should start with &lt;html&gt;, otherwise the plain text will be displayed. The text is displayed in a scrollable text area.</li>
+<li>
+<font color="#5A4E87"><b>Load displayed text from file</b></font>
+<br>Same as the "Displayed text" property, only that the text is loaded from a file. This property is only used if the "Displayed text" property is empty. You can also specify a zip file containing files named after the ISO language code (i.e. en.txt, de.txt or en.html). The text will then be chosen automatically depending on the installer language.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Finish</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that tells the user that the installation is finished. This screen should be placed at the end of the installation.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Installer</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Background color for banner</b></font>
+<br>If you specify a custom banner, you might want to adjust the background color of the banner panel, the default value is suitable for the standard banner. Set to "None" in order to reset to the default value.</li>
+<li>
+<font color="#5A4E87"><b>Image for banner</b></font>
+<br>Specify a PNG or GIF image file for your custom banner. Clear to reset to the default banner.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Uninstall Welcome</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+A screen that welcomes the user to the uninstallation of your application. This screen should be placed at the beginning of the uninstallation.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Background color for banner</b></font>
+<br>If you specify a custom banner, you might want to adjust the background color of the banner panel, the default value is suitable for the standard banner. Set to "None" in order to reset to the default value.</li>
+<li>
+<font color="#5A4E87"><b>Image for banner</b></font>
+<br>Specify a PNG or GIF image file for your custom banner. Clear to reset to the default banner.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/files_uninstall_16.png">&nbsp;<b>Uninstallation</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+The screen that displays displays the uninstallation progress. Where possible, uninstallation actions should be added to this screen.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Uninstaller</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Uninstallation failure</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+The screen that is displayed if the uninstallation was not completed successfully. Further information regarding the uninstallation problems is displayed to the user. This screen is not shown if the uninstallation was completed successfully or if it is placed before the uninstallation screen. The uninstaller will terminate after showing this screen in case of failure.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Uninstaller</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+
+<table cellpadding="4" border="0">
+<tr>
+<td colspan="2" align=""><img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/screen_16.png">&nbsp;<b>Uninstallation success</b></td>
+</tr>
+<tr>
+<td align="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td align="">
+
+<table cellpadding="4" border="0">
+<tr>
+<td align="">
+The screen that is displayed if the uninstallation was completed successfully.
+</td>
+</tr>
+
+<tr>
+<td align=""><b>Applies to:</b> Uninstaller</td>
+</tr>
+
+<tr>
+<td align=""><b>Properties:</b></td>
+</tr>
+<tr>
+<td align="">
+<ul>
+<li>
+<font color="#5A4E87"><b>Background color for banner</b></font>
+<br>If you specify a custom banner, you might want to adjust the background color of the banner panel, the default value is suitable for the standard banner. Set to "None" in order to reset to the default value.</li>
+<li>
+<font color="#5A4E87"><b>Image for banner</b></font>
+<br>Specify a PNG or GIF image file for your custom banner. Clear to reset to the default banner.</li>
+</ul>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/installerGui/screens.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/installerGui/actions.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

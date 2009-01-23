@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Options for the install4j Command Line Compiler</title>
+<link href="../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Options for the install4j Command Line Compiler</h2>
+</td><td valign="top" align="right"><a href="../../doc/cli/cli.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../doc/cli/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../doc/cli/ant.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    The <a href="../../doc/cli/cli.html">install4j command line compiler</a> has the following
+    options:
+    <ul>
+<li>
+<font color="#5A4E87"><b>-h or --help</b></font>
+<br>
+        Displays a quick help for all available options.
+      </li>
+<li>
+<font color="#5A4E87"><b>-V or --version</b></font>
+<br>
+        Displays the version of install4j in the following format:
+        <pre>
+    install4j version 2.0, built on 2003-10-15
+        </pre>
+      
+</li>
+<li>
+<font color="#5A4E87"><b>-v or --verbose</b></font>
+<br>
+        Enables verbose mode. In verbose mode, install4j prints out information about 
+        internal processes. If you experience problems with install4j, please make sure 
+        to include the verbose terminal output with your bug report.
+      </li>
+<li>
+<font color="#5A4E87"><b>-q or --quiet</b></font>
+<br>
+        Enables quiet mode. In quiet mode, no terminal output short of a fatal error 
+        will be printed.
+      </li>
+<li>
+<font color="#5A4E87"><b>-t or --test</b></font>
+<br>
+        Enables test mode. In test mode, no media files will be generated in the media
+        file directory.
+      </li>
+<li>
+<font color="#5A4E87"><b>-g or --debug</b></font>
+<br>
+        Create additional debug installers for each media file. For each built media file, a directory that is named like the media
+        file will be created in the media file output directory.
+      </li>
+<li>
+<font color="#5A4E87"><b>-n or --faster</b></font>
+<br>
+        Disable LZMA and Pack200 compression. If you have enabled LZMA or Pack200 compression on the
+        <a href="../../doc/steps/general/mediaOptions.html">media file options tab</a>,
+        this allows you to create development builds much faster, since LZMA and Pack200 are expensive compression algorithms.
+      </li>
+<li>
+<font color="#5A4E87"><b>-L or --license=KEY</b></font>
+<br>
+        Update the license key on the command line. This is useful if you have installed
+        install4j on a headless system and cannot start the GUI.
+        <tt>KEY</tt> must be replaced with your license key.
+      </li>
+<li>
+<font color="#5A4E87"><b>-r STRING or --release=STRING</b></font>
+<br>
+        Override the application version defined in the
+        <a href="../../doc/steps/general/appInfo.html">General Settings step</a>.
+        <tt>STRING</tt> must be replaced with the desired version number.
+        The version number may only contain numbers and dots.
+      </li>
+<li>
+<font color="#5A4E87"><b>-d STRING or --destination=STRING</b></font>
+<br>
+        Override the output directory for the generated media files. <tt>STRING</tt> must
+        be replaced with the desired directory. If the directory contains spaces, you must 
+        enclose STRING in quotation marks.
+      </li>
+<li>
+<font color="#5A4E87"><b>-s or --build-selected</b></font>
+<br>
+        Only build the media files which have been selected in the install4j IDE.
+        By default, all media files are built regardless of the selection in the 
+        <a href="../../doc/steps/build/build.html">Build step</a>.
+      </li>
+<li>
+<font color="#5A4E87"><b>-b LIST or --build-ids=LIST</b></font>
+<br>
+        Only build the media files with the specified IDs. <tt>LIST</tt> must
+        be replaced with a comma separated list of numeric IDs. The IDs for media files
+        can be shown in the install4j IDE by choosing
+        <i>Media-&gt;Show media file IDs</i>
+        from the main menu when the <a href="../../doc/steps/media/media.html">media file step</a>
+        is visible. Examples would be:
+        <pre>
+    -b 2,5,9
+    --build-ids=2,5,9
+        </pre>
+      
+</li>
+<li>
+<font color="#5A4E87"><b>-m or --media-types=T[,T]</b></font>
+<br>
+        Only build media files of the specified type. <tt>T</tt> must
+        be replaced with a media file type recognized by install4j. To see the list of supported media
+        types, execute <b><tt>install4jc --list-media-types</tt></b>.
+        Examples would be:
+        <pre>
+    -m win32,macos,macosFolder
+    --media-types=win32,macos,macosFolder
+        </pre>
+      
+</li>
+<li>
+<font color="#5A4E87"><b>-D NAME=VALUE[,NAME=VALUE] </b></font>
+<br>
+        Override a <a href="../../doc/helptopics/concepts/variables.html">compiler variable</a> with
+        a different value. You can override multiple variables by specifying
+        a comma separated list of name value pairs. <tt>NAME</tt> must be the
+        name of a variable that has been defined on the
+        <a href="../../doc/steps/general/variables.html">Compiler Variables tab</a> of the
+        <a href="../../doc/steps/general/general.html">General Settings step</a>. The value
+        can be empty.
+        <p>
+          To override a variable for a specific media file definition only, you can
+          prefix <tt>NAME</tt> with <tt>ID:</tt> to specify the ID of the
+          media file. The IDs for media files
+          can be shown in the install4j IDE by choosing
+          <i>Media-&gt;Show media file IDs</i>
+          from the main menu when the <a href="../../doc/steps/media/media.html">media file step</a>
+          is visible.
+        </p>
+        Examples would be:
+        <pre>
+    -D MYVARIABLE=15,OTHERVARIABLE=
+    "-D MYVARIABLE=15,OTHERVARIABLE=test,8:MEDIASETTITLE=my title"
+        </pre>
+        
+<p>
+          A special system variable that you can override from the command line is
+          <tt>LANGUAGE_ID</tt>. <tt>LANGUAGE_ID</tt> must be set to the
+          ISO code of the language displayed in the
+          <a href="../../doc/steps/general/dialogs/languageSelection.html">Language selection dialog</a>
+          and determines the <a href="../../doc/steps/general/languages.html">principal installer language</a>
+          for the project or the media file.
+        </p>
+      
+</li>
+<li>
+<font color="#5A4E87"><b>-f or --var-file</b></font>
+<br>
+        Load variable definitions from a file. This option can be used together with the
+        <tt>-D</tt> option, which takes precedence if a variable occurs twice.
+        The file can contain
+        <ul>
+<li>
+<font color="#5A4E87"><b>variable definitions</b></font>
+<br>
+            One variable definition per line of the form <tt>NAME=VALUE</tt>.
+          </li>
+<li>
+<font color="#5A4E87"><b>blank lines</b></font>
+<br>
+            blank lines will be ignored.
+          </li>
+<li>
+<font color="#5A4E87"><b>comments</b></font>
+<br>
+            lines that start with # will be ignored.
+          </li>
+</ul>
+        
+<p>
+          The file is assumed to be encoded in the UTF-8 format.
+          Should you require a different encoding you can prefix the filename with
+          <tt>CHARSET:</tt>, where CHARSET is replaced with the name of the encoding.
+        </p>
+        
+<p>
+          Instead of a single variable file you can also specify a list of files separated by
+          semicolons. The optional charset prefix must be specified for each file separately.
+        </p>
+        Examples would be:
+        <pre>
+    -f varfile.txt
+    --var-file=ISO-8859-3:varfile.txt
+    --var-file=one.txt;two.txt
+    --var-file=ISO-8859-3:one.txt;ISO-8859-1:two.txt
+        </pre>
+      
+</li>
+<li>
+<font color="#5A4E87"><b>-M or --list-media-types</b></font>
+<br>
+        Prints out a lists of supported media types for the <tt>--media-types</tt>
+        option and quits.
+      </li>
+</ul>
+    
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../doc/cli/cli.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../doc/cli/$folder$.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../doc/cli/ant.html"><img vspace="0" align="center" border="0" src="../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

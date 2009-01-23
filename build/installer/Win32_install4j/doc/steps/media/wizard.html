@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Media File Wizards</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Media File Wizards</h2>
+</td><td valign="top" align="right"><a href="../../../doc/steps/media/mediaFileTypes.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The media file wizard is displayed when you add a new media file or when you edit an exiting media file.
+      To learn more information about the various media file types, please see the
+      <a href="../../../doc/steps/media/mediaFileTypes.html">overview</a>.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      The media file wizards show a number of steps which depend on the media file type. Common steps are:
+      <ul>
+<li>
+<a href="../../../doc/steps/media/steps/platform.html">Platform</a>
+<br>
+          Choose the media file type.
+        </li>
+<li>
+<a href="../../../doc/steps/media/steps/installerOptions.html">Installer options</a>
+<br>
+          Define options for the installer.
+        </li>
+<li>
+<a href="../../../doc/steps/media/steps/dataFiles.html">Data files</a>
+<br>
+          Specify where the installer data should be placed. Not displayed for archives.
+        </li>
+<li>
+<a href="../../../doc/steps/media/steps/bundledJre.html">Bundled JRE</a>
+<br>
+          Decide if and how a JRE should be bundled with the installer.
+          Not displayed for Mac OS X media file types.
+        </li>
+<li>
+<a href="../../../doc/steps/media/steps/customize.html">Customize project defaults</a>
+<br>
+          A number of project settings can be customized on a per-media file basis.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In addition, there are a number of steps that depend on the media file type:
+      <ul>
+<li>
+<a href="../../../doc/steps/media/steps/32or64Bit.html">32-bit or 64-bit</a>
+<br>
+          For Windows media files only.
+        </li>
+<li>
+<a href="../../../doc/steps/media/steps/codeSigning.html">Code signing</a>
+<br>
+          For Windows media files only.
+        </li>
+<li>
+<a href="../../../doc/steps/media/steps/macLauncher.html">Launcher</a>
+<br>
+          For Mac OS X single bundle media files only.
+        </li>
+</ul>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/steps/media/mediaFileTypes.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/steps/media/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

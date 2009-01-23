@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Media File Wizard: Code Signing</title>
+<link href="../../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>Media File Wizard: Code Signing</h2>
+</td><td valign="top" align="right"><a href="../../../../doc/steps/media/steps/32or64Bit.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/macLauncher.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      In this step of the <a href="../../../../doc/steps/media/wizard.html">media file wizard</a>
+      you can optionally configure code signing for all generated executables. Code-signing
+      ensures that the installer as well as the uninstaller are trusted executables on Windows Vista.
+      For unsigned applications that require admin privileges, Window Vista will display a special warning dialog.
+      Also, Windows XP users who use Internet Explorer receive a different warning dialog when trying to execute a
+      downloaded installer.
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        The install4j compiler can invoke a post-processor for each executable that is generated. This includes
+      
+      <ul>
+<li>generated launchers</li>
+<li>the installer</li>
+<li>the uninstaller</li>
+</ul>
+      
+<p>
+        In the post processor text field you can use the <tt>$EXECUTABLE</tt> variable to reference the
+        executable that is currently being post-processed. The working directory of the executed process is the
+        directory your config is located in so you can use relative filenames for key or certificate files.
+      </p>
+    
+</td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        If you run the build on Windows, you can use the Authenticode tools from the Windows SDK to sign the executable.
+        Older Platform SDKs as well as the .NET v1 SDKs contain the tool signcode.exe. The newer SDKs contain
+        the tool signtool.exe. Both tools are equally suited for code signing with install4j. Please refer to
+        the <a target="_blank" href="http://msdn.microsoft.com/workshop/security/authcode/authenticode_ovw_entry.asp">MSDN documentation</a>
+        for detailed information.
+      
+    </td>
+</tr>
+</table>
+    
+<table style="margin-top: 1ex" cellpadding="3" cellspacing="0" border="0">
+<tr>
+<td valign="top"><img style="vertical-align: middle" border="0" src="../../../../doc/images/section_bullet.gif">&nbsp;</td><td>
+      
+        It is also possible to sign executables on other platforms. The <i><tt>$INSTALL4J_HOME/resource/signcode.exe</tt></i>
+        executable is a <a target="_blank" href="http://www.mono-project.com">mono</a> executable modified by
+        ej-technologies to support signing of 64-bit executables. This executable can only be executed if
+        mono is installed. Mono is available for a number of platforms and can be
+        <a target="_blank" href="http://www.mono-project.com/Downloads">downloaded free of charge</a>.
+      
+      <p>
+        The tool has the same syntax as the one from Microsoft. A typical entry would be <i><tt>mono /opt/install4j/resource/signcode.exe -spc mycert.spc -v mykey.pvk -vp password -t http://timestamp.verisign.com/scripts/timstamp.dll $EXECUTABLE</tt></i>
+      
+</p>
+      
+<p>
+        Some SPC files cannot be read directly by this tool. If this is the case for your certificate, you can export all CER files from the
+        SPC file and generate a new SPC file with the <i><tt>cert2spc</tt></i> tool included with mono. You have to add the CER files in the
+        order of the certificate chain (your own certificate is the last one on the command line).
+      </p>
+    
+</td>
+</tr>
+</table>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../../doc/steps/media/steps/32or64Bit.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/$folder$.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../../doc/steps/media/steps/macLauncher.html"><img vspace="0" align="center" border="0" src="../../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>

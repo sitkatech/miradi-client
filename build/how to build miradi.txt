@@ -1,0 +1,13 @@
+0. Make sure your default compiler (javac from command line) is Java 5, not 6
+1. synch both CVS and SVN
+2. run main tests
+3. build
+	- path must include: ruby, xgettext, msgmerge
+	- path must include gnu-find, which is a renamed version of unix/gnu find
+	  http://sourceforge.net/projects/unxutils
+4. copy the tag name from the console printed after the build
+5. now sync cvs.  Delete anything from the commit view that was left over from a failed build
+   (basically any files with ? that don't already exist in CVS)
+6. commit, use the tag name as comment
+7. tag the trunk (SVN)(example : https://svn1.hosted-projects.com/benetech/Miradi/tags/2007-07-30 20:34:37)
+8. push (use either windows script using winSCP or linux script)

@@ -1,0 +1,23 @@
+li { 
+    margin-top: 1ex 
+}
+
+a:link, a:visited { 
+    color: #5A4E87 
+}
+
+a:hover {
+    color:#F57F18;
+    background:transparent;
+}
+
+body, td, th, p, ul, ol, div {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+}
+
+h2 {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14pt;
+}
+

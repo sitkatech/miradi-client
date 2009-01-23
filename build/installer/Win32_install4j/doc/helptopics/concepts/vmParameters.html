@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>VM parameters</title>
+<link href="../../../doc/help.css" type="text/css" rel="stylesheet">
+<script type="text/javascript">
+      function detectFrameset() {
+        framesetpage="../../../doc/indexRedirect.html";
+        thispage=window.location.href;
+        if (thispage.indexOf('://')<0) {thispage="://"+thispage;};
+        prefix=thispage.substring(0,thispage.lastIndexOf('://'));
+        suffix=thispage.substring(thispage.lastIndexOf('://')+3,thispage.length);
+        if (parent.location.href==window.location.href) {
+          parent.location.href=framesetpage+"?"+prefix+"&&&"+suffix
+        } else {
+          for(i = 0; i < parent.frames.length; i++) {
+            if(parent.frames[i].name == "code" && parent.frames[i].MTMLoaded) {
+              parent.frames[i].MTMTrack = true;
+              setTimeout("parent.frames[" + i + "].MTMDisplayMenu()", 50);
+              break;
+            }
+          }
+        }
+      }
+    
+    </script>
+</head>
+<body onload="detectFrameset()">
+<table width="100%" border="0">
+<tr>
+<td>
+<h2>VM parameters</h2>
+</td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/variables.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/jreBundles.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+<hr>
+<br>
+<div>
+    
+<h3>1. Fixed VM parameters</h3>
+    
+      Fixed VM parameters can be configured in the <a href="../../../doc/steps/launcher/wizard/java.html">launcher wizard</a>
+      where you can use <a href="../../../doc/helptopics/concepts/variables.html#compiler">compiler variables</a>
+      to handle platform-specific changes or <a href="../../../doc/helptopics/concepts/variables.html#launcher">launcher variables</a>
+      to use runtime-dependent variable in your VM parameters.
+    <br>
+    
+<p>
+      
+<img style="vertical-align: middle" align="middle" border="0" src="../../../doc/images/vm_parameters.png">
+    </p>
+
+    
+<h3>2. *.vmoptions files</h3>
+    
+<p>
+      A common requirement is to adjust the VM parameters of your application launchers depending on the runtime
+      environment like the target platform or some user selection in the installer.
+    </p>
+    
+<p>
+      In addition to the fixed VM parameters, a parameter file
+      in the same directory as the executable is read and its contents are added to
+      the existing VM parameters. The name of this parameter file is the same as the
+      executable file with the extension <i><tt>.vmoptions</tt></i>.
+      For example, if your executable is named <i><tt>hello.exe</tt></i>, the name of the VM
+      parameter file is <i><tt>hello.vmoptions</tt></i>. In this file, each line is
+      interpreted as a single VM parameter. The last line must be followed by a line feed.
+      install4j adapts your .vmoptions files during the compilation phase so that the line endings
+      are suitable for all platforms. For example, the contents of the VM parameter
+      file could be:
+<pre>
+-Xmx128m
+-Xms32m
+</pre>
+      The <i><tt>*.vmoptions</tt></i> files allow the installer as well as expert users to modify the
+      VM parameters for your application launchers.
+    </p>
+    
+<p>
+      In addition to the VM parameters you can also modify the classpath in the <i><tt>*.vmoptions</tt></i> files with the
+      following options:
+      <ul>
+<li>
+<font color="#5A4E87"><b>-classpath [classpath]</b></font>
+<br>
+          Replace the classpath of the generated launcher.
+        </li>
+<li>
+<font color="#5A4E87"><b>-classpath/a [classpath]</b></font>
+<br>
+          Append to the classpath of the generated launcher.
+        </li>
+<li>
+<font color="#5A4E87"><b>-classpath/p [classpath]</b></font>
+<br>
+          Prepend to the classpath of the generated launcher.
+        </li>
+</ul>
+    
+</p>
+    
+<p>
+      For GUI launchers on Mac OS X, the VM options are stored in a file called <i><tt>Info.plist</tt></i> inside the
+      application bundle. The "Add VM options" action described below handles these platform-specific differences.
+    </p>
+
+    
+<h3>3. Environment variables</h3>
+    
+<p>
+      You can use environment variables in the VM parameters and the <i><tt>.vmoptions</tt></i> file with the
+      syntax <tt>${variableName}</tt> where you replace <tt>variableName</tt> with the desired
+      environment variable.
+    </p>
+    
+<p>
+      This environment variable syntax also works in the arguments text field and the classpath configuration.
+    </p>
+
+    
+<h3>4. "Add VM options" action</h3>
+    
+<p>
+      In order to handle VM parameter additions in the installer in a cross-platform fashion,
+      install4j includes an "Add VM options" <a href="../../../doc/steps/installerGui/actions.html">action</a>
+      that adds VM parameters to the <i><tt>*.vmoptions</tt></i>
+      file on Microsoft Windows and Unix and modifies the <i><tt>Info.plist</tt></i> file on Mac OS X.
+    </p>
+    
+<p>
+      The Add VM options action creates a <i><tt>*.vmoptions</tt></i> file if necessary or adds your options to the
+      <i><tt>*.vmoptions</tt></i> file if it already exists. However, a number of VM parameters can only
+      occur once so the action replaces the following parameters if they already exist:
+    </p>
+    
+<ul>
+<li>-Xmx</li>
+<li>-Xms</li>
+<li>-Xss</li>
+<li>-Xloggc</li>
+<li>-Xbootclasspath</li>
+<li>-verbose</li>
+<li>-ea / -enableassertions</li>
+<li>-da / -disableassertions</li>
+<li>-agentlib</li>
+<li>-agentpath</li>
+<li>-javaagent</li>
+<li>-splash</li>
+</ul>
+    
+<p>
+      as well as the install4j-specific classpath modification options (see above).
+    </p>
+    
+<p>
+      To set an -Xmx value that depends on the total memory of the target system, you can use
+      a "Set a variable action" to calculate the numeric part of the -Xmx value using the utility method
+      <tt>SystemInfo.getPhysicalMemory()</tt> and use that variable in the "VM options" property
+      of the "Add VM options" action. For example, in order to use 50% of the total memory for the maximum heap size,
+      you do the following after the "Install files" action:
+    </p>
+    
+<ol style="list-style-image: none">
+<li>
+        Add a "Set a variable" action with variable name "xmx" and expression
+        <pre>
+          "-Xmx" + Math.round(SystemInfo.getPhysicalMemory() * 0.5 / 1024 / 1024) + "m"
+        </pre>
+      
+</li>
+<li>Add a "Add VM options" action with VM options
+        <pre>
+        "${installer:xmx}".
+        </pre>
+      
+</li>
+</ol>
+  
+</div>
+<br>
+<hr>
+<table width="100%" border="0">
+<tr>
+<td></td><td valign="top" align="right"><a href="../../../doc/helptopics/concepts/variables.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_previous.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/$folder$.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_up.gif"></a>&nbsp;
+            <a href="../../../doc/helptopics/concepts/jreBundles.html"><img vspace="0" align="center" border="0" src="../../../doc/images/help_next.gif"></a>&nbsp;
+            </td>
+</tr>
+</table>
+</body>
+</html>
