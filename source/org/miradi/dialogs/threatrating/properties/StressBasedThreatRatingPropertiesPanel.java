@@ -27,8 +27,6 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
@@ -42,10 +40,15 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, BaseId.INVALID);
 		setLayout(new OneColumnGridLayout());
 		
+		factorsPanel = new LinkPropertiesFactorsSubpanel(getProject(), mainWindowToUse.getActions());
 		threatStressRatingFieldPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()); 
 		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
-		add(threatStressRatingFieldPanel);
+		commentsPanel = new ThreatRatingCommentsSubpanel(getProject(), mainWindowToUse.getActions());
+
+		addSubPanelWithoutTitledBorder(factorsPanel);
+		addSubPanelWithoutTitledBorder(threatStressRatingFieldPanel);
 		add(editorComponent);
+		addSubPanelWithoutTitledBorder(commentsPanel);
 		
 		updateFieldsFromProject();
 	}
@@ -53,31 +56,8 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	public void dispose()
 	{
 		super.dispose();
-		if (editorComponent != null)
-		{
-			editorComponent.dispose();
-			editorComponent = null;
-		}
-		
-		if (threatStressRatingFieldPanel != null)
-		{
-			threatStressRatingFieldPanel.dispose();
-			threatStressRatingFieldPanel = null;
-		}
-	}
-	
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		threatStressRatingFieldPanel.setObjectRefs(hierarchyToSelectedRef);
-		editorComponent.setObjectRefs(hierarchyToSelectedRef);
-	}
-	
-	public void setObjectRefs(ORefList[] hierarchiesToSelectedRefs)
-	{
-		if (hierarchiesToSelectedRefs.length == 0)
-			setObjectRefs(new ORef[0]);
-		else
-			setObjectRefs(hierarchiesToSelectedRefs[0].toArray());
+		editorComponent.dispose();
+		editorComponent = null;
 	}
 	
 	public String getPanelDescription()
@@ -100,6 +80,8 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 			editorComponent.refreshModel();
 	}
 	
-	private ThreatStressRatingEditorComponent editorComponent;
+	private LinkPropertiesFactorsSubpanel factorsPanel;
 	private ThreatRatingCommonPropertiesSubpanel threatStressRatingFieldPanel;
+	private ThreatRatingCommentsSubpanel commentsPanel;
+	private ThreatStressRatingEditorComponent editorComponent;
 }
