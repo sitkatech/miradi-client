@@ -20,14 +20,16 @@
 	<property name="build.dir" value="${source.cvs.module}/build"/>
     <property name="dist.dir" value="${binaries.cvs.module}/dist"/>
 
-    <property name="dist.temp" value="${dist.dir}/temp"/>
-    <property name="dist.temp.jars" value="${dist.temp}/jars"/>
-
     <property name="eam.src.root" value="${source.cvs.module}/source"/>
     <property name="eam.test.src.root" value="${source.cvs.module}/tests"/>
     <property name="eam.class.root" value="${dist.temp}/bin"/>
 	<property name="eam.thirdparty" value="${dist.temp.jars}"/>
 	<property name="eam.translations.dir" value = "${eam.src.root}/translations"/>
+    
+    <property name="translations.dir" value="${source.cvs.module}/translations" />
+
+    <property name="dist.temp" value="${dist.dir}/temp"/>
+    <property name="dist.temp.jars" value="${dist.temp}/jars"/>
     
 	<property name="version.file" value = "${dist.dir}/miradi.version.txt" />
 	<property name="timestamp.file" value = "${dist.dir}/miradi.timestamp.txt" />
@@ -71,7 +73,7 @@
 	</condition>
 
 	<!-- translations -->
-	<property name="miradi.pot" value="${dist.dir}/miradi.pot" />
+	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
 	<property name="miradi.po.es.dir" value="${dist.dir}" />
     <property name="miradi.po.es" value="${miradi.po.es.dir}/miradi_es.po" />
 	<property name="miradi.po.pt.dir" value="${dist.dir}" />
@@ -99,6 +101,9 @@
 
 	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
 	    <echo file="${timestamp.file}" append="false" message="${version.timestamp}"/>
+
+		<mkdir dir='${dist.temp.jars}' />
+	
     </target>
 
     <!-- ================================================================== -->
@@ -164,8 +169,6 @@
 <!-- THIRD-PARTY JARS, SOURCE, LICENSES                                 -->
 <!-- ================================================================== -->
 <target name='ThirdParty' depends='' description='Download third-party jars'>
-	<mkdir dir='${dist.temp.jars}' />
-	
 	<antcall target='download'>
 		<param name='directory' value='BrowserLauncher2' />
 		<param name='filename' value='BrowserLauncher2-all-10rc4.jar' />
