@@ -27,7 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.TableSettings;
 
-abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener
+abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener, TableWithColumnManagement
 {
 	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
 	{
@@ -89,6 +89,11 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 			EAM.logException(e);
 			//TODO when storing column sequence is finished try throwing further up this exception
 		}
+	}
+	
+	public String getTableColumnSequenceKey(int tableColumn)
+	{
+		return getColumnName(tableColumn);
 	}
 	
 	public void reloadColumnSequences() throws Exception

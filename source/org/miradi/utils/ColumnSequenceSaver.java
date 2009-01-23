@@ -22,8 +22,6 @@ package org.miradi.utils;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JTable;
-
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
@@ -31,7 +29,7 @@ import org.miradi.project.Project;
 
 public class ColumnSequenceSaver extends MouseAdapter
 {
-	public ColumnSequenceSaver(Project projectToUse, JTable tableToUse, String uniqueTableIdentifierToUse)
+	public ColumnSequenceSaver(Project projectToUse, TableWithColumnManagement tableToUse, String uniqueTableIdentifierToUse)
 	{
 		project = projectToUse;
 		table = tableToUse;
@@ -123,7 +121,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 
 	private String getColumnSequenceKey(int tableColumn)
 	{
-		return table.getColumnName(tableColumn);
+		return table.getTableColumnSequenceKey(tableColumn);
 	}
 	
 	public void mouseReleased(MouseEvent event)
@@ -140,7 +138,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	}
 
 	private Project project;
-	private JTable table;
+	private TableWithColumnManagement table;
 	private String uniqueTableIdentifier;
 	public static final int DEFAULT_NARROW_COLUMN_WIDTH = 75;
 	public static final int DEFAULT_WIDE_COLUMN_WIDTH = 200;

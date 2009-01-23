@@ -39,6 +39,11 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		return targetColumns.length;
 	}
 	
+	public String getTableColumnSequenceKey(int column)
+	{
+		return targetColumns[column].getRef().toString();
+	}
+
 	public String getColumnName(int column)
 	{
 		return targetColumns[column].toString();
