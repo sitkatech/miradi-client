@@ -611,10 +611,9 @@
 <!-- win32installer                                                    -->
 <!-- ================================================================== -->
 <target name="win32installer" depends="jar" description="Windows install4j installer build">
-	<taskdef name="install4j" classname="com.install4j.Install4JTask" 
-		classpath="${build.dir}/installer/Win32_install4j/bin/ant.jar" />
-	<install4j projectfile="${build.dir}/miradi.install4j" />
-	
+ 	<exec executable="install4jc">
+ 		<arg value="${build.dir}/miradi.install4j" />
+ 	</exec>	
 </target>
 
 <!-- ================================================================== -->

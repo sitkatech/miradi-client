@@ -1,1 +1,0 @@
-This is the directory where the media files will be created.
