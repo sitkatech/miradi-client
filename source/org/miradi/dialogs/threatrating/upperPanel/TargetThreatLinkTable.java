@@ -57,6 +57,15 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 	{
 		return getPreferredSize();
 	}
+	
+	@Override
+	public String getTableColumnSequenceKey(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		String tableColumnSequenceKey = getTargetThreatLinkTableModel().getTableColumnSequenceKey(modelColumn);
+		
+		return tableColumnSequenceKey;
+	}
 
 	private void setColumnWidths()
 	{
@@ -66,11 +75,6 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		}
 	}
 	
-	public boolean shouldSaveColumnSequence()
-	{
-		return false;
-	}
-
 	public TargetThreatLinkTableModel getTargetThreatLinkTableModel()
 	{
 		return (TargetThreatLinkTableModel) getModel();

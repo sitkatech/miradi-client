@@ -28,33 +28,47 @@ import org.miradi.main.MainWindow;
 
 public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 {
-	public TargetSummaryRowTable(MainWindow mainWindowToUse, TargetSummaryRowTableModel model, JTable tableThatControlsColumns)
+	public TargetSummaryRowTable(MainWindow mainWindowToUse, TargetSummaryRowTableModel model, TargetThreatLinkTable tableThatControlsColumns) throws Exception
 	{
 		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
+		
 		columnController = tableThatControlsColumns;
+		reloadColumnSequences();
+		reloadColumnWidths();
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
+		model.fireTableDataChanged();
 	}
 	
 	@Override
 	public int convertColumnIndexToModel(int viewColumnIndex)
 	{
-		// TODO Auto-generated method stub
-		return super.convertColumnIndexToModel(viewColumnIndex);
+		if (isValidColumnController())
+			return columnController.convertColumnIndexToModel(viewColumnIndex);
+		
+		return viewColumnIndex;
+	}
+
+	@Override
+	public int convertColumnIndexToView(int modelColumnIndex)
+	{	
+		if (isValidColumnController())
+			return columnController.convertColumnIndexToView(modelColumnIndex);
+		
+		return modelColumnIndex;
 	}
 	
+	private boolean isValidColumnController()
+	{
+		return columnController != null;
+	}
+		
 	public boolean shouldSaveColumnSequence()
 	{
 		return false;
 	}
-	
-	@Override
-	public int convertColumnIndexToView(int modelColumnIndex)
-	{
-		return columnController.convertColumnIndexToView(modelColumnIndex);
-	}
-	
+		
 	@Override
 	public void reloadColumnWidths()
 	{
@@ -67,9 +81,7 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		}
 	}
 
-	
-	
-	private JTable columnController;
+	private TargetThreatLinkTable columnController;
 	
 	public static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTable";
 }

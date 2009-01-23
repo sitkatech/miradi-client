@@ -22,8 +22,9 @@ package org.miradi.dialogs.treetables;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ColumnSequenceSaver;
 import org.miradi.utils.ColumnWidthSaver;
+import org.miradi.utils.TableWithColumnManagement;
 
-abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHeightSaver
+abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHeightSaver implements TableWithColumnManagement
 {
 	public TreeTableWithColumnWidthSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
@@ -46,6 +47,11 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 	{
 		columnWidthSaver = new ColumnWidthSaver(mainWindowToUse.getProject(), this, getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
+	}
+	
+	public String getTableColumnSequenceKey(int tableColumn)
+	{
+		return getColumnName(tableColumn);
 	}
 	
 	public void rebuildTableCompletely() throws Exception
