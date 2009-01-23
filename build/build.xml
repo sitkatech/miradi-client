@@ -74,13 +74,13 @@
 
 	<!-- translations -->
 	<property name="miradi.pot" value="${dist.temp}/miradi.pot" />
-	<property name="miradi.po.es.dir" value="${dist.dir}" />
+	<property name="miradi.po.es.dir" value="${translations.dir}" />
     <property name="miradi.po.es" value="${miradi.po.es.dir}/miradi_es.po" />
-	<property name="miradi.po.pt.dir" value="${dist.dir}" />
+	<property name="miradi.po.pt.dir" value="${translations.dir}" />
     <property name="miradi.po.pt" value="${miradi.po.pt.dir}/miradi_pt.po" />
-	<property name="miradi.po.id.dir" value="${dist.dir}" />
+	<property name="miradi.po.id.dir" value="${translations.dir}" />
     <property name="miradi.po.id" value="${miradi.po.id.dir}/miradi_id.po" />
-	<property name="miradi.po.zh.dir" value="${dist.dir}" />
+	<property name="miradi.po.zh.dir" value="${translations.dir}" />
     <property name="miradi.po.zh" value="${miradi.po.zh.dir}/miradi_zh.po" />
 
 	
