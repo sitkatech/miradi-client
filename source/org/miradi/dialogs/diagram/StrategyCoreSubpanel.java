@@ -64,7 +64,7 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("StrategyCoreSubpanel");
+		return EAM.text("Summary");
 	}
 
 }
