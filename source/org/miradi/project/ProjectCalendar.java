@@ -165,7 +165,7 @@ public class ProjectCalendar implements CommandExecutedListener
 			startingDate = nextQuarter(startingDate);
 		}
 		
-		isBudgetTimePeriodQuarterly = isBudgetTimePeriodQuarterly();
+		isBudgetTimePeriodQuarterly = isProjectBudgetTimePeriodQuarterly();
 		if(isBudgetTimePeriodQuarterly)
 		{
 			dateRanges.addAll(quarterlyRanges);
@@ -185,7 +185,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		}
 	}
 
-	private boolean isBudgetTimePeriodQuarterly()
+	private boolean isProjectBudgetTimePeriodQuarterly()
 	{
 		return getProject().getMetadata().isBudgetTimePeriodQuarterly();
 	}
@@ -291,7 +291,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (firstCalendarMonth != getFiscalYearFirstMonth())
 			return true;
 		
-		if (isBudgetTimePeriodQuarterly == isBudgetTimePeriodQuarterly())
+		if (isBudgetTimePeriodQuarterly == isProjectBudgetTimePeriodQuarterly())
 			return true;
 		
 		return false;
