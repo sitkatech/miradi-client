@@ -167,8 +167,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		
 		destination = existingNode.getChildren();
 		addChildrenOfNodeToList(destination, newChild);
-		if (!existingNode.getObjectReference().equals(newChild.getObjectReference()))
-			existingNode.addProportionShares(newChild);
+		existingNode.addProportionShares(newChild);
 
 		if(existingNode.shouldSortChildren())
 			Collections.sort(destination, existingNode.createNodeSorter());
