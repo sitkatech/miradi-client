@@ -31,6 +31,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.LastProjectModifiedTimeHelper;
+import org.miradi.utils.SortableTable;
 
 public class FileSystemTreeNode extends TreeTableNode
 {
@@ -38,6 +39,9 @@ public class FileSystemTreeNode extends TreeTableNode
 	{
 		thisFile = file;
 		children = new Vector<FileSystemTreeNode>();
+		currentSortTag = PROJECT_NAME_SORT_TAG;
+		sortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		
 		rebuild();
 	}
 	
@@ -72,10 +76,15 @@ public class FileSystemTreeNode extends TreeTableNode
 			if(!isProjectDirectory())
 				return null;
 			
-			return LastProjectModifiedTimeHelper.readLastModifiedProjectTime(thisFile);
+			return getLastModifiedDate();
 		}
 		
 		throw new RuntimeException("Unknown column: " + column);
+	}
+
+	private String getLastModifiedDate()
+	{
+		return LastProjectModifiedTimeHelper.readLastModifiedProjectTime(thisFile);
 	}
 
 	public static String timestampToString(long lastModifiedMillis)
@@ -99,10 +108,18 @@ public class FileSystemTreeNode extends TreeTableNode
 		{
 			File file = files[i];
 			if(file.isDirectory() && !isCustomReportDirectory(file) && !isExternalResourceDirectory(file))
-				children.add(new FileSystemTreeNode(file));
+			{
+				FileSystemTreeNode node = new FileSystemTreeNode(file);
+				node.setSortTag(currentSortTag);
+				node.reverseSortDirection();
+				
+				children.add(node);
+			}
 		}
 		
 		Collections.sort(children);
+		if (isReverseSort(sortDirection))
+			Collections.reverse(children);
 	}
 
 	private boolean isCustomReportDirectory(File file)
@@ -144,7 +161,33 @@ public class FileSystemTreeNode extends TreeTableNode
 		if (other.isProjectDirectory() && !isProjectDirectory())
 			return -1;
 		
-		return toString().compareToIgnoreCase(other.toString());
+		return compareByTag(other);
+	}
+
+	private int compareByTag(FileSystemTreeNode other)
+	{
+		if (currentSortTag.equals(PROJECT_NAME_SORT_TAG))
+			return toString().compareToIgnoreCase(other.toString());
+		
+		return getLastModifiedDate().compareTo(other.getLastModifiedDate());
+	}
+	
+	public void reverseSortDirection()
+	{
+		if (isReverseSort(sortDirection))
+			sortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		else
+			sortDirection = SortableTable.REVERSE_SORT_ORDER;
+	}
+	
+	private boolean isReverseSort(int sortDirectionToUse)
+	{
+		return sortDirectionToUse == SortableTable.REVERSE_SORT_ORDER; 
+	}
+	
+	public void setSortTag(String sortTagToUse)
+	{
+		currentSortTag = sortTagToUse;
 	}
 	
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
@@ -152,4 +195,8 @@ public class FileSystemTreeNode extends TreeTableNode
 	
 	protected File thisFile;
 	private Vector<FileSystemTreeNode> children;
+	private int sortDirection;
+	private String currentSortTag;
+	
+	public static final String PROJECT_NAME_SORT_TAG = "Project";
 }

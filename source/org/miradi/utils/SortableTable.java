@@ -22,4 +22,7 @@ package org.miradi.utils;
 public interface SortableTable
 {
 	public void sort(int sortByTableColumn);
+	
+	public static int REVERSE_SORT_ORDER = -1;
+	public static int DEFAULT_SORT_DIRECTION = 0;
 }

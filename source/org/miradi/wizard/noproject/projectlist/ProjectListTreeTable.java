@@ -32,6 +32,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
@@ -46,12 +47,14 @@ import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.ColumnSortListener;
+import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
 
 import com.java.sun.jtreetable.TreeTableModel;
 
-public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
+public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving implements SortableTable
 {
 	public ProjectListTreeTable(MainWindow mainWindowToUse, ProjectListTreeTableModel treeTableModel, NoProjectWizardStep handlerToUse)
 	{
@@ -69,7 +72,15 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 		setColumnSelectionAllowed(false);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		addMouseListener(new MouseHandler());
+		addColumnSorter();
 		dateRenderer = new BorderlessTableCellRendererFactory();
+	}
+
+	private void addColumnSorter()
+	{
+		JTableHeader columnHeader = getTableHeader();
+		ColumnSortListener sortListener = new ColumnSortListener(this);
+		columnHeader.addMouseListener(sortListener);
 	}
 
 	@Override
@@ -170,9 +181,20 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving
 	
 	void refresh()
 	{
-		ProjectListTreeTableModel model = (ProjectListTreeTableModel)tree.getModel();
+		ProjectListTreeTableModel model = getProjectListTreeTableModel();
 		model.rebuildEntireTree();
 		repaint();
+	}
+
+	private ProjectListTreeTableModel getProjectListTreeTableModel()
+	{
+		return (ProjectListTreeTableModel) getTreeTableModel();
+	}
+	
+	public void sort(int sortByTableColumn)
+	{	
+		String columnTag = getProjectListTreeTableModel().getColumnTag(sortByTableColumn);
+		getProjectListTreeTableModel().sort(columnTag);
 	}
 	
 	class MouseHandler extends MouseAdapter
