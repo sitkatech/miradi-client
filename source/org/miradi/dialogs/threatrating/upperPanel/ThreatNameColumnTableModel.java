@@ -37,7 +37,7 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	
 	public String getColumnName(int column)
 	{
-		return EAM.text("Threats");
+		return "<HTML><B>" + EAM.text("Threats") + "</B></HTML> ";
 	}
 	
 	public String getColumnTag(int column)
