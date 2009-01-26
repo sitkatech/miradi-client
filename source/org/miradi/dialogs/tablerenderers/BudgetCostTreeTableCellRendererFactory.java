@@ -21,34 +21,32 @@ package org.miradi.dialogs.tablerenderers;
 
 import java.awt.Component;
 
-import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
-import org.miradi.icons.AllocatedCostIcon;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Task;
 import org.miradi.project.CurrencyFormat;
+import org.miradi.questions.ChoiceItem;
 
 public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRendererFactory
 {
 	public BudgetCostTreeTableCellRendererFactory(PlanningUpperMultiTable providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
 	{
 		super(providerToUse, fontProviderToUse);
-		allocatedIcon = new AllocatedCostIcon();
 		currencyFormatter = currencyFormatterToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object rawValue, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		String value = formatCurrency(rawValue.toString());
+		ChoiceItem choice = (ChoiceItem)rawValue;
+		String value = formatCurrency(choice.getLabel());
 		
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		String text = annotateIfOverride(row, tableColumn, renderer, value); 
-		annotateIfAllocated(row, tableColumn, renderer, rawValue, text);
+		String text = annotateIfOverride(row, tableColumn, renderer, value);
+		renderer.setText(text);
+		renderer.setIcon(choice.getIcon());
 		
 		return renderer;
 	}
@@ -79,40 +77,6 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 	}
 
 
-	private void annotateIfAllocated(int row, int tableColumn, JLabel labelComponent, Object rawValue, String text)
-	{
-		if(text == null)
-			text = "";
-		
-		labelComponent.setIcon(null);
-		labelComponent.setText(text);
-		
-		try
-		{
-			double thisShare = toDouble(rawValue.toString());
-			if(Math.abs(thisShare) < .001)
-				return;
-			
-			BaseObject object = getBaseObjectForRow(row, tableColumn);
-			if(object.getType() != Task.getObjectType())
-				return;
-			
-			double nodeCostAlloctionProportion = calculateAllocationProportion((Task)object);
-			if (Double.compare(nodeCostAlloctionProportion, 1.0) < 0)
-				labelComponent.setIcon(allocatedIcon);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-	}
-	
-	public double calculateAllocationProportion(Task task)
-	{
-		ORefList referrers = task.findObjectsThatReferToUs();
-		return (1.0 / referrers.size());
-	}
-	
 	private String annotateIfOverride(int row, int tableColumn, JLabel labelComponent, Object value)
 	{
 		if(value == null)
@@ -129,6 +93,5 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		return baseText;
 	}
 	
-	private Icon allocatedIcon;
 	private CurrencyFormat currencyFormatter;
 }

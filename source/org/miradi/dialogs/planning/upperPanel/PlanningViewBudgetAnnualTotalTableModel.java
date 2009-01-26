@@ -22,8 +22,11 @@ package org.miradi.dialogs.planning.upperPanel;
 import java.awt.Color;
 import java.util.Vector;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.icons.AllocatedCostIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
@@ -90,10 +93,18 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		try
 		{
 			int shares = getProportionShares(row);
+			
+			String value = "";
 			if (isGrandTotalColumn(column))
-				return new TaglessChoiceItem(getGrandTotalCost(object, shares));
-		
-			return new TaglessChoiceItem(getYearlyTotalCost(object, column, shares));
+				value = getGrandTotalCost(object, shares);
+			else
+				value = getYearlyTotalCost(object, column, shares);
+
+			Icon icon = null;
+			if(value.length() > 0 && shares < object.getTotalShareCount())
+				icon = new AllocatedCostIcon();
+
+			return new TaglessChoiceItem(value, icon);
 		}
 		catch (Exception e)
 		{
@@ -102,17 +113,17 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		}
 	}
 
-	private Object getYearlyTotalCost(BaseObject objectForRow, int column, int shares) throws Exception
+	private String getYearlyTotalCost(BaseObject objectForRow, int column, int shares) throws Exception
 	{	
 		return getBudgetCost(objectForRow, (DateRange)yearlyDateRanges.get(column), shares);
 	}
 
-	private Object getGrandTotalCost(BaseObject objectForRow, int shares) throws Exception
+	private String getGrandTotalCost(BaseObject objectForRow, int shares) throws Exception
 	{
 		return getBudgetCost(objectForRow, combinedDataRange, shares);
 	}
 	
-	private Object getBudgetCost(BaseObject object, DateRange dateRange, int shares) throws Exception
+	private String getBudgetCost(BaseObject object, DateRange dateRange, int shares) throws Exception
 	{
 		double totalCost = object.getBudgetCost(dateRange);
         if (totalCost == 0)
