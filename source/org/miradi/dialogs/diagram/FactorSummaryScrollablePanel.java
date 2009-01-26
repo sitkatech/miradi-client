@@ -47,6 +47,11 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 		add(summaryScrollPane);
 	}
 	
+	public void setFocusOnFirstField()
+	{
+		summaryPanel.setFocusOnFirstField();
+	}
+	
 	public void dispose()
 	{
 		super.dispose();
