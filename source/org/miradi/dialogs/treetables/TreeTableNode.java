@@ -90,6 +90,18 @@ public abstract class TreeTableNode implements Comparable
 		return getObject().getTotalShareCount();
 	}
 
+	public boolean areBudgetValuesAllocated()
+	{
+		for(int i = 0; i < getChildCount(); ++i)
+			if(getChild(i).areBudgetValuesAllocated())
+				return true;
+		
+		if(getProportionShares() < getTotalShareCount())
+			return true;
+		
+		return false;
+	}
+	
 	public void sortChildren(TreeTableNode[] nodes)
 	{
 		Arrays.sort(nodes);
