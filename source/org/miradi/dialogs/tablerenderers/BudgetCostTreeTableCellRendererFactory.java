@@ -25,6 +25,7 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
+import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.icons.AllocatedCostIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
@@ -34,7 +35,7 @@ import org.miradi.project.CurrencyFormat;
 
 public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRendererFactory
 {
-	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
+	public BudgetCostTreeTableCellRendererFactory(PlanningUpperMultiTable providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		allocatedIcon = new AllocatedCostIcon();
