@@ -52,12 +52,28 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	
 	public int getProportionShares(int row)
 	{
+		TreeTableNode node = getNodeForRow(row);
+		if(node == null)
+			return 1;
+		return node.getProportionShares();
+	}
+
+	public int getTotalShares(int row)
+	{
+		TreeTableNode node = getNodeForRow(row);
+		if(node == null)
+			return 1;
+		return node.getTotalShareCount();
+	}
+		
+	private TreeTableNode getNodeForRow(int row)
+	{
 		ORef rowObjectRef = rowObjectRefs.get(row);
 		if (rowObjectRef.isInvalid())
-			return 1;
+			return null;
 		TreePath path = findObject(new TreePath(getRootNode()), rowObjectRef);
 		TreeTableNode node = (TreeTableNode) path.getLastPathComponent();
-		return node.getProportionShares();
+		return node;
 	}
 	
 	private ORefList rowObjectRefs;

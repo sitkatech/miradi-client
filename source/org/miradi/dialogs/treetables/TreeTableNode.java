@@ -82,6 +82,13 @@ public abstract class TreeTableNode implements Comparable
 	{
 		return 1;
 	}
+	
+	public int getTotalShareCount()
+	{
+		if(getObject() == null)
+			return 1;
+		return getObject().getTotalShareCount();
+	}
 
 	public void sortChildren(TreeTableNode[] nodes)
 	{

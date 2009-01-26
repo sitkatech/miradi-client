@@ -86,6 +86,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return masterTree.getProportionShares(row);
 	}
 
+	public int getTotalShares(int row)
+	{
+		return masterTree.getTotalShares(row);
+	}
+		
 	private static final String UNIQUE_IDENTIFIER = "PlanningUpperMultiTable";
 	
 	private PlanningTreeTable masterTree;

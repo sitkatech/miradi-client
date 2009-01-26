@@ -26,4 +26,5 @@ public interface RowColumnBaseObjectProvider
 	public int getRowCount();
 	public BaseObject getBaseObjectForRowColumn(int row, int column);
 	public int getProportionShares(int row);
+	public int getTotalShares(int row);
 }

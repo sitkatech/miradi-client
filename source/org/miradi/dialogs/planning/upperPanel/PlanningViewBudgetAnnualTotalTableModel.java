@@ -93,6 +93,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		try
 		{
 			int shares = getProportionShares(row);
+			int totalShares = getTotalShares(row);
 			
 			String value = "";
 			if (isGrandTotalColumn(column))
@@ -101,7 +102,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 				value = getYearlyTotalCost(object, column, shares);
 
 			Icon icon = null;
-			if(value.length() > 0 && shares < object.getTotalShareCount())
+			if(value.length() > 0 && shares < totalShares)
 				icon = new AllocatedCostIcon();
 
 			return new TaglessChoiceItem(value, icon);
