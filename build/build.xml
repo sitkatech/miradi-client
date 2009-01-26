@@ -147,6 +147,7 @@
           	</manifest>
             <fileset dir="${eam.class.root}" includes="**/*.class"/>
             <fileset dir="${eam.src.root}" includes="resources/**/*" />
+            <fileset dir="${eam.src.root}" includes="org/miradi/xml/**/*.txt" />
         	<fileset dir="${dist.dir}" includes="*.txt" />
         </jar>
     </target>
