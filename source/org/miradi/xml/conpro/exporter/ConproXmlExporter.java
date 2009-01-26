@@ -292,25 +292,22 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private void writeObjective(UnicodeWriter out, ORef desireRef) throws Exception
 	{
-		writeObjective(out, desireRef, createThreatOrThreatReductionResultAnnotationLabel(desireRef));
+		Desire desire = Desire.findDesire(getProject(), desireRef);
+		Factor owningFactor = desire.getDirectOrIndirectOwningFactor();
+		writeObjective(out, desireRef, createThreatOrThreatReductionResultAnnotationLabel(owningFactor));
 	}
 
-	private String createThreatOrThreatReductionResultAnnotationLabel(ORef desireRef)
+	private String createThreatOrThreatReductionResultAnnotationLabel(Factor owningFactor)
 	{
-		Desire desire = Desire.findDesire(getProject(), desireRef);
-		ORefList factorReferrerRefs = getThreatOrThreatReductionResultReferrers(desire);
-		if (factorReferrerRefs.isEmpty())
+		if (owningFactor == null)
 			return "";
-
-		final int FIRST_REF_INDEX = 0;
-		ORef factorRef = factorReferrerRefs.get(FIRST_REF_INDEX);
-		Factor factor = Factor.findFactor(getProject(), factorRef);
+			
 		String threatLabel = EAM.text("Threat");
-		if (factor.isDirectThreat())
-			return createThreatAnnotationLabel(factor, threatLabel);
+		if (owningFactor.isDirectThreat())
+			return createThreatAnnotationLabel(owningFactor, threatLabel);
 		
-		if (factor.isThreatReductionResult())
-			return createThreatReductionResultsAnnotationLabel(factor, threatLabel);
+		if (owningFactor.isThreatReductionResult())
+			return createThreatReductionResultsAnnotationLabel(owningFactor, threatLabel);
 		
 		return "";
 	}
@@ -331,15 +328,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		return " (" + translatedThreatLabel + " = " + threat.getLabel() + ")";
 	}
 
-	private ORefList getThreatOrThreatReductionResultReferrers(Desire desire)
-	{
-		ORefList causeReferrerRefs = desire.findObjectsThatReferToUs(Cause.getObjectType());
-		if (causeReferrerRefs.size() == 1)
-			return causeReferrerRefs;
-		
-		return desire.findObjectsThatReferToUs(ThreatReductionResult.getObjectType());
-	}
-	
 	private void writeObjective(UnicodeWriter out, ORef desireRef, String optionalAnnotationLabel) throws Exception
 	{
 		Desire desire = Desire.findDesire(getProject(), desireRef);
