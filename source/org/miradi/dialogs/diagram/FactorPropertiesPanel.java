@@ -334,6 +334,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			
 			getFactorPropertiesDialog().pack();
 			updateAllSplitterLocations();
+			detailsTab.setFocusOnFirstField();
 		}
 		catch(Exception e)
 		{
