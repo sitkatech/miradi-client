@@ -26,12 +26,14 @@ import java.awt.event.ComponentListener;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.AbstractTableExporter;
@@ -190,7 +192,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		private Dimension lastKnownPreferredSize;
 	}
 	
-	static class CornerFillerComponent extends JComponent
+	static class CornerFillerComponent extends JLabel
 	{
 		public CornerFillerComponent(JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
 		{
@@ -200,6 +202,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 			ResizeHandlerToForceLayoutWhenDraggingColumnWidths handler = new ResizeHandlerToForceLayoutWhenDraggingColumnWidths();
 			matchWidthOf.addComponentListener(handler);
 			matchHeightOf.addComponentListener(handler);
+			setText(EAM.text("Summary Target Rating"));
 		}
 		
 		@Override
