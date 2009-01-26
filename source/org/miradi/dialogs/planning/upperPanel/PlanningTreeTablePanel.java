@@ -163,10 +163,10 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 			if (doesCommandForceRebuild(event))
 				rebuildEntireTreeTable();
 			
-			else if(doesAffectTableRowHeight(event))
+			if(doesAffectTableRowHeight(event))
 				mainTable.updateAutomaticRowHeights();
 			
-			else if(isTreeExpansionCommand(event))
+			if(isTreeExpansionCommand(event))
 				restoreTreeExpansionState();
 			
 			if(isSelectedObjectModification(event, Assignment.getObjectType()))
