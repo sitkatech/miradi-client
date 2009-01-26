@@ -162,6 +162,10 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		{		
 			if (doesCommandForceRebuild(event))
 				rebuildEntireTreeTable();
+			
+			else if(doesAffectTableRowHeight(event))
+				mainTable.updateAutomaticRowHeights();
+			
 			else if(isTreeExpansionCommand(event))
 				restoreTreeExpansionState();
 			
@@ -176,6 +180,16 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 			EAM.errorDialog("Error occurred: " + e.getMessage());
 		}
 		
+	}
+
+	private boolean doesAffectTableRowHeight(CommandExecutedEvent event)
+	{
+		if (!event.isSetDataCommand())
+			return false;
+		
+		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
+		ORef affectedObjectRef = setCommand.getObjectORef();
+		return getSelectedTreeNode().getObjectReference().equals(affectedObjectRef);
 	}
 
 	private boolean doesCommandForceRebuild(CommandExecutedEvent event)
