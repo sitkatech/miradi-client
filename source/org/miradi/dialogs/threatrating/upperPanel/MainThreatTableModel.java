@@ -50,6 +50,11 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		return 1;
 	}
 
+	public int getTotalShares(int row)
+	{
+		return 1;
+	}
+		
 	public ORef getLinkRef(Factor from, Factor to)
 	{
 		return getProject().getFactorLinkPool().getLinkedRef(from, to);
