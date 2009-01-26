@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.Rectangle;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
@@ -47,6 +45,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.utils.ColumnSortListener;
 import org.miradi.utils.SortableTable;
 import org.miradi.utils.UiTableWithAlternatingRows;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -281,30 +280,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
 			listener.valueChanged(null);
 		}
-	}
-
-	static class ColumnSortListener extends MouseAdapter
-	{
-		public ColumnSortListener(ObjectTable tableToManage)
-		{
-			table = tableToManage;
-		}
-		
-		public void mouseClicked(MouseEvent e) 
-		{
-			int clickedTableColumn = ((JTableHeader)e.getSource()).columnAtPoint(e.getPoint());
-			if (clickedTableColumn < 0)
-				return;
-			
-			sortByTableColumn(clickedTableColumn);
-		}
-
-		private void sortByTableColumn(int sortByTableColumn)
-		{
-			table.sort(sortByTableColumn);
-		}
-
-		private ObjectTable table;
 	}
 
 	private Vector selectionListeners;
