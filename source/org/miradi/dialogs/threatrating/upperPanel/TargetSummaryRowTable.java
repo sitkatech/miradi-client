@@ -35,17 +35,17 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
 		
-		setColumnController(tableThatControlsColumns);
-		
-		model.fireTableDataChanged();
+		setColumnController(model, tableThatControlsColumns);
 	}
 
-	private void setColumnController(TargetThreatLinkTable tableThatControlsColumns) throws Exception
+	private void setColumnController(TargetSummaryRowTableModel model, TargetThreatLinkTable tableThatControlsColumns) throws Exception
 	{
 		columnController = tableThatControlsColumns;
 		
 		reloadColumnSequences();
 		reloadColumnWidths();
+		
+		model.fireTableDataChanged();
 	}
 	
 	@Override
