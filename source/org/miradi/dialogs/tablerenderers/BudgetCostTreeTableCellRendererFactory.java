@@ -85,11 +85,11 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		if(labelComponent.getText().length() == 0)
 			return;
 		
-		BaseObject node = getBaseObjectForRow(row, tableColumn);
-		if(node.getType() != Task.getObjectType())
+		BaseObject object = getBaseObjectForRow(row, tableColumn);
+		if(object.getType() != Task.getObjectType())
 			return;
 		
-		double nodeCostAlloctionProportion = calculateAllocationProportion((Task)node);
+		double nodeCostAlloctionProportion = calculateAllocationProportion((Task)object);
 		if (Double.compare(nodeCostAlloctionProportion, 1.0) < 0)
 			labelComponent.setIcon(allocatedIcon);
 	}
