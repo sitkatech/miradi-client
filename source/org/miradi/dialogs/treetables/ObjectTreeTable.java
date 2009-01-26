@@ -79,6 +79,11 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getNodeForRow(row).getProportionShares();
 	}
 
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return getNodeForRow(row).areBudgetValuesAllocated();
+	}
+
 	public static Font createFristLevelFont(Font defaultFontToUse)
 	{
 		Map map = defaultFontToUse.getAttributes();

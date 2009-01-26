@@ -66,6 +66,12 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 		return objectProvider.getProportionShares(row);
 	}
+
+	@Override
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return objectProvider.areBudgetValuesAllocated(row);
+	}
 	
 	public boolean isCurrencyColumn(int column)
 	{

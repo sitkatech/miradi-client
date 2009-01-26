@@ -61,5 +61,10 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 		return getNodeForRow(row).getProportionShares();
 	}
 	
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return getNodeForRow(row).areBudgetValuesAllocated();
+	}
+
 	public static final String UNIQUE_IDENTIFIER = "PlanningTreeTable";
 }

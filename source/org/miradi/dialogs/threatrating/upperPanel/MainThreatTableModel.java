@@ -50,6 +50,11 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		return 1;
 	}
 
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return false;
+	}
+
 	public ORef getLinkRef(Factor from, Factor to)
 	{
 		return getProject().getFactorLinkPool().getLinkedRef(from, to);

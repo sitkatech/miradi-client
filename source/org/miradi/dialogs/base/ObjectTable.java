@@ -173,6 +173,11 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return 1;
 	}
 	
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return false;
+	}
+
 	public void ensureObjectVisible(ORef ref)
 	{
 		setSelectedRow(ref);

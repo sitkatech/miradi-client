@@ -78,6 +78,11 @@ abstract public class EditableObjectTableModel extends AbstractTableModel implem
 		return 1;
 	}
 	
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return false;
+	}
+	
 	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
 	
 	private Project project;

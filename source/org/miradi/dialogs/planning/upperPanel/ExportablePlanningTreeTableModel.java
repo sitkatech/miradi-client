@@ -57,6 +57,14 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 			return 1;
 		return node.getProportionShares();
 	}
+	
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		TreeTableNode node = getNodeForRow(row);
+		if(node == null)
+			return false;
+		return node.areBudgetValuesAllocated();
+	}
 
 	private TreeTableNode getNodeForRow(int row)
 	{
