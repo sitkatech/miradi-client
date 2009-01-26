@@ -53,10 +53,4 @@ abstract public class TableWithTreeTableNodes extends PlanningViewFullSizeTable 
 		return getSyncedModel().getProportionShares(row);
 	}
 	
-	public int getTotalShares(int row)
-	{
-		return getSyncedModel().getTotalShares(row);
-	}
-		
-
 }

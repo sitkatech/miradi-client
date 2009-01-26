@@ -58,14 +58,6 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		return node.getProportionShares();
 	}
 
-	public int getTotalShares(int row)
-	{
-		TreeTableNode node = getNodeForRow(row);
-		if(node == null)
-			return 1;
-		return node.getTotalShareCount();
-	}
-		
 	private TreeTableNode getNodeForRow(int row)
 	{
 		ORef rowObjectRef = rowObjectRefs.get(row);

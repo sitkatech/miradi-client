@@ -173,11 +173,6 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		return 1;
 	}
 	
-	public int getTotalShares(int row)
-	{
-		return 1;
-	}
-		
 	public void ensureObjectVisible(ORef ref)
 	{
 		setSelectedRow(ref);

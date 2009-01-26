@@ -75,11 +75,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		return getNodeForRow(row).getProportionShares();
 	}
 	
-	public int getTotalShares(int row)
-	{
-		return getNodeForRow(row).getTotalShareCount();
-	}
-		
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getNodeForRow(row).getObject();
