@@ -482,7 +482,7 @@ abstract public class BaseObject
 		for(int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task task = Task.find(getProject(), taskRefs.get(i));
-			total += task.getTotalBudgetCost(dateRangeToUse);
+			total += task.getTotalBudgetCost(dateRangeToUse) / task.getTotalShareCount();
 		}
 
 		return total;

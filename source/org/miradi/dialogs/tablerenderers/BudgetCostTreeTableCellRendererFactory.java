@@ -48,7 +48,7 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		String text = annotateIfOverride(row, tableColumn, renderer, value); 
-		annotateIfAllocated(row, tableColumn, renderer, text);
+		annotateIfAllocated(row, tableColumn, renderer, rawValue, text);
 		
 		return renderer;
 	}
@@ -57,10 +57,7 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 	{
 		try
 		{
-			if(costAsString == null || costAsString.length() == 0)
-				return "";
-
-			double cost = Double.parseDouble(costAsString);
+			double cost = toDouble(costAsString);
 			if(cost == 0.0)
 				return "";
 			
@@ -73,9 +70,16 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		}
 	}
 	
+	private double toDouble(String valueAsString) throws Exception
+	{
+		if(valueAsString == null || valueAsString.length() == 0)
+			return 0.0;
+		
+		return Double.parseDouble(valueAsString);
+	}
 
 
-	private void annotateIfAllocated(int row, int tableColumn, JLabel labelComponent, String text)
+	private void annotateIfAllocated(int row, int tableColumn, JLabel labelComponent, Object rawValue, String text)
 	{
 		if(text == null)
 			text = "";
@@ -83,16 +87,24 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		labelComponent.setIcon(null);
 		labelComponent.setText(text);
 		
-		if(labelComponent.getText().length() == 0)
-			return;
-		
-		BaseObject object = getBaseObjectForRow(row, tableColumn);
-		if(object.getType() != Task.getObjectType())
-			return;
-		
-		double nodeCostAlloctionProportion = calculateAllocationProportion((Task)object);
-		if (Double.compare(nodeCostAlloctionProportion, 1.0) < 0)
-			labelComponent.setIcon(allocatedIcon);
+		try
+		{
+			double thisShare = toDouble(rawValue.toString());
+			if(Math.abs(thisShare) < .001)
+				return;
+			
+			BaseObject object = getBaseObjectForRow(row, tableColumn);
+			if(object.getType() != Task.getObjectType())
+				return;
+			
+			double nodeCostAlloctionProportion = calculateAllocationProportion((Task)object);
+			if (Double.compare(nodeCostAlloctionProportion, 1.0) < 0)
+				labelComponent.setIcon(allocatedIcon);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
 	public double calculateAllocationProportion(Task task)
@@ -117,6 +129,6 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		return baseText;
 	}
 	
-	Icon allocatedIcon;
+	private Icon allocatedIcon;
 	private CurrencyFormat currencyFormatter;
 }
