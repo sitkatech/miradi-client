@@ -93,7 +93,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		try
 		{
 			int shares = getProportionShares(row);
-			int totalShares = getTotalShares(row);
+			int totalShares = object.getTotalShareCount();
 			
 			String value = "";
 			if (isGrandTotalColumn(column))

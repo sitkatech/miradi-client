@@ -67,12 +67,6 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return objectProvider.getProportionShares(row);
 	}
 	
-	@Override
-	public int getTotalShares(int row)
-	{
-		return objectProvider.getTotalShares(row);
-	}
-
 	public boolean isCurrencyColumn(int column)
 	{
 		return false;

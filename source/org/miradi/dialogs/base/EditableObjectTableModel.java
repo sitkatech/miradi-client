@@ -78,11 +78,6 @@ abstract public class EditableObjectTableModel extends AbstractTableModel implem
 		return 1;
 	}
 	
-	public int getTotalShares(int row)
-	{
-		return 1;
-	}
-		
 	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
 	
 	private Project project;
