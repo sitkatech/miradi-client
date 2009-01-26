@@ -291,7 +291,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (firstCalendarMonth != getFiscalYearFirstMonth())
 			return true;
 		
-		if (isBudgetTimePeriodQuarterly == isProjectBudgetTimePeriodQuarterly())
+		if (isBudgetTimePeriodQuarterly != isProjectBudgetTimePeriodQuarterly())
 			return true;
 		
 		return false;
