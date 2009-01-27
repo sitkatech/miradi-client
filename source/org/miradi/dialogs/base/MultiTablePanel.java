@@ -58,6 +58,8 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		horizontalController = new MultiTableHorizontalScrollController();
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowSortController = new MultiTableRowSortController();
+		
+		setBackground(mainWindowToUse.getAppPreferences().getDataPanelBackgroundColor());
 	}
 	
 	public MainWindow getMainWindow()
