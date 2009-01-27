@@ -57,7 +57,7 @@ public class ChoiceItemTableCellRendererFactory extends SingleLineObjectTableCel
 		return renderer;
 	}
 
-	private String getLabelText(Object value)
+	protected String getLabelText(Object value)
 	{
 		ChoiceItem choice = getChoiceItem(value);
 		if(choice == null)

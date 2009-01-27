@@ -33,7 +33,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.questions.ChoiceItem;
 
-public class ThreatRatingTableCellRendererFactory extends SingleLineObjectTableCellRendererFactory
+public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
 {
 	public ThreatRatingTableCellRendererFactory(AppPreferences preferences, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
@@ -61,14 +61,6 @@ public class ThreatRatingTableCellRendererFactory extends SingleLineObjectTableC
 		return renderer;
 	}
 
-	private String getLabelText(Object value)
-	{
-		ChoiceItem choice = getChoiceItem(value);
-		if(choice == null)
-			return "";
-		return choice.getLabel();
-	}
-
 	protected Color getBackgroundColor(Object value)
 	{
 		if(value == null)
@@ -81,17 +73,12 @@ public class ThreatRatingTableCellRendererFactory extends SingleLineObjectTableC
 		return choice.getColor();
 	}
 	
-	protected ChoiceItem getChoiceItem(Object value)
-	{
-		if(! (value instanceof ChoiceItem) )
-			return null;
-		return (ChoiceItem)value;
-	}
-
 	protected Icon getConfiguredIcon(BaseObject object, ChoiceItem choice)
 	{
-		if(choice == null || object == null || !FactorLink.is(object))
+		if(choice == null || object == null)
+		{
 			return null;
+		}
 		
 		if(object.getProject().isStressBaseMode())
 		{
@@ -99,8 +86,14 @@ public class ThreatRatingTableCellRendererFactory extends SingleLineObjectTableC
 			return stressBasedIcon;
 		}
 
-		simpleIcon.setLink((FactorLink)object);
-		return simpleIcon;
+		if (FactorLink.is(object))
+		{
+			simpleIcon.setLink((FactorLink)object);
+			return simpleIcon;
+		}
+		
+		stressBasedIcon.setColor(choice.getColor());
+		return stressBasedIcon;
 	}
 	
 	private Color defaultBackgroundColor;
