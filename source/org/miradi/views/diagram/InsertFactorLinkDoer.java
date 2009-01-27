@@ -21,14 +21,21 @@ package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.dialogs.diagram.LinkCreateDialog;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.DiagramLinkId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
 import org.miradi.views.ViewDoer;
 
 public class InsertFactorLinkDoer extends ViewDoer
@@ -59,6 +66,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		try
 		{
+			addOrphandDiagramLinksToDiagramObject(linkCreator, from, to);
 			if (linkCreator.linkToBeCreatedWasRejected(model, from, to))
 				return;
 		}
@@ -81,6 +89,28 @@ public class InsertFactorLinkDoer extends ViewDoer
 		{
 			getProject().executeCommand(new CommandEndTransaction());	
 		}
+	}
+
+	private void addOrphandDiagramLinksToDiagramObject(LinkCreator linkCreator, DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		ORef factorLinkRef = getProject().getFactorLinkPool().getLinkedRef(from.getWrappedFactor(), to.getWrappedFactor());
+		if (factorLinkRef.isInvalid())
+			return;
+		
+		ORefList diagramObjectRefs = DiagramObject.getDiagramRefsContainingLink(getProject(), factorLinkRef);
+		if (diagramObjectRefs.size() > 0)
+			return;
+
+		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+		ORefList diagramLinkReferrerRefs = factorLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORef diagramLinkReferrerRef = diagramLinkReferrerRefs.getRefForType(DiagramLink.getObjectType());
+	
+		diagramLinkReferrerRef.ensureType(DiagramLink.getObjectType());
+		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrerRef);
+		diagramLink.invalidateCachedOwner();
+		
+		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(getDiagramView().getCurrentDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, new DiagramLinkId(diagramLinkReferrerRef.getObjectId().asInt()));
+		getProject().executeCommand(addDiagramLink);
 	}
 
 	private FromToDiagramFactorsHolder getFromToDiagramFactors(DiagramView diagramView)

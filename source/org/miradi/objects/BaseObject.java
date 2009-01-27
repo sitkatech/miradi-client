@@ -998,6 +998,10 @@ abstract public class BaseObject
 		return cachedOwnerRef;
 	}
 
+	public void invalidateCachedOwner()
+	{
+		isCachedOwnerValid = false;
+	}
 	
 	static public ORef findObjectWhoOwnsUs(ObjectManager objectManager, int objectType, ORef oref)
 	{
