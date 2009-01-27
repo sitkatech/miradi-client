@@ -196,7 +196,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	{
 		public CornerFillerComponent(MainWindow mainWindow, JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
 		{
-			super(mainWindow, "<HTML><div class='DataPanel'>" + EAM.text("Summary Target Rating") + "</html>");
+			super(mainWindow, "<HTML><div class='DataPanel'><b>" + EAM.text("Summary Target Ratings:") + "<br><br><br></html>");
 			
 			matchWidthOf = matchWidthOfComponent;
 			matchHeightOf = matchHeightOfComponent;
@@ -204,6 +204,8 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 			ResizeHandlerToForceLayoutWhenDraggingColumnWidths handler = new ResizeHandlerToForceLayoutWhenDraggingColumnWidths();
 			matchWidthOf.addComponentListener(handler);
 			matchHeightOf.addComponentListener(handler);
+			
+			setBackground(mainWindow.getAppPreferences().getDataPanelBackgroundColor());
 		}
 		
 		@Override
