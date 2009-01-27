@@ -41,7 +41,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -190,11 +189,20 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		ORef affectedObjectRef = setCommand.getObjectORef();
-		final TreeTableNode selectedNode = getSelectedTreeNode();
-		if(selectedNode == null)
-			return false;
 		
-		return selectedNode.getObjectReference().equals(affectedObjectRef);
+		return isAffectedRefFoundInMainTableModel(affectedObjectRef);
+	}
+
+	private boolean isAffectedRefFoundInMainTableModel(ORef affectedObjectRef)
+	{
+		for (int row = 0; row < mainModel.getRowCount(); ++row)
+		{
+			BaseObject baseObjectForRow = mainModel.getBaseObjectForRow(row);
+			if (baseObjectForRow.getRef().equals(affectedObjectRef))
+				return true;
+		}
+		
+		return false;
 	}
 
 	private boolean doesCommandForceRebuild(CommandExecutedEvent event)
