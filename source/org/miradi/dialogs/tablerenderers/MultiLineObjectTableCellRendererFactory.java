@@ -58,7 +58,7 @@ public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRend
 		return viewer.getPreferredHeight(table, row, column, value);
 	}
 	
-	class TableCellHtmlRendererComponent extends JTextArea implements TableCellPreferredHeightProvider
+	public static class TableCellHtmlRendererComponent extends JTextArea implements TableCellPreferredHeightProvider
 	{
 		public TableCellHtmlRendererComponent()
 		{
