@@ -34,6 +34,7 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
+		setCellSelectionEnabled(false);
 		
 		setColumnController(model, tableThatControlsColumns);
 	}

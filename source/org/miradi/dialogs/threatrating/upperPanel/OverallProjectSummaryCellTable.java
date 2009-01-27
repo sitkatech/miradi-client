@@ -34,6 +34,7 @@ public class OverallProjectSummaryCellTable extends AbstractTableWithChoiceItemR
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
+		setCellSelectionEnabled(false);
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "OverallProjectSummaryCellTable";
