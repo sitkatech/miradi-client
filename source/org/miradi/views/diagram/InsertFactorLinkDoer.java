@@ -111,6 +111,8 @@ public class InsertFactorLinkDoer extends ViewDoer
 		
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(getDiagramView().getCurrentDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, new DiagramLinkId(diagramLinkReferrerRef.getObjectId().asInt()));
 		getProject().executeCommand(addDiagramLink);
+		
+		EAM.logWarning("An Orphand Diagram Link was found for where the user wanted to create a link.  The Orphand Link was added to the Diagram");
 	}
 
 	private FromToDiagramFactorsHolder getFromToDiagramFactors(DiagramView diagramView)
