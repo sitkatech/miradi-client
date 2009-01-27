@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-22 15:12-0500\n"
+"POT-Creation-Date: 2009-01-26 18:29-0500\n"
 "PO-Revision-Date: 2008-12-02 15:17-0800\n"
 "Last-Translator: Anna\n"
 "Language-Team: Spanish\n"
@@ -242,6 +242,7 @@ msgstr "Propiedades del objeto anidado"
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:280
 msgid "Target"
 msgstr "Objeto "
 
@@ -295,11 +296,15 @@ msgstr "Panel de propiedades de etiqueta "
 msgid "Threats"
 msgstr "Amenazas"
 
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:205
+msgid "Summary Target Rating"
+msgstr "Calificación de objeto de resumen"
+
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
 msgid "Summary Threat Rating"
 msgstr "Calificación de amenazas inmediatas"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:69
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:75
 #, fuzzy
 msgid "Title|Simple Threat Rating"
 msgstr "Calificación simple de amenazas"
@@ -316,26 +321,30 @@ msgstr "Nombre de la presión"
 msgid "(Create, manage, and rate the stresses for this target)"
 msgstr "(Crear, manejar y calificar las presiones para este objeto)"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:85
+#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:65
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Calificación de amenaza basada en la presión"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:54
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:60
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
 msgid "Scope"
 msgstr "Alcance"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:55
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:62
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
 msgid "Severity"
 msgstr "Gravedad "
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:56
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:64
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Irreversibility"
 msgstr "Irreversibilidad "
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:66
+msgid "<html><b>Summary<br>Target-Threat<br>Rating"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
 msgid "Threat Rating Preferences Panel"
@@ -369,9 +378,9 @@ msgstr "Presentación de diapositivas"
 msgid "Title|Slide Properties"
 msgstr "Propiedades de la diapositiva"
 
-#: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:71
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:64
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAbstractBudgetTableModel.java:64
+#: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAbstractBudgetTableModel.java:77
 msgid "(Error)"
 msgstr "(Error)"
 
@@ -417,6 +426,7 @@ msgid "Task"
 msgstr "Tarea "
 
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:130
+#: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:117
 msgid "Summary"
 msgstr "Resumen"
@@ -565,17 +575,9 @@ msgstr "Propiedades de la estrategia"
 msgid "Cost/When/Who"
 msgstr "Costo/Cuándo/Quién"
 
-#: miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:41
+#: miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:53
 msgid "Group Box Properties"
 msgstr "Propiedades del cuadro grupal"
-
-#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
-msgid ""
-"Currently in brainstorm mode, so some factors are hidden. To return to "
-"normal mode, press this button: "
-msgstr ""
-"Actualmente en modo de tormenta de ideas para que algunos factores queden "
-"ocultos. Para volver al modo normal, oprima este botón."
 
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
@@ -589,9 +591,13 @@ msgstr "Estrategia"
 msgid "Progress"
 msgstr "Progreso"
 
-#: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-msgid "StrategyCoreSubpanel"
-msgstr "Subpanel principal de la estrategia"
+#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
+msgid ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+msgstr ""
+"Actualmente en modo de tormenta de ideas para que algunos factores queden "
+"ocultos. Para volver al modo normal, oprima este botón."
 
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:49
@@ -606,11 +612,11 @@ msgstr "Indicador"
 msgid "Results Chains"
 msgstr "Cadenas de resultados"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:374
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:375
 msgid "Viability Analysis Mode"
 msgstr "Modo Análisis de viabilidad"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:459
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:460
 msgid "Factor Properties"
 msgstr "Propiedades del factor"
 
@@ -657,15 +663,16 @@ msgstr "Propiedades del diagrama"
 msgid "[Error]"
 msgstr "(Error)"
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:101
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
 msgid "[ERROR]"
 msgstr "[ERROR]"
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:145
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:156
 msgid "Budget Total"
 msgstr "Total del presupuesto"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:305
 msgid "Threat"
 msgstr "Amenaza "
 
@@ -708,7 +715,7 @@ msgstr "Se produjo un error inesperado"
 msgid "(not specified)"
 msgstr "No especificado"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:42
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:55
 msgid "Total"
 msgstr "Total"
 
@@ -1261,20 +1268,20 @@ msgstr "Paso a paso"
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
-#: miradi/source/org/miradi/main/EAM.java:125
+#: miradi/source/org/miradi/main/EAM.java:128
 msgid "Warning"
 msgstr "Advertencia"
 
-#: miradi/source/org/miradi/main/EAM.java:343
+#: miradi/source/org/miradi/main/EAM.java:346
 msgid "An unexpected error occurred: "
 msgstr "Se produjo un error inesperado"
 
-#: miradi/source/org/miradi/main/EAM.java:353
+#: miradi/source/org/miradi/main/EAM.java:356
 msgid "Title|Error"
 msgstr "|Error "
 
-#: miradi/source/org/miradi/main/EAM.java:394
-#: miradi/source/org/miradi/main/EAM.java:395
+#: miradi/source/org/miradi/main/EAM.java:397
+#: miradi/source/org/miradi/main/EAM.java:398
 #: miradi/source/org/miradi/views/noproject/DeleteProject.java:54
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:72
@@ -1282,12 +1289,12 @@ msgstr "|Error "
 msgid "Delete"
 msgstr "Eliminar"
 
-#: miradi/source/org/miradi/main/EAM.java:394
+#: miradi/source/org/miradi/main/EAM.java:397
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 msgid "Retain"
 msgstr "Retener"
 
-#: miradi/source/org/miradi/main/EAM.java:550
+#: miradi/source/org/miradi/main/EAM.java:553
 msgid "Wintitle|Information"
 msgstr "Información"
 
@@ -2485,7 +2492,7 @@ msgstr "Muy alto"
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 #: miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
 msgid "Project"
 msgstr "Proyecto"
 
@@ -6477,11 +6484,11 @@ msgstr "Cambiar nombre…"
 msgid "Error renaming project: "
 msgstr "Error al cambiar nombre del proyecto:"
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:95
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:106
 msgid "Project List"
 msgstr "Lista de proyectos"
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
 msgid "Last Modified"
 msgstr ""
 
@@ -6766,11 +6773,25 @@ msgstr "Paso "
 msgid "File to import does not validate."
 msgstr "El archivo para importar no se valida."
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1133
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1030
+msgid "Placeholder - From ConPro"
+msgstr ""
+
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1034
+#, fuzzy
+msgid "Objective Holder"
+msgstr "Meta"
+
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1040
+#, fuzzy
+msgid "Indicator Holder"
+msgstr "Indicador"
+
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1137
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1134
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1138
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -7623,6 +7644,10 @@ msgstr "Detalles del porcentaje de progreso "
 #, fuzzy
 msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 msgstr "Total del presupuesto"
+
+#, fuzzy
+msgid "FieldLabel|12.Comment|Comments"
+msgstr "Comentarios"
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
 msgstr "De"
@@ -32588,6 +32613,9 @@ msgstr ""
 "Halofíticos zambezianos___AT___Afrotrópicos___9___Pastizales y vegetaciones "
 "inundados___AT0908"
 
+#~ msgid "StrategyCoreSubpanel"
+#~ msgstr "Subpanel principal de la estrategia"
+
 #, fuzzy
 #~ msgid "Button|Save As..."
 #~ msgstr "Grabar copia como…"
@@ -32722,9 +32750,6 @@ msgstr ""
 
 #~ msgid "Target:"
 #~ msgstr "Objeto: "
-
-#~ msgid "Summary Target Rating"
-#~ msgstr "Calificación de objeto de resumen"
 
 #~ msgid "THREATS"
 #~ msgstr "AMENAZAS"

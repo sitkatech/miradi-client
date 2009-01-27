@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-22 15:12-0500\n"
+"POT-Creation-Date: 2009-01-26 18:29-0500\n"
 "PO-Revision-Date: 2008-11-25 07:05-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Chinese\n"
@@ -240,6 +240,7 @@ msgstr "嵌套对象属性 \t\t"
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:280
 msgid "Target"
 msgstr "对象"
 
@@ -293,11 +294,15 @@ msgstr "标题|标签属性面板"
 msgid "Threats"
 msgstr "威胁因子 \t\t"
 
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:205
+msgid "Summary Target Rating"
+msgstr "对象评级概要 \t\t"
+
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
 msgid "Summary Threat Rating"
 msgstr "威胁因子分级摘要 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:69
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:75
 #, fuzzy
 msgid "Title|Simple Threat Rating"
 msgstr "简单威胁因子评级 \t\t"
@@ -314,26 +319,30 @@ msgstr "压力名称 \t\t"
 msgid "(Create, manage, and rate the stresses for this target)"
 msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:85
+#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:65
 msgid "Title|Stress-Based Threat Rating"
 msgstr "基于压力的威胁因子分级 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:54
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:60
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
 msgid "Scope"
 msgstr "范围 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:55
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:62
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
 msgid "Severity"
 msgstr "严重性"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:56
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:64
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Irreversibility"
 msgstr "不可逆性"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:66
+msgid "<html><b>Summary<br>Target-Threat<br>Rating"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
 msgid "Threat Rating Preferences Panel"
@@ -367,9 +376,9 @@ msgstr "幻灯片放映 \t\t"
 msgid "Title|Slide Properties"
 msgstr "幻灯片属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:71
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:64
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAbstractBudgetTableModel.java:64
+#: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAbstractBudgetTableModel.java:77
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
@@ -413,6 +422,7 @@ msgid "Task"
 msgstr "任务"
 
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:130
+#: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:117
 msgid "Summary"
 msgstr "摘要 \t\t"
@@ -556,16 +566,9 @@ msgstr "策略属性 \t\t"
 msgid "Cost/When/Who"
 msgstr "开销/何时/何人 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:41
+#: miradi/source/org/miradi/dialogs/diagram/GroupBoxPropertiesPanel.java:53
 msgid "Group Box Properties"
 msgstr "组合框属性 \t\t"
-
-#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
-msgid ""
-"Currently in brainstorm mode, so some factors are hidden. To return to "
-"normal mode, press this button: "
-msgstr ""
-"当前处于集思广益模式，因此有些因素被隐藏了。要返回正常模式，点击本按钮： "
 
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
@@ -579,9 +582,12 @@ msgstr "策略 \t\t"
 msgid "Progress"
 msgstr "进展 "
 
-#: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-msgid "StrategyCoreSubpanel"
-msgstr "策略核心子面板 \t\t"
+#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
+msgid ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+msgstr ""
+"当前处于集思广益模式，因此有些因素被隐藏了。要返回正常模式，点击本按钮： "
 
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:49
@@ -596,11 +602,11 @@ msgstr "指示物"
 msgid "Results Chains"
 msgstr "结果链 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:374
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:375
 msgid "Viability Analysis Mode"
 msgstr "生存力分析模式 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:459
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:460
 msgid "Factor Properties"
 msgstr "因素属性 \t\t"
 
@@ -647,15 +653,16 @@ msgstr "图表属性 \t\t"
 msgid "[Error]"
 msgstr "（错误） \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:101
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
 msgid "[ERROR]"
 msgstr "[错误] \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:145
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:156
 msgid "Budget Total"
 msgstr "预算总额 \t\t"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:305
 msgid "Threat"
 msgstr "威胁因子"
 
@@ -698,7 +705,7 @@ msgstr "出现意外错误： \t\t"
 msgid "(not specified)"
 msgstr "未指定 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:42
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:55
 msgid "Total"
 msgstr "总计 \t\t"
 
@@ -1235,20 +1242,20 @@ msgstr "一步一步 \t\t"
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: miradi/source/org/miradi/main/EAM.java:125
+#: miradi/source/org/miradi/main/EAM.java:128
 msgid "Warning"
 msgstr "警告 \t\t"
 
-#: miradi/source/org/miradi/main/EAM.java:343
+#: miradi/source/org/miradi/main/EAM.java:346
 msgid "An unexpected error occurred: "
 msgstr "出现意外错误： \t\t"
 
-#: miradi/source/org/miradi/main/EAM.java:353
+#: miradi/source/org/miradi/main/EAM.java:356
 msgid "Title|Error"
 msgstr "错误 "
 
-#: miradi/source/org/miradi/main/EAM.java:394
-#: miradi/source/org/miradi/main/EAM.java:395
+#: miradi/source/org/miradi/main/EAM.java:397
+#: miradi/source/org/miradi/main/EAM.java:398
 #: miradi/source/org/miradi/views/noproject/DeleteProject.java:54
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:72
@@ -1256,12 +1263,12 @@ msgstr "错误 "
 msgid "Delete"
 msgstr "删除 \t\t"
 
-#: miradi/source/org/miradi/main/EAM.java:394
+#: miradi/source/org/miradi/main/EAM.java:397
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 msgid "Retain"
 msgstr "保留 \t\t"
 
-#: miradi/source/org/miradi/main/EAM.java:550
+#: miradi/source/org/miradi/main/EAM.java:553
 msgid "Wintitle|Information"
 msgstr "信息 \t\t"
 
@@ -2395,7 +2402,7 @@ msgstr "非常高"
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 #: miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
 msgid "Project"
 msgstr "项目 \t\t"
 
@@ -6258,11 +6265,11 @@ msgstr "重命名… \t\t"
 msgid "Error renaming project: "
 msgstr "项目重命名出错： \t\t"
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:95
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:106
 msgid "Project List"
 msgstr "项目列表 \t\t"
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:48
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
 msgid "Last Modified"
 msgstr ""
 
@@ -6540,11 +6547,25 @@ msgstr "步骤"
 msgid "File to import does not validate."
 msgstr "要导入的文件不正确 \t\t"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1133
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1030
+msgid "Placeholder - From ConPro"
+msgstr ""
+
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1034
+#, fuzzy
+msgid "Objective Holder"
+msgstr "分目标 \t\t"
+
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1040
+#, fuzzy
+msgid "Indicator Holder"
+msgstr "指示物"
+
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1137
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1134
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1138
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -7380,6 +7401,10 @@ msgstr "进度百分比详情"
 #, fuzzy
 msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 msgstr "预算总额 \t\t"
+
+#, fuzzy
+msgid "FieldLabel|12.Comment|Comments"
+msgstr "评论 \t\t"
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
 msgstr "自: \t\t"
@@ -28813,6 +28838,9 @@ msgid ""
 "Halophytics___AT___Afrotropic___9___Flooded Grasslands and Savannas___AT0908"
 msgstr "Zambezian盐沼___AT___非洲界___9___洪泛草地和稀树草原___AT0908"
 
+#~ msgid "StrategyCoreSubpanel"
+#~ msgstr "策略核心子面板 \t\t"
+
 #, fuzzy
 #~ msgid "Button|Save As..."
 #~ msgstr "拷贝另存为… \t\t"
@@ -28935,9 +28963,6 @@ msgstr "Zambezian盐沼___AT___非洲界___9___洪泛草地和稀树草原___AT0
 
 #~ msgid "Target:"
 #~ msgstr "对象："
-
-#~ msgid "Summary Target Rating"
-#~ msgstr "对象评级概要 \t\t"
 
 #~ msgid "THREATS"
 #~ msgstr "威胁因子 \t\t"
