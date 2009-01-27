@@ -45,10 +45,12 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		return COLUMN_NAMES[column];
 	}
 	
-	public void sort(String columnTag)
+	public void sort(int modelColumn)
 	{
 		FileSystemTreeNode fileSystemNode = (FileSystemTreeNode) getRootNode();
 		fileSystemNode.reverseSortDirection();
+		
+		String columnTag = getColumnTag(modelColumn);
 		fileSystemNode.setSortTag(columnTag);
 		
 		rebuildEntireTree();
