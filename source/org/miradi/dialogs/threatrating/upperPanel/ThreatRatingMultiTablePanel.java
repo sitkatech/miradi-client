@@ -26,7 +26,6 @@ import java.awt.event.ComponentListener;
 
 import javax.swing.Box;
 import javax.swing.JComponent;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionListener;
@@ -38,6 +37,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.FastScrollPane;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MainThreatTableModelExporter;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -192,17 +192,18 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		private Dimension lastKnownPreferredSize;
 	}
 	
-	static class CornerFillerComponent extends JLabel
+	static class CornerFillerComponent extends FlexibleWidthHtmlViewer
 	{
-		public CornerFillerComponent(JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
+		public CornerFillerComponent(MainWindow mainWindow, JComponent matchWidthOfComponent, JComponent matchHeightOfComponent)
 		{
+			super(mainWindow, "<HTML><div class='DataPanel'>" + EAM.text("Summary Target Rating") + "</html>");
+			
 			matchWidthOf = matchWidthOfComponent;
 			matchHeightOf = matchHeightOfComponent;
 			
 			ResizeHandlerToForceLayoutWhenDraggingColumnWidths handler = new ResizeHandlerToForceLayoutWhenDraggingColumnWidths();
 			matchWidthOf.addComponentListener(handler);
 			matchHeightOf.addComponentListener(handler);
-			setText(EAM.text("Summary Target Rating"));
 		}
 		
 		@Override
@@ -334,7 +335,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		overallProjectSummaryCellTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		overallProjectSummaryCellTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 
-		CornerFillerComponent lowerLeftCell = new CornerFillerComponent(threatTableScroller, targetSummaryRowTableScroller);
+		CornerFillerComponent lowerLeftCell = new CornerFillerComponent(getMainWindow(), threatTableScroller, targetSummaryRowTableScroller);
 		
 		Box hBoxTop = Box.createHorizontalBox();
 		hBoxTop.add(threatTableScroller);
