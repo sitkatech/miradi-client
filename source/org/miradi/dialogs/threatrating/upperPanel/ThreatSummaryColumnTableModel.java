@@ -65,7 +65,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return "ERROR";
+			return EAM.text("ERROR");
 		}
 	}
 	
