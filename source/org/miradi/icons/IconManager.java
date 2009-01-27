@@ -197,4 +197,9 @@ public class IconManager
 	{
 		return new ResultsChainIcon();
 	}
+
+	public static Icon getAllocatedCostIcon()
+	{
+		return new AllocatedCostIcon();
+	}
 }

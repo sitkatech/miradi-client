@@ -26,7 +26,7 @@ import javax.swing.Icon;
 
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.icons.AllocatedCostIcon;
+import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
@@ -102,7 +102,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 
 			Icon icon = null;
 			if(value.length() > 0 && areBudgetValuesAllocated(row))
-				icon = new AllocatedCostIcon();
+				icon = IconManager.getAllocatedCostIcon();
 
 			return new TaglessChoiceItem(value, icon);
 		}
