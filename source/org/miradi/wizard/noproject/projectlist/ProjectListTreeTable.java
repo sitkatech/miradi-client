@@ -193,8 +193,8 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 	
 	public void sort(int sortByTableColumn)
 	{	
-		String columnTag = getProjectListTreeTableModel().getColumnTag(sortByTableColumn);
-		getProjectListTreeTableModel().sort(columnTag);
+		int modelColumn = convertColumnIndexToModel(sortByTableColumn);
+		getProjectListTreeTableModel().sort(modelColumn);
 	}
 	
 	class MouseHandler extends MouseAdapter
