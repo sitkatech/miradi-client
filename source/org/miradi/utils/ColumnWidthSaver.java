@@ -26,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.StringMap;
@@ -110,11 +111,13 @@ public class ColumnWidthSaver extends MouseAdapter
 		
 		return false;
 	}
-
+	
+	@Override
 	public void mouseReleased(MouseEvent e)
 	{
 		try
 		{
+			ObjectDataInputField.saveFocusedFieldPendingEdits();
 			saveColumnWidths();
 		}
 		catch(Exception e1)
