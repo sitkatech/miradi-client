@@ -24,6 +24,7 @@ import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
@@ -31,7 +32,10 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
@@ -332,10 +336,20 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		addToHorizontalController(targetSummaryRowTableScroller);
 		targetSummaryRowTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		targetSummaryRowTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-		
-		JScrollPane overallProjectSummaryCellTableScroller = new ScrollPaneWithWidthMatchingForSingleRowTable(overallProjectSummaryCellTable, threatSummaryColumnTableScroller);
+
+		final OneRowGridLayout overallPanelLayout = new OneRowGridLayout();
+		overallPanelLayout.setGaps(5);
+		overallPanelLayout.setMargins(5);
+		MiradiPanel overallPanel = new MiradiPanel(overallPanelLayout);
+		overallPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
+		overallPanel.add(new PanelTitleLabel(EAM.text("<html><b>Overall<br>Project<br>Rating")));
+		overallPanel.add(overallProjectSummaryCellTable);
+		JScrollPane overallProjectSummaryCellTableScroller = new JScrollPane(overallPanel);
+		overallProjectSummaryCellTableScroller.setBorder(null);
 		overallProjectSummaryCellTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		overallProjectSummaryCellTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		overallProjectSummaryCellTableScroller.setMinimumSize(overallProjectSummaryCellTableScroller.getPreferredSize());
+		overallProjectSummaryCellTableScroller.setMaximumSize(overallProjectSummaryCellTableScroller.getPreferredSize());
 
 		CornerFillerComponent lowerLeftCell = new CornerFillerComponent(getMainWindow(), threatTableScroller, targetSummaryRowTableScroller);
 		
