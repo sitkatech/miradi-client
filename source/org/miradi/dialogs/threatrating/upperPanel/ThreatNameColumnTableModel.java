@@ -19,9 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
+import org.miradi.icons.DirectThreatIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.TaglessChoiceItem;
 
 public class ThreatNameColumnTableModel extends MainThreatTableModel
 {
@@ -32,11 +34,14 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	
 	public int getColumnCount()
 	{
-		return 1;
+		return COLUMN_COUNT;
 	}
 	
 	public String getColumnName(int column)
 	{
+		if (isThreatIconColumn(column))
+			return "";
+		
 		return "<HTML><B>" + EAM.text("Threats") + "</B></HTML> ";
 	}
 	
@@ -47,11 +52,23 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
+		if (isThreatIconColumn(column))
+			return new TaglessChoiceItem(new DirectThreatIcon());
+		
 		return getDirectThreat(row).toString();
+	}
+
+	private boolean isThreatIconColumn(int column)
+	{
+		return column == THREAT_ICON_COLUMN_INDEX;
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getDirectThreat(row);
 	}
+	
+	public static final int THREAT_ICON_COLUMN_INDEX = 0;
+	public static final int THREAT_NAME_COLUMN_INDEX = 1;
+	private static final int COLUMN_COUNT = 2;
 }
