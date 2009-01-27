@@ -80,7 +80,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		super(diagramModel);
 		mainWindow = mainWindowToUse;
-		setDoubleBuffered(false);
 		setUI(new EAMGraphUI());
 		setAntiAliased(true);
 		disableInPlaceEditing();
