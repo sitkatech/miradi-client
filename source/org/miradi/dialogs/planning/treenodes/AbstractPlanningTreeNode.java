@@ -90,6 +90,18 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		return null;
 	}
+	
+	@Override
+	public boolean areBudgetValuesAllocated()
+	{
+		if(isAllocated)
+			return true;
+		
+		if(getProportionShares() < getTotalShareCount())
+			return true;
+		
+		return false;
+	}
 
 	public void rebuild() throws Exception
 	{
@@ -130,6 +142,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	protected void pruneUnwantedLayers(CodeList objectTypesToShow)
 	{
+		if(isAnyChildAllocated(children))
+			isAllocated = true;
+		
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector();
 		for(AbstractPlanningTreeNode child : children)
 		{
@@ -149,6 +164,17 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		if(shouldSortChildren())
 			Collections.sort(newChildren, createNodeSorter());
 		children = newChildren;
+	}
+	
+	private boolean isAnyChildAllocated(Vector<AbstractPlanningTreeNode> nodesToCheck)
+	{
+		for(AbstractPlanningTreeNode node : nodesToCheck)
+		{
+			if(node.areBudgetValuesAllocated())
+				return true;
+		}
+		
+		return false;
 	}
 
 	private NodeSorter createNodeSorter()
@@ -353,4 +379,5 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	protected Project project;
 	protected CodeList visibleRows;
 	protected Vector<AbstractPlanningTreeNode> children;
+	private boolean isAllocated;
 }
