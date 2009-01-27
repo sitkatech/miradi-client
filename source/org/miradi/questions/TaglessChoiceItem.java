@@ -43,5 +43,11 @@ public class TaglessChoiceItem extends ChoiceItem
 		super(EMPTY_CHOICE_ITEM_CODE, labelToUse, iconToUse);
 	}
 	
+	public TaglessChoiceItem(Icon iconToUse)
+	{
+		this(EMPTY_LABEL, iconToUse);
+	}
+	
 	protected static final String EMPTY_CHOICE_ITEM_CODE = "";
+	protected static final String EMPTY_LABEL = "";
 }

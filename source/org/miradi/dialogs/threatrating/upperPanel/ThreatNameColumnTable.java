@@ -21,8 +21,10 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import javax.swing.JTable;
 
+import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
+import org.miradi.icons.DirectThreatIcon;
 import org.miradi.main.MainWindow;
 
 
@@ -31,7 +33,12 @@ public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 	public ThreatNameColumnTable(MainWindow mainWindowToUse, MainThreatTableModel tableModel)
 	{
 		super(mainWindowToUse, tableModel, UNIQUE_IDENTIFIER);
-		getColumnModel().getColumn(0).setCellRenderer(new MultiLineObjectTableCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow())));
+		
+		getColumnModel().getColumn(ThreatNameColumnTableModel.THREAT_ICON_COLUMN_INDEX).setCellRenderer(new ChoiceItemTableCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow())));
+		setColumnWidth(ThreatNameColumnTableModel.THREAT_ICON_COLUMN_INDEX, new DirectThreatIcon().getIconWidth() * 2);
+		
+		getColumnModel().getColumn(ThreatNameColumnTableModel.THREAT_NAME_COLUMN_INDEX).setCellRenderer(new MultiLineObjectTableCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow())));
+		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setReorderingAllowed(false);
 	}
