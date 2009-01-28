@@ -23,6 +23,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.awt.event.MouseWheelListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -134,6 +135,13 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		public ScrollPaneWithSizeConstraints(Component view)
 		{
 			super(view);
+		}
+		
+		public ScrollPaneWithSizeConstraints(Component view, MouseWheelListener masterMouseWheelListener)
+		{
+			this(view);
+			
+			addMouseWheelListener(masterMouseWheelListener);
 		}
 		
 		public void capMaxWidth()
@@ -310,27 +318,29 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	}
 	
 	private void addTableToGridBag()
-	{		
-		ScrollPaneWithSizeConstraints threatTableScroller = new ScrollPaneWithSizeConstraints(threatNameTable);
-		threatTableScroller.capMinWidth();
-		threatTableScroller.capMaxWidth();
-		threatTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		threatTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-		addToVerticalController(threatTableScroller);
-		
-		ScrollPaneWithSizeConstraints targetThreatLinkTableScroller = new ScrollPaneWithSizeConstraints(targetThreatLinkTable);
-		targetThreatLinkTableScroller.capMaxWidth();
-		targetThreatLinkTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		targetThreatLinkTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
-		addToVerticalController(targetThreatLinkTableScroller);
-		addToHorizontalController(targetThreatLinkTableScroller);
-		
+	{
 		ScrollPaneWithSizeConstraints threatSummaryColumnTableScroller = new ScrollPaneWithSizeConstraints(threatSummaryColumnTable);
 		threatSummaryColumnTableScroller.capMinWidth();
 		threatSummaryColumnTableScroller.capMaxWidth();
 		addToVerticalController(threatSummaryColumnTableScroller);
 		threatSummaryColumnTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		threatSummaryColumnTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
+		MouseWheelListener masterMouseWheelListener = getFirstMasterWheelListener(threatSummaryColumnTableScroller);		
+	
+		ScrollPaneWithSizeConstraints threatTableScroller = new ScrollPaneWithSizeConstraints(threatNameTable, masterMouseWheelListener);
+		threatTableScroller.capMinWidth();
+		threatTableScroller.capMaxWidth();
+		threatTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		threatTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		addToVerticalController(threatTableScroller);
+		
+		ScrollPaneWithSizeConstraints targetThreatLinkTableScroller = new ScrollPaneWithSizeConstraints(targetThreatLinkTable, masterMouseWheelListener);
+		targetThreatLinkTableScroller.capMaxWidth();
+		targetThreatLinkTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		targetThreatLinkTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		addToVerticalController(targetThreatLinkTableScroller);
+		addToHorizontalController(targetThreatLinkTableScroller);
 		
 		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithWidthMatchingForSingleRowTable(targetSummaryRowTable, targetThreatLinkTableScroller);
 		addToHorizontalController(targetSummaryRowTableScroller);
@@ -370,6 +380,16 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		vbox.add(hBoxBottom);
 		
 		add(vbox);
+	}
+
+	private MouseWheelListener getFirstMasterWheelListener(ScrollPaneWithSizeConstraints threatSummaryColumnTableScroller)
+	{
+		final int FIRST_ARRAY_INDEX = 0;
+		MouseWheelListener[] mouseWheelListeners = threatSummaryColumnTableScroller.getMouseWheelListeners();
+		if (mouseWheelListeners.length > 0)
+			return mouseWheelListeners[FIRST_ARRAY_INDEX];
+		
+		return null;
 	}
 
 	private void synchTableColumns()
