@@ -109,7 +109,7 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new TaglessChoiceItem(EAM.text("[ERROR]"));
+			return new TaglessChoiceItem(EAM.text("[Error]"));
 		}
 	}
 

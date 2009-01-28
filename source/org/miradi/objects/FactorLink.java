@@ -216,7 +216,7 @@ public class FactorLink extends BaseObject
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return "Error";
+			return EAM.text("Error");
 		}
 	}
 	
