@@ -318,9 +318,21 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	
 	public void setCurrentDiagramFactor(DiagramComponent diagram, DiagramFactor diagramFactor)
 	{
+		rebuildPanelForDiagramFactor(diagramFactor);
+		detailsTab.setFocusOnFirstField();
+	}
+	
+	public void rebuildPanelForDiagramFactor(DiagramFactor diagramFactor)
+	{
 		currentDiagramFactor = diagramFactor;
 
 		rebuildPanel();
+		setFocusOnFactorChangeComboBox();
+	}
+
+	private void setFocusOnFactorChangeComboBox()
+	{
+		currentFactorChangerComboBox.grabFocus();
 	}
 
 	private void rebuildPanel()
@@ -334,7 +346,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			
 			getFactorPropertiesDialog().pack();
 			updateAllSplitterLocations();
-			detailsTab.setFocusOnFirstField();
 		}
 		catch(Exception e)
 		{
@@ -526,7 +537,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			if (currentDiagramFactorRef.equals(diagramFactorToSelect.getRef()))
 				return;
 		
-			setCurrentDiagramFactor(getDiagram(), diagramFactorToSelect);
+			rebuildPanelForDiagramFactor(diagramFactorToSelect);
 			selectNewlyChosenDiagramFactor(diagramFactorToSelect.getRef());
 		}
 
