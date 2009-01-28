@@ -56,8 +56,6 @@ public class ResourcesHandler
 			File fileInMagicDirectory = new File(EAM.getHomeDirectory(), EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME + resourceFileName);
 			if(fileInMagicDirectory.exists())
 				return fileInMagicDirectory.toURI().toURL();
-
-			EAM.logVerbose("Magic file not found: " + fileInMagicDirectory.getAbsolutePath());
 		}
 		catch(Exception e)
 		{
