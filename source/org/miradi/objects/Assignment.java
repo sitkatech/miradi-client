@@ -131,7 +131,7 @@ public class Assignment extends BaseObject
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return "Error";
+			return EAM.text("Error");
 		}
 	}
 

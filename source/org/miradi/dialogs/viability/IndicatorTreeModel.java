@@ -69,7 +69,7 @@ public class IndicatorTreeModel extends GenericViabilityTreeModel
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return EAM.text("ERROR");
+			return EAM.text("Error");
 		}
 	}
 	
