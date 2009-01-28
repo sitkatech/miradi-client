@@ -365,11 +365,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		}
 		
 		int fiscalYear = startFiscalYear;
-		String yearString = Integer.toString(fiscalYear);
-		yearString = "FY" + yearString.substring(2);
+		String startYearString = Integer.toString(fiscalYear);
+		startYearString = "FY" + startYearString.substring(2);
 		
 		if(startFiscalYear+1 == endFiscalYear && startFiscalMonth == endFiscalMonth && startFiscalMonth == 1)
-			return yearString;
+			return startYearString;
 		
 		int startFiscalQuarter = (startFiscalMonth-1) / 3 + 1;
 		int endFiscalQuarter = (endFiscalMonth - 1) / 3;
@@ -388,11 +388,11 @@ public class ProjectCalendar implements CommandExecutedListener
 			return fullRange;
 		}
 		
-		String firstFiscalQuarter = "Q" + startFiscalQuarter + " " + yearString;
+		String firstFiscalQuarter = "Q" + startFiscalQuarter + " " + startYearString;
 		if (startFiscalQuarter == endFiscalQuarter)
 			return firstFiscalQuarter;
 		
-		return firstFiscalQuarter + " - Q" + endFiscalQuarter + " " + yearString;
+		return firstFiscalQuarter + " - Q" + endFiscalQuarter + " " + startYearString;
 	}
 
 	private Project project;
