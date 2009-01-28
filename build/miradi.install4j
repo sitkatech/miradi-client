@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.1.5" transformSequenceNumber="2">
-  <directoryPresets config="../../miradi/source/resources/images" />
+  <directoryPresets config="./installer/BuildFiles/install4j_messages_en.utf8" />
   <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" mediaDir="../../binaries-miradi/dist" mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="PRE-2.4" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
-      <principalLanguage id="en" customLocalizationFile="" />
+      <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
       <additionalLanguages>
         <language id="zh_CN" customLocalizationFile="" />
         <language id="es" customLocalizationFile="" />
@@ -14,9 +14,7 @@
       <envVar name="JAVA_HOME" />
       <envVar name="JDK_HOME" />
     </searchSequence>
-    <variables>
-      <variable name="dataDirectory" value="" />
-    </variables>
+    <variables />
   </application>
   <files>
     <filesets />
@@ -111,31 +109,7 @@
             <validation />
             <preActivation />
             <postActivation />
-            <actions>
-              <action name="" id="190" beanClass="com.install4j.runtime.beans.actions.control.SetVariableAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
-                <serializedBean>
-                  <java class="java.beans.XMLDecoder">
-                    <object class="com.install4j.runtime.beans.actions.control.SetVariableAction">
-                      <void property="failIfNull">
-                        <boolean>true</boolean>
-                      </void>
-                      <void property="script">
-                        <object class="com.install4j.api.beans.ScriptProperty">
-                          <void property="value">
-                            <string>return new File(System.getProperty("user.home"), "Miradi").getAbsolutePath();
-</string>
-                          </void>
-                        </object>
-                      </void>
-                      <void property="variableName">
-                        <string>${compiler:dataDirectory}</string>
-                      </void>
-                    </object>
-                  </java>
-                </serializedBean>
-                <condition />
-              </action>
-            </actions>
+            <actions />
             <formComponents />
           </screen>
           <screen name="" id="147" beanClass="com.install4j.runtime.beans.screens.CustomizableInfoScreen" enabled="true" commentSet="false" comment="" rollbackBarrier="false" backButton="2" finishScreen="false">
@@ -203,18 +177,6 @@ return false;
                 </serializedBean>
                 <condition />
               </action>
-              <action name="" id="8" beanClass="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
-                <serializedBean>
-                  <java class="java.beans.XMLDecoder">
-                    <object class="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction">
-                      <void property="programGroupName">
-                        <string>${compiler:sys.fullName}</string>
-                      </void>
-                    </object>
-                  </java>
-                </serializedBean>
-                <condition />
-              </action>
               <action name="" id="9" beanClass="com.install4j.runtime.beans.actions.desktop.RegisterAddRemoveAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
                 <serializedBean>
                   <java class="java.beans.XMLDecoder">
@@ -226,6 +188,18 @@ return false;
                       </void>
                       <void property="itemName">
                         <string>${compiler:sys.fullName} ${compiler:sys.version}</string>
+                      </void>
+                    </object>
+                  </java>
+                </serializedBean>
+                <condition />
+              </action>
+              <action name="" id="8" beanClass="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
+                <serializedBean>
+                  <java class="java.beans.XMLDecoder">
+                    <object class="com.install4j.runtime.beans.actions.desktop.CreateProgramGroupAction">
+                      <void property="programGroupName">
+                        <string>${compiler:sys.fullName}</string>
                       </void>
                     </object>
                   </java>
@@ -269,28 +243,6 @@ return false;
                       <void property="winIconFile">
                         <object class="com.install4j.api.beans.ExternalFile">
                           <string>../../miradi/source/resources/images/app.ico</string>
-                        </object>
-                      </void>
-                    </object>
-                  </java>
-                </serializedBean>
-                <condition />
-              </action>
-              <action name="" id="186" beanClass="com.install4j.runtime.beans.actions.files.InstallExternalZipFileAction" enabled="true" commentSet="false" comment="" rollbackBarrier="false" multiExec="false" failureStrategy="1" errorMessage="">
-                <serializedBean>
-                  <java class="java.beans.XMLDecoder">
-                    <object class="com.install4j.runtime.beans.actions.files.InstallExternalZipFileAction">
-                      <void property="destinationDirectory">
-                        <object class="java.io.File">
-                          <string>${compiler:dataDirectory}</string>
-                        </object>
-                      </void>
-                      <void property="overwriteMode">
-                        <object class="com.install4j.api.context.OverwriteMode" field="NEVER" />
-                      </void>
-                      <void property="zipFile">
-                        <object class="java.io.File">
-                          <string>MarineExample-2.4.0.mpz</string>
                         </object>
                       </void>
                     </object>
@@ -404,7 +356,7 @@ return false;
     </applications>
   </installerGui>
   <mediaSets>
-    <win32 name="Windows" id="22" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_07" manualJREEntry="false" bundleType="2" jreURL="http://artifacts.miradi.org/jres/windows-x86-1.6.0.tar.gz" jreFtpURL="" jreShared="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="true">
+    <win32 name="Windows" id="22" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" includedJRE="windows-x86-1.6.0_11" manualJREEntry="false" bundleType="2" jreURL="http://artifacts.miradi.org/jres/windows-x86-1.6.0.tar.gz" jreFtpURL="" jreShared="true" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="" runAsAdmin="true">
       <excludedLaunchers />
       <excludedComponents />
       <excludedBeans />
