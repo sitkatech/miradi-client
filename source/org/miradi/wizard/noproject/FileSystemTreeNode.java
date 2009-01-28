@@ -28,21 +28,18 @@ import java.util.Vector;
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.FileSystemProjectSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.LastProjectModifiedTimeHelper;
-import org.miradi.utils.SortableTable;
 
 public class FileSystemTreeNode extends TreeTableNode
 {
-	public FileSystemTreeNode(File file, String sortTagToUse, int sortDirectionToUse) throws Exception
+	public FileSystemTreeNode(File file) throws Exception
 	{
 		thisFile = file;
 		children = new Vector<FileSystemTreeNode>();
-		currentSortTag = sortTagToUse;
-		currentSortDirection = sortDirectionToUse;
-		
-		sortBy(sortTagToUse, sortDirectionToUse);
+
 		rebuild();
 	}
 	
@@ -83,7 +80,7 @@ public class FileSystemTreeNode extends TreeTableNode
 		throw new RuntimeException("Unknown column: " + column);
 	}
 
-	private String getLastModifiedDate()
+	public String getLastModifiedDate()
 	{
 		return LastProjectModifiedTimeHelper.readLastModifiedProjectTime(thisFile);
 	}
@@ -110,26 +107,26 @@ public class FileSystemTreeNode extends TreeTableNode
 			File file = files[i];
 			if(file.isDirectory() && !isCustomReportDirectory(file) && !isExternalResourceDirectory(file))
 			{
-				FileSystemTreeNode node = new FileSystemTreeNode(file, currentSortTag, currentSortDirection);				
+				FileSystemTreeNode node = new FileSystemTreeNode(file);				
 				children.add(node);
 			}
 		}
 	}
 
-	public void sortBy(String sortTagToUse, int sortDirectionToUse)
+	public void sortBy(FileSystemProjectSorter sorter)
 	{
-		sortChildren(sortTagToUse, sortDirectionToUse);	
+		sortChildren(sorter);	
 		for (int index = 0; index < children.size(); ++index)
 		{
 			FileSystemTreeNode childNode = children.get(index);
-			childNode.sortBy(sortTagToUse, sortDirectionToUse);
+			childNode.sortBy(sorter);
 		}
 	}
 	
-	private void sortChildren(String sortTagToUse, int sortDirectionToUse)
+	private void sortChildren(FileSystemProjectSorter sorter)
 	{
-		Collections.sort(children);
-		if (isReverseSort(sortDirectionToUse))
+		Collections.sort(children, sorter);
+		if (sorter.isReverseSort())
 			Collections.reverse(children);
 	}
 
@@ -159,56 +156,8 @@ public class FileSystemTreeNode extends TreeTableNode
 		return thisFile;
 	}
 
-	@Override
-	public int compareTo(Object rawOther)
-	{
-		if (!(rawOther instanceof FileSystemTreeNode))
-			return 0;
-		
-		FileSystemTreeNode other = (FileSystemTreeNode) rawOther;
-		if (!other.isProjectDirectory() && isProjectDirectory())
-				return 1;
-		
-		if (other.isProjectDirectory() && !isProjectDirectory())
-			return -1;
-		
-		return compareByTag(other);
-	}
-
-	private int compareByTag(FileSystemTreeNode other)
-	{
-		if (currentSortTag.equals(PROJECT_NAME_SORT_TAG))
-			return toString().compareToIgnoreCase(other.toString());
-		
-		return getLastModifiedDate().compareTo(other.getLastModifiedDate());
-	}
-	
-	public void reverseSortDirection()
-	{
-		if (isReverseSort(currentSortDirection))
-			currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
-		else
-			currentSortDirection = SortableTable.REVERSE_SORT_ORDER;
-	}
-	
-	private boolean isReverseSort(int sortDirectionToUse)
-	{
-		return sortDirectionToUse == SortableTable.REVERSE_SORT_ORDER; 
-	}
-	
-	public int getReverseSortDirection()
-	{
-		reverseSortDirection();
-		return currentSortDirection;
-	}
-	
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
-
 	
 	protected File thisFile;
 	private Vector<FileSystemTreeNode> children;
-	private int currentSortDirection;
-	private String currentSortTag;
-	
-	public static final String PROJECT_NAME_SORT_TAG = "Project";
 }
