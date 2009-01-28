@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 18:29-0500\n"
+"POT-Creation-Date: 2009-01-27 19:22-0500\n"
 "PO-Revision-Date: 2008-11-19 15:59-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -188,8 +188,14 @@ msgid "Viability Ratings"
 msgstr "Peringkat Kelangsungan "
 
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-msgid "ERROR"
-msgstr "KESALAHAN "
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:72
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:68
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
+#: miradi/source/org/miradi/objects/Assignment.java:134
+#: miradi/source/org/miradi/objects/FactorLink.java:219
+#, fuzzy
+msgid "Error"
+msgstr "(Kesalahan) "
 
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityTreePropertiesPanel.java:85
 msgid "Title|Target Viability Properties"
@@ -290,13 +296,18 @@ msgstr "Butir yang Ditandai"
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:40
-msgid "Threats"
-msgstr "Ancaman "
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:45
+msgid "&darr; Threats &darr; \\ &rarr; Targets &rarr;"
+msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:205
-msgid "Summary Target Rating"
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:203
+#, fuzzy
+msgid "Summary Target Ratings:"
 msgstr "Ringkasan Peringkat Target "
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:345
+msgid "<html><b>Overall<br>Project<br>Rating"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
 msgid "Summary Threat Rating"
@@ -611,7 +622,7 @@ msgstr "Rangkaian Hasil "
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:460
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:461
 msgid "Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
@@ -654,13 +665,10 @@ msgid "Title|Diagram Properties"
 msgstr "Sifat-sifat Diagram "
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:195
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
 #, fuzzy
 msgid "[Error]"
 msgstr "(Kesalahan) "
-
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
-msgid "[ERROR]"
-msgstr "[KESALAHAN] "
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:156
 msgid "Budget Total"
@@ -2466,7 +2474,7 @@ msgstr "Sangat Tinggi"
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 #: miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:59
 msgid "Project"
 msgstr "Proyek "
 
@@ -6463,7 +6471,7 @@ msgstr "Kesalahan mengganti nama proyek: "
 msgid "Project List"
 msgstr "Daftar Proyek "
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:59
 msgid "Last Modified"
 msgstr ""
 
@@ -32451,6 +32459,15 @@ msgid ""
 msgstr ""
 "Halofitik Zambezian___AT___Afrotropik___9___Savana dan Padang Rumput "
 "Banjir___AT0908"
+
+#~ msgid "ERROR"
+#~ msgstr "KESALAHAN "
+
+#~ msgid "[ERROR]"
+#~ msgstr "[KESALAHAN] "
+
+#~ msgid "Threats"
+#~ msgstr "Ancaman "
 
 #~ msgid "StrategyCoreSubpanel"
 #~ msgstr "Subpanel Inti Strategi "

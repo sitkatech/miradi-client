@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-26 18:29-0500\n"
+"POT-Creation-Date: 2009-01-27 19:22-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -186,7 +186,12 @@ msgid "Viability Ratings"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-msgid "ERROR"
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:72
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:68
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
+#: miradi/source/org/miradi/objects/Assignment.java:134
+#: miradi/source/org/miradi/objects/FactorLink.java:219
+msgid "Error"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityTreePropertiesPanel.java:85
@@ -286,12 +291,16 @@ msgstr ""
 msgid "Title|Tag Properties Panel"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:40
-msgid "Threats"
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:45
+msgid "&darr; Threats &darr; \\ &rarr; Targets &rarr;"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:205
-msgid "Summary Target Rating"
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:203
+msgid "Summary Target Ratings:"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:345
+msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
@@ -589,7 +598,7 @@ msgstr ""
 msgid "Viability Analysis Mode"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:460
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:461
 msgid "Factor Properties"
 msgstr ""
 
@@ -631,11 +640,8 @@ msgid "Title|Diagram Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:195
-msgid "[Error]"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
-msgid "[ERROR]"
+msgid "[Error]"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:156
@@ -2355,7 +2361,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 #: miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:59
 msgid "Project"
 msgstr ""
 
@@ -6014,7 +6020,7 @@ msgstr ""
 msgid "Project List"
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:57
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:59
 msgid "Last Modified"
 msgstr ""
 
