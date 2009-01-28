@@ -26,6 +26,11 @@ import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 {
+	public FileSystemProjectSorter()
+	{
+		this(PROJECT_NAME_SORT_TAG, SortableTable.DEFAULT_SORT_DIRECTION);
+	}
+	
 	public FileSystemProjectSorter(String sortTagToUse, int sortDiretionToUse)
 	{
 		currentSortTag = sortTagToUse;

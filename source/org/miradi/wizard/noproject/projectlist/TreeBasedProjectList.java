@@ -33,6 +33,7 @@ import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.FileSystemProjectSorter;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.wizard.noproject.FileSystemRootNode;
@@ -47,6 +48,8 @@ public class TreeBasedProjectList extends JPanel
 		
 		File home = EAM.getHomeDirectory();
 		rootNode = new FileSystemRootNode(home);
+		rootNode.sortBy(new FileSystemProjectSorter());
+		
 		model = new ProjectListTreeTableModel(rootNode);
 		ProjectListTreeTable table = new ProjectListTreeTable(mainWindow, model, handlerToUse);
 
