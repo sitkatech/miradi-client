@@ -24,6 +24,7 @@ import java.util.Vector;
 
 import javax.swing.JComponent;
 
+import org.miradi.dialogs.fieldComponents.PanelTable;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -32,7 +33,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.GenericDefaultTableModel;
 import org.miradi.utils.IgnoreCaseStringComparator;
-import org.miradi.utils.SimpleTableWithInheritedFunctionality;
 
 public class ObjectReadonlyObjectListField extends ObjectDataInputField
 {
@@ -41,19 +41,12 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		super(mainWindowToUse.getProject(), objectTypeToUse, idToUse, tagToUse);
 		model = new GenericDefaultTableModel();
 		model.setColumnCount(1);
-		table = new SimpleTableWithInheritedFunctionality(mainWindowToUse, model, uniqueIdentifier);
+		table = new PanelTable(mainWindowToUse, model);
 		setDefaultFieldBorder();
 		table.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		table.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
 	
-	@Override
-	public void dispose()
-	{
-		super.dispose();
-		table.dispose();
-	}
-
 	public String getText()
 	{
 		return null;
@@ -110,5 +103,5 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 	}
 	
 	private GenericDefaultTableModel model;
-	private SimpleTableWithInheritedFunctionality table;
+	private PanelTable table;
 }
