@@ -332,7 +332,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private void setFocusOnFactorChangeComboBox()
 	{
-		currentFactorChangerComboBox.grabFocus();
+		currentFactorChangerComboBox.requestFocusInWindow();
 	}
 
 	private void rebuildPanel()
