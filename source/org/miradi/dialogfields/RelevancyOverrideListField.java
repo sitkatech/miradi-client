@@ -34,7 +34,6 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		
-		tag = tagToUse;
 		refListEditor = new RefListComponent(questionToUse, 1, this);
 		refListScroller = new MiradiScrollPane(refListEditor);
 	}
@@ -66,5 +65,4 @@ public class RelevancyOverrideListField extends ObjectDataInputField implements 
 	
 	protected RefListComponent refListEditor;
 	private MiradiScrollPane refListScroller;
-	String tag;
 }
