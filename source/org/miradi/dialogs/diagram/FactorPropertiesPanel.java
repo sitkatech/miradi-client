@@ -327,7 +327,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		currentDiagramFactor = diagramFactor;
 
 		rebuildPanel();
-		setFocusOnFactorChangeComboBox();
 	}
 
 	private void setFocusOnFactorChangeComboBox()
@@ -538,6 +537,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				return;
 		
 			rebuildPanelForDiagramFactor(diagramFactorToSelect);
+			setFocusOnFactorChangeComboBox();
 			selectNewlyChosenDiagramFactor(diagramFactorToSelect.getRef());
 		}
 
