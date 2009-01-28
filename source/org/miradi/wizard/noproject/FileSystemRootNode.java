@@ -21,13 +21,11 @@ package org.miradi.wizard.noproject;
 
 import java.io.File;
 
-import org.miradi.utils.SortableTable;
-
 public class FileSystemRootNode extends FileSystemTreeNode
 {
 	public FileSystemRootNode(File file) throws Exception
 	{
-		super(file, PROJECT_NAME_SORT_TAG, SortableTable.DEFAULT_SORT_DIRECTION);
+		super(file);
 	}
 	
 	public void setFile(File file)

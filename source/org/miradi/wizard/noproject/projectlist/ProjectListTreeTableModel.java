@@ -21,6 +21,8 @@ package org.miradi.wizard.noproject.projectlist;
 
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.FileSystemProjectSorter;
+import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ProjectListTreeTableModel extends GenericTreeTableModel
@@ -28,6 +30,8 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	public ProjectListTreeTableModel(FileSystemTreeNode root)
 	{
 		super(root);
+		
+		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
 	}
 
 	public String getColumnTag(int column)
@@ -49,10 +53,27 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		FileSystemTreeNode fileSystemNode = (FileSystemTreeNode) getRootNode();
 		String columnTag = getColumnTag(modelColumn);
-		fileSystemNode.sortBy(columnTag, fileSystemNode.getReverseSortDirection());
+		FileSystemProjectSorter sorter = new FileSystemProjectSorter(columnTag, getReverseSortDirection());
+		fileSystemNode.sortBy(sorter);
 		
 		reloadNodesWithouRebuildingNodes();
 	}
 	
-	String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Modified"), };
+	public void reverseSortDirection()
+	{
+		if (FileSystemProjectSorter.isReverseSort(currentSortDirection))
+			currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		else
+			currentSortDirection = SortableTable.REVERSE_SORT_ORDER;
+	}
+	
+	public int getReverseSortDirection()
+	{
+		reverseSortDirection();
+		return currentSortDirection;
+	}
+		
+	private String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Modified"), };
+	
+	private int currentSortDirection;
 }
