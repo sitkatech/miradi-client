@@ -40,8 +40,9 @@ public class FileSystemTreeNode extends TreeTableNode
 		thisFile = file;
 		children = new Vector<FileSystemTreeNode>();
 		currentSortTag = sortTagToUse;
-		sortDirection = sortDirectionToUse;
+		currentSortDirection = sortDirectionToUse;
 		
+		sortBy(sortTagToUse, sortDirectionToUse);
 		rebuild();
 	}
 	
@@ -109,14 +110,22 @@ public class FileSystemTreeNode extends TreeTableNode
 			File file = files[i];
 			if(file.isDirectory() && !isCustomReportDirectory(file) && !isExternalResourceDirectory(file))
 			{
-				FileSystemTreeNode node = new FileSystemTreeNode(file, currentSortTag, sortDirection);				
+				FileSystemTreeNode node = new FileSystemTreeNode(file, currentSortTag, currentSortDirection);				
 				children.add(node);
 			}
 		}
-		
-		sortChildren(currentSortTag, sortDirection);
 	}
 
+	public void sortBy(String sortTagToUse, int sortDirectionToUse)
+	{
+		sortChildren(sortTagToUse, sortDirectionToUse);	
+		for (int index = 0; index < children.size(); ++index)
+		{
+			FileSystemTreeNode childNode = children.get(index);
+			childNode.sortBy(sortTagToUse, sortDirectionToUse);
+		}
+	}
+	
 	private void sortChildren(String sortTagToUse, int sortDirectionToUse)
 	{
 		Collections.sort(children);
@@ -176,10 +185,10 @@ public class FileSystemTreeNode extends TreeTableNode
 	
 	public void reverseSortDirection()
 	{
-		if (isReverseSort(sortDirection))
-			sortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		if (isReverseSort(currentSortDirection))
+			currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
 		else
-			sortDirection = SortableTable.REVERSE_SORT_ORDER;
+			currentSortDirection = SortableTable.REVERSE_SORT_ORDER;
 	}
 	
 	private boolean isReverseSort(int sortDirectionToUse)
@@ -187,9 +196,10 @@ public class FileSystemTreeNode extends TreeTableNode
 		return sortDirectionToUse == SortableTable.REVERSE_SORT_ORDER; 
 	}
 	
-	public void setSortTag(String sortTagToUse)
+	public int getReverseSortDirection()
 	{
-		currentSortTag = sortTagToUse;
+		reverseSortDirection();
+		return currentSortDirection;
 	}
 	
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
@@ -197,7 +207,7 @@ public class FileSystemTreeNode extends TreeTableNode
 	
 	protected File thisFile;
 	private Vector<FileSystemTreeNode> children;
-	private int sortDirection;
+	private int currentSortDirection;
 	private String currentSortTag;
 	
 	public static final String PROJECT_NAME_SORT_TAG = "Project";

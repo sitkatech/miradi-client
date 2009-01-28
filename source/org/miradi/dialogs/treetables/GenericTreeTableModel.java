@@ -84,6 +84,11 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 	public void rebuildEntireTree()
 	{
 		rebuildNode();
+		reloadNodesWithouRebuildingNodes();
+	}
+
+	public void reloadNodesWithouRebuildingNodes()
+	{
 		fireTreeStructureChanged(getRoot(), new Object[] {getPathToRoot()}, null, null);
 	}
 	
