@@ -104,6 +104,9 @@ public class TestProjectCalendar extends TestCaseEnhanced
 		verifyFiscalQuarterName("Q3 FY06", "2006-04-01", "2006-06-30", 10);
 		verifyFiscalQuarterName("Q4 FY06", "2006-07-01", "2006-09-30", 10);
 
+		verifyFiscalQuarterName("Q1 FY06 - Q3 FY06", "2005-07-01", "2006-03-31", 7);
+		verifyFiscalQuarterName("Q4 FY06 - Q1 FY07", "2006-04-01", "2006-09-30", 7);
+
 		verifyFiscalQuarterName("2006", "2006-01-01", "2006-12-31", 10);
 	}
 
