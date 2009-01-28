@@ -40,12 +40,21 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 	public int compare(FileSystemTreeNode node1, FileSystemTreeNode node2)
 	{
 		if (!node1.isProjectDirectory() && node2.isProjectDirectory())
-				return 1;
+			return 1;
 		
 		if (node1.isProjectDirectory() && !node2.isProjectDirectory())
 			return -1;
 		
-		return compareByTag(node1, node2);
+		int compareByTag = compareByTag(node1, node2);
+		if (!isReverseSort())
+			return compareByTag;
+		
+		return getNegatedValue(compareByTag);
+	}
+
+	private int getNegatedValue(int compareByTag)
+	{
+		return - compareByTag;
 	}
 
 	private int compareByTag(FileSystemTreeNode node1, FileSystemTreeNode node2)

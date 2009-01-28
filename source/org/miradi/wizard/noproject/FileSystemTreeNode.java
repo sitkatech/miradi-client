@@ -126,8 +126,6 @@ public class FileSystemTreeNode extends TreeTableNode
 	private void sortChildren(FileSystemProjectSorter sorter)
 	{
 		Collections.sort(children, sorter);
-		if (sorter.isReverseSort())
-			Collections.reverse(children);
 	}
 
 	private boolean isCustomReportDirectory(File file)
