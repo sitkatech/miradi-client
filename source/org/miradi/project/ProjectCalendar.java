@@ -371,8 +371,14 @@ public class ProjectCalendar implements CommandExecutedListener
 		if(startFiscalYear+1 == endFiscalYear && startFiscalMonth == endFiscalMonth && startFiscalMonth == 1)
 			return yearString;
 		
-		int fiscalQuarter = (startFiscalMonth-1) / 3 + 1;
-		if(fiscalQuarter == 4)
+		int startFiscalQuarter = (startFiscalMonth-1) / 3 + 1;
+		int endFiscalQuarter = (endFiscalMonth - 1) / 3;
+		if (endFiscalQuarter == 0)
+		{
+			endFiscalQuarter = 4;
+		}
+		
+		if(startFiscalQuarter == 4)
 		{
 			if(startFiscalYear+1 != endFiscalYear)
 				return fullRange;
@@ -382,7 +388,11 @@ public class ProjectCalendar implements CommandExecutedListener
 			return fullRange;
 		}
 		
-		return "Q" + fiscalQuarter + " " + yearString;
+		String firstFiscalQuarter = "Q" + startFiscalQuarter + " " + yearString;
+		if (startFiscalQuarter == endFiscalQuarter)
+			return firstFiscalQuarter;
+		
+		return firstFiscalQuarter + " - Q" + endFiscalQuarter + " " + yearString;
 	}
 
 	private Project project;
