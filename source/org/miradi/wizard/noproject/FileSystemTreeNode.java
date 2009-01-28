@@ -35,12 +35,12 @@ import org.miradi.utils.SortableTable;
 
 public class FileSystemTreeNode extends TreeTableNode
 {
-	public FileSystemTreeNode(File file) throws Exception
+	public FileSystemTreeNode(File file, String sortTagToUse, int sortDirectionToUse) throws Exception
 	{
 		thisFile = file;
 		children = new Vector<FileSystemTreeNode>();
-		currentSortTag = PROJECT_NAME_SORT_TAG;
-		sortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		currentSortTag = sortTagToUse;
+		sortDirection = sortDirectionToUse;
 		
 		rebuild();
 	}
@@ -109,16 +109,18 @@ public class FileSystemTreeNode extends TreeTableNode
 			File file = files[i];
 			if(file.isDirectory() && !isCustomReportDirectory(file) && !isExternalResourceDirectory(file))
 			{
-				FileSystemTreeNode node = new FileSystemTreeNode(file);
-				node.setSortTag(currentSortTag);
-				node.reverseSortDirection();
-				
+				FileSystemTreeNode node = new FileSystemTreeNode(file, currentSortTag, sortDirection);				
 				children.add(node);
 			}
 		}
 		
+		sortChildren(currentSortTag, sortDirection);
+	}
+
+	private void sortChildren(String sortTagToUse, int sortDirectionToUse)
+	{
 		Collections.sort(children);
-		if (isReverseSort(sortDirection))
+		if (isReverseSort(sortDirectionToUse))
 			Collections.reverse(children);
 	}
 
