@@ -198,7 +198,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		for (int row = 0; row < mainModel.getRowCount(); ++row)
 		{
 			BaseObject baseObjectForRow = mainModel.getBaseObjectForRow(row);
-			if (baseObjectForRow.getRef().equals(affectedObjectRef))
+			if (baseObjectForRow != null && baseObjectForRow.getRef().equals(affectedObjectRef))
 				return true;
 		}
 		
