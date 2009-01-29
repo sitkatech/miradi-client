@@ -22,6 +22,7 @@ package org.miradi.wizard.noproject;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Calendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -76,7 +77,15 @@ public class MainNewsPanel extends DisposablePanel
 			cardLayout.show(this, NEW_NEWS_PANEL_DESCRIPTION);
 
 		getAppPreferences().setNewsText(newsHtml);
-		getAppPreferences().setNewsDate(new MultiCalendar().toIsoDateString());
+		
+		Calendar calendar = Calendar.getInstance();
+		getAppPreferences().setNewsDate(MultiCalendar.createFromGregorianYearMonthDay(calendar.get(Calendar.YEAR), getGregorgianMonth(calendar), calendar.get(Calendar.DAY_OF_MONTH)).toIsoDateString());
+	}
+
+	private int getGregorgianMonth(Calendar calendar)
+	{
+		int month = calendar.get(Calendar.MONTH);
+		return (month + 1);
 	}
 	
 	private void showNewNewsPanel()
