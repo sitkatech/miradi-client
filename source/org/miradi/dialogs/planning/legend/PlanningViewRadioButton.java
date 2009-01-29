@@ -55,6 +55,11 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 			EAM.errorDialog(EAM.text("Error Occurred While Trying to Save Settings"));
 		}	
 	}
+	
+	public void mouseClicked()
+	{
+		doClick();
+	}
 
 	private void saveRadioSelection() throws Exception
 	{
