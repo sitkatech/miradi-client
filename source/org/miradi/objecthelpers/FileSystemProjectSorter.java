@@ -71,7 +71,7 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 		return node1.getLastModifiedDate().compareTo(node2.getLastModifiedDate());
 	}
 
-	public boolean isReverseSort()
+	private boolean isReverseSort()
 	{
 		return isReverseSort(currentSortDirection);
 	}
