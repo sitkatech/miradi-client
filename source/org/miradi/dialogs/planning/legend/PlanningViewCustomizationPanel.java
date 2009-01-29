@@ -20,13 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.legend;
 
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Hashtable;
 
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -84,21 +86,21 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
 		radioGroup.addRadioButtonToGroup(strategicRadioButton);
-		PanelButton strategicPlanButton = new PanelButton(EAM.text("Strategic Plan"));
-		strategicPlanButton.addActionListener(strategicRadioButton);
-		addRadioButtonWithLeftComponent(strategicRadioButton, strategicPlanButton);
+		PanelTitleLabel strategicPlanLabel = new PanelTitleLabel(EAM.text("Strategic Plan"));
+		strategicPlanLabel.addMouseListener(new LabelToRadioButtonMouseClickedDelegator(strategicRadioButton));
+		addRadioButtonWithLeftComponent(strategicRadioButton, strategicPlanLabel);
 		
 		PlanningViewMonitoringRadioButton monitoringRadioButton = new PlanningViewMonitoringRadioButton(project);
 		radioGroup.addRadioButtonToGroup(monitoringRadioButton);
-		PanelButton monitoringPlanButton = new PanelButton(EAM.text("Monitoring Plan"));
-		monitoringPlanButton.addActionListener(monitoringRadioButton);
-		addRadioButtonWithLeftComponent(monitoringRadioButton, monitoringPlanButton);
+		PanelTitleLabel monitoringPlanLabel = new PanelTitleLabel(EAM.text("Monitoring Plan"));
+		monitoringPlanLabel.addMouseListener(new LabelToRadioButtonMouseClickedDelegator(monitoringRadioButton));
+		addRadioButtonWithLeftComponent(monitoringRadioButton, monitoringPlanLabel);
 		
 		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
 		radioGroup.addRadioButtonToGroup(workPlanRadioButton);
-		PanelButton workPlanButton = new PanelButton(EAM.text("Work Plan (BETA)"));
-		workPlanButton.addActionListener(workPlanRadioButton);
-		addRadioButtonWithLeftComponent(workPlanRadioButton, workPlanButton);
+		PanelTitleLabel workPlanLabel = new PanelTitleLabel(EAM.text("Work Plan (BETA)"));
+		workPlanLabel.addMouseListener(new LabelToRadioButtonMouseClickedDelegator(workPlanRadioButton));
+		addRadioButtonWithLeftComponent(workPlanRadioButton, workPlanLabel);
 		
 		
 		singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
@@ -244,6 +246,24 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		PlanningViewConfiguration configuration = (PlanningViewConfiguration) project.findObject(refToSelect);
 		ChoiceItem choiceToSelect = new ChoiceItem(configuration.getRef().toString(), configuration.getLabel());
 		comboBox.setSelectedItemWithoutFiring(choiceToSelect);
+	}
+	
+	static class LabelToRadioButtonMouseClickedDelegator extends MouseAdapter
+	{
+		public LabelToRadioButtonMouseClickedDelegator(PlanningViewRadioButton radioButtonToUse)
+		{
+			radioButton = radioButtonToUse;
+		}
+		
+		@Override
+		public void mouseClicked(MouseEvent e)
+		{
+			super.mouseClicked(e);
+			
+			radioButton.mouseClicked();
+		}
+		
+		private PlanningViewRadioButton radioButton;
 	}
 
 	private Project project;
