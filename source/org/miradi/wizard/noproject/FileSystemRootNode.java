@@ -21,11 +21,13 @@ package org.miradi.wizard.noproject;
 
 import java.io.File;
 
+import org.miradi.objecthelpers.FileSystemProjectSorter;
+
 public class FileSystemRootNode extends FileSystemTreeNode
 {
-	public FileSystemRootNode(File file) throws Exception
+	public FileSystemRootNode(File file, FileSystemProjectSorter nodeSorterToUse) throws Exception
 	{
-		super(file);
+		super(file, nodeSorterToUse);
 	}
 	
 	public void setFile(File file)

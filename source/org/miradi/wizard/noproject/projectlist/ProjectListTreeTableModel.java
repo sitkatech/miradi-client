@@ -19,21 +19,33 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard.noproject.projectlist;
 
+import java.io.File;
+
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 import org.miradi.utils.SortableTable;
+import org.miradi.wizard.noproject.FileSystemRootNode;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ProjectListTreeTableModel extends GenericTreeTableModel
 {
-	public ProjectListTreeTableModel(FileSystemTreeNode root)
+	public static ProjectListTreeTableModel createProjectListTreeTableModel(File homeDirectory) throws Exception
+	{
+		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
+		FileSystemRootNode rootNode = new FileSystemRootNode(homeDirectory, nodeSorter);
+			
+		return new ProjectListTreeTableModel(rootNode, nodeSorter);
+	}
+	
+	private ProjectListTreeTableModel(FileSystemTreeNode root, FileSystemProjectSorter nodeSorterToUse)
 	{
 		super(root);
 		
 		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
-		nodeSorter = new FileSystemProjectSorter();
-		root.recursivelySortBy(nodeSorter);
+		nodeSorter = nodeSorterToUse;
+		
+		root.recursivelySortBy();
 	}
 
 	public String getColumnTag(int column)
@@ -57,7 +69,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		String columnTag = getColumnTag(modelColumn);
 		nodeSorter.setColumnSortTag(columnTag);
 		nodeSorter.setSortDirection(getReverseSortDirection());
-		fileSystemNode.recursivelySortBy(nodeSorter);
+		fileSystemNode.recursivelySortBy();
 		
 		reloadNodesWithouRebuildingNodes();
 	}

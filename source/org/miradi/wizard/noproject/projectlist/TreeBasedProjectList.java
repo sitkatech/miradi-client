@@ -46,9 +46,8 @@ public class TreeBasedProjectList extends JPanel
 		actions = new Vector<ProjectListAction>();
 		
 		File home = EAM.getHomeDirectory();
-		rootNode = new FileSystemRootNode(home);
 		
-		model = new ProjectListTreeTableModel(rootNode);
+		model = ProjectListTreeTableModel.createProjectListTreeTableModel(home);
 		ProjectListTreeTable table = new ProjectListTreeTable(mainWindow, model, handlerToUse);
 
 		actions.add(new ProjectListOpenAction(table));
@@ -79,7 +78,7 @@ public class TreeBasedProjectList extends JPanel
 	{
 		try
 		{
-			rootNode.setFile(EAM.getHomeDirectory());
+			((FileSystemRootNode) model.getRoot()).setFile(EAM.getHomeDirectory());
 			model.rebuildEntireTree();
 		}
 		catch(Exception e)
@@ -102,6 +101,5 @@ public class TreeBasedProjectList extends JPanel
 	}
 
 	private ProjectListTreeTableModel model;
-	private FileSystemRootNode rootNode;
 	private Vector<ProjectListAction> actions;
 }
