@@ -1133,12 +1133,17 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void createTaggedThreatChains() throws Exception
 	{
-		ORef highOrAboveRankedThreatsTag = createLabeledTag(EAM.text("High/Very-High Threat Chains"));
+		ORef highOrAboveRankedThreatsTag = createLabeledTag(createHighVeryHighLabel());
 		ORef mediumOrBelowRankedThreatsTag = createLabeledTag(EAM.text("Low/Medium/Unrated Threat Chains"));
 		
 		CodeList highOrAboveRatingCodes = createHighAndAboveThreatRatingCodeList();
 		addThreatChainsToTag(highOrAboveRatingCodes, highOrAboveRankedThreatsTag, mediumOrBelowRankedThreatsTag);
 		addHighOrAboveTagToConceptualModel(new ORefList(highOrAboveRankedThreatsTag));
+	}
+
+	public static String createHighVeryHighLabel()
+	{
+		return EAM.text("High/Very-High Threat Chains");
 	}
 
 	private void addThreatChainsToTag(CodeList highOrAboveCodes, ORef highOrAboveRankedThreatsTag, ORef mediumOrBelowRankedThreatsTag) throws Exception

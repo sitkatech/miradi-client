@@ -40,6 +40,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.DiagramAliasPaster;
+import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 public class ConceptualModelByTargetSplitter
 {
@@ -96,27 +97,40 @@ public class ConceptualModelByTargetSplitter
 
 	private void updateDiagramTags(ORef newConceptualModelRef) throws Exception
 	{
-		ORefList onlyTagsWithFactorsInDiagram = getTaggedObjectSetsWithFactorsThatAppearInDiagram(newConceptualModelRef);
-		String tagRefsAsString = onlyTagsWithFactorsInDiagram.toString();
-		CommandSetObjectData setTags = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefsAsString);
-		getProject().executeCommand(setTags);
+		ConceptualModelDiagram newConceptualModel = ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
+		TaggedObjectSet taggedObjectSet = findHighVeryHighTaggedObjectSet(newConceptualModel);
+		if (diagramContainsAndObjectsInTaggedSet(newConceptualModel, taggedObjectSet))
+		{
+			ORefList singleItemListWithHighVeryHighTaggedObjectSet = new ORefList(taggedObjectSet);
+			String tagRefsAsString = singleItemListWithHighVeryHighTaggedObjectSet.toString();
+			CommandSetObjectData setTags = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefsAsString);
+			getProject().executeCommand(setTags);
+		}
 	}
 
-	private ORefList getTaggedObjectSetsWithFactorsThatAppearInDiagram(ORef newConceptualModelRef)
+	private TaggedObjectSet findHighVeryHighTaggedObjectSet(ConceptualModelDiagram newConceptualModel)
 	{
-		ORefList selectedTaggedObjectSetRefs = getDiagramObjectBeingSplit().getSelectedTaggedObjectSetRefs();
-		ORefList onlyTagsWithFactors = new ORefList();
-		ConceptualModelDiagram newConceptualModel = ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
+		ORefList selectedTaggedObjectSetRefs = newConceptualModel.getSelectedTaggedObjectSetRefs();
 		for (int index = 0; index < selectedTaggedObjectSetRefs.size(); ++index)
 		{
 			ORef taggedObjectSetRef = selectedTaggedObjectSetRefs.get(index);
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
-			ORefList taggedObjectRefs = taggedObjectSet.getTaggedObjectRefs();
-			ORefList wrappedFactorRefs = new ORefList(newConceptualModel.getAllWrappedFactors());
-			if (taggedObjectRefs.containsAnyOf(wrappedFactorRefs))
-				onlyTagsWithFactors.add(taggedObjectSetRef);
+			if (taggedObjectSet.getLabel().equals(ConProXmlImporter.createHighVeryHighLabel()))
+					return taggedObjectSet;	
 		}
-		return onlyTagsWithFactors;
+		
+		return null;
+	}
+
+	private boolean diagramContainsAndObjectsInTaggedSet(ConceptualModelDiagram newConceptualModel, TaggedObjectSet highVeryHighRatingTaggedObjectSet)
+	{
+		if (highVeryHighRatingTaggedObjectSet == null)
+			return false;
+		
+		ORefList taggedObjectRefs = highVeryHighRatingTaggedObjectSet.getTaggedObjectRefs();
+		ORefList factorRefs = newConceptualModel.getAllWrappedFactorRefSet().toRefList();
+		
+		return factorRefs.containsAnyOf(taggedObjectRefs);
 	}
 
 	private void setDiagramObjectLabel(ORef newConceptualModelRef, String targetNameUsedAsDiagramName) throws CommandFailedException
