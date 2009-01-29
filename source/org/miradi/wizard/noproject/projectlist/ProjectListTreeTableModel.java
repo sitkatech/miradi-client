@@ -32,7 +32,8 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		super(root);
 		
 		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
-		root.sortBy(new FileSystemProjectSorter());
+		nodeSorter = new FileSystemProjectSorter();
+		root.sortBy(nodeSorter);
 	}
 
 	public String getColumnTag(int column)
@@ -54,8 +55,9 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		FileSystemTreeNode fileSystemNode = (FileSystemTreeNode) getRootNode();
 		String columnTag = getColumnTag(modelColumn);
-		FileSystemProjectSorter sorter = new FileSystemProjectSorter(columnTag, getReverseSortDirection());
-		fileSystemNode.sortBy(sorter);
+		nodeSorter.setColumnSortTag(columnTag);
+		nodeSorter.setSortDirection(getReverseSortDirection());
+		fileSystemNode.sortBy(nodeSorter);
 		
 		reloadNodesWithouRebuildingNodes();
 	}
@@ -77,4 +79,5 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	private String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Modified"), };
 	
 	private int currentSortDirection;
+	private FileSystemProjectSorter nodeSorter;
 }
