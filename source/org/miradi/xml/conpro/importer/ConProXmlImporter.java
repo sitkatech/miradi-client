@@ -1133,7 +1133,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void createTaggedThreatChains() throws Exception
 	{
-		ORef highOrAboveRankedThreatsTag = createLabeledTag(createHighVeryHighLabel());
+		highOrAboveRankedThreatsTag = createLabeledTag(EAM.text("High/Very-High Threat Chains"));
 		ORef mediumOrBelowRankedThreatsTag = createLabeledTag(EAM.text("Low/Medium/Unrated Threat Chains"));
 		
 		CodeList highOrAboveRatingCodes = createHighAndAboveThreatRatingCodeList();
@@ -1141,12 +1141,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		addHighOrAboveTagToConceptualModel(new ORefList(highOrAboveRankedThreatsTag));
 	}
 
-	public static String createHighVeryHighLabel()
-	{
-		return EAM.text("High/Very-High Threat Chains");
-	}
-
-	private void addThreatChainsToTag(CodeList highOrAboveCodes, ORef highOrAboveRankedThreatsTag, ORef mediumOrBelowRankedThreatsTag) throws Exception
+	private void addThreatChainsToTag(CodeList highOrAboveCodes, ORef highOrAboveRankedThreatsTagToUse, ORef mediumOrBelowRankedThreatsTag) throws Exception
 	{
 		ORefSet mediumOrBelowRankedThreatRefs = new ORefSet();
 		ORefSet highOrAboveRankedThreatRefs = new ORefSet();
@@ -1168,7 +1163,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		highOrAboveRankedThreatRefs.addAll(allLeftOverStrategyTargetRefs);
 		mediumOrBelowRankedThreatRefs.addAll(allLeftOverStrategyTargetRefs);
 		
-		tagFactors(highOrAboveRankedThreatsTag, highOrAboveRankedThreatRefs);
+		tagFactors(highOrAboveRankedThreatsTagToUse, highOrAboveRankedThreatRefs);
 		tagFactors(mediumOrBelowRankedThreatsTag, mediumOrBelowRankedThreatRefs);
 	}
 
@@ -1227,6 +1222,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		return indicatorHolderRef;
 	}
+	
+	public ORef getHighOrAboveRankedThreatsTag()
+	{
+		return highOrAboveRankedThreatsTag;
+	}
 
 	private Project project;
 	private XPath xPath;
@@ -1235,6 +1235,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	private HashMap<ORef, ORef> wrappedToDiagramMap;
 	private ORef objectiveHolderRef;
 	private ORef indicatorHolderRef;
+	private ORef highOrAboveRankedThreatsTag;
 	
 	public static final String PREFIX = "cp:";
 	

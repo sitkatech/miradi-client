@@ -144,8 +144,10 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
-			new ConProXmlImporter(projectToFill).importConProProject(projectAsInputStream);
-			splitMainDiagramByTargets(projectToFill);
+			ConProXmlImporter conProXmlImporter = new ConProXmlImporter(projectToFill);
+			conProXmlImporter.importConProProject(projectAsInputStream);
+			ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
+			splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
 		}
 		finally
 		{
@@ -159,12 +161,12 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
 	}
 
-	private void splitMainDiagramByTargets(Project filledProject) throws Exception
+	private void splitMainDiagramByTargets(Project filledProject, ORef highOrAboveRankedThreatsTag) throws Exception
 	{
 		ORefList conceptualModelRefs = filledProject.getConceptualModelDiagramPool().getRefList();
 		ORef conceptualModelRef = conceptualModelRefs.getRefForType(ConceptualModelDiagram.getObjectType());
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
-		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel);
+		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel, highOrAboveRankedThreatsTag);
 		
 		selectFirstDiagramInAlphabeticallySortedList(filledProject);
 	}
