@@ -106,7 +106,7 @@ public class FileSystemTreeNode extends TreeTableNode
 		for(int i = 0; i < files.length; ++i)
 		{
 			File file = files[i];
-			if(file.isDirectory() && !isExternalReportsDirectory(file) && !isCustomReportsDirectory(file) && !isExternalResourceDirectory(file))
+			if(isValidDir(file))
 			{
 				FileSystemTreeNode node = new FileSystemTreeNode(file, sorter);				
 				children.add(node);
@@ -114,6 +114,26 @@ public class FileSystemTreeNode extends TreeTableNode
 		}
 		
 		sortChildren();
+	}
+
+	private boolean isValidDir(File file)
+	{
+		if (!file.isDirectory())
+			return false;
+	
+		if (ProjectServer.isExistingProject(file))
+			return true;
+		
+		if (isExternalReportsDirectory(file))
+			return false;
+		
+		if (isCustomReportsDirectory(file))
+			return false;
+		
+		if (isExternalResourceDirectory(file))
+			return false;
+		
+		return true;
 	}
 
 	public void recursivelySort()
@@ -132,7 +152,7 @@ public class FileSystemTreeNode extends TreeTableNode
 	}
 	
 	private boolean isExternalReportsDirectory(File file)
-	{
+	{	
 		return file.getName().equals(OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME);
 	}
 
