@@ -106,7 +106,7 @@ public class FileSystemTreeNode extends TreeTableNode
 		for(int i = 0; i < files.length; ++i)
 		{
 			File file = files[i];
-			if(isValidDir(file))
+			if(isVisibleDirectoryOrProject(file))
 			{
 				FileSystemTreeNode node = new FileSystemTreeNode(file, sorter);				
 				children.add(node);
@@ -116,7 +116,7 @@ public class FileSystemTreeNode extends TreeTableNode
 		sortChildren();
 	}
 
-	private boolean isValidDir(File file)
+	private boolean isVisibleDirectoryOrProject(File file)
 	{
 		if (!file.isDirectory())
 			return false;
