@@ -29,7 +29,20 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 	public FileSystemProjectSorter()
 	{
 		currentSortTag = PROJECT_NAME_SORT_TAG;
-		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		resetColumnSortDirectionToDefault();
+	}
+	
+	public void resortBy(String columnTag)
+	{
+		if (columnTag.equals(currentSortTag))
+		{
+			reverseSortDirection();
+		}
+		else
+		{
+			setColumnSortTag(columnTag);
+			resetColumnSortDirectionToDefault();
+		}
 	}
 	
 	public int compare(FileSystemTreeNode node1, FileSystemTreeNode node2)
@@ -65,23 +78,28 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 		
 		return node1.getLastModifiedDate().compareTo(node2.getLastModifiedDate());
 	}
-
+	
 	private boolean isReverseSort()
 	{
 		return isReverseSort(currentSortDirection);
 	}
 	
-	public void setColumnSortTag(String columnSortTagToUse)
+	private void setColumnSortTag(String columnSortTagToUse)
 	{
 		currentSortTag = columnSortTagToUse;
 	}
 
-	public void reverseSortDirection()
+	private void reverseSortDirection()
 	{
 		if (isReverseSort(currentSortDirection))
-			currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+			resetColumnSortDirectionToDefault();
 		else
 			currentSortDirection = SortableTable.REVERSE_SORT_ORDER;
+	}
+
+	private void resetColumnSortDirectionToDefault()
+	{
+		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
 	}
 	
 	private boolean isReverseSort(int sortDirectionToUse)
@@ -89,7 +107,7 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 		return sortDirectionToUse == SortableTable.REVERSE_SORT_ORDER;
 	}
 				
-	public static final String PROJECT_NAME_SORT_TAG = "Project";
+	private static final String PROJECT_NAME_SORT_TAG = "Project";
 	
 	private String currentSortTag;
 	private int currentSortDirection;

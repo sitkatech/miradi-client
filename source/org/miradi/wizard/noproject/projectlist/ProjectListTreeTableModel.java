@@ -65,8 +65,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		FileSystemTreeNode fileSystemNode = (FileSystemTreeNode) getRootNode();
 		String columnTag = getColumnTag(modelColumn);
-		nodeSorter.setColumnSortTag(columnTag);
-		nodeSorter.reverseSortDirection();
+		nodeSorter.resortBy(columnTag);
 		fileSystemNode.recursivelySort();
 		
 		reloadNodesWithouRebuildingNodes();
