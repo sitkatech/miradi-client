@@ -90,12 +90,12 @@ public class ConceptualModelByTargetSplitter
 		
 		ORef newConceptualModelRef = createPage.getObjectRef();
 		setDiagramObjectLabel(newConceptualModelRef, targetNameUsedAsDiagramName);
-		updateDiagramTags(newConceptualModelRef);
+		applyTagIfPossible(newConceptualModelRef);
 		
 		return ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
 	}
 
-	private void updateDiagramTags(ORef newConceptualModelRef) throws Exception
+	private void applyTagIfPossible(ORef newConceptualModelRef) throws Exception
 	{
 		ConceptualModelDiagram newConceptualModel = ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
 		TaggedObjectSet taggedObjectSet = findHighVeryHighTaggedObjectSet(newConceptualModel);
