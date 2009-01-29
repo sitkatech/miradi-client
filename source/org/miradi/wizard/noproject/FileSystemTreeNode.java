@@ -113,13 +113,13 @@ public class FileSystemTreeNode extends TreeTableNode
 		}
 	}
 
-	public void sortBy(FileSystemProjectSorter sorter)
+	public void recursivelySortBy(FileSystemProjectSorter sorter)
 	{
 		sortChildren(sorter);	
 		for (int index = 0; index < children.size(); ++index)
 		{
 			FileSystemTreeNode childNode = children.get(index);
-			childNode.sortBy(sorter);
+			childNode.recursivelySortBy(sorter);
 		}
 	}
 	
