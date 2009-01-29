@@ -71,21 +71,24 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 		return isReverseSort(currentSortDirection);
 	}
 	
-	public static boolean isReverseSort(int sortDirectionToUse)
-	{
-		return sortDirectionToUse == SortableTable.REVERSE_SORT_ORDER;
-	}
-	
 	public void setColumnSortTag(String columnSortTagToUse)
 	{
 		currentSortTag = columnSortTagToUse;
 	}
 
-	public void setSortDirection(int sortDirectionToUse)
+	public void reverseSortDirection()
 	{
-		currentSortDirection = sortDirectionToUse;
+		if (isReverseSort(currentSortDirection))
+			currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		else
+			currentSortDirection = SortableTable.REVERSE_SORT_ORDER;
 	}
-		
+	
+	private boolean isReverseSort(int sortDirectionToUse)
+	{
+		return sortDirectionToUse == SortableTable.REVERSE_SORT_ORDER;
+	}
+				
 	public static final String PROJECT_NAME_SORT_TAG = "Project";
 	
 	private String currentSortTag;

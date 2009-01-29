@@ -24,7 +24,6 @@ import java.io.File;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
-import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemRootNode;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
@@ -42,9 +41,8 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		super(root);
 		
-		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
 		nodeSorter = nodeSorterToUse;
-		
+
 		root.recursivelySort();
 	}
 
@@ -68,28 +66,12 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		FileSystemTreeNode fileSystemNode = (FileSystemTreeNode) getRootNode();
 		String columnTag = getColumnTag(modelColumn);
 		nodeSorter.setColumnSortTag(columnTag);
-		nodeSorter.setSortDirection(getReverseSortDirection());
+		nodeSorter.reverseSortDirection();
 		fileSystemNode.recursivelySort();
 		
 		reloadNodesWithouRebuildingNodes();
 	}
 	
-	public void reverseSortDirection()
-	{
-		if (FileSystemProjectSorter.isReverseSort(currentSortDirection))
-			currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
-		else
-			currentSortDirection = SortableTable.REVERSE_SORT_ORDER;
-	}
-	
-	public int getReverseSortDirection()
-	{
-		reverseSortDirection();
-		return currentSortDirection;
-	}
-		
 	private String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Modified"), };
-	
-	private int currentSortDirection;
 	private FileSystemProjectSorter nodeSorter;
 }
