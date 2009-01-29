@@ -40,10 +40,10 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 	public int compare(FileSystemTreeNode node1, FileSystemTreeNode node2)
 	{
 		int rawComparisonResult = compareWithoutDirection(node1, node2);
-		if (!isReverseSort())
-			return rawComparisonResult;
+		if (isReverseSort())
+			return getNegatedValue(rawComparisonResult);
 		
-		return getNegatedValue(rawComparisonResult);
+		return rawComparisonResult;
 	}
 
 	private int compareWithoutDirection(FileSystemTreeNode node1, FileSystemTreeNode node2)
