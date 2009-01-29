@@ -40,7 +40,6 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.DiagramAliasPaster;
-import org.miradi.xml.conpro.importer.ConProXmlImporter;
 
 public class ConceptualModelByTargetSplitter
 {
@@ -49,10 +48,12 @@ public class ConceptualModelByTargetSplitter
 		project = projectToUse;
 	}
 	
-	public void splitByTarget(ConceptualModelDiagram mainConceptualModelToSplit) throws Exception
+	public void splitByTarget(ConceptualModelDiagram mainConceptualModelToSplit, ORef highOrAboveRankedThreatsTagToUse) throws Exception
 	{
 		setDiagramObjectLabel(mainConceptualModelToSplit.getRef(), "{" + EAM.text("All on One Page") + "}");
 		setDiagramObjectToSplit(mainConceptualModelToSplit);
+		setHighOrAboveRankedThreatsTag(highOrAboveRankedThreatsTagToUse);
+		
 		HashSet<DiagramFactor> targetDiagramFactors = mainConceptualModelToSplit.getFactorsFromDiagram(Target.getObjectType());
 		for(DiagramFactor targetDiagramFactor : targetDiagramFactors)
 		{
@@ -98,7 +99,7 @@ public class ConceptualModelByTargetSplitter
 	private void applyTagIfPossible(ORef newConceptualModelRef) throws Exception
 	{
 		ConceptualModelDiagram newConceptualModel = ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
-		TaggedObjectSet taggedObjectSet = findHighVeryHighTaggedObjectSet(newConceptualModel);
+		TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), getHighOrAboveRankedThreatsTag());
 		if (diagramContainsAnyObjectsInTaggedSet(newConceptualModel, taggedObjectSet))
 		{
 			CommandSetObjectData applyTagCommand = createCommandToApplyTag(newConceptualModelRef, taggedObjectSet);
@@ -113,25 +114,8 @@ public class ConceptualModelByTargetSplitter
 		return new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefsAsString);
 	}
 
-	private TaggedObjectSet findHighVeryHighTaggedObjectSet(ConceptualModelDiagram newConceptualModel)
-	{
-		ORefList selectedTaggedObjectSetRefs = newConceptualModel.getSelectedTaggedObjectSetRefs();
-		for (int index = 0; index < selectedTaggedObjectSetRefs.size(); ++index)
-		{
-			ORef taggedObjectSetRef = selectedTaggedObjectSetRefs.get(index);
-			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
-			if (taggedObjectSet.getLabel().equals(ConProXmlImporter.createHighVeryHighLabel()))
-					return taggedObjectSet;	
-		}
-		
-		return null;
-	}
-
 	private boolean diagramContainsAnyObjectsInTaggedSet(DiagramObject diagramObject, TaggedObjectSet taggedObjectSet)
 	{
-		if (taggedObjectSet == null)
-			return false;
-		
 		ORefList taggedObjectRefs = taggedObjectSet.getTaggedObjectRefs();
 		ORefList factorRefs = diagramObject.getAllWrappedFactorRefSet().toRefList();
 		
@@ -184,7 +168,19 @@ public class ConceptualModelByTargetSplitter
 		diagramObjectBeingSplit = diagramObjectToUse;
 	}
 	
+	private void setHighOrAboveRankedThreatsTag(ORef highOrAboveRankedThreatsTagToUse)
+	{
+		highOrAboveRankedThreatsTag = highOrAboveRankedThreatsTagToUse;
+	}
+	
+	private ORef getHighOrAboveRankedThreatsTag()
+	{
+		return highOrAboveRankedThreatsTag;
+	}
+	
 	private Project project;
 	private DiagramObject diagramObjectBeingSplit;
+	private ORef highOrAboveRankedThreatsTag;
+	
 	private static final Point PASTE_START_POINT = new Point(0, 0);
 }
