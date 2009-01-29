@@ -26,7 +26,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -84,15 +84,21 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		
 		PlanningViewStrategicRadioButton strategicRadioButton = new PlanningViewStrategicRadioButton(project);
 		radioGroup.addRadioButtonToGroup(strategicRadioButton);
-		addRadioButtonWithLeftComponent(strategicRadioButton, new PanelTitleLabel(EAM.text("Strategic Plan")));
+		PanelButton strategicPlanButton = new PanelButton(EAM.text("Strategic Plan"));
+		strategicPlanButton.addActionListener(strategicRadioButton);
+		addRadioButtonWithLeftComponent(strategicRadioButton, strategicPlanButton);
 		
 		PlanningViewMonitoringRadioButton monitoringRadioButton = new PlanningViewMonitoringRadioButton(project);
 		radioGroup.addRadioButtonToGroup(monitoringRadioButton);
-		addRadioButtonWithLeftComponent(monitoringRadioButton, new PanelTitleLabel(EAM.text("Monitoring Plan")));
+		PanelButton monitoringPlanButton = new PanelButton(EAM.text("Monitoring Plan"));
+		monitoringPlanButton.addActionListener(monitoringRadioButton);
+		addRadioButtonWithLeftComponent(monitoringRadioButton, monitoringPlanButton);
 		
 		PlanningViewWorkPlanRadioButton workPlanRadioButton = new PlanningViewWorkPlanRadioButton(project);
 		radioGroup.addRadioButtonToGroup(workPlanRadioButton);
-		addRadioButtonWithLeftComponent(workPlanRadioButton, new PanelTitleLabel(EAM.text("Work Plan (BETA)")));
+		PanelButton workPlanButton = new PanelButton(EAM.text("Work Plan (BETA)"));
+		workPlanButton.addActionListener(workPlanRadioButton);
+		addRadioButtonWithLeftComponent(workPlanRadioButton, workPlanButton);
 		
 		
 		singleLevelCombo = new PlanningViewSingleLevelComboBox(project);
