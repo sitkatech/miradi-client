@@ -260,7 +260,7 @@ public class PlanningViewCustomizationPanel extends JPanel implements CommandExe
 		{
 			super.mouseClicked(e);
 			
-			radioButton.mouseClicked();
+			radioButton.doClick();
 		}
 		
 		private PlanningViewRadioButton radioButton;
