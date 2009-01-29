@@ -45,7 +45,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
 		nodeSorter = nodeSorterToUse;
 		
-		root.recursivelySortBy();
+		root.recursivelySort();
 	}
 
 	public String getColumnTag(int column)
@@ -69,7 +69,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		String columnTag = getColumnTag(modelColumn);
 		nodeSorter.setColumnSortTag(columnTag);
 		nodeSorter.setSortDirection(getReverseSortDirection());
-		fileSystemNode.recursivelySortBy();
+		fileSystemNode.recursivelySort();
 		
 		reloadNodesWithouRebuildingNodes();
 	}
