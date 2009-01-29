@@ -35,7 +35,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.wizard.noproject.FileSystemRootNode;
 import org.miradi.wizard.noproject.NoProjectWizardStep;
 
 public class TreeBasedProjectList extends JPanel
@@ -78,8 +77,7 @@ public class TreeBasedProjectList extends JPanel
 	{
 		try
 		{
-			((FileSystemRootNode) model.getRoot()).setFile(EAM.getHomeDirectory());
-			model.rebuildEntireTree();
+			model.rebuildEntireTree(EAM.getHomeDirectory());
 		}
 		catch(Exception e)
 		{

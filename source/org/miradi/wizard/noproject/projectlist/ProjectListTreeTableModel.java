@@ -63,12 +63,23 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	
 	public void sort(int modelColumn)
 	{
-		FileSystemTreeNode fileSystemNode = (FileSystemTreeNode) getRootNode();
+		FileSystemTreeNode fileSystemNode = getFileSystemRootNode();
 		String columnTag = getColumnTag(modelColumn);
 		nodeSorter.resortBy(columnTag);
 		fileSystemNode.recursivelySort();
 		
 		reloadNodesWithouRebuildingNodes();
+	}
+
+	private FileSystemRootNode getFileSystemRootNode()
+	{
+		return (FileSystemRootNode) getRootNode();
+	}
+	
+	public void rebuildEntireTree(File homeDir)
+	{
+		getFileSystemRootNode().setFile(homeDir);
+		super.rebuildEntireTree();
 	}
 	
 	private String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Modified"), };
