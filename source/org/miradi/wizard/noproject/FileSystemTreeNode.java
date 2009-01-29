@@ -112,6 +112,8 @@ public class FileSystemTreeNode extends TreeTableNode
 				children.add(node);
 			}
 		}
+		
+		sortChildren();
 	}
 
 	public void recursivelySort()
