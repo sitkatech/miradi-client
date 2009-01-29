@@ -56,11 +56,6 @@ abstract public class PlanningViewRadioButton extends JRadioButton implements Ac
 		}	
 	}
 	
-	public void mouseClicked()
-	{
-		doClick();
-	}
-
 	private void saveRadioSelection() throws Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
