@@ -35,10 +35,11 @@ import org.miradi.project.LastProjectModifiedTimeHelper;
 
 public class FileSystemTreeNode extends TreeTableNode
 {
-	public FileSystemTreeNode(File file) throws Exception
+	public FileSystemTreeNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
 		thisFile = file;
 		children = new Vector<FileSystemTreeNode>();
+		sorter =  sorterToUse;
 
 		rebuild();
 	}
@@ -107,23 +108,23 @@ public class FileSystemTreeNode extends TreeTableNode
 			File file = files[i];
 			if(file.isDirectory() && !isExternalReportsDirectory(file) && !isCustomReportsDirectory(file) && !isExternalResourceDirectory(file))
 			{
-				FileSystemTreeNode node = new FileSystemTreeNode(file);				
+				FileSystemTreeNode node = new FileSystemTreeNode(file, sorter);				
 				children.add(node);
 			}
 		}
 	}
 
-	public void recursivelySortBy(FileSystemProjectSorter sorter)
+	public void recursivelySortBy()
 	{
-		sortChildren(sorter);	
+		sortChildren();	
 		for (int index = 0; index < children.size(); ++index)
 		{
 			FileSystemTreeNode childNode = children.get(index);
-			childNode.recursivelySortBy(sorter);
+			childNode.recursivelySortBy();
 		}
 	}
 	
-	private void sortChildren(FileSystemProjectSorter sorter)
+	private void sortChildren()
 	{
 		Collections.sort(children, sorter);
 	}
@@ -164,4 +165,5 @@ public class FileSystemTreeNode extends TreeTableNode
 	
 	protected File thisFile;
 	private Vector<FileSystemTreeNode> children;
+	private FileSystemProjectSorter sorter;
 }
