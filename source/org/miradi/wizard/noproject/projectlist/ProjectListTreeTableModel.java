@@ -31,8 +31,8 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		super(root);
 		
-		root.sortBy(new FileSystemProjectSorter());
 		currentSortDirection = SortableTable.DEFAULT_SORT_DIRECTION;
+		root.sortBy(new FileSystemProjectSorter());
 	}
 
 	public String getColumnTag(int column)
