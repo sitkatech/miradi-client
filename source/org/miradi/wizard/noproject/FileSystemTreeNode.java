@@ -105,7 +105,7 @@ public class FileSystemTreeNode extends TreeTableNode
 		for(int i = 0; i < files.length; ++i)
 		{
 			File file = files[i];
-			if(file.isDirectory() && !isCustomReportDirectory(file) && !isExternalResourceDirectory(file))
+			if(file.isDirectory() && !isExternalReportsDirectory(file) && !isCustomReportsDirectory(file) && !isExternalResourceDirectory(file))
 			{
 				FileSystemTreeNode node = new FileSystemTreeNode(file);				
 				children.add(node);
@@ -127,10 +127,15 @@ public class FileSystemTreeNode extends TreeTableNode
 	{
 		Collections.sort(children, sorter);
 	}
-
-	private boolean isCustomReportDirectory(File file)
+	
+	private boolean isExternalReportsDirectory(File file)
 	{
 		return file.getName().equals(OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME);
+	}
+
+	private boolean isCustomReportsDirectory(File file)
+	{
+		return file.getName().equals(OLD_JASPER_CUSTOM_REPORTS_DIR_NAME);
 	}
 	
 	private boolean isExternalResourceDirectory(File file)
@@ -155,6 +160,7 @@ public class FileSystemTreeNode extends TreeTableNode
 	}
 
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
+	private static final String OLD_JASPER_CUSTOM_REPORTS_DIR_NAME = "CustomReports";
 	
 	protected File thisFile;
 	private Vector<FileSystemTreeNode> children;
