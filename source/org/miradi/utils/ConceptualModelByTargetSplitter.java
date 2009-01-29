@@ -51,7 +51,7 @@ public class ConceptualModelByTargetSplitter
 	public void splitByTarget(ConceptualModelDiagram mainConceptualModelToSplit) throws Exception
 	{
 		setDiagramObjectLabel(mainConceptualModelToSplit.getRef(), "{" + EAM.text("All on One Page") + "}");
-		setDiagramObject(mainConceptualModelToSplit);
+		setDiagramObjectToSplit(mainConceptualModelToSplit);
 		HashSet<DiagramFactor> targetDiagramFactors = mainConceptualModelToSplit.getFactorsFromDiagram(Target.getObjectType());
 		for(DiagramFactor targetDiagramFactor : targetDiagramFactors)
 		{
@@ -64,8 +64,8 @@ public class ConceptualModelByTargetSplitter
 	private void createDiagramForTarget(DiagramFactor targetDiagramFactor) throws Exception
 	{
 		DiagramChainObject chainObject = new DiagramChainObject();
-		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(getDiagramObject(), targetDiagramFactor);
-		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(getDiagramObject(), targetDiagramFactor);
+		HashSet<DiagramFactor> diagramFactors = chainObject.buildNormalChainAndGetDiagramFactors(getDiagramObjectBeingSplit(), targetDiagramFactor);
+		HashSet<DiagramLink> diagramLinks = chainObject.buildNormalChainAndGetDiagramLinks(getDiagramObjectBeingSplit(), targetDiagramFactor);
 		
 		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage(targetDiagramFactor.getWrappedFactor().toString());
@@ -104,7 +104,7 @@ public class ConceptualModelByTargetSplitter
 
 	private ORefList getTaggedObjectSetsWithFactorsThatAppearInDiagram(ORef newConceptualModelRef)
 	{
-		ORefList selectedTaggedObjectSetRefs = getDiagramObject().getSelectedTaggedObjectSetRefs();
+		ORefList selectedTaggedObjectSetRefs = getDiagramObjectBeingSplit().getSelectedTaggedObjectSetRefs();
 		ORefList onlyTagsWithFactors = new ORefList();
 		ConceptualModelDiagram newConceptualModel = ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
 		for (int index = 0; index < selectedTaggedObjectSetRefs.size(); ++index)
@@ -136,7 +136,7 @@ public class ConceptualModelByTargetSplitter
 	
 	private TransferableMiradiList createTransferable(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
 	{
-		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObject().getRef());
+		TransferableMiradiList miradiList = new TransferableMiradiList(getProject(), getDiagramObjectBeingSplit().getRef());
 		miradiList.storeData(diagramFactors, diagramLinks);
 		
 		return miradiList;
@@ -155,17 +155,17 @@ public class ConceptualModelByTargetSplitter
 		return project;
 	}
 	
-	private DiagramObject getDiagramObject()
+	private DiagramObject getDiagramObjectBeingSplit()
 	{
-		return diagramObject;
+		return diagramObjectBeingSplit;
 	}
 	
-	private void setDiagramObject(DiagramObject diagramObjectToUse)
+	private void setDiagramObjectToSplit(DiagramObject diagramObjectToUse)
 	{
-		diagramObject = diagramObjectToUse;
+		diagramObjectBeingSplit = diagramObjectToUse;
 	}
 	
 	private Project project;
-	private DiagramObject diagramObject;
+	private DiagramObject diagramObjectBeingSplit;
 	private static final Point PASTE_START_POINT = new Point(0, 0);
 }
