@@ -99,13 +99,18 @@ public class ConceptualModelByTargetSplitter
 	{
 		ConceptualModelDiagram newConceptualModel = ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
 		TaggedObjectSet taggedObjectSet = findHighVeryHighTaggedObjectSet(newConceptualModel);
-		if (diagramContainsAndObjectsInTaggedSet(newConceptualModel, taggedObjectSet))
+		if (diagramContainsAnyObjectsInTaggedSet(newConceptualModel, taggedObjectSet))
 		{
-			ORefList singleItemListWithHighVeryHighTaggedObjectSet = new ORefList(taggedObjectSet);
-			String tagRefsAsString = singleItemListWithHighVeryHighTaggedObjectSet.toString();
-			CommandSetObjectData setTags = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefsAsString);
-			getProject().executeCommand(setTags);
+			CommandSetObjectData applyTagCommand = createCommandToApplyTag(newConceptualModelRef, taggedObjectSet);
+			getProject().executeCommand(applyTagCommand);
 		}
+	}
+
+	private CommandSetObjectData createCommandToApplyTag(ORef newConceptualModelRef, TaggedObjectSet taggedObjectSet)
+	{
+		ORefList singleItemListWithHighVeryHighTaggedObjectSet = new ORefList(taggedObjectSet);
+		String tagRefsAsString = singleItemListWithHighVeryHighTaggedObjectSet.toString();
+		return new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefsAsString);
 	}
 
 	private TaggedObjectSet findHighVeryHighTaggedObjectSet(ConceptualModelDiagram newConceptualModel)
@@ -122,7 +127,7 @@ public class ConceptualModelByTargetSplitter
 		return null;
 	}
 
-	private boolean diagramContainsAndObjectsInTaggedSet(ConceptualModelDiagram newConceptualModel, TaggedObjectSet highVeryHighRatingTaggedObjectSet)
+	private boolean diagramContainsAnyObjectsInTaggedSet(ConceptualModelDiagram newConceptualModel, TaggedObjectSet highVeryHighRatingTaggedObjectSet)
 	{
 		if (highVeryHighRatingTaggedObjectSet == null)
 			return false;
