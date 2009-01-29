@@ -127,13 +127,13 @@ public class ConceptualModelByTargetSplitter
 		return null;
 	}
 
-	private boolean diagramContainsAnyObjectsInTaggedSet(ConceptualModelDiagram newConceptualModel, TaggedObjectSet highVeryHighRatingTaggedObjectSet)
+	private boolean diagramContainsAnyObjectsInTaggedSet(DiagramObject diagramObject, TaggedObjectSet taggedObjectSet)
 	{
-		if (highVeryHighRatingTaggedObjectSet == null)
+		if (taggedObjectSet == null)
 			return false;
 		
-		ORefList taggedObjectRefs = highVeryHighRatingTaggedObjectSet.getTaggedObjectRefs();
-		ORefList factorRefs = newConceptualModel.getAllWrappedFactorRefSet().toRefList();
+		ORefList taggedObjectRefs = taggedObjectSet.getTaggedObjectRefs();
+		ORefList factorRefs = diagramObject.getAllWrappedFactorRefSet().toRefList();
 		
 		return factorRefs.containsAnyOf(taggedObjectRefs);
 	}
