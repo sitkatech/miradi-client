@@ -30,11 +30,13 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.DiagramAliasPaster;
@@ -94,9 +96,27 @@ public class ConceptualModelByTargetSplitter
 
 	private void updateDiagramTags(ORef newConceptualModelRef) throws Exception
 	{
-		String tagRefsAsString = getDiagramObject().getSelectedTaggedObjectSetRefs().toString();
+		ORefList onlyTagsWithFactorsInDiagram = getTaggedObjectSetsWithFactorsThatAppearInDiagram(newConceptualModelRef);
+		String tagRefsAsString = onlyTagsWithFactorsInDiagram.toString();
 		CommandSetObjectData setTags = new CommandSetObjectData(newConceptualModelRef, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, tagRefsAsString);
 		getProject().executeCommand(setTags);
+	}
+
+	private ORefList getTaggedObjectSetsWithFactorsThatAppearInDiagram(ORef newConceptualModelRef)
+	{
+		ORefList selectedTaggedObjectSetRefs = getDiagramObject().getSelectedTaggedObjectSetRefs();
+		ORefList onlyTagsWithFactors = new ORefList();
+		ConceptualModelDiagram newConceptualModel = ConceptualModelDiagram.find(getProject(), newConceptualModelRef);
+		for (int index = 0; index < selectedTaggedObjectSetRefs.size(); ++index)
+		{
+			ORef taggedObjectSetRef = selectedTaggedObjectSetRefs.get(index);
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+			ORefList taggedObjectRefs = taggedObjectSet.getTaggedObjectRefs();
+			ORefList wrappedFactorRefs = new ORefList(newConceptualModel.getAllWrappedFactors());
+			if (taggedObjectRefs.containsAnyOf(wrappedFactorRefs))
+				onlyTagsWithFactors.add(taggedObjectSetRef);
+		}
+		return onlyTagsWithFactors;
 	}
 
 	private void setDiagramObjectLabel(ORef newConceptualModelRef, String targetNameUsedAsDiagramName) throws CommandFailedException
