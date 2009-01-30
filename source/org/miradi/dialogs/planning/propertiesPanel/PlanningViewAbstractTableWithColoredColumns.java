@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
 
 import javax.swing.JTable;
 
@@ -33,11 +32,6 @@ abstract public class PlanningViewAbstractTableWithColoredColumns extends Editab
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-	}
-		
-	public Color getColumnBackGroundColor(int tableColumn)
-	{
-		return getBackground();
 	}
 	
 }

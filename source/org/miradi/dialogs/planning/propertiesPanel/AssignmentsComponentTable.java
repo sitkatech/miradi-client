@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
@@ -53,5 +54,10 @@ abstract public class AssignmentsComponentTable extends PlanningViewAbstractTabl
 	public boolean shouldSaveColumnWidth()
 	{
 		return false;
+	}
+
+	public Color getColumnBackGroundColor(int tableColumn)
+	{
+		return getBackground();
 	}
 }
