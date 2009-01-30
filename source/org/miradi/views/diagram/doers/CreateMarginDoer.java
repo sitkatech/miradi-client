@@ -133,12 +133,12 @@ public class CreateMarginDoer extends ObjectsDoer
 		return getDiagramView().getDiagramModel().getAllFactorCells();
 	}
 	
-	private int getTopMargin()
+	public static int getTopMargin()
 	{
 		return 2 * (DiagramFactor.getDefaultSize().height + Project.DEFAULT_GRID_SIZE);
 	}
 	
-	private int getLeftMargin()
+	public static int getLeftMargin()
 	{
 		return 2 * (DiagramFactor.getDefaultSize().width  + Project.DEFAULT_GRID_SIZE);
 	} 

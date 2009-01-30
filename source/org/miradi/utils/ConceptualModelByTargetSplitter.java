@@ -40,6 +40,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.views.diagram.DiagramAliasPaster;
+import org.miradi.views.diagram.doers.CreateMarginDoer;
 
 public class ConceptualModelByTargetSplitter
 {
@@ -182,5 +183,5 @@ public class ConceptualModelByTargetSplitter
 	private DiagramObject diagramObjectBeingSplit;
 	private ORef highOrAboveRankedThreatsTag;
 	
-	private static final Point PASTE_START_POINT = new Point(0, 0);
+	private static final Point PASTE_START_POINT = new Point(CreateMarginDoer.getLeftMargin(), CreateMarginDoer.getTopMargin());
 }
