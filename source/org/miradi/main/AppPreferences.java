@@ -22,28 +22,28 @@ package org.miradi.main;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import org.miradi.database.JSONFile;
 import org.miradi.diagram.DiagramConstants;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 //TODO: look into replace individual fields with MapList or hash maps
 public class AppPreferences
 {
-	public AppPreferences()
+	public AppPreferences() throws Exception
 	{
 		clear();
 	}
 
-	private void clear()
+	private void clear() throws Exception
 	{
 		loadFrom(new EnhancedJsonObject());
 	}
 	
-	public void load(File preferencesFile) throws IOException, ParseException
+	public void load(File preferencesFile) throws Exception
 	{
 		clear();
 		if(!preferencesFile.exists())
@@ -322,6 +322,7 @@ public class AppPreferences
 		json.put(TAG_LANGUAGE_CODE, languageCode);
 		json.put(TAG_NEWS_TEXT, newsText);
 		json.put(TAG_NEWS_DATE, newsDate);
+		json.put(TAG_INSTALLED_EXAMPLE_VERSIONS, installedExamples.toString());
 		
 		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
 		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
@@ -363,7 +364,7 @@ public class AppPreferences
 		return taggedIntJson;
 	}
 	
-	public void loadFrom(EnhancedJsonObject json)
+	public void loadFrom(EnhancedJsonObject json) throws Exception
 	{
 		strategyColor = json.optColor(TAG_COLOR_STRATEGY, DiagramConstants.DEFAULT_STRATEGY_COLOR);
 		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DiagramConstants.DEFAULT_ACTIVITIES_COLOR);
@@ -384,6 +385,7 @@ public class AppPreferences
 		languageCode = json.optString(TAG_LANGUAGE_CODE, DEFAULT_LANGUAGE_CODE);
 		newsText = json.optString(TAG_NEWS_TEXT);
 		newsDate = json.optString(TAG_NEWS_DATE);
+		installedExamples = new CodeList(json.optString(TAG_INSTALLED_EXAMPLE_VERSIONS));
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
@@ -397,7 +399,6 @@ public class AppPreferences
 		taggedStringMap = loadTagStringMap(json);
 	}
 
-	
 	private HashMap loadTagStringMap(EnhancedJsonObject json)
 	{
 		HashMap map = new HashMap();
@@ -522,6 +523,7 @@ public class AppPreferences
 	public static final String TAG_MAIN_WINDOW_Y_POSITION = "MainwWindowY";
 	public static final String TAG_NEWS_TEXT = "NewsText";
 	public static final String TAG_NEWS_DATE = "NewsDate";
+	public static final String TAG_INSTALLED_EXAMPLE_VERSIONS = "InstalledExampleVersions";
 	
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
@@ -589,6 +591,7 @@ public class AppPreferences
 	private String languageCode;
 	private String newsText;
 	private String newsDate;
+	private CodeList installedExamples;
 	
 	private double diagramZoomSetting;
 	
