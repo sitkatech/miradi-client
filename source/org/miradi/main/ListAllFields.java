@@ -113,11 +113,20 @@ public class ListAllFields
 
 	private static void showField(BaseObject object, String tag)
 	{
-		String fieldLabel = EAM.fieldLabel(object.getType(), tag);
-		if(fieldLabel.equals(tag))
-			System.out.println("  " + fieldLabel);
-		else
-			System.out.println("  " + fieldLabel + " (" + tag + ")");
+		// NOTE: Hack to avoid exceptions without removing printStackTrace from EAM.fieldLabel
+		EAM.setLogToString();
+		try
+		{
+			String fieldLabel = EAM.fieldLabel(object.getType(), tag);
+			if(fieldLabel.equals(tag))
+				System.out.println("  " + fieldLabel);
+			else
+				System.out.println("  " + fieldLabel + " (" + tag + ")");
+		}
+		finally
+		{
+			EAM.setLogToConsole();
+		}
 	}
 
 	private static void showObjectName(BaseObject object)
