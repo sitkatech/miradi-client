@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -39,10 +41,23 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	public PlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
 	{
-		super(new PlanningTreeRootNode(projectToUse, visibleRowCodesToUse));
+		super(createPlanningTreeRootNode(projectToUse));
 		
 		project = projectToUse;
 		updateColumnsToShow(visibleColumnCodesToUse);
+	}
+
+	private static TreeTableNode createPlanningTreeRootNode(Project projectToUse) throws Exception
+	{
+		try
+		{
+			return new PlanningTreeRootNode(projectToUse, new CodeList());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new PlanningTreeErrorNode(projectToUse); 
+		}
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
