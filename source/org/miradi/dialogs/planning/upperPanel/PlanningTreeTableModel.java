@@ -56,6 +56,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		catch(Exception e)
 		{
 			EAM.logException(e);
+			EAM.errorDialog(EAM.text("There was a severe error when trying to construct the planning tree."));
 			return new PlanningTreeErrorNode(projectToUse); 
 		}
 	}
