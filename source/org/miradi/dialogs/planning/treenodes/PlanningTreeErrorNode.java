@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
-import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -40,6 +39,6 @@ public class PlanningTreeErrorNode extends AbstractPlanningTreeNode
 	@Override
 	public String toRawString()
 	{
-		return EAM.text("Error initializing subview");
+		return "Error initializing subview";
 	}
 }
