@@ -31,7 +31,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 
 
-public class PlanningViewBudgetTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
+public class PlanningViewBudgetTable extends AssignmentsComponentTable
 {
 	public PlanningViewBudgetTable(MainWindow mainWindowToUse, PlanningViewBudgetTableModel modelToUse)
 	{

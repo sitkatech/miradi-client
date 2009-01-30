@@ -24,9 +24,9 @@ import java.awt.Dimension;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.MainWindow;
 
-abstract public class PlanningViewAbstractTableWithPreferredScrollableViewportSize extends PlanningViewAbstractTableWithColoredColumns
+abstract public class AssignmentsComponentTable extends PlanningViewAbstractTableWithColoredColumns
 {
-	public PlanningViewAbstractTableWithPreferredScrollableViewportSize(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
+	public AssignmentsComponentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 	}

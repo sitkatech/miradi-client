@@ -33,7 +33,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
-public class PlanningViewWorkPlanTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
+public class PlanningViewWorkPlanTable extends AssignmentsComponentTable
 {
 	public PlanningViewWorkPlanTable(MainWindow mainWindowToUse, PlanningViewAbstractBudgetTableModel modelToUse) throws Exception
 	{
