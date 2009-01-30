@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 19:22-0500\n"
+"POT-Creation-Date: 2009-01-29 22:01-0500\n"
 "PO-Revision-Date: 2008-11-19 15:59-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -227,7 +227,7 @@ msgid "Progress Reports"
 msgstr "Laporan Kemajuan "
 
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:67
-#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:91
+#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:95
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:107
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 msgid "Monitoring Plan"
@@ -300,12 +300,12 @@ msgstr "Panel Sifat-sifat Tag"
 msgid "&darr; Threats &darr; \\ &rarr; Targets &rarr;"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:203
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:211
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "Ringkasan Peringkat Target "
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:345
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:355
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -618,11 +618,11 @@ msgstr "Indikator "
 msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:375
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:385
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:461
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:471
 msgid "Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
@@ -769,26 +769,26 @@ msgstr "Sifat-sifat Faktor "
 msgid "Control Bar"
 msgstr "Balok Kontrol "
 
-#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:56
+#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:58
 msgid "Planning Views"
 msgstr "Tampilan Perencanaan "
 
-#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:75
+#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:77
 #, fuzzy
 msgid "Error Occurred While in Planning View Legend Panel"
 msgstr ""
 "Kesalahan Terjadi saat ada di Panel Petunjuk Gambar Tampilan Perencanaan "
 
-#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:87
+#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:89
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:112
 msgid "Strategic Plan"
 msgstr "Rencana Strategis "
 
-#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:95
+#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:101
 msgid "Work Plan (BETA)"
 msgstr "Rencana Kerja (BETA) "
 
-#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:170
+#: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:178
 msgid "Unexpected Error Occurred"
 msgstr "Terjadi Kesalahan Tak Terduga "
 
@@ -2474,7 +2474,7 @@ msgstr "Sangat Tinggi"
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 #: miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:59
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:85
 msgid "Project"
 msgstr "Proyek "
 
@@ -3255,7 +3255,7 @@ msgstr "Tulis tindih berkas yang ada? "
 msgid "This will replace the existing file."
 msgstr "Ini akan mengganti berkas yang ada. "
 
-#: miradi/source/org/miradi/views/umbrella/ImportCpmzDoer.java:229
+#: miradi/source/org/miradi/views/umbrella/ImportCpmzDoer.java:231
 msgid "Import"
 msgstr "Impor "
 
@@ -4646,7 +4646,7 @@ msgstr "Format Format Kaya Teks/Rich Text Format (*.rtf)"
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "Zip Conpro Miradi (*%s)"
 
-#: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:51
+#: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:53
 msgid "All on One Page"
 msgstr "Semua dalam Satu Halaman"
 
@@ -6432,7 +6432,7 @@ msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
 msgid "Other Orgs"
 msgstr "Organisasi Lain "
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:67
+#: miradi/source/org/miradi/wizard/noproject/projectlist/TreeBasedProjectList.java:66
 msgid ""
 "<div class='WizardText'>To <strong>continue work</strong> on an existing "
 "project, or <strong>browse an example</strong>, choose a project below:"
@@ -6471,7 +6471,7 @@ msgstr "Kesalahan mengganti nama proyek: "
 msgid "Project List"
 msgstr "Daftar Proyek "
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:59
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:85
 msgid "Last Modified"
 msgstr ""
 
@@ -6576,7 +6576,7 @@ msgstr ""
 msgid "Create Failed:"
 msgstr "Pembuatan gagal: "
 
-#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:127
+#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:136
 msgid "View News"
 msgstr ""
 
@@ -8731,8 +8731,8 @@ msgid ""
 "Program and Training Materials   <LI>WWF's <EM>Project and Programme "
 "Standards</EM> and Training Materials </LI></UL><HR><H3>Technical "
 "Contributions Drawn From</H3><UL>  <LI><STRONG>Third Party Libraries:</"
-"STRONG> BrowserLauncher,   JCalendar, JExcel, JGraph, JHLabs, Jing, "
-"JTreeTable, TableLayout   <LI><STRONG>Development Tools:</STRONG> Ant, CVS, "
+"STRONG> BrowserLauncher,   JCalendar, JGraph, JHLabs, Jing, JTreeTable, "
+"JarBuilder, install4j   <LI><STRONG>Development Tools:</STRONG> Ant, CVS, "
 "Eclipse, Java, JUnit, NSIS, POEdit, Ruby, Subversion   <LI><STRONG>Martus:</"
 "STRONG> Benetech's software for human rights groups</LI></UL><P><FONT "
 "size=2>&nbsp;</P></FONT></BODY></HTML>"
@@ -15341,6 +15341,7 @@ msgstr ""
 "terakhir bisa digunakan untuk menggambarkan sifat-sifat lokasi Anda jika "
 "lokasi tersebut merupakan <b><i>Daerah Lindung</i></b>yang formal.<p> \t\t"
 
+#, fuzzy
 msgid ""
 "html|/resources/wizard/SummaryView/SummaryWizardDefineProjectVisionLeft.html|"
 "Click on the <code class='toolbarbutton'>&lt;Scope&gt;</code> tab and add "
@@ -15355,8 +15356,8 @@ msgid ""
 "fields are especially for key data that will be used in reports and uploads "
 "to organizational databases. Contact your organization's Miradi lead for "
 "more information.</p><p> If your organization would like to develop its own "
-"fields, contact Miradi staff at  <a href='info@miradi.org' >info@miradi.org</"
-"a>.</p>"
+"fields, contact Miradi staff at  <a href=\"mailto:info@miradi.org"
+"\">info@miradi.org</a>.</p>"
 msgstr ""
 "Klik pada tab <code class='toolbarbutton'><Cakupan></code> dan tambahkan <a "
 "href='Definition:Vision' class='definition'>pernyataan visi</a> proyek Anda "
