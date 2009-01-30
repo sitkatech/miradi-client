@@ -132,7 +132,8 @@ public class CreateMarginDoer extends ObjectsDoer
 	{
 		return getDiagramView().getDiagramModel().getAllFactorCells();
 	}
-	
+
+	//TODO these two methods (getTop/LeftMargin()) should be using project.getGridSize(), not Project.DEFAULT_GRID_SIZE.
 	public static int getTopMargin()
 	{
 		return 2 * (DiagramFactor.getDefaultSize().height + Project.DEFAULT_GRID_SIZE);
