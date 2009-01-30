@@ -22,14 +22,18 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 
+import javax.swing.JTable;
+
+import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.MainWindow;
 
-abstract public class AssignmentsComponentTable extends PlanningViewAbstractTableWithColoredColumns
+abstract public class AssignmentsComponentTable extends EditableObjectTable
 {
 	public AssignmentsComponentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
+		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 	}
 	
 	@Override
