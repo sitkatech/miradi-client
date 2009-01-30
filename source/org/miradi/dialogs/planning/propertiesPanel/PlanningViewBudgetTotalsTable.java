@@ -31,7 +31,7 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 
-public class PlanningViewBudgetTotalsTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
+public class PlanningViewBudgetTotalsTable extends AssignmentsComponentTable
 {
 	public PlanningViewBudgetTotalsTable(MainWindow mainWindowToUse, PlanningViewBudgetTotalsTableModel model)
 	{

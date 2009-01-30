@@ -32,7 +32,7 @@ import org.miradi.objects.AccountingCode;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 
-public class PlanningViewResourceTable extends PlanningViewAbstractTableWithPreferredScrollableViewportSize
+public class PlanningViewResourceTable extends AssignmentsComponentTable
 {
 	public PlanningViewResourceTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse) throws Exception
 	{
