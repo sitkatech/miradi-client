@@ -40,6 +40,6 @@ public class PlanningTreeErrorNode extends AbstractPlanningTreeNode
 	@Override
 	public String toRawString()
 	{
-		return EAM.text("Error in  building planning tree.");
+		return EAM.text("Error initializing subview");
 	}
 }
