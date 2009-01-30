@@ -87,7 +87,11 @@ public class FactorLink extends BaseObject
 			
 	public Factor getFromFactor()
 	{
-		return Factor.findFactor(getProject(), getFromFactorRef());
+		Factor fromFactor = Factor.findFactor(getProject(), getFromFactorRef());
+		if (fromFactor == null)
+			EAM.logError("From Factor (ref = " + getFromFactorRef() + ")for link (ref = " + getRef() + ") was null.");
+		
+		return fromFactor;
 	}
 	
 	public ORef getFromFactorRef()
@@ -98,7 +102,11 @@ public class FactorLink extends BaseObject
 	
 	public Factor getToFactor()
 	{
-		return Factor.findFactor(getProject(), getToFactorRef());
+		Factor toFactor = Factor.findFactor(getProject(), getToFactorRef());
+		if (toFactor == null)
+			EAM.logError("To Factor (ref = " + getToFactorRef() + ")for link (ref = " + getRef() + ") was null.");
+		
+		return toFactor;
 	}
 	
 	public ORef getToFactorRef()
