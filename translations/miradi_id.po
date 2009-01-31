@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-29 22:01-0500\n"
+"POT-Creation-Date: 2009-01-30 22:43-0500\n"
 "PO-Revision-Date: 2008-11-19 15:59-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -192,7 +192,7 @@ msgstr "Peringkat Kelangsungan "
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:68
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: miradi/source/org/miradi/objects/Assignment.java:134
-#: miradi/source/org/miradi/objects/FactorLink.java:219
+#: miradi/source/org/miradi/objects/FactorLink.java:227
 #, fuzzy
 msgid "Error"
 msgstr "(Kesalahan) "
@@ -663,6 +663,13 @@ msgstr "Sifat-sifat Rangkaian Hasil "
 #: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
 msgid "Title|Diagram Properties"
 msgstr "Sifat-sifat Diagram "
+
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:59
+msgid ""
+"<HTML>A severe error has prevented this Planning Subview from being shown."
+"<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org"
+"\">support@miradi.org<a>) for assistance</HTML>"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:195
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
@@ -1286,8 +1293,8 @@ msgstr "Terjadi kesalahan yang tidak diharapkan: "
 msgid "Title|Error"
 msgstr "Kesalahan"
 
-#: miradi/source/org/miradi/main/EAM.java:397
-#: miradi/source/org/miradi/main/EAM.java:398
+#: miradi/source/org/miradi/main/EAM.java:402
+#: miradi/source/org/miradi/main/EAM.java:403
 #: miradi/source/org/miradi/views/noproject/DeleteProject.java:54
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:72
@@ -1295,12 +1302,12 @@ msgstr "Kesalahan"
 msgid "Delete"
 msgstr "Hapus "
 
-#: miradi/source/org/miradi/main/EAM.java:397
+#: miradi/source/org/miradi/main/EAM.java:402
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 msgid "Retain"
 msgstr "Pertahankan "
 
-#: miradi/source/org/miradi/main/EAM.java:553
+#: miradi/source/org/miradi/main/EAM.java:558
 msgid "Wintitle|Information"
 msgstr "Informasi "
 
@@ -1308,11 +1315,11 @@ msgstr "Informasi "
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Perangkat Lunak Manajemen Adaptif untuk Proyek Konservasi "
 
-#: miradi/source/org/miradi/main/MainWindow.java:261
+#: miradi/source/org/miradi/main/MainWindow.java:262
 msgid "Information"
 msgstr "Informasi "
 
-#: miradi/source/org/miradi/main/MainWindow.java:459
+#: miradi/source/org/miradi/main/MainWindow.java:460
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -1322,11 +1329,11 @@ msgstr ""
 "Anda mungkin mencoba menampilkan proyek lama yang berisi perintah yang tidak "
 "berlaku yang tidak didukung lagi. "
 
-#: miradi/source/org/miradi/main/MainWindow.java:464
+#: miradi/source/org/miradi/main/MainWindow.java:465
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:468
+#: miradi/source/org/miradi/main/MainWindow.java:469
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -1334,33 +1341,33 @@ msgstr ""
 "Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
 "aplikasi ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:472
+#: miradi/source/org/miradi/main/MainWindow.java:473
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:477
+#: miradi/source/org/miradi/main/MainWindow.java:478
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
-#: miradi/source/org/miradi/main/MainWindow.java:610
+#: miradi/source/org/miradi/main/MainWindow.java:611
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 "RencanaKerja/Data Keuangan di luar tanggal awal/akhir proyek tidak akan "
 "ditampakkan "
 
-#: miradi/source/org/miradi/main/MainWindow.java:636
+#: miradi/source/org/miradi/main/MainWindow.java:637
 msgid "WARNING: Project end date before start date."
 msgstr "PERINGATAN: Tanggal akhir proyek lebih awal daripada tanggal mulai. "
 
-#: miradi/source/org/miradi/main/MainWindow.java:992
+#: miradi/source/org/miradi/main/MainWindow.java:993
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
-#: miradi/source/org/miradi/main/MainWindow.java:1009
+#: miradi/source/org/miradi/main/MainWindow.java:1010
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1430,6 +1437,21 @@ msgstr ""
 #, fuzzy
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
+
+#: miradi/source/org/miradi/main/ExampleInstaller.java:48
+#, fuzzy
+msgid "Sample Projects Installed"
+msgstr "(Lihat tab Proyek) "
+
+#: miradi/source/org/miradi/main/ExampleInstaller.java:68
+#, fuzzy
+msgid "Do you want to install the sample projects"
+msgstr "Anda yakin ingin mengganti nama proyek: "
+
+#: miradi/source/org/miradi/main/ExampleInstaller.java:71
+#, fuzzy
+msgid "Install Sample Projects"
+msgstr "Ganti Nama Proyek "
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:149
 #, fuzzy
@@ -3315,6 +3337,10 @@ msgstr "Manajemen Adaptif "
 msgid "Action|Support"
 msgstr "Dukungan "
 
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+msgid "Exported file does not validate."
+msgstr "Berkas yang diekspor tidak bisa divalidasi. "
+
 #: miradi/source/org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
 #: miradi/source/org/miradi/actions/ActionCreateActivityProgressReport.java:35
 #: miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:35
@@ -4165,10 +4191,6 @@ msgstr ""
 msgid "(Translation: %code %date)"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
-msgid "Exported file does not validate."
-msgstr "Berkas yang diekspor tidak bisa divalidasi. "
-
 #: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
 msgid "Export XML"
 msgstr "Eskpor XML "
@@ -4627,10 +4649,6 @@ msgstr "MTE (*.mte) "
 msgid "FileFilter|XLS (*.xls)"
 msgstr "XLS (*.xls) "
 
-#: miradi/source/org/miradi/utils/CpmzFileFilter.java:28
-msgid "FileFilter|ConPro Miradi Zip (*%s)"
-msgstr "Zip Conpro Miradi (*%s)"
-
 #: miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Berbatas Tab (*.txt) "
@@ -4646,7 +4664,7 @@ msgstr "Format Format Kaya Teks/Rich Text Format (*.rtf)"
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "Zip Conpro Miradi (*%s)"
 
-#: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:53
+#: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:54
 msgid "All on One Page"
 msgstr "Semua dalam Satu Halaman"
 
@@ -4665,6 +4683,10 @@ msgstr "JASPER (*.jasper) "
 #: miradi/source/org/miradi/utils/JPEGFileFilter.java:44
 msgid "FileFilter|JPEG (*.jpg)"
 msgstr "JPEG (*.jpg) "
+
+#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
+msgid "FileFilter|Miradi Project Zip (*.mpz)"
+msgstr "Zip Proyek Miradi (*.mpz) "
 
 #: miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
 msgid "Title|Save %s File"
@@ -4689,10 +4711,6 @@ msgid ""
 msgstr ""
 "Berkas tidak bisa dibuat, mungkin karena nama berkas mengandung karakter "
 "yang salah.  "
-
-#: miradi/source/org/miradi/utils/MPZFileFilter.java:28
-msgid "FileFilter|Miradi Project Zip (*.mpz)"
-msgstr "Zip Proyek Miradi (*.mpz) "
 
 #: miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:72
 msgid "Found null diagramLink.  Diagram = %s"
@@ -4754,6 +4772,10 @@ msgstr "Pindahkan butir terpilih ke atas "
 #: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
 msgid "Select Language Pack to Install"
 msgstr ""
+
+#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
+msgid "FileFilter|ConPro Miradi Zip (*%s)"
+msgstr "Zip Conpro Miradi (*%s)"
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
