@@ -29,9 +29,9 @@ import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MpzFileFilter;
 
-public class ExampleInstaller
+public class SampleInstaller
 {
-	public ExampleInstaller(AppPreferences appPreferencesToUse) throws Exception
+	public SampleInstaller(AppPreferences appPreferencesToUse) throws Exception
 	{
 		appPreferences = appPreferencesToUse;
 		installedSampleProjectCodes = appPreferences.getInstalledSampleVersions();
