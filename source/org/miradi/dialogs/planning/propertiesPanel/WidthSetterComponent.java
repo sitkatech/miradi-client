@@ -32,9 +32,10 @@ import javax.swing.JComponent;
 
 public class WidthSetterComponent extends JComponent
 {
-	public WidthSetterComponent(JComponent componentToControl)
+	public WidthSetterComponent(JComponent componentToControl, int defaultWidth)
 	{
 		controlled = componentToControl;
+		controlledWidth = defaultWidth;
 		
 		setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));
 
@@ -43,6 +44,11 @@ public class WidthSetterComponent extends JComponent
 		addMouseMotionListener(mouseHandler);
 	}
 	
+	public int getControlledWidth()
+	{
+		return controlledWidth;
+	}
+
 	@Override
 	public Dimension getSize()
 	{
@@ -72,13 +78,14 @@ public class WidthSetterComponent extends JComponent
 	
 	protected void updateWidth(int width)
 	{
-		Dimension newSize = new Dimension(width, controlled.getSize().height);
-		controlled.setSize(newSize);
-		controlled.setPreferredSize(newSize);
-		controlled.setMaximumSize(newSize);
-		controlled.setMinimumSize(newSize);
-		if(getTopLevelAncestor() != null)
-			getTopLevelAncestor().validate();
+		controlledWidth = width;
+		if(getParent() != null)
+		{
+			getParent().doLayout();
+			getParent().invalidate();
+			getParent().validate();
+			getParent().repaint();
+		}
 	}
 
 	class MouseEventHandler extends MouseAdapter implements MouseMotionListener
@@ -100,4 +107,5 @@ public class WidthSetterComponent extends JComponent
 	private static final int RIGHT_INDENT = 4;
 	
 	private JComponent controlled;
+	private int controlledWidth;
 }
