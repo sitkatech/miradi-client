@@ -71,14 +71,16 @@ public class MainNewsPanel extends DisposablePanel
 	{
 		String oldNews = mainWindow.getAppPreferences().getNewsText();
 		if (newsHtml.equals(oldNews))
+		{
 			cardLayout.show(this, OLD_NEWS_PANEL_DESCRIPTION);
+		}
 		else
+		{
 			cardLayout.show(this, NEW_NEWS_PANEL_DESCRIPTION);
-
-		getAppPreferences().setNewsText(newsHtml);
-		
-		MiradiMultiCalendar calendar = new MiradiMultiCalendar();
-		getAppPreferences().setNewsDate(calendar.toIsoDateString());
+			getAppPreferences().setNewsText(newsHtml);
+			MiradiMultiCalendar calendar = new MiradiMultiCalendar();
+			getAppPreferences().setNewsDate(calendar.toIsoDateString());
+		}
 	}
 
 	private void showNewNewsPanel()
