@@ -23,6 +23,7 @@ import org.miradi.icons.DirectThreatIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 
 public class ThreatNameColumnTableModel extends MainThreatTableModel
@@ -52,10 +53,20 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	
 	public Object getValueAt(int row, int column)
 	{
+		return getChoiceItemAt(row, column);
+	}
+
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
 		if (isThreatIconColumn(column))
-			return new TaglessChoiceItem(new DirectThreatIcon());
+			return createTaglessChoiceItemWithThreatIcon();
 		
-		return getDirectThreat(row).toString();
+		return new TaglessChoiceItem(getDirectThreat(row).toString());
+	}
+
+	public TaglessChoiceItem createTaglessChoiceItemWithThreatIcon()
+	{
+		return new TaglessChoiceItem(new DirectThreatIcon());
 	}
 
 	private boolean isThreatIconColumn(int column)
