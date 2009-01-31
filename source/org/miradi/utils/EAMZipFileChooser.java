@@ -34,7 +34,7 @@ public class EAMZipFileChooser extends EAMFileSaveChooser
 	@Override
 	public FileFilter[] getFileFilter()
 	{
-		return new FileFilter[] {new ZIPFileFilter(), new MPZFileFilter()};
+		return new FileFilter[] {new ZIPFileFilter(), new MpzFileFilterForChooserDialog()};
 	}
 	
 	@Override

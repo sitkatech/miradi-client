@@ -24,7 +24,7 @@ import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
 import org.miradi.project.ProjectUnzipper;
-import org.miradi.utils.MPZFileFilter;
+import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.ZIPFileFilter;
 
 public class ImportZippedProjectFileDoer  extends ImportProjectDoer
@@ -36,6 +36,6 @@ public class ImportZippedProjectFileDoer  extends ImportProjectDoer
 
 	public FileFilter[] getFileFilters()
 	{
-		return new FileFilter[] {new ZIPFileFilter(), new MPZFileFilter()};
+		return new FileFilter[] {new ZIPFileFilter(), new MpzFileFilterForChooserDialog()};
 	}
 }
