@@ -34,6 +34,7 @@ public class ExampleInstaller
 	public ExampleInstaller(AppPreferences appPreferencesToUse) throws Exception
 	{
 		appPreferences = appPreferencesToUse;
+		installedSampleProjectCodes = appPreferences.getInstalledSampleProjectCodes();
 	}
 	
 	public void installSampleProjects() throws Exception
@@ -43,6 +44,7 @@ public class ExampleInstaller
 		if (userConfirmsSampleProjectsInstall(installableSampleProjects))
 		{
 			installSampleProjects(installableSampleProjects);
+			getAppPreferences().setInstalledSampleProjectCodes(installedSampleProjectCodes);
 			EAM.notifyDialog(EAM.text("Sample Projects Installed"));
 		}
 	}
@@ -71,7 +73,6 @@ public class ExampleInstaller
 
 	private Vector<File> getInstallableSampleProjects(File[] allMpzFiles)
 	{
-		CodeList installedSampleProjectCodes = getAppPreferences().getInstalledSampleProjectCodes();
 		if (installedSampleProjectCodes.contains(getVersionString()))
 			return new Vector();
 		
@@ -86,8 +87,6 @@ public class ExampleInstaller
 			if (!ProjectServer.isExistingProject(newProjectDir))
 				installableSampleProjects.add(mpzFile);
 		}
-	
-		getAppPreferences().setInstalledSampleProjectCodes(installedSampleProjectCodes);
 		
 		return installableSampleProjects;
 	}
@@ -120,4 +119,5 @@ public class ExampleInstaller
 	}
 	
 	private AppPreferences appPreferences;
+	private CodeList installedSampleProjectCodes;
 }
