@@ -369,7 +369,7 @@ public class EAM
 	
 	public static void okDialog(String title, String[] body)
 	{
-		new UiNotifyDlg(getMainWindow(), title, body, new String[] {text("Button|OK")});
+		new UiNotifyDlg(getMainWindow(), title, body, new String[] {getOkButtonText()});
 	}
 
 	public static boolean confirmDialog(String title, String[] body)
@@ -381,6 +381,11 @@ public class EAM
 	public static String getCancelButtonText()
 	{
 		return text("Button|Cancel");
+	}
+	
+	public static String getOkButtonText()
+	{
+		return text("Button|OK");
 	}
 
 	public static boolean confirmDialog(String title, String[] body, String[] buttons)

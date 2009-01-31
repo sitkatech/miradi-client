@@ -21,21 +21,11 @@ package org.miradi.utils;
 
 import java.io.File;
 
-import javax.swing.filechooser.FileFilter;
-
-//NOTE Due to java having two FileFiler s and miradi needing both we have extended and implemented both FileFilers here
-abstract public class GenericMiradiFileFilter extends FileFilter implements MiradiFileFilter, java.io.FileFilter 
+public class MpzFileFilter extends MpzFileFilterForChooserDialog
 {
+	@Override
 	public boolean accept(File pathname)
 	{
-		if (pathname.isDirectory())
-			return true;
-		
 		return doesFileEndWithCorrectExtension(pathname);
-	}
-
-	protected boolean doesFileEndWithCorrectExtension(File pathname)
-	{
-		return (pathname.getName().toLowerCase().endsWith(getFileExtension()));
 	}
 }
