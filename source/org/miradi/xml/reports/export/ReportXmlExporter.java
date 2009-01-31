@@ -25,7 +25,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
@@ -53,6 +52,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.xml.XmlExporter;
 
 
@@ -68,7 +68,7 @@ public class ReportXmlExporter extends XmlExporter
 	{
 		out.writeln("<MiradiProject>");
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getProject().getFilename()) + "</FileName>");
-		out.writeln("<ExportDate>" + new MultiCalendar().toIsoDateString() + "</ExportDate>");
+		out.writeln("<ExportDate>" + new MiradiMultiCalendar().toIsoDateString() + "</ExportDate>");
 		
 		writeRating(getProject(), out, getProject().getProjectSummaryThreatRating(), "OverallProjectThreatRating");
 		exportPools(out);

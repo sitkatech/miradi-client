@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -31,6 +30,7 @@ import org.miradi.rtf.viewExporters.SummaryViewRtfExporter;
 import org.miradi.rtf.viewExporters.ThreatRatingsViewRtfExporter;
 import org.miradi.rtf.viewExporters.ViabilityViewRtfExporter;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.MiradiMultiCalendar;
 
 public class ProjectRtfExporter
 {
@@ -58,7 +58,7 @@ public class ProjectRtfExporter
 		writer.writeParCommand();
 		
 		writer.writeHeading1Style();
-		writer.writelnEncoded(EAM.text("Version: ") + new MultiCalendar().toIsoDateString());
+		writer.writelnEncoded(EAM.text("Version: ") + new MiradiMultiCalendar().toIsoDateString());
 		writer.writeParCommand();
 		writer.endBlock();
 		

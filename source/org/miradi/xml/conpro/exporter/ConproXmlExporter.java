@@ -27,7 +27,6 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Vector;
 
-import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
@@ -71,6 +70,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -797,7 +797,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			out.writeln();
 			writeElement(out, EXPORTER_VERSION, getMiradiVersionAsToken());
 			out.writeln();
-			writeElement(out, EXPORT_DATE, new MultiCalendar().toIsoDateString());
+			writeElement(out, EXPORT_DATE, new MiradiMultiCalendar().toIsoDateString());
 			out.writeln();
 			
 		writeEndElement(out, PROJECT_SUMMARY);
