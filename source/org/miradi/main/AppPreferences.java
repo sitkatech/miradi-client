@@ -140,6 +140,16 @@ public class AppPreferences
 		return newsDate;
 	}
 	
+	public void setInstalledSampleProjectCodes(CodeList installedExampleCodesToUse)
+	{
+		installedSampleProjectCodes = installedExampleCodesToUse;
+	}
+	
+	public CodeList getInstalledSampleProjectCodes()
+	{
+		return new CodeList(installedSampleProjectCodes);
+	}
+	
 	public boolean getIsCellRatingsVisible()
 	{
 		return getBoolean(AppPreferences.TAG_CELL_RATINGS_VISIBLE);
@@ -322,7 +332,7 @@ public class AppPreferences
 		json.put(TAG_LANGUAGE_CODE, languageCode);
 		json.put(TAG_NEWS_TEXT, newsText);
 		json.put(TAG_NEWS_DATE, newsDate);
-		json.put(TAG_INSTALLED_EXAMPLE_VERSIONS, installedExamples.toString());
+		json.put(TAG_INSTALLED_SAMPLE_PROJECT_CODES, installedSampleProjectCodes.toString());
 		
 		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
 		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
@@ -385,7 +395,7 @@ public class AppPreferences
 		languageCode = json.optString(TAG_LANGUAGE_CODE, DEFAULT_LANGUAGE_CODE);
 		newsText = json.optString(TAG_NEWS_TEXT);
 		newsDate = json.optString(TAG_NEWS_DATE);
-		installedExamples = new CodeList(json.optString(TAG_INSTALLED_EXAMPLE_VERSIONS));
+		installedSampleProjectCodes = new CodeList(json.optString(TAG_INSTALLED_SAMPLE_PROJECT_CODES));
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
@@ -523,7 +533,7 @@ public class AppPreferences
 	public static final String TAG_MAIN_WINDOW_Y_POSITION = "MainwWindowY";
 	public static final String TAG_NEWS_TEXT = "NewsText";
 	public static final String TAG_NEWS_DATE = "NewsDate";
-	public static final String TAG_INSTALLED_EXAMPLE_VERSIONS = "InstalledExampleVersions";
+	public static final String TAG_INSTALLED_SAMPLE_PROJECT_CODES = "InstalledSampleProjectCodes";
 	
 	public static final String TAG_GRID_VISIBLE = "GridVisible";
 	public static final String TAG_CELL_RATINGS_VISIBLE = "CellRatingsVisible";
@@ -591,7 +601,7 @@ public class AppPreferences
 	private String languageCode;
 	private String newsText;
 	private String newsDate;
-	private CodeList installedExamples;
+	private CodeList installedSampleProjectCodes;
 	
 	private double diagramZoomSetting;
 	
