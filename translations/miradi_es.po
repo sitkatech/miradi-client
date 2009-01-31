@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-29 22:01-0500\n"
+"POT-Creation-Date: 2009-01-30 22:43-0500\n"
 "PO-Revision-Date: 2008-12-02 15:17-0800\n"
 "Last-Translator: Anna\n"
 "Language-Team: Spanish\n"
@@ -194,7 +194,7 @@ msgstr "Calificaciones de viabilidad"
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:68
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:66
 #: miradi/source/org/miradi/objects/Assignment.java:134
-#: miradi/source/org/miradi/objects/FactorLink.java:219
+#: miradi/source/org/miradi/objects/FactorLink.java:227
 #, fuzzy
 msgid "Error"
 msgstr "(Error)"
@@ -668,6 +668,13 @@ msgstr "Propiedades de la cadena de resultados"
 #: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
 msgid "Title|Diagram Properties"
 msgstr "Propiedades del diagrama"
+
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:59
+msgid ""
+"<HTML>A severe error has prevented this Planning Subview from being shown."
+"<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org"
+"\">support@miradi.org<a>) for assistance</HTML>"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:195
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
@@ -1288,8 +1295,8 @@ msgstr "Se produjo un error inesperado"
 msgid "Title|Error"
 msgstr "|Error "
 
-#: miradi/source/org/miradi/main/EAM.java:397
-#: miradi/source/org/miradi/main/EAM.java:398
+#: miradi/source/org/miradi/main/EAM.java:402
+#: miradi/source/org/miradi/main/EAM.java:403
 #: miradi/source/org/miradi/views/noproject/DeleteProject.java:54
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:72
@@ -1297,12 +1304,12 @@ msgstr "|Error "
 msgid "Delete"
 msgstr "Eliminar"
 
-#: miradi/source/org/miradi/main/EAM.java:397
+#: miradi/source/org/miradi/main/EAM.java:402
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:70
 msgid "Retain"
 msgstr "Retener"
 
-#: miradi/source/org/miradi/main/EAM.java:553
+#: miradi/source/org/miradi/main/EAM.java:558
 msgid "Wintitle|Information"
 msgstr "Información"
 
@@ -1310,11 +1317,11 @@ msgstr "Información"
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Software de manejo adaptivo para proyectos de conservación"
 
-#: miradi/source/org/miradi/main/MainWindow.java:261
+#: miradi/source/org/miradi/main/MainWindow.java:262
 msgid "Information"
 msgstr "Información"
 
-#: miradi/source/org/miradi/main/MainWindow.java:459
+#: miradi/source/org/miradi/main/MainWindow.java:460
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -1324,11 +1331,11 @@ msgstr ""
 " Probablemente esté intentando cargar un proyecto anterior que contiene "
 "comandos obsoletos que ya no se admiten."
 
-#: miradi/source/org/miradi/main/MainWindow.java:464
+#: miradi/source/org/miradi/main/MainWindow.java:465
 msgid "That project is in use by another copy of this application"
 msgstr "Otra copia de esta aplicación está usando ese proyecto."
 
-#: miradi/source/org/miradi/main/MainWindow.java:468
+#: miradi/source/org/miradi/main/MainWindow.java:469
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -1336,32 +1343,32 @@ msgstr ""
 "Ese proyecto no puede abrirse porque se creó con una versión más nueva de "
 "esta aplicación."
 
-#: miradi/source/org/miradi/main/MainWindow.java:472
+#: miradi/source/org/miradi/main/MainWindow.java:473
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Ese proyecto no puede abrirse hasta que se migre al formato de datos actual."
 
-#: miradi/source/org/miradi/main/MainWindow.java:477
+#: miradi/source/org/miradi/main/MainWindow.java:478
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
-#: miradi/source/org/miradi/main/MainWindow.java:610
+#: miradi/source/org/miradi/main/MainWindow.java:611
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 "Los datos financieros/del plan de trabajo fuera de las fechas de inicio/fin "
 "del proyecto no se mostrarán."
 
-#: miradi/source/org/miradi/main/MainWindow.java:636
+#: miradi/source/org/miradi/main/MainWindow.java:637
 msgid "WARNING: Project end date before start date."
 msgstr "ADVERTENCIA: Fecha de fin del proyecto anterior a la fecha de inicio"
 
-#: miradi/source/org/miradi/main/MainWindow.java:992
+#: miradi/source/org/miradi/main/MainWindow.java:993
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
-#: miradi/source/org/miradi/main/MainWindow.java:1009
+#: miradi/source/org/miradi/main/MainWindow.java:1010
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -1431,6 +1438,21 @@ msgstr ""
 #, fuzzy
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
+
+#: miradi/source/org/miradi/main/ExampleInstaller.java:48
+#, fuzzy
+msgid "Sample Projects Installed"
+msgstr "(Ver lengüeta Proyecto)"
+
+#: miradi/source/org/miradi/main/ExampleInstaller.java:68
+#, fuzzy
+msgid "Do you want to install the sample projects"
+msgstr "¿Está seguro de que desea cambiar el nombre de este proyecto?"
+
+#: miradi/source/org/miradi/main/ExampleInstaller.java:71
+#, fuzzy
+msgid "Install Sample Projects"
+msgstr "Cambiar nombre del proyecto"
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:149
 #, fuzzy
@@ -3341,6 +3363,10 @@ msgstr "Manejo adaptivo"
 msgid "Action|Support"
 msgstr "Soporte"
 
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+msgid "Exported file does not validate."
+msgstr "No se valida el archivo exportado."
+
 #: miradi/source/org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
 #: miradi/source/org/miradi/actions/ActionCreateActivityProgressReport.java:35
 #: miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:35
@@ -4193,10 +4219,6 @@ msgstr ""
 msgid "(Translation: %code %date)"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
-msgid "Exported file does not validate."
-msgstr "No se valida el archivo exportado."
-
 #: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
 msgid "Export XML"
 msgstr "Exportar XML"
@@ -4649,10 +4671,6 @@ msgstr "MTE (*.mte)"
 msgid "FileFilter|XLS (*.xls)"
 msgstr "XLS (*.xls)"
 
-#: miradi/source/org/miradi/utils/CpmzFileFilter.java:28
-msgid "FileFilter|ConPro Miradi Zip (*%s)"
-msgstr "ConPro Miradi Zip (*%s) "
-
 #: miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Separado por tabulaciones (*.txt)"
@@ -4666,7 +4684,7 @@ msgstr "Formato Rich Text (*.rtf)"
 msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr "ConPro Miradi Zip (*%s) "
 
-#: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:53
+#: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:54
 msgid "All on One Page"
 msgstr "Todo en una página"
 
@@ -4685,6 +4703,10 @@ msgstr "JASPER (*.jasper)"
 #: miradi/source/org/miradi/utils/JPEGFileFilter.java:44
 msgid "FileFilter|JPEG (*.jpg)"
 msgstr "JPEG (*.jpg)"
+
+#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
+msgid "FileFilter|Miradi Project Zip (*.mpz)"
+msgstr "Zip del proyecto Miradi (*.mpz)"
 
 #: miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
 msgid "Title|Save %s File"
@@ -4709,10 +4731,6 @@ msgid ""
 msgstr ""
 "No se pudo crear el archivo. Esto puede ser debido a caracteres incorrectos "
 "en el nombre del archivo."
-
-#: miradi/source/org/miradi/utils/MPZFileFilter.java:28
-msgid "FileFilter|Miradi Project Zip (*.mpz)"
-msgstr "Zip del proyecto Miradi (*.mpz)"
 
 #: miradi/source/org/miradi/utils/DiagramCorruptionDetector.java:72
 msgid "Found null diagramLink.  Diagram = %s"
@@ -4776,6 +4794,10 @@ msgstr "Mover el elemento seleccionado hacia arriba"
 #: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
 msgid "Select Language Pack to Install"
 msgstr ""
+
+#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
+msgid "FileFilter|ConPro Miradi Zip (*%s)"
+msgstr "ConPro Miradi Zip (*%s) "
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
