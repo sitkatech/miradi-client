@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 import org.miradi.main.EAM;
 
-public class CpmzFileFilter extends GenericMiradiFileFilter
+public class CpmzFileFilterForChooserDialog extends GenericMiradiFileFilter
 {
 	public String getDescription()
 	{

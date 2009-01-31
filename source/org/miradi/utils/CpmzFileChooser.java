@@ -33,7 +33,7 @@ public class CpmzFileChooser extends EAMFileSaveChooser
 	@Override
 	public FileFilter[] getFileFilter()
 	{
-		return new FileFilter[] {new CpmzFileFilter()};
+		return new FileFilter[] {new CpmzFileFilterForChooserDialog()};
 	}
 
 	@Override

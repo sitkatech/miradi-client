@@ -43,7 +43,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
-import org.miradi.utils.CpmzFileFilter;
+import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.xml.conpro.importer.ConProXmlImporter;
@@ -223,7 +223,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 	@Override
 	public FileFilter[] getFileFilters()
 	{
-		return new FileFilter[] {new CpmzFileFilter()};
+		return new FileFilter[] {new CpmzFileFilterForChooserDialog()};
 	}
 
 	protected void showImportCompletedDialog() throws Exception
