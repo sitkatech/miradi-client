@@ -57,10 +57,10 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 	private int compareWithoutDirection(FileSystemTreeNode node1, FileSystemTreeNode node2)
 	{
 		if (!node1.isProjectDirectory() && node2.isProjectDirectory())
-			return 1;
+			return -1;
 		
 		if (node1.isProjectDirectory() && !node2.isProjectDirectory())
-			return -1;
+			return 1;
 		
 		return compareByTag(node1, node2);
 	}
