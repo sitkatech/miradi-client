@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 import org.miradi.main.EAM;
 
-public class MPZFileFilter extends GenericMiradiFileFilter
+public class MpzFileFilterForChooserDialog extends GenericMiradiFileFilter
 {
 	public String getDescription()
 	{

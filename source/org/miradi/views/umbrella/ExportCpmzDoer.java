@@ -41,7 +41,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.project.ProjectZipper;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.CpmzFileChooser;
-import org.miradi.utils.MPZFileFilter;
+import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
@@ -200,7 +200,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
-	public static final String PROJECT_ZIP_FILE_NAME = "project" + MPZFileFilter.EXTENSION;
+	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
 	public static final String CM_IMAGE_PREFIX = "CM";
 	public static final String RC_IMAGE_PREFIX = "RC";
 }

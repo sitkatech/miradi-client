@@ -28,7 +28,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import org.miradi.main.EAM;
-import org.miradi.utils.MPZFileFilter;
+import org.miradi.utils.MpzFileFilterForChooserDialog;
 
 public class ProjectZipper
 {
@@ -61,7 +61,7 @@ public class ProjectZipper
 			}
 			else
 			{
-				if (thisFile.getAbsolutePath().endsWith(MPZFileFilter.EXTENSION))
+				if (thisFile.getAbsolutePath().endsWith(MpzFileFilterForChooserDialog.EXTENSION))
 				{
 					EAM.logVerbose("Ignoring zipping file = " + thisFile.getAbsolutePath());
 					continue;
