@@ -34,7 +34,7 @@ public class ExampleInstaller
 	public ExampleInstaller(AppPreferences appPreferencesToUse) throws Exception
 	{
 		appPreferences = appPreferencesToUse;
-		installedSampleProjectCodes = appPreferences.getInstalledSampleProjectCodes();
+		installedSampleProjectCodes = appPreferences.getInstalledSampleVersions();
 	}
 	
 	public void installSampleProjects() throws Exception
@@ -44,7 +44,7 @@ public class ExampleInstaller
 		if (userConfirmsSampleProjectsInstall(installableSampleProjects))
 		{
 			installSampleProjects(installableSampleProjects);
-			getAppPreferences().setInstalledSampleProjectCodes(installedSampleProjectCodes);
+			getAppPreferences().setInstalledSampleVersion(installedSampleProjectCodes);
 			EAM.notifyDialog(EAM.text("Sample Projects Installed"));
 		}
 	}
