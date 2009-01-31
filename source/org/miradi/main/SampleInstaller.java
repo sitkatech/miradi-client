@@ -66,7 +66,7 @@ public class SampleInstaller
 			return false;
 		
 		String text = EAM.text("Do you want to install the sample projects");
-		String[] buttonLabels = {EAM.getOkButtonText(), EAM.getCancelButtonText()};
+		String[] buttonLabels = {EAM.text("Button|Yes"), EAM.text("Button|No")};
 			
 		return EAM.confirmDialog(EAM.text("Install Sample Projects"), new String[]{text}, buttonLabels);
 	}
