@@ -56,7 +56,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("There was a severe error when trying to construct the planning tree."));
+			EAM.errorDialog(EAM.text("<HTML>A severe error has prevented this Planning Subview from being shown.<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org\">support@miradi.org<a>) for assistance</HTML>"));
 			return new PlanningTreeErrorNode(projectToUse); 
 		}
 	}
