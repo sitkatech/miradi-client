@@ -22,20 +22,19 @@ package org.miradi.wizard.noproject;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Calendar;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 import org.martus.swing.HyperlinkHandler;
-import org.martus.util.MultiCalendar;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.Translation;
 import org.miradi.wizard.MiradiHtmlViewer;
@@ -78,16 +77,10 @@ public class MainNewsPanel extends DisposablePanel
 
 		getAppPreferences().setNewsText(newsHtml);
 		
-		Calendar calendar = Calendar.getInstance();
-		getAppPreferences().setNewsDate(MultiCalendar.createFromGregorianYearMonthDay(calendar.get(Calendar.YEAR), getGregorgianMonth(calendar), calendar.get(Calendar.DAY_OF_MONTH)).toIsoDateString());
+		MiradiMultiCalendar calendar = new MiradiMultiCalendar();
+		getAppPreferences().setNewsDate(calendar.toIsoDateString());
 	}
 
-	private int getGregorgianMonth(Calendar calendar)
-	{
-		int month = calendar.get(Calendar.MONTH);
-		return (month + 1);
-	}
-	
 	private void showNewNewsPanel()
 	{
 		cardLayout.show(this, NEW_NEWS_PANEL_DESCRIPTION);
