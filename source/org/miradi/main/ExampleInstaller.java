@@ -72,6 +72,10 @@ public class ExampleInstaller
 	private Vector<File> getInstallableSampleProjects(File[] allMpzFiles)
 	{
 		CodeList installedSampleProjectCodes = getAppPreferences().getInstalledSampleProjectCodes();
+		if (installedSampleProjectCodes.contains(getVersionString()))
+			return new Vector();
+		
+		installedSampleProjectCodes.add(getVersionString());
 		Vector<File> installableSampleProjects = new Vector(); 
 		File homeDir = EAM.getHomeDirectory();
 		for (int index = 0; index < allMpzFiles.length; ++index)
@@ -79,11 +83,8 @@ public class ExampleInstaller
 			File mpzFile = allMpzFiles[index];
 			String validatedName = getValidatedProjectNameWithoutExtension(mpzFile);
 			File newProjectDir = new File(homeDir, validatedName);
-			if (!ProjectServer.isExistingProject(newProjectDir) && !installedSampleProjectCodes.contains(validatedName))
-			{
+			if (!ProjectServer.isExistingProject(newProjectDir))
 				installableSampleProjects.add(mpzFile);
-				installedSampleProjectCodes.add(validatedName);
-			}
 		}
 	
 		getAppPreferences().setInstalledSampleProjectCodes(installedSampleProjectCodes);
@@ -111,6 +112,11 @@ public class ExampleInstaller
 	private AppPreferences getAppPreferences()
 	{
 		return appPreferences;
+	}
+	
+	private String getVersionString()
+	{
+		return VersionConstants.VERSION_STRING;
 	}
 	
 	private AppPreferences appPreferences;
