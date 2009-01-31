@@ -23,8 +23,8 @@ import java.io.File;
 
 import javax.swing.filechooser.FileFilter;
 
-
-abstract public class GenericMiradiFileFilter extends FileFilter implements MiradiFileFilter 
+//NOTE Due to java having two FileFiler s and miradi needing both we have extended and implemented both FileFilers here
+abstract public class GenericMiradiFileFilter extends FileFilter implements MiradiFileFilter, java.io.FileFilter 
 {
 	public boolean accept(File pathname)
 	{
