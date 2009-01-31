@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
@@ -28,6 +29,7 @@ import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -35,7 +37,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
 import org.miradi.utils.ObjectsActionButton;
-import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
@@ -131,15 +132,50 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		add(tables, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
+	
+	static class AssignmentsComponentTableScrollPane extends ScrollPaneWithHideableScrollBar
+	{
+		public AssignmentsComponentTableScrollPane(AssignmentsComponentTable contents)
+		{
+			super(contents);
+			setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);
+			setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
+			widthSetter = new PersistentWidthSetterComponent(contents.getMainWindow(), this, contents.getUniqueTableIdentifier(), getPreferredSize().width);
+		}
+		
+		public PersistentWidthSetterComponent getWidthSetterComponent()
+		{
+			return widthSetter;
+		}
+		
+		@Override
+		public Dimension getPreferredSize()
+		{
+			final Dimension size = super.getPreferredSize();
+			if(widthSetter != null)
+				size.width = widthSetter.getControlledWidth();
+			return size;
+		}
+		
+		@Override
+		public Dimension getSize()
+		{
+			final Dimension size = super.getSize();
+			if(widthSetter != null)
+				size.width = widthSetter.getControlledWidth();
+			return size;
+		}
+		
+		private PersistentWidthSetterComponent widthSetter;
+	}
 
-	private UiScrollPane addTableToPanel(OneRowPanel tables, TableWithRowHeightSaver table)
+	private UiScrollPane addTableToPanel(OneRowPanel tables, AssignmentsComponentTable table)
 	{
 		addRowHeightControlledTable(table);
-		UiScrollPane scroller = new ScrollPaneWithInvisibleVerticalScrollBar(table);
+		AssignmentsComponentTableScrollPane scroller = new AssignmentsComponentTableScrollPane(table);
 		addToVerticalController(scroller);
 		tables.add(scroller);
-		PersistentWidthSetterComponent widthSetter = new PersistentWidthSetterComponent(getMainWindow(), scroller, table.getUniqueTableIdentifier());
-		tables.add(widthSetter);
+		tables.add(scroller.getWidthSetterComponent());
 		return scroller;
 	}
 	

@@ -26,9 +26,9 @@ import org.miradi.main.MainWindow;
 
 public class PersistentWidthSetterComponent extends WidthSetterComponent
 {
-	public PersistentWidthSetterComponent(MainWindow mainWindowToUse, JComponent componentToControl, String nameToUse)
+	public PersistentWidthSetterComponent(MainWindow mainWindowToUse, JComponent componentToControl, String nameToUse, int defaultWidth)
 	{
-		super(componentToControl);
+		super(componentToControl, defaultWidth);
 		
 		mainWindow = mainWindowToUse;
 		name = nameToUse;
