@@ -70,5 +70,5 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	
 	public static final int THREAT_ICON_COLUMN_INDEX = 0;
 	public static final int THREAT_NAME_COLUMN_INDEX = 1;
-	private static final int COLUMN_COUNT = 2;
+	public static final int COLUMN_COUNT = 2;
 }

@@ -140,12 +140,12 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 
 	private boolean isFirstBlankTableSummaryRow(int column)
 	{
-		return column == 0;
+		return column < ThreatNameColumnTableModel.COLUMN_COUNT;
 	}
 
 	private int convertToSummaryTableColumn(int column)
 	{
-		int BLANK_FIRST_COLUMN_COUNT = 1;
+		int BLANK_FIRST_COLUMN_COUNT = ThreatNameColumnTableModel.COLUMN_COUNT;
 		
 		return column - BLANK_FIRST_COLUMN_COUNT;
 	}
