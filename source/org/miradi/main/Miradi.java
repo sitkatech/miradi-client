@@ -154,7 +154,7 @@ public class Miradi
 		System.out.println("Added jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
 	}
 	
-	private static File getAppCodeDirectory() throws URISyntaxException
+	public static File getAppCodeDirectory() throws URISyntaxException
 	{
 		final URL resourceUrl = Miradi.class.getResource("/resources");
 		String imagesURIString = resourceUrl.toURI().getSchemeSpecificPart();
