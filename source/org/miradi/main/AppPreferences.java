@@ -140,14 +140,14 @@ public class AppPreferences
 		return newsDate;
 	}
 	
-	public void setInstalledSampleProjectCodes(CodeList installedExampleCodesToUse)
+	public void setInstalledSampleVersion(CodeList installedSampleVersionsToUse)
 	{
-		installedSampleProjectCodes = installedExampleCodesToUse;
+		installedSampleVersions = installedSampleVersionsToUse;
 	}
 	
-	public CodeList getInstalledSampleProjectCodes()
+	public CodeList getInstalledSampleVersions()
 	{
-		return new CodeList(installedSampleProjectCodes);
+		return new CodeList(installedSampleVersions);
 	}
 	
 	public boolean getIsCellRatingsVisible()
@@ -332,7 +332,7 @@ public class AppPreferences
 		json.put(TAG_LANGUAGE_CODE, languageCode);
 		json.put(TAG_NEWS_TEXT, newsText);
 		json.put(TAG_NEWS_DATE, newsDate);
-		json.put(TAG_INSTALLED_SAMPLE_PROJECT_CODES, installedSampleProjectCodes.toString());
+		json.put(TAG_INSTALLED_SAMPLE_PROJECT_CODES, installedSampleVersions.toString());
 		
 		json.put(TAG_WIZARD_FONT_FAMILY, wizardFontFamily);
 		json.put(TAG_WIZARD_FONT_SIZE, Integer.toString(wizardFontSize));
@@ -395,7 +395,7 @@ public class AppPreferences
 		languageCode = json.optString(TAG_LANGUAGE_CODE, DEFAULT_LANGUAGE_CODE);
 		newsText = json.optString(TAG_NEWS_TEXT);
 		newsDate = json.optString(TAG_NEWS_DATE);
-		installedSampleProjectCodes = new CodeList(json.optString(TAG_INSTALLED_SAMPLE_PROJECT_CODES));
+		installedSampleVersions = new CodeList(json.optString(TAG_INSTALLED_SAMPLE_PROJECT_CODES));
 		
 		wizardFontFamily = json.optString(TAG_WIZARD_FONT_FAMILY);
 		wizardFontSize = json.optInt(TAG_WIZARD_FONT_SIZE);
@@ -601,7 +601,7 @@ public class AppPreferences
 	private String languageCode;
 	private String newsText;
 	private String newsDate;
-	private CodeList installedSampleProjectCodes;
+	private CodeList installedSampleVersions;
 	
 	private double diagramZoomSetting;
 	
