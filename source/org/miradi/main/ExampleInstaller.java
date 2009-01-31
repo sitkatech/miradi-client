@@ -101,8 +101,11 @@ public class ExampleInstaller
 	private File[] getMpzFilesUnderAppDir() throws URISyntaxException
 	{
 		File appDir = Miradi.getAppCodeDirectory();
+		File[] files = appDir.listFiles(new MpzFileFilter());
+		if (files == null)
+			return new File[0];
 		
-		return appDir.listFiles(new MpzFileFilter());
+		return files;
 	}
 	
 	private AppPreferences getAppPreferences()
