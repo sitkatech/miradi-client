@@ -44,6 +44,7 @@ import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MainThreatTableModelExporter;
+import org.miradi.utils.ThreatNameTableModelExporter;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatRatingMultiTablePanel extends MultiTablePanel implements ListSelectionListener 
@@ -112,7 +113,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	private ThreatRatingMultiTableAsOneExporter createExporter()
 	{
 		ThreatRatingMultiTableAsOneExporter exporter = new ThreatRatingMultiTableAsOneExporter();
-		exporter.addAsTopRowTable(new MainThreatTableModelExporter(threatNameTableModel));
+		exporter.addAsTopRowTable(new ThreatNameTableModelExporter(threatNameTableModel));
 		exporter.addAsTopRowTable(new MainThreatTableModelExporter(targetThreatLinkTableModel));
 		exporter.addAsTopRowTable(new MainThreatTableModelExporter(threatSummaryColumnTableModel));
 		exporter.setTargetSummaryRowTable(new MainThreatTableModelExporter(targetSummaryRowTableModel));
