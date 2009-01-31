@@ -176,13 +176,12 @@ public class RtfWriter
 	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
 	{
 		writeRtfCommand(ROW_HEADER);
-		writeCellCommands(exportableTable);
+		writeCellCommands(exportableTable, row);
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
 			writeRaw(PRE_CELL_COMMAND);
 		
 			ChoiceItem choiceItem = exportableTable.getChoiceItemAt(row, column);
-			writeCellBackgroundColorCommand(choiceItem);
 			Icon cellIcon = choiceItem.getIcon();
 			if (cellIcon != null)
 			{
@@ -222,7 +221,17 @@ public class RtfWriter
 		writeRaw(backgroundColorAsString);
 	}
 
-	private void writeCellCommands(AbstractTableExporter exportableTable) throws Exception
+	private void writeCellCommands(AbstractTableExporter exportableTable, int row) throws Exception
+	{
+		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
+		{
+			ChoiceItem choiceItem = exportableTable.getChoiceItemAt(row, column);
+			writeCellBackgroundColorCommand(choiceItem);
+			writelnRaw(createCellxCommand(column));	
+		}
+	}
+	
+	private void writeCellCommandsWithoutBackground(AbstractTableExporter exportableTable) throws Exception
 	{
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
@@ -243,7 +252,7 @@ public class RtfWriter
 	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
 	{
 		writelnRaw(TABLE_ROW_HEADER);
-		writeCellCommands(exportableTable);
+		writeCellCommandsWithoutBackground(exportableTable);
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.COLUMN_HEADER_STYLE_TAG);
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
@@ -472,7 +481,7 @@ public class RtfWriter
 	public static final String END_BLOCK = "}";
 	public static final String SEMI_COLON = ";";
 	public static final String COLOR_TABLE_COMMAND = "\\colortbl";
-	public static final String BACKGROUND_COLOR_COMMAND = "\\cbpat";
+	public static final String BACKGROUND_COLOR_COMMAND = "\\clcbpat";
 	public static final String CELL_X_COMMAND = "\\clftsWidth1\\cellx";
 	public static final String CELL_COMMAND = "\\cell \\pard ";
 	public static final String ROW_COMMAND = "\\row \\pard";
