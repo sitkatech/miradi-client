@@ -28,13 +28,14 @@ import org.martus.swing.HyperlinkHandler;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.VersionConstants;
 import org.miradi.utils.RemoteHtmlRetriever;
 import org.miradi.utils.Translation;
 import org.miradi.wizard.WizardRightSideHtmlViewer;
 
 public class NewsPanel extends WizardRightSideHtmlViewer
 {
-	public NewsPanel(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler, MainNewsPanel mainNewsPanelToUse)
+	public NewsPanel(MainWindow mainWindow, HyperlinkHandler hyperLinkHandler, MainNewsPanel mainNewsPanelToUse) throws Exception
 	{
 		super(mainWindow, hyperLinkHandler);
 		
@@ -42,7 +43,7 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 		setBackground(AppPreferences.getSideBarBackgroundColor());
 		try
 		{
-			new NewsRetriever().start();
+			new NewsRetriever(constructUrl()).start();
 		}
 		catch(MalformedURLException e)
 		{
@@ -50,11 +51,20 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 		}
 	}
 	
+	private static URL constructUrl() throws Exception
+	{
+		final String VERSION_HEADER = "?version=" + VersionConstants.VERSION_STRING;
+		final String BUILD_HEADER = "&build=" + VersionConstants.TIMESTAMP_STRING;
+		final String NEWS_ADDRESS = "https://miradi.org/rest/latestnews";
+		
+		return new URL((NEWS_ADDRESS + VERSION_HEADER  + BUILD_HEADER));
+	}
+	
 	class NewsRetriever extends RemoteHtmlRetriever
 	{
-		public NewsRetriever() throws MalformedURLException
+		public NewsRetriever(URL url)
 		{
-			super(new URL("https://miradi.org/rest/latestnews"));
+			super(url);
 		}
 
 		public void run()
