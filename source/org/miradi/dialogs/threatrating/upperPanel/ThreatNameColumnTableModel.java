@@ -43,8 +43,8 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 		if (isThreatIconColumn(column))
 			return "";
 		
-		final String RIGHT_ARROW = "\u2192";
-		final String DOWN_ARROW = "\u2193";
+		final String RIGHT_ARROW = "\u21D2";
+		final String DOWN_ARROW = "\u21D3";
 		return DOWN_ARROW + EAM.text("Threats") + DOWN_ARROW + " / "+ RIGHT_ARROW + EAM.text("Targets") + RIGHT_ARROW;
 	}
 	
