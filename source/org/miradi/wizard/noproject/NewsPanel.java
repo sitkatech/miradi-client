@@ -53,11 +53,11 @@ public class NewsPanel extends WizardRightSideHtmlViewer
 	
 	private static URL constructUrl() throws Exception
 	{
-		final String VERSION_HEADER = "?version=" + VersionConstants.VERSION_STRING;
-		final String BUILD_HEADER = "&build=" + VersionConstants.TIMESTAMP_STRING;
+		final String VERSION_HEADER = "version=" + VersionConstants.VERSION_STRING;
+		final String BUILD_HEADER = "build=" + VersionConstants.TIMESTAMP_STRING;
 		final String NEWS_ADDRESS = "https://miradi.org/rest/latestnews";
 		
-		return new URL((NEWS_ADDRESS + VERSION_HEADER  + BUILD_HEADER));
+		return new URL((NEWS_ADDRESS + "?" + VERSION_HEADER + "&"+  BUILD_HEADER));
 	}
 	
 	class NewsRetriever extends RemoteHtmlRetriever
