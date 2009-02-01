@@ -43,7 +43,9 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 		if (isThreatIconColumn(column))
 			return "";
 		
-		return "<HTML><B>" + EAM.text("&darr; Threats &darr; \\ &rarr; Targets &rarr;") + "</B></HTML> ";
+		final String RIGHT_ARROW = "\u2192";
+		final String DOWN_ARROW = "\u2193";
+		return DOWN_ARROW + EAM.text("Threats") + DOWN_ARROW + " / "+ RIGHT_ARROW + EAM.text("Targets") + RIGHT_ARROW;
 	}
 	
 	public String getColumnTag(int column)
