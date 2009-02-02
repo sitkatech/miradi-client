@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 22:43-0500\n"
+"POT-Creation-Date: 2009-02-02 11:31-0500\n"
 "PO-Revision-Date: 2008-12-02 15:17-0800\n"
 "Last-Translator: Anna\n"
 "Language-Team: Spanish\n"
@@ -298,16 +298,21 @@ msgstr "Elementos etiquetados "
 msgid "Title|Tag Properties Panel"
 msgstr "Panel de propiedades de etiqueta "
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:45
-msgid "&darr; Threats &darr; \\ &rarr; Targets &rarr;"
-msgstr ""
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+msgid "Threats"
+msgstr "Amenazas"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:211
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#, fuzzy
+msgid "Targets"
+msgstr "Objeto "
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:212
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "Calificación de objeto de resumen"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:355
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:356
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -1439,19 +1444,29 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
-#: miradi/source/org/miradi/main/ExampleInstaller.java:48
+#: miradi/source/org/miradi/main/SampleInstaller.java:48
 #, fuzzy
-msgid "Sample Projects Installed"
+msgid "Sample Project Installed"
 msgstr "(Ver lengüeta Proyecto)"
 
-#: miradi/source/org/miradi/main/ExampleInstaller.java:68
+#: miradi/source/org/miradi/main/SampleInstaller.java:68
 #, fuzzy
-msgid "Do you want to install the sample projects"
+msgid "Do you want to install the sample project?"
 msgstr "¿Está seguro de que desea cambiar el nombre de este proyecto?"
 
-#: miradi/source/org/miradi/main/ExampleInstaller.java:71
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
 #, fuzzy
-msgid "Install Sample Projects"
+msgid "Button|Yes"
+msgstr "Compartido"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+#, fuzzy
+msgid "Button|No"
+msgstr "OK"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:71
+#, fuzzy
+msgid "Install Sample Project"
 msgstr "Cambiar nombre del proyecto"
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:149
@@ -2757,7 +2772,7 @@ msgid "Target Viability - Details"
 msgstr "Viabilidad del objeto "
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
-#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
+#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
 msgid "Legend Table"
 msgstr "Tabla de leyendas"
 
@@ -3163,11 +3178,11 @@ msgstr "¿Está seguro?"
 msgid "Button|Ok"
 msgstr "Ok"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:58
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
 msgid "Data was exported as tab delimited."
 msgstr "Los datos se exportaron separados por tabuladores."
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:63
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Se produjo un error al intentar exportar a un archivo separado por "
@@ -6627,7 +6642,7 @@ msgstr ""
 msgid "Create Failed:"
 msgstr "Falló la creación"
 
-#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:136
+#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
 msgid "View News"
 msgstr ""
 
@@ -32649,9 +32664,6 @@ msgstr ""
 
 #~ msgid "[ERROR]"
 #~ msgstr "[ERROR]"
-
-#~ msgid "Threats"
-#~ msgstr "Amenazas"
 
 #~ msgid "StrategyCoreSubpanel"
 #~ msgstr "Subpanel principal de la estrategia"
