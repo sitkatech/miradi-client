@@ -71,17 +71,7 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
-		if (isTopRowTable(row))
-			return super.getIconAt(row, column);
-
-		if (isFirstBlankTableSummaryRow(column))
-			return null;
-
-		int columnWithinSummaryTable = convertToSummaryTableColumn(column);		
-		if (isColumnWithinSummaryTable(columnWithinSummaryTable))
-			return targetSummaryRowTable.getIconAt(0, columnWithinSummaryTable);
-		
-		return overallProjectRatingSummaryTable.getIconAt(0, 0);
+		return null;
 	}
 	
 	@Override
@@ -124,18 +114,8 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	
 	@Override
 	public String getTextAt(int row, int column)
-	{	
-		if (isTopRowTable(row))
-			return super.getTextAt(row, column);
-
-		if (isFirstBlankTableSummaryRow(column))
-			return "";
-
-		int columnWithinSummaryTable = convertToSummaryTableColumn(column);		
-		if (isColumnWithinSummaryTable(columnWithinSummaryTable) )
-			return targetSummaryRowTable.getTextAt(0, columnWithinSummaryTable);
-		
-		return overallProjectRatingSummaryTable.getTextAt(0, 0);
+	{
+		return null;
 	}
 
 	private boolean isFirstBlankTableSummaryRow(int column)
