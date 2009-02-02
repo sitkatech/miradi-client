@@ -37,7 +37,7 @@ public class LastProjectModifiedTimeHelper
 	{
 		try
 		{
-			File lastModifiedTimeFile = createLastModifiedTimeFile(projectDir);
+			File lastModifiedTimeFile = getLastModifiedTimeFile(projectDir);
 			if (lastModifiedTimeFile.exists())
 				return UnicodeStringReader.getFileContents(lastModifiedTimeFile);
 			
@@ -55,7 +55,7 @@ public class LastProjectModifiedTimeHelper
 	{
 		String currentTime = FileSystemTreeNode.timestampToString(Calendar.getInstance().getTimeInMillis());
 		byte[] bytes = currentTime.getBytes("UTF-8");
-		File projectLastModifiedTimeFile = createLastModifiedTimeFile(projectDir);
+		File projectLastModifiedTimeFile = getLastModifiedTimeFile(projectDir);
 		FileOutputStream outputStream = new FileOutputStream(projectLastModifiedTimeFile);
 		try
 		{
@@ -67,7 +67,7 @@ public class LastProjectModifiedTimeHelper
 		}
 	}
 
-	private static File createLastModifiedTimeFile(File projectDir)
+	private static File getLastModifiedTimeFile(File projectDir)
 	{
 		return new File(projectDir, LAST_MODIFIED_FILE_NAME);
 	}
