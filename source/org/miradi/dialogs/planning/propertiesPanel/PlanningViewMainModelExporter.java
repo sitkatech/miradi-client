@@ -21,8 +21,6 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
@@ -75,12 +73,6 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return getModel().getColumnCount();
 	}
 
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
-	}
-	
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
