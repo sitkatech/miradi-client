@@ -25,6 +25,7 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiTabDelimitedFileChooser;
 import org.miradi.views.ViewDoer;
@@ -99,11 +100,12 @@ public class ExportTableDoer extends ViewDoer
 
 	private String getSafeValue(AbstractTableExporter table, int row, int column)
 	{
-		Object value = table.getTextAt(row, column);
-		if (value == null)
+		ChoiceItem choiceItem = table.getChoiceItemAt(row, column);
+		String label = choiceItem.getLabel();
+		if (label == null)
 			return "";
 		
-		return value.toString();
+		return label;
 	}
 
 	private void putHeaders(UnicodeWriter out, AbstractTableExporter table, int maxDepeth) throws Exception
