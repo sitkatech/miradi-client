@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 22:43-0500\n"
+"POT-Creation-Date: 2009-02-02 11:31-0500\n"
 "PO-Revision-Date: 2008-11-25 07:05-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Chinese\n"
@@ -296,16 +296,21 @@ msgstr "加标签的条目"
 msgid "Title|Tag Properties Panel"
 msgstr "标题|标签属性面板"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:45
-msgid "&darr; Threats &darr; \\ &rarr; Targets &rarr;"
-msgstr ""
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+msgid "Threats"
+msgstr "威胁因子 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:211
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#, fuzzy
+msgid "Targets"
+msgstr "对象"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:212
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "对象评级概要 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:355
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:356
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -1406,19 +1411,29 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "未知错误阻止打开项目 \t\t"
 
-#: miradi/source/org/miradi/main/ExampleInstaller.java:48
+#: miradi/source/org/miradi/main/SampleInstaller.java:48
 #, fuzzy
-msgid "Sample Projects Installed"
+msgid "Sample Project Installed"
 msgstr "（参见项目标签） \t\t"
 
-#: miradi/source/org/miradi/main/ExampleInstaller.java:68
+#: miradi/source/org/miradi/main/SampleInstaller.java:68
 #, fuzzy
-msgid "Do you want to install the sample projects"
+msgid "Do you want to install the sample project?"
 msgstr "您是否确定要重命名项目： \t\t"
 
-#: miradi/source/org/miradi/main/ExampleInstaller.java:71
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
 #, fuzzy
-msgid "Install Sample Projects"
+msgid "Button|Yes"
+msgstr "共享的 \t\t"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+#, fuzzy
+msgid "Button|No"
+msgstr "确定 \t\t"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:71
+#, fuzzy
+msgid "Install Sample Project"
 msgstr "重命名项目 \t\t"
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:149
@@ -2666,7 +2681,7 @@ msgid "Target Viability - Details"
 msgstr "对象生存力"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
-#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
+#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
 msgid "Legend Table"
 msgstr "图例表格 "
 
@@ -3070,11 +3085,11 @@ msgstr "您确定? \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:58
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
 msgid "Data was exported as tab delimited."
 msgstr "数据以制表符分隔格式导出 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:63
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
 
@@ -6401,7 +6416,7 @@ msgstr "注：项目文件名包含字母、数字、空格、逗号、破折号
 msgid "Create Failed:"
 msgstr "创建失败： \t\t"
 
-#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:136
+#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
 msgid "View News"
 msgstr ""
 
@@ -28874,9 +28889,6 @@ msgstr "Zambezian盐沼___AT___非洲界___9___洪泛草地和稀树草原___AT0
 
 #~ msgid "[ERROR]"
 #~ msgstr "[错误] \t\t"
-
-#~ msgid "Threats"
-#~ msgstr "威胁因子 \t\t"
 
 #~ msgid "StrategyCoreSubpanel"
 #~ msgstr "策略核心子面板 \t\t"
