@@ -24,6 +24,7 @@ import java.io.IOException;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
@@ -97,24 +98,25 @@ public class PlanningTreeXmlExporter
 	
 	private String getSafeValue(AbstractTableExporter table, int row, int column, String objectTypeName)
 	{
-		Object value = table.getTextAt(row, column);
-		if (value == null)
+		ChoiceItem choiceItem = table.getChoiceItemAt(row, column);
+		String label = choiceItem.getLabel();
+		if (label == null)
 			return "";
 		
-		value = appendObjectTypeName(column, objectTypeName, value);
+		label = appendObjectTypeName(column, objectTypeName, label);
 		
-		return XmlUtilities.getXmlEncoded(value.toString());
+		return XmlUtilities.getXmlEncoded(label.toString());
 	}
 
-	private Object appendObjectTypeName(int column, String objectTypeName, Object value)
+	private String appendObjectTypeName(int column, String objectTypeName, String label)
 	{
 		final int ITEM_COLUMN_INDEX = 0;
-		if (column == ITEM_COLUMN_INDEX && value.toString().length() > 0)
+		if (column == ITEM_COLUMN_INDEX && label.toString().length() > 0)
 		{
-			value = objectTypeName + ": " + value;
+			label = objectTypeName + ": " + label;
 		}
 			
-		return value;
+		return label;
 	}
 	
 	private boolean isTreeColumn(int column)
