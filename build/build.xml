@@ -129,9 +129,11 @@
   <target name="build" depends="init, ThirdParty" description="Compile Miradi">
     <mkdir dir="${eam.class.root}"/>
 
-    <javac target="1.5" optimize="on" srcdir="${eam.src.root}" destdir="${eam.class.root}" failonerror="true">
-            <classpath refid="eam.class.path"/>
-            <include name="**/*.java"/>
+    <javac source="1.5" target="1.5" optimize="on" failonerror="true" 
+    		srcdir="${eam.src.root}" destdir="${eam.class.root}" >
+    	<compilerarg value="-Xlint:unchecked" />
+        <classpath refid="eam.class.path"/>
+        <include name="**/*.java"/>
     </javac>
     
   </target>
