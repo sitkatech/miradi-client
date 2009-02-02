@@ -42,7 +42,10 @@ public class LastProjectModifiedTimeHelper
 				return UnicodeStringReader.getFileContents(lastModifiedTimeFile);
 			
 			long lastModifiedMillisFromOperatingSystem = projectDir.lastModified();
-			return FileSystemTreeNode.timestampToString(lastModifiedMillisFromOperatingSystem);
+			String lastModifiedTimeFromOperatingSystem = FileSystemTreeNode.timestampToString(lastModifiedMillisFromOperatingSystem);
+			attemptToWriteLastModifiedTime(projectDir, lastModifiedTimeFromOperatingSystem);
+			
+			return lastModifiedTimeFromOperatingSystem;
 		}
 		catch (Exception e)
 		{
@@ -54,7 +57,12 @@ public class LastProjectModifiedTimeHelper
 	public void attemptToWriteCurrentTime(File projectDir) throws Exception
 	{
 		String currentTime = FileSystemTreeNode.timestampToString(Calendar.getInstance().getTimeInMillis());
-		byte[] bytes = currentTime.getBytes("UTF-8");
+		attemptToWriteLastModifiedTime(projectDir, currentTime);
+	}
+
+	private static void attemptToWriteLastModifiedTime(File projectDir, String lastModifiedTime) throws Exception
+	{
+		byte[] bytes = lastModifiedTime.getBytes("UTF-8");
 		File projectLastModifiedTimeFile = getLastModifiedTimeFile(projectDir);
 		FileOutputStream outputStream = new FileOutputStream(projectLastModifiedTimeFile);
 		try
