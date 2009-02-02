@@ -64,6 +64,11 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
+		return null;
+	}
+
+	private Icon getIcon(int row, int column)
+	{
 		//FIXME is there a better way to get the choice time rather than instanceof
 		Object value = getObjectTableModel().getValueAt(row, column);
 		if (value instanceof ChoiceItem)
@@ -72,10 +77,20 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 		return null;
 	}
 	
+	private String getText(int row, int column)
+	{
+		Object value = getObjectTableModel().getValueAt(row, column);
+		ChoiceQuestion question = getChoiceQuestion(column);
+		if (getObjectTableModel().isCodeListColumn(column))
+			return createExportableCodeList((CodeList) value, question);
+		
+		return getSafeValue(value);
+	}
+	
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return new TaglessChoiceItem(getTextAt(row, column), getIconAt(row, column));
+		return new TaglessChoiceItem(getText(row, column), getIcon(row, column));
 	}
 
 	@Override
@@ -99,12 +114,7 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	@Override
 	public String getTextAt(int row, int column)
 	{
-		Object value = getObjectTableModel().getValueAt(row, column);
-		ChoiceQuestion question = getChoiceQuestion(column);
-		if (getObjectTableModel().isCodeListColumn(column))
-			return createExportableCodeList((CodeList) value, question);
-		
-		return getSafeValue(value);
+		return "";
 	}
 
 	private ChoiceQuestion getChoiceQuestion(int column)
