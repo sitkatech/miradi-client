@@ -21,8 +21,6 @@ package org.miradi.dialogs.threatrating.upperPanel;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -69,12 +67,6 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	}
 	
 	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
-	}
-	
-	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
 		if (isTopRowTable(row))
@@ -112,12 +104,6 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 		return null;
 	}
 	
-	@Override
-	public String getTextAt(int row, int column)
-	{
-		return null;
-	}
-
 	private boolean isFirstBlankTableSummaryRow(int column)
 	{
 		return column < ThreatNameColumnTableModel.COLUMN_COUNT;
