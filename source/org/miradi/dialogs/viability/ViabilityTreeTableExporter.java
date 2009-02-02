@@ -21,7 +21,6 @@ package org.miradi.dialogs.viability;
 
 import javax.swing.Icon;
 
-import org.miradi.icons.ColoredIcon;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.TreeTableExporter;
@@ -59,13 +58,7 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 
 		int modelColumn = getViabilityTreeTable().convertColumnIndexToModel(column);
 		if (getViabilityTreeTable().isChoiceItemCell(row, modelColumn))
-		{
-			ChoiceItem choiceItem = (ChoiceItem) valueAt;
-			ColoredIcon rowRatingIcon = new ColoredIcon(choiceItem.getColor());
-			choiceItem.setIcon(rowRatingIcon);
-						
-			return choiceItem;	
-		}
+			return (ChoiceItem) valueAt;
 		
 		return super.getChoiceItemAt(row, modelColumn);
 	}
