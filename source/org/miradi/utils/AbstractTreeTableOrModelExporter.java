@@ -83,6 +83,11 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 	@Override
 	public Icon getIconAt(int row, int column)
 	{
+		return null;
+	}
+
+	private Icon getIcon(int row, int column)
+	{
 		if (isTreeColumn(column))
 		{
 			BaseObject baseObject = getBaseObjectForRow(row);
@@ -99,7 +104,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return new TaglessChoiceItem(getTextAt(row, column), getIconAt(row, column));
+		return new TaglessChoiceItem(getTextAt(row, column), getIcon(row, column));
 	}
 
 	protected boolean isTreeColumn(int column)
