@@ -80,12 +80,6 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 		return maxRowDepth;
 	}
 	
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
-	}
-
 	private Icon getIcon(int row, int column)
 	{
 		if (isTreeColumn(column))

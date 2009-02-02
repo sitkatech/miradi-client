@@ -21,8 +21,6 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
@@ -78,12 +76,6 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 		return mainThreatTableModel.getColumnName(column);
 	}
 
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
-	}
-	
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{

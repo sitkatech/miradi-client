@@ -61,12 +61,6 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 		return getObjectTableModel().getColumnName(column);
 	}
 
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
-	}
-
 	private Icon getIcon(int row, int column)
 	{
 		//FIXME is there a better way to get the choice time rather than instanceof

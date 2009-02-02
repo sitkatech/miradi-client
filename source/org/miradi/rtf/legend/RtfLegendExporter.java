@@ -21,8 +21,6 @@ package org.miradi.rtf.legend;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -98,12 +96,6 @@ class LegendModelExporter extends AbstractTableExporter
 	public String getHeaderFor(int column)
 	{
 		return EAM.text("Legend Table");
-	}
-
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
 	}
 	
 	@Override

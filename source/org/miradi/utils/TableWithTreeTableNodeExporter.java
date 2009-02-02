@@ -21,8 +21,6 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -60,12 +58,6 @@ public class TableWithTreeTableNodeExporter extends AbstractTableExporter
 		return table.getColumnName(column);
 	}
 
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
-	}
-	
 	@Override
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{

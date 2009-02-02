@@ -21,8 +21,6 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
@@ -88,12 +86,6 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
 		return tableAndColumnHolder.getTable().getHeaderFor(tableAndColumnHolder.getColumn());
-	}
-	
-	@Override
-	public Icon getIconAt(int row, int column)
-	{
-		return null;
 	}
 	
 	@Override

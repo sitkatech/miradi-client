@@ -21,8 +21,6 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
-import javax.swing.Icon;
-
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
@@ -35,7 +33,6 @@ public abstract class AbstractTableExporter
 	abstract public int getColumnCount();
 	abstract public int getRowCount();
 	abstract public String getTextAt(int row, int column);
-	abstract public Icon getIconAt(int row, int column);
 	abstract public ChoiceItem getChoiceItemAt(int row, int column);
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
