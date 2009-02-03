@@ -771,8 +771,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			if(isDeleteVisibleDiagramFactorCommand(setCommand))
 				disposeOfNodePropertiesDialog();
-			
-			getCurrentDiagramComponent().forceRepaint();
+		
+			forceDiagramComponentRepaint();
 			updateAllTabs(setCommand);
 			setToDefaultMode(setCommand);
 		}
@@ -780,6 +780,14 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			EAM.logException(e);
 		}
+	}
+
+
+	private void forceDiagramComponentRepaint()
+	{
+		DiagramComponent currentDiagramComponent = getCurrentDiagramComponent();
+		if (currentDiagramComponent != null)
+			currentDiagramComponent.forceRepaint();
 	}
 
 
