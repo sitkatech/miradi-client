@@ -41,17 +41,17 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	public PlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
 	{
-		super(createPlanningTreeRootNode(projectToUse));
+		super(createPlanningTreeRootNode(projectToUse, visibleRowCodesToUse));
 		
 		project = projectToUse;
 		updateColumnsToShow(visibleColumnCodesToUse);
 	}
 
-	private static TreeTableNode createPlanningTreeRootNode(Project projectToUse) throws Exception
+	private static TreeTableNode createPlanningTreeRootNode(Project projectToUse, CodeList visibleRowCodesToUse) throws Exception
 	{
 		try
 		{
-			return new PlanningTreeRootNode(projectToUse, new CodeList());
+			return new PlanningTreeRootNode(projectToUse, visibleRowCodesToUse);
 		}
 		catch(Exception e)
 		{
