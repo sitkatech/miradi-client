@@ -4,7 +4,7 @@ Copyright 2005-2008, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 2.3.1
+VERSION 2.4.0
 
 License and Copying
 
@@ -42,9 +42,9 @@ Portions of the code are from the Martus(tm) free, social justice
 documentation and monitoring software, Copyright (C) 2001-2007, 
 Beneficent Technology, Inc. ("The Benetech Initiative").
 
-Miradi relies on the following third-party libraries: 
-BrowserLauncher2, jcalendar, jexcel, jgraph, jing, jhlabs, 
-jtreetable, and tableLayout.
+Miradi relies on the following third-party libraries and tools: 
+BrowserLauncher2, jcalendar, jgraph, jing, jhlabs, 
+jtreetable, jarbuilder, install4j.
 
 
 ---------------------
@@ -69,10 +69,14 @@ For GNU/Linux:
 INSTALLING
 
 MS Windows:
+- If you had Miradi 2.3.1 or earlier, we recommend that you uninstall it 
+  before installing Miradi 2.4 or later
 - Download and run MiradiSetup.exe
+- A copy of the latest Marine Example project will be installed automatically
 - You do not need to have Java already installed on your system, because 
-  MiradiSetup.exe includes its own copy
-- A copy of the latest Marine Example project is installed automatically
+  the installer will offer to automatically download one if necessary.
+  If you choose to automatically install Java, it will be (by default) at:
+     C:\Program Files\Common Files\i4j_jres
 
 
 Mac OS X:
@@ -100,10 +104,8 @@ Mac OS X:
       persiancalendar.jar
 
 - Obtain Miradi.dmg from http://miradi.org and open it
-
 - Copy the .app file to your desktop, or to your Applications folder, or 
   wherever you wish to launch it from
-
 - MarineExample.mpz is a sample project that can be imported into Miradi. 
 
 
@@ -132,7 +134,53 @@ If you installed an earlier version of Miradi, you can just
 install this new version right over it. Your projects will be 
 migrated automatically when you first open them with the new version.
 
-Version 2.3.1 is a minor release with these fixes over 2.3:
+
+Here are the most notable improvements of version 2.4 over 2.3.1:
+
+INSTALLERS
+- Windows Installer is 85% smaller, for faster downloads
+- Much easier Mac installation (using a standard DMG file)
+
+WELCOME
+- Welcome page project list now shows Last Modified date for each project
+- Welcome page project list can now be sorted by clicking on headers
+
+DIAGRAM
+- Ability to have links on some diagrams and not others
+- Diagram Factor Properties dialog allows switching between factors
+- Create Bendpoint Junction now preserves existing bend points
+- Select link, Create Factor gets "inserted" into that link
+- Group Boxes can now have custom font and color
+
+THREAT RATING
+- Lower panel in Simple mode has been rearranged
+- Upper grid visual improvements
+- Upper grid now saves column widths and sequence
+
+PLANNING VIEW
+- New row and column types available in Planning View
+- WorkPlan: Better display of shared/allocated budget values
+- Planning tree: Indicators now appear within IR's and TRR's
+- Planning tree now remembers width of Item column
+
+REPORTS/RTF
+- RTF reports now color entire rating cells
+
+APPWIDE
+- New "Save As" functionality replaces "Save Copy To..."
+- Row heights are now saved per-table within each project
+- Table column widths and sequence are now saved per-project
+- Factors now show separate lists for "appears on" Conceptual Model 
+  pages and Results Chains
+
+NATURE CONSERVANCY
+- TNC tab now has a "data sharing" field
+- ConPro (CPMZ) export now includes goals and IR/TRR objectives
+- ConPro (CPMZ) import has several minor improvements
+
+
+
+Version 2.3.1 was a minor release with these fixes over 2.3:
 
 DIAGRAM:
 - FIXED: Deleting a Strategy no longer removes any other shares of that 
@@ -145,7 +193,7 @@ DIAGRAM:
   be too wide
   
 
-Version 2.3 has these enhancements over version 2.2.2:
+Version 2.3 had these enhancements over version 2.2.2:
 
 APPWIDE
 - Objectives are now only initally associated with strategies 
