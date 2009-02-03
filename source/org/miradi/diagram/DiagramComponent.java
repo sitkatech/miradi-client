@@ -160,6 +160,10 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
     	setScale(mainWindow.getDiagramZoomSetting(AppPreferences.TAG_DIAGRAM_ZOOM));
     }
     
+    public void forceRepaint()
+    {
+    	addOffscreenDirty(getBounds());
+    }
     
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()
 	{
