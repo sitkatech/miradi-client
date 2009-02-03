@@ -275,7 +275,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			view.selectionWasChanged();
 			updateBendPointSelection(event);
 			final DiagramComponent diagram = view.getCurrentDiagramComponent();
-			diagram.addOffscreenDirty(diagram.getBounds());
+			diagram.forceRepaint();
 		}
 	}
 	
