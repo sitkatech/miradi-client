@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-02 11:31-0500\n"
+"POT-Creation-Date: 2009-02-03 22:32-0500\n"
 "PO-Revision-Date: 2008-11-19 15:59-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -305,12 +305,12 @@ msgstr "Ancaman "
 msgid "Targets"
 msgstr "Target"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:212
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:221
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "Ringkasan Peringkat Target "
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:356
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:365
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -339,24 +339,24 @@ msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:60
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
 msgid "Scope"
 msgstr "Cakupan "
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:62
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
 msgid "Severity"
 msgstr "Tingkat Keparahan"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:64
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Irreversibility"
 msgstr "Ketakterbalikan"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:66
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 
@@ -739,7 +739,7 @@ msgid "Task Properties"
 msgstr "Sifat-sifat Tugas "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:1009
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
@@ -2261,7 +2261,7 @@ msgstr "Lainnya"
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: miradi/source/org/miradi/questions/TrendQuestion.java:38
 #: miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
-#: miradi/source/org/miradi/project/LastProjectModifiedTimeHelper.java:50
+#: miradi/source/org/miradi/project/LastProjectModifiedTimeHelper.java:53
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
