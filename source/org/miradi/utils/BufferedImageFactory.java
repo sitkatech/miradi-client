@@ -31,6 +31,7 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.diagram.DiagramComponent;
@@ -155,21 +156,26 @@ public  class BufferedImageFactory
 	
 	public static BufferedImage createImageFromTreeTable(TreeTableWithRowHeightSaver table)
 	{
+		table.updateAutomaticRowHeights();
+		return createImageForTableInScrollPane(table);
+	}
+
+	public static BufferedImage createImageFromTable(TableWithRowHeightSaver table)
+	{
+		table.updateAutomaticRowHeights();	
+		return createImageForTableInScrollPane(table);
+	}
+
+	private static BufferedImage createImageForTableInScrollPane(JTable table)
+	{
 		JScrollPane scrollerToShowHeaders = new JScrollPane(table);
 		scrollerToShowHeaders.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollerToShowHeaders.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		scrollerToShowHeaders.getViewport().setPreferredSize(table.getPreferredSize());
-		table.updateAutomaticRowHeights();
 		
 		return createImageFromComponent(scrollerToShowHeaders);
 	}
 	
-	public static BufferedImage createImageFromTable(TableWithRowHeightSaver table)
-	{
-		table.updateAutomaticRowHeights();
-		return createImageFromComponent(table);
-	}
-
 	public static BufferedImage createImageFromComponent(JComponent component)
 	{
 		return getImage(component, COMPONENT_INSET);
