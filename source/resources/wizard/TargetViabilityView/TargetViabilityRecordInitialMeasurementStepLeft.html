@@ -33,4 +33,30 @@ The&nbsp;next step is to determine the <a href='Definition:Measurement' class='d
 
 <P>Miradi will automatically shade in the cell of the indicator ratings table in the upper table with the color corresponding to your current status assessment (but it will NOT automatically read the measurement parameter and assign a current status category).&nbsp;It will also display an arrow showing the trend, and the current status label.</P>
 
-<p>Miradi will calculate a status rating for each KEA, based on the ratings of its indicators. The KEA ratings will be rolled up for each KEA type, and the average of the KEA type status ratings will be used as the viability status rating for the target. This target viability status rating will appear at the top of the properties dialog, and will be displayed in the diagram as a small oval next to the target.</p>
+<p>Miradi will calculate a status rating for each KEA, based on the ratings of its indicators. The KEA ratings will be rolled up for each KEA type, and the average of the KEA type status ratings will be used as the viability status rating for the target (see below for calculation details). This target viability status rating will appear at the top of the properties dialog, and will be displayed in the diagram as a small oval next to the target.</p>
+
+<p>Miradi rolls up viability scores using an algorithm originally developed as part of <A 
+  href="http://conserveonline.org/workspaces/cbdgateway/cap/resources/4/2/5-S_Handbook_2000.pdf/download">TNC's 5S process</A>. Each of the viability ranks has a numerical score associated with it:
+
+
+
+<ul>
+<LI>Very Good = 4.0</LI>
+<LI>Good = 3.5</LI>
+<LI>Fair = 2.5</LI>
+<LI>Poor = 1.0</LI>
+</ul>
+
+As the 5S handbook states, "This scale is a crude approximation of the underlying continuous viability scale. The non-linear
+numeric relationship among the viability classes reflects the diminishing return of moving up one
+class as one moves up the scale. For example, the viability score increases by 1.5 in moving from
+'Poor' to 'Fair,' but only increases by 0.5 in moving from 'Good' to 'Very Good.'"</p>
+
+<p>The average viability score across multiple indicators for one target and for all focal conservation targets for the project site is calculated according to the following scale:
+
+<ul>
+<LI>>= 3.75 = Very Good</LI>
+<LI>3.00 - 3.74 = Good</LI>
+<LI>1.75 - 2.99 = Fair</LI>
+<LI>< 1.75 = Poor</LI>
+</ul>
