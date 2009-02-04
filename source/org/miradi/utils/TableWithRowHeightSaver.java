@@ -132,7 +132,8 @@ abstract public class TableWithRowHeightSaver extends PanelTable implements Tabl
 		
 		final int ESTIMATED_CELL_PADDING_HEIGHT = 4;
 		maxPreferredHeight += ESTIMATED_CELL_PADDING_HEIGHT;
-		return maxPreferredHeight;
+		
+		return Math.min(maxPreferredHeight, SingleTableRowHeightController.ABOUT_TWO_INCHES);
 	}
 
 	private static int getPreferredCellHeight(JTable table, int row, int column)

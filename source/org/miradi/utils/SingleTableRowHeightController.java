@@ -80,6 +80,8 @@ public class SingleTableRowHeightController extends TableRowHeightController
 	
 		return true;
 	}
+	
+	public static final int ABOUT_TWO_INCHES = 96*2;
 
 	private TableWithRowHeightManagement table;
 	private MultiTableRowHeightController controller;

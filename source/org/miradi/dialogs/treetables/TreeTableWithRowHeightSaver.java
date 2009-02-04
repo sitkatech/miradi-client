@@ -114,7 +114,7 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 			preferredHeight = Math.max(preferredHeight, thisHeight);
 		}
 		
-		return preferredHeight;
+		return Math.min(preferredHeight, SingleTableRowHeightController.ABOUT_TWO_INCHES);
 	}
 	
 	public int getPreferredTreeCellHeight(int row)
