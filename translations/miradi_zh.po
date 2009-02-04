@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-02 11:31-0500\n"
+"POT-Creation-Date: 2009-02-03 22:32-0500\n"
 "PO-Revision-Date: 2008-11-25 07:05-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Chinese\n"
@@ -305,12 +305,12 @@ msgstr "威胁因子 \t\t"
 msgid "Targets"
 msgstr "对象"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:212
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:221
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "对象评级概要 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:356
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:365
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -339,24 +339,24 @@ msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "基于压力的威胁因子分级 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:60
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
 msgid "Scope"
 msgstr "范围 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:62
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
 msgid "Severity"
 msgstr "严重性"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:64
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Irreversibility"
 msgstr "不可逆性"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:66
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
 msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 
@@ -734,7 +734,7 @@ msgid "Task Properties"
 msgstr "任务属性 \t\t"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:1009
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
 
@@ -2197,7 +2197,7 @@ msgstr "其它"
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: miradi/source/org/miradi/questions/TrendQuestion.java:38
 #: miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
-#: miradi/source/org/miradi/project/LastProjectModifiedTimeHelper.java:50
+#: miradi/source/org/miradi/project/LastProjectModifiedTimeHelper.java:53
 msgid "Unknown"
 msgstr "未知"
 
