@@ -26,7 +26,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
 
@@ -38,6 +37,7 @@ import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.FactorLink;
@@ -54,8 +54,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	public SimpleThreatRatingDropdownsPanel(Project projectToUse)
 	{
 		super(projectToUse, ORef.INVALID);
-		final BoxLayout layout = new BoxLayout(this, BoxLayout.LINE_AXIS);
-		setLayout(layout);
+		setLayout(new OneRowGridLayout());
 		
 		PanelTitleLabel scopeLabel = new PanelTitleLabel(EAM.text("Scope"));
 		scopeComponent = createDropdown(getScopeId());
