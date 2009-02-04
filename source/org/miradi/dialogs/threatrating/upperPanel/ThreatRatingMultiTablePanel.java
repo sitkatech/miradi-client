@@ -348,14 +348,15 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		ScrollPaneWithSizeConstraints targetThreatLinkTableScroller = new ScrollPaneWithSizeConstraints(targetThreatLinkTable, masterMouseWheelListener);
 		targetThreatLinkTableScroller.capMaxWidth();
 		targetThreatLinkTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		targetThreatLinkTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		targetThreatLinkTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		addToVerticalController(targetThreatLinkTableScroller);
 		addToHorizontalController(targetThreatLinkTableScroller);
 		
 		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithWidthMatchingForSingleRowTable(targetSummaryRowTable, targetThreatLinkTableScroller);
 		addToHorizontalController(targetSummaryRowTableScroller);
 		targetSummaryRowTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		targetSummaryRowTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+		targetSummaryRowTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		targetSummaryRowTableScroller.getVerticalScrollBar().setVisible(false);
 
 		final OneRowGridLayout overallPanelLayout = new OneRowGridLayout();
 		overallPanelLayout.setGaps(5);
