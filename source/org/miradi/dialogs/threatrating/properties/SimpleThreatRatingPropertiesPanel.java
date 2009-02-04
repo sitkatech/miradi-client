@@ -41,23 +41,11 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		dropdownsPanel = new SimpleThreatRatingDropdownsPanel(project);
 		commentsPanel = new ThreatRatingCommentsSubpanel(project, mainWindowToUse.getActions());
 		
-		add(factorNamesPanel);
-		add(dropdownsPanel);
-		add(commentsPanel);
+		addSubPanelField(factorNamesPanel);
+		addSubPanelField(dropdownsPanel);
+		addSubPanelField(commentsPanel);
 		
 		updateFieldsFromProject();
-	}
-	
-	@Override
-	public void dispose()
-	{
-		factorNamesPanel.dispose();
-		factorNamesPanel = null;
-		dropdownsPanel.dispose();
-		dropdownsPanel = null;
-		commentsPanel.dispose();
-		commentsPanel = null;
-		super.dispose();
 	}
 
 	@Override
