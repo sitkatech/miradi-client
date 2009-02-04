@@ -107,7 +107,7 @@ public class ThreatMatrixView extends CardedView
 	private BufferedImage createStressBasedImage() throws Exception
 	{
 		ThreatRatingMultiTablePanel multiTablePanel = new ThreatRatingMultiTablePanel(getMainWindow());
-
+		multiTablePanel.updateAllTableAutomaticRowHeights();
 		BufferedImage image = BufferedImageFactory.createImageFromComponent(multiTablePanel);
 		
 		multiTablePanel.dispose();

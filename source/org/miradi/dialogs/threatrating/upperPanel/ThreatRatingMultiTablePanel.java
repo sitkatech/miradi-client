@@ -73,6 +73,15 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		overallProjectSummaryCellTable.dispose();	
 	}
 	
+	public void updateAllTableAutomaticRowHeights()
+	{
+		threatNameTable.updateAutomaticRowHeights();
+		targetThreatLinkTable.updateAutomaticRowHeights();
+		threatSummaryColumnTable.updateAutomaticRowHeights();
+		targetSummaryRowTable.updateAutomaticRowHeights();
+		overallProjectSummaryCellTable.updateAutomaticRowHeights();
+	}
+	
 	private void addTablesToSelectionController()
 	{
 		selectionController.addTable(threatNameTable);
