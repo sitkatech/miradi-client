@@ -47,12 +47,10 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		
 		fromLabel = new PanelTitleLabel();
 		fromNameField = createMediumStringField(ObjectType.FAKE, Factor.TAG_LABEL);
-		fromNameField.setEditable(false);
 		addFieldWithCustomLabel(fromNameField, fromLabel);
 
 		toLabel = new PanelTitleLabel();
 		toNameField = createMediumStringField(ObjectType.FAKE, Factor.TAG_LABEL);
-		toNameField.setEditable(false);
 		addFieldWithCustomLabel(toNameField, toLabel);
 
 		updateFieldsFromProject();
