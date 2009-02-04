@@ -270,6 +270,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void addLabeledSubPanelWithoutBorder(AbstractObjectDataInputPanel subPanel, String label)
 	{
 		add(new PanelTitleLabel(label));	
+		addSubPanelField(subPanel);
+	}
+	
+	public void addSubPanelField(AbstractObjectDataInputPanel subPanel)
+	{
 		subPanels.add(subPanel);
 		add(subPanel);
 	}
