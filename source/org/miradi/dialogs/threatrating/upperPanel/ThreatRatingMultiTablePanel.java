@@ -36,12 +36,12 @@ import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.FastScrollPane;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MainThreatTableModelExporter;
 import org.miradi.utils.ThreatNameTableModelExporter;
@@ -140,7 +140,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		table.getColumnModel().addColumnModelListener(new ColumnMarginResizeListenerValidator(this));
 	}
 	
-	class ScrollPaneWithSizeConstraints extends FastScrollPane
+	class ScrollPaneWithSizeConstraints extends ScrollPaneWithHideableScrollBar
 	{
 		public ScrollPaneWithSizeConstraints(Component view)
 		{
@@ -172,6 +172,14 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		public void capMinHeight()
 		{
 			capMinHeight = true;
+		}
+		
+		@Override
+		public Dimension getSize()
+		{
+			final Dimension size = super.getSize();
+			System.out.println("maingrid width = " + size.width);
+			return size;
 		}
 		
 		@Override
@@ -282,7 +290,51 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		private JComponent matchHeightOf;
 	}
 	
-	static class ScrollPaneWithWidthMatchingForSingleRowTable extends FastScrollPane
+	static class OverallProjectRatingScrollPane extends ScrollPaneWithHideableScrollBar
+	{
+		public OverallProjectRatingScrollPane(Component component, JComponent matchWidthOfComponent)
+		{
+			super(component);
+			matchWidthOf = matchWidthOfComponent;
+
+			ResizeHandlerToForceLayoutWhenDraggingColumnWidths handler = new ResizeHandlerToForceLayoutWhenDraggingColumnWidths();
+			matchWidthOf.addComponentListener(handler);
+		}
+
+		@Override
+		public Dimension getPreferredSize()
+		{
+			return new Dimension(matchWidthOf.getPreferredSize().width, super.getPreferredSize().height);
+		}
+		
+		@Override
+		public Dimension getMaximumSize()
+		{
+			return new Dimension(matchWidthOf.getMaximumSize().width, super.getMaximumSize().height);
+		}
+
+		@Override
+		public Dimension getMinimumSize()
+		{
+			return new Dimension(matchWidthOf.getMinimumSize().width, super.getMinimumSize().height);
+		}
+		
+		class ResizeHandlerToForceLayoutWhenDraggingColumnWidths implements ComponentListener
+		{
+			public void componentResized(ComponentEvent e)
+			{
+				getParent().invalidate();
+			}
+
+			public void componentHidden(ComponentEvent e)	{}
+			public void componentMoved(ComponentEvent e)	{}
+			public void componentShown(ComponentEvent e)	{}
+		}
+		
+		private JComponent matchWidthOf;
+	}
+	
+	static class ScrollPaneWithWidthMatchingForSingleRowTable extends ScrollPaneWithHideableScrollBar
 	{
 		public ScrollPaneWithWidthMatchingForSingleRowTable(JTable view, JComponent matchWidthOfComponent)
 		{
@@ -298,12 +350,6 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		}
 		
 		@Override
-		public Dimension getSize()
-		{
-			return new Dimension(matchWidthOf.getSize().width, super.getSize().height);
-		}
-		
-		@Override
 		public Dimension getPreferredSize()
 		{
 			return new Dimension(matchWidthOf.getPreferredSize().width, super.getPreferredSize().height);
@@ -312,7 +358,9 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		@Override
 		public Dimension getMaximumSize()
 		{
-			return new Dimension(matchWidthOf.getMaximumSize().width, table.getRowHeight(0) + getHorizontalScrollBar().getPreferredSize().height);
+			int maxHeight = table.getPreferredScrollableViewportSize().height + getHorizontalScrollBar().getPreferredSize().height;
+			maxHeight = Math.min(maxHeight, super.getMaximumSize().height);
+			return new Dimension(matchWidthOf.getMaximumSize().width, maxHeight);
 		}
 		
 		@Override
@@ -349,14 +397,15 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		targetThreatLinkTableScroller.capMaxWidth();
 		targetThreatLinkTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		targetThreatLinkTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		targetThreatLinkTableScroller.hideVerticalScrollBar();
 		addToVerticalController(targetThreatLinkTableScroller);
 		addToHorizontalController(targetThreatLinkTableScroller);
 		
-		JScrollPane targetSummaryRowTableScroller = new ScrollPaneWithWidthMatchingForSingleRowTable(targetSummaryRowTable, targetThreatLinkTableScroller);
+		ScrollPaneWithHideableScrollBar targetSummaryRowTableScroller = new ScrollPaneWithWidthMatchingForSingleRowTable(targetSummaryRowTable, targetThreatLinkTableScroller);
 		addToHorizontalController(targetSummaryRowTableScroller);
-		targetSummaryRowTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		targetSummaryRowTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		targetSummaryRowTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		targetSummaryRowTableScroller.getVerticalScrollBar().setVisible(false);
+		targetSummaryRowTableScroller.hideVerticalScrollBar();
 
 		final OneRowGridLayout overallPanelLayout = new OneRowGridLayout();
 		overallPanelLayout.setGaps(5);
@@ -365,7 +414,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		overallPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
 		overallPanel.add(new PanelTitleLabel(EAM.text("<html><b>Overall<br>Project<br>Rating")));
 		overallPanel.add(overallProjectSummaryCellTable);
-		JScrollPane overallProjectSummaryCellTableScroller = new JScrollPane(overallPanel);
+		JScrollPane overallProjectSummaryCellTableScroller = new OverallProjectRatingScrollPane(overallPanel, threatSummaryColumnTableScroller);
 		overallProjectSummaryCellTableScroller.setBorder(null);
 		overallProjectSummaryCellTableScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		overallProjectSummaryCellTableScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
