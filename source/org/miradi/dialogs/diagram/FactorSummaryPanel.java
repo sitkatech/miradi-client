@@ -56,7 +56,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		currentDiagramFactor = diagramFactorToEdit;
 		setObjectRefs(new ORef[] {diagramFactorToEdit.getWrappedORef(), diagramFactorToEdit.getRef(),});
 		
-		addSubPanelWithTitledBorder(new FactorSummaryCorePanel(getProject(), getActions(), diagramFactorToEdit));
+		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), diagramFactorToEdit);
+		addSubPanelWithTitledBorder(corePanel);
 		if(getFactor().isStrategy())
 			addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindowToUse, diagramFactorToEdit.getWrappedORef()));
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), diagramFactorToEdit.getWrappedType()));
@@ -65,6 +66,12 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		setObjectRefs(new ORef[] {diagramFactorToEdit.getWrappedORef(), diagramFactorToEdit.getRef(),});
 		updateFieldsFromProject();
+	}
+	
+	@Override
+	public void setFocusOnFirstField()
+	{
+		corePanel.setFocusOnFirstField();
 	}
 	
 	private Icon createIcon()
@@ -143,4 +150,5 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 	private MainWindow mainWindow;
 	private Icon detailIcon;
 	private DiagramFactor currentDiagramFactor;
+	private FactorSummaryCorePanel corePanel;
 }
