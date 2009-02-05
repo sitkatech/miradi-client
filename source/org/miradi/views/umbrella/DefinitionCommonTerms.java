@@ -114,7 +114,7 @@ public class DefinitionCommonTerms
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Scope (Threat Ratings)"), EAM.text("Scope (Threat Ratings) - A threat rating criterion that is most commonly defined " +
 		"spatially as the proportion of the target that can reasonably be expected to be " +
-		"affected by the threat within ten years given the continuatino of current " +
+		"affected by the threat within ten years given the continuation of current " +
 		"circumstances and trends. For ecosystems and ecological communities, measured " +
 		"as the proportion of the target's occurence. For species, measured as the " +
 		"proportion of the target's population."));
@@ -321,7 +321,7 @@ public class DefinitionCommonTerms
 		def = Definition.createDefinitionFromTextString(EAM.text("PriorityRating"), EAM.text("Priority Rating - An assesment of the importance or urgency or collecting measurements for a given indicator."));
 		defs.put("Definition:PriorityRating", def);	
 
-		def = Definition.createDefinitionFromTextString(EAM.text("DesiredFutureStatus"), EAM.text("Desired Future Status - A measurement or rating value for an indicator for a key ecological attribute that the project intends to achieve at a specified time in the future. Generally equivalent to a project sub-goal.."));
+		def = Definition.createDefinitionFromTextString(EAM.text("DesiredFutureStatus"), EAM.text("Desired Future Status - A measurement or rating value for an indicator for a key ecological attribute that the project intends to achieve at a specified time in the future. Generally equivalent to a project sub-goal."));
 		defs.put("Definition:PriorityRating", def);	
 
 
