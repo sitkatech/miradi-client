@@ -53,7 +53,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		setObjectRefs(new ORef[] {factorToEdit.getRef(), diagramFactorToEdit.getRef(),});
 
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createExpandableField(Factor.TAG_LABEL);
+		labelField = createExpandableField(Factor.TAG_LABEL);
 		
 		//TODO extract a local factor var. instead of getFactor
 		addFieldsOnOneLine(FactorType.getFactorTypeLabel(factorToEdit), 
@@ -114,9 +114,16 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 	}
 
 	@Override
+	public void setFocusOnFirstField()
+	{
+		labelField.getComponent().requestFocusInWindow();
+	}
+	
+	@Override
 	public String getPanelDescription()
 	{
 		return "";
 	}
 
+	private ObjectDataInputField labelField;
 }
