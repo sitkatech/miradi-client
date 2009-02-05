@@ -318,11 +318,11 @@ public class DefinitionCommonTerms
 		def = Definition.createDefinitionFromTextString(EAM.text("Measurement"), EAM.text("Measurement - An assessment of an indicator at a given point in time. Measurements can be either quantitative or qualitative."));
 		defs.put("Definition:Measurement", def);	
 
-		def = Definition.createDefinitionFromTextString(EAM.text("PriorityRating"), EAM.text("Priority Rating - An assesment of the importance or urgency or collecting measurements for a given indicator."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Priority Rating"), EAM.text("Priority Rating - An assesment of the importance or urgency or collecting measurements for a given indicator."));
 		defs.put("Definition:PriorityRating", def);	
 
-		def = Definition.createDefinitionFromTextString(EAM.text("DesiredFutureStatus"), EAM.text("Desired Future Status - A measurement or rating value for an indicator for a key ecological attribute that the project intends to achieve at a specified time in the future. Generally equivalent to a project sub-goal."));
-		defs.put("Definition:PriorityRating", def);	
+		def = Definition.createDefinitionFromTextString(EAM.text("Desired Future Status"), EAM.text("Desired Future Status - A measurement or rating value for an indicator for a key ecological attribute that the project intends to achieve at a specified time in the future. Generally equivalent to a project sub-goal."));
+		defs.put("Definition:DesiredFutureStatus", def);	
 
 
 	
