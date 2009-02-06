@@ -63,6 +63,7 @@ def verify_file_copyright(file)
 			return
 		end
 	end
+	$file_count += 1
 end
 
 def find_line_with_copyright(lines, start_at)
@@ -85,5 +86,6 @@ if ARGV.length != 1
 	exit 1
 end
 
+$file_count = 0
 verify_tree(ARGV[0])
-
+puts "Verified #{$file_count} files"
