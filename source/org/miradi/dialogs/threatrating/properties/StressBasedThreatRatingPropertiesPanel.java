@@ -27,6 +27,7 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
@@ -68,6 +69,13 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	public void addFieldComponent(Component component)
 	{
 		add(component);
+	}
+	
+	@Override
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+		editorComponent.refreshModel();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
