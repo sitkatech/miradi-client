@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-05 23:46-0500\n"
+"POT-Creation-Date: 2009-02-06 17:09-0500\n"
 "PO-Revision-Date: 2008-11-25 07:05-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Chinese\n"
@@ -306,12 +306,12 @@ msgstr "威胁因子 \t\t"
 msgid "Targets"
 msgstr "对象"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:229
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "对象评级概要 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:415
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -336,7 +336,7 @@ msgstr "压力名称 \t\t"
 msgid "(Create, manage, and rate the stresses for this target)"
 msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:65
+#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
 msgid "Title|Stress-Based Threat Rating"
 msgstr "基于压力的威胁因子分级 \t\t"
 
@@ -4038,14 +4038,6 @@ msgstr "未定义"
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
-msgid "<strong>Version: %s</strong>"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
-msgid "(Translation: %code %date)"
-msgstr ""
-
 #: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
 msgid "Export XML"
 msgstr "导出XML \t\t"
@@ -4074,6 +4066,14 @@ msgid ""
 msgstr ""
 "无法写入XML。可能该磁盘已满，或者您没有写入该磁盘的许可权，或者您在文件名中使"
 "用了无效的字符。 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
+msgid "<strong>Version: %s</strong>"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
+msgid "(Translation: %code %date)"
+msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:60
 msgid ""
@@ -8588,7 +8588,7 @@ msgid ""
 "html|/resources/help/AboutPart1.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
 "HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
 "css></STYLE></HEAD><body class='sidebar'><div class='indented'><FONT "
-"size=4><P>Copyright 2005-2008, Foundations of Success, Bethesda, Maryland "
+"size=4><P>Copyright 2005-2009, Foundations of Success, Bethesda, Maryland "
 "(on behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent "
 "Technology, Inc. (\"The Benetech Initiative\"), Palo Alto, California.</P>"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-05 23:46-0500\n"
+"POT-Creation-Date: 2009-02-06 17:09-0500\n"
 "PO-Revision-Date: 2008-12-02 15:17-0800\n"
 "Last-Translator: Anna\n"
 "Language-Team: Spanish\n"
@@ -308,12 +308,12 @@ msgstr "Amenazas"
 msgid "Targets"
 msgstr "Objeto "
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:229
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "Calificación de objeto de resumen"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:415
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -338,7 +338,7 @@ msgstr "Nombre de la presión"
 msgid "(Create, manage, and rate the stresses for this target)"
 msgstr "(Crear, manejar y calificar las presiones para este objeto)"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:65
+#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Calificación de amenaza basada en la presión"
 
@@ -4227,14 +4227,6 @@ msgstr "Sin definir"
 msgid "Error Occurred please try saving under different name."
 msgstr "Se produjo un error. Intente grabar con un nombre diferente."
 
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
-msgid "<strong>Version: %s</strong>"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
-msgid "(Translation: %code %date)"
-msgstr ""
-
 #: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
 msgid "Export XML"
 msgstr "Exportar XML"
@@ -4265,6 +4257,14 @@ msgstr ""
 "No se puede escribir el código XML. Probablemente el disco esté lleno o no "
 "tenga permiso para escribir en él, o bien, esté usando caracteres  inválidos "
 "en el nombre del archivo"
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
+msgid "<strong>Version: %s</strong>"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
+msgid "(Translation: %code %date)"
+msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:60
 msgid ""
@@ -8981,7 +8981,7 @@ msgid ""
 "html|/resources/help/AboutPart1.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
 "HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
 "css></STYLE></HEAD><body class='sidebar'><div class='indented'><FONT "
-"size=4><P>Copyright 2005-2008, Foundations of Success, Bethesda, Maryland "
+"size=4><P>Copyright 2005-2009, Foundations of Success, Bethesda, Maryland "
 "(on behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent "
 "Technology, Inc. (\"The Benetech Initiative\"), Palo Alto, California.</P>"
 msgstr ""
