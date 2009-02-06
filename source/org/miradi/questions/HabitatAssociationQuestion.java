@@ -1,7 +1,7 @@
 /* 
 Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
-(on behalf of the Conservation Measures Partnership, EAM.text(CMP") and 
-Beneficent Technology, Inc. ("Benetech")), Palo Alto, California. 
+(on behalf of the Conservation Measures Partnership, "CMP") and 
+Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
 
 This file is part of Miradi
 
