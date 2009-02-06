@@ -1,6 +1,6 @@
 Miradi (TM)
 
-Copyright 2005-2008, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2009, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
