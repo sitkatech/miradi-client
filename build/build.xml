@@ -6,7 +6,7 @@
 	
 	<!-- product version -->
 	<!-- NOTE: Remember to change install4j version too! -->
-	<property name="version.prefix" value="PRE-"/>
+	<property name="version.prefix" value=""/>
 	<property name="version.main" value = "2.4"/>
 	<property name="version.minor" value = ".0"/>
 	<property name="version.full" value="${version.main}${version.minor}"/>
