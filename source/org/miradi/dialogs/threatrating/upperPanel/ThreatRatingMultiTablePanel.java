@@ -178,7 +178,6 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		public Dimension getSize()
 		{
 			final Dimension size = super.getSize();
-			System.out.println("maingrid width = " + size.width);
 			return size;
 		}
 		
