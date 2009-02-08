@@ -162,8 +162,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
     
     public void forceRepaint()
     {
-    	Rectangle infinity = new Rectangle(0, 0, Integer.MAX_VALUE, Integer.MAX_VALUE);
-    	addOffscreenDirty(infinity);
+    	Rectangle everything = new Rectangle(0, 0, getWidth(), getHeight());
+    	fromScreen(everything);
+    	addOffscreenDirty(everything);
     }
     
 	public EAMGraphSelectionModel getEAMGraphSelectionModel()
