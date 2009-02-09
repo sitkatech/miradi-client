@@ -30,17 +30,17 @@ import org.miradi.main.EAM;
 
 abstract class ProjectListAction extends AbstractAction
 {
-	public ProjectListAction(ProjectListTreeTable tableToUse, String string, Icon icon)
+	public ProjectListAction(ProjectListTreeTable tableToUse, String buttonLabel, Icon buttonIcon)
 	{
-		super(string, icon);
+		super(buttonLabel, buttonIcon);
 		table = tableToUse;
 		
 		updateEnabledState();
 	}
 	
-	public ProjectListAction(ProjectListTreeTable tableToUse, String string)
+	public ProjectListAction(ProjectListTreeTable tableToUse, String buttonLabel)
 	{
-		this(tableToUse, string, null);	
+		this(tableToUse, buttonLabel, null);	
 	}
 	
 	public void actionPerformed(ActionEvent event)
