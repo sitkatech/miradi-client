@@ -32,17 +32,17 @@ abstract class ProjectListAction extends AbstractAction
 		table = tableToUse;
 	}
 
-	File getFile()
+	protected File getFile()
 	{
 		return table.getSelectedFile();
 	}
 	
-	void updateEnabledState()
+	protected void updateEnabledState()
 	{
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 	
-	void refresh()
+	protected void refresh()
 	{
 		table.refresh();
 	}
