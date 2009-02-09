@@ -239,5 +239,5 @@ public class NoProjectWizardStep extends SkeletonWizardStep implements KeyListen
 	private static final String EXPORT_PREFIX = "EXPORT:";
 	private static final String DEFINITION_PREFIX = "Definition:";
 	
-	TreeBasedProjectList projectList;
+	protected TreeBasedProjectList projectList;
 }
