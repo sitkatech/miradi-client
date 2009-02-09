@@ -118,7 +118,12 @@ public class EAM
 		
 		return Character.isLetterOrDigit(c);
 	}
-
+	
+	public static void enableAlphaTesterMode()
+	{
+		isAlphaTesterMode = true;
+	}
+	
 	private static void displayHtmlDialog(String htmlFileName, String findToReplace,  String replacementForStr1)
 	{
 		try
@@ -237,6 +242,9 @@ public class EAM
 	
 	public static void logError(String text)
 	{
+		if (isAlphaTesterMode)
+			errorDialog("<HTML>There is a console error: <BR>" + text + "</HTML>");
+			
 		logger.logError(text);
 	}
 	
@@ -556,6 +564,8 @@ public class EAM
 	public static final char DASH = '-';
 	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
 	public static final String INFORMATION_DIALOG_TITLE = EAM.text("Wintitle|Information");
+	
+	private static boolean isAlphaTesterMode;
 }
 
 
