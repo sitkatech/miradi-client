@@ -20,9 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard.noproject.projectlist;
 
+import java.awt.event.ActionEvent;
 import java.io.File;
 
 import javax.swing.AbstractAction;
+
+import org.miradi.main.EAM;
 
 abstract class ProjectListAction extends AbstractAction
 {
@@ -31,7 +34,21 @@ abstract class ProjectListAction extends AbstractAction
 		super(string);
 		table = tableToUse;
 	}
-
+	
+	public void actionPerformed(ActionEvent event)
+	{
+		try
+		{
+			doWork();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(getErrorMessage() + e.getMessage());
+		}
+		refresh();
+	}
+	
 	protected File getFile()
 	{
 		return table.getSelectedFile();
@@ -46,6 +63,10 @@ abstract class ProjectListAction extends AbstractAction
 	{
 		table.refresh();
 	}
+	
+	abstract protected void doWork() throws Exception;
+	
+	abstract protected String getErrorMessage();
 	
 	private ProjectListTreeTable table;
 }

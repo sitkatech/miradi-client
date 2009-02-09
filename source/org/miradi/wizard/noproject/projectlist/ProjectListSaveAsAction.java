@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard.noproject.projectlist;
 
-import java.awt.event.ActionEvent;
-
 import org.miradi.main.EAM;
 import org.miradi.views.noproject.CopyProject;
 
@@ -34,30 +32,16 @@ class ProjectListSaveAsAction extends ProjectListAction
 		updateEnabledState();
 	}
 
-	public void actionPerformed(ActionEvent event)
-	{
-		try
-		{
-			doWork();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(getErrorMessage() + e.getMessage());
-		}
-		refresh();
-	}
-	
-	private void doWork() throws Exception
+	protected void doWork()  throws Exception
 	{
 		CopyProject.doIt(EAM.getMainWindow(), getFile());
 	}
 
-	private String getErrorMessage()
+	protected String getErrorMessage()
 	{
 		return EAM.text("Error copying project: ");
 	}
-
+	
 	private static String getButtonLabel()
 	{
 		return EAM.text("Save As...");

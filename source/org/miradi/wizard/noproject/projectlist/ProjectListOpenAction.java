@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard.noproject.projectlist;
 
-import java.awt.event.ActionEvent;
-
 import org.miradi.main.EAM;
 
 class ProjectListOpenAction extends ProjectListAction
@@ -33,12 +31,7 @@ class ProjectListOpenAction extends ProjectListAction
 		updateEnabledState();
 	}
 
-	public void actionPerformed(ActionEvent event)
-	{
-		doWork();
-	}
-
-	private void doWork()
+	protected void doWork() throws Exception
 	{
 		ProjectListTreeTable.doProjectOpen(getFile());
 	}
