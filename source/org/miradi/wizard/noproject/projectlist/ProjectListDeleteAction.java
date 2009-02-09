@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard.noproject.projectlist;
 
+import java.io.File;
+
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.views.noproject.DeleteProject;
 
@@ -27,9 +30,24 @@ class ProjectListDeleteAction extends ProjectListAction
 {
 	public ProjectListDeleteAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, getButtonLabel());
+		super(tableToUse, getButtonLabel(), new DeleteIcon());
 	}
 
+	@Override
+	protected void updateEnabledState()
+	{
+		setEnabled(isValidFileToDelete());
+	}
+
+	private boolean isValidFileToDelete()
+	{
+		File fileToValidate = getFile();
+		if (fileToValidate == null)
+			return false;
+		
+		return fileToValidate.isDirectory();
+	}
+	
 	protected void doWork() throws Exception
 	{
 		DeleteProject.doIt(EAM.getMainWindow(), getFile());

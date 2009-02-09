@@ -31,15 +31,7 @@ public class DeleteProject
 {
 	static public void doIt(MainWindow mainWindow, File projectToDelete) throws Exception 
 	{
-		
-		if(!ProjectServer.isExistingProject(projectToDelete))
-		{
-			EAM.notifyDialog(EAM.text("Project does not exist: ") + projectToDelete.getName());
-			return;
-		}
-		
 		DirectoryLock directoryLock = new DirectoryLock();
-
 		if (!directoryLock.getDirectoryLock(projectToDelete))
 		{
 			EAM.notifyDialog(EAM.text("Unable to delete this project because it is in use by another copy of this application:\n") +  projectToDelete.getName());
@@ -48,11 +40,9 @@ public class DeleteProject
 
 		try
 		{
-			String[] body = {EAM.text("Are you sure you want to delete this project? "), 
-					projectToDelete.getName(),
-			};
+			String[] body = {getDeleteMessage(projectToDelete), projectToDelete.getName(),	};
 			String[] buttons = {EAM.text("Delete"), EAM.text("Keep"), };
-			if(!EAM.confirmDialog(EAM.text("Delete Project"), body, buttons))
+			if(!EAM.confirmDialog(EAM.text("Delete"), body, buttons))
 				return;
 		}
 		finally
@@ -61,5 +51,13 @@ public class DeleteProject
 		}
 		
 		DirectoryUtils.deleteEntireDirectoryTree(projectToDelete);
+	}
+
+	private static String getDeleteMessage(File projectToDelete)
+	{
+		if (ProjectServer.isExistingProject(projectToDelete))
+			return EAM.text("Are you sure you want to delete this project? ");
+		
+		return EAM.text("Are you sure you want to delete this directory and all of its content?");
 	}
 }
