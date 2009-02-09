@@ -67,6 +67,15 @@ abstract class ProjectListAction extends AbstractAction
 		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
 	}
 	
+	protected boolean isValidDirectory()
+	{
+		File fileToValidate = getFile();
+		if (fileToValidate == null)
+			return false;
+		
+		return fileToValidate.isDirectory();
+	}
+	
 	protected void refresh()
 	{
 		table.refresh();

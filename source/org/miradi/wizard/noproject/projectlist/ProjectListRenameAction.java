@@ -30,6 +30,12 @@ class ProjectListRenameAction extends ProjectListAction
 		super(tableToUse, getButtonLabel());
 	}
 
+	@Override
+	protected void updateEnabledState()
+	{
+		setEnabled(isValidDirectory());
+	}
+
 	protected void doWork() throws Exception
 	{
 		RenameProjectDoer.doIt(EAM.getMainWindow(), getFile());

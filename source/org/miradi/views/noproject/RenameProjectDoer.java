@@ -35,15 +35,7 @@ public class RenameProjectDoer
 {
 	static public void doIt(MainWindow mainWindow, File projectToRename) throws Exception 
 	{
-		
-		if(!ProjectServer.isExistingProject(projectToRename))
-		{
-			EAM.notifyDialog(EAM.text("Project does not exist: ") + projectToRename.getName());
-			return;
-		}
-		
 		DirectoryLock directoryLock = new DirectoryLock();
-
 		if (!directoryLock.getDirectoryLock(projectToRename))
 		{
 			EAM.notifyDialog(EAM.text("Unable to rename this project because it is in use by another copy of this application:\n") +  projectToRename.getName());
@@ -56,18 +48,18 @@ public class RenameProjectDoer
 			if (newName == null)
 				return;
 
-			String[] body = {EAM.text("Are you sure you want to rename project: "), newName,
+			String[] body = {EAM.text("Are you sure you want to rename item: "), newName,
 			};
 			String[] buttons = {EAM.text("Rename"), EAM.text("Cancel"), };
-			if(!EAM.confirmDialog(EAM.text("Rename Project"), body, buttons))
+			if(!EAM.confirmDialog(EAM.text("Rename Item"), body, buttons))
 				return;
 		
 			directoryLock.close();
 			
-			File newFile = new File(projectToRename.getParentFile(),newName);
+			File newFile = new File(projectToRename.getParentFile(), newName);
 			boolean wasRenamed = projectToRename.renameTo(newFile);
 			if (!wasRenamed)
-				throw new IOException("Project was not renamed.");
+				throw new IOException("Item was not renamed.");
 		}
 		catch (Exception e)
 		{
@@ -129,6 +121,6 @@ public class RenameProjectDoer
 		return ModalRenameDialog.showDialog(mainWindow, RenameProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
-	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Project Filename") + 
+	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") + 
 			"<br>&nbsp;&nbsp;&nbsp;<i>" + WelcomeCreateStep.getLegalProjectNameNote();
 }
