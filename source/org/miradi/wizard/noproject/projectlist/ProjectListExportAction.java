@@ -30,7 +30,7 @@ class ProjectListExportAction extends ProjectListAction
 {
 	public ProjectListExportAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Export..."));
+		super(tableToUse, getButtonLabel());
 
 		updateEnabledState();
 	}
@@ -39,12 +39,27 @@ class ProjectListExportAction extends ProjectListAction
 	{
 		try
 		{
-			ExportZippedProjectFileDoer.perform(EAM.getMainWindow(), getFile());
+			doWork();
 		}
 		catch(CommandFailedException e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error exporting project: " + e.getMessage()));
+			EAM.errorDialog(getErrorMessage() + e.getMessage());
 		}
+	}
+
+	private void doWork() throws CommandFailedException
+	{
+		ExportZippedProjectFileDoer.perform(EAM.getMainWindow(), getFile());
+	}
+	
+	private String getErrorMessage()
+	{
+		return EAM.text("Error exporting project: ");
+	}
+	
+	private static String getButtonLabel()
+	{
+		return EAM.text("Export...");
 	}
 }
