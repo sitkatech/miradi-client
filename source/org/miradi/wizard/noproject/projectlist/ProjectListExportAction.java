@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard.noproject.projectlist;
 
-import java.awt.event.ActionEvent;
-
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.views.umbrella.ExportZippedProjectFileDoer;
 
@@ -35,25 +32,12 @@ class ProjectListExportAction extends ProjectListAction
 		updateEnabledState();
 	}
 
-	public void actionPerformed(ActionEvent event)
-	{
-		try
-		{
-			doWork();
-		}
-		catch(CommandFailedException e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(getErrorMessage() + e.getMessage());
-		}
-	}
-
-	private void doWork() throws CommandFailedException
+	protected void doWork() throws Exception
 	{
 		ExportZippedProjectFileDoer.perform(EAM.getMainWindow(), getFile());
 	}
 	
-	private String getErrorMessage()
+	protected String getErrorMessage()
 	{
 		return EAM.text("Error exporting project: ");
 	}
