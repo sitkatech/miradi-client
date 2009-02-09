@@ -24,17 +24,23 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 
 import javax.swing.AbstractAction;
+import javax.swing.Icon;
 
 import org.miradi.main.EAM;
 
 abstract class ProjectListAction extends AbstractAction
 {
-	public ProjectListAction(ProjectListTreeTable tableToUse, String string)
+	public ProjectListAction(ProjectListTreeTable tableToUse, String string, Icon icon)
 	{
-		super(string);
+		super(string, icon);
 		table = tableToUse;
 		
 		updateEnabledState();
+	}
+	
+	public ProjectListAction(ProjectListTreeTable tableToUse, String string)
+	{
+		this(tableToUse, string, null);	
 	}
 	
 	public void actionPerformed(ActionEvent event)
