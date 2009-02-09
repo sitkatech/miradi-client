@@ -29,7 +29,7 @@ class ProjectListRenameAction extends ProjectListAction
 {
 	public ProjectListRenameAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Rename..."));
+		super(tableToUse, getButtonLabel());
 		
 		updateEnabledState();
 	}
@@ -38,13 +38,28 @@ class ProjectListRenameAction extends ProjectListAction
 	{
 		try
 		{
-			RenameProjectDoer.doIt(EAM.getMainWindow(), getFile());
+			doWork();
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error renaming project: " + e.getMessage()));
+			EAM.errorDialog(getErrorMessage() + e.getMessage());
 		}
 		refresh();
+	}
+
+	private void doWork() throws Exception
+	{
+		RenameProjectDoer.doIt(EAM.getMainWindow(), getFile());
+	}
+	
+	private String getErrorMessage()
+	{
+		return EAM.text("Error renaming project: ");
+	}
+	
+	private static String getButtonLabel()
+	{
+		return EAM.text("Rename...");
 	}
 }

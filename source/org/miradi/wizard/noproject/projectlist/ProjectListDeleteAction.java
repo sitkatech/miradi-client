@@ -29,7 +29,7 @@ class ProjectListDeleteAction extends ProjectListAction
 {
 	public ProjectListDeleteAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Delete"));
+		super(tableToUse, getButtonLabel());
 		
 		updateEnabledState();
 	}
@@ -38,13 +38,28 @@ class ProjectListDeleteAction extends ProjectListAction
 	{
 		try
 		{
-			DeleteProject.doIt(EAM.getMainWindow(), getFile());
+			doWork();
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error deleting project: " + e.getMessage()));
+			EAM.errorDialog(getErrorMessage() + e.getMessage());
 		}
 		refresh();
+	}
+
+	private void doWork() throws Exception
+	{
+		DeleteProject.doIt(EAM.getMainWindow(), getFile());
+	}
+	
+	private String getErrorMessage()
+	{
+		return EAM.text("Error deleting project: ");
+	}
+
+	private static String getButtonLabel()
+	{
+		return EAM.text("Delete");
 	}
 }

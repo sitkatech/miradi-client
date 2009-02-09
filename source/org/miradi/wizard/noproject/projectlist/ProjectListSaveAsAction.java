@@ -29,7 +29,7 @@ class ProjectListSaveAsAction extends ProjectListAction
 {
 	public ProjectListSaveAsAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Save As..."));
+		super(tableToUse, getButtonLabel());
 		
 		updateEnabledState();
 	}
@@ -38,13 +38,28 @@ class ProjectListSaveAsAction extends ProjectListAction
 	{
 		try
 		{
-			CopyProject.doIt(EAM.getMainWindow(), getFile());
+			doWork();
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("Error copying project: " + e.getMessage()));
+			EAM.errorDialog(getErrorMessage() + e.getMessage());
 		}
 		refresh();
+	}
+	
+	private void doWork() throws Exception
+	{
+		CopyProject.doIt(EAM.getMainWindow(), getFile());
+	}
+
+	private String getErrorMessage()
+	{
+		return EAM.text("Error copying project: ");
+	}
+
+	private static String getButtonLabel()
+	{
+		return EAM.text("Save As...");
 	}
 }

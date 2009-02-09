@@ -28,13 +28,28 @@ class ProjectListOpenAction extends ProjectListAction
 {
 	public ProjectListOpenAction(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Open"));
+		super(tableToUse, getButtonLabel());
 		
 		updateEnabledState();
 	}
 
 	public void actionPerformed(ActionEvent event)
 	{
+		doWork();
+	}
+
+	private void doWork()
+	{
 		ProjectListTreeTable.doProjectOpen(getFile());
 	}
+	
+	protected String getErrorMessage()
+	{
+		return EAM.text("Error opening project: ");
+	}
+	
+	private static String getButtonLabel()
+	{
+		return EAM.text("Open");
+	} 
 }
