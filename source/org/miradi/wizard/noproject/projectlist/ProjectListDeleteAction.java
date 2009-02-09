@@ -28,8 +28,6 @@ class ProjectListDeleteAction extends ProjectListAction
 	public ProjectListDeleteAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, getButtonLabel());
-		
-		updateEnabledState();
 	}
 
 	protected void doWork() throws Exception

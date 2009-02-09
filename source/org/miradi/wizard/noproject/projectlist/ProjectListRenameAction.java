@@ -28,8 +28,6 @@ class ProjectListRenameAction extends ProjectListAction
 	public ProjectListRenameAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, getButtonLabel());
-		
-		updateEnabledState();
 	}
 
 	protected void doWork() throws Exception

@@ -28,8 +28,6 @@ class ProjectListSaveAsAction extends ProjectListAction
 	public ProjectListSaveAsAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, getButtonLabel());
-		
-		updateEnabledState();
 	}
 
 	protected void doWork()  throws Exception
