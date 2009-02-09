@@ -33,6 +33,8 @@ abstract class ProjectListAction extends AbstractAction
 	{
 		super(string);
 		table = tableToUse;
+		
+		updateEnabledState();
 	}
 	
 	public void actionPerformed(ActionEvent event)

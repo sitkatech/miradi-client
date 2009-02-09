@@ -28,8 +28,6 @@ class ProjectListExportAction extends ProjectListAction
 	public ProjectListExportAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, getButtonLabel());
-
-		updateEnabledState();
 	}
 
 	protected void doWork() throws Exception

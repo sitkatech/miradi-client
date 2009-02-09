@@ -27,8 +27,6 @@ class ProjectListOpenAction extends ProjectListAction
 	public ProjectListOpenAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, getButtonLabel());
-		
-		updateEnabledState();
 	}
 
 	protected void doWork() throws Exception
