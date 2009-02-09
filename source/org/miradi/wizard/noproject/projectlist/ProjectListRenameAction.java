@@ -30,7 +30,8 @@ class ProjectListRenameAction extends ProjectListAction
 	public ProjectListRenameAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Rename..."));
-		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
+		
+		updateEnabledState();
 	}
 
 	public void actionPerformed(ActionEvent event)

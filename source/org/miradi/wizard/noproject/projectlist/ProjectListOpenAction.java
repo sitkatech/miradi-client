@@ -29,7 +29,8 @@ class ProjectListOpenAction extends ProjectListAction
 	public ProjectListOpenAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Open"));
-		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
+		
+		updateEnabledState();
 	}
 
 	public void actionPerformed(ActionEvent event)

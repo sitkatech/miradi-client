@@ -31,7 +31,8 @@ class ProjectListExportAction extends ProjectListAction
 	public ProjectListExportAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Export..."));
-		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
+
+		updateEnabledState();
 	}
 
 	public void actionPerformed(ActionEvent event)

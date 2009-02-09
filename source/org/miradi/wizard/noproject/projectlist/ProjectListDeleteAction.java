@@ -30,7 +30,8 @@ class ProjectListDeleteAction extends ProjectListAction
 	public ProjectListDeleteAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Delete"));
-		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
+		
+		updateEnabledState();
 	}
 
 	public void actionPerformed(ActionEvent event)
