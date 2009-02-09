@@ -30,7 +30,8 @@ class ProjectListSaveAsAction extends ProjectListAction
 	public ProjectListSaveAsAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Save As..."));
-		setEnabled(ProjectListTreeTable.isProjectDirectory(getFile()));
+		
+		updateEnabledState();
 	}
 
 	public void actionPerformed(ActionEvent event)
