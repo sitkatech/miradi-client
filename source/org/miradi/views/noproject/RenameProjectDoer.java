@@ -53,11 +53,11 @@ public class RenameProjectDoer
 			File newFile = new File(directoryToRename.getParentFile(), newDirectoryName);
 			boolean wasRenamed = directoryToRename.renameTo(newFile);
 			if (!wasRenamed)
-				throw new IOException("Rename Failed.");
+				throw new IOException();
 		}
 		catch (Exception e)
 		{
-			EAM.notifyDialog("Rename Failed:" +e.getMessage());
+			EAM.notifyDialog(EAM.text("Rename Failed"));
 		}
 		finally
 		{
