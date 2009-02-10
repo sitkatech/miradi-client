@@ -243,5 +243,5 @@ public class Miradi
 
 	public static final String MAIN_VERSION = "2.4";
 	public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + MAIN_VERSION + "-";
-	private static final String ALPHA_TESTER_MODE_ON_SWITCH = "--alphaTesterMode"; 
+	private static final String ALPHA_TESTER_MODE_ON_SWITCH = "--tester"; 
 }
