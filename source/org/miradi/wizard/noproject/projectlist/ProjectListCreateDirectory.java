@@ -36,14 +36,14 @@ public class ProjectListCreateDirectory extends ProjectListAction
 	protected void updateEnabledState()
 	{
 		setEnabled(!isProjectDirectory());
-		if (getFile() == null)
+		if (getSelectedFile() == null)
 			setEnabled(false);
 	}
 	
 	@Override
 	protected void doWork() throws Exception
 	{	
-		File newDirToCreate = new File(getFile(), "New Folder");
+		File newDirToCreate = new File(getSelectedFile(), "New Folder");
 		if (!newDirToCreate.mkdirs())
 			throw new IOException();
 			

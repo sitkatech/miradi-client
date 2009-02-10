@@ -32,7 +32,7 @@ class ProjectListExportAction extends ProjectListAction
 
 	protected void doWork() throws Exception
 	{
-		ExportZippedProjectFileDoer.perform(EAM.getMainWindow(), getFile());
+		ExportZippedProjectFileDoer.perform(EAM.getMainWindow(), getSelectedFile());
 	}
 	
 	protected String getErrorMessage()

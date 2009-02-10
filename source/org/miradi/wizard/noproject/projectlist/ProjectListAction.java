@@ -58,7 +58,7 @@ abstract class ProjectListAction extends AbstractAction
 		refresh();
 	}
 	
-	protected File getFile()
+	protected File getSelectedFile()
 	{
 		return table.getSelectedFile();
 	}
@@ -70,12 +70,12 @@ abstract class ProjectListAction extends AbstractAction
 
 	protected boolean isProjectDirectory()
 	{
-		return ProjectListTreeTable.isProjectDirectory(getFile());
+		return ProjectListTreeTable.isProjectDirectory(getSelectedFile());
 	}
 	
 	protected boolean isDirectorySelected()
 	{
-		File fileToValidate = getFile();
+		File fileToValidate = getSelectedFile();
 		if (fileToValidate == null)
 			return false;
 		

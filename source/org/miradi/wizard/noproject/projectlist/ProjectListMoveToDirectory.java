@@ -41,7 +41,7 @@ public class ProjectListMoveToDirectory extends ProjectListAction
 		if (selectedDirectory == null)
 			return;
 		
-		File fileToMove = getFile();
+		File fileToMove = getSelectedFile();
 		
 		File newLocation = new File(selectedDirectory, fileToMove.getName());
 		boolean wasMoved = fileToMove.renameTo(newLocation);
