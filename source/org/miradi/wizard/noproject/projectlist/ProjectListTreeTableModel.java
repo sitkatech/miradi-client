@@ -24,8 +24,8 @@ import java.io.File;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
-import org.miradi.wizard.noproject.DirectoryRootTreeNode;
-import org.miradi.wizard.noproject.FileSystemRootNode;
+import org.miradi.wizard.noproject.FileSystemDirectoryNode;
+import org.miradi.wizard.noproject.FileSystemProjectOrDirectoryNode;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ProjectListTreeTableModel extends GenericTreeTableModel
@@ -34,7 +34,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
 		File homeDirectory = EAM.getHomeDirectory();
-		DirectoryRootTreeNode rootNode = new DirectoryRootTreeNode(homeDirectory, nodeSorter);
+		FileSystemDirectoryNode rootNode = new FileSystemDirectoryNode(homeDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
 	}
@@ -43,7 +43,7 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
 		File homeDirectory = EAM.getHomeDirectory();
-		FileSystemRootNode rootNode = new FileSystemRootNode(homeDirectory, nodeSorter);
+		FileSystemProjectOrDirectoryNode rootNode = new FileSystemProjectOrDirectoryNode(homeDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
 	}
@@ -82,9 +82,9 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		reloadNodesWithouRebuildingNodes();
 	}
 
-	private FileSystemRootNode getFileSystemRootNode()
+	private FileSystemTreeNode getFileSystemRootNode()
 	{
-		return (FileSystemRootNode) getRootNode();
+		return (FileSystemTreeNode) getRootNode();
 	}
 	
 	public void rebuildEntireTree(File homeDir)
