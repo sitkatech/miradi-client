@@ -106,7 +106,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		for(int i = 0; i < files.length; ++i)
 		{
 			File file = files[i];
-			if(isVisibleDirectoryOrProject(file))
+			if(shouldBeIncluded(file))
 			{
 				children.add(createNode(file, sorter));
 			}
@@ -168,7 +168,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 	
 	abstract protected FileSystemTreeNode createNode(File file, FileSystemProjectSorter sorterToUse) throws Exception;
 	
-	abstract protected boolean isVisibleDirectoryOrProject(File file);
+	abstract protected boolean shouldBeIncluded(File file);
 	
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
 	private static final String OLD_JASPER_CUSTOM_REPORTS_DIR_NAME = "CustomReports";
