@@ -29,9 +29,4 @@ public class FileSystemRootNode extends FileSystemProjectOrDirectoryNode
 	{
 		super(file, nodeSorterToUse);
 	}
-	
-	public void setFile(File file)
-	{
-		thisFile = file;
-	}
 }

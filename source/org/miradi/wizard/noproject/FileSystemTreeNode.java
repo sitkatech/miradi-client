@@ -161,6 +161,11 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		return thisFile;
 	}
 	
+	public void setFile(File file)
+	{
+		thisFile = file;
+	}
+	
 	abstract protected FileSystemTreeNode createNode(File file, FileSystemProjectSorter sorterToUse) throws Exception;
 	
 	abstract protected boolean isVisibleDirectoryOrProject(File file);
