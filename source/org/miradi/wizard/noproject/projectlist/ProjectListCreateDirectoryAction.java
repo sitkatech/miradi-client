@@ -25,9 +25,9 @@ import java.io.IOException;
 import org.miradi.main.EAM;
 import org.miradi.views.noproject.RenameProjectDoer;
 
-public class ProjectListCreateDirectory extends ProjectListAction
+public class ProjectListCreateDirectoryAction extends ProjectListAction
 {
-	public ProjectListCreateDirectory(ProjectListTreeTable tableToUse)
+	public ProjectListCreateDirectoryAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Create Folder"));
 	}
