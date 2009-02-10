@@ -176,7 +176,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		menu.add(new ProjectListExportAction(this));
 		menu.addSeparator();
 		menu.add(new ProjectListDeleteAction(this));
-		menu.add(new ProjectListCreateDirectory(this));
+		menu.add(new ProjectListCreateDirectoryAction(this));
 		menu.add(new ProjectListMoveToDirectory(this));
 		
 		return menu;
