@@ -943,7 +943,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		File diagramFactorManifestFile = new File(diagramFactorDir, "manifest");
 		if (! diagramFactorManifestFile.exists())
-			throw new RuntimeException("manifest for objects-18 (DiagramFactor) directory does not exist " + diagramFactorManifestFile.getAbsolutePath());
+			throw new RuntimeException("manifest for objects-18 (DiagramFactor) folder does not exist " + diagramFactorManifestFile.getAbsolutePath());
 		
 		ObjectManifest diagramFactorManifest = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
 		BaseId[] diagramFactorIds = diagramFactorManifest.getAllKeys();
@@ -986,7 +986,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		
 		File linkManifestFile = new File(factorLinkDir, "manifest");
 		if (! linkManifestFile.exists())
-			throw new RuntimeException("manifest for objects-6 directory does not exist " + linkManifestFile.getAbsolutePath());
+			throw new RuntimeException("manifest for objects-6 folder does not exist " + linkManifestFile.getAbsolutePath());
 		
 		Vector allFactorTypeDirs = getAllFactorTypeDirs(jsonDir);
 		Vector allManifestFiles = getAllFactorManifestFiles(jsonDir);
