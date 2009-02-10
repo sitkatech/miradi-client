@@ -57,7 +57,7 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 		
 		if (isChosenFileInsideProjectHomeDir(chosen))
 		{
-			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a directory within the project being exported"));
+			EAM.errorDialog(EAM.text("The MPZ file cannot be saved to a folder within the project being exported"));
 			return;
 		}
 		
