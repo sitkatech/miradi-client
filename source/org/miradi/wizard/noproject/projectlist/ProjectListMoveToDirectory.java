@@ -32,6 +32,13 @@ public class ProjectListMoveToDirectory extends ProjectListAction
 		super(tableToUse, EAM.text("Move To..."));
 	}
 
+	
+	@Override
+	protected void updateEnabledState()
+	{
+		setEnabled(isDirectorySelected());
+	}
+	
 	@Override
 	protected void doWork() throws Exception
 	{
