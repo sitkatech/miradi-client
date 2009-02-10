@@ -29,18 +29,18 @@ import org.miradi.main.MainWindow;
 
 public class DeleteProject
 {
-	static public void doIt(MainWindow mainWindow, File projectToDelete) throws Exception 
+	static public void doIt(MainWindow mainWindow, File directoryToDelete) throws Exception 
 	{
 		DirectoryLock directoryLock = new DirectoryLock();
-		if (!directoryLock.getDirectoryLock(projectToDelete))
+		if (!directoryLock.getDirectoryLock(directoryToDelete))
 		{
-			EAM.notifyDialog(EAM.text("Unable to delete this project because it is in use by another copy of this application:\n") +  projectToDelete.getName());
+			EAM.notifyDialog(EAM.text("Unable to delete this project because it is in use by another copy of this application:\n") +  directoryToDelete.getName());
 			return;
 		}
 
 		try
 		{
-			String[] body = {getDeleteMessage(projectToDelete), projectToDelete.getName(),	};
+			String[] body = {getDeleteMessage(directoryToDelete), directoryToDelete.getName(),	};
 			String[] buttons = {EAM.text("Delete"), EAM.text("Keep"), };
 			if(!EAM.confirmDialog(EAM.text("Delete"), body, buttons))
 				return;
@@ -50,7 +50,7 @@ public class DeleteProject
 			directoryLock.close();
 		}
 		
-		DirectoryUtils.deleteEntireDirectoryTree(projectToDelete);
+		DirectoryUtils.deleteEntireDirectoryTree(directoryToDelete);
 	}
 
 	private static String getDeleteMessage(File projectToDelete)
