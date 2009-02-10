@@ -21,17 +21,39 @@ package org.miradi.wizard.noproject;
 
 import java.io.File;
 
+import org.miradi.database.ProjectServer;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 
-public class FileSystemRootNode extends FileSystemProjectOrDirectoryNode
+public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 {
-	public FileSystemRootNode(File file, FileSystemProjectSorter nodeSorterToUse) throws Exception
+	public FileSystemProjectOrDirectoryNode(File file, 	FileSystemProjectSorter sorterToUse) throws Exception
 	{
-		super(file, nodeSorterToUse);
+		super(file, sorterToUse);
+	}
+
+	protected FileSystemTreeNode createNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
+	{
+		return new FileSystemProjectOrDirectoryNode(file, sorterToUse);
 	}
 	
-	public void setFile(File file)
+	protected boolean isVisibleDirectoryOrProject(File file)
 	{
-		thisFile = file;
+		if (!file.isDirectory())
+			return false;
+	
+		//TODO is this test neeeded since we return true at the end?
+		if (ProjectServer.isExistingProject(file))
+			return true;
+		
+		if (isExternalReportsDirectory(file))
+			return false;
+		
+		if (isCustomReportsDirectory(file))
+			return false;
+		
+		if (isExternalResourceDirectory(file))
+			return false;
+		
+		return true;
 	}
 }

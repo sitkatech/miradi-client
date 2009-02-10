@@ -24,14 +24,25 @@ import java.io.File;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
+import org.miradi.wizard.noproject.DirectoryRootTreeNode;
 import org.miradi.wizard.noproject.FileSystemRootNode;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ProjectListTreeTableModel extends GenericTreeTableModel
 {
-	public static ProjectListTreeTableModel createProjectListTreeTableModel(File homeDirectory) throws Exception
+	public static ProjectListTreeTableModel createDirectoryListTreeTableModel() throws Exception
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
+		File homeDirectory = EAM.getHomeDirectory();
+		DirectoryRootTreeNode rootNode = new DirectoryRootTreeNode(homeDirectory, nodeSorter);
+			
+		return new ProjectListTreeTableModel(rootNode, nodeSorter);
+	}
+	
+	public static ProjectListTreeTableModel createProjectListTreeTableModel() throws Exception
+	{
+		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
+		File homeDirectory = EAM.getHomeDirectory();
 		FileSystemRootNode rootNode = new FileSystemRootNode(homeDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);

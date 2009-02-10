@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.noproject.projectlist;
 
 import java.awt.BorderLayout;
-import java.io.File;
 import java.util.Vector;
 
 import javax.swing.Action;
@@ -43,10 +42,8 @@ public class TreeBasedProjectList extends JPanel
 	{
 		setLayout(new BorderLayout());
 		actions = new Vector<ProjectListAction>();
-		
-		File home = EAM.getHomeDirectory();
-		
-		model = ProjectListTreeTableModel.createProjectListTreeTableModel(home);
+
+		model = ProjectListTreeTableModel.createProjectListTreeTableModel();
 		ProjectListTreeTable table = new ProjectListTreeTable(mainWindow, model, handlerToUse);
 
 		actions.add(new ProjectListOpenAction(table));
@@ -55,6 +52,7 @@ public class TreeBasedProjectList extends JPanel
 		actions.add(new ProjectListSaveAsAction(table));
 		actions.add(new ProjectListExportAction(table));
 		actions.add(new ProjectListCreateDirectory(table));
+		actions.add(new ProjectListMoveToDirectory(table));
 		
 		OneRowPanel buttonBar = new OneRowPanel();
 		buttonBar.setBackground(AppPreferences.getWizardBackgroundColor());
