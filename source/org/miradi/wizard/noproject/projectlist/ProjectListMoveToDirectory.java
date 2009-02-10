@@ -35,7 +35,7 @@ public class ProjectListMoveToDirectory extends ProjectListAction
 	@Override
 	protected void doWork() throws Exception
 	{
-		DirectorySelectionDialog dialog = new DirectorySelectionDialog(getMainWindow());
+		DirectoryChooserDialog dialog = new DirectoryChooserDialog(getMainWindow());
 		dialog.setVisible(true);
 		File selectedDirectory = dialog.getSelectedDirectory();
 		if (selectedDirectory == null)
