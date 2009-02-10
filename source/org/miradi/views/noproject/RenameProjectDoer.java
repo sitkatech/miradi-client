@@ -33,22 +33,22 @@ import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 public class RenameProjectDoer
 {
-	static public void doIt(MainWindow mainWindow, File projectToRename) throws Exception 
+	static public void doIt(MainWindow mainWindow, File directoryToRename) throws Exception 
 	{
 		DirectoryLock directoryLock = new DirectoryLock();
-		if (!directoryLock.getDirectoryLock(projectToRename))
+		if (!directoryLock.getDirectoryLock(directoryToRename))
 		{
-			EAM.notifyDialog(EAM.text("Unable to rename this project because it is in use by another copy of this application:\n") +  projectToRename.getName());
+			EAM.notifyDialog(EAM.text("Unable to rename this project because it is in use by another copy of this application:\n") +  directoryToRename.getName());
 			return;
 		}
 
 		try
 		{
-			String newName = getLegalProjectNameFromUser(mainWindow, projectToRename.getName());
-			if (newName == null)
+			String newDirectoryName = getLegalProjectNameFromUser(mainWindow, directoryToRename.getName());
+			if (newDirectoryName == null)
 				return;
 
-			String[] body = {EAM.text("Are you sure you want to rename item: "), newName,
+			String[] body = {EAM.text("Are you sure you want to rename item: "), newDirectoryName,
 			};
 			String[] buttons = {EAM.text("Rename"), EAM.text("Cancel"), };
 			if(!EAM.confirmDialog(EAM.text("Rename Item"), body, buttons))
@@ -56,8 +56,8 @@ public class RenameProjectDoer
 		
 			directoryLock.close();
 			
-			File newFile = new File(projectToRename.getParentFile(), newName);
-			boolean wasRenamed = projectToRename.renameTo(newFile);
+			File newFile = new File(directoryToRename.getParentFile(), newDirectoryName);
+			boolean wasRenamed = directoryToRename.renameTo(newFile);
 			if (!wasRenamed)
 				throw new IOException("Item was not renamed.");
 		}
