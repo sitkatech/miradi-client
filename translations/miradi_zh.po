@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-06 17:09-0500\n"
+"POT-Creation-Date: 2009-02-09 20:59-0500\n"
 "PO-Revision-Date: 2008-11-25 07:05-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Chinese\n"
@@ -23734,6 +23734,14 @@ msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern US Regional "
 "Office___Southern US___YES"
 msgstr "美国南部地区办公室___美国南部___是"
+
+#, fuzzy
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide Office"
+msgstr "佛罗里达___美国南部___是"
+
+#, fuzzy
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC"
+msgstr "爱荷华州___美国中部___是"
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Admiralty "
