@@ -23,15 +23,10 @@ import java.io.File;
 
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 
-public class FileSystemRootNode extends FileSystemProjectOrDirectoryNode
+public class DirectoryRootTreeNode extends FileSystemDirectoryNode
 {
-	public FileSystemRootNode(File file, FileSystemProjectSorter nodeSorterToUse) throws Exception
+	public DirectoryRootTreeNode(File file, FileSystemProjectSorter nodeSorterToUse) throws Exception
 	{
 		super(file, nodeSorterToUse);
-	}
-	
-	public void setFile(File file)
-	{
-		thisFile = file;
-	}
+	}	
 }

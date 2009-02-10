@@ -59,7 +59,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 	public ProjectListTreeTable(MainWindow mainWindowToUse, ProjectListTreeTableModel treeTableModel, NoProjectWizardStep handlerToUse)
 	{
 		super(mainWindowToUse, treeTableModel);
-		tree.setRootVisible(false);
+
 		tree.setShowsRootHandles(true);
 		Renderer renderer = new Renderer(this);
 		tree.setCellRenderer(renderer);
@@ -177,6 +177,8 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		menu.addSeparator();
 		menu.add(new ProjectListDeleteAction(this));
 		menu.add(new ProjectListCreateDirectory(this));
+		menu.add(new ProjectListMoveToDirectory(this));
+		
 		return menu;
 	}
 	

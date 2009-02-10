@@ -33,7 +33,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.LastProjectModifiedTimeHelper;
 
-public class FileSystemTreeNode extends TreeTableNode
+abstract public class FileSystemTreeNode extends TreeTableNode
 {
 	public FileSystemTreeNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
@@ -108,32 +108,11 @@ public class FileSystemTreeNode extends TreeTableNode
 			File file = files[i];
 			if(isVisibleDirectoryOrProject(file))
 			{
-				FileSystemTreeNode node = new FileSystemTreeNode(file, sorter);				
-				children.add(node);
+				children.add(createNode(file, sorter));
 			}
 		}
 		
 		sortChildren();
-	}
-
-	private boolean isVisibleDirectoryOrProject(File file)
-	{
-		if (!file.isDirectory())
-			return false;
-	
-		if (ProjectServer.isExistingProject(file))
-			return true;
-		
-		if (isExternalReportsDirectory(file))
-			return false;
-		
-		if (isCustomReportsDirectory(file))
-			return false;
-		
-		if (isExternalResourceDirectory(file))
-			return false;
-		
-		return true;
 	}
 
 	public void recursivelySort()
@@ -151,17 +130,17 @@ public class FileSystemTreeNode extends TreeTableNode
 		Collections.sort(children, sorter);
 	}
 	
-	private boolean isExternalReportsDirectory(File file)
+	protected boolean isExternalReportsDirectory(File file)
 	{	
 		return file.getName().equals(OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME);
 	}
 
-	private boolean isCustomReportsDirectory(File file)
+	protected boolean isCustomReportsDirectory(File file)
 	{
 		return file.getName().equals(OLD_JASPER_CUSTOM_REPORTS_DIR_NAME);
 	}
 	
-	private boolean isExternalResourceDirectory(File file)
+	protected boolean isExternalResourceDirectory(File file)
 	{
 		return file.getName().equals(EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME);
 	}
@@ -181,7 +160,11 @@ public class FileSystemTreeNode extends TreeTableNode
 	{
 		return thisFile;
 	}
-
+	
+	abstract protected FileSystemTreeNode createNode(File file, FileSystemProjectSorter sorterToUse) throws Exception;
+	
+	abstract protected boolean isVisibleDirectoryOrProject(File file);
+	
 	private static final String OLD_JASPER_EXTERNAL_REPORTS_DIR_NAME = "ExternalReports";	
 	private static final String OLD_JASPER_CUSTOM_REPORTS_DIR_NAME = "CustomReports";
 	

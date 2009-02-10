@@ -27,6 +27,7 @@ import javax.swing.AbstractAction;
 import javax.swing.Icon;
 
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
 abstract class ProjectListAction extends AbstractAction
 {
@@ -84,6 +85,11 @@ abstract class ProjectListAction extends AbstractAction
 	protected void refresh()
 	{
 		table.refresh();
+	}
+	
+	protected MainWindow getMainWindow()
+	{
+		return table.getMainWindow();
 	}
 	
 	abstract protected void doWork() throws Exception;

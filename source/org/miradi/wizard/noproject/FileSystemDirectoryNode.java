@@ -21,17 +21,37 @@ package org.miradi.wizard.noproject;
 
 import java.io.File;
 
+import org.miradi.database.ProjectServer;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 
-public class FileSystemRootNode extends FileSystemProjectOrDirectoryNode
+public class FileSystemDirectoryNode extends FileSystemTreeNode
 {
-	public FileSystemRootNode(File file, FileSystemProjectSorter nodeSorterToUse) throws Exception
+	public FileSystemDirectoryNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
-		super(file, nodeSorterToUse);
+		super(file, sorterToUse);
 	}
 	
-	public void setFile(File file)
+	@Override
+	protected FileSystemTreeNode createNode(File file, FileSystemProjectSorter sorterToUse) throws Exception
 	{
-		thisFile = file;
+		return new FileSystemDirectoryNode(file, sorterToUse);
+	}
+	
+	@Override
+	protected boolean isVisibleDirectoryOrProject(File file)
+	{
+		if (ProjectServer.isExistingProject(file))
+			return false;
+		
+		if (isExternalReportsDirectory(file))
+			return false;
+		
+		if (isCustomReportsDirectory(file))
+			return false;
+		
+		if (isExternalResourceDirectory(file))
+			return false;
+		
+		return file.isDirectory();			
 	}
 }
