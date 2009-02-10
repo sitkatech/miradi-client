@@ -406,8 +406,8 @@
 <!-- ================================================================== -->
 <!-- S P A N I S H                                            -->
 <!-- ================================================================== -->
-<target name="spanish" description="Update Spanish Content from POT">
-	<echo message="updating Spanish po file from pot"/>
+<target name="spanish" depends="pot" description="Update Spanish Content">
+	<echo message="updating Spanish po file"/>
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
@@ -427,8 +427,8 @@
 <!-- ================================================================== -->
 <!-- I N D O N E S I A N                   -->
 <!-- ================================================================== -->
-<target name="indonesian" description="Update Indonesian Content from POT">
-	<echo message="updating Indonesian po file from pot"/>
+<target name="indonesian" depends="pot" description="Update Indonesian Content">
+	<echo message="updating Indonesian po file"/>
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
@@ -449,8 +449,8 @@
 <!-- ================================================================== -->
 <!-- C H I N E S E                   -->
 <!-- ================================================================== -->
-<target name="chinese" description="Update Chinese Content from POT">
-	<echo message="updating Chinese po file from pot"/>
+<target name="chinese" depends="pot" description="Update Chinese Content">
+	<echo message="updating Chinese po file"/>
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
@@ -471,8 +471,8 @@
 <!-- ================================================================== -->
 <!-- P O R T U G U E S E                   -->
 <!-- ================================================================== -->
-<target name="portuguese" description="Update Portuguese Content from POT">
-	<echo message="updating Portuguese po file from pot"/>
+<target name="portuguese" depends="pot" description="Update Portuguese Content">
+	<echo message="updating Portuguese po file"/>
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
