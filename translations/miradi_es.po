@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-06 17:09-0500\n"
+"POT-Creation-Date: 2009-02-09 20:59-0500\n"
 "PO-Revision-Date: 2008-12-02 15:17-0800\n"
 "Last-Translator: Anna\n"
 "Language-Team: Spanish\n"
@@ -26310,6 +26310,14 @@ msgid ""
 "Office___Southern US___YES"
 msgstr ""
 "Oficinal Regional del Sur de Estados Unidos___Sur de Estados Unidos___SÍ "
+
+#, fuzzy
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide Office"
+msgstr "Florida___Sur de Estados Unidos___SÍ "
+
+#, fuzzy
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC"
+msgstr "Iowa___Estados Unidos central___SÍ "
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Admiralty "
