@@ -52,7 +52,7 @@ public class TreeBasedProjectList extends JPanel
 		actions.add(new ProjectListSaveAsAction(table));
 		actions.add(new ProjectListExportAction(table));
 		actions.add(new ProjectListCreateDirectoryAction(table));
-		actions.add(new ProjectListMoveToDirectory(table));
+		actions.add(new ProjectListMoveToDirectoryAction(table));
 		
 		OneRowPanel buttonBar = new OneRowPanel();
 		buttonBar.setBackground(AppPreferences.getWizardBackgroundColor());
