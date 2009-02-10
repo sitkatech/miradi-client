@@ -49,5 +49,5 @@ public class MiradiDirectoryChooser
 	}
 	
 	private MainWindow mainWindow;
-	private static final String DIALOG_TITLE = EAM.text("Directory Chooser");
+	private static final String DIALOG_TITLE = EAM.text("Folder Chooser");
 }
