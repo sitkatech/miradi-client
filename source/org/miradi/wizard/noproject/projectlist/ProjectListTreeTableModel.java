@@ -30,19 +30,17 @@ import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ProjectListTreeTableModel extends GenericTreeTableModel
 {
-	public static ProjectListTreeTableModel createDirectoryListTreeTableModel() throws Exception
+	public static ProjectListTreeTableModel createDirectoryListTreeTableModel(File homeDirectory) throws Exception
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
-		File homeDirectory = EAM.getHomeDirectory();
 		FileSystemDirectoryNode rootNode = new FileSystemDirectoryNode(homeDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
 	}
 	
-	public static ProjectListTreeTableModel createProjectListTreeTableModel() throws Exception
+	public static ProjectListTreeTableModel createProjectListTreeTableModel(File homeDirectory) throws Exception
 	{
 		FileSystemProjectSorter nodeSorter = new FileSystemProjectSorter();
-		File homeDirectory = EAM.getHomeDirectory();
 		FileSystemProjectOrDirectoryNode rootNode = new FileSystemProjectOrDirectoryNode(homeDirectory, nodeSorter);
 			
 		return new ProjectListTreeTableModel(rootNode, nodeSorter);
