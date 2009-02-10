@@ -29,7 +29,7 @@ public class ProjectListMoveToDirectory extends ProjectListAction
 
 	public ProjectListMoveToDirectory(ProjectListTreeTable tableToUse)
 	{
-		super(tableToUse, EAM.text("Move To"));
+		super(tableToUse, EAM.text("Move To..."));
 	}
 
 	@Override
