@@ -73,7 +73,7 @@ abstract class ProjectListAction extends AbstractAction
 		return ProjectListTreeTable.isProjectDirectory(getFile());
 	}
 	
-	protected boolean isValidDirectory()
+	protected boolean isDirectorySelected()
 	{
 		File fileToValidate = getFile();
 		if (fileToValidate == null)

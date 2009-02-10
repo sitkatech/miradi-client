@@ -34,7 +34,7 @@ class ProjectListDeleteAction extends ProjectListAction
 	@Override
 	protected void updateEnabledState()
 	{
-		setEnabled(isValidDirectory());
+		setEnabled(isDirectorySelected());
 	}
 
 	protected void doWork() throws Exception
