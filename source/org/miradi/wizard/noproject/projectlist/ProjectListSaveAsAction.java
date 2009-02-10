@@ -32,7 +32,7 @@ class ProjectListSaveAsAction extends ProjectListAction
 
 	protected void doWork()  throws Exception
 	{
-		CopyProject.doIt(EAM.getMainWindow(), getFile());
+		CopyProject.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 
 	protected String getErrorMessage()

@@ -31,7 +31,7 @@ class ProjectListOpenAction extends ProjectListAction
 
 	protected void doWork() throws Exception
 	{
-		ProjectListTreeTable.doProjectOpen(getFile());
+		ProjectListTreeTable.doProjectOpen(getSelectedFile());
 	}
 	
 	protected String getErrorMessage()

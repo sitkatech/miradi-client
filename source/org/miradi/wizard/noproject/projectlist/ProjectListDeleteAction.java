@@ -39,7 +39,7 @@ class ProjectListDeleteAction extends ProjectListAction
 
 	protected void doWork() throws Exception
 	{
-		DeleteProject.doIt(EAM.getMainWindow(), getFile());
+		DeleteProject.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 	
 	protected String getErrorMessage()

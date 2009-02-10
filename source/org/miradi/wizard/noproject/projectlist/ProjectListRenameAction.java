@@ -38,7 +38,7 @@ class ProjectListRenameAction extends ProjectListAction
 
 	protected void doWork() throws Exception
 	{
-		RenameProjectDoer.doIt(EAM.getMainWindow(), getFile());
+		RenameProjectDoer.doIt(EAM.getMainWindow(), getSelectedFile());
 	}
 	
 	protected String getErrorMessage()
