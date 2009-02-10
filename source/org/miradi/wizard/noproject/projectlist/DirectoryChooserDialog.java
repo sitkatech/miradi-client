@@ -69,7 +69,7 @@ public class DirectoryChooserDialog extends DialogWithButtonBar
 	
 	private Vector<Component> createButtonComponents()
 	{
-		PanelButton okButton = new PanelButton(EAM.text("Button|Ok"));
+		PanelButton okButton = new PanelButton(EAM.text("Button|Move"));
 		okButton.addActionListener(new ActionHandler());
 		getRootPane().setDefaultButton(okButton);
 		
