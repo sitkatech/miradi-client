@@ -38,7 +38,7 @@ public class FileSystemDirectoryNode extends FileSystemTreeNode
 	}
 	
 	@Override
-	protected boolean isVisibleDirectoryOrProject(File file)
+	protected boolean shouldBeIncluded(File file)
 	{
 		if (ProjectServer.isExistingProject(file))
 			return false;

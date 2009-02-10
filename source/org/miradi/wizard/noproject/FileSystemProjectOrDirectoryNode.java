@@ -36,7 +36,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 		return new FileSystemProjectOrDirectoryNode(file, sorterToUse);
 	}
 	
-	protected boolean isVisibleDirectoryOrProject(File file)
+	protected boolean shouldBeIncluded(File file)
 	{
 		if (!file.isDirectory())
 			return false;
