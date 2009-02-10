@@ -48,12 +48,6 @@ public class RenameProjectDoer
 			if (newDirectoryName == null)
 				return;
 
-			String[] body = {EAM.text("Are you sure you want to rename item: "), newDirectoryName,
-			};
-			String[] buttons = {EAM.text("Rename"), EAM.text("Cancel"), };
-			if(!EAM.confirmDialog(EAM.text("Rename Item"), body, buttons))
-				return;
-		
 			directoryLock.close();
 			
 			File newFile = new File(directoryToRename.getParentFile(), newDirectoryName);

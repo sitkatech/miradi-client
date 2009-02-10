@@ -463,7 +463,7 @@ public class EAM
 			
 			EAM.errorDialog("<html>" +
 					"Miradi cannot run because there a file exists where " +
-					"its data directory should be:" +
+					"its data folder should be:" +
 					"<br>" + newDirectory.getAbsolutePath());
 			return false;
 		}
@@ -512,7 +512,7 @@ public class EAM
 			"automatically be imported into Miradi.",
 			"",
 			"If you want to run Miradi without performing this migration, ",
-			"delete the e-Adaptive Management project directory ",
+			"delete the e-Adaptive Management project folder ",
 			"(" + oldEamDirectory + "), or rename it to something else",
 			"",
 			"Do you want to Import the old data, or Exit Miradi?",

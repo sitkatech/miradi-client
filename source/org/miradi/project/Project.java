@@ -164,7 +164,7 @@ public class Project
 			throw new Exception(EAM.text("Invalid project name:") + newName);
 		
 		if(newFile.exists())
-			throw new Exception(EAM.text("A file or directory exist by the same name:") + newName);
+			throw new Exception(EAM.text("A file or folder exist by the same name:") + newName);
 		
 	}
 	/////////////////////////////////////////////////////////////////////////////////

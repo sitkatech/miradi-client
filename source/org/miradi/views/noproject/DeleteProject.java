@@ -58,6 +58,6 @@ public class DeleteProject
 		if (ProjectServer.isExistingProject(projectToDelete))
 			return EAM.text("Are you sure you want to delete this project? ");
 		
-		return EAM.text("Are you sure you want to delete this directory and its contents, including all subdirectories?");
+		return EAM.text("Are you sure you want to delete this folder and its contents, including all subfolders?");
 	}
 }
