@@ -24,10 +24,10 @@ import java.io.IOException;
 
 import org.miradi.main.EAM;
 
-public class ProjectListMoveToDirectory extends ProjectListAction
+public class ProjectListMoveToDirectoryAction extends ProjectListAction
 {
 
-	public ProjectListMoveToDirectory(ProjectListTreeTable tableToUse)
+	public ProjectListMoveToDirectoryAction(ProjectListTreeTable tableToUse)
 	{
 		super(tableToUse, EAM.text("Move To..."));
 	}
