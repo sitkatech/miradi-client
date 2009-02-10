@@ -35,9 +35,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.MiradiScrollPane;
 
-public class DirectorySelectionDialog extends DialogWithButtonBar
+public class DirectoryChooserDialog extends DialogWithButtonBar
 {
-	public DirectorySelectionDialog(MainWindow mainWindowToUse) throws Exception
+	public DirectoryChooserDialog(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse);
 
