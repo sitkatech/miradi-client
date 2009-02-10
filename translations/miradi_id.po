@@ -26277,11 +26277,11 @@ msgstr "Kantor Wilayah US Selatan___US Selatan___YES"
 
 #, fuzzy
 msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide Office"
-msgstr "Florida___AS Selatan___YES"
+msgstr ""
 
 #, fuzzy
 msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC"
-msgstr "Iowa___AS Tengah___YES"
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Admiralty "
