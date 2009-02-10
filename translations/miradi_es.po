@@ -26313,11 +26313,11 @@ msgstr ""
 
 #, fuzzy
 msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide Office"
-msgstr "Florida___Sur de Estados Unidos___SÍ "
+msgstr ""
 
 #, fuzzy
 msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC"
-msgstr "Iowa___Estados Unidos central___SÍ "
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Admiralty "
