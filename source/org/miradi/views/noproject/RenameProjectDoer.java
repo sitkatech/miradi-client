@@ -59,7 +59,7 @@ public class RenameProjectDoer
 			File newFile = new File(directoryToRename.getParentFile(), newDirectoryName);
 			boolean wasRenamed = directoryToRename.renameTo(newFile);
 			if (!wasRenamed)
-				throw new IOException("Item was not renamed.");
+				throw new IOException("Rename Failed.");
 		}
 		catch (Exception e)
 		{
