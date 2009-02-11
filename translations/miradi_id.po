@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-09 20:59-0500\n"
+"POT-Creation-Date: 2009-02-10 13:15-0500\n"
 "PO-Revision-Date: 2008-11-19 15:59-0500\n"
 "Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
 "Language-Team: Indonesian\n"
@@ -26276,12 +26276,15 @@ msgid ""
 msgstr "Kantor Wilayah US Selatan___US Selatan___YES"
 
 #, fuzzy
-msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide Office"
-msgstr ""
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
+"Office___Worldwide Office___YES"
+msgstr "Worldwide Office___Worldwide Office___YES"
 
 #, fuzzy
-msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC"
-msgstr ""
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
+msgstr "Non-TNC___Non-TNC___YES"
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Admiralty "
