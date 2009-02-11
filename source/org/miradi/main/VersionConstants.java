@@ -31,21 +31,37 @@ public class VersionConstants
 		return VERSION_STRING + " " + TIMESTAMP_STRING;
 	}
 
-	public static void setVersionAndTimestamp() throws IOException
+	public static void readVersionFile() throws IOException
 	{
 		VERSION_STRING = readFile(VERSION_FILENAME);
+	}
+	
+	public static void readTimestampFile() throws IOException
+	{
 		TIMESTAMP_STRING = readFile(TIMESTAMP_FILENAME);
 	}
 	
-	public static void ensureVersionTimestamp()
+	public static String getVersion() throws Exception
 	{
+		if (VERSION_STRING == null)
+			readVersionFile();
+		
 		ensureValue(VERSION_FILENAME, VERSION_STRING);
+		return VERSION_STRING;
+	}
+	
+	public static String getTimestamp() throws Exception
+	{
+		if (TIMESTAMP_STRING == null)
+			readTimestampFile();
+
 		ensureValue(TIMESTAMP_FILENAME, TIMESTAMP_STRING);
+		return TIMESTAMP_STRING;
 	}
 	
 	private static void ensureValue(String filename, String value)
 	{
-		if (value == null || value.length() ==0 || value.equals(UNKNOWN_VALUE))
+		if (value == null || value.length() == 0 || value.equals(UNKNOWN_VALUE))
 			EAM.logWarning(filename + " not found");
 	}
 	
@@ -69,6 +85,6 @@ public class VersionConstants
 	private static final String VERSION_FILENAME = "/miradi.version.txt";
 	private static final String TIMESTAMP_FILENAME = "/miradi.timestamp.txt";
 	private static final String UNKNOWN_VALUE = "(unknown)";
-	public static String VERSION_STRING;
-	public static String TIMESTAMP_STRING;
+	private static String VERSION_STRING;
+	private static String TIMESTAMP_STRING;
 }
