@@ -55,8 +55,6 @@ public class Miradi
 		}
 		
 		Translation.initialize();
-		VersionConstants.setVersionAndTimestamp();
-		VersionConstants.ensureVersionTimestamp();
 		
 		List<String> argsAsList = Arrays.asList(args);
 

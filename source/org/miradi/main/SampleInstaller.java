@@ -71,7 +71,7 @@ public class SampleInstaller
 		return EAM.confirmDialog(EAM.text("Install Sample Project"), new String[]{text}, buttonLabels);
 	}
 
-	private Vector<File> getInstallableSampleProjects(File[] allMpzFiles)
+	private Vector<File> getInstallableSampleProjects(File[] allMpzFiles) throws Exception
 	{
 		if (installedSampleProjectCodes.contains(getVersionString()))
 			return new Vector();
@@ -113,9 +113,9 @@ public class SampleInstaller
 		return appPreferences;
 	}
 	
-	private String getVersionString()
+	private String getVersionString() throws Exception
 	{
-		return VersionConstants.VERSION_STRING;
+		return VersionConstants.getVersion();
 	}
 	
 	private AppPreferences appPreferences;
