@@ -37,14 +37,24 @@ public class VersionConstants
 		TIMESTAMP_STRING = readFile(TIMESTAMP_FILENAME);
 	}
 	
+	public static void ensureVersionTimestamp()
+	{
+		ensureValue(VERSION_FILENAME, VERSION_STRING);
+		ensureValue(TIMESTAMP_FILENAME, TIMESTAMP_STRING);
+	}
+	
+	private static void ensureValue(String filename, String value)
+	{
+		if (value == null || value.length() ==0 || value.equals(UNKNOWN_VALUE))
+			EAM.logWarning(filename + " not found");
+	}
+	
 	private static String readFile(String filename) throws IOException
 	{
 		InputStream in = VersionConstants.class.getResourceAsStream(filename);
 		if(in == null)
-		{
-			EAM.logWarning(filename + " not found");
-			return "(unknown)";
-		}
+			return UNKNOWN_VALUE;
+	
 		UnicodeReader reader = new UnicodeReader(in);
 		try
 		{
@@ -58,6 +68,7 @@ public class VersionConstants
 	
 	private static final String VERSION_FILENAME = "/miradi.version.txt";
 	private static final String TIMESTAMP_FILENAME = "/miradi.timestamp.txt";
+	private static final String UNKNOWN_VALUE = "(unknown)";
 	public static String VERSION_STRING;
 	public static String TIMESTAMP_STRING;
 }
