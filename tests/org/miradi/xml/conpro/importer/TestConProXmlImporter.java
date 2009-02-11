@@ -49,7 +49,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		VersionConstants.setVersionString();
+		VersionConstants.setVersionAndTimestamp();
 	}
 	
 	public void testImportConProProject() throws Exception
