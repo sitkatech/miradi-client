@@ -44,7 +44,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		VersionConstants.setVersionString();
+		VersionConstants.setVersionAndTimestamp();
 		getProject().populateEverything();
 	}
 	

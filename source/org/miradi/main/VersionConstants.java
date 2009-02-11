@@ -31,7 +31,7 @@ public class VersionConstants
 		return VERSION_STRING + " " + TIMESTAMP_STRING;
 	}
 
-	public static void setVersionString() throws IOException
+	public static void setVersionAndTimestamp() throws IOException
 	{
 		VERSION_STRING = readFile(VERSION_FILENAME);
 		TIMESTAMP_STRING = readFile(TIMESTAMP_FILENAME);
