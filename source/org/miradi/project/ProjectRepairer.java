@@ -32,6 +32,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -57,6 +59,7 @@ public class ProjectRepairer
 	{
 		repairUnsnappedNodes();
 		deleteOrphanAnnotations();
+		repairDiagramObjectsReferringToNonExistantTags();
 	}
 
 	 
@@ -223,6 +226,36 @@ public class ProjectRepairer
 		}
 		
 		return missingObjectRefs;
+	}
+	
+	public void repairDiagramObjectsReferringToNonExistantTags() throws Exception
+	{
+		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
+		for (int index = 0; index < allDiagramObjectRefs.size(); ++index)
+		{
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), allDiagramObjectRefs.get(index));
+			removeNonExistingTagsFromSeletedTagsList(diagramObject);
+		}
+	}
+
+	private void removeNonExistingTagsFromSeletedTagsList(DiagramObject diagramObject) throws Exception
+	{
+		ORefList existingTagRefs = new ORefList();
+		ORefList selectedTagRefs = diagramObject.getSelectedTaggedObjectSetRefs();
+		for (int index = 0; index < selectedTagRefs.size(); ++index)
+		{
+			ORef taggedObjectSetRef = selectedTagRefs.get(index);
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+			if (taggedObjectSet != null)
+				existingTagRefs.add(taggedObjectSetRef);
+		}
+		
+		diagramObject.setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, existingTagRefs.toString());
+	}
+	
+	private Project getProject()
+	{
+		return project;
 	}
 
 	private Project project;
