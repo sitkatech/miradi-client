@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.Assignment;
+import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
 public class DeleteAccountingCodeDoer extends DeletePoolObjectDoer
@@ -28,6 +30,12 @@ public class DeleteAccountingCodeDoer extends DeletePoolObjectDoer
 	protected String getCustomText()
 	{
 		return EAM.text("Accounting Code");
+	}
+	
+	@Override
+	protected void doWork(BaseObject objectToDelete) throws Exception
+	{
+		clearFromAssignment(objectToDelete, Assignment.TAG_ACCOUNTING_CODE);
 	}
 }
 
