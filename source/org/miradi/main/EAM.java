@@ -250,6 +250,9 @@ public class EAM
 	
 	public static void logWarning(String text)
 	{
+		if (isAlphaTesterMode)
+			errorDialog("<HTML>There is a console warning: <BR>" + text + "</HTML>");
+		
 		logger.logWarning(text);
 	}
 	
