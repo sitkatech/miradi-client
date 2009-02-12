@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
@@ -62,6 +63,9 @@ public class ProjectRepairer
 		deleteOrphanAnnotations();
 		if (ProjectServer.DATA_VERSION <= DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED)
 			repairDiagramObjectsReferringToNonExistantTags();
+		
+		if (ProjectServer.DATA_VERSION <= DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED)
+			repairAssignmentsReferringToNonExistantData();
 	}
 
 	 
@@ -255,6 +259,24 @@ public class ProjectRepairer
 		diagramObject.setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, existingTagRefs.toString());
 	}
 	
+	public void repairAssignmentsReferringToNonExistantData() throws Exception
+	{
+		ORefList allAssignmentRefs = getProject().getAssignmentPool().getRefList();
+		for (int index = 0; index < allAssignmentRefs.size(); ++index)
+		{
+			Assignment assignment = Assignment.find(getProject(), allAssignmentRefs.get(index));
+			possiblyClearField(assignment, assignment.getAccountingCodeRef(), Assignment.TAG_ACCOUNTING_CODE);
+			possiblyClearField(assignment, assignment.getFundingSourceRef(), Assignment.TAG_FUNDING_SOURCE);
+		}
+	}
+	
+	private void possiblyClearField(Assignment assignment, ORef refToTestForExistance, String tagToClear) throws Exception
+	{
+		BaseObject foundObject = getProject().findObject(refToTestForExistance);
+		if (foundObject == null)
+			assignment.setData(tagToClear, BaseId.INVALID.toString());
+	}
+
 	private Project getProject()
 	{
 		return project;

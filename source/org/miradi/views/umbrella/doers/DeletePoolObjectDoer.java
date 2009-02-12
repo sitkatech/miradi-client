@@ -22,8 +22,12 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.ObjectsDoer;
 
@@ -68,6 +72,16 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		{
 			EAM.logException(e);
 			throw new CommandFailedException(e);
+		}
+	}
+	
+	protected void clearFromAssignment(BaseObject objectToDelete, String referringTag) throws Exception
+	{
+		ORefList assignmentReferrerRefs = objectToDelete.findObjectsThatReferToUs(Assignment.getObjectType());
+		for (int index = 0; index < assignmentReferrerRefs.size(); ++index)
+		{
+			CommandSetObjectData clearTag = new CommandSetObjectData(assignmentReferrerRefs.get(index), referringTag, BaseId.INVALID.toString());
+			getProject().executeCommand(clearTag);
 		}
 	}
 	

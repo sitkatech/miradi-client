@@ -804,7 +804,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return (FactorId)createObjectAndReturnId(ObjectType.TASK, BaseId.INVALID);
 	}
 
-	public AssignmentId createAssignment(ORef oref) throws Exception
+	public AssignmentId createAssignment() throws Exception
 	{
 		AssignmentId cmAssignmentId = (AssignmentId)createObjectAndReturnId(ObjectType.ASSIGNMENT, BaseId.INVALID);
 		return cmAssignmentId;

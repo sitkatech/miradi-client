@@ -22,6 +22,7 @@ package org.miradi.project;
 import java.awt.Dimension;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.ids.AssignmentId;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -29,6 +30,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
@@ -170,5 +172,19 @@ public class TestProjectRepairer extends TestCaseWithProject
 		ORefList selectedTagRefs = diagramObject.getSelectedTaggedObjectSetRefs();
 		assertEquals("wrong selected tag count after project repair?", 1, selectedTagRefs.size());
 		assertTrue("did not contain tag?", selectedTagRefs.contains(taggedObjectSet.getRef()));
+	}
+	
+	public void testRepairAssignmentsReferringToNonExistantData() throws Exception
+	{
+		AssignmentId assignmentId = getProject().createAssignment();
+		Assignment assignment = Assignment.find(getProject(), new ORef(Assignment.getObjectType(), assignmentId));
+		assignment.setData(Assignment.TAG_ACCOUNTING_CODE, new BaseId(40000).toString());
+		assignment.setData(Assignment.TAG_FUNDING_SOURCE, new BaseId(50000).toString());
+		
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		repairer.repairAssignmentsReferringToNonExistantData();
+		
+		assertTrue("assignment refers to valid accounting code?", assignment.getAccountingCodeRef().isInvalid());
+		assertTrue("assignment refers to valid funding source?", assignment.getFundingSourceRef().isInvalid());
 	}
 }
