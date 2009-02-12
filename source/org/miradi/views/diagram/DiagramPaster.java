@@ -397,8 +397,7 @@ abstract public class DiagramPaster
 			String tagName = taggedObjectSet.getLabel();
 			if (tagNames.contains(tagName))
 			{
-				CommandSetObjectData tagObjectCommand = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, newObject.getRef());
-				getProject().executeCommand(tagObjectCommand);
+				addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef());
 				containingTagNames.add(tagName);
 			}
 		}
@@ -415,9 +414,14 @@ abstract public class DiagramPaster
 			getProject().executeCommand(setLabel);
 			
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), newTaggedObjectSetRef);
-			CommandSetObjectData tagObjectCommand = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, newObject.getRef());
-			getProject().executeCommand(tagObjectCommand); 
+			addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef()); 
 		}
+	}
+
+	private void addObjectToTaggedObjectSet(TaggedObjectSet taggedObjectSet, ORef ref) throws Exception
+	{
+		CommandSetObjectData tagObjectCommand = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, ref);
+		getProject().executeCommand(tagObjectCommand);
 	}
 
 	private void fixUpRelevancyOverrideSet() throws Exception
