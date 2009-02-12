@@ -256,7 +256,7 @@ public class ProjectRepairer
 				nonDeletedTagRefs.add(taggedObjectSetRef);
 		}
 		
-		diagramObject.setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, nonDeletedTagRefs.toString());
+		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, nonDeletedTagRefs.toString());
 	}
 	
 	public void repairAssignmentsReferringToNonExistantData() throws Exception
