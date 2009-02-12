@@ -26,6 +26,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.views.diagram.DiagramPaster;
 
 public class ObjectDeepCopier
 {
@@ -65,8 +66,8 @@ public class ObjectDeepCopier
 	private EnhancedJsonObject getCustomJson(BaseObject objectToDeepCopy)
 	{
 		EnhancedJsonObject customJson = objectToDeepCopy.toJson();
-		customJson.put("Type", objectToDeepCopy.getType());
-		customJson.put("TagNames", getTagNames(objectToDeepCopy).toString());
+		customJson.put(DiagramPaster.FAKE_TAG_TYPE, objectToDeepCopy.getType());
+		customJson.put(DiagramPaster.FAKE_TAG_TAG_NAMES, getTagNames(objectToDeepCopy).toString());
 		
 		return customJson;
 	}

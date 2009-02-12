@@ -862,12 +862,12 @@ abstract public class DiagramPaster
 
 	protected int getTypeFromJson(EnhancedJsonObject json)
 	{
-		return json.getInt("Type");
+		return json.getInt(FAKE_TAG_TYPE);
 	}
 	
 	private CodeList getTagNamesFromJson(EnhancedJsonObject json) throws Exception
 	{
-		return new CodeList(json.getString("TagNames"));
+		return new CodeList(json.getString(FAKE_TAG_TAG_NAMES));
 	}
 
 	protected boolean containsType(int[] types, int type)
@@ -948,4 +948,8 @@ abstract public class DiagramPaster
 	protected PointManipulater dataHelper;
 	protected TransferableMiradiList transferableList;
 	private Vector pastedCellsToSelect;
+	
+	public static final String FAKE_TAG_TYPE = "Type";
+	public static final String FAKE_TAG_TAG_NAMES = "TagNames";
+
 }
