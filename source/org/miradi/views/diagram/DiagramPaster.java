@@ -390,27 +390,24 @@ abstract public class DiagramPaster
 	private void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
 	{
 		ORefList allTags = getProject().getTaggedObjectSetPool().getRefList();
-		CodeList containingTagNames = new CodeList();
+		CodeList needToCreateTagNames = new CodeList();
 		for (int index = 0; index < allTags.size(); ++index)
 		{
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), allTags.get(index));
 			String tagName = taggedObjectSet.getLabel();
 			if (tagNames.contains(tagName))
-			{
-				addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef());
-				containingTagNames.add(tagName);
-			}
+				addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef());				
+			else
+				needToCreateTagNames.add(tagName);
 		}
 		
-		CodeList namesToCreateFrom = new CodeList(tagNames);
-		namesToCreateFrom.subtract(containingTagNames);
-		for (int index = 0; index < namesToCreateFrom.size(); ++index)
+		for (int index = 0; index < needToCreateTagNames.size(); ++index)
 		{
 			CommandCreateObject createTaggedObjectSet = new CommandCreateObject(TaggedObjectSet.getObjectType());
 			getProject().executeCommand(createTaggedObjectSet);
 			
 			ORef newTaggedObjectSetRef = createTaggedObjectSet.getObjectRef();
-			CommandSetObjectData setLabel = new CommandSetObjectData(newTaggedObjectSetRef, TaggedObjectSet.TAG_LABEL, namesToCreateFrom.get(index));
+			CommandSetObjectData setLabel = new CommandSetObjectData(newTaggedObjectSetRef, TaggedObjectSet.TAG_LABEL, needToCreateTagNames.get(index));
 			getProject().executeCommand(setLabel);
 			
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), newTaggedObjectSetRef);
