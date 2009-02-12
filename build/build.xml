@@ -99,6 +99,8 @@
         <echo message="Time timestamp is ${TSTAMP}" />
         <echo message="Version timestamp is ${version.timestamp}" />
     	
+    	<mkdir dir='${binaries.cvs.module}' />
+    	<mkdir dir='${dist.dir}' />
     	<mkdir dir='${dist.temp.jars}' />
     	
 	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
