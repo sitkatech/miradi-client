@@ -232,8 +232,8 @@ public class EAMGraphUI extends BasicGraphUI
 						Point2D.Double startPoint = convertToPoint(controlPoints.get(0));
 						if (startPoint != null)
 						{
-							startPoint.x = (int) startPoint.x + deltaX;
-							startPoint.y = (int) startPoint.y + deltaY;
+							startPoint.x = startPoint.x + deltaX;
+							startPoint.y = startPoint.y + deltaY;
 						}
 
 						for (int j = 0; j < selectedBendPointIndexes.length; ++j)
@@ -242,15 +242,15 @@ public class EAMGraphUI extends BasicGraphUI
 							if (point == null)
 								continue;
 								
-							point.x = (int) (point.getX() + deltaX);
-							point.y = (int) point.getY() + deltaY;
+							point.x = point.getX() + deltaX;
+							point.y = point.getY() + deltaY;
 						}
 						
 						Point2D.Double endPoint = convertToPoint(controlPoints.get(controlPoints.size() - 1));
 						if (endPoint != null)
 						{
-							endPoint.x = (int) endPoint.x + deltaX;
-							endPoint.y = (int) endPoint.y + deltaY;
+							endPoint.x = endPoint.x + deltaX;
+							endPoint.y = endPoint.y + deltaY;
 						}
 					}
 				}
