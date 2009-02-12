@@ -22,7 +22,9 @@ package org.miradi.objecthelpers;
 import java.util.Vector;
 
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ObjectDeepCopier
@@ -50,24 +52,44 @@ public class ObjectDeepCopier
 			return;
 		
 		ORefList objectsToDeepCopy = objectToDeepCopy.getAllObjectsToDeepCopy();		
-		EnhancedJsonObject json = getJsonWithType(objectToDeepCopy);
-		allOwnedObjects.add(json.toString());
+		EnhancedJsonObject customJson = getCustomJson(objectToDeepCopy);
+		allOwnedObjects.add(customJson.toString());
 		for (int i = 0; i < objectsToDeepCopy.size(); ++i)
 		{
 			ORef objectRef = objectsToDeepCopy.get(i);
-			BaseObject thisObjectToDeepCopy = project.findObject(objectRef);
+			BaseObject thisObjectToDeepCopy = getProject().findObject(objectRef);
 			recursivelyCreateDeepCopy(thisObjectToDeepCopy);
 		}
 	}
 
-	private EnhancedJsonObject getJsonWithType(BaseObject objectToDeepCopy)
+	private EnhancedJsonObject getCustomJson(BaseObject objectToDeepCopy)
 	{
-		EnhancedJsonObject jsonWithType = objectToDeepCopy.toJson();
-		jsonWithType.put("Type", objectToDeepCopy.getType());
+		EnhancedJsonObject customJson = objectToDeepCopy.toJson();
+		customJson.put("Type", objectToDeepCopy.getType());
+		customJson.put("TagNames", getTagNames(objectToDeepCopy).toString());
 		
-		return jsonWithType;
+		return customJson;
 	}
 	
+	private CodeList getTagNames(BaseObject objectToDeepCopy)
+	{
+		CodeList tagNames = new CodeList();
+		ORefList referringTaggedObjectSetRefs = objectToDeepCopy.findObjectsThatReferToUs(TaggedObjectSet.getObjectType());
+		for (int index = 0; index < referringTaggedObjectSetRefs.size(); ++index)
+		{
+			ORef taggedObjectSetRef = referringTaggedObjectSetRefs.get(index);
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+			tagNames.add(taggedObjectSet.getLabel());
+		}
+		
+		return tagNames;
+	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+
 	private Vector allOwnedObjects;
 	private Project project;
 }

@@ -30,13 +30,17 @@ import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -107,6 +111,14 @@ public class TestTransferableEamList extends EAMTestCase
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(diagramFactorRef2);
 		diagramFactor2.setLocation(node2Location);
 		
+		TaggedObjectSet taggedObjectSet = project.createTaggedObjectSet();
+		taggedObjectSet.setData(TaggedObjectSet.TAG_LABEL, "SomeTag");
+		ORefList taggedFactorRefs = new ORefList(diagramFactor1.getWrappedORef());
+		taggedObjectSet.setData(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs.toString());
+		DiagramObject testingDiagramObject = project.getTestingDiagramObject();
+		ORefList taggedObjectSetRefs = new ORefList(taggedObjectSet.getRef());
+		testingDiagramObject.setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
+		
 		LinkCreator linkCreator = new LinkCreator(project);
 		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
@@ -115,7 +127,8 @@ public class TestTransferableEamList extends EAMTestCase
 		FactorCell factorCell2 = model.getFactorCellByRef(diagramFactorRef2);
 		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramLink)};
 		
-		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
+		
+		ORef diagramObjectRef = testingDiagramObject.getRef();
 		TransferableMiradiList miradiList = new TransferableMiradiList(project, diagramObjectRef);
 		miradiList.storeData(dataCells);
 		TransferableMiradiList miradiTransferData = (TransferableMiradiList)miradiList.getTransferData(TransferableMiradiList.miradiListDataFlavor);
@@ -128,6 +141,9 @@ public class TestTransferableEamList extends EAMTestCase
 		int factor1Type = factor1Json.getInt("Type");
 		assertEquals("wrong type for factor 1?", ObjectType.CAUSE, factor1Type);
 		assertEquals("wrong factor id?", diagramFactor1.getWrappedId(), factor1Json.getId(Factor.TAG_ID));
+		
+		CodeList tagNames = new CodeList(factor1Json.getString("TagNames"));
+		assertEquals("wrong tag name count?", 1, tagNames.size());
 		
 		EnhancedJsonObject factor2Json = new EnhancedJsonObject(factorDeepCopies.get(1));
 		int factor2Type = factor2Json.getInt("Type");

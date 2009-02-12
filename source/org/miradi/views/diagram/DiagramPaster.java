@@ -67,11 +67,13 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -377,9 +379,45 @@ abstract public class DiagramPaster
 			
 			getOldToNewObjectRefMap().put(oldObjectRef, newObject.getRef());
 			fixupRefs(getOldToNewObjectRefMap(),newObject);
+			
+			CodeList tagNames = getTagNamesFromJson(json);
+			fixTags(tagNames, newObject);
 		}
 		
 		fixUpRelevancyOverrideSet();
+	}
+
+	private void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
+	{
+		ORefList allTags = getProject().getTaggedObjectSetPool().getRefList();
+		CodeList containingTagNames = new CodeList();
+		for (int index = 0; index < allTags.size(); ++index)
+		{
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), allTags.get(index));
+			String tagName = taggedObjectSet.getLabel();
+			if (tagNames.contains(tagName))
+			{
+				CommandSetObjectData tagObjectCommand = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, newObject.getRef());
+				getProject().executeCommand(tagObjectCommand);
+				containingTagNames.add(tagName);
+			}
+		}
+		
+		CodeList namesToCreateFrom = new CodeList(tagNames);
+		namesToCreateFrom.subtract(containingTagNames);
+		for (int index = 0; index < namesToCreateFrom.size(); ++index)
+		{
+			CommandCreateObject createTaggedObjectSet = new CommandCreateObject(TaggedObjectSet.getObjectType());
+			getProject().executeCommand(createTaggedObjectSet);
+			
+			ORef newTaggedObjectSetRef = createTaggedObjectSet.getObjectRef();
+			CommandSetObjectData setLabel = new CommandSetObjectData(newTaggedObjectSetRef, TaggedObjectSet.TAG_LABEL, namesToCreateFrom.get(index));
+			getProject().executeCommand(setLabel);
+			
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), newTaggedObjectSetRef);
+			CommandSetObjectData tagObjectCommand = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, newObject.getRef());
+			getProject().executeCommand(tagObjectCommand); 
+		}
 	}
 
 	private void fixUpRelevancyOverrideSet() throws Exception
@@ -825,6 +863,11 @@ abstract public class DiagramPaster
 	protected int getTypeFromJson(EnhancedJsonObject json)
 	{
 		return json.getInt("Type");
+	}
+	
+	private CodeList getTagNamesFromJson(EnhancedJsonObject json) throws Exception
+	{
+		return new CodeList(json.getString("TagNames"));
 	}
 
 	protected boolean containsType(int[] types, int type)
