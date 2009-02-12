@@ -26,7 +26,6 @@ import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
@@ -49,8 +48,6 @@ public class TestConProXmlImporter extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		VersionConstants.readVersionFile();
-		VersionConstants.readTimestampFile();
 	}
 	
 	public void testImportConProProject() throws Exception

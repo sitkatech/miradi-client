@@ -26,7 +26,6 @@ import java.io.IOException;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.main.VersionConstants;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
@@ -44,8 +43,6 @@ public class TestConproXmlExporter extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		VersionConstants.readVersionFile();
-		VersionConstants.readTimestampFile();
 		getProject().populateEverything();
 	}
 	
