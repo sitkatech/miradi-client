@@ -274,7 +274,7 @@ public class ProjectRepairer
 	{
 		BaseObject foundObject = getProject().findObject(refToTestForExistance);
 		if (foundObject == null)
-			assignment.setData(tagToClear, BaseId.INVALID.toString());
+			getProject().setObjectData(assignment.getRef(), tagToClear, BaseId.INVALID.toString());
 	}
 
 	private Project getProject()
