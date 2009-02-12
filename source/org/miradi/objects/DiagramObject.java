@@ -177,6 +177,15 @@ abstract public class DiagramObject extends BaseObject
 	}
 	
 	@Override
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
+			return true;
+		
+		return super.isRefList(tag);
+	}
+	
+	@Override
 	public boolean isIdListTag(String tag)
 	{
 		if (tag.equals(TAG_DIAGRAM_FACTOR_IDS))
