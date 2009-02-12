@@ -22,6 +22,7 @@ package org.miradi.project;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -32,6 +33,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -57,6 +60,8 @@ public class ProjectRepairer
 	{
 		repairUnsnappedNodes();
 		deleteOrphanAnnotations();
+		if (ProjectServer.DATA_VERSION <= DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED)
+			repairDiagramObjectsReferringToNonExistantTags();
 	}
 
 	 
@@ -224,6 +229,38 @@ public class ProjectRepairer
 		
 		return missingObjectRefs;
 	}
+	
+	public void repairDiagramObjectsReferringToNonExistantTags() throws Exception
+	{
+		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
+		for (int index = 0; index < allDiagramObjectRefs.size(); ++index)
+		{
+			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), allDiagramObjectRefs.get(index));
+			removeNonExistingTagsFromSeletedTagsList(diagramObject);
+		}
+	}
+
+	private void removeNonExistingTagsFromSeletedTagsList(DiagramObject diagramObject) throws Exception
+	{
+		ORefList nonDeletedTagRefs = new ORefList();
+		ORefList selectedTagRefs = diagramObject.getSelectedTaggedObjectSetRefs();
+		for (int index = 0; index < selectedTagRefs.size(); ++index)
+		{
+			ORef taggedObjectSetRef = selectedTagRefs.get(index);
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+			if (taggedObjectSet != null)
+				nonDeletedTagRefs.add(taggedObjectSetRef);
+		}
+		if (nonDeletedTagRefs.size() != selectedTagRefs.size())
+			getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, nonDeletedTagRefs.toString());
+	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
 
 	private Project project;
+	
+	private static final int DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED = 36;
 }

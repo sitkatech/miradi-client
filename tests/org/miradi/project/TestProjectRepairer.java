@@ -27,11 +27,14 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -136,5 +139,36 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		DiagramFactor repairedCause4 = DiagramFactor.find(getProject(), cause4.getRef());
 		assertEquals("wrong cause4 size?", new Dimension(60, 60), repairedCause4.getSize());
+	}
+	
+	public void testRepairDiagramObjectsReferringToNonExistantTags() throws Exception
+	{
+		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
+		TaggedObjectSet taggedObjectSet = getProject().createTaggedObjectSet();
+		
+		ORef nonExistantTaggedObjectSetRef = new ORef(TaggedObjectSet.getObjectType(), new BaseId(9000));
+		TaggedObjectSet nonExistantTaggedObjectSet = TaggedObjectSet.find(getProject(), nonExistantTaggedObjectSetRef);
+		assertNull("tagged object set exists?", nonExistantTaggedObjectSet);
+		
+		ORef nonExistantTaggedObjectSetRef2 = new ORef(TaggedObjectSet.getObjectType(), new BaseId(9001));
+		TaggedObjectSet nonExistantTaggedObjectSet2 = TaggedObjectSet.find(getProject(), nonExistantTaggedObjectSetRef2);
+		assertNull("tagged object set exists?", nonExistantTaggedObjectSet2);
+		
+		ORefList taggedObjectSetRefs = new ORefList();
+		taggedObjectSetRefs.add(nonExistantTaggedObjectSetRef);
+		taggedObjectSetRefs.add(nonExistantTaggedObjectSetRef2);
+		taggedObjectSetRefs.add(taggedObjectSet.getRef());
+		
+		CommandSetObjectData setSelectedTags = new CommandSetObjectData(diagramObject, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
+		getProject().executeCommand(setSelectedTags);
+		
+		assertEquals("wrong selected tag count?", 3, diagramObject.getSelectedTaggedObjectSetRefs().size());
+		
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		repairer.repairDiagramObjectsReferringToNonExistantTags();
+		
+		ORefList selectedTagRefs = diagramObject.getSelectedTaggedObjectSetRefs();
+		assertEquals("wrong selected tag count after project repair?", 1, selectedTagRefs.size());
+		assertTrue("did not contain tag?", selectedTagRefs.contains(taggedObjectSet.getRef()));
 	}
 }
