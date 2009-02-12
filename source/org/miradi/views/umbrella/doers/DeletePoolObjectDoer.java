@@ -51,6 +51,7 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 			try
 			{
 				BaseObject objectToDelete = getObjects()[0];
+				doWork(objectToDelete);
 				getProject().executeCommandsWithoutTransaction(objectToDelete.createCommandsToClear());
 				getProject().executeCommand(new CommandDeleteObject(objectToDelete.getRef()));
 			}
@@ -70,5 +71,9 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		}
 	}
 	
+	protected void doWork(BaseObject objectToDelete) throws Exception
+	{
+	}
+
 	abstract protected String getCustomText();	
 }
