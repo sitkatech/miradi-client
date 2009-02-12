@@ -45,6 +45,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.views.diagram.DiagramPaster;
 
 public class TransferableMiradiList implements Transferable, Serializable
 {
@@ -192,7 +193,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		{
 			String jsonAsString = (String) factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int objectToBeFoundType = json.getInt("Type");
+			int objectToBeFoundType = json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
 			factorRefs.add(new ORef(objectToBeFoundType, objectToBeFoundId));
 		}

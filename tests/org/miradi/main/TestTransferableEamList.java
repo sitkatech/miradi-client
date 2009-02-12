@@ -42,6 +42,7 @@ import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.views.diagram.DiagramPaster;
 import org.miradi.views.diagram.LinkCreator;
 
 public class TestTransferableEamList extends EAMTestCase 
@@ -138,22 +139,22 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals(2, factorDeepCopies.size());
 		
 		EnhancedJsonObject factor1Json = new EnhancedJsonObject(factorDeepCopies.get(0));
-		int factor1Type = factor1Json.getInt("Type");
+		int factor1Type = factor1Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 		assertEquals("wrong type for factor 1?", ObjectType.CAUSE, factor1Type);
 		assertEquals("wrong factor id?", diagramFactor1.getWrappedId(), factor1Json.getId(Factor.TAG_ID));
 		
-		CodeList tagNames = new CodeList(factor1Json.getString("TagNames"));
+		CodeList tagNames = new CodeList(factor1Json.getString(DiagramPaster.FAKE_TAG_TAG_NAMES));
 		assertEquals("wrong tag name count?", 1, tagNames.size());
 		
 		EnhancedJsonObject factor2Json = new EnhancedJsonObject(factorDeepCopies.get(1));
-		int factor2Type = factor2Json.getInt("Type");
+		int factor2Type = factor2Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 		assertEquals("wrong type for factor 1?", ObjectType.STRATEGY, factor2Type);
 		assertEquals("wrong factor id?", diagramFactor2.getWrappedId(), factor2Json.getId(Factor.TAG_ID));
 		
 		Vector<String> diagramFactorDeepCopies = miradiTransferData.getDiagramFactorDeepCopies();
 		assertEquals(2, diagramFactorDeepCopies.size());
 		EnhancedJsonObject diagramFactor1Json = new EnhancedJsonObject(diagramFactorDeepCopies.get(0));
-		int diagramFactor1Type = diagramFactor1Json.getInt("Type");
+		int diagramFactor1Type = diagramFactor1Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 		assertEquals("wrong type for diagram factor 1?", ObjectType.DIAGRAM_FACTOR, diagramFactor1Type);
 		Point diagramFactor1Location = diagramFactor1Json.getPoint(DiagramFactor.TAG_LOCATION);
 		assertEquals("wrong diagram factor location?", node1Location, diagramFactor1Location);
@@ -161,7 +162,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals("wrong diagram factor wrapped ref?", diagramFactor1.getWrappedORef(), wrappedRef1);
 		
 		EnhancedJsonObject diagramFactor2Json = new EnhancedJsonObject(diagramFactorDeepCopies.get(1));
-		int diagramFactor2Type = diagramFactor2Json.getInt("Type");
+		int diagramFactor2Type = diagramFactor2Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 		assertEquals("wrong type for diagram factor 2?", ObjectType.DIAGRAM_FACTOR, diagramFactor2Type);
 		Point diagramFactor2Location = diagramFactor2Json.getPoint(DiagramFactor.TAG_LOCATION);
 		assertEquals("wrong diagram factor location?", node2Location, diagramFactor2Location);
