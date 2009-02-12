@@ -246,17 +246,17 @@ public class ProjectRepairer
 
 	private void removeNonExistingTagsFromSeletedTagsList(DiagramObject diagramObject) throws Exception
 	{
-		ORefList existingTagRefs = new ORefList();
+		ORefList nonDeletedTagRefs = new ORefList();
 		ORefList selectedTagRefs = diagramObject.getSelectedTaggedObjectSetRefs();
 		for (int index = 0; index < selectedTagRefs.size(); ++index)
 		{
 			ORef taggedObjectSetRef = selectedTagRefs.get(index);
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
 			if (taggedObjectSet != null)
-				existingTagRefs.add(taggedObjectSetRef);
+				nonDeletedTagRefs.add(taggedObjectSetRef);
 		}
 		
-		diagramObject.setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, existingTagRefs.toString());
+		diagramObject.setData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, nonDeletedTagRefs.toString());
 	}
 	
 	public void repairAssignmentsReferringToNonExistantData() throws Exception
