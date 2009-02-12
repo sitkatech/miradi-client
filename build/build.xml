@@ -14,7 +14,7 @@
   
     <!-- module name  -->
     <property name="source.cvs.module"  value="miradi"/>
-    <property name="binaries.cvs.module"  value="binaries-miradi"/>
+    <property name="binaries.cvs.module"  value="miradi/"/>
 	
 	<!-- directories -->
 	<property name="build.dir" value="${source.cvs.module}/build"/>
@@ -98,11 +98,11 @@
         <echo message="Date timestamp is ${DSTAMP}" />
         <echo message="Time timestamp is ${TSTAMP}" />
         <echo message="Version timestamp is ${version.timestamp}" />
-
+    	
+    	<mkdir dir='${dist.temp.jars}' />
+    	
 	    <echo file="${version.file}" append="false" message="${version.prefix}${version.full}"/>
 	    <echo file="${timestamp.file}" append="false" message="${version.timestamp}"/>
-
-		<mkdir dir='${dist.temp.jars}' />
 	
     </target>
 
@@ -622,7 +622,7 @@
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
-    <target name="release" depends="translations,source,zips,macdmgfile,win32installer,cleanup">
+    <target name="release" depends="translations,source,zips,cleanup">
         <echo message="Release Built"/>
         <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
     </target>
