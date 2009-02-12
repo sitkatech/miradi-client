@@ -401,6 +401,11 @@ abstract public class DiagramPaster
 				needToCreateTagNames.add(tagName);
 		}
 		
+		createMissingTags(needToCreateTagNames, newObject.getRef());
+	}
+
+	private void createMissingTags(CodeList needToCreateTagNames, ORef ref) throws Exception
+	{
 		for (int index = 0; index < needToCreateTagNames.size(); ++index)
 		{
 			CommandCreateObject createTaggedObjectSet = new CommandCreateObject(TaggedObjectSet.getObjectType());
@@ -411,7 +416,7 @@ abstract public class DiagramPaster
 			getProject().executeCommand(setLabel);
 			
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), newTaggedObjectSetRef);
-			addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef()); 
+			addObjectToTaggedObjectSet(taggedObjectSet, ref); 
 		}
 	}
 
