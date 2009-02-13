@@ -13,8 +13,8 @@
 	<property name="version.langpack" value="${version.main}" />
   
     <!-- module name  -->
-    <property name="source.cvs.module"  value="."/>
-    <property name="binaries.cvs.module"  value="."/>
+    <property name="source.cvs.module"  value="trunk"/>
+    <property name="binaries.cvs.module"  value="trunk"/>
 	
 	<!-- directories -->
 	<property name="build.dir" value="${source.cvs.module}/build"/>
