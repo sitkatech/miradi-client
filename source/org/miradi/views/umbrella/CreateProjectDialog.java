@@ -249,8 +249,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		
 		if(!Project.isValidProjectFilename(newName))
 		{
-			String INVALID_PROJECT_NAME_MESSAGE = getInvalidProjectNameMessage();
-			EAM.errorDialog(INVALID_PROJECT_NAME_MESSAGE);
+			EAM.errorDialog(getInvalidProjectNameMessage());
 			return;
 		}
 

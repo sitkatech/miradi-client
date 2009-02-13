@@ -121,6 +121,7 @@ import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationDoer;
 import org.miradi.views.summary.SummaryView;
+import org.miradi.views.umbrella.CreateProjectDialog;
 
 
 public class Project
@@ -161,7 +162,7 @@ public class Project
 			throw new Exception(EAM.text(" A project by this name already exists: ") + newName);
 		
 		if (!EAM.getMainWindow().getProject().isValidProjectFilename(newName))
-			throw new Exception(EAM.text("Invalid project name:") + newName);
+			throw new Exception(CreateProjectDialog.getInvalidProjectNameMessage());
 		
 		if(newFile.exists())
 			throw new Exception(EAM.text("A file or folder exist by the same name:") + newName);
