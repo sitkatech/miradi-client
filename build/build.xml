@@ -368,6 +368,7 @@
 	
 	<!-- Required for all languages -->
 	<echo message="build list of all files that contain translatable strings"/>
+	<echo message="Writing list of java files in ${eam.src.root} to ${java_files}..." />
 	<exec executable="find" output="${java_files}" failonerror="true">
 		<arg value="${eam.src.root}"/>
 		<arg value="-name"/>
