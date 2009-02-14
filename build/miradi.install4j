@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.1.5" transformSequenceNumber="2">
   <directoryPresets config="./installer/BuildFiles/install4j_messages_en.utf8" />
-  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" mediaDir="trunk/dist" 
+  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" mediaDir="../dist" 
 mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="2.4" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
