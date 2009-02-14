@@ -1,3 +1,5 @@
+NOTE: This document is obsolete, as we are shifting to an automated build system using hudson
+
 0. Make sure your default compiler (javac from command line) is Java 5, not 6
 1. synch both CVS and SVN
 2. run main tests
