@@ -41,6 +41,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.MemoryDiagramModel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -112,10 +113,22 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	public static DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		DiagramModel diagramModel = new DiagramModel(diagramObject.getProject());
+		return createDiagram(mainWindow, diagramModel, diagramObject);
+	}
+	
+	public static DiagramComponent createMemoryDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	{
+		MemoryDiagramModel memoryDiagram = new MemoryDiagramModel(diagramObject.getProject());
+		return createDiagram(mainWindow, memoryDiagram, diagramObject);
+	}
+
+	private static DiagramComponent createDiagram(MainWindow mainWindow, DiagramModel diagramModel, DiagramObject diagramObject) throws Exception
+	{
 		diagramModel.fillFrom(diagramObject);
 		diagramModel.updateProjectScopeBox();
 		DiagramComponent diagram = new DiagramComponent(mainWindow, diagramModel);
 		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
+		
 		return diagram;
 	}
 

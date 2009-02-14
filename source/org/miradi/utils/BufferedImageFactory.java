@@ -183,7 +183,7 @@ public  class BufferedImageFactory
 	
 	public static DiagramComponent createDiagramComponent(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
-		DiagramComponent diagram =  DiagramSplitPane.createDiagram(mainWindow, diagramObject);
+		DiagramComponent diagram =  DiagramSplitPane.createMemoryDiagram(mainWindow, diagramObject);
 		String currentMode = mainWindow.getProject().getDiagramViewData().getCurrentMode();
 		DiagramView.hideFactorsForMode(diagram, currentMode);
 		diagram.getDiagramModel().updateVisibilityOfFactorsAndLinks();

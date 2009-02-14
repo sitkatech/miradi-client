@@ -111,7 +111,9 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		if(newBounds.equals(getBounds()))
 			return;
 		
-		saveLocationAndSize(location, newSize);
+		if (model.shouldSaveChangesToDisk())
+			saveLocationAndSize(location, newSize);
+		
 		updateFromDiagramFactor();
 		model.toBackGroupBox(new Object[] {this});
 	}
