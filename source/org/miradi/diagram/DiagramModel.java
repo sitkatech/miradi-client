@@ -107,6 +107,11 @@ public class DiagramModel extends DefaultGraphModel
 		insertCellIntoGraph(projectScopeBox);
 	}
 
+	public boolean shouldSaveChangesToDisk()
+	{
+		return true;
+	}
+	
 	public ProjectScopeBox getProjectScopeBox()
 	{
 		return projectScopeBox;
