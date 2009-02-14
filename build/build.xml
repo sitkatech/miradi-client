@@ -20,6 +20,9 @@
 	<property name="build.dir" value="${source.cvs.module}/build"/>
     <property name="dist.dir" value="${binaries.cvs.module}/dist"/>
 
+    <property name="dist.temp" value="${dist.dir}/temp"/>
+    <property name="dist.temp.jars" value="${dist.temp}/jars"/>
+    
     <property name="eam.src.root" value="${source.cvs.module}/source"/>
     <property name="eam.test.src.root" value="${source.cvs.module}/tests"/>
     <property name="eam.class.root" value="${dist.temp}/bin"/>
@@ -28,9 +31,6 @@
     
     <property name="translations.dir" value="${source.cvs.module}/translations" />
 
-    <property name="dist.temp" value="${dist.dir}/temp"/>
-    <property name="dist.temp.jars" value="${dist.temp}/jars"/>
-    
 	<property name="version.file" value = "${dist.dir}/miradi.version.txt" />
 	<property name="timestamp.file" value = "${dist.dir}/miradi.timestamp.txt" />
 
