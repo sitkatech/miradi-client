@@ -617,7 +617,7 @@
 <!-- win32installer                                                    -->
 <!-- ================================================================== -->
 <target name="win32installer" depends="jar" description="Windows install4j installer build">
- 	<exec executable="install4jc">
+ 	<exec executable="install4jc" failonerror="true">
  		<arg value="${build.dir}/miradi.install4j" />
  	</exec>	
 </target>
