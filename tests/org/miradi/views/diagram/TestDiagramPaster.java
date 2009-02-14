@@ -32,6 +32,7 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
@@ -39,8 +40,7 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.views.diagram.DiagramCopyPaster;
-import org.miradi.views.diagram.DiagramPaster;
+import org.miradi.utils.CodeList;
 
 public class TestDiagramPaster extends EAMTestCase
 {
@@ -107,6 +107,34 @@ public class TestDiagramPaster extends EAMTestCase
 		ORef newAnnotation2 = (ORef) oldToNewFactorRefMap.get(annotationRef2);
 		assertTrue("does not contain new id?", newAnnotationIds.contains(newAnnotation2));
 	}
+	
+	public void testFixTags() throws Exception
+	{
+		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObject.getRef());
+		DiagramCopyPaster diagramPaster = new DiagramCopyPaster(null, getProject().getDiagramModel(), transferableList);
+		Target target = getProject().createTarget();
+		final String TAG_LABEL = "tagLabel1";
+		getProject().createLabeledTaggedObjectSet(TAG_LABEL);
+		getProject().createLabeledTaggedObjectSet("tagLabel2");
+		
+		assertEquals("has tagged object sets?", 2, getProject().getTaggedObjectSetPool().size());
+		diagramPaster.fixTags(new CodeList(), target);
+		assertEquals("has tagged object sets?", 2, getProject().getTaggedObjectSetPool().size());
+		
+		CodeList nonExistingTagNames = new CodeList(new String[]{"pastedTag1", });
+		diagramPaster.fixTags(nonExistingTagNames, target);	
+		assertEquals("should have created tag for non existing tag name?", 3, getProject().getTaggedObjectSetPool().size());
+		
+		CodeList existingTagNames = new CodeList(new String[]{TAG_LABEL});
+		diagramPaster.fixTags(existingTagNames, target);	
+		assertEquals("should have not created tag for existing tag name?", 3, getProject().getTaggedObjectSetPool().size());
+	}
+	
+	private ProjectForTesting getProject()
+	{
+		return project;
+	}
 
-	ProjectForTesting project;
+	private ProjectForTesting project;
 }

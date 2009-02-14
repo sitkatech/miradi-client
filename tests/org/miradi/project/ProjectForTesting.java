@@ -411,6 +411,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef taggedObjectSetRef = createObject(TaggedObjectSet.getObjectType());
 		return TaggedObjectSet.find(this, taggedObjectSetRef);
 	}
+	
+	public TaggedObjectSet createLabeledTaggedObjectSet(String labelToUse) throws Exception
+	{
+		TaggedObjectSet taggedObjectSet = createTaggedObjectSet();
+		setObjectData(taggedObjectSet.getRef(), TaggedObjectSet.TAG_LABEL, labelToUse);
+		
+		return taggedObjectSet;
+	}
 
 	public void populateTarget(Target target) throws Exception
 	{
