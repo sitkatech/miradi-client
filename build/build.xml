@@ -560,9 +560,9 @@
 <!-- M A C   D M G   F I L E                                            -->
 <!-- ================================================================== -->
 <target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
-	<property name="rawdmgfile" value="${dist.dir}/Miradi.dmg" />
+	<property name="rawdmgfile" value="/home/j2ee-hudson/Miradi/Miradi.dmg" />
 	<property name="dmgsizemegs" value="13" />
-	<property name="dmgmount" value="/mnt/dmgdir" />
+	<property name="dmgmount" value="/mounts/Miradi/dmgfile" />
 
 	<exec os="Linux"  executable="umount" failonerror="false">
 		<arg value="-d"/>
@@ -625,7 +625,7 @@
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
-    <target name="release" depends="translations,source,zips,win32installer,macdmgfile,cleanup">
+    <target name="release" depends="translations,source,zips,macdmgfile,win32installer,cleanup">
         <echo message="Release Built"/>
         <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
     </target>
