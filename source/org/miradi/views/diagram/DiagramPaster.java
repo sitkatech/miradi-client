@@ -387,19 +387,23 @@ abstract public class DiagramPaster
 		fixUpRelevancyOverrideSet();
 	}
 
-	private void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
+	public void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
 	{
 		ORefList allTags = getProject().getTaggedObjectSetPool().getRefList();
-		CodeList needToCreateTagNames = new CodeList();
+		CodeList existingTagNames = new CodeList();
 		for (int index = 0; index < allTags.size(); ++index)
 		{
 			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), allTags.get(index));
 			String tagName = taggedObjectSet.getLabel();
 			if (tagNames.contains(tagName))
-				addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef());				
-			else
-				needToCreateTagNames.add(tagName);
+			{
+				addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef());
+				existingTagNames.add(tagName);
+			}
 		}
+		
+		tagNames.subtract(existingTagNames);
+		CodeList needToCreateTagNames = new CodeList(tagNames);
 		
 		createMissingTags(needToCreateTagNames, newObject.getRef());
 	}
