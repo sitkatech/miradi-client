@@ -625,7 +625,7 @@
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
-    <target name="release" depends="translations,source,zips,win32installer,macdmgfile,cleanup">
+    <target name="release" depends="translations,source,zips,macdmgfile,win32installer,cleanup">
         <echo message="Release Built"/>
         <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
     </target>
