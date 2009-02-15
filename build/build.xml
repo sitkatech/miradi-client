@@ -411,6 +411,7 @@
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
+		<arg value="--no-fuzzy-matching"/>
 		<arg value="${miradi.po.es}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
@@ -432,6 +433,7 @@
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
+		<arg value="--no-fuzzy-matching"/>
 		<arg value="${miradi.po.id}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
@@ -454,6 +456,7 @@
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
+		<arg value="--no-fuzzy-matching"/>
 		<arg value="${miradi.po.zh}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
@@ -476,6 +479,7 @@
 	<exec executable="msgmerge" failonerror="true">
 		<arg value="--update"/>
 		<arg value="--backup=none"/>
+		<arg value="--no-fuzzy-matching"/>
 		<arg value="${miradi.po.pt}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
