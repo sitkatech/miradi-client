@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-12 12:17-0500\n"
-"PO-Revision-Date: 2008-11-19 15:59-0500\n"
-"Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
+"POT-Creation-Date: 2009-02-14 19:05-0500\n"
+"PO-Revision-Date: 2009-02-14 19:00-0500\n"
+"Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,6 +69,10 @@ msgstr "Peringkat "
 msgid "Title|Stress Details"
 msgstr "Rincian Tekanan "
 
+#: miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:32
+msgid "Manage Stresses for "
+msgstr "Mengelola Tekanan untuk "
+
 #: miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:48
 msgid "Title|Stress Visibility"
 msgstr "Ketampakan Tekanan "
@@ -76,10 +80,6 @@ msgstr "Ketampakan Tekanan "
 #: miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:60
 msgid "Tab|Stresses"
 msgstr "Tekanan"
-
-#: miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:32
-msgid "Manage Stresses for "
-msgstr "Mengelola Tekanan untuk "
 
 #: miradi/source/org/miradi/dialogs/groupboxLink/GroupBoxLinkManagementPanel.java:49
 msgid "Tab|Group Box Link"
@@ -156,11 +156,16 @@ msgstr "Kesalahan dalam memulihkan status diagram "
 msgid "Tab|Indicators"
 msgstr "Indikator "
 
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:56
+#, fuzzy
+msgid "Title|Simple Mode Target Properties"
+msgstr "Title|Simple Mode Target Properties"
+
 #: miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 #, fuzzy
 msgid "Date"
-msgstr "Tempel "
+msgstr "Date"
 
 #: miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
@@ -184,6 +189,11 @@ msgstr "Status/Nilai yang Diinginkan "
 msgid "Title|Indicator Properties"
 msgstr "Sifat-sifat Indikator "
 
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:56
+#, fuzzy
+msgid "Title|Key Attribute Mode Target Properties"
+msgstr "Title|Key Attribute Mode Target Properties"
+
 #: miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:71
 msgid "Viability Ratings"
 msgstr "Peringkat Kelangsungan "
@@ -196,7 +206,7 @@ msgstr "Peringkat Kelangsungan "
 #: miradi/source/org/miradi/objects/FactorLink.java:227
 #, fuzzy
 msgid "Error"
-msgstr "(Kesalahan) "
+msgstr "Error"
 
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityTreePropertiesPanel.java:85
 msgid "Title|Target Viability Properties"
@@ -234,22 +244,80 @@ msgstr "Laporan Kemajuan "
 msgid "Monitoring Plan"
 msgstr "Rencana Pemantauan "
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:56
-#, fuzzy
-msgid "Title|Simple Mode Target Properties"
-msgstr "Sifat-sifat Target Bersarang \t"
-
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:56
-#, fuzzy
-msgid "Title|Key Attribute Mode Target Properties"
-msgstr "Sifat-sifat Target Bersarang \t"
-
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:280
 msgid "Target"
 msgstr "Target"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
+#, fuzzy
+msgid "Summary Target Ratings:"
+msgstr "Summary Target Ratings:"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
+msgid "<html><b>Overall<br>Project<br>Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+msgid "Threats"
+msgstr "Ancaman "
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#, fuzzy
+msgid "Targets"
+msgstr "Targets"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
+msgid "Summary Threat Rating"
+msgstr "Ringkasan Peringkat Ancaman "
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+#, fuzzy
+msgid "Title|Simple Threat Rating"
+msgstr "Title|Simple Threat Rating"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
+#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
+msgid "Scope"
+msgstr "Cakupan "
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
+msgid "Severity"
+msgstr "Tingkat Keparahan"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+msgid "Irreversibility"
+msgstr "Ketakterbalikan"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
+msgid "<html><b>Summary<br>Target-Threat<br>Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:154
+msgid "Threat Name"
+msgstr "Nama Ancaman "
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:156
+msgid "Stress Name"
+msgstr "Nama Tekanan "
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
+msgid "(Create, manage, and rate the stresses for this target)"
+msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
+msgid "Title|Stress-Based Threat Rating"
+msgstr "Peringkat Ancaman Berdasarkan Tekanan "
+
+#: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
+msgid "Threat Rating Preferences Panel"
+msgstr "Panel Pilihan Peringkat Ancaman "
 
 #: miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:48
 msgid "Title|Activity Visibility"
@@ -297,74 +365,6 @@ msgstr "Butir yang Ditandai"
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
-msgid "Threats"
-msgstr "Ancaman "
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
-#, fuzzy
-msgid "Targets"
-msgstr "Target"
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
-#, fuzzy
-msgid "Summary Target Ratings:"
-msgstr "Ringkasan Peringkat Target "
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
-msgid "<html><b>Overall<br>Project<br>Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
-msgid "Summary Threat Rating"
-msgstr "Ringkasan Peringkat Ancaman "
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
-#, fuzzy
-msgid "Title|Simple Threat Rating"
-msgstr "Peringkat Ancaman Sederhana "
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:154
-msgid "Threat Name"
-msgstr "Nama Ancaman "
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:156
-msgid "Stress Name"
-msgstr "Nama Tekanan "
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
-msgid "(Create, manage, and rate the stresses for this target)"
-msgstr "(Membuat, mengelola, dan menilai tekanan-tekanan untuk target ini) "
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
-msgid "Title|Stress-Based Threat Rating"
-msgstr "Peringkat Ancaman Berdasarkan Tekanan "
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
-msgid "Scope"
-msgstr "Cakupan "
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
-msgid "Severity"
-msgstr "Tingkat Keparahan"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
-msgid "Irreversibility"
-msgstr "Ketakterbalikan"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
-msgid "<html><b>Summary<br>Target-Threat<br>Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
-msgid "Threat Rating Preferences Panel"
-msgstr "Panel Pilihan Peringkat Ancaman "
-
 #: miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:57
 msgid "Tab|Nested Targets"
 msgstr "Target-target Bersarang "
@@ -411,7 +411,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/task/TaskPropertiesInputPanel.java:73
 #, fuzzy
 msgid "Title|Summary"
-msgstr "Ringkasan "
+msgstr "Title|Summary"
 
 #: miradi/source/org/miradi/dialogs/task/TaskPropertiesPanel.java:43
 msgid ""
@@ -445,15 +445,15 @@ msgstr "Tugas "
 msgid "Summary"
 msgstr "Ringkasan "
 
-#: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:42
-#, fuzzy
-msgid "Title|Method Properties"
-msgstr "Sifat-sifat Target"
-
 #: miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanel.java:44
 #, fuzzy
 msgid "Title|Activity Properties"
-msgstr "Sifat-sifat Tujuan Instruksional "
+msgstr "Title|Activity Properties"
+
+#: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:42
+#, fuzzy
+msgid "Title|Method Properties"
+msgstr "Title|Method Properties"
 
 #: miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:91
 msgid "Title|Other Orgs"
@@ -472,6 +472,16 @@ msgstr "Kontak Org "
 #: miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
 msgstr "Sifat-sifat Organisasi "
+
+#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:38
+#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:38
+msgid "Page:"
+msgstr "Halaman: "
+
+#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:47
+#, fuzzy
+msgid "Title|Results Chain Properties"
+msgstr "Title|Results Chain Properties"
 
 #: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
 msgid "Title|Link Create Dialog"
@@ -557,7 +567,7 @@ msgstr "Peringkat TNC versi sebelumnya "
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:104
 #, fuzzy
 msgid "Tags"
-msgstr "Tag"
+msgstr "Tags"
 
 #: miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:36
 msgid "Share"
@@ -591,6 +601,14 @@ msgstr "Biaya/Kapan/Siapa "
 msgid "Group Box Properties"
 msgstr "Sifat-sifat Kotak Grup "
 
+#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
+msgid ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+msgstr ""
+"Sedang dalam mode sumbang saran, jadi beberapa faktor tersembunyi. Untuk "
+"kembali ke mode normal, tekan tombol ini: "
+
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
@@ -602,14 +620,6 @@ msgstr "Strategi "
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:38
 msgid "Progress"
 msgstr "Kemajuan "
-
-#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
-msgid ""
-"Currently in brainstorm mode, so some factors are hidden. To return to "
-"normal mode, press this button: "
-msgstr ""
-"Sedang dalam mode sumbang saran, jadi beberapa faktor tersembunyi. Untuk "
-"kembali ke mode normal, tekan tombol ini: "
 
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:49
@@ -640,6 +650,10 @@ msgstr "Sifat-sifat Rangkaian Hasil "
 msgid "Conceptual Model Page Properties"
 msgstr "Sifat-sifat Halaman Model Konsep "
 
+#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
+msgid "Title|Diagram Properties"
+msgstr "Sifat-sifat Diagram "
+
 #: miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
 msgid "Related Items"
 msgstr "Butir-butir Terkait "
@@ -656,20 +670,6 @@ msgstr "Sifat-sifat Tautan "
 msgid "Rollup Panel"
 msgstr "Panel Gulir Atas "
 
-#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:38
-#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:38
-msgid "Page:"
-msgstr "Halaman: "
-
-#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:47
-#, fuzzy
-msgid "Title|Results Chain Properties"
-msgstr "Sifat-sifat Rangkaian Hasil "
-
-#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
-msgid "Title|Diagram Properties"
-msgstr "Sifat-sifat Diagram "
-
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:59
 msgid ""
 "<HTML>A severe error has prevented this Planning Subview from being shown."
@@ -681,7 +681,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
 #, fuzzy
 msgid "[Error]"
-msgstr "(Kesalahan) "
+msgstr "[Error]"
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:156
 msgid "Budget Total"
@@ -721,16 +721,6 @@ msgstr "Sumber Dana "
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningTreeMultiPropertiesPanel.java:239
-#, fuzzy
-msgid "An unexpected error has occurred"
-msgstr "Terjadi kesalahan yang tidak diharapkan: "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
-#, fuzzy
-msgid "(not specified)"
-msgstr "Tidak Terspesifikasi "
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:55
 msgid "Total"
 msgstr "Total "
@@ -739,10 +729,10 @@ msgstr "Total "
 msgid "Task Properties"
 msgstr "Sifat-sifat Tugas "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
-msgid "Title|Factor Properties"
-msgstr "Sifat-sifat Faktor "
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
+#, fuzzy
+msgid "(not specified)"
+msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
@@ -752,6 +742,22 @@ msgstr "Hasil Pengurangan Ancaman"
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:39
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Sifat-sifat Hasil Pengurangan Ancaman"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
+msgid "Title|Factor Properties"
+msgstr "Sifat-sifat Faktor "
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
+#: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
+msgid "Contributing Factor"
+msgstr "Faktor Kontribusi"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
+#, fuzzy
+msgid "Title|Contributing Factor Properties"
+msgstr "Title|Contributing Factor Properties"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:75
@@ -766,16 +772,10 @@ msgstr "Sifat-sifat Hasil Antara"
 msgid "Planning View Configuration Label Properties"
 msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
-#: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
-msgid "Contributing Factor"
-msgstr "Faktor Kontribusi"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningTreeMultiPropertiesPanel.java:239
 #, fuzzy
-msgid "Title|Contributing Factor Properties"
-msgstr "Sifat-sifat Faktor "
+msgid "An unexpected error has occurred"
+msgstr "An unexpected error has occurred"
 
 #: miradi/source/org/miradi/dialogs/planning/legend/ControlPanel.java:42
 #: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:164
@@ -789,8 +789,7 @@ msgstr "Tampilan Perencanaan "
 #: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:77
 #, fuzzy
 msgid "Error Occurred While in Planning View Legend Panel"
-msgstr ""
-"Kesalahan Terjadi saat ada di Panel Petunjuk Gambar Tampilan Perencanaan "
+msgstr "Error Occurred While in Planning View Legend Panel"
 
 #: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:89
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:112
@@ -877,15 +876,17 @@ msgid ""
 "<code class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;"
 "As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 msgstr ""
-"Pilih laporan yang Anda ingin jalankan. Selanjutnya Miradi akan meminta Anda "
-"untuk menyimpan laporan dalam berkas berformat RTF <i>(Rich Text Format)</"
-"i>. Setelah membuat berkas ini, Anda bisa mengubah atau mencetaknya dengan "
-"menggunakan program pengolah kata seperti MS Word atau Open Office Writer. "
-"<br></br><br></br>Perhatikan bahwa jika Anda mengubah laporan ini dalam "
-"program pengolah kata, perubahan yang Anda buat tidak akan dipertahankan "
-"saat lain kali Anda membuat laporan. Oleh karena itu, sedapat mungkin "
-"cobalah untuk membuat perubahan yang diinginkan dalam bidang-bidang isian "
-"Miradi yang sesuai."
+"Select the report that you want to run. Miradi will then prompt you to save "
+"the report as a Rich Text Format (RTF) file. Once you have created this "
+"file, you can edit or print it using a word processing program such as MS "
+"Word or Open Office Writer. <br></br><br></br>Note that if you edit the "
+"report in your word processor, your changes will not be maintained the next "
+"time you generate a report. As a result, try to make the edits in the "
+"appropriate Miradi fields where possible.<br></br><br></br><span "
+"class='hint'><b>Hint:</B> If you want to export a customized table, do not "
+"use report view. Instead, in any view, configure the table and then use the "
+"<code class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;"
+"As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 
 #: miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:102
 msgid "How Reports Work"
@@ -1039,6 +1040,11 @@ msgstr "Pilih Lokasi… "
 msgid "Error occured while saving data location"
 msgstr "Terjadi kesalahan saat menyimpan lokasi data "
 
+#: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
+#: miradi/source/org/miradi/views/TabbedView.java:223
+msgid "Instructions"
+msgstr "Instruksi "
+
 #: miradi/source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:44
 msgid "Choose Data Directory"
 msgstr "Pilih Direktori Data "
@@ -1057,11 +1063,6 @@ msgstr "Pemilih Direktori "
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 msgid "Cancel"
 msgstr "Batalkan "
-
-#: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
-#: miradi/source/org/miradi/views/TabbedView.java:223
-msgid "Instructions"
-msgstr "Instruksi "
 
 #: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePoolManagementPanel.java:104
 msgid "Title|Funding Sources"
@@ -1287,6 +1288,31 @@ msgstr "Langkah demi Langkah "
 msgid "MenuBar|Help"
 msgstr "Bantuan "
 
+#: miradi/source/org/miradi/main/SampleInstaller.java:48
+#, fuzzy
+msgid "Sample Project Installed"
+msgstr "Sample Project Installed"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:68
+#, fuzzy
+msgid "Do you want to install the sample project?"
+msgstr "Do you want to install the sample project?"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+#, fuzzy
+msgid "Button|Yes"
+msgstr "Button|Yes"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+#, fuzzy
+msgid "Button|No"
+msgstr "Button|No"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:71
+#, fuzzy
+msgid "Install Sample Project"
+msgstr "Install Sample Project"
+
 #: miradi/source/org/miradi/main/EAM.java:128
 msgid "Warning"
 msgstr "Peringatan "
@@ -1404,7 +1430,7 @@ msgstr "Bahasa: "
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:126
 #, fuzzy
 msgid "Button|Install..."
-msgstr "Batalkan "
+msgstr "Button|Install..."
 
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:134
 msgid ""
@@ -1425,7 +1451,7 @@ msgstr ""
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:165
 #, fuzzy
 msgid "Button|Replace"
-msgstr "Ganti Cadangan  "
+msgstr "Button|Replace"
 
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:167
 msgid "That language pack already exists. Replace it?"
@@ -1442,37 +1468,12 @@ msgstr ""
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:191
 #, fuzzy
 msgid "Unexpected error prevented installing that language pack"
-msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:48
-#, fuzzy
-msgid "Sample Project Installed"
-msgstr "(Lihat tab Proyek) "
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:68
-#, fuzzy
-msgid "Do you want to install the sample project?"
-msgstr "Anda yakin ingin mengganti nama proyek: "
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:69
-#, fuzzy
-msgid "Button|Yes"
-msgstr "Dipakai Bersama "
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:69
-#, fuzzy
-msgid "Button|No"
-msgstr "OK "
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:71
-#, fuzzy
-msgid "Install Sample Project"
-msgstr "Ganti Nama Proyek "
+msgstr "Unexpected error prevented installing that language pack"
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:149
 #, fuzzy
 msgid "An unexpected error prevented that operation"
-msgstr "Kesalahan internal mencegah operasi ini "
+msgstr "An unexpected error prevented that operation"
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:196
 msgid "Cut"
@@ -2742,12 +2743,12 @@ msgstr "FOS"
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:67
 #, fuzzy
 msgid "Target Viability - Table"
-msgstr "Kelangsungan Target"
+msgstr "Target Viability - Table"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:72
 #, fuzzy
 msgid "Target Viability - Details"
-msgstr "Kelangsungan Target"
+msgstr "Target Viability - Details"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
 #: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
@@ -2837,6 +2838,18 @@ msgstr "Berlangsung Baik"
 msgid "Fully on Schedule"
 msgstr "Sangat Sesuai Jadwal"
 
+#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
+msgid "No"
+msgstr "Tidak"
+
+#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
+msgid "Yes"
+msgstr "Ya"
+
 #: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr "Orang"
@@ -2860,12 +2873,12 @@ msgstr "Tujuan Instruksional Saja "
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:44
 #, fuzzy
 msgid "Targets Only"
-msgstr "Pengukuran Saja "
+msgstr "Targets Only"
 
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:45
 #, fuzzy
 msgid "Direct Threats Only"
-msgstr "Ancaman Langsung"
+msgstr "Direct Threats Only"
 
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:46
 msgid "Strategies Only"
@@ -2886,7 +2899,7 @@ msgstr "Metode Saja "
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 #, fuzzy
 msgid "Assigned Resources Only"
-msgstr "Alokasikan Sumber Daya "
+msgstr "Assigned Resources Only"
 
 #: miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
@@ -3026,18 +3039,6 @@ msgstr "Penelitian Eksternal"
 msgid "Onsite Research"
 msgstr "Penelitian di Lokasi"
 
-#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
-msgid "No"
-msgstr "Tidak"
-
-#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
-msgid "Yes"
-msgstr "Ya"
-
 #: miradi/source/org/miradi/rtf/ProjectRtfExporter.java:57
 msgid "Project Plan For "
 msgstr "Rencana Proyek untuk"
@@ -3142,6 +3143,15 @@ msgstr "Laporan Standar "
 msgid "Custom Reports"
 msgstr "Laporan Tersuai "
 
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
+msgid "Data was exported as tab delimited."
+msgstr "Data diekspor sebagai data yang dipisahkan oleh tab. "
+
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
+msgid "Error occurred while trying to export to a tab delimited file."
+msgstr ""
+"Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
+
 #: miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:169
 msgid "Delete..."
@@ -3155,14 +3165,9 @@ msgstr "Anda yakin? "
 msgid "Button|Ok"
 msgstr "Baik "
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
-msgid "Data was exported as tab delimited."
-msgstr "Data diekspor sebagai data yang dipisahkan oleh tab. "
-
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
-msgid "Error occurred while trying to export to a tab delimited file."
-msgstr ""
-"Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
+msgid "Are you sure you want to delete this Progress Percent?"
+msgstr "Anda yakin ingin menghapus Persentase Kemajuan ini? "
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
 msgid "Current page was exported as RTF."
@@ -3174,16 +3179,13 @@ msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor halaman yang tampak saat ini "
 "sebagai format RTF.\n"
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
+msgid "Edit Progress Percents"
+msgstr "Edit Persentase Kemajuan "
+
 #: miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
 msgstr "Tampilan… "
-
-#: miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:47
-#: miradi/source/org/miradi/views/noproject/CopyProject.java:52
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:32
-#, fuzzy
-msgid "Save As..."
-msgstr "Simpan Salinan Sebagai… "
 
 #: miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:41
 msgid ""
@@ -3193,9 +3195,20 @@ msgstr ""
 "Nama Langkah Wizard Saat Ini:\n"
 " %s "
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
+msgid "Relevant Strategies and Activities"
+msgstr "Strategi dan Aktivitas yang Relevan"
+
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:32
 msgid "Edit Methods"
 msgstr "Edit Metode "
+
+#: miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:47
+#: miradi/source/org/miradi/views/noproject/CopyProject.java:52
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:32
+#, fuzzy
+msgid "Save As..."
+msgstr "Save As..."
 
 #: miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
@@ -3204,7 +3217,7 @@ msgstr "Bantuan "
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:43
 #, fuzzy
 msgid "Delete %s"
-msgstr "Hapus"
+msgstr "Delete %s"
 
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:44
 #, fuzzy
@@ -3213,23 +3226,7 @@ msgid ""
 "Are you sure you want to delete the selected %s?"
 msgstr ""
 "\n"
-"Apakah Anda yakin ingin menghapus ini"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
-msgid "Relevant Strategies and Activities"
-msgstr "Strategi dan Aktivitas yang Relevan"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
-msgid "Are you sure you want to delete this Progress Percent?"
-msgstr "Anda yakin ingin menghapus Persentase Kemajuan ini? "
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
-msgid "Edit Progress Percents"
-msgstr "Edit Persentase Kemajuan "
-
-#: miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
-msgid "Choose Relevant Indicator(s)"
-msgstr "Pilih Indikator(-indikator) yang Relevan "
+"Are you sure you want to delete the selected %s?"
 
 #: miradi/source/org/miradi/views/umbrella/HelpAboutPanel.java:33
 msgid "Title|About Miradi"
@@ -3242,17 +3239,17 @@ msgstr "Kesalahan selama pembatalan "
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:89
 #, fuzzy
 msgid "Current project name:"
-msgstr "Nama proyek tidak valid: "
+msgstr "Current project name:"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:92
 #, fuzzy
 msgid "New project name: "
-msgstr "Nama Berkas Proyek Baru: "
+msgstr "New project name: "
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:98
 #, fuzzy
 msgid "Miradi data directory:"
-msgstr "Pilih Direktori Data "
+msgstr "Miradi data directory:"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:101
 msgid "Label|Existing Projects:"
@@ -3261,7 +3258,7 @@ msgstr "Proyek yang Ada: \t"
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:113
 #, fuzzy
 msgid "Button|Save"
-msgstr "Dipakai Bersama "
+msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:246
 msgid "Cannot save a project back to its existing name"
@@ -3353,10 +3350,6 @@ msgstr "Manajemen Adaptif "
 msgid "Action|Support"
 msgstr "Dukungan "
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
-msgid "Exported file does not validate."
-msgstr "Berkas yang diekspor tidak bisa divalidasi. "
-
 #: miradi/source/org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
 #: miradi/source/org/miradi/actions/ActionCreateActivityProgressReport.java:35
 #: miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:35
@@ -3393,6 +3386,10 @@ msgstr "Hapus "
 #: miradi/source/org/miradi/views/umbrella/Definition.java:58
 msgid "(Definition Not Available)"
 msgstr "(Definisi Tidak Ada) "
+
+#: miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
+msgid "Choose Relevant Indicator(s)"
+msgstr "Pilih Indikator(-indikator) yang Relevan "
 
 #: miradi/source/org/miradi/views/umbrella/Redo.java:60
 msgid "Error during redo"
@@ -3617,7 +3614,7 @@ msgstr ""
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:111
 #, fuzzy
 msgid "Assigned Resource"
-msgstr "Alokasikan Sumber Daya "
+msgstr "Assigned Resource"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:111
 msgid ""
@@ -3640,12 +3637,13 @@ msgid ""
 "occurence. For species, measured as the proportion of the target's "
 "population."
 msgstr ""
-"Cakupan (Peringkat Ancaman) -  Kriteria pemeringkatan ancaman yang paling "
-"umum didefinisikan secara spasial sebagai proporsi target yang secara wajar "
-"bisa diharapkan untuk dipengaruhi oleh ancaman dalam kurun waktu sepuluh "
-"tahun dengan melihat kelanjutan situasi dan kecenderungan yang ada saat ini. "
-"Untuk komunitas ekologi dan ekosistem, diukur sebagai proporsi terjadinya "
-"target. Untuk spesies, diukur sebagai proporsi populasi target. "
+"Scope (Threat Ratings) - A threat rating criterion that is most commonly "
+"defined spatially as the proportion of the target that can reasonably be "
+"expected to be affected by the threat within ten years given the "
+"continuation of current circumstances and trends. For ecosystems and "
+"ecological communities, measured as the proportion of the target's "
+"occurence. For species, measured as the proportion of the target's "
+"population."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:124
 #: miradi/source/org/miradi/diagram/cells/ProjectScopeBox.java:76
@@ -3707,10 +3705,9 @@ msgid ""
 "to know about your project. A good plan includes the indicators that you "
 "will track over time as well as the methods that you will use."
 msgstr ""
-"Rencana Pemantauan – Suatu rencana untuk mengumpulkan informasi tentang "
-"proyek Anda yang perlu diketahui oleh Anda dan orang-orang lainnya. Suatu "
-"rencana yang baik meliputi indikator-indikator yang akan bisa Anda lacak "
-"dengan berjalannya waktu serta metode yang akan Anda gunakan."
+"Monitoring Plan - A plan for collecting information that you and others need "
+"to know about your project. A good plan includes the indicators that you "
+"will track over time as well as the methods that you will use."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:153
 msgid "Strategy Effectiveness"
@@ -3921,21 +3918,20 @@ msgid ""
 "at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
 msgstr ""
-"<html>Proyek (umum) – Sembarang kumpulan tindakan yang dilakukan oleh "
-"sekelompok orang dan/atau organisasi untuk mencapai sasaran dan tujuan yang "
-"telah ditentukan. Skala proyek bisa berkisar dari upaya yang dilakukan oleh "
-"masyarakat setempat untuk melindungi serumpun kecil pohon keramat sampai "
-"upaya yang dilakukan oleh seorang penyumbang dana untuk melindungi "
-"keseluruhan samudera. \n"
+"<html>Project (general) - Any set of actions undertaken by a group of people "
+"and/or organizations to achieve defined goals and objectives. Projects can "
+"range in scale from efforts by local people to protect a small sacred grove "
+"to efforts by a donor to protect an entire ocean. \n"
 "\n"
-"<p>Proyek (dalam Miradi) – Proyek adalah satuan dasar untuk satu berkas "
-"perangkat lunak dalam Miradi. Sebagai aturan umum, Anda harus memiliki satu "
-"berkas untuk setiap proyek dunia nyata yang Anda kelola, meskipun untuk "
-"proyek tertentu yang kompleks dan berukuran besar, Anda mungkin ingin "
-"memiliki satu berkas untuk setiap target atau untuk subdivisi lain. "
-"Penyetelan standar Miradi adalah untuk membuat satu <i>folder</i> dengan "
-"nama proyek dalam direktori Miradi (dalam Windows, alur standarnya adalah C:"
-"\\Documents and Settings\\<i>NamaPenggunaAnda</i>\\Miradi)."
+"<p>Project (in Miradi) - A project is the basic unit for a software file in "
+"Miradi. As a general rule, you should have one file for each real-world "
+"project you are managing, although for certain large and complex projects, "
+"you may wish to have one file for each target or for other subdivisions. \n"
+"\n"
+"<p>To see where your projects are being stored, use the <code "
+"class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, and look "
+"at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</"
+"code> tab."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:251
 msgid "CMP"
@@ -4067,9 +4063,10 @@ msgid ""
 "conservation strategies. In Miradi, a threat reduction result is represented "
 "by a purple rectangle."
 msgstr ""
-"Hasil Antara – Suatu faktor dalam rangkaian hasil yang menjabarkan hasil "
-"spesifik dari pelaksanaan satu atau lebih strategi konservasi. Dalam Miradi, "
-"hasil antara diwakili oleh persegi empat warna biru."
+"Threat Reduction Result - A factor in a results chain that describes the "
+"desired change in a direct threat that results from implementing one or more "
+"conservation strategies. In Miradi, a threat reduction result is represented "
+"by a purple rectangle."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:306
 msgid "IntermediateResult"
@@ -4126,7 +4123,7 @@ msgstr ""
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
 #, fuzzy
 msgid "Acceptable Range of Variation"
-msgstr "Kisaran Variasi yang Bisa Diterima"
+msgstr "Acceptable Range of Variation"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
 msgid ""
@@ -4155,13 +4152,13 @@ msgid ""
 "Measurement - An assessment of an indicator at a given point in time. "
 "Measurements can be either quantitative or qualitative."
 msgstr ""
-"Pengukuran – Penilaian dari suatu indickator pada suatu waktu tertentu. "
-"Pengukuran bisa bersifat kuantitatif maupun kualitatif."
+"Measurement - An assessment of an indicator at a given point in time. "
+"Measurements can be either quantitative or qualitative."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
 #, fuzzy
 msgid "Priority Rating"
-msgstr "Peringkat Prioritas"
+msgstr "Priority Rating"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
 msgid ""
@@ -4178,10 +4175,9 @@ msgid ""
 "key ecological attribute that the project intends to achieve at a specified "
 "time in the future. Generally equivalent to a project sub-goal."
 msgstr ""
-"Status Masa Depan yang Diinginkan – Nilai pengukuran atau pemeringkatan "
-"untuk suatu indikator dan untuk suatu atribut ekologi kunci yang ingin "
-"dicapai oleh proyek pada saat tertentu di masa mendatang. Secara umum setara "
-"dengan subsasaran proyek."
+"Desired Future Status - A measurement or rating value for an indicator for a "
+"key ecological attribute that the project intends to achieve at a specified "
+"time in the future. Generally equivalent to a project sub-goal."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
 msgid "Threat Calculations"
@@ -4198,6 +4194,18 @@ msgstr "Tidak terdefinisi"
 #: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:78
 msgid "Error Occurred please try saving under different name."
 msgstr "Terjadi Kesalahan, harap simpan dengan nama lain. "
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
+msgid "<strong>Version: %s</strong>"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
+msgid "(Translation: %code %date)"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+msgid "Exported file does not validate."
+msgstr "Berkas yang diekspor tidak bisa divalidasi. "
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
 msgid "Export XML"
@@ -4228,14 +4236,6 @@ msgid ""
 msgstr ""
 "Tidak bisa menulis XML. Mungkin disk penuh, atau Anda tidak punya izin untuk "
 "menulis ke disk, atau nama berkas mengandung karakter yang tidak valid. "
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
-msgid "<strong>Version: %s</strong>"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
-msgid "(Translation: %code %date)"
-msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:60
 msgid ""
@@ -4360,6 +4360,10 @@ msgstr "[TIDAK TERSPESIFIKASI] "
 msgid "Share Activity"
 msgstr "Berbagi Kegiatan "
 
+#: miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
+msgid "Enter Tag Name"
+msgstr ""
+
 #: miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
 msgid "Label|New Group Box"
 msgstr "Kotak Grup Baru "
@@ -4367,10 +4371,6 @@ msgstr "Kotak Grup Baru "
 #: miradi/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:48
 msgid "Are you sure you want to delete this Stress?"
 msgstr "Anda yakin ingin menghapus Tekanan ini?"
-
-#: miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
-msgid "Enter Tag Name"
-msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:139
 msgid ""
@@ -4603,13 +4603,17 @@ msgstr ""
 #: miradi/source/org/miradi/views/planning/doers/CreatePlanningViewConfigurationDoer.java:95
 #, fuzzy
 msgid "PlanningSubViewName|Custom"
-msgstr "Tampilan Perencanaan "
+msgstr "PlanningSubViewName|Custom"
 
 #: miradi/source/org/miradi/views/planning/doers/AddAssignmentDoer.java:56
 msgid "Resources cannot be added to this task because it already has subtasks."
 msgstr ""
 "Sumber daya tidak bisa ditambahkan ke tugas ini karena sudah adanya "
 "subtugas. "
+
+#: miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:112
+msgid "Error occurred while switching threat rating mode."
+msgstr "Terjadi kesalahan saat mengganti mode peringkat ancaman. "
 
 #: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:87
 msgid "Create Link"
@@ -4631,10 +4635,6 @@ msgstr ""
 #: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:177
 msgid "Delete a link?"
 msgstr "Hapus tautan? "
-
-#: miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:112
-msgid "Error occurred while switching threat rating mode."
-msgstr "Terjadi kesalahan saat mengganti mode peringkat ancaman. "
 
 #: miradi/source/org/miradi/utils/SVGFileFilter.java:44
 msgid "FileFilter|SVG (*.svg)"
@@ -4665,6 +4665,14 @@ msgstr "MTE (*.mte) "
 msgid "FileFilter|XLS (*.xls)"
 msgstr "XLS (*.xls) "
 
+#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
+msgid "FileFilter|Miradi Project Zip (*.mpz)"
+msgstr "Zip Proyek Miradi (*.mpz) "
+
+#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
+msgid "FileFilter|ConPro Miradi Zip (*%s)"
+msgstr "Zip Conpro Miradi (*%s)"
+
 #: miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "Berbatas Tab (*.txt) "
@@ -4675,10 +4683,18 @@ msgstr "Berbatas Tab (*.txt) "
 msgid "FileFilter|Rich Text Format (*.rtf)"
 msgstr "Format Format Kaya Teks/Rich Text Format (*.rtf)"
 
-#: miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
+msgid "Install"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:49
 #, fuzzy
-msgid "FileFilter|Miradi Language Pack (%s)"
-msgstr "Zip Conpro Miradi (*%s)"
+msgid "TT|Install the selected language pack"
+msgstr "TT|Install the selected language pack"
+
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
+msgid "Select Language Pack to Install"
+msgstr ""
 
 #: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:54
 msgid "All on One Page"
@@ -4699,10 +4715,6 @@ msgstr "JASPER (*.jasper) "
 #: miradi/source/org/miradi/utils/JPEGFileFilter.java:44
 msgid "FileFilter|JPEG (*.jpg)"
 msgstr "JPEG (*.jpg) "
-
-#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
-msgid "FileFilter|Miradi Project Zip (*.mpz)"
-msgstr "Zip Proyek Miradi (*.mpz) "
 
 #: miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
 msgid "Title|Save %s File"
@@ -4776,22 +4788,10 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
-msgid "Install"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:49
+#: miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
 #, fuzzy
-msgid "TT|Install the selected language pack"
-msgstr "Pindahkan butir terpilih ke atas "
-
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
-msgid "Select Language Pack to Install"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
-msgid "FileFilter|ConPro Miradi Zip (*%s)"
-msgstr "Zip Conpro Miradi (*%s)"
+msgid "FileFilter|Miradi Language Pack (%s)"
+msgstr "FileFilter|Miradi Language Pack (%s)"
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
@@ -5268,16 +5268,11 @@ msgstr "Buat Tekanan "
 msgid "TT|Create a Stress"
 msgstr "Buat satu Tekanan "
 
-#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:40
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:35
+#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:40
 #: miradi/source/org/miradi/actions/ActionCreateIndicator.java:35
 msgid "Action|Manage|Create Indicator"
 msgstr "Buat Indikator "
-
-#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
-#, fuzzy
-msgid "TT|Create an Indicator for the selected factor"
-msgstr "Buat Metode untuk Indikator terpilih "
 
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:40
 msgid "TT|Create a new Indicator"
@@ -5294,6 +5289,11 @@ msgstr "Hapus Laporan Kemajuan "
 #: miradi/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:40
 msgid "TT|Delete Progress Report"
 msgstr "\t\tHapus Laporan Kemajuan "
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
+#, fuzzy
+msgid "TT|Create an Indicator for the selected factor"
+msgstr "TT|Create an Indicator for the selected factor"
 
 #: miradi/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:35
 msgid "Action|Remove|Remove Factor(s) from Group Box"
@@ -5334,6 +5334,19 @@ msgstr "Tabel Berbatas Tab "
 #: miradi/source/org/miradi/actions/ActionExportTable.java:39
 msgid "TT|Export this view's table to a tab delimited file"
 msgstr "Ekspor tampilan tabel ini menjadi berkas berbatas tab "
+
+#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
+#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
+msgid "Action|Choose..."
+msgstr "Pilih… "
+
+#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
+#, fuzzy
+msgid "TT|Choose which indicators are relevant to this goal"
+msgstr "TT|Choose which indicators are relevant to this goal"
 
 #: miradi/source/org/miradi/actions/ActionPrint.java:34
 msgid "Action|Print"
@@ -5392,16 +5405,6 @@ msgstr "Impor Kode Akuntansi "
 #: miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
 msgid "TT|Import accounting codes"
 msgstr "Impor Kode Akuntansi "
-
-#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
-#, fuzzy
-msgid "Action|Save As..."
-msgstr "Simpan Salinan Sebagai… "
-
-#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
-#, fuzzy
-msgid "TT|Save a copy of this project under a different name and open it"
-msgstr "Buat satu salinan dari proyek ini dengan memakai nama lain "
 
 #: miradi/source/org/miradi/actions/ActionShowCurrentWizardFileName.java:34
 msgid "Action|Show Current Wizard Name"
@@ -5611,6 +5614,16 @@ msgstr "Hapus Salindia "
 msgid "TT|Delete slide"
 msgstr "Hapus Salindia "
 
+#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
+#, fuzzy
+msgid "Action|Create New Tag..."
+msgstr "Action|Create New Tag..."
+
+#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
+#, fuzzy
+msgid "TT|Create a new tag"
+msgstr "TT|Create a new tag"
+
 #: miradi/source/org/miradi/actions/ActionDeleteOrganization.java:35
 msgid "Action|Delete Organization"
 msgstr "Hapus Organisasi "
@@ -5723,11 +5736,20 @@ msgstr "Tunjukkan Tayangan Salindia "
 #: miradi/source/org/miradi/actions/ActionExportConProXml.java:34
 #, fuzzy
 msgid "Action|Export|ConPro (CPMZ) File"
-msgstr "Berkas ConPro (CPMZ) (BETA)"
+msgstr "Action|Export|ConPro (CPMZ) File"
 
 #: miradi/source/org/miradi/actions/ActionExportConProXml.java:39
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "Ekspor berkas yang bisa diimpor ConPro "
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
+#: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
+msgid "Action|Edit Progress Percents..."
+msgstr "Edit Persentase Kemajuan… "
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
+msgid "TT|Edit the list of progress percents for this objective."
+msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
 
 #: miradi/source/org/miradi/actions/ActionDeleteResultsChain.java:35
 msgid "Action|Delete Results Chain"
@@ -5759,15 +5781,6 @@ msgid ""
 msgstr ""
 "Sembunyikan Tekanan agar tidak lagi muncul pada halaman Model Konsep ini "
 
-#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:35
-#, fuzzy
-msgid "Action|Create Margin"
-msgstr "Buat"
-
-#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
-msgid "TT|Move factors right and down as needed to create margins"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionRunReportTemplate.java:34
 msgid "Action|Run Selected..."
 msgstr "Jalankan yang Terpilih…"
@@ -5791,6 +5804,11 @@ msgstr "Edit Perkiraan Sumber Daya… "
 #: miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
 msgid "TT|Edit the list of estimated resources."
 msgstr "Edit daftar perkiraan sumber daya. "
+
+#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
+#, fuzzy
+msgid "TT|Choose which strategies and activities are relevant to this goal"
+msgstr "TT|Choose which strategies and activities are relevant to this goal"
 
 #: miradi/source/org/miradi/actions/ActionExportRtf.java:34
 msgid "Action|RTF File"
@@ -5852,6 +5870,14 @@ msgstr "Dorong Butir ke Atas "
 msgid "Action|Select All"
 msgstr "Pilih Semua "
 
+#: miradi/source/org/miradi/actions/ActionZoomIn.java:34
+msgid "Action|Zoom In"
+msgstr "Zum Masuk "
+
+#: miradi/source/org/miradi/actions/ActionZoomIn.java:39
+msgid "TT|Zoom In"
+msgstr "Zum Masuk "
+
 #: miradi/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
 msgstr "Tampakkan Kegiatan pada halaman ini "
@@ -5860,6 +5886,16 @@ msgstr "Tampakkan Kegiatan pada halaman ini "
 msgid "TT|Show this Activity so it appears on this Results Chain"
 msgstr "Tampakkan Kegiatan ini agar muncul dalam Rangkaian Hasil ini"
 
+#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
+#, fuzzy
+msgid "Action|Save As..."
+msgstr "Action|Save As..."
+
+#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
+#, fuzzy
+msgid "TT|Save a copy of this project under a different name and open it"
+msgstr "TT|Save a copy of this project under a different name and open it"
+
 #: miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:35
 msgid "Action|Manage|Create Accounting Code"
 msgstr "Buat Kode Akuntansi "
@@ -5867,14 +5903,6 @@ msgstr "Buat Kode Akuntansi "
 #: miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:40
 msgid "TT|Create an Accounting Code"
 msgstr "Buat satu Kode Akuntansi "
-
-#: miradi/source/org/miradi/actions/ActionZoomIn.java:34
-msgid "Action|Zoom In"
-msgstr "Zum Masuk "
-
-#: miradi/source/org/miradi/actions/ActionZoomIn.java:39
-msgid "TT|Zoom In"
-msgstr "Zum Masuk "
 
 #: miradi/source/org/miradi/actions/ActionActivityMoveDown.java:35
 msgid "Action|Table|Move Activity Down"
@@ -5891,6 +5919,11 @@ msgstr "Buat Tekanan dari AEK "
 #: miradi/source/org/miradi/actions/ActionCreateStressFromKea.java:40
 msgid "TT|Create a Stress from a Key Ecological Attribute"
 msgstr "Buat satu Tekanan dari Atribut Ekologi Kunci "
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
+#, fuzzy
+msgid "TT|Create an Objective for the selected factor"
+msgstr "TT|Create an Objective for the selected factor"
 
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:40
@@ -5922,6 +5955,10 @@ msgstr "Buat AEK "
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:40
 msgid "TT|Create a Key Ecological Attribute"
 msgstr "Buat satu Atribut Ekologi Kunci "
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
+msgid "TT|Choose which indicators are relevant to this objective"
+msgstr "Pilih indikator mana yang relevan dengan sasaran ini "
 
 #: miradi/source/org/miradi/actions/ActionManageStresses.java:35
 msgid "Action|Manage Stresses..."
@@ -5990,6 +6027,11 @@ msgstr "Batalkan "
 #: miradi/source/org/miradi/actions/ActionUndo.java:39
 msgid "TT|Undo last action"
 msgstr "Batalkan tindakan terakhir "
+
+#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
+#, fuzzy
+msgid "TT|Add/remove tags for this factor"
+msgstr "TT|Add/remove tags for this factor"
 
 #: miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
@@ -6060,19 +6102,6 @@ msgstr "Ulangi "
 msgid "TT|Redo last undone action"
 msgstr "Ulangi tindakan yang terakhir dibatalkan "
 
-#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
-#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
-msgid "Action|Choose..."
-msgstr "Pilih… "
-
-#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
-#, fuzzy
-msgid "TT|Choose which indicators are relevant to this goal"
-msgstr "Pilih indikator mana yang relevan dengan sasaran ini "
-
 #: miradi/source/org/miradi/actions/ActionCut.java:34
 msgid "Action|Cut"
 msgstr "Potong "
@@ -6108,7 +6137,7 @@ msgstr "Tambahkan "
 #: miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:34
 #, fuzzy
 msgid "Action|ConPro (CPMZ) File"
-msgstr "Berkas ConPro (CPMZ) (BETA)"
+msgstr "Action|ConPro (CPMZ) File"
 
 #: miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
 msgid "TT|Import a .cpmz file that was exported from ConPro"
@@ -6223,6 +6252,15 @@ msgstr "Buat Salindia "
 msgid "Action|Delete Item"
 msgstr "Hapus Butir "
 
+#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:35
+#, fuzzy
+msgid "Action|Create Margin"
+msgstr "Action|Create Margin"
+
+#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
+msgid "TT|Move factors right and down as needed to create margins"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionActivityMoveUp.java:35
 msgid "Action|Table|Move Activity Up"
 msgstr "Pindahkan Kegiatan ke Atas "
@@ -6335,6 +6373,16 @@ msgstr "Hapus Kegiatan "
 msgid "TT|Delete the selected Activity"
 msgstr "Hapus Kegiatan terpilih "
 
+#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:35
+#, fuzzy
+msgid "Action|Tag/Untag..."
+msgstr "Action|Tag/Untag..."
+
+#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
+#, fuzzy
+msgid "TT|Add/remove tags for the selected factor"
+msgstr "TT|Add/remove tags for the selected factor"
+
 #: miradi/source/org/miradi/actions/ActionMoveSlideDown.java:34
 msgid "Action|Move Down"
 msgstr "Gerak ke Bawah "
@@ -6371,6 +6419,11 @@ msgstr "Ekspor proyek sebagai berkas berformat MPZ (Miradi Project Zip)"
 msgid "TT|Create a Method for the selected Indicator"
 msgstr "Buat Metode untuk Indikator terpilih "
 
+#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
+msgid ""
+"TT|Choose which strategies and activities are relevant to this objective."
+msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
+
 #: miradi/source/org/miradi/actions/ActionInsertStrategy.java:37
 msgid "Action|Insert|Insert Strategy"
 msgstr "Sisipkan Strategi "
@@ -6378,11 +6431,6 @@ msgstr "Sisipkan Strategi "
 #: miradi/source/org/miradi/actions/ActionInsertStrategy.java:42
 msgid "TT|Insert a Strategy"
 msgstr "Sisipkan satu Strategi "
-
-#: miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
-#, fuzzy
-msgid "TT|Create an Objective for the selected factor"
-msgstr "Buat Kegiatan untuk Strategi terpilih "
 
 #: miradi/source/org/miradi/actions/ActionNudgeDown.java:34
 msgid "Action|Nudge Item Down"
@@ -6395,7 +6443,7 @@ msgstr "Klon Sasaran… "
 #: miradi/source/org/miradi/actions/ActionCloneObjective.java:40
 #, fuzzy
 msgid "TT|Clone an Objective"
-msgstr "Klon satu Sasaran "
+msgstr "TT|Clone an Objective"
 
 #: miradi/source/org/miradi/actions/ActionDatabasesDemo.java:34
 msgid "Action|Databases - demo"
@@ -6409,62 +6457,14 @@ msgstr "< Sebelumnya "
 msgid "TT|Go to the Previous wizard step"
 msgstr "Ke langkah wizard Sebelumnya "
 
-#: miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:45
-msgid "TT|Create an Activity for the selected Strategy"
-msgstr "Buat Kegiatan untuk Strategi terpilih "
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
-#, fuzzy
-msgid "TT|Add/remove tags for this factor"
-msgstr "Edit metode untuk indikator ini "
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:35
-#, fuzzy
-msgid "Action|Tag/Untag..."
-msgstr "Ubah…"
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
-#, fuzzy
-msgid "TT|Add/remove tags for the selected factor"
-msgstr "Buat Metode untuk Indikator terpilih "
-
-#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
-#, fuzzy
-msgid "Action|Create New Tag..."
-msgstr "Buat Target Bersarang "
-
-#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
-#, fuzzy
-msgid "TT|Create a new tag"
-msgstr "Buat satu Metode baru "
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
-msgid "TT|Choose which indicators are relevant to this objective"
-msgstr "Pilih indikator mana yang relevan dengan sasaran ini "
-
-#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
-#, fuzzy
-msgid "TT|Choose which strategies and activities are relevant to this goal"
-msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
-msgid ""
-"TT|Choose which strategies and activities are relevant to this objective."
-msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
-#: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
-msgid "Action|Edit Progress Percents..."
-msgstr "Edit Persentase Kemajuan… "
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this objective."
-msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
-
 #: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:39
 #, fuzzy
 msgid "TT|Edit the list of progress percents for this goal."
-msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
+msgstr "TT|Edit the list of progress percents for this goal."
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:45
+msgid "TT|Create an Activity for the selected Strategy"
+msgstr "Buat Kegiatan untuk Strategi terpilih "
 
 #: miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
 msgid "Other Orgs"
@@ -6496,6 +6496,10 @@ msgstr "Buka \t"
 msgid "Error deleting project: "
 msgstr "Kesalahan menghapus proyek: "
 
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
+msgid "Error copying project: "
+msgstr "Kesalahan menyalin proyek: \t\t"
+
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:32
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:165
 msgid "Rename..."
@@ -6512,10 +6516,6 @@ msgstr "Daftar Proyek "
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:85
 msgid "Last Modified"
 msgstr ""
-
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
-msgid "Error copying project: "
-msgstr "Kesalahan menyalin proyek: \t\t"
 
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:86
 msgid ""
@@ -6545,6 +6545,10 @@ msgstr "Salin ke… "
 msgid "Export to Miradi Zip..."
 msgstr "Ekspor ke Zip Miradi… "
 
+#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
+msgid "View News"
+msgstr ""
+
 #: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
 msgid ""
 "<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
@@ -6570,7 +6574,7 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Import "
 "Miradi Project' value='Miradi Project (.mpz)'></input></td></tr><tr><td></"
 "td><td><input type='submit' name='Import ConPro Project' value='ConPro/"
-"Miradi Exchange File (.cpmz)(BETA)'></input></td></tr></table></p><br>"
+"Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
 
 #: miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:82
 msgid ""
@@ -6613,10 +6617,6 @@ msgstr ""
 #: miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:154
 msgid "Create Failed:"
 msgstr "Pembuatan gagal: "
-
-#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
-msgid "View News"
-msgstr ""
 
 #: miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:47
 msgid "3a) Develop draft indicator ratings"
@@ -6798,12 +6798,12 @@ msgstr ""
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1034
 #, fuzzy
 msgid "Objective Holder"
-msgstr "Tujuan Instruksional "
+msgstr "Objective Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1040
 #, fuzzy
 msgid "Indicator Holder"
-msgstr "Indikator "
+msgstr "Indicator Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1137
 msgid "High/Very-High Threat Chains"
@@ -6852,12 +6852,12 @@ msgstr "Faktor Kontribusi "
 #: miradi/source/org/miradi/diagram/DiagramModel.java:896
 #, fuzzy
 msgid "Project Scope"
-msgstr "Cakupan Proyek: "
+msgstr "Project Scope"
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:173
 #, fuzzy
 msgid "Unexpected error prevented the tag operation from succeeding"
-msgstr "Kesalahan internal mencegah operasi ini "
+msgstr "Unexpected error prevented the tag operation from succeeding"
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:241
 msgid "Menu|Add Tag to %n Selected Item(s)"
@@ -7019,14 +7019,16 @@ msgstr "[Tidak Ada Proyek] "
 #: miradi/source/org/miradi/project/Project.java:1041
 #, fuzzy
 msgid "Attempt to execute command as side effect when not in that mode"
-msgstr "Upaya melaksanakan perintah dari pendengar perintah di luar"
+msgstr "Attempt to execute command as side effect when not in that mode"
 
 #: miradi/source/org/miradi/project/Project.java:1056
 #, fuzzy
 msgid ""
 "Attempt to execute command while in side effect mode:\n"
 " tried  "
-msgstr "Upaya melaksanakan perintah dari pendengar perintah: "
+msgstr ""
+"Attempt to execute command while in side effect mode:\n"
+" tried  "
 
 #: miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:171
 msgid "[New Results Chain]"
@@ -7046,7 +7048,7 @@ msgstr "Nama "
 
 #, fuzzy
 msgid "FieldLabel|3.ShortLabel|ID"
-msgstr "ID "
+msgstr "FieldLabel|3.ShortLabel|ID"
 
 msgid "FieldLabel|3.StrategyLabel|Strategy"
 msgstr "Strategi "
@@ -7239,11 +7241,11 @@ msgstr "Rincian "
 
 #, fuzzy
 msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-msgstr "Nilai "
+msgstr "FieldLabel|8.FutureStatusSummary|Future Value"
 
 #, fuzzy
 msgid "FieldLabel|8.FutureStatusDate|Future Date"
-msgstr "Tanggal "
+msgstr "FieldLabel|8.FutureStatusDate|Future Date"
 
 msgid "FieldLabel|8.FutureStatusRating|Rating"
 msgstr "Peringkat "
@@ -7370,7 +7372,7 @@ msgstr "Komentar "
 
 #, fuzzy
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
-msgstr "Indikator yang Relevan "
+msgstr "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 
 msgid "FieldLabel|11.PseudoTagProjectFilename|Project Filename"
 msgstr "Nama berkas proyek "
@@ -7392,7 +7394,7 @@ msgstr "Cakupan/Nama Lokasi "
 
 #, fuzzy
 msgid "FieldLabel|11.ProjectVision|Vision Statement Text"
-msgstr "Label Visi "
+msgstr "FieldLabel|11.ProjectVision|Vision Statement Text"
 
 msgid "FieldLabel|11.ShortProjectVision|Vision Label"
 msgstr "Label Visi "
@@ -7659,11 +7661,11 @@ msgstr "Rincian Persentase Kemajuan"
 
 #, fuzzy
 msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
-msgstr "Total Anggaran "
+msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #, fuzzy
 msgid "FieldLabel|12.Comment|Comments"
-msgstr "Komentar"
+msgstr "FieldLabel|12.Comment|Comments"
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
 msgstr "Dari"
@@ -7676,7 +7678,7 @@ msgstr "Warna "
 
 #, fuzzy
 msgid "FieldLabel|14.Assignment|Assignment"
-msgstr "Komentar"
+msgstr "FieldLabel|14.Assignment|Assignment"
 
 msgid "FieldLabel|15.Label|Category Name"
 msgstr "Nama Kategori "
@@ -7773,11 +7775,11 @@ msgstr "Faktor Kontribusi "
 
 #, fuzzy
 msgid "FieldLabel|20.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "Tampak pada "
+msgstr "FieldLabel|20.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|20.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "Rangkaian Hasil "
+msgstr "FieldLabel|20.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|20.Text|Details"
 msgstr "Rincian"
@@ -7829,11 +7831,11 @@ msgstr "Target Terkait "
 
 #, fuzzy
 msgid "FieldLabel|21.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "Tampak pada "
+msgstr "FieldLabel|21.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|21.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "Rangkaian Hasil "
+msgstr "FieldLabel|21.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|21.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "Agregasi Anggaran "
@@ -7894,11 +7896,11 @@ msgstr "Pembenaran Status Sekarang "
 
 #, fuzzy
 msgid "FieldLabel|22.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "Tampak pada "
+msgstr "FieldLabel|22.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|22.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "Rangkaian Hasil "
+msgstr "FieldLabel|22.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|22.SpeciesLatinName|Species Latin Name"
 msgstr "Nama Latin Spesies "
@@ -7911,7 +7913,7 @@ msgstr "Rincian "
 
 #, fuzzy
 msgid "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
-msgstr "<html>Asosiasi Habitat<br>(IUCN v3.0) \t\t"
+msgstr "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
 
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
 msgstr "Hasil Antara "
@@ -7924,11 +7926,11 @@ msgstr "Nama "
 
 #, fuzzy
 msgid "FieldLabel|23.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "Tampak pada "
+msgstr "FieldLabel|23.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|23.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "Rangkaian Hasil "
+msgstr "FieldLabel|23.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|23.Text|Details"
 msgstr "Rincian "
@@ -7968,11 +7970,11 @@ msgstr "Nama"
 
 #, fuzzy
 msgid "FieldLabel|25.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "Tampak pada "
+msgstr "FieldLabel|25.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|25.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "Rangkaian Hasil "
+msgstr "FieldLabel|25.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|25.Text|Details"
 msgstr "Rincian "
@@ -7988,11 +7990,11 @@ msgstr "Kotak Teks "
 
 #, fuzzy
 msgid "FieldLabel|26.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "Tampak pada "
+msgstr "FieldLabel|26.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|26.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "Rangkaian Hasil "
+msgstr "FieldLabel|26.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|26.Text|Details"
 msgstr "Rincian "
@@ -8032,14 +8034,14 @@ msgstr "Komentar"
 
 #, fuzzy
 msgid "FieldLabel|32.Summary|Measurement Value"
-msgstr "Nilai"
+msgstr "FieldLabel|32.Summary|Measurement Value"
 
 msgid "FieldLabel|32.Status|Rating"
 msgstr "Peringkat"
 
 #, fuzzy
 msgid "FieldLabel|32.Date|Measurement Date"
-msgstr "Tanggal"
+msgstr "FieldLabel|32.Date|Measurement Date"
 
 msgid "FieldLabel|32.Detail|Detail"
 msgstr "Rincian"
@@ -8209,7 +8211,7 @@ msgstr "Prioritas Organisasi "
 
 #, fuzzy
 msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
-msgstr "Status Proyek "
+msgstr "FieldLabel|40.ProjectSharingCode|Data Sharing"
 
 msgid "FieldLabel|41.TrainingType|Training Type"
 msgstr "Jenis Pelatihan "
@@ -8775,77 +8777,79 @@ msgid ""
 "STRONG> Benetech's software for human rights groups</LI></UL><P><FONT "
 "size=2>&nbsp;</P></FONT></BODY></HTML>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN"
-"\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/css></STYLE></"
-"HEAD><BODY><table><tr><td><IMG height=30 alt=\"\" hspace=20 src=\"images/"
-"Umbrella/thanks64.png\" width=87 align=absMiddle border=0></img></"
-"td><td><H2>Credits</H2></td></tr></table><P>Perangkat lunak Miradi &nbsp;"
-"sedang dikembangkan sebagai&nbsp;usaha bersama antara&nbsp;Conservation "
-"Measures Partnership dan Benetech.&nbsp;Ini adalah hasil karya lusinan "
-"organisasi dan ratusan orang.&nbsp;Meskipun kami hampir pasti tidak dapat "
-"menyertakan semua orang yang seharusnya disebutkan di sini, orang-orang dan "
-"organisasi kunci yang terlibat antara lain:</P><br><HR><H3>Desain dan "
-"Materi</H3><H4>Desainer Utama</H4><UL> <LI>Nick Salafsky (Foundations of "
-"Success) <LI>Dan Salzer (The Nature Conservancy) <LI>Kevin Smith (Benetech)</"
-"LI></UL><H4>Desainer Pembantu</H4> <UL><LI>Lisa Battle (Design for Context)"
-"<LI>David Berg, Jon Fischer, Rachel Neugarten (The Nature Conservancy)</UL> "
-"<HR><H3>Rekayasa</H3><H4>Perekayasa Utama</H4><UL> <LI>Kevin Smith, Nima "
-"Ansari&nbsp;(Benetech)</LI></UL><H4>Perekayasa Pembantu </H4><UL><LI>Richard "
-"Nunziata, Mike Reynolds, Charles LaPierre, Dave Offen&nbsp;(Benetech)</LI></"
-"UL><HR><H3>Manajemen Produk dan Bisnis</H3><UL> <LI>Nick Salafsky, Janice "
-"Davis&nbsp;(Foundations of Success) <LI>Anna Berns, Amy Conant, Lisa "
-"Friendly, Peggy Gibbs, Ann Harrison, Barbara Morrison,&nbsp; Jeff "
-"Rauenhorst, Gerry Sinzdak, Kate Wilson (Benetech)</LI></"
-"UL><HR><H3>Pengawasan dan Panduan</H3><UL> <LI>Jim Fruchterman, Patrick "
-"Ball&nbsp;(Benetech) <LI>Tim Tear, Dan Salzer, Brad Northrup, Craig Groves, "
-"Jora Young, Danielle Conboy, Kristin Barker (The Nature Conservancy) "
-"<LI>Sheila O'Connor, Will Beale, John Morrison, Will Reidhead, Eric Swanson,"
-"&nbsp;Sarah Christensen (WWF) <LI>David Wilkie, Josh Ginsberg, Jonathan "
-"Palmer, John Robinson (Wildlife Conservation Society) <LI>Paul Butler, Megan "
-"Hill,&nbsp;Peter Vaughn,&nbsp;Brett Jenks (Rare Conservation) <LI>Richard "
-"Margoluis, Nick Salafsky&nbsp;(Foundations of Success)</LI></"
-"UL><HR><H3>Pendanaan</H3><UL> <LI>Gordon &amp; Betty Moore Foundation "
-"(terima kasih terutama kepada Dan Martin dan Terry Vogt) <LI>William &amp; "
-"Flora Hewlett Foundation (terima kasih terutama kepada Rhea Suh dan Hal "
-"Harvey) <LI>David &amp; Lucille Packard Foundation (terima kasih terutama "
-"kepada Kristin Sherwood, Kai Lee, Jim Leape, Walt Reid, dan Bernd Cordes) "
-"<LI>Leo Model Foundation (terima kasih terutama kepada Allen Model) <LI>The "
-"Nature Conservancy <LI>WWF <LI>Wildlife Conservation Society <LI>Rare "
-"Conservation <LI>Foundations of Success</LI></UL><HR><H3>Pengujian, Umpan "
-"Balik, dan Saran</H3><P>Selain dari yang disebutkan di atas, beberapa dari "
-"ratusan orang lainnya yang membantu meninjau perangkat lunak dan memberikan "
-"wawasannya antara lain:</P><UL> <LI>Jose Kalpers (Africa Parks Foundation) "
-"<LI>Bill Sutherland (Cambridge University)&nbsp;<LI>Gernant Magnin, Neil "
-"McIntosh (Eurosite) <LI>Marcia Brown, Guillermo Placci, Caroline Stem, Ilke "
-"Tilders, Vinaya Swaminathan&nbsp;(Foundations of Success) <LI>Matti Maatta "
-"(Metsahalitus) <LI>Frank Biasi (National Geographic Society)<LI>Paul Evans "
-"(Natural England) <LI>Jonathan Adams, Marjorie Bennett, Michelle Brown, "
-"Darran Crabtree, Michelle DePhilip,&nbsp; Andy Dickerson, Dan Dorfman, Kevin "
-"Essington,&nbsp;Jon Fisher, Mary Harkness,&nbsp;John Heaston,&nbsp;Donnelle "
-"Keech, David Klein, Warren Lockwood, Veronika Megler,&nbsp;George Schuler,"
-"&nbsp;Becky Shirer (The Nature Conservancy) <LI>Dan Kraus (Nature "
-"Conservancy Canada)<LI>Katherine McElhinny, Sharon Price (Rare Conservation)"
-"<LI>Deborah Spray (Scottish Natural Heritage) <LI>Louann Dietz, Briony "
-"Senior, dan seluruh angkatan Manajemen Adaptif (Universitas Maryland) "
-"<LI>Avecita Chicchon,&nbsp;Zach Ferris,&nbsp;Mathew Hatchwell, Bruce Miller, "
-"Carolina Murcia, Lilian Painter, Damian Rumiz, Mariana Varese&nbsp;(Wildlife "
-"Conservation Society) <LI>Annie Claus, Tom Dillon, Ste Drayton, Bronwyn "
-"Llewellyn, Michael Mikov, Alexis Morgan, Neil Morgan, Robin Naidoo, John "
-"Tua&nbsp;(WWF)</LI></UL><HR><H3>Materi Diambil Dari</H3><UL> <LI>Standar "
-"Terbuka untuk Praktik Konservasi (<EM>Open Standards for the Practice of "
-"Conservation</EM>) dari CMP <LI>Ukuran Keberhasilan (<EM>Measures of "
-"Success</EM>) dan Materi Pelatihan dari FOS <LI><EM>5-S</EM> dan Proses "
-"Perencanaan Tindakan Konservasi (<EM>Conservation Action Planning Processes</"
-"EM>) dan Materi Pelatihan Jaringan Efroymson dari The Nature "
-"Conservancy<LI>Materi Pelatihan RARE Conservation <LI>Materi Pelatihan dan "
-"Program Bentang Alam Kehidupan WCS <LI>Standar Program dan Proyek "
-"(<EM>Project and Programme Standards</EM>) dan Materi Pelatihan WWF</LI></"
-"UL><HR><H3>Kontribusi Teknis Berasal Dari</H3><UL> <LI><STRONG>Perpustakaan "
-"Pihak Ketiga:</STRONG> BrowserLauncher, iReports, JasperReports, JCalendar, "
-"JExcel, JGraph, JHLabs, JTreeTable, TableLayout <LI><STRONG>Perangkat "
-"Pengembangan:</STRONG> Ant, CVS, Eclipse, Java, JUnit, Subversion "
-"<LI><STRONG>Martus:</STRONG> Perangkat lunak Benetech untuk kelompok hak "
-"asasi manusia</LI></UL><P><FONT size=2>&nbsp;</P></FONT></BODY></HTML>\t"
+"html|/resources/help/Credits.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML "
+"4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/css></"
+"STYLE></HEAD><BODY><table><tr><td><IMG height=30 alt=\"\" hspace=20 src="
+"\"images/Umbrella/thanks64.png\" width=87 align=absMiddle border=0></img></"
+"td><td><H2>Credits</H2></td></tr></table><P>Miradi software is&nbsp;being "
+"developed as a&nbsp;joint effort between&nbsp;the Conservation Measures "
+"Partnership and Benetech.&nbsp;It is the result of work of dozens of "
+"different organizations and hundreds of people.&nbsp;Although we are almost "
+"certainly not including everyone who should be mentioned, key people and "
+"organizations include:</P><br><HR><H3>Design and Content</H3><H4>Primary "
+"Desginers</H4><UL>  <LI>Nick Salafsky (Foundations of Success)   <LI>Dan "
+"Salzer (The Nature Conservancy)   <LI>Kevin Smith (Benetech)</LI></"
+"UL><H4>Contributing Designers</H4>  <UL><LI>Lisa Battle (Design for Context)"
+"</LI><LI>David Berg, Jon Fischer, Rachel Neugarten (The Nature Conservancy)</"
+"LI><LI>Marcia Brown, Caroline Stem, Vinaya Swaminathan, Ilke Tilders "
+"(Foundations of Success)</LI></UL> <HR><H3>Engineering</H3><H4>Primary "
+"Engineers</H4><UL>  <LI>Kevin Smith, Nima Ansari&nbsp;(Benetech)</LI></"
+"UL><H4>Contributing Engineers</H4><UL><LI>Richard Nunziata, Mike Reynolds, "
+"Charles LaPierre, Dave Offen&nbsp;(Benetech)</LI></UL><HR><H3>Product "
+"Management and Business</H3><UL>  <LI>Nick Salafsky, Janice Davis&nbsp;"
+"(Foundations of Success)   <LI>Anna Berns, Amy Conant, Lisa Friendly, Peggy "
+"Gibbs, Ann Harrison, Barbara Morrison,&nbsp; Jeff Rauenhorst, Gerry Sinzdak, "
+"Kate Wilson (Benetech)</LI></UL><HR><H3>Oversight and Guidance</H3><UL>  "
+"<LI>Jim Fruchterman, Patrick Ball&nbsp;(Benetech)   <LI>Tim Tear, Dan "
+"Salzer, Brad Northrup, Craig Groves, Jora Young, Danielle Conboy, Michael "
+"Parker, Kristin Barker (The Nature Conservancy)   <LI>Sheila O'Connor, Will "
+"Beale, Michael Mikov, Alexis Morgan, John Morrison, Will Reidhead, P.J. "
+"Stephanson, Eric Swanson,&nbsp;Sarah Christensen (WWF)   <LI>David Wilkie, "
+"Josh Ginsberg, Jonathan Palmer, John Robinson   (Wildlife Conservation "
+"Society)   <LI>Paul Butler, Megan Hill,&nbsp;Peter Vaughn,&nbsp;Brett Jenks "
+"(Rare   Conservation)   <LI>Richard Margoluis, Nick Salafsky&nbsp;"
+"(Foundations of Success)</LI></UL><HR><H3>Funding</H3><UL>  <LI>Gordon &amp; "
+"Betty Moore Foundation (special thanks to Dan Martin, Jason Cole, Rachel "
+"Strader)   <LI>William &amp; Flora Hewlett Foundation (special thanks to "
+"Rhea Suh, Hal Harvey)   <LI>David &amp; Lucille Packard Foundation (special "
+"thanks to Kristin Sherwood, Kai Lee, Walt Reid, Gale Berkowitz, Bernd "
+"Cordes, Jim Leape)   <LI>Leo Model Foundation (special thanks to Allen "
+"Model)  <LI>The Nature Conservancy   <LI>WWF   <LI>Wildlife Conservation "
+"Society   <LI>Rare Conservation   <LI>Foundations of Success  <LI>National "
+"Audubon Society</LI></UL><HR><H3>Testing, Feedback, and Advice</H3><P>In "
+"addition to many of the above listed individuals, some of the hundreds of "
+"other people who have helped review the software and provide insights "
+"include:</P><UL>  <LI>Jose Kalpers (Africa Parks Foundation)   <LI>Bill "
+"Sutherland (Cambridge University)&nbsp;<LI>Gernant Magnin, Neil McIntosh "
+"(Eurosite)    <LI>Marcia Brown, Guillermo Placci, Caroline Stem, Ilke "
+"Tilders, Vinaya   Swaminathan&nbsp;(Foundations of Success)  <LI>Matti "
+"Maatta (Metsahalitus)   <LI>Frank Biasi (National Geographic Society)"
+"<LI>Paul Evans (Natural England)   <LI>Jonathan Adams, Marjorie Bennett, "
+"Michelle Brown, Darran Crabtree, Michelle DePhilip,&nbsp; Andy Dickerson, "
+"Dan Dorfman,   Kevin Essington,&nbsp;Jon Fisher, Mary Harkness,&nbsp;John   "
+"Heaston,&nbsp;Donnelle Keech, David Klein, Warren Lockwood, Veronika Megler,"
+"&nbsp;George Schuler,&nbsp;Becky Shirer (The Nature Conservancy)   <LI>Dan "
+"Kraus (Nature Conservancy Canada)<LI>Katherine McElhinny, Sharon Price (Rare "
+"Conservation)<LI>Deborah Spray (Scottish Natural Heritage)   <LI>Louann "
+"Dietz, Briony Senior, and the entire Adaptive Management class (University "
+"of Maryland)  <LI>Avecita Chicchon,&nbsp;Zach Ferris,&nbsp;Mathew Hatchwell, "
+"Bruce Miller,   Carolina Murcia, Lilian Painter, Damian Rumiz, Mariana "
+"Varese&nbsp;(Wildlife   Conservation Society)   <LI>Annie Claus, Tom Dillon, "
+"Ste Drayton, Bronwyn Llewellyn, Michael Mikov, Alexis Morgan, Neil Morgan, "
+"Robin Naidoo, John Tua&nbsp;(WWF)</LI></UL><HR><H3>Content Drawn From</"
+"H3><UL>  <LI>CMP's <EM>Open Standards for the Practice of Conservation</"
+"EM>   <LI>FOS's <EM>Measures of Success</EM> and Training Materials   "
+"<LI>The Nature Conservancy's <EM>5-S</EM> and <EM>Conservation Action   "
+"Planning</EM> Processes and the Efroymson Network Training Materials   "
+"<LI>RARE Conservation's Training Materials   <LI>WCS's Living Landscapes "
+"Program and Training Materials   <LI>WWF's <EM>Project and Programme "
+"Standards</EM> and Training Materials </LI></UL><HR><H3>Technical "
+"Contributions Drawn From</H3><UL>  <LI><STRONG>Third Party Libraries:</"
+"STRONG> BrowserLauncher,   JCalendar, JGraph, JHLabs, Jing, JTreeTable, "
+"JarBuilder, install4j   <LI><STRONG>Development Tools:</STRONG> Ant, CVS, "
+"Eclipse, Java, JUnit, NSIS, POEdit, Ruby, Subversion   <LI><STRONG>Martus:</"
+"STRONG> Benetech's software for human rights groups</LI></UL><P><FONT "
+"size=2>&nbsp;</P></FONT></BODY></HTML>"
 
 msgid ""
 "html|/resources/help/AboutExtra.html|  <p>This software is being developed "
@@ -8894,13 +8898,12 @@ msgid ""
 "(on behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent "
 "Technology, Inc. (\"The Benetech Initiative\"), Palo Alto, California.</P>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN"
-"\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/css></STYLE></HEAD><body "
-"class='sidebar'><div class='indented'><FONT size=4><P> Hak cipta 2005-2008, "
-"Foundations of Success, Bethesda, Maryland (atas nama Conservation Measures "
-"Partnership, \"CMP\") dan Beneficent Technology, Inc. (\"The Benetech "
-"Initiative\"), Palo Alto, California. </P><p><strong>VERSION: 2.2.2</"
-"strong><eam> "
+"html|/resources/help/AboutPart1.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
+"HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
+"css></STYLE></HEAD><body class='sidebar'><div class='indented'><FONT "
+"size=4><P>Copyright 2005-2009, Foundations of Success, Bethesda, Maryland "
+"(on behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent "
+"Technology, Inc. (\"The Benetech Initiative\"), Palo Alto, California.</P>"
 
 #, fuzzy
 msgid ""
@@ -8925,27 +8928,26 @@ msgid ""
 "<A href=\"http://www.conservationmeasures.org\"><U><FONT color=#0000ff>www."
 "conservationmeasures.org</U></FONT></A>.&nbsp"
 msgstr ""
-"</eam></p><P><STRONG><FONT size=4>Lisensi dan Salinan</FONT></"
-"STRONG><BR>Miradi didistribusikan di bawah persyaratan Lisensi Publik Umum "
-"GNU versi 3, seperti diterbitkan oleh Free Software Foundation. Miradi "
-"didistribusikan dengan harapan bisa digunakan, tapi tanpa disertai jaminan; "
-"bahkan tanpa jaminan tersirat kelayakdagangan atau kesesuaian untuk tujuan "
-"tertentu.</P><P><STRONG><FONT size=4>Perbaruan dan Informasi Lebih Lanjut</"
-"FONT></STRONG><BR></STRONG>Sebelum menjalankan program ini,&nbsp;periksa "
-"apakah Anda memiliki&nbsp;versi terbaru di <A href=\"https://miradi.org/"
-"download\">https://miradi.org/download</A>.&nbsp;Informasi lebih lanjut "
-"mengenai program perangkat lunak ini juga bisa diperoleh di <A href=\"http://"
-"www.miradi.org\">www.miradi.org</A>&nbsp;atau dengan mengirimkan email ke <A "
-"href=\"mailto:info@miradi.org\">info@miradi.org</A>.&nbsp;Harap kirimkan "
-"saran dan&nbsp;laporan kesalahan&nbsp;ke <A href=\"mailto:feedback@miradi.org"
-"\">feedback@miradi.org</A>.</P><P><STRONG><FONT size=4>Tentang Miradi</"
-"FONT><BR></STRONG>Program perangkat lunak ini dikembangkan untuk membantu "
-"para praktisi konservasi dalam menjalani proses manajemen adaptif yang "
-"digariskan dalam Standar Terbuka untuk Praktik Konservasi (<EM>Open "
-"Standards for the Practice of Conservation</EM>) dari CMP.&nbsp;Untuk "
-"mendapatkan salinan versi terbaru dari standar ini, Anda bisa mendapatkannya "
-"dari <A href=\"http://www.conservationmeasures.org\"><U><FONT "
-"color=#0000ff>www.conservationmeasures.org</U></FONT></A>.&nbsp \t"
+"html|/resources/help/AboutPart2.html|  </strong></p><P><STRONG><FONT "
+"size=4>License and Copying</FONT></STRONG><BR>Miradi is distributed under "
+"the terms of the GNU General Public License version 3,as published by the "
+"Free Software Foundation.  Miradi is distributed in the hope that it will be "
+"useful, but without any warranty; without even the implied warranty of "
+"merchantability or fitness for a particular purpose.</P><P><STRONG><FONT "
+"size=4>Updates and More Information</FONT></STRONG><BR></STRONG>Before "
+"running this program,&nbsp;check that you have&nbsp;the latest version at <A "
+"href=\"https://miradi.org/download\">https://miradi.org/download</A>.&nbsp;"
+"You can also find more information about this software program at <A href="
+"\"http://www.miradi.org\">www.miradi.org</A>&nbsp;or by e-mailing <A href="
+"\"mailto:info@miradi.org\">info@miradi.org</A>.&nbsp;Please send suggestions "
+"and&nbsp;bug reports&nbsp;to <A href=\"mailto:feedback@miradi.org"
+"\">feedback@miradi.org</A>.</P><P><STRONG><FONT size=4>About Miradi</"
+"FONT><BR></STRONG>This software program is being developed to assist "
+"conservation practitioners to go through the adaptive management process "
+"outlined in the CMP's <EM>Open Standards for the Practice of Conservation</"
+"EM>.&nbsp;To obtain a copy of the latest version of these standards, go to "
+"<A href=\"http://www.conservationmeasures.org\"><U><FONT color=#0000ff>www."
+"conservationmeasures.org</U></FONT></A>.&nbsp"
 
 msgid ""
 "html|/resources/help/CMPStandards.html|  <H2><table><tr><td><IMG hspace=20 "
@@ -9247,100 +9249,93 @@ msgid ""
 "<A   href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A> - hopefully "
 "we can   work with you to make it reality.</LI>  </UL>  </BODY>"
 msgstr ""
-"<BODY><table><tr><td><img border='0' src='icons/coming attract48.png' "
-"width='48' height='36' hspace=10 ></img></td><td><H2>Atraksi Mendatang </"
-"H2></td></tr></table><P>Perangkat lunak Miradi masih dalam tahap "
-"pengembangan awal.&nbsp; Saat ini kami sedang menggarap pengembangan "
-"berbagai fungsi baru yang akan diluncurkan di beberapa bulan mendatang."
-"&nbsp; Beberapa sorotan yang&nbsp; kami harap bisa diselesaikan&nbsp; "
-"terdaftar di bawah ini.&nbsp; Jika Anda memiliki ide atau permintaan lain, "
-"silakan hubungi kami di:&nbsp; <A href=\"mailto:feedback@miradi.org"
-"\">feedback@miradi.org</A>.&nbsp; Dan silakan kunjungi situs web Miradi (<A "
-"href=\"http://www.Miradi.org\">www.Miradi.org</A>) untuk mendapatkan versi "
-"terbaru dari perangkat lunak – kami harap bisa meluncurkan versi baru secara "
-"berkala.</P><H3><HR>Seluruh Aplikasi</H3><UL> <LI><STRONG>Layar Wawancara "
-"yang Lebih Interaktif </STRONG>- Perbaikan terhadap berbagai layar wawancara "
-"yang memandu Anda melalui langkah-langkah dalam Proses CMP. "
-"<LI><STRONG>Lebih banyak contoh</STRONG> - Penambahan lebih banyak contoh "
-"proyek&nbsp;konservasi dari seluruh dunia. <LI><STRONG>Perangkat untuk "
-"Mendukung Langkah-langkah Selanjutnya dalam Standar Terbuka CMP </STRONG> "
-"&nbsp;Versi Miradi saat ini sebagian besar berfokus pada fase perencanaan "
-"dari siklus manajemen adaptif; perangkat masa depan akan membantu dalam fase "
-"analisis dan pembelajaran.  <LI><STRONG>Kontrol Versi</STRONG> - Kemampuan "
-"untuk menyimpan dan mengembalikan ke versi proyek Anda dan berbagi proyek "
-"Anda dengan anggota tim yang bekerja di lokasi jarak jauh.  "
-"<LI><STRONG>Penerjemahan ke Berbagai Bahasa</STRONG> - Kami telah membangun "
-"Miradi sedemikian rupa hingga membuatnya relatif mudah untuk menerjemahkan "
-"perangkat lunak ke dalam berbagai bahasa antara lain Bahasa Spanyol atau "
-"Bahasa Indonesia.&nbsp; Jika Anda tertarik untuk membantu kami mengembangkan "
-"versi dalam bahasa Anda, silakan hubungi kami. <LI><STRONG>Penyesuaian ke "
-"Disiplin Lain </STRONG>- Miradi saat ini berfokus pada proyek konservasi "
-"keanekaragaman hayati.&nbsp; Namun, pendekatan manajemen adaptif ini tentu "
-"akan bermanfaat bagi disiplin lainnya, seperti proyek pengembangan, proyek "
-"kesehatan umum, atau proyek lainnya.&nbsp; Jika Anda tertarik membantu kami "
-"mengembangkan versi untuk bidang Anda, silakan hubungi kami.</LI></"
-"UL><H3><HR>Tampilan Ringkasan</H3><UL><LI><STRONG>Tab yang Bisa Disesuaikan- "
-"</STRONG>Kemampuan untuk membuat tab tersuai yang hanya mengandung bidang "
-"data yang ingin dilacak oleh proyek atau organisasi Anda.</LI> "
-"<LI><STRONG>Summary Dasbor - </STRONG>Kemampuan untuk membuat dasbor bagi "
-"proyek Anda yang menunjukkan status indikator dan bidang kunci.</LI> </"
-"UL><H3><HR>Tampilan Diagram</H3><UL> <LI><STRONG>Tayangan Salindia Diagram - "
-"</STRONG>Kemampuan untuk menyembunyikan atau menampakkan kombinasi spesifik "
-"faktor-faktor lalu \"mengambil dengan cepat\" gambar yang bisa digunakan "
-"untuk pengembangan presentasi animasi model Anda.</LI> <LI><STRONG>Dukungan "
-"untuk Target Kesejahteraan Manusia - </STRONG>Kemampuan untuk menunjukkan "
-"target yang berhubungan dengan kesejahteraan manusia (bukan alam).</LI> </"
-"UL><H3><HR>Tampilan Peringkat Ancaman</H3><UL> <LI><STRONG>Antarmuka yang "
-"lebih baik untuk Peringkat Ancaman Berdasarkan Tekanan -  </strong>Antarmuka "
-"pengguna yang lebih baik untuk membuat Peringkat Sumber Tekanan dan Tekanan "
-"ala TNC.</li></UL><H3><HR>Tampilan Perencanaan</H3><UL><LI><STRONG>Perbaikan "
-"Antarmuka Pengguna yang Berkelanjutan</STRONG>&nbsp;- Peningkatan bagi "
-"penyajian informasi dalam layar ini.</LI> <LI><STRONG>Perangkat Analisis</"
-"STRONG> - Perangkat untuk membantu melakukan analisis dasar dari data "
-"pemantauan.</LI> <LI><STRONG>Laporan berdasarkan Kode Akuntansi dan Donor</"
-"STRONG> - Kemampuan untuk mengembangkan laporan yang menunjukkan rencana "
-"pembelanjaan berdasarkan donor atau kode akuntansi.</LI> "
-"<LI><STRONG>Pelacakan Pengeluaran Aktual</STRONG> -&nbsp;Perangkat untuk "
-"mengisikan pengeluaran aktual dan memasangkannya dengan butir-butir baris "
-"anggaran serta melaporkannya berdasarkan sasaran dan kegiatan pemrograman, "
-"berdasarkan kode akuntansi, atau berdasarkan sumber dana, dengan menggunakan "
-"antarmuka ala Quicken atau Quickbooks.</LI></UL><H3><HR>Laporan</H3><UL> "
-"<LI><STRONG>Impor dan Ekspor yang Lebih Baik</STRONG> - Meningkatnya "
-"kemampuan mengekspor informasi ke dalam berbagai format. "
-"<LI><STRONG>Pembuatan Laporan Tersuai</STRONG>&nbsp;- Kemampuan untuk secara "
-"otomatis &nbsp;menghasilkan dokumen yang mengandung inti materi yang perlu "
-"dilaporkan kepada donor dan organisasi konservasi kunci.  "
-"<LI><STRONG>Mengunggah ke Basis Data Praktik Konservasi</STRONG>- Jika Anda "
-"sangat menginginkannya&nbsp;ini adalah kemampuan untuk mengunggah beberapa "
-"atau semua informasi proyek Anda ke&nbsp;basis data standar praktik "
-"konservasi&nbsp;yang bisa diakses oleh para praktisi di seluruh dunia.&nbsp;"
-"</LI></UL><H3><HR>Jadwal (Tampilan Baru)</H3><UL> <LI><STRONG>Kalender "
-"Proyek</STRONG> - Kalender yang menunjukkan kegiatan/tugas dan peristiwa "
-"besar&nbsp;pada hari, minggu atau bulan tertentu, baik untuk anggota tim "
-"tertentu, atau untuk keseluruhan proyek. <LI><STRONG>Bagan Gantt</STRONG> - "
-"Kemampuan untuk membuat bagan yang menunjukkan bagaimana cara berbagai "
-"kegiatan/metode dan tugas saling berhubungan satu sama lain dan bertumpang "
-"tindih di antara manusia dan sumber daya lainnya.</LI></UL><H3><HR>Peta "
-"(Tampilan Baru)</H3><UL> <LI><STRONG>Pemetaan Dasar - </STRONG>Perangkat "
-"untuk memperoleh peta dasar dari lokasi proyek Anda, menggariskan cakupan "
-"area proyek Anda, serta menggambarkan target, ancaman dan obyek lainnya di "
-"peta sebagai titik atau poligon. <LI><STRONG>Analisis Keruangan Dasar</"
-"STRONG> - Fungsi untuk menganalisis data secara spasial&nbsp;(gabungan atau "
-"irisan poligon, dsb). <LI><STRONG>Analisis Variasi Ruangan dalam Faktor "
-"Kunci</STRONG>- Perangkat untuk menunjukkan bagaimana status target atau "
-"ancaman&nbsp;bervariasi menurut lokasi proyek Anda, menggambarkan&nbsp;"
-"\"jejak\" spasial dari strategi atau tujuan instruksional tertentu, serta "
-"memprioritaskan strategi dan tindakan atau pekerjaan pemantauan&nbsp;di "
-"berbagai bagian dari area proyek Anda. <LI><STRONG>Berbagi&nbsp;Data - </"
-"STRONG>Mengunggah informasi proyek ke basis data yang dirujuk secara "
-"spasial.  </LI></UL><H3><HR>Perpustakaan (Tampilan Baru)</H3><UL> "
-"<LI><STRONG>Simpan&nbsp;dan Kelola Dokumen Proyek&nbsp;</STRONG> - Menyimpan "
-"dan mengelola foto, dokumen, kumpulan data, dan berkas lainnya yang "
-"berhubungan dengan proyek Anda.</LI></UL><H3><HR>???? (Tampilan Baru)</"
-"H3><UL> <LI><STRONG>Ide Anda</STRONG> - Ciptakan cara untuk mengelola data "
-"proyek yang Anda perlukan dan beri tahukan kepada kami di <A href=\"mailto:"
-"feedback@miradi.org\">feedback@miradi.org</A> - kami berharap bisa bekerja "
-"sama dengan Anda untuk mewujudkannya.</LI> </UL> </BODY> "
+"html|/resources/help/ComingAttractions.html|  <BODY><table><tr><td><img "
+"border='0' src='icons/coming attract48.png' width='48' height='36' hspace=10 "
+"></img></td><td><H2>Coming Attractions</H2></td></tr></table><P>The Miradi "
+"software is still in its initial development phase.&nbsp; We are currently "
+"working on developing many new functions that will be rolled out in the "
+"coming months.&nbsp; A few highlights that&nbsp;we are hoping to "
+"complete&nbsp;are listed below.&nbsp; If you have additional ideas or "
+"requests, please contact us at:&nbsp; <A href=\"mailto:feedback@miradi.org"
+"\">feedback@miradi.org</A>.&nbsp; And please check the Miradi website (<A "
+"href=\"http://www.Miradi.org\">www.Miradi.org</A>) for the latest version of "
+"the software - we release new versions on a regular basis.</"
+"P><H3><HR>Application Wide</H3><UL>  <LI><STRONG>More Interactive Interview "
+"Screens </STRONG>- Improvements to the   various interview screens that walk "
+"you through the steps in the CMP Process.   <LI><STRONG>More Examples</"
+"STRONG> - The addition of more example of   conservation&nbsp;projects from "
+"around the world.   <LI><STRONG>Tools to Support Later Steps in the CMP Open "
+"Standards</STRONG>   -&nbsp;The current version of Miradi is largely focused "
+"on the planning phase   of the adaptive management cycle; future tools will "
+"help in the analysis and   learning phases.   <LI><STRONG>Version Control</"
+"STRONG> - Ability to save and revert to versions   of your project and to "
+"share your project with team members working at remote   locations.   "
+"<LI><STRONG>Translations to Different Languages</STRONG> - Miradi is now "
+"available in several different languages such as Spanish and Bahasa "
+"Indonesia.&nbsp; See the Miradi.org website for more details. If you are   "
+"interested in helping us develop a version for your language, please "
+"contact   us.   <LI><STRONG>Adaptations to Other Disciplines </STRONG>- "
+"Miradi currently   focuses on biodiversity conservation projects.&nbsp; "
+"However, this adaptive   management approach undoubtedly will be of use to "
+"other disciplines as well,   such as development projects, public health "
+"projects, or many others.&nbsp; If   you are interested in helping us to "
+"develop a version for your field, please   contact us.</LI></"
+"UL><H3><HR>Summary View</H3><UL><LI><STRONG>Customizable Tabs - </STRONG>The "
+"ability to create a custom tab that contains only the data fields that your "
+"project or organization wants to track.</LI>  <LI><STRONG>Summary Dashboard "
+"- </STRONG>The ability to create a dashboard for your project showing the "
+"status of key fields and indicators.</LI>   </UL><H3><HR>Diagram View</"
+"H3><UL>  <LI><STRONG>Diagram Slide Show - </STRONG>The ability to hide or "
+"display specific combinations of factors and then \"snap\" images that can "
+"be used to develop an animated presentation of your model.</LI>  "
+"<LI><STRONG>Support for Human Welfare Targets - </STRONG>The ability to "
+"display targets related to human (as opposed to natural world) welfare.</"
+"LI>   </UL><H3><HR>Threat Ratings View</H3><UL>  <LI><STRONG>Improved "
+"Interface for Stress-Based Threat Ratings - </strong>Improved user interface "
+"for doing TNC-style Stress and Source of Stress Ratings.</li></"
+"UL><H3><HR>Planning View</H3><UL><LI><STRONG>Continued Improvement of User "
+"Interface</STRONG>&nbsp;- Enhancements to the presentation of information in "
+"these screens.</LI>   <LI><STRONG>Analytical Tools</STRONG> - Tools to help "
+"conduct basic analyses   of monitoring data.</LI>  <LI><STRONG>Reports by "
+"Accounting Code and Donor</STRONG> - The ability to develop reports showing "
+"planned expenditures by donor or by accounting code.</LI>  "
+"<LI><STRONG>Tracking of Actual Expenses</STRONG> -&nbsp;Tools to enter "
+"actual   expenditures and to match these up to budget line items and report "
+"on them by   programmatic objectives and activities, by accounting codes, or "
+"by funding   sources, using a Quicken or Quickbooks style interface.</LI></"
+"UL><H3><HR>Reports</H3><UL>  <LI><STRONG>Enhanced Import and Export</STRONG> "
+"- Enahanced ability to export information in various formats.   "
+"<LI><STRONG>Custom Report Generation</STRONG>&nbsp;- The ability to   "
+"automatically&nbsp;generate documents that contain the core of material "
+"needed   for reports to key conservation donors and organizations.   "
+"<LI><STRONG>Uploads to Databases of Conservation Practice </STRONG>- The   "
+"ability, if you so desire,&nbsp;to upload some or all of your project   "
+"information to&nbsp;standard databases of conservation practice that can "
+"be   accessed by practitioners&nbsp;around the&nbsp;world.&nbsp;</LI></"
+"UL><H3><HR>Schedule (New View)</H3><UL>  <LI><STRONG>Project Calendar</"
+"STRONG> - A calendar showing activities/tasks   and major events&nbsp;on a "
+"given day, week, or month either for specific team   members, or for the "
+"project as a whole.   <LI><STRONG>Gantt Chart</STRONG> - The ability to "
+"create a chart showing how   different activities/methods and tasks link to "
+"one another and overlap among   human and other resources.</LI></"
+"UL><H3><HR>Map (New View)</H3><UL>  <LI><STRONG>Basic Mapping - </"
+"STRONG>Tools to obtain a base map of your   project site, outline the scope "
+"of your project area, and show targets,   threats, and other objects on the "
+"map as points or polygons.   <LI><STRONG>Basic Spatial Analyses</STRONG> - "
+"Functions to analyze data   spatially&nbsp;(union or intersection of "
+"polygons, etc).   <LI><STRONG>Analyze Spatial Variation in Key Factors </"
+"STRONG>- Tools to how   how target or threat&nbsp;status varies over your "
+"project site,   depict&nbsp;the spatial \"footprint\" of a given strategy or "
+"objective, and   prioritize strategies and actions or monitoring work&nbsp;"
+"in different   sections of your project area.   <LI><STRONG>Share&nbsp;Data "
+"- </STRONG>Upload project information to spatially   referenced databases. </"
+"LI></UL><H3><HR>Library (New View)</H3><UL>  <LI><STRONG>Store&nbsp;and "
+"Manage Project&nbsp;Documents</STRONG> - Store and   manage images, "
+"documents, data sets, and other files related to your   project.</LI></"
+"UL><H3><HR>???? (New View)</H3><UL>  <LI><STRONG>Your Idea</STRONG> - Create "
+"a way of managing data about your   project that you need and let us know at "
+"<A   href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A> - hopefully "
+"we can   work with you to make it reality.</LI>  </UL>  </BODY>"
 
 msgid ""
 "html|/resources/help/AboutCMP.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
@@ -10922,57 +10917,56 @@ msgid ""
 "section   of:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://fosonline.org"
 "\">http://fosonline.org</A></P></BLOCKQUOTE>"
 msgstr ""
-"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-"
-"48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>\t"
-"\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
-"\t<STRONG>Informasi Lebih Lanjut</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t"
-"\t\t</tr></table></p><br><HR><H3>Tentang Halaman Informasi Lebih Lanjut</"
-"H3>Halaman Informasi Lebih Lanjut adalah halaman yang secara konteks "
-"sensitif terhadap pandangan saat ini. Seperti disiratkan oleh namanya, "
-"halaman ini memberikan materi tambahan yang menjabarkan langkah-langkah "
-"spesifik dalam siklus manajemen adaptif serta tautan ke bacaan lebih lanjut "
-"mengenai topik ini.<br><br><HR><H3>CMP<EM> Standar Terbuka</EM></"
-"H3><P>Perangkat lunak Miradi saat ini sedang dikembangkan untuk membantu "
-"praktisi konservasi menjalani proses manajemen adaptif seperti digariskan "
-"dalam <EM>Standar Terbuka untuk Praktik Konservasi</EM>dari CMP.&nbsp; Anda "
-"bisa mengunduh salinan versi terbaru di:</P><BLOCKQUOTE dir=ltr style="
-"\"MARGIN-RIGHT: 0px\"> <P>CMP. 2008. Standar Terbuka untuk Praktik "
-"Konservasi, v 2.0.<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A href=\"http://"
-"conservationmeasures.org/CMP/Site_Docs/CMP_Open_Standards_Version_2.0.pdf"
-"\">http://conservationmeasures.org/CMP/Site_Docs/"
-"CMP_Open_Standards_Version_2.0.pdf</A></P></BLOCKQUOTE><P>Banyak dari "
-"anggota CMP juga memiliki versi standar mereka sendiri serta materi panduan "
-"spesifik untuk berbagai langkah-langkah yang ditunjukkan di bawah ini.</"
+"html|/resources/views/SummaryView/MoreInfo.html|<p><table>\t<tr>\t\t<td><IMG "
+"height=48 alt=\"\" hspace=20 src=\"icons/info-48.png\" width=48 "
+"align=absMiddle border=0></td>\t\t<td width='20'></td>\t\t<td>\t\t\t<FONT "
+"face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t\t<STRONG>More "
+"Information</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></"
+"p><br><HR><H3>About the More Information Pages</H3>The More Information "
+"Pages are context sensitive to the view that you are currently in. As the "
+"name implies, they provide additional material describing the specific step"
+"(s) in the adaptive management cycle as well as links to further reading on "
+"the topic.<br><br><HR><H3>CMP<EM> Open Standards</EM></H3><P>Miradi software "
+"is being developed to assist conservation practitioners to go through the "
+"adaptive management process outlined in the CMP's <EM>Open Standards for the "
+"Practice of Conservation</EM>.&nbsp; You can download a copy of the latest "
+"version at:</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>CMP. "
+"2008. Open Standards for the Practice of   Conservation, v 2.0.<BR>&nbsp;"
+"&nbsp;&nbsp;&nbsp; <A   href=\"http://conservationmeasures.org/CMP/Site_Docs/"
+"CMP_Open_Standards_Version_2.0.pdf\">http://conservationmeasures.org/CMP/"
+"Site_Docs/CMP_Open_Standards_Version_2.0.pdf</A></P></BLOCKQUOTE><P>Many of "
+"the CMP members also have their own version of the standards as well as "
+"specific guidance materials for many of the steps as shown below.</"
 "P><br><HR><H3>The Nature Conservancy (TNC)</H3><BLOCKQUOTE dir=ltr style="
-"\"MARGIN-RIGHT: 0px\"> <P>TNC.&nbsp;2005.&nbsp; <EM>Perencanaan Tindakan "
-"Konservasi: Mengembangkan Strategi, Mengambil Tindakan, dan Mengukur Sukses "
-"pada Semua Skala. Ikhtisar Paktik-Praktik Dasar.&nbsp;<BR></EM>&nbsp;&nbsp;"
-"&nbsp;&nbsp;&nbsp;<A href=\"http://conserveonline.org/workspaces/cbdgateway/"
-"cap/resources/1/TNC_CAP_Basic_Practices.pdf/download\">http://conserveonline."
-"org/workspaces/cbdgateway/cap/resources/1/TNC_CAP_Basic_Practices.pdf/"
-"download</A></P> <P>Materi panduan yang ekstensif juga tersedia di:<BR>&nbsp;"
-"&nbsp;&nbsp;&nbsp; <A href=\"http://conserveonline.org/workspaces/cbdgateway/"
-"cap/resources\">http://conserveonline.org/workspaces/cbdgateway/cap/"
-"resources</A>&nbsp;</P></BLOCKQUOTE><br><HR><H3>Wildlife Conservation "
-"Society (WCS)</H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\"> <P>Materi "
-"panduan yang ekstensif juga tersedia di:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A href="
-"\"http://wcslivinglandscapes.com/\">http://wcslivinglandscapes.com/</A></P></"
-"BLOCKQUOTE><br><HR><H3 dir=ltr>WWF</H3><BLOCKQUOTE dir=ltr style=\"MARGIN-"
-"RIGHT: 0px\"> <P dir=ltr>WWF. 2006. <EM>Standar Manajemen Proyek dan Program "
-"WWF.<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp; <A href=\"http://www.panda.org/"
-"standards/full\">http://www.panda.org/standards/full</A></P> <P "
-"dir=ltr>Materi panduan yang ekstensif juga tersedia di:<BR>&nbsp;&nbsp;&nbsp;"
-"&nbsp; <A href=\"http://www.panda.org/standards\">www.panda.org/standards</"
-"A> </P></BLOCKQUOTE><br><HR><H3 dir=ltr>Foundations of Success (FOS)</"
-"H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\"> <P>Margoluis, R., dan N. "
-"Salafsky. 1998. <EM>Ukuran Keberhasilan: Merancang, Mengelola dan Memantau "
-"Proyek Konservasi dan Pengembangan (Measures of Success: Designing, "
-"Managing, and Monitoring Conservation and Development Projects). </EM>Island "
-"Press, Washington, DC.<BR>&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A href=\"http://"
-"islandpress.org\"><U><FONT color=#0000ff>http://islandpress.org</U></FONT></"
-"A></P> <P>Materi panduan yang ekstensif juga tersedia di bagian&nbsp;sumber "
-"daya di:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A href=\"http://fosonline.org\">http://"
-"fosonline.org</A></P></BLOCKQUOTE>"
+"\"MARGIN-RIGHT: 0px\">  <P>TNC.&nbsp;2005.&nbsp; <EM>Conservation Action "
+"Planning: Developing   Strategies, Taking Action, and Measuring Success at "
+"Any Scale. Overview of   Basic Practices.&nbsp;<BR></EM>&nbsp;&nbsp;&nbsp;"
+"&nbsp;&nbsp;<A   href=\"http://conserveonline.org/workspaces/cbdgateway/cap/"
+"resources/1/TNC_CAP_Basic_Practices.pdf/download\">http://conserveonline.org/"
+"workspaces/cbdgateway/cap/resources/1/TNC_CAP_Basic_Practices.pdf/download</"
+"A></P>  <P>Extensive guidance materials are also available   at:<BR>&nbsp;"
+"&nbsp;&nbsp;&nbsp; <A   href=\"http://conserveonline.org/workspaces/"
+"cbdgateway/cap/resources\">http://conserveonline.org/workspaces/cbdgateway/"
+"cap/resources</A>&nbsp;</P></BLOCKQUOTE><br><HR><H3>Wildlife Conservation "
+"Society (WCS)</H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  "
+"<P>Extensive guidance materials are available at:<BR>&nbsp;&nbsp;&nbsp;"
+"&nbsp;   <A   href=\"http://wcslivinglandscapes.com/\">http://"
+"wcslivinglandscapes.com/</A></P></BLOCKQUOTE><br><HR><H3 dir=ltr>WWF</"
+"H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P dir=ltr>WWF. 2006. "
+"<EM>WWF Standards of Project and Programme   Management.<BR></EM>&nbsp;&nbsp;"
+"&nbsp;&nbsp; <A   href=\"http://www.panda.org/standards/complete\">http://"
+"www.panda.org/standards/complete</A></P>  <P dir=ltr>Extensive guidance "
+"materials are also available   at:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href="
+"\"http://www.panda.org/standards\">www.panda.org/standards</A> </P></"
+"BLOCKQUOTE><br><HR><H3 dir=ltr>Foundations of Success (FOS)</H3><BLOCKQUOTE "
+"dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>Margoluis, R., and N. Salafsky. "
+"1998. <EM>Measures of Success: Designing,   Managing, and Monitoring "
+"Conservation and Development Projects. </EM>Island   Press, Washington, DC."
+"<BR>&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A   href=\"http://islandpress.org"
+"\"><U><FONT   color=#0000ff>http://islandpress.org</U></FONT></A></P>  "
+"<P>Extensive guidance materials are available in the resources&nbsp;"
+"section   of:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://fosonline.org"
+"\">http://fosonline.org</A></P></BLOCKQUOTE>"
 
 #, fuzzy
 msgid ""
@@ -11035,63 +11029,64 @@ msgid ""
 "document that can be edited in a Word Processor</li><li>Create a standard "
 "report for a donor or other key audience for your project</li></ul>"
 msgstr ""
-"<h3>Mengekspor Data dalam Miradi ke dalam Aplikasi Lain</h3>Terdapat banyak "
-"cara untuk mengekspor informasi Anda dari Miradi ke aplikasi lain.<h4>A. "
-"EKSPOR HALAMAN SAAT INI SEBAGAI...</h4>Perintah ini berguna untuk mengekspor "
-"gambar/foto atau tabel tertentu untuk digunakan dalam suatu dokumen atau "
-"presentasi. Pilihan yang ada meliputi:<h4>Ekspor Gambar JPG atau PNG</"
-"h4>Gunakan perintah-perintah menu <code class='toolbarbutton'>&lt;Berkas/"
-"Ekspor&nbsp;Halaman&nbsp;Saat ini&nbsp; sebagai.../Gambar&nbsp;JPEG&gt;</"
-"code> atau <code class='toolbarbutton'>&lt;Berkas/Ekspor&nbsp;Halaman&nbsp;"
-"Saat ini&nbsp;sebagai.../Gambar&nbsp;PNG&gt;</code> untuk menangkap diagram "
-"atau tabel tertentu yang tampak di layar Anda dan menyimpannya dalam berkas "
-"gambar. Metode ini terutama berguna untuk:<ul><li>Menempatkan diagram atau "
-"tabel dalam suatu dokumen atau presentasi</li><li>Membuat gambar yang bisa "
-"dipasang dalam situs web</li></ul><h4>Mengekspor Berkas berformat RTF "
-"(<i>Rich Text Format</i>)</h4>Menggunakan perintah menu <code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor&nbsp;Halaman&nbsp;Saat ini&nbsp;"
-"sebagai.../Berkas&nbsp;RTF&gt;</code> untuk mengekspor tabel yang saat ini "
-"sedang ditampilkan ke dalam berkas berformat RTF (<i>Rich Text Format</i>). "
-"Metode ini terutama berguna untuk:<ul><li>Mengekspor tabel atau informasi "
-"lain dalam format yang bisa diubah dengan menggunakan program pengolah kata</"
-"li><li>Mengekspor potongan-potongan laporan tersuai</li></ul><h4>Mengekspor "
-"Data yang Dipisahkan Tab</h4>Gunakan perintah menu <code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor&nbsp;Halaman&nbsp;Saat Ini&nbsp;"
-"sebagai.../Data yang Dipisahkan Tab&gt;</code> untuk mengekspor tabel yang "
-"saat ini sedang ditampilkan ke dalam berkas yang dipisahkan tab. Metode ini "
-"khususnya berguna untuk:<ul><li>Mengekspor konfigurasi saat ini dari "
-"tampilan perencanaan Anda ke dalam program lembar bentang seperti Excel</"
-"li><li>Mengekspor informasi keuangan</li></ul><h4>B. EKSPOR PROYEK SAAT INI "
-"SEBAGAI...</h4>Perintah ini berguna untk mengekspor keseluruhan berkas "
-"proyek Anda agar bisa digunakan secara bersama-sama dengan pengguna-pengguna "
-"lainnya. Pilihan-pilihan yang ada meliputi:<h4>Ekspor Berkas Zip Miradi (MPZ)"
-"</h4>Gunakan perintah menu <code class='toolbarbutton'>&lt;Berkas/Ekspor "
-"Proyek Saat Ini sebagai.../Berkas berformat MPZ(Miradi Project Zip)&gt;</"
-"code> untuk menyimpan keseluruhan proyek Anda dalam berkas zip berukuran "
-"kecil. Metode ini khususnya berguna untuk:<ul><li>Mengirimkan proyek Anda ke "
-"pengguna Miradi</li><li>Membuat salinan cadangan dari proyek Anda</li></"
-"ul><h4>Mengekspor Berkas ConPro (CPMZ)</h4>Gunakan perintah menu <code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor Proyek Saat Ini sebagai.../Berkas "
-"ConPro (CPMZ)&gt;</code> untuk menyimpan keseluruhan proyek Anda dalam satu "
-"berkas zip yang bisa diimpor ke dalam basis data ConPro milik The Nature "
-"Conservancy. Perhatikan bahwa jika organisasi Anda ingin mengimpor data "
-"Miradi ke dalam basis data Anda sendiri, hubungi <A href=\"mailto:"
-"support@miradi.org\">support@miradi.org</A>. Metode ini khususnya berguna "
-"untuk:<ul><li>Mengunggah informasi Anda ke basis data ConPro milik TNC</"
-"li><li>Berbagi informasi proyekAnda dengan para praktisi konservasi lainnya</"
-"li></ul><h4>Mengekspor Berkas XML Proyek</h4>Gunakan perintah menu<code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor/Berkas XML Proyek&gt;</code>untuk "
-"membuat berkas XML dengan semua data proyek Anda. Meskipun mengelola berkas "
-"XML akan memerlukan keterampilan teknis, metode ini khususnya berguna untuk:"
-"<ul><li>Membuat berkas yang bisa diimpor oleh suatu basis data</"
-"li><li>Mengekspor semua informasi proyek Anda ke dalam format yang bisa "
-"dibaca dengan aplikasi lain.</li></ul><h4>C. BUAT LAPORAN</h4>Gunakan "
-"tampilan<code class='toolbarbutton'>&lt;Laporan&gt;</code> untuk membuat "
-"berkas berformat RTF (<i>Rich Text Format</i>) yang berisi berbagai "
-"konfigurasi data proyek Anda. Metode ini khususnya berguna untuk:"
-"<ul><li>Membuat dokumen yang bisa diubah dalam program Pengolah Kata</"
-"li><li>Membuat laporan standar untuk penyumbang dana atau khalayak lainnya "
-"yang penting bagi proyek Anda</li></ul>"
+"html|/resources/views/ReportsView/Workshop.html|<p><table>\t<tr>\t\t<td><IMG "
+"height=48 hspace=20 src=\"icons/workshop48.png\" width=48 align=absMiddle "
+"border=0></td>\t\t<td width='20'></td>\t\t<td>\t\t\t<FONT face=Tahoma "
+"color=#000000 size=5 name=\"Tahoma\">\t\t\t\t<STRONG>Workshop Hints for "
+"Report View</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></"
+"p><br><hr><h3>Exporting Workshop Data in Miradi to Other Applications</"
+"h3>Although you may not want to use Miradi to <i>display</i> information in "
+"a workshop, it is a very useful way to <i>capture</i> the information put on "
+"a sticky board or a flip chart so that it can be documented and shared with "
+"other workshop participants.<h3>Exporting Data in Miradi to Other "
+"Applications</h3>There are many ways to export your information from Miradi "
+"to other applications.<h4>A. EXPORT CURRENT PAGE AS...</h4>This command is "
+"useful to export a specific image or table for use in a document or "
+"presentation. Options include:<h4>Export JPG or PNG Images</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../"
+"JPEG&nbsp;Image&gt;</code> or <code class='toolbarbutton'>&lt;File/"
+"Export&nbsp;Current&nbsp;Page&nbsp;as.../PNG&nbsp;Image&gt;</code> menu "
+"commands to capture a specific diagram or table on your screen in an image "
+"file. This method is particularly useful to:<ul><li>Put a diagram or table "
+"in a document or presentation</li><li>Create an image that can be put in a "
+"website</li></ul><h4>Export Rich Text Format (RTF) File</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../"
+"RTF&nbsp;File&gt;</code> menu command to export the currently viewed table "
+"to a Rich Text Format (RTF) file. This method is particularly useful to:"
+"<ul><li>Export a table or other information in a format that can be edited "
+"by a word processor</li><li>Export pieces of a custom report</li></"
+"ul><h4>Export Tab-Delimited Data</h4>Use the <code class='toolbarbutton'>&lt;"
+"File/Export&nbsp;Current&nbsp;Page&nbsp;as.../Tab-Delimited Data&gt;</code> "
+"menu command to export the currently viewed table to a tab-delimited file. "
+"This method is particularly useful to:<ul><li>Export the current "
+"configuration from your planning view to a spreadsheet like Excel</"
+"li><li>Export financial information</li></ul><h4>B. EXPORT CURRENT PROJECT "
+"AS...</h4>This command is useful to export your entire project file so that "
+"it can be shared with other users. Options include:<h4>Export Miradi Zip "
+"(MPZ) File </h4>Use the <code class='toolbarbutton'>&lt;File/Export Current "
+"Project as.../Miradi Project Zip (MPZ) File&gt;</code> menu command to "
+"capture your entire project in a small zip file. This method is particularly "
+"useful to:<ul><li>Send your project to another Miradi user</li><li>Create a "
+"backup copy of your project</li></ul><h4>Export ConPro (CPMZ) File (CP</"
+"h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project as.../"
+"ConPro (CPMZ) File&gt;</code> menu command to capture your entire project in "
+"a zip file that can be imported into The Nature Conservancy's ConPro "
+"database. Note that if your organization would like to import Miradi data "
+"into your own database, contact <A href=\"mailto:support@miradi.org"
+"\">support@miradi.org</A>. This method is particularly useful to:"
+"<ul><li>Upload your information to TNC's ConPro database</li><li>Share your "
+"project information with other practitioners</li></ul><h4>Export Project XML "
+"File</h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project "
+"as.../Project XML File&gt;</code> menu command to create an XML file with "
+"all your project data. Although managing the XML file will require technical "
+"skills, this method is particularly useful to:<ul><li>Create a file that can "
+"be imported by a database</li><li>Export all of your project's information "
+"into formats that can be read by other applications</li></ul><h4>C. GENERATE "
+"REPORTS</h4>Use the <code class='toolbarbutton'>&lt;Reports&gt;</code> view "
+"to create a Rich Text Format (RTF) file that contains various configurations "
+"of your project data. This method is particularly useful to:<ul><li>Create a "
+"document that can be edited in a Word Processor</li><li>Create a standard "
+"report for a donor or other key audience for your project</li></ul>"
 
 msgid ""
 "html|/resources/views/ReportsView/Examples.html|<p><table>\t<tr>\t\t<td><IMG "
@@ -11863,35 +11858,36 @@ msgid ""
 "diagramnavigation2.png' width='512' height='367'></img></td></tr></table></"
 "div>"
 msgstr ""
-"<div class='navigation'><h3>Petunjuk Navigasi untuk Tampilan Diagram</"
-"h3>Untuk<span class='task'>menambahkan target baru atau faktor lain</span>, "
-"klik tombol yang sesuai pada balok pengontrol, gunakan menu turun, atau "
-"gunakan tombol sebelah kiri tetikus. Faktor baru akan tampak pada halaman. "
-"Untuk <span class='task'>memilih suatu faktor</span>, klik satu kali pada "
-"faktor tersebut. Untuk <span class='task'>menempatkan ulang suatu faktor</"
-"span>, pertama-tama pilih faktor tersebut, lalu gunakan tetikus atau tombol "
-"panah untuk menggerakkannya ke mana pun Anda inginkan (jika Anda memindahkan "
-"sekelompok besar faktor, gunakan tetikus).</p><p>Dengan dua kali klik pada "
-"faktor akan memunculkan kotak dialog yang bisa Anda gunakan untuk <span "
-"class='task'>menamai faktor, menambah rincian, menempelkan indikator atau "
-"tujuan pada faktor tersebut, </span>atau pun <span class='task'> mengetikkan "
-"komentar</span>.</p><p>Untuk <span class='task'>menghubungkan faktor</span> "
-"klik faktor pertama, tekan dan tahan tombol shift, lalu klik faktor kedua. "
-"Lalu klik tombol panah untuk membuat tautan. Atau jika Anda memilih faktor "
-"lalu menambahkan faktor baru, faktor-faktor tersebut akan secara otomatis "
-"terhubung.</p><p>Untuk <span class='task'>menukar antara model konsep dan "
-"rangkaian hasil</span> gunakan tab di sebelah kiri atas dan daftar halaman "
-"di bagian atas balok pengontrol. Tombol zum masuk dan zum keluar bisa "
-"digunakan untuk <span class='task'>memperkecil atau memperbesar ukuran "
-"tampilan</span>. Balok Pengontrol bisa digunakan untuk <span "
-"class='task'>menyembuyikan atau menampakkan jenis-jenis faktor yang berbeda</"
-"span> dan untuk <span class='task'>mengatur nama halaman</span>. Berkas/"
-"Ekspor/PNG&nbsp;atau&nbsp;perintah menu Gambar JPEG bisa digunakan untuk "
-"menyimpan gambar diagram untuk digunakan oleh aplikasi lain. Tugas lebih "
-"lanjut dijabarkan dalam halaman wizard berikutnya.</p><p></p><table "
-"width='100%'><tr><td align='center'><img src='images/DiagramWizard/"
+"html|/resources/wizard/DiagramView/DiagramOverviewStepRight.html|<div "
+"class='navigation'><h3>Navigation Hints for the Diagram View</h3>To <span "
+"class='task'>add a new target or other factor</span>, click the appropriate "
+"button on the control bar, use the drop down menu, or use the left mouse "
+"button. The new factor will appear on the page. To <span class='task'>select "
+"a factor</span>, single click on it. To <span class='task'>reposition a "
+"factor</span>, first select it and then use the mouse or arrow keys to move "
+"it wherever you like (if you are moving a big group of factors, use the "
+"mouse). The Move Factors Down and Right button can be used to </span>or "
+"<span class='task'> free up space</span> in the NW quadrant of the diagram.</"
+"p><p>Double clicking on a factor will bring up a dialog box in which you can "
+"<span class='task'>name the factor, add details, attach an indicator or "
+"objective to it, </span>or <span class='task'> type a comment</span>.</"
+"p><p>To <span class='task'>link factors</span> click on the first, hold the "
+"shift key, and then click on the second. Then click the arrow button to "
+"create the link. Or if you select a factor and then add a new factor, they "
+"will be automatically linked.</p><p>To <span class='task'>switch between "
+"conceptual models and results chains</span> use the tabs in the upper left "
+"and the page listings in the top of the control bar. The Zoom In, Zoom Out, "
+"and Zoom to Fit buttons can be used to <span class='task'>decrease or "
+"increase the size of the view</span>. The Control Bar can be used to <span "
+"class='task'>hide or show different types of factors</span> and to <span "
+"class='task'>manage page names</span>. The File/Export/PNG&nbsp;or&nbsp;JPEG "
+"Image menu commands can be used to <span class='task'>save a picture of your "
+"diagram</span> for use in other applications. The Tags feature can be used "
+"to <span class='task'>display a subset of the factors</span> in a diagram. "
+"Other more advanced tasks are described in subsequent wizard pages.</p><p></"
+"p><table width='100%'><tr><td align='center'><img src='images/DiagramWizard/"
 "diagramnavigation2.png' width='512' height='367'></img></td></tr></table></"
-"div> "
+"div>"
 
 msgid ""
 "html|/resources/wizard/DiagramView/"
@@ -13911,23 +13907,25 @@ msgid ""
 "PlanningWizard/planning-nav.png' width='512' height='351'></img></td></tr></"
 "table><p></div>"
 msgstr ""
-"<div class='navigation'><h3>Petunjuk Navigasi untuk Tampilan Perencanaan</"
-"h3> \t<p>Klik pada tombol pilihan dalam Balok Pengontrol untuk "
-"<strong>memilih tampilan perencanaan standar</strong>. Kemungkinan lainnya, "
-"klik pada tombol <code class='toolbarbutton'><Buat&nbsp;Sesuaian></code> "
-"untuk <strong>membuat kombinasi</strong> baris dan kolom Anda sendiri.</"
-"p><p>Miradi membuat diagram pohon berdasarkan sasaran, tujuan, dan strategi/"
-"indikator dalam model konsep dan/atau rangkaian hasil Anda. Mengklik pada "
-"simbol + dan - akan memungkinkan Anda <strong>memperluas</strong> atau "
-"<strong>menutup</strong> bagian-bagian hierarki yang berbeda. Memilih baris "
-"dalam tabel akan memungkinkan Anda membuka panel dasar dan <strong>mengubah</"
-"strong> informasi untuk baris tersebut.</p><p>Banyak informasi dalam "
-"tampilan perencanaan yang secara otomatis dihasilkan dari diagram. Untuk "
-"<strong>membuat</strong> atau <strong>menghapus</strong> suatu sasaran, "
-"tujuan, atau strategi, Anda harus menuju ke diagram, dan menggunakan dialog "
-"sifat untuk faktor yang relevan.</p><p><table width='100%'><tr><td "
-"align='center'><img src='images/PlanningWizard/planning-nav.png' width='512' "
-"height='351'></img></td></tr></table><p></div>"
+"html|/resources/wizard/PlanningView/PlanningOverviewStepRight.html|  <div "
+"class='navigation'><h3>Navigation Hints for the Planning View</h3>          "
+"\t<p>Click on the radio buttons in the Control Bar to <strong>select "
+"standard planning views</strong>. Alternatively, click on the <code "
+"class='toolbarbutton'>&lt;Create&nbsp;Custom&gt;</code> button to "
+"<strong>create your own combination</strong> of rows and columns.</"
+"p><p>Miradi creates a tree based on the relationship between goals, "
+"objectives, and strategies/indicators in your conceptual models and/or "
+"results chains. Clicking on the + and - symbols enables you to "
+"<strong>expand</strong> or <strong>collapse</strong> different parts of the "
+"hierarchy. Selecting a row in the table will allow you to bring up the "
+"bottom panel and <strong>edit</strong> the information for that row.</"
+"p><p>Much of the information in the planning view is automatically generated "
+"from the diagram. To <strong>create</strong> or <strong>delete</strong> "
+"items for which no button is shown (e.g., a target or objective) you have to "
+"go the diagram and use the properties dialogue for the relevant factor.</"
+"p><p><table width='100%'><tr><td align='center'><img src='images/"
+"PlanningWizard/planning-nav.png' width='512' height='351'></img></td></tr></"
+"table><p></div>"
 
 msgid ""
 "html|/resources/wizard/PlanningView/WorkPlanAssignResourcesStepRight.html|"
@@ -14263,18 +14261,18 @@ msgid ""
 "resources at either the overall activity or task level for a given activity, "
 "but you cannot do both.</p>"
 msgstr ""
-"Untuk mengalokasikan sumber daya yang ada bagi aktivitas/metode atau tugas "
-"dalam Tampilan Perencanaan, klik pada tombol pilihan <code "
-"class='toolbarbutton'><Rencana&nbsp;Kerja></code> dan pilih aktivitas/metode "
-"atau tugas yang Anda ingin fokuskan. Klik pada tombol <code "
-"class='toolbarbutton'><Tambah&nbsp;Sumber Daya></code> dan gunakan kotak "
-"menu turun untuk memilih sumber daya manusia atau material yang semestinya "
-"(jangan menyertakan sumber daya keuangan di sini). Anda bisa menentukan "
-"jumlah unit untuk sumber daya di setiap kuartal mendatang dalam kolom jingga."
-"<p>Anda bisa menambahkan berbagai sumber daya ke satu aktivitas atau tugas "
-"bila dipandang perlu. Anda juga bisa mengalokasikan sumber daya ke "
-"keseluruhan tingkatan aktivitas atau tugas untuk aktivitas yang ditentukan, "
-"tetapi tidak bisa mengalokasikan ke kedua-duanya.</p> "
+"html|/resources/wizard/PlanningView/WorkPlanAssignResourcesStepLeft.html|To "
+"assign an existing resource to an activity/method or task in the Planning "
+"View, click on the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> "
+"radio button and select an activity/method or task that you want to focus "
+"on. Go to the bottom of the lower panel and click on the <code "
+"class='toolbarbutton'>&lt;Assign&nbsp;Resource&gt;</code> button and use the "
+"drop down box to select the appropriate human or material resource (do not "
+"include financial resources here). You can specify the number of units for "
+"the resource in each upcoming quarter in the orange columns.<p>You can add "
+"multiple resources to one activity or task if necessary. You can also assign "
+"resources at either the overall activity or task level for a given activity, "
+"but you cannot do both.</p>"
 
 #, fuzzy
 msgid ""
@@ -14313,38 +14311,40 @@ msgid ""
 "standard planning views, Miradi also enables you to create your own custom "
 "planning views.</p>"
 msgstr ""
-"<h3>Selamat Datang di Tampilan Perencanaan</h3>Tampilan ini memungkinkan "
-"Anda mengembangkan dan mengubah berbagai macam rencana untuk proyek Anda. "
-"Tampilan perencanaan standar meliputi:<p><b>Rencana Strategis</b> - Rencana "
-"untuk menentukan bagaimana cara proyek Anda mengubah situasi proyek. "
-"Menunjukkan hubungan antara <a href='Definition:Goal' "
-"class='definition'>sasaran</a>, <a href='Definition:Objective' "
-"class='definition'>tujuan</a>, dan <a href='Definition:Strategy' "
-"class='definition'>strategi</a> proyek.</p><p><b>Rencana Pemantauan</b> - "
-"Rencana untuk mengumpulkan informasi tentang proyek yang perlu diketahui "
-"oleh Anda dan orang lain. Meliputi <a href='Definition:Indicator' "
-"class='definition'>indikator-indikator</a> yang akan Anda lacak dengan "
-"berjalannya waktu serta <a href='Definition:Method' "
-"class='definition'>metode-metode</a> yang akan Anda gunakan.</"
-"p><p><b>Rencana Kerja</b> - Keterangan tentang <a href='Definition:Activity' "
-"class='definition'>kegiatan</a>/<a href='Definition:Method' "
-"class='definition'>metode</a> dan <a href='Definition:Task' "
-"class='definition'>tugas-tugas</a> khusus yang diperlukan untuk melaksanakan "
-"rencana strategis dan pemantauan. Menunjukkan waktu dan urutan dari setiap "
-"tugas serta <a href='Definition:Resource' class='definition'>sumber daya</a> "
-"tertentu yang diperlukan untuk melaksanakannya. Sebagian besar proyek hanya "
-"menjalankan rencana kerja rinci untuk 1-2 tahun mendatang dari masa proyek.</"
-"p><p><b>Sasaran Saja, dsb.</b> - Menunjukkan semua <a href='Definition:Goal' "
-"class='definition'>sasaran</a>, <a href='Definition:Objective' "
-"class='definition'>tujuan</a>, <a href='Definition:Strategy' "
-"class='definition'>strategi</a>,<a href='Definition:Activity' "
-"class='definition'>aktivitas</a>,<a href='Definition:Indicator' "
-"class='definition'>indikator</a>, <a href='Definition:Method' "
-"class='definition'>metode</a>, atau <a href='Definition:Task' "
-"class='definition'>tugas</a> Anda dalam satu tabel agar bisa dibandingkan "
-"dan diubah secara cepat</p><p>Selain tampilan perencanaan standar ini, "
-"Miradi juga memungkinkan Anda membuat tampilan perencanaan yang bisa Anda "
-"sesuaikan sendiri.</p> "
+"html|/resources/wizard/PlanningView/PlanningOverviewStepLeft.html|"
+"<h3>Welcome to the Planning View</h3>This view enables you to develop and "
+"edit various plans for your project.  Standard planning views include:"
+"<p><b>Strategic Plan</b> - A plan for how your project will change the "
+"project situation. Is primarily derived from results chains and shows the "
+"relationship between a project's <a href='Definition:Goal' "
+"class='definition'>goals</a>, <a href='Definition:Objective' "
+"class='definition'>objectives</a>, and <a href='Definition:Strategy' "
+"class='definition'>strategies</a>.</p><p><b>Monitoring Plan</b> - A plan for "
+"collecting information that you and others need to know about your project. "
+"Is primarily derived from results chains and includes the <a "
+"href='Definition:Indicator' class='definition'>indicators</a> that you will "
+"track over time as well as the <a href='Definition:Method' "
+"class='definition'>methods</a> that you will use.</p><p><b>Work Plan</b> - A "
+"description of the specific <a href='Definition:Activity' "
+"class='definition'>activities</a>/<a href='Definition:Method' "
+"class='definition'>methods</a> and <a href='Definition:Task' "
+"class='definition'>tasks</a> that you need to undertake your strategic and "
+"monitoring plans. Shows the timing and sequence of each task as well as the "
+"specific <a href='Definition:Resource' class='definition'>resources</a> "
+"required to carry it out. Most projects will only do a detailed work plan "
+"for the next 1-2 years of their project.</p><p><b>Goals Only, etc.</b> - "
+"Shows all of your <a href='Definition:Goal' class='definition'>goals</a>, <a "
+"href='Definition:Objective' class='definition'>objectives</a>, <a "
+"href='Definition:ConservationTargets' class='definition'>targets</a>,<a "
+"href='Definition:DirectThreat' class='definition'>direct threats</a>,<a "
+"href='Definition:Strategy' class='definition'>strategies</a>,<a "
+"href='Definition:Activity' class='definition'>activities</a>,<a "
+"href='Definition:Indicator' class='definition'>indicators</a>, <a "
+"href='Definition:Method' class='definition'>methods</a>, or <a "
+"href='Definition:AssignedResource' class='definition'>assigned resources</a> "
+"in one table for quick comparisons and editing.</p><p>In addition to these "
+"standard planning views, Miradi also enables you to create your own custom "
+"planning views.</p>"
 
 msgid ""
 "html|/resources/wizard/PlanningView/WorkPlanCreateResourcesStepRight.html|"
@@ -14529,15 +14529,12 @@ msgid ""
 "your rating using the Scope rating drop down menu in the lower panel of the "
 "screen.<p><br></br></td><td width='25'></td></tr></table></div>"
 msgstr ""
-"<table><tr><td width='25'></td><td>Dengan menggunakan skala yang tampak di "
-"sebelah kanan, nilai <em><a href='Definition:ThreatRatingScope' title='Scope "
-"is...' class='definition'>scope</a></em> ancaman pada target."
-"<p><br><p><strong>Apa cakupan ancaman pada target?</strong></p><select "
-"name='value'><option >Sangat Tinggi - Menembus (71-100%).</option><option "
-">Tinggi - Menyebar (31-70%).</option><option selected >Sedang- Terbatas (11-"
-"30%).</option><option >Rendah - Sempit (0-10%).</option><option >Tidak sama "
-"sekali.</option></select><br></br></td><td width='25'></td></tr></table></"
-"div> "
+"html|/resources/wizard/ThreatMatrixView/ThreatRatingWizardScopeStepLeft."
+"html|  <table><tr><td width='25'></td><td>Using the scale shown on the "
+"right, rate the <em><a href='Definition:ThreatRatingScope' title='Scope "
+"is...' class='definition'>scope</a></em> of the threat on the target. Enter "
+"your rating using the Scope rating drop down menu in the lower panel of the "
+"screen.<p><br></br></td><td width='25'></td></tr></table></div>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/"
@@ -14604,16 +14601,12 @@ msgid ""
 "rating using the Severity rating drop down menu in the lower panel of the "
 "screen.<p></br></td><td width='25'></td></tr></table>"
 msgstr ""
-"<table><tr><td width='25'></td><td>Dengan menggunakan skala yang tampak di "
-"sebelah kanan, nilai <em><a href='Definition:Severity' title='Severity "
-"is...' class='definition'>tingkat keparahan</a></em> ancaman pada target."
-"<p><br><p><strong>Apa tingkat keparahan ancaman pada target?</strong></"
-"p><select name='value'><option >Sangat Tinggi - Menghancurkan atau "
-"menghilangkan target.</option><option >Tinggi - Sangat menurunkan/mengurangi "
-"target.</option><option >Sedang - Agak menurunkan/mengurangi target.</"
-"option><option selected >Rendah - Sedikit menurunkan/mengurangi target.</"
-"option><option >Tidak sama sekali.</option></select><br></br></td><td "
-"width='25'></td></tr></table> "
+"html|/resources/wizard/ThreatMatrixView/ThreatRatingWizardSeverityStepLeft."
+"html|  <table><tr><td width='25'></td><td>Using the scale shown on the "
+"right, rate the <em><a href='Definition:Severity' title='Severity is...' "
+"class='definition'>severity</a></em> of the threat on the target. Enter your "
+"rating using the Severity rating drop down menu in the lower panel of the "
+"screen.<p></br></td><td width='25'></td></tr></table>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/ThreatSimpleOverviewStepRight.html|  "
@@ -14690,19 +14683,18 @@ msgid ""
 "\t<td align='left' valign='top'>&nbsp;</td>\t\t</tr></table>\t</td>\t<td "
 "width='25'></td></tr></table>"
 msgstr ""
-"Anda kini berada dalam Mode Peringkat Ancaman Berdasarkan Tekanan.<p> Pilih "
-"kotak putih dalam tabel yang mewakili target dan ancaman yang "
-"memengaruhinya. Klik tombol <code class='toolbarbutton'><Lakukan&nbsp;"
-"Pemeringkatan&nbsp;Ancaman></code> untuk melanjutkan.</p><br></br><table><tr>"
-"\t<td width='25'></td>\t<td>\t\t<table><tr>\t\t\t<td align='left' "
-"valign='top'><input type='submit' name='Back' value='< Previous'></input></"
-"td>\t\t\t<td align='left' valign='top'>&nbsp;</td>\t\t\t<td align='left' "
-"valign='top'><input type='submit' name='Next' value='Do Threat Rating >'></"
-"input></td>\t\t</tr>\t\t<tr>\t\t\t<td align='left' valign='top'>&nbsp;</td>\t"
-"\t\t<td align='left' valign='top'><input type='submit' name='Done' "
-"value='Done with Threat Ratings'></input></td>\t\t\t<td align='left' "
-"valign='top'>&nbsp;</td>\t\t</tr></table>\t</td>\t<td width='25'></td></tr></"
-"table> "
+"html|/resources/wizard/ThreatMatrixView/ThreatRatingWizardChooseBundleLeft."
+"html|  Start the threat rating process by selecting a target-threat pair to "
+"work on, by clicking on a cell in the table below.<br></br><table><tr>\t<td "
+"width='25'></td>\t<td>\t\t<table><tr>\t\t\t<td align='left' "
+"valign='top'><input type='submit' name='Back' value='&lt; Previous'></"
+"input></td>\t\t\t<td align='left' valign='top'>&nbsp;</td>\t\t\t<td "
+"align='left' valign='top'><input type='submit' name='Next' value='Do Threat "
+"Rating &gt;'></input></td>\t\t</tr>\t\t<tr>\t\t\t<td align='left' "
+"valign='top'>&nbsp;</td>\t\t\t<td align='left' valign='top'><input "
+"type='submit' name='Done' value='Done with Threat Ratings'></input></td>\t\t"
+"\t<td align='left' valign='top'>&nbsp;</td>\t\t</tr></table>\t</td>\t<td "
+"width='25'></td></tr></table>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/"
@@ -14831,17 +14823,14 @@ msgid ""
 "drop down menu in the lower panel of the screen.</p></select><br></br></"
 "td><td width='25'></td></tr></table>"
 msgstr ""
-"<table><tr><td width='25'></td><td>Dengan menggunakan skala yang tampak di "
-"sebelah kanan, nilai <em><a href='Definition:Irreversibility' "
-"title='Irreversibility is...' class='definition'>tingkat ketakterbalikan</"
-"a></em> (juga disebut kekekalan) ancaman pada target.<p><br><p><strong>Apa "
-"tingkat ketakterbalikan (kekekalan) ancaman pada target?</strong></p><select "
-"name='value'><option >Sangat Tinggi - Pengaruh tidak bisa dibalikkan.</"
-"option><option >Tinggi - Pengaruh sulit/perlu biaya mahal untuk dibalikkan.</"
-"option><option selected >Sedang - Pengaruh bisa dibalikkan dengan sumber "
-"daya yang wajar.</option><option >Rendah - Pengaruh bisa dibalikkan dengan "
-"mudah.</option><option >Tidak ada.</option></select><br></br></td><td "
-"width='25'></td></tr></table> "
+"html|/resources/wizard/ThreatMatrixView/"
+"ThreatRatingWizardIrreversibilityStepLeft.html|  <table><tr><td width='25'></"
+"td><td>Using the scale shown on the right, rate the <em><a href='Definition:"
+"Irreversibility' title='Irreversibility is...' "
+"class='definition'>irreversibility</a></em> (also termed permanence) of the "
+"threat on the target. Enter your rating using the Irreversibility rating "
+"drop down menu in the lower panel of the screen.</p></select><br></br></"
+"td><td width='25'></td></tr></table>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/ThreatMatrixOverviewStepRight.html|  "
@@ -15295,35 +15284,32 @@ msgid ""
 "p><table width='100%'><tr><td align='center'><img src='images/SummaryWizard/"
 "nav_overview1.png' width='512' height='371'></img></td></tr></table></div>"
 msgstr ""
-"<div class='navigation'><h3>Petunjuk Navigasi untuk Tampilan Ringkasan dan "
-"Keseluruhan Aplikasi</h3><strong>Tampilan Ringkasan</strong><br>Beberapa tab "
-"pertama dalam Tampilan Ringkasan mengandung bidang-bidang informasi dasar "
-"tentang proyek, tim, cakupan, lokasi dan perencanaan yang ingin diisikan "
-"dalam sebagian besar proyek. Informasi dasar ini penting khususnya saat Anda "
-"mengekspor proyek ke berbagai laporan dan basis data. Beberapa organisasi "
-"juga memiliki bidang-bidang data tersuai mereka sendiri untuk proyek-proyek "
-"mereka. Anda bisa menemukan bidang-bidang ini dengan mengklik pada tab yang "
-"semestinya. <p><strong>Keseluruhan Aplikasi</strong></p>Semua tampilan "
-"memiliki jendela wawancara di bagian atas dan jendela tindakan di bagian "
-"bawah. Gunakan tombol <code class='toolbarbutton'><Sebelumnya></code> dan "
-"<code class='toolbarbutton'><Berikutnya></code> untuk <strong>bergerak maju "
-"mundur</strong> sepanjang wawancara. <strong>Anda bisa mengubah ukuran atau "
-"menyembunyikan jendela wawancara</strong> dengan menggunakan fungsi pembagi "
-"dan/atau tanda panah. Dalam banyak kotak dialog, Anda bisa menggunakan "
-"tombol <code class='toolbarbutton'><Instruksi></code> di kiri paling bawah "
-"untuk <strong> menuju jendela wawancara yang sesuai.</strong> Anda juga bisa "
-"sering menggunakan tombol sebelah kanan (alt) tetikus untuk memunculkan "
-"perintah menu yang peka konteks (pengguna Mac yang menggunakan tetikus "
-"dengan satu tombol bisa menekan dan menahan tombol selama beberapa detik). "
-"Gunakan tombol di sebelah kanan atas untuk memunculkan informasi tambahan "
-"<strong>, contoh-contoh</strong>, dan <strong>petunjuk lokakarya</strong> "
-"yang bersifat peka konteks.</p><p>Perhatikan bahwa program secara otomatis "
-"akan menyimpan semua perubahan, jadi tidak ada perintah &quot;Simpan&quot;. "
-"Anda bisa menyimpan salinan dengan nama lain menggunakan perintah menu <code "
-"class='toolbarbutton'><Berkas/Simpan&nbsp;Salin&nbsp;Sebagai></code>.</"
-"p><p></p><table width='100%'><tr><td align='center'><img src='images/"
-"SummaryWizard/nav_overview1.png' width='512' height='371'></img></td></tr></"
-"table></div> \t\t"
+"html|/resources/wizard/SummaryView/SummaryOverviewStepRight.html|<div "
+"class='navigation'><h3>Navigation Hints for the Summary View and the Overall "
+"Application</h3><strong>Summary View</strong><br>The first few tabs in the "
+"Summary View contain basic information fields that most projects will want "
+"to fill in about their project, team, scope, location, and planning. This "
+"basic information will be especially important when you export your project "
+"to various reports and databases. Some organizations also have their own "
+"custom data fields for their projects. You can find these by clicking on the "
+"appropriate tab. <p><strong>Overall Application</strong></p>All views have "
+"an interview pane on top and an action pane below. Use the <code "
+"class='toolbarbutton'>&lt;Previous&gt;</code> and <code "
+"class='toolbarbutton'>&lt;Next&gt;</code> buttons to <strong>move backwards "
+"and forward</strong> through the interview. <strong>You can resize or hide "
+"the interview pane</strong> by using the splitter and/or arrows. In many "
+"dialog boxes, you can use the <code class='toolbarbutton'>&lt;"
+"Instructions&gt;</code> button at the bottom left to <strong> go the "
+"appropriate interview page.</strong> You can also often use the right (alt) "
+"mouse button to get context sensitive menu commands (Mac users with one "
+"button mice can hold the button for several seconds). Use the buttons on the "
+"upper right to get context sensitive <strong>additional information, "
+"examples</strong>, and <strong>workshop hints</strong>.</p><p>Note that the "
+"program automatically saves all changes so there is no &quot;save&quot; "
+"command.  You can save a copy under a different name using the <code "
+"class='toolbarbutton'>&lt;File/Save&nbsp;As&gt;</code> menu command.</p><p></"
+"p><table width='100%'><tr><td align='center'><img src='images/SummaryWizard/"
+"nav_overview1.png' width='512' height='371'></img></td></tr></table></div>"
 
 msgid ""
 "html|/resources/wizard/SummaryView/SummaryWizardDefineProjecScopeLeft.html|"
@@ -15398,20 +15384,21 @@ msgid ""
 "fields, contact Miradi staff at  <a href=\"mailto:info@miradi.org"
 "\">info@miradi.org</a>.</p>"
 msgstr ""
-"Klik pada tab <code class='toolbarbutton'><Cakupan></code> dan tambahkan <a "
-"href='Definition:Vision' class='definition'>pernyataan visi</a> proyek Anda "
-"ke bidang <strong>Teks Pernyataan Visi</strong>. Tinjau kriteria pernyataan "
-"visi yang baik dan perbaiki pernyataan Anda bila perlu.<p>Jika mau, Anda "
-"juga bisa mengklik pada tab <code class='toolbarbutton'><Lokasi></code> dan "
-"<code class='toolbarbutton'><Perencanaan></code> untuk menambahkan rincian "
-"tambahan tentang proyek Anda.</p><p>Selain itu, Miradi juga memiliki tab "
-"untuk organisasi kunci CMP yang berisi bidang-bidang tambahan organisasi "
-"yang spesifik. Bidang-bidang ini terutama digunakan untuk data kunci yang "
-"akan digunakan dalam laporan dan unggahan ke basis data organisasi. Hubungi "
-"pemimpin Miradi di organisasi Anda untuk mendapatkan informasi lebih lanjut."
-"</p><p> Jika organisasi Anda mungkin ingin mengembangkan bidang mereka "
-"sendiri, hubungi staf Miradi di <a href='info@miradi.org' >info@miradi.org</"
-"a>.</p> "
+"html|/resources/wizard/SummaryView/SummaryWizardDefineProjectVisionLeft.html|"
+"Click on the <code class='toolbarbutton'>&lt;Scope&gt;</code> tab and add "
+"your project's <a href='Definition:Vision' class='definition'>vision "
+"statement</a> to the <strong>Vision Statement Text</strong> field. Review "
+"the criteria for a good vision statement and revise your statement as "
+"necessary.<p>If desired, you can also click on the <code "
+"class='toolbarbutton'>&lt;Location&gt;</code> and the <code "
+"class='toolbarbutton'>&lt;Planning&gt;</code> tabs to add additional detail "
+"about your project.</p><p>In addition, Miradi also has tabs for key CMP "
+"organizations that contain additional organizational specific fields.  These "
+"fields are especially for key data that will be used in reports and uploads "
+"to organizational databases. Contact your organization's Miradi lead for "
+"more information.</p><p> If your organization would like to develop its own "
+"fields, contact Miradi staff at  <a href=\"mailto:info@miradi.org"
+"\">info@miradi.org</a>.</p>"
 
 msgid ""
 "html|/resources/wizard/SummaryView/SummaryWizardDefineProjecScopeRight.html|"
@@ -15843,63 +15830,56 @@ msgid ""
 "document that can be edited in a Word Processor</li><li>Create a standard "
 "report for a donor or other key audience for your project</li></ul>"
 msgstr ""
-"<h3>Mengekspor Data dalam Miradi ke dalam Aplikasi Lain</h3>Terdapat banyak "
-"cara untuk mengekspor informasi Anda dari Miradi ke aplikasi lain.<h4>A. "
-"EKSPOR HALAMAN SAAT INI SEBAGAI...</h4>Perintah ini berguna untuk mengekspor "
-"gambar/foto atau tabel tertentu untuk digunakan dalam suatu dokumen atau "
-"presentasi. Pilihan yang ada meliputi:<h4>Ekspor Gambar JPG atau PNG</"
-"h4>Gunakan perintah-perintah menu <code class='toolbarbutton'>&lt;Berkas/"
-"Ekspor&nbsp;Halaman&nbsp;Saat ini&nbsp; sebagai.../Gambar&nbsp;JPEG&gt;</"
-"code> atau <code class='toolbarbutton'>&lt;Berkas/Ekspor&nbsp;Halaman&nbsp;"
-"Saat ini&nbsp;sebagai.../Gambar&nbsp;PNG&gt;</code> untuk menangkap diagram "
-"atau tabel tertentu yang tampak di layar Anda dan menyimpannya dalam berkas "
-"gambar. Metode ini terutama berguna untuk:<ul><li>Menempatkan diagram atau "
-"tabel dalam suatu dokumen atau presentasi</li><li>Membuat gambar yang bisa "
-"dipasang dalam situs web</li></ul><h4>Mengekspor Berkas berformat RTF "
-"(<i>Rich Text Format</i>)</h4>Menggunakan perintah menu <code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor&nbsp;Halaman&nbsp;Saat ini&nbsp;"
-"sebagai.../Berkas&nbsp;RTF&gt;</code> untuk mengekspor tabel yang saat ini "
-"sedang ditampilkan ke dalam berkas berformat RTF (<i>Rich Text Format</i>). "
-"Metode ini terutama berguna untuk:<ul><li>Mengekspor tabel atau informasi "
-"lain dalam format yang bisa diubah dengan menggunakan program pengolah kata</"
-"li><li>Mengekspor potongan-potongan laporan tersuai</li></ul><h4>Mengekspor "
-"Data yang Dipisahkan Tab</h4>Gunakan perintah menu <code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor&nbsp;Halaman&nbsp;Saat Ini&nbsp;"
-"sebagai.../Data yang Dipisahkan Tab&gt;</code> untuk mengekspor tabel yang "
-"saat ini sedang ditampilkan ke dalam berkas yang dipisahkan tab. Metode ini "
-"khususnya berguna untuk:<ul><li>Mengekspor konfigurasi saat ini dari "
-"tampilan perencanaan Anda ke dalam program lembar bentang seperti Excel</"
-"li><li>Mengekspor informasi keuangan</li></ul><h4>B. EKSPOR PROYEK SAAT INI "
-"SEBAGAI...</h4>Perintah ini berguna untk mengekspor keseluruhan berkas "
-"proyek Anda agar bisa digunakan secara bersama-sama dengan pengguna-pengguna "
-"lainnya. Pilihan-pilihan yang ada meliputi:<h4>Ekspor Berkas Zip Miradi (MPZ)"
-"</h4>Gunakan perintah menu <code class='toolbarbutton'>&lt;Berkas/Ekspor "
-"Proyek Saat Ini sebagai.../Berkas berformat MPZ(Miradi Project Zip)&gt;</"
-"code> untuk menyimpan keseluruhan proyek Anda dalam berkas zip berukuran "
-"kecil. Metode ini khususnya berguna untuk:<ul><li>Mengirimkan proyek Anda ke "
-"pengguna Miradi</li><li>Membuat salinan cadangan dari proyek Anda</li></"
-"ul><h4>Mengekspor Berkas ConPro (CPMZ)</h4>Gunakan perintah menu <code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor Proyek Saat Ini sebagai.../Berkas "
-"ConPro (CPMZ)&gt;</code> untuk menyimpan keseluruhan proyek Anda dalam satu "
-"berkas zip yang bisa diimpor ke dalam basis data ConPro milik The Nature "
-"Conservancy. Perhatikan bahwa jika organisasi Anda ingin mengimpor data "
-"Miradi ke dalam basis data Anda sendiri, hubungi <A href=\"mailto:"
-"support@miradi.org\">support@miradi.org</A>. Metode ini khususnya berguna "
-"untuk:<ul><li>Mengunggah informasi Anda ke basis data ConPro milik TNC</"
-"li><li>Berbagi informasi proyekAnda dengan para praktisi konservasi lainnya</"
-"li></ul><h4>Mengekspor Berkas XML Proyek</h4>Gunakan perintah menu<code "
-"class='toolbarbutton'>&lt;Berkas/Ekspor/Berkas XML Proyek&gt;</code>untuk "
-"membuat berkas XML dengan semua data proyek Anda. Meskipun mengelola berkas "
-"XML akan memerlukan keterampilan teknis, metode ini khususnya berguna untuk:"
-"<ul><li>Membuat berkas yang bisa diimpor oleh suatu basis data</"
-"li><li>Mengekspor semua informasi proyek Anda ke dalam format yang bisa "
-"dibaca dengan aplikasi lain.</li></ul><h4>C. BUAT LAPORAN</h4>Gunakan "
-"tampilan<code class='toolbarbutton'>&lt;Laporan&gt;</code> untuk membuat "
-"berkas berformat RTF (<i>Rich Text Format</i>) yang berisi berbagai "
-"konfigurasi data proyek Anda. Metode ini khususnya berguna untuk:"
-"<ul><li>Membuat dokumen yang bisa diubah dalam program Pengolah Kata</"
-"li><li>Membuat laporan standar untuk penyumbang dana atau khalayak lainnya "
-"yang penting bagi proyek Anda</li></ul>"
+"html|/resources/wizard/ReportsView/ReportsOverviewStepRight.html|  "
+"<h3>Exporting Data in Miradi to Other Applications</h3>There are many ways "
+"to export your information from Miradi to other applications.<h4>A. EXPORT "
+"CURRENT PAGE AS...</h4>This command is useful to export a specific image or "
+"table for use in a document or presentation. Options include:<h4>Export JPG "
+"or PNG Images</h4>Use the <code class='toolbarbutton'>&lt;File/Export&nbsp;"
+"Current&nbsp;Page&nbsp;as.../JPEG&nbsp;Image&gt;</code> or <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../"
+"PNG&nbsp;Image&gt;</code> menu commands to capture a specific diagram or "
+"table on your screen in an image file. This method is particularly useful to:"
+"<ul><li>Put a diagram or table in a document or presentation</li><li>Create "
+"an image that can be put in a website</li></ul><h4>Export Rich Text Format "
+"(RTF) File</h4>Use the <code class='toolbarbutton'>&lt;File/Export&nbsp;"
+"Current&nbsp;Page&nbsp;as.../RTF&nbsp;File&gt;</code> menu command to export "
+"the currently viewed table to a Rich Text Format (RTF) file. This method is "
+"particularly useful to:<ul><li>Export a table or other information in a "
+"format that can be edited by a word processor</li><li>Export pieces of a "
+"custom report</li></ul><h4>Export Tab-Delimited Data</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../Tab-"
+"Delimited Data&gt;</code> menu command to export the currently viewed table "
+"to a tab-delimited file. This method is particularly useful to:"
+"<ul><li>Export the current configuration from your planning view to a "
+"spreadsheet like Excel</li><li>Export financial information</li></ul><h4>B. "
+"EXPORT CURRENT PROJECT AS...</h4>This command is useful to export your "
+"entire project file so that it can be shared with other users. Options "
+"include:<h4>Export Miradi Zip (MPZ) File </h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export Current Project as.../Miradi Project "
+"Zip (MPZ) File&gt;</code> menu command to capture your entire project in a "
+"small zip file. This method is particularly useful to:<ul><li>Send your "
+"project to another Miradi user</li><li>Create a backup copy of your project</"
+"li></ul><h4>Export ConPro (CPMZ) File (CP</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export Current Project as.../ConPro (CPMZ) "
+"File&gt;</code> menu command to capture your entire project in a zip file "
+"that can be imported into The Nature Conservancy's ConPro database. Note "
+"that if your organization would like to import Miradi data into your own "
+"database, contact <A href=\"mailto:support@miradi.org\">support@miradi.org</"
+"A>. This method is particularly useful to:<ul><li>Upload your information to "
+"TNC's ConPro database</li><li>Share your project information with other "
+"practitioners</li></ul><h4>Export Project XML File</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export Curent Project as.../Project XML "
+"File&gt;</code> menu command to create an XML file with all your project "
+"data. Although managing the XML file will require technical skills, this "
+"method is particularly useful to:<ul><li>Create a file that can be imported "
+"by a database</li><li>Export all of your project's information into formats "
+"that can be read by other applications</li></ul><h4>C. GENERATE REPORTS</"
+"h4>Use the <code class='toolbarbutton'>&lt;Reports&gt;</code> view to create "
+"a Rich Text Format (RTF) file that contains various configurations of your "
+"project data. This method is particularly useful to:<ul><li>Create a "
+"document that can be edited in a Word Processor</li><li>Create a standard "
+"report for a donor or other key audience for your project</li></ul>"
 
 msgid ""
 "html|/resources/wizard/ReportsView/ReportsOverviewStep.html|  <HTML>  "
@@ -16114,26 +16094,22 @@ msgid ""
 "align='center'><img src='images/TargetViability/nav_viability.png' "
 "width='512' height='369'></img></td></tr></table></div>"
 msgstr ""
-"<div class='navigation'><h3>Mengapa Melakukan Analisis Kelangsungan?</"
-"h3>Analisis kelangsungan meminta Anda mengamati masing-masing target "
-"konservasi secara saksama untuk menentukan cara pengukuran &quot;"
-"kesehatannya&quot; dengan berjalannya waktu. Lalu untuk mengidentifikasi "
-"kondisi target saat ini dan bagaimana wujud &quot;status sehat&quot; itu. "
-"Langkah ini adalah kunci untuk mengetahui mana dari target Anda yang paling "
-"memerlukan perhatian segera, dan untuk mengukur keberhasilan menurut waktu."
-"&nbsp;Klik pada tombol <code class='toolbarbutton'><Info Lebih Lanjut></"
-"code> untuk mendapatkan rincian tambahan mengenai analisis kelangsungan."
-"<br><br><h3>Petunjuk Navigasi untuk Tampilan Kelangsungan Target</h3>Tabel "
-"Kelangsungan akan memberikan ikhtisar status kelangsungan dari masing-masing "
-"target. Untuk <span class='task'>melihat rincian tentang suatu target atau "
-"atributnya</span>, klik garis yang sesuai pada tabel dan rincian akan tampak "
-"dalam panel di bawah ini.<br><p class='hint'><b>Petunjuk:</b> Target "
-"bermodus kelangsungan sederhana tidak bisa diubah dari tampilan ini - "
-"silakan buka tab <code class='toolbarbutton'><Kelangsungan></code> dalam "
-"sifat-sifat target untuk setiap target dalam tampilan diagram.</p> \t\t <p></"
-"p><table width='100%'><tr><td align='center'><img src='images/"
-"TargetViability/nav_viability.png' width='512' height='369'></img></td></"
-"tr></table></div> "
+"html|/resources/wizard/TargetViabilityView/TargetViabilityOverviewStepRight."
+"html|    <div class='navigation'><h3>Why Do Viability Analysis?</"
+"h3>Viability analysis asks you to look at each of your conservation targets "
+"carefully to determine how to measure its &quot;health&quot; over time. And "
+"then to identify how the target is doing today and what a &quot;healthy "
+"state&quot; might look like. This step is the key to knowing which of your "
+"targets are most in need of immediate attention, and for measuring success "
+"over time.&nbsp;Click on the <code class='toolbarbutton'>&lt;More Info&gt;</"
+"code> button to get additional detail about viability analysis."
+"<br><br><h3>Navigation Hints for the Target Viability View</h3>The Viability "
+"Table will give you an overview of the viability status of each target. To "
+"<span class='task'>see details about a target or its attributes</span>, "
+"click the appropriate line on the table and the details will appear in the "
+"panel below.<br>\t\t         <p></p><table width='100%'><tr><td "
+"align='center'><img src='images/TargetViability/nav_viability.png' "
+"width='512' height='369'></img></td></tr></table></div>"
 
 msgid ""
 "html|/resources/wizard/TargetViabilityView/DescribeTargetStatusStepRight."
@@ -16338,31 +16314,48 @@ msgid ""
 "according to the following scale:<ul><LI>>= 3.75 = Very Good</LI><LI>3.00 - "
 "3.74 = Good</LI><LI>1.75 - 2.99 = Fair</LI><LI>< 1.75 = Poor</LI></ul>"
 msgstr ""
-"Langkah&nbsp;berikutnya adalah menentukan <a href='Definition:Measurement' "
-"class='definition'>pengukuran</a> untuk setiap indikator.<P>Pilih satu "
-"indikator dalam tabel dan klik tombol <code class='toolbarbutton'><Buat "
-"Pengukuran></code>. Berikutnya di dasar panel, isi bidang-bidang isian "
-"berikut:</P><ul><LI><STRONG>Tanggal Pengukuran:</STRONG>&nbsp;Tanggal "
-"terakhir pengukuran indikator. <LI><STRONG>Nilai Pengukuran:</STRONG>&nbsp;"
-"Nilai indikator saat ini atau rangkuman keterangan kualitatif indikator."
-"<LI><STRONG>Rincian:</STRONG>&nbsp;Keterangan lengkap dari nilai indikator "
-"saat ini atau keterangan kualitatif indikator.<LI><STRONG>Status Saat Ini:</"
-"STRONG>&nbsp;Peringkat (SB, B, W, J) yang berkaitan dengan pengukuran."
-"<LI><STRONG>Kecenderungan:</STRONG> Penilaian Anda mengenai arah yang dituju "
-"indikator pada waktu pengukuran saat ini.<LI><STRONG>Sumber:</STRONG>&nbsp;"
-"Peringkat tingkat kepercayaan Anda terhadap sumber pengukuran indikator."
-"<LI><STRONG>Komentar:</STRONG>&nbsp;Diskusi mengenai pengukuran.</"
-"ul><P>Miradi akan secara otomatis mewarnai sel dalam tabel peringkat "
-"indikator di tabel bagian atas dengan warna yang sesuai dengan penilaian "
-"status Anda saat ini (tapi Miradi TIDAK akan secara otomatis membaca "
-"parameter pengukuran dan menetapkan kategori status saat ini).&nbsp;Miradi "
-"juga akan menampilkan tanda panah yang menunjukkan kecenderungan, dan label "
-"status saat ini.</P><p>Miradi akan menghitung peringkat status untuk setiap "
-"AEK, berdasarkan peringkat indikatornya. Peringkat AEK akan diagregasikan "
-"untuk setiap jenis AEK, dan rata-rata peringkat status jenis AEK akan "
-"digunakan sebagai peringkat status kelangsungan bagi target. Peringkat "
-"status kelangsungan target ini akan muncul di atas dialog sifat, dan akan "
-"ditampilkan dalam diagram sebagai bentuk oval kecil di samping target.</p> "
+"html|/resources/wizard/TargetViabilityView/"
+"TargetViabilityRecordInitialMeasurementStepLeft.html|The&nbsp;next step is "
+"to determine the <a href='Definition:Measurement' "
+"class='definition'>measurement</a> for each indicator.<P>Select an indicator "
+"in the table and then click the <code class='toolbarbutton'>&lt;Create "
+"Measurement&gt;</code> button. Next in the bottom panel, fill in the "
+"following fields:</P><ul><LI><STRONG>Measurement Date:</STRONG>&nbsp;The "
+"date of the most recent indicator measurement. <LI><STRONG>Measurement Value:"
+"</STRONG>&nbsp;The current value or summary qualitative description of the "
+"indicator.<LI><STRONG>Detail:</STRONG>&nbsp;Full description of the current "
+"value or qualitative description of the indicator.<LI><STRONG>Current Status:"
+"</STRONG>&nbsp;The rating (VG, G, F, P) that corresponds to the measurement."
+"<LI><STRONG>Trend:</STRONG> Your assessment of the direction that this "
+"indicator is heading at the moment of the current measurement."
+"<LI><STRONG>Source:</STRONG>&nbsp;Your confidence rating in the source of "
+"the indicator measurement.<LI><STRONG>Comments:</STRONG>&nbsp;Discussion "
+"about the measurement.</ul><P>Miradi will automatically shade in the cell of "
+"the indicator ratings table in the upper table with the color corresponding "
+"to your current status assessment (but it will NOT automatically read the "
+"measurement parameter and assign a current status category).&nbsp;It will "
+"also display an arrow showing the trend, and the current status label.</"
+"P><p>Miradi will calculate a status rating for each KEA, based on the "
+"ratings of its indicators. The KEA ratings will be rolled up for each KEA "
+"type, and the average of the KEA type status ratings will be used as the "
+"viability status rating for the target (see below for calculation details). "
+"This target viability status rating will appear at the top of the properties "
+"dialog, and will be displayed in the diagram as a small oval next to the "
+"target.</p><p>Miradi rolls up viability scores using an algorithm originally "
+"developed as part of <A   href=\"http://conserveonline.org/workspaces/"
+"cbdgateway/cap/resources/4/2/5-S_Handbook_2000.pdf/download\">TNC's 5S "
+"process</A>. Each of the viability ranks has a numerical score associated "
+"with it:<ul><LI>Very Good = 4.0</LI><LI>Good = 3.5</LI><LI>Fair = 2.5</"
+"LI><LI>Poor = 1.0</LI></ul>As the 5S handbook states, \"This scale is a "
+"crude approximation of the underlying continuous viability scale. The non-"
+"linearnumeric relationship among the viability classes reflects the "
+"diminishing return of moving up oneclass as one moves up the scale. For "
+"example, the viability score increases by 1.5 in moving from'Poor' to "
+"'Fair,' but only increases by 0.5 in moving from 'Good' to 'Very Good.'\"</"
+"p><p>The average viability score across multiple indicators for one target "
+"and for all focal conservation targets for the project site is calculated "
+"according to the following scale:<ul><LI>>= 3.75 = Very Good</LI><LI>3.00 - "
+"3.74 = Good</LI><LI>1.75 - 2.99 = Fair</LI><LI>< 1.75 = Poor</LI></ul>"
 
 msgid ""
 "html|/resources/wizard/TargetViabilityView/"
@@ -16755,55 +16748,50 @@ msgid ""
 "on the <code class='toolbarbutton'>&lt;Edit/Prefrences/Data&nbsp;Location&gt;"
 "</code> tab to make this change.</p></HTML>"
 msgstr ""
-"<HTML><h3><strong>Bagaimana Cara Menyimpan Berkas dalam Miradi</h3>Miradi "
-"secara otomatis menyimpan setiap proyek pada komputer Anda dalam berkas yang "
-"memiliki nama. Miradi dirancang seperti \tprogram basis data di mana setiap "
-"tindakan secara otomatis disimpan ke berkas tersebut ketimbang disimpan ke "
-"program pengolah kata atau lembar bentang yang secara aktif harus Anda "
-"simpan sendiri. Oleh karena itu, tidak ada perintah \"simpan\" dalam Miradi."
-"<p>Petunjuk kunci yang harus selalu diingat antara lain:</p>"
-"\t<li><strong>Semua Tindakan Secara Otomatis Disimpan</strong> - \tSetiap "
-"tindakan (misalnya, memindahkan atau memotong faktor diagram) disimpan "
-"secara otomatis. Jika Anda memasukkan teks ke dalam suatu bidang isian, teks "
-"tersebut akan disimpan secara otomatis setelah Anda mengklik pada bidang "
-"isian lainnya atau menutup kotak dialog.</li><li><strong>Gunakan fungsi "
-"Pembatalan untuk Memulihkan Perubahan</strong> - Akibat dari penyimpanan "
-"berkas secara otomatis ini, \tjika Anda membuat kesalahan dan ingin kembali "
-"ke versi berkas Anda yang sebelumnya, <u>jangan</u>tutup proyek. Melainkan, "
-"gunakan perintah menu <code class='toolbarbutton'>&lt;Ubah/Batalkan&gt;</"
-"code> atau <code class='toolbarbutton'>&ltCtrl-Z&gt;</code> untuk "
-"membatalkan tindakan Anda bila diperlukan.</li><li><strong>Gunakan \"Simpan "
-"Salinan Sebagai\" untuk membuat salinan Berkas</strong> - Jika Anda ingin "
-"membuat \tversi baru proyek Anda sementara ingin mempertahankan versi lama, "
-"maka gunakan perintah menu <code class='toolbarbutton'>&lt;Berkas/"
-"Simpan&nbsp;Salinan&nbsp;Sebagai&gt;</code> untuk membuat salinan proyek "
-"saat ini. Hal ini khususnya berguna jika Anda ingin membuat perubahan "
-"\"berisiko\" yang mungkin tidak ingin Anda simpan.</li><li><strong>Gunakan "
-"Berkas Zip Miradi untuk Menyimpan atau Berbagi Data</strong> - Jika Anda "
-"ingin menyimpan \tproyek Anda atau menggunakannya bersama dengan pengguna "
-"Miradi lainnya, maka gunakan perintah menu <code class='toolbarbutton'>&lt;"
-"Berkas/Ekspor&nbsp;Proyek&nbsp;Saat Ini&nbsp; sebagai…/Berkas&nbsp;Zip&nbsp;"
-"Miradi&nbsp;(MPZ) &gt;</code> untuk membuat berkas berformat .mpz yang "
-"kemudian Anda bisa simpan di <cf italic=\"on\">hard drive</cf> atau "
-"ditempelkan ke email.</i><li><strong>Gunakan Sistem Operasi atau Halaman "
-"Selamat Datang untuk Mengelola Berkas</strong> - Miradi menyimpan berkas "
-"aktif pada direktori khusus Miradi dalam komputer Anda. Dalam beberapa macam "
-"sistem operasi, lokasi ini adalah:<ul><li><b>Windows XP:</b>C:\\Documents "
-"and Settings\\<i>Nama Pengguna Anda</i>\\My Documents\\Miradi</"
-"li><li><b>Windows Vista:</b>C:\\Users\\<i>Nama Pengguna Anda</i>\\Documents"
-"\\Miradi</li><li><b>Mac OSX:</b>/home/<i>Nama Pengguna Anda</i>/Miradi</"
-"li><li><b>Linux:</b>/home/<<i>Nama Pengguna Anda</i>/Miradi</li></ul>Dalam "
-"direktori ini, Anda akan melihat satu <i>folder</i> untuk setiap proyek "
-"Miradi. Anda bisa memindahkan, menyalin, menghapus, atau menamai kembali "
-"<i>folder-folder</i> ini. Namun ingat bahwa <i>folder</i> sendiri adalah "
-"berkas Miradi. Anda juga bisa mengelola berkas-berkas ini dari halaman "
-"Selamat Datang program Miradi.</li><p class='hint'><b>Petunjuk:</b>Dalam "
-"beberapa situasi, Anda mungkin perlu mengubah lokasi standar untuk berkas "
-"Miradi Anda. Misalnya, jika laptop Windows Anda biasanya menyimpan \"My "
-"Documents/Documents\" di jaringan, tapi kemudian Anda memutuskan hubungan "
-"komputer dari jaringan, maka Anda harus menentukan secara spesifik direktori "
-"lokal standar yang baru. Klik pada tab <code class='toolbarbutton'>&lt;Ubah/"
-"Preferensi/Lokasinbsp;Data&gt;</code> untuk membuat perubahan ini.</p></HTML>"
+"html|/resources/HowToSave.html|  <HTML><h3><strong>How to Save Files in "
+"Miradi</h3>Miradi automatically stores each project on your computer in a "
+"named file. Miradi is designed like a database program in which each action "
+"is automatically saved to this file as opposed to a word processing or "
+"spreadsheet program in which you need to actively save your work. As a "
+"result, there is no \"save\" command in Miradi.<p>Key hints to keep in mind "
+"include:</p>\t<li><strong>All Actions are Automatically Saved</strong> - Any "
+"action (for example, moving or cutting a diagram factor) is automatically "
+"saved. If you are entering text into a field, it is also automatically saved "
+"once you click on another field or close the dialogue box.</"
+"li><li><strong>Use Undo to Recover Changes</strong> - As a result of this "
+"automatic saving, if you make a mistake and want to revert to an earlier "
+"version of your file, do <u>not</u> close the project. Instead, use the "
+"<code class='toolbarbutton'>&lt;Edit/Undo&gt;</code> menu command or <code "
+"class='toolbarbutton'>&lt;Ctrl-Z&gt;</code> to undo your actions as needed.</"
+"li><li><strong>Use \"Save As\" to Branch a File</strong> - If you want to "
+"create a new version of your project while also keeping the old one, then "
+"use the <code class='toolbarbutton'>&lt;File/Save&nbsp;As&gt;</code> menu "
+"command to create a copy of your current project. This is particularly "
+"useful if you want to attempt a \"risky\" change that you may not want to "
+"keep. <i>***Note that starting with Miradi 2.4, this is a true Save As "
+"command that leaves you in the new file.***</i></li><li><strong>Use Miradi "
+"Zip Files to Store or Share Data</strong> - If you want to store your "
+"project or share it with another Miradi user, then use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Project&nbsp;as.../"
+"Miradi&nbsp;Zip&nbsp;(MPZ)&nbsp:File&gt;</code> menu command to create a ."
+"mpz file that you can then place on your hard drive or attach to an e-mail.</"
+"li><li><strong>Use Your Operating System or the Welcome Page to Manage "
+"Files</strong> - Miradi stores active files on a special Miradi directory on "
+"your computer.  In different operating systems, these are:<ul><li><b>Windows "
+"XP:</b> C:\\Documents and Settings\\<i>Your User Name</i>\\My Documents"
+"\\Miradi</li><li><b>Windows Vista:</b> C:\\Users\\<i>Your User Name</i>"
+"\\Documents\\Miradi</li><li><b>Mac OSX:</b> /home/<i>Your User Name</i>/"
+"Miradi</li><li><b>Linux:</b> /home/<i>Your User Name</i>/Miradi</li></ul>In "
+"this directory, you will see one folder for each Miradi project. You can "
+"move, copy, delete, or rename these folders. Remember, however, that the "
+"folder itself is the Miradi file. You can also manage these files from the "
+"Welcome page of the Miradi program.</li><p class='hint'><b>Hint:</b> In some "
+"instances, you may need to change the default location for your Miradi "
+"files. For example, if your Windows laptop normally stores \"My Documents/"
+"Documents\" on a network drive, but you then disconnect your computer from "
+"the network, you will need to specify a new default local directory. Click "
+"on the <code class='toolbarbutton'>&lt;Edit/Prefrences/Data&nbsp;Location&gt;"
+"</code> tab to make this change.</p></HTML>"
 
 msgid ""
 "html|/resources/FOSAbout.html| <h3>About Foundations of Success (FOS)</"
@@ -16912,27 +16900,25 @@ msgid ""
 "routine for your computer to ensure that you do not lose all your Miradi "
 "work in the event of a system failure.</p><p></p></HTML>"
 msgstr ""
-"<HTML><p>Miradi menyimpan berkas aktif di direktori khusus Miradi dalam "
-"komputer Anda. Dalam beberapa macam sistem operasi, lokasi ini adalah:"
-"<ul><li><b>Windows XP:</b> C:\\Documents and Settings\\<i>Nama Pengguna "
-"Anda</i>\\My Documents\\Miradi</li><li><b>Windows Vista:</b> C:\\Users"
-"\\<i>Nama Pengguna Anda</i>\\Documents\\Miradi</li><li><b>Mac OSX:</b> /home/"
-"<i>Nama Pengguna Anda</i>/Miradi</li><li><b>Linux:</b> /home/<<i>Nama "
-"Pengguna Anda</i>/Miradi</li></ul><p>Dalam direktori ini, Anda akan melihat "
-"satu folder untuk setiap proyek Miradi. Anda bisa memindahkan, menyalin, "
-"menghapus, atau menamai kembali folder-folder ini. Namun harap diingat bahwa "
-"folder sendiri merupakan \"berkas\" Miradi - dengan kata lain, nama folder "
-"adalah nama berkas dalam Miradi. Anda juga bisa mengelola berkas-berkas ini "
-"dari halaman Selamat Datang program Miradi.</p><p>Dalam beberapa situasi, "
-"Anda mungkin perlu mengubah lokasi standar untuk berkas Miradi Anda. "
-"Misalnya, jika laptop Windows Anda biasanya menyimpan \"My Documents/"
-"Documents\" di jaringan, tapi kemudian Anda memutuskan hubungan komputer "
-"dari jaringan, maka Anda harus menentukan secara spesifik direktori lokal "
-"standar yang baru. Klik tombol di bawah ini untuk membuat perubahan.</p><p "
-"class='hint'><b>Petunjuk:</b> Pastikan bahwa direktori yang Anda tentukan "
-"termasuk dalam rutinitas penyimpanan cadangan untuk komputer Anda guna "
-"memastikan bahwa Anda tidak kehilangan semua pekerjaan Miradi Anda apabila "
-"terjadi kegagalan sistem.</p><p></p></HTML> \t\t"
+"html|/resources/DataLocationInstructions.html|  <HTML><p>Miradi stores "
+"active files on a special Miradi directory on your computer. In different "
+"operating systems, these are:<ul><li><b>Windows XP:</b> C:\\Documents and "
+"Settings\\<i>Your User Name</i>\\My Documents\\Miradi</li><li><b>Windows "
+"Vista:</b> C:\\Users\\<i>Your User Name</i>\\Documents\\Miradi</"
+"li><li><b>Mac OSX:</b> /Users/<i>yourname</i>/Miradi</li><li><b>Linux:</b> /"
+"home/<i>Your User Name</i>/Miradi</li></ul><p>In this directory, you will "
+"see one folder for each Miradi project. You can move, copy, delete, or "
+"rename these folders. Remember, however, that the folder itself is the "
+"Miradi \"file\" - in other words, the name of the folder is the name of the "
+"file in Miradi. You can also manage these files from the Welcome page of the "
+"Miradi program.</p><p>In some instances, you may need to change the default "
+"location for your Miradi files. For example, if your laptop normally stores "
+"\"My Documents\" on a network drive, but you then disconnect your computer "
+"from the network, you will need to specify a new default local directory. "
+"Click on the button below to make this change.</p><p class='hint'><b>Hint:</"
+"b> Make sure that the directory that you specify is included in the backup "
+"routine for your computer to ensure that you do not lose all your Miradi "
+"work in the event of a system failure.</p><p></p></HTML>"
 
 msgid ""
 "html|/resources/RAREMiradiHelp.html|  <p>For help with Miradi at Rare, send "
@@ -17142,6 +17128,12 @@ msgstr ""
 "lebih besar dengan berbagi pelajaran yang dipelajari dari seluruh proyek. "
 "Untuk informasi lebih lanjut mengenai CAP, kunjungi <a href='http://www."
 "conservationgateway.org/cap'>www.conservationgateway.org/cap</a>.</p>"
+
+msgid ""
+"html|/resources/OldNewsMessage.html|<h2>Miradi News</h2><p>You have already "
+"seen the most recent news, last updated on $DATE$. </p><p>If you wish to "
+"view that news again, press the button below.</p><br>"
+msgstr ""
 
 msgid ""
 "html|/resources/OtherOrgOverview.html|<div class='OrgTopPanel'><span "
@@ -17385,12 +17377,6 @@ msgstr ""
 "<h2>Berita Miradi</h2><p>Panel ini biasanya menampilkan perbaruan perangkat "
 "lunak Miradi. Jika Anda melihat pesan ini berarti bahwa komputer tidak "
 "terhubung ke internet atau server berita Miradi tidak tersedia.</p> "
-
-msgid ""
-"html|/resources/OldNewsMessage.html|<h2>Miradi News</h2><p>You have already "
-"seen the most recent news, last updated on $DATE$. </p><p>If you wish to "
-"view that news again, press the button below.</p><br>"
-msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/WwfManagingOffices.tsv|"
@@ -26279,12 +26265,15 @@ msgstr "Kantor Wilayah US Selatan___US Selatan___YES"
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
 "Office___Worldwide Office___YES"
-msgstr "Worldwide Office___Worldwide Office___YES"
+msgstr ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
+"Office___Worldwide Office___YES"
 
 #, fuzzy
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
-msgstr "Non-TNC___Non-TNC___YES"
+msgstr ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Admiralty "
@@ -32688,246 +32677,3 @@ msgstr ""
 
 #~ msgid "Error setting value"
 #~ msgstr "Kesalahan penyetelan nilai "
-
-# AB: removed html
-#~ msgid "<html><h2>TARGETS</h2></html>"
-#~ msgstr "TARGET"
-
-#~ msgid "Hyperlink Label"
-#~ msgstr "Label Hyperlink "
-
-#~ msgid "TT|Choose which strategies are relevant to this objective"
-#~ msgstr "Pilih strategi mana yang relevan dengan sasaran ini "
-
-#~ msgid "Please select a threat and target"
-#~ msgstr "Pilih ancaman dan target "
-
-#~ msgid ""
-#~ "This threat is not currently linked to the selected target.  To create a "
-#~ "link, click in the associated gray box in the threat table"
-#~ msgstr ""
-#~ "Ancaman ini sedang tidak tertaut ke target terpilih. Untuk membuat "
-#~ "tautan, klik kotak abu-abu yang bersangkutan dalam tabel ancaman "
-
-#~ msgid "--Select a Target"
-#~ msgstr "--Pilih satu Target"
-
-#~ msgid "--Select a Threat"
-#~ msgstr "--Pilih satu Ancaman"
-
-# Edits 1c
-#~ msgid ""
-#~ "html|/resources/wizard/ThreatMatrixView/"
-#~ "ThreatRatingWizardChooseBundleLeft.html|  Start the threat rating process "
-#~ "by selecting a target-threat pair to work on:<br><table><tr><td "
-#~ "width='25'></td><td><p><strong>Which target do you want to work on?</"
-#~ "strong></p><table><tr><td width='25'></td><td><select "
-#~ "name='Target'><option >--Select a Target</option><option >Sharks</"
-#~ "option><option >Seagrass Beds</option><option >Mangroves</option><option "
-#~ ">Seabirds</option><option >Coral Reefs</option></select></td><td "
-#~ "width='25'></td></tr></table>\t<br><p><strong>Which threat do you want to "
-#~ "work on?</strong></p><table><tr><td width='25'></td><td><select "
-#~ "name='Threat'><option >--Select a Threat</option><option >Introduced "
-#~ "Predators (Rats)</option><option >Sewage</option><option >Unsustainable "
-#~ "Fishing  by Locals</option><option >Illegal Shark Fishing by Mainland "
-#~ "Boats</option><option >Diver & Anchor Damage</option><option >Global "
-#~ "warming</option></select></td><td width='25'></td></tr></table></td><td "
-#~ "width='25'></td></tr></table><br></br><table><tr>\t<td width='25'></td>"
-#~ "\t<td>\t\t<table><tr>\t\t\t<td align='left' valign='top'><input "
-#~ "type='submit' name='Back' value='&lt; Previous'></input></td>\t\t\t<td "
-#~ "align='left' valign='top'>&nbsp;</td>\t\t\t<td align='left' "
-#~ "valign='top'><input type='submit' name='Next' value='Do Threat Rating "
-#~ "&gt;'></input></td>\t\t</tr>\t\t<tr>\t\t\t<td align='left' "
-#~ "valign='top'>&nbsp;</td>\t\t\t<td align='left' valign='top'><input "
-#~ "type='submit' name='Done' value='Done with Threat Ratings'></input></td>\t"
-#~ "\t\t<td align='left' valign='top'>&nbsp;</td>\t\t</tr></table>\t</td>"
-#~ "\t<td width='25'></td></tr></table>"
-#~ msgstr ""
-#~ "Mulai proses pemeringkatan ancaman dengan memilih pasangan target-ancaman "
-#~ "yang akan digarap:<br><table><tr><td width='25'></"
-#~ "td><td><p><strong>Target mana yang ingin Anda garap?</strong></"
-#~ "p><table><tr><td width='25'></td><td><select name='Target'><option >--"
-#~ "Pilih Target</option><option >Ikan Hiu</option><option >Dasar Rumput "
-#~ "Laut</option><option >Hutan bakau</option><option >Burung Laut</"
-#~ "option><option >Terumbu Karang</option></select></td><td width='25'></"
-#~ "td></tr></table>\t<br><p><strong>Ancaman mana yang ingin Anda garap?</"
-#~ "strong></p><table><tr><td width='25'></td><td><select "
-#~ "name='Threat'><option >--Pilih Ancaman</option><option >Masuknya Predator "
-#~ "(Tikus)</option><option >Saluran Limbah</option><option >Penangkapan Ikan "
-#~ "Tak Berkelanjutan oleh Penduduk Setempat</option><option >Penangkapan "
-#~ "Ikan Hiu Ilegal dengan Perahu Nelayan </option><option >Kerusakan oleh "
-#~ "Jangkar & Penyelam</option><option >Pemanasan Global</option></select></"
-#~ "td><td width='25'></td></tr></table></td><td width='25'></td></tr></"
-#~ "table><br></br><table><tr>\t<td width='25'></td>\t<td>\t\t<table><tr>\t\t"
-#~ "\t<td align='left' valign='top'><input type='submit' name='Back' value='< "
-#~ "Sebelumnya'></input></td>\t\t\t<td align='left' valign='top'>&nbsp;</td>\t"
-#~ "\t\t<td align='left' valign='top'><input type='submit' name='Next' "
-#~ "value='Lakukan Pemeringkatan Ancaman >'></input></td>\t\t</tr>\t\t<tr>\t\t"
-#~ "\t<td align='left' valign='top'>&nbsp;</td>\t\t\t<td align='left' "
-#~ "valign='top'><input type='submit' name='Done' value='Selesai dengan "
-#~ "Pemeringkatan Ancaman'></input></td>\t\t\t<td align='left' "
-#~ "valign='top'>&nbsp;</td>\t\t</tr></table>\t</td>\t<td width='25'></td></"
-#~ "tr></table> "
-
-#~ msgid ""
-#~ "<html><p>This table lists all the Resources that have been created within "
-#~ "this project. </p><p>You can select existing resources and add them to "
-#~ "the team, or you can create new resources.</p></html"
-#~ msgstr ""
-#~ "<html><p>Tabel ini mendaftar semua Sumber Daya yang telah dibuat dalam "
-#~ "proyek ini. </p><p>Anda bisa memilih dan menambahkan sumber daya ke tim, "
-#~ "atau membuat sumber daya baru.</p></html>"
-
-#~ msgid "Title|KeyEcologicalAttribute Properties"
-#~ msgstr "Sifat-sifat AtributEkologiKunci \t"
-
-#~ msgid "FactorSummaryCommentsPanel"
-#~ msgstr "Panel Komentar Ringkasan Faktor "
-
-#~ msgid "FactorSummaryCorePanel"
-#~ msgstr "Panel Inti Ringkasan Faktor "
-
-#~ msgid "Strategy Relevancy Panel"
-#~ msgstr "Panel Relevansi Strategi "
-
-#~ msgid "Menu|Export"
-#~ msgstr "Ekspor "
-
-#~ msgid ""
-#~ "<html><strong>Custom Reports</Strong><br><br>Miradi is able to run custom "
-#~ "reports created using the free iReports tool. <br>This requires technical "
-#~ "knowledge, so if you are interested in creating <br>your own reports, "
-#~ "please contact the Miradi team (email support@miradi.org)"
-#~ msgstr ""
-#~ "<html><strong>Laporan Tersuai</Strong><br><br>Miradi bisa menjalankan "
-#~ "laporan tersuai yang dibuat dengan menggunakan perangkat cuma-cuma "
-#~ "iReports. <br>Perangkat ini memerlukan pengetahuan teknis, jadi jika Anda "
-#~ "ingin membuat <br>laporan sendiri, silakan hubungi tim Miradi (email "
-#~ "support@miradi.org) "
-
-#~ msgid "Choose Custom Report"
-#~ msgstr "Pilih Laporan Tersuai "
-
-#~ msgid "Save"
-#~ msgstr "Simpan "
-
-#~ msgid "Error while generating a report"
-#~ msgstr "Kesalahan saat membuat laporan "
-
-#~ msgid "Choose Relevant Strategy(s)"
-#~ msgstr "Pilih Strategi(-strategi) yang Relevan "
-
-#~ msgid "FileFilter|Project Files (*.eam)"
-#~ msgstr "Berkas Proyek (*.eam) "
-
-#~ msgid "TT|Project XML File"
-#~ msgstr "Berkas XML Proyek "
-
-#~ msgid "Action|ConPro Project Zipfile"
-#~ msgstr "Berkas Zip Proyek ConPro "
-
-#~ msgid "TT|Miradi Zip project Zipfile"
-#~ msgstr "Berkas Zip proyek Zip Miradi "
-
-#~ msgid "Import ConPro Project"
-#~ msgstr "Impor Proyek ConPro "
-
-#~ msgid "Import Miradi Project"
-#~ msgstr "Impor Proyek Miradi "
-
-#~ msgid "Type"
-#~ msgstr "Jenis "
-
-#~ msgid "WrappedFactorId"
-#~ msgstr "ID Faktor Terbalut "
-
-#~ msgid "WrappedId"
-#~ msgstr "ID Terbalut "
-
-#~ msgid "DiagramFactorIds"
-#~ msgstr "ID Faktor Diagram "
-
-#~ msgid "Id"
-#~ msgstr "ID "
-
-#~ msgid "DiagramFactorLinkIds"
-#~ msgstr "ID Tautan Faktor Diagram "
-
-#~ msgid "FromDiagramFactorId"
-#~ msgstr "ID Faktor Diagram Dari "
-
-#~ msgid "ToDiagramFactorId"
-#~ msgstr "ID Faktor Diagram Ke "
-
-#~ msgid ""
-#~ "html|/resources/wizard/ReportsView/ReportsOverviewStepRight.html|  "
-#~ "<h3>Exporting Data in Miradi to Other Applications</h3>There are many "
-#~ "ways to export your information from Miradi to other applications."
-#~ "<h4>Export Images</h4>Use the <code class='toolbarbutton'>&lt;File/Export/"
-#~ "JPEG Image&gt;</code> or <code class='toolbarbutton'>&lt;File/Export/PNG "
-#~ "Image&gt;</code> menu commands  to capture a specific diagram or table on "
-#~ "your screen in an image file. This method is particularly useful to:"
-#~ "<ul><li>Put a diagram or table in a document or presentation</"
-#~ "li><li>Create an image that can be put in a website</li></ul><h4>Export "
-#~ "Miradi Zip File</h4>Use the <code class='toolbarbutton'>&lt;File/Export/"
-#~ "Miradi Project Zipfile&gt;</code> menu command to capture your entire "
-#~ "project in a small zip file. This method is particularly useful to:"
-#~ "<ul><li>Send your project to another Miradi user</li><li>Create a backup "
-#~ "copy of your project</li></ul><h4>Export Project XML File</h4>Use the "
-#~ "<code class='toolbarbutton'>&lt;File/Export/Project XML File&gt;</code> "
-#~ "menu command to create an XML file with all your project data. Although "
-#~ "managing the XML file will require technical skills, this method is "
-#~ "particularly useful to:<ul><li>Create a file that can be imported by a "
-#~ "database</li><li>Export all of your project's information into formats "
-#~ "that can be read by other applications</li></ul><h4>Export Tab Delimited "
-#~ "Data</h4>Use the <code class='toolbarbutton'>&lt;File/Export/Tab "
-#~ "Delimited Data&gt;</code> menu command to export the currently viewed "
-#~ "table to a tab-delimited file. This method is particularly useful to:"
-#~ "<ul><li>Export the current configuration from your planning view to a "
-#~ "spreadsheet like Excel</li><li>Export financial information</li></"
-#~ "ul><h4>Generate Reports</h4>Use the <code class='toolbarbutton'>&lt;"
-#~ "Reports&gt;</code> view to create a PDF (Adobe Acrobat) or ODT (Open "
-#~ "Office) file that contains various configurations of your project data. "
-#~ "This method is particularly useful to:<ul><li>Create a document that can "
-#~ "be edited in the Open Office Word Processor</li><li>Create a standard "
-#~ "report for a donor or other key audience for your project</li></ul>"
-#~ msgstr ""
-#~ "<h3>Mengekspor Data dalam Miradi ke Aplikasi Lain</h3>Ada banyak cara "
-#~ "untuk mengekspor informasi dari Miradi ke aplikasi lainnya.<h4>Ekspor "
-#~ "Gambar/Foto</h4>Gunakan perintah menu<code class='toolbarbutton'><Berkas/"
-#~ "Ekspor/Gambar JPEG></code> atau <code class='toolbarbutton'><Berkas/"
-#~ "Ekspor/Gambar PNG></code>untuk menyimpan diagram atau tabel khusus yang "
-#~ "ada di layar Anda ke dalam berkas gambar. Metode ini khususnya berguna "
-#~ "untuk:<ul><li>Meletakkan diagram atau tabel dalam suatu dokumen atau "
-#~ "presentasi</li><li>Membuat gambar yang bisa diletakkan dalam situs web</"
-#~ "li></ul><h4>Mengekspor Berkas Zip Miradi</h4>Gunakan perintah menu<code "
-#~ "class='toolbarbutton'><File/Export/Miradi Project Zipfile></code> untuk "
-#~ "menyimpan keseluruhan proyek ke dalam berkas zip berukuran kecil. Metode "
-#~ "ini khususnya berguna untuk:<ul><li>Mengirimkan proyek ke pengguna Miradi "
-#~ "lainnya</li><li>Membuat salinan cadangan dari proyek Anda</li></"
-#~ "ul><h4>Mengekspor Berkas XML Proyek</h4>Gunakan perintah menu<code "
-#~ "class='toolbarbutton'><File/Export/Project XML File></code>untuk membuat "
-#~ "berkas XML dengan semua data proyek Anda. Meskipun mengelola berkas XML "
-#~ "memerlukan keterampilan teknis, metode ini khususnya berguna untuk:"
-#~ "<ul><li>Membuat berkas yang bisa diimpor oleh basis data</"
-#~ "li><li>Mengekspor semua informasi proyek Anda menjadi format yang bisa "
-#~ "dibaca dengan aplikasi lain.</li></ul><h4>Ekspor Data yang Dibatasi Tab</"
-#~ "h4>Gunakan perintah menu<code class='toolbarbutton'><File/Export/Tab "
-#~ "Delimited Data></code> untuk mengekspor tabel yang saat ini baru saja "
-#~ "ditampilkan ke dalam berkas dengan format yang dibatasi oleh tab. Metode "
-#~ "ini khususnya berguna untuk:<ul><li>Mengekspor konfigurasi saat ini dari "
-#~ "tampilan perencanaan Anda ke dalam lembar bentang seperti Excel</"
-#~ "li><li>Mengekspor informasi keuangan</li></ul><h4>Membuat Laporan</"
-#~ "h4>Menggunakan tampilan<code class='toolbarbutton'><Laporan></code> untuk "
-#~ "membuat berkas PDF (Adobe Acrobat) atau ODT (Open Office) yang berisi "
-#~ "berbagai konfigurasi data proyek Anda. Metode ini khususnya berguna untuk:"
-#~ "<ul><li>Membuat dokumen yang bisa diubah dalam Pengolah Kata Open Office</"
-#~ "li><li>Membuat laporan standar untuk penyumbang dana atau khalayak "
-#~ "penting lainnya bagi proyek Anda</li></ul> "
-
-#~ msgid ""
-#~ "html|/resources/NextStepAfterCpmzImport.html|<p>Finished importing your "
-#~ "conpro project,  you can now open it and use it in Miradi.</p>"
-#~ msgstr ""
-#~ "<p>Setelah selesai mengimpor proyek conpro, Anda kini bisa membukanya dan "
-#~ "menggunakannya dalam Miradi.</p> \t\t"
