@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-12 12:17-0500\n"
-"PO-Revision-Date: 2008-11-25 07:05-0500\n"
-"Last-Translator: Lucy Tickell <ltickell@globalarena.com>\n"
+"POT-Creation-Date: 2009-02-14 19:05-0500\n"
+"PO-Revision-Date: 2009-02-14 19:04-0500\n"
+"Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,6 +69,10 @@ msgstr "分级 "
 msgid "Title|Stress Details"
 msgstr "压力详情"
 
+#: miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:32
+msgid "Manage Stresses for "
+msgstr "管理压力对象 \t\t"
+
 #: miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:48
 msgid "Title|Stress Visibility"
 msgstr "压力可见度"
@@ -76,10 +80,6 @@ msgstr "压力可见度"
 #: miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:60
 msgid "Tab|Stresses"
 msgstr "压力"
-
-#: miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:32
-msgid "Manage Stresses for "
-msgstr "管理压力对象 \t\t"
 
 #: miradi/source/org/miradi/dialogs/groupboxLink/GroupBoxLinkManagementPanel.java:49
 msgid "Tab|Group Box Link"
@@ -156,11 +156,16 @@ msgstr "重建树结构出错 \t\t"
 msgid "Tab|Indicators"
 msgstr "指示物 \t\t"
 
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:56
+#, fuzzy
+msgid "Title|Simple Mode Target Properties"
+msgstr "Title|Simple Mode Target Properties"
+
 #: miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 #, fuzzy
 msgid "Date"
-msgstr "粘贴 \t\t"
+msgstr "Date"
 
 #: miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:54
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:48
@@ -184,6 +189,11 @@ msgstr "期望的价值/地位 \t\t"
 msgid "Title|Indicator Properties"
 msgstr "指示物属性 \t\t"
 
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:56
+#, fuzzy
+msgid "Title|Key Attribute Mode Target Properties"
+msgstr "Title|Key Attribute Mode Target Properties"
+
 #: miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:71
 msgid "Viability Ratings"
 msgstr "生存力分级 \t\t"
@@ -196,7 +206,7 @@ msgstr "生存力分级 \t\t"
 #: miradi/source/org/miradi/objects/FactorLink.java:227
 #, fuzzy
 msgid "Error"
-msgstr "（错误） \t\t"
+msgstr "Error"
 
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityTreePropertiesPanel.java:85
 msgid "Title|Target Viability Properties"
@@ -234,22 +244,80 @@ msgstr "进展报告 \t\t"
 msgid "Monitoring Plan"
 msgstr "监控计划 \t\t"
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:56
-#, fuzzy
-msgid "Title|Simple Mode Target Properties"
-msgstr "嵌套对象属性 \t\t"
-
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:56
-#, fuzzy
-msgid "Title|Key Attribute Mode Target Properties"
-msgstr "嵌套对象属性 \t\t"
-
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:280
 msgid "Target"
 msgstr "对象"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
+#, fuzzy
+msgid "Summary Target Ratings:"
+msgstr "Summary Target Ratings:"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
+msgid "<html><b>Overall<br>Project<br>Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+msgid "Threats"
+msgstr "威胁因子 \t\t"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#, fuzzy
+msgid "Targets"
+msgstr "Targets"
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
+msgid "Summary Threat Rating"
+msgstr "威胁因子分级摘要 \t\t"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+#, fuzzy
+msgid "Title|Simple Threat Rating"
+msgstr "Title|Simple Threat Rating"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
+#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
+msgid "Scope"
+msgstr "范围 \t\t"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
+msgid "Severity"
+msgstr "严重性"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+msgid "Irreversibility"
+msgstr "不可逆性"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
+msgid "<html><b>Summary<br>Target-Threat<br>Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:154
+msgid "Threat Name"
+msgstr "威胁因子名称 \t\t"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:156
+msgid "Stress Name"
+msgstr "压力名称 \t\t"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
+msgid "(Create, manage, and rate the stresses for this target)"
+msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
+msgid "Title|Stress-Based Threat Rating"
+msgstr "基于压力的威胁因子分级 \t\t"
+
+#: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
+msgid "Threat Rating Preferences Panel"
+msgstr "威胁因子分级优先选择面板 \t\t"
 
 #: miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:48
 msgid "Title|Activity Visibility"
@@ -297,74 +365,6 @@ msgstr "加标签的条目"
 msgid "Title|Tag Properties Panel"
 msgstr "标题|标签属性面板"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
-msgid "Threats"
-msgstr "威胁因子 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
-#, fuzzy
-msgid "Targets"
-msgstr "对象"
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
-#, fuzzy
-msgid "Summary Target Ratings:"
-msgstr "对象评级概要 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
-msgid "<html><b>Overall<br>Project<br>Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
-msgid "Summary Threat Rating"
-msgstr "威胁因子分级摘要 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
-#, fuzzy
-msgid "Title|Simple Threat Rating"
-msgstr "简单威胁因子评级 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:154
-msgid "Threat Name"
-msgstr "威胁因子名称 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:156
-msgid "Stress Name"
-msgstr "压力名称 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
-msgid "(Create, manage, and rate the stresses for this target)"
-msgstr "（对本对象进行创建、管理、以及压力分级） \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
-msgid "Title|Stress-Based Threat Rating"
-msgstr "基于压力的威胁因子分级 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
-msgid "Scope"
-msgstr "范围 \t\t"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
-msgid "Severity"
-msgstr "严重性"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
-msgid "Irreversibility"
-msgstr "不可逆性"
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
-msgid "<html><b>Summary<br>Target-Threat<br>Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
-msgid "Threat Rating Preferences Panel"
-msgstr "威胁因子分级优先选择面板 \t\t"
-
 #: miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:57
 msgid "Tab|Nested Targets"
 msgstr "嵌套对象 \t\t"
@@ -410,7 +410,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/task/TaskPropertiesInputPanel.java:73
 #, fuzzy
 msgid "Title|Summary"
-msgstr "摘要 \t\t"
+msgstr "Title|Summary"
 
 #: miradi/source/org/miradi/dialogs/task/TaskPropertiesPanel.java:43
 msgid ""
@@ -444,15 +444,15 @@ msgstr "任务"
 msgid "Summary"
 msgstr "摘要 \t\t"
 
-#: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:42
-#, fuzzy
-msgid "Title|Method Properties"
-msgstr "标题|对象属性"
-
 #: miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanel.java:44
 #, fuzzy
 msgid "Title|Activity Properties"
-msgstr "分目标属性 \t\t"
+msgstr "Title|Activity Properties"
+
+#: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:42
+#, fuzzy
+msgid "Title|Method Properties"
+msgstr "Title|Method Properties"
 
 #: miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:91
 msgid "Title|Other Orgs"
@@ -471,6 +471,16 @@ msgstr "组织联系方式 \t\t"
 #: miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
 msgstr "组织属性 \t\t"
+
+#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:38
+#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:38
+msgid "Page:"
+msgstr "页： \t\t"
+
+#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:47
+#, fuzzy
+msgid "Title|Results Chain Properties"
+msgstr "Title|Results Chain Properties"
 
 #: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
 msgid "Title|Link Create Dialog"
@@ -555,7 +565,7 @@ msgstr "传承TNC分级 \t\t"
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:104
 #, fuzzy
 msgid "Tags"
-msgstr "标签"
+msgstr "Tags"
 
 #: miradi/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:36
 msgid "Share"
@@ -587,6 +597,13 @@ msgstr "开销/何时/何人 \t\t"
 msgid "Group Box Properties"
 msgstr "组合框属性 \t\t"
 
+#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
+msgid ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+msgstr ""
+"当前处于集思广益模式，因此有些因素被隐藏了。要返回正常模式，点击本按钮： "
+
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
@@ -598,13 +615,6 @@ msgstr "策略 \t\t"
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:38
 msgid "Progress"
 msgstr "进展 "
-
-#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
-msgid ""
-"Currently in brainstorm mode, so some factors are hidden. To return to "
-"normal mode, press this button: "
-msgstr ""
-"当前处于集思广益模式，因此有些因素被隐藏了。要返回正常模式，点击本按钮： "
 
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:49
@@ -635,6 +645,10 @@ msgstr "结果链属性 \t\t"
 msgid "Conceptual Model Page Properties"
 msgstr "概念模型页面属性 \t\t"
 
+#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
+msgid "Title|Diagram Properties"
+msgstr "图表属性 \t\t"
+
 #: miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
 msgid "Related Items"
 msgstr "相关条目 \t\t"
@@ -651,20 +665,6 @@ msgstr "链接属性 \t\t"
 msgid "Rollup Panel"
 msgstr "小计面板 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:38
-#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:38
-msgid "Page:"
-msgstr "页： \t\t"
-
-#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:47
-#, fuzzy
-msgid "Title|Results Chain Properties"
-msgstr "结果链属性 \t\t"
-
-#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
-msgid "Title|Diagram Properties"
-msgstr "图表属性 \t\t"
-
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:59
 msgid ""
 "<HTML>A severe error has prevented this Planning Subview from being shown."
@@ -676,7 +676,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
 #, fuzzy
 msgid "[Error]"
-msgstr "（错误） \t\t"
+msgstr "[Error]"
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:156
 msgid "Budget Total"
@@ -716,16 +716,6 @@ msgstr "资金来源 \t\t"
 msgid "An error has occured while writing assignment data."
 msgstr "编写分配数据时出现一个错误。 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningTreeMultiPropertiesPanel.java:239
-#, fuzzy
-msgid "An unexpected error has occurred"
-msgstr "出现意外错误： \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
-#, fuzzy
-msgid "(not specified)"
-msgstr "未指定 \t\t"
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:55
 msgid "Total"
 msgstr "总计 \t\t"
@@ -734,10 +724,10 @@ msgstr "总计 \t\t"
 msgid "Task Properties"
 msgstr "任务属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
-msgid "Title|Factor Properties"
-msgstr "因素属性 \t\t"
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
+#, fuzzy
+msgid "(not specified)"
+msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:76
@@ -747,6 +737,22 @@ msgstr "威胁因子减少结果"
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:39
 msgid "Title|Threat Reduction Result Properties"
 msgstr "标题|威胁因子减少结果属性"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
+msgid "Title|Factor Properties"
+msgstr "因素属性 \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
+#: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
+msgid "Contributing Factor"
+msgstr "影响因素"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
+#, fuzzy
+msgid "Title|Contributing Factor Properties"
+msgstr "Title|Contributing Factor Properties"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:75
@@ -761,16 +767,10 @@ msgstr "标题|中途结果属性"
 msgid "Planning View Configuration Label Properties"
 msgstr "计划视图配置标签属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
-#: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
-msgid "Contributing Factor"
-msgstr "影响因素"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningTreeMultiPropertiesPanel.java:239
 #, fuzzy
-msgid "Title|Contributing Factor Properties"
-msgstr "因素属性 \t\t"
+msgid "An unexpected error has occurred"
+msgstr "An unexpected error has occurred"
 
 #: miradi/source/org/miradi/dialogs/planning/legend/ControlPanel.java:42
 #: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:164
@@ -784,7 +784,7 @@ msgstr "计划视图 \t\t"
 #: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:77
 #, fuzzy
 msgid "Error Occurred While in Planning View Legend Panel"
-msgstr "处于规划视图的Leged面板时出错 \t\t"
+msgstr "Error Occurred While in Planning View Legend Panel"
 
 #: miradi/source/org/miradi/dialogs/planning/legend/PlanningViewCustomizationPanel.java:89
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:112
@@ -871,10 +871,17 @@ msgid ""
 "<code class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;"
 "As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 msgstr ""
-"选择您要运行的报告。Miradi会提示您将报告保存为富文本格式（RTF）文件。一旦您创"
-"建了该文件，您就可以使用MS Word或Open Office Writer等文字处理程序来编辑或打"
-"印。<br></br><br></br>注意：如果您在文件处理器中编辑报告，您所做的改动在下一"
-"次生成报告时不会得以保存。因此，应当尽可能地在适当的Miradi字段中作编辑。"
+"Select the report that you want to run. Miradi will then prompt you to save "
+"the report as a Rich Text Format (RTF) file. Once you have created this "
+"file, you can edit or print it using a word processing program such as MS "
+"Word or Open Office Writer. <br></br><br></br>Note that if you edit the "
+"report in your word processor, your changes will not be maintained the next "
+"time you generate a report. As a result, try to make the edits in the "
+"appropriate Miradi fields where possible.<br></br><br></br><span "
+"class='hint'><b>Hint:</B> If you want to export a customized table, do not "
+"use report view. Instead, in any view, configure the table and then use the "
+"<code class='toolbarbutton'>&lt;File/ Export&nbsp;Current&nbsp;Page&nbsp;"
+"As.../ RTF&nbsp;File&gt;</code> menu command from within that view.</span>"
 
 #: miradi/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:102
 msgid "How Reports Work"
@@ -1024,6 +1031,11 @@ msgstr "选择位置... \t\t"
 msgid "Error occured while saving data location"
 msgstr "保存数据位置时出错 \t\t"
 
+#: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
+#: miradi/source/org/miradi/views/TabbedView.java:223
+msgid "Instructions"
+msgstr "说明 \t\t"
+
 #: miradi/source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:44
 msgid "Choose Data Directory"
 msgstr "选择数据目录 \t\t"
@@ -1042,11 +1054,6 @@ msgstr "目录选择器 \t\t"
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 msgid "Cancel"
 msgstr "取消 \t\t"
-
-#: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
-#: miradi/source/org/miradi/views/TabbedView.java:223
-msgid "Instructions"
-msgstr "说明 \t\t"
 
 #: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePoolManagementPanel.java:104
 msgid "Title|Funding Sources"
@@ -1263,6 +1270,31 @@ msgstr "一步一步 \t\t"
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
+#: miradi/source/org/miradi/main/SampleInstaller.java:48
+#, fuzzy
+msgid "Sample Project Installed"
+msgstr "Sample Project Installed"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:68
+#, fuzzy
+msgid "Do you want to install the sample project?"
+msgstr "Do you want to install the sample project?"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+#, fuzzy
+msgid "Button|Yes"
+msgstr "Button|Yes"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+#, fuzzy
+msgid "Button|No"
+msgstr "Button|No"
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:71
+#, fuzzy
+msgid "Install Sample Project"
+msgstr "Install Sample Project"
+
 #: miradi/source/org/miradi/main/EAM.java:128
 msgid "Warning"
 msgstr "警告 \t\t"
@@ -1372,7 +1404,7 @@ msgstr "语言： \t\t"
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:126
 #, fuzzy
 msgid "Button|Install..."
-msgstr "取消 \t\t"
+msgstr "Button|Install..."
 
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:134
 msgid ""
@@ -1393,7 +1425,7 @@ msgstr ""
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:165
 #, fuzzy
 msgid "Button|Replace"
-msgstr "按钮|替换备份 \t\t"
+msgstr "Button|Replace"
 
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:167
 msgid "That language pack already exists. Replace it?"
@@ -1410,37 +1442,12 @@ msgstr ""
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:191
 #, fuzzy
 msgid "Unexpected error prevented installing that language pack"
-msgstr "未知错误阻止打开项目 \t\t"
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:48
-#, fuzzy
-msgid "Sample Project Installed"
-msgstr "（参见项目标签） \t\t"
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:68
-#, fuzzy
-msgid "Do you want to install the sample project?"
-msgstr "您是否确定要重命名项目： \t\t"
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:69
-#, fuzzy
-msgid "Button|Yes"
-msgstr "共享的 \t\t"
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:69
-#, fuzzy
-msgid "Button|No"
-msgstr "确定 \t\t"
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:71
-#, fuzzy
-msgid "Install Sample Project"
-msgstr "重命名项目 \t\t"
+msgstr "Unexpected error prevented installing that language pack"
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:149
 #, fuzzy
 msgid "An unexpected error prevented that operation"
-msgstr "一个内部错误阻止了该操作 \t\t"
+msgstr "An unexpected error prevented that operation"
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:196
 msgid "Cut"
@@ -2674,12 +2681,12 @@ msgstr "FOS "
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:67
 #, fuzzy
 msgid "Target Viability - Table"
-msgstr "对象生存力"
+msgstr "Target Viability - Table"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:72
 #, fuzzy
 msgid "Target Viability - Details"
-msgstr "对象生存力"
+msgstr "Target Viability - Details"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
 #: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
@@ -2769,6 +2776,18 @@ msgstr "进展良好"
 msgid "Fully on Schedule"
 msgstr "完全按时"
 
+#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
+msgid "No"
+msgstr "否"
+
+#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
+msgid "Yes"
+msgstr "是"
+
 #: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr "人员 "
@@ -2792,12 +2811,12 @@ msgstr "仅限于分目标组 \t\t"
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:44
 #, fuzzy
 msgid "Targets Only"
-msgstr "仅限于测量 \t\t"
+msgstr "Targets Only"
 
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:45
 #, fuzzy
 msgid "Direct Threats Only"
-msgstr "直接威胁因子"
+msgstr "Direct Threats Only"
 
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:46
 msgid "Strategies Only"
@@ -2818,7 +2837,7 @@ msgstr "仅限于方法 \t\t"
 #: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 #, fuzzy
 msgid "Assigned Resources Only"
-msgstr "分配资源 \t\t"
+msgstr "Assigned Resources Only"
 
 #: miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
@@ -2958,18 +2977,6 @@ msgstr "外部研究"
 msgid "Onsite Research"
 msgstr "实地研究"
 
-#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
-msgid "No"
-msgstr "否"
-
-#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
-msgid "Yes"
-msgstr "是"
-
 #: miradi/source/org/miradi/rtf/ProjectRtfExporter.java:57
 msgid "Project Plan For "
 msgstr "为…制定计划"
@@ -3073,6 +3080,14 @@ msgstr "标准报告 \t\t"
 msgid "Custom Reports"
 msgstr "定制报告 \t\t"
 
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
+msgid "Data was exported as tab delimited."
+msgstr "数据以制表符分隔格式导出 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
+msgid "Error occurred while trying to export to a tab delimited file."
+msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
+
 #: miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:169
 msgid "Delete..."
@@ -3086,13 +3101,9 @@ msgstr "您确定? \t\t"
 msgid "Button|Ok"
 msgstr "确定 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
-msgid "Data was exported as tab delimited."
-msgstr "数据以制表符分隔格式导出 \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
-msgid "Error occurred while trying to export to a tab delimited file."
-msgstr "试图导出到制表符分隔格式文件时出错。 \t\t"
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
+msgid "Are you sure you want to delete this Progress Percent?"
+msgstr "您是否确定要删除该进展报告？ \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
 msgid "Current page was exported as RTF."
@@ -3104,16 +3115,13 @@ msgstr ""
 "在试图导出当前页面为RTF.\n"
 "时出错"
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
+msgid "Edit Progress Percents"
+msgstr "编辑进展百分比 \t\t"
+
 #: miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
 msgid "Title|View..."
 msgstr "视图… \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:47
-#: miradi/source/org/miradi/views/noproject/CopyProject.java:52
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:32
-#, fuzzy
-msgid "Save As..."
-msgstr "拷贝另存为… \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:41
 msgid ""
@@ -3123,9 +3131,20 @@ msgstr ""
 "当前向导步骤名称：\n"
 " %s \t\t"
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
+msgid "Relevant Strategies and Activities"
+msgstr "相关策略和活动"
+
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:32
 msgid "Edit Methods"
 msgstr "编辑方法 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:47
+#: miradi/source/org/miradi/views/noproject/CopyProject.java:52
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:32
+#, fuzzy
+msgid "Save As..."
+msgstr "Save As..."
 
 #: miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
 msgid "Help"
@@ -3134,7 +3153,7 @@ msgstr "帮助 \t\t"
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:43
 #, fuzzy
 msgid "Delete %s"
-msgstr "删除"
+msgstr "Delete %s"
 
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:44
 #, fuzzy
@@ -3143,23 +3162,7 @@ msgid ""
 "Are you sure you want to delete the selected %s?"
 msgstr ""
 "\n"
-"您是否确定要删除"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
-msgid "Relevant Strategies and Activities"
-msgstr "相关策略和活动"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
-msgid "Are you sure you want to delete this Progress Percent?"
-msgstr "您是否确定要删除该进展报告？ \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
-msgid "Edit Progress Percents"
-msgstr "编辑进展百分比 \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
-msgid "Choose Relevant Indicator(s)"
-msgstr "选择相关的（多种）指示物 \t\t"
+"Are you sure you want to delete the selected %s?"
 
 #: miradi/source/org/miradi/views/umbrella/HelpAboutPanel.java:33
 msgid "Title|About Miradi"
@@ -3172,17 +3175,17 @@ msgstr "撤销时出错 \t\t"
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:89
 #, fuzzy
 msgid "Current project name:"
-msgstr "无效的项目名称： \t\t"
+msgstr "Current project name:"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:92
 #, fuzzy
 msgid "New project name: "
-msgstr "新的项目文件名： \t\t"
+msgstr "New project name: "
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:98
 #, fuzzy
 msgid "Miradi data directory:"
-msgstr "选择数据目录 \t\t"
+msgstr "Miradi data directory:"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:101
 msgid "Label|Existing Projects:"
@@ -3191,7 +3194,7 @@ msgstr "退出项目： \t\t"
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:113
 #, fuzzy
 msgid "Button|Save"
-msgstr "共享的 \t\t"
+msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:246
 msgid "Cannot save a project back to its existing name"
@@ -3281,10 +3284,6 @@ msgstr "适应性管理 \t\t"
 msgid "Action|Support"
 msgstr "支持 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
-msgid "Exported file does not validate."
-msgstr "导出的文件不正确。 \t\t"
-
 #: miradi/source/org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
 #: miradi/source/org/miradi/actions/ActionCreateActivityProgressReport.java:35
 #: miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:35
@@ -3320,6 +3319,10 @@ msgstr "删除 \t\t"
 #: miradi/source/org/miradi/views/umbrella/Definition.java:58
 msgid "(Definition Not Available)"
 msgstr "（无可用定义） \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
+msgid "Choose Relevant Indicator(s)"
+msgstr "选择相关的（多种）指示物 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/Redo.java:60
 msgid "Error during redo"
@@ -3516,7 +3519,7 @@ msgstr ""
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:111
 #, fuzzy
 msgid "Assigned Resource"
-msgstr "分配资源 \t\t"
+msgstr "Assigned Resource"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:111
 msgid ""
@@ -3540,10 +3543,13 @@ msgid ""
 "occurence. For species, measured as the proportion of the target's "
 "population."
 msgstr ""
-"范围（威胁因子评级）——威胁因子评级标准最常见的定义方法是，根据目前情况和趋"
-"势，若继续发展下去，此威胁因子在十年内对对象造成的影响在空间上的比例来定义。"
-"对于生态系统与生态群落，按对象发生率的比例来测量。 对于物种，按对象种群数量的"
-"比例来测量。"
+"Scope (Threat Ratings) - A threat rating criterion that is most commonly "
+"defined spatially as the proportion of the target that can reasonably be "
+"expected to be affected by the threat within ten years given the "
+"continuation of current circumstances and trends. For ecosystems and "
+"ecological communities, measured as the proportion of the target's "
+"occurence. For species, measured as the proportion of the target's "
+"population."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:124
 #: miradi/source/org/miradi/diagram/cells/ProjectScopeBox.java:76
@@ -3599,8 +3605,9 @@ msgid ""
 "to know about your project. A good plan includes the indicators that you "
 "will track over time as well as the methods that you will use."
 msgstr ""
-"监控计划——指一个信息收集计划，用于收集您和其他人需要了解的有关您项目的信息。"
-"良好的计划包括您可以随时跟踪的指示物以及您要使用的方法。"
+"Monitoring Plan - A plan for collecting information that you and others need "
+"to know about your project. A good plan includes the indicators that you "
+"will track over time as well as the methods that you will use."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:153
 msgid "Strategy Effectiveness"
@@ -3791,15 +3798,20 @@ msgid ""
 "at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
 msgstr ""
-"<html>项目（一般）——指由人力小组和/或组织为实现既定的总目标和分目标而采取的一"
-"整套行动。项目的规模可从当地人士保护小型圣地到某捐赠人保护整个海洋的的行动，"
-"不一而足。\n"
+"<html>Project (general) - Any set of actions undertaken by a group of people "
+"and/or organizations to achieve defined goals and objectives. Projects can "
+"range in scale from efforts by local people to protect a small sacred grove "
+"to efforts by a donor to protect an entire ocean. \n"
 "\n"
-"<p>项目（在Miradi中）——项目指Miradi中的软件文件的基本单位。一般原则是对您实际"
-"管理的每个项目应当有对应的文件，尽管对某些大型的复杂项目，您可能希望针对对象"
-"或亚项目设置一对一的文件。Miradi的默认设置是根据Miradi目录中的项目名称来创建"
-"对应的文件夹（在Windows下，默认的路径是C:\\Documents and Settings\\<i>您的用"
-"户名</i>\\Miradi). "
+"<p>Project (in Miradi) - A project is the basic unit for a software file in "
+"Miradi. As a general rule, you should have one file for each real-world "
+"project you are managing, although for certain large and complex projects, "
+"you may wish to have one file for each target or for other subdivisions. \n"
+"\n"
+"<p>To see where your projects are being stored, use the <code "
+"class='toolbarbutton'>&lt;Edit&gt;/&lt;Preferences&gt;</code> menu, and look "
+"at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</"
+"code> tab."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:251
 msgid "CMP"
@@ -3917,9 +3929,10 @@ msgid ""
 "conservation strategies. In Miradi, a threat reduction result is represented "
 "by a purple rectangle."
 msgstr ""
-"威胁因子减少结果——指结果链中的一个因素，它描述的是由于实施了一个或多个保护策"
-"略而产生的某个直接威胁因子预期的变化。在Miradi中，威胁因子减少结果是以紫色长"
-"方形来代表的。"
+"Threat Reduction Result - A factor in a results chain that describes the "
+"desired change in a direct threat that results from implementing one or more "
+"conservation strategies. In Miradi, a threat reduction result is represented "
+"by a purple rectangle."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:306
 msgid "IntermediateResult"
@@ -3969,7 +3982,7 @@ msgstr ""
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
 #, fuzzy
 msgid "Acceptable Range of Variation"
-msgstr "可接受的变化范围"
+msgstr "Acceptable Range of Variation"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
 msgid ""
@@ -3995,13 +4008,13 @@ msgid ""
 "Measurement - An assessment of an indicator at a given point in time. "
 "Measurements can be either quantitative or qualitative."
 msgstr ""
-"测量——指在特定的时间点对某指示物做出的评估。测量既可以是定量的，也可以是定性"
-"的。"
+"Measurement - An assessment of an indicator at a given point in time. "
+"Measurements can be either quantitative or qualitative."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
 #, fuzzy
 msgid "Priority Rating"
-msgstr "优先评级"
+msgstr "Priority Rating"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
 msgid ""
@@ -4017,8 +4030,9 @@ msgid ""
 "key ecological attribute that the project intends to achieve at a specified "
 "time in the future. Generally equivalent to a project sub-goal."
 msgstr ""
-"未来期望状态——针对此项目欲在未来特定时间取得的关键生态学属性，对其指示物所作"
-"的测量或分级数值。通常相当于项目的亚目标。"
+"Desired Future Status - A measurement or rating value for an indicator for a "
+"key ecological attribute that the project intends to achieve at a specified "
+"time in the future. Generally equivalent to a project sub-goal."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
 msgid "Threat Calculations"
@@ -4037,6 +4051,18 @@ msgstr "未定义"
 #: miradi/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:78
 msgid "Error Occurred please try saving under different name."
 msgstr "出错，请尝试用不同的文件名保存。 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
+msgid "<strong>Version: %s</strong>"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
+msgid "(Translation: %code %date)"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+msgid "Exported file does not validate."
+msgstr "导出的文件不正确。 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
 msgid "Export XML"
@@ -4066,14 +4092,6 @@ msgid ""
 msgstr ""
 "无法写入XML。可能该磁盘已满，或者您没有写入该磁盘的许可权，或者您在文件名中使"
 "用了无效的字符。 \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
-msgid "<strong>Version: %s</strong>"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
-msgid "(Translation: %code %date)"
-msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:60
 msgid ""
@@ -4195,6 +4213,10 @@ msgstr "[未指定的] \t\t"
 msgid "Share Activity"
 msgstr "共享活动 \t\t"
 
+#: miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
+msgid "Enter Tag Name"
+msgstr ""
+
 #: miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
 msgid "Label|New Group Box"
 msgstr "新的组合框 \t\t"
@@ -4202,10 +4224,6 @@ msgstr "新的组合框 \t\t"
 #: miradi/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:48
 msgid "Are you sure you want to delete this Stress?"
 msgstr "您是否确定要删除该压力？"
-
-#: miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
-msgid "Enter Tag Name"
-msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:139
 msgid ""
@@ -4424,11 +4442,15 @@ msgstr ""
 #: miradi/source/org/miradi/views/planning/doers/CreatePlanningViewConfigurationDoer.java:95
 #, fuzzy
 msgid "PlanningSubViewName|Custom"
-msgstr "计划视图 \t\t"
+msgstr "PlanningSubViewName|Custom"
 
 #: miradi/source/org/miradi/views/planning/doers/AddAssignmentDoer.java:56
 msgid "Resources cannot be added to this task because it already has subtasks."
 msgstr "资源无法被添加到该任务中，因为它已经有子任务了。 \t\t"
+
+#: miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:112
+msgid "Error occurred while switching threat rating mode."
+msgstr "切换威胁因子评级模式时出错。 \t\t"
 
 #: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:87
 msgid "Create Link"
@@ -4448,10 +4470,6 @@ msgstr "该链接将从出现它的任何概念模型页面及结果中删除：
 #: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:177
 msgid "Delete a link?"
 msgstr "删除一个链接？ \t\t"
-
-#: miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:112
-msgid "Error occurred while switching threat rating mode."
-msgstr "切换威胁因子评级模式时出错。 \t\t"
 
 #: miradi/source/org/miradi/utils/SVGFileFilter.java:44
 msgid "FileFilter|SVG (*.svg)"
@@ -4482,6 +4500,14 @@ msgstr "MTE (*.mte) \t\t"
 msgid "FileFilter|XLS (*.xls)"
 msgstr "XLS (*.xls) \t\t"
 
+#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
+msgid "FileFilter|Miradi Project Zip (*.mpz)"
+msgstr "Miradi项目压缩（*.mpz） \t\t"
+
+#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
+msgid "FileFilter|ConPro Miradi Zip (*%s)"
+msgstr "ConPro Miradi Zip (*%s)"
+
 #: miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr "制表符分隔 (*.txt) \t\t"
@@ -4490,10 +4516,18 @@ msgstr "制表符分隔 (*.txt) \t\t"
 msgid "FileFilter|Rich Text Format (*.rtf)"
 msgstr "富文本格式(*.rtf)"
 
-#: miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
+msgid "Install"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:49
 #, fuzzy
-msgid "FileFilter|Miradi Language Pack (%s)"
-msgstr "ConPro Miradi Zip (*%s)"
+msgid "TT|Install the selected language pack"
+msgstr "TT|Install the selected language pack"
+
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
+msgid "Select Language Pack to Install"
+msgstr ""
 
 #: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:54
 msgid "All on One Page"
@@ -4514,10 +4548,6 @@ msgstr "JASPER (*.jasper) \t\t"
 #: miradi/source/org/miradi/utils/JPEGFileFilter.java:44
 msgid "FileFilter|JPEG (*.jpg)"
 msgstr "JPEG (*.jpg) \t\t"
-
-#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
-msgid "FileFilter|Miradi Project Zip (*.mpz)"
-msgstr "Miradi项目压缩（*.mpz） \t\t"
 
 #: miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
 msgid "Title|Save %s File"
@@ -4584,22 +4614,10 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
 
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
-msgid "Install"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:49
+#: miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
 #, fuzzy
-msgid "TT|Install the selected language pack"
-msgstr "上移选定的条目 \t\t"
-
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
-msgid "Select Language Pack to Install"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
-msgid "FileFilter|ConPro Miradi Zip (*%s)"
-msgstr "ConPro Miradi Zip (*%s)"
+msgid "FileFilter|Miradi Language Pack (%s)"
+msgstr "FileFilter|Miradi Language Pack (%s)"
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
@@ -5076,16 +5094,11 @@ msgstr "创建压力 \t\t"
 msgid "TT|Create a Stress"
 msgstr "创建一项压力 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:40
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:35
+#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:40
 #: miradi/source/org/miradi/actions/ActionCreateIndicator.java:35
 msgid "Action|Manage|Create Indicator"
 msgstr "创建指示物 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
-#, fuzzy
-msgid "TT|Create an Indicator for the selected factor"
-msgstr "为选定的指示物创建一个方法 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:40
 msgid "TT|Create a new Indicator"
@@ -5102,6 +5115,11 @@ msgstr "删除进展报告 \t\t"
 #: miradi/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:40
 msgid "TT|Delete Progress Report"
 msgstr "删除进展报告 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
+#, fuzzy
+msgid "TT|Create an Indicator for the selected factor"
+msgstr "TT|Create an Indicator for the selected factor"
 
 #: miradi/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:35
 msgid "Action|Remove|Remove Factor(s) from Group Box"
@@ -5142,6 +5160,19 @@ msgstr "制表符分隔的表格 \t\t"
 #: miradi/source/org/miradi/actions/ActionExportTable.java:39
 msgid "TT|Export this view's table to a tab delimited file"
 msgstr "将本视图的表格导入到制表符分隔文件 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
+#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
+msgid "Action|Choose..."
+msgstr "选择… \t\t"
+
+#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
+#, fuzzy
+msgid "TT|Choose which indicators are relevant to this goal"
+msgstr "TT|Choose which indicators are relevant to this goal"
 
 #: miradi/source/org/miradi/actions/ActionPrint.java:34
 msgid "Action|Print"
@@ -5200,16 +5231,6 @@ msgstr "导入会计编码 \t\t"
 #: miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
 msgid "TT|Import accounting codes"
 msgstr "导入会计编码 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
-#, fuzzy
-msgid "Action|Save As..."
-msgstr "拷贝另存为… \t\t"
-
-#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
-#, fuzzy
-msgid "TT|Save a copy of this project under a different name and open it"
-msgstr "用不同的名称创建本计划的一个拷贝 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionShowCurrentWizardFileName.java:34
 msgid "Action|Show Current Wizard Name"
@@ -5419,6 +5440,16 @@ msgstr "删除幻灯片 \t\t"
 msgid "TT|Delete slide"
 msgstr "删除幻灯片 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
+#, fuzzy
+msgid "Action|Create New Tag..."
+msgstr "Action|Create New Tag..."
+
+#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
+#, fuzzy
+msgid "TT|Create a new tag"
+msgstr "TT|Create a new tag"
+
 #: miradi/source/org/miradi/actions/ActionDeleteOrganization.java:35
 msgid "Action|Delete Organization"
 msgstr "删除组织机构 \t\t"
@@ -5531,11 +5562,20 @@ msgstr "显示幻灯播放 \t\t"
 #: miradi/source/org/miradi/actions/ActionExportConProXml.java:34
 #, fuzzy
 msgid "Action|Export|ConPro (CPMZ) File"
-msgstr "ConPro（CPMZ）文件（BETA）"
+msgstr "Action|Export|ConPro (CPMZ) File"
 
 #: miradi/source/org/miradi/actions/ActionExportConProXml.java:39
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr "导出一个能够被导入到ConPro的文件 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
+#: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
+msgid "Action|Edit Progress Percents..."
+msgstr "编辑进程百分比… \t\t"
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
+msgid "TT|Edit the list of progress percents for this objective."
+msgstr "为本分目标编辑进展报告列表。 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionDeleteResultsChain.java:35
 msgid "Action|Delete Results Chain"
@@ -5566,15 +5606,6 @@ msgid ""
 "TT|Hide this Stress so it no longer appears on this Conceptual Model page"
 msgstr "隐藏该压力使之不再出现于本概念模型页面 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:35
-#, fuzzy
-msgid "Action|Create Margin"
-msgstr "创建 "
-
-#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
-msgid "TT|Move factors right and down as needed to create margins"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionRunReportTemplate.java:34
 msgid "Action|Run Selected..."
 msgstr "运行选项... "
@@ -5598,6 +5629,11 @@ msgstr "编辑估计的资源… \t\t"
 #: miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
 msgid "TT|Edit the list of estimated resources."
 msgstr "编辑估计资源的列表 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
+#, fuzzy
+msgid "TT|Choose which strategies and activities are relevant to this goal"
+msgstr "TT|Choose which strategies and activities are relevant to this goal"
 
 #: miradi/source/org/miradi/actions/ActionExportRtf.java:34
 msgid "Action|RTF File"
@@ -5659,6 +5695,14 @@ msgstr "上移条目 \t\t"
 msgid "Action|Select All"
 msgstr "全选 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionZoomIn.java:34
+msgid "Action|Zoom In"
+msgstr "放大 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionZoomIn.java:39
+msgid "TT|Zoom In"
+msgstr "放大 \t\t"
+
 #: miradi/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
 msgstr "在本页面隐藏活动 \t\t"
@@ -5667,6 +5711,16 @@ msgstr "在本页面隐藏活动 \t\t"
 msgid "TT|Show this Activity so it appears on this Results Chain"
 msgstr "隐藏本活动使之不再出现于该结果链 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
+#, fuzzy
+msgid "Action|Save As..."
+msgstr "Action|Save As..."
+
+#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
+#, fuzzy
+msgid "TT|Save a copy of this project under a different name and open it"
+msgstr "TT|Save a copy of this project under a different name and open it"
+
 #: miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:35
 msgid "Action|Manage|Create Accounting Code"
 msgstr "创建会计编码 \t\t"
@@ -5674,14 +5728,6 @@ msgstr "创建会计编码 \t\t"
 #: miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:40
 msgid "TT|Create an Accounting Code"
 msgstr "创建一个会计编码 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionZoomIn.java:34
-msgid "Action|Zoom In"
-msgstr "放大 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionZoomIn.java:39
-msgid "TT|Zoom In"
-msgstr "放大 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionActivityMoveDown.java:35
 msgid "Action|Table|Move Activity Down"
@@ -5698,6 +5744,11 @@ msgstr "从KEA创建压力 \t\t"
 #: miradi/source/org/miradi/actions/ActionCreateStressFromKea.java:40
 msgid "TT|Create a Stress from a Key Ecological Attribute"
 msgstr "从一项关键生态属性创建一项压力 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
+#, fuzzy
+msgid "TT|Create an Objective for the selected factor"
+msgstr "TT|Create an Objective for the selected factor"
 
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:40
@@ -5729,6 +5780,10 @@ msgstr "创建KEA \t\t"
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:40
 msgid "TT|Create a Key Ecological Attribute"
 msgstr "创建一项关键生态属性 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
+msgid "TT|Choose which indicators are relevant to this objective"
+msgstr "选择哪个指示物与该分目标相关联 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionManageStresses.java:35
 msgid "Action|Manage Stresses..."
@@ -5797,6 +5852,11 @@ msgstr "撤销 \t\t"
 #: miradi/source/org/miradi/actions/ActionUndo.java:39
 msgid "TT|Undo last action"
 msgstr "撤销上一次动作 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
+#, fuzzy
+msgid "TT|Add/remove tags for this factor"
+msgstr "TT|Add/remove tags for this factor"
 
 #: miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
@@ -5867,19 +5927,6 @@ msgstr "重做 \t\t"
 msgid "TT|Redo last undone action"
 msgstr "重做上一次撤销的动作 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
-#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
-msgid "Action|Choose..."
-msgstr "选择… \t\t"
-
-#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
-#, fuzzy
-msgid "TT|Choose which indicators are relevant to this goal"
-msgstr "选择哪个指示物与该分目标相关联 \t\t"
-
 #: miradi/source/org/miradi/actions/ActionCut.java:34
 msgid "Action|Cut"
 msgstr "剪切 \t\t"
@@ -5915,7 +5962,7 @@ msgstr "添加 \t\t"
 #: miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:34
 #, fuzzy
 msgid "Action|ConPro (CPMZ) File"
-msgstr "ConPro（CPMZ）文件（BETA）"
+msgstr "Action|ConPro (CPMZ) File"
 
 #: miradi/source/org/miradi/actions/ActionImportZippedConproProject.java:39
 msgid "TT|Import a .cpmz file that was exported from ConPro"
@@ -6030,6 +6077,15 @@ msgstr "创建幻灯片 \t\t"
 msgid "Action|Delete Item"
 msgstr "删除条目 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:35
+#, fuzzy
+msgid "Action|Create Margin"
+msgstr "Action|Create Margin"
+
+#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
+msgid "TT|Move factors right and down as needed to create margins"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionActivityMoveUp.java:35
 msgid "Action|Table|Move Activity Up"
 msgstr "上移活动 \t\t"
@@ -6142,6 +6198,16 @@ msgstr "删除活动 \t\t"
 msgid "TT|Delete the selected Activity"
 msgstr "删除选定的活动 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:35
+#, fuzzy
+msgid "Action|Tag/Untag..."
+msgstr "Action|Tag/Untag..."
+
+#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
+#, fuzzy
+msgid "TT|Add/remove tags for the selected factor"
+msgstr "TT|Add/remove tags for the selected factor"
+
 #: miradi/source/org/miradi/actions/ActionMoveSlideDown.java:34
 msgid "Action|Move Down"
 msgstr "下移 \t\t"
@@ -6178,6 +6244,11 @@ msgstr "将项目导出为Miradi项目Zip（MPZ）文件"
 msgid "TT|Create a Method for the selected Indicator"
 msgstr "为选定的指示物创建一个方法 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
+msgid ""
+"TT|Choose which strategies and activities are relevant to this objective."
+msgstr "选择哪个策略和活动与本分目标相关联"
+
 #: miradi/source/org/miradi/actions/ActionInsertStrategy.java:37
 msgid "Action|Insert|Insert Strategy"
 msgstr "插入策略 \t\t"
@@ -6185,11 +6256,6 @@ msgstr "插入策略 \t\t"
 #: miradi/source/org/miradi/actions/ActionInsertStrategy.java:42
 msgid "TT|Insert a Strategy"
 msgstr "插入一项策略 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
-#, fuzzy
-msgid "TT|Create an Objective for the selected factor"
-msgstr "为选定的策略创建一项活动 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionNudgeDown.java:34
 msgid "Action|Nudge Item Down"
@@ -6202,7 +6268,7 @@ msgstr "克隆分目标… \t\t"
 #: miradi/source/org/miradi/actions/ActionCloneObjective.java:40
 #, fuzzy
 msgid "TT|Clone an Objective"
-msgstr "克隆一个分目标 \t\t"
+msgstr "TT|Clone an Objective"
 
 #: miradi/source/org/miradi/actions/ActionDatabasesDemo.java:34
 msgid "Action|Databases - demo"
@@ -6216,62 +6282,14 @@ msgstr "<先前的 \t\t"
 msgid "TT|Go to the Previous wizard step"
 msgstr "回到上一个向导步骤 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:45
-msgid "TT|Create an Activity for the selected Strategy"
-msgstr "为选定的策略创建一项活动 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
-#, fuzzy
-msgid "TT|Add/remove tags for this factor"
-msgstr "为该指示物编辑方法 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:35
-#, fuzzy
-msgid "Action|Tag/Untag..."
-msgstr "|编辑..."
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
-#, fuzzy
-msgid "TT|Add/remove tags for the selected factor"
-msgstr "为选定的指示物创建一个方法 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
-#, fuzzy
-msgid "Action|Create New Tag..."
-msgstr "创建嵌套对象 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
-#, fuzzy
-msgid "TT|Create a new tag"
-msgstr "创建一个新方法 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
-msgid "TT|Choose which indicators are relevant to this objective"
-msgstr "选择哪个指示物与该分目标相关联 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
-#, fuzzy
-msgid "TT|Choose which strategies and activities are relevant to this goal"
-msgstr "选择哪个策略和活动与本分目标相关联"
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
-msgid ""
-"TT|Choose which strategies and activities are relevant to this objective."
-msgstr "选择哪个策略和活动与本分目标相关联"
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
-#: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
-msgid "Action|Edit Progress Percents..."
-msgstr "编辑进程百分比… \t\t"
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this objective."
-msgstr "为本分目标编辑进展报告列表。 \t\t"
-
 #: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:39
 #, fuzzy
 msgid "TT|Edit the list of progress percents for this goal."
-msgstr "为本分目标编辑进展报告列表。 \t\t"
+msgstr "TT|Edit the list of progress percents for this goal."
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:45
+msgid "TT|Create an Activity for the selected Strategy"
+msgstr "为选定的策略创建一项活动 \t\t"
 
 #: miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
 msgid "Other Orgs"
@@ -6302,6 +6320,10 @@ msgstr "打开 \t\t"
 msgid "Error deleting project: "
 msgstr "删除项目出错： \t\t"
 
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
+msgid "Error copying project: "
+msgstr "复制项目出错： \t\t"
+
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:32
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:165
 msgid "Rename..."
@@ -6318,10 +6340,6 @@ msgstr "项目列表 \t\t"
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:85
 msgid "Last Modified"
 msgstr ""
-
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
-msgid "Error copying project: "
-msgstr "复制项目出错： \t\t"
 
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:86
 msgid ""
@@ -6351,6 +6369,10 @@ msgstr "复制到… \t\t"
 msgid "Export to Miradi Zip..."
 msgstr "导出到Miradi压缩… \t\t"
 
+#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
+msgid "View News"
+msgstr ""
+
 #: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
 msgid ""
 "<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
@@ -6375,7 +6397,7 @@ msgstr ""
 "value='&lt; Previous'></input></td><td><input type='submit' name='Import "
 "Miradi Project' value='Miradi Project (.mpz)'></input></td></tr><tr><td></"
 "td><td><input type='submit' name='Import ConPro Project' value='ConPro/"
-"Miradi Exchange File (.cpmz)(BETA)'></input></td></tr></table></p><br> "
+"Miradi Exchange File (.cpmz)'></input></td></tr></table></p><br>"
 
 #: miradi/source/org/miradi/wizard/noproject/NoProjectOverviewStep.java:82
 msgid ""
@@ -6416,10 +6438,6 @@ msgstr "注：项目文件名包含字母、数字、空格、逗号、破折号
 #: miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:154
 msgid "Create Failed:"
 msgstr "创建失败： \t\t"
-
-#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
-msgid "View News"
-msgstr ""
 
 #: miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:47
 msgid "3a) Develop draft indicator ratings"
@@ -6600,12 +6618,12 @@ msgstr ""
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1034
 #, fuzzy
 msgid "Objective Holder"
-msgstr "分目标 \t\t"
+msgstr "Objective Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1040
 #, fuzzy
 msgid "Indicator Holder"
-msgstr "指示物"
+msgstr "Indicator Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1137
 msgid "High/Very-High Threat Chains"
@@ -6654,12 +6672,12 @@ msgstr "影响因素 \t\t"
 #: miradi/source/org/miradi/diagram/DiagramModel.java:896
 #, fuzzy
 msgid "Project Scope"
-msgstr "项目范围： \t\t"
+msgstr "Project Scope"
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:173
 #, fuzzy
 msgid "Unexpected error prevented the tag operation from succeeding"
-msgstr "一个内部错误阻止了该操作 \t\t"
+msgstr "Unexpected error prevented the tag operation from succeeding"
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:241
 msgid "Menu|Add Tag to %n Selected Item(s)"
@@ -6806,14 +6824,16 @@ msgstr "[无项目] \t\t"
 #: miradi/source/org/miradi/project/Project.java:1041
 #, fuzzy
 msgid "Attempt to execute command as side effect when not in that mode"
-msgstr "尝试执行来自外部命令监听器的命令 \t\t"
+msgstr "Attempt to execute command as side effect when not in that mode"
 
 #: miradi/source/org/miradi/project/Project.java:1056
 #, fuzzy
 msgid ""
 "Attempt to execute command while in side effect mode:\n"
 " tried  "
-msgstr "尝试执行来自命令监听器的命令 \t\t"
+msgstr ""
+"Attempt to execute command while in side effect mode:\n"
+" tried  "
 
 #: miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:171
 msgid "[New Results Chain]"
@@ -6833,7 +6853,7 @@ msgstr "名称"
 
 #, fuzzy
 msgid "FieldLabel|3.ShortLabel|ID"
-msgstr "ID \t\t"
+msgstr "FieldLabel|3.ShortLabel|ID"
 
 msgid "FieldLabel|3.StrategyLabel|Strategy"
 msgstr "策略 \t\t"
@@ -7026,11 +7046,11 @@ msgstr "详情 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|8.FutureStatusSummary|Future Value"
-msgstr "数值 \t\t"
+msgstr "FieldLabel|8.FutureStatusSummary|Future Value"
 
 #, fuzzy
 msgid "FieldLabel|8.FutureStatusDate|Future Date"
-msgstr "日期 \t\t"
+msgstr "FieldLabel|8.FutureStatusDate|Future Date"
 
 msgid "FieldLabel|8.FutureStatusRating|Rating"
 msgstr "评级 \t\t"
@@ -7157,7 +7177,7 @@ msgstr "评论 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
-msgstr "相关指示物 \t\t"
+msgstr "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 
 msgid "FieldLabel|11.PseudoTagProjectFilename|Project Filename"
 msgstr "项目文件名 \t\t"
@@ -7179,7 +7199,7 @@ msgstr "范围/地点名称 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|11.ProjectVision|Vision Statement Text"
-msgstr "愿景标签 \t\t"
+msgstr "FieldLabel|11.ProjectVision|Vision Statement Text"
 
 msgid "FieldLabel|11.ShortProjectVision|Vision Label"
 msgstr "愿景标签 \t\t"
@@ -7446,11 +7466,11 @@ msgstr "进度百分比详情"
 
 #, fuzzy
 msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
-msgstr "预算总额 \t\t"
+msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #, fuzzy
 msgid "FieldLabel|12.Comment|Comments"
-msgstr "评论 \t\t"
+msgstr "FieldLabel|12.Comment|Comments"
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
 msgstr "自: \t\t"
@@ -7463,7 +7483,7 @@ msgstr "颜色 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|14.Assignment|Assignment"
-msgstr "评论 \t\t"
+msgstr "FieldLabel|14.Assignment|Assignment"
 
 msgid "FieldLabel|15.Label|Category Name"
 msgstr "类别名称 \t\t"
@@ -7560,11 +7580,11 @@ msgstr "影响因素"
 
 #, fuzzy
 msgid "FieldLabel|20.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "出现在"
+msgstr "FieldLabel|20.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|20.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "结果链 \t\t"
+msgstr "FieldLabel|20.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|20.Text|Details"
 msgstr "详情"
@@ -7616,11 +7636,11 @@ msgstr "相关对象 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|21.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "出现在 \t\t"
+msgstr "FieldLabel|21.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|21.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "结果链 \t\t"
+msgstr "FieldLabel|21.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|21.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "预算小计 \t\t"
@@ -7681,11 +7701,11 @@ msgstr "当前状态调整 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|22.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "出现在 \t\t"
+msgstr "FieldLabel|22.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|22.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "结果链 \t\t"
+msgstr "FieldLabel|22.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|22.SpeciesLatinName|Species Latin Name"
 msgstr "物种拉丁名 \t\t"
@@ -7698,7 +7718,7 @@ msgstr "详情 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
-msgstr "<html>生境的联系<br>(IUCN v3.0) \t\t"
+msgstr "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
 
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
 msgstr "中途结果 \t\t"
@@ -7711,11 +7731,11 @@ msgstr "名称 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|23.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "出现在 \t\t"
+msgstr "FieldLabel|23.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|23.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "结果链 \t\t"
+msgstr "FieldLabel|23.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|23.Text|Details"
 msgstr "详情 \t\t"
@@ -7755,11 +7775,11 @@ msgstr "名称 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|25.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "出现在 \t\t"
+msgstr "FieldLabel|25.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|25.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "结果链 \t\t"
+msgstr "FieldLabel|25.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|25.Text|Details"
 msgstr "详情 \t\t"
@@ -7775,11 +7795,11 @@ msgstr "文本框 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|26.PseudoTagDiagramRefs|Conceptual Model Pages"
-msgstr "出现在 \t\t"
+msgstr "FieldLabel|26.PseudoTagDiagramRefs|Conceptual Model Pages"
 
 #, fuzzy
 msgid "FieldLabel|26.PseudoTagResultsChainDiagramRefs|Results Chains"
-msgstr "结果链 \t\t"
+msgstr "FieldLabel|26.PseudoTagResultsChainDiagramRefs|Results Chains"
 
 msgid "FieldLabel|26.Text|Details"
 msgstr "详情 \t\t"
@@ -7819,14 +7839,14 @@ msgstr "评论 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|32.Summary|Measurement Value"
-msgstr "数值 \t\t"
+msgstr "FieldLabel|32.Summary|Measurement Value"
 
 msgid "FieldLabel|32.Status|Rating"
 msgstr "评级 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|32.Date|Measurement Date"
-msgstr "日期 \t\t"
+msgstr "FieldLabel|32.Date|Measurement Date"
 
 msgid "FieldLabel|32.Detail|Detail"
 msgstr "详情 \t\t"
@@ -7996,7 +8016,7 @@ msgstr "组织机构优先选项 \t\t"
 
 #, fuzzy
 msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
-msgstr "项目状态 \t\t"
+msgstr "FieldLabel|40.ProjectSharingCode|Data Sharing"
 
 msgid "FieldLabel|41.TrainingType|Training Type"
 msgstr "培训类型 \t\t"
@@ -8488,64 +8508,79 @@ msgid ""
 "STRONG> Benetech's software for human rights groups</LI></UL><P><FONT "
 "size=2>&nbsp;</P></FONT></BODY></HTML>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN"
-"\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/css></STYLE></"
-"HEAD><BODY><table><tr><td><IMG height=30 alt=\"\" hspace=20 src=\"images/"
-"Umbrella/thanks64.png\" width=87 align=absMiddle border=0></img></"
-"td><td><H2>Credits</H2></td></tr></table><P>Miradi 软件由保护监测联盟"
-"（Conservation Measures Partnership）与&nbsp;Benetech共同努力&nbsp;联合开发。"
-"&nbsp;她是几个十不同的组织机构与几百人的工作结果。&nbsp;我们无法囊括应当提及"
-"的所有人，但主要的个人及组织包括：</P><br><HR><H3>设计与内容</H3><H4>主要设计"
-"者</H4><UL> <LI>Nick Salafsky（成功基金） <LI>Dan Salzer（大自然保护协会）"
-"<LI>Kevin Smith (Benetech)</LI></UL><H4>有贡献的设计者</H4> <UL><LI>Lisa "
-"Battle(Design for Context)<LI>David Berg, Jon Fischer, Rachel Neugarten（大自"
-"然保护协会）</UL> <HR><H3>工程</H3><H4>主要工程师</H4><UL> <LI>Kevin Smith, "
-"Nima Ansari&nbsp;(Benetech)</LI></UL><H4>有贡献的工程师</H4><UL><LI>Richard "
-"Nunziata, Mike Reynolds, Charles LaPierre, Dave Offen&nbsp;(Benetech)</LI></"
-"UL><HR><H3>产品管理及业务</H3><UL> <LI>Nick Salafsky, Janice Davis&nbsp;（成"
-"功基金） <LI>Anna Berns, Amy Conant, Lisa Friendly, Peggy Gibbs, Ann "
-"Harrison, Barbara Morrison,&nbsp; Jeff Rauenhorst, Gerry Sinzdak, Kate "
-"Wilson (Benetech)</LI></UL><HR><H3>监督及指导</H3><UL> <LI>Jim Fruchterman, "
-"Patrick Ball&nbsp;(Benetech) <LI>Tim Tear, Dan Salzer, Brad Northrup, Craig "
-"Groves, Jora Young, Danielle Conboy, Kristin Barker（大自然保护协会）"
-"<LI>Sheila O'Connor, Will Beale, John Morrison, Will Reidhead, Eric Swanson,"
-"&nbsp;Sarah Christensen (WWF) <LI>David Wilkie, Josh Ginsberg, Jonathan "
-"Palmer, John Robinson （野生动物保护协会）<LI>Paul Butler, Megan Hill,&nbsp;"
-"Peter Vaughn,&nbsp;Brett Jenks（Rare保护组织） <LI>Richard Margoluis, Nick "
-"Salafsky&nbsp;（成功基金）</LI></UL><HR><H3>提供资金</H3><UL> <LI>Gordon "
-"&amp; Betty More基金（特别感谢Dan Martin 和 Terry Vogt） <LI>William &amp;"
-"Flora Hewlett基金会（特别感谢Rhea Suh和Hal Harvey）<LI>David&amp;Lucille "
-"Packard基金会（特别感谢Kristin Sherwood, Kai Lee, Jim Leape, Walt Reid, 和"
-"Bernd Cordes）<LI>Leo Model基金会（特别感谢Allen Model）<LI>大自然保护协会"
-"<LI>WWF <LI>野生动物保护协会<LI>Rare保护组织 <LI>成功基金</LI></UL><HR><H3>测"
-"试、反馈及建议</H3><P>除了以上列出的人员之外，还有数百人曾帮助检查软件并提供"
-"想法，他们包括：</P><UL> <LI>Jose Kalpers（Africa Parks Foundation）<LI>Bill "
-"Sutherland（Cambridge University（剑桥大学））&nbsp;<LI>Gernant Magnin, Neil "
-"McIntosh (Eurosite) <LI>Marcia Brown, Guillermo Placci, Caroline Stem, Ilke "
-"Tilders, Vinaya Swaminathan&nbsp;（成功基金）<LI>Matti Maatta (Metsahalitus) "
-"<LI>Frank Biasi（National Geographic Society（国家地理协会））<LI>Paul Evans"
-"（Natural England（自然英格兰））<LI>Jonathan Adams, Marjorie Bennett, "
+"html|/resources/help/Credits.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML "
+"4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/css></"
+"STYLE></HEAD><BODY><table><tr><td><IMG height=30 alt=\"\" hspace=20 src="
+"\"images/Umbrella/thanks64.png\" width=87 align=absMiddle border=0></img></"
+"td><td><H2>Credits</H2></td></tr></table><P>Miradi software is&nbsp;being "
+"developed as a&nbsp;joint effort between&nbsp;the Conservation Measures "
+"Partnership and Benetech.&nbsp;It is the result of work of dozens of "
+"different organizations and hundreds of people.&nbsp;Although we are almost "
+"certainly not including everyone who should be mentioned, key people and "
+"organizations include:</P><br><HR><H3>Design and Content</H3><H4>Primary "
+"Desginers</H4><UL>  <LI>Nick Salafsky (Foundations of Success)   <LI>Dan "
+"Salzer (The Nature Conservancy)   <LI>Kevin Smith (Benetech)</LI></"
+"UL><H4>Contributing Designers</H4>  <UL><LI>Lisa Battle (Design for Context)"
+"</LI><LI>David Berg, Jon Fischer, Rachel Neugarten (The Nature Conservancy)</"
+"LI><LI>Marcia Brown, Caroline Stem, Vinaya Swaminathan, Ilke Tilders "
+"(Foundations of Success)</LI></UL> <HR><H3>Engineering</H3><H4>Primary "
+"Engineers</H4><UL>  <LI>Kevin Smith, Nima Ansari&nbsp;(Benetech)</LI></"
+"UL><H4>Contributing Engineers</H4><UL><LI>Richard Nunziata, Mike Reynolds, "
+"Charles LaPierre, Dave Offen&nbsp;(Benetech)</LI></UL><HR><H3>Product "
+"Management and Business</H3><UL>  <LI>Nick Salafsky, Janice Davis&nbsp;"
+"(Foundations of Success)   <LI>Anna Berns, Amy Conant, Lisa Friendly, Peggy "
+"Gibbs, Ann Harrison, Barbara Morrison,&nbsp; Jeff Rauenhorst, Gerry Sinzdak, "
+"Kate Wilson (Benetech)</LI></UL><HR><H3>Oversight and Guidance</H3><UL>  "
+"<LI>Jim Fruchterman, Patrick Ball&nbsp;(Benetech)   <LI>Tim Tear, Dan "
+"Salzer, Brad Northrup, Craig Groves, Jora Young, Danielle Conboy, Michael "
+"Parker, Kristin Barker (The Nature Conservancy)   <LI>Sheila O'Connor, Will "
+"Beale, Michael Mikov, Alexis Morgan, John Morrison, Will Reidhead, P.J. "
+"Stephanson, Eric Swanson,&nbsp;Sarah Christensen (WWF)   <LI>David Wilkie, "
+"Josh Ginsberg, Jonathan Palmer, John Robinson   (Wildlife Conservation "
+"Society)   <LI>Paul Butler, Megan Hill,&nbsp;Peter Vaughn,&nbsp;Brett Jenks "
+"(Rare   Conservation)   <LI>Richard Margoluis, Nick Salafsky&nbsp;"
+"(Foundations of Success)</LI></UL><HR><H3>Funding</H3><UL>  <LI>Gordon &amp; "
+"Betty Moore Foundation (special thanks to Dan Martin, Jason Cole, Rachel "
+"Strader)   <LI>William &amp; Flora Hewlett Foundation (special thanks to "
+"Rhea Suh, Hal Harvey)   <LI>David &amp; Lucille Packard Foundation (special "
+"thanks to Kristin Sherwood, Kai Lee, Walt Reid, Gale Berkowitz, Bernd "
+"Cordes, Jim Leape)   <LI>Leo Model Foundation (special thanks to Allen "
+"Model)  <LI>The Nature Conservancy   <LI>WWF   <LI>Wildlife Conservation "
+"Society   <LI>Rare Conservation   <LI>Foundations of Success  <LI>National "
+"Audubon Society</LI></UL><HR><H3>Testing, Feedback, and Advice</H3><P>In "
+"addition to many of the above listed individuals, some of the hundreds of "
+"other people who have helped review the software and provide insights "
+"include:</P><UL>  <LI>Jose Kalpers (Africa Parks Foundation)   <LI>Bill "
+"Sutherland (Cambridge University)&nbsp;<LI>Gernant Magnin, Neil McIntosh "
+"(Eurosite)    <LI>Marcia Brown, Guillermo Placci, Caroline Stem, Ilke "
+"Tilders, Vinaya   Swaminathan&nbsp;(Foundations of Success)  <LI>Matti "
+"Maatta (Metsahalitus)   <LI>Frank Biasi (National Geographic Society)"
+"<LI>Paul Evans (Natural England)   <LI>Jonathan Adams, Marjorie Bennett, "
 "Michelle Brown, Darran Crabtree, Michelle DePhilip,&nbsp; Andy Dickerson, "
-"Dan Dorfman, Kevin Essington,&nbsp;Jon Fisher, Mary Harkness,&nbsp;John "
+"Dan Dorfman,   Kevin Essington,&nbsp;Jon Fisher, Mary Harkness,&nbsp;John   "
 "Heaston,&nbsp;Donnelle Keech, David Klein, Warren Lockwood, Veronika Megler,"
-"&nbsp;George Schuler,&nbsp;Becky Shirer（大自然保护协会）<LI>Dan Kraus"
-"（Nature Conservancy Canada（加拿大大自然保护组织））<LI>Katherine "
-"McElhinny, Sharon Price（Rare保护组织）<LI>Deborah Spray（Scottish Natural "
-"Heritage（苏格兰自然遗产））<LI>Louann Dietz, Briony Senior, and the entire "
-"Adaptive Management class（University of Maryland（马里兰大学））<LI>Avecita "
-"Chicchon,&nbsp;Zach Ferris,&nbsp;Mathew Hatchwell, Bruce Miller, Carolina "
-"Murcia, Lilian Painter, Damian Rumiz, Mariana Varese&nbsp;（野生动物保护学"
-"会）<LI>Annie Claus, Tom Dillon, Ste Drayton, Bronwyn Llewellyn, Michael "
-"Mikov, Alexis Morgan, Neil Morgan, Robin Naidoo, John Tua&nbsp;（WWF）</LI></"
-"UL><HR><H3>内容来自</H3><UL> <LI>CMP的 <EM>自然保护实践的开放性标准</EM> "
-"<LI>FOS's <EM>成功度量</EM>及培训材料 <LI>大自然保护协会的 <EM>5-S</EM>与<EM>"
-"保护行动规划</EM>过程与Efroymson网络培训材料 <LI>Rare保护协会的培训材料"
-"<LI>WCS的Living Landscapes计划及培训材料 <LI>WWF的 <EM>项目与程序标准</EM>及"
-"培训材料</LI></UL><HR><H3>技术贡献来自</H3><UL> <LI><STRONG>第三方图书馆：</"
-"STRONG> BrowserLauncher, iReports, JasperReports, JCalendar, JExcel, JGraph, "
-"JHLabs, JTreeTable, TableLayout <LI><STRONG>开发工具：</STRONG> Ant, CVS, "
-"Eclipse, Java, JUnit, Subversion <LI><STRONG>Martus:</STRONG> Benetech用于人"
-"权组织的软件</LI></UL><P><FONT size=2>&nbsp;</P></FONT></BODY></HTML>"
+"&nbsp;George Schuler,&nbsp;Becky Shirer (The Nature Conservancy)   <LI>Dan "
+"Kraus (Nature Conservancy Canada)<LI>Katherine McElhinny, Sharon Price (Rare "
+"Conservation)<LI>Deborah Spray (Scottish Natural Heritage)   <LI>Louann "
+"Dietz, Briony Senior, and the entire Adaptive Management class (University "
+"of Maryland)  <LI>Avecita Chicchon,&nbsp;Zach Ferris,&nbsp;Mathew Hatchwell, "
+"Bruce Miller,   Carolina Murcia, Lilian Painter, Damian Rumiz, Mariana "
+"Varese&nbsp;(Wildlife   Conservation Society)   <LI>Annie Claus, Tom Dillon, "
+"Ste Drayton, Bronwyn Llewellyn, Michael Mikov, Alexis Morgan, Neil Morgan, "
+"Robin Naidoo, John Tua&nbsp;(WWF)</LI></UL><HR><H3>Content Drawn From</"
+"H3><UL>  <LI>CMP's <EM>Open Standards for the Practice of Conservation</"
+"EM>   <LI>FOS's <EM>Measures of Success</EM> and Training Materials   "
+"<LI>The Nature Conservancy's <EM>5-S</EM> and <EM>Conservation Action   "
+"Planning</EM> Processes and the Efroymson Network Training Materials   "
+"<LI>RARE Conservation's Training Materials   <LI>WCS's Living Landscapes "
+"Program and Training Materials   <LI>WWF's <EM>Project and Programme "
+"Standards</EM> and Training Materials </LI></UL><HR><H3>Technical "
+"Contributions Drawn From</H3><UL>  <LI><STRONG>Third Party Libraries:</"
+"STRONG> BrowserLauncher,   JCalendar, JGraph, JHLabs, Jing, JTreeTable, "
+"JarBuilder, install4j   <LI><STRONG>Development Tools:</STRONG> Ant, CVS, "
+"Eclipse, Java, JUnit, NSIS, POEdit, Ruby, Subversion   <LI><STRONG>Martus:</"
+"STRONG> Benetech's software for human rights groups</LI></UL><P><FONT "
+"size=2>&nbsp;</P></FONT></BODY></HTML>"
 
 msgid ""
 "html|/resources/help/AboutExtra.html|  <p>This software is being developed "
@@ -8592,13 +8627,12 @@ msgid ""
 "(on behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent "
 "Technology, Inc. (\"The Benetech Initiative\"), Palo Alto, California.</P>"
 msgstr ""
-"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN"
-"\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/css></STYLE></HEAD><body "
-"class='sidebar'><div class='indented'><FONT size=4><P>版权2005-2008，"
-"Foundations of Success（成功基金），贝塞斯达，马里兰州（代表Conservation "
-"Measures Partnership（保护测量联盟），\"CMP\"）和Beneficent Technology, Inc. "
-"(\"The Benetech Initiative\")，Palo Alto，加利福尼亚.</P><p><strong>版本："
-"2.2.2</strong><eam>"
+"html|/resources/help/AboutPart1.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
+"HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
+"css></STYLE></HEAD><body class='sidebar'><div class='indented'><FONT "
+"size=4><P>Copyright 2005-2009, Foundations of Success, Bethesda, Maryland "
+"(on behalf of the Conservation Measures Partnership, \"CMP\") and Beneficent "
+"Technology, Inc. (\"The Benetech Initiative\"), Palo Alto, California.</P>"
 
 #, fuzzy
 msgid ""
@@ -8623,20 +8657,26 @@ msgid ""
 "<A href=\"http://www.conservationmeasures.org\"><U><FONT color=#0000ff>www."
 "conservationmeasures.org</U></FONT></A>.&nbsp"
 msgstr ""
-"</eam></p><P><STRONG><FONT size=4>许可证与复制</FONT></STRONG><BR>Miradi是根"
-"据免费软件协会公布的GNU通用公共许可证版本3的条款而发布的。Miradi的发布是期望"
-"其能够有所帮助，但不提供任何保证；亦不对未来某一特定目的生产性或适应性做出暗"
-"示的保证。</P><P><STRONG><FONT size=4>最新详情</FONT></STRONG><BR></STRONG>在"
-"运行本软件之前&nbsp;，请检查您是否已拥有&nbsp;最新的版本，网址<A href="
-"\"https://miradi.org/download\">https://miradi.org/download</A>&nbsp;您也可以"
-"找到更多有关本软件程序的信息，网址<A href=\"http://www.miradi.org\">www."
-"miradi.org</A>&nbsp; 也可发电子邮件到 <A href=\"mailto:info@miradi.org"
-"\">info@miradi.org</A>获取。&nbsp;请发送建议与&nbsp缺陷报告给<A href="
-"\"mailto:feedback@miradi.org\">feedback@miradi.org</A>.</P><P><STRONG><FONT "
-"size=4>关于Miradi</FONT><BR></STRONG>本软件是开发来用于协助保护实践者来体验"
-"CMP<EM>保护实践开放性标准</EM>中所列出的适应性管理过程。&nbsp;要获取这些标准"
-"的最新版本，请浏览<A href=\"http://www.conservationmeasures.org\"><U><FONT "
-"color=#0000ff>www.conservationmeasures.org</U></FONT></A>.&nbsp \t\t"
+"html|/resources/help/AboutPart2.html|  </strong></p><P><STRONG><FONT "
+"size=4>License and Copying</FONT></STRONG><BR>Miradi is distributed under "
+"the terms of the GNU General Public License version 3,as published by the "
+"Free Software Foundation.  Miradi is distributed in the hope that it will be "
+"useful, but without any warranty; without even the implied warranty of "
+"merchantability or fitness for a particular purpose.</P><P><STRONG><FONT "
+"size=4>Updates and More Information</FONT></STRONG><BR></STRONG>Before "
+"running this program,&nbsp;check that you have&nbsp;the latest version at <A "
+"href=\"https://miradi.org/download\">https://miradi.org/download</A>.&nbsp;"
+"You can also find more information about this software program at <A href="
+"\"http://www.miradi.org\">www.miradi.org</A>&nbsp;or by e-mailing <A href="
+"\"mailto:info@miradi.org\">info@miradi.org</A>.&nbsp;Please send suggestions "
+"and&nbsp;bug reports&nbsp;to <A href=\"mailto:feedback@miradi.org"
+"\">feedback@miradi.org</A>.</P><P><STRONG><FONT size=4>About Miradi</"
+"FONT><BR></STRONG>This software program is being developed to assist "
+"conservation practitioners to go through the adaptive management process "
+"outlined in the CMP's <EM>Open Standards for the Practice of Conservation</"
+"EM>.&nbsp;To obtain a copy of the latest version of these standards, go to "
+"<A href=\"http://www.conservationmeasures.org\"><U><FONT color=#0000ff>www."
+"conservationmeasures.org</U></FONT></A>.&nbsp"
 
 msgid ""
 "html|/resources/help/CMPStandards.html|  <H2><table><tr><td><IMG hspace=20 "
@@ -8901,62 +8941,93 @@ msgid ""
 "<A   href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A> - hopefully "
 "we can   work with you to make it reality.</LI>  </UL>  </BODY>"
 msgstr ""
-"<BODY><table><tr><td><img border='0' src='icons/coming attract48.png' "
-"width='48' height='36' hspace=10 ></img></td><td><H2>即将增添的新功能</H2></"
-"td></tr></table><P>Miradi软件仍处于初始开发阶段。&nbsp;我们目前正在开发许多新"
-"的功能，这些功能将在未来几个月内推出。&nbsp;我们希望完成的几个&nbsp;几个重点"
-"&nbsp;，如下所列。&nbsp;如果您有额外的想法或请求，请联系我们：&nbsp; <A href="
-"\"mailto:feedback@miradi.org\">feedback@miradi.org</A>.&nbsp; 请到Miradi 网"
-"站 (<A href=\"http://www.Miradi.org\">www.Miradi.org</A>) 查看该软件最新版本"
-"我们希望能定期发布新版本。</P><H3><HR>广泛应用</H3><UL> <LI><STRONG>更多交互"
-"式的问答屏幕 </STRONG>——不同问答屏幕的改进将会伴您走过CMP过程中的每一步。"
-"<LI><STRONG>更多例子</STRONG> ——添加更多的来自世界各地的保护&nbsp;项目的例"
-"子。<LI><STRONG>CMP开放性标准中后面几个步骤的支持工具</STRONG> ——&nbsp;Miradi"
-"的当前版本重点是适应性管理周期的规划阶段；未来开发的工具将会有助于分析与学习"
-"阶段。<LI><STRONG>版本控制</STRONG> ——保存与还原到您的项目版本以及与远程地点"
-"的团队成员共享您的项目的能力。<LI><STRONG>翻译成不同的语言</STRONG> ——我们以"
-"一种能够相对容易地将其翻译为不同的语言如西班牙语或印尼语的方式来构建Miradi。"
-"&nbsp;如果您有兴趣帮助我们来开发一个使用您的语言的版本，请联系我们。"
-"<LI><STRONG>对其它学科的适用性 </STRONG>——Miradi目前着重于生物多样性保护项"
-"目。&nbsp;但是，这种适应性管理方法毫无疑问也将应用于其它学科，比如发展项目、"
-"公众健康项目、或其它更多项目。&nbsp;如果有你有兴趣帮助我们开发一个您的领域的"
-"版本，请联系我们。</LI></UL><H3><HR>概要视图</H3><UL><LI><STRONG>可定制标签——"
-"</STRONG>能创建一个定制标签，只包含您的项目或组织机构要跟踪的数据字段。/LI> "
-"<LI><STRONG>概要控制面板</STRONG>能为您的项目创建控制面板，显示关键字段与指示"
-"器状态。</LI> </UL><H3><HR>图表视图</H3><UL> <LI><STRONG>Í¼±í幻灯演示</"
-"STRONG>能隐藏或显示因素的特定组合并随后\"捕捉\"图片用于制作您的模型的动画演"
-"示。</LI><LI><STRONG>对人类福利对象的支持</STRONG>能显示与人类（与自然世界相"
-"对而言）福利相关的对象。</LI></UL><H3><HR>威胁因子评级视图</H3><UL> "
-"<LI><STRONG>基于压力的威胁因子评级的改进界面</strong>改进的用户界面，用于TNC"
-"式压力与压力来源评级。。</li></UL><H3><HR>规划视图</H3><UL><LI><STRONG>持续改"
-"进用户界面</STRONG>&nbsp;——在这些屏幕中信息演示的改进。</LI><LI><STRONG>分析"
-"工具</STRONG> ——用于帮助对监测数据进行基本分析的工具。</LI><LI><STRONG>根据会"
-"计编码和捐赠人进行报告</STRONG> ——能根据捐赠人或会计编码来制作报告来显示计划"
-"好的开支。</LI><LI><STRONG>跟踪实际开支</STRONG>——&nbsp;此工具用于输入实际支"
-"出并使之与预算条目匹配，并根据规划好的分目标及活动、会计编码或资金来源做出汇"
-"报，使用的是Quicken或Quickbooks 风格的界面。</LI></UL><H3><HR>报告</H3><UL> "
-"<LI><STRONG>改进的导入与导出</STRONG> ——以多种格式导出信息的能力得以提高。"
-"<LI><STRONG>定制报告的生成</STRONG>&nbsp;——能自动&nbsp;生成文档，这些文档包含"
-"用于向重要的保护捐赠人和组织机构作汇报所需的核心材料。<LI><STRONG>上传到保护"
-"实践数据库 </STRONG> ——如果您愿意，它能将您项目的部分或全部信息上传到&nbsp;全"
-"世界&nbsp;实践者都能进入的保护实践标准数据库。&nbsp;</LI></UL><H3><HR>日程安"
-"排（新视图）</H3><UL> <LI><STRONG>项目日程表</STRONG> ——该日程表用于显示特定"
-"团队成员或整个项目在某日、周、或月的活动/任务以及主要事件。"
-"{><LI><STRONG>Gantt 图表</STRONG> ——能创建曲线图，显示不同活动/方法及任务如何"
-"互相链接并在人力及其它资源中交叉重叠。</LI></UL><H3><HR>地图（新视图）</"
-"H3><UL> <LI><STRONG>基本地图绘制 </STRONG>此工具能获取您项目地点的基本地图，"
-"勾划您项目区域的范围，并以点或多边形的方式在该地图中显示对象、威胁因子及其它"
-"分目标。<LI><STRONG>基本空间分析</STRONG> ——能对数据进行空间分析&nbsp;（多边"
-"形的组合或分割等等）。<LI><STRONG>在关键因素中分析空间变化 </STRONG>——此工具"
-"能用来显示对象及威胁因子如何在您的项目地点发生变动、描述&nbsp;特定的策略或分"
-"目标的空间\"足迹\"、以及优先排列策略与行动或您项目领域不同区段的监测工作。"
-"<LI><STRONG>共享&nbsp;数据 </STRONG>将项目信息上传到空间参考数据库。</LI></"
-"UL><H3><HR>资料库（新视图）</H3><UL> <LI><STRONG>储存&nbsp;和管理项目&nbsp;文"
-"档</STRONG> ——存储与管理图像、文档、数据集、以及与您项目相关的文件。</LI></"
-"UL><H3><HR>????（新视图）</H3><UL> <LI><STRONG>您的主意</STRONG> ——创建一种方"
-"法，用于管理您需要管理的项目数据，请告知我们<A href=\"mailto:feedback@miradi."
-"org\">feedback@miradi.org</A> ——我们期望与您合作使之得以实现。</LI> </UL> </"
-"BODY> \t\t"
+"html|/resources/help/ComingAttractions.html|  <BODY><table><tr><td><img "
+"border='0' src='icons/coming attract48.png' width='48' height='36' hspace=10 "
+"></img></td><td><H2>Coming Attractions</H2></td></tr></table><P>The Miradi "
+"software is still in its initial development phase.&nbsp; We are currently "
+"working on developing many new functions that will be rolled out in the "
+"coming months.&nbsp; A few highlights that&nbsp;we are hoping to "
+"complete&nbsp;are listed below.&nbsp; If you have additional ideas or "
+"requests, please contact us at:&nbsp; <A href=\"mailto:feedback@miradi.org"
+"\">feedback@miradi.org</A>.&nbsp; And please check the Miradi website (<A "
+"href=\"http://www.Miradi.org\">www.Miradi.org</A>) for the latest version of "
+"the software - we release new versions on a regular basis.</"
+"P><H3><HR>Application Wide</H3><UL>  <LI><STRONG>More Interactive Interview "
+"Screens </STRONG>- Improvements to the   various interview screens that walk "
+"you through the steps in the CMP Process.   <LI><STRONG>More Examples</"
+"STRONG> - The addition of more example of   conservation&nbsp;projects from "
+"around the world.   <LI><STRONG>Tools to Support Later Steps in the CMP Open "
+"Standards</STRONG>   -&nbsp;The current version of Miradi is largely focused "
+"on the planning phase   of the adaptive management cycle; future tools will "
+"help in the analysis and   learning phases.   <LI><STRONG>Version Control</"
+"STRONG> - Ability to save and revert to versions   of your project and to "
+"share your project with team members working at remote   locations.   "
+"<LI><STRONG>Translations to Different Languages</STRONG> - Miradi is now "
+"available in several different languages such as Spanish and Bahasa "
+"Indonesia.&nbsp; See the Miradi.org website for more details. If you are   "
+"interested in helping us develop a version for your language, please "
+"contact   us.   <LI><STRONG>Adaptations to Other Disciplines </STRONG>- "
+"Miradi currently   focuses on biodiversity conservation projects.&nbsp; "
+"However, this adaptive   management approach undoubtedly will be of use to "
+"other disciplines as well,   such as development projects, public health "
+"projects, or many others.&nbsp; If   you are interested in helping us to "
+"develop a version for your field, please   contact us.</LI></"
+"UL><H3><HR>Summary View</H3><UL><LI><STRONG>Customizable Tabs - </STRONG>The "
+"ability to create a custom tab that contains only the data fields that your "
+"project or organization wants to track.</LI>  <LI><STRONG>Summary Dashboard "
+"- </STRONG>The ability to create a dashboard for your project showing the "
+"status of key fields and indicators.</LI>   </UL><H3><HR>Diagram View</"
+"H3><UL>  <LI><STRONG>Diagram Slide Show - </STRONG>The ability to hide or "
+"display specific combinations of factors and then \"snap\" images that can "
+"be used to develop an animated presentation of your model.</LI>  "
+"<LI><STRONG>Support for Human Welfare Targets - </STRONG>The ability to "
+"display targets related to human (as opposed to natural world) welfare.</"
+"LI>   </UL><H3><HR>Threat Ratings View</H3><UL>  <LI><STRONG>Improved "
+"Interface for Stress-Based Threat Ratings - </strong>Improved user interface "
+"for doing TNC-style Stress and Source of Stress Ratings.</li></"
+"UL><H3><HR>Planning View</H3><UL><LI><STRONG>Continued Improvement of User "
+"Interface</STRONG>&nbsp;- Enhancements to the presentation of information in "
+"these screens.</LI>   <LI><STRONG>Analytical Tools</STRONG> - Tools to help "
+"conduct basic analyses   of monitoring data.</LI>  <LI><STRONG>Reports by "
+"Accounting Code and Donor</STRONG> - The ability to develop reports showing "
+"planned expenditures by donor or by accounting code.</LI>  "
+"<LI><STRONG>Tracking of Actual Expenses</STRONG> -&nbsp;Tools to enter "
+"actual   expenditures and to match these up to budget line items and report "
+"on them by   programmatic objectives and activities, by accounting codes, or "
+"by funding   sources, using a Quicken or Quickbooks style interface.</LI></"
+"UL><H3><HR>Reports</H3><UL>  <LI><STRONG>Enhanced Import and Export</STRONG> "
+"- Enahanced ability to export information in various formats.   "
+"<LI><STRONG>Custom Report Generation</STRONG>&nbsp;- The ability to   "
+"automatically&nbsp;generate documents that contain the core of material "
+"needed   for reports to key conservation donors and organizations.   "
+"<LI><STRONG>Uploads to Databases of Conservation Practice </STRONG>- The   "
+"ability, if you so desire,&nbsp;to upload some or all of your project   "
+"information to&nbsp;standard databases of conservation practice that can "
+"be   accessed by practitioners&nbsp;around the&nbsp;world.&nbsp;</LI></"
+"UL><H3><HR>Schedule (New View)</H3><UL>  <LI><STRONG>Project Calendar</"
+"STRONG> - A calendar showing activities/tasks   and major events&nbsp;on a "
+"given day, week, or month either for specific team   members, or for the "
+"project as a whole.   <LI><STRONG>Gantt Chart</STRONG> - The ability to "
+"create a chart showing how   different activities/methods and tasks link to "
+"one another and overlap among   human and other resources.</LI></"
+"UL><H3><HR>Map (New View)</H3><UL>  <LI><STRONG>Basic Mapping - </"
+"STRONG>Tools to obtain a base map of your   project site, outline the scope "
+"of your project area, and show targets,   threats, and other objects on the "
+"map as points or polygons.   <LI><STRONG>Basic Spatial Analyses</STRONG> - "
+"Functions to analyze data   spatially&nbsp;(union or intersection of "
+"polygons, etc).   <LI><STRONG>Analyze Spatial Variation in Key Factors </"
+"STRONG>- Tools to how   how target or threat&nbsp;status varies over your "
+"project site,   depict&nbsp;the spatial \"footprint\" of a given strategy or "
+"objective, and   prioritize strategies and actions or monitoring work&nbsp;"
+"in different   sections of your project area.   <LI><STRONG>Share&nbsp;Data "
+"- </STRONG>Upload project information to spatially   referenced databases. </"
+"LI></UL><H3><HR>Library (New View)</H3><UL>  <LI><STRONG>Store&nbsp;and "
+"Manage Project&nbsp;Documents</STRONG> - Store and   manage images, "
+"documents, data sets, and other files related to your   project.</LI></"
+"UL><H3><HR>???? (New View)</H3><UL>  <LI><STRONG>Your Idea</STRONG> - Create "
+"a way of managing data about your   project that you need and let us know at "
+"<A   href=\"mailto:feedback@miradi.org\">feedback@miradi.org</A> - hopefully "
+"we can   work with you to make it reality.</LI>  </UL>  </BODY>"
 
 msgid ""
 "html|/resources/help/AboutCMP.html|  <!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
@@ -10320,49 +10391,56 @@ msgid ""
 "section   of:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://fosonline.org"
 "\">http://fosonline.org</A></P></BLOCKQUOTE>"
 msgstr ""
-"<p><table>\t<tr>\t\t<td><IMG height=48 alt=\"\" hspace=20 src=\"icons/info-"
-"48.png\" width=48 align=absMiddle border=0></td>\t\t<td width='20'></td>\t"
-"\t<td>\t\t\t<FONT face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t"
-"\t<STRONG>更多信息</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></"
-"table></p><br><HR><H3>关于更多信息页面</H3>更多信息页面对于您所处的视图是文脉"
-"敏感的。顾名思义，它们提供额外材料，描述在适应性管理循环中特定步骤，也提供进"
-"一步阅读有关题材的链接。<br><br><HR><H3>CMP<EM>开放标准</EM></H3><P>Miradi软"
-"件是开发来协助保护实践者来操作CMP<EM>针对保护实践的开放标准（Open Standards "
-"for the Practice of Conservation）</EM>中所列举的适应性管理程序。&nbsp;您可以"
-"在此下载最新版本：</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\"> "
-"<P>CMP。2008. Open Standards for the Practice of Conservation, v 2.0.（保护实"
-"践之开放标准，版本2.0.）<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A href=\"http://"
-"conservationmeasures.org/CMP/Site_Docs/CMP_Open_Standards_Version_2.0.pdf"
-"\">http://conservationmeasures.org/CMP/Site_Docs/"
-"CMP_Open_Standards_Version_2.0.pdf</A></P></BLOCKQUOTE><P>许多CMP成员仍然拥有"
-"各自版本的标准以及特定指导材料，用于指导如下所示的许多步骤。</"
-"P><br><HR><H3>The Nature Conservancy（大自然保护协会，TNC）</H3><BLOCKQUOTE "
-"dir=ltr style=\"MARGIN-RIGHT: 0px\"> <P>TNC.&nbsp;2005.&nbsp;<EM>保护行动计"
-"划：在任何规模上开发策略，采取行动，以及衡量成功。基本实践概览&nbsp;<BR></"
-"EM>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A href=\"http://conserveonline.org/"
-"workspaces/cbdgateway/cap/resources/1/TNC_CAP_Basic_Practices.pdf/download"
-"\">http://conserveonline.org/workspaces/cbdgateway/cap/resources/1/"
-"TNC_CAP_Basic_Practices.pdf/download</A></P> <P>详尽的指导材料可在此获得："
-"<BR>&nbsp;&nbsp;&nbsp;&nbsp;WWF 项目管理标准<A href=\"http://conserveonline."
-"org/workspaces/cbdgateway/cap/resources\">http://conserveonline.org/"
-"workspaces/cbdgateway/cap/resources</A>&nbsp;</P></"
-"BLOCKQUOTE><br><HR><H3>Wildlife Conservation Society（野生动物保护协会，WCS)"
-"</H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\"> <P>详尽的指导材料可在此"
-"获得：<BR>&nbsp;&nbsp;&nbsp;&nbsp;<A href=\"http://wcslivinglandscapes.com/"
-"\">http://wcslivinglandscapes.com/</A></P></BLOCKQUOTE><br><HR><H3 "
-"dir=ltr>WWF</H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\"> <P "
-"dir=ltr>WWF.2006. <EM>WWF项目管理标准<BR></EM>&nbsp;&nbsp;&nbsp;&nbsp; <A "
-"href=\"http://www.panda.org/standards/full\">http://www.panda.org/standards/"
-"full</A></P> <P dir=ltr>详尽的指导材料可在此获得：<BR>&nbsp;&nbsp;&nbsp;"
-"&nbsp;<A href=\"http://www.panda.org/standards\">www.panda.org/standards</A> "
-"</P></BLOCKQUOTE><br><HR><H3 dir=ltr>Foundations of Success (成功基金，FOS)</"
-"H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\"> <P>Margoluis, R., and N. "
-"Salafsky.1998. <EM>成功的衡量标准：0{>设计，管理，以及监测保护与开发项目。</"
-"EM>Island Press, Washington, DC.<BR>&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A href="
-"\"http://islandpress.org\"><U><FONT color=#0000ff>http://islandpress.org</"
-"U></FONT></A></P> <P>详尽的指导材料可以在以下资源&nbsp;部分找到：<BR>&nbsp;"
-"&nbsp;&nbsp;&nbsp;<A href=\"http://fosonline.org\">http://fosonline.org</A></"
-"P></BLOCKQUOTE> \t\t"
+"html|/resources/views/SummaryView/MoreInfo.html|<p><table>\t<tr>\t\t<td><IMG "
+"height=48 alt=\"\" hspace=20 src=\"icons/info-48.png\" width=48 "
+"align=absMiddle border=0></td>\t\t<td width='20'></td>\t\t<td>\t\t\t<FONT "
+"face=Tahoma color=#000000 size=5 name=\"Tahoma\">\t\t\t\t<STRONG>More "
+"Information</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></"
+"p><br><HR><H3>About the More Information Pages</H3>The More Information "
+"Pages are context sensitive to the view that you are currently in. As the "
+"name implies, they provide additional material describing the specific step"
+"(s) in the adaptive management cycle as well as links to further reading on "
+"the topic.<br><br><HR><H3>CMP<EM> Open Standards</EM></H3><P>Miradi software "
+"is being developed to assist conservation practitioners to go through the "
+"adaptive management process outlined in the CMP's <EM>Open Standards for the "
+"Practice of Conservation</EM>.&nbsp; You can download a copy of the latest "
+"version at:</P><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>CMP. "
+"2008. Open Standards for the Practice of   Conservation, v 2.0.<BR>&nbsp;"
+"&nbsp;&nbsp;&nbsp; <A   href=\"http://conservationmeasures.org/CMP/Site_Docs/"
+"CMP_Open_Standards_Version_2.0.pdf\">http://conservationmeasures.org/CMP/"
+"Site_Docs/CMP_Open_Standards_Version_2.0.pdf</A></P></BLOCKQUOTE><P>Many of "
+"the CMP members also have their own version of the standards as well as "
+"specific guidance materials for many of the steps as shown below.</"
+"P><br><HR><H3>The Nature Conservancy (TNC)</H3><BLOCKQUOTE dir=ltr style="
+"\"MARGIN-RIGHT: 0px\">  <P>TNC.&nbsp;2005.&nbsp; <EM>Conservation Action "
+"Planning: Developing   Strategies, Taking Action, and Measuring Success at "
+"Any Scale. Overview of   Basic Practices.&nbsp;<BR></EM>&nbsp;&nbsp;&nbsp;"
+"&nbsp;&nbsp;<A   href=\"http://conserveonline.org/workspaces/cbdgateway/cap/"
+"resources/1/TNC_CAP_Basic_Practices.pdf/download\">http://conserveonline.org/"
+"workspaces/cbdgateway/cap/resources/1/TNC_CAP_Basic_Practices.pdf/download</"
+"A></P>  <P>Extensive guidance materials are also available   at:<BR>&nbsp;"
+"&nbsp;&nbsp;&nbsp; <A   href=\"http://conserveonline.org/workspaces/"
+"cbdgateway/cap/resources\">http://conserveonline.org/workspaces/cbdgateway/"
+"cap/resources</A>&nbsp;</P></BLOCKQUOTE><br><HR><H3>Wildlife Conservation "
+"Society (WCS)</H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  "
+"<P>Extensive guidance materials are available at:<BR>&nbsp;&nbsp;&nbsp;"
+"&nbsp;   <A   href=\"http://wcslivinglandscapes.com/\">http://"
+"wcslivinglandscapes.com/</A></P></BLOCKQUOTE><br><HR><H3 dir=ltr>WWF</"
+"H3><BLOCKQUOTE dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P dir=ltr>WWF. 2006. "
+"<EM>WWF Standards of Project and Programme   Management.<BR></EM>&nbsp;&nbsp;"
+"&nbsp;&nbsp; <A   href=\"http://www.panda.org/standards/complete\">http://"
+"www.panda.org/standards/complete</A></P>  <P dir=ltr>Extensive guidance "
+"materials are also available   at:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href="
+"\"http://www.panda.org/standards\">www.panda.org/standards</A> </P></"
+"BLOCKQUOTE><br><HR><H3 dir=ltr>Foundations of Success (FOS)</H3><BLOCKQUOTE "
+"dir=ltr style=\"MARGIN-RIGHT: 0px\">  <P>Margoluis, R., and N. Salafsky. "
+"1998. <EM>Measures of Success: Designing,   Managing, and Monitoring "
+"Conservation and Development Projects. </EM>Island   Press, Washington, DC."
+"<BR>&nbsp;&nbsp;&nbsp;&nbsp; </FONT><A   href=\"http://islandpress.org"
+"\"><U><FONT   color=#0000ff>http://islandpress.org</U></FONT></A></P>  "
+"<P>Extensive guidance materials are available in the resources&nbsp;"
+"section   of:<BR>&nbsp;&nbsp;&nbsp;&nbsp; <A   href=\"http://fosonline.org"
+"\">http://fosonline.org</A></P></BLOCKQUOTE>"
 
 #, fuzzy
 msgid ""
@@ -10425,41 +10503,64 @@ msgid ""
 "document that can be edited in a Word Processor</li><li>Create a standard "
 "report for a donor or other key audience for your project</li></ul>"
 msgstr ""
-"<h3>将数据从Miradi导出到其它应用程序</h3>有多种途径可将您的信息从Miradi导出到"
-"其它应用程序。<h4>A. 导出当前页面为...</h4>该命令可用来导出用于文档或演示文件"
-"的特定图像或表格 。可选项包括：<h4>导出JPG或PNG图像</h4>使用<code "
-"class='toolbarbutton'>&lt;文件/导出&nbsp;当前&nbsp;页面&nbsp;as.../JPEG&nbsp;"
-"图像&gt;</code> 或<code class='toolbarbutton'>&lt;文件/导出&nbsp;当前&nbsp;页"
-"面&nbsp;as.../PNG&nbsp;图像&gt;</code>菜单命令来将您屏幕中的一个特定图像或表"
-"格保存到一个图像文件中。 该方法对如下操作特别有用：<ul><li>将图表或表格置于文"
-"档或演示文件中</li><li>创建可以置于网站中的图像</li></ul><h4>导出富文本"
-"（RTF）格式文件</h4>使用<code class='toolbarbutton'>&lt;文件/导出&nbsp;当前"
-"&nbsp;页面&nbsp;as.../RTF&nbsp;文件&gt;</code> 菜单命令来将当前正在浏览的表格"
-"保存为RTF格式文件。该方法对如下操作特别有用：<ul><li>以文字处理器能编辑的格式"
-"导出表格或其它信息</li><li>导出自定义报告</li></ul><h4>导出制表符分隔数据</"
-"h4>使用<code class='toolbarbutton'>&lt;文件/导出&nbsp;当前&nbsp;页面&nbsp;"
-"为.../制表符分隔数据&gt;</code>菜单命令来将当前视图表格导出到一个制表符分隔文"
-"件。 此方法对如下操作特别有用：<ul><li>从您的计划视图中将当前配置导出到数据表"
-"如Excel中</li><li>导出财务信息</li></ul><h4>B. 将当前项目导出为…</h4>本命令用"
-"于导出您的整个项目文件并与其他用户共享。 选项包括<h4>导出Miradi Zip（MPZ）文"
-"件</h4>使用<code class='toolbarbutton'>&lt;文件/将当前项目导出为.../Miradi项"
-"目Zip（MPZ）文件&gt;</code>菜单命令来将您的整个项目压缩为小的zip文件。此方法"
-"对如下操作特别有用：<ul><li>将您的项目发送给Miradi的其他用户</li><li>为您的项"
-"目创建备份文件</li></ul><h4>导出ConPro（CPMZ）文件(CP</h4>使用<code "
-"class='toolbarbutton'>&lt;文件/将当前项目导出为.../ConPro（CPMZ）文件&gt;</"
-"code>菜单命令来将您的整个项目压缩成zip文件以便可以导入到大自然保护组织（The "
-"Nature Conservancy）的ConPro数据库中。注意：如果您的组织机构想要将Miradi数据"
-"导入到您自己的数据库中，请联系<A href=\"mailto:support@miradi.org"
-"\">support@miradi.org</A>。此方法对如下操作特别有用：<ul><li>将您的信息上传到"
-"TNC的ConPro 数据库中</li><li>与其他实践人士共享您的项目信息</li></ul><h4>导出"
-"项目XML文件</h4>使用<code class='toolbarbutton'>&lt;文件/导出/项目XML文件&gt;"
-"</code>菜单命令来为您所有的项目数据创建一个XML文件。 尽管管理XML文件需要技术"
-"技巧，但此方法对如下操作特别有用：<ul><li>创建一个可以被数据库导入的文件</"
-"li><li>将您项目的所有信息以其它应用程序可读的格式导出</li></ul><h4>C. 生成报"
-"告</h4>使用<code class='toolbarbutton'>&lt;报告&gt;</code>视图来创建富文本格"
-"式（RTF）文件，其中包含您项目数据的各种配置。这种办法对以下操作特别有用："
-"<ul><li>创建一个可以用文字处理器编辑的文档</li><li>为捐赠人或其他重要听众创建"
-"一个关于您项目的标准报告</li></ul>"
+"html|/resources/views/ReportsView/Workshop.html|<p><table>\t<tr>\t\t<td><IMG "
+"height=48 hspace=20 src=\"icons/workshop48.png\" width=48 align=absMiddle "
+"border=0></td>\t\t<td width='20'></td>\t\t<td>\t\t\t<FONT face=Tahoma "
+"color=#000000 size=5 name=\"Tahoma\">\t\t\t\t<STRONG>Workshop Hints for "
+"Report View</STRONG>\t\t\t</FONT>\t\t\t&nbsp;\t\t</td>\t\t\t</tr></table></"
+"p><br><hr><h3>Exporting Workshop Data in Miradi to Other Applications</"
+"h3>Although you may not want to use Miradi to <i>display</i> information in "
+"a workshop, it is a very useful way to <i>capture</i> the information put on "
+"a sticky board or a flip chart so that it can be documented and shared with "
+"other workshop participants.<h3>Exporting Data in Miradi to Other "
+"Applications</h3>There are many ways to export your information from Miradi "
+"to other applications.<h4>A. EXPORT CURRENT PAGE AS...</h4>This command is "
+"useful to export a specific image or table for use in a document or "
+"presentation. Options include:<h4>Export JPG or PNG Images</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../"
+"JPEG&nbsp;Image&gt;</code> or <code class='toolbarbutton'>&lt;File/"
+"Export&nbsp;Current&nbsp;Page&nbsp;as.../PNG&nbsp;Image&gt;</code> menu "
+"commands to capture a specific diagram or table on your screen in an image "
+"file. This method is particularly useful to:<ul><li>Put a diagram or table "
+"in a document or presentation</li><li>Create an image that can be put in a "
+"website</li></ul><h4>Export Rich Text Format (RTF) File</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../"
+"RTF&nbsp;File&gt;</code> menu command to export the currently viewed table "
+"to a Rich Text Format (RTF) file. This method is particularly useful to:"
+"<ul><li>Export a table or other information in a format that can be edited "
+"by a word processor</li><li>Export pieces of a custom report</li></"
+"ul><h4>Export Tab-Delimited Data</h4>Use the <code class='toolbarbutton'>&lt;"
+"File/Export&nbsp;Current&nbsp;Page&nbsp;as.../Tab-Delimited Data&gt;</code> "
+"menu command to export the currently viewed table to a tab-delimited file. "
+"This method is particularly useful to:<ul><li>Export the current "
+"configuration from your planning view to a spreadsheet like Excel</"
+"li><li>Export financial information</li></ul><h4>B. EXPORT CURRENT PROJECT "
+"AS...</h4>This command is useful to export your entire project file so that "
+"it can be shared with other users. Options include:<h4>Export Miradi Zip "
+"(MPZ) File </h4>Use the <code class='toolbarbutton'>&lt;File/Export Current "
+"Project as.../Miradi Project Zip (MPZ) File&gt;</code> menu command to "
+"capture your entire project in a small zip file. This method is particularly "
+"useful to:<ul><li>Send your project to another Miradi user</li><li>Create a "
+"backup copy of your project</li></ul><h4>Export ConPro (CPMZ) File (CP</"
+"h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project as.../"
+"ConPro (CPMZ) File&gt;</code> menu command to capture your entire project in "
+"a zip file that can be imported into The Nature Conservancy's ConPro "
+"database. Note that if your organization would like to import Miradi data "
+"into your own database, contact <A href=\"mailto:support@miradi.org"
+"\">support@miradi.org</A>. This method is particularly useful to:"
+"<ul><li>Upload your information to TNC's ConPro database</li><li>Share your "
+"project information with other practitioners</li></ul><h4>Export Project XML "
+"File</h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project "
+"as.../Project XML File&gt;</code> menu command to create an XML file with "
+"all your project data. Although managing the XML file will require technical "
+"skills, this method is particularly useful to:<ul><li>Create a file that can "
+"be imported by a database</li><li>Export all of your project's information "
+"into formats that can be read by other applications</li></ul><h4>C. GENERATE "
+"REPORTS</h4>Use the <code class='toolbarbutton'>&lt;Reports&gt;</code> view "
+"to create a Rich Text Format (RTF) file that contains various configurations "
+"of your project data. This method is particularly useful to:<ul><li>Create a "
+"document that can be edited in a Word Processor</li><li>Create a standard "
+"report for a donor or other key audience for your project</li></ul>"
 
 msgid ""
 "html|/resources/views/ReportsView/Examples.html|<p><table>\t<tr>\t\t<td><IMG "
@@ -11114,24 +11215,36 @@ msgid ""
 "diagramnavigation2.png' width='512' height='367'></img></td></tr></table></"
 "div>"
 msgstr ""
-"<div class='navigation'><h3>图表视图导航提示</h3>要<span class='task'>添加一"
-"个新的对象或其它因素</span>，请单击控制栏中合适的按钮、使用下拉菜单、或使用鼠"
-"标左键。新的因素将会出现在该页面。若要<span class='task'>选定某个因素</"
-"span>，请单击它。若要<span class='task'>重新定位某个因素</span>，先选定它，然"
-"后用鼠标或方向键来将它移动到您想要的位置（如果您要移动一个大的因素组，请使用"
-"鼠标）。</p><p>双击某个因素会打开一个对话框，您可以在其中<span class='task'>"
-"对该因素命名、添加细节、添加指示物或分目标、</span>or <span class='task'>键入"
-"评论</span>。</p><p>若要<span class='task'>链接因素</span>，请先单击，然后按"
-"住Shift键，再单击一次。然后单击方向键以创建链接。或者如何您选定某个因素然后再"
-"添加新的因素，它们就会被自动链接在一起。</p><p>要<span class='task'>在概念模"
-"式和结果链之间切换</span>请使用左上方的标签和在控制条上方的页面列表。放大和缩"
-"小按钮可以被用来<span class='task'>放大或缩小视图</span>。控制栏可用于<span "
-"class='task'>隐藏或显示不同类型的因素</span>以及<span class='task'>用于管理页"
-"面名称</span>。文件/导出/PNG&nbsp;或&nbsp;JPEG图形菜单命令可用于保存您图表的"
-"图片以用于其它应用软件中。其它更多高级任务将在随后的向导页面中进行描述。</"
-"p><p></p><table width='100%'><tr><td align='center'><img src='images/"
-"DiagramWizard/diagramnavigation2.png' width='512' height='367'></img></td></"
-"tr></table></div> \t\t"
+"html|/resources/wizard/DiagramView/DiagramOverviewStepRight.html|<div "
+"class='navigation'><h3>Navigation Hints for the Diagram View</h3>To <span "
+"class='task'>add a new target or other factor</span>, click the appropriate "
+"button on the control bar, use the drop down menu, or use the left mouse "
+"button. The new factor will appear on the page. To <span class='task'>select "
+"a factor</span>, single click on it. To <span class='task'>reposition a "
+"factor</span>, first select it and then use the mouse or arrow keys to move "
+"it wherever you like (if you are moving a big group of factors, use the "
+"mouse). The Move Factors Down and Right button can be used to </span>or "
+"<span class='task'> free up space</span> in the NW quadrant of the diagram.</"
+"p><p>Double clicking on a factor will bring up a dialog box in which you can "
+"<span class='task'>name the factor, add details, attach an indicator or "
+"objective to it, </span>or <span class='task'> type a comment</span>.</"
+"p><p>To <span class='task'>link factors</span> click on the first, hold the "
+"shift key, and then click on the second. Then click the arrow button to "
+"create the link. Or if you select a factor and then add a new factor, they "
+"will be automatically linked.</p><p>To <span class='task'>switch between "
+"conceptual models and results chains</span> use the tabs in the upper left "
+"and the page listings in the top of the control bar. The Zoom In, Zoom Out, "
+"and Zoom to Fit buttons can be used to <span class='task'>decrease or "
+"increase the size of the view</span>. The Control Bar can be used to <span "
+"class='task'>hide or show different types of factors</span> and to <span "
+"class='task'>manage page names</span>. The File/Export/PNG&nbsp;or&nbsp;JPEG "
+"Image menu commands can be used to <span class='task'>save a picture of your "
+"diagram</span> for use in other applications. The Tags feature can be used "
+"to <span class='task'>display a subset of the factors</span> in a diagram. "
+"Other more advanced tasks are described in subsequent wizard pages.</p><p></"
+"p><table width='100%'><tr><td align='center'><img src='images/DiagramWizard/"
+"diagramnavigation2.png' width='512' height='367'></img></td></tr></table></"
+"div>"
 
 msgid ""
 "html|/resources/wizard/DiagramView/"
@@ -12827,18 +12940,25 @@ msgid ""
 "PlanningWizard/planning-nav.png' width='512' height='351'></img></td></tr></"
 "table><p></div>"
 msgstr ""
-"<div class='navigation'><h3>计划视图导航提示</h3> \t<p>单击控制栏中的无线按钮"
-"来<strong>选定标准计划视图</strong>。另一种方法是，您也可以单击<code "
-"class='toolbarbutton'>&lt;创建&nbsp;定制&gt;</code>按钮来<strong>创建您自己的"
-"行和栏的组合</strong>。</p><p>Miradi根据在您概念模型和/或结果链中总目标、分目"
-"标与策略/指示物直接的关系来创建一个树形图。单击 +号和-号来<strong>扩展</"
-"strong>或<strong>闭合</strong>各层次的不同部分。选定图表中的一行可以使您将底"
-"部面板上调并能够<strong>编辑</strong>该行中的信息。</p><p>在计划视图中许多信"
-"息都是从图表中自动生成而来的。若要<strong>创建</strong>或<strong>删除</"
-"strong>各个总目标、分目标、或策略，您需要到图表中，并使用相关因素的属性对话"
-"框。</p><p><table width='100%'><tr><td align='center'><img src='images/"
+"html|/resources/wizard/PlanningView/PlanningOverviewStepRight.html|  <div "
+"class='navigation'><h3>Navigation Hints for the Planning View</h3>          "
+"\t<p>Click on the radio buttons in the Control Bar to <strong>select "
+"standard planning views</strong>. Alternatively, click on the <code "
+"class='toolbarbutton'>&lt;Create&nbsp;Custom&gt;</code> button to "
+"<strong>create your own combination</strong> of rows and columns.</"
+"p><p>Miradi creates a tree based on the relationship between goals, "
+"objectives, and strategies/indicators in your conceptual models and/or "
+"results chains. Clicking on the + and - symbols enables you to "
+"<strong>expand</strong> or <strong>collapse</strong> different parts of the "
+"hierarchy. Selecting a row in the table will allow you to bring up the "
+"bottom panel and <strong>edit</strong> the information for that row.</"
+"p><p>Much of the information in the planning view is automatically generated "
+"from the diagram. To <strong>create</strong> or <strong>delete</strong> "
+"items for which no button is shown (e.g., a target or objective) you have to "
+"go the diagram and use the properties dialogue for the relevant factor.</"
+"p><p><table width='100%'><tr><td align='center'><img src='images/"
 "PlanningWizard/planning-nav.png' width='512' height='351'></img></td></tr></"
-"table><p></div> \t\t"
+"table><p></div>"
 
 msgid ""
 "html|/resources/wizard/PlanningView/WorkPlanAssignResourcesStepRight.html|"
@@ -13121,13 +13241,18 @@ msgid ""
 "resources at either the overall activity or task level for a given activity, "
 "but you cannot do both.</p>"
 msgstr ""
-"若要在计划视图中将某个现有资源分配到某个活动/方法或任务，请单击<code "
-"class='toolbarbutton'>&lt;工作&nbsp;计划&gt;</code>选项按钮并选择一个您要重点"
-"关注的活动/方法或任务。单击<code class='toolbarbutton'>&lt;添加&nbsp;资源&gt;"
-"</code>按钮来使用下拉菜单来选择合适的人力或物质资源（请勿在此包括财务资源）。"
-"您可在橙色栏目中为在各个即将来临的季度中的资金来源指定单位数量。<p>如果需要您"
-"可以添加多个资源到一个活动或任务。您也可以给某个特定的活动分配资源，可以在整"
-"个活动水平或特定的任务水平进行分配，但您不能同时做这两样。</p> \t\t"
+"html|/resources/wizard/PlanningView/WorkPlanAssignResourcesStepLeft.html|To "
+"assign an existing resource to an activity/method or task in the Planning "
+"View, click on the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> "
+"radio button and select an activity/method or task that you want to focus "
+"on. Go to the bottom of the lower panel and click on the <code "
+"class='toolbarbutton'>&lt;Assign&nbsp;Resource&gt;</code> button and use the "
+"drop down box to select the appropriate human or material resource (do not "
+"include financial resources here). You can specify the number of units for "
+"the resource in each upcoming quarter in the orange columns.<p>You can add "
+"multiple resources to one activity or task if necessary. You can also assign "
+"resources at either the overall activity or task level for a given activity, "
+"but you cannot do both.</p>"
 
 #, fuzzy
 msgid ""
@@ -13166,28 +13291,40 @@ msgid ""
 "standard planning views, Miradi also enables you to create your own custom "
 "planning views.</p>"
 msgstr ""
-"<h3>欢迎进入图表视图</h3>本视图让您能够为您的项目开发概念模型。标准计划视图包"
-"括：<p><b>策略计划</b>——关于您的项目将会如何改变项目状况的A计划。显示一个项目"
-"的<a href='Definition:Goal' class='definition'>总目标</a>、<a "
-"href='Definition:Objective' class='definition'>分目标</a>以及<a "
-"href='Definition:Strategy' class='definition'>策略</a>之间的关系。</p><p><b>"
-"监控计划</b>——本计划是关于如何收集您和其他人要了解的、有关您项目的信息。 包括"
-"您能持续跟踪的<a href='Definition:Indicator' class='definition'>指示物</a>以"
-"及您将使用的<a href='Definition:Method' class='definition'>方法</a>。</"
-"p><p><b>工作计划</b>——描述了您需要用来执行您的策略与监控计划的特定的<a "
-"href='Definition:Activity' class='definition'>活动</a>/<a href='Definition:"
-"Method' class='definition'>方法</a>和<a href='Definition:Task' "
-"class='definition'>任务</a>。显示各个任务的时间表及顺序，以及执行各任务所需的"
-"特定<a href='Definition:Resource' class='definition'>资源</a>大多数项目只拟定"
-"未来1-2年的详细工作计划。</p><p><b>仅含总目标，等等 </b>—在一张表格内显示所有"
-"您的<a href='Definition:Goal' class='definition'>总目标</a>，<a "
-"href='Definition:Objective' class='definition'>分目标</a>，<a "
-"href='Definition:Strategy' class='definition'>策略</a>，<a href='Definition:"
-"Activity' class='definition'>活动</a>，<a href='Definition:Indicator' "
-"class='definition'>指示物</a>，<a href='Definition:Method' "
-"class='definition'>方法</a>或<a href='Definition:Task' class='definition'>任"
-"务</a>以便于比较和编辑。</p><p>除了这些标准计划视图之外，Miradi还使您能够创建"
-"您自己的定制计划视图。</p> \t\t"
+"html|/resources/wizard/PlanningView/PlanningOverviewStepLeft.html|"
+"<h3>Welcome to the Planning View</h3>This view enables you to develop and "
+"edit various plans for your project.  Standard planning views include:"
+"<p><b>Strategic Plan</b> - A plan for how your project will change the "
+"project situation. Is primarily derived from results chains and shows the "
+"relationship between a project's <a href='Definition:Goal' "
+"class='definition'>goals</a>, <a href='Definition:Objective' "
+"class='definition'>objectives</a>, and <a href='Definition:Strategy' "
+"class='definition'>strategies</a>.</p><p><b>Monitoring Plan</b> - A plan for "
+"collecting information that you and others need to know about your project. "
+"Is primarily derived from results chains and includes the <a "
+"href='Definition:Indicator' class='definition'>indicators</a> that you will "
+"track over time as well as the <a href='Definition:Method' "
+"class='definition'>methods</a> that you will use.</p><p><b>Work Plan</b> - A "
+"description of the specific <a href='Definition:Activity' "
+"class='definition'>activities</a>/<a href='Definition:Method' "
+"class='definition'>methods</a> and <a href='Definition:Task' "
+"class='definition'>tasks</a> that you need to undertake your strategic and "
+"monitoring plans. Shows the timing and sequence of each task as well as the "
+"specific <a href='Definition:Resource' class='definition'>resources</a> "
+"required to carry it out. Most projects will only do a detailed work plan "
+"for the next 1-2 years of their project.</p><p><b>Goals Only, etc.</b> - "
+"Shows all of your <a href='Definition:Goal' class='definition'>goals</a>, <a "
+"href='Definition:Objective' class='definition'>objectives</a>, <a "
+"href='Definition:ConservationTargets' class='definition'>targets</a>,<a "
+"href='Definition:DirectThreat' class='definition'>direct threats</a>,<a "
+"href='Definition:Strategy' class='definition'>strategies</a>,<a "
+"href='Definition:Activity' class='definition'>activities</a>,<a "
+"href='Definition:Indicator' class='definition'>indicators</a>, <a "
+"href='Definition:Method' class='definition'>methods</a>, or <a "
+"href='Definition:AssignedResource' class='definition'>assigned resources</a> "
+"in one table for quick comparisons and editing.</p><p>In addition to these "
+"standard planning views, Miradi also enables you to create your own custom "
+"planning views.</p>"
 
 msgid ""
 "html|/resources/wizard/PlanningView/WorkPlanCreateResourcesStepRight.html|"
@@ -13348,14 +13485,12 @@ msgid ""
 "your rating using the Scope rating drop down menu in the lower panel of the "
 "screen.<p><br></br></td><td width='25'></td></tr></table></div>"
 msgstr ""
-"<table><tr><td width='25'></td><td>使用显示于右方的标尺来评定威胁因子对对象造"
-"成威胁的<em><a href='Definition:ThreatRatingScope' title='Scope is...' "
-"class='definition'>程度</a></em>。<p><br><p><strong>什么是威胁因子对对象的威"
-"胁程度？</strong></p><select name='value'><option >非常高——极为普遍（71-"
-"100%）。</option><option >高——广泛传播（31-70%）。</option><option selected >"
-"中等——有限（11-30%）。</option><option >低——很少（0-10%）。</option><option >"
-"无。</option></select><br></br></td><td width='25'></td></tr></table></div> "
-"\t\t"
+"html|/resources/wizard/ThreatMatrixView/ThreatRatingWizardScopeStepLeft."
+"html|  <table><tr><td width='25'></td><td>Using the scale shown on the "
+"right, rate the <em><a href='Definition:ThreatRatingScope' title='Scope "
+"is...' class='definition'>scope</a></em> of the threat on the target. Enter "
+"your rating using the Scope rating drop down menu in the lower panel of the "
+"screen.<p><br></br></td><td width='25'></td></tr></table></div>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/"
@@ -13410,14 +13545,12 @@ msgid ""
 "rating using the Severity rating drop down menu in the lower panel of the "
 "screen.<p></br></td><td width='25'></td></tr></table>"
 msgstr ""
-"<table><tr><td width='25'></td><td>使用显示右方的标尺来评定威胁因子对对象造成"
-"威胁的<em><a href='Definition:Severity' title='Severity is...' "
-"class='definition'>严重性</a></em> 。<p><br><p><strong>什么是威胁因子对对象造"
-"成威胁的严重性？</strong></p><select name='value'><option >非常高——摧毁或消除"
-"对象。</option><option >高——使对象严重退化/减少。</option><option >中等——使对"
-"象中等退化/减少。</option><option selected >低——使对象轻微退化/减少。</"
-"option><option >无。</option></select><br></br></td><td width='25'></td></"
-"tr></table> \t\t"
+"html|/resources/wizard/ThreatMatrixView/ThreatRatingWizardSeverityStepLeft."
+"html|  <table><tr><td width='25'></td><td>Using the scale shown on the "
+"right, rate the <em><a href='Definition:Severity' title='Severity is...' "
+"class='definition'>severity</a></em> of the threat on the target. Enter your "
+"rating using the Severity rating drop down menu in the lower panel of the "
+"screen.<p></br></td><td width='25'></td></tr></table>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/ThreatSimpleOverviewStepRight.html|  "
@@ -13481,9 +13614,9 @@ msgid ""
 "\t<td align='left' valign='top'>&nbsp;</td>\t\t</tr></table>\t</td>\t<td "
 "width='25'></td></tr></table>"
 msgstr ""
-"您现在处于基于压力的威胁因子评级模式。<p>在表格中选择一个白色框代表一个对象及"
-"对其造成影响的威胁因子。单击<code class='toolbarbutton'>&lt;进行&nbsp;威胁因"
-"子&nbsp;评级&gt;</code>按钮进行操作。</p><br></br><table><tr>\t<td "
+"html|/resources/wizard/ThreatMatrixView/ThreatRatingWizardChooseBundleLeft."
+"html|  Start the threat rating process by selecting a target-threat pair to "
+"work on, by clicking on a cell in the table below.<br></br><table><tr>\t<td "
 "width='25'></td>\t<td>\t\t<table><tr>\t\t\t<td align='left' "
 "valign='top'><input type='submit' name='Back' value='&lt; Previous'></"
 "input></td>\t\t\t<td align='left' valign='top'>&nbsp;</td>\t\t\t<td "
@@ -13492,7 +13625,7 @@ msgstr ""
 "valign='top'>&nbsp;</td>\t\t\t<td align='left' valign='top'><input "
 "type='submit' name='Done' value='Done with Threat Ratings'></input></td>\t\t"
 "\t<td align='left' valign='top'>&nbsp;</td>\t\t</tr></table>\t</td>\t<td "
-"width='25'></td></tr></table> \t\t"
+"width='25'></td></tr></table>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/"
@@ -13607,14 +13740,14 @@ msgid ""
 "drop down menu in the lower panel of the screen.</p></select><br></br></"
 "td><td width='25'></td></tr></table>"
 msgstr ""
-"<table><tr><td width='25'></td><td>使用右方的标尺来衡量威胁因子针对其对象造成"
-"的<em><a href='Definition:Irreversibility' title='Irreversibility is...' "
-"class='definition'>不可逆性</a></em>（也称为持久性）<p><br><p><strong>什么是"
-"威胁因子针对其对象造成的不可逆性（持久性）</strong></p><select "
-"name='value'><option >非常高——影响无非被逆转</option><option >高——逆转影响很"
-"困难/昂贵。</option><option selected >中等——能用合理资源来逆转影响</"
-"option><option >低——影响易于逆转</option><option >无。</option></"
-"select><br></br></td><td width='25'></td></tr></table>  \t\t"
+"html|/resources/wizard/ThreatMatrixView/"
+"ThreatRatingWizardIrreversibilityStepLeft.html|  <table><tr><td width='25'></"
+"td><td>Using the scale shown on the right, rate the <em><a href='Definition:"
+"Irreversibility' title='Irreversibility is...' "
+"class='definition'>irreversibility</a></em> (also termed permanence) of the "
+"threat on the target. Enter your rating using the Irreversibility rating "
+"drop down menu in the lower panel of the screen.</p></select><br></br></"
+"td><td width='25'></td></tr></table>"
 
 msgid ""
 "html|/resources/wizard/ThreatMatrixView/ThreatMatrixOverviewStepRight.html|  "
@@ -13997,24 +14130,32 @@ msgid ""
 "p><table width='100%'><tr><td align='center'><img src='images/SummaryWizard/"
 "nav_overview1.png' width='512' height='371'></img></td></tr></table></div>"
 msgstr ""
-"<div class='navigation'><h3>概要视图和总体应用导航提示</h3><strong>概要视图</"
-"strong><br>在概要视图中的开头几个标签中包含了大多数项目要填写的有关其项目、团"
-"队、范围、地点和计划的基本信息字段。这些基本信息在您将项目导出到不同的报告和"
-"数据库时特别重要。有些组织还拥有为其项目定制的数据字段。您能通过点击适当的标"
-"签来找到这些字段。<p><strong>总体应用</strong></p>所有视图都在上方有个问答"
-"框，在下方有个操作框。使用<code class='toolbarbutton'>&lt;上一步&gt;</code>和"
-"<code class='toolbarbutton'>&lt;下一步&gt;</code>按钮在问答过程中选择<strong>"
-"后退还是前进</strong>。通过使用视窗分割和/或方向键，<strong>您可以隐藏或重新"
-"调整问答窗口大小</strong>。在许多对话框中，您可以使用左下方的<code "
-"class='toolbarbutton'>&lt;指南&gt;</code>按钮来<strong>进入合适的问答页面。</"
-"strong>您通常也可以使用鼠标右（alt）键来获得文脉敏感菜单命令（使用只有单键鼠"
-"标的Mac用户可以按住鼠标键几秒）。使用右上方按钮来获得有关文脉敏感的<strong>额"
-"外信息、例子</strong>，和<strong>学习班提示</strong>。</p><p>注意本程序会自动"
-"保存所有更改，因此没有&quot;保存&quot;命令。您可以通过使用<code "
-"class='toolbarbutton'>&lt;文件/保存&nbsp;复制&nbsp;为&gt;</code>菜单命令来以"
-"不同文件名保存拷贝。</p><p></p><table width='100%'><tr><td "
-"align='center'><img src='images/SummaryWizard/nav_overview1.png' width='512' "
-"height='371'></img></td></tr></table></div> \t\t"
+"html|/resources/wizard/SummaryView/SummaryOverviewStepRight.html|<div "
+"class='navigation'><h3>Navigation Hints for the Summary View and the Overall "
+"Application</h3><strong>Summary View</strong><br>The first few tabs in the "
+"Summary View contain basic information fields that most projects will want "
+"to fill in about their project, team, scope, location, and planning. This "
+"basic information will be especially important when you export your project "
+"to various reports and databases. Some organizations also have their own "
+"custom data fields for their projects. You can find these by clicking on the "
+"appropriate tab. <p><strong>Overall Application</strong></p>All views have "
+"an interview pane on top and an action pane below. Use the <code "
+"class='toolbarbutton'>&lt;Previous&gt;</code> and <code "
+"class='toolbarbutton'>&lt;Next&gt;</code> buttons to <strong>move backwards "
+"and forward</strong> through the interview. <strong>You can resize or hide "
+"the interview pane</strong> by using the splitter and/or arrows. In many "
+"dialog boxes, you can use the <code class='toolbarbutton'>&lt;"
+"Instructions&gt;</code> button at the bottom left to <strong> go the "
+"appropriate interview page.</strong> You can also often use the right (alt) "
+"mouse button to get context sensitive menu commands (Mac users with one "
+"button mice can hold the button for several seconds). Use the buttons on the "
+"upper right to get context sensitive <strong>additional information, "
+"examples</strong>, and <strong>workshop hints</strong>.</p><p>Note that the "
+"program automatically saves all changes so there is no &quot;save&quot; "
+"command.  You can save a copy under a different name using the <code "
+"class='toolbarbutton'>&lt;File/Save&nbsp;As&gt;</code> menu command.</p><p></"
+"p><table width='100%'><tr><td align='center'><img src='images/SummaryWizard/"
+"nav_overview1.png' width='512' height='371'></img></td></tr></table></div>"
 
 msgid ""
 "html|/resources/wizard/SummaryView/SummaryWizardDefineProjecScopeLeft.html|"
@@ -14079,16 +14220,21 @@ msgid ""
 "fields, contact Miradi staff at  <a href=\"mailto:info@miradi.org"
 "\">info@miradi.org</a>.</p>"
 msgstr ""
-"点击<code class='toolbarbutton'>&lt;范围&gt;</code>标签来将您项目的<a "
-"href='Definition:Vision' class='definition'>愿景宣言</a>添加到 <strong>愿景宣"
-"言文本</strong>字段中。复核良好愿景宣言的标准，并根据需要修改您的宣言。<p>如"
-"果需要，您也可以点击<code class='toolbarbutton'>&lt;地点&gt;</code>和<code "
-"class='toolbarbutton'>&lt;计划&gt;</code>标签来添加有关您项目的额外细节。</"
-"p><p>另外，Miradi还有面向主要CMP组织机构的标签，其中包含了额外的组织机构的特"
-"定字段。这些字段是特别用于填写那些将用于报告中并上传到组织机构数据库的关键数"
-"据。请联系您组织的Miradi领导以获得更多信息。</p><p>如果您的组织机构想要开发自"
-"己的字段，请联系Miradi员工：<a href='info@miradi.org' >info@miradi.org</a>。"
-"</p> \t\t"
+"html|/resources/wizard/SummaryView/SummaryWizardDefineProjectVisionLeft.html|"
+"Click on the <code class='toolbarbutton'>&lt;Scope&gt;</code> tab and add "
+"your project's <a href='Definition:Vision' class='definition'>vision "
+"statement</a> to the <strong>Vision Statement Text</strong> field. Review "
+"the criteria for a good vision statement and revise your statement as "
+"necessary.<p>If desired, you can also click on the <code "
+"class='toolbarbutton'>&lt;Location&gt;</code> and the <code "
+"class='toolbarbutton'>&lt;Planning&gt;</code> tabs to add additional detail "
+"about your project.</p><p>In addition, Miradi also has tabs for key CMP "
+"organizations that contain additional organizational specific fields.  These "
+"fields are especially for key data that will be used in reports and uploads "
+"to organizational databases. Contact your organization's Miradi lead for "
+"more information.</p><p> If your organization would like to develop its own "
+"fields, contact Miradi staff at  <a href=\"mailto:info@miradi.org"
+"\">info@miradi.org</a>.</p>"
 
 msgid ""
 "html|/resources/wizard/SummaryView/SummaryWizardDefineProjecScopeRight.html|"
@@ -14448,41 +14594,56 @@ msgid ""
 "document that can be edited in a Word Processor</li><li>Create a standard "
 "report for a donor or other key audience for your project</li></ul>"
 msgstr ""
-"<h3>将数据从Miradi导出到其它应用程序</h3>有多种途径可将您的信息从Miradi导出到"
-"其它应用程序。<h4>A. 导出当前页面为...</h4>该命令可用来导出用于文档或演示文件"
-"的特定图像或表格 。可选项包括：<h4>导出JPG或PNG图像</h4>使用<code "
-"class='toolbarbutton'>&lt;文件/导出&nbsp;当前&nbsp;页面&nbsp;as.../JPEG&nbsp;"
-"图像&gt;</code> 或<code class='toolbarbutton'>&lt;文件/导出&nbsp;当前&nbsp;页"
-"面&nbsp;as.../PNG&nbsp;图像&gt;</code>菜单命令来将您屏幕中的一个特定图像或表"
-"格保存到一个图像文件中。 该方法对如下操作特别有用：<ul><li>将图表或表格置于文"
-"档或演示文件中</li><li>创建可以置于网站中的图像</li></ul><h4>导出富文本"
-"（RTF）格式文件</h4>使用<code class='toolbarbutton'>&lt;文件/导出&nbsp;当前"
-"&nbsp;页面&nbsp;as.../RTF&nbsp;文件&gt;</code> 菜单命令来将当前正在浏览的表格"
-"保存为RTF格式文件。该方法对如下操作特别有用：<ul><li>以文字处理器能编辑的格式"
-"导出表格或其它信息</li><li>导出自定义报告</li></ul><h4>导出制表符分隔数据</"
-"h4>使用<code class='toolbarbutton'>&lt;文件/导出&nbsp;当前&nbsp;页面&nbsp;"
-"为.../制表符分隔数据&gt;</code>菜单命令来将当前视图表格导出到一个制表符分隔文"
-"件。 此方法对如下操作特别有用：<ul><li>从您的计划视图中将当前配置导出到数据表"
-"如Excel中</li><li>导出财务信息</li></ul><h4>B. 将当前项目导出为…</h4>本命令用"
-"于导出您的整个项目文件并与其他用户共享。 选项包括<h4>导出Miradi Zip（MPZ）文"
-"件</h4>使用<code class='toolbarbutton'>&lt;文件/将当前项目导出为.../Miradi项"
-"目Zip（MPZ）文件&gt;</code>菜单命令来将您的整个项目压缩为小的zip文件。此方法"
-"对如下操作特别有用：<ul><li>将您的项目发送给Miradi的其他用户</li><li>为您的项"
-"目创建备份文件</li></ul><h4>导出ConPro（CPMZ）文件(CP</h4>使用<code "
-"class='toolbarbutton'>&lt;文件/将当前项目导出为.../ConPro（CPMZ）文件&gt;</"
-"code>菜单命令来将您的整个项目压缩成zip文件以便可以导入到大自然保护组织（The "
-"Nature Conservancy）的ConPro数据库中。注意：如果您的组织机构想要将Miradi数据"
-"导入到您自己的数据库中，请联系<A href=\"mailto:support@miradi.org"
-"\">support@miradi.org</A>。此方法对如下操作特别有用：<ul><li>将您的信息上传到"
-"TNC的ConPro 数据库中</li><li>与其他实践人士共享您的项目信息</li></ul><h4>导出"
-"项目XML文件</h4>使用<code class='toolbarbutton'>&lt;文件/导出/项目XML文件&gt;"
-"</code>菜单命令来为您所有的项目数据创建一个XML文件。 尽管管理XML文件需要技术"
-"技巧，但此方法对如下操作特别有用：<ul><li>创建一个可以被数据库导入的文件</"
-"li><li>将您项目的所有信息以其它应用程序可读的格式导出</li></ul><h4>C. 生成报"
-"告</h4>使用<code class='toolbarbutton'>&lt;报告&gt;</code>视图来创建富文本格"
-"式（RTF）文件，其中包含您项目数据的各种配置。这种办法对以下操作特别有用："
-"<ul><li>创建一个可以用文字处理器编辑的文档</li><li>为捐赠人或其他重要听众创建"
-"一个关于您项目的标准报告</li></ul>"
+"html|/resources/wizard/ReportsView/ReportsOverviewStepRight.html|  "
+"<h3>Exporting Data in Miradi to Other Applications</h3>There are many ways "
+"to export your information from Miradi to other applications.<h4>A. EXPORT "
+"CURRENT PAGE AS...</h4>This command is useful to export a specific image or "
+"table for use in a document or presentation. Options include:<h4>Export JPG "
+"or PNG Images</h4>Use the <code class='toolbarbutton'>&lt;File/Export&nbsp;"
+"Current&nbsp;Page&nbsp;as.../JPEG&nbsp;Image&gt;</code> or <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../"
+"PNG&nbsp;Image&gt;</code> menu commands to capture a specific diagram or "
+"table on your screen in an image file. This method is particularly useful to:"
+"<ul><li>Put a diagram or table in a document or presentation</li><li>Create "
+"an image that can be put in a website</li></ul><h4>Export Rich Text Format "
+"(RTF) File</h4>Use the <code class='toolbarbutton'>&lt;File/Export&nbsp;"
+"Current&nbsp;Page&nbsp;as.../RTF&nbsp;File&gt;</code> menu command to export "
+"the currently viewed table to a Rich Text Format (RTF) file. This method is "
+"particularly useful to:<ul><li>Export a table or other information in a "
+"format that can be edited by a word processor</li><li>Export pieces of a "
+"custom report</li></ul><h4>Export Tab-Delimited Data</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../Tab-"
+"Delimited Data&gt;</code> menu command to export the currently viewed table "
+"to a tab-delimited file. This method is particularly useful to:"
+"<ul><li>Export the current configuration from your planning view to a "
+"spreadsheet like Excel</li><li>Export financial information</li></ul><h4>B. "
+"EXPORT CURRENT PROJECT AS...</h4>This command is useful to export your "
+"entire project file so that it can be shared with other users. Options "
+"include:<h4>Export Miradi Zip (MPZ) File </h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export Current Project as.../Miradi Project "
+"Zip (MPZ) File&gt;</code> menu command to capture your entire project in a "
+"small zip file. This method is particularly useful to:<ul><li>Send your "
+"project to another Miradi user</li><li>Create a backup copy of your project</"
+"li></ul><h4>Export ConPro (CPMZ) File (CP</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export Current Project as.../ConPro (CPMZ) "
+"File&gt;</code> menu command to capture your entire project in a zip file "
+"that can be imported into The Nature Conservancy's ConPro database. Note "
+"that if your organization would like to import Miradi data into your own "
+"database, contact <A href=\"mailto:support@miradi.org\">support@miradi.org</"
+"A>. This method is particularly useful to:<ul><li>Upload your information to "
+"TNC's ConPro database</li><li>Share your project information with other "
+"practitioners</li></ul><h4>Export Project XML File</h4>Use the <code "
+"class='toolbarbutton'>&lt;File/Export Curent Project as.../Project XML "
+"File&gt;</code> menu command to create an XML file with all your project "
+"data. Although managing the XML file will require technical skills, this "
+"method is particularly useful to:<ul><li>Create a file that can be imported "
+"by a database</li><li>Export all of your project's information into formats "
+"that can be read by other applications</li></ul><h4>C. GENERATE REPORTS</"
+"h4>Use the <code class='toolbarbutton'>&lt;Reports&gt;</code> view to create "
+"a Rich Text Format (RTF) file that contains various configurations of your "
+"project data. This method is particularly useful to:<ul><li>Create a "
+"document that can be edited in a Word Processor</li><li>Create a standard "
+"report for a donor or other key audience for your project</li></ul>"
 
 msgid ""
 "html|/resources/wizard/ReportsView/ReportsOverviewStep.html|  <HTML>  "
@@ -14654,19 +14815,22 @@ msgid ""
 "align='center'><img src='images/TargetViability/nav_viability.png' "
 "width='512' height='369'></img></td></tr></table></div>"
 msgstr ""
-"<div class='navigation'><h3>为什么要做生存力分析？</h3>生存力分析要求您仔细地"
-"审视您的每个保护对象，以确定如何随着时间变化测量它们的 &quot;健康&quot;。然后"
-"鉴别该对象目前表现如何以及&quot;健康状态&quot;看起来是什么样的。这个步骤对于"
-"了解您哪个对象最需要立即受到关注，以及随着时间推移哪个要衡量成果。&nbsp;点击"
-"<code class='toolbarbutton'>&lt;更多信息&gt;</code>按钮来获得有关生存力分析的"
-"附加信息。<br><br><h3>对象生存力视图导航提示</h3>生存力表格将为您提供每个对象"
-"生存力状态的概览。要<span class='task'>查看某个对象及其属性的详情</span>，点"
-"击表格中适当的行，有关详情就会出现在下方面板。<br><p class='hint'><b>提示：</"
-"b>简单生存力模式不能从该视图中编辑——进入对象属性中的 <code "
-"class='toolbarbutton'>&lt;生存力&gt;</code>标签来编辑在图表视图中的每个对象。"
-"</p> \t\t <p></p><table width='100%'><tr><td align='center'><img src='images/"
-"TargetViability/nav_viability.png' width='512' height='369'></img></td></"
-"tr></table></div> \t\t"
+"html|/resources/wizard/TargetViabilityView/TargetViabilityOverviewStepRight."
+"html|    <div class='navigation'><h3>Why Do Viability Analysis?</"
+"h3>Viability analysis asks you to look at each of your conservation targets "
+"carefully to determine how to measure its &quot;health&quot; over time. And "
+"then to identify how the target is doing today and what a &quot;healthy "
+"state&quot; might look like. This step is the key to knowing which of your "
+"targets are most in need of immediate attention, and for measuring success "
+"over time.&nbsp;Click on the <code class='toolbarbutton'>&lt;More Info&gt;</"
+"code> button to get additional detail about viability analysis."
+"<br><br><h3>Navigation Hints for the Target Viability View</h3>The Viability "
+"Table will give you an overview of the viability status of each target. To "
+"<span class='task'>see details about a target or its attributes</span>, "
+"click the appropriate line on the table and the details will appear in the "
+"panel below.<br>\t\t         <p></p><table width='100%'><tr><td "
+"align='center'><img src='images/TargetViability/nav_viability.png' "
+"width='512' height='369'></img></td></tr></table></div>"
 
 msgid ""
 "html|/resources/wizard/TargetViabilityView/DescribeTargetStatusStepRight."
@@ -14847,22 +15011,48 @@ msgid ""
 "according to the following scale:<ul><LI>>= 3.75 = Very Good</LI><LI>3.00 - "
 "3.74 = Good</LI><LI>1.75 - 2.99 = Fair</LI><LI>< 1.75 = Poor</LI></ul>"
 msgstr ""
-"下一步&nbsp;是为每个指示物确定 <a href='Definition:Measurement' "
-"class='definition'>测量方法</a>。<P>在表格中选定一个指示物，然后点击<code "
-"class='toolbarbutton'>&lt;创建测量&gt;</code>按钮。随后在底端面板中填写如下字"
-"段：</P><ul><LI><STRONG>测量日期：</STRONG>&nbsp;指示物最近测量日期。"
-"<LI><STRONG>测量值：</STRONG>&nbsp;指示物当前值或定性描述摘要。<LI><STRONG>详"
-"情：</STRONG>&nbsp当前值的全面描述或指示物的定性描述。<LI><STRONG>当前状态："
-"</STRONG>&nbsp;对应于测量的评级（VG, G, F, P）。<LI><STRONG>趋势：</STRONG>您"
-"对本指示物在当前测量之时的发展方向所做出的评估。<LI><STRONG>来源：</"
-"STRONG>&nbsp;您对指示物测量的来源的信心度等级。<LI><STRONG>评论:</"
-"STRONG>&nbsp;有关测量情况的讨论</ul><P>Miradi将会根据您的当前状态评级，自动地"
-"在表格上方的指示物评级表格中的单元格涂上相应的颜色（但不会自动读取测量参数和"
-"指定当前状态类别）&nbsp;它也会显现一个箭头以表示趋势，以及当前状态标识。</"
-"P><p>Miradi将会根据各自指示物的评级为每个KEA计算状态评级。针对每个KEA类别，这"
-"些KEA评级将会被累加起来，且该KEA类型状态评级将会被用做对象的生存力状态评级。"
-"该对象生存力状态评级将会出现在属性对话框的顶部，并将会在图表中以一个小椭圆形"
-"的形式显示在该对象的旁边。</p>"
+"html|/resources/wizard/TargetViabilityView/"
+"TargetViabilityRecordInitialMeasurementStepLeft.html|The&nbsp;next step is "
+"to determine the <a href='Definition:Measurement' "
+"class='definition'>measurement</a> for each indicator.<P>Select an indicator "
+"in the table and then click the <code class='toolbarbutton'>&lt;Create "
+"Measurement&gt;</code> button. Next in the bottom panel, fill in the "
+"following fields:</P><ul><LI><STRONG>Measurement Date:</STRONG>&nbsp;The "
+"date of the most recent indicator measurement. <LI><STRONG>Measurement Value:"
+"</STRONG>&nbsp;The current value or summary qualitative description of the "
+"indicator.<LI><STRONG>Detail:</STRONG>&nbsp;Full description of the current "
+"value or qualitative description of the indicator.<LI><STRONG>Current Status:"
+"</STRONG>&nbsp;The rating (VG, G, F, P) that corresponds to the measurement."
+"<LI><STRONG>Trend:</STRONG> Your assessment of the direction that this "
+"indicator is heading at the moment of the current measurement."
+"<LI><STRONG>Source:</STRONG>&nbsp;Your confidence rating in the source of "
+"the indicator measurement.<LI><STRONG>Comments:</STRONG>&nbsp;Discussion "
+"about the measurement.</ul><P>Miradi will automatically shade in the cell of "
+"the indicator ratings table in the upper table with the color corresponding "
+"to your current status assessment (but it will NOT automatically read the "
+"measurement parameter and assign a current status category).&nbsp;It will "
+"also display an arrow showing the trend, and the current status label.</"
+"P><p>Miradi will calculate a status rating for each KEA, based on the "
+"ratings of its indicators. The KEA ratings will be rolled up for each KEA "
+"type, and the average of the KEA type status ratings will be used as the "
+"viability status rating for the target (see below for calculation details). "
+"This target viability status rating will appear at the top of the properties "
+"dialog, and will be displayed in the diagram as a small oval next to the "
+"target.</p><p>Miradi rolls up viability scores using an algorithm originally "
+"developed as part of <A   href=\"http://conserveonline.org/workspaces/"
+"cbdgateway/cap/resources/4/2/5-S_Handbook_2000.pdf/download\">TNC's 5S "
+"process</A>. Each of the viability ranks has a numerical score associated "
+"with it:<ul><LI>Very Good = 4.0</LI><LI>Good = 3.5</LI><LI>Fair = 2.5</"
+"LI><LI>Poor = 1.0</LI></ul>As the 5S handbook states, \"This scale is a "
+"crude approximation of the underlying continuous viability scale. The non-"
+"linearnumeric relationship among the viability classes reflects the "
+"diminishing return of moving up oneclass as one moves up the scale. For "
+"example, the viability score increases by 1.5 in moving from'Poor' to "
+"'Fair,' but only increases by 0.5 in moving from 'Good' to 'Very Good.'\"</"
+"p><p>The average viability score across multiple indicators for one target "
+"and for all focal conservation targets for the project site is calculated "
+"according to the following scale:<ul><LI>>= 3.75 = Very Good</LI><LI>3.00 - "
+"3.74 = Good</LI><LI>1.75 - 2.99 = Fair</LI><LI>< 1.75 = Poor</LI></ul>"
 
 msgid ""
 "html|/resources/wizard/TargetViabilityView/"
@@ -15192,48 +15382,50 @@ msgid ""
 "on the <code class='toolbarbutton'>&lt;Edit/Prefrences/Data&nbsp;Location&gt;"
 "</code> tab to make this change.</p></HTML>"
 msgstr ""
-"<<HTML><h3><strong>如何在Miradi中保存文件</h3>Miradi将各个项目自动保存到您计"
-"算机中已命名的文件。Miradi设计成像一个数据库\t程序，其中每一步操作都是自动保"
-"存到该文件中的，而不像在文字处理器或电子数据表程序中那样您需要主动保存您的工"
-"作。因此，在Miradi中没有\"保存\"命令。<p>要记住的重要提示包括：</p>"
-"\t<li><strong>所有操作均自动保存</strong>——\t所有操作（如移动或剪切某图表要"
-"素）均为自动保存。如果您在某个字段中输入文字，它也会在您点击其它字段或关闭对"
-"话框时自动保存。</li><li><strong>使用撤销来恢复改动</strong>——因此，\t如果您"
-"出了差错并想要恢复到您早先的文件版本，<u>不要</u> \t关闭该项目。 而是使用"
-"<code class='toolbarbutton'>&lt;编辑/撤销&gt;</code>菜单命令或 <code "
-"class='toolbarbutton'>&lt;Ctrl-Z&gt;</code>来根据需要撤销您的操作。</"
-"li><li><strong>使用\"将拷贝另存为\"来创建分支文件</strong>——如果想要在保留旧"
-"<HTML><h3><strong>如何在Miradi中保存文件</h3>Miradi将各个项目自动保存到您计算"
-"机中已命名的文件。Miradi设计成像一个数据库\t程序，其中每一步操作都是自动保存"
-"到该文件中的，而不像在文字处理器或电子数据表程序中那样您需要主动保存您的工"
-"作。因此，在Miradi中没有\"保存\"命令。<p>要记住的重要提示包括：</p>"
-"\t<li><strong>所有操作均自动保存</strong>——\t所有操作（如移动或剪切某图表要"
-"素）均为自动保存。如果您在某个字段中输入文字，它也会在您点击其它字段或关闭对"
-"话框时自动保存。</li><li><strong>使用撤销来恢复改动</strong>——因此，\t如果您"
-"出了差错并想要恢复到您早先的文件版本，<u>不要</u> \t关闭该项目。 而是使用"
-"<code class='toolbarbutton'>&lt;编辑/撤销&gt;</code>菜单命令或 <code "
-"class='toolbarbutton'>&lt;Ctrl-Z&gt;</code>来根据需要撤销您的操作。</"
-"li><li><strong>使用\"将拷贝另存为\"来创建分支文件</strong>——如果想要在保留旧"
-"文件的同时创建一个您项目的新\t版本，则使用<code class='toolbarbutton'>&lt;文"
-"件/保存&nbsp;拷贝&nbsp;为&gt;</code>菜单命令来创建一个当前项目的拷贝。 在您尝"
-"试您可能不想保留的\"危险\"改动时，此操作尤为有用。</li><li><strong>使用"
-"Miradi Zip文件来保存或共享数据</strong>——如果您要储存或与其他Miradi用户共享您"
-"的\t项目，那么请使用<code class='toolbarbutton'>&lt;文件/导出&nbsp;当前&nbsp;"
-"项目&nbsp;为.../Miradi&nbsp;Zip&nbsp;(MPZ)&nbsp:文件&gt;</code>菜单命令来创建"
-"一个.mpz文件，它可置于您的硬盘或附到电子邮件中。</i><li><strong>使用您的操作"
-"系统或欢迎页面来管理文件。</strong>——Miradi将活动文件保存在您电脑中专门的"
-"Miradi目录中。在不同的操作系统中，它们是：<ul><li><b>Windows XP:</b> C:"
-"\\Documents and Settings\\<i>您的用户名</i>\\My Documents\\Miradi</"
-"li><li><b>Windows Vista:</b> C:\\Users\\<i>您的用户名</i>\\Documents"
-"\\Miradi</li><li><b>Mac OSX:</b> /home/<i>您的用户名</i>/Miradi</"
-"li><li><b>Linux:</b> /home/<i>您的用户名</i>/Miradi</li></ul>在该目录下，您可"
-"以看到每个Miradi项目对应一个文件夹。您可以移动、复制、删除、或重命名这些文件"
-"夹。 但是，要记住该文件夹本身是Miradi文件。 您也可以从Miradi的欢迎页面来管理"
-"这些文件。</li><p class='hint'><b>提示：</b>在某些情况下，您也许需要为您的"
-"Miradi文件更改默认的位置。例如，如果您的Windows笔记本电脑一般是在网络硬盘中储"
-"存\"My Documents/Documents\"，但之后您切断了电脑与该网络的连接，您就需要指定"
-"一个新的默认本地目录。 点击<code class='toolbarbutton'>&lt;编辑/优先选择/数据"
-"&nbsp;位置&gt;</code>标签来进行更改。</p></HTML>"
+"html|/resources/HowToSave.html|  <HTML><h3><strong>How to Save Files in "
+"Miradi</h3>Miradi automatically stores each project on your computer in a "
+"named file. Miradi is designed like a database program in which each action "
+"is automatically saved to this file as opposed to a word processing or "
+"spreadsheet program in which you need to actively save your work. As a "
+"result, there is no \"save\" command in Miradi.<p>Key hints to keep in mind "
+"include:</p>\t<li><strong>All Actions are Automatically Saved</strong> - Any "
+"action (for example, moving or cutting a diagram factor) is automatically "
+"saved. If you are entering text into a field, it is also automatically saved "
+"once you click on another field or close the dialogue box.</"
+"li><li><strong>Use Undo to Recover Changes</strong> - As a result of this "
+"automatic saving, if you make a mistake and want to revert to an earlier "
+"version of your file, do <u>not</u> close the project. Instead, use the "
+"<code class='toolbarbutton'>&lt;Edit/Undo&gt;</code> menu command or <code "
+"class='toolbarbutton'>&lt;Ctrl-Z&gt;</code> to undo your actions as needed.</"
+"li><li><strong>Use \"Save As\" to Branch a File</strong> - If you want to "
+"create a new version of your project while also keeping the old one, then "
+"use the <code class='toolbarbutton'>&lt;File/Save&nbsp;As&gt;</code> menu "
+"command to create a copy of your current project. This is particularly "
+"useful if you want to attempt a \"risky\" change that you may not want to "
+"keep. <i>***Note that starting with Miradi 2.4, this is a true Save As "
+"command that leaves you in the new file.***</i></li><li><strong>Use Miradi "
+"Zip Files to Store or Share Data</strong> - If you want to store your "
+"project or share it with another Miradi user, then use the <code "
+"class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Project&nbsp;as.../"
+"Miradi&nbsp;Zip&nbsp;(MPZ)&nbsp:File&gt;</code> menu command to create a ."
+"mpz file that you can then place on your hard drive or attach to an e-mail.</"
+"li><li><strong>Use Your Operating System or the Welcome Page to Manage "
+"Files</strong> - Miradi stores active files on a special Miradi directory on "
+"your computer.  In different operating systems, these are:<ul><li><b>Windows "
+"XP:</b> C:\\Documents and Settings\\<i>Your User Name</i>\\My Documents"
+"\\Miradi</li><li><b>Windows Vista:</b> C:\\Users\\<i>Your User Name</i>"
+"\\Documents\\Miradi</li><li><b>Mac OSX:</b> /home/<i>Your User Name</i>/"
+"Miradi</li><li><b>Linux:</b> /home/<i>Your User Name</i>/Miradi</li></ul>In "
+"this directory, you will see one folder for each Miradi project. You can "
+"move, copy, delete, or rename these folders. Remember, however, that the "
+"folder itself is the Miradi file. You can also manage these files from the "
+"Welcome page of the Miradi program.</li><p class='hint'><b>Hint:</b> In some "
+"instances, you may need to change the default location for your Miradi "
+"files. For example, if your Windows laptop normally stores \"My Documents/"
+"Documents\" on a network drive, but you then disconnect your computer from "
+"the network, you will need to specify a new default local directory. Click "
+"on the <code class='toolbarbutton'>&lt;Edit/Prefrences/Data&nbsp;Location&gt;"
+"</code> tab to make this change.</p></HTML>"
 
 msgid ""
 "html|/resources/FOSAbout.html| <h3>About Foundations of Success (FOS)</"
@@ -15331,19 +15523,25 @@ msgid ""
 "routine for your computer to ensure that you do not lose all your Miradi "
 "work in the event of a system failure.</p><p></p></HTML>"
 msgstr ""
-"<HTML><p>Miradi在您计算机中的Miradi专门目录中存储活动文件。在不同的操作系统"
-"中，它们是：<ul><li><b>Windows XP:</b>C:\\Documents and Settings\\<i>您的用户"
-"名</i>\\My Documents\\Miradi</li><li><b>Windows Vista:</b>C:\\Users\\<i>您的"
-"用户名</i>\\Documents\\Miradi</li><li><b>Mac OSX:</b>/home/<i>Your User "
-"Name</i>/Miradi</li><li><b>Linux:</b>/home/<i>您的用户名</i>/Miradi</li></"
-"ul><p>在此目录下，您会看到每个Miradi项目有一个文件夹。您可以移动、复制、删"
-"除、或重命名这些文件夹。但是，要记住该文件夹本身是Miradi \"文件\"——换句话来"
-"说，该文件夹的名称就是Miradi中的文件的名称。您也可以从Miradi的欢迎页面来管理"
-"这些文件。</p><p>在某些情况下，您也许需要为您的Miradi文件更改默认的位置。例"
-"如，如果您的笔记本电脑一般是在网络硬盘中储存 \"My Documents\" ，但之后您切断"
-"了电脑与该网络的连接，您就需要指定一个新的默认本地目录。点击以下按钮进行这项"
-"更改。</p><p class='hint'><b>提示：</b>请确保您指定的目录包括在您电脑的常规备"
-"份中，以确保在系统出错时不会丢失您的Miradi工作。</p><p></p></HTML> \t\t"
+"html|/resources/DataLocationInstructions.html|  <HTML><p>Miradi stores "
+"active files on a special Miradi directory on your computer. In different "
+"operating systems, these are:<ul><li><b>Windows XP:</b> C:\\Documents and "
+"Settings\\<i>Your User Name</i>\\My Documents\\Miradi</li><li><b>Windows "
+"Vista:</b> C:\\Users\\<i>Your User Name</i>\\Documents\\Miradi</"
+"li><li><b>Mac OSX:</b> /Users/<i>yourname</i>/Miradi</li><li><b>Linux:</b> /"
+"home/<i>Your User Name</i>/Miradi</li></ul><p>In this directory, you will "
+"see one folder for each Miradi project. You can move, copy, delete, or "
+"rename these folders. Remember, however, that the folder itself is the "
+"Miradi \"file\" - in other words, the name of the folder is the name of the "
+"file in Miradi. You can also manage these files from the Welcome page of the "
+"Miradi program.</p><p>In some instances, you may need to change the default "
+"location for your Miradi files. For example, if your laptop normally stores "
+"\"My Documents\" on a network drive, but you then disconnect your computer "
+"from the network, you will need to specify a new default local directory. "
+"Click on the button below to make this change.</p><p class='hint'><b>Hint:</"
+"b> Make sure that the directory that you specify is included in the backup "
+"routine for your computer to ensure that you do not lose all your Miradi "
+"work in the event of a system failure.</p><p></p></HTML>"
 
 msgid ""
 "html|/resources/RAREMiradiHelp.html|  <p>For help with Miradi at Rare, send "
@@ -15522,6 +15720,12 @@ msgstr ""
 "整其行动来改善策略的有效性，并通过分享在各个项目中学到的的经验教训而取得更好"
 "的保护效果。要了解CAP的详情，请访问<a href='http://www.conservationgateway."
 "org/cap'>www.conservationgateway.org/cap</a>.</p> \t\t"
+
+msgid ""
+"html|/resources/OldNewsMessage.html|<h2>Miradi News</h2><p>You have already "
+"seen the most recent news, last updated on $DATE$. </p><p>If you wish to "
+"view that news again, press the button below.</p><br>"
+msgstr ""
 
 msgid ""
 "html|/resources/OtherOrgOverview.html|<div class='OrgTopPanel'><span "
@@ -15727,12 +15931,6 @@ msgid ""
 msgstr ""
 "<h2>Miradi新闻</h2><p>此面板通常显示的是关于Miradi软件的更新情况。如果您看到"
 "此信息，则本电脑未连接到英特网，或Miradi新闻服务器没有开通。</p> \t"
-
-msgid ""
-"html|/resources/OldNewsMessage.html|<h2>Miradi News</h2><p>You have already "
-"seen the most recent news, last updated on $DATE$. </p><p>If you wish to "
-"view that news again, press the button below.</p><br>"
-msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/WwfManagingOffices.tsv|"
@@ -23739,12 +23937,15 @@ msgstr "美国南部地区办公室___美国南部___是"
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
 "Office___Worldwide Office___YES"
-msgstr "Worldwide Office___Worldwide Office___YES"
+msgstr ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
+"Office___Worldwide Office___YES"
 
 #, fuzzy
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
-msgstr "Non-TNC___Non-TNC___YES"
+msgstr ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
 
 msgid ""
 "choice|/resources/fieldoptions/TncTerrestrialEcoRegions.tsv|Admiralty "

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-12 12:17-0500\n"
+"POT-Creation-Date: 2009-02-14 19:06-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -70,16 +70,16 @@ msgstr ""
 msgid "Title|Stress Details"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:32
+msgid "Manage Stresses for "
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/stress/StressFactorVisibilityControlPanel.java:48
 msgid "Title|Stress Visibility"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/stress/StressListManagementPanel.java:60
 msgid "Tab|Stresses"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/stress/ManageStressesDialog.java:32
-msgid "Manage Stresses for "
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/groupboxLink/GroupBoxLinkManagementPanel.java:49
@@ -155,6 +155,10 @@ msgstr ""
 msgid "Tab|Indicators"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:56
+msgid "Title|Simple Mode Target Properties"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 msgid "Date"
@@ -180,6 +184,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:71
 msgid "Title|Indicator Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:56
+msgid "Title|Key Attribute Mode Target Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:71
@@ -231,19 +239,76 @@ msgstr ""
 msgid "Monitoring Plan"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:56
-msgid "Title|Simple Mode Target Properties"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:56
-msgid "Title|Key Attribute Mode Target Properties"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:280
 msgid "Target"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
+msgid "Summary Target Ratings:"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
+msgid "<html><b>Overall<br>Project<br>Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+msgid "Threats"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+msgid "Targets"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
+msgid "Summary Threat Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
+msgid "Title|Simple Threat Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
+#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
+msgid "Scope"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
+msgid "Severity"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+msgid "Irreversibility"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
+msgid "<html><b>Summary<br>Target-Threat<br>Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:154
+msgid "Threat Name"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:156
+msgid "Stress Name"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
+msgid "(Create, manage, and rate the stresses for this target)"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
+msgid "Title|Stress-Based Threat Rating"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
+msgid "Threat Rating Preferences Panel"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/activity/ActivityFactorVisibilityControlPanel.java:48
@@ -290,71 +355,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:57
 msgid "Title|Tag Properties Panel"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
-msgid "Threats"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
-msgid "Targets"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
-msgid "Summary Target Ratings:"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
-msgid "<html><b>Overall<br>Project<br>Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:39
-msgid "Summary Threat Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:63
-msgid "Title|Simple Threat Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:154
-msgid "Threat Name"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:156
-msgid "Stress Name"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingEditorComponent.java:67
-msgid "(Create, manage, and rate the stresses for this target)"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:66
-msgid "Title|Stress-Based Threat Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:59
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
-#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:60
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
-msgid "Scope"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:61
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
-msgid "Severity"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:63
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
-msgid "Irreversibility"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:65
-msgid "<html><b>Summary<br>Target-Threat<br>Rating"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/threatrating/ThreatRatingPreferencesPanel.java:40
-msgid "Threat Rating Preferences Panel"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/subTarget/SubTargetManagementPanel.java:57
@@ -431,12 +431,12 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:42
-msgid "Title|Method Properties"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanel.java:44
 msgid "Title|Activity Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:42
+msgid "Title|Method Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:91
@@ -455,6 +455,15 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/organization/OrganizationPropertiesPanel.java:56
 msgid "Title|Organization Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:38
+#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:38
+msgid "Page:"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:47
+msgid "Title|Results Chain Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:64
@@ -568,6 +577,12 @@ msgstr ""
 msgid "Group Box Properties"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
+msgid ""
+"Currently in brainstorm mode, so some factors are hidden. To return to "
+"normal mode, press this button: "
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
@@ -578,12 +593,6 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:61
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:38
 msgid "Progress"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/diagram/BrainstormModePanel.java:34
-msgid ""
-"Currently in brainstorm mode, so some factors are hidden. To return to "
-"normal mode, press this button: "
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
@@ -615,6 +624,10 @@ msgstr ""
 msgid "Conceptual Model Page Properties"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
+msgid "Title|Diagram Properties"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:42
 msgid "Related Items"
 msgstr ""
@@ -629,19 +642,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/diagram/ForecastRollupSubPanel.java:43
 msgid "Rollup Panel"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:38
-#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:38
-msgid "Page:"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:47
-msgid "Title|Results Chain Properties"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:47
-msgid "Title|Diagram Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:59
@@ -694,14 +694,6 @@ msgstr ""
 msgid "An error has occured while writing assignment data."
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningTreeMultiPropertiesPanel.java:239
-msgid "An unexpected error has occurred"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
-msgid "(not specified)"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:55
 msgid "Total"
 msgstr ""
@@ -710,9 +702,8 @@ msgstr ""
 msgid "Task Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
-msgid "Title|Factor Properties"
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
+msgid "(not specified)"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:33
@@ -722,6 +713,21 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:39
 msgid "Title|Threat Reduction Result Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:56
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:1018
+msgid "Title|Factor Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
+#: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
+msgid "Contributing Factor"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
+msgid "Title|Contributing Factor Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
@@ -737,14 +743,8 @@ msgstr ""
 msgid "Planning View Configuration Label Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
-#: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
-msgid "Contributing Factor"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
-msgid "Title|Contributing Factor Properties"
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningTreeMultiPropertiesPanel.java:239
+msgid "An unexpected error has occurred"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/legend/ControlPanel.java:42
@@ -990,6 +990,11 @@ msgstr ""
 msgid "Error occured while saving data location"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
+#: miradi/source/org/miradi/views/TabbedView.java:223
+msgid "Instructions"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:44
 msgid "Choose Data Directory"
 msgstr ""
@@ -1007,11 +1012,6 @@ msgstr ""
 #: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 msgid "Cancel"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
-#: miradi/source/org/miradi/views/TabbedView.java:223
-msgid "Instructions"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePoolManagementPanel.java:104
@@ -1229,6 +1229,26 @@ msgstr ""
 msgid "MenuBar|Help"
 msgstr ""
 
+#: miradi/source/org/miradi/main/SampleInstaller.java:48
+msgid "Sample Project Installed"
+msgstr ""
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:68
+msgid "Do you want to install the sample project?"
+msgstr ""
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+msgid "Button|Yes"
+msgstr ""
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:69
+msgid "Button|No"
+msgstr ""
+
+#: miradi/source/org/miradi/main/SampleInstaller.java:71
+msgid "Install Sample Project"
+msgstr ""
+
 #: miradi/source/org/miradi/main/EAM.java:128
 msgid "Warning"
 msgstr ""
@@ -1368,26 +1388,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/main/InitialSplashPanel.java:191
 msgid "Unexpected error prevented installing that language pack"
-msgstr ""
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:48
-msgid "Sample Project Installed"
-msgstr ""
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:68
-msgid "Do you want to install the sample project?"
-msgstr ""
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:69
-msgid "Button|Yes"
-msgstr ""
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:69
-msgid "Button|No"
-msgstr ""
-
-#: miradi/source/org/miradi/main/SampleInstaller.java:71
-msgid "Install Sample Project"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogfields/ObjectTextInputField.java:149
@@ -2712,6 +2712,18 @@ msgstr ""
 msgid "Fully on Schedule"
 msgstr ""
 
+#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
+msgid "No"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
+msgid "Yes"
+msgstr ""
+
 #: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:35
 msgid "Person"
 msgstr ""
@@ -2898,18 +2910,6 @@ msgstr ""
 msgid "Onsite Research"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
-msgid "No"
-msgstr ""
-
-#: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:42
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
-msgid "Yes"
-msgstr ""
-
 #: miradi/source/org/miradi/rtf/ProjectRtfExporter.java:57
 msgid "Project Plan For "
 msgstr ""
@@ -3011,6 +3011,14 @@ msgstr ""
 msgid "Custom Reports"
 msgstr ""
 
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
+msgid "Data was exported as tab delimited."
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
+msgid "Error occurred while trying to export to a tab delimited file."
+msgstr ""
+
 #: miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:169
 msgid "Delete..."
@@ -3024,12 +3032,8 @@ msgstr ""
 msgid "Button|Ok"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:59
-msgid "Data was exported as tab delimited."
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/ExportTableDoer.java:64
-msgid "Error occurred while trying to export to a tab delimited file."
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
+msgid "Are you sure you want to delete this Progress Percent?"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
@@ -3040,14 +3044,12 @@ msgstr ""
 msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
-msgid "Title|View..."
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
+msgid "Edit Progress Percents"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:47
-#: miradi/source/org/miradi/views/noproject/CopyProject.java:52
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:32
-msgid "Save As..."
+#: miradi/source/org/miradi/views/umbrella/doers/ViewLegacyTncStrategyRankingDoer.java:38
+msgid "Title|View..."
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ShowCurrentWizardFileNameDoer.java:41
@@ -3056,8 +3058,18 @@ msgid ""
 " %s"
 msgstr ""
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
+msgid "Relevant Strategies and Activities"
+msgstr ""
+
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:32
 msgid "Edit Methods"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:47
+#: miradi/source/org/miradi/views/noproject/CopyProject.java:52
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:32
+msgid "Save As..."
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/HowToSaveDoer.java:45
@@ -3072,22 +3084,6 @@ msgstr ""
 msgid ""
 "\n"
 "Are you sure you want to delete the selected %s?"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
-msgid "Relevant Strategies and Activities"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
-msgid "Are you sure you want to delete this Progress Percent?"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractEditProgressDoer.java:32
-msgid "Edit Progress Percents"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
-msgid "Choose Relevant Indicator(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/HelpAboutPanel.java:33
@@ -3205,10 +3201,6 @@ msgstr ""
 msgid "Action|Support"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
-msgid "Exported file does not validate."
-msgstr ""
-
 #: miradi/source/org/miradi/views/umbrella/ActionCreateIndicatorProgressReport.java:36
 #: miradi/source/org/miradi/actions/ActionCreateActivityProgressReport.java:35
 #: miradi/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:35
@@ -3243,6 +3235,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/Definition.java:58
 msgid "(Definition Not Available)"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:51
+msgid "Choose Relevant Indicator(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/Redo.java:60
@@ -3819,6 +3815,18 @@ msgstr ""
 msgid "Error Occurred please try saving under different name."
 msgstr ""
 
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
+msgid "<strong>Version: %s</strong>"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
+msgid "(Translation: %code %date)"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+msgid "Exported file does not validate."
+msgstr ""
+
 #: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
 msgid "Export XML"
 msgstr ""
@@ -3842,14 +3850,6 @@ msgstr ""
 msgid ""
 "Unable to write XML. Perhaps the disk was full, or you don't have permission "
 "to write to it, or you are using invalid characters in the file name."
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
-msgid "<strong>Version: %s</strong>"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/AboutDoer.java:65
-msgid "(Translation: %code %date)"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ExportZippedProjectFileDoer.java:60
@@ -3964,16 +3964,16 @@ msgstr ""
 msgid "Share Activity"
 msgstr ""
 
+#: miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
+msgid "Enter Tag Name"
+msgstr ""
+
 #: miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
 msgid "Label|New Group Box"
 msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:48
 msgid "Are you sure you want to delete this Stress?"
-msgstr ""
-
-#: miradi/source/org/miradi/views/diagram/doers/CreateNamedTaggedObjectSetDoer.java:48
-msgid "Enter Tag Name"
 msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/DeleteSelectedItemDoer.java:139
@@ -4185,6 +4185,10 @@ msgstr ""
 msgid "Resources cannot be added to this task because it already has subtasks."
 msgstr ""
 
+#: miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:112
+msgid "Error occurred while switching threat rating mode."
+msgstr ""
+
 #: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:87
 msgid "Create Link"
 msgstr ""
@@ -4202,10 +4206,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:177
 msgid "Delete a link?"
-msgstr ""
-
-#: miradi/source/org/miradi/views/threatmatrix/ThreatRatingToolBar.java:112
-msgid "Error occurred while switching threat rating mode."
 msgstr ""
 
 #: miradi/source/org/miradi/utils/SVGFileFilter.java:44
@@ -4237,6 +4237,14 @@ msgstr ""
 msgid "FileFilter|XLS (*.xls)"
 msgstr ""
 
+#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
+msgid "FileFilter|Miradi Project Zip (*.mpz)"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
+msgid "FileFilter|ConPro Miradi Zip (*%s)"
+msgstr ""
+
 #: miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
 msgstr ""
@@ -4245,8 +4253,16 @@ msgstr ""
 msgid "FileFilter|Rich Text Format (*.rtf)"
 msgstr ""
 
-#: miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
-msgid "FileFilter|Miradi Language Pack (%s)"
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
+msgid "Install"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:49
+msgid "TT|Install the selected language pack"
+msgstr ""
+
+#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
+msgid "Select Language Pack to Install"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:54
@@ -4267,10 +4283,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/utils/JPEGFileFilter.java:44
 msgid "FileFilter|JPEG (*.jpg)"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/MpzFileFilterForChooserDialog.java:28
-msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/EAMFileSaveChooser.java:98
@@ -4336,20 +4348,8 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr ""
 
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:43
-msgid "Install"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:49
-msgid "TT|Install the selected language pack"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/LanguagePackFileChooser.java:55
-msgid "Select Language Pack to Install"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/CpmzFileFilterForChooserDialog.java:28
-msgid "FileFilter|ConPro Miradi Zip (*%s)"
+#: miradi/source/org/miradi/utils/LanguagePackFileFilter.java:54
+msgid "FileFilter|Miradi Language Pack (%s)"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
@@ -4827,14 +4827,10 @@ msgstr ""
 msgid "TT|Create a Stress"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:40
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:35
+#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:40
 #: miradi/source/org/miradi/actions/ActionCreateIndicator.java:35
 msgid "Action|Manage|Create Indicator"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
-msgid "TT|Create an Indicator for the selected factor"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttributeIndicator.java:40
@@ -4851,6 +4847,10 @@ msgstr ""
 #: miradi/source/org/miradi/actions/ActionDeleteActivityProgressReport.java:40
 #: miradi/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:40
 msgid "TT|Delete Progress Report"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateIndicator.java:45
+msgid "TT|Create an Indicator for the selected factor"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:35
@@ -4891,6 +4891,18 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportTable.java:39
 msgid "TT|Export this view's table to a tab delimited file"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
+#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
+#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
+msgid "Action|Choose..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
+msgid "TT|Choose which indicators are relevant to this goal"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionPrint.java:34
@@ -4949,14 +4961,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionImportAccountingCodes.java:39
 msgid "TT|Import accounting codes"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
-msgid "Action|Save As..."
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
-msgid "TT|Save a copy of this project under a different name and open it"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionShowCurrentWizardFileName.java:34
@@ -5167,6 +5171,14 @@ msgstr ""
 msgid "TT|Delete slide"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
+msgid "Action|Create New Tag..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
+msgid "TT|Create a new tag"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionDeleteOrganization.java:35
 msgid "Action|Delete Organization"
 msgstr ""
@@ -5284,6 +5296,15 @@ msgstr ""
 msgid "TT|Export a file that can be imported by ConPro"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
+#: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
+msgid "Action|Edit Progress Percents..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
+msgid "TT|Edit the list of progress percents for this objective."
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionDeleteResultsChain.java:35
 msgid "Action|Delete Results Chain"
 msgstr ""
@@ -5313,14 +5334,6 @@ msgid ""
 "TT|Hide this Stress so it no longer appears on this Conceptual Model page"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:35
-msgid "Action|Create Margin"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
-msgid "TT|Move factors right and down as needed to create margins"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionRunReportTemplate.java:34
 msgid "Action|Run Selected..."
 msgstr ""
@@ -5343,6 +5356,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionEditEstimatedResource.java:39
 msgid "TT|Edit the list of estimated resources."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
+msgid "TT|Choose which strategies and activities are relevant to this goal"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportRtf.java:34
@@ -5405,6 +5422,14 @@ msgstr ""
 msgid "Action|Select All"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionZoomIn.java:34
+msgid "Action|Zoom In"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionZoomIn.java:39
+msgid "TT|Zoom In"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
 msgstr ""
@@ -5413,20 +5438,20 @@ msgstr ""
 msgid "TT|Show this Activity so it appears on this Results Chain"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
+msgid "Action|Save As..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:39
+msgid "TT|Save a copy of this project under a different name and open it"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:35
 msgid "Action|Manage|Create Accounting Code"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateAccountingCode.java:40
 msgid "TT|Create an Accounting Code"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionZoomIn.java:34
-msgid "Action|Zoom In"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionZoomIn.java:39
-msgid "TT|Zoom In"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionActivityMoveDown.java:35
@@ -5443,6 +5468,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateStressFromKea.java:40
 msgid "TT|Create a Stress from a Key Ecological Attribute"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
+msgid "TT|Create an Objective for the selected factor"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionShowConceptualModel.java:35
@@ -5474,6 +5503,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateKeyEcologicalAttribute.java:40
 msgid "TT|Create a Key Ecological Attribute"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
+msgid "TT|Choose which indicators are relevant to this objective"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionManageStresses.java:35
@@ -5544,6 +5577,10 @@ msgstr ""
 msgid "TT|Undo last action"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
+msgid "TT|Add/remove tags for this factor"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr ""
@@ -5611,18 +5648,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionRedo.java:39
 msgid "TT|Redo last undone action"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:35
-#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:34
-#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
-msgid "Action|Choose..."
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionEditGoalIndicatorRelevancyList.java:39
-msgid "TT|Choose which indicators are relevant to this goal"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCut.java:34
@@ -5774,6 +5799,14 @@ msgstr ""
 msgid "Action|Delete Item"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:35
+msgid "Action|Create Margin"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCreateDiagramMargin.java:40
+msgid "TT|Move factors right and down as needed to create margins"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionActivityMoveUp.java:35
 msgid "Action|Table|Move Activity Up"
 msgstr ""
@@ -5886,6 +5919,14 @@ msgstr ""
 msgid "TT|Delete the selected Activity"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:35
+msgid "Action|Tag/Untag..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
+msgid "TT|Add/remove tags for the selected factor"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionMoveSlideDown.java:34
 msgid "Action|Move Down"
 msgstr ""
@@ -5922,16 +5963,17 @@ msgstr ""
 msgid "TT|Create a Method for the selected Indicator"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
+msgid ""
+"TT|Choose which strategies and activities are relevant to this objective."
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionInsertStrategy.java:37
 msgid "Action|Insert|Insert Strategy"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionInsertStrategy.java:42
 msgid "TT|Insert a Strategy"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionTreeCreateObjective.java:45
-msgid "TT|Create an Objective for the selected factor"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionNudgeDown.java:34
@@ -5958,54 +6000,12 @@ msgstr ""
 msgid "TT|Go to the Previous wizard step"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:45
-msgid "TT|Create an Activity for the selected Strategy"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTags.java:40
-msgid "TT|Add/remove tags for this factor"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:35
-msgid "Action|Tag/Untag..."
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:40
-msgid "TT|Add/remove tags for the selected factor"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:35
-msgid "Action|Create New Tag..."
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:40
-msgid "TT|Create a new tag"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveIndicatorRelevancyList.java:39
-msgid "TT|Choose which indicators are relevant to this objective"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:39
-msgid "TT|Choose which strategies and activities are relevant to this goal"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:39
-msgid ""
-"TT|Choose which strategies and activities are relevant to this objective."
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:34
-#: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:34
-msgid "Action|Edit Progress Percents..."
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionEditObjectiveProgressPercent.java:39
-msgid "TT|Edit the list of progress percents for this objective."
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionEditGoalProgressPercent.java:39
 msgid "TT|Edit the list of progress percents for this goal."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionTreeCreateActivity.java:45
+msgid "TT|Create an Activity for the selected Strategy"
 msgstr ""
 
 #: miradi/source/org/miradi/wizard/summary/SummaryWizardRolesAndResponsibilities.java:48
@@ -6035,6 +6035,10 @@ msgstr ""
 msgid "Error deleting project: "
 msgstr ""
 
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
+msgid "Error copying project: "
+msgstr ""
+
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:32
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:165
 msgid "Rename..."
@@ -6050,10 +6054,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:85
 msgid "Last Modified"
-msgstr ""
-
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:45
-msgid "Error copying project: "
 msgstr ""
 
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:86
@@ -6079,6 +6079,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:167
 msgid "Export to Miradi Zip..."
+msgstr ""
+
+#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
+msgid "View News"
 msgstr ""
 
 #: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
@@ -6131,10 +6135,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:154
 msgid "Create Failed:"
-msgstr ""
-
-#: miradi/source/org/miradi/wizard/noproject/MainNewsPanel.java:131
-msgid "View News"
 msgstr ""
 
 #: miradi/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:47
@@ -12406,6 +12406,12 @@ msgid ""
 msgstr ""
 
 msgid ""
+"html|/resources/OldNewsMessage.html|<h2>Miradi News</h2><p>You have already "
+"seen the most recent news, last updated on $DATE$. </p><p>If you wish to "
+"view that news again, press the button below.</p><br>"
+msgstr ""
+
+msgid ""
 "html|/resources/OtherOrgOverview.html|<div class='OrgTopPanel'><span "
 "class='hint'><strong>Hint:</strong>This panel is typically used to list "
 "partner organizations beyond those represented on your project team.</span></"
@@ -12539,12 +12545,6 @@ msgid ""
 "displays updates about Miradi Software. If you areseeing this message, "
 "either this computer is not connected to theinternet, or the Miradi news "
 "server is not available.</p>"
-msgstr ""
-
-msgid ""
-"html|/resources/OldNewsMessage.html|<h2>Miradi News</h2><p>You have already "
-"seen the most recent news, last updated on $DATE$. </p><p>If you wish to "
-"view that news again, press the button below.</p><br>"
 msgstr ""
 
 msgid ""
