@@ -79,14 +79,29 @@ public class MultiDiagramModel implements GraphModel
 
 	public void addGraphModelListener(GraphModelListener l)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.addGraphModelListener(l);
+		}
 	}
 
 	public void addUndoableEditListener(UndoableEditListener listener)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.addUndoableEditListener(listener);
+		}
 	}
 
 	public void beginUpdate()
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.beginUpdate();
+		}
 	}
 
 	public Map cloneCells(Object[] cells)
@@ -96,6 +111,13 @@ public class MultiDiagramModel implements GraphModel
 
 	public boolean contains(Object node)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			if (diagramModel.contains(node))
+				return true;
+		}
+		
 		return false;
 	}
 
@@ -106,14 +128,29 @@ public class MultiDiagramModel implements GraphModel
 
 	public void edit(Map attributes, ConnectionSet cs, ParentMap pm, UndoableEdit[] e)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.edit(attributes, cs, pm, e);
+		}
 	}
 
 	public void endUpdate()
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.endUpdate();
+		}
 	}
 
 	public void execute(ExecutableChange change)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.execute(change);
+		}
 	}
 
 	public AttributeMap getAttributes(Object node)
@@ -182,14 +219,29 @@ public class MultiDiagramModel implements GraphModel
 
 	public void remove(Object[] roots)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.remove(roots);
+		}
 	}
 
 	public void removeGraphModelListener(GraphModelListener l)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.removeGraphModelListener(l);
+		}
 	}
 
 	public void removeUndoableEditListener(UndoableEditListener listener)
 	{
+		for (int index = 0; index < models.size(); ++index)
+		{
+			DiagramModel diagramModel = models.get(index);
+			diagramModel.removeUndoableEditListener(listener);
+		}
 	}
 
 	public void toBack(Object[] cells)
