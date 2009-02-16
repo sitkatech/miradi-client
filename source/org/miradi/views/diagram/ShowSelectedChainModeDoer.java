@@ -25,7 +25,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -133,7 +133,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 	private FactorCell[] getOrphanedDraftStrategies(Project project, DiagramView view, DiagramComponent diagram)
 	{
 		Vector orphanedDraftStrategies = new Vector();
-		DiagramModel model = view.getDiagramModel();
+		PersistentDiagramModel model = view.getDiagramModel();
 		Factor[] draftStrategies = project.getStrategyPool().getDraftStrategies();
 		for (int i=0; i<draftStrategies.length; ++i)
 		{
@@ -144,7 +144,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		return (FactorCell[])orphanedDraftStrategies.toArray(new FactorCell[0]);
 	}
 	
-	private boolean isOrphan(DiagramModel model, FactorCell draftStrategyCell)
+	private boolean isOrphan(PersistentDiagramModel model, FactorCell draftStrategyCell)
 	{
 		if (draftStrategyCell == null)
 			return false;
@@ -155,7 +155,7 @@ public class ShowSelectedChainModeDoer extends ViewDoer
 		return true;
 	}
 	
-	private boolean isLinkedToNonDraft(DiagramModel model, FactorCell draftStrategyCell)
+	private boolean isLinkedToNonDraft(PersistentDiagramModel model, FactorCell draftStrategyCell)
 	{
 		LinkCell[] linkCells = (LinkCell[]) model.getFactorLinks(draftStrategyCell).toArray(new LinkCell[0]);
 		for (int i = 0; i < linkCells.length; ++i)

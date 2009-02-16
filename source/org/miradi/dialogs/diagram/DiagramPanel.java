@@ -26,7 +26,7 @@ import java.util.HashSet;
 import javax.swing.JComponent;
 
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.EAMGraphSelectionModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
@@ -132,7 +132,7 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		getDiagramModel().moveFactors(deltaX, deltaY, diagramFactorRefs);
 	}
 
-	public DiagramModel getDiagramModel()
+	public PersistentDiagramModel getDiagramModel()
 	{
 		DiagramComponent diagramComponent = getCurrentDiagramComponent();
 		if (diagramComponent==null)

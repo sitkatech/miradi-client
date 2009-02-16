@@ -33,7 +33,7 @@ import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.PortView;
 import org.miradi.diagram.BendPointSelectionHelper;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.renderers.ArrowLineRenderer;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.IdList;
@@ -275,7 +275,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		bendSelectionHelper.selectAll();
 	}
 	
-	public PointList getNewBendPointList(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
+	public PointList getNewBendPointList(PersistentDiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
 	{
 		Point sourceLocation = getSourceLocation(cache);
 		Point targetLocation = getTargetLocation(cache);
@@ -330,7 +330,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return sourceLocation;
 	}
 
-	public Point getNewBendPointLocation(DiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
+	public Point getNewBendPointLocation(PersistentDiagramModel diagramModel, GraphLayoutCache cache, Point newBendPoint)
 	{
 		if (newBendPoint != null)
 			return newBendPoint;

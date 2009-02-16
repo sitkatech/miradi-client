@@ -34,7 +34,7 @@ import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -1223,7 +1223,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			throw new RuntimeException("main file does not exist " + mainDiagram.getAbsolutePath());
 		
 		EnhancedJsonObject mainJson = JSONFile.read(mainDiagram);
-		IdList diagramFactorIds = new IdList(18, mainJson.getString(DiagramModel.TAG_DIAGRAM_FACTOR_IDS));
+		IdList diagramFactorIds = new IdList(18, mainJson.getString(PersistentDiagramModel.TAG_DIAGRAM_FACTOR_IDS));
 		
 		String manifest19Contents = "{\"Type\":\"ObjectManifest\"";
 		int highestId = readHighestIdInProjectFile(jsonDir);

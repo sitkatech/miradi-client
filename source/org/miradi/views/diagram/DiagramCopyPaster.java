@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
@@ -30,7 +30,7 @@ import org.miradi.objects.Task;
 
 public class DiagramCopyPaster extends DiagramPaster
 {
-	public DiagramCopyPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramCopyPaster(DiagramPanel diagramPanelToUse, PersistentDiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}

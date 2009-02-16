@@ -40,7 +40,7 @@ public class TestDelete extends EAMTestCase
 	public void testBasics() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		DiagramModel model = project.getDiagramModel();
+		PersistentDiagramModel model = project.getDiagramModel();
 		
 		DiagramFactorId interventionId = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		DiagramFactor intervention = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, interventionId));

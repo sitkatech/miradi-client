@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -37,7 +37,7 @@ import org.miradi.project.Project;
 public class DiagramModelUpdater
 {
 
-	public DiagramModelUpdater(Project projectToUse, DiagramModel modelToUse)
+	public DiagramModelUpdater(Project projectToUse, PersistentDiagramModel modelToUse)
 	{
 		project = projectToUse;
 		model = modelToUse;
@@ -166,6 +166,6 @@ public class DiagramModelUpdater
 	}
 		
 	private Project project;
-	private DiagramModel model;
+	private PersistentDiagramModel model;
 	private DiagramObject diagramObject;
 }

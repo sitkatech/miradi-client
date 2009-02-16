@@ -45,7 +45,7 @@ public class TestDiagramComponent extends TestCaseWithProject
 	
 	private FactorCell createNode(int nodeType) throws Exception
 	{
-		DiagramModel model = getProject().getDiagramModel();
+		PersistentDiagramModel model = getProject().getDiagramModel();
 		FactorCommandHelper commandHelper = new FactorCommandHelper(getProject(), getProject().getDiagramModel());
 		CommandCreateObject createCommand = commandHelper.createFactorAndDiagramFactor(nodeType);
 		ORef diagramFactorRef = createCommand.getObjectRef();

@@ -24,7 +24,7 @@ import java.util.Vector;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
@@ -87,7 +87,7 @@ public class DiagramObjectDeleteHelper
 	
 	private void deleteAllDiagramFactors() throws Exception
 	{
-		DiagramModel model = diagramPanel.getDiagramModel();
+		PersistentDiagramModel model = diagramPanel.getDiagramModel();
 		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
 		
 		for (int i = 0; i < allDiagramFactors.length; i++)
@@ -98,7 +98,7 @@ public class DiagramObjectDeleteHelper
 		}
 	}
 	
-	private boolean doesStillExist(DiagramModel model, DiagramFactor diagramFactor)
+	private boolean doesStillExist(PersistentDiagramModel model, DiagramFactor diagramFactor)
 	{
 		Vector<DiagramFactor> currentDiagramFactors = model.getAllDiagramFactors();
 		return currentDiagramFactors.contains(diagramFactor);
@@ -113,7 +113,7 @@ public class DiagramObjectDeleteHelper
 
 	private void deleteAllDiagramFactorLinks() throws Exception
 	{
-		DiagramModel model = diagramPanel.getDiagramModel();
+		PersistentDiagramModel model = diagramPanel.getDiagramModel();
 		DiagramLink[] allDiagramLinks = model.getAllDiagramLinksAsArray();
 		LinkDeletor linkDeletor = new LinkDeletor(project);
 		

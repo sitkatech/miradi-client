@@ -29,7 +29,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
@@ -265,7 +265,7 @@ public class TestCommands extends EAMTestCase
 	{
 		ORef diagramFactorRef = insertTarget();
 		String defaultSize = EnhancedJsonObject.convertFromDimension(new Dimension(120, 60));
-		DiagramModel diagramModel = project.getDiagramModel();
+		PersistentDiagramModel diagramModel = project.getDiagramModel();
 		FactorCell node = diagramModel.getFactorCellByRef(diagramFactorRef);
 		String originalSize = EnhancedJsonObject.convertFromDimension(node.getSize());
 		assertEquals(defaultSize, originalSize);
@@ -288,7 +288,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testCommandDiagramAddLinkage() throws Exception
 	{
-		DiagramModel model = project.getDiagramModel();
+		PersistentDiagramModel model = project.getDiagramModel();
 
 		DiagramFactor from = insertNode(ObjectType.CAUSE);
 		DiagramFactor to = insertNode(ObjectType.TARGET);

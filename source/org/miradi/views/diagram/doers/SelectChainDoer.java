@@ -25,7 +25,7 @@ import java.util.Vector;
 
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
@@ -87,7 +87,7 @@ public class SelectChainDoer extends ViewDoer
 		selectChainsBasedOnFactorsAndLinks(diagramPanel.getCurrentDiagramComponent(), diagramPanel.getDiagramModel(), selectedFactors, realDiagramLinkRefs);
 	}
 	
-	private static void selectChainsBasedOnFactorsAndLinks(DiagramComponent diagramComponent, DiagramModel model, FactorCell[] factorCells, ORefList diagramLinkRefs) throws Exception
+	private static void selectChainsBasedOnFactorsAndLinks(DiagramComponent diagramComponent, PersistentDiagramModel model, FactorCell[] factorCells, ORefList diagramLinkRefs) throws Exception
 	{
 		Factor[] factorReleatedFactors = getChainsBasedOnFactors(model, factorCells);
 		Factor[] linkRelatedFactors = getChainsBasedOnLinks(model, diagramLinkRefs);
@@ -97,7 +97,7 @@ public class SelectChainDoer extends ViewDoer
 		selectFactors(diagramComponent, model, (Factor[])nodes.toArray(new Factor[0]));
 	}
 
-	private static Factor[] getChainsBasedOnFactors(DiagramModel diagramModel, FactorCell[] factors) throws Exception
+	private static Factor[] getChainsBasedOnFactors(PersistentDiagramModel diagramModel, FactorCell[] factors) throws Exception
 	{
 		Vector nodes = new Vector();
 		for(int i = 0; i < factors.length; ++i)
@@ -110,7 +110,7 @@ public class SelectChainDoer extends ViewDoer
 		return (Factor[])nodes.toArray(new Factor[0]);
 	}
 	
-	private static Factor[] getChainsBasedOnLinks(DiagramModel diagramModel, ORefList diagramLinkRefs) throws Exception
+	private static Factor[] getChainsBasedOnLinks(PersistentDiagramModel diagramModel, ORefList diagramLinkRefs) throws Exception
 	{
 		Project project = diagramModel.getProject();
 		Vector nodes = new Vector();
@@ -132,7 +132,7 @@ public class SelectChainDoer extends ViewDoer
 		return (Factor[])nodes.toArray(new Factor[0]);
 	}
 
-	private static void selectFactors(DiagramComponent diagramComponent, DiagramModel model, Factor[] chainNodes) throws Exception
+	private static void selectFactors(DiagramComponent diagramComponent, PersistentDiagramModel model, Factor[] chainNodes) throws Exception
 	{
 		for(int i = 0; i < chainNodes.length; ++i)
 		{

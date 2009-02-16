@@ -24,7 +24,7 @@ import org.miradi.diagram.cellviews.CellViewFactory;
 
 public class PartialGraphLayoutCache extends GraphLayoutCache
 {
-	public PartialGraphLayoutCache(DiagramModel diagramModel)
+	public PartialGraphLayoutCache(PersistentDiagramModel diagramModel)
 	{
 		super(diagramModel, new CellViewFactory(), PARTIAL);
 	}

@@ -27,7 +27,7 @@ import java.util.Vector;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -86,7 +86,7 @@ public class CreateMarginDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			DiagramModel model = getDiagramView().getDiagramModel();
+			PersistentDiagramModel model = getDiagramView().getDiagramModel();
 			Dimension deltaMargin = getDeltasToEnsureMargins();
 			moveDiagramFactors(model.getAllDiagramFactors(), deltaMargin);
 			moveBendPoints(model.getAllDiagramFactorLinks(), deltaMargin);

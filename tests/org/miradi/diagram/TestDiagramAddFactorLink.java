@@ -44,7 +44,7 @@ public class TestDiagramAddFactorLink extends EAMTestCase
 	public void testLinkNodes() throws Exception
 	{
 		ProjectForTesting project = new ProjectForTesting(getName());
-		DiagramModel model = project.getDiagramModel();
+		PersistentDiagramModel model = project.getDiagramModel();
 
 		FactorCell intervention = project.createFactorCell(ObjectType.STRATEGY);
 		FactorCell factor = project.createFactorCell(ObjectType.CAUSE);
