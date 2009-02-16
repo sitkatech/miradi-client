@@ -26,6 +26,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -45,7 +46,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		super(server);
 
 		addCommandExecutedListener(this);
-		diagramModel = new DiagramModel(this);
+		diagramModel = new PersistentDiagramModel(this);
 		commandStack = new Vector();
 	}
 	
@@ -142,6 +143,6 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		}
 	}
 	
-	private DiagramModel diagramModel;
+	private PersistentDiagramModel diagramModel;
 	private Vector commandStack;
 }

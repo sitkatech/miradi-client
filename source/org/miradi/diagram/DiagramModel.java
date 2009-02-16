@@ -85,7 +85,7 @@ import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
 import org.miradi.views.umbrella.TaggedObjectManager;
 
-public class DiagramModel extends DefaultGraphModel
+abstract public class DiagramModel extends DefaultGraphModel
 {
 	public DiagramModel(Project projectToUse)
 	{
@@ -107,11 +107,6 @@ public class DiagramModel extends DefaultGraphModel
 		insertCellIntoGraph(projectScopeBox);
 	}
 
-	public boolean shouldSaveChangesToDisk()
-	{
-		return true;
-	}
-	
 	public ProjectScopeBox getProjectScopeBox()
 	{
 		return projectScopeBox;
@@ -1008,6 +1003,8 @@ public class DiagramModel extends DefaultGraphModel
 	{
 		return isDamaged;
 	}
+	
+	abstract public boolean shouldSaveChangesToDisk();
 		
 	private static final String TAG_TYPE = "Type";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";

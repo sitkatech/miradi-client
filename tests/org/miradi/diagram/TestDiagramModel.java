@@ -327,7 +327,7 @@ public class TestDiagramModel extends EAMTestCase
 		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);		
 		DiagramLink link1 = createLinkage(takeNextLinkageId(), node1.getDiagramFactor(), node2.getDiagramFactor());
 
-		DiagramModel copy = new DiagramModel(project);
+		PersistentDiagramModel copy = new PersistentDiagramModel(project);
 		copy.fillFrom(model.getDiagramObject());
 		
 		assertNotNull("missing node1?", copy.getFactorCellByRef(node1.getDiagramFactorRef()));
