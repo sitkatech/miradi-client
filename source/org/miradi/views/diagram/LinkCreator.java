@@ -24,7 +24,7 @@ import java.util.HashSet;
 
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
@@ -62,7 +62,7 @@ public class LinkCreator
 		project = projectToUse;
 	}
 	
-	public boolean linkWasRejected(PersistentDiagramModel model, ORef fromFactorRef, ORef toFactorRef) throws Exception
+	public boolean linkWasRejected(DiagramModel model, ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
 		if (fromFactorRef.equals(toFactorRef))
 			return true;
@@ -86,7 +86,7 @@ public class LinkCreator
 		return(from.getGroupBoxChildrenRefs().contains(potentialChildDiagramFactorRef));
 	}
 
-	public boolean linkToBePastedWasRejected(PersistentDiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	public boolean linkToBePastedWasRejected(DiagramModel model, DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
 	{
 		DiagramFactor fromDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, fromDiagramFactorId));
 		DiagramFactor toDiagramFactor = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, toDiagramFactorId));
@@ -94,7 +94,7 @@ public class LinkCreator
 		return linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
 	}
 	
-	public boolean linkToBeCreatedWasRejected(PersistentDiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	public boolean linkToBeCreatedWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		boolean linkWasRejected = linkWasRejected(model, fromDiagramFactor, toDiagramFactor);
 		if (linkWasRejected)
@@ -103,7 +103,7 @@ public class LinkCreator
 		return !canBeLinked(model.getDiagramObject(), fromDiagramFactor, toDiagramFactor);  
 	}
 	
-	private boolean linkWasRejected(PersistentDiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
+	private boolean linkWasRejected(DiagramModel model, DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
 		if (fromDiagramFactor == null || toDiagramFactor == null)
 			return true;
@@ -203,7 +203,7 @@ public class LinkCreator
 		return false;
 	}
 	
-	public boolean areGroupBoxOwnedFactorsLinked(PersistentDiagramModel diagramModel, DiagramFactor from, DiagramFactor to) throws Exception
+	public boolean areGroupBoxOwnedFactorsLinked(DiagramModel diagramModel, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		ORefList fromOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(from);
 		ORefList toOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(to);		
@@ -240,7 +240,7 @@ public class LinkCreator
 		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 	}
 	
-	public ORef createFactorLinkAndAddToDiagramUsingCommands(PersistentDiagramModel diagramModel, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
+	public ORef createFactorLinkAndAddToDiagramUsingCommands(DiagramModel diagramModel, DiagramFactor diagramFactorFrom, DiagramFactor diagramFactorTo) throws Exception
 	{
 		DiagramObject diagramObject = diagramModel.getDiagramObject();
 		return createFactorLinkAndAddToDiagramUsingCommands(diagramObject, diagramFactorFrom, diagramFactorTo);
@@ -374,7 +374,7 @@ public class LinkCreator
 		return diagramLinkExtraInfo;
 	}
 	
-	public ORefList createGroupBoxChildrenDiagramLinks(PersistentDiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
+	public ORefList createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
 		if (fromDiagramFactorToUse.isGroupBoxFactor() && toDiagramFactorToUse.isGroupBoxFactor())
 		{
@@ -458,7 +458,7 @@ public class LinkCreator
 		return false;
 	}
 	
-	private void deleteRelatedGroupBoxLinks(PersistentDiagramModel model, DiagramFactor groupBoxDiagramFactor, ORefList groupBoxChildren) throws Exception
+	private void deleteRelatedGroupBoxLinks(DiagramModel model, DiagramFactor groupBoxDiagramFactor, ORefList groupBoxChildren) throws Exception
 	{
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		for (int childRef = 0; childRef < groupBoxChildren.size(); ++childRef)
@@ -495,7 +495,7 @@ public class LinkCreator
 		return linkableTypes;
 	}
 	
-	public void splitSelectedLinkToIncludeFactor(PersistentDiagramModel diagramModel, DiagramLink diagramLink, DiagramFactor newlyInsertedDiagramFactor) throws Exception
+	public void splitSelectedLinkToIncludeFactor(DiagramModel diagramModel, DiagramLink diagramLink, DiagramFactor newlyInsertedDiagramFactor) throws Exception
 	{
 		boolean isBidirectional = diagramLink.isBidirectional();
 		DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
@@ -534,7 +534,7 @@ public class LinkCreator
 		return factorLinkRefs;
 	}
 	
-	public ORefList createFactorLinkAndDiagramLink(PersistentDiagramModel model, DiagramFactor from, DiagramFactor to) throws Exception
+	public ORefList createFactorLinkAndDiagramLink(DiagramModel model, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		if (!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
 		{

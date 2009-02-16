@@ -28,7 +28,7 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -79,7 +79,7 @@ import org.miradi.utils.PointList;
 
 abstract public class DiagramPaster
 {
-	public DiagramPaster(DiagramPanel diagramPanelToUse, PersistentDiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		diagramPanel = diagramPanelToUse;
 		currentModel = modelToUse;
@@ -99,7 +99,7 @@ abstract public class DiagramPaster
 		return factorDeepCopies;
 	}
 	
-	protected PersistentDiagramModel getDiagramModel()
+	protected DiagramModel getDiagramModel()
 	{
 		return currentModel;
 	}
@@ -946,7 +946,7 @@ abstract public class DiagramPaster
 	abstract protected boolean shouldCreateObject(ORef ref);
 	
 	private Project project;
-	private PersistentDiagramModel currentModel;
+	private DiagramModel currentModel;
 	private DiagramPanel diagramPanel;
 	
 	private Vector<String> factorDeepCopies;

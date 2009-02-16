@@ -23,7 +23,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.Transferable;
 
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
@@ -58,7 +58,7 @@ abstract public class AbstractPasteDoer extends LocationDoer
 		return (TransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor);
 	}
 	
-	protected PersistentDiagramModel getDiagramModel()
+	protected DiagramModel getDiagramModel()
 	{
 		return getDiagramView().getDiagramModel();
 	}

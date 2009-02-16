@@ -23,7 +23,7 @@ import java.awt.Point;
 import java.util.HashSet;
 
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -160,7 +160,7 @@ public class PropertiesDoer extends LocationDoer
 		if(selected.isFactorLink())
 			return new HashSet();
 		
-		PersistentDiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
+		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
 		if (selected.isProjectScope())
 			return new HashSet(model.getAllDiagramTargets());
 		

@@ -175,7 +175,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 
 	private void synchronizeFactorAndLinkCellsWithStoredObjects() throws Exception
 	{
-		PersistentDiagramModel model = getDiagram().getDiagramModel();
+		DiagramModel model = getDiagram().getDiagramModel();
 
 		for(int i = 0; i < selectedCells.length; ++i)
 		{

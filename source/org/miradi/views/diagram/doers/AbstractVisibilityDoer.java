@@ -27,7 +27,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
@@ -194,7 +194,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return getDiagramModel().getDiagramObject();
 	}
 
-	private PersistentDiagramModel getDiagramModel()
+	private DiagramModel getDiagramModel()
 	{
 		return getDiagramView().getDiagramModel();
 	}

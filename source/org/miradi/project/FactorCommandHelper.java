@@ -25,7 +25,7 @@ import java.awt.Point;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
@@ -38,7 +38,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class FactorCommandHelper
 {
-	public FactorCommandHelper(Project projectToUse, PersistentDiagramModel modelToUse)
+	public FactorCommandHelper(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
 		diagramObject = modelToUse.getDiagramObject();

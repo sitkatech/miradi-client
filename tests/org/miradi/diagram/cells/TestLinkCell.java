@@ -23,7 +23,7 @@ import java.awt.Point;
 
 import org.jgraph.graph.GraphLayoutCache;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMTestCase;
@@ -54,7 +54,7 @@ public class TestLinkCell extends EAMTestCase
 	
 	public void testGetNewBendPointList() throws Exception
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		EAM.setMainWindow(new MainWindow(project));
 		DiagramComponent diagramComponent = new DiagramComponent(EAM.getMainWindow(), model);
 		GraphLayoutCache cache = project.getDiagramModel().getGraphLayoutCache();

@@ -28,7 +28,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -117,7 +117,7 @@ public class ShowFullModelModeDoer extends ViewDoer
 	private static void selectFactors(DiagramComponent diagramComponent, ORefList factorORefs) throws Exception
 	{
 		GraphLayoutCache glc  = diagramComponent.getGraphLayoutCache();
-		PersistentDiagramModel diagramModel = diagramComponent.getDiagramModel();
+		DiagramModel diagramModel = diagramComponent.getDiagramModel();
 		
 		for(int i = 0; i < factorORefs.size(); ++i)
 		{

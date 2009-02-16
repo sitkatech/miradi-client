@@ -85,9 +85,9 @@ import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
 import org.miradi.views.umbrella.TaggedObjectManager;
 
-public class PersistentDiagramModel extends DefaultGraphModel
+public class DiagramModel extends DefaultGraphModel
 {
-	public PersistentDiagramModel(Project projectToUse)
+	public DiagramModel(Project projectToUse)
 	{
 		project = projectToUse;
 		layerManager = new LayerManager(getDiagramObject());

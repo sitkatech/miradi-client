@@ -327,7 +327,7 @@ public class TestDiagramModel extends EAMTestCase
 		FactorCell node2 = project.createFactorCell(ObjectType.TARGET);		
 		DiagramLink link1 = createLinkage(takeNextLinkageId(), node1.getDiagramFactor(), node2.getDiagramFactor());
 
-		PersistentDiagramModel copy = new PersistentDiagramModel(project);
+		DiagramModel copy = new DiagramModel(project);
 		copy.fillFrom(model.getDiagramObject());
 		
 		assertNotNull("missing node1?", copy.getFactorCellByRef(node1.getDiagramFactorRef()));
@@ -407,7 +407,7 @@ public class TestDiagramModel extends EAMTestCase
 	static class TestTableModel implements DiagramModelListener
 	{
 		
-		public void addListener(PersistentDiagramModel model)
+		public void addListener(DiagramModel model)
 		{
 			model.addDiagramModelListener(this);
 		}
@@ -451,6 +451,6 @@ public class TestDiagramModel extends EAMTestCase
 	}
 
 	ProjectForTesting project;
-	PersistentDiagramModel model;
+	DiagramModel model;
 	IdAssigner idAssigner;
 }

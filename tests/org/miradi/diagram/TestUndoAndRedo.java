@@ -69,7 +69,7 @@ public class TestUndoAndRedo extends EAMTestCase
 
 	public void testSingleUndo() throws Exception
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		assertTrue("no link?", model.areDiagramFactorsLinked(model.getDiagramFactor(fromFactorRef).getRef(), model.getDiagramFactor(toFactorRef).getRef()));
 		
 		// undo add linkage to diagram
@@ -83,7 +83,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	public void testMultipleUndo() throws Exception
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		
 		//undo create diagram lingate
 		project.undo();
@@ -199,13 +199,13 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private void verifyFactorCellPresent(ORef diagramFactorRef) throws Exception
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		assertNotNull("Node not present?", model.getFactorCellByRef(diagramFactorRef));
 	}
 	
 	private void verifyFactorCellNotPresent(ORef diagramFactorRef)
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
 		try
@@ -221,7 +221,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private void verifyNodeNotPresent(ORef factorRef)
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
 		assertNull("Found the deleted factor?", model.getFactorCellByWrappedRef(factorRef));
@@ -230,7 +230,7 @@ public class TestUndoAndRedo extends EAMTestCase
 	
 	private void verifyLinkageNotPresent(ORef diagramLinkRefToUse)
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		
 		EAM.setLogToString();
 		try

@@ -24,7 +24,7 @@ import java.awt.Point;
 import org.jgraph.graph.GraphLayoutCache;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
@@ -70,6 +70,6 @@ public class BendPointCreator
 	}
 	
 	private DiagramComponent diagram;
-	private PersistentDiagramModel model;
+	private DiagramModel model;
 	private Project project;
 }

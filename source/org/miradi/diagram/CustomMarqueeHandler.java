@@ -57,7 +57,7 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 
 	private void selectAllBendPointsInBouds()
 	{
-		PersistentDiagramModel model = diagram.getDiagramModel();
+		DiagramModel model = diagram.getDiagramModel();
 		DiagramLink[] allLinks = model.getAllDiagramLinksAsArray();
 		
 		for (int i = 0 ; i < allLinks.length; ++i)
@@ -66,7 +66,7 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 		}
 	}
 
-	private void selectBendPointsAndLinksInBounds(PersistentDiagramModel model, DiagramLink diagramLink)
+	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramLink diagramLink)
 	{
 		LinkCell linkCell = model.getDiagramFactorLink(diagramLink);
 		Rectangle2D.Double scaledBounds = diagram.getScaledBounds(linkCell);

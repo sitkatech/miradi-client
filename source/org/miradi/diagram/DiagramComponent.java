@@ -76,7 +76,7 @@ import org.miradi.views.diagram.LayerManager;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder, GraphSelectionListener
 {
-	public DiagramComponent(MainWindow mainWindowToUse, PersistentDiagramModel diagramModel)
+	public DiagramComponent(MainWindow mainWindowToUse, DiagramModel diagramModel)
 	{
 		super(diagramModel);
 		mainWindow = mainWindowToUse;
@@ -213,9 +213,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return getDiagramModel().getDiagramObject();
 	}
 	
-	public PersistentDiagramModel getDiagramModel()
+	public DiagramModel getDiagramModel()
 	{
-		return (PersistentDiagramModel)getModel();
+		return (DiagramModel)getModel();
 	}
 	
 	public LayerManager getLayerManager()
@@ -404,7 +404,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			groupBoxChildrenCells.add(selectedCell);
 			if (selectedCell.getDiagramFactor().isGroupBoxFactor())
 			{
-				PersistentDiagramModel diagramModel = getDiagramModel();
+				DiagramModel diagramModel = getDiagramModel();
 				groupBoxChildrenCells.addAll(diagramModel.getGroupBoxFactorChildren(selectedCell));
 			}		
 		}
@@ -537,7 +537,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	private HashSet<LinkCell> getAllLinksInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren, DiagramFactor diagramFactor)
 	{
 		HashSet<LinkCell> linkCells = new HashSet();
-		PersistentDiagramModel diagramModel = getDiagramModel();
+		DiagramModel diagramModel = getDiagramModel();
 		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
 		{

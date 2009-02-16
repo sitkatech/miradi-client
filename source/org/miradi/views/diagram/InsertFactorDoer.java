@@ -27,7 +27,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -215,7 +215,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(PersistentDiagramModel diagramModel, Rectangle visibleRectangle, int factorWidth) throws Exception
+	public Point getTargetLocation(DiagramModel diagramModel, Rectangle visibleRectangle, int factorWidth) throws Exception
 	{
 		Point deltaPoint = new Point();
 		FactorCell[] allTargets = diagramModel.getAllDiagramTargetsAsArray();
@@ -307,7 +307,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 	}
 	
-	private PersistentDiagramModel getDiagramModel()
+	private DiagramModel getDiagramModel()
 	{
 		return getDiagramView().getDiagramModel();
 	}

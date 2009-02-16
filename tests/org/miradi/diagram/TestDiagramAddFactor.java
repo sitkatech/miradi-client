@@ -49,7 +49,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	public void testInsertTarget() throws Exception
 	{
 		project.createNodeAndAddToDiagram(ObjectType.TARGET);
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		FactorCell insertedNode = (FactorCell)model.getAllFactorCells().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
@@ -65,7 +65,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	public void testInsertFactor() throws Exception
 	{
 		project.createNodeAndAddToDiagram(ObjectType.CAUSE);
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		FactorCell insertedNode = (FactorCell)model.getAllFactorCells().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());
@@ -81,7 +81,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 	public void testInsertIntervention() throws Exception
 	{
 		project.createNodeAndAddToDiagram(ObjectType.STRATEGY);
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		FactorCell insertedNode = (FactorCell)model.getAllFactorCells().get(0);
 		Rectangle2D bounds = GraphConstants.getBounds(insertedNode.getAttributes());
 		assertEquals("wrong x?", 0, (int)bounds.getX());

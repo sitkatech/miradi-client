@@ -29,7 +29,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -256,7 +256,7 @@ public class TestProject extends EAMTestCase
 		LinkCell cell1 = project.getDiagramModel().findLinkCell(linkage1);
 		LinkCell cell2 = project.getDiagramModel().findLinkCell(linkage2);
 		EAMGraphCell[] selectedCells = {cell1};
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		HashSet<EAMGraphCell> selectedItems = model.getAllSelectedCellsWithRelatedLinkages(selectedCells);
 		assertEquals(1, selectedItems.size());
 		assertContains(cell1, selectedItems);
@@ -300,7 +300,7 @@ public class TestProject extends EAMTestCase
 	
 	public void testPasteNodesAndLinksIntoProject() throws Exception
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		DiagramFactor diagramFactor1 = project.createDiagramFactorAndAddToDiagram(ObjectType.STRATEGY);
@@ -535,7 +535,7 @@ public class TestProject extends EAMTestCase
 
 	public void testPasteNodesOnlyIntoProject() throws Exception
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
 		FactorCell node2 = project.createFactorCell(ObjectType.STRATEGY);

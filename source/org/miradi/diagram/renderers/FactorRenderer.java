@@ -68,7 +68,7 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.icons.AbstractMiradiIcon;
@@ -103,7 +103,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		{
 			node = (FactorCell)view.getCell();
 			DiagramComponent diagram = (DiagramComponent)graphToUse;
-			PersistentDiagramModel model = diagram.getDiagramModel();
+			DiagramModel model = diagram.getDiagramModel();
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			priority = null;
 			if(node.isDirectThreat())
@@ -231,7 +231,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return false;
 	}
 
-	private boolean shouldMarkAsShared(PersistentDiagramModel model)
+	private boolean shouldMarkAsShared(DiagramModel model)
 	{
 		boolean isSharedInCoceptualModel = model.isSharedInConceptualModel(node.getDiagramFactor());
 		if(isSharedInCoceptualModel)
@@ -271,7 +271,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return fontStyle;
 	}
 
-	private boolean shouldDisplayResultsChainIcon(PersistentDiagramModel model, Strategy strategy)
+	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)
 	{
 		ORefList resultsChains = strategy.getResultsChains();
 		if (model.isResultsChain())
