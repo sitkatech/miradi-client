@@ -76,7 +76,7 @@ import org.miradi.views.diagram.LayerManager;
 
 public class DiagramComponent extends JGraph implements ComponentWithContextMenu, LocationHolder, GraphSelectionListener
 {
-	public DiagramComponent(MainWindow mainWindowToUse, DiagramModel diagramModel)
+	public DiagramComponent(MainWindow mainWindowToUse, GraphModel diagramModel)
 	{
 		super(diagramModel);
 		mainWindow = mainWindowToUse;
