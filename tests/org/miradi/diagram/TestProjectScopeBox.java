@@ -92,7 +92,7 @@ public class TestProjectScopeBox extends EAMTestCase
 	}
 
 	ProjectForTesting project;
-	PersistentDiagramModel model;
+	DiagramModel model;
 	IdAssigner idAssigner;
 }
 ;

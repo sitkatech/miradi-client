@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
@@ -49,7 +49,7 @@ public class ShowResultsChainDoer extends ViewDoer
 		if (! selectedFactors[0].isStrategy())
 			return false;
 
-		PersistentDiagramModel diagramModel = diagramPanel.getDiagramModel();
+		DiagramModel diagramModel = diagramPanel.getDiagramModel();
 		
 		if (diagramModel.isResultsChain())
 			return false;

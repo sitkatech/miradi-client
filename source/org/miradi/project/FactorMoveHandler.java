@@ -27,7 +27,7 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
@@ -46,7 +46,7 @@ import org.miradi.utils.PointList;
 
 public class FactorMoveHandler
 {
-	public FactorMoveHandler(Project projectToUse, PersistentDiagramModel modelToUse)
+	public FactorMoveHandler(Project projectToUse, DiagramModel modelToUse)
 	{
 		project = projectToUse;
 		model = modelToUse;
@@ -272,5 +272,5 @@ public class FactorMoveHandler
 	}
 
 	private Project project;
-	private PersistentDiagramModel model;
+	private DiagramModel model;
 }

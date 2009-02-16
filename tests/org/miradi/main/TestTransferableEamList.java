@@ -25,7 +25,7 @@ import java.awt.datatransfer.DataFlavor;
 import java.util.Vector;
 
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.BaseId;
@@ -97,7 +97,7 @@ public class TestTransferableEamList extends EAMTestCase
 
 	public void testGetTransfeData() throws Exception
 	{
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		
 		Point node1Location = new Point(1,2);
 		FactorCommandHelper commandHelper = new FactorCommandHelper(project, model);

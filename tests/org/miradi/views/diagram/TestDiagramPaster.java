@@ -23,7 +23,7 @@ import java.awt.Point;
 import java.util.HashMap;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.ids.IdList;
@@ -83,7 +83,7 @@ public class TestDiagramPaster extends EAMTestCase
 		CommandSetObjectData setFactorAnnotationIds = new CommandSetObjectData(diagramFactor.getWrappedORef(), annotationFactorTag, annotationIds.toString());
 		project.executeCommand(setFactorAnnotationIds);
 		
-		PersistentDiagramModel model = project.getDiagramModel();
+		DiagramModel model = project.getDiagramModel();
 		FactorCell factorCell = model.getFactorCellByRef(diagramFactor.getRef());
 		EAMGraphCell dataCells[] = {factorCell};
 		

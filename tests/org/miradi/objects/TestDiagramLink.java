@@ -24,7 +24,7 @@ import java.awt.Point;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.FactorCell;
@@ -145,7 +145,7 @@ public class TestDiagramLink extends ObjectTestCase
 
 	private static ORef createDiagramFactorLink(ProjectForTesting projectForTesting, ORef strategyRef, ORef factorRef, FactorLinkId modelLinkageId) throws CommandFailedException
 	{
-		PersistentDiagramModel diagramModel = projectForTesting.getDiagramModel();
+		DiagramModel diagramModel = projectForTesting.getDiagramModel();
 		FactorCell factorCell = diagramModel.getFactorCellByWrappedRef(strategyRef);
 		DiagramFactorId fromDiagramFactorId = factorCell.getDiagramFactorId();
 		DiagramFactorId toDiagramFactorId = diagramModel.getFactorCellByWrappedRef(factorRef).getDiagramFactorId();
@@ -192,7 +192,7 @@ public class TestDiagramLink extends ObjectTestCase
 	}
 
 	ProjectForTesting project;
-	PersistentDiagramModel model;
+	DiagramModel model;
 	Factor cmIntervention;
 	Factor cmTarget;
 }

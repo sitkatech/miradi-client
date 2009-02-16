@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.TransferableMiradiList;
@@ -43,7 +43,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class DiagramAliasPaster extends DiagramPaster
 {
-	public DiagramAliasPaster(DiagramPanel diagramPanelToUse, PersistentDiagramModel modelToUse, TransferableMiradiList transferableListToUse)
+	public DiagramAliasPaster(DiagramPanel diagramPanelToUse, DiagramModel modelToUse, TransferableMiradiList transferableListToUse)
 	{
 		super(diagramPanelToUse, modelToUse, transferableListToUse);
 	}

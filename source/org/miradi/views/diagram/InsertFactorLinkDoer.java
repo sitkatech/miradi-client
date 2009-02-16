@@ -23,7 +23,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.dialogs.diagram.LinkCreateDialog;
@@ -54,7 +54,7 @@ public class InsertFactorLinkDoer extends ViewDoer
 	public void doIt() throws CommandFailedException
 	{
 		DiagramView diagramView = getDiagramView();
-		PersistentDiagramModel model = diagramView.getDiagramModel();
+		DiagramModel model = diagramView.getDiagramModel();
 
 		FromToDiagramFactorsHolder fromToFactorsHolder = getFromToDiagramFactors(diagramView);
 		if (fromToFactorsHolder == null)

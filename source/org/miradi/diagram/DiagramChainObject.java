@@ -35,7 +35,7 @@ import org.miradi.project.Project;
 //factor so that many of these methods could be moved to the super
 public class DiagramChainObject
 {
-	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(PersistentDiagramModel model, DiagramFactor diagramFactor)
+	public HashSet<DiagramLink> buildNormalChainAndGetDiagramLinks(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		buildNormalChain(model.getDiagramObject(), diagramFactor);
 		return processedLinks;
@@ -47,7 +47,7 @@ public class DiagramChainObject
 		return processedLinks;
 	}
 	
-	public FactorSet buildNormalChainAndGetFactors(PersistentDiagramModel model, DiagramFactor diagramFactor)
+	public FactorSet buildNormalChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		buildNormalChain(model.getDiagramObject(), diagramFactor);
 		return getFactors();
@@ -65,7 +65,7 @@ public class DiagramChainObject
 		return getDiagramFactors();
 	}
 	
-	public FactorSet buildUpstreamChainAndGetFactors(PersistentDiagramModel model, DiagramFactor diagramFactor)
+	public FactorSet buildUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		return buildUpstreamChainAndGetFactors(model.getDiagramObject(), diagramFactor);
 	}
@@ -76,13 +76,13 @@ public class DiagramChainObject
 		return getFactors();
 	}
 	
-	public FactorSet buildDownstreamChainAndGetFactors(PersistentDiagramModel model, DiagramFactor diagramFactor)
+	public FactorSet buildDownstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		buildDownstreamChain(model, diagramFactor);
 		return getFactors();
 	}
 	
-	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(PersistentDiagramModel model, DiagramFactor diagramFactor)
+	public FactorSet buildDirectlyLinkedUpstreamChainAndGetFactors(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		return buildDirectlyLinkedUpstreamChainAndGetFactors(diagram, diagramFactor);
@@ -126,7 +126,7 @@ public class DiagramChainObject
 		resultingFactors.addAll(getAllUpstreamFactors());
 	}
 	
-	private void buildDownstreamChain(PersistentDiagramModel model, DiagramFactor diagramFactor)
+	private void buildDownstreamChain(DiagramModel model, DiagramFactor diagramFactor)
 	{
 		DiagramObject diagram = model.getDiagramObject();
 		

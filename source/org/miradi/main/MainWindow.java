@@ -50,7 +50,7 @@ import org.martus.util.UnicodeReader;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.InvalidDateRangeException;
@@ -423,7 +423,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return diagramView.getCurrentDiagramComponent();
 	}
 	
-	public PersistentDiagramModel getDiagramModel()
+	public DiagramModel getDiagramModel()
 	{
 		if (getCurrentDiagramComponent() == null)
 			return null;

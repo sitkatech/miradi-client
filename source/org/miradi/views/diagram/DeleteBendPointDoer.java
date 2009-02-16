@@ -24,7 +24,7 @@ import java.awt.Point;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramLinkId;
@@ -55,7 +55,7 @@ public class DeleteBendPointDoer extends LocationDoer
 
 	private boolean hasSelectedBendPoint(DiagramLink[] links)
 	{
-		PersistentDiagramModel diagramModel = getDiagramView().getDiagramModel();
+		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		for (int i = 0; i < links.length; ++i)
 		{
 			LinkCell linkCell = diagramModel.getDiagramFactorLink(links[i]);
