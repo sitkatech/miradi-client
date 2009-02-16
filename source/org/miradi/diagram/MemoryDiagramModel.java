@@ -21,7 +21,7 @@ package org.miradi.diagram;
 
 import org.miradi.project.Project;
 
-public class MemoryDiagramModel extends DiagramModel
+public class MemoryDiagramModel extends PersistentDiagramModel
 {
 	public MemoryDiagramModel(Project projectToUse)
 	{

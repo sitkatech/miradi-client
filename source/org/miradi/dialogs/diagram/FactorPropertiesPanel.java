@@ -29,7 +29,7 @@ import javax.swing.JTabbedPane;
 
 import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
@@ -545,7 +545,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			try
 			{
-				DiagramModel diagramModel = getDiagram().getDiagramModel();
+				PersistentDiagramModel diagramModel = getDiagram().getDiagramModel();
 				FactorCell factorCell = diagramModel.getFactorCellByRef(diagramFactorToSelectRef);
 				getDiagram().clearSelection();
 				getDiagram().addSelectionCell(factorCell);

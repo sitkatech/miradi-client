@@ -37,7 +37,7 @@ import org.martus.swing.UiList;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -136,7 +136,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 	private UiList createChoices(int linkFromTo)
 	{
 		
-		DiagramModel model = diagramPanel.getDiagramModel();
+		PersistentDiagramModel model = diagramPanel.getDiagramModel();
 		DiagramFactor[] allDiagramFactors = model.getAllDiagramFactorsAsArray();
 		DiagramFactor[] filteredDiagramFactors = getFilteredDiagramFactors(allDiagramFactors);
 		Factor[] factors = convertToFactorList(model.getProject(), filteredDiagramFactors);

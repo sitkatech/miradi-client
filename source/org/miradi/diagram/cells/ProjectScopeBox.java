@@ -30,7 +30,7 @@ import java.util.Hashtable;
 import javax.swing.JTextPane;
 
 import org.jgraph.graph.GraphConstants;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.DiagramModelEvent;
 import org.miradi.diagram.DiagramModelListener;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
@@ -47,7 +47,7 @@ import org.miradi.questions.FontFamiliyQuestion;
 
 public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListener
 {
-	public ProjectScopeBox(DiagramModel modelToUse)
+	public ProjectScopeBox(PersistentDiagramModel modelToUse)
 	{
 		model = modelToUse;
 		textPane = new JTextPane();
@@ -246,7 +246,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 	public final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 	public final static int HEIGHT_CUSION = 6;
 	
-	private DiagramModel model;
+	private PersistentDiagramModel model;
 	private JTextPane textPane;
 	private int shortScopeHeight;
 }

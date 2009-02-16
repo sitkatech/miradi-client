@@ -40,7 +40,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.MemoryDiagramModel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
@@ -112,7 +112,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	
 	public static DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
-		DiagramModel diagramModel = new DiagramModel(diagramObject.getProject());
+		PersistentDiagramModel diagramModel = new PersistentDiagramModel(diagramObject.getProject());
 		return createDiagram(mainWindow, diagramModel, diagramObject);
 	}
 	
@@ -122,7 +122,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		return createDiagram(mainWindow, memoryDiagram, diagramObject);
 	}
 
-	private static DiagramComponent createDiagram(MainWindow mainWindow, DiagramModel diagramModel, DiagramObject diagramObject) throws Exception
+	private static DiagramComponent createDiagram(MainWindow mainWindow, PersistentDiagramModel diagramModel, DiagramObject diagramObject) throws Exception
 	{
 		diagramModel.fillFrom(diagramObject);
 		diagramModel.updateProjectScopeBox();
@@ -192,7 +192,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		return getDiagramModel().getDiagramObject();
 	}
 	
-	public DiagramModel getDiagramModel()
+	public PersistentDiagramModel getDiagramModel()
 	{
 		DiagramComponent diagram = getCurrentDiagramComponent();
 		if (diagram != null)
@@ -400,7 +400,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 	private void handleDiagramLinkContentsChange(CommandSetObjectData commandSetObjectData) throws Exception
 	{
-		DiagramModel diagramModel = getDiagramModel();
+		PersistentDiagramModel diagramModel = getDiagramModel();
 		if(diagramModel == null)
 			return;
 
@@ -443,7 +443,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 	private void handleDiagramContentsChange(CommandSetObjectData setCommand) throws Exception
 	{
-		DiagramModel diagramModel = getDiagramModel();
+		PersistentDiagramModel diagramModel = getDiagramModel();
 		if (diagramModel == null)
 			return;
 

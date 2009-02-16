@@ -127,7 +127,7 @@ import org.miradi.actions.EAMAction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.EAMGraphSelectionModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -611,7 +611,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		setTab(getTabIndex(resultsChainRef));
 	}
 	
-	public DiagramModel getDiagramModel()
+	public PersistentDiagramModel getDiagramModel()
 	{
 		DiagramComponent diagramComponent = getCurrentDiagramComponent();
 		if(diagramComponent == null)
@@ -679,7 +679,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	
 		try
 		{
-			DiagramModel model = getDiagramModel();
+			PersistentDiagramModel model = getDiagramModel();
 			if(model == null)
 				return;
 			model.updateVisibilityOfFactorsAndLinks();
@@ -713,7 +713,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	}
 
 
-	private static ORefList getORefsToHide(DiagramModel diagramModel) throws Exception
+	private static ORefList getORefsToHide(PersistentDiagramModel diagramModel) throws Exception
 	{
 		ORefList oRefsToHide = new ORefList();
 		ViewData viewData = diagramModel.getProject().getDiagramViewData();
@@ -730,7 +730,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return oRefsToHide;
 	}
 	
-	private static ORefList getRelatedDraftInterventions(DiagramModel diagramModel, ORefList factorORefs) throws Exception
+	private static ORefList getRelatedDraftInterventions(PersistentDiagramModel diagramModel, ORefList factorORefs) throws Exception
 	{
 		ORefList draftsToAdd = new ORefList();
 		
@@ -846,7 +846,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		DiagramComponent[] diagramComponents = getAllDiagramComponents();
 		for (int i = 0; i < diagramComponents.length; ++i)
 		{
-			DiagramModel model = diagramComponents[i].getDiagramModel();
+			PersistentDiagramModel model = diagramComponents[i].getDiagramModel();
 			updateFactorBoundsIfRelevant(model, cmd);
 			updateFactorLinkIfRelevant(model, cmd);
 			updateScopeIfNeeded(model, cmd);
@@ -868,7 +868,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return (DiagramComponent[]) allDiagramComponents.toArray(new DiagramComponent[0]);
 	}
 
-	private void updateFactorLinkIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
+	private void updateFactorLinkIfRelevant(PersistentDiagramModel model, CommandSetObjectData cmd) throws Exception
 	{
 		ORef diagramLinkRef = extractDiagramLinkRef(cmd);
 		if(diagramLinkRef.isInvalid())
@@ -937,7 +937,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return link.getRef();
 	}
 
-	private void updateFactorBoundsIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
+	private void updateFactorBoundsIfRelevant(PersistentDiagramModel model, CommandSetObjectData cmd) throws Exception
 	{
 		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
 			return;
@@ -977,7 +977,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagramComponent.repaint(diagramComponent.getBounds());
 	}
 	
-	void updateScopeIfNeeded(DiagramModel model, CommandSetObjectData cmd)
+	void updateScopeIfNeeded(PersistentDiagramModel model, CommandSetObjectData cmd)
 	{
 		if (isScopeTextChange(cmd) || isFactorBoundsChange(cmd))
 			model.updateProjectScopeBox();

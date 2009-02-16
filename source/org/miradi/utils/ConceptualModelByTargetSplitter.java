@@ -25,7 +25,7 @@ import java.util.HashSet;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
@@ -72,7 +72,7 @@ public class ConceptualModelByTargetSplitter
 		
 		TransferableMiradiList miradiList = createTransferable(diagramFactors, diagramLinks);
 		ConceptualModelDiagram conceptualModelDiagram = createConceptualModelPage(targetDiagramFactor.getWrappedFactor().toString());
-		DiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
+		PersistentDiagramModel toDiagramModel = createDiagramModel(conceptualModelDiagram);
 
 		DiagramAliasPaster paster = new DiagramAliasPaster(null, toDiagramModel, miradiList);
 		paster.pasteFactors(PASTE_START_POINT);
@@ -80,7 +80,7 @@ public class ConceptualModelByTargetSplitter
 		paster.pasteDiagramLinks();
 	}
 	
-	private void reloadDiagramModelToIncludeNewlyPastedFactors(DiagramModel toDiagramModel, ConceptualModelDiagram conceptualModelDiagram) throws Exception
+	private void reloadDiagramModelToIncludeNewlyPastedFactors(PersistentDiagramModel toDiagramModel, ConceptualModelDiagram conceptualModelDiagram) throws Exception
 	{
 		toDiagramModel.fillFrom(conceptualModelDiagram);
 	}
@@ -146,9 +146,9 @@ public class ConceptualModelByTargetSplitter
 		return miradiList;
 	}
 	
-	private DiagramModel createDiagramModel(ConceptualModelDiagram conceptualModel) throws Exception
+	private PersistentDiagramModel createDiagramModel(ConceptualModelDiagram conceptualModel) throws Exception
 	{
-		DiagramModel diagramModel = new DiagramModel(getProject());
+		PersistentDiagramModel diagramModel = new PersistentDiagramModel(getProject());
 		diagramModel.fillFrom(conceptualModel);
 		
 		return diagramModel;

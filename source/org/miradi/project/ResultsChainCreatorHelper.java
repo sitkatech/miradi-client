@@ -28,7 +28,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
@@ -564,7 +564,7 @@ public class ResultsChainCreatorHelper
 		return vector;
 	}
 
-	private DiagramModel model;
+	private PersistentDiagramModel model;
 	private DiagramPanel diagramPanel;
 	private Project project;
 }

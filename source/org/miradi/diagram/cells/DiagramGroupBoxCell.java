@@ -28,7 +28,7 @@ import java.awt.geom.Rectangle2D;
 import org.jgraph.graph.GraphConstants;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramConstants;
-import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.diagram.DiagramModelEvent;
 import org.miradi.diagram.DiagramModelListener;
 import org.miradi.main.EAM;
@@ -46,7 +46,7 @@ import org.miradi.utils.PointList;
 
 public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
 {
-	public DiagramGroupBoxCell(DiagramModel modelToUse, GroupBox groupBox, DiagramFactor diagramFactorToUse)
+	public DiagramGroupBoxCell(PersistentDiagramModel modelToUse, GroupBox groupBox, DiagramFactor diagramFactorToUse)
 	{
 		super(groupBox, diagramFactorToUse);
 		model = modelToUse;
@@ -208,7 +208,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	}
 	
 	private DiagramFactor diagramFactor;
-	private DiagramModel model;
+	private PersistentDiagramModel model;
 	private int shortScopeHeight;
 	private ChoiceQuestion diagramFactorBackgroundQuestion;
 }
