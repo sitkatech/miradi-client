@@ -26,6 +26,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.PersistentDiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.TransferableMiradiList;
@@ -148,7 +149,7 @@ public class ConceptualModelByTargetSplitter
 	
 	private DiagramModel createDiagramModel(ConceptualModelDiagram conceptualModel) throws Exception
 	{
-		DiagramModel diagramModel = new DiagramModel(getProject());
+		PersistentDiagramModel diagramModel = new PersistentDiagramModel(getProject());
 		diagramModel.fillFrom(conceptualModel);
 		
 		return diagramModel;
