@@ -28,6 +28,7 @@ public class PersistentDiagramModel extends DiagramModel
 		super(projectToUse);
 	}
 	
+	@Override
 	public boolean shouldSaveChangesToDisk()
 	{
 		return true;
