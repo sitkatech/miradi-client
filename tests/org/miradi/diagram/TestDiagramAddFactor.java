@@ -26,6 +26,8 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
 public class TestDiagramAddFactor extends EAMTestCase
@@ -59,7 +61,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		FactorCell foundNode = model.getFactorCellByRef(diagramFactorRef);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a target?", foundNode.isTarget());
-		assertEquals(ObjectType.TARGET, foundNode.getUnderlyingFactorType());
+		assertTrue(Target.is(foundNode.getWrappedFactorRef()));
 	}
 
 	public void testInsertFactor() throws Exception
@@ -91,7 +93,7 @@ public class TestDiagramAddFactor extends EAMTestCase
 		FactorCell foundNode = model.getFactorCellByRef(diagramFactorRef);
 		assertEquals("can't find node?", insertedNode, foundNode);
 		assertTrue("not a strategy?", foundNode.isStrategy());
-		assertEquals(ObjectType.STRATEGY, foundNode.getUnderlyingFactorType());
+		assertTrue(Strategy.is(foundNode.getWrappedFactorRef()));
 	}
 	
 	ProjectForTesting project;
