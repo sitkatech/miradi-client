@@ -165,11 +165,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return true;
 	}
 	
-	public Factor getWrappedFactor()
-	{
-		return wrappedFactor;
-	}
-	
 	public DiagramFactorId getDiagramFactorId()
 	{
 		return id;
@@ -184,7 +179,12 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return diagramFactor;
 	}
-	
+
+	public Factor getWrappedFactor()
+	{
+		return wrappedFactor;
+	}
+		
 	public ORef getWrappedFactorRef()
 	{
 		return wrappedFactor.getRef();
