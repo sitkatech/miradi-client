@@ -23,7 +23,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
-import org.miradi.LayerSorter;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
@@ -33,6 +32,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.views.diagram.LayerSorter;
 
 public class TestLayerSorter extends TestCaseWithProject
 {
