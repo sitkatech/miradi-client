@@ -24,6 +24,7 @@ import java.util.Comparator;
 import org.jgraph.graph.DefaultGraphCell;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.objects.TextBox;
 
 public class LayerSorter implements Comparator<DefaultGraphCell>
 {
@@ -53,7 +54,7 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		
 		FactorCell factorCell = (FactorCell) cell;
 		if (factorCell.isTextBox())
-			return TEXT_BOX_LAYER;
+			return getTextBoxLayer(factorCell);
 		
 		if (factorCell.isGroupBox())
 			return SCOPE_BOX_GROUP_BOX_LAYER;
@@ -64,9 +65,19 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		return DEFAULT_LAYER; 
 	}
 	
-	private static final String TEXT_BOX_LAYER = "Layer1";
+	private String getTextBoxLayer(FactorCell factorCell)
+	{
+		TextBox textBox = (TextBox) factorCell.getUnderlyingObject();
+		if (textBox.isDefaultZPosition())
+			return FRONT_TEXT_BOX_LAYER;
+		
+		return BACK_TEXT_BOX_LAYER;
+	}
+
+	private static final String FRONT_TEXT_BOX_LAYER = "Layer1";
 	private static final String SCOPE_BOX_GROUP_BOX_LAYER = "Layer2";
 	private static final String DEFAULT_LAYER = "Layer3";
 	private static final String LINK_LAYER = "Layer4";
-	private static final String ACTIVITY_STRESS_LAYER = "Layer6";
+	private static final String ACTIVITY_STRESS_LAYER = "Layer5";
+	private static final String BACK_TEXT_BOX_LAYER = "Layer6";
 }
