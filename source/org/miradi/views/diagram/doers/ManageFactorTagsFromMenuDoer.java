@@ -40,7 +40,7 @@ public class ManageFactorTagsFromMenuDoer extends AbstractManageFactorTagDoer
 		if (selectedCells.length == 0)
 			return null;
 	
-		return selectedCells[0].getUnderlyingObject();
+		return selectedCells[0].getWrappedFactor();
 	}
 
 	private FactorCell[] getOnlySelectedFactorCells()

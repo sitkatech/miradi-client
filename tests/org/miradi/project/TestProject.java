@@ -712,15 +712,15 @@ public class TestProject extends EAMTestCase
 		IdList objectiveId = new IdList(Objective.getObjectType());
 		objectiveId.add(objectiveId1);
 
-		nodeContributingFactor.getUnderlyingObject().setObjectives(objectiveId);
+		nodeContributingFactor.getWrappedFactor().setObjectives(objectiveId);
 		
 		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		
 		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisObjective(objectiveId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
-		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
-		assertContains("missing contributing factor?", nodeContributingFactor.getUnderlyingObject(), foundNodes);
+		assertContains("missing direct threat?", nodeDirectThreat.getWrappedFactor(), foundNodes);
+		assertContains("missing contributing factor?", nodeContributingFactor.getWrappedFactor(), foundNodes);
 		
 		
 	}
@@ -733,15 +733,15 @@ public class TestProject extends EAMTestCase
 		IndicatorId indicatorId1 = (IndicatorId)project.createObjectAndReturnId(ObjectType.INDICATOR);
 		IdList indicators1 = new IdList(Indicator.getObjectType());
 		indicators1.add(indicatorId1);
-		nodeContributingFactor.getUnderlyingObject().setIndicators(indicators1);
+		nodeContributingFactor.getWrappedFactor().setIndicators(indicators1);
 		
 		createLinkage(BaseId.INVALID, nodeContributingFactor.getWrappedFactorRef(), nodeDirectThreat.getWrappedFactorRef());
 		
 		FactorSet foundNodes = chainManager.findAllFactorsRelatedToThisIndicator(indicatorId1);
 		
 		assertEquals("didn't find anything?", 2, foundNodes.size());
-		assertContains("missing direct threat?", nodeDirectThreat.getUnderlyingObject(), foundNodes);
-		assertContains("missing contributing factor?", nodeContributingFactor.getUnderlyingObject(), foundNodes);
+		assertContains("missing direct threat?", nodeDirectThreat.getWrappedFactor(), foundNodes);
+		assertContains("missing contributing factor?", nodeContributingFactor.getWrappedFactor(), foundNodes);
 		
 		
 	}
@@ -760,15 +760,15 @@ public class TestProject extends EAMTestCase
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter2);
 		
 		FactorSet allNodes = new FactorSet();
-		allNodes.attemptToAdd(nodeContributingFactor.getUnderlyingObject());
-		allNodes.attemptToAdd(nodeDirectThreatA.getUnderlyingObject());
-		allNodes.attemptToAdd(nodeDirectThreatB.getUnderlyingObject());	
+		allNodes.attemptToAdd(nodeContributingFactor.getWrappedFactor());
+		allNodes.attemptToAdd(nodeDirectThreatA.getWrappedFactor());
+		allNodes.attemptToAdd(nodeDirectThreatB.getWrappedFactor());	
 		
 		DirectThreatSet foundNodes = new DirectThreatSet(allNodes);
 		
 		assertEquals("didn't find both nodes?", 2, foundNodes.size());
-		assertContains("missing nodeDirectThreatA? ", nodeDirectThreatA.getUnderlyingObject(), foundNodes);
-		assertContains("missing nodeDirectThreatB?", nodeDirectThreatB.getUnderlyingObject(), foundNodes);
+		assertContains("missing nodeDirectThreatA? ", nodeDirectThreatA.getWrappedFactor(), foundNodes);
+		assertContains("missing nodeDirectThreatB?", nodeDirectThreatB.getWrappedFactor(), foundNodes);
 	}
 	  
 	public void testOpenProject() throws Exception

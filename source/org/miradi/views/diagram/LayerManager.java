@@ -61,13 +61,13 @@ public class LayerManager
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
 	{
-		if (isHiddenInDiagramObject(diagramObjectToUse, node.getUnderlyingObject().getTypeName()))
+		if (isHiddenInDiagramObject(diagramObjectToUse, node.getWrappedFactor().getTypeName()))
 			return false;
 		
 		if(hiddenORefs.contains(node.getWrappedFactorRef()))
 			return false;
 		
-		boolean isDraft = node.getUnderlyingObject().isStatusDraft();
+		boolean isDraft = node.getWrappedFactor().isStatusDraft();
 		if (isDraft)
 		{
 			if (isResultsChain(diagramObjectToUse))

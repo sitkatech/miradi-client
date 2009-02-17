@@ -67,7 +67,7 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 	
 	private String getTextBoxLayer(FactorCell factorCell)
 	{
-		TextBox textBox = (TextBox) factorCell.getUnderlyingObject();
+		TextBox textBox = (TextBox) factorCell.getWrappedFactor();
 		if (textBox.isDefaultZPosition())
 			return FRONT_TEXT_BOX_LAYER;
 		

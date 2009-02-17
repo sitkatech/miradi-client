@@ -78,7 +78,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public String getToolTipString(Point pointRelativeToCellOrigin) 
 	{
-		Factor factor = getUnderlyingObject();
+		Factor factor = getWrappedFactor();
 
 		String tip = "<html>";
 
@@ -165,7 +165,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return true;
 	}
 	
-	public Factor getUnderlyingObject()
+	public Factor getWrappedFactor()
 	{
 		return underlyingObject;
 	}
@@ -202,7 +202,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public int getWrappedType()
 	{
-		return getUnderlyingObject().getType();
+		return getWrappedFactor().getType();
 	}
 	
 	public String getLabel()
@@ -389,7 +389,7 @@ abstract public class FactorCell extends EAMGraphCell
 
 	private Project getProject()
 	{
-		return getUnderlyingObject().getProject();
+		return getWrappedFactor().getProject();
 	}
 
 	public Dimension getPreviousSize()
@@ -464,7 +464,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean isPointInViability(Point pointRelativeToOrigin)
 	{
-		if (isTarget() && ((Target)getUnderlyingObject()).isViabilityModeTNC())
+		if (isTarget() && ((Target)getWrappedFactor()).isViabilityModeTNC())
 		{
 			return (isPointInIndicator(pointRelativeToOrigin) || isPointInGoal(pointRelativeToOrigin));
 		}
