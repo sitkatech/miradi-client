@@ -187,12 +187,12 @@ abstract public class FactorCell extends EAMGraphCell
 		
 	public ORef getWrappedFactorRef()
 	{
-		return wrappedFactor.getRef();
+		return getWrappedFactor().getRef();
 	}
 
 	public FactorId getWrappedId()
 	{
-		return wrappedFactor.getFactorId();
+		return getWrappedFactor().getFactorId();
 	}
 	
 	public int getWrappedType()
@@ -202,12 +202,12 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public String getLabel()
 	{
-		return wrappedFactor.getLabel();
+		return getWrappedFactor().getLabel();
 	}
 	
 	public void setLabel(String name) throws Exception
 	{
-		wrappedFactor.setLabel(name);
+		getWrappedFactor().setLabel(name);
 	}
 
 	public void setNodeType(FactorType typeToUse)
@@ -217,27 +217,27 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean isStatusDraft()
 	{
-		return wrappedFactor.isStatusDraft();
+		return getWrappedFactor().isStatusDraft();
 	}
 
 	public IdList getIndicators()
 	{
-		return wrappedFactor.getDirectOrIndirectIndicators();
+		return getWrappedFactor().getDirectOrIndirectIndicators();
 	}
 
 	public boolean canHaveObjectives()
 	{
-		return wrappedFactor.canHaveObjectives();
+		return getWrappedFactor().canHaveObjectives();
 	}
 
 	public boolean canHaveGoal()
 	{
-		return wrappedFactor.canHaveGoal();
+		return getWrappedFactor().canHaveGoal();
 	}
 
 	public boolean isCause()
 	{
-		return wrappedFactor.isCause();
+		return getWrappedFactor().isCause();
 	}
 
 	public Point getPortLocation(GraphLayoutCache cache)
@@ -276,76 +276,76 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public String getComment()
 	{
-		return wrappedFactor.getComment();
+		return getWrappedFactor().getComment();
 	}
 	
 	public String getDetails()
 	{
-		return wrappedFactor.getDetails();
+		return getWrappedFactor().getDetails();
 	}
 
 	public IdList getGoals()
 	{
-		if (wrappedFactor.canHaveGoal())
-			return ((Target)wrappedFactor).getGoals();
+		if (getWrappedFactor().canHaveGoal())
+			return ((Target)getWrappedFactor()).getGoals();
 		return  new IdList(Goal.getObjectType());
 	}
 	
 	public IdList getObjectives()
 	{
-		return wrappedFactor.getObjectiveIds();
+		return getWrappedFactor().getObjectiveIds();
 	}
 
 	abstract public Color getColor();
 
 	public boolean isGroupBox()
 	{
-		return wrappedFactor.isGroupBox();
+		return getWrappedFactor().isGroupBox();
 	}
 	
 	public boolean isTextBox()
 	{
-		return wrappedFactor.isTextBox();
+		return getWrappedFactor().isTextBox();
 	}
 	
 	public boolean isIntermediateResult()
 	{
-		return wrappedFactor.isIntermediateResult();
+		return getWrappedFactor().isIntermediateResult();
 	}
 	
 	public boolean isThreatRedectionResult()
 	{
-		return wrappedFactor.isThreatReductionResult();
+		return getWrappedFactor().isThreatReductionResult();
 	}
 	
 	public boolean isTarget()
 	{
-		return wrappedFactor.isTarget();
+		return getWrappedFactor().isTarget();
 	}
 	
 	public boolean isContributingFactor()
 	{
-		return wrappedFactor.isContributingFactor();
+		return getWrappedFactor().isContributingFactor();
 	}
 	
 	public boolean isDirectThreat()
 	{
-		return wrappedFactor.isDirectThreat();
+		return getWrappedFactor().isDirectThreat();
 	}
 	
 	public boolean isStress()
 	{
-		return wrappedFactor.isStress();
+		return getWrappedFactor().isStress();
 	}
 	
 	public boolean isActivity()
 	{
-		return wrappedFactor.isActivity();
+		return getWrappedFactor().isActivity();
 	}
 	
 	public boolean isStrategy()
 	{
-		return wrappedFactor.isStrategy();
+		return getWrappedFactor().isStrategy();
 	}
 	
 	public DefaultPort getPort()
