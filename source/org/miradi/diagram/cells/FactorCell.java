@@ -190,11 +190,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return wrappedFactor.getRef();
 	}
 
-	public int getUnderlyingFactorType()
-	{
-		return wrappedFactor.getType();
-	}
-	
 	public FactorId getWrappedId()
 	{
 		return wrappedFactor.getFactorId();
