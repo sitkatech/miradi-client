@@ -49,17 +49,21 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 			return LAYER_1;
 		
 		if (cell.isFactorLink())
-			return LAYER_6;
+			return LAYER_5;
 		
 		FactorCell factorCell = (FactorCell) cell;
 		if (factorCell.isGroupBox())
 			return LAYER_2;
 		
-		return LAYER_5;
+		if (factorCell.isStrategy())
+			return LAYER_6;
+		
+		return LAYER_3; 
 	}
 	
 	private static final String LAYER_1 = "Layer1";
 	private static final String LAYER_2 = "Layer2";
+	private static final String LAYER_3 = "Layer3";
 	
 	private static final String LAYER_5 = "Layer5";
 	private static final String LAYER_6 = "Layer6";
