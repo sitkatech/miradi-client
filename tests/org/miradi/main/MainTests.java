@@ -48,6 +48,7 @@ import org.miradi.diagram.TestDiagramModel;
 import org.miradi.diagram.TestDiagramView;
 import org.miradi.diagram.TestEamGraphCell;
 import org.miradi.diagram.TestGroupBoxLinking;
+import org.miradi.diagram.TestLayerSorter;
 import org.miradi.diagram.TestLinkCreator;
 import org.miradi.diagram.TestProjectScopeBox;
 import org.miradi.diagram.TestSetFactorSize;
@@ -276,6 +277,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestLinkBendPointsMoveHandler.class));
 		suite.addTest(new TestSuite(TestLinkCreator.class));
 		suite.addTest(new TestSuite(TestGroupBoxLinking.class));
+		suite.addTest(new TestSuite(TestLayerSorter.class));
 
 		// factors package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));

@@ -22,6 +22,7 @@ package org.miradi.diagram;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -34,6 +35,7 @@ import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
+import org.miradi.LayerSorter;
 import org.miradi.diagram.cells.DiagramActivityCell;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
@@ -179,8 +181,14 @@ abstract public class DiagramModel extends DefaultGraphModel
 		Object[] cells = new Object[] {cell};
 		Hashtable nestedAttributeMap = getNestedAttributeMap(cell);
 		insert(cells, nestedAttributeMap, null, null, null);
+		sortLayers();
 	}
 
+	private void sortLayers()
+	{
+		Collections.sort(roots, new LayerSorter());
+	}
+	
 	private Hashtable getNestedAttributeMap(DefaultGraphCell cell)
 	{
 		Hashtable nest = new Hashtable();
@@ -237,6 +245,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		ConnectionSet cs = new ConnectionSet(cell, from.getPort(), to.getPort());
 
 		insert(newLinks, nestedMap, cs, null, null);
+		sortLayers();
 		cellInventory.addFactorLink(diagramFactorLink, cell);
 		
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkAdded());
@@ -954,6 +963,18 @@ abstract public class DiagramModel extends DefaultGraphModel
 		toBackScopeBox();
 	}
 
+	@Override
+	public void toBack(Object[] cells)
+	{
+		sortLayers();
+	}
+	
+	@Override
+	public void toFront(Object[] cells)
+	{
+		sortLayers();
+	}
+	
 	public void toBackGroupBox(Object[] groupBoxesToBack)
 	{
 		toBack(groupBoxesToBack);
