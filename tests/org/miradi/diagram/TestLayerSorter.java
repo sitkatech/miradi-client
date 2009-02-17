@@ -61,8 +61,8 @@ public class TestLayerSorter extends TestCaseWithProject
 		assertTrue("element 2 is not groupbox", isGroupBox(orderedCells.get(2).getWrappedFactorRef()));
 		assertTrue("element 3 is not factor", orderedCells.get(3).isFactor());
 		assertTrue("element 4 is not factor", orderedCells.get(4).isFactor());
-		assertTrue("element 5 is not strategy", orderedCells.get(5).isFactor());
-		assertTrue("element 6 is not factor link", orderedCells.get(6).isFactorLink());
+		assertTrue("element 5 is not factor link", orderedCells.get(5).isFactorLink());
+		assertTrue("element 6 is not factor", Strategy.is(orderedCells.get(6).getWrappedFactorRef()));		
 	}
 
 	private boolean isGroupBox(ORef ref)
