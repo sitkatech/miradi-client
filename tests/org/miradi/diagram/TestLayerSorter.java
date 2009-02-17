@@ -21,10 +21,8 @@ package org.miradi.diagram;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
@@ -32,6 +30,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.views.diagram.LayerSorter;
 
@@ -53,9 +52,9 @@ public class TestLayerSorter extends TestCaseWithProject
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
 		getProject().addDiagramLinkToModel(diagramLink);
 		
-		Vector<EAMGraphCell> orderedCells = getListWithoutNullValues();
-		FactorCell nullValueForTesting = null;
-		orderedCells.add(nullValueForTesting);
+		getProject().createDiagramFactorAndAddToDiagram(Stress.getObjectType());
+		
+		List<EAMGraphCell> orderedCells = getProject().getDiagramModel().getRoots();	
 		Collections.sort(orderedCells, new LayerSorter());
 		assertEquals("wrong cell count?", 8, orderedCells.size());
 		
@@ -66,24 +65,12 @@ public class TestLayerSorter extends TestCaseWithProject
 		assertTrue("element 4 is not factor", orderedCells.get(4).isFactor());
 		assertTrue("element 6 is not factor", orderedCells.get(5).isFactor());
 		assertTrue("element 5 is not factor link", orderedCells.get(6).isFactorLink());
+		
+		assertTrue("element 6 is not factor", orderedCells.get(7).isFactor());
 	}
 
 	private boolean isGroupBox(ORef ref)
 	{
 		return GroupBox.is(ref);
-	}
-
-	private Vector<EAMGraphCell> getListWithoutNullValues()
-	{
-		List<EAMGraphCell> orderedCells = getProject().getDiagramModel().getRoots();
-		for(EAMGraphCell cell : orderedCells)
-		{
-			if (cell == null)
-			{
-				orderedCells.remove(cell);
-			}
-		}
-		
-		return new Vector(orderedCells);
 	}
 }
