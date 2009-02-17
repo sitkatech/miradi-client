@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.diagram.factortypes.FactorTypeTextBox;
 import org.miradi.ids.FactorId;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -61,6 +62,11 @@ public class TextBox extends Factor
 		return true;
 	}
 	
+	public boolean isDefaultZPosition()
+	{
+		return zPositionCode.get().length() == 0;
+	}
+	
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
@@ -96,5 +102,19 @@ public class TextBox extends Factor
 		return find(project.getObjectManager(), objectRef);
 	}
 	
+	@Override
+	void clear()
+	{
+		super.clear();
+		
+		zPositionCode = new StringData(TAG_Z_POSITION_CODE);
+		
+		addField(zPositionCode);
+	}
+	
 	public static final String OBJECT_NAME = "TextBox";
+	
+	public static final String TAG_Z_POSITION_CODE = "ZPositionCode";
+	
+	public StringData zPositionCode;
 }

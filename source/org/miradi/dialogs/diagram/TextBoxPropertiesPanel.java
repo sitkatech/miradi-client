@@ -19,16 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
+import javax.swing.JComponent;
+
+import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.TextBox;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
+import org.miradi.questions.ZPositionQuestion;
 
 public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 {
@@ -43,6 +48,12 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion()));
 		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
 		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
+		
+		ChoiceQuestion zPositionQuestion = getProject().getQuestion(ZPositionQuestion.class);
+		RadioButtonsField zPositionField = createRadioButtonsField(TextBox.getObjectType(), TextBox.TAG_Z_POSITION_CODE, zPositionQuestion);
+		JComponent behindRadioButton = zPositionField.getComponent(zPositionQuestion.findIndexByCode(ZPositionQuestion.BEHIND_CODE));
+		JComponent frontRadioButton = zPositionField.getComponent(zPositionQuestion.findIndexByCode(ZPositionQuestion.FRONT_CODE));
+		addRadioButtonFieldWithCustomLabel(zPositionField, new JComponent[]{behindRadioButton, frontRadioButton, });
 
 		updateFieldsFromProject();
 	}
