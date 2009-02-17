@@ -299,7 +299,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		FactorCell node = getCurrentDiagramComponent().getSingleSelectedFactor();
 		if(node == null)
 			return null;
-		return node.getUnderlyingObject();
+		return node.getWrappedFactor();
 	}
 	
 	public PropertiesDoer getPropertiesDoer()

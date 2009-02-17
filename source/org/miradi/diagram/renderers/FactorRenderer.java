@@ -112,7 +112,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			}
 			if(node.isTarget())
 			{
-				Target target = (Target)node.getUnderlyingObject();
+				Target target = (Target)node.getWrappedFactor();
 				String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
 				StatusQuestion question = new StatusQuestion();
 				rating = question.findChoiceByCode(ratingCode);
@@ -120,7 +120,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			
 			if(node.isStrategy())
 			{
-				Strategy strategy = (Strategy)node.getUnderlyingObject();
+				Strategy strategy = (Strategy)node.getWrappedFactor();
 				rating = strategy.getStrategyRating();
 				stragetyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
@@ -135,7 +135,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			indicatorText = null;
 			if(diagram.areIndicatorsVisible())
 			{
-				IdList indicators = node.getUnderlyingObject().getDirectOrIndirectIndicators();
+				IdList indicators = node.getWrappedFactor().getDirectOrIndirectIndicators();
 				if(indicators.size() == 1)
 					indicatorText = "";
 				else if(indicators.size() > 1)
@@ -160,7 +160,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			{
 				if(node.canHaveGoal())
 				{
-					IdList goalIds = ((Target)node.getUnderlyingObject()).getGoals();
+					IdList goalIds = ((Target)node.getWrappedFactor()).getGoals();
 					if(goalIds.size() == 1)
 						goalsText = EAM.text("Goal") + " " + model.getProject().getObjectData(ObjectType.GOAL, goalIds.get(0), Goal.TAG_SHORT_LABEL);
 					else if(goalIds.size() > 1)
@@ -180,7 +180,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	
 	private boolean checkIfRelatedToSelectedFactor(DiagramComponent diagram, FactorCell thisCell)
 	{
-		Factor underlyingFactor = thisCell.getUnderlyingObject();
+		Factor underlyingFactor = thisCell.getWrappedFactor();
 		
 		if(thisCell.isStress())
 			return checkIfOwningTargetIsSelected(diagram, (Stress)underlyingFactor);

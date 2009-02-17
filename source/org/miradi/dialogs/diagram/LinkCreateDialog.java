@@ -113,10 +113,10 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		}
 			
 		if(firstSelected != null)
-			linkFromList.setSelectedValue(new FactorDropDownItem(firstSelected.getUnderlyingObject(), firstSelected.getDiagramFactor()), true);
+			linkFromList.setSelectedValue(new FactorDropDownItem(firstSelected.getWrappedFactor(), firstSelected.getDiagramFactor()), true);
 		
 		if(secondSelected != null)
-			linkToList.setSelectedValue(new FactorDropDownItem(secondSelected.getUnderlyingObject(), secondSelected.getDiagramFactor()), true);
+			linkToList.setSelectedValue(new FactorDropDownItem(secondSelected.getWrappedFactor(), secondSelected.getDiagramFactor()), true);
 
 		return vbox;
 	}
