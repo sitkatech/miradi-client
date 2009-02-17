@@ -48,9 +48,9 @@ import org.miradi.views.diagram.LayerManager;
 
 public class LinkCell extends EAMGraphCell implements Edge
 {
-	public LinkCell(FactorLink linkToUse, DiagramLink diagramLinkToUse, FactorCell fromToUse, FactorCell toToUse)
+	public LinkCell(FactorLink factorLinkToUse, DiagramLink diagramLinkToUse, FactorCell fromToUse, FactorCell toToUse)
 	{
-		factorLink = linkToUse;
+		factorLink = factorLinkToUse;
 		diagramLink = diagramLinkToUse;
 		from = fromToUse;
 		to = toToUse;
