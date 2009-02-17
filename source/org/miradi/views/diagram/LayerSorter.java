@@ -45,40 +45,25 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 
 	private String getLayer(EAMGraphCell cell)
 	{
-		if (isTextBox(cell))
-			return TEXT_BOX_LAYER;
-		
-		if (cell.isProjectScope() || isGroupBox(cell))
-			return SCOPE_BOX_GROUP_BOX_LAYER;
-		
 		if (cell.isFactorLink())
 			return LINK_LAYER;
 		
+		if (cell.isProjectScope() )
+			return SCOPE_BOX_GROUP_BOX_LAYER;
+		
 		FactorCell factorCell = (FactorCell) cell;
+		if (factorCell.isTextBox())
+			return TEXT_BOX_LAYER;
+		
+		if (factorCell.isGroupBox())
+			return SCOPE_BOX_GROUP_BOX_LAYER;
+			
 		if (factorCell.isActivity() || factorCell.isStress())
 			return ACTIVITY_STRESS_LAYER;
 		
 		return DEFAULT_LAYER; 
 	}
 	
-	private boolean isTextBox(EAMGraphCell cell)
-	{
-		if (!cell.isFactor())
-			return false;
-		
-		FactorCell factorCell = (FactorCell) cell;
-		return factorCell.isTextBox();		
-	}
-
-	private boolean isGroupBox(EAMGraphCell cell)
-	{
-		if (!cell.isFactor())
-			return false;
-		
-		FactorCell factorCell = (FactorCell) cell;
-		return factorCell.isGroupBox();		
-	}
-
 	private static final String TEXT_BOX_LAYER = "Layer1";
 	private static final String SCOPE_BOX_GROUP_BOX_LAYER = "Layer2";
 	private static final String DEFAULT_LAYER = "Layer3";
