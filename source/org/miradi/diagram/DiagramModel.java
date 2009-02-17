@@ -966,12 +966,14 @@ abstract public class DiagramModel extends DefaultGraphModel
 	@Override
 	public void toBack(Object[] cells)
 	{
+		EAM.logVerbose("DiagramModel.toBack() was called");
 		sortLayers();
 	}
 	
 	@Override
 	public void toFront(Object[] cells)
 	{
+		EAM.logVerbose("DiagramModel.toFront() was called");
 		sortLayers();
 	}
 	
