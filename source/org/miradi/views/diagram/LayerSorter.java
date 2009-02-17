@@ -56,7 +56,7 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		
 		FactorCell factorCell = (FactorCell) cell;
 		if (factorCell.isActivity() || factorCell.isStress())
-			return LAYER_5;
+			return LAYER_6;
 		
 		return LAYER_3; 
 	}
@@ -83,5 +83,5 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 	private static final String LAYER_2 = "Layer2";
 	private static final String LAYER_3 = "Layer3";
 	private static final String LAYER_4 = "Layer4";
-	private static final String LAYER_5 = "Layer5";
+	private static final String LAYER_6 = "Layer6";
 }
