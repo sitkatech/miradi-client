@@ -57,7 +57,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	protected FactorCell(Factor factorToWrap, DiagramFactor diagramFactorToUse)
 	{
-		underlyingObject = factorToWrap;
+		wrappedFactor = factorToWrap;
 		id = diagramFactorToUse.getDiagramFactorId();
 		diagramFactor = diagramFactorToUse;
 		
@@ -167,7 +167,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public Factor getWrappedFactor()
 	{
-		return underlyingObject;
+		return wrappedFactor;
 	}
 	
 	public DiagramFactorId getDiagramFactorId()
@@ -187,17 +187,17 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public ORef getWrappedFactorRef()
 	{
-		return underlyingObject.getRef();
+		return wrappedFactor.getRef();
 	}
 
 	public int getUnderlyingFactorType()
 	{
-		return underlyingObject.getType();
+		return wrappedFactor.getType();
 	}
 	
 	public FactorId getWrappedId()
 	{
-		return underlyingObject.getFactorId();
+		return wrappedFactor.getFactorId();
 	}
 	
 	public int getWrappedType()
@@ -207,12 +207,12 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public String getLabel()
 	{
-		return underlyingObject.getLabel();
+		return wrappedFactor.getLabel();
 	}
 	
 	public void setLabel(String name) throws Exception
 	{
-		underlyingObject.setLabel(name);
+		wrappedFactor.setLabel(name);
 	}
 
 	public void setNodeType(FactorType typeToUse)
@@ -222,27 +222,27 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean isStatusDraft()
 	{
-		return underlyingObject.isStatusDraft();
+		return wrappedFactor.isStatusDraft();
 	}
 
 	public IdList getIndicators()
 	{
-		return underlyingObject.getDirectOrIndirectIndicators();
+		return wrappedFactor.getDirectOrIndirectIndicators();
 	}
 
 	public boolean canHaveObjectives()
 	{
-		return underlyingObject.canHaveObjectives();
+		return wrappedFactor.canHaveObjectives();
 	}
 
 	public boolean canHaveGoal()
 	{
-		return underlyingObject.canHaveGoal();
+		return wrappedFactor.canHaveGoal();
 	}
 
 	public boolean isCause()
 	{
-		return underlyingObject.isCause();
+		return wrappedFactor.isCause();
 	}
 
 	public Point getPortLocation(GraphLayoutCache cache)
@@ -281,76 +281,76 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public String getComment()
 	{
-		return underlyingObject.getComment();
+		return wrappedFactor.getComment();
 	}
 	
 	public String getDetails()
 	{
-		return underlyingObject.getDetails();
+		return wrappedFactor.getDetails();
 	}
 
 	public IdList getGoals()
 	{
-		if (underlyingObject.canHaveGoal())
-			return ((Target)underlyingObject).getGoals();
+		if (wrappedFactor.canHaveGoal())
+			return ((Target)wrappedFactor).getGoals();
 		return  new IdList(Goal.getObjectType());
 	}
 	
 	public IdList getObjectives()
 	{
-		return underlyingObject.getObjectiveIds();
+		return wrappedFactor.getObjectiveIds();
 	}
 
 	abstract public Color getColor();
 
 	public boolean isGroupBox()
 	{
-		return underlyingObject.isGroupBox();
+		return wrappedFactor.isGroupBox();
 	}
 	
 	public boolean isTextBox()
 	{
-		return underlyingObject.isTextBox();
+		return wrappedFactor.isTextBox();
 	}
 	
 	public boolean isIntermediateResult()
 	{
-		return underlyingObject.isIntermediateResult();
+		return wrappedFactor.isIntermediateResult();
 	}
 	
 	public boolean isThreatRedectionResult()
 	{
-		return underlyingObject.isThreatReductionResult();
+		return wrappedFactor.isThreatReductionResult();
 	}
 	
 	public boolean isTarget()
 	{
-		return underlyingObject.isTarget();
+		return wrappedFactor.isTarget();
 	}
 	
 	public boolean isContributingFactor()
 	{
-		return underlyingObject.isContributingFactor();
+		return wrappedFactor.isContributingFactor();
 	}
 	
 	public boolean isDirectThreat()
 	{
-		return underlyingObject.isDirectThreat();
+		return wrappedFactor.isDirectThreat();
 	}
 	
 	public boolean isStress()
 	{
-		return underlyingObject.isStress();
+		return wrappedFactor.isStress();
 	}
 	
 	public boolean isActivity()
 	{
-		return underlyingObject.isActivity();
+		return wrappedFactor.isActivity();
 	}
 	
 	public boolean isStrategy()
 	{
-		return underlyingObject.isStrategy();
+		return wrappedFactor.isStrategy();
 	}
 	
 	public DefaultPort getPort()
@@ -540,7 +540,7 @@ abstract public class FactorCell extends EAMGraphCell
 	private Point previousPortLocation;
 	
 	private DiagramFactorId id;
-	private Factor underlyingObject;
+	private Factor wrappedFactor;
 	private DiagramFactor diagramFactor;
 }
 
