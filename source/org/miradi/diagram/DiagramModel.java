@@ -35,7 +35,6 @@ import org.jgraph.graph.ConnectionSet;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
-import org.miradi.LayerSorter;
 import org.miradi.diagram.cells.DiagramActivityCell;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
@@ -85,6 +84,7 @@ import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
+import org.miradi.views.diagram.LayerSorter;
 import org.miradi.views.umbrella.TaggedObjectManager;
 
 abstract public class DiagramModel extends DefaultGraphModel
