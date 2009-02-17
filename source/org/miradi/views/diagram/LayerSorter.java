@@ -30,10 +30,10 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 	public int compare(DefaultGraphCell c1, DefaultGraphCell c2)
 	{
 		if (!(c1 instanceof EAMGraphCell))
-			return -1;
+			return 0;
 		
 		if (!(c2 instanceof EAMGraphCell))
-			return -1;
+			return 0;
 		
 		EAMGraphCell cell1 = (EAMGraphCell) c1;
 		EAMGraphCell cell2 = (EAMGraphCell) c2;
@@ -45,26 +45,43 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 
 	private String getLayer(EAMGraphCell cell)
 	{
-		if (cell.isProjectScope())
+		if (isTextBox(cell))
 			return LAYER_1;
 		
-		if (cell.isFactorLink())
-			return LAYER_5;
-		
-		FactorCell factorCell = (FactorCell) cell;
-		if (factorCell.isGroupBox())
+		if (cell.isProjectScope() || isGroupBox(cell))
 			return LAYER_2;
 		
-		if (factorCell.isStrategy())
-			return LAYER_6;
+		if (cell.isFactorLink())
+			return LAYER_4;
+		
+		FactorCell factorCell = (FactorCell) cell;
+		if (factorCell.isActivity() || factorCell.isStress())
+			return LAYER_5;
 		
 		return LAYER_3; 
 	}
 	
+	private boolean isTextBox(EAMGraphCell cell)
+	{
+		if (!cell.isFactor())
+			return false;
+		
+		FactorCell factorCell = (FactorCell) cell;
+		return factorCell.isTextBox();		
+	}
+
+	private boolean isGroupBox(EAMGraphCell cell)
+	{
+		if (!cell.isFactor())
+			return false;
+		
+		FactorCell factorCell = (FactorCell) cell;
+		return factorCell.isGroupBox();		
+	}
+
 	private static final String LAYER_1 = "Layer1";
 	private static final String LAYER_2 = "Layer2";
 	private static final String LAYER_3 = "Layer3";
-	
+	private static final String LAYER_4 = "Layer4";
 	private static final String LAYER_5 = "Layer5";
-	private static final String LAYER_6 = "Layer6";
 }
