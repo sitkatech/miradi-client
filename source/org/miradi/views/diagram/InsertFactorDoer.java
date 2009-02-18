@@ -96,7 +96,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			ORef factorRef = diagramFactor.getWrappedORef();
 			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET) && (getTypeToInsert()!= ObjectType.GROUP_BOX))
 				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
-			else if (selectedFactors.length == 0 && selectedDiagramLinks.length == 1)
+			else if (isSplitableLink(selectedFactors, selectedDiagramLinks, diagramFactor))
 				linkCreator.splitSelectedLinkToIncludeFactor(getDiagramModel(), selectedDiagramLinks[0], diagramFactor);
 			else
 				notLinkingToAnyFactors();
@@ -114,6 +114,13 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			getProject().executeEndTransaction();
 		}
+	}
+	private boolean isSplitableLink(FactorCell[] selectedFactors, DiagramLink[] selectedDiagramLinks, DiagramFactor diagramFactor)
+	{
+		if (!LinkCreator.isValidLinkableType(diagramFactor.getWrappedType()))
+			return false;
+	
+		return selectedFactors.length == 0 && selectedDiagramLinks.length == 1;
 	}
 	
 	private void ensureNewFactorIsVisible(DiagramFactor diagramFactor) throws Exception
