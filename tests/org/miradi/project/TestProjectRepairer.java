@@ -38,6 +38,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
+import org.miradi.objects.TextBox;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestProjectRepairer extends TestCaseWithProject
@@ -187,4 +188,22 @@ public class TestProjectRepairer extends TestCaseWithProject
 		assertTrue("assignment refers to valid accounting code?", assignment.getAccountingCodeRef().isInvalid());
 		assertTrue("assignment refers to valid funding source?", assignment.getFundingSourceRef().isInvalid());
 	}
+	
+	public void testRepairLinkedTextBoxes() throws Exception
+	{
+		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor textBox = getProject().createDiagramFactorAndAddToDiagram(TextBox.getObjectType());
+		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().createDiagramLinkAndAddToDiagram(cause1, textBox);
+		getProject().createDiagramLinkAndAddToDiagram(textBox, cause2);
+		
+		assertEquals("more than 2 factor links exist?", 2, getProject().getFactorLinkPool().getRefList().size());
+		assertEquals("more than 2 diagram links exist?", 2, getProject().getDiagramFactorLinkPool().getRefList().size());
+		
+		ProjectRepairer repairer = new ProjectRepairer(getProject());
+		repairer.repairLinkedTextBoxes();
+		
+		assertEquals("FactorLinks were not deleted", 0, getProject().getFactorLinkPool().getRefList().size());
+		assertEquals("DiagramLinks were not deleted?", 0, getProject().getDiagramFactorLinkPool().getRefList().size());
+	}	
 }
