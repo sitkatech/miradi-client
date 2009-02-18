@@ -87,7 +87,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		return super.addField(field);
 	}
 	
-	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(ObjectDataInputField field, JComponent[] radioButons)
+	public ObjectDataInputField addRadioButtonField(ObjectDataInputField field, JComponent[] radioButons)
 	{
 		return addRadioButtonFieldWithCustomLabel(field, "", radioButons);
 	}
