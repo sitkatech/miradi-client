@@ -32,7 +32,7 @@ public class TextBoxZOrderQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(BEHIND_CODE, EAM.text("Behind")),
-				new ChoiceItem(FRONT_CODE, EAM.text("Front")),
+				new ChoiceItem(FRONT_CODE, EAM.text("In Front")),
 		};
 	}
 	
