@@ -47,7 +47,7 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
 		
 		ChoiceQuestion zPositionQuestion = getProject().getQuestion(TextBoxZOrderQuestion.class);
-		addRadioButtonField(TextBox.getObjectType(), TextBox.TAG_Z_POSITION_CODE, zPositionQuestion);
+		addRadioButtonField(DiagramFactor.getObjectType(), DiagramFactor.TAG_Z_POSITION_CODE, zPositionQuestion);
 
 		updateFieldsFromProject();
 	}

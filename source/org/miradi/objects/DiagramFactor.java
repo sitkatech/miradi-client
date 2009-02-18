@@ -33,6 +33,7 @@ import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.PointData;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -277,6 +278,11 @@ public class DiagramFactor extends BaseObject
 			throw new RuntimeException(diagramFactorRef + " is not of type DiagramFactor");
 	}
 	
+	public boolean isDefaultZPosition()
+	{
+		return zPositionCode.get().length() == 0;
+	}
+		
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
@@ -314,6 +320,7 @@ public class DiagramFactor extends BaseObject
 		fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
 		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
 		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
+		zPositionCode = new StringData(TAG_Z_POSITION_CODE);
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -323,6 +330,7 @@ public class DiagramFactor extends BaseObject
 		addField(TAG_FONT_STYLE, fontStyle);
 		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs);
 		addField(TAG_BACKGROUND_COLOR, backgroundColor);
+		addField(zPositionCode);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
@@ -333,6 +341,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_FONT_STYLE = "FontStyle";
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
+	public static final String TAG_Z_POSITION_CODE = "ZPositionCode";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
@@ -347,4 +356,5 @@ public class DiagramFactor extends BaseObject
 	private ChoiceData fontStyle;
 	private ORefListData groupBoxChildrenRefs;
 	private ChoiceData backgroundColor;
+	public StringData zPositionCode;
 }
