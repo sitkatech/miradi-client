@@ -320,7 +320,7 @@ public class DiagramFactor extends BaseObject
 		fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
 		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
 		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
-		textBoxZOrderCode = new StringData(TAG_Z_POSITION_CODE);
+		textBoxZOrderCode = new StringData(TAG_TEXT_BOX_Z_ORDER_CODE);
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -341,7 +341,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_FONT_STYLE = "FontStyle";
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
-	public static final String TAG_Z_POSITION_CODE = "ZPositionCode";
+	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "ZPositionCode";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
