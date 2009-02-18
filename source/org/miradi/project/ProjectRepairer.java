@@ -40,6 +40,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.TextBox;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -288,10 +289,13 @@ public class ProjectRepairer
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
-			removeFromAllDiagramObjects(diagramLink);
 			FactorLink factorLink = diagramLink.getUnderlyingLink();
-			getProject().deleteObject(diagramLink);
-			getProject().deleteObject(factorLink);
+			if (TextBox.is(factorLink.getFromFactorRef()) || TextBox.is(factorLink.getToFactorRef()))
+			{
+				removeFromAllDiagramObjects(diagramLink);
+				getProject().deleteObject(diagramLink);
+				getProject().deleteObject(factorLink);
+			}
 		}
 	}
 
