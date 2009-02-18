@@ -83,7 +83,7 @@ public class QuestionManager
 		addQuestion(new ReportTemplateContentQuestion());
 		addQuestion(new RtfLegendObjectsQuestion());
 		addQuestion(new TncProjectSharingQuestion());
-		addQuestion(new ZPositionQuestion());
+		addQuestion(new TextBoxZOrderQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

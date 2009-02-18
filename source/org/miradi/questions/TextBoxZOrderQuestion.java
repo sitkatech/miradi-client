@@ -21,9 +21,9 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
-public class ZPositionQuestion extends StaticChoiceQuestion
+public class TextBoxZOrderQuestion extends StaticChoiceQuestion
 {
-	public ZPositionQuestion()
+	public TextBoxZOrderQuestion()
 	{
 		super(getPositionChoices());
 	}
