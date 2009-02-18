@@ -67,7 +67,7 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 	
 	private String getTextBoxLayer(DiagramFactor diagramFactor)
 	{
-		if (diagramFactor.isDefaultZPosition())
+		if (diagramFactor.isDefaultZOrder())
 			return FRONT_TEXT_BOX_LAYER;
 		
 		return BACK_TEXT_BOX_LAYER;
