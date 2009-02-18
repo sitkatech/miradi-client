@@ -341,7 +341,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_FONT_STYLE = "FontStyle";
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
-	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "ZPositionCode";
+	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "TextBoxZOrderCode";
 	
 	static final String OBJECT_NAME = "DiagramFactor";
 	
