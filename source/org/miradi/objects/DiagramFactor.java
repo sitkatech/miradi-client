@@ -280,7 +280,7 @@ public class DiagramFactor extends BaseObject
 	
 	public boolean isDefaultZPosition()
 	{
-		return zPositionCode.get().length() == 0;
+		return textBoxZOrderCode.get().length() == 0;
 	}
 		
 	public static boolean is(ORef ref)
@@ -320,7 +320,7 @@ public class DiagramFactor extends BaseObject
 		fontStyle = new ChoiceData(TAG_FONT_STYLE, getQuestion(DiagramFactorFontStyleQuestion.class));
 		groupBoxChildrenRefs = new ORefListData(TAG_GROUP_BOX_CHILDREN_REFS);
 		backgroundColor = new ChoiceData(TAG_BACKGROUND_COLOR, getQuestion(DiagramFactorBackgroundQuestion.class));
-		zPositionCode = new StringData(TAG_Z_POSITION_CODE);
+		textBoxZOrderCode = new StringData(TAG_Z_POSITION_CODE);
 		
 		addField(TAG_SIZE, size);
 		addField(TAG_LOCATION, location);
@@ -330,7 +330,7 @@ public class DiagramFactor extends BaseObject
 		addField(TAG_FONT_STYLE, fontStyle);
 		addField(TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildrenRefs);
 		addField(TAG_BACKGROUND_COLOR, backgroundColor);
-		addField(zPositionCode);
+		addField(textBoxZOrderCode);
 	}
 	
 	public static final String TAG_LOCATION = "Location";
@@ -356,5 +356,5 @@ public class DiagramFactor extends BaseObject
 	private ChoiceData fontStyle;
 	private ORefListData groupBoxChildrenRefs;
 	private ChoiceData backgroundColor;
-	public StringData zPositionCode;
+	public StringData textBoxZOrderCode;
 }
