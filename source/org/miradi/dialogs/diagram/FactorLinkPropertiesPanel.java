@@ -157,7 +157,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		for (int index = 0; index < groupBoxReferrers.size(); ++index)
 		{
 			DiagramLink groupBoxLink = DiagramLink.find(getProject(), groupBoxReferrers.get(index));
-			ensureChildrenBidirectionality(groupBoxLink, diagramLink.getUnderlyingLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK));
+			ensureChildrenBidirectionality(groupBoxLink, diagramLink.getWrappedFactorLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK));
 		}
 	}
 
@@ -167,7 +167,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		for (int index = 0; index < diagramLinkChildRefs.size(); ++index)
 		{
 			DiagramLink childLink = DiagramLink.find(getProject(), diagramLinkChildRefs.get(index));
-			String childLinkBidirectionalMode = childLink.getUnderlyingLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK);
+			String childLinkBidirectionalMode = childLink.getWrappedFactorLink().getData(FactorLink.TAG_BIDIRECTIONAL_LINK);
 			if (!bidirectionalMode.equals(childLinkBidirectionalMode))
 			{
 				CommandSetObjectData setBidirectionality = new CommandSetObjectData(childLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, bidirectionalMode);

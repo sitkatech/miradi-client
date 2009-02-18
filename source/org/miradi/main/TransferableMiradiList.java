@@ -168,7 +168,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	private void addFactorLinkDeepCopies(ObjectDeepCopier deepCopier, DiagramLink diagramLink)
 	{
-		FactorLink factorLink = diagramLink.getUnderlyingLink();
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		Vector factorLinkJsonStrings = deepCopier.createDeepCopy(factorLink);
 		factorLinkDeepCopies.addAll(factorLinkJsonStrings);
 	
