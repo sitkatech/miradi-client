@@ -279,7 +279,7 @@ public class DiagramLink extends BaseObject
 	
 	public FactorLink getWrappedFactorLink()
 	{
-		return (FactorLink)getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
+		return FactorLink.find(getProject(), getWrappedRef());
 	}
 	
 	public String getData(String fieldTag)
