@@ -35,8 +35,10 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.utils.EnhancedJsonObject;
@@ -194,16 +196,24 @@ public class TestProjectRepairer extends TestCaseWithProject
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor textBox = getProject().createDiagramFactorAndAddToDiagram(TextBox.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		getProject().createDiagramLinkAndAddToDiagram(cause1, textBox);
 		getProject().createDiagramLinkAndAddToDiagram(textBox, cause2);
+		getProject().createDiagramLinkAndAddToDiagram(cause2, target);
 		
-		assertEquals("more than 2 factor links exist?", 2, getProject().getFactorLinkPool().getRefList().size());
-		assertEquals("more than 2 diagram links exist?", 2, getProject().getDiagramFactorLinkPool().getRefList().size());
+		assertEquals("more than 2 factor links exist?", 3, getProject().getFactorLinkPool().getRefList().size());
+		assertEquals("more than 2 diagram links exist?", 3, getProject().getDiagramFactorLinkPool().getRefList().size());
 		
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		repairer.repairLinkedTextBoxes();
 		
-		assertEquals("FactorLinks were not deleted", 0, getProject().getFactorLinkPool().getRefList().size());
-		assertEquals("DiagramLinks were not deleted?", 0, getProject().getDiagramFactorLinkPool().getRefList().size());
+		ORefList remainingFactorLinkRefs = getProject().getFactorLinkPool().getRefList();
+		assertEquals("FactorLinks were not deleted", 1, remainingFactorLinkRefs.size());
+		assertEquals("DiagramLinks were not deleted?", 1, getProject().getDiagramFactorLinkPool().getRefList().size());
+		
+		ORef factorLinkRef = remainingFactorLinkRefs.getRefForType(FactorLink.getObjectType());
+		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+		assertEquals("from is not correct ref?", cause2.getWrappedORef(), factorLink.getFromFactorRef());
+		assertEquals("to is not correct ref?", target.getWrappedORef(), factorLink.getToFactorRef());
 	}	
 }
