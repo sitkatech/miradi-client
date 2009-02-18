@@ -278,7 +278,7 @@ public class DiagramFactor extends BaseObject
 			throw new RuntimeException(diagramFactorRef + " is not of type DiagramFactor");
 	}
 	
-	public boolean isDefaultZPosition()
+	public boolean isDefaultZOrder()
 	{
 		return textBoxZOrderCode.get().length() == 0;
 	}
