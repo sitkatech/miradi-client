@@ -21,6 +21,7 @@ package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.Icon;
@@ -31,6 +32,7 @@ import javax.swing.SwingConstants;
 
 import org.martus.swing.UiLabel;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -39,6 +41,8 @@ import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 import com.jhlabs.awt.Alignment;
 import com.jhlabs.awt.GridLayoutPlus;
@@ -86,10 +90,24 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	{
 		return super.addField(field);
 	}
-	
-	public ObjectDataInputField addRadioButtonField(ObjectDataInputField field, JComponent[] radioButons)
+
+	public void addRadioButtonField(int objectType, String fieldTag, ChoiceQuestion question)
 	{
-		return addRadioButtonFieldWithCustomLabel(field, "", radioButons);
+		addRadioButtonFieldWithCustomLabel(objectType, fieldTag, question, "");
+	}
+	
+	public void addRadioButtonFieldWithCustomLabel(int objectType, String fieldTag, ChoiceQuestion question, String customLabel)
+	{
+		RadioButtonsField radioButtonField = createRadioButtonsField(objectType, fieldTag, question);
+		Vector<JComponent> radioButtons = new Vector();
+		CodeList allCodes = question.getAllCodes();
+		for (int index = 0; index < allCodes.size(); ++index)
+		{
+			JComponent radioButton = radioButtonField.getComponent(question.findIndexByCode(allCodes.get(index)));
+			radioButtons.add(radioButton);
+		}
+		
+		addRadioButtonFieldWithCustomLabel(radioButtonField, customLabel, radioButtons.toArray(new JComponent[0]));	
 	}
 	
 	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] radioButons)

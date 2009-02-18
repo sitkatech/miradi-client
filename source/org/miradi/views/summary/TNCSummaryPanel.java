@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
 
-import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.forms.summary.TncTabForm;
 import org.miradi.icons.TncIcon;
@@ -50,10 +48,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createConproProjectIdField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
 		
 		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(TncProjectSharingQuestion.class);
-		RadioButtonsField projectSharingField = createRadioButtonsField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion);
-		JComponent noRadioButton = projectSharingField.getComponent(tncProjectSharingQuestion.findIndexByCode(TncProjectSharingQuestion.SHARE_TNC_ONLY));
-		JComponent yesRadioButton = projectSharingField.getComponent(tncProjectSharingQuestion.findIndexByCode(TncProjectSharingQuestion.SHARE_WITH_ANYONE));
-		addRadioButtonFieldWithCustomLabel(projectSharingField, EAM.text("Share Outside of TNC?"), new JComponent[]{noRadioButton, yesRadioButton, });
+		addRadioButtonFieldWithCustomLabel(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, EAM.text("Share Outside of TNC?"));
 		
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createStringField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITY));
