@@ -76,7 +76,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		DiagramLink diagramLink = (DiagramLink) getProject().findObject(diagramLinkRef);
 	
 		linkCreator.createAndAddThreatStressRatingsFromTarget(diagramLink.getWrappedRef(), diagramTarget.getWrappedORef());
-		FactorLink factorLink = diagramLink.getUnderlyingLink();
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		assertEquals("wrong threat stress rating count?", 2, factorLink.getThreatStressRatingRefs().size());
 	}
 	

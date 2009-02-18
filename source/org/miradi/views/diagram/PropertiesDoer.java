@@ -226,8 +226,8 @@ public class PropertiesDoer extends LocationDoer
 		if (!isTargetLink || !isStressBasedMode)
 			return FactorLinkPropertiesPanel.createWithOnlyBidirectionalAndColorPropertiesPanel(getProject(), diagramLink);
 		
-		ORef fromRef = diagramLink.getUnderlyingLink().getFromFactorRef();
-		ORef toRef = diagramLink.getUnderlyingLink().getToFactorRef();
+		ORef fromRef = diagramLink.getWrappedFactorLink().getFromFactorRef();
+		ORef toRef = diagramLink.getWrappedFactorLink().getToFactorRef();
 		ORefList hierarchyRefs = new ORefList();
 		hierarchyRefs.add(diagramLink.getRef());
 		hierarchyRefs.add(diagramLink.getWrappedRef());

@@ -86,7 +86,7 @@ public class LinkDeletor
 	
 	public void deleteDiagramLinkAndOrphandFactorLink(Vector<DiagramFactor> diagramFactorsAboutToBeDeleted, DiagramLink diagramLink) throws Exception
 	{
-		FactorLink factorLink = diagramLink.getUnderlyingLink();
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		deleteDiagramLink(diagramLink);
 		if(factorLink == null)
 		{

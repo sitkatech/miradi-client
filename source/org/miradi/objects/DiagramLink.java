@@ -251,13 +251,13 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isTargetLink()
 	{
-		if (getUnderlyingLink() != null)
-			return getUnderlyingLink().isTargetLink();
+		if (getWrappedFactorLink() != null)
+			return getWrappedFactorLink().isTargetLink();
 		
 		DiagramLink[] factorLinkChildren = getSelfOrGroupBoxChildren();
 		for (int i = 0; i < factorLinkChildren.length; ++i)
 		{
-			if (factorLinkChildren[i].getUnderlyingLink().isTargetLink())
+			if (factorLinkChildren[i].getWrappedFactorLink().isTargetLink())
 				return true;
 		}
 		
@@ -266,8 +266,8 @@ public class DiagramLink extends BaseObject
 	
 	public boolean isBidirectional()
 	{
-		if (getUnderlyingLink() != null)
-			return getUnderlyingLink().isBidirectional();
+		if (getWrappedFactorLink() != null)
+			return getWrappedFactorLink().isBidirectional();
 		
 		if (getGroupedDiagramLinkRefs().size() == 0)
 			return false;
@@ -277,7 +277,7 @@ public class DiagramLink extends BaseObject
 		return diagramLink.isBidirectional();
 	}
 	
-	public FactorLink getUnderlyingLink()
+	public FactorLink getWrappedFactorLink()
 	{
 		return (FactorLink)getProject().findObject(new ORef(FactorLink.getObjectType(), underlyingObjectId.getId()));
 	}
@@ -362,7 +362,7 @@ public class DiagramLink extends BaseObject
 		DiagramLink[] diagramLinks = getSelfOrGroupBoxChildren();
 		for (int i = 0; i < diagramLinks.length; ++i)
 		{
-			allStressNames.addAll(getStressNames(diagramLinks[i].getUnderlyingLink()));
+			allStressNames.addAll(getStressNames(diagramLinks[i].getWrappedFactorLink()));
 		}
 		
 		return allStressNames.toArray(new String[0]);
@@ -370,7 +370,7 @@ public class DiagramLink extends BaseObject
 
 	private DiagramLink[] getSelfOrGroupBoxChildren()
 	{
-		if (getUnderlyingLink() != null)
+		if (getWrappedFactorLink() != null)
 			return new DiagramLink[] {this};
 		
 		Vector<DiagramLink> allChildrenFactorLinks = new Vector();

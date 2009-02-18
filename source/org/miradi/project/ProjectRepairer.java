@@ -289,7 +289,7 @@ public class ProjectRepairer
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
-			FactorLink factorLink = diagramLink.getUnderlyingLink();
+			FactorLink factorLink = diagramLink.getWrappedFactorLink();
 			if (TextBox.is(factorLink.getFromFactorRef()) || TextBox.is(factorLink.getToFactorRef()))
 			{
 				removeFromAllDiagramObjects(diagramLink);
