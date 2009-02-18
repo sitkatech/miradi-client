@@ -53,7 +53,7 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		RadioButtonsField zPositionField = createRadioButtonsField(TextBox.getObjectType(), TextBox.TAG_Z_POSITION_CODE, zPositionQuestion);
 		JComponent behindRadioButton = zPositionField.getComponent(zPositionQuestion.findIndexByCode(ZPositionQuestion.BEHIND_CODE));
 		JComponent frontRadioButton = zPositionField.getComponent(zPositionQuestion.findIndexByCode(ZPositionQuestion.FRONT_CODE));
-		addRadioButtonFieldWithCustomLabel(zPositionField, new JComponent[]{behindRadioButton, frontRadioButton, });
+		addRadioButtonField(zPositionField, new JComponent[]{behindRadioButton, frontRadioButton, });
 
 		updateFieldsFromProject();
 	}
