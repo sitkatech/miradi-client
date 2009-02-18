@@ -54,7 +54,7 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		
 		FactorCell factorCell = (FactorCell) cell;
 		if (factorCell.isTextBox())
-			return getTextBoxLayer(factorCell);
+			return getTextBoxLayer((TextBox) factorCell.getWrappedFactor());
 		
 		if (factorCell.isGroupBox())
 			return SCOPE_BOX_GROUP_BOX_LAYER;
@@ -65,9 +65,8 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		return DEFAULT_LAYER; 
 	}
 	
-	private String getTextBoxLayer(FactorCell factorCell)
+	private String getTextBoxLayer(TextBox textBox)
 	{
-		TextBox textBox = (TextBox) factorCell.getWrappedFactor();
 		if (textBox.isDefaultZPosition())
 			return FRONT_TEXT_BOX_LAYER;
 		
