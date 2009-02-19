@@ -184,7 +184,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		sortLayers();
 	}
 
-	private void sortLayers()
+	public void sortLayers()
 	{
 		Collections.sort(roots, new LayerSorter());
 	}

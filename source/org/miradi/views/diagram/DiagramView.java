@@ -774,6 +774,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 			updateAllTabs(setCommand);
 			setToDefaultMode(setCommand);
+			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
+				handleTextBoxZOrderChanged(setCommand.getObjectORef());
+			
 			forceDiagramComponentRepaint();
 		}
 		catch (Exception e)
@@ -782,6 +785,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 
+	private void handleTextBoxZOrderChanged(ORef diagramFactorRef) throws Exception
+	{
+		getDiagramModel().sortLayers();
+		
+		FactorCell factorCell = getDiagramModel().getFactorCellByRef(diagramFactorRef);
+		getDiagramModel().updateCell(factorCell);
+	}
 
 	private void forceDiagramComponentRepaint()
 	{
