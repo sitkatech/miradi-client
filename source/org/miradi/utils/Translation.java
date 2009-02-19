@@ -231,6 +231,9 @@ public class Translation
 			if(line == null)
 				break;
 			
+			if(line.startsWith("#"))
+				continue;
+			
 			if(line.startsWith("\"PO-Revision-Date: "))
 			{
 				int dateStart = line.indexOf(':') + 2;
