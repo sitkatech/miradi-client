@@ -46,17 +46,16 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		
 		project = projectToUse;
 		selectedFactor = selectedFactorToUse;
-		project.addCommandExecutedListener(this);
 	
 		updateCheckboxesToMatchDatabase();
+		project.addCommandExecutedListener(this);
 	}
 	
 	@Override
 	public void dispose()
 	{
-		super.dispose();
-		
 		getProject().removeCommandExecutedListener(this);
+		super.dispose();
 	}
 	
 	protected void addAdditinalComponent()
