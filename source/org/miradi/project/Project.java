@@ -1055,8 +1055,8 @@ public class Project
 
 			EAM.internalError(
 					EAM.text("Attempt to execute command while in side effect mode:\n" +
-							" tried  " + command.toString() +
-							" within " + lastCommand.toString())
+							" tried  " + command.toString() + "\n" +
+							"  within " + lastCommand.toString())
 					);
 		}
 		
