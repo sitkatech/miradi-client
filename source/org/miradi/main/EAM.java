@@ -283,22 +283,7 @@ public class EAM
 	{
 		logger.logVerbose(text);
 	}
-	
-	public static void internalError(String notificationText)
-	{
-		try
-		{
-			logError(notificationText);
-			throw new Exception(notificationText);
-		}
-		catch (Exception e)
-		{
-			logException(e);
-			notifyDialog(convertExceptionToString(e));
-		}
-	}
-	
-	//TODO this is almost a duplicate of the internalerror method.  we should use this method instead of internalError
+
 	public static void friendlyInternalError(String notificationText)
 	{
 		try

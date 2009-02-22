@@ -1056,9 +1056,9 @@ public class Project
 		if(isInCommandSideEffectMode())
 		{
 			if(lastCommand == null)
-				EAM.internalError("Attempted to execute command as side effect before any command had been executed ");
+				EAM.friendlyInternalError("Attempted to execute command as side effect before any command had been executed ");
 
-			EAM.internalError(
+			EAM.friendlyInternalError(
 					EAM.text("Attempt to execute command while in side effect mode:\n" +
 							" tried  " + command.toString() + "\n" +
 							"  within " + lastCommand.toString())
