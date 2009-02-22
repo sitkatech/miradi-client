@@ -41,8 +41,8 @@ public class MiradiDirectoryChooser
 		fileChooser.setAcceptAllFileFilterUsed(false);
 		fileChooser.setDialogTitle(DIALOG_TITLE);
 		fileChooser.setDialogType(JFileChooser.CUSTOM_DIALOG);
-		fileChooser.setApproveButtonToolTipText(EAM.text("Choose Data Directory"));
-		if (fileChooser.showDialog(mainWindow, EAM.text("Choose Directory")) != JFileChooser.APPROVE_OPTION)
+		fileChooser.setApproveButtonToolTipText(EAM.text("Choose Data Folder"));
+		if (fileChooser.showDialog(mainWindow, EAM.text("Choose Folder")) != JFileChooser.APPROVE_OPTION)
 			return null;
 
 		return fileChooser.getSelectedFile();
