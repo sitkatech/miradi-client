@@ -46,7 +46,7 @@ public class ExportProjectXmlDoer extends XmlExporter
 	public static File exportProjectToXml(Project project, File destinationDirectory) throws Exception
 	{
 		if(!destinationDirectory.isDirectory())
-			throw new RuntimeException("Can only export to a directory");
+			throw new RuntimeException("Can only export to a folder");
 		
 		File mainXmlFile = exportProjectXml(project, destinationDirectory);
 		exportDiagrams(project, destinationDirectory);
