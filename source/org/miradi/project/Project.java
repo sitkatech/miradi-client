@@ -1039,7 +1039,12 @@ public class Project
 	{
 		if(!isInCommandSideEffectMode())
 		{
-			EAM.internalError(EAM.text("Attempt to execute command as side effect when not in that mode"));
+			EAM.friendlyInternalError("<html>" + 
+									  	EAM.text("A minor data adjustment has occurred.") + 
+									  	EAM.text("<br> The operation completed successfully, but Undo/Redo may not work correctly.") +
+									  	EAM.text("<br> Please report this problem to the Miradi support team ") +
+									  	"(<a href=\"mailto:support@miradi.org\">support@miradi.org<a>)" + 
+									  "</html>");
 		}
 		
 		executeWithoutRecording(command);
