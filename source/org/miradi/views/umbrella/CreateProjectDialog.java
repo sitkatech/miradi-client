@@ -266,7 +266,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 			if (!ProjectServer.isExistingProject(getSelectedFile())) 
 			{
-				String body = EAM.text("File exists: Cannot overwrite a non project directory");
+				String body = EAM.text("File exists: Cannot overwrite a non project folder");
 				EAM.errorDialog(body);
 				return;
 			}

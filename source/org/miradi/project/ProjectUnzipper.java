@@ -71,7 +71,7 @@ public class ProjectUnzipper
 			
 			if(topLevelDirectories.size() != 1)
 			{
-				EAM.logDebug("ProjectUnzipper didn't find exactly one top-level directory");
+				EAM.logDebug("ProjectUnzipper didn't find exactly one top-level folder");
 				return false;
 			}
 			
