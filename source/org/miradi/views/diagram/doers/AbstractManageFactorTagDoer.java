@@ -26,7 +26,7 @@ import org.martus.swing.Utilities;
 import org.miradi.actions.ActionCreateNamedTaggedObjectSet;
 import org.miradi.dialogfields.FactorTagListEditor;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -59,7 +59,7 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 		dialog.setVisible(true);			
 	}
 	
-	class EditTagWithCreateTagButtonDialog extends ModelessDialogWithClose
+	class EditTagWithCreateTagButtonDialog extends ModalDialogWithClose
 	{
 		public EditTagWithCreateTagButtonDialog(MainWindow parent, DisposablePanel panel, String headingText)
 		{
