@@ -461,7 +461,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		if (isTarget() && ((Target)getWrappedFactor()).isViabilityModeTNC())
 		{
-			return (isPointInIndicator(pointRelativeToOrigin) || isPointInGoal(pointRelativeToOrigin));
+			return (isPointInIndicator(pointRelativeToOrigin));
 		}
 		return false;
 	}
