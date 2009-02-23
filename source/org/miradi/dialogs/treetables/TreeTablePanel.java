@@ -160,7 +160,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		
 		getPropertiesPanel().setObjectRefs((ORef[])objects.toArray(new ORef[0]));
 		mainWindow.updateActionStates();
-		getPropertiesPanel().setFocusOnFirstField();
 	}
 	
 	

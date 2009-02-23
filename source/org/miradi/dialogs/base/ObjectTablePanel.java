@@ -74,7 +74,6 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 				selectedRefs = selectedHierarchies[0];
 
 			getPropertiesPanel().setObjectRefs(selectedRefs);
-			getPropertiesPanel().setFocusOnFirstField();
 		}
 		catch (Exception e)
 		{
