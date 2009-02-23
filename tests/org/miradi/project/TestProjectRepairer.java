@@ -33,9 +33,11 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
@@ -196,20 +198,27 @@ public class TestProjectRepairer extends TestCaseWithProject
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor textBox = getProject().createDiagramFactorAndAddToDiagram(TextBox.getObjectType());
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor causeInGroupBox = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		getProject().createDiagramLinkAndAddToDiagram(cause1, textBox);
 		getProject().createDiagramLinkAndAddToDiagram(textBox, cause2);
 		getProject().createDiagramLinkAndAddToDiagram(cause2, target);
 		
-		assertEquals("more than 2 factor links exist?", 3, getProject().getFactorLinkPool().getRefList().size());
-		assertEquals("more than 2 diagram links exist?", 3, getProject().getDiagramFactorLinkPool().getRefList().size());
+		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		groupBox.setData(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(causeInGroupBox).toString());
+		ORef groupBoxDiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(groupBox, target);
+		DiagramLink groupBoxDiagramLink  = DiagramLink.find(getProject(), groupBoxDiagramLinkRef);
+		assertTrue("group box link was not created?", groupBoxDiagramLink.isGroupBoxLink());
+		
+		assertEquals("more than 3 factor links exist?", 3, getProject().getFactorLinkPool().getRefList().size());
+		assertEquals("more than 4 diagram links exist?", 4, getProject().getDiagramFactorLinkPool().getRefList().size());
 		
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		repairer.repairLinkedTextBoxes();
 		
 		ORefList remainingFactorLinkRefs = getProject().getFactorLinkPool().getRefList();
 		assertEquals("FactorLinks were not deleted", 1, remainingFactorLinkRefs.size());
-		assertEquals("DiagramLinks were not deleted?", 1, getProject().getDiagramFactorLinkPool().getRefList().size());
+		assertEquals("DiagramLinks were not deleted?", 2, getProject().getDiagramFactorLinkPool().getRefList().size());
 		
 		ORef factorLinkRef = remainingFactorLinkRefs.getRefForType(FactorLink.getObjectType());
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
