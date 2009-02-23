@@ -206,7 +206,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 		groupBox.setData(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(causeInGroupBox).toString());
-		ORef groupBoxDiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(groupBox, target);
+		ORef groupBoxDiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(groupBox, textBox);
 		DiagramLink groupBoxDiagramLink  = DiagramLink.find(getProject(), groupBoxDiagramLinkRef);
 		assertTrue("group box link was not created?", groupBoxDiagramLink.isGroupBoxLink());
 		
@@ -218,7 +218,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		ORefList remainingFactorLinkRefs = getProject().getFactorLinkPool().getRefList();
 		assertEquals("FactorLinks were not deleted", 1, remainingFactorLinkRefs.size());
-		assertEquals("DiagramLinks were not deleted?", 2, getProject().getDiagramFactorLinkPool().getRefList().size());
+		assertEquals("DiagramLinks were not deleted?", 1, getProject().getDiagramFactorLinkPool().getRefList().size());
 		
 		ORef factorLinkRef = remainingFactorLinkRefs.getRefForType(FactorLink.getObjectType());
 		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
