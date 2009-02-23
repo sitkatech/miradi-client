@@ -1039,7 +1039,7 @@ public class Project
 	{
 		if(!isInCommandSideEffectMode())
 		{
-			EAM.friendlyInternalError("<html>" + 
+			EAM.displayHtmlWarningDialog("<html>" + 
 									  	EAM.text("An unexpected error has occurred.") + 
 									  	EAM.text("<br> The operation completed successfully, but Undo/Redo may not work correctly.") +
 									  	EAM.text("<br> Please report this problem to the Miradi support team ") +
