@@ -102,6 +102,7 @@ public class ObjectTablePanel extends ObjectCollectionPanel implements ListSelec
 		{
 			CommandCreateObject cmd = (CommandCreateObject)event.getCommand();
 			table.updateTableAfterObjectCreated(new ORef(cmd.getObjectType(), cmd.getCreatedId()));
+			getPropertiesPanel().setFocusOnFirstField();
 		}
 		else if(event.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
 		{
