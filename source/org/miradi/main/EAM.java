@@ -55,7 +55,7 @@ public class EAM
 		preferredHomeDir.mkdirs();
 		if (!preferredHomeDir.exists() || !preferredHomeDir.isDirectory())
 		{	
-			displayHtmlDialog("NoHomeDirectoryFoundMessage.html","@DIRECTORY_NAME@", preferredHomeDir.getAbsolutePath());
+			displayHtmlWarningDialog("NoHomeDirectoryFoundMessage.html","@DIRECTORY_NAME@", preferredHomeDir.getAbsolutePath());
 			return true;
 		}
 
@@ -105,7 +105,7 @@ public class EAM
 		if (homeDir.startsWith("C:\\"))
 			return;
 		
-		displayHtmlDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
+		displayHtmlWarningDialog("NoWindowsDataLocalDataLocationMessage.html", "@DIRECTORY_NAME@", homeDir);
 	}
 	
 	public static boolean isValidCharacter(char c)
@@ -124,19 +124,24 @@ public class EAM
 		isAlphaTesterMode = true;
 	}
 	
-	private static void displayHtmlDialog(String htmlFileName, String findToReplace,  String replacementForStr1)
+	private static void displayHtmlWarningDialog(String htmlFileName, String findToReplace,  String replacementForStr1)
 	{
 		try
 		{
 			String html = Translation.getHtmlContent(htmlFileName);
 			html = html.replace(findToReplace, replacementForStr1);
-			HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), html, null);
-			htmlViwer.showAsOkDialog();
+			displayHtmlWarningDialog(findToReplace, replacementForStr1, html);
 		}
 		catch (Exception e)
 		{
 			logException(e);
 		}
+	}
+
+	public static void displayHtmlWarningDialog(String messageAsHtml)
+	{
+		HtmlViewPanel htmlViwer = new HtmlViewPanel(getMainWindow(), EAM.text("Warning"), messageAsHtml, null);
+		htmlViwer.showAsOkDialog();
 	}
 	
 	public static void showHtmlMessageOkDialog(String messageFileName, String title) throws Exception
