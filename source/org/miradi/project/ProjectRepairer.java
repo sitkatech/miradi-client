@@ -289,15 +289,18 @@ public class ProjectRepairer
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
-			if (diagramLink.isGroupBoxLink())
-				continue;
-			
-			FactorLink factorLink = diagramLink.getWrappedFactorLink();
-			if (TextBox.is(factorLink.getFromFactorRef()) || TextBox.is(factorLink.getToFactorRef()))
+			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+			if (TextBox.is(fromDiagramFactor.getWrappedORef()) || TextBox.is(toDiagramFactor.getWrappedORef()))
 			{
 				removeFromAllDiagramObjects(diagramLink);
+				ORef refForDiagramLinkToBeDeleted = diagramLink.getRef();
 				getProject().deleteObject(diagramLink);
-				getProject().deleteObject(factorLink);
+				FactorLink factorLink = diagramLink.getWrappedFactorLink();
+				
+				EAM.logDebug("A diagram link to a text box was deleted " + refForDiagramLinkToBeDeleted);
+				if (factorLink != null)
+					getProject().deleteObject(factorLink);
 			}
 		}
 	}
