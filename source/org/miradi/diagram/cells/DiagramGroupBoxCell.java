@@ -115,7 +115,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			saveLocationAndSize(location, newSize);
 		
 		updateFromDiagramFactor();
-		model.toBackGroupBox(new Object[] {this});
+		model.sortLayers();
 	}
 
 	private void saveLocationAndSize(Point location, Dimension size)
@@ -184,7 +184,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	public void factorAdded(DiagramModelEvent event)
 	{
-		model.toBackGroupBox(new Object[] {this});
+		model.sortLayers();
 	}
 
 	public void factorChanged(DiagramModelEvent event)

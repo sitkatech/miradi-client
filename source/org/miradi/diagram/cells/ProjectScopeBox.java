@@ -143,7 +143,7 @@ public class ProjectScopeBox extends EAMGraphCell implements DiagramModelListene
 		Hashtable nest = new Hashtable();
 		nest.put(this, getAttributes());
 		model.edit(nest, null, null, null);
-		model.toBack(new Object[] {this});
+		model.sortLayers();
 	}
 	
 	/*TODO: should change MultilineCellRenderer and this method to use the same component to display html 
