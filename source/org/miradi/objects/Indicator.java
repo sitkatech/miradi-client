@@ -369,7 +369,11 @@ public class Indicator extends BaseObject
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_PRIORITY = "Priority";
+	
+	//FIXME: The following is not actually stored on disk for Indicator any more
+	// See Strategy, Measurement, and overall Project Viability which use the same string
 	public static final String TAG_STATUS = "Status";
+	
 	public final static String TAG_TASK_IDS = "TaskIds";
 	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
