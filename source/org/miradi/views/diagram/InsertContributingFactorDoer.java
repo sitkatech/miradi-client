@@ -53,7 +53,7 @@ public class InsertContributingFactorDoer extends InsertFactorDoer
 			warnNotContributingFactor();
 	}
 
-	void warnNotContributingFactor()
+	private void warnNotContributingFactor()
 	{
 		EAM.notifyDialog(EAM.text("Text|This is a Direct Threat because it is linked to a Target"));
 	}
