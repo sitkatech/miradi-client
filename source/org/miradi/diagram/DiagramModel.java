@@ -495,7 +495,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		if(shouldScopeBoxBeVisible != getGraphLayoutCache().isVisible(getProjectScopeBox()))
 			getGraphLayoutCache().setVisible(getProjectScopeBox(), shouldScopeBoxBeVisible);
 		
-		toFront(topLayerCells.toArray());
+		sortLayers();
 	}	
 	
 	private void updateVisibilityOfSingleFactor(ORef diagramFactorRef) throws Exception
@@ -960,34 +960,9 @@ abstract public class DiagramModel extends DefaultGraphModel
 		}
 		
 		getProjectScopeBox().autoSurroundTargets();
-		toBackScopeBox();
+		sortLayers();
 	}
 
-	@Override
-	public void toBack(Object[] cells)
-	{
-		EAM.logVerbose("DiagramModel.toBack() was called");
-		sortLayers();
-	}
-	
-	@Override
-	public void toFront(Object[] cells)
-	{
-		EAM.logVerbose("DiagramModel.toFront() was called");
-		sortLayers();
-	}
-	
-	public void toBackGroupBox(Object[] groupBoxesToBack)
-	{
-		toBack(groupBoxesToBack);
-		toBackScopeBox();
-	}
-	
-	public void toBackScopeBox()
-	{
-		toBack(new Object[] {getProjectScopeBox()});
-	}
-	
 	public Vector getAllGroupBoxCells()
 	{
 		Vector allGroupBoxCells = new Vector();
