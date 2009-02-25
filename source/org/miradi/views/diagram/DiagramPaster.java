@@ -670,7 +670,8 @@ abstract public class DiagramPaster
 		ORefList stressRefsWithoutRating = computeStressRefsWithoutThreatStressRating(factorLink);
 		for (int i = 0; i < stressRefsWithoutRating.size(); ++i)
 		{
-			ORef newThreatStressRatingRef = new LinkCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i));
+			ORef threatRef = factorLink.getFromFactorRef();
+			ORef newThreatStressRatingRef = new LinkCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i), threatRef);
 			CommandSetObjectData appendThreatStressRating = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, newThreatStressRatingRef);
 			getProject().executeCommand(appendThreatStressRating);
 		}
@@ -753,7 +754,8 @@ abstract public class DiagramPaster
 	{
 		BaseId oldThreatStressRatingId = json.getId(ThreatStressRating.TAG_ID);
 		ORef newStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef);
+		ORef threatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef, threatRef);
 		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
 		getOldToNewObjectRefMap().put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
 		return newThreatStressRating;

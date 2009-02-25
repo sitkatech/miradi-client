@@ -23,9 +23,10 @@ import java.util.HashMap;
 
 public class CreateThreatStressRatingParameter extends CreateObjectParameter
 {
-	public CreateThreatStressRatingParameter(ORef stressRefToUse)
+	public CreateThreatStressRatingParameter(ORef stressRefToUse, ORef threatRefToUse)
 	{
 		stressRef = stressRefToUse;
+		threatRef = threatRefToUse;
 	}
 	
 	public ORef getStressRef()
@@ -33,13 +34,20 @@ public class CreateThreatStressRatingParameter extends CreateObjectParameter
 		return stressRef;
 	}
 	
+	public ORef getThreatRef()
+	{
+		return threatRef;
+	}
+	
 	public String getFormatedDataString()
 	{
 		HashMap dataPairs = new HashMap();
 		dataPairs.put("StressRef", stressRef);
+		dataPairs.put("ThreatRef", threatRef);
 		
 		return formatDataString(dataPairs);
 	}
 
 	private ORef stressRef;
+	private ORef threatRef;
 }

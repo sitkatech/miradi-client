@@ -34,7 +34,8 @@ public class TestThreatStressRating extends ObjectTestCase
 	public void testFields() throws Exception
 	{
 		ORef stressRef = new ORef(33, new BaseId(30));
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+		ORef threatRef = new ORef(20, new BaseId(200));
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 		verifyFields(ObjectType.THREAT_STRESS_RATING, extraInfo);
 	}
 }
