@@ -154,6 +154,7 @@ import org.miradi.project.TestTNCViabilityFormula;
 import org.miradi.project.TestTargetPool;
 import org.miradi.project.TestTextBoxPool;
 import org.miradi.project.TestThreatReductionResultPool;
+import org.miradi.project.TestThreatStressRatingPool;
 import org.miradi.questions.TestChoiceItem;
 import org.miradi.questions.TestChoiceQuestion;
 import org.miradi.ratings.TestRatingChoice;
@@ -250,6 +251,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestStressBasedThreatFormula.class));
 		suite.addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));
 		suite.addTest(new TestSuite(TestGroupBoxPool.class));
+		suite.addTest(new TestSuite(TestThreatStressRatingPool.class));
 		
 		//questions package
 		suite.addTest(new TestSuite(TestChoiceItem.class));
