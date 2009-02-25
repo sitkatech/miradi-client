@@ -12,9 +12,12 @@
 	<property name="version.full" value="${version.main}${version.minor}"/>
 	<property name="version.langpack" value="${version.main}" />
   
-    <!-- module name  -->
-    <property name="source.cvs.module"  value="trunk"/>
-    <property name="binaries.cvs.module"  value="trunk"/>
+	<property environment="env"/>
+	<echo message="${env.WORKSPACE}" />
+
+	<!-- module name  -->
+    <property name="source.cvs.module"  value="${env.WORKSPACE}"/>
+    <property name="binaries.cvs.module"  value="${env.WORKSPACE}"/>
 	
 	<!-- directories -->
 	<property name="build.dir" value="${source.cvs.module}/build"/>
