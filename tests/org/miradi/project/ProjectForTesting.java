@@ -197,9 +197,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return threatStressRating;
 	}
 	
-	public ThreatStressRating createAndPopulateThreatStressRating(ORef stressRef) throws Exception
+	public ThreatStressRating createAndPopulateThreatStressRating(ORef stressRef, ORef threatRef) throws Exception
 	{
-		ThreatStressRating threatStressRating = createThreatStressRating(stressRef);
+		ThreatStressRating threatStressRating = createThreatStressRating(stressRef, threatRef);
 		populateThreatStressRating(threatStressRating);
 		
 		return threatStressRating;
@@ -330,12 +330,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ThreatStressRating createThreatStressRating() throws Exception
 	{
 		Stress stress = createAndPopulateStress();
-		return createThreatStressRating(stress.getRef());
+		Cause threat = createAndPopulateThreat();
+		return createThreatStressRating(stress.getRef(), threat.getRef());
 	}
 
-	private ThreatStressRating createThreatStressRating(ORef stressRef) throws Exception
+	private ThreatStressRating createThreatStressRating(ORef stressRef, ORef threatRef) throws Exception
 	{
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType(), extraInfo);
 		
 		setObjectData(threatStressRatingRef, ThreatStressRating.TAG_IS_ACTIVE, BooleanData.BOOLEAN_TRUE);
@@ -473,7 +474,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList threatStressRatingRefs = new ORefList();
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
-			ORef threatStressRatingRef = createAndPopulateThreatStressRating(stressRefs.get(refIndex)).getRef();
+			ORef threatRef = directThreatLink.getFromFactorRef();
+			ORef threatStressRatingRef = createAndPopulateThreatStressRating(stressRefs.get(refIndex), threatRef).getRef();
 			threatStressRatingRefs.add(threatStressRatingRef);	
 		}
 		

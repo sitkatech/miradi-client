@@ -316,13 +316,15 @@ public class LinkCreator
 	
 	public void createAndAddThreatStressRatingsFromTarget(ORef FactorLinkRef, ORef targetRef) throws Exception
 	{
+		FactorLink factorLink = FactorLink.find(getProject(), FactorLinkRef);
 		ORefList threatStressRatingRefs = new ORefList();
 		Target target = (Target) project.findObject(targetRef);
 		ORefList stressRefs = target.getStressRefs();
 		for (int i = 0; i < stressRefs.size(); ++i)
 		{			
 			ORef stressRef = stressRefs.get(i);
-			ORef threatStressRatingRef = createThreatStressRating(stressRef);
+			ORef threatRef = factorLink.getFromFactorRef();
+			ORef threatStressRatingRef = createThreatStressRating(stressRef, threatRef);
 			threatStressRatingRefs.add(threatStressRatingRef);
 		}
 		
@@ -330,9 +332,9 @@ public class LinkCreator
 		project.executeCommand(setThreatStressRatingRefs);
 	}
 
-	public ORef createThreatStressRating(ORef stressRef) throws CommandFailedException
+	public ORef createThreatStressRating(ORef stressRef, ORef threatRef) throws CommandFailedException
 	{
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 		CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
 		project.executeCommand(createThreatStressRating);
 		

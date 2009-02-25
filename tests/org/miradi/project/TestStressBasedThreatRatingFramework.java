@@ -100,14 +100,14 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	{
 		Stress stress = getProject().createAndPopulateStress();
 		assertEquals("wrong stress rating?" , 3, stress.calculateStressRating());
-		
-		ThreatStressRating threatStressRating = getProject().createAndPopulateThreatStressRating(stress.getRef());
+	
+		Cause threat = getProject().createCause();
+		ThreatStressRating threatStressRating = getProject().createAndPopulateThreatStressRating(stress.getRef(), threat.getRef());
 		assertEquals("wrong threat stress rating?" , 3, threatStressRating.calculateThreatRating());
 		
 		Target target = getProject().createTarget();
 		target.setData(Target.TAG_STRESS_REFS, new ORefList(stress.getRef()).toString());
 		
-		Cause threat = getProject().createCause();
 		ORef directThreatLinkRef = getProject().createFactorLink(threat.getRef(), target.getRef());
 		FactorLink directThreatLink = FactorLink.find(getProject(), directThreatLinkRef);
 		directThreatLink.setData(FactorLink.TAG_THREAT_STRESS_RATING_REFS, new ORefList(threatStressRating.getRef()).toString());

@@ -676,7 +676,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 		FactorLinkSet targetLinks = ConproXmlExporter.getThreatTargetFactorLinks(getProject(), Target.find(getProject(), targetRef));
 		for(FactorLink factorLink : targetLinks)
 		{			
-			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef);
+			ORef threatRef = factorLink.getFromFactorRef();
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 			ORef threatStressRatingRef = getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
 			ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
 			threatStressRatingRefs.add(threatStressRatingRef);

@@ -105,7 +105,7 @@ public class ListAllFields
 		
 		if(type == ThreatStressRating.getObjectType())
 		{
-			return new CreateThreatStressRatingParameter(ORef.INVALID);
+			return new CreateThreatStressRatingParameter(ORef.INVALID, ORef.INVALID);
 		}
 		
 		return null;

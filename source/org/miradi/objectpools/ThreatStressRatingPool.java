@@ -19,10 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectpools;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ThreatStressRating;
@@ -38,6 +42,18 @@ public class ThreatStressRatingPool extends EAMNormalObjectPool
 	public ThreatStressRating find(BaseId id)
 	{
 		return (ThreatStressRating)findObject(id);
+	}
+	
+	public Vector<ThreatStressRating> getRelatedThreatStressRatings(ORef targetRef, ORef threatRef)
+	{
+		Vector<ThreatStressRating> threatStressRatings = new Vector();
+		ORefList allThreatStressRatingRefs = getRefList();
+		for (int index = 0; index < allThreatStressRatingRefs.size(); ++index)
+		{
+			//FIXME finish this method and its test
+		}
+		
+		return threatStressRatings;
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception

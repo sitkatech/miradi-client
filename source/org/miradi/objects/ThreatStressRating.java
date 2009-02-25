@@ -44,6 +44,7 @@ public class ThreatStressRating extends BaseObject
 		
 		clear();
 		setData(TAG_STRESS_REF, extraInfo.getStressRef().toString());
+		setData(TAG_THREAT_REF, extraInfo.getThreatRef().toString());
 	}
 	
 	public ThreatStressRating(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
@@ -53,7 +54,7 @@ public class ThreatStressRating extends BaseObject
 
 	public CreateObjectParameter getCreationExtraInfo()
 	{
-		return new CreateThreatStressRatingParameter(getStressRef());
+		return new CreateThreatStressRatingParameter(getStressRef(), getThreatRef());
 	}
 	
 	public boolean isActive()
@@ -110,6 +111,11 @@ public class ThreatStressRating extends BaseObject
 		return stressRef.getRawRef();
 	}
 	
+	public ORef getThreatRef()
+	{
+		return threatRef.getRawRef();
+	}
+	
 	public ChoiceItem getContribution()
 	{
 		return new StressContributionQuestion().findChoiceByCode(contribution.toString());
@@ -151,12 +157,14 @@ public class ThreatStressRating extends BaseObject
 		contribution = new ChoiceData(TAG_CONTRIBUTION, getQuestion(StressContributionQuestion.class));
 		irreversibility = new ChoiceData(TAG_IRREVERSIBILITY, getQuestion(StressIrreversibilityQuestion.class));
 		stressRef = new ORefData(TAG_STRESS_REF);
+		threatRef = new ORefData(TAG_THREAT_REF);
 		isActive = new BooleanData(TAG_IS_ACTIVE);
 		pseudoThreatRating = new PseudoQuestionData(PSEUDO_TAG_THREAT_RATING, new ThreatStressRatingChoiceQuestion());
 		
 		addField(TAG_CONTRIBUTION, contribution);
 		addField(TAG_IRREVERSIBILITY, irreversibility);
 		addNoClearField(TAG_STRESS_REF, stressRef);
+		addNoClearField(TAG_THREAT_REF, threatRef);
 		addField(TAG_IS_ACTIVE, isActive);
 		addField(PSEUDO_TAG_THREAT_RATING, pseudoThreatRating);
 	}
@@ -166,12 +174,14 @@ public class ThreatStressRating extends BaseObject
 	public static final String TAG_CONTRIBUTION = "Contribution";
 	public static final String TAG_IRREVERSIBILITY = "Irreversibility";
 	public static final String TAG_STRESS_REF = "StressRef";
+	public static final String TAG_THREAT_REF = "ThreatRef";
 	public static final String TAG_IS_ACTIVE = "IsActive";
 	public static final String PSEUDO_TAG_THREAT_RATING = "PseudoThreatRating";
 		
 	private ChoiceData contribution;
 	private ChoiceData irreversibility;
 	private ORefData stressRef;
+	private ORefData threatRef;
 	private BooleanData isActive;
 	private PseudoQuestionData pseudoThreatRating;
 	

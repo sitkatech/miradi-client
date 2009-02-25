@@ -83,6 +83,7 @@ import org.miradi.objectpools.TargetPool;
 import org.miradi.objectpools.TaskPool;
 import org.miradi.objectpools.TextBoxPool;
 import org.miradi.objectpools.ThreatReductionResultPool;
+import org.miradi.objectpools.ThreatStressRatingPool;
 import org.miradi.objectpools.ViewPool;
 import org.miradi.objectpools.WcpaProjectDataPool;
 import org.miradi.objectpools.WcsProjectDataPool;
@@ -100,6 +101,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
 import org.miradi.objects.WcpaProjectData;
@@ -254,6 +256,11 @@ public class Project
 	public ThreatReductionResultPool getThreatReductionResultPool()
 	{
 		 return (ThreatReductionResultPool) getPool(ObjectType.THREAT_REDUCTION_RESULT);
+	}
+	
+	public ThreatStressRatingPool getThreatStressRatingPool()
+	{
+		return (ThreatStressRatingPool) getPool(ThreatStressRating.getObjectType());
 	}
 	
 	public StrategyPool getStrategyPool()
