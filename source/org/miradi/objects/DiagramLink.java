@@ -356,7 +356,7 @@ public class DiagramLink extends BaseObject
 		return StressNamesAsHTML;
 	}
 	
-	public String[] getRelevantStressNames()
+	private String[] getRelevantStressNames()
 	{
 		Vector<String> allStressNames = new Vector();
 		DiagramLink[] diagramLinks = getSelfOrGroupBoxChildren();
