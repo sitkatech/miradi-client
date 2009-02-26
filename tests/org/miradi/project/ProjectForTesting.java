@@ -474,7 +474,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList threatStressRatingRefs = new ORefList();
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
-			ORef threatRef = directThreatLink.getFromFactorRef();
+			ORef threatRef = directThreatLink.getUpstreamThreatRef();
 			ORef threatStressRatingRef = createAndPopulateThreatStressRating(stressRefs.get(refIndex), threatRef).getRef();
 			threatStressRatingRefs.add(threatStressRatingRef);	
 		}
