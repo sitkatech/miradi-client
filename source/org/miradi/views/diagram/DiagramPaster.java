@@ -670,7 +670,7 @@ abstract public class DiagramPaster
 		ORefList stressRefsWithoutRating = computeStressRefsWithoutThreatStressRating(factorLink);
 		for (int i = 0; i < stressRefsWithoutRating.size(); ++i)
 		{
-			ORef threatRef = factorLink.getFromFactorRef();
+			ORef threatRef = factorLink.getUpstreamThreatRef();
 			ORef newThreatStressRatingRef = new LinkCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i), threatRef);
 			CommandSetObjectData appendThreatStressRating = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, newThreatStressRatingRef);
 			getProject().executeCommand(appendThreatStressRating);

@@ -323,7 +323,7 @@ public class LinkCreator
 		for (int i = 0; i < stressRefs.size(); ++i)
 		{			
 			ORef stressRef = stressRefs.get(i);
-			ORef threatRef = factorLink.getFromFactorRef();
+			ORef threatRef = factorLink.getUpstreamThreatRef();
 			ORef threatStressRatingRef = createThreatStressRating(stressRef, threatRef);
 			threatStressRatingRefs.add(threatStressRatingRef);
 		}

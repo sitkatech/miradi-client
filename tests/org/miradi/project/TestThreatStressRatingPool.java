@@ -19,7 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.util.Vector;
+
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objectpools.ThreatStressRatingPool;
+import org.miradi.objects.FactorLink;
+import org.miradi.objects.ThreatStressRating;
 
 public class TestThreatStressRatingPool extends TestCaseWithProject
 {
@@ -30,14 +35,13 @@ public class TestThreatStressRatingPool extends TestCaseWithProject
 	
 	public void testGetRelatedThreatStressRatings() throws Exception 
 	{
-		//FIXME uncomment and finish
-//		FactorLink threatLink1 = getProject().createAndPopulateDirectThreatLink();
-//		FactorLink threatLink2 = getProject().createAndPopulateDirectThreatLink();
-//		ThreatStressRatingPool threatStressRatingPool = getProject().getThreatStressRatingPool();
-//		
-//		assertEquals("wrong TSR count?", 2, threatStressRatingPool.getORefList().size());
-//		
-//		Vector<ThreatStressRating> relatedThreatStressRatings = threatStressRatingPool.getRelatedThreatStressRatings(threatLink1.getFromFactorRef(), threatLink2.getToFactorRef());
-//		assertEquals("wrong related TSR count", 1, relatedThreatStressRatings.size());
+		FactorLink threatLink1 = getProject().createAndPopulateDirectThreatLink();
+		FactorLink threatLink2 = getProject().createAndPopulateDirectThreatLink();
+		ThreatStressRatingPool threatStressRatingPool = getProject().getThreatStressRatingPool();
+		
+		assertEquals("wrong TSR count?", 4, threatStressRatingPool.getORefList().size());
+		
+		Vector<ThreatStressRating> relatedThreatStressRatings = threatStressRatingPool.getRelatedThreatStressRatings(threatLink1.getFromFactorRef(), threatLink2.getToFactorRef());
+		assertEquals("wrong related TSR count", 1, relatedThreatStressRatings.size());
 	}
 }

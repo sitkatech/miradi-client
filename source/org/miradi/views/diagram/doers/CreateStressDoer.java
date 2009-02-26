@@ -52,7 +52,7 @@ public class CreateStressDoer extends CreateAnnotationDoer
 		FactorLinkSet directThreatTargetLinks = target.getThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatTargetLinks)
 		{
-			ORef threatRef = factorLink.getFromFactorRef();
+			ORef threatRef = factorLink.getUpstreamThreatRef();
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedStressRef, threatRef);
 			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
 			project.executeCommand(createThreatStressRating);
