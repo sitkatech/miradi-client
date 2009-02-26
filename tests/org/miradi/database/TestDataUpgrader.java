@@ -148,6 +148,86 @@ public class TestDataUpgrader extends EAMTestCase
 		return objectsDir;
 	}
 	
+	public void testAddThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
+	{
+		File jsonDir = createJsonDir();
+
+		String threat1JsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1235494694166\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Factor\",\"Id\":138}";
+		String threat2JsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1235585672950\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Factor\",\"Id\":211}";
+		String threat3JsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1235647452805\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Factor\",\"Id\":219}";
+		
+		String target1JsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[209,208]}\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"1\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1235641758575\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"{\\\"Ids\\\":[207]}\",\"Label\":\"New Target\",\"Id\":210,\"CurrentStatusJustification\":\"\"}";
+		String target2JsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[181,182]}\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":33,\\\"ObjectId\\\":177}]}\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"1\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1235641775829\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"{\\\"Ids\\\":[183]}\",\"Label\":\"New Target\",\"Id\":97,\"CurrentStatusJustification\":\"\"}";
+
+		String bidiFactorLinkWithOneThreatStressRatingJsonString = "{\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":219}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"1\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":97}\", \"WhenOverride\":\"\",\"TimeStampModified\":\"1235647727389\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":34,\\\"ObjectId\\\":178}]}\",\"Id\":227,\"Label\":\"\"}";
+		   String factorLinkWithOneThreatStressRatingJsonString  = "{\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":97}\" ,\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\" ,\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":138}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1235641775838\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":34,\\\"ObjectId\\\":178}]}\",\"Id\":140,\"Label\":\"\"}";
+		String factorLinkWithNoThreatStressRatingJsonString      = "{\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":210}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\" ,\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":211}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1235641758581\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":217,\"Label\":\"\"}";
+		
+		String threatStressRatingJsonString = "{\"WhenOverride\":\"\",\"IsActive\":\"1\",\"TimeStampModified\":\"1235566196548\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"Contribution\":\"2\",\"Label\":\"\",\"Id\":178,\"StressRef\":\"{\\\"ObjectType\\\":33,\\\"ObjectId\\\":177}\",\"WhoOverrideRefs\":\"\",\"Irreversibility\":\"2\"}";
+
+		int[] causeIds = {138, 211, 219,};
+		final int CAUSE_TYPE = 20;
+		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threat1JsonString, threat2JsonString, threat3JsonString, });
+
+		int[] targetIds = {210, 97};
+		final int TARGET_TYPE = 22;
+		createObjectFiles(jsonDir, TARGET_TYPE, targetIds, new String[]{target1JsonString, target2JsonString, });
+		
+		int[] factorLinkIds = {227, 140, 217, };
+		final int FACTOR_LINK_TYPE = 6;
+		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{bidiFactorLinkWithOneThreatStressRatingJsonString, factorLinkWithOneThreatStressRatingJsonString, factorLinkWithNoThreatStressRatingJsonString, });
+		
+		int[] threatStressRatingIds = {178,}; 
+		final int THREAT_STRESS_RATING_TYPE = 34;
+		File threatStressRatingDir = DataUpgrader.createObjectsDir(jsonDir, THREAT_STRESS_RATING_TYPE);
+		File threatStressRatingManifestFile = createManifestFile(threatStressRatingDir, threatStressRatingIds);
+		assertTrue(threatStressRatingManifestFile.exists());
+		createObjectFile(threatStressRatingJsonString, threatStressRatingIds[0], threatStressRatingDir);
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion37();
+		
+		File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(threatStressRatingIds[0]));
+		String threatStressRatingFileContent = readFile(threatStressRatingFile);
+		EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject(threatStressRatingFileContent);
+		ORef threatRef = threatStressRatingJson.getRef("ThreatRef");
+		assertEquals("wrong threat ref in threat stress rating?", new ORef(20, new BaseId(138)), threatRef);
+		
+		File factorLinkDir = DataUpgrader.getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
+		File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(factorLinkIds[0]));
+		String factorLinkFileContent = readFile(factorLinkJsonFile);
+		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(factorLinkFileContent);
+		assertFalse("contains Threat Stress Rating ref field?", factorLinkJson.has("ThreatStressRatingRefs"));
+	}
+	
+	public void testGetThreatLinkRef() throws Exception
+	{
+		String bidiThreatLink = "{\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":219}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"1\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":97}\", \"WhenOverride\":\"\",\"TimeStampModified\":\"1235647727389\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":34,\\\"ObjectId\\\":178}]}\",\"Id\":227,\"Label\":\"\"}";
+		   String threatLink  = "{\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":97}\" ,\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\" ,\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":138}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1235641775838\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":34,\\\"ObjectId\\\":178}]}\",\"Id\":140,\"Label\":\"\"}";
+		String nonThreatLink  = "{\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":210}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\" ,\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":211}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1235641758581\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":217,\"Label\":\"\"}";
+		
+		verifyThreatLinkRef(bidiThreatLink, new ORef(20, new BaseId(219)));
+		verifyThreatLinkRef(threatLink, new ORef(20, new BaseId(138)));
+		verifyThreatLinkRef(nonThreatLink, ORef.INVALID);
+	}
+	
+	private void verifyThreatLinkRef(String jsonString, ORef expectedRef) throws Exception
+	{
+		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(jsonString);
+		assertEquals("wrong threat link Ref", expectedRef, DataUpgrader.getThreatLinkRef(factorLinkJson));
+	}
+	
+	private void createObjectFiles(File jsonDir, final int objectType, int[] objectIds, String[] jsonStrings)	throws Exception
+	{
+		File objectsDir = DataUpgrader.createObjectsDir(jsonDir, objectType);
+		File manifestFile = createManifestFile(objectsDir, objectIds);
+		assertTrue(manifestFile.exists());
+		for (int index = 0; index < jsonStrings.length; ++index)
+		{
+			createObjectFile(jsonStrings[index], objectIds[index], objectsDir);
+		}
+	}
+	
 	public void testMoveFactorsToSpecificDirs() throws Exception
 	{
 		File jsonDir = createJsonDir();

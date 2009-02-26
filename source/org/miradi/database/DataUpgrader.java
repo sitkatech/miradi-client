@@ -39,9 +39,11 @@ import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -200,11 +202,20 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 35)
 				upgradeToVersion36();
+			
+			if (readDataVersion(getTopDirectory()) == 36)
+				upgradeToVersion37();
 		}
 		finally 
 		{
 			migrationLock.close();
 		}			
+	}
+
+	public void upgradeToVersion37() throws Exception
+	{
+		addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks();
+		writeVersion(37);
 	}
 
 	public void upgradeToVersion36() throws Exception
@@ -218,6 +229,101 @@ public class DataUpgrader extends FileBasedProjectServer
 		writeVersion(35);
 	}
 	
+	private void addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		final int FACTOR_LINK_TYPE = 6;
+		File factorLinkDir = getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
+		if (! factorLinkDir.exists())
+			return;
+		
+		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
+		if (! factorLinkManifestFile.exists())
+			return;
+		
+		final int THREAT_STRESS_RATING_TYPE = 34;
+		File threatStressRatingDir = getObjectsDir(jsonDir, THREAT_STRESS_RATING_TYPE);
+		if (!threatStressRatingDir.exists())
+			return;
+		
+		File threatStressRatingManifestFile = new File(factorLinkDir, "manifest");
+		if (! threatStressRatingManifestFile.exists())
+			return;
+		
+		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
+		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
+		for (int i = 0; i < factorLinkIds.length; ++i)
+		{
+			BaseId thisId = factorLinkIds[i];
+			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisId.asInt()));
+			EnhancedJsonObject factorLinkJson = readFile(factorLinkJsonFile);
+			ORef threatRef = getThreatLinkRef(factorLinkJson);
+			if (!threatRef.isInvalid())
+			{
+				addThreatRefToThreatStressRatings(threatStressRatingDir, factorLinkJson, threatRef);
+				removeThreatStressRatingField(factorLinkJsonFile, factorLinkJson);
+			}
+		}
+	}
+	
+	private void addThreatRefToThreatStressRatings(File threatStressRatingDir,EnhancedJsonObject factorLinkJson, ORef threatRef) throws Exception
+	{
+		ORefList threatStressRatingRefsForLink = factorLinkJson.getRefList("ThreatStressRatingRefs");
+		for (int index = 0; index < threatStressRatingRefsForLink.size(); ++index)
+		{
+			BaseId threatStressRatingId = threatStressRatingRefsForLink.get(index).getObjectId();
+			File threatStressRatingJsonFile = new File(threatStressRatingDir, Integer.toString(threatStressRatingId.asInt()));
+			EnhancedJsonObject threatStressRatingJson = readFile(threatStressRatingJsonFile);
+			threatStressRatingJson.put("ThreatRef", threatRef.toString());
+			writeJson(threatStressRatingJsonFile, threatStressRatingJson);
+		}
+	}
+	
+	private void removeThreatStressRatingField(File factorLinkJsonFile, EnhancedJsonObject factorLinkJson) throws Exception
+	{
+		factorLinkJson.remove("ThreatStressRatingRefs");
+		writeJson(factorLinkJsonFile, factorLinkJson);
+	}
+	
+	public static ORef getThreatLinkRef(EnhancedJsonObject factorLinkJson)
+	{
+		ORef fromRef = factorLinkJson.getRef("FromRef");
+		ORef toRef = factorLinkJson.getRef("ToRef");
+		if (isThreatToTarget(fromRef, toRef))
+			return fromRef;
+		
+		String isBidirectionalAsString = factorLinkJson.getString("BidirectionalLink");
+		if (isThreatToTarget(toRef, fromRef) && asBoolean(isBidirectionalAsString))
+			return toRef;
+		
+		return ORef.INVALID;
+	}
+	
+	public static boolean asBoolean(String booleanAsString)
+	{
+		if (booleanAsString.length() == 0)
+			return false;
+		
+		if (booleanAsString.equals(BooleanData.BOOLEAN_FALSE))
+			return false;
+		
+		if (booleanAsString.equals(BooleanData.BOOLEAN_TRUE))
+			return true;
+		
+		throw new RuntimeException("Invalid boolean value :" + booleanAsString);
+	}
+	
+	private static boolean isThreatToTarget(ORef threatRef, ORef targetRef)
+	{
+		if (!Cause.is(threatRef.getObjectType()))
+			return false;
+		
+		if (!Target.is(targetRef.getObjectType()))
+			return false;
+		
+		return true;
+	}
+
 	private void moveFactorsToSpecificDirs() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
