@@ -21,6 +21,7 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
@@ -34,12 +35,18 @@ public class ThreatStressRatingHelper
 		project = projectToUse;
 	}
 	
-	public Vector<ThreatStressRating> getRelatedThreatStressRatings(Target target, Cause threat)
+	public Vector<ThreatStressRating> getRelatedThreatStressRatings(ORef threatRef, ORef targetRef)
 	{
+		Target target = Target.find(getProject(), targetRef);
+		ORefList stressRefs = target.getStressRefs();
+		Cause threat = Cause.find(getProject(), threatRef);
+		ORefList threatStressRatingReferrerRefs = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		Vector<ThreatStressRating> threatStressRatings = new Vector();
-		ORefList allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefList();
-		for (int index = 0; index < allThreatStressRatingRefs.size(); ++index)
+		for (int index = 0; index < threatStressRatingReferrerRefs.size(); ++index)
 		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingReferrerRefs.get(index));
+			if (stressRefs.contains(threatStressRating.getStressRef()))
+				threatStressRatings.add(threatStressRating);
 		}
 		
 		return threatStressRatings;
