@@ -17,13 +17,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.project;
+package org.miradi.utils;
 
 import org.miradi.main.TestCaseWithProject;
 
-public class TestThreatStressRatingPool extends TestCaseWithProject
+public class TestThreatStressRatingHelper extends TestCaseWithProject
 {
-	public TestThreatStressRatingPool(String name)
+	public TestThreatStressRatingHelper(String name)
 	{
 		super(name);
 	}
