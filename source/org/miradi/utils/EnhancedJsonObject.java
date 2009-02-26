@@ -29,6 +29,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 
 public class EnhancedJsonObject extends JSONObject
 {
@@ -231,6 +232,11 @@ public class EnhancedJsonObject extends JSONObject
 	public ORef getRef(String tag)
 	{
 		return ORef.createFromString(getString(tag));
+	}
+	
+	public ORefList getRefList(String tag) throws Exception
+	{
+		return new ORefList(getString(tag));
 	}
 	
 	public BaseId optId(String tag)
