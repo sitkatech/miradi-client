@@ -36,6 +36,12 @@ public class ThreatStressRatingHelper
 		project = projectToUse;
 	}
 	
+	public ORefList getRelatedThreatStressRatingRefs(FactorLink threatLink) throws Exception
+	{
+		Vector<ThreatStressRating> threatStressRatings = getRelatedThreatStressRatings(threatLink);
+		return new ORefList(threatStressRatings.toArray(new ThreatStressRating[0]));
+	}
+	
 	public Vector<ThreatStressRating> getRelatedThreatStressRatings(FactorLink threatLink) throws Exception
 	{
 		if (threatLink.isThreatTargetLink())
