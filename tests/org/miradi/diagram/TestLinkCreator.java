@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.diagram;
 
+import java.util.Vector;
+
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
@@ -34,6 +36,8 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.ThreatStressRating;
+import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
 
 
@@ -77,7 +81,9 @@ public class TestLinkCreator extends TestCaseWithProject
 	
 		linkCreator.createAndAddThreatStressRatingsFromTarget(diagramLink.getWrappedRef(), diagramTarget.getWrappedORef());
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
-		assertEquals("wrong threat stress rating count?", 2, factorLink.getThreatStressRatingRefs().size());
+		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
+		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(factorLink);
+		assertEquals("wrong threat stress rating count?", 2, threatStressRatings.size());
 	}
 	
 	public void testAreGroupBoxOwnedFactorsLinked() throws Exception
