@@ -662,12 +662,11 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importCodeField(stressNode, STRESS_SEVERITY, stressRef, Stress.TAG_SEVERITY, getCodeMapHelper().getConProToMiradiRatingMap());
 			importCodeField(stressNode, STRESS_SCOPE, stressRef, Stress.TAG_SCOPE, getCodeMapHelper().getConProToMiradiRatingMap());
 			stressRefs.add(stressRef);
+			setData(targetRef, Target.TAG_STRESS_REFS, stressRefs);
 			
 			createThreatStressRatings(targetRef, stressRef);
 			populateThreatStressRatings(stressNode, targetRef, stressRef);
 		}
-		
-		setData(targetRef, Target.TAG_STRESS_REFS, stressRefs);
 	}
 	
 
@@ -678,10 +677,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{			
 			ORef threatRef = factorLink.getUpstreamThreatRef();
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
-			ORef threatStressRatingRef = getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
-			ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
-			threatStressRatingRefs.add(threatStressRatingRef);
-			setData(factorLink.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
+			getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
 		}
 	}
 

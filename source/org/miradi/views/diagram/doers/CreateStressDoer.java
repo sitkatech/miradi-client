@@ -55,10 +55,7 @@ public class CreateStressDoer extends CreateAnnotationDoer
 			ORef threatRef = factorLink.getUpstreamThreatRef();
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedStressRef, threatRef);
 			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-			project.executeCommand(createThreatStressRating);
-			
-			CommandSetObjectData setLinkThreatStressRatingRefs = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, createThreatStressRating.getObjectRef());
-			project.executeCommand(setLinkThreatStressRatingRefs);			
+			project.executeCommand(createThreatStressRating);			
 		}
 	}
 

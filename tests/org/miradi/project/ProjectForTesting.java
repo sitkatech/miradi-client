@@ -471,15 +471,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateDirectThreatLink(FactorLink directThreatLink, ORefList stressRefs) throws Exception
 	{
-		ORefList threatStressRatingRefs = new ORefList();
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
 			ORef threatRef = directThreatLink.getUpstreamThreatRef();
-			ORef threatStressRatingRef = createAndPopulateThreatStressRating(stressRefs.get(refIndex), threatRef).getRef();
-			threatStressRatingRefs.add(threatStressRatingRef);	
+			createAndPopulateThreatStressRating(stressRefs.get(refIndex), threatRef).getRef();	
 		}
 		
-		fillObjectUsingCommand(directThreatLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs.toString());
 		fillObjectUsingCommand(directThreatLink, FactorLink.getCommentTagForMode(this), "Some FactorLink comment");
 	}
 	

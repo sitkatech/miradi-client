@@ -38,6 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Utility;
 
 public class FactorLink extends BaseObject
@@ -302,7 +303,16 @@ public class FactorLink extends BaseObject
 	
 	public ORefList getThreatStressRatingRefs()
 	{
-		return threatStressRatingRefs.getORefList();
+		try
+		{
+			ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
+			return helper.getRelatedThreatStressRatingRefs(this);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new ORefList();
+		}
 	}
 	
 	public static boolean is(BaseObject object)

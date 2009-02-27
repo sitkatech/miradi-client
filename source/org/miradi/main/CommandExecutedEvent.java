@@ -52,6 +52,15 @@ public class CommandExecutedEvent
 		return isCommand(CommandCreateObject.COMMAND_NAME);
 	}
 
+	public boolean isDeleteCommandForThisType(int objectType)
+	{
+		if (!isDeleteObjectCommand())
+			return false;
+		
+		CommandDeleteObject deleteCommand = (CommandDeleteObject) getCommand();
+		return deleteCommand.getObjectType() == objectType;		
+	}
+
 	public boolean isDeleteObjectCommand()
 	{
 		return isCommand(CommandDeleteObject.COMMAND_NAME);
