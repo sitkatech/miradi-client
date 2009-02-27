@@ -176,6 +176,9 @@ abstract public class DiagramPaster
 		{
 			if (ThreatStressRating.TAG_STRESS_REF.equals(tag))
 				return getCommandToFixRef(pastedObjectMap, newObject, tag);
+				
+			if (ThreatStressRating.TAG_THREAT_REF.equals(tag))
+				return getCommandToFixRef(pastedObjectMap, newObject, tag);
 		}
 		
 		if (DiagramFactor.getObjectType() == newObject.getType())
@@ -558,26 +561,11 @@ abstract public class DiagramPaster
 				newObject = createThreatStressRatings(json);
 			
 			if (newObject != null)
-			{
 				fixObjectRefs(getOldToNewObjectRefMap(), newObject, json);
-				clearThreatStressRatingFieldForResultsChainPastes(newObject);
-			}
 		}
 		
-		Vector newFactorLinks = new Vector(getOldToNewObjectRefMap().values());
+		Vector<ORef> newFactorLinks = new Vector(getOldToNewObjectRefMap().values());
 		ensureRatingListMatchesStressList(newFactorLinks);
-	}
-
-	private void clearThreatStressRatingFieldForResultsChainPastes(BaseObject newObject) throws CommandFailedException
-	{
-		if (isPastingIntoConceptualModel())
-			return;
-		
-		if (!FactorLink.is(newObject.getType()))
-			return;
-		
-		CommandSetObjectData clearThreatStressRatingList = new CommandSetObjectData(newObject.getRef(), FactorLink.TAG_THREAT_STRESS_RATING_REFS, "");
-		getProject().executeCommand(clearThreatStressRatingList);
 	}
 	
 	protected void createNewDiagramLinks() throws Exception
@@ -635,15 +623,15 @@ abstract public class DiagramPaster
 		return new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
 	}
 
-	private void ensureRatingListMatchesStressList(Vector newFactorLinks) throws Exception
+	private void ensureRatingListMatchesStressList(Vector<ORef> newFactorLinks) throws Exception
 	{
 		for (int i = 0; i < newFactorLinks.size(); ++i)
 		{
-			ORef newFactorLinkRef = (ORef) newFactorLinks.get(i);
-			if (newFactorLinkRef.getObjectType() != FactorLink.getObjectType())
+			ORef newObjectRef = newFactorLinks.get(i);
+			if (!FactorLink.is(newObjectRef))
 				continue;
 	
-			FactorLink factorLink = FactorLink.find(getProject(), newFactorLinkRef);
+			FactorLink factorLink = FactorLink.find(getProject(), newObjectRef);
 			if (!factorLink.isThreatTargetLink())
 				continue;
 			
@@ -671,9 +659,7 @@ abstract public class DiagramPaster
 		for (int i = 0; i < stressRefsWithoutRating.size(); ++i)
 		{
 			ORef threatRef = factorLink.getUpstreamThreatRef();
-			ORef newThreatStressRatingRef = new LinkCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i), threatRef);
-			CommandSetObjectData appendThreatStressRating = CommandSetObjectData.createAppendORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, newThreatStressRatingRef);
-			getProject().executeCommand(appendThreatStressRating);
+			new LinkCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i), threatRef);
 		}
 	}
 
@@ -714,9 +700,6 @@ abstract public class DiagramPaster
 
 	private void deleteThreatStressRating(FactorLink factorLink, ThreatStressRating threatStressRating) throws Exception
 	{
-		CommandSetObjectData removeThreatStressRating = CommandSetObjectData.createRemoveORefCommand(factorLink, FactorLink.TAG_THREAT_STRESS_RATING_REFS, threatStressRating.getRef());
-		getProject().executeCommand(removeThreatStressRating);
-		
 		new LinkDeletor(getProject()).deleteThreatStressRating(threatStressRating);
 	}
 
