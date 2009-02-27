@@ -26,7 +26,6 @@ import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
@@ -181,22 +180,6 @@ public class FactorLink extends BaseObject
 		 return (((Factor) objectManager.findObject(getFromFactorRef())).isTarget());
 	}
 	
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_THREAT_STRESS_RATING_REFS))
-			return true;
-			
-		return false;
-	}
-	
-	public int getAnnotationType(String tag)
-	{
-		if (tag.equals(TAG_THREAT_STRESS_RATING_REFS))
-			return ThreatStressRating.getObjectType();
-		
-		return super.getAnnotationType(tag);
-	}
-
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		Factor fromFactor = (Factor) objectManager.findObject(getFromFactorRef());
@@ -346,7 +329,6 @@ public class FactorLink extends BaseObject
 		fromRef = new ORefData(TAG_FROM_REF);
 		toRef = new ORefData(TAG_TO_REF);
 		bidirectionalLink = new BooleanData(TAG_BIDIRECTIONAL_LINK);
-		threatStressRatingRefs = new ORefListData(TAG_THREAT_STRESS_RATING_REFS);
 		comment = new StringData(TAG_COMMENT);
 		simpleThreatRatingComment = new StringData(TAG_SIMPLE_THREAT_RATING_COMMENT);
 		pseudoThreatRatingBundleValue = new PseudoStringData(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE);
@@ -354,7 +336,6 @@ public class FactorLink extends BaseObject
 		addNoClearField(TAG_FROM_REF, fromRef);
 		addNoClearField(TAG_TO_REF, toRef);
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
-		addField(TAG_THREAT_STRESS_RATING_REFS, threatStressRatingRefs);
 		addField(TAG_COMMENT, comment);
 		addField(TAG_SIMPLE_THREAT_RATING_COMMENT, simpleThreatRatingComment);
 		addField(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, pseudoThreatRatingBundleValue);
@@ -364,7 +345,6 @@ public class FactorLink extends BaseObject
 	public static final String TAG_FROM_REF = "FromRef";
 	public static final String TAG_TO_REF = "ToRef";
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
-	public static final String TAG_THREAT_STRESS_RATING_REFS = "ThreatStressRatingRefs";
 	public static final String TAG_COMMENT = "Comment";
 	public static final String TAG_SIMPLE_THREAT_RATING_COMMENT = "SimpleThreatRatingComment";
 	public static final String PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE = "PseudoThreatRatingBundleValue";
@@ -380,7 +360,6 @@ public class FactorLink extends BaseObject
 	private ORefData fromRef;
 	private ORefData toRef;
 	private BooleanData bidirectionalLink;
-	private ORefListData threatStressRatingRefs;
 	private StringData comment;
 	private StringData simpleThreatRatingComment;
 	private PseudoStringData pseudoThreatRatingBundleValue;
