@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -33,6 +34,14 @@ public class ThreatStressRatingHelper
 	public ThreatStressRatingHelper(Project projectToUse)
 	{
 		project = projectToUse;
+	}
+	
+	public Vector<ThreatStressRating> getRelatedThreatStressRatings(FactorLink threatLink) throws Exception
+	{
+		if (threatLink.isThreatTargetLink())
+			return getRelatedThreatStressRatings(threatLink.getUpstreamThreatRef(), threatLink.getDownstreamTargetRef());
+		
+		return new Vector<ThreatStressRating>();
 	}
 	
 	public Vector<ThreatStressRating> getRelatedThreatStressRatings(ORef threatRef, ORef targetRef)
