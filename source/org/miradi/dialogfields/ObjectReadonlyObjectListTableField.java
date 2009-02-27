@@ -61,7 +61,8 @@ public class ObjectReadonlyObjectListTableField extends ObjectDataInputField
 		{
 			ORefList orefList = new ORefList(newValue);
 			model.setRowObjectRefs(orefList);
-			model.fireTableStructureChanged();			
+			model.fireTableStructureChanged();	
+			table.updateAutomaticRowHeights();
 		}
 		catch (Exception e)
 		{

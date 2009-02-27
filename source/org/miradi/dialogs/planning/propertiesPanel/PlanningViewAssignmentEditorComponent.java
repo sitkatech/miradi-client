@@ -88,8 +88,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		workPlanModel.fireTableDataChanged();
 		budgetModel.fireTableDataChanged();
 		budgetTotalsModel.fireTableDataChanged();
-		
-		restoreSplitters();
 	}
 	
 	private void savePendingEdits()
@@ -98,11 +96,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		workplanTable.stopCellEditing();
 		budgetTable.stopCellEditing();
 		budgetTotalsTable.stopCellEditing();
-	}
-
-	public void restoreSplitters()
-	{
-		// FIXME: Delete this if we don't implement it
 	}
 
 	private void createTables() throws Exception
