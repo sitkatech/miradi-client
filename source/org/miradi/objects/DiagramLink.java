@@ -28,6 +28,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
@@ -44,6 +45,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
+import org.miradi.utils.ThreatStressRatingHelper;
 
 public class DiagramLink extends BaseObject
 {
@@ -362,7 +364,9 @@ public class DiagramLink extends BaseObject
 		DiagramLink[] diagramLinks = getSelfOrGroupBoxChildren();
 		for (int i = 0; i < diagramLinks.length; ++i)
 		{
-			allStressNames.addAll(getStressNames(diagramLinks[i].getWrappedFactorLink()));
+			FactorLink factorLink = diagramLinks[i].getWrappedFactorLink();
+			if (factorLink.isThreatTargetLink())
+				allStressNames.addAll(getStressNames(factorLink));
 		}
 		
 		return allStressNames.toArray(new String[0]);
@@ -386,18 +390,26 @@ public class DiagramLink extends BaseObject
 
 	private Vector<String> getStressNames(FactorLink factorLink)
 	{
-		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
-	
-		Vector<String> stressNames = new Vector();
-		for(int i = 0; i < threatStressRatingRefs.size(); ++i)
+		try
 		{
-			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
-			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
-			if (threatStressRating.isActive())
-				stressNames.add(stress.toString());
+			ThreatStressRatingHelper helper  = new ThreatStressRatingHelper(getProject());
+			Vector<ThreatStressRating> relatedThreatStressRatings = helper.getRelatedThreatStressRatings(factorLink);
+			Vector<String> stressNames = new Vector();
+			for(int index = 0; index < relatedThreatStressRatings.size(); ++index)
+			{
+				ThreatStressRating threatStressRating = relatedThreatStressRatings.get(index);
+				Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
+				if (threatStressRating.isActive())
+					stressNames.add(stress.toString());
+			}
+
+			return stressNames;
 		}
-		
-		return stressNames;
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new Vector<String>();
+		}
 	}
 	
 	public CreateObjectParameter getCreationExtraInfo()
