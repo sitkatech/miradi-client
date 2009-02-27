@@ -154,31 +154,13 @@ public class LinkDeletor
 		if (diagramLinkReferrers.size() != 0)
 			return;
 		
-		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
-		
 		Command[] commandsToClear = project.findObject(ObjectType.FACTOR_LINK, factorLink.getId()).createCommandsToClear();
 		project.executeCommandsWithoutTransaction(commandsToClear);
 		
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, factorLink.getId());
 		project.executeCommand(deleteLinkage);
-		
-		deleteOrphanedThreatStressRatings(threatStressRatingRefs);
 	}
 	
-	private void deleteOrphanedThreatStressRatings(ORefList threatStressRatingRefs) throws CommandFailedException
-	{
-		for (int i = 0; i < threatStressRatingRefs.size(); ++i)
-		{
-			ORef threatStressRatingRef = threatStressRatingRefs.get(i);
-			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingRef);
-			ORefList allReferrers = threatStressRating.findObjectsThatReferToUs();
-			if (allReferrers.size() != 0)
-				continue;
-			
-			deleteThreatStressRating(threatStressRating);
-		}
-	}
-
 	public void deleteThreatStressRating(ThreatStressRating threatStressRating) throws CommandFailedException
 	{
 		Command[] commandsToClear = threatStressRating.createCommandsToClear();
