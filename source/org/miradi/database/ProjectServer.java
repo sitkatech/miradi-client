@@ -267,7 +267,7 @@ abstract public class ProjectServer
 	static public String OBJECT_TYPE = "Type";
 	static public String TAG_VERSION = "Version";
 	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public int DATA_VERSION = 36;
+	static public int DATA_VERSION = 37;
 
 	protected File topDirectory;
 	protected String name;
