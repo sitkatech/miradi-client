@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
@@ -37,6 +39,7 @@ import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.ThreatStressRatingHelper;
 
 public class ThreatStressRatingTableModel extends EditableObjectTableModel implements ColumnTagProvider
 {
@@ -53,12 +56,12 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		try
 		{
 			threatBeingEdited = extractThreat(refs);
+			rebuild(refs);
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
-		rebuild(refs);
 	}
 
 	private Factor extractThreat(ORefList refs) throws Exception
@@ -75,20 +78,20 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		return Cause.findFactor(getProject(), threatRef);
 	}
 
-	private void rebuild(ORefList hierarchyToSelectedRef)
+	private void rebuild(ORefList hierarchyToSelectedRef) throws Exception
 	{
 		ratings = new ThreatStressRating[0];
 		ORef factorLinkRef = hierarchyToSelectedRef.getRefForType(FactorLink.getObjectType());
 		if (factorLinkRef.isInvalid())
 			return;
 
-		FactorLink factorLink = (FactorLink) getProject().findObject(factorLinkRef);
-		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
-		ratings = new ThreatStressRating[threatStressRatingRefs.size()];
-		for (int i = 0; i < threatStressRatingRefs.size(); ++i)
-		{
-			ratings[i] = (ThreatStressRating) getProject().findObject(threatStressRatingRefs.get(i));
-		}
+		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+		if (!factorLink.isThreatTargetLink())
+			return;
+		
+		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
+		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(factorLink);
+		ratings = threatStressRatings.toArray(new ThreatStressRating[0]);
 	}
 
     public Class getColumnClass(int columnIndex) 
