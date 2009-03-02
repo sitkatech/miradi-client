@@ -31,6 +31,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -81,16 +82,13 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 	private void rebuild(ORefList hierarchyToSelectedRef) throws Exception
 	{
 		ratings = new ThreatStressRating[0];
-		ORef factorLinkRef = hierarchyToSelectedRef.getRefForType(FactorLink.getObjectType());
-		if (factorLinkRef.isInvalid())
-			return;
-
-		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
-		if (!factorLink.isThreatTargetLink())
+		ORef threatRef = hierarchyToSelectedRef.getRefForType(Cause.getObjectType());
+		ORef targetRef = hierarchyToSelectedRef.getRefForType(Target.getObjectType());
+		if (threatRef.isInvalid() || targetRef.isInvalid())
 			return;
 		
 		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
-		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(factorLink);
+		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(threatRef, targetRef);
 		ratings = threatStressRatings.toArray(new ThreatStressRating[0]);
 	}
 
