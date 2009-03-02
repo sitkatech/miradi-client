@@ -298,14 +298,8 @@ public class LinkCreator
 		
 		return factorLinkRef;
 	}
-	
-	//TODO rename this and remove TSR from method and also check any other methods in this class to make sure are correctly named
-	public ORef createFactorLinkWithoutThreatStressRatings(ORef fromRef, ORef toRef) throws Exception
-	{
-		return createFactorLink(fromRef, toRef);
-	}
-	
-	private ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws CommandFailedException
+
+	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws CommandFailedException
 	{
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
 		CommandCreateObject createFactorLink = new CommandCreateObject(ObjectType.FACTOR_LINK, extraInfo);

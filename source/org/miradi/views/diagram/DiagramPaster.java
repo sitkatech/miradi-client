@@ -723,7 +723,7 @@ abstract public class DiagramPaster
 		if (linkCreator.linkWasRejected(currentModel, newFromRef, newToRef))
 			return null;
 					
-		ORef factorLinkRef = linkCreator.createFactorLinkWithoutThreatStressRatings(newFromRef, newToRef);
+		ORef factorLinkRef = linkCreator.createFactorLink(newFromRef, newToRef);
 		FactorLink newFactorLink = (FactorLink) getProject().findObject(factorLinkRef);
 		
 		Command[]  commandsToLoadFromJson = newFactorLink.createCommandsToLoadFromJson(json);
