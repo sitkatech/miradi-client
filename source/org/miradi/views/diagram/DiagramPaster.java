@@ -77,6 +77,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 import org.miradi.views.umbrella.ThreatStressRatingCreator;
+import org.miradi.views.umbrella.ThreatStressRatingDeletor;
 
 abstract public class DiagramPaster
 {
@@ -701,7 +702,7 @@ abstract public class DiagramPaster
 
 	private void deleteThreatStressRating(FactorLink factorLink, ThreatStressRating threatStressRating) throws Exception
 	{
-		new LinkDeletor(getProject()).deleteThreatStressRating(threatStressRating);
+		new ThreatStressRatingDeletor(getProject()).deleteThreatStressRating(threatStressRating);
 	}
 
 	private void fixObjectRefs(HashMap pastedObjectMap, BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
