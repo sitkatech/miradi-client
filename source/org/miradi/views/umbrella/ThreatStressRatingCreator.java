@@ -24,7 +24,9 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -39,18 +41,26 @@ public class ThreatStressRatingCreator
 	public void createAndAddThreatStressRatingsFromTarget(ORef FactorLinkRef, ORef targetRef) throws Exception
 	{
 		FactorLink factorLink = FactorLink.find(getProject(), FactorLinkRef);
+		ORef threatRef = factorLink.getUpstreamThreatRef();
+		createAndAddThreatStressRating(targetRef, threatRef);
+	}
+
+	public void createAndAddThreatStressRating(ORef targetRef, ORef threatRef)	throws CommandFailedException
+	{
 		Target target = (Target) project.findObject(targetRef);
 		ORefList stressRefs = target.getStressRefs();
 		for (int i = 0; i < stressRefs.size(); ++i)
 		{			
 			ORef stressRef = stressRefs.get(i);
-			ORef threatRef = factorLink.getUpstreamThreatRef();
 			createThreatStressRating(stressRef, threatRef);
 		}
 	}
 
 	public ORef createThreatStressRating(ORef stressRef, ORef threatRef) throws CommandFailedException
 	{
+		stressRef.ensureType(Stress.getObjectType());
+		threatRef.ensureType(Cause.getObjectType());
+		
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 		CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
 		project.executeCommand(createThreatStressRating);
