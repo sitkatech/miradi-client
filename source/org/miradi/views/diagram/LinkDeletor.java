@@ -35,7 +35,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 
@@ -159,15 +158,6 @@ public class LinkDeletor
 		
 		CommandDeleteObject deleteLinkage = new CommandDeleteObject(ObjectType.FACTOR_LINK, factorLink.getId());
 		project.executeCommand(deleteLinkage);
-	}
-	
-	public void deleteThreatStressRating(ThreatStressRating threatStressRating) throws CommandFailedException
-	{
-		Command[] commandsToClear = threatStressRating.createCommandsToClear();
-		project.executeCommandsWithoutTransaction(commandsToClear);
-		
-		CommandDeleteObject deleteThreatStressRating = new CommandDeleteObject(threatStressRating.getRef());
-		project.executeCommand(deleteThreatStressRating);
 	}
 
 	private Project getProject()
