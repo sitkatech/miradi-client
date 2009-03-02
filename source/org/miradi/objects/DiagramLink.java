@@ -45,7 +45,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
-import org.miradi.utils.ThreatStressRatingHelper;
 
 public class DiagramLink extends BaseObject
 {
@@ -392,15 +391,14 @@ public class DiagramLink extends BaseObject
 	{
 		try
 		{
-			ThreatStressRatingHelper helper  = new ThreatStressRatingHelper(getProject());
-			Vector<ThreatStressRating> relatedThreatStressRatings = helper.getRelatedThreatStressRatings(factorLink);
+			ORef targetRef = factorLink.getDownstreamTargetRef();
+			Target target = Target.find(getProject(), targetRef);
+			ORefList stressRefs = target.getStressRefs(); 
 			Vector<String> stressNames = new Vector();
-			for(int index = 0; index < relatedThreatStressRatings.size(); ++index)
+			for(int index = 0; index < stressRefs.size(); ++index)
 			{
-				ThreatStressRating threatStressRating = relatedThreatStressRatings.get(index);
-				Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
-				if (threatStressRating.isActive())
-					stressNames.add(stress.toString());
+				Stress stress = Stress.find(getProject(), stressRefs.get(index));
+				stressNames.add(stress.toString());
 			}
 
 			return stressNames;
