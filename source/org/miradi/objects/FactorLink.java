@@ -120,6 +120,18 @@ public class FactorLink extends BaseObject
 		return new FactorLinkId(getId().asInt());
 	}
 	
+	public ORef getSafeDownstreamTargetRef()
+	{
+		try
+		{
+			return getDownstreamTargetRef();
+		}
+		catch (Exception e)
+		{
+			return ORef.INVALID;
+		}
+	}
+	
 	public ORef getDownstreamTargetRef() throws Exception
 	{
 		if (getToFactorRef().getObjectType() == Target.getObjectType())

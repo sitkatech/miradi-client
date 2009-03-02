@@ -28,7 +28,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
-import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
@@ -364,8 +363,7 @@ public class DiagramLink extends BaseObject
 		for (int i = 0; i < diagramLinks.length; ++i)
 		{
 			FactorLink factorLink = diagramLinks[i].getWrappedFactorLink();
-			if (factorLink.isThreatTargetLink())
-				allStressNames.addAll(getStressNames(factorLink));
+			allStressNames.addAll(getStressNames(factorLink.getSafeDownstreamTargetRef()));
 		}
 		
 		return allStressNames.toArray(new String[0]);
@@ -387,27 +385,21 @@ public class DiagramLink extends BaseObject
 		return allChildrenFactorLinks.toArray(new DiagramLink[0]);
 	}
 
-	private Vector<String> getStressNames(FactorLink factorLink)
+	private Vector<String> getStressNames(ORef targetRef)
 	{
-		try
-		{
-			ORef targetRef = factorLink.getDownstreamTargetRef();
-			Target target = Target.find(getProject(), targetRef);
-			ORefList stressRefs = target.getStressRefs(); 
-			Vector<String> stressNames = new Vector();
-			for(int index = 0; index < stressRefs.size(); ++index)
-			{
-				Stress stress = Stress.find(getProject(), stressRefs.get(index));
-				stressNames.add(stress.toString());
-			}
-
-			return stressNames;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
+		Target target = Target.find(getProject(), targetRef);
+		if (target == null)
 			return new Vector<String>();
+		
+		ORefList stressRefs = target.getStressRefs(); 
+		Vector<String> stressNames = new Vector();
+		for(int index = 0; index < stressRefs.size(); ++index)
+		{
+			Stress stress = Stress.find(getProject(), stressRefs.get(index));
+			stressNames.add(stress.toString());
 		}
+
+		return stressNames;
 	}
 	
 	public CreateObjectParameter getCreationExtraInfo()
