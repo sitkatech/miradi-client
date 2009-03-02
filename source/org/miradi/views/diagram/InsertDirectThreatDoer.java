@@ -88,7 +88,7 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrerRefs.get(index));
 			ORef targetRef = factorLink.getSafeDownstreamTargetRef();
-			creator.createAndAddThreatStressRating(targetRef, newlyInsertedDiagramFactor.getWrappedORef());
+			creator.createAndAddThreatStressRating(newlyInsertedDiagramFactor.getWrappedORef(), targetRef);
 		}
 	}
 }
