@@ -22,12 +22,17 @@ package org.miradi.views.diagram;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
+import org.miradi.views.umbrella.ThreatStressRatingCreator;
 
 public class InsertDirectThreatDoer extends InsertFactorDoer
 {
+	@Override
 	public boolean isAvailable()
 	{
 		if (!super.isAvailable())
@@ -46,6 +51,7 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		return EAM.text("Label|New Factor");
 	}
 
+	@Override
 	protected void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
 	{
 		super.linkToPreviouslySelectedFactors(newlyInserted, factorsToLinkTo);
@@ -54,6 +60,7 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 			warnNotDirectThreat();
 	}
 
+	@Override
 	protected void notLinkingToAnyFactors() throws CommandFailedException
 	{
 		super.notLinkingToAnyFactors();
@@ -69,6 +76,20 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 	{
 		getCurrentLayerManager().setContributingFactorsVisible(true);
 		getCurrentLayerManager().setDirectThreatsVisible(true);
+	}
+	
+	@Override
+	protected void doExtraWork(DiagramFactor newlyInsertedDiagramFactor) throws Exception
+	{
+		ThreatStressRatingCreator creator = new ThreatStressRatingCreator(getProject());
+		Factor threat = newlyInsertedDiagramFactor.getWrappedFactor();
+		ORefList factorLinkReferrerRefs = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
+		for (int index = 0; index < factorLinkReferrerRefs.size(); ++index)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrerRefs.get(index));
+			ORef targetRef = factorLink.getSafeDownstreamTargetRef();
+			creator.createAndAddThreatStressRating(targetRef, newlyInsertedDiagramFactor.getWrappedORef());
+		}
 	}
 }
 

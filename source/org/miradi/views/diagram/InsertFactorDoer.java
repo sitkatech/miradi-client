@@ -101,6 +101,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			else
 				notLinkingToAnyFactors();
 			
+			doExtraWork(diagramFactor);
 			selectNewFactor(factorRef);
 			ensureNewFactorIsVisible(diagramFactor);
 			launchPropertiesEditor(diagramFactor);
@@ -310,7 +311,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 	}
 
-	protected void doExtraSetup(DiagramFactor newlyInserteddiagramFactor, FactorCell[] selectedFactorCells) throws Exception
+	protected void doExtraSetup(DiagramFactor newlyInsertedDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
+	{
+	}
+	
+	protected void doExtraWork(DiagramFactor newDiagramFactor) throws Exception
 	{
 	}
 	
