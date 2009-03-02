@@ -52,6 +52,9 @@ public class ThreatStressRatingHelper
 	
 	public Vector<ThreatStressRating> getRelatedThreatStressRatings(ORef threatRef, ORef targetRef)
 	{
+		threatRef.ensureType(Cause.getObjectType());
+		targetRef.ensureType(Target.getObjectType());
+		
 		Target target = Target.find(getProject(), targetRef);
 		ORefList stressRefs = target.getStressRefs();
 		Cause threat = Cause.find(getProject(), threatRef);
