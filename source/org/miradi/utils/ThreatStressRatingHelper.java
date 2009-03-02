@@ -42,7 +42,7 @@ public class ThreatStressRatingHelper
 		return new ORefList(threatStressRatings.toArray(new ThreatStressRating[0]));
 	}
 	
-	public Vector<ThreatStressRating> getRelatedThreatStressRatings(FactorLink threatLink) throws Exception
+	private Vector<ThreatStressRating> getRelatedThreatStressRatings(FactorLink threatLink) throws Exception
 	{
 		if (threatLink.isThreatTargetLink())
 			return getRelatedThreatStressRatings(threatLink.getUpstreamThreatRef(), threatLink.getDownstreamTargetRef());
