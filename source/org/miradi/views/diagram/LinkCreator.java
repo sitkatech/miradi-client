@@ -49,7 +49,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
-import org.miradi.views.umbrella.ThreatStressRatingCreator;
 
 
 //FIXME Examine all the methods and try to make it more uniform, simpler, etc....
@@ -285,18 +284,7 @@ public class LinkCreator
 	
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		return createFactorLinkWithPossibleThreatStressRatings(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
-	}
-
-	public ORef createFactorLinkWithPossibleThreatStressRatings(ORef fromFactorRef, ORef toFactorRef) throws Exception
-	{
-		ORef factorLinkRef = createFactorLink(fromFactorRef, toFactorRef);
-		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
-		//FIXME TSR creation should no longer be the responsibility of FactorLink
-		if (factorLink.isThreatTargetLink())
-			new ThreatStressRatingCreator(getProject()).createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownstreamTargetRef());
-		
-		return factorLinkRef;
+		return createFactorLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 	}
 
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws CommandFailedException
