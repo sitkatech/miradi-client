@@ -75,14 +75,13 @@ public class TestLinkCreator extends TestCaseWithProject
 		Target target = (Target) getProject().findObject(diagramTarget.getWrappedORef());
 		assertEquals("wrong stress count?", 2, target.getStressRefs().size());
 		
-		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(cause, diagramTarget);
+		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(causeDiagramFactor, diagramTarget);
 		DiagramLink diagramLink = (DiagramLink) getProject().findObject(diagramLinkRef);
 	
 		linkCreator.createAndAddThreatStressRatingsFromTarget(diagramLink.getWrappedRef(), diagramTarget.getWrappedORef());
-		FactorLink factorLink = diagramLink.getWrappedFactorLink();
 		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
-		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(factorLink);
+		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(causeDiagramFactor.getWrappedORef(), diagramTarget.getWrappedORef());
 		assertEquals("wrong threat stress rating count?", 2, threatStressRatings.size());
 	}
 	
