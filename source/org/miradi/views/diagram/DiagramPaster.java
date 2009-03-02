@@ -76,6 +76,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
+import org.miradi.views.umbrella.ThreatStressRatingCreator;
 
 abstract public class DiagramPaster
 {
@@ -659,7 +660,7 @@ abstract public class DiagramPaster
 		for (int i = 0; i < stressRefsWithoutRating.size(); ++i)
 		{
 			ORef threatRef = factorLink.getUpstreamThreatRef();
-			new LinkCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i), threatRef);
+			new ThreatStressRatingCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i), threatRef);
 		}
 	}
 

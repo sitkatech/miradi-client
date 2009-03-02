@@ -39,6 +39,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
+import org.miradi.views.umbrella.ThreatStressRatingCreator;
 
 
 public class TestLinkCreator extends TestCaseWithProject
@@ -61,7 +62,6 @@ public class TestLinkCreator extends TestCaseWithProject
 	
 	public void testCreateThreatStressRatingsFromTarget() throws Exception
 	{
-		LinkCreator linkCreator = new LinkCreator(getProject());
 		ORef stressRef1 = getProject().createObject(Stress.getObjectType());
 		ORef stressRef2 = getProject().createObject(Stress.getObjectType());
 		ORefList stressRefList = new ORefList();
@@ -79,7 +79,8 @@ public class TestLinkCreator extends TestCaseWithProject
 		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(causeDiagramFactor, diagramTarget);
 		DiagramLink diagramLink = (DiagramLink) getProject().findObject(diagramLinkRef);
 	
-		linkCreator.createAndAddThreatStressRatingsFromTarget(diagramLink.getWrappedRef(), diagramTarget.getWrappedORef());
+		ThreatStressRatingCreator creator = new ThreatStressRatingCreator(getProject());
+		creator.createAndAddThreatStressRatingsFromTarget(diagramLink.getWrappedRef(), diagramTarget.getWrappedORef());
 		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
 		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(causeDiagramFactor.getWrappedORef(), diagramTarget.getWrappedORef());
 		assertEquals("wrong threat stress rating count?", 2, threatStressRatings.size());

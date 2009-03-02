@@ -34,7 +34,6 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
-import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -49,8 +48,8 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.views.umbrella.ThreatStressRatingCreator;
 
 
 //FIXME Examine all the methods and try to make it more uniform, simpler, etc....
@@ -295,11 +294,12 @@ public class LinkCreator
 		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
 		//FIXME TSR creation should no longer be the responsibility of FactorLink
 		if (factorLink.isThreatTargetLink())
-			createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownstreamTargetRef());
+			new ThreatStressRatingCreator(getProject()).createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownstreamTargetRef());
 		
 		return factorLinkRef;
 	}
 	
+	//TODO rename this and remove TSR from method and also check any other methods in this class to make sure are correctly named
 	public ORef createFactorLinkWithoutThreatStressRatings(ORef fromRef, ORef toRef) throws Exception
 	{
 		return createFactorLink(fromRef, toRef);
@@ -314,28 +314,6 @@ public class LinkCreator
 		return createFactorLink.getObjectRef();
 	}
 	
-	public void createAndAddThreatStressRatingsFromTarget(ORef FactorLinkRef, ORef targetRef) throws Exception
-	{
-		FactorLink factorLink = FactorLink.find(getProject(), FactorLinkRef);
-		Target target = (Target) project.findObject(targetRef);
-		ORefList stressRefs = target.getStressRefs();
-		for (int i = 0; i < stressRefs.size(); ++i)
-		{			
-			ORef stressRef = stressRefs.get(i);
-			ORef threatRef = factorLink.getUpstreamThreatRef();
-			createThreatStressRating(stressRef, threatRef);
-		}
-	}
-
-	public ORef createThreatStressRating(ORef stressRef, ORef threatRef) throws CommandFailedException
-	{
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
-		CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-		project.executeCommand(createThreatStressRating);
-		
-		return createThreatStressRating.getObjectRef();
-	}
-
 	private void createDiagramLinkWithChildren(DiagramObject diagramObject, ORefList allLinkRefs, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
 		CreateDiagramFactorLinkParameter extraInfoWithNoFactorLink = new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
