@@ -292,7 +292,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		if (isThreatToTarget(fromRef, toRef))
 			return fromRef;
 		
-		String isBidirectionalAsString = factorLinkJson.getString("BidirectionalLink");
+		String isBidirectionalAsString = factorLinkJson.optString("BidirectionalLink");
 		if (isThreatToTarget(toRef, fromRef) && asBoolean(isBidirectionalAsString))
 			return toRef;
 		
