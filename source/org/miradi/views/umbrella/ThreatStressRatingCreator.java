@@ -42,10 +42,10 @@ public class ThreatStressRatingCreator
 	{
 		FactorLink factorLink = FactorLink.find(getProject(), FactorLinkRef);
 		ORef threatRef = factorLink.getUpstreamThreatRef();
-		createAndAddThreatStressRating(targetRef, threatRef);
+		createAndAddThreatStressRating(threatRef, targetRef);
 	}
 
-	public void createAndAddThreatStressRating(ORef targetRef, ORef threatRef)	throws CommandFailedException
+	public void createAndAddThreatStressRating(ORef threatRef, ORef targetRef)	throws CommandFailedException
 	{
 		Target target = (Target) project.findObject(targetRef);
 		ORefList stressRefs = target.getStressRefs();
