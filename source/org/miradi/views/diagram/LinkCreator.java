@@ -293,6 +293,7 @@ public class LinkCreator
 	{
 		ORef factorLinkRef = createFactorLink(fromFactorRef, toFactorRef);
 		FactorLink factorLink = (FactorLink) project.findObject(factorLinkRef);
+		//FIXME TSR creation should no longer be the responsibility of FactorLink
 		if (factorLink.isThreatTargetLink())
 			createAndAddThreatStressRatingsFromTarget(factorLinkRef, factorLink.getDownstreamTargetRef());
 		
