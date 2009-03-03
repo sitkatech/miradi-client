@@ -30,7 +30,6 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
@@ -207,15 +206,6 @@ public class FactorLink extends BaseObject
 		Factor fromFactor = (Factor) objectManager.findObject(getFromFactorRef());
 		Factor toFactor = (Factor) objectManager.findObject(getToFactorRef());
 		return new CreateFactorLinkParameter(fromFactor.getRef(), toFactor.getRef());
-	}
-
-	public String getPseudoData(String fieldTag)
-	{
-		//FIXME ThreatStressRating - this psuedo field needs to go away
-		if (fieldTag.equals(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE))
-			return new ThreatTargetVirtualLink(getProject()).getCalculatedThreatRatingBundleValue(getSafeUpstreamThreatRef(), getSafeDownstreamTargetRef());
-			
-		return super.getPseudoData(fieldTag);
 	}
 	
 	public static String getCommentTagForMode(Project project)
