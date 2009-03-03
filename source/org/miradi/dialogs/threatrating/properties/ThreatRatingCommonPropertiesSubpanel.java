@@ -20,13 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.properties;
 
 import org.miradi.actions.Actions;
+import org.miradi.dialogfields.ThreatStressRatingValueReadonlyField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.ThreatRatingQuestion;
 
 public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 {
@@ -34,7 +35,10 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 		
-		addField(createReadOnlyChoiceField(FactorLink.getObjectType(), FactorLink.PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE, new ThreatRatingQuestion()));
+		rollupField = new ThreatStressRatingValueReadonlyField(getProject());
+		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("Target-Threat Rating"));
+		add(rollupLabel);
+		add(rollupField.getComponent());
 		
 		updateFieldsFromProject();
 	}
@@ -45,8 +49,22 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 		{
-			setObjectRefs(getSelectedRefs());
+			updateFields();
 		}
+	}
+	
+	@Override
+	public void updateFieldsFromProject()
+	{
+		super.updateFieldsFromProject();
+		
+		updateFields();
+	}
+	
+	private void updateFields()
+	{
+		setObjectRefs(getSelectedRefs());
+		rollupField.setObjectRefs(getSelectedRefs());
 	}
 	
 	public String getPanelDescription()
@@ -54,4 +72,5 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		return "ThreatRatingCommonPropertiesSubpanel";
 	}
 	
+	private ThreatStressRatingValueReadonlyField rollupField;
 }
