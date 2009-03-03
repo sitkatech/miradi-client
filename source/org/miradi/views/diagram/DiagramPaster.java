@@ -678,7 +678,10 @@ abstract public class DiagramPaster
 
 	private ORefList extractThreatStressRatingStresses(FactorLink factorLink)
 	{
-		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+		ORef targetRef = factorLink.getSafeDownstreamTargetRef();
+		ORef threatRef = factorLink.getSafeUpstreamThreatRef();
+		ORefList threatStressRatingRefs = threatTargetVirtualLink.getThreatStressRatingRefs(threatRef, targetRef);
 		ORefList extractedStressRefs = new ORefList();
 		for (int i = 0; i < threatStressRatingRefs.size();++i)
 		{
