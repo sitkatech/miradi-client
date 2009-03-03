@@ -49,7 +49,7 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		super.commandExecuted(event);
 		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
 		{
-			updateFields();
+			setObjectRefs(getSelectedRefs());
 		}
 	}
 	
@@ -58,12 +58,6 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 	{
 		super.updateFieldsFromProject();
 		
-		updateFields();
-	}
-	
-	private void updateFields()
-	{
-		setObjectRefs(getSelectedRefs());
 		rollupField.setObjectRefs(getSelectedRefs());
 	}
 	
