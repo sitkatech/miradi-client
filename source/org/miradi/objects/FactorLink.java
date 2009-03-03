@@ -76,6 +76,8 @@ public class FactorLink extends BaseObject
 	public ORefList getAllObjectsToDeepCopy()
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		//FIXME threat stress rating - TSRs should not be a part of a FL deep copy.
+		//they should be part of factor deep copy,  need to discuss options
 		deepObjectRefsToCopy.addAll(getThreatStressRatingRefs());
 		
 		return deepObjectRefsToCopy;
