@@ -23,6 +23,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Vector;
@@ -609,19 +610,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		
 		return targetLinks;
 	}
-	
-	private FactorLinkSet getThreatLinksWithThreatStressRatings(Target target) throws Exception
-	{
-		FactorLinkSet linksWithThreatStressRatings = new FactorLinkSet();
-		FactorLinkSet targetLinks = getThreatTargetFactorLinks(getProject(), target);
-		for(FactorLink factorLink : targetLinks)
-		{
-			if (factorLink.getThreatStressRatingRefs().size() > 0)
-				linksWithThreatStressRatings.add(factorLink);
-		}
-		
-		return linksWithThreatStressRatings;
-	}
 
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{
@@ -698,45 +686,30 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, NESTED_TARGETS);
 	}
 
-	private void writeThreatStressRatings(UnicodeWriter out, Target target, Stress stress) throws Exception
+	private void writeThreatStressRatings(UnicodeWriter out, Stress stress) throws Exception
 	{
-		FactorLinkSet targetLinkSet = getThreatLinksWithThreatStressRatings(target);
-		Vector<FactorLink> targetLinks = new Vector<FactorLink>();
-		targetLinks.addAll(targetLinkSet);
-		Collections.sort(targetLinks, new BaseObjectByRefSorter());
-		
+		ORefList referringRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		referringRefs.sort(new ThreatStressRatingSorterByThreatRef());
 		writeStartElement(out, THREAT_STRESS_RATINGS);
-		for (int index = 0; index < targetLinks.size(); ++index)
-		{
-			writeThreatStressRatings(out, targetLinks.get(index), stress);
-		}
-		writeEndElement(out, THREAT_STRESS_RATINGS);
-	}
-
-	private void writeThreatStressRatings(UnicodeWriter out, FactorLink factorLink, Stress stress) throws Exception
-	{
-		ORefList threatStressRatingRefs = factorLink.getThreatStressRatingRefs();
-		threatStressRatingRefs.sort();
-		for (int refIndex = 0; refIndex < threatStressRatingRefs.size(); ++refIndex)
+		for (int refIndex = 0; refIndex < referringRefs.size(); ++refIndex)
 		{
 			
-			ORef threatStressRatingRef = threatStressRatingRefs.get(refIndex);
+			ORef threatStressRatingRef = referringRefs.get(refIndex);
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
-			if (!threatStressRating.getStressRef().equals(stress.getRef()))
-				continue;
-			
 			if (!threatStressRating.isActive())
 				continue;
 			
 			writeStartElement(out, THREAT_STRESS_RATING);
 			
-			writeElement(out, THREAT_ID, factorLink.getUpstreamThreatRef().getObjectId().toString());
+			writeElement(out, THREAT_ID, threatStressRating.getThreatRef().getObjectId().toString());
 			writeOptionalRatingCodeElement(out, CONTRIBUTING_RANK, threatStressRating, ThreatStressRating.TAG_CONTRIBUTION);
 			writeOptionalRatingCodeElement(out, IRREVERSIBILITY_RANK, threatStressRating, ThreatStressRating.TAG_IRREVERSIBILITY);
 			writeOptionalRatingCodeElement(out, STRESS_THREAT_TO_TARGET_RANK, threatStressRating.calculateThreatRating());
 			
 			writeEndElement(out, THREAT_STRESS_RATING);
 		}
+		
+		writeEndElement(out, THREAT_STRESS_RATINGS);
 	}
 
 	private void writeStresses(UnicodeWriter out, Target target) throws Exception
@@ -752,7 +725,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalRatingCodeElement(out, STRESS_SEVERITY, stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, STRESS_SCOPE, stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, STRESS_TO_TARGET_RANK, stress.getCalculatedStressRating());
-			writeThreatStressRatings(out, target, stress);
+			writeThreatStressRatings(out, stress);
 			
 			writeEndElement(out, STRESS);
 		}
@@ -1107,6 +1080,19 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			newProject.close();
 		}
 	}	
+	
+	class ThreatStressRatingSorterByThreatRef implements Comparator<ORef>
+	{
+		public int compare(ORef threatStressRatingRef1, ORef threatStressRatingRef2)
+		{
+			ThreatStressRating threatStressRating1 = ThreatStressRating.find(getProject(), threatStressRatingRef1);
+			ThreatStressRating threatStressRating2 = ThreatStressRating.find(getProject(), threatStressRatingRef2);
+			ORef threatRef1 = threatStressRating1.getThreatRef();
+			ORef threatRef2 = threatStressRating2.getThreatRef();
+			
+			return threatRef1.compareTo(threatRef2);
+		}	
+	}
 	
 	private ConProMiradiCodeMapHelper codeMapHelper;
 	private static final String UNSPECIFIED_LABEL = "[Unspecified]";
