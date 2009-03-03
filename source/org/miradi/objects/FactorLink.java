@@ -246,7 +246,7 @@ public class FactorLink extends BaseObject
 	
 	
 	//FIXME ThreatStressRating - this needs to be moved somewhere else
-	public ORefList getThreatStressRatingRefs()
+	private ORefList getThreatStressRatingRefs()
 	{
 		try
 		{
