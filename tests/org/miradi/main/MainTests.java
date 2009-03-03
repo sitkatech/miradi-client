@@ -120,6 +120,7 @@ import org.miradi.objects.TestTaggedObjectSet;
 import org.miradi.objects.TestTask;
 import org.miradi.objects.TestTextBox;
 import org.miradi.objects.TestThreatRatingBundle;
+import org.miradi.objects.TestThreatRatingCommentsData;
 import org.miradi.objects.TestThreatReductionResult;
 import org.miradi.objects.TestThreatStressRating;
 import org.miradi.objects.TestTncProjectData;
@@ -369,6 +370,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestReportTemplate.class));
 		suite.addTest(new TestSuite(TestTaggedObjectSet.class));
 		suite.addTest(new TestSuite(TestTableSettings.class));
+		suite.addTest(new TestSuite(TestThreatRatingCommentsData.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

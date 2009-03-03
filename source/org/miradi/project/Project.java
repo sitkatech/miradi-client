@@ -101,6 +101,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
+import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ViewData;
@@ -618,6 +619,8 @@ public class Project
 		createDefaultProjectDataObject(TncProjectData.getObjectType());
 		createDefaultProjectDataObject(FosProjectData.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
+		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
+		
 		ensureAllConceptualModelPagesHaveLabels();
 		ensureAllDiagramFactorsAreVisible();
 	}

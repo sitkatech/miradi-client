@@ -321,6 +321,9 @@ abstract public class BaseObject
 			case ObjectType.TABLE_SETTINGS:
 				return new TableSettings(objectManager, idAsInt, json);
 				
+			case ObjectType.THREAT_RATING_COMMENTS_DATA:
+				return new ThreatRatingCommentsData(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
