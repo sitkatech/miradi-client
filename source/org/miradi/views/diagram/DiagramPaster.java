@@ -50,6 +50,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
@@ -690,7 +691,10 @@ abstract public class DiagramPaster
 
 	private void deleteThreatStressRefsWithoutAStress(FactorLink factorLink) throws Exception
 	{
-		ORefList threatStressRefs = factorLink.getThreatStressRatingRefs();
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+		ORef threatRef = factorLink.getSafeUpstreamThreatRef();
+		ORef targetRef = factorLink.getSafeDownstreamTargetRef();
+		ORefList threatStressRefs = threatTargetVirtualLink.getThreatStressRatingRefs(threatRef, targetRef);
 		for(int i = 0; i < threatStressRefs.size(); ++i)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRefs.get(i));
