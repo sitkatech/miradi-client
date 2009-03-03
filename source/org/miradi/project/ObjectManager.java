@@ -76,6 +76,7 @@ import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objectpools.TargetPool;
 import org.miradi.objectpools.TaskPool;
 import org.miradi.objectpools.TextBoxPool;
+import org.miradi.objectpools.ThreatRatingCommentsDataPool;
 import org.miradi.objectpools.ThreatReductionResultPool;
 import org.miradi.objectpools.ThreatStressRatingPool;
 import org.miradi.objectpools.TncProjectDataPool;
@@ -150,6 +151,7 @@ public class ObjectManager
 		addNormalPool(new ReportTemplatePool(ida));
 		addNormalPool(new TaggedObjectSetPool(ida));
 		addNormalPool(new TableSetttingsPool(ida));
+		addNormalPool(new ThreatRatingCommentsDataPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -408,6 +410,7 @@ public class ObjectManager
 		loadPool(ObjectType.REPORT_TEMPLATE);
 		loadPool(ObjectType.TAGGED_OBJECT_SET);
 		loadPool(ObjectType.TABLE_SETTINGS);
+		loadPool(ObjectType.THREAT_RATING_COMMENTS_DATA);
 	}
 
 	private void loadPool(int type) throws IOException, ParseException, Exception
