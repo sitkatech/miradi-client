@@ -31,7 +31,7 @@ import javax.swing.border.Border;
 
 import org.martus.swing.UiComboBox;
 import org.miradi.commands.CommandSetThreatRating;
-import org.miradi.dialogfields.ThreatStressRatingValueReadonlyField;
+import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -63,7 +63,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		PanelTitleLabel irreversibilityLabel = new PanelTitleLabel(EAM.text("Irreversibility"));
 		irreversibilityComponent = createDropdown(getIrreversibilityId());
 		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("<html><b>Summary<br>Target-Threat<br>Rating"));
-		rollupField = new ThreatStressRatingValueReadonlyField(getProject());
+		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
 		add(rollupField);
 
 		add(createGridCell(scopeLabel, scopeComponent));
@@ -230,5 +230,5 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 	private ChoiceItemComboBox scopeComponent;
 	private ChoiceItemComboBox severityComponent;
 	private ChoiceItemComboBox irreversibilityComponent;
-	private ThreatStressRatingValueReadonlyField rollupField;
+	private ThreatStressRatingValueReadonlyComponent rollupField;
 }
