@@ -61,11 +61,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			//FIXME ThreatStressRating - this hsould go away, but check logic below for null values
-			if (!areLinked(row, column))
-				return null;
-			
-			
 			Factor threat = getDirectThreat(row);
 			Target target = getTarget(column);
 			ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
