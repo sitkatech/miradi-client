@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Vector;
-
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
@@ -32,13 +30,11 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.project.threatrating.SimpleThreatRatingFramework;
-import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.ThreatStressRatingHelper;
-import org.miradi.utils.Utility;
 
 public class FactorLink extends BaseObject
 {
@@ -132,6 +128,18 @@ public class FactorLink extends BaseObject
 		}
 	}
 	
+	public ORef getSafeUpstreamThreatRef()
+	{
+		try
+		{
+			return getUpstreamThreatRef();
+		}
+		catch (Exception e)
+		{
+			return ORef.INVALID;
+		}
+	}
+	
 	public ORef getDownstreamTargetRef() throws Exception
 	{
 		if (getToFactorRef().getObjectType() == Target.getObjectType())
@@ -201,73 +209,11 @@ public class FactorLink extends BaseObject
 
 	public String getPseudoData(String fieldTag)
 	{
+		//FIXME ThreatStressRating - this psuedo field needs to go away
 		if (fieldTag.equals(PSEUDO_TAG_THREAT_RATING_BUNDLE_VALUE))
-			return getCalculatedThreatRatingBundleValue();
+			return new ThreatTargetVirtualLink(getProject()).getCalculatedThreatRatingBundleValue(getSafeUpstreamThreatRef(), getSafeDownstreamTargetRef());
 			
 		return super.getPseudoData(fieldTag);
-	}
-	
-	public String getCalculatedThreatRatingBundleValue()
-	{
-		try
-		{
-			int calculatedThreatRatingBundleValue = calculateThreatRatingBundleValue();
-			if (calculatedThreatRatingBundleValue == 0)
-				return "";
-			
-			return Integer.toString(calculatedThreatRatingBundleValue);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return EAM.text("Error");
-		}
-	}
-	
-	public int calculateThreatRatingBundleValue() throws Exception
-	{
-		if(getProject().isStressBaseMode())
-			return calculateStressBasedThreatRating();
-
-		return calculateSimpleThreatRating();
-	}
-
-	private int calculateSimpleThreatRating() throws Exception
-	{
-		SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
-		ORef threatRef = getUpstreamThreatRef();
-		ORef targetRef = getDownstreamTargetRef();
-		ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
-		ValueOption valueOption = framework.getBundleValue(bundle);
-		return valueOption.getNumericValue();
-	}
-
-	private int calculateStressBasedThreatRating()
-	{
-		ORefList ratingRefs = getThreatStressRatingRefs();
-		Vector<Integer> ratingBundleValues = new Vector();
-		for (int i = 0; i < ratingRefs.size(); ++i)
-		{
-			ThreatStressRating rating = ThreatStressRating.find(getObjectManager(), ratingRefs.get(i));
-			if (rating.isActive())
-				ratingBundleValues.add(rating.calculateThreatRating());
-		}
-
-		return getProject().getStressBasedThreatFormula().getHighestRatingRule(Utility.convertToIntArray(ratingBundleValues));
-	}
-	
-	public ORef findThreatStressRatingReferringToStress(ORef stressRef) throws Exception
-	{
-		ORefList threatStressRatingRefsToUse = getThreatStressRatingRefs();
-		for(int index = 0; index < threatStressRatingRefsToUse.size(); ++index)
-		{
-			ORef threatStressRatingRef = threatStressRatingRefsToUse.get(index);
-			ThreatStressRating threatStressRating = (ThreatStressRating) getProject().findObject(threatStressRatingRef);
-			if (stressRef.equals(threatStressRating.getStressRef()))
-				return threatStressRatingRef;
-		}
-		
-		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
 	}
 	
 	public static String getCommentTagForMode(Project project)
@@ -296,6 +242,8 @@ public class FactorLink extends BaseObject
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
+	
+	//FIXME ThreatStressRating - this needs to be moved somewhere else
 	public ORefList getThreatStressRatingRefs()
 	{
 		try

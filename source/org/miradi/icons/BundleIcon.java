@@ -29,6 +29,7 @@ import java.awt.RenderingHints;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -46,6 +47,7 @@ public class BundleIcon extends AbstractMiradiIcon
 	public void setLink(FactorLink linkToUse)
 	{
 		link = linkToUse;
+		threatTargetVirualLink = new ThreatTargetVirtualLink(getProject());
 	}
 
 	public void paintIcon(Component c, Graphics g, int x, int y)
@@ -61,7 +63,7 @@ public class BundleIcon extends AbstractMiradiIcon
 		ThreatRatingQuestion question = getThreatRatingQuestion();
 		try
 		{
-			int value = link.calculateThreatRatingBundleValue();
+			int value = threatTargetVirualLink.calculateThreatRatingBundleValue(link.getUpstreamThreatRef(), link.getDownstreamTargetRef());
 			g.setColor(question.findChoiceByNumericValue(value).getColor());
 			g.fillRect(summaryX, 0, getIconWidth() - summaryX, getIconHeight());
 			
@@ -126,4 +128,5 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private FactorLink link;
 	private AppPreferences preferences;
+	private ThreatTargetVirtualLink threatTargetVirualLink;
 }

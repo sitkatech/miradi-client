@@ -22,6 +22,7 @@ package org.miradi.project;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
@@ -96,7 +97,8 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		populateWithThreatStressRating(factorLink, stress.getRef());
 		populateWithThreatStressRating(factorLink, stress.getRef());
 		
-		assertEquals(4, factorLink.calculateThreatRatingBundleValue());
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+		assertEquals(4, threatTargetVirtualLink.calculateThreatRatingBundleValue(factorLink.getUpstreamThreatRef(), targetRef));
 	}
 
 	private void populateWithThreatStressRating(FactorLink factorLink, ORef stressRef) throws Exception

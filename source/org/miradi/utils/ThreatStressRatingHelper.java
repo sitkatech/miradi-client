@@ -50,6 +50,12 @@ public class ThreatStressRatingHelper
 		return new Vector<ThreatStressRating>();
 	}
 	
+	public ORefList getRelatedThreatStressRatingRefs(ORef threatRef, ORef targetRef)
+	{
+		Vector<ThreatStressRating> threatStressRatings = getRelatedThreatStressRatings(threatRef, targetRef);
+		return new ORefList(threatStressRatings.toArray(new ThreatStressRating[0]));
+	}
+	
 	public Vector<ThreatStressRating> getRelatedThreatStressRatings(ORef threatRef, ORef targetRef)
 	{
 		threatRef.ensureType(Cause.getObjectType());
