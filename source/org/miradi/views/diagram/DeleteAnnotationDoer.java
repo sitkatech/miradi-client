@@ -37,6 +37,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -237,10 +238,11 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	{
 		Vector commands = new Vector();
 		Target target = (Target) owner;
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(project);
 		FactorLinkSet directThreatLinkSet = target.getThreatTargetFactorLinks();
 		for(FactorLink factorLink : directThreatLinkSet)
 		{
-			ORef threatStressRatingStressReferrer = factorLink.findThreatStressRatingReferringToStress(stressRef);
+			ORef threatStressRatingStressReferrer = threatTargetVirtualLink.findThreatStressRatingReferringToStress(factorLink.getUpstreamThreatRef(), target.getRef(), stressRef);
 			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingStressReferrer);
 			commands.addAll(Arrays.asList(threatStressRating.createCommandsToClear()));
 			commands.add(new CommandDeleteObject(threatStressRatingStressReferrer));

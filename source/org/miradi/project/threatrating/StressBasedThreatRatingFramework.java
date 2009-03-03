@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
@@ -104,13 +105,14 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	
 	public int[] calculateSummaryRatingValues(Factor factor) throws Exception
 	{
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
 		ORefList factorLinkReferrers = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
 		Vector<Integer> calculatedSummaryRatingValues = new Vector();
 		for (int i = 0; i < factorLinkReferrers.size(); ++i)
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(i));
 			if (factorLink.isThreatTargetLink())
-				calculatedSummaryRatingValues.add(factorLink.calculateThreatRatingBundleValue());
+				calculatedSummaryRatingValues.add(threatTargetVirtualLink.calculateThreatRatingBundleValue(factorLink.getUpstreamThreatRef(), factorLink.getDownstreamTargetRef()));
 		}
 		
 		return Utility.convertToIntArray(calculatedSummaryRatingValues);

@@ -32,6 +32,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -246,7 +247,7 @@ public class ReportXmlExporter extends XmlExporter
 		writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
 		out.writeln("</ThreatRatingSimple>");
 		
-		writeOutTargetThreatRatingXML(factorLink, out, simpleThreatFramework, bundle);
+		writeOutTargetThreatRatingXML(threatRef, targetRef, out, simpleThreatFramework, bundle);
 		
 		Target target = Target.find(getProject(), targetRef);
 		Cause cause = Cause.find(getProject(), threatRef);
@@ -299,12 +300,12 @@ public class ReportXmlExporter extends XmlExporter
 		return getProject().getStressBasedThreatRatingFramework().get2PrimeSummaryRatingValue(factor);
 	}
 	
-	private void writeOutTargetThreatRatingXML(FactorLink factorLink, UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle) throws IOException, Exception
+	private void writeOutTargetThreatRatingXML(ORef threatRef, ORef targetRef, UnicodeWriter out, SimpleThreatRatingFramework simpleThreatFramework, ThreatRatingBundle bundle) throws IOException, Exception
 	{
-		
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
 		int targetThreatRatingValue = 0;
 		if (getProject().isStressBaseMode())
-			targetThreatRatingValue = factorLink.calculateThreatRatingBundleValue();
+			targetThreatRatingValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
 		else
 			targetThreatRatingValue = simpleThreatFramework.getBundleValue(bundle).getNumericValue();
 

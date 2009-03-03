@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;

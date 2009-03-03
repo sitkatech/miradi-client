@@ -56,6 +56,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
@@ -683,18 +684,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private void populateThreatStressRatings(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
 	{
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
 		NodeList threatStressRatingNodes = getNodes(stressNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
-		
 		for (int nodeIndex = 0; nodeIndex < threatStressRatingNodes.getLength(); ++nodeIndex)
 		{
 			Node threatStressRatingNode = threatStressRatingNodes.item(nodeIndex);
 			
-			ORef threatRef = getNodeAsRef(threatStressRatingNode, THREAT_ID, Cause.getObjectType());
-			Cause threat = Cause.find(getProject(), threatRef);
-			Target target = Target.find(getProject(), targetRef);
-			ORef threatLinkRef  = getProject().getFactorLinkPool().getLinkedRef(threat, target);
-			FactorLink threatLink = FactorLink.find(getProject(), threatLinkRef);
-			ORef threatStressRatingRef = threatLink.findThreatStressRatingReferringToStress(stressRef);
+			ORef threatRef = getNodeAsRef(threatStressRatingNode, THREAT_ID, Cause.getObjectType());			
+			ORef threatStressRatingRef = threatTargetVirtualLink.findThreatStressRatingReferringToStress(threatRef, targetRef, stressRef);
 			
 			importCodeField(threatStressRatingNode, CONTRIBUTING_RANK, threatStressRatingRef, ThreatStressRating.TAG_CONTRIBUTION, getCodeMapHelper().getConProToMiradiRatingMap());
 			importCodeField(threatStressRatingNode, IRREVERSIBILITY_RANK, threatStressRatingRef, ThreatStressRating.TAG_IRREVERSIBILITY, getCodeMapHelper().getConProToMiradiRatingMap());

@@ -22,9 +22,11 @@ package org.miradi.dialogs.threatrating.upperPanel;
 import java.util.Comparator;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
 public class TargetThreatLinkTableModel extends MainThreatTableModel
@@ -59,11 +61,15 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	{
 		try
 		{
+			//FIXME ThreatStressRating - this hsould go away, but check logic below for null values
 			if (!areLinked(row, column))
 				return null;
 			
-			FactorLink factorLink = getFactorLink(row, column);
-			int calculatedValue = factorLink.calculateThreatRatingBundleValue();
+			
+			Factor threat = getDirectThreat(row);
+			Target target = getTarget(column);
+			ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+			int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threat.getRef(), target.getRef());
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
