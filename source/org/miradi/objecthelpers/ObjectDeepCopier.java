@@ -35,7 +35,7 @@ public class ObjectDeepCopier
 		project = projectToUse;
 	}
 	
-	public Vector createDeepCopy(BaseObject objectToDeepCopy)
+	public Vector<String> createDeepCopy(BaseObject objectToDeepCopy)
 	{
 		clear();
 		recursivelyCreateDeepCopy(objectToDeepCopy);
@@ -91,6 +91,6 @@ public class ObjectDeepCopier
 		return project;
 	}
 
-	private Vector allOwnedObjects;
+	private Vector<String> allOwnedObjects;
 	private Project project;
 }
