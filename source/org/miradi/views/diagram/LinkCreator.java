@@ -284,7 +284,10 @@ public class LinkCreator
 	
 	public ORef createFactorLink(DiagramFactor fromDiagramFactor, DiagramFactor toDiagramFactor) throws Exception
 	{
-		return createFactorLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
+		ORef fromFactorRef = fromDiagramFactor.getWrappedORef();
+		ORef toFactorRef = toDiagramFactor.getWrappedORef();
+		
+		return createFactorLink(fromFactorRef, toFactorRef);
 	}
 
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws CommandFailedException
