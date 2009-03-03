@@ -191,7 +191,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		ORefList factorRefs = new ORefList();
 		for (int i = 0; i < factorDeepCopies.size(); ++i)
 		{
-			String jsonAsString = (String) factorDeepCopies.get(i);
+			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int objectToBeFoundType = json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
@@ -262,10 +262,10 @@ public class TransferableMiradiList implements Transferable, Serializable
 	
 	private ORef diagramObjectRefCopiedFrom;
 	private String projectName;
-	private Vector factorDeepCopies;
-	private Vector diagramFactorDeepCopies;
-	private Vector factorLinkDeepCopies;
-	private Vector diagramLinkDeepCopies;
+	private Vector<String> factorDeepCopies;
+	private Vector<String> diagramFactorDeepCopies;
+	private Vector<String> factorLinkDeepCopies;
+	private Vector<String> diagramLinkDeepCopies;
 	private Rectangle rectWithUpperMostLeftMostCorner;
 	
 	static final long serialVersionUID = 1; 
