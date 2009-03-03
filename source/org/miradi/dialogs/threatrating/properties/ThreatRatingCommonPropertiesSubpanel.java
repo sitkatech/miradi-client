@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.properties;
 
 import org.miradi.actions.Actions;
-import org.miradi.dialogfields.ThreatStressRatingValueReadonlyField;
+import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.CommandExecutedEvent;
@@ -35,7 +35,7 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 		
-		rollupField = new ThreatStressRatingValueReadonlyField(getProject());
+		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
 		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("Target-Threat Rating"));
 		add(rollupLabel);
 		add(rollupField.getComponent());
@@ -72,5 +72,5 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		return "ThreatRatingCommonPropertiesSubpanel";
 	}
 	
-	private ThreatStressRatingValueReadonlyField rollupField;
+	private ThreatStressRatingValueReadonlyComponent rollupField;
 }

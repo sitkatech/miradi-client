@@ -43,9 +43,9 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 
-public class ThreatStressRatingValueReadonlyField extends MiradiPanel
+public class ThreatStressRatingValueReadonlyComponent extends MiradiPanel
 {
-	public ThreatStressRatingValueReadonlyField(Project projectToUse)
+	public ThreatStressRatingValueReadonlyComponent(Project projectToUse)
 	{
 		super();
 		
