@@ -97,12 +97,12 @@ public class TransferableMiradiList implements Transferable, Serializable
 		diagramLinkDeepCopies = new Vector();
 	}
 
-	public void storeData(Object[] cells)
+	public void storeData(EAMGraphCell[] cells)
 	{
 		ObjectDeepCopier deepCopier = createObjectDeepCopier();
 		for (int i = 0; i < cells.length; i++) 
 		{
-			EAMGraphCell cell = (EAMGraphCell)cells[i];
+			EAMGraphCell cell = cells[i];
 			if (cell.isFactor())
 				addFactorDeepCopies(deepCopier, cell.getDiagramFactor());
 			
