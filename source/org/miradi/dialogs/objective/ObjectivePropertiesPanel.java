@@ -24,11 +24,9 @@ import org.miradi.actions.ActionEditObjectiveProgressPercent;
 import org.miradi.actions.ActionEditObjectiveStrategyActivityRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.ObjectiveIcon;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.ObjectiveId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
@@ -39,11 +37,12 @@ import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ObjectivePropertiesPanel extends ObjectDataInputPanel
+public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public ObjectivePropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
-		super(projectToUse, ObjectType.OBJECTIVE, new ObjectiveId(BaseId.INVALID.asInt()));
+		super(projectToUse, ObjectType.OBJECTIVE);
+		createSingleSection(EAM.text("Objective"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Objective.getObjectType(), Objective.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Objective.getObjectType(), Objective.TAG_LABEL);

@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.util.Vector;
 
@@ -293,14 +292,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	{
 		label.setVerticalAlignment(SwingConstants.TOP);
 		add(label);
-	}
-	
-	public void addFieldComponent(Component component)
-	{
-		JPanel panel = new JPanel(new BorderLayout());
-		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
-		add(panel);
 	}
 	
 	static final int HGAP = 6;

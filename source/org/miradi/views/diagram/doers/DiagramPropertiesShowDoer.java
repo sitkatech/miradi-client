@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
@@ -45,12 +45,12 @@ public class DiagramPropertiesShowDoer extends ObjectsDoer
 			return;
 		
 		DiagramObject diagramObject = getDiagramView().getDiagramPanel().getDiagramObject();
-		ObjectDataInputPanel diagramPropertiesPanel = createDiagramPropertiesPanel( diagramObject.getRef());
+		AbstractObjectDataInputPanel diagramPropertiesPanel = createDiagramPropertiesPanel( diagramObject.getRef());
 		ModelessDialogWithClose dlg = new ModelessDialogWithClose(getMainWindow(), diagramPropertiesPanel, diagramPropertiesPanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
-	private ObjectDataInputPanel createDiagramPropertiesPanel(ORef diagramObjectRef)
+	private AbstractObjectDataInputPanel createDiagramPropertiesPanel(ORef diagramObjectRef)
 	{
 		if (ResultsChainDiagram.is(diagramObjectRef))
 			return new ResultsChainPropertiesPanel(getProject(), diagramObjectRef);

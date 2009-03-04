@@ -27,7 +27,7 @@ import org.miradi.rtf.RtfWriter;
 
 abstract public class ObjectPoolManagementPanel extends ObjectManagementPanel
 {
-	public ObjectPoolManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, ObjectDataInputPanel propertiesPanelToUse) throws Exception
+	public ObjectPoolManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel tablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse) throws Exception
 	{
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
@@ -28,7 +28,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
 
-public class StrategyPropertiesPanel extends ObjectDataInputPanel
+public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public StrategyPropertiesPanel(MainWindow mainWindow)
 	{

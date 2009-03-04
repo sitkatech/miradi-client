@@ -20,11 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.MeasurementIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -36,11 +35,12 @@ import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
 
-public class MeasurementPropertiesPanel extends ObjectDataInputPanel
+public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public MeasurementPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, Measurement.getObjectType(), BaseId.INVALID);
+		super(projectToUse, Measurement.getObjectType());
+		createSingleSection(EAM.text("Measurement"));
 
 		PanelTitleLabel measurementLabel = new PanelTitleLabel(EAM.text("Measurement"), new MeasurementIcon());
 		PanelTitleLabel dateLabel = new PanelTitleLabel(EAM.text("Date"));

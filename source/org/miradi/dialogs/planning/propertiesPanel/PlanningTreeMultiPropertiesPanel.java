@@ -22,8 +22,8 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
@@ -161,7 +161,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		repaint();
 	}
 	
-	private ObjectDataInputPanel findPanel(ORef[] orefsToUse)
+	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
@@ -207,7 +207,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		return blankPropertiesPanel;
 	}
 
-	private ObjectDataInputPanel getTargetPropertiesPanel(ORef targetRef)
+	private AbstractObjectDataInputPanel getTargetPropertiesPanel(ORef targetRef)
 	{
 		Target target = Target.find(getProject(), targetRef);
 		if (target.isViabilityModeTNC())
@@ -269,7 +269,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private MainWindow mainWindow;
 	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
-	private ObjectDataInputPanel currentCard;
+	private AbstractObjectDataInputPanel currentCard;
 	
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;

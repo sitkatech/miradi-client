@@ -21,7 +21,7 @@ package org.miradi.dialogs.threatrating;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.threatrating.properties.ThreatRatingMultiPropertiesPanel;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
@@ -37,7 +37,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	public static ThreatRatingManagementPanel create(MainWindow mainWindowToUse) throws Exception
 	{
 		ThreatRatingMultiTablePanel multiTablePanel = new ThreatRatingMultiTablePanel(mainWindowToUse);
-		ObjectDataInputPanel propertiesPanel = new ThreatRatingMultiPropertiesPanel(mainWindowToUse, multiTablePanel);
+		AbstractObjectDataInputPanel propertiesPanel = new ThreatRatingMultiPropertiesPanel(mainWindowToUse, multiTablePanel);
 		
 		ThreatRatingUpperPanel tablePanel =  ThreatRatingUpperPanel.createThreatStressRatingListTablePanel(
 				mainWindowToUse, multiTablePanel, propertiesPanel);
@@ -45,7 +45,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 		return new ThreatRatingManagementPanel(mainWindowToUse, tablePanel, propertiesPanel);
 	}
 
-	public ThreatRatingManagementPanel(MainWindow splitPositionSaverToUse, ThreatRatingUpperPanel listTablePanel, ObjectDataInputPanel propertiesPanel) throws Exception
+	public ThreatRatingManagementPanel(MainWindow splitPositionSaverToUse, ThreatRatingUpperPanel listTablePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		super(splitPositionSaverToUse,  listTablePanel, propertiesPanel);
 		

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
@@ -47,7 +48,7 @@ public class ModelessTargetSubPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return null;
+		return EAM.text("Details");
 	}
 
 }

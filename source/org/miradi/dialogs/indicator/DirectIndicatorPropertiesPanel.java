@@ -21,7 +21,7 @@ package org.miradi.dialogs.indicator;
 
 import java.awt.BorderLayout;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
@@ -89,7 +89,7 @@ public class DirectIndicatorPropertiesPanel extends OverlaidObjectDataInputPanel
 		repaint();
 	}
 	
-	private ObjectDataInputPanel findPanel(ORef[] orefsToUse)
+	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
@@ -124,7 +124,7 @@ public class DirectIndicatorPropertiesPanel extends OverlaidObjectDataInputPanel
 	
 	private MainWindow mainWindow;
 	
-	private ObjectDataInputPanel currentPanel;
+	private AbstractObjectDataInputPanel currentPanel;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private MeasurementPropertiesPanel measurementPropertiesPanel;

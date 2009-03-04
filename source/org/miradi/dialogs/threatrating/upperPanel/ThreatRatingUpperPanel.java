@@ -25,7 +25,7 @@ import javax.swing.event.ListSelectionEvent;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.MultiTableUpperPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
@@ -36,12 +36,12 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 {
-	public static ThreatRatingUpperPanel createThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel threatStressRatingMultiTablePanel, ObjectDataInputPanel propertiesPanel) throws Exception
+	public static ThreatRatingUpperPanel createThreatStressRatingListTablePanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel threatStressRatingMultiTablePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		return new ThreatRatingUpperPanel(mainWindowToUse, threatStressRatingMultiTablePanel, propertiesPanel);
 	}
 	
-	private ThreatRatingUpperPanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel multiTablePanelToUse, ObjectDataInputPanel propertiesPanelToUse)
+	private ThreatRatingUpperPanel(MainWindow mainWindowToUse, ThreatRatingMultiTablePanel multiTablePanelToUse, AbstractObjectDataInputPanel propertiesPanelToUse)
 	{
 		super(mainWindowToUse, multiTablePanelToUse.getObjectPicker());
 
@@ -98,6 +98,6 @@ public class ThreatRatingUpperPanel extends MultiTableUpperPanel
 		return null;
 	}
 	
-	private ObjectDataInputPanel propertiesPanel;
+	private AbstractObjectDataInputPanel propertiesPanel;
 	private ThreatRatingMultiTablePanel multiTablePanel;
 }

@@ -22,6 +22,7 @@ package org.miradi.dialogs.threatrating.properties;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
@@ -128,7 +129,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
 	
-	private ObjectDataInputPanel simplePropertiesPanel;
-	private ObjectDataInputPanel stressBasedPropertiesPanel;
+	private AbstractObjectDataInputPanel simplePropertiesPanel;
+	private AbstractObjectDataInputPanel stressBasedPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

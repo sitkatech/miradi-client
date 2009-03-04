@@ -46,6 +46,6 @@ public class TargetCoreSubPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return null;
+		return EAM.text("Summary");
 	}
 }

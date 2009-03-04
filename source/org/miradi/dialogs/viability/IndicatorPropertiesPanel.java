@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
 import org.miradi.ids.BaseId;
@@ -33,11 +33,11 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 
-public class IndicatorPropertiesPanel extends ObjectDataInputPanel
+public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public IndicatorPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject(), getInvalidTargetRef());			
+		super(mainWindow.getProject(), Indicator.getObjectType());			
 		setLayout(new OneColumnGridLayout());
 		
 		addSubPanelWithTitledBorder(new IndicatorSubPanel(getProject(), getInvalidTargetRef()));
