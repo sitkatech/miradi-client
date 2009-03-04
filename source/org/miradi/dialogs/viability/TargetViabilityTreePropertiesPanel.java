@@ -22,8 +22,8 @@ package org.miradi.dialogs.viability;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
@@ -109,7 +109,7 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 		repaint();
 	}
 	
-	private ObjectDataInputPanel findPanel(ORef[] orefsToUse)
+	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
 			return blankPropertiesPanel;
@@ -129,7 +129,7 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 		return blankPropertiesPanel;
 	}
 
-	private ObjectDataInputPanel getTargetPropertiesPanel(ORef targetRef)
+	private AbstractObjectDataInputPanel getTargetPropertiesPanel(ORef targetRef)
 	{
 		Target target = Target.find(getProject(), targetRef);
 		if (target.isViabilityModeTNC())
@@ -158,7 +158,7 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 	}
 
 	private CardLayout cardLayout;
-	private ObjectDataInputPanel currentCard;
+	private AbstractObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private NonDiagramSimpleModeTargetPropertiesPanel targetSimpleModePropertiesPanel;
 	private NonDiagramKeaModeTargetPropertiesPanel targetKeaModePropertiesPanel;

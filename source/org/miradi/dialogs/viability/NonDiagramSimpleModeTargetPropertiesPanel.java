@@ -20,32 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 
-public class NonDiagramSimpleModeTargetPropertiesPanel extends ObjectDataInputPanel
+public class NonDiagramSimpleModeTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public NonDiagramSimpleModeTargetPropertiesPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
 		
-		setLayout(new OneColumnGridLayout());
-		
 		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
-		addSubPanel(targetCoreSubPanel);
-		add(targetCoreSubPanel);
+		addSubPanelWithTitledBorder(targetCoreSubPanel);
 	
-		//TODO is this ok to have ""
+		createSingleSection(EAM.text("Status"));
 		ObjectDataInputField ratingChoiceField = createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
 		addFieldsOnOneLine("", new ObjectDataInputField[]{ratingChoiceField});
 		
 		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
-		addSubPanel(modelessTargetSubPanel);
-		add(modelessTargetSubPanel);
+		addSubPanelWithTitledBorder(modelessTargetSubPanel);
 		
 		updateFieldsFromProject();
 	}

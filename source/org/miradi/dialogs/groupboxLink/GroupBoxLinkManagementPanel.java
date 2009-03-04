@@ -22,7 +22,7 @@ package org.miradi.dialogs.groupboxLink;
 import javax.swing.Icon;
 
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.main.EAM;
@@ -31,7 +31,7 @@ import org.miradi.objecthelpers.ORef;
 
 public class GroupBoxLinkManagementPanel extends ObjectListManagementPanel
 {
-	public GroupBoxLinkManagementPanel(MainWindow mainWindowToUse, ORef parentRef, String annotationTag, Actions actions, GroupBoxLinkListTablePanel tablePanel, ObjectDataInputPanel propertiesPanel) throws Exception
+	public GroupBoxLinkManagementPanel(MainWindow mainWindowToUse, ORef parentRef, String annotationTag, Actions actions, GroupBoxLinkListTablePanel tablePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, tablePanel, propertiesPanel);
 	}

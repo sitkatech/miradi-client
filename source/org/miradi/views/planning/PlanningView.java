@@ -109,6 +109,7 @@ public class PlanningView extends TabbedView
 	{
 		super.becomeActive();
 		planningManagementPanel.updateSplitterLocation();
+		strategicPlanManagementPanel.updateSplitterLocation();
 		resourceManagementPanel.updateSplitterLocation();
 		accountingCodePoolManagementPanel.updateSplitterLocation();
 		fundingSourcePoolManagementPanel.updateSplitterLocation();
@@ -117,13 +118,17 @@ public class PlanningView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable) planningTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
-		planningManagementPanel = new PlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
+		planningManagementPanel = createManagementPanel(planningTreeTablePanel);
+		
+		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), new Class[0]);
+		strategicPlanManagementPanel = createManagementPanel(strategicPlanTreeTablePanel);
+		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
+		PlanningTreeTablePanel treePanel = (PlanningTreeTablePanel)planningManagementPanel.getListPanel();
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treePanel.getTree();
 		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
 		MiradiScrollPane controlBarScrollPane = new MiradiScrollPane(controlPanel);
 		controlBarScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -131,9 +136,19 @@ public class PlanningView extends TabbedView
 		MainPlanningPanel horizontalSplitPane = new MainPlanningPanel(controlBarScrollPane, planningManagementPanel);
 		
 		addNonScrollingTab(horizontalSplitPane);
+		addNonScrollingTab(strategicPlanManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
+	}
+
+	private PlanningTreeManagementPanel createManagementPanel(
+			PlanningTreeTablePanel treePanel) throws Exception
+	{
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treePanel.getTree();
+		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
+		PlanningTreeManagementPanel managementPanel = new PlanningTreeManagementPanel(getMainWindow(), treePanel, planningTreePropertiesPanel);
+		return managementPanel;
 	}
 	
 	class MainPlanningPanel extends DisposablePanelWithDescription implements MiradiTabContentsPanelInterface
@@ -333,6 +348,7 @@ public class PlanningView extends TabbedView
 	
 	private PlanningViewControlPanel controlPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
+	private PlanningTreeManagementPanel strategicPlanManagementPanel;
 	private ResourcePoolManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;

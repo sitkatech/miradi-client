@@ -20,18 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.project.Project;
 
-public class ResultsChainPropertiesPanel extends ObjectDataInputPanel
+public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public ResultsChainPropertiesPanel(Project projectToUse, ORef resultsChainRef)
 	{
-		super(projectToUse, resultsChainRef);
+		super(projectToUse, ResultsChainDiagram.getObjectType());
+		createSingleSection(EAM.text("Results Chain"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(ResultsChainDiagram.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createMediumStringField(ResultsChainDiagram.getObjectType(), DiagramObject.TAG_LABEL);

@@ -19,29 +19,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.task.TaskPropertiesInputPanel;
 import org.miradi.ids.BaseId;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanel
+public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public PlanningViewTaskPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), ORef.INVALID);
+		super(mainWindowToUse.getProject(), Task.getObjectType());
 
-		setLayout(new OneColumnGridLayout());
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		
 		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse, null, BaseId.INVALID);
 		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, objectPickerToUse);
 	
-		add(taskPropertiesInputPanel);
+		addSubPanelWithTitledBorder(taskPropertiesInputPanel);
+		
+		createSingleSection(EAM.text("Assignments"));
 		add(assignmentEditor);
 	}
 	

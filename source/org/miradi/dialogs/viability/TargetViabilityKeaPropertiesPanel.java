@@ -21,22 +21,20 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.icons.KeyEcologicalAttributeIcon;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.project.Project;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 
-public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanel
+public class TargetViabilityKeaPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public TargetViabilityKeaPropertiesPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		super(projectToUse, new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
+		super(projectToUse, ObjectType.TARGET);
+		createSingleSection(EAM.text("Summary"));
 
 		ObjectDataInputField shortLabelField = createShortStringField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(KeyEcologicalAttribute.getObjectType(), KeyEcologicalAttribute.TAG_LABEL);		

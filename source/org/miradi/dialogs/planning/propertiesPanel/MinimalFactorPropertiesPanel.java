@@ -22,16 +22,17 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import javax.swing.Icon;
 
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 
-public class MinimalFactorPropertiesPanel extends ObjectDataInputPanel
+public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public MinimalFactorPropertiesPanel(Project projectToUse, int objectType)
 	{
 		super(projectToUse, objectType);
+		createSingleSection(EAM.text("Summary"));
 	}
 	
 	protected void createAndAddFields(String translatedNameLabel, Icon icon)

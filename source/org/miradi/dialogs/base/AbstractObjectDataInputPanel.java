@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -28,6 +29,7 @@ import java.util.Vector;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -108,7 +110,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 		setObjectRefsWithoutUpdatingFields(orefsToUse);
 		project.addCommandExecutedListener(this);
-		final int HORIZONTAL_MARGIN = 10;
+		final int HORIZONTAL_MARGIN = 2;
 		final int VERTICAL_MARGIN = 5;
 		setBorder(new EmptyBorder(VERTICAL_MARGIN,HORIZONTAL_MARGIN,VERTICAL_MARGIN,HORIZONTAL_MARGIN));
 		
@@ -260,8 +262,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return field;
 	}
 
-	abstract public void addFieldComponent(Component component);
-	
 	public void addSubPanel(AbstractObjectDataInputPanel subPanel)
 	{
 		subPanels.add(subPanel);
@@ -786,6 +786,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return subPanels; 
 	}
 	
+	public void addFieldComponent(Component component)
+	{
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
+		add(panel);
+	}
+
 	public static int STD_SHORT = 5;
 	
 	private Project project;

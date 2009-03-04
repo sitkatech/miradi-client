@@ -24,8 +24,8 @@ import java.awt.image.BufferedImage;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectCollectionPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.nodes.ViabilityRoot;
@@ -60,7 +60,7 @@ abstract public class TargetViabilityTreeManagementPanel extends ObjectListManag
 	}  
 	
 	//TODO should use this contructor instead of the constructor that creates DirectIndicatorPropertiesPanel, would be better to have a PlanningTreePropertiesPanel
-	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel treePanel, ObjectDataInputPanel propertiesPanel) throws Exception
+	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel treePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, treePanel, propertiesPanel);
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;

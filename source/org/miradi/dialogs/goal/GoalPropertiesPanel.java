@@ -24,11 +24,9 @@ import org.miradi.actions.ActionEditGoalProgressPercent;
 import org.miradi.actions.ActionEditGoalStrategyActivityRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.GoalIcon;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.GoalId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
@@ -38,16 +36,12 @@ import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class GoalPropertiesPanel extends ObjectDataInputPanel
+public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public GoalPropertiesPanel(Project projectToUse, Actions actionsToUse, ObjectPicker picker) throws Exception
 	{
-		this(projectToUse, new GoalId(BaseId.INVALID.asInt()), actionsToUse, picker);
-	}
-	
-	public GoalPropertiesPanel(Project projectToUse, GoalId idToShow, Actions actionsToUse, ObjectPicker picker) throws Exception
-	{
-		super(projectToUse, ObjectType.GOAL, idToShow);
+		super(projectToUse, ObjectType.GOAL);
+		createSingleSection(EAM.text("Goal"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(Goal.getObjectType(), Goal.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(Goal.getObjectType(), Goal.TAG_LABEL);
