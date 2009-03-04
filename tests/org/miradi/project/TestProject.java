@@ -310,7 +310,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node3.getWrappedFactorRef());
 		
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
-		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
+		EAMGraphCell[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
@@ -545,7 +545,7 @@ public class TestProject extends EAMTestCase
 		createLinkage(idAssigner.takeNextId(), node1.getWrappedFactorRef(), node3.getWrappedFactorRef());
 		
 		HashSet<EAMGraphCell> cellVector = model.getAllSelectedCellsWithRelatedLinkages(new EAMGraphCell[]{node1});
-		Object[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
+		EAMGraphCell[] selectedCells = cellVector.toArray(new EAMGraphCell[0]);
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
@@ -568,7 +568,7 @@ public class TestProject extends EAMTestCase
 		assertEquals("nodes  already in the diagram?", 0, project.getAllDiagramFactorIds().length);
 
 		FactorCell node1 = project.createFactorCell(ObjectType.TARGET);
-		Object[] selectedCells = new FactorCell[] {node1};
+		EAMGraphCell[] selectedCells = new FactorCell[] {node1};
 		ORef diagramObjectRef = project.getTestingDiagramObject().getRef();
 		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
 		transferableList.storeData(selectedCells);
