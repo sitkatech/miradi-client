@@ -200,6 +200,7 @@ import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasur
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
 import org.miradi.views.umbrella.DeleteActivity;
+import org.miradi.views.umbrella.UmbrellaView;
 
 
 public class DiagramView extends TabbedView implements CommandExecutedListener
@@ -709,7 +710,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private boolean isCurrentViewDiagramView()
 	{
-		return getMainWindow().getCurrentView().cardName().equals(getViewName());
+		return DiagramView.is(getMainWindow().getCurrentView());
 	}
 
 
@@ -1132,6 +1133,11 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		return getCurrentMode().equals(ViewData.MODE_STRATEGY_BRAINSTORM);
 	}
 	
+	public static boolean is(UmbrellaView view)
+	{
+		return view.cardName().equals(getViewName());
+	}
+
 	private PropertiesDoer propertiesDoer;
 	private String mode;
 	

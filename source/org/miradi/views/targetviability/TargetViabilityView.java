@@ -39,6 +39,7 @@ import org.miradi.views.diagram.DeleteKeyEcologicalAttributeDoer;
 import org.miradi.views.diagram.DeleteViabilityIndicatorDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
+import org.miradi.views.umbrella.UmbrellaView;
 
 public class TargetViabilityView extends TabbedView
 {
@@ -102,6 +103,11 @@ public class TargetViabilityView extends TabbedView
 		return null;
 	}
 	
+	public static boolean is(UmbrellaView view)
+	{
+		return view.cardName().equals(getViewName());
+	}
+
 	
 	private TargetViabilityTreeManagementPanel viabilityPanel;
 }

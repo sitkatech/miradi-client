@@ -51,6 +51,7 @@ import org.miradi.views.diagram.doers.DeleteStressDoer;
 import org.miradi.views.threatmatrix.doers.HideCellRatingsDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
 import org.miradi.views.threatmatrix.doers.ShowCellRatingsDoer;
+import org.miradi.views.umbrella.UmbrellaView;
 
 
 public class ThreatMatrixView extends CardedView
@@ -178,6 +179,11 @@ public class ThreatMatrixView extends CardedView
 	private String getThreatStressRatingCardName()
 	{
 		return threatStressRatingManagementPanel.getPanelDescription();
+	}
+
+	public static boolean is(UmbrellaView view)
+	{
+		return view.cardName().equals(getViewName());
 	}
 
 	

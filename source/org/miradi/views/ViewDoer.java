@@ -37,7 +37,7 @@ abstract public class ViewDoer extends MainWindowDoer
 	
 	public DiagramView getDiagramView() throws RuntimeException
 	{
-		if (view.cardName().equals(DiagramView.getViewName()))
+		if (DiagramView.is(view))
 			return (DiagramView)getView();
 		
 		throw new RuntimeException("Not in DiagramView");
@@ -53,7 +53,7 @@ abstract public class ViewDoer extends MainWindowDoer
 	
 	public boolean isInDiagram()
 	{
-		if (! getView().cardName().equals(DiagramView.getViewName()))
+		if (! DiagramView.is(getView()))
 			return false;
 		
 		if (getDiagramView().getCurrentDiagramComponent() == null)

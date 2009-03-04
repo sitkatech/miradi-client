@@ -267,7 +267,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		UmbrellaView currentView = mainWindow.getCurrentView();
 		if(currentView == null)
 			return;
-		if(currentView.cardName().equals(DiagramView.getViewName()))
+		if(DiagramView.is(currentView))
 		{
 			getDiagram().selectAllLinksAndThierBendPointsInsideGroupBox(getDiagram().getOnlySelectedFactorAndGroupChildCells());
 			selectedCells = getDiagram().getSelectionCells();

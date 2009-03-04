@@ -34,13 +34,16 @@ import org.miradi.actions.ActionAbout;
 import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
 import org.miradi.actions.ActionClose;
+import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionConfigureLayers;
 import org.miradi.actions.ActionCopy;
-import org.miradi.actions.ActionSaveProjectAs;
 import org.miradi.actions.ActionCreateBendPoint;
 import org.miradi.actions.ActionCreateConceptualModel;
 import org.miradi.actions.ActionCreateDiagramMargin;
 import org.miradi.actions.ActionCreateIncomingJunction;
+import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
+import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
+import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionCreateOutgoingJunction;
 import org.miradi.actions.ActionCreateResultsChain;
 import org.miradi.actions.ActionCut;
@@ -49,9 +52,14 @@ import org.miradi.actions.ActionDelete;
 import org.miradi.actions.ActionDeleteBendPoint;
 import org.miradi.actions.ActionDeleteConceptualModel;
 import org.miradi.actions.ActionDeleteGroupBox;
+import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
+import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
+import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResultsChain;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionExit;
+import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionExportConProXml;
 import org.miradi.actions.ActionExportProjectXml;
 import org.miradi.actions.ActionExportRtf;
@@ -68,6 +76,7 @@ import org.miradi.actions.ActionHelpButtonWorkshop;
 import org.miradi.actions.ActionHelpCMPStandards;
 import org.miradi.actions.ActionHelpComingAttractions;
 import org.miradi.actions.ActionHelpCredits;
+import org.miradi.actions.ActionHideCellRatings;
 import org.miradi.actions.ActionHowToSave;
 import org.miradi.actions.ActionImportZippedConproProject;
 import org.miradi.actions.ActionImportZippedProjectFile;
@@ -92,13 +101,24 @@ import org.miradi.actions.ActionRenameConceptualModel;
 import org.miradi.actions.ActionRenameResultsChain;
 import org.miradi.actions.ActionSaveImageJPEG;
 import org.miradi.actions.ActionSaveImagePng;
+import org.miradi.actions.ActionSaveProjectAs;
 import org.miradi.actions.ActionSelectAll;
 import org.miradi.actions.ActionSelectChain;
+import org.miradi.actions.ActionShowCellRatings;
 import org.miradi.actions.ActionShowConceptualModel;
 import org.miradi.actions.ActionShowCurrentWizardFileName;
 import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.ActionShowResultsChain;
 import org.miradi.actions.ActionShowSelectedChainMode;
+import org.miradi.actions.ActionTreeCreateActivity;
+import org.miradi.actions.ActionTreeCreateIndicator;
+import org.miradi.actions.ActionTreeCreateMethod;
+import org.miradi.actions.ActionTreeCreateObjective;
+import org.miradi.actions.ActionTreeCreateTask;
+import org.miradi.actions.ActionTreeNodeDown;
+import org.miradi.actions.ActionTreeNodeUp;
+import org.miradi.actions.ActionTreeShareActivity;
+import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.actions.ActionUndo;
 import org.miradi.actions.ActionZoomIn;
 import org.miradi.actions.ActionZoomOut;
@@ -111,6 +131,11 @@ import org.miradi.main.EAMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.main.ViewSwitcher;
 import org.miradi.utils.MenuItemWithoutLocation;
+import org.miradi.views.diagram.DiagramView;
+import org.miradi.views.noproject.NoProjectView;
+import org.miradi.views.planning.PlanningView;
+import org.miradi.views.targetviability.TargetViabilityView;
+import org.miradi.views.threatmatrix.ThreatMatrixView;
 import org.miradi.views.umbrella.HelpButtonData;
 import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 
@@ -120,7 +145,6 @@ public class MainMenuBar extends JMenuBar
 	public MainMenuBar(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
-		createMenus(mainWindow.getActions());
 	}
 
 	public MainMenuBar(Actions actions) throws HeadlessException
@@ -128,13 +152,25 @@ public class MainMenuBar extends JMenuBar
 		createMenus(actions);
 	}
 	
+	public void updateMenuOptions()
+	{
+		createMenus(mainWindow.getActions());
+	}
+
 	private void createMenus(Actions actions)
 	{
+		removeAll();
 		add(createFileMenu(actions));
 		add(createEditMenu(actions));
-		add(createInsertMenu(actions));
-		add(createViewMenu(actions));
-		add(createProcessMenu(actions));
+		JMenu actionsMenu = createActionsMenu(actions);
+		if(!isWelcomeView())
+			add(createViewMenu(actions));
+
+		if(actionsMenu != null)
+			add(actionsMenu);
+		
+		if(!isWelcomeView())
+			add(createProcessMenu(actions));
 		add(createHelpMenu(actions));
 	}
 
@@ -229,24 +265,65 @@ public class MainMenuBar extends JMenuBar
 		JMenuItem paste = addMenuItem(actions, menu, ActionPaste.class, KeyEvent.VK_P);
 		setControlKeyAccelerator(paste, 'V');
 		
-		addMenuItem(actions, menu, ActionPasteFactorContent.class, KeyEvent.VK_F);
-		addMenuItem(actions, menu, ActionPasteWithoutLinks.class, -1);
-		menu.addSeparator();
+		if(isDiagramView())
+		{
+			addMenuItem(actions, menu, ActionPasteFactorContent.class, KeyEvent.VK_F);
+			addMenuItem(actions, menu, ActionPasteWithoutLinks.class, -1);
+		}
 		
+		menu.addSeparator();
+
 		JMenuItem delete = addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_DELETE);
 		delete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0));	
+		if(isPlanningView())
+		{
+			addMenuItem(actions, menu, ActionDeletePlanningViewTreeNode.class);
+		}
+		if(isViabilityView())
+		{
+			addMenuItem(actions, menu, ActionDeleteKeyEcologicalAttribute.class);
+			addMenuItem(actions, menu, ActionDeleteKeyEcologicalAttributeIndicator.class);
+			addMenuItem(actions, menu, ActionDeleteKeyEcologicalAttributeMeasurement.class);
+		}
+		menu.addSeparator();
+		
 		JMenuItem selectAll = addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
 		setControlKeyAccelerator(selectAll, 'A');
-		addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
-		menu.addSeparator();
+		
+		if(isDiagramView())
+		{
+			addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
+			menu.addSeparator();
+		}
+		
 		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);
 		return menu;
 	}
 	
-	private JMenu createInsertMenu(Actions actions)
+	private JMenu createActionsMenu(Actions actions)
+	{
+		if(isDiagramView())
+			return createDiagramActionsMenu(actions);
+		
+		if(isPlanningView())
+			return createPlanningActionsMenu(actions);
+		
+		if(isViabilityView())
+			return createViabilityActionsMenu(actions);
+		
+		return null;
+	}
+
+	private JMenu createEmptyActionsMenu()
 	{
 		JMenu menu = new JMenu(EAM.text("MenuBar|Actions"));
-		menu.setMnemonic(KeyEvent.VK_I);
+		menu.setMnemonic(KeyEvent.VK_A);
+		return menu;
+	}
+
+	private JMenu createDiagramActionsMenu(Actions actions)
+	{
+		JMenu menu = createEmptyActionsMenu();
 		
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftStrategy.class),KeyEvent.VK_D));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertStrategy.class),KeyEvent.VK_S));
@@ -257,8 +334,10 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class),KeyEvent.VK_T));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTextBox.class), KeyEvent.VK_X));
 		menu.addSeparator();
+
 		menu.add(createGroupBoxMenu(actions));
 		menu.addSeparator();
+
 		addMenuItem(actions, menu, ActionInsertFactorLink.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionCreateBendPoint.class, KeyEvent.VK_B);
 		addMenuItem(actions, menu, ActionDeleteBendPoint.class, KeyEvent.VK_DELETE);
@@ -268,6 +347,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionManageFactorTagsFromMenu.class, KeyEvent.VK_G);
 		
 		menu.addSeparator();
+
 		addMenuItem(actions, menu, ActionShowConceptualModel.class, KeyEvent.VK_A);
 		addMenuItem(actions, menu, ActionShowResultsChain.class, KeyEvent.VK_R);
 		addMenuItem(actions, menu, ActionCreateResultsChain.class);
@@ -275,14 +355,96 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionDeleteResultsChain.class);
 		
 		menu.addSeparator();
+
 		addMenuItem(actions, menu, ActionCreateConceptualModel.class);
 		addMenuItem(actions, menu, ActionRenameConceptualModel.class);
 		addMenuItem(actions, menu, ActionDeleteConceptualModel.class);
-		
+
 		menu.addSeparator();
+
 		addMenuItem(actions, menu, ActionDiagramProperties.class);
 		
 		return menu;
+	}
+
+	private JMenu createPlanningActionsMenu(Actions actions)
+	{
+		JMenu menu = createEmptyActionsMenu();
+		
+		addMenuItem(actions, menu, ActionTreeCreateObjective.class);
+		addMenuItem(actions, menu, ActionTreeCreateIndicator.class);
+
+		menu.addSeparator();
+
+		addMenuItem(actions, menu, ActionTreeCreateActivity.class);
+		addMenuItem(actions, menu, ActionTreeShareActivity.class);
+
+		menu.addSeparator();
+
+		addMenuItem(actions, menu, ActionTreeCreateMethod.class);
+		addMenuItem(actions, menu, ActionTreeShareMethod.class);
+
+		menu.addSeparator();
+
+		addMenuItem(actions, menu, ActionTreeCreateTask.class);
+		
+		menu.addSeparator();
+		
+		addMenuItem(actions, menu, ActionTreeNodeUp.class);
+		addMenuItem(actions, menu, ActionTreeNodeDown.class);
+
+		return menu;
+	}
+
+	private JMenu createViabilityActionsMenu(Actions actions)
+	{
+		JMenu menu = createEmptyActionsMenu();
+		
+		addMenuItem(actions, menu, ActionCreateKeyEcologicalAttribute.class);
+		addMenuItem(actions, menu, ActionCreateKeyEcologicalAttributeIndicator.class);
+		addMenuItem(actions, menu, ActionCreateKeyEcologicalAttributeMeasurement.class);
+
+		return menu;
+	}
+
+	private boolean isWelcomeView()
+	{
+		if(mainWindow == null)
+			return false;
+		
+		return NoProjectView.is(mainWindow.getCurrentView());
+	}
+
+	private boolean isPlanningView()
+	{
+		if(mainWindow == null)
+			return false;
+		
+		return PlanningView.is(mainWindow.getCurrentView());
+	}
+
+	private boolean isDiagramView()
+	{
+		if(mainWindow == null)
+			return false;
+		
+		return DiagramView.is(mainWindow.getCurrentView());
+	}
+
+	private boolean isViabilityView()
+	{
+		if(mainWindow == null)
+			return false;
+		
+		return TargetViabilityView.is(mainWindow.getCurrentView());
+	}
+
+	private boolean isThreatView()
+	{
+		if(mainWindow == null)
+			return false;
+		
+		return ThreatMatrixView.is(mainWindow.getCurrentView());
 	}
 
 	private JMenu createGroupBoxMenu(Actions actions)
@@ -310,19 +472,40 @@ public class MainMenuBar extends JMenuBar
 //		addMenuItem(actions, menu, ActionToggleSlideShowPanel.class, KeyEvent.VK_E);
 //		addMenuItem(actions, menu, ActionSlideShowViewer.class, KeyEvent.VK_S);
 //		menu.addSeparator();
-		JMenuItem zoomIn = addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
-		setControlKeyAccelerator(zoomIn, '=');
-		JMenuItem zoomOut = addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
-		setControlKeyAccelerator(zoomOut, '-');
-		JMenuItem zoomToFit = addMenuItem(actions, menu, ActionZoomToFit.class, KeyEvent.VK_Z);
-		setControlKeyAccelerator(zoomToFit, '0');
-		JMenuItem createMargin = addMenuItem(actions, menu, ActionCreateDiagramMargin.class, KeyEvent.VK_M);
-		setControlKeyAccelerator(createMargin, 'M');		
-
-		menu.addSeparator();
-		addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
-		addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_S);
-		addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_F);
+		
+		if(isDiagramView())
+		{
+			JMenuItem zoomIn = addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
+			setControlKeyAccelerator(zoomIn, '=');
+			JMenuItem zoomOut = addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
+			setControlKeyAccelerator(zoomOut, '-');
+			JMenuItem zoomToFit = addMenuItem(actions, menu, ActionZoomToFit.class, KeyEvent.VK_Z);
+			setControlKeyAccelerator(zoomToFit, '0');
+			JMenuItem createMargin = addMenuItem(actions, menu, ActionCreateDiagramMargin.class, KeyEvent.VK_M);
+			setControlKeyAccelerator(createMargin, 'M');		
+	
+			menu.addSeparator();
+		}
+		
+		if(isDiagramView())
+		{
+			addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
+			addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_S);
+			addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_F);
+		}
+		
+		if(isPlanningView() || isViabilityView())
+		{
+			addMenuItem(actions, menu, ActionExpandAllNodes.class);
+			addMenuItem(actions, menu, ActionCollapseAllNodes.class);
+		}
+		
+		if(isThreatView())
+		{
+			addMenuItem(actions, menu, ActionShowCellRatings.class);
+			addMenuItem(actions, menu, ActionHideCellRatings.class);
+		}
+		
 		return menu;
 	}
 	
@@ -442,4 +625,5 @@ public class MainMenuBar extends JMenuBar
 	}
 	
 	private MainWindow mainWindow;
+
 }

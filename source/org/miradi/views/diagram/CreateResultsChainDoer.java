@@ -36,7 +36,7 @@ public class CreateResultsChainDoer extends ViewDoer
 		if (!getProject().isOpen())
 			return false;
 		
-		if (! getView().cardName().equals(DiagramView.getViewName()))
+		if (! DiagramView.is(getView()))
 			return false;
 		
 		if (getDiagramView().isStategyBrainstormMode())

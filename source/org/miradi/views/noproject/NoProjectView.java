@@ -73,5 +73,10 @@ public class NoProjectView extends UmbrellaView
 		return Project.NO_PROJECT_VIEW_NAME;
 	}
 
+	public static boolean is(UmbrellaView view)
+	{
+		return view.cardName().equals(getViewName());
+	}
+
 }
 

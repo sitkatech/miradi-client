@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.actions.views;
 
 import org.miradi.actions.MainWindowAction;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,7 +28,7 @@ public class ActionViewTargetViability extends MainWindowAction
 {
 	public ActionViewTargetViability(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), IconManager.getTargetIcon());
 	}
 
 	private static String getLabel()
