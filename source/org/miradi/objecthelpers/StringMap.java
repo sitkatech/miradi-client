@@ -104,7 +104,7 @@ public class StringMap
 	
 	public String get(String code)
 	{
-		String value = (String)data.get(code);
+		String value = data.get(code);
 		if (value==null)
 			return "";
 		return value;
@@ -124,10 +124,10 @@ public class StringMap
 
 	public String find(String object)
 	{
-		Iterator iterator = data.keySet().iterator();
+		Iterator<String> iterator = data.keySet().iterator();
 		while (iterator.hasNext())
 		{
-			String key = (String)iterator.next();
+			String key = iterator.next();
 			if (object.equals(data.get(key)))
 				return key;
 		}
@@ -192,5 +192,5 @@ public class StringMap
 
 	private static final String TAG_STRING_MAP = "StringMap";
 
-	private HashMap data;
+	private HashMap<String, String> data;
 }
