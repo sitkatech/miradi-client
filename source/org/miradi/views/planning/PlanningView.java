@@ -95,6 +95,7 @@ import org.miradi.views.planning.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeUpDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
+import org.miradi.views.umbrella.UmbrellaView;
 
 public class PlanningView extends TabbedView
 {
@@ -316,6 +317,11 @@ public class PlanningView extends TabbedView
 		return viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
 	}
 	
+	public static boolean is(UmbrellaView view)
+	{
+		return view.cardName().equals(getViewName());
+	}
+
 	public static final String STRATEGIC_PLAN_RADIO_CHOICE = "StrategicPlanRadioChoice";
 	public static final String MONITORING_PLAN_RADIO_CHOICE = "MonitoringPlanRadioChoice";
 	public static final String WORKPLAN_PLAN_RADIO_CHOICE = "WorkPlanPlanRadioChoice";

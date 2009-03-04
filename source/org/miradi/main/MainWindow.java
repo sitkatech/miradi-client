@@ -375,6 +375,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		finally
 		{
 			allowActionUpdates();
+			mainMenuBar.updateMenuOptions();
 			updateActionsAndStatusBar();
 		}
 	}

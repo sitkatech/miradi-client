@@ -85,7 +85,7 @@ public class IconManager
 	private static AbstractMiradiIcon getFactorIcon(Factor factor)
 	{
 		if (factor.isDirectThreat())
-			return new DirectThreatIcon();
+			return getThreatIcon();
 		
 		if (factor.isContributingFactor())
 			return new ContributingFactorIcon();
@@ -201,5 +201,20 @@ public class IconManager
 	public static Icon getAllocatedCostIcon()
 	{
 		return new AllocatedCostIcon();
+	}
+	
+	public static Icon getPlanningIcon()
+	{
+		return new PlanningIcon();
+	}
+
+	public static Icon getReportIcon()
+	{
+		return new ReportTemplateIcon();
+	}
+
+	public static AbstractMiradiIcon getThreatIcon()
+	{
+		return new DirectThreatIcon();
 	}
 }
