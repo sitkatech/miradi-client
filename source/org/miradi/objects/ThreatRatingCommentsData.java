@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.StringMapData;
 
 public class ThreatRatingCommentsData extends BaseObject
 {
@@ -65,7 +66,19 @@ public class ThreatRatingCommentsData extends BaseObject
 	void clear()
 	{
 		super.clear();
+		
+		simpleThreatRatingCommentsMaps = new StringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS);
+		stressBasedThreatRatingCommentsMaps = new StringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS);
+		
+		addField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS, simpleThreatRatingCommentsMaps);
+		addField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS, stressBasedThreatRatingCommentsMaps);
 	}
 
 	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
+	
+	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS = "SimpleThreatRatingCommentsMaps";
+	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS = "StressBasedThreatRatingCommentsMaps";
+	
+	private StringMapData simpleThreatRatingCommentsMaps;
+	private StringMapData stressBasedThreatRatingCommentsMaps;
 }
