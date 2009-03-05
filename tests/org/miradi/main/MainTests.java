@@ -46,6 +46,7 @@ import org.miradi.diagram.TestDiagramAddFactorLink;
 import org.miradi.diagram.TestDiagramComponent;
 import org.miradi.diagram.TestDiagramModel;
 import org.miradi.diagram.TestDiagramView;
+import org.miradi.diagram.TestEAMGraphCellByFactorSorter;
 import org.miradi.diagram.TestEamGraphCell;
 import org.miradi.diagram.TestGroupBoxLinking;
 import org.miradi.diagram.TestLayerSorter;
@@ -281,6 +282,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestLinkCreator.class));
 		suite.addTest(new TestSuite(TestGroupBoxLinking.class));
 		suite.addTest(new TestSuite(TestLayerSorter.class));
+		suite.addTest(new TestSuite(TestEAMGraphCellByFactorSorter.class));		
 
 		// factors package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));
