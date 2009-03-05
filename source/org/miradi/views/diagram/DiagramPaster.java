@@ -50,7 +50,6 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
@@ -77,8 +76,6 @@ import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
-import org.miradi.views.umbrella.ThreatStressRatingCreator;
-import org.miradi.views.umbrella.ThreatStressRatingDeletor;
 
 abstract public class DiagramPaster
 {
@@ -284,11 +281,6 @@ abstract public class DiagramPaster
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	}
 	
-	private BaseObject createObject(int type) throws Exception
-	{
-		return createObject(type, null);
-	}
-	
 	private BaseObject createObject(int type, CreateObjectParameter extraInfo) throws CommandFailedException
 	{
 		CommandCreateObject createObject = new CommandCreateObject(type, extraInfo);
@@ -380,7 +372,8 @@ abstract public class DiagramPaster
 				continue;
 			
 			int convertedType = convertType(oldObjectRef);
-			BaseObject newObject = createObject(convertedType);
+			CreateObjectParameter extraInfo = createExtraInfo(convertedType, json);
+			BaseObject newObject = createObject(convertedType, extraInfo);
 			loadNewObjectFromOldJson(newObject, json);
 			
 			getOldToNewObjectRefMap().put(oldObjectRef, newObject.getRef());
@@ -391,6 +384,40 @@ abstract public class DiagramPaster
 		}
 		
 		fixUpRelevancyOverrideSet();
+		fixUpThreatStressRatingFields();
+	}
+
+	private void fixUpThreatStressRatingFields() throws Exception
+	{
+		Collection<ORef> newPastedRefs = getOldToNewObjectRefMap().values();
+		for(ORef ref : newPastedRefs)
+		{
+			if (ThreatStressRating.is(ref))
+			{
+				ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), ref);
+				fixupRef(threatStressRating, ThreatStressRating.TAG_STRESS_REF);
+				fixupRef(threatStressRating, ThreatStressRating.TAG_THREAT_REF);
+			}
+		}
+	}
+
+	private void fixupRef(ThreatStressRating threatStressRating, String tag) throws Exception
+	{
+		Command[] commands = getCommandToFixRef(getOldToNewObjectRefMap(), threatStressRating, tag);
+		getProject().executeCommandsWithoutTransaction(commands);
+	}
+
+	private CreateObjectParameter createExtraInfo(int convertedType, EnhancedJsonObject json)
+	{
+		if (ThreatStressRating.is(convertedType))
+		{
+			ORef stressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
+			ORef threatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
+			
+			return new CreateThreatStressRatingParameter(stressRef, threatRef);
+		}
+		
+		return null;
 	}
 
 	public void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
@@ -560,15 +587,10 @@ abstract public class DiagramPaster
 			int type = getTypeFromJson(json);
 			if (type == FactorLink.getObjectType())
 				newObject = createFactorLink(json);
-			if (type == ThreatStressRating.getObjectType() && isPastingIntoConceptualModel())
-				newObject = createThreatStressRatings(json);
 			
 			if (newObject != null)
 				fixObjectRefs(getOldToNewObjectRefMap(), newObject, json);
 		}
-		
-		Vector<ORef> newFactorLinks = new Vector(getOldToNewObjectRefMap().values());
-		ensureRatingListMatchesStressList(newFactorLinks);
 	}
 	
 	protected void createNewDiagramLinks() throws Exception
@@ -626,26 +648,6 @@ abstract public class DiagramPaster
 		return new CreateDiagramFactorLinkParameter(newFactorLinkId, fromDiagramFactorId, toDiagramFactorId);
 	}
 
-	private void ensureRatingListMatchesStressList(Vector<ORef> newFactorLinks) throws Exception
-	{
-		for (int i = 0; i < newFactorLinks.size(); ++i)
-		{
-			ORef newObjectRef = newFactorLinks.get(i);
-			if (!FactorLink.is(newObjectRef))
-				continue;
-	
-			FactorLink factorLink = FactorLink.find(getProject(), newObjectRef);
-			if (!factorLink.isThreatTargetLink())
-				continue;
-			
-			if (!isPastingIntoConceptualModel())
-				continue;
-			
-			deleteThreatStressRefsWithoutAStress(factorLink);
-			createMissingThreatStressRatingsForStresses(factorLink);
-		}
-	}
-
 	private boolean isPastingIntoResultsChain()
 	{
 		return ResultsChainDiagram.is(getDiagramObject().getType());
@@ -654,62 +656,6 @@ abstract public class DiagramPaster
 	private boolean isPastingIntoConceptualModel()
 	{
 		return ConceptualModelDiagram.is(getDiagramObject().getType());
-	}
-
-	private void createMissingThreatStressRatingsForStresses(FactorLink factorLink) throws Exception
-	{
-		ORefList stressRefsWithoutRating = computeStressRefsWithoutThreatStressRating(factorLink);
-		for (int i = 0; i < stressRefsWithoutRating.size(); ++i)
-		{
-			ORef threatRef = factorLink.getUpstreamThreatRef();
-			new ThreatStressRatingCreator(getProject()).createThreatStressRating(stressRefsWithoutRating.get(i), threatRef);
-		}
-	}
-
-	private ORefList computeStressRefsWithoutThreatStressRating(FactorLink factorLink) throws Exception
-	{
-		ORefList extractedStresses = extractThreatStressRatingStresses(factorLink);
-		ORef targetRef = factorLink.getDownstreamTargetRef();
-		Target target = Target.find(getProject(), targetRef);
-		ORefList stresses = target.getStressRefs();
-		ORefList stressRefsWithoutRating = ORefList.subtract(stresses, extractedStresses);
-		return stressRefsWithoutRating;
-	}		
-
-	private ORefList extractThreatStressRatingStresses(FactorLink factorLink)
-	{
-		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
-		ORef targetRef = factorLink.getSafeDownstreamTargetRef();
-		ORef threatRef = factorLink.getSafeUpstreamThreatRef();
-		ORefList threatStressRatingRefs = threatTargetVirtualLink.getThreatStressRatingRefs(threatRef, targetRef);
-		ORefList extractedStressRefs = new ORefList();
-		for (int i = 0; i < threatStressRatingRefs.size();++i)
-		{
-			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(i));
-			extractedStressRefs.add(threatStressRating.getStressRef());
-		}
-		
-		return extractedStressRefs;
-	}
-
-	private void deleteThreatStressRefsWithoutAStress(FactorLink factorLink) throws Exception
-	{
-		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
-		ORef threatRef = factorLink.getSafeUpstreamThreatRef();
-		ORef targetRef = factorLink.getSafeDownstreamTargetRef();
-		ORefList threatStressRefs = threatTargetVirtualLink.getThreatStressRatingRefs(threatRef, targetRef);
-		for(int i = 0; i < threatStressRefs.size(); ++i)
-		{
-			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRefs.get(i));
-			Stress stress = Stress.find(getProject(), threatStressRating.getStressRef());
-			if (stress == null)
-				deleteThreatStressRating(factorLink, threatStressRating);
-		}
-	}
-
-	private void deleteThreatStressRating(FactorLink factorLink, ThreatStressRating threatStressRating) throws Exception
-	{
-		new ThreatStressRatingDeletor(getProject()).deleteThreatStressRating(threatStressRating);
 	}
 
 	private void fixObjectRefs(HashMap pastedObjectMap, BaseObject newObject, EnhancedJsonObject json) throws Exception, CommandFailedException
@@ -741,17 +687,6 @@ abstract public class DiagramPaster
 		
 		return newFactorLink;
 	}
-
-	private BaseObject createThreatStressRatings(EnhancedJsonObject json) throws Exception
-	{
-		BaseId oldThreatStressRatingId = json.getId(ThreatStressRating.TAG_ID);
-		ORef newStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
-		ORef threatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
-		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newStressRef, threatRef);
-		ThreatStressRating newThreatStressRating = (ThreatStressRating) createObject(ThreatStressRating.getObjectType(), extraInfo);
-		getOldToNewObjectRefMap().put(new ORef(ThreatStressRating.getObjectType(), oldThreatStressRatingId), newThreatStressRating.getRef());
-		return newThreatStressRating;
-	}	
 
 	private boolean isInBetweenProjectPaste()
 	{

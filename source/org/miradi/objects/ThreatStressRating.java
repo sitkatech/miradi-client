@@ -141,6 +141,16 @@ public class ThreatStressRating extends BaseObject
 		return getLabel();
 	}
 	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+		
 	public static ThreatStressRating find(ObjectManager objectManager, ORef threatStressRatingRef)
 	{
 		return (ThreatStressRating) objectManager.findObject(threatStressRatingRef);
