@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
@@ -57,6 +58,43 @@ public class Stress extends Factor
 		return ObjectType.STRESS;
 	}
 	
+	@Override
+	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
+	{
+		ORefList objectRefsToDeepCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
+		objectRefsToDeepCopy.addAll(getThreatStressRatingsToDeepCopy(selectedCellsToCopy));
+		
+		return objectRefsToDeepCopy;
+	}
+
+	private ORefList getThreatStressRatingsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
+	{
+		ORefList threatStressRatingReferrerRefs = findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		ORefList threatStressRatingsWithThreatInList = new ORefList();
+		for (int index = 0; index < threatStressRatingReferrerRefs.size(); ++index)
+		{
+			ORef threatStressRatingRef = threatStressRatingReferrerRefs.get(index);
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
+			ORef threatRef = threatStressRating.getThreatRef();
+			if (containsThreatRef(selectedCellsToCopy, threatRef))
+				threatStressRatingsWithThreatInList.add(threatStressRatingRef);
+		}
+		
+		return threatStressRatingsWithThreatInList;
+	}
+	
+	private boolean containsThreatRef(EAMGraphCell[] selectedCellsToCopy, ORef threatRef)
+	{
+		for (int index = 0; index < selectedCellsToCopy.length; ++index)
+		{
+			EAMGraphCell rawCell = selectedCellsToCopy[index];
+			if (rawCell.getWrappedFactorRef().equals(threatRef))
+				return true;	
+		}
+		
+		return false;
+	}
+
 	public boolean isStress()
 	{
 		return true;
