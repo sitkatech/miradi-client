@@ -28,11 +28,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.EAMGraphCellByFactorRefSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectDeepCopier;
@@ -99,6 +101,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	public void storeData(EAMGraphCell[] cells)
 	{
+		Arrays.sort(cells, new EAMGraphCellByFactorRefSorter());
 		ObjectDeepCopier deepCopier = createObjectDeepCopier();
 		for (int i = 0; i < cells.length; i++) 
 		{
