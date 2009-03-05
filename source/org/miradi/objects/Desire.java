@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.util.Arrays;
 
+import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -67,9 +68,10 @@ abstract public class Desire extends BaseObject
 		return super.isRefList(tag);
 	}
 	
-	public ORefList getAllObjectsToDeepCopy()
+	@Override
+	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
 		deepObjectRefsToCopy.addAll(getProgressPercentRefs());
 		
 		return deepObjectRefsToCopy;

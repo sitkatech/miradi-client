@@ -26,6 +26,7 @@ import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
@@ -102,9 +103,9 @@ public class DiagramFactor extends BaseObject
 		return ObjectType.DIAGRAM_FACTOR;
 	}
 	
-	public ORefList getAllObjectsToDeepCopy()
+	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
 		deepObjectRefsToCopy.addAll(getGroupBoxChildrenRefs());
 		
 		return deepObjectRefsToCopy;
