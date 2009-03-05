@@ -99,15 +99,15 @@ public class TransferableMiradiList implements Transferable, Serializable
 		diagramLinkDeepCopies = new Vector();
 	}
 
-	public void storeData(EAMGraphCell[] cells)
+	public void storeData(EAMGraphCell[] selectedCellsToCopy)
 	{
-		Arrays.sort(cells, new EAMGraphCellByFactorRefSorter());
+		Arrays.sort(selectedCellsToCopy, new EAMGraphCellByFactorRefSorter());
 		ObjectDeepCopier deepCopier = createObjectDeepCopier();
-		for (int i = 0; i < cells.length; i++) 
+		for (int i = 0; i < selectedCellsToCopy.length; i++) 
 		{
-			EAMGraphCell cell = cells[i];
+			EAMGraphCell cell = selectedCellsToCopy[i];
 			if (cell.isFactor())
-				addFactorDeepCopies(deepCopier, cell.getDiagramFactor());
+				addFactorDeepCopies(selectedCellsToCopy, deepCopier, cell.getDiagramFactor());
 			
 			if (cell.isFactorLink())
 				addFactorLinkDeepCopies(deepCopier, cell.getDiagramLink());
@@ -136,14 +136,19 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
 	{
+		addFactorDeepCopies(new EAMGraphCell[0], deepCopier, diagramFactor);
+	}
+	
+	private void addFactorDeepCopies(EAMGraphCell[] selectedCells, ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
+	{
 		if (shouldDeepCopyFactor(diagramFactor.getWrappedType()))
 		{
 			Factor factor = diagramFactor.getWrappedFactor();		
-			Vector factorJsonStrings = deepCopier.createDeepCopy(factor);
+			Vector factorJsonStrings = deepCopier.createDeepCopy(selectedCells, factor);
 			factorDeepCopies.addAll(factorJsonStrings);
 		}
 	
-		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(diagramFactor);
+		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(selectedCells, diagramFactor);
 		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
 		
 		addToUpperMostLeftMostCorner(diagramFactor);

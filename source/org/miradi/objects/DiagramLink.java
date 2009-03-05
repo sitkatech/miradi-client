@@ -24,6 +24,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Vector;
 
+import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
@@ -90,9 +91,9 @@ public class DiagramLink extends BaseObject
 		return ObjectType.DIAGRAM_LINK;
 	}
 	
-	public ORefList getAllObjectsToDeepCopy()
+	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
 		deepObjectRefsToCopy.addAll(getGroupedDiagramLinkRefs());
 		
 		return deepObjectRefsToCopy;

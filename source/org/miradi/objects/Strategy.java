@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
+import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -199,9 +200,9 @@ public class Strategy extends Factor
 		return combineShortLabelAndLabel(getShortLabel().toString(), label.toString());
 	}
 	
-	public ORefList getAllObjectsToDeepCopy()
+	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy();
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
 		deepObjectRefsToCopy.addAll(getActivityRefs());
 		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
