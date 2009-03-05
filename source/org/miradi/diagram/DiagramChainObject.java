@@ -213,7 +213,7 @@ public class DiagramChainObject
 		if (!diagramLink.isBidirectional())
 			return newFactorIfAny;
 		
-		if(diagramLink.getDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
+		if(diagramLink.getOppositeDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);
 			Factor linkedNode = diagramLink.getDiagramFactor(direction).getWrappedFactor();
