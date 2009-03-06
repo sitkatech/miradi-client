@@ -43,6 +43,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Stress;
@@ -205,6 +206,9 @@ public class DataUpgrader extends FileBasedProjectServer
 			
 			if (readDataVersion(getTopDirectory()) == 36)
 				upgradeToVersion37();
+			
+			if (readDataVersion(getTopDirectory()) == 37)
+				upgradeToVersion38();
 		}
 		finally 
 		{
@@ -212,6 +216,12 @@ public class DataUpgrader extends FileBasedProjectServer
 		}			
 	}
 
+	public void upgradeToVersion38() throws Exception
+	{
+		moveFactorLinkCommentFieldsIntoThreatRatingCommentsData();
+		writeVersion(38);
+	}
+	
 	public void upgradeToVersion37() throws Exception
 	{
 		addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks();
@@ -227,6 +237,107 @@ public class DataUpgrader extends FileBasedProjectServer
 	{
 		moveFactorsToSpecificDirs();
 		writeVersion(35);
+	}
+	
+	private void moveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		final int FACTOR_LINK_TYPE = 6;
+		File factorLinkDir = getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
+		if (! factorLinkDir.exists())
+			return;
+		
+		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
+		if (! factorLinkManifestFile.exists())
+			return;
+
+		final int THREAT_RATING_COMMENTS_DATA_TYPE = 49;
+		File threatRatingCommentsDataDir = getObjectsDir(jsonDir, THREAT_RATING_COMMENTS_DATA_TYPE);
+		if (threatRatingCommentsDataDir.exists())
+			throw new RuntimeException("ThreatRatingCommentsData dirs exists");
+		
+		threatRatingCommentsDataDir.mkdirs();
+		
+		EnhancedJsonObject threatRatingCommentsDataManifestJson = new EnhancedJsonObject();
+		threatRatingCommentsDataManifestJson.put("Type", "ObjectManifest");
+		createEmptySingletonThreatRatingCommentsDataObject(threatRatingCommentsDataDir, threatRatingCommentsDataManifestJson, jsonDir);
+		writeManifest(threatRatingCommentsDataDir, threatRatingCommentsDataManifestJson);
+		
+		if (!threatRatingCommentsDataDir.exists())
+			throw new RuntimeException("no ThreatRatingCommentsData dirs exists");
+		
+		File threatRatingCommentsDataManifestFile = new File(threatRatingCommentsDataDir, "manifest");
+		if (! threatRatingCommentsDataManifestFile.exists())
+			throw new RuntimeException("no ThreatRatingCommentsData manifest exist");
+		
+		StringMap simpleThreatRatingCommentsMap = new StringMap();
+		StringMap stressThreatRatingCommentsMap = new StringMap();
+		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
+		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
+		for (int i = 0; i < factorLinkIds.length; ++i)
+		{
+			BaseId thisFactorLinkId = factorLinkIds[i];
+			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisFactorLinkId.asInt()));
+			EnhancedJsonObject factorLinkJson = readFile(factorLinkJsonFile);
+			ORef threatRef = getThreatLinkRef(factorLinkJson);
+			if (!threatRef.isInvalid())
+			{	
+				String threatRatingCommentsKey = createThreatRatingCommentsKey(factorLinkJson);
+				
+				String simpleThreatRatingComment = factorLinkJson.optString("SimpleThreatRatingComment");
+				simpleThreatRatingCommentsMap.add(threatRatingCommentsKey, simpleThreatRatingComment);
+				removeCommentsField(factorLinkJsonFile, factorLinkJson, "SimpleThreatRatingComment");
+				
+				String stressThreatRatingComment = factorLinkJson.optString("Comment");
+				stressThreatRatingCommentsMap.add(threatRatingCommentsKey, stressThreatRatingComment);
+				removeCommentsField(factorLinkJsonFile, factorLinkJson, "Comment");
+				
+				writeJsonFile(factorLinkJsonFile, factorLinkJson);
+			}
+		}
+		
+		ObjectManifest threatRatingCommentsDataManifest = new ObjectManifest(JSONFile.read(threatRatingCommentsDataManifestFile));
+		BaseId[] threatRatingCommentsDataIds = threatRatingCommentsDataManifest.getAllKeys();
+		if (threatRatingCommentsDataIds.length != 1)
+			throw new RuntimeException("Incorrect number of ThreatRatingCommentsData files found,  this is a singleton object");
+			
+		File threatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, Integer.toString(threatRatingCommentsDataIds[0].asInt()));
+		EnhancedJsonObject threatRatingCommentsDataJson = readFile(threatRatingCommentsDataFile);
+		threatRatingCommentsDataJson.put("SimpleThreatRatingCommentsMaps", simpleThreatRatingCommentsMap.toString());
+		threatRatingCommentsDataJson.put("StressBasedThreatRatingCommentsMaps", stressThreatRatingCommentsMap.toString());
+		writeJsonFile(threatRatingCommentsDataFile, threatRatingCommentsDataJson);
+	}
+
+	private void createEmptySingletonThreatRatingCommentsDataObject(File threatRatingCommentsDataDir, EnhancedJsonObject threatRatingCommentsDataManifestJson, File jsonDir) throws Exception
+	{
+		int highestId = readHighestIdInProjectFile(jsonDir);
+		int id = ++highestId;
+		threatRatingCommentsDataManifestJson.put(Integer.toString(id), "true");
+			
+		EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject();
+		threatStressRatingJson.put("Id", Integer.toString(id));
+		threatStressRatingJson.put("SimpleThreatRatingCommentsMaps", new StringMap().toString());
+		threatStressRatingJson.put("StressBasedThreatRatingCommentsMaps", new StringMap().toString());
+		
+		File threatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, Integer.toString(id));
+		createFile(threatRatingCommentsDataFile, threatStressRatingJson.toString());
+		writeHighestIdToProjectFile(jsonDir, id);
+	}
+	
+	private void removeCommentsField(File factorLinkJsonFile, EnhancedJsonObject factorLinkJson, String commentsField) throws Exception
+	{
+		factorLinkJson.remove(commentsField);
+		writeJson(factorLinkJsonFile, factorLinkJson);
+	}
+	
+	private String createThreatRatingCommentsKey(EnhancedJsonObject factorLinkJson)
+	{
+		ORef fromRef = factorLinkJson.getRef("FromRef");
+		ORef toRef = factorLinkJson.getRef("ToRef");
+		if (Target.is(fromRef))
+			return toRef.toString() + fromRef.toString();
+		
+		return fromRef.toString() + toRef.toString();
 	}
 	
 	private void addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
@@ -285,6 +396,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		writeJson(factorLinkJsonFile, factorLinkJson);
 	}
 	
+	//FIXME this needs to be refactored renamed,  its returning a threat ref not a threatLinkRef
 	public static ORef getThreatLinkRef(EnhancedJsonObject factorLinkJson)
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
