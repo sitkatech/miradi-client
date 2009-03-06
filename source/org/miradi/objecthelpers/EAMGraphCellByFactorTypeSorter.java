@@ -24,7 +24,7 @@ import java.util.Comparator;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 
-public class EAMGraphCellByFactorRefSorter implements Comparator<EAMGraphCell>
+public class EAMGraphCellByFactorTypeSorter implements Comparator<EAMGraphCell>
 {
 	public int compare(EAMGraphCell o1, EAMGraphCell o2)
 	{
