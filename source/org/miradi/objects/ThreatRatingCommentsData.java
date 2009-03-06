@@ -67,11 +67,11 @@ public class ThreatRatingCommentsData extends BaseObject
 	{
 		super.clear();
 		
-		simpleThreatRatingCommentsMaps = new StringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS);
-		stressBasedThreatRatingCommentsMaps = new StringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS);
+		simpleThreatRatingCommentsMap = new StringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS);
+		stressBasedThreatRatingCommentsMap = new StringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS);
 		
-		addField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS, simpleThreatRatingCommentsMaps);
-		addField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS, stressBasedThreatRatingCommentsMaps);
+		addField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS, simpleThreatRatingCommentsMap);
+		addField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS, stressBasedThreatRatingCommentsMap);
 	}
 
 	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
@@ -79,6 +79,6 @@ public class ThreatRatingCommentsData extends BaseObject
 	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS = "SimpleThreatRatingCommentsMaps";
 	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS = "StressBasedThreatRatingCommentsMaps";
 	
-	private StringMapData simpleThreatRatingCommentsMaps;
-	private StringMapData stressBasedThreatRatingCommentsMaps;
+	private StringMapData simpleThreatRatingCommentsMap;
+	private StringMapData stressBasedThreatRatingCommentsMap;
 }
