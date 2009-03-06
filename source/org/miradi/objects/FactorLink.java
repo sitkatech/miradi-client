@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
@@ -73,9 +72,9 @@ public class FactorLink extends BaseObject
 	}
 	
 	
-	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
+	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
 		//FIXME threat stress rating - TSRs should not be a part of a FL deep copy.
 		//they should be part of factor deep copy,  need to discuss options
 		deepObjectRefsToCopy.addAll(getThreatStressRatingRefs());

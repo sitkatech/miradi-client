@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
@@ -59,15 +58,15 @@ public class Stress extends Factor
 	}
 	
 	@Override
-	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
+	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList objectRefsToDeepCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
-		objectRefsToDeepCopy.addAll(getThreatStressRatingsToDeepCopy(selectedCellsToCopy));
+		ORefList objectRefsToDeepCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
+		objectRefsToDeepCopy.addAll(getThreatStressRatingsToDeepCopy(deepCopiedFactorRefs));
 		
 		return objectRefsToDeepCopy;
 	}
 
-	private ORefList getThreatStressRatingsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
+	private ORefList getThreatStressRatingsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList threatStressRatingReferrerRefs = findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		ORefList threatStressRatingsWithThreatInList = new ORefList();
@@ -76,25 +75,13 @@ public class Stress extends Factor
 			ORef threatStressRatingRef = threatStressRatingReferrerRefs.get(index);
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
 			ORef threatRef = threatStressRating.getThreatRef();
-			if (containsThreatRef(selectedCellsToCopy, threatRef))
+			if (deepCopiedFactorRefs.contains(threatRef))
 				threatStressRatingsWithThreatInList.add(threatStressRatingRef);
 		}
 		
 		return threatStressRatingsWithThreatInList;
 	}
 	
-	private boolean containsThreatRef(EAMGraphCell[] selectedCellsToCopy, ORef threatRef)
-	{
-		for (int index = 0; index < selectedCellsToCopy.length; ++index)
-		{
-			EAMGraphCell rawCell = selectedCellsToCopy[index];
-			if (rawCell.getWrappedFactorRef().equals(threatRef))
-				return true;	
-		}
-		
-		return false;
-	}
-
 	public boolean isStress()
 	{
 		return true;

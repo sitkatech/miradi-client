@@ -107,7 +107,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		{
 			EAMGraphCell cell = selectedCellsToCopy[i];
 			if (cell.isFactor())
-				addFactorDeepCopies(selectedCellsToCopy, deepCopier, cell.getDiagramFactor());
+				addFactorDeepCopies(getSafeCurrentlyDeepCopiedFactorRefs(), deepCopier, cell.getDiagramFactor());
 			
 			if (cell.isFactorLink())
 				addFactorLinkDeepCopies(deepCopier, cell.getDiagramLink());
@@ -136,19 +136,19 @@ public class TransferableMiradiList implements Transferable, Serializable
 
 	private void addFactorDeepCopies(ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
 	{
-		addFactorDeepCopies(new EAMGraphCell[0], deepCopier, diagramFactor);
+		addFactorDeepCopies(new ORefList(), deepCopier, diagramFactor);
 	}
 	
-	private void addFactorDeepCopies(EAMGraphCell[] selectedCells, ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
+	private void addFactorDeepCopies(ORefList deepCopiedFactorRefs, ObjectDeepCopier deepCopier, DiagramFactor diagramFactor)
 	{
 		if (shouldDeepCopyFactor(diagramFactor.getWrappedType()))
 		{
 			Factor factor = diagramFactor.getWrappedFactor();		
-			Vector factorJsonStrings = deepCopier.createDeepCopy(selectedCells, factor);
+			Vector factorJsonStrings = deepCopier.createDeepCopy(deepCopiedFactorRefs, factor);
 			factorDeepCopies.addAll(factorJsonStrings);
 		}
 	
-		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(selectedCells, diagramFactor);
+		Vector diagramFactorJsonStrings = deepCopier.createDeepCopy(deepCopiedFactorRefs, diagramFactor);
 		diagramFactorDeepCopies.addAll(diagramFactorJsonStrings);
 		
 		addToUpperMostLeftMostCorner(diagramFactor);
@@ -192,6 +192,19 @@ public class TransferableMiradiList implements Transferable, Serializable
 	public Vector<String> getFactorDeepCopies()
 	{
 		return factorDeepCopies;
+	}
+	
+	private ORefList getSafeCurrentlyDeepCopiedFactorRefs()
+	{
+		try
+		{
+			return getFactorRefs();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new ORefList();
+		}
 	}
 	
 	public ORefList getFactorRefs() throws Exception

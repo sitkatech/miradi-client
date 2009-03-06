@@ -32,7 +32,6 @@ import org.martus.util.xml.XmlUtilities;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramChainObject;
-import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
@@ -1083,7 +1082,7 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 	
-	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
+	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		return getAllOwnedObjects();
 	}

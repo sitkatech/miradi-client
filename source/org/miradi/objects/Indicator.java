@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -229,9 +228,9 @@ public class Indicator extends BaseObject
 		return futureStatusSummary.get();
 	}
 		
-	public ORefList getAllObjectsToDeepCopy(EAMGraphCell[] selectedCellsToCopy)
+	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(selectedCellsToCopy);
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
 		deepObjectRefsToCopy.addAll(getMethodRefs());
 		deepObjectRefsToCopy.addAll(getMeasurementRefs());
 		deepObjectRefsToCopy.addAll(getProgressReportRefs());
