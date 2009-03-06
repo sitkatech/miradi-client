@@ -50,7 +50,7 @@ public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 		StressBasedThreatRatingFramework framework = new StressBasedThreatRatingFramework(getProject());
 		int overallProjectRating = framework.getOverallProjectRating();
 		
-		return convertToChoiceItem(convertIntToString(overallProjectRating));
+		return convertThreatRatingCodeToChoiceItem(convertIntToString(overallProjectRating));
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

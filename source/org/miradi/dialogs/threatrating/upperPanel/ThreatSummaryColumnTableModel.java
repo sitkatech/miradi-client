@@ -51,7 +51,7 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	public Object getValueAt(int row, int column)
 	{
 		String valueToConvert = getCalculatedThreatSummaryRatingValue(row);
-		return convertToChoiceItem(valueToConvert);
+		return convertThreatRatingCodeToChoiceItem(valueToConvert);
 	}
 	
 	private String getCalculatedThreatSummaryRatingValue(int row)
