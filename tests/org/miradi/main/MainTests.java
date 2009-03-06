@@ -84,6 +84,7 @@ import org.miradi.objects.TestCause;
 import org.miradi.objects.TestConceptualModelDiagram;
 import org.miradi.objects.TestConceptualModelThreatRatings;
 import org.miradi.objects.TestCostAllocationRule;
+import org.miradi.objects.TestDiagramChainObject;
 import org.miradi.objects.TestDiagramContentsObject;
 import org.miradi.objects.TestDiagramLink;
 import org.miradi.objects.TestDiagramObject;
@@ -326,6 +327,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestObjective.class));
 		suite.addTest(new TestSuite(TestObjectManager.class));
 		suite.addTest(new TestSuite(TestProjectChainObject.class));
+		suite.addTest(new TestSuite(TestDiagramChainObject.class));
 		suite.addTest(new TestSuite(TestProjectMetadata.class));
 		suite.addTest(new TestSuite(TestProjectResource.class));
 		suite.addTest(new TestSuite(TestTask.class));
