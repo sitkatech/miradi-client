@@ -49,7 +49,7 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	public Object getValueAt(int row, int column)
 	{
 		String valueToConvert = getCalculatedTargetSummaryRatingValue(column);
-		return convertToChoiceItem(valueToConvert);
+		return convertThreatRatingCodeToChoiceItem(valueToConvert);
 	}
 	
 	private String getCalculatedTargetSummaryRatingValue(int column)

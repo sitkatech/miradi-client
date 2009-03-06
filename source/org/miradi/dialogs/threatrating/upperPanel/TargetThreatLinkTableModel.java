@@ -54,7 +54,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	public Object getValueAt(int row, int column)
 	{
 		String valueToConvert = getFactorLinkThreatRatingBundle(row, column);
-		return convertToChoiceItem(valueToConvert);	
+		return convertThreatRatingCodeToChoiceItem(valueToConvert);	
 	}
 
 	private String getFactorLinkThreatRatingBundle(int row, int column)
