@@ -238,6 +238,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 	}
+	
+	public void becomeActive()
+	{
+	}
+	
+	public void becomeInactive()
+	{
+	}
 
 	public void setFocusOnFirstField()
 	{
@@ -768,6 +776,21 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		{	
 		}
 
+		public boolean isActive()
+		{
+			return isActive;
+		}
+		
+		public void becomeActive()
+		{
+			isActive = true;
+		}
+
+		public void becomeInactive()
+		{
+			isActive = false;
+		}
+
 		public void valueChanged(ListSelectionEvent e)
 		{
 			throw new RuntimeException("Not supported");
@@ -779,6 +802,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		}
 
 		private Vector<ListSelectionListener> listeners;
+		private boolean isActive;
 	}
 
 	private Vector<AbstractObjectDataInputPanel> getSubPanels()

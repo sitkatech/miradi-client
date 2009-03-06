@@ -113,6 +113,16 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return component;
 	}
 	
+	public void becomeActive()
+	{
+		getPicker().becomeActive();
+	}
+
+	public void becomeInactive()
+	{
+		getPicker().becomeInactive();
+	}
+
 	abstract public BaseObject getSelectedObject();
 	
 	abstract public void commandExecuted(CommandExecutedEvent event);
@@ -121,5 +131,4 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 	private OneRowPanel buttons;
 	private ObjectPicker component;
 	private AbstractObjectDataInputPanel propertiesPanel;
-
 }

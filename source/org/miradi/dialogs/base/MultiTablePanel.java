@@ -117,6 +117,21 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	{	
 	}
 
+	public boolean isActive()
+	{
+		return isActive;
+	}
+	
+	public void becomeActive()
+	{
+		isActive = true;
+	}
+
+	public void becomeInactive()
+	{
+		isActive = false;
+	}
+
 	public void clearSelection()
 	{
 	}
@@ -139,4 +154,5 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	protected MultiTableHorizontalScrollController horizontalController;
 	private MultiTableRowHeightController rowHeightController;
 	private MultiTableRowSortController rowSortController;
+	private boolean isActive;
 }

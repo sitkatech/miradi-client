@@ -60,9 +60,12 @@ import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.legend.PlanningViewControlPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.StrategicPlanTreeTableModel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
@@ -104,24 +107,59 @@ public class PlanningView extends TabbedView
 		super(mainWindowToUse);
 		addPlanningViewDoersToMap();
 	}
-
-	public void becomeActive() throws Exception
+	
+	class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPanel
 	{
-		super.becomeActive();
-		planningManagementPanel.updateSplitterLocation();
-		strategicPlanManagementPanel.updateSplitterLocation();
-		resourceManagementPanel.updateSplitterLocation();
-		accountingCodePoolManagementPanel.updateSplitterLocation();
-		fundingSourcePoolManagementPanel.updateSplitterLocation();
+		public ConfigurablePlanningTreeManagementPanel(
+				MainWindow mainWindowToUse,
+				PlanningTreeTablePanel planningTreeTablePanel,
+				PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
+				throws Exception
+		{
+			super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
+		}
+		
+		@Override
+		public String getPanelDescription()
+		{
+			return panelDescription;
+		}
+
+		private final String panelDescription = EAM.text("Tab|Planning");
+	}
+	
+	class StrategicPlanManagementPanel extends PlanningTreeManagementPanel
+	{
+		public StrategicPlanManagementPanel(MainWindow mainWindowToUse,
+				PlanningTreeTablePanel planningTreeTablePanel,
+				PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
+				throws Exception
+		{
+			super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
+		}
+		
+		@Override
+		public String getPanelDescription()
+		{
+			return panelDescription;
+		}
+
+		private final String panelDescription = EAM.text("Tab|Strategic Plan");
 	}
 
 	public void createTabs() throws Exception
 	{
 		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
-		planningManagementPanel = createManagementPanel(planningTreeTablePanel);
+		PlanningTreeTable treeAsObjectPicker1 = (PlanningTreeTable)planningTreeTablePanel.getTree();
+		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker1);
+		PlanningTreeManagementPanel managementPanel = new ConfigurablePlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
+		planningManagementPanel = managementPanel;
 		
-		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), new Class[0]);
-		strategicPlanManagementPanel = createManagementPanel(strategicPlanTreeTablePanel);
+		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(getProject());
+		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), strategicPlanTreeTableModel, new Class[0]);
+		PlanningTreeTable treeAsObjectPicker2 = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
+		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker2);
+		strategicPlanManagementPanel = new StrategicPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
@@ -142,14 +180,17 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 
-	private PlanningTreeManagementPanel createManagementPanel(
-			PlanningTreeTablePanel treePanel) throws Exception
+	@Override
+	public void becomeActive() throws Exception
 	{
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treePanel.getTree();
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
-		PlanningTreeManagementPanel managementPanel = new PlanningTreeManagementPanel(getMainWindow(), treePanel, planningTreePropertiesPanel);
-		return managementPanel;
+		super.becomeActive();
+		planningManagementPanel.updateSplitterLocation();
+		strategicPlanManagementPanel.updateSplitterLocation();
+		resourceManagementPanel.updateSplitterLocation();
+		accountingCodePoolManagementPanel.updateSplitterLocation();
+		fundingSourcePoolManagementPanel.updateSplitterLocation();
 	}
+
 	
 	class MainPlanningPanel extends DisposablePanelWithDescription implements MiradiTabContentsPanelInterface
 	{
@@ -162,12 +203,6 @@ public class PlanningView extends TabbedView
 			add(planningManagementPanel, BorderLayout.CENTER);
 		}
 		
-		@Override
-		public void dispose()
-		{
-			super.dispose();
-		}
-
 		public String getTabName()
 		{
 			return planningManagementPanel.getTabName();
@@ -223,6 +258,16 @@ public class PlanningView extends TabbedView
 			planningManagementPanel.exportRtf(writer);
 		}
 		
+		public void becomeActive()
+		{
+			planningManagementPanel.becomeActive();
+		}
+		
+		public void becomeInactive()
+		{
+			planningManagementPanel.becomeInactive();
+		}
+
 		@Override
 		public String getPanelDescription()
 		{
@@ -236,6 +281,9 @@ public class PlanningView extends TabbedView
 	{
 		planningManagementPanel.dispose();
 		planningManagementPanel = null;
+		
+		strategicPlanManagementPanel.dispose();
+		strategicPlanManagementPanel = null;
 		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;

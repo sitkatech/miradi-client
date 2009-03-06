@@ -66,22 +66,37 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	
 	public void dispose()
 	{
-		super.dispose();
 		goalPropertiesPanel.dispose();
+		goalPropertiesPanel = null;
 		objectivePropertiesPanel.dispose();
+		objectivePropertiesPanel = null;
 		indicatorPropertiesPanel.dispose();
+		indicatorPropertiesPanel = null;
 		strategyPropertiesPanel.dispose();
+		strategyPropertiesPanel = null;
 		taskPropertiesInputPanel.dispose();
+		taskPropertiesInputPanel = null;
 		measurementPropertiesPanel.dispose();
+		measurementPropertiesPanel = null;
 		targetSimpleModePropertiesPanel.dispose();
+		targetSimpleModePropertiesPanel = null;
 		targetKeaModePropertiesPanel.dispose();
+		targetKeaModePropertiesPanel = null;
 		threatPropertiesPanel.dispose();
+		threatPropertiesPanel = null;
 		contributingFactorPropertiesPanel.dispose();
+		contributingFactorPropertiesPanel = null;
 		intermediateResultPropertiesPanel.dispose();
+		intermediateResultPropertiesPanel = null;
 		threatReductionResultPropertiesPanel.dispose();
+		threatReductionResultPropertiesPanel = null;
 		resultsChainPropertiesPanel.dispose();
+		resultsChainPropertiesPanel = null;
 		conceptualModelPropertiesPanel.dispose();
+		conceptualModelPropertiesPanel = null;
 		blankPropertiesPanel.dispose();
+		blankPropertiesPanel = null;
+		super.dispose();
 	}
 	
 	private void createPropertiesPanels() throws Exception

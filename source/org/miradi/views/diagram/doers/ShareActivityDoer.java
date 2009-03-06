@@ -33,6 +33,9 @@ public class ShareActivityDoer extends AbstractShareDoer
 {	
 	public boolean isAvailable()
 	{
+		if(!super.isAvailable())
+			return false;
+		
 		if (getSingleSelected(Strategy.getObjectType()) == null)
 			return false;
 		

@@ -45,4 +45,8 @@ public interface ObjectPicker extends ListSelectionListener
 	
 	public void expandAll(ViewData viewData) throws Exception;
 	public void collapseAll(ViewData viewData) throws Exception;
+	
+	public boolean isActive();
+	public void becomeActive();
+	public void becomeInactive();
 }

@@ -21,7 +21,17 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.util.HashSet;
+import java.util.Set;
 
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
+import org.miradi.actions.ActionTreeCreateActivity;
+import org.miradi.actions.ActionTreeCreateIndicator;
+import org.miradi.actions.ActionTreeCreateMethod;
+import org.miradi.actions.ActionTreeCreateObjective;
+import org.miradi.actions.ActionTreeCreateTask;
+import org.miradi.actions.ActionTreeShareActivity;
+import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
@@ -64,6 +74,22 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		return getNodeForRow(row).areBudgetValuesAllocated();
+	}
+	
+	@Override
+	protected Set<Class> getRelevantActions()
+	{
+		HashSet<Class> actions = new HashSet<Class>();
+		actions.addAll(super.getRelevantActions());
+		actions.add(ActionTreeCreateObjective.class);
+		actions.add(ActionTreeCreateIndicator.class);
+		actions.add(ActionTreeCreateActivity.class);
+		actions.add(ActionTreeShareActivity.class);
+		actions.add(ActionTreeCreateMethod.class);
+		actions.add(ActionTreeShareMethod.class);
+		actions.add(ActionTreeCreateTask.class);			
+		actions.add(ActionDeletePlanningViewTreeNode.class);
+		return actions;
 	}
 
 	public static final String UNIQUE_IDENTIFIER = "PlanningTreeTable";

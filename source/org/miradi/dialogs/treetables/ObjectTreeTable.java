@@ -22,7 +22,9 @@ package org.miradi.dialogs.treetables;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 import javax.swing.JTable;
@@ -34,6 +36,11 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
+import org.miradi.actions.ActionCollapseAllNodes;
+import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.ActionTreeNodeDown;
+import org.miradi.actions.ActionTreeNodeUp;
+import org.miradi.actions.Actions;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -52,7 +59,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	{
 		super(mainWindowToUse, treeTableModelToUse);
 		project = mainWindowToUse.getProject();
-		selectionListeners = new Vector();
+		selectionListeners = new Vector<ListSelectionListener>();
 
 		setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
 		getTree().setShowsRootHandles(true);
@@ -166,6 +173,31 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return selectionHierarchies;
 	}
 
+	public boolean isActive()
+	{
+		return isActive;
+	}
+	
+	public void becomeActive()
+	{
+		Actions actions = getMainWindow().getActions();
+		for(Class actionClass : getRelevantActions())
+		{
+			actions.getObjectsAction(actionClass).addPicker(this);
+		}
+		isActive = true;
+	}
+
+	public void becomeInactive()
+	{
+		isActive = false;
+		Actions actions = getMainWindow().getActions();
+		for(Class actionClass : getRelevantActions())
+		{
+			actions.getObjectsAction(actionClass).removePicker(this);
+		}
+	}
+
 	private ORef getRootNodeRef()
 	{
 		return getTreeTableModel().getRootNode().getObjectReference();
@@ -212,7 +244,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
-			ListSelectionListener listener = (ListSelectionListener)selectionListeners.get(i);
+			ListSelectionListener listener = selectionListeners.get(i);
 			listener.valueChanged(null);
 		}
 	}
@@ -274,6 +306,17 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		private int row;
 	}
 
-	Project project;
-	Vector selectionListeners;
+	protected Set<Class> getRelevantActions()
+	{
+		HashSet<Class> set = new HashSet<Class>();
+		set.add(ActionCollapseAllNodes.class);
+		set.add(ActionExpandAllNodes.class);
+		set.add(ActionTreeNodeUp.class);
+		set.add(ActionTreeNodeDown.class);
+		return set;
+	}
+
+	protected Project project;
+	private Vector<ListSelectionListener> selectionListeners;
+	private boolean isActive;
 }

@@ -28,7 +28,7 @@ abstract public class AbstractTreeExpansionDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return true;
+		return getPicker() != null;
 	}
 	
 	@Override

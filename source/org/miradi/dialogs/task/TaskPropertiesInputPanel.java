@@ -39,11 +39,6 @@ import org.miradi.objects.Task;
 
 public class TaskPropertiesInputPanel extends ObjectDataInputPanel
 {
-	public TaskPropertiesInputPanel(MainWindow mainWindow, BaseId idToEdit) throws Exception
-	{
-		this(mainWindow, null, idToEdit);
-	}
-
 	public TaskPropertiesInputPanel(MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel, BaseId idToEdit) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.TASK, idToEdit);

@@ -30,6 +30,14 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class ObjectsDoer extends ViewDoer
 {
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+		
+		return (getPicker() != null);
+	}
+	
 	public void setPicker(ObjectPicker pickerToUse)
 	{
 		picker = pickerToUse;

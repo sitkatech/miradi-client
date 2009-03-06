@@ -821,6 +821,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 
 	public void saveSplitterLocation(String name, int location)
 	{
+		if(name == null)
+			return;
 		preferences.setTaggedInt(name, location);
 	}
 	

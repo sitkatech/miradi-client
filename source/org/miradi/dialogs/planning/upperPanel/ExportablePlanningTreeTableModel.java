@@ -76,5 +76,11 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		return node;
 	}
 	
+	@Override
+	public void updateColumnsToShow() throws Exception
+	{
+	}
+
 	private ORefList rowObjectRefs;
+
 }

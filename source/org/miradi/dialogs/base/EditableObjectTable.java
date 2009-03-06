@@ -190,6 +190,21 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	public void collapseAll(ViewData viewData) throws Exception
 	{	
 	}
+	
+	public boolean isActive()
+	{
+		return isActive;
+	}
+	
+	public void becomeActive()
+	{
+		isActive = true;
+	}
+
+	public void becomeInactive()
+	{
+		isActive = false;
+	}
 
 	public void valueChanged(ListSelectionEvent e)
 	{
@@ -282,5 +297,6 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	
 	private Vector selectionListeners;
 	private EditableObjectTableModel model;
+	private boolean isActive;
 }
 

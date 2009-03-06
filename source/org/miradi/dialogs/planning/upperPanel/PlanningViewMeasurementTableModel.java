@@ -121,7 +121,7 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 
 	private CodeList getVisibleRowCodes() throws Exception
 	{
-		CodeList visibleRows = PlanningTreeTableModel.getVisibleRowCodes(getProject());
+		CodeList visibleRows = ConfigurablePlanningTreeTableModel.getVisibleRowCodes(getProject());
 		return visibleRows;
 	}
 	

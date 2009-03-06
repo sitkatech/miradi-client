@@ -53,7 +53,7 @@ public class DisposablePanel extends JPanel
 		for(int i = 0; i < objectsActionsToRelease.size(); ++i)
 		{
 			ObjectsAction action = (ObjectsAction)objectsActionsToRelease.get(i);
-			action.setPicker(null);
+			action.addPicker(null);
 		}
 	}
 	

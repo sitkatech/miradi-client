@@ -28,6 +28,12 @@ abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 {
 	public boolean isAvailable()
 	{
+		if(!super.isAvailable())
+			return false;
+		
+		if(!getProject().isOpen())
+			return false;
+		
 		if (!isPlanningView())
 			return false;
 		

@@ -17,31 +17,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
+package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
-import org.miradi.utils.CodeList;
-import org.miradi.views.ObjectsDoer;
-import org.miradi.views.planning.PlanningView;
+import org.miradi.project.Project;
+import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-abstract public class AbstractTreeNodeDoer extends ObjectsDoer
+public class StrategicPlanTreeTableModel extends PlanningTreeTableModel
 {
-	protected BaseObject getSingleSelectedObject()
+	public StrategicPlanTreeTableModel(Project project) throws Exception
 	{
-		BaseObject[] selectedObjects = getObjects();
-		if(selectedObjects.length != 1)
-			return null;
-		
-		return selectedObjects[0];
+		super(project, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns());
 	}
 
-	protected boolean childWouldBeVisible(String objectTypeName) throws Exception
+	@Override
+	public void updateColumnsToShow() throws Exception
 	{
-		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
-		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
-
-		return (visibleRowCodes.contains(objectTypeName));
 	}
+
 }

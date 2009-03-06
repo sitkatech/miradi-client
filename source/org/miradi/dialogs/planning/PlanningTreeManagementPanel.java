@@ -28,12 +28,11 @@ import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
 
-public class PlanningTreeManagementPanel extends ObjectListManagementPanel
+abstract public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
 	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
@@ -41,10 +40,7 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 		mainWindow = mainWindowToUse;
 	}
 
-	public String getPanelDescription()
-	{
-		return PANEL_DESCRIPTION;
-	}
+	abstract public String getPanelDescription();
 	
 	@Override
 	public Icon getIcon()
@@ -86,8 +82,6 @@ public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 	{
 		return PlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(mainWindow);
 	}
-	
-	private static String PANEL_DESCRIPTION = EAM.text("Tab|Planning");
 	
 	private MainWindow mainWindow;
 }

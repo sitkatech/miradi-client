@@ -132,6 +132,9 @@ abstract public class TabbedView extends UmbrellaView
 		ignoreTabChanges = true;
 		try
 		{
+			MiradiTabContentsPanelInterface selectedTabPanel = getSelectedTabPanel();
+			if(selectedTabPanel != null)
+				selectedTabPanel.becomeInactive();
 			deleteTabs();
 			tabs.removeAll();
 		}
@@ -420,6 +423,13 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		ObjectDataInputField.saveFocusedFieldPendingEdits();
 		closeActivePropertiesDialog();
+		
+		if(currentTab >= 0)
+		{
+			MiradiTabContentsPanelInterface oldPanel = getTabPanel(currentTab);
+			if(oldPanel != null)
+				oldPanel.becomeInactive();
+		}
 	}
 
 	class TabChangeListener implements ChangeListener
@@ -431,9 +441,20 @@ abstract public class TabbedView extends UmbrellaView
 			if(!ignoreTabChanges)
 				recordTabChangeCommand(newTab);
 
+			int oldTab = currentTab;
 			currentTab = newTab;
 			if(!ignoreTabChanges)
 				tabWasSelected();
+
+			if(newTab >= 0)
+			{
+				MiradiTabContentsPanelInterface newPanel = getTabPanel(newTab);
+				if(newPanel != null)
+					newPanel.becomeActive();
+			}
+			
+			if(oldTab != newTab)
+				getMainWindow().updateActionsAndStatusBar();
 		}
 
 		private void recordTabChangeCommand(int newTab)
