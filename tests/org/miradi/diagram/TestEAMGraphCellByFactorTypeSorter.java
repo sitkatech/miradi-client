@@ -28,7 +28,7 @@ import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.EAMGraphCellByFactorRefSorter;
+import org.miradi.objecthelpers.EAMGraphCellByFactorTypeSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -36,9 +36,9 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 
-public class TestEAMGraphCellByFactorSorter extends TestCaseWithProject
+public class TestEAMGraphCellByFactorTypeSorter extends TestCaseWithProject
 {
-	public TestEAMGraphCellByFactorSorter(String name)
+	public TestEAMGraphCellByFactorTypeSorter(String name)
 	{
 		super(name);
 	}
@@ -67,7 +67,7 @@ public class TestEAMGraphCellByFactorSorter extends TestCaseWithProject
 		cellsToSort.add(linkCell);
 		
 		EAMGraphCell[] cells = cellsToSort.toArray(new EAMGraphCell[0]);
-		Arrays.sort(cells, new EAMGraphCellByFactorRefSorter());
+		Arrays.sort(cells, new EAMGraphCellByFactorTypeSorter());
 		assertEquals("wrong cell for index 1?", cells[0], causeCell);
 		assertEquals("wrong cell for index 1?", cells[1], strategyCell);
 		assertEquals("wrong cell for index 1?", cells[2], targetCell);
