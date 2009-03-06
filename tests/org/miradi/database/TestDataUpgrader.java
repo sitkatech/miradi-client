@@ -35,6 +35,7 @@ import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramLink;
@@ -146,6 +147,67 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	public void testMoveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
+	{
+		String threatJsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1236342784060\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Factor\",\"Id\":25}";
+		String targetJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":33,\\\"ObjectId\\\":29}]}\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1236342789393\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Target\",\"Id\":23,\"CurrentStatusJustification\":\"\"}";
+		String linkWithCommentsFieldsJsonString = "{\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":25}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1236342871453\",\"BudgetCostOverride\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":23}\",\"BudgetCostMode\":\"\",\"Comment\":\"stress based comment in link\",\"SimpleThreatRatingComment\":\"simple based comment in link\",\"Label\":\"\",\"Id\":27,\"BidirectionalLink\":\"\",\"WhoOverrideRefs\":\"\"}";
+
+		File jsonDir = createJsonDir();
+
+		int[] causeIds = {25, };
+		final int CAUSE_TYPE = 20;
+		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threatJsonString, });
+
+		int[] targetIds = {23, };
+		final int TARGET_TYPE = 22;
+		createObjectFiles(jsonDir, TARGET_TYPE, targetIds, new String[]{targetJsonString, });
+	
+		int[] factorLinkIds = {27, };
+		final int FACTOR_LINK_TYPE = 6;
+		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{linkWithCommentsFieldsJsonString, });
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":27}");
+		
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion38();
+	
+		
+		final int THREAT_RATING_COMMENTS_DATA_TYPE = 49;
+		final String MANIFEST_FILE_NAME = "manifest";
+		File threatRatingCommentsDataDir = DataUpgrader.getObjectsDir(jsonDir, THREAT_RATING_COMMENTS_DATA_TYPE);
+		File threatRatingCommentsManifestFile = new File(threatRatingCommentsDataDir, MANIFEST_FILE_NAME);
+		ObjectManifest threatRatingCommentsManifestObject  = new ObjectManifest(JSONFile.read(threatRatingCommentsManifestFile));
+		BaseId[] allKeys = threatRatingCommentsManifestObject.getAllKeys();
+		assertEquals("wrong threat rating comments Data files count?", 1, allKeys.length);
+		
+		BaseId singleThreatRatingCommentsDataId = allKeys[0];
+		File singleThreatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, singleThreatRatingCommentsDataId.toString());
+		EnhancedJsonObject threatRatingCommentsDataJson = new EnhancedJsonObject(readFile(singleThreatRatingCommentsDataFile));
+		
+		ORef threatRef = new ORef(Cause.getObjectType(), new BaseId(causeIds[0]));
+		ORef targetRef = new ORef(Target.getObjectType(), new BaseId(targetIds[0]));
+		String key = threatRef.toString() + targetRef.toString();
+		
+		StringMap simpleThreatRatingCommentsMap2 = new StringMap(threatRatingCommentsDataJson.optString("SimpleThreatRatingCommentsMaps"));
+		assertEquals("simple threat rating comments map should not be empty?", 1, simpleThreatRatingCommentsMap2.size());
+		String simpleBasedComment = simpleThreatRatingCommentsMap2.get(key);
+		assertEquals("wrong comment for key", "simple based comment in link", simpleBasedComment);
+		
+		StringMap stressThreatRatingCommentsMap2 = new StringMap(threatRatingCommentsDataJson.optString("StressBasedThreatRatingCommentsMaps"));
+		assertEquals("stress threat rating comments map should not be empty?", 1, stressThreatRatingCommentsMap2.size());
+		String stressBasedComment = stressThreatRatingCommentsMap2.get(key);
+		assertEquals("wrong comment for key", "stress based comment in link", stressBasedComment);
+		
+		File factorLinkDir = DataUpgrader.getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
+		File factorLinkFile = new File(factorLinkDir, Integer.toString(factorLinkIds[0]));
+		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(readFile(factorLinkFile));
+		assertFalse("didnt remove simple threat rating comments field from factorLink", factorLinkJson.has("SimpleThreatRatingComment"));
+		assertFalse("didnt remove comments field from factorLink", factorLinkJson.has("Comments"));
 	}
 	
 	public void testAddThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
