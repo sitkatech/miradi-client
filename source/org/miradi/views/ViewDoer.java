@@ -25,6 +25,11 @@ import org.miradi.views.umbrella.UmbrellaView;
 
 abstract public class ViewDoer extends MainWindowDoer
 {
+	public boolean isAvailable()
+	{
+		return true;
+	}
+	
 	public void setView(UmbrellaView view)
 	{
 		this.view = view;

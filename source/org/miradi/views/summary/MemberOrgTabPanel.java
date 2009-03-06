@@ -112,6 +112,16 @@ public class MemberOrgTabPanel extends DisposablePanelWithDescription implements
 		dataPanel.exportRtf(writer);
 	}
 	
+	public void becomeActive()
+	{
+		dataPanel.becomeActive();
+	}
+	
+	public void becomeInactive()
+	{
+		dataPanel.becomeInactive();
+	}
+
 	@Override
 	public String getPanelDescription()
 	{

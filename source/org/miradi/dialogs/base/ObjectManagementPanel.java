@@ -55,6 +55,19 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		
 		super.dispose();
 	}
+	
+	public void becomeActive()
+	{
+		updateSplitterLocation();
+		getListPanel().becomeActive();
+	}
+	
+	public void becomeInactive()
+	{
+		ObjectCollectionPanel listPanel = getListPanel();
+		if(listPanel != null)
+			listPanel.becomeInactive();
+	}
 
 	public void addTablePanelButton(ObjectsAction action)
 	{

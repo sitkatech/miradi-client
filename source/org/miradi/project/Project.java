@@ -581,7 +581,7 @@ public class Project
 
 	//TODO: need to remvoe duplicate code after test code fixed as to not need to be tested for
 	// between writeStartingLogEntry and writeLogLine...the two new File() lines
-	private void writeStartingLogEntry() throws IOException
+	private void writeStartingLogEntry() throws Exception
 	{
 		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);

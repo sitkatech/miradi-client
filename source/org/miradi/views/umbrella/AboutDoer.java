@@ -57,8 +57,15 @@ public class AboutDoer extends MainWindowDoer
 		text += "<p>";
 		{
 			String template = EAM.text("<strong>Version: %s</strong>");
-			String translationVersion = VersionConstants.getVersionAndTimestamp();
-			text += " " + EAM.substitute(template, translationVersion);
+			try
+			{
+				String translationVersion = VersionConstants.getVersionAndTimestamp();
+				text += " " + EAM.substitute(template, translationVersion);
+			}
+			catch(Exception e)
+			{
+				EAM.logError("Unable to determine Miradi version number");
+			}
 		}
 		if(!Translation.isDefaultLocalization())
 		{

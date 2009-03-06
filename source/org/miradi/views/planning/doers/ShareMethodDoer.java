@@ -31,6 +31,9 @@ public class ShareMethodDoer extends AbstractShareDoer
 	@Override
 	public boolean isAvailable()
 	{
+		if(!super.isAvailable())
+			return false;
+		
 		return getSingleSelected(getParentType()) != null;
 	}
 	

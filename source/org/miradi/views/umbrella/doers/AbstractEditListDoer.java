@@ -32,6 +32,8 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
+		if(!isProjectOpen())
+			return false;
 		return (getSelectedObject() != null);
 	}
 	

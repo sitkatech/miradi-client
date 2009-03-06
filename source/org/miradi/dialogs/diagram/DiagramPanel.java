@@ -221,6 +221,16 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 	{
 	}
 
+	public void becomeActive()
+	{
+		// TODO: When diagramSplitter has becomeActive, call it from here
+	}
+	
+	public void becomeInactive()
+	{
+		// TODO: When diagramSplitter has becomeInactive, call it from here
+	}
+
 	abstract protected DiagramSplitPane createDiagramSplitter() throws Exception;
 	
 	private DiagramSplitPane diagramSplitter;

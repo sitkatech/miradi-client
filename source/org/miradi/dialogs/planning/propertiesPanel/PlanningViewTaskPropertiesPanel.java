@@ -48,12 +48,10 @@ public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanelWithSec
 	
 	public void dispose()
 	{
-		super.dispose();
-		taskPropertiesInputPanel.dispose();
-		taskPropertiesInputPanel = null;
-		
 		assignmentEditor.dispose();
 		assignmentEditor = null;
+
+		super.dispose();
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)

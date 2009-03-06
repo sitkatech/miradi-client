@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
+import java.util.HashSet;
+
 import javax.swing.Icon;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -33,44 +35,63 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 	public ObjectsAction(MainWindow mainWindowToUse, String label)
 	{
 		super(mainWindowToUse, label);
+		initialize();
 	}
 	
 	public ObjectsAction(MainWindow mainWindowToUse, String label, String icon)
 	{
 		super(mainWindowToUse, label, icon);
+		initialize();
 	}
 	
 	public ObjectsAction(MainWindow mainWindowToUse, String label, Icon icon)
 	{
 		super(mainWindowToUse, label, icon);
+		initialize();
 	}
 	
+	private void initialize()
+	{
+		pickers = new HashSet<ObjectPicker>();
+	}
+
 	public boolean isObjectAction()
 	{
 		return true;
 	}
 	
-	public void setPicker(ObjectPicker newPicker)
+	public void addPicker(ObjectPicker newPicker)
 	{
-		if(picker == newPicker)
+		if(newPicker == null)
 			return;
 		
-		if(picker != null && newPicker != null)
-			EAM.logWarning("Multiple pickers for " + getClass().getSimpleName());
+		if(pickers.contains(newPicker))
+			return;
 		
-		if(picker != null)
-			picker.removeSelectionChangeListener(this);
+		pickers.add(newPicker);
+		newPicker.addSelectionChangeListener(this);
 
-		picker = newPicker;
-		if(picker != null)
-			picker.addSelectionChangeListener(this);
+		int activePickerCount = 0;
+		for(ObjectPicker picker : pickers)
+		{
+			if(picker.isActive())
+				++activePickerCount;
+		}
+		
+		if(activePickerCount > 1)
+			EAM.logWarning("Multiple active pickers for " + getClass().getSimpleName());
+	}
+
+	public void removePicker(ObjectPicker toRemove)
+	{
+		pickers.remove(toRemove);
 	}
 
 	public Doer getDoer()
 	{
 		Doer doer = super.getDoer();
 		if(doer != null)
-			doer.setPicker(picker);
+			doer.setPicker(getPicker());
 		return doer;
 	}
 
@@ -81,8 +102,19 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 	
 	public ObjectPicker getPicker()
 	{
-		return picker;
+		ObjectPicker currentPicker = null;
+		for(ObjectPicker picker : pickers)
+		{
+			if(picker.isActive())
+			{
+				if(currentPicker != null)
+					EAM.logWarning("Two active pickers:\n " + picker.getClass() + " and\n " + currentPicker.getClass());
+				currentPicker = picker;
+			}
+		}
+		return currentPicker;
 	}
 
-	ObjectPicker picker;
+	private HashSet<ObjectPicker> pickers;
+
 }

@@ -79,9 +79,25 @@ public class StaticPicker implements ObjectPicker
 	{	
 	}
 	
+	public boolean isActive()
+	{
+		return isActive;
+	}
+	
+	public void becomeActive()
+	{
+		isActive = true;
+	}
+
+	public void becomeInactive()
+	{
+		isActive = false;
+	}
+
 	public void valueChanged(ListSelectionEvent e)
 	{
 	}
 	
 	private ORefList selectedRefs;
+	private boolean isActive;
 }

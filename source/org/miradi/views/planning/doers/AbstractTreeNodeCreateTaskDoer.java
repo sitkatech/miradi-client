@@ -28,6 +28,9 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 {
 	public boolean isAvailable()
 	{
+		if(!super.isAvailable())
+			return false;
+		
 		try
 		{
 			BaseObject selected = getSingleSelectedObject();

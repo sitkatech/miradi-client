@@ -776,7 +776,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeEndElement(out, PROJECT_SUMMARY);
 	}
 
-	private String getMiradiVersionAsToken()
+	private String getMiradiVersionAsToken() throws Exception
 	{
 		String versionToken = VersionConstants.getVersionAndTimestamp();
 		versionToken = versionToken.replaceAll(" ", "_");

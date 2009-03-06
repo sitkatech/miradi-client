@@ -221,6 +221,8 @@ public class AppPreferences
 	
 	public void setTaggedInt(String tag, int value)
 	{
+		if(tag == null)
+			EAM.logError("AppPreferences setTaggedInt null key value = " + value);
 		taggedIntMap.put(tag, new Integer(value));
 	}
 	

@@ -28,21 +28,16 @@ public class ObjectsActionButton extends PanelButton
 	public ObjectsActionButton(ObjectsAction action, ObjectPicker picker)
 	{
 		super(action);
-		action.setPicker(picker);
+		action.addPicker(picker);
 	}
 	
 	public void setPicker(ObjectPicker pickerToUse)
 	{
-		((ObjectsAction)getAction()).setPicker(pickerToUse);
-	}
-	
-	public ObjectPicker getPicker()
-	{
-		return ((ObjectsAction)getAction()).getPicker();
+		((ObjectsAction)getAction()).addPicker(pickerToUse);
 	}
 	
 	public void dispose()
 	{
-		((ObjectsAction)getAction()).setPicker(null);
+		((ObjectsAction)getAction()).addPicker(null);
 	}
 }

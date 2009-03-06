@@ -26,36 +26,30 @@ import org.martus.util.UnicodeReader;
 
 public class VersionConstants
 {
-	public static String getVersionAndTimestamp()
+	public static String getVersionAndTimestamp() throws Exception
 	{
-		return VERSION_STRING + " " + TIMESTAMP_STRING;
+		return getVersion() + " " + getTimestamp();
 	}
 
-	public static void readVersionFile() throws IOException
-	{
-		VERSION_STRING = readFile(VERSION_FILENAME);
-	}
-	
-	public static void readTimestampFile() throws IOException
-	{
-		TIMESTAMP_STRING = readFile(TIMESTAMP_FILENAME);
-	}
-	
 	public static String getVersion() throws Exception
 	{
 		if (VERSION_STRING == null)
-			readVersionFile();
+		{
+			VERSION_STRING = readFile(VERSION_FILENAME);
+			ensureValue(VERSION_FILENAME, VERSION_STRING);
+		}
 		
-		ensureValue(VERSION_FILENAME, VERSION_STRING);
 		return VERSION_STRING;
 	}
 	
 	public static String getTimestamp() throws Exception
 	{
 		if (TIMESTAMP_STRING == null)
-			readTimestampFile();
+		{
+			TIMESTAMP_STRING = readFile(TIMESTAMP_FILENAME);
+			ensureValue(TIMESTAMP_FILENAME, TIMESTAMP_STRING);
+		}
 
-		ensureValue(TIMESTAMP_FILENAME, TIMESTAMP_STRING);
 		return TIMESTAMP_STRING;
 	}
 	

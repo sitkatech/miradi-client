@@ -201,6 +201,21 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	{	
 	}
 
+	public boolean isActive()
+	{
+		return isActive;
+	}
+	
+	public void becomeActive()
+	{
+		isActive = true;
+	}
+
+	public void becomeInactive()
+	{
+		isActive = false;
+	}
+
 	private BaseObject getObjectFromRow(int row)
 	{
 		return getObjectTableModel().getObjectFromRow(row);
@@ -292,4 +307,5 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private BasicTableCellRendererFactory otherRenderer;
 	private CodeListRendererFactory codeListRenderer;
+	private boolean isActive;
 }

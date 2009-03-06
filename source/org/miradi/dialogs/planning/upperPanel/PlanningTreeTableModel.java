@@ -29,21 +29,15 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
 
-public class PlanningTreeTableModel extends GenericTreeTableModel
+abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
-	public PlanningTreeTableModel(Project projectToUse) throws Exception
-	{
-		this(projectToUse, getVisibleRowCodes(projectToUse), getVisibleColumnCodes(projectToUse));
-	}
-	
 	public PlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
 	{
 		super(createPlanningTreeRootNode(projectToUse, visibleRowCodesToUse));
 		
 		project = projectToUse;
+		rowsToShow = visibleRowCodesToUse;
 		updateColumnsToShow(visibleColumnCodesToUse);
 	}
 
@@ -61,23 +55,12 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		}
 	}
 
-	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
-	{
-		return ColumnManager.getVisibleColumnCodes(projectToUse.getCurrentViewData());
-	}
+	// TODO: Should make rows and columns work the same way
+	// probably have no rows or columns in the constructor and
+	// always then update/refresh both rows and columns
+	abstract public void updateColumnsToShow() throws Exception;
 	
-	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
-	{
-		return RowManager.getVisibleRowCodes(projectToUse.getCurrentViewData());
-	}
-
-	public void updateColumnsToShow() throws Exception
-	{
-		CodeList visibleColumnCodes = getVisibleColumnCodes(project);
-		updateColumnsToShow(visibleColumnCodes);
-	}
-
-	private void updateColumnsToShow(CodeList visibleColumnCodes)
+	protected void updateColumnsToShow(CodeList visibleColumnCodes)
 	{
 		columnsToShow = new CodeList();
 		columnsToShow.add(DEFAULT_COLUMN);
@@ -107,7 +90,7 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	{
 		try
 		{
-			((AbstractPlanningTreeNode) getRootNode()).setVisibleRowCodes(getVisibleRowCodes(project));
+			((AbstractPlanningTreeNode) getRootNode()).setVisibleRowCodes(getRowCodesToShow());
 			super.rebuildNode();
 		}
 		catch(Exception e)
@@ -145,6 +128,11 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 		return columnsToShow;	
 	}
 	
+	public CodeList getRowCodesToShow()
+	{
+		return rowsToShow;
+	}
+	
 	protected Project getProject()
 	{
 		return project;
@@ -152,4 +140,5 @@ public class PlanningTreeTableModel extends GenericTreeTableModel
 	
 	private Project project;
 	private CodeList columnsToShow;
+	private CodeList rowsToShow;
 }
