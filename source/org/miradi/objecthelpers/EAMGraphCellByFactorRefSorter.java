@@ -40,6 +40,9 @@ public class EAMGraphCellByFactorRefSorter implements Comparator<EAMGraphCell>
 		FactorCell factorCell1 = (FactorCell) o1;
 		FactorCell factorCell2 = (FactorCell) o2;
 		
-		return factorCell1.getWrappedFactorRef().compareTo(factorCell2.getWrappedFactorRef());
+		Integer factorType1 = factorCell1.getWrappedFactorRef().getObjectType();
+		Integer factorType2 = factorCell2.getWrappedFactorRef().getObjectType();
+		
+		return factorType1.compareTo(factorType2);
 	}
 }
