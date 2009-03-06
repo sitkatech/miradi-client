@@ -28,12 +28,10 @@ import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.ThreatStressRatingHelper;
 
 public class FactorLink extends BaseObject
 {
@@ -69,17 +67,6 @@ public class FactorLink extends BaseObject
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
-	}
-	
-	
-	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
-	{
-		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
-		//FIXME threat stress rating - TSRs should not be a part of a FL deep copy.
-		//they should be part of factor deep copy,  need to discuss options
-		deepObjectRefsToCopy.addAll(getThreatStressRatingRefs());
-		
-		return deepObjectRefsToCopy;
 	}
 			
 	public Factor getFromFactor()
@@ -232,22 +219,6 @@ public class FactorLink extends BaseObject
 		if(direction == TO)
 			return getFactorRef(FROM);
 		throw new RuntimeException("Link: Unknown direction " + direction);
-	}
-	
-	
-	//FIXME ThreatStressRating - this needs to be moved somewhere else
-	private ORefList getThreatStressRatingRefs()
-	{
-		try
-		{
-			ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
-			return helper.getRelatedThreatStressRatingRefs(this);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new ORefList();
-		}
 	}
 	
 	public static boolean is(BaseObject object)
