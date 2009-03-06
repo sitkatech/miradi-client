@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 import java.util.Vector;
 
-import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
@@ -66,10 +65,10 @@ public class TestObjectDeepCopier extends EAMTestCase
 		
 		ORef strategyRef = project.createObject(ObjectType.STRATEGY);
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
-		assertEquals("wrong initial number of objects to deep copy?", 0, strategy.getAllObjectsToDeepCopy(new EAMGraphCell[0]).size());
+		assertEquals("wrong initial number of objects to deep copy?", 0, strategy.getAllObjectsToDeepCopy(new ORefList()).size());
 		
 		strategy.addActivity(activityRef);
-		assertEquals("wrong number of objects to deep copy?", 1, strategy.getAllObjectsToDeepCopy(new EAMGraphCell[0]).size());
+		assertEquals("wrong number of objects to deep copy?", 1, strategy.getAllObjectsToDeepCopy(new ORefList()).size());
 		ObjectDeepCopier deepCopier = new ObjectDeepCopier(project);
 		Vector deepCopiedNull = deepCopier.createDeepCopy(null);
 		assertEquals("deep copied null?", 0, deepCopiedNull.size());

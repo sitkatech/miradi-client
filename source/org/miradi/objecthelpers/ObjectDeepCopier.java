@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 import java.util.Vector;
 
-import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
@@ -38,13 +37,13 @@ public class ObjectDeepCopier
 	
 	public Vector<String> createDeepCopy(BaseObject objectToDeepCopy)
 	{
-		return createDeepCopy(new EAMGraphCell[0], objectToDeepCopy);
+		return createDeepCopy(new ORefList(), objectToDeepCopy);
 	}
 	
-	public Vector<String> createDeepCopy(EAMGraphCell[] selectedCellsToCopy, BaseObject objectToDeepCopy)
+	public Vector<String> createDeepCopy(ORefList deepCopiedFactorRefs, BaseObject objectToDeepCopy)
 	{
 		clear();
-		recursivelyCreateDeepCopy(selectedCellsToCopy, objectToDeepCopy);
+		recursivelyCreateDeepCopy(deepCopiedFactorRefs, objectToDeepCopy);
 		return allOwnedObjects;
 	}
 
@@ -53,19 +52,19 @@ public class ObjectDeepCopier
 		allOwnedObjects = new Vector();
 	}
 	
-	private void recursivelyCreateDeepCopy(EAMGraphCell[] selectedCellsToCopy, BaseObject objectToDeepCopy)
+	private void recursivelyCreateDeepCopy(ORefList deepCopiedFactorRefs, BaseObject objectToDeepCopy)
 	{
 		if (objectToDeepCopy == null)
 			return;
 		
-		ORefList objectsToDeepCopy = objectToDeepCopy.getAllObjectsToDeepCopy(selectedCellsToCopy);		
+		ORefList objectsToDeepCopy = objectToDeepCopy.getAllObjectsToDeepCopy(deepCopiedFactorRefs);		
 		EnhancedJsonObject customJson = getCustomJson(objectToDeepCopy);
 		allOwnedObjects.add(customJson.toString());
 		for (int i = 0; i < objectsToDeepCopy.size(); ++i)
 		{
 			ORef objectRef = objectsToDeepCopy.get(i);
 			BaseObject thisObjectToDeepCopy = getProject().findObject(objectRef);
-			recursivelyCreateDeepCopy(selectedCellsToCopy, thisObjectToDeepCopy);
+			recursivelyCreateDeepCopy(deepCopiedFactorRefs, thisObjectToDeepCopy);
 		}
 	}
 
