@@ -27,7 +27,7 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectCollectionPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.dialogs.indicator.DirectIndicatorPropertiesPanel;
+import org.miradi.dialogs.indicator.SimpleViabilityMultiPropertiesPanel;
 import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.main.EAM;
@@ -39,28 +39,28 @@ import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
-abstract public class TargetViabilityTreeManagementPanel extends ObjectListManagementPanel
+abstract public class TargetViabilityManagementPanel extends ObjectListManagementPanel
 {
-	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
+	protected TargetViabilityManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
 	{
 		this(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPanel(mainWindow, mainWindow.getProject(), factorRef),
-				new TargetViabilityTreePropertiesPanel(mainWindow));
+				new TargetViabilityMultiPropertiesPanel(mainWindow));
 	}
 	
-	protected TargetViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
+	protected TargetViabilityManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
 	{
 		this(mainWindow, TargetViabililtyTreePanel.createTargetViabilityPoolPanel(mainWindow),
-				new TargetViabilityTreePropertiesPanel(mainWindow));
+				new TargetViabilityMultiPropertiesPanel(mainWindow));
 	}
 	
-	protected TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
+	protected TargetViabilityManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
 		this(mainWindowToUse, TargetViabililtyTreePanel.createFactorIndicatorPanel(mainWindowToUse, factorRef, mainWindowToUse.getProject()),
-				new DirectIndicatorPropertiesPanel(mainWindowToUse, ORef.INVALID));
+				new SimpleViabilityMultiPropertiesPanel(mainWindowToUse, ORef.INVALID));
 	}  
 	
 	//TODO should use this contructor instead of the constructor that creates DirectIndicatorPropertiesPanel, would be better to have a PlanningTreePropertiesPanel
-	public TargetViabilityTreeManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel treePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
+	public TargetViabilityManagementPanel(MainWindow mainWindowToUse, ObjectCollectionPanel treePanel, AbstractObjectDataInputPanel propertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, treePanel, propertiesPanel);
 		panelDescription = PANEL_DESCRIPTION_INDICATORS;

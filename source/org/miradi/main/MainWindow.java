@@ -123,11 +123,15 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			System.exit(1);
 
 		List<String> commandLineArguments = Arrays.asList(args);
-		if(commandLineArguments.contains("--demo"))
-			demoMode = true;
 		
-		if(commandLineArguments.contains("--developer"))
-			developerMode = true;
+		if(ResourcesHandler.isRunningFromInsideJar())
+		{
+			if(!VersionConstants.hasValidVersion())
+				EAM.logWarning("Invalid or missing Miradi version number");
+			if(!VersionConstants.hasValidTimestamp())
+				EAM.logWarning("Invalid or missing Miradi build identifier");
+		}
+
 		
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
@@ -767,16 +771,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		}
 	}
 	
-	public static boolean isDemoMode()
-	{
-		return demoMode;
-	}
-	
-	public static boolean isDeveloperMode()
-	{
-		return developerMode;
-	}
-	
 	public void savePreferences() throws Exception
 	{
 		boolean isMaximized = false;
@@ -1011,9 +1005,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	
 	public static final boolean ALLOW_CONPRO_IMPORT_EXPORT = true;
 	public static final String DISABLED_CONPRO_IMPORT_EXPORT_MESSAGE = EAM.text("<HTML>Data exchange between Miradi and ConPro is not available in this version of Miradi. <BR> It is currently being tested, and should be available in the next version of Miradi. <BR>If you have questions, contact support@miradi.org.</HTML>");
-
-	private static boolean demoMode;
-	private static boolean developerMode;
 
 	protected Actions actions;
 	private AppPreferences preferences;

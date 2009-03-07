@@ -59,5 +59,5 @@ public class ProtectedAreaPanel extends ObjectDataInputPanel
 		return PANEL_DESCRIPTION; 
 	}
 
-	public static final String PANEL_DESCRIPTION = EAM.text("Protected Area Information (If Relevant)");
+	public static final String PANEL_DESCRIPTION = EAM.text("Protected Area Information");
 }

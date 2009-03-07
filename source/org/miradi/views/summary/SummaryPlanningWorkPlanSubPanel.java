@@ -56,7 +56,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Planning: Work Plan");
+		return EAM.text("Work Plan Settings");
 	}
 
 }

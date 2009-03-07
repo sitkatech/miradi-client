@@ -33,9 +33,9 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 
-public class DirectIndicatorPropertiesPanel extends OverlaidObjectDataInputPanel
+public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInputPanel
 {
-	public DirectIndicatorPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
+	public SimpleViabilityMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
 		super(mainWindowToUse.getProject(), orefToUse);
 		
@@ -44,6 +44,9 @@ public class DirectIndicatorPropertiesPanel extends OverlaidObjectDataInputPanel
 		createPropertiesPanels();
 	}
 	
+	// TODO: Why not create and add all the panels instead of only adding one?
+	// If we changed it to work more like the other Overlaid panels,
+	// a lot of this code would disappear
 	public void dispose()
 	{
 		super.dispose();
@@ -51,6 +54,26 @@ public class DirectIndicatorPropertiesPanel extends OverlaidObjectDataInputPanel
 		measurementPropertiesPanel.dispose();
 		futureStatusPropertiesPanel.dispose();
 		blankPropertiesPanel.dispose();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		indicatorPropertiesPanel.becomeActive();
+		measurementPropertiesPanel.becomeActive();
+		futureStatusPropertiesPanel.becomeActive();
+		blankPropertiesPanel.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		indicatorPropertiesPanel.becomeInactive();
+		measurementPropertiesPanel.becomeInactive();
+		futureStatusPropertiesPanel.becomeInactive();
+		blankPropertiesPanel.becomeInactive();
+		super.becomeInactive();
 	}
 	
 	private void createPropertiesPanels() throws Exception
@@ -69,11 +92,17 @@ public class DirectIndicatorPropertiesPanel extends OverlaidObjectDataInputPanel
 
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
+		if(currentPanel != null)
+			currentPanel.becomeInactive();
+		
 		super.setObjectRefs(orefsToUse);
 		currentPanel = findPanel(orefsToUse);
 		removeAll();
 		add(currentPanel, BorderLayout.CENTER);
-	
+
+		if(currentPanel != null)
+			currentPanel.becomeActive();
+
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
 		futureStatusPropertiesPanel.setObjectRefs(orefsToUse);

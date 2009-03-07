@@ -67,8 +67,9 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 	{
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle);
 		Utilities.centerDlg(dialog);
-		managementPanel.updateSplitterLocation();
+		managementPanel.becomeActive();
 		dialog.setVisible(true);
+		managementPanel.becomeInactive();
 	}
 
 	protected int getTypeToFilterOn()

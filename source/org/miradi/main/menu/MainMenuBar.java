@@ -129,6 +129,7 @@ import org.miradi.actions.jump.ActionJumpCloseTheLoop;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMenuItem;
 import org.miradi.main.MainWindow;
+import org.miradi.main.Miradi;
 import org.miradi.main.ViewSwitcher;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.diagram.DiagramView;
@@ -206,7 +207,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionExportConProXml.class, KeyEvent.VK_C);
 		addMenuItem(actions, menu, ActionExportProjectXml.class, KeyEvent.VK_X);
 		
-		if(MainWindow.isDemoMode())
+		if(Miradi.isDemoMode())
 		{
 			menu.addSeparator();
 			
@@ -238,7 +239,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionImportZippedProjectFile.class, KeyEvent.VK_M);
 		addMenuItem(actions, menu, ActionImportZippedConproProject.class, KeyEvent.VK_C);
 		
-		if(MainWindow.isDemoMode())
+		if(Miradi.isDemoMode())
 		{
 			JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 			item.putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
@@ -521,7 +522,7 @@ public class MainMenuBar extends JMenuBar
 		menu.add(new ProcessMenu5(actions));
 		menu.add(new JMenuItem(actions.get(ActionJumpCloseTheLoop.class)));
 		
-		if (getMainWindow().isDeveloperMode())
+		if (Miradi.isDeveloperMode())
 			addMenuItem(actions, menu, ActionShowCurrentWizardFileName.class, KeyEvent.VK_S);
 		
 		return menu;

@@ -45,6 +45,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 	}
 	
+	@Override
 	public String getUniqueTableIdentifier()
 	{
 		return UNIQUE_IDENTIFIER;

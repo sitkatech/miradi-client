@@ -63,7 +63,7 @@ public class ViewSwitcher extends PanelComboBox
 		};
 		Vector<Action> viewVector = new Vector<Action>(Arrays.asList(views));
 		
-		if(MainWindow.isDemoMode())
+		if(Miradi.isDemoMode())
 		{
 			viewVector.add(actions.get(ActionViewMap.class));
 			viewVector.add(actions.get(ActionViewSchedule.class));

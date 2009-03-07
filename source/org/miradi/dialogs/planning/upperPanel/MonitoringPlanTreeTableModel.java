@@ -17,28 +17,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.viability;
+package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.icons.KeyEcologicalAttributeIcon;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.project.Project;
+import org.miradi.views.planning.ColumnManager;
+import org.miradi.views.planning.RowManager;
 
-public class ViabilityViewTreeManagementPanel extends TargetViabilityManagementPanel
+public class MonitoringPlanTreeTableModel extends PlanningTreeTableModel
 {
-	public ViabilityViewTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
+	public MonitoringPlanTreeTableModel(Project project) throws Exception
 	{
-		super(mainWindow, splitPositionSaverToUse);
-		panelDescription = PANEL_DESCRIPTION_VIABILITY;
-		icon = new KeyEcologicalAttributeIcon();
-
-	}
-	
-	public String getSplitterDescription()
-	{
-		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
+		super(project, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns());
 	}
 
-	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability"); 
+	@Override
+	public void updateColumnsToShow() throws Exception
+	{
+	}
 
 }

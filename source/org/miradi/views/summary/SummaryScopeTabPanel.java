@@ -22,7 +22,7 @@ package org.miradi.views.summary;
 import javax.swing.Icon;
 
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjecScope;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.forms.summary.ScopeTabForm;
 import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.layout.OneColumnGridLayout;
@@ -33,11 +33,11 @@ import org.miradi.project.Project;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 
-public class SummaryScopeTabPanel extends ObjectDataInputPanel
+public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 {
 	public SummaryScopeTabPanel(Project projectToUse, ORef[] orefsToUse)
 	{
-		super(projectToUse, orefsToUse);
+		super(projectToUse, ProjectMetadata.getObjectType());
 		setLayout(new OneColumnGridLayout());
 		
 		ScopeAndVisionPanel scopeVision = new ScopeAndVisionPanel(getProject(), getRefForType(ProjectMetadata.getObjectType()));
@@ -52,6 +52,7 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanel
 		ProtectedAreaPanel protectedAreas = new ProtectedAreaPanel(getProject(), getSelectedRefs().toArray());
 		addSubPanelWithTitledBorder(protectedAreas);
 
+		setObjectRefs(orefsToUse);
 		updateFieldsFromProject();
 	}
 

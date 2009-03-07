@@ -122,7 +122,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return "";
+		return EAM.text("Summary");
 	}
 
 	private ObjectDataInputField labelField;

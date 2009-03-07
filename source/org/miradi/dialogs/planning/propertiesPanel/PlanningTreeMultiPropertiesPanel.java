@@ -23,7 +23,6 @@ import java.awt.CardLayout;
 import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
@@ -64,41 +63,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		createPropertiesPanels();
 	}
 	
-	public void dispose()
-	{
-		goalPropertiesPanel.dispose();
-		goalPropertiesPanel = null;
-		objectivePropertiesPanel.dispose();
-		objectivePropertiesPanel = null;
-		indicatorPropertiesPanel.dispose();
-		indicatorPropertiesPanel = null;
-		strategyPropertiesPanel.dispose();
-		strategyPropertiesPanel = null;
-		taskPropertiesInputPanel.dispose();
-		taskPropertiesInputPanel = null;
-		measurementPropertiesPanel.dispose();
-		measurementPropertiesPanel = null;
-		targetSimpleModePropertiesPanel.dispose();
-		targetSimpleModePropertiesPanel = null;
-		targetKeaModePropertiesPanel.dispose();
-		targetKeaModePropertiesPanel = null;
-		threatPropertiesPanel.dispose();
-		threatPropertiesPanel = null;
-		contributingFactorPropertiesPanel.dispose();
-		contributingFactorPropertiesPanel = null;
-		intermediateResultPropertiesPanel.dispose();
-		intermediateResultPropertiesPanel = null;
-		threatReductionResultPropertiesPanel.dispose();
-		threatReductionResultPropertiesPanel = null;
-		resultsChainPropertiesPanel.dispose();
-		resultsChainPropertiesPanel = null;
-		conceptualModelPropertiesPanel.dispose();
-		conceptualModelPropertiesPanel = null;
-		blankPropertiesPanel.dispose();
-		blankPropertiesPanel = null;
-		super.dispose();
-	}
-	
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
@@ -118,26 +82,21 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
-		add(goalPropertiesPanel);
-		add(objectivePropertiesPanel);
-		add(indicatorPropertiesPanel);
-		add(strategyPropertiesPanel);
-		add(taskPropertiesInputPanel);
-		add(measurementPropertiesPanel);
-		add(targetSimpleModePropertiesPanel);
-		add(targetKeaModePropertiesPanel);
-		add(threatPropertiesPanel);
-		add(contributingFactorPropertiesPanel);
-		add(intermediateResultPropertiesPanel);
-		add(threatReductionResultPropertiesPanel);
-		add(resultsChainPropertiesPanel);
-		add(conceptualModelPropertiesPanel);
-		add(blankPropertiesPanel);
-	}
-	
-	private void add(DisposablePanelWithDescription panelToAdd)
-	{
-		add(panelToAdd, panelToAdd.getPanelDescription());
+		addPanel(goalPropertiesPanel);
+		addPanel(objectivePropertiesPanel);
+		addPanel(indicatorPropertiesPanel);
+		addPanel(strategyPropertiesPanel);
+		addPanel(taskPropertiesInputPanel);
+		addPanel(measurementPropertiesPanel);
+		addPanel(targetSimpleModePropertiesPanel);
+		addPanel(targetKeaModePropertiesPanel);
+		addPanel(threatPropertiesPanel);
+		addPanel(contributingFactorPropertiesPanel);
+		addPanel(intermediateResultPropertiesPanel);
+		addPanel(threatReductionResultPropertiesPanel);
+		addPanel(resultsChainPropertiesPanel);
+		addPanel(conceptualModelPropertiesPanel);
+		addPanel(blankPropertiesPanel);
 	}
 	
 	public String getPanelDescription()
@@ -151,21 +110,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		currentCard = findPanel(orefsToUse);
 		cardLayout.show(this, currentCard.getPanelDescription());
 	
-		taskPropertiesInputPanel.setObjectRefs(orefsToUse);
-		goalPropertiesPanel.setObjectRefs(orefsToUse);
-		objectivePropertiesPanel.setObjectRefs(orefsToUse);
-		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
-		strategyPropertiesPanel.setObjectRefs(orefsToUse);
-		measurementPropertiesPanel.setObjectRefs(orefsToUse);
-		targetSimpleModePropertiesPanel.setObjectRefs(orefsToUse);
-		targetKeaModePropertiesPanel.setObjectRefs(orefsToUse);
-		threatPropertiesPanel.setObjectRefs(orefsToUse);
-		contributingFactorPropertiesPanel.setObjectRefs(orefsToUse);
-		intermediateResultPropertiesPanel.setObjectRefs(orefsToUse);
-		threatReductionResultPropertiesPanel.setObjectRefs(orefsToUse);
-		resultsChainPropertiesPanel.setObjectRefs(orefsToUse);
-		conceptualModelPropertiesPanel.setObjectRefs(orefsToUse);
-		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
 		// NOTE: The following are an attempt to fix a reported problem 

@@ -57,10 +57,19 @@ public class DisposablePanel extends JPanel
 		}
 	}
 	
+	public void becomeActive()
+	{
+	}
+
+	public void becomeInactive()
+	{
+	}
+
 	public Class getJumpActionClass()
 	{
 		return null;
 	}
 	
 	Vector objectsActionsToRelease;
+
 }

@@ -34,10 +34,7 @@ public class VersionConstants
 	public static String getVersion() throws Exception
 	{
 		if (VERSION_STRING == null)
-		{
 			VERSION_STRING = readFile(VERSION_FILENAME);
-			ensureValue(VERSION_FILENAME, VERSION_STRING);
-		}
 		
 		return VERSION_STRING;
 	}
@@ -45,18 +42,27 @@ public class VersionConstants
 	public static String getTimestamp() throws Exception
 	{
 		if (TIMESTAMP_STRING == null)
-		{
 			TIMESTAMP_STRING = readFile(TIMESTAMP_FILENAME);
-			ensureValue(TIMESTAMP_FILENAME, TIMESTAMP_STRING);
-		}
 
 		return TIMESTAMP_STRING;
 	}
 	
-	private static void ensureValue(String filename, String value)
+	public static boolean hasValidVersion() throws Exception
+	{
+		return isValid(getVersion());
+	}
+	
+	public static boolean hasValidTimestamp() throws Exception
+	{
+		return isValid(getTimestamp());
+	}
+	
+	private static boolean isValid(String value)
 	{
 		if (value == null || value.length() == 0 || value.equals(UNKNOWN_VALUE))
-			EAM.logWarning(filename + " not found");
+			return false;
+		
+		return true;
 	}
 	
 	private static String readFile(String filename) throws IOException

@@ -21,6 +21,8 @@ package org.miradi.dialogs.treetables;
 
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.util.HashSet;
 import java.util.Map;
@@ -42,6 +44,7 @@ import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -91,6 +94,25 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getNodeForRow(row).areBudgetValuesAllocated();
 	}
 
+	@Override
+	public String getToolTipText(MouseEvent event)
+	{
+		Point at = new Point(event.getX(), event.getY());
+		int row = rowAtPoint(at);
+		TreeTableNode node = getNodeForRow(row);
+		if(node == null)
+			return null;
+
+		BaseObject object = node.getObject();
+		if(object == null)
+			return null;
+		
+		String typeName = EAM.fieldLabel(object.getType(), object.getTypeName());
+		String tooltip = "<html><b>" + typeName + "</b><br>";
+		
+		return tooltip + object.getFullName();
+	}
+	
 	public static Font createFristLevelFont(Font defaultFontToUse)
 	{
 		Map map = defaultFontToUse.getAttributes();

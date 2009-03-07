@@ -17,28 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.viability;
+package org.miradi.actions;
 
-import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
 
-public class ViabilityViewTreeManagementPanel extends TargetViabilityManagementPanel
+public class ActionPlanningCreationMenu extends ObjectsAction
 {
-	public ViabilityViewTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse) throws Exception
+	public ActionPlanningCreationMenu(MainWindow mainWindowToUse)
 	{
-		super(mainWindow, splitPositionSaverToUse);
-		panelDescription = PANEL_DESCRIPTION_VIABILITY;
-		icon = new KeyEcologicalAttributeIcon();
-
-	}
-	
-	public String getSplitterDescription()
-	{
-		return PANEL_DESCRIPTION_VIABILITY + SPLITTER_TAG;
+		super(mainWindowToUse, getLabel());
 	}
 
-	private static String PANEL_DESCRIPTION_VIABILITY = EAM.text("Tab|Viability"); 
+	private static String getLabel()
+	{
+		return EAM.text("Action|Table|Create...");
+	}
 
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Create a new object");
+	}
 }

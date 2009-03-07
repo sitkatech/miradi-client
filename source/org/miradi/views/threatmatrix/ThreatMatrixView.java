@@ -63,6 +63,7 @@ public class ThreatMatrixView extends CardedView
 		addThreatMatrixiewDoersToMap();
 	}
 
+	@Override
 	public JToolBar createToolBar()
 	{
 		return new ThreatRatingToolBar(getMainWindow(), isCellRatingsVisible());
@@ -85,6 +86,7 @@ public class ThreatMatrixView extends CardedView
 		addDoerToMap(ActionCreateStressFromKea.class, new CreateStressFromKeaDoer());
 	}
 	
+	@Override
 	public String cardName()
 	{
 		return getViewName();
@@ -95,11 +97,13 @@ public class ThreatMatrixView extends CardedView
 		return Project.THREAT_MATRIX_VIEW_NAME;
 	}
 	
+	@Override
 	public boolean isImageAvailable()
 	{
 		return true;
 	}
 
+	@Override
 	public BufferedImage getImage() throws Exception
 	{
 		return createStressBasedImage();
@@ -115,17 +119,20 @@ public class ThreatMatrixView extends CardedView
 		return image;
 	}
 
+	@Override
 	public void createCards() throws Exception
 	{
 		threatStressRatingManagementPanel = ThreatRatingManagementPanel.create(getMainWindow()); 
 		addCard(threatStressRatingManagementPanel, getThreatStressRatingCardName());
 	}
 	
+	@Override
 	protected void showCurrentCard(String code)
 	{
 		showCard(getThreatStressRatingCardName());
 	}
 	
+	@Override
 	public void deleteCards() throws Exception
 	{
 		threatStressRatingManagementPanel.dispose();
@@ -137,17 +144,27 @@ public class ThreatMatrixView extends CardedView
 		return threatStressRatingManagementPanel.isRtfExportable();
 	}
 	
+	@Override
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 		threatStressRatingManagementPanel.exportRtf(writer);
 	}
 	
+	@Override
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();			
-		threatStressRatingManagementPanel.updateSplitterLocation();
+		threatStressRatingManagementPanel.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive() throws Exception
+	{
+		threatStressRatingManagementPanel.becomeActive();
+		super.becomeInactive();
 	}
 
+	@Override
 	protected String getCurrentCardChoiceName()
 	{
 		return getProject().getMetadata().getData(ProjectMetadata.TAG_THREAT_RATING_MODE);
@@ -158,6 +175,7 @@ public class ThreatMatrixView extends CardedView
 		return getProject().getSimpleThreatRatingFramework();
 	}
 	
+	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);

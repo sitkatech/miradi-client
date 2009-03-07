@@ -21,29 +21,27 @@ package org.miradi.views.summary;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.forms.summary.RareTabForm;
 import org.miradi.icons.RareIcon;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objects.RareProjectData;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 
-public class RARESummaryPanel extends ObjectDataInputPanel
+public class RARESummaryPanel extends ObjectDataInputPanelWithSections
 {
 	public RARESummaryPanel(Project projectToUse)
 	{
-		super(projectToUse, projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
-		
-		setLayout(new OneColumnGridLayout());
+		super(projectToUse, RareProjectData.getObjectType());
 		
 		addSubPanelWithTitledBorder(new RareTrackingSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareCampaignSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareCampaignPlanningSummarySubPanel(projectToUse));
 		addSubPanelWithTitledBorder(new RareTeamInformationSummarySubPanel(projectToUse));
 
+		setObjectRef(projectToUse.getSingletonObjectRef(RareProjectData.getObjectType()));
 		updateFieldsFromProject();
 	}
 

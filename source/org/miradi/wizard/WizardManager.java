@@ -26,6 +26,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ViewData;
@@ -149,7 +150,7 @@ public class WizardManager
 		getProject().executeCommand(new CommandSetObjectData(projectMetadataRef, ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME, newStepName));
 		getProject().executeCommand(new CommandSetObjectData(viewData, ViewData.TAG_CURRENT_WIZARD_STEP, newStepName));
 		
-		if(mainWindow.isDeveloperMode())
+		if(Miradi.isDeveloperMode())
 			EAM.logDebug(newStepName);
 	}
 

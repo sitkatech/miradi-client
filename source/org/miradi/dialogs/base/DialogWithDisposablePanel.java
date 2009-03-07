@@ -51,11 +51,22 @@ public class DialogWithDisposablePanel extends DialogWithButtonBar
 		if(wrappedPanel == null)
 			return;
 		
+		becomeInactive();
 		wrappedPanel.dispose();
 		wrappedPanel = null;
 		super.dispose();
 	}
 	
+	public void becomeActive()
+	{
+		wrappedPanel.becomeActive();
+	}
+
+	public void becomeInactive()
+	{
+		wrappedPanel.becomeInactive();
+	}
+
 	public JPanel getWrappedPanel()
 	{
 		return wrappedPanel;

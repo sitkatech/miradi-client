@@ -35,6 +35,9 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
+		if(!super.isAvailable())
+			return false;
+		
 		return (getObjects().length == 1);
 	}
 

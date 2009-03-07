@@ -1020,8 +1020,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	public void showNodeProperties(DiagramFactor node, int startingTabIdentifier)
 	{
 		closeActivePropertiesDialog();
-		if(nodePropertiesDlg != null)
-			disposeOfNodePropertiesDialog();
+		disposeOfNodePropertiesDialog();
 		
 		getCurrentDiagramComponent().requestFocusInWindow();
 		
@@ -1043,8 +1042,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		nodePropertiesPanel = newPropertiesPanel;
 		nodePropertiesDlg = newDialog;
 
+		nodePropertiesPanel.becomeActive();
 		nodePropertiesDlg.setVisible(true);
-		nodePropertiesPanel.updateAllSplitterLocations();
 	}
 
 	private void disposeOfNodePropertiesDialog()

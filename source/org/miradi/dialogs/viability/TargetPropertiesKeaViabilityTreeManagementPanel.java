@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 
 public class TargetPropertiesKeaViabilityTreeManagementPanel extends
-		TargetViabilityTreeManagementPanel
+		TargetViabilityManagementPanel
 {
 	public TargetPropertiesKeaViabilityTreeManagementPanel(MainWindow mainWindow, SplitterPositionSaverAndGetter splitPositionSaverToUse, ORef factorRef) throws Exception
 	{

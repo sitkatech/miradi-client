@@ -49,7 +49,7 @@ public class SummaryPlanningFinancialSubPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return EAM.text("Financial");
+		return EAM.text("Financial Settings");
 	}
 
 }
