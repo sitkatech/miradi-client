@@ -19,15 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
-import java.awt.BorderLayout;
-import java.awt.image.BufferedImage;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionAssignResource;
+import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionCreatePlanningViewConfiguration;
@@ -37,7 +35,9 @@ import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
+import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionImportAccountingCodes;
+import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.ActionRenamePlanningViewConfiguration;
 import org.miradi.actions.ActionTreeCreateActivity;
@@ -54,16 +54,17 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
-import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.legend.PlanningViewControlPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
+import org.miradi.dialogs.planning.upperPanel.MonitoringPlanTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.StrategicPlanTreeTableModel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
+import org.miradi.icons.IconManager;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -71,10 +72,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiScrollPane;
-import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.AddAssignmentDoer;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
@@ -84,6 +82,7 @@ import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
 import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
 import org.miradi.views.planning.doers.DeletePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
+import org.miradi.views.planning.doers.PlanningCreationMenuDoer;
 import org.miradi.views.planning.doers.RemoveAssignmentDoer;
 import org.miradi.views.planning.doers.RenamePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
@@ -124,8 +123,8 @@ public class PlanningView extends TabbedView
 		{
 			return panelDescription;
 		}
-
-		private final String panelDescription = EAM.text("Tab|Planning");
+		
+		private final String panelDescription = EAM.text("Tab|Custom");
 	}
 	
 	class StrategicPlanManagementPanel extends PlanningTreeManagementPanel
@@ -143,23 +142,46 @@ public class PlanningView extends TabbedView
 		{
 			return panelDescription;
 		}
+		
+		@Override
+		public Icon getIcon()
+		{
+			return IconManager.getStrategyIcon();
+		}
 
 		private final String panelDescription = EAM.text("Tab|Strategic Plan");
 	}
 
+	class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
+	{
+		public MonitoringPlanManagementPanel(MainWindow mainWindowToUse,
+				PlanningTreeTablePanel planningTreeTablePanel,
+				PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
+				throws Exception
+		{
+			super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
+		}
+		
+		@Override
+		public String getPanelDescription()
+		{
+			return panelDescription;
+		}
+
+		@Override
+		public Icon getIcon()
+		{
+			return IconManager.getIndicatorIcon();
+		}
+
+		private final String panelDescription = EAM.text("Tab|Monitoring Plan");
+	}
+
 	public void createTabs() throws Exception
 	{
-		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
-		PlanningTreeTable treeAsObjectPicker1 = (PlanningTreeTable)planningTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker1);
-		PlanningTreeManagementPanel managementPanel = new ConfigurablePlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
-		planningManagementPanel = managementPanel;
-		
-		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(getProject());
-		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), strategicPlanTreeTableModel, new Class[0]);
-		PlanningTreeTable treeAsObjectPicker2 = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker2);
-		strategicPlanManagementPanel = new StrategicPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
+		planningManagementPanel = createConfigurablePlanningPanel();
+		strategicPlanManagementPanel = createStrategicPlanPanel();
+		monitoringPlanManagementPanel = createMonitoringPlanPanel();
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
@@ -173,11 +195,49 @@ public class PlanningView extends TabbedView
 
 		MainPlanningPanel horizontalSplitPane = new MainPlanningPanel(controlBarScrollPane, planningManagementPanel);
 		
-		addNonScrollingTab(horizontalSplitPane);
 		addNonScrollingTab(strategicPlanManagementPanel);
+		addNonScrollingTab(monitoringPlanManagementPanel);
+		addNonScrollingTab(horizontalSplitPane);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
+	}
+
+	private PlanningTreeManagementPanel createConfigurablePlanningPanel() throws Exception
+	{
+		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)planningTreeTablePanel.getTree();
+		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
+		return new ConfigurablePlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
+	}
+
+	private StrategicPlanManagementPanel createStrategicPlanPanel()
+			throws Exception
+	{
+		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(getProject());
+		Class[] buttonActions = new Class[] {
+			ActionExpandAllNodes.class, 
+			ActionCollapseAllNodes.class, 
+			ActionPlanningCreationMenu.class,
+			};
+		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), strategicPlanTreeTableModel, buttonActions);
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
+		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
+		return new StrategicPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
+	}
+
+	private MonitoringPlanManagementPanel createMonitoringPlanPanel() throws Exception
+	{
+		PlanningTreeTableModel monitoringPlanTreeTableModel = new MonitoringPlanTreeTableModel(getProject());
+		Class[] buttonActions = new Class[] {
+				ActionExpandAllNodes.class, 
+				ActionCollapseAllNodes.class, 
+				ActionPlanningCreationMenu.class,
+				};
+		PlanningTreeTablePanel monitoringPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), monitoringPlanTreeTableModel, buttonActions);
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)monitoringPlanTreeTablePanel.getTree();
+		PlanningTreeMultiPropertiesPanel monitoringPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
+		return new MonitoringPlanManagementPanel(getMainWindow(), monitoringPlanTreeTablePanel, monitoringPlanPropertiesPanel);
 	}
 
 	@Override
@@ -186,97 +246,13 @@ public class PlanningView extends TabbedView
 		super.becomeActive();
 		planningManagementPanel.updateSplitterLocation();
 		strategicPlanManagementPanel.updateSplitterLocation();
+		monitoringPlanManagementPanel.updateSplitterLocation();
 		resourceManagementPanel.updateSplitterLocation();
 		accountingCodePoolManagementPanel.updateSplitterLocation();
 		fundingSourcePoolManagementPanel.updateSplitterLocation();
 	}
 
 	
-	class MainPlanningPanel extends DisposablePanelWithDescription implements MiradiTabContentsPanelInterface
-	{
-		public MainPlanningPanel(MiradiScrollPane controlBarScrollPane, PlanningTreeManagementPanel planningManagementPanelToUse)
-		{
-			super(new BorderLayout());
-			planningManagementPanel = planningManagementPanelToUse;
-			
-			add(controlBarScrollPane, BorderLayout.BEFORE_LINE_BEGINS);
-			add(planningManagementPanel, BorderLayout.CENTER);
-		}
-		
-		public String getTabName()
-		{
-			return planningManagementPanel.getTabName();
-		}
-
-		public Icon getIcon()
-		{
-			return planningManagementPanel.getIcon();
-		}
-
-		public DisposablePanelWithDescription getTabContentsComponent()
-		{
-			return this;
-		}
-
-		public boolean isImageAvailable()
-		{
-			return planningManagementPanel.isImageAvailable();
-		}
-
-		public BufferedImage getImage() throws Exception
-		{
-			return planningManagementPanel.getImage();
-		}
-
-		public AbstractTableExporter getTableExporter() throws Exception
-		{
-			return planningManagementPanel.getTableExporter();
-		}
-
-		public boolean isExportableTableAvailable()
-		{
-			return planningManagementPanel.isExportableTableAvailable();
-		}
-		
-		public JComponent getPrintableComponent() throws Exception
-		{
-			return planningManagementPanel.getPrintableComponent();
-		}
-		
-		public boolean isPrintable()
-		{
-			return true;
-		}
-
-		public boolean isRtfExportable()
-		{
-			return planningManagementPanel.isRtfExportable();
-		}		
-		
-		public void exportRtf(RtfWriter writer) throws Exception
-		{
-			planningManagementPanel.exportRtf(writer);
-		}
-		
-		public void becomeActive()
-		{
-			planningManagementPanel.becomeActive();
-		}
-		
-		public void becomeInactive()
-		{
-			planningManagementPanel.becomeInactive();
-		}
-
-		@Override
-		public String getPanelDescription()
-		{
-			return planningManagementPanel.getPanelDescription();
-		}
-		
-		private PlanningTreeManagementPanel planningManagementPanel;
-	}
-
 	public void deleteTabs() throws Exception
 	{
 		planningManagementPanel.dispose();
@@ -284,6 +260,9 @@ public class PlanningView extends TabbedView
 		
 		strategicPlanManagementPanel.dispose();
 		strategicPlanManagementPanel = null;
+		
+		monitoringPlanManagementPanel.dispose();
+		monitoringPlanManagementPanel = null;
 		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
@@ -341,7 +320,9 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
 
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
-		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());		
+		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
+		
+		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningCreationMenuDoer());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
@@ -397,6 +378,7 @@ public class PlanningView extends TabbedView
 	private PlanningViewControlPanel controlPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
+	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private ResourcePoolManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;

@@ -28,9 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class SimpleViabilityPanel extends FactorPropertiesViabilityTreeManagementPanel
+public class SimpleViabilityManagementPanel extends FactorPropertiesViabilityTreeManagementPanel
 {
-	public SimpleViabilityPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
+	public SimpleViabilityManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
 		super(mainWindowToUse, factorRef, mainWindowToUse.getActions());
 		simpleViabilityPropertiesPanel = new SimpleViabilityFieldsPanel(mainWindowToUse.getProject(), factorRef);

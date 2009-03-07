@@ -23,7 +23,6 @@ import java.awt.CardLayout;
 import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
@@ -40,9 +39,9 @@ import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
 
-public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputPanel
+public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInputPanel
 {
-	public TargetViabilityTreePropertiesPanel(MainWindow mainWindow) throws Exception
+	public TargetViabilityMultiPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow.getProject(), new ORef(ObjectType.TARGET, new FactorId(BaseId.INVALID.asInt())));		
 				
@@ -57,27 +56,15 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		
-		add(blankPropertiesPanel);
-		add(targetSimpleModePropertiesPanel);
-		add(targetKeaModePropertiesPanel);
-		add(targetViabilityKeaPropertiesPanel);
-		add(targetViabilityIndicatorPropertiesPanel);
-		add(targetViabilityMeasurementPropertiesPanel);
-		add(futureStatusPropertiesPanel);
+		addPanel(blankPropertiesPanel);
+		addPanel(targetSimpleModePropertiesPanel);
+		addPanel(targetKeaModePropertiesPanel);
+		addPanel(targetViabilityKeaPropertiesPanel);
+		addPanel(targetViabilityIndicatorPropertiesPanel);
+		addPanel(targetViabilityMeasurementPropertiesPanel);
+		addPanel(futureStatusPropertiesPanel);
 
 		updateFieldsFromProject();
-	}
-	
-	public void dispose()
-	{
-		super.dispose();
-		blankPropertiesPanel.dispose();
-		targetSimpleModePropertiesPanel.dispose();
-		targetKeaModePropertiesPanel.dispose();
-		targetViabilityKeaPropertiesPanel.dispose();
-		targetViabilityIndicatorPropertiesPanel.dispose();
-		targetViabilityMeasurementPropertiesPanel.dispose();
-		futureStatusPropertiesPanel.dispose();
 	}
 	
 	public String getPanelDescription()
@@ -92,13 +79,6 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 		String panelDescription = currentCard.getPanelDescription();
 		cardLayout.show(this, panelDescription);
 
-		targetSimpleModePropertiesPanel.setObjectRefs(orefsToUse);
-		targetKeaModePropertiesPanel.setObjectRefs(orefsToUse);
-		targetViabilityKeaPropertiesPanel.setObjectRefs(orefsToUse);
-		targetViabilityIndicatorPropertiesPanel.setObjectRefs(orefsToUse);
-		targetViabilityMeasurementPropertiesPanel.setObjectRefs(orefsToUse);
-		futureStatusPropertiesPanel.setObjectRefs(orefsToUse);
-		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
 		// NOTE: The following are an attempt to fix a reported problem 
@@ -136,11 +116,6 @@ public class TargetViabilityTreePropertiesPanel extends OverlaidObjectDataInputP
 			return targetKeaModePropertiesPanel;
 		
 		return targetSimpleModePropertiesPanel;
-	}
-	
-	private void add(DisposablePanelWithDescription panelToAdd)
-	{
-		add(panelToAdd, panelToAdd.getPanelDescription());
 	}
 	
 	@Override

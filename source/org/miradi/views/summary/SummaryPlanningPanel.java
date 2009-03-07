@@ -21,34 +21,31 @@ package org.miradi.views.summary;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.forms.summary.PlanningTabForm;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 
-public class SummaryPlanningPanel extends ObjectDataInputPanel
+public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 {
 	public SummaryPlanningPanel(MainWindow mainWindowToUse, ORef orefToUse)
 	{
-		super(mainWindowToUse.getProject(), orefToUse);
+		super(mainWindowToUse.getProject(), ProjectMetadata.getObjectType());
 		setLayout(new OneColumnGridLayout());
 
 		SummaryPlanningWorkPlanSubPanel workPlanSubPanel = new SummaryPlanningWorkPlanSubPanel(mainWindowToUse.getProject(), orefToUse);
-		workPlanSubPanel.setBorder(new PanelTitledBorder(EAM.text("Workplan")));
-		addSubPanel(workPlanSubPanel);
-		add(workPlanSubPanel);
+		addSubPanelWithTitledBorder(workPlanSubPanel);
 		
 		SummaryPlanningFinancialSubPanel financialSubPanel = new SummaryPlanningFinancialSubPanel(mainWindowToUse);
-		financialSubPanel.setBorder(new PanelTitledBorder(EAM.text("Financial")));
-		addSubPanel(financialSubPanel);
-		add(financialSubPanel);
+		addSubPanelWithTitledBorder(financialSubPanel);
 		
+		setObjectRef(orefToUse);
 		updateFieldsFromProject();
 	}
 

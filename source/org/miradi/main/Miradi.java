@@ -59,19 +59,30 @@ public class Miradi
 		List<String> argsAsList = Arrays.asList(args);
 
 		EAM.setLogLevel(EAM.LOG_VERBOSE);
-		EAM.logDebug("Miradi " + VersionConstants.getVersionAndTimestamp());
+		EAM.logDebug("Miradi version " + VersionConstants.getVersionAndTimestamp());
 		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		for(String arg : argsAsList)
 		{
 			if(arg.equals("--verbose"))
-			{
 				EAM.setLogLevel(EAM.LOG_VERBOSE);
-			}
 			
 			if (arg.equals(ALPHA_TESTER_MODE_ON_SWITCH))
 			{
-				EAM.enableAlphaTesterMode();
+				isAlphaTesterMode = true;
+				EAM.logDebug("Alpha tester mode enabled");
+			}
+
+			if(arg.equals("--demo"))
+			{
+				demoMode = true;
+				EAM.logDebug("Demo mode enabled");
+			}
+			
+			if(arg.equals("--developer"))
+			{
+				developerMode = true;
+				EAM.logDebug("Developer mode enabled");
 			}
 		}
 
@@ -79,6 +90,21 @@ public class Miradi
 		EAM.possiblyLogTooLowInitialMemory();
 
 		Miradi.start(args);
+	}
+
+	public static boolean isDemoMode()
+	{
+		return demoMode;
+	}
+
+	public static boolean isDeveloperMode()
+	{
+		return developerMode;
+	}
+	
+	public static boolean isAlphaTesterMode()
+	{
+		return isAlphaTesterMode;
 	}
 
 	public static void switchToLanguage(String languageCode) throws Exception
@@ -242,5 +268,9 @@ public class Miradi
 
 	public static final String MAIN_VERSION = "3.0";
 	public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + MAIN_VERSION + "-";
-	private static final String ALPHA_TESTER_MODE_ON_SWITCH = "--tester"; 
+	private static final String ALPHA_TESTER_MODE_ON_SWITCH = "--tester";
+	
+	private static boolean demoMode;
+	private static boolean developerMode;
+	private static boolean isAlphaTesterMode;
 }

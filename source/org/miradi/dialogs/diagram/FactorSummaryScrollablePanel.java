@@ -58,6 +58,20 @@ public class FactorSummaryScrollablePanel extends ModelessDialogPanel
 		summaryPanel.dispose();
 	}
 	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		summaryPanel.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		summaryPanel.becomeInactive();
+		super.becomeInactive();
+	}
+	
 	public String getPanelDescription()
 	{
 		return summaryPanel.getPanelDescription();

@@ -119,11 +119,6 @@ public class EAM
 		return Character.isLetterOrDigit(c);
 	}
 	
-	public static void enableAlphaTesterMode()
-	{
-		isAlphaTesterMode = true;
-	}
-	
 	private static void displayHtmlWarningDialog(String htmlFileName, String findToReplace,  String replacementForStr1)
 	{
 		try
@@ -247,16 +242,16 @@ public class EAM
 	
 	public static void logError(String text)
 	{
-		if (isAlphaTesterMode)
-			errorDialog("<HTML>There is a console error: <BR>" + text + "</HTML>");
+		if (Miradi.isAlphaTesterMode())
+			errorDialog("<HTML>There is a console error: <BR>" + text);
 			
 		logger.logError(text);
 	}
 	
 	public static void logWarning(String text)
 	{
-		if (isAlphaTesterMode)
-			errorDialog("<HTML>There is a console warning: <BR>" + text + "</HTML>");
+		if (Miradi.isAlphaTesterMode())
+			errorDialog("<HTML>There is a console warning: <BR>" + text);
 		
 		logger.logWarning(text);
 	}
@@ -573,7 +568,6 @@ public class EAM
 	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
 	public static final String INFORMATION_DIALOG_TITLE = EAM.text("Wintitle|Information");
 	
-	private static boolean isAlphaTesterMode;
 }
 
 

@@ -108,7 +108,7 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 			if(picker.isActive())
 			{
 				if(currentPicker != null)
-					EAM.logWarning("Two active pickers:\n " + picker.getClass() + " and\n " + currentPicker.getClass());
+					EAM.logWarning("Two active pickers for " + getClass() + ":\n " + picker.getClass() + " and\n " + currentPicker.getClass());
 				currentPicker = picker;
 			}
 		}

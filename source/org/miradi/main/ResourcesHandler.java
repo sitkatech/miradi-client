@@ -122,6 +122,15 @@ public class ResourcesHandler
 		}
 	}
 	
+	public static boolean isRunningFromInsideJar()
+	{
+		String url = getResourceURLWithoutExceptions("/").toString();
+		if(url.indexOf('!') >= 0)
+			return true;
+		
+		return false;
+	}
+
 	public static String RESOURCES_PATH = "/resources/";
 
 	private static URL urlOfResourcesZip;

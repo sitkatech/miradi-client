@@ -41,6 +41,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		tabPanel = new PanelTabbedPane();
 		tabPanel.setTabPlacement(tabPanel.LEFT);
 		add(tabPanel, BorderLayout.CENTER);
+		setBackground(getMainWindow().getAppPreferences().getDarkPanelBackgroundColor());
 	}
 	
 	class SimpleObjectDataInputPanel extends ObjectDataInputPanel

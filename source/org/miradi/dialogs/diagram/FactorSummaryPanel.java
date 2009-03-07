@@ -28,7 +28,7 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.DraftStrategyIcon;
@@ -37,7 +37,6 @@ import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.ids.DiagramFactorId;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -45,16 +44,14 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 
-public class FactorSummaryPanel extends ObjectDataInputPanel
+public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 {
 	public FactorSummaryPanel(MainWindow mainWindowToUse, DiagramFactor diagramFactorToEdit) throws Exception
 	{
-		super(mainWindowToUse.getProject(), diagramFactorToEdit.getWrappedORef());
-		setLayout(new OneColumnGridLayout());
+		super(mainWindowToUse.getProject(), diagramFactorToEdit.getObjectType());
 		
 		mainWindow = mainWindowToUse;
 		currentDiagramFactor = diagramFactorToEdit;
-		setObjectRefs(new ORef[] {diagramFactorToEdit.getWrappedORef(), diagramFactorToEdit.getRef(),});
 		
 		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), diagramFactorToEdit);
 		addSubPanelWithTitledBorder(corePanel);
@@ -66,6 +63,20 @@ public class FactorSummaryPanel extends ObjectDataInputPanel
 		
 		setObjectRefs(new ORef[] {diagramFactorToEdit.getWrappedORef(), diagramFactorToEdit.getRef(),});
 		updateFieldsFromProject();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		corePanel.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		corePanel.becomeInactive();
+		super.becomeInactive();
 	}
 	
 	@Override

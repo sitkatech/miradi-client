@@ -22,7 +22,7 @@ package org.miradi.dialogs.viability;
 import javax.swing.Icon;
 
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.GoalIcon;
@@ -38,7 +38,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 
-public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanelWithSections
+public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanel
 {
 	public IndicatorFutureStatusSubPanel(Project project)
 	{
@@ -48,7 +48,6 @@ public class IndicatorFutureStatusSubPanel extends ObjectDataInputPanelWithSecti
 	public IndicatorFutureStatusSubPanel(Project projectToUse, ORef orefToUse)
 	{
 		super(projectToUse, orefToUse.getObjectType());
-		createSingleSection(EAM.text("Summary"));
 
 		PanelTitleLabel dateLabel = new PanelTitleLabel(EAM.text("Date"));
 		ObjectDataInputField futureStatusDateField = createDateChooserField(ObjectType.INDICATOR,  Indicator.TAG_FUTURE_STATUS_DATE);

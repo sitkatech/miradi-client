@@ -40,14 +40,14 @@ import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.goal.GoalListManagementPanel;
 import org.miradi.dialogs.goal.GoalListTablePanel;
-import org.miradi.dialogs.indicator.SimpleViabilityPanel;
+import org.miradi.dialogs.indicator.SimpleViabilityManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListTablePanel;
 import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
 import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetPropertiesKeaViabilityTreeManagementPanel;
-import org.miradi.dialogs.viability.TargetViabilityTreeManagementPanel;
+import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
@@ -78,8 +78,8 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.DirectThreatQuestion;
+import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 
@@ -105,6 +105,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private void disposeTabs()
 	{
+		becomeInactive();
 		if(detailsTab != null)
 		{
 			detailsTab.dispose();
@@ -155,6 +156,58 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			grid.dispose();
 			grid = null;
 		}
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		if(detailsTab != null)
+			detailsTab.becomeActive();
+		if(indicatorsTab != null)
+			indicatorsTab.becomeActive();
+		if(goalsTab != null)
+			goalsTab.becomeActive();
+		if(objectivesTab != null)
+			objectivesTab.becomeActive();
+		if(activitiesTab != null)
+			activitiesTab.becomeActive();
+		if(viabilityTab != null)
+			viabilityTab.becomeActive();
+		if (simpleViabilityTab != null)
+			simpleViabilityTab.becomeActive();
+		if (stressTab != null)
+			stressTab.becomeActive();
+		if (subTargetTab != null)
+			subTargetTab.becomeActive();
+		if(grid != null)
+			grid.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		if(detailsTab != null)
+			detailsTab.becomeInactive();
+		if(indicatorsTab != null)
+			indicatorsTab.becomeInactive();
+		if(goalsTab != null)
+			goalsTab.becomeInactive();
+		if(objectivesTab != null)
+			objectivesTab.becomeInactive();
+		if(activitiesTab != null)
+			activitiesTab.becomeInactive();
+		if(viabilityTab != null)
+			viabilityTab.becomeInactive();
+		if (simpleViabilityTab != null)
+			simpleViabilityTab.becomeInactive();
+		if (stressTab != null)
+			stressTab.becomeInactive();
+		if (subTargetTab != null)
+			subTargetTab.becomeInactive();
+		if(grid != null)
+			grid.becomeInactive();
+		super.becomeInactive();
 	}
 	
 	class FactorPropertiesTabbedPane extends PanelTabbedPane
@@ -230,7 +283,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if ( factor.isTarget() && !isKeaViabilityMode)
 		{
-			simpleViabilityTab = new SimpleViabilityPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
+			simpleViabilityTab = new SimpleViabilityManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			tabs.addTab(simpleViabilityTab.getPanelDescription(), simpleViabilityTab.getIcon(), simpleViabilityTab);
 		}
 		
@@ -344,7 +397,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
 			
 			getFactorPropertiesDialog().pack();
-			updateAllSplitterLocations();
+			becomeActive();
 		}
 		catch(Exception e)
 		{
@@ -479,19 +532,22 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			rebuildPanel();
 			
 			if(viabilityTab != null)
-				viabilityTab.updateSplitterLocation();
+				viabilityTab.becomeActive();
 			
 			if (stressTab != null)
-				stressTab.updateSplitterLocation();
+				stressTab.becomeActive();
 			
-			subTargetTab.updateSplitterLocation();
-			goalsTab.updateSplitterLocation();
+			if(subTargetTab != null)
+				subTargetTab.becomeActive();
+			
+			if(goalsTab != null)
+				goalsTab.becomeActive();
 			
 			if(indicatorsTab != null)
-				indicatorsTab.updateSplitterLocation();
+				indicatorsTab.becomeActive();
 			
 			if (simpleViabilityTab != null)
-				simpleViabilityTab.updateSplitterLocation();
+				simpleViabilityTab.becomeActive();
 		}
 		
 		if (event.isSetDataCommandWithThisTag(Factor.TAG_LABEL)  || event.isSetDataCommandWithThisTag(Factor.TAG_SHORT_LABEL))
@@ -569,10 +625,10 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	protected JTabbedPane tabs;
 	private FactorSummaryScrollablePanel detailsTab;
 	private ObjectiveListManagementPanel objectivesTab;
-	private TargetViabilityTreeManagementPanel indicatorsTab;
+	private TargetViabilityManagementPanel indicatorsTab;
 	private GoalListManagementPanel goalsTab;
-	private TargetViabilityTreeManagementPanel viabilityTab;
-	private SimpleViabilityPanel simpleViabilityTab;
+	private TargetViabilityManagementPanel viabilityTab;
+	private SimpleViabilityManagementPanel simpleViabilityTab;
 	private StressListManagementPanel stressTab;
 	private ActivityListManagementPanel activitiesTab;
 	private SubTargetManagementPanel subTargetTab;

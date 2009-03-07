@@ -241,10 +241,22 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public void becomeActive()
 	{
+		super.becomeActive();
+		getPicker().becomeActive();
+		for(AbstractObjectDataInputPanel panel : subPanels)
+		{
+			panel.becomeActive();
+		}
 	}
 	
 	public void becomeInactive()
 	{
+		getPicker().becomeInactive();
+		for(AbstractObjectDataInputPanel panel : subPanels)
+		{
+			panel.becomeInactive();
+		}
+		super.becomeInactive();
 	}
 
 	public void setFocusOnFirstField()

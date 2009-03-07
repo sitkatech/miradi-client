@@ -72,7 +72,10 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 			ORef rowObjectRef = getRowObjectRefs().get(row);
 			BaseObject rowObject = project.findObject(rowObjectRef);
 			if(rowObject == null)
+			{
 				EAM.logWarning("ObjectTableModel.getObjectFromRow: Missing object: " + rowObjectRef);
+				EAM.logStackTrace();
+			}
 			return rowObject;
 		}
 		catch(Exception e)

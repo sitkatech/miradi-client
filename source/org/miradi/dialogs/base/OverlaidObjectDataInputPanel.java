@@ -31,4 +31,10 @@ public abstract class OverlaidObjectDataInputPanel extends ObjectDataInputPanel
 
 	@Override
 	abstract public void setFocusOnFirstField();
+
+	protected void addPanel(AbstractObjectDataInputPanel panelToAdd)
+	{
+		addSubPanel(panelToAdd);
+		add(panelToAdd, panelToAdd.getPanelDescription());
+	}
 }
