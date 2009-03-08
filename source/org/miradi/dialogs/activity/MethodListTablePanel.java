@@ -24,14 +24,14 @@ import org.miradi.actions.ActionDeleteMethod;
 import org.miradi.actions.ActionShareMethod;
 import org.miradi.dialogs.base.ObjectListTablePanelWithParent;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 
 public class MethodListTablePanel extends ObjectListTablePanelWithParent
 {
-	public MethodListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
+	public MethodListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(mainWindowToUse, ObjectType.TASK, new MethodListTableModel(mainWindowToUse.getProject(), nodeRef), buttonActionClasses);
+		super(mainWindowToUse, ObjectType.TASK, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy), buttonActionClasses);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {

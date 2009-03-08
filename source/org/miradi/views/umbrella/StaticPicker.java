@@ -49,7 +49,7 @@ public class StaticPicker implements ObjectPicker
 
 	public ORefList[] getSelectedHierarchies()
 	{
-		return new ORefList[] {selectedRefs};
+		return new ORefList[] {getSelectionHierarchy()};
 	}
 
 	public BaseObject[] getSelectedObjects()
@@ -64,7 +64,7 @@ public class StaticPicker implements ObjectPicker
 
 	public ORefList getSelectionHierarchy()
 	{
-		return null;
+		return selectedRefs;
 	}
 
 	public void removeSelectionChangeListener(ListSelectionListener listener)

@@ -27,14 +27,20 @@ import org.miradi.dialogs.task.ActivityPropertiesPanel;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 
 public class ActivityListManagementPanel extends ObjectListManagementPanel
 {
-	public ActivityListManagementPanel(MainWindow mainWindow, ORef nodeRef) throws Exception
+	public static ActivityListManagementPanel create(MainWindow mainWindow, ORefList selectedStrategyHierarchy) throws Exception
 	{
-		super(mainWindow, new ActivityListTablePanel(mainWindow, nodeRef),
-				ActivityPropertiesPanel.createWithVisibilityPanel(mainWindow));
+		ActivityListTablePanel tablePanel = new ActivityListTablePanel(mainWindow, selectedStrategyHierarchy);
+		ActivityPropertiesPanel properties = new ActivityPropertiesPanel(mainWindow, tablePanel.getTable());
+		return new ActivityListManagementPanel(mainWindow, tablePanel, properties);
+	}
+	
+	private ActivityListManagementPanel(MainWindow mainWindow, ActivityListTablePanel tablePanel, ActivityPropertiesPanel properties) throws Exception
+	{
+		super(mainWindow, tablePanel, properties);
 	}
 	
 	public String getSplitterDescription()

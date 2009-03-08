@@ -33,6 +33,7 @@ import javax.swing.JToolBar;
 import org.martus.swing.Utilities;
 import org.miradi.actions.ActionActivityMoveDown;
 import org.miradi.actions.ActionActivityMoveUp;
+import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionCloneGoal;
 import org.miradi.actions.ActionCloneIndicator;
 import org.miradi.actions.ActionCloneObjective;
@@ -107,6 +108,7 @@ import org.miradi.actions.ActionPaste;
 import org.miradi.actions.ActionPasteFactorContent;
 import org.miradi.actions.ActionPasteWithoutLinks;
 import org.miradi.actions.ActionProperties;
+import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.ActionRenameConceptualModel;
 import org.miradi.actions.ActionRenameResultsChain;
 import org.miradi.actions.ActionSelectAll;
@@ -196,6 +198,8 @@ import org.miradi.views.diagram.doers.ShareActivityDoer;
 import org.miradi.views.diagram.doers.ShowActityBubbleDoer;
 import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
+import org.miradi.views.planning.doers.AddAssignmentDoer;
+import org.miradi.views.planning.doers.RemoveAssignmentDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
@@ -420,6 +424,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionManageFactorTagsFromMenu.class, new ManageFactorTagsFromMenuDoer());
 		addDoerToMap(ActionManageFactorTags.class, new ManageFactorTagsDoer());
 		addDoerToMap(ActionCreateNamedTaggedObjectSet.class, new CreateNamedTaggedObjectSetDoer());
+
+		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
+		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
 	}
 	
 	public void tabWasSelected()

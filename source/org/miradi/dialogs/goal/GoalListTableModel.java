@@ -30,7 +30,7 @@ public class GoalListTableModel extends ObjectListTableModel
 {
 	public GoalListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef.getObjectType(), nodeRef.getObjectId(), Factor.TAG_GOAL_IDS, ObjectType.GOAL, getColumnTags());
+		super(projectToUse, nodeRef, Factor.TAG_GOAL_IDS, ObjectType.GOAL, getColumnTags());
 	}
 
 	private static String[] getColumnTags()

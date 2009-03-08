@@ -26,6 +26,8 @@ import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramComponent;
@@ -33,6 +35,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
+import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
@@ -63,6 +66,7 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -91,6 +95,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		diagram = diagramToUse;
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
+		tabChangeHandler = new TabChangeHandler();
 
 		getProject().addCommandExecutedListener(this);
 	}
@@ -156,32 +161,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			grid.dispose();
 			grid = null;
 		}
-	}
-	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		if(detailsTab != null)
-			detailsTab.becomeActive();
-		if(indicatorsTab != null)
-			indicatorsTab.becomeActive();
-		if(goalsTab != null)
-			goalsTab.becomeActive();
-		if(objectivesTab != null)
-			objectivesTab.becomeActive();
-		if(activitiesTab != null)
-			activitiesTab.becomeActive();
-		if(viabilityTab != null)
-			viabilityTab.becomeActive();
-		if (simpleViabilityTab != null)
-			simpleViabilityTab.becomeActive();
-		if (stressTab != null)
-			stressTab.becomeActive();
-		if (subTargetTab != null)
-			subTargetTab.becomeActive();
-		if(grid != null)
-			grid.becomeActive();
 	}
 	
 	@Override
@@ -252,6 +231,11 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
 		Factor factor = (Factor) getProject().findObject(diagramFactor.getWrappedORef());
+		
+		ORefList selectedHierarchy = new ORefList();
+		selectedHierarchy.add(factor.getRef());
+		selectedHierarchy.add(diagramFactor.getRef());
+		selectedHierarchy.add(getDiagramObject().getRef());
 
 		boolean isKeaViabilityMode = (factor.isTarget() && factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE));
 		
@@ -271,7 +255,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if(factor.isStrategy())
 		{
-			activitiesTab = new ActivityListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
+			activitiesTab = ActivityListManagementPanel.create(mainWindow, selectedHierarchy);
 			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
 		}
 
@@ -305,9 +289,20 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			tabs.addTab(subTargetTab.getPanelDescription(), subTargetTab.getIcon(), subTargetTab);
 		}
 		
+		tabs.addChangeListener(tabChangeHandler);
 		return tabs;
 	}
-	
+
+	class TabChangeHandler implements ChangeListener
+	{
+		public void stateChanged(ChangeEvent e)
+		{
+			becomeInactive();
+			DisposablePanelWithDescription panel = (DisposablePanelWithDescription)tabs.getSelectedComponent();
+			if(panel != null)
+				panel.becomeActive();
+		}
+	}
 
 	public void selectTab(int tabIdentifier)
 	{
@@ -637,4 +632,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private DiagramFactor currentDiagramFactor;
 	private FactorInputPanel grid;
 	private CurrentFactorChangerComboBox currentFactorChangerComboBox;
+	
+	private TabChangeHandler tabChangeHandler;
 }

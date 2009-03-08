@@ -28,7 +28,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
 public class ObjectListTable extends ObjectTable
@@ -60,13 +59,13 @@ public class ObjectListTable extends ObjectTable
 	public ORefList[] getSelectedHierarchies()
 	{
 		ORefList[] superHierarchies = super.getSelectedHierarchies();
-		ORef containingRef = getObjectListTableModel().getContainingRef();
+		ORefList containingRefs = getObjectListTableModel().getSelectedHierarchy();
 		if (superHierarchies.length == 0)
-			return new ORefList[]{new ORefList(containingRef)};
+			return new ORefList[]{containingRefs};
 
 		for (int i = 0; i < superHierarchies.length; ++i)
 		{
-			superHierarchies[i].add(containingRef);
+			superHierarchies[i].addAll(containingRefs);
 		}
 		
 		return superHierarchies;

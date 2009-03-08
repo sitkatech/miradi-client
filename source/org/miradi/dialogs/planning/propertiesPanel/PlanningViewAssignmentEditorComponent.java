@@ -32,6 +32,9 @@ import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -39,7 +42,7 @@ import org.miradi.objects.Task;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
+public class PlanningViewAssignmentEditorComponent extends MultiTablePanel implements CommandExecutedListener
 {
 	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
@@ -51,17 +54,37 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		createTables();
 		addTables();
 		addTablesToSelectionController();
+		
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	@Override
 	public void dispose()
 	{
 		super.dispose();
+		becomeInactive();
+		getProject().removeCommandExecutedListener(this);
 		
 		resourceTable.dispose();
 		workplanTable.dispose();
 		budgetTable.dispose();
 		budgetTotalsTable.dispose();	
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		resourceTable.becomeActive();
+		objectPicker.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		resourceTable.becomeInactive();
+		objectPicker.becomeInactive();
+		super.becomeInactive();
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -199,7 +222,21 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 		return mainWindow.getActions();
 	}
 	
-	public void dataWasChanged() throws Exception
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		try
+		{
+			if (event.isSetDataCommand())
+				dataWasChanged();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("An unexpected error has occurred"));
+		}		
+	}
+
+	private void dataWasChanged() throws Exception
 	{
 		resourceTableModel.dataWasChanged();
 		workPlanModel.dataWasChanged();
@@ -230,7 +267,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel
 	
 	public ORefList[] getSelectedHierarchies()
 	{
-		return objectPicker.getSelectedHierarchies();
+		return resourceTable.getSelectedHierarchies();
 	}
 	
 	private MainWindow mainWindow;

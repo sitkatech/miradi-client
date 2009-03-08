@@ -19,40 +19,77 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.task;
 
-import javax.swing.BorderFactory;
-
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.diagram.ForecastSubPanel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAssignmentEditorComponent;
 import org.miradi.ids.BaseId;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Target;
+import org.miradi.objects.Task;
+import org.miradi.views.umbrella.ObjectPicker;
 
-public abstract class TaskPropertiesPanel extends ObjectDataInputPanel
+public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	protected TaskPropertiesPanel(MainWindow mainWindow, TaskPropertiesInputPanel inputPanelToUse) throws Exception
+	protected TaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindow.getProject(), ObjectType.TASK, BaseId.INVALID);
+		super(mainWindow.getProject(), Task.getObjectType());
 		
-		setLayout(new OneColumnGridLayout());
-		setBorder(BorderFactory.createEtchedBorder());
-		inputPanel = inputPanelToUse;
+		addSubPanelWithTitledBorder(new TaskDetailsPanel(getProject(), mainWindow.getActions()));
+
+		if(shouldHaveVisibilityPanel())
+			addSubPanelWithTitledBorder(new ActivityFactorVisibilityControlPanel(mainWindow));
 		
-		String hintAboutPlanningView = EAM.text("<html><em>HINT: " +
-				"To manage the details about who will do the work and when, " +
-				"go to the Planning View and choose Work Plan</em>");
+		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Task.getObjectType(), BaseId.INVALID)));
 		
-		addSubPanelWithoutTitledBorder(inputPanel);
-		add(new PanelTitleLabel(hintAboutPlanningView));
+		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindow, objectPickerToUse);
+		createSingleSection(EAM.text("Assignments"));
+		add(assignmentEditor);
+		
+		updateFieldsFromProject();
+	}
+
+	public void dispose()
+	{
+		assignmentEditor.dispose();
+		assignmentEditor = null;
+
+		super.dispose();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		System.out.println("TPP.becomeActive");
+		super.becomeActive();
+		assignmentEditor.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		assignmentEditor.becomeInactive();
+		super.becomeInactive();
+	}
+	
+	abstract protected boolean shouldHaveVisibilityPanel();
+
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		super.setObjectRefs(hierarchyToSelectedRef);
+		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		inputPanel.commandExecuted(event);
+			
+		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+			reloadSelectedRefs();
 	}
 
-	private TaskPropertiesInputPanel inputPanel;	
+	private PlanningViewAssignmentEditorComponent assignmentEditor;
 }

@@ -20,27 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.task;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.views.umbrella.ObjectPicker;
 
 public class MethodPropertiesPanel extends TaskPropertiesPanel
 {
-	public static TaskPropertiesPanel createWithoutVisibilityPanel(MainWindow mainWindow) throws Exception
+	public MethodPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		TaskPropertiesInputPanel inputPanelWithoutVisibilityPanel = new TaskPropertiesInputPanel(mainWindow, null, BaseId.INVALID);
-		return new MethodPropertiesPanel(mainWindow, inputPanelWithoutVisibilityPanel);
+		super(mainWindow, objectPickerToUse);
 	}
-	
-	private MethodPropertiesPanel(MainWindow mainWindow, TaskPropertiesInputPanel inputPanelWithoutVisibilityPanel) throws Exception
+
+	protected boolean shouldHaveVisibilityPanel()
 	{
-		super(mainWindow, inputPanelWithoutVisibilityPanel);
+		return false;
 	}
 
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Method Properties");
 	}
-		
-
 }
