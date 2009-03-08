@@ -32,7 +32,7 @@ public class SlideListTableModel extends ObjectListTableModel
 {
 	public SlideListTableModel(Project project, ORef containingOref)
 	{
-		super(project, containingOref.getObjectType(), containingOref.getObjectId(), SlideShow.TAG_SLIDE_REFS, Slide.getObjectType(), COLUMN_TAGS);
+		super(project, containingOref, SlideShow.TAG_SLIDE_REFS, Slide.getObjectType(), COLUMN_TAGS);
 	}
 
 	public ORefList getLatestRefListFromProject()

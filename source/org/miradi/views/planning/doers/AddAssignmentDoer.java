@@ -26,6 +26,7 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 import org.miradi.views.ObjectsDoer;
@@ -34,10 +35,12 @@ public class AddAssignmentDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
-		if (getObjects().length != 1)
+		if(!super.isAvailable())
 			return false;
 		
-		if (getSelectedObjectType() != ObjectType.TASK)
+		ORefList selectedRefs = getSelectionHierarchy();
+		ORefList selectedTaskRefs = selectedRefs.filterByType(Task.getObjectType());
+		if(selectedTaskRefs.size() < 1)
 			return false;
 		
 		return true;
@@ -50,7 +53,9 @@ public class AddAssignmentDoer extends ObjectsDoer
 
 		try 
 		{
-			Task selectedTask = (Task)getProject().findObject(ObjectType.TASK, getSelectedIds()[0]);
+			ORefList selectedRefs = getSelectionHierarchy();
+			ORefList selectedTaskRefs = selectedRefs.filterByType(Task.getObjectType());
+			Task selectedTask = Task.find(getProject(), selectedTaskRefs.get(0));
 			if (selectedTask.getSubtaskCount() > 0)
 			{
 				EAM.errorDialog(EAM.text("Resources cannot be added to this task because it already has subtasks."));

@@ -20,29 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.task;
 
-import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.views.umbrella.ObjectPicker;
 
 public class ActivityPropertiesPanel extends TaskPropertiesPanel
 {
-	public static TaskPropertiesPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
+	public ActivityPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		ActivityFactorVisibilityControlPanel visibilityPanel = new ActivityFactorVisibilityControlPanel(mainWindow);
-		TaskPropertiesInputPanel inputPanelWithVisibilityPanel = new TaskPropertiesInputPanel(mainWindow, visibilityPanel, BaseId.INVALID);
-		return new ActivityPropertiesPanel(mainWindow, inputPanelWithVisibilityPanel);
+		super(mainWindow, objectPickerToUse);
 	}
-
-	private ActivityPropertiesPanel(MainWindow mainWindow, TaskPropertiesInputPanel inputPanelWithVisibilityPanel) throws Exception
+	
+	@Override
+	protected boolean shouldHaveVisibilityPanel()
 	{
-		super(mainWindow, inputPanelWithVisibilityPanel);
+		return true;
 	}
 
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Activity Properties");
 	}
-		
-	
+
 }

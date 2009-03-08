@@ -32,45 +32,36 @@ public class ObjectListTableModel extends ObjectTableModel
 {
 	public ObjectListTableModel(Project projectToUse, ORef containingRefToUse, String listFieldTag, int listedItemType, String[] columnTags)
 	{
-		this(projectToUse, listFieldTag, listedItemType, columnTags);
-		
-		containingRef = containingRefToUse;
-
-		setRowObjectRefs(getLatestRefListFromProject());
+		this(projectToUse, new ORefList(containingRefToUse), listFieldTag, listedItemType, columnTags);
 	}
-
-	public ObjectListTableModel(Project projectToUse, String idListFieldTag, int listedItemType, String[] columnTags)
+	
+	public ObjectListTableModel(Project projectToUse, ORefList containingRefsToUse, String listFieldTag, int listedItemType, String[] columnTags)
 	{
 		super(projectToUse, listedItemType, columnTags);
 		
-		tagOfList = idListFieldTag;
+		tagOfList = listFieldTag;
+		containingRefs = containingRefsToUse;
+		setRowObjectRefs(getLatestRefListFromProject());
 	}
 	
-	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
-			String idListFieldTag, int listedItemType, String tableColumnTag)
+	public ORefList getSelectedHierarchy()
 	{
-		this(projectToUse, new ORef(objectType, objectId), idListFieldTag, listedItemType, new String[] {tableColumnTag});
+		return containingRefs;
 	}
-	
-	public ObjectListTableModel(Project projectToUse, int objectType, BaseId objectId, 
-			String idListFieldTag, int listedItemType, String[] tableColumnTags)
-	{
-		this(projectToUse, new ORef(objectType, objectId), idListFieldTag, listedItemType, tableColumnTags);
-	}
-	
+
 	public ORef getContainingRef()
 	{
-		return new ORef(getContainingObjectType(), getContainingObjectId());
+		return containingRefs.get(0);
 	}
 	
 	public int getContainingObjectType()
 	{
-		return containingRef.getObjectType();
+		return getContainingRef().getObjectType();
 	}
 	
 	public BaseId getContainingObjectId()
 	{
-		return containingRef.getObjectId();
+		return getContainingRef().getObjectId();
 	}
 	
 	public String getFieldTag()
@@ -80,14 +71,14 @@ public class ObjectListTableModel extends ObjectTableModel
 
 	public BaseObject getContainingObject()
 	{
-		return project.findObject(containingRef);
+		return project.findObject(getContainingRef());
 	}
 
 	public ORefList getLatestRefListFromProject()
 	{
 		try
 		{
-			if(containingRef.isInvalid())
+			if(getContainingRef().isInvalid())
 				return new ORefList();
 				
 			ObjectData objectData = getContainingObject().getField(tagOfList);
@@ -105,5 +96,5 @@ public class ObjectListTableModel extends ObjectTableModel
 	}
 	
 	private String tagOfList;
-	private ORef containingRef;
+	private ORefList containingRefs;
 }

@@ -19,57 +19,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.dialogs.task.TaskPropertiesInputPanel;
-import org.miradi.ids.BaseId;
-import org.miradi.main.AppPreferences;
+import org.miradi.dialogs.task.TaskPropertiesPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningViewTaskPropertiesPanel extends ObjectDataInputPanelWithSections
+public class PlanningViewTaskPropertiesPanel extends TaskPropertiesPanel
 {
-	public PlanningViewTaskPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
+	public PlanningViewTaskPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), Task.getObjectType());
+		super(mainWindow, objectPickerToUse);
+	}
+	
+	@Override
+	protected boolean shouldHaveVisibilityPanel()
+	{
+		return false;
+	}
 
-		setBackground(AppPreferences.getDataPanelBackgroundColor());
-		
-		taskPropertiesInputPanel = new TaskPropertiesInputPanel(mainWindowToUse, null, BaseId.INVALID);
-		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, objectPickerToUse);
-	
-		addSubPanelWithTitledBorder(taskPropertiesInputPanel);
-		
-		createSingleSection(EAM.text("Assignments"));
-		add(assignmentEditor);
-	}
-	
-	public void dispose()
-	{
-		assignmentEditor.dispose();
-		assignmentEditor = null;
-
-		super.dispose();
-	}
-	
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		taskPropertiesInputPanel.setObjectRefs(hierarchyToSelectedRef);
-		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
-	}
-	
 	public String getPanelDescription()
 	{
-		return EAM.text("Task Properties");
+		return EAM.text("Title|Task Properties");
 	}
-	
-	public void dataWasChanged() throws Exception
-	{
-		assignmentEditor.dataWasChanged();
-	}
-	
-	private TaskPropertiesInputPanel taskPropertiesInputPanel;
-	private PlanningViewAssignmentEditorComponent assignmentEditor;
 }

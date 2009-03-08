@@ -22,7 +22,6 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.dialogs.activity.MethodListManagementPanel;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 
 public class EditMethodsDoer extends AbstractPopUpEditDoer
@@ -34,8 +33,6 @@ public class EditMethodsDoer extends AbstractPopUpEditDoer
 
 	protected ObjectListManagementPanel createManagementPanel() throws Exception
 	{
-		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(getTypeToFilterOn());
-
-		return new MethodListManagementPanel(getMainWindow(), indicatorRef);
+		return MethodListManagementPanel.create(getMainWindow(), getPicker().getSelectionHierarchy());
 	}
 }

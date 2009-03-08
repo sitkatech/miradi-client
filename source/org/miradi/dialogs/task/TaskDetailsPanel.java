@@ -30,7 +30,6 @@ import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.EmptyIcon;
 import org.miradi.icons.MethodIcon;
 import org.miradi.icons.TaskIcon;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -41,9 +40,9 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
-	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, BaseId idToEdit)
+	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse)
 	{
-		super(projectToUse, Task.getObjectType(), idToEdit);
+		super(projectToUse, Task.getObjectType());
 		
 		taskNameLabel = new PanelTitleLabel("x");
 		ObjectDataInputField taskNameField = createExpandableField(ObjectType.TASK, Task.TAG_LABEL);

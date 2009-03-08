@@ -41,9 +41,8 @@ import org.miradi.dialogs.groupboxLink.GroupBoxLinkListTablePanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkManagementPanel;
 import org.miradi.dialogs.groupboxLink.GroupBoxLinkTableModel;
 import org.miradi.dialogs.stress.StressPropertiesPanel;
-import org.miradi.dialogs.task.TaskPropertiesInputPanel;
+import org.miradi.dialogs.task.ActivityPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -299,18 +298,25 @@ public class PropertiesDoer extends LocationDoer
 	
 	private void doActivityProperties(DiagramFactor diagramFactor) throws Exception
 	{
-		TaskPropertiesInputPanel panel = new TaskPropertiesInputPanel(getMainWindow(), null, BaseId.INVALID);
-
+		ORefList selectionHierarchy = new ORefList();
+		selectionHierarchy.add(diagramFactor.getWrappedORef());
+		selectionHierarchy.add(diagramFactor.getRef());
+		StaticPicker picker = new StaticPicker(selectionHierarchy);
+		picker.becomeActive();
+		ActivityPropertiesPanel panel = new ActivityPropertiesPanel(getMainWindow(), picker);
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}
 
 	private void addDiagramWrappedRefToHierarchyAndShowPanel(DiagramFactor diagramFactor, AbstractObjectDataInputPanel propertiesPanel)
 	{
-		ORefList selectedHierarchy = new ORefList(diagramFactor.getRef());
+		ORefList selectedHierarchy = new ORefList();
 		selectedHierarchy.add(diagramFactor.getWrappedORef());
+		selectedHierarchy.add(diagramFactor.getRef());
 		propertiesPanel.setObjectRefs(selectedHierarchy);
+		propertiesPanel.becomeActive();
 		ModelessDialogWithClose propertiesDialog = new ModelessDialogWithClose(getMainWindow(), propertiesPanel, propertiesPanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(propertiesDialog);
+		
 	}
 
 	// TODO: The tab should probably be computed elsewhere?

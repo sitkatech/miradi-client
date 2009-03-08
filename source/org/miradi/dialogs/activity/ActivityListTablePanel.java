@@ -28,14 +28,15 @@ import org.miradi.dialogs.base.ObjectListTablePanelWithParent;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
 
 public class ActivityListTablePanel extends ObjectListTablePanelWithParent
 {
-	public ActivityListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
+	public ActivityListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(mainWindowToUse, ObjectType.TASK, new ActivityListTableModel(mainWindowToUse.getProject(), nodeRef),	buttonActionClasses);
+		super(mainWindowToUse, ObjectType.TASK, new ActivityListTableModel(mainWindowToUse.getProject(), selectedHierarchy), buttonActionClasses);
 	}
 	
 	static Class[] buttonActionClasses = new Class[] {

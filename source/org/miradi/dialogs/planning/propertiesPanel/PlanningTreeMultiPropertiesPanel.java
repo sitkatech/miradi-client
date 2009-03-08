@@ -34,7 +34,6 @@ import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramKeaModeTargetPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramSimpleModeTargetPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
@@ -187,29 +186,11 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		try
-		{
-			if (event.isSetDataCommand())
-				updateTable();
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("An unexpected error has occurred"));
-		}		
 			
 		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
 			reloadSelectedRefs();
 	}
 
-	public void updateTable() throws Exception
-	{
-		if (taskPropertiesInputPanel == null)
-			return;
-		
-		taskPropertiesInputPanel.dataWasChanged();
-	}
-	
 	@Override
 	public void setFocusOnFirstField()
 	{
