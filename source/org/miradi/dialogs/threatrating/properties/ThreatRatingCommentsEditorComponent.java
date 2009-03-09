@@ -45,7 +45,7 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		super();
 		
 		project = projectToUse;		
-		panelTextArea = new PanelTextArea(ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, AbstractObjectDataInputPanel.DEFAULT_COLUMN_TEXT_COLUM_COUNT);
+		panelTextArea = new PanelTextArea(ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
 		panelTextArea.setLineWrap(true);
 		panelTextArea.setWrapStyleWord(true);
 		
