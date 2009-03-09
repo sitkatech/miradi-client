@@ -24,7 +24,6 @@ import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
@@ -244,22 +243,15 @@ public class FactorLink extends BaseObject
 		fromRef = new ORefData(TAG_FROM_REF);
 		toRef = new ORefData(TAG_TO_REF);
 		bidirectionalLink = new BooleanData(TAG_BIDIRECTIONAL_LINK);
-		comment = new StringData(TAG_COMMENT);
-		simpleThreatRatingComment = new StringData(TAG_SIMPLE_THREAT_RATING_COMMENT);
 		
 		addNoClearField(TAG_FROM_REF, fromRef);
 		addNoClearField(TAG_TO_REF, toRef);
 		addField(TAG_BIDIRECTIONAL_LINK, bidirectionalLink);
-		addField(TAG_COMMENT, comment);
-		addField(TAG_SIMPLE_THREAT_RATING_COMMENT, simpleThreatRatingComment);
 	}
-	
 	
 	public static final String TAG_FROM_REF = "FromRef";
 	public static final String TAG_TO_REF = "ToRef";
 	public static final String TAG_BIDIRECTIONAL_LINK = "BidirectionalLink";
-	public static final String TAG_COMMENT = "Comment";
-	public static final String TAG_SIMPLE_THREAT_RATING_COMMENT = "SimpleThreatRatingComment";
 	
 	public static final String OBJECT_NAME = "Link";
 	public static final String OBJECT_NAME_TARGETLINK = "Targetlink";
@@ -272,6 +264,4 @@ public class FactorLink extends BaseObject
 	private ORefData fromRef;
 	private ORefData toRef;
 	private BooleanData bidirectionalLink;
-	private StringData comment;
-	private StringData simpleThreatRatingComment;
 }
