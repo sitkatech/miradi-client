@@ -195,14 +195,6 @@ public class FactorLink extends BaseObject
 		return new CreateFactorLinkParameter(fromFactor.getRef(), toFactor.getRef());
 	}
 	
-	public static String getCommentTagForMode(Project project)
-	{
-		if (project.isStressBaseMode())
-			return FactorLink.TAG_COMMENT;
-		
-		return FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT;
-	}
-	
 	public ORef getFactorRef(int direction)
 	{
 		if(direction == FROM)
