@@ -136,7 +136,7 @@ public class TestDiagramLink extends ObjectTestCase
 		
 		assertNotNull("link not in model?", model.getDiagramLinkByRef(diagramLinkRef));
 		
-		ProjectServer server = project.getTestDatabase();
+		ProjectServer server = project.getDatabase();
 		DiagramLink dfl = project.getDiagramModel().getDiagramLinkByRef(diagramLinkRef);
 		FactorLink linkage = (FactorLink)server.readObject(project.getObjectManager(), ObjectType.FACTOR_LINK, dfl.getWrappedId());
 		assertEquals("Didn't load from ref?", intervention.getWrappedORef(), linkage.getFromFactorRef());

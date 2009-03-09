@@ -40,7 +40,7 @@ public class FileSystemDirectoryNode extends FileSystemTreeNode
 	@Override
 	protected boolean shouldBeIncluded(File file)
 	{
-		if (ProjectServer.isExistingProject(file))
+		if (ProjectServer.isExistingLocalProject(file))
 			return false;
 		
 		if (isExternalReportsDirectory(file))

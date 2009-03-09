@@ -119,7 +119,7 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 	
 	public static boolean isProjectDirectory(File file)
 	{
-		return ProjectServer.isExistingProject(file);
+		return ProjectServer.isExistingLocalProject(file);
 	}
 
 	public static void doProjectOpen(File file)

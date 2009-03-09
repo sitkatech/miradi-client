@@ -55,7 +55,7 @@ public class DeleteProject
 
 	private static String getDeleteMessage(File projectToDelete)
 	{
-		if (ProjectServer.isExistingProject(projectToDelete))
+		if (ProjectServer.isExistingLocalProject(projectToDelete))
 			return EAM.text("Are you sure you want to delete this project? ");
 		
 		return EAM.text("Are you sure you want to delete this folder and its contents, including all subfolders?");

@@ -16,33 +16,31 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
-package org.miradi.main;
+ */
+package org.miradi.network;
 
-import javax.swing.Action;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
+import java.io.File;
 
-import org.miradi.actions.Actions;
-import org.miradi.main.MainWindow;
-import org.miradi.main.menu.MainMenuBar;
-
-
-public class TestMainMenu extends EAMTestCase
+public interface MiradiFileSystem
 {
-	public TestMainMenu(String name)
-	{
-		super(name);
-	}
-	
-	public void testFileMenu() throws Exception
-	{
-		Actions actions = new Actions(MainWindow.create());
-		JMenuBar menuBar = new MainMenuBar(actions);
-		JMenu fileMenu = menuBar.getMenu(0);
-		JMenuItem exitItem = fileMenu.getItem(fileMenu.getItemCount() - 1);
-		Action exitAction = exitItem.getAction();
-		assertEquals("Exit", exitAction.getValue(Action.NAME));
-	}
+
+	public abstract boolean doesProjectDirectoryExist(String projectName)
+			throws Exception;
+
+	public abstract void createProject(String projectName) throws Exception;
+
+	public abstract void deleteProject(String projectName) throws Exception;
+
+	public abstract boolean doesFileExist(String projectName, File file)
+			throws Exception;
+
+	public abstract String readFile(String projectName, File file)
+			throws Exception;
+
+	public abstract void writeFile(String projectName, File file,
+			String contents) throws Exception;
+
+	public abstract void deleteFile(String projectName, File file)
+			throws Exception;
+
 }

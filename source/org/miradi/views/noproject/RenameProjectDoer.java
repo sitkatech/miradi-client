@@ -100,7 +100,7 @@ public class RenameProjectDoer
 	private static boolean projectExists(String projectName)
 	{
 		File newFile = new File(EAM.getHomeDirectory(), projectName);
-		if(ProjectServer.isExistingProject(newFile))
+		if(ProjectServer.isExistingLocalProject(newFile))
 			return true;
 		
 		if(newFile.exists())

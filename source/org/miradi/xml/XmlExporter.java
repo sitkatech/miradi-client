@@ -54,7 +54,7 @@ public abstract class XmlExporter
 
 		Project newProject = new Project();
 		File projectDirectory = getProjectDirectory(commandLineArguments);
-		if(!ProjectServer.isExistingProject(projectDirectory))
+		if(!ProjectServer.isExistingLocalProject(projectDirectory))
 			throw new RuntimeException("Project does not exist:" + projectDirectory);
 
 		newProject.createOrOpen(projectDirectory);

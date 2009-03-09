@@ -49,6 +49,7 @@ import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeReader;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -102,11 +103,17 @@ import edu.stanford.ejalbert.BrowserLauncherRunner;
 
 public class MainWindow extends JFrame implements CommandExecutedListener, ClipboardOwner, SplitterPositionSaverAndGetter
 {
-	public MainWindow() throws Exception
+	public static MainWindow create() throws Exception
 	{
-		this(new Project());
+		ProjectServer projectServer = new ProjectServer();
+		return new MainWindow(projectServer);
 	}
 	
+	public MainWindow(ProjectServer projectServerToUse) throws Exception
+	{
+		this(new Project(projectServerToUse));
+	}
+
 	public MainWindow(Project projectToUse) throws Exception
 	{
 		preferences = new AppPreferences();

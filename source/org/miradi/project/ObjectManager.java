@@ -308,7 +308,7 @@ public class ObjectManager
 		return createdId;
 	}
 
-	public void deleteObject(BaseObject object) throws IOException, ParseException
+	public void deleteObject(BaseObject object) throws Exception
 	{
 		removeFromReferrerCache(object.getRef());
 		int objectType = object.getType();

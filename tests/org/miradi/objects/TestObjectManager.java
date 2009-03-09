@@ -203,6 +203,7 @@ public class TestObjectManager extends EAMTestCase
 	private void verifyObjectWriteAndRead(int type, CreateObjectParameter parameter) throws IOException, Exception
 	{
 		File tempDirectory = createTempDirectory();
+		tempDirectory.delete();
 		try
 		{
 			Project projectToWrite = new Project();

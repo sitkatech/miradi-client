@@ -252,7 +252,7 @@ public class Miradi
 		{
 			try
 			{
-				EAM.setMainWindow(new MainWindow());
+				EAM.setMainWindow(MainWindow.create());
 				EAM.getMainWindow().start(args);
 			}
 			catch(Exception e)

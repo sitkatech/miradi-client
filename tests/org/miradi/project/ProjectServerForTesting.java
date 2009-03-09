@@ -21,48 +21,33 @@ package org.miradi.project;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 
 import org.martus.util.DirectoryUtils;
-import org.martus.util.TestCaseEnhanced;
-import org.martus.util.DirectoryLock.AlreadyLockedException;
-import org.miradi.database.HybridFileBasedProjectServer;
+import org.miradi.database.ProjectServer;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 
-public class ProjectServerForTesting extends HybridFileBasedProjectServer
+public class ProjectServerForTesting extends ProjectServer
 {
 	public ProjectServerForTesting() throws IOException
 	{
 		super();
 	}
-
-	public void openMemoryDatabase(String nameToUse) throws IOException, AlreadyLockedException
+	
+	@Override
+	public void createLocalProject(File directory) throws Exception
 	{
-		final String tempFileName = "$$$" + TestCaseEnhanced.getCallingTestClass();
-		eamDir = File.createTempFile(tempFileName, null);
-		eamDir.delete();
-		eamDir.mkdir();
-		
-		File projectDir = new File(eamDir, nameToUse);
-
-		openNonDatabaseStore(projectDir);
+		super.createLocalProject(directory);
+		eamDir = directory;
 	}
 	
-	public void writeObject(BaseObject object) throws IOException, ParseException
+	@Override
+	public void openLocalProject(File directory) throws Exception
 	{
-		super.writeObject(object);
-		++callsToWriteObject;
+		super.openLocalProject(directory);
+		eamDir = directory;
 	}
-	
-	
 
-	public void writeThreatRatingFramework(SimpleThreatRatingFramework framework) throws IOException
-	{
-		super.writeThreatRatingFramework(framework);
-		++callsToWriteThreatRatingFramework;
-	}
-	
 	public void closeAndDontDelete() throws IOException
 	{
 		super.close();
@@ -76,7 +61,21 @@ public class ProjectServerForTesting extends HybridFileBasedProjectServer
 		eamDir = null;
 	}
 
-	File eamDir;
+	public void writeObject(BaseObject object) throws Exception
+	{
+		super.writeObject(object);
+		++callsToWriteObject;
+	}
+	
+	
+
+	public void writeThreatRatingFramework(SimpleThreatRatingFramework framework) throws Exception
+	{
+		super.writeThreatRatingFramework(framework);
+		++callsToWriteThreatRatingFramework;
+	}
+	
+	private File eamDir;
 	public int callsToWriteObject;
 	public int callsToWriteThreatRatingFramework;
 }

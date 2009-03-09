@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
+import java.io.File;
+
+import org.martus.util.DirectoryUtils;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -95,17 +98,28 @@ public class ProjectForTesting extends ProjectWithHelpers
 {
 	public ProjectForTesting(String testName) throws Exception
 	{
-		this(new ProjectServerForTesting());
+		this(testName, new ProjectServerForTesting());
 	}
 	
-	public ProjectForTesting(ProjectServer server) throws Exception
+	public ProjectForTesting(String testName, ProjectServer server) throws Exception
 	{
 		super(server);
-		
 		Translation.initialize();
-		String filename = getFilename();
-		getTestDatabase().openMemoryDatabase(filename);
+		
+		tempDataDirectory = File.createTempFile("$$$" + testName, null);
+		tempDataDirectory.deleteOnExit();
+		tempDataDirectory.delete();
+		tempDataDirectory.mkdir();
+		File projectDirectory = new File(tempDataDirectory, testName);
+		getDatabase().createLocalProject(projectDirectory);
 		finishOpening();
+	}
+	
+	@Override
+	public void close() throws Exception
+	{
+		super.close();
+		DirectoryUtils.deleteEntireDirectoryTree(tempDataDirectory);
 	}
 	
 	public void fillGeneralProjectData() throws Exception
@@ -965,4 +979,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public static final String PROJECT_RESOURCE_LABEL_TEXT = "John Doe";
 	public static final String SIMPLE_THREAT_RATING_COMMENT = "sample simple threat rating comment";
 	public static final String STRESS_BASED_THREAT_RATING_COMMENT = "sample stress based threat rating comment";
+	
+	private File tempDataDirectory;
 }

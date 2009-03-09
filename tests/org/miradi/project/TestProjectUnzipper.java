@@ -96,6 +96,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		FactorId targetId = new FactorId(39);
 		
 		File originalDirectory = createTempDirectory();
+		originalDirectory.delete();
 		try
 		{
 			Project project = new Project();
@@ -153,6 +154,7 @@ public class TestProjectUnzipper extends EAMTestCase
 	public void testUnzipEmptyFilename() throws Exception
 	{
 		File originalDirectory = createTempDirectory();
+		originalDirectory.delete();
 		try
 		{
 			Project project = new Project();

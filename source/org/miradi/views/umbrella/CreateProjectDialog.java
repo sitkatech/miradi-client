@@ -169,7 +169,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 			File projectDirectory = new File(eamDataDirectory,
 					projectDirectoryName);
-			return ProjectServer.isExistingProject(projectDirectory);
+			return ProjectServer.isExistingLocalProject(projectDirectory);
 		}
 	}
 
@@ -264,7 +264,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 				return;
 			}
 
-			if (!ProjectServer.isExistingProject(getSelectedFile())) 
+			if (!ProjectServer.isExistingLocalProject(getSelectedFile())) 
 			{
 				String body = EAM.text("File exists: Cannot overwrite a non project folder");
 				EAM.errorDialog(body);

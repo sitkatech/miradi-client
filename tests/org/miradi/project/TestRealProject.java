@@ -36,6 +36,7 @@ public class TestRealProject extends EAMTestCase
 	{
 		super.setUp();
 		projectDirectory = createTempDirectory();
+		projectDirectory.delete();
 	}
 	
 	public void tearDown() throws Exception

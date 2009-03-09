@@ -59,7 +59,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
-public class DataUpgrader extends FileBasedProjectServer
+public class DataUpgrader extends ProjectServer
 {
 	public class MigrationTooOldException extends Exception
 	{
@@ -219,24 +219,24 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion38() throws Exception
 	{
 		moveFactorLinkCommentFieldsIntoThreatRatingCommentsData();
-		writeVersion(38);
+		writeLocalVersion(getTopDirectory(), 38);
 	}
 	
 	public void upgradeToVersion37() throws Exception
 	{
 		addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks();
-		writeVersion(37);
+		writeLocalVersion(getTopDirectory(), 37);
 	}
 
 	public void upgradeToVersion36() throws Exception
 	{
-		writeVersion(36);
+		writeLocalVersion(getTopDirectory(), 36);
 	}
 	
 	public void upgradeToVersion35() throws Exception
 	{
 		moveFactorsToSpecificDirs();
-		writeVersion(35);
+		writeLocalVersion(getTopDirectory(), 35);
 	}
 	
 	private void moveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
@@ -306,6 +306,12 @@ public class DataUpgrader extends FileBasedProjectServer
 		threatRatingCommentsDataJson.put("SimpleThreatRatingCommentsMaps", simpleThreatRatingCommentsMap.toString());
 		threatRatingCommentsDataJson.put("StressBasedThreatRatingCommentsMaps", stressThreatRatingCommentsMap.toString());
 		writeJsonFile(threatRatingCommentsDataFile, threatRatingCommentsDataJson);
+	}
+
+	private void writeJsonFile(File file, JSONObject json) throws IOException
+	{
+		file.getParentFile().mkdirs();
+		JSONFile.write(file, json);
 	}
 
 	private void createEmptySingletonThreatRatingCommentsDataObject(File threatRatingCommentsDataDir, EnhancedJsonObject threatRatingCommentsDataManifestJson, File jsonDir) throws Exception
@@ -508,7 +514,7 @@ public class DataUpgrader extends FileBasedProjectServer
 		{
 		}
 		
-		writeVersion(34);
+		writeLocalVersion(getTopDirectory(), 34);
 	}
 	
 	private  int deleteOrphanedTasks() throws Exception
@@ -603,7 +609,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			EAM.notifyDialog(EAM.text("<HTML>The TNC ecoregion field has been changed from a single text field to three picklists. <BR>" +
 									  "Miradi has attempted to migrate the ecoregion data, but may not have been successful. <BR>" +
 									  "Please go to the Summary View, TNC tab, and verify that the ecoregion(s) are correct for this project.</HTML>"));
-		writeVersion(33);
+		writeLocalVersion(getTopDirectory(), 33);
 	}
 
 	public boolean copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions() throws Exception
@@ -668,7 +674,7 @@ public class DataUpgrader extends FileBasedProjectServer
 			EAM.notifyDialog(EAM.text("<HTML>The TNC Operating Unit field has been changed from a text field to a picklist. <BR>" +
 									  "Miradi has attemped to migrate existing data, but it may not have been successful. <BR>" +
 									  "Please go to the Summary View, TNC tab and confirm that the Operating Unit is set correctly for this project.</HTML>"));
-		writeVersion(32);
+		writeLocalVersion(getTopDirectory(), 32);
 	}
 
 	public boolean copyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
@@ -709,7 +715,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	private void upgradeToVersion31() throws Exception
 	{
 		copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
-		writeVersion(31);	
+		writeLocalVersion(getTopDirectory(), 31);	
 	}
 
 	public void copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField() throws Exception
@@ -742,7 +748,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	private void upgradeToVersion30() throws Exception
 	{
 		notifyIfNonBlankTncCountryCode();
-		writeVersion(30);	
+		writeLocalVersion(getTopDirectory(), 30);	
 	}
 
 	private void notifyIfNonBlankTncCountryCode() throws Exception
@@ -782,7 +788,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion29() throws Exception
 	{
 		copyWwfProjectDataCountriesFieldOverToProjectMetaData();
-		writeVersion(29);
+		writeLocalVersion(getTopDirectory(), 29);
 	}
 
 	private void copyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
@@ -844,13 +850,13 @@ public class DataUpgrader extends FileBasedProjectServer
 				"<br>fiscal year." +
 				""
 				));
-		writeVersion(28);
+		writeLocalVersion(getTopDirectory(), 28);
 	}
 	
 	public void upgradeToVersion27() throws Exception
 	{
 		removeDuplicateBendPoints();
-		writeVersion(27);
+		writeLocalVersion(getTopDirectory(), 27);
 	}
 
 	private void removeDuplicateBendPoints() throws Exception
@@ -898,7 +904,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion26() throws Exception
 	{
 		notifyUserOfDeletedDuratingAndCostFields();
-		writeVersion(26);
+		writeLocalVersion(getTopDirectory(), 26);
 	}
 
 	private void notifyUserOfDeletedDuratingAndCostFields()
@@ -914,7 +920,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion25() throws Exception
 	{
 		createThreatStressRatingsForTargetThreatLinks();
-		writeVersion(25);
+		writeLocalVersion(getTopDirectory(), 25);
 	}
 	
 	private void createThreatStressRatingsForTargetThreatLinks() throws Exception
@@ -985,7 +991,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion24() throws Exception
 	{
 		createdStressesFromFactorLinks();
-		writeVersion(24);
+		writeLocalVersion(getTopDirectory(), 24);
 	}
 	
 	private void createdStressesFromFactorLinks() throws Exception
@@ -1069,7 +1075,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion23() throws Exception
 	{ 
 		createMeasurementFromDataInIndicator();
-		writeVersion(23);
+		writeLocalVersion(getTopDirectory(), 23);
 	}
 	
 	private void createMeasurementFromDataInIndicator() throws Exception
@@ -1139,7 +1145,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion22() throws Exception
 	{
 		switchDiagramFactorWrappedIdsToRefs();
-		writeVersion(22);
+		writeLocalVersion(getTopDirectory(), 22);
 	}
 	
 	private void switchDiagramFactorWrappedIdsToRefs() throws Exception
@@ -1184,14 +1190,14 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion21() throws Exception
 	{
 		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDiagramsWhereNeeded();
-		writeVersion(21);
+		writeLocalVersion(getTopDirectory(), 21);
 	}
 
 
 	public void upgradeToVersion20() throws Exception
 	{
 		changeLinkFromToIdsToORefs();
-		writeVersion(20);
+		writeLocalVersion(getTopDirectory(), 20);
 	}
 	
 	public void changeLinkFromToIdsToORefs() throws Exception
@@ -1302,7 +1308,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion19() throws Exception
 	{
 		possiblyNotifyUserAfterUpgradingToVersion19();
-		writeVersion(19);
+		writeLocalVersion(getTopDirectory(), 19);
 	}
 
 	private void possiblyNotifyUserAfterUpgradingToVersion19() throws Exception
@@ -1381,7 +1387,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion18() throws Exception
 	{
 		addLinksToDiagramContentsObject();
-		writeVersion(18);
+		writeLocalVersion(getTopDirectory(), 18);
 	}
 	  
 	private void addLinksToDiagramContentsObject() throws Exception
@@ -1420,7 +1426,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	public void upgradeToVersion17() throws Exception
 	{
 		createObject19DirAndFillFromDiagram();
-		writeVersion(17);
+		writeLocalVersion(getTopDirectory(), 17);
 	}
 
 	private void createObject19DirAndFillFromDiagram() throws Exception
@@ -1463,7 +1469,7 @@ public class DataUpgrader extends FileBasedProjectServer
 	{
 		HashMap mappedFactorIds = createDiagramFactorsFromRawFactors();
 		createDiagramFactorLinksFromRawFactorLinks(mappedFactorIds);
-		writeVersion(16);
+		writeLocalVersion(getTopDirectory(), 16);
 	}
 	
 	public void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception
