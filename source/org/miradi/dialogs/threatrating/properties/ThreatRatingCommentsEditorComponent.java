@@ -25,6 +25,7 @@ import javax.swing.event.DocumentListener;
 
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.KeyHandler;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
@@ -48,12 +49,14 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		
 		project = projectToUse;		
 		panelTextArea = new PanelTextArea(ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
-		new TextAreaRightClickMouseHandler(actions, panelTextArea);
 		panelTextArea.setLineWrap(true);
 		panelTextArea.setWrapStyleWord(true);
 		
 		panelTextArea.setForeground(EAM.EDITABLE_FOREGROUND_COLOR);
 		panelTextArea.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
+		
+		new TextAreaRightClickMouseHandler(actions, panelTextArea);
+		panelTextArea.addKeyListener(new KeyHandler(actions));
 	}
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)
