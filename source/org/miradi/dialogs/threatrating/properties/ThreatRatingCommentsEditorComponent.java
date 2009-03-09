@@ -19,15 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 import javax.swing.JComponent;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.UndoRedoKeyHandler;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
+import org.miradi.dialogfields.UndoRedoKeyHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
@@ -57,6 +58,7 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		
 		new TextAreaRightClickMouseHandler(actions, panelTextArea);
 		panelTextArea.addKeyListener(new UndoRedoKeyHandler(actions));
+		panelTextArea.addFocusListener(new FocusHandler());
 	}
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)
@@ -72,9 +74,8 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		ORef targetRef = getTargetRef();
 		String comment = getThreatRatingCommentsData().findComment(threatRef, targetRef);
 		
-		panelTextArea.setText(comment);
-		panelTextArea.invalidate();
-		panelTextArea.getDocument().addDocumentListener(new DocumentEventHandler());
+		getTextArea().setText(comment);
+		getTextArea().invalidate();
 	}
 
 	private ThreatRatingCommentsData getThreatRatingCommentsData()
@@ -86,7 +87,7 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 	public JComponent getComponent()
 	{
 		if(scrollPane == null)
-			scrollPane = new MiradiScrollPane(panelTextArea);
+			scrollPane = new MiradiScrollPane(getTextArea());
 		
 		return scrollPane;
 	}
@@ -108,25 +109,24 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		
 		return selectedHeirearchy;
 	}
+	
+	private PanelTextArea getTextArea()
+	{
+		return panelTextArea;
+	}
 		
 	public Project getProject()
 	{
 		return project;
 	}
 	
-	class DocumentEventHandler implements DocumentListener
+	class FocusHandler implements FocusListener
 	{
-		public void changedUpdate(DocumentEvent event)
+		public void focusGained(FocusEvent e)
 		{
-			saveCommentsText();
 		}
 
-		public void insertUpdate(DocumentEvent event)
-		{
-			saveCommentsText();
-		}
-
-		public void removeUpdate(DocumentEvent event)
+		public void focusLost(FocusEvent e)
 		{
 			saveCommentsText();
 		}
@@ -138,8 +138,7 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 				ThreatRatingCommentsData threatRatingCommentsData = getThreatRatingCommentsData();
 				StringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
 				String threatTargetKey = ThreatRatingCommentsData.createKey(getThreatRef(), getTargetRef());
-				commentsMap.add(threatTargetKey, panelTextArea.getText());
-
+				commentsMap.add(threatTargetKey, getTextArea().getText());
 				CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toString());
 				getProject().executeCommand(setComment);
 			}
