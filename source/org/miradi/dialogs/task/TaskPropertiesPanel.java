@@ -63,7 +63,6 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 	@Override
 	public void becomeActive()
 	{
-		System.out.println("TPP.becomeActive");
 		super.becomeActive();
 		assignmentEditor.becomeActive();
 	}
