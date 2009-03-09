@@ -40,9 +40,9 @@ import org.miradi.views.umbrella.CopyTextAction;
 import org.miradi.views.umbrella.CutTextAction;
 import org.miradi.views.umbrella.PasteTextAction;
 
-public class MouseHandler extends MouseAdapter
+public class TextAreaRightClickMouseHandler extends MouseAdapter
 {
-	public MouseHandler(Actions actionsToUse, JTextComponent textFieldToUse)
+	public TextAreaRightClickMouseHandler(Actions actionsToUse, JTextComponent textFieldToUse)
 	{
 		actions = actionsToUse;
 		textField = textFieldToUse;
