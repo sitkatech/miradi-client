@@ -21,14 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.threatrating.properties;
 
 import org.miradi.actions.Actions;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 
 public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
@@ -37,8 +33,8 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 		
-		commentsField = createMultilineField(FactorLink.getObjectType(), FactorLink.getCommentTagForMode(getProject()));
-		addField(commentsField);
+		commentsField = new ThreatRatingCommentsEditorComponent(getProject());
+		add(commentsField.getComponent());
 		
 		updateFieldsFromProject();
 	}
@@ -47,43 +43,24 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
-		{
-			setObjectRefs(getSelectedRefs());
-		}
+		
+		//FIXME threat stress rating - need to restrict this more
+		setObjectRefs(getSelectedRefs());
 	}
 	
 	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
-		updateFieldLabels(orefsToUse);
+		commentsField.setObjectRefs(new ORefList(orefsToUse));
+		
 		super.setObjectRefs(orefsToUse);
 	}
 
-	private void updateFieldLabels(ORef[] orefsToUse)
-	{
-		ORefList refs = new ORefList(orefsToUse);
-		
-		ORef linkRef = refs.getRefForType(FactorLink.getObjectType());
-		if(linkRef.isInvalid())
-		{
-			return;
-		}
-		
-		try
-		{
-			commentsField.setTag(FactorLink.getCommentTagForMode(getProject()));	
-		}
-		catch(Exception e)
-		{
-			EAM.panic(e);
-		}
-	}
 
 	public String getPanelDescription()
 	{
 		return "ThreatRatingCommentsSubpanel";
 	}
 	
-	private ObjectDataInputField commentsField;
+	private ThreatRatingCommentsEditorComponent commentsField;
 }
