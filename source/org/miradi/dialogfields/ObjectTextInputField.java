@@ -105,16 +105,6 @@ public class ObjectTextInputField extends ObjectDataInputField
 		return EAM.getMainWindow().getActions();
 	}
 
-	private EAMAction getUndoAction()
-	{
-		return getActions().get(ActionUndo.class);
-	}
-	
-	private EAMAction getRedoAction()
-	{
-		return getActions().get(ActionRedo.class);
-	}
-
 	public class KeyHandler extends KeyAdapter
 	{
 		public void keyTyped(KeyEvent event)
@@ -144,6 +134,20 @@ public class ObjectTextInputField extends ObjectDataInputField
 			return Character.toUpperCase(letter) - '@';
 		}
 		
+		private EAMAction getUndoAction()
+		{
+			return getActions().get(ActionUndo.class);
+		}
+		
+		private EAMAction getRedoAction()
+		{
+			return getActions().get(ActionRedo.class);
+		}
+		
+		private Actions getActions()
+		{
+			return EAM.getMainWindow().getActions();
+		}
 	}
 	
 	JTextComponent field;
