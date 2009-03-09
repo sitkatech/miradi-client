@@ -30,7 +30,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 {
 	public ObjectScrollingMultilineInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, int columnsToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, 4, columnsToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, columnsToUse);
 	}
 
 	public JComponent getComponent()
@@ -54,5 +54,5 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	}
 
 	private MiradiScrollPane scrollPane;
-
+	public static final int INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT = 4;
 }

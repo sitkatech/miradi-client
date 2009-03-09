@@ -62,6 +62,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.BudgetCostModeQuestion;
@@ -633,6 +634,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildren.toString());
 	}
 	
+	public void populateThreatRatingCommentsData(ThreatRatingCommentsData threatRatingCommentsData, ORef threatRef, ORef targetRef) throws Exception
+	{
+		String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
+				
+		StringMap simpleThreatRatingCommentsMap = threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
+		simpleThreatRatingCommentsMap.add(threatTargetKey, SIMPLE_THREAT_RATING_COMMENT);
+		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS, simpleThreatRatingCommentsMap.toString());
+	
+		StringMap stressBasedThreatRatingCommentsMap = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
+		stressBasedThreatRatingCommentsMap.add(threatTargetKey, STRESS_BASED_THREAT_RATING_COMMENT);
+		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS, stressBasedThreatRatingCommentsMap.toString());
+	}
+	
 	public void populateEverything() throws Exception
 	{
 		switchToStressBaseMode();
@@ -653,7 +667,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStrategyThreatTargetAssociation();
 	}
 
-	private void switchToStressBaseMode() throws Exception
+	public void switchToStressBaseMode() throws Exception
 	{
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
 	}
@@ -949,4 +963,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	}
 	
 	public static final String PROJECT_RESOURCE_LABEL_TEXT = "John Doe";
+	public static final String SIMPLE_THREAT_RATING_COMMENT = "sample simple threat rating comment";
+	public static final String STRESS_BASED_THREAT_RATING_COMMENT = "sample stress based threat rating comment";
 }
