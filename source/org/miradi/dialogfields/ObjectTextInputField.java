@@ -59,7 +59,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		addFocusListener();
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
-		field.addMouseListener(new MouseHandler());
+		field.addMouseListener(new MouseHandler(getActions(), field));
 		field.addKeyListener(new KeyHandler());
 		
 		setDefaultFieldBorder();
@@ -159,6 +159,11 @@ public class ObjectTextInputField extends ObjectDataInputField
 	
 	public class MouseHandler extends MouseAdapter
 	{
+		public MouseHandler(Actions actionsToUse, JTextComponent textFieldToUse)
+		{
+			actions = actionsToUse;
+		}
+		
 		public void mousePressed(MouseEvent e)
 		{
 			if(e.isPopupTrigger())
@@ -173,7 +178,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		
 		void fireRightClick(MouseEvent e)
 		{
-			getRightClickMenu().show(field, e.getX(), e.getY());
+			getRightClickMenu().show(getTextField(), e.getX(), e.getY());
 		}
 		
 		public JPopupMenu getRightClickMenu()
@@ -192,17 +197,17 @@ public class ObjectTextInputField extends ObjectDataInputField
 			
 			menu.addSeparator();
 			
-			JMenuItem menuItemCut = createMenuItem(new CutTextAction(field), "icons/cut.gif");
+			JMenuItem menuItemCut = createMenuItem(new CutTextAction(getTextField()), "icons/cut.gif");
 			menuItemCut.setText(EAM.text("Cut"));
 			menuItemCut.setAccelerator(KeyStroke.getKeyStroke('X', KeyEvent.CTRL_DOWN_MASK));
 			menu.add(menuItemCut);
 			
-			JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(field), "icons/copy.gif");
+			JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(getTextField()), "icons/copy.gif");
 			menuItemCopy.setText(EAM.text("Copy"));
 			menuItemCopy.setAccelerator(KeyStroke.getKeyStroke('C', KeyEvent.CTRL_DOWN_MASK));
 			menu.add(menuItemCopy);
 		
-			JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(field), "icons/paste.gif");
+			JMenuItem menuItemPaste = createMenuItem(new PasteTextAction(getTextField()), "icons/paste.gif");
 			menuItemPaste.setText(EAM.text("Paste"));
 			menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
 			menu.add(menuItemPaste);
@@ -218,6 +223,29 @@ public class ObjectTextInputField extends ObjectDataInputField
 			
 			return menuItem;
 		}
+		
+		private EAMAction getUndoAction()
+		{
+			return getActions().get(ActionUndo.class);
+		}
+		
+		private EAMAction getRedoAction()
+		{
+			return getActions().get(ActionRedo.class);
+		}
+		
+		private Actions getActions()
+		{
+			return actions;
+		}
+		
+		public JTextComponent getTextField()
+		{
+			return textField;
+		}
+		
+		private JTextComponent textField;
+		private Actions actions;
 	}
 	
 	JTextComponent field;
