@@ -88,12 +88,12 @@ public class ThreatRatingCommentsData extends BaseObject
 
 	public StringMap getStressBasedThreatRatingCommentsMap()
 	{
-		return stressBasedThreatRatingCommentsMap.getStringMap();
+		return new StringMap(stressBasedThreatRatingCommentsMap.getStringMap());
 	}
 
 	public StringMap getSimpleThreatRatingCommentsMap()
 	{
-		return simpleThreatRatingCommentsMap.getStringMap();
+		return new StringMap(simpleThreatRatingCommentsMap.getStringMap());
 	}
 	
 	public static ThreatRatingCommentsData find(ObjectManager objectManager, ORef threatRatingCommentsDataRef)
