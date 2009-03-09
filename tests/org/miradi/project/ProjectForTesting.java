@@ -491,8 +491,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 			ORef threatRef = directThreatLink.getUpstreamThreatRef();
 			createAndPopulateThreatStressRating(stressRefs.get(refIndex), threatRef).getRef();	
 		}
-		
-		fillObjectUsingCommand(directThreatLink, FactorLink.getCommentTagForMode(this), "Some FactorLink comment");
 	}
 	
 	public void populateThreatStressRating(ThreatStressRating threatStressRating) throws Exception
