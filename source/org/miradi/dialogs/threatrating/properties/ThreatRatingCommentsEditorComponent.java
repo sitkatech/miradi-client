@@ -25,7 +25,7 @@ import javax.swing.event.DocumentListener;
 
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.KeyHandler;
+import org.miradi.dialogfields.UndoRedoKeyHandler;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
@@ -56,7 +56,7 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		panelTextArea.setBackground(EAM.EDITABLE_BACKGROUND_COLOR);
 		
 		new TextAreaRightClickMouseHandler(actions, panelTextArea);
-		panelTextArea.addKeyListener(new KeyHandler(actions));
+		panelTextArea.addKeyListener(new UndoRedoKeyHandler(actions));
 	}
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)

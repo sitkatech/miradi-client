@@ -43,7 +43,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
 		new TextAreaRightClickMouseHandler(getActions(), field);
-		field.addKeyListener(new KeyHandler(getActions()));
+		field.addKeyListener(new UndoRedoKeyHandler(getActions()));
 		
 		setDefaultFieldBorder();
 	}	

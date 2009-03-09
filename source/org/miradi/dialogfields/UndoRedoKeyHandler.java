@@ -29,9 +29,9 @@ import org.miradi.actions.EAMAction;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 
-public class KeyHandler extends KeyAdapter
+public class UndoRedoKeyHandler extends KeyAdapter
 {
-	public KeyHandler(Actions actionsToUse)
+	public UndoRedoKeyHandler(Actions actionsToUse)
 	{
 		actions = actionsToUse;
 	}
