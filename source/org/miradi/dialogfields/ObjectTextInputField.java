@@ -48,7 +48,7 @@ public class ObjectTextInputField extends ObjectDataInputField
 		addFocusListener();
 		setEditable(true);
 		field.getDocument().addDocumentListener(new DocumentEventHandler());
-		field.addMouseListener(new TextAreaRightClickMouseHandler(getActions(), field));
+		new TextAreaRightClickMouseHandler(getActions(), field);
 		field.addKeyListener(new KeyHandler());
 		
 		setDefaultFieldBorder();

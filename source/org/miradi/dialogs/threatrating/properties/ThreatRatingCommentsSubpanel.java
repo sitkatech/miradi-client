@@ -33,7 +33,7 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 		
-		commentsField = new ThreatRatingCommentsEditorComponent(getProject());
+		commentsField = new ThreatRatingCommentsEditorComponent(getProject(), actions);
 		add(commentsField.getComponent());
 		
 		updateFieldsFromProject();

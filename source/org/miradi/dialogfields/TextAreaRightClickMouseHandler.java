@@ -44,6 +44,7 @@ public class TextAreaRightClickMouseHandler extends MouseAdapter
 {
 	public TextAreaRightClickMouseHandler(Actions actionsToUse, JTextComponent textFieldToUse)
 	{
+		textFieldToUse.addMouseListener(this);
 		actions = actionsToUse;
 		textField = textFieldToUse;
 	}
