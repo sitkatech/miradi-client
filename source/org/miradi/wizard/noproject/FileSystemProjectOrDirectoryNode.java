@@ -42,7 +42,7 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 			return false;
 	
 		//TODO is this test neeeded since we return true at the end?
-		if (ProjectServer.isExistingProject(file))
+		if (ProjectServer.isExistingLocalProject(file))
 			return true;
 		
 		if (isExternalReportsDirectory(file))

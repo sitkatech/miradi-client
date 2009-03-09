@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.wizard.noproject.FileSystemTreeNode;
 
 public class ObjectReadonlyTimestampField extends ObjectStringInputField
 {
@@ -39,7 +39,7 @@ public class ObjectReadonlyTimestampField extends ObjectStringInputField
 			long millis = Long.parseLong(newValue);
 			if(millis > 0)
 			{
-				super.setText(FileSystemTreeNode.timestampToString(millis));
+				super.setText(ProjectServer.timestampToString(millis));
 				return;
 			}
 		}

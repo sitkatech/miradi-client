@@ -27,6 +27,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectInfo
 {
@@ -72,9 +73,9 @@ public class ProjectInfo
 		return normalObjectIdAssigner;
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = new JSONObject();
+		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_HIGHEST_FACTOR_OR_LINK_ID, normalObjectIdAssigner.getHighestAssignedId());
 		json.put(TAG_HIGHEST_NORMAL_ID, normalObjectIdAssigner.getHighestAssignedId());
 		json.put(TAG_PROJECT_METADATA_ID, metadataId.asInt());

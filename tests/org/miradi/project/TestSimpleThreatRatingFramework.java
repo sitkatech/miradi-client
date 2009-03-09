@@ -25,7 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -43,6 +42,7 @@ import org.miradi.objects.ValueOption;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.ColorManager;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TestSimpleThreatRatingFramework extends EAMTestCase
 {
@@ -67,14 +67,15 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 	
 	public void testJson()
 	{
-		JSONObject json = framework.toJson();
-		JSONArray bundleKeys = json.getJSONArray(SimpleThreatRatingFramework.TAG_BUNDLE_KEYS);
+		EnhancedJsonObject json = framework.toJson();
+		JSONArray bundleKeys = json.getJsonArray(SimpleThreatRatingFramework.TAG_BUNDLE_KEYS);
 		assertEquals("didn't jsonize bundle keys?", framework.getBundleCount(), bundleKeys.length());
 	}
 	
 	public void testWriteAndRead() throws Exception
 	{
 		File tempDir = createTempDirectory();
+		tempDir.delete();
 		try
 		{
 			Project realProject = new Project();

@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.noproject;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Vector;
 
 import org.miradi.database.ProjectServer;
@@ -31,7 +29,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.LastProjectModifiedTimeHelper;
 
 abstract public class FileSystemTreeNode extends TreeTableNode
 {
@@ -83,14 +80,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 
 	public String getLastModifiedDate()
 	{
-		return LastProjectModifiedTimeHelper.readLastModifiedProjectTime(thisFile);
-	}
-
-	public static String timestampToString(long lastModifiedMillis)
-	{
-		Date date = new Date(lastModifiedMillis);
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		return format.format(date);
+		return ProjectServer.readLocalLastModifiedProjectTime(thisFile);
 	}
 
 	public void rebuild() throws Exception
@@ -147,7 +137,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 	
 	public boolean isProjectDirectory()
 	{
-		return ProjectServer.isExistingProject(thisFile);
+		return ProjectServer.isExistingLocalProject(thisFile);
 	}
 
 	@Override

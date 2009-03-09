@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project.threatrating;
 
 import java.awt.Color;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -407,7 +406,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return findValueOptionByNumericValue(0).getId();
 	}
 	
-	public void saveFramework() throws IOException
+	public void saveFramework() throws Exception
 	{
 		getDatabase().writeThreatRatingFramework(this);
 	}
@@ -445,9 +444,9 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return findCriterionByLabel(CRITERION_IRREVERSIBILITY);
 	}
 	
-	public JSONObject toJson()
+	public EnhancedJsonObject toJson()
 	{
-		JSONObject json = new JSONObject();
+		EnhancedJsonObject json = new EnhancedJsonObject();
 		JSONArray bundleKeys = new JSONArray();
 		Iterator iter = bundles.keySet().iterator();
 		while(iter.hasNext())

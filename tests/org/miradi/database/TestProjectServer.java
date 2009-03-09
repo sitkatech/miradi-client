@@ -25,10 +25,6 @@ import java.io.IOException;
 import org.json.JSONObject;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
-import org.miradi.database.FileBasedProjectServer;
-import org.miradi.database.Manifest;
-import org.miradi.database.ObjectManifest;
-import org.miradi.database.ProjectServer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
@@ -43,7 +39,6 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.project.ProjectServerForTesting;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class TestProjectServer extends TestCaseWithProject
@@ -56,14 +51,16 @@ public class TestProjectServer extends TestCaseWithProject
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		storage = new ProjectServerForTesting();
-		storage.openMemoryDatabase(getName());
+		tempDataDirectory = createTempDirectory();
+		storage = new ProjectServer();
+		storage.createLocalProject(new File(tempDataDirectory, getName()));
 		idAssigner = new IdAssigner();
 	}
 	
 	public void tearDown() throws Exception
 	{
 		storage.close();
+		DirectoryUtils.deleteEntireDirectoryTree(tempDataDirectory);
 		super.tearDown();
 	}
 	
@@ -185,7 +182,7 @@ public class TestProjectServer extends TestCaseWithProject
 	
 	public void testReadAndWriteThreatRatingFramework() throws Exception
 	{
-		ProjectServerForTesting db = getProject().getTestDatabase();
+		ProjectServer db = getProject().getDatabase();
 		db.writeThreatRatingFramework(getProject().getSimpleThreatRatingFramework());
 		JSONObject got = db.readRawThreatRatingFramework();
 		assertEquals(got.toString(), getProject().getSimpleThreatRatingFramework().toJson().toString());
@@ -198,7 +195,7 @@ public class TestProjectServer extends TestCaseWithProject
 		anyFile.mkdirs();
 		try
 		{
-			storage.create(tempDirectory);
+			storage.createLocalProject(tempDirectory);
 			fail("Should have thrown");
 		}
 		catch (Exception ignoreExpected)
@@ -220,11 +217,11 @@ public class TestProjectServer extends TestCaseWithProject
 			writer.writeln("nothing");
 			writer.close();
 			
-			assertFalse("project exists?", ProjectServer.isExistingProject(tempDirectory));
-			ProjectServer anotherStorage = new FileBasedProjectServer();
+			ProjectServer anotherStorage = new ProjectServer();
+			assertFalse("project exists?", anotherStorage.isExistingLocalProject(tempDirectory));
 			try
 			{
-				anotherStorage.open(tempDirectory);
+				anotherStorage.openLocalProject(tempDirectory);
 				fail("Should have thrown trying to open non-empty, non-project directory");
 			}
 			catch(IOException ignoreExpected)
@@ -234,7 +231,7 @@ public class TestProjectServer extends TestCaseWithProject
 			File nonExistantProjectDirectory = new File(tempDirectory, "DoesNotExist");
 			try
 			{
-				anotherStorage.open(nonExistantProjectDirectory);
+				anotherStorage.openLocalProject(nonExistantProjectDirectory);
 				fail("Should throw when opening a non-existant directory");
 			}
 			catch (Exception ignoreExpected)
@@ -249,5 +246,6 @@ public class TestProjectServer extends TestCaseWithProject
 	}
 
 	IdAssigner idAssigner;
-	private ProjectServerForTesting storage;
+	private ProjectServer storage;
+	private File tempDataDirectory;
 }

@@ -33,7 +33,7 @@ public class CopyProject
 	static public void doIt(MainWindow mainWindow, File projectToCopy) throws Exception 
 	{
 		
-		if(!ProjectServer.isExistingProject(projectToCopy))
+		if(!ProjectServer.isExistingLocalProject(projectToCopy))
 		{
 			EAM.notifyDialog(EAM.text("Project does not exist: ") + projectToCopy.getName());
 			return;

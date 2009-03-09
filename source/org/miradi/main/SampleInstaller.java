@@ -84,7 +84,7 @@ public class SampleInstaller
 			File mpzFile = allMpzFiles[index];
 			String validatedName = getValidatedProjectNameWithoutExtension(mpzFile);
 			File newProjectDir = new File(homeDir, validatedName);
-			if (!ProjectServer.isExistingProject(newProjectDir))
+			if (!ProjectServer.isExistingLocalProject(newProjectDir))
 				installableSampleProjects.add(mpzFile);
 		}
 		

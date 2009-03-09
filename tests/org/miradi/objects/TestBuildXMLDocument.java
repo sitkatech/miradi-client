@@ -50,7 +50,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 	{
 		String projectName = "Marine demo 06-10-20";
 		
-		EAMFileSaveChooser eamFileChooser = new EAMXmlFileChooser(new MainWindow());
+		EAMFileSaveChooser eamFileChooser = new EAMXmlFileChooser(MainWindow.create());
 		File chosen = eamFileChooser.displayChooser();
 		if (chosen==null) return;
 		System.setOut(new PrintStream(chosen));

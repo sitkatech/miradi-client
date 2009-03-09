@@ -777,6 +777,7 @@ public class TestProject extends EAMTestCase
 		
 		ORef factorRef;
 		File tempDir = createTempDirectory();
+		tempDir.delete();
 		Project diskProject = new Project();
 		diskProject.createOrOpen(tempDir);
 		
@@ -799,10 +800,10 @@ public class TestProject extends EAMTestCase
 			deleteNodeAndRemoveFromDiagram(diagramObject, diagramFactor);
 			
 			createNodeAndAddToDiagram(diskProject, diagramObject, TextBox.getObjectType());
+			memorizedHighestId = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
 		}
 		finally
 		{
-			memorizedHighestId = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
 			diskProject.close();
 		}
 		

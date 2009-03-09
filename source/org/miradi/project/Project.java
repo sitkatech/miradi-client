@@ -26,7 +26,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.text.DecimalFormat;
-import java.text.ParseException;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -37,7 +36,6 @@ import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.database.DataUpgrader;
-import org.miradi.database.FileBasedProjectServer;
 import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.FutureVersionException;
@@ -131,7 +129,7 @@ public class Project
 {
 	public Project() throws Exception
 	{
-		this(new FileBasedProjectServer());
+		this(new ProjectServer());
 	}
 	
 	public Project(ProjectServer databaseToUse) throws Exception
@@ -161,7 +159,7 @@ public class Project
 	static public void validateNewProject(String newName) throws Exception
 	{
 		File newFile = new File(EAM.getHomeDirectory(),newName);
-		if(ProjectServer.isExistingProject(newFile))
+		if(ProjectServer.isExistingLocalProject(newFile))
 			throw new Exception(EAM.text(" A project by this name already exists: ") + newName);
 		
 		if (!EAM.getMainWindow().getProject().isValidProjectFilename(newName))
@@ -534,7 +532,7 @@ public class Project
 		return createdId;
 	}
 	
-	public void deleteObject(BaseObject object) throws IOException, ParseException
+	public void deleteObject(BaseObject object) throws Exception
 	{
 		objectManager.deleteObject(object);
 	}
@@ -567,7 +565,7 @@ public class Project
 		clear();
 		
 		int projectAction;
-		if(ProjectServer.isExistingProject(projectDirectory))
+		if(getDatabase().isExistingLocalProject(projectDirectory))
 			projectAction = openProject(projectDirectory);
 		else
 			projectAction = createProject(projectDirectory);
@@ -767,17 +765,19 @@ public class Project
 	
 	public int openProject(File projectDirectory) throws Exception
 	{
-		if(getDatabase().readDataVersion(projectDirectory) > ProjectServer.DATA_VERSION)
+		int existingVersion = getDatabase().readDataVersion(projectDirectory); 
+		if(existingVersion > ProjectServer.DATA_VERSION)
 			throw new FutureVersionException();
 
-		if(getDatabase().readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
+		if(existingVersion < ProjectServer.DATA_VERSION)
 			DataUpgrader.attemptUpgrade(projectDirectory);
 		
-		if(getDatabase().readDataVersion(projectDirectory) < ProjectServer.DATA_VERSION)
+		int updatedVersion = getDatabase().readDataVersion(projectDirectory); 
+		if(updatedVersion < ProjectServer.DATA_VERSION)
 			throw new OldVersionException();
 
 		ProjectServer db = getDatabase();
-		db.open(projectDirectory);
+		db.openLocalProject(projectDirectory);
 		try
 		{
 			loadProjectInfo();
@@ -796,17 +796,17 @@ public class Project
 	
 	private int createProject(File projectDirectory) throws Exception
 	{
-		getDatabase().create(projectDirectory);
+		getDatabase().createLocalProject(projectDirectory);
 		return PROJECT_WAS_CREATED;
 		
 	}
 	
-	private void loadProjectInfo() throws IOException, ParseException
+	private void loadProjectInfo() throws Exception
 	{
 		getDatabase().readProjectInfo(projectInfo);
 	}
 	
-	private void saveProjectInfo() throws IOException
+	private void saveProjectInfo() throws Exception
 	{
 		getDatabase().writeProjectInfo(projectInfo);
 	}
@@ -850,7 +850,7 @@ public class Project
 	public String getFilename()
 	{
 		if(isOpen())
-			return getDatabase().getName();
+			return getDatabase().getCurrentProjectName();
 		return EAM.text("[No Project]");
 	}
 

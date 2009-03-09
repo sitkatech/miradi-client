@@ -117,7 +117,7 @@ public class ProjectUnzipper
 	private static void validateAndCopyProject(File homeDirectory, String newProjectFilename, File tempProjectDirectory) throws Exception
 	{
 		// TODO: Find a better test for whether or not the import failed? 
-		if (ProjectServer.isExistingProject(tempProjectDirectory))
+		if (ProjectServer.isExistingLocalProject(tempProjectDirectory))
 		{
 			File destinationProjectDirectory = new File(homeDirectory,newProjectFilename);
 			DirectoryUtils.copyDirectoryTree(tempProjectDirectory, destinationProjectDirectory);
