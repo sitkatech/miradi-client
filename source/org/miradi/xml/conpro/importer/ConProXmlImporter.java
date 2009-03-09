@@ -79,6 +79,7 @@ import org.miradi.objects.SubTarget;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
@@ -604,11 +605,12 @@ public class ConProXmlImporter implements ConProMiradiXml
 	{
 		SimpleThreatRatingFramework framework = getProject().getSimpleThreatRatingFramework();
 		NodeList threatTargetAssociations = getNodes(targetNode, THREAT_TARGET_ASSOCIATIONS, THREAT_TARGET_ASSOCIATION);
+		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
 		for (int nodeIndex = 0; nodeIndex < threatTargetAssociations.getLength(); ++nodeIndex)
 		{
 			Node threatTargetAssociationNode = threatTargetAssociations.item(nodeIndex);
 			ORef threatRef = getNodeAsRef(threatTargetAssociationNode, THREAT_ID, Cause.getObjectType());
-			ORef factorLinkRef = createFactorLinkAndAddToDiagram(threatRef, targetRef);
+			createFactorLinkAndAddToDiagram(threatRef, targetRef);
 			
 			ThreatRatingBundle bundle = framework.getBundle(threatRef, targetRef);
 			importThreatRatingField(threatTargetAssociationNode, THREAT_SCOPE, framework, bundle, Stress.TAG_SCOPE);
@@ -616,7 +618,8 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importThreatRatingField(threatTargetAssociationNode, THREAT_IRREVERSIBILITY, framework, bundle, ThreatStressRating.TAG_IRREVERSIBILITY);			
 			framework.saveBundle(bundle);
 			
-			importField(threatTargetAssociationNode, THREAT_TARGET_COMMENT, factorLinkRef, FactorLink.getCommentTagForMode(getProject()));
+			String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
+			importThreatRatingCommentsField(threatTargetAssociationNode, THREAT_TARGET_COMMENT, threatRatingCommentsData, threatTargetKey);
 		}
 	}
 	
@@ -733,6 +736,16 @@ public class ConProXmlImporter implements ConProMiradiXml
 			return ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE;
 		
 		return ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE;
+	}
+	
+	private void importThreatRatingCommentsField(Node node, String path, ThreatRatingCommentsData threatRatingCommentsData, String threatTargetKey) throws Exception
+	{
+		String threatRatingComment = getPathData(node, new String[]{path,});
+		
+		StringMap threatRatingCommentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
+		threatRatingCommentsMap.add(threatTargetKey, threatRatingComment);
+		String threatRatingCommentsTag = threatRatingCommentsData.getThreatRatingCommentsMapTag();
+		importField(threatRatingCommentsData.getRef(), threatRatingCommentsTag, threatRatingCommentsMap.toString());
 	}
 	
 	private void importField(Node node, String path, ORef ref, String tag) throws Exception

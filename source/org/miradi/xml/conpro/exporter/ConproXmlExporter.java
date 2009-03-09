@@ -59,6 +59,7 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
@@ -640,7 +641,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalRatingCodeElement(out, THREAT_SEVERITY, getSeverity(simpleThreatFramework, bundle));
 		writeOptionalRatingCodeElement(out, THREAT_SCOPE, getScope(simpleThreatFramework, bundle));
 		writeOptionalRatingCodeElement(out, THREAT_IRREVERSIBILITY, getIrreversibility(simpleThreatFramework, bundle));
-		writeOptionalElement(out, THREAT_TARGET_COMMENT, factorLink, FactorLink.TAG_SIMPLE_THREAT_RATING_COMMENT);
+		
+		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
+		String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
+		String simpleThreatRatingComment = threatRatingCommentsData.getSimpleThreatRatingComment(threatTargetKey);
+		writeOptionalElement(out, THREAT_TARGET_COMMENT, simpleThreatRatingComment);
+		
 		writeEndElement(out, THREAT_TARGET_ASSOCIATION);
 	}
 
