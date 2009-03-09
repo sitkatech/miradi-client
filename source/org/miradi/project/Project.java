@@ -342,6 +342,12 @@ public class Project
 		return (TableSetttingsPool) getPool(ObjectType.TABLE_SETTINGS);
 	}
 	
+	public ThreatRatingCommentsData getSingletonThreatRatingCommentsData()
+	{
+		ORef threatRatingCommentsDataRef = getSingletonObjectRef(ThreatRatingCommentsData.getObjectType());
+		return ThreatRatingCommentsData.find(this, threatRatingCommentsDataRef);
+	}
+	
 	public ORef getSingletonObjectRef(int objectType)
 	{
 		EAMObjectPool pool = getPool(objectType);
