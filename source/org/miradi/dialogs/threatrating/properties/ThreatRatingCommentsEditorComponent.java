@@ -80,8 +80,7 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 
 	private ThreatRatingCommentsData getThreatRatingCommentsData()
 	{
-		ORef threatRatingCommentsDataRef = getProject().getSingletonObjectRef(ThreatRatingCommentsData.getObjectType());
-		return ThreatRatingCommentsData.find(getProject(), threatRatingCommentsDataRef);
+		return getProject().getSingletonThreatRatingCommentsData();
 	}
 
 	public JComponent getComponent()
