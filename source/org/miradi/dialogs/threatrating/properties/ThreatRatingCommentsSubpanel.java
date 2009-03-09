@@ -25,6 +25,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 
 public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
@@ -44,8 +45,10 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	{
 		super.commandExecuted(event);
 		
-		//FIXME threat stress rating - need to restrict this more
-		setObjectRefs(getSelectedRefs());
+		if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_THREAT_RATING_MODE))
+		{
+			setObjectRefs(getSelectedRefs());
+		}
 	}
 	
 	@Override
