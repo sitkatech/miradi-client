@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringMapData;
 
@@ -52,15 +55,55 @@ public class ThreatRatingCommentsData extends BaseObject
 	{
 		return ObjectType.THREAT_RATING_COMMENTS_DATA;
 	}
-
-	public static boolean canOwnThisType(int type)
+	
+	public String findComment(ORef threatRef, ORef targetRef)
 	{
-		return false;
+		String threatTargetRefsAsKey = createKey(threatRef, targetRef);
+		if (getProject().isSimpleThreatRatingMode())
+			return getSimpleThreatRatingCommentsMap().get(threatTargetRefsAsKey);
+		
+		return getStressBasedThreatRatingCommentsMap().get(threatTargetRefsAsKey);
+	}
+	
+	public static String createKey(ORef threatRef, ORef targetRef)
+	{
+		return threatRef.toString() + targetRef.toString();
+	}
+	
+	public StringMap getThreatRatingCommentsMap()
+	{
+		if (getProject().isSimpleThreatRatingMode())
+			return getSimpleThreatRatingCommentsMap();
+		
+		return getStressBasedThreatRatingCommentsMap();
+	}
+	
+	public String getThreatRatingCommentsMapTag()
+	{
+		if (getProject().isSimpleThreatRatingMode())
+			return TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS;
+		
+		return TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS;
 	}
 
-	public static boolean canReferToThisType(int type)
+	public StringMap getStressBasedThreatRatingCommentsMap()
 	{
-		return false;
+		return stressBasedThreatRatingCommentsMap.getStringMap();
+	}
+
+	public StringMap getSimpleThreatRatingCommentsMap()
+	{
+		return simpleThreatRatingCommentsMap.getStringMap();
+	}
+	
+	public static ThreatRatingCommentsData find(ObjectManager objectManager, ORef threatRatingCommentsDataRef)
+	{
+		return (ThreatRatingCommentsData) objectManager.findObject(threatRatingCommentsDataRef);
+	}
+	
+	public static ThreatRatingCommentsData find(Project project, ORef threatRatingCommentsDataRef)
+	{
+		return find(project.getObjectManager(), threatRatingCommentsDataRef);
 	}
 
 	void clear()

@@ -445,14 +445,15 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectPercentageInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag);
 	}
 	
+	//FIXME refactor the below three methods to use a master method.
 	public ObjectDataInputField createMultilineField(String tag)
 	{
-		return new ObjectScrollingMultilineInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, 50);
+		return new ObjectScrollingMultilineInputField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), tag, DEFAULT_COLUMN_TEXT_COLUM_COUNT);
 	}
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag)
 	{
-		return new ObjectScrollingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, 50);
+		return new ObjectScrollingMultilineInputField(project, objectType, getObjectIdForType(objectType), tag, DEFAULT_COLUMN_TEXT_COLUM_COUNT);
 	}
 	
 	public ObjectDataInputField createMultilineField(int objectType, String tag, int columns)
@@ -831,6 +832,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	}
 
 	public static int STD_SHORT = 5;
+	public static final int DEFAULT_COLUMN_TEXT_COLUM_COUNT = 50;
 	
 	private Project project;
 	private Picker picker;
