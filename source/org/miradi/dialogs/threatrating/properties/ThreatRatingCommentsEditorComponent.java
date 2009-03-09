@@ -23,8 +23,10 @@ import javax.swing.JComponent;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
+import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
@@ -40,12 +42,13 @@ import org.miradi.utils.MiradiScrollPane;
 
 public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 {
-	public ThreatRatingCommentsEditorComponent(Project projectToUse)
+	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions)
 	{
 		super();
 		
 		project = projectToUse;		
 		panelTextArea = new PanelTextArea(ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
+		panelTextArea.addMouseListener(new TextAreaRightClickMouseHandler(actions, panelTextArea));
 		panelTextArea.setLineWrap(true);
 		panelTextArea.setWrapStyleWord(true);
 		
