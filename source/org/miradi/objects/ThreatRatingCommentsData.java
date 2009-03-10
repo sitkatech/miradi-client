@@ -124,8 +124,8 @@ public class ThreatRatingCommentsData extends BaseObject
 
 	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
 	
-	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP = "SimpleThreatRatingCommentsMaps";
-	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP = "StressBasedThreatRatingCommentsMaps";
+	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP = "SimpleThreatRatingCommentsMap";
+	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP = "StressBasedThreatRatingCommentsMap";
 	
 	private StringMapData simpleThreatRatingCommentsMap;
 	private StringMapData stressBasedThreatRatingCommentsMap;
