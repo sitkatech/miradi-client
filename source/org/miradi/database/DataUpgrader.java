@@ -261,7 +261,6 @@ public class DataUpgrader extends ProjectServer
 		EnhancedJsonObject threatRatingCommentsDataManifestJson = new EnhancedJsonObject();
 		threatRatingCommentsDataManifestJson.put("Type", "ObjectManifest");
 		createEmptySingletonThreatRatingCommentsDataObject(threatRatingCommentsDataDir, threatRatingCommentsDataManifestJson, jsonDir);
-		writeManifest(threatRatingCommentsDataDir, threatRatingCommentsDataManifestJson);
 		
 		if (!threatRatingCommentsDataDir.exists())
 			throw new RuntimeException("no ThreatRatingCommentsData dirs exists");
@@ -328,6 +327,7 @@ public class DataUpgrader extends ProjectServer
 		File threatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, Integer.toString(id));
 		createFile(threatRatingCommentsDataFile, threatStressRatingJson.toString());
 		writeHighestIdToProjectFile(jsonDir, id);
+		writeManifest(threatRatingCommentsDataDir, threatRatingCommentsDataManifestJson);
 	}
 	
 	private void removeCommentsField(File factorLinkJsonFile, EnhancedJsonObject factorLinkJson, String commentsField) throws Exception
