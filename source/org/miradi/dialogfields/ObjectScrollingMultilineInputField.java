@@ -47,7 +47,7 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 	}
 	
 	@Override
-	void addFocusListener()
+	protected void addFocusListener()
 	{
 		super.addFocusListener();
 		getTextComponent().addFocusListener(this);

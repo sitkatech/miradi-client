@@ -102,7 +102,7 @@ abstract public class ObjectDataInputField extends SavableField
 		return tag;
 	}
 	
-	void addFocusListener()
+	protected void addFocusListener()
 	{
 		getComponent().addFocusListener(this);
 	}
