@@ -125,7 +125,7 @@ import org.miradi.objects.TestThreatRatingBundle;
 import org.miradi.objects.TestThreatRatingCommentsData;
 import org.miradi.objects.TestThreatReductionResult;
 import org.miradi.objects.TestThreatStressRating;
-import org.miradi.objects.TestThreatStressRatingChainObject;
+import org.miradi.objects.TestThreatTargetChainObject;
 import org.miradi.objects.TestTncProjectData;
 import org.miradi.objects.TestValueOption;
 import org.miradi.objects.TestViewData;
@@ -329,7 +329,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestObjectManager.class));
 		suite.addTest(new TestSuite(TestProjectChainObject.class));
 		suite.addTest(new TestSuite(TestDiagramChainObject.class));
-		suite.addTest(new TestSuite(TestThreatStressRatingChainObject.class));
+		suite.addTest(new TestSuite(TestThreatTargetChainObject.class));
 		suite.addTest(new TestSuite(TestProjectMetadata.class));
 		suite.addTest(new TestSuite(TestProjectResource.class));
 		suite.addTest(new TestSuite(TestTask.class));

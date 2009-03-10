@@ -24,9 +24,9 @@ import java.util.HashSet;
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.TestCaseWithProject;
 
-public class TestThreatStressRatingChainObject extends TestCaseWithProject
+public class TestThreatTargetChainObject extends TestCaseWithProject
 {
-	public TestThreatStressRatingChainObject(String name)
+	public TestThreatTargetChainObject(String name)
 	{
 		super(name);
 	}
