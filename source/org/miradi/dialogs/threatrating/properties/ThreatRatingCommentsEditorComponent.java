@@ -19,14 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-
 import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
+import org.miradi.dialogfields.SavableField;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 import org.miradi.dialogfields.UndoRedoKeyHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
@@ -41,7 +39,7 @@ import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
 
-public class ThreatRatingCommentsEditorComponent
+public class ThreatRatingCommentsEditorComponent extends SavableField
 {
 	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions)
 	{
@@ -57,12 +55,11 @@ public class ThreatRatingCommentsEditorComponent
 		
 		new TextAreaRightClickMouseHandler(actions, panelTextArea);
 		panelTextArea.addKeyListener(new UndoRedoKeyHandler(actions));
-		panelTextArea.addFocusListener(new FocusHandler());
+		panelTextArea.addFocusListener(this);
 	}
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)
 	{
-		saveCommentsText();
 		selectedHeirearchy = selectedHeirearchyToUse;
 
 		updateText();
@@ -116,7 +113,8 @@ public class ThreatRatingCommentsEditorComponent
 		return project;
 	}
 	
-	private void saveCommentsText()
+	@Override
+	public void saveIfNeeded()
 	{
 		try
 		{
@@ -130,18 +128,6 @@ public class ThreatRatingCommentsEditorComponent
 		catch (Exception  e)
 		{
 			EAM.logException(e);
-		}
-	}
-	
-	class FocusHandler implements FocusListener
-	{
-		public void focusGained(FocusEvent e)
-		{
-		}
-
-		public void focusLost(FocusEvent e)
-		{
-			saveCommentsText();
 		}
 	}
 	
