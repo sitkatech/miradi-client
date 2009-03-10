@@ -19,16 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import javax.swing.JLabel;
-
 import org.miradi.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.threatrating.properties.StressBasedThreatRatingPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -37,23 +33,12 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramLinkColorQuestion;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
 	public static FactorLinkPropertiesPanel createWithOnlyBidirectionalAndColorPropertiesPanel(Project projectToUse, DiagramLink link)
 	{
 		return new FactorLinkPropertiesPanel(projectToUse, link);
-	}
-	
-	public static FactorLinkPropertiesPanel createGroupBoxedTargetLinkPropertiesPanel(MainWindow mainWindow, ORef factorLinkRef, ObjectPicker objectPicker) throws Exception
-	{
-		return new FactorLinkPropertiesPanel(mainWindow, factorLinkRef, objectPicker);
-	}
-	
-	public static FactorLinkPropertiesPanel createTargetLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
-	{
-		return new FactorLinkPropertiesPanel(mainWindow, link, objectPicker);
 	}
 	
 	private FactorLinkPropertiesPanel(Project projectToUse, DiagramLink link)
@@ -67,37 +52,6 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	private FactorLinkPropertiesPanel(MainWindow mainWindow, ORef factorLinkRef, ObjectPicker objectPicker) throws Exception
-	{
-		super(mainWindow.getProject(), factorLinkRef);
-				
-		addThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
-		
-		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
-		updateFieldsFromProject();
-	}
-	
-	private FactorLinkPropertiesPanel(MainWindow mainWindow, DiagramLink link, ObjectPicker objectPicker) throws Exception
-	{
-		super(mainWindow.getProject(), ObjectType.FACTOR_LINK, link.getWrappedId());
-		DiagramLinkColorSubPanel diagramLinkColorSubPanel = new DiagramLinkColorSubPanel(getProject(), DiagramLink.getObjectType());
-		addSubPanel(diagramLinkColorSubPanel);
-		add(diagramLinkColorSubPanel);
-		add(new JLabel(""));
-		
-		addThreatStressRatingPropertiesPanel(mainWindow, objectPicker);
-		
-		setObjectRefs(objectPicker.getSelectedHierarchies()[0]);
-		updateFieldsFromProject();
-	}
-
-	private void addThreatStressRatingPropertiesPanel(MainWindow mainWindow, ObjectPicker objectPicker) throws Exception
-	{
-		StressBasedThreatRatingPropertiesPanel threatStressRatingPropertiesPanel = new StressBasedThreatRatingPropertiesPanel(mainWindow, objectPicker);
-		addSubPanel(threatStressRatingPropertiesPanel);
-		add(threatStressRatingPropertiesPanel);
-	}
-	
 	private void setObjectRefsWithGroupBoxLinkAndChildrenRefs(DiagramLink groupBoxLink)
 	{
 		ORefList selfOrChildrenRefs = groupBoxLink.getSelfOrChildren();
