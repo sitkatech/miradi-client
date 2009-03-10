@@ -30,7 +30,6 @@ import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
 import org.miradi.dialogfields.UndoRedoKeyHandler;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -42,7 +41,7 @@ import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiScrollPane;
 
-public class ThreatRatingCommentsEditorComponent extends MiradiPanel
+public class ThreatRatingCommentsEditorComponent
 {
 	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions)
 	{
