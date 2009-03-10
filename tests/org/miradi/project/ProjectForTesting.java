@@ -652,11 +652,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 				
 		StringMap simpleThreatRatingCommentsMap = threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
 		simpleThreatRatingCommentsMap.add(threatTargetKey, SIMPLE_THREAT_RATING_COMMENT);
-		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS, simpleThreatRatingCommentsMap.toString());
+		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap.toString());
 	
 		StringMap stressBasedThreatRatingCommentsMap = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
 		stressBasedThreatRatingCommentsMap.add(threatTargetKey, STRESS_BASED_THREAT_RATING_COMMENT);
-		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS, stressBasedThreatRatingCommentsMap.toString());
+		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap.toString());
 	}
 	
 	public void populateEverything() throws Exception
