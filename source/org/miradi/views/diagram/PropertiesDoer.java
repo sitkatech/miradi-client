@@ -37,24 +37,18 @@ import org.miradi.dialogs.diagram.FactorPropertiesPanel;
 import org.miradi.dialogs.diagram.GroupBoxPropertiesPanel;
 import org.miradi.dialogs.diagram.ProjectScopePanel;
 import org.miradi.dialogs.diagram.TextBoxPropertiesPanel;
-import org.miradi.dialogs.groupboxLink.GroupBoxLinkListTablePanel;
-import org.miradi.dialogs.groupboxLink.GroupBoxLinkManagementPanel;
-import org.miradi.dialogs.groupboxLink.GroupBoxLinkTableModel;
 import org.miradi.dialogs.stress.StressPropertiesPanel;
 import org.miradi.dialogs.task.ActivityPropertiesPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.views.umbrella.StaticPicker;
 
 public class PropertiesDoer extends LocationDoer
@@ -187,16 +181,7 @@ public class PropertiesDoer extends LocationDoer
 	
 	void doFactorLinkProperties(DiagramLink diagramLink) throws Exception
 	{
-		if (diagramLink.isTargetLink() && diagramLink.isGroupBoxLink())
-		{
-			GroupBoxLinkManagementPanel dialogPanel = createDialogPanel(diagramLink);
-			showPropertiesPanel(dialogPanel);
-			dialogPanel.updateSplitterLocation();
-		}
-		else
-		{
-			showPropertiesPanel(getFactorLinkPropertiesPanel(diagramLink));
-		}
+		showPropertiesPanel(getFactorLinkPropertiesPanel(diagramLink));
 	}
 
 	private void showPropertiesPanel(ModelessDialogPanel dialogPanel)
@@ -204,46 +189,10 @@ public class PropertiesDoer extends LocationDoer
 		FactorLinkPropertiesDialog dlg = new FactorLinkPropertiesDialog(getMainWindow(), dialogPanel, dialogPanel.getPanelDescription()); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
-
-	private GroupBoxLinkManagementPanel createDialogPanel(DiagramLink diagramLink) throws Exception
-	{
-		ORefList children = diagramLink.getSelfOrChildren();
-		ORef firstChildRef = children.get(0);
-		DiagramLink diagramLinkChild = DiagramLink.find(getProject(), firstChildRef);
-		
-		GroupBoxLinkTableModel model = new GroupBoxLinkTableModel(getProject(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS);
-		GroupBoxLinkListTablePanel tablePanel = new GroupBoxLinkListTablePanel(getMainWindow(), model);
-		FactorLinkPropertiesPanel factorLinkPropertiesPanel = FactorLinkPropertiesPanel.createGroupBoxedTargetLinkPropertiesPanel(getMainWindow(), diagramLinkChild.getWrappedRef(), tablePanel.getPicker());
-		
-		return new GroupBoxLinkManagementPanel(getMainWindow(), diagramLink.getRef(), DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, getMainWindow().getActions(), tablePanel, factorLinkPropertiesPanel);
-	}
 	
 	private FactorLinkPropertiesPanel getFactorLinkPropertiesPanel(DiagramLink diagramLink) throws Exception
 	{
-		boolean isTargetLink = diagramLink.isTargetLink();
-		boolean isStressBasedMode = getProject().getMetadata().getThreatRatingMode().equals(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE);
-		if (!isTargetLink || !isStressBasedMode)
-			return FactorLinkPropertiesPanel.createWithOnlyBidirectionalAndColorPropertiesPanel(getProject(), diagramLink);
-		
-		ORef fromRef = diagramLink.getWrappedFactorLink().getFromFactorRef();
-		ORef toRef = diagramLink.getWrappedFactorLink().getToFactorRef();
-		ORefList hierarchyRefs = new ORefList();
-		hierarchyRefs.add(diagramLink.getRef());
-		hierarchyRefs.add(diagramLink.getWrappedRef());
-		if (Target.is(fromRef))
-		{
-			hierarchyRefs.add(fromRef);
-			hierarchyRefs.add(toRef);
-		}
-		else 
-		{
-			hierarchyRefs.add(toRef);
-			hierarchyRefs.add(fromRef);
-		}
-	
-		StaticPicker picker = new StaticPicker(hierarchyRefs);
-		
-		return FactorLinkPropertiesPanel.createTargetLinkPropertiesPanel(getMainWindow(), diagramLink, picker);
+		return FactorLinkPropertiesPanel.createWithOnlyBidirectionalAndColorPropertiesPanel(getProject(), diagramLink);
 	}
 	
 	private void doFactorProperties(FactorCell selectedFactorCell, Point at) throws Exception
