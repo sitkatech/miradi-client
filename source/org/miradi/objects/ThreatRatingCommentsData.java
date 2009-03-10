@@ -81,9 +81,9 @@ public class ThreatRatingCommentsData extends BaseObject
 	public String getThreatRatingCommentsMapTag()
 	{
 		if (getProject().isSimpleThreatRatingMode())
-			return TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS;
+			return TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
 		
-		return TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS;
+		return TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
 	}
 
 	public StringMap getStressBasedThreatRatingCommentsMap()
@@ -115,17 +115,17 @@ public class ThreatRatingCommentsData extends BaseObject
 	{
 		super.clear();
 		
-		simpleThreatRatingCommentsMap = new StringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS);
-		stressBasedThreatRatingCommentsMap = new StringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS);
+		simpleThreatRatingCommentsMap = new StringMapData(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
+		stressBasedThreatRatingCommentsMap = new StringMapData(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
 		
-		addField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS, simpleThreatRatingCommentsMap);
-		addField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS, stressBasedThreatRatingCommentsMap);
+		addField(TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap);
+		addField(TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap);
 	}
 
 	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
 	
-	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAPS = "SimpleThreatRatingCommentsMaps";
-	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAPS = "StressBasedThreatRatingCommentsMaps";
+	public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP = "SimpleThreatRatingCommentsMaps";
+	public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP = "StressBasedThreatRatingCommentsMaps";
 	
 	private StringMapData simpleThreatRatingCommentsMap;
 	private StringMapData stressBasedThreatRatingCommentsMap;
