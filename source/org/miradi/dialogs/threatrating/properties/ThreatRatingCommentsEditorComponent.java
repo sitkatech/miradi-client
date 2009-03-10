@@ -47,8 +47,8 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 	public ThreatRatingCommentsEditorComponent(Project projectToUse, Actions actions)
 	{
 		super();
-		
 		project = projectToUse;		
+		selectedHeirearchy = new ORefList();
 		panelTextArea = new PanelTextArea(ObjectScrollingMultilineInputField.INITIAL_MULTI_LINE_TEXT_AREA_ROW_COUNT, AbstractObjectDataInputPanel.DEFAULT_TEXT_COLUM_COUNT);
 		panelTextArea.setLineWrap(true);
 		panelTextArea.setWrapStyleWord(true);
@@ -63,6 +63,7 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)
 	{
+		saveCommentsText();
 		selectedHeirearchy = selectedHeirearchyToUse;
 
 		updateText();
@@ -103,9 +104,6 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 	
 	private ORefList getSeletedHeirarchy()
 	{
-		if (selectedHeirearchy == null)
-			return new ORefList();
-		
 		return selectedHeirearchy;
 	}
 	
@@ -119,6 +117,23 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		return project;
 	}
 	
+	private void saveCommentsText()
+	{
+		try
+		{
+			ThreatRatingCommentsData threatRatingCommentsData = getThreatRatingCommentsData();
+			StringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
+			String threatTargetKey = ThreatRatingCommentsData.createKey(getThreatRef(), getTargetRef());
+			commentsMap.add(threatTargetKey, getTextArea().getText());
+			CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toString());
+			getProject().executeCommand(setComment);
+		}
+		catch (Exception  e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
 	class FocusHandler implements FocusListener
 	{
 		public void focusGained(FocusEvent e)
@@ -129,25 +144,8 @@ public class ThreatRatingCommentsEditorComponent extends MiradiPanel
 		{
 			saveCommentsText();
 		}
-		
-		private void saveCommentsText()
-		{
-			try
-			{
-				ThreatRatingCommentsData threatRatingCommentsData = getThreatRatingCommentsData();
-				StringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
-				String threatTargetKey = ThreatRatingCommentsData.createKey(getThreatRef(), getTargetRef());
-				commentsMap.add(threatTargetKey, getTextArea().getText());
-				CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toString());
-				getProject().executeCommand(setComment);
-			}
-			catch (Exception  e)
-			{
-				EAM.logException(e);
-			}
-		}
 	}
-
+	
 	private Project project;
 	private MiradiScrollPane scrollPane;
 	private PanelTextArea panelTextArea;
