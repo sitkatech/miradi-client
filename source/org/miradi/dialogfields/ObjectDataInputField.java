@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import java.awt.Color;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -39,7 +37,7 @@ import org.miradi.project.Project;
 import org.miradi.utils.InvalidDateException;
 import org.miradi.utils.InvalidNumberException;
 
-abstract public class ObjectDataInputField implements FocusListener
+abstract public class ObjectDataInputField extends SavableField
 {
 	public ObjectDataInputField(Project projectToUse, ORef refToUse, String tagToUse)
 	{
@@ -107,26 +105,6 @@ abstract public class ObjectDataInputField implements FocusListener
 	void addFocusListener()
 	{
 		getComponent().addFocusListener(this);
-	}
-	
-	public void focusGained(FocusEvent e)
-	{
-		EAM.logVerbose("focusGained " + tag);
-		focusedField = this;
-	}
-
-	public void focusLost(FocusEvent e)
-	{
-		EAM.logVerbose("focusLost " + tag);
-		saveIfNeeded();
-		focusedField = null;
-	}
-	
-	public static void saveFocusedFieldPendingEdits()
-	{
-		if(focusedField == null)
-			return;
-		focusedField.saveIfNeeded();
 	}
 	
 	public void updateFromObject()
@@ -299,6 +277,4 @@ abstract public class ObjectDataInputField implements FocusListener
 	private String tag;
 	private boolean allowEdits;
 	private boolean needsSave;
-	
-	public static ObjectDataInputField focusedField;
 }

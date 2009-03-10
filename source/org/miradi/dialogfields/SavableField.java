@@ -19,12 +19,34 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import org.miradi.main.EAM;
+
 public abstract class SavableField implements FocusListener
-{
+{	
+	public void focusGained(FocusEvent e)
+	{
+		EAM.logVerbose("focusGained");
+		focusedField = this;
+	}
+
+	public void focusLost(FocusEvent e)
+	{
+		EAM.logVerbose("focusLost");
+		saveIfNeeded();
+		focusedField = null;
+	}
+
+	public static void saveFocusedFieldPendingEdits()
+	{
+		if(focusedField == null)
+			return;
+		focusedField.saveIfNeeded();
+	}
 
 	abstract public void saveIfNeeded();
 	
-	public static ObjectDataInputField focusedField;
+	public static SavableField focusedField;
 }
