@@ -302,8 +302,8 @@ public class DataUpgrader extends ProjectServer
 			
 		File threatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, Integer.toString(threatRatingCommentsDataIds[0].asInt()));
 		EnhancedJsonObject threatRatingCommentsDataJson = readFile(threatRatingCommentsDataFile);
-		threatRatingCommentsDataJson.put("SimpleThreatRatingCommentsMaps", simpleThreatRatingCommentsMap.toString());
-		threatRatingCommentsDataJson.put("StressBasedThreatRatingCommentsMaps", stressThreatRatingCommentsMap.toString());
+		threatRatingCommentsDataJson.put("SimpleThreatRatingCommentsMap", simpleThreatRatingCommentsMap.toString());
+		threatRatingCommentsDataJson.put("StressBasedThreatRatingCommentsMap", stressThreatRatingCommentsMap.toString());
 		writeJsonFile(threatRatingCommentsDataFile, threatRatingCommentsDataJson);
 	}
 
@@ -323,8 +323,6 @@ public class DataUpgrader extends ProjectServer
 			
 		EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject();
 		threatStressRatingJson.put("Id", Integer.toString(id));
-		threatStressRatingJson.put("SimpleThreatRatingCommentsMaps", new StringMap().toString());
-		threatStressRatingJson.put("StressBasedThreatRatingCommentsMaps", new StringMap().toString());
 		
 		File threatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, Integer.toString(id));
 		createFile(threatRatingCommentsDataFile, threatStressRatingJson.toString());

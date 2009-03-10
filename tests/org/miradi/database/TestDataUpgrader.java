@@ -193,12 +193,12 @@ public class TestDataUpgrader extends EAMTestCase
 		ORef targetRef = new ORef(Target.getObjectType(), new BaseId(targetIds[0]));
 		String key = threatRef.toString() + targetRef.toString();
 		
-		StringMap simpleThreatRatingCommentsMap2 = new StringMap(threatRatingCommentsDataJson.optString("SimpleThreatRatingCommentsMaps"));
+		StringMap simpleThreatRatingCommentsMap2 = new StringMap(threatRatingCommentsDataJson.optString("SimpleThreatRatingCommentsMap"));
 		assertEquals("simple threat rating comments map should not be empty?", 1, simpleThreatRatingCommentsMap2.size());
 		String simpleBasedComment = simpleThreatRatingCommentsMap2.get(key);
 		assertEquals("wrong comment for key", "simple based comment in link", simpleBasedComment);
 		
-		StringMap stressThreatRatingCommentsMap2 = new StringMap(threatRatingCommentsDataJson.optString("StressBasedThreatRatingCommentsMaps"));
+		StringMap stressThreatRatingCommentsMap2 = new StringMap(threatRatingCommentsDataJson.optString("StressBasedThreatRatingCommentsMap"));
 		assertEquals("stress threat rating comments map should not be empty?", 1, stressThreatRatingCommentsMap2.size());
 		String stressBasedComment = stressThreatRatingCommentsMap2.get(key);
 		assertEquals("wrong comment for key", "stress based comment in link", stressBasedComment);
