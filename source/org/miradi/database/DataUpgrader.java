@@ -317,6 +317,8 @@ public class DataUpgrader extends ProjectServer
 	{
 		int highestId = readHighestIdInProjectFile(jsonDir);
 		int id = ++highestId;
+		writeHighestIdToProjectFile(jsonDir, id);
+		
 		threatRatingCommentsDataManifestJson.put(Integer.toString(id), "true");
 			
 		EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject();
@@ -326,7 +328,7 @@ public class DataUpgrader extends ProjectServer
 		
 		File threatRatingCommentsDataFile = new File(threatRatingCommentsDataDir, Integer.toString(id));
 		createFile(threatRatingCommentsDataFile, threatStressRatingJson.toString());
-		writeHighestIdToProjectFile(jsonDir, id);
+		
 		writeManifest(threatRatingCommentsDataDir, threatRatingCommentsDataManifestJson);
 	}
 	
