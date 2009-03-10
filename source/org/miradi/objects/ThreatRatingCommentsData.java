@@ -96,6 +96,12 @@ public class ThreatRatingCommentsData extends BaseObject
 		return new StringMap(simpleThreatRatingCommentsMap.getStringMap());
 	}
 	
+	public String getSimpleThreatRatingComment(ORef threatRef, ORef targetRef)
+	{
+		String threatTargetMapKey = createKey(threatRef, targetRef);
+		return getSimpleThreatRatingComment(threatTargetMapKey);
+	}
+	
 	public String getSimpleThreatRatingComment(String threatTargetKey)
 	{
 		return getSimpleThreatRatingCommentsMap().get(threatTargetKey);
