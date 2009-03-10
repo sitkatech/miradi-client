@@ -21,7 +21,7 @@ package org.miradi.objects;
 
 import java.util.HashSet;
 
-import org.miradi.diagram.ThreatStressRatingChainObject;
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.TestCaseWithProject;
 
 public class TestThreatStressRatingChainObject extends TestCaseWithProject
@@ -48,7 +48,7 @@ public class TestThreatStressRatingChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(strategy, target1);
 		getProject().createDiagramLinkAndAddToDiagram(strategy, target2);
 		
-		ThreatStressRatingChainObject chainObject = new ThreatStressRatingChainObject(getProject());
+		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
 		HashSet<DiagramFactor> upstreamThreats1 = chainObject.upstreamThreatsFromTarget(getProject().getTestingDiagramObject(), target2);
 		assertEquals("wrong threat count", 1, upstreamThreats1.size());
 		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause2));
