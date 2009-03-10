@@ -22,6 +22,8 @@ package org.miradi.wizard.noproject;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -37,6 +39,7 @@ import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.Miradi;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.Translation;
 import org.miradi.wizard.WizardPanel;
@@ -66,10 +69,39 @@ public class NoProjectOverviewStep extends NoProjectWizardStep
 		mainPanel.add(left);
 		mainPanel.add(right);
 		mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-		
+
 		add(mainPanel, BorderLayout.CENTER);
 		
+		if(Miradi.isAlphaTesterMode())
+			add(new RemoteOpenButton(), BorderLayout.AFTER_LAST_LINE);
+		
 		getMainWindow().updateActionStates();
+	}
+	
+	class RemoteOpenButton extends PanelButton implements ActionListener
+	{
+		public RemoteOpenButton()
+		{
+			super(EAM.text("Open Remote Marine Example"));
+			addActionListener(this);
+		}
+
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				String remoteLocation = "http://localhost:7000/MiradiServer/projects/";
+				String projectName = "MarineExample-3.0.0";
+				getMainWindow().setRemoteDataLocation(remoteLocation);
+				getMainWindow().createOrOpenProject(projectName);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog(EAM.text("An unexpected error has prevented this operation"));
+			}
+		}
+		
 	}
 	
 	class OverviewPanel extends OneColumnPanel

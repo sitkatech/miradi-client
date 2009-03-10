@@ -566,21 +566,31 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// database
 	
-	public int createOrOpen(File projectDirectory) throws Exception
+	public int createOrOpen(String projectName) throws Exception
 	{
 		clear();
 		
 		int projectAction;
-		if(getDatabase().isExistingLocalProject(projectDirectory))
-			projectAction = openProject(projectDirectory);
+		if(getDatabase().isExistingProject(projectName))
+			projectAction = openProject(projectName);
 		else
-			projectAction = createProject(projectDirectory);
+			projectAction = createProject(projectName);
 		
 		writeStartingLogEntry();
 	
 		finishOpening();
 		
 		return projectAction;
+	}
+
+	public void setLocalDataLocation(File dataDirectory) throws Exception
+	{
+		getDatabase().setLocalDataLocation(dataDirectory);
+	}
+
+	public void setRemoteDataLocation(String remoteLocation) throws Exception
+	{
+		getDatabase().setRemoteDataLocation(remoteLocation);
 	}
 
 	//TODO: need to remvoe duplicate code after test code fixed as to not need to be tested for
@@ -769,21 +779,20 @@ public class Project
 		return ConceptualModelDiagram.DEFAULT_MAIN_NAME;
 	}
 	
-	public int openProject(File projectDirectory) throws Exception
+	public int openProject(String projectName) throws Exception
 	{
-		int existingVersion = getDatabase().readDataVersion(projectDirectory); 
+		int existingVersion = getDatabase().readProjectDataVersion(projectName); 
 		if(existingVersion > ProjectServer.DATA_VERSION)
 			throw new FutureVersionException();
 
 		if(existingVersion < ProjectServer.DATA_VERSION)
-			DataUpgrader.attemptUpgrade(projectDirectory);
+			DataUpgrader.attemptUpgrade(new File(getDatabase().getDataLocation(), projectName));
 		
-		int updatedVersion = getDatabase().readDataVersion(projectDirectory); 
+		int updatedVersion = getDatabase().readProjectDataVersion(projectName); 
 		if(updatedVersion < ProjectServer.DATA_VERSION)
 			throw new OldVersionException();
 
-		ProjectServer db = getDatabase();
-		db.openLocalProject(projectDirectory);
+		getDatabase().openProject(projectName);
 		try
 		{
 			loadProjectInfo();
@@ -800,9 +809,9 @@ public class Project
 		return PROJECT_WAS_OPENED;
 	}
 	
-	private int createProject(File projectDirectory) throws Exception
+	private int createProject(String projectName) throws Exception
 	{
-		getDatabase().createLocalProject(projectDirectory);
+		getDatabase().createProject(projectName);
 		return PROJECT_WAS_CREATED;
 		
 	}

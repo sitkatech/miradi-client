@@ -24,15 +24,15 @@ package org.miradi.network;
 
 import java.io.File;
 import java.net.HttpURLConnection;
+import java.net.URL;
 
 import org.martus.util.UnicodeWriter;
 
 class HttpPost extends HttpTransaction
 {
-	public static HttpPost writeFile(String serverName, int port, String applicationPath, 
-			String projectName, File file, String data) throws Exception
+	public static HttpPost writeFile(URL serverURL, String projectName, File file, String data) throws Exception
 	{
-		HttpPost post = new HttpPost(serverName, port, applicationPath, projectName, file);
+		HttpPost post = new HttpPost(serverURL, projectName, file);
 		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
 		writer.write("data=" + data);
 		writer.close();
@@ -40,33 +40,50 @@ class HttpPost extends HttpTransaction
 		return post;
 	}
 	
-	public static HttpPost createProject(String serverName, int port, String applicationPath, 
-			String projectName) throws Exception
+	public static HttpTransaction lockFile(URL serverURL, String projectName, File file) throws Exception
+	{
+		HttpPost post = new HttpPost(serverURL, projectName, file, new String[] {LOCK});
+		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
+		writer.close();
+		post.performRequest(post.connection);
+		return post;
+	}
+
+	public static HttpPost createProject(URL serverURL, String projectName) throws Exception
 	{
 		String[] parameters = new String[] {CREATE_PROJECT + "=" + projectName};
-		HttpPost post = new HttpPost(serverName, port, applicationPath, parameters);
+		HttpPost post = new HttpPost(serverURL, parameters);
 		post.performRequest(post.connection);
 		return post;
 	}
 	
-	private HttpPost(String serverName, int port, String applicationPath, 
-			String projectName, File file) throws Exception
+	private HttpPost(URL serverURL, String projectName, File file) throws Exception
 	{
-		connection = createConnection(serverName, port,	applicationPath, projectName, file, new String[0]);
+		connection = createConnection(serverURL, projectName, file, new String[0]);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		connection.setChunkedStreamingMode(0);
 	}
 	
-	private HttpPost(String serverName, int port, String applicationPath, String[] parameters) throws Exception
+	private HttpPost(URL serverURL, String[] parameters) throws Exception
 	{
-		connection = createConnection(serverName, port, applicationPath, parameters);
+		connection = createConnection(serverURL, parameters);
 		connection.setRequestMethod("POST");
 		connection.setDoOutput(true);
 		connection.setChunkedStreamingMode(0);
 	}
 	
+	public HttpPost(URL serverURL, String projectName, File file, String[] parameters) throws Exception
+	{
+		connection = createConnection(serverURL, projectName, file, parameters);
+		connection.setRequestMethod("POST");
+		connection.setDoOutput(true);
+		connection.setChunkedStreamingMode(0);
+	}
+
 	private static final String CREATE_PROJECT = "CreateProject";
+	private static final String LOCK = "Lock";
 	
 	private HttpURLConnection connection;
+
 }

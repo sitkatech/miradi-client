@@ -169,7 +169,15 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 			File projectDirectory = new File(eamDataDirectory,
 					projectDirectoryName);
-			return ProjectServer.isExistingLocalProject(projectDirectory);
+			try
+			{
+				return ProjectServer.isExistingLocalProject(projectDirectory);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+				return false;
+			}
 		}
 	}
 
@@ -240,6 +248,21 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 	public void ok()
 	{
+		try
+		{
+			confirmAndPrepare();
+		}
+		catch(Exception e)
+		{
+			EAM.errorDialog(EAM.text("An unexpected error has occurred"));
+			result = false;
+			dispose();
+		}
+
+	}
+
+	private void confirmAndPrepare() throws Exception
+	{
 		final String newName = getSelectedFilename();
 		if(newName.equals(oldName))
 		{
@@ -280,7 +303,6 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 		result = true;
 		dispose();
-
 	}
 
 	public static String getInvalidProjectNameMessage()

@@ -203,16 +203,18 @@ public class TestObjectManager extends EAMTestCase
 	private void verifyObjectWriteAndRead(int type, CreateObjectParameter parameter) throws IOException, Exception
 	{
 		File tempDirectory = createTempDirectory();
-		tempDirectory.delete();
+		String projectName = "verifyObjectReadAndWrite";
 		try
 		{
 			Project projectToWrite = new Project();
-			projectToWrite.createOrOpen(tempDirectory);
+			projectToWrite.setLocalDataLocation(tempDirectory);
+			projectToWrite.createOrOpen(projectName);
 			BaseId idToReload = projectToWrite.createObject(type, BaseId.INVALID, parameter);
 			projectToWrite.close();
 			
 			Project projectToRead = new Project();
-			projectToRead.createOrOpen(tempDirectory);
+			projectToRead.setLocalDataLocation(tempDirectory);
+			projectToRead.createOrOpen(projectName);
 			try
 			{
 				projectToRead.getObjectData(type, idToReload, BaseObject.TAG_LABEL);

@@ -75,11 +75,12 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 	public void testWriteAndRead() throws Exception
 	{
 		File tempDir = createTempDirectory();
-		tempDir.delete();
+		String projectName = "testWriteAndRead";
 		try
 		{
 			Project realProject = new Project();
-			realProject.createOrOpen(tempDir);
+			realProject.setLocalDataLocation(tempDir);
+			realProject.createOrOpen(projectName);
 			BaseId createdId = realProject.createObjectAndReturnId(ObjectType.RATING_CRITERION);
 			
 			FactorId threatId = new FactorId(283);
@@ -92,7 +93,8 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 			realProject.close();
 
 			Project loadedProject = new Project();
-			loadedProject.createOrOpen(tempDir);
+			loadedProject.setLocalDataLocation(tempDir);
+			loadedProject.createOrOpen(projectName);
 			IdList loadedOptionIds = loadedProject.getSimpleThreatRatingFramework().getValueOptionIds();
 			SimpleThreatRatingFramework loadedFramework = loadedProject.getSimpleThreatRatingFramework();
 			assertEquals("didn't reload framework?", createdId, loadedFramework.getCriterion(createdId).getId());

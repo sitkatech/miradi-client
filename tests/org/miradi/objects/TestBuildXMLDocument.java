@@ -22,6 +22,7 @@ package org.miradi.objects;
 import java.io.File;
 import java.io.PrintStream;
 
+import org.martus.util.DirectoryUtils;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -55,11 +56,12 @@ public class TestBuildXMLDocument extends EAMTestCase
 		if (chosen==null) return;
 		System.setOut(new PrintStream(chosen));
 		
+		File tempDirectory = createTempDirectory();
 		try
 		{
-			File projectFile = new File(EAM.getHomeDirectory(),projectName);
 			Project project = new Project();
-			project.createOrOpen(projectFile);
+			project.setLocalDataLocation(tempDirectory);
+			project.createOrOpen(projectName);
 			
 			//processObjectPool(project, "Fake",ObjectType.FAKE);
 			
@@ -97,6 +99,10 @@ public class TestBuildXMLDocument extends EAMTestCase
 		catch (Exception e)
 		{
 			EAM.logException(e);
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
 	}
 

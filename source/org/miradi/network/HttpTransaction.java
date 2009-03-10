@@ -25,7 +25,9 @@ package org.miradi.network;
 import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.martus.util.UnicodeReader;
@@ -48,35 +50,35 @@ class HttpTransaction
 		return resultData;
 	}
 
-	protected HttpURLConnection createConnection(String serverName, int port,
-			String applicationPath, String projectName, File file, String[] parameters)
-			throws Exception
+	protected HttpURLConnection createConnection(URL serverURL,
+			String projectName, File file, String[] parameters)
+			throws URISyntaxException, IOException, MalformedURLException
 	{
-		URL serverURL = new URL("http://" + serverName + ":" + port + applicationPath);
 		String relativePath = "";
 		if(projectName != null)
 			relativePath += projectName;
 		if(file != null)
+		{
+			if(!file.getPath().startsWith("/"))
+				relativePath += "/";
 			relativePath += file;
-		URI uri = new URI(serverURL + relativePath + buildParameterString(parameters));
-		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
-		return connection;
+		}
+		return createConnection(serverURL, relativePath, parameters);
 	}
 
-	protected HttpURLConnection createConnection(String serverName, int port,
-			String applicationPath, String projectName, String[] parameters)
-			throws Exception
+	protected HttpURLConnection createConnection(URL serverURL,
+			String projectName, String[] parameters) throws URISyntaxException,
+			IOException, MalformedURLException
 	{
-		URL serverURL = new URL("http://" + serverName + ":" + port + applicationPath);
 		URI uri = new URI(serverURL + projectName +	buildParameterString(parameters));
 		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
 		return connection;
 	}
 
-	protected HttpURLConnection createConnection(String serverName, int port, 
-			String applicationPath, String[] parameters) throws Exception
+	protected HttpURLConnection createConnection(URL serverURL,
+			String[] parameters) throws URISyntaxException, IOException,
+			MalformedURLException
 	{
-		URL serverURL = new URL("http://" + serverName + ":" + port + applicationPath);
 		URI uri = new URI(serverURL + buildParameterString(parameters));
 		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
 		return connection;

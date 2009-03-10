@@ -35,13 +35,13 @@ public class TestRealProject extends EAMTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		projectDirectory = createTempDirectory();
-		projectDirectory.delete();
+		tempDirectory = createTempDirectory();
+		projectName = "TestRealProject";
 	}
 	
 	public void tearDown() throws Exception
 	{
-		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
+		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		super.tearDown();
 	}
 
@@ -49,15 +49,13 @@ public class TestRealProject extends EAMTestCase
 	{
 		Project project = new Project();
 		assertFalse("already open?", project.isOpen());
-		project.createOrOpen(projectDirectory);
+		project.setLocalDataLocation(tempDirectory);
+		project.createOrOpen(projectName);
 		assertTrue("not open?", project.isOpen());
 		project.close();
 		assertFalse("still open?", project.isOpen());
 	}
 	
-	public void testInsertNode() throws Exception
-	{
-	}
-	
-	File projectDirectory;
+	private File tempDirectory;
+	private String projectName;
 }

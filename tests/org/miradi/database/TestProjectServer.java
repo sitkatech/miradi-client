@@ -53,7 +53,8 @@ public class TestProjectServer extends TestCaseWithProject
 		super.setUp();
 		tempDataDirectory = createTempDirectory();
 		storage = new ProjectServer();
-		storage.createLocalProject(new File(tempDataDirectory, getName()));
+		storage.setLocalDataLocation(tempDataDirectory);
+		storage.createProject(getName());
 		idAssigner = new IdAssigner();
 	}
 	
@@ -195,7 +196,8 @@ public class TestProjectServer extends TestCaseWithProject
 		anyFile.mkdirs();
 		try
 		{
-			storage.createLocalProject(tempDirectory);
+			storage.setLocalDataLocation(tempDirectory);
+			storage.createProject("blah");
 			fail("Should have thrown");
 		}
 		catch (Exception ignoreExpected)
@@ -221,17 +223,17 @@ public class TestProjectServer extends TestCaseWithProject
 			assertFalse("project exists?", anotherStorage.isExistingLocalProject(tempDirectory));
 			try
 			{
-				anotherStorage.openLocalProject(tempDirectory);
+				anotherStorage.setLocalDataLocation(tempDirectory.getParentFile());
+				anotherStorage.openProject(tempDirectory.getName());
 				fail("Should have thrown trying to open non-empty, non-project directory");
 			}
 			catch(IOException ignoreExpected)
 			{
 			}
 			
-			File nonExistantProjectDirectory = new File(tempDirectory, "DoesNotExist");
 			try
 			{
-				anotherStorage.openLocalProject(nonExistantProjectDirectory);
+				anotherStorage.openProject("DoesNotExist");
 				fail("Should throw when opening a non-existant directory");
 			}
 			catch (Exception ignoreExpected)

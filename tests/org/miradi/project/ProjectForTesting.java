@@ -110,8 +110,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		tempDataDirectory.deleteOnExit();
 		tempDataDirectory.delete();
 		tempDataDirectory.mkdir();
-		File projectDirectory = new File(tempDataDirectory, testName);
-		getDatabase().createLocalProject(projectDirectory);
+		getDatabase().setLocalDataLocation(tempDataDirectory);
+		getDatabase().createProject(testName);
 		finishOpening();
 	}
 	

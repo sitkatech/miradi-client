@@ -95,19 +95,21 @@ public class TestProjectUnzipper extends EAMTestCase
 	{
 		FactorId targetId = new FactorId(39);
 		
-		File originalDirectory = createTempDirectory();
-		originalDirectory.delete();
+		File tempDirectory = createTempDirectory();
+		String projectName = "testUnzip";
 		try
 		{
 			Project project = new Project();
-			project.createOrOpen(originalDirectory);
+			project.setLocalDataLocation(tempDirectory);
+			project.createOrOpen(projectName);
 			project.createObjectAndReturnId(ObjectType.TARGET, targetId);
 			project.close();
 
 			File zip = createTempFile();
 			try
 			{
-				ProjectZipper.createProjectZipFile(zip, originalDirectory);
+				File projectDirectory = new File(tempDirectory, projectName);
+				ProjectZipper.createProjectZipFile(zip, projectDirectory);
 				EAM.setLogToString();
 				EAM.setLogLevel(EAM.LOG_DEBUG);
 				boolean isImportable = ProjectUnzipper.isZipFileImportable(zip);
@@ -117,19 +119,18 @@ public class TestProjectUnzipper extends EAMTestCase
 				File fakeHomeDirectory = createTempDirectory();
 				try
 				{
-					File unzippedDirectory = new File(fakeHomeDirectory, projectFilename);
 					Project unzippedProject= new Project();
+					unzippedProject.setLocalDataLocation(fakeHomeDirectory);
 					try
 					{
 						ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
-						unzippedProject.createOrOpen(unzippedDirectory);
+						unzippedProject.createOrOpen(projectFilename);
 						Factor target = Target.find(unzippedProject, new ORef(Target.getObjectType(), targetId));
 						assertNotNull("didn't find the target we wrote?", target);
 					}
 					finally
 					{
 						unzippedProject.close();
-						DirectoryUtils.deleteEntireDirectoryTree(unzippedDirectory);
 					}
 				}
 				finally
@@ -146,7 +147,7 @@ public class TestProjectUnzipper extends EAMTestCase
 		}
 		finally
 		{
-			DirectoryUtils.deleteEntireDirectoryTree(originalDirectory);
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
 
 	}
@@ -154,22 +155,23 @@ public class TestProjectUnzipper extends EAMTestCase
 	public void testUnzipEmptyFilename() throws Exception
 	{
 		File originalDirectory = createTempDirectory();
-		originalDirectory.delete();
+		String originalProjectName = "testUnzipEmptyFilename";
 		try
 		{
 			Project project = new Project();
-			project.createOrOpen(originalDirectory);
+			project.setLocalDataLocation(originalDirectory);
+			project.createOrOpen(originalProjectName);
 			project.close();
 			
 			File zip = createTempFile();
 			try
 			{
-				ProjectZipper.createProjectZipFile(zip, originalDirectory);
-				String projectFilename = "";
+				ProjectZipper.createProjectZipFile(zip, new File(originalDirectory, originalProjectName));
+				String emptyFilename = "";
 				File fakeHomeDirectory = createTempDirectory();
 				try
 				{
-					ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, projectFilename);
+					ProjectUnzipper.unzipToProjectDirectory(zip, fakeHomeDirectory, emptyFilename);
 					fail("Should have thrown for empty filename");
 				}
 				finally

@@ -45,7 +45,7 @@ public class ExportZippedProjectFileDoer extends MainWindowDoer
 		if (!isAvailable())
 			return;
 
-		perform(getMainWindow(), getProject().getDatabase().getTopDirectory()); 
+		perform(getMainWindow(), getProject().getDatabase().getCurrentLocalProjectDirectory()); 
 	}
 
 	static public void perform(MainWindow mainWindow, File directoryToZip) throws CommandFailedException

@@ -97,7 +97,7 @@ public class RenameProjectDoer
 		}
 	}
 	
-	private static boolean projectExists(String projectName)
+	private static boolean projectExists(String projectName) throws Exception
 	{
 		File newFile = new File(EAM.getHomeDirectory(), projectName);
 		if(ProjectServer.isExistingLocalProject(newFile))

@@ -53,7 +53,7 @@ public class DeleteProject
 		DirectoryUtils.deleteEntireDirectoryTree(directoryToDelete);
 	}
 
-	private static String getDeleteMessage(File projectToDelete)
+	private static String getDeleteMessage(File projectToDelete) throws Exception
 	{
 		if (ProjectServer.isExistingLocalProject(projectToDelete))
 			return EAM.text("Are you sure you want to delete this project? ");

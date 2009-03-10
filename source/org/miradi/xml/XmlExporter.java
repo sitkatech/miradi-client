@@ -52,12 +52,16 @@ public abstract class XmlExporter
 		if (incorrectArgumentCount(commandLineArguments))
 			throw new RuntimeException("Incorrect number of arguments " + commandLineArguments.length);
 
-		Project newProject = new Project();
 		File projectDirectory = getProjectDirectory(commandLineArguments);
 		if(!ProjectServer.isExistingLocalProject(projectDirectory))
 			throw new RuntimeException("Project does not exist:" + projectDirectory);
 
-		newProject.createOrOpen(projectDirectory);
+		File dataDirectory = projectDirectory.getParentFile();
+		String projectName = projectDirectory.getName();
+		
+		Project newProject = new Project();
+		newProject.setLocalDataLocation(dataDirectory);
+		newProject.createOrOpen(projectName);
 		Translation.initialize();
 		
 		return newProject;

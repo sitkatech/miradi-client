@@ -21,20 +21,30 @@ package org.miradi.network;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.channels.OverlappingFileLockException;
+import java.util.HashMap;
 
+import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
+import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class MiradiLocalFileSystem implements MiradiFileSystem
 {
 	public MiradiLocalFileSystem()
 	{
+		locks = new HashMap<String, DirectoryLock>();
 	}
 	
-	public void setDataDirectory(File miradiDataDirectory)
+	public void setDataLocation(String dataLocation) throws Exception
 	{
-		dataDirectory = miradiDataDirectory;
+		dataDirectory = new File(dataLocation);
+	}
+
+	public String getDataLocation()
+	{
+		return dataDirectory.getAbsolutePath();
 	}
 
 	public void createProject(String projectName) throws Exception
@@ -57,6 +67,31 @@ public class MiradiLocalFileSystem implements MiradiFileSystem
 			throw new FileNotFoundException();
 		
 		DirectoryUtils.deleteEntireDirectoryTree(path);
+	}
+
+	public void lockProject(String projectName) throws Exception
+	{
+		File path = projectPath(projectName);
+		DirectoryLock lock = new DirectoryLock();
+		try
+		{
+			lock.lock(path);
+		}
+		catch(OverlappingFileLockException e)
+		{
+			throw new AlreadyLockedException();
+		}
+		locks.put(projectName, lock);
+	}
+
+	public void unlockProject(String projectName) throws Exception
+	{
+		DirectoryLock lock = locks.get(projectName);
+		if(lock == null)
+			return;
+		
+		lock.close();
+		locks.remove(projectName);
 	}
 
 	public boolean doesFileExist(String projectName, File file)
@@ -108,4 +143,5 @@ public class MiradiLocalFileSystem implements MiradiFileSystem
 	}
 	
 	private File dataDirectory;
+	private HashMap<String, DirectoryLock> locks;
 }

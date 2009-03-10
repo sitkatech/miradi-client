@@ -777,9 +777,10 @@ public class TestProject extends EAMTestCase
 		
 		ORef factorRef;
 		File tempDir = createTempDirectory();
-		tempDir.delete();
+		String projectName = "testOpenProject";
 		Project diskProject = new Project();
-		diskProject.createOrOpen(tempDir);
+		diskProject.setLocalDataLocation(tempDir);
+		diskProject.createOrOpen(projectName);
 		
 		ORef diagramObjectRef = diskProject.createObject(ConceptualModelDiagram.getObjectType());
 		DiagramObject diagramObject = ConceptualModelDiagram.find(diskProject, diagramObjectRef);
@@ -808,7 +809,8 @@ public class TestProject extends EAMTestCase
 		}
 		
 		Project loadedProject = new Project();
-		loadedProject.createOrOpen(tempDir);
+		loadedProject.setLocalDataLocation(tempDir);
+		loadedProject.createOrOpen(projectName);
 		try
 		{
 			assertEquals("didn't read cause pool?", 1, loadedProject.getCausePool().size());
@@ -845,11 +847,13 @@ public class TestProject extends EAMTestCase
 		factorHelper.deleteFactorAndDiagramFactor(diagramFactor);
 	}
 	
-	public void atestCreateNewProject() throws Exception
+	public void testCreateNewProject() throws Exception
 	{
 		File tempDir = createTempDirectory();
+		String projectName = "testCreateNewProject";
 		Project newProject = new Project();
-		newProject.createOrOpen(tempDir);
+		newProject.setLocalDataLocation(tempDir);
+		newProject.createOrOpen(projectName);
 		
 		try
 		{

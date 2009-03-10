@@ -22,6 +22,7 @@ package org.miradi.wizard.noproject;
 import java.io.File;
 
 import org.miradi.database.ProjectServer;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FileSystemProjectSorter;
 
 public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
@@ -38,22 +39,30 @@ public class FileSystemProjectOrDirectoryNode extends FileSystemTreeNode
 	
 	protected boolean shouldBeIncluded(File file)
 	{
-		if (!file.isDirectory())
-			return false;
-	
-		//TODO is this test neeeded since we return true at the end?
-		if (ProjectServer.isExistingLocalProject(file))
+		try
+		{
+			if (!file.isDirectory())
+				return false;
+
+			//TODO is this test neeeded since we return true at the end?
+			if (ProjectServer.isExistingLocalProject(file))
+				return true;
+			
+			if (isExternalReportsDirectory(file))
+				return false;
+			
+			if (isCustomReportsDirectory(file))
+				return false;
+			
+			if (isExternalResourceDirectory(file))
+				return false;
+			
 			return true;
-		
-		if (isExternalReportsDirectory(file))
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
 			return false;
-		
-		if (isCustomReportsDirectory(file))
-			return false;
-		
-		if (isExternalResourceDirectory(file))
-			return false;
-		
-		return true;
+		}
 	}
 }

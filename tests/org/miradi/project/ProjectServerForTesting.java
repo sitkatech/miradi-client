@@ -35,30 +35,23 @@ public class ProjectServerForTesting extends ProjectServer
 	}
 	
 	@Override
-	public void createLocalProject(File directory) throws Exception
+	public void createProject(String projectName) throws Exception
 	{
-		super.createLocalProject(directory);
-		eamDir = directory;
+		super.createProject(projectName);
 	}
 	
-	@Override
-	public void openLocalProject(File directory) throws Exception
-	{
-		super.openLocalProject(directory);
-		eamDir = directory;
-	}
-
-	public void closeAndDontDelete() throws IOException
+	public void closeAndDontDelete() throws Exception
 	{
 		super.close();
 	}
 	
-	public void close() throws IOException
+	public void close() throws Exception
 	{
+		String dataLocation = getDataLocation();
+		String projectName = getCurrentProjectName();
+		File projectDirectory = new File(dataLocation, projectName);
 		closeAndDontDelete();
-		if(eamDir != null)
-			DirectoryUtils.deleteEntireDirectoryTree(eamDir);
-		eamDir = null;
+		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 	}
 
 	public void writeObject(BaseObject object) throws Exception
@@ -75,7 +68,6 @@ public class ProjectServerForTesting extends ProjectServer
 		++callsToWriteThreatRatingFramework;
 	}
 	
-	private File eamDir;
 	public int callsToWriteObject;
 	public int callsToWriteThreatRatingFramework;
 }

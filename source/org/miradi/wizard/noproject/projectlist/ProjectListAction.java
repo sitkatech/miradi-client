@@ -65,10 +65,19 @@ abstract class ProjectListAction extends AbstractAction
 	
 	protected void updateEnabledState()
 	{
-		setEnabled(isProjectDirectory());
+		try
+		{
+			boolean newState = isProjectDirectory();
+			setEnabled(newState);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			setEnabled(false);
+		}
 	}
 
-	protected boolean isProjectDirectory()
+	protected boolean isProjectDirectory() throws Exception
 	{
 		return ProjectListTreeTable.isProjectDirectory(getSelectedFile());
 	}

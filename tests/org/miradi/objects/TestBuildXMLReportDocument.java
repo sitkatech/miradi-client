@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.Vector;
 
+import org.martus.util.DirectoryUtils;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
@@ -59,13 +60,14 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		if (chosen==null) return;
 		System.setOut(new PrintStream(chosen));
 		
+		File tempDirectory = createTempDirectory();
 		try
 		{
 			int BASE_INT = BaseId.INVALID.asInt();
 			
-			File projectFile = new File(EAM.getHomeDirectory(),projectName);
 			Project project = new Project();
-			project.createOrOpen(projectFile);
+			project.setLocalDataLocation(tempDirectory);
+			project.createOrOpen(projectName);
 			
 			writeXMLVersionLine();
 			writeLineReturn();
@@ -96,6 +98,10 @@ public class TestBuildXMLReportDocument extends EAMTestCase
 		catch (Exception e)
 		{
 			EAM.logException(e);
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
 	}
 

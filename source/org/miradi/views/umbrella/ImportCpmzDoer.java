@@ -72,8 +72,10 @@ public class ImportCpmzDoer extends ImportProjectDoer
 			throw new Exception("Illegal project name: " + newProjectFilename);
 		
 		Project projectToFill = new Project();
+		projectToFill.setLocalDataLocation(EAM.getHomeDirectory());
+		projectToFill.createOrOpen(newProjectFilename);
+
 		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectFilename);
-		projectToFill.createOrOpen(newProjectDir);
 		try 
 		{
 			importProject(importFile, projectToFill, newProjectDir);
@@ -127,7 +129,8 @@ public class ImportCpmzDoer extends ImportProjectDoer
 
 	private void importConproProjectNumbers(Project projectToFill, ZipFile zipFile, File newProjectDir) throws Exception
 	{
-		projectToFill.openProject(newProjectDir);
+		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
+		projectToFill.openProject(newProjectDir.getName());
 		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
