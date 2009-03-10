@@ -48,5 +48,5 @@ public abstract class SavableField implements FocusListener
 
 	abstract public void saveIfNeeded();
 	
-	public static SavableField focusedField;
+	private static SavableField focusedField;
 }
