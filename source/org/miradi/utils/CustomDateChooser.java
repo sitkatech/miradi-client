@@ -36,6 +36,7 @@ import javax.swing.event.PopupMenuListener;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.SavableField;
 import org.miradi.main.EAM;
 
 import com.toedter.calendar.JDateChooser;
@@ -89,7 +90,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		ObjectDataInputField.saveFocusedFieldPendingEdits();
+		SavableField.saveFocusedFieldPendingEdits();
 		super.actionPerformed(e);
 	}
 

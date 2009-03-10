@@ -25,7 +25,7 @@ import java.util.EventObject;
 
 import javax.swing.Icon;
 
-import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.SavableField;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -89,7 +89,7 @@ public abstract class MainWindowAction extends EAMAction
 		
 		try
 		{
-			ObjectDataInputField.saveFocusedFieldPendingEdits();
+			SavableField.saveFocusedFieldPendingEdits();
 			
 			getDoer().doIt(event);
 			getMainWindow().updateActionStates();
