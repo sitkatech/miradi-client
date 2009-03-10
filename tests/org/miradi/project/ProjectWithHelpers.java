@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import java.io.File;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -80,9 +79,9 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 
 	public void closeAndReopen() throws Exception
 	{
-		File topDirectory = getDatabase().getTopDirectory();
+		String projectName = getDatabase().getCurrentProjectName();
 		getTestDatabase().closeAndDontDelete();
-		createOrOpen(topDirectory);
+		createOrOpen(projectName);
 	}
 
 	protected void fireCommandExecuted(Command command)

@@ -21,23 +21,34 @@ package org.miradi.network;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
+import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.martus.util.DirectoryLock.AlreadyLockedException;
+
 public class MiradiRemoteFileSystem implements MiradiFileSystem
 {
-	public MiradiRemoteFileSystem(String server, int port, String applicationPath)
+	public MiradiRemoteFileSystem()
 	{
-		serverName = server;
-		serverPort = port;
-		serverApplicationPath = applicationPath;
+	}
+	
+	public void setDataLocation(String dataLocation) throws Exception
+	{
+		serverURL = new URL(dataLocation);
+	}
+
+	public String getDataLocation()
+	{
+		return serverURL.toString();
 	}
 	
 	public Set<String> getProjectList() throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverName, serverPort, serverApplicationPath, null, null, null);
+		HttpTransaction get = new HttpGet(serverURL, null, null, null);
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		
@@ -53,83 +64,92 @@ public class MiradiRemoteFileSystem implements MiradiFileSystem
 		return projectList;
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.network.MiradiFileSystem#doesProjectExist(java.lang.String)
-	 */
 	public boolean doesProjectDirectoryExist(String projectName) throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverName, serverPort, serverApplicationPath, projectName, new String[] {EXISTS});
+		HttpTransaction get = new HttpGet(serverURL, projectName, new String[] {EXISTS});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		return (get.getResultData().startsWith(EXISTS));
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.network.MiradiFileSystem#createProject(java.lang.String)
-	 */
 	public void createProject(String projectName) throws Exception
 	{
-		HttpPost post = HttpPost.createProject(serverName, serverPort, serverApplicationPath, projectName);
+		HttpPost post = HttpPost.createProject(serverURL, projectName);
 		if(post.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(post.getResultMessage());
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.network.MiradiFileSystem#deleteProject(java.lang.String)
-	 */
 	public void deleteProject(String projectName) throws Exception
 	{
-		HttpTransaction delete = HttpDelete.deleteProject(serverName, serverPort, serverApplicationPath, projectName);
+		HttpTransaction delete = HttpDelete.deleteProject(serverURL, projectName);
 		if(delete.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(delete.getResultMessage());
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.network.MiradiFileSystem#doesFileExist(java.lang.String, java.io.File)
-	 */
+	public void lockProject(String projectName) throws Exception
+	{
+		File file = new File(LOCK_FILE_NAME);
+		try
+		{
+			HttpTransaction lock = HttpPost.lockFile(serverURL, projectName, file);
+			if(lock.getResultCode() != HTTP_SUCCESS)
+				throw new AlreadyLockedException();
+		}
+		catch(FileNotFoundException e)
+		{
+			throw e;
+		}
+		catch(IOException e)
+		{
+			throw new AlreadyLockedException();
+		}
+	}
+
+	public void unlockProject(String projectName) throws Exception
+	{
+		File file = new File(LOCK_FILE_NAME);
+		if(!doesFileExist(projectName, file))
+			return;
+		
+		HttpTransaction unlock = HttpDelete.unlockFile(serverURL, projectName, file);
+		if(unlock.getResultCode() != HTTP_SUCCESS)
+			throw new RuntimeException("Unlock failed");
+	}
+	
 	public boolean doesFileExist(String projectName, File file) throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverName, serverPort, serverApplicationPath, projectName, file, new String[] {EXISTS});
+		HttpTransaction get = new HttpGet(serverURL, projectName, file, new String[] {EXISTS});
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		return (get.getResultData().startsWith(EXISTS));
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.network.MiradiFileSystem#readFile(java.lang.String, java.io.File)
-	 */
 	public String readFile(String projectName, File file) throws Exception
 	{
-		HttpTransaction get = new HttpGet(serverName, serverPort, serverApplicationPath, projectName, file);
+		HttpTransaction get = new HttpGet(serverURL, projectName, file);
 		if(get.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(get.getResultMessage());
 		return get.getResultData();
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.network.MiradiFileSystem#writeFile(java.lang.String, java.io.File, java.lang.String)
-	 */
 	public void writeFile(String projectName, File file, String contents) throws Exception
 	{
-		HttpTransaction post = HttpPost.writeFile(serverName, serverPort, serverApplicationPath, projectName, file, contents);
+		HttpTransaction post = HttpPost.writeFile(serverURL, projectName, file, contents);
 		if(post.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(post.getResultMessage());
 	}
 	
-	/* (non-Javadoc)
-	 * @see org.miradi.network.MiradiFileSystem#deleteFile(java.lang.String, java.io.File)
-	 */
 	public void deleteFile(String projectName, File file) throws Exception
 	{
-		HttpTransaction delete = HttpDelete.deleteFile(serverName, serverPort, serverApplicationPath, projectName, file);
+		HttpTransaction delete = HttpDelete.deleteFile(serverURL, projectName, file);
 		if(delete.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(delete.getResultMessage());
 	}
 
 	private static final int HTTP_SUCCESS = 200;
 	private static final String EXISTS = "Exists";
+	private static final String LOCK_FILE_NAME = "/lock";
 
-	private String serverName;
-	private int serverPort;
-	private String serverApplicationPath;
+	private URL serverURL;
+
 }

@@ -25,7 +25,7 @@ public class ObjectManifest extends Manifest
 {
 	public ObjectManifest()
 	{
-		super(ProjectServer.OBJECT_MANIFEST);
+		super(ObjectManifest.OBJECT_MANIFEST);
 	}
 	
 	public ObjectManifest(JSONObject copyFrom)
@@ -34,4 +34,5 @@ public class ObjectManifest extends Manifest
 		// TODO: Fail if wrong type
 	}
 
+	private static String OBJECT_MANIFEST = "ObjectManifest";
 }

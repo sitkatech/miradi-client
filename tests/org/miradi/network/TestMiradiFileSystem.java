@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.Set;
 
 import org.martus.util.DirectoryUtils;
+import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.main.EAMTestCase;
 
 public class TestMiradiFileSystem extends EAMTestCase
@@ -40,13 +41,14 @@ public class TestMiradiFileSystem extends EAMTestCase
 	{
 		super.setUp();
 		tempDirectory = createTempDirectory();
-		remoteFilingSystem = new MiradiRemoteFileSystem(SERVER_NAME, SERVER_PORT, SERVER_APP_PATH);
+		remoteFileSystem = new MiradiRemoteFileSystem();
+		remoteFileSystem.setDataLocation(SERVER_URL_STRING);
 		localFileSystem = new MiradiLocalFileSystem();
-		localFileSystem.setDataDirectory(tempDirectory);
+		localFileSystem.setDataLocation(tempDirectory.getAbsolutePath());
 		
 		filingSystems = new MiradiFileSystem[] {
-				remoteFilingSystem,
 				localFileSystem,
+				remoteFileSystem,
 		};
 	}
 	
@@ -67,6 +69,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 			verifyDeleteMissingFile();
 			verifyDirectoriesWithinProject();
 			verifyOperationsOnNonExistantProject();
+			verifyLockAndUnlock();
 		}
 	}
 	
@@ -74,7 +77,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 	{
 		String projectName = "TestingBasics";
 		File file = new File("/testfile");
-		String contents = "This is line 1\nSecond line\n";
+		String contents = getLongString();
 		
 		if(currentFilingSystem.doesProjectDirectoryExist(projectName))
 			currentFilingSystem.deleteProject(projectName);
@@ -84,16 +87,32 @@ public class TestMiradiFileSystem extends EAMTestCase
 			assertFalse(currentFilingSystem.doesFileExist(projectName, file));
 			currentFilingSystem.writeFile(projectName, file, contents);
 			assertTrue(currentFilingSystem.doesFileExist(projectName, file));
-			String got = currentFilingSystem.readFile(projectName, file);
-			assertEquals(contents, got);
+			try
+			{
+				String got = currentFilingSystem.readFile(projectName, file);
+				assertEquals(contents, got);
+			}
+			finally
+			{
+				currentFilingSystem.deleteFile(projectName, file);
+			}
 		}
 		finally
 		{
-			currentFilingSystem.deleteFile(projectName, file);
+			currentFilingSystem.deleteProject(projectName);
 		}
 		assertFalse(currentFilingSystem.doesFileExist(projectName, file));
 	}
 	
+	private String getLongString()
+	{
+		StringBuffer buffer = new StringBuffer();
+		for(int i = 0; i < 1000; ++i)
+			buffer.append("0123456789");
+		buffer.append("\n");
+		return buffer.toString();
+	}
+
 	public void verifyDeleteMissingFile() throws Exception
 	{
 		String projectName = "TestingDeleteMissing";
@@ -201,6 +220,43 @@ public class TestMiradiFileSystem extends EAMTestCase
 		assertFalse(currentFilingSystem.doesProjectDirectoryExist(projectName));
 	}
 	
+	private void verifyLockAndUnlock() throws Exception
+	{
+		String projectName = "TestingLocks";
+		if(currentFilingSystem.doesProjectDirectoryExist(projectName))
+			currentFilingSystem.deleteProject(projectName);
+		try
+		{
+			currentFilingSystem.lockProject(projectName);
+			fail("Should have thrown for locking non-existant project: " + currentFilingSystem.getClass());
+		}
+		catch(FileNotFoundException ignoreExpected)
+		{
+		}
+
+		currentFilingSystem.createProject(projectName);
+		try
+		{
+			currentFilingSystem.lockProject(projectName);
+			try
+			{
+				currentFilingSystem.lockProject(projectName);
+				fail("Should have thrown for locking twice: " + currentFilingSystem.getClass());
+			}
+			catch(AlreadyLockedException ignoreExpected)
+			{
+			}
+			currentFilingSystem.unlockProject(projectName);
+			currentFilingSystem.unlockProject(projectName);
+			currentFilingSystem.lockProject(projectName);
+			currentFilingSystem.unlockProject(projectName);
+		}
+		finally
+		{
+			currentFilingSystem.deleteProject(projectName);
+		}
+	}
+
 	public void testLocalNonDirectoryIsProject() throws Exception
 	{
 		String projectName = "NonDirectory";
@@ -224,31 +280,29 @@ public class TestMiradiFileSystem extends EAMTestCase
 		String projectName = "TestingProjectList";
 		
 		
-		if(remoteFilingSystem.doesProjectDirectoryExist(projectName))
-			remoteFilingSystem.deleteProject(projectName);
+		if(remoteFileSystem.doesProjectDirectoryExist(projectName))
+			remoteFileSystem.deleteProject(projectName);
 		{
-			Set<String> projectNames = remoteFilingSystem.getProjectList();
+			Set<String> projectNames = remoteFileSystem.getProjectList();
 			assertNotContains(projectName, projectNames);
 		}
-		remoteFilingSystem.createProject(projectName);
+		remoteFileSystem.createProject(projectName);
 		try
 		{
-			Set<String> projectNames = remoteFilingSystem.getProjectList();
+			Set<String> projectNames = remoteFileSystem.getProjectList();
 			assertContains(projectName, projectNames);
 		}
 		finally
 		{
-			remoteFilingSystem.deleteProject(projectName);
+			remoteFileSystem.deleteProject(projectName);
 		}
 		
 	}
 
-	private static final String SERVER_NAME = "localhost";
-	private static final int SERVER_PORT = 7000;
-	private static final String SERVER_APP_PATH = "/MiradiServer/projects/";
+	private static final String SERVER_URL_STRING = "http://localhost:7000/MiradiServer/projects/";
 
 	private MiradiLocalFileSystem localFileSystem;
-	private MiradiRemoteFileSystem remoteFilingSystem;
+	private MiradiRemoteFileSystem remoteFileSystem;
 	private MiradiFileSystem[] filingSystems;
 	private MiradiFileSystem currentFilingSystem;
 	private File tempDirectory;

@@ -21,6 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.util.Comparator;
 
+import org.miradi.main.EAM;
 import org.miradi.utils.SortableTable;
 import org.miradi.wizard.noproject.FileSystemTreeNode;
 
@@ -47,14 +48,22 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 	
 	public int compare(FileSystemTreeNode node1, FileSystemTreeNode node2)
 	{
-		int rawComparisonResult = compareWithoutDirection(node1, node2);
-		if (isReverseSort())
-			return getNegatedValue(rawComparisonResult);
-		
-		return rawComparisonResult;
+		try
+		{
+			int rawComparisonResult = compareWithoutDirection(node1, node2);
+			if (isReverseSort())
+				return getNegatedValue(rawComparisonResult);
+			
+			return rawComparisonResult;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return 0;
+		}
 	}
 
-	private int compareWithoutDirection(FileSystemTreeNode node1, FileSystemTreeNode node2)
+	private int compareWithoutDirection(FileSystemTreeNode node1, FileSystemTreeNode node2)throws Exception
 	{
 		if (!node1.isProjectDirectory() && node2.isProjectDirectory())
 			return -1;
@@ -71,7 +80,7 @@ public class FileSystemProjectSorter implements Comparator<FileSystemTreeNode>
 		return compareByTag * NEGATIVE_ONE;
 	}
 
-	private int compareByTag(FileSystemTreeNode node1, FileSystemTreeNode node2)
+	private int compareByTag(FileSystemTreeNode node1, FileSystemTreeNode node2) throws Exception
 	{
 		if (currentSortTag.equals(PROJECT_NAME_SORT_TAG))
 			return node1.toString().compareToIgnoreCase(node2.toString());

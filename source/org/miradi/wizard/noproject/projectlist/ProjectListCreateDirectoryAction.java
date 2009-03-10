@@ -35,9 +35,18 @@ public class ProjectListCreateDirectoryAction extends ProjectListAction
 	@Override
 	protected void updateEnabledState()
 	{
-		setEnabled(!isProjectDirectory());
-		if (getSelectedFile() == null)
+		try
+		{
+			boolean newState = !isProjectDirectory();
+			setEnabled(newState);
+			if (getSelectedFile() == null)
+				setEnabled(false);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
 			setEnabled(false);
+		}
 	}
 	
 	@Override

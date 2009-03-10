@@ -63,22 +63,31 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		if(column == 0)
+		try
 		{
-			return thisFile;
+			if(column == 0)
+			{
+				return thisFile;
+			}
+			if(column == 1)
+			{
+				if(!isProjectDirectory())
+					return null;
+				
+				return getLastModifiedDate();
+			}
 		}
-		if(column == 1)
+		catch(Exception e)
 		{
-			if(!isProjectDirectory())
-				return null;
-			
-			return getLastModifiedDate();
+			EAM.logException(e);
+			return "";
 		}
 		
+		// FIXME: Should probably log and return "" for this case
 		throw new RuntimeException("Unknown column: " + column);
 	}
 
-	public String getLastModifiedDate()
+	public String getLastModifiedDate() throws Exception
 	{
 		return ProjectServer.readLocalLastModifiedProjectTime(thisFile);
 	}
@@ -135,7 +144,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		return file.getName().equals(EAM.EXTERNAL_RESOURCE_DIRECTORY_NAME);
 	}
 	
-	public boolean isProjectDirectory()
+	public boolean isProjectDirectory() throws Exception
 	{
 		return ProjectServer.isExistingLocalProject(thisFile);
 	}

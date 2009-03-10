@@ -30,7 +30,7 @@ public class Manifest
 	public Manifest(String type)
 	{
 		data = new JSONObject();
-		data.put(ProjectServer.OBJECT_TYPE, type);
+		data.put(Manifest.OBJECT_TYPE, type);
 	}
 	
 	public Manifest(JSONObject copyFrom)
@@ -40,7 +40,7 @@ public class Manifest
 	
 	public String getObjectType()
 	{
-		return data.getString(ProjectServer.OBJECT_TYPE);
+		return data.getString(Manifest.OBJECT_TYPE);
 	}
 	
 	public BaseId[] getAllKeys()
@@ -51,7 +51,7 @@ public class Manifest
 		while(iter.hasNext())
 		{
 			String key = (String)iter.next();
-			if(!key.equals(ProjectServer.OBJECT_TYPE))
+			if(!key.equals(Manifest.OBJECT_TYPE))
 				keys[at++] = new BaseId(Integer.parseInt(key));
 		}
 		
@@ -113,6 +113,7 @@ public class Manifest
 		return new EnhancedJsonObject(data);
 	}
 	
-	
-	JSONObject data;
+	private static String OBJECT_TYPE = "Type";
+
+	private JSONObject data;
 }

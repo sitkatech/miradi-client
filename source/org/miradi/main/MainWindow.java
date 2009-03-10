@@ -448,13 +448,23 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		return actions;
 	}
 	
-	public void createOrOpenProject(File projectDirectory)
+	public void setLocalDataLocation(File dataDirectory) throws Exception
+	{
+		getProject().setLocalDataLocation(dataDirectory);
+	}
+	
+	public void setRemoteDataLocation(String remoteLocation) throws Exception
+	{
+		getProject().setRemoteDataLocation(remoteLocation);
+	}
+
+	public void createOrOpenProject(String projectName)
 	{
 		preventActionUpdates();
 		project.beginCommandSideEffectMode();
 		try
 		{
-			int projectAction = project.createOrOpen(projectDirectory);
+			int projectAction = project.createOrOpen(projectName);
 			if (projectAction == Project.PROJECT_WAS_CREATED)
 				project.createDefaultHelpTextBoxDiagramFactor();
 			

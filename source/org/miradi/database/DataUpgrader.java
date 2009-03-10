@@ -59,7 +59,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
-public class DataUpgrader extends ProjectServer
+public class DataUpgrader
 {
 	public class MigrationTooOldException extends Exception
 	{
@@ -116,7 +116,7 @@ public class DataUpgrader extends ProjectServer
 			EAM.logException(e);
 		}
 		
-		if(versionAfterUpgrading == DATA_VERSION)
+		if(versionAfterUpgrading == ProjectServer.DATA_VERSION)
 			EAM.notifyDialog(EAM.text("Project was migrated to the current data format"));
 		else
 			EAM.errorDialog(EAM.text("Attempt to migrate project to the current data format FAILED\n" +
@@ -129,7 +129,8 @@ public class DataUpgrader extends ProjectServer
 	public DataUpgrader(File projectDirectory) throws IOException
 	{
 		super();
-		setTopDirectory(projectDirectory);
+		topDirectory = projectDirectory;
+		projectServer = new ProjectServer();
 	}
 
 	void upgrade() throws Exception
@@ -1472,6 +1473,16 @@ public class DataUpgrader extends ProjectServer
 		writeLocalVersion(getTopDirectory(), 16);
 	}
 	
+	private void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
+	{
+		projectServer.writeLocalDataVersion(projectDirectory, versionToWrite);
+	}
+
+	private int readDataVersion(File projectDirectory) throws Exception
+	{
+		return projectServer.readLocalDataVersion(projectDirectory);
+	}
+
 	public void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -1683,4 +1694,12 @@ public class DataUpgrader extends ProjectServer
 	{
 		return new File(jsonDir, "objects-13");
 	}
+	
+	public File getTopDirectory()
+	{
+		return topDirectory;
+	}
+
+	private ProjectServer projectServer;
+	private File topDirectory;
 }

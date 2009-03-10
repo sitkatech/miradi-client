@@ -27,12 +27,11 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.json.JSONObject;
-import org.martus.util.DirectoryLock;
-import org.martus.util.DirectoryLock.AlreadyLockedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.network.MiradiFileSystem;
 import org.miradi.network.MiradiLocalFileSystem;
+import org.miradi.network.MiradiRemoteFileSystem;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectInfo;
@@ -44,31 +43,43 @@ public class ProjectServer
 {
 	public ProjectServer() throws IOException
 	{
-		localFileSystem = new MiradiLocalFileSystem();
-		lock = new DirectoryLock();
 	}
 
-	public void close() throws IOException
+	public void close() throws Exception
 	{
-		topDirectory = null;
-		name = null;
-		lock.close();
-		localFileSystem.setDataDirectory(null);
-		currentFileSystem = null;
+		if(!isOpen())
+			return;
+		
+		currentFileSystem.unlockProject(getCurrentProjectName());
+		currentProjectName = null;
 	}
 	
-	public void createLocalProject(File directory) throws Exception
+	public String getDataLocation() throws Exception
 	{
-		File dataDirectory = directory.getParentFile();
-		String projectName = directory.getName();
-		
-		localFileSystem.setDataDirectory(dataDirectory);
-		if(localFileSystem.doesProjectDirectoryExist(projectName))
+		return currentFileSystem.getDataLocation();
+	}
+	
+	public void setLocalDataLocation(File dataDirectory) throws Exception
+	{
+		MiradiLocalFileSystem localFileSystem = new MiradiLocalFileSystem();
+		localFileSystem.setDataLocation(dataDirectory.getAbsolutePath());
+		currentFileSystem = localFileSystem;
+	}
+	
+	public void setRemoteDataLocation(String remoteLocation) throws Exception
+	{
+		MiradiRemoteFileSystem remoteFileSystem = new MiradiRemoteFileSystem();
+		remoteFileSystem.setDataLocation(remoteLocation);
+		currentFileSystem = remoteFileSystem;
+	}
+
+	public void createProject(String projectName) throws Exception
+	{
+		if(currentFileSystem.doesProjectDirectoryExist(projectName))
 			throw new RuntimeException("Can't create project if directory already exists");
 		
-		localFileSystem.createProject(projectName);
-		currentFileSystem = localFileSystem;
-		openJsonDatabase(directory);
+		currentFileSystem.createProject(projectName);
+		openJsonDatabase(projectName);
 		writeVersion();
 	}
 		
@@ -80,53 +91,47 @@ public class ProjectServer
 	
 	public String getCurrentProjectName()
 	{
-		return name;
+		return currentProjectName;
 	}
 
-	public File getTopDirectory()
+	public File getCurrentLocalProjectDirectory()
 	{
-		if(topDirectory == null)
+		if(!isOpen())
 			throw new RuntimeException("ERROR: ProjectServer must be opened before use");
-		return topDirectory;
+		return new File(currentFileSystem.getDataLocation(), getCurrentProjectName());
 	}
 	
 	public boolean isOpen()
 	{
-		return lock.isLocked();
+		return (getCurrentProjectName() != null);
 	}
 	
-	public void openLocalProject(File directory) throws Exception
+	public void openProject(String projectName) throws Exception
 	{
-		File dataDirectory = directory.getParentFile();
-		String projectName = directory.getName();
-
-		localFileSystem.setDataDirectory(dataDirectory);
-		if(!localFileSystem.doesProjectDirectoryExist(projectName))
+		if(!currentFileSystem.doesProjectDirectoryExist(projectName))
 			throw new IOException("Can't open project that doesn't exist");
-		if(!isExistingLocalProject(directory))
+		if(!isExistingProject(projectName))
 			throw new IOException("Can't open non-project, non-empty directory");
 	
-		currentFileSystem = localFileSystem;
-		openJsonDatabase(directory);
+		openJsonDatabase(projectName);
 	}
 
-	public int readDataVersion(File projectDirectory) throws Exception
+	public int readLocalDataVersion(File projectDirectory) throws Exception
 	{
 		File dataDirectory = projectDirectory.getParentFile();
 		String projectName = projectDirectory.getName();
 
-		return readLocalProjectVersion(dataDirectory, projectName);
+		currentFileSystem = new MiradiLocalFileSystem();
+		currentFileSystem.setDataLocation(dataDirectory.getAbsolutePath());
+		return readProjectDataVersion(projectName);
 	}
 
-	public int readLocalProjectVersion(File dataDirectory, String projectName) throws Exception
+	public int readProjectDataVersion(String projectName) throws Exception, ParseException
 	{
-		MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
-		fileSystem.setDataDirectory(dataDirectory);
-		
 		File versionFile = getRelativeVersionFile();
-		if(!fileSystem.doesFileExist(projectName, versionFile))
+		if(!currentFileSystem.doesFileExist(projectName, versionFile))
 			throw new RuntimeException("No version file");
-		JSONObject version = readRelativeJsonFile(fileSystem, projectName, versionFile);
+		JSONObject version = readRelativeJsonFile(currentFileSystem, projectName, versionFile);
 		int dataVersion = version.getInt(TAG_VERSION);
 		return dataVersion;
 	}
@@ -202,22 +207,19 @@ public class ProjectServer
 		writeVersion(versionToWrite);
 	}
 	
-	private void openJsonDatabase(File directory) throws IOException,
-			AlreadyLockedException
+	private void openJsonDatabase(String projectName) throws Exception
 	{
-		directory.mkdirs();
-		lock.lock(directory);
-		setTopDirectory(directory);
-		name = topDirectory.getName();
+		currentFileSystem.lockProject(projectName);
+		currentProjectName = projectName;
 	}
 
-	protected static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
+	protected static void writeLocalDataVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
 		File dataDirectory = projectDirectory.getParentFile();
 		String projectName = projectDirectory.getName();
 		
 		MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
-		fileSystem.setDataDirectory(dataDirectory);
+		fileSystem.setDataLocation(dataDirectory.getAbsolutePath());
 		
 		EnhancedJsonObject version = createVersionJson(versionToWrite);
 		writeRelativeJsonFile(fileSystem, projectName, getRelativeVersionFile(), version);
@@ -229,11 +231,6 @@ public class ProjectServer
 		writeRelativeJsonFile(projectName, manifestFile, manifest.toJson());
 	}
 	
-	void setTopDirectory(File directory)
-	{
-		topDirectory = directory;
-	}
-
 	private void addToObjectManifest(String projectName, int type, BaseId idToAdd) throws Exception
 	{
 		ObjectManifest manifest = readObjectManifest(projectName, type);
@@ -321,22 +318,24 @@ public class ProjectServer
 		EnhancedJsonObject version = createVersionJson(versionToWrite);
 		writeRelativeJsonFile(getCurrentProjectName(), getRelativeVersionFile(), version);
 	}
-	
-	public static boolean isExistingLocalProject(File projectDirectory)
+
+	public boolean isExistingProject(String projectName) throws Exception
 	{
-		if(projectDirectory == null)
+		MiradiFileSystem fileSystem = currentFileSystem;
+		
+		return isExistingProject(fileSystem, projectName);
+	}
+
+	private static boolean isExistingProject(MiradiFileSystem fileSystem, String projectName) throws Exception
+	{
+		if(projectName == null)
 			return false;
 		
-		if(!projectDirectory.isDirectory())
+		if(!fileSystem.doesProjectDirectoryExist(projectName))
 			return false;
 
 		try
 		{
-			File dataDirectory = projectDirectory.getParentFile();
-			String projectName = projectDirectory.getName();
-	
-			MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
-			fileSystem.setDataDirectory(dataDirectory);
 			return fileSystem.doesFileExist(projectName, getRelativeVersionFile());
 		}
 		catch(Exception e)
@@ -346,13 +345,22 @@ public class ProjectServer
 		}
 	}
 
-	public static String readLocalLastModifiedProjectTime(File projectDirectory)
+	public static boolean isExistingLocalProject(File projectDirectory) throws Exception
+	{
+		if(projectDirectory == null)
+			return false;
+		MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
+		fileSystem.setDataLocation(projectDirectory.getParent());
+		return isExistingProject(fileSystem, projectDirectory.getName());
+	}
+
+	public static String readLocalLastModifiedProjectTime(File projectDirectory) throws Exception
 	{
 		File dataDirectory = projectDirectory.getParentFile();
 		String projectName = projectDirectory.getName();
 		
 		MiradiLocalFileSystem fileSystem = new MiradiLocalFileSystem();
-		fileSystem.setDataDirectory(dataDirectory);
+		fileSystem.setDataLocation(dataDirectory.getAbsolutePath());
 		
 		try
 		{
@@ -415,22 +423,17 @@ public class ProjectServer
 		return new File(getRelativeJsonDirectory(), VERSION_FILE);
 	}
 
-	static public int DATA_VERSION = 38;
-	public static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
-	static public String OBJECT_MANIFEST = "ObjectManifest";
-	static public String OBJECT_TYPE = "Type";
-	static public String TAG_VERSION = "Version";
-	static String JSON_DIRECTORY = "json";
+	public static final int DATA_VERSION = 38;
+	private static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
+	private static final String TAG_VERSION = "Version";
+	private static final String JSON_DIRECTORY = "json";
 
-	static String MANIFEST_FILE = "manifest";
-	static String PROJECTINFO_FILE = "project";
-	static String THREATFRAMEWORK_FILE = "threatframework";
-	static String THREATRATINGS_DIRECTORY = "threatratings";
-	static String VERSION_FILE = "version";
+	private static String MANIFEST_FILE = "manifest";
+	private static String PROJECTINFO_FILE = "project";
+	private static String THREATFRAMEWORK_FILE = "threatframework";
+	private static String THREATRATINGS_DIRECTORY = "threatratings";
+	private static String VERSION_FILE = "version";
 
-	protected File topDirectory;
+	private String currentProjectName;
 	private MiradiFileSystem currentFileSystem;
-	private MiradiLocalFileSystem localFileSystem;
-	private DirectoryLock lock;
-	private String name;
 }

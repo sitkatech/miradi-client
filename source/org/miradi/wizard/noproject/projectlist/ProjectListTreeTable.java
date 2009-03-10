@@ -117,12 +117,12 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		return file;
 	}
 	
-	public static boolean isProjectDirectory(File file)
+	public static boolean isProjectDirectory(File file) throws Exception
 	{
 		return ProjectServer.isExistingLocalProject(file);
 	}
 
-	public static void doProjectOpen(File file)
+	public static void doProjectOpen(File file) throws Exception
 	{
 		if(file == null)
 			return;
@@ -135,7 +135,8 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		mainWindow.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		try
 		{
-			mainWindow.createOrOpenProject(file);
+			mainWindow.setLocalDataLocation(file.getParentFile());
+			mainWindow.createOrOpenProject(file.getName());
 		}
 		finally
 		{
@@ -216,11 +217,18 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 				doContextMenu(e.getPoint());
 		}
 		
-		public void mouseClicked(MouseEvent e)
+		public void mouseClicked(MouseEvent event)
 		{
-			super.mouseClicked(e);
-			if(e.getClickCount() == 2)
-				doProjectOpen(getSelectedFile());
+			super.mouseClicked(event);
+			try
+			{
+				if(event.getClickCount() == 2)
+					doProjectOpen(getSelectedFile());
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
 		}
 	}
 	
@@ -268,13 +276,18 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 
 		public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocusToUse)
 		{
-			VariableHeightTreeCellRenderer renderer = null;
+			VariableHeightTreeCellRenderer renderer = projectRenderer;
 			
 			FileSystemTreeNode node = (FileSystemTreeNode) value;
-			if(node.isProjectDirectory())
-				renderer = projectRenderer;
-			else
-				renderer = folderRenderer;
+			try
+			{
+				if(!node.isProjectDirectory())
+					renderer = folderRenderer;
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
 			
 			JComponent configuredRenderer = (JComponent)renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 			return configuredRenderer;

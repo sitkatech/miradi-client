@@ -16,31 +16,33 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+/**
+ * 
  */
 package org.miradi.network;
 
 import java.io.File;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-public interface MiradiFileSystem
+class HttpGet extends HttpTransaction
 {
+	public HttpGet(URL serverURL, String projectName, File file) throws Exception
+	{
+		this(serverURL, projectName, file, new String[0]);
+	}
+	
+	public HttpGet(URL serverURL, String projectName, String[] parameters) throws Exception
+	{
+		HttpURLConnection connection = createConnection(serverURL, projectName, parameters);
+		performRequest(connection);
+	}
 
-	public abstract boolean doesProjectDirectoryExist(String projectName)
-			throws Exception;
-
-	public abstract void createProject(String projectName) throws Exception;
-
-	public abstract void deleteProject(String projectName) throws Exception;
-
-	public abstract boolean doesFileExist(String projectName, File file)
-			throws Exception;
-
-	public abstract String readFile(String projectName, File file)
-			throws Exception;
-
-	public abstract void writeFile(String projectName, File file,
-			String contents) throws Exception;
-
-	public abstract void deleteFile(String projectName, File file)
-			throws Exception;
+	public HttpGet(URL serverURL, String projectName, File file, String[] parameters) throws Exception
+	{
+		HttpURLConnection connection = createConnection(serverURL, projectName, file, parameters);
+		performRequest(connection);
+	}
 
 }

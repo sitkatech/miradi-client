@@ -24,30 +24,33 @@ package org.miradi.network;
 
 import java.io.File;
 import java.net.HttpURLConnection;
+import java.net.URL;
 
 class HttpDelete extends HttpTransaction
 {
-	private HttpDelete(String serverName, int port, String applicationPath, 
-			String projectName, File file, String[] parameters) throws Exception
+	private HttpDelete(URL serverURL, String projectName, File file, String[] parameters) throws Exception
 	{
-		HttpURLConnection connection = createConnection(serverName, port,
-				applicationPath, projectName, file, parameters);
+		HttpURLConnection connection = createConnection(serverURL, projectName, file, parameters);
 		connection.setRequestMethod("DELETE");
 		performRequest(connection);
 	}
 
-	public static HttpDelete deleteFile(String serverName, int port, String applicationPath, 
-			String projectName, File file) throws Exception
+	public static HttpTransaction unlockFile(URL serverURL, String projectName, File file) throws Exception
 	{
-		return new HttpDelete(serverName, port, applicationPath, projectName, file, new String[0]);
+		return new HttpDelete(serverURL, projectName, file, new String[] {UNLOCK});
 	}
 
-	public static HttpDelete deleteProject(String serverName, int port, String applicationPath, 
-			String projectName) throws Exception
+	public static HttpDelete deleteFile(URL serverURL, String projectName, File file) throws Exception
 	{
-		return new HttpDelete(serverName, port, applicationPath, projectName, null, new String[] {DELETE_PROJECT});
+		return new HttpDelete(serverURL, projectName, file, new String[0]);
+	}
+
+	public static HttpDelete deleteProject(URL serverURL, String projectName) throws Exception
+	{
+		return new HttpDelete(serverURL, projectName, null, new String[] {DELETE_PROJECT});
 	}
 	
 	private static final String DELETE_PROJECT = "DeleteProject";
+	private static final String UNLOCK = "Unlock";
 
 }

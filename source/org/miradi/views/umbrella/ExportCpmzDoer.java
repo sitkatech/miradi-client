@@ -139,7 +139,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 
 	private void addProjectAsMpzToZip(ZipOutputStream zipOut) throws Exception
 	{
-		File projectDir = getProject().getDatabase().getTopDirectory();
+		File projectDir = getProject().getDatabase().getCurrentLocalProjectDirectory();
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		ZipOutputStream out = new ZipOutputStream(byteOut);
 		try
