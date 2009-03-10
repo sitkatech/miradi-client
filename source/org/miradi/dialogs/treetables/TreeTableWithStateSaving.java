@@ -24,7 +24,7 @@ import javax.swing.event.TreeExpansionListener;
 import javax.swing.tree.TreePath;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.SavableField;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -256,7 +256,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 
 	private void saveExpandedPath(ORefList newObjRefList) throws Exception
 	{
-		ObjectDataInputField.saveFocusedFieldPendingEdits();
+		SavableField.saveFocusedFieldPendingEdits();
 		ViewData viewData = project.getViewData(project.getCurrentView());		
 		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
 		project.executeCommand(cmd);

@@ -40,7 +40,7 @@ import javax.swing.event.ChangeListener;
 import org.miradi.actions.Actions;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.SavableField;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.layout.OneRowPanel;
@@ -421,7 +421,7 @@ abstract public class TabbedView extends UmbrellaView
 	
 	public void prepareForTabSwitch()
 	{
-		ObjectDataInputField.saveFocusedFieldPendingEdits();
+		SavableField.saveFocusedFieldPendingEdits();
 		closeActivePropertiesDialog();
 		
 		if(currentTab >= 0)
