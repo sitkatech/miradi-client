@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
@@ -147,6 +148,12 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		FactorLinkId[] linkageIds = new FactorLinkId[rawIds.length];
 		System.arraycopy(rawIds, 0, linkageIds, 0, rawIds.length);
 		return linkageIds;
+	}
+	
+	public ORefList getFactorLinkRefs()
+	{
+		IdList factorLinkIds = new IdList(FactorLink.getObjectType(), getFactorLinkIds());
+		return new ORefList(FactorLink.getObjectType(), factorLinkIds);
 	}
 	
 	private FactorLink getLinkage(int index)
