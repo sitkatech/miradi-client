@@ -129,9 +129,9 @@ public class ProjectChainObject  extends ChainObject
 		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
 		
 		FactorLinkId[] linkIds = factorLinkPool.getFactorLinkIds();
-		for(int i = 0; i < linkIds.length; ++i)
+		for(int index = 0; index < linkIds.length; ++index)
 		{
-			FactorLink thisLink = factorLinkPool.find(linkIds[i]);
+			FactorLink thisLink = factorLinkPool.find(linkIds[index]);
 			processLink(unprocessedFactors, startingFactor, thisLink, direction);
 		}		
 		
