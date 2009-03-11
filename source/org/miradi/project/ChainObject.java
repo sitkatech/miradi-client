@@ -73,11 +73,6 @@ abstract public class ChainObject
 			processedLinks.add(thisLinkage);
 	}
 	
-	protected void processLink(FactorSet unprocessedFactors, Factor thisFactor, FactorLink thisLink, int direction)
-	{
-		unprocessedFactors.addAll(processLink(thisFactor, thisLink, direction));
-	}
-	
 	protected FactorSet processLink(Factor thisFactor, FactorLink thisLink, int direction)
 	{
 		FactorSet newFactorIfAny = new FactorSet();
