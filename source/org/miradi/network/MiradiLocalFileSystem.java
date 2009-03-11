@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.channels.OverlappingFileLockException;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
@@ -50,14 +51,6 @@ public class MiradiLocalFileSystem implements MiradiFileSystem
 	public void createProject(String projectName) throws Exception
 	{
 		projectPath(projectName).mkdir();
-	}
-
-	public void deleteFile(String projectName, File file) throws Exception
-	{
-		File path = filePath(projectName, file);
-		if(!path.exists())
-			throw new FileNotFoundException();
-		path.delete();
 	}
 
 	public void deleteProject(String projectName) throws Exception
@@ -131,6 +124,47 @@ public class MiradiLocalFileSystem implements MiradiFileSystem
 		writer.write(contents);
 		writer.close();
 	}
+	
+	public void deleteFile(String projectName, File file) throws Exception
+	{
+		File path = filePath(projectName, file);
+		if(!path.exists())
+			throw new FileNotFoundException();
+		path.delete();
+	}
+
+	public Map<Integer, String> readAllManifestFiles(String projectName) throws Exception
+	{
+		HashMap<Integer, String> map = new HashMap<Integer, String>();
+		
+		File jsonPath = new File(projectPath(projectName), "json");
+		File[] filesInJson = jsonPath.listFiles();
+		if(filesInJson == null)
+			return map;
+		
+		for(File file : filesInJson)
+		{
+			if(!file.isDirectory())
+				continue;
+			String name = file.getName();
+			File relativeObjectsDir = new File("json", name);
+			File relativeManifestFile = new File(relativeObjectsDir, "manifest");
+			File absoluteManifestFile = filePath(projectName, relativeManifestFile);
+			if(!absoluteManifestFile.exists())
+				continue;
+			
+			final String PREFIX = "objects-";
+			final int PREFIX_LENGTH = PREFIX.length();
+			if(!name.startsWith(PREFIX))
+				continue;
+			int type = Integer.parseInt(name.substring(PREFIX_LENGTH));
+			String contents = readFile(projectName, relativeManifestFile);
+			map.put(type, contents);
+		}
+		
+		return map;
+	}
+
 
 	private File projectPath(String projectName)
 	{

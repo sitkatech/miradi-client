@@ -25,6 +25,7 @@ package org.miradi.network;
 import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.martus.util.UnicodeWriter;
 
@@ -34,7 +35,8 @@ class HttpPost extends HttpTransaction
 	{
 		HttpPost post = new HttpPost(serverURL, projectName, file);
 		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
-		writer.write("data=" + data);
+		String encoded = URLEncoder.encode(data, "UTF-8");
+		writer.write("data=" + encoded);
 		writer.close();
 		post.performRequest(post.connection);
 		return post;

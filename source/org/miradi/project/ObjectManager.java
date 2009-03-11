@@ -22,6 +22,7 @@ package org.miradi.project;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 import org.miradi.database.ObjectManifest;
@@ -91,6 +92,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.SubTarget;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class ObjectManager
 {
@@ -364,58 +366,72 @@ public class ObjectManager
 	// they have to be loaded in a specific sequence
 	public void loadFromDatabase() throws Exception
 	{
-		loadPool(ObjectType.CAUSE);
-		loadPool(ObjectType.STRATEGY);
-		loadPool(ObjectType.TARGET);
-		loadPool(ObjectType.FACTOR_LINK);
-		loadPool(ObjectType.TASK);
-		loadPool(ObjectType.VIEW_DATA);
-		loadPool(ObjectType.PROJECT_RESOURCE);
-		loadPool(ObjectType.INDICATOR);
-		loadPool(ObjectType.OBJECTIVE);
-		loadPool(ObjectType.GOAL);
-		loadPool(ObjectType.RATING_CRITERION);
-		loadPool(ObjectType.VALUE_OPTION);
-		loadPool(ObjectType.PROJECT_METADATA);
-		loadPool(ObjectType.DIAGRAM_LINK);
-		loadPool(ObjectType.ASSIGNMENT);
-		loadPool(ObjectType.ACCOUNTING_CODE);
-		loadPool(ObjectType.FUNDING_SOURCE);
-		loadPool(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE);
-		loadPool(ObjectType.DIAGRAM_FACTOR);
-		loadPool(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
-		loadPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
-		loadPool(ObjectType.INTERMEDIATE_RESULT);
-		loadPool(ObjectType.THREAT_REDUCTION_RESULT);
-		loadPool(ObjectType.TEXT_BOX);
-		loadPool(ObjectType.SLIDE);
-		loadPool(ObjectType.SLIDESHOW);
-		loadPool(ObjectType.PLANNING_VIEW_CONFIGURATION);
-		loadPool(ObjectType.WWF_PROJECT_DATA);
-		loadPool(ObjectType.COST_ALLOCATION_RULE);
-		loadPool(ObjectType.MEASUREMENT);
-		loadPool(ObjectType.STRESS);
-		loadPool(ObjectType.THREAT_STRESS_RATING);
-		loadPool(ObjectType.GROUP_BOX);
-		loadPool(ObjectType.SUB_TARGET);
-		loadPool(ObjectType.PROGRESS_REPORT);
-		loadPool(ObjectType.RARE_PROJECT_DATA);
-		loadPool(ObjectType.WCS_PROJECT_DATA);
-		loadPool(ObjectType.TNC_PROJECT_DATA);
-		loadPool(ObjectType.FOS_PROJECT_DATA);
-		loadPool(ObjectType.ORGANIZATION);
-		loadPool(ObjectType.WCPA_PROJECT_DATA);
-		loadPool(ObjectType.XENODATA);
-		loadPool(ObjectType.PROGRESS_PERCENT);
-		loadPool(ObjectType.REPORT_TEMPLATE);
-		loadPool(ObjectType.TAGGED_OBJECT_SET);
-		loadPool(ObjectType.TABLE_SETTINGS);
-		loadPool(ObjectType.THREAT_RATING_COMMENTS_DATA);
+		Map<Integer, String> manifests = getDatabase().readAllManifestFiles();
+		
+		int[] types = {
+			ObjectType.CAUSE,
+			ObjectType.STRATEGY,
+			ObjectType.TARGET,
+			ObjectType.FACTOR_LINK,
+			ObjectType.TASK,
+			ObjectType.VIEW_DATA,
+			ObjectType.PROJECT_RESOURCE,
+			ObjectType.INDICATOR,
+			ObjectType.OBJECTIVE,
+			ObjectType.GOAL,
+			ObjectType.RATING_CRITERION,
+			ObjectType.VALUE_OPTION,
+			ObjectType.PROJECT_METADATA,
+			ObjectType.DIAGRAM_LINK,
+			ObjectType.ASSIGNMENT,
+			ObjectType.ACCOUNTING_CODE,
+			ObjectType.FUNDING_SOURCE,
+			ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,
+			ObjectType.DIAGRAM_FACTOR,
+			ObjectType.CONCEPTUAL_MODEL_DIAGRAM,
+			ObjectType.RESULTS_CHAIN_DIAGRAM,
+			ObjectType.INTERMEDIATE_RESULT,
+			ObjectType.THREAT_REDUCTION_RESULT,
+			ObjectType.TEXT_BOX,
+			ObjectType.SLIDE,
+			ObjectType.SLIDESHOW,
+			ObjectType.PLANNING_VIEW_CONFIGURATION,
+			ObjectType.WWF_PROJECT_DATA,
+			ObjectType.COST_ALLOCATION_RULE,
+			ObjectType.MEASUREMENT,
+			ObjectType.STRESS,
+			ObjectType.THREAT_STRESS_RATING,
+			ObjectType.GROUP_BOX,
+			ObjectType.SUB_TARGET,
+			ObjectType.PROGRESS_REPORT,
+			ObjectType.RARE_PROJECT_DATA,
+			ObjectType.WCS_PROJECT_DATA,
+			ObjectType.TNC_PROJECT_DATA,
+			ObjectType.FOS_PROJECT_DATA,
+			ObjectType.ORGANIZATION,
+			ObjectType.WCPA_PROJECT_DATA,
+			ObjectType.XENODATA,
+			ObjectType.PROGRESS_PERCENT,
+			ObjectType.REPORT_TEMPLATE,
+			ObjectType.TAGGED_OBJECT_SET,
+			ObjectType.TABLE_SETTINGS,
+			ObjectType.THREAT_RATING_COMMENTS_DATA,
+		};
+		for(int type : types)
+			loadPool(type, extractManifest(manifests, type));
 	}
 
-	private void loadPool(int type) throws IOException, ParseException, Exception
+	private ObjectManifest extractManifest(Map<Integer, String> manifests, int type) throws Exception
 	{
-		ObjectManifest manifest = getDatabase().readObjectManifest(type);
+		String manifestString = manifests.get(type);
+		if(manifestString == null)
+			return new ObjectManifest();
+		
+		return new ObjectManifest(new EnhancedJsonObject(manifestString));
+	}
+
+	private void loadPool(int type, ObjectManifest manifest) throws IOException, ParseException, Exception
+	{
 		BaseId[] ids = manifest.getAllKeys();
 		for(int i = 0; i < ids.length; ++i)
 		{
