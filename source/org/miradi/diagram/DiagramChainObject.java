@@ -175,11 +175,8 @@ public class DiagramChainObject
 		results.add(getStartingFactor());
 		
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
-		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
-		{
-			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
-			results.addAll(processLink(getStartingFactor(), link, direction));
-		}
+		results.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
+
 		return results;
 	}
 	
