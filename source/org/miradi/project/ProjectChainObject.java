@@ -141,9 +141,9 @@ public class ProjectChainObject  extends ChainObject
 			if (!linkedFactors.contains(thisFactor))
 			{
 				linkedFactors.attemptToAdd(thisFactor);
-				for(int i = 0; i < linkIds.length; ++i)
+				for(int index = 0; index < linkIds.length; ++index)
 				{
-					FactorLink thisLinkage = factorLinkPool.find(linkIds[i]);
+					FactorLink thisLinkage = factorLinkPool.find(linkIds[index]);
 					processLink(unprocessedFactors, thisFactor, thisLinkage, direction);
 				}
 			}
