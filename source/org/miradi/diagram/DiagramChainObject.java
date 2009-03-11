@@ -160,9 +160,9 @@ public class DiagramChainObject
 	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allDiagramLinkRefs, Factor factorToProcess)
 	{
 		HashSet<Factor> unprocessedFactors = new HashSet();
-		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
+		for(int index = 0; index < allDiagramLinkRefs.size(); ++index)
 		{
-			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));	
+			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(index));	
 			unprocessedFactors.addAll(processLink(factorToProcess, link, direction));
 		}
 		
