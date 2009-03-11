@@ -128,10 +128,10 @@ public class ProjectChainObject  extends ChainObject
 		linkedFactors.attemptToAdd(startingFactor);
 		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
 		
-		ORefList linkIds = factorLinkPool.getFactorLinkRefs();
-		for(int index = 0; index < linkIds.size(); ++index)
+		ORefList factorLinkRefs = factorLinkPool.getFactorLinkRefs();
+		for(int index = 0; index < factorLinkRefs.size(); ++index)
 		{
-			FactorLink thisLink = FactorLink.find(getProject(), linkIds.get(index));
+			FactorLink thisLink = FactorLink.find(getProject(), factorLinkRefs.get(index));
 			unprocessedFactors.attemptToAddAll(processLink(startingFactor, thisLink, direction));
 		}		
 		
@@ -141,9 +141,9 @@ public class ProjectChainObject  extends ChainObject
 			if (!linkedFactors.contains(thisFactor))
 			{
 				linkedFactors.attemptToAdd(thisFactor);
-				for(int index = 0; index < linkIds.size(); ++index)
+				for(int index = 0; index < factorLinkRefs.size(); ++index)
 				{
-					FactorLink thisLinkage = FactorLink.find(getProject(), linkIds.get(index));
+					FactorLink thisLinkage = FactorLink.find(getProject(), factorLinkRefs.get(index));
 					unprocessedFactors.attemptToAddAll(processLink(thisFactor, thisLinkage, direction));
 				}
 			}
