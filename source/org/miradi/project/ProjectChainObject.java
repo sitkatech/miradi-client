@@ -132,7 +132,7 @@ public class ProjectChainObject  extends ChainObject
 		for(int index = 0; index < linkIds.size(); ++index)
 		{
 			FactorLink thisLink = FactorLink.find(getProject(), linkIds.get(index));
-			processLink(unprocessedFactors, startingFactor, thisLink, direction);
+			unprocessedFactors.attemptToAddAll(processLink(startingFactor, thisLink, direction));
 		}		
 		
 		while(unprocessedFactors.size() > 0)
@@ -144,7 +144,7 @@ public class ProjectChainObject  extends ChainObject
 				for(int index = 0; index < linkIds.size(); ++index)
 				{
 					FactorLink thisLinkage = FactorLink.find(getProject(), linkIds.get(index));
-					processLink(unprocessedFactors, thisFactor, thisLinkage, direction);
+					unprocessedFactors.attemptToAddAll(processLink(thisFactor, thisLinkage, direction));
 				}
 			}
 			unprocessedFactors.remove(thisFactor);
@@ -163,7 +163,7 @@ public class ProjectChainObject  extends ChainObject
 		for(int i = 0; i < factorLinkPool.getFactorLinkIds().length; ++i)
 		{
 			FactorLink thisLink = factorLinkPool.find(factorLinkPool.getFactorLinkIds()[i]);
-			processLink(results, startingFactor, thisLink, direction);
+			results.attemptToAddAll(processLink(startingFactor, thisLink, direction));
 		}
 		return results;
 	}
