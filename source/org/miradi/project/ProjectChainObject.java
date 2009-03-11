@@ -27,7 +27,6 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 
@@ -126,9 +125,8 @@ public class ProjectChainObject  extends ChainObject
 		FactorSet linkedFactors = new FactorSet();
 		FactorSet unprocessedFactors = new FactorSet();
 		linkedFactors.attemptToAdd(startingFactor);
-		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
 		
-		ORefList factorLinkRefs = factorLinkPool.getFactorLinkRefs();		
+		ORefList factorLinkRefs = getAllFactorLinkRefs();		
 		unprocessedFactors.attemptToAddAll(getFactorsToProcess(direction, factorLinkRefs, startingFactor));
 		
 		while(unprocessedFactors.size() > 0)
@@ -151,7 +149,7 @@ public class ProjectChainObject  extends ChainObject
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
 		
-		ORefList factorLinkRefs = getProject().getFactorLinkPool().getFactorLinkRefs();
+		ORefList factorLinkRefs = getAllFactorLinkRefs();
 		results.attemptToAddAll(getFactorsToProcess(direction, factorLinkRefs, startingFactor));
 
 		return results;
@@ -187,6 +185,11 @@ public class ProjectChainObject  extends ChainObject
 		this.startingFactor = factor;
 		factorSet = new FactorSet();
 		processedLinks = new Vector();
+	}
+	
+	private ORefList getAllFactorLinkRefs()
+	{
+		return getProject().getFactorLinkPool().getFactorLinkRefs();
 	}
 	
 	HashMap<ORef, FactorSet> cachedUpstreamChain;
