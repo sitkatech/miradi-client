@@ -196,22 +196,32 @@ public class FactorLink extends BaseObject
 	
 	public ORef getFactorRef(int direction)
 	{
-		if(direction == FROM)
+		if(isFrom(direction))
 			return getFromFactorRef();
-		if(direction == TO)
+		if(isTo(direction))
 			return getToFactorRef();
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
-	
+
 	public ORef getOppositeFactorRef(int direction)
 	{
-		if(direction == FROM)
+		if(isFrom(direction))
 			return getFactorRef(TO);
-		if(direction == TO)
+		if(isTo(direction))
 			return getFactorRef(FROM);
 		throw new RuntimeException("Link: Unknown direction " + direction);
 	}
 	
+	public static boolean isTo(int direction)
+	{
+		return direction == TO;
+	}
+
+	public static boolean isFrom(int direction)
+	{
+		return direction == FROM;
+	}
+		
 	public static boolean is(BaseObject object)
 	{
 		return is(object.getType());
