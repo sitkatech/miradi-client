@@ -163,7 +163,9 @@ public class DiagramChainObject
 		for(int index = 0; index < allDiagramLinkRefs.size(); ++index)
 		{
 			DiagramLink link = DiagramLink.find(getProject(), allDiagramLinkRefs.get(index));	
-			unprocessedFactors.addAll(processLink(factorToProcess, link, direction));
+			Factor unprocessedFactor = processLink(factorToProcess, link, direction);
+			if (unprocessedFactor != null)
+				unprocessedFactors.add(unprocessedFactor);
 		}
 		
 		return unprocessedFactors;
@@ -198,29 +200,26 @@ public class DiagramChainObject
 		return getStartingFactor().getProject();
 	}
 	
-	private HashSet<Factor> processLink(Factor thisFactor, DiagramLink diagramLink, int direction)
+	private Factor processLink(Factor thisFactor, DiagramLink diagramLink, int direction)
 	{
-		HashSet<Factor> newFactorIfAny = new HashSet<Factor>();
-		
 		if(diagramLink.getDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);
 			Factor linkedNode = diagramLink.getOppositeDiagramFactor(direction).getWrappedFactor();
-			newFactorIfAny.add(linkedNode);
-			return newFactorIfAny;
+			return linkedNode;
 		}
 		
 		if (!diagramLink.isBidirectional())
-			return newFactorIfAny;
+			return null;
 		
 		if(diagramLink.getOppositeDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);
 			Factor linkedNode = diagramLink.getDiagramFactor(direction).getWrappedFactor();
-			newFactorIfAny.add(linkedNode);
+			return linkedNode;
 		}
 		
-		return newFactorIfAny;
+		return null;
 	}
 	
 	private FactorSet getFactors()
