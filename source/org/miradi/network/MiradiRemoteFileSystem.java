@@ -25,9 +25,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
+import org.martus.util.UnicodeStringReader;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
 public class MiradiRemoteFileSystem implements MiradiFileSystem
@@ -145,9 +148,33 @@ public class MiradiRemoteFileSystem implements MiradiFileSystem
 		if(delete.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(delete.getResultMessage());
 	}
+	
+	public Map<Integer, String> readAllManifestFiles(String projectName) throws Exception
+	{
+		HashMap map = new HashMap();
+		HttpTransaction get = new HttpGet(serverURL, projectName, new String[] {MANIFESTS});
+		if(get.getResultCode() != HTTP_SUCCESS)
+			throw new IOException(get.getResultMessage());
+		
+		String results = get.getResultData();
+		UnicodeStringReader reader = new UnicodeStringReader(results);
+		while(true)
+		{
+			String typeString = reader.readLine();
+			if(typeString == null)
+				break;
+			if(typeString.length() == 0)
+				continue;
+			String manifestContents = reader.readLine();
+			map.put(Integer.parseInt(typeString), manifestContents + "\n");
+		}
+		return map;
+	}
+
 
 	private static final int HTTP_SUCCESS = 200;
 	private static final String EXISTS = "Exists";
+	private static final String MANIFESTS = "Manifests";
 	private static final String LOCK_FILE_NAME = "/lock";
 
 	private URL serverURL;

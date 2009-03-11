@@ -63,25 +63,23 @@ class HttpTransaction
 				relativePath += "/";
 			relativePath += file;
 		}
-		return createConnection(serverURL, relativePath, parameters);
+		URI uri = new URI(serverURL + relativePath + buildParameterString(parameters));
+		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
+		return connection;
 	}
 
 	protected HttpURLConnection createConnection(URL serverURL,
 			String projectName, String[] parameters) throws URISyntaxException,
 			IOException, MalformedURLException
 	{
-		URI uri = new URI(serverURL + projectName +	buildParameterString(parameters));
-		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
-		return connection;
+		return createConnection(serverURL, projectName, null, parameters);
 	}
 
 	protected HttpURLConnection createConnection(URL serverURL,
 			String[] parameters) throws URISyntaxException, IOException,
 			MalformedURLException
 	{
-		URI uri = new URI(serverURL + buildParameterString(parameters));
-		HttpURLConnection connection = (HttpURLConnection) uri.toURL().openConnection();
-		return connection;
+		return createConnection(serverURL, null, null, parameters);
 	}
 
 	protected void performRequest(HttpURLConnection connection) throws IOException

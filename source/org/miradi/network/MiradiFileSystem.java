@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.network;
 
 import java.io.File;
+import java.util.Map;
 
 public interface MiradiFileSystem
 {
@@ -37,5 +38,6 @@ public interface MiradiFileSystem
 	public abstract String readFile(String projectName, File file) throws Exception;
 	public abstract void writeFile(String projectName, File file, String contents) throws Exception;
 	public abstract void deleteFile(String projectName, File file) throws Exception;
+	public abstract Map<Integer, String> readAllManifestFiles(String projectName) throws Exception;
 
 }

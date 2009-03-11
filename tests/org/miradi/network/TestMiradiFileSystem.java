@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Set;
 
 import org.martus.util.DirectoryUtils;
@@ -69,7 +70,9 @@ public class TestMiradiFileSystem extends EAMTestCase
 			verifyDeleteMissingFile();
 			verifyDirectoriesWithinProject();
 			verifyOperationsOnNonExistantProject();
-			verifyLockAndUnlock();
+			verifyGetManifests();
+			verifyReadMultipleFiles();
+			verifyDotDot();
 		}
 	}
 	
@@ -109,6 +112,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 		StringBuffer buffer = new StringBuffer();
 		for(int i = 0; i < 1000; ++i)
 			buffer.append("0123456789");
+		buffer.append("`-=[]\\;',./~!@#$%^&*()_+{}|:\"<>?");
 		buffer.append("\n");
 		return buffer.toString();
 	}
@@ -220,8 +224,65 @@ public class TestMiradiFileSystem extends EAMTestCase
 		assertFalse(currentFilingSystem.doesProjectDirectoryExist(projectName));
 	}
 	
-	private void verifyLockAndUnlock() throws Exception
+	private void verifyGetManifests() throws Exception
 	{
+		String projectName = "TestingManifests";
+		File directoryWithManifest1 = new File("json/objects-1");
+		File directoryWithManifest17 = new File("json/objects-17");
+		File directoryWithoutManifest = new File("json/objects-39");
+
+		final String MANIFEST_FILENAME = "manifest";
+		File manifest1 = new File(directoryWithManifest1, MANIFEST_FILENAME);
+		File manifest17 = new File(directoryWithManifest17, MANIFEST_FILENAME);
+		File otherFile = new File(directoryWithoutManifest, "OtherFile");
+		
+		String manifestContents1 = "Manifest1\n";
+		String manifestContents17 = "Another Manifest\n";
+		String otherContents = "This is not a manifest file\n";
+		
+		if(currentFilingSystem.doesProjectDirectoryExist(projectName))
+			currentFilingSystem.deleteProject(projectName);
+		currentFilingSystem.createProject(projectName);
+		try
+		{
+			currentFilingSystem.writeFile(projectName, manifest1, manifestContents1);
+			currentFilingSystem.writeFile(projectName, manifest17, manifestContents17);
+			currentFilingSystem.writeFile(projectName, otherFile, otherContents);
+			
+			Map<Integer, String> manifests = currentFilingSystem.readAllManifestFiles(projectName);
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), 2, manifests.size());
+			assertContains(1, manifests.keySet());
+			assertContains(17, manifests.keySet());
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), manifestContents1, manifests.get(1));
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), manifestContents17, manifests.get(17));
+		}
+		finally
+		{
+			currentFilingSystem.deleteProject(projectName);
+		}
+	}
+
+	private void verifyReadMultipleFiles() throws Exception
+	{
+//		fail("Test not implemented yet");
+		
+		// create 3 files
+		// read 2 of them
+		
+	}
+
+	private void verifyDotDot()
+	{
+		// FIXME: Write this test
+		//fail("Test not implemented yet");
+	}
+
+	public void testLockAndUnlock() throws Exception
+	{
+		// NOTE: Local file system allows the same process to lock a project more than once
+		currentFilingSystem = new MiradiRemoteFileSystem();
+		currentFilingSystem.setDataLocation(SERVER_URL_STRING);
+		
 		String projectName = "TestingLocks";
 		if(currentFilingSystem.doesProjectDirectoryExist(projectName))
 			currentFilingSystem.deleteProject(projectName);

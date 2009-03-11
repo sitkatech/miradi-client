@@ -25,6 +25,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import org.json.JSONObject;
 import org.miradi.ids.BaseId;
@@ -106,6 +107,11 @@ public class ProjectServer
 		return (getCurrentProjectName() != null);
 	}
 	
+	public Map<Integer, String> readAllManifestFiles() throws Exception
+	{
+		return currentFileSystem.readAllManifestFiles(getCurrentProjectName());
+	}
+
 	public void openProject(String projectName) throws Exception
 	{
 		if(!currentFileSystem.doesProjectDirectoryExist(projectName))
