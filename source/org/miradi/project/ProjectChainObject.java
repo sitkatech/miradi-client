@@ -158,9 +158,9 @@ public class ProjectChainObject  extends ChainObject
 	private FactorSet getFactorsToProcess(int direction, ORefList allFactorLinkRefs, Factor factorToProcess)
 	{
 		FactorSet unprocessedFactors = new FactorSet();
-		for(int i = 0; i < allFactorLinkRefs.size(); ++i)
+		for(int index = 0; index < allFactorLinkRefs.size(); ++index)
 		{
-			FactorLink factorLink = FactorLink.find(getProject(), allFactorLinkRefs.get(i));	
+			FactorLink factorLink = FactorLink.find(getProject(), allFactorLinkRefs.get(index));	
 			unprocessedFactors.attemptToAddAll(processLink(factorToProcess, factorLink, direction));
 		}
 		
