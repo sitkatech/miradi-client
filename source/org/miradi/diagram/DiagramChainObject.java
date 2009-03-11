@@ -140,7 +140,7 @@ public class DiagramChainObject
 		HashSet<Factor> unprocessedFactors = new HashSet();
 		linkedFactors.add(getStartingFactor());
 
-		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
+		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
 		unprocessedFactors.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
 		
 		while(unprocessedFactors.size() > 0)
@@ -156,7 +156,7 @@ public class DiagramChainObject
 		
 		return linkedFactors;
 	}
-	
+
 	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allDiagramLinkRefs, Factor factorToProcess)
 	{
 		HashSet<Factor> unprocessedFactors = new HashSet();
@@ -174,12 +174,17 @@ public class DiagramChainObject
 		HashSet<Factor> results = new HashSet();
 		results.add(getStartingFactor());
 		
-		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
+		ORefList allDiagramLinkRefs = getAllDiagramLinkRefs();
 		results.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
 
 		return results;
 	}
 	
+	private ORefList getAllDiagramLinkRefs()
+	{
+		return diagramObject.getAllDiagramLinkRefs();
+	}
+		
 	private void initializeChain(DiagramObject diagram, DiagramFactor diagramFactor)
 	{
 		diagramObject = diagram;
