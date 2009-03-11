@@ -141,11 +141,7 @@ public class DiagramChainObject
 		linkedFactors.add(getStartingFactor());
 
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
-		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
-		{
-			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
-			unprocessedFactors.addAll(processLink(getStartingFactor(), link, direction));
-		}		
+		unprocessedFactors.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
 		
 		while(unprocessedFactors.size() > 0)
 		{
@@ -153,16 +149,24 @@ public class DiagramChainObject
 			if (!linkedFactors.contains(thisFactor))
 			{
 				linkedFactors.add(thisFactor);
-				for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
-				{
-					DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
-					unprocessedFactors.addAll(processLink(thisFactor, link, direction));
-				}
+				unprocessedFactors.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, thisFactor));
 			}
 			unprocessedFactors.remove(thisFactor);
 		}
 		
 		return linkedFactors;
+	}
+	
+	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allDiagramLinkRefs, Factor factorToProcess)
+	{
+		HashSet<Factor> unprocessedFactors = new HashSet();
+		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
+		{
+			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));	
+			unprocessedFactors.addAll(processLink(factorToProcess, link, direction));
+		}
+		
+		return unprocessedFactors;
 	}
 
 	private HashSet<Factor> getDirectlyLinkedFactors(int direction)
