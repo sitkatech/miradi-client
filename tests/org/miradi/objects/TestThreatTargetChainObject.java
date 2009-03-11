@@ -34,27 +34,37 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 	//FIXME this test is not complete since the class is no complete.
 	public void testBasics() throws Exception
 	{
-		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor cause3 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor target1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor target2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor strategy = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Strategy.getObjectType());
 		
-		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);
+		DiagramFactor cause1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor cause3 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
 		
-		getProject().createDiagramLinkAndAddToDiagram(cause3, cause2);
-		getProject().createDiagramLinkAndAddToDiagram(cause2, strategy);
-		getProject().createDiagramLinkAndAddToDiagram(strategy, target1);
+		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);		    // cause1 -> target1
+		
+		getProject().createDiagramLinkAndAddToDiagram(cause1, cause2); //cause1 -> cause2 -> target1
+		getProject().createDiagramLinkAndAddToDiagram(cause2, target1);			// cause2 -> target2
+		getProject().createDiagramLinkAndAddToDiagram(cause2, target2);
+		
+		getProject().createDiagramLinkAndAddToDiagram(cause3, strategy);
 		getProject().createDiagramLinkAndAddToDiagram(strategy, target2);
 		
+		
+		
 		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
-		HashSet<DiagramFactor> upstreamThreats1 = chainObject.upstreamThreatsFromTarget(getProject().getTestingDiagramObject(), target2);
-		assertEquals("wrong threat count", 1, upstreamThreats1.size());
+		HashSet<DiagramFactor> upstreamThreats1 = chainObject.getUpstreamThreatsFromTarget(getProject().getTestingDiagramObject(), target1);
+		assertEquals("wrong threat count?", 2, upstreamThreats1.size());
 		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause2));
-//FIXME this is failing,, should uncomment and fix method		
-//		HashSet<DiagramFactor> upstreamThreats2 = chainObject.upstreamThreatsFromTarget(getProject().getTestingDiagramObject(), cause2);
-//		assertEquals("wrong threat count", 0, upstreamThreats2.size());
-//		assertTrue("wrong threat in list?", upstreamThreats2.contains(cause2));
+		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause1));
+		
+		HashSet<DiagramFactor> upstreamThreats3 = chainObject.getUpstreamThreatsFromTarget(getProject().getTestingDiagramObject(), target2);
+		assertEquals("wrong threat count?", 1, upstreamThreats3.size());
+		assertTrue("wrong threat in list?", upstreamThreats3.contains(cause2));
+		
+		HashSet<DiagramFactor> upstreamTargets = chainObject.getDownstreamTargetsFromThreat(getProject().getTestingDiagramObject(), cause1);
+		assertEquals("wrong upstream target count?", 2, upstreamTargets.size());
 	}
 }

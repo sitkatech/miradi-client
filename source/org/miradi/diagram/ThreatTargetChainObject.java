@@ -43,27 +43,33 @@ public class ThreatTargetChainObject
 	{
 		diagramObject = diagram;
 		setStartingFactor(diagramFactor);
-		resultingFactors = new HashSet<Factor>();
+		resultingThreats = new HashSet();
+		resultingTargets = new HashSet();
 		processedLinks = new HashSet();
 	}
 	
-	public HashSet<DiagramFactor> upstreamThreatsFromTarget(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	public HashSet<DiagramFactor> getUpstreamThreatsFromTarget(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
 	{
 		initializeChain(diagramObjectToUse, diagramFactor);
-		resultingFactors.addAll(getAllUpstreamFactors());
-
-		return getDiagramFactors();
+		buildUpstreamChain();
+		return getDiagramFactors(resultingThreats);
 	}
 	
-	private HashSet<Factor> getAllLinkedFactors(int direction)
+	public HashSet<DiagramFactor> getDownstreamTargetsFromThreat(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	{
+		initializeChain(diagramObjectToUse, diagramFactor);
+		buildDownstreamChain();
+		return getDiagramFactors(resultingTargets);
+	}
+	
+	private void buildChain(int direction)
 	{
 		HashSet<Factor> linkedFactors = new HashSet();
 		HashSet<Factor> unprocessedFactors = new HashSet();
 		linkedFactors.add(getStartingFactor());
-		HashSet<Factor> foundFactors = new HashSet();
-
+		
 		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
-		unprocessedFactors.addAll(getFactorsToProcess(direction, foundFactors, allDiagramLinkRefs, getStartingFactor()));
+		unprocessedFactors.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
 		
 		while(unprocessedFactors.size() > 0)
 		{
@@ -71,15 +77,13 @@ public class ThreatTargetChainObject
 			if (!linkedFactors.contains(factorToProcess))
 			{
 				linkedFactors.add(factorToProcess);
-				unprocessedFactors.addAll(getFactorsToProcess(direction, foundFactors, allDiagramLinkRefs, factorToProcess));
+				unprocessedFactors.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, factorToProcess));
 			}
 			unprocessedFactors.remove(factorToProcess);
 		}
-		
-		return foundFactors;
 	}
 
-	private HashSet<Factor> getFactorsToProcess(int direction, HashSet<Factor> foundFactors, ORefList allDiagramLinkRefs, Factor factorToProcess)
+	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allDiagramLinkRefs, Factor factorToProcess)
 	{
 		HashSet<Factor> unprocessedFactors = new HashSet();
 		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
@@ -87,12 +91,26 @@ public class ThreatTargetChainObject
 			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
 			Factor thisFactorToProcess = processLink(factorToProcess, link, direction);
 			if (thisFactorToProcess == null)
+			{
 				continue;
+			}
 			
-			if (thisFactorToProcess.isCause())
-				foundFactors.add(thisFactorToProcess);
-			else
+			if (thisFactorToProcess.isDirectThreat())
+			{
+				resultingThreats.add(thisFactorToProcess);
+				
+				if(FactorLink.isFrom(direction))
+					unprocessedFactors.add(thisFactorToProcess);
+			}
+			else if (thisFactorToProcess.isTarget())
+			{
+				resultingTargets.add(thisFactorToProcess);
 				unprocessedFactors.add(thisFactorToProcess);
+			}
+			else
+			{
+				unprocessedFactors.add(thisFactorToProcess);
+			}
 		}
 		
 		return unprocessedFactors;
@@ -103,7 +121,8 @@ public class ThreatTargetChainObject
 		if(diagramLink.getDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
 		{
 			processedLinks.add(diagramLink);	
-			return diagramLink.getOppositeDiagramFactor(direction).getWrappedFactor();
+			Factor wrappedFactor = diagramLink.getOppositeDiagramFactor(direction).getWrappedFactor();
+			return wrappedFactor;
 		}
 		
 		if (diagramLink.isBidirectional() && diagramLink.getOppositeDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
@@ -115,20 +134,20 @@ public class ThreatTargetChainObject
 		return null;
 	}
 	
-	private FactorSet getFactors()
+	private FactorSet getFactors(HashSet<Factor> factors)
 	{
 		FactorSet factorSet = new FactorSet();
-		for(Factor factor : resultingFactors)
+		for(Factor factor : factors)
 		{
 			factorSet.attemptToAdd(factor);
 		}
 		return factorSet;
 	}
 	
-	private HashSet<DiagramFactor> getDiagramFactors()
+	private HashSet<DiagramFactor> getDiagramFactors(HashSet<Factor> factors)
 	{
 		HashSet<DiagramFactor> diagramFactors = new HashSet();
- 		FactorSet processedFactors = getFactors();
+ 		FactorSet processedFactors = getFactors(factors);
  		for(Factor factor : processedFactors)
 		{
 			DiagramFactor diagramFactor = diagramObject.getDiagramFactor(factor.getRef());
@@ -139,16 +158,15 @@ public class ThreatTargetChainObject
  		
 	}
 
-	private HashSet<Factor> getAllUpstreamFactors()
+	private void  buildUpstreamChain()
 	{
-		return getAllLinkedFactors(FactorLink.TO);
+		buildChain(FactorLink.TO);
 	}
-	
-//TODO this method will be used but currently its commented to avoid unused method warnings	
-//	private HashSet<Factor> getAllDownstreamFactors()
-//	{
-//		return getAllLinkedFactors(FactorLink.FROM);
-//	}
+		
+	private void buildDownstreamChain()
+	{
+		buildChain(FactorLink.FROM);
+	}
 	
 	private void setStartingFactor(DiagramFactor startingFactorToUse)
 	{
@@ -166,7 +184,8 @@ public class ThreatTargetChainObject
 	}
 	
 	private DiagramObject diagramObject;
-	private HashSet<Factor> resultingFactors;
+	private HashSet<Factor> resultingThreats;
+	private HashSet<Factor> resultingTargets;
 	private HashSet<DiagramLink> processedLinks;
 	private DiagramFactor startingFactor;
 	private Project project;

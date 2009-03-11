@@ -851,6 +851,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return new DiagramFactorId(command.getCreatedId().asInt());
 	}
 	
+	public DiagramFactor createDiagramFactorWithWrappedRefLabelAndAddToDiagram(int objectType) throws Exception
+	{
+		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(objectType);
+		ORef wrappedRef = diagramFactor.getWrappedORef();
+		setObjectData(wrappedRef, BaseObject.TAG_LABEL, wrappedRef.toString());
+		
+		return diagramFactor;
+	}
+	
 	public DiagramFactor createDiagramFactorAndAddToDiagram(int objectType) throws Exception
 	{
 		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType);
