@@ -128,12 +128,8 @@ public class ProjectChainObject  extends ChainObject
 		linkedFactors.attemptToAdd(startingFactor);
 		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
 		
-		ORefList factorLinkRefs = factorLinkPool.getFactorLinkRefs();
-		for(int index = 0; index < factorLinkRefs.size(); ++index)
-		{
-			FactorLink thisLink = FactorLink.find(getProject(), factorLinkRefs.get(index));
-			unprocessedFactors.attemptToAddAll(processLink(startingFactor, thisLink, direction));
-		}		
+		ORefList factorLinkRefs = factorLinkPool.getFactorLinkRefs();		
+		unprocessedFactors.attemptToAddAll(getFactorsToProcess(direction, factorLinkRefs, startingFactor));
 		
 		while(unprocessedFactors.size() > 0)
 		{
@@ -141,11 +137,7 @@ public class ProjectChainObject  extends ChainObject
 			if (!linkedFactors.contains(thisFactor))
 			{
 				linkedFactors.attemptToAdd(thisFactor);
-				for(int index = 0; index < factorLinkRefs.size(); ++index)
-				{
-					FactorLink thisLinkage = FactorLink.find(getProject(), factorLinkRefs.get(index));
-					unprocessedFactors.attemptToAddAll(processLink(thisFactor, thisLinkage, direction));
-				}
+				unprocessedFactors.attemptToAddAll(getFactorsToProcess(direction, factorLinkRefs, thisFactor));
 			}
 			unprocessedFactors.remove(thisFactor);
 		}
@@ -153,19 +145,28 @@ public class ProjectChainObject  extends ChainObject
 		cache.put(startingFactor.getRef(), linkedFactors);
 		return linkedFactors;
 	}
-
+	
 	protected FactorSet getDirectlyLinkedFactors(int direction)
 	{
 		FactorSet results = new FactorSet();
 		results.attemptToAdd(startingFactor);
 		
-		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
-		for(int i = 0; i < factorLinkPool.getFactorLinkIds().length; ++i)
-		{
-			FactorLink thisLink = factorLinkPool.find(factorLinkPool.getFactorLinkIds()[i]);
-			results.attemptToAddAll(processLink(startingFactor, thisLink, direction));
-		}
+		ORefList factorLinkRefs = getProject().getFactorLinkPool().getFactorLinkRefs();
+		results.attemptToAddAll(getFactorsToProcess(direction, factorLinkRefs, startingFactor));
+
 		return results;
+	}
+	
+	private FactorSet getFactorsToProcess(int direction, ORefList allFactorLinkRefs, Factor factorToProcess)
+	{
+		FactorSet unprocessedFactors = new FactorSet();
+		for(int i = 0; i < allFactorLinkRefs.size(); ++i)
+		{
+			FactorLink factorLink = FactorLink.find(getProject(), allFactorLinkRefs.get(i));	
+			unprocessedFactors.attemptToAddAll(processLink(factorToProcess, factorLink, direction));
+		}
+		
+		return unprocessedFactors;
 	}
 	
 	private HashMap<ORef, FactorSet> getCache(int direction)
