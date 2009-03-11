@@ -85,7 +85,7 @@ abstract public class ChainObject
 		{
 			attempToAdd(thisLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getOppositeFactorRef(direction));
-			newFactorIfAny.add(linkedNode);
+			newFactorIfAny.attemptToAdd(linkedNode);
 			return newFactorIfAny;
 		}
 		
@@ -96,7 +96,7 @@ abstract public class ChainObject
 		{
 			attempToAdd(thisLink);
 			Factor linkedNode = (Factor) getProject().findObject(thisLink.getFactorRef(direction));
-			newFactorIfAny.add(linkedNode);
+			newFactorIfAny.attemptToAdd(linkedNode);
 		}
 		
 		return newFactorIfAny;
