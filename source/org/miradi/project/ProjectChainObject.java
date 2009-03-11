@@ -23,9 +23,9 @@ package org.miradi.project;
 import java.util.HashMap;
 import java.util.Vector;
 
-import org.miradi.ids.FactorLinkId;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objects.Factor;
@@ -128,10 +128,10 @@ public class ProjectChainObject  extends ChainObject
 		linkedFactors.attemptToAdd(startingFactor);
 		FactorLinkPool factorLinkPool = getProject().getFactorLinkPool();
 		
-		FactorLinkId[] linkIds = factorLinkPool.getFactorLinkIds();
-		for(int index = 0; index < linkIds.length; ++index)
+		ORefList linkIds = factorLinkPool.getFactorLinkRefs();
+		for(int index = 0; index < linkIds.size(); ++index)
 		{
-			FactorLink thisLink = factorLinkPool.find(linkIds[index]);
+			FactorLink thisLink = FactorLink.find(getProject(), linkIds.get(index));
 			processLink(unprocessedFactors, startingFactor, thisLink, direction);
 		}		
 		
@@ -141,9 +141,9 @@ public class ProjectChainObject  extends ChainObject
 			if (!linkedFactors.contains(thisFactor))
 			{
 				linkedFactors.attemptToAdd(thisFactor);
-				for(int index = 0; index < linkIds.length; ++index)
+				for(int index = 0; index < linkIds.size(); ++index)
 				{
-					FactorLink thisLinkage = factorLinkPool.find(linkIds[index]);
+					FactorLink thisLinkage = FactorLink.find(getProject(), linkIds.get(index));
 					processLink(unprocessedFactors, thisFactor, thisLinkage, direction);
 				}
 			}
