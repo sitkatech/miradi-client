@@ -782,25 +782,25 @@ public class TestProject extends EAMTestCase
 		diskProject.setLocalDataLocation(tempDir);
 		diskProject.createOrOpen(projectName);
 		
-		ORef diagramObjectRef = diskProject.createObject(ConceptualModelDiagram.getObjectType());
-		DiagramObject diagramObject = ConceptualModelDiagram.find(diskProject, diagramObjectRef);
+		ORef conceptualModelRef = diskProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
+		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(diskProject, conceptualModelRef);
 		try
 		{
-			DiagramFactor cause = createNodeAndAddToDiagram(diskProject, diagramObject, ObjectType.CAUSE);
+			DiagramFactor cause = createNodeAndAddToDiagram(diskProject, conceptualModel, ObjectType.CAUSE);
 			factorRef = cause.getWrappedORef();
-			DiagramFactor target = createNodeAndAddToDiagram(diskProject, diagramObject, ObjectType.TARGET);
+			DiagramFactor target = createNodeAndAddToDiagram(diskProject, conceptualModel, ObjectType.TARGET);
 			
 			LinkCreator linkCreator = new LinkCreator(diskProject);
-			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(diagramObject, cause, target);
+			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(conceptualModel, cause, target);
 			
 			FactorId interventionId = (FactorId)diskProject.createObjectAndReturnId(ObjectType.STRATEGY);
 			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
 			diskProject.deleteObject(object);
 	
-			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, diagramObject, ObjectType.CAUSE);
-			deleteNodeAndRemoveFromDiagram(diagramObject, diagramFactor);
+			DiagramFactor diagramFactor = createNodeAndAddToDiagram(diskProject, conceptualModel, ObjectType.CAUSE);
+			deleteNodeAndRemoveFromDiagram(conceptualModel, diagramFactor);
 			
-			createNodeAndAddToDiagram(diskProject, diagramObject, TextBox.getObjectType());
+			createNodeAndAddToDiagram(diskProject, conceptualModel, TextBox.getObjectType());
 			memorizedHighestId = diskProject.getAnnotationIdAssigner().getHighestAssignedId();
 		}
 		finally
@@ -818,8 +818,9 @@ public class TestProject extends EAMTestCase
 			assertEquals("didn't read target pool?", 1, loadedProject.getTargetPool().size());
 			assertEquals("didn't read text box pool?", 1, loadedProject.getTextBoxPool().size());
 			
-			ORef conceptualModelRef = loadedProject.getConceptualModelDiagramPool().getORefList().getRefForType(ConceptualModelDiagram.getObjectType());
-			ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(loadedProject, conceptualModelRef);
+			assertEquals("didn't add diagram factors to pool?", 3, loadedProject.getDiagramFactorPool().size());
+			assertEquals("too man conceptual models in pool?", 1, loadedProject.getConceptualModelDiagramPool().size());
+			
 			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
 			assertEquals("didn't populate diagram?", 3, conceptualModel.getAllDiagramFactorRefs().size());
 			assertEquals("didn't preserve next node id?", memorizedHighestId, loadedProject.getNodeIdAssigner().getHighestAssignedId());
