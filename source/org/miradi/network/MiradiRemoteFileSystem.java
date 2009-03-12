@@ -29,11 +29,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
-public class MiradiRemoteFileSystem implements MiradiFileSystem
+public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 {
 	public MiradiRemoteFileSystem()
 	{
@@ -135,20 +136,6 @@ public class MiradiRemoteFileSystem implements MiradiFileSystem
 		return get.getResultData();
 	}
 	
-	public void writeFile(String projectName, File file, String contents) throws Exception
-	{
-		HttpTransaction post = HttpPost.writeFile(serverURL, projectName, file, contents);
-		if(post.getResultCode() != HTTP_SUCCESS)
-			throw new IOException(post.getResultMessage());
-	}
-	
-	public void deleteFile(String projectName, File file) throws Exception
-	{
-		HttpTransaction delete = HttpDelete.deleteFile(serverURL, projectName, file);
-		if(delete.getResultCode() != HTTP_SUCCESS)
-			throw new IOException(delete.getResultMessage());
-	}
-	
 	public Map<Integer, String> readAllManifestFiles(String projectName) throws Exception
 	{
 		HashMap map = new HashMap();
@@ -171,12 +158,76 @@ public class MiradiRemoteFileSystem implements MiradiFileSystem
 		return map;
 	}
 
+	public Map<File, String> readMultipleFiles(String projectName, Vector<File> filePathSet) throws Exception
+	{
+		HashMap<File, String> map = new HashMap<File, String>();
+		
+		StringBuffer files = new StringBuffer();
+		for(File file : filePathSet)
+		{
+			if(files.length() != 0)
+				files.append(",");
+			files.append(file.getPath());
+		}
+		HttpTransaction get = new HttpGet(serverURL, projectName, new String[] {"files=" + files});
+		if(get.getResultCode() != HTTP_SUCCESS)
+			throw new IOException(get.getResultMessage());
+		String results = get.getResultData();
 
+		UnicodeStringReader reader = new UnicodeStringReader(results);
+		while(true)
+		{
+			String path = reader.readLine();
+			if(path == null)
+				break;
+			if(path.length() == 0)
+				continue;
+			StringBuffer contents = new StringBuffer();
+			while(true)
+			{
+				String line = reader.readLine();
+				if(line == null || line.length() == 0)
+					break;
+				contents.append(line);
+				contents.append("\n");
+			}
+			map.put(new File(path), contents.toString());
+		}
+		return map;
+		
+	}
+
+	public void writeFile(String projectName, File file, String contents) throws Exception
+	{
+		if(wasWriteHandledByTransaction(projectName, file, contents))
+			return;
+		
+		HttpTransaction post = HttpPost.writeFile(serverURL, projectName, file, contents);
+		if(post.getResultCode() != HTTP_SUCCESS)
+			throw new IOException(post.getResultMessage());
+	}
+	
+	public void writeMultipleFiles(String projectName, HashMap<File, String> fileContentsMap) throws Exception
+	{
+		HttpPost post = HttpPost.writeMultiple(serverURL, projectName, fileContentsMap);
+		if(post.getResultCode() != HTTP_SUCCESS)
+			throw new IOException(post.getResultMessage());
+	}
+
+	public void deleteFile(String projectName, File file) throws Exception
+	{
+		if(wasDeleteHandledByTransaction(projectName, file))
+			return;
+		
+		HttpTransaction delete = HttpDelete.deleteFile(serverURL, projectName, file);
+		if(delete.getResultCode() != HTTP_SUCCESS)
+			throw new IOException(delete.getResultMessage());
+	}
+	
 	private static final int HTTP_SUCCESS = 200;
 	private static final String EXISTS = "Exists";
 	private static final String MANIFESTS = "Manifests";
 	private static final String LOCK_FILE_NAME = "/lock";
 
 	private URL serverURL;
-
 }

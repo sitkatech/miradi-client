@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.network;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 public interface MiradiFileSystem
 {
@@ -35,9 +37,13 @@ public interface MiradiFileSystem
 	public abstract void unlockProject(String projectName) throws Exception;
 
 	public abstract boolean doesFileExist(String projectName, File file) throws Exception;
-	public abstract String readFile(String projectName, File file) throws Exception;
-	public abstract void writeFile(String projectName, File file, String contents) throws Exception;
-	public abstract void deleteFile(String projectName, File file) throws Exception;
 	public abstract Map<Integer, String> readAllManifestFiles(String projectName) throws Exception;
+	public abstract Map<File, String> readMultipleFiles(String projectName, Vector<File> filePathSet) throws Exception;
+	public abstract String readFile(String projectName, File file) throws Exception;
 
+	public abstract void beginTransaction(String projectName) throws Exception;
+	public abstract void endTransaction() throws Exception;
+	public abstract void writeFile(String projectName, File file, String contents) throws Exception;
+	public abstract void writeMultipleFiles(String projectName, HashMap<File, String> pendingWrites) throws Exception;
+	public abstract void deleteFile(String projectName, File file) throws Exception;
 }

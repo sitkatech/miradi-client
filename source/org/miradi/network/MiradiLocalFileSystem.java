@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
 import java.nio.channels.OverlappingFileLockException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
@@ -31,7 +32,7 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
-public class MiradiLocalFileSystem implements MiradiFileSystem
+public class MiradiLocalFileSystem extends MiradiFileSystemWithTransactions
 {
 	public MiradiLocalFileSystem()
 	{
@@ -112,27 +113,6 @@ public class MiradiLocalFileSystem implements MiradiFileSystem
 		return contents;
 	}
 
-	public void writeFile(String projectName, File file, String contents)
-			throws Exception
-	{
-		if(!doesProjectDirectoryExist(projectName))
-			throw new FileNotFoundException();
-		
-		File path = filePath(projectName, file);
-		path.getParentFile().mkdirs();
-		UnicodeWriter writer = new UnicodeWriter(path);
-		writer.write(contents);
-		writer.close();
-	}
-	
-	public void deleteFile(String projectName, File file) throws Exception
-	{
-		File path = filePath(projectName, file);
-		if(!path.exists())
-			throw new FileNotFoundException();
-		path.delete();
-	}
-
 	public Map<Integer, String> readAllManifestFiles(String projectName) throws Exception
 	{
 		HashMap<Integer, String> map = new HashMap<Integer, String>();
@@ -165,6 +145,51 @@ public class MiradiLocalFileSystem implements MiradiFileSystem
 		return map;
 	}
 
+	public Map<File, String> readMultipleFiles(String projectName, Vector<File> filePathSet) throws Exception
+	{
+		HashMap<File, String> map = new HashMap<File, String>();
+		for(File filePath : filePathSet)
+		{
+			String contents = readFile(projectName, filePath);
+			map.put(filePath, contents);
+		}
+		return map;
+	}
+
+	public void writeFile(String projectName, File file, String contents)
+			throws Exception
+	{
+		if(wasWriteHandledByTransaction(projectName, file, contents))
+			return;
+		
+		if(!doesProjectDirectoryExist(projectName))
+			throw new FileNotFoundException();
+		
+		File path = filePath(projectName, file);
+		path.getParentFile().mkdirs();
+		UnicodeWriter writer = new UnicodeWriter(path);
+		writer.write(contents);
+		writer.close();
+	}
+	
+	public void writeMultipleFiles(String projectName, HashMap<File, String> fileContentsMap) throws Exception
+	{
+		for(File file : fileContentsMap.keySet())
+		{
+			writeFile(projectName, file, fileContentsMap.get(file));
+		}
+	}
+
+	public void deleteFile(String projectName, File file) throws Exception
+	{
+		if(wasDeleteHandledByTransaction(projectName, file))
+			return;
+		
+		File path = filePath(projectName, file);
+		if(!path.exists())
+			throw new FileNotFoundException();
+		path.delete();
+	}
 
 	private File projectPath(String projectName)
 	{

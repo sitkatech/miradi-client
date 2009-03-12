@@ -433,20 +433,15 @@ public class ObjectManager
 	private void loadPool(int type, ObjectManifest manifest) throws IOException, ParseException, Exception
 	{
 		BaseId[] ids = manifest.getAllKeys();
-		for(int i = 0; i < ids.length; ++i)
+		HashMap<Integer, BaseObject> map = getDatabase().readObjects(this, type, ids);
+		for(int id : map.keySet())
 		{
-			BaseId id = ids[i];
-			if(id.isInvalid())
+			if(id == BaseId.INVALID.asInt())
 			{
-				EAM.logWarning("Ignoring invalid id of type " + type);
+				EAM.logWarning("loadPool skipping invalid id in " + type);
 				continue;
 			}
-
-			BaseObject object = getDatabase().readObject(this, type, id);
-			if (object.getType() != type)
-				continue;
-			
-			getPool(type).put(object.getId(), object);
+			getPool(type).put(new BaseId(id), map.get(id));
 		}
 	}
 

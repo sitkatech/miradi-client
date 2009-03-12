@@ -25,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
+import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
@@ -72,11 +73,12 @@ public class TestMiradiFileSystem extends EAMTestCase
 			verifyOperationsOnNonExistantProject();
 			verifyGetManifests();
 			verifyReadMultipleFiles();
+			verifyTransactions();
 			verifyDotDot();
 		}
 	}
 	
-	public void verifyBasics() throws Exception
+	private void verifyBasics() throws Exception
 	{
 		String projectName = "TestingBasics";
 		File file = new File("/testfile");
@@ -264,11 +266,101 @@ public class TestMiradiFileSystem extends EAMTestCase
 
 	private void verifyReadMultipleFiles() throws Exception
 	{
-//		fail("Test not implemented yet");
+		String projectName = "TestingReadMultiple";
+		File directoryWithObjects1 = new File("json/objects-1");
+		File directoryWithObjects17 = new File("json/objects-17");
+
+		String name1 = "1";
+		String contents1 = "first file\n";
+		String name2 = "2";
+		String contents2 = "second file\n";
+		String name3 = "3";
+		String contents3 = "this is the\nthird file\n";
+
+		File object1 = new File(directoryWithObjects1, name1);
+		File object2 = new File(directoryWithObjects17, name2);
+		File object3 = new File(directoryWithObjects17, name3);
 		
-		// create 3 files
-		// read 2 of them
+		if(currentFilingSystem.doesProjectDirectoryExist(projectName))
+			currentFilingSystem.deleteProject(projectName);
+		currentFilingSystem.createProject(projectName);
+		try
+		{
+			currentFilingSystem.writeFile(projectName, object1, contents1);
+			currentFilingSystem.writeFile(projectName, object2, contents2);
+			currentFilingSystem.writeFile(projectName, object3, contents3);
+			
+			Vector<File> filePathSet = new Vector<File>();
+			filePathSet.add(object1);
+			filePathSet.add(object2);
+			filePathSet.add(object3);
+			
+			Map<File, String> data = currentFilingSystem.readMultipleFiles(projectName, filePathSet);
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), 3, data.size());
+			assertContains(object1, data.keySet());
+			assertContains(object2, data.keySet());
+			assertContains(object3, data.keySet());
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), contents1, data.get(object1));
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), contents2, data.get(object2));
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), contents3, data.get(object3));
+		}
+		finally
+		{
+			currentFilingSystem.deleteProject(projectName);
+		}
+	}
+
+	private void verifyTransactions() throws Exception
+	{
+		String projectName = "TestingTransactions";
+		File file1 = new File("/json/objects-1/1");
+		File file2 = new File("/json/objects-2/2");
+		File file3 = new File("/json/objects-3/3");
 		
+		String contents1 = "This is file 1\n";
+		String contents2 = "This is file 2\n";
+		String contents3 = "This file will be deleted";
+
+		if(currentFilingSystem.doesProjectDirectoryExist(projectName))
+			currentFilingSystem.deleteProject(projectName);
+		currentFilingSystem.createProject(projectName);
+		try
+		{
+			currentFilingSystem.writeFile(projectName, file1, contents1);
+
+			currentFilingSystem.beginTransaction(projectName);
+			currentFilingSystem.writeFile(projectName, file2, "Bogus will be overwritten");
+			currentFilingSystem.writeFile(projectName, file2, contents2);
+			currentFilingSystem.writeFile(projectName, file3, contents3);
+			currentFilingSystem.deleteFile(projectName, file3);
+			try
+			{
+				currentFilingSystem.deleteFile("OtherProjectName", file1);
+				fail("Should have thrown for deleting from wrong project in transaction");
+			}
+			catch(Exception ignoreExpected)
+			{
+			}
+			try
+			{
+				currentFilingSystem.writeFile("OtherProjectName", file1, contents1);
+				fail("Should have thrown for writing to wrong project in transaction");
+			}
+			catch(Exception ignoreExpected)
+			{
+			}
+			currentFilingSystem.endTransaction();
+			
+			assertTrue(currentFilingSystem.getClass().getSimpleName(), currentFilingSystem.doesFileExist(projectName, file1));
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), contents1, currentFilingSystem.readFile(projectName, file1));
+			assertTrue(currentFilingSystem.getClass().getSimpleName(), currentFilingSystem.doesFileExist(projectName, file2));
+			assertEquals(currentFilingSystem.getClass().getSimpleName(), contents2, currentFilingSystem.readFile(projectName, file2));
+			assertFalse(currentFilingSystem.getClass().getSimpleName(), currentFilingSystem.doesFileExist(projectName, file3));
+		}
+		finally
+		{
+			currentFilingSystem.deleteProject(projectName);
+		}
 	}
 
 	private void verifyDotDot()
