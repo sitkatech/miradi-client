@@ -351,6 +351,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		}
 	}
 
+	//TODO see why the code below was commentd out and possibly remove.  
 	private static DiagramFactor createTarget(ProjectForTesting projectToUse) throws Exception
 	{
 		DiagramFactor targetDiagramFactor = projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
