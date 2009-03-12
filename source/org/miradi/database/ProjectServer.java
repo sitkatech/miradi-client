@@ -25,7 +25,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
 import org.json.JSONObject;
 import org.miradi.ids.BaseId;
@@ -44,6 +46,16 @@ public class ProjectServer
 {
 	public ProjectServer() throws IOException
 	{
+	}
+
+	public void beginTransaction() throws Exception
+	{
+		currentFileSystem.beginTransaction(getCurrentProjectName());
+	}
+
+	public void endTransaction() throws Exception
+	{
+		currentFileSystem.endTransaction();
 	}
 
 	public void close() throws Exception
@@ -146,6 +158,27 @@ public class ProjectServer
 	{
 		EnhancedJsonObject json = readJsonObjectFile(getCurrentProjectName(), type, id);
 		return BaseObject.createFromJson(objectManager, type, json);
+	}
+	
+	public HashMap<Integer, BaseObject> readObjects(ObjectManager objectManager, int type, BaseId[] ids) throws Exception
+	{
+		HashMap<Integer, BaseObject> idObjectMap = new HashMap<Integer, BaseObject>();
+		if(ids.length == 0)
+			return idObjectMap;
+		
+		Vector<File> filePaths = new Vector<File>();
+		for(BaseId id : ids)
+			filePaths.add(getRelativeObjectFile(type, id));
+
+		Map<File, String> fileContentsMap = currentFileSystem.readMultipleFiles(getCurrentProjectName(), filePaths);
+		for(File file : fileContentsMap.keySet())
+		{
+			int id = Integer.parseInt(file.getName());
+			EnhancedJsonObject json = new EnhancedJsonObject(fileContentsMap.get(file));
+			BaseObject object = BaseObject.createFromJson(objectManager, type, json);
+			idObjectMap.put(id, object);
+		}
+		return idObjectMap;
 	}
 
 	public ObjectManifest readObjectManifest(int type) throws Exception

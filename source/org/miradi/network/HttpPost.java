@@ -26,6 +26,7 @@ import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Map;
 
 import org.martus.util.UnicodeWriter;
 
@@ -38,6 +39,26 @@ class HttpPost extends HttpTransaction
 		String encoded = URLEncoder.encode(data, "UTF-8");
 		writer.write("data=" + encoded);
 		writer.close();
+		post.performRequest(post.connection);
+		return post;
+	}
+	
+	public static HttpPost writeMultiple(URL serverURL, String projectName, Map<File, String> fileContentsMap) throws Exception
+	{
+		StringBuffer data = new StringBuffer();
+		for(File file : fileContentsMap.keySet())
+		{
+			data.append("File." + URLEncoder.encode(file.getPath(), "UTF-8"));
+			data.append(URLEncoder.encode("=", "UTF-8"));
+			data.append(URLEncoder.encode(fileContentsMap.get(file), "UTF-8"));
+			data.append("&");
+		}
+		
+		HttpPost post = new HttpPost(serverURL, projectName, null, new String[] {WRITE_MULTIPLE});
+		UnicodeWriter writer = new UnicodeWriter(post.connection.getOutputStream());
+		writer.write(data.toString());
+		writer.close();
+		
 		post.performRequest(post.connection);
 		return post;
 	}
@@ -85,6 +106,7 @@ class HttpPost extends HttpTransaction
 
 	private static final String CREATE_PROJECT = "CreateProject";
 	private static final String LOCK = "Lock";
+	private static final String WRITE_MULTIPLE = "WriteMultiple=true";
 	
 	private HttpURLConnection connection;
 

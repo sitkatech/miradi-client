@@ -341,6 +341,7 @@ public class TestCommands extends EAMTestCase
 
 	public void testEndTransaction() throws Exception
 	{
+		project.executeCommand(new CommandBeginTransaction());
 		CommandEndTransaction cmd = new CommandEndTransaction();
 		assertTrue(cmd.isEndTransaction());
 		assertFalse(cmd.isBeginTransaction());

@@ -1184,12 +1184,30 @@ public class Project
 	{
 		if(inTransaction)
 			throw new CommandFailedException("Attempted to nest transactions");
+		try
+		{
+			getDatabase().beginTransaction();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException("Unable to initiate transaction");
+		}
 		inTransaction = true;
 	}
 	
-	public void endTransaction()
+	public void endTransaction() throws CommandFailedException
 	{
 		inTransaction = false;
+		try
+		{
+			getDatabase().endTransaction();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new CommandFailedException("Unable to complete transaction");
+		}
 	}
 	
 	public boolean isInTransaction()
