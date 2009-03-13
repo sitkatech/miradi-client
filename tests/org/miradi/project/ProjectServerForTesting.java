@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import java.io.File;
-import java.io.IOException;
 
 import org.martus.util.DirectoryUtils;
 import org.miradi.database.ProjectServer;
@@ -29,7 +28,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 
 public class ProjectServerForTesting extends ProjectServer
 {
-	public ProjectServerForTesting() throws IOException
+	public ProjectServerForTesting() throws Exception
 	{
 		super();
 	}

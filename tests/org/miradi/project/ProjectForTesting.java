@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
-import java.io.File;
-
-import org.martus.util.DirectoryUtils;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -106,11 +103,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		super(server);
 		Translation.initialize();
 		
-		tempDataDirectory = File.createTempFile("$$$" + testName, null);
-		tempDataDirectory.deleteOnExit();
-		tempDataDirectory.delete();
-		tempDataDirectory.mkdir();
-		getDatabase().setLocalDataLocation(tempDataDirectory);
+		getDatabase().setMemoryDataLocation("Memory");
 		getDatabase().createProject(testName);
 		finishOpening();
 	}
@@ -119,7 +112,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void close() throws Exception
 	{
 		super.close();
-		DirectoryUtils.deleteEntireDirectoryTree(tempDataDirectory);
 	}
 	
 	public void fillGeneralProjectData() throws Exception
@@ -986,6 +978,4 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public static final String PROJECT_RESOURCE_LABEL_TEXT = "John Doe";
 	public static final String SIMPLE_THREAT_RATING_COMMENT = "sample simple threat rating comment";
 	public static final String STRESS_BASED_THREAT_RATING_COMMENT = "sample stress based threat rating comment";
-	
-	private File tempDataDirectory;
 }
