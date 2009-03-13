@@ -37,7 +37,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 	{
 		super(name);
 	}
-	
+
 	@Override
 	public void setUp() throws Exception
 	{
@@ -47,10 +47,14 @@ public class TestMiradiFileSystem extends EAMTestCase
 		remoteFileSystem.setDataLocation(SERVER_URL_STRING);
 		localFileSystem = new MiradiLocalFileSystem();
 		localFileSystem.setDataLocation(tempDirectory.getAbsolutePath());
+		memoryFileSystem = new MiradiMemoryFileSystem();
+		memoryFileSystem.setDataLocation(getName());
+		assertEquals(getName(), memoryFileSystem.getDataLocation());
 		
 		filingSystems = new MiradiFileSystem[] {
 				localFileSystem,
 				remoteFileSystem,
+				memoryFileSystem,
 		};
 	}
 	
@@ -463,6 +467,8 @@ public class TestMiradiFileSystem extends EAMTestCase
 
 	private MiradiLocalFileSystem localFileSystem;
 	private MiradiRemoteFileSystem remoteFileSystem;
+	private MiradiMemoryFileSystem memoryFileSystem;
+	
 	private MiradiFileSystem[] filingSystems;
 	private MiradiFileSystem currentFilingSystem;
 	private File tempDirectory;

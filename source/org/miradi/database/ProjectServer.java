@@ -34,6 +34,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.network.MiradiFileSystem;
 import org.miradi.network.MiradiLocalFileSystem;
+import org.miradi.network.MiradiMemoryFileSystem;
 import org.miradi.network.MiradiRemoteFileSystem;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
@@ -84,6 +85,13 @@ public class ProjectServer
 		MiradiRemoteFileSystem remoteFileSystem = new MiradiRemoteFileSystem();
 		remoteFileSystem.setDataLocation(remoteLocation);
 		currentFileSystem = remoteFileSystem;
+	}
+	
+	public void setMemoryDataLocation(String memoryLocation) throws Exception
+	{
+		MiradiMemoryFileSystem memoryFileSystem = new MiradiMemoryFileSystem();
+		memoryFileSystem.setDataLocation(memoryLocation);
+		currentFileSystem = memoryFileSystem;
 	}
 
 	public void createProject(String projectName) throws Exception

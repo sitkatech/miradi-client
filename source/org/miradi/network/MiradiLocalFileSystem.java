@@ -33,7 +33,7 @@ import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
 
-public class MiradiLocalFileSystem extends MiradiFileSystemWithTransactions
+public class MiradiLocalFileSystem extends AbstractNonRemoteMiradiFileSystem
 {
 	public MiradiLocalFileSystem()
 	{
@@ -134,13 +134,10 @@ public class MiradiLocalFileSystem extends MiradiFileSystemWithTransactions
 			if(!absoluteManifestFile.exists())
 				continue;
 			
-			final String PREFIX = "objects-";
-			final int PREFIX_LENGTH = PREFIX.length();
-			if(!name.startsWith(PREFIX))
+			if(!isObjectDirectory(file))
 				continue;
-			int type = Integer.parseInt(name.substring(PREFIX_LENGTH));
 			String contents = readFile(projectName, relativeManifestFile);
-			map.put(type, contents);
+			map.put(getTypeOfObjectDirectory(file), contents);
 		}
 		
 		return map;
