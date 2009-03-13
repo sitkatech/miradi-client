@@ -19,8 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.util.HashSet;
+import java.util.Vector;
+
+import org.miradi.commands.Command;
+import org.miradi.commands.CommandCreateObject;
+import org.miradi.commands.CommandDeleteObject;
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.EAM;
+import org.miradi.objects.Cause;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
@@ -39,36 +49,162 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		getProject().removeCommandExecutedListener(this);
 	}
 	
-	public void createOrDeleteThreatStressRatingsAsNeeded()
+	public void createOrDeleteThreatStressRatingsAsNeeded() throws Exception
 	{
+		HashSet<ThreatStressHolder> createdThreatStressHolders = new HashSet();
+		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
 		ORefList allTargetRefs = getProject().getTargetPool().getRefList();
 		for (int index = 0; index < allTargetRefs.size(); ++index)
 		{
 			Target target = Target.find(getProject(), allTargetRefs.get(index));
-			ORefList stressRefs = target.getStressRefs();
-			findReferringThreatStressRatingRefs(stressRefs);
+			ORefSet upstreamThreatRefs = chainObject.getUpstreamThreatRefsFromTarget(target);
+			ORefSet stressRefs = new ORefSet(target.getStressRefs());
+			createdThreatStressHolders.addAll(createThreatStressHolders(upstreamThreatRefs, stressRefs));			
 		}
+		
+		createOrDeleteThreatStressRatingsAsNeeded(createdThreatStressHolders);
 	}
 
-	private void findReferringThreatStressRatingRefs(ORefList stressRefs)
+	private void createOrDeleteThreatStressRatingsAsNeeded(HashSet<ThreatStressHolder> createdThreatStressHolders) throws Exception
 	{
-		ORefSet referringThreatStressRatingRefs = new ORefSet();
-		for (int index = 0; index < stressRefs.size(); ++index)
+		getProject().endCommandSideEffectMode();
+		try
 		{
-			Stress stress = Stress.find(getProject(), stressRefs.get(index));
-			ORefList referrerRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-			referringThreatStressRatingRefs.addAllRefs(referrerRefs);		
+			ORefSet allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefSet();
+			HashSet<ThreatStressHolder> existingThreatStressHolders = createThreatStressHolders(allThreatStressRatingRefs);
+			if (createdThreatStressHolders.size() > existingThreatStressHolders.size())
+				createThreatStressRatings(createdThreatStressHolders, existingThreatStressHolders);
+
+			if (createdThreatStressHolders.size() < existingThreatStressHolders.size())
+				deleteThreatStressRatings(createdThreatStressHolders, existingThreatStressHolders);
+		}
+		finally
+		{
+			getProject().beginCommandSideEffectMode();
 		}
 	}
 
+	private void createThreatStressRatings(HashSet<ThreatStressHolder> createdThreatStressHolders, HashSet<ThreatStressHolder> existingThreatStressHolders) throws Exception
+	{
+		createdThreatStressHolders.removeAll(existingThreatStressHolders);
+		for(ThreatStressHolder threatStressHolder : createdThreatStressHolders)
+		{
+			ORef stressRef = threatStressHolder.getStressRef();
+			ORef threatRef = threatStressHolder.getThreatRef();
+			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
+			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
+			getProject().executeCommand(createThreatStressRatingCommand);
+		}
+	}
+	
+	private void deleteThreatStressRatings(HashSet<ThreatStressHolder> createdThreatStressHolders, HashSet<ThreatStressHolder> existingThreatStressHolders) throws Exception
+	{
+		existingThreatStressHolders.removeAll(createdThreatStressHolders);
+		for(ThreatStressHolder threatStressHolder : existingThreatStressHolders)
+		{		
+			ORef threatStressRatingToDelete = threatStressHolder.findMatchingThreatStressRating();
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingToDelete);
+			deleteThreatStressRating(threatStressRating);
+		}
+	}
+
+	private HashSet<ThreatStressHolder> createThreatStressHolders(ORefSet threatStressRatingRefs)
+	{
+		HashSet<ThreatStressHolder> threatStressHolders = new HashSet();
+		for(ORef threatStressRatingRef : threatStressRatingRefs)
+		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
+			threatStressHolders.add(new ThreatStressHolder(threatStressRating));
+		}
+		
+		return threatStressHolders;
+	}
+	
+	private HashSet<ThreatStressHolder> createThreatStressHolders(ORefSet threatRefs, ORefSet stressRefs)
+	{
+		HashSet<ThreatStressHolder> threatStressHolders = new HashSet();
+		for(ORef threatRef : threatRefs)
+		{
+			for(ORef stressRef : stressRefs)
+			{
+				threatStressHolders.add(new ThreatStressHolder(threatRef, stressRef));
+			}
+		}
+		
+		return threatStressHolders;
+	}
+
+	private void deleteThreatStressRating(ThreatStressRating threatStressRating) throws Exception
+	{
+		Vector<Command> commansToDeleteThreatStressRating = new Vector();
+		commansToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
+		commansToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
+
+		getProject().executeCommandsWithoutTransaction(commansToDeleteThreatStressRating);
+	}
+	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		createOrDeleteThreatStressRatingsAsNeeded();
+		try
+		{
+			//FIXME need to add other types and create events here
+			if (event.isDeleteCommandForThisType(FactorLink.getObjectType()))
+				createOrDeleteThreatStressRatingsAsNeeded();
+			if (event.isCreateCommandForThisType(FactorLink.getObjectType()))
+				createOrDeleteThreatStressRatingsAsNeeded();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
 	
 	public Project getProject()
 	{
 		return project;
+	}
+	
+	class ThreatStressHolder 
+	{		
+		public ThreatStressHolder(ThreatStressRating threatStressRating)
+		{
+			this(threatStressRating.getThreatRef(), threatStressRating.getStressRef());
+		}
+
+		public ThreatStressHolder(ORef threatRefToUse, ORef stressRefToUse)
+		{
+			threatRefToUse.ensureType(Cause.getObjectType());
+			stressRefToUse.ensureType(Stress.getObjectType());
+			
+			threatRef = threatRefToUse;
+			stressRef = stressRefToUse;
+		}
+		
+		public ORef findMatchingThreatStressRating()
+		{
+			Stress stress = Stress.find(getProject(), getStressRef());
+			ORefList tsrReferrerRefsToStress = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+			
+			Cause threat = Cause.find(getProject(), getThreatRef());
+			ORefList tsrReferrerRefsToThreat = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+			
+			tsrReferrerRefsToStress.removeAll(tsrReferrerRefsToThreat);
+			
+			return tsrReferrerRefsToStress.getRefForType(ThreatStressRating.getObjectType());
+		}
+		
+		public ORef getThreatRef()
+		{
+			return threatRef;
+		}
+		
+		public ORef getStressRef()
+		{
+			return stressRef;
+		}
+		
+		private ORef threatRef;
+		private ORef stressRef;
 	}
 	
 	private Project project;
