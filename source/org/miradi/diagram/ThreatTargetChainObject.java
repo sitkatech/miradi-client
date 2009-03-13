@@ -21,11 +21,8 @@ package org.miradi.diagram;
 
 import java.util.HashSet;
 
-import org.miradi.objecthelpers.FactorSet;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
@@ -39,27 +36,26 @@ public class ThreatTargetChainObject
 		project = projectToUse;
 	}
 	
-	private void initializeChain(DiagramObject diagram, DiagramFactor diagramFactor)
+	private void initializeChain(Factor startingFactorToUse)
 	{
-		diagramObject = diagram;
-		setStartingFactor(diagramFactor);
+		setStartingFactor(startingFactorToUse);
 		resultingThreats = new HashSet();
 		resultingTargets = new HashSet();
 		processedLinks = new HashSet();
 	}
 	
-	public HashSet<DiagramFactor> getUpstreamThreatsFromTarget(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	public HashSet<Factor> getUpstreamThreatsFromTarget(Factor startingFacorToUse)
 	{
-		initializeChain(diagramObjectToUse, diagramFactor);
+		initializeChain(startingFacorToUse);
 		buildUpstreamChain();
-		return getDiagramFactors(resultingThreats);
+		return resultingThreats;
 	}
 	
-	public HashSet<DiagramFactor> getDownstreamTargetsFromThreat(DiagramObject diagramObjectToUse, DiagramFactor diagramFactor)
+	public HashSet<Factor> getDownstreamTargetsFromThreat(Factor startingFactorToUse)
 	{
-		initializeChain(diagramObjectToUse, diagramFactor);
+		initializeChain(startingFactorToUse);
 		buildDownstreamChain();
-		return getDiagramFactors(resultingTargets);
+		return resultingTargets;
 	}
 	
 	private void buildChain(int direction)
@@ -68,8 +64,8 @@ public class ThreatTargetChainObject
 		HashSet<Factor> unprocessedFactors = new HashSet();
 		linkedFactors.add(getStartingFactor());
 		
-		ORefList allDiagramLinkRefs = diagramObject.getAllDiagramLinkRefs();
-		unprocessedFactors.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, getStartingFactor()));
+		ORefList allFactorLinkRefs = getProject().getFactorLinkPool().getRefList();
+		unprocessedFactors.addAll(getFactorsToProcess(direction, allFactorLinkRefs, getStartingFactor()));
 		
 		while(unprocessedFactors.size() > 0)
 		{
@@ -77,18 +73,18 @@ public class ThreatTargetChainObject
 			if (!linkedFactors.contains(factorToProcess))
 			{
 				linkedFactors.add(factorToProcess);
-				unprocessedFactors.addAll(getFactorsToProcess(direction, allDiagramLinkRefs, factorToProcess));
+				unprocessedFactors.addAll(getFactorsToProcess(direction, allFactorLinkRefs, factorToProcess));
 			}
 			unprocessedFactors.remove(factorToProcess);
 		}
 	}
 
-	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allDiagramLinkRefs, Factor factorToProcess)
+	private HashSet<Factor> getFactorsToProcess(int direction, ORefList allFactorLinkRefs, Factor factorToProcess)
 	{
 		HashSet<Factor> unprocessedFactors = new HashSet();
-		for(int i = 0; i < allDiagramLinkRefs.size(); ++i)
+		for(int i = 0; i < allFactorLinkRefs.size(); ++i)
 		{
-			DiagramLink link = (DiagramLink)getProject().findObject(allDiagramLinkRefs.get(i));
+			FactorLink link = FactorLink.find(getProject(), allFactorLinkRefs.get(i));
 			Factor thisFactorToProcess = processLink(factorToProcess, link, direction);
 			if (thisFactorToProcess == null)
 			{
@@ -116,48 +112,25 @@ public class ThreatTargetChainObject
 		return unprocessedFactors;
 	}
 
-	private Factor processLink(Factor thisFactor, DiagramLink diagramLink, int direction)
+	private Factor processLink(Factor thisFactor, FactorLink factorLink, int direction)
 	{
-		if(diagramLink.getDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
+		ORef factorRef = factorLink.getFactorRef(direction);
+		ORef oppositeFactorRef = factorLink.getOppositeFactorRef(direction);
+		if(factorRef.equals(thisFactor.getRef()))
 		{
-			processedLinks.add(diagramLink);	
-			Factor wrappedFactor = diagramLink.getOppositeDiagramFactor(direction).getWrappedFactor();
-			return wrappedFactor;
+			processedLinks.add(factorLink);	
+			return Factor.findFactor(getProject(), oppositeFactorRef);
 		}
 		
-		if (diagramLink.isBidirectional() && diagramLink.getOppositeDiagramFactor(direction).getWrappedORef().equals(thisFactor.getRef()))
+		if (factorLink.isBidirectional() && oppositeFactorRef.equals(thisFactor.getRef()))
 		{
-			processedLinks.add(diagramLink);
-			return diagramLink.getDiagramFactor(direction).getWrappedFactor();
+			processedLinks.add(factorLink);
+			return Factor.findFactor(getProject(), factorRef);
 		}
 		
 		return null;
 	}
 	
-	private FactorSet getFactors(HashSet<Factor> factors)
-	{
-		FactorSet factorSet = new FactorSet();
-		for(Factor factor : factors)
-		{
-			factorSet.attemptToAdd(factor);
-		}
-		return factorSet;
-	}
-	
-	private HashSet<DiagramFactor> getDiagramFactors(HashSet<Factor> factors)
-	{
-		HashSet<DiagramFactor> diagramFactors = new HashSet();
- 		FactorSet processedFactors = getFactors(factors);
- 		for(Factor factor : processedFactors)
-		{
-			DiagramFactor diagramFactor = diagramObject.getDiagramFactor(factor.getRef());
-			diagramFactors.add(diagramFactor);
-		}
- 		
- 		return diagramFactors;
- 		
-	}
-
 	private void  buildUpstreamChain()
 	{
 		buildChain(FactorLink.TO);
@@ -168,14 +141,14 @@ public class ThreatTargetChainObject
 		buildChain(FactorLink.FROM);
 	}
 	
-	private void setStartingFactor(DiagramFactor startingFactorToUse)
+	private void setStartingFactor(Factor startingFactorToUse)
 	{
 		startingFactor = startingFactorToUse;
 	}
 
 	private Factor getStartingFactor()
 	{
-		return startingFactor.getWrappedFactor();
+		return startingFactor;
 	}
 	
 	private Project getProject()
@@ -183,10 +156,9 @@ public class ThreatTargetChainObject
 		return project;
 	}
 	
-	private DiagramObject diagramObject;
 	private HashSet<Factor> resultingThreats;
 	private HashSet<Factor> resultingTargets;
-	private HashSet<DiagramLink> processedLinks;
-	private DiagramFactor startingFactor;
+	private HashSet<FactorLink> processedLinks;
+	private Factor startingFactor;
 	private Project project;
 }

@@ -55,16 +55,16 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		
 		
 		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
-		HashSet<DiagramFactor> upstreamThreats1 = chainObject.getUpstreamThreatsFromTarget(getProject().getTestingDiagramObject(), target1);
+		HashSet<Factor> upstreamThreats1 = chainObject.getUpstreamThreatsFromTarget(target1.getWrappedFactor());
 		assertEquals("wrong threat count?", 2, upstreamThreats1.size());
-		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause2));
-		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause1));
+		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause2.getWrappedFactor()));
+		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause1.getWrappedFactor()));
 		
-		HashSet<DiagramFactor> upstreamThreats3 = chainObject.getUpstreamThreatsFromTarget(getProject().getTestingDiagramObject(), target2);
+		HashSet<Factor> upstreamThreats3 = chainObject.getUpstreamThreatsFromTarget(target2.getWrappedFactor());
 		assertEquals("wrong threat count?", 1, upstreamThreats3.size());
-		assertTrue("wrong threat in list?", upstreamThreats3.contains(cause2));
+		assertTrue("wrong threat in list?", upstreamThreats3.contains(cause2.getWrappedFactor()));
 		
-		HashSet<DiagramFactor> upstreamTargets = chainObject.getDownstreamTargetsFromThreat(getProject().getTestingDiagramObject(), cause1);
+		HashSet<Factor> upstreamTargets = chainObject.getDownstreamTargetsFromThreat(cause1.getWrappedFactor());
 		assertEquals("wrong upstream target count?", 2, upstreamTargets.size());
 	}
 }
