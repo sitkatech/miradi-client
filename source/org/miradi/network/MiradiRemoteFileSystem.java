@@ -209,6 +209,9 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public void writeMultipleFiles(String projectName, HashMap<File, String> fileContentsMap) throws Exception
 	{
+		if(fileContentsMap.size() == 0)
+			return;
+		
 		HttpPost post = HttpPost.writeMultiple(serverURL, projectName, fileContentsMap);
 		if(post.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(post.getResultMessage());
@@ -226,6 +229,9 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 	
 	public void deleteMultipleFiles(String projectName, HashSet<File> filesToDelete) throws Exception
 	{
+		if(filesToDelete.size() == 0)
+			return;
+		
 		HttpTransaction delete = HttpDelete.deleteFiles(serverURL, projectName, filesToDelete);
 		if(delete.getResultCode() != HTTP_SUCCESS)
 			throw new IOException(delete.getResultMessage());

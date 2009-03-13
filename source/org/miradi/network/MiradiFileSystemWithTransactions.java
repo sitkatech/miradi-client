@@ -42,10 +42,19 @@ abstract public class MiradiFileSystemWithTransactions implements MiradiFileSyst
 			throw new Exception("RemoteFileSystem extra endTransaction");
 		String projectName = transactionProjectName;
 		transactionProjectName = null;
+		removeWritesOfFilesToBeDeleted();
 		performPendingWrites(projectName);
 		performPendingDeletes(projectName);
 	}
 	
+	private void removeWritesOfFilesToBeDeleted()
+	{
+		for(File fileToBeDeleted : pendingDeletes)
+		{
+			pendingWrites.remove(fileToBeDeleted);
+		}
+	}
+
 	protected boolean wasWriteHandledByTransaction(String projectName, File file, String contents) throws Exception
 	{
 		if(!isInTransaction())

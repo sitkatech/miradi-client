@@ -330,28 +330,30 @@ public class TestMiradiFileSystem extends EAMTestCase
 		{
 			currentFilingSystem.writeFile(projectName, file1, contents1);
 			currentFilingSystem.writeFile(projectName, file4, contents4);
+			currentFilingSystem.writeFile(projectName, file3, contents3);
 
 			currentFilingSystem.beginTransaction(projectName);
-			currentFilingSystem.writeFile(projectName, file2, "Bogus will be overwritten");
-			currentFilingSystem.writeFile(projectName, file2, contents2);
-			currentFilingSystem.writeFile(projectName, file3, contents3);
-			currentFilingSystem.deleteFile(projectName, file3);
-			currentFilingSystem.deleteFile(projectName, file4);
-			try
 			{
-				currentFilingSystem.deleteFile("OtherProjectName", file1);
-				fail("Should have thrown for deleting from wrong project in transaction");
-			}
-			catch(Exception ignoreExpected)
-			{
-			}
-			try
-			{
-				currentFilingSystem.writeFile("OtherProjectName", file1, contents1);
-				fail("Should have thrown for writing to wrong project in transaction");
-			}
-			catch(Exception ignoreExpected)
-			{
+				currentFilingSystem.writeFile(projectName, file2, "Bogus will be overwritten");
+				currentFilingSystem.writeFile(projectName, file2, contents2);
+				currentFilingSystem.deleteFile(projectName, file3);
+				currentFilingSystem.deleteFile(projectName, file4);
+				try
+				{
+					currentFilingSystem.deleteFile("OtherProjectName", file1);
+					fail("Should have thrown for deleting from wrong project in transaction");
+				}
+				catch(Exception ignoreExpected)
+				{
+				}
+				try
+				{
+					currentFilingSystem.writeFile("OtherProjectName", file1, contents1);
+					fail("Should have thrown for writing to wrong project in transaction");
+				}
+				catch(Exception ignoreExpected)
+				{
+				}
 			}
 			currentFilingSystem.endTransaction();
 			
