@@ -26,6 +26,7 @@ import java.util.Set;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 
 public class ObjectPool
 {
@@ -53,6 +54,11 @@ public class ObjectPool
 	public IdList getIdList()
 	{
 		return new IdList(objectType, getIds());
+	}
+	
+	public ORefSet getRefSet()
+	{
+		return new ORefSet(getRefList());
 	}
 	
 	public ORefList getRefList()

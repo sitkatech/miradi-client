@@ -23,6 +23,7 @@ import java.util.HashSet;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
@@ -44,9 +45,16 @@ public class ThreatTargetChainObject
 		processedLinks = new HashSet();
 	}
 	
-	public HashSet<Factor> getUpstreamThreatsFromTarget(Factor startingFacorToUse)
+	public ORefSet getUpstreamThreatRefsFromTarget(Factor startingFactorToUse)
 	{
-		initializeChain(startingFacorToUse);
+		HashSet<Factor> upstreamThreats = getUpstreamThreatsFromTarget(startingFactorToUse);
+		
+		return new ORefSet(upstreamThreats.toArray(new Factor[0]));
+	}
+	
+	public HashSet<Factor> getUpstreamThreatsFromTarget(Factor startingFactorToUse)
+	{
+		initializeChain(startingFactorToUse);
 		buildUpstreamChain();
 		return resultingThreats;
 	}

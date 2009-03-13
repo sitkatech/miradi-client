@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.Cause;
@@ -47,11 +48,18 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		ORefList threatStressRatingReferrerRefs1 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		assertEquals("wrong threat stress rating count?", 1, threatStressRatingReferrerRefs1.size());
 
-		getProject().addCommandExecutedListener(new ThreatStressRatingEnsurer(getProject()));
+		ThreatStressRatingEnsurer threatStressRatingEnsurer = new ThreatStressRatingEnsurer(getProject());
+		getProject().addCommandExecutedListener(threatStressRatingEnsurer);
 		CommandDeleteObject deleteFactorLinkCommand = new CommandDeleteObject(factorLink);
 		getProject().executeCommand(deleteFactorLinkCommand);
 		
-		//ORefList threatStressRatingReferrerRefs2 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-		//assertEquals("threat stress rating was not removed as a result of ?", 0, threatStressRatingReferrerRefs2.size());
+		ORefList threatStressRatingReferrerRefs2 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		assertEquals("threat stress rating was not removed as a result of factor link deletion?", 0, threatStressRatingReferrerRefs2.size());
+		
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
+		CommandCreateObject createFactorlLinkCommand = new CommandCreateObject(FactorLink.getObjectType(), extraInfo);
+		getProject().executeCommand(createFactorlLinkCommand);
+		ORefList threatStressRatingReferrerRefs3 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		assertEquals("threat stress rating was not created as a result of factor link creation?", 1, threatStressRatingReferrerRefs3.size());
 	}
 }
