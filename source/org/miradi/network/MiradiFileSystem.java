@@ -21,6 +21,7 @@ package org.miradi.network;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Vector;
 
@@ -46,4 +47,6 @@ public interface MiradiFileSystem
 	public abstract void writeFile(String projectName, File file, String contents) throws Exception;
 	public abstract void writeMultipleFiles(String projectName, HashMap<File, String> pendingWrites) throws Exception;
 	public abstract void deleteFile(String projectName, File file) throws Exception;
+	public abstract void deleteMultipleFiles(String projectName, HashSet<File> pendingDeletes) throws Exception;
+
 }

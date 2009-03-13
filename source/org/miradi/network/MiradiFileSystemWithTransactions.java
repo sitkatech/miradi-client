@@ -78,10 +78,7 @@ abstract public class MiradiFileSystemWithTransactions implements MiradiFileSyst
 
 	private void performPendingDeletes(String projectName) throws Exception
 	{
-		for(File file : pendingDeletes)
-		{
-			deleteFile(projectName, file);
-		}
+		deleteMultipleFiles(projectName, pendingDeletes);
 		pendingDeletes = null;
 	}
 

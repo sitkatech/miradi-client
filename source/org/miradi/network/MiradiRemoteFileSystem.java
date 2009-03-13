@@ -224,6 +224,13 @@ public class MiradiRemoteFileSystem extends MiradiFileSystemWithTransactions
 			throw new IOException(delete.getResultMessage());
 	}
 	
+	public void deleteMultipleFiles(String projectName, HashSet<File> filesToDelete) throws Exception
+	{
+		HttpTransaction delete = HttpDelete.deleteFiles(serverURL, projectName, filesToDelete);
+		if(delete.getResultCode() != HTTP_SUCCESS)
+			throw new IOException(delete.getResultMessage());
+	}
+
 	private static final int HTTP_SUCCESS = 200;
 	private static final String EXISTS = "Exists";
 	private static final String MANIFESTS = "Manifests";

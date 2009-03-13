@@ -290,6 +290,7 @@ public class ObjectManager
 				getDatabase().writeObject(cmLinkage);
 				EAMObjectPool pool = getPool(objectType);
 				pool.put(realId, cmLinkage);
+				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 				createdId = cmLinkage.getId();
 				getProjectChainBuilder().clearCaches();
 				break;
@@ -301,6 +302,7 @@ public class ObjectManager
 					throw new RuntimeException("No pool for " + objectType);
 				BaseObject created = pool.createObject(this, objectId, extraInfo);
 				getDatabase().writeObject(created);
+				getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 				createdId = created.getId();
 				break;
 			}
@@ -308,6 +310,11 @@ public class ObjectManager
 		}
 
 		return createdId;
+	}
+
+	private ObjectManifest createManifest(EAMObjectPool pool)
+	{
+		return new ObjectManifest(pool.getRefList());
 	}
 
 	public void deleteObject(BaseObject object) throws Exception
@@ -322,6 +329,7 @@ public class ObjectManager
 		getDatabase().deleteObject(objectType, objectId);
 		if(objectType == FactorLink.getObjectType())
 			getProjectChainBuilder().clearCaches();
+		getDatabase().writeObjectManifest(getFileName(), objectType, createManifest(pool));
 	}
 
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception

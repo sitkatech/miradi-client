@@ -23,6 +23,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.nio.channels.OverlappingFileLockException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Vector;
 
@@ -189,6 +190,14 @@ public class MiradiLocalFileSystem extends MiradiFileSystemWithTransactions
 		if(!path.exists())
 			throw new FileNotFoundException();
 		path.delete();
+	}
+
+	public void deleteMultipleFiles(String projectName, HashSet<File> pendingDeletes) throws Exception
+	{
+		for(File file : pendingDeletes)
+		{
+			deleteFile(projectName, file);
+		}
 	}
 
 	private File projectPath(String projectName)

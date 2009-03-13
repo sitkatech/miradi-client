@@ -98,7 +98,6 @@ public class ProjectServer
 		
 	public void deleteObject(int type, BaseId id) throws Exception
 	{
-		removeFromObjectManifest(getCurrentProjectName(), type, id);
 		currentFileSystem.deleteFile(getCurrentProjectName(), getRelativeObjectFile(type, id));
 	}
 	
@@ -221,8 +220,6 @@ public class ProjectServer
 	{
 		File relativeObjectFile = getRelativeObjectFile(object.getType(), object.getId());
 		writeRelativeJsonFile(getCurrentProjectName(), relativeObjectFile, object.toJson());
-
-		addToObjectManifest(getCurrentProjectName(), object.getType(), object.getId());
 	}
 	
 	public void writeProjectInfo(ProjectInfo info) throws Exception
@@ -264,22 +261,12 @@ public class ProjectServer
 		writeRelativeJsonFile(fileSystem, projectName, getRelativeVersionFile(), version);
 	}
 	
-	private void writeObjectManifest(String projectName, int type, ObjectManifest manifest) throws Exception
+	public void writeObjectManifest(String projectName, int type, ObjectManifest manifest) throws Exception
 	{
 		File manifestFile = getRelativeObjectManifestFile(type);
 		writeRelativeJsonFile(projectName, manifestFile, manifest.toJson());
 	}
 	
-	private void addToObjectManifest(String projectName, int type, BaseId idToAdd) throws Exception
-	{
-		ObjectManifest manifest = readObjectManifest(projectName, type);
-		if (manifest.has(idToAdd))
-			return;
-		
-		manifest.put(idToAdd);
-		writeObjectManifest(projectName, type, manifest);
-	}
-
 	private static EnhancedJsonObject createVersionJson(int versionToWrite)
 	{
 		EnhancedJsonObject version = new EnhancedJsonObject();
@@ -330,13 +317,6 @@ public class ProjectServer
 	{
 		String contents = fileSystem.readFile(projectName, relativeFile);
 		return new EnhancedJsonObject(contents);
-	}
-
-	private void removeFromObjectManifest(String projectName, int type, BaseId idToRemove) throws Exception
-	{
-		ObjectManifest manifest = readObjectManifest(projectName, type);
-		manifest.remove(idToRemove);
-		writeObjectManifest(projectName, type, manifest);
 	}
 
 	private static void writeRelativeJsonFile(MiradiFileSystem fileSystem, String projectName, File relativeObjectFile,

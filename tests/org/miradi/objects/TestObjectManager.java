@@ -170,6 +170,7 @@ public class TestObjectManager extends EAMTestCase
 		BaseId createdId = manager.createObject(type, BaseId.INVALID, parameter);
 		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
 		db.readObject(manager, type, createdId);
+		assertTrue(db.readObjectManifest(type).has(createdId));
 		
 		String tag = RatingCriterion.TAG_LABEL;
 		manager.setObjectData(type, createdId, tag, "data");
@@ -178,6 +179,7 @@ public class TestObjectManager extends EAMTestCase
 		assertEquals(type + " can't get data from project?", "data", manager.getObjectData(type, createdId, tag));
 		
 		manager.deleteObject(withData);
+		assertFalse(db.readObjectManifest(withData.getType()).has(withData.getId()));
 		try
 		{
 			manager.getObjectData(type, createdId, tag);

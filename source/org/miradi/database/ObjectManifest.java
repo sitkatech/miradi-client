@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.database;
 
 import org.json.JSONObject;
+import org.miradi.objecthelpers.ORefList;
 
 public class ObjectManifest extends Manifest
 {
@@ -34,5 +35,14 @@ public class ObjectManifest extends Manifest
 		// TODO: Fail if wrong type
 	}
 
+	public ObjectManifest(ORefList refsToAdd)
+	{
+		this();
+		for(int i = 0; i < refsToAdd.size(); ++i)
+		{
+			put(refsToAdd.get(i).getObjectId());
+		}
+	}
+	
 	private static String OBJECT_MANIFEST = "ObjectManifest";
 }
