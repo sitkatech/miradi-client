@@ -316,10 +316,12 @@ public class TestMiradiFileSystem extends EAMTestCase
 		File file1 = new File("/json/objects-1/1");
 		File file2 = new File("/json/objects-2/2");
 		File file3 = new File("/json/objects-3/3");
+		File file4 = new File("/json/objects-4/4");
 		
 		String contents1 = "This is file 1\n";
 		String contents2 = "This is file 2\n";
 		String contents3 = "This file will be deleted";
+		String contents4 = "Anotherfile to delete";
 
 		if(currentFilingSystem.doesProjectDirectoryExist(projectName))
 			currentFilingSystem.deleteProject(projectName);
@@ -327,12 +329,14 @@ public class TestMiradiFileSystem extends EAMTestCase
 		try
 		{
 			currentFilingSystem.writeFile(projectName, file1, contents1);
+			currentFilingSystem.writeFile(projectName, file4, contents4);
 
 			currentFilingSystem.beginTransaction(projectName);
 			currentFilingSystem.writeFile(projectName, file2, "Bogus will be overwritten");
 			currentFilingSystem.writeFile(projectName, file2, contents2);
 			currentFilingSystem.writeFile(projectName, file3, contents3);
 			currentFilingSystem.deleteFile(projectName, file3);
+			currentFilingSystem.deleteFile(projectName, file4);
 			try
 			{
 				currentFilingSystem.deleteFile("OtherProjectName", file1);
@@ -356,6 +360,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 			assertTrue(currentFilingSystem.getClass().getSimpleName(), currentFilingSystem.doesFileExist(projectName, file2));
 			assertEquals(currentFilingSystem.getClass().getSimpleName(), contents2, currentFilingSystem.readFile(projectName, file2));
 			assertFalse(currentFilingSystem.getClass().getSimpleName(), currentFilingSystem.doesFileExist(projectName, file3));
+			assertFalse(currentFilingSystem.getClass().getSimpleName(), currentFilingSystem.doesFileExist(projectName, file4));
 		}
 		finally
 		{

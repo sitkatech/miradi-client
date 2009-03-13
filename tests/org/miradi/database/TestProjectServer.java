@@ -32,13 +32,8 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
-import org.miradi.objects.Task;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 
 public class TestProjectServer extends TestCaseWithProject
@@ -67,87 +62,24 @@ public class TestProjectServer extends TestCaseWithProject
 	
 	public void testObjectManifest() throws Exception
 	{
+		int type = Target.getObjectType();
+		ObjectManifest beforeWrite = storage.readObjectManifest(type);
+		assertEquals(0, beforeWrite.size());
+		
 		BaseId[] idsToWrite = {new BaseId(19), new BaseId(25), new BaseId(727), };
 		for(int i = 0; i < idsToWrite.length; ++i)
 		{
-			Task task = new Task(getObjectManager(), new FactorId(idsToWrite[i].asInt()));
-			storage.writeObject(task);
+			beforeWrite.put(idsToWrite[i]);
 		}
-		RatingCriterion criterion = new RatingCriterion(getObjectManager(), new BaseId(99));
-		storage.writeObject(criterion);
+		storage.writeObjectManifest(storage.getCurrentProjectName(), type, beforeWrite);
 
-		ObjectManifest manifest = storage.readObjectManifest(ObjectType.TASK);
-		assertEquals("wrong number of objects?", idsToWrite.length, manifest.size());
+		ObjectManifest afterRead = storage.readObjectManifest(type);
+		assertEquals("wrong number of objects?", idsToWrite.length, afterRead.size());
 		for(int i = 0; i < idsToWrite.length; ++i)
-			assertTrue("missing id " + idsToWrite[i], manifest.has(idsToWrite[i]));
+			assertTrue("missing id " + idsToWrite[i], afterRead.has(idsToWrite[i]));
 		
-		storage.deleteObject(ObjectType.TASK, idsToWrite[0]);
 		Manifest afterDelete = storage.readObjectManifest(ObjectType.TASK);
 		assertFalse("didn't delete id?", afterDelete.has(idsToWrite[0]));
-	}
-	
-	public void testWriteAndReadNode() throws Exception
-	{
-
-		Strategy intervention = new Strategy(getObjectManager(), takeNextModelNodeId());
-		storage.writeObject(intervention);
-		Strategy gotIntervention = (Strategy)readNode(intervention.getRef());
-		assertEquals("not a strategy?", intervention.getNodeType(), gotIntervention.getNodeType());
-		assertEquals("wrong id?", intervention.getId(), gotIntervention.getId());
-
-		Cause factor = new Cause(getObjectManager(), takeNextModelNodeId());
-		
-		storage.writeObject(factor);
-		Cause gotContributingFactor = (Cause)readNode(factor.getRef());
-		assertEquals("not indirect factor?", factor.getNodeType(), gotContributingFactor.getNodeType());
-		
-		Target target = new Target(getObjectManager(), takeNextModelNodeId());
-		storage.writeObject(target);
-		Target gotTarget = (Target)readNode(target.getRef());
-		assertEquals("not a target?", target.getNodeType(), gotTarget.getNodeType());
-		
-		
-		ObjectManifest strategyNodeIds = storage.readObjectManifest(ObjectType.STRATEGY);
-		assertEquals("not one node?", 1, strategyNodeIds.size());
-		assertTrue("missing the strategy node?", strategyNodeIds.has(intervention.getId()));
-		
-		ObjectManifest causeNodeIds = storage.readObjectManifest(ObjectType.CAUSE);
-		assertEquals("not one node?", 1, causeNodeIds.size());
-		assertTrue("missing the cause node?", causeNodeIds.has(gotContributingFactor.getId()));
-		
-		ObjectManifest targetNodeIds = storage.readObjectManifest(ObjectType.TARGET);
-		assertEquals("not one node?", 1, targetNodeIds.size());
-		assertTrue("missing the target node?", targetNodeIds.has(target.getId()));
-	}
-	
-	private FactorId takeNextModelNodeId()
-	{
-		return new FactorId(idAssigner.takeNextId().asInt());
-	}
-	
-	private Factor readNode(ORef factorRef) throws Exception
-	{
-		return (Factor)storage.readObject(getObjectManager(), factorRef.getObjectType(), factorRef.getObjectId());
-	}
-	
-	public void testWriteAndReadLinkage() throws Exception
-	{
-		ORef fromRef = new ORef(ObjectType.CAUSE, new FactorId(2));
-		ORef toRef = new ORef(ObjectType.CAUSE, new FactorId(3));
-		FactorLink original = new FactorLink(getObjectManager(), new FactorLinkId(1), fromRef, toRef);
-		storage.writeObject(original);
-		FactorLink got = (FactorLink)storage.readObject(getObjectManager(), original.getType(), original.getId());
-		assertEquals("wrong id?", original.getId(), got.getId());
-		assertEquals("wrong from?", original.getFromFactorRef(), got.getFromFactorRef());
-		assertEquals("wrong to?", original.getToFactorRef(), got.getToFactorRef());
-		
-		ObjectManifest linkageIds = storage.readObjectManifest(original.getType());
-		assertEquals("not one link?", 1, linkageIds.size());
-		assertTrue("wrong link id in manifest?", linkageIds.has(original.getId()));
-		
-		storage.writeObject(original);
-		assertEquals("dupe in manifest?", 1, storage.readObjectManifest(original.getType()).size());
-		
 	}
 	
 	public void testDeleteLinkage() throws Exception

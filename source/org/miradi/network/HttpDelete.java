@@ -25,6 +25,7 @@ package org.miradi.network;
 import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashSet;
 
 class HttpDelete extends HttpTransaction
 {
@@ -40,17 +41,28 @@ class HttpDelete extends HttpTransaction
 		return new HttpDelete(serverURL, projectName, file, new String[] {UNLOCK});
 	}
 
-	public static HttpDelete deleteFile(URL serverURL, String projectName, File file) throws Exception
-	{
-		return new HttpDelete(serverURL, projectName, file, new String[0]);
-	}
-
 	public static HttpDelete deleteProject(URL serverURL, String projectName) throws Exception
 	{
 		return new HttpDelete(serverURL, projectName, null, new String[] {DELETE_PROJECT});
 	}
 	
+	public static HttpDelete deleteFile(URL serverURL, String projectName, File file) throws Exception
+	{
+		return new HttpDelete(serverURL, projectName, file, new String[0]);
+	}
+
+	public static HttpTransaction deleteFiles(URL serverURL, String projectName, HashSet<File> filesToDelete) throws Exception
+	{
+		HashSet<String> parameters = new HashSet<String>();
+		parameters.add(DELETE_MULTIPLE);
+		for(File file : filesToDelete)
+		{
+			parameters.add("File." + file.getPath());
+		}
+		return new HttpDelete(serverURL, projectName, null, parameters.toArray(new String[0]));
+	}
+
 	private static final String DELETE_PROJECT = "DeleteProject";
 	private static final String UNLOCK = "Unlock";
-
+	private static final String DELETE_MULTIPLE = "DeleteMultiple";
 }
