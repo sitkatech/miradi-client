@@ -51,7 +51,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	public void createOrDeleteThreatStressRatingsAsNeeded() throws Exception
 	{
-		HashSet<ThreatStressPair> createdThreatStressHolders = new HashSet();
+		HashSet<ThreatStressPair> threatStressPairs = new HashSet();
 		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
 		ORefList allTargetRefs = getProject().getTargetPool().getRefList();
 		for (int index = 0; index < allTargetRefs.size(); ++index)
@@ -59,10 +59,10 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			Target target = Target.find(getProject(), allTargetRefs.get(index));
 			ORefSet upstreamThreatRefs = chainObject.getUpstreamThreatRefsFromTarget(target);
 			ORefSet stressRefs = new ORefSet(target.getStressRefs());
-			createdThreatStressHolders.addAll(createThreatStressHolders(upstreamThreatRefs, stressRefs));			
+			threatStressPairs.addAll(createThreatStressHolders(upstreamThreatRefs, stressRefs));			
 		}
 		
-		createOrDeleteThreatStressRatingsAsNeeded(createdThreatStressHolders);
+		createOrDeleteThreatStressRatingsAsNeeded(threatStressPairs);
 	}
 
 	private void createOrDeleteThreatStressRatingsAsNeeded(HashSet<ThreatStressPair> createdThreatStressHolders) throws Exception
