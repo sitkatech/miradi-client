@@ -68,8 +68,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 
 	private void createOrDeleteThreatStressRatingsAsNeeded(HashSet<ThreatStressPair> desiredThreatStressPairs) throws Exception
 	{
-		ORefSet allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefSet();
-		HashSet<ThreatStressPair> existingThreatStressPairs = createThreatStressPairs(allThreatStressRatingRefs);
+		HashSet<ThreatStressPair> existingThreatStressPairs = createThreatStressFromPoolPairs();
 		if (desiredThreatStressPairs.size() > existingThreatStressPairs.size())
 			createThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
 
@@ -110,10 +109,11 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);
 	}
 
-	private HashSet<ThreatStressPair> createThreatStressPairs(ORefSet threatStressRatingRefs)
+	private HashSet<ThreatStressPair> createThreatStressFromPoolPairs()
 	{
+		ORefSet allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefSet();
 		HashSet<ThreatStressPair> threatStressPairs = new HashSet();
-		for(ORef threatStressRatingRef : threatStressRatingRefs)
+		for(ORef threatStressRatingRef : allThreatStressRatingRefs)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
 			threatStressPairs.add(new ThreatStressPair(threatStressRating));
