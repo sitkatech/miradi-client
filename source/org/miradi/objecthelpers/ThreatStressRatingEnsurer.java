@@ -66,18 +66,18 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		createOrDeleteThreatStressRatingsAsNeeded(threatStressPairs);
 	}
 
-	private void createOrDeleteThreatStressRatingsAsNeeded(HashSet<ThreatStressPair> threatStressPairs) throws Exception
+	private void createOrDeleteThreatStressRatingsAsNeeded(HashSet<ThreatStressPair> desiredThreatStressPairs) throws Exception
 	{
 		getProject().endCommandSideEffectMode();
 		try
 		{
 			ORefSet allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefSet();
 			HashSet<ThreatStressPair> existingThreatStressPairs = createThreatStressPairs(allThreatStressRatingRefs);
-			if (threatStressPairs.size() > existingThreatStressPairs.size())
-				createThreatStressRatings(threatStressPairs, existingThreatStressPairs);
+			if (desiredThreatStressPairs.size() > existingThreatStressPairs.size())
+				createThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
 
-			if (threatStressPairs.size() < existingThreatStressPairs.size())
-				deleteThreatStressRatings(threatStressPairs, existingThreatStressPairs);
+			if (desiredThreatStressPairs.size() < existingThreatStressPairs.size())
+				deleteThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
 		}
 		finally
 		{
