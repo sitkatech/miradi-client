@@ -100,6 +100,15 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			deleteThreatStressRating(threatStressRating);
 		}
 	}
+	
+	private void deleteThreatStressRating(ThreatStressRating threatStressRating) throws Exception
+	{
+		Vector<Command> commandsToDeleteThreatStressRating = new Vector();
+		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
+		commandsToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
+		
+		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);
+	}
 
 	private HashSet<ThreatStressPair> createThreatStressPairs(ORefSet threatStressRatingRefs)
 	{
@@ -127,15 +136,6 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		return threatStressPairs;
 	}
 
-	private void deleteThreatStressRating(ThreatStressRating threatStressRating) throws Exception
-	{
-		Vector<Command> commandsToDeleteThreatStressRating = new Vector();
-		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
-		commandsToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
-		
-		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		try
