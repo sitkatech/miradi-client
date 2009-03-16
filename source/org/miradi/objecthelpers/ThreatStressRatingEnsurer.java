@@ -59,7 +59,8 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			Target target = Target.find(getProject(), allTargetRefs.get(index));
 			ORefSet upstreamThreatRefs = chainObject.getUpstreamThreatRefsFromTarget(target);
 			ORefSet stressRefs = new ORefSet(target.getStressRefs());
-			threatStressPairs.addAll(createThreatStressPairs(upstreamThreatRefs, stressRefs));			
+			HashSet<ThreatStressPair> thisThreatStressPairs = createThreatStressPairs(upstreamThreatRefs, stressRefs);
+			threatStressPairs.addAll(thisThreatStressPairs);			
 		}
 		
 		createOrDeleteThreatStressRatingsAsNeeded(threatStressPairs);
