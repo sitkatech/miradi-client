@@ -77,10 +77,10 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			deleteThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
 	}
 
-	private void createThreatStressRatings(HashSet<ThreatStressPair> createdThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
+	private void createThreatStressRatings(HashSet<ThreatStressPair> desiredThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
 	{
-		createdThreatStressPairs.removeAll(existingThreatStressPairs);
-		for(ThreatStressPair threatStressPair : createdThreatStressPairs)
+		desiredThreatStressPairs.removeAll(existingThreatStressPairs);
+		for(ThreatStressPair threatStressPair : desiredThreatStressPairs)
 		{
 			ORef stressRef = threatStressPair.getStressRef();
 			ORef threatRef = threatStressPair.getThreatRef();
@@ -90,9 +90,9 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		}
 	}
 	
-	private void deleteThreatStressRatings(HashSet<ThreatStressPair> createdThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
+	private void deleteThreatStressRatings(HashSet<ThreatStressPair> desiredThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
 	{
-		existingThreatStressPairs.removeAll(createdThreatStressPairs);
+		existingThreatStressPairs.removeAll(desiredThreatStressPairs);
 		for(ThreatStressPair threatStressPair : existingThreatStressPairs)
 		{		
 			ORef threatStressRatingToDelete = threatStressPair.findMatchingThreatStressRating();
