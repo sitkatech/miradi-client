@@ -1062,6 +1062,14 @@ public class Project
 		}
 	}
 	
+	public void executeAsSideEffect(Vector<Command> commands) throws CommandFailedException
+	{
+		for (int index = 0; index < commands.size(); ++index)
+		{
+			executeAsSideEffect(commands.get(index));
+		}
+	}
+	
 	public void executeAsSideEffect(Command command) throws CommandFailedException
 	{
 		if(!isInCommandSideEffectMode())

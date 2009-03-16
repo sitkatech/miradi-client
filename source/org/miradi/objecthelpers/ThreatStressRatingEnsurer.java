@@ -68,21 +68,13 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 
 	private void createOrDeleteThreatStressRatingsAsNeeded(HashSet<ThreatStressPair> desiredThreatStressPairs) throws Exception
 	{
-		getProject().endCommandSideEffectMode();
-		try
-		{
-			ORefSet allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefSet();
-			HashSet<ThreatStressPair> existingThreatStressPairs = createThreatStressPairs(allThreatStressRatingRefs);
-			if (desiredThreatStressPairs.size() > existingThreatStressPairs.size())
-				createThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
+		ORefSet allThreatStressRatingRefs = getProject().getThreatStressRatingPool().getRefSet();
+		HashSet<ThreatStressPair> existingThreatStressPairs = createThreatStressPairs(allThreatStressRatingRefs);
+		if (desiredThreatStressPairs.size() > existingThreatStressPairs.size())
+			createThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
 
-			if (desiredThreatStressPairs.size() < existingThreatStressPairs.size())
-				deleteThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
-		}
-		finally
-		{
-			getProject().beginCommandSideEffectMode();
-		}
+		if (desiredThreatStressPairs.size() < existingThreatStressPairs.size())
+			deleteThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
 	}
 
 	private void createThreatStressRatings(HashSet<ThreatStressPair> createdThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
@@ -94,7 +86,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			ORef threatRef = threatStressPair.getThreatRef();
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-			getProject().executeCommand(createThreatStressRatingCommand);
+			getProject().executeAsSideEffect(createThreatStressRatingCommand);
 		}
 	}
 	
@@ -140,8 +132,8 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		Vector<Command> commansToDeleteThreatStressRating = new Vector();
 		commansToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
 		commansToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
-
-		getProject().executeCommandsWithoutTransaction(commansToDeleteThreatStressRating);
+		
+		getProject().executeAsSideEffect(commansToDeleteThreatStressRating);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
