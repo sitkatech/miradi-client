@@ -129,11 +129,11 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 
 	private void deleteThreatStressRating(ThreatStressRating threatStressRating) throws Exception
 	{
-		Vector<Command> commansToDeleteThreatStressRating = new Vector();
-		commansToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
-		commansToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
+		Vector<Command> commandsToDeleteThreatStressRating = new Vector();
+		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
+		commandsToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
 		
-		getProject().executeAsSideEffect(commansToDeleteThreatStressRating);
+		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
