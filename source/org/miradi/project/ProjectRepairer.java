@@ -33,7 +33,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -163,6 +165,16 @@ public class ProjectRepairer
 			ORef missingRef = missingObjectRefs.get(i);
 			ORefSet referrers = project.getObjectManager().getReferringObjects(missingRef);
 			EAM.logError("Missing object: " + missingRef + " referred to by: " + referrers);
+		}
+		
+		ORefList factorLinkRefs = getProject().getFactorLinkPool().getORefList();
+		for(int i = 0; i < factorLinkRefs.size(); ++i)
+		{
+			final ORef linkRef = factorLinkRefs.get(i);
+			FactorLink link = FactorLink.find(getProject(), linkRef);
+			ORefList diagramLinks = link.findObjectsThatReferToUs(DiagramLink.getObjectType());
+			if(diagramLinks.size() == 0)
+				EAM.logError("FactorLink without DiagramLink: " + linkRef);
 		}
 
 // NOTE: This is appropriate for testing, but not for production
