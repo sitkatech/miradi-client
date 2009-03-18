@@ -65,7 +65,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 		ORefList strategyRefs = new ORefList();
 		
 		DiagramChainObject chain = diagram.getDiagramChainBuilder();
-		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getFactorId());
+		DiagramFactor targetDiagramFactor = diagram.getDiagramFactor(target.getRef());
 		FactorSet factors = chain.buildDirectlyLinkedUpstreamChainAndGetFactors(diagram, targetDiagramFactor);
 		for(Factor factor : factors)
 		{
