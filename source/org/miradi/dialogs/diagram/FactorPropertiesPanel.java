@@ -56,7 +56,6 @@ import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
-import org.miradi.ids.FactorId;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -78,8 +77,8 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.DirectThreatQuestion;
+import org.miradi.questions.FilteredDiagramFactorsQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 
@@ -358,11 +357,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return currentDiagramFactor;
 	}
 
-	public FactorId getCurrentFactorId()
-	{
-		return getCurrentDiagramFactor().getWrappedId();
-	}
-	
 	private void rebuildFactorChangerComboBox()
 	{
 		currentFactorChangerComboBox.rebuild();
