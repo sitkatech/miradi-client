@@ -25,7 +25,6 @@ import java.util.Vector;
 
 import javax.swing.table.AbstractTableModel;
 
-import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -154,14 +153,14 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		return getTargets()[targetIndex].getLabel();
 	}
 
-	public FactorId getThreatId(int threatIndex)
+	public ORef getThreatRef(int threatIndex)
 	{
-		return getDirectThreats()[threatIndex].getFactorId();
+		return getDirectThreats()[threatIndex].getRef();
 	}
 
-	public FactorId getTargetId(int targetIndex)
+	public ORef getTargetRef(int targetIndex)
 	{
-		return getTargets()[targetIndex].getFactorId();
+		return getTargets()[targetIndex].getRef();
 	}
 		
 	public Comparator getComparator(int columnToSortOn)
@@ -171,5 +170,5 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	
 	private Project project;
 	protected Factor[] threatRows;
-	protected Target[] targetColumns;	
+	protected Target[] targetColumns;
 }

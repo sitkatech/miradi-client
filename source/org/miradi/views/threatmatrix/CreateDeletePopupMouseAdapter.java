@@ -31,7 +31,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMenuItem;
@@ -108,18 +107,18 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 			return false;
 		
 		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		FactorId fromFactorId = getThreatMatrixTableModel().getThreatId(row);
-		FactorId toFactorId = getThreatMatrixTableModel().getTargetId(modelColumn);
+		ORef fromFactorRef = getThreatMatrixTableModel().getThreatRef(row);
+		ORef toFactorRef = getThreatMatrixTableModel().getTargetRef(modelColumn);
 		
-		if (! areBothFactorsContainedInAnyConceptualModel(fromFactorId, toFactorId))
+		if (! areBothFactorsContainedInAnyConceptualModel(fromFactorRef, toFactorRef))
 			return false;
 		
 		return true;
 	}
 	
-	private boolean areBothFactorsContainedInAnyConceptualModel(FactorId fromFactorId, FactorId toFactorId)
+	private boolean areBothFactorsContainedInAnyConceptualModel(ORef fromFactorRef, ORef toFactorRef)
 	{
-		ORefList foundConceptualModels = getProject().findConceptualModelThatContainsBothFactors(fromFactorId, toFactorId);
+		ORefList foundConceptualModels = getProject().findConceptualModelThatContainsBothFactors(fromFactorRef, toFactorRef);
 		if (foundConceptualModels.size() > 0)
 			return true;
 		
@@ -136,9 +135,9 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 		
 		public void actionPerformed(ActionEvent event)
 		{
-			FactorId threatId = getThreatMatrixTableModel().getThreatId(row); 
-			FactorId targetId = getThreatMatrixTableModel().getTargetId(modelColumn);
-			FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(threatId, targetId);
+			ORef threatRef = getThreatMatrixTableModel().getThreatRef(row); 
+			ORef targetRef = getThreatMatrixTableModel().getTargetRef(modelColumn);
+			FactorLinkId factorLinkId = project.getFactorLinkPool().getLinkedId(threatRef, targetRef);
 
 			if (!userConfirmsLinkDeletion(getThreatMatrixTableModel().getThreatName(row), getThreatMatrixTableModel().getTargetName(modelColumn)))
 				return;
@@ -206,8 +205,8 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 			getProject().executeCommand(new CommandBeginTransaction());
 			try
 			{
-				FactorId fromThreatId = getThreatMatrixTableModel().getThreatId(row);
-				FactorId toTargetId = getThreatMatrixTableModel().getTargetId(modelColumn);
+				ORef fromThreatId = getThreatMatrixTableModel().getThreatRef(row);
+				ORef toTargetId = getThreatMatrixTableModel().getTargetRef(modelColumn);
 				createLinksInConceptualModels(fromThreatId, toTargetId);
 			}
 			catch (Exception ex)
@@ -220,17 +219,17 @@ public class CreateDeletePopupMouseAdapter extends MouseAdapter
 			}
 		}
 		
-		private void createLinksInConceptualModels(FactorId fromThreatId, FactorId toTargetId) throws Exception
+		private void createLinksInConceptualModels(ORef fromThreatRef, ORef toTargetRef) throws Exception
 		{
 
-			ORefList conceptualModelDiagramRefs = getProject().findConceptualModelThatContainsBothFactors(fromThreatId, toTargetId);
+			ORefList conceptualModelDiagramRefs = getProject().findConceptualModelThatContainsBothFactors(fromThreatRef, toTargetRef);
 			for (int i = 0; i < conceptualModelDiagramRefs.size(); ++i)
 			{
 				ORef conceptualModelDiagramRef = conceptualModelDiagramRefs.get(i);
 				ConceptualModelDiagram conceptualModelDiagram = (ConceptualModelDiagram) getProject().findObject(conceptualModelDiagramRef);
 
 				LinkCreator linkCreator = new LinkCreator(getProject());
-				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(conceptualModelDiagram, fromThreatId, toTargetId);
+				linkCreator.createFactorLinkAndAddToDiagramUsingCommands(conceptualModelDiagram, fromThreatRef, toTargetRef);
 			}
 		}
 

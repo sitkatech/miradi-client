@@ -232,10 +232,10 @@ public class LinkCreator
 		return diagramFactor.getSelfAndChildren();
 	}
 
-	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, FactorId fromThreatId , FactorId toTargetId ) throws Exception
+	public void createFactorLinkAndAddToDiagramUsingCommands(DiagramObject diagramObject, ORef fromThreatRef, ORef toTargetRef) throws Exception
 	{
-		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatId);
-		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetId);
+		DiagramFactor fromDiagramFactor = diagramObject.getDiagramFactor(fromThreatRef);
+		DiagramFactor toDiagramFactor = diagramObject.getDiagramFactor(toTargetRef);
 
 		createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
 	}

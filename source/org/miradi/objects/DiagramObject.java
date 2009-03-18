@@ -168,14 +168,6 @@ abstract public class DiagramObject extends BaseObject
 		return true;
 	}
 	
-	public boolean containsWrappedFactor(FactorId factorId)
-	{
-		if (getDiagramFactor(factorId) != null)
-			return true;
-		
-		return false;
-	}
-	
 	@Override
 	public boolean isRefList(String tag)
 	{
