@@ -547,7 +547,7 @@ public class ResultsChainCreatorHelper
 
 	private boolean areSharingTheSameFactor(DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned)
 	{
-		return from.getWrappedId().equals(fromCloned.getWrappedId()) && to.getWrappedId().equals(toCloned.getWrappedId());
+		return from.getWrappedORef().equals(fromCloned.getWrappedORef()) && to.getWrappedORef().equals(toCloned.getWrappedORef());
 	}
 	
 	private Vector convertToDiagramFactors(Factor[] factors)
