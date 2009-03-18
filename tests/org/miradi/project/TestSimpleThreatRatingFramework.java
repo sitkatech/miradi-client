@@ -365,7 +365,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 //		return threatId;
 	}
 	
-	private static void populateBundle(SimpleThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
+	public static void populateBundle(SimpleThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = frameworkToUse.getBundle(threatId, targetId);
 		RatingCriterion criteria[] = frameworkToUse.getCriteria();
