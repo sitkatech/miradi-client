@@ -104,5 +104,12 @@ public class TestBaseObject extends EAMTestCase
 		assertFalse("is non user tag?", cause.isPresentationDataField(Cause.TAG_LABEL));
 	}
 	
+	public void testEquals() throws Exception
+	{
+		Cause cause = project.createCause();
+		Target target = new Target(project.getObjectManager(), cause.getFactorId());
+		assertNotEquals("Target/Cause with same Id were equal?", cause, target);
+	}
+	
 	ProjectForTesting project;
 }

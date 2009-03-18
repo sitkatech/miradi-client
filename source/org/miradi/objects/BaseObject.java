@@ -352,7 +352,7 @@ abstract public class BaseObject
 			return false;
 		
 		BaseObject other = (BaseObject)rawOther;
-		return other.getId().equals(getId());
+		return other.getRef().equals(getRef());
 	}
 	
 	public String getSafeLabel(BaseObject baseObject)
