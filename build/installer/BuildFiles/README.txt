@@ -4,7 +4,7 @@ Copyright 2005-2009, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 2.4.0
+VERSION 2.4.1
 
 License and Copying
 
@@ -70,7 +70,9 @@ INSTALLING
 
 MS Windows:
 - If you had Miradi 2.3.1 or earlier, we recommend that you uninstall it 
-  before installing Miradi 2.4 or later
+  before installing Miradi 2.4 or later. Your existing projects will not 
+  be affected by the uninstall, and will be available when you start the 
+  new Miradi version.
 - Download and run MiradiSetup.exe
 - A copy of the latest Marine Example project will be installed automatically
 - You do not need to have Java already installed on your system, because 
@@ -134,6 +136,15 @@ If you installed an earlier version of Miradi, you can just
 install this new version right over it. Your projects will be 
 migrated automatically when you first open them with the new version.
 
+Version 2.4.1 was a minor release with these fixes over 2.4:
+
+PLANNING VIEW
+- Projects that were originally created in The Nature Conservancy's
+  ConPro system, and then imported into Miradi as CPMZ files, 
+  could show incorrect relationships between Targets, Threats, and 
+  Strategies. It is NOT necessary to re-import these projects. 
+  Simply upgrading to Miradi 2.4.1 will correct the Planning View tree.
+  
 
 Here are the most notable improvements of version 2.4 over 2.3.1:
 
