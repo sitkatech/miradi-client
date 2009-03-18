@@ -32,11 +32,13 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -167,21 +169,29 @@ public class ProjectRepairer
 			EAM.logError("Missing object: " + missingRef + " referred to by: " + referrers);
 		}
 		
-		ORefList factorLinkRefs = getProject().getFactorLinkPool().getORefList();
-		for(int i = 0; i < factorLinkRefs.size(); ++i)
-		{
-			final ORef linkRef = factorLinkRefs.get(i);
-			FactorLink link = FactorLink.find(getProject(), linkRef);
-			ORefList diagramLinks = link.findObjectsThatReferToUs(DiagramLink.getObjectType());
-			if(diagramLinks.size() == 0)
-				EAM.logError("FactorLink without DiagramLink: " + linkRef);
-		}
+		detectAndReportOrphans(FactorLink.getObjectType(), DiagramLink.getObjectType());
+		detectAndReportOrphans(ThreatStressRating.getObjectType(), FactorLink.getObjectType());
+		detectAndReportOrphans(Cause.getObjectType(), DiagramFactor.getObjectType());
 
 // NOTE: This is appropriate for testing, but not for production
 //		EAM.notifyDialog("<html>This project has some data corruption, " +
 //						 "which may cause error messages or unexpected results within Miradi. <br>" +
 //						 "Please contact the Miradi team to report this problem, " +
 //						 "and/or to have them repair this project.");
+	}
+
+	private void detectAndReportOrphans(int possibleOrphanType,
+			final int custodianType)
+	{
+		ORefList possibleOrphanRefs = getProject().getObjectManager().getPool(possibleOrphanType).getORefList();
+		for(int i = 0; i < possibleOrphanRefs.size(); ++i)
+		{
+			final ORef possibleOrphanRef = possibleOrphanRefs.get(i);
+			BaseObject possibleOrphan = BaseObject.find(getProject(), possibleOrphanRef);
+			ORefList custodianRefs = possibleOrphan.findObjectsThatReferToUs(custodianType);
+			if(custodianRefs.size() == 0)
+				EAM.logError(possibleOrphan.getTypeName() + " without custodian: " + possibleOrphanRef);
+		}
 	}
 	
 	public ORefList findAllMissingObjects() throws Exception
