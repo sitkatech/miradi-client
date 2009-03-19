@@ -150,7 +150,10 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 
 	private boolean isThreatStressRatingAffectingCommand(CommandExecutedEvent event)
 	{
-		if (event.isDeleteCommandForThisType(FactorLink.getObjectType()) || event.isCreateCommandForThisType(FactorLink.getObjectType()))
+		if (event.isDeleteCommandForThisType(FactorLink.getObjectType()))
+			return true;
+		
+		if (event.isCreateCommandForThisType(FactorLink.getObjectType()))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_STRESS_REFS))
