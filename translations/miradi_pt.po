@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 19:06-0500\n"
+"POT-Creation-Date: 2009-03-18 18:44-0400\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -608,11 +608,11 @@ msgstr ""
 msgid "Results Chains"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:385
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:379
 msgid "Viability Analysis Mode"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:471
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:465
 msgid "Factor Properties"
 msgstr ""
 
@@ -1009,7 +1009,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 #: miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:61
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:175
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 msgid "Cancel"
 msgstr ""
@@ -3896,7 +3896,7 @@ msgid "A project or file by this name already exists: "
 msgstr ""
 
 #: miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
-#: miradi/source/org/miradi/project/Project.java:164
+#: miradi/source/org/miradi/project/Project.java:163
 msgid "Invalid project name:"
 msgstr ""
 
@@ -4189,22 +4189,22 @@ msgstr ""
 msgid "Error occurred while switching threat rating mode."
 msgstr ""
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:87
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:86
 msgid "Create Link"
 msgstr ""
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:92
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:91
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:175
 msgid "Delete Link"
 msgstr ""
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:171
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:170
 msgid ""
 "This link will be deleted from any Conceptual Model pages and Results Chains "
 "that it appears on: "
 msgstr ""
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:177
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
 msgid "Delete a link?"
 msgstr ""
 
@@ -6477,23 +6477,23 @@ msgid ""
 "section of the Target Viability to store the same data."
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:161
+#: miradi/source/org/miradi/project/Project.java:160
 msgid " A project by this name already exists: "
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:167
+#: miradi/source/org/miradi/project/Project.java:166
 msgid "A file or directory exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:843
+#: miradi/source/org/miradi/project/Project.java:842
 msgid "[No Project]"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:1041
+#: miradi/source/org/miradi/project/Project.java:1040
 msgid "Attempt to execute command as side effect when not in that mode"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:1056
+#: miradi/source/org/miradi/project/Project.java:1055
 msgid ""
 "Attempt to execute command while in side effect mode:\n"
 " tried  "
