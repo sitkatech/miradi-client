@@ -54,7 +54,7 @@ public class CausePool extends EAMNormalObjectPool
 		return new Cause(objectManager ,new FactorId(actualId.asInt()));
 	}
 	
-	public FactorId[] getModelNodeIds()
+	private FactorId[] getModelNodeIds()
 	{
 		return (FactorId[])new HashSet(getRawIds()).toArray(new FactorId[0]);
 	}
