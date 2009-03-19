@@ -195,20 +195,13 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		private ORefList getTsrReferrerRefsToStress()
 		{
 			Stress stress = Stress.find(getProject(), getStressRef());
-			if (stress == null)
-				return new ORefList();
-			
 			return stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		}
 		
 		private ORefList getTsrReferrerRefsToThreat()
 		{
 			Cause threat = Cause.find(getProject(), getThreatRef());
-			if (threat == null)
-				return new ORefList();
-			
-			ORefList tsrReferrerRefsToThreat = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-			return tsrReferrerRefsToThreat;
+			return threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		}
 		
 		public ORef getThreatRef()
