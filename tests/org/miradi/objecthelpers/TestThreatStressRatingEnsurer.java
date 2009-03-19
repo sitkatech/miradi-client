@@ -24,6 +24,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 
@@ -37,17 +38,30 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 	
 	public void testBasics() throws Exception
 	{
-		FactorLink factorLink = getProject().createAndPopulateDirectThreatLink();
-		ORef threatRef = factorLink.getUpstreamThreatRef();
-		ORef targetRef = factorLink.getDownstreamTargetRef();
-		Target target = Target.find(getProject(), targetRef);
+		Target target = getProject().createTarget();
+		Cause threat = getProject().createCause();
+		ORef factorLinkRef = getProject().createFactorLink(threat.getRef(), target.getRef());
+		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+		assertTrue("threat is not a direct threat?", threat.isDirectThreat());
+		assertEquals("wrong factor Link count?", 1, getProject().getFactorLinkPool().getORefList().size());
+		
+		ORef createdStressRef = getProject().createAndPopulateStress().getRef();
+		getProject().setObjectData(target.getRef(), Target.TAG_STRESS_REFS, new ORefList(createdStressRef).toString());
 		ORefList stressRefs = target.getStressRefs();
 		assertEquals("wrong target stress count?", 1, stressRefs.size());
 		
-		Cause threat = Cause.find(getProject(), threatRef);
+		ORef stressRef = stressRefs.getRefForType(Stress.getObjectType());
+		getProject().createThreatStressRating(stressRef, threat.getRef());
 		ORefList threatStressRatingReferrerRefs1 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		assertEquals("wrong threat stress rating count?", 1, threatStressRatingReferrerRefs1.size());
+		
+		Stress stress = Stress.find(getProject(), stressRef);
+		ORefList threatStressRatingReferringToStressRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		assertEquals("wrong threat stress rating referring to stress count?", 1, threatStressRatingReferringToStressRefs.size());
 
+		ORefList threatStressRatingPoolRefs = getProject().getThreatStressRatingPool().getORefList();
+		assertEquals("wrong threat stress rating pool size count?", 1, threatStressRatingPoolRefs.size());
+		
 		ThreatStressRatingEnsurer threatStressRatingEnsurer = new ThreatStressRatingEnsurer(getProject());
 		getProject().addCommandExecutedListener(threatStressRatingEnsurer);
 		CommandDeleteObject deleteFactorLinkCommand = new CommandDeleteObject(factorLink);
@@ -56,7 +70,7 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		ORefList threatStressRatingReferrerRefs2 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		assertEquals("threat stress rating was not removed as a result of factor link deletion?", 0, threatStressRatingReferrerRefs2.size());
 		
-		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threatRef, targetRef);
+		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threat.getRef(), target.getRef());
 		CommandCreateObject createFactorlLinkCommand = new CommandCreateObject(FactorLink.getObjectType(), extraInfo);
 		getProject().executeCommand(createFactorlLinkCommand);
 		ORefList threatStressRatingReferrerRefs3 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());

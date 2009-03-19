@@ -69,17 +69,15 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	private void createOrDeleteThreatStressRatingsAsNeeded(HashSet<ThreatStressPair> desiredThreatStressPairs) throws Exception
 	{
 		HashSet<ThreatStressPair> existingThreatStressPairs = createThreatStressFromPoolPairs();
-		if (desiredThreatStressPairs.size() > existingThreatStressPairs.size())
-			createThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
-
-		if (desiredThreatStressPairs.size() < existingThreatStressPairs.size())
-			deleteThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
+		createThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
+		deleteThreatStressRatings(desiredThreatStressPairs, existingThreatStressPairs);
 	}
 
 	private void createThreatStressRatings(HashSet<ThreatStressPair> desiredThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
 	{
-		desiredThreatStressPairs.removeAll(existingThreatStressPairs);
-		for(ThreatStressPair threatStressPair : desiredThreatStressPairs)
+		HashSet<ThreatStressPair> toCreate = new HashSet(desiredThreatStressPairs);
+		toCreate.removeAll(existingThreatStressPairs);
+		for(ThreatStressPair threatStressPair : toCreate)
 		{
 			ORef stressRef = threatStressPair.getStressRef();
 			ORef threatRef = threatStressPair.getThreatRef();
@@ -91,8 +89,9 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	private void deleteThreatStressRatings(HashSet<ThreatStressPair> desiredThreatStressPairs, HashSet<ThreatStressPair> existingThreatStressPairs) throws Exception
 	{
-		existingThreatStressPairs.removeAll(desiredThreatStressPairs);
-		for(ThreatStressPair threatStressPair : existingThreatStressPairs)
+		HashSet<ThreatStressPair> toDelete = new HashSet(existingThreatStressPairs);
+		toDelete.removeAll(desiredThreatStressPairs);
+		for(ThreatStressPair threatStressPair : toDelete)
 		{		
 			ORef threatStressRatingToDelete = threatStressPair.findMatchingThreatStressRating();
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingToDelete);
@@ -143,6 +142,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			//FIXME need to add other types and create events here
 			if (event.isDeleteCommandForThisType(FactorLink.getObjectType()))
 				createOrDeleteThreatStressRatingsAsNeeded();
+			
 			if (event.isCreateCommandForThisType(FactorLink.getObjectType()))
 				createOrDeleteThreatStressRatingsAsNeeded();
 		}
@@ -181,9 +181,9 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			Cause threat = Cause.find(getProject(), getThreatRef());
 			ORefList tsrReferrerRefsToThreat = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 			
-			tsrReferrerRefsToStress.removeAll(tsrReferrerRefsToThreat);
+			ORefList overLappingRefs = tsrReferrerRefsToStress.getOverlappingRefs(tsrReferrerRefsToThreat);
 			
-			return tsrReferrerRefsToStress.getRefForType(ThreatStressRating.getObjectType());
+			return overLappingRefs.getRefForType(ThreatStressRating.getObjectType());
 		}
 		
 		public ORef getThreatRef()
@@ -194,6 +194,35 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		public ORef getStressRef()
 		{
 			return stressRef;
+		}
+		
+		@Override
+		public boolean equals(Object rawOther)
+		{
+			if (!(rawOther instanceof ThreatStressPair))
+				return false;
+			
+			ThreatStressPair other = (ThreatStressPair) rawOther;
+			if (!getThreatRef().equals(other.getThreatRef()))
+				return false;
+			
+			if (!getStressRef().equals(other.getStressRef()))
+				return false;
+			
+			return true;
+		}
+		
+		@Override
+		public int hashCode()
+		{
+			return getThreatRef().hashCode() + getStressRef().hashCode();
+		}
+		
+		//TODO,  remove this, was used for debugger output
+		@Override
+		public String toString()
+		{
+			return getThreatRef() + " - " + getStressRef();
 		}
 		
 		private ORef threatRef;
