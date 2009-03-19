@@ -341,7 +341,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return createThreatStressRating(stress.getRef(), threat.getRef());
 	}
 
-	private ThreatStressRating createThreatStressRating(ORef stressRef, ORef threatRef) throws Exception
+	public ThreatStressRating createThreatStressRating(ORef stressRef, ORef threatRef) throws Exception
 	{
 		CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 		ORef threatStressRatingRef = createObject(ThreatStressRating.getObjectType(), extraInfo);
