@@ -516,7 +516,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		//TODO: refactor entire tab add remove mechisisim
-		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE))
+		if (shouldRebuildPanel(event))
 		{
 			rebuildPanel();
 			
@@ -541,6 +541,14 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if (event.isSetDataCommandWithThisTag(Factor.TAG_LABEL)  || event.isSetDataCommandWithThisTag(Factor.TAG_SHORT_LABEL))
 			rebuildFactorChangerComboBox();
+	}
+
+	private boolean shouldRebuildPanel(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(Cause.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
+			return true;
+		
+		return event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE);
 	}
 	
 	class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
