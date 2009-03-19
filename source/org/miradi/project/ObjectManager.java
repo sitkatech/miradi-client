@@ -449,7 +449,7 @@ public class ObjectManager
 				EAM.logWarning("loadPool skipping invalid id in " + type);
 				continue;
 			}
-			getPool(type).put(new BaseId(id), map.get(id));
+			getPool(type).put(map.get(id));
 		}
 	}
 
