@@ -27,6 +27,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.BaseObject;
 
 public class ObjectPool
 {
@@ -66,6 +67,11 @@ public class ObjectPool
 		return new ORefList(objectType, getIdList());
 	}
 
+	public void put(BaseObject baseObject) throws Exception
+	{
+		put(baseObject.getId(), baseObject);
+	}
+	
 	public void put(BaseId id, Object obj) throws Exception
 	{
 		if(map.containsKey(id))
