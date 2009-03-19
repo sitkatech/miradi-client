@@ -20,13 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.diagram.factortypes.FactorTypeCause;
-import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.StrategyClassificationQuestion;
@@ -85,41 +84,9 @@ public class Cause extends Factor
 		
 	public boolean isDirectThreat()
 	{
-		// NOTE: This was optimized for speed because doing it "the right way"
-		// was causing significant slowness for users
-		FactorLinkPool factorLinkPool = objectManager.getLinkagePool();
-		BaseId[] ids = factorLinkPool.getIds();
-		for(int i = 0; i < ids.length; ++i)
-		{
-			FactorLink link = (FactorLink)factorLinkPool.getRawObject(ids[i]);
-			if (doesLinkPointToTargetFactor(link)) 
-				return true;
-		}
-		return false;
+		return isDirectThreat.asBoolean();
 	}
 
-	private boolean doesLinkPointToTargetFactor(FactorLink link)
-	{
-		if(link.getFromFactorRef().equals(getRef()))
-		{
-			Factor toFactor = (Factor) objectManager.findObject(link.getToFactorRef());
-			if (toFactor.getType() == ObjectType.TARGET)
-				return true;
-		}
-		
-		if (!link.isBidirectional())
-			return false;
-		
-		if(link.getToFactorRef().equals(getRef()))
-		{
-			Factor fromFactor = (Factor) objectManager.findObject(link.getFromFactorRef());
-			if (fromFactor.getType() == ObjectType.TARGET)
-				return true;
-		}
-		
-		return false;
-	}
-	
 	public boolean canHaveObjectives()
 	{
 		return true;
@@ -175,17 +142,21 @@ public class Cause extends Factor
 	{
 		super.clear();
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		isDirectThreat = new BooleanData(TAG_IS_DIRECT_THREAT);
 		taxonomyCodeLabel = new PseudoQuestionData(PSEUDO_TAG_TAXONOMY_CODE_VALUE, new StrategyClassificationQuestion());
 		
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
+		addField(TAG_IS_DIRECT_THREAT, isDirectThreat);
 		addField(PSEUDO_TAG_TAXONOMY_CODE_VALUE, taxonomyCodeLabel);
 	}	
 	
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	public static final String TAG_IS_DIRECT_THREAT = "IsDirectThreat";
 	
 	public static final String OBJECT_NAME = "Cause";
 	
 	private ChoiceData taxonomyCode;
+	private BooleanData isDirectThreat;
 	private PseudoQuestionData taxonomyCodeLabel;
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";
