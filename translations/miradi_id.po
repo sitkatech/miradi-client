@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-14 19:05-0500\n"
+"POT-Creation-Date: 2009-03-18 18:44-0400\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -634,11 +634,11 @@ msgstr "Indikator "
 msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:385
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:379
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:471
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:465
 msgid "Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
@@ -1059,7 +1059,7 @@ msgstr "Pemilih Direktori "
 
 #: miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 #: miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:61
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:175
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
 msgid "Cancel"
 msgstr "Batalkan "
@@ -4287,7 +4287,7 @@ msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 
 #: miradi/source/org/miradi/views/noproject/RenameProjectDoer.java:106
-#: miradi/source/org/miradi/project/Project.java:164
+#: miradi/source/org/miradi/project/Project.java:163
 msgid "Invalid project name:"
 msgstr "Nama proyek tidak valid: "
 
@@ -4615,16 +4615,16 @@ msgstr ""
 msgid "Error occurred while switching threat rating mode."
 msgstr "Terjadi kesalahan saat mengganti mode peringkat ancaman. "
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:87
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:86
 msgid "Create Link"
 msgstr "Buat Tautan "
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:92
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:91
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:175
 msgid "Delete Link"
 msgstr "Hapus Tautan "
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:171
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:170
 msgid ""
 "This link will be deleted from any Conceptual Model pages and Results Chains "
 "that it appears on: "
@@ -4632,7 +4632,7 @@ msgstr ""
 "Tautan akan dihapus dari semua halaman Model Konsep dan Rangkaian Hasil yang "
 "berisi tautan ini:"
 
-#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:177
+#: miradi/source/org/miradi/views/threatmatrix/CreateDeletePopupMouseAdapter.java:176
 msgid "Delete a link?"
 msgstr "Hapus tautan? "
 
@@ -7004,24 +7004,24 @@ msgstr ""
 "Buat Sasaran baru bila diperlukan, atau gunakan bagian Status Masa Depan "
 "yang baru dari Kelangsungan Target untuk menyimpan data yang sama. "
 
-#: miradi/source/org/miradi/project/Project.java:161
+#: miradi/source/org/miradi/project/Project.java:160
 msgid " A project by this name already exists: "
 msgstr "Sudah ada proyek lain yang memakai nama ini: "
 
-#: miradi/source/org/miradi/project/Project.java:167
+#: miradi/source/org/miradi/project/Project.java:166
 msgid "A file or directory exist by the same name:"
 msgstr "Ada berkas atau direktori lain dengan nama yang sama: "
 
-#: miradi/source/org/miradi/project/Project.java:843
+#: miradi/source/org/miradi/project/Project.java:842
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
-#: miradi/source/org/miradi/project/Project.java:1041
+#: miradi/source/org/miradi/project/Project.java:1040
 #, fuzzy
 msgid "Attempt to execute command as side effect when not in that mode"
 msgstr "Attempt to execute command as side effect when not in that mode"
 
-#: miradi/source/org/miradi/project/Project.java:1056
+#: miradi/source/org/miradi/project/Project.java:1055
 #, fuzzy
 msgid ""
 "Attempt to execute command while in side effect mode:\n"
