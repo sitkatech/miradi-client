@@ -139,17 +139,24 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	{
 		try
 		{
-			//FIXME need to add other types and create events here
-			if (event.isDeleteCommandForThisType(FactorLink.getObjectType()))
-				createOrDeleteThreatStressRatingsAsNeeded();
-			
-			if (event.isCreateCommandForThisType(FactorLink.getObjectType()))
+			if (isThreatStressRatingAffectingCommand(event))
 				createOrDeleteThreatStressRatingsAsNeeded();
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 		}
+	}
+
+	private boolean isThreatStressRatingAffectingCommand(CommandExecutedEvent event)
+	{
+		if (event.isDeleteCommandForThisType(FactorLink.getObjectType()) || event.isCreateCommandForThisType(FactorLink.getObjectType()))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_STRESS_REFS))
+			return true;
+				
+		return false;
 	}
 	
 	public Project getProject()
@@ -175,15 +182,30 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		
 		public ORef findMatchingThreatStressRating()
 		{
-			Stress stress = Stress.find(getProject(), getStressRef());
-			ORefList tsrReferrerRefsToStress = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-			
-			Cause threat = Cause.find(getProject(), getThreatRef());
-			ORefList tsrReferrerRefsToThreat = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-			
+			ORefList tsrReferrerRefsToStress = getTsrReferrerRefsToStress();
+			ORefList tsrReferrerRefsToThreat = getTsrReferrerRefsToThreat();
 			ORefList overLappingRefs = tsrReferrerRefsToStress.getOverlappingRefs(tsrReferrerRefsToThreat);
 			
 			return overLappingRefs.getRefForType(ThreatStressRating.getObjectType());
+		}
+
+		private ORefList getTsrReferrerRefsToStress()
+		{
+			Stress stress = Stress.find(getProject(), getStressRef());
+			if (stress == null)
+				return new ORefList();
+			
+			return stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		}
+		
+		private ORefList getTsrReferrerRefsToThreat()
+		{
+			Cause threat = Cause.find(getProject(), getThreatRef());
+			if (threat == null)
+				return new ORefList();
+			
+			ORefList tsrReferrerRefsToThreat = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+			return tsrReferrerRefsToThreat;
 		}
 		
 		public ORef getThreatRef()

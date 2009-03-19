@@ -19,9 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.text.ParseException;
+
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
@@ -36,26 +41,28 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testBasics() throws Exception
+	@Override
+	public void setUp() throws Exception
 	{
-		Target target = getProject().createTarget();
-		Cause threat = getProject().createCause();
-		ORef factorLinkRef = getProject().createFactorLink(threat.getRef(), target.getRef());
-		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
+		super.setUp();
+		
+		setupSampleData();
+	}
+	
+	private void setupSampleData() throws Exception
+	{
+		createTarget();
+		createThreat();
+		createFactorLink();		
 		assertTrue("threat is not a direct threat?", threat.isDirectThreat());
 		assertEquals("wrong factor Link count?", 1, getProject().getFactorLinkPool().getORefList().size());
 		
-		ORef createdStressRef = getProject().createAndPopulateStress().getRef();
-		getProject().setObjectData(target.getRef(), Target.TAG_STRESS_REFS, new ORefList(createdStressRef).toString());
-		ORefList stressRefs = target.getStressRefs();
-		assertEquals("wrong target stress count?", 1, stressRefs.size());
+		createStress();
 		
-		ORef stressRef = stressRefs.getRefForType(Stress.getObjectType());
-		getProject().createThreatStressRating(stressRef, threat.getRef());
+		getProject().createThreatStressRating(stress.getRef(), threat.getRef());
 		ORefList threatStressRatingReferrerRefs1 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		assertEquals("wrong threat stress rating count?", 1, threatStressRatingReferrerRefs1.size());
 		
-		Stress stress = Stress.find(getProject(), stressRef);
 		ORefList threatStressRatingReferringToStressRefs = stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 		assertEquals("wrong threat stress rating referring to stress count?", 1, threatStressRatingReferringToStressRefs.size());
 
@@ -64,16 +71,83 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		
 		ThreatStressRatingEnsurer threatStressRatingEnsurer = new ThreatStressRatingEnsurer(getProject());
 		getProject().addCommandExecutedListener(threatStressRatingEnsurer);
-		CommandDeleteObject deleteFactorLinkCommand = new CommandDeleteObject(factorLink);
-		getProject().executeCommand(deleteFactorLinkCommand);
+	}
+
+	public void testCreateAndDeleteStress() throws Exception
+	{
+		deleteStress();
 		
-		ORefList threatStressRatingReferrerRefs2 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-		assertEquals("threat stress rating was not removed as a result of factor link deletion?", 0, threatStressRatingReferrerRefs2.size());
+		assertEquals("stress was not deleted?", 0, getProject().getStressPool().size());
+		assertEquals("threat stress rating was not deleted?", 0, getProject().getThreatStressRatingPool().size());
+		verifyThreatStressRatingReferrersToThreat(0);
+		
+		createStress();
+		
+		verifyThreatStressRatingReferrersToThreat(1);
+	}
+
+	public void testCreateAndDeleteFactorLink() throws Exception
+	{
+		deleteObject(factorLink);
+		
+		verifyThreatStressRatingReferrersToThreat(0);
 		
 		CreateFactorLinkParameter extraInfo = new CreateFactorLinkParameter(threat.getRef(), target.getRef());
 		CommandCreateObject createFactorlLinkCommand = new CommandCreateObject(FactorLink.getObjectType(), extraInfo);
 		getProject().executeCommand(createFactorlLinkCommand);
-		ORefList threatStressRatingReferrerRefs3 = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-		assertEquals("threat stress rating was not created as a result of factor link creation?", 1, threatStressRatingReferrerRefs3.size());
+		
+		verifyThreatStressRatingReferrersToThreat(1);
 	}
+
+	private void verifyThreatStressRatingReferrersToThreat(int expected)
+	{
+		ORefList threatStressRatingReferrerRefs = threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
+		assertEquals("incorrect threat stress ratings referring to threat?", expected, threatStressRatingReferrerRefs.size());
+	}
+	
+	private void deleteObject(BaseObject objectToDelet) throws CommandFailedException
+	{
+		CommandDeleteObject deleteFactorLinkCommand = new CommandDeleteObject(objectToDelet);
+		getProject().executeCommand(deleteFactorLinkCommand);
+	}
+	
+	private void createFactorLink() throws Exception
+	{
+		ORef factorLinkRef = getProject().createFactorLink(threat.getRef(), target.getRef());
+		factorLink = FactorLink.find(getProject(), factorLinkRef);
+	}
+
+	private void createThreat() throws Exception
+	{
+		threat = getProject().createCause();
+	}
+
+	private void createTarget() throws Exception
+	{
+		target = getProject().createTarget();
+	}
+	
+	private void createStress() throws Exception
+	{
+		stress = getProject().createAndPopulateStress();
+		CommandSetObjectData addStressCommand = CommandSetObjectData.createAppendORefCommand(target, Target.TAG_STRESS_REFS, stress.getRef());
+		getProject().executeCommand(addStressCommand);
+		
+		ORefList stressRefs = target.getStressRefs();
+		assertEquals("wrong target stress count?", 1, stressRefs.size());
+	}
+	
+	private void deleteStress() throws ParseException, CommandFailedException
+	{
+		CommandSetObjectData removeStressCommand = CommandSetObjectData.createRemoveORefCommand(target, Target.TAG_STRESS_REFS, stress.getRef());
+		getProject().executeCommand(removeStressCommand);
+		
+		getProject().executeCommandsWithoutTransaction(stress.createCommandsToClear());
+		deleteObject(stress);
+	}
+	
+	private Cause threat;
+	private Target target;
+	private FactorLink factorLink;
+	private Stress stress;
 }
