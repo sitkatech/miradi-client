@@ -75,6 +75,7 @@ import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objectpools.ResultsChainDiagramPool;
 import org.miradi.objectpools.StrategyPool;
+import org.miradi.objectpools.StressPool;
 import org.miradi.objectpools.TableSetttingsPool;
 import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objectpools.TargetPool;
@@ -249,6 +250,11 @@ public class Project
 		return (CausePool) getPool(ObjectType.CAUSE);
 	}
 	
+	public StressPool getStressPool()
+	{
+		return (StressPool) getPool(ObjectType.STRESS);
+	}
+
 	public IntermediateResultPool getIntermediateResultPool()
 	{
 		return (IntermediateResultPool) getPool(ObjectType.INTERMEDIATE_RESULT);
