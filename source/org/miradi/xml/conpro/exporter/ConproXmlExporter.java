@@ -33,7 +33,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
-import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -594,22 +593,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeCodeListElements(out, HABITAT_TAXONOMY_CODES, HABITAT_TAXONOMY_CODE, conProHabitatCodeList);
 	}
 	
-	public static FactorLinkSet getThreatTargetFactorLinks(Project project, Target target) throws Exception
-	{
-		FactorLinkSet targetLinks = new FactorLinkSet();
-		ORefList factorLinkReferrers = target.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for (int refIndex = 0; refIndex < factorLinkReferrers.size(); ++refIndex)
-		{
-			FactorLink factorLink = FactorLink.find(project, factorLinkReferrers.get(refIndex));
-			if (factorLink.isThreatTargetLink())
-			{
-				targetLinks.add(factorLink);
-			}
-		}
-		
-		return targetLinks;
-	}
-
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
 	{		
 		writeStartElement(out, THREAT_TARGET_ASSOCIATIONS);
