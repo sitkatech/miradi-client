@@ -26,6 +26,7 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
@@ -98,6 +99,15 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		
 		verifyThreatStressRatingReferrersToThreat(1);
 	}
+	
+	public void testChangeDirectThreatStatus() throws Exception
+	{
+		switchOffThreat();
+		verifyThreatStressRatingReferrersToThreat(0);
+		
+		switchOnThreat();
+		verifyThreatStressRatingReferrersToThreat(1);
+	}
 
 	private void verifyThreatStressRatingReferrersToThreat(int expected)
 	{
@@ -120,8 +130,25 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 	private void createThreat() throws Exception
 	{
 		threat = getProject().createCause();
+		switchOnThreat();
 	}
 
+	private void switchOffThreat() throws CommandFailedException
+	{
+		changeThreatStatus(BooleanData.BOOLEAN_FALSE);
+	}
+	
+	private void switchOnThreat() throws CommandFailedException
+	{
+		changeThreatStatus(BooleanData.BOOLEAN_TRUE);
+	}
+
+	private void changeThreatStatus(String isThreat) throws CommandFailedException
+	{
+		CommandSetObjectData setThreat = new CommandSetObjectData(threat, Cause.TAG_IS_DIRECT_THREAT, isThreat);
+		getProject().executeCommand(setThreat);
+	}
+	
 	private void createTarget() throws Exception
 	{
 		target = getProject().createTarget();
