@@ -28,7 +28,6 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
-import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -193,20 +192,6 @@ public class Target extends Factor
 		return appendedChoiceValues.toString();
 	}
 
-	public FactorLinkSet getThreatTargetFactorLinks()
-	{
-		ORefList linkRefsThatReferToUs = findObjectsThatReferToUs(FactorLink.getObjectType());
-		FactorLinkSet directThreatTargetLinks = new FactorLinkSet();
-		for (int i = 0; i < linkRefsThatReferToUs.size(); ++i)
-		{
-			ORef linkRef = linkRefsThatReferToUs.get(i);
-			FactorLink factorLink = (FactorLink) objectManager.findObject(linkRef);
-			if (factorLink.isThreatTargetLink())
-				directThreatTargetLinks.add(factorLink);
-		}
-		return directThreatTargetLinks;
-	}
-	
 	public IdList getDirectOrIndirectIndicators()
 	{
 		if(!isViabilityModeTNC())
