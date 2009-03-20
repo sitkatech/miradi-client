@@ -22,13 +22,9 @@ package org.miradi.views.diagram;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.views.umbrella.ThreatStressRatingCreator;
 
 public class InsertDirectThreatDoer extends InsertFactorDoer
 {
@@ -81,15 +77,16 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 	@Override
 	protected void doExtraWork(DiagramFactor newlyInsertedDiagramFactor) throws Exception
 	{
-		ThreatStressRatingCreator creator = new ThreatStressRatingCreator(getProject());
-		Factor threat = newlyInsertedDiagramFactor.getWrappedFactor();
-		ORefList factorLinkReferrerRefs = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for (int index = 0; index < factorLinkReferrerRefs.size(); ++index)
-		{
-			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrerRefs.get(index));
-			ORef targetRef = factorLink.getSafeDownstreamTargetRef();
-			creator.createAndAddThreatStressRating(newlyInsertedDiagramFactor.getWrappedORef(), targetRef);
-		}
+//FIXME this code is no longer needed, since ThreatStressRatingEnsurer takes care of creating TSRs.  also see if we can remove this method completely 
+//		ThreatStressRatingCreator creator = new ThreatStressRatingCreator(getProject());
+//		Factor threat = newlyInsertedDiagramFactor.getWrappedFactor();
+//		ORefList factorLinkReferrerRefs = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
+//		for (int index = 0; index < factorLinkReferrerRefs.size(); ++index)
+//		{
+//			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrerRefs.get(index));
+//			ORef targetRef = factorLink.getSafeDownstreamTargetRef();
+//			creator.createAndAddThreatStressRating(newlyInsertedDiagramFactor.getWrappedORef(), targetRef);
+//		}
 	}
 }
 
