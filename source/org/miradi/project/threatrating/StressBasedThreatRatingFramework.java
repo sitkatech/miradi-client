@@ -103,7 +103,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
 	}
 	
-	public int[] calculateSummaryRatingValues(Factor factor) throws Exception
+	private int[] calculateSummaryRatingValues(Factor factor) throws Exception
 	{
 		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
 		ORefList factorLinkReferrers = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
