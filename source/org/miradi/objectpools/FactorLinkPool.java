@@ -25,7 +25,6 @@ import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -96,19 +95,6 @@ public class FactorLinkPool extends PoolWithIdAssigner
 		return ORef.INVALID;
 	}
 
-	public FactorLinkSet getDirectThreatTargetLinks()
-	{
-		FactorLinkSet allDirectThreatLinks = new FactorLinkSet();
-		for(int i = 0; i < size(); ++i)
-		{
-			FactorLink factorLink = getLinkage(i);
-			if (factorLink.isThreatTargetLink())
-				allDirectThreatLinks.add(factorLink);
-		}
-		
-		return allDirectThreatLinks;
-	}
-	
 	// NOTE: This method is deprecated! Pass Factors instead!
 	public boolean isLinked(ORef factorRef1, ORef factorRef2)
 	{
