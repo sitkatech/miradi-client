@@ -57,6 +57,13 @@ public class ThreatTargetChainObject
 		return resultingThreats;
 	}
 	
+	public ORefSet getDownstreamTargetRefsFromThreat(Factor startingFactorToUse)
+	{
+		HashSet<Factor> downstreamTargetRef = getDownstreamTargetsFromThreat(startingFactorToUse);
+		
+		return new ORefSet(downstreamTargetRef.toArray(new Factor[0]));
+	}
+
 	public HashSet<Factor> getDownstreamTargetsFromThreat(Factor startingFactorToUse)
 	{
 		initializeChain(startingFactorToUse);
