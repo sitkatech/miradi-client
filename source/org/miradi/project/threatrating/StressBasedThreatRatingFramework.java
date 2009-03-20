@@ -107,12 +107,22 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	{
 		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
 		ORefList factorLinkReferrers = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
+		return calculateSummaryRatingValues(threatTargetVirtualLink, factorLinkReferrers);
+	}
+
+	private int[] calculateSummaryRatingValues(ThreatTargetVirtualLink threatTargetVirtualLink,	ORefList factorLinkReferrers) throws Exception
+	{
 		Vector<Integer> calculatedSummaryRatingValues = new Vector();
 		for (int i = 0; i < factorLinkReferrers.size(); ++i)
 		{
 			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(i));
 			if (factorLink.isThreatTargetLink())
-				calculatedSummaryRatingValues.add(threatTargetVirtualLink.calculateThreatRatingBundleValue(factorLink.getUpstreamThreatRef(), factorLink.getDownstreamTargetRef()));
+			{
+				ORef threatRef = factorLink.getUpstreamThreatRef();
+				ORef targetRef = factorLink.getDownstreamTargetRef();
+				int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
+				calculatedSummaryRatingValues.add(threatRatingBundleValue);
+			}
 		}
 		
 		return Utility.convertToIntArray(calculatedSummaryRatingValues);
