@@ -630,6 +630,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
 	{
 		ORef threatRef = factorLink.getUpstreamThreatRef();
+		writeSimpleTargetLinkRatings(out, threatRef, targetRef);
+	}
+
+	private void writeSimpleTargetLinkRatings(UnicodeWriter out, ORef threatRef, ORef targetRef) throws Exception, IOException
+	{
 		SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
 		ThreatRatingBundle bundle = simpleThreatFramework.getBundle((FactorId)threatRef.getObjectId(), (FactorId)targetRef.getObjectId());
 				
