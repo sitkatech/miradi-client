@@ -63,8 +63,6 @@ public class CreateStressFromKeaDoer extends CreateAnnotationDoer
 		String labelFromKea = getLabelForStress();
 		CommandSetObjectData setStressLabel = new CommandSetObjectData(newlyCreatedObjectRef, Stress.TAG_LABEL, labelFromKea);
 		getProject().executeCommand(setStressLabel);
-		
-		CreateStressDoer.createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, (Factor) getSelectedParentFactor());
 	}
 
 	private String getLabelForStress()
