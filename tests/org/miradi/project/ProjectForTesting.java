@@ -179,10 +179,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public FactorLink createAndPopulateDirectThreatLink() throws Exception
 	{
-		FactorLink directThreatLink = createDirectThreatLink();
-		ORef targetRef = directThreatLink.getDownstreamTargetRef();
-		Target target = Target.find(this, targetRef);
-	
+		Target target = createAndPopulateTarget();
+		Cause threat = createAndPopulateThreat();
+		ORef directThreatLinkRef = createFactorLink(threat.getRef(), target.getRef());
+		FactorLink directThreatLink = FactorLink.find(this, directThreatLinkRef);
 		populateDirectThreatLink(directThreatLink, target.getStressRefs());
 
 		return directThreatLink;
