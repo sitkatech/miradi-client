@@ -37,6 +37,7 @@ import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
@@ -48,7 +49,6 @@ import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
-import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -105,7 +105,6 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
-import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -674,13 +673,13 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 	}
 	
-
 	private void createThreatStressRatings(ORef targetRef, ORef stressRef) throws Exception
 	{
-		FactorLinkSet targetLinks = ConproXmlExporter.getThreatTargetFactorLinks(getProject(), Target.find(getProject(), targetRef));
-		for(FactorLink factorLink : targetLinks)
-		{			
-			ORef threatRef = factorLink.getUpstreamThreatRef();
+		ThreatTargetChainObject threatTargetChainObject = new ThreatTargetChainObject(getProject());
+		Target target = Target.find(getProject(), targetRef);
+		ORefSet upstreatThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
+		for(ORef threatRef : upstreatThreatRefs)
+		{
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 			getProject().createObject(ThreatStressRating.getObjectType(), extraInfo);
 		}
