@@ -22,19 +22,17 @@ package org.miradi.xml.conpro.exporter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
-import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
-import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -613,24 +611,17 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	}
 
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, Target target) throws Exception
-	{
-		FactorLinkSet targetLinks = getThreatTargetFactorLinks(getProject(), target);
-		Vector<FactorLink> sortedTargetLinks = new Vector(targetLinks);
-		Collections.sort(sortedTargetLinks, new BaseObjectByRefSorter());
-
+	{		
 		writeStartElement(out, THREAT_TARGET_ASSOCIATIONS);
-		for (int index = 0; index < sortedTargetLinks.size(); ++index)
+
+		ThreatTargetChainObject threatTargetChainObejct = new ThreatTargetChainObject(getProject());
+		ORefSet upstreamThreats = threatTargetChainObejct.getUpstreamThreatRefsFromTarget(target);
+		for(ORef threatRef : upstreamThreats)
 		{
-			writeSimpleTargetLinkRatings(out, sortedTargetLinks.get(index), target.getRef());
+			writeSimpleTargetLinkRatings(out, threatRef, target.getRef());
 		}
 		
 		writeEndElement(out, THREAT_TARGET_ASSOCIATIONS);
-	}
-	
-	private void writeSimpleTargetLinkRatings(UnicodeWriter out, FactorLink factorLink, ORef targetRef) throws Exception
-	{
-		ORef threatRef = factorLink.getUpstreamThreatRef();
-		writeSimpleTargetLinkRatings(out, threatRef, targetRef);
 	}
 
 	private void writeSimpleTargetLinkRatings(UnicodeWriter out, ORef threatRef, ORef targetRef) throws Exception, IOException
