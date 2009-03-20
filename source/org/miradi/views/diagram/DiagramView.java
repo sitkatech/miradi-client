@@ -151,6 +151,7 @@ import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -510,6 +511,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 		
 		DiagramCorruptionDetector.warnUserAboutGroupBoxLinkCorruption(getMainWindow());
+		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+		getProject().addCommandExecutedListener(ensurer);
 	}
 
 	private String getDiagramCorruptionMessage(Vector<String> errorMessages)
