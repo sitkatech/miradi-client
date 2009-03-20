@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
@@ -67,16 +66,15 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 
 	private Factor extractThreat(ORefList refs) throws Exception
 	{
-		ORef linkBeingEditedRef = refs.getRefForType(FactorLink.getObjectType());
-		if(linkBeingEditedRef.isInvalid())
+		ORef causeRef = refs.getRefForType(Cause.getObjectType());
+		if(causeRef.isInvalid())
 			return null;
 		
-		FactorLink linkBeingEdited = FactorLink.find(getProject(), linkBeingEditedRef);
-		if (!linkBeingEdited.isThreatTargetLink())
+		Cause cause = Cause.find(getProject(), causeRef);
+		if (!cause.isDirectThreat())
 			return null;
 		
-		ORef threatRef = linkBeingEdited.getUpstreamThreatRef();
-		return Cause.findFactor(getProject(), threatRef);
+		return cause;
 	}
 
 	private void rebuild(ORefList hierarchyToSelectedRef) throws Exception
