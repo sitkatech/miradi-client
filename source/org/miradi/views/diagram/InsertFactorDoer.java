@@ -314,10 +314,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 	}
 	
-	protected void doExtraWork(DiagramFactor newDiagramFactor) throws Exception
-	{
-	}
-	
 	private DiagramModel getDiagramModel()
 	{
 		return getDiagramView().getDiagramModel();
