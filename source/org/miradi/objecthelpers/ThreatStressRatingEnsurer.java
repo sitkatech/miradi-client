@@ -158,6 +158,9 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		
 		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_STRESS_REFS))
 			return true;
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(Cause.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
+			return true;
 				
 		return false;
 	}
