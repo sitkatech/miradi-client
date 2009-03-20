@@ -73,20 +73,5 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 		getCurrentLayerManager().setContributingFactorsVisible(true);
 		getCurrentLayerManager().setDirectThreatsVisible(true);
 	}
-	
-	@Override
-	protected void doExtraWork(DiagramFactor newlyInsertedDiagramFactor) throws Exception
-	{
-//FIXME this code is no longer needed, since ThreatStressRatingEnsurer takes care of creating TSRs.  also see if we can remove this method completely 
-//		ThreatStressRatingCreator creator = new ThreatStressRatingCreator(getProject());
-//		Factor threat = newlyInsertedDiagramFactor.getWrappedFactor();
-//		ORefList factorLinkReferrerRefs = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
-//		for (int index = 0; index < factorLinkReferrerRefs.size(); ++index)
-//		{
-//			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrerRefs.get(index));
-//			ORef targetRef = factorLink.getSafeDownstreamTargetRef();
-//			creator.createAndAddThreatStressRating(newlyInsertedDiagramFactor.getWrappedORef(), targetRef);
-//		}
-	}
 }
 
