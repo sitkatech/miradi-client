@@ -33,12 +33,6 @@ import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
 {
-	protected void doExtraWork(ORef newlyCreatedObjectRef) throws Exception
-	{
-		Factor selectedFactor = (Factor) getSelectedParentFactor();
-		createThreatStressRatingsForAttachedLinks(getProject(), newlyCreatedObjectRef, selectedFactor);
-	}
-
 	public static void createThreatStressRatingsForAttachedLinks(Project project, ORef newlyCreatedStressRef, Factor selectedFactor) throws Exception
 	{
 		if(!selectedFactor.isTarget())
