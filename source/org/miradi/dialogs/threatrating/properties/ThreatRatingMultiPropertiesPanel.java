@@ -29,7 +29,7 @@ import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -108,8 +108,12 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 	
 	private DisposablePanelWithDescription findPanel()
 	{
-		ORef linkRef = getRefForType(FactorLink.getObjectType());
-		if(linkRef.isInvalid())
+		ORef causeRef = getRefForType(Cause.getObjectType());
+		if(causeRef.isInvalid())
+			return blankPropertiesPanel;
+		
+		Cause cause = Cause.find(getProject(), causeRef);
+		if (cause.isContributingFactor())
 			return blankPropertiesPanel;
 		
 		if (getProject().isStressBaseMode())
