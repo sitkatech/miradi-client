@@ -149,7 +149,9 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 
 		try
 		{
-			ThreatRatingBundle bundle = getBundle(link);
+			ORef threatRef = link.getUpstreamThreatRef();
+			ORef targetRef = link.getDownstreamTargetRef();
+			ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
 			ORef valueOptionRef = new ORef(ValueOption.getObjectType(), bundle.getValueId(criterionId));
 			ValueOption valueOption = (ValueOption)getProject().findObject(valueOptionRef);
 			int numeric = valueOption.getNumericValue();
@@ -167,14 +169,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		}
 	}
 
-	private ThreatRatingBundle getBundle(FactorLink link) throws Exception
-	{
-		ORef threatRef = link.getUpstreamThreatRef();
-		ORef targetRef = link.getDownstreamTargetRef();
-		return getBundle(threatRef, targetRef);
-	}
-
-	private ThreatRatingBundle getBundle(ORef threatRef, ORef targetRef) throws Exception
+	private ThreatRatingBundle getBundle(ORef threatRef, ORef targetRef)throws Exception
 	{
 		return getFramework().getBundle(threatRef, targetRef);
 	}
@@ -212,7 +207,10 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 				FactorId targetId = (FactorId)link.getDownstreamTargetRef().getObjectId();
 				ValueOption valueOption = getFramework().findValueOptionByNumericValue(selectedValue);
 				BaseId valueId = valueOption.getId();
-				ThreatRatingBundle bundle = getBundle(link);
+				
+				ORef threatRef = link.getUpstreamThreatRef();
+				ORef targetRef = link.getDownstreamTargetRef();
+				ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
 				if(valueId.equals(bundle.getValueId(criterionId)))
 					return;
 				
