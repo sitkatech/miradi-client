@@ -101,7 +101,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 			else
 				notLinkingToAnyFactors();
 			
-			doExtraWork(diagramFactor);
 			selectNewFactor(factorRef);
 			ensureNewFactorIsVisible(diagramFactor);
 			launchPropertiesEditor(diagramFactor);
