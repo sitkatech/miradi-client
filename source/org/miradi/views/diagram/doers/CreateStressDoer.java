@@ -19,39 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
-import org.miradi.objecthelpers.FactorLinkSet;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.project.Project;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateStressDoer extends CreateAnnotationDoer
 {
-	public static void createThreatStressRatingsForAttachedLinks(Project project, ORef newlyCreatedStressRef, Factor selectedFactor) throws Exception
-	{
-		if(!selectedFactor.isTarget())
-			return;
-
-		if (newlyCreatedStressRef.getObjectType() != Stress.getObjectType())
-			return;
-		
-		Target target = (Target) selectedFactor;
-		FactorLinkSet directThreatTargetLinks = target.getThreatTargetFactorLinks();
-		for(FactorLink factorLink : directThreatTargetLinks)
-		{
-			ORef threatRef = factorLink.getUpstreamThreatRef();
-			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(newlyCreatedStressRef, threatRef);
-			CommandCreateObject createThreatStressRating = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-			project.executeCommand(createThreatStressRating);			
-		}
-	}
-
 	public int getAnnotationType()
 	{
 		return Stress.getObjectType();
