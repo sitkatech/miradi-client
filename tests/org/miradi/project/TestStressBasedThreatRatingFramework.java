@@ -22,6 +22,7 @@ package org.miradi.project;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
@@ -49,7 +50,12 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	public void testGetSummaryRating() throws Exception
 	{
 		Target target = getProject().createTarget();
-		createThreatFactorLink(getProject().createCause(), target);
+		Cause threat = getProject().createCause();
+		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+		getProject().addCommandExecutedListener(ensurer);
+		
+		getProject().enableAsThreat(threat);
+		createThreatFactorLink(threat, target);
 	
 		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
 		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target));
@@ -112,6 +118,10 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		assertEquals("wrong stress rating?" , 3, stress.calculateStressRating());
 	
 		Cause threat = getProject().createCause();
+		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+		getProject().addCommandExecutedListener(ensurer);		
+		getProject().enableAsThreat(threat);
+
 		ThreatStressRating threatStressRating = getProject().createAndPopulateThreatStressRating(stress.getRef(), threat.getRef());
 		assertEquals("wrong threat stress rating?" , 3, threatStressRating.calculateThreatRating());
 		
@@ -134,10 +144,13 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	public void testGetThreatThreatRatingValue() throws Exception
 	{
 		Target target = getProject().createTarget();
-		Cause cause = getProject().createCause();
-		createThreatFactorLink(cause, target);
+		Cause threat = getProject().createCause();
+		createThreatFactorLink(threat, target);
+		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+		getProject().addCommandExecutedListener(ensurer);
 		
+		getProject().enableAsThreat(threat);		
 		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
-		assertEquals("wrong threat threatRating value?", "3", framework.getThreatThreatRatingValue(cause.getRef()).getCode());
+		assertEquals("wrong threat threatRating value?", "3", framework.getThreatThreatRatingValue(threat.getRef()).getCode());
 	}
 }

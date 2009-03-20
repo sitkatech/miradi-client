@@ -21,13 +21,14 @@ package org.miradi.project.threatrating;
 
 import java.util.Vector;
 
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
@@ -41,6 +42,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 		
 		stressBasedThreatFormula = new StressBasedThreatFormula();
 		threatRatingQuestion = new ThreatRatingQuestion();
+		threatTargetChainObject = new ThreatTargetChainObject(getProject());
 	}
 	
 	public StressBasedThreatFormula getStressBasedThreatFormula()
@@ -102,32 +104,47 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	{
 		return getStressBasedThreatFormula().getSummaryOfBundlesWithTwoPrimeRule(calculateSummaryRatingValues(factor));
 	}
-	
+		
 	private int[] calculateSummaryRatingValues(Factor factor) throws Exception
 	{
+		if (factor.isDirectThreat())
+			return calculateSummaryRatingValue((Cause) factor);
+		
+		if (factor.isTarget())
+			return calculateSummaryRatingValue((Target) factor);
+		
+		return new int[0];
+	}
+	
+	private int[] calculateSummaryRatingValue(Target target) throws Exception
+	{
+		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
+		Vector<Integer> calculatedSummaryRatingValues = new Vector();
 		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
-		ORefList factorLinkReferrers = factor.findObjectsThatReferToUs(FactorLink.getObjectType());
-		return calculateSummaryRatingValues(threatTargetVirtualLink, factorLinkReferrers);
+		for(ORef threatRef : upstreamThreatRefs)
+		{
+			int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, target.getRef());
+			calculatedSummaryRatingValues.add(threatRatingBundleValue);
+		}
+
+		return Utility.convertToIntArray(calculatedSummaryRatingValues);
 	}
 
-	private int[] calculateSummaryRatingValues(ThreatTargetVirtualLink threatTargetVirtualLink,	ORefList factorLinkReferrers) throws Exception
+	private int[] calculateSummaryRatingValue(Cause threat) throws Exception
 	{
+		ORefSet downStreamTargets = threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
 		Vector<Integer> calculatedSummaryRatingValues = new Vector();
-		for (int i = 0; i < factorLinkReferrers.size(); ++i)
+		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+		for(ORef targetRef : downStreamTargets)
 		{
-			FactorLink factorLink = FactorLink.find(getProject(), factorLinkReferrers.get(i));
-			if (factorLink.isThreatTargetLink())
-			{
-				ORef threatRef = factorLink.getUpstreamThreatRef();
-				ORef targetRef = factorLink.getDownstreamTargetRef();
-				int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
-				calculatedSummaryRatingValues.add(threatRatingBundleValue);
-			}
+			int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threat.getRef(), targetRef);
+			calculatedSummaryRatingValues.add(threatRatingBundleValue);
 		}
 		
 		return Utility.convertToIntArray(calculatedSummaryRatingValues);
 	}
-	
+
 	private StressBasedThreatFormula stressBasedThreatFormula;
 	private ThreatRatingQuestion threatRatingQuestion;
+	private ThreatTargetChainObject threatTargetChainObject;
 }
