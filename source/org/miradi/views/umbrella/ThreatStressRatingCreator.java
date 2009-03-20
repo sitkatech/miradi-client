@@ -31,6 +31,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 
+// FIXME this class can go away since the threatStressRatingEnsurer creates TSRs
 public class ThreatStressRatingCreator
 {
 	public ThreatStressRatingCreator(Project projectToUse)
