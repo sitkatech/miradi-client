@@ -31,11 +31,13 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
+//TODO need to rename and remove link from name
 public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 {
 	public LinkPropertiesFactorsSubpanel(Project projectToUse, Actions actions) throws Exception
@@ -78,9 +80,9 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 	private void updateFieldLabels(ORef[] orefsToUse)
 	{
 		ORefList refs = new ORefList(orefsToUse);
-		
-		ORef linkRef = refs.getRefForType(FactorLink.getObjectType());
-		if(linkRef.isInvalid())
+		ORef threatRef = refs.getRefForType(Cause.getObjectType());
+		ORef targetRef = refs.getRefForType(Target.getObjectType());		
+		if(threatRef.isInvalid() || targetRef.isInvalid())
 		{
 			fromLabel.setText("");
 			fromLabel.setIcon(null);
@@ -93,14 +95,12 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		
 		try
 		{
-			FactorLink link = FactorLink.find(getProject(), linkRef);
-
-			Factor fromFactor = Factor.findFactor(getProject(), link.getFromFactorRef());
+			Factor fromFactor = Factor.findFactor(getProject(), threatRef);
 			fromLabel.setText(FactorType.getFactorTypeLabel(fromFactor));
 			fromLabel.setIcon(FactorType.getFactorIcon(fromFactor));
 			fromNameField.setObjectType(fromFactor.getType());
 
-			Factor toFactor = Factor.findFactor(getProject(), link.getToFactorRef());
+			Factor toFactor = Factor.findFactor(getProject(), targetRef);
 			toLabel.setText(FactorType.getFactorTypeLabel(toFactor));
 			toLabel.setIcon(FactorType.getFactorIcon(toFactor));
 			toNameField.setObjectType(toFactor.getType());
@@ -116,6 +116,7 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		return "LinkPropertiesFactorsSubpanel";
 	}
 	
+	//TODO need to rename to and replace from - > threat and to -> target
 	private PanelTitleLabel fromLabel;
 	private PanelTitleLabel toLabel;
 	private ObjectDataInputField fromNameField;
