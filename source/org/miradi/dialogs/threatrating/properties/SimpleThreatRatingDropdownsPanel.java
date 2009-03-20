@@ -169,7 +169,14 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 
 	private ThreatRatingBundle getBundle(FactorLink link) throws Exception
 	{
-		return getFramework().getBundle(link.getUpstreamThreatRef(), link.getDownstreamTargetRef());
+		ORef threatRef = link.getUpstreamThreatRef();
+		ORef targetRef = link.getDownstreamTargetRef();
+		return getBundle(threatRef, targetRef);
+	}
+
+	private ThreatRatingBundle getBundle(ORef threatRef, ORef targetRef) throws Exception
+	{
+		return getFramework().getBundle(threatRef, targetRef);
 	}
 
 	private SimpleThreatRatingFramework getFramework()
