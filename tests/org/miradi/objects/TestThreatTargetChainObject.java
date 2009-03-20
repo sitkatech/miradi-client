@@ -23,6 +23,8 @@ import java.util.HashSet;
 
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.views.diagram.LinkDeletor;
 
 public class TestThreatTargetChainObject extends TestCaseWithProject
 {
@@ -31,7 +33,6 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		super(name);
 	}
 	
-	//FIXME this test is not complete since the class is no complete.
 	public void testBasics() throws Exception
 	{
 		DiagramFactor strategy = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Strategy.getObjectType());
@@ -41,9 +42,8 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		DiagramFactor cause3 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
 		
 		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
-		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
-		
-		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);		    // cause1 -> target1
+		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());		
+		ORef cause1ToTarget1DiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target1);		    // cause1 -> target1
 		getProject().enableAsThreat(cause1.getWrappedORef());
 		
 		getProject().createDiagramLinkAndAddToDiagram(cause1, cause2); //cause1 -> cause2 -> target1
@@ -54,7 +54,7 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		getProject().createDiagramLinkAndAddToDiagram(cause3, strategy);
 		getProject().createDiagramLinkAndAddToDiagram(strategy, target2);
 		
-		
+	
 		
 		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
 		HashSet<Factor> upstreamThreats1 = chainObject.getUpstreamThreatsFromTarget(target1.getWrappedFactor());
@@ -66,7 +66,16 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		assertEquals("wrong threat count?", 1, upstreamThreats3.size());
 		assertTrue("wrong threat in list?", upstreamThreats3.contains(cause2.getWrappedFactor()));
 		
-		HashSet<Factor> upstreamTargets = chainObject.getDownstreamTargetsFromThreat(cause1.getWrappedFactor());
-		assertEquals("wrong upstream target count?", 2, upstreamTargets.size());
+		HashSet<Factor> downsteamTargets = chainObject.getDownstreamTargetsFromThreat(cause1.getWrappedFactor());
+		assertEquals("wrong upstream target count?", 2, downsteamTargets.size());
+		
+		getProject().disableAsThreat(cause2.getWrappedORef());
+		LinkDeletor linkDeletor = new LinkDeletor(getProject());
+		DiagramLink diagramLink = DiagramLink.find(getProject(), cause1ToTarget1DiagramLinkRef);
+		linkDeletor.deleteDiagramLink(diagramLink);
+		
+		HashSet<Factor> upstreamThreatsFromTarget1 = chainObject.getUpstreamThreatsFromTarget(target1.getWrappedFactor());
+		assertEquals("wront threat count?", 1, upstreamThreatsFromTarget1.size());
+		assertTrue("wrong threat in list?", upstreamThreatsFromTarget1.contains(cause1.getWrappedFactor()));
 	}
 }

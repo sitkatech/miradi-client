@@ -28,8 +28,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.project.Project;
 
-//FIXME This class it in progress.  and might completely change. its goal is to find upstream threats for a target and down stream targets for a threat.
-// it it is only being used by its test.  it is not working and should not be used
 public class ThreatTargetChainObject
 {
 	public ThreatTargetChainObject(Project projectToUse)
