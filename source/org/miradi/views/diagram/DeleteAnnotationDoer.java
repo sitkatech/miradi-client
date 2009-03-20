@@ -31,27 +31,22 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ObjectData;
-import org.miradi.objecthelpers.FactorLinkSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
@@ -142,10 +137,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		{
 			commands.addAll(buildCommandsToDeleteKEAIndicators(project, (KeyEcologicalAttribute) annotationToDelete));
 		}
-		if (Stress.is(annotationToDelete.getType()))
-		{
-			commands.addAll(buildCommandsToDeleteThreatStressRatings(project, owner, annotationToDelete.getRef()));
-		}
 		
 		return commands;
 	}
@@ -234,23 +225,6 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 		return commands;
 	}
 
-	private static Collection buildCommandsToDeleteThreatStressRatings(Project project, BaseObject owner, ORef stressRef) throws Exception
-	{
-		Vector commands = new Vector();
-		Target target = (Target) owner;
-		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(project);
-		FactorLinkSet directThreatLinkSet = target.getThreatTargetFactorLinks();
-		for(FactorLink factorLink : directThreatLinkSet)
-		{
-			ORef threatStressRatingStressReferrer = threatTargetVirtualLink.findThreatStressRatingReferringToStress(factorLink.getUpstreamThreatRef(), target.getRef(), stressRef);
-			ThreatStressRating threatStressRating = (ThreatStressRating) project.findObject(threatStressRatingStressReferrer);
-			commands.addAll(Arrays.asList(threatStressRating.createCommandsToClear()));
-			commands.add(new CommandDeleteObject(threatStressRatingStressReferrer));
-		}
-		
-		return commands;
-	}
-	
 	private static Collection buildCommandsToDeleteMeasurements(Project project, Indicator indicator) throws Exception
 	{
 		Vector commands = new Vector();
