@@ -330,45 +330,9 @@ public class DiagramLink extends BaseObject
 		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
 				           		   "<b>To : " + toFactor.getLabel() + "</b>";
 		
-		String[] calculatedRatings = getRelevantStressesAsHTML();
-		if (calculatedRatings.length == 0)
-			return toolTipText;
-		
-		String header = "Stresses:";
-		toolTipText += "<hr>" + header + "<ul>";
-		for (int i = 0; i < calculatedRatings.length; ++i)
-		{
-			toolTipText += calculatedRatings[i];
-		}
-
 		return toolTipText;
 	}
 	
-	private String[] getRelevantStressesAsHTML()
-	{
-		String[] stressNames = getRelevantStressNames();
-		String[] StressNamesAsHTML = new String[stressNames.length];
-		for (int i = 0; i < stressNames.length; ++i)
-		{
-			StressNamesAsHTML[i] = "<li>" + stressNames[i] + "</li>";
-		}
-		
-		return StressNamesAsHTML;
-	}
-	
-	private String[] getRelevantStressNames()
-	{
-		Vector<String> allStressNames = new Vector();
-		DiagramLink[] diagramLinks = getSelfOrGroupBoxChildren();
-		for (int i = 0; i < diagramLinks.length; ++i)
-		{
-			FactorLink factorLink = diagramLinks[i].getWrappedFactorLink();
-			allStressNames.addAll(getStressNames(factorLink.getSafeDownstreamTargetRef()));
-		}
-		
-		return allStressNames.toArray(new String[0]);
-	}
-
 	private DiagramLink[] getSelfOrGroupBoxChildren()
 	{
 		if (getWrappedFactorLink() != null)
@@ -385,23 +349,6 @@ public class DiagramLink extends BaseObject
 		return allChildrenFactorLinks.toArray(new DiagramLink[0]);
 	}
 
-	private Vector<String> getStressNames(ORef targetRef)
-	{
-		Target target = Target.find(getProject(), targetRef);
-		if (target == null)
-			return new Vector<String>();
-		
-		ORefList stressRefs = target.getStressRefs(); 
-		Vector<String> stressNames = new Vector();
-		for(int index = 0; index < stressRefs.size(); ++index)
-		{
-			Stress stress = Stress.find(getProject(), stressRefs.get(index));
-			stressNames.add(stress.toString());
-		}
-
-		return stressNames;
-	}
-	
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateDiagramFactorLinkParameter(
