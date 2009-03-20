@@ -25,7 +25,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
@@ -74,21 +73,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		}
 	}
 
-	private FactorLink getFactorLink(int row, int column)
-	{
-		return FactorLink.find(getProject(), getLinkRef(getDirectThreat(row), getTarget(column)));
-	}
-
-	private boolean areLinked(int row, int column)
-	{
-		return areLinked(getDirectThreat(row), getTarget(column));
-	}
-	
-	public boolean areLinked(Factor from, Factor to)
-	{
-		return getProject().getFactorLinkPool().areLinked(from, to);
-	}
-	
 	public String getColumnTag(int column)
 	{
 		return "";
@@ -96,9 +80,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		if (areLinked(row, column))
-			return getFactorLink(row, column);
-			
 		return null;
 	}
 	
