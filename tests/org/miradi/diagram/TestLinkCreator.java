@@ -26,6 +26,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -39,7 +40,6 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.views.diagram.LinkCreator;
-import org.miradi.views.umbrella.ThreatStressRatingCreator;
 
 
 public class TestLinkCreator extends TestCaseWithProject
@@ -75,12 +75,13 @@ public class TestLinkCreator extends TestCaseWithProject
 		Target target = (Target) getProject().findObject(diagramTarget.getWrappedORef());
 		assertEquals("wrong stress count?", 2, target.getStressRefs().size());
 		
-		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		ORef diagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(causeDiagramFactor, diagramTarget);
-		DiagramLink diagramLink = (DiagramLink) getProject().findObject(diagramLinkRef);
+		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
+		getProject().addCommandExecutedListener(ensurer);
 	
-		ThreatStressRatingCreator creator = new ThreatStressRatingCreator(getProject());
-		creator.createAndAddThreatStressRatingsFromTarget(diagramLink.getWrappedRef(), diagramTarget.getWrappedORef());
+		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().createDiagramLinkAndAddToDiagram(causeDiagramFactor, diagramTarget);
+		getProject().switchOnThreat(causeDiagramFactor.getWrappedORef());
+		
 		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
 		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(causeDiagramFactor.getWrappedORef(), diagramTarget.getWrappedORef());
 		assertEquals("wrong threat stress rating count?", 2, threatStressRatings.size());

@@ -32,4 +32,13 @@ public class TestCause extends ObjectTestCase
 	{
 		verifyFields(ObjectType.CAUSE);
 	}
+	
+	public void testIsDirectThreat() throws Exception
+	{
+		Cause cause = getProject().createCause();
+		assertFalse("cause is direct threat?", cause.isDirectThreat());
+		
+		getProject().switchOnThreat(cause);
+		assertTrue("cause is not direct threat?", cause.isDirectThreat());
+	}
 }
