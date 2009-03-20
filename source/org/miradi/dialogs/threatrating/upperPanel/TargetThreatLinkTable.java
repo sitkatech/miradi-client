@@ -30,7 +30,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
-import org.miradi.views.threatmatrix.CreateDeletePopupMouseAdapter;
 
 public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 {
@@ -43,7 +42,6 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		setCellSelectionEnabled(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setColumnWidths();
-		addMouseListener(new CreateDeletePopupMouseAdapter(tableModel.getProject(), tableModel));
 	}
 	
 	@Override
