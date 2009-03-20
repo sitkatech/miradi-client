@@ -115,18 +115,6 @@ public class FactorLink extends BaseObject
 		}
 	}
 	
-	public ORef getSafeUpstreamThreatRef()
-	{
-		try
-		{
-			return getUpstreamThreatRef();
-		}
-		catch (Exception e)
-		{
-			return ORef.INVALID;
-		}
-	}
-	
 	public ORef getDownstreamTargetRef() throws Exception
 	{
 		if (getToFactorRef().getObjectType() == Target.getObjectType())
