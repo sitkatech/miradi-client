@@ -89,7 +89,7 @@ public class SampleDiagramBuilder
 	private static void createThreatAndSetLabel(ProjectForTesting project, final int interventionIndex) throws Exception
 	{
 		Factor threat = createObjectAndSetLabel(project, Cause.getObjectType(), interventionIndex);
-		project.switchOnThreat(threat.getRef());
+		project.enableAsThreat(threat.getRef());
 	}
 	
 	private static Factor createObjectAndSetLabel(ProjectForTesting project, int type, final int interventionIndex) throws Exception, CommandFailedException

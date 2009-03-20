@@ -38,7 +38,7 @@ public class TestCause extends ObjectTestCase
 		Cause cause = getProject().createCause();
 		assertFalse("cause is direct threat?", cause.isDirectThreat());
 		
-		getProject().switchOnThreat(cause);
+		getProject().enableAsThreat(cause);
 		assertTrue("cause is not direct threat?", cause.isDirectThreat());
 	}
 }

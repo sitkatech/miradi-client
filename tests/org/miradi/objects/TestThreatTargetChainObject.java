@@ -44,12 +44,12 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
 		
 		getProject().createDiagramLinkAndAddToDiagram(cause1, target1);		    // cause1 -> target1
-		getProject().switchOnThreat(cause1.getWrappedORef());
+		getProject().enableAsThreat(cause1.getWrappedORef());
 		
 		getProject().createDiagramLinkAndAddToDiagram(cause1, cause2); //cause1 -> cause2 -> target1
 		getProject().createDiagramLinkAndAddToDiagram(cause2, target1);			// cause2 -> target2
 		getProject().createDiagramLinkAndAddToDiagram(cause2, target2);
-		getProject().switchOnThreat(cause2.getWrappedORef());
+		getProject().enableAsThreat(cause2.getWrappedORef());
 		
 		getProject().createDiagramLinkAndAddToDiagram(cause3, strategy);
 		getProject().createDiagramLinkAndAddToDiagram(strategy, target2);

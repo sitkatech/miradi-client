@@ -80,7 +80,7 @@ public class TestLinkCreator extends TestCaseWithProject
 	
 		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		getProject().createDiagramLinkAndAddToDiagram(causeDiagramFactor, diagramTarget);
-		getProject().switchOnThreat(causeDiagramFactor.getWrappedORef());
+		getProject().enableAsThreat(causeDiagramFactor.getWrappedORef());
 		
 		ThreatStressRatingHelper helper = new ThreatStressRatingHelper(getProject());
 		Vector<ThreatStressRating> threatStressRatings = helper.getRelatedThreatStressRatings(causeDiagramFactor.getWrappedORef(), diagramTarget.getWrappedORef());

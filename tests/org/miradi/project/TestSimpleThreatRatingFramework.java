@@ -365,7 +365,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 	private static DiagramFactor createThreat(ProjectForTesting projectToUse) throws Exception
 	{
 		DiagramFactor threatDiagramFactor = projectToUse.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		projectToUse.switchOnThreat(threatDiagramFactor.getWrappedORef());
+		projectToUse.enableAsThreat(threatDiagramFactor.getWrappedORef());
 		
 		return threatDiagramFactor;
 //		FactorId threatId = (FactorId)projectToUse.createObject(ObjectType.CAUSE);
