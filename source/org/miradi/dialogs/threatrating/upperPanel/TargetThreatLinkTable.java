@@ -26,7 +26,6 @@ import javax.swing.ListSelectionModel;
 
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
@@ -94,11 +93,6 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 			return nothingSelected;
 		
 		Target target = getTargetThreatLinkTableModel().getTarget(modelColumn);
-		if (getTargetThreatLinkTableModel().areLinked(directThreat, target))
-		{
-			ORef linkRef = getTargetThreatLinkTableModel().getLinkRef(directThreat, target);
-			hierarchyRefs.add(linkRef);
-		}
 		hierarchyRefs.add(target.getRef());
 		hierarchyRefs.add(directThreat.getRef());
 		
