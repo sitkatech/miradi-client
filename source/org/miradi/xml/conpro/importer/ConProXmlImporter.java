@@ -353,6 +353,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			Node threatNode = threatNodeList.item(nodeIndex);
 			String threatId = getAttributeValue(threatNode, ID);
 			ORef threatRef = getProject().createObject(Cause.getObjectType(), new BaseId(threatId));
+			setData(threatRef, Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
 			
 			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
 			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);

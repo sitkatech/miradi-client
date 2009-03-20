@@ -25,6 +25,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.AssignmentId;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
@@ -172,6 +173,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		Cause cause = createCause();
 		populateCause(cause);
+		switchOnThreat(cause);
 		return cause;
 	}
 	
@@ -960,6 +962,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ORef createThreatTargetLink() throws Exception
 	{
 		DiagramFactor threat = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		switchOnThreat(threat.getWrappedORef());
+		
 		DiagramFactor target = createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		
@@ -974,7 +978,33 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return factorLinkRef;
 	}
+
+	public void switchOffThreat(Cause threat) throws CommandFailedException
+	{
+		switchOffThreat(threat.getRef());
+	}
 	
+	public void switchOffThreat(ORef threatRef) throws CommandFailedException
+	{
+		changeThreatStatus(threatRef, BooleanData.BOOLEAN_FALSE);
+	}
+	
+	public void switchOnThreat(Cause threat) throws Exception
+	{
+		switchOnThreat(threat.getRef());
+	}
+	
+	public void switchOnThreat(ORef threatRef) throws Exception
+	{
+		changeThreatStatus(threatRef, BooleanData.BOOLEAN_TRUE);
+	}
+
+	private void changeThreatStatus(ORef threatRef, String isThreat) throws CommandFailedException
+	{
+		CommandSetObjectData setThreat = new CommandSetObjectData(threatRef, Cause.TAG_IS_DIRECT_THREAT, isThreat);
+		executeCommand(setThreat);
+	}
+		
 	public static final String PROJECT_RESOURCE_LABEL_TEXT = "John Doe";
 	public static final String SIMPLE_THREAT_RATING_COMMENT = "sample simple threat rating comment";
 	public static final String STRESS_BASED_THREAT_RATING_COMMENT = "sample stress based threat rating comment";

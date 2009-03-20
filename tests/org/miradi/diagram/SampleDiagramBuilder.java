@@ -28,6 +28,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.DiagramFactorPool;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
@@ -46,7 +47,7 @@ public class SampleDiagramBuilder
 		{
 			createObjectAndSetLabel(project, ObjectType.STRATEGY, interventionIndexBase + i);
 			createObjectAndSetLabel(project, ObjectType.CAUSE, indirectFactorIndexBase + i);
-			createObjectAndSetLabel(project, ObjectType.CAUSE, directThreatIndexBase + i);
+			createThreatAndSetLabel(project, directThreatIndexBase + i);
 			createObjectAndSetLabel(project, ObjectType.TARGET, targetIndexBase + i);
 		}
 		
@@ -85,11 +86,19 @@ public class SampleDiagramBuilder
 		return null;
 	}
 
-	private static void createObjectAndSetLabel(ProjectForTesting project, int type, final int interventionIndex) throws Exception, CommandFailedException
+	private static void createThreatAndSetLabel(ProjectForTesting project, final int interventionIndex) throws Exception
+	{
+		Factor threat = createObjectAndSetLabel(project, Cause.getObjectType(), interventionIndex);
+		project.switchOnThreat(threat.getRef());
+	}
+	
+	private static Factor createObjectAndSetLabel(ProjectForTesting project, int type, final int interventionIndex) throws Exception, CommandFailedException
 	{
 		DiagramFactor diagramFactor = project.createDiagramFactorAndAddToDiagram(type);
 		Factor factor = (Factor) project.findObject(new ORef(type, diagramFactor.getWrappedId()));
 		CommandSetObjectData addLabelCommand = new CommandSetObjectData(factor.getRef(), Factor.TAG_LABEL, Integer.toString(interventionIndex));
 		project.executeCommand(addLabelCommand);
+		
+		return factor;
 	}
 }

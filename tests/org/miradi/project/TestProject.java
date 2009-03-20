@@ -44,6 +44,7 @@ import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
 import org.miradi.main.EAMTestCase;
 import org.miradi.main.TransferableMiradiList;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
@@ -143,22 +144,7 @@ public class TestProject extends EAMTestCase
 		
 		assertNotNull("didn't create arbitrary data?", project.getViewData("iweflijjfliej"));
 	}
-	
-	public void testCreateAndDeleteModelLinkage() throws Exception
-	{
-		DiagramFactor threat = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
-		Cause factor = Cause.find(project, threat.getWrappedORef());
-		assertFalse("already direct threat?", factor.isDirectThreat());
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
-		BaseId createdId = project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter);
-		BaseId linkageId = createdId;
-		assertTrue("didn't become direct threat?", factor.isDirectThreat());
-		BaseObject object = project.findObject(new ORef(ObjectType.FACTOR_LINK, linkageId));
-		project.deleteObject(object);
-		assertFalse("still a direct threat?", factor.isDirectThreat());
-	}
-	
+		
 	public void testGetSnapped() throws Exception
 	{
 		Point zeroZero = new Point(0, 0);
@@ -749,13 +735,15 @@ public class TestProject extends EAMTestCase
 	public void testDirectThreatSet() throws Exception
 	{
 		FactorCell nodeContributingFactor = project.createFactorCell(ObjectType.CAUSE);
-		FactorCell nodeDirectThreatA = project.createFactorCell(ObjectType.CAUSE);	
+		FactorCell nodeDirectThreatA = project.createFactorCell(ObjectType.CAUSE);
+		getProject().switchOnThreat(nodeDirectThreatA.getWrappedFactorRef());
 		
 		FactorCell target = project.createFactorCell(ObjectType.TARGET);
 		CreateFactorLinkParameter parameter1 = new CreateFactorLinkParameter(nodeDirectThreatA.getWrappedFactorRef(), target.getWrappedFactorRef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter1);
 		
 		FactorCell nodeDirectThreatB = project.createFactorCell(ObjectType.CAUSE);
+		getProject().switchOnThreat(nodeDirectThreatB.getWrappedFactorRef());
 		CreateFactorLinkParameter parameter2 = new CreateFactorLinkParameter(nodeDirectThreatB.getWrappedFactorRef(), target.getWrappedFactorRef());
 		project.createObject(ObjectType.FACTOR_LINK, BaseId.INVALID, parameter2);
 		
@@ -792,6 +780,7 @@ public class TestProject extends EAMTestCase
 			
 			LinkCreator linkCreator = new LinkCreator(diskProject);
 			linkCreator.createFactorLinkAndAddToDiagramUsingCommands(conceptualModel, cause, target);
+			diskProject.setObjectData(factorRef, Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
 			
 			FactorId interventionId = (FactorId)diskProject.createObjectAndReturnId(ObjectType.STRATEGY);
 			Factor object = (Factor) diskProject.findObject(new ORef(ObjectType.STRATEGY, interventionId));
