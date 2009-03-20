@@ -47,15 +47,15 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		layout.setGaps(10);
 		setLayout(layout);
 		
-		fromLabel = new PanelTitleLabel();
-		fromNameField = createExpandableField(ObjectType.FAKE, Factor.TAG_LABEL);
-		fromNameField.setEditable(false);
-		addFieldWithCustomLabel(fromNameField, fromLabel);
+		threatLabel = new PanelTitleLabel();
+		threatNameField = createExpandableField(ObjectType.FAKE, Factor.TAG_LABEL);
+		threatNameField.setEditable(false);
+		addFieldWithCustomLabel(threatNameField, threatLabel);
 
-		toLabel = new PanelTitleLabel();
-		toNameField = createExpandableField(ObjectType.FAKE, Factor.TAG_LABEL);
-		toNameField.setEditable(false);
-		addFieldWithCustomLabel(toNameField, toLabel);
+		targetLabel = new PanelTitleLabel();
+		targetNameField = createExpandableField(ObjectType.FAKE, Factor.TAG_LABEL);
+		targetNameField.setEditable(false);
+		addFieldWithCustomLabel(targetNameField, targetLabel);
 
 		updateFieldsFromProject();
 	}
@@ -84,26 +84,26 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		ORef targetRef = refs.getRefForType(Target.getObjectType());		
 		if(threatRef.isInvalid() || targetRef.isInvalid())
 		{
-			fromLabel.setText("");
-			fromLabel.setIcon(null);
-			fromNameField.setObjectType(ObjectType.FAKE);
-			toLabel.setText("");
-			toLabel.setIcon(null);
-			toNameField.setObjectType(ObjectType.FAKE);
+			threatLabel.setText("");
+			threatLabel.setIcon(null);
+			threatNameField.setObjectType(ObjectType.FAKE);
+			targetLabel.setText("");
+			targetLabel.setIcon(null);
+			targetNameField.setObjectType(ObjectType.FAKE);
 			return;
 		}
 		
 		try
 		{
-			Factor fromFactor = Factor.findFactor(getProject(), threatRef);
-			fromLabel.setText(FactorType.getFactorTypeLabel(fromFactor));
-			fromLabel.setIcon(FactorType.getFactorIcon(fromFactor));
-			fromNameField.setObjectType(fromFactor.getType());
+			Factor threat = Factor.findFactor(getProject(), threatRef);
+			threatLabel.setText(FactorType.getFactorTypeLabel(threat));
+			threatLabel.setIcon(FactorType.getFactorIcon(threat));
+			threatNameField.setObjectType(threat.getType());
 
-			Factor toFactor = Factor.findFactor(getProject(), targetRef);
-			toLabel.setText(FactorType.getFactorTypeLabel(toFactor));
-			toLabel.setIcon(FactorType.getFactorIcon(toFactor));
-			toNameField.setObjectType(toFactor.getType());
+			Factor target = Factor.findFactor(getProject(), targetRef);
+			targetLabel.setText(FactorType.getFactorTypeLabel(target));
+			targetLabel.setIcon(FactorType.getFactorIcon(target));
+			targetNameField.setObjectType(target.getType());
 		}
 		catch(Exception e)
 		{
@@ -116,9 +116,8 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 		return "LinkPropertiesFactorsSubpanel";
 	}
 	
-	//TODO need to rename to and replace from - > threat and to -> target
-	private PanelTitleLabel fromLabel;
-	private PanelTitleLabel toLabel;
-	private ObjectDataInputField fromNameField;
-	private ObjectDataInputField toNameField;
+	private PanelTitleLabel threatLabel;
+	private PanelTitleLabel targetLabel;
+	private ObjectDataInputField threatNameField;
+	private ObjectDataInputField targetNameField;
 }
