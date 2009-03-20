@@ -101,10 +101,10 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 	
 	public void testChangeDirectThreatStatus() throws Exception
 	{
-		getProject().switchOffThreat(threat);
+		getProject().disableAsThreat(threat);
 		verifyThreatStressRatingReferrersToThreat(0);
 		
-		getProject().switchOnThreat(threat);
+		getProject().enableAsThreat(threat);
 		verifyThreatStressRatingReferrersToThreat(1);
 	}
 
@@ -129,7 +129,7 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 	private void createThreat() throws Exception
 	{
 		threat = getProject().createCause();
-		getProject().switchOnThreat(threat);
+		getProject().enableAsThreat(threat);
 	}
 
 	private void createTarget() throws Exception
