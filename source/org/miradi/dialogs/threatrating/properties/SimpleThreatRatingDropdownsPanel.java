@@ -40,7 +40,8 @@ import org.miradi.ids.FactorId;
 import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -126,19 +127,21 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		rollupField.setObjectRefs(getSelectedRefs());
 	}
 
-	private FactorLink getLink()
+	private ORef getTargetRef()
 	{
-		ORef linkRef = getRefForType(FactorLink.getObjectType());
-		if(linkRef.isInvalid())
-			return null;
-		FactorLink link = (FactorLink)getProject().findObject(linkRef);
-		return link;
+		return getRefForType(Target.getObjectType());
 	}
-
+	
+	private ORef getThreatRef()
+	{
+		return getRefForType(Cause.getObjectType());
+	}
+	
 	private void updateDropdownFromProject(BaseId criterionId, UiComboBox dropdown)
 	{
-		FactorLink link = getLink();
-		if(link == null)
+		ORef threatRef = getThreatRef();
+		ORef targetRef = getTargetRef();
+		if(threatRef.isInvalid() || targetRef.isInvalid())
 		{
 			dropdown.setSelectedIndex(0);
 			dropdown.setEnabled(false);
@@ -149,8 +152,6 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 
 		try
 		{
-			ORef threatRef = link.getUpstreamThreatRef();
-			ORef targetRef = link.getDownstreamTargetRef();
 			ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
 			ORef valueOptionRef = new ORef(ValueOption.getObjectType(), bundle.getValueId(criterionId));
 			ValueOption valueOption = (ValueOption)getProject().findObject(valueOptionRef);
@@ -190,11 +191,10 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		{
 			try
 			{
-				FactorLink link = getLink();
-				if(link == null)
-				{
+				ORef threatRef = getThreatRef();
+				ORef targetRef = getTargetRef();
+				if(threatRef.isInvalid() || targetRef.isInvalid())
 					return;
-				}
 
 				ChoiceItemComboBox source = (ChoiceItemComboBox)event.getSource();
 				ChoiceItem selected = (ChoiceItem)source.getSelectedItem();
@@ -203,13 +203,11 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 				if(selectedCode.length() > 0)
 					selectedValue = Integer.parseInt(selectedCode);
 				
-				FactorId threatId = (FactorId)link.getUpstreamThreatRef().getObjectId();
-				FactorId targetId = (FactorId)link.getDownstreamTargetRef().getObjectId();
 				ValueOption valueOption = getFramework().findValueOptionByNumericValue(selectedValue);
 				BaseId valueId = valueOption.getId();
 				
-				ORef threatRef = link.getUpstreamThreatRef();
-				ORef targetRef = link.getDownstreamTargetRef();
+				FactorId threatId = (FactorId)threatRef.getObjectId();
+				FactorId targetId = (FactorId)targetRef.getObjectId();
 				ThreatRatingBundle bundle = getBundle(threatRef, targetRef);
 				if(valueId.equals(bundle.getValueId(criterionId)))
 					return;
