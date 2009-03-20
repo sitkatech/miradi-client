@@ -58,17 +58,6 @@ public class TestFactorLinkPool extends TestCaseWithProject
 		assertFalse("Found link 1->3?", pool.isLinked(node1.getRef(), node3.getRef()));
 	}
 	
-	public void testGetDirectThreatTargetLinks() throws Exception
-	{
-		assertEquals("links found?", 0, getProject().getFactorLinkPool().getDirectThreatTargetLinks().size());
-		
-		getProject().createThreatTargetLink();
-		assertEquals("wrong link count?", 1, getProject().getFactorLinkPool().getDirectThreatTargetLinks().size());
-		
-		getProject().creatThreatTargetBidirectionalLink();
-		assertEquals("wrong link count?", 2, getProject().getFactorLinkPool().getDirectThreatTargetLinks().size());
-	}
-	
 	class LinkageMonitor implements FactorLinkListener
 	{
 		public void factorLinkWasCreated(FactorId linkFromId, FactorId linkToId)
