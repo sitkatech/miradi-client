@@ -908,6 +908,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return createDiagramLink(from, to);
 	}
 
+	public ORef createDiagramLinkAndAddToDiagram(DiagramFactor from, DiagramFactor to, String isBidirectionalTag) throws Exception
+	{
+		ORef diagramLinkRef = createDiagramLinkAndAddToDiagram(from, to);
+		DiagramLink diagramLink = DiagramLink.find(this, diagramLinkRef);
+		setBidrectionality(diagramLink.getWrappedRef(), isBidirectionalTag);
+		
+		return diagramLinkRef;
+	}
+	
 	public ORef createDiagramLinkAndAddToDiagram(DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		ORef linkRef = createDiagramLink(from, to);
@@ -973,10 +982,20 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ORef creatThreatTargetBidirectionalLink() throws Exception
 	{
 		ORef factorLinkRef = createThreatTargetLink();
-		CommandSetObjectData setBidirectionality = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
-		executeCommand(setBidirectionality);
+		enableBidrectionality(factorLinkRef);
 		
 		return factorLinkRef;
+	}
+
+	public void enableBidrectionality(ORef factorLinkRef) throws CommandFailedException
+	{
+		setBidrectionality(factorLinkRef, BooleanData.BOOLEAN_TRUE);
+	}
+
+	public void setBidrectionality(ORef factorLinkRef, String isBidirectional)	throws CommandFailedException
+	{
+		CommandSetObjectData setBidirectionality = new CommandSetObjectData(factorLinkRef, FactorLink.TAG_BIDIRECTIONAL_LINK, isBidirectional);
+		executeCommand(setBidirectionality);
 	}
 
 	public void disableAsThreat(Cause threat) throws CommandFailedException

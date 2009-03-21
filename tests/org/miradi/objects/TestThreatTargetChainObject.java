@@ -23,8 +23,7 @@ import java.util.HashSet;
 
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.views.diagram.LinkDeletor;
+import org.miradi.objectdata.BooleanData;
 
 public class TestThreatTargetChainObject extends TestCaseWithProject
 {
@@ -35,47 +34,142 @@ public class TestThreatTargetChainObject extends TestCaseWithProject
 	
 	public void testBasics() throws Exception
 	{
-		DiagramFactor strategy = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Strategy.getObjectType());
+		verifyThreatThreatTarget();
+		verifyThreatTargetTarget();
+		verifyThreatCauseTarget();
+		veriftThreat1TargetThreat2Target();
+		verifyThreatTarget1ThreatTarget2();		
+	}
+
+	private void verifyThreatThreatTarget() throws Exception
+	{
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threat1.getWrappedORef());
+				
+		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threat2.getWrappedORef());
 		
-		DiagramFactor cause1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor cause2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor cause3 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
 		
-		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
-		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());		
-		ORef cause1ToTarget1DiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(cause1, target1);		    // cause1 -> target1
-		getProject().enableAsThreat(cause1.getWrappedORef());
-		
-		getProject().createDiagramLinkAndAddToDiagram(cause1, cause2); //cause1 -> cause2 -> target1
-		getProject().createDiagramLinkAndAddToDiagram(cause2, target1);			// cause2 -> target2
-		getProject().createDiagramLinkAndAddToDiagram(cause2, target2);
-		getProject().enableAsThreat(cause2.getWrappedORef());
-		
-		getProject().createDiagramLinkAndAddToDiagram(cause3, strategy);
-		getProject().createDiagramLinkAndAddToDiagram(strategy, target2);
-		
-	
+		//threat1 -> threat2 -> target
+		getProject().createDiagramLinkAndAddToDiagram(threat1, threat2); 
+		getProject().createDiagramLinkAndAddToDiagram(threat2, target);			
 		
 		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
-		HashSet<Factor> upstreamThreats1 = chainObject.getUpstreamThreatsFromTarget(target1.getWrappedFactor());
-		assertEquals("wrong threat count?", 2, upstreamThreats1.size());
-		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause2.getWrappedFactor()));
-		assertTrue("wrong threat in list?", upstreamThreats1.contains(cause1.getWrappedFactor()));
+		verifySingleUpstreamThreat(chainObject, threat2.getWrappedFactor(), target.getWrappedFactor());
+		verifySingleDownstreamTarget(chainObject, threat1.getWrappedFactor(), target.getWrappedFactor());
+		verifySingleDownstreamTarget(chainObject, threat2.getWrappedFactor(), target.getWrappedFactor());
+	}
+	
+	private void verifyThreatTargetTarget() throws Exception
+	{
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threat1.getWrappedORef());
+				
+		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
 		
-		HashSet<Factor> upstreamThreats3 = chainObject.getUpstreamThreatsFromTarget(target2.getWrappedFactor());
-		assertEquals("wrong threat count?", 1, upstreamThreats3.size());
-		assertTrue("wrong threat in list?", upstreamThreats3.contains(cause2.getWrappedFactor()));
+		//threat1 -> target1 -> target2
+		getProject().createDiagramLinkAndAddToDiagram(threat1, target1); 
+		getProject().createDiagramLinkAndAddToDiagram(target1, target2);			
 		
-		HashSet<Factor> downsteamTargets = chainObject.getDownstreamTargetsFromThreat(cause1.getWrappedFactor());
-		assertEquals("wrong upstream target count?", 2, downsteamTargets.size());
+		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor());	
+		verifyDoubleDownstreamTargets(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor(), target2.getWrappedFactor());
+	}
+	
+	private void verifyThreatCauseTarget() throws Exception
+	{
+		//threat1 -> cause -> target
+		verifyThreatCauseTargetWithOptionalBidi(BooleanData.BOOLEAN_FALSE);
 		
-		getProject().disableAsThreat(cause2.getWrappedORef());
-		LinkDeletor linkDeletor = new LinkDeletor(getProject());
-		DiagramLink diagramLink = DiagramLink.find(getProject(), cause1ToTarget1DiagramLinkRef);
-		linkDeletor.deleteDiagramLink(diagramLink);
+		//threat1 <-> cause <-> target
+		verifyThreatCauseTargetWithOptionalBidi(BooleanData.BOOLEAN_TRUE);
+	}
+	
+	private void veriftThreat1TargetThreat2Target() throws Exception
+	{
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threat1.getWrappedORef());
+				
+		DiagramFactor threat2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threat2.getWrappedORef());
 		
-		HashSet<Factor> upstreamThreatsFromTarget1 = chainObject.getUpstreamThreatsFromTarget(target1.getWrappedFactor());
-		assertEquals("wront threat count?", 1, upstreamThreatsFromTarget1.size());
-		assertTrue("wrong threat in list?", upstreamThreatsFromTarget1.contains(cause1.getWrappedFactor()));
+		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		
+		//threat1 -> target
+		//threat2 -> target
+		getProject().createDiagramLinkAndAddToDiagram(threat1, target); 
+		getProject().createDiagramLinkAndAddToDiagram(threat2, target);			
+		
+		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		verifyDoubleUpstreamThreats(chainObject, threat1.getWrappedFactor(), threat2.getWrappedFactor(), target.getWrappedFactor());	
+		verifySingleDownstreamTarget(chainObject, threat1.getWrappedFactor(), target.getWrappedFactor());	
+		verifySingleDownstreamTarget(chainObject, threat2.getWrappedFactor(), target.getWrappedFactor());
+	}
+	
+	private void verifyThreatTarget1ThreatTarget2() throws Exception
+	{
+		DiagramFactor threat1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threat1.getWrappedORef());
+				
+		DiagramFactor target1 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		DiagramFactor target2 = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		
+		//threat1 -> target1
+		//threat1 -> target2
+		getProject().createDiagramLinkAndAddToDiagram(threat1, target1); 
+		getProject().createDiagramLinkAndAddToDiagram(threat1, target2);			
+		
+		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor());	
+		verifySingleUpstreamThreat(chainObject, threat1.getWrappedFactor(), target2.getWrappedFactor());
+		verifyDoubleDownstreamTargets(chainObject, threat1.getWrappedFactor(), target1.getWrappedFactor(), target2.getWrappedFactor());	
+	}
+
+	private void verifyThreatCauseTargetWithOptionalBidi(String isBidirectionalTag) throws Exception
+	{
+		DiagramFactor threat = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threat.getWrappedORef());
+				
+		DiagramFactor cause = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorWithWrappedRefLabelAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramLinkAndAddToDiagram(threat, cause, isBidirectionalTag);
+		getProject().createDiagramLinkAndAddToDiagram(cause, target, isBidirectionalTag);			
+		
+		ThreatTargetChainObject chainObject = new ThreatTargetChainObject(getProject());
+		verifySingleUpstreamThreat(chainObject, threat.getWrappedFactor(), target.getWrappedFactor());
+		verifySingleDownstreamTarget(chainObject, threat.getWrappedFactor(), target.getWrappedFactor());
+	}
+
+	private void verifySingleDownstreamTarget(ThreatTargetChainObject chainObject, Factor threat, Factor target)
+	{
+		HashSet<Factor> downStreamTargetsFromThreat1 = chainObject.getDownstreamTargetsFromThreat(threat);
+		assertEquals("wrong target count?", 1, downStreamTargetsFromThreat1.size());
+		assertTrue("wrong threat in list?", downStreamTargetsFromThreat1.contains(target));
+	}
+	
+	private void verifyDoubleDownstreamTargets(ThreatTargetChainObject chainObject, Factor threat, Factor target1, Factor target2)
+	{
+		HashSet<Factor> downStreamTargetsFromThreat1 = chainObject.getDownstreamTargetsFromThreat(threat);
+		assertEquals("wrong target count?", 2, downStreamTargetsFromThreat1.size());
+		assertTrue("wrong threat in list?", downStreamTargetsFromThreat1.contains(target1));
+		assertTrue("wrong threat in list?", downStreamTargetsFromThreat1.contains(target2));
+	}
+		
+	private void verifySingleUpstreamThreat(ThreatTargetChainObject chainObject, Factor threat, Factor target)
+	{
+		HashSet<Factor> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
+		assertEquals("wrong threat count?", 1, upstreamThreats.size());
+		assertTrue("wrong threat in list?", upstreamThreats.contains(threat));
+	}
+	
+	private void verifyDoubleUpstreamThreats(ThreatTargetChainObject chainObject, Factor threat1, Factor threat2, Factor target)
+	{
+		HashSet<Factor> upstreamThreats = chainObject.getUpstreamThreatsFromTarget(target);
+		assertEquals("wrong threat count?", 2, upstreamThreats.size());
+		assertTrue("wrong threat in list?", upstreamThreats.contains(threat1));
+		assertTrue("wrong threat in list?", upstreamThreats.contains(threat2));
 	}
 }
