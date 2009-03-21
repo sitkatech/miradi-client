@@ -538,7 +538,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		EAM.logDebug(getMemoryStatistics());
 
-		threatStressRatingEnsurer.dispose();
+		threatStressRatingEnsurer.disable();
 		project.close();
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 

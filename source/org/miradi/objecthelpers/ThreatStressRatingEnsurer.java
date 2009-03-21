@@ -44,8 +44,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		project = projectToUse;
 	}
 	
-	//TODO rename to disable
-	public void dispose()
+	public void disable()
 	{
 		getProject().removeCommandExecutedListener(this);
 	}
