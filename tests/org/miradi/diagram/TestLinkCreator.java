@@ -75,8 +75,7 @@ public class TestLinkCreator extends TestCaseWithProject
 		Target target = (Target) getProject().findObject(diagramTarget.getWrappedORef());
 		assertEquals("wrong stress count?", 2, target.getStressRefs().size());
 		
-		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
-		getProject().addCommandExecutedListener(ensurer);
+		new ThreatStressRatingEnsurer(getProject()).enable();
 	
 		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		getProject().createDiagramLinkAndAddToDiagram(causeDiagramFactor, diagramTarget);

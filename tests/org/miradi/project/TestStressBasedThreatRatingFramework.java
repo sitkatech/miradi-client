@@ -51,8 +51,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	{
 		Target target = getProject().createTarget();
 		Cause threat = getProject().createCause();
-		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
-		getProject().addCommandExecutedListener(ensurer);
+		new ThreatStressRatingEnsurer(getProject()).enable();
 		
 		getProject().enableAsThreat(threat);
 		createThreatFactorLink(threat, target);
@@ -118,8 +117,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		assertEquals("wrong stress rating?" , 3, stress.calculateStressRating());
 	
 		Cause threat = getProject().createCause();
-		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
-		getProject().addCommandExecutedListener(ensurer);		
+		new ThreatStressRatingEnsurer(getProject()).enable();		
 		getProject().enableAsThreat(threat);
 
 		ThreatStressRating threatStressRating = getProject().createAndPopulateThreatStressRating(stress.getRef(), threat.getRef());
@@ -146,8 +144,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		Target target = getProject().createTarget();
 		Cause threat = getProject().createCause();
 		createThreatFactorLink(threat, target);
-		ThreatStressRatingEnsurer ensurer = new ThreatStressRatingEnsurer(getProject());
-		getProject().addCommandExecutedListener(ensurer);
+		new ThreatStressRatingEnsurer(getProject()).enable();
 		
 		getProject().enableAsThreat(threat);		
 		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();

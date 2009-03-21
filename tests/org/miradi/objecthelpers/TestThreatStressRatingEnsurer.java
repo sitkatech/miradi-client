@@ -69,8 +69,7 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 		ORefList threatStressRatingPoolRefs = getProject().getThreatStressRatingPool().getORefList();
 		assertEquals("wrong threat stress rating pool size count?", 1, threatStressRatingPoolRefs.size());
 		
-		ThreatStressRatingEnsurer threatStressRatingEnsurer = new ThreatStressRatingEnsurer(getProject());
-		getProject().addCommandExecutedListener(threatStressRatingEnsurer);
+		new ThreatStressRatingEnsurer(getProject()).enable();
 	}
 
 	public void testCreateAndDeleteStress() throws Exception
