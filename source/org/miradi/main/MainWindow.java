@@ -63,6 +63,7 @@ import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TwoLevelEntry;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
@@ -121,6 +122,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		setFocusCycleRoot(true);
 		wizardManager = new WizardManager(this);
 		hyperlinkHandler = new DefaultHyperlinkHandler(this);
+		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(project);
 		setLanguage(null);
 	}
 	
@@ -476,6 +478,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			updateTitle();
 			updateStatusBar();
 			getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
+			threatStressRatingEnsurer.enable();
 		}
 		catch(UnknownCommandException e)
 		{
@@ -535,6 +538,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		EAM.logDebug(getMemoryStatistics());
 
+		threatStressRatingEnsurer.dispose();
 		project.close();
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
@@ -1053,5 +1057,5 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private int preventActionUpdatesCount;
 	
 	private boolean hasMemoryWarningBeenShown;
-
+	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 }

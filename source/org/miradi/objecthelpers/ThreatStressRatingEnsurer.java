@@ -44,9 +44,15 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		project = projectToUse;
 	}
 	
+	//TODO rename to disable
 	public void dispose()
 	{
 		getProject().removeCommandExecutedListener(this);
+	}
+
+	public void enable()
+	{
+		getProject().addCommandExecutedListener(this);
 	}
 	
 	public void createOrDeleteThreatStressRatingsAsNeeded() throws Exception
