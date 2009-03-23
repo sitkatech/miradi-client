@@ -31,7 +31,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.Cause;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
@@ -46,15 +45,11 @@ public class BundleIcon extends AbstractMiradiIcon
 		preferences = preferencesToUse;
 	}
 	
-	public void setLink(FactorLink linkToUse)
-	{
-		link = linkToUse;
-		threatTargetVirualLink = new ThreatTargetVirtualLink(getProject());
-	}
-	
 	public void setThreatTarget(Cause threatToUse, Target targetToUse)
 	{
-		//FIXME needs to set class members and stop using FL
+		threat = threatToUse;
+		target = targetToUse;
+		threatTargetVirualLink = new ThreatTargetVirtualLink(getProject());
 	}
 
 	public void paintIcon(Component c, Graphics g, int x, int y)
@@ -125,12 +120,12 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private ORef getTargetRef() throws Exception
 	{
-		return link.getDownstreamTargetRef();
+		return target.getRef();
 	}
 
 	private ORef getThreatRef() throws Exception
 	{
-		return link.getUpstreamThreatRef();
+		return threat.getRef();
 	}
 
 	private SimpleThreatRatingFramework getFramework()
@@ -140,10 +135,11 @@ public class BundleIcon extends AbstractMiradiIcon
 	
 	private Project getProject()
 	{
-		return link.getProject();
+		return threat.getProject();
 	}
 
-	private FactorLink link;
+	private Cause threat;
+	private Target target;
 	private AppPreferences preferences;
 	private ThreatTargetVirtualLink threatTargetVirualLink;
 }
