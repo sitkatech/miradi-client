@@ -58,9 +58,9 @@ import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.xml.XmlExporter;
 
 
-public class ReportXmlExporter extends XmlExporter
+public class ProjectAsXmlExporter extends XmlExporter
 {
-	public ReportXmlExporter(Project projectToUse) throws Exception
+	public ProjectAsXmlExporter(Project projectToUse) throws Exception
 	{
 		super(projectToUse);
 	}
@@ -332,7 +332,7 @@ public class ReportXmlExporter extends XmlExporter
 		Project newProject = getOpenedProject(commandLineArguments);
 		try
 		{
-			new ReportXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
+			new ProjectAsXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
 			System.out.println("Export report xml complete");
 		}
 		finally
