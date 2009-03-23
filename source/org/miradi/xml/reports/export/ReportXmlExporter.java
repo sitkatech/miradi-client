@@ -215,7 +215,7 @@ public class ReportXmlExporter extends XmlExporter
 		out.write("</Value>");
 	}
 	
-	public void writeFactorLinkNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
+	private void writeFactorLinkNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
 	{
 		if (!FactorLink.is(object.getType()))
 			return;
