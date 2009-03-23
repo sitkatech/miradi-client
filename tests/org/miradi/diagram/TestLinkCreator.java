@@ -26,7 +26,6 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -75,7 +74,6 @@ public class TestLinkCreator extends TestCaseWithProject
 		Target target = (Target) getProject().findObject(diagramTarget.getWrappedORef());
 		assertEquals("wrong stress count?", 2, target.getStressRefs().size());
 		
-		new ThreatStressRatingEnsurer(getProject()).enable();
 	
 		DiagramFactor causeDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		getProject().createDiagramLinkAndAddToDiagram(causeDiagramFactor, diagramTarget);

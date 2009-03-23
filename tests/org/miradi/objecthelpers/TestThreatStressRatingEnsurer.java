@@ -46,7 +46,9 @@ public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 	{
 		super.setUp();
 		
+		getProject().disableThreatStressRatingEnsurer();
 		setupSampleData();
+		getProject().enableThreatStressRatingEnsurer();
 	}
 	
 	private void setupSampleData() throws Exception

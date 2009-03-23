@@ -57,6 +57,7 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.AssignmentPool;
 import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.ConceptualModelDiagramPool;
@@ -138,6 +139,8 @@ public class Project
 		database = databaseToUse;
 		commandExecutedListeners = new Vector();
 		projectCalendar = new ProjectCalendar(this);
+		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
+		enableThreatStressRatingEnsurer();
 
 		clear();
 	}
@@ -889,6 +892,7 @@ public class Project
 		
 		try
 		{
+			disableThreatStressRatingEnsurer();
 			getDatabase().close();
 			clear();
 		}
@@ -897,6 +901,16 @@ public class Project
 			EAM.logException(e);
 		}
 		
+	}
+
+	public void disableThreatStressRatingEnsurer()
+	{
+		threatStressRatingEnsurer.disable();
+	}
+	
+	public void enableThreatStressRatingEnsurer()
+	{
+		threatStressRatingEnsurer.enable();
 	}
 	
 	static public boolean isValidProjectFilename(String candidate)
@@ -1472,6 +1486,7 @@ public class Project
 	private ProjectServer database;
 	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
+	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 
 	private Vector commandExecutedListeners;
 	
