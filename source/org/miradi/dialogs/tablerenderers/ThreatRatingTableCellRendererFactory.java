@@ -55,8 +55,7 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 		renderer.setText(labelText);
 
 		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, modelColumn);
-		Icon configuredIcon = getConfiguredIcon(object, getChoiceItem(value));
+		Icon configuredIcon = getConfiguredIcon(table, row, modelColumn, getChoiceItem(value));
 		renderer.setIcon(configuredIcon);
 		return renderer;
 	}
@@ -73,8 +72,9 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 		return choice.getColor();
 	}
 	
-	protected Icon getConfiguredIcon(BaseObject object, ChoiceItem choice)
+	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
 	{
+		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, modelColumn);
 		if(choice == null || object == null)
 		{
 			return null;
@@ -97,6 +97,6 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 	}
 	
 	private Color defaultBackgroundColor;
-	private ColoredIcon stressBasedIcon;
-	private BundleIcon simpleIcon;
+	protected ColoredIcon stressBasedIcon;
+	protected BundleIcon simpleIcon;
 }
