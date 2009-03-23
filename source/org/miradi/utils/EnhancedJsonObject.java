@@ -239,6 +239,14 @@ public class EnhancedJsonObject extends JSONObject
 		return new ORefList(getString(tag));
 	}
 	
+	public ORefList optRefList(String tag) throws Exception
+	{
+		if (has(tag))
+			return getRefList(tag);
+		
+		return new ORefList();
+	}
+	
 	public BaseId optId(String tag)
 	{
 		if(has(tag))
