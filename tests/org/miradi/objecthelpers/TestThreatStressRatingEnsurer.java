@@ -33,7 +33,6 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 
-//FIXME This test is under construction along with its matching class
 public class TestThreatStressRatingEnsurer extends TestCaseWithProject
 {
 	public TestThreatStressRatingEnsurer(String name)
