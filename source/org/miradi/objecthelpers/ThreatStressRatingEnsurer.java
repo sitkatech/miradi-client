@@ -170,7 +170,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		return false;
 	}
 	
-	public Project getProject()
+	private Project getProject()
 	{
 		return project;
 	}
