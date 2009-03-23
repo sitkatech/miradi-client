@@ -386,7 +386,7 @@ public class DataUpgrader
 	
 	private void addThreatRefToThreatStressRatings(File threatStressRatingDir,EnhancedJsonObject factorLinkJson, ORef threatRef) throws Exception
 	{
-		ORefList threatStressRatingRefsForLink = factorLinkJson.getRefList("ThreatStressRatingRefs");
+		ORefList threatStressRatingRefsForLink = factorLinkJson.optRefList("ThreatStressRatingRefs");
 		for (int index = 0; index < threatStressRatingRefsForLink.size(); ++index)
 		{
 			BaseId threatStressRatingId = threatStressRatingRefsForLink.get(index).getObjectId();
