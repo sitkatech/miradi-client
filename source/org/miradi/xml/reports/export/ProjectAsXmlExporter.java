@@ -221,6 +221,8 @@ public class ProjectAsXmlExporter extends XmlExporter
 		if (!Target.is(object.getType()))
 			return;
 
+		out.writeln("<ThreatRatings>");
+		
 		ORef targetRef = object.getRef();
 		ThreatTargetChainObject threatTargetChainObject = new ThreatTargetChainObject(getProject());
 		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget((Factor) object);
@@ -241,7 +243,7 @@ public class ProjectAsXmlExporter extends XmlExporter
 			BaseId irreversibilityId = bundle.getValueId(irreversibilityCriterion.getId());
 			ValueOption irreversibility = (ValueOption)getProject().findObject(ValueOption.getObjectType(), irreversibilityId);
 
-			out.writeln("<ThreatRatingSimple>");
+			out.writeln("<ThreatRatingSimple ThreatId = " + threatRef.getObjectId() + ">");
 			writeCriterionAndValue(out, scopeCriterion, scope);
 			writeCriterionAndValue(out, severityCriterion, severity);
 			writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
@@ -267,6 +269,8 @@ public class ProjectAsXmlExporter extends XmlExporter
 			out.write(XmlUtilities.getXmlEncoded(cause.toString()));
 			out.writeln("</ThreatName>");
 		}
+		
+		out.writeln("</ThreatRatings>");
 	}
 	
 	public static void writeRating(Project project, UnicodeWriter out, int threatRatingValue, String xmlTagName) throws IOException
