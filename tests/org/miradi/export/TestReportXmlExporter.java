@@ -22,7 +22,7 @@ package org.miradi.export;
 import java.io.File;
 
 import org.miradi.main.TestCaseWithProject;
-import org.miradi.xml.reports.export.ReportXmlExporter;
+import org.miradi.xml.reports.export.ProjectAsXmlExporter;
 
 public class TestReportXmlExporter extends TestCaseWithProject
 {
@@ -34,19 +34,19 @@ public class TestReportXmlExporter extends TestCaseWithProject
 	public void testGetProjectDirectory() throws Exception
 	{
 		String[] commandLineArguments1 = {"TestProject", "someDestination"};
-		File projectFile = ReportXmlExporter.getProjectDirectory(commandLineArguments1);
+		File projectFile = ProjectAsXmlExporter.getProjectDirectory(commandLineArguments1);
 		assertEquals("wrong project file name?", "TestProject", projectFile.getName());
 		
-		File xmlDestination = ReportXmlExporter.getXmlDestination(commandLineArguments1);
+		File xmlDestination = ProjectAsXmlExporter.getXmlDestination(commandLineArguments1);
 		assertEquals("wrong xml destination?", "someDestination", xmlDestination.getName());
 	}
 	
 	public void testIncorrectArgumentCount()
 	{
 		String[] commandLineArguments1 = {"TestProject", "xml destination", "thirdArgument", };
-		assertTrue(ReportXmlExporter.incorrectArgumentCount(commandLineArguments1));
+		assertTrue(ProjectAsXmlExporter.incorrectArgumentCount(commandLineArguments1));
 		
 		String[] commandLineArguments2 = {"TestProject", "xml destination", };
-		assertFalse(ReportXmlExporter.incorrectArgumentCount(commandLineArguments2));
+		assertFalse(ProjectAsXmlExporter.incorrectArgumentCount(commandLineArguments2));
 	}
 }

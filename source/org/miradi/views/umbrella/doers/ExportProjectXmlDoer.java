@@ -33,14 +33,14 @@ import org.miradi.project.Project;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 import org.miradi.views.umbrella.XmlExporter;
-import org.miradi.xml.reports.export.ReportXmlExporter;
+import org.miradi.xml.reports.export.ProjectAsXmlExporter;
 
 public class ExportProjectXmlDoer extends XmlExporter
 {
 	@Override
 	protected void export(File chosen) throws Exception
 	{
-		new ReportXmlExporter(getProject()).export(chosen);
+		new ProjectAsXmlExporter(getProject()).export(chosen);
 	}
 		
 	public static File exportProjectToXml(Project project, File destinationDirectory) throws Exception
@@ -57,7 +57,7 @@ public class ExportProjectXmlDoer extends XmlExporter
 	private static File exportProjectXml(Project project, File destinationDirectory) throws IOException, Exception
 	{
 		File destination = new File(destinationDirectory, project.getFilename() + ".xml");
-		new ReportXmlExporter(project).export(destination);
+		new ProjectAsXmlExporter(project).export(destination);
 		return destination;
 	}
 
