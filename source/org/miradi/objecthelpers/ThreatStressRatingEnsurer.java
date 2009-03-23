@@ -36,7 +36,6 @@ import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 
-//FIXME this class under development along with its test
 public class ThreatStressRatingEnsurer implements CommandExecutedListener 
 {
 	public ThreatStressRatingEnsurer(Project projectToUse)
