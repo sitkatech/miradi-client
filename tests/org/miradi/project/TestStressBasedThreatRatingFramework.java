@@ -22,7 +22,6 @@ package org.miradi.project;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
@@ -51,7 +50,6 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 	{
 		Target target = getProject().createTarget();
 		Cause threat = getProject().createCause();
-		new ThreatStressRatingEnsurer(getProject()).enable();
 		
 		getProject().enableAsThreat(threat);
 		createThreatFactorLink(threat, target);
@@ -116,8 +114,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		Stress stress = getProject().createAndPopulateStress();
 		assertEquals("wrong stress rating?" , 3, stress.calculateStressRating());
 	
-		Cause threat = getProject().createCause();
-		new ThreatStressRatingEnsurer(getProject()).enable();		
+		Cause threat = getProject().createCause();		
 		getProject().enableAsThreat(threat);
 
 		ThreatStressRating threatStressRating = getProject().createAndPopulateThreatStressRating(stress.getRef(), threat.getRef());
@@ -144,7 +141,6 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		Target target = getProject().createTarget();
 		Cause threat = getProject().createCause();
 		createThreatFactorLink(threat, target);
-		new ThreatStressRatingEnsurer(getProject()).enable();
 		
 		getProject().enableAsThreat(threat);		
 		StressBasedThreatRatingFramework framework = getProject().getStressBasedThreatRatingFramework();
