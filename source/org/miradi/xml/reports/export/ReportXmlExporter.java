@@ -27,17 +27,18 @@ import java.util.Set;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -217,55 +218,55 @@ public class ReportXmlExporter extends XmlExporter
 	
 	private void writeFactorLinkNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
 	{
-		if (!FactorLink.is(object.getType()))
+		if (!Target.is(object.getType()))
 			return;
-		
-		FactorLink factorLink = (FactorLink) object;
-		if(!factorLink.isThreatTargetLink())
-			return;
-		
-		ORef targetRef = factorLink.getDownstreamTargetRef();
-		ORef threatRef = factorLink.getUpstreamThreatRef();
-		SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
-		ThreatRatingBundle bundle = simpleThreatFramework.getBundle((FactorId)threatRef.getObjectId(), (FactorId)targetRef.getObjectId());
-				
-		RatingCriterion scopeCriterion = simpleThreatFramework.getScopeCriterion();
-		BaseId scopeId = bundle.getValueId(scopeCriterion.getId());
-		ValueOption scope = (ValueOption)getProject().findObject(ValueOption.getObjectType(), scopeId);
-		
-		RatingCriterion severityCriterion = simpleThreatFramework.getSeverityCriterion();
-		BaseId severityId = bundle.getValueId(severityCriterion.getId());
-		ValueOption severity = (ValueOption)getProject().findObject(ValueOption.getObjectType(), severityId);
-		
-		RatingCriterion irreversibilityCriterion = simpleThreatFramework.getIrreversibilityCriterion();
-		BaseId irreversibilityId = bundle.getValueId(irreversibilityCriterion.getId());
-		ValueOption irreversibility = (ValueOption)getProject().findObject(ValueOption.getObjectType(), irreversibilityId);
-		
-		out.writeln("<ThreatRatingSimple>");
-		writeCriterionAndValue(out, scopeCriterion, scope);
-		writeCriterionAndValue(out, severityCriterion, severity);
-		writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
-		out.writeln("</ThreatRatingSimple>");
-		
-		writeOutTargetThreatRatingXML(threatRef, targetRef, out, simpleThreatFramework, bundle);
-		
-		Target target = Target.find(getProject(), targetRef);
-		Cause cause = Cause.find(getProject(), threatRef);
-		
-		//NOTE, this test exist for corrupted projects
-		if (target == null || cause == null)
-			return;
-			
-		writeRating(getProject(), out, getThreatRating(out, simpleThreatFramework, cause), "ThreatRating");
-		writeRating(getProject(), out, getTargetRating(out, simpleThreatFramework, target), "TargetRating");
-		
-		out.write("<TargetName>");
-		out.write(XmlUtilities.getXmlEncoded(target.toString()));
-		out.writeln("</TargetName>");
-				
-		out.write("<ThreatName>");
-		out.write(XmlUtilities.getXmlEncoded(cause.toString()));
-		out.writeln("</ThreatName>");
+
+		ORef targetRef = object.getRef();
+		ThreatTargetChainObject threatTargetChainObject = new ThreatTargetChainObject(getProject());
+		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget((Factor) object);
+		for(ORef threatRef : upstreamThreatRefs)
+		{
+			SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
+			ThreatRatingBundle bundle = simpleThreatFramework.getBundle((FactorId)threatRef.getObjectId(), (FactorId)targetRef.getObjectId());
+
+			RatingCriterion scopeCriterion = simpleThreatFramework.getScopeCriterion();
+			BaseId scopeId = bundle.getValueId(scopeCriterion.getId());
+			ValueOption scope = (ValueOption)getProject().findObject(ValueOption.getObjectType(), scopeId);
+
+			RatingCriterion severityCriterion = simpleThreatFramework.getSeverityCriterion();
+			BaseId severityId = bundle.getValueId(severityCriterion.getId());
+			ValueOption severity = (ValueOption)getProject().findObject(ValueOption.getObjectType(), severityId);
+
+			RatingCriterion irreversibilityCriterion = simpleThreatFramework.getIrreversibilityCriterion();
+			BaseId irreversibilityId = bundle.getValueId(irreversibilityCriterion.getId());
+			ValueOption irreversibility = (ValueOption)getProject().findObject(ValueOption.getObjectType(), irreversibilityId);
+
+			out.writeln("<ThreatRatingSimple>");
+			writeCriterionAndValue(out, scopeCriterion, scope);
+			writeCriterionAndValue(out, severityCriterion, severity);
+			writeCriterionAndValue(out, irreversibilityCriterion, irreversibility);
+			out.writeln("</ThreatRatingSimple>");
+
+			writeOutTargetThreatRatingXML(threatRef, targetRef, out, simpleThreatFramework, bundle);
+
+			Target target = Target.find(getProject(), targetRef);
+			Cause cause = Cause.find(getProject(), threatRef);
+
+			//NOTE, this test exist for corrupted projects
+			if (target == null || cause == null)
+				return;
+
+			writeRating(getProject(), out, getThreatRating(out, simpleThreatFramework, cause), "ThreatRating");
+			writeRating(getProject(), out, getTargetRating(out, simpleThreatFramework, target), "TargetRating");
+
+			out.write("<TargetName>");
+			out.write(XmlUtilities.getXmlEncoded(target.toString()));
+			out.writeln("</TargetName>");
+
+			out.write("<ThreatName>");
+			out.write(XmlUtilities.getXmlEncoded(cause.toString()));
+			out.writeln("</ThreatName>");
+		}
 	}
 	
 	public static void writeRating(Project project, UnicodeWriter out, int threatRatingValue, String xmlTagName) throws IOException
