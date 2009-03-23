@@ -24,6 +24,8 @@ import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
+import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.dialogs.tablerenderers.ThreatTargetTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
@@ -43,6 +45,17 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		setColumnWidths();
 	}
 	
+	@Override
+	protected void setColumnRenderers()
+	{
+		MainThreatTableModel model = (MainThreatTableModel) getModel();
+		ThreatTargetTableCellRendererFactory renderer = new ThreatTargetTableCellRendererFactory(getMainWindow().getAppPreferences(), model, new DefaultFontProvider(getMainWindow()));
+		for (int i = 0; i < getColumnCount(); ++i)
+		{
+			getColumnModel().getColumn(i).setCellRenderer(renderer);
+		}
+	}
+
 	@Override
 	public Dimension getPreferredScrollableViewportSize()
 	{
