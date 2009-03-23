@@ -144,29 +144,27 @@ public class ProjectAsXmlExporter extends XmlExporter
 
 	public void writeNonFieldXml(BaseObject foundObject, UnicodeWriter out) throws Exception
 	{
-		writeSimpleThreatRatingsForTarget(foundObject, out);
-		writeIndicatorNonFieldXml(foundObject, out);
-		writeKeyEcologicalAttributeNonFieldXml(foundObject, out);
-		writeMeasurementNonFieldXml(foundObject, out);
+		if (Target.is(foundObject.getType()))
+			writeSimpleThreatRatingsForTarget((Target) foundObject, out);
+	
+		if (Indicator.is(foundObject.getType()))
+			writeIndicatorNonFieldXml((Indicator) foundObject, out);
+		
+		if (KeyEcologicalAttribute.is(foundObject.getType()))
+			writeKeyEcologicalAttributeNonFieldXml((KeyEcologicalAttribute) foundObject, out);
+	
+		if (Measurement.is(foundObject.getType()))
+			writeMeasurementNonFieldXml((Measurement) foundObject, out);
 	}
 	
-	public void writeMeasurementNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
+	public void writeMeasurementNonFieldXml(Measurement measurement, UnicodeWriter out) throws Exception
 	{
-		if (!Measurement.is(object.getType()))
-			return;
-		
-		Measurement measurement = (Measurement) object;
 		String statusRatingCode = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(measurement.getStatus()).getCode();
 		writeRatingCodes(out, statusRatingCode, measurement.getSummary(), "StatusRatingValues");
 	}
 	
-	public void writeKeyEcologicalAttributeNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
+	public void writeKeyEcologicalAttributeNonFieldXml(KeyEcologicalAttribute keyEcologicalAttribute, UnicodeWriter out) throws Exception
 	{
-		if (!KeyEcologicalAttribute.is(object.getType()))
-			return;
-		
-		KeyEcologicalAttribute keyEcologicalAttribute = (KeyEcologicalAttribute) object;
-			
 		ChoiceItem statusChoice = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(keyEcologicalAttribute.computeTNCViability());
 		if (statusChoice == null)
 			return;
@@ -176,12 +174,8 @@ public class ProjectAsXmlExporter extends XmlExporter
 		out.writeln("</" + KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS + ">");
 	}
 	
-	public void writeIndicatorNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
+	public void writeIndicatorNonFieldXml(Indicator indicator, UnicodeWriter out) throws Exception
 	{
-		if (!Indicator.is(object.getType()))
-			return;
-		
-		Indicator indicator = (Indicator) object;
 		out.writeln("<CurrentStatus>");
 		ChoiceItem choice = getProject().getQuestion(StatusQuestion.class).findChoiceByCode(indicator.getCurrentStatus());
 		choice.toXml(out);
@@ -216,16 +210,13 @@ public class ProjectAsXmlExporter extends XmlExporter
 		out.write("</Value>");
 	}
 	
-	private void writeSimpleThreatRatingsForTarget(BaseObject object, UnicodeWriter out) throws Exception
+	private void writeSimpleThreatRatingsForTarget(Target target, UnicodeWriter out) throws Exception
 	{
-		if (!Target.is(object.getType()))
-			return;
-
 		out.writeln("<ThreatRatings>");
 		
-		ORef targetRef = object.getRef();
+		ORef targetRef = target.getRef();
 		ThreatTargetChainObject threatTargetChainObject = new ThreatTargetChainObject(getProject());
-		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget((Factor) object);
+		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
 		for(ORef threatRef : upstreamThreatRefs)
 		{
 			SimpleThreatRatingFramework simpleThreatFramework = getProject().getSimpleThreatRatingFramework();
@@ -251,7 +242,6 @@ public class ProjectAsXmlExporter extends XmlExporter
 
 			writeOutTargetThreatRatingXML(threatRef, targetRef, out, simpleThreatFramework, bundle);
 
-			Target target = Target.find(getProject(), targetRef);
 			Cause cause = Cause.find(getProject(), threatRef);
 
 			//NOTE, this test exist for corrupted projects
