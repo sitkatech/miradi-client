@@ -22,7 +22,6 @@ package org.miradi.objects;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.util.Vector;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
@@ -249,21 +248,6 @@ public class DiagramLink extends BaseObject
 		return false;
 	}
 	
-	public boolean isTargetLink()
-	{
-		if (getWrappedFactorLink() != null)
-			return getWrappedFactorLink().isTargetLink();
-		
-		DiagramLink[] factorLinkChildren = getSelfOrGroupBoxChildren();
-		for (int i = 0; i < factorLinkChildren.length; ++i)
-		{
-			if (factorLinkChildren[i].getWrappedFactorLink().isTargetLink())
-				return true;
-		}
-		
-		return false;
-	}
-	
 	public boolean isBidirectional()
 	{
 		if (getWrappedFactorLink() != null)
@@ -333,22 +317,6 @@ public class DiagramLink extends BaseObject
 		return toolTipText;
 	}
 	
-	private DiagramLink[] getSelfOrGroupBoxChildren()
-	{
-		if (getWrappedFactorLink() != null)
-			return new DiagramLink[] {this};
-		
-		Vector<DiagramLink> allChildrenFactorLinks = new Vector();
-		ORefList childLinkRefs = getGroupedDiagramLinkRefs();
-		for (int i = 0; i < childLinkRefs.size(); ++i)
-		{
-			DiagramLink diagramLink = DiagramLink.find(getProject(), childLinkRefs.get(i));
-			allChildrenFactorLinks.add(diagramLink);
-		}
-		
-		return allChildrenFactorLinks.toArray(new DiagramLink[0]);
-	}
-
 	public CreateObjectParameter getCreationExtraInfo()
 	{
 		return new CreateDiagramFactorLinkParameter(
