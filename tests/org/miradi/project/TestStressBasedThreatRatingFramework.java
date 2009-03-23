@@ -76,7 +76,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		
 		Stress stress = getProject().createAndPopulateStress();
 		ORefList stressRefs = new ORefList(stress);
-		ORef targetRef = factorLink.getDownstreamTargetRef();
+		ORef targetRef = ProjectForTesting.getDownstreamTargetRef(factorLink);
 		getProject().setObjectData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());	
 		
 		populateWithThreatStressRating(factorLink, stress.getRef());
@@ -90,7 +90,7 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		FactorLink factorLink = FactorLink.find(getProject(), threatLinkRef);
 		
 		Stress stress = getProject().createAndPopulateStress();
-		ORef targetRef = factorLink.getDownstreamTargetRef();
+		ORef targetRef = ProjectForTesting.getDownstreamTargetRef(factorLink);
 		ORefList stressRefs = new ORefList(stress);
 		getProject().setObjectData(targetRef, Target.TAG_STRESS_REFS, stressRefs.toString());	
 		getProject().populateDirectThreatLink(factorLink, stressRefs);
@@ -101,12 +101,12 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		populateWithThreatStressRating(factorLink, stress.getRef());
 		
 		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
-		assertEquals(4, threatTargetVirtualLink.calculateThreatRatingBundleValue(factorLink.getUpstreamThreatRef(), targetRef));
+		assertEquals(4, threatTargetVirtualLink.calculateThreatRatingBundleValue(ProjectForTesting.getUpstreamThreatRef(factorLink), targetRef));
 	}
 
 	private void populateWithThreatStressRating(FactorLink factorLink, ORef stressRef) throws Exception
 	{
-		getProject().createAndPopulateThreatStressRating(stressRef, factorLink.getUpstreamThreatRef());
+		getProject().createAndPopulateThreatStressRating(stressRef, ProjectForTesting.getUpstreamThreatRef(factorLink));
 	}
 	
 	public void testGetTargetMajorityRating() throws Exception

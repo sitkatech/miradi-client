@@ -482,7 +482,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
-			ORef threatRef = directThreatLink.getUpstreamThreatRef();
+			ORef threatRef = getUpstreamThreatRef(directThreatLink);
 			createAndPopulateThreatStressRating(stressRefs.get(refIndex), threatRef).getRef();	
 		}
 	}
@@ -681,7 +681,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void createAndPopulateStrategyThreatTargetAssociation() throws Exception
 	{
 		FactorLink factorLink = createAndPopulateDirectThreatLink();
-		ORef threatRef = factorLink.getUpstreamThreatRef();
+		ORef threatRef = getUpstreamThreatRef(factorLink);
 		Strategy strategy = createAndPopulateStrategy();
 		createFactorLink(threatRef, strategy.getRef());
 	}
@@ -1023,7 +1023,29 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CommandSetObjectData setThreat = new CommandSetObjectData(threatRef, Cause.TAG_IS_DIRECT_THREAT, isThreat);
 		executeCommand(setThreat);
 	}
+	
+	public static ORef getDownstreamTargetRef(FactorLink factorLink) throws Exception
+	{
+		if (factorLink.getToFactorRef().getObjectType() == Target.getObjectType())
+			return factorLink.getToFactorRef();
 		
+		if (factorLink.getFromFactorRef().getObjectType() == Target.getObjectType() && factorLink.isBidirectional())
+			return factorLink.getFromFactorRef();
+		
+		throw new Exception();
+	}
+	
+	public static ORef getUpstreamThreatRef(FactorLink factorLink) throws Exception
+	{
+		if (Cause.is(factorLink.getFromFactorRef()))
+			return factorLink.getFromFactorRef();
+		
+		if (Cause.is(factorLink.getToFactorRef()) && factorLink.isBidirectional())
+			return factorLink.getToFactorRef();
+		
+		throw new Exception();
+	}
+			
 	public static final String PROJECT_RESOURCE_LABEL_TEXT = "John Doe";
 	public static final String SIMPLE_THREAT_RATING_COMMENT = "sample simple threat rating comment";
 	public static final String STRESS_BASED_THREAT_RATING_COMMENT = "sample stress based threat rating comment";
