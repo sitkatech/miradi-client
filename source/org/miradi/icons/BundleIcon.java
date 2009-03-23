@@ -63,7 +63,7 @@ public class BundleIcon extends AbstractMiradiIcon
 		ThreatRatingQuestion question = getThreatRatingQuestion();
 		try
 		{
-			int value = threatTargetVirualLink.calculateThreatRatingBundleValue(link.getUpstreamThreatRef(), link.getDownstreamTargetRef());
+			int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
 			g.setColor(question.findChoiceByNumericValue(value).getColor());
 			g.fillRect(summaryX, 0, getIconWidth() - summaryX, getIconHeight());
 			
@@ -111,9 +111,19 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private ThreatRatingBundle getBundle() throws Exception
 	{
-		ORef threatRef = link.getUpstreamThreatRef();
-		ORef targetRef = link.getDownstreamTargetRef();
+		ORef threatRef = getThreatRef();
+		ORef targetRef = getTargetRef();
 		return getFramework().getBundle(threatRef, targetRef);
+	}
+
+	private ORef getTargetRef() throws Exception
+	{
+		return link.getDownstreamTargetRef();
+	}
+
+	private ORef getThreatRef() throws Exception
+	{
+		return link.getUpstreamThreatRef();
 	}
 
 	private SimpleThreatRatingFramework getFramework()
