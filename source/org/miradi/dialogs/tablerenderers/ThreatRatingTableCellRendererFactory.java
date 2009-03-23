@@ -30,7 +30,6 @@ import org.miradi.icons.BundleIcon;
 import org.miradi.icons.ColoredIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FactorLink;
 import org.miradi.questions.ChoiceItem;
 
 public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
@@ -86,12 +85,6 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 			return stressBasedIcon;
 		}
 
-		if (FactorLink.is(object))
-		{
-			simpleIcon.setLink((FactorLink)object);
-			return simpleIcon;
-		}
-		
 		stressBasedIcon.setColor(choice.getColor());
 		return stressBasedIcon;
 	}

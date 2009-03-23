@@ -22,9 +22,11 @@ package org.miradi.dialogs.tablerenderers;
 import javax.swing.Icon;
 import javax.swing.JTable;
 
+import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTable;
+import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.main.AppPreferences;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.FactorLink;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 
 public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellRendererFactory
@@ -36,25 +38,20 @@ public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellR
 	
 	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
 	{
-		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, modelColumn);
-		if(choice == null || object == null)
-		{
-			return null;
-		}
+		Icon superIcon = super.getConfiguredIcon(table, row, modelColumn, choice);
+		if (superIcon!= null)
+			return superIcon;
 		
-		if(object.getProject().isStressBaseMode())
+		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
+		TargetThreatLinkTableModel model = targetThreatLinkTable.getTargetThreatLinkTableModel();
+		Cause threat = (Cause)model.getDirectThreat(row);
+		Target target = model.getTarget(modelColumn);
+		if (threat != null && target != null)
 		{
-			stressBasedIcon.setColor(choice.getColor());
-			return stressBasedIcon;
-		}
-
-		if (FactorLink.is(object))
-		{
-			simpleIcon.setLink((FactorLink)object);
+			simpleIcon.setThreatTarget(threat, target);
 			return simpleIcon;
 		}
 		
-		stressBasedIcon.setColor(choice.getColor());
-		return stressBasedIcon;
+		return null;
 	}
 }
