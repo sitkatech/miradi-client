@@ -30,7 +30,9 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -48,6 +50,11 @@ public class BundleIcon extends AbstractMiradiIcon
 	{
 		link = linkToUse;
 		threatTargetVirualLink = new ThreatTargetVirtualLink(getProject());
+	}
+	
+	public void setThreatTarget(Cause threatToUse, Target targetToUse)
+	{
+		//FIXME needs to set class members and stop using FL
 	}
 
 	public void paintIcon(Component c, Graphics g, int x, int y)
