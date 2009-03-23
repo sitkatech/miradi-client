@@ -144,7 +144,7 @@ public class ProjectAsXmlExporter extends XmlExporter
 
 	public void writeNonFieldXml(BaseObject foundObject, UnicodeWriter out) throws Exception
 	{
-		writeFactorLinkNonFieldXml(foundObject, out);
+		writeSimpleThreatRatingNonFieldXml(foundObject, out);
 		writeIndicatorNonFieldXml(foundObject, out);
 		writeKeyEcologicalAttributeNonFieldXml(foundObject, out);
 		writeMeasurementNonFieldXml(foundObject, out);
@@ -216,7 +216,7 @@ public class ProjectAsXmlExporter extends XmlExporter
 		out.write("</Value>");
 	}
 	
-	private void writeFactorLinkNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
+	private void writeSimpleThreatRatingNonFieldXml(BaseObject object, UnicodeWriter out) throws Exception
 	{
 		if (!Target.is(object.getType()))
 			return;
