@@ -19,12 +19,42 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import javax.swing.Icon;
+import javax.swing.JTable;
+
 import org.miradi.main.AppPreferences;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.FactorLink;
+import org.miradi.questions.ChoiceItem;
 
 public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellRendererFactory
 {
 	public ThreatTargetTableCellRendererFactory(AppPreferences preferences,	RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(preferences, providerToUse, fontProviderToUse);
+	}
+	
+	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
+	{
+		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, modelColumn);
+		if(choice == null || object == null)
+		{
+			return null;
+		}
+		
+		if(object.getProject().isStressBaseMode())
+		{
+			stressBasedIcon.setColor(choice.getColor());
+			return stressBasedIcon;
+		}
+
+		if (FactorLink.is(object))
+		{
+			simpleIcon.setLink((FactorLink)object);
+			return simpleIcon;
+		}
+		
+		stressBasedIcon.setColor(choice.getColor());
+		return stressBasedIcon;
 	}
 }
