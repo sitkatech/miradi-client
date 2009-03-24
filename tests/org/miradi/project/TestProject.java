@@ -337,9 +337,9 @@ public class TestProject extends EAMTestCase
 		ORefList noNodesMoved = new ORefList();
 		noNodesMoved.add(node1.getDiagramFactorRef());
 	
-		project.recordCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(noNodesMoved);
-		project.recordCommand(new CommandEndTransaction());
+		project.executeCommand(new CommandEndTransaction());
 		
 		//begin transaction
 		project.getLastCommand();
@@ -369,9 +369,9 @@ public class TestProject extends EAMTestCase
 		diagramFactorRefs.add(node1.getDiagramFactorRef());
 		diagramFactorRefs.add(node2.getDiagramFactorRef());
 		
-		project.recordCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
-		project.recordCommand(new CommandEndTransaction());
+		project.executeCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
 		
@@ -413,9 +413,9 @@ public class TestProject extends EAMTestCase
 		diagramFactorRefs.add(node1.getDiagramFactorRef());
 		diagramFactorRefs.add(node2.getDiagramFactorRef());
 		
-		project.recordCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
-		project.recordCommand(new CommandEndTransaction());
+		project.executeCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
 		
@@ -490,9 +490,9 @@ public class TestProject extends EAMTestCase
 		diagramFactorRefs.add(nodeResizedOnly.getDiagramFactorRef());
 		diagramFactorRefs.add(nodeNotMovedOrResized.getDiagramFactorRef());
 
-		project.recordCommand(new CommandBeginTransaction());
+		project.executeCommand(new CommandBeginTransaction());
 		new FactorMoveHandler(project, project.getDiagramModel()).factorsWereMovedOrResized(diagramFactorRefs);
-		project.recordCommand(new CommandEndTransaction());
+		project.executeCommand(new CommandEndTransaction());
 		
 		project.getLastCommand(); //End Transaction
 		

@@ -952,8 +952,15 @@ public class Project
 
 	public void executeCommand(Command command) throws CommandFailedException
 	{
+		boolean commandWasExecuted = internalExecuteCommand(command);
+		if (commandWasExecuted)
+			recordCommand(command);	
+	}
+
+	private boolean internalExecuteCommand(Command command) throws CommandFailedException
+	{
 		if(command.isDoNothingCommand(this))
-			return;
+			return false;
 		
 		isExecuting = true;
 		try
@@ -962,7 +969,8 @@ public class Project
 				getDatabase().updateLastModifiedTime();
 			
 			executeWithoutRecording(command);
-			recordCommand(command);
+			fireCommandExecuted(command);
+			return true;
 		}
 		catch (Exception e)
 		{
@@ -1102,7 +1110,7 @@ public class Project
 									  "</html>");
 		}
 		
-		executeWithoutRecording(command);
+		internalExecuteCommand(command);
 	}
 	
 	public void recordCommand(Command command)
@@ -1130,7 +1138,6 @@ public class Project
 			{
 				undoRedoState.pushUndoableCommand(command);
 			}
-			fireCommandExecuted(command);
 		}
 		catch (Exception e)
 		{
@@ -1159,7 +1166,7 @@ public class Project
 		commandExecutedListeners.remove(listener);
 	}
 
-	void fireCommandExecuted(Command command)
+	protected void fireCommandExecuted(Command command)
 	{
 		EAM.logVerbose("fireCommandExecuted: " + command.toString());
 		beginCommandSideEffectMode();
