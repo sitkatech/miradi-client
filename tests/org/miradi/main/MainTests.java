@@ -144,6 +144,7 @@ import org.miradi.project.TestIdAssigner;
 import org.miradi.project.TestIntermediateResultPool;
 import org.miradi.project.TestProject;
 import org.miradi.project.TestProjectCalendar;
+import org.miradi.project.TestProjectCommandExecutions;
 import org.miradi.project.TestProjectInfo;
 import org.miradi.project.TestProjectRepairer;
 import org.miradi.project.TestProjectUnzipper;
@@ -241,6 +242,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTargetPool.class));
 		suite.addTest(new TestSuite(TestCausePool.class));
 		suite.addTest(new TestSuite(TestProject.class));
+		suite.addTest(new TestSuite(TestProjectCommandExecutions.class));
 		suite.addTest(new TestSuite(TestProjectCalendar.class));
 		suite.addTest(new TestSuite(TestProjectRepairer.class));
 		suite.addTest(new TestSuite(TestRealProject.class));

@@ -25,8 +25,11 @@ import java.util.EventObject;
 
 import javax.swing.Icon;
 
+import org.miradi.commands.Command;
 import org.miradi.dialogfields.SavableField;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UnexpectedSideEffectException;
+import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -69,12 +72,46 @@ public abstract class MainWindowAction extends EAMAction
 		{
 			doAction(event);
 		}
+		catch (UnexpectedNonSideEffectException e)
+		{
+			EAM.logException(e);
+			displayUndoRedoErrorMessage();
+		}
+		catch (UnexpectedSideEffectException e)
+		{
+			EAM.logException(e);
+			
+			if(getProject().isInCommandSideEffectMode())
+			{
+				Command lastCommand = getProject().getLastExecutedCommand();
+				if(lastCommand == null)
+					EAM.friendlyInternalError("Attempted to execute command as side effect before any command had been executed ");
+
+				EAM.friendlyInternalError(
+						EAM.text("Attempt to execute command while in side effect mode:\n" +
+								" tried  " + e.getCommand().toString() + "\n" +
+								"  within " + lastCommand.toString())
+						);
+			}
+			
+			displayUndoRedoErrorMessage();
+		}
 		catch (CommandFailedException e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("An internal error prevented this operation"));
 		}
 		
+	}
+
+	private void displayUndoRedoErrorMessage()
+	{
+		EAM.displayHtmlWarningDialog("<html>" + 
+			  	EAM.text("An unexpected error has occurred.") + 
+			  	EAM.text("<br> The operation completed successfully, but Undo/Redo may not work correctly.") +
+			  	EAM.text("<br> Please report this problem to the Miradi support team ") +
+			  	"(<a href=\"mailto:support@miradi.org\">support@miradi.org<a>)" + 
+			  "</html>");
 	}
 
 	public void doAction() throws CommandFailedException
