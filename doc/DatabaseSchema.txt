@@ -1,5 +1,5 @@
 Database Schema
-2007-05-02
+2009-03-24
 Kevin Smith
 
 These are rough notes. Our system is very similar to a 
@@ -60,6 +60,12 @@ http://coronet.iicm.edu/wbtmaster/allcoursescontent/netlib/library.htm
   
 Here is a GREAT slide show about DBTG databases:
 http://nlp.postech.ac.kr/Course/ITEC521/dbslide-5thedition/appA.ppt
+
+CouchDB is pretty similar to our existing database, as it stores JSON
+documents. It provides a REST HTTP API, and supports replication and 
+multi-user access with conflict detection.
+http://couchdb.apache.org/
+
   
 RelationshipManager
 
