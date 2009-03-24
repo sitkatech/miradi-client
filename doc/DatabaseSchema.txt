@@ -66,6 +66,11 @@ documents. It provides a REST HTTP API, and supports replication and
 multi-user access with conflict detection.
 http://couchdb.apache.org/
 
+Then there is FeatherDB, a loose clone of CouchDB but in native Java, 
+which would allow us to run it as an embedded db (rather than http):
+http://fourspaces.com/blog/2008/4/11/FeatherDB_Java_JSON_Document_database
+
+
   
 RelationshipManager
 
