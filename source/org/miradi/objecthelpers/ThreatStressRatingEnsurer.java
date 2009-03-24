@@ -87,7 +87,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			ORef threatRef = threatStressPair.getThreatRef();
 			CreateThreatStressRatingParameter extraInfo = new CreateThreatStressRatingParameter(stressRef, threatRef);
 			CommandCreateObject createThreatStressRatingCommand = new CommandCreateObject(ThreatStressRating.getObjectType(), extraInfo);
-			getProject().executeCommand(createThreatStressRatingCommand);
+			getProject().executeAsSideEffect(createThreatStressRatingCommand);
 		}
 	}
 	
@@ -109,7 +109,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		commandsToDeleteThreatStressRating.addAll(threatStressRating.createCommandsToClearAsList());
 		commandsToDeleteThreatStressRating.add(new CommandDeleteObject(threatStressRating));
 		
-		getProject().executeCommandsWithoutTransaction(commandsToDeleteThreatStressRating);
+		getProject().executeAsSideEffect(commandsToDeleteThreatStressRating);
 	}
 
 	private HashSet<ThreatStressPair> createThreatStressFromPoolPairs()

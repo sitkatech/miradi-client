@@ -84,7 +84,7 @@ public class ProjectWithHelpers extends Project implements CommandExecutedListen
 		createOrOpen(projectName);
 	}
 
-	protected void fireCommandExecuted(Command command)
+	public void fireCommandExecuted(Command command)
 	{
 		super.fireCommandExecuted(command);
 		if(commandStack != null)

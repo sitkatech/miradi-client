@@ -39,7 +39,9 @@ import org.miradi.database.DataUpgrader;
 import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.FutureVersionException;
+import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.exceptions.OldVersionException;
+import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
@@ -950,11 +952,24 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// command execution
 
-	public void executeCommand(Command command) throws CommandFailedException
+	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
-		boolean commandWasExecuted = internalExecuteCommand(command);
-		if (commandWasExecuted)
-			recordCommand(command);	
+		if (isInCommandSideEffectMode())
+			throw new UnexpectedNonSideEffectException(); 
+
+		boolean commandWasExecuted = false;
+		beginCommandSideEffectMode();
+		try
+		{
+			commandWasExecuted = internalExecuteCommand(command);
+		}
+		finally 
+		{
+			endCommandSideEffectMode();
+			
+			if (commandWasExecuted)
+				recordCommand(command);
+		}
 	}
 
 	private boolean internalExecuteCommand(Command command) throws CommandFailedException
@@ -1050,7 +1065,7 @@ public class Project
 		{
 			isExecuting = true;
 			executeWithoutRecording(cmd.getReverseCommand());
-			fireCommandExecuted(cmd.getReverseCommand());
+			enterSideEffectModeAndFireCommandExecuted(cmd.getReverseCommand());
 			return cmd;
 		}
 		finally
@@ -1067,7 +1082,7 @@ public class Project
 			EAM.logVerbose("Redoing: " + cmd.toString());
 			isExecuting = true;
 			executeWithoutRecording(cmd);
-			fireCommandExecuted(cmd);
+			enterSideEffectModeAndFireCommandExecuted(cmd);
 			return cmd;
 		}
 		finally
@@ -1098,36 +1113,17 @@ public class Project
 		}
 	}
 	
-	public void executeAsSideEffect(Command command) throws CommandFailedException
+	public void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
 	{
 		if(!isInCommandSideEffectMode())
-		{
-			EAM.displayHtmlWarningDialog("<html>" + 
-									  	EAM.text("An unexpected error has occurred.") + 
-									  	EAM.text("<br> The operation completed successfully, but Undo/Redo may not work correctly.") +
-									  	EAM.text("<br> Please report this problem to the Miradi support team ") +
-									  	"(<a href=\"mailto:support@miradi.org\">support@miradi.org<a>)" + 
-									  "</html>");
-		}
+			throw new UnexpectedSideEffectException(command);
 		
 		internalExecuteCommand(command);
 	}
 	
 	public void recordCommand(Command command)
 	{
-		Command lastCommand = undoRedoState.getLastRecordedCommand();
-		if(isInCommandSideEffectMode())
-		{
-			if(lastCommand == null)
-				EAM.friendlyInternalError("Attempted to execute command as side effect before any command had been executed ");
-
-			EAM.friendlyInternalError(
-					EAM.text("Attempt to execute command while in side effect mode:\n" +
-							" tried  " + command.toString() + "\n" +
-							"  within " + lastCommand.toString())
-					);
-		}
-		
+		Command lastCommand = getLastExecutedCommand();		
 		try
 		{
 			if(command.isEndTransaction() && lastCommand != null && lastCommand.isBeginTransaction())
@@ -1143,6 +1139,11 @@ public class Project
 		{
 			EAM.logException(e);
 		}
+	}
+
+	public Command getLastExecutedCommand()
+	{
+		return undoRedoState.getLastRecordedCommand();
 	}
 	
 	public boolean isExecutingACommand()
@@ -1166,22 +1167,27 @@ public class Project
 		commandExecutedListeners.remove(listener);
 	}
 
-	protected void fireCommandExecuted(Command command)
+	private void enterSideEffectModeAndFireCommandExecuted(Command command)
 	{
 		EAM.logVerbose("fireCommandExecuted: " + command.toString());
 		beginCommandSideEffectMode();
 		try
 		{
-			CommandExecutedEvent event = new CommandExecutedEvent(command);
-			for(int i=0; i < getCommandListenerCount(); ++i)
-			{
-				CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
-				listener.commandExecuted(event);
-			}
+			fireCommandExecuted(command);
 		}
 		finally
 		{
 			endCommandSideEffectMode();
+		}
+	}
+
+	public void fireCommandExecuted(Command command)
+	{
+		CommandExecutedEvent event = new CommandExecutedEvent(command);
+		for(int i=0; i < getCommandListenerCount(); ++i)
+		{
+			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			listener.commandExecuted(event);
 		}
 	}
 	
@@ -1447,15 +1453,21 @@ public class Project
 
 	public void beginCommandSideEffectMode()
 	{
+		if (isInCommandSideEffectMode())
+			throw new RuntimeException("trying to begin side effect mode when inside side effect mode");
+		
 		inCommandSideEffectMode = true;
 	}
 
 	public void endCommandSideEffectMode()
 	{
+		if (!isInCommandSideEffectMode())
+			throw new RuntimeException("trying to end side effect mode when outside side effect mode");
+		
 		inCommandSideEffectMode = false;
 	}
 
-	private boolean isInCommandSideEffectMode()
+	public boolean isInCommandSideEffectMode()
 	{
 		return inCommandSideEffectMode;
 	}
