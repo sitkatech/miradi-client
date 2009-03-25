@@ -25,7 +25,7 @@ public class UnexpectedSideEffectException extends CommandFailedException
 {
 	public UnexpectedSideEffectException(Command commandToUse)
 	{
-		super("Attempted to execute side effect command while in side effect mode");
+		super("Attempted to execute side effect command while not in side effect mode.");
 		
 		command = commandToUse;
 	}
