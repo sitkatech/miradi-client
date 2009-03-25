@@ -19,8 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
 
 public class InsertDirectThreatDoer extends InsertFactorDoer
 {
@@ -47,6 +52,12 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 	{
 		getCurrentLayerManager().setContributingFactorsVisible(true);
 		getCurrentLayerManager().setDirectThreatsVisible(true);
+	}
+	
+	protected void doExtraSetup(DiagramFactor newlyInsertedDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
+	{
+		CommandSetObjectData enableThreat = new CommandSetObjectData(newlyInsertedDiagramFactor.getWrappedORef(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
+		getProject().executeCommand(enableThreat);
 	}
 }
 
