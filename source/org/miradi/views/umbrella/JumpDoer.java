@@ -24,6 +24,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 import org.miradi.views.MainWindowDoer;
 import org.miradi.wizard.WizardManager;
 
@@ -52,7 +53,7 @@ public class JumpDoer extends MainWindowDoer
 		if(!isAvailable())
 			return;
 		
-		getProject().executeCommand(new CommandBeginTransaction());
+		beginTransactionIfProjectOpen();
 		try
 		{
 			getWizardManager().setStep(actionClass);
@@ -65,8 +66,26 @@ public class JumpDoer extends MainWindowDoer
 		}
 		finally
 		{
-			getProject().executeCommand(new CommandEndTransaction());
+			endTransactionIfProjectOpen();
 		}
+	}
+
+	private void beginTransactionIfProjectOpen() throws CommandFailedException
+	{
+		Project project = getProject();
+		if(!project.isOpen())
+			return;
+		
+		project.executeCommand(new CommandBeginTransaction());
+	}
+
+	private void endTransactionIfProjectOpen() throws CommandFailedException
+	{
+		Project project = getProject();
+		if(!project.isOpen())
+			return;
+		
+		project.executeCommand(new CommandEndTransaction());
 	}
 
 	private WizardManager getWizardManager()
