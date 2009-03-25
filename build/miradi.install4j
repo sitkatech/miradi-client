@@ -155,8 +155,22 @@ for(int i = 0; i &lt; ARBITRARY_DEPTH_TO_PREVENT_ENDLESS_LOOP; ++i)
         if(bin.exists() &amp;&amp; bin.isDirectory())
         {
             Util.showErrorMessage(
-                    "You must either uninstall the earlier version of Miradi (recommended),\n" +
-                    "or choose a different directory for this version.");
+                    "This version of Miradi uses a different installer from the one that \n" + 
+                    "was used in Miradi versions 2.3.1 and earlier.\n" +
+                    "\n" + 
+                    "Thus, before installing this version, you must exit this installer, \n" + 
+                    "and uninstall the older Miradi. This is perfectly safe, because \n" + 
+                    "uninstalling Miradi will not remove the projects and data that you\n" + 
+                    "have created.\n " +
+                    "\n" + 
+                    "To uninstall the older version of Miradi, go to the Windows Start Menu,\n" + 
+                    "choose Miradi, and then choose 'Uninstall Miradi'.\n" +
+                    "\n" + 
+                    "This requirement to uninstall is a one time situation caused by the switch\n" +
+                    "to this new, more robust Miradi Installer. Future upgrades will not require \n" +
+                    "an uninstall; you will simply be able to simply install newer versions.\n" + 
+                    "\n"
+                    );
             return false;
         }
     }
