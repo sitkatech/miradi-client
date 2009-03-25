@@ -39,9 +39,9 @@ import org.miradi.database.DataUpgrader;
 import org.miradi.database.ProjectServer;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.FutureVersionException;
-import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.exceptions.OldVersionException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
+import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
@@ -1186,7 +1186,7 @@ public class Project
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
 		for(int i=0; i < getCommandListenerCount(); ++i)
 		{
-			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			CommandExecutedListener listener = commandExecutedListeners.get(i);
 			listener.commandExecuted(event);
 		}
 	}
@@ -1200,7 +1200,7 @@ public class Project
 	{
 		for(int i=0; i < getCommandListenerCount(); ++i)
 		{
-			CommandExecutedListener listener = (CommandExecutedListener)commandExecutedListeners.get(i);
+			CommandExecutedListener listener = commandExecutedListeners.get(i);
 			out.println(listener.getClass());
 		}
 	}
@@ -1507,7 +1507,7 @@ public class Project
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 
-	private Vector commandExecutedListeners;
+	private Vector<CommandExecutedListener> commandExecutedListeners;
 	
 	private boolean inTransaction;
 	
