@@ -894,7 +894,6 @@ public class Project
 		
 		try
 		{
-			disableThreatStressRatingEnsurer();
 			getDatabase().close();
 			clear();
 		}
