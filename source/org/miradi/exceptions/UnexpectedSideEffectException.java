@@ -20,12 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.exceptions;
 
 import org.miradi.commands.Command;
+import org.miradi.main.EAM;
 
 public class UnexpectedSideEffectException extends CommandFailedException
 {
 	public UnexpectedSideEffectException(Command commandToUse)
 	{
-		super("Attempted to execute side effect command while not in side effect mode.");
+		super(EAM.text("Attempted to execute side effect command while not in side effect mode."));
 		
 		command = commandToUse;
 	}

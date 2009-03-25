@@ -19,10 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.exceptions;
 
+import org.miradi.main.EAM;
+
 public class UnexpectedNonSideEffectException extends CommandFailedException
 {
 	public UnexpectedNonSideEffectException()
 	{
-		super("Attempt to execute command while in side effect mode");
+		super(EAM.text("Attempt to execute command while in side effect mode"));
 	}
 }
