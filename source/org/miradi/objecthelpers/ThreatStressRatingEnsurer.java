@@ -243,13 +243,6 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			return getThreatRef().hashCode() + getStressRef().hashCode();
 		}
 		
-		//TODO,  remove this, was used for debugger output
-		@Override
-		public String toString()
-		{
-			return getThreatRef() + " - " + getStressRef();
-		}
-		
 		private ORef threatRef;
 		private ORef stressRef;
 	}
