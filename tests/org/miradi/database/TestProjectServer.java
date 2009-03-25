@@ -123,17 +123,14 @@ public class TestProjectServer extends TestCaseWithProject
 	
 	public void testCreateInNonEmptyDirectory() throws Exception
 	{
-		File originalTempDir = createTempDirectory();
-		ProjectServer projectServer = new ProjectServer();
-		projectServer.setLocalDataLocation(originalTempDir);
-		projectServer.createProject(getName());
-
 		File tempDirectory = createTempDirectory();
 		File anyFile = new File(tempDirectory, "blah");
 		anyFile.mkdirs();
+
+		ProjectServer projectServer = new ProjectServer();
+		projectServer.setLocalDataLocation(tempDirectory);
 		try
 		{
-			projectServer.setLocalDataLocation(tempDirectory);
 			projectServer.createProject("blah");
 			fail("Should have thrown");
 		}
