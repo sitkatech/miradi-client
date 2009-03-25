@@ -19,12 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.diagram.cells.FactorCell;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Factor;
 
 public class InsertDirectThreatDoer extends InsertFactorDoer
 {
@@ -45,27 +41,6 @@ public class InsertDirectThreatDoer extends InsertFactorDoer
 	public String getInitialText()
 	{
 		return EAM.text("Label|New Factor");
-	}
-
-	@Override
-	protected void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] factorsToLinkTo) throws Exception
-	{
-		super.linkToPreviouslySelectedFactors(newlyInserted, factorsToLinkTo);
-		Factor insertedNode = Factor.findFactor(getProject(), newlyInserted.getWrappedORef());
-		if(!insertedNode.isDirectThreat())
-			warnNotDirectThreat();
-	}
-
-	@Override
-	protected void notLinkingToAnyFactors() throws CommandFailedException
-	{
-		super.notLinkingToAnyFactors();
-		warnNotDirectThreat();
-	}
-
-	private void warnNotDirectThreat()
-	{
-		EAM.notifyDialog(EAM.text("Text|This will not be a Direct Threat until it is linked to a Target"));
 	}
 
 	public void forceVisibleInLayerManager()
