@@ -59,6 +59,7 @@ import org.miradi.objectpools.MeasurementPool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.OrganizationPool;
 import org.miradi.objectpools.PlanningViewConfigurationPool;
+import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objectpools.ProgressPercentPool;
 import org.miradi.objectpools.ProgressReportPool;
 import org.miradi.objectpools.ProjectMetadataPool;
@@ -103,7 +104,7 @@ public class ObjectManager
 		diagramChainBuilder = new DiagramChainObject();
 		referrerCache = new HashMap<ORef, ORefSet>();
 
-		pools = new HashMap();
+		pools = new HashMap<Integer, PoolWithIdAssigner>();
 		IdAssigner factorAndLinkIdAssigner = project.getNodeIdAssigner();
 		pools.put(new Integer(ObjectType.FACTOR_LINK), new FactorLinkPool(factorAndLinkIdAssigner));
 
@@ -178,7 +179,7 @@ public class ObjectManager
 
 	public EAMObjectPool getPool(int objectType)
 	{
-		return (EAMObjectPool)pools.get(new Integer(objectType));
+		return pools.get(new Integer(objectType));
 	}
 
 	public FactorLinkPool getLinkagePool()
@@ -476,12 +477,12 @@ public class ObjectManager
 	
 	public BaseObject[] findObjects(ORefList refList)
 	{
-		return (BaseObject[])findObjectsAsVector(refList).toArray(new BaseObject[0]);
+		return findObjectsAsVector(refList).toArray(new BaseObject[0]);
 	}
 	
-	public Vector findObjectsAsVector(ORefList refList)
+	public Vector<BaseObject> findObjectsAsVector(ORefList refList)
 	{
-		Vector foundObjects = new Vector();
+		Vector<BaseObject> foundObjects = new Vector<BaseObject>();
 		for (int i = 0; i < refList.size(); ++i)
 		{
 			foundObjects.add(findObject(refList.get(i)));
@@ -547,12 +548,12 @@ public class ObjectManager
 
 	public HashMap getAllPools()
 	{
-		return new HashMap(pools);
+		return new HashMap<Integer, PoolWithIdAssigner>(pools);
 	}
 	
 	private Project project;
 	private ProjectChainObject projectChainBuilder;
 	private DiagramChainObject diagramChainBuilder;
-	private HashMap pools;
+	private HashMap<Integer, PoolWithIdAssigner> pools;
 	private HashMap<ORef, ORefSet> referrerCache;
 }

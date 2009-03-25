@@ -82,7 +82,7 @@ public class TestProjectZipper extends EAMTestCase
 			while (in.available() != 0)
 			{
 				ZipEntry e = in.getNextEntry();
-				ArrayList aList = new ArrayList(Arrays.asList(zipEntryNames));
+				ArrayList<String> aList = new ArrayList<String>(Arrays.asList(zipEntryNames));
 				int aIndex = aList.indexOf(e.getName());
 				String entrySearched = aList.get(aIndex).toString();
 
