@@ -123,13 +123,18 @@ public class TestProjectServer extends TestCaseWithProject
 	
 	public void testCreateInNonEmptyDirectory() throws Exception
 	{
+		File originalTempDir = createTempDirectory();
+		ProjectServer projectServer = new ProjectServer();
+		projectServer.setLocalDataLocation(originalTempDir);
+		projectServer.createProject(getName());
+
 		File tempDirectory = createTempDirectory();
 		File anyFile = new File(tempDirectory, "blah");
 		anyFile.mkdirs();
 		try
 		{
-			storage.setLocalDataLocation(tempDirectory);
-			storage.createProject("blah");
+			projectServer.setLocalDataLocation(tempDirectory);
+			projectServer.createProject("blah");
 			fail("Should have thrown");
 		}
 		catch (Exception ignoreExpected)
@@ -137,6 +142,7 @@ public class TestProjectServer extends TestCaseWithProject
 		}
 		finally
 		{
+			projectServer.close();
 			DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
 		}
 	}
