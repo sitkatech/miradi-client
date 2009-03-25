@@ -252,12 +252,12 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			
 			Vector<EAMGraphCell> stressCells = extractType(cellVector, Stress.getObjectType());
 			Vector<EAMGraphCell> activityCells = extractType(cellVector, Task.getObjectType());
-			Vector<EAMGraphCell> allCells = new Vector(cellVector);
+			Vector<EAMGraphCell> allCells = new Vector<EAMGraphCell>(cellVector);
 			
 			allCells.removeAll(stressCells);
 			allCells.removeAll(activityCells);
 			
-			Vector<EAMGraphCell> sortedCells = new Vector();
+			Vector<EAMGraphCell> sortedCells = new Vector<EAMGraphCell>();
 			sortedCells.addAll(stressCells);
 			sortedCells.addAll(activityCells);
 			sortedCells.addAll(allCells);
@@ -273,7 +273,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	private Vector<EAMGraphCell> extractType(HashSet<EAMGraphCell> cellVector, int type)
 	{
-		Vector<EAMGraphCell> extractedList = new Vector();
+		Vector<EAMGraphCell> extractedList = new Vector<EAMGraphCell>();
 		for(EAMGraphCell graphCell : cellVector)
 		{
 			if (graphCell.getWrappedFactorRef().getObjectType() == type)
@@ -312,7 +312,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public HashSet<LinkCell> getOnlySelectedLinkCells(Object [] allSelectedCells)
 	{
-		HashSet<LinkCell> linkCells = new HashSet();
+		HashSet<LinkCell> linkCells = new HashSet<LinkCell>();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
 			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
@@ -335,7 +335,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public DiagramLink[] getOnlySelectedDiagramLinks(Object [] allSelectedCells)
 	{
-		Vector linkages = new Vector();
+		Vector<DiagramLink> linkages = new Vector<DiagramLink>();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
 			if(((EAMGraphCell)allSelectedCells[i]).isFactorLink())
@@ -344,19 +344,19 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 				linkages.add(cell.getDiagramLink());
 			}
 		}
-		return (DiagramLink[])linkages.toArray(new DiagramLink[0]);
+		return linkages.toArray(new DiagramLink[0]);
 	}
 	
 	public static FactorCell[] getOnlySelectedFactorCells(EAMGraphCell[] allSelectedCells)
 	{
-		Vector nodes = new Vector();
+		Vector<FactorCell> nodes = new Vector<FactorCell>();
 		for(int i = 0; i < allSelectedCells.length; ++i)
 		{
 			EAMGraphCell cell = allSelectedCells[i];
 			if(cell.isFactor())
-				nodes.add(cell);
+				nodes.add((FactorCell)cell);
 		}
-		return (FactorCell[])nodes.toArray(new FactorCell[0]);
+		return nodes.toArray(new FactorCell[0]);
 	}
 	
 	public Factor[] getOnlySelectedFactors()
@@ -370,7 +370,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	private Factor[] getOnlySelectedFactors(EAMGraphCell[] allSelectedFactors)
 	{
-		Vector nodes = new Vector();
+		Vector<Factor> nodes = new Vector<Factor>();
 		for(int i = 0; i < allSelectedFactors.length; ++i)
 		{
 			EAMGraphCell graphCell = allSelectedFactors[i];
@@ -381,7 +381,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 				nodes.add(factor);
 			}
 		}
-		return (Factor[])nodes.toArray(new Factor[0]);
+		return nodes.toArray(new Factor[0]);
 
 	}
 	
@@ -396,7 +396,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public HashSet<FactorCell> getOnlySelectedFactorAndGroupChildCells() throws Exception
 	{
-		HashSet<FactorCell> groupBoxChildrenCells = new HashSet();
+		HashSet<FactorCell> groupBoxChildrenCells = new HashSet<FactorCell>();
 		FactorCell[] selectedCells = getOnlySelectedFactorCells();
 		for (int i = 0; i < selectedCells.length; ++i)
 		{
@@ -414,7 +414,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	public HashSet<FactorCell> getOnlySelectedGroupBoxCells() throws Exception
 	{
-		HashSet<FactorCell> groupBoxCells = new HashSet();
+		HashSet<FactorCell> groupBoxCells = new HashSet<FactorCell>();
 		FactorCell[] selectedCells = getOnlySelectedFactorCells();
 		for (int i = 0; i < selectedCells.length; ++i)
 		{
@@ -525,7 +525,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public HashSet<LinkCell> getAllLinksInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren)
 	{
-		HashSet<LinkCell> linkCells = new HashSet();
+		HashSet<LinkCell> linkCells = new HashSet<LinkCell>();
 		for(FactorCell factorCell : selectedFactorAndChildren)
 		{
 			linkCells.addAll(getAllLinksInsideGroupBox(selectedFactorAndChildren, factorCell.getDiagramFactor()));	
@@ -536,7 +536,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 
 	private HashSet<LinkCell> getAllLinksInsideGroupBox(HashSet<FactorCell> selectedFactorAndChildren, DiagramFactor diagramFactor)
 	{
-		HashSet<LinkCell> linkCells = new HashSet();
+		HashSet<LinkCell> linkCells = new HashSet<LinkCell>();
 		DiagramModel diagramModel = getDiagramModel();
 		ORefList diagramLinkReferrerRefs = diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		for (int referrrerIndex = 0; referrrerIndex < diagramLinkReferrerRefs.size(); ++referrrerIndex)
@@ -645,7 +645,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 				}
 				else if(cell.isFactorLink())
 				{
-					Vector thisLink = new Vector();
+					Vector<EAMGraphCell> thisLink = new Vector<EAMGraphCell>();
 					thisLink.add(cell);
 					repaintLinks(thisLink);
 				}

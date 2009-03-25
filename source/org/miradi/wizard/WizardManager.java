@@ -106,7 +106,7 @@ public class WizardManager
 	
 	public WizardManager(MainWindow mainWindowToUse) throws Exception
 	{
-		stepEntries = new Hashtable();
+		stepEntries = new Hashtable<String, SkeletonWizardStep>();
 		mainWindow = mainWindowToUse;
 		setCurrentStepName(getOverviewStepName(NoProjectView.getViewName()));
 	}

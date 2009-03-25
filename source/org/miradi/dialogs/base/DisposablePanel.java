@@ -52,7 +52,7 @@ public class DisposablePanel extends JPanel
 	{
 		for(int i = 0; i < objectsActionsToRelease.size(); ++i)
 		{
-			ObjectsAction action = (ObjectsAction)objectsActionsToRelease.get(i);
+			ObjectsAction action = objectsActionsToRelease.get(i);
 			action.addPicker(null);
 		}
 	}
@@ -70,6 +70,6 @@ public class DisposablePanel extends JPanel
 		return null;
 	}
 	
-	Vector objectsActionsToRelease;
+	Vector<ObjectsAction> objectsActionsToRelease;
 
 }

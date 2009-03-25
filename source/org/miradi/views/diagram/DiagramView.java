@@ -875,7 +875,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private DiagramComponent[] getAllDiagramComponents()
 	{
 		int tabCount = getTabCount();
-		Vector allDiagramComponents = new Vector();
+		Vector<DiagramComponent> allDiagramComponents = new Vector<DiagramComponent>();
 		for (int i = 0; i < tabCount; ++i)
 		{
 			DiagramPanel panel = (DiagramPanel) getTabContents(i);
@@ -883,7 +883,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			allDiagramComponents.addAll(Arrays.asList(panelDiagramComponents));
 		}
 
-		return (DiagramComponent[]) allDiagramComponents.toArray(new DiagramComponent[0]);
+		return allDiagramComponents.toArray(new DiagramComponent[0]);
 	}
 
 	private void updateFactorLinkIfRelevant(DiagramModel model, CommandSetObjectData cmd) throws Exception
