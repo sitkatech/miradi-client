@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.commands.CommandCreateObject;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -28,6 +29,7 @@ import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
+import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 
 public class TestProjectCommandExecutions extends TestCaseWithProject implements CommandExecutedListener
@@ -53,8 +55,28 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 	
 	public void testExecuteAsSideEffect() throws Exception
 	{
+		verifyNormalCommand();			
+		verifySideEffectCommandOusideOfSideEffectMode();
+	}
+
+	private void verifyNormalCommand() throws CommandFailedException
+	{
 		CommandCreateObject createStress = new CommandCreateObject(Stress.getObjectType());
-		getProject().executeCommand(createStress);			
+		getProject().executeCommand(createStress);
+	}
+
+	private void verifySideEffectCommandOusideOfSideEffectMode()
+	{
+		try
+		{
+			assertTrue("should not be in side effect mode?", !getProject().isInCommandSideEffectMode());
+			CommandCreateObject createTarget = new CommandCreateObject(Target.getObjectType());
+			getProject().executeAsSideEffect(createTarget);
+			fail("Should have thrown exception for executing a sideeffect command outside of sideeffect mode");
+		}
+		catch (Exception e)
+		{
+		}
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
