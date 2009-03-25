@@ -67,10 +67,10 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 
 	private void verifySideEffectCommandOusideOfSideEffectMode()
 	{
+		assertTrue("should not be in side effect mode?", !getProject().isInCommandSideEffectMode());
+		CommandCreateObject createTarget = new CommandCreateObject(Target.getObjectType());
 		try
 		{
-			assertTrue("should not be in side effect mode?", !getProject().isInCommandSideEffectMode());
-			CommandCreateObject createTarget = new CommandCreateObject(Target.getObjectType());
 			getProject().executeAsSideEffect(createTarget);
 			fail("Should have thrown exception for executing a sideeffect command outside of sideeffect mode");
 		}
