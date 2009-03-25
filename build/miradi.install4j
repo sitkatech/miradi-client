@@ -44,11 +44,11 @@ mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompressio
     <components />
   </files>
   <launchers>
-    <launcher name="Miradi" id="18" external="false" excludeFromMenu="false" menuName="" icnsFile="" pngIcon16File="../source/resources/icons/miradi16.png" pngIcon32File="miradi/source/resources/icons/miradi32.png" macServiceDependencies="" swtApp="false" fileset="">
+    <launcher name="Miradi" id="18" external="false" excludeFromMenu="false" menuName="" icnsFile="" pngIcon16File="miradi/source/resources/icons/miradi16.png" pngIcon32File="miradi/source/resources/icons/miradi32.png" macServiceDependencies="" swtApp="false" fileset="">
       <executable name="Miradi" type="1" iconSet="true" iconFile="miradi/build/installer/BuildFiles/miradi.ico" executableDir="" redirectStderr="true" stderrFile="error.log" redirectStdout="false" stdoutFile="output.log" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker">
         <versionInfo include="true" fileVersion="${compiler:sys.version}.0" fileDescription="Miradi (www.miradi.org)" legalCopyright="Copyright 2005-2009, Foundations of Success, Bethesda, Maryland  (on behalf of the Conservation Measures Partnership, &quot;CMP&quot;) and  Beneficent Technology, Inc. (&quot;Benetech&quot;), Palo Alto, California.  " internalName="${compiler:sys.fullName}" />
       </executable>
-      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="568" height="166" bitmapFile="../source/resources/images/MiradiLogoNameLarge.gif" java6SplashScreen="false">
+      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="568" height="166" bitmapFile="miradi/source/resources/images/MiradiLogoNameLarge.gif" java6SplashScreen="false">
         <text>
           <statusLine x="4" y="3" text="Loading..." font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
           <versionLine x="186" y="152" text="version ${compiler:sys.version}" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
