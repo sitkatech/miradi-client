@@ -60,6 +60,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)
 	{
+		saveFocusedFieldPendingEdits();
 		selectedHeirearchy = selectedHeirearchyToUse;
 
 		updateText();
