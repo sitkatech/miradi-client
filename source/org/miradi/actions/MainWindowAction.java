@@ -81,20 +81,15 @@ public abstract class MainWindowAction extends EAMAction
 		{
 			EAM.logException(e);
 			
-			if(getProject().isInCommandSideEffectMode())
-			{
-				Command lastCommand = getProject().getLastExecutedCommand();
-				if(lastCommand == null)
-					EAM.friendlyInternalError("Attempted to execute command as side effect before any command had been executed ");
+			Command lastCommand = getProject().getLastExecutedCommand();
+			if(lastCommand == null)
+				EAM.friendlyInternalError(EAM.text("Attempted to execute command as side effect before any command had been executed "));
 
-				EAM.friendlyInternalError(
-						EAM.text("Attempt to execute command while in side effect mode:\n" +
-								" tried  " + e.getCommand().toString() + "\n" +
-								"  within " + lastCommand.toString())
-						);
-			}
-			
-			displayUndoRedoErrorMessage();
+			EAM.friendlyInternalError(
+					EAM.text("Attempt to execute command while in side effect mode:\n" +
+							" tried  " + e.getCommand().toString() + "\n" +
+							"  within " + lastCommand.toString())
+			);
 		}
 		catch (CommandFailedException e)
 		{
