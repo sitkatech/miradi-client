@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.1.5" transformSequenceNumber="2">
   <directoryPresets config="./installer/BuildFiles/install4j_messages_en.utf8" />
-  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" mediaDir="miradi/dist" 
+  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" mediaDir="../dist" 
 mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="2.4" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
@@ -27,28 +27,28 @@ mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompressio
       <mountPoint id="17" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/martus-utils/bin/martus-utils.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/martus-swing/bin/martus-swing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/jing/bin/xml-apis.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/jing/bin/xercesImpl.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/jing/bin/saxon.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/jing/bin/jing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/jing/bin/isorelax.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/jgraph/miradi-jgraph.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/jcalendar-1.3.2/jcalendar-1.3.2.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="miradi/dist/temp/jars/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="17" file="miradi/build/installer/BuildFiles/MarineExample-2.4.0.mpz" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="17" file="miradi/build/installer/BuildFiles/LicenseOverview.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="17" file="miradi/dist/miradi.jar" overwrite="1" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-utils/bin/martus-utils.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/martus-swing/bin/martus-swing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/xml-apis.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/xercesImpl.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/saxon.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/jing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/isorelax.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jgraph/miradi-jgraph.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jcalendar-1.3.2/jcalendar-1.3.2.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-2.4.0.mpz" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="17" file="./installer/BuildFiles/LicenseOverview.txt" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="17" file="../dist/miradi.jar" overwrite="1" shared="false" mode="644" uninstallMode="0" />
     </entries>
     <components />
   </files>
   <launchers>
-    <launcher name="Miradi" id="18" external="false" excludeFromMenu="false" menuName="" icnsFile="" pngIcon16File="miradi/source/resources/icons/miradi16.png" pngIcon32File="miradi/source/resources/icons/miradi32.png" macServiceDependencies="" swtApp="false" fileset="">
-      <executable name="Miradi" type="1" iconSet="true" iconFile="miradi/build/installer/BuildFiles/miradi.ico" executableDir="" redirectStderr="true" stderrFile="error.log" redirectStdout="false" stdoutFile="output.log" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker">
+    <launcher name="Miradi" id="18" external="false" excludeFromMenu="false" menuName="" icnsFile="" pngIcon16File="../source/resources/icons/miradi16.png" pngIcon32File="../source/resources/icons/miradi32.png" macServiceDependencies="" swtApp="false" fileset="">
+      <executable name="Miradi" type="1" iconSet="true" iconFile="installer/BuildFiles/miradi.ico" executableDir="" redirectStderr="true" stderrFile="error.log" redirectStdout="false" stdoutFile="output.log" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="false" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker">
         <versionInfo include="true" fileVersion="${compiler:sys.version}.0" fileDescription="Miradi (www.miradi.org)" legalCopyright="Copyright 2005-2009, Foundations of Success, Bethesda, Maryland  (on behalf of the Conservation Measures Partnership, &quot;CMP&quot;) and  Beneficent Technology, Inc. (&quot;Benetech&quot;), Palo Alto, California.  " internalName="${compiler:sys.fullName}" />
       </executable>
-      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="568" height="166" bitmapFile="miradi/source/resources/images/MiradiLogoNameLarge.gif" java6SplashScreen="false">
+      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="568" height="166" bitmapFile="../source/resources/images/MiradiLogoNameLarge.gif" java6SplashScreen="false">
         <text>
           <statusLine x="4" y="3" text="Loading..." font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
           <versionLine x="186" y="152" text="version ${compiler:sys.version}" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
@@ -76,7 +76,7 @@ mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompressio
             <object class="com.install4j.runtime.beans.applications.InstallerApplication">
               <void property="customHeaderImage">
                 <object class="com.install4j.api.beans.ExternalFile">
-                  <string>miradi/source/resources/images/miradi64.png</string>
+                  <string>../source/resources/images/miradi64.png</string>
                 </object>
               </void>
             </object>
@@ -256,7 +256,7 @@ return true;
                       </void>
                       <void property="winIconFile">
                         <object class="com.install4j.api.beans.ExternalFile">
-                          <string>miradi/source/resources/images/app.ico</string>
+                          <string>../source/resources/images/app.ico</string>
                         </object>
                       </void>
                     </object>
