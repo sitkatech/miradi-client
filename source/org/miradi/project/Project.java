@@ -1169,7 +1169,6 @@ public class Project
 
 	private void enterSideEffectModeAndFireCommandExecuted(Command command)
 	{
-		EAM.logVerbose("fireCommandExecuted: " + command.toString());
 		beginCommandSideEffectMode();
 		try
 		{
@@ -1183,6 +1182,7 @@ public class Project
 
 	public void fireCommandExecuted(Command command)
 	{
+		EAM.logVerbose("fireCommandExecuted: " + command.toString());
 		CommandExecutedEvent event = new CommandExecutedEvent(command);
 		for(int i=0; i < getCommandListenerCount(); ++i)
 		{
