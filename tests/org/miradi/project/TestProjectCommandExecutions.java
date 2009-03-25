@@ -74,7 +74,7 @@ public class TestProjectCommandExecutions extends TestCaseWithProject implements
 			getProject().executeAsSideEffect(createTarget);
 			fail("Should have thrown exception for executing a sideeffect command outside of sideeffect mode");
 		}
-		catch (Exception e)
+		catch (Exception ignoreExpected)
 		{
 		}
 	}
