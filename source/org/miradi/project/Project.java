@@ -962,13 +962,13 @@ public class Project
 		try
 		{
 			commandWasExecuted = internalExecuteCommand(command);
+			if (commandWasExecuted)
+				recordCommand(command);
 		}
 		finally 
 		{
 			endCommandSideEffectMode();
 			
-			if (commandWasExecuted)
-				recordCommand(command);
 		}
 	}
 
