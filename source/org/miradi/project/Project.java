@@ -139,7 +139,7 @@ public class Project
 	public Project(ProjectServer databaseToUse) throws Exception
 	{
 		database = databaseToUse;
-		commandExecutedListeners = new Vector();
+		commandExecutedListeners = new Vector<CommandExecutedListener>();
 		projectCalendar = new ProjectCalendar(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		enableThreatStressRatingEnsurer();
@@ -1299,7 +1299,7 @@ public class Project
 	public DiagramLink[] getToAndFromLinks(DiagramFactorId diagramFactorId)
 	{
 		DiagramLinkId[] allLinkIds = getDiagramFactorLinkPool().getallDiagramFactorLinkIds();
-		Vector fromAndToLinksForFactor = new Vector();
+		Vector<DiagramLink> fromAndToLinksForFactor = new Vector<DiagramLink>();
 		for (int i = 0; i < allLinkIds.length; i++)
 		{
 			DiagramLink link = (DiagramLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, allLinkIds[i]));
@@ -1307,7 +1307,7 @@ public class Project
 				fromAndToLinksForFactor.add(link);
 		}
 		
-		return (DiagramLink[]) fromAndToLinksForFactor.toArray(new DiagramLink[0]);
+		return fromAndToLinksForFactor.toArray(new DiagramLink[0]);
 	}
 	
 	public DiagramFactorId[] getAllDiagramFactorIds()

@@ -538,7 +538,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public Doer getDoer(Class actionClass)
 	{
-		Doer doer = (Doer)actionToDoerMap.get(actionClass);
+		Doer doer = actionToDoerMap.get(actionClass);
 		if(doer == null)
 			doer = nullDoer;
 		
@@ -598,7 +598,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
-	private HashMap actionToDoerMap;
+	private HashMap<Class, Doer> actionToDoerMap;
 	private boolean isActive;
 	
 	private ModelessDialogPanel activePropertiesPanel;

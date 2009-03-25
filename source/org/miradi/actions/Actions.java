@@ -508,5 +508,5 @@ public class Actions
 		actions.put(action.getClass(), action);
 	}
 
-	Map actions;
+	Map<Class, EAMAction> actions;
 }

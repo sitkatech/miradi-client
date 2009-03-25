@@ -215,7 +215,7 @@ abstract public class DiagramModel extends DefaultGraphModel
     {
         for (int i=0; i<diagramModelListenerList.size(); ++i) 
         {
-        	eventNotifier.doNotify((DiagramModelListener)diagramModelListenerList.get(i), event);
+        	eventNotifier.doNotify(diagramModelListenerList.get(i), event);
         }                
     }
 
@@ -670,12 +670,12 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public Vector<DiagramFactor> getAllDiagramFactors()
 	{
-		return new Vector(Arrays.asList(getAllDiagramFactorsAsArray()));
+		return new Vector<DiagramFactor>(Arrays.asList(getAllDiagramFactorsAsArray()));
 	}
 	
 	public DiagramFactor[] getAllDiagramFactorsAsArray()
 	{
-		Vector allDiagramFactors = new Vector();
+		Vector<DiagramFactor> allDiagramFactors = new Vector<DiagramFactor>();
 		Vector allFactorCells = getAllFactorCells();
 		for (int i = 0; i < allFactorCells.size(); i++)
 		{
@@ -683,7 +683,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 			allDiagramFactors.add(factorCell.getDiagramFactor());
 		}
 		
-		return (DiagramFactor[]) allDiagramFactors.toArray(new DiagramFactor[0]);
+		return allDiagramFactors.toArray(new DiagramFactor[0]);
 	}
 
 	public LinkCell[] getAllFactorLinkCells()
@@ -747,7 +747,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 	public HashSet<LinkCell> getFactorRelatedLinks(FactorCell factorCell)
 	{
-		HashSet<LinkCell> factorRelatedLinks = new HashSet();
+		HashSet<LinkCell> factorRelatedLinks = new HashSet<LinkCell>();
 		Set linkages = getFactorLinks(factorCell);
 		for (Iterator iter = linkages.iterator(); iter.hasNext();) 
 		{
@@ -765,7 +765,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		
 		FactorCell factorCell = (FactorCell) cell;
 		ORefList groupBoxChildrenRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();
-		HashSet<FactorCell> groupBoxChildrenCells = new HashSet();
+		HashSet<FactorCell> groupBoxChildrenCells = new HashSet<FactorCell>();
 		for (int childIndex = 0; childIndex < groupBoxChildrenRefs.size(); ++childIndex)
 		{
 			ORef childRef = groupBoxChildrenRefs.get(childIndex);
@@ -782,7 +782,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		
 		LinkCell linkCell = (LinkCell) cell;
 		ORefList groupLinkChildRefs = linkCell.getDiagramLink().getGroupedDiagramLinkRefs();
-		HashSet<EAMGraphCell> groupLinkChildCells = new HashSet();
+		HashSet<EAMGraphCell> groupLinkChildCells = new HashSet<EAMGraphCell>();
 		for (int childIndex = 0; childIndex < groupLinkChildRefs.size(); ++childIndex)
 		{
 			ORef childRef = groupLinkChildRefs.get(childIndex);
@@ -938,7 +938,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public Vector<FactorCell> getAllDiagramTargets()
 	{
-		Vector allTargets = new Vector();
+		Vector<FactorCell> allTargets = new Vector<FactorCell>();
 		Vector allFactors = getAllFactorCells();
 		for (int i = 0; i < allFactors.size(); i++)
 		{
@@ -965,7 +965,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 	public Vector getAllGroupBoxCells()
 	{
-		Vector allGroupBoxCells = new Vector();
+		Vector<FactorCell> allGroupBoxCells = new Vector<FactorCell>();
 		Vector allFactors = getAllFactorCells();
 		for (int i = 0; i < allFactors.size(); i++)
 		{
@@ -1014,7 +1014,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	private Project project;
 	private CellInventory cellInventory;
 	private ProjectScopeBox projectScopeBox;
-	protected List diagramModelListenerList = new ArrayList();
+	protected List<DiagramModelListener> diagramModelListenerList = new ArrayList<DiagramModelListener>();
 	
 	private DiagramObject diagramContents;
 	

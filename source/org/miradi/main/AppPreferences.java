@@ -228,7 +228,7 @@ public class AppPreferences
 	
 	public int getTaggedInt(String tag)
 	{
-		Integer value = (Integer)taggedIntMap.get(tag);
+		Integer value = taggedIntMap.get(tag);
 		if(value == null)
 			return 0;
 		return value.intValue();
@@ -241,7 +241,7 @@ public class AppPreferences
 	
 	public String getTaggedString(String tag)
 	{
-		String value = (String) taggedStringMap.get(tag);
+		String value = taggedStringMap.get(tag);
 		if(value == null)
 			return "";
 		return value;
@@ -357,7 +357,7 @@ public class AppPreferences
 		while(iter.hasNext())
 		{
 			String key = (String)iter.next();
-			String value = (String)taggedStringMap.get(key);
+			String value = taggedStringMap.get(key);
 			taggedStringJson.put(key, value);
 		}
 		return taggedStringJson;
@@ -370,7 +370,7 @@ public class AppPreferences
 		while(iter.hasNext())
 		{
 			String key = (String)iter.next();
-			Integer value = (Integer)taggedIntMap.get(key);
+			Integer value = taggedIntMap.get(key);
 			taggedIntJson.put(key, value.intValue());
 		}
 		return taggedIntJson;
@@ -413,7 +413,7 @@ public class AppPreferences
 
 	private HashMap loadTagStringMap(EnhancedJsonObject json)
 	{
-		HashMap map = new HashMap();
+		HashMap map = new HashMap<String, String>();
 		EnhancedJsonObject taggedStringJson = json.optJson(TAG_TAGGED_STRINGS);
 		Iterator iter = taggedStringJson.keys();
 		while(iter.hasNext())
@@ -428,7 +428,7 @@ public class AppPreferences
 	
 	private HashMap loadTagIntegerMap(EnhancedJsonObject json)
 	{
-		HashMap map = new HashMap();
+		HashMap map = new HashMap<String, Integer>();
 		EnhancedJsonObject taggedIntJson = json.optJson(TAG_TAGGED_INTS);
 		Iterator iter = taggedIntJson.keys();
 		while(iter.hasNext())
@@ -615,6 +615,6 @@ public class AppPreferences
 
 	private String rowHeightModeCode;
 
-	private HashMap taggedIntMap;
-	private HashMap taggedStringMap;
+	private HashMap<String, Integer> taggedIntMap;
+	private HashMap<String, String> taggedStringMap;
 }
