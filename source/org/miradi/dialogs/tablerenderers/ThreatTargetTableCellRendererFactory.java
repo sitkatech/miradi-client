@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.Icon;
@@ -41,7 +40,6 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		defaultBackgroundColor = Color.WHITE;
 		stressBasedIcon = new ColoredIcon();
 		simpleIcon = new BundleIcon(preferences);
 	}
@@ -62,18 +60,6 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 		return renderer;
 	}
 
-	protected Color getBackgroundColor(Object value)
-	{
-		if(value == null)
-			return Color.GRAY.brighter();
-		
-		ChoiceItem choice = getChoiceItem(value);
-		if(choice == null || choice.getColor() == null)
-			return defaultBackgroundColor;
-		
-		return choice.getColor();
-	}
-		
 	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
 	{
 		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
@@ -97,5 +83,4 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 	
 	private BundleIcon simpleIcon;
 	private ColoredIcon stressBasedIcon;
-	private Color defaultBackgroundColor;
 }
