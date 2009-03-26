@@ -35,11 +35,11 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 
-public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellRendererFactory
+public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
 {
 	public ThreatTargetTableCellRendererFactory(AppPreferences preferences,	RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
-		super(preferences, providerToUse, fontProviderToUse);
+		super(providerToUse, fontProviderToUse);
 		
 		defaultBackgroundColor = Color.WHITE;
 		stressBasedIcon = new ColoredIcon();
