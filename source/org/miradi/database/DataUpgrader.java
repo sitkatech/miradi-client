@@ -455,11 +455,11 @@ public class DataUpgrader
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
 		ORef toRef = factorLinkJson.getRef("ToRef");
-		if (isThreatToTarget(fromRef, toRef))
+		if (isFromCauseAndToTarget(fromRef, toRef))
 			return fromRef;
 		
 		String isBidirectionalAsString = factorLinkJson.optString("BidirectionalLink");
-		if (isThreatToTarget(toRef, fromRef) && asBoolean(isBidirectionalAsString))
+		if (isFromCauseAndToTarget(toRef, fromRef) && asBoolean(isBidirectionalAsString))
 			return toRef;
 		
 		return ORef.INVALID;
@@ -479,7 +479,7 @@ public class DataUpgrader
 		throw new RuntimeException("Invalid boolean value :" + booleanAsString);
 	}
 	
-	private static boolean isThreatToTarget(ORef threatRef, ORef targetRef)
+	private static boolean isFromCauseAndToTarget(ORef threatRef, ORef targetRef)
 	{
 		if (!Cause.is(threatRef.getObjectType()))
 			return false;
