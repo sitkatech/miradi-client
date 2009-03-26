@@ -451,7 +451,6 @@ public class DataUpgrader
 		writeJson(factorLinkJsonFile, factorLinkJson);
 	}
 	
-	//FIXME this needs to be refactored renamed,  its returning a threat ref not a threatLinkRef
 	public static ORef getCauseIfDirectlyUpstreamFromTarget(EnhancedJsonObject factorLinkJson)
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
