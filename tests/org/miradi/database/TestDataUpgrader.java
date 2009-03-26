@@ -32,6 +32,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -147,6 +148,38 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	public void testEnableThreats() throws Exception
+	{
+		String threatJsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216738590984\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"Unsustainable Fishing By Locals\",\"Id\":55}";
+		String targetJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"A\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":33,\\\"ObjectId\\\":482},{\\\"ObjectType\\\":33,\\\"ObjectId\\\":487}]}\",\"Text\":\"Eastern Village Bay has extensive coral reef areas\",\"HabitatAssociation\":\"{\\\"Codes\\\":[\\\"9.8\\\"]}\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1216740461750\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"Coral Reefs\",\"Id\":30,\"CurrentStatusJustification\":\"\"}";
+		String threatLinkJsonString = "{\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":30}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":55}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216740461875\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":71,\"Label\":\"\"}";
+		
+		File jsonDir = createJsonDir();
+		
+		int[] causeIds = {55, };
+		final int CAUSE_TYPE = 20;
+		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threatJsonString, });
+
+		int[] targetIds = {30, };
+		final int TARGET_TYPE = 22;
+		createObjectFiles(jsonDir, TARGET_TYPE, targetIds, new String[]{targetJsonString, });
+	
+		int[] factorLinkIds = {71, };
+		final int FACTOR_LINK_TYPE = 6;
+		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{threatLinkJsonString, });
+
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion39();
+		
+		File causeDir = DataUpgrader.getObjectsDir(jsonDir, CAUSE_TYPE);
+		File causeFile = new File(causeDir, Integer.toString(causeIds[0]));
+		EnhancedJsonObject causeJson = new EnhancedJsonObject(readFile(causeFile));
+		assertTrue("didn't add threat switch field?", causeJson.has("IsDirectThreat"));
+		BooleanData booleanData = new BooleanData("IsDirectThreat");
+		booleanData.set(causeJson.getString("IsDirectThreat"));
+		assertTrue("didn't enable threat?", booleanData.asBoolean());
 	}
 	
 	public void testMoveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
