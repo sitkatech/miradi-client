@@ -152,36 +152,71 @@ public class TestDataUpgrader extends EAMTestCase
 	
 	public void testEnableThreats() throws Exception
 	{
-		String threatJsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216738590984\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"Unsustainable Fishing By Locals\",\"Id\":55}";
+		String strategyJsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Intervention\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"LegacyTncStrategyRanking\":\"\",\"ShortLabel\":\"Fish 1\",\"WhoOverrideRefs\":\"\",\"ImpactRating\":\"\",\"Text\":\"\",\"Status\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1228976037609\",\"ActivityIds\":\"\",\"FeasibilityRating\":\"2\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"Ocean Fishery\",\"Id\":131,\"ProgressReportRefs\":\"\"}";
+		
+		String threat1JsonString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216738590984\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":55}";
+		String threat2JsonString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216738590984\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":56}";
+		String cause1JsonString    = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216738590984\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":57}";
+		String cause2JsonString    = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216738590984\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":58}";
+		
 		String targetJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"A\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":33,\\\"ObjectId\\\":482},{\\\"ObjectType\\\":33,\\\"ObjectId\\\":487}]}\",\"Text\":\"Eastern Village Bay has extensive coral reef areas\",\"HabitatAssociation\":\"{\\\"Codes\\\":[\\\"9.8\\\"]}\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1216740461750\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"Coral Reefs\",\"Id\":30,\"CurrentStatusJustification\":\"\"}";
-		String threatLinkJsonString = "{\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":30}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":55}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216740461875\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":71,\"Label\":\"\"}";
+		
+		String threatTargetLinkJsonString    = "{\"ToRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":30}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":55}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216740461875\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":71,\"Label\":\"\"}";
+		String strategyThreatLinkJsonString  = "{\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":55}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":131}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216740461875\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":72,\"Label\":\"\"}";
+		String targetCauseBidiLinkJsonString = "{\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":56}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"1\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":56}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216740461875\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":73,\"Label\":\"\"}";
+		String causeStrategyLinkJsonString   = "{\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":57}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":131}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216740461875\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":74,\"Label\":\"\"}";
+		String targetCauseLinkJsonString     = "{\"ToRef\":\"{\\\"ObjectType\\\":20,\\\"ObjectId\\\":58}\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"SimpleThreatRatingComment\":\"\",\"BidirectionalLink\":\"\",\"WhoOverrideRefs\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":30}\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1216740461875\",\"BudgetCostMode\":\"\",\"ThreatStressRatingRefs\":\"\",\"Id\":75,\"Label\":\"\"}";
 		
 		File jsonDir = createJsonDir();
-		
-		int[] causeIds = {55, };
+
+		int[] strategyIds = {131, };
+		final int STRATEGY_TYPE = 21;
+		createObjectFiles(jsonDir, STRATEGY_TYPE, strategyIds, new String[]{strategyJsonString, });
+	
+		int[] causeIds = {55, 56, 57, 58, };
 		final int CAUSE_TYPE = 20;
-		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threatJsonString, });
+		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threat1JsonString, threat2JsonString, cause1JsonString, cause2JsonString, });
 
 		int[] targetIds = {30, };
 		final int TARGET_TYPE = 22;
 		createObjectFiles(jsonDir, TARGET_TYPE, targetIds, new String[]{targetJsonString, });
-	
-		int[] factorLinkIds = {71, };
+		
+		int[] factorLinkIds = {71, 72, 73, 74, 75, };
 		final int FACTOR_LINK_TYPE = 6;
-		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{threatLinkJsonString, });
+		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
 
 		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion39();
 		
-		File causeDir = DataUpgrader.getObjectsDir(jsonDir, CAUSE_TYPE);
-		File causeFile = new File(causeDir, Integer.toString(causeIds[0]));
-		EnhancedJsonObject causeJson = new EnhancedJsonObject(readFile(causeFile));
+		verifyAsThreat(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[0]));
+		verifyAsThreat(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[1]));
+		
+		verifyAsCause(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[2]));
+		verifyAsCause(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[3]));
+	}
+
+	private void verifyAsThreat(EnhancedJsonObject causeJson) throws Exception
+	{
 		assertTrue("didn't add threat switch field?", causeJson.has("IsDirectThreat"));
 		BooleanData booleanData = new BooleanData("IsDirectThreat");
 		booleanData.set(causeJson.getString("IsDirectThreat"));
 		assertTrue("didn't enable threat?", booleanData.asBoolean());
 	}
+
+	private void verifyAsCause(EnhancedJsonObject causeJson) throws Exception
+	{
+		assertFalse("did add threat switch field?", causeJson.has("IsDirectThreat"));
+	}
 	
+	private EnhancedJsonObject getCauseJson(File jsonDir, final int CAUSE_TYPE, int causeId) throws Exception
+	{
+		File causeDir = DataUpgrader.getObjectsDir(jsonDir, CAUSE_TYPE);
+		File causeFile = new File(causeDir, Integer.toString(causeId));
+		EnhancedJsonObject causeJson = new EnhancedJsonObject(readFile(causeFile));
+		
+		return causeJson;
+	}
+		
 	public void testMoveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
 	{
 		String threatJsonString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Factor\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1236342784060\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Factor\",\"Id\":25}";
