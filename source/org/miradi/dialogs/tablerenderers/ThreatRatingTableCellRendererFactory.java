@@ -37,7 +37,7 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 	{
 		super(providerToUse, fontProviderToUse);
 		
-		stressBasedIcon = new ColoredIcon();
+		coloredIcon = new ColoredIcon();
 		defaultBackgroundColor = Color.WHITE;
 	}
 
@@ -75,10 +75,10 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 		if(choice == null || object == null)
 			return null;
 		
-		stressBasedIcon.setColor(choice.getColor());
-		return stressBasedIcon;
+		coloredIcon.setColor(choice.getColor());
+		return coloredIcon;
 	}
 	
 	private Color defaultBackgroundColor;
-	private ColoredIcon stressBasedIcon;
+	private ColoredIcon coloredIcon;
 }
