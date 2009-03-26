@@ -88,6 +88,11 @@ public abstract class FactorType
 		return false;
 	}
 	
+	public boolean isProjectScopeBox()
+	{
+		return false;
+	}
+	
 	public boolean isStress()
 	{
 		return false;
@@ -199,6 +204,9 @@ public abstract class FactorType
 		
 		else if (factorType.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
 			return ObjectType.TEXT_BOX;
+		
+		else if (factorType.equals(FactorTypeProjectScopeBox.PROJECT_SCOPE_BOX_TYPE))
+			return ObjectType.PROJECT_SCOPE_BOX;
 		
 		else if (factorType.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
 			return ObjectType.GROUP_BOX;

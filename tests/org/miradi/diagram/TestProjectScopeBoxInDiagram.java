@@ -33,9 +33,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.ProjectForTesting;
 
-public class TestProjectScopeBox extends EAMTestCase
+public class TestProjectScopeBoxInDiagram extends EAMTestCase
 {
-	public TestProjectScopeBox(String name)
+	public TestProjectScopeBoxInDiagram(String name)
 	{
 		super(name);
 	}
