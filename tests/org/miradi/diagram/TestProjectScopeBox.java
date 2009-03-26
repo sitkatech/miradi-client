@@ -25,7 +25,7 @@ import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
 import org.miradi.diagram.cells.FactorCell;
-import org.miradi.diagram.cells.ProjectScopeBox;
+import org.miradi.diagram.cells.ProjectScopeBoxCell;
 import org.miradi.ids.IdAssigner;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ORefList;
@@ -57,7 +57,7 @@ public class TestProjectScopeBox extends EAMTestCase
 
 	public void testGetBounds() throws Exception
 	{
-		ProjectScopeBox scope = model.getProjectScopeBox();
+		ProjectScopeBoxCell scope = model.getProjectScopeBox();
 		Rectangle2D noTargets = scope.getBounds();
 		Rectangle allZeros = new Rectangle(0,0,0,0);
 		assertEquals("not all zeros to start?", allZeros, noTargets);

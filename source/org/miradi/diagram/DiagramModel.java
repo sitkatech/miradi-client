@@ -47,7 +47,7 @@ import org.miradi.diagram.cells.DiagramThreatReductionResultCell;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.diagram.cells.ProjectScopeBox;
+import org.miradi.diagram.cells.ProjectScopeBoxCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
@@ -104,12 +104,12 @@ abstract public class DiagramModel extends DefaultGraphModel
 			remove(new Object[] {getRootAt(0)});
 
 		cellInventory = new CellInventory();
-		projectScopeBox = new ProjectScopeBox(this);
+		projectScopeBox = new ProjectScopeBoxCell(this);
 		graphLayoutCache = new PartialGraphLayoutCache(this);
 		insertCellIntoGraph(projectScopeBox);
 	}
 
-	public ProjectScopeBox getProjectScopeBox()
+	public ProjectScopeBoxCell getProjectScopeBox()
 	{
 		return projectScopeBox;
 	}
@@ -1013,7 +1013,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	private Project project;
 	private CellInventory cellInventory;
-	private ProjectScopeBox projectScopeBox;
+	private ProjectScopeBoxCell projectScopeBox;
 	protected List<DiagramModelListener> diagramModelListenerList = new ArrayList<DiagramModelListener>();
 	
 	private DiagramObject diagramContents;
