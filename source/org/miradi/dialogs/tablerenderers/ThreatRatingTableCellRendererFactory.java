@@ -19,66 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Color;
-import java.awt.Component;
-
-import javax.swing.Icon;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-
-import org.miradi.icons.ColoredIcon;
 import org.miradi.main.AppPreferences;
-import org.miradi.objects.BaseObject;
-import org.miradi.questions.ChoiceItem;
 
 public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
 {
 	public ThreatRatingTableCellRendererFactory(AppPreferences preferences, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
-		
-		coloredIcon = new ColoredIcon();
-		defaultBackgroundColor = Color.WHITE;
 	}
-
-	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
-	{
-		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		String labelText = getLabelText(value);
-
-		if(!isSelected)
-			renderer.setBackground(getBackgroundColor(getChoiceItem(value)));
-
-		renderer.setText(labelText);
-
-		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		Icon configuredIcon = getConfiguredIcon(table, row, modelColumn, getChoiceItem(value));
-		renderer.setIcon(configuredIcon);
-		return renderer;
-	}
-
-	protected Color getBackgroundColor(Object value)
-	{
-		if(value == null)
-			return Color.GRAY.brighter();
-		
-		ChoiceItem choice = getChoiceItem(value);
-		if(choice == null || choice.getColor() == null)
-			return defaultBackgroundColor;
-		
-		return choice.getColor();
-	}
-	
-	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
-	{
-		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, modelColumn);
-		if(choice == null || object == null)
-			return null;
-		
-		coloredIcon.setColor(choice.getColor());
-		return coloredIcon;
-	}
-	
-	private Color defaultBackgroundColor;
-	private ColoredIcon coloredIcon;
 }

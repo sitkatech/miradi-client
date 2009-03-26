@@ -19,7 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
+import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTable;
@@ -37,10 +41,39 @@ public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellR
 	{
 		super(preferences, providerToUse, fontProviderToUse);
 		
+		defaultBackgroundColor = Color.WHITE;
 		stressBasedIcon = new ColoredIcon();
 		simpleIcon = new BundleIcon(preferences);
 	}
 	
+	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
+	{
+		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
+		String labelText = getLabelText(value);
+
+		if(!isSelected)
+			renderer.setBackground(getBackgroundColor(getChoiceItem(value)));
+
+		renderer.setText(labelText);
+
+		int modelColumn = table.convertColumnIndexToModel(tableColumn);
+		Icon configuredIcon = getConfiguredIcon(table, row, modelColumn, getChoiceItem(value));
+		renderer.setIcon(configuredIcon);
+		return renderer;
+	}
+
+	protected Color getBackgroundColor(Object value)
+	{
+		if(value == null)
+			return Color.GRAY.brighter();
+		
+		ChoiceItem choice = getChoiceItem(value);
+		if(choice == null || choice.getColor() == null)
+			return defaultBackgroundColor;
+		
+		return choice.getColor();
+	}
+		
 	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
 	{
 		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
@@ -64,5 +97,5 @@ public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellR
 	
 	private BundleIcon simpleIcon;
 	private ColoredIcon stressBasedIcon;
-	
+	private Color defaultBackgroundColor;
 }
