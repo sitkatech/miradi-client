@@ -75,16 +75,8 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 	{
 		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, modelColumn);
 		if(choice == null || object == null)
-		{
 			return null;
-		}
 		
-		if(object.getProject().isStressBaseMode())
-		{
-			stressBasedIcon.setColor(choice.getColor());
-			return stressBasedIcon;
-		}
-
 		stressBasedIcon.setColor(choice.getColor());
 		return stressBasedIcon;
 	}
