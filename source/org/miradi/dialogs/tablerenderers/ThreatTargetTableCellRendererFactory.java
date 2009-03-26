@@ -38,12 +38,14 @@ public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellR
 	
 	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
 	{
-		Icon superIcon = super.getConfiguredIcon(table, row, modelColumn, choice);
-		if (superIcon!= null)
-			return superIcon;
-		
 		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
 		TargetThreatLinkTableModel model = targetThreatLinkTable.getTargetThreatLinkTableModel();
+		if(model.getProject().isStressBaseMode())
+		{
+			stressBasedIcon.setColor(choice.getColor());
+			return stressBasedIcon;
+		}
+		
 		Cause threat = (Cause)model.getDirectThreat(row);
 		Target target = model.getTarget(modelColumn);
 		if (threat != null && target != null)
