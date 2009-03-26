@@ -210,11 +210,20 @@ public class DataUpgrader
 			
 			if (readDataVersion(getTopDirectory()) == 37)
 				upgradeToVersion38();
+			
+			if (readDataVersion(getTopDirectory()) == 38)
+				upgradeToVersion39();
 		}
 		finally 
 		{
 			migrationLock.close();
 		}			
+	}
+
+	public void upgradeToVersion39() throws Exception
+	{
+		enableThreats();
+		writeLocalVersion(getTopDirectory(), 39);
 	}
 
 	public void upgradeToVersion38() throws Exception
@@ -238,6 +247,45 @@ public class DataUpgrader
 	{
 		moveFactorsToSpecificDirs();
 		writeLocalVersion(getTopDirectory(), 35);
+	}
+	
+	private void enableThreats() throws Exception
+	{
+		File jsonDir = getTopJsonDir();
+		final int FACTOR_LINK_TYPE = 6;
+		File factorLinkDir = getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
+		if (! factorLinkDir.exists())
+			return;
+		
+		File factorLinkManifestFile = new File(factorLinkDir, "manifest");
+		if (! factorLinkManifestFile.exists())
+			return;
+		
+		final int CAUSE_TYPE = 20;
+		File causeDir = getObjectsDir(jsonDir, CAUSE_TYPE);
+		if (!causeDir.exists())
+			return;
+		
+		File causeManifestFile = new File(causeDir, "manifest");
+		if (!causeManifestFile.exists())
+			return;
+		
+		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
+		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
+		for (int i = 0; i < factorLinkIds.length; ++i)
+		{
+			BaseId thisFactorLinkId = factorLinkIds[i];
+			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisFactorLinkId.asInt()));
+			EnhancedJsonObject factorLinkJson = readFile(factorLinkJsonFile);
+			ORef threatRef = getThreatLinkRef(factorLinkJson);
+			if (!threatRef.isInvalid())
+			{	
+				File threatFile = new File(causeDir, threatRef.getObjectId().toString());
+				EnhancedJsonObject threatJson = readFile(threatFile);
+				threatJson.put("IsDirectThreat", BooleanData.BOOLEAN_TRUE);
+				writeJsonFile(threatFile, threatJson);
+			}
+		}
 	}
 	
 	private void moveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
