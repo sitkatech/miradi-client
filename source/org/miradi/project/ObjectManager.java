@@ -63,6 +63,7 @@ import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objectpools.ProgressPercentPool;
 import org.miradi.objectpools.ProgressReportPool;
 import org.miradi.objectpools.ProjectMetadataPool;
+import org.miradi.objectpools.ProjectScopeBoxPool;
 import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.RatingCriterionPool;
 import org.miradi.objectpools.ReportTemplatePool;
@@ -155,6 +156,7 @@ public class ObjectManager
 		addNormalPool(new TaggedObjectSetPool(ida));
 		addNormalPool(new TableSetttingsPool(ida));
 		addNormalPool(new ThreatRatingCommentsDataPool(ida));
+		addNormalPool(new ProjectScopeBoxPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -425,6 +427,7 @@ public class ObjectManager
 			ObjectType.TAGGED_OBJECT_SET,
 			ObjectType.TABLE_SETTINGS,
 			ObjectType.THREAT_RATING_COMMENTS_DATA,
+			ObjectType.PROJECT_SCOPE_BOX,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));

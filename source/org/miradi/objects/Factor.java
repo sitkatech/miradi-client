@@ -26,6 +26,7 @@ import org.miradi.diagram.factortypes.FactorTypeActivity;
 import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeGroupBox;
 import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
+import org.miradi.diagram.factortypes.FactorTypeProjectScopeBox;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
 import org.miradi.diagram.factortypes.FactorTypeStress;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
@@ -235,6 +236,11 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
+	public boolean isProjectScopeBox()
+	{
+		return false;
+	}
+	
 	public boolean isThreatReductionResult()
 	{
 		return false;
@@ -354,6 +360,9 @@ abstract public class Factor extends BaseObject
 		
 		else if (objectType == ObjectType.TASK)
 			return new Task(objectManager, idToCreate);
+		
+		else if (objectType == ObjectType.PROJECT_SCOPE_BOX)
+			return new ProjectScopeBox(objectManager, idToCreate);
 		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
@@ -528,6 +537,7 @@ abstract public class Factor extends BaseObject
 	public static final FactorType TYPE_STRESS = new FactorTypeStress();
 	public static final FactorType TYPE_GROUP_BOX = new FactorTypeGroupBox();
 	public static final FactorType TYPE_TEXT_BOX = new FactorTypeTextBox();
+	public static final FactorType TYPE_PROJECT_SCOPE_BOX = new FactorTypeProjectScopeBox();
 	public static final FactorType TYPE_THREAT_REDUCTION_RESULT = new FactorTypeThreatReductionResult();
 	public static final FactorType TYPE_INTERMEDIATE_RESULT = new FactorTypeIntermediateResult();
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();

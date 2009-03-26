@@ -73,7 +73,8 @@ public class ObjectType
 	public static final int TAGGED_OBJECT_SET = 47;
 	public static final int TABLE_SETTINGS = 48;
 	public static final int THREAT_RATING_COMMENTS_DATA = 49;
+	public static final int PROJECT_SCOPE_BOX = 50;
 	
-	public static final int OBJECT_TYPE_COUNT = 50;
+	public static final int OBJECT_TYPE_COUNT = 51;
 }
 
