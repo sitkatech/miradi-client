@@ -266,10 +266,6 @@ public class DataUpgrader
 		if (!causeDir.exists())
 			return;
 		
-		File causeManifestFile = new File(causeDir, "manifest");
-		if (!causeManifestFile.exists())
-			return;
-		
 		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
 		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
 		for (int i = 0; i < factorLinkIds.length; ++i)
