@@ -26,7 +26,6 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.miradi.icons.BundleIcon;
 import org.miradi.icons.ColoredIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.objects.BaseObject;
@@ -39,7 +38,6 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 		super(providerToUse, fontProviderToUse);
 		
 		stressBasedIcon = new ColoredIcon();
-		simpleIcon = new BundleIcon(preferences);
 		defaultBackgroundColor = Color.WHITE;
 	}
 
@@ -82,6 +80,5 @@ public class ThreatRatingTableCellRendererFactory extends ChoiceItemTableCellRen
 	}
 	
 	private Color defaultBackgroundColor;
-	protected ColoredIcon stressBasedIcon;
-	protected BundleIcon simpleIcon;
+	private ColoredIcon stressBasedIcon;
 }

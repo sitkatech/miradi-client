@@ -24,6 +24,8 @@ import javax.swing.JTable;
 
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTable;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
+import org.miradi.icons.BundleIcon;
+import org.miradi.icons.ColoredIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
@@ -34,6 +36,9 @@ public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellR
 	public ThreatTargetTableCellRendererFactory(AppPreferences preferences,	RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(preferences, providerToUse, fontProviderToUse);
+		
+		stressBasedIcon = new ColoredIcon();
+		simpleIcon = new BundleIcon(preferences);
 	}
 	
 	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
@@ -56,4 +61,8 @@ public class ThreatTargetTableCellRendererFactory extends ThreatRatingTableCellR
 		
 		return null;
 	}
+	
+	private BundleIcon simpleIcon;
+	private ColoredIcon stressBasedIcon;
+	
 }
