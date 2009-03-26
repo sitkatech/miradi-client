@@ -309,7 +309,7 @@ public class TestDataUpgrader extends EAMTestCase
 	private void verifyThreatLinkRef(String jsonString, ORef expectedRef) throws Exception
 	{
 		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(jsonString);
-		assertEquals("wrong threat link Ref", expectedRef, DataUpgrader.getThreatLinkRef(factorLinkJson));
+		assertEquals("wrong threat link Ref", expectedRef, DataUpgrader.getCauseIfDirectlyUpstreamFromTarget(factorLinkJson));
 	}
 	
 	private void createObjectFiles(File jsonDir, final int objectType, int[] objectIds, String[] jsonStrings)	throws Exception

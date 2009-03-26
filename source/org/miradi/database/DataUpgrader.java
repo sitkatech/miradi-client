@@ -277,7 +277,7 @@ public class DataUpgrader
 			BaseId thisFactorLinkId = factorLinkIds[i];
 			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisFactorLinkId.asInt()));
 			EnhancedJsonObject factorLinkJson = readFile(factorLinkJsonFile);
-			ORef threatRef = getThreatLinkRef(factorLinkJson);
+			ORef threatRef = getCauseIfDirectlyUpstreamFromTarget(factorLinkJson);
 			if (!threatRef.isInvalid())
 			{	
 				File threatFile = new File(causeDir, threatRef.getObjectId().toString());
@@ -327,7 +327,7 @@ public class DataUpgrader
 			BaseId thisFactorLinkId = factorLinkIds[i];
 			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisFactorLinkId.asInt()));
 			EnhancedJsonObject factorLinkJson = readFile(factorLinkJsonFile);
-			ORef threatRef = getThreatLinkRef(factorLinkJson);
+			ORef threatRef = getCauseIfDirectlyUpstreamFromTarget(factorLinkJson);
 			if (!threatRef.isInvalid())
 			{	
 				String threatRatingCommentsKey = createThreatRatingCommentsKey(factorLinkJson);
@@ -423,7 +423,7 @@ public class DataUpgrader
 			BaseId thisId = factorLinkIds[i];
 			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(thisId.asInt()));
 			EnhancedJsonObject factorLinkJson = readFile(factorLinkJsonFile);
-			ORef threatRef = getThreatLinkRef(factorLinkJson);
+			ORef threatRef = getCauseIfDirectlyUpstreamFromTarget(factorLinkJson);
 			if (!threatRef.isInvalid())
 			{
 				addThreatRefToThreatStressRatings(threatStressRatingDir, factorLinkJson, threatRef);
@@ -452,7 +452,7 @@ public class DataUpgrader
 	}
 	
 	//FIXME this needs to be refactored renamed,  its returning a threat ref not a threatLinkRef
-	public static ORef getThreatLinkRef(EnhancedJsonObject factorLinkJson)
+	public static ORef getCauseIfDirectlyUpstreamFromTarget(EnhancedJsonObject factorLinkJson)
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
 		ORef toRef = factorLinkJson.getRef("ToRef");
