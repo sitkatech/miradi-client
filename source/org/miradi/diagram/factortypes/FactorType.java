@@ -26,7 +26,7 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.ProjectScopeBoxIcon;
+import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
 import org.miradi.icons.TargetIcon;
@@ -184,7 +184,7 @@ public abstract class FactorType
 			return new TextBoxIcon();
 		
 		if (factor.isProjectScopeBox())
-			return new ProjectScopeBoxIcon();
+			return new ScopeBoxIcon();
 		
 		if (factor.isGroupBox())
 			return new GroupBoxIcon();

@@ -26,7 +26,7 @@ import org.miradi.diagram.renderers.RoundRectangleRenderer;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
-public class ProjectScopeBoxIcon extends AbstractShapeIcon
+public class ScopeBoxIcon extends AbstractShapeIcon
 {
 	@Override
 	FactorRenderer getRenderer()
