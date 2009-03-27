@@ -26,9 +26,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
 
-public class DiagramProjectScopeBoxCell extends FactorCell
+public class DiagramScopeBoxCell extends FactorCell
 {
-	public DiagramProjectScopeBoxCell(ScopeBox projectScopeBox, DiagramFactor diagramFactorToUse)
+	public DiagramScopeBoxCell(ScopeBox projectScopeBox, DiagramFactor diagramFactorToUse)
 	{
 		super(projectScopeBox, diagramFactorToUse);
 	}
