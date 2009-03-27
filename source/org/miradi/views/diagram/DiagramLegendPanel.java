@@ -40,7 +40,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
-import org.miradi.diagram.cells.DiagramProjectScopeBoxCell;
+import org.miradi.diagram.cells.DiagramScopeBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.DiagramTextBoxCell;
@@ -298,7 +298,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			manager.setStressesVisible(checkBox.isSelected());
 		else if (property.equals(ScopeBox.OBJECT_NAME))
-			manager.setVisibility(DiagramProjectScopeBoxCell.class, checkBox.isSelected());
+			manager.setVisibility(DiagramScopeBoxCell.class, checkBox.isSelected());
 	}
 	
 	public void resetCheckBoxes()

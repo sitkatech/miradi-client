@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
-import org.miradi.diagram.cells.DiagramProjectScopeBoxCell;
+import org.miradi.diagram.cells.DiagramScopeBoxCell;
 import org.miradi.main.EAM;
 import org.miradi.objects.ScopeBox;
 import org.miradi.views.diagram.InsertFactorDoer;
@@ -29,7 +29,7 @@ public class InsertProjectScopeBoxDoer extends InsertFactorDoer
 	@Override
 	public void forceVisibleInLayerManager()
 	{
-		getCurrentLayerManager().setVisibility(DiagramProjectScopeBoxCell.class, true);
+		getCurrentLayerManager().setVisibility(DiagramScopeBoxCell.class, true);
 	}
 
 	@Override
