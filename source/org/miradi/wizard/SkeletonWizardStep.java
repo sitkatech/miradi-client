@@ -192,7 +192,9 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 	private void navigateToStep(Class destinationStepClass) throws Exception
 	{
 		Project project = getMainWindow().getProject();
-		project.executeCommand(new CommandBeginTransaction());
+		if(project.isOpen())
+			project.executeCommand(new CommandBeginTransaction());
+		
 		try
 		{
 			WizardManager wizardManager = getMainWindow().getWizardManager();
@@ -200,7 +202,8 @@ public abstract class SkeletonWizardStep extends JPanel implements HtmlFormEvent
 		}
 		finally
 		{
-			project.executeCommand(new CommandEndTransaction());
+			if(project.isOpen())
+				project.executeCommand(new CommandEndTransaction());
 		}
 	}
 	
