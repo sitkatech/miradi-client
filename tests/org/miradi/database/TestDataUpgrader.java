@@ -21,10 +21,12 @@ package org.miradi.database;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
+import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
@@ -148,6 +150,107 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	//FIXME this test is complete but it is not passing since DataUpgrader is not creating scope boxes.  Just wanting to commit
+	public void UNDERCONSTRUCTIONtestSurroundTargetsWithNewScopeBoxType() throws Exception
+	{
+		String projectMetadataJsonString = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"DiagramOverviewStep\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"some scopDescoption for migration\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"some scopeName for migration\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1238167096013\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		
+		String emptyConceptualModelJsonString           = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167098912\",\"DiagramFactorIds\":\"\",\"BudgetCostMode\":\"\",\"Id\":9,\"Label\":\"[Main Diagram]\"}";
+		String targetPopulatedConceptualModelJsonString = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167109983\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[26,28]}\",\"BudgetCostMode\":\"\",\"Id\":24,\"Label\":\"[Page 1]\"}";
+		String targetPopulatedResultsChainJsonString = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167120309\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[31]}\",\"BudgetCostMode\":\"\",\"Id\":29,\"Label\":\"[New Results Chain]\"}";
+		
+		String target1InConceptualModelJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1238167106721\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Target\",\"Id\":25,\"CurrentStatusJustification\":\"\"}";
+		String target2InConceptualModelJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1238167110005\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Target\",\"Id\":27,\"CurrentStatusJustification\":\"\"}";
+		String targetInResultsChainJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1238167120320\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Target\",\"Id\":30,\"CurrentStatusJustification\":\"\"}";
+		
+		String target1DiagramFactorInConceptualModelJsonString = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":25}\",\"FontColor\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":870}\",\"FontSize\":\"\",\"WhoOverrideRefs\":\"\",\"BackgroundColor\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167106717\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":26,\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
+		String target2DiagramFactorInConceptualModelJsonString = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":27}\",\"FontColor\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"{\\\"Y\\\":225,\\\"X\\\":870}\",\"FontSize\":\"\",\"WhoOverrideRefs\":\"\",\"BackgroundColor\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167109992\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":28,\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
+		String targetDiagramFactorInResultsChainJsonString = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":30}\",\"FontColor\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":870}\",\"FontSize\":\"\",\"WhoOverrideRefs\":\"\",\"BackgroundColor\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167120314\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":31,\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
+		
+		File jsonDir = createJsonDir();
+
+		int[] projectMetadataRawIds = {0, };
+		final int PROJECT_METADATA_TYPE = 11;
+		createObjectFiles(jsonDir, PROJECT_METADATA_TYPE, projectMetadataRawIds, new String[]{projectMetadataJsonString, });
+		
+		int[] conceptualModelRawIds = {9, 24, };
+		final int CONCEPTUAL_MODEL_TYPE = 19;
+		createObjectFiles(jsonDir, CONCEPTUAL_MODEL_TYPE, conceptualModelRawIds, new String[]{emptyConceptualModelJsonString, targetPopulatedConceptualModelJsonString, });
+		
+		int[] resultsChainRawIds = {29, };
+		final int RESULTS_CHAIN_TYPE = 24;
+		createObjectFiles(jsonDir, RESULTS_CHAIN_TYPE, resultsChainRawIds, new String[]{targetPopulatedResultsChainJsonString, });
+		
+		int[] targetRawIds = {25, 27, 30, };
+		final int TARGET_TYPE = 22;
+		createObjectFiles(jsonDir, TARGET_TYPE, targetRawIds, new String[]{target1InConceptualModelJsonString, target2InConceptualModelJsonString, targetInResultsChainJsonString, });
+		
+		int[] diagramFactorRawIds = {26, 28, 31, };
+		final int DIAGRAM_FACTOR_TYPE = 18;
+		createObjectFiles(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorRawIds, new String[]{target1DiagramFactorInConceptualModelJsonString, target2DiagramFactorInConceptualModelJsonString, targetDiagramFactorInResultsChainJsonString, });
+		
+		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		dataUpgrader.upgradeToVersion40();
+
+		final int SCOPE_BOX_TYPE = 50;
+		final String MANIFEST_FILE_NAME = "manifest";
+		File scopeBoxDir = DataUpgrader.getObjectsDir(jsonDir, SCOPE_BOX_TYPE);
+		assertTrue("scope box dir was not created?", scopeBoxDir.exists());
+		File scopeBoxManifestFile = new File(scopeBoxDir, MANIFEST_FILE_NAME);
+		assertTrue("scope box manifest file was not created?", scopeBoxManifestFile.exists());
+		ObjectManifest scopeBoxManifestObject  = new ObjectManifest(JSONFile.read(scopeBoxManifestFile));
+		BaseId[] scopeBoxKeys = scopeBoxManifestObject.getAllKeys();
+		assertEquals("wrong scope box count?", 2, scopeBoxKeys.length);
+	
+	
+		Vector<EnhancedJsonObject> emptyList = extractScopeBoxeDiagramFactors(jsonDir,	conceptualModelRawIds[0], CONCEPTUAL_MODEL_TYPE, DIAGRAM_FACTOR_TYPE, SCOPE_BOX_TYPE);
+		assertEquals("diagram object contains scope box?", 0, emptyList.size());
+		
+		Vector<EnhancedJsonObject> jsonListForScopeBoxWithTwoTargets = extractScopeBoxeDiagramFactors(jsonDir,	conceptualModelRawIds[1], CONCEPTUAL_MODEL_TYPE, DIAGRAM_FACTOR_TYPE, SCOPE_BOX_TYPE);
+		assertEquals("diagram object contains no scope box?", 1, jsonListForScopeBoxWithTwoTargets.size());
+		
+		Vector<EnhancedJsonObject> jsonListForScopeBoxWithOneTarget = extractScopeBoxeDiagramFactors(jsonDir,	resultsChainRawIds[0]   , RESULTS_CHAIN_TYPE   , DIAGRAM_FACTOR_TYPE, SCOPE_BOX_TYPE);
+		assertEquals("diagram object contains no scope box?", 1, jsonListForScopeBoxWithOneTarget.size());
+
+		//single target: location = (630, 90) dimension = (180, 147)
+		//double target: location = (765, 90) dimension = (180, 222)
+		Rectangle singleTargetScopeBounds = new Rectangle(840, 120, 180, 117);
+		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithOneTarget, singleTargetScopeBounds);
+		
+		Rectangle doubleTargetScopeBounds = new Rectangle(840, 120, 180, 192);
+		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithTwoTargets, doubleTargetScopeBounds);
+	}
+
+	private void verifyNewlyCreatedScopeBoxBounds(Vector<EnhancedJsonObject> singleScopeBoxJsonList, Rectangle expectedScopeBounds)	throws Exception
+	{
+		EnhancedJsonObject diagramFactorScopeBoxJson = singleScopeBoxJsonList.get(0);
+		Point location = diagramFactorScopeBoxJson.getPoint("Location");
+		Dimension size = diagramFactorScopeBoxJson.getDimension("Size");
+		Rectangle boundsFromSizeLocation = new Rectangle(location, size);
+		assertEquals("wrong scope box bounds?", expectedScopeBounds, boundsFromSizeLocation);
+	}
+	
+	private Vector<EnhancedJsonObject> extractScopeBoxeDiagramFactors(File jsonDir, int conceptualModelRawId, final int diagramObjectType, final int DIAGRAM_FACTOR_TYPE, final int SCOPE_BOX_TYPE) throws Exception
+	{
+		File diagramObjectDir = DataUpgrader.getObjectsDir(jsonDir, diagramObjectType);
+		File diagramObjectFile =  new File(diagramObjectDir, Integer.toString(conceptualModelRawId));
+		EnhancedJsonObject diagramObjectJson = new EnhancedJsonObject(readFile(diagramObjectFile));
+		IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString("DiagramFactorIds"));
+		
+		Vector<EnhancedJsonObject> singleScopeBoxJsons = new Vector();
+		File diagramFactorDir = DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_FACTOR_TYPE);
+		for (int index = 0; index < diagramFactorIds.size(); ++index)
+		{
+			File diagramFactorFile = new File(diagramFactorDir, diagramFactorIds.get(index).toString());
+			EnhancedJsonObject diagramFactorJson = new EnhancedJsonObject(readFile(diagramFactorFile));
+			ORef wrappedRef = diagramFactorJson.getRef("WrappedFactorRef");
+			if (SCOPE_BOX_TYPE == wrappedRef.getObjectType())
+				singleScopeBoxJsons.add(diagramFactorJson);
+		}
+		
+		return singleScopeBoxJsons;
 	}
 	
 	public void testEnableThreats() throws Exception
