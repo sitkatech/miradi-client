@@ -58,7 +58,7 @@ public class LayerManager
 		textBoxesVisibleFlag = true;
 		groupBoxesVisibleFlag = true;
 		draftStrategyVisibleFlag = true;
-		projectScopeBoxResultFlag = true;
+		scopeBoxResultFlag = true;
 	}
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
@@ -221,7 +221,7 @@ public class LayerManager
 	
 	public boolean areProjectScopeBoxesVisible()
 	{
-		return isTypeVisible(projectScopeBoxResultFlag, ScopeBox.OBJECT_NAME);
+		return isTypeVisible(scopeBoxResultFlag, ScopeBox.OBJECT_NAME);
 	}
 
 	public boolean areGroupBoxesVisible()
@@ -344,5 +344,5 @@ public class LayerManager
 	private boolean textBoxesVisibleFlag;
 	private boolean groupBoxesVisibleFlag;
 	private boolean draftStrategyVisibleFlag;
-	private boolean projectScopeBoxResultFlag;
+	private boolean scopeBoxResultFlag;
 }
