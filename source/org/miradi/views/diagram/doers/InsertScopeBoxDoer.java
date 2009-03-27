@@ -24,7 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ScopeBox;
 import org.miradi.views.diagram.InsertFactorDoer;
 
-public class InsertProjectScopeBoxDoer extends InsertFactorDoer
+public class InsertScopeBoxDoer extends InsertFactorDoer
 {
 	@Override
 	public void forceVisibleInLayerManager()

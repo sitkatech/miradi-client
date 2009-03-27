@@ -191,7 +191,7 @@ import org.miradi.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
 import org.miradi.views.diagram.doers.HideActivityBubbleDoer;
 import org.miradi.views.diagram.doers.HideStressBubbleDoer;
 import org.miradi.views.diagram.doers.InsertGroupBoxDoer;
-import org.miradi.views.diagram.doers.InsertProjectScopeBoxDoer;
+import org.miradi.views.diagram.doers.InsertScopeBoxDoer;
 import org.miradi.views.diagram.doers.ManageFactorTagsDoer;
 import org.miradi.views.diagram.doers.ManageFactorTagsFromMenuDoer;
 import org.miradi.views.diagram.doers.PasteFactorContentDoer;
@@ -388,7 +388,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
 		addDoerToMap(ActionCreateOrShowResultsChain.class, new CreateOrShowResultsChainDoer());
 		addDoerToMap(ActionInsertTextBox.class, new InsertTextBoxDoer());
-		addDoerToMap(ActionInsertProjectScopeBox.class, new InsertProjectScopeBoxDoer());
+		addDoerToMap(ActionInsertProjectScopeBox.class, new InsertScopeBoxDoer());
 		addDoerToMap(ActionInsertGroupBox.class, new InsertGroupBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelPageDoer());
 		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelPageDoer());
