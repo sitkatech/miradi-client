@@ -252,7 +252,7 @@ public class Project
 		return (TextBoxPool) getPool(ObjectType.TEXT_BOX);
 	}
 	
-	public ScopeBoxPool getProjectScopeBoxPool()
+	public ScopeBoxPool getScopeBoxPool()
 	{
 		return (ScopeBoxPool) getPool(ScopeBox.getObjectType());
 	}
