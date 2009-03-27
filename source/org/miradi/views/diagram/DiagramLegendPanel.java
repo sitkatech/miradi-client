@@ -143,8 +143,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	
 	private void createLegendCheckBoxes()
 	{
-		createCheckBox(SCOPE_BOX);
-		createCheckBox( Target.OBJECT_NAME);
+		createCheckBox(ScopeBox.OBJECT_NAME);
+		createCheckBox(Target.OBJECT_NAME);
 		
 		createCheckBox(Cause.OBJECT_NAME_THREAT);
 		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
@@ -289,7 +289,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			manager.setObjectivesVisible(checkBox.isSelected());
 		else if (property.equals(Indicator.OBJECT_NAME))
 			manager.setIndicatorsVisible(checkBox.isSelected());
-		else if (property.equals(SCOPE_BOX))
+		else if (property.equals(ScopeBox.OBJECT_NAME))
 			manager.setScopeBoxVisible(checkBox.isSelected()); 
 		else if (property.equals(TextBox.OBJECT_NAME))
 			manager.setVisibility(DiagramTextBoxCell.class, checkBox.isSelected());
@@ -313,7 +313,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		JCheckBox checkBox = findCheckBox(property);
 
-		if (property.equals(SCOPE_BOX))
+		if (property.equals(ScopeBox.OBJECT_NAME))
 			checkBox.setSelected(manager.isScopeBoxVisible());
 	
 		else if (property.equals(Target.OBJECT_NAME))
