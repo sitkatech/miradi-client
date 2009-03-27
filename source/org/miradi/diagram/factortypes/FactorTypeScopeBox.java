@@ -28,8 +28,8 @@ public class FactorTypeScopeBox extends FactorType
 	
 	public String toString()
 	{
-		return PROJECT_SCOPE_BOX_TYPE;
+		return SCOPE_BOX_TYPE;
 	}
 
-	public static final String PROJECT_SCOPE_BOX_TYPE = "ProjectScopeBox";
+	public static final String SCOPE_BOX_TYPE = "ScopeBox";
 }
