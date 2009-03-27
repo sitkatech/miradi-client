@@ -148,7 +148,7 @@ import org.miradi.project.TestProjectCalendar;
 import org.miradi.project.TestProjectCommandExecutions;
 import org.miradi.project.TestProjectInfo;
 import org.miradi.project.TestProjectRepairer;
-import org.miradi.project.TestProjectScopeBoxPool;
+import org.miradi.project.TestScopeBoxPool;
 import org.miradi.project.TestProjectUnzipper;
 import org.miradi.project.TestProjectZipper;
 import org.miradi.project.TestRealProject;
@@ -238,7 +238,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestBudgetTimePeriodChanger.class));
 		suite.addTest(new TestSuite(TestThreatReductionResultPool.class));
 		suite.addTest(new TestSuite(TestTextBoxPool.class));
-		suite.addTest(new TestSuite(TestProjectScopeBoxPool.class));
+		suite.addTest(new TestSuite(TestScopeBoxPool.class));
 		suite.addTest(new TestSuite(TestIntermediateResultPool.class));
 		suite.addTest(new TestSuite(TestFactorLinkPool.class));
 		suite.addTest(new TestSuite(TestStrategyPool.class));
