@@ -172,7 +172,7 @@ public class PropertiesDoer extends LocationDoer
 
 	void doProjectScopeBoxProperties(DiagramFactor diagramFactor) throws CommandFailedException
 	{
-		ProjectScopeBoxPropertiesPanel projectScopePanel = new ProjectScopeBoxPropertiesPanel(getProject(), getProject().getMetadata());
+		ProjectScopeBoxPropertiesPanel projectScopePanel = new ProjectScopeBoxPropertiesPanel(getProject(), diagramFactor);
 		ScopePropertiesDialog dlg = new ScopePropertiesDialog(getMainWindow(), projectScopePanel); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}

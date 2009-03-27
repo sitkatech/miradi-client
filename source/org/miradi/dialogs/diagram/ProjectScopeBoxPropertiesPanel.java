@@ -22,27 +22,22 @@ package org.miradi.dialogs.diagram;
 import org.miradi.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.project.Project;
 
 public class ProjectScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
 	public ProjectScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
 	{
-		super(projectToUse, diagramFactor.getWrappedORef());
-		
-		//FIXME use this contructor to build the scope box properties panel and remove
-		// the constructor with metadata
-	}
-	
-	public ProjectScopeBoxPropertiesPanel(Project projectToUse, ProjectMetadata metadata)
-	{
-		super(projectToUse, metadata.getType(), metadata.getId());
+		super(projectToUse, ObjectType.PROJECT_SCOPE_BOX, diagramFactor.getWrappedId());
 
-		addField(createStringField(metadata.TAG_SHORT_PROJECT_SCOPE));
-		addField(createMultilineField(metadata.TAG_PROJECT_SCOPE));
-		addField(createMultilineField(metadata.TAG_PROJECT_VISION));
+		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
+
+		addField(createStringField(ProjectScopeBox.TAG_LABEL));
+		addField(createMultilineField(ProjectScopeBox.TAG_COMMENT));
 		
 		updateFieldsFromProject();
 	}
