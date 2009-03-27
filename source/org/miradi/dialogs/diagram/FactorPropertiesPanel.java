@@ -55,7 +55,7 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.ProjectScopeBoxIcon;
+import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TextBoxIcon;
@@ -465,7 +465,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			return new PanelTitleLabel(EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME), new TextBoxIcon(), UiLabel.LEADING);
 		
 		if (factor.isProjectScopeBox())
-			return new PanelTitleLabel(EAM.fieldLabel(ProjectScopeBox.getObjectType(), ProjectScopeBox.OBJECT_NAME), new ProjectScopeBoxIcon(), UiLabel.LEADING);
+			return new PanelTitleLabel(EAM.fieldLabel(ProjectScopeBox.getObjectType(), ProjectScopeBox.OBJECT_NAME), new ScopeBoxIcon(), UiLabel.LEADING);
 
 		if (factor.isGroupBox())
 			return new PanelTitleLabel(EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME), new GroupBoxIcon(), UiLabel.LEADING);

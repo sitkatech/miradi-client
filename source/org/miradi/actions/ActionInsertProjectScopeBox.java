@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.icons.ProjectScopeBoxIcon;
+import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,7 +27,7 @@ public class ActionInsertProjectScopeBox extends LocationAction
 {
 	public ActionInsertProjectScopeBox(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), new ProjectScopeBoxIcon());
+		super(mainWindow, getLabel(), new ScopeBoxIcon());
 	}
 
 	private static String getLabel()
