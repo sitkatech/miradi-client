@@ -23,9 +23,9 @@ import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionInsertProjectScopeBox extends LocationAction
+public class ActionInsertScopeBox extends LocationAction
 {
-	public ActionInsertProjectScopeBox(MainWindow mainWindow)
+	public ActionInsertScopeBox(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel(), new ScopeBoxIcon());
 	}

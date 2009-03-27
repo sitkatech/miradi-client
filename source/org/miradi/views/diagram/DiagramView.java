@@ -91,7 +91,7 @@ import org.miradi.actions.ActionInsertDraftStrategy;
 import org.miradi.actions.ActionInsertFactorLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertIntermediateResult;
-import org.miradi.actions.ActionInsertProjectScopeBox;
+import org.miradi.actions.ActionInsertScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
@@ -388,7 +388,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowConceptualModel.class, new ShowConceptualModelDoer());
 		addDoerToMap(ActionCreateOrShowResultsChain.class, new CreateOrShowResultsChainDoer());
 		addDoerToMap(ActionInsertTextBox.class, new InsertTextBoxDoer());
-		addDoerToMap(ActionInsertProjectScopeBox.class, new InsertScopeBoxDoer());
+		addDoerToMap(ActionInsertScopeBox.class, new InsertScopeBoxDoer());
 		addDoerToMap(ActionInsertGroupBox.class, new InsertGroupBoxDoer());
 		addDoerToMap(ActionCreateConceptualModel.class, new CreateConceptualModelPageDoer());
 		addDoerToMap(ActionDeleteConceptualModel.class, new DeleteConceptualModelPageDoer());
