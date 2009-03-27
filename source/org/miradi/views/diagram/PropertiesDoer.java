@@ -170,7 +170,7 @@ public class PropertiesDoer extends LocationDoer
 		}
 	}
 
-	void doProjectScopeBoxProperties(DiagramFactor diagramFactor) throws CommandFailedException
+	void doScopeBoxProperties(DiagramFactor diagramFactor) throws CommandFailedException
 	{
 		ScopeBoxPropertiesPanel scopeBoxPanel = new ScopeBoxPropertiesPanel(getProject(), diagramFactor);
 		ScopeBoxPropertiesDialog dlg = new ScopeBoxPropertiesDialog(getMainWindow(), scopeBoxPanel); 
@@ -213,7 +213,7 @@ public class PropertiesDoer extends LocationDoer
 		else if (Task.is(wrappedType))
 			doActivityProperties(diagramFactor);
 		else if (ScopeBox.is(wrappedType))
-			doProjectScopeBoxProperties(diagramFactor);
+			doScopeBoxProperties(diagramFactor);
 		else
 			doNormalFactorProperties(diagramFactor, tabToStartOn);
 	}
