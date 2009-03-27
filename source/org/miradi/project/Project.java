@@ -806,7 +806,7 @@ public class Project
 			throw new FutureVersionException();
 
 		if(existingVersion < ProjectServer.DATA_VERSION)
-			DataUpgrader.attemptUpgrade(new File(getDatabase().getDataLocation(), projectName));
+			DataUpgrader.attemptUpgrade(new File(getDatabase().getDataLocation(), projectName), existingVersion);
 		
 		int updatedVersion = getDatabase().readProjectDataVersion(projectName); 
 		if(updatedVersion < ProjectServer.DATA_VERSION)

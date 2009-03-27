@@ -65,7 +65,7 @@ public class DataUpgrader
 	{
 	}
 
-	public static void attemptUpgrade(File projectDirectory) throws AlreadyLockedException
+	public static void attemptUpgrade(File projectDirectory, int oldVersion) throws AlreadyLockedException
 	{
 		String[] migrationText = {
 				EAM.text("This project was created with an older version of Miradi, " +
@@ -77,7 +77,7 @@ public class DataUpgrader
 		if(!EAM.confirmDialog(EAM.text("Project Migration Required"), migrationText, buttons))
 			return;
 		
-		File zipFile = new File(projectDirectory.getParent(), "backup-" + projectDirectory.getName() + ".mpz");
+		File zipFile = new File(projectDirectory.getParent(), "backup-" + projectDirectory.getName() + "-" + oldVersion + ".mpz");
 		if(zipFile.exists())
 		{
 			String[] backupExistsText = {
