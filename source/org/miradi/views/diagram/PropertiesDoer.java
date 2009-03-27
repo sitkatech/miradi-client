@@ -161,9 +161,9 @@ public class PropertiesDoer extends LocationDoer
 		return new HashSet();
 	}
 	
-	class ScopePropertiesDialog extends ModelessDialogWithDirections
+	class ScopeBoxPropertiesDialog extends ModelessDialogWithDirections
 	{
-		public ScopePropertiesDialog(MainWindow parent, ScopeBoxPropertiesPanel panel)
+		public ScopeBoxPropertiesDialog(MainWindow parent, ScopeBoxPropertiesPanel panel)
 		{
 			super(parent, panel.getPanelDescription());
 			setScrollableMainPanel(panel);
@@ -173,7 +173,7 @@ public class PropertiesDoer extends LocationDoer
 	void doProjectScopeBoxProperties(DiagramFactor diagramFactor) throws CommandFailedException
 	{
 		ScopeBoxPropertiesPanel scopeBoxPanel = new ScopeBoxPropertiesPanel(getProject(), diagramFactor);
-		ScopePropertiesDialog dlg = new ScopePropertiesDialog(getMainWindow(), scopeBoxPanel); 
+		ScopeBoxPropertiesDialog dlg = new ScopeBoxPropertiesDialog(getMainWindow(), scopeBoxPanel); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
 	
