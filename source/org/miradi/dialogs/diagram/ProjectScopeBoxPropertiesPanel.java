@@ -22,11 +22,20 @@ package org.miradi.dialogs.diagram;
 import org.miradi.actions.jump.ActionJumpDiagramWizardProjectScopeStep;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 
 public class ProjectScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
+	public ProjectScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
+	{
+		super(projectToUse, diagramFactor.getWrappedORef());
+		
+		//FIXME use this contructor to build the scope box properties panel and remove
+		// the constructor with metadata
+	}
+	
 	public ProjectScopeBoxPropertiesPanel(Project projectToUse, ProjectMetadata metadata)
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
