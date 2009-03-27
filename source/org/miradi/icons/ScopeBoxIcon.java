@@ -37,6 +37,6 @@ public class ScopeBoxIcon extends AbstractShapeIcon
 	@Override
 	Color getIconColor()
 	{ 
-		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX);
 	}
 }

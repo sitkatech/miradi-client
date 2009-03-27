@@ -80,7 +80,7 @@ public class ProjectScopeBoxCell extends EAMGraphCell implements DiagramModelLis
 	
 	public Color getColor()
 	{
-		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX);
 	}
 
 	public boolean isProjectScopeBox()
