@@ -32,7 +32,7 @@ public class ProjectScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
 	public ProjectScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
 	{
-		super(projectToUse, ObjectType.PROJECT_SCOPE_BOX, diagramFactor.getWrappedId());
+		super(projectToUse, ObjectType.SCOPE_BOX, diagramFactor.getWrappedId());
 
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 

@@ -32,7 +32,7 @@ public class ProjectScopeBoxPool extends EAMNormalObjectPool
 {
 	public ProjectScopeBoxPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.PROJECT_SCOPE_BOX);
+		super(idAssignerToUse, ObjectType.SCOPE_BOX);
 	}
 	
 	public void put(ScopeBox projectScopeBox) throws Exception

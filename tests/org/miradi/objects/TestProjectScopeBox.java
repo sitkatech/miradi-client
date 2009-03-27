@@ -30,6 +30,6 @@ public class TestProjectScopeBox extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectType.PROJECT_SCOPE_BOX);
+		verifyFields(ObjectType.SCOPE_BOX);
 	}
 }
