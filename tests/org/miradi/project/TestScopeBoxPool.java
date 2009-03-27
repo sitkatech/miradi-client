@@ -21,9 +21,9 @@ package org.miradi.project;
 
 import org.miradi.objects.ScopeBox;
 
-public class TestProjectScopeBoxPool extends TestFactorPool
+public class TestScopeBoxPool extends TestFactorPool
 {
-	public TestProjectScopeBoxPool(String name)
+	public TestScopeBoxPool(String name)
 	{
 		super(name);
 	}
