@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.diagram.factortypes.FactorTypeScopeBox;
 import org.miradi.ids.FactorId;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -96,5 +97,19 @@ public class ScopeBox extends Factor
 		return find(project.getObjectManager(), objectRef);
 	}
 	
+	@Override
+	void clear()
+	{
+		super.clear();
+		
+		details = new StringData(TAG_DETAILS);
+		
+		addField(TAG_DETAILS, details);
+	}
+	
+	public static final String TAG_DETAILS = "Details";
+	
 	public static final String OBJECT_NAME = "ScopeBox";
+	
+	private StringData details;
 }
