@@ -32,11 +32,11 @@ public class ActionInsertScopeBox extends LocationAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Insert|Insert Project Scope Box");
+		return EAM.text("Action|Insert|Insert Scope Box");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Insert a Project Scope Box");
+		return EAM.text("TT|Insert a Scope Box");
 	}
 }
