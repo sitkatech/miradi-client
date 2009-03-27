@@ -25,9 +25,9 @@ import org.miradi.main.EAM;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 
-public class ProjectScopePanel extends ObjectDataInputPanel
+public class ProjectScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
-	public ProjectScopePanel(Project projectToUse, ProjectMetadata metadata)
+	public ProjectScopeBoxPropertiesPanel(Project projectToUse, ProjectMetadata metadata)
 	{
 		super(projectToUse, metadata.getType(), metadata.getId());
 
