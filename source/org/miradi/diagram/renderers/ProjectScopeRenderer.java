@@ -29,7 +29,7 @@ import java.awt.Rectangle;
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.miradi.diagram.cells.EAMGraphCell;
-import org.miradi.diagram.cells.ProjectScopeBoxCell;
+import org.miradi.diagram.cells.ScopeBoxCell;
 
 public class ProjectScopeRenderer extends MultilineCellRenderer
 {
@@ -82,15 +82,15 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
 		if(cell.isProjectScopeBox())
 		{
-			projectScopeBox = (ProjectScopeBoxCell)(view.getCell());
+			projectScopeBox = (ScopeBoxCell)(view.getCell());
 			vision = projectScopeBox.getVision();
-			shortScopeHeight = ((ProjectScopeBoxCell)(view.getCell())).getShortScopeHeight();
+			shortScopeHeight = ((ScopeBoxCell)(view.getCell())).getShortScopeHeight();
 		}
 		
 		return super.getRendererComponent(graphToUse, view, sel, focus, previewMode);
 	}
 	
-	private ProjectScopeBoxCell projectScopeBox;
+	private ScopeBoxCell projectScopeBox;
 	private String vision;
 	private int shortScopeHeight;
 }

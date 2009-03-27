@@ -45,9 +45,9 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.FontFamiliyQuestion;
 
-public class ProjectScopeBoxCell extends EAMGraphCell implements DiagramModelListener
+public class ScopeBoxCell extends EAMGraphCell implements DiagramModelListener
 {
-	public ProjectScopeBoxCell(DiagramModel modelToUse)
+	public ScopeBoxCell(DiagramModel modelToUse)
 	{
 		model = modelToUse;
 		textPane = new JTextPane();
