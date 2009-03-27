@@ -37,7 +37,7 @@ public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 
 		addField(createStringField(ScopeBox.TAG_LABEL));
-		addField(createMultilineField(ScopeBox.TAG_COMMENT));
+		addField(createMultilineField(ScopeBox.TAG_DETAILS));
 		
 		updateFieldsFromProject();
 	}
