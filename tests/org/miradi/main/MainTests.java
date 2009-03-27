@@ -109,7 +109,7 @@ import org.miradi.objects.TestProgressReport;
 import org.miradi.objects.TestProjectChainObject;
 import org.miradi.objects.TestProjectMetadata;
 import org.miradi.objects.TestProjectResource;
-import org.miradi.objects.TestProjectScopeBox;
+import org.miradi.objects.TestScopeBox;
 import org.miradi.objects.TestRareProjectData;
 import org.miradi.objects.TestRatingCriterion;
 import org.miradi.objects.TestReportTemplate;
@@ -360,7 +360,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestThreatReductionResult.class));
 		suite.addTest(new TestSuite(TestIntermediateResult.class));
 		suite.addTest(new TestSuite(TestTextBox.class));
-		suite.addTest(new TestSuite(TestProjectScopeBox.class));
+		suite.addTest(new TestSuite(TestScopeBox.class));
 		suite.addTest(new TestSuite(TestChainManager.class));
 		suite.addTest(new TestSuite(TestSlide.class));
 		suite.addTest(new TestSuite(TestSlideShow.class));
