@@ -219,7 +219,7 @@ public class LayerManager
 		return isTypeVisible(textBoxesVisibleFlag, TextBox.OBJECT_NAME);
 	}
 	
-	public boolean areProjectScopeBoxesVisible()
+	public boolean areScopeBoxesVisible()
 	{
 		return isTypeVisible(scopeBoxResultFlag, ScopeBox.OBJECT_NAME);
 	}
