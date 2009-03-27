@@ -35,7 +35,7 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	@Override
 	public String getInitialText()
 	{
-		return EAM.text("Label|New Project Scope Box");
+		return EAM.text("Label|New Scope Box");
 	}
 
 	@Override
