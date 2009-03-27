@@ -48,7 +48,7 @@ import org.miradi.diagram.cells.DiagramThreatReductionResultCell;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.diagram.cells.ProjectScopeBoxCell;
+import org.miradi.diagram.cells.ScopeBoxCell;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramLinkId;
 import org.miradi.ids.FactorLinkId;
@@ -106,13 +106,13 @@ abstract public class DiagramModel extends DefaultGraphModel
 			remove(new Object[] {getRootAt(0)});
 
 		cellInventory = new CellInventory();
-		projectScopeBox = new ProjectScopeBoxCell(this);
+		projectScopeBox = new ScopeBoxCell(this);
 		graphLayoutCache = new PartialGraphLayoutCache(this);
 		//FIXME disabled adding old kind of scope box. remove all old scope box code
 		//insertCellIntoGraph(projectScopeBox);
 	}
 
-	public ProjectScopeBoxCell getProjectScopeBox()
+	public ScopeBoxCell getProjectScopeBox()
 	{
 		return projectScopeBox;
 	}
@@ -1019,7 +1019,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	private Project project;
 	private CellInventory cellInventory;
-	private ProjectScopeBoxCell projectScopeBox;
+	private ScopeBoxCell projectScopeBox;
 	protected List<DiagramModelListener> diagramModelListenerList = new ArrayList<DiagramModelListener>();
 	
 	private DiagramObject diagramContents;
