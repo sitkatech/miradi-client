@@ -80,7 +80,7 @@ public class ProjectScopeRenderer extends MultilineCellRenderer
 			boolean sel, boolean focus, boolean previewMode)
 	{
 		EAMGraphCell cell = (EAMGraphCell)view.getCell();
-		if(cell.isProjectScope())
+		if(cell.isProjectScopeBox())
 		{
 			projectScopeBox = (ProjectScopeBoxCell)(view.getCell());
 			vision = projectScopeBox.getVision();

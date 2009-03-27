@@ -29,6 +29,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -43,6 +44,7 @@ public class TestLayerSorter extends TestCaseWithProject
 	
 	public void testBasics() throws Exception
 	{
+		getProject().createDiagramFactorAndAddToDiagram(ProjectScopeBox.getObjectType());
 		getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
@@ -58,7 +60,7 @@ public class TestLayerSorter extends TestCaseWithProject
 		Collections.sort(orderedCells, new LayerSorter());
 		assertEquals("wrong cell count?", 8, orderedCells.size());
 		
-		assertTrue("element 0 is not scopbox", orderedCells.get(0).isProjectScope());
+		assertTrue("element 0 is not scopbox", orderedCells.get(0).isProjectScopeBox());
 		assertTrue("element 1 is not groupbox", isGroupBox(orderedCells.get(1).getWrappedFactorRef()));
 		assertTrue("element 2 is not groupbox", isGroupBox(orderedCells.get(2).getWrappedFactorRef()));
 		assertTrue("element 3 is not factor", orderedCells.get(3).isFactor());

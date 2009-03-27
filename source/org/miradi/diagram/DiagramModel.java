@@ -39,6 +39,7 @@ import org.miradi.diagram.cells.DiagramActivityCell;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.DiagramIntermediateResultCell;
+import org.miradi.diagram.cells.DiagramProjectScopeBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramStressCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
@@ -73,6 +74,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -106,7 +108,8 @@ abstract public class DiagramModel extends DefaultGraphModel
 		cellInventory = new CellInventory();
 		projectScopeBox = new ProjectScopeBoxCell(this);
 		graphLayoutCache = new PartialGraphLayoutCache(this);
-		insertCellIntoGraph(projectScopeBox);
+		//FIXME disabled adding old kind of scope box. remove all old scope box code
+		//insertCellIntoGraph(projectScopeBox);
 	}
 
 	public ProjectScopeBoxCell getProjectScopeBox()
@@ -165,6 +168,9 @@ abstract public class DiagramModel extends DefaultGraphModel
 		
 		if (factorType == ObjectType.TASK)
 			return new DiagramActivityCell((Task)factor, diagramFactor);
+		
+		if (factorType == ObjectType.PROJECT_SCOPE_BOX)
+			return new DiagramProjectScopeBoxCell((ProjectScopeBox) factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}

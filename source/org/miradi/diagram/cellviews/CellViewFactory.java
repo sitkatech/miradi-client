@@ -82,6 +82,10 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new RoundedRectangleFactorView(diagramFactor);
 		}
+		if (diagramFactor.isProjectScopeBox())
+		{
+			return new RoundedRectangleFactorView(diagramFactor);
+		}
 		
 		throw new RuntimeException("Unknown node type " + diagramFactor.getWrappedType());
 	}

@@ -30,6 +30,7 @@ import javax.swing.border.EmptyBorder;
 import org.miradi.actions.ActionInsertDraftStrategy;
 import org.miradi.actions.ActionInsertFactorLink;
 import org.miradi.actions.ActionInsertGroupBox;
+import org.miradi.actions.ActionInsertProjectScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
@@ -39,6 +40,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
+import org.miradi.diagram.cells.DiagramProjectScopeBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
 import org.miradi.diagram.cells.DiagramTextBoxCell;
@@ -53,7 +55,6 @@ import org.miradi.icons.FactorLinkIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.ObjectiveIcon;
-import org.miradi.icons.ProjectScopeIcon;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
@@ -62,7 +63,6 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
@@ -70,6 +70,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
@@ -152,6 +153,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(Strategy.OBJECT_NAME);
 		createCheckBox(Strategy.OBJECT_NAME_DRAFT);
 		createCheckBox(TextBox.OBJECT_NAME);
+		createCheckBox(ProjectScopeBox.OBJECT_NAME);
 		createCheckBox(GroupBox.OBJECT_NAME);
 		
 		createCheckBox(FactorLink.OBJECT_NAME);
@@ -171,7 +173,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		jpanel.disableFill();
 		jpanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
-		addIconLineWithCheckBox(jpanel, ConceptualModelDiagram.getObjectType(), SCOPE_BOX, new ProjectScopeIcon());
+		addButtonLineWithCheckBox(jpanel, ProjectScopeBox.getObjectType(), ProjectScopeBox.OBJECT_NAME, actions.get(ActionInsertProjectScopeBox.class));
 		
 		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		createCustomLegendPanelSection(actions, jpanel);
@@ -295,6 +297,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			manager.setVisibility(DiagramGroupBoxCell.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			manager.setStressesVisible(checkBox.isSelected());
+		else if (property.equals(ProjectScopeBox.OBJECT_NAME))
+			manager.setVisibility(DiagramProjectScopeBoxCell.class, checkBox.isSelected());
 	}
 	
 	public void resetCheckBoxes()
@@ -334,6 +338,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			checkBox.setSelected(manager.areIndicatorsVisible());
 		
 		else if (property.equals(TextBox.OBJECT_NAME))
+			checkBox.setSelected(manager.areTextBoxesVisible());
+		
+		else if (property.equals(ProjectScopeBox.OBJECT_NAME))
 			checkBox.setSelected(manager.areTextBoxesVisible());
 		
 		else if (property.equals(GroupBox.OBJECT_NAME))

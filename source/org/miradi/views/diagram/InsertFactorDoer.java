@@ -37,6 +37,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Task;
@@ -301,6 +302,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return false;
 		
 		if (type == Task.getObjectType())
+			return false;
+		
+		if (type == ProjectScopeBox.getObjectType())
 			return false;
 		
 		return true; 

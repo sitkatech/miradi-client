@@ -53,6 +53,7 @@ import org.miradi.actions.ActionInsertDraftStrategy;
 import org.miradi.actions.ActionInsertFactorLink;
 import org.miradi.actions.ActionInsertGroupBox;
 import org.miradi.actions.ActionInsertIntermediateResult;
+import org.miradi.actions.ActionInsertProjectScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
@@ -295,6 +296,7 @@ public class DiagramContextMenuHandler
 		insertMenu.add(createMenuItem(ActionInsertIntermediateResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertThreatReductionResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTextBox.class, menuInvokedAt));
+		insertMenu.add(createMenuItem(ActionInsertProjectScopeBox.class, menuInvokedAt));
 		
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertFactorLink.class));
