@@ -74,7 +74,7 @@ import org.miradi.objectpools.IntermediateResultPool;
 import org.miradi.objectpools.KeyEcologicalAttributePool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.PlanningViewConfigurationPool;
-import org.miradi.objectpools.ProjectScopeBoxPool;
+import org.miradi.objectpools.ScopeBoxPool;
 import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objectpools.ResultsChainDiagramPool;
@@ -252,9 +252,9 @@ public class Project
 		return (TextBoxPool) getPool(ObjectType.TEXT_BOX);
 	}
 	
-	public ProjectScopeBoxPool getProjectScopeBoxPool()
+	public ScopeBoxPool getProjectScopeBoxPool()
 	{
-		return (ProjectScopeBoxPool) getPool(ScopeBox.getObjectType());
+		return (ScopeBoxPool) getPool(ScopeBox.getObjectType());
 	}
 	
 	public CausePool getCausePool()
