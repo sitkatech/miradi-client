@@ -466,8 +466,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			}
 		}
 	}
-	
-	public static final String SCOPE_BOX = "ScopeBox";
 
 	private MainWindow mainWindow;
 	private JCheckBox targetLinkCheckBox;
