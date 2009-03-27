@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.diagram.factortypes;
 
-public class FactorTypeProjectScopeBox extends FactorType
+public class FactorTypeScopeBox extends FactorType
 {
 	public boolean isProjectScopeBox()
 	{

@@ -26,7 +26,7 @@ import org.miradi.diagram.factortypes.FactorTypeActivity;
 import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeGroupBox;
 import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
-import org.miradi.diagram.factortypes.FactorTypeProjectScopeBox;
+import org.miradi.diagram.factortypes.FactorTypeScopeBox;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
 import org.miradi.diagram.factortypes.FactorTypeStress;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
@@ -537,7 +537,7 @@ abstract public class Factor extends BaseObject
 	public static final FactorType TYPE_STRESS = new FactorTypeStress();
 	public static final FactorType TYPE_GROUP_BOX = new FactorTypeGroupBox();
 	public static final FactorType TYPE_TEXT_BOX = new FactorTypeTextBox();
-	public static final FactorType TYPE_SCOPE_BOX = new FactorTypeProjectScopeBox();
+	public static final FactorType TYPE_SCOPE_BOX = new FactorTypeScopeBox();
 	public static final FactorType TYPE_THREAT_REDUCTION_RESULT = new FactorTypeThreatReductionResult();
 	public static final FactorType TYPE_INTERMEDIATE_RESULT = new FactorTypeIntermediateResult();
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
