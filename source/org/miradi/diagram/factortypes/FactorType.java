@@ -138,7 +138,7 @@ public abstract class FactorType
 		if (factor.isTextBox())
 			return EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME);
 		
-		if (factor.isProjectScopeBox())
+		if (factor.isScopeBox())
 			return EAM.fieldLabel(ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME);
 		
 		if (factor.isGroupBox())
@@ -183,7 +183,7 @@ public abstract class FactorType
 		if (factor.isTextBox())
 			return new TextBoxIcon();
 		
-		if (factor.isProjectScopeBox())
+		if (factor.isScopeBox())
 			return new ScopeBoxIcon();
 		
 		if (factor.isGroupBox())

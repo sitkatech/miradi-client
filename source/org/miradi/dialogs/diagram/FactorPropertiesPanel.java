@@ -464,7 +464,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		if (factor.isTextBox())
 			return new PanelTitleLabel(EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME), new TextBoxIcon(), UiLabel.LEADING);
 		
-		if (factor.isProjectScopeBox())
+		if (factor.isScopeBox())
 			return new PanelTitleLabel(EAM.fieldLabel(ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME), new ScopeBoxIcon(), UiLabel.LEADING);
 
 		if (factor.isGroupBox())

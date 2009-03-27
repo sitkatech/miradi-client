@@ -236,7 +236,7 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
-	public boolean isProjectScopeBox()
+	public boolean isScopeBox()
 	{
 		return false;
 	}
