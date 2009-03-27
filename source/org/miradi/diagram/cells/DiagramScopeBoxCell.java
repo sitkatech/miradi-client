@@ -28,9 +28,9 @@ import org.miradi.objects.ScopeBox;
 
 public class DiagramScopeBoxCell extends FactorCell
 {
-	public DiagramScopeBoxCell(ScopeBox projectScopeBox, DiagramFactor diagramFactorToUse)
+	public DiagramScopeBoxCell(ScopeBox scopeBox, DiagramFactor diagramFactorToUse)
 	{
-		super(projectScopeBox, diagramFactorToUse);
+		super(scopeBox, diagramFactorToUse);
 	}
 
 	@Override
