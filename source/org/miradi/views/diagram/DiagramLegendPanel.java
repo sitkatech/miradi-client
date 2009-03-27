@@ -30,7 +30,7 @@ import javax.swing.border.EmptyBorder;
 import org.miradi.actions.ActionInsertDraftStrategy;
 import org.miradi.actions.ActionInsertFactorLink;
 import org.miradi.actions.ActionInsertGroupBox;
-import org.miradi.actions.ActionInsertProjectScopeBox;
+import org.miradi.actions.ActionInsertScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
 import org.miradi.actions.ActionInsertTextBox;
@@ -173,7 +173,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		jpanel.disableFill();
 		jpanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
-		addButtonLineWithCheckBox(jpanel, ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME, actions.get(ActionInsertProjectScopeBox.class));
+		addButtonLineWithCheckBox(jpanel, ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME, actions.get(ActionInsertScopeBox.class));
 		
 		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		createCustomLegendPanelSection(actions, jpanel);
