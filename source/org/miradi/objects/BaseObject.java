@@ -325,7 +325,7 @@ abstract public class BaseObject
 				return new ThreatRatingCommentsData(objectManager, idAsInt, json);
 				
 			case ObjectType.PROJECT_SCOPE_BOX:
-				return new ProjectScopeBox(objectManager, new FactorId(idAsInt), json);
+				return new ScopeBox(objectManager, new FactorId(idAsInt), json);
 				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);

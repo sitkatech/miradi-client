@@ -25,7 +25,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.project.ObjectManager;
 
 public class ProjectScopeBoxPool extends EAMNormalObjectPool
@@ -35,18 +35,18 @@ public class ProjectScopeBoxPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.PROJECT_SCOPE_BOX);
 	}
 	
-	public void put(ProjectScopeBox projectScopeBox) throws Exception
+	public void put(ScopeBox projectScopeBox) throws Exception
 	{
 		put(projectScopeBox.getId(), projectScopeBox);
 	}
 	
-	public ProjectScopeBox find(BaseId id)
+	public ScopeBox find(BaseId id)
 	{
-		return (ProjectScopeBox)getRawObject(id);
+		return (ScopeBox)getRawObject(id);
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new ProjectScopeBox(objectManager, new FactorId(actualId.asInt()));
+		return new ScopeBox(objectManager, new FactorId(actualId.asInt()));
 	}
 }

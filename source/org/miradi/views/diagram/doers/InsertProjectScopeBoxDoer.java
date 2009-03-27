@@ -21,7 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.diagram.cells.DiagramProjectScopeBoxCell;
 import org.miradi.main.EAM;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.views.diagram.InsertFactorDoer;
 
 public class InsertProjectScopeBoxDoer extends InsertFactorDoer
@@ -41,6 +41,6 @@ public class InsertProjectScopeBoxDoer extends InsertFactorDoer
 	@Override
 	public int getTypeToInsert()
 	{
-		return ProjectScopeBox.getObjectType();
+		return ScopeBox.getObjectType();
 	}
 }

@@ -74,7 +74,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -170,7 +170,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 			return new DiagramActivityCell((Task)factor, diagramFactor);
 		
 		if (factorType == ObjectType.PROJECT_SCOPE_BOX)
-			return new DiagramProjectScopeBoxCell((ProjectScopeBox) factor, diagramFactor);
+			return new DiagramProjectScopeBoxCell((ScopeBox) factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}

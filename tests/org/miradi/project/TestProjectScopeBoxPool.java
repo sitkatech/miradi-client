@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 
 public class TestProjectScopeBoxPool extends TestFactorPool
 {
@@ -36,6 +36,6 @@ public class TestProjectScopeBoxPool extends TestFactorPool
 	
 	public int getObjectType()
 	{
-		return ProjectScopeBox.getObjectType();
+		return ScopeBox.getObjectType();
 	}
 }
