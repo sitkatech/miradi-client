@@ -21,9 +21,9 @@ package org.miradi.objects;
 
 import org.miradi.objecthelpers.ObjectType;
 
-public class TestProjectScopeBox extends ObjectTestCase
+public class TestScopeBox extends ObjectTestCase
 {
-	public TestProjectScopeBox(String name)
+	public TestScopeBox(String name)
 	{
 		super(name);
 	}
