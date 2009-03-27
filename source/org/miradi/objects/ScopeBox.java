@@ -38,7 +38,7 @@ public class ScopeBox extends Factor
 	
 	public ScopeBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager, idToUse, Factor.TYPE_PROJECT_SCOPE_BOX, json);
+		super(objectManager, idToUse, Factor.TYPE_SCOPE_BOX, json);
 	}
 	
 	public int getType()
