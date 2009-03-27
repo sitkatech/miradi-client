@@ -427,7 +427,7 @@ public class ObjectManager
 			ObjectType.TAGGED_OBJECT_SET,
 			ObjectType.TABLE_SETTINGS,
 			ObjectType.THREAT_RATING_COMMENTS_DATA,
-			ObjectType.PROJECT_SCOPE_BOX,
+			ObjectType.SCOPE_BOX,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));

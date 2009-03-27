@@ -324,7 +324,7 @@ abstract public class BaseObject
 			case ObjectType.THREAT_RATING_COMMENTS_DATA:
 				return new ThreatRatingCommentsData(objectManager, idAsInt, json);
 				
-			case ObjectType.PROJECT_SCOPE_BOX:
+			case ObjectType.SCOPE_BOX:
 				return new ScopeBox(objectManager, new FactorId(idAsInt), json);
 				
 			default:

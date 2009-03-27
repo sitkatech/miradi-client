@@ -214,7 +214,7 @@ public abstract class FactorType
 			return ObjectType.TEXT_BOX;
 		
 		else if (factorType.equals(FactorTypeScopeBox.PROJECT_SCOPE_BOX_TYPE))
-			return ObjectType.PROJECT_SCOPE_BOX;
+			return ObjectType.SCOPE_BOX;
 		
 		else if (factorType.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
 			return ObjectType.GROUP_BOX;

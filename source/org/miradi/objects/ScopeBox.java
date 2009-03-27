@@ -53,7 +53,7 @@ public class ScopeBox extends Factor
 
 	public static int getObjectType()
 	{
-		return ObjectType.PROJECT_SCOPE_BOX;
+		return ObjectType.SCOPE_BOX;
 	}
 	
 	public boolean isScopeBox()

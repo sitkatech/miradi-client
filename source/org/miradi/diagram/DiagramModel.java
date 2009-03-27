@@ -169,7 +169,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		if (factorType == ObjectType.TASK)
 			return new DiagramActivityCell((Task)factor, diagramFactor);
 		
-		if (factorType == ObjectType.PROJECT_SCOPE_BOX)
+		if (factorType == ObjectType.SCOPE_BOX)
 			return new DiagramProjectScopeBoxCell((ScopeBox) factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
