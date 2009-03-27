@@ -167,7 +167,7 @@ public class AppPreferences
 			return directThreatColor;
 		if(tag.equals(TAG_COLOR_TARGET))
 			return targetColor;
-		if(tag.equals(TAG_COLOR_SCOPE))
+		if(tag.equals(TAG_COLOR_SCOPE_BOX))
 			return scopeColor;
 		if(tag.equals(TAG_COLOR_INTERMEDIATE_RESULT))
 			return intermediateResultColor;
@@ -189,7 +189,7 @@ public class AppPreferences
 			directThreatColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_TARGET))
 			targetColor = colorToUse;
-		else if(tag.equals(TAG_COLOR_SCOPE))
+		else if(tag.equals(TAG_COLOR_SCOPE_BOX))
 			scopeColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_INTERMEDIATE_RESULT))
 			intermediateResultColor = colorToUse;
@@ -321,7 +321,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_CONTRIBUTING_FACTOR, contributingFactorColor);
 		json.put(TAG_COLOR_DIRECT_THREAT, directThreatColor);
 		json.put(TAG_COLOR_TARGET, targetColor);
-		json.put(TAG_COLOR_SCOPE, scopeColor);
+		json.put(TAG_COLOR_SCOPE_BOX, scopeColor);
 		json.put(TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
 		json.put(TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
@@ -383,7 +383,7 @@ public class AppPreferences
 		contributingFactorColor = json.optColor(TAG_COLOR_CONTRIBUTING_FACTOR, DiagramConstants.DEFAULT_CONTRIBUTING_FACTOR_COLOR);
 		directThreatColor = json.optColor(TAG_COLOR_DIRECT_THREAT, DiagramConstants.DEFAULT_DIRECT_THREAT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DiagramConstants.DEFAULT_TARGET_COLOR);
-		scopeColor = json.optColor(TAG_COLOR_SCOPE, DiagramConstants.DEFAULT_SCOPE_COLOR);
+		scopeColor = json.optColor(TAG_COLOR_SCOPE_BOX, DiagramConstants.DEFAULT_SCOPE_COLOR);
 		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
 		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		
@@ -525,7 +525,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_CONTRIBUTING_FACTOR = "ColorIndirectFactor";
 	public static final String TAG_COLOR_DIRECT_THREAT = "ColorDirectThreat";
 	public static final String TAG_COLOR_TARGET = "ColorTarget";
-	public static final String TAG_COLOR_SCOPE = "ColorScope";
+	public static final String TAG_COLOR_SCOPE_BOX = "ColorScope";
 	public static final String TAG_COLOR_INTERMEDIATE_RESULT = "ColorIntermediateResult";
 	public static final String TAG_COLOR_THREAT_REDUCTION_RESULT = "ColorThreatReductionResult";
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";

@@ -224,7 +224,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(EAM.text("Project Scope (Dark Green)")));
 		scopeDropdown = createColorsDropdown(DiagramConstants.scopeColorChoices);
-		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
+		scopeDropdown.setSelectedItem(mainWindow.getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
 		scopeDropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(scopeDropdown);
 
@@ -290,7 +290,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_TARGET, targetColor);
 
 		Color scopeColor = (Color)scopeDropdown.getSelectedItem();
-		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE, scopeColor);
+		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX, scopeColor);
 
 		Color intermediateResultColor = (Color) intermediateResultDropDown.getSelectedItem();
 		mainWindow.setColorPreference(AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);

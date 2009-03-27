@@ -36,7 +36,7 @@ public class DiagramProjectScopeBoxCell extends FactorCell
 	@Override
 	public Color getColor()
 	{
-		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE);
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX);
 	}
 	
 	@Override

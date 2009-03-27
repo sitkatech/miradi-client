@@ -36,7 +36,7 @@ public class ProjectScopeIcon extends AbstractMiradiIcon
 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
-		g.setColor(EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE));
+		g.setColor(EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX));
 		int rectWidth = getIconWidth() * 4 / 5;
 		int rectHeight = getIconHeight() * 7 / 8;
 		int left = x + (getIconWidth() - rectWidth)/2;
