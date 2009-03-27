@@ -35,9 +35,9 @@ public class ScopeBoxPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.SCOPE_BOX);
 	}
 	
-	public void put(ScopeBox projectScopeBox) throws Exception
+	public void put(ScopeBox scopeBox) throws Exception
 	{
-		put(projectScopeBox.getId(), projectScopeBox);
+		put(scopeBox.getId(), scopeBox);
 	}
 	
 	public ScopeBox find(BaseId id)
