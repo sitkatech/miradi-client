@@ -82,7 +82,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new RoundedRectangleFactorView(diagramFactor);
 		}
-		if (diagramFactor.isProjectScopeBox())
+		if (diagramFactor.isScopeBox())
 		{
 			return new RoundedRectangleFactorView(diagramFactor);
 		}

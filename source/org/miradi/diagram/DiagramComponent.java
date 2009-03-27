@@ -611,7 +611,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 			return candidateView;
 		
 		EAMGraphCell candidateCell = (EAMGraphCell)candidateView.getCell();
-		if(candidateCell.isProjectScopeBox())
+		if(candidateCell.isScopeBox())
 		{
 			// skip the project scope box and get the next one (if any)
 			candidateView = super.getNextSelectableViewAt(candidateView, x, y);
