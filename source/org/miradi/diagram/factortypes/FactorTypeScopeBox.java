@@ -21,7 +21,7 @@ package org.miradi.diagram.factortypes;
 
 public class FactorTypeScopeBox extends FactorType
 {
-	public boolean isProjectScopeBox()
+	public boolean isScopeBox()
 	{
 		return true;
 	}
