@@ -56,7 +56,7 @@ public class ScopeBox extends Factor
 		return ObjectType.PROJECT_SCOPE_BOX;
 	}
 	
-	public boolean isProjectScopeBox()
+	public boolean isScopeBox()
 	{
 		return true;
 	}
