@@ -83,7 +83,7 @@ public class ScopeBoxCell extends EAMGraphCell implements DiagramModelListener
 		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX);
 	}
 
-	public boolean isProjectScopeBox()
+	public boolean isScopeBox()
 	{
 		return true;
 	}

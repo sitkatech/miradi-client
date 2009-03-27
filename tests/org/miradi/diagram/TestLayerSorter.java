@@ -60,7 +60,7 @@ public class TestLayerSorter extends TestCaseWithProject
 		Collections.sort(orderedCells, new LayerSorter());
 		assertEquals("wrong cell count?", 8, orderedCells.size());
 		
-		assertTrue("element 0 is not scopbox", orderedCells.get(0).isProjectScopeBox());
+		assertTrue("element 0 is not scopbox", orderedCells.get(0).isScopeBox());
 		assertTrue("element 1 is not groupbox", isGroupBox(orderedCells.get(1).getWrappedFactorRef()));
 		assertTrue("element 2 is not groupbox", isGroupBox(orderedCells.get(2).getWrappedFactorRef()));
 		assertTrue("element 3 is not factor", orderedCells.get(3).isFactor());

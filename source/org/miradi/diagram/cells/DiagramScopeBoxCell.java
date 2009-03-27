@@ -40,7 +40,7 @@ public class DiagramScopeBoxCell extends FactorCell
 	}
 	
 	@Override
-	public boolean isProjectScopeBox()
+	public boolean isScopeBox()
 	{
 		return true;
 	}

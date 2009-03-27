@@ -79,7 +79,7 @@ public class PropertiesDoer extends LocationDoer
 			if(selected == null)
 				return false;
 			
-			if(selected.isFactor() || selected.isProjectScopeBox())
+			if(selected.isFactor() || selected.isScopeBox())
 				return true;
 			
 			if(selected.isFactorLink())
@@ -99,7 +99,7 @@ public class PropertiesDoer extends LocationDoer
 		for(Object object : selectedCells)
 		{
 			EAMGraphCell cell = (EAMGraphCell)object;
-			if(cell.isProjectScopeBox())
+			if(cell.isScopeBox())
 				return true;
 		}
 		return false;
@@ -152,7 +152,7 @@ public class PropertiesDoer extends LocationDoer
 			return new HashSet();
 		
 		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
-		if (selected.isProjectScopeBox())
+		if (selected.isScopeBox())
 			return new HashSet(model.getAllDiagramTargets());
 		
 		if (selected.getDiagramFactor().isGroupBoxFactor())
