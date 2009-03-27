@@ -28,9 +28,9 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
 import org.miradi.project.Project;
 
-public class ProjectScopeBoxPropertiesPanel extends ObjectDataInputPanel
+public class ScopeBoxPropertiesPanel extends ObjectDataInputPanel
 {
-	public ProjectScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
+	public ScopeBoxPropertiesPanel(Project projectToUse, DiagramFactor diagramFactor)
 	{
 		super(projectToUse, ObjectType.SCOPE_BOX, diagramFactor.getWrappedId());
 
