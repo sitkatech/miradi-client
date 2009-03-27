@@ -70,7 +70,7 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
@@ -153,7 +153,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(Strategy.OBJECT_NAME);
 		createCheckBox(Strategy.OBJECT_NAME_DRAFT);
 		createCheckBox(TextBox.OBJECT_NAME);
-		createCheckBox(ProjectScopeBox.OBJECT_NAME);
+		createCheckBox(ScopeBox.OBJECT_NAME);
 		createCheckBox(GroupBox.OBJECT_NAME);
 		
 		createCheckBox(FactorLink.OBJECT_NAME);
@@ -173,7 +173,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		jpanel.disableFill();
 		jpanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		
-		addButtonLineWithCheckBox(jpanel, ProjectScopeBox.getObjectType(), ProjectScopeBox.OBJECT_NAME, actions.get(ActionInsertProjectScopeBox.class));
+		addButtonLineWithCheckBox(jpanel, ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME, actions.get(ActionInsertProjectScopeBox.class));
 		
 		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
 		createCustomLegendPanelSection(actions, jpanel);
@@ -297,7 +297,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			manager.setVisibility(DiagramGroupBoxCell.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME_STRESS))
 			manager.setStressesVisible(checkBox.isSelected());
-		else if (property.equals(ProjectScopeBox.OBJECT_NAME))
+		else if (property.equals(ScopeBox.OBJECT_NAME))
 			manager.setVisibility(DiagramProjectScopeBoxCell.class, checkBox.isSelected());
 	}
 	
@@ -340,7 +340,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		else if (property.equals(TextBox.OBJECT_NAME))
 			checkBox.setSelected(manager.areTextBoxesVisible());
 		
-		else if (property.equals(ProjectScopeBox.OBJECT_NAME))
+		else if (property.equals(ScopeBox.OBJECT_NAME))
 			checkBox.setSelected(manager.areTextBoxesVisible());
 		
 		else if (property.equals(GroupBox.OBJECT_NAME))

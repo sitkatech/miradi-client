@@ -38,7 +38,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -139,7 +139,7 @@ public abstract class FactorType
 			return EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME);
 		
 		if (factor.isProjectScopeBox())
-			return EAM.fieldLabel(ProjectScopeBox.getObjectType(), ProjectScopeBox.OBJECT_NAME);
+			return EAM.fieldLabel(ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME);
 		
 		if (factor.isGroupBox())
 			return EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME);

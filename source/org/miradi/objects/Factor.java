@@ -362,7 +362,7 @@ abstract public class Factor extends BaseObject
 			return new Task(objectManager, idToCreate);
 		
 		else if (objectType == ObjectType.PROJECT_SCOPE_BOX)
-			return new ProjectScopeBox(objectManager, idToCreate);
+			return new ScopeBox(objectManager, idToCreate);
 		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}

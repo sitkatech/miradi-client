@@ -24,11 +24,11 @@ import java.awt.Color;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 
 public class DiagramProjectScopeBoxCell extends FactorCell
 {
-	public DiagramProjectScopeBoxCell(ProjectScopeBox projectScopeBox, DiagramFactor diagramFactorToUse)
+	public DiagramProjectScopeBoxCell(ScopeBox projectScopeBox, DiagramFactor diagramFactorToUse)
 	{
 		super(projectScopeBox, diagramFactorToUse);
 	}

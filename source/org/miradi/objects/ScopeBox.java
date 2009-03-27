@@ -28,15 +28,15 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ProjectScopeBox extends Factor
+public class ScopeBox extends Factor
 {
-	public ProjectScopeBox(ObjectManager objectManager, FactorId idToUse)
+	public ScopeBox(ObjectManager objectManager, FactorId idToUse)
 	{
 		super(objectManager, idToUse, new FactorTypeProjectScopeBox());
 		clear();
 	}
 	
-	public ProjectScopeBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
+	public ScopeBox(ObjectManager objectManager, FactorId idToUse, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, idToUse, Factor.TYPE_PROJECT_SCOPE_BOX, json);
 	}
@@ -86,12 +86,12 @@ public class ProjectScopeBox extends Factor
 		return objectType == getObjectType();
 	}
 	
-	public static ProjectScopeBox find(ObjectManager objectManager, ORef objectRef)
+	public static ScopeBox find(ObjectManager objectManager, ORef objectRef)
 	{
-		return (ProjectScopeBox) objectManager.findObject(objectRef);
+		return (ScopeBox) objectManager.findObject(objectRef);
 	}
 	
-	public static ProjectScopeBox find(Project project, ORef objectRef)
+	public static ScopeBox find(Project project, ORef objectRef)
 	{
 		return find(project.getObjectManager(), objectRef);
 	}

@@ -25,7 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.project.Project;
 
 public class ProjectScopeBoxPropertiesPanel extends ObjectDataInputPanel
@@ -36,8 +36,8 @@ public class ProjectScopeBoxPropertiesPanel extends ObjectDataInputPanel
 
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 
-		addField(createStringField(ProjectScopeBox.TAG_LABEL));
-		addField(createMultilineField(ProjectScopeBox.TAG_COMMENT));
+		addField(createStringField(ScopeBox.TAG_LABEL));
+		addField(createMultilineField(ScopeBox.TAG_COMMENT));
 		
 		updateFieldsFromProject();
 	}

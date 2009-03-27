@@ -46,7 +46,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
-import org.miradi.objects.ProjectScopeBox;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
@@ -212,7 +212,7 @@ public class PropertiesDoer extends LocationDoer
 			doStressProperties(diagramFactor);
 		else if (Task.is(wrappedType))
 			doActivityProperties(diagramFactor);
-		else if (ProjectScopeBox.is(wrappedType))
+		else if (ScopeBox.is(wrappedType))
 			doProjectScopeBoxProperties(diagramFactor);
 		else
 			doNormalFactorProperties(diagramFactor, tabToStartOn);
