@@ -35,7 +35,7 @@ import org.miradi.dialogs.diagram.FactorLinkPropertiesDialog;
 import org.miradi.dialogs.diagram.FactorLinkPropertiesPanel;
 import org.miradi.dialogs.diagram.FactorPropertiesPanel;
 import org.miradi.dialogs.diagram.GroupBoxPropertiesPanel;
-import org.miradi.dialogs.diagram.ProjectScopeBoxPropertiesPanel;
+import org.miradi.dialogs.diagram.ScopeBoxPropertiesPanel;
 import org.miradi.dialogs.diagram.TextBoxPropertiesPanel;
 import org.miradi.dialogs.stress.StressPropertiesPanel;
 import org.miradi.dialogs.task.ActivityPropertiesPanel;
@@ -163,7 +163,7 @@ public class PropertiesDoer extends LocationDoer
 	
 	class ScopePropertiesDialog extends ModelessDialogWithDirections
 	{
-		public ScopePropertiesDialog(MainWindow parent, ProjectScopeBoxPropertiesPanel panel)
+		public ScopePropertiesDialog(MainWindow parent, ScopeBoxPropertiesPanel panel)
 		{
 			super(parent, panel.getPanelDescription());
 			setScrollableMainPanel(panel);
@@ -172,7 +172,7 @@ public class PropertiesDoer extends LocationDoer
 
 	void doProjectScopeBoxProperties(DiagramFactor diagramFactor) throws CommandFailedException
 	{
-		ProjectScopeBoxPropertiesPanel projectScopePanel = new ProjectScopeBoxPropertiesPanel(getProject(), diagramFactor);
+		ScopeBoxPropertiesPanel projectScopePanel = new ScopeBoxPropertiesPanel(getProject(), diagramFactor);
 		ScopePropertiesDialog dlg = new ScopePropertiesDialog(getMainWindow(), projectScopePanel); 
 		getView().showFloatingPropertiesDialog(dlg);
 	}
