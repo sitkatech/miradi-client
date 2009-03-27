@@ -37,7 +37,7 @@ public class EAMGraphCell extends DefaultGraphCell
 		return false;
 	}
 	
-	public boolean isProjectScope()
+	public boolean isProjectScopeBox()
 	{
 		return false;
 	}

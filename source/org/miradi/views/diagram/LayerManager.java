@@ -30,6 +30,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ViewData;
 
@@ -57,6 +58,7 @@ public class LayerManager
 		textBoxesVisibleFlag = true;
 		groupBoxesVisibleFlag = true;
 		draftStrategyVisibleFlag = true;
+		projectScopeBoxResultFlag = true;
 	}
 	
 	public boolean isVisible(DiagramObject diagramObjectToUse, FactorCell node)
@@ -216,6 +218,11 @@ public class LayerManager
 	{
 		return isTypeVisible(textBoxesVisibleFlag, TextBox.OBJECT_NAME);
 	}
+	
+	public boolean areProjectScopeBoxesVisible()
+	{
+		return isTypeVisible(projectScopeBoxResultFlag, ProjectScopeBox.OBJECT_NAME);
+	}
 
 	public boolean areGroupBoxesVisible()
 	{
@@ -337,4 +344,5 @@ public class LayerManager
 	private boolean textBoxesVisibleFlag;
 	private boolean groupBoxesVisibleFlag;
 	private boolean draftStrategyVisibleFlag;
+	private boolean projectScopeBoxResultFlag;
 }

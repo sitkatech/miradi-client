@@ -26,6 +26,7 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.IntermediateResultIcon;
+import org.miradi.icons.ProjectScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
 import org.miradi.icons.TargetIcon;
@@ -37,6 +38,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -136,6 +138,9 @@ public abstract class FactorType
 		if (factor.isTextBox())
 			return EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME);
 		
+		if (factor.isProjectScopeBox())
+			return EAM.fieldLabel(ProjectScopeBox.getObjectType(), ProjectScopeBox.OBJECT_NAME);
+		
 		if (factor.isGroupBox())
 			return EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME);
 		
@@ -177,6 +182,9 @@ public abstract class FactorType
 		
 		if (factor.isTextBox())
 			return new TextBoxIcon();
+		
+		if (factor.isProjectScopeBox())
+			return new ProjectScopeBoxIcon();
 		
 		if (factor.isGroupBox())
 			return new GroupBoxIcon();

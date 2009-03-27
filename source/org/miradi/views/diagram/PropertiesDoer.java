@@ -46,6 +46,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.ProjectScopeBox;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
@@ -78,7 +79,7 @@ public class PropertiesDoer extends LocationDoer
 			if(selected == null)
 				return false;
 			
-			if(selected.isFactor() || selected.isProjectScope())
+			if(selected.isFactor() || selected.isProjectScopeBox())
 				return true;
 			
 			if(selected.isFactorLink())
@@ -98,7 +99,7 @@ public class PropertiesDoer extends LocationDoer
 		for(Object object : selectedCells)
 		{
 			EAMGraphCell cell = (EAMGraphCell)object;
-			if(cell.isProjectScope())
+			if(cell.isProjectScopeBox())
 				return true;
 		}
 		return false;
@@ -114,9 +115,6 @@ public class PropertiesDoer extends LocationDoer
 			EAMGraphCell topCellAtClickPoint = getCorrectCellToShowPropertiesFor();
 			if(topCellAtClickPoint.isFactor())
 				doFactorProperties((FactorCell)topCellAtClickPoint, getLocation());
-
-			else if(topCellAtClickPoint.isProjectScope())
-				doProjectScopeProperties();
 
 			else if(topCellAtClickPoint.isFactorLink())
 				doFactorLinkProperties(topCellAtClickPoint.getDiagramLink());
@@ -154,7 +152,7 @@ public class PropertiesDoer extends LocationDoer
 			return new HashSet();
 		
 		DiagramModel model = getDiagramView().getDiagramPanel().getDiagramModel();
-		if (selected.isProjectScope())
+		if (selected.isProjectScopeBox())
 			return new HashSet(model.getAllDiagramTargets());
 		
 		if (selected.getDiagramFactor().isGroupBoxFactor())
@@ -214,6 +212,8 @@ public class PropertiesDoer extends LocationDoer
 			doStressProperties(diagramFactor);
 		else if (Task.is(wrappedType))
 			doActivityProperties(diagramFactor);
+		else if (ProjectScopeBox.is(wrappedType))
+			doProjectScopeProperties();
 		else
 			doNormalFactorProperties(diagramFactor, tabToStartOn);
 	}

@@ -49,7 +49,7 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		if (cell.isFactorLink())
 			return LINK_LAYER;
 		
-		if (cell.isProjectScope() )
+		if (cell.isProjectScopeBox() )
 			return SCOPE_BOX_GROUP_BOX_LAYER;
 		
 		FactorCell factorCell = (FactorCell) cell;
