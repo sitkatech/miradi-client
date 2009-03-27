@@ -96,5 +96,5 @@ public class ScopeBox extends Factor
 		return find(project.getObjectManager(), objectRef);
 	}
 	
-	public static final String OBJECT_NAME = "ProjectScopeBox";
+	public static final String OBJECT_NAME = "ScopeBox";
 }
