@@ -30,6 +30,7 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ViewData;
 
@@ -252,7 +253,7 @@ public class LayerManager
 
 	public boolean isScopeBoxVisible()
 	{
-		return isTypeVisible(scopeBoxVisibleFlag, DiagramLegendPanel.SCOPE_BOX);
+		return isTypeVisible(scopeBoxVisibleFlag, ScopeBox.OBJECT_NAME);
 	}
 	
 	public void setScopeBoxVisible(boolean newSetting)
