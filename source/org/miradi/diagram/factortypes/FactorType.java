@@ -90,7 +90,7 @@ public abstract class FactorType
 		return false;
 	}
 	
-	public boolean isProjectScopeBox()
+	public boolean isScopeBox()
 	{
 		return false;
 	}
