@@ -153,13 +153,13 @@ public class TestDataUpgrader extends EAMTestCase
 	}
 	
 	//FIXME this test is complete but it is not passing since DataUpgrader is not creating scope boxes.  Just wanting to commit
-	public void UNDERCONSTRUCTIONtestSurroundTargetsWithNewScopeBoxType() throws Exception
+	public void testSurroundTargetsWithNewScopeBoxType() throws Exception
 	{
 		String projectMetadataJsonString = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"DiagramOverviewStep\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"some scopDescoption for migration\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"some scopeName for migration\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1238167096013\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
 		
 		String emptyConceptualModelJsonString           = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167098912\",\"DiagramFactorIds\":\"\",\"BudgetCostMode\":\"\",\"Id\":9,\"Label\":\"[Main Diagram]\"}";
 		String targetPopulatedConceptualModelJsonString = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167109983\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[26,28]}\",\"BudgetCostMode\":\"\",\"Id\":24,\"Label\":\"[Page 1]\"}";
-		String targetPopulatedResultsChainJsonString = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167120309\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[31]}\",\"BudgetCostMode\":\"\",\"Id\":29,\"Label\":\"[New Results Chain]\"}";
+		String targetPopulatedResultsChainJsonString    = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167120309\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[31]}\",\"BudgetCostMode\":\"\",\"Id\":29,\"Label\":\"[New Results Chain]\"}";
 		
 		String target1InConceptualModelJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1238167106721\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Target\",\"Id\":25,\"CurrentStatusJustification\":\"\"}";
 		String target2InConceptualModelJsonString = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"Type\":\"Target\",\"BudgetCostOverride\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"StressRefs\":\"\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"WhenOverride\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1238167110005\",\"BudgetCostMode\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Target\",\"Id\":27,\"CurrentStatusJustification\":\"\"}";
@@ -168,6 +168,7 @@ public class TestDataUpgrader extends EAMTestCase
 		String target1DiagramFactorInConceptualModelJsonString = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":25}\",\"FontColor\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":870}\",\"FontSize\":\"\",\"WhoOverrideRefs\":\"\",\"BackgroundColor\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167106717\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":26,\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
 		String target2DiagramFactorInConceptualModelJsonString = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":27}\",\"FontColor\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"{\\\"Y\\\":225,\\\"X\\\":870}\",\"FontSize\":\"\",\"WhoOverrideRefs\":\"\",\"BackgroundColor\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167109992\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":28,\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
 		String targetDiagramFactorInResultsChainJsonString = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":22,\\\"ObjectId\\\":30}\",\"FontColor\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"{\\\"Y\\\":150,\\\"X\\\":870}\",\"FontSize\":\"\",\"WhoOverrideRefs\":\"\",\"BackgroundColor\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167120314\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":31,\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
+		String groupBoxDiagramFactorInRessultsChainJsonString = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":35,\\\"ObjectId\\\":31}\",\"FontColor\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"{\\\"Y\\\":120,\\\"X\\\":855}\",\"FontSize\":\"\",\"WhoOverrideRefs\":\"\",\"BackgroundColor\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238207401435\",\"GroupBoxChildrenRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":18,\\\"ObjectId\\\":31}]}\",\"TextBoxZOrderCode\":\"\",\"BudgetCostMode\":\"\",\"Label\":\"\",\"Id\":32,\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":120,\\\"Width\\\":150}\"}";
 		
 		File jsonDir = createJsonDir();
 
@@ -187,9 +188,13 @@ public class TestDataUpgrader extends EAMTestCase
 		final int TARGET_TYPE = 22;
 		createObjectFiles(jsonDir, TARGET_TYPE, targetRawIds, new String[]{target1InConceptualModelJsonString, target2InConceptualModelJsonString, targetInResultsChainJsonString, });
 		
-		int[] diagramFactorRawIds = {26, 28, 31, };
+		int[] diagramFactorRawIds = {26, 28, 31, 32, };
 		final int DIAGRAM_FACTOR_TYPE = 18;
-		createObjectFiles(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorRawIds, new String[]{target1DiagramFactorInConceptualModelJsonString, target2DiagramFactorInConceptualModelJsonString, targetDiagramFactorInResultsChainJsonString, });
+		createObjectFiles(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorRawIds, new String[]{target1DiagramFactorInConceptualModelJsonString, target2DiagramFactorInConceptualModelJsonString, targetDiagramFactorInResultsChainJsonString, groupBoxDiagramFactorInRessultsChainJsonString, });
+		
+		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":33}");
 		
 		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion40();
@@ -204,7 +209,6 @@ public class TestDataUpgrader extends EAMTestCase
 		BaseId[] scopeBoxKeys = scopeBoxManifestObject.getAllKeys();
 		assertEquals("wrong scope box count?", 2, scopeBoxKeys.length);
 	
-	
 		Vector<EnhancedJsonObject> emptyList = extractScopeBoxeDiagramFactors(jsonDir,	conceptualModelRawIds[0], CONCEPTUAL_MODEL_TYPE, DIAGRAM_FACTOR_TYPE, SCOPE_BOX_TYPE);
 		assertEquals("diagram object contains scope box?", 0, emptyList.size());
 		
@@ -216,8 +220,8 @@ public class TestDataUpgrader extends EAMTestCase
 
 		//single target: location = (630, 90) dimension = (180, 147)
 		//double target: location = (765, 90) dimension = (180, 222)
-		Rectangle singleTargetScopeBounds = new Rectangle(840, 120, 180, 117);
-		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithOneTarget, singleTargetScopeBounds);
+		Rectangle singleTargetWrappedByGroupBoxScopeBounds = new Rectangle(825, 90, 210, 177);
+		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithOneTarget, singleTargetWrappedByGroupBoxScopeBounds);
 		
 		Rectangle doubleTargetScopeBounds = new Rectangle(840, 120, 180, 192);
 		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithTwoTargets, doubleTargetScopeBounds);

@@ -213,11 +213,22 @@ public class DataUpgrader
 			
 			if (readDataVersion(getTopDirectory()) == 38)
 				upgradeToVersion39();
+			
+			if (readDataVersion(getTopDirectory()) == 39)
+				upgradeToVersion40();
 		}
 		finally 
 		{
 			migrationLock.close();
 		}			
+	}
+
+	public void upgradeToVersion40() throws Exception
+	{
+		//FIXME currently this migration is turned off, still under contruction and its test is failing
+		//CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(getTopJsonDir());
+		//migration.surroundTargetsWithNewScopeBoxType();		
+		//writeLocalVersion(getTopDirectory(), 40);
 	}
 
 	public void upgradeToVersion39() throws Exception
@@ -248,7 +259,7 @@ public class DataUpgrader
 		moveFactorsToSpecificDirs();
 		writeLocalVersion(getTopDirectory(), 35);
 	}
-	
+
 	private void enableThreats() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -546,7 +557,7 @@ public class DataUpgrader
 		writeManifest(objectDir, manifestJson);
 	}
 	
-	private void writeManifest(File objectDir, EnhancedJsonObject manifestJson) throws Exception
+	public static void writeManifest(File objectDir, EnhancedJsonObject manifestJson) throws Exception
 	{
 		File targetManifestFile = new File(objectDir, "manifest");
 		writeJson(targetManifestFile, manifestJson);
