@@ -159,7 +159,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.SlideShow;
 import org.miradi.objects.Strategy;
@@ -997,28 +996,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		diagramComponent.repaint(diagramComponent.getBounds());
 	}
 	
-	void updateScopeIfNeeded(DiagramModel model, CommandSetObjectData cmd)
-	{
-		if (isScopeTextChange(cmd) || isFactorBoundsChange(cmd))
-			model.updateProjectScopeBox();
-	}
-
-	private boolean isScopeTextChange(CommandSetObjectData cmd)
-	{
-		if (cmd.getObjectType() != ObjectType.PROJECT_METADATA)
-			return false;
-		
-		return cmd.getFieldTag().equals(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
-	}
-
-	private boolean isFactorBoundsChange(CommandSetObjectData cmd)
-	{
-		if (cmd.getObjectType() != ObjectType.DIAGRAM_FACTOR)
-			return false;
-		return (cmd.getFieldTag().equals(DiagramFactor.TAG_LOCATION) || 
-				cmd.getFieldTag().equals(DiagramFactor.TAG_SIZE));
-	}
-
 	public void showFloatingPropertiesDialog(ModelessDialogWithClose newDialog)
 	{
 		if(nodePropertiesDlg != null)
