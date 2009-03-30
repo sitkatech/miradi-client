@@ -32,7 +32,6 @@ import org.miradi.database.ObjectManifest;
 import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -180,7 +179,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	
 		double height = bounds.getHeight();
 		double y = bounds.getY();
-		if (hasVision())
+		if (hasShortScope())
 		{
 			height += VISION_HEIGHT;
 			y -= VISION_HEIGHT;
@@ -296,23 +295,9 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return targetDiagramFactorJson;
 	}
 	
-	private boolean hasVision() throws Exception
+	private boolean hasShortScope() throws Exception
 	{
-		return getVision().length()>0;
-	}
-	
-	private String getVision() throws Exception
-	{
-		String projectVision = getProjectVision();
-		if (projectVision.length() == 0)
-			return "";
-		
-		return EAM.text("Vision");
-	}
-
-	private String getProjectVision() throws Exception
-	{
-		return getProjectMetadataJson().optString("ProjectVision");
+		return getShortScope().length()>0;
 	}
 	
 	private String getShortScope()
