@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
@@ -104,7 +103,7 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	// NOTE: This method is deprecated! Pass Factors instead!
 	public ORef getLinkedRef(ORef factorRef1, ORef factorRef2)
 	{
-		FactorLinkId factorLinkId = getLinkedId((FactorId)factorRef1.getObjectId(), (FactorId)factorRef2.getObjectId());
+		FactorLinkId factorLinkId = getLinkedId(factorRef1, factorRef2);
 		if (factorLinkId == null)
 			return ORef.INVALID;
 			
@@ -112,16 +111,16 @@ public class FactorLinkPool extends PoolWithIdAssigner
 	}
 	
 	// NOTE: This method is deprecated! Pass Factors instead!
-	public FactorLinkId getLinkedId(FactorId nodeId1, FactorId nodeId2)
+	public FactorLinkId getLinkedId(ORef ref1, ORef ref2)
 	{
 		for(int i = 0; i < getIds().length; ++i)
 		{
 			FactorLink thisLinkage = getLinkage(i);
-			FactorId fromId = new FactorId(thisLinkage.getFromFactorRef().getObjectId().asInt());
-			FactorId toId = new FactorId( thisLinkage.getToFactorRef().getObjectId().asInt());
-			if(fromId.equals(nodeId1) && toId.equals(nodeId2))
+			ORef from = thisLinkage.getFromFactorRef();
+			ORef to = thisLinkage.getToFactorRef();
+			if(from.equals(ref1) && to.equals(ref2))
 				return (FactorLinkId) thisLinkage.getId();
-			if(fromId.equals(nodeId2) && toId.equals(nodeId1))
+			if(from.equals(ref2) && to.equals(ref1))
 				return (FactorLinkId) thisLinkage.getId();
 		}
 		return null;

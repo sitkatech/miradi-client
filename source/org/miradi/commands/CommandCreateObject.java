@@ -42,7 +42,7 @@ public class CommandCreateObject extends Command
 		createdId = BaseId.INVALID;
 	}
 	
-	void setCreatedId(BaseId id)
+	public void setCreatedId(BaseId id)
 	{
 		createdId = id;
 	}
