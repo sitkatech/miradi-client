@@ -208,6 +208,12 @@ public class TestDataUpgrader extends EAMTestCase
 		ObjectManifest scopeBoxManifestObject  = new ObjectManifest(JSONFile.read(scopeBoxManifestFile));
 		BaseId[] scopeBoxKeys = scopeBoxManifestObject.getAllKeys();
 		assertEquals("wrong scope box count?", 2, scopeBoxKeys.length);
+		
+		File diagramFactorDir = DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_FACTOR_TYPE);
+		File diagramFactorManifestFile = new File(diagramFactorDir, MANIFEST_FILE_NAME);
+		ObjectManifest diagramFactorManifestObject = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
+		BaseId[] diagramFactorKeys = diagramFactorManifestObject.getAllKeys();
+		assertEquals("wrong diagram factor count?", 6, diagramFactorKeys.length);
 	
 		Vector<EnhancedJsonObject> emptyList = extractScopeBoxeDiagramFactors(jsonDir,	conceptualModelRawIds[0], CONCEPTUAL_MODEL_TYPE, DIAGRAM_FACTOR_TYPE, SCOPE_BOX_TYPE);
 		assertEquals("diagram object contains scope box?", 0, emptyList.size());
@@ -218,8 +224,6 @@ public class TestDataUpgrader extends EAMTestCase
 		Vector<EnhancedJsonObject> jsonListForScopeBoxWithOneTarget = extractScopeBoxeDiagramFactors(jsonDir,	resultsChainRawIds[0]   , RESULTS_CHAIN_TYPE   , DIAGRAM_FACTOR_TYPE, SCOPE_BOX_TYPE);
 		assertEquals("diagram object contains no scope box?", 1, jsonListForScopeBoxWithOneTarget.size());
 
-		//single target: location = (630, 90) dimension = (180, 147)
-		//double target: location = (765, 90) dimension = (180, 222)
 		Rectangle singleTargetWrappedByGroupBoxScopeBounds = new Rectangle(825, 90, 210, 177);
 		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithOneTarget, singleTargetWrappedByGroupBoxScopeBounds);
 		
