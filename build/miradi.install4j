@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.1.5" transformSequenceNumber="2">
   <directoryPresets config="./installer/BuildFiles/install4j_messages_en.utf8" />
-  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" mediaDir="../dist" 
-mediaFilePattern="${compiler:sys.shortName}Setup" compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="2.4" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  <application name="Miradi" distributionSourceDir="" applicationId="9257-7778-0919-8416" 
+  mediaDir="../dist" 
+  mediaFilePattern="${compiler:sys.shortName}Setup" 
+  compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" 
+  keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" 
+  version="3.0" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" 
+  macSignature="????" installerName="" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
       <additionalLanguages>
@@ -154,8 +159,22 @@ for(int i = 0; i &lt; ARBITRARY_DEPTH_TO_PREVENT_ENDLESS_LOOP; ++i)
         if(bin.exists() &amp;&amp; bin.isDirectory())
         {
             Util.showErrorMessage(
-                    "You must either uninstall the earlier version of Miradi (recommended),\n" +
-                    "or choose a different directory for this version.");
+                    "This version of Miradi uses a different installer from the one that \n" + 
+                    "was used in Miradi versions 2.3.1 and earlier.\n" +
+                    "\n" + 
+                    "Thus, before installing this version, you must exit this installer, \n" + 
+                    "and uninstall the older Miradi. This is perfectly safe, because \n" + 
+                    "uninstalling Miradi will not remove the projects and data that you\n" + 
+                    "have created.\n " +
+                    "\n" + 
+                    "To uninstall the older version of Miradi, go to the Windows Start Menu,\n" + 
+                    "choose Miradi, and then choose 'Uninstall Miradi'.\n" +
+                    "\n" + 
+                    "This requirement to uninstall is a one time situation caused by the switch\n" +
+                    "to this new, more robust Miradi Installer. Future upgrades will not require \n" +
+                    "an uninstall; you will simply be able to simply install newer versions.\n" + 
+                    "\n"
+                    );
             return false;
         }
     }

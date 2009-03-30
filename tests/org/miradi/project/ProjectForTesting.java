@@ -310,7 +310,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Target createTarget() throws Exception
 	{
-		ORef targetRef = createObject(Target.getObjectType());
+		ORef targetRef = createObject(Target.getObjectType(), new FactorId(takeNextId(Target.getObjectType())));
 		return Target.find(this, targetRef);
 	}
 	
@@ -400,7 +400,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public Strategy createStrategy() throws Exception
 	{
-		ORef strategyRef = createObject(Strategy.getObjectType());
+		ORef strategyRef = createObject(Strategy.getObjectType(), new FactorId(takeNextId(Strategy.getObjectType())));
 		return Strategy.find(this, strategyRef);
 	}
 	
@@ -457,9 +457,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
 		keaIds.addRef(kea.getRef());
 		fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
-		
-		int[][] bundleValues = { {3,}, {4,}, {1,}, };
-		TestSimpleThreatRatingFramework.fillFrameWork(this, bundleValues);
 	}
 	
 	public void populateCause(Cause cause) throws Exception
@@ -839,10 +836,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramFactorId createAndAddFactorToDiagram(int nodeType) throws Exception
 	{
+		return createAndAddFactorToDiagram(nodeType, takeNextId(nodeType));
+	}
+	
+	public DiagramFactorId createAndAddFactorToDiagram(int nodeType, int id) throws Exception
+	{
 		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getDiagramModel());
-		CommandCreateObject command = factorHelper.createFactorAndDiagramFactor(nodeType);
+		CommandCreateObject createFactor = new CommandCreateObject(nodeType);
+		createFactor.setCreatedId(new BaseId(id));
+		executeCommand(createFactor);
+		ORef factorRef = new ORef(createFactor.getObjectType(), createFactor.getCreatedId());
+		CommandCreateObject createDiagramFactor = factorHelper.createDiagramFactor(getDiagramModel().getDiagramObject(), factorRef);
 		
-		return new DiagramFactorId(command.getCreatedId().asInt());
+		return new DiagramFactorId(createDiagramFactor.getCreatedId().asInt());
 	}
 	
 	public DiagramFactor createDiagramFactorWithWrappedRefLabelAndAddToDiagram(int objectType) throws Exception
@@ -856,15 +862,51 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramFactor createDiagramFactorAndAddToDiagram(int objectType) throws Exception
 	{
-		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType);
+		return createDiagramFactorAndAddToDiagram(objectType, takeNextId(objectType));
+	}
+	
+	private int takeNextId(int objectType)
+	{
+		if(nextStrategyId == 0)
+		{
+			int startAt = getNodeIdAssigner().getHighestAssignedId() + 1;
+			nextStrategyId = startAt;
+			nextCauseId = startAt;
+			nextTargetId = startAt;
+			nextOtherId = startAt;
+		}
+		
+		int next = -1;
+		
+		if(objectType == Strategy.getObjectType())
+			next = nextStrategyId++;
+		else if(objectType == Cause.getObjectType())
+			next = nextCauseId++;
+		else if(objectType == Target.getObjectType())
+			next = nextTargetId++;
+		else
+			next = nextOtherId++;
+		
+		getNodeIdAssigner().idTaken(new BaseId(next));
+		return next;
+	}
+	
+	private DiagramFactor createDiagramFactorAndAddToDiagram(int objectType, int factorId) throws Exception
+	{
+		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType, factorId);
 		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
 
 		return diagramFactor;
 	}
-
+	
 	public FactorId createNodeAndAddToDiagram(int objectType) throws Exception
 	{
-		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType);
+		return createNodeAndAddToDiagram(objectType, takeNextId(objectType));
+	}
+
+	public FactorId createNodeAndAddToDiagram(int objectType, int factorId) throws Exception
+	{
+		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType, factorId);
 		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
 	
 		return diagramFactor.getWrappedId();
@@ -872,7 +914,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public FactorCell createFactorCell(int objectType) throws Exception
 	{
-		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(objectType);
+		return createFactorCell(objectType, takeNextId(objectType));
+	}
+	
+	public FactorCell createFactorCell(int objectType, int factorId) throws Exception
+	{
+		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(objectType, factorId);
 		return getDiagramModel().getFactorCellByWrappedRef(diagramFactor.getWrappedORef());
 	}
 	
@@ -903,8 +950,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ORef createDiagramLink() throws Exception
 	{
-		DiagramFactor from = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
-		DiagramFactor to = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor from = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
+		DiagramFactor to = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
 		return createDiagramLink(from, to);
 	}
 
@@ -970,10 +1017,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createThreatTargetLink() throws Exception
 	{
-		DiagramFactor threat = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
+		DiagramFactor threat = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
 		enableAsThreat(threat.getWrappedORef());
-		
-		DiagramFactor target = createDiagramFactorAndAddToDiagram(ObjectType.TARGET);
+		DiagramFactor target = createDiagramFactorAndAddToDiagram(ObjectType.TARGET, takeNextId(Target.getObjectType()));
+
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		
 		return createObject(ObjectType.FACTOR_LINK, parameter);
@@ -1046,6 +1093,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		throw new Exception();
 	}
 			
+	private static int nextTargetId;
+	private static int nextCauseId;
+	private static int nextStrategyId;
+	private static int nextOtherId;
+	
 	public static final String PROJECT_RESOURCE_LABEL_TEXT = "John Doe";
 	public static final String SIMPLE_THREAT_RATING_COMMENT = "sample simple threat rating comment";
 	public static final String STRESS_BASED_THREAT_RATING_COMMENT = "sample stress based threat rating comment";

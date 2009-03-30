@@ -45,7 +45,6 @@ import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
@@ -1286,8 +1285,13 @@ public class Project
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
 
-	public ORefList findConceptualModelThatContainsBothFactors(FactorId fromFactorId, FactorId toFactorId)
+	public ORefList findConceptualModelThatContainsBothFactors(ORef fromFactorRef, ORef toFactorRef)
 	{
+		if(!Factor.isFactor(fromFactorRef))
+			throw new RuntimeException("Non-factor passed for from: " + fromFactorRef);
+		if(!Factor.isFactor(toFactorRef))
+			throw new RuntimeException("Non-factor passed for to: " + toFactorRef);
+
 		ORefList conceptualModels = new ORefList();
 		ConceptualModelDiagramPool diagramPool = getConceptualModelDiagramPool();
 		ORefList diagramORefs = diagramPool.getORefList();
@@ -1295,7 +1299,7 @@ public class Project
 		{
 			ORef thisDiagramRef = diagramORefs.get(i);
 			ConceptualModelDiagram diagram =  (ConceptualModelDiagram) findObject(thisDiagramRef);
-			if (diagram.containsWrappedFactor(fromFactorId) && diagram.containsWrappedFactor(toFactorId))
+			if (diagram.containsWrappedFactorRef(fromFactorRef) && diagram.containsWrappedFactorRef(toFactorRef))
 				conceptualModels.add(thisDiagramRef); 		
 		}
 		
