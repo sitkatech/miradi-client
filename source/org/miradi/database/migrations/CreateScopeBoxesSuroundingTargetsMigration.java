@@ -134,8 +134,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		for (int index = 0; index < targetDiagramFactorJsons.size(); ++index)
 		{
 			EnhancedJsonObject targetDiagramFactorJson = targetDiagramFactorJsons.get(index);
-			BaseId targetDiagramFactorId = targetDiagramFactorJson.getId("Id");
-			Rectangle targetBounds = getBoundsOfDiagramFactorOrItsGroupBox(diagramFactorDir, targetDiagramFactorId);
+			Rectangle targetBounds = getBoundsOfDiagramFactorOrItsGroupBox(diagramFactorDir, targetDiagramFactorJson);
 			bounds = getSafeUnion(bounds, targetBounds);
 		}
 		
@@ -230,27 +229,27 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return targetDiagramFactorJsons;
 	}
 	
-	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(File diagramFactorDir, BaseId targetDiagramFactorId) throws Exception
+	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(File diagramFactorDir, EnhancedJsonObject targetDiagramFactorJson) throws Exception
 	{
-		EnhancedJsonObject targetOrItsGroupBoxDiagramFactorJson = getTargetOrItsGroupBoxJson(diagramFactorDir, targetDiagramFactorId);
+		EnhancedJsonObject targetOrItsGroupBoxDiagramFactorJson = getTargetOrItsGroupBoxJson(diagramFactorDir, targetDiagramFactorJson);
 		Point location = targetOrItsGroupBoxDiagramFactorJson.getPoint("Location");
 		Dimension size = targetOrItsGroupBoxDiagramFactorJson.getDimension("Size");
 		
 		return new Rectangle(location.x, location.y, size.width, size.height);
 	}
 	
-	private EnhancedJsonObject getTargetOrItsGroupBoxJson(File diagramFactorDir, BaseId targetDiagramFactorId) throws Exception
+	private EnhancedJsonObject getTargetOrItsGroupBoxJson(File diagramFactorDir, EnhancedJsonObject targetDiagramFactorJson) throws Exception
 	{
 		for (int index = 0; index < getAllDiagramFactorJsons().size(); ++index)
 		{
 			EnhancedJsonObject diagramFactorJson = getAllDiagramFactorJsons().get(index);
 			ORefList groupBoxChildren = diagramFactorJson.optRefList("GroupBoxChildrenRefs");
+			BaseId targetDiagramFactorId = targetDiagramFactorJson.getId("Id");
 			if (groupBoxChildren.contains(new ORef(DiagramFactor.getObjectType(), targetDiagramFactorId)))
 				return diagramFactorJson;
 		}
 			
-		File diagramFactorFile = new File(diagramFactorDir, targetDiagramFactorId.toString());
-		return new EnhancedJsonObject(readFile(diagramFactorFile));
+		return targetDiagramFactorJson;
 	}
 	
 	private boolean hasVision() throws Exception
