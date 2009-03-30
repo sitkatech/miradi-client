@@ -29,7 +29,6 @@ import java.util.Vector;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
-import org.miradi.diagram.renderers.MultilineCellRenderer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
@@ -179,12 +178,6 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	
 		double height = bounds.getHeight();
 		double y = bounds.getY();
-		if (hasShortScope())
-		{
-			height += VISION_HEIGHT;
-			y -= VISION_HEIGHT;
-		}
-		
 		Rectangle result = new Rectangle();
 		result.setRect(bounds.getX(), y, bounds.getWidth(), height);
 		
@@ -295,11 +288,6 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return targetDiagramFactorJson;
 	}
 	
-	private boolean hasShortScope() throws Exception
-	{
-		return getShortScope().length()>0;
-	}
-	
 	private String getShortScope()
 	{
 		return getProjectMetadataJson().optString("ShortProjectScope");
@@ -375,6 +363,4 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private File diagramFactorDir;
 	private Vector<EnhancedJsonObject> allDiagramFactorJsons;
 	private EnhancedJsonObject projectMetadataJson;
-	
-	private final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 }
