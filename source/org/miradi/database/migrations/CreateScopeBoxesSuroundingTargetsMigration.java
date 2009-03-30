@@ -126,16 +126,16 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		}		
 	}
 	
-	private Rectangle getScopeBoxBounds(File diagramFactorDir, IdList diagramFactorIds) throws Exception
+	private Rectangle getScopeBoxBounds(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
 	{
-		Vector<EnhancedJsonObject> targetDiagramFactorJsons = extractTargetDiagramFactorJsons(diagramFactorDir, diagramFactorIds);
+		Vector<EnhancedJsonObject> targetDiagramFactorJsons = extractTargetDiagramFactorJsons(diagramFactorDir, diagramFactorIdsFromDiagramObject);
 		
 		Rectangle bounds = null;
 		for (int index = 0; index < targetDiagramFactorJsons.size(); ++index)
 		{
 			EnhancedJsonObject targetDiagramFactorJson = targetDiagramFactorJsons.get(index);
 			BaseId targetDiagramFactorId = targetDiagramFactorJson.getId("Id");
-			Rectangle targetBounds = getBoundsOfDiagramFactorOrItsGroupBox(diagramFactorDir, diagramFactorIds, targetDiagramFactorId);
+			Rectangle targetBounds = getBoundsOfDiagramFactorOrItsGroupBox(diagramFactorDir, targetDiagramFactorId);
 			bounds = getSafeUnion(bounds, targetBounds);
 		}
 		
@@ -212,13 +212,16 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return unionResult;
 	}
 
-	private Vector<EnhancedJsonObject> extractTargetDiagramFactorJsons(File diagramFactorDir, IdList diagramFactorIds) throws Exception
+	private Vector<EnhancedJsonObject> extractTargetDiagramFactorJsons(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
 	{
 		Vector<EnhancedJsonObject> targetDiagramFactorJsons = new Vector();
-		for (int index = 0; index < diagramFactorIds.size(); ++index)
+		for (int index = 0; index < getAllDiagramFactorJsons().size(); ++index)
 		{
-			File diagramFactorFile = new File(diagramFactorDir, diagramFactorIds.get(index).toString());
-			EnhancedJsonObject diagramFactorJson = new EnhancedJsonObject(readFile(diagramFactorFile));
+			EnhancedJsonObject diagramFactorJson = getAllDiagramFactorJsons().get(index);
+			BaseId diagramFactorId = diagramFactorJson.getId("Id");
+			if (!diagramFactorIdsFromDiagramObject.contains(diagramFactorId))
+				continue;
+			
 			ORef wrappedRef = diagramFactorJson.getRef("WrappedFactorRef");
 			if (TARGET_TYPE == wrappedRef.getObjectType())
 				targetDiagramFactorJsons.add(diagramFactorJson);
@@ -227,21 +230,20 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return targetDiagramFactorJsons;
 	}
 	
-	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(File diagramFactorDir, IdList diagramFactorIds, BaseId targetDiagramFactorId) throws Exception
+	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(File diagramFactorDir, BaseId targetDiagramFactorId) throws Exception
 	{
-		EnhancedJsonObject targetOrItsGroupBoxDiagramFactorJson = getTargetOrItsGroupBoxJson(diagramFactorDir, diagramFactorIds, targetDiagramFactorId);
+		EnhancedJsonObject targetOrItsGroupBoxDiagramFactorJson = getTargetOrItsGroupBoxJson(diagramFactorDir, targetDiagramFactorId);
 		Point location = targetOrItsGroupBoxDiagramFactorJson.getPoint("Location");
 		Dimension size = targetOrItsGroupBoxDiagramFactorJson.getDimension("Size");
 		
 		return new Rectangle(location.x, location.y, size.width, size.height);
 	}
 	
-	private EnhancedJsonObject getTargetOrItsGroupBoxJson(File diagramFactorDir, IdList diagramFactorIds, BaseId targetDiagramFactorId) throws Exception
+	private EnhancedJsonObject getTargetOrItsGroupBoxJson(File diagramFactorDir, BaseId targetDiagramFactorId) throws Exception
 	{
-		for (int index = 0; index < diagramFactorIds.size(); ++index)
+		for (int index = 0; index < getAllDiagramFactorJsons().size(); ++index)
 		{
-			File diagramFactorFile = new File(diagramFactorDir, diagramFactorIds.get(index).toString());
-			EnhancedJsonObject diagramFactorJson = new EnhancedJsonObject(readFile(diagramFactorFile));
+			EnhancedJsonObject diagramFactorJson = getAllDiagramFactorJsons().get(index);
 			ORefList groupBoxChildren = diagramFactorJson.optRefList("GroupBoxChildrenRefs");
 			if (groupBoxChildren.contains(new ORef(DiagramFactor.getObjectType(), targetDiagramFactorId)))
 				return diagramFactorJson;
@@ -285,6 +287,11 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return projectMetadataJson.optString("ProjectVision");
 	}
 
+	public Vector<EnhancedJsonObject> getAllDiagramFactorJsons()
+	{
+		return allDiagramFactorJsons;
+	}
+	
 	private EnhancedJsonObject readFile(File file) throws Exception
 	{
 		return DataUpgrader.readFile(file);
