@@ -57,18 +57,18 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		if (! targetDir.exists())
 			return;
 		
-		File diagramFactorDir = getObjectsDir(DIAGRAM_FACTOR_TYPE);
-		if (!diagramFactorDir.exists())
+		diagramFactorDir = getObjectsDir(DIAGRAM_FACTOR_TYPE);
+		if (!getDiagramFactorDir().exists())
 			throw new RuntimeException("There are no diagramFactors.");
 			
 		
-		File diagramFactorManifestFile = new File(diagramFactorDir, "manifest");
+		File diagramFactorManifestFile = new File(getDiagramFactorDir(), "manifest");
 		if (! diagramFactorManifestFile.exists())
 			throw new RuntimeException("no diagram factor manifest exists");
 		
 		ObjectManifest diagramFactorManifestObject = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
 		BaseId[] allDiagramFactorIds = diagramFactorManifestObject.getAllKeys();
-		allDiagramFactorJsons = loadAllDiagramFactorJsons(diagramFactorDir, allDiagramFactorIds);
+		allDiagramFactorJsons = loadAllDiagramFactorJsons(allDiagramFactorIds);
 		projectMetadataJson = loadProjectMetadataJson();
 		
 		File conceptualModelDir = getObjectsDir(CONCEPTUAL_MODEL_TYPE);
@@ -89,16 +89,16 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		if (! scopeBoxManifestFile.exists())
 			throw new RuntimeException("no scopeBox manifest exists");
 		
-		createScopeBoxes(conceptualModelDir, diagramFactorDir, scopeBoxDir, scopeBoxManifestJson, CONCEPTUAL_MODEL_TYPE);		
-		createScopeBoxes(resultsChainDir, diagramFactorDir, scopeBoxDir, scopeBoxManifestJson, RESULTS_CHAIN_TYPE);
+		createScopeBoxes(conceptualModelDir, scopeBoxDir, scopeBoxManifestJson, CONCEPTUAL_MODEL_TYPE);		
+		createScopeBoxes(resultsChainDir, scopeBoxDir, scopeBoxManifestJson, RESULTS_CHAIN_TYPE);
 	}
 	
-	private Vector<EnhancedJsonObject> loadAllDiagramFactorJsons(File diagramFactorDir, BaseId[] diagramFactorIds) throws Exception
+	private Vector<EnhancedJsonObject> loadAllDiagramFactorJsons(BaseId[] diagramFactorIds) throws Exception
 	{
 		Vector<EnhancedJsonObject> diagramFactorJsons = new Vector();
 		for (int index = 0; index < diagramFactorIds.length; ++index)
 		{
-			File diagramFactorFile = new File(diagramFactorDir, diagramFactorIds[index].toString());
+			File diagramFactorFile = new File(getDiagramFactorDir(), diagramFactorIds[index].toString());
 			EnhancedJsonObject diagramFactorJson = new EnhancedJsonObject(readFile(diagramFactorFile));
 			diagramFactorJsons.add(diagramFactorJson);
 		}
@@ -106,7 +106,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return diagramFactorJsons;
 	}
 	
-	private void createScopeBoxes(File diagramObjectDir, File diagramFactorDir, File scopeBoxDir, EnhancedJsonObject scopeBoxManifestJson, final int diagramObjectType) throws Exception
+	private void createScopeBoxes(File diagramObjectDir, File scopeBoxDir, EnhancedJsonObject scopeBoxManifestJson, final int diagramObjectType) throws Exception
 	{
 		File diagramObjectManifestFile = new File(diagramObjectDir, "manifest");
 		if (! diagramObjectManifestFile.exists())
@@ -120,18 +120,18 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 			File diagramObjectJsonFile = new File(diagramObjectDir, Integer.toString(thisDiagramObjectId.asInt()));
 			EnhancedJsonObject diagramObjectJson = readFile(diagramObjectJsonFile);
 			IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString("DiagramFactorIds"));
-			Rectangle scopeBoxBounds = getScopeBoxBounds(diagramFactorDir, diagramFactorIds);
+			Rectangle scopeBoxBounds = getScopeBoxBounds(diagramFactorIds);
 			if (!scopeBoxBounds.isEmpty())
 			{
 				BaseId newlyCreatedScopeBoxId = createScopeBox(scopeBoxDir, scopeBoxManifestJson, scopeBoxBounds);
-				createScopeBoxDiagramFactor(diagramObjectJsonFile, diagramObjectJson, diagramObjectType, diagramFactorDir, newlyCreatedScopeBoxId, scopeBoxBounds);
+				createScopeBoxDiagramFactor(diagramObjectJsonFile, diagramObjectJson, diagramObjectType, newlyCreatedScopeBoxId, scopeBoxBounds);
 			}
 		}		
 	}
 	
-	public Rectangle getScopeBoxBounds(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
+	public Rectangle getScopeBoxBounds(IdList diagramFactorIdsFromDiagramObject) throws Exception
 	{
-		Rectangle targetBounds = getTargetBounds(diagramFactorDir, diagramFactorIdsFromDiagramObject);
+		Rectangle targetBounds = getTargetBounds(diagramFactorIdsFromDiagramObject);
 		Rectangle newBounds = new Rectangle(0,0,0,0);
 		if(!targetBounds.equals(newBounds))
 		{
@@ -163,15 +163,15 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return valueToRound * sign;
 	}
 	
-	private Rectangle getTargetBounds(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
+	private Rectangle getTargetBounds(IdList diagramFactorIdsFromDiagramObject) throws Exception
 	{
-		Vector<EnhancedJsonObject> targetDiagramFactorJsons = extractTargetDiagramFactorJsons(diagramFactorDir, diagramFactorIdsFromDiagramObject);
+		Vector<EnhancedJsonObject> targetDiagramFactorJsons = extractTargetDiagramFactorJsons(diagramFactorIdsFromDiagramObject);
 		
 		Rectangle bounds = null;
 		for (int index = 0; index < targetDiagramFactorJsons.size(); ++index)
 		{
 			EnhancedJsonObject targetDiagramFactorJson = targetDiagramFactorJsons.get(index);
-			Rectangle targetBounds = getBoundsOfDiagramFactorOrItsGroupBox(diagramFactorDir, targetDiagramFactorJson);
+			Rectangle targetBounds = getBoundsOfDiagramFactorOrItsGroupBox(targetDiagramFactorJson);
 			bounds = getSafeUnion(bounds, targetBounds);
 		}
 		
@@ -210,9 +210,9 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return new BaseId(newScopeBoxId);
 	}
 	
-	private void createScopeBoxDiagramFactor(File diagramObjectJsonFile, EnhancedJsonObject diagramObjectJson, final int diagramObjectType, File diagramFactorDir, BaseId newlyCreatedScopeBoxId, Rectangle scopeBoxBounds) throws Exception
+	private void createScopeBoxDiagramFactor(File diagramObjectJsonFile, EnhancedJsonObject diagramObjectJson, final int diagramObjectType, BaseId newlyCreatedScopeBoxId, Rectangle scopeBoxBounds) throws Exception
 	{
-		File diagramFactorManifestFile = new File(diagramFactorDir, "manifest");
+		File diagramFactorManifestFile = new File(getDiagramFactorDir(), "manifest");
 		if (! diagramFactorManifestFile.exists())
 			throw new RuntimeException("Diagram factor manifest file does not exist.");
 	
@@ -236,10 +236,10 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		diagramObjectJson.put("DiagramFactorIds", diagramFactorIds.toString());
 		DataUpgrader.writeJson(diagramObjectJsonFile, diagramObjectJson);
 		
-		File scopeBoxFile = new File(diagramFactorDir, Integer.toString(newScopeBoxDiagramFactorId));
+		File scopeBoxFile = new File(getDiagramFactorDir(), Integer.toString(newScopeBoxDiagramFactorId));
 		DataUpgrader.createFile(scopeBoxFile, scopeBoxJson.toString());
 		
-		DataUpgrader.writeManifest(diagramFactorDir, diagramFactorManifestJson);
+		DataUpgrader.writeManifest(getDiagramFactorDir(), diagramFactorManifestJson);
 	}
 		
 	private Rectangle getSafeUnion(Rectangle2D bounds, Rectangle targetBounds)
@@ -252,7 +252,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return unionResult;
 	}
 
-	private Vector<EnhancedJsonObject> extractTargetDiagramFactorJsons(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
+	private Vector<EnhancedJsonObject> extractTargetDiagramFactorJsons(IdList diagramFactorIdsFromDiagramObject) throws Exception
 	{
 		Vector<EnhancedJsonObject> targetDiagramFactorJsons = new Vector();
 		for (int index = 0; index < getAllDiagramFactorJsons().size(); ++index)
@@ -270,16 +270,16 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return targetDiagramFactorJsons;
 	}
 	
-	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(File diagramFactorDir, EnhancedJsonObject targetDiagramFactorJson) throws Exception
+	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(EnhancedJsonObject targetDiagramFactorJson) throws Exception
 	{
-		EnhancedJsonObject targetOrItsGroupBoxDiagramFactorJson = getTargetOrItsGroupBoxJson(diagramFactorDir, targetDiagramFactorJson);
+		EnhancedJsonObject targetOrItsGroupBoxDiagramFactorJson = getTargetOrItsGroupBoxJson(targetDiagramFactorJson);
 		Point location = targetOrItsGroupBoxDiagramFactorJson.getPoint("Location");
 		Dimension size = targetOrItsGroupBoxDiagramFactorJson.getDimension("Size");
 		
 		return new Rectangle(location.x, location.y, size.width, size.height);
 	}
 	
-	private EnhancedJsonObject getTargetOrItsGroupBoxJson(File diagramFactorDir, EnhancedJsonObject targetDiagramFactorJson) throws Exception
+	private EnhancedJsonObject getTargetOrItsGroupBoxJson(EnhancedJsonObject targetDiagramFactorJson) throws Exception
 	{
 		for (int index = 0; index < getAllDiagramFactorJsons().size(); ++index)
 		{
@@ -352,6 +352,11 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		return DataUpgrader.getObjectsDir(getJsonDir(), type);
 	}
 	
+	public File getDiagramFactorDir()
+	{
+		return diagramFactorDir;
+	}
+	
 	private File getJsonDir()
 	{
 		return jsonDir;
@@ -369,6 +374,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private static final int DEFAULT_GRID_SIZE = 15;
 	private static final int SHORT_SCOPE_HEIGHT = 27;
 	
+	private File diagramFactorDir;
 	private Vector<EnhancedJsonObject> allDiagramFactorJsons;
 	private EnhancedJsonObject projectMetadataJson;
 	
