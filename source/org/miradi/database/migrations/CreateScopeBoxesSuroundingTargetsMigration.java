@@ -66,9 +66,10 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		if (! diagramFactorManifestFile.exists())
 			throw new RuntimeException("no diagram factor manifest exists");
 		
-		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
-		BaseId[] allDiagramFactorIds = indicatorManifestObject.getAllKeys();
+		ObjectManifest diagramFactorManifestObject = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
+		BaseId[] allDiagramFactorIds = diagramFactorManifestObject.getAllKeys();
 		allDiagramFactorJsons = loadAllDiagramFactorJsons(diagramFactorDir, allDiagramFactorIds);
+		projectMetadataJson = loadProjectMetadataJson();
 		
 		File conceptualModelDir = getObjectsDir(CONCEPTUAL_MODEL_TYPE);
 		File resultsChainDir = getObjectsDir(RESULTS_CHAIN_TYPE);
@@ -128,7 +129,41 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		}		
 	}
 	
-	private Rectangle getScopeBoxBounds(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
+	public Rectangle getScopeBoxBounds(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
+	{
+		Rectangle targetBounds = getTargetBounds(diagramFactorDir, diagramFactorIdsFromDiagramObject);
+		Rectangle newBounds = new Rectangle(0,0,0,0);
+		if(!targetBounds.equals(newBounds))
+		{
+			Point location = new Point((int)targetBounds.getX() - 2 * DEFAULT_GRID_SIZE, (int)targetBounds.getY()  - SHORT_SCOPE_HEIGHT);
+			location = getSnapped(location);
+			Dimension size = new Dimension((int)targetBounds.getWidth() + 4 * DEFAULT_GRID_SIZE, (int)targetBounds.getHeight() + SHORT_SCOPE_HEIGHT  + 2 * DEFAULT_GRID_SIZE);
+			newBounds = new Rectangle(location, size);
+		}
+		
+		return newBounds;
+	}
+	
+	public Point getSnapped(Point point)
+	{
+		int gridSize = DEFAULT_GRID_SIZE;
+		return new Point(roundTo(point.x, gridSize), roundTo(point.y, gridSize));
+	}
+	
+	int roundTo(int valueToRound, int incrementToRoundTo)
+	{
+		int sign = 1;
+		if(valueToRound < 0)
+			sign = -1;
+		valueToRound = Math.abs(valueToRound);
+		
+		int half = incrementToRoundTo / 2;
+		valueToRound += half;
+		valueToRound -= (valueToRound % incrementToRoundTo);
+		return valueToRound * sign;
+	}
+	
+	private Rectangle getTargetBounds(File diagramFactorDir, IdList diagramFactorIdsFromDiagramObject) throws Exception
 	{
 		Vector<EnhancedJsonObject> targetDiagramFactorJsons = extractTargetDiagramFactorJsons(diagramFactorDir, diagramFactorIdsFromDiagramObject);
 		
@@ -181,9 +216,11 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		if (! diagramFactorManifestFile.exists())
 			throw new RuntimeException("Diagram factor manifest file does not exist.");
 	
+		EnhancedJsonObject diagramFactorManifestJson = readFile(diagramFactorManifestFile);
 		int highestId = DataUpgrader.readHighestIdInProjectFile(getJsonDir());
 		int newScopeBoxDiagramFactorId = ++highestId;
 		DataUpgrader.writeHighestIdToProjectFile(getJsonDir(), newScopeBoxDiagramFactorId);
+		diagramFactorManifestJson.put(Integer.toString(newScopeBoxDiagramFactorId), "true");
 		
 		EnhancedJsonObject scopeBoxDiagramFactorJson = readFile(diagramFactorManifestFile);
 		scopeBoxDiagramFactorJson.put(Integer.toString(newScopeBoxDiagramFactorId), "true");
@@ -200,7 +237,9 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		DataUpgrader.writeJson(diagramObjectJsonFile, diagramObjectJson);
 		
 		File scopeBoxFile = new File(diagramFactorDir, Integer.toString(newScopeBoxDiagramFactorId));
-		DataUpgrader.createFile(scopeBoxFile, scopeBoxJson.toString());		
+		DataUpgrader.createFile(scopeBoxFile, scopeBoxJson.toString());
+		
+		DataUpgrader.writeManifest(diagramFactorDir, diagramFactorManifestJson);
 	}
 		
 	private Rectangle getSafeUnion(Rectangle2D bounds, Rectangle targetBounds)
@@ -270,6 +309,11 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 
 	private String getProjectVision() throws Exception
 	{
+		return getProjectMetadataJson().optString("ProjectVision");
+	}
+
+	private EnhancedJsonObject loadProjectMetadataJson() throws Exception
+	{
 		File projectMetadataDir = getObjectsDir(PROJECT_METADATA_TYPE);
 		if (! projectMetadataDir.exists())
 			throw new RuntimeException("Could not find project metadata folder");
@@ -284,13 +328,18 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 			throw new RuntimeException("Incorrect number of project metadata objects exist. count = " + projectMetadataIds.length);
 		
 		File singletonProjectMetadataFile = new File(projectMetadataDir, projectMetadataIds[0].toString());
-		EnhancedJsonObject projectMetadataJson = new EnhancedJsonObject(readFile(singletonProjectMetadataFile));
-		return projectMetadataJson.optString("ProjectVision");
+		
+		return new EnhancedJsonObject(readFile(singletonProjectMetadataFile));
 	}
 
-	public Vector<EnhancedJsonObject> getAllDiagramFactorJsons()
+	private Vector<EnhancedJsonObject> getAllDiagramFactorJsons()
 	{
 		return allDiagramFactorJsons;
+	}
+	
+	private EnhancedJsonObject getProjectMetadataJson()
+	{
+		return projectMetadataJson;
 	}
 	
 	private EnhancedJsonObject readFile(File file) throws Exception
@@ -317,7 +366,11 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private static final int TARGET_TYPE = 22;
 	private static final int PROJECT_METADATA_TYPE = 11;
 	
+	private static final int DEFAULT_GRID_SIZE = 15;
+	private static final int SHORT_SCOPE_HEIGHT = 27;
+	
 	private Vector<EnhancedJsonObject> allDiagramFactorJsons;
+	private EnhancedJsonObject projectMetadataJson;
 	
 	private final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 }
