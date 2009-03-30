@@ -68,7 +68,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		
 		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
 		BaseId[] allDiagramFactorIds = indicatorManifestObject.getAllKeys();
-		loadAllDiagramFactorJsons(diagramFactorDir, allDiagramFactorIds);
+		allDiagramFactorJsons = loadAllDiagramFactorJsons(diagramFactorDir, allDiagramFactorIds);
 		
 		File conceptualModelDir = getObjectsDir(CONCEPTUAL_MODEL_TYPE);
 		File resultsChainDir = getObjectsDir(RESULTS_CHAIN_TYPE);
@@ -92,15 +92,17 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		createScopeBoxes(resultsChainDir, diagramFactorDir, scopeBoxDir, scopeBoxManifestJson, RESULTS_CHAIN_TYPE);
 	}
 	
-	private void loadAllDiagramFactorJsons(File diagramFactorDir, BaseId[] diagramFactorIds) throws Exception
+	private Vector<EnhancedJsonObject> loadAllDiagramFactorJsons(File diagramFactorDir, BaseId[] diagramFactorIds) throws Exception
 	{
-		allDiagramFactorJsons = new Vector();
+		Vector<EnhancedJsonObject> diagramFactorJsons = new Vector();
 		for (int index = 0; index < diagramFactorIds.length; ++index)
 		{
 			File diagramFactorFile = new File(diagramFactorDir, diagramFactorIds[index].toString());
 			EnhancedJsonObject diagramFactorJson = new EnhancedJsonObject(readFile(diagramFactorFile));
-			allDiagramFactorJsons.add(diagramFactorJson);
+			diagramFactorJsons.add(diagramFactorJson);
 		}
+		
+		return diagramFactorJsons;
 	}
 	
 	private void createScopeBoxes(File diagramObjectDir, File diagramFactorDir, File scopeBoxDir, EnhancedJsonObject scopeBoxManifestJson, final int diagramObjectType) throws Exception
