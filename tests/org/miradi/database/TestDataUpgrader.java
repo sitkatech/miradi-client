@@ -238,7 +238,7 @@ public class TestDataUpgrader extends EAMTestCase
 		{
 			File scopeBoxFile =  new File(scopeBoxDir, scopeBoxKeys[index].toString());
 			EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject(readFile(scopeBoxFile));
-			String details = scopeBoxJson.getString("Details");
+			String details = scopeBoxJson.getString("Text");
 			assertEquals("wrong scope box details?", "some scope Description for migration", details);
 			
 			String label = scopeBoxJson.getString("Label");
