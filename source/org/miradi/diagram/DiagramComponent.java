@@ -55,7 +55,6 @@ import org.miradi.actions.Actions;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.diagram.cells.ScopeBoxCell;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.ComponentWithContextMenu;
 import org.miradi.main.EAM;
@@ -129,11 +128,6 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		{
 			LinkCell linkCell = (LinkCell) cell;
 			return linkCell.getToolTipString();
-		}
-		if (cell instanceof ScopeBoxCell)
-		{
-			ScopeBoxCell scopeBox = (ScopeBoxCell) cell;
-			return scopeBox.getToolTipString();
 		}
 		return null;
 	}
