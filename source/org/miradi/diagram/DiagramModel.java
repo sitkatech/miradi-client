@@ -905,13 +905,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		updateCell(factorCell);
 	}
 
-	public void updateProjectScopeBox()
-	{
-		String newText = getProject().getMetadata().getShortProjectScope();
-		getProjectScopeBox().setText(EAM.text("Project Scope") + ": " + newText);
-		getProjectScopeBox().autoSurroundTargets();
-	}
-
 	public DiagramFactorPool getDiagramFactorPool()
 	{
 		return project.getDiagramFactorPool();
