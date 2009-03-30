@@ -497,10 +497,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 				topLayerCells.add(factorCell);
 		}
 		
-		boolean shouldScopeBoxBeVisible = getLayerManager().isScopeBoxVisible();
-		if(shouldScopeBoxBeVisible != getGraphLayoutCache().isVisible(getProjectScopeBox()))
-			getGraphLayoutCache().setVisible(getProjectScopeBox(), shouldScopeBoxBeVisible);
-		
 		sortLayers();
 	}	
 	
@@ -958,7 +954,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 			cell.autoSurroundChildren();
 		}
 		
-		getProjectScopeBox().autoSurroundTargets();
 		sortLayers();
 	}
 
