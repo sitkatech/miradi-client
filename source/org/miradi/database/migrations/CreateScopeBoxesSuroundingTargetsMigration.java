@@ -189,8 +189,8 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject();
 		scopeBoxJson.put("Id", Integer.toString(newScopeBoxDiagramFactorId));
 		scopeBoxJson.put("WrappedFactorRef", new ORef(SCOPE_BOX_TYPE, newlyCreatedScopeBoxId).toString());
-		scopeBoxJson.put("Size", EnhancedJsonObject.convertFromPoint(scopeBoxBounds.getLocation()));
-		scopeBoxJson.put("Location", EnhancedJsonObject.convertFromDimension(scopeBoxBounds.getSize()));
+		scopeBoxJson.put("Size", EnhancedJsonObject.convertFromDimension(scopeBoxBounds.getSize()));
+		scopeBoxJson.put("Location", EnhancedJsonObject.convertFromPoint(scopeBoxBounds.getLocation()));
 		
 		IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString("DiagramFactorIds"));
 		diagramFactorIds.add(newScopeBoxDiagramFactorId);
