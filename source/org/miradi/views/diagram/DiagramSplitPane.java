@@ -126,7 +126,6 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	private static DiagramComponent createDiagram(MainWindow mainWindow, DiagramModel diagramModel, DiagramObject diagramObject) throws Exception
 	{
 		diagramModel.fillFrom(diagramObject);
-		diagramModel.updateProjectScopeBox();
 		DiagramComponent diagram = new DiagramComponent(mainWindow, diagramModel);
 		diagram.setGraphLayoutCache(diagramModel.getGraphLayoutCache());
 		
