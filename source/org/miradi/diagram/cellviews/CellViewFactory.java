@@ -33,10 +33,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 		// class for all the others, which should include Rectangle, 
 		// RoundedRectangle, Factor, etc.
 		EAMGraphCell eamGraphCell = (EAMGraphCell)cell;
-		if(eamGraphCell.isFactor())
-			return createNodeView(eamGraphCell);
-		
-		return new ProjectScopeView(eamGraphCell);
+		return createNodeView(eamGraphCell);
 	}
 
 	private VertexView createNodeView(EAMGraphCell cell)
