@@ -60,7 +60,16 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		File diagramFactorDir = getObjectsDir(DIAGRAM_FACTOR_TYPE);
 		if (!diagramFactorDir.exists())
 			throw new RuntimeException("There are no diagramFactors.");
-				
+			
+		
+		File diagramFactorManifestFile = new File(diagramFactorDir, "manifest");
+		if (! diagramFactorManifestFile.exists())
+			throw new RuntimeException("no diagram factor manifest exists");
+		
+		ObjectManifest indicatorManifestObject = new ObjectManifest(JSONFile.read(diagramFactorManifestFile));
+		BaseId[] allDiagramFactorIds = indicatorManifestObject.getAllKeys();
+		loadAllDiagramFactorJsons(diagramFactorDir, allDiagramFactorIds);
+		
 		File conceptualModelDir = getObjectsDir(CONCEPTUAL_MODEL_TYPE);
 		File resultsChainDir = getObjectsDir(RESULTS_CHAIN_TYPE);
 		if (!resultsChainDir.exists() && !conceptualModelDir.exists())
@@ -81,6 +90,17 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		
 		createScopeBoxes(conceptualModelDir, diagramFactorDir, scopeBoxDir, scopeBoxManifestJson, CONCEPTUAL_MODEL_TYPE);		
 		createScopeBoxes(resultsChainDir, diagramFactorDir, scopeBoxDir, scopeBoxManifestJson, RESULTS_CHAIN_TYPE);
+	}
+	
+	private void loadAllDiagramFactorJsons(File diagramFactorDir, BaseId[] diagramFactorIds) throws Exception
+	{
+		allDiagramFactorJsons = new Vector();
+		for (int index = 0; index < diagramFactorIds.length; ++index)
+		{
+			File diagramFactorFile = new File(diagramFactorDir, diagramFactorIds[index].toString());
+			EnhancedJsonObject diagramFactorJson = new EnhancedJsonObject(readFile(diagramFactorFile));
+			allDiagramFactorJsons.add(diagramFactorJson);
+		}
 	}
 	
 	private void createScopeBoxes(File diagramObjectDir, File diagramFactorDir, File scopeBoxDir, EnhancedJsonObject scopeBoxManifestJson, final int diagramObjectType) throws Exception
@@ -288,6 +308,8 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private static final int RESULTS_CHAIN_TYPE = 24;
 	private static final int TARGET_TYPE = 22;
 	private static final int PROJECT_METADATA_TYPE = 11;
+	
+	private Vector<EnhancedJsonObject> allDiagramFactorJsons;
 	
 	private final static int VISION_HEIGHT = 2 * MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 }
