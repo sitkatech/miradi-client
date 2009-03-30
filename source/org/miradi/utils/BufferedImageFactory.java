@@ -114,10 +114,6 @@ public  class BufferedImageFactory
 		final double scale = diagram.getScale();
 		final Rectangle unscaledBounds = totalBoundsIgnoringVisibilityOfFactors.getBounds();
 
-		final Rectangle2D scopeBounds = diagram.getDiagramModel().getProjectScopeBox().getBounds();
-		if(scopeBounds != null)
-			Rectangle.union(unscaledBounds, scopeBounds, unscaledBounds);
-
 		Rectangle scaledBounds = new Rectangle(unscaledBounds);
 		scaledBounds.x *= scale;
 		scaledBounds.y *= scale;
