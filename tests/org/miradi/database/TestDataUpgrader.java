@@ -155,7 +155,7 @@ public class TestDataUpgrader extends EAMTestCase
 	//FIXME this test is complete but it is not passing since DataUpgrader is not creating scope boxes.  Just wanting to commit
 	public void testSurroundTargetsWithNewScopeBoxType() throws Exception
 	{
-		String projectMetadataJsonString = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"DiagramOverviewStep\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"some scopDescoption for migration\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"some scopeName for migration\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1238167096013\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		String projectMetadataJsonString = "{\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"BudgetCostMode\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"WhoOverrideRefs\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"SocialContext\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"DiagramOverviewStep\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"OtherOrgRelatedProjects\":\"\",\"ProjectScope\":\"some scope Description for migration\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"BudgetCostOverride\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"WhenOverride\":\"\",\"ShortProjectScope\":\"some scopeName for migration\",\"HumanPopulationNotes\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1238167096013\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
 		
 		String emptyConceptualModelJsonString           = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167098912\",\"DiagramFactorIds\":\"\",\"BudgetCostMode\":\"\",\"Id\":9,\"Label\":\"[Main Diagram]\"}";
 		String targetPopulatedConceptualModelJsonString = "{\"SelectedTaggedObjectSetRefs\":\"\",\"DiagramFactorLinkIds\":\"\",\"BudgetCostOverride\":\"\",\"HiddenTypes\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"\",\"Detail\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1238167109983\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[26,28]}\",\"BudgetCostMode\":\"\",\"Id\":24,\"Label\":\"[Page 1]\"}";
@@ -208,6 +208,7 @@ public class TestDataUpgrader extends EAMTestCase
 		ObjectManifest scopeBoxManifestObject  = new ObjectManifest(JSONFile.read(scopeBoxManifestFile));
 		BaseId[] scopeBoxKeys = scopeBoxManifestObject.getAllKeys();
 		assertEquals("wrong scope box count?", 2, scopeBoxKeys.length);
+		verifyScopeDetailsAndLabel(scopeBoxDir, scopeBoxKeys);
 		
 		File diagramFactorDir = DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_FACTOR_TYPE);
 		File diagramFactorManifestFile = new File(diagramFactorDir, MANIFEST_FILE_NAME);
@@ -229,6 +230,20 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		Rectangle doubleTargetScopeBounds = new Rectangle(840, 120, 180, 192);
 		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithTwoTargets, doubleTargetScopeBounds);
+	}
+
+	private void verifyScopeDetailsAndLabel(File scopeBoxDir,BaseId[] scopeBoxKeys) throws Exception
+	{
+		for (int index = 0; index < scopeBoxKeys.length; ++index)
+		{
+			File scopeBoxFile =  new File(scopeBoxDir, scopeBoxKeys[index].toString());
+			EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject(readFile(scopeBoxFile));
+			String details = scopeBoxJson.getString("Details");
+			assertEquals("wrong scope box details?", "some scope Description for migration", details);
+			
+			String label = scopeBoxJson.getString("Label");
+			assertEquals("wrong scope box label?", "some scopeName for migration", label);
+		}
 	}
 
 	private void verifyNewlyCreatedScopeBoxBounds(Vector<EnhancedJsonObject> singleScopeBoxJsonList, Rectangle expectedScopeBounds)	throws Exception
