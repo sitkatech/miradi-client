@@ -225,10 +225,10 @@ public class TestDataUpgrader extends EAMTestCase
 		Vector<EnhancedJsonObject> jsonListForScopeBoxWithOneTarget = extractScopeBoxeDiagramFactors(jsonDir,	resultsChainRawIds[0]   , RESULTS_CHAIN_TYPE   , DIAGRAM_FACTOR_TYPE, SCOPE_BOX_TYPE);
 		assertEquals("diagram object contains no scope box?", 1, jsonListForScopeBoxWithOneTarget.size());
 
-		Rectangle singleTargetWrappedByGroupBoxScopeBounds = new Rectangle(825, 60, 210, 217);
+		Rectangle singleTargetWrappedByGroupBoxScopeBounds = new Rectangle(825, 90, 210, 177);
 		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithOneTarget, singleTargetWrappedByGroupBoxScopeBounds);
 		
-		Rectangle doubleTargetScopeBounds = new Rectangle(840, 90, 180, 232);
+		Rectangle doubleTargetScopeBounds = new Rectangle(840, 120, 180, 192);
 		verifyNewlyCreatedScopeBoxBounds(jsonListForScopeBoxWithTwoTargets, doubleTargetScopeBounds);
 	}
 
