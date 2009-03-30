@@ -202,6 +202,9 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		
 		EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject();
 		scopeBoxJson.put("Id", Integer.toString(newScopeBoxId));
+		scopeBoxJson.put("Label", getShortScope());
+		scopeBoxJson.put("Details", getScope());
+		
 		File scopeBoxFile = new File(scopeBoxDir, Integer.toString(newScopeBoxId));
 		DataUpgrader.createFile(scopeBoxFile, scopeBoxJson.toString());
 		
@@ -310,6 +313,16 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private String getProjectVision() throws Exception
 	{
 		return getProjectMetadataJson().optString("ProjectVision");
+	}
+	
+	private String getShortScope()
+	{
+		return getProjectMetadataJson().optString("ShortProjectScope");
+	}
+	
+	private String getScope()
+	{
+		return getProjectMetadataJson().optString("ProjectScope");
 	}
 
 	private EnhancedJsonObject loadProjectMetadataJson() throws Exception
