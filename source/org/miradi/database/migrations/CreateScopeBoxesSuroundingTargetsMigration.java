@@ -195,7 +195,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject();
 		scopeBoxJson.put("Id", Integer.toString(newScopeBoxId));
 		scopeBoxJson.put("Label", getShortScope());
-		scopeBoxJson.put("Details", getScope());
+		scopeBoxJson.put("Text", getScope());
 		
 		File scopeBoxFile = new File(scopeBoxDir, Integer.toString(newScopeBoxId));
 		DataUpgrader.createFile(scopeBoxFile, scopeBoxJson.toString());
