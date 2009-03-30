@@ -870,7 +870,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			DiagramModel model = diagramComponents[i].getDiagramModel();
 			updateFactorBoundsIfRelevant(model, cmd);
 			updateFactorLinkIfRelevant(model, cmd);
-			updateScopeIfNeeded(model, cmd);
 			refreshIfNeeded(diagramComponents[i], cmd);
 		}
 	}
