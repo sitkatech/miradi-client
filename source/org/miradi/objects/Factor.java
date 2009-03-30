@@ -223,6 +223,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.TASK)
 			return true;
 
+		if (typeToUse == ObjectType.SCOPE_BOX)
+			return true;
+		
 		return false;
 	}
 
