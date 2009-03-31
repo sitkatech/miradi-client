@@ -34,6 +34,7 @@ import org.martus.util.DirectoryLock;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
+import org.miradi.database.migrations.CreateScopeBoxesSuroundingTargetsMigration;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.ids.BaseId;
@@ -225,10 +226,9 @@ public class DataUpgrader
 
 	public void upgradeToVersion40() throws Exception
 	{
-		//FIXME currently this migration is turned off, still under contruction and its test is failing
-		//CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(getTopJsonDir());
-		//migration.surroundTargetsWithNewScopeBoxType();		
-		//writeLocalVersion(getTopDirectory(), 40);
+		CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(getTopJsonDir());
+		migration.surroundTargetsWithNewScopeBoxType();		
+		writeLocalVersion(getTopDirectory(), 40);
 	}
 
 	public void upgradeToVersion39() throws Exception
