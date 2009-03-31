@@ -1528,12 +1528,12 @@ public class DataUpgrader
 
 	private static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
-		projectServer.writeLocalDataVersion(projectDirectory, versionToWrite);
+		getProjectServer().writeLocalDataVersion(projectDirectory, versionToWrite);
 	}
 
 	private static int readDataVersion(File projectDirectory) throws Exception
 	{
-		return projectServer.readLocalDataVersion(projectDirectory);
+		return getProjectServer().readLocalDataVersion(projectDirectory);
 	}
 
 	public static void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception
@@ -1751,6 +1751,11 @@ public class DataUpgrader
 	public static File getTopDirectory()
 	{
 		return topDirectory;
+	}
+	
+	public static ProjectServer getProjectServer()
+	{
+		return projectServer;
 	}
 
 	private static ProjectServer projectServer;
