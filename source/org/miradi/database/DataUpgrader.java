@@ -224,43 +224,43 @@ public class DataUpgrader
 		}			
 	}
 	
-	public void upgradeToVersion40() throws Exception
+	public static void upgradeToVersion40() throws Exception
 	{
 		CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(getTopJsonDir());
 		migration.surroundTargetsWithNewScopeBoxType();		
 		writeLocalVersion(getTopDirectory(), 40);
 	}
 
-	public void upgradeToVersion39() throws Exception
+	public static void upgradeToVersion39() throws Exception
 	{
 		enableThreats();
 		writeLocalVersion(getTopDirectory(), 39);
 	}
 
-	public void upgradeToVersion38() throws Exception
+	public static void upgradeToVersion38() throws Exception
 	{
 		moveFactorLinkCommentFieldsIntoThreatRatingCommentsData();
 		writeLocalVersion(getTopDirectory(), 38);
 	}
 	
-	public void upgradeToVersion37() throws Exception
+	public static void upgradeToVersion37() throws Exception
 	{
 		addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks();
 		writeLocalVersion(getTopDirectory(), 37);
 	}
 
-	public void upgradeToVersion36() throws Exception
+	public static void upgradeToVersion36() throws Exception
 	{
 		writeLocalVersion(getTopDirectory(), 36);
 	}
 	
-	public void upgradeToVersion35() throws Exception
+	public static void upgradeToVersion35() throws Exception
 	{
 		moveFactorsToSpecificDirs();
 		writeLocalVersion(getTopDirectory(), 35);
 	}
 	
-	public void upgradeToVersion34() throws Exception
+	public static void upgradeToVersion34() throws Exception
 	{
 		while(deleteOrphanedTasks() > 0)
 		{
@@ -269,7 +269,7 @@ public class DataUpgrader
 		writeLocalVersion(getTopDirectory(), 34);
 	}
 	
-	private void upgradeToVersion33() throws Exception
+	private static void upgradeToVersion33() throws Exception
 	{
 		boolean isNonBlankEcoRegions = copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions(); 
 		if (isNonBlankEcoRegions)
@@ -279,7 +279,7 @@ public class DataUpgrader
 		writeLocalVersion(getTopDirectory(), 33);
 	}
 	
-	private void upgradeToVersion32() throws Exception
+	private static void upgradeToVersion32() throws Exception
 	{
 		boolean isNonBlankOperatingUnit = copyTncOperatingUnitsFieldDataOverToNewPickListField();
 		if (isNonBlankOperatingUnit)
@@ -289,25 +289,25 @@ public class DataUpgrader
 		writeLocalVersion(getTopDirectory(), 32);
 	}
 	
-	private void upgradeToVersion31() throws Exception
+	private static void upgradeToVersion31() throws Exception
 	{
 		copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
 		writeLocalVersion(getTopDirectory(), 31);	
 	}
 	
-	private void upgradeToVersion30() throws Exception
+	private static void upgradeToVersion30() throws Exception
 	{
 		notifyIfNonBlankTncCountryCode();
 		writeLocalVersion(getTopDirectory(), 30);	
 	}
 	
-	public void upgradeToVersion29() throws Exception
+	public static void upgradeToVersion29() throws Exception
 	{
 		copyWwfProjectDataCountriesFieldOverToProjectMetaData();
 		writeLocalVersion(getTopDirectory(), 29);
 	}
 	
-	public void upgradeToVersion28() throws Exception
+	public static void upgradeToVersion28() throws Exception
 	{
 		EAM.notifyDialog(EAM.text("<html>" +
 				"Miradi now allows you to specify what currency is being used for budgeting, " +
@@ -327,80 +327,80 @@ public class DataUpgrader
 		writeLocalVersion(getTopDirectory(), 28);
 	}
 	
-	public void upgradeToVersion27() throws Exception
+	public static void upgradeToVersion27() throws Exception
 	{
 		removeDuplicateBendPoints();
 		writeLocalVersion(getTopDirectory(), 27);
 	}
 	
-	public void upgradeToVersion26() throws Exception
+	public static void upgradeToVersion26() throws Exception
 	{
 		notifyUserOfDeletedDuratingAndCostFields();
 		writeLocalVersion(getTopDirectory(), 26);
 	}
 	
-	public void upgradeToVersion25() throws Exception
+	public static void upgradeToVersion25() throws Exception
 	{
 		createThreatStressRatingsForTargetThreatLinks();
 		writeLocalVersion(getTopDirectory(), 25);
 	}
 	
-	public void upgradeToVersion24() throws Exception
+	public static void upgradeToVersion24() throws Exception
 	{
 		createdStressesFromFactorLinks();
 		writeLocalVersion(getTopDirectory(), 24);
 	}
 	
-	public void upgradeToVersion23() throws Exception
+	public static void upgradeToVersion23() throws Exception
 	{ 
 		createMeasurementFromDataInIndicator();
 		writeLocalVersion(getTopDirectory(), 23);
 	}
 	
-	public void upgradeToVersion22() throws Exception
+	public static void upgradeToVersion22() throws Exception
 	{
 		switchDiagramFactorWrappedIdsToRefs();
 		writeLocalVersion(getTopDirectory(), 22);
 	}
 	
-	public void upgradeToVersion21() throws Exception
+	public static void upgradeToVersion21() throws Exception
 	{
 		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDiagramsWhereNeeded();
 		writeLocalVersion(getTopDirectory(), 21);
 	}
 
-	public void upgradeToVersion20() throws Exception
+	public static void upgradeToVersion20() throws Exception
 	{
 		changeLinkFromToIdsToORefs();
 		writeLocalVersion(getTopDirectory(), 20);
 	}
 	
-	public void upgradeToVersion19() throws Exception
+	public static void upgradeToVersion19() throws Exception
 	{
 		possiblyNotifyUserAfterUpgradingToVersion19();
 		writeLocalVersion(getTopDirectory(), 19);
 	}
 	
-	public void upgradeToVersion18() throws Exception
+	public static void upgradeToVersion18() throws Exception
 	{
 		addLinksToDiagramContentsObject();
 		writeLocalVersion(getTopDirectory(), 18);
 	}
 	
-	public void upgradeToVersion17() throws Exception
+	public static void upgradeToVersion17() throws Exception
 	{
 		createObject19DirAndFillFromDiagram();
 		writeLocalVersion(getTopDirectory(), 17);
 	}
 
-	public void upgradeToVersion16() throws Exception
+	public static void upgradeToVersion16() throws Exception
 	{
 		HashMap mappedFactorIds = createDiagramFactorsFromRawFactors();
 		createDiagramFactorLinksFromRawFactorLinks(mappedFactorIds);
 		writeLocalVersion(getTopDirectory(), 16);
 	}
 	
-	private void enableThreats() throws Exception
+	private static void enableThreats() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		final int FACTOR_LINK_TYPE = 6;
@@ -435,7 +435,7 @@ public class DataUpgrader
 		}
 	}
 	
-	private void moveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
+	private static void moveFactorLinkCommentFieldsIntoThreatRatingCommentsData() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		final int FACTOR_LINK_TYPE = 6;
@@ -503,13 +503,13 @@ public class DataUpgrader
 		writeJsonFile(threatRatingCommentsDataFile, threatRatingCommentsDataJson);
 	}
 
-	private void writeJsonFile(File file, JSONObject json) throws IOException
+	private static void writeJsonFile(File file, JSONObject json) throws IOException
 	{
 		file.getParentFile().mkdirs();
 		JSONFile.write(file, json);
 	}
 
-	private void createEmptySingletonThreatRatingCommentsDataObject(File threatRatingCommentsDataDir, EnhancedJsonObject threatRatingCommentsDataManifestJson, File jsonDir) throws Exception
+	private static void createEmptySingletonThreatRatingCommentsDataObject(File threatRatingCommentsDataDir, EnhancedJsonObject threatRatingCommentsDataManifestJson, File jsonDir) throws Exception
 	{
 		int highestId = readHighestIdInProjectFile(jsonDir);
 		int id = ++highestId;
@@ -526,13 +526,13 @@ public class DataUpgrader
 		writeManifest(threatRatingCommentsDataDir, threatRatingCommentsDataManifestJson);
 	}
 	
-	private void removeCommentsField(File factorLinkJsonFile, EnhancedJsonObject factorLinkJson, String commentsField) throws Exception
+	private static void removeCommentsField(File factorLinkJsonFile, EnhancedJsonObject factorLinkJson, String commentsField) throws Exception
 	{
 		factorLinkJson.remove(commentsField);
 		writeJson(factorLinkJsonFile, factorLinkJson);
 	}
 	
-	private String createThreatRatingCommentsKey(EnhancedJsonObject factorLinkJson)
+	private static String createThreatRatingCommentsKey(EnhancedJsonObject factorLinkJson)
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
 		ORef toRef = factorLinkJson.getRef("ToRef");
@@ -542,7 +542,7 @@ public class DataUpgrader
 		return fromRef.toString() + toRef.toString();
 	}
 	
-	private void addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
+	private static void addThreatRefAndRemoveThreatStressRatingRefsFromFactorLinks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		final int FACTOR_LINK_TYPE = 6;
@@ -579,7 +579,7 @@ public class DataUpgrader
 		}
 	}
 	
-	private void addThreatRefToThreatStressRatings(File threatStressRatingDir,EnhancedJsonObject factorLinkJson, ORef threatRef) throws Exception
+	private static void addThreatRefToThreatStressRatings(File threatStressRatingDir,EnhancedJsonObject factorLinkJson, ORef threatRef) throws Exception
 	{
 		ORefList threatStressRatingRefsForLink = factorLinkJson.optRefList("ThreatStressRatingRefs");
 		for (int index = 0; index < threatStressRatingRefsForLink.size(); ++index)
@@ -592,7 +592,7 @@ public class DataUpgrader
 		}
 	}
 	
-	private void removeThreatStressRatingField(File factorLinkJsonFile, EnhancedJsonObject factorLinkJson) throws Exception
+	private static void removeThreatStressRatingField(File factorLinkJsonFile, EnhancedJsonObject factorLinkJson) throws Exception
 	{
 		factorLinkJson.remove("ThreatStressRatingRefs");
 		writeJson(factorLinkJsonFile, factorLinkJson);
@@ -637,7 +637,7 @@ public class DataUpgrader
 		return true;
 	}
 
-	private void moveFactorsToSpecificDirs() throws Exception
+	private static void moveFactorsToSpecificDirs() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		final int FACTOR_TYPE = 4;
@@ -673,7 +673,7 @@ public class DataUpgrader
 		}
 	}
 	
-	private void copyFactorToDir(File factorDir, File factorManifestFile, File objectDir, String typeName) throws Exception
+	private static void copyFactorToDir(File factorDir, File factorManifestFile, File objectDir, String typeName) throws Exception
 	{
 		EnhancedJsonObject manifestJson = new EnhancedJsonObject();
 		manifestJson.put("Type", "ObjectManifest");
@@ -703,7 +703,7 @@ public class DataUpgrader
 		writeJson(targetManifestFile, manifestJson);
 	}
 
-	private  int deleteOrphanedTasks() throws Exception
+	private  static int deleteOrphanedTasks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
@@ -743,7 +743,7 @@ public class DataUpgrader
 		return orphandIdsAsInts.length;
 	}
 
-	private HashSet<BaseId> getTaskIds(File jsonDir) throws Exception
+	private static HashSet<BaseId> getTaskIds(File jsonDir) throws Exception
 	{
 		File indicatorDir = getObjectsDir(jsonDir, 8);
 		if (! indicatorDir.exists())
@@ -756,7 +756,7 @@ public class DataUpgrader
 		return getTaskChildren(indicatorDir, indicatorManifestFile, "TaskIds");
 	}
 
-	private HashSet<BaseId> getActivityIds(File jsonDir) throws Exception
+	private static HashSet<BaseId> getActivityIds(File jsonDir) throws Exception
 	{
 		File strategyDir = getObjectsDir(jsonDir, 4);
 		if (! strategyDir.exists())
@@ -770,7 +770,7 @@ public class DataUpgrader
 	}
 
 	
-	private HashSet<BaseId> getTaskChildren(File parentDir, File manifestFile, String taskIdsTag) throws Exception
+	private static HashSet<BaseId> getTaskChildren(File parentDir, File manifestFile, String taskIdsTag) throws Exception
 	{
 		final int TASK_TYPE = 3;
 		HashSet<BaseId> taskIds = new HashSet();
@@ -788,7 +788,7 @@ public class DataUpgrader
 		return taskIds;
 	}
 
-	public boolean copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions() throws Exception
+	public static boolean copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
@@ -830,7 +830,7 @@ public class DataUpgrader
 		return (oldEcorRegionsString.length() > 0);		
 	}
 
-	private CodeList findEcoRegionCodes(String[] oldEcoRegions, TwoLevelQuestion question)
+	private static CodeList findEcoRegionCodes(String[] oldEcoRegions, TwoLevelQuestion question)
 	{
 		CodeList newCodes = new CodeList();
 		for (int i = 0; i < oldEcoRegions.length; ++i)
@@ -843,7 +843,7 @@ public class DataUpgrader
 		return newCodes;
 	}
 
-	public boolean copyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
+	public static boolean copyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
@@ -878,7 +878,7 @@ public class DataUpgrader
 		return (oldOperatingUnitsAsString.length() > 0);
 	}
 
-	public void copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField() throws Exception
+	public static void copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
@@ -905,7 +905,7 @@ public class DataUpgrader
 		writeJson(projectMetaDataFile, projectMetaDataJson);
 	}
 
-	private void notifyIfNonBlankTncCountryCode() throws Exception
+	private static void notifyIfNonBlankTncCountryCode() throws Exception
 	{
 		if (isTncCountryCodeBlank())
 			return;
@@ -913,7 +913,7 @@ public class DataUpgrader
 		EAM.notifyDialog("<HTML>The Country field on the TNC tab has been replaced by a Countries <BR>field on the Location tab. Please ensure that the new Countries field is correct for this project.</HTML>");
 	}
 
-	public boolean isTncCountryCodeBlank() throws Exception
+	public static boolean isTncCountryCodeBlank() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File projectMetaDataDir = getObjectsDir(jsonDir, 11);
@@ -939,7 +939,7 @@ public class DataUpgrader
 		return false;
 	}
 
-	private void copyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
+	private static void copyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File wwfProjectDataDir = getObjectsDir(jsonDir, 30);
@@ -981,7 +981,7 @@ public class DataUpgrader
 		writeJson(projectMetaDataFile, projectMetaDataJson);
 	}
 
-	private void removeDuplicateBendPoints() throws Exception
+	private static void removeDuplicateBendPoints() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File diagramLinkDir = getObjects13DiagramLinkDir(jsonDir);
@@ -1009,7 +1009,7 @@ public class DataUpgrader
 		}
 	}
 
-	private PointList omitDuplicateBendPoints(PointList bendPoints) throws Exception
+	private static PointList omitDuplicateBendPoints(PointList bendPoints) throws Exception
 	{
 		
 		PointList nonDuplicates = new PointList();
@@ -1023,7 +1023,7 @@ public class DataUpgrader
 		return nonDuplicates;
 	}
 
-	private void notifyUserOfDeletedDuratingAndCostFields()
+	private static void notifyUserOfDeletedDuratingAndCostFields()
 	{
 		EAM.notifyDialog(EAM.text("<html>" +
 				"This version of Miradi has changed the Strategy rating options.<br>" +
@@ -1033,7 +1033,7 @@ public class DataUpgrader
 				"Please review your Strategy ratings to ensure they are appropriate."));
 	}
 
-	private void createThreatStressRatingsForTargetThreatLinks() throws Exception
+	private static void createThreatStressRatingsForTargetThreatLinks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File factorLinkDir = getObjects6FactorLinkDir(jsonDir);
@@ -1077,7 +1077,7 @@ public class DataUpgrader
 		writeJson(manifestFile, threatStressRatingManifestJson);
 	}
 
-	private ORefList createThreatStressRatings(File threatStressRatingDir, ORefList stressRefs, EnhancedJsonObject threatStressRatingManifestJson, File jsonDir) throws Exception
+	private static ORefList createThreatStressRatings(File threatStressRatingDir, ORefList stressRefs, EnhancedJsonObject threatStressRatingManifestJson, File jsonDir) throws Exception
 	{
 		int highestId = readHighestIdInProjectFile(jsonDir);
 		ORefList threatStressRatingRefs = new ORefList();
@@ -1098,7 +1098,7 @@ public class DataUpgrader
 		return threatStressRatingRefs;
 	}
 
-	private void createdStressesFromFactorLinks() throws Exception
+	private static void createdStressesFromFactorLinks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File factorLinkDir = getObjects6FactorLinkDir(jsonDir);
@@ -1154,7 +1154,7 @@ public class DataUpgrader
 		writeJson(manifestFile, stressManifestJson);
 	}
 
-	private ORef getTargetEnd(EnhancedJsonObject factorLinkJson)
+	private static ORef getTargetEnd(EnhancedJsonObject factorLinkJson)
 	{
 		ORef targetEnd = getPossibleTargetEnd(factorLinkJson);
 		if (!targetEnd.isInvalid())
@@ -1163,7 +1163,7 @@ public class DataUpgrader
 		throw new RuntimeException("Link does not link to target");
 	}
 
-	private ORef getPossibleTargetEnd(EnhancedJsonObject factorLinkJson)
+	private static ORef getPossibleTargetEnd(EnhancedJsonObject factorLinkJson)
 	{
 		ORef fromRef = factorLinkJson.getRef("FromRef");
 		ORef toRef = factorLinkJson.getRef("ToRef");
@@ -1176,7 +1176,7 @@ public class DataUpgrader
 		return ORef.INVALID;
 	}
 
-	private void createMeasurementFromDataInIndicator() throws Exception
+	private static void createMeasurementFromDataInIndicator() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
@@ -1240,7 +1240,7 @@ public class DataUpgrader
 		writeJson(manifestFile, measurementManifestJson);
 	}
 
-	private void switchDiagramFactorWrappedIdsToRefs() throws Exception
+	private static void switchDiagramFactorWrappedIdsToRefs() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
@@ -1279,7 +1279,7 @@ public class DataUpgrader
 		}
 	}
 
-	public void changeLinkFromToIdsToORefs() throws Exception
+	public static void changeLinkFromToIdsToORefs() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
@@ -1314,7 +1314,7 @@ public class DataUpgrader
 		}
 	}
 
-	private Vector getAllFactorManifestFiles(File jsonDir) throws Exception
+	private static Vector getAllFactorManifestFiles(File jsonDir) throws Exception
 	{
 		Vector allManifestFiles = new Vector();
 		int[] typesToConsider = getAllFactorTypes();
@@ -1334,7 +1334,7 @@ public class DataUpgrader
 		return allManifestFiles;
 	}
 
-	private Vector getAllFactorTypeDirs(File jsonDir)
+	private static Vector getAllFactorTypeDirs(File jsonDir)
 	{
 		Vector allFactorTypeDirs = new Vector();
 		int[] typesToConsider = getAllFactorTypes();
@@ -1350,12 +1350,12 @@ public class DataUpgrader
 		return allFactorTypeDirs;
 	}
 	
-	private int[] getAllFactorTypes()
+	private static int[] getAllFactorTypes()
 	{
 		return new int[] {ObjectType.FACTOR, ObjectType.TARGET, ObjectType.STRATEGY, ObjectType.CAUSE, ObjectType.INTERMEDIATE_RESULT, ObjectType.THREAT_REDUCTION_RESULT, ObjectType.TEXT_BOX, ObjectType.GROUP_BOX};
 	}
 	
-	private ORef getORefForFactorId(Vector allFactorTypeDirs, Vector allManifestFiles, BaseId id) throws Exception
+	private static ORef getORefForFactorId(Vector allFactorTypeDirs, Vector allManifestFiles, BaseId id) throws Exception
 	{
 		for (int i = 0; i < allFactorTypeDirs.size(); ++i)
 		{
@@ -1375,7 +1375,7 @@ public class DataUpgrader
 		return ORef.INVALID;
 	}
 
-	private ORef getORefFromId(File factorDir, BaseId id) throws Exception
+	private static ORef getORefFromId(File factorDir, BaseId id) throws Exception
 	{
 		File factorFile = new File(factorDir, Integer.toString(id.asInt()));
 		JSONObject factorJson = JSONFile.read(factorFile);
@@ -1384,7 +1384,7 @@ public class DataUpgrader
 		return new ORef(type, id);
 	}
 
-	private void possiblyNotifyUserAfterUpgradingToVersion19() throws Exception
+	private static void possiblyNotifyUserAfterUpgradingToVersion19() throws Exception
 	{
 		BaseId[] newGoalIds = removeGoalsFromIndicators(); 
 		if (newGoalIds.length > 0)
@@ -1395,7 +1395,7 @@ public class DataUpgrader
 		}
 	}
 	
-	public BaseId[] removeGoalsFromIndicators() throws Exception
+	public static BaseId[] removeGoalsFromIndicators() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
@@ -1444,7 +1444,7 @@ public class DataUpgrader
 		return newGoalIds;
 	}
 
-	private BaseId[] removeGoalIdsFoundInIndicators(IdList goalIdsToBeRemoved, BaseId[] allGoalIds)
+	private static BaseId[] removeGoalIdsFoundInIndicators(IdList goalIdsToBeRemoved, BaseId[] allGoalIds)
 	{
 		Vector newGoalIds = new Vector();
 		for (int i = 0; i < allGoalIds.length; ++i)
@@ -1457,7 +1457,7 @@ public class DataUpgrader
 		return (BaseId[]) newGoalIds.toArray(new BaseId[0]);
 	}
 	
-	private void addLinksToDiagramContentsObject() throws Exception
+	private static void addLinksToDiagramContentsObject() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		
@@ -1490,7 +1490,7 @@ public class DataUpgrader
 		writeJson(onlyFile, readInOnlyFile);
 	}
 
-	private void createObject19DirAndFillFromDiagram() throws Exception
+	private static void createObject19DirAndFillFromDiagram() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File objects19Dir = new File(jsonDir, "objects-19");
@@ -1526,17 +1526,17 @@ public class DataUpgrader
 		writeJson(idFile, readIn);
 	}
 
-	private void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
+	private static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
 		projectServer.writeLocalDataVersion(projectDirectory, versionToWrite);
 	}
 
-	private int readDataVersion(File projectDirectory) throws Exception
+	private static int readDataVersion(File projectDirectory) throws Exception
 	{
 		return projectServer.readLocalDataVersion(projectDirectory);
 	}
 
-	public void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception
+	public static void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File objects13Dir = new File(jsonDir, "objects-13");
@@ -1585,7 +1585,7 @@ public class DataUpgrader
 		writeHighestIdToProjectFile(jsonDir, highestId);
 	}
 
-	public HashMap createDiagramFactorsFromRawFactors() throws Exception
+	public static HashMap createDiagramFactorsFromRawFactors() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
 		File objects18Dir = new File(jsonDir, "objects-18");
@@ -1656,7 +1656,7 @@ public class DataUpgrader
 		writeJson(projectFile, readIn);
 	}
 
-	private Object getPointAsString(EnhancedJsonObject locationJson)
+	private static Object getPointAsString(EnhancedJsonObject locationJson)
 	{
 		int x = locationJson.getInt("X");
 		int y = locationJson.getInt("Y");
@@ -1665,7 +1665,7 @@ public class DataUpgrader
 		return EnhancedJsonObject.convertFromPoint(point);
 	}
 
-	private String getDimensionAsString(EnhancedJsonObject sizeJson)
+	private static String getDimensionAsString(EnhancedJsonObject sizeJson)
 	{
 		int width = sizeJson.getInt("Width");
 		int height = sizeJson.getInt("Height");
@@ -1723,36 +1723,36 @@ public class DataUpgrader
 		return new File(jsonDir, "objects-" + type);
 	}
 	
-	private File getTopJsonDir()
+	private static File getTopJsonDir()
 	{
 		return new File(topDirectory, "json");
 	}
 	
-	private File getObjects6FactorLinkDir(File jsonDir)
+	private static File getObjects6FactorLinkDir(File jsonDir)
 	{
 		return new File(jsonDir, "objects-6");
 	}
 	
-	private File getObject33StresDir(File jsonDir)
+	private static File getObject33StresDir(File jsonDir)
 	{
 		return new File(jsonDir, "objects-33");
 	}
 	
-	private File getObjects4TargetDir(File jsonDir)
+	private static File getObjects4TargetDir(File jsonDir)
 	{
 		return new File(jsonDir, "objects-4");
 	}
 	
-	private File getObjects13DiagramLinkDir(File jsonDir)
+	private static File getObjects13DiagramLinkDir(File jsonDir)
 	{
 		return new File(jsonDir, "objects-13");
 	}
 	
-	public File getTopDirectory()
+	public static File getTopDirectory()
 	{
 		return topDirectory;
 	}
 
-	private ProjectServer projectServer;
-	private File topDirectory;
+	private static ProjectServer projectServer;
+	private static File topDirectory;
 }
