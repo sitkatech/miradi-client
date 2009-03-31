@@ -242,7 +242,7 @@ public class TestDataUpgrader extends EAMTestCase
 			assertEquals("wrong scope box details?", "some scope Description for migration", details);
 			
 			String label = scopeBoxJson.getString("Label");
-			assertEquals("wrong scope box label?", "some scopeName for migration", label);
+			assertEquals("wrong scope box label?", "Project Scope :some scopeName for migration", label);
 		}
 	}
 
