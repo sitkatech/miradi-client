@@ -224,15 +224,6 @@ public class DataUpgrader
 		}			
 	}
 	
-	public void upgradeToVersion34() throws Exception
-	{
-		while(deleteOrphanedTasks() > 0)
-		{
-		}
-		
-		writeLocalVersion(getTopDirectory(), 34);
-	}
-
 	public void upgradeToVersion40() throws Exception
 	{
 		CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(getTopJsonDir());
@@ -267,6 +258,15 @@ public class DataUpgrader
 	{
 		moveFactorsToSpecificDirs();
 		writeLocalVersion(getTopDirectory(), 35);
+	}
+	
+	public void upgradeToVersion34() throws Exception
+	{
+		while(deleteOrphanedTasks() > 0)
+		{
+		}
+		
+		writeLocalVersion(getTopDirectory(), 34);
 	}
 
 	private void enableThreats() throws Exception
