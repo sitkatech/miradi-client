@@ -294,7 +294,112 @@ public class DataUpgrader
 		copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
 		writeLocalVersion(getTopDirectory(), 31);	
 	}
+	
+	private void upgradeToVersion30() throws Exception
+	{
+		notifyIfNonBlankTncCountryCode();
+		writeLocalVersion(getTopDirectory(), 30);	
+	}
+	
+	public void upgradeToVersion29() throws Exception
+	{
+		copyWwfProjectDataCountriesFieldOverToProjectMetaData();
+		writeLocalVersion(getTopDirectory(), 29);
+	}
+	
+	public void upgradeToVersion28() throws Exception
+	{
+		EAM.notifyDialog(EAM.text("<html>" +
+				"Miradi now allows you to specify what currency is being used for budgeting, " +
+				"<br>and to specify Fiscal Years that are different from Calendar Years." +
+				"<br>Both of these options can be changed in the Summary View, on the Planning Settings tab." +
+				"<br>" +
+				"<br>The default currency is United States dollars; the default calendar is " +
+				"<br>to have fiscal years equal to calendar years" +
+				"<br>" +
+				"<br>If your fiscal year does not run January-December, and if you have entered " +
+				"<br>budget data into Miradi treating calendar years as fiscal years, your data may appear " +
+				"<br>off by one or more quarters. If you have a lot of budget data like this, please contact " +
+				"<br>the Miradi team to learn about options for realigning it to match your " +
+				"<br>fiscal year." +
+				""
+				));
+		writeLocalVersion(getTopDirectory(), 28);
+	}
+	
+	public void upgradeToVersion27() throws Exception
+	{
+		removeDuplicateBendPoints();
+		writeLocalVersion(getTopDirectory(), 27);
+	}
+	
+	public void upgradeToVersion26() throws Exception
+	{
+		notifyUserOfDeletedDuratingAndCostFields();
+		writeLocalVersion(getTopDirectory(), 26);
+	}
+	
+	public void upgradeToVersion25() throws Exception
+	{
+		createThreatStressRatingsForTargetThreatLinks();
+		writeLocalVersion(getTopDirectory(), 25);
+	}
+	
+	public void upgradeToVersion24() throws Exception
+	{
+		createdStressesFromFactorLinks();
+		writeLocalVersion(getTopDirectory(), 24);
+	}
+	
+	public void upgradeToVersion23() throws Exception
+	{ 
+		createMeasurementFromDataInIndicator();
+		writeLocalVersion(getTopDirectory(), 23);
+	}
+	
+	public void upgradeToVersion22() throws Exception
+	{
+		switchDiagramFactorWrappedIdsToRefs();
+		writeLocalVersion(getTopDirectory(), 22);
+	}
+	
+	public void upgradeToVersion21() throws Exception
+	{
+		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDiagramsWhereNeeded();
+		writeLocalVersion(getTopDirectory(), 21);
+	}
 
+	public void upgradeToVersion20() throws Exception
+	{
+		changeLinkFromToIdsToORefs();
+		writeLocalVersion(getTopDirectory(), 20);
+	}
+	
+	public void upgradeToVersion19() throws Exception
+	{
+		possiblyNotifyUserAfterUpgradingToVersion19();
+		writeLocalVersion(getTopDirectory(), 19);
+	}
+	
+	public void upgradeToVersion18() throws Exception
+	{
+		addLinksToDiagramContentsObject();
+		writeLocalVersion(getTopDirectory(), 18);
+	}
+	
+	public void upgradeToVersion17() throws Exception
+	{
+		createObject19DirAndFillFromDiagram();
+		writeLocalVersion(getTopDirectory(), 17);
+	}
+
+	public void upgradeToVersion16() throws Exception
+	{
+		HashMap mappedFactorIds = createDiagramFactorsFromRawFactors();
+		createDiagramFactorLinksFromRawFactorLinks(mappedFactorIds);
+		writeLocalVersion(getTopDirectory(), 16);
+	}
+	
 	private void enableThreats() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -800,12 +905,6 @@ public class DataUpgrader
 		writeJson(projectMetaDataFile, projectMetaDataJson);
 	}
 
-	private void upgradeToVersion30() throws Exception
-	{
-		notifyIfNonBlankTncCountryCode();
-		writeLocalVersion(getTopDirectory(), 30);	
-	}
-
 	private void notifyIfNonBlankTncCountryCode() throws Exception
 	{
 		if (isTncCountryCodeBlank())
@@ -838,12 +937,6 @@ public class DataUpgrader
 			return true;
 		
 		return false;
-	}
-
-	public void upgradeToVersion29() throws Exception
-	{
-		copyWwfProjectDataCountriesFieldOverToProjectMetaData();
-		writeLocalVersion(getTopDirectory(), 29);
 	}
 
 	private void copyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
@@ -888,32 +981,6 @@ public class DataUpgrader
 		writeJson(projectMetaDataFile, projectMetaDataJson);
 	}
 
-	public void upgradeToVersion28() throws Exception
-	{
-		EAM.notifyDialog(EAM.text("<html>" +
-				"Miradi now allows you to specify what currency is being used for budgeting, " +
-				"<br>and to specify Fiscal Years that are different from Calendar Years." +
-				"<br>Both of these options can be changed in the Summary View, on the Planning Settings tab." +
-				"<br>" +
-				"<br>The default currency is United States dollars; the default calendar is " +
-				"<br>to have fiscal years equal to calendar years" +
-				"<br>" +
-				"<br>If your fiscal year does not run January-December, and if you have entered " +
-				"<br>budget data into Miradi treating calendar years as fiscal years, your data may appear " +
-				"<br>off by one or more quarters. If you have a lot of budget data like this, please contact " +
-				"<br>the Miradi team to learn about options for realigning it to match your " +
-				"<br>fiscal year." +
-				""
-				));
-		writeLocalVersion(getTopDirectory(), 28);
-	}
-	
-	public void upgradeToVersion27() throws Exception
-	{
-		removeDuplicateBendPoints();
-		writeLocalVersion(getTopDirectory(), 27);
-	}
-
 	private void removeDuplicateBendPoints() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -956,12 +1023,6 @@ public class DataUpgrader
 		return nonDuplicates;
 	}
 
-	public void upgradeToVersion26() throws Exception
-	{
-		notifyUserOfDeletedDuratingAndCostFields();
-		writeLocalVersion(getTopDirectory(), 26);
-	}
-
 	private void notifyUserOfDeletedDuratingAndCostFields()
 	{
 		EAM.notifyDialog(EAM.text("<html>" +
@@ -972,12 +1033,6 @@ public class DataUpgrader
 				"Please review your Strategy ratings to ensure they are appropriate."));
 	}
 
-	public void upgradeToVersion25() throws Exception
-	{
-		createThreatStressRatingsForTargetThreatLinks();
-		writeLocalVersion(getTopDirectory(), 25);
-	}
-	
 	private void createThreatStressRatingsForTargetThreatLinks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -1043,12 +1098,6 @@ public class DataUpgrader
 		return threatStressRatingRefs;
 	}
 
-	public void upgradeToVersion24() throws Exception
-	{
-		createdStressesFromFactorLinks();
-		writeLocalVersion(getTopDirectory(), 24);
-	}
-	
 	private void createdStressesFromFactorLinks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -1127,12 +1176,6 @@ public class DataUpgrader
 		return ORef.INVALID;
 	}
 
-	public void upgradeToVersion23() throws Exception
-	{ 
-		createMeasurementFromDataInIndicator();
-		writeLocalVersion(getTopDirectory(), 23);
-	}
-	
 	private void createMeasurementFromDataInIndicator() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -1197,12 +1240,6 @@ public class DataUpgrader
 		writeJson(manifestFile, measurementManifestJson);
 	}
 
-	public void upgradeToVersion22() throws Exception
-	{
-		switchDiagramFactorWrappedIdsToRefs();
-		writeLocalVersion(getTopDirectory(), 22);
-	}
-	
 	private void switchDiagramFactorWrappedIdsToRefs() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -1242,19 +1279,6 @@ public class DataUpgrader
 		}
 	}
 
-	public void upgradeToVersion21() throws Exception
-	{
-		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDiagramsWhereNeeded();
-		writeLocalVersion(getTopDirectory(), 21);
-	}
-
-
-	public void upgradeToVersion20() throws Exception
-	{
-		changeLinkFromToIdsToORefs();
-		writeLocalVersion(getTopDirectory(), 20);
-	}
-	
 	public void changeLinkFromToIdsToORefs() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -1360,12 +1384,6 @@ public class DataUpgrader
 		return new ORef(type, id);
 	}
 
-	public void upgradeToVersion19() throws Exception
-	{
-		possiblyNotifyUserAfterUpgradingToVersion19();
-		writeLocalVersion(getTopDirectory(), 19);
-	}
-
 	private void possiblyNotifyUserAfterUpgradingToVersion19() throws Exception
 	{
 		BaseId[] newGoalIds = removeGoalsFromIndicators(); 
@@ -1439,12 +1457,6 @@ public class DataUpgrader
 		return (BaseId[]) newGoalIds.toArray(new BaseId[0]);
 	}
 	
-	public void upgradeToVersion18() throws Exception
-	{
-		addLinksToDiagramContentsObject();
-		writeLocalVersion(getTopDirectory(), 18);
-	}
-	  
 	private void addLinksToDiagramContentsObject() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -1476,12 +1488,6 @@ public class DataUpgrader
 		readInOnlyFile.put("DiagramFactorLinkIds", idList.toString());
 							
 		writeJson(onlyFile, readInOnlyFile);
-	}
-
-	public void upgradeToVersion17() throws Exception
-	{
-		createObject19DirAndFillFromDiagram();
-		writeLocalVersion(getTopDirectory(), 17);
 	}
 
 	private void createObject19DirAndFillFromDiagram() throws Exception
@@ -1520,13 +1526,6 @@ public class DataUpgrader
 		writeJson(idFile, readIn);
 	}
 
-	public void upgradeToVersion16() throws Exception
-	{
-		HashMap mappedFactorIds = createDiagramFactorsFromRawFactors();
-		createDiagramFactorLinksFromRawFactorLinks(mappedFactorIds);
-		writeLocalVersion(getTopDirectory(), 16);
-	}
-	
 	private void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
 		projectServer.writeLocalDataVersion(projectDirectory, versionToWrite);
