@@ -268,6 +268,32 @@ public class DataUpgrader
 		
 		writeLocalVersion(getTopDirectory(), 34);
 	}
+	
+	private void upgradeToVersion33() throws Exception
+	{
+		boolean isNonBlankEcoRegions = copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions(); 
+		if (isNonBlankEcoRegions)
+			EAM.notifyDialog(EAM.text("<HTML>The TNC ecoregion field has been changed from a single text field to three picklists. <BR>" +
+									  "Miradi has attempted to migrate the ecoregion data, but may not have been successful. <BR>" +
+									  "Please go to the Summary View, TNC tab, and verify that the ecoregion(s) are correct for this project.</HTML>"));
+		writeLocalVersion(getTopDirectory(), 33);
+	}
+	
+	private void upgradeToVersion32() throws Exception
+	{
+		boolean isNonBlankOperatingUnit = copyTncOperatingUnitsFieldDataOverToNewPickListField();
+		if (isNonBlankOperatingUnit)
+			EAM.notifyDialog(EAM.text("<HTML>The TNC Operating Unit field has been changed from a text field to a picklist. <BR>" +
+									  "Miradi has attemped to migrate existing data, but it may not have been successful. <BR>" +
+									  "Please go to the Summary View, TNC tab and confirm that the Operating Unit is set correctly for this project.</HTML>"));
+		writeLocalVersion(getTopDirectory(), 32);
+	}
+	
+	private void upgradeToVersion31() throws Exception
+	{
+		copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
+		writeLocalVersion(getTopDirectory(), 31);	
+	}
 
 	private void enableThreats() throws Exception
 	{
@@ -657,16 +683,6 @@ public class DataUpgrader
 		return taskIds;
 	}
 
-	private void upgradeToVersion33() throws Exception
-	{
-		boolean isNonBlankEcoRegions = copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions(); 
-		if (isNonBlankEcoRegions)
-			EAM.notifyDialog(EAM.text("<HTML>The TNC ecoregion field has been changed from a single text field to three picklists. <BR>" +
-									  "Miradi has attempted to migrate the ecoregion data, but may not have been successful. <BR>" +
-									  "Please go to the Summary View, TNC tab, and verify that the ecoregion(s) are correct for this project.</HTML>"));
-		writeLocalVersion(getTopDirectory(), 33);
-	}
-
 	public boolean copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -722,16 +738,6 @@ public class DataUpgrader
 		return newCodes;
 	}
 
-	private void upgradeToVersion32() throws Exception
-	{
-		boolean isNonBlankOperatingUnit = copyTncOperatingUnitsFieldDataOverToNewPickListField();
-		if (isNonBlankOperatingUnit)
-			EAM.notifyDialog(EAM.text("<HTML>The TNC Operating Unit field has been changed from a text field to a picklist. <BR>" +
-									  "Miradi has attemped to migrate existing data, but it may not have been successful. <BR>" +
-									  "Please go to the Summary View, TNC tab and confirm that the Operating Unit is set correctly for this project.</HTML>"));
-		writeLocalVersion(getTopDirectory(), 32);
-	}
-
 	public boolean copyTncOperatingUnitsFieldDataOverToNewPickListField() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
@@ -765,12 +771,6 @@ public class DataUpgrader
 		writeJson(projectMetaDataFile, projectMetaDataJson);
 		
 		return (oldOperatingUnitsAsString.length() > 0);
-	}
-
-	private void upgradeToVersion31() throws Exception
-	{
-		copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
-		writeLocalVersion(getTopDirectory(), 31);	
 	}
 
 	public void copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField() throws Exception
