@@ -1723,7 +1723,7 @@ public class DataUpgrader
 		return new File(jsonDir, "objects-" + type);
 	}
 	
-	private static File getTopJsonDir()
+	public static File getTopJsonDir()
 	{
 		return new File(getTopDirectory(), "json");
 	}
