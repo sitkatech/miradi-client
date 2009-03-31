@@ -365,7 +365,7 @@ public class DataUpgrader
 	
 	public static void upgradeToVersion21() throws Exception
 	{
-		new DataUpgraderDiagramObjectLinkAdder(topDirectory).addLinksInAllDiagramsWhereNeeded();
+		new DataUpgraderDiagramObjectLinkAdder(getTopDirectory()).addLinksInAllDiagramsWhereNeeded();
 		writeLocalVersion(getTopDirectory(), 21);
 	}
 
@@ -1725,7 +1725,7 @@ public class DataUpgrader
 	
 	private static File getTopJsonDir()
 	{
-		return new File(topDirectory, "json");
+		return new File(getTopDirectory(), "json");
 	}
 	
 	private static File getObjects6FactorLinkDir(File jsonDir)
