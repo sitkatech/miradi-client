@@ -223,6 +223,15 @@ public class DataUpgrader
 			migrationLock.close();
 		}			
 	}
+	
+	public void upgradeToVersion34() throws Exception
+	{
+		while(deleteOrphanedTasks() > 0)
+		{
+		}
+		
+		writeLocalVersion(getTopDirectory(), 34);
+	}
 
 	public void upgradeToVersion40() throws Exception
 	{
@@ -563,15 +572,6 @@ public class DataUpgrader
 		writeJson(targetManifestFile, manifestJson);
 	}
 
-	public void upgradeToVersion34() throws Exception
-	{
-		while(deleteOrphanedTasks() > 0)
-		{
-		}
-		
-		writeLocalVersion(getTopDirectory(), 34);
-	}
-	
 	private  int deleteOrphanedTasks() throws Exception
 	{
 		File jsonDir = getTopJsonDir();
