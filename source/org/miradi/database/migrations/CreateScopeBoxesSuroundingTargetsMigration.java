@@ -291,10 +291,10 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private String getShortScope()
 	{
 		String label = getProjectMetadataJson().optString("ShortProjectScope");
-		if (label.length() > 0)
-			label = "Project Scope" + " :" + label;
+		if (label.length() == 0)
+			return "";
 		
-		return label;
+		return "Project Scope" + " :" + label;
 	}
 	
 	private String getScope()
