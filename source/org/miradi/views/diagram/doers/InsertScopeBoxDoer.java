@@ -19,8 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram.doers;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.DiagramScopeBoxCell;
+import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
 import org.miradi.views.diagram.InsertFactorDoer;
 
@@ -42,5 +46,35 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	public int getTypeToInsert()
 	{
 		return ScopeBox.getObjectType();
+	}
+	
+	@Override
+	protected void doExtraSetup(DiagramFactor newlyInsertedDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
+	{
+		super.doExtraSetup(newlyInsertedDiagramFactor, selectedFactorCells);
+		if (isFirstScopeBoxCreated())
+		{
+			ORef scopeBoxRef = newlyInsertedDiagramFactor.getWrappedORef();
+			CommandSetObjectData setLabel = new CommandSetObjectData(scopeBoxRef, ScopeBox.TAG_LABEL, getScopeLabel());
+			getProject().executeCommand(setLabel);
+			
+			String details = getProject().getMetadata().getProjectScope();
+			CommandSetObjectData setDetails = new CommandSetObjectData(scopeBoxRef, ScopeBox.TAG_TEXT, details);
+			getProject().executeCommand(setDetails);
+		}
+	}
+
+	private String getScopeLabel()
+	{
+		String label = getProject().getMetadata().getShortProjectScope();
+		if (label.length() == 0)
+			return "";
+		
+		return "Project Scope" + " :" + label;
+	}
+
+	private boolean isFirstScopeBoxCreated()
+	{
+		return getProject().getScopeBoxPool().size() == 1;
 	}
 }
