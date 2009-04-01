@@ -106,7 +106,6 @@ public class DataUpgrader
 	{
 		super();
 		topDirectory = projectDirectory;
-		projectServer = new ProjectServer();
 	}
 
 	public static void upgrade() throws Exception
@@ -201,7 +200,7 @@ public class DataUpgrader
 	
 	public static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
-		getProjectServer().writeLocalDataVersion(projectDirectory, versionToWrite);
+		new ProjectServer().writeLocalDataVersion(projectDirectory, versionToWrite);
 	}
 
 	public static int readHighestIdInProjectFile(File dirToUse) throws Exception
@@ -279,12 +278,6 @@ public class DataUpgrader
 	{
 		return topDirectory;
 	}
-	
-	public static ProjectServer getProjectServer()
-	{
-		return projectServer;
-	}
 
-	private static ProjectServer projectServer;
 	private static File topDirectory;
 }
