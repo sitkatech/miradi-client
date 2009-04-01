@@ -207,6 +207,11 @@ public class IconManager
 	{
 		return new PlanningIcon();
 	}
+	
+	public static Icon getOperationalPlanIcon()
+	{
+		return new OperationalPlanIcon();
+	}
 
 	public static Icon getReportIcon()
 	{

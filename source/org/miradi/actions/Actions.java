@@ -106,6 +106,7 @@ import org.miradi.actions.views.ActionViewDiagram;
 import org.miradi.actions.views.ActionViewImages;
 import org.miradi.actions.views.ActionViewMap;
 import org.miradi.actions.views.ActionViewMonitoring;
+import org.miradi.actions.views.ActionViewOperationalPlan;
 import org.miradi.actions.views.ActionViewPlanning;
 import org.miradi.actions.views.ActionViewReports;
 import org.miradi.actions.views.ActionViewSchedule;
@@ -181,6 +182,7 @@ public class Actions
 		registerAction(new ActionViewSchedule(mainWindow));
 		registerAction(new ActionViewMonitoring(mainWindow));
 		registerAction(new ActionViewTargetViability(mainWindow));
+		registerAction(new ActionViewOperationalPlan(mainWindow));
 		registerAction(new ActionViewReports(mainWindow));
 		
 		registerAction(new ActionCreateSlide(mainWindow));

@@ -79,6 +79,7 @@ import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.utils.Translation;
+import org.miradi.views.OperationalPlan.OperationalPlanView;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
 import org.miradi.views.map.MapView;
@@ -194,6 +195,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		libraryView = new LibraryView(this);
 		targetViabilityView = new TargetViabilityView(this);
 		planningView = new PlanningView(this);
+		operationalPlanView = new OperationalPlanView(this);
 		reportView = new ReportsView(this);
 
 		viewHolder = new JPanel();
@@ -207,6 +209,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		viewHolder.add(libraryView, libraryView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		viewHolder.add(planningView, planningView.cardName());
+		viewHolder.add(operationalPlanView, operationalPlanView.cardName());
 		viewHolder.add(reportView, reportView.cardName());
 
 		getWizardManager().setOverViewStep(NoProjectView.getViewName());
@@ -775,8 +778,11 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		else if (viewName.equals(targetViabilityView.cardName()))
 			return targetViabilityView;
 		
-		else if(viewName.equals(planningView.cardName()))
+		else if (viewName.equals(planningView.cardName()))
 			return planningView;
+		
+		else if (viewName.equals(operationalPlanView.cardName()))
+			return operationalPlanView;
 		
 		else if (viewName.equals(reportView.cardName()))
 			return reportView;
@@ -1037,6 +1043,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	private LibraryView libraryView;
 	private TargetViabilityView targetViabilityView;
 	private PlanningView planningView;
+	private OperationalPlanView operationalPlanView;
 	private ReportsView reportView;
 	
 	private UmbrellaView currentView;
