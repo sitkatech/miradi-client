@@ -32,7 +32,7 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class DataUpgrader
 {
-	public class MigrationTooOldException extends Exception
+	public static class MigrationTooOldException extends Exception
 	{
 	}
 
