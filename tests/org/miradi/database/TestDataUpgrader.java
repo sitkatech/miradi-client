@@ -30,6 +30,7 @@ import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
+import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
@@ -119,8 +120,8 @@ public class TestDataUpgrader extends EAMTestCase
 		File diagramMainFile = new File(diagramsDir, "main");
 		createFile(diagramMainFile, allFactorInfos);
 
-		DataUpgrader upgraderWithNoObjects6 = DataUpgrader.createDataUpgrader(tempDirectory);
-		upgraderWithNoObjects6.upgradeToVersion16();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion16();
 	}
 	
 	public void testUpgradeTo16WithObjects6DirectoryButNoManifest() throws Exception
@@ -141,8 +142,8 @@ public class TestDataUpgrader extends EAMTestCase
 		File objects6Dir = new File(jsonDir, "objects-6");
 		objects6Dir.mkdirs();
 		
-		DataUpgrader upgraderWithNoObjects6 = DataUpgrader.createDataUpgrader(tempDirectory);
-		upgraderWithNoObjects6.upgradeToVersion16();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion16();
 	}
 
 	private File createObjectsDir(File parentDir, String dirName)
@@ -195,8 +196,8 @@ public class TestDataUpgrader extends EAMTestCase
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":33}");
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion40();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion40();
 
 		final int SCOPE_BOX_TYPE = 50;
 		final String MANIFEST_FILE_NAME = "manifest";
@@ -310,8 +311,8 @@ public class TestDataUpgrader extends EAMTestCase
 		final int FACTOR_LINK_TYPE = 6;
 		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
 
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion39();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion39();
 		
 		verifyAsThreat(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[0]));
 		verifyAsThreat(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[1]));
@@ -366,8 +367,8 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(projectFile, "{\"HighestUsedNodeId\":27}");
 		
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion38();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion38();
 	
 		
 		final int THREAT_RATING_COMMENTS_DATA_TYPE = 49;
@@ -439,8 +440,8 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue(threatStressRatingManifestFile.exists());
 		createObjectFile(threatStressRatingJsonString, threatStressRatingIds[0], threatStressRatingDir);
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion37();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion37();
 		
 		File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(threatStressRatingIds[0]));
 		String threatStressRatingFileContent = readFile(threatStressRatingFile);
@@ -469,7 +470,7 @@ public class TestDataUpgrader extends EAMTestCase
 	private void verifyThreatLinkRef(String jsonString, ORef expectedRef) throws Exception
 	{
 		EnhancedJsonObject factorLinkJson = new EnhancedJsonObject(jsonString);
-		assertEquals("wrong threat link Ref", expectedRef, DataUpgrader.getCauseIfDirectlyUpstreamFromTarget(factorLinkJson));
+		assertEquals("wrong threat link Ref", expectedRef, MigrationsOlderThanMiradiVersion2.getCauseIfDirectlyUpstreamFromTarget(factorLinkJson));
 	}
 	
 	private void createObjectFiles(File jsonDir, final int objectType, int[] objectIds, String[] jsonStrings)	throws Exception
@@ -517,8 +518,8 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("strategy in factor dir does not exist?", factorDirStrategyFile.exists());
 		
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion35();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion35();
 	
 		verifyTypeDir(jsonDir, TARGET_FILE_NAME, Target.getObjectType(), targetJson);
 		verifyTypeDir(jsonDir, CAUSE_FILE_NAME, Cause.getObjectType(), causeJson);
@@ -592,8 +593,8 @@ public class TestDataUpgrader extends EAMTestCase
 		createObjectFile(orphanTaskWithTaskChild, taskIds[2], taskDir);
 		createObjectFile(taskWithOrphandeTaskParent, taskIds[3], taskDir);
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion34();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion34();
 		
 		File deletedOrphandTask = new File(taskDir, Integer.toString(taskIds[2]));
 		assertFalse("orphan task not deleted?", deletedOrphandTask.exists());
@@ -647,8 +648,8 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(noBendPointsDiagramLinkFile, noBendPointsDiagramLink);
 		assertTrue(noBendPointsDiagramLinkFile.exists());
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion27();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion27();
 				
 		File diagramLinkWithOldDuplicateBendPoints = new File(diagramLinkDir, "91");
 		assertTrue(" Diagram link with duplicate bend points file does not exist?", diagramLinkWithOldDuplicateBendPoints.exists());
@@ -685,8 +686,8 @@ public class TestDataUpgrader extends EAMTestCase
 		String ecoRegionString = projectMetaDataJson1.optString("TNC.Ecoregion");
 		assertEquals("wrong number of codes?", "Aceh, Amazonia Marine, where, Alaska Range", ecoRegionString);
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		boolean isNonBlankEcoRegionField = dataUpgrader.copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		boolean isNonBlankEcoRegionField = MigrationsOlderThanMiradiVersion2.copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions();
 		assertTrue("had non blank old eco region field?", isNonBlankEcoRegionField);
 		
 		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(metaDataFileWithOldEcoRegion);
@@ -730,8 +731,8 @@ public class TestDataUpgrader extends EAMTestCase
 		String operatingUnitsAsString = projectMetaDataJson1.optString("TNC.OperatingUnits");
 		assertEquals("wrong number of codes?", expectedCodesAsString, operatingUnitsAsString);
 	
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		boolean isNonBlank = dataUpgrader.copyTncOperatingUnitsFieldDataOverToNewPickListField();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		boolean isNonBlank = MigrationsOlderThanMiradiVersion2.copyTncOperatingUnitsFieldDataOverToNewPickListField();
 		assertEquals("had non blank old operating units field?", expectedNonBlank, isNonBlank);
 		
 		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(projectMetaDataFileWithOldTncOperatingUnits);
@@ -757,8 +758,8 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("wrong number project area?", "", projectMetaDataJson1.optString("ProjectArea"));
 	
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
 		
 		assertTrue("project meta data file exists?", projectMetaDataFileWithTncSizeInHectars.exists());
 		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(projectMetaDataFileWithTncSizeInHectars);
@@ -780,14 +781,14 @@ public class TestDataUpgrader extends EAMTestCase
 		File projectMetaDataFileWithTncCountries = new File(projectMetaDataDir, Integer.toString(projectMetaDataIds[0]));
 		createFile(projectMetaDataFileWithTncCountries, projectMetaDataWithTncCountries);
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		assertFalse("country code was blank?", dataUpgrader.isTncCountryCodeBlank());
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		assertFalse("country code was blank?", MigrationsOlderThanMiradiVersion2.isTncCountryCodeBlank());
 		
 		File projectMetaDataFileWithoutTncCountries = new File(projectMetaDataDir, Integer.toString(projectMetaDataIds[0]));
 		createFile(projectMetaDataFileWithoutTncCountries, projectMetaDataWithoutTncCountries);
 		
-		DataUpgrader dataUpgrader2 = DataUpgrader.createDataUpgrader(tempDirectory);
-		assertTrue("country code was not blank?", dataUpgrader2.isTncCountryCodeBlank());
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		assertTrue("country code was not blank?", MigrationsOlderThanMiradiVersion2.isTncCountryCodeBlank());
 	}
 	
 	public void testCopyWwfProjectDataCountriesFieldOverToProjectMetaData() throws Exception
@@ -811,8 +812,8 @@ public class TestDataUpgrader extends EAMTestCase
 		File wwfProjectDataFile = new File(wwfProjectDataDir, Integer.toString(wwfProjectDataIds[0]));
 		createFile(wwfProjectDataFile, wwfProjectDataString);
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion29();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion29();
 		
 		assertTrue("project meta data file exists?", projectMetaDataFile.exists());
 		EnhancedJsonObject projectMetaDataJson = DataUpgrader.readFile(projectMetaDataFile);
@@ -869,8 +870,8 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue(target21.exists());
 
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion25();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion25();
 		
 		File threatStressRatingDir = new File(jsonDir, "objects-34");
 		assertTrue(threatStressRatingDir.exists());
@@ -948,8 +949,8 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(target, targetData);
 		assertTrue(target.exists());
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion24();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion24();
 		
 		File stressDir = new File(jsonDir, "objects-33");
 		assertTrue("stress dir does not exist?", stressDir.exists());
@@ -1008,8 +1009,8 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(indicator19WithoutMeasurementFieldsFile, indicatorWithoutMeasurementFields);
 		assertTrue(indicator19WithoutMeasurementFieldsFile.exists());
 
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion23();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion23();
 		
 		File measurementDir = new File(jsonDir, "objects-32");
 		assertTrue("measurment dir does not exist?", measurementDir.exists());
@@ -1069,8 +1070,8 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(strategyFile, strategyString);
 		assertTrue(strategyFile.exists());
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.upgradeToVersion22();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion22();
 		
 		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(diagramFactorFile);
 		String wrappedRefAsString = conceptualModelJson.getString("WrappedFactorRef");
@@ -1165,8 +1166,8 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("diagram link manifest doesnt exist?", diagramLinkManifest.exists());
 
 		
-		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		upgrader.upgradeToVersion21();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion21();
 		
 		ObjectManifest diagramLinkManifestObject = new ObjectManifest(JSONFile.read(diagramLinkManifest));
 		assertEquals("diagram links not created?", 4, diagramLinkManifestObject.size());
@@ -1259,8 +1260,8 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(linkFile2, link115to45);
 
 		
-		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		upgrader.changeLinkFromToIdsToORefs();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.changeLinkFromToIdsToORefs();
 		
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(linkFile));
 		checkNewlyWrittenORef(expectedFromRef, json, "FromRef");		
@@ -1311,8 +1312,8 @@ public class TestDataUpgrader extends EAMTestCase
 		File goal44File = new File(objectsGoals, "44");
 		createFile(goal44File, goal44);
 		
-		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		upgrader.removeGoalsFromIndicators();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.removeGoalsFromIndicators();
 		
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(indicator33File));
 		String goalIdsAsString = json.getString("GoalIds");
@@ -1348,8 +1349,8 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		createManifestFile(objects19, new int[] {30});
 		
-		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		upgrader.upgradeToVersion18();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion18();
 		
 		File newFile30 = new File(objects19, "30");
 		EnhancedJsonObject readIn30 = JSONFile.read(newFile30);
@@ -1383,8 +1384,8 @@ public class TestDataUpgrader extends EAMTestCase
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":13}");
 		
-		DataUpgrader upgraderWithNoObjects19 = DataUpgrader.createDataUpgrader(tempDirectory);
-		upgraderWithNoObjects19.upgradeToVersion17();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.upgradeToVersion17();
 		
 		File objects19Dir = new File(jsonDir, "objects-19");
 		assertTrue("didn't create objects-19 dir?", objects19Dir.exists());
@@ -1448,8 +1449,8 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":134}");
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.createDiagramFactorLinksFromRawFactorLinks(factorToDiamgramFactorIdMap);
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.createDiagramFactorLinksFromRawFactorLinks(factorToDiamgramFactorIdMap);
 		
 		File objects13Dir = new File(jsonDir, "objects-13");
 		assertTrue("objects-13 dir does not exist?", objects13Dir.exists());
@@ -1502,8 +1503,8 @@ public class TestDataUpgrader extends EAMTestCase
 		File diagramMainFile = new File(diagramsDir, "main");
 		createFile(diagramMainFile, allFactorInfos);
 		
-		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
-		dataUpgrader.createDiagramFactorsFromRawFactors();
+		DataUpgrader.createDataUpgrader(tempDirectory);
+		MigrationsOlderThanMiradiVersion2.createDiagramFactorsFromRawFactors();
 		
 		File objects18Dir = new File(jsonDir, "objects-18");
 		assertTrue("objects-18 dir does not exist?", objects18Dir.exists());

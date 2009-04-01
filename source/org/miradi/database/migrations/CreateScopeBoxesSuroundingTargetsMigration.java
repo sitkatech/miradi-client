@@ -201,7 +201,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		File scopeBoxFile = new File(scopeBoxDir, Integer.toString(newScopeBoxId));
 		DataUpgrader.createFile(scopeBoxFile, scopeBoxJson.toString());
 		
-		DataUpgrader.writeManifest(scopeBoxDir, scopeBoxManifestJson);
+		MigrationsOlderThanMiradiVersion2.writeManifest(scopeBoxDir, scopeBoxManifestJson);
 		
 		return new BaseId(newScopeBoxId);
 	}
@@ -235,7 +235,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		File scopeBoxFile = new File(getDiagramFactorDir(), Integer.toString(newScopeBoxDiagramFactorId));
 		DataUpgrader.createFile(scopeBoxFile, scopeBoxJson.toString());
 		
-		DataUpgrader.writeManifest(getDiagramFactorDir(), diagramFactorManifestJson);
+		MigrationsOlderThanMiradiVersion2.writeManifest(getDiagramFactorDir(), diagramFactorManifestJson);
 	}
 		
 	private Rectangle getSafeUnion(Rectangle2D bounds, Rectangle targetBounds)
