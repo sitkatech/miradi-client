@@ -33,12 +33,12 @@ public class ActionViewPlanning extends MainWindowAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Planning");
+		return EAM.text("Action|Strategic Plan");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Switch to the Planning View");
+		return EAM.text("TT|Switch to the Strategic Planning View");
 	}
 	
 	public String toString()
