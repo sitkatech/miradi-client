@@ -33,6 +33,9 @@ public class ScopeAndVisionPanel extends ObjectDataInputPanel
 
 		addField(createStringField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_SCOPE));
+		
+		addLabeledSubPanelWithoutBorder(new ScopeBoxPoolSubPanel(getProject()), EAM.text("Scope Boxes"));
+		
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_VISION));
 		addField(createMultilineField(ProjectMetadata.TAG_SCOPE_COMMENTS));
 		
