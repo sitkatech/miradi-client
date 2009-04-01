@@ -99,12 +99,6 @@ public class DataUpgrader
 
 	public static void intializeDataUpgrader(File projectDirectory) throws IOException
 	{
-		new DataUpgrader(projectDirectory);
-	}
-
-	private DataUpgrader(File projectDirectory) throws IOException
-	{
-		super();
 		topDirectory = projectDirectory;
 	}
 
