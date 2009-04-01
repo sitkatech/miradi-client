@@ -55,7 +55,7 @@ public class ScopeBoxPoolSubPanel extends ObjectDataInputPanel
 		for (int index = 0; index < scopeBoxRefs.size(); ++index)
 		{
 			ScopeBoxSubPanel scopeBoxSubPanel = new ScopeBoxSubPanel(getProject());
-			addSubPanelWithoutTitledBorder(scopeBoxSubPanel);
+			addSubPanelWithTitledBorder(scopeBoxSubPanel);
 			scopeBoxSubPanel.setObjectRef(scopeBoxRefs.get(index));
 		}
 		
