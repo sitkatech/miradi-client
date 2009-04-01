@@ -84,10 +84,10 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		File version = new File(jsonDirectory, "version");
 		createFile(version, "{\"Version\":14}");
-		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
+		DataUpgrader.createDataUpgrader(tempDirectory);
 		try
 		{
-			upgrader.upgrade();
+			DataUpgrader.upgrade();
 			fail("Should have thrown for version too old to migrate");
 		}
 		catch(DataUpgrader.MigrationTooOldException ignoreExpected)
