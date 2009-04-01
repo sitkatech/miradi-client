@@ -1531,7 +1531,7 @@ public class DataUpgrader
 		writeJson(idFile, readIn);
 	}
 
-	private static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
+	public static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
 	{
 		getProjectServer().writeLocalDataVersion(projectDirectory, versionToWrite);
 	}
