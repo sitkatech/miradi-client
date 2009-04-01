@@ -66,8 +66,8 @@ public class DataUpgrader
 		{
 			ProjectZipper.createProjectZipFile(zipFile, projectDirectory);
 			
-			DataUpgrader upgrader = createDataUpgrader(projectDirectory);
-			upgrader.upgrade();
+			createDataUpgrader(projectDirectory);
+			DataUpgrader.upgrade();
 			versionAfterUpgrading = MigrationsOlderThanMiradiVersion2.readDataVersion(projectDirectory);			
 		}
 		catch (DataUpgrader.MigrationTooOldException e)
