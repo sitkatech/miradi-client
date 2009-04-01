@@ -31,11 +31,11 @@ import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.views.diagram.doers.InsertScopeBoxDoer;
 
 //FIXME this migraiton is still under contruction and its test is fialing.  It also needs a bit of refactoring to remove duplication
 // of strings
@@ -292,10 +292,8 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private String getShortScope()
 	{
 		String label = getProjectMetadataJson().optString("ShortProjectScope");
-		if (label.length() == 0)
-			return "";
 		
-		return EAM.text("Project Scope") + " :" + label;
+		return InsertScopeBoxDoer.getFormattedScopeBoxLabel(label);
 	}
 	
 	private String getScope()

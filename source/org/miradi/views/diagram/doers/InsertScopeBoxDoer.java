@@ -67,6 +67,11 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 	private String getScopeLabel()
 	{
 		String label = getProject().getMetadata().getShortProjectScope();
+		return getFormattedScopeBoxLabel(label);
+	}
+
+	public static String getFormattedScopeBoxLabel(String label)
+	{
 		if (label.length() == 0)
 			return "";
 		
