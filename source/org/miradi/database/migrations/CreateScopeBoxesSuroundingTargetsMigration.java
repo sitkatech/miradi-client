@@ -31,6 +31,7 @@ import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -294,7 +295,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		if (label.length() == 0)
 			return "";
 		
-		return "Project Scope" + " :" + label;
+		return EAM.text("Project Scope") + " :" + label;
 	}
 	
 	private String getScope()
