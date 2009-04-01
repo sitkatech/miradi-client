@@ -109,7 +109,7 @@ public class DataUpgrader
 		projectServer = new ProjectServer();
 	}
 
-	void upgrade() throws Exception
+	public static void upgrade() throws Exception
 	{
 		if(MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
