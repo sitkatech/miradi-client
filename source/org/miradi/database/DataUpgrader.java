@@ -97,9 +97,9 @@ public class DataUpgrader
 				"Please seek technical help from the Miradi team."));
 	}
 
-	public static DataUpgrader createDataUpgrader(File projectDirectory) throws IOException
+	public static void createDataUpgrader(File projectDirectory) throws IOException
 	{
-		return new DataUpgrader(projectDirectory);
+		new DataUpgrader(projectDirectory);
 	}
 
 	private DataUpgrader(File projectDirectory) throws IOException
