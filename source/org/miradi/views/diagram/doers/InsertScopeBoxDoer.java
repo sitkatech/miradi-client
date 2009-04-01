@@ -70,7 +70,7 @@ public class InsertScopeBoxDoer extends InsertFactorDoer
 		if (label.length() == 0)
 			return "";
 		
-		return "Project Scope" + " :" + label;
+		return EAM.text("Project Scope") + " :" + label;
 	}
 
 	private boolean isFirstScopeBoxCreated()
