@@ -96,7 +96,7 @@ public class DataUpgrader
 		{
 			ProjectZipper.createProjectZipFile(zipFile, projectDirectory);
 			
-			DataUpgrader upgrader = new DataUpgrader(projectDirectory);
+			DataUpgrader upgrader = createDataUpgrader(projectDirectory);
 			upgrader.upgrade();
 			versionAfterUpgrading = upgrader.readDataVersion(projectDirectory);			
 		}
@@ -127,7 +127,12 @@ public class DataUpgrader
 				"Please seek technical help from the Miradi team."));
 	}
 
-	public DataUpgrader(File projectDirectory) throws IOException
+	public static DataUpgrader createDataUpgrader(File projectDirectory) throws IOException
+	{
+		return new DataUpgrader(projectDirectory);
+	}
+
+	private DataUpgrader(File projectDirectory) throws IOException
 	{
 		super();
 		topDirectory = projectDirectory;

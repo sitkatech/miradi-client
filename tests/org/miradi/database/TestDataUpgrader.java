@@ -83,7 +83,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		File version = new File(jsonDirectory, "version");
 		createFile(version, "{\"Version\":14}");
-		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		try
 		{
 			upgrader.upgrade();
@@ -119,7 +119,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File diagramMainFile = new File(diagramsDir, "main");
 		createFile(diagramMainFile, allFactorInfos);
 
-		DataUpgrader upgraderWithNoObjects6 = new DataUpgrader(tempDirectory);
+		DataUpgrader upgraderWithNoObjects6 = DataUpgrader.createDataUpgrader(tempDirectory);
 		upgraderWithNoObjects6.upgradeToVersion16();
 	}
 	
@@ -141,7 +141,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File objects6Dir = new File(jsonDir, "objects-6");
 		objects6Dir.mkdirs();
 		
-		DataUpgrader upgraderWithNoObjects6 = new DataUpgrader(tempDirectory);
+		DataUpgrader upgraderWithNoObjects6 = DataUpgrader.createDataUpgrader(tempDirectory);
 		upgraderWithNoObjects6.upgradeToVersion16();
 	}
 
@@ -195,7 +195,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":33}");
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion40();
 
 		final int SCOPE_BOX_TYPE = 50;
@@ -310,7 +310,7 @@ public class TestDataUpgrader extends EAMTestCase
 		final int FACTOR_LINK_TYPE = 6;
 		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
 
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion39();
 		
 		verifyAsThreat(getCauseJson(jsonDir, CAUSE_TYPE, causeIds[0]));
@@ -366,7 +366,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(projectFile, "{\"HighestUsedNodeId\":27}");
 		
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion38();
 	
 		
@@ -439,7 +439,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue(threatStressRatingManifestFile.exists());
 		createObjectFile(threatStressRatingJsonString, threatStressRatingIds[0], threatStressRatingDir);
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion37();
 		
 		File threatStressRatingFile = new File(threatStressRatingDir, Integer.toString(threatStressRatingIds[0]));
@@ -517,7 +517,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("strategy in factor dir does not exist?", factorDirStrategyFile.exists());
 		
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion35();
 	
 		verifyTypeDir(jsonDir, TARGET_FILE_NAME, Target.getObjectType(), targetJson);
@@ -592,7 +592,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createObjectFile(orphanTaskWithTaskChild, taskIds[2], taskDir);
 		createObjectFile(taskWithOrphandeTaskParent, taskIds[3], taskDir);
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion34();
 		
 		File deletedOrphandTask = new File(taskDir, Integer.toString(taskIds[2]));
@@ -647,7 +647,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(noBendPointsDiagramLinkFile, noBendPointsDiagramLink);
 		assertTrue(noBendPointsDiagramLinkFile.exists());
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion27();
 				
 		File diagramLinkWithOldDuplicateBendPoints = new File(diagramLinkDir, "91");
@@ -685,7 +685,7 @@ public class TestDataUpgrader extends EAMTestCase
 		String ecoRegionString = projectMetaDataJson1.optString("TNC.Ecoregion");
 		assertEquals("wrong number of codes?", "Aceh, Amazonia Marine, where, Alaska Range", ecoRegionString);
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		boolean isNonBlankEcoRegionField = dataUpgrader.copyTncEcoRegionFieldOverToDividedTerrestrailMarineFreshwaterEcoRegions();
 		assertTrue("had non blank old eco region field?", isNonBlankEcoRegionField);
 		
@@ -730,7 +730,7 @@ public class TestDataUpgrader extends EAMTestCase
 		String operatingUnitsAsString = projectMetaDataJson1.optString("TNC.OperatingUnits");
 		assertEquals("wrong number of codes?", expectedCodesAsString, operatingUnitsAsString);
 	
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		boolean isNonBlank = dataUpgrader.copyTncOperatingUnitsFieldDataOverToNewPickListField();
 		assertEquals("had non blank old operating units field?", expectedNonBlank, isNonBlank);
 		
@@ -757,7 +757,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("wrong number project area?", "", projectMetaDataJson1.optString("ProjectArea"));
 	
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.copyTncProjectDataSizeInHectaresFieldOverToProjectMetaDataProjectAreaField();
 		
 		assertTrue("project meta data file exists?", projectMetaDataFileWithTncSizeInHectars.exists());
@@ -780,13 +780,13 @@ public class TestDataUpgrader extends EAMTestCase
 		File projectMetaDataFileWithTncCountries = new File(projectMetaDataDir, Integer.toString(projectMetaDataIds[0]));
 		createFile(projectMetaDataFileWithTncCountries, projectMetaDataWithTncCountries);
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		assertFalse("country code was blank?", dataUpgrader.isTncCountryCodeBlank());
 		
 		File projectMetaDataFileWithoutTncCountries = new File(projectMetaDataDir, Integer.toString(projectMetaDataIds[0]));
 		createFile(projectMetaDataFileWithoutTncCountries, projectMetaDataWithoutTncCountries);
 		
-		DataUpgrader dataUpgrader2 = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader2 = DataUpgrader.createDataUpgrader(tempDirectory);
 		assertTrue("country code was not blank?", dataUpgrader2.isTncCountryCodeBlank());
 	}
 	
@@ -811,7 +811,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File wwfProjectDataFile = new File(wwfProjectDataDir, Integer.toString(wwfProjectDataIds[0]));
 		createFile(wwfProjectDataFile, wwfProjectDataString);
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion29();
 		
 		assertTrue("project meta data file exists?", projectMetaDataFile.exists());
@@ -869,7 +869,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue(target21.exists());
 
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion25();
 		
 		File threatStressRatingDir = new File(jsonDir, "objects-34");
@@ -948,7 +948,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(target, targetData);
 		assertTrue(target.exists());
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion24();
 		
 		File stressDir = new File(jsonDir, "objects-33");
@@ -1008,7 +1008,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(indicator19WithoutMeasurementFieldsFile, indicatorWithoutMeasurementFields);
 		assertTrue(indicator19WithoutMeasurementFieldsFile.exists());
 
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion23();
 		
 		File measurementDir = new File(jsonDir, "objects-32");
@@ -1069,7 +1069,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(strategyFile, strategyString);
 		assertTrue(strategyFile.exists());
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.upgradeToVersion22();
 		
 		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(diagramFactorFile);
@@ -1165,7 +1165,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("diagram link manifest doesnt exist?", diagramLinkManifest.exists());
 
 		
-		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		upgrader.upgradeToVersion21();
 		
 		ObjectManifest diagramLinkManifestObject = new ObjectManifest(JSONFile.read(diagramLinkManifest));
@@ -1259,7 +1259,7 @@ public class TestDataUpgrader extends EAMTestCase
 		createFile(linkFile2, link115to45);
 
 		
-		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		upgrader.changeLinkFromToIdsToORefs();
 		
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(linkFile));
@@ -1311,7 +1311,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File goal44File = new File(objectsGoals, "44");
 		createFile(goal44File, goal44);
 		
-		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		upgrader.removeGoalsFromIndicators();
 		
 		EnhancedJsonObject json = new EnhancedJsonObject(readFile(indicator33File));
@@ -1348,7 +1348,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		createManifestFile(objects19, new int[] {30});
 		
-		DataUpgrader upgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader upgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		upgrader.upgradeToVersion18();
 		
 		File newFile30 = new File(objects19, "30");
@@ -1383,7 +1383,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":13}");
 		
-		DataUpgrader upgraderWithNoObjects19 = new DataUpgrader(tempDirectory);
+		DataUpgrader upgraderWithNoObjects19 = DataUpgrader.createDataUpgrader(tempDirectory);
 		upgraderWithNoObjects19.upgradeToVersion17();
 		
 		File objects19Dir = new File(jsonDir, "objects-19");
@@ -1448,7 +1448,7 @@ public class TestDataUpgrader extends EAMTestCase
 		
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":134}");
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.createDiagramFactorLinksFromRawFactorLinks(factorToDiamgramFactorIdMap);
 		
 		File objects13Dir = new File(jsonDir, "objects-13");
@@ -1502,7 +1502,7 @@ public class TestDataUpgrader extends EAMTestCase
 		File diagramMainFile = new File(diagramsDir, "main");
 		createFile(diagramMainFile, allFactorInfos);
 		
-		DataUpgrader dataUpgrader = new DataUpgrader(tempDirectory);
+		DataUpgrader dataUpgrader = DataUpgrader.createDataUpgrader(tempDirectory);
 		dataUpgrader.createDiagramFactorsFromRawFactors();
 		
 		File objects18Dir = new File(jsonDir, "objects-18");
