@@ -127,9 +127,9 @@ public class PlanningView extends TabbedView
 		private final String panelDescription = EAM.text("Tab|Custom");
 	}
 	
-	class StrategicPlanManagementPanel extends PlanningTreeManagementPanel
+	class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 	{
-		public StrategicPlanManagementPanel(MainWindow mainWindowToUse,
+		public ActionPlanManagementPanel(MainWindow mainWindowToUse,
 				PlanningTreeTablePanel planningTreeTablePanel,
 				PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
 				throws Exception
@@ -211,7 +211,7 @@ public class PlanningView extends TabbedView
 		return new ConfigurablePlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
-	private StrategicPlanManagementPanel createStrategicPlanPanel()
+	private ActionPlanManagementPanel createStrategicPlanPanel()
 			throws Exception
 	{
 		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(getProject());
@@ -223,7 +223,7 @@ public class PlanningView extends TabbedView
 		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), strategicPlanTreeTableModel, buttonActions);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
-		return new StrategicPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
+		return new ActionPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 	}
 
 	private MonitoringPlanManagementPanel createMonitoringPlanPanel() throws Exception
