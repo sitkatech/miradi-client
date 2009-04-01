@@ -66,7 +66,7 @@ public class DataUpgrader
 		{
 			ProjectZipper.createProjectZipFile(zipFile, projectDirectory);
 			
-			intializeDataUpgrader(projectDirectory);
+			initializeStaticDirectory(projectDirectory);
 			DataUpgrader.upgrade();
 			versionAfterUpgrading = MigrationsOlderThanMiradiVersion2.readDataVersion(projectDirectory);			
 		}
@@ -97,7 +97,7 @@ public class DataUpgrader
 				"Please seek technical help from the Miradi team."));
 	}
 
-	public static void intializeDataUpgrader(File projectDirectory) throws IOException
+	public static void initializeStaticDirectory(File projectDirectory) throws IOException
 	{
 		topDirectory = projectDirectory;
 	}
