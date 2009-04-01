@@ -62,6 +62,7 @@ import org.miradi.wizard.map.MapOverviewStep;
 import org.miradi.wizard.noproject.NoProjectOverviewStep;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 import org.miradi.wizard.noproject.WelcomeImportStep;
+import org.miradi.wizard.operationalPlan.OperationalPlanOverviewStep;
 import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
 import org.miradi.wizard.planning.BudgetWizardReconcileActualExpendituresStep;
@@ -120,6 +121,7 @@ public class WizardManager
 		createThreatMatrixViewStepEntries(panel);
 		createPlanningViewStepEntries(panel);
 		createWorkPlanStepEntries(panel);
+		createOperationalPlanViewStepEntries(panel);
 		createReportViewStepEntries(panel);
 		createScheduleStepEntries(panel);
 		createMapViewStepEntries(panel);
@@ -329,6 +331,11 @@ public class WizardManager
 		createStepEntry(new BudgetWizardReconcileActualExpendituresStep(panel));
 	}
 
+	public void createOperationalPlanViewStepEntries(WizardPanel panel)
+	{
+		createStepEntry(new OperationalPlanOverviewStep(panel));
+	}
+	
 	public void createReportViewStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new ReportsOverviewStep(panel));
@@ -454,6 +461,7 @@ public class WizardManager
 //				FinancialOverviewStep.class, 
 				
 				// NOT STEPS
+				OperationalPlanOverviewStep.class,
 				ReportsOverviewStep.class,
 				MapOverviewStep.class,
 				ScheduleOverviewStep.class,

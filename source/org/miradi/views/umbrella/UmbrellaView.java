@@ -163,6 +163,7 @@ import org.miradi.actions.jump.ActionJumpWorkPlanDevelopMethodsAndTasksStep;
 import org.miradi.actions.views.ActionViewDiagram;
 import org.miradi.actions.views.ActionViewImages;
 import org.miradi.actions.views.ActionViewMap;
+import org.miradi.actions.views.ActionViewOperationalPlan;
 import org.miradi.actions.views.ActionViewPlanning;
 import org.miradi.actions.views.ActionViewReports;
 import org.miradi.actions.views.ActionViewSchedule;
@@ -218,6 +219,7 @@ import org.miradi.views.umbrella.doers.ExportTableDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
 import org.miradi.views.umbrella.doers.SaveProjectAsDoer;
 import org.miradi.views.umbrella.doers.ShowCurrentWizardFileNameDoer;
+import org.miradi.views.umbrella.doers.SwitchToOperationalPlanViewDoer;
 import org.miradi.views.umbrella.doers.SwitchToReportViewDoer;
 import org.miradi.views.umbrella.doers.ViewLegacyTncStrategyRankingDoer;
 import org.miradi.wizard.SkeletonWizardStep;
@@ -419,6 +421,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewSchedule.class, new SwitchToScheduleViewDoer());
 		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
 		addDoerToMap(ActionViewReports.class, new SwitchToReportViewDoer());
+		addDoerToMap(ActionViewOperationalPlan.class, new SwitchToOperationalPlanViewDoer());
 		
 		addDoerToMap(ActionEditObjectiveIndicatorRelevancyList.class, new EditObjectiveIndicatorRelevancyListDoer());
 		addDoerToMap(ActionEditGoalIndicatorRelevancyList.class, new EditGoalIndicatorRelevancyListDoer());
