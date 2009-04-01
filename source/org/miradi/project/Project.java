@@ -1268,20 +1268,6 @@ public class Project
 	{
 		currentViewName = viewName;
 	}
-
-	//FIXME remove method, not used by anyone
-	public String[] getLegalViewNames()
-	{
-		return new String[] {
-			NO_PROJECT_VIEW_NAME,
-			SUMMARY_VIEW_NAME,
-			DIAGRAM_VIEW_NAME,
-			THREAT_MATRIX_VIEW_NAME,
-			TARGET_VIABILITY_NAME,
-			PLANNING_VIEW_NAME,
-			REPORT_VIEW_NAME,			
-		};
-	}
 	
 	/////////////////////////////////////////////////////////////////////////////////
 	// diagram view
