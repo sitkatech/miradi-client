@@ -60,6 +60,7 @@ public class Miradi
 
 		EAM.setLogLevel(EAM.LOG_VERBOSE);
 		EAM.logDebug("Miradi version " + VersionConstants.getVersionAndTimestamp());
+		EAM.logDebug("Java version = " + System.getProperty("java.version"));
 		
 		EAM.setLogLevel(EAM.LOG_DEBUG);
 		for(String arg : argsAsList)
