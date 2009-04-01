@@ -149,7 +149,7 @@ public class PlanningView extends TabbedView
 			return IconManager.getStrategyIcon();
 		}
 
-		private final String panelDescription = EAM.text("Tab|Strategic Plan");
+		private final String panelDescription = EAM.text("Tab|Action Plan");
 	}
 
 	class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
