@@ -30,6 +30,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
@@ -287,9 +288,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		subPanels.add(subPanel);
 	}
 	
-	public void addLabeledSubPanelWithoutBorder(AbstractObjectDataInputPanel subPanel, String label)
+	public void addLabeledSubPanelWithoutBorder(AbstractObjectDataInputPanel subPanel, String labelString)
 	{
-		add(new PanelTitleLabel(label));	
+		PanelTitleLabel label = new PanelTitleLabel(labelString);
+		label.setVerticalAlignment(SwingConstants.TOP);
+		add(label);	
 		addSubPanelField(subPanel);
 	}
 	
