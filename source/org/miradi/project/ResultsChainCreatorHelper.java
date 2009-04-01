@@ -300,6 +300,8 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.TASK)
 			return diagramFactor.getWrappedORef();
 		
+		if (diagramFactor.getWrappedType() == ObjectType.SCOPE_BOX)
+			return diagramFactor.getWrappedORef();
 		
 		
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
