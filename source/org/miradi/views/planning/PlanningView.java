@@ -107,31 +107,6 @@ public class PlanningView extends TabbedView
 		addPlanningViewDoersToMap();
 	}
 	
-	class ActionPlanManagementPanel extends PlanningTreeManagementPanel
-	{
-		public ActionPlanManagementPanel(MainWindow mainWindowToUse,
-				PlanningTreeTablePanel planningTreeTablePanel,
-				PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
-				throws Exception
-		{
-			super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-		}
-		
-		@Override
-		public String getPanelDescription()
-		{
-			return panelDescription;
-		}
-		
-		@Override
-		public Icon getIcon()
-		{
-			return IconManager.getStrategyIcon();
-		}
-
-		private final String panelDescription = EAM.text("Tab|Action Plan");
-	}
-
 	class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
 	{
 		public MonitoringPlanManagementPanel(MainWindow mainWindowToUse,
