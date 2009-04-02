@@ -129,10 +129,18 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	
 	public void addButtonsToBox(Class[] classes, JPanel box, Actions actions)
 	{
-		for (int i=0; i<classes.length; ++i)
-		addCreateButtonAndAddToBox(classes[i], box, actions);
+		for (int index = 0; index < classes.length; ++index)
+		{
+			addCreateButtonAndAddToBox(classes[index], box, actions);
+		}
+		
+		addCustomButton(box);
 	}
 	
+	protected void addCustomButton(JPanel box)
+	{
+	}
+
 	private void addCreateButtonAndAddToBox(Class actionClass, JPanel box, Actions actions)
 	{
 		UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
