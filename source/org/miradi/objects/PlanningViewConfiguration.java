@@ -86,6 +86,6 @@ public class PlanningViewConfiguration extends BaseObject
 	
 	public static final String OBJECT_NAME = "PlanningViewConfiguration";
 	
-	CodeListData rowConfigurationList;
-	CodeListData colConfigurationList;
+	private CodeListData rowConfigurationList;
+	private CodeListData colConfigurationList;
 }
