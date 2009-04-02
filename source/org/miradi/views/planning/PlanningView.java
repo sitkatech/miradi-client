@@ -108,14 +108,6 @@ public class PlanningView extends TabbedView
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
-//		PlanningTreeTablePanel treePanel = (PlanningTreeTablePanel)planningManagementPanel.getListPanel();
-//		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treePanel.getTree();
-//		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
-//		MiradiScrollPane controlBarScrollPane = new MiradiScrollPane(controlPanel);
-//		controlBarScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-//
-//		MainPlanningPanel horizontalSplitPane = new MainPlanningPanel(controlBarScrollPane, planningManagementPanel);
-		
 		addNonScrollingTab(strategicPlanManagementPanel);
 		addNonScrollingTab(monitoringPlanManagementPanel);
 		addNonScrollingTab(objectsOnlyManagementPanel);
