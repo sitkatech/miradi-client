@@ -34,8 +34,8 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, new Class[0]);
 		
 		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
-		getButtonBox().add(new PanelTitleLabel(EAM.text("Show: ")));
-		getButtonBox().add(customizationPanel);
+		addToButtonBox(new PanelTitleLabel(EAM.text("Show: ")));
+		addToButtonBox(customizationPanel);
 	}
 	
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model) throws Exception

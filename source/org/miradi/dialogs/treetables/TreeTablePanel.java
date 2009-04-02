@@ -74,9 +74,9 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree.getTree().addTreeSelectionListener(this);
 	}
 	
-	protected JPanel getButtonBox()
+	protected void addToButtonBox(Component componentToAdd)
 	{
-		return buttonBox; 
+		buttonBox.add(componentToAdd); 
 	}
 
 	private JPanel createButtonBox(Class[] buttonActionClasses) throws Exception

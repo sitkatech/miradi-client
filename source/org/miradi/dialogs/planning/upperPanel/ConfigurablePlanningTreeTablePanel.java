@@ -42,7 +42,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
 
 		customizationPanel = new PlanningViewConfigurableControlPanel(getProject());
-		getButtonBox().add(customizationPanel);
+		addToButtonBox(customizationPanel);
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
