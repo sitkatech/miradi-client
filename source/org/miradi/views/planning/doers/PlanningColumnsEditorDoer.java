@@ -19,21 +19,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ObjectsDoer;
+import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.questions.ColumnConfigurationQuestion;
 
-public class PlanningColumnsEditorDoer extends ObjectsDoer
+public class PlanningColumnsEditorDoer extends AbstractPlanningViewConfigurationCodeListEditorDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected int getGridColumnCount()
 	{
-		return false;
+		return 1;
 	}
 	
 	@Override
-	public void doIt() throws CommandFailedException
+	protected String getConfigurationTag()
 	{
-		if (!isAvailable())
-			return;
+		return PlanningViewConfiguration.TAG_COL_CONFIGURATION;
+	}
+
+	@Override
+	protected Class getConfigurationQuestion()
+	{
+		return ColumnConfigurationQuestion.class;
 	}
 }

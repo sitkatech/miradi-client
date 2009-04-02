@@ -84,6 +84,8 @@ public class QuestionManager
 		addQuestion(new RtfLegendObjectsQuestion());
 		addQuestion(new TncProjectSharingQuestion());
 		addQuestion(new TextBoxZOrderQuestion());
+		addQuestion(new RowConfigurationQuestion());
+		addQuestion(new ColumnConfigurationQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
