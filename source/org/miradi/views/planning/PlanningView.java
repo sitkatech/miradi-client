@@ -54,7 +54,6 @@ import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.legend.PlanningViewControlPanel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
@@ -101,7 +100,7 @@ public class PlanningView extends TabbedView
 	
 	public void createTabs() throws Exception
 	{
-		planningManagementPanel = createConfigurablePlanningPanel(getMainWindow());
+		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
 		strategicPlanManagementPanel = ActionPlanManagementPanel.createStrategicPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		
@@ -123,14 +122,6 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
-	}
-
-	public static PlanningTreeManagementPanel createConfigurablePlanningPanel(MainWindow mainWindowToUse) throws Exception
-	{
-		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)planningTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
-		return new ConfigurablePlanningTreeManagementPanel(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
 	@Override
