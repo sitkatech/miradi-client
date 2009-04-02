@@ -40,6 +40,11 @@ public class PanelTitleLabel extends UiLabel
 		this(text, null);
 	}
 	
+	public PanelTitleLabel(Icon icon)
+	{
+		this("", icon);
+	}
+	
 	public PanelTitleLabel(String text, Icon icon)
 	{
 		super(text, icon, JLabel.LEADING);
