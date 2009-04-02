@@ -108,7 +108,7 @@ public class PlanningView extends TabbedView
 	{
 		planningManagementPanel = createConfigurablePlanningPanel();
 		strategicPlanManagementPanel = createStrategicPlanPanel();
-		monitoringPlanManagementPanel = createMonitoringPlanPanel();
+		monitoringPlanManagementPanel = createMonitoringPlanPanel(getMainWindow());
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
@@ -153,18 +153,18 @@ public class PlanningView extends TabbedView
 		return new ActionPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 	}
 
-	private MonitoringPlanManagementPanel createMonitoringPlanPanel() throws Exception
+	public static MonitoringPlanManagementPanel createMonitoringPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTableModel monitoringPlanTreeTableModel = new MonitoringPlanTreeTableModel(getProject());
+		PlanningTreeTableModel monitoringPlanTreeTableModel = new MonitoringPlanTreeTableModel(mainWindowToUse.getProject());
 		Class[] buttonActions = new Class[] {
 				ActionExpandAllNodes.class, 
 				ActionCollapseAllNodes.class, 
 				ActionPlanningCreationMenu.class,
 				};
-		PlanningTreeTablePanel monitoringPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), monitoringPlanTreeTableModel, buttonActions);
+		PlanningTreeTablePanel monitoringPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, monitoringPlanTreeTableModel, buttonActions);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)monitoringPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel monitoringPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
-		return new MonitoringPlanManagementPanel(getMainWindow(), monitoringPlanTreeTablePanel, monitoringPlanPropertiesPanel);
+		PlanningTreeMultiPropertiesPanel monitoringPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		return new MonitoringPlanManagementPanel(mainWindowToUse, monitoringPlanTreeTablePanel, monitoringPlanPropertiesPanel);
 	}
 
 	@Override
