@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
@@ -41,7 +42,22 @@ public class ObjectsOnlyPlanningTreeTableModel extends PlanningTreeTableModel
 		return RowManager.getVisibleRowsForSingleType(projectToUse.getCurrentViewData());
 	}
 
+	@Override
 	public void updateColumnsToShow() throws Exception
 	{
+	}
+	
+	@Override
+	public CodeList getRowCodesToShow()
+	{
+		try
+		{
+			return getVisibleRowCodes(getProject());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 }

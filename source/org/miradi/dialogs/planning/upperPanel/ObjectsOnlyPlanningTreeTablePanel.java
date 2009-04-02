@@ -21,6 +21,8 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import javax.swing.JPanel;
 
+import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
@@ -40,8 +42,26 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		return new ObjectsOnlyPlanningTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions);
 	}
 	
-	protected void addCustomButton(JPanel box)
+	@Override
+	public void dispose()
 	{
-		//FIXME add objects only drop down here
+		super.dispose();
+		
+		customizationPanel.dispose();
 	}
+	
+	protected void addCustomComponent(JPanel box)
+	{
+		try
+		{
+			customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
+			box.add(customizationPanel);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+	
+	private PlanningViewObjectsOnlyDropDownPanel customizationPanel; 
 }
