@@ -19,7 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
@@ -32,6 +34,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
 		
 		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
+		getButtonBox().add(new PanelTitleLabel(EAM.text("Show: ")));
 		getButtonBox().add(customizationPanel);
 	}
 	
