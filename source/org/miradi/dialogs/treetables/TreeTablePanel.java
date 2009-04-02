@@ -51,12 +51,12 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener
 {
-	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse)
+	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse) throws Exception
 	{
 		this(mainWindowToUse, treeToUse, new Class[0]);
 	}
 	
-	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
+	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
 	{
 		super(mainWindowToUse, treeToUse);
 		mainWindow = mainWindowToUse;
@@ -74,7 +74,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree.getTree().addTreeSelectionListener(this);
 	}
 
-	private JPanel createButtonBox(Class[] buttonActionClasses)
+	private JPanel createButtonBox(Class[] buttonActionClasses) throws Exception
 	{
 		GridLayoutPlus layout = createButtonLayout();
 		JPanel box = new JPanel(layout);
@@ -137,7 +137,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		}
 	}
 	
-	protected void addCustomComponent(JPanel box)
+	protected void addCustomComponent(JPanel box) throws Exception
 	{
 	}
 

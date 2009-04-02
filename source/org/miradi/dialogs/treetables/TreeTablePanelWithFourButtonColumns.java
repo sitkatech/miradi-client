@@ -25,7 +25,7 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class TreeTablePanelWithFourButtonColumns extends TreeTablePanel
 {
-	public TreeTablePanelWithFourButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses)
+	public TreeTablePanelWithFourButtonColumns(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActionClasses);
 	}

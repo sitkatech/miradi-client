@@ -64,13 +64,13 @@ public class TargetViabililtyTreePanel extends TargetViabililtyTreeTablePanel
 		return new TargetViabililtyTreePanel(mainWindowToUse, tree, model, buttonActionsToUse);
 	}
 
-	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse)
+	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, Project projectToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, projectToUse, treeToUse);
 		model = modelToUse;
 	}
 	
-	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActionsToUse)
+	private TargetViabililtyTreePanel(MainWindow mainWindowToUse, TargetViabilityTreeTable treeToUse, GenericTreeTableModel modelToUse, Class[] buttonActionsToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActionsToUse);
 		model = modelToUse;
