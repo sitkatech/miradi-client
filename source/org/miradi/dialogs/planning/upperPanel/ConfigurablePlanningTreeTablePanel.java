@@ -24,7 +24,9 @@ import org.miradi.actions.ActionCreatePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.ActionPlanningColumnsEditor;
 import org.miradi.actions.ActionPlanningCreationMenu;
+import org.miradi.actions.ActionPlanningRowsEditor;
 import org.miradi.actions.ActionRenamePlanningViewConfiguration;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
@@ -74,6 +76,8 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 			ActionCreatePlanningViewConfiguration.class,
 			ActionRenamePlanningViewConfiguration.class,
 			ActionDeletePlanningViewConfiguration.class,
+			ActionPlanningRowsEditor.class,
+			ActionPlanningColumnsEditor.class, 
 		};
 	}
 	
