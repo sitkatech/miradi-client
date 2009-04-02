@@ -26,7 +26,10 @@
     <property name="eam.src.root" value="${source.cvs.module}/source"/>
     <property name="eam.test.src.root" value="${source.cvs.module}/tests"/>
     <property name="eam.class.root" value="${dist.temp}/bin"/>
+    <property name="eam.test.class.root" value="${dist.temp}/testbin"/>
 	<property name="eam.thirdparty" value="${dist.temp.jars}"/>
+	<property name="eam.resources" value="${eam.src.root}/resources" />
+	<property name="eam.fieldlabels.properties" value="${eam.resources}/FieldLabels.properties"/>
 	<property name="eam.translations.dir" value = "${eam.src.root}/translations"/>
     
     <property name="translations.dir" value="${source.cvs.module}/translations" />
@@ -141,9 +144,63 @@
   </target>
 
   <!-- ================================================================== -->
+  <!-- T E S T                                                            -->
+  <!-- ================================================================== -->
+
+  <target name="test" depends="init, build" description="Run unit tests">
+  	<mkdir dir="${eam.test.class.root}"/>
+    <javac source="1.5" target="1.5" compiler="javac1.5" optimize="on" failonerror="true" 
+    		srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
+    	<compilerarg value="-Xlint:unchecked" />
+        <classpath refid="eam.class.path"/>
+        <include name="**/*.java"/>
+    </javac>
+  	
+  	<copy todir="${eam.test.class.root}/resources">
+  		<fileset dir="${eam.resources}" />
+  	</copy>
+  	<copy todir="${eam.test.class.root}/translations">
+  		<fileset dir="${eam.test.src.root}/translations" />
+  	</copy>
+  	<copy todir="${eam.test.class.root}">
+  		<fileset dir="${eam.src.root}">
+  			<include name="**/*.txt" />
+  		</fileset>
+  	</copy>
+
+  	<!--
+  	<java classname='org.miradi.main.MainTests'>
+  		<classpath refid='eam.class.path' />
+		<classpath>
+			<pathelement location='${eam.test.class.root}' />
+			<pathelement location='${eam.class.root}' />
+			<pathelement location='/work/benetech/miradi3/eclipse/miradi-thirdparty/JUnit/bin/junit.jar' />
+		</classpath>
+  	</java>
+  	-->
+	<junit haltonfailure='on' showoutput='on'>
+  		<classpath refid='eam.class.path' />
+		<classpath location='${eam.class.root}' />
+
+		<test name='org.miradi.main.MainTests' todir='${eam.test.class.root}' />
+<!--
+		<batchtest fork="yes">
+			<fileset dir="${eam.test.src.root}">
+				<include name="**/Test*.java"/>
+				<exclude name="**/MainTests.java"/>
+			</fileset>
+		</batchtest>
+-->
+
+  	    <formatter type="plain" />
+
+  	</junit>
+  </target>
+
+  <!-- ================================================================== -->
   <!-- J A R                                                          -->
   <!-- ================================================================== -->
-    <target name="jar" depends="build" description="Create jar">
+    <target name="jar" depends="test" description="Create jar">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/miradi.jar">
           	<manifest>
@@ -388,7 +445,7 @@
 	<echo message="append FieldLabels.properties strings to pot file"/>
 	<exec executable="ruby" failonerror="true">
 		<arg value="${build.dir}/AddFieldLabelsToPOT.rb"/>
-		<arg value="${eam.src.root}/resources/FieldLabels.properties"/>
+		<arg value="${eam.fieldlabels.properties}"/>
 		<arg value="${miradi.pot}"/>
 	</exec>
 	<echo message="append each HTML file as an entry in the pot file"/>
