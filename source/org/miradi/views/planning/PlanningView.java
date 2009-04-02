@@ -24,7 +24,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionAssignResource;
-import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionCreatePlanningViewConfiguration;
@@ -34,7 +33,6 @@ import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
-import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionRemoveAssignment;
@@ -58,9 +56,7 @@ import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.legend.PlanningViewControlPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.StrategicPlanTreeTableModel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -106,7 +102,7 @@ public class PlanningView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		planningManagementPanel = createConfigurablePlanningPanel(getMainWindow());
-		strategicPlanManagementPanel = createStrategicPlanPanel(getMainWindow());
+		strategicPlanManagementPanel = ActionPlanManagementPanel.createStrategicPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
@@ -135,21 +131,6 @@ public class PlanningView extends TabbedView
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)planningTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		return new ConfigurablePlanningTreeManagementPanel(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-	}
-
-	public static ActionPlanManagementPanel createStrategicPlanPanel(MainWindow mainWindowToUse)
-			throws Exception
-	{
-		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(mainWindowToUse.getProject());
-		Class[] buttonActions = new Class[] {
-			ActionExpandAllNodes.class, 
-			ActionCollapseAllNodes.class, 
-			ActionPlanningCreationMenu.class,
-			};
-		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, strategicPlanTreeTableModel, buttonActions);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
-		return new ActionPlanManagementPanel(mainWindowToUse, strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 	}
 
 	@Override
