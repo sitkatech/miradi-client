@@ -28,7 +28,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
@@ -44,31 +43,6 @@ import org.miradi.utils.CodeList;
 
 public class ColumnManager
 {
-
-	static public CodeList getMasterColumnList()
-	{
-		CodeList masterColumnList = new CodeList();
-		
-		masterColumnList.add(Desire.TAG_FULL_TEXT);
-		masterColumnList.add(Indicator.PSEUDO_TAG_METHODS); 
-		masterColumnList.add(Indicator.PSEUDO_TAG_FACTOR);
-		masterColumnList.add(Indicator.TAG_PRIORITY);
-		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
-		masterColumnList.add(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
-		masterColumnList.add(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE);
-		
-		masterColumnList.add(BaseObject.PSEUDO_TAG_WHO_TOTAL);
-		masterColumnList.add(BaseObject.PSEUDO_TAG_WHEN_TOTAL);
-		masterColumnList.add(BaseObject.PSEUDO_TAG_BUDGET_TOTAL);
-		masterColumnList.add(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
-		masterColumnList.add(Measurement.META_COLUMN_TAG);
-		masterColumnList.add(Indicator.META_COLUMN_TAG);
-		masterColumnList.add(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL);
-		masterColumnList.add(Factor.TAG_COMMENT);
-			
-		return masterColumnList;
-	}
-
 	public static CodeList getGoalColumns()
 	{
 		String[] list = {
