@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.OperationalPlan;
 
-import javax.swing.Icon;
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionCollapseAllNodes;
@@ -41,8 +40,6 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
-import org.miradi.icons.IconManager;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -159,28 +156,6 @@ public class OperationalPlanView extends TabbedView
 		return view.cardName().equals(getViewName());
 	}
 	
-	class WorkPlanManagementPanel extends PlanningTreeManagementPanel
-	{
-		public WorkPlanManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)	throws Exception
-		{
-			super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-		}
-		
-		@Override
-		public String getPanelDescription()
-		{
-			return panelDescription;
-		}
-
-		@Override
-		public Icon getIcon()
-		{
-			return IconManager.getActivityIcon();
-		}
-
-		private final String panelDescription = EAM.text("Tab|Work Plan");
-	}
-
 	private PlanningTreeManagementPanel workPlanManagementPanel;
 	private ResourcePoolManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
