@@ -107,26 +107,6 @@ public class PlanningView extends TabbedView
 		addPlanningViewDoersToMap();
 	}
 	
-	class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPanel
-	{
-		public ConfigurablePlanningTreeManagementPanel(
-				MainWindow mainWindowToUse,
-				PlanningTreeTablePanel planningTreeTablePanel,
-				PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
-				throws Exception
-		{
-			super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-		}
-		
-		@Override
-		public String getPanelDescription()
-		{
-			return panelDescription;
-		}
-		
-		private final String panelDescription = EAM.text("Tab|Custom");
-	}
-	
 	class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 	{
 		public ActionPlanManagementPanel(MainWindow mainWindowToUse,
