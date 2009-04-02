@@ -93,7 +93,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		return project;
 	}
 
-	abstract public String getStyleChoiceName();
 	abstract public String getChoiceTag();
 	abstract boolean comboBoxNeedsSave() throws Exception;
 	
