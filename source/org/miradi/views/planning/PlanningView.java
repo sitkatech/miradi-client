@@ -57,7 +57,6 @@ import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.legend.PlanningViewControlPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.MonitoringPlanTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
@@ -108,7 +107,7 @@ public class PlanningView extends TabbedView
 	{
 		planningManagementPanel = createConfigurablePlanningPanel();
 		strategicPlanManagementPanel = createStrategicPlanPanel();
-		monitoringPlanManagementPanel = createMonitoringPlanPanel(getMainWindow());
+		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
@@ -151,20 +150,6 @@ public class PlanningView extends TabbedView
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
 		return new ActionPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
-	}
-
-	public static MonitoringPlanManagementPanel createMonitoringPlanPanel(MainWindow mainWindowToUse) throws Exception
-	{
-		PlanningTreeTableModel monitoringPlanTreeTableModel = new MonitoringPlanTreeTableModel(mainWindowToUse.getProject());
-		Class[] buttonActions = new Class[] {
-				ActionExpandAllNodes.class, 
-				ActionCollapseAllNodes.class, 
-				ActionPlanningCreationMenu.class,
-				};
-		PlanningTreeTablePanel monitoringPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, monitoringPlanTreeTableModel, buttonActions);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)monitoringPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel monitoringPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
-		return new MonitoringPlanManagementPanel(mainWindowToUse, monitoringPlanTreeTablePanel, monitoringPlanPropertiesPanel);
 	}
 
 	@Override
