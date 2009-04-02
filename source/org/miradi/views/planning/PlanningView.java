@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 
-import javax.swing.Icon;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
@@ -64,9 +63,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.StrategicPlanTreeTableModel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
-import org.miradi.icons.IconManager;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
@@ -107,31 +104,6 @@ public class PlanningView extends TabbedView
 		addPlanningViewDoersToMap();
 	}
 	
-	class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
-	{
-		public MonitoringPlanManagementPanel(MainWindow mainWindowToUse,
-				PlanningTreeTablePanel planningTreeTablePanel,
-				PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
-				throws Exception
-		{
-			super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-		}
-		
-		@Override
-		public String getPanelDescription()
-		{
-			return panelDescription;
-		}
-
-		@Override
-		public Icon getIcon()
-		{
-			return IconManager.getIndicatorIcon();
-		}
-
-		private final String panelDescription = EAM.text("Tab|Monitoring Plan");
-	}
-
 	public void createTabs() throws Exception
 	{
 		planningManagementPanel = createConfigurablePlanningPanel();
