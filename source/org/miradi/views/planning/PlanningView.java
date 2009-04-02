@@ -105,8 +105,8 @@ public class PlanningView extends TabbedView
 	
 	public void createTabs() throws Exception
 	{
-		planningManagementPanel = createConfigurablePlanningPanel();
-		strategicPlanManagementPanel = createStrategicPlanPanel();
+		planningManagementPanel = createConfigurablePlanningPanel(getMainWindow());
+		strategicPlanManagementPanel = createStrategicPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
@@ -129,27 +129,27 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 
-	private PlanningTreeManagementPanel createConfigurablePlanningPanel() throws Exception
+	public static PlanningTreeManagementPanel createConfigurablePlanningPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
+		PlanningTreeTablePanel planningTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)planningTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
-		return new ConfigurablePlanningTreeManagementPanel(getMainWindow(), planningTreeTablePanel, planningTreePropertiesPanel);
+		PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		return new ConfigurablePlanningTreeManagementPanel(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
-	private ActionPlanManagementPanel createStrategicPlanPanel()
+	public static ActionPlanManagementPanel createStrategicPlanPanel(MainWindow mainWindowToUse)
 			throws Exception
 	{
-		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(getProject());
+		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(mainWindowToUse.getProject());
 		Class[] buttonActions = new Class[] {
 			ActionExpandAllNodes.class, 
 			ActionCollapseAllNodes.class, 
 			ActionPlanningCreationMenu.class,
 			};
-		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(getMainWindow(), strategicPlanTreeTableModel, buttonActions);
+		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, strategicPlanTreeTableModel, buttonActions);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(getMainWindow(), ORef.INVALID, treeAsObjectPicker);
-		return new ActionPlanManagementPanel(getMainWindow(), strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
+		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		return new ActionPlanManagementPanel(mainWindowToUse, strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 	}
 
 	@Override
