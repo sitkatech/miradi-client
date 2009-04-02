@@ -21,8 +21,9 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
+import org.miradi.views.planning.ColumnManager;
+import org.miradi.views.planning.RowManager;
 
-//FIXME This class is still under construction
 public class ObjectsOnlyPlanningTreeTableModel extends PlanningTreeTableModel
 {
 	public ObjectsOnlyPlanningTreeTableModel(Project project) throws Exception
@@ -32,12 +33,12 @@ public class ObjectsOnlyPlanningTreeTableModel extends PlanningTreeTableModel
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
 	{
-		return new CodeList();
+		return ColumnManager.getVisibleColumnsForSingleType(projectToUse.getCurrentViewData());
 	}
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
-		return new CodeList();
+		return RowManager.getVisibleRowsForSingleType(projectToUse.getCurrentViewData());
 	}
 
 	public void updateColumnsToShow() throws Exception
