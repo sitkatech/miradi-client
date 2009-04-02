@@ -24,6 +24,7 @@ import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
@@ -57,7 +58,7 @@ public class ObjectsOnlyManagementPanel extends PlanningTreeManagementPanel
 				ActionCollapseAllNodes.class, 
 				};
 		
-		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel, buttonActions);
+		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = ObjectsOnlyPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel, buttonActions);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)objectsOnlyPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		return new ObjectsOnlyManagementPanel(mainWindowToUse, objectsOnlyPlanTreeTablePanel, objectsOnlyPlanPropertiesPanel);
