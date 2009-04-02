@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -137,6 +138,15 @@ public class ViewData extends BaseObject
 		return super.getRefListForField(field);
 	}
 	
+	public static ViewData find(ObjectManager objectManager, ORef viewDataRef)
+	{
+		return (ViewData) objectManager.findObject(viewDataRef);
+	}
+	
+	public static ViewData find(Project project, ORef viewDataRef)
+	{
+		return find(project.getObjectManager(), viewDataRef);
+	}
 	
 	void clear()
 	{
