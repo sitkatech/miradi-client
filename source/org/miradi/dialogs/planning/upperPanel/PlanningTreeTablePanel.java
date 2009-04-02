@@ -25,12 +25,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import org.miradi.actions.ActionCollapseAllNodes;
-import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.actions.ActionExpandAllNodes;
-import org.miradi.actions.ActionPlanningCreationMenu;
-import org.miradi.actions.ActionTreeNodeDown;
-import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
@@ -68,17 +62,12 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		return createPlanningTreeTablePanel(mainWindowToUse, noButtons);
 	}
 	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
-	{
-		return createPlanningTreeTablePanel(mainWindowToUse, getButtonActions());
-	}
-	
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, Class[] buttonActions) throws Exception
 	{
 		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject());
 		return createPlanningTreeTablePanel(mainWindowToUse, model, buttonActions);
 	}
-
+		
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, Class[] buttonActions) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);	
@@ -134,18 +123,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		super.dispose();
 		
 		mainTable.dispose();
-	}
-	
-	private static Class[] getButtonActions()
-	{
-		return new Class[] {
-			ActionExpandAllNodes.class,
-			ActionCollapseAllNodes.class,
-			ActionTreeNodeUp.class,
-			ActionTreeNodeDown.class,
-			ActionPlanningCreationMenu.class,
-			ActionDeletePlanningViewTreeNode.class,
-		};
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)

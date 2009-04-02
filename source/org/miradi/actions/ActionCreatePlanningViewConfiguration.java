@@ -23,7 +23,7 @@ import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreatePlanningViewConfiguration extends MainWindowAction
+public class ActionCreatePlanningViewConfiguration extends ObjectsAction
 {
 	public ActionCreatePlanningViewConfiguration(MainWindow mainWindowToUse)
 	{

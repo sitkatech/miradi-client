@@ -17,25 +17,39 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions;
+package org.miradi.dialogs.planning;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
+import org.miradi.project.Project;
 
-public class ActionRenamePlanningViewConfiguration extends ObjectsAction
+//FIXME class under construction
+abstract public class PlanningViewCustomButtonPanel extends DisposablePanel implements CommandExecutedListener
 {
-	public ActionRenamePlanningViewConfiguration(MainWindow mainWindowToUse)
+	public PlanningViewCustomButtonPanel(Project projectToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		project = projectToUse;
+		
+		getProject().addCommandExecutedListener(this);
+	}
+	
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+		
+		getProject().removeCommandExecutedListener(this);
 	}
 
-	private static String getLabel()
+	public Project getProject()
 	{
-		return EAM.text("Action|Rename Custom");
+		return project;
 	}
-
-	public String getToolTipText()
+	
+	public void commandExecuted(CommandExecutedEvent event)
 	{
-		return EAM.text("TT|Rename the selected Custom Planning View");
 	}
+	
+	private Project project;
 }

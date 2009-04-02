@@ -23,7 +23,7 @@ import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionDeletePlanningViewConfiguration extends MainWindowAction
+public class ActionDeletePlanningViewConfiguration extends ObjectsAction
 {
 	public ActionDeletePlanningViewConfiguration(MainWindow mainWindowToUse)
 	{

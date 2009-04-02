@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.planning.legend.PlanningViewSingleLevelComboBox;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -31,23 +30,13 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.PlanningViewSingleLevelQuestion;
 
-public class PlanningViewObjectsOnlyDropDownPanel extends DisposablePanel implements CommandExecutedListener
+public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButtonPanel implements CommandExecutedListener
 {
 	public PlanningViewObjectsOnlyDropDownPanel(Project projectToUse) throws Exception
 	{
-		project = projectToUse;
-	
+		super(projectToUse);
+		
 		rebuildCustomizationPanel();
-		
-		getProject().addCommandExecutedListener(this);
-	}
-	
-	@Override
-	public void dispose()
-	{
-		super.dispose();
-		
-		getProject().removeCommandExecutedListener(this);
 	}
 	
 	protected void rebuildCustomizationPanel() throws Exception
@@ -60,7 +49,7 @@ public class PlanningViewObjectsOnlyDropDownPanel extends DisposablePanel implem
 	
 	private void selectAppropriateSingleLevelComboBoxItem() throws Exception
 	{
-		ViewData viewData = project.getCurrentViewData();
+		ViewData viewData = getProject().getCurrentViewData();
 		String preconfiguredChoice = getCurrentSingleLevelChoice(viewData);
 		setComboBoxSelection(preconfiguredChoice);
 	}
@@ -106,12 +95,6 @@ public class PlanningViewObjectsOnlyDropDownPanel extends DisposablePanel implem
 		
 		singleLevelCombo.setSelectedItemWithoutFiring(choiceItemToSelect);
 	}
-		
-	public Project getProject()
-	{
-		return project;
-	}
 	
-	private Project project;
 	private PlanningViewSingleLevelComboBox singleLevelCombo;
 }

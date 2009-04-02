@@ -17,25 +17,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions;
+package org.miradi.views.planning.doers;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.views.ObjectsDoer;
 
-public class ActionRenamePlanningViewConfiguration extends ObjectsAction
+public class PlanningRowsEditorDoer extends ObjectsDoer
 {
-	public ActionRenamePlanningViewConfiguration(MainWindow mainWindowToUse)
+	@Override
+	public boolean isAvailable()
 	{
-		super(mainWindowToUse, getLabel());
+		return false;
 	}
-
-	private static String getLabel()
+	
+	@Override
+	public void doIt() throws CommandFailedException
 	{
-		return EAM.text("Action|Rename Custom");
-	}
-
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Rename the selected Custom Planning View");
+		if (!isAvailable())
+			return;
 	}
 }

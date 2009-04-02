@@ -22,20 +22,20 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionRenamePlanningViewConfiguration extends ObjectsAction
+public class ActionPlanningRowsEditor extends ObjectsAction
 {
-	public ActionRenamePlanningViewConfiguration(MainWindow mainWindowToUse)
+	public ActionPlanningRowsEditor(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Rename Custom");
+		return EAM.text("Action|Table|Edit Rows...");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Rename the selected Custom Planning View");
+		return EAM.text("TT|Change visible rows");
 	}
 }

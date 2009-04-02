@@ -220,6 +220,8 @@ public class Actions
 		registerAction(new ActionTreeShareActivity(mainWindow));
 		registerAction(new ActionTreeShareMethod(mainWindow));
 		registerAction(new ActionPlanningCreationMenu(mainWindow));
+		registerAction(new ActionPlanningRowsEditor(mainWindow));
+		registerAction(new ActionPlanningColumnsEditor(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));
