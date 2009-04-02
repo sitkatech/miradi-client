@@ -28,7 +28,6 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.PlanningView;
 
 public class StrategicRowColumnProvider implements RowColumnProvider
 {	
@@ -52,10 +51,5 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
 				Strategy.OBJECT_NAME,});
-	}
-	
-	public String getPropertyName()
-	{
-		return PlanningView.STRATEGIC_PLAN_RADIO_CHOICE;
 	}
 }

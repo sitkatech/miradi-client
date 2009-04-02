@@ -45,9 +45,4 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS,
 		});
 	}
-
-	public String getPropertyName()
-	{
-		return "ProgressReport";
-	}
 }
