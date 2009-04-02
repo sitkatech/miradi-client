@@ -86,7 +86,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions);
 	}
 	
-	private PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		model = modelToUse;
