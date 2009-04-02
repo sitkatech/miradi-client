@@ -80,6 +80,8 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		JPanel box = new JPanel(layout);
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		addButtonsToBox(buttonActionClasses, box, mainWindow.getActions());
+		addCustomComponent(box);
+		
 		return box;
 	}
 
@@ -133,11 +135,9 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		{
 			addCreateButtonAndAddToBox(classes[index], box, actions);
 		}
-		
-		addCustomButton(box);
 	}
 	
-	protected void addCustomButton(JPanel box)
+	protected void addCustomComponent(JPanel box)
 	{
 	}
 
