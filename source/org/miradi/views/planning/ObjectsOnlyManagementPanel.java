@@ -30,7 +30,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-//FIXME this class is still under construction
 public class ObjectsOnlyManagementPanel extends PlanningTreeManagementPanel
 {
 	public ObjectsOnlyManagementPanel(MainWindow mainWindowToUse,
