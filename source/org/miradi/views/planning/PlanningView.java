@@ -103,6 +103,7 @@ public class PlanningView extends TabbedView
 		planningManagementPanel = ConfigurablePlanningTreeManagementPanel.createConfigurablePlanningPanel(getMainWindow());
 		strategicPlanManagementPanel = ActionPlanManagementPanel.createStrategicPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
+		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
@@ -118,6 +119,7 @@ public class PlanningView extends TabbedView
 		
 		addNonScrollingTab(strategicPlanManagementPanel);
 		addNonScrollingTab(monitoringPlanManagementPanel);
+		addNonScrollingTab(objectsOnlyManagementPanel);
 		addNonScrollingTab(horizontalSplitPane);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
@@ -131,6 +133,7 @@ public class PlanningView extends TabbedView
 		planningManagementPanel.updateSplitterLocation();
 		strategicPlanManagementPanel.updateSplitterLocation();
 		monitoringPlanManagementPanel.updateSplitterLocation();
+		objectsOnlyManagementPanel.updateSplitterLocation();
 		resourceManagementPanel.updateSplitterLocation();
 		accountingCodePoolManagementPanel.updateSplitterLocation();
 		fundingSourcePoolManagementPanel.updateSplitterLocation();
@@ -147,6 +150,9 @@ public class PlanningView extends TabbedView
 		
 		monitoringPlanManagementPanel.dispose();
 		monitoringPlanManagementPanel = null;
+		
+		objectsOnlyManagementPanel.dispose();
+		objectsOnlyManagementPanel = null;
 		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
@@ -260,6 +266,7 @@ public class PlanningView extends TabbedView
 	public static final String CUSTOMIZABLE_COMBO = "CostomizableCombo";
 	
 	private PlanningViewControlPanel controlPanel;
+	private PlanningTreeManagementPanel objectsOnlyManagementPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
