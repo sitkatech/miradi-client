@@ -63,27 +63,27 @@ public class RowConfigurationQuestion extends StaticChoiceQuestion
 	{	
 		return new ChoiceItem[]
 		{
-				createChoiceItem(ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon()),
-				createChoiceItem(ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon()),
-				createChoiceItem(Target.OBJECT_NAME, new TargetIcon()),
-				createChoiceItem(Goal.OBJECT_NAME, new GoalIcon()),
-				createChoiceItem(Objective.OBJECT_NAME, new ObjectiveIcon()),
-				createChoiceItem(Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()),
-				createChoiceItem(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon()), 
-				createChoiceItem(ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon()),
-				createChoiceItem(IntermediateResult.OBJECT_NAME, new IntermediateResultIcon()),
-				createChoiceItem(Strategy.OBJECT_NAME, new StrategyIcon()),
-				createChoiceItem(Task.ACTIVITY_NAME, new ActivityIcon()),
-				createChoiceItem(Indicator.OBJECT_NAME, new IndicatorIcon()),
-				createChoiceItem(Task.METHOD_NAME, new MethodIcon()),
-				createChoiceItem(Task.OBJECT_NAME, new TaskIcon()),
-				createChoiceItem(Measurement.OBJECT_NAME, new MeasurementIcon()),
-				createChoiceItem(Assignment.OBJECT_NAME, new AssignmentIcon()),
+				createChoiceItem(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon()),
+				createChoiceItem(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon()),
+				createChoiceItem(Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon()),
+				createChoiceItem(Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon()),
+				createChoiceItem(Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon()),
+				createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()),
+				createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon()), 
+				createChoiceItem(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon()),
+				createChoiceItem(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, new IntermediateResultIcon()),
+				createChoiceItem(Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon()),
+				createChoiceItem(Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon()),
+				createChoiceItem(Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon()),
+				createChoiceItem(Task.getObjectType(), Task.METHOD_NAME, new MethodIcon()),
+				createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()),
+				createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()),
+				createChoiceItem(Assignment.getObjectType(), Assignment.OBJECT_NAME, new AssignmentIcon()),
 		};
 	}
 
-	private static ChoiceItem createChoiceItem(String objectName, Icon iconToUse)
+	private static ChoiceItem createChoiceItem(int objectType, String objectName, Icon iconToUse)
 	{
-		return new ChoiceItem(objectName, EAM.fieldLabel(ConceptualModelDiagram.getObjectType(), objectName), iconToUse);
+		return new ChoiceItem(objectName, EAM.fieldLabel(objectType, objectName), iconToUse);
 	}
 }
