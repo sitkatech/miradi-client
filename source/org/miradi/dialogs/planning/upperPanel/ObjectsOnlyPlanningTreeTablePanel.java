@@ -22,7 +22,6 @@ package org.miradi.dialogs.planning.upperPanel;
 import javax.swing.JPanel;
 
 import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
@@ -50,17 +49,10 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		customizationPanel.dispose();
 	}
 	
-	protected void addCustomComponent(JPanel box)
+	protected void addCustomComponent(JPanel box) throws Exception
 	{
-		try
-		{
-			customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
-			box.add(customizationPanel);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
+		box.add(customizationPanel);
 	}
 	
 	private PlanningViewObjectsOnlyDropDownPanel customizationPanel; 

@@ -47,12 +47,12 @@ import org.miradi.project.Project;
 
 public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButtonColumns
 {
-	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse)
+	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, Project projectToUse, TreeTableWithStateSaving treeToUse) throws Exception
 	{
 		this( mainWindowToUse, treeToUse, buttonActions);
 	}
 
-	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionToUse)
+	public TargetViabililtyTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActionToUse);
 		treeTableScrollPane.getViewport().setBackground(AppPreferences.getDataPanelBackgroundColor());
