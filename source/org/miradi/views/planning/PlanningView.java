@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 
-import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionAssignResource;
@@ -34,7 +33,9 @@ import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
 import org.miradi.actions.ActionImportAccountingCodes;
+import org.miradi.actions.ActionPlanningColumnsEditor;
 import org.miradi.actions.ActionPlanningCreationMenu;
+import org.miradi.actions.ActionPlanningRowsEditor;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.ActionRenamePlanningViewConfiguration;
 import org.miradi.actions.ActionTreeCreateActivity;
@@ -53,9 +54,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
-import org.miradi.dialogs.planning.legend.PlanningViewControlPanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -63,7 +61,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.AddAssignmentDoer;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
@@ -73,7 +70,9 @@ import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
 import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
 import org.miradi.views.planning.doers.DeletePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
+import org.miradi.views.planning.doers.PlanningColumnsEditorDoer;
 import org.miradi.views.planning.doers.PlanningCreationMenuDoer;
+import org.miradi.views.planning.doers.PlanningRowsEditorDoer;
 import org.miradi.views.planning.doers.RemoveAssignmentDoer;
 import org.miradi.views.planning.doers.RenamePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
@@ -109,18 +108,18 @@ public class PlanningView extends TabbedView
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
-		PlanningTreeTablePanel treePanel = (PlanningTreeTablePanel)planningManagementPanel.getListPanel();
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treePanel.getTree();
-		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
-		MiradiScrollPane controlBarScrollPane = new MiradiScrollPane(controlPanel);
-		controlBarScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-		MainPlanningPanel horizontalSplitPane = new MainPlanningPanel(controlBarScrollPane, planningManagementPanel);
+//		PlanningTreeTablePanel treePanel = (PlanningTreeTablePanel)planningManagementPanel.getListPanel();
+//		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treePanel.getTree();
+//		controlPanel = new PlanningViewControlPanel(getMainWindow(), treeAsObjectPicker);
+//		MiradiScrollPane controlBarScrollPane = new MiradiScrollPane(controlPanel);
+//		controlBarScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+//
+//		MainPlanningPanel horizontalSplitPane = new MainPlanningPanel(controlBarScrollPane, planningManagementPanel);
 		
 		addNonScrollingTab(strategicPlanManagementPanel);
 		addNonScrollingTab(monitoringPlanManagementPanel);
 		addNonScrollingTab(objectsOnlyManagementPanel);
-		addNonScrollingTab(horizontalSplitPane);
+		addNonScrollingTab(planningManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
@@ -162,8 +161,6 @@ public class PlanningView extends TabbedView
 		
 		fundingSourcePoolManagementPanel.dispose();
 		fundingSourcePoolManagementPanel = null;
-		
-		controlPanel.dispose();
 	}
 
 	public String cardName()
@@ -213,6 +210,8 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningCreationMenuDoer());
+		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
+		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
@@ -265,7 +264,6 @@ public class PlanningView extends TabbedView
 	public static final String SINGLE_LEVEL_COMBO = "SingleLevelCombo";
 	public static final String CUSTOMIZABLE_COMBO = "CostomizableCombo";
 	
-	private PlanningViewControlPanel controlPanel;
 	private PlanningTreeManagementPanel objectsOnlyManagementPanel;
 	private PlanningTreeManagementPanel planningManagementPanel;
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
