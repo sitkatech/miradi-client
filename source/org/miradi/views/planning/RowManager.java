@@ -25,49 +25,13 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Assignment;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningViewConfiguration;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 
 public class RowManager
 {
-
-	static public CodeList getMasterRowList()
-	{
-		CodeList masterRowList = new CodeList();
-		masterRowList.add(ConceptualModelDiagram.OBJECT_NAME);
-		masterRowList.add(ResultsChainDiagram.OBJECT_NAME);
-		masterRowList.add(Target.OBJECT_NAME);
-		masterRowList.add(Goal.OBJECT_NAME);
-		masterRowList.add(Objective.OBJECT_NAME);
-		masterRowList.add(Cause.OBJECT_NAME_THREAT);
-		masterRowList.add(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
-		masterRowList.add(ThreatReductionResult.OBJECT_NAME);
-		masterRowList.add(IntermediateResult.OBJECT_NAME);
-		masterRowList.add(Strategy.OBJECT_NAME);
-		masterRowList.add(Task.ACTIVITY_NAME);
-		masterRowList.add(Indicator.OBJECT_NAME);
-		masterRowList.add(Task.METHOD_NAME);
-		masterRowList.add(Task.OBJECT_NAME);
-		masterRowList.add(Measurement.OBJECT_NAME);
-		masterRowList.add(Assignment.OBJECT_NAME);
-	
-		return masterRowList;
-	}
-
 	public static CodeList getVisibleRowCodes(ViewData viewData)
 	{
 		String style = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
