@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import javax.swing.JPanel;
-
 import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
 import org.miradi.main.MainWindow;
 
@@ -32,6 +30,9 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 												Class[] buttonActions) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
+		
+		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
+		getButtonBox().add(customizationPanel);
 	}
 	
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, Class[] buttonActions) throws Exception
@@ -47,12 +48,6 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		super.dispose();
 		
 		customizationPanel.dispose();
-	}
-	
-	protected void addCustomComponent(JPanel box) throws Exception
-	{
-		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
-		box.add(customizationPanel);
 	}
 	
 	private PlanningViewObjectsOnlyDropDownPanel customizationPanel; 

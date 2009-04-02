@@ -73,6 +73,11 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		tree.getTree().addSelectionRow(0);
 		tree.getTree().addTreeSelectionListener(this);
 	}
+	
+	protected JPanel getButtonBox()
+	{
+		return buttonBox; 
+	}
 
 	private JPanel createButtonBox(Class[] buttonActionClasses) throws Exception
 	{
@@ -80,7 +85,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		JPanel box = new JPanel(layout);
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		addButtonsToBox(buttonActionClasses, box, mainWindow.getActions());
-		addCustomComponent(box);
 		
 		return box;
 	}
@@ -137,10 +141,6 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		}
 	}
 	
-	protected void addCustomComponent(JPanel box) throws Exception
-	{
-	}
-
 	private void addCreateButtonAndAddToBox(Class actionClass, JPanel box, Actions actions)
 	{
 		UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
