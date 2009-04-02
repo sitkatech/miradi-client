@@ -25,7 +25,6 @@ import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.PlanningView;
 
 public class WorkPlanRowColumnProvider implements RowColumnProvider
 {
@@ -48,10 +47,5 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				Indicator.OBJECT_NAME,
 				Task.METHOD_NAME,
 				Task.OBJECT_NAME, });
-	}
-	
-	public String getPropertyName()
-	{
-		return PlanningView.WORKPLAN_PLAN_RADIO_CHOICE;
 	}
 }

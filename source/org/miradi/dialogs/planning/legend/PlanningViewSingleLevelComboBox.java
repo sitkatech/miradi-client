@@ -55,11 +55,6 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		return choiceItem.getCode();
 	}
 
-	public String getPropertyName()
-	{
-		return PlanningView.SINGLE_LEVEL_COMBO;
-	}
-
 	public CodeList getColumnListToShow() throws Exception
 	{
 		

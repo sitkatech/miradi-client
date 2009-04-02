@@ -103,11 +103,6 @@ public class PlanningViewCustomizationComboBox extends PlanningViewComboBox
 		return viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 	}
 	
-	public String getPropertyName()
-	{
-		return PlanningView.CUSTOMIZABLE_COMBO;
-	}
-	
 	public String getChoiceTag()
 	{
 		return ViewData.TAG_PLANNING_CUSTOM_PLAN_REF;

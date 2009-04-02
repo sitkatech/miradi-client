@@ -25,5 +25,4 @@ public interface RowColumnProvider
 {
 	public CodeList getRowListToShow() throws Exception;
 	public CodeList getColumnListToShow() throws Exception;
-	public String getPropertyName();
 }

@@ -28,7 +28,6 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.PlanningView;
 
 public class MonitoringRowColumnProvider implements RowColumnProvider
 {
@@ -54,10 +53,5 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 				Goal.OBJECT_NAME,
 				Objective.OBJECT_NAME,
 				Indicator.OBJECT_NAME, });
-	}
-	
-	public String getPropertyName()
-	{
-		return PlanningView.MONITORING_PLAN_RADIO_CHOICE;
 	}
 }
