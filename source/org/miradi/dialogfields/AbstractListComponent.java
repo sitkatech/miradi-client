@@ -23,10 +23,12 @@ import java.awt.Color;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
+import javax.swing.Icon;
 import javax.swing.JCheckBox;
 
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelCheckBox;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -61,6 +63,10 @@ abstract public class AbstractListComponent extends DisposablePanel implements I
 			checkBox.addItemListener(this);
 			choiceItems[i] = choices[i];
 			checkBoxes[i] = checkBox;
+			Icon icon = choiceItems[i].getIcon();
+			if (icon != null)
+				add(new PanelTitleLabel(icon));
+			
 			add(checkBox);
 		}
 	
