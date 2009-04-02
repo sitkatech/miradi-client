@@ -60,7 +60,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	{	
 		Vector commands = new Vector();
 		commands.addAll(getComboSaveCommnds());
-		commands.addAll(getRadioSaveCommands());
 		if (commands.size() == 0)
 			return;
 		
@@ -89,18 +88,6 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 		return comboSaveCommands;
 	}
 	
-	private Vector getRadioSaveCommands() throws Exception
-	{
-		Vector radioSaveCommands = new Vector();
-		ViewData viewData = getProject().getCurrentViewData();
-		String existingStyleChoice = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-		if (existingStyleChoice.equals(getStyleChoiceName()))
-			return new Vector();
-
-		radioSaveCommands.add(new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, getStyleChoiceName()));
-		return radioSaveCommands;
-	}
-	
 	protected Project getProject()
 	{
 		return project;
@@ -111,5 +98,4 @@ abstract public class PlanningViewComboBox extends UiComboBoxWithSaneActionFirin
 	abstract boolean comboBoxNeedsSave() throws Exception;
 	
 	private Project project;
-	
 }
