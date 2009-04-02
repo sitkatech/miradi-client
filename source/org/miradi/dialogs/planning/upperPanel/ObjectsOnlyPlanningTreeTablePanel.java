@@ -28,21 +28,21 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 {
 	protected ObjectsOnlyPlanningTreeTablePanel(MainWindow mainWindowToUse,
 												PlanningTreeTable treeToUse, 
-												PlanningTreeTableModel modelToUse,
-												Class[] buttonActions) throws Exception
+												PlanningTreeTableModel modelToUse
+												) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
+		super(mainWindowToUse, treeToUse, modelToUse, new Class[0]);
 		
 		customizationPanel = new PlanningViewObjectsOnlyDropDownPanel(getProject());
 		getButtonBox().add(new PanelTitleLabel(EAM.text("Show: ")));
 		getButtonBox().add(customizationPanel);
 	}
 	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, Class[] buttonActions) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);	
 		
-		return new ObjectsOnlyPlanningTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions);
+		return new ObjectsOnlyPlanningTreeTablePanel(mainWindowToUse, treeTable, model);
 	}
 	
 	@Override

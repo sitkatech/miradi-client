@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
-import org.miradi.actions.ActionCollapseAllNodes;
-import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTableModel;
@@ -51,14 +49,8 @@ public class ObjectsOnlyManagementPanel extends PlanningTreeManagementPanel
 	
 	public static PlanningTreeManagementPanel createObjectsOnlyPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		
 		PlanningTreeTableModel objectsOnlyTreeTableModel = new ObjectsOnlyPlanningTreeTableModel(mainWindowToUse.getProject());
-		Class[] buttonActions = new Class[] {
-				ActionExpandAllNodes.class, 
-				ActionCollapseAllNodes.class, 
-				};
-		
-		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = ObjectsOnlyPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel, buttonActions);
+		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = ObjectsOnlyPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)objectsOnlyPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		return new ObjectsOnlyManagementPanel(mainWindowToUse, objectsOnlyPlanTreeTablePanel, objectsOnlyPlanPropertiesPanel);
