@@ -645,7 +645,6 @@ public class Project
 		createDefaultConceptualModel();
 		createDefaultPlanningCustomization();
 		selectDefaultPlanningCustomization();
-		selectPlanningViewStrategicRadioButton();
 		createDefaultProjectDataObject(WwfProjectData.getObjectType());
 		createDefaultProjectDataObject(RareProjectData.getObjectType());
 		createDefaultProjectDataObject(WcsProjectData.getObjectType());
@@ -757,13 +756,6 @@ public class Project
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.BUDGET_BY_YEAR_CODE);
 
 		getDatabase().writeProjectInfo(projectInfo);
-	}
-	
-	private void selectPlanningViewStrategicRadioButton() throws Exception
-	{
-		ViewData planningViewData = getViewData(PlanningView.getViewName());
-		if (planningViewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).length() == 0)
-			setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_STYLE_CHOICE, PlanningView.STRATEGIC_PLAN_RADIO_CHOICE);
 	}
 	
 	private void createDefaultProjectDataObject(int objectType) throws Exception
