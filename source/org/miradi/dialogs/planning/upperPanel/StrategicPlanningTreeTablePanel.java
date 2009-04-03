@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.CodeList;
@@ -29,11 +30,12 @@ import org.miradi.utils.CodeList;
 public class StrategicPlanningTreeTablePanel extends PlanningTreeTablePanel
 {
 	protected StrategicPlanningTreeTablePanel(MainWindow mainWindowToUse,
-			   PlanningTreeTable treeToUse, 
-			   PlanningTreeTableModel modelToUse, 
-			   Class[] buttonActions) throws Exception
+			   								  PlanningTreeTable treeToUse, 
+			   								  PlanningTreeTableModel modelToUse, 
+			   								  Class[] buttonActions, 
+			   								  RowColumnProvider rowColumnProvider) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 	}
 
 	protected CodeList getColumnsToShow() throws Exception
@@ -45,8 +47,9 @@ public class StrategicPlanningTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTableModel model = new StrategicPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-
-		return new StrategicPlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions());
+		StrategicRowColumnProvider rowColumnProvider = new StrategicRowColumnProvider();
+		
+		return new StrategicPlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 
 	private static Class[] getButtonActions()

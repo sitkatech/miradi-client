@@ -23,6 +23,7 @@ import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.CodeList;
 
@@ -31,9 +32,10 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 	protected MonitoringPlanningTreeTablePanel(MainWindow mainWindowToUse,
 											   PlanningTreeTable treeToUse, 
 											   PlanningTreeTableModel modelToUse, 
-											   Class[] buttonActions) throws Exception
+											   Class[] buttonActions, 
+											   RowColumnProvider rowColumnProvider) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 	}
 
 	protected CodeList getColumnsToShow() throws Exception
@@ -45,8 +47,8 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTableModel model = new MonitoringPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		
-		return new MonitoringPlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions());
+		MonitoringRowColumnProvider rowColumnProvider = new MonitoringRowColumnProvider();
+		return new MonitoringPlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 	
 	private static Class[] getButtonActions()

@@ -24,6 +24,7 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
@@ -53,7 +54,7 @@ import org.miradi.views.planning.PlanningView;
 
 abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		model = modelToUse;

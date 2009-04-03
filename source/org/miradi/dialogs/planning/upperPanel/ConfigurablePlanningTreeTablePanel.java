@@ -30,7 +30,9 @@ import org.miradi.actions.ActionPlanningRowsEditor;
 import org.miradi.actions.ActionRenamePlanningViewConfiguration;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
+import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewConfigurableControlPanel;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
@@ -38,10 +40,12 @@ import org.miradi.views.planning.ColumnManager;
 public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
 	protected ConfigurablePlanningTreeTablePanel(MainWindow mainWindowToUse,
-			PlanningTreeTable treeToUse, 
-			PlanningTreeTableModel modelToUse, Class[] buttonActions) throws Exception
+												 PlanningTreeTable treeToUse,
+												 PlanningTreeTableModel modelToUse,
+												 Class[] buttonActions,
+												 RowColumnProvider rowColumnProvider) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 
 		customizationPanel = new PlanningViewConfigurableControlPanel(getProject());
 		addToButtonBox(customizationPanel);
@@ -51,7 +55,8 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions());
+		RowColumnProvider rowColumnProvider = new ConfigurableRowColumnProvider(mainWindowToUse.getProject());
+		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
 		
 	private static Class[] getButtonActions()
