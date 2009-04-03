@@ -34,8 +34,6 @@ import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewConfigurableControlPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
 
 public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -83,11 +81,6 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		super.dispose();
 
 		customizationPanel.dispose();
-	}
-
-	protected CodeList getColumnsToShow() throws Exception
-	{
-		return new CodeList(ColumnManager.getVisibleColumnsForCustomization(getProject().getCurrentViewData()));
 	}
 
 	private PlanningViewConfigurableControlPanel customizationPanel; 

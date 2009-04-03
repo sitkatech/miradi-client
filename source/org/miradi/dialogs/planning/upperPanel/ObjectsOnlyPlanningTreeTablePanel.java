@@ -25,8 +25,6 @@ import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -60,10 +58,5 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		customizationPanel.dispose();
 	}
 	
-	protected CodeList getColumnsToShow() throws Exception
-	{
-		return new CodeList(ColumnManager.getVisibleColumnsForSingleType(getProject().getCurrentViewData()));
-	}
-
 	private PlanningViewObjectsOnlyDropDownPanel customizationPanel; 
 }
