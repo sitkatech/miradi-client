@@ -21,19 +21,19 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import javax.swing.tree.TreePath;
 
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
 public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
 {
-	public ExportablePlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
+	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		super(projectToUse, visibleRowCodesToUse, visibleColumnCodesToUse);
+		super(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
 		rowObjectRefs = getFullyExpandedRefList();
 	}
 	

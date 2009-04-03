@@ -35,10 +35,11 @@ import org.miradi.utils.BufferedImageFactory;
 
 abstract public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
-	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
+	public PlanningTreeManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanelToUse, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
-		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
-		mainWindow = mainWindowToUse;
+		super(mainWindowToUse, planningTreeTablePanelToUse, planningTreePropertiesPanel);
+		
+		planningTreeTablePanel = planningTreeTablePanelToUse;
 	}
 
 	abstract public String getPanelDescription();
@@ -71,7 +72,8 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		PlanningTreeTablePanel panel = ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(mainWindow);
+		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
+		PlanningTreeTablePanel panel = ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider);
 		AbstractTableExporter table = panel.getTableForExporting();
 		panel.dispose();
 		
@@ -81,8 +83,14 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(mainWindow);
+		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
+		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(getMainWindow(), rowColumnProvider);
 	}
 	
-	private MainWindow mainWindow;
+	public PlanningTreeTablePanel getPlanningTreeTablePanel()
+	{
+		return planningTreeTablePanel;
+	}
+	
+	private PlanningTreeTablePanel planningTreeTablePanel;
 }
