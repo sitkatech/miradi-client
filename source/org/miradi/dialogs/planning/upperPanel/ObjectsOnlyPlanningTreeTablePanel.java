@@ -57,7 +57,7 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 	
 	protected CodeList getColumnsToShow() throws Exception
 	{
-		return new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
+		return new CodeList(ColumnManager.getVisibleColumnsForSingleType(getProject().getCurrentViewData()));
 	}
 
 	private PlanningViewObjectsOnlyDropDownPanel customizationPanel; 
