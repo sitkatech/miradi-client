@@ -31,10 +31,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
-import org.miradi.utils.CodeList;
-import org.miradi.views.planning.PlanningView;
-import org.miradi.views.planning.RowManager;
 
 
 abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
@@ -158,9 +154,13 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	
 	private boolean parentIsVisible(Task task) throws Exception
 	{
-		ViewData viewData = getProject().getViewData(PlanningView.getViewName());
-		CodeList visibleRowCodes = RowManager.getVisibleRowCodes(viewData);
-		return (visibleRowCodes.contains(task.getParentTypeCode()));
+		BaseObject selectedParent = getSelectedParentFactor();
+		if (selectedParent == null)
+			return false;
+		
+		String parentTypeName = selectedParent.getTypeName();
+
+		return task.getParentTypeCode().equals(parentTypeName);
 	}
 	
 	protected static final int DELTA_UP_VALUE = -1;
