@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-//FIXME this class is under contruction
 class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPanel
 {
 	public ConfigurablePlanningTreeManagementPanel(
