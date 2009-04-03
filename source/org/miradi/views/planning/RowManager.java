@@ -31,29 +31,6 @@ import org.miradi.utils.CodeList;
 
 public class RowManager
 {
-	public static CodeList getVisibleRowCodes(ViewData viewData)
-	{
-		String style = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-		if(style.equals(PlanningView.STRATEGIC_PLAN_RADIO_CHOICE))
-			return getStrategicPlanRows();
-		else if(style.equals(PlanningView.MONITORING_PLAN_RADIO_CHOICE))
-			return getMonitoringPlanRows();
-		else if(style.equals(PlanningView.WORKPLAN_PLAN_RADIO_CHOICE))
-			return getWorkPlanRows();
-		else if(style.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
-			return getVisibleRowsForSingleType(viewData);
-		else if(style.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
-			return getVisibleRowsForCustomization(viewData);
-		else if(style.equals(""))
-			return getStrategicPlanRows();
-		else
-		{
-			EAM.logError("getVisibleRowCodes unknown style: " + style);
-			return new CodeList();
-		}
-
-	}
-
 	public static CodeList getStrategicPlanRows()
 	{
 		return new StrategicRowColumnProvider().getRowListToShow();
