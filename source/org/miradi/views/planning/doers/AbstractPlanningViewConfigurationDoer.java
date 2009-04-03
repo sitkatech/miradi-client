@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ViewData;
 import org.miradi.views.ViewDoer;
-import org.miradi.views.planning.PlanningView;
 
 abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 {
@@ -37,26 +37,24 @@ abstract public class AbstractPlanningViewConfigurationDoer extends ViewDoer
 		if (!isPlanningView())
 			return false;
 		
-		if (!isValidConfigurationChoice())
+		if (isInvalidConfigurationChoice())
 			return false;
 			
 		return true;
 	}
 	
-	private boolean isValidConfigurationChoice()
+	private boolean isInvalidConfigurationChoice()
 	{
 		try
 		{
 			ViewData viewData = getProject().getCurrentViewData();
-			if (PlanningView.isCustomizationStyle(viewData))
-				return true;
+			ORef planningViewConfigurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));
+			return planningViewConfigurationRef.isInvalid();
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return false;
+			return true;
 		}
-		
-		return false;
 	}
 }

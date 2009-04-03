@@ -57,7 +57,6 @@ import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -233,15 +232,6 @@ public class PlanningView extends TabbedView
 		return false;
 	}
 
-	public static boolean isCustomizationStyle(ViewData viewData)
-	{
-		ORef planningViewConfigurationRef = ORef.createFromString(viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF));
-		if (planningViewConfigurationRef.isInvalid())
-			return false;
-		
-		return viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE).equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE);
-	}
-	
 	public static boolean is(UmbrellaView view)
 	{
 		return view.cardName().equals(getViewName());
