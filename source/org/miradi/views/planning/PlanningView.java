@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 
+import java.util.HashMap;
+
 import javax.swing.JToolBar;
 
 import org.miradi.actions.ActionAssignResource;
@@ -52,8 +54,11 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
+import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
+import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -114,6 +119,28 @@ public class PlanningView extends TabbedView
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
+		
+		loadManagementPanelMap();
+	}
+
+	private void loadManagementPanelMap()
+	{
+		managementPanelMap = new HashMap();
+		
+		managementPanelMap.put(planningManagementPanel.getPanelDescription(), planningManagementPanel);
+		managementPanelMap.put(strategicPlanManagementPanel.getPanelDescription(), strategicPlanManagementPanel);
+		managementPanelMap.put(monitoringPlanManagementPanel.getPanelDescription(), monitoringPlanManagementPanel);
+		managementPanelMap.put(objectsOnlyManagementPanel.getPanelDescription(), objectsOnlyManagementPanel);
+	}
+	
+	public RowColumnProvider getRowColumnProvider()
+	{
+		ObjectManagementPanel managmentPanel = (ObjectManagementPanel)getCurrentTabContents();
+		String panelDescriptionAsKey = managmentPanel.getPanelDescription();
+		if (getManagementPanelMap().containsKey(panelDescriptionAsKey))
+			return getManagementPanelMap().get(panelDescriptionAsKey).getRowColumnProvider();
+		
+		return new EmptyRowColumnProvider();
 	}
 
 	@Override
@@ -231,6 +258,11 @@ public class PlanningView extends TabbedView
 		
 		return false;
 	}
+	
+	public HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()
+	{
+		return managementPanelMap;
+	}
 
 	public static boolean is(UmbrellaView view)
 	{
@@ -253,4 +285,6 @@ public class PlanningView extends TabbedView
 	private ResourcePoolManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
+	
+	private HashMap<String, PlanningTreeManagementPanel> managementPanelMap;
 }

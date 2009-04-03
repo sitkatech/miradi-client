@@ -92,5 +92,10 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		return planningTreeTablePanel;
 	}
 	
+	public RowColumnProvider getRowColumnProvider()
+	{
+		return getPlanningTreeTablePanel().getRowColumnProvider();
+	}
+	
 	private PlanningTreeTablePanel planningTreeTablePanel;
 }
