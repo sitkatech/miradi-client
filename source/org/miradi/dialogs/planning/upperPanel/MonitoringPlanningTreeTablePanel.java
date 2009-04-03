@@ -25,7 +25,6 @@ import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.CodeList;
 
 public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -36,11 +35,6 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 											   RowColumnProvider rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
-	}
-
-	protected CodeList getColumnsToShow() throws Exception
-	{
-		return new MonitoringRowColumnProvider().getColumnListToShow();
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception

@@ -54,9 +54,11 @@ import org.miradi.views.planning.PlanningView;
 
 abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
-	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProvider) throws Exception
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
+		
+		rowColumnProvider = rowColumnProviderToUse;
 		model = modelToUse;
 		
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
@@ -297,7 +299,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		multiTableExporter.addExportable(new PlanningViewMainModelExporter(multiModel, getTree()));
 		mainTableScrollPane.showVerticalScrollBar();
 
-		CodeList columnsToShow = getColumnsToShow();
+		CodeList columnsToShow = getRowColumnProvider().getColumnListToShow();
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 			multiModel.addModel(annualTotalsModel);
 
@@ -328,8 +330,12 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return mainTable;
 	}
 	
-	abstract protected CodeList getColumnsToShow() throws Exception;
+	public RowColumnProvider getRowColumnProvider()
+	{
+		return rowColumnProvider;
+	}
 	
+	private RowColumnProvider rowColumnProvider;
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
 	private PlanningUpperMultiTable mainTable;

@@ -27,8 +27,6 @@ import javax.swing.JPanel;
 import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
 
 public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -39,11 +37,6 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 											   RowColumnProvider rowColumnProvider) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
-	}
-
-	protected CodeList getColumnsToShow() throws Exception
-	{
-		return new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
