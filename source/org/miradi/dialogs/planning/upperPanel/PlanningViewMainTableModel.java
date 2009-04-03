@@ -50,14 +50,15 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
-import org.miradi.views.planning.ColumnManager;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public PlanningViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, RowColumnProvider rowColumnProvider) throws Exception
+	public PlanningViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, RowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		super(projectToUse, providerToUse);
-		columnsToShow = rowColumnProvider.getColumnListToShow();
+		
+		rowColumnProvider = rowColumnProviderToUse;
+		
 		updateColumnsToShow();
 	}
 
@@ -322,10 +323,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
 	}
 	
-	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
+	private CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
 	{
-		return ColumnManager.getVisibleColumnCodes(projectToUse.getCurrentViewData());
+		return getRowColumnProvider().getColumnListToShow();
+	}
+	
+	public RowColumnProvider getRowColumnProvider()
+	{
+		return rowColumnProvider;
 	}
 
 	private CodeList columnsToShow;
+	private RowColumnProvider rowColumnProvider;
 }
