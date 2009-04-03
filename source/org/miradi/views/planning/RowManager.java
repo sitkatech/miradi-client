@@ -86,7 +86,7 @@ public class RowManager
 		return codes;
 	}
 
-	private static CodeList getVisibleRowsForCustomization(ViewData viewData)
+	public static CodeList getVisibleRowsForCustomization(ViewData viewData)
 	{
 		try
 		{
