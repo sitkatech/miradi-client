@@ -172,28 +172,6 @@ public class ColumnManager
 		return new CodeList(list);
 	}
 
-	public static CodeList getVisibleColumnCodes(ViewData viewData)
-	{
-		String style = viewData.getData(ViewData.TAG_PLANNING_STYLE_CHOICE);
-		if(style.equals(PlanningView.STRATEGIC_PLAN_RADIO_CHOICE))
-			return getStrategicPlanColumns();
-		else if(style.equals(PlanningView.MONITORING_PLAN_RADIO_CHOICE))
-			return getMonitoringPlanColumns();
-		else if(style.equals(PlanningView.WORKPLAN_PLAN_RADIO_CHOICE))
-			return getWorkPlanColumns();
-		else if(style.equals(PlanningView.SINGLE_LEVEL_RADIO_CHOICE))
-			return getVisibleColumnsForSingleType(viewData);
-		else if(style.equals(PlanningView.CUSTOMIZABLE_RADIO_CHOICE))
-			return getVisibleColumnsForCustomization(viewData);
-		else if(style.equals(""))
-			return getStrategicPlanColumns();
-		else
-		{
-			EAM.logError("getVisibleColumnCodes unknown style: " + style);
-			return new CodeList();
-		}
-	}
-
 	public static CodeList getProgressReportColumns()
 	{
 		return new ProgressReportRowColumnProvider().getColumnListToShow();
