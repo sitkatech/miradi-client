@@ -21,8 +21,6 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
@@ -56,20 +54,6 @@ import org.miradi.views.planning.PlanningView;
 
 public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
-	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
-	{
-		Class[] noButtons = new Class[0];
-		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject());
-		return createPlanningTreeTablePanel(mainWindowToUse, model, noButtons);
-	}
-	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, Class[] buttonActions) throws Exception
-	{
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);	
-		
-		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions);
-	}
-	
 	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
@@ -344,19 +328,11 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		return multiTableExporter;
 	}
 	
-	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow) throws Exception
+	protected PlanningUpperMultiTable getMainTable()
 	{
-		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow);
-
-		JPanel reformatted = new JPanel(new BorderLayout());
-		
-		reformatted.add(wholePanel.getTree(), BorderLayout.BEFORE_LINE_BEGINS);
-		reformatted.add(wholePanel.mainTable, BorderLayout.CENTER);
-		
-		wholePanel.dispose();
-		return reformatted;
+		return mainTable;
 	}
-
+	
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
 	private PlanningUpperMultiTable mainTable;

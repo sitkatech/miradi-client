@@ -26,6 +26,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
+import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.MainWindow;
@@ -70,7 +71,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
-		PlanningTreeTablePanel panel = PlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(mainWindow);
+		PlanningTreeTablePanel panel = ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(mainWindow);
 		AbstractTableExporter table = panel.getTableForExporting();
 		panel.dispose();
 		
@@ -80,7 +81,7 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
-		return PlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(mainWindow);
+		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(mainWindow);
 	}
 	
 	private MainWindow mainWindow;
