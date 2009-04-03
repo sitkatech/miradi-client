@@ -45,7 +45,9 @@
 	<property name="martus-swing.jar" value="${dist.temp.jars}/martus-swing/bin/martus-swing.jar" />
 	<property name="martus-utils.jar" value="${dist.temp.jars}/martus-utils/bin/martus-utils.jar" />
     
-    <!-- classpath -->
+	<property name="junit.jar" value="${dist.temp.jars}/junit/3.8.1/bin/junit-3.8.1.jar" />
+
+	<!-- classpath -->
     <path id="eam.class.path">
         <pathelement path="${eam.class.root}/"/>
         <pathelement path="${eam.test.class.root}/"/>
@@ -179,6 +181,7 @@
   	</java>
   	-->
 	<junit haltonfailure='on' showoutput='on'>
+		<classpath location='${junit.jar}' />
   		<classpath refid='eam.class.path' />
 		<classpath location='${eam.class.root}' />
 
@@ -347,6 +350,11 @@
 	<antcall target='download'>
 		<param name='directory' value='jtreetable' />
 		<param name='filename' value='license.txt' />
+	</antcall>
+	
+	<antcall target='download'>
+		<param name='directory' value='junit/3.8.1/bin' />
+		<param name='filename' value='junit-3.8.1.jar' />
 	</antcall>
 	
 	<antcall target='download'>
