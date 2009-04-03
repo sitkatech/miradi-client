@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -30,6 +31,11 @@ public class ConfigurablePlanningTreeTableModel extends PlanningTreeTableModel
 	public ConfigurablePlanningTreeTableModel(Project project) throws Exception
 	{
 		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project));
+	}
+
+	public ConfigurablePlanningTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
+	{
+		super(project, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception

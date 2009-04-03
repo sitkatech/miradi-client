@@ -24,7 +24,6 @@ import java.awt.BorderLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 
@@ -39,21 +38,17 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 	}
 
-	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject());
+		PlanningTreeTableModel model = new ExportablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider);
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		
-		//FIXME this is not the correct row column Provider. need to get provider for current tag shown
-		//tHis is temproraly placed here
-		ConfigurableRowColumnProvider rowColumnProvider = new ConfigurableRowColumnProvider(mainWindowToUse.getProject());
-	
+			
 		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);
 	}
 	
-	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow) throws Exception
+	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow);
+		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow, rowColumnProvider);
 
 		JPanel reformatted = new JPanel(new BorderLayout());
 		

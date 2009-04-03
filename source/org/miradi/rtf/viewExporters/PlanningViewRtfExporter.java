@@ -94,13 +94,13 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiModelExporter = new MultiTableCombinedAsOneExporter();
-		CodeList columnsToShow = rowColumnProvider.getColumnListToShow();
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider.getRowListToShow(), columnsToShow);
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider);
 		multiModelExporter.addExportable(new TreeTableModelExporter(project, model));
 		
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, rowColumnProvider);
 		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel, model));
-			
+		
+		CodeList columnsToShow = rowColumnProvider.getColumnListToShow();
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 		{
 			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(project, model);	
