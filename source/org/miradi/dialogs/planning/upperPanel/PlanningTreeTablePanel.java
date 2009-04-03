@@ -318,7 +318,7 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		multiTableExporter.addExportable(new PlanningViewMainModelExporter(multiModel, getTree()));
 		mainTableScrollPane.showVerticalScrollBar();
 
-		CodeList columnsToShow = new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
+		CodeList columnsToShow = getColumnsToShow();
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
 			multiModel.addModel(annualTotalsModel);
 
@@ -332,6 +332,11 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		mainTable.reloadColumnWidths();
 		validate();
 		repaint();
+	}
+
+	protected CodeList getColumnsToShow() throws Exception
+	{
+		return new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 	}
 	
 	private PlanningTreeTableModel getPlanningModel()
