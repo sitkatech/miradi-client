@@ -74,7 +74,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		listenForColumnWidthChanges(getTree());
 		
-		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse);
+		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse, rowColumnProvider);
 		multiModel = new PlanningTreeMultiTableModel();
 
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);

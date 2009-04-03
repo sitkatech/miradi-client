@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
 
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
@@ -53,16 +54,11 @@ import org.miradi.views.planning.ColumnManager;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
-	public PlanningViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
-	{
-		this(projectToUse, providerToUse, new CodeList());
-		updateColumnsToShow();
-	}
-
-	public PlanningViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, CodeList visibleColumnCodesToUse) throws Exception
+	public PlanningViewMainTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		super(projectToUse, providerToUse);
-		columnsToShow = visibleColumnCodesToUse;
+		columnsToShow = rowColumnProvider.getColumnListToShow();
+		updateColumnsToShow();
 	}
 
 	public void updateColumnsToShow() throws Exception
