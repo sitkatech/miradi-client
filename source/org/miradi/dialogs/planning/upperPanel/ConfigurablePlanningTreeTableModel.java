@@ -34,12 +34,12 @@ public class ConfigurablePlanningTreeTableModel extends PlanningTreeTableModel
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
 	{
-		return ColumnManager.getVisibleColumnCodes(projectToUse.getCurrentViewData());
+		return ColumnManager.getVisibleColumnsForCustomization(projectToUse.getCurrentViewData());
 	}
 	
 	public static CodeList getVisibleRowCodes(Project projectToUse) throws Exception
 	{
-		return RowManager.getVisibleRowCodes(projectToUse.getCurrentViewData());
+		return RowManager.getVisibleRowsForCustomization(projectToUse.getCurrentViewData());
 	}
 
 	public void updateColumnsToShow() throws Exception

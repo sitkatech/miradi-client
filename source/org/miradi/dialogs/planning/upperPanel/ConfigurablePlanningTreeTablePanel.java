@@ -82,7 +82,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 
 	protected CodeList getColumnsToShow() throws Exception
 	{
-		return new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
+		return new CodeList(ColumnManager.getVisibleColumnsForCustomization(getProject().getCurrentViewData()));
 	}
 
 	private PlanningViewConfigurableControlPanel customizationPanel; 
