@@ -21,7 +21,11 @@ package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePoolTableModel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolTableModel;
+import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
+import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.StrategicRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTableModel;
@@ -39,8 +43,6 @@ import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
 
 public class PlanningViewRtfExporter extends RtfViewExporter
 {
@@ -53,16 +55,16 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public void exportView(RtfWriter writer, CodeList reportTemplateContent) throws Exception
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_STRATEGIC_PLAN_CODE))
-			exportReport(writer, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), ReportTemplateContentQuestion.getStrategicPlanLabel());
+			exportReport(writer, new StrategicRowColumnProvider(), ReportTemplateContentQuestion.getStrategicPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_MONITORING_PLAN_CODE))
-			exportReport(writer, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns(), ReportTemplateContentQuestion.getMonitoringPlanLabel());
+			exportReport(writer, new MonitoringRowColumnProvider(), ReportTemplateContentQuestion.getMonitoringPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE))
-			exportReport(writer, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns(), ReportTemplateContentQuestion.getWorkPlanLabel());
+			exportReport(writer, new WorkPlanRowColumnProvider(), ReportTemplateContentQuestion.getWorkPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE))
-			exportReport(writer, new ProgressReportRowColumnProvider().getRowListToShow(), ColumnManager.getProgressReportColumns(), ReportTemplateContentQuestion.getProgressReportLabel());
+			exportReport(writer, new ProgressReportRowColumnProvider(), ReportTemplateContentQuestion.getProgressReportLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE))
 			exportResourcesTab(writer);
@@ -89,13 +91,14 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportObjectTableModel(writer, new FundingSourcePoolTableModel(getProject()), ReportTemplateContentQuestion.getFundingSourcesLabel());
 	}
 	
-	public static MultiTableCombinedAsOneExporter createTables(Project project, CodeList rowsToShow, CodeList columnsToShow) throws Exception
+	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiModelExporter = new MultiTableCombinedAsOneExporter();
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowsToShow, columnsToShow);
+		CodeList columnsToShow = rowColumnProvider.getColumnListToShow();
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider.getRowListToShow(), columnsToShow);
 		multiModelExporter.addExportable(new TreeTableModelExporter(project, model));
 		
-		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, columnsToShow);
+		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, rowColumnProvider);
 		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel, model));
 			
 		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
@@ -117,8 +120,8 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		return multiModelExporter;
 	}
 	
-	private void exportReport(RtfWriter writer, CodeList rowsToShow, CodeList columnsToShow, String translatedTableName) throws Exception
+	private void exportReport(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
-		exportTable(writer, createTables(getProject(), rowsToShow, columnsToShow), translatedTableName);
+		exportTable(writer, createTables(getProject(), rowColumnProvider), translatedTableName);
 	}
 }

@@ -23,14 +23,15 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
+import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.StrategicRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
 
 public class PlanningTreeXmlExporter
 {
@@ -42,21 +43,21 @@ public class PlanningTreeXmlExporter
 	//NOTE: this code was copied from PlanningTreeTablePanel, and
 	//that we believe it will go away when we change the report to use an
 	//exported tree of refs instead of a table of cell values.              
-	private void createTables(CodeList rowsToShow, CodeList columnsToShow) throws Exception
+	private void createTables(RowColumnProvider rowColumnProvider) throws Exception
 	{
-		multiModelExporter = PlanningViewRtfExporter.createTables(getProject(), rowsToShow, columnsToShow); 
+		multiModelExporter = PlanningViewRtfExporter.createTables(getProject(), rowColumnProvider); 
 	}
 	
 	public void toXmlPlanningTreeTables(UnicodeWriter out) throws Exception
 	{
-		toXml(out, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), "StrategicPlanTree");
-		toXml(out, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns(), "MonitoringPlanTree");
-		toXml(out, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns(), "WorkPlanTree");
+		toXml(out, new StrategicRowColumnProvider(), "StrategicPlanTree");
+		toXml(out, new MonitoringRowColumnProvider(), "MonitoringPlanTree");
+		toXml(out, new WorkPlanRowColumnProvider(), "WorkPlanTree");
 	}
 	
-	private void toXml(UnicodeWriter out, CodeList rowsToShow, CodeList columnsToShow, String treeName) throws Exception
+	private void toXml(UnicodeWriter out, RowColumnProvider rowColumnProvider, String treeName) throws Exception
 	{
-		createTables(rowsToShow, columnsToShow);		
+		createTables(rowColumnProvider);		
 		int columnCount = multiModelExporter.getColumnCount();
 		int rowCount = multiModelExporter.getRowCount();
 
