@@ -47,6 +47,14 @@ abstract public class ViewDoer extends MainWindowDoer
 		
 		throw new RuntimeException("Not in DiagramView");
 	}
+	
+	public PlanningView getPlanningView() throws RuntimeException
+	{
+		if (isPlanningView())
+			return (PlanningView) getView();
+		
+		throw new RuntimeException("Not in PlanningView");
+	}
 
 	public boolean isPlanningView()
 	{
