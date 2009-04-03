@@ -21,6 +21,7 @@ package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePoolTableModel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolTableModel;
+import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTableModel;
@@ -61,7 +62,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportReport(writer, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns(), ReportTemplateContentQuestion.getWorkPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE))
-			exportReport(writer, RowManager.getProgressReportRows(), ColumnManager.getProgressReportColumns(), ReportTemplateContentQuestion.getProgressReportLabel());
+			exportReport(writer, new ProgressReportRowColumnProvider().getRowListToShow(), ColumnManager.getProgressReportColumns(), ReportTemplateContentQuestion.getProgressReportLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE))
 			exportResourcesTab(writer);
