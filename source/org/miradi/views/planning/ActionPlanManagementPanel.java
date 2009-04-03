@@ -21,15 +21,11 @@ package org.miradi.views.planning;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.ActionCollapseAllNodes;
-import org.miradi.actions.ActionExpandAllNodes;
-import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.StrategicPlanTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.StrategicPlanningTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -57,18 +53,12 @@ class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 		return IconManager.getStrategyIcon();
 	}
 
-	public static ActionPlanManagementPanel createStrategicPlanPanel(MainWindow mainWindowToUse)
-			throws Exception
+	public static ActionPlanManagementPanel createStrategicPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTableModel strategicPlanTreeTableModel = new StrategicPlanTreeTableModel(mainWindowToUse.getProject());
-		Class[] buttonActions = new Class[] {
-			ActionExpandAllNodes.class, 
-			ActionCollapseAllNodes.class, 
-			ActionPlanningCreationMenu.class,
-			};
-		PlanningTreeTablePanel strategicPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, strategicPlanTreeTableModel, buttonActions);
+		PlanningTreeTablePanel strategicPlanTreeTablePanel = StrategicPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)strategicPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel strategicPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		
 		return new ActionPlanManagementPanel(mainWindowToUse, strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 	}
 

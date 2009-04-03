@@ -21,15 +21,11 @@ package org.miradi.views.OperationalPlan;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.ActionCollapseAllNodes;
-import org.miradi.actions.ActionExpandAllNodes;
-import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -56,17 +52,10 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	
 	public static WorkPlanManagementPanel createWorkPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTableModel workPlanTreeTableModel = new WorkPlanTreeTableModel(mainWindowToUse.getProject());
-		
-		Class[] buttonActions = new Class[] {
-				ActionExpandAllNodes.class, 
-				ActionCollapseAllNodes.class, 
-				ActionPlanningCreationMenu.class,
-				};
-		
-		PlanningTreeTablePanel workPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, workPlanTreeTableModel, buttonActions);
+		PlanningTreeTablePanel workPlanTreeTablePanel = WorkPlanTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)workPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel workPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+
 		return new WorkPlanManagementPanel(mainWindowToUse, workPlanTreeTablePanel, workPlanPropertiesPanel);
 	}
 
