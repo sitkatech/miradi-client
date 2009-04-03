@@ -155,6 +155,7 @@
     		srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
     	<compilerarg value="-Xlint:unchecked" />
         <classpath refid="eam.class.path"/>
+		<classpath location='${junit.jar}' />
         <include name="**/*.java"/>
     </javac>
   	
