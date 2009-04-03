@@ -260,7 +260,7 @@ public class ColumnManager
 		return new CodeList();
 	}
 
-	private static CodeList getVisibleColumnsForCustomization(ViewData viewData)
+	public static CodeList getVisibleColumnsForCustomization(ViewData viewData)
 	{
 		try
 		{
