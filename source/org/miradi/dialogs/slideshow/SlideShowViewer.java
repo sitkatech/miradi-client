@@ -62,7 +62,7 @@ public class SlideShowViewer extends JDialog implements WindowListener
 		{
 			SlideShow show = getSlideShow();
 			ORefList slideRefs =  new ORefList(show.getData(SlideShow.TAG_SLIDE_REFS));
-			slides  = (Slide[])show.getObjectManager().findObjectsAsVector(slideRefs).toArray(new Slide[0]);
+			slides  = show.getObjectManager().findObjectsAsVector(slideRefs).toArray(new Slide[0]);
 		}
 		catch (Exception e)
 		{
