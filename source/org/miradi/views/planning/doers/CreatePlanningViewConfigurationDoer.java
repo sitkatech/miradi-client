@@ -29,9 +29,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 import org.miradi.views.ViewDoer;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
 
 public class CreatePlanningViewConfigurationDoer extends ViewDoer
 {
@@ -66,8 +65,8 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 	private void createPlanningViewConfiguration() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
-		String visibleRowsAsString = RowManager.getVisibleRowCodes(viewData).toString();
-		String visibleColsAsString = ColumnManager.getVisibleColumnCodes(viewData).toString();
+		String visibleRowsAsString = new CodeList().toString();
+		String visibleColsAsString = new CodeList().toString();
 		
 		CommandCreateObject createConfiguration = new CommandCreateObject(PlanningViewConfiguration.getObjectType());
 		getProject().executeCommand(createConfiguration);
