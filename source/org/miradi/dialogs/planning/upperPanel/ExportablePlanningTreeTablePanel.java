@@ -24,6 +24,8 @@ import java.awt.BorderLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import org.miradi.dialogs.planning.ConfigurableRowColumnProvider;
+import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
@@ -33,9 +35,10 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	protected ExportablePlanningTreeTablePanel(MainWindow mainWindowToUse,
 											   PlanningTreeTable treeToUse, 
 											   PlanningTreeTableModel modelToUse,
-											   Class[] buttonActions) throws Exception
+											   Class[] buttonActions,
+											   RowColumnProvider rowColumnProvider) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
 	}
 
 	protected CodeList getColumnsToShow() throws Exception
@@ -46,9 +49,13 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject());
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);	
+		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
+		
+		//FIXME this is not the correct row column Provider. need to get provider for current tag shown
+		//tHis is temproraly placed here
+		ConfigurableRowColumnProvider rowColumnProvider = new ConfigurableRowColumnProvider(mainWindowToUse.getProject());
 	
-		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0]);
+		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);
 	}
 	
 	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow) throws Exception
