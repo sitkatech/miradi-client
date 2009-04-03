@@ -47,22 +47,11 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
 	{
-		return createPlanningTreeTablePanel(mainWindowToUse, getButtonActions());
-	}
-	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, Class[] buttonActions) throws Exception
-	{
 		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject());
-		return createPlanningTreeTablePanel(mainWindowToUse, model, buttonActions);
+		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
+		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions());
 	}
-	
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, Class[] buttonActions) throws Exception
-	{
-		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);	
 		
-		return new ConfigurablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, buttonActions);
-	}
-	
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
