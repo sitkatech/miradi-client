@@ -49,10 +49,9 @@ import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
 import org.miradi.utils.TreeTableExporter;
-import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.PlanningView;
 
-public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
+abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
 	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions) throws Exception
 	{
@@ -313,11 +312,6 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 		repaint();
 	}
 
-	protected CodeList getColumnsToShow() throws Exception
-	{
-		return new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
-	}
-	
 	private PlanningTreeTableModel getPlanningModel()
 	{
 		return (PlanningTreeTableModel)getModel();
@@ -332,6 +326,8 @@ public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 	{
 		return mainTable;
 	}
+	
+	abstract protected CodeList getColumnsToShow() throws Exception;
 	
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;

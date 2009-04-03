@@ -23,6 +23,8 @@ import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionExpandAllNodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.main.MainWindow;
+import org.miradi.utils.CodeList;
+import org.miradi.views.planning.ColumnManager;
 
 public class StrategicPlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -32,6 +34,11 @@ public class StrategicPlanningTreeTablePanel extends PlanningTreeTablePanel
 			   Class[] buttonActions) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
+	}
+
+	protected CodeList getColumnsToShow() throws Exception
+	{
+		return new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception

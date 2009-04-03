@@ -25,6 +25,8 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import org.miradi.main.MainWindow;
+import org.miradi.utils.CodeList;
+import org.miradi.views.planning.ColumnManager;
 
 public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -36,12 +38,17 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		super(mainWindowToUse, treeToUse, modelToUse, buttonActions);
 	}
 
+	protected CodeList getColumnsToShow() throws Exception
+	{
+		return new CodeList(ColumnManager.getVisibleColumnCodes(getProject().getCurrentViewData()));
+	}
+
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTableModel model = new ConfigurablePlanningTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);	
 	
-		return new PlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0]);
+		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0]);
 	}
 	
 	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow) throws Exception
