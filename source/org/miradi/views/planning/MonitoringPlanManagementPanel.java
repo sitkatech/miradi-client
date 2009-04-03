@@ -21,14 +21,10 @@ package org.miradi.views.planning;
 
 import javax.swing.Icon;
 
-import org.miradi.actions.ActionCollapseAllNodes;
-import org.miradi.actions.ActionExpandAllNodes;
-import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.MonitoringPlanTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.MonitoringPlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
@@ -59,15 +55,10 @@ class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
 
 	public static MonitoringPlanManagementPanel createMonitoringPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTableModel monitoringPlanTreeTableModel = new MonitoringPlanTreeTableModel(mainWindowToUse.getProject());
-		Class[] buttonActions = new Class[] {
-				ActionExpandAllNodes.class, 
-				ActionCollapseAllNodes.class, 
-				ActionPlanningCreationMenu.class,
-				};
-		PlanningTreeTablePanel monitoringPlanTreeTablePanel = PlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, monitoringPlanTreeTableModel, buttonActions);
+		PlanningTreeTablePanel monitoringPlanTreeTablePanel = MonitoringPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)monitoringPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel monitoringPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		
 		return new MonitoringPlanManagementPanel(mainWindowToUse, monitoringPlanTreeTablePanel, monitoringPlanPropertiesPanel);
 	}
 
