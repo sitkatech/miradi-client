@@ -106,10 +106,8 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	{
 		boolean isLabelChange =     isValidSetCommand(event, PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL);
 		boolean isSelectionChange = isValidSetCommand(event, ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
-		if (! (isLabelChange || isSelectionChange))
-			return;
-		
-		selectAppropriateConfiguredComboBoxItem();
+		if (isLabelChange || isSelectionChange)
+			selectAppropriateConfiguredComboBoxItem();
 	}
 
 	private boolean isValidSetCommand(CommandExecutedEvent event, int viewDataType, String tagtagtag)
