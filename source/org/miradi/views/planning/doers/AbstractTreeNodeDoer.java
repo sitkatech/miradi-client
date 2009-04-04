@@ -37,9 +37,14 @@ abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 
 	protected boolean childWouldBeVisible(String objectTypeName) throws Exception
 	{
-		RowColumnProvider rowColumnProvider = getPlanningView().getRowColumnProvider();
-		CodeList visibleRowCodes = rowColumnProvider.getRowListToShow();
+		//TODO this method only applies if we are inside planning view
+		if (isPlanningView())
+		{
+			RowColumnProvider rowColumnProvider = getPlanningView().getRowColumnProvider();
+			CodeList visibleRowCodes = rowColumnProvider.getRowListToShow();
+			return (visibleRowCodes.contains(objectTypeName));
+		}
 
-		return (visibleRowCodes.contains(objectTypeName));
+		return true;
 	}
 }
