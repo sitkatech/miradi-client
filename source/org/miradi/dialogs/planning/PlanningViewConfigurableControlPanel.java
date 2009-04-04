@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
-import org.miradi.dialogs.planning.legend.PlanningViewCustomizationComboBox;
+import org.miradi.dialogs.planning.legend.PlanningViewConfigurationComboBox;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -42,7 +42,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	
 	protected void rebuildCustomizationPanel() throws Exception
 	{
-		customizationComboBox = new PlanningViewCustomizationComboBox(getProject());
+		customizationComboBox = new PlanningViewConfigurationComboBox(getProject());
 		add(customizationComboBox);
 
 		selectAppropriateConfiguredComboBoxItem();
@@ -112,5 +112,5 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		selectAppropriateConfiguredComboBoxItem();
 	}
 	
-	private PlanningViewCustomizationComboBox customizationComboBox;
+	private PlanningViewConfigurationComboBox customizationComboBox;
 }
