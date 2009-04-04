@@ -21,8 +21,10 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.CodeListData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.questions.RowConfigurationQuestion;
 import org.miradi.utils.CodeList;
@@ -69,6 +71,26 @@ public class PlanningViewConfiguration extends BaseObject
 	public String toString()
 	{
 		return getLabel();
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+	
+	public static boolean is(int objectType)
+	{
+		return objectType == getObjectType();
+	}
+	
+	public static PlanningViewConfiguration find(ObjectManager objectManager, ORef planningViewConfigurationRef)
+	{
+		return (PlanningViewConfiguration) objectManager.findObject(planningViewConfigurationRef);
+	}
+	
+	public static PlanningViewConfiguration find(Project project, ORef planningViewConfigurationRef)
+	{
+		return find(project.getObjectManager(), planningViewConfigurationRef);
 	}
 	
 	void clear()

@@ -55,7 +55,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 			return;
 		}
 		
-		PlanningViewConfiguration configuration = (PlanningViewConfiguration) getProject().findObject(refToSelect);
+		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), refToSelect);
 		ChoiceItem choiceToSelect = new ChoiceItem(configuration.getRef().toString(), configuration.getLabel());
 		customizationComboBox.setSelectedItemWithoutFiring(choiceToSelect);
 	}
