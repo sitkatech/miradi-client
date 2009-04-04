@@ -48,8 +48,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	
 	private void selectAppropriateConfiguredComboBoxItem() throws Exception
 	{
-		ViewData viewData = getProject().getCurrentViewData();
-		ORef refToSelect = getCurrentConfigurationComboBoxChoice(viewData);
+		ORef refToSelect = getCurrentConfigurationComboBoxChoice();
 		if(refToSelect.isInvalid())
 		{
 			customizationComboBox.setSelectedIndex(0);
@@ -61,8 +60,9 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		customizationComboBox.setSelectedItemWithoutFiring(choiceToSelect);
 	}
 	
-	private ORef getCurrentConfigurationComboBoxChoice(ViewData viewData)
+	private ORef getCurrentConfigurationComboBoxChoice() throws Exception
 	{	
+		ViewData viewData = getProject().getCurrentViewData();
 		String preconfiguredChoice = viewData.getData(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 		boolean shouldReturnDefault = preconfiguredChoice.trim().equals("");
 		if (shouldReturnDefault)
