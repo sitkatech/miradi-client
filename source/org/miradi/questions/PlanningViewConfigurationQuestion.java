@@ -27,9 +27,9 @@ import org.miradi.objectpools.PlanningViewConfigurationPool;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.project.Project;
 
-public class PlanningViewCustomizationQuestion extends StaticChoiceQuestion
+public class PlanningViewConfigurationQuestion extends StaticChoiceQuestion
 {
-	public PlanningViewCustomizationQuestion(Project projectToUse)
+	public PlanningViewConfigurationQuestion(Project projectToUse)
 	{
 		super(getCustomizationChoices(projectToUse));
 	}
