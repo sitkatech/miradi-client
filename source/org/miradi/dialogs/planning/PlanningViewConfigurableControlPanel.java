@@ -37,10 +37,10 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	{
 		super(projectToUse);
 		
-		rebuildCustomizationPanel();
+		rebuildConfigurationPanel();
 	}
 	
-	protected void rebuildCustomizationPanel() throws Exception
+	protected void rebuildConfigurationPanel() throws Exception
 	{
 		configurationComboBox = new PlanningViewConfigurationComboBox(getProject());
 		add(configurationComboBox);
