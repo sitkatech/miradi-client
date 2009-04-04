@@ -154,13 +154,27 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	
 	private boolean parentIsVisible(Task task) throws Exception
 	{
-		BaseObject selectedParent = getSelectedParentFactor();
-		if (selectedParent == null)
+		ORefList selectionHierarchy = getSelectionHierarchy();
+		int parentIndex = getParentIndex(selectionHierarchy);
+		int taskIndex = selectionHierarchy.find(task.getRef());
+		if (parentIndex < 0 || taskIndex < 0)
 			return false;
-		
-		String parentTypeName = selectedParent.getTypeName();
+		  
+		int expectedParentIndexOfTask = taskIndex + 1;
+		return parentIndex == expectedParentIndexOfTask;
+	}
 
-		return task.getParentTypeCode().equals(parentTypeName);
+	private int getParentIndex(ORefList selectionHierarchy)
+	{
+		ORef strategyAsParentRef = selectionHierarchy.getRefForType(Strategy.getObjectType());
+		if (!strategyAsParentRef.isInvalid())
+			return selectionHierarchy.find(strategyAsParentRef);
+		
+		ORef indicatorAsParentRef = selectionHierarchy.getRefForType(Indicator.getObjectType());
+		if (indicatorAsParentRef.isInvalid())
+			return selectionHierarchy.find(indicatorAsParentRef);
+		
+		return -1;
 	}
 	
 	protected static final int DELTA_UP_VALUE = -1;
