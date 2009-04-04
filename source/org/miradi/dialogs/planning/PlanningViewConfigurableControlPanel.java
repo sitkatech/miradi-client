@@ -79,7 +79,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		try
 		{
 			updateComboFromProject(event);
-			setCustomizationComboSelection(event);
+			selectComboConfiguration(event);
 		}
 		catch(Exception e)
 		{
@@ -102,7 +102,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		}
 	}
 		
-	private void setCustomizationComboSelection(CommandExecutedEvent event) throws Exception
+	private void selectComboConfiguration(CommandExecutedEvent event) throws Exception
 	{
 		boolean isLabelChange = event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL);
 		boolean isSelectionChange = event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
