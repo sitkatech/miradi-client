@@ -49,12 +49,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	private void selectAppropriateConfiguredComboBoxItem() throws Exception
 	{
 		ViewData viewData = getProject().getCurrentViewData();
-		ORef configurationChoiceRef = getCurrentConfigurationComboBoxChoice(viewData);
-		setCustomizationComboBoxSelection(configurationChoiceRef);
-	}
-	
-	private void setCustomizationComboBoxSelection(ORef refToSelect)
-	{
+		ORef refToSelect = getCurrentConfigurationComboBoxChoice(viewData);
 		if(refToSelect.isInvalid())
 		{
 			customizationComboBox.setSelectedIndex(0);
