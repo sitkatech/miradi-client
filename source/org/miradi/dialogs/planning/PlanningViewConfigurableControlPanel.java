@@ -104,12 +104,17 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		
 	private void selectComboConfiguration(CommandExecutedEvent event) throws Exception
 	{
-		boolean isLabelChange = event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL);
-		boolean isSelectionChange = event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
+		boolean isLabelChange =     isValidSetCommand(event, PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_LABEL);
+		boolean isSelectionChange = isValidSetCommand(event, ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 		if (! (isLabelChange || isSelectionChange))
 			return;
 		
 		selectAppropriateConfiguredComboBoxItem();
+	}
+
+	private boolean isValidSetCommand(CommandExecutedEvent event, int viewDataType, String tagtagtag)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(viewDataType, tagtagtag);
 	}
 	
 	private PlanningViewConfigurationComboBox configurationComboBox;
