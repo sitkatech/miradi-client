@@ -112,27 +112,24 @@ public class PlanningView extends TabbedView
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
-		addNonScrollingTab(strategicPlanManagementPanel);
-		addNonScrollingTab(monitoringPlanManagementPanel);
-		addNonScrollingTab(objectsOnlyManagementPanel);
-		addNonScrollingTab(planningManagementPanel);
+		managementPanelMap = new HashMap();
+
+		addNonScrollingPlanningManagementTab(strategicPlanManagementPanel);
+		addNonScrollingPlanningManagementTab(monitoringPlanManagementPanel);
+		addNonScrollingPlanningManagementTab(objectsOnlyManagementPanel);
+		addNonScrollingPlanningManagementTab(planningManagementPanel);
+		
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
-		
-		loadManagementPanelMap();
 	}
 
-	private void loadManagementPanelMap()
+	private void addNonScrollingPlanningManagementTab(PlanningTreeManagementPanel managementPanel)
 	{
-		managementPanelMap = new HashMap();
-		
-		managementPanelMap.put(planningManagementPanel.getPanelDescription(), planningManagementPanel);
-		managementPanelMap.put(strategicPlanManagementPanel.getPanelDescription(), strategicPlanManagementPanel);
-		managementPanelMap.put(monitoringPlanManagementPanel.getPanelDescription(), monitoringPlanManagementPanel);
-		managementPanelMap.put(objectsOnlyManagementPanel.getPanelDescription(), objectsOnlyManagementPanel);
+		addNonScrollingTab(managementPanel);
+		managementPanelMap.put(managementPanel.getPanelDescription(), managementPanel);
 	}
-	
+
 	public RowColumnProvider getRowColumnProvider()
 	{
 		ObjectManagementPanel managmentPanel = (ObjectManagementPanel)getCurrentTabContents();
