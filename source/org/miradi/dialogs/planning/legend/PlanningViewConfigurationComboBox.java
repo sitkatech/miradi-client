@@ -28,7 +28,7 @@ import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.PlanningViewCustomizationQuestion;
+import org.miradi.questions.PlanningViewConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.PlanningView;
 
@@ -36,7 +36,7 @@ public class PlanningViewConfigurationComboBox extends PlanningViewComboBox
 {
 	public PlanningViewConfigurationComboBox(Project projectToUse) throws Exception
 	{
-		super(projectToUse, new PlanningViewCustomizationQuestion(projectToUse).getChoices());
+		super(projectToUse, new PlanningViewConfigurationQuestion(projectToUse).getChoices());
 	}
 	
 	public CodeList getColumnListToShow() throws Exception
@@ -57,7 +57,7 @@ public class PlanningViewConfigurationComboBox extends PlanningViewComboBox
 
 	private void addCreatedItems()
 	{
-		ChoiceItem[] choicesInProject = new PlanningViewCustomizationQuestion(getProject()).getChoices();
+		ChoiceItem[] choicesInProject = new PlanningViewConfigurationQuestion(getProject()).getChoices();
 		HashSet choicesInList = getCurrentChoicesInList();
 		for(int i = 0; i < choicesInProject.length; ++i)
 		{
@@ -69,7 +69,7 @@ public class PlanningViewConfigurationComboBox extends PlanningViewComboBox
 	
 	private void removeDeletedItems()
 	{
-		ChoiceItem[] choicesInProjectAsArray = new PlanningViewCustomizationQuestion(getProject()).getChoices();
+		ChoiceItem[] choicesInProjectAsArray = new PlanningViewConfigurationQuestion(getProject()).getChoices();
 		HashSet choicesInProject = new HashSet(Arrays.asList(choicesInProjectAsArray));
 		for(int i = getItemCount() - 1; i >= 0; --i)
 		{

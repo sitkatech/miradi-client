@@ -29,7 +29,7 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.PlanningViewCustomizationQuestion;
+import org.miradi.questions.PlanningViewConfigurationQuestion;
 
 public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButtonPanel
 {
@@ -58,7 +58,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		}
 		
 		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), refToSelect);
-		ChoiceQuestion question = new PlanningViewCustomizationQuestion(getProject());
+		ChoiceQuestion question = new PlanningViewConfigurationQuestion(getProject());
 		ChoiceItem choiceToSelect = question.findChoiceByCode(configuration.getRef().toString());
 		configurationComboBox.setSelectedItemWithoutFiring(choiceToSelect);
 	}
