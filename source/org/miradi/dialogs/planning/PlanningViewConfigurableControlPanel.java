@@ -78,7 +78,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	{
 		try
 		{
-			refillCustomizationComboBox(event);
+			updateComboFromProject(event);
 			setCustomizationComboSelection(event);
 		}
 		catch(Exception e)
@@ -88,7 +88,7 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		}
 	}
 	
-	private void refillCustomizationComboBox(CommandExecutedEvent event) throws Exception
+	private void updateComboFromProject(CommandExecutedEvent event) throws Exception
 	{
 		if (event.isDeleteObjectCommand() || event.isCreateObjectCommand())
 		{
