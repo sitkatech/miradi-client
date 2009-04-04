@@ -42,8 +42,8 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	
 	protected void rebuildCustomizationPanel() throws Exception
 	{
-		customizationComboBox = new PlanningViewConfigurationComboBox(getProject());
-		add(customizationComboBox);
+		configurationComboBox = new PlanningViewConfigurationComboBox(getProject());
+		add(configurationComboBox);
 
 		selectAppropriateConfiguredComboBoxItem();
 	}
@@ -53,14 +53,14 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		ORef refToSelect = getCurrentConfigurationComboBoxChoice();
 		if(refToSelect.isInvalid())
 		{
-			customizationComboBox.setSelectedIndex(0);
+			configurationComboBox.setSelectedIndex(0);
 			return;
 		}
 		
 		PlanningViewConfiguration configuration = PlanningViewConfiguration.find(getProject(), refToSelect);
 		ChoiceQuestion question = new PlanningViewCustomizationQuestion(getProject());
 		ChoiceItem choiceToSelect = question.findChoiceByCode(configuration.getRef().toString());
-		customizationComboBox.setSelectedItemWithoutFiring(choiceToSelect);
+		configurationComboBox.setSelectedItemWithoutFiring(choiceToSelect);
 	}
 	
 	private ORef getCurrentConfigurationComboBoxChoice() throws Exception
@@ -92,13 +92,13 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 	{
 		if (event.isDeleteObjectCommand() || event.isCreateObjectCommand())
 		{
-			customizationComboBox.syncContentsWithProject();
+			configurationComboBox.syncContentsWithProject();
 			selectAppropriateConfiguredComboBoxItem();
 		}
 		
 		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), BaseObject.TAG_LABEL))
 		{
-			customizationComboBox.repaint();
+			configurationComboBox.repaint();
 		}
 	}
 		
@@ -112,5 +112,5 @@ public class PlanningViewConfigurableControlPanel extends PlanningViewCustomButt
 		selectAppropriateConfiguredComboBoxItem();
 	}
 	
-	private PlanningViewConfigurationComboBox customizationComboBox;
+	private PlanningViewConfigurationComboBox configurationComboBox;
 }
