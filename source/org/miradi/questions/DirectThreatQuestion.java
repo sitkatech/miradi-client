@@ -26,20 +26,24 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 
-public class DirectThreatQuestion extends StaticChoiceQuestion
+public class DirectThreatQuestion extends DynamicChoiceQuestion
 {
-	public DirectThreatQuestion(Project project)
+	public DirectThreatQuestion(Project projectToUse)
 	{
-		super(getDirectThreatChoices(project));
+		super();
+		
+		project = projectToUse;
 	}
+	
 
-	static ChoiceItem[] getDirectThreatChoices(Project project)
+	@Override
+	public ChoiceItem[] getChoices()
 	{
 		Vector choiceItems = new Vector();
 		ChoiceItem notSpecifiedChoice = new ChoiceItem(ORef.INVALID.toString(), EAM.text("Not Specified"));
 		choiceItems.add(notSpecifiedChoice);
 		
-		Factor[] directThreats = project.getCausePool().getDirectThreats();
+		Factor[] directThreats = getProject().getCausePool().getDirectThreats();
 		for (int i = 0; i < directThreats.length; ++i)
 		{
 			Factor directThreat = directThreats[i];
@@ -48,4 +52,11 @@ public class DirectThreatQuestion extends StaticChoiceQuestion
 		
 		return (ChoiceItem[]) choiceItems.toArray(new ChoiceItem[0]);
 	}
+	
+	public Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }
