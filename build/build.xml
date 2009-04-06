@@ -204,8 +204,7 @@
   <!-- ================================================================== -->
   <!-- J A R                                                          -->
   <!-- ================================================================== -->
-	<!-- TODO: Change depends from build to test after hudson supports junit ant task -->
-    <target name="jar" depends="build" description="Create jar">
+    <target name="jar" depends="test" description="Create jar">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/miradi.jar">
           	<manifest>
