@@ -173,7 +173,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	{
 		BaseObject owner = task.getOwner();
 		if (owner == null)
-			return -1;
+			throw new RuntimeException(EAM.text("Task does not have an owner." + task.getRef()));
 		
 		return selectionHierarchy.find(owner.getRef());
 	}
