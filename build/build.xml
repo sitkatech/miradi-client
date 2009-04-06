@@ -204,7 +204,8 @@
   <!-- ================================================================== -->
   <!-- J A R                                                          -->
   <!-- ================================================================== -->
-    <target name="jar" depends="test" description="Create jar">
+	<!-- TODO: Change depends from build to test after unit tests no longer depend on Swing -->
+    <target name="jar" depends="build" description="Create jar">
         <mkdir dir="${dist.dir}"/>
         <jar destfile="${dist.dir}/miradi.jar">
           	<manifest>
