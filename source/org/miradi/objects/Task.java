@@ -381,7 +381,7 @@ public class Task extends Factor
 		return parentRefs.size();
 	}
 	
-	private int getTypeOfParent()
+	public int getTypeOfParent()
 	{
 		if(isTask())
 			return Task.getObjectType();
