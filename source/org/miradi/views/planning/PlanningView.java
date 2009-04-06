@@ -114,17 +114,17 @@ public class PlanningView extends TabbedView
 		
 		managementPanelMap = new HashMap();
 
-		addNonScrollingPlanningManagementTab(strategicPlanManagementPanel);
-		addNonScrollingPlanningManagementTab(monitoringPlanManagementPanel);
-		addNonScrollingPlanningManagementTab(objectsOnlyManagementPanel);
-		addNonScrollingPlanningManagementTab(planningManagementPanel);
+		addPlanningManagementTab(strategicPlanManagementPanel);
+		addPlanningManagementTab(monitoringPlanManagementPanel);
+		addPlanningManagementTab(objectsOnlyManagementPanel);
+		addPlanningManagementTab(planningManagementPanel);
 		
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 
-	private void addNonScrollingPlanningManagementTab(PlanningTreeManagementPanel managementPanel)
+	private void addPlanningManagementTab(PlanningTreeManagementPanel managementPanel)
 	{
 		addNonScrollingTab(managementPanel);
 		managementPanelMap.put(managementPanel.getPanelDescription(), managementPanel);
