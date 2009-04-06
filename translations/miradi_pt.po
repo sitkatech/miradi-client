@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-04 22:39-0500\n"
+"POT-Creation-Date: 2009-04-06 10:46-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2214,7 +2214,7 @@ msgid "Workplan"
 msgstr ""
 
 #: miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
-#: miradi/source/org/miradi/questions/DirectThreatQuestion.java:39
+#: miradi/source/org/miradi/questions/DirectThreatQuestion.java:43
 #: miradi/source/org/miradi/questions/StrategyImpactQuestion.java:37
 #: miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: miradi/source/org/miradi/questions/ThreatRatingQuestion.java:36
