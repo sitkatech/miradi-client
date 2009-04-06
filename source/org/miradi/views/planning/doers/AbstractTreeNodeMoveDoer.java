@@ -155,7 +155,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	private boolean parentIsVisible(Task task) throws Exception
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
-		int parentIndex = getParentIndex(selectionHierarchy);
+		int parentIndex = getParentIndex(selectionHierarchy, task);
 		int taskIndex = getTaskIndex(task, selectionHierarchy);
 		if (parentIndex < 0 || taskIndex < 0)
 			return false;
@@ -169,19 +169,27 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		return selectionHierarchy.find(task.getRef());
 	}
 
-	private int getParentIndex(ORefList selectionHierarchy)
+	private int getParentIndex(ORefList selectionHierarchy, Task task)
 	{
-		ORef strategyAsParentRef = selectionHierarchy.getRefForType(Strategy.getObjectType());
-		if (!strategyAsParentRef.isInvalid())
-			return selectionHierarchy.find(strategyAsParentRef);
-		
-		ORef indicatorAsParentRef = selectionHierarchy.getRefForType(Indicator.getObjectType());
-		if (indicatorAsParentRef.isInvalid())
-			return selectionHierarchy.find(indicatorAsParentRef);
+		int parentType = getCorrectParentType(task);
+		ORef parentRef = selectionHierarchy.getRefForType(parentType);
+		if (!parentRef.isInvalid())
+			return selectionHierarchy.find(parentRef);
 		
 		return -1;
 	}
 	
+	private int getCorrectParentType(Task task)
+	{
+		if (task.isActivity())
+			return Strategy.getObjectType();
+		
+		if (task.isMethod())
+			return Indicator.getObjectType();
+		
+		return ORef.INVALID.getObjectType();
+	}
+
 	protected static final int DELTA_UP_VALUE = -1;
 	protected static final int DELTA_DOWN_VALUE = 1;	
 }
