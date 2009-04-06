@@ -58,7 +58,7 @@ import org.miradi.objects.BaseObject.PseudoStringData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.InternalQuestionWithoutValues;
-import org.miradi.questions.QuestionManager;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.StringMapData;
@@ -270,7 +270,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		}
 		else if(field instanceof CodeListData)
 		{
-			CodeListData codeList = new CodeListData("tag", QuestionManager.getQuestion(InternalQuestionWithoutValues.class));
+			CodeListData codeList = new CodeListData("tag", StaticQuestionManager.getQuestion(InternalQuestionWithoutValues.class));
 			codeList.add("A1");
 			codeList.add("B1");
 			return codeList.toString();

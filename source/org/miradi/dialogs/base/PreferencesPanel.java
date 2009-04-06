@@ -52,7 +52,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
-import org.miradi.questions.QuestionManager;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.HyperlinkLabel;
 import org.miradi.views.summary.SummaryPlanningPanel;
@@ -133,7 +133,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		createAndAddBlankRow(htmlTab);
 		String rowHeightMode = mainWindow.getRowHeightModeString();
-		ChoiceQuestion rowHeightModeQuestion = QuestionManager.getQuestion(TableRowHeightModeQuestion.class);
+		ChoiceQuestion rowHeightModeQuestion = StaticQuestionManager.getQuestion(TableRowHeightModeQuestion.class);
 		panelRowHeightModeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Table Row Height Mode"), rowHeightModeQuestion, rowHeightMode);
 		return htmlTab;
 	}

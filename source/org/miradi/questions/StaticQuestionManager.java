@@ -21,7 +21,7 @@ package org.miradi.questions;
 
 import java.util.HashMap;
 
-public class QuestionManager
+public class StaticQuestionManager
 {
 	public static void initialize()
 	{
