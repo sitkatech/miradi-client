@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-06 13:01-0500\n"
+"POT-Creation-Date: 2009-04-06 16:06-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6290,7 +6290,7 @@ msgstr "指示物属性 \t\t"
 
 #: miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:49
 #: miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:42
-#: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:50
+#: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:51
 msgid "Tab|Viability"
 msgstr "生存力 \t\t"
 
