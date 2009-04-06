@@ -118,7 +118,7 @@ import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.QuestionManager;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramClipboard;
@@ -496,7 +496,7 @@ public class Project
 	
 	public ChoiceQuestion getQuestion(Class questionClass)
 	{
-		return QuestionManager.getQuestion(questionClass);
+		return StaticQuestionManager.getQuestion(questionClass);
 	}
 
 

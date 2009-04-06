@@ -34,7 +34,7 @@ import javax.swing.UIManager;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.LanguageQuestion;
-import org.miradi.questions.QuestionManager;
+import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.Translation;
 
 
@@ -144,7 +144,7 @@ public class Miradi
 		}
 		EAM.logDebug("Looking for content jars in: " + directory.getAbsolutePath());
 		
-		ChoiceQuestion languages = QuestionManager.getQuestion(LanguageQuestion.class);
+		ChoiceQuestion languages = StaticQuestionManager.getQuestion(LanguageQuestion.class);
 		Vector<ChoiceItem> results = new Vector();
 		String[] jarNames = directory.list(new LanguageJarFilter());
 		if(jarNames == null)
