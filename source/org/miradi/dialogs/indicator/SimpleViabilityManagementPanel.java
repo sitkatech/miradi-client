@@ -36,6 +36,7 @@ public class SimpleViabilityManagementPanel extends FactorPropertiesViabilityTre
 		simpleViabilityPropertiesPanel = new SimpleViabilityFieldsPanel(mainWindowToUse.getProject(), factorRef);
 		Border border = BorderFactory.createTitledBorder(simpleViabilityPropertiesPanel.getPanelDescription());
 		simpleViabilityPropertiesPanel.setBorder(border);
+		
 		getListPanel().addAboveTable(simpleViabilityPropertiesPanel);
 	}
 
