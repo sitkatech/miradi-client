@@ -171,12 +171,11 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 
 	private int getParentIndex(ORefList selectionHierarchy, Task task)
 	{
-		int parentType = task.getTypeOfParent();
-		ORef parentRef = selectionHierarchy.getRefForType(parentType);
-		if (!parentRef.isInvalid())
-			return selectionHierarchy.find(parentRef);
+		BaseObject owner = task.getOwner();
+		if (owner == null)
+			return -1;
 		
-		return -1;
+		return selectionHierarchy.find(owner.getRef());
 	}
 
 	protected static final int DELTA_UP_VALUE = -1;
