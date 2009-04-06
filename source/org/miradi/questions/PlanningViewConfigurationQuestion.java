@@ -27,22 +27,25 @@ import org.miradi.objectpools.PlanningViewConfigurationPool;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.project.Project;
 
-public class PlanningViewConfigurationQuestion extends StaticChoiceQuestion
+public class PlanningViewConfigurationQuestion extends DynamicChoiceQuestion
 {
 	public PlanningViewConfigurationQuestion(Project projectToUse)
 	{
-		super(getCustomizationChoices(projectToUse));
+		super();
+		
+		project = projectToUse;
 	}
 
-	private static ChoiceItem[] getCustomizationChoices(Project project)
+	@Override
+	public ChoiceItem[] getChoices()
 	{
-		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) project.getPool(PlanningViewConfiguration.getObjectType());
+		PlanningViewConfigurationPool configurationPool = (PlanningViewConfigurationPool) getProject().getPool(PlanningViewConfiguration.getObjectType());
 		ORefList allConfigurationRefs = configurationPool.getORefList();
 
 		Vector allCustomizations = new Vector();
 		for (int i = 0; i < allConfigurationRefs.size(); ++i)
 		{
-			ChoiceItem choiceItem = createChoiceItem(project, allConfigurationRefs.get(i));
+			ChoiceItem choiceItem = createChoiceItem(getProject(), allConfigurationRefs.get(i));
 			allCustomizations.add(choiceItem);
 		}
 
@@ -54,4 +57,10 @@ public class PlanningViewConfigurationQuestion extends StaticChoiceQuestion
 		return new ObjectChoiceItem(project, configurationRef);
 	}
 	
+	public Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }
