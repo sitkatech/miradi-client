@@ -155,8 +155,8 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	private boolean parentIsVisible(Task task) throws Exception
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
-		int parentIndex = getParentIndex(selectionHierarchy, task);
 		int taskIndex = getTaskIndex(task, selectionHierarchy);
+		int parentIndex = getParentIndex(selectionHierarchy, task, taskIndex);
 		if (parentIndex < 0 || taskIndex < 0)
 			return false;
 		  
@@ -169,13 +169,15 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		return selectionHierarchy.find(task.getRef());
 	}
 
-	private int getParentIndex(ORefList selectionHierarchy, Task task)
+	private int getParentIndex(ORefList selectionHierarchy, Task task, int taskIndex)
 	{
-		BaseObject owner = task.getOwner();
-		if (owner == null)
-			throw new RuntimeException(EAM.text("Task does not have an owner." + task.getRef()));
+		int parentType = task.getTypeOfParent();
+		int possibleParentIndex = taskIndex + 1;
+		ORef possibleParentRef = selectionHierarchy.get(possibleParentIndex);
+		if (possibleParentRef.getObjectType() == parentType)
+			return possibleParentIndex;
 		
-		return selectionHierarchy.find(owner.getRef());
+		return -1;
 	}
 
 	protected static final int DELTA_UP_VALUE = -1;
