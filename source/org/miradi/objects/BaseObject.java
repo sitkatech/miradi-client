@@ -37,7 +37,6 @@ import org.miradi.diagram.factortypes.FactorTypeStrategy;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
-import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateRangeData;
@@ -902,30 +901,6 @@ abstract public class BaseObject
 		
 		ProjectChainObject chainObject = getProjectChainBuilder();
 		return chainObject.buildUpstreamChainAndGetFactors(owner).toFactorArray();
-	}
-	
-	public Factor[] getUpstreamFactors(DiagramObject diagram)
-	{
-		Factor owner = getDirectOrIndirectOwningFactor();
-		if(owner == null)
-			return new Factor[0];
-		
-		ORefList diagramFactorRefsThatWrapOwner = owner.findObjectsThatReferToUs(DiagramFactor.getObjectType());
-		ORefList diagramFactorRefsOnThisPage = diagram.getAllDiagramFactorRefs();
-		ORefList theOneOnThisPage = diagramFactorRefsOnThisPage.getOverlappingRefs(diagramFactorRefsThatWrapOwner);
-		if(theOneOnThisPage.size() == 0)
-		{
-			return new Factor[0];
-		}
-		
-		if(theOneOnThisPage.size() > 1)
-		{
-			EAM.logWarning("Found multiple wrapping DF's on this page: " + theOneOnThisPage);
-			return new Factor[0];
-		}
-		DiagramFactor diagramFactor = DiagramFactor.find(objectManager, theOneOnThisPage.get(0));
-		DiagramChainObject chainObject = getDiagramChainBuilder();
-		return chainObject.buildUpstreamChainAndGetFactors(diagram, diagramFactor).toFactorArray();
 	}
 	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
