@@ -67,6 +67,8 @@ public class Strategy extends Factor
 		{
 			case ObjectType.OBJECTIVE: 
 				return true;
+			case ObjectType.TASK:
+				return true;
 			default:
 				return false;
 		}
