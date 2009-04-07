@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.indicator;
 
-import javax.swing.BorderFactory;
-import javax.swing.border.Border;
-
 import org.miradi.actions.jump.ActionJumpTargetViabilityMethodChoiceStep;
 import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
 import org.miradi.main.EAM;
@@ -33,19 +30,8 @@ public class SimpleViabilityManagementPanel extends FactorPropertiesViabilityTre
 	public SimpleViabilityManagementPanel(MainWindow mainWindowToUse, ORef factorRef) throws Exception
 	{
 		super(mainWindowToUse, factorRef, mainWindowToUse.getActions());
-		simpleViabilityPropertiesPanel = new SimpleViabilityFieldsPanel(mainWindowToUse.getProject(), factorRef);
-		Border border = BorderFactory.createTitledBorder(simpleViabilityPropertiesPanel.getPanelDescription());
-		simpleViabilityPropertiesPanel.setBorder(border);
-		
-		getListPanel().addAboveTable(simpleViabilityPropertiesPanel);
 	}
 
-	public void dispose()
-	{
-		super.dispose();
-		simpleViabilityPropertiesPanel.dispose();
-	}
-	
 	public String getPanelDescription()
 	{
 		return EAM.text("Tab|Viability");
@@ -56,6 +42,4 @@ public class SimpleViabilityManagementPanel extends FactorPropertiesViabilityTre
 	{
 		return ActionJumpTargetViabilityMethodChoiceStep.class;
 	}
-	
-	private SimpleViabilityFieldsPanel simpleViabilityPropertiesPanel;
 }
