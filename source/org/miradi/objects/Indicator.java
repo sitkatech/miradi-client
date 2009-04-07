@@ -215,33 +215,8 @@ public class Indicator extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
-		if (Factor.canOwnThisType(type))
-			return true;
-		
-		switch(type)
-		{
-			case ObjectType.TASK:
-				return true;
-			default:
-				return false;
-		}
+		return false;
 	}
-	
-	public ORefList getOwnedObjects(int objectType)
-	{
-		ORefList list = super.getOwnedObjects(objectType);
-		
-		switch(objectType)
-		{
-			case ObjectType.TASK:
-				list.addAll(new ORefList(getMethodRefs()));
-				break;
-		}
-		
-		return list;
-	}
-	
-
 	
 	public String getFutureStatusRating()
 	{
@@ -256,6 +231,7 @@ public class Indicator extends BaseObject
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
+		deepObjectRefsToCopy.addAll(getMethodRefs());
 		deepObjectRefsToCopy.addAll(getMeasurementRefs());
 		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
