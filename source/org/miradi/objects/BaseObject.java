@@ -1067,6 +1067,7 @@ abstract public class BaseObject
 		return allOwnedObjects;
 	}
 	
+	//FIXME This method is not contain all objects and is not reliable
 	static public int[] getTypesThatCanOwnUs(int type)
 	{
 		// TODO: get rid of static number
