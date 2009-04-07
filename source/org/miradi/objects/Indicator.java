@@ -227,6 +227,22 @@ public class Indicator extends BaseObject
 		}
 	}
 	
+	public ORefList getOwnedObjects(int objectType)
+	{
+		ORefList list = super.getOwnedObjects(objectType);
+		
+		switch(objectType)
+		{
+			case ObjectType.TASK:
+				list.addAll(new ORefList(getMethodRefs()));
+				break;
+		}
+		
+		return list;
+	}
+	
+
+	
 	public String getFutureStatusRating()
 	{
 		return futureStatusRating.get();
@@ -240,7 +256,6 @@ public class Indicator extends BaseObject
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
-		deepObjectRefsToCopy.addAll(getMethodRefs());
 		deepObjectRefsToCopy.addAll(getMeasurementRefs());
 		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		

@@ -204,7 +204,6 @@ public class Strategy extends Factor
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
-		deepObjectRefsToCopy.addAll(getActivityRefs());
 		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
 		return deepObjectRefsToCopy;
@@ -218,6 +217,9 @@ public class Strategy extends Factor
 		{
 			case ObjectType.OBJECTIVE: 
 				list.addAll(new ORefList(objectType, getObjectiveIds()));
+				break;
+			case ObjectType.TASK:
+				list.addAll(new ORefList(getActivityRefs()));
 				break;
 		}
 		return list;
