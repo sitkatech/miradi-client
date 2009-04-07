@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-06 16:06-0500\n"
+"POT-Creation-Date: 2009-04-07 12:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6471,7 +6471,7 @@ msgstr "Sifat-sifat Indikator "
 
 #: miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:49
 #: miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:42
-#: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:51
+#: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:37
 msgid "Tab|Viability"
 msgstr "Kelangsungan "
 
@@ -6952,11 +6952,11 @@ msgstr "Sifat-sifat Diagram "
 msgid "Comments"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:429
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:428
 msgid "Viability Analysis Mode"
 msgstr "Mode Analisis Kelangsungan "
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:518
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:517
 msgid "Factor Properties"
 msgstr "Sifat-sifat Faktor "
 
