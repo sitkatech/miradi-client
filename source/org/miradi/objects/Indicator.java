@@ -215,7 +215,16 @@ public class Indicator extends BaseObject
 	
 	public static boolean canOwnThisType(int type)
 	{
-		return false;
+		if (Factor.canOwnThisType(type))
+			return true;
+		
+		switch(type)
+		{
+			case ObjectType.TASK:
+				return true;
+			default:
+				return false;
+		}
 	}
 	
 	public String getFutureStatusRating()
