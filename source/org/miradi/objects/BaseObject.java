@@ -893,16 +893,6 @@ abstract public class BaseObject
 		return chainObject.buildUpstreamDownstreamChainAndGetFactors(owner).toFactorArray();
 	}
 	
-	public Factor[] getUpstreamFactors()
-	{
-		Factor owner = getDirectOrIndirectOwningFactor();
-		if(owner == null)
-			return new Factor[0];
-		
-		ProjectChainObject chainObject = getProjectChainBuilder();
-		return chainObject.buildUpstreamChainAndGetFactors(owner).toFactorArray();
-	}
-	
 	public String getRelatedLabelsAsMultiLine(FactorSet filterSet)
 	{
 		try
