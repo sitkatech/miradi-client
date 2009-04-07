@@ -43,7 +43,6 @@ import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.goal.GoalListManagementPanel;
 import org.miradi.dialogs.goal.GoalListTablePanel;
-import org.miradi.dialogs.indicator.SimpleViabilityManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListTablePanel;
 import org.miradi.dialogs.stress.StressListManagementPanel;
@@ -268,7 +267,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if ( factor.isTarget() && !isKeaViabilityMode)
 		{
-			simpleViabilityTab = new SimpleViabilityManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
+			simpleViabilityTab = new SimpleViabilityPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			tabs.addTab(simpleViabilityTab.getPanelDescription(), simpleViabilityTab.getIcon(), simpleViabilityTab);
 		}
 		
@@ -630,7 +629,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private TargetViabilityManagementPanel indicatorsTab;
 	private GoalListManagementPanel goalsTab;
 	private TargetViabilityManagementPanel viabilityTab;
-	private SimpleViabilityManagementPanel simpleViabilityTab;
+	private SimpleViabilityPanel simpleViabilityTab;
 	private StressListManagementPanel stressTab;
 	private ActivityListManagementPanel activitiesTab;
 	private SubTargetManagementPanel subTargetTab;
