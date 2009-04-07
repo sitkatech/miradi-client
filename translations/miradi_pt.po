@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-07 12:23-0500\n"
+"POT-Creation-Date: 2009-04-07 16:05-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -222,10 +222,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/ShareMethodDoer.java:60
 msgid "Share Method"
-msgstr ""
-
-#: miradi/source/org/miradi/views/planning/doers/AbstractTreeNodeMoveDoer.java:176
-msgid "Task does not have an owner."
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
