@@ -46,9 +46,6 @@ abstract public class AbstractTreeTaskNodeMoveDoer extends AbstractChangeSequenc
 			if(task == null)
 				return false;
 			
-			if(!hasAdjacentParentInSelectionHierarchy(task))
-				return false;
-			
 			IdList siblings = getSiblingList(task);
 			if(siblings == null)
 				return false;
@@ -153,7 +150,7 @@ abstract public class AbstractTreeTaskNodeMoveDoer extends AbstractChangeSequenc
 		return siblings;
 	}
 	
-	private boolean hasAdjacentParentInSelectionHierarchy(Task task) throws Exception
+	protected boolean hasAdjacentParentInSelectionHierarchy(Task task) throws Exception
 	{
 		int taskIndex = getTaskIndexInSelectionHierarchy(task);
 		int parentIndex = getParentIndexInSelectionHierarchy(task);
