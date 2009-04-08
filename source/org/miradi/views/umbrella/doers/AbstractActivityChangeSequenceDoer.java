@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.views.planning.doers.AbstractTreeTaskNodeMoveDoer;
+import org.miradi.views.planning.doers.AbstractTaskNodeChangeSequenceDoer;
 
-public abstract class AbstractActivityChangeSequenceDoer extends AbstractTreeTaskNodeMoveDoer
+public abstract class AbstractActivityChangeSequenceDoer extends AbstractTaskNodeChangeSequenceDoer
 {
 }

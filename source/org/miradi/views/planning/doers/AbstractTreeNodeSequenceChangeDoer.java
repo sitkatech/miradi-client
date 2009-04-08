@@ -23,7 +23,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
 
-abstract public class AbstractTreeNodeSequenceChangeDoer extends AbstractTreeTaskNodeMoveDoer
+abstract public class AbstractTreeNodeSequenceChangeDoer extends AbstractTaskNodeChangeSequenceDoer
 {
 	@Override
 	public boolean isAvailable()
