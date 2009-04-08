@@ -20,7 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
 import org.miradi.views.ObjectsDoer;
 
@@ -46,5 +49,35 @@ abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 		}
 
 		return true;
+	}
+
+	protected boolean parentIsVisible(Task task) throws Exception
+	{
+		ORefList selectionHierarchy = getSelectionHierarchy();
+		int taskIndex = getTaskIndex(task, selectionHierarchy);
+		int parentIndex = getParentIndex(selectionHierarchy, task);
+		if (parentIndex < 0 || taskIndex < 0)
+			return false;
+		  
+		int expectedParentIndexOfTask = taskIndex + 1;
+		return parentIndex == expectedParentIndexOfTask;
+	}
+
+	private int getTaskIndex(Task task, ORefList selectionHierarchy)
+	{
+		return selectionHierarchy.find(task.getRef());
+	}
+
+	private int getParentIndex(ORefList selectionHierarchy, Task task)
+	{
+		int parentType = task.getTypeOfParent();
+		int taskIndex = getTaskIndex(task, selectionHierarchy);
+		int possibleParentIndex = taskIndex + 1;
+		ORef possibleParentRef = selectionHierarchy.get(possibleParentIndex);
+		ORefList parentReferrerRefs = task.findObjectsThatReferToUs(parentType);
+		if (parentReferrerRefs.contains(possibleParentRef))
+			return possibleParentIndex;
+		
+		return -1;
 	}
 }
