@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-public class TreeNodeShareMethodDoer extends ShareMethodDoer
+import org.miradi.views.umbrella.doers.AbstractShareMethodDoer;
+
+public class TreeNodeShareMethodDoer extends AbstractShareMethodDoer
 {
 }
