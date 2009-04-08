@@ -26,7 +26,7 @@ public class TreeNodeCreateMethodDoer extends TreeNodeCreateTaskDoer
 {
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
 	{
-		if(selectedObject.getType() == Indicator.getObjectType())
+		if(Indicator.is(selectedObject))
 			return true;
 		
 		return false;
