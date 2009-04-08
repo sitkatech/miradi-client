@@ -36,7 +36,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 			BaseObject selectedObject = getSingleSelectedObject();
 			if(selectedObject == null)
 				return false;
-			if(!canOwnTask(selectedObject))
+			if(!canBeParentOfTask(selectedObject))
 				return false;
 			if(!childWouldBeVisible(Task.getChildTaskTypeCode(selectedObject.getType())))
 				return false;
@@ -50,7 +50,7 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 		}
 	}
 	
-	protected boolean canOwnTask(BaseObject selectedObject) throws Exception
+	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
 	{
 		if(selectedObject.getType() == Task.getObjectType())
 			return true;
