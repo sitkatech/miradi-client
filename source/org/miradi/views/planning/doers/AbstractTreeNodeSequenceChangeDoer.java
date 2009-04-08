@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Task;
 
 abstract public class AbstractTreeNodeSequenceChangeDoer extends AbstractTreeTaskNodeMoveDoer
@@ -43,5 +45,35 @@ abstract public class AbstractTreeNodeSequenceChangeDoer extends AbstractTreeTas
 			EAM.logException(e);
 			return false;
 		}
+	}
+
+	private boolean hasAdjacentParentInSelectionHierarchy(Task task) throws Exception
+	{
+		int taskIndex = getTaskIndexInSelectionHierarchy(task);
+		int parentIndex = getParentIndexInSelectionHierarchy(task);
+		if (parentIndex < 0 || taskIndex < 0)
+			return false;
+		  
+		int expectedParentIndexOfTask = taskIndex + 1;
+		return parentIndex == expectedParentIndexOfTask;
+	}
+
+	private int getTaskIndexInSelectionHierarchy(Task task)
+	{
+		ORefList selectionHierarchy = getSelectionHierarchy();
+		return selectionHierarchy.find(task.getRef());
+	}
+
+	private int getParentIndexInSelectionHierarchy(Task task)
+	{
+		int parentType = task.getTypeOfParent();
+		int taskIndex = getTaskIndexInSelectionHierarchy(task);
+		int possibleParentIndex = taskIndex + 1;
+		ORef possibleParentRef = getSelectionHierarchy().get(possibleParentIndex);
+		ORefList parentReferrerRefs = task.findObjectsThatReferToUs(parentType);
+		if (parentReferrerRefs.contains(possibleParentRef))
+			return possibleParentIndex;
+		
+		return -1;
 	}
 }
