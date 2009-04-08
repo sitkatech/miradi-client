@@ -21,7 +21,7 @@ package org.miradi.views.planning.doers;
 
 
 
-public class TreeNodeUpDoer extends AbstractTreeTaskNodeMoveDoer
+public class TreeNodeUpDoer extends AbstractTreeNodeSequenceChangeDoer
 {
 	protected int getDelta()
 	{
