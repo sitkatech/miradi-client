@@ -204,8 +204,8 @@ import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasur
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
 import org.miradi.views.umbrella.DeleteActivity;
 import org.miradi.views.umbrella.UmbrellaView;
-import org.miradi.views.umbrella.doers.ActivityMoveDownDoer;
-import org.miradi.views.umbrella.doers.ActivityMoveUpDoer;
+import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
+import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 
 
 public class DiagramView extends TabbedView implements CommandExecutedListener
@@ -408,8 +408,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 		addDoerToMap(ActionDiagramProperties.class, new DiagramPropertiesShowDoer());
 		
-		addDoerToMap(ActionActivityMoveUp.class, new ActivityMoveUpDoer());
-		addDoerToMap(ActionActivityMoveDown.class, new ActivityMoveDownDoer());
+		addDoerToMap(ActionActivityMoveUp.class, new TaskMoveUpDoer());
+		addDoerToMap(ActionActivityMoveDown.class, new TaskMoveDownDoer());
 		
 		addDoerToMap(ActionCreateIncomingJunction.class, new CreateIncomingJunctionDoer());
 		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutgoingJunctionDoer());
