@@ -156,7 +156,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		int taskIndex = getTaskIndex(task, selectionHierarchy);
-		int parentIndex = getParentIndex(selectionHierarchy, task, taskIndex);
+		int parentIndex = getParentIndex(selectionHierarchy, task);
 		if (parentIndex < 0 || taskIndex < 0)
 			return false;
 		  
@@ -169,12 +169,14 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 		return selectionHierarchy.find(task.getRef());
 	}
 
-	private int getParentIndex(ORefList selectionHierarchy, Task task, int taskIndex)
+	private int getParentIndex(ORefList selectionHierarchy, Task task)
 	{
 		int parentType = task.getTypeOfParent();
+		int taskIndex = getTaskIndex(task, selectionHierarchy);
 		int possibleParentIndex = taskIndex + 1;
 		ORef possibleParentRef = selectionHierarchy.get(possibleParentIndex);
-		if (possibleParentRef.getObjectType() == parentType)
+		ORefList parentReferrerRefs = task.findObjectsThatReferToUs(parentType);
+		if (parentReferrerRefs.contains(possibleParentRef))
 			return possibleParentIndex;
 		
 		return -1;
