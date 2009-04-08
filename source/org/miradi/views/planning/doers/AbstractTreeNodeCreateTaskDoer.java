@@ -33,12 +33,12 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 		
 		try
 		{
-			BaseObject selected = getSingleSelectedObject();
-			if(selected == null)
+			BaseObject selectedObject = getSingleSelectedObject();
+			if(selectedObject == null)
 				return false;
-			if(!canOwnTask(selected))
+			if(!canOwnTask(selectedObject))
 				return false;
-			if(!childWouldBeVisible(Task.getChildTaskTypeCode(selected.getType())))
+			if(!childWouldBeVisible(Task.getChildTaskTypeCode(selectedObject.getType())))
 				return false;
 			
 			return true;
