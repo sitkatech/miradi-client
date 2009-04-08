@@ -25,6 +25,7 @@ import org.miradi.dialogs.activity.ShareableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.views.planning.doers.AbstractShareDoer;
@@ -55,22 +56,38 @@ public class ShareActivityDoer extends AbstractShareDoer
 		
 		return activitiesNotAlreadyInStrategy.size() > 0;
 	}
+	
+	@Override
+	protected boolean canOwnTask(BaseObject selectedObject) throws Exception
+	{
+		if(Strategy.is(selectedObject))
+			return true;
+		
+		if (Task.is(selectedObject))
+			return hasAdjacentParentInSelectionHierarchy((Task) selectedObject);
+		
+		return false;
+	}
 
+	@Override
 	protected String getParentTaskIdsTag()
 	{
 		return Strategy.TAG_ACTIVITY_IDS;
 	}
 
+	@Override
 	protected String getShareDialogTitle()
 	{
 		return EAM.text("Share Activity");
 	}
 
+	@Override
 	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
 	{
 		return new ShareableActivityPoolTablePanel(getMainWindow(), parentOfSharedObjectRefs);
 	}
 
+	@Override
 	protected int getParentType()
 	{
 		return Strategy.getObjectType();
