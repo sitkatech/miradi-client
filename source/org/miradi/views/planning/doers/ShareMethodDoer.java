@@ -38,6 +38,7 @@ public class ShareMethodDoer extends AbstractShareDoer
 		return getSingleSelected(getParentType()) != null;
 	}
 	
+	@Override
 	protected boolean canOwnTask(BaseObject selectedObject) throws Exception
 	{
 		if(Indicator.is(selectedObject))
@@ -49,21 +50,25 @@ public class ShareMethodDoer extends AbstractShareDoer
 		return false;
 	}
 
+	@Override
 	protected String getParentTaskIdsTag()
 	{
 		return Indicator.TAG_TASK_IDS;
 	}
 
+	@Override
 	protected int getParentType()
 	{
 		return Indicator.getObjectType();
 	}
 	
+	@Override
 	protected String getShareDialogTitle()
 	{
 		return EAM.text("Share Method");
 	}
 
+	@Override
 	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
 	{
 		return new ShareableMethodPoolTablePanel(getMainWindow(), parentOfSharedObjectRefs);
