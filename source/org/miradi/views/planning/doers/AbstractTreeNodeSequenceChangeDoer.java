@@ -31,10 +31,7 @@ abstract public class AbstractTreeNodeSequenceChangeDoer extends AbstractTreeTas
 		if (!super.isAvailable())
 			return false;
 
-		if(!hasAdjacentParentInSelectionHierarchy())
-			return false;
-
-		return true;
+		return hasAdjacentParentInSelectionHierarchy();
 	}
 
 	private boolean hasAdjacentParentInSelectionHierarchy()
