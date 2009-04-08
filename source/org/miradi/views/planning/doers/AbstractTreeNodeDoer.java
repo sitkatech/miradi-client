@@ -51,7 +51,7 @@ abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 		return true;
 	}
 
-	protected boolean parentIsVisible(Task task) throws Exception
+	protected boolean hasAdjacentParentInSelectionHierarchy(Task task) throws Exception
 	{
 		ORefList selectionHierarchy = getSelectionHierarchy();
 		int taskIndex = getTaskIndex(task, selectionHierarchy);

@@ -44,7 +44,7 @@ public class ShareMethodDoer extends AbstractShareDoer
 			return true;
 		
 		if (Task.is(selectedObject))
-			return parentIsVisible((Task) selectedObject);
+			return hasAdjacentParentInSelectionHierarchy((Task) selectedObject);
 		
 		return false;
 	}
