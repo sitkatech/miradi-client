@@ -199,13 +199,13 @@ import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.planning.doers.AddAssignmentDoer;
 import org.miradi.views.planning.doers.RemoveAssignmentDoer;
-import org.miradi.views.planning.doers.TreeNodeDownDoer;
-import org.miradi.views.planning.doers.TreeNodeUpDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
+import org.miradi.views.umbrella.ActivityMoveUpDoer;
 import org.miradi.views.umbrella.DeleteActivity;
 import org.miradi.views.umbrella.UmbrellaView;
+import org.miradi.views.umbrella.doers.ActivityMoveDownDoer;
 
 
 public class DiagramView extends TabbedView implements CommandExecutedListener
@@ -408,8 +408,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 		addDoerToMap(ActionDiagramProperties.class, new DiagramPropertiesShowDoer());
 		
-		addDoerToMap(ActionActivityMoveUp.class, new TreeNodeUpDoer());
-		addDoerToMap(ActionActivityMoveDown.class, new TreeNodeDownDoer());
+		addDoerToMap(ActionActivityMoveUp.class, new ActivityMoveUpDoer());
+		addDoerToMap(ActionActivityMoveDown.class, new ActivityMoveDownDoer());
 		
 		addDoerToMap(ActionCreateIncomingJunction.class, new CreateIncomingJunctionDoer());
 		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutgoingJunctionDoer());
