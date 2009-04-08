@@ -26,7 +26,7 @@ public class TreeNodeCreateActivityDoer extends TreeNodeCreateTaskDoer
 {
 	protected boolean canBeParentOfTask(BaseObject selectedObject) throws Exception
 	{
-		if(selectedObject.getType() == Strategy.getObjectType())
+		if(Strategy.is(selectedObject))
 			return true;
 		
 		return false;
