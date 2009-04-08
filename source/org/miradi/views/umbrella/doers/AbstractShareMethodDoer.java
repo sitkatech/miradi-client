@@ -19,9 +19,45 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.dialogs.task.ShareableMethodPoolTablePanel;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Indicator;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
 abstract public class AbstractShareMethodDoer extends AbstractShareDoer
 {
+	@Override
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+		
+		return getSingleSelected(getParentType()) != null;
+	}
+	
+	@Override
+	protected String getParentTaskIdsTag()
+	{
+		return Indicator.TAG_TASK_IDS;
+	}
 
+	@Override
+	protected int getParentType()
+	{
+		return Indicator.getObjectType();
+	}
+	
+	@Override
+	protected String getShareDialogTitle()
+	{
+		return EAM.text("Share Method");
+	}
+
+	@Override
+	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
+	{
+		return new ShareableMethodPoolTablePanel(getMainWindow(), parentOfSharedObjectRefs);
+	}
 }
