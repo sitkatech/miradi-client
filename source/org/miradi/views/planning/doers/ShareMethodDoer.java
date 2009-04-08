@@ -23,9 +23,7 @@ import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.dialogs.task.ShareableMethodPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
 
 public class ShareMethodDoer extends AbstractShareDoer
 {	
@@ -38,18 +36,6 @@ public class ShareMethodDoer extends AbstractShareDoer
 		return getSingleSelected(getParentType()) != null;
 	}
 	
-	@Override
-	protected boolean canOwnTask(BaseObject selectedObject) throws Exception
-	{
-		if(Indicator.is(selectedObject))
-			return true;
-		
-		if (Task.is(selectedObject))
-			return hasAdjacentParentInSelectionHierarchy((Task) selectedObject);
-		
-		return false;
-	}
-
 	@Override
 	protected String getParentTaskIdsTag()
 	{

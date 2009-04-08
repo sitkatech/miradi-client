@@ -25,6 +25,7 @@ import org.miradi.dialogs.diagram.ShareSelectionDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Task;
 
 
 abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
@@ -74,6 +75,18 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 			return ORef.INVALID;
 		
 		return foundObject.getRef();
+	}
+	
+	@Override
+	protected boolean canOwnTask(BaseObject selectedObject) throws Exception
+	{
+		if(getParentType() == selectedObject.getType())
+			return true;
+		
+		if (Task.is(selectedObject))
+			return hasAdjacentParentInSelectionHierarchy((Task) selectedObject);
+		
+		return false;
 	}
 
 	abstract protected String getShareDialogTitle();
