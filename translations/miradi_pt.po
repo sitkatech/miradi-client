@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 13:20-0500\n"
+"POT-Creation-Date: 2009-04-08 13:23-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -218,10 +218,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/CreatePlanningViewConfigurationDoer.java:90
 msgid "PlanningSubViewName|Custom"
-msgstr ""
-
-#: miradi/source/org/miradi/views/planning/doers/ShareMethodDoer.java:55
-msgid "Share Method"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
@@ -531,10 +527,6 @@ msgstr ""
 msgid "Edit Progress Reports"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/doers/ShareActivityDoer.java:68
-msgid "Share Activity"
-msgstr ""
-
 #: miradi/source/org/miradi/views/diagram/doers/DeleteIndicatorProgressReportDoer.java:47
 #: miradi/source/org/miradi/views/diagram/doers/DeleteActivityProgressReportDoer.java:47
 #: miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
@@ -774,6 +766,10 @@ msgid ""
 " %s"
 msgstr ""
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareMethodDoer.java:55
+msgid "Share Method"
+msgstr ""
+
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
 #: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
@@ -810,6 +806,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:60
 msgid "Error occurred while trying to export current page as RTF.\n"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareActivityDoer.java:69
+msgid "Share Activity"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31

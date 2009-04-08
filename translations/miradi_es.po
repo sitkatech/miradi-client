@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 13:20-0500\n"
+"POT-Creation-Date: 2009-04-08 13:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -266,10 +266,6 @@ msgstr ""
 #, fuzzy
 msgid "PlanningSubViewName|Custom"
 msgstr "PlanningSubViewName|Custom"
-
-#: miradi/source/org/miradi/views/planning/doers/ShareMethodDoer.java:55
-msgid "Share Method"
-msgstr "Compartir método"
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
 msgid "Accounting Code"
@@ -591,10 +587,6 @@ msgstr "Cuadro de diálogo Editar"
 msgid "Edit Progress Reports"
 msgstr "Editar informes de progreso"
 
-#: miradi/source/org/miradi/views/diagram/doers/ShareActivityDoer.java:68
-msgid "Share Activity"
-msgstr "Compartir actividad"
-
 #: miradi/source/org/miradi/views/diagram/doers/DeleteIndicatorProgressReportDoer.java:47
 #: miradi/source/org/miradi/views/diagram/doers/DeleteActivityProgressReportDoer.java:47
 #: miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
@@ -856,6 +848,10 @@ msgstr ""
 "Nombre actual del paso del asistente:\n"
 " %s"
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareMethodDoer.java:55
+msgid "Share Method"
+msgstr "Compartir método"
+
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
 #: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
@@ -899,6 +895,10 @@ msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 "Se produjo un error al intentar exportar la página actual como RTF.\n"
 " "
+
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareActivityDoer.java:69
+msgid "Share Activity"
+msgstr "Compartir actividad"
 
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
