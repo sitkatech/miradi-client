@@ -39,7 +39,7 @@ public class ShareMethodDoer extends AbstractShareDoer
 	
 	protected boolean canOwnTask(BaseObject selectedObject)
 	{
-		if(selectedObject.getType() == Indicator.getObjectType())
+		if(Indicator.is(selectedObject))
 			return true;
 		
 		return false;
