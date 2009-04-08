@@ -24,9 +24,9 @@ import org.miradi.objects.Indicator;
 
 public class TreeNodeCreateMethodDoer extends TreeNodeCreateTaskDoer
 {
-	protected boolean canOwnTask(BaseObject object)
+	protected boolean canOwnTask(BaseObject selectedObject)
 	{
-		if(object.getType() == Indicator.getObjectType())
+		if(selectedObject.getType() == Indicator.getObjectType())
 			return true;
 		
 		return false;

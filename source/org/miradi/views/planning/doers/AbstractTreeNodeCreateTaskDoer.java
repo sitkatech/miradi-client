@@ -50,9 +50,9 @@ abstract public class AbstractTreeNodeCreateTaskDoer extends AbstractTreeNodeDoe
 		}
 	}
 	
-	protected boolean canOwnTask(BaseObject object)
+	protected boolean canOwnTask(BaseObject selectedObject)
 	{
-		if(object.getType() == Task.getObjectType())
+		if(selectedObject.getType() == Task.getObjectType())
 			return true;
 		
 		return false;
