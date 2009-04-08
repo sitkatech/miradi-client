@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 10:08-0500\n"
+"POT-Creation-Date: 2009-04-08 10:11-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -268,7 +268,7 @@ msgstr ""
 msgid "PlanningSubViewName|Custom"
 msgstr "PlanningSubViewName|Custom"
 
-#: miradi/source/org/miradi/views/planning/doers/ShareMethodDoer.java:68
+#: miradi/source/org/miradi/views/planning/doers/ShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "Berbagi Metode "
 
@@ -594,7 +594,7 @@ msgstr "Dialog Edit "
 msgid "Edit Progress Reports"
 msgstr "Edit Laporan Kemajuan "
 
-#: miradi/source/org/miradi/views/diagram/doers/ShareActivityDoer.java:81
+#: miradi/source/org/miradi/views/diagram/doers/ShareActivityDoer.java:68
 msgid "Share Activity"
 msgstr "Berbagi Kegiatan "
 
