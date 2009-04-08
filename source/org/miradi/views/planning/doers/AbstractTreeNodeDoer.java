@@ -22,22 +22,12 @@ package org.miradi.views.planning.doers;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 {
-	protected BaseObject getSingleSelectedObject()
-	{
-		BaseObject[] selectedObjects = getObjects();
-		if(selectedObjects.length != 1)
-			return null;
-		
-		return selectedObjects[0];
-	}
-
 	protected boolean childWouldBeVisible(String objectTypeName) throws Exception
 	{
 		//TODO this method only applies if we are inside planning view

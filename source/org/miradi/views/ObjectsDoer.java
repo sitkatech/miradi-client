@@ -79,6 +79,15 @@ abstract public class ObjectsDoer extends ViewDoer
 		return picker.getSelectedObjects();
 	}
 	
+	protected BaseObject getSingleSelectedObject()
+	{
+		BaseObject[] selectedObjects = getObjects();
+		if(selectedObjects.length != 1)
+			return null;
+		
+		return selectedObjects[0];
+	}
+	
 	public BaseObject getSingleSelected(int type)
 	{
 		if(picker == null)
