@@ -22,11 +22,11 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.views.planning.doers.AbstractTaskNodeChangeSequenceDoer;
 
 
-public class ActivityMoveUpDoer extends AbstractTaskNodeChangeSequenceDoer
+public class TaskMoveDownDoer extends AbstractTaskNodeChangeSequenceDoer
 {
 	@Override
 	protected int getDelta()
 	{
-		return DELTA_UP_VALUE;
+		return DELTA_DOWN_VALUE;
 	}
 }
