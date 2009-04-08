@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.views.diagram.doers.ShareActivityDoer;
+import org.miradi.views.umbrella.doers.AbstractShareActivityDoer;
 
-public class TreeNodeShareActivityDoer extends ShareActivityDoer
+public class TreeNodeShareActivityDoer extends AbstractShareActivityDoer
 {
 }
