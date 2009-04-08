@@ -19,6 +19,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
+import org.miradi.main.EAM;
+import org.miradi.objects.Task;
+
 abstract public class AbstractTreeNodeSequenceChangeDoer extends AbstractTreeTaskNodeMoveDoer
 {
+	@Override
+	public boolean isAvailable()
+	{
+		if (!super.isAvailable())
+			return false;
+
+		try
+		{
+			Task task = getSingleSelectedTask();
+			if(!hasAdjacentParentInSelectionHierarchy(task))
+				return false;
+			
+			return true;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
 }
