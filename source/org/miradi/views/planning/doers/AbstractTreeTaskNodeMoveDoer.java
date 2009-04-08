@@ -150,36 +150,6 @@ abstract public class AbstractTreeTaskNodeMoveDoer extends AbstractChangeSequenc
 		return siblings;
 	}
 	
-	protected boolean hasAdjacentParentInSelectionHierarchy(Task task) throws Exception
-	{
-		int taskIndex = getTaskIndexInSelectionHierarchy(task);
-		int parentIndex = getParentIndexInSelectionHierarchy(task);
-		if (parentIndex < 0 || taskIndex < 0)
-			return false;
-		  
-		int expectedParentIndexOfTask = taskIndex + 1;
-		return parentIndex == expectedParentIndexOfTask;
-	}
-
-	private int getTaskIndexInSelectionHierarchy(Task task)
-	{
-		ORefList selectionHierarchy = getSelectionHierarchy();
-		return selectionHierarchy.find(task.getRef());
-	}
-
-	private int getParentIndexInSelectionHierarchy(Task task)
-	{
-		int parentType = task.getTypeOfParent();
-		int taskIndex = getTaskIndexInSelectionHierarchy(task);
-		int possibleParentIndex = taskIndex + 1;
-		ORef possibleParentRef = getSelectionHierarchy().get(possibleParentIndex);
-		ORefList parentReferrerRefs = task.findObjectsThatReferToUs(parentType);
-		if (parentReferrerRefs.contains(possibleParentRef))
-			return possibleParentIndex;
-		
-		return -1;
-	}
-
 	protected static final int DELTA_UP_VALUE = -1;
 	protected static final int DELTA_DOWN_VALUE = 1;	
 }
