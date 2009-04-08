@@ -45,7 +45,7 @@ abstract public class AbstractTreeNodeMoveDoer extends AbstractTreeNodeDoer
 			if(task == null)
 				return false;
 			
-			if(!parentIsVisible(task))
+			if(!hasAdjacentParentInSelectionHierarchy(task))
 				return false;
 			
 			IdList siblings = getSiblingList(task);
