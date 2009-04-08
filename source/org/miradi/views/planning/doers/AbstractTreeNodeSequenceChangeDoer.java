@@ -31,15 +31,15 @@ abstract public class AbstractTreeNodeSequenceChangeDoer extends AbstractTreeTas
 		if (!super.isAvailable())
 			return false;
 
-		Task task = getSingleSelectedTask();
-		if(!hasAdjacentParentInSelectionHierarchy(task))
+		if(!hasAdjacentParentInSelectionHierarchy())
 			return false;
 
 		return true;
 	}
 
-	private boolean hasAdjacentParentInSelectionHierarchy(Task task)
+	private boolean hasAdjacentParentInSelectionHierarchy()
 	{
+		Task task = getSingleSelectedTask();
 		int taskIndex = getTaskIndexInSelectionHierarchy(task);
 		int parentIndex = getParentIndexInSelectionHierarchy(task);
 		if (parentIndex < 0 || taskIndex < 0)
