@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella;
+package org.miradi.views.umbrella.doers;
 
 import org.miradi.views.planning.doers.AbstractTreeTaskNodeMoveDoer;
 

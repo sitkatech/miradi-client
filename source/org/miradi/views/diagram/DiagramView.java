@@ -202,10 +202,10 @@ import org.miradi.views.planning.doers.RemoveAssignmentDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
-import org.miradi.views.umbrella.ActivityMoveUpDoer;
 import org.miradi.views.umbrella.DeleteActivity;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.ActivityMoveDownDoer;
+import org.miradi.views.umbrella.doers.ActivityMoveUpDoer;
 
 
 public class DiagramView extends TabbedView implements CommandExecutedListener
