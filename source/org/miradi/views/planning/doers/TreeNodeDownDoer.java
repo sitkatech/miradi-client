@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning.doers;
 
-public class TreeNodeDownDoer extends AbstractTreeTaskNodeMoveDoer
+public class TreeNodeDownDoer extends AbstractTreeNodeSequenceChangeDoer
 {
 	protected int getDelta()
 	{
