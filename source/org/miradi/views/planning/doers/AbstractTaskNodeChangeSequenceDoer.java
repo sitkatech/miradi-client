@@ -47,9 +47,6 @@ abstract public class AbstractTaskNodeChangeSequenceDoer extends ObjectsDoer
 				return false;
 			
 			IdList siblings = getSiblingList(task);
-			if(siblings == null)
-				return false;
-			
 			int oldPosition = siblings.find(task.getId());
 			if(oldPosition < 0)
 				return false;
