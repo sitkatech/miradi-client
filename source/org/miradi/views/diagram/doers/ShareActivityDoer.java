@@ -27,9 +27,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
-import org.miradi.views.planning.doers.AbstractShareDoer;
+import org.miradi.views.umbrella.doers.AbstractShareActivityDoer;
 
-public class ShareActivityDoer extends AbstractShareDoer
+public class ShareActivityDoer extends AbstractShareActivityDoer
 {	
 	public boolean isAvailable()
 	{
