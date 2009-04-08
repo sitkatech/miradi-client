@@ -24,7 +24,7 @@ import org.miradi.objects.Strategy;
 
 public class TreeNodeCreateActivityDoer extends TreeNodeCreateTaskDoer
 {
-	protected boolean canOwnTask(BaseObject selectedObject)
+	protected boolean canOwnTask(BaseObject selectedObject) throws Exception
 	{
 		if(selectedObject.getType() == Strategy.getObjectType())
 			return true;
