@@ -35,8 +35,9 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Task;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 import org.miradi.views.umbrella.DeleteActivity;
+import org.miradi.views.umbrella.doers.AbstractDeleteDoer;
 
-public class TreeNodeDeleteDoer extends AbstractTreeNodeDoer
+public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 {
 	public boolean isAvailable()
 	{
