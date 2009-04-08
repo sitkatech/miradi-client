@@ -37,7 +37,7 @@ public class ShareMethodDoer extends AbstractShareDoer
 		return getSingleSelected(getParentType()) != null;
 	}
 	
-	protected boolean canOwnTask(BaseObject selectedObject)
+	protected boolean canOwnTask(BaseObject selectedObject) throws Exception
 	{
 		if(Indicator.is(selectedObject))
 			return true;
