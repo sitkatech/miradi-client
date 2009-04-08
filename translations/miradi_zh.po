@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 13:20-0500\n"
+"POT-Creation-Date: 2009-04-08 13:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -248,10 +248,6 @@ msgstr ""
 #, fuzzy
 msgid "PlanningSubViewName|Custom"
 msgstr "PlanningSubViewName|Custom"
-
-#: miradi/source/org/miradi/views/planning/doers/ShareMethodDoer.java:55
-msgid "Share Method"
-msgstr "共享方法 \t\t"
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
 msgid "Accounting Code"
@@ -570,10 +566,6 @@ msgstr "编辑对话框 \t\t"
 msgid "Edit Progress Reports"
 msgstr "编辑进展报告 \t\t"
 
-#: miradi/source/org/miradi/views/diagram/doers/ShareActivityDoer.java:68
-msgid "Share Activity"
-msgstr "共享活动 \t\t"
-
 #: miradi/source/org/miradi/views/diagram/doers/DeleteIndicatorProgressReportDoer.java:47
 #: miradi/source/org/miradi/views/diagram/doers/DeleteActivityProgressReportDoer.java:47
 #: miradi/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:47
@@ -826,6 +818,10 @@ msgstr ""
 "当前向导步骤名称：\n"
 " %s \t\t"
 
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareMethodDoer.java:55
+msgid "Share Method"
+msgstr "共享方法 \t\t"
+
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
 #: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
@@ -869,6 +865,10 @@ msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 "在试图导出当前页面为RTF.\n"
 "时出错"
+
+#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareActivityDoer.java:69
+msgid "Share Activity"
+msgstr "共享活动 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
