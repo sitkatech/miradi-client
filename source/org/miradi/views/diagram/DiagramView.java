@@ -170,8 +170,6 @@ import org.miradi.project.Project;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
-import org.miradi.views.diagram.doers.ActivityMoveDownDoer;
-import org.miradi.views.diagram.doers.ActivityMoveUpDoer;
 import org.miradi.views.diagram.doers.CloneStressDoer;
 import org.miradi.views.diagram.doers.CreateIncomingJunctionDoer;
 import org.miradi.views.diagram.doers.CreateMarginDoer;
@@ -201,6 +199,8 @@ import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.planning.doers.AddAssignmentDoer;
 import org.miradi.views.planning.doers.RemoveAssignmentDoer;
+import org.miradi.views.planning.doers.TreeNodeDownDoer;
+import org.miradi.views.planning.doers.TreeNodeUpDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
@@ -408,8 +408,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 		addDoerToMap(ActionDiagramProperties.class, new DiagramPropertiesShowDoer());
 		
-		addDoerToMap(ActionActivityMoveUp.class, new ActivityMoveUpDoer());
-		addDoerToMap(ActionActivityMoveDown.class, new ActivityMoveDownDoer());
+		addDoerToMap(ActionActivityMoveUp.class, new TreeNodeUpDoer());
+		addDoerToMap(ActionActivityMoveDown.class, new TreeNodeDownDoer());
 		
 		addDoerToMap(ActionCreateIncomingJunction.class, new CreateIncomingJunctionDoer());
 		addDoerToMap(ActionCreateOutgoingJunction.class, new CreateOutgoingJunctionDoer());
