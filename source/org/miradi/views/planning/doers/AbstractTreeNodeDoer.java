@@ -53,9 +53,8 @@ abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 
 	protected boolean hasAdjacentParentInSelectionHierarchy(Task task) throws Exception
 	{
-		ORefList selectionHierarchy = getSelectionHierarchy();
-		int taskIndex = getTaskIndex(task, selectionHierarchy);
-		int parentIndex = getParentIndex(selectionHierarchy, task);
+		int taskIndex = getTaskIndex(task);
+		int parentIndex = getParentIndex(task);
 		if (parentIndex < 0 || taskIndex < 0)
 			return false;
 		  
@@ -63,17 +62,18 @@ abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 		return parentIndex == expectedParentIndexOfTask;
 	}
 
-	private int getTaskIndex(Task task, ORefList selectionHierarchy)
+	private int getTaskIndex(Task task)
 	{
+		ORefList selectionHierarchy = getSelectionHierarchy();
 		return selectionHierarchy.find(task.getRef());
 	}
 
-	private int getParentIndex(ORefList selectionHierarchy, Task task)
+	private int getParentIndex(Task task)
 	{
 		int parentType = task.getTypeOfParent();
-		int taskIndex = getTaskIndex(task, selectionHierarchy);
+		int taskIndex = getTaskIndex(task);
 		int possibleParentIndex = taskIndex + 1;
-		ORef possibleParentRef = selectionHierarchy.get(possibleParentIndex);
+		ORef possibleParentRef = getSelectionHierarchy().get(possibleParentIndex);
 		ORefList parentReferrerRefs = task.findObjectsThatReferToUs(parentType);
 		if (parentReferrerRefs.contains(possibleParentRef))
 			return possibleParentIndex;
