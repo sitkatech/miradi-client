@@ -24,8 +24,9 @@ import org.miradi.dialogs.task.ShareableMethodPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
+import org.miradi.views.umbrella.doers.AbstractShareMethodDoer;
 
-public class ShareMethodDoer extends AbstractShareDoer
+public class ShareMethodDoer extends AbstractShareMethodDoer
 {	
 	@Override
 	public boolean isAvailable()
