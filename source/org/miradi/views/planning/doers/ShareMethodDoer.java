@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Task;
 
 public class ShareMethodDoer extends AbstractShareDoer
 {	
@@ -41,6 +42,9 @@ public class ShareMethodDoer extends AbstractShareDoer
 	{
 		if(Indicator.is(selectedObject))
 			return true;
+		
+		if (Task.is(selectedObject))
+			return parentIsVisible((Task) selectedObject);
 		
 		return false;
 	}
