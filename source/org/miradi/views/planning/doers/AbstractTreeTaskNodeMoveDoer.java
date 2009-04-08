@@ -34,7 +34,7 @@ import org.miradi.objects.Task;
 import org.miradi.views.umbrella.doers.AbstractChangeSequenceDoer;
 
 
-abstract public class AbstractTreeNodeMoveDoer extends AbstractChangeSequenceDoer
+abstract public class AbstractTreeTaskNodeMoveDoer extends AbstractChangeSequenceDoer
 {
 	protected abstract int getDelta();
 	
