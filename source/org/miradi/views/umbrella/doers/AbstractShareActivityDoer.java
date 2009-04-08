@@ -19,8 +19,65 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.util.Vector;
+
+import org.miradi.dialogs.activity.ShareableActivityPoolTablePanel;
+import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
 abstract public class AbstractShareActivityDoer extends AbstractShareDoer
 {
+
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+		
+		if (getSingleSelected(Strategy.getObjectType()) == null)
+			return false;
+		
+		return hasSharableActivities();
+	}
+
+	private boolean hasSharableActivities()
+	{
+		ORef strategyRef = getParentRefOfShareableObjects();
+		if (!Strategy.is(strategyRef))
+			return false;
+	
+		Strategy strategy = Strategy.find(getProject(), strategyRef);
+		Vector<Task> activities = strategy.getActivities();
+		Vector<Task> activitiesNotAlreadyInStrategy = getProject().getTaskPool().getAllActivities();
+		activitiesNotAlreadyInStrategy.removeAll(activities);
+		
+		return activitiesNotAlreadyInStrategy.size() > 0;
+	}
+
+	@Override
+	protected String getParentTaskIdsTag()
+	{
+		return Strategy.TAG_ACTIVITY_IDS;
+	}
+
+	@Override
+	protected String getShareDialogTitle()
+	{
+		return EAM.text("Share Activity");
+	}
+
+	@Override
+	protected ObjectPoolTablePanel createShareableObjectPoolTablePanel(ORef parentOfSharedObjectRefs)
+	{
+		return new ShareableActivityPoolTablePanel(getMainWindow(), parentOfSharedObjectRefs);
+	}
+
+	@Override
+	protected int getParentType()
+	{
+		return Strategy.getObjectType();
+	}
 }
