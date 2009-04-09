@@ -46,6 +46,7 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -335,6 +336,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeIndicatorIds(out, desire.getRelevantIndicatorRefList());
 		writeElement(out, NAME, buildObjectiveExportableName(desire, optionalAnnotationLabel));
 		writeOptionalElement(out, COMMENT, desire, Objective.TAG_COMMENTS);
+		writeProgressPercents(out, desire.getProgressPercentRefs());
 		writeEndElement(out, OBJECTIVE);
 	}
 
@@ -350,6 +352,25 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			name += optionalAnnotationLabel;
 		
 		return name;
+	}
+	
+	private void writeProgressPercents(UnicodeWriter out, ORefList progressPercentRefs) throws Exception
+	{
+		progressPercentRefs.sort();
+		writeStartElement(out, PROGRESS_PERCENT_REPORTS);
+		for (int index = 0; index < progressPercentRefs.size(); ++index)
+		{
+			writeStartElement(out, PROGRESS_PERCENT_REPORT);
+			
+			ProgressPercent progressPercent = ProgressPercent.find(getProject(), progressPercentRefs.get(index));
+			writeOptionalElement(out, PROGRESS_PERCENT_COMPLETE, progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE);
+			writeOptionalElement(out, PROGRESS_PERCENT_DATE, progressPercent, ProgressPercent.TAG_DATE);
+			writeOptionalElement(out, PROGRESS_PERCENT_COMMENT, progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+
+			writeEndElement(out, PROGRESS_PERCENT_REPORT);
+		}
+		
+		writeEndElement(out, PROGRESS_PERCENT_REPORTS);
 	}
 
 	private void writeIndicatorIds(UnicodeWriter out, ORefList indicatorRefs) throws Exception
