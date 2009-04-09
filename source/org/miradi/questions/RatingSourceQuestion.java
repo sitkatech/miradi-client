@@ -33,11 +33,15 @@ public class RatingSourceQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("Not Specified")),
-			new ChoiceItem("RoughGuess", EAM.text("Rough Guess")),
-			new ChoiceItem("ExpertKnowlege", EAM.text("Expert Knowledge")),
-			new ChoiceItem("ExternalResearch", EAM.text("External Research")),
-			new ChoiceItem("OnsiteResearch", EAM.text("Onsite Research")),
+			new ChoiceItem(ROUGH_GUES_CODE, EAM.text("Rough Guess")),
+			new ChoiceItem(EXPERT_KNOWLEGE_CODE, EAM.text("Expert Knowledge")),
+			new ChoiceItem(EXTERNAL_RESEARCH_CODE, EAM.text("External Research")),
+			new ChoiceItem(ONSITE_RESEARCH_CODE, EAM.text("Onsite Research")),
 		};
 	}
-
+	
+	public static final String ROUGH_GUES_CODE = "RoughGuess";
+	public static final String EXPERT_KNOWLEGE_CODE = "ExpertKnowlege";
+	public static final String EXTERNAL_RESEARCH_CODE = "ExternalResearch";
+	public static final String ONSITE_RESEARCH_CODE = "OnsiteResearch";
 }
