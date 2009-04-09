@@ -45,7 +45,6 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
@@ -74,6 +73,8 @@ import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
 
+
+//FIXME This class is under construction
 public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMiradiXmlVersion2
 {
 	public ConproXmlExporterVersion2(Project project) throws Exception
@@ -89,7 +90,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		out.writeln("<?xml version='1.0' encoding='UTF-8' ?>");
 		out.writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "='" + NAME_SPACE + "'>");
 		
-		writeoutDocumentExchangeElement(out);
 		writeoutProjectSummaryElement(out);
 		writeTargets(out);
 		writeThreats(out);
@@ -439,7 +439,8 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeThreshold(out, INDICATOR_DESCRIPTION_VERY_GOOD, indicator, StatusQuestion.VERY_GOOD);
 		
 		writeOptionalRankingCodeElement(out, DESIRED_VIABILITY_RATING, indicator.getFutureStatusRating());
-		writeOptionalLatestMeasurementValues(out, indicator);
+		//writeOptionalLatestMeasurementValues(out, indicator);
+		writeOptionalElement(out, SOURCE_INDICATOR_RATINGS, "");
 		writeOptionalElement(out, DESIRED_RATING_DATE,  indicator, Indicator.TAG_FUTURE_STATUS_DATE);
 		writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, INDICATOR_RATING_COMMENT, indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
@@ -449,20 +450,20 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeEndElement(out, VIABILITY_ASSESSMENT);
 	}
 
-	private void writeOptionalLatestMeasurementValues(UnicodeWriter out, Indicator indicator) throws Exception
-	{
-		ORef measurementRef = indicator.getLatestMeasurementRef();
-		if (measurementRef.isInvalid())
-			return;
+	//private void writeOptionalLatestMeasurementValues(UnicodeWriter out, Indicator indicator) throws Exception
+	//{
+		//ORef measurementRef = indicator.getLatestMeasurementRef();
+		//if (measurementRef.isInvalid())
+		//	return;
 		
-		Measurement measurement = Measurement.find(getProject(), measurementRef);
+		//Measurement measurement = Measurement.find(getProject(), measurementRef);
 		
-		writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, measurement, Measurement.TAG_SUMMARY);
-		writeOptionalRankingCodeElement(out, CURRENT_VIABILITY_RATING,  measurement, (Measurement.TAG_STATUS));
-		writeOptionalElement(out, CURRENT_RATING_DATE,  measurement, Measurement.TAG_DATE);
-		writeOptionalElement(out, CONFIDENE_CURRENT_RATING,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
-		writeOptionalElement(out, CURRENT_RATING_COMMENT, measurement, Measurement.TAG_COMMENT);
-	}
+		//writeOptionalElement(out, CURRENT_INDICATOR_STATUS_VIABILITY, measurement, Measurement.TAG_SUMMARY);
+		//writeOptionalRankingCodeElement(out, CURRENT_VIABILITY_RATING,  measurement, (Measurement.TAG_STATUS));
+		//writeOptionalElement(out, CURRENT_RATING_DATE,  measurement, Measurement.TAG_DATE);
+		//writeOptionalElement(out, CONFIDENE_CURRENT_RATING,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
+		//writeOptionalElement(out, CURRENT_RATING_COMMENT, measurement, Measurement.TAG_COMMENT);
+	//}
 
 	private void writeThreshold(UnicodeWriter out, String elementName, Indicator indicator, String threshold) throws Exception
 	{
@@ -756,8 +757,24 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			out.writeln();
 			writeElement(out, EXPORT_DATE, new MiradiMultiCalendar().toIsoDateString());
 			out.writeln();
+			writeOrganizationPriorities(out);
+			writeProjectTypes(out);
 			
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private void writeProjectTypes(UnicodeWriter out) throws Exception
+	{
+		writeStartElement(out, PROJECT_TYPES);
+		writeElement(out, PROJECT_TYPE, "");
+		writeEndElement(out, PROJECT_TYPES);
+	}
+
+	private void writeOrganizationPriorities(UnicodeWriter out) throws Exception
+	{
+		writeStartElement(out, ORGANIZATIONAL_PRIORITIES);
+		writeElement(out, PRIORITY, "df");	
+		writeEndElement(out, ORGANIZATIONAL_PRIORITIES);
 	}
 
 	private String getMiradiVersionAsToken() throws Exception
@@ -953,21 +970,16 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		return getProject().getMetadata();
 	}
 
-	private void writeoutDocumentExchangeElement(UnicodeWriter out) throws Exception
-	{
-		out.writeln("<" + DOCUMENT_EXCHANGE + " " + DOCIMENT_EXCHANGE_STATUS + "='success'/>");
-		//NOTE: we never write the optional error message
-	}
-	
 	private void writeCodeElement(UnicodeWriter out, String code, HashMap<String, String> map) throws Exception
 	{
 		out.write(getConproCode(code, map));
 	}
 
-	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
-	{
-		writeOptionalRankingCodeElement(out, elementName, object.getData(tag));
-	}
+//TODO remove commented code
+//	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, BaseObject object, String tag) throws Exception
+//	{
+//		writeOptionalRankingCodeElement(out, elementName, object.getData(tag));
+//	}
 
 	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
 	{
@@ -1003,12 +1015,13 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		return ratingCodeToXmlValue(Integer.toString(code));
 	}
-	
-	private String statusConfidenceToXmlValue(String code)
-	{
-		HashMap<String, String> statusConfidenceMap = getCodeMapHelper().getMiradiToConProStatusConfidenceMap();
-		return getCodeMapHelper().getSafeXmlCode(statusConfidenceMap, code);
-	}
+
+//TODO remove commented code
+//	private String statusConfidenceToXmlValue(String code)
+//	{
+//		HashMap<String, String> statusConfidenceMap = getCodeMapHelper().getMiradiToConProStatusConfidenceMap();
+//		return getCodeMapHelper().getSafeXmlCode(statusConfidenceMap, code);
+//	}
 	
 	private String tncProjectSharingToXmlValue(String code)
 	{

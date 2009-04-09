@@ -1,0 +1,539 @@
+# $LastChangedBy$
+# $LastChangedDate$
+# $LastChangedRevision$
+#
+
+namespace cp = "http://services.tnc.org/schema/conservation-project/0.4-working"
+
+#
+start = conservation_project.element
+#
+conservation_project.element =
+[
+documentation [
+"Schema definition to represent a Conservation Project. \x{a}" ~
+"A Conservation Project is any set of strategies taken by a group of \x{a}" ~
+"practitioners working to achieve a set of biodiversity goals and \x{a}" ~
+"objectives within a specified geographic area. Some of these projects \x{a}" ~
+"occur at single, priority conservation areas. \x{a}" ~
+"Larger projects involve whole landscapes or multiple conservation \x{a}" ~
+"areas to address the needs of coarse-scale systems, wide-ranging \x{a}" ~
+"species, pervasive threats, and far-reaching factors."
+]
+]
+element cp:conservation_project {
+project_summary.element
+& targets.element
+& threats.element
+& objectives.element
+& strategies.element
+& indicators.element
+}
+#
+project_summary.element =
+	element cp:project_summary {
+		attribute share_outside_organization { xsd:boolean }
+		& project_id.element
+		& parent_project_id.element
+		& element cp:name {
+			xsd:string { minLength = "1" }
+		}
+		& element cp:start_date { vocabulary_date }?
+		& area_size.element?
+		& geospatial_location.element?
+		& element cp:description_comment { text }?
+		& [ documentation [ "A goal_comment is a goal or vision statement for the project" ] ]
+		element cp:goal_comment { text }?
+		& element cp:planning_team_comment { text }?
+		& element cp:lessons_learned { text }?
+		& element cp:stressless_threat_rank { vocabulary_ranking_vhhml }?
+		& element cp:project_threat_rank { vocabulary_ranking_vhhml }?
+		& element cp:project_viability_rank { vocabulary_rating_vggfp }?
+		& team.element
+		& ecoregions.element
+		& countries.element
+		& ous.element
+		& element cp:exporter_name { xsd:NMTOKEN }
+		& element cp:exporter_version { xsd:NMTOKEN }
+		& element cp:export_date { vocabulary_date }
+		& organizational_priorities.element
+		& project_types.element
+}
+#
+project_id.element =
+element cp:project_id {
+# Context, for now, is 'ConPro.' Revisit as required.
+attribute context { xsd:NMTOKEN }
+& xsd:NMTOKEN
+}*
+#
+parent_project_id.element =
+element cp:parent_project_id {
+# Context, for now, is 'ConPro.' Revisit as required.
+attribute context { xsd:NMTOKEN }
+& xsd:NMTOKEN
+}*
+#
+area_size.element =
+element cp:area_size {
+attribute unit { vocabulary_area_unit }
+& xsd:nonNegativeInteger
+}
+#
+geospatial_location.element =
+element cp:geospatial_location {
+attribute type { vocabulary_geospatial_type }
+& element cp:latitude { xsd:decimal }?
+& element cp:longitude { xsd:decimal }?
+}
+#
+team.element =
+element cp:team {
+element cp:person {
+element cp:role { vocabulary_team }+
+& element cp:givenname { xsd:string }?
+& element cp:surname { xsd:string }?
+& element cp:email { xsd:string }?
+& element cp:phone { xsd:string }?
+& element cp:organization { xsd:string }?
+}*
+}
+#
+ecoregions.element =
+element cp:ecoregions {
+[
+documentation [
+"This is a 5 digit TNC generated code to describe large areas of land and/or \x{a}" ~
+"water that contain a geographically distinct assemblage of natural communities."
+]
+]
+element cp:ecoregion_code { vocabulary_ecoregion }*
+}
+#
+countries.element =
+element cp:countries {
+[
+documentation [
+"These codes are the 3 letter country code(s) provided by the ISO 3166-1."
+]
+]
+element cp:country_code { vocabulary_country }*
+}
+#
+ous.element =
+element cp:ous {
+[
+documentation [
+"These are TNC generated 5 character alphanumeric codes to describe Operating Units at TNC."
+]
+]
+element cp:ou_code { vocabulary_ou }*
+}
+#
+organizational_priorities.element =
+element cp:organizational_priorities {
+element cp:priority { text }
+}
+#
+project_types.element =
+element cp:project_types {
+element cp:project_type { text }
+}
+#
+targets.element =
+element cp:targets {
+[
+documentation [
+"Species, communities, and ecological systems selected to \x{a}" ~
+"encompass and represent the needs of the broader set of \x{a}" ~
+"biodiversity occurring within a project."
+]
+]
+element cp:target {
+attribute sequence { vocabulary_sequence }?
+& attribute id { vocabulary_id }
+& element cp:name { text }
+& element cp:description { text }?
+& element cp:description_comment { text }?
+& element cp:target_viability_rank {
+attribute target_viability_mode { vocabulary_viability_mode }
+& vocabulary_ranking_vggfp
+}?
+& element cp:target_viability_comment { text }?
+& habitat_taxonomy_codes.element
+& nested_targets.element
+& strategy_threat_target_associations.element
+& stresses.element
+& threat_target_associations.element
+& key_attributes.element
+}*
+}
+#
+habitat_taxonomy_codes.element =
+element cp:habitat_taxonomy_codes {
+element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
+}
+#
+nested_targets.element =
+element cp:nested_targets {
+element cp:nested_target {
+attribute sequence { vocabulary_sequence }
+& element cp:name { text }
+& element cp:comment { text }?
+}*
+}
+#
+strategy_threat_target_associations.element =
+element cp:strategy_threat_target_associations {
+element cp:strategy_threat_target_association {
+element cp:strategy_id { vocabulary_id }
+& element cp:threat_id { vocabulary_id }
+}*
+}
+#
+stresses.element =
+element cp:stresses {
+element cp:stress {
+attribute sequence { vocabulary_sequence }
+& element cp:name { text }
+& element cp:stress_severity { vocabulary_ranking_vhhml }?
+& element cp:stress_scope { vocabulary_ranking_vhhml }?
+& element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
+& threat_stress_ratings.element
+}*
+}
+#
+threat_stress_ratings.element =
+element cp:threat_stress_ratings {
+element cp:threat_stress_rating {
+element cp:threat_id { vocabulary_id }
+& element cp:contrib_rank { vocabulary_ranking_vhhml }?
+& element cp:irreversible_rank { vocabulary_ranking_vhhml }?
+& element cp:stress_threat_to_target_rank { vocabulary_ranking_vhhml }?
+}*
+}
+#
+threat_target_associations.element =
+element cp:threat_target_associations {
+element cp:threat_target_association {
+element cp:threat_id { vocabulary_id }
+& element cp:threat_to_target_rank { vocabulary_ranking_vhhml }?
+& element cp:threat_severity { vocabulary_ranking_vhhml }?
+& element cp:threat_scope { vocabulary_ranking_vhhml }?
+& element cp:threat_irreversibility { vocabulary_ranking_vhhml }?
+& element cp:threat_target_comment { text }?
+}*
+}
+#
+key_attributes.element =
+element cp:key_attributes {
+[
+documentation [
+"Key ecological attributes are critical components of target's \x{a}" ~
+"life history, physical or biological processes, composition, \x{a}" ~
+"or structure that:\x{a}" ~
+"- Determine a target's temporal/spatial distribution that are necessary \x{a}" ~
+" for the continued persistence of the target \x{a}" ~
+"- Vary within an 'acceptable range of variability' obtained by reviewing \x{a}" ~
+" scientific literature, consulting experts, and in some cases through \x{a}" ~
+" modeling efforts \x{a}" ~
+"- Are assigned to categories of: Size, Condition, Landscape Context"
+]
+]
+element cp:key_attribute {
+element cp:name { text }
+& element cp:category { vocabulary_key_ecological_attribute_category }?
+& viability.element
+}*
+}
+#
+viability.element =
+element cp:viability_assessments {
+[
+documentation [
+"Viabiltiy specifies how to measure a target's 'health' over time. And then to \x{a}" ~
+"identify how the target is doing today and what a 'healthy state' might look like."
+]
+]
+element cp:viability_assessment {
+element cp:indicator_id { vocabulary_id }
+& element cp:indicator_description_poor { text }?
+& element cp:indicator_description_fair { text }?
+& element cp:indicator_description_good { text }?
+& element cp:indicator_description_very_good { text }?
+& element cp:source_indicator_ratings { vocabulary_source_indicator_ratings }?
+& element cp:desired_viability_rating { vocabulary_rating_vggfp }?
+& element cp:desired_rating_date { vocabulary_date }?
+& element cp:kea_and_indicator_comment { text }?
+& element cp:indicator_rating_comment { text }?
+& element cp:desired_rating_comment { text }?
+& element cp:viability_record_comment { text }?
+}*
+}
+#
+threats.element =
+element cp:threats {
+[
+documentation [
+"Threats describe the various factors that immediately affect a \x{a}" ~
+"project's targets and allows ranking targets. This helps \x{a}" ~
+"directing conservation actions where they are most needed. \x{a}" ~
+"They are broken into two components, stresses and sources. \x{a}" ~
+"-- Stresses are forms of degradation or impairment from which the \x{a}" ~
+"targets are suffering. \x{a}" ~
+"-- Sources of stress (labeled Threats) are those factors that \x{a}" ~
+"cause the degradation."
+]
+]
+element cp:threat {
+attribute id { vocabulary_id }
+& element cp:name { text }
+& element cp:threat_taxonomy_code { iucn_threat_taxonomy }?
+& element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
+& # Indicator-threat relationships are export to Miradi but not imported from Miradi.
+element cp:indicators {
+element cp:indicator_id { vocabulary_id }*
+}
+}*
+}
+#
+objectives.element =
+element cp:objectives {
+[
+documentation [
+"Objectives are very clear statements about the specific \x{a}" ~
+"outcomes we are trying to achieve with respect to abating \x{a}" ~
+"threats and restoring the viability of targets that give \x{a}" ~
+"us a very clear focus for our strategies and actions"
+]
+]
+element cp:objective {
+attribute id { vocabulary_id }
+& element cp:indicators {
+element cp:indicator_id { vocabulary_id }*
+}
+& element cp:name { text }
+& element cp:comment { text }?
+& percent_complete.element?
+}*
+}
+#
+percent_complete.element =
+element cp:percent_complete_measures {
+element cp:percent_complete_measure {
+# Sequence to order the rows for when there is no date.
+attribute sequence { vocabulary_sequence }
+& element cp:measure { xsd:decimal }
+& element cp:date { vocabulary_date }
+& element cp:comment { text }?
+}*
+}
+#
+strategies.element =
+element cp:strategies {
+element cp:strategy {
+attribute id { vocabulary_id }
+& element cp:objectives {
+element cp:objective_id { vocabulary_id }*
+}
+& element cp:name { text }
+& element cp:taxonomy_code { iucn_strategy_taxonomy }?
+& element cp:selected { xsd:boolean }?
+& element cp:comment { text }?
+& element cp:legacy_strategy_ranking { text }?
+& statuses.element?
+& activities.element?
+}*
+}
+#
+activities.element =
+element cp:activities {
+element cp:activity {
+element cp:name { text }
+& element cp:start_date { vocabulary_date }?
+& element cp:end_date { vocabulary_date }?
+& statuses.element
+}*
+}
+#
+indicators.element =
+element cp:indicators {
+[
+documentation [
+"Indicators are measurable factors used to assess the status \x{a}" ~
+"of a Key Ecological Attribute. \x{a}" ~
+"Indicator Ratings are described based on criteria that objectively \x{a}" ~
+"place an indicator into 1 of 4 categories corresponding to \x{a}" ~
+"Poor, Fair, Good, and Very Good viability status. \x{a}" ~
+"The guidance for defining different indicator ratings is centered on \x{a}" ~
+"the concept of acceptable ranges of variability. . \x{a}" ~
+"- Indicators in a 'Good' status are within an acceptable range of variation; \x{a}" ~
+" Some intervention is required for their maintenance. \x{a}" ~
+"- Very Good is an Ecologically desirable status; Requires little \x{a}" ~
+" intervention for maintenance. \x{a}" ~
+"- Fair status indicates a key attribute that is outside acceptable \x{a}" ~
+" range of variation; Requires human intervention. \x{a}" ~
+"- Poor status represents a situation where Restoration increasingly \x{a}" ~
+" difficult and the current conditions may lead to the extirpation of the target."
+
+
+]
+]
+
+element cp:indicator {
+attribute id { vocabulary_id }
+& element cp:name { text }
+& element cp:priority { vocabulary_priority_vhhml }?
+& element cp:comment { text }?
+& # cp:detail - data going to Miradi but not returned
+element cp:detail { text }?
+& measures.element
+& element cp:methods {
+[
+documentation [
+"An Indicator may have more than one Method, and a Method is sharable among \x{a}" ~
+"Indicators, so it probably needs to be represented in the manner of \x{a}" ~
+"Objectives/Indicators. For Indicators originating with the Workbook, an Indicator \x{a}" ~
+"will have only one Method but the Method will be shared among Indicators; for \x{a}" ~
+"Indicators originating with Miradi, there may be more than one Method and a Method \x{a}" ~
+"may be shared among Indicators."
+]
+]
+element cp:method_id { vocabulary_id }*
+}
+& statuses.element
+}*
+}
+#
+measures.element =
+element cp:measures {
+element cp:measure {
+attribute sequence { vocabulary_sequence }
+& element cp:measurement { text }
+& element cp:date { vocabulary_date }
+& element cp:source { vocabulary_source }
+& element cp:trend { vocabulary_trend }
+& element cp:measure { vocabulary_source_measures }
+}*
+}
+#
+methods.element =
+element cp:methods {
+element cp:method {
+attribute id { vocabulary_id }
+& element cp:name { text }
+& element cp:detail { text }
+& element cp:annual_cost { xsd:decimal }?
+& element cp:comment { text }?
+}*
+}
+#
+statuses.element =
+element cp:statuses {
+element cp:status {
+attribute sequence { vocabulary_sequence }
+& element cp:date { xsd:date }
+& element cp:measure { vocabulary_progress }
+& element cp:comment { text }
+}*
+}
+#
+vocabulary_date = xsd:NMTOKEN { pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}" }
+vocabulary_area_unit = "hectares"
+vocabulary_country = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
+vocabulary_doc_exchange_status = "success" | "warning" | "fail"
+vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
+vocabulary_geospatial_type = "point"
+vocabulary_id = xsd:nonNegativeInteger
+vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
+vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
+vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
+vocabulary_progress =
+"Not Specified"
+| "Planned"
+| "Major Issues"
+| "Minor Issues"
+| "On Track"
+| "Completed"
+| "Abandoned"
+vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
+vocabulary_ranking_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
+vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
+vocabulary_sequence = xsd:nonNegativeInteger
+vocabulary_source =
+"Not Specified" | "Rough Guess" | "Expert Opinion" | "Rapid Assessment" | "Intense Assessment"
+vocabulary_source_indicator_ratings =
+"Not Specified" | "Rough Guess" | "Expert Knowledge" | "External Research" | "Internal Research"
+vocabulary_source_measures =
+"Not Specified"
+| "Rough Guess"
+| "Expert Knowledge"
+| "Rapid Assessment"
+| "Intensive Assessment"
+vocabulary_status =
+"Planned" | "Major Issues" | "Minor Issues" | "On Track" | "Completed" | "Abandoned"
+vocabulary_team = "Owner" | "Team Leader" | "Team Member"
+vocabulary_trend =
+"Not Specified"
+| "Unknown"
+| "Strong Increase"
+| "Mild Increase"
+| "Flat"
+| "Mild Decrease"
+| "Strong Increase"
+vocabulary_viability_mode = "kea" | "simple"
+#
+dont_have_this_data_type_info_yet = "I need this info!!!!!!!!"
+#
+[
+documentation [
+"International Union for Conservation of Nature (IUCN) threat, habitat and \x{a}" ~
+"strategy taxonomy formats:"
+]
+]
+iucn_threat_taxonomy = xsd:NMTOKEN { pattern = "[T][0-9]{2,3}\.[0-9]{2,3}" }
+iucn_habitat_taxonomy = xsd:NMTOKEN { pattern = "[H][0-9]{2,3}\.[0-9]{2,3}" }
+iucn_strategy_taxonomy = xsd:NMTOKEN { pattern = "[A][0-9]{2,3}\.[0-9]{2,3}" }
+#
+#
+#
+#
+# Datatyping reference
+# xsd:boolean - Its value space is true and false. Its lexical space accepts true, false, 1 and 0
+# vocabulary_date -
+# Its lexical space is the ISO 8601 extended format [-]CCYY-MM-DD[Z|(+|-)hh:mm] with
+# an optional time zone.
+# xsd:decimal - The set of all decimal numbers with arbitrary lengths. Its lexical space allows any
+# number of insignificant leading and, after the decimal point, trailing zeros. A period
+# is the only acceptable decimal seperator. No thousands seperators allowed.
+# xsd:integer - Integer is derived from decimal by fixing the value of fractionDigits to be 0 and disallowing
+# the trailing decimal point. This results in the standard mathematical concept of the integer
+# numbers. The value space of integer is the infinite set {...,-2,-1,0,1,2,...}.
+# xsd:nonNegativeInteger -
+# nonNegativeInteger is derived from integer by setting the value of
+# minInclusive to be 0. This results in the standard mathematical concept of the
+# non-negative integers. The value space of nonNegativeInteger is the infinite
+# set {0,1,2,...}.
+# xsd:positiveInteger -
+# positiveInteger is derived from nonNegativeInteger by setting the value of
+# minInclusive to be 1. This results in the standard mathematical concept of the
+# positive integer numbers. The value space of positiveInteger is the infinite
+# set {1,2,...}.
+# xsd:string - The lexical and value spaces are teh set of all possible strings composed of any charachter
+# allowed in a XML 1.0 document without any treatment done on whitespace. That is the only
+# datatype that leaves all the whitespace. When whitespace isn't significant, xsd:token is
+# preferred.
+# xsd:token - The value space of token is the set of strings that do not contain the carriage return (#xD),
+# line feed (#xA) nor tab (#x9) characters, that have no leading or trailing spaces (#x20) and
+# that have no internal sequences of two or more spaces. The lexical space of token is the set
+# of strings that do not contain the carriage return (#xD), line feed (#xA) nor tab (#x9)
+# characters, that have no leading or trailing spaces (#x20) and that have no internal sequences
+# of two or more spaces.
+# xsd:NMTOKEN - The lexical and value spaces are the set of XML 1.0 name tokens, tokens composed of characters
+# digits, period, colons, hyphens and the characters defined by Unicode, such as "combining"
+# or "extender." Invalid values include 'brought classical music' (spaces are forbidden) and
+# 'bold,brash' (commas are forbidden).
+#
+# * - 0 or more
+# + - 1 or more
+# ? - Optional

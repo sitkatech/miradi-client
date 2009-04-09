@@ -23,11 +23,9 @@ public interface ConProMiradiXmlVersion2
 {
 	public static final String CONSERVATION_PROJECT = "conservation_project";
 	public static final String XMLNS = "xmlns";
-	public static final double NAME_SPACE_VERSION = 0.3;
+	public static final double NAME_SPACE_VERSION = 0.4;
 	public static final String PARTIAL_NAME_SPACE = "http://services.tnc.org/schema/conservation-project/"; 
-	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
-	public static final String DOCUMENT_EXCHANGE = "document_exchange";
-	public static final String DOCIMENT_EXCHANGE_STATUS = "status";
+	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION + "-working";
 	public static final String PROJECT_SUMMARY = "project_summary";
 	public static final String PROJECT_ID = "project_id";
 	public static final String CONTEXT_ATTRIBUTE = "context";
@@ -117,12 +115,8 @@ public interface ConProMiradiXmlVersion2
 	public static final String INDICATOR_DESCRIPTION_FAIR = "indicator_description_fair";
 	public static final String INDICATOR_DESCRIPTION_GOOD = "indicator_description_good";
 	public static final String INDICATOR_DESCRIPTION_VERY_GOOD = "indicator_description_very_good";
-	public static final String CURRENT_INDICATOR_STATUS_VIABILITY = "current_indicator_status_viability";
 	public static final String DESIRED_VIABILITY_RATING = "desired_viability_rating";
-	public static final String CURRENT_VIABILITY_RATING = "current_viability_rating";
-	public static final String CURRENT_RATING_DATE = "current_rating_date";
-	public static final String CONFIDENE_CURRENT_RATING = "confidence_current_rating";
-	public static final String CURRENT_RATING_COMMENT = "current_rating_comment";
+	public static final String SOURCE_INDICATOR_RATINGS = "source_indicator_ratings";
 	public static final String DESIRED_RATING_DATE = "desired_rating_date";
 	public static final String KEA_AND_INDICATOR_COMMENT = "kea_and_indicator_comment";
 	public static final String INDICATOR_RATING_COMMENT = "indicator_rating_comment";
@@ -151,5 +145,8 @@ public interface ConProMiradiXmlVersion2
 	public static final String STATUS = "status";
 	public static final String WHO_MONITORS = "who_monitors";
 	public static final String ANNUAL_COST = "annual_cost";
-	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";  
+	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
+	public static final String ORGANIZATIONAL_PRIORITIES = "organizational_priorities";
+	public static final String PROJECT_TYPES = "project_types";
+	public static final String PROJECT_TYPE = "project_type";
 }
