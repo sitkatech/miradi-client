@@ -680,6 +680,8 @@
 		<arg value="-d"/>
 		<arg value="${dmgmount}"/>
 	</exec>
+	
+	<copy todir="${dist.dir}" file="${rawdmgfile}" />
 
 	<delete dir="${dist.mactree}" />
 </target>
