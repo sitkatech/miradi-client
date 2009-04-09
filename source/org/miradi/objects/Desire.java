@@ -76,7 +76,7 @@ abstract public class Desire extends BaseObject
 		return deepObjectRefsToCopy;
 	}
 
-	private ORefList getProgressPercentRefs()
+	public ORefList getProgressPercentRefs()
 	{
 		return progressPercentRefs.getORefList();
 	}
