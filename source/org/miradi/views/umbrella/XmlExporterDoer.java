@@ -29,7 +29,7 @@ import org.miradi.utils.EAMFileSaveChooser;
 import org.miradi.utils.EAMXmlFileChooser;
 import org.miradi.views.MainWindowDoer;
 
-abstract public class XmlExporter extends MainWindowDoer
+abstract public class XmlExporterDoer extends MainWindowDoer
 {
 	public boolean isAvailable()
 	{

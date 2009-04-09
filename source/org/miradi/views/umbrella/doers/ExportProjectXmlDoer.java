@@ -32,10 +32,10 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
-import org.miradi.views.umbrella.XmlExporter;
+import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.xml.reports.export.ProjectAsXmlExporter;
 
-public class ExportProjectXmlDoer extends XmlExporter
+public class ExportProjectXmlDoer extends XmlExporterDoer
 {
 	@Override
 	protected void export(File chosen) throws Exception
