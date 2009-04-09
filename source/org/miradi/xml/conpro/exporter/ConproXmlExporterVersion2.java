@@ -332,7 +332,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		Desire desire = Desire.findDesire(getProject(), desireRef);
 		out.writeln("<" + OBJECTIVE + " " + ID + "='" + desire.getId().toString() + "'>");
 
-		writeIndicatorIds(out, desire);
+		writeIndicatorIds(out, desire.getRelevantIndicatorRefList());
 		writeElement(out, NAME, buildObjectiveExportableName(desire, optionalAnnotationLabel));
 		writeOptionalElement(out, COMMENT, desire, Objective.TAG_COMMENTS);
 		writeEndElement(out, OBJECTIVE);
@@ -352,11 +352,10 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		return name;
 	}
 
-	private void writeIndicatorIds(UnicodeWriter out, Desire desire) throws Exception
+	private void writeIndicatorIds(UnicodeWriter out, ORefList indicatorRefs) throws Exception
 	{
 		writeStartElement(out, INDICATORS);
-		writeIds(out, INDICATOR_ID, desire.getRelevantIndicatorRefList());
-		
+		writeIds(out, INDICATOR_ID, indicatorRefs);		
 		writeEndElement(out, INDICATORS);
 	}
 
@@ -388,6 +387,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			if (threatRatingValue != null)
 				writeOptionalRatingCodeElement(out, THREAT_TO_PROJECT_RANK, threatRatingValue.getCode());
 			
+			writeIndicatorIds(out, directThreats[index].getIndicatorRefs());
 			writeEndElement(out, THREAT);
 		}
 		
