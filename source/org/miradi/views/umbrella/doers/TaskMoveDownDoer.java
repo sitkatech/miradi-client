@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.views.planning.doers.AbstractTaskNodeChangeSequenceDoer;
+import org.miradi.views.planning.doers.AbstractTaskChangeSequenceDoer;
 
 
-public class TaskMoveDownDoer extends AbstractTaskNodeChangeSequenceDoer
+public class TaskMoveDownDoer extends AbstractTaskChangeSequenceDoer
 {
 	@Override
 	protected int getDelta()
