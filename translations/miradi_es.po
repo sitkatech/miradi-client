@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 13:23-0500\n"
+"POT-Creation-Date: 2009-04-09 09:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -1013,6 +1013,37 @@ msgstr ""
 "Los nombres de archivo del proyecto no pueden contener puntación excepto por "
 "puntos, guiones y espacios, y no pueden superar los 32 caracteres."
 
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:44
+msgid "Export XML"
+msgstr "Exportar XML"
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:46
+msgid ""
+"This feature is not yet fully supported. It exports all the project data in "
+"an XML file, but the schema of that file is still in flux. Future versions "
+"of Miradi will export the data in different formats."
+msgstr ""
+"Esta función aún no se admite completamente. Exporta todos los datos del "
+"proyecto a un archivo XML, pero el esquema de ese archivo aún fluye. Las "
+"versiones futuras de Miradi exportarán los datos a formatos diferentes."
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
+msgid "Export"
+msgstr "Exportar"
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:71
+msgid "Export complete"
+msgstr "Se completó la exportación."
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:76
+msgid ""
+"Unable to write XML. Perhaps the disk was full, or you don't have permission "
+"to write to it, or you are using invalid characters in the file name."
+msgstr ""
+"No se puede escribir el código XML. Probablemente el disco esté lleno o no "
+"tenga permiso para escribir en él, o bien, esté usando caracteres  inválidos "
+"en el nombre del archivo"
+
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
 msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
@@ -1057,37 +1088,6 @@ msgstr ""
 "reciente de Miradi. Si ya <br>ejecuta la version más reciente de Miradi, "
 "espere una nueva versión que admita este formato <br>o vuelva a exportar el "
 "proyecto a un formato (admitido) anterior."
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
-msgid "Export XML"
-msgstr "Exportar XML"
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:46
-msgid ""
-"This feature is not yet fully supported. It exports all the project data in "
-"an XML file, but the schema of that file is still in flux. Future versions "
-"of Miradi will export the data in different formats."
-msgstr ""
-"Esta función aún no se admite completamente. Exporta todos los datos del "
-"proyecto a un archivo XML, pero el esquema de ese archivo aún fluye. Las "
-"versiones futuras de Miradi exportarán los datos a formatos diferentes."
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:52
-msgid "Export"
-msgstr "Exportar"
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:71
-msgid "Export complete"
-msgstr "Se completó la exportación."
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:76
-msgid ""
-"Unable to write XML. Perhaps the disk was full, or you don't have permission "
-"to write to it, or you are using invalid characters in the file name."
-msgstr ""
-"No se puede escribir el código XML. Probablemente el disco esté lleno o no "
-"tenga permiso para escribir en él, o bien, esté usando caracteres  inválidos "
-"en el nombre del archivo"
 
 #: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
 msgid "<strong>Version: %s</strong>"
@@ -2491,6 +2491,7 @@ msgstr "Estadodo actual"
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:279
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "Objeto "
@@ -6181,6 +6182,7 @@ msgid ""
 msgstr "Seleccionar las estrategias y actividades relevantes para esta meta. "
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:304
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Amenaza "

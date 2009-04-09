@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 13:23-0500\n"
+"POT-Creation-Date: 2009-04-09 09:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -981,6 +981,35 @@ msgid ""
 msgstr ""
 "项目文件名不能包含除点、破折号和空格之外的标点符号；且不能超过32个字符。 "
 
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:44
+msgid "Export XML"
+msgstr "导出XML \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:46
+msgid ""
+"This feature is not yet fully supported. It exports all the project data in "
+"an XML file, but the schema of that file is still in flux. Future versions "
+"of Miradi will export the data in different formats."
+msgstr ""
+"该功能尚未被完全支持。其导出所有项目数据到一个XML文件，但本文件的图解仍处于波"
+"动状态。未来版本的Miradi将能够以不同的格式导出数据。 "
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
+msgid "Export"
+msgstr "导出 "
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:71
+msgid "Export complete"
+msgstr "导出完成 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:76
+msgid ""
+"Unable to write XML. Perhaps the disk was full, or you don't have permission "
+"to write to it, or you are using invalid characters in the file name."
+msgstr ""
+"无法写入XML。可能该磁盘已满，或者您没有写入该磁盘的许可权，或者您在文件名中使"
+"用了无效的字符。 \t\t"
+
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
 msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
@@ -1021,35 +1050,6 @@ msgstr ""
 "该文件不能被导入，因为其格式要比该版本Miradi所能支持的新。<br>请确认您运行的"
 "是最新版本的Miradi。如果您 <br>正在运行的已经是最新版本的Miradi，您可以等待能"
 "够支持本格式的更新版本，<br>或者重新将该项目导出为旧版（可被支持）格式。 \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
-msgid "Export XML"
-msgstr "导出XML \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:46
-msgid ""
-"This feature is not yet fully supported. It exports all the project data in "
-"an XML file, but the schema of that file is still in flux. Future versions "
-"of Miradi will export the data in different formats."
-msgstr ""
-"该功能尚未被完全支持。其导出所有项目数据到一个XML文件，但本文件的图解仍处于波"
-"动状态。未来版本的Miradi将能够以不同的格式导出数据。 "
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:52
-msgid "Export"
-msgstr "导出 "
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:71
-msgid "Export complete"
-msgstr "导出完成 \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:76
-msgid ""
-"Unable to write XML. Perhaps the disk was full, or you don't have permission "
-"to write to it, or you are using invalid characters in the file name."
-msgstr ""
-"无法写入XML。可能该磁盘已满，或者您没有写入该磁盘的许可权，或者您在文件名中使"
-"用了无效的字符。 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
 msgid "<strong>Version: %s</strong>"
@@ -2369,6 +2369,7 @@ msgstr "当前状况 \t\t"
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:279
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "对象"
@@ -5985,6 +5986,7 @@ msgid ""
 msgstr "选择哪个策略和活动与本分目标相关联"
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:304
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "威胁因子"

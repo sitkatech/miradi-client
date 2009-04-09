@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-08 13:23-0500\n"
+"POT-Creation-Date: 2009-04-09 09:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -1017,6 +1017,36 @@ msgstr ""
 "Nama berkas proyek tidak boleh mengandung tanda baca selain titik, tanda "
 "sambung, dan spasi; serta tidak boleh lebih dari 32 karakter. "
 
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:44
+msgid "Export XML"
+msgstr "Eskpor XML "
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:46
+msgid ""
+"This feature is not yet fully supported. It exports all the project data in "
+"an XML file, but the schema of that file is still in flux. Future versions "
+"of Miradi will export the data in different formats."
+msgstr ""
+"Fitur ini belum didukung secara penuh. Fitur ini mengekspor semua data "
+"proyek ke berkas XML, tetapi skema berkas masih belum stabil. Versi "
+"mendatang Miradi akan mengekspor data ke dalam berbagai macam format. "
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:52
+msgid "Export"
+msgstr "Ekspor "
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:71
+msgid "Export complete"
+msgstr "Ekspor selesai "
+
+#: miradi/source/org/miradi/views/umbrella/XmlExporterDoer.java:76
+msgid ""
+"Unable to write XML. Perhaps the disk was full, or you don't have permission "
+"to write to it, or you are using invalid characters in the file name."
+msgstr ""
+"Tidak bisa menulis XML. Mungkin disk penuh, atau Anda tidak punya izin untuk "
+"menulis ke disk, atau nama berkas mengandung karakter yang tidak valid. "
+
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
 msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
@@ -1062,36 +1092,6 @@ msgstr ""
 "bisa menunggu versi lebih baru yang akan mendukung format ini, <br>atau "
 "mengekspor ulang proyek ke format lebih lama (yang didukung versi saat "
 "ini).  "
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:44
-msgid "Export XML"
-msgstr "Eskpor XML "
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:46
-msgid ""
-"This feature is not yet fully supported. It exports all the project data in "
-"an XML file, but the schema of that file is still in flux. Future versions "
-"of Miradi will export the data in different formats."
-msgstr ""
-"Fitur ini belum didukung secara penuh. Fitur ini mengekspor semua data "
-"proyek ke berkas XML, tetapi skema berkas masih belum stabil. Versi "
-"mendatang Miradi akan mengekspor data ke dalam berbagai macam format. "
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:52
-msgid "Export"
-msgstr "Ekspor "
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:71
-msgid "Export complete"
-msgstr "Ekspor selesai "
-
-#: miradi/source/org/miradi/views/umbrella/XmlExporter.java:76
-msgid ""
-"Unable to write XML. Perhaps the disk was full, or you don't have permission "
-"to write to it, or you are using invalid characters in the file name."
-msgstr ""
-"Tidak bisa menulis XML. Mungkin disk penuh, atau Anda tidak punya izin untuk "
-"menulis ke disk, atau nama berkas mengandung karakter yang tidak valid. "
 
 #: miradi/source/org/miradi/views/umbrella/AboutDoer.java:59
 msgid "<strong>Version: %s</strong>"
@@ -2489,6 +2489,7 @@ msgstr "Status Saat Ini "
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:279
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "Target"
@@ -6157,6 +6158,7 @@ msgid ""
 msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:304
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Ancaman"
