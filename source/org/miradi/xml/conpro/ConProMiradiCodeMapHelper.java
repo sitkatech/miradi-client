@@ -81,6 +81,7 @@ public class ConProMiradiCodeMapHelper
 		tncProjectSharingMap.put(TncProjectSharingQuestion.SHARE_WITH_ANYONE, "true");
 		
 		indicatorRatingSourceMap = new HashMap<String, String>();
+		indicatorRatingSourceMap.put(RatingSourceQuestion.NOT_SPECIFIED_CODE, "Not Specified");
 		indicatorRatingSourceMap.put(RatingSourceQuestion.ROUGH_GUES_CODE, "Rough Guess");
 		indicatorRatingSourceMap.put(RatingSourceQuestion.EXPERT_KNOWLEGE_CODE, "Expert Knowledge");
 		indicatorRatingSourceMap.put(RatingSourceQuestion.EXTERNAL_RESEARCH_CODE, "External Research");
