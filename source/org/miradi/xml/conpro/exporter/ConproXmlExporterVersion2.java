@@ -360,7 +360,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeStartElement(out, PROGRESS_PERCENT_REPORTS);
 		for (int index = 0; index < progressPercentRefs.size(); ++index)
 		{
-			writeStartElement(out, PROGRESS_PERCENT_REPORT);
+			writeStartElementWithAttribute(out, PROGRESS_PERCENT_REPORT, SEQUENCE, index + 1);
 			
 			ProgressPercent progressPercent = ProgressPercent.find(getProject(), progressPercentRefs.get(index));
 			writeOptionalElement(out, PROGRESS_PERCENT_COMPLETE, progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE);
