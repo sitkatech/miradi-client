@@ -599,8 +599,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 		ThreatTargetChainObject threatTargetChainObejct = new ThreatTargetChainObject(getProject());
 		ORefSet upstreamThreats = threatTargetChainObejct.getUpstreamThreatRefsFromTarget(target);
-		for(ORef threatRef : upstreamThreats)
+		ORefList sortedUpstreamThreatRefs = new ORefList(upstreamThreats);
+		sortedUpstreamThreatRefs.sort();
+		for(int index = 0; index < sortedUpstreamThreatRefs.size(); ++index)
 		{
+			ORef threatRef = sortedUpstreamThreatRefs.get(index);
 			writeSimpleTargetLinkRatings(out, threatRef, target.getRef());
 		}
 		
