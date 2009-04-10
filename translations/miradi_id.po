@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-10 10:11-0500\n"
+"POT-Creation-Date: 2009-04-10 13:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -197,7 +197,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/database/ProjectServer.java:406
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
-#: miradi/source/org/miradi/questions/TrendQuestion.java:38
 #: miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
 msgstr "Tidak Dikenal"
@@ -2489,7 +2488,7 @@ msgstr "Status Saat Ini "
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:289
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:303
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "Target"
@@ -3790,10 +3789,6 @@ msgstr "Kenaikan Besar"
 #: miradi/source/org/miradi/questions/TrendQuestion.java:40
 msgid "Mild Increase"
 msgstr "Kenaikan Kecil"
-
-#: miradi/source/org/miradi/questions/TrendQuestion.java:41
-msgid "Flat"
-msgstr "Datar"
 
 #: miradi/source/org/miradi/questions/TrendQuestion.java:42
 msgid "Mild Decrease"
@@ -6158,7 +6153,7 @@ msgid ""
 msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:314
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:328
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Ancaman"
@@ -32607,6 +32602,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Flat"
+#~ msgstr "Datar"
 
 #~ msgid ""
 #~ "NOTE: The budget total for this task is the sum of the budget totals of "
