@@ -89,7 +89,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	public void exportProject(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<?xml version='1.0' encoding='UTF-8' ?>");
-		out.writeln("<" + CONSERVATION_PROJECT + " " + XMLNS + "='" + NAME_SPACE + "'>");
+		writeStartElementWithAttribute(out, CONSERVATION_PROJECT, XMLNS, NAME_SPACE);
 		
 		writeoutProjectSummaryElement(out);
 		writeTargets(out);
@@ -118,7 +118,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private void writeIndicator(UnicodeWriter out, ORef indicatorRef) throws Exception
 	{
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
-		out.writeln("<" + INDICATOR + " " + ID + "='" + indicator.getId().toString() + "'>");
+		writeStartElementWithAttribute(out, INDICATOR, ID, indicator.getId().toString());
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
 		writeOptionalMethods(out, indicator.getMethodRefs());
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
@@ -196,7 +196,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		for (int refIndex = 0; refIndex < strategyRefs.size(); ++refIndex)
 		{
 			Strategy strategy = Strategy.find(getProject(), strategyRefs.get(refIndex));
-			out.writeln("<" + STRATEGY + " " + ID + "='" + strategy.getId().toString() + "'>");
+			writeStartElementWithAttribute(out, STRATEGY, ID, strategy.getId().toString());
 			
 			ORefSet objectiveRefs = getRelevantObjectiveRefs(strategy);
 			writeIds(out, OBJECTIVES, OBJECTIVE_ID, new ORefList(objectiveRefs));
@@ -331,7 +331,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private void writeObjective(UnicodeWriter out, ORef desireRef, String optionalAnnotationLabel) throws Exception
 	{
 		Desire desire = Desire.findDesire(getProject(), desireRef);
-		out.writeln("<" + OBJECTIVE + " " + ID + "='" + desire.getId().toString() + "'>");
+		writeStartElementWithAttribute(out, OBJECTIVE, ID, desire.getId().toString());
 
 		writeIndicatorIds(out, desire.getRelevantIndicatorRefList());
 		writeElement(out, NAME, buildObjectiveExportableName(desire, optionalAnnotationLabel));
@@ -401,7 +401,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeStartElement(out, THREATS);
 		for (int index = 0; index < directThreats.length; ++index)
 		{
-			out.writeln("<" + THREAT + " " + ID + "='" + directThreats[index].getId().toString() + "'>");
+			writeStartElementWithAttribute(out, THREAT, ID, directThreats[index].getId().toString());
 			writeLabelElement(out, NAME, directThreats[index], Cause.TAG_LABEL);
 			writeOptionalElement(out, THREAT_TAXONOMY_CODE, directThreats[index], Cause.TAG_TAXONOMY_CODE);
 			ChoiceItem threatRatingValue = getProject().getThreatRatingFramework().getThreatThreatRatingValue(directThreats[index].getRef());
@@ -523,7 +523,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		if (targetStatusCode.length() == 0)
 			return;
 		
-		out.write("<" + TARGET_VIABILITY_RANK + " " + TARGET_VIABILITY_MODE + "='" + getTargetMode(target)+ "'>");
+		writeStartElementWithAttribute(out, TARGET_VIABILITY_RANK, TARGET_VIABILITY_MODE, getTargetMode(target));
 		writeCodeElement(out, targetStatusCode, getCodeMapHelper().getMiradiToConProRankingMap());
 		writeEndElement(out, TARGET_VIABILITY_RANK);
 	}
@@ -668,7 +668,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		for (int refIndex = 0; refIndex < subTargetRefs.size(); ++refIndex)
 		{
 			SubTarget subTarget = SubTarget.find(getProject(), subTargetRefs.get(refIndex));
-			out.writeln("<" + NESTED_TARGET+ " " + SEQUENCE + "='" + refIndex + "'>");
+			writeStartElementWithAttribute(out, NESTED_TARGET, SEQUENCE, refIndex);
 			writeLabelElement(out, NAME, subTarget, SubTarget.TAG_LABEL);
 			writeElement(out, COMMENT, subTarget, SubTarget.TAG_DETAIL);
 			writeEndElement(out, NESTED_TARGET);
@@ -709,7 +709,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeStartElement(out, STRESSES);
 		for (int refIndex = 0; refIndex < stressRefs.size(); ++refIndex)
 		{
-			out.writeln("<" + STRESS + " "+ SEQUENCE+ "='" + refIndex + "'>");
+			writeStartElementWithAttribute(out, STRESS, SEQUENCE, refIndex);
 			Stress stress = Stress.find(getProject(), stressRefs.get(refIndex));
 			writeLabelElement(out, NAME, stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, STRESS_SEVERITY, stress.getData(Stress.TAG_SEVERITY));
@@ -726,7 +726,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 		String tncProjectSharingCode = getProject().getObjectData(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE);
-		out.writeln("<" + PROJECT_SUMMARY + " " + SHARE_OUTSIDE_ORGANIZATION + "='" + tncProjectSharingToXmlValue(tncProjectSharingCode) + "'>");
+		writeStartElementWithAttribute(out, PROJECT_SUMMARY, SHARE_OUTSIDE_ORGANIZATION, tncProjectSharingToXmlValue(tncProjectSharingCode));
 	
 			writeProjectId(out);
 			
@@ -819,9 +819,9 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
 			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
 
-			out.write("<" + PROJECT_ID + " " + CONTEXT_ATTRIBUTE + "='" + key + "'>");
+			writeStartElementWithAttribute(out, PROJECT_ID, CONTEXT_ATTRIBUTE, key.toString());
 			writeXmlEncodedData(out, projectId);
-			out.writeln("</" + PROJECT_ID + ">");
+			writeEndElement(out, PROJECT_ID);
 		}
 	}
 
@@ -859,11 +859,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		if (sizeInHectaresAsInt == 0)
 			return;
 		
-		out.write("<" + AREA_SIZE + " " + AREA_SIZE_UNIT + "='hectares'>");
+		writeStartElementWithAttribute(out, AREA_SIZE, AREA_SIZE_UNIT, "hectares");
 		writeXmlEncodedData(out, Integer.toString((int)sizeInHectaresAsInt));
 		writeEndElement(out, AREA_SIZE);
 	}
-
+	
 	private void writeOptionalLocation(UnicodeWriter out) throws IOException, Exception
 	{
 		float latitudeAsFloat = getProjectMetadata().getLatitudeAsFloat();
@@ -871,7 +871,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		if (latitudeAsFloat == 0 && longitudeAsFloat == 0)
 			return;
 		
-		out.writeln("<" + GEOSPATIAL_LOCATION + " " + GEOSPATIAL_LOCATION_TYPE + "='point'>");
+		writeStartElementWithAttribute(out, GEOSPATIAL_LOCATION, GEOSPATIAL_LOCATION_TYPE, "point");
 		writeOptionalFloatElement(out, LATITUDE, latitudeAsFloat);
 		writeOptionalFloatElement(out, LONGITUDE, longitudeAsFloat);
 		writeEndElement(out, GEOSPATIAL_LOCATION);
@@ -1018,7 +1018,17 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		out.writeln("<" + startElementName + ">");
 	}
+
+	private void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, int attributeValue) throws IOException
+	{
+		writeStartElementWithAttribute(out, startElementName, attributeName, Integer.toString(attributeValue));
+	}
 	
+	private void writeStartElementWithAttribute(UnicodeWriter out, String startElementName, String attributeName, String attributeValue) throws IOException
+	{
+		out.write("<" + startElementName + " " + attributeName + "='" + attributeValue + "'>");
+	}
+		
 	private String ratingCodeToXmlValue(int code)
 	{
 		return ratingCodeToXmlValue(Integer.toString(code));
