@@ -155,4 +155,10 @@ public interface ConProMiradiXmlVersion2
 	public static final String PROGRESS_PERCENT_COMPLETE = "measure";
 	public static final String PROGRESS_PERCENT_DATE = "date";
 	public static final String PROGRESS_PERCENT_COMMENT = "comment";
+	public static final String PROGRESS_REPORTS = "statuses";
+	public static final String PROGRESS_REPORT = "status";
+	public static final String PROGRESS_REPORT_DATE = "date";
+	public static final String PROGRESS_REPORT_STATUS = "measure";
+	public static final String PROGRESS_REPORT_COMMENT = "comment";
+	
 }

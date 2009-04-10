@@ -432,7 +432,7 @@ statuses.element =
 element cp:statuses {
 element cp:status {
 attribute sequence { vocabulary_sequence }
-& element cp:date { xsd:date }
+& element cp:date { vocabulary_date }
 & element cp:measure { vocabulary_progress }
 & element cp:comment { text }
 }*

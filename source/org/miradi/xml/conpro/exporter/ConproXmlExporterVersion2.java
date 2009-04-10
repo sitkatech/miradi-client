@@ -122,7 +122,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
 		writeOptionalMethods(out, indicator.getMethodRefs());
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
-		writeOptionalProgressReportStatus(out, indicator);
+		writeProgressReports(out, indicator.getProgressReportRefs());
 		writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
 		writeOptionalElement(out, ANNUAL_COST, getAnnualCost(indicator)); 
 		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
@@ -136,16 +136,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			return null; 
 	
 		return Double.toString(indicator.getTotalBudgetCost());
-	}
-
-	private void writeOptionalProgressReportStatus(UnicodeWriter out, BaseObject baseObject) throws Exception
-	{
-		ProgressReport latestProgressReport = baseObject.getLatestProgressReport();
-		if (latestProgressReport == null)
-			return;
-		
-		String progressStatusCode = latestProgressReport.getData(ProgressReport.TAG_PROGRESS_STATUS);
-		writeOptionalElement(out, STATUS, statusCodeToXmlValue(progressStatusCode));
 	}
 
 	private String createAppendedResourceNames(UnicodeWriter out, Indicator indicator) throws Exception
@@ -206,7 +196,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
 			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENT);
 			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
-			writeOptionalProgressReportStatus(out, strategy);
+			writeProgressReports(out, strategy.getProgressReportRefs());
 			writeActivities(out, strategy.getActivityRefs());
 						
 			writeEndElement(out, STRATEGY);
@@ -246,13 +236,32 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 				writeElement(out, ACTIVITY_START_DATE, whenTotal.getStartDate().toString());
 				writeElement(out, ACTIVITY_END_DATE, whenTotal.getEndDate().toString());
 			}
-			writeOptionalProgressReportStatus(out, activity);
+			writeProgressReports(out, activity.getProgressReportRefs());
 			
 			writeEndElement(out, ACTIVITY);
 		}
 		
 		writeEndElement(out, ACTIVITIES);
 	}
+	
+	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception
+	{
+		writeStartElement(out, PROGRESS_REPORTS);
+		for (int refIndex = 0; refIndex < progressReportRefs.size(); ++refIndex)
+		{
+			ProgressReport progressReport = ProgressReport.find(getProject(), progressReportRefs.get(refIndex));
+			writeStartElementWithAttribute(out, PROGRESS_REPORT, SEQUENCE, refIndex);
+			
+			String progressStatusCode = progressReport.getData(ProgressReport.TAG_PROGRESS_STATUS);
+			writeElement(out, PROGRESS_REPORT_STATUS, statusCodeToXmlValue(progressStatusCode));
+			writeElement(out, PROGRESS_REPORT_DATE, progressReport.getDateAsString());
+			writeElement(out, PROGRESS_REPORT_COMMENT, progressReport.getData(ProgressReport.TAG_DETAILS));
+			
+			writeEndElement(out, PROGRESS_REPORT);
+		}
+		
+		writeEndElement(out, PROGRESS_REPORTS);
+	}	
 
 	private void writeObjectives(UnicodeWriter out) throws Exception
 	{
