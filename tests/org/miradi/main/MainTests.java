@@ -197,6 +197,7 @@ import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
 import org.miradi.xml.conpro.TestConProCodeMapHelper;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
+import org.miradi.xml.conpro.exporter.TestConproXmlExporterVersion2;
 import org.miradi.xml.conpro.importer.TestConProXmlImporter;
 
 public class MainTests extends TestCase
@@ -443,6 +444,7 @@ public class MainTests extends TestCase
 		
 		//xml.conpro.export
 		suite.addTest(new TestSuite(TestConproXmlExporter.class));
+		suite.addTest(new TestSuite(TestConproXmlExporterVersion2.class));
 		
 		//xml.conpro.importer
 		suite.addTest(new TestSuite(TestConProXmlImporter.class));

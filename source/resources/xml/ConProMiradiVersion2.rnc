@@ -413,7 +413,8 @@ attribute sequence { vocabulary_sequence }
 & element cp:date { vocabulary_date }
 & element cp:source { vocabulary_source }
 & element cp:trend { vocabulary_trend }
-& element cp:measure { vocabulary_source_measures }
+#FIXME the measures element needs to be correctly mapped to miradi
+#& element cp:measure { vocabulary_source_measures }
 }*
 }
 #

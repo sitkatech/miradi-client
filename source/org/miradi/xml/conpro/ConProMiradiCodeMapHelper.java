@@ -27,6 +27,7 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
+import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 
@@ -86,6 +87,15 @@ public class ConProMiradiCodeMapHelper
 		indicatorRatingSourceMap.put(RatingSourceQuestion.EXPERT_KNOWLEGE_CODE, "Expert Knowledge");
 		indicatorRatingSourceMap.put(RatingSourceQuestion.EXTERNAL_RESEARCH_CODE, "External Research");
 		indicatorRatingSourceMap.put(RatingSourceQuestion.ONSITE_RESEARCH_CODE, "Internal Research");
+		
+		trendMap = new HashMap<String, String>();
+		trendMap.put(TrendQuestion.NOT_SPECIFIED_CODE, "Not Specified");
+		trendMap.put(TrendQuestion.UNKNOWN_CODE, "Unknown");
+		trendMap.put(TrendQuestion.STRONG_INCREASE_CODE, "Strong Increase");
+		trendMap.put(TrendQuestion.MILD_INCREASE_CODE, "Mild Increase");
+		trendMap.put(TrendQuestion.FLAT_CODE, "Flat");
+		trendMap.put(TrendQuestion.MILD_DECREASE_CODE, "Mild Decrease");
+		trendMap.put(TrendQuestion.STRONG_DECREASE_CODE, "Strong Increase");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -126,6 +136,11 @@ public class ConProMiradiCodeMapHelper
 	{
 		return reverseMap(indicatorRatingSourceMap);
 	}
+	
+	public HashMap<String, String> geConProToMiradiTrendMap()
+	{
+		return reverseMap(trendMap);
+	} 
 	
 	public HashMap<String, String> getConProToMiradiProgressStatusMap()
 	{
@@ -200,6 +215,11 @@ public class ConProMiradiCodeMapHelper
 		return indicatorRatingSourceMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProTrendMap()
+	{
+		return trendMap;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
@@ -209,6 +229,7 @@ public class ConProMiradiCodeMapHelper
 	private HashMap<String, String> viabilityModeMap;
 	private HashMap<String, String> tncProjectSharingMap;
 	private HashMap<String, String> indicatorRatingSourceMap;
+	private HashMap<String, String> trendMap;
 	
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_MAJOR_ISSUES_VALUE = "Major Issues";
