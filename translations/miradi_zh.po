@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-10 10:11-0500\n"
+"POT-Creation-Date: 2009-04-10 13:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -182,7 +182,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/database/ProjectServer.java:406
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
-#: miradi/source/org/miradi/questions/TrendQuestion.java:38
 #: miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
 msgstr "未知"
@@ -2369,7 +2368,7 @@ msgstr "当前状况 \t\t"
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:289
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:303
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "对象"
@@ -3637,10 +3636,6 @@ msgstr "大大增加"
 #: miradi/source/org/miradi/questions/TrendQuestion.java:40
 msgid "Mild Increase"
 msgstr "略微增加 "
-
-#: miradi/source/org/miradi/questions/TrendQuestion.java:41
-msgid "Flat"
-msgstr "不变"
 
 #: miradi/source/org/miradi/questions/TrendQuestion.java:42
 msgid "Mild Decrease"
@@ -5986,7 +5981,7 @@ msgid ""
 msgstr "选择哪个策略和活动与本分目标相关联"
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:314
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:328
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "威胁因子"
@@ -29209,6 +29204,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Flat"
+#~ msgstr "不变"
 
 #~ msgid ""
 #~ "NOTE: The budget total for this task is the sum of the budget totals of "

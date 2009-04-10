@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-10 10:11-0500\n"
+"POT-Creation-Date: 2009-04-10 13:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -199,7 +199,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/database/ProjectServer.java:406
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:161
-#: miradi/source/org/miradi/questions/TrendQuestion.java:38
 #: miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
 msgstr "Desconocido "
@@ -2491,7 +2490,7 @@ msgstr "Estadodo actual"
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:289
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:303
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "Objeto "
@@ -3814,10 +3813,6 @@ msgstr "Gran incremento "
 #: miradi/source/org/miradi/questions/TrendQuestion.java:40
 msgid "Mild Increase"
 msgstr "Incremento moderado "
-
-#: miradi/source/org/miradi/questions/TrendQuestion.java:41
-msgid "Flat"
-msgstr "Plano "
 
 #: miradi/source/org/miradi/questions/TrendQuestion.java:42
 msgid "Mild Decrease"
@@ -6182,7 +6177,7 @@ msgid ""
 msgstr "Seleccionar las estrategias y actividades relevantes para esta meta. "
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:314
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:328
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Amenaza "
@@ -32763,6 +32758,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Flat"
+#~ msgstr "Plano "
 
 #~ msgid "Action|Planning"
 #~ msgstr "Planificación"
