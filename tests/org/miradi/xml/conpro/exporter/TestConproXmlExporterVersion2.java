@@ -81,7 +81,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 	
 	private void verifyExport() throws IOException, Exception, FileNotFoundException
 	{
-		File tempXmlOutFile = createTempFileFromName("conpro.xml");
+		File tempXmlOutFile = createTempFileFromName("conproVersion2.xml");
 		try
 		{
 			new ConproXmlExporterVersion2(getProject()).export(tempXmlOutFile);

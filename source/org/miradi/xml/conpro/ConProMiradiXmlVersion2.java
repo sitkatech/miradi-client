@@ -142,7 +142,6 @@ public interface ConProMiradiXmlVersion2
 	public static final String ACTIVITY_START_DATE = "start_date";
 	public static final String ACTIVITY_END_DATE = "end_date";
 	public static final String PRIORITY = "priority";
-	public static final String METHODS = "methods";
 	public static final String STATUS = "status";
 	public static final String WHO_MONITORS = "who_monitors";
 	public static final String ANNUAL_COST = "annual_cost";
@@ -160,5 +159,18 @@ public interface ConProMiradiXmlVersion2
 	public static final String PROGRESS_REPORT_DATE = "date";
 	public static final String PROGRESS_REPORT_STATUS = "measure";
 	public static final String PROGRESS_REPORT_COMMENT = "comment";
-	
+	public static final String METHOD_ID = "method_id";
+	public static final String METHODS = "methods";
+	public static final String METHOD = "method";
+	public static final String METHOD_NAME = "name";
+	public static final String METHOD_DETAIL = "detail";
+	public static final String METHOD_ANNUAL_COST = "annual_cost";
+	public static final String METHOD_COMMENT = "comment";
+	public static final String MEASUREMENTS = "measures";
+	public static final String MEASUREMENT = "measure";
+	public static final String MEASUREMENT_SUMMARY = "measurement";
+	public static final String MEASUREMENT_DATE = "date";
+	public static final String MEASUREMENT_STATUS_CONFIDENCE = "source";
+	public static final String MEASUREMENT_TREND = "trend";
+	public static final String MEASUREMENT_RATING = "measure";
 }

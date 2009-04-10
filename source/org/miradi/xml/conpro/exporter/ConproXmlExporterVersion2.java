@@ -45,6 +45,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
@@ -120,22 +121,14 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		writeStartElementWithAttribute(out, INDICATOR, ID, indicator.getId().toString());
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
-		writeOptionalMethods(out, indicator.getMethodRefs());
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
-		writeProgressReports(out, indicator.getProgressReportRefs());
-		writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
-		writeOptionalElement(out, ANNUAL_COST, getAnnualCost(indicator)); 
+		writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator)); 
 		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
+		writeMeasurements(out, indicator.getMeasurementRefs());		
+		writeIds(out, indicator.getMethodRefs(), METHODS,	METHOD_ID);
+		writeProgressReports(out, indicator.getProgressReportRefs());
 
 		writeEndElement(out, INDICATOR);
-	}
-
-	private String getAnnualCost(Indicator indicator) throws Exception
-	{
-		if (indicator.isBudgetOverrideMode() && indicator.isEmptyBudgetCostOverride())
-			return null; 
-	
-		return Double.toString(indicator.getTotalBudgetCost());
 	}
 
 	private String createAppendedResourceNames(UnicodeWriter out, Indicator indicator) throws Exception
@@ -149,33 +142,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		}
 		
 		return allResourceNames;
-	}
-
-	private void writeOptionalMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
-	{
-		String methodNames = "";
-		for (int refIndex = 0; refIndex < methodRefs.size(); ++refIndex)
-		{
-			Task method = Task.find(getProject(), methodRefs.get(refIndex));
-			if (refIndex != 0)
-				methodNames += ";";
-			
-			methodNames += getMethodName(method);
-		}
-		
-		writeOptionalElement(out, METHODS, methodNames);
-	}
-
-	private String getMethodName(Task method)
-	{
-		String methodName = method.getData(Task.TAG_LABEL);
-		if (methodName.contains(SEE_DETAILS_FIELD_METHOD_NAME))
-		{
-			String details = method.getData(Task.TAG_DETAILS);
-			return details;
-		}
-		
-		return methodName;
 	}
 
 	private void writeStrategies(UnicodeWriter out) throws Exception
@@ -243,7 +209,34 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		
 		writeEndElement(out, ACTIVITIES);
 	}
-	
+
+//FIXME we are writing method Ids for indicator but no one ever writes the methods, schema question	
+//	private void writeMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
+//	{
+//		writeStartElement(out, METHODS);
+//		for (int refIndex = 0; refIndex < methodRefs.size(); ++refIndex)
+//		{
+//			Task method = Task.find(getProject(), methodRefs.get(refIndex));
+//			writeStartElementWithAttribute(out, METHOD, ID, method.getId().toString());
+//			writeLabelElement(out, METHOD_NAME, method, Task.TAG_LABEL);
+//			writeOptionalElement(out, METHOD_ANNUAL_COST, getAnnualCost(method));
+//			writeElement(out, METHOD_DETAIL, method, Task.TAG_DETAILS);
+//			writeElement(out, METHOD_COMMENT, method, Task.TAG_COMMENT);
+//				
+//			writeEndElement(out, METHOD);
+//		}
+//		
+//		writeEndElement(out, METHODS);
+//	}
+//	
+//	private String getAnnualCost(Task task) throws Exception
+//	{
+//		if (task.isBudgetOverrideMode() && task.isEmptyBudgetCostOverride())
+//			return null; 
+//	
+//		return Double.toString(task.getTotalBudgetCost());
+//	}
+
 	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception
 	{
 		writeStartElement(out, PROGRESS_REPORTS);
@@ -261,6 +254,27 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		}
 		
 		writeEndElement(out, PROGRESS_REPORTS);
+	}
+	
+	private void writeMeasurements(UnicodeWriter out, ORefList measurementRefs) throws Exception
+	{
+		writeStartElement(out, MEASUREMENTS);
+		for (int refIndex = 0; refIndex < measurementRefs.size(); ++refIndex)
+		{
+			Measurement measurement = Measurement.find(getProject(), measurementRefs.get(refIndex));
+			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, refIndex);
+			
+			writeElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
+			writeElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
+			writeElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
+			writeElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
+			//FIXME the measures element needs to be correctly mapped to miradi
+			//writeElement(out, MEASUREMENT_RATING, "");
+			
+			writeEndElement(out, MEASUREMENT);
+		}
+		
+		writeEndElement(out, MEASUREMENTS);
 	}	
 
 	private void writeObjectives(UnicodeWriter out) throws Exception
@@ -384,9 +398,14 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 	private void writeIndicatorIds(UnicodeWriter out, ORefList indicatorRefs) throws Exception
 	{
-		writeStartElement(out, INDICATORS);
-		writeIds(out, INDICATOR_ID, indicatorRefs);		
-		writeEndElement(out, INDICATORS);
+		writeIds(out, indicatorRefs, INDICATORS,	INDICATOR_ID);
+	}
+	
+	private void writeIds(UnicodeWriter out, ORefList indicatorRefs, String parentElementName, String idElementName) throws Exception
+	{
+		writeStartElement(out, parentElementName);
+		writeIds(out, idElementName, indicatorRefs);		
+		writeEndElement(out, parentElementName);
 	}
 
 	private void writeIds(UnicodeWriter out, String elementName, ORefList refs) throws Exception
@@ -1041,6 +1060,18 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private String ratingCodeToXmlValue(int code)
 	{
 		return ratingCodeToXmlValue(Integer.toString(code));
+	}
+	
+	private String statusConfidenceToXmlValue(String code)
+	{
+		HashMap<String, String> statusConfidenceMap = getCodeMapHelper().getMiradiToConProStatusConfidenceMap();
+		return getCodeMapHelper().getSafeXmlCode(statusConfidenceMap, code);
+	}
+	
+	private String trendToXmlValue(String code)
+	{
+		HashMap<String, String> trendMap = getCodeMapHelper().getMiradiToConProTrendMap();
+		return getCodeMapHelper().getSafeXmlCode(trendMap, code);
 	}
 
 	private String tncProjectSharingToXmlValue(String code)
