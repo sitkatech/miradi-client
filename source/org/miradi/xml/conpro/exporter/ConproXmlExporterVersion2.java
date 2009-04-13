@@ -22,9 +22,11 @@ package org.miradi.xml.conpro.exporter;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
@@ -33,6 +35,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
+import org.miradi.objecthelpers.BaseObjectByRefSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -97,6 +100,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeThreats(out);
 		writeStrategies(out);
 		writeObjectives(out);
+		writeMethods(out);
 		writeIndicators(out);
 		
 		writeEndElement(out, CONSERVATION_PROJECT);
@@ -122,26 +126,12 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeStartElementWithAttribute(out, INDICATOR, ID, indicator.getId().toString());
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
-		writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator)); 
 		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
 		writeMeasurements(out, indicator.getMeasurementRefs());		
 		writeIds(out, indicator.getMethodRefs(), METHODS,	METHOD_ID);
 		writeProgressReports(out, indicator.getProgressReportRefs());
 
 		writeEndElement(out, INDICATOR);
-	}
-
-	private String createAppendedResourceNames(UnicodeWriter out, Indicator indicator) throws Exception
-	{
-		String allResourceNames = "";
-		ORefSet resourceRefs = indicator.getAllResources(indicator.getMethodRefs());
-		for(ORef resourceRef : resourceRefs)
-		{
-			ProjectResource resource = ProjectResource.find(getProject(), resourceRef);
-			allResourceNames += resource.getFullName() + "; ";
-		}
-		
-		return allResourceNames;
 	}
 
 	private void writeStrategies(UnicodeWriter out) throws Exception
@@ -209,33 +199,34 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		
 		writeEndElement(out, ACTIVITIES);
 	}
+	
+	private void writeMethods(UnicodeWriter out) throws Exception
+	{
+		Vector<Task> methods = getProject().getTaskPool().getAllMethods();
+		Collections.sort(methods, new BaseObjectByRefSorter());
+		writeStartElement(out, METHODS);
+		for (int refIndex = 0; refIndex < methods.size(); ++refIndex)
+		{
+			Task method = methods.get(refIndex);
+			writeStartElementWithAttribute(out, METHOD, ID, method.getId().toString());
+			
+			writeLabelElement(out, METHOD_NAME, method, Task.TAG_LABEL);
+			writeElement(out, METHOD_DETAIL, method, Task.TAG_DETAILS);
+			writeElement(out, METHOD_ANNUAL_COST, getAnnualCost(method));
+			writeElement(out, METHOD_COMMENT, method, Task.TAG_COMMENT);
+			writeEndElement(out, METHOD);
+		}
+		
+		writeEndElement(out, METHODS);
+	}
 
-//FIXME we are writing method Ids for indicator but no one ever writes the methods, schema question	
-//	private void writeMethods(UnicodeWriter out, ORefList methodRefs) throws Exception
-//	{
-//		writeStartElement(out, METHODS);
-//		for (int refIndex = 0; refIndex < methodRefs.size(); ++refIndex)
-//		{
-//			Task method = Task.find(getProject(), methodRefs.get(refIndex));
-//			writeStartElementWithAttribute(out, METHOD, ID, method.getId().toString());
-//			writeLabelElement(out, METHOD_NAME, method, Task.TAG_LABEL);
-//			writeOptionalElement(out, METHOD_ANNUAL_COST, getAnnualCost(method));
-//			writeElement(out, METHOD_DETAIL, method, Task.TAG_DETAILS);
-//			writeElement(out, METHOD_COMMENT, method, Task.TAG_COMMENT);
-//				
-//			writeEndElement(out, METHOD);
-//		}
-//		
-//		writeEndElement(out, METHODS);
-//	}
-//	
-//	private String getAnnualCost(Task task) throws Exception
-//	{
-//		if (task.isBudgetOverrideMode() && task.isEmptyBudgetCostOverride())
-//			return null; 
-//	
-//		return Double.toString(task.getTotalBudgetCost());
-//	}
+	private String getAnnualCost(Task task) throws Exception
+	{
+		if (task.isBudgetOverrideMode() && task.isEmptyBudgetCostOverride())
+			return ""; 
+	
+		return Double.toString(task.getTotalBudgetCost());
+	}
 
 	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception
 	{
@@ -268,8 +259,8 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
 			writeElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
 			writeElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
-			//FIXME the measures element needs to be correctly mapped to miradi
-			//writeElement(out, MEASUREMENT_RATING, "");
+			//FIXME this needs to export correct value
+			writeElement(out, MEASUREMENT_RATING, "");
 			
 			writeEndElement(out, MEASUREMENT);
 		}
@@ -493,7 +484,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeOptionalElement(out, KEA_AND_INDICATOR_COMMENT, indicator, Indicator.TAG_DETAIL);
 		writeOptionalElement(out, INDICATOR_RATING_COMMENT, indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
 		writeOptionalElement(out, DESIRED_RATING_COMMENT, indicator, Indicator.TAG_FUTURE_STATUS_COMMENT);
-		writeOptionalElement(out, VIABILITY_RECORD_COMMENT, kea, KeyEcologicalAttribute.TAG_DESCRIPTION);
 			
 		writeEndElement(out, VIABILITY_ASSESSMENT);
 	}
@@ -551,18 +541,20 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		if (targetStatusCode.length() == 0)
 			return;
 		
-		writeStartElementWithAttribute(out, TARGET_VIABILITY_RANK, TARGET_VIABILITY_MODE, getTargetMode(target));
-		writeCodeElement(out, targetStatusCode, getCodeMapHelper().getMiradiToConProRankingMap());
-		writeEndElement(out, TARGET_VIABILITY_RANK);
+		//FIXME need to export these correctly
+		//writeStartElementWithAttribute(out, TARGET_VIABILITY_RANK, TARGET_VIABILITY_MODE, getTargetMode(target));
+		//writeCodeElement(out, targetStatusCode, getCodeMapHelper().getMiradiToConProRankingMap());
+		//writeEndElement(out, TARGET_VIABILITY_RANK);
 	}
 
-	private String getTargetMode(Target target)
-	{
-		if (target.isViabilityModeTNC())
-			return getConproCode(target.getViabilityMode(), getCodeMapHelper().getMiradiToConProViabilityModeMap());
-		
-		return ConProMiradiCodeMapHelper.CONPRO_TARGET_SIMPLE_MODE_VALUE;
-	}
+//TODO commented since it causing warning for not being used.  will be used by rating code
+//	private String getTargetMode(Target target)
+//	{
+//		if (target.isViabilityModeTNC())
+//			return getConproCode(target.getViabilityMode(), getCodeMapHelper().getMiradiToConProViabilityModeMap());
+//		
+//		return ConProMiradiCodeMapHelper.CONPRO_TARGET_SIMPLE_MODE_VALUE;
+//	}
 	
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
 	{
@@ -742,6 +734,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeLabelElement(out, NAME, stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, STRESS_SEVERITY, stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, STRESS_SCOPE, stress.getData(Stress.TAG_SCOPE));
+			writeOptionalElement(out, STRESS_OVERRIDE_RANK, stress.getData(Stress.TAG_DETAIL));
 			writeOptionalRatingCodeElement(out, STRESS_TO_TARGET_RANK, stress.getCalculatedStressRating());
 			writeThreatStressRatings(out, stress);
 			
@@ -778,7 +771,8 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 				writeOptionalElement(out, STRESSLESS_THREAT_RANK, getSimpleOverallProjectRating());
 
 			writeOptionalElement(out, PROJECT_THREAT_RANK, getStressBasedOverallProjectRating());
-			writeOptionalElement(out, PROJECT_VIABILITY_RANK, getComputedTncViability());
+			//FIXME need to export this field
+			//writeOptionalElement(out, PROJECT_VIABILITY_RANK, getComputedTncViability());
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
 			writeCodeListElements(out, COUNTRIES, COUNTRY_CODE, getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
@@ -853,11 +847,12 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		}
 	}
 
-	private String getComputedTncViability()
-	{
-		String code = Target.computeTNCViability(getProject());
-		return rankingCodeToXmlValue(code);
-	}
+//TODO commented since it causing warning for not being used.  will be used by rating code
+//	private String getComputedTncViability()
+//	{
+//		String code = Target.computeTNCViability(getProject());
+//		return rankingCodeToXmlValue(code);
+//	}
 
 	private String getStressBasedOverallProjectRating()
 	{
@@ -1012,10 +1007,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeEndElement(out, elementName);
 	}
 	
-	private void writeCodeElement(UnicodeWriter out, String code, HashMap<String, String> map) throws Exception
-	{
-		out.write(getConproCode(code, map));
-	}
+//TODO commented since it causing warning for not being used.  will be used by rating code	
+//	private void writeCodeElement(UnicodeWriter out, String code, HashMap<String, String> map) throws Exception
+//	{
+//		out.write(getConproCode(code, map));
+//	}
 
 	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
 	{

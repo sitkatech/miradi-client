@@ -28,6 +28,7 @@ project_summary.element
 & objectives.element
 & strategies.element
 & indicators.element
+& methods.element
 }
 #
 project_summary.element =
@@ -42,7 +43,14 @@ project_summary.element =
 		& area_size.element?
 		& geospatial_location.element?
 		& element cp:description_comment { text }?
-		& [ documentation [ "A goal_comment is a goal or vision statement for the project" ] ]
+		& [ documentation [ "A general summary of the desired state or ultimate condition of the \x{a}" ~
+		"project area or scope that a project is working to achieve. A good \x{a}" ~
+		"vision statement meets the criteria of being relatively general, \x{a}" ~
+		"visionary and brief. For most biodiversity conservation projects, \x{a}" ~
+		"the vision will describe the desired state of the biodiversity \x{a}" ~
+		"of the project area."
+		]
+		]
 		element cp:goal_comment { text }?
 		& element cp:planning_team_comment { text }?
 		& element cp:lessons_learned { text }?
@@ -103,8 +111,11 @@ ecoregions.element =
 element cp:ecoregions {
 [
 documentation [
-"This is a 5 digit TNC generated code to describe large areas of land and/or \x{a}" ~
-"water that contain a geographically distinct assemblage of natural communities."
+"Ecoregions are relatively large geographic areas of land and water \x{a}" ~
+"delineated by climate, vegetation, geology, and other ecological and \x{a}" ~
+"environmental patterns. Ecoregional targets are the species, ecological \x{a}" ~
+"communities, and ecological systems within a given ecoregion \x{a}" ~
+"systems within a given ecoregion used to set conservation priorities."
 ]
 ]
 element cp:ecoregion_code { vocabulary_ecoregion }*
@@ -144,9 +155,13 @@ targets.element =
 element cp:targets {
 [
 documentation [
-"Species, communities, and ecological systems selected to \x{a}" ~
-"encompass and represent the needs of the broader set of \x{a}" ~
-"biodiversity occurring within a project."
+"A limited suite of species, communities, and ecological systems \x{a}" ~
+"that are chosen to represent and encompass the needs of the broader \x{a}" ~
+"set of biodiversity occurring within a project area. They are the \x{a}" ~
+"basis for setting goals, carrying out conservation actions, and \x{a}" ~
+"measuring conservation effectiveness. In theory, conservation of the \x{a}" ~
+"focal targets will ensure conservation of all native biodiversity \x{a}" ~
+"within functional landscapes."
 ]
 ]
 element cp:target {
@@ -176,6 +191,13 @@ element cp:habitat_taxonomy_code { iucn_habitat_taxonomy }*
 #
 nested_targets.element =
 element cp:nested_targets {
+[
+documentation [
+"Species, ecological communities, or ecological system targets whose \x{a}" ~
+"conservation needs are subsumed in one or more focal conservation \x{a}" ~
+"targets. Often includes targets identified as ecoregional targets."
+]
+]
 element cp:nested_target {
 attribute sequence { vocabulary_sequence }
 & element cp:name { text }
@@ -193,18 +215,48 @@ element cp:strategy_id { vocabulary_id }
 #
 stresses.element =
 element cp:stresses {
+[
+documentation [
+"Stresses are impairments or degradations of Key Ecological Attributes \x{a}" ~
+"that ultimately reduce the viability of conservation Targets. \x{a}" ~
+"Examples: altered vegetation; ecosystem fragmentation. \x{a}" ~
+"Stresses are subjectively rated as to their: \x{a}" ~
+"- Scope – the proportion of the overall area of a project site \x{a}" ~
+" or target occurrence likely to be affected by a threat \x{a}" ~
+" within 10 years; \x{a}" ~
+"- Severity – the level of damage to the conservation target that \x{a}" ~
+" can reasonably be expected within 10 years under current \x{a}" ~
+" circumstances (i.e., given the continuation of the existing \x{a}" ~
+" situation)."
+]
+]
 element cp:stress {
 attribute sequence { vocabulary_sequence }
 & element cp:name { text }
 & element cp:stress_severity { vocabulary_ranking_vhhml }?
 & element cp:stress_scope { vocabulary_ranking_vhhml }?
 & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
+& element cp:stress_ovrd_rank { vocabulary_ranking_vhhml }?
 & threat_stress_ratings.element
 }*
 }
 #
 threat_stress_ratings.element =
 element cp:threat_stress_ratings {
+[
+documentation [
+"The degree to which a Stress contributes to the genesis or ongoing \x{a}" ~
+"persistence of a Threat. Measured by: \x{a}" ~
+"- Contribution - The degree to which a source of stress, acting alone, \x{a}" ~
+" is likely to be responsible for the full expression of \x{a}" ~
+" a stress within the project area within 10 years. \x{a}" ~
+"- Irreversibility - The degree to which the effects of a source of \x{a}" ~
+" stress can be restored or recovered. Typically \x{a}" ~
+" includes an assessment of both the technical \x{a}" ~
+" difficulty and the economic and/or social cost \x{a}" ~
+" of restoration."
+]
+]
 element cp:threat_stress_rating {
 element cp:threat_id { vocabulary_id }
 & element cp:contrib_rank { vocabulary_ranking_vhhml }?
@@ -229,15 +281,19 @@ key_attributes.element =
 element cp:key_attributes {
 [
 documentation [
-"Key ecological attributes are critical components of target's \x{a}" ~
-"life history, physical or biological processes, composition, \x{a}" ~
+"Key Ecological Attributes are critical components of target’s \x{a}" ~
+"ecology, physical or biological processes, composition, \x{a}" ~
 "or structure that:\x{a}" ~
-"- Determine a target's temporal/spatial distribution that are necessary \x{a}" ~
+"- Determine a target’s temporal/spatial distribution that are necessary \x{a}" ~
 " for the continued persistence of the target \x{a}" ~
 "- Vary within an 'acceptable range of variability' obtained by reviewing \x{a}" ~
 " scientific literature, consulting experts, and in some cases through \x{a}" ~
 " modeling efforts \x{a}" ~
-"- Are assigned to categories of: Size, Condition, Landscape Context"
+"- Are assigned to categories of: Size, Condition, Landscape Context \x{a}" ~
+"More technically, the most critical components of biological composition, \x{a}" ~
+"structure, interactions and processes, environmental regimes, and landscape \x{a}" ~
+"configuration that sustain a target’s viability or ecological integrity \x{a}" ~
+"over space and time."
 ]
 ]
 element cp:key_attribute {
@@ -251,8 +307,15 @@ viability.element =
 element cp:viability_assessments {
 [
 documentation [
-"Viabiltiy specifies how to measure a target's 'health' over time. And then to \x{a}" ~
-"identify how the target is doing today and what a 'healthy state' might look like."
+"The status or health of a component of biodiversity. \x{a}" ~
+"More generally, Viability indicates the ability of a Conservation \x{a}" ~
+"Target to withstand or recover from most natural or anthropogenic \x{a}" ~
+"disturbances and thus to persist for many generations or over long time \x{a}" ~
+"periods. \x{a}" ~
+"Target Viability is evaluated objectively by scoring Indicator Ratings \x{a}" ~
+"of the Key Attributes chosen to represent the health of a Target. \x{a}" ~
+"Overall Project biodiversity Viability is then objectively evaluated by \x{a}" ~
+"compositing the Viability scores of individual Targets."
 ]
 ]
 element cp:viability_assessment {
@@ -267,7 +330,6 @@ element cp:indicator_id { vocabulary_id }
 & element cp:kea_and_indicator_comment { text }?
 & element cp:indicator_rating_comment { text }?
 & element cp:desired_rating_comment { text }?
-& element cp:viability_record_comment { text }?
 }*
 }
 #
@@ -275,14 +337,10 @@ threats.element =
 element cp:threats {
 [
 documentation [
-"Threats describe the various factors that immediately affect a \x{a}" ~
-"project's targets and allows ranking targets. This helps \x{a}" ~
-"directing conservation actions where they are most needed. \x{a}" ~
-"They are broken into two components, stresses and sources. \x{a}" ~
-"-- Stresses are forms of degradation or impairment from which the \x{a}" ~
-"targets are suffering. \x{a}" ~
-"-- Sources of stress (labeled Threats) are those factors that \x{a}" ~
-"cause the degradation."
+"Threats, or Sources of Stress, are the proximate activities or processes \x{a}" ~
+"that directly caused, are causing, or may cause stresses and thus \x{a}" ~
+"the destruction, degradation and/or impairment of focal conservation \x{a}" ~
+"targets. (See also Stresses and Threat-Stress Ratings)"
 ]
 ]
 element cp:threat {
@@ -301,10 +359,23 @@ objectives.element =
 element cp:objectives {
 [
 documentation [
-"Objectives are very clear statements about the specific \x{a}" ~
-"outcomes we are trying to achieve with respect to abating \x{a}" ~
-"threats and restoring the viability of targets that give \x{a}" ~
-"us a very clear focus for our strategies and actions"
+"Specific statements detailing the desired accomplishments or outcomes of \x{a}" ~
+"a particular set of activities within a project. A typical project will \x{a}" ~
+"have multiple Objectives. Objectives are typically set for abatement of \x{a}" ~
+"critical Threats and for restoration of degraded Key Ecological Attributes. \x{a}" ~
+"They can also be set, however, for the outcomes of specific conservation \x{a}" ~
+"actions, or the acquisition of project resources. If the project is well \x{a}" ~
+"conceptualized and designed, realization of all the project’s objectives \x{a}" ~
+"should lead to the fulfillment of the project’s vision. \x{a}" ~
+"Objectives should be: \x{a}" ~
+"- Impact oriented (represents desired changes in ecological attributes or \x{a}" ~
+" critical threat factors) \x{a}" ~
+"- Measurable (defined in relation to some standard scale) \x{a}" ~
+"- Time limited (achievable within a specific period of time) \x{a}" ~
+"- Specific (clearly defined for universal understanding) \x{a}" ~
+"- Practical (achievable and appropriate within the project context) \x{a}" ~
+"- Credible (representing the best scientific judgment as to what is \x{a}" ~
+" necessary for conservation success)."
 ]
 ]
 element cp:objective {
@@ -331,6 +402,13 @@ attribute sequence { vocabulary_sequence }
 #
 strategies.element =
 element cp:strategies {
+[
+documentation [
+"Interventions undertaken by project staff and/or partners designed to \x{a}" ~
+"reach the project’s objectives. A good action meets the criteria of being \x{a}" ~
+"linked to objectives, focused, strategic, feasible, and appropriate."
+]
+]
 element cp:strategy {
 attribute id { vocabulary_id }
 & element cp:objectives {
@@ -360,23 +438,23 @@ indicators.element =
 element cp:indicators {
 [
 documentation [
-"Indicators are measurable factors used to assess the status \x{a}" ~
-"of a Key Ecological Attribute. \x{a}" ~
+"Measurable factors related to a specific information need (for example, \x{a}" ~
+"the status of a Key Ecological Attribute, change in a Threat, or \x{a}" ~
+"progress towards an Objective). A good Indicator meets the criteria of \x{a}" ~
+"being measurable, precise, consistent, and sensitive. \x{a}" ~
 "Indicator Ratings are described based on criteria that objectively \x{a}" ~
 "place an indicator into 1 of 4 categories corresponding to \x{a}" ~
 "Poor, Fair, Good, and Very Good viability status. \x{a}" ~
 "The guidance for defining different indicator ratings is centered on \x{a}" ~
-"the concept of acceptable ranges of variability. . \x{a}" ~
-"- Indicators in a 'Good' status are within an acceptable range of variation; \x{a}" ~
+"the concept of acceptable ranges of variability. \x{a}" ~
+"-- Indicators in a 'Good' status are within an acceptable range of variation; \x{a}" ~
 " Some intervention is required for their maintenance. \x{a}" ~
-"- Very Good is an Ecologically desirable status; Requires little \x{a}" ~
+"-- Very Good is an Ecologically desirable status; Requires little \x{a}" ~
 " intervention for maintenance. \x{a}" ~
-"- Fair status indicates a key attribute that is outside acceptable \x{a}" ~
+"-- Fair status indicates a key attribute that is outside acceptable \x{a}" ~
 " range of variation; Requires human intervention. \x{a}" ~
-"- Poor status represents a situation where Restoration increasingly \x{a}" ~
+"-- Poor status represents a situation where Restoration increasingly \x{a}" ~
 " difficult and the current conditions may lead to the extirpation of the target."
-
-
 ]
 ]
 
@@ -411,10 +489,9 @@ element cp:measure {
 attribute sequence { vocabulary_sequence }
 & element cp:measurement { text }
 & element cp:date { vocabulary_date }
-& element cp:source { vocabulary_source }
+& element cp:source { vocabulary_source_measures }
 & element cp:trend { vocabulary_trend }
-#FIXME the measures element needs to be correctly mapped to miradi
-#& element cp:measure { vocabulary_source_measures }
+& element cp:measure { text }
 }*
 }
 #
@@ -424,7 +501,7 @@ element cp:method {
 attribute id { vocabulary_id }
 & element cp:name { text }
 & element cp:detail { text }
-& element cp:annual_cost { xsd:decimal }?
+& element cp:annual_cost { text }?
 & element cp:comment { text }?
 }*
 }
@@ -447,6 +524,13 @@ vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
 vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:nonNegativeInteger
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
+vocabulary_organizational_priorities =
+"Capital Campaign"
+| "Regional Priority"
+| "CSD - Climate"
+| "CSD - Marine"
+| "CSD - Freshwater"
+| "CSD - Protected Areas"
 vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
 vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_progress =
@@ -457,12 +541,12 @@ vocabulary_progress =
 | "On Track"
 | "Completed"
 | "Abandoned"
+vocabulary_project_types =
+"Single-Place-Based Project" | "Multi-Place-Based Project" | "Non-Place-Based Project"
 vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_sequence = xsd:nonNegativeInteger
-vocabulary_source =
-"Not Specified" | "Rough Guess" | "Expert Opinion" | "Rapid Assessment" | "Intense Assessment"
 vocabulary_source_indicator_ratings =
 "Not Specified" | "Rough Guess" | "Expert Knowledge" | "External Research" | "Internal Research"
 vocabulary_source_measures =
@@ -481,10 +565,9 @@ vocabulary_trend =
 | "Mild Increase"
 | "Flat"
 | "Mild Decrease"
-| "Strong Increase"
+| "Strong Decrease"
 vocabulary_viability_mode = "kea" | "simple"
 #
-dont_have_this_data_type_info_yet = "I need this info!!!!!!!!"
 #
 [
 documentation [
