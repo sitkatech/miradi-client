@@ -23,7 +23,7 @@ public interface ConProMiradiXmlVersion2
 {
 	public static final String CONSERVATION_PROJECT = "conservation_project";
 	public static final String XMLNS = "xmlns";
-	public static final double NAME_SPACE_VERSION = 0.4;
+	public static final String NAME_SPACE_VERSION = "0.4";
 	public static final String PARTIAL_NAME_SPACE = "http://services.tnc.org/schema/conservation-project/";
 	//FIXME this is a version under progress, inluding -working in nameSpace
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION + "-working";
@@ -84,6 +84,7 @@ public interface ConProMiradiXmlVersion2
 	public static final String NAME = "name";
 	public static final String STRESS_SEVERITY = "stress_severity"; 
 	public static final String STRESS_SCOPE = "stress_scope";
+	public static final String STRESS_OVERRIDE_RANK = "stress_ovrd_rank";
 	public static final String STRESS_TO_TARGET_RANK = "stress_to_target_rank";
 	public static final String THREAT_STRESS_RATINGS = "threat_stress_ratings";
 	public static final String THREAT_STRESS_RATING = "threat_stress_rating";
