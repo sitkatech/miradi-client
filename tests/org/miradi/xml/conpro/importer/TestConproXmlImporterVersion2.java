@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.importer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
@@ -119,24 +121,31 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
 		try
 		{
-			File outFile = new File("c:\\hhhhhhhhhh.xml");
-			FileOutputStream out = new FileOutputStream(outFile);
-		    byte buf[]=new byte[1024];
-		    int len;
-		    while((len=fileInputStream.read(buf))>0)
-		    {
-		    	out.write(buf,0,len);
-		    }
-		    out.close();
-			
-		    fileInputStream.seek(0);
-			
+			//FIXME this is a temp method to output the xml into a file. remove when class is done 
+			//OutputToFileForDevelopment(fileInputStream);	
 			conProXmlImporter.importConProProject(fileInputStream);
 		}
 		finally
 		{
 			fileInputStream.close();	
 		}
+	}
+
+	private void OutputToFileForDevelopment(
+			FileInputStreamWithSeek fileInputStream)
+			throws FileNotFoundException, IOException
+	{
+		File outFile = new File("c:\\hhhhhhhhhh.xml");
+		FileOutputStream out = new FileOutputStream(outFile);
+		byte buf[]=new byte[1024];
+		int len;
+		while((len=fileInputStream.read(buf))>0)
+		{
+			out.write(buf,0,len);
+		}
+		out.close();
+		
+		fileInputStream.seek(0);
 	}
 
 	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception
