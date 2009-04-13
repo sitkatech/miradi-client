@@ -41,6 +41,7 @@ public class ConProMiradiCodeMapHelper
 	private void createMiradiToConproCodeMaps() throws Exception
 	{
 		progressStatusMap = new HashMap<String, String>();
+				progressStatusMap.put(ProgressReportStatusQuestion.NOT_SPECIFIED, CONPRO_STATUS_NOT_SPECIFIED);
 		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
 		progressStatusMap.put(ProgressReportStatusQuestion.MAJOR_ISSUES_CODE, CONPRO_STATUS_MAJOR_ISSUES_VALUE);
 		progressStatusMap.put(ProgressReportStatusQuestion.MINOR_ISSUES_CODE, CONPRO_STATUS_MINOR_ISSUES_VALUE);
@@ -68,6 +69,7 @@ public class ConProMiradiCodeMapHelper
 		keaTypeMap.put(KeyEcologicalAttributeTypeQuestion.LANDSCAPE, "Landscape Context");
 		
 		statusConfidenceMap = new HashMap<String, String>();
+		statusConfidenceMap.put(StatusConfidenceQuestion.NOT_SPECIFIED, "Not Specified");
 		statusConfidenceMap.put(StatusConfidenceQuestion.ROUGH_GUESS_CODE, "Rough Guess");
 		statusConfidenceMap.put(StatusConfidenceQuestion.EXPERT_KNOWLEDGE_CODE, "Expert Knowledge"); 
 		statusConfidenceMap.put(StatusConfidenceQuestion.RAPID_ASSESSMENT_CODE, "Rapid Assessment");
@@ -231,6 +233,7 @@ public class ConProMiradiCodeMapHelper
 	private HashMap<String, String> indicatorRatingSourceMap;
 	private HashMap<String, String> trendMap;
 	
+	private static final String CONPRO_STATUS_NOT_SPECIFIED = "Not Specified";
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_MAJOR_ISSUES_VALUE = "Major Issues";
 	private static final String CONPRO_STATUS_MINOR_ISSUES_VALUE = "Minor Issues";
