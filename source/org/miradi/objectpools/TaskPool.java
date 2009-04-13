@@ -64,15 +64,24 @@ public class TaskPool extends EAMNormalObjectPool
 
 	public Vector<Task> getAllActivities()
 	{
-		Vector<Task> allActivities = new Vector();
+		return getTasks(Task.ACTIVITY_NAME);
+	}
+	
+	public Vector<Task> getAllMethods()
+	{
+		return getTasks(Task.METHOD_NAME);
+	}
+	
+	private Vector<Task> getTasks(String taskTypeName)
+	{
+		Vector<Task> allTypedTasks = new Vector();
 		Task[] allTasks = getAllTasks();
 		for (int index = 0; index < allTasks.length; ++index)
 		{	
-			if (allTasks[index].isActivity())
-				allActivities.add(allTasks[index]);
+			if (taskTypeName.equals(allTasks[index].getTypeName()))
+				allTypedTasks.add(allTasks[index]);
 		}
 		
-		return allActivities;
+		return allTypedTasks;
 	}
-	
 }
