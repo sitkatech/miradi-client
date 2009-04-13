@@ -32,7 +32,7 @@ public class StatusConfidenceQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStatusConfidences()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", EAM.text("Not Specified")),
+			new ChoiceItem(NOT_SPECIFIED, EAM.text("Not Specified")),
 			new ChoiceItem(ROUGH_GUESS_CODE, EAM.text("Rough Guess")),
 			new ChoiceItem(EXPERT_KNOWLEDGE_CODE, EAM.text("Expert Knowledge")),
 			new ChoiceItem(RAPID_ASSESSMENT_CODE, EAM.text("Rapid Assessment")),
@@ -40,6 +40,7 @@ public class StatusConfidenceQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	public static final String NOT_SPECIFIED = "";
 	public static final String ROUGH_GUESS_CODE = "RoughGuess";
 	public static final String EXPERT_KNOWLEDGE_CODE = "ExpertKnowledge";
 	public static final String RAPID_ASSESSMENT_CODE = "RapidAssessment";
