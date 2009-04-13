@@ -33,7 +33,7 @@ public class ProgressReportStatusQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
+				new ChoiceItem(NOT_SPECIFIED, EAM.text("Not Specified"), Color.WHITE),
 				new ChoiceItem(PLANNED_CODE, EAM.text("Scheduled for future implementation"), Color.WHITE),
 				new ChoiceItem(MAJOR_ISSUES_CODE, EAM.text("Major Issues - Ongoing, major issues that need attention"), COLOR_ALERT),
 				new ChoiceItem(MINOR_ISSUES_CODE, EAM.text("Minor Issues - Ongoing, has minor issues that need attention"), COLOR_CAUTION),
@@ -43,6 +43,7 @@ public class ProgressReportStatusQuestion extends StaticChoiceQuestion
 		};
 	}
 	
+	public static final	String NOT_SPECIFIED = "";
 	public static final String PLANNED_CODE = "Planned";
 	public static final String MAJOR_ISSUES_CODE = "MajorIssues";
 	public static final String MINOR_ISSUES_CODE = "MinorIssues";
