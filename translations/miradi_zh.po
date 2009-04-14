@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 15:02-0500\n"
+"POT-Creation-Date: 2009-04-14 17:00-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -427,11 +427,11 @@ msgstr "野生动物保护协会（WCS） \t\t"
 msgid "Label|RARE"
 msgstr "RARE"
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:51
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:52
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:91
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:93
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "大自然保护协会 \t\t"
@@ -8145,8 +8145,11 @@ msgstr "URL \t\t"
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
 msgstr "ConPro项目编号 \t\t"
 
-msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
-msgstr "组织机构优先选项 \t\t"
+msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority (legacy)"
+msgstr ""
+
+msgid "FieldLabel|40.OrganizationalPriorityChoice|Organizational Priority"
+msgstr ""
 
 #, fuzzy
 msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
@@ -29211,6 +29214,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
+#~ msgstr "组织机构优先选项 \t\t"
 
 #~ msgid "FieldLabel|45.PercentCompleteNotes|Notes"
 #~ msgstr "注解 "
