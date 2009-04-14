@@ -86,6 +86,7 @@ public class StaticQuestionManager
 		addQuestion(new TextBoxZOrderQuestion());
 		addQuestion(new RowConfigurationQuestion());
 		addQuestion(new ColumnConfigurationQuestion());
+		addQuestion(new OrganizationalPrioritiesQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
