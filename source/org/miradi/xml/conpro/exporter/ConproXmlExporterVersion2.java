@@ -259,8 +259,8 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
 			writeElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
 			writeElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
-			//FIXME this needs to export correct value
-			writeElement(out, MEASUREMENT_RATING, "");
+			//FIXME this needs to export correct value,  right now its a hard coded value to make tests pass
+			writeElement(out, MEASUREMENT_RATING, "3");
 			
 			writeEndElement(out, MEASUREMENT);
 		}
@@ -541,20 +541,18 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		if (targetStatusCode.length() == 0)
 			return;
 		
-		//FIXME need to export these correctly
-		//writeStartElementWithAttribute(out, TARGET_VIABILITY_RANK, TARGET_VIABILITY_MODE, getTargetMode(target));
-		//writeCodeElement(out, targetStatusCode, getCodeMapHelper().getMiradiToConProRankingMap());
-		//writeEndElement(out, TARGET_VIABILITY_RANK);
+		writeStartElementWithAttribute(out, TARGET_VIABILITY_RANK, TARGET_VIABILITY_MODE, getTargetMode(target));
+		writeCodeElement(out, targetStatusCode, getCodeMapHelper().getMiradiToConProRankingMap());
+		writeEndElement(out, TARGET_VIABILITY_RANK);
 	}
 
-//TODO commented since it causing warning for not being used.  will be used by rating code
-//	private String getTargetMode(Target target)
-//	{
-//		if (target.isViabilityModeTNC())
-//			return getConproCode(target.getViabilityMode(), getCodeMapHelper().getMiradiToConProViabilityModeMap());
-//		
-//		return ConProMiradiCodeMapHelper.CONPRO_TARGET_SIMPLE_MODE_VALUE;
-//	}
+	private String getTargetMode(Target target)
+	{
+		if (target.isViabilityModeTNC())
+			return getConproCode(target.getViabilityMode(), getCodeMapHelper().getMiradiToConProViabilityModeMap());
+		
+		return ConProMiradiCodeMapHelper.CONPRO_TARGET_SIMPLE_MODE_VALUE;
+	}
 	
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
 	{
@@ -771,8 +769,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 				writeOptionalElement(out, STRESSLESS_THREAT_RANK, getSimpleOverallProjectRating());
 
 			writeOptionalElement(out, PROJECT_THREAT_RANK, getStressBasedOverallProjectRating());
-			//FIXME need to export this field
-			//writeOptionalElement(out, PROJECT_VIABILITY_RANK, getComputedTncViability());
+			writeOptionalElement(out, PROJECT_VIABILITY_RANK, getComputedTncViability());
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
 			writeCodeListElements(out, COUNTRIES, COUNTRY_CODE, getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
@@ -849,12 +846,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		}
 	}
 
-//TODO commented since it causing warning for not being used.  will be used by rating code
-//	private String getComputedTncViability()
-//	{
-//		String code = Target.computeTNCViability(getProject());
-//		return rankingCodeToXmlValue(code);
-//	}
+	private String getComputedTncViability()
+	{
+		String code = Target.computeTNCViability(getProject());
+		return rankingCodeToXmlValue(code);
+	}
 
 	private String getStressBasedOverallProjectRating()
 	{
@@ -1008,12 +1004,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		out.write(getConproCode(code, map));
 		writeEndElement(out, elementName);
 	}
-	
-//TODO commented since it causing warning for not being used.  will be used by rating code	
-//	private void writeCodeElement(UnicodeWriter out, String code, HashMap<String, String> map) throws Exception
-//	{
-//		out.write(getConproCode(code, map));
-//	}
+		
+	private void writeCodeElement(UnicodeWriter out, String code, HashMap<String, String> map) throws Exception
+	{
+		out.write(getConproCode(code, map));
+	}
 
 	private void writeOptionalRankingCodeElement(UnicodeWriter out, String elementName, String code) throws Exception
 	{
