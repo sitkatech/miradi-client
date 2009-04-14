@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 10:23-0500\n"
+"POT-Creation-Date: 2009-04-14 15:02-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -903,7 +903,8 @@ msgstr "Compartir actividad"
 msgid "Edit Methods"
 msgstr "Editar métodos"
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:174
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:194
 msgid "Exported file does not validate."
 msgstr "No se valida el archivo exportado."
 
@@ -8448,8 +8449,8 @@ msgstr "Fecha"
 msgid "FieldLabel|45.PercentComplete|Percent Complete"
 msgstr "Porcentaje completo"
 
-msgid "FieldLabel|45.PercentCompleteNotes|Notes"
-msgstr "Notas"
+msgid "FieldLabel|45.PercentCompleteNotes|Details"
+msgstr ""
 
 msgid "FieldLabel|46.Label|Name"
 msgstr "Nombre"
@@ -32764,6 +32765,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FieldLabel|45.PercentCompleteNotes|Notes"
+#~ msgstr "Notas"
 
 #~ msgid "Flat"
 #~ msgstr "Plano "
