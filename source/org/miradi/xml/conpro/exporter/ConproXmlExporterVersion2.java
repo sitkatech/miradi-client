@@ -212,7 +212,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			
 			writeLabelElement(out, METHOD_NAME, method, Task.TAG_LABEL);
 			writeElement(out, METHOD_DETAIL, method, Task.TAG_DETAILS);
-			writeElement(out, METHOD_ANNUAL_COST, getAnnualCost(method));
+			writeAnnualCost(out, method);
 			writeElement(out, METHOD_COMMENT, method, Task.TAG_COMMENT);
 			writeEndElement(out, METHOD);
 		}
@@ -220,12 +220,12 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeEndElement(out, METHODS);
 	}
 
-	private String getAnnualCost(Task task) throws Exception
+	private void writeAnnualCost(UnicodeWriter out, Task task) throws Exception
 	{
 		if (task.isBudgetOverrideMode() && task.isEmptyBudgetCostOverride())
-			return ""; 
+			return; 
 	
-		return Double.toString(task.getTotalBudgetCost());
+		writeElement(out, METHOD_ANNUAL_COST, Double.toString(task.getTotalBudgetCost()));
 	}
 
 	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception
