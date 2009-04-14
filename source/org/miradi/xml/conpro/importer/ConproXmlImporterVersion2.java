@@ -359,7 +359,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importCodeField(measurementNode, MEASUREMENT_STATUS_CONFIDENCE, measurementRef, Measurement.TAG_STATUS_CONFIDENCE, getCodeMapHelper().getConProToMiradiStatusConfidenceMap());
 			importCodeField(measurementNode, MEASUREMENT_TREND, measurementRef, Measurement.TAG_TREND, getCodeMapHelper().geConProToMiradiTrendMap());
 			//FIXME this needs to export correct value
-			//importField(measurementNode, MEASUREMENT_RATING, measurementRef, Measurement.TAG_STATUS);
+			importField(measurementNode, MEASUREMENT_RATING, measurementRef, Measurement.TAG_STATUS);
 
 
 			measurementRefs.add(measurementRef);
