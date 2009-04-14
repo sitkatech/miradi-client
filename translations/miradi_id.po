@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 10:23-0500\n"
+"POT-Creation-Date: 2009-04-14 15:02-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -907,7 +907,8 @@ msgstr "Berbagi Kegiatan "
 msgid "Edit Methods"
 msgstr "Edit Metode "
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:174
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:194
 msgid "Exported file does not validate."
 msgstr "Berkas yang diekspor tidak bisa divalidasi. "
 
@@ -8420,8 +8421,8 @@ msgstr "Tanggal"
 msgid "FieldLabel|45.PercentComplete|Percent Complete"
 msgstr "Persentase yang Selesai "
 
-msgid "FieldLabel|45.PercentCompleteNotes|Notes"
-msgstr "Catatan "
+msgid "FieldLabel|45.PercentCompleteNotes|Details"
+msgstr ""
 
 msgid "FieldLabel|46.Label|Name"
 msgstr "Nama"
@@ -32608,6 +32609,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|45.PercentCompleteNotes|Notes"
+#~ msgstr "Catatan "
 
 #~ msgid "Flat"
 #~ msgstr "Datar"

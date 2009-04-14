@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 10:23-0500\n"
+"POT-Creation-Date: 2009-04-14 15:02-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -873,7 +873,8 @@ msgstr "共享活动 \t\t"
 msgid "Edit Methods"
 msgstr "编辑方法 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:166
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:174
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:194
 msgid "Exported file does not validate."
 msgstr "导出的文件不正确。 \t\t"
 
@@ -8230,8 +8231,8 @@ msgstr "日期 \t\t"
 msgid "FieldLabel|45.PercentComplete|Percent Complete"
 msgstr "完成百分比 "
 
-msgid "FieldLabel|45.PercentCompleteNotes|Notes"
-msgstr "注解 "
+msgid "FieldLabel|45.PercentCompleteNotes|Details"
+msgstr ""
 
 msgid "FieldLabel|46.Label|Name"
 msgstr "名称"
@@ -29210,6 +29211,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|45.PercentCompleteNotes|Notes"
+#~ msgstr "注解 "
 
 #~ msgid "Flat"
 #~ msgstr "不变"
