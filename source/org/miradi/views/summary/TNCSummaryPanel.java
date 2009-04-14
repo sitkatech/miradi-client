@@ -51,7 +51,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addRadioButtonFieldWithCustomLabel(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, EAM.text("Share Outside of TNC?"));
 		
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
-		addField(createStringField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITY));
+		addField(createStringField(TncProjectData.getObjectType(), TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY));
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 
