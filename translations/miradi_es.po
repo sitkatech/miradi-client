@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 08:25-0500\n"
+"POT-Creation-Date: 2009-04-14 10:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2490,7 +2490,7 @@ msgstr "Estadodo actual"
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:294
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:293
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "Objeto "
@@ -6177,7 +6177,7 @@ msgid ""
 msgstr "Seleccionar las estrategias y actividades relevantes para esta meta. "
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:319
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:318
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Amenaza "
@@ -6188,29 +6188,29 @@ msgid "File to import does not validate."
 msgstr "El archivo para importar no se valida."
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1038
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1086
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1085
 msgid "Placeholder - From ConPro"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1042
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1090
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1089
 #, fuzzy
 msgid "Objective Holder"
 msgstr "Objective Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1048
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1096
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1095
 #, fuzzy
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1145
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1193
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1192
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1146
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1194
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1193
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
