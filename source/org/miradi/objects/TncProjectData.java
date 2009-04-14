@@ -21,8 +21,10 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TncProjectData extends BaseObject
@@ -63,6 +65,16 @@ public class TncProjectData extends BaseObject
 		return false;
 	}
 	
+	public static TncProjectData find(ObjectManager objectManager, ORef tncProjectDataRef)
+	{
+		return (TncProjectData) objectManager.findObject(tncProjectDataRef);
+	}
+	
+	public static TncProjectData find(Project project, ORef tncProjectDataRef)
+	{
+		return find(project.getObjectManager(), tncProjectDataRef);
+	}
+		
 	void clear()
 	{
 		super.clear();

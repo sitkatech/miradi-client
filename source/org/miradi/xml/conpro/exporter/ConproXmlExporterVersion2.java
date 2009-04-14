@@ -802,7 +802,9 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		writeStartElement(out, ORGANIZATIONAL_PRIORITIES);
 		//FIXME, writing fake data,  needs to be replaced by real data
-		writeElement(out, PRIORITY, "FAKE_DATA");	
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
+		writeElement(out, PRIORITY, tncProjectData, TncProjectData.TAG_ORGANIZATIONAL_PRIORITY);	
 		writeEndElement(out, ORGANIZATIONAL_PRIORITIES);
 	}
 
