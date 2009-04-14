@@ -502,7 +502,7 @@ methods.element =
             attribute id { vocabulary_id }
             & element cp:name { text }
             & element cp:detail { text }
-            & element cp:annual_cost { text }?
+            & element cp:annual_cost { xsd:decimal }?
             & element cp:comment { text }?
         }*
     }
@@ -511,9 +511,9 @@ statuses.element =
     element cp:statuses {
         element cp:status {
             attribute sequence { vocabulary_sequence }
-            & element cp:date { vocabulary_date }
-            & element cp:measure { vocabulary_progress }
-            & element cp:comment { text }
+            & element cp:date { vocabulary_date }?
+            & element cp:measure { vocabulary_progress }?
+            & element cp:comment { text }?
         }*
     }
 #
