@@ -237,9 +237,9 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeStartElementWithAttribute(out, PROGRESS_REPORT, SEQUENCE, refIndex);
 			
 			String progressStatusCode = progressReport.getData(ProgressReport.TAG_PROGRESS_STATUS);
-			writeElement(out, PROGRESS_REPORT_STATUS, statusCodeToXmlValue(progressStatusCode));
-			writeElement(out, PROGRESS_REPORT_DATE, progressReport.getDateAsString());
-			writeElement(out, PROGRESS_REPORT_COMMENT, progressReport.getData(ProgressReport.TAG_DETAILS));
+			writeOptionalElement(out, PROGRESS_REPORT_STATUS, statusCodeToXmlValue(progressStatusCode));
+			writeOptionalElement(out, PROGRESS_REPORT_DATE, progressReport.getDateAsString());
+			writeOptionalElement(out, PROGRESS_REPORT_COMMENT, progressReport.getData(ProgressReport.TAG_DETAILS));
 			
 			writeEndElement(out, PROGRESS_REPORT);
 		}
