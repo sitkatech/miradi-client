@@ -439,7 +439,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importField(viabilityAssessmentNode, KEA_AND_INDICATOR_COMMENT, indicatorRef, Indicator.TAG_DETAIL);
 			importField(viabilityAssessmentNode, INDICATOR_RATING_COMMENT, indicatorRef, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
 			importField(viabilityAssessmentNode, DESIRED_RATING_COMMENT, indicatorRef, Indicator.TAG_FUTURE_STATUS_COMMENT);
-			//importField(viabilityAssessmentNode, VIABILITY_RECORD_COMMENT, keaRef, KeyEcologicalAttribute.TAG_DESCRIPTION);
 		}
 	}
 
