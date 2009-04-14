@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 15:02-0500\n"
+"POT-Creation-Date: 2009-04-14 17:00-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -449,11 +449,11 @@ msgstr "WCS "
 msgid "Label|RARE"
 msgstr "RARE "
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:51
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:52
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:91
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:93
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "TNC "
@@ -8336,8 +8336,11 @@ msgstr "URL"
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
 msgstr "Nomor Proyek ConPro "
 
-msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
-msgstr "Prioritas Organisasi "
+msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority (legacy)"
+msgstr ""
+
+msgid "FieldLabel|40.OrganizationalPriorityChoice|Organizational Priority"
+msgstr ""
 
 #, fuzzy
 msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
@@ -32609,6 +32612,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
+#~ msgstr "Prioritas Organisasi "
 
 #~ msgid "FieldLabel|45.PercentCompleteNotes|Notes"
 #~ msgstr "Catatan "

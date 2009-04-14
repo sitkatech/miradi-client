@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-14 15:02-0500\n"
+"POT-Creation-Date: 2009-04-14 17:00-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -391,11 +391,11 @@ msgstr ""
 msgid "Label|RARE"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:51
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:52
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:91
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:93
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr ""
@@ -7793,7 +7793,10 @@ msgstr ""
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
 msgstr ""
 
-msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
+msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority (legacy)"
+msgstr ""
+
+msgid "FieldLabel|40.OrganizationalPriorityChoice|Organizational Priority"
 msgstr ""
 
 msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
