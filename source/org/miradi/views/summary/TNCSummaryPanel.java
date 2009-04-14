@@ -30,6 +30,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.OrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
@@ -51,7 +52,8 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addRadioButtonFieldWithCustomLabel(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, EAM.text("Share Outside of TNC?"));
 		
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
-		addField(createStringField(TncProjectData.getObjectType(), TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY));
+		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY));
+		addField(createChoiceField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITY, getProject().getQuestion(OrganizationalPrioritiesQuestion.class)));
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 

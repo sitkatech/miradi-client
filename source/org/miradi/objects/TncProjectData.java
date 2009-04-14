@@ -20,11 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.OrganizationalPrioritiesQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TncProjectData extends BaseObject
@@ -79,9 +81,11 @@ public class TncProjectData extends BaseObject
 	{
 		super.clear();
 		
-		organizationalPriority = new StringData(LEGACY_TAG_ORGANIZATIONAL_PRIORITY);
+		legacyOrganizationalPriority = new StringData(LEGACY_TAG_ORGANIZATIONAL_PRIORITY);
+		organizationalPriority = new ChoiceData(TAG_ORGANIZATIONAL_PRIORITY, getProject().getQuestion(OrganizationalPrioritiesQuestion.class));
 		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
 		
+		addField(legacyOrganizationalPriority);
 		addField(organizationalPriority);
 		addField(projectSharingCode);
 	}
@@ -89,9 +93,11 @@ public class TncProjectData extends BaseObject
 	public static final String OBJECT_NAME = "TncProjectData";
 
 	public final static String LEGACY_TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriority";
+	public final static String TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriorityChoice";
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
 	
-	public StringData organizationalPriority;
+	public StringData legacyOrganizationalPriority;
 	public StringData projectSharingCode;
+	public ChoiceData organizationalPriority;
 
 }
