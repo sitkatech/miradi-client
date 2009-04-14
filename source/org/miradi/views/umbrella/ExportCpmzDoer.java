@@ -44,7 +44,9 @@ import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidatorVersion2;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
+import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion2;
 
 public class ExportCpmzDoer extends AbstractFileSaverDoer
 {
@@ -156,6 +158,32 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 
 	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
 	{
+		exportUsingOriginalExporter(zipOut);
+		exportUsingVersion2Exporter(zipOut);
+	}
+	
+	private void exportUsingVersion2Exporter(ZipOutputStream zipOut) throws Exception
+	{
+		byte[] projectXmlInBytes = exportVersion2ProjectXmlToBytes();
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
+		try
+		{
+			if (!new ConProMiradiXmlValidatorVersion2().isValid(inputStream))
+			{
+				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
+				throw new ValidationException(EAM.text("Exported file does not validate."));
+			}
+
+			writeContent(zipOut, "projectVersion2.xml", projectXmlInBytes);
+		}
+		finally
+		{
+			inputStream.close();
+		}
+	}
+
+	private void exportUsingOriginalExporter(ZipOutputStream zipOut) throws Exception
+	{
 		byte[] projectXmlInBytes = exportProjectXmlToBytes();
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
 		try
@@ -180,6 +208,22 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		try
 		{
 			new ConproXmlExporter(getProject()).exportProject(writer);
+			writer.close();
+		}
+		finally
+		{
+			writer.close();
+		}
+		
+		return writer.toString().getBytes("UTF-8");
+	}
+	
+	private byte[] exportVersion2ProjectXmlToBytes() throws IOException, Exception, UnsupportedEncodingException
+	{
+		UnicodeStringWriter writer = UnicodeStringWriter.create();
+		try
+		{
+			new ConproXmlExporterVersion2(getProject()).exportProject(writer);
 			writer.close();
 		}
 		finally
