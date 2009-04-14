@@ -259,8 +259,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
 			writeElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
 			writeElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
-			//FIXME this needs to export correct value,  right now its a hard coded value to make tests pass
-			writeElement(out, MEASUREMENT_RATING, "3");
+			writeElement(out, MEASUREMENT_RATING, rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS)));
 			
 			writeEndElement(out, MEASUREMENT);
 		}
@@ -623,8 +622,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 		ThreatTargetChainObject threatTargetChainObejct = new ThreatTargetChainObject(getProject());
 		ORefSet upstreamThreats = threatTargetChainObejct.getUpstreamThreatRefsFromTarget(target);
-		for(ORef threatRef : upstreamThreats)
+		ORefList sortedUpstreamThreatRefs = new ORefList(upstreamThreats);
+		sortedUpstreamThreatRefs.sort();
+		for (int index = 0; index < sortedUpstreamThreatRefs.size(); ++index)
 		{
+			ORef threatRef = sortedUpstreamThreatRefs.get(index);
 			writeSimpleTargetLinkRatings(out, threatRef, target.getRef());
 		}
 		

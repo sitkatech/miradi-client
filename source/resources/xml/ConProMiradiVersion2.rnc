@@ -492,7 +492,7 @@ measures.element =
             & element cp:date { vocabulary_date }
             & element cp:source { vocabulary_source_measures }
             & element cp:trend { vocabulary_trend }
-            & element cp:measure { text }
+            & element cp:rating { vocabulary_rating_vggfp }
         }*
     }
 #
