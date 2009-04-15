@@ -40,6 +40,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
+import org.miradi.exceptions.UnsupportedOldVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -150,6 +151,11 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		if (isUnsupportedNewVersion(nameSpaceUri))
 		{
 			throw new UnsupportedNewVersionSchemaException();
+		}
+		
+		if (isUnsupportedOldVersion(nameSpaceUri))
+		{
+			throw new UnsupportedOldVersionSchemaException();
 		}
 		
 		projectAsInputStream.seek(0);			
@@ -1009,6 +1015,11 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	private boolean isUnsupportedNewVersion(String nameSpaceUri) throws Exception
 	{
 		return getSchemaVersionToImport(nameSpaceUri).compareTo(NAME_SPACE_VERSION) == 0;
+	}
+	
+	private boolean isUnsupportedOldVersion(String nameSpaceUri) throws Exception
+	{
+		return getSchemaVersionToImport(nameSpaceUri).compareTo(NAME_SPACE_VERSION) < 0;
 	}
 
 	private boolean isSameNameSpace(String nameSpaceUri) throws Exception
