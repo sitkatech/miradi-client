@@ -435,7 +435,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
 			
 			importCodeField(viabilityAssessmentNode, DESIRED_VIABILITY_RATING, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, getCodeMapHelper().getConProToMiradiRankingMap());
-			importMeasurementData(viabilityAssessmentNode, indicatorRef);
 			importField(viabilityAssessmentNode, DESIRED_RATING_DATE, indicatorRef, Indicator.TAG_FUTURE_STATUS_DATE);
 			importField(viabilityAssessmentNode, KEA_AND_INDICATOR_COMMENT, indicatorRef, Indicator.TAG_DETAIL);
 			importField(viabilityAssessmentNode, INDICATOR_RATING_COMMENT, indicatorRef, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
@@ -443,32 +442,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		}
 	}
 
-	//FIXME in version we no longer import these fields
-	private void importMeasurementData(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
-	{
-		//boolean currentViabilityRatingIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_VIABILITY_RATING);
-		//boolean currentViabilityRateDateIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_RATING_DATE);
-		//boolean currentConfidenceRatingIsEmpty = isEmpty(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING);
-		//boolean currentRatingCommentIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_RATING_COMMENT);
-		//boolean currentIndicatorStatusViabilityIsEmpty = isEmpty(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY);
-		//if (currentViabilityRatingIsEmpty && currentViabilityRateDateIsEmpty && currentConfidenceRatingIsEmpty && currentRatingCommentIsEmpty && currentIndicatorStatusViabilityIsEmpty)
-		//	return;
-		
-		//ORef measurementRef = getProject().createObject(Measurement.getObjectType());
-		//setRefListData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurementRef));
-		
-		//importField(viabilityAssessmentNode, CURRENT_INDICATOR_STATUS_VIABILITY, measurementRef, Measurement.TAG_SUMMARY);
-		//importCodeField(viabilityAssessmentNode, CURRENT_VIABILITY_RATING, measurementRef, Measurement.TAG_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
-		//importField(viabilityAssessmentNode, CURRENT_RATING_DATE, measurementRef, Measurement.TAG_DATE);
-		//importCodeField(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING, measurementRef, Measurement.TAG_STATUS_CONFIDENCE, getCodeMapHelper().getConProToMiradiStatusConfidenceMap());
-		//importField(viabilityAssessmentNode, CURRENT_RATING_COMMENT, measurementRef, Measurement.TAG_COMMENT);		
-	}
-
-//	private boolean isEmpty(Node node, String element) throws Exception
-//	{
-//		return getNodeContent(node, element).length() == 0;
-//	}
-	
 	private void importIndicatorThresholds(Node viabilityAssessmentNode, ORef indicatorRef) throws Exception
 	{
 		StringMap thresholds = new StringMap();
@@ -857,11 +830,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		
 		setData(ref, tag, codes.toString());
 	}
-	
-//	private void setRefListData(ORef ref, String tag, ORefList refList) throws Exception
-//	{
-//		setData(ref, tag, refList.toString());
-//	}
 	
 	private void setIdListFromRefListData(ORef ref, String tag, ORefList refList, int type) throws Exception
 	{
