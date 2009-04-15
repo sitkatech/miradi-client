@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 10:35-0500\n"
+"POT-Creation-Date: 2009-04-15 14:08-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -772,10 +772,6 @@ msgstr "出错，请尝试用不同的文件名保存。 \t\t"
 msgid "Title|About Miradi"
 msgstr "关于Miradi \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/ImportCpmzDoer.java:234
-msgid "Import"
-msgstr "导入 \t\t"
-
 #: miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 #: miradi/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:96
 msgid "Delete..."
@@ -854,6 +850,10 @@ msgstr "视图… \t\t"
 #: miradi/source/org/miradi/views/umbrella/doers/AbstractDeleteProgressPercentDoer.java:47
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "您是否确定要删除该进展报告？ \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:236
+msgid "Import"
+msgstr "导入 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:55
 msgid "Current page was exported as RTF."
