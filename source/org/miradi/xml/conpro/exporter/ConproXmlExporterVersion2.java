@@ -255,7 +255,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			Measurement measurement = Measurement.find(getProject(), measurementRefs.get(refIndex));
 			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, refIndex);
 			
-			writeOptionalElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
+			writeElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
 			writeOptionalElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
 			writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
 			writeOptionalElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
