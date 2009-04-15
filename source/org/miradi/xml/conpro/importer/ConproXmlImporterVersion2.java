@@ -70,6 +70,7 @@ import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -281,7 +282,27 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importRelevantIndicators(objectiveNode, objectiveRef);
 			importField(objectiveNode, NAME, objectiveRef, Objective.TAG_LABEL);
 			importField(objectiveNode, COMMENT, objectiveRef, Objective.TAG_COMMENTS);
+			importProgressPercents(objectiveNode, objectiveRef);
 		}
+	}
+
+	private void importProgressPercents(Node objectiveNode, ORef objectiveRef) throws Exception
+	{
+		ORefList progressPercentRefs = new ORefList();
+		NodeList progressPercentNodeList = getNodes(objectiveNode, PROGRESS_PERCENT_REPORTS, PROGRESS_PERCENT_REPORT);
+		for (int nodeIndex = 0; nodeIndex < progressPercentNodeList.getLength(); ++nodeIndex) 
+		{
+			Node progressPercentNode = progressPercentNodeList.item(nodeIndex);			
+			ORef progressPercentRef = getProject().createObject(ProgressPercent.getObjectType());
+			
+			importField(progressPercentNode, PROGRESS_PERCENT_COMPLETE, progressPercentRef, ProgressPercent.TAG_PERCENT_COMPLETE);
+			importField(progressPercentNode, PROGRESS_PERCENT_DATE, progressPercentRef, ProgressPercent.TAG_DATE);
+			importField(progressPercentNode, PROGRESS_PERCENT_COMMENT, progressPercentRef, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+
+			progressPercentRefs.add(progressPercentRef);
+		}
+			
+		setData(objectiveRef, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
 	}
 
 	private void importRelevantIndicators(Node objectiveNode, ORef objectiveRef) throws Exception

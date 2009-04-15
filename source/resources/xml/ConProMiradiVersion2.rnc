@@ -396,8 +396,8 @@ percent_complete.element =
         element cp:percent_complete_measure {
             # Sequence to order the rows for when there is no date.
             attribute sequence { vocabulary_sequence }
-            & element cp:measure { xsd:decimal }
-            & element cp:date { vocabulary_date }
+            & element cp:measure { xsd:decimal }?
+            & element cp:date { vocabulary_date }?
             & element cp:comment { text }?
         }*
     }
