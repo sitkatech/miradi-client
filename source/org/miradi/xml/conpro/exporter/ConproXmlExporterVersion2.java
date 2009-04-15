@@ -800,10 +800,12 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private void writeOrganizationPriorities(UnicodeWriter out) throws Exception
 	{
 		writeStartElement(out, ORGANIZATIONAL_PRIORITIES);
-		//FIXME, writing fake data,  needs to be replaced by real data
+		
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
-		writeElement(out, PRIORITY, tncProjectData, TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY);	
+		String organizationalPrioritiesCode = tncProjectData.getData(TncProjectData.TAG_ORGANIZATIONAL_PRIORITY);
+		writeElement(out, ORGANIZATIONAL_PRIORITY,  organizationalPrioritiesToXmlValue(organizationalPrioritiesCode));
+		
 		writeEndElement(out, ORGANIZATIONAL_PRIORITIES);
 	}
 
@@ -1055,6 +1057,12 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private String ratingCodeToXmlValue(int code)
 	{
 		return ratingCodeToXmlValue(Integer.toString(code));
+	}
+	
+	private String organizationalPrioritiesToXmlValue(String code)
+	{
+		HashMap<String, String> organizationalPrioritiesMap = getCodeMapHelper().getMiradiToConProOrganizationalPrioritiesMap();
+		return getCodeMapHelper().getSafeXmlCode(organizationalPrioritiesMap, code);
 	}
 	
 	private String statusConfidenceToXmlValue(String code)

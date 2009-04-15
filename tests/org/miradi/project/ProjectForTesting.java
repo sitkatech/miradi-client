@@ -65,12 +65,14 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.OrganizationalPrioritiesQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -134,6 +136,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
 		
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
+		
+		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectData.getObjectType());
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITY, OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
 	}
 	
 	private String createConproXenodata() throws Exception

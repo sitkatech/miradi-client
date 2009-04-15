@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.OrganizationalPrioritiesQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -98,6 +99,15 @@ public class ConProMiradiCodeMapHelper
 		trendMap.put(TrendQuestion.FLAT_CODE, "Flat");
 		trendMap.put(TrendQuestion.MILD_DECREASE_CODE, "Mild Decrease");
 		trendMap.put(TrendQuestion.STRONG_DECREASE_CODE, "Strong Increase");
+		
+		organizationalPrioritiesMap = new HashMap<String, String>();
+		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.NOT_SPECIFIED_CODE, "Not Specified");
+		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE, "Capital Campaign");
+		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.REGIONAL_PRIORITY_CODE, "Regional Priority");
+		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_CLIMATE_CODE, "CSD - Climate");
+		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_MARINE_CODE, "CSD - Marine");
+		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_FRESHWATER_CODE, "CSD - Freshwater");
+		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE, "CSD - Protected Areas");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -134,15 +144,20 @@ public class ConProMiradiCodeMapHelper
 		return reverseMap(statusConfidenceMap);
 	}
 	
-	public HashMap<String, String> geConProToMiradiIndicatorRatingSourceMap()
+	public HashMap<String, String> getConProToMiradiIndicatorRatingSourceMap()
 	{
 		return reverseMap(indicatorRatingSourceMap);
 	}
 	
-	public HashMap<String, String> geConProToMiradiTrendMap()
+	public HashMap<String, String> getConProToMiradiTrendMap()
 	{
 		return reverseMap(trendMap);
-	} 
+	}
+	
+	public HashMap<String, String> getConProToMiradiOrganizationalPrioritiesMap()
+	{
+		return reverseMap(organizationalPrioritiesMap);
+	}
 	
 	public HashMap<String, String> getConProToMiradiProgressStatusMap()
 	{
@@ -222,6 +237,11 @@ public class ConProMiradiCodeMapHelper
 		return trendMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProOrganizationalPrioritiesMap()
+	{
+		return organizationalPrioritiesMap;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
@@ -232,6 +252,7 @@ public class ConProMiradiCodeMapHelper
 	private HashMap<String, String> tncProjectSharingMap;
 	private HashMap<String, String> indicatorRatingSourceMap;
 	private HashMap<String, String> trendMap;
+	private HashMap<String, String> organizationalPrioritiesMap;
 	
 	private static final String CONPRO_STATUS_NOT_SPECIFIED = "Not Specified";
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
