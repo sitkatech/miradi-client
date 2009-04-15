@@ -243,7 +243,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 	}
 
 	public static final String PROJECT_XML_FILE_NAME = "project.xml";
-	public static final String PROJECT_XML_FILE_NAME_VERSION_2 = "projectVersion2.xml";
+	public static final String PROJECT_XML_FILE_NAME_VERSION_2 = "projectv2.xml";
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
 	public static final String CM_IMAGE_PREFIX = "CM";
