@@ -234,7 +234,7 @@ stresses.element =
         ]
         element cp:stress {
             attribute sequence { vocabulary_sequence }
-           	& element cp:name { text }?
+           	& element cp:name { text }
             & element cp:stress_severity { vocabulary_ranking_vhhml }?
             & element cp:stress_scope { vocabulary_ranking_vhhml }?
 			& element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
@@ -488,7 +488,7 @@ measures.element =
     element cp:measures {
         element cp:measure {
             attribute sequence { vocabulary_sequence }
-            & element cp:measurement { text }?
+            & element cp:measurement { text }
             & element cp:date { vocabulary_date }?
             & element cp:source { vocabulary_source_measures }?
             & element cp:trend { vocabulary_trend }?
