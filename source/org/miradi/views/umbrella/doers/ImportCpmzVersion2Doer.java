@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella;
+package org.miradi.views.umbrella.doers;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -46,9 +46,11 @@ import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.diagram.DiagramView;
-import org.miradi.xml.conpro.importer.ConProXmlImporter;
+import org.miradi.views.umbrella.ExportCpmzDoer;
+import org.miradi.views.umbrella.ImportProjectDoer;
+import org.miradi.xml.conpro.importer.ConproXmlImporterVersion2;
 
-public class ImportCpmzDoer extends ImportProjectDoer
+public class ImportCpmzVersion2Doer extends ImportProjectDoer
 {
 	@Override
 	public void doIt() throws CommandFailedException
@@ -134,7 +136,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
-			new ConProXmlImporter(projectToFill).importConProjectNumbers(projectAsInputStream);
+			new ConproXmlImporterVersion2(projectToFill).importConProjectNumbers(projectAsInputStream);
 		}
 		finally
 		{
@@ -147,7 +149,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
-			ConProXmlImporter conProXmlImporter = new ConProXmlImporter(projectToFill);
+			ConproXmlImporterVersion2 conProXmlImporter = new ConproXmlImporterVersion2(projectToFill);
 			conProXmlImporter.importConProProject(projectAsInputStream);
 			ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
 			splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
