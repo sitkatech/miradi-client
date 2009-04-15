@@ -255,11 +255,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			Measurement measurement = Measurement.find(getProject(), measurementRefs.get(refIndex));
 			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, refIndex);
 			
-			writeElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
-			writeElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
-			writeElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
-			writeElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
-			writeElement(out, MEASUREMENT_RATING, rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS)));
+			writeOptionalElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
+			writeOptionalElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
+			writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
+			writeOptionalElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
+			writeOptionalElement(out, MEASUREMENT_RATING, rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS)));
 			
 			writeEndElement(out, MEASUREMENT);
 		}
@@ -734,8 +734,8 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeLabelElement(out, NAME, stress, Stress.TAG_LABEL);
 			writeOptionalRatingCodeElement(out, STRESS_SEVERITY, stress.getData(Stress.TAG_SEVERITY));
 			writeOptionalRatingCodeElement(out, STRESS_SCOPE, stress.getData(Stress.TAG_SCOPE));
-			writeOptionalElement(out, STRESS_OVERRIDE_RANK, stress.getData(Stress.TAG_DETAIL));
 			writeOptionalRatingCodeElement(out, STRESS_TO_TARGET_RANK, stress.getCalculatedStressRating());
+			writeOptionalElement(out, STRESS_OVERRIDE_RANK, stress.getData(Stress.TAG_DETAIL));
 			writeThreatStressRatings(out, stress);
 			
 			writeEndElement(out, STRESS);
