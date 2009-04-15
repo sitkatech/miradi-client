@@ -1,6 +1,6 @@
-# $LastChangedBy$
-# $LastChangedDate$
-# $LastChangedRevision$
+# $LastChangedBy: nima_ansari@hotmail.com $ 
+# $LastChangedDate: 2009-04-14 11:05:44 -0400 (Tue, 14 Apr 2009) $
+# $LastChangedRevision: 33 $ 
 #
 
 namespace cp = "http://services.tnc.org/schema/conservation-project/0.4-working"
@@ -145,7 +145,7 @@ ous.element =
 #
 organizational_priorities.element =
     element cp:organizational_priorities {
-        element cp:priority { text }
+        element cp:priority { vocabulary_organizational_priorities }
     }
 #
 project_types.element =
@@ -526,7 +526,8 @@ vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:nonNegativeInteger
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
 vocabulary_organizational_priorities =
-    "Capital Campaign"
+	  "Not Specified"
+    | "Capital Campaign"
     | "Regional Priority"
     | "CSD - Climate"
     | "CSD - Marine"

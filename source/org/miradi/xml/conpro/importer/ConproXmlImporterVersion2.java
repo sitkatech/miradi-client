@@ -357,7 +357,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importField(measurementNode, MEASUREMENT_SUMMARY, measurementRef, Measurement.TAG_SUMMARY);
 			importField(measurementNode, MEASUREMENT_DATE, measurementRef, Measurement.TAG_DATE);
 			importCodeField(measurementNode, MEASUREMENT_STATUS_CONFIDENCE, measurementRef, Measurement.TAG_STATUS_CONFIDENCE, getCodeMapHelper().getConProToMiradiStatusConfidenceMap());
-			importCodeField(measurementNode, MEASUREMENT_TREND, measurementRef, Measurement.TAG_TREND, getCodeMapHelper().geConProToMiradiTrendMap());
+			importCodeField(measurementNode, MEASUREMENT_TREND, measurementRef, Measurement.TAG_TREND, getCodeMapHelper().getConProToMiradiTrendMap());
 			importCodeField(measurementNode, MEASUREMENT_RATING, measurementRef, Measurement.TAG_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 
 
@@ -523,6 +523,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		String tncProjectSharingXmlValue = getAttributeValue(projectSumaryNode, SHARE_OUTSIDE_ORGANIZATION);
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 		importCodeField(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, getCodeMapHelper().getConProToMiradiTncProjectSharingMap(), tncProjectSharingXmlValue);
+		importOrganizationalPriority(projectSumaryNode, tncProjectSharingXmlValue, tncProjectDataRef);
 		
 		importField(projectSumaryNode, NAME, metadataRef,ProjectMetadata.TAG_PROJECT_NAME);
 		importProjectId(projectSumaryNode, metadataRef);
@@ -546,6 +547,12 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+	}
+
+	private void importOrganizationalPriority(Node projectSumaryNode, String tncProjectSharingXmlValue, ORef tncProjectDataRef)	throws Exception
+	{
+		Node organizationalPrioritiesNode = getNode(projectSumaryNode, ORGANIZATIONAL_PRIORITIES);
+		importCodeField(organizationalPrioritiesNode, ORGANIZATIONAL_PRIORITY, tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITY, getCodeMapHelper().getConProToMiradiOrganizationalPrioritiesMap());
 	}
 	
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
