@@ -162,7 +162,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 	
 	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
 	{
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_2);
 		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
 	}
 
