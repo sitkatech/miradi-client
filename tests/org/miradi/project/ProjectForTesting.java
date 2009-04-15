@@ -54,6 +54,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -291,6 +292,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return progressReport;
 	}
 	
+	public ProgressPercent createAndPopulateProgressPercent() throws Exception
+	{
+		ProgressPercent progressPercent = createProgressPercent();
+		populateProgressPercent(progressPercent);
+		
+		return progressPercent;
+	}
+	
 	public Xenodata createAndPopulateXenodata(String xenoDataProjectId) throws Exception
 	{
 		Xenodata xenodata = createXenodata();
@@ -413,6 +422,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef progressReportRef = createObject(ProgressReport.getObjectType());
 		return ProgressReport.find(this, progressReportRef);
+	}
+	
+	public ProgressPercent createProgressPercent() throws Exception
+	{
+		ORef progressPercentRef = createObject(ProgressPercent.getObjectType());
+		return ProgressPercent.find(this, progressPercentRef);
 	}
 	
 	private Xenodata createXenodata() throws Exception
@@ -600,6 +615,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
 		relevantIndicators.add(new RelevancyOverride(relevantIndicatorRef, true));
 		fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+		
+		ProgressPercent populatedProgressPercent = createAndPopulateProgressPercent();
+		ProgressPercent emptyProgressPercent = createProgressPercent();
+		ORefList progressPercentRefs = new ORefList();
+		progressPercentRefs.add(populatedProgressPercent.getRef());
+		progressPercentRefs.add(emptyProgressPercent.getRef());
+		fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs.toString());
 	}
 	
 	public void populateStrategy(Strategy strategy) throws Exception
@@ -629,6 +651,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, "2008-01-23");
 		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, ProgressReportStatusQuestion.PLANNED_CODE);
+	}
+	
+	public void populateProgressPercent(ProgressPercent progressPercent) throws Exception
+	{
+		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, "2009-01-23");
+		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE, "21");
+		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, "some percent complete notes");
 	}
 	
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception
@@ -673,6 +702,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateDraftStrategy();
 		createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();
+		
 	}
 
 	public void switchToStressBaseMode() throws Exception
