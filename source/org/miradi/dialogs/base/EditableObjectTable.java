@@ -43,7 +43,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -187,7 +186,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 	{
 	}
 	
-	public void collapseAll(ViewData viewData) throws Exception
+	public void collapseAll() throws Exception
 	{	
 	}
 	

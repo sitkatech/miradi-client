@@ -26,7 +26,6 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
 
 public class StaticPicker implements ObjectPicker
 {
@@ -75,7 +74,7 @@ public class StaticPicker implements ObjectPicker
 	{
 	}
 	
-	public void collapseAll(ViewData viewData) throws Exception
+	public void collapseAll() throws Exception
 	{	
 	}
 	
