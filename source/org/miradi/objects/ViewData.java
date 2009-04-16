@@ -28,7 +28,6 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
 import org.miradi.objectdata.ORefListData;
-import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -128,16 +127,6 @@ public class ViewData extends BaseObject
 		return false;
 	}
 	
-	@Override
-	protected ORefList getRefListForField(ObjectData field)
-	{
-		// NOTE: Expansion list is not considered a true reference to those objects
-		if(field.getTag().equals(TAG_CURRENT_EXPANSION_LIST))
-			return new ORefList();
-		
-		return super.getRefListForField(field);
-	}
-	
 	public static ViewData find(ObjectManager objectManager, ORef viewDataRef)
 	{
 		return (ViewData) objectManager.findObject(viewDataRef);
@@ -154,7 +143,6 @@ public class ViewData extends BaseObject
 		currentMode = new StringData(TAG_CURRENT_MODE);
 		chainModeFactorRefs = new ORefListData(TAG_CHAIN_MODE_FACTOR_REFS);
 		currentTab = new IntegerData(TAG_CURRENT_TAB);
-		expandedNodesList = new ORefListData(TAG_CURRENT_EXPANSION_LIST);
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
@@ -168,7 +156,6 @@ public class ViewData extends BaseObject
 		addPresentationDataField(TAG_CURRENT_MODE, currentMode);
 		addPresentationDataField(TAG_CHAIN_MODE_FACTOR_REFS, chainModeFactorRefs);
 		addPresentationDataField(TAG_CURRENT_TAB, currentTab);
-		addPresentationDataField(TAG_CURRENT_EXPANSION_LIST, expandedNodesList);
 		addPresentationDataField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		
 		addPresentationDataField(TAG_PLANNING_STYLE_CHOICE, planningStyleChoice);
@@ -182,7 +169,6 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_MODE = "CurrentMode";
 	public static final String TAG_CHAIN_MODE_FACTOR_REFS = "ChainModeFactorRefs";
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
-	public static final String TAG_CURRENT_EXPANSION_LIST  = "CurrentExpansionList";
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
 	
 	public static final String TAG_PLANNING_STYLE_CHOICE = "PlanningStyleChoice";
@@ -200,7 +186,6 @@ public class ViewData extends BaseObject
 	private ORefListData chainModeFactorRefs;
 	private ORefData currentResultsChainRef;
 	private ORefData currentConceptualModelRef;
-	private ORefListData expandedNodesList;
 	private CodeListData diagramHiddenTypes;
 	private StringData planningStyleChoice;
 	private StringData planningSingleLevelChoice;
