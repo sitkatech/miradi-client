@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 16:55-0500\n"
+"POT-Creation-Date: 2009-04-16 14:11-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -503,7 +503,7 @@ msgstr "Localización"
 
 #: miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:94
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 msgid "Project"
 msgstr "Proyecto"
@@ -2233,7 +2233,7 @@ msgstr ""
 msgid "Open"
 msgstr "Abrir"
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:94
+#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 msgid "Last Modified"
 msgstr ""
 
@@ -7057,7 +7057,7 @@ msgstr "Recursos"
 msgid "Is Relevant"
 msgstr "Es relevante"
 
-#: miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTreeTableModel.java:48
+#: miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTreeTableModel.java:56
 msgid "Item"
 msgstr "Elemento"
 
