@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.IntegerData;
+import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.ORef;
@@ -124,11 +125,13 @@ public class TableSettings extends BaseObject
 		columnSequenceCodes = new TagListData(TAG_COLUMN_SEQUENCE_CODES);
 		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
 		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
+		expandedNodesRefList = new ORefListData(TAG_TREE_EXPANSION_LIST);
 		
 		addPresentationDataField(TAG_TABLE_IDENTIFIER, tableIdentifier);
 		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
 		addPresentationDataField(TAG_COLUMN_WIDTHS, columnWidths);
 		addPresentationDataField(TAG_ROW_HEIGHT, rowHeight);
+		addPresentationDataField(TAG_TREE_EXPANSION_LIST, expandedNodesRefList);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
@@ -137,9 +140,11 @@ public class TableSettings extends BaseObject
 	public static final String TAG_COLUMN_SEQUENCE_CODES = "ColumnSequenceCodes";
 	public static final String TAG_COLUMN_WIDTHS = "ColumnWidths";
 	public static final String TAG_ROW_HEIGHT = "RowHeight";
+	public static final String TAG_TREE_EXPANSION_LIST  = "TreeExpansionList";
 	
 	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
 	private StringMapData columnWidths;
 	private IntegerData rowHeight;
+	private ORefListData expandedNodesRefList;
 }
