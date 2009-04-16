@@ -205,6 +205,8 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 			recursivelyGetFullyExpandedTreePaths(fullyExpandedTreePathList, thisTreePath);
 		}
 	}
+	
+	abstract public String getUniqueTreeTableModelIdentifier();
 
 	public static final String DEFAULT_COLUMN = "Item";
 	public static final int SINGLE_COLUMN_COUNT = 1;

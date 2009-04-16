@@ -91,6 +91,14 @@ public class ProjectListTreeTableModel extends GenericTreeTableModel
 		super.rebuildEntireTree();
 	}
 	
+	@Override
+	public String getUniqueTreeTableModelIdentifier()
+	{
+		return UNIQUE_TREE_TABLE_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ProjectListTreeTableModel";
+	
 	private String[] COLUMN_NAMES = {EAM.text("Project"), EAM.text("Last Modified"), };
 	private FileSystemProjectSorter nodeSorter;
 }

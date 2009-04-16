@@ -43,4 +43,12 @@ public class TaggedObjectSetTreeTableModel extends GenericTreeTableModel
 	{
 		return DEFAULT_COLUMN;
 	}
+	
+	@Override
+	public String getUniqueTreeTableModelIdentifier()
+	{
+		return UNIQUE_TREE_TABLE_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "TaggedObjectSetTreeTableModel";
 }
