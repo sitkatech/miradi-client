@@ -75,7 +75,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.xml.XmlExporter;
-import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
+import org.miradi.xml.conpro.ConProMiradiCodeMapHelperVersion2;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
 
 
@@ -86,7 +86,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		super(project);
 		
-		codeMapHelper = new ConProMiradiCodeMapHelper();
+		codeMapHelper = new ConProMiradiCodeMapHelperVersion2();
 	}
 
 	@Override
@@ -550,7 +550,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		if (target.isViabilityModeTNC())
 			return getConproCode(target.getViabilityMode(), getCodeMapHelper().getMiradiToConProViabilityModeMap());
 		
-		return ConProMiradiCodeMapHelper.CONPRO_TARGET_SIMPLE_MODE_VALUE;
+		return ConProMiradiCodeMapHelperVersion2.CONPRO_TARGET_SIMPLE_MODE_VALUE;
 	}
 	
 	private void writeStrategyThreatTargetAssociations(UnicodeWriter out, Target target) throws Exception
@@ -1109,10 +1109,10 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	
 	private String getConproCode(String code, HashMap<String, String> map)
 	{
-		return ConProMiradiCodeMapHelper.getSafeXmlCode(map, code);
+		return ConProMiradiCodeMapHelperVersion2.getSafeXmlCode(map, code);
 	}
 	
-	private ConProMiradiCodeMapHelper getCodeMapHelper()
+	private ConProMiradiCodeMapHelperVersion2 getCodeMapHelper()
 	{
 		return codeMapHelper;
 	}
@@ -1145,6 +1145,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		}	
 	}
 	
-	private ConProMiradiCodeMapHelper codeMapHelper;
+	private ConProMiradiCodeMapHelperVersion2 codeMapHelper;
 	private static final String UNSPECIFIED_LABEL = "[Unspecified]";
 }
