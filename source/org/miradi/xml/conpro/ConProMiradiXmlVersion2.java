@@ -23,7 +23,7 @@ public interface ConProMiradiXmlVersion2
 {
 	public static final String CONSERVATION_PROJECT = "conservation_project";
 	public static final String XMLNS = "xmlns";
-	public static final String NAME_SPACE_VERSION = "0.4";
+	public static final String NAME_SPACE_VERSION = "2";
 	public static final String PARTIAL_NAME_SPACE = "http://services.tnc.org/schema/conservation-project/";
 	//FIXME this is a version under progress, inluding -working in nameSpace
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION + "-working";
