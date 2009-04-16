@@ -32,9 +32,9 @@ import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 
-public class ConProMiradiCodeMapHelper
+public class ConProMiradiCodeMapHelperVersion2
 {
-	public ConProMiradiCodeMapHelper() throws Exception
+	public ConProMiradiCodeMapHelperVersion2() throws Exception
 	{
 		createMiradiToConproCodeMaps();
 	}
@@ -42,6 +42,7 @@ public class ConProMiradiCodeMapHelper
 	private void createMiradiToConproCodeMaps() throws Exception
 	{
 		progressStatusMap = new HashMap<String, String>();
+		progressStatusMap.put(ProgressReportStatusQuestion.NOT_SPECIFIED, CONPRO_STATUS_NOT_SPECIFIED);
 		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
 		progressStatusMap.put(ProgressReportStatusQuestion.MAJOR_ISSUES_CODE, CONPRO_STATUS_MAJOR_ISSUES_VALUE);
 		progressStatusMap.put(ProgressReportStatusQuestion.MINOR_ISSUES_CODE, CONPRO_STATUS_MINOR_ISSUES_VALUE);
@@ -253,6 +254,7 @@ public class ConProMiradiCodeMapHelper
 	private HashMap<String, String> trendMap;
 	private HashMap<String, String> organizationalPrioritiesMap;
 	
+	private static final String CONPRO_STATUS_NOT_SPECIFIED = "Not Specified";
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";
 	private static final String CONPRO_STATUS_MAJOR_ISSUES_VALUE = "Major Issues";
 	private static final String CONPRO_STATUS_MINOR_ISSUES_VALUE = "Minor Issues";

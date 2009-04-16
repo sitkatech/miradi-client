@@ -104,7 +104,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
+import org.miradi.xml.conpro.ConProMiradiCodeMapHelperVersion2;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidatorVersion2;
 import org.w3c.dom.Document;
@@ -119,7 +119,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	public ConproXmlImporterVersion2(Project projectToFill) throws Exception
 	{
 		project = projectToFill;
-		codeMapHelper = new ConProMiradiCodeMapHelper();
+		codeMapHelper = new ConProMiradiCodeMapHelperVersion2();
 
 		wrappedToDiagramMap = new HashMap<ORef, ORef>();
 	}
@@ -976,7 +976,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		return xPath;
 	}
 	
-	private ConProMiradiCodeMapHelper getCodeMapHelper()
+	private ConProMiradiCodeMapHelperVersion2 getCodeMapHelper()
 	{
 		return codeMapHelper;
 	}
@@ -1294,7 +1294,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	private Project project;
 	private XPath xPath;
 	private Document document;
-	private ConProMiradiCodeMapHelper codeMapHelper;
+	private ConProMiradiCodeMapHelperVersion2 codeMapHelper;
 	private HashMap<ORef, ORef> wrappedToDiagramMap;
 	private ORef objectiveHolderRef;
 	private ORef indicatorHolderRef;
