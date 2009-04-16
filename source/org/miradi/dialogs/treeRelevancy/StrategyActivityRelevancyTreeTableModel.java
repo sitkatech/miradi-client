@@ -45,6 +45,14 @@ public class StrategyActivityRelevancyTreeTableModel extends GenericTreeTableMod
 		return COLUMN_NAME;
 	}
 	
+	@Override
+	public String getUniqueTreeTableModelIdentifier()
+	{
+		return UNIQUE_TREE_TABLE_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "StrategyActivityRelevancyTreeTableModel";
+	
 	public static final String COLUMN_NAME = EAM.text("Item");
 	public static final int COLUMN_COUNT = 1;
 }

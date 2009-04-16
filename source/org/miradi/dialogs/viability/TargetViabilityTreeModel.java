@@ -51,6 +51,14 @@ public class TargetViabilityTreeModel extends GenericViabilityTreeModel
 		return column;
 	}
 	
+	@Override
+	public String getUniqueTreeTableModelIdentifier()
+	{
+		return UNIQUE_TREE_TABLE_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "TargetViabilityTreeModel";
+	
 	public static String[] columnTags = {DEFAULT_COLUMN, 
 										 Indicator.TAG_STATUS,
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,

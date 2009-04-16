@@ -38,6 +38,14 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 		return columnTags;
 	}
 	
+	@Override
+	public String getUniqueTreeTableModelIdentifier()
+	{
+		return UNIQUE_TREE_TABLE_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ViabilityTreeModel";
+	
 	public static String[] columnTags = {DEFAULT_COLUMN, 
 										 Target.TAG_VIABILITY_MODE,
 										 Indicator.TAG_STATUS,
