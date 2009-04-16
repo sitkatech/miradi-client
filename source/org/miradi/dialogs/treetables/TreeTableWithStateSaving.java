@@ -166,7 +166,8 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 
 	public void updateTreeExpansionState(ViewData viewData, ORefList expandedRefs) throws Exception
 	{
-		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getRef() ,ViewData.TAG_CURRENT_EXPANSION_LIST, expandedRefs.toString());
+		TableSettings tableSettings = getTableSettingsForTreeTable();
+		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, expandedRefs);
 		getProject().executeCommand(cmd);
 	}
 	
@@ -257,18 +258,23 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	private void saveExpandedPath(ORefList newObjRefList) throws Exception
 	{
 		SavableField.saveFocusedFieldPendingEdits();
-		ViewData viewData = project.getViewData(project.getCurrentView());		
-		CommandSetObjectData cmd = new CommandSetObjectData(viewData.getType(), viewData.getId() ,ViewData.TAG_CURRENT_EXPANSION_LIST, newObjRefList.toString());
-		project.executeCommand(cmd);
+
+		TableSettings tableSettings = getTableSettingsForTreeTable();
+		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, newObjRefList);
+		getProject().executeCommand(cmd);
 	}
-	
+
 	private ORefList getExpandedNodeList() throws Exception
 	{
-		ViewData viewData = project.getViewData(project.getCurrentView());
-		ORefList objRefList= new ORefList(viewData.getData(ViewData.TAG_CURRENT_EXPANSION_LIST));
-		return objRefList;
+		TableSettings tableSettings = getTableSettingsForTreeTable();	
+		return new ORefList(tableSettings.getData(TableSettings.TAG_TREE_EXPANSION_LIST));
 	}
 	
+	private TableSettings getTableSettingsForTreeTable() throws Exception
+	{
+		return TableSettings.findOrCreate(getProject(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+	}
+		
 	protected EAMTreeTableModelAdapter treeTableModelAdapter;
 
 	private boolean ignoreNotifications;
