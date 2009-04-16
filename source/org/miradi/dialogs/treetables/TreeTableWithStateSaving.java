@@ -155,16 +155,16 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	public void expandAll(ViewData viewData) throws Exception
 	{
 		ORefSet fullExpandedRefs = getTreeTableModel().getFullyExpandedRefSet();
-		updateTreeExpansionState(viewData, fullExpandedRefs.toRefList());
+		updateTreeExpansionState(fullExpandedRefs.toRefList());
 	}
 	
 	public void collapseAll(ViewData viewData) throws Exception
 	{
 		clearSelection();
-		updateTreeExpansionState(viewData, new ORefList());
+		updateTreeExpansionState(new ORefList());
 	}
 
-	public void updateTreeExpansionState(ViewData viewData, ORefList expandedRefs) throws Exception
+	public void updateTreeExpansionState(ORefList expandedRefs) throws Exception
 	{
 		TableSettings tableSettings = getTableSettingsForTreeTable();
 		CommandSetObjectData cmd = new CommandSetObjectData(tableSettings, TableSettings.TAG_TREE_EXPANSION_LIST, expandedRefs);
