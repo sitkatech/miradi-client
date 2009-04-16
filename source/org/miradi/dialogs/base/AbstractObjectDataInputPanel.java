@@ -783,7 +783,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 			listeners.remove(listener);
 		}
 		
-		public void expandAll(ViewData viewData) throws Exception
+		public void expandAll() throws Exception
 		{
 		}
 		

@@ -152,7 +152,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		return node.getObjectReference();
 	}
 	
-	public void expandAll(ViewData viewData) throws Exception
+	public void expandAll() throws Exception
 	{
 		ORefSet fullExpandedRefs = getTreeTableModel().getFullyExpandedRefSet();
 		updateTreeExpansionState(fullExpandedRefs.toRefList());
