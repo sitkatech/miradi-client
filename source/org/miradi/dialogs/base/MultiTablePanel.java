@@ -30,7 +30,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.MultiTableHorizontalScrollController;
 import org.miradi.utils.MultiTableRowHeightController;
@@ -113,7 +112,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	{
 	}
 	
-	public void collapseAll(ViewData viewData) throws Exception
+	public void collapseAll() throws Exception
 	{	
 	}
 

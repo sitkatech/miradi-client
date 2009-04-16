@@ -43,7 +43,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnSortListener;
 import org.miradi.utils.SortableTable;
@@ -197,7 +196,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 	{
 	}
 	
-	public void collapseAll(ViewData viewData) throws Exception
+	public void collapseAll() throws Exception
 	{	
 	}
 

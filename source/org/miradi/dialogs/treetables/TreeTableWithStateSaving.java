@@ -33,7 +33,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.TableSettings;
-import org.miradi.objects.ViewData;
 import org.miradi.utils.EAMTreeTableModelAdapter;
 
 abstract public class TreeTableWithStateSaving extends ObjectTreeTable implements TreeExpansionListener, CommandExecutedListener
@@ -158,7 +157,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		updateTreeExpansionState(fullExpandedRefs.toRefList());
 	}
 	
-	public void collapseAll(ViewData viewData) throws Exception
+	public void collapseAll() throws Exception
 	{
 		clearSelection();
 		updateTreeExpansionState(new ORefList());
