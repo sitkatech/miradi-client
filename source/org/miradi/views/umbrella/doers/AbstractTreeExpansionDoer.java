@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.objects.ViewData;
 import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractTreeExpansionDoer extends ObjectsDoer
@@ -39,7 +38,7 @@ abstract public class AbstractTreeExpansionDoer extends ObjectsDoer
 		
 		try
 		{
-			doWork(getProject().getCurrentViewData());
+			doWork();
 		}
 		catch (Exception e)
 		{
@@ -47,5 +46,5 @@ abstract public class AbstractTreeExpansionDoer extends ObjectsDoer
 		}
 	}
 
-	public abstract void doWork(ViewData viewData) throws Exception;
+	public abstract void doWork() throws Exception;
 }
