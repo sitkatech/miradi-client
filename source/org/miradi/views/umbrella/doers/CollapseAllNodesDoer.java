@@ -19,12 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.ViewData;
 
 
 public class CollapseAllNodesDoer extends AbstractTreeExpansionDoer
 {
-	public void doWork(ViewData viewData) throws Exception
+	public void doWork() throws Exception
 	{
 		getPicker().collapseAll();
 	}
