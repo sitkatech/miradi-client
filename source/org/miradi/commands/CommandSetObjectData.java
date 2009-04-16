@@ -121,6 +121,11 @@ public class CommandSetObjectData extends Command
 		this(objectRef.getObjectType(), objectRef.getObjectId(), fieldTag, oref.toString());
 	}
 	
+	public CommandSetObjectData(BaseObject baseObject, String fieldTag, ORefList refList)
+	{
+		this(baseObject.getRef(), fieldTag, refList.toString());
+	}
+	
 	public CommandSetObjectData(BaseObject baseObject, String fieldTag, String dataValue)
 	{
 		this(baseObject.getRef(), fieldTag, dataValue);
