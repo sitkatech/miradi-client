@@ -71,7 +71,7 @@ public class StaticPicker implements ObjectPicker
 	{
 	}
 
-	public void expandAll(ViewData viewData) throws Exception
+	public void expandAll() throws Exception
 	{
 	}
 	

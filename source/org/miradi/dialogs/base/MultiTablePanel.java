@@ -109,7 +109,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 	{
 	}
 	
-	public void expandAll(ViewData viewData) throws Exception
+	public void expandAll() throws Exception
 	{
 	}
 	

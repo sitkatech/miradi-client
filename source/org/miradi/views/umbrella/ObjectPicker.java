@@ -43,7 +43,7 @@ public interface ObjectPicker extends ListSelectionListener
 	public void addSelectionChangeListener(ListSelectionListener listener);
 	public void removeSelectionChangeListener(ListSelectionListener listener);
 	
-	public void expandAll(ViewData viewData) throws Exception;
+	public void expandAll() throws Exception;
 	public void collapseAll(ViewData viewData) throws Exception;
 	
 	public boolean isActive();

@@ -26,6 +26,6 @@ public class ExpandAllNodesDoer extends AbstractTreeExpansionDoer
 {
 	public void doWork(ViewData viewData) throws Exception
 	{
-		getPicker().expandAll(viewData);
+		getPicker().expandAll();
 	}
 }

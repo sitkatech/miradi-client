@@ -183,7 +183,7 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		selectionListeners.remove(listener);
 	}
 	
-	public void expandAll(ViewData viewData) throws Exception
+	public void expandAll() throws Exception
 	{
 	}
 	
