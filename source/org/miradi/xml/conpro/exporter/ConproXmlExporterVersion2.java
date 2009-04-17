@@ -789,19 +789,21 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeEndElement(out, PROJECT_SUMMARY);
 	}
 	
-	//FIXME need to refactort the two below methods
 	private void writeProjectTypes(UnicodeWriter out) throws Exception
 	{
-		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
-		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
-		writeCodeListElements(out, PROJECT_TYPES, PROJECT_TYPE, tncProjectData, TncProjectData.TAG_PROJECT_TYPES);
+		writeTncDataCodeList(out, PROJECT_TYPES, PROJECT_TYPE, TncProjectData.TAG_PROJECT_TYPES);
 	}
 
 	private void writeOrganizationPriorities(UnicodeWriter out) throws Exception
 	{
+		writeTncDataCodeList(out, ORGANIZATIONAL_PRIORITIES, ORGANIZATIONAL_PRIORITY, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+	}
+	
+	private void writeTncDataCodeList(UnicodeWriter out, String parentNodeElementName, String childElementName, String tag)	throws Exception
+	{
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
-		writeCodeListElements(out, ORGANIZATIONAL_PRIORITIES, ORGANIZATIONAL_PRIORITY, tncProjectData, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
+		writeCodeListElements(out, parentNodeElementName, childElementName, tncProjectData, tag);
 	}
 	
 	private String getMiradiVersionAsToken() throws Exception
