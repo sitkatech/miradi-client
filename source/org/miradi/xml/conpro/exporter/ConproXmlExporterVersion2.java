@@ -788,13 +788,13 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			
 		writeEndElement(out, PROJECT_SUMMARY);
 	}
-
+	
+	//FIXME need to refactort the two below methods
 	private void writeProjectTypes(UnicodeWriter out) throws Exception
 	{
-		writeStartElement(out, PROJECT_TYPES);
-		//FIXME, writing fake data,  needs to be replaced by real data
-		writeElement(out, PROJECT_TYPE, "FAKE_DATA");
-		writeEndElement(out, PROJECT_TYPES);
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
+		writeCodeListElements(out, PROJECT_TYPES, PROJECT_TYPE, tncProjectData, TncProjectData.TAG_PROJECT_TYPES);
 	}
 
 	private void writeOrganizationPriorities(UnicodeWriter out) throws Exception
@@ -803,7 +803,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
 		writeCodeListElements(out, ORGANIZATIONAL_PRIORITIES, ORGANIZATIONAL_PRIORITY, tncProjectData, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
 	}
-
+	
 	private String getMiradiVersionAsToken() throws Exception
 	{
 		String versionToken = VersionConstants.getVersionAndTimestamp();
