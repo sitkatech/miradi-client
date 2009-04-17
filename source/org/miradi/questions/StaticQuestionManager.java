@@ -87,6 +87,7 @@ public class StaticQuestionManager
 		addQuestion(new RowConfigurationQuestion());
 		addQuestion(new ColumnConfigurationQuestion());
 		addQuestion(new OrganizationalPrioritiesQuestion());
+		addQuestion(new ProjectTypesQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
