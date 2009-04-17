@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-17 13:44-0500\n"
+"POT-Creation-Date: 2009-04-17 16:02-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -391,11 +391,11 @@ msgstr ""
 msgid "Label|RARE"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:52
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:53
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:93
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:95
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr ""
@@ -5704,27 +5704,27 @@ msgid "File to import does not validate."
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1038
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1091
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1097
 msgid "Placeholder - From ConPro"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1042
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1095
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1101
 msgid "Objective Holder"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1048
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1101
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1107
 msgid "Indicator Holder"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1145
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1198
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1204
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1146
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1199
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1205
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -7800,6 +7800,9 @@ msgid "FieldLabel|40.OrganizationalPriorityChoices|Organizational Priority"
 msgstr ""
 
 msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
+msgstr ""
+
+msgid "FieldLabel|40.ProjectTypes|Project Types"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
