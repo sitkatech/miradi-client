@@ -29,7 +29,6 @@ public class OrganizationalPrioritiesQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getOrganizationalPrioritiesChoices()
 	{
 		return new ChoiceItem[]{
-				new ChoiceItem(NOT_SPECIFIED_CODE, "Not Specified"),
 				new ChoiceItem(CAPITAL_CAMPAIGN_CODE, "Capital Campaign"),
 				new ChoiceItem(REGIONAL_PRIORITY_CODE, "Regional Priority"),
 				new ChoiceItem(CSD_CLIMATE_CODE, "CSD - Climate"),
@@ -39,7 +38,6 @@ public class OrganizationalPrioritiesQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String NOT_SPECIFIED_CODE = "Not Specified";
 	public static final String CAPITAL_CAMPAIGN_CODE = "Capital Campaign";
 	public static final String REGIONAL_PRIORITY_CODE = "Regional Priority";
 	public static final String CSD_CLIMATE_CODE = "CSD - Climate";

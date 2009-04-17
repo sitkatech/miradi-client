@@ -150,7 +150,7 @@ organizational_priorities.element =
 #
 project_types.element =
     element cp:project_types {
-        element cp:project_type { text }
+        element cp:project_type { vocabulary_project_types }*
     }
 #
 targets.element =
@@ -526,8 +526,7 @@ vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:nonNegativeInteger
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
 vocabulary_organizational_priorities =
-	  "Not Specified"
-    | "Capital Campaign"
+    "Capital Campaign"
     | "Regional Priority"
     | "CSD - Climate"
     | "CSD - Marine"
