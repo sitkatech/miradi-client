@@ -799,14 +799,9 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 	private void writeOrganizationPriorities(UnicodeWriter out) throws Exception
 	{
-		writeStartElement(out, ORGANIZATIONAL_PRIORITIES);
-		
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
 		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
-		String organizationalPrioritiesCode = tncProjectData.getData(TncProjectData.TAG_ORGANIZATIONAL_PRIORITY);
-		writeElement(out, ORGANIZATIONAL_PRIORITY,  organizationalPrioritiesToXmlValue(organizationalPrioritiesCode));
-		
-		writeEndElement(out, ORGANIZATIONAL_PRIORITIES);
+		writeCodeListElements(out, ORGANIZATIONAL_PRIORITIES, ORGANIZATIONAL_PRIORITY, tncProjectData, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);
 	}
 
 	private String getMiradiVersionAsToken() throws Exception
@@ -1057,12 +1052,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private String ratingCodeToXmlValue(int code)
 	{
 		return ratingCodeToXmlValue(Integer.toString(code));
-	}
-	
-	private String organizationalPrioritiesToXmlValue(String code)
-	{
-		HashMap<String, String> organizationalPrioritiesMap = getCodeMapHelper().getMiradiToConProOrganizationalPrioritiesMap();
-		return getCodeMapHelper().getSafeXmlCode(organizationalPrioritiesMap, code);
 	}
 	
 	private String statusConfidenceToXmlValue(String code)

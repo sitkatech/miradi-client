@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -82,7 +82,7 @@ public class TncProjectData extends BaseObject
 		super.clear();
 		
 		legacyOrganizationalPriority = new StringData(LEGACY_TAG_ORGANIZATIONAL_PRIORITY);
-		organizationalPriority = new ChoiceData(TAG_ORGANIZATIONAL_PRIORITY, getProject().getQuestion(OrganizationalPrioritiesQuestion.class));
+		organizationalPriority = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(OrganizationalPrioritiesQuestion.class));
 		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
 		
 		addField(legacyOrganizationalPriority);
@@ -93,11 +93,11 @@ public class TncProjectData extends BaseObject
 	public static final String OBJECT_NAME = "TncProjectData";
 
 	public final static String LEGACY_TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriority";
-	public final static String TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriorityChoice";
+	public final static String TAG_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorityChoices";
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
 	
 	public StringData legacyOrganizationalPriority;
 	public StringData projectSharingCode;
-	public ChoiceData organizationalPriority;
+	public CodeListData organizationalPriority;
 
 }
