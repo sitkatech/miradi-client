@@ -76,6 +76,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.OrganizationalPrioritiesQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ProjectTypesQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -143,6 +144,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		organizationalPriorityCodes.add(OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
 		organizationalPriorityCodes.add(OrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
+		
+		CodeList projectTypes = new CodeList();
+		projectTypes.add(ProjectTypesQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
+		projectTypes.add(ProjectTypesQuestion.NON_PLACE_BASED_PROJECT_CODE);
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_TYPES, projectTypes.toString());
 	}
 	
 	private String createConproXenodata() throws Exception
