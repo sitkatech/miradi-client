@@ -139,7 +139,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
 		
 		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectData.getObjectType());
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITY, OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
+		CodeList organizationalPriorityCodes = new CodeList();
+		organizationalPriorityCodes.add(OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
+		organizationalPriorityCodes.add(OrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE);
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
 	}
 	
 	private String createConproXenodata() throws Exception

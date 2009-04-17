@@ -145,7 +145,7 @@ ous.element =
 #
 organizational_priorities.element =
     element cp:organizational_priorities {
-        element cp:priority { vocabulary_organizational_priorities }
+        element cp:priority { vocabulary_organizational_priorities }*
     }
 #
 project_types.element =

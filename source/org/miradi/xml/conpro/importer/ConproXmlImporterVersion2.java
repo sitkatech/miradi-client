@@ -551,8 +551,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 
 	private void importOrganizationalPriority(Node projectSumaryNode, String tncProjectSharingXmlValue, ORef tncProjectDataRef)	throws Exception
 	{
-		Node organizationalPrioritiesNode = getNode(projectSumaryNode, ORGANIZATIONAL_PRIORITIES);
-		importCodeField(organizationalPrioritiesNode, ORGANIZATIONAL_PRIORITY, tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITY, getCodeMapHelper().getConProToMiradiOrganizationalPrioritiesMap());
+		importCodeListField(projectSumaryNode, ORGANIZATIONAL_PRIORITIES, ORGANIZATIONAL_PRIORITY, tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getCodeMapHelper().getConProToMiradiOrganizationalPrioritiesMap());
 	}
 	
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
