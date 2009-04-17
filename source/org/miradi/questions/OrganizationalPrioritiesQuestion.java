@@ -39,11 +39,11 @@ public class OrganizationalPrioritiesQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String NOT_SPECIFIED_CODE = "";
-	public static final String CAPITAL_CAMPAIGN_CODE = "CapitalCampaign";
-	public static final String REGIONAL_PRIORITY_CODE = "RegionalPriority";
-	public static final String CSD_CLIMATE_CODE = "CsdClimate";
-	public static final String CSD_MARINE_CODE = "CsdMarine";
-	public static final String CSD_FRESHWATER_CODE = "CsdFreshwater";
-	public static final String CSD_PROTECTED_AREAS_CODE = "CsdProtectedAreas";
+	public static final String NOT_SPECIFIED_CODE = "Not Specified";
+	public static final String CAPITAL_CAMPAIGN_CODE = "Capital Campaign";
+	public static final String REGIONAL_PRIORITY_CODE = "Regional Priority";
+	public static final String CSD_CLIMATE_CODE = "CSD - Climate";
+	public static final String CSD_MARINE_CODE = "CSD - Marine";
+	public static final String CSD_FRESHWATER_CODE = "CSD - Freshwater";
+	public static final String CSD_PROTECTED_AREAS_CODE = "CSD - Protected Areas";
 }
