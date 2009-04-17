@@ -101,7 +101,6 @@ public class ConProMiradiCodeMapHelperVersion2
 		trendMap.put(TrendQuestion.STRONG_DECREASE_CODE, "Strong Increase");
 		
 		organizationalPrioritiesMap = new HashMap<String, String>();
-		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.NOT_SPECIFIED_CODE, "Not Specified");
 		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE, "Capital Campaign");
 		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.REGIONAL_PRIORITY_CODE, "Regional Priority");
 		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_CLIMATE_CODE, "CSD - Climate");
