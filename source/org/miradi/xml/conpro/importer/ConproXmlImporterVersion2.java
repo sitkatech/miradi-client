@@ -557,7 +557,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	
 	private void importProjectTypes(String tncProjectSharingXmlValue, ORef tncProjectDataRef)	throws Exception
 	{
-		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, PROJECT_TYPES, PROJECT_TYPE}), tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES);
+		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, PROJECT_PLACE_TYPES, PROJECT_PLACE_TYPE}), tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES);
 	}
 	
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception

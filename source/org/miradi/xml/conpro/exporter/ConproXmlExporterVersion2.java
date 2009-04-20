@@ -791,7 +791,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	
 	private void writeProjectTypes(UnicodeWriter out) throws Exception
 	{
-		writeTncDataCodeList(out, PROJECT_TYPES, PROJECT_TYPE, TncProjectData.TAG_PROJECT_PLACE_TYPES);
+		writeTncDataCodeList(out, PROJECT_PLACE_TYPES, PROJECT_PLACE_TYPE, TncProjectData.TAG_PROJECT_PLACE_TYPES);
 	}
 
 	private void writeOrganizationPriorities(UnicodeWriter out) throws Exception
