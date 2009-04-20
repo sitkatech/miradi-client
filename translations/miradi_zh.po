@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 15:56-0500\n"
+"POT-Creation-Date: 2009-04-20 16:11-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -801,11 +801,11 @@ msgstr "编辑进展百分比 \t\t"
 msgid "Help"
 msgstr "帮助 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:64
+#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:61
 msgid "Share Method"
 msgstr "共享方法 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:57
+#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:54
 msgid "Share Activity"
 msgstr "共享活动 \t\t"
 
