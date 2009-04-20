@@ -85,7 +85,7 @@ import org.miradi.views.planning.doers.TreeNodeCreateMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateObjectiveDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
-import org.miradi.views.planning.doers.TreeNodeShareActivityDoer;
+import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
