@@ -72,7 +72,7 @@ public class TaskPool extends EAMNormalObjectPool
 		return getTasks(Task.METHOD_NAME);
 	}
 	
-	private Vector<Task> getTasks(String taskTypeName)
+	public Vector<Task> getTasks(String taskTypeName)
 	{
 		Vector<Task> allTypedTasks = new Vector();
 		Task[] allTasks = getAllTasks();

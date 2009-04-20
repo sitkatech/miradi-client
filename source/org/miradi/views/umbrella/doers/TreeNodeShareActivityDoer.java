@@ -39,10 +39,7 @@ public class TreeNodeShareActivityDoer extends AbstractShareDoer
 	
 		Strategy strategy = Strategy.find(getProject(), strategyRef);
 		Vector<Task> activities = strategy.getActivities();
-		Vector<Task> activitiesNotAlreadyInStrategy = getProject().getTaskPool().getAllActivities();
-		activitiesNotAlreadyInStrategy.removeAll(activities);
-		
-		return activitiesNotAlreadyInStrategy.size() > 0;
+		return hasSharebles(activities, Task.ACTIVITY_NAME);
 	}
 
 	@Override
