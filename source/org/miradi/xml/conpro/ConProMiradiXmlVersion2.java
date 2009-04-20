@@ -147,8 +147,8 @@ public interface ConProMiradiXmlVersion2
 	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
 	public static final String ORGANIZATIONAL_PRIORITIES = "organizational_priorities";
 	public static final String ORGANIZATIONAL_PRIORITY = "priority";
-	public static final String PROJECT_TYPES = "project_types";
-	public static final String PROJECT_TYPE = "project_type";
+	public static final String PROJECT_PLACE_TYPES = "project_types";
+	public static final String PROJECT_PLACE_TYPE = "project_type";
 	public static final String PROGRESS_PERCENT_REPORTS = "percent_complete_measures";
 	public static final String PROGRESS_PERCENT_REPORT = "percent_complete_measure";
 	public static final String PROGRESS_PERCENT_COMPLETE = "measure";
