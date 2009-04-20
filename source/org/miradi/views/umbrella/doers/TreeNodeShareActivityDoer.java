@@ -37,7 +37,7 @@ public class TreeNodeShareActivityDoer extends AbstractShareDoer
 		if(!super.isAvailable())
 			return false;
 		
-		if (getSingleSelected(Strategy.getObjectType()) == null)
+		if (getSingleSelected(getParentType()) == null)
 			return false;
 		
 		return hasSharableActivities();
