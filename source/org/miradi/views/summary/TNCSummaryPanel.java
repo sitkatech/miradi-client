@@ -31,7 +31,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.OrganizationalPrioritiesQuestion;
-import org.miradi.questions.ProjectTypesQuestion;
+import org.miradi.questions.TncProjectTypePlacesQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
@@ -55,7 +55,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY));
 		addField(createSingleColumnCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(OrganizationalPrioritiesQuestion.class)));
-		addField(createSingleColumnCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_TYPES, getProject().getQuestion(ProjectTypesQuestion.class)));
+		addField(createSingleColumnCodeListField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_TYPES, getProject().getQuestion(TncProjectTypePlacesQuestion.class)));
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 
