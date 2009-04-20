@@ -48,7 +48,7 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 	@Override
 	public String getUniqueTableIdentifier()
 	{
-		return UNIQUE_IDENTIFIER;
+		return getTreeTableModel().getUniqueTreeTableModelIdentifier();
 	}
 
 	public Dimension getPreferredScrollableViewportSize()

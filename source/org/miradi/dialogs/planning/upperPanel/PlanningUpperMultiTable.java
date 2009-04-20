@@ -39,7 +39,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 {
 	public PlanningUpperMultiTable(PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(masterTreeToUse.getMainWindow(), model, UNIQUE_IDENTIFIER);
+		super(masterTreeToUse.getMainWindow(), model, masterTreeToUse.getUniqueTableIdentifier());
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 
 		masterTree = masterTreeToUse;
@@ -91,8 +91,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return masterTree.areBudgetValuesAllocated(row);
 	}
 
-	private static final String UNIQUE_IDENTIFIER = "PlanningUpperMultiTable";
-	
 	private PlanningTreeTable masterTree;
 	private BasicTableCellRendererFactory defaultRendererFactory;
 	private BasicTableCellRendererFactory currencyRendererFactory;
