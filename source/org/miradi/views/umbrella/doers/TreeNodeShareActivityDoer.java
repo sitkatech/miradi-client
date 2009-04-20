@@ -29,7 +29,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
-public class AbstractShareActivityDoer extends AbstractShareDoer
+public class TreeNodeShareActivityDoer extends AbstractShareDoer
 {
 
 	public boolean isAvailable()
