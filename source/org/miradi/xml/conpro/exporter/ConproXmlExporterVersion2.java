@@ -271,6 +271,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private void writeMeasurements(UnicodeWriter out, ORefList measurementRefs) throws Exception
 	{
 		writeStartElement(out, MEASUREMENTS);
+		int sequenceCounter = 0;
 		for (int refIndex = 0; refIndex < measurementRefs.size(); ++refIndex)
 		{
 			Measurement measurement = Measurement.find(getProject(), measurementRefs.get(refIndex));
@@ -279,12 +280,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			String measurementStatusConfidenceCode = statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE));
 			String measurementTrendCode = trendToXmlValue(measurement.getData(Measurement.TAG_TREND));
 			String measurementRankingCode = rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS));
-			
-			
+				
 			String[] valuesToVerify = new String[]{measurementSummary, measurementDate, measurementStatusConfidenceCode, measurementTrendCode, measurementRankingCode,};
 			if (isAtLeastOneStringNonBlank(valuesToVerify))
 			{
-				writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, refIndex);
+				writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, ++sequenceCounter);
 				writeElement(out, MEASUREMENT_SUMMARY, measurementSummary);
 				writeOptionalElement(out, MEASUREMENT_DATE, measurementDate);
 				writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  measurementStatusConfidenceCode);
