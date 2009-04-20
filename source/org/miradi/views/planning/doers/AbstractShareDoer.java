@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.planning.doers;
 
+import java.util.Vector;
+
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.dialogs.diagram.ShareSelectionDialog;
@@ -98,6 +100,14 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 			return hasAdjacentParentInSelectionHierarchy((Task) selectedObject);
 		
 		return false;
+	}
+	
+	protected boolean hasSharebles(Vector<Task> tasks, String taskTypeName)
+	{
+		Vector<Task> tasksNotAlreadyInParent = getProject().getTaskPool().getTasks(taskTypeName);
+		tasksNotAlreadyInParent.removeAll(tasks);
+		
+		return tasksNotAlreadyInParent.size() > 0;
 	}
 
 	abstract protected String getShareDialogTitle();

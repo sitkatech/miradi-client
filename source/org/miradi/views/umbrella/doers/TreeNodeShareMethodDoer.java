@@ -40,12 +40,9 @@ public class TreeNodeShareMethodDoer extends AbstractShareDoer
 	
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		Vector<Task> methods = indicator.getMethods();
-		Vector<Task> methodsNotAlreadyInStrategy = getProject().getTaskPool().getAllMethods();
-		methodsNotAlreadyInStrategy.removeAll(methods);
-		
-		return methodsNotAlreadyInStrategy.size() > 0;
+		return hasSharebles(methods, Task.METHOD_NAME);
 	}
-	
+
 	@Override
 	protected String getParentTaskIdsTag()
 	{
