@@ -19,22 +19,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.dialogs.task.ShareableMethodPoolTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Task;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareMethodDoer extends AbstractShareDoer
 {
 	@Override
-	public boolean isAvailable()
+	protected boolean hasSharables()
 	{
-		if(!super.isAvailable())
+		ORef indicatorRef = getParentRefOfShareableObjects();
+		if (!Indicator.is(indicatorRef))
 			return false;
+	
+		Indicator indicator = Indicator.find(getProject(), indicatorRef);
+		Vector<Task> methods = indicator.getMethods();
+		Vector<Task> methodsNotAlreadyInStrategy = getProject().getTaskPool().getAllMethods();
+		methodsNotAlreadyInStrategy.removeAll(methods);
 		
-		return getSingleSelected(getParentType()) != null;
+		return methodsNotAlreadyInStrategy.size() > 0;
 	}
 	
 	@Override
