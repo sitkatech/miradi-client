@@ -486,14 +486,57 @@ indicators.element =
 #
 measures.element =
     element cp:measures {
-        element cp:measure {
-            attribute sequence { vocabulary_sequence }
-            & element cp:measurement { text }
-            & element cp:date { vocabulary_date }?
-            & element cp:source { vocabulary_source_measures }?
-            & element cp:trend { vocabulary_trend }?
-            & element cp:rating { vocabulary_rating_vggfp }?
-        }*
+        measures.combination1.element
+        | measures.combination2.element
+        | measures.combination3.element
+        | measures.combination4.element
+        | measures.combination5.element
+    }
+#
+measures.combination1.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text+ }
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination2.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:date { vocabulary_date }
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination3.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination4.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }
+        & element cp:rating { vocabulary_rating_vggfp }?
+    }
+measures.combination5.element =
+    element cp:measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measurement { text }?
+        & element cp:date { vocabulary_date }?
+        & element cp:source { vocabulary_source_measures }?
+        & element cp:trend { vocabulary_trend }?
+        & element cp:rating { vocabulary_rating_vggfp }
     }
 #
 methods.element =
