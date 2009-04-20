@@ -402,16 +402,24 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		progressPercentRefs.sort();
 		writeStartElement(out, PROGRESS_PERCENT_REPORTS);
+		int sequenceCounter = 0;
 		for (int index = 0; index < progressPercentRefs.size(); ++index)
 		{
-			writeStartElementWithAttribute(out, PROGRESS_PERCENT_REPORT, SEQUENCE, index);
-			
 			ProgressPercent progressPercent = ProgressPercent.find(getProject(), progressPercentRefs.get(index));
-			writeOptionalElement(out, PROGRESS_PERCENT_COMPLETE, progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE);
-			writeOptionalElement(out, PROGRESS_PERCENT_DATE, progressPercent, ProgressPercent.TAG_DATE);
-			writeOptionalElement(out, PROGRESS_PERCENT_COMMENT, progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+			String progressPercentComplete = progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE);
+			String progressPercentDate = progressPercent.getData(ProgressPercent.TAG_DATE);
+			String progressPercentCompleteNotes = progressPercent.getData(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
+			String[] valuesToVerify = new String[]{progressPercentComplete, progressPercentDate, progressPercentCompleteNotes, }; 
+			if (isAtLeastOneStringNonBlank(valuesToVerify))
+			{
+				writeStartElementWithAttribute(out, PROGRESS_PERCENT_REPORT, SEQUENCE, ++sequenceCounter);
+		
+				writeOptionalElement(out, PROGRESS_PERCENT_COMPLETE, progressPercentComplete);
+				writeOptionalElement(out, PROGRESS_PERCENT_DATE, progressPercentDate);
+				writeOptionalElement(out, PROGRESS_PERCENT_COMMENT, progressPercentCompleteNotes);
 
-			writeEndElement(out, PROGRESS_PERCENT_REPORT);
+				writeEndElement(out, PROGRESS_PERCENT_REPORT);
+			}
 		}
 		
 		writeEndElement(out, PROGRESS_PERCENT_REPORTS);
