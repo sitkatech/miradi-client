@@ -73,7 +73,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.OrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.TncProjectTypePlacesQuestion;
@@ -141,8 +141,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectData.getObjectType());
 		CodeList organizationalPriorityCodes = new CodeList();
-		organizationalPriorityCodes.add(OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
-		organizationalPriorityCodes.add(OrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE);
+		organizationalPriorityCodes.add(TncOrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
+		organizationalPriorityCodes.add(TncOrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
 		
 		CodeList projectTypes = new CodeList();

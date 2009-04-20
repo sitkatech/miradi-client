@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.OrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectTypePlacesQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -83,7 +83,7 @@ public class TncProjectData extends BaseObject
 		super.clear();
 		
 		legacyOrganizationalPriority = new StringData(LEGACY_TAG_ORGANIZATIONAL_PRIORITY);
-		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(OrganizationalPrioritiesQuestion.class));
+		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
 		projectTypes = new CodeListData(TAG_PROJECT_TYPES, getProject().getQuestion(TncProjectTypePlacesQuestion.class));
 		
