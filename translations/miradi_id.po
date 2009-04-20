@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 12:41-0500\n"
+"POT-Creation-Date: 2009-04-20 13:21-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -835,6 +835,10 @@ msgstr "Edit Persentase Kemajuan "
 msgid "Help"
 msgstr "Bantuan "
 
+#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:55
+msgid "Share Method"
+msgstr "Berbagi Metode "
+
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:69
 msgid "Share Activity"
 msgstr "Berbagi Kegiatan "
@@ -850,10 +854,6 @@ msgid ""
 msgstr ""
 "Nama Langkah Wizard Saat Ini:\n"
 " %s "
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareMethodDoer.java:55
-msgid "Share Method"
-msgstr "Berbagi Metode "
 
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64

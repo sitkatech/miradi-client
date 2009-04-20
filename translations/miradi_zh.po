@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 12:41-0500\n"
+"POT-Creation-Date: 2009-04-20 13:21-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -801,6 +801,10 @@ msgstr "编辑进展百分比 \t\t"
 msgid "Help"
 msgstr "帮助 \t\t"
 
+#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:55
+msgid "Share Method"
+msgstr "共享方法 \t\t"
+
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:69
 msgid "Share Activity"
 msgstr "共享活动 \t\t"
@@ -816,10 +820,6 @@ msgid ""
 msgstr ""
 "当前向导步骤名称：\n"
 " %s \t\t"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareMethodDoer.java:55
-msgid "Share Method"
-msgstr "共享方法 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
 #: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
