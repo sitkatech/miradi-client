@@ -496,7 +496,7 @@ measures.element =
 measures.combination1.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
-        & element cp:measurement { text+ }
+        & element cp:measurement { text }
         & element cp:date { vocabulary_date }?
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }?
