@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 11:32-0500\n"
+"POT-Creation-Date: 2009-04-20 12:41-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -751,6 +751,10 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
+#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:69
+msgid "Share Activity"
+msgstr ""
+
 #: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
 msgid "Relevant Strategies and Activities"
 msgstr ""
@@ -805,10 +809,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/ExportRtfDoer.java:60
 msgid "Error occurred while trying to export current page as RTF.\n"
-msgstr ""
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareActivityDoer.java:69
-msgid "Share Activity"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
