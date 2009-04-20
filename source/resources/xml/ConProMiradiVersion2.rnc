@@ -234,10 +234,10 @@ stresses.element =
         ]
         element cp:stress {
             attribute sequence { vocabulary_sequence }
-           	& element cp:name { text }
+            & element cp:name { text }
             & element cp:stress_severity { vocabulary_ranking_vhhml }?
             & element cp:stress_scope { vocabulary_ranking_vhhml }?
-			& element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
+            & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
             & element cp:stress_ovrd_rank { text }?
             & threat_stress_ratings.element
         }*
@@ -283,10 +283,10 @@ key_attributes.element =
     element cp:key_attributes {
         [
             documentation [
-                "Key Ecological Attributes are critical components of target’s \x{a}" ~
+                "Key Ecological Attributes are critical components of target's \x{a}" ~
                 "ecology, physical or biological processes, composition, \x{a}" ~
                 "or structure that:\x{a}" ~
-                "- Determine a target’s temporal/spatial distribution that are necessary \x{a}" ~
+                "- Determine a target's temporal/spatial distribution that are necessary \x{a}" ~
                 "  for the continued persistence of the target \x{a}" ~
                 "- Vary within an 'acceptable range of variability' obtained by reviewing \x{a}" ~
                 "  scientific literature, consulting experts, and in some cases through \x{a}" ~
@@ -294,7 +294,7 @@ key_attributes.element =
                 "- Are assigned to categories of: Size, Condition, Landscape Context \x{a}" ~
                 "More technically, the most critical components of biological composition, \x{a}" ~
                 "structure, interactions and processes, environmental regimes, and landscape \x{a}" ~
-                "configuration that sustain a target’s viability or ecological integrity \x{a}" ~
+                "configuration that sustain a target's viability or ecological integrity \x{a}" ~
                 "over space and time."
             ]
         ]
@@ -367,8 +367,8 @@ objectives.element =
                 "critical Threats and for restoration of degraded Key Ecological Attributes. \x{a}" ~
                 "They can also be set, however, for the outcomes of specific conservation \x{a}" ~
                 "actions, or the acquisition of project resources. If the project is well \x{a}" ~
-                "conceptualized and designed, realization of all the project’s objectives \x{a}" ~
-                "should lead to the fulfillment of the project’s vision. \x{a}" ~
+                "conceptualized and designed, realization of all the project's objectives \x{a}" ~
+                "should lead to the fulfillment of the project's vision. \x{a}" ~
                 "Objectives should be: \x{a}" ~
                 "- Impact oriented (represents desired changes in ecological attributes or \x{a}" ~
                 "  critical threat factors) \x{a}" ~
@@ -407,7 +407,7 @@ strategies.element =
         [
             documentation [
                 "Interventions undertaken by project staff and/or partners designed to \x{a}" ~
-                "reach the project’s objectives. A good action meets the criteria of being \x{a}" ~
+                "reach the project's objectives. A good action meets the criteria of being \x{a}" ~
                 "linked to objectives, focused, strategic, feasible, and appropriate."
             ]
         ]
@@ -501,7 +501,7 @@ methods.element =
         element cp:method {
             attribute id { vocabulary_id }
             & element cp:name { text }
-            & element cp:detail { text }
+            & element cp:detail { text }?
             & element cp:annual_cost { xsd:decimal }?
             & element cp:comment { text }?
         }*
@@ -604,7 +604,7 @@ iucn_strategy_taxonomy = xsd:NMTOKEN { pattern = "[A][0-9]{2,3}\.[0-9]{2,3}" }
 #                minInclusive to be 1. This results in the standard mathematical concept of the 
 #                positive integer numbers. The value space of positiveInteger is the infinite 
 #                set {1,2,...}. 
-# xsd:string -   The lexical and value spaces are teh set of all possible strings composed of any charachter 
+# xsd:string -   The lexical and value spaces are the set of all possible strings composed of any charachter 
 #                allowed in a XML 1.0 document without any treatment done on whitespace. That is the only 
 #                datatype that leaves all the whitespace. When whitespace isn't significant, xsd:token is
 #                preferred.
