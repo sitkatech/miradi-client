@@ -148,7 +148,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CodeList projectTypes = new CodeList();
 		projectTypes.add(TncProjectTypePlacesQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
 		projectTypes.add(TncProjectTypePlacesQuestion.NON_PLACE_BASED_PROJECT_CODE);
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_TYPES, projectTypes.toString());
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
 	}
 	
 	private String createConproXenodata() throws Exception
