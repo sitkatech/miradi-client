@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 10:37-0500\n"
+"POT-Creation-Date: 2009-04-20 11:11-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2126,7 +2126,7 @@ msgstr ""
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:279
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:293
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:314
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr ""
@@ -5693,7 +5693,7 @@ msgid ""
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:304
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:318
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:339
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr ""
