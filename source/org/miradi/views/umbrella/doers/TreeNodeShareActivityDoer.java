@@ -40,10 +40,10 @@ public class TreeNodeShareActivityDoer extends AbstractShareDoer
 		if (getSingleSelected(getParentType()) == null)
 			return false;
 		
-		return hasSharableActivities();
+		return hasSharables();
 	}
 
-	private boolean hasSharableActivities()
+	protected boolean hasSharables()
 	{
 		ORef strategyRef = getParentRefOfShareableObjects();
 		if (!Strategy.is(strategyRef))
