@@ -85,7 +85,7 @@ public class TncProjectData extends BaseObject
 		legacyOrganizationalPriority = new StringData(LEGACY_TAG_ORGANIZATIONAL_PRIORITY);
 		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
-		projectTypes = new CodeListData(TAG_PROJECT_TYPES, getProject().getQuestion(TncProjectTypePlacesQuestion.class));
+		projectTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectTypePlacesQuestion.class));
 		
 		addField(legacyOrganizationalPriority);
 		addField(organizationalPriorities);
@@ -98,7 +98,7 @@ public class TncProjectData extends BaseObject
 	public final static String LEGACY_TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriority";
 	public final static String TAG_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
-	public final static String TAG_PROJECT_TYPES = "ProjectTypes";
+	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectTypes";
 	
 	public StringData legacyOrganizationalPriority;
 	public StringData projectSharingCode;
