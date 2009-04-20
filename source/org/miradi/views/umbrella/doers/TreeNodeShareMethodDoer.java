@@ -26,7 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Indicator;
 import org.miradi.views.planning.doers.AbstractShareDoer;
 
-abstract public class TreeNodeShareMethodDoer extends AbstractShareDoer
+public class TreeNodeShareMethodDoer extends AbstractShareDoer
 {
 	@Override
 	public boolean isAvailable()

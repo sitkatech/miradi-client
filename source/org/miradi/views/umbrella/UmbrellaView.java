@@ -200,7 +200,6 @@ import org.miradi.views.diagram.doers.EditEstimatedResourceDoer;
 import org.miradi.views.diagram.doers.EditIndicatorProgressReportDoer;
 import org.miradi.views.diagram.doers.EditObjectiveProgressPercentDoer;
 import org.miradi.views.diagram.doers.EditStrategyProgressReportDoer;
-import org.miradi.views.planning.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.umbrella.doers.CollapseAllNodesDoer;
 import org.miradi.views.umbrella.doers.CreateGoalProgressPercentDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
@@ -222,6 +221,7 @@ import org.miradi.views.umbrella.doers.SaveProjectAsDoer;
 import org.miradi.views.umbrella.doers.ShowCurrentWizardFileNameDoer;
 import org.miradi.views.umbrella.doers.SwitchToOperationalPlanViewDoer;
 import org.miradi.views.umbrella.doers.SwitchToReportViewDoer;
+import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.umbrella.doers.ViewLegacyTncStrategyRankingDoer;
 import org.miradi.wizard.SkeletonWizardStep;
 
