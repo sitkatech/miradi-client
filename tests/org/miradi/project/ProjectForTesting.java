@@ -76,7 +76,7 @@ import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
-import org.miradi.questions.TncProjectTypePlacesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -146,8 +146,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
 		
 		CodeList projectTypes = new CodeList();
-		projectTypes.add(TncProjectTypePlacesQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
-		projectTypes.add(TncProjectTypePlacesQuestion.NON_PLACE_BASED_PROJECT_CODE);
+		projectTypes.add(TncProjectPlaceTypeQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
+		projectTypes.add(TncProjectPlaceTypeQuestion.NON_PLACE_BASED_PROJECT_CODE);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
 	}
 	

@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-public class TncProjectTypePlacesQuestion extends StaticChoiceQuestion
+public class TncProjectPlaceTypeQuestion extends StaticChoiceQuestion
 {
-	public TncProjectTypePlacesQuestion()
+	public TncProjectPlaceTypeQuestion()
 	{
 		super(getProjectTypeChoices());
 	}
