@@ -86,7 +86,7 @@ public class StaticQuestionManager
 		addQuestion(new TextBoxZOrderQuestion());
 		addQuestion(new RowConfigurationQuestion());
 		addQuestion(new ColumnConfigurationQuestion());
-		addQuestion(new OrganizationalPrioritiesQuestion());
+		addQuestion(new TncOrganizationalPrioritiesQuestion());
 		addQuestion(new TncProjectTypePlacesQuestion());
 	}
 	

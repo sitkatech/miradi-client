@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.OrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -101,12 +101,12 @@ public class ConProMiradiCodeMapHelperVersion2
 		trendMap.put(TrendQuestion.STRONG_DECREASE_CODE, "Strong Increase");
 		
 		organizationalPrioritiesMap = new HashMap<String, String>();
-		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE, "Capital Campaign");
-		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.REGIONAL_PRIORITY_CODE, "Regional Priority");
-		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_CLIMATE_CODE, "CSD - Climate");
-		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_MARINE_CODE, "CSD - Marine");
-		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_FRESHWATER_CODE, "CSD - Freshwater");
-		organizationalPrioritiesMap.put(OrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE, "CSD - Protected Areas");
+		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE, "Capital Campaign");
+		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.REGIONAL_PRIORITY_CODE, "Regional Priority");
+		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_CLIMATE_CODE, "CSD - Climate");
+		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_MARINE_CODE, "CSD - Marine");
+		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_FRESHWATER_CODE, "CSD - Freshwater");
+		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE, "CSD - Protected Areas");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)

@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-public class OrganizationalPrioritiesQuestion extends StaticChoiceQuestion
+public class TncOrganizationalPrioritiesQuestion extends StaticChoiceQuestion
 {
-	public OrganizationalPrioritiesQuestion()
+	public TncOrganizationalPrioritiesQuestion()
 	{
 		super(getOrganizationalPrioritiesChoices());
 	}
