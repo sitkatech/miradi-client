@@ -242,7 +242,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			String progressReportDetails = progressReport.getData(ProgressReport.TAG_DETAILS);
 			
 			String[] fieldsToVerify = new String[]{progressReportStatusCode, progressReportDate, progressReportDetails,};
-			if (hasValues(fieldsToVerify))
+			if (isAtLeastOneStringNonBlank(fieldsToVerify))
 			{
 				writeStartElementWithAttribute(out, PROGRESS_REPORT, SEQUENCE, ++sequenceCounter);
 			
@@ -257,7 +257,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeEndElement(out, PROGRESS_REPORTS);
 	}
 	
-	private boolean hasValues(String[] dataToVerify)
+	private boolean isAtLeastOneStringNonBlank(String[] dataToVerify)
 	{
 		for (int index = 0; index < dataToVerify.length; ++index)
 		{
@@ -274,15 +274,24 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		for (int refIndex = 0; refIndex < measurementRefs.size(); ++refIndex)
 		{
 			Measurement measurement = Measurement.find(getProject(), measurementRefs.get(refIndex));
+			String measurementSummary = measurement.getData(Measurement.TAG_SUMMARY);
+			String measurementDate = measurement.getData(Measurement.TAG_DATE);
+			String measurementStatusConfidenceCode = statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE));
+			String measurementTrendCode = trendToXmlValue(measurement.getData(Measurement.TAG_TREND));
+			String measurementRankingCode = rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS));
+			
 			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, refIndex);
-			
-			writeElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
-			writeOptionalElement(out, MEASUREMENT_DATE, measurement, Measurement.TAG_DATE);
-			writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE)));
-			writeOptionalElement(out, MEASUREMENT_TREND, trendToXmlValue(measurement.getData(Measurement.TAG_TREND)));
-			writeOptionalElement(out, MEASUREMENT_RATING, rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS)));
-			
-			writeEndElement(out, MEASUREMENT);
+			String[] valuesToVerify = new String[]{measurementSummary, measurementDate, measurementStatusConfidenceCode, measurementTrendCode, measurementRankingCode,};
+			if (isAtLeastOneStringNonBlank(valuesToVerify))
+			{
+				writeElement(out, MEASUREMENT_SUMMARY, measurementSummary);
+				writeOptionalElement(out, MEASUREMENT_DATE, measurementDate);
+				writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  measurementStatusConfidenceCode);
+				writeOptionalElement(out, MEASUREMENT_TREND, measurementTrendCode);
+				writeOptionalElement(out, MEASUREMENT_RATING, measurementRankingCode);
+
+				writeEndElement(out, MEASUREMENT);
+			}
 		}
 		
 		writeEndElement(out, MEASUREMENTS);
