@@ -19,13 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.planning.doers;
 
+import java.text.ParseException;
 import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.dialogs.diagram.ShareSelectionDialog;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
@@ -102,12 +106,35 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 		return false;
 	}
 	
-	protected boolean hasSharebles(Vector<Task> tasks, String taskTypeName)
+	protected boolean hasSharables()
 	{
-		Vector<Task> tasksNotAlreadyInParent = getProject().getTaskPool().getTasks(taskTypeName);
-		tasksNotAlreadyInParent.removeAll(tasks);
+		ORef parentRef = getParentRefOfShareableObjects();
+		if (parentRef.getObjectType() != getParentType())
+			return false;
+	
+		Vector<BaseObject> activities = getTasksForParent(parentRef);
+		Vector<Task> tasksNotAlreadyInParent = getProject().getTaskPool().getTasks(getTaskTypeName());
+		tasksNotAlreadyInParent.removeAll(activities);
 		
 		return tasksNotAlreadyInParent.size() > 0;
+	}
+
+	private Vector<BaseObject> getTasksForParent(ORef parentRef)
+	{
+		try
+		{
+			BaseObject parent = BaseObject.find(getProject(), parentRef);
+			String taskIdsAsString = parent.getData(getParentTaskIdsTag());
+			IdList taskIds = new IdList(Task.getObjectType(), taskIdsAsString);
+			ORefList taskRefs = new ORefList(Task.getObjectType(), taskIds);
+			
+			return getProject().getObjectManager().findObjectsAsVector(taskRefs);
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			return new Vector<BaseObject>(); 
+		}
 	}
 
 	abstract protected String getShareDialogTitle();
@@ -118,5 +145,5 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 	
 	abstract protected String getParentTaskIdsTag();
 	
-	abstract protected boolean hasSharables();
+	abstract protected String getTaskTypeName();
 }
