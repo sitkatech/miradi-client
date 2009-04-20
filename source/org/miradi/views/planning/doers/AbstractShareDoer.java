@@ -30,6 +30,17 @@ import org.miradi.objects.Task;
 
 abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 {
+	public boolean isAvailable()
+	{
+		if(!super.isAvailable())
+			return false;
+		
+		if (getSingleSelected(getParentType()) == null)
+			return false;
+		
+		return hasSharables();
+	}
+	
 	public void doIt() throws CommandFailedException
 	{
 		if (!isAvailable())
@@ -96,4 +107,6 @@ abstract public class AbstractShareDoer extends AbstractTreeNodeCreateTaskDoer
 	abstract protected int getParentType();
 	
 	abstract protected String getParentTaskIdsTag();
+	
+	abstract protected boolean hasSharables();
 }

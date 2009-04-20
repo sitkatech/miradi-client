@@ -31,18 +31,6 @@ import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareActivityDoer extends AbstractShareDoer
 {
-
-	public boolean isAvailable()
-	{
-		if(!super.isAvailable())
-			return false;
-		
-		if (getSingleSelected(getParentType()) == null)
-			return false;
-		
-		return hasSharables();
-	}
-
 	protected boolean hasSharables()
 	{
 		ORef strategyRef = getParentRefOfShareableObjects();

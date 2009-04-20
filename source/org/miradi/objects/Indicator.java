@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
@@ -136,6 +138,19 @@ public class Indicator extends BaseObject
 	public ORefList getMethodRefs()
 	{
 		return new ORefList(Task.getObjectType(), getTaskIdList());
+	}
+	
+	public Vector<Task> getMethods()
+	{
+		Vector<Task> methods = new Vector();
+		ORefList methodRefs = getMethodRefs();
+		for (int index = 0; index < methodRefs.size(); ++index)
+		{
+			Task method = Task.find(getProject(), methodRefs.get(index));
+			methods.add(method);
+		}
+		
+		return methods;
 	}
 	
 	public ORef getLatestMeasurementRef()
