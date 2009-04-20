@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 11:32-0500\n"
+"POT-Creation-Date: 2009-04-20 12:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -801,6 +801,10 @@ msgstr "编辑进展百分比 \t\t"
 msgid "Help"
 msgstr "帮助 \t\t"
 
+#: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:69
+msgid "Share Activity"
+msgstr "共享活动 \t\t"
+
 #: miradi/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
 msgid "Relevant Strategies and Activities"
 msgstr "相关策略和活动"
@@ -864,10 +868,6 @@ msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 "在试图导出当前页面为RTF.\n"
 "时出错"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AbstractShareActivityDoer.java:69
-msgid "Share Activity"
-msgstr "共享活动 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
