@@ -98,7 +98,7 @@ public class TncProjectData extends BaseObject
 	public final static String LEGACY_TAG_ORGANIZATIONAL_PRIORITY = "OrganizationalPriority";
 	public final static String TAG_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
-	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectTypes";
+	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectPlaceTypes";
 	
 	public StringData legacyOrganizationalPriority;
 	public StringData projectSharingCode;
