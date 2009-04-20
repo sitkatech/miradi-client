@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import java.util.Vector;
-
 import org.miradi.dialogs.activity.ShareableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.EAM;
@@ -31,15 +29,10 @@ import org.miradi.views.planning.doers.AbstractShareDoer;
 
 public class TreeNodeShareActivityDoer extends AbstractShareDoer
 {
-	protected boolean hasSharables()
+	@Override
+	protected String getTaskTypeName()
 	{
-		ORef strategyRef = getParentRefOfShareableObjects();
-		if (!Strategy.is(strategyRef))
-			return false;
-	
-		Strategy strategy = Strategy.find(getProject(), strategyRef);
-		Vector<Task> activities = strategy.getActivities();
-		return hasSharebles(activities, Task.ACTIVITY_NAME);
+		return Task.ACTIVITY_NAME;
 	}
 
 	@Override
