@@ -280,10 +280,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			String measurementTrendCode = trendToXmlValue(measurement.getData(Measurement.TAG_TREND));
 			String measurementRankingCode = rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS));
 			
-			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, refIndex);
+			
 			String[] valuesToVerify = new String[]{measurementSummary, measurementDate, measurementStatusConfidenceCode, measurementTrendCode, measurementRankingCode,};
 			if (isAtLeastOneStringNonBlank(valuesToVerify))
 			{
+				writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, refIndex);
 				writeElement(out, MEASUREMENT_SUMMARY, measurementSummary);
 				writeOptionalElement(out, MEASUREMENT_DATE, measurementDate);
 				writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  measurementStatusConfidenceCode);
