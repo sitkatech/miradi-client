@@ -231,20 +231,41 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception
 	{
 		writeStartElement(out, PROGRESS_REPORTS);
+		int sequenceCounter = 0;
 		for (int refIndex = 0; refIndex < progressReportRefs.size(); ++refIndex)
 		{
 			ProgressReport progressReport = ProgressReport.find(getProject(), progressReportRefs.get(refIndex));
-			writeStartElementWithAttribute(out, PROGRESS_REPORT, SEQUENCE, refIndex);
 			
 			String progressStatusCode = progressReport.getData(ProgressReport.TAG_PROGRESS_STATUS);
-			writeOptionalElement(out, PROGRESS_REPORT_STATUS, statusCodeToXmlValue(progressStatusCode));
-			writeOptionalElement(out, PROGRESS_REPORT_DATE, progressReport.getDateAsString());
-			writeOptionalElement(out, PROGRESS_REPORT_COMMENT, progressReport.getData(ProgressReport.TAG_DETAILS));
+			String progressReportStatusCode = statusCodeToXmlValue(progressStatusCode);
+			String progressReportDate = progressReport.getDateAsString();
+			String progressReportDetails = progressReport.getData(ProgressReport.TAG_DETAILS);
 			
-			writeEndElement(out, PROGRESS_REPORT);
+			String[] fieldsToVerify = new String[]{progressReportStatusCode, progressReportDate, progressReportDetails,};
+			if (hasValues(fieldsToVerify))
+			{
+				writeStartElementWithAttribute(out, PROGRESS_REPORT, SEQUENCE, ++sequenceCounter);
+			
+				writeOptionalElement(out, PROGRESS_REPORT_STATUS, progressReportStatusCode);
+				writeOptionalElement(out, PROGRESS_REPORT_DATE, progressReportDate);
+				writeOptionalElement(out, PROGRESS_REPORT_COMMENT, progressReportDetails);
+				
+				writeEndElement(out, PROGRESS_REPORT);
+			}
 		}
 		
 		writeEndElement(out, PROGRESS_REPORTS);
+	}
+	
+	private boolean hasValues(String[] dataToVerify)
+	{
+		for (int index = 0; index < dataToVerify.length; ++index)
+		{
+			if (dataToVerify[index].length() > 0)
+				return true;
+		}
+		
+		return false;
 	}
 	
 	private void writeMeasurements(UnicodeWriter out, ORefList measurementRefs) throws Exception
