@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 16:35-0500\n"
+"POT-Creation-Date: 2009-04-21 08:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -4476,6 +4476,16 @@ msgstr "创建KEA \t\t"
 msgid "TT|Create a Key Ecological Attribute"
 msgstr "创建一项关键生态属性 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:34
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:35
+msgid "Action|Create Custom"
+msgstr "创建定制 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:39
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:40
+msgid "TT|Create a new Custom Planning View"
+msgstr "创建一个新的定制计划视图 \t\t"
+
 #: miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
 #: miradi/source/org/miradi/actions/ActionDeleteGoalProgressPercent.java:35
 msgid "Action|Manage|Delete Progress Percent"
@@ -4539,14 +4549,6 @@ msgstr "创建组合框 \t\t"
 #: miradi/source/org/miradi/actions/ActionInsertGroupBox.java:40
 msgid "TT|Create a Group Box"
 msgstr "创建一个组合框 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:35
-msgid "Action|Create Custom"
-msgstr "创建定制 \t\t"
-
-#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:40
-msgid "TT|Create a new Custom Planning View"
-msgstr "创建一个新的定制计划视图 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionResourceListAdd.java:34
 msgid "Action|Manage|Add Resource"

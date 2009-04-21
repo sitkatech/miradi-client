@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-20 16:35-0500\n"
+"POT-Creation-Date: 2009-04-21 08:44-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4204,6 +4204,16 @@ msgstr ""
 msgid "TT|Create a Key Ecological Attribute"
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:34
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:35
+msgid "Action|Create Custom"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:39
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:40
+msgid "TT|Create a new Custom Planning View"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionDeleteObjectiveProgressPercent.java:35
 #: miradi/source/org/miradi/actions/ActionDeleteGoalProgressPercent.java:35
 msgid "Action|Manage|Delete Progress Percent"
@@ -4264,14 +4274,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionInsertGroupBox.java:40
 msgid "TT|Create a Group Box"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:35
-msgid "Action|Create Custom"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:40
-msgid "TT|Create a new Custom Planning View"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionResourceListAdd.java:34
