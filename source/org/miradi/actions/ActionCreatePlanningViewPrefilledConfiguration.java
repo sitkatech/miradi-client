@@ -17,19 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
+package org.miradi.actions;
 
-import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
-import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class CreatePlanningViewConfigurationMenuDoer extends AbstractPlanningCreationMenuDoer
+public class ActionCreatePlanningViewPrefilledConfiguration extends ObjectsAction
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public ActionCreatePlanningViewPrefilledConfiguration(MainWindow mainWindowToUse)
 	{
-		return new Class[] {
-				ActionCreatePlanningViewPrefilledConfiguration.class,
-				ActionCreatePlanningViewEmptyConfiguration.class,
-			};
+		super(mainWindowToUse, getLabel());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Start with current view");
+	}
+
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Create a new prefilled Custom Planning View");
 	}
 }

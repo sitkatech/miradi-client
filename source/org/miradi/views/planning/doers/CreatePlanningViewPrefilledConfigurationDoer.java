@@ -19,17 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
-import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
+import org.miradi.utils.CodeList;
 
-public class CreatePlanningViewConfigurationMenuDoer extends AbstractPlanningCreationMenuDoer
+public class CreatePlanningViewPrefilledConfigurationDoer extends AbstractCreatePlanningViewConfigurationDoer
 {
+	//FIXME need to return current configuration code list
 	@Override
-	protected Class[] getAllPossibleActionClasses()
+	protected CodeList getVisibleColumnCodes()
 	{
-		return new Class[] {
-				ActionCreatePlanningViewPrefilledConfiguration.class,
-				ActionCreatePlanningViewEmptyConfiguration.class,
-			};
+		return new CodeList();
+	}
+
+	@Override
+	protected CodeList getVisibleRowCodes()
+	{
+		return new CodeList();
 	}
 }
