@@ -37,7 +37,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.commands.CommandDeleteObject;
-import org.miradi.dialogfields.ConproProjectIdField;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogfields.ObjectChoiceField;
@@ -601,11 +600,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public RadioButtonsField createRadioButtonsField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
 		return new RadioButtonsField(project, objectType, getObjectIdForType(objectType), tagToUse, question);
-	}
-	
-	public ConproProjectIdField createConproProjectIdField(int objectType, String tagToUse)
-	{
-		return new ConproProjectIdField(project, objectType, getObjectIdForType(objectType), tagToUse);
 	}
 	
 	public ORef getRefForType(int objectType)
