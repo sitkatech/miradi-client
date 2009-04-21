@@ -22,7 +22,7 @@ package org.miradi.views.planning.doers;
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
 
-public class CreatePlanningViewConfigurationMenuDoer extends AbstractPlanningCreationMenuDoer
+public class CreatePlanningViewConfigurationMenuDoer extends AbstractMenuDoer
 {
 	@Override
 	protected Class[] getAllPossibleActionClasses()
