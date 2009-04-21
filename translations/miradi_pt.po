@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 08:44-0500\n"
+"POT-Creation-Date: 2009-04-21 08:50-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -181,6 +181,10 @@ msgstr ""
 msgid "Funding Source"
 msgstr ""
 
+#: miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:90
+msgid "PlanningSubViewName|Custom"
+msgstr ""
+
 #: miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:57
 msgid "Import Accounting Codes"
 msgstr ""
@@ -213,10 +217,6 @@ msgid ""
 "contains tasks/subtasks, those tasks will be rolled up into the overall "
 "activity, leading to possible double counting. Are you sure you want to "
 "proceed?"
-msgstr ""
-
-#: miradi/source/org/miradi/views/planning/doers/CreatePlanningViewConfigurationDoer.java:90
-msgid "PlanningSubViewName|Custom"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32

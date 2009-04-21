@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 08:44-0500\n"
+"POT-Creation-Date: 2009-04-21 08:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -222,6 +222,11 @@ msgstr ""
 msgid "Funding Source"
 msgstr "Sumber Dana "
 
+#: miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:90
+#, fuzzy
+msgid "PlanningSubViewName|Custom"
+msgstr "PlanningSubViewName|Custom"
+
 #: miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:57
 msgid "Import Accounting Codes"
 msgstr "Impor Kode Akuntansi "
@@ -261,11 +266,6 @@ msgstr ""
 "juga mengandung tugas/subtugas, maka tugas-tugas tersebut akan disertakan ke "
 "dalam keseluruhan aktivitas, yang bisa menyebabkan perhitungan ganda. Anda "
 "yakin ingin melanjutkan?"
-
-#: miradi/source/org/miradi/views/planning/doers/CreatePlanningViewConfigurationDoer.java:90
-#, fuzzy
-msgid "PlanningSubViewName|Custom"
-msgstr "PlanningSubViewName|Custom"
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
 msgid "Accounting Code"
