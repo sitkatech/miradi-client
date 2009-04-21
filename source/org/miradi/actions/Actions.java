@@ -393,7 +393,7 @@ public class Actions
 		registerAction(new ActionInsertGroupBox(mainWindow));
 		registerAction(new ActionCreateConceptualModel(mainWindow));
 		registerAction(new ActionDeleteConceptualModel(mainWindow));
-		registerAction(new ActionCreatePlanningViewConfiguration(mainWindow));
+		registerAction(new ActionCreatePlanningViewEmptyConfiguration(mainWindow));
 		registerAction(new ActionCreatePlanningViewConfigurationMenuDoer(mainWindow));
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
