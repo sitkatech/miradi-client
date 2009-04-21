@@ -41,7 +41,7 @@ import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
 import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
-import org.miradi.views.planning.doers.PlanningCreationMenuDoer;
+import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -124,7 +124,7 @@ public class OperationalPlanView extends TabbedView
 		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
 		
-		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningCreationMenuDoer());
+		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
 	}
 	
 	public static boolean is(UmbrellaView view)

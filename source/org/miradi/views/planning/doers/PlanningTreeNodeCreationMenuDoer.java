@@ -41,9 +41,9 @@ import org.miradi.main.EAM;
 import org.miradi.views.Doer;
 import org.miradi.views.ObjectsDoer;
 
-public class PlanningCreationMenuDoer extends ObjectsDoer
+public class PlanningTreeNodeCreationMenuDoer extends ObjectsDoer
 {
-	public PlanningCreationMenuDoer()
+	public PlanningTreeNodeCreationMenuDoer()
 	{
 		menu = new JPopupMenu();
 	}
