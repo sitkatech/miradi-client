@@ -394,6 +394,7 @@ public class Actions
 		registerAction(new ActionCreateConceptualModel(mainWindow));
 		registerAction(new ActionDeleteConceptualModel(mainWindow));
 		registerAction(new ActionCreatePlanningViewConfiguration(mainWindow));
+		registerAction(new ActionCreatePlanningViewConfigurationMenuDoer(mainWindow));
 		registerAction(new ActionDeletePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionRenamePlanningViewConfiguration(mainWindow));
 		registerAction(new ActionDeletePlanningViewTreeNode(mainWindow));

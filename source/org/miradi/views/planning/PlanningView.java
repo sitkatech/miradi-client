@@ -28,6 +28,7 @@ import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionCreatePlanningViewConfiguration;
+import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionDeleteAccountingCode;
 import org.miradi.actions.ActionDeleteFundingSource;
@@ -70,13 +71,14 @@ import org.miradi.views.planning.doers.AddAssignmentDoer;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
 import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationDoer;
+import org.miradi.views.planning.doers.CreatePlanningViewConfigurationMenuDoer;
 import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
 import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
 import org.miradi.views.planning.doers.DeletePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 import org.miradi.views.planning.doers.PlanningColumnsEditorDoer;
-import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
 import org.miradi.views.planning.doers.PlanningRowsEditorDoer;
+import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
 import org.miradi.views.planning.doers.RemoveAssignmentDoer;
 import org.miradi.views.planning.doers.RenamePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
@@ -195,6 +197,7 @@ public class PlanningView extends TabbedView
 	
 	private void addPlanningViewDoersToMap()
 	{
+		addDoerToMap(ActionCreatePlanningViewConfigurationMenuDoer.class, new CreatePlanningViewConfigurationMenuDoer());
 		addDoerToMap(ActionCreatePlanningViewConfiguration.class, new CreatePlanningViewConfigurationDoer());
 		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
