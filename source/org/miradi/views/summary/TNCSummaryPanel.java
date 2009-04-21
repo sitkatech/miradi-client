@@ -28,13 +28,14 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
+import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.rtf.RtfFormExporter;
@@ -47,7 +48,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		super(projectToUse, metadata.getType(), metadata.getId());
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createReadonlyTextField(ProjectMetadata.getObjectType(), ProjectMetadata.PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE));
+		addField(createReadonlyTextField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID));
 		
 		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(TncProjectSharingQuestion.class);
 		addRadioButtonFieldWithCustomLabel(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, EAM.text("Share Outside of TNC?"));
@@ -66,7 +67,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		addField(createSingleColumnCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion()));
 		addField(createMultilineField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
 		
-		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectData.getObjectType())});
+		setObjectRefs(new ORef[]{metadata.getRef(), getProject().getSingletonObjectRef(TncProjectData.getObjectType()), getProject().getSafeSingleObjectRef(Xenodata.getObjectType())});
 	}
 	
 	public String getPanelDescription()

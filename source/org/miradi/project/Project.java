@@ -367,6 +367,14 @@ public class Project
 		return ThreatRatingCommentsData.find(this, threatRatingCommentsDataRef);
 	}
 	
+	public ORef getSafeSingleObjectRef(int objectType)
+	{
+		if (getPool(objectType).size() == 1)
+			return getSingletonObjectRef(objectType);
+		
+		return ORef.INVALID;
+	}
+	
 	public ORef getSingletonObjectRef(int objectType)
 	{
 		EAMObjectPool pool = getPool(objectType);

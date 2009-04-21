@@ -22,6 +22,7 @@ package org.miradi.forms.summary;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
+import org.miradi.objects.Xenodata;
 import org.miradi.views.summary.TNCSummaryPanel;
 
 
@@ -36,7 +37,7 @@ public class TncTabForm extends FieldPanelSpec
 		int projectMetadataType = ProjectMetadata.getObjectType();
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		addLabelAndField(projectMetadataType, ProjectMetadata.PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE);
+		addLabelAndField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		
 		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY);
