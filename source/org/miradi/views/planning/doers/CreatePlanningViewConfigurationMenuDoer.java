@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.miradi.actions.ActionCreatePlanningViewConfiguration;
+import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 
 public class CreatePlanningViewConfigurationMenuDoer extends AbstractPlanningCreationMenuDoer
 {
@@ -27,7 +27,7 @@ public class CreatePlanningViewConfigurationMenuDoer extends AbstractPlanningCre
 	protected Class[] getAllPossibleActionClasses()
 	{
 		return new Class[] {
-				ActionCreatePlanningViewConfiguration.class,			
+				ActionCreatePlanningViewEmptyConfiguration.class,			
 			};
 	}
 }

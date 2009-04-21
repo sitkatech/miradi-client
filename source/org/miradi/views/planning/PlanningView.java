@@ -27,7 +27,7 @@ import javax.swing.JToolBar;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
-import org.miradi.actions.ActionCreatePlanningViewConfiguration;
+import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionDeleteAccountingCode;
@@ -198,7 +198,7 @@ public class PlanningView extends TabbedView
 	private void addPlanningViewDoersToMap()
 	{
 		addDoerToMap(ActionCreatePlanningViewConfigurationMenuDoer.class, new CreatePlanningViewConfigurationMenuDoer());
-		addDoerToMap(ActionCreatePlanningViewConfiguration.class, new CreatePlanningViewEmptyConfigurationDoer());
+		addDoerToMap(ActionCreatePlanningViewEmptyConfiguration.class, new CreatePlanningViewEmptyConfigurationDoer());
 		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());

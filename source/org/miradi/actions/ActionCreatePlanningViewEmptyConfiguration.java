@@ -23,9 +23,9 @@ import org.miradi.icons.PlanningIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreatePlanningViewConfiguration extends ObjectsAction
+public class ActionCreatePlanningViewEmptyConfiguration extends ObjectsAction
 {
-	public ActionCreatePlanningViewConfiguration(MainWindow mainWindowToUse)
+	public ActionCreatePlanningViewEmptyConfiguration(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new PlanningIcon());
 	}
