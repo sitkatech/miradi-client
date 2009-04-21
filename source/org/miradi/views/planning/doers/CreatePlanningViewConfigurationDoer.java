@@ -64,8 +64,8 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 
 	private void createPlanningViewConfiguration() throws Exception
 	{
-		String visibleRowsAsString = new CodeList().toString();
-		String visibleColsAsString = new CodeList().toString();
+		String visibleRowsAsString = getVisibleRowCodes().toString();
+		String visibleColsAsString = getVisibleColumnCodes().toString();
 		
 		CommandCreateObject createConfiguration = new CommandCreateObject(PlanningViewConfiguration.getObjectType());
 		getProject().executeCommand(createConfiguration);
@@ -88,5 +88,15 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 	public static String getConfigurationDefaultLabel(Project project)
 	{
 		return "[" + EAM.text("PlanningSubViewName|Custom") + " " + project.getPlanningViewConfigurationPool().size() + "]"; 
+	}
+	
+	protected CodeList getVisibleRowCodes()
+	{
+		return new CodeList();
+	}
+	
+	protected CodeList getVisibleColumnCodes()
+	{
+		return new CodeList();
 	}
 }
