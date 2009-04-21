@@ -64,7 +64,6 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 
 	private void createPlanningViewConfiguration() throws Exception
 	{
-		ViewData viewData = getProject().getCurrentViewData();
 		String visibleRowsAsString = new CodeList().toString();
 		String visibleColsAsString = new CodeList().toString();
 		
@@ -77,7 +76,8 @@ public class CreatePlanningViewConfigurationDoer extends ViewDoer
 		
 		CommandSetObjectData setVisibleColsCommand = new CommandSetObjectData(newConfigurationRef, PlanningViewConfiguration.TAG_COL_CONFIGURATION, visibleColsAsString);
 		getProject().executeCommand(setVisibleColsCommand);
-		
+	
+		ViewData viewData = getProject().getCurrentViewData();
 		CommandSetObjectData selectCurrentConfiguration = new CommandSetObjectData(viewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, newConfigurationRef);
 		getProject().executeCommand(selectCurrentConfiguration);
 		
