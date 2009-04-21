@@ -40,6 +40,7 @@ import org.miradi.objects.TncProjectData;
 import org.miradi.objects.WcpaProjectData;
 import org.miradi.objects.WcsProjectData;
 import org.miradi.objects.WwfProjectData;
+import org.miradi.objects.Xenodata;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
@@ -151,6 +152,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	{
 		ORefList singletonRefPlusMetadataRef = new ORefList(getProject().getSingletonObjectRef(otherProjectDataType));
 		singletonRefPlusMetadataRef.add(getProjectMetadataRef());
+		singletonRefPlusMetadataRef.add(getProject().getSafeSingleObjectRef(Xenodata.getObjectType()));
 		exportForm(writer, form, singletonRefPlusMetadataRef);
 	}
 	
