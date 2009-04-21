@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 09:05-0500\n"
+"POT-Creation-Date: 2009-04-21 09:11-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -5089,6 +5089,14 @@ msgstr "Ocultar actividad en esta página"
 msgid "TT|Hide this Activity so it no longer appears on this Results Chain"
 msgstr ""
 "Ocultar esta actividad para que ya no aparezca en esta cadena de resultados"
+
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewPrefilledConfiguration.java:34
+msgid "Action|Start with current view"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewPrefilledConfiguration.java:39
+msgid "TT|Create a new prefilled Custom Planning View"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateConceptualModel.java:35
 msgid "Action|Create Conceptual Model Page"
