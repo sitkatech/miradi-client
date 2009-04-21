@@ -19,20 +19,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 
 public class CreatePlanningViewPrefilledConfigurationDoer extends AbstractCreatePlanningViewConfigurationDoer
 {
-	//FIXME need to return current configuration code list
 	@Override
-	protected CodeList getVisibleColumnCodes()
+	protected CodeList getVisibleColumnCodes() throws Exception
 	{
-		return new CodeList();
+		
+		return getCurrentConfiguration().getColumnConfiguration();
 	}
 
 	@Override
-	protected CodeList getVisibleRowCodes()
+	protected CodeList getVisibleRowCodes() throws Exception
 	{
-		return new CodeList();
+		return getCurrentConfiguration().getRowConfiguration();
+	}
+	
+	private PlanningViewConfiguration getCurrentConfiguration() throws Exception
+	{
+		ViewData currentViewData = getProject().getCurrentViewData();
+		ORef planningViewConfigurationRef = currentViewData.getPlanningCustomRef();
+		return PlanningViewConfiguration.find(getProject(), planningViewConfigurationRef);
 	}
 }

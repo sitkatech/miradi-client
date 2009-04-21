@@ -91,6 +91,11 @@ public class ViewData extends BaseObject
 		return currentResultsChainRef.getRawRef();
 	}
 	
+	public ORef getPlanningCustomRef()
+	{
+		return planningCustomChoiceRef.getRawRef();
+	}
+	
 	public void setCurrentTab(int newTab) throws Exception
 	{
 		currentTab.set(Integer.toString(newTab));
