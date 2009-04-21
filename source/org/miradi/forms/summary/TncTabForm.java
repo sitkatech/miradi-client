@@ -36,7 +36,7 @@ public class TncTabForm extends FieldPanelSpec
 		int projectMetadataType = ProjectMetadata.getObjectType();
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
-		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
+		addLabelAndField(projectMetadataType, ProjectMetadata.PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		
 		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY);

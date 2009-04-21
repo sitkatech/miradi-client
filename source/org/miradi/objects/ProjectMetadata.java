@@ -48,6 +48,7 @@ import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class ProjectMetadata extends BaseObject
 {
@@ -88,7 +89,18 @@ public class ProjectMetadata extends BaseObject
 		if(fieldTag.equals(PSEUDO_TAG_PROJECT_FILENAME))
 			return objectManager.getFileName();
 		
+		if(fieldTag.equals(PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE))
+			return getXendodataConProProjectId();
+				
 		return super.getPseudoData(fieldTag);
+	}
+	
+	public String getXendodataConProProjectId()
+	{
+		ORef xenodataRef = xenodataRefs.getStringRefMap().getValue(ConProMiradiXml.CONPRO_CONTEXT);
+		Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+		
+		return xenodata.getData(Xenodata.TAG_PROJECT_ID);
 	}
 
 	public ORefList getAllDiagramObjectRefs()
@@ -410,11 +422,13 @@ public class ProjectMetadata extends BaseObject
 		diagramFontFamily = new ChoiceData(TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
 		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
 		xenodataRefs = new StringRefMapData(TAG_XENODATA_STRING_REF_MAP);
+		xenodataConproProjectIdData = new PseudoStringData(PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE);
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
 		addField(TAG_XENODATA_STRING_REF_MAP, xenodataRefs);
+		addField(PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE, xenodataConproProjectIdData);
 		
 		projectFileName = new PseudoStringData(PSEUDO_TAG_PROJECT_FILENAME);
 		addField(PSEUDO_TAG_PROJECT_FILENAME, projectFileName);
@@ -485,6 +499,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_THREAT_RATING_MODE = "ThreatRatingMode";
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
+	public static final String PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE = "PseudoXenodataConproProjectIdValue";
 	
 	public static final String OBJECT_NAME = "ProjectMetadata";
 
@@ -553,4 +568,5 @@ public class ProjectMetadata extends BaseObject
 	
 	private StringRefMapData xenodataRefs;
 	private PseudoStringData projectFileName;
+	private PseudoStringData xenodataConproProjectIdData;
 }
