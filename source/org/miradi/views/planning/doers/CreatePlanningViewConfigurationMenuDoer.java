@@ -21,9 +21,9 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
-import org.miradi.views.umbrella.doers.AbstractMenuDoer;
+import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
 
-public class CreatePlanningViewConfigurationMenuDoer extends AbstractMenuDoer
+public class CreatePlanningViewConfigurationMenuDoer extends AbstractPopDownMenuDoer
 {
 	@Override
 	protected Class[] getAllPossibleActionClasses()
