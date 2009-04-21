@@ -47,7 +47,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 		super(projectToUse, metadata.getType(), metadata.getId());
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
-		addField(createConproProjectIdField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
+		addField(createReadonlyTextField(ProjectMetadata.getObjectType(), ProjectMetadata.PSEUDO_TAG_XENODATA_CONPRO_PROJECT_ID_VALUE));
 		
 		ChoiceQuestion tncProjectSharingQuestion = getProject().getQuestion(TncProjectSharingQuestion.class);
 		addRadioButtonFieldWithCustomLabel(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, tncProjectSharingQuestion, EAM.text("Share Outside of TNC?"));
