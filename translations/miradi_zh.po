@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 12:53-0500\n"
+"POT-Creation-Date: 2009-04-21 13:59-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -427,11 +427,11 @@ msgstr "野生动物保护协会（WCS） \t\t"
 msgid "Label|RARE"
 msgstr "RARE"
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:53
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:54
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:95
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:96
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "大自然保护协会 \t\t"
@@ -1957,7 +1957,7 @@ msgstr "已存在使用相同名称的项目: \t\t"
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:880
+#: miradi/source/org/miradi/project/Project.java:888
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
@@ -7489,9 +7489,6 @@ msgstr "城市 \t\t"
 msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 msgstr "ConPro项目编号 \t\t"
 
-msgid "FieldLabel|11.PseudoXenodataConproProjectIdValue|ConPro Project Number"
-msgstr ""
-
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "ID \t\t"
 
@@ -8249,6 +8246,9 @@ msgstr "当前土地使用 \t\t"
 
 msgid "FieldLabel|43.ManagementResources|Management Resources"
 msgstr "管理资源 \t\t"
+
+msgid "FieldLabel|44.ProjectId|ConPro Project Number"
+msgstr ""
 
 msgid "FieldLabel|45.PercentDate|Date"
 msgstr "日期 \t\t"
