@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 08:50-0500\n"
+"POT-Creation-Date: 2009-04-21 09:05-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -4648,12 +4648,10 @@ msgid "TT|Create a Key Ecological Attribute"
 msgstr "Buat satu Atribut Ekologi Kunci "
 
 #: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:34
-#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:35
 msgid "Action|Create Custom"
 msgstr "Buat Sesuaian "
 
 #: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfigurationMenuDoer.java:39
-#: miradi/source/org/miradi/actions/ActionCreatePlanningViewConfiguration.java:40
 msgid "TT|Create a new Custom Planning View"
 msgstr "Buat satu Tampilan Perencanaan Tersuai baru "
 
@@ -5127,6 +5125,14 @@ msgstr "Buat Titik Belok Simpangan Masuk "
 #: miradi/source/org/miradi/actions/ActionDelete.java:40
 msgid "TT|Delete the selection"
 msgstr "Hapus pilihan "
+
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:35
+msgid "Action|Start with blank view"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:40
+msgid "TT|Create a new blank Custom Planning View"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExportTable.java:34
 msgid "Action|Tab-Delimited Table"
