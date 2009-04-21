@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 12:23-0500\n"
+"POT-Creation-Date: 2009-04-21 12:53-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -1717,11 +1717,11 @@ msgstr ""
 msgid "Report Template"
 msgstr ""
 
-#: miradi/source/org/miradi/views/reports/ReportsView.java:83
+#: miradi/source/org/miradi/views/reports/ReportsView.java:82
 msgid "Standard Reports"
 msgstr ""
 
-#: miradi/source/org/miradi/views/reports/ReportsView.java:84
+#: miradi/source/org/miradi/views/reports/ReportsView.java:83
 msgid "Custom Reports"
 msgstr ""
 
