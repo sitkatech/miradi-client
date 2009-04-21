@@ -51,7 +51,7 @@ abstract public class AbstractMenuDoer extends ObjectsDoer
 	@Override
 	public void doIt() throws CommandFailedException
 	{
-		EAM.logWarning("PlanningCreationMenuDoer called without an event");
+		EAM.logWarning("AbstractMenuDoer called without an event");
 	}
 
 	@Override
