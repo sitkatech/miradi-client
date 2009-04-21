@@ -70,7 +70,7 @@ import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.AddAssignmentDoer;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
 import org.miradi.views.planning.doers.CreateFundingSourceDoer;
-import org.miradi.views.planning.doers.CreatePlanningViewConfigurationDoer;
+import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationMenuDoer;
 import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
 import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
@@ -198,7 +198,7 @@ public class PlanningView extends TabbedView
 	private void addPlanningViewDoersToMap()
 	{
 		addDoerToMap(ActionCreatePlanningViewConfigurationMenuDoer.class, new CreatePlanningViewConfigurationMenuDoer());
-		addDoerToMap(ActionCreatePlanningViewConfiguration.class, new CreatePlanningViewConfigurationDoer());
+		addDoerToMap(ActionCreatePlanningViewConfiguration.class, new CreatePlanningViewEmptyConfigurationDoer());
 		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
