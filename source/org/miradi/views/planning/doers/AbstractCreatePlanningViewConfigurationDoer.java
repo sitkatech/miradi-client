@@ -90,7 +90,7 @@ abstract public class AbstractCreatePlanningViewConfigurationDoer extends ViewDo
 		return "[" + EAM.text("PlanningSubViewName|Custom") + " " + project.getPlanningViewConfigurationPool().size() + "]"; 
 	}
 	
-	abstract protected CodeList getVisibleRowCodes();
+	abstract protected CodeList getVisibleRowCodes() throws Exception;
 	
-	abstract protected CodeList getVisibleColumnCodes();
+	abstract protected CodeList getVisibleColumnCodes() throws Exception;
 }
