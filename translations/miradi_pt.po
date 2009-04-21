@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 12:53-0500\n"
+"POT-Creation-Date: 2009-04-21 13:59-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -391,11 +391,11 @@ msgstr ""
 msgid "Label|RARE"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:53
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:54
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:95
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:96
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr ""
@@ -1733,7 +1733,7 @@ msgstr ""
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:880
+#: miradi/source/org/miradi/project/Project.java:888
 msgid "[No Project]"
 msgstr ""
 
@@ -7155,9 +7155,6 @@ msgstr ""
 msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 msgstr ""
 
-msgid "FieldLabel|11.PseudoXenodataConproProjectIdValue|ConPro Project Number"
-msgstr ""
-
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr ""
 
@@ -7894,6 +7891,9 @@ msgid "FieldLabel|43.CurrentLandUses|Current Land Uses"
 msgstr ""
 
 msgid "FieldLabel|43.ManagementResources|Management Resources"
+msgstr ""
+
+msgid "FieldLabel|44.ProjectId|ConPro Project Number"
 msgstr ""
 
 msgid "FieldLabel|45.PercentDate|Date"
