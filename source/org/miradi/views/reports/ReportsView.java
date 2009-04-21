@@ -49,6 +49,7 @@ public class ReportsView extends TabbedView
 	public void becomeActive() throws Exception
 	{
 		super.becomeActive();
+		reportTemplateManagementPanel.becomeActive();
 		reportTemplateManagementPanel.updateSplitterLocation();
 	}
 	
