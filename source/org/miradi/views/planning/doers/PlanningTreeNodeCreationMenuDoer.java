@@ -27,7 +27,7 @@ import org.miradi.actions.ActionTreeCreateTask;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 
-public class PlanningTreeNodeCreationMenuDoer extends AbstractPlanningCreationMenuDoer
+public class PlanningTreeNodeCreationMenuDoer extends AbstractMenuDoer
 {
 	protected Class[] getAllPossibleActionClasses()
 	{

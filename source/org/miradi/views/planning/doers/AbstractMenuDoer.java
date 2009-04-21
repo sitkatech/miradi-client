@@ -34,7 +34,7 @@ import org.miradi.main.EAM;
 import org.miradi.views.Doer;
 import org.miradi.views.ObjectsDoer;
 
-abstract public class AbstractPlanningCreationMenuDoer extends ObjectsDoer
+abstract public class AbstractMenuDoer extends ObjectsDoer
 {
 	@Override
 	public boolean isAvailable()
