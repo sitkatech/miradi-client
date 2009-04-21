@@ -32,11 +32,11 @@ public class ActionCreatePlanningViewEmptyConfiguration extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Create Custom");
+		return EAM.text("Action|Start with blank view");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a new Custom Planning View");
+		return EAM.text("TT|Create a new blank Custom Planning View");
 	}
 }
