@@ -50,7 +50,6 @@ public class ReportsView extends TabbedView
 	{
 		super.becomeActive();
 		reportTemplateManagementPanel.becomeActive();
-		reportTemplateManagementPanel.updateSplitterLocation();
 	}
 	
 	private void addDoersToMap()
