@@ -125,7 +125,7 @@ import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.planning.PlanningView;
-import org.miradi.views.planning.doers.CreatePlanningViewConfigurationDoer;
+import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.views.umbrella.CreateProjectDialog;
 
@@ -689,7 +689,7 @@ public class Project
 			return;
 		
 		ORef createPlanningConfiguration = createObject(PlanningViewConfiguration.getObjectType());
-		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewConfigurationDoer.getConfigurationDefaultLabel(this));
+		setObjectData(createPlanningConfiguration, PlanningViewConfiguration.TAG_LABEL, CreatePlanningViewEmptyConfigurationDoer.getConfigurationDefaultLabel(this));
 		
 		ViewData planningViewData = getViewData(PlanningView.getViewName());
 		setObjectData(planningViewData.getRef(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF, createPlanningConfiguration.toString());

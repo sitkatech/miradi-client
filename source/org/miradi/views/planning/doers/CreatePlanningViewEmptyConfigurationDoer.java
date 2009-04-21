@@ -21,7 +21,7 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.utils.CodeList;
 
-public class CreatePlanningViewConfigurationDoer extends AbstractCreatePlanningViewConfigurationDoer
+public class CreatePlanningViewEmptyConfigurationDoer extends AbstractCreatePlanningViewConfigurationDoer
 {
 	protected CodeList getVisibleRowCodes()
 	{
