@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 11:16-0500\n"
+"POT-Creation-Date: 2009-04-21 12:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -7679,6 +7679,9 @@ msgstr "Kotamadya "
 
 msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 msgstr "Nomor Proyek ConPro "
+
+msgid "FieldLabel|11.PseudoXenodataConproProjectIdValue|ConPro Project Number"
+msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "ID "
