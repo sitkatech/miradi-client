@@ -21,6 +21,7 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
+import org.miradi.views.umbrella.doers.AbstractMenuDoer;
 
 public class CreatePlanningViewConfigurationMenuDoer extends AbstractMenuDoer
 {
