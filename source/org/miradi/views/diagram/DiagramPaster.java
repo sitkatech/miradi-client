@@ -89,6 +89,7 @@ abstract public class DiagramPaster
 		
 		factorDeepCopies = transferableList.getFactorDeepCopies();
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
+		threatStressRatingDeepCopies = transferableListToUse.getThreatStressRatingDeepCopies();
 		factorLinkDeepCopies = transferableList.getFactorLinkDeepCopies();
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 		pastedCellsToSelect = new Vector();
@@ -357,6 +358,46 @@ abstract public class DiagramPaster
 		addToDiagramObject(getDiagramObject(), refToAppend, tag);
 	}
 
+	protected void createThreatStressRatings() throws Exception
+	{
+		for (int index = 0; index < threatStressRatingDeepCopies.size(); ++index)
+		{			
+			String jsonAsString = threatStressRatingDeepCopies.get(index);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+
+			ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
+			ORef oldThreatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
+			
+			ORef newStressRef = getOldToNewObjectRefMap().get(oldStressRef);
+			ORef newThreatRef = getOldToNewObjectRefMap().get(oldThreatRef);
+			
+			ThreatStressRating threatStressRating = findThreatStressRating(newStressRef, newThreatRef);
+			Command[] commands = threatStressRating.createCommandsToLoadFromJson(json);
+			getProject().executeCommandsWithoutTransaction(commands);
+			
+			fixupRef(threatStressRating, ThreatStressRating.TAG_STRESS_REF);
+			fixupRef(threatStressRating, ThreatStressRating.TAG_THREAT_REF);
+		}
+	}
+	
+	private ThreatStressRating findThreatStressRating(ORef newStressRef, ORef newThreatRef)
+	{
+		ORefList threatStressRatingRefs = getProject().getThreatStressRatingPool().getRefList();
+		for (int index = 0; index < threatStressRatingRefs.size(); ++index)
+		{
+			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(index));
+			if (!threatStressRating.getStressRef().equals(newStressRef))
+				continue;
+			
+			if (!threatStressRating.getThreatRef().equals(newThreatRef))
+				continue;
+			
+			return threatStressRating;		
+		}
+		
+		throw new RuntimeException(EAM.text("Could not find Threat Stress Rating for stress and threat"));
+	}
+
 	protected void createNewFactorsAndContents() throws Exception
 	{
 		for (int i = factorDeepCopies.size() - 1; i >= 0; --i)
@@ -384,21 +425,6 @@ abstract public class DiagramPaster
 		}
 		
 		fixUpRelevancyOverrideSet();
-		fixUpThreatStressRatingFields();
-	}
-
-	private void fixUpThreatStressRatingFields() throws Exception
-	{
-		Collection<ORef> newPastedRefs = getOldToNewObjectRefMap().values();
-		for(ORef ref : newPastedRefs)
-		{
-			if (ThreatStressRating.is(ref))
-			{
-				ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), ref);
-				fixupRef(threatStressRating, ThreatStressRating.TAG_STRESS_REF);
-				fixupRef(threatStressRating, ThreatStressRating.TAG_THREAT_REF);
-			}
-		}
 	}
 
 	private void fixupRef(ThreatStressRating threatStressRating, String tag) throws Exception
@@ -880,6 +906,7 @@ abstract public class DiagramPaster
 	
 	private Vector<String> factorDeepCopies;
 	private Vector<String> diagramFactorDeepCopies;
+	private Vector<String> threatStressRatingDeepCopies;
 	private Vector<String> factorLinkDeepCopies;
 	private Vector<String> diagramLinkDeepCopies;
 	

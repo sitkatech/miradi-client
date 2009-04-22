@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Vector;
@@ -45,6 +46,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
@@ -94,12 +96,13 @@ public class TransferableMiradiList implements Transferable, Serializable
 	{
 		factorDeepCopies = new Vector();
 		diagramFactorDeepCopies = new Vector();
+		threatStressRatingCopies = new Vector();
 		
 		factorLinkDeepCopies = new Vector();
 		diagramLinkDeepCopies = new Vector();
 	}
 
-	public void storeData(EAMGraphCell[] selectedCellsToCopy)
+	public void storeData(EAMGraphCell[] selectedCellsToCopy) throws Exception
 	{
 		Arrays.sort(selectedCellsToCopy, new EAMGraphCellByFactorTypeSorter());
 		ObjectDeepCopier deepCopier = createObjectDeepCopier();
@@ -111,6 +114,19 @@ public class TransferableMiradiList implements Transferable, Serializable
 			
 			if (cell.isFactorLink())
 				addFactorLinkDeepCopies(deepCopier, cell.getDiagramLink());
+		}
+		
+		fillThreatStressRatingList();
+	}
+
+	private void fillThreatStressRatingList() throws ParseException
+	{
+		for (int index = 0; index < factorDeepCopies.size(); index++)
+		{
+			EnhancedJsonObject json = new EnhancedJsonObject(factorDeepCopies.get(index));
+			int objectType = json.getInt(DiagramPaster.FAKE_TAG_TYPE);
+			if (ThreatStressRating.is(objectType))
+				threatStressRatingCopies.add(json.toString());
 		}
 	}
 	
@@ -188,6 +204,11 @@ public class TransferableMiradiList implements Transferable, Serializable
 	{
 		return diagramFactorDeepCopies;
 	}
+	
+	public Vector getThreatStressRatingDeepCopies()
+	{
+		return threatStressRatingCopies;
+	}
 
 	public Vector<String> getFactorDeepCopies()
 	{
@@ -254,6 +275,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		objectOut.writeObject(projectName);
 		objectOut.writeObject(factorDeepCopies);
 		objectOut.writeObject(diagramFactorDeepCopies);
+		objectOut.writeObject(threatStressRatingCopies);
 		objectOut.writeObject(factorLinkDeepCopies);
 		objectOut.writeObject(diagramLinkDeepCopies);
 		objectOut.writeObject(rectWithUpperMostLeftMostCorner);
@@ -272,6 +294,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 		projectName = (String) objectIn.readObject();
 		factorDeepCopies = (Vector) objectIn.readObject();
 		diagramFactorDeepCopies = (Vector) objectIn.readObject();
+		threatStressRatingCopies = (Vector) objectIn.readObject();
 		factorLinkDeepCopies = (Vector) objectIn.readObject();
 		diagramLinkDeepCopies = (Vector) objectIn.readObject();
 		rectWithUpperMostLeftMostCorner = (Rectangle) objectIn.readObject();
@@ -285,6 +308,7 @@ public class TransferableMiradiList implements Transferable, Serializable
 	private String projectName;
 	private Vector<String> factorDeepCopies;
 	private Vector<String> diagramFactorDeepCopies;
+	private Vector<String> threatStressRatingCopies;
 	private Vector<String> factorLinkDeepCopies;
 	private Vector<String> diagramLinkDeepCopies;
 	private Rectangle rectWithUpperMostLeftMostCorner;

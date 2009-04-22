@@ -783,7 +783,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		executeCommand(setData);
 	}
 
-	private void fillObjectUsingCommand(BaseObject object, String fieldTag, String data) throws Exception
+	public void fillObjectUsingCommand(BaseObject object, String fieldTag, String data) throws Exception
 	{
 		fillObjectUsingCommand(object.getRef(), fieldTag, data);
 	}
@@ -1026,19 +1026,55 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ORef createDiagramLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		BaseId baseId = BaseId.INVALID;
-		if(!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
+		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLink(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
-		FactorLinkId factorLinkId = new FactorLinkId(baseId.asInt());
 		
-		CreateDiagramFactorLinkParameter extraInfo = new CreateDiagramFactorLinkParameter(factorLinkId, from.getDiagramFactorId(), to.getDiagramFactorId());
+		CreateDiagramFactorLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
 
 		return createObject(ObjectType.DIAGRAM_LINK, extraInfo);
 	}
 
 	public ORef createFactorLink(ORef fromFactorRef, ORef toFactorRef) throws Exception
 	{
-		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
+		CreateFactorLinkParameter parameter = createFactorLinkExtraInfo(fromFactorRef, toFactorRef);
 		return createObject(ObjectType.FACTOR_LINK, parameter);
+	}
+	
+	public ORef createDiagramLinkWithCommand(DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		BaseId baseId = BaseId.INVALID;
+		if(!shouldCreateGroupBoxLink(from, to))
+			baseId = createFactorLinkWithCommand(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
+		
+		CreateDiagramFactorLinkParameter extraInfo = createDiagramLinkExtraInfo(from, to, baseId);
+		CommandCreateObject createDiagramLink = new CommandCreateObject(DiagramLink.getObjectType(), extraInfo);
+		executeCommand(createDiagramLink);
+
+		return createDiagramLink.getObjectRef();
+	}
+	
+	public ORef createFactorLinkWithCommand(ORef fromFactorRef, ORef toFactorRef) throws Exception
+	{
+		CreateFactorLinkParameter parameter = createFactorLinkExtraInfo(fromFactorRef, toFactorRef);
+		CommandCreateObject createFactorLink = new CommandCreateObject(FactorLink.getObjectType(), parameter);
+		executeCommand(createFactorLink);
+		
+		return createFactorLink.getObjectRef();
+	}
+	
+	private boolean shouldCreateGroupBoxLink(DiagramFactor from, DiagramFactor to)
+	{
+		return from.isGroupBoxFactor() || to.isGroupBoxFactor();
+	}
+	
+	private CreateDiagramFactorLinkParameter createDiagramLinkExtraInfo(DiagramFactor from, DiagramFactor to, BaseId baseId)
+	{
+		return new CreateDiagramFactorLinkParameter(new FactorLinkId(baseId.asInt()), from.getDiagramFactorId(), to.getDiagramFactorId());
+	}
+	
+	private CreateFactorLinkParameter createFactorLinkExtraInfo(ORef fromFactorRef, ORef toFactorRef)
+	{
+		return new CreateFactorLinkParameter(fromFactorRef, toFactorRef);
 	}
 
 	public LinkCell createLinkCellWithBendPoints(PointList bendPoints) throws Exception
