@@ -130,6 +130,27 @@ public class TestDiagramPaster extends EAMTestCase
 		diagramPaster.fixTags(existingTagNames, target);	
 		assertEquals("should have not created tag for existing tag name?", 3, getProject().getTaggedObjectSetPool().size());
 	}
+
+//FIXME this test is under construction
+//	public void testThreatStressRatingUndoPaste() throws Exception
+//	{
+//		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+//		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+//		ORef diagramLinkRef = getProject().createDiagramLink(threatDiagramFactor, targetDiagramFactor);
+//		DiagramLink threatDiagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+//		Target target = (Target) targetDiagramFactor.getWrappedFactor();
+//		getProject().populateDirectThreatLink(threatDiagramLink.getWrappedFactorLink(), target.getStressRefs());
+//		
+//		DiagramModel model = getProject().getDiagramModel();
+//		FactorCell targetFactorCell = model.getFactorCellByRef(targetDiagramFactor.getRef());
+//		FactorCell threatFactorCell = model.getFactorCellByRef(threatDiagramFactor.getRef());
+//		LinkCell linkCell = model.getDiagramFactorLink(threatDiagramLink);
+//		EAMGraphCell dataCells[] = {threatFactorCell, targetFactorCell};
+//		
+//		ORef diagramObjectRef = model.getDiagramObject().getRef();
+//		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
+//		transferableList.storeData(dataCells);
+//	}
 	
 	private ProjectForTesting getProject()
 	{
