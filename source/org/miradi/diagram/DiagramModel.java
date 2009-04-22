@@ -613,7 +613,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getFactorByRef(factorRef);
 	}
 
-	public LinkCell getDiagramFactorLink(DiagramLink diagramFactorLink)
+	public LinkCell getLinkCell(DiagramLink diagramFactorLink)
 	{
 		return cellInventory.getLinkCell(diagramFactorLink);
 	}
@@ -878,7 +878,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 			return null;
 		
 		DiagramLink diagramFactorLink  = getDiagramLinkByRef(diagramLinkRef);
-		LinkCell linkCell = getDiagramFactorLink(diagramFactorLink);
+		LinkCell linkCell = getLinkCell(diagramFactorLink);
 		linkCell.updateFromDiagramFactorLink();
 		updateCell(linkCell);
 		return linkCell;

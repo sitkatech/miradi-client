@@ -332,7 +332,7 @@ abstract public class DiagramPaster
 	private void addDiagramLinkToSelection(ORef diagramLinkRefToSelect) throws Exception
 	{
 		DiagramLink diagramLink = (DiagramLink) project.findObject(diagramLinkRefToSelect);
-		LinkCell linkCell = currentModel.getDiagramFactorLink(diagramLink);
+		LinkCell linkCell = currentModel.getLinkCell(diagramLink);
 		pastedCellsToSelect.add(linkCell);	
 	}
 

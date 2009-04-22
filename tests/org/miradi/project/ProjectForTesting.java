@@ -973,7 +973,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		DiagramLink diagramLink = (DiagramLink) findObject(new ORef(ObjectType.DIAGRAM_LINK, diagramLinkId));
 		addDiagramLinkToModel(diagramLink);
 		
-		return getDiagramModel().getDiagramFactorLink(diagramLink);	
+		return getDiagramModel().getLinkCell(diagramLink);	
 	}
 	
 	public void addDiagramLinkToModel(DiagramLink diagramLink) throws Exception 

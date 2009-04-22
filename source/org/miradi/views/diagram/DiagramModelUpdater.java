@@ -101,7 +101,7 @@ public class DiagramModelUpdater
 		for (int i = 0; i < removedFactorLinkIds.size(); i++)
 		{
 			DiagramLink diagramFactorLink = (DiagramLink) project.findObject(new ORef(ObjectType.DIAGRAM_LINK, removedFactorLinkIds.get(i)));
-			LinkCell linkCell = model.getDiagramFactorLink(diagramFactorLink);			
+			LinkCell linkCell = model.getLinkCell(diagramFactorLink);			
 			clearDiagramSelection(linkCell);
 			model.deleteDiagramFactorLink(diagramFactorLink);
 		}
