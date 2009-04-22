@@ -22,16 +22,21 @@ package org.miradi.views.diagram;
 import java.awt.Point;
 import java.util.HashMap;
 
+import org.miradi.commands.CommandBeginTransaction;
+import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.diagram.cells.LinkCell;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
@@ -41,6 +46,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
+import org.miradi.views.umbrella.Undo;
 
 public class TestDiagramPaster extends EAMTestCase
 {
@@ -130,27 +136,51 @@ public class TestDiagramPaster extends EAMTestCase
 		diagramPaster.fixTags(existingTagNames, target);	
 		assertEquals("should have not created tag for existing tag name?", 3, getProject().getTaggedObjectSetPool().size());
 	}
-
-//FIXME this test is under construction
-//	public void testThreatStressRatingUndoPaste() throws Exception
-//	{
-//		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-//		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-//		ORef diagramLinkRef = getProject().createDiagramLink(threatDiagramFactor, targetDiagramFactor);
-//		DiagramLink threatDiagramLink = DiagramLink.find(getProject(), diagramLinkRef);
-//		Target target = (Target) targetDiagramFactor.getWrappedFactor();
-//		getProject().populateDirectThreatLink(threatDiagramLink.getWrappedFactorLink(), target.getStressRefs());
-//		
-//		DiagramModel model = getProject().getDiagramModel();
-//		FactorCell targetFactorCell = model.getFactorCellByRef(targetDiagramFactor.getRef());
-//		FactorCell threatFactorCell = model.getFactorCellByRef(threatDiagramFactor.getRef());
-//		LinkCell linkCell = model.getDiagramFactorLink(threatDiagramLink);
-//		EAMGraphCell dataCells[] = {threatFactorCell, targetFactorCell};
-//		
-//		ORef diagramObjectRef = model.getDiagramObject().getRef();
-//		TransferableMiradiList transferableList = new TransferableMiradiList(project, diagramObjectRef);
-//		transferableList.storeData(dataCells);
-//	}
+	
+	public void testThreatStressRatingUndoPaste() throws Exception
+	{
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		Target target = (Target) targetDiagramFactor.getWrappedFactor();
+		ORefList stressRefs = new ORefList(getProject().createStress().getRef());
+		getProject().fillObjectUsingCommand(target, Target.TAG_STRESS_REFS, stressRefs.toString());
+		
+		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
+		
+		ORef diagramLinkRef = getProject().createDiagramLinkWithCommand(threatDiagramFactor, targetDiagramFactor);
+		CommandSetObjectData addToDiagram = CommandSetObjectData.createAppendIdCommand(getProject().getTestingDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
+		getProject().executeCommand(addToDiagram);
+		
+		assertEquals("wrong threat stress ratings count?", 1, getProject().getThreatStressRatingPool().size());
+		
+		DiagramModel model = getProject().getDiagramModel();
+		FactorCell targetFactorCell = model.getFactorCellByRef(targetDiagramFactor.getRef());
+		FactorCell threatFactorCell = model.getFactorCellByRef(threatDiagramFactor.getRef());
+		DiagramLink threatDiagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+		LinkCell linkCell = model.getLinkCell(threatDiagramLink);
+		EAMGraphCell dataCells[] = {linkCell, threatFactorCell, targetFactorCell};
+		
+		ORef diagramObjectRef = model.getDiagramObject().getRef();
+		TransferableMiradiList transferableList = new TransferableMiradiList(getProject(), diagramObjectRef);
+		transferableList.storeData(dataCells);
+	
+		getProject().executeCommand(new CommandBeginTransaction());
+		try
+		{
+			getProject().getDiagramClipboard().incrementPasteCount();
+			DiagramCopyPaster paster = new DiagramCopyPaster(null, getProject().getDiagramModel(), transferableList);
+			paster.pasteFactorsAndLinks(new Point(0, 0));
+		
+			assertEquals("wrong threat stress ratings count after paste?", 2, getProject().getThreatStressRatingPool().size());
+		}
+		finally
+		{
+			getProject().executeCommand(new CommandEndTransaction());
+		}
+		
+		Undo.undo(getProject());
+		assertEquals("wrong threat stress ratings count after undo?", 1, getProject().getThreatStressRatingPool().size());
+	}
 	
 	private ProjectForTesting getProject()
 	{

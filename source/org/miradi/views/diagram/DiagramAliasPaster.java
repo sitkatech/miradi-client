@@ -38,6 +38,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -139,6 +140,9 @@ public class DiagramAliasPaster extends DiagramPaster
 	
 	protected boolean shouldCreateObject(ORef ref)
 	{
+		if (ThreatStressRating.is(ref))
+			return false;
+		
 		if (shouldCreateCopy(ref))
 			return true;
 		

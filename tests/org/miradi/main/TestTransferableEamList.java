@@ -37,7 +37,10 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.Target;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
@@ -104,13 +107,18 @@ public class TestTransferableEamList extends EAMTestCase
 		CommandCreateObject createCommand1 = commandHelper.createFactorAndDiagramFactor(ObjectType.CAUSE);
 		ORef diagramFactorRef1 = createCommand1.getObjectRef();
 		DiagramFactor diagramFactor1 = (DiagramFactor) project.findObject(diagramFactorRef1);
+		project.enableAsThreat(diagramFactor1.getWrappedORef());
 		diagramFactor1.setLocation(node1Location);
 		
 		Point node2Location = new Point(2,3);
-		CommandCreateObject createCommand2 = commandHelper.createFactorAndDiagramFactor(ObjectType.STRATEGY);
+		CommandCreateObject createCommand2 = commandHelper.createFactorAndDiagramFactor(ObjectType.TARGET);
 		ORef diagramFactorRef2 = createCommand2.getObjectRef();
 		DiagramFactor diagramFactor2 = (DiagramFactor) project.findObject(diagramFactorRef2);
 		diagramFactor2.setLocation(node2Location);
+		
+		Stress stress = project.createStress();
+		ORefList stressRefs = new ORefList(stress);
+		project.fillObjectUsingCommand(diagramFactor2.getWrappedFactor(), Target.TAG_STRESS_REFS, stressRefs.toString());
 		
 		TaggedObjectSet taggedObjectSet = project.createTaggedObjectSet();
 		taggedObjectSet.setData(TaggedObjectSet.TAG_LABEL, "SomeTag");
@@ -124,6 +132,8 @@ public class TestTransferableEamList extends EAMTestCase
 		ORef factorLinkRef = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getDiagramModel(), diagramFactor1, diagramFactor2);
 		DiagramLink diagramLink = project.getDiagramModel().getDiagramLinkByWrappedRef(factorLinkRef);
 		
+		assertEquals("wrong threat stress ratings count?", 1, project.getThreatStressRatingPool().size());
+		
 		FactorCell factorCell1 = model.getFactorCellByRef(diagramFactorRef1);
 		FactorCell factorCell2 = model.getFactorCellByRef(diagramFactorRef2);
 		EAMGraphCell dataCells[] = {factorCell1, factorCell2, model.findLinkCell(diagramLink)};
@@ -136,7 +146,7 @@ public class TestTransferableEamList extends EAMTestCase
 		assertNotNull(miradiTransferData);
 		
 		Vector<String> factorDeepCopies = miradiTransferData.getFactorDeepCopies();
-		assertEquals(2, factorDeepCopies.size());
+		assertEquals(4, factorDeepCopies.size());
 		
 		EnhancedJsonObject factor1Json = new EnhancedJsonObject(factorDeepCopies.get(0));
 		int factor1Type = factor1Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
@@ -148,7 +158,7 @@ public class TestTransferableEamList extends EAMTestCase
 		
 		EnhancedJsonObject factor2Json = new EnhancedJsonObject(factorDeepCopies.get(1));
 		int factor2Type = factor2Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
-		assertEquals("wrong type for factor 1?", ObjectType.STRATEGY, factor2Type);
+		assertEquals("wrong type for factor 1?", ObjectType.TARGET, factor2Type);
 		assertEquals("wrong factor id?", diagramFactor2.getWrappedId(), factor2Json.getId(Factor.TAG_ID));
 		
 		Vector<String> diagramFactorDeepCopies = miradiTransferData.getDiagramFactorDeepCopies();
@@ -160,6 +170,12 @@ public class TestTransferableEamList extends EAMTestCase
 		assertEquals("wrong diagram factor location?", node1Location, diagramFactor1Location);
 		ORef wrappedRef1 = diagramFactor1Json.getRef(DiagramFactor.TAG_WRAPPED_REF);
 		assertEquals("wrong diagram factor wrapped ref?", diagramFactor1.getWrappedORef(), wrappedRef1);
+		
+		Vector<String> threatStressRatingDeepCopies = miradiTransferData.getThreatStressRatingDeepCopies();
+		assertEquals("wrong threat stress rating cound in transferable?", 1, threatStressRatingDeepCopies.size());
+		EnhancedJsonObject threatStressRatingJson = new EnhancedJsonObject(threatStressRatingDeepCopies.get(0));
+		int threatStressRatingType = threatStressRatingJson.getInt(DiagramPaster.FAKE_TAG_TYPE);
+		assertEquals("wrong type for threat stress rating?", ThreatStressRating.getObjectType(), threatStressRatingType);
 		
 		EnhancedJsonObject diagramFactor2Json = new EnhancedJsonObject(diagramFactorDeepCopies.get(1));
 		int diagramFactor2Type = diagramFactor2Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
