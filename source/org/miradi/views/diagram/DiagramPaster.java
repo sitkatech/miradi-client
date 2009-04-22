@@ -43,7 +43,6 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
-import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -282,6 +281,11 @@ abstract public class DiagramPaster
 		getProject().executeCommandsWithoutTransaction(commandsToLoadFromJson);
 	}
 	
+	private BaseObject createObject(int type) throws CommandFailedException
+	{
+		return createObject(type, null);
+	}
+	
 	private BaseObject createObject(int type, CreateObjectParameter extraInfo) throws CommandFailedException
 	{
 		CommandCreateObject createObject = new CommandCreateObject(type, extraInfo);
@@ -413,9 +417,7 @@ abstract public class DiagramPaster
 				continue;
 			
 			int convertedType = convertType(oldObjectRef);
-			//FIXME review createExtraInfo and remove this code below, since we no longer creat TSRs here.
-			CreateObjectParameter extraInfo = createExtraInfo(convertedType, json);
-			BaseObject newObject = createObject(convertedType, extraInfo);
+			BaseObject newObject = createObject(convertedType);
 			loadNewObjectFromOldJson(newObject, json);
 			
 			getOldToNewObjectRefMap().put(oldObjectRef, newObject.getRef());
@@ -432,19 +434,6 @@ abstract public class DiagramPaster
 	{
 		Command[] commands = getCommandToFixRef(getOldToNewObjectRefMap(), threatStressRating, tag);
 		getProject().executeCommandsWithoutTransaction(commands);
-	}
-
-	private CreateObjectParameter createExtraInfo(int convertedType, EnhancedJsonObject json)
-	{
-		if (ThreatStressRating.is(convertedType))
-		{
-			ORef stressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
-			ORef threatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
-			
-			return new CreateThreatStressRatingParameter(stressRef, threatRef);
-		}
-		
-		return null;
 	}
 
 	public void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
