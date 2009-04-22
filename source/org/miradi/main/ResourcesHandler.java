@@ -124,8 +124,12 @@ public class ResourcesHandler
 	
 	public static boolean isRunningFromInsideJar()
 	{
-		String url = getResourceURLWithoutExceptions("/").toString();
-		if(url.indexOf('!') >= 0)
+		URL url = getResourceURL("/");
+		if(url == null)
+			return true;
+		
+		String urlAsString = url.toString();
+		if(urlAsString.indexOf('!') >= 0)
 			return true;
 		
 		return false;
