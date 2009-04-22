@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-21 13:59-0500\n"
+"POT-Creation-Date: 2009-04-22 18:10-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -752,6 +752,10 @@ msgstr "[Página %s]"
 #: miradi/source/org/miradi/views/diagram/CloneIndicatorDoer.java:33
 msgid "Choose Indicator to Clone"
 msgstr "Seleccione el indicador para clonar."
+
+#: miradi/source/org/miradi/views/diagram/DiagramPaster.java:402
+msgid "Could not find Threat Stress Rating for stress and threat"
+msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:66
 #: miradi/source/org/miradi/main/EAM.java:413
