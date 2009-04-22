@@ -195,16 +195,25 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 		for (int i = 0; i < linkCells.length; ++i)
 		{
 			EdgeView view = (EdgeView) getDiagram().getGraphLayoutCache().getMapping(linkCells[i], false);
+			DiagramLink diagramLink = linkCells[i].getDiagramLink();
+			if(DiagramLink.find(getProject(), diagramLink.getRef()) == null)
+			{
+				// NOTE: MRD-3079, this was happening for: 
+				// undo paste of so many bend points that the handles don't show, then click on a factor
+				// The real solution would be to always unselect before removing cells from JGraph
+				EAM.logDebug("Skipping bend point move for link that was deleted: " + diagramLink.getRef());
+				continue;
+			}
 			if (view == null)
 			{
-				if (!linkCells[i].getDiagramLink().isCoveredByGroupBoxLink())
-					EAM.logWarning("Found Link (" + linkCells[i].getDiagramLink().getRef() + ")without a view and not covered by a group box link");
+				if (!diagramLink.isCoveredByGroupBoxLink())
+					EAM.logWarning("Found Link (" + diagramLink.getRef() + ")without a view and not covered by a group box link");
 				
 				continue;
 			}
 			
 			PointList graphCurrentBendPoints = linkCells[i].getJGraphCurrentBendPoints(view);			
-			CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(linkCells[i].getDiagramLink(), DiagramLink.TAG_BEND_POINTS, graphCurrentBendPoints);
+			CommandSetObjectData bendPointMoveCommand =	CommandSetObjectData.createNewPointList(diagramLink, DiagramLink.TAG_BEND_POINTS, graphCurrentBendPoints);
 			bendPointsMoveCommands.add(bendPointMoveCommand);
 		}
 		
