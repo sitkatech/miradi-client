@@ -42,7 +42,7 @@ public class BendPointCreator
 	//TODO write test for this method
 	public void createBendPoint(Point insertionLocation, DiagramLink selectedLink) throws Exception
 	{
-		LinkCell selectedLinkCell = model.getDiagramFactorLink(selectedLink);
+		LinkCell selectedLinkCell = model.getLinkCell(selectedLink);
 		Point insertPoint = selectedLinkCell.getNewBendPointLocation(model, getCache(), insertionLocation);
 		insertBendPointForLink(selectedLinkCell, insertPoint);
 	}

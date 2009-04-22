@@ -503,7 +503,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	
 	public void clearBendPointSelection(DiagramLink diagramLink)
 	{
-		LinkCell linkCell = getDiagramModel().getDiagramFactorLink(diagramLink);
+		LinkCell linkCell = getDiagramModel().getLinkCell(diagramLink);
 		linkCell.clearBendPointSelectionList();
 	}
 

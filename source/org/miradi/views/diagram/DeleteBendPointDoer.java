@@ -58,7 +58,7 @@ public class DeleteBendPointDoer extends LocationDoer
 		DiagramModel diagramModel = getDiagramView().getDiagramModel();
 		for (int i = 0; i < links.length; ++i)
 		{
-			LinkCell linkCell = diagramModel.getDiagramFactorLink(links[i]);
+			LinkCell linkCell = diagramModel.getLinkCell(links[i]);
 			if (linkCell == null)
 			{
 				EAM.logError("LinkCell is null due to link not being removed from selection list.");
@@ -107,7 +107,7 @@ public class DeleteBendPointDoer extends LocationDoer
 	
 	private PointList getBendPointListMinusDeletedPoint(DiagramLink diagramFactorLink)
 	{
-		LinkCell linkCell = getDiagramView().getDiagramModel().getDiagramFactorLink(diagramFactorLink);
+		LinkCell linkCell = getDiagramView().getDiagramModel().getLinkCell(diagramFactorLink);
 		PointList currentBendPoints = diagramFactorLink.getBendPoints();
 		int[] selectedBendPointIndexes = linkCell.getSelectedBendPointIndexes();
 		PointList newBendPoints = new PointList();

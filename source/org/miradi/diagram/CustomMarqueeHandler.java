@@ -68,7 +68,7 @@ public class CustomMarqueeHandler extends BasicMarqueeHandler
 
 	private void selectBendPointsAndLinksInBounds(DiagramModel model, DiagramLink diagramLink)
 	{
-		LinkCell linkCell = model.getDiagramFactorLink(diagramLink);
+		LinkCell linkCell = model.getLinkCell(diagramLink);
 		Rectangle2D.Double scaledBounds = diagram.getScaledBounds(linkCell);
 		if (! marqueeBounds.intersects(scaledBounds))
 				return;
