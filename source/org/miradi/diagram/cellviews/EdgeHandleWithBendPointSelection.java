@@ -36,6 +36,7 @@ import org.jgraph.plaf.basic.BasicGraphUI.RootHandle;
 import org.miradi.diagram.BendPointSelectionHelper;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.LinkCell;
+import org.miradi.main.EAM;
 import org.miradi.utils.PointList;
 
 public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
@@ -110,6 +111,13 @@ public class EdgeHandleWithBendPointSelection extends EdgeView.EdgeHandle
 		
 		Graphics2D g2 = (Graphics2D) g;
 		PointList bendPoints = linkCell.getDiagramLink().getBendPoints();
+		if(bendPoints.size() == 0)
+		{
+			// NOTE: This happens if you undo the creation of a bend point that is now selected
+			// The real solution would be to always unselect before removing cells from JGraph
+			EAM.logDebug("Attempted to paint bend points that don't exist: " + linkCell.getDiagramLink().getRef());
+			return;
+		}
 		int[] selectedIndexes = bendSelectionHelper.getSelectedIndexes();
 		for (int i = 0; i < selectedIndexes.length; ++i)
 		{
