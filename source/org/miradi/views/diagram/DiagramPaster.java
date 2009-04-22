@@ -413,6 +413,7 @@ abstract public class DiagramPaster
 				continue;
 			
 			int convertedType = convertType(oldObjectRef);
+			//FIXME review createExtraInfo and remove this code below, since we no longer creat TSRs here.
 			CreateObjectParameter extraInfo = createExtraInfo(convertedType, json);
 			BaseObject newObject = createObject(convertedType, extraInfo);
 			loadNewObjectFromOldJson(newObject, json);
