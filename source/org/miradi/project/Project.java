@@ -479,12 +479,12 @@ public class Project
 
 	public BaseObject findObject(ORef ref)
 	{
-		return findObject(ref.getObjectType(), ref.getObjectId());
+		return objectManager.findObject(ref);
 	}
 
 	public BaseObject findObject(int objectType, BaseId objectId)
 	{
-		return objectManager.findObject(new ORef(objectType, objectId));
+		return findObject(new ORef(objectType, objectId));
 	}
 	
 	public ProjectInfo getProjectInfo()
