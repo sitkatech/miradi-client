@@ -379,13 +379,13 @@ abstract public class DiagramPaster
 		}
 	}
 	
-	private ThreatStressRating findThreatStressRating(EnhancedJsonObject json)
+	private ThreatStressRating findThreatStressRating(EnhancedJsonObject json) throws Exception
 	{
 		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
 		ORef oldThreatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
 		
-		ORef newStressRef = getOldToNewObjectRefMap().get(oldStressRef);
-		ORef newThreatRef = getOldToNewObjectRefMap().get(oldThreatRef);
+		ORef newStressRef = getDiagramFactorWrappedRef(oldStressRef);
+		ORef newThreatRef = getDiagramFactorWrappedRef(oldThreatRef);
 		
 		ORef threatStressRatingRef = ThreatStressPair.findMatchingThreatStressRating(getProject(), newThreatRef, newStressRef);
 		return ThreatStressRating.find(getProject(), threatStressRatingRef);
