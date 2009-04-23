@@ -119,7 +119,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		for(ORef threatStressRatingRef : allThreatStressRatingRefs)
 		{
 			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRef);
-			threatStressPairs.add(new ThreatStressPair(threatStressRating));
+			threatStressPairs.add(new ThreatStressPair(getProject(), threatStressRating));
 		}
 		
 		return threatStressPairs;
@@ -132,7 +132,7 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 		{
 			for(ORef stressRef : stressRefs)
 			{
-				threatStressPairs.add(new ThreatStressPair(threatRef, stressRef));
+				threatStressPairs.add(new ThreatStressPair(getProject(), threatRef, stressRef));
 			}
 		}
 		
@@ -176,13 +176,14 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	
 	class ThreatStressPair 
 	{		
-		public ThreatStressPair(ThreatStressRating threatStressRating)
+		public ThreatStressPair(Project projectToUse, ThreatStressRating threatStressRating)
 		{
-			this(threatStressRating.getThreatRef(), threatStressRating.getStressRef());
+			this(projectToUse, threatStressRating.getThreatRef(), threatStressRating.getStressRef());
 		}
 
-		public ThreatStressPair(ORef threatRefToUse, ORef stressRefToUse)
+		public ThreatStressPair(Project projectToUse, ORef threatRefToUse, ORef stressRefToUse)
 		{
+			project = projectToUse;
 			threatRefToUse.ensureType(Cause.getObjectType());
 			stressRefToUse.ensureType(Stress.getObjectType());
 			
@@ -243,8 +244,14 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 			return getThreatRef().hashCode() + getStressRef().hashCode();
 		}
 		
+		private Project getProject()
+		{
+			return project;
+		}
+				
 		private ORef threatRef;
 		private ORef stressRef;
+		private Project project;
 	}
 	
 	private Project project;
