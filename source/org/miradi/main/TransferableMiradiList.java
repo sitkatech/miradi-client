@@ -126,7 +126,10 @@ public class TransferableMiradiList implements Transferable, Serializable
 			EnhancedJsonObject json = new EnhancedJsonObject(factorDeepCopies.get(index));
 			int objectType = json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 			if (ThreatStressRating.is(objectType))
+			{
 				threatStressRatingCopies.add(json.toString());
+				factorDeepCopies.remove(json.toString());
+			}
 		}
 	}
 	

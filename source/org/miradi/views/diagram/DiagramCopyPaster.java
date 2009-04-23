@@ -27,7 +27,6 @@ import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
-import org.miradi.objects.ThreatStressRating;
 
 public class DiagramCopyPaster extends DiagramPaster
 {
@@ -78,9 +77,6 @@ public class DiagramCopyPaster extends DiagramPaster
 	
 	protected boolean shouldCreateObject(ORef ref)
 	{
-		if (ThreatStressRating.is(ref))
-			return false;
-		
 		return true;
 	}
 }
