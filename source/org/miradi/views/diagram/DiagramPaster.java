@@ -369,13 +369,7 @@ abstract public class DiagramPaster
 			String jsonAsString = threatStressRatings.get(index);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 
-			ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
-			ORef oldThreatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
-			
-			ORef newStressRef = getOldToNewObjectRefMap().get(oldStressRef);
-			ORef newThreatRef = getOldToNewObjectRefMap().get(oldThreatRef);
-			
-			ThreatStressRating threatStressRating = findThreatStressRating(newStressRef, newThreatRef);
+			ThreatStressRating threatStressRating = findThreatStressRating(json);
 			Command[] commands = threatStressRating.createCommandsToLoadFromJson(json);
 			getProject().executeCommandsWithoutTransaction(commands);
 			
@@ -384,8 +378,14 @@ abstract public class DiagramPaster
 		}
 	}
 	
-	private ThreatStressRating findThreatStressRating(ORef newStressRef, ORef newThreatRef)
+	private ThreatStressRating findThreatStressRating(EnhancedJsonObject json)
 	{
+		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
+		ORef oldThreatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
+		
+		ORef newStressRef = getOldToNewObjectRefMap().get(oldStressRef);
+		ORef newThreatRef = getOldToNewObjectRefMap().get(oldThreatRef);
+		
 		ORefList threatStressRatingRefs = getProject().getThreatStressRatingPool().getRefList();
 		for (int index = 0; index < threatStressRatingRefs.size(); ++index)
 		{
