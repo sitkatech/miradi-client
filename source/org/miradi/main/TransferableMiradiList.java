@@ -128,9 +128,10 @@ public class TransferableMiradiList implements Transferable, Serializable
 			if (ThreatStressRating.is(objectType))
 			{
 				threatStressRatingCopies.add(json.toString());
-				factorDeepCopies.remove(json.toString());
 			}
 		}
+		
+		factorDeepCopies.removeAll(threatStressRatingCopies);
 	}
 	
 	public void storeData(HashSet<DiagramFactor> diagramFactors, HashSet<DiagramLink> diagramLinks)
