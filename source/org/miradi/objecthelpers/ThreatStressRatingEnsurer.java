@@ -31,7 +31,6 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
@@ -172,86 +171,6 @@ public class ThreatStressRatingEnsurer implements CommandExecutedListener
 	private Project getProject()
 	{
 		return project;
-	}
-	
-	class ThreatStressPair 
-	{		
-		public ThreatStressPair(Project projectToUse, ThreatStressRating threatStressRating)
-		{
-			this(projectToUse, threatStressRating.getThreatRef(), threatStressRating.getStressRef());
-		}
-
-		public ThreatStressPair(Project projectToUse, ORef threatRefToUse, ORef stressRefToUse)
-		{
-			project = projectToUse;
-			threatRefToUse.ensureType(Cause.getObjectType());
-			stressRefToUse.ensureType(Stress.getObjectType());
-			
-			threatRef = threatRefToUse;
-			stressRef = stressRefToUse;
-		}
-		
-		public ORef findMatchingThreatStressRating()
-		{
-			ORefList tsrReferrerRefsToStress = getTsrReferrerRefsToStress();
-			ORefList tsrReferrerRefsToThreat = getTsrReferrerRefsToThreat();
-			ORefList overLappingRefs = tsrReferrerRefsToStress.getOverlappingRefs(tsrReferrerRefsToThreat);
-			
-			return overLappingRefs.getRefForType(ThreatStressRating.getObjectType());
-		}
-
-		private ORefList getTsrReferrerRefsToStress()
-		{
-			Stress stress = Stress.find(getProject(), getStressRef());
-			return stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-		}
-		
-		private ORefList getTsrReferrerRefsToThreat()
-		{
-			Cause threat = Cause.find(getProject(), getThreatRef());
-			return threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
-		}
-		
-		public ORef getThreatRef()
-		{
-			return threatRef;
-		}
-		
-		public ORef getStressRef()
-		{
-			return stressRef;
-		}
-		
-		@Override
-		public boolean equals(Object rawOther)
-		{
-			if (!(rawOther instanceof ThreatStressPair))
-				return false;
-			
-			ThreatStressPair other = (ThreatStressPair) rawOther;
-			if (!getThreatRef().equals(other.getThreatRef()))
-				return false;
-			
-			if (!getStressRef().equals(other.getStressRef()))
-				return false;
-			
-			return true;
-		}
-		
-		@Override
-		public int hashCode()
-		{
-			return getThreatRef().hashCode() + getStressRef().hashCode();
-		}
-		
-		private Project getProject()
-		{
-			return project;
-		}
-				
-		private ORef threatRef;
-		private ORef stressRef;
-		private Project project;
 	}
 	
 	private Project project;
