@@ -51,7 +51,7 @@ public class DiagramCopyPaster extends DiagramPaster
 		createNewDiagramFactors();
 	}
 	
-	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception
+	public ORef getCorrospondingNewRef(ORef oldWrappedRef) throws Exception
 	{
 		ORef foundRef = getOldToNewObjectRefMap().get(oldWrappedRef);
 		if (foundRef == null)

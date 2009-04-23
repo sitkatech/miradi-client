@@ -384,8 +384,8 @@ abstract public class DiagramPaster
 		ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
 		ORef oldThreatRef = json.getRef(ThreatStressRating.TAG_THREAT_REF);
 		
-		ORef newStressRef = getDiagramFactorWrappedRef(oldStressRef);
-		ORef newThreatRef = getDiagramFactorWrappedRef(oldThreatRef);
+		ORef newStressRef = getCorrospondingNewRef(oldStressRef);
+		ORef newThreatRef = getCorrospondingNewRef(oldThreatRef);
 		
 		ORef threatStressRatingRef = ThreatStressPair.findMatchingThreatStressRating(getProject(), newThreatRef, newStressRef);
 		return ThreatStressRating.find(getProject(), threatStressRatingRef);
@@ -510,7 +510,7 @@ abstract public class DiagramPaster
 			return;
 		
 		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
-		ORef newWrappedRef = getDiagramFactorWrappedRef(oldWrappedRef);
+		ORef newWrappedRef = getCorrospondingNewRef(oldWrappedRef);
 		
 		boolean isShared = oldWrappedRef.equals(newWrappedRef);
 		boolean isGroupBox = GroupBox.is(oldWrappedRef);
@@ -873,7 +873,7 @@ abstract public class DiagramPaster
 	
 	abstract public void pasteFactorsAndLinks(Point startPoint) throws Exception;
 	
-	abstract public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef) throws Exception;
+	abstract public ORef getCorrospondingNewRef(ORef oldWrappedRef) throws Exception;
 	
 	abstract protected boolean canPasteTypeInDiagram(int type);
 	
