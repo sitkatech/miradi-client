@@ -40,6 +40,7 @@ public class DiagramCopyPaster extends DiagramPaster
 		pasteFactors(startPoint);
 		createNewFactorLinks();
 		createNewDiagramLinks();		
+		updateAutoCreatedThreatStressRatings();
 		selectNewlyPastedItems();
 	}
 	

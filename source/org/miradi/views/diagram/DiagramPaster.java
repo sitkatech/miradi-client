@@ -49,6 +49,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objecthelpers.ThreatStressPair;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
@@ -386,20 +387,8 @@ abstract public class DiagramPaster
 		ORef newStressRef = getOldToNewObjectRefMap().get(oldStressRef);
 		ORef newThreatRef = getOldToNewObjectRefMap().get(oldThreatRef);
 		
-		ORefList threatStressRatingRefs = getProject().getThreatStressRatingPool().getRefList();
-		for (int index = 0; index < threatStressRatingRefs.size(); ++index)
-		{
-			ThreatStressRating threatStressRating = ThreatStressRating.find(getProject(), threatStressRatingRefs.get(index));
-			if (!threatStressRating.getStressRef().equals(newStressRef))
-				continue;
-			
-			if (!threatStressRating.getThreatRef().equals(newThreatRef))
-				continue;
-			
-			return threatStressRating;		
-		}
-		
-		throw new RuntimeException(EAM.text("Could not find Threat Stress Rating for stress and threat"));
+		ORef threatStressRatingRef = ThreatStressPair.findMatchingThreatStressRating(getProject(), newThreatRef, newStressRef);
+		return ThreatStressRating.find(getProject(), threatStressRatingRef);
 	}
 
 	protected void createNewFactorsAndContents() throws Exception

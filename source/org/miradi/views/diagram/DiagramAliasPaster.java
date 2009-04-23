@@ -52,6 +52,7 @@ public class DiagramAliasPaster extends DiagramPaster
 	{
 		pasteFactors(startPoint);
 		createNewDiagramLinks();
+		updateAutoCreatedThreatStressRatings();
 		selectNewlyPastedItems();
 	}
 	
