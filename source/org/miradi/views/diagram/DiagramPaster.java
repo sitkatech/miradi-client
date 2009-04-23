@@ -362,7 +362,7 @@ abstract public class DiagramPaster
 		addToDiagramObject(getDiagramObject(), refToAppend, tag);
 	}
 
-	protected void createThreatStressRatings() throws Exception
+	protected void updateAutoCreatedThreatStressRatings() throws Exception
 	{
 		for (int index = 0; index < threatStressRatingDeepCopies.size(); ++index)
 		{			
