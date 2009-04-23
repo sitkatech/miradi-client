@@ -88,7 +88,7 @@ abstract public class DiagramPaster
 		
 		factorDeepCopies = transferableList.getFactorDeepCopies();
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
-		threatStressRatingDeepCopies = transferableListToUse.getThreatStressRatingDeepCopies();
+		threatStressRatings = transferableListToUse.getThreatStressRatingDeepCopies();
 		factorLinkDeepCopies = transferableList.getFactorLinkDeepCopies();
 		diagramLinkDeepCopies = transferableList.getDiagramLinkDeepCopies();
 		pastedCellsToSelect = new Vector();
@@ -364,9 +364,9 @@ abstract public class DiagramPaster
 
 	protected void updateAutoCreatedThreatStressRatings() throws Exception
 	{
-		for (int index = 0; index < threatStressRatingDeepCopies.size(); ++index)
+		for (int index = 0; index < threatStressRatings.size(); ++index)
 		{			
-			String jsonAsString = threatStressRatingDeepCopies.get(index);
+			String jsonAsString = threatStressRatings.get(index);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 
 			ORef oldStressRef = json.getRef(ThreatStressRating.TAG_STRESS_REF);
@@ -896,7 +896,7 @@ abstract public class DiagramPaster
 	
 	private Vector<String> factorDeepCopies;
 	private Vector<String> diagramFactorDeepCopies;
-	private Vector<String> threatStressRatingDeepCopies;
+	private Vector<String> threatStressRatings;
 	private Vector<String> factorLinkDeepCopies;
 	private Vector<String> diagramLinkDeepCopies;
 	
