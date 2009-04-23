@@ -41,24 +41,29 @@ public class ThreatStressPair
 		stressRef = stressRefToUse;
 	}
 	
-	public ORef findMatchingThreatStressRating()
+	public static ORef findMatchingThreatStressRating(Project projectToUse, ORef threatRefToUse, ORef stressRefToUse)
 	{
-		ORefList tsrReferrerRefsToStress = getTsrReferrerRefsToStress();
-		ORefList tsrReferrerRefsToThreat = getTsrReferrerRefsToThreat();
+		ORefList tsrReferrerRefsToStress = getTsrReferrerRefsToStress(projectToUse, stressRefToUse);
+		ORefList tsrReferrerRefsToThreat = getTsrReferrerRefsToThreat(projectToUse, threatRefToUse);
 		ORefList overLappingRefs = tsrReferrerRefsToStress.getOverlappingRefs(tsrReferrerRefsToThreat);
 		
-		return overLappingRefs.getRefForType(ThreatStressRating.getObjectType());
+		return overLappingRefs.getRefForType(ThreatStressRating.getObjectType());		
+	}
+	
+	public ORef findMatchingThreatStressRating()
+	{
+		return findMatchingThreatStressRating(getProject(), getThreatRef(), getStressRef());
 	}
 
-	private ORefList getTsrReferrerRefsToStress()
+	private static ORefList getTsrReferrerRefsToStress(Project projectToUse, ORef stressRefToUse)
 	{
-		Stress stress = Stress.find(getProject(), getStressRef());
+		Stress stress = Stress.find(projectToUse, stressRefToUse);
 		return stress.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 	}
 	
-	private ORefList getTsrReferrerRefsToThreat()
+	private static ORefList getTsrReferrerRefsToThreat(Project projectToUse, ORef threatRefToUse)
 	{
-		Cause threat = Cause.find(getProject(), getThreatRef());
+		Cause threat = Cause.find(projectToUse, threatRefToUse);
 		return threat.findObjectsThatReferToUs(ThreatStressRating.getObjectType());
 	}
 	
