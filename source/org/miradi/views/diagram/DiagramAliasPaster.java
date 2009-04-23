@@ -104,7 +104,7 @@ public class DiagramAliasPaster extends DiagramPaster
 		return pastedFactorRefs;
 	}
 
-	public ORef getDiagramFactorWrappedRef(ORef oldWrappedRef)
+	public ORef getCorrospondingNewRef(ORef oldWrappedRef)
 	{
 		return oldWrappedRef;
 	}
