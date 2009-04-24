@@ -104,8 +104,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	private void verifyFiscalQuarterName(String expectedName, String beginDate, String endDate, int fiscalYearFirstMonth) throws Exception
 	{
-		MultiCalendar begin = getDate(beginDate);
-		MultiCalendar end = getDate(endDate);
+		MultiCalendar begin = parseIsoDate(beginDate);
+		MultiCalendar end = parseIsoDate(endDate);
 		DateRange dateRange = new DateRange(begin, end);
 		String result = ProjectCalendar.getFiscalYearQuarterName(dateRange, fiscalYearFirstMonth);
 		assertEquals(expectedName, result);
@@ -169,8 +169,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 
 	public void testExtractYears() throws Exception
 	{
-		verifyYears(getDate("2006-01-02"), getDate("2006-02-02"), 1);
-		verifyYears(getDate("2006-01-02"), getDate("2007-02-02"), 2);
+		verifyYears(parseIsoDate("2006-01-02"), parseIsoDate("2006-02-02"), 1);
+		verifyYears(parseIsoDate("2006-01-02"), parseIsoDate("2007-02-02"), 2);
 	}
 
 	private void verifyYears(MultiCalendar startDate, MultiCalendar endDate, int expectedYearCount) throws Exception
@@ -186,7 +186,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		return getProject().getProjectCalendar();
 	}
 	
-	private MultiCalendar getDate(String date)
+	private MultiCalendar parseIsoDate(String date)
 	{
 		return MultiCalendar.createFromIsoDateString(date);
 	}
