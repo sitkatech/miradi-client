@@ -19,12 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -65,6 +68,11 @@ public class TableSettings extends BaseObject
 	public int getRowHeight()
 	{
 		return rowHeight.asInt();
+	}
+	
+	public Vector<DateUnit> getDateUnitList()
+	{
+		return dateUnitListList.getDateUnits();
 	}
 
 	public static int getObjectType()

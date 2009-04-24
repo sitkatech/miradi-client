@@ -19,10 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import java.util.Vector;
+
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.utils.CodeList;
+
 public class DateUnitListData extends AbstractStringListData
 {
 	public DateUnitListData(String tagToUse)
 	{
 		super(tagToUse);
+	}
+
+	public Vector<DateUnit> getDateUnits()
+	{
+		CodeList codes = getCodeList();
+		return codes.toVector();
 	}
 }
