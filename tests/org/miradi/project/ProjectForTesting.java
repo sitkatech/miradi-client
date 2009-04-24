@@ -1172,6 +1172,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		throw new Exception();
 	}
+	
+	public MultiCalendar parseIsoDate(String date)
+	{
+		return MultiCalendar.createFromIsoDateString(date);
+	}
 			
 	private static int nextTargetId;
 	private static int nextCauseId;

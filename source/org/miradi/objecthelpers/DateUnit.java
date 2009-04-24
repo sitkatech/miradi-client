@@ -85,6 +85,31 @@ public class DateUnit
 	{
 		return asDateRange();
 	}
+	
+	public Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)
+	{
+		Vector<DateUnit> dateUnits = new Vector();
+		Vector<Integer> years = extractYears(dateRange);
+		for (int index = 0; index < years.size(); ++index)
+		{
+			dateUnits.add(new DateUnit(years.get(index).toString()));
+		}
+		
+		return dateUnits;
+	}
+	
+	public Vector<Integer> extractYears(DateRange dateRange)
+	{
+		int startYear = dateRange.getStartDate().getGregorianYear();
+		int endYear = dateRange.getEndDate().getGregorianYear();
+		Vector<Integer> years = new Vector<Integer>();
+		for (int year = startYear; year <= endYear; ++year)
+		{
+			years.add(year);
+		}
+		
+		return years;
+	}
 
 	@Override
 	public boolean equals(Object obj)
