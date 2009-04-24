@@ -37,14 +37,14 @@ public class DateUnit
 		dateUnit = dateUnitToUse;
 	}
 	
-	public String getDateUnit()
+	public String getDateUnitCode()
 	{
 		return dateUnit;
 	}
 	
 	public boolean isBlank()
 	{
-		return getDateUnit().isEmpty();
+		return getDateUnitCode().isEmpty();
 	}
 	
 	private boolean isYear()
@@ -54,7 +54,7 @@ public class DateUnit
 
 	private boolean isSameCharCount(int charCount)
 	{
-		return getDateUnit().length() == charCount;
+		return getDateUnitCode().length() == charCount;
 	}
 	
 	public DateRange asDateRange() throws Exception
@@ -67,7 +67,7 @@ public class DateUnit
 	
 	private DateRange getYear() throws Exception
 	{
-		int year = Integer.parseInt(getDateUnit());
+		int year = Integer.parseInt(getDateUnitCode());
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(year, 12, 31);
 		return new DateRange(startDate, endDate);
@@ -110,7 +110,7 @@ public class DateUnit
 			return false;
 		
 		DateUnit thisDateUnit = (DateUnit) obj;
-		return thisDateUnit.getDateUnit().equals(getDateUnit());
+		return thisDateUnit.getDateUnitCode().equals(getDateUnitCode());
 	}
 	
 	private String dateUnit;
