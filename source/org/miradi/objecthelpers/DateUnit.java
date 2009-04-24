@@ -80,6 +80,11 @@ public class DateUnit
 	{
 		return new Vector();
 	}
+	
+	public DateRange convertToDateRange() throws Exception
+	{
+		return asDateRange();
+	}
 
 	@Override
 	public boolean equals(Object obj)

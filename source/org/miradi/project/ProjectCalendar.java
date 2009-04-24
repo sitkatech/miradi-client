@@ -403,7 +403,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (dateRange == null)
 			return getProjectStartEndDateRange();
 			
-		return dateRange;
+		return dateUnit.convertToDateRange();
 	}
 
 	private DateRange getProjectStartEndDateRange() throws Exception
