@@ -113,6 +113,12 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	public void testConvertToDateRange() throws Exception
 	{
+		verifyBlankDateUnit();
+		verifyWithBadDateData();
+	}
+
+	private void verifyBlankDateUnit() throws Exception
+	{
 		MultiCalendar startDate = MultiCalendar.createFromIsoDateString("2006-01-02");
 		MultiCalendar endDate = MultiCalendar.createFromIsoDateString("2007-01-02");
 		
@@ -122,7 +128,10 @@ public class TestProjectCalendar extends TestCaseWithProject
 		DateRange dateRange = getProjectCalendar().convertToDateRange(blankDateUnit);
 		DateRange expectedDateRange = new DateRange(startDate, endDate);
 		assertEquals("date ranges do not match?", expectedDateRange, dateRange);
-		
+	}
+
+	private void verifyWithBadDateData()
+	{
 		try
 		{
 			DateUnit bogusDateUnit = new DateUnit("bogusDate");
