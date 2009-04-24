@@ -26,9 +26,4 @@ public class TagListData extends AbstractStringListData
 	{
 		super(tagToUse);
 	}
-	
-	public boolean isTagListData()
-	{
-		return true;
-	}
 }

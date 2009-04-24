@@ -89,11 +89,6 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isTagListData()
-	{
-		return false;
-	}
-	
 	public boolean isStringMapData()
 	{
 		return false;
