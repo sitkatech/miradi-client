@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.ColumnTagProvider;
@@ -46,19 +47,22 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		super(projectToUse);
 
 		provider = providerToUse;
-		rebuildDateUnits();
+		restoreDateUnits();
 		decimalFormatter = getProject().getDecimalFormatter();
 	}
 	
-	private void rebuildDateUnits() throws Exception
+	public void restoreDateUnits() throws Exception
 	{
-		DateUnit projectDateUnit = new DateUnit();
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), UNIQUE_TABLE_MODEL_IDENTIFIER);
+		Vector<DateUnit> dateUnitsToUse = tableSettings.getDateUnitList();
+		if (dateUnitsToUse.isEmpty())
+			dateUnitsToUse.add(new DateUnit());
 		
-		dateUnits = new Vector();
-		dateUnits.add(projectDateUnit);
-		dateUnits.addAll(getProjectCalendar().getSubDateUnits(projectDateUnit));
+		dateUnits = dateUnitsToUse;
+		
+		fireTableDataChanged();
 	}
-
+	
 	private ProjectCalendar getProjectCalendar() throws Exception
 	{
 		return getProject().getProjectCalendar();
@@ -230,4 +234,5 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	private Vector<DateUnit> dateUnits;
 	private DecimalFormat decimalFormatter;
 	private RowColumnBaseObjectProvider provider;
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";
 }
