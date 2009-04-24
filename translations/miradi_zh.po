@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-24 14:22-0500\n"
+"POT-Creation-Date: 2009-04-24 14:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -1971,10 +1971,6 @@ msgstr "[新结果链] \t\t"
 msgid "Results Chain"
 msgstr "结果链 \t\t"
 
-#: miradi/source/org/miradi/project/ProjectCalendar.java:405
-msgid "No date range for date Unit = "
-msgstr ""
-
 #: miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:47
 msgid "2) Identify indicators"
 msgstr "2) 识别指示物 \t\t"
@@ -2314,6 +2310,10 @@ msgstr "1) 确定对象的初始列表 \t\t"
 #: miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardProjectScopeStep.java:35
 msgid "Place scope on diagram"
 msgstr "在图表上设置范围 \t\t"
+
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:61
+msgid "No date range for date Unit = "
+msgstr ""
 
 #: miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
 msgid "--Select a classification--"

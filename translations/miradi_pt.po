@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-24 14:22-0500\n"
+"POT-Creation-Date: 2009-04-24 14:46-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -1747,10 +1747,6 @@ msgstr ""
 msgid "Results Chain"
 msgstr ""
 
-#: miradi/source/org/miradi/project/ProjectCalendar.java:405
-msgid "No date range for date Unit = "
-msgstr ""
-
 #: miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:47
 msgid "2) Identify indicators"
 msgstr ""
@@ -2070,6 +2066,10 @@ msgstr ""
 #: miradi/source/org/miradi/wizard/diagram/DiagramWizardProjectScopeStep.java:47
 #: miradi/source/org/miradi/actions/jump/ActionJumpDiagramWizardProjectScopeStep.java:35
 msgid "Place scope on diagram"
+msgstr ""
+
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:61
+msgid "No date range for date Unit = "
 msgstr ""
 
 #: miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
