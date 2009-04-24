@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.utils.DateRange;
 
@@ -109,5 +110,17 @@ public class TestProjectCalendar extends TestCaseWithProject
 		String result = ProjectCalendar.getFiscalYearQuarterName(dateRange, fiscalYearFirstMonth);
 		assertEquals(expectedName, result);
 	}
-
+	
+	public void testConvertToDateRange() throws Exception
+	{
+		MultiCalendar startDate = MultiCalendar.createFromIsoDateString("2006-01-02");
+		MultiCalendar endDate = MultiCalendar.createFromIsoDateString("2007-01-02");
+		
+		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
+		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
+		DateUnit blankDateUnit = new DateUnit();
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(blankDateUnit);
+		DateRange expectedDateRange = new DateRange(startDate, endDate);
+		assertEquals("date ranges do not match?", expectedDateRange, dateRange);
+	}
 }
