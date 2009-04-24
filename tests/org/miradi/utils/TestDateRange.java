@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
+import java.util.Vector;
+
 import org.martus.util.MultiCalendar;
 import org.miradi.main.EAMTestCase;
-import org.miradi.utils.DateRange;
-import org.miradi.utils.EnhancedJsonObject;
 
 public class TestDateRange extends EAMTestCase
 {
@@ -108,6 +108,18 @@ public class TestDateRange extends EAMTestCase
 		MultiCalendar date2 = MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1);
 		
 		assertEquals("count years in betweem?", 2, DateRange.getYearsInBetween(date1, date2));
+	}
+	
+	public void testExtractYears() throws Exception
+	{
+		MultiCalendar date1 = MultiCalendar.createFromGregorianYearMonthDay(2006, 3, 1);
+		MultiCalendar date2 = MultiCalendar.createFromGregorianYearMonthDay(2008, 7, 1);
+		
+		Vector<Integer> years = new DateRange(date1, date2).extractYears();
+		assertEquals("Wrong number of years?", 3, years.size());
+		assertEquals(2006, years.get(0).intValue());
+		assertEquals(2007, years.get(1).intValue());
+		assertEquals(2008, years.get(2).intValue());
 	}
 	
 }

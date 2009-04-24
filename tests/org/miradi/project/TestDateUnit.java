@@ -108,7 +108,7 @@ public class TestDateUnit extends TestCaseWithProject
 	{
 		DateRange dateRange = new DateRange(startDate, endDate);
 		
-		Vector<Integer> years = new DateUnit().extractYears(dateRange);
+		Vector<Integer> years = dateRange.extractYears();
 		assertEquals("wrong years count?", expectedYearCount, years.size());
 	}
 
