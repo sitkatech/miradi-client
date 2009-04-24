@@ -407,7 +407,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (dateUnit.isBlank())
 			return getProjectStartEndDateRange();
 		
-		return null;
+		throw new Exception(EAM.text("No date range for date Unit = " + dateUnit.toString()));
 	}
 
 	private DateRange getProjectStartEndDateRange() throws Exception

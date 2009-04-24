@@ -122,5 +122,15 @@ public class TestProjectCalendar extends TestCaseWithProject
 		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(blankDateUnit);
 		DateRange expectedDateRange = new DateRange(startDate, endDate);
 		assertEquals("date ranges do not match?", expectedDateRange, dateRange);
+		
+		try
+		{
+			DateUnit bogusDateUnit = new DateUnit("bogusDate");
+			getProject().getProjectCalendar().convertToDateRange(bogusDateUnit);
+			fail("should have thrown an exception when trying to convert invalid data?");
+		}
+		catch (Exception ignoreException)
+		{
+		}
 	}
 }
