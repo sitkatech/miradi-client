@@ -27,6 +27,7 @@ import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
@@ -44,13 +45,13 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		super(projectToUse);
 
 		provider = providerToUse;
-		rebuildDateRanges();
+		rebuildDateUnits();
 		decimalFormatter = getProject().getDecimalFormatter();
 	}
 	
-	private void rebuildDateRanges() throws Exception
+	private void rebuildDateUnits() throws Exception
 	{
-		dateRanges = getProjectCalendar().getQuarterlyDateRanges();
+		dateUnits = new DateUnit[]{new DateUnit()};
 	}
 
 	private ProjectCalendar getProjectCalendar() throws Exception
@@ -73,10 +74,10 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 
 	public int getColumnCount()
 	{
-		return getDateRanges().length;
+		return getDateUnits().length;
 	}
 	
-	public DateRange getDateRangeForColumn(int column)
+	public DateRange getDateRangeForColumn(int column) throws Exception
 	{
 		return getDateRange(column);
 	}
@@ -210,17 +211,18 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return provider;
 	}
 
-	private DateRange[] getDateRanges()
+	private DateUnit[] getDateUnits()
 	{
-		return dateRanges;
+		return dateUnits;
 	}
 	
-	private DateRange getDateRange(int column)
+	private DateRange getDateRange(int column) throws Exception
 	{
-		return getDateRanges()[column];
+		DateUnit dateUnit = getDateUnits()[column];
+		return getProjectCalendar().convertToDateRange(dateUnit);
 	}
 
-	private DateRange[] dateRanges;
+	private DateUnit[] dateUnits;
 	private DecimalFormat decimalFormatter;
 	private RowColumnBaseObjectProvider provider;
 }
