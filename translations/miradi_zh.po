@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-23 14:52-0500\n"
+"POT-Creation-Date: 2009-04-24 10:40-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -947,7 +947,7 @@ msgid "Button|Save"
 msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAssignmentEditorComponent.java:235
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAssignmentEditorComponent.java:226
 #, fuzzy
 msgid "An unexpected error has occurred"
 msgstr "An unexpected error has occurred"
@@ -6433,10 +6433,6 @@ msgstr "Title|Contributing Factor Properties"
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:55
-msgid "Total"
-msgstr "总计 \t\t"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAbstractBudgetTableModel.java:77
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
@@ -29236,6 +29232,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Total"
+#~ msgstr "总计 \t\t"
 
 #~ msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
 #~ msgstr "组织机构优先选项 \t\t"
