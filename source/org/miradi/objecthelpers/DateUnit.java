@@ -49,23 +49,27 @@ public class DateUnit
 	
 	private boolean isYear()
 	{
-		return isSameCharCount(YEAR_CHAR_COUNT);
-	}
-
-	private boolean isSameCharCount(int charCount)
-	{
-		return getDateUnitCode().length() == charCount;
+		return getDateUnitCode().matches("\\d\\d\\d\\d");
 	}
 	
+	private boolean isQuarter()
+	{
+		String code = getDateUnitCode();
+		return code.matches("\\d\\d\\d\\dQ\\d");
+	}
+
 	public DateRange asDateRange() throws Exception
 	{
 		if (isYear())
-			return getYear(); 
+			return getYearDateRange(); 
+		
+		if (isQuarter())
+			return getQuarterDateRange();
 			
 		throw new Exception(EAM.text("No date range for date Unit = " + dateUnit.toString()));
 	}
 	
-	private DateRange getYear() throws Exception
+	private DateRange getYearDateRange() throws Exception
 	{
 		int year = Integer.parseInt(getDateUnitCode());
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
@@ -73,19 +77,61 @@ public class DateUnit
 		return new DateRange(startDate, endDate);
 	}
 	
+	private DateRange getQuarterDateRange() throws Exception
+	{
+		int quarter = getQuarter();
+		int startYear = getYear();
+		int startMonth = (quarter - 1) * 3;
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(startYear, startMonth+1, 1);
+		
+		int pastEndMonth = (startMonth + 3) % 12;
+		int endYear = (pastEndMonth == 0 ? startYear+1 : startYear);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, pastEndMonth+1, 1);
+		endDate.addDays(-1);
+		
+		return new DateRange(startDate, endDate);
+	}
+
+	private int getYear()
+	{
+		return Integer.parseInt(getDateUnitCode().substring(0, 4));
+	}
+
+	private int getQuarter()
+	{
+		int quarter = Integer.parseInt(getDateUnitCode().substring(5));
+		return quarter;
+	}
+	
 	public Vector<DateUnit> getSubDateUnits() throws Exception
 	{
 		if(isYear())
-		{
-			Vector<DateUnit> quarters = new Vector<DateUnit>();
-			for(int i = 0; i < 4; ++i)
-				quarters.add(new DateUnit(getDateUnitCode() + "Q" + (i+1)));
-			return quarters;
-		}
+			return getYearSubDateUnits();
+		
+		if(isQuarter())
+			return getQuarterSubDateUnits();
 
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
+
+	private Vector<DateUnit> getYearSubDateUnits()
+	{
+		Vector<DateUnit> quarters = new Vector<DateUnit>();
+		for(int i = 0; i < 4; ++i)
+			quarters.add(new DateUnit(getDateUnitCode() + "Q" + (i+1)));
+		return quarters;
+	}
 	
+	private Vector<DateUnit> getQuarterSubDateUnits()
+	{
+		Vector<DateUnit> months = new Vector<DateUnit>();
+		int quarter = getQuarter();
+		String[] monthStrings = monthsPerQuarter[quarter-1];
+		for(int i = 0; i < monthStrings.length; ++i)
+			months.add(new DateUnit(getYear() + "-" + monthStrings[i]));
+		return months;
+	}
+
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -96,6 +142,18 @@ public class DateUnit
 		return thisDateUnit.getDateUnitCode().equals(getDateUnitCode());
 	}
 	
+	@Override
+	public String toString()
+	{
+		return getDateUnitCode().toString();
+	}
+	
+	private static final String[][] monthsPerQuarter = { 
+		{"01", "02", "03"}, 
+		{"04", "05", "06"}, 
+		{"07", "08", "09"}, 
+		{"10", "11", "12"}, 
+	};
+	
 	private String dateUnit;
-	private static final int YEAR_CHAR_COUNT = 4;
 }

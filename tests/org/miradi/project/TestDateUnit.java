@@ -58,9 +58,13 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testAsDateRange() throws Exception
 	{
-		DateRange range = year.asDateRange();
-		assertEquals("2006-01-01", range.getStartDate().toIsoDateString());
-		assertEquals("2006-12-31", range.getEndDate().toIsoDateString());
+		DateRange yearRange = year.asDateRange();
+		assertEquals("2006-01-01", yearRange.getStartDate().toIsoDateString());
+		assertEquals("2006-12-31", yearRange.getEndDate().toIsoDateString());
+		
+		DateRange quarterRange = quarter.asDateRange();
+		assertEquals("2009-10-01", quarterRange.getStartDate().toIsoDateString());
+		assertEquals("2009-12-31", quarterRange.getEndDate().toIsoDateString());
 	}
 	
 	public void testGetSubDateUnitsForEmpty() throws Exception
@@ -89,15 +93,23 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testGetSubDateUnits() throws Exception
 	{
-		Vector<DateUnit> subs = year.getSubDateUnits();
-		assertEquals(4, subs.size());
-		assertEquals(new DateUnit("2006Q1"), subs.get(0));
-		assertEquals(new DateUnit("2006Q2"), subs.get(1));
-		assertEquals(new DateUnit("2006Q3"), subs.get(2));
-		assertEquals(new DateUnit("2006Q4"), subs.get(3));
+		Vector<DateUnit> yearSubs = year.getSubDateUnits();
+		assertEquals(4, yearSubs.size());
+		assertEquals(new DateUnit("2006Q1"), yearSubs.get(0));
+		assertEquals(new DateUnit("2006Q2"), yearSubs.get(1));
+		assertEquals(new DateUnit("2006Q3"), yearSubs.get(2));
+		assertEquals(new DateUnit("2006Q4"), yearSubs.get(3));
+		
+		Vector<DateUnit> quarterSubs = quarter.getSubDateUnits();
+		assertEquals(3, quarterSubs.size());
+		assertEquals(new DateUnit("2009-10"), quarterSubs.get(0));
+		assertEquals(new DateUnit("2009-11"), quarterSubs.get(1));
+		assertEquals(new DateUnit("2009-12"), quarterSubs.get(2));
+		
 	}
 	
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
 	private final DateUnit year = new DateUnit("2006");
+	private final DateUnit quarter = new DateUnit("2009Q4");
 }
