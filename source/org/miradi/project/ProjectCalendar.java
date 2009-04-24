@@ -399,11 +399,10 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public DateRange convertToDateRange(DateUnit dateUnit) throws Exception
 	{
-		DateRange dateRange = dateUnit.asDateRange();
-		if (dateRange == null)
+		if(dateUnit.isBlank())
 			return getProjectStartEndDateRange();
 			
-		return dateUnit.convertToDateRange();
+		return dateUnit.asDateRange();
 	}
 
 	private DateRange getProjectStartEndDateRange() throws Exception
