@@ -75,10 +75,15 @@ public class DateUnit
 	
 	public Vector<DateUnit> getSubDateUnits() throws Exception
 	{
-		if(isBlank())
-			throw new Exception("Can't call getSubDateUnits on blank DateUnit");
-		
-		return new Vector();
+		if(isYear())
+		{
+			Vector<DateUnit> quarters = new Vector<DateUnit>();
+			for(int i = 0; i < 4; ++i)
+				quarters.add(new DateUnit(getDateUnitCode() + "Q" + (i+1)));
+			return quarters;
+		}
+
+		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 	
 	public static Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)

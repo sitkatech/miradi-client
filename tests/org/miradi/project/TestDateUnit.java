@@ -88,6 +88,16 @@ public class TestDateUnit extends TestCaseWithProject
 		}
 	}
 	
+	public void testGetSubDateUnits() throws Exception
+	{
+		Vector<DateUnit> subs = year.getSubDateUnits();
+		assertEquals(4, subs.size());
+		assertEquals(new DateUnit("2006Q1"), subs.get(0));
+		assertEquals(new DateUnit("2006Q2"), subs.get(1));
+		assertEquals(new DateUnit("2006Q3"), subs.get(2));
+		assertEquals(new DateUnit("2006Q4"), subs.get(3));
+	}
+	
 	public void testExtractYears() throws Exception
 	{
 		verifyYearCount(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2006-02-02"), 1);
