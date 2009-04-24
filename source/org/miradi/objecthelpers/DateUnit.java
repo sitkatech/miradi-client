@@ -19,6 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import org.martus.util.MultiCalendar;
+import org.miradi.main.EAM;
+import org.miradi.utils.DateRange;
+
 public class DateUnit
 {
 	public DateUnit()
@@ -38,9 +42,33 @@ public class DateUnit
 	
 	public boolean isBlank()
 	{
-		return dateUnit.isEmpty();
+		return getDateUnit().isEmpty();
 	}
 	
+	private boolean isYear()
+	{
+		return getDateUnit().length() == YEAR_CHAR_COUNT;
+	}
+	
+	public DateRange asDateRange() throws Exception
+	{
+		if (isBlank())
+			return null;
+		
+		if (isYear())
+			return getYear(); 
+			
+		throw new Exception(EAM.text("No date range for date Unit = " + dateUnit.toString()));
+	}
+	
+	private DateRange getYear() throws Exception
+	{
+		int year = Integer.parseInt(getDateUnit());
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(year, 12, 31);
+		return new DateRange(startDate, endDate);
+	}
+
 	@Override
 	public boolean equals(Object obj)
 	{
@@ -52,4 +80,5 @@ public class DateUnit
 	}
 	
 	private String dateUnit;
+	private static final int YEAR_CHAR_COUNT = 4;
 }

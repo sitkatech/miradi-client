@@ -115,6 +115,15 @@ public class TestProjectCalendar extends TestCaseWithProject
 	{
 		verifyBlankDateUnit();
 		verifyWithBadDateData();
+		verifyWithYearDateUnit();
+	}
+
+	private void verifyWithYearDateUnit() throws Exception
+	{
+		DateUnit dateUnit = new DateUnit("2006");
+		DateRange dateRange = getProjectCalendar().convertToDateRange(dateUnit);
+		assertEquals("wrong start date?", "2006-01-01", dateRange.getStartDate().toIsoDateString());
+		assertEquals("wrong end date?", "2006-12-31", dateRange.getEndDate().toIsoDateString());
 	}
 
 	private void verifyBlankDateUnit() throws Exception
