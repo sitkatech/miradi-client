@@ -129,7 +129,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 			getProjectCalendar().convertToDateRange(bogusDateUnit);
 			fail("should have thrown an exception when trying to convert invalid data?");
 		}
-		catch (Exception ignoreException)
+		catch (Exception ignoreExpected)
 		{
 		}
 	}
