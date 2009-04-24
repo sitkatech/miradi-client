@@ -420,7 +420,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (dateUnit.isBlank())
 			return getProjectStartEndDateUnits(dateRange);
 			
-		return new Vector();
+		return dateUnit.getSubDateUnits(dateRange);
 	}
 
 	private Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)
