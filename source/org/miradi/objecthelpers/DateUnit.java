@@ -86,18 +86,6 @@ public class DateUnit
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 	
-	public static Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)
-	{
-		Vector<DateUnit> dateUnits = new Vector();
-		Vector<Integer> years = dateRange.extractYears();
-		for (int index = 0; index < years.size(); ++index)
-		{
-			dateUnits.add(new DateUnit(years.get(index).toString()));
-		}
-		
-		return dateUnits;
-	}
-	
 	@Override
 	public boolean equals(Object obj)
 	{

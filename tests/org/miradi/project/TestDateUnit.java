@@ -21,7 +21,6 @@ package org.miradi.project;
 
 import java.util.Vector;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.DateRange;
@@ -98,20 +97,6 @@ public class TestDateUnit extends TestCaseWithProject
 		assertEquals(new DateUnit("2006Q4"), subs.get(3));
 	}
 	
-	public void testExtractYears() throws Exception
-	{
-		verifyYearCount(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2006-02-02"), 1);
-		verifyYearCount(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2007-02-02"), 2);
-	}
-
-	private void verifyYearCount(MultiCalendar startDate, MultiCalendar endDate, int expectedYearCount) throws Exception
-	{
-		DateRange dateRange = new DateRange(startDate, endDate);
-		
-		Vector<Integer> years = dateRange.extractYears();
-		assertEquals("wrong years count?", expectedYearCount, years.size());
-	}
-
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
 	private final DateUnit year = new DateUnit("2006");
