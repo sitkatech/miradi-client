@@ -23,10 +23,13 @@ import java.text.DecimalFormat;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
@@ -34,24 +37,17 @@ import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
-public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
+public class PlanningViewWorkPlanTableModel extends EditableObjectTableModel implements ColumnTagProvider
 {
-	public PlanningViewWorkPlanTableModel(Project projectToUse) throws Exception
+	public PlanningViewWorkPlanTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
 		super(projectToUse);
-		
+
+		provider = providerToUse;
 		rebuildDateRanges();
 		decimalFormatter = getProject().getDecimalFormatter();
 	}
 	
-	@Override
-	public void dataWasChanged() throws Exception
-	{
-		rebuildDateRanges();
-		super.dataWasChanged();
-		
-	}
-
 	private void rebuildDateRanges() throws Exception
 	{
 		dateRanges = getProjectCalendar().getQuarterlyDateRanges();
@@ -189,8 +185,34 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractAssignme
 	private DateRangeEffort getDateRangeEffort(int row, int column)	throws Exception
 	{
 		return getDateRangeEffort(getAssignment(row), dateRanges[column]);
+	}	
+	
+	@Override
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
 	}
 
-	protected DateRange[] dateRanges;
-	protected DecimalFormat decimalFormatter;
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return getProvider().getBaseObjectForRowColumn(row, column);
+	}
+
+	public int getRowCount()
+	{
+		return getProvider().getRowCount();
+	}
+	
+	public Assignment getAssignment(int row)
+	{
+		return (Assignment) getBaseObjectForRowColumn(row, 0);
+	}
+	
+	public RowColumnBaseObjectProvider getProvider()
+	{
+		return provider;
+	}
+
+	private DateRange[] dateRanges;
+	private DecimalFormat decimalFormatter;
+	private RowColumnBaseObjectProvider provider;
 }
