@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-24 12:58-0500\n"
+"POT-Creation-Date: 2009-04-24 13:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -1971,7 +1971,7 @@ msgstr "[新结果链] \t\t"
 msgid "Results Chain"
 msgstr "结果链 \t\t"
 
-#: miradi/source/org/miradi/project/ProjectCalendar.java:410
+#: miradi/source/org/miradi/project/ProjectCalendar.java:405
 msgid "No date range for date Unit = "
 msgstr ""
 
