@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-23 14:52-0500\n"
+"POT-Creation-Date: 2009-04-24 10:40-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -982,7 +982,7 @@ msgid "Button|Save"
 msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAssignmentEditorComponent.java:235
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAssignmentEditorComponent.java:226
 #, fuzzy
 msgid "An unexpected error has occurred"
 msgstr "An unexpected error has occurred"
@@ -6616,10 +6616,6 @@ msgstr "Title|Contributing Factor Properties"
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBudgetTotalsTableModel.java:55
-msgid "Total"
-msgstr "Total "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAbstractBudgetTableModel.java:77
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
@@ -32634,6 +32630,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Total"
+#~ msgstr "Total "
 
 #~ msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
 #~ msgstr "Prioritas Organisasi "
