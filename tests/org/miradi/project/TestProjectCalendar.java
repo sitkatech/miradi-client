@@ -111,14 +111,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals(expectedName, result);
 	}
 	
-	public void testConvertToDateRange() throws Exception
-	{
-		verifyBlankDateUnit();
-		verifyWithBadDateData();
-		verifyWithYearDateUnit();
-	}
-
-	private void verifyWithYearDateUnit() throws Exception
+	public void testWithYearDateUnit() throws Exception
 	{
 		DateUnit dateUnit = new DateUnit("2006");
 		DateRange dateRange = getProjectCalendar().convertToDateRange(dateUnit);
@@ -126,7 +119,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals("wrong end date?", "2006-12-31", dateRange.getEndDate().toIsoDateString());
 	}
 
-	private void verifyBlankDateUnit() throws Exception
+	public void testBlankDateUnit() throws Exception
 	{
 		MultiCalendar startDate = getProject().parseIsoDate("2006-01-02");
 		MultiCalendar endDate = getProject().parseIsoDate("2007-01-02");
@@ -139,7 +132,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals("date ranges do not match?", expectedDateRange, dateRange);
 	}
 
-	private void verifyWithBadDateData()
+	public void testWithBadDateData()
 	{
 		try
 		{
