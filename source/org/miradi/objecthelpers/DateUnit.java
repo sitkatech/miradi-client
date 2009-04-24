@@ -21,6 +21,11 @@ package org.miradi.objecthelpers;
 
 public class DateUnit
 {
+	public DateUnit()
+	{
+		this("");
+	}
+	
 	public DateUnit(String dateUnitToUse)
 	{
 		dateUnit = dateUnitToUse;
@@ -29,6 +34,11 @@ public class DateUnit
 	public String getDateUnit()
 	{
 		return dateUnit;
+	}
+	
+	public boolean isBlank()
+	{
+		return dateUnit.isEmpty();
 	}
 	
 	private String dateUnit;

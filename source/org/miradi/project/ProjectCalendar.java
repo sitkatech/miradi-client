@@ -26,6 +26,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.utils.DateRange;
 
@@ -399,6 +400,22 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		String yearString = Integer.toString(fiscalYear);
 		return "FY" + yearString.substring(2);
+	}
+	
+	public DateRange convertToDateRange(DateUnit dateUnit) throws Exception
+	{
+		if (dateUnit.isBlank())
+			return getProjectStartEndDateRange();
+		
+		return null;
+	}
+
+	private DateRange getProjectStartEndDateRange() throws Exception
+	{
+		MultiCalendar thisStartDate = MultiCalendar.createFromIsoDateString(getPlanningStartDate());
+		MultiCalendar thisEndDate = MultiCalendar.createFromIsoDateString(getPlanningEndDate());
+		
+		return new DateRange(thisStartDate, thisEndDate);
 	}
 
 	private Project project;
