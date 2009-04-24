@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.text.DecimalFormat;
+import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
@@ -51,7 +52,11 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	
 	private void rebuildDateUnits() throws Exception
 	{
-		dateUnits = new DateUnit[]{new DateUnit()};
+		DateUnit projectDateUnit = new DateUnit();
+		
+		dateUnits = new Vector();
+		dateUnits.add(projectDateUnit);
+		dateUnits.addAll(getProjectCalendar().getSubDateUnits(projectDateUnit));
 	}
 
 	private ProjectCalendar getProjectCalendar() throws Exception
@@ -74,7 +79,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 
 	public int getColumnCount()
 	{
-		return getDateUnits().length;
+		return getDateUnits().size();
 	}
 	
 	public DateRange getDateRangeForColumn(int column) throws Exception
@@ -211,18 +216,18 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return provider;
 	}
 
-	private DateUnit[] getDateUnits()
+	private Vector<DateUnit> getDateUnits()
 	{
 		return dateUnits;
 	}
 	
 	private DateRange getDateRange(int column) throws Exception
 	{
-		DateUnit dateUnit = getDateUnits()[column];
+		DateUnit dateUnit = getDateUnits().get(column);
 		return getProjectCalendar().convertToDateRange(dateUnit);
 	}
 
-	private DateUnit[] dateUnits;
+	private Vector<DateUnit> dateUnits;
 	private DecimalFormat decimalFormatter;
 	private RowColumnBaseObjectProvider provider;
 }
