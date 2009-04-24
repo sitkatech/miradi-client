@@ -35,6 +35,7 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.DateRangeEffortListData;
+import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.NumberData;
@@ -316,6 +317,13 @@ public class ObjectTestCase extends TestCaseWithProject
 			dateRangeData.set(dateRange.toJson().toString());
 			
 			return dateRangeData.toString();
+		}
+		else if (field instanceof DateUnitListData)
+		{
+			DateUnitListData dateUnitListData = new DateUnitListData("");
+			dateUnitListData.add("2009");
+			
+			return dateUnitListData.toString();
 		}
 		else
 		{
