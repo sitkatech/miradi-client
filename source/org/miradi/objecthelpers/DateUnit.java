@@ -41,5 +41,15 @@ public class DateUnit
 		return dateUnit.isEmpty();
 	}
 	
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (!(obj instanceof DateUnit))
+			return false;
+		
+		DateUnit thisDateUnit = (DateUnit) obj;
+		return thisDateUnit.getDateUnit().equals(getDateUnit());
+	}
+	
 	private String dateUnit;
 }
