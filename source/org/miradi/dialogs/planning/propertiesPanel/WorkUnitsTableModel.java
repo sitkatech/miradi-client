@@ -123,9 +123,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	
 	public boolean isCellEditable(int row, int column)
 	{
-		DateRange dateRange = getDateRangeForColumn(column);
-		ProjectCalendar projectCalendar = getProject().getProjectCalendar();
-		return projectCalendar.isDateRangeEditable(dateRange);
+		return false;
 	}
 
 	public Object getValueAt(int row, int column)

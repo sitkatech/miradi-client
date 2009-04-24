@@ -298,11 +298,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return false;
 	}
 
-	public boolean isDateRangeEditable(DateRange dateRange)
-	{
-		return editableDateRanges.contains(dateRange);
-	}
-
 	private static int getFiscalYearMonthSkew(int fiscalYearFirstMonth)
 	{
 		switch(fiscalYearFirstMonth)
