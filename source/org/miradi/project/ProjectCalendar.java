@@ -417,9 +417,21 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		DateRange dateRange = convertToDateRange(dateUnit);
 		if (dateUnit.isBlank())
-			return dateUnit.getProjectStartEndDateUnits(dateRange);
+			return ProjectCalendar.getProjectStartEndDateUnits(dateRange);
 			
 		return dateUnit.getSubDateUnits();
+	}
+
+	public static Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)
+	{
+		Vector<DateUnit> dateUnits = new Vector();
+		Vector<Integer> years = dateRange.extractYears();
+		for (int index = 0; index < years.size(); ++index)
+		{
+			dateUnits.add(new DateUnit(years.get(index).toString()));
+		}
+		
+		return dateUnits;
 	}
 
 	private Project project;
