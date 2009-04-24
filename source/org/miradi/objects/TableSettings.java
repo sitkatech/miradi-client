@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
@@ -126,12 +127,14 @@ public class TableSettings extends BaseObject
 		columnWidths = new StringMapData(TAG_COLUMN_WIDTHS);
 		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
 		expandedNodesRefList = new ORefListData(TAG_TREE_EXPANSION_LIST);
+		dateUnitListList = new DateUnitListData(TAG_DATE_UNIT_LIST_DATA);
 		
 		addPresentationDataField(TAG_TABLE_IDENTIFIER, tableIdentifier);
 		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
 		addPresentationDataField(TAG_COLUMN_WIDTHS, columnWidths);
 		addPresentationDataField(TAG_ROW_HEIGHT, rowHeight);
 		addPresentationDataField(TAG_TREE_EXPANSION_LIST, expandedNodesRefList);
+		addPresentationDataField(TAG_DATE_UNIT_LIST_DATA, dateUnitListList);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
@@ -141,10 +144,12 @@ public class TableSettings extends BaseObject
 	public static final String TAG_COLUMN_WIDTHS = "ColumnWidths";
 	public static final String TAG_ROW_HEIGHT = "RowHeight";
 	public static final String TAG_TREE_EXPANSION_LIST  = "TreeExpansionList";
+	public static final String TAG_DATE_UNIT_LIST_DATA = "DateUnitListData";
 	
 	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
 	private StringMapData columnWidths;
 	private IntegerData rowHeight;
 	private ORefListData expandedNodesRefList;
+	private DateUnitListData dateUnitListList;
 }
