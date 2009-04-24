@@ -62,7 +62,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 		try
 		{
-			return getProjectCalendar().getDateRangeName(dateRanges[col]);
+			return getProjectCalendar().getDateRangeName(getDateRange(col));
 		}
 		catch(Exception e)
 		{
@@ -73,12 +73,12 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 
 	public int getColumnCount()
 	{
-		return dateRanges.length;
+		return getDateRanges().length;
 	}
 	
 	public DateRange getDateRangeForColumn(int column)
 	{
-		return dateRanges[column];
+		return getDateRanges()[column];
 	}
 
 	public String getUnit(DateRangeEffortList effortList, DateRange dateRange) throws Exception
@@ -98,7 +98,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	protected Object getUnits(int row, int column) throws Exception
 	{
 		DateRangeEffortList effortList = getDateRangeEffortList(row);
-		DateRange dateRange = dateRanges[column];
+		DateRange dateRange = getDateRanges()[column];
 		
 		return getUnit(effortList, dateRange);
 	}
@@ -157,7 +157,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		DateRangeEffort effort = getDateRangeEffort(row, column);
 		double units = 0;
 		if (effort == null)
-			effort = new DateRangeEffort("", units, dateRanges[column]);
+			effort = new DateRangeEffort("", units, getDateRanges()[column]);
 	
 		String valueAsString = value.toString().trim();
 		if (! valueAsString.equals(""))
@@ -182,7 +182,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 
 	private DateRangeEffort getDateRangeEffort(int row, int column)	throws Exception
 	{
-		return getDateRangeEffort(getAssignment(row), dateRanges[column]);
+		return getDateRangeEffort(getAssignment(row), getDateRanges()[column]);
 	}	
 	
 	@Override
@@ -208,6 +208,16 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	public RowColumnBaseObjectProvider getProvider()
 	{
 		return provider;
+	}
+
+	private DateRange[] getDateRanges()
+	{
+		return dateRanges;
+	}
+	
+	private DateRange getDateRange(int column)
+	{
+		return getDateRanges()[column];
 	}
 
 	private DateRange[] dateRanges;
