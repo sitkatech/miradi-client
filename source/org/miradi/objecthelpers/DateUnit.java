@@ -73,8 +73,11 @@ public class DateUnit
 		return new DateRange(startDate, endDate);
 	}
 	
-	public Vector<DateUnit> getSubDateUnits(DateRange dateRange) throws Exception
+	public Vector<DateUnit> getSubDateUnits() throws Exception
 	{
+		if(isBlank())
+			throw new Exception("Can't call getSubDateUnits on blank DateUnit");
+		
 		return new Vector();
 	}
 	

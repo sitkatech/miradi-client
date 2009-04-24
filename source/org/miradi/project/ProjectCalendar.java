@@ -419,7 +419,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		if (dateUnit.isBlank())
 			return dateUnit.getProjectStartEndDateUnits(dateRange);
 			
-		return dateUnit.getSubDateUnits(dateRange);
+		return dateUnit.getSubDateUnits();
 	}
 
 	private Project project;
