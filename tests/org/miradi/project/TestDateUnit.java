@@ -35,11 +35,11 @@ public class TestDateUnit extends TestCaseWithProject
 
 	public void testExtractYears() throws Exception
 	{
-		verifyYears(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2006-02-02"), 1);
-		verifyYears(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2007-02-02"), 2);
+		verifyYearCount(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2006-02-02"), 1);
+		verifyYearCount(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2007-02-02"), 2);
 	}
 
-	private void verifyYears(MultiCalendar startDate, MultiCalendar endDate, int expectedYearCount) throws Exception
+	private void verifyYearCount(MultiCalendar startDate, MultiCalendar endDate, int expectedYearCount) throws Exception
 	{
 		DateRange dateRange = new DateRange(startDate, endDate);
 		
