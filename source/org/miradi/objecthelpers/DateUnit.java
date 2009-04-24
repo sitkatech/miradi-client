@@ -103,6 +103,17 @@ public class DateUnit
 		return quarter;
 	}
 	
+	public boolean hasSubDateUnits()
+	{
+		if(isYear())
+			return true;
+		
+		if(isQuarter())
+			return true;
+		
+		return false;
+	}
+
 	public Vector<DateUnit> getSubDateUnits() throws Exception
 	{
 		if(isYear())
@@ -156,4 +167,5 @@ public class DateUnit
 	};
 	
 	private String dateUnit;
+
 }

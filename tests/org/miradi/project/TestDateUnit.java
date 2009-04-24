@@ -108,8 +108,18 @@ public class TestDateUnit extends TestCaseWithProject
 		
 	}
 	
+	public void testHasSubDateUnits() throws Exception
+	{
+		assertEquals(false, empty.hasSubDateUnits());
+		assertEquals(false, bogus.hasSubDateUnits());
+		assertEquals(true, year.hasSubDateUnits());
+		assertEquals(true, quarter.hasSubDateUnits());
+		assertEquals(false, month.hasSubDateUnits());
+	}
+	
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
 	private final DateUnit year = new DateUnit("2006");
 	private final DateUnit quarter = new DateUnit("2009Q4");
+	private final DateUnit month = new DateUnit("2008-12");
 }
