@@ -64,6 +64,30 @@ public class TestDateUnit extends TestCaseWithProject
 		assertEquals("2006-12-31", range.getEndDate().toIsoDateString());
 	}
 	
+	public void testGetSubDateUnitsForEmpty() throws Exception
+	{
+		try
+		{
+			empty.getSubDateUnits();
+			fail("Should have thrown for calling getSubDateUnits on empty DateUnit");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+	}
+	
+	public void testGetSubDateUnitsForBogus() throws Exception
+	{
+		try
+		{
+			bogus.asDateRange();
+			fail("Should have thrown for calling getSubDateUnits on bogus DateUnit");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+	}
+	
 	public void testExtractYears() throws Exception
 	{
 		verifyYearCount(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2006-02-02"), 1);
