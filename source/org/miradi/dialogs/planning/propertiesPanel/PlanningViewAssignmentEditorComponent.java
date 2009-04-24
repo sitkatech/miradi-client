@@ -118,7 +118,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(mainWindow, resourceTableModel);
 		
-		workPlanModel = new PlanningViewWorkPlanTableModel(getProject(), resourceTableModel);
+		workPlanModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
 		workplanTable = new PlanningViewWorkPlanTable(mainWindow, workPlanModel);		
 	}
 	
@@ -250,7 +250,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	private PlanningViewWorkPlanTable workplanTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
-	private PlanningViewWorkPlanTableModel workPlanModel;
+	private WorkUnitsTableModel workPlanModel;
 	
 	private ObjectPicker objectPicker;
 }
