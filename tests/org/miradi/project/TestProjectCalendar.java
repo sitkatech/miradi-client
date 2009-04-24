@@ -167,20 +167,6 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertTrue("does not contain date?", subDateUnits.contains(new DateUnit("2007")));
 	}
 
-	public void testExtractYears() throws Exception
-	{
-		verifyYears(parseIsoDate("2006-01-02"), parseIsoDate("2006-02-02"), 1);
-		verifyYears(parseIsoDate("2006-01-02"), parseIsoDate("2007-02-02"), 2);
-	}
-
-	private void verifyYears(MultiCalendar startDate, MultiCalendar endDate, int expectedYearCount) throws Exception
-	{
-		DateRange dateRange = new DateRange(startDate, endDate);
-		
-		Vector<Integer> years = getProjectCalendar().extractYears(dateRange);
-		assertEquals("wrong years count?", expectedYearCount, years.size());
-	}
-	
 	private ProjectCalendar getProjectCalendar()
 	{
 		return getProject().getProjectCalendar();
