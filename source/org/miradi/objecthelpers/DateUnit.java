@@ -59,9 +59,6 @@ public class DateUnit
 	
 	public DateRange asDateRange() throws Exception
 	{
-		if (isBlank())
-			return null;
-		
 		if (isYear())
 			return getYear(); 
 			
@@ -79,11 +76,6 @@ public class DateUnit
 	public Vector<DateUnit> getSubDateUnits(DateRange dateRange) throws Exception
 	{
 		return new Vector();
-	}
-	
-	public DateRange convertToDateRange() throws Exception
-	{
-		return asDateRange();
 	}
 	
 	public Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)

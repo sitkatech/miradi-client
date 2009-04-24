@@ -31,7 +31,35 @@ public class TestDateUnit extends TestCaseWithProject
 	public TestDateUnit(String name)
 	{
 		super(name);
-	}	
+	}
+	
+	public void testAsDateRange() throws Exception
+	{
+		DateUnit empty = new DateUnit("");
+		try
+		{
+			empty.asDateRange();
+			fail("Should have thrown for calling asDateRange on empty DateUnit");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+		
+		DateUnit bogus = new DateUnit("Bogus");
+		try
+		{
+			bogus.asDateRange();
+			fail("Should have thrown for calling asDateRange on bogus DateUnit");
+		}
+		catch(Exception ignoreExpected)
+		{
+		}
+		
+		DateUnit year = new DateUnit("2006");
+		DateRange range = year.asDateRange();
+		assertEquals("2006-01-01", range.getStartDate().toIsoDateString());
+		assertEquals("2006-12-31", range.getEndDate().toIsoDateString());
+	}
 
 	public void testExtractYears() throws Exception
 	{
