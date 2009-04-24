@@ -67,8 +67,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		
 		resourceTable.dispose();
 		workplanTable.dispose();
-		budgetTable.dispose();
-		budgetTotalsTable.dispose();	
+		budgetTable.dispose();	
 	}
 	
 	@Override
@@ -105,12 +104,10 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
 		workPlanModel.setObjectRefs(hierarchyToSelectedRef);
 		budgetModel.setObjectRefs(hierarchyToSelectedRef);
-		budgetTotalsModel.setObjectRefs(hierarchyToSelectedRef);
 		
 		resourceTableModel.fireTableDataChanged();
 		workPlanModel.fireTableDataChanged();
 		budgetModel.fireTableDataChanged();
-		budgetTotalsModel.fireTableDataChanged();
 	}
 	
 	private void savePendingEdits()
@@ -118,7 +115,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		resourceTable.stopCellEditing();
 		workplanTable.stopCellEditing();
 		budgetTable.stopCellEditing();
-		budgetTotalsTable.stopCellEditing();
 	}
 
 	private void createTables() throws Exception
@@ -130,10 +126,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		workplanTable = new PlanningViewWorkPlanTable(mainWindow, workPlanModel);
 		
 		budgetModel = new PlanningViewBudgetTableModel(getProject());
-		budgetTable = new PlanningViewBudgetTable(mainWindow, budgetModel);
-		
-		budgetTotalsModel = new PlanningViewBudgetTotalsTableModel(getProject());
-		budgetTotalsTable = new PlanningViewBudgetTotalsTable(mainWindow, budgetTotalsModel);
+		budgetTable = new PlanningViewBudgetTable(mainWindow, budgetModel);		
 	}
 	
 	private void addTables()
@@ -143,7 +136,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		addTableToPanel(tables, resourceTable);
 		addToHorizontalController(addTableToPanel(tables, workplanTable));
 		addToHorizontalController(addTableToPanel(tables, budgetTable));
-		addTableToPanel(tables, budgetTotalsTable);
 		
 		add(tables, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
@@ -200,7 +192,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		selectionController.addTable(resourceTable);
 		selectionController.addTable(workplanTable);
 		selectionController.addTable(budgetTable);
-		selectionController.addTable(budgetTotalsTable);
 	}
 	
 	protected JPanel createButtonBar()
@@ -241,13 +232,11 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		resourceTableModel.dataWasChanged();
 		workPlanModel.dataWasChanged();
 		budgetModel.dataWasChanged();
-		budgetTotalsModel.dataWasChanged();
 		
 		resourceTable.rebuildColumnEditorsAndRenderers();
 		resourceTable.repaint();
 		workplanTable.repaint();
 		budgetTable.repaint();
-		budgetTotalsTable.repaint();
 	}
 	
 	private void setTaskId(ORef taskRef)
@@ -262,7 +251,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		resourceTableModel.setTask(task);
 		workPlanModel.setTask(task);
 		budgetModel.setTask(task);
-		budgetTotalsModel.setTask(task);
 	}
 	
 	public ORefList[] getSelectedHierarchies()
@@ -275,12 +263,10 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	private PlanningViewResourceTable resourceTable;
 	private PlanningViewWorkPlanTable workplanTable;
 	private PlanningViewBudgetTable budgetTable;
-	private PlanningViewBudgetTotalsTable budgetTotalsTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
 	private PlanningViewAbstractBudgetTableModel workPlanModel;
 	private PlanningViewBudgetTableModel budgetModel;
-	private PlanningViewBudgetTotalsTableModel budgetTotalsModel;
 	
 	private ObjectPicker objectPicker;
 }
