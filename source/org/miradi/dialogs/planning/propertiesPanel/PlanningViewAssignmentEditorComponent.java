@@ -38,6 +38,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -208,6 +209,9 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	{
 		try
 		{
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA))
+				expansionWasChanged();
+
 			if (event.isSetDataCommand())
 				dataWasChanged();
 		}
@@ -216,6 +220,11 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("An unexpected error has occurred"));
 		}		
+	}
+
+	private void expansionWasChanged() throws Exception
+	{
+		workPlanModel.restoreDateUnits();
 	}
 
 	private void dataWasChanged() throws Exception

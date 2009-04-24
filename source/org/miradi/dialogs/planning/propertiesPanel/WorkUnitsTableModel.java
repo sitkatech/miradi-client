@@ -53,7 +53,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	
 	public void restoreDateUnits() throws Exception
 	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), UNIQUE_TABLE_MODEL_IDENTIFIER);
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableModelIdentifier());
 		Vector<DateUnit> dateUnitsToUse = tableSettings.getDateUnitList();
 		if (dateUnitsToUse.isEmpty())
 			dateUnitsToUse.add(new DateUnit());
@@ -220,7 +220,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return provider;
 	}
 
-	private Vector<DateUnit> getDateUnits()
+	public Vector<DateUnit> getDateUnits()
 	{
 		return dateUnits;
 	}
@@ -229,6 +229,11 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 		DateUnit dateUnit = getDateUnits().get(column);
 		return getProjectCalendar().convertToDateRange(dateUnit);
+	}
+	
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 
 	private Vector<DateUnit> dateUnits;
