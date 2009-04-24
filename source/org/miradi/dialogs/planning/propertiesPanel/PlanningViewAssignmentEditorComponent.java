@@ -118,7 +118,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(mainWindow, resourceTableModel);
 		
-		workPlanModel = new PlanningViewWorkPlanTableModel(getProject());
+		workPlanModel = new PlanningViewWorkPlanTableModel(getProject(), resourceTableModel);
 		workplanTable = new PlanningViewWorkPlanTable(mainWindow, workPlanModel);		
 	}
 	
@@ -221,7 +221,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	private void dataWasChanged() throws Exception
 	{
 		resourceTableModel.dataWasChanged();
-		workPlanModel.dataWasChanged();
 		
 		resourceTable.rebuildColumnEditorsAndRenderers();
 		resourceTable.repaint();
@@ -238,7 +237,6 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		workplanTable.stopCellEditing();
 		
 		resourceTableModel.setTask(task);
-		workPlanModel.setTask(task);
 	}
 	
 	public ORefList[] getSelectedHierarchies()
