@@ -116,7 +116,7 @@ public class CodeList
 		data.retainAll(other.toVector());
 	}
 	
-	public Vector toVector()
+	public Vector<String> toVector()
 	{
 		return new Vector(data);
 	}
