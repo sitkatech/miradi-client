@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-24 16:49-0500\n"
+"POT-Creation-Date: 2009-04-24 18:25-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2433,7 +2433,7 @@ msgstr "1) Identificar lista inicial de objetos"
 msgid "Place scope on diagram"
 msgstr "Ubicar el alcance en el diagrama"
 
-#: miradi/source/org/miradi/objecthelpers/DateUnit.java:65
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:69
 msgid "No date range for date Unit = "
 msgstr ""
 
