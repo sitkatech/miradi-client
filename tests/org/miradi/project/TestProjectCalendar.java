@@ -36,7 +36,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 
 	public void testBasics() throws Exception
 	{
-		ProjectCalendar pc = getProject().getProjectCalendar();
+		ProjectCalendar pc = getProjectCalendar();
 		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, "2006-01-01");
 		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, "2007-12-31");
 		pc.rebuildProjectDateRanges();
@@ -104,8 +104,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	private void verifyFiscalQuarterName(String expectedName, String beginDate, String endDate, int fiscalYearFirstMonth) throws Exception
 	{
-		MultiCalendar begin = MultiCalendar.createFromIsoDateString(beginDate);
-		MultiCalendar end = MultiCalendar.createFromIsoDateString(endDate);
+		MultiCalendar begin = getDate(beginDate);
+		MultiCalendar end = getDate(endDate);
 		DateRange dateRange = new DateRange(begin, end);
 		String result = ProjectCalendar.getFiscalYearQuarterName(dateRange, fiscalYearFirstMonth);
 		assertEquals(expectedName, result);
@@ -119,18 +119,57 @@ public class TestProjectCalendar extends TestCaseWithProject
 		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
 		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
 		DateUnit blankDateUnit = new DateUnit();
-		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(blankDateUnit);
+		DateRange dateRange = getProjectCalendar().convertToDateRange(blankDateUnit);
 		DateRange expectedDateRange = new DateRange(startDate, endDate);
 		assertEquals("date ranges do not match?", expectedDateRange, dateRange);
 		
 		try
 		{
 			DateUnit bogusDateUnit = new DateUnit("bogusDate");
-			getProject().getProjectCalendar().convertToDateRange(bogusDateUnit);
+			getProjectCalendar().convertToDateRange(bogusDateUnit);
 			fail("should have thrown an exception when trying to convert invalid data?");
 		}
 		catch (Exception ignoreException)
 		{
 		}
+	}
+	
+	public void testGetSubDateUnits() throws Exception
+	{
+		MultiCalendar startDate = MultiCalendar.createFromIsoDateString("2006-01-02");
+		MultiCalendar endDate = MultiCalendar.createFromIsoDateString("2007-01-02");
+		
+		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
+		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
+		
+		DateUnit blankDateUnit = new DateUnit();
+		Vector<DateUnit> subDateUnits = getProjectCalendar().getSubDateUnits(blankDateUnit);
+		assertEquals("wrong sub date units count?", 2, subDateUnits.size());
+		assertTrue("does not contain date?", subDateUnits.contains(new DateUnit("2006")));
+		assertTrue("does not contain date?", subDateUnits.contains(new DateUnit("2007")));
+	}
+
+	public void testExtractYears() throws Exception
+	{
+		verifyYears(getDate("2006-01-02"), getDate("2006-02-02"), 1);
+		verifyYears(getDate("2006-01-02"), getDate("2007-02-02"), 2);
+	}
+
+	private void verifyYears(MultiCalendar startDate, MultiCalendar endDate, int expectedYearCount) throws Exception
+	{
+		DateRange dateRange = new DateRange(startDate, endDate);
+		
+		Vector<Integer> years = getProjectCalendar().extractYears(dateRange);
+		assertEquals("wrong years count?", expectedYearCount, years.size());
+	}
+	
+	private ProjectCalendar getProjectCalendar()
+	{
+		return getProject().getProjectCalendar();
+	}
+	
+	private MultiCalendar getDate(String date)
+	{
+		return MultiCalendar.createFromIsoDateString(date);
 	}
 }
