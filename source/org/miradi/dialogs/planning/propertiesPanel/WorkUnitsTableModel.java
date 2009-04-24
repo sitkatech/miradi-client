@@ -78,7 +78,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	
 	public DateRange getDateRangeForColumn(int column)
 	{
-		return getDateRanges()[column];
+		return getDateRange(column);
 	}
 
 	public String getUnit(DateRangeEffortList effortList, DateRange dateRange) throws Exception
@@ -98,7 +98,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	protected Object getUnits(int row, int column) throws Exception
 	{
 		DateRangeEffortList effortList = getDateRangeEffortList(row);
-		DateRange dateRange = getDateRanges()[column];
+		DateRange dateRange = getDateRange(column);
 		
 		return getUnit(effortList, dateRange);
 	}
@@ -157,7 +157,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		DateRangeEffort effort = getDateRangeEffort(row, column);
 		double units = 0;
 		if (effort == null)
-			effort = new DateRangeEffort("", units, getDateRanges()[column]);
+			effort = new DateRangeEffort("", units, getDateRange(column));
 	
 		String valueAsString = value.toString().trim();
 		if (! valueAsString.equals(""))
@@ -182,7 +182,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 
 	private DateRangeEffort getDateRangeEffort(int row, int column)	throws Exception
 	{
-		return getDateRangeEffort(getAssignment(row), getDateRanges()[column]);
+		return getDateRangeEffort(getAssignment(row), getDateRange(column));
 	}	
 	
 	@Override
