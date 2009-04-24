@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-24 18:25-0500\n"
+"POT-Creation-Date: 2009-04-24 18:28-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -982,7 +982,7 @@ msgid "Button|Save"
 msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAssignmentEditorComponent.java:217
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAssignmentEditorComponent.java:221
 #, fuzzy
 msgid "An unexpected error has occurred"
 msgstr "An unexpected error has occurred"
@@ -6574,6 +6574,14 @@ msgstr "Terjadi Kesalahan Tak Terduga "
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:39
 msgid "Title|Intermediate Result Properties"
 msgstr "Sifat-sifat Hasil Antara"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:173
+msgid "Exapand"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:193
+msgid "Collapse"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:39
 msgid "Title|Threat Reduction Result Properties"
