@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.Vector;
+
 import org.martus.util.MultiCalendar;
 
 public class DateRange
@@ -197,6 +199,19 @@ public class DateRange
 		return toString().equals(rawOther.toString());
 	}
 	
+	public Vector<Integer> extractYears()
+	{
+		int startYear = getStartDate().getGregorianYear();
+		int endYear = getEndDate().getGregorianYear();
+		Vector<Integer> years = new Vector<Integer>();
+		for (int year = startYear; year <= endYear; ++year)
+		{
+			years.add(year);
+		}
+		
+		return years;
+	}
+
 	public static DateRange createFromJson(MultiCalendar date1, MultiCalendar date2) throws Exception
 	{
 		if (date1.after(date2))
