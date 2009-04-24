@@ -60,11 +60,6 @@ abstract public class PlanningViewAbstractBudgetTableModel extends PlanningViewA
 		return getProject().getProjectCalendar();
 	}
 
-	public boolean isCellEditable(int rowIndex, int columnIndex)
-	{
-		return true;
-	}
-
 	public String getColumnName(int col)
 	{
 		try
