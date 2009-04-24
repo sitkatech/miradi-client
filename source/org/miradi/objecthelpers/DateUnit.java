@@ -47,7 +47,12 @@ public class DateUnit
 	
 	private boolean isYear()
 	{
-		return getDateUnit().length() == YEAR_CHAR_COUNT;
+		return isSameCharCount(YEAR_CHAR_COUNT);
+	}
+
+	private boolean isSameCharCount(int charCount)
+	{
+		return getDateUnit().length() == charCount;
 	}
 	
 	public DateRange asDateRange() throws Exception
