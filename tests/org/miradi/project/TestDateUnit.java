@@ -33,7 +33,7 @@ public class TestDateUnit extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testAsDateRange() throws Exception
+	public void testAsDateRangeForEmpty() throws Exception
 	{
 		try
 		{
@@ -43,7 +43,10 @@ public class TestDateUnit extends TestCaseWithProject
 		catch(Exception ignoreExpected)
 		{
 		}
-		
+	}
+	
+	public void testAsDateRangeForBogus() throws Exception
+	{
 		try
 		{
 			bogus.asDateRange();
@@ -52,7 +55,10 @@ public class TestDateUnit extends TestCaseWithProject
 		catch(Exception ignoreExpected)
 		{
 		}
-		
+	}
+	
+	public void testAsDateRange() throws Exception
+	{
 		DateRange range = year.asDateRange();
 		assertEquals("2006-01-01", range.getStartDate().toIsoDateString());
 		assertEquals("2006-12-31", range.getEndDate().toIsoDateString());
