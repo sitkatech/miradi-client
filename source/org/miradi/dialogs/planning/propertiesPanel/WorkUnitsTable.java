@@ -33,9 +33,9 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
-public class PlanningViewWorkPlanTable extends AssignmentsComponentTable
+public class WorkUnitsTable extends AssignmentsComponentTable
 {
-	public PlanningViewWorkPlanTable(MainWindow mainWindowToUse, WorkUnitsTableModel modelToUse) throws Exception
+	public WorkUnitsTable(MainWindow mainWindowToUse, WorkUnitsTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		setBackground(getColumnBackGroundColor(0));	
