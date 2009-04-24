@@ -1,0 +1,79 @@
+Spreadsheet Components
+2009-04-24 kbs
+
+REQUIREMENTS:
+- GPL-compatible license
+- Swing (or Swing-compatible) UI widgets
+- Basic math formulas
+- Standard grid behaviors like resizing columns
+- Well-written code
+
+CANDIDATES:
+
+1. JSpreadsheet
+
+https://jspreadsheet.dev.java.net/
+GPL 2.0
+Last updated: 2004
+
+This project never published release files. They did an initial commit to CVS, 
+and apparently never updated it after that. The code seems quite well-written.
+
+Based on code from the Sharp Tools spreadsheet. Has:
+- Formulas (+-*/^, basic math/stats functions, absolute/relative cell refs)
+- Resizeable columns
+- Can select row/column and insert/delete row/column
+
+Weaknesses:
+- Custom look and feel of row/column headers
+- Built-in undo/redo may conflict with ours 
+
+
+2. Jeppers JGrid
+
+http://jeppers.sourceforge.net/
+LGPL
+Last updated: 2005
+
+JGrid is a low-level spreadsheet-like Swing component that is used 
+as the core of the Jeppers spreadsheet application.
+
+Code and design look good. Has a number of features, but lacks:
+- Column resizing
+- Cursor focus when in checkbox or combo cells
+- Mathematical formulas (might be able to get them from JSpreadsheet)
+
+3. jga (Spreadsheet widget)
+
+http://jga.sourceforge.net/
+LGPL
+Last updated: 2006
+
+Version 0.8 source code is missing at least one Java file, so it 
+won't even compile.
+
+Spreadsheet is just one part of a larger library related to 
+generic algorithms and functors. It includes mathematical formulas.
+
+
+4. csheets
+
+http://csheets.sourceforge.net/
+GPL
+Last updated: 2005 (but author still monitors support forums)
+
+VERY slick looking spreadsheet application, with multiple sheets, 
+edit bar above the sheets.
+It has formulas including IF (but almost no math functions except sum and count).
+Has text formatting (font, bold, italics, alignment). 
+Allows resizing rows and columns
+
+No support for:
+- numeric/date formatting
+- using cells from a different sheet within a formula
+- fancy outlining of ranges with the cursor
+- selecting rows or columns
+
+It is not clear whether it is designed to be tightly integrated as a component 
+within the Miradi UI. It does not have an Undo/Redo implementation, 
+which is probably good in our case.
