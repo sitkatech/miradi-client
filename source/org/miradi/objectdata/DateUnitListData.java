@@ -42,4 +42,15 @@ public class DateUnitListData extends AbstractStringListData
 		
 		return dateUnits;
 	}
+	
+	public static CodeList convertToCodeList(Vector<DateUnit> dateUnits)
+	{
+		CodeList dateUnitsAsCodeList = new CodeList();
+		for (int index = 0; index < dateUnits.size(); ++index)
+		{
+			dateUnitsAsCodeList.add(dateUnits.get(index).toString());
+		}
+		
+		return dateUnitsAsCodeList;
+	}
 }
