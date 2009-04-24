@@ -137,6 +137,7 @@ import org.miradi.objects.TestXenodata;
 import org.miradi.project.TestBudgetTimePeriodChanger;
 import org.miradi.project.TestCausePool;
 import org.miradi.project.TestChainManager;
+import org.miradi.project.TestDateUnit;
 import org.miradi.project.TestFactorDeleteHelper;
 import org.miradi.project.TestFactorLinkPool;
 import org.miradi.project.TestGroupBoxPool;
@@ -248,6 +249,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestProjectCommandExecutions.class));
 		suite.addTest(new TestSuite(TestProjectCalendar.class));
+		suite.addTest(new TestSuite(TestDateUnit.class));
 		suite.addTest(new TestSuite(TestProjectRepairer.class));
 		suite.addTest(new TestSuite(TestRealProject.class));
 		suite.addTest(new TestSuite(TestIdAssigner.class));
