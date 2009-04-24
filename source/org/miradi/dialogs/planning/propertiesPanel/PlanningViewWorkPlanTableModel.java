@@ -58,20 +58,6 @@ public class PlanningViewWorkPlanTableModel extends PlanningViewAbstractBudgetTa
 		return "";
 	}
 	
-	public String getUnit(DateRangeEffortList effortList, DateRange dateRange)
-	{
-		double units = 0.0;
-		try
-		{
-			units = effortList.getTotalUnitQuantity(dateRange);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		return decimalFormatter.format(units);
-	}
-	
 	public void setValueAt(Object value, int row, int column)
 	{
 		try
