@@ -35,7 +35,6 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testAsDateRange() throws Exception
 	{
-		DateUnit empty = new DateUnit("");
 		try
 		{
 			empty.asDateRange();
@@ -45,7 +44,6 @@ public class TestDateUnit extends TestCaseWithProject
 		{
 		}
 		
-		DateUnit bogus = new DateUnit("Bogus");
 		try
 		{
 			bogus.asDateRange();
@@ -55,12 +53,11 @@ public class TestDateUnit extends TestCaseWithProject
 		{
 		}
 		
-		DateUnit year = new DateUnit("2006");
 		DateRange range = year.asDateRange();
 		assertEquals("2006-01-01", range.getStartDate().toIsoDateString());
 		assertEquals("2006-12-31", range.getEndDate().toIsoDateString());
 	}
-
+	
 	public void testExtractYears() throws Exception
 	{
 		verifyYearCount(getProject().parseIsoDate("2006-01-02"), getProject().parseIsoDate("2006-02-02"), 1);
@@ -74,4 +71,8 @@ public class TestDateUnit extends TestCaseWithProject
 		Vector<Integer> years = new DateUnit().extractYears(dateRange);
 		assertEquals("wrong years count?", expectedYearCount, years.size());
 	}
+
+	private final DateUnit empty = new DateUnit("");
+	private final DateUnit bogus = new DateUnit("Bogus");
+	private final DateUnit year = new DateUnit("2006");
 }
