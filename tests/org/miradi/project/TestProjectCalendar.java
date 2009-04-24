@@ -104,8 +104,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	private void verifyFiscalQuarterName(String expectedName, String beginDate, String endDate, int fiscalYearFirstMonth) throws Exception
 	{
-		MultiCalendar begin = parseIsoDate(beginDate);
-		MultiCalendar end = parseIsoDate(endDate);
+		MultiCalendar begin = getProject().parseIsoDate(beginDate);
+		MultiCalendar end = getProject().parseIsoDate(endDate);
 		DateRange dateRange = new DateRange(begin, end);
 		String result = ProjectCalendar.getFiscalYearQuarterName(dateRange, fiscalYearFirstMonth);
 		assertEquals(expectedName, result);
@@ -128,8 +128,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 
 	private void verifyBlankDateUnit() throws Exception
 	{
-		MultiCalendar startDate = MultiCalendar.createFromIsoDateString("2006-01-02");
-		MultiCalendar endDate = MultiCalendar.createFromIsoDateString("2007-01-02");
+		MultiCalendar startDate = getProject().parseIsoDate("2006-01-02");
+		MultiCalendar endDate = getProject().parseIsoDate("2007-01-02");
 		
 		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
 		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
@@ -154,8 +154,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	public void testGetSubDateUnits() throws Exception
 	{
-		MultiCalendar startDate = MultiCalendar.createFromIsoDateString("2006-01-02");
-		MultiCalendar endDate = MultiCalendar.createFromIsoDateString("2007-01-02");
+		MultiCalendar startDate = getProject().parseIsoDate("2006-01-02");
+		MultiCalendar endDate = getProject().parseIsoDate("2007-01-02");
 		
 		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, startDate.toIsoDateString());
 		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, endDate.toIsoDateString());
@@ -170,10 +170,5 @@ public class TestProjectCalendar extends TestCaseWithProject
 	private ProjectCalendar getProjectCalendar()
 	{
 		return getProject().getProjectCalendar();
-	}
-	
-	private MultiCalendar parseIsoDate(String date)
-	{
-		return MultiCalendar.createFromIsoDateString(date);
 	}
 }
