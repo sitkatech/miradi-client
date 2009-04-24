@@ -252,7 +252,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	private PlanningViewWorkPlanTable workplanTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
-	private PlanningViewAbstractBudgetTableModel workPlanModel;
+	private PlanningViewWorkPlanTableModel workPlanModel;
 	
 	private ObjectPicker objectPicker;
 }
