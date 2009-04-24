@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.util.Vector;
+
 import org.martus.util.MultiCalendar;
 import org.miradi.main.EAM;
 import org.miradi.utils.DateRange;
@@ -72,6 +74,11 @@ public class DateUnit
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(year, 12, 31);
 		return new DateRange(startDate, endDate);
+	}
+	
+	public Vector<DateUnit> getSubDateUnits(DateRange dateRange) throws Exception
+	{
+		return new Vector();
 	}
 
 	@Override
