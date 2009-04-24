@@ -37,9 +37,9 @@ import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
-public class PlanningViewWorkPlanTableModel extends EditableObjectTableModel implements ColumnTagProvider
+public class WorkUnitsTableModel extends EditableObjectTableModel implements ColumnTagProvider
 {
-	public PlanningViewWorkPlanTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
+	public WorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
 		super(projectToUse);
 
