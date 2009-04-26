@@ -44,7 +44,7 @@ public class DateUnit
 	
 	public boolean isBlank()
 	{
-		return getDateUnitCode().isEmpty();
+		return getDateUnitCode().length() == 0;
 	}
 	
 	private boolean isYear()
