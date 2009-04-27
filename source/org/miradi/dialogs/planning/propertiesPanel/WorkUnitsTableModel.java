@@ -220,7 +220,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return provider;
 	}
 
-	public Vector<DateUnit> getDateUnits()
+	private Vector<DateUnit> getDateUnits()
 	{
 		return dateUnits;
 	}
