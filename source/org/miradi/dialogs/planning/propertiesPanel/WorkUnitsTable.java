@@ -160,7 +160,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	{
 		public ExpandHandler()
 		{
-			super(EAM.text("Exapand"));
+			super(EAM.text("Expand Selected Column"));
 		}
 		
 		public void actionPerformed(ActionEvent event)
@@ -180,7 +180,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	{
 		public CollapseHandler()
 		{
-			super(EAM.text("Collapse"));
+			super(EAM.text("Collapse Selected Column"));
 		}
 		
 		public void actionPerformed(ActionEvent event)
