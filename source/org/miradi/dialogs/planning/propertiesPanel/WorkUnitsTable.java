@@ -109,6 +109,9 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		{
 			Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
 			DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
+			if (currentDateUnits.contains(dateUnit))
+				return true;
+			
 			return currentDateUnits.containsAll(dateUnit.getSubDateUnits());
 		}
 		catch(Exception e)

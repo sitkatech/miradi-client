@@ -209,10 +209,6 @@ public class DateUnit
 		if(isMonth())
 			return getMonthSubDateUnits();
 		
-		//FIXME this seems wrong but its working.... why?
-		if(isDay())
-			return getMonthSubDateUnits();
-
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 

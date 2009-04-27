@@ -418,8 +418,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		DateRange dateRange = convertToDateRange(dateUnit);
 		if (dateUnit.isBlank())
 			return ProjectCalendar.getProjectStartEndDateUnits(dateRange);
-			
-		return dateUnit.getSubDateUnits();
+		
+		if (dateUnit.hasSubDateUnits())
+			return dateUnit.getSubDateUnits();
+		
+		return new Vector<DateUnit>();
 	}
 
 	public static Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)
