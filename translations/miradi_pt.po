@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-27 09:49-0500\n"
+"POT-Creation-Date: 2009-04-27 15:10-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2068,7 +2068,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: miradi/source/org/miradi/objecthelpers/DateUnit.java:69
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:94
 msgid "No date range for date Unit = "
 msgstr ""
 
@@ -6091,11 +6091,11 @@ msgstr ""
 msgid "Title|Intermediate Result Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:163
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:181
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:183
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:201
 msgid "Collapse Selected Column"
 msgstr ""
 
