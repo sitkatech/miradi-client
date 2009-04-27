@@ -209,7 +209,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA))
+			if (columnExpansionWasChanged(event))
 				expansionWasChanged();
 
 			if (event.isSetDataCommand())
@@ -220,6 +220,11 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("An unexpected error has occurred"));
 		}		
+	}
+
+	private boolean columnExpansionWasChanged(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
 	}
 
 	private void expansionWasChanged() throws Exception
