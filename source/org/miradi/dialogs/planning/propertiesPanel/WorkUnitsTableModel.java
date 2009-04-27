@@ -72,7 +72,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 		try
 		{
-			return getProjectCalendar().getDateRangeName(getDateRange(col));
+			return getDateUnits().get(col).toString();
 		}
 		catch(Exception e)
 		{
