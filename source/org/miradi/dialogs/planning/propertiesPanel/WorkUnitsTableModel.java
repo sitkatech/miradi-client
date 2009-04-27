@@ -227,7 +227,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	
 	public Vector<DateUnit> getCopyOfDateUnits()
 	{
-		return (Vector<DateUnit>) getDateUnits().clone();
+		return new Vector(getDateUnits());
 	}
 	
 	private DateRange getDateRange(int column) throws Exception
