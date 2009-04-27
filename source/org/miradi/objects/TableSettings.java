@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IntegerData;
@@ -34,6 +35,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringMapData;
 
@@ -73,6 +75,11 @@ public class TableSettings extends BaseObject
 	public Vector<DateUnit> getDateUnitList()
 	{
 		return dateUnitListList.getDateUnits();
+	}
+	
+	public CommandSetObjectData createCommandToUpdateDateUnitList(CodeList dateUnits)
+	{
+		return new CommandSetObjectData(this, TAG_DATE_UNIT_LIST_DATA, dateUnits.toString());
 	}
 
 	public static int getObjectType()
