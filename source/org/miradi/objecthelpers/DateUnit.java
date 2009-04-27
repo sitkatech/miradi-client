@@ -128,8 +128,11 @@ public class DateUnit
 	private Vector<DateUnit> getYearSubDateUnits()
 	{
 		Vector<DateUnit> quarters = new Vector<DateUnit>();
-		for(int i = 0; i < 4; ++i)
-			quarters.add(new DateUnit(getDateUnitCode() + "Q" + (i+1)));
+		for(int index = 0; index < 4; ++index)
+		{
+			quarters.add(new DateUnit(getDateUnitCode() + "Q" + (index+1)));
+		}
+		
 		return quarters;
 	}
 	
@@ -138,8 +141,11 @@ public class DateUnit
 		Vector<DateUnit> months = new Vector<DateUnit>();
 		int quarter = getQuarter();
 		String[] monthStrings = monthsPerQuarter[quarter-1];
-		for(int i = 0; i < monthStrings.length; ++i)
-			months.add(new DateUnit(getYear() + "-" + monthStrings[i]));
+		for(int index = 0; index < monthStrings.length; ++index)
+		{
+			months.add(new DateUnit(getYear() + "-" + monthStrings[index]));
+		}
+		
 		return months;
 	}
 
