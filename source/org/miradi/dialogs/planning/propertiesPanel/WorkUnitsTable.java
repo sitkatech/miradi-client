@@ -99,14 +99,33 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return JLabel.RIGHT;
 	}
 	
+	private boolean isSelectedDateUnitColumnExpanded()
+	{
+		int selectedColumnIndex = getSelectedColumn();
+		if (isEmptySelection(selectedColumnIndex))
+			return false;	
+		
+		try
+		{
+			Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
+			DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
+			return currentDateUnits.containsAll(dateUnit.getSubDateUnits());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return false;
+			
+		}
+	}
+
 	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
-		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
 		int selectedColumnIndex = getSelectedColumn();
-		boolean isEmptySelection = selectedColumnIndex < 0;
-		if (isEmptySelection)
+		if (isEmptySelection(selectedColumnIndex))
 			return;
-		
+	
+		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
 		DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
 		Vector<DateUnit> subDateUnits = getProject().getProjectCalendar().getSubDateUnits(dateUnit);					
 		if (currentDateUnits.containsAll(subDateUnits))
@@ -131,6 +150,11 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		}
 	}
 	
+	private boolean isEmptySelection(int selectedColumnIndex)
+	{
+		return selectedColumnIndex < 0;
+	}
+		
 	public void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
 	{	
 		CodeList dateUnits = DateUnitListData.convertToCodeList(currentDateUnits);
@@ -163,8 +187,11 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		public void doRightClickMenu(MouseEvent event)
 		{
 			JPopupMenu popupMenu = new JPopupMenu();
-			popupMenu.add(new JMenuItem(expandAction));
-			popupMenu.add(new JMenuItem(collapseAction));
+			if (isSelectedDateUnitColumnExpanded())
+				popupMenu.add(new JMenuItem(collapseAction));
+			else
+				popupMenu.add(new JMenuItem(expandAction));
+			
 			Point clickLocation  = event.getPoint();
 			popupMenu.show(table, (int)clickLocation.getX(), (int)clickLocation.getY());
 		}
