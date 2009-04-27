@@ -101,7 +101,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	
 	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
-		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getDateUnits();
+		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
 		int selectedColumnIndex = getSelectedColumn();
 		DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
 		Vector<DateUnit> subDateUnits = getProject().getProjectCalendar().getSubDateUnits(dateUnit);					
