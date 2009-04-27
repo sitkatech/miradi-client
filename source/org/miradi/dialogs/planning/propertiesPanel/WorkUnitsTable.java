@@ -106,21 +106,15 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
 		Vector<DateUnit> subDateUnits = getProject().getProjectCalendar().getSubDateUnits(dateUnit);					
 		if (currentDateUnits.containsAll(subDateUnits))
-			collapse(currentDateUnits, subDateUnits);
+		{
+			currentDateUnits.removeAll(subDateUnits);
+			saveColumnDateUnits(currentDateUnits);
+		}
 		else
-			expand(currentDateUnits, subDateUnits);
-	}
-	
-	private void expand(Vector<DateUnit> currentDateUnits, Vector<DateUnit> subDateUnits) throws Exception
-	{
-		currentDateUnits.addAll(subDateUnits);
-		saveColumnDateUnits(currentDateUnits);
-	}
-
-	private void collapse(Vector<DateUnit> currentDateUnits, Vector<DateUnit> subDateUnits) throws Exception
-	{
-		currentDateUnits.removeAll(subDateUnits);
-		saveColumnDateUnits(currentDateUnits);
+		{
+			currentDateUnits.addAll(subDateUnits);
+			saveColumnDateUnits(currentDateUnits);
+		}
 	}
 	
 	public void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
