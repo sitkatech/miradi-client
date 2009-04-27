@@ -99,6 +99,17 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return JLabel.RIGHT;
 	}
 	
+	private boolean isDayColumnSelected()
+	{
+		int selectedColumnIndex = getSelectedColumn();
+		if (isEmptySelection(selectedColumnIndex))
+			return false;	
+		
+		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
+		DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
+		return dateUnit.isDay();
+	}
+	
 	private boolean isSelectedDateUnitColumnExpanded()
 	{
 		int selectedColumnIndex = getSelectedColumn();
@@ -109,10 +120,10 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		{
 			Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
 			DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
-			if (currentDateUnits.contains(dateUnit))
-				return true;
+			if (dateUnit.hasSubDateUnits())
+				return currentDateUnits.containsAll(dateUnit.getSubDateUnits());
 			
-			return currentDateUnits.containsAll(dateUnit.getSubDateUnits());
+			return currentDateUnits.contains(dateUnit);
 		}
 		catch(Exception e)
 		{
@@ -189,6 +200,9 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		
 		public void doRightClickMenu(MouseEvent event)
 		{
+			if (isDayColumnSelected())
+				return;
+			
 			JPopupMenu popupMenu = new JPopupMenu();
 			if (isSelectedDateUnitColumnExpanded())
 				popupMenu.add(new JMenuItem(collapseAction));

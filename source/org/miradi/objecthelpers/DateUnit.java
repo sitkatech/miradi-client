@@ -66,7 +66,7 @@ public class DateUnit
 		return code.matches("\\d\\d\\d\\d-\\d\\d");
 	}
 	
-	private boolean isDay()
+	public boolean isDay()
 	{
 		String code = getDateUnitCode();
 		boolean matchesFormat1 = code.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d");
