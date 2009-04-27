@@ -60,7 +60,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		
 		dateUnits = dateUnitsToUse;
 		
-		fireTableDataChanged();
+		fireTableStructureChanged();
 	}
 	
 	private ProjectCalendar getProjectCalendar() throws Exception
