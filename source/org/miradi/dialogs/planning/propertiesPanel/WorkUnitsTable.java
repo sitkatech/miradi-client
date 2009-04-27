@@ -99,7 +99,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return JLabel.RIGHT;
 	}
 	
-	private void expandOrCollapse() throws Exception
+	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
 		Vector<DateUnit> dateUnits = getWorkUnitsTableModel().getDateUnits();
 		int selectedColumnIndex = getSelectedColumn();
@@ -177,7 +177,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		{
 			try
 			{
-				expandOrCollapse();
+				respondToExpandOrCollapseColumnEvent();
 			}
 			catch(Exception e)
 			{
@@ -197,7 +197,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		{
 			try
 			{
-				expandOrCollapse();
+				respondToExpandOrCollapseColumnEvent();
 			}
 			catch(Exception e)
 			{
