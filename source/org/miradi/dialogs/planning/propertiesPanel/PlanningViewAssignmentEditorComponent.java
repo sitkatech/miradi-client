@@ -209,8 +209,8 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	{
 		try
 		{
-			if (columnExpansionWasChanged(event))
-				expansionWasChanged();
+			if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA))
+				respondToExpandOrCollapseColumnEvent();
 
 			if (event.isSetDataCommand())
 				dataWasChanged();
@@ -222,12 +222,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		}		
 	}
 
-	private boolean columnExpansionWasChanged(CommandExecutedEvent event)
-	{
-		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
-	}
-
-	private void expansionWasChanged() throws Exception
+	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
 		workPlanModel.restoreDateUnits();
 	}
