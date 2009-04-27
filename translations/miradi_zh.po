@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-27 09:49-0500\n"
+"POT-Creation-Date: 2009-04-27 15:10-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2311,7 +2311,7 @@ msgstr "1) 确定对象的初始列表 \t\t"
 msgid "Place scope on diagram"
 msgstr "在图表上设置范围 \t\t"
 
-#: miradi/source/org/miradi/objecthelpers/DateUnit.java:69
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:94
 msgid "No date range for date Unit = "
 msgstr ""
 
@@ -6392,11 +6392,11 @@ msgstr "出现意外错误 \t\t"
 msgid "Title|Intermediate Result Properties"
 msgstr "标题|中途结果属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:163
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:181
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:183
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:201
 msgid "Collapse Selected Column"
 msgstr ""
 
