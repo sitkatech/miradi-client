@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -57,6 +59,23 @@ public class DateUnit
 		String code = getDateUnitCode();
 		return code.matches("\\d\\d\\d\\dQ\\d");
 	}
+	
+	private boolean isMonth()
+	{
+		String code = getDateUnitCode();
+		return code.matches("\\d\\d\\d\\d-\\d\\d");
+	}
+	
+	private boolean isDay()
+	{
+		String code = getDateUnitCode();
+		boolean matchesFormat1 = code.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d");
+		boolean matchesFormat2 = code.matches("\\d\\d\\d\\d-\\d-\\d\\d");
+		boolean matchesFormat3 = code.matches("\\d\\d\\d\\d-\\d\\d-\\d");
+		boolean matchesFormat4 = code.matches("\\d\\d\\d\\d-\\d-\\d");
+		
+		return matchesFormat1 ||  matchesFormat2 || matchesFormat3 || matchesFormat4;
+	}
 
 	public DateRange asDateRange() throws Exception
 	{
@@ -65,10 +84,46 @@ public class DateUnit
 		
 		if (isQuarter())
 			return getQuarterDateRange();
+		
+		if (isMonth())
+			return getMonthDateRange();
+		
+		if (isDay())
+			return getDayDateRange();
 			
 		throw new Exception(EAM.text("No date range for date Unit = " + dateUnit.toString()));
 	}
 	
+	private DateRange getMonthDateRange() throws Exception
+	{	
+ 		int year = getYear();
+		int month = getMonth();
+	    int daysInMonth = getNumberOfDaysInMonth(year, month); 
+	    
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, month, 1);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(year, month, daysInMonth);
+		
+		return new DateRange(startDate, endDate);			
+	}
+	
+	private DateRange getDayDateRange() throws Exception
+	{
+		int year = getYear();
+		int month = getMonth();
+		int day = getDay();
+		
+		MultiCalendar date = MultiCalendar.createFromGregorianYearMonthDay(year, month, day);
+		return new DateRange(date, date);
+	}
+
+	private int getNumberOfDaysInMonth(int year, int month)
+	{
+		int validCalendarMonth = month - 1;
+		Calendar calendar = new GregorianCalendar(year, validCalendarMonth, 1);
+	    int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+		return days;
+	}
+
 	private DateRange getYearDateRange() throws Exception
 	{
 		int year = Integer.parseInt(getDateUnitCode());
@@ -96,6 +151,32 @@ public class DateUnit
 	{
 		return Integer.parseInt(getDateUnitCode().substring(0, 4));
 	}
+	
+	public int getMonth()
+	{
+		String dateUnitCodeToParse = getDateUnitCode();
+		int indexOfYearMonthSeperator = dateUnitCodeToParse.indexOf("-");
+		int length = dateUnitCodeToParse.length();
+		String monthDayString = dateUnitCodeToParse.substring(indexOfYearMonthSeperator + 1, length);
+		int indexOfMonthDaySeperator = monthDayString.indexOf("-");
+		if (indexOfMonthDaySeperator < 0)
+			return Integer.parseInt(monthDayString);
+		
+		return Integer.parseInt(monthDayString.substring(0, indexOfMonthDaySeperator));
+	}
+	
+	public int getDay()
+	{
+		int lastIndexOf = getDateUnitCode().lastIndexOf("-");
+		int length = getDateUnitCode().length();
+		
+		return parseDateUnit(lastIndexOf + 1, length);
+	}
+
+	private int parseDateUnit(int beginIndex, int endIndex)
+	{
+		return Integer.parseInt(getDateUnitCode().substring(beginIndex, endIndex));
+	}
 
 	private int getQuarter()
 	{
@@ -111,6 +192,9 @@ public class DateUnit
 		if(isQuarter())
 			return true;
 		
+		if (isMonth())
+			return true;
+		
 		return false;
 	}
 
@@ -121,6 +205,13 @@ public class DateUnit
 		
 		if(isQuarter())
 			return getQuarterSubDateUnits();
+		
+		if(isMonth())
+			return getMonthSubDateUnits();
+		
+		//FIXME this seems wrong but its working.... why?
+		if(isDay())
+			return getMonthSubDateUnits();
 
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
@@ -148,6 +239,20 @@ public class DateUnit
 		
 		return months;
 	}
+	
+	private Vector<DateUnit> getMonthSubDateUnits()
+	{
+		Vector<DateUnit> days = new Vector<DateUnit>();
+		int year = getYear();
+		String month = monthsPerYear[getMonth()-1];
+		int daysInMonth = getNumberOfDaysInMonth(year, getMonth());
+		for(int day = 1; day <= daysInMonth; ++day)
+		{
+			days.add(new DateUnit(getYear() + "-" + month + "-" + day));
+		}
+		
+		return days;
+	}
 
 	@Override
 	public boolean equals(Object obj)
@@ -172,6 +277,6 @@ public class DateUnit
 		{"10", "11", "12"}, 
 	};
 	
+	private static final String[] monthsPerYear = {"01", "02", "03","04", "05", "06", "07", "08", "09", "10", "11", "12"};
 	private String dateUnit;
-
 }
