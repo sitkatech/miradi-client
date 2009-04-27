@@ -101,31 +101,31 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	
 	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
-		Vector<DateUnit> dateUnits = getWorkUnitsTableModel().getDateUnits();
+		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getDateUnits();
 		int selectedColumnIndex = getSelectedColumn();
-		DateUnit dateUnit = dateUnits.get(selectedColumnIndex);
+		DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
 		Vector<DateUnit> subDateUnits = getProject().getProjectCalendar().getSubDateUnits(dateUnit);					
-		if (dateUnits.containsAll(subDateUnits))
-			collapse(dateUnits, subDateUnits);
+		if (currentDateUnits.containsAll(subDateUnits))
+			collapse(currentDateUnits, subDateUnits);
 		else
-			expand(dateUnits, subDateUnits);
+			expand(currentDateUnits, subDateUnits);
 	}
 	
-	private void expand(Vector<DateUnit> dateUnits, Vector<DateUnit> subDateUnits) throws Exception
+	private void expand(Vector<DateUnit> currentDateUnits, Vector<DateUnit> subDateUnits) throws Exception
 	{
-		dateUnits.addAll(subDateUnits);
-		saveColumnDateUnits(dateUnits);
+		currentDateUnits.addAll(subDateUnits);
+		saveColumnDateUnits(currentDateUnits);
 	}
 
-	private void collapse(Vector<DateUnit> dateUnits, Vector<DateUnit> subDateUnits) throws Exception
+	private void collapse(Vector<DateUnit> currentDateUnits, Vector<DateUnit> subDateUnits) throws Exception
 	{
-		dateUnits.removeAll(subDateUnits);
-		saveColumnDateUnits(dateUnits);
+		currentDateUnits.removeAll(subDateUnits);
+		saveColumnDateUnits(currentDateUnits);
 	}
 	
-	public void saveColumnDateUnits(Vector<DateUnit> dateUnitsToUse) throws Exception
+	public void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
 	{	
-		CodeList dateUnits = DateUnitListData.convertToCodeList(dateUnitsToUse);
+		CodeList dateUnits = DateUnitListData.convertToCodeList(currentDateUnits);
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkUnitsTableModel().getUniqueTableModelIdentifier());
 		CommandSetObjectData setDateUnitsCommand = new CommandSetObjectData(tableSettings, TableSettings.TAG_DATE_UNIT_LIST_DATA, dateUnits.toString());
 		getProject().executeCommand(setDateUnitsCommand);
