@@ -117,7 +117,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	{	
 		CodeList dateUnits = DateUnitListData.convertToCodeList(currentDateUnits);
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkUnitsTableModel().getUniqueTableModelIdentifier());
-		CommandSetObjectData setDateUnitsCommand = new CommandSetObjectData(tableSettings, TableSettings.TAG_DATE_UNIT_LIST_DATA, dateUnits.toString());
+		CommandSetObjectData setDateUnitsCommand = tableSettings.createCommandToUpdateDateUnitList(dateUnits);
 		getProject().executeCommand(setDateUnitsCommand);
 	}
 
