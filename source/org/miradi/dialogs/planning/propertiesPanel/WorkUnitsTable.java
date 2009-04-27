@@ -196,7 +196,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		}	
 	}
 	
-	public static final String UNIQUE_IDENTIFIER = "PlanningViewWorkPlanTable";
+	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellRendererFactory renderer;
 }
