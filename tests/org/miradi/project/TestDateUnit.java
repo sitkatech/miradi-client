@@ -58,13 +58,29 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testAsDateRange() throws Exception
 	{
-		DateRange yearRange = year.asDateRange();
-		assertEquals("2006-01-01", yearRange.getStartDate().toIsoDateString());
-		assertEquals("2006-12-31", yearRange.getEndDate().toIsoDateString());
+		verifyDateUnit(year, "2006-01-01", "2006-12-31");
 		
-		DateRange quarterRange = quarter.asDateRange();
-		assertEquals("2009-10-01", quarterRange.getStartDate().toIsoDateString());
-		assertEquals("2009-12-31", quarterRange.getEndDate().toIsoDateString());
+		verifyDateUnit(quarter, "2009-10-01", "2009-12-31");
+		
+		verifyDateUnit(month01, "2008-01-01", "2008-01-31");
+		verifyDateUnit(month02, "2008-02-01", "2008-02-29");
+		verifyDateUnit(month03, "2008-03-01", "2008-03-31");
+		verifyDateUnit(month04, "2008-04-01", "2008-04-30");
+		verifyDateUnit(month05, "2008-05-01", "2008-05-31");
+		verifyDateUnit(month06, "2008-06-01", "2008-06-30");
+		verifyDateUnit(month07, "2008-07-01", "2008-07-31");
+		verifyDateUnit(month08, "2008-08-01", "2008-08-31");
+		verifyDateUnit(month09, "2008-09-01", "2008-09-30");
+		verifyDateUnit(month10, "2008-10-01", "2008-10-31");
+		verifyDateUnit(month11, "2008-11-01", "2008-11-30");
+		verifyDateUnit(month12, "2008-12-01", "2008-12-31");
+	}
+
+	private void verifyDateUnit(DateUnit dateUnit, String expectedStartDate, String expectedEndDate) throws Exception
+	{
+		DateRange monthRange = dateUnit.asDateRange();
+		assertEquals(expectedStartDate, monthRange.getStartDate().toIsoDateString());
+		assertEquals(expectedEndDate, monthRange.getEndDate().toIsoDateString());
 	}
 	
 	public void testGetSubDateUnitsForEmpty() throws Exception
@@ -114,12 +130,40 @@ public class TestDateUnit extends TestCaseWithProject
 		assertEquals(false, bogus.hasSubDateUnits());
 		assertEquals(true, year.hasSubDateUnits());
 		assertEquals(true, quarter.hasSubDateUnits());
-		assertEquals(false, month.hasSubDateUnits());
+		assertEquals(true, month.hasSubDateUnits());
+	}
+	
+	public void testGetDay()
+	{
+		verifyMonthDay(new DateUnit("2008-12-10"), 12, 10);
+		verifyMonthDay(new DateUnit("2008-3-13"), 3, 13);
+		verifyMonthDay(new DateUnit("2008-1-5"), 1, 5);
+		verifyMonthDay(new DateUnit("2008-02-1"), 2, 1);
+	}
+	
+	public void verifyMonthDay(DateUnit dateUnit, int expectedMonth, int expectedDay)
+	{
+		assertEquals("wrong month", expectedMonth, dateUnit.getMonth());
+		assertEquals("wrong day?", expectedDay, dateUnit.getDay());
 	}
 	
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
 	private final DateUnit year = new DateUnit("2006");
 	private final DateUnit quarter = new DateUnit("2009Q4");
+	
 	private final DateUnit month = new DateUnit("2008-12");
+	
+	private final DateUnit month01 = new DateUnit("2008-01");
+	private final DateUnit month02 = new DateUnit("2008-02");
+	private final DateUnit month03 = new DateUnit("2008-03");
+	private final DateUnit month04 = new DateUnit("2008-04");
+	private final DateUnit month05 = new DateUnit("2008-05");
+	private final DateUnit month06 = new DateUnit("2008-06");
+	private final DateUnit month07 = new DateUnit("2008-07");
+	private final DateUnit month08 = new DateUnit("2008-08");
+	private final DateUnit month09 = new DateUnit("2008-09");
+	private final DateUnit month10 = new DateUnit("2008-10");
+	private final DateUnit month11 = new DateUnit("2008-11");
+	private final DateUnit month12 = new DateUnit("2008-12");
 }
