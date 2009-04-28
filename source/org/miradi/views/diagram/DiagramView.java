@@ -196,14 +196,14 @@ import org.miradi.views.diagram.doers.SelectChainDoer;
 import org.miradi.views.diagram.doers.ShowActityBubbleDoer;
 import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
-import org.miradi.views.planning.doers.AddAssignmentDoer;
-import org.miradi.views.planning.doers.RemoveAssignmentDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.DeleteKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.threatmatrix.doers.ManageStressesDoer;
 import org.miradi.views.umbrella.DeleteActivity;
 import org.miradi.views.umbrella.UmbrellaView;
+import org.miradi.views.umbrella.doers.AddAssignmentDoer;
+import org.miradi.views.umbrella.doers.RemoveAssignmentDoer;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 
