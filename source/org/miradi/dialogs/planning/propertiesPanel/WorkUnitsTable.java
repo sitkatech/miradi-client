@@ -156,9 +156,8 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		
 		Vector<DateUnit> subDateUnits = dateUnit.getSubDateUnits();
 		currentDateUnits.removeAll(subDateUnits);
-		for (int index = 0; index < subDateUnits.size(); ++index)
+		for(DateUnit thisDateUnit : subDateUnits)
 		{
-			DateUnit thisDateUnit = subDateUnits.get(index);
 			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, thisDateUnit);
 		}
 	}
