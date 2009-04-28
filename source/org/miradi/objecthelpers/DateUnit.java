@@ -51,12 +51,12 @@ public class DateUnit
 		return getDateUnitCode().length() == 0;
 	}
 	
-	private boolean isYear()
+	public boolean isYear()
 	{
 		return getDateUnitCode().matches("\\d\\d\\d\\d");
 	}
 	
-	private boolean isQuarter()
+	public boolean isQuarter()
 	{
 		String code = getDateUnitCode();
 		return code.matches("\\d\\d\\d\\dQ\\d");

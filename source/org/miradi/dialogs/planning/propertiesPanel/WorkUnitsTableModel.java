@@ -142,6 +142,13 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	
 	public boolean isCellEditable(int row, int column)
 	{
+		DateUnit dateUnit = getDateUnit(column);
+		if (getProject().getMetadata().isBudgetTimePeriodYearly())
+			return dateUnit.isYear();
+		
+		else if (getProject().getMetadata().isBudgetTimePeriodQuarterly())
+			return dateUnit.isQuarter();
+		
 		return false;
 	}
 
