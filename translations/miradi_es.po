@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:58-0500\n"
+"POT-Creation-Date: 2009-04-28 11:01-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4626,12 +4626,12 @@ msgid "TT|Edit the list of progress percents for this objective."
 msgstr "Editar la lista de informes de progreso para esta meta"
 
 #: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
-msgid "Action|Collapse All"
-msgstr "Contraer todo "
+msgid "Action|Collapse All Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
-msgid "TT|Collapse All Tree Items"
-msgstr "TT|Contraer todos los elementos del árbol"
+msgid "TT|Collapse All Tree Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionZoomToFit.java:34
 msgid "Action|Zoom To Fit"
@@ -6010,12 +6010,12 @@ msgid "TT|Edit the list of progress reports for this indicator"
 msgstr "Editar la lista de informes de progreso para este indicador"
 
 #: miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
-msgid "Action|Expand All"
-msgstr "Expandir todo "
+msgid "Action|Expand All Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
-msgid "TT|Expand All Tree Items"
-msgstr "TT|Expandir todos los elementos del árbol"
+msgid "TT|Expand All Tree Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDiagramProperties.java:34
 msgid "Action|Diagram Properties..."
@@ -32798,6 +32798,18 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Action|Collapse All"
+#~ msgstr "Contraer todo "
+
+#~ msgid "TT|Collapse All Tree Items"
+#~ msgstr "TT|Contraer todos los elementos del árbol"
+
+#~ msgid "Action|Expand All"
+#~ msgstr "Expandir todo "
+
+#~ msgid "TT|Expand All Tree Items"
+#~ msgstr "TT|Expandir todos los elementos del árbol"
 
 #~ msgid "Total"
 #~ msgstr "Total"
