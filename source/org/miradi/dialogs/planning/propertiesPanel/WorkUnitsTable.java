@@ -118,7 +118,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		try
 		{
 			Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
-			DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
+			DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
 			if (dateUnit.hasSubDateUnits())
 				return currentDateUnits.containsAll(dateUnit.getSubDateUnits());
 			
@@ -139,7 +139,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 			return;
 	
 		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
-		DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
+		DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
 		Vector<DateUnit> subDateUnits = getProject().getProjectCalendar().getSubDateUnits(dateUnit);					
 		if (currentDateUnits.containsAll(subDateUnits))
 			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, dateUnit);
