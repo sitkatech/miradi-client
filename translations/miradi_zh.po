@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 11:01-0500\n"
+"POT-Creation-Date: 2009-04-28 11:25-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2314,6 +2314,10 @@ msgstr "在图表上设置范围 \t\t"
 #: miradi/source/org/miradi/objecthelpers/DateUnit.java:91
 msgid "No date range for date Unit = "
 msgstr ""
+
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:253
+msgid "Total"
+msgstr "总计 \t\t"
 
 #: miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
 msgid "--Select a classification--"
@@ -29256,9 +29260,6 @@ msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
 #~ msgid "TT|Expand All Tree Items"
 #~ msgstr "展开所有树条目"
-
-#~ msgid "Total"
-#~ msgstr "总计 \t\t"
 
 #~ msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
 #~ msgstr "组织机构优先选项 \t\t"
