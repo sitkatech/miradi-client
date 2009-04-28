@@ -39,7 +39,7 @@ import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
 
 import org.miradi.actions.ActionCollapseAllNodes;
-import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.Actions;
@@ -332,7 +332,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 	{
 		HashSet<Class> set = new HashSet<Class>();
 		set.add(ActionCollapseAllNodes.class);
-		set.add(ActionExpandAllNodes.class);
+		set.add(ActionExpandAllRows.class);
 		set.add(ActionTreeNodeUp.class);
 		set.add(ActionTreeNodeDown.class);
 		return set;
