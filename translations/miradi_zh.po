@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:28-0500\n"
+"POT-Creation-Date: 2009-04-28 10:34-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -229,10 +229,6 @@ msgstr "无法处理文件：确认文件格式 \t\t"
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "选项对话框 \t\t"
-
-#: miradi/source/org/miradi/views/planning/doers/AddAssignmentDoer.java:61
-msgid "Resources cannot be added to this task because it already has subtasks."
-msgstr "资源无法被添加到该任务中，因为它已经有子任务了。 \t\t"
 
 #: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:82
 msgid "Create Task"
@@ -804,6 +800,10 @@ msgstr "帮助 \t\t"
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
 msgid "Share Method"
 msgstr "共享方法 \t\t"
+
+#: miradi/source/org/miradi/views/umbrella/doers/AddAssignmentDoer.java:61
+msgid "Resources cannot be added to this task because it already has subtasks."
+msgstr "资源无法被添加到该任务中，因为它已经有子任务了。 \t\t"
 
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:47
 msgid "Share Activity"
