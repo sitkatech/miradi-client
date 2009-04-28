@@ -31,11 +31,11 @@ public class ActionExpandAllRows extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Expand All");
+		return EAM.text("Action|Expand All Rows");
 	}
 	
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Expand All Tree Items");
+		return EAM.text("TT|Expand All Tree Rows");
 	}
 }
