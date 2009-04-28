@@ -105,8 +105,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		if (isEmptySelection(selectedColumnIndex))
 			return false;	
 		
-		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
-		DateUnit dateUnit = currentDateUnits.get(selectedColumnIndex);
+		DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
 		return dateUnit.isDay();
 	}
 	

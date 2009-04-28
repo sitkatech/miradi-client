@@ -72,13 +72,18 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 		try
 		{
-			return getDateUnits().get(col).toString();
+			return getDateUnit(col).toString();
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			return EAM.text("(Error)");
 		}
+	}
+
+	public DateUnit getDateUnit(int column)
+	{
+		return getDateUnits().get(column);
 	}
 
 	public int getColumnCount()
@@ -232,7 +237,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	
 	private DateRange getDateRange(int column) throws Exception
 	{
-		DateUnit dateUnit = getDateUnits().get(column);
+		DateUnit dateUnit = getDateUnit(column);
 		return getProjectCalendar().convertToDateRange(dateUnit);
 	}
 	
