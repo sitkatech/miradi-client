@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:55-0500\n"
+"POT-Creation-Date: 2009-04-28 10:58-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -4432,6 +4432,14 @@ msgstr "编辑进程百分比… \t\t"
 msgid "TT|Edit the list of progress percents for this objective."
 msgstr "为本分目标编辑进展报告列表。 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
+msgid "Action|Collapse All"
+msgstr "闭合全部"
+
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
+msgid "TT|Collapse All Tree Items"
+msgstr "闭合所有树条目"
+
 #: miradi/source/org/miradi/actions/ActionZoomToFit.java:34
 msgid "Action|Zoom To Fit"
 msgstr "放大到匹配 \t\t"
@@ -5119,14 +5127,6 @@ msgstr "创建指示物 \t\t"
 msgid "TT|Create an Indicator for the selected factor"
 msgstr "TT|Create an Indicator for the selected factor"
 
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:34
-msgid "Action|Expand All"
-msgstr "展开全部"
-
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:39
-msgid "TT|Expand All Tree Items"
-msgstr "展开所有树条目"
-
 #: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
 #, fuzzy
 msgid "Action|Save As..."
@@ -5527,14 +5527,6 @@ msgstr "插入直接威胁因子 \t\t"
 msgid "TT|Insert a Direct Threat"
 msgstr "插入一个直接威胁因子 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:34
-msgid "Action|Collapse All"
-msgstr "闭合全部"
-
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:39
-msgid "TT|Collapse All Tree Items"
-msgstr "闭合所有树条目"
-
 #: miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
 msgid "Action|Delete Custom"
 msgstr "删除定制 \t\t"
@@ -5821,6 +5813,14 @@ msgstr "创建一个新的测量法 \t\t"
 #: miradi/source/org/miradi/actions/ActionEditIndicatorProgressReports.java:39
 msgid "TT|Edit the list of progress reports for this indicator"
 msgstr "为该指示物编辑进展报告列表 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
+msgid "Action|Expand All"
+msgstr "展开全部"
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
+msgid "TT|Expand All Tree Items"
+msgstr "展开所有树条目"
 
 #: miradi/source/org/miradi/actions/ActionDiagramProperties.java:34
 msgid "Action|Diagram Properties..."
