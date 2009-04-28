@@ -142,20 +142,20 @@ public class DateUnit
 
 	private int getYear()
 	{
-		return parseDateUnit(0, 4);
+		return parseEmbeddedInt(0, 4);
 	}
 	
 	public int getMonth()
 	{
-		return parseDateUnit(5, 7);
+		return parseEmbeddedInt(5, 7);
 	}
 	
 	public int getDay()
 	{
-		return parseDateUnit(8, 10);
+		return parseEmbeddedInt(8, 10);
 	}
 
-	private int parseDateUnit(int beginIndex, int endIndex)
+	private int parseEmbeddedInt(int beginIndex, int endIndex)
 	{
 		return Integer.parseInt(getDateUnitCode().substring(beginIndex, endIndex));
 	}
