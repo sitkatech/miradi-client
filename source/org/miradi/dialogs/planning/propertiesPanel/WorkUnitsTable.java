@@ -59,6 +59,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		setBackground(getColumnBackGroundColor(0));	
 		setAllColumnsToUseSingleClickEditors();
 		addMouseListener(new RightClickHandler(this));
+		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		renderer = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
 	}
