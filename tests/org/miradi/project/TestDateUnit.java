@@ -136,9 +136,9 @@ public class TestDateUnit extends TestCaseWithProject
 	public void testGetDay()
 	{
 		verifyMonthDay(new DateUnit("2008-12-10"), 12, 10);
-		verifyMonthDay(new DateUnit("2008-3-13"), 3, 13);
-		verifyMonthDay(new DateUnit("2008-1-5"), 1, 5);
-		verifyMonthDay(new DateUnit("2008-02-1"), 2, 1);
+		verifyMonthDay(new DateUnit("2008-03-13"), 3, 13);
+		verifyMonthDay(new DateUnit("2008-01-05"), 1, 5);
+		verifyMonthDay(new DateUnit("2008-02-01"), 2, 1);
 	}
 	
 	public void verifyMonthDay(DateUnit dateUnit, int expectedMonth, int expectedDay)
