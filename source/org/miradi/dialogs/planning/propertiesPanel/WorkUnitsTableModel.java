@@ -32,7 +32,6 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
@@ -117,14 +116,6 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return decimalFormatter.format(units);
 	}
 
-	public ProjectResource getCurrentResource(Assignment assignment)
-	{
-		ORef resourceRef = assignment.getResourceRef();
-		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
-		
-		return resource;
-	}
-	
 	protected Object getUnits(int row, int column) throws Exception
 	{
 		DateRangeEffortList effortList = getDateRangeEffortList(row);
