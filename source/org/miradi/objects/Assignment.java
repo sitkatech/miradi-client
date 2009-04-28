@@ -32,7 +32,6 @@ import org.miradi.project.BudgetCalculator;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Assignment extends BaseObject
@@ -209,12 +208,7 @@ public class Assignment extends BaseObject
 	@Override
 	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		DateRangeEffortList effortList = getDateRangeEffortList();
-		DateRangeEffort dateRangeEffort = effortList.getEffortForDateRange(dateRangeToUse);
-		if (dateRangeEffort == null)
-			return 0;
-			
-		return (int) dateRangeEffort.getUnitQuantity();
+		return (int) getDateRangeEffortList().getTotalUnitQuantity(dateRangeToUse);
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception
