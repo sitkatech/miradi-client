@@ -57,6 +57,9 @@ public class TestAssignment extends ObjectTestCase
 
 		assertEquals("wrong assignment work units?", 2, assignment.getWorkUnits(dateRange1));
 		assertEquals("wrong assignment work units?", 5, assignment.getWorkUnits(dateRange2));
+		
+		DateRange totalProjectDateRange = DateRange.combine(dateRange1, dateRange2);
+		assertEquals("wrong totals work units", 7, assignment.getWorkUnits(totalProjectDateRange));
 	}
 	
 	public DateRangeEffort createDateRangeEffort(int unitQuantatiy, DateRange dateRange) throws Exception

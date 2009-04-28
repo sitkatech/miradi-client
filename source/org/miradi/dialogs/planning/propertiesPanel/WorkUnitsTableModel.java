@@ -167,7 +167,10 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 		try
 		{
-			return getUnits(row, column);
+			BaseObject baseObject = getBaseObjectForRowColumn(row, column);
+			DateRange dateRange = getDateRange(column);
+			
+			return baseObject.getWorkUnits(dateRange);
 		}
 		catch(Exception e)
 		{
