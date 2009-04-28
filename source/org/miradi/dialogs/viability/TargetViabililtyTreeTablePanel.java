@@ -21,7 +21,7 @@ package org.miradi.dialogs.viability;
 
 import java.awt.Dimension;
 
-import org.miradi.actions.ActionCollapseAllNodes;
+import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionCreateKeyEcologicalAttribute;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
@@ -129,6 +129,6 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 			ActionDeleteKeyEcologicalAttribute.class,
 			ActionDeleteKeyEcologicalAttributeIndicator.class,
 			ActionDeleteKeyEcologicalAttributeMeasurement.class,
-			ActionCollapseAllNodes.class,
+			ActionCollapseAllRows.class,
 			};
 }
