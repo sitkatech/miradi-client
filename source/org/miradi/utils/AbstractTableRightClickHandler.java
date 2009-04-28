@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -32,9 +33,10 @@ import org.miradi.main.MainWindow;
 
 public abstract class AbstractTableRightClickHandler extends MouseAdapter
 {
-	public AbstractTableRightClickHandler(MainWindow mainWindowToUse)
+	public AbstractTableRightClickHandler(MainWindow mainWindowToUse, JTable tableToAutoSelectIn)
 	{
 		mainWindow = mainWindowToUse;
+		table = tableToAutoSelectIn;
 	}
 	
 	public void mousePressed(MouseEvent event)
@@ -51,18 +53,24 @@ public abstract class AbstractTableRightClickHandler extends MouseAdapter
 	
 	public void doRightClickMenu(MouseEvent event)
 	{
-		JTable table = (JTable) event.getComponent();
 		Point clickLocation  = event.getPoint();
-		
-		int rowToSelect = table.rowAtPoint(clickLocation);
-		table.getSelectionModel().setSelectionInterval(rowToSelect, rowToSelect);
-		
-		int columnToSelect = table.columnAtPoint(clickLocation);
-		table.getColumnModel().getSelectionModel().setSelectionInterval(columnToSelect, columnToSelect);
+		Component rawComponent = event.getComponent();
+		if(rawComponent == table)
+		{
+			int rowToSelect = table.rowAtPoint(clickLocation);
+			table.getSelectionModel().setSelectionInterval(rowToSelect, rowToSelect);
+			
+			int columnToSelect = table.columnAtPoint(clickLocation);
+			table.getColumnModel().getSelectionModel().setSelectionInterval(columnToSelect, columnToSelect);
+		}
+		else
+		{
+			table.clearSelection();
+		}
 
 		JPopupMenu popupMenu = new JPopupMenu();
 		populateMenu(popupMenu);
-		popupMenu.show(table, (int)clickLocation.getX(), (int)clickLocation.getY());
+		popupMenu.show(rawComponent, (int)clickLocation.getX(), (int)clickLocation.getY());
 	}
 	
 	abstract protected void populateMenu(JPopupMenu popupMenu);
@@ -78,4 +86,5 @@ public abstract class AbstractTableRightClickHandler extends MouseAdapter
 	}
 
 	private MainWindow mainWindow;
+	private JTable table;
 }

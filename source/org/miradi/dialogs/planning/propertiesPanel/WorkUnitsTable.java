@@ -208,7 +208,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	{
 		public RightClickHandler(WorkUnitsTable tableToUse)
 		{
-			super(tableToUse.getMainWindow());
+			super(tableToUse.getMainWindow(), tableToUse);
 			expandAction = new ExpandHandler();
 			collapseAction = new CollapseHandler();
 		}
