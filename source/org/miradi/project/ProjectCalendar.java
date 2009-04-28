@@ -438,6 +438,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		return new DateRange(thisStartDate, thisEndDate);
 	}
 	
+	public boolean hasSunDateUnits(DateUnit dateUnit) throws Exception
+	{
+		return getSubDateUnits(dateUnit).size() > 0;
+	}
+	
 	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		DateRange dateRange = convertToDateRange(dateUnit);

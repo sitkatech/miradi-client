@@ -51,6 +51,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.TableSettings;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
@@ -131,8 +132,8 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		try
 		{
 			Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
-			if (dateUnit.hasSubDateUnits())
-				return currentDateUnits.containsAll(dateUnit.getSubDateUnits());
+			if (hasSubDateUnits(dateUnit))
+				return currentDateUnits.containsAll(getSubDateUnits(dateUnit));
 			
 			return currentDateUnits.contains(dateUnit);
 		}
@@ -152,7 +153,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	
 		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
 		DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
-		Vector<DateUnit> subDateUnits = getProject().getProjectCalendar().getSubDateUnits(dateUnit);					
+		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);					
 		if (currentDateUnits.containsAll(subDateUnits))
 			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, dateUnit);
 		else
@@ -161,17 +162,32 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		saveColumnDateUnits(currentDateUnits);
 	}
 
+	private ProjectCalendar getProjectCalendar()
+	{
+		return getProject().getProjectCalendar();
+	}
+
 	private void recursivleyCollapseDateUnitAndItsSubDateUnits(Vector<DateUnit> currentDateUnits, DateUnit dateUnit) throws Exception
 	{
-		if (!dateUnit.hasSubDateUnits())
+		if (!hasSubDateUnits(dateUnit))
 			return;
 		
-		Vector<DateUnit> subDateUnits = dateUnit.getSubDateUnits();
+		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);
 		currentDateUnits.removeAll(subDateUnits);
 		for(DateUnit thisDateUnit : subDateUnits)
 		{
 			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, thisDateUnit);
 		}
+	}
+
+	private Vector<DateUnit> getSubDateUnits(DateUnit dateUnit)	throws Exception
+	{
+		return getProjectCalendar().getSubDateUnits(dateUnit);
+	}
+	
+	private boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
+	{
+		return getProjectCalendar().hasSunDateUnits(dateUnit);
 	}
 	
 	private boolean isEmptySelection(int selectedColumnIndex)
