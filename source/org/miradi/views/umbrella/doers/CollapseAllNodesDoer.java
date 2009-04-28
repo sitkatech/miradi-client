@@ -21,7 +21,7 @@ package org.miradi.views.umbrella.doers;
 
 
 
-public class CollapseAllNodesDoer extends AbstractTreeExpansionDoer
+public class CollapseAllNodesDoer extends AbstractTreeRowExpansionDoer
 {
 	public void doWork() throws Exception
 	{

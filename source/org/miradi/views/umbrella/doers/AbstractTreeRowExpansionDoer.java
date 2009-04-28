@@ -22,7 +22,7 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.views.ObjectsDoer;
 
-abstract public class AbstractTreeExpansionDoer extends ObjectsDoer
+abstract public class AbstractTreeRowExpansionDoer extends ObjectsDoer
 {
 	@Override
 	public boolean isAvailable()
