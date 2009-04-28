@@ -35,6 +35,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -42,6 +43,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.TestDateRangeEffortList;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -90,6 +92,7 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -325,6 +328,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return diagramFactorGroupBox;	 
 	}
 	
+	public Assignment createAndPopulateAssignment() throws Exception
+	{
+		Assignment assignment = createAssignment();
+		populateAssignment(assignment);
+		
+		return assignment;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -463,6 +474,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef assignmentRef = createObject(Assignment.getObjectType());
 		return Assignment.find(this, assignmentRef);
+	}
+	
+	public void populateAssignment(Assignment assignment) throws Exception
+	{
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		DateRangeEffort dateRangeEffort = TestDateRangeEffortList.createDateRangeEffort();
+		dateRangeEffortList.add(dateRangeEffort);
+		
+		fillObjectUsingCommand(assignment, Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 	}
 
 	public void populateTarget(Target target) throws Exception
