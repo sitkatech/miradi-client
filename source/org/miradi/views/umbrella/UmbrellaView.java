@@ -211,7 +211,7 @@ import org.miradi.views.umbrella.doers.EditGoalProgressPercentDoer;
 import org.miradi.views.umbrella.doers.EditGoalStrategyActivityRelevacyListDoer;
 import org.miradi.views.umbrella.doers.EditMethodsDoer;
 import org.miradi.views.umbrella.doers.EditObjectiveStrategyActivityRelevacyListDoer;
-import org.miradi.views.umbrella.doers.ExpandAllNodesDoer;
+import org.miradi.views.umbrella.doers.ExpandAllRowsDoer;
 import org.miradi.views.umbrella.doers.ExportProjectXmlDoer;
 import org.miradi.views.umbrella.doers.ExportRtfDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
@@ -432,7 +432,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewLegacyTncStrategtyRanking.class, new ViewLegacyTncStrategyRankingDoer());
 		addDoerToMap(ActionDeleteLegacyTncStrategyRanking.class, new DeleteLegacyTncStrategyRankingDoer());
 		
-		addDoerToMap(ActionExpandAllNodes.class, new ExpandAllNodesDoer());
+		addDoerToMap(ActionExpandAllNodes.class, new ExpandAllRowsDoer());
 		addDoerToMap(ActionCollapseAllNodes.class, new CollapseAllNodesDoer());	
 		
 		addDoerToMap(ActionPrint.class, new Print());
