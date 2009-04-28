@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -47,7 +46,6 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 
 		provider = providerToUse;
 		restoreDateUnits();
-		decimalFormatter = getProject().getDecimalFormatter();
 	}
 	
 	public void restoreDateUnits() throws Exception
@@ -108,12 +106,6 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	public DateRange getDateRangeForColumn(int column) throws Exception
 	{
 		return getDateRange(column);
-	}
-
-	public String getUnit(DateRangeEffortList effortList, DateRange dateRange) throws Exception
-	{
-		double units = effortList.getTotalUnitQuantity(dateRange);
-		return decimalFormatter.format(units);
 	}
 
 	protected DateRangeEffortList getDateRangeEffortList(int row) throws Exception
@@ -255,7 +247,6 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	}
 
 	private Vector<DateUnit> dateUnits;
-	private DecimalFormat decimalFormatter;
 	private RowColumnBaseObjectProvider provider;
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";
 }
