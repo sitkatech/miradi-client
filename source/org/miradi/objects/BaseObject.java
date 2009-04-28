@@ -503,6 +503,11 @@ abstract public class BaseObject
 		return 1;
 	}
 	
+	public int getWorkUnits(DateRange dateRangeToUse)
+	{
+		return 0;
+	}
+	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
 	{
 		if (dateRange == null)
