@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 11:01-0500\n"
+"POT-Creation-Date: 2009-04-28 11:25-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2433,6 +2433,10 @@ msgstr "Tempatkan cakupan pada diagram "
 #: miradi/source/org/miradi/objecthelpers/DateUnit.java:91
 msgid "No date range for date Unit = "
 msgstr ""
+
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:253
+msgid "Total"
+msgstr "Total "
 
 #: miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
 msgid "--Select a classification--"
@@ -32654,9 +32658,6 @@ msgstr ""
 
 #~ msgid "TT|Expand All Tree Items"
 #~ msgstr "Perluas Kesemua Tiga Butir"
-
-#~ msgid "Total"
-#~ msgstr "Total "
 
 #~ msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority"
 #~ msgstr "Prioritas Organisasi "
