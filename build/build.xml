@@ -424,6 +424,7 @@
 	</zip>
 	
 	<copy file="${installer.buildfiles.dir}/${samples.marine.mpz}" todir="${dist.dir}" />
+	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
 	
 </target>
 	
@@ -657,7 +658,7 @@
 	</exec>
 	
 	<echo message="Mounting ${dmgmount} (must be in fstab)" />
-	<echo message="  ${rawdmgfile} /mnt/dmgdir hfsplus rw,user,loop 0 0" />
+	<echo message="  ${rawdmgfile} ${dmgmount} hfsplus rw,user,loop 0 0" />
 	<exec os="Linux"  executable="mount" failonerror="true">
 		<arg value="${dmgmount}"/>
 	</exec>
