@@ -116,14 +116,6 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return decimalFormatter.format(units);
 	}
 
-	protected Object getUnits(int row, int column) throws Exception
-	{
-		DateRangeEffortList effortList = getDateRangeEffortList(row);
-		DateRange dateRange = getDateRange(column);
-		
-		return getUnit(effortList, dateRange);
-	}
-	
 	protected DateRangeEffortList getDateRangeEffortList(int row) throws Exception
 	{
 		return getAssignment(row).getDateRangeEffortList();
