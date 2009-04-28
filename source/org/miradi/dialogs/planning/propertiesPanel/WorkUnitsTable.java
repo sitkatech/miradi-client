@@ -57,7 +57,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		setBackground(getColumnBackGroundColor(0));	
-		setSingleCellEditor();
+		setAllColumnsToUseSingleClickEditors();
 		addMouseListener(new RightClickHandler(this));
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		renderer = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
@@ -79,7 +79,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
 	}
 
-	private void setSingleCellEditor()
+	private void setAllColumnsToUseSingleClickEditors()
 	{
 		int colCount = getColumnCount();
 		for (int i = 0; i < colCount; i++)
