@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:28-0500\n"
+"POT-Creation-Date: 2009-04-28 10:34-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -244,12 +244,6 @@ msgstr "Tidak bisa mengolah berkas: verifikasi format berkas "
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "Dialog Pilihan "
-
-#: miradi/source/org/miradi/views/planning/doers/AddAssignmentDoer.java:61
-msgid "Resources cannot be added to this task because it already has subtasks."
-msgstr ""
-"Sumber daya tidak bisa ditambahkan ke tugas ini karena sudah adanya "
-"subtugas. "
 
 #: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:82
 msgid "Create Task"
@@ -838,6 +832,12 @@ msgstr "Bantuan "
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
 msgid "Share Method"
 msgstr "Berbagi Metode "
+
+#: miradi/source/org/miradi/views/umbrella/doers/AddAssignmentDoer.java:61
+msgid "Resources cannot be added to this task because it already has subtasks."
+msgstr ""
+"Sumber daya tidak bisa ditambahkan ke tugas ini karena sudah adanya "
+"subtugas. "
 
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:47
 msgid "Share Activity"
