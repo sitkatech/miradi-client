@@ -111,8 +111,8 @@ public class DateUnit
 	{
 		int zeroOffsetMonth = month - 1;
 		Calendar calendar = new GregorianCalendar(year, zeroOffsetMonth, 1);
-	    int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-		return days;
+	    int daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+		return daysInMonth;
 	}
 
 	private DateRange getYearDateRange() throws Exception
