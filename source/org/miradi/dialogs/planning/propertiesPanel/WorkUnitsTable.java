@@ -36,7 +36,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-import org.miradi.actions.ActionExpandAllRows;
+import org.miradi.actions.ActionAssignResource;
+import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
@@ -209,14 +210,21 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		
 		public void doRightClickMenu(MouseEvent event)
 		{
-			JPopupMenu popupMenu = new JPopupMenu();
+			Point clickLocation  = event.getPoint();
 			
-			EAMenuItem expandAllRows = new EAMenuItem(getActions().get(ActionExpandAllRows.class));
-			popupMenu.add(expandAllRows);
+			int rowToSelect = rowAtPoint(clickLocation);
+			getSelectionModel().setSelectionInterval(rowToSelect, rowToSelect);
+			
+			int columnToSelect = columnAtPoint(clickLocation);
+			getColumnModel().getSelectionModel().setSelectionInterval(columnToSelect, columnToSelect);
+
+			JPopupMenu popupMenu = new JPopupMenu();
 			if (!isDayColumnSelected())
 				addColpseExpandColumnMenuItems(popupMenu);
+			popupMenu.addSeparator();
+			popupMenu.add(new EAMenuItem(getActions().get(ActionAssignResource.class)));
+			popupMenu.add(new EAMenuItem(getActions().get(ActionRemoveAssignment.class)));
 			
-			Point clickLocation  = event.getPoint();
 			popupMenu.show(table, (int)clickLocation.getX(), (int)clickLocation.getY());
 		}
 
