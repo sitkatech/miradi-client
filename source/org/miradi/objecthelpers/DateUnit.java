@@ -109,8 +109,8 @@ public class DateUnit
 
 	private int getNumberOfDaysInMonth(int year, int month)
 	{
-		int validCalendarMonth = month - 1;
-		Calendar calendar = new GregorianCalendar(year, validCalendarMonth, 1);
+		int zeroOffsetMonth = month - 1;
+		Calendar calendar = new GregorianCalendar(year, zeroOffsetMonth, 1);
 	    int days = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
 		return days;
 	}
