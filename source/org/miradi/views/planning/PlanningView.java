@@ -204,10 +204,15 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionCreatePlanningViewPrefilledConfiguration.class, new CreatePlanningViewPrefilledConfigurationDoer());
 		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
+		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
+		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
+		
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
+		
 		addDoerToMap(ActionTreeNodeUp.class, new TaskMoveUpDoer());
 		addDoerToMap(ActionTreeNodeDown.class, new TaskMoveDownDoer());
+		
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 		addDoerToMap(ActionTreeCreateActivityIconOnly.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
@@ -231,8 +236,6 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
-		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
-		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
