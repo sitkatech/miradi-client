@@ -103,11 +103,7 @@ public class DateUnit
 	
 	private DateRange getDayDateRange() throws Exception
 	{
-		int year = getYear();
-		int month = getMonth();
-		int day = getDay();
-		
-		MultiCalendar date = MultiCalendar.createFromGregorianYearMonthDay(year, month, day);
+		MultiCalendar date = MultiCalendar.createFromGregorianYearMonthDay(getYear(), getMonth(), getDay());
 		return new DateRange(date, date);
 	}
 
