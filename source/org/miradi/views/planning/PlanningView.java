@@ -199,22 +199,9 @@ public class PlanningView extends TabbedView
 	
 	private void addPlanningViewDoersToMap()
 	{
-		addDoerToMap(ActionCreatePlanningViewConfigurationMenuDoer.class, new CreatePlanningViewConfigurationMenuDoer());
-		addDoerToMap(ActionCreatePlanningViewEmptyConfiguration.class, new CreatePlanningViewEmptyConfigurationDoer());
-		addDoerToMap(ActionCreatePlanningViewPrefilledConfiguration.class, new CreatePlanningViewPrefilledConfigurationDoer());
-		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
-		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
-		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
-		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
-		
-		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
-		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
-		
 		addDoerToMap(ActionTreeNodeUp.class, new TaskMoveUpDoer());
 		addDoerToMap(ActionTreeNodeDown.class, new TaskMoveDownDoer());
 		
-		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
-
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 		addDoerToMap(ActionTreeCreateActivityIconOnly.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
@@ -222,10 +209,13 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateActivity.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethod.class, new TreeNodeCreateMethodDoer());	
 		addDoerToMap(ActionTreeCreateTask.class, new TreeNodeCreateTaskDoer());
-		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
-		addDoerToMap(ActionTreeCreateIndicator.class, new TreeNodeCreateIndicatorDoer());
-		addDoerToMap(ActionTreeCreateObjective.class, new TreeNodeCreateObjectiveDoer());
 				
+		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
+		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
+
+		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
+		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
+		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 
@@ -237,6 +227,18 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
+
+		addDoerToMap(ActionTreeCreateIndicator.class, new TreeNodeCreateIndicatorDoer());
+		addDoerToMap(ActionTreeCreateObjective.class, new TreeNodeCreateObjectiveDoer());
+
+		addDoerToMap(ActionCreatePlanningViewConfigurationMenuDoer.class, new CreatePlanningViewConfigurationMenuDoer());
+		addDoerToMap(ActionCreatePlanningViewEmptyConfiguration.class, new CreatePlanningViewEmptyConfigurationDoer());
+		addDoerToMap(ActionCreatePlanningViewPrefilledConfiguration.class, new CreatePlanningViewPrefilledConfigurationDoer());
+		addDoerToMap(ActionDeletePlanningViewConfiguration.class, new DeletePlanningViewConfigurationDoer());
+		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
+		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
+		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
+		
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
