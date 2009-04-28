@@ -158,7 +158,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		else
 		{
 			int indexToInsertSubDateUnits = currentDateUnits.indexOf(dateUnit);
-			currentDateUnits.addAll(indexToInsertSubDateUnits + 1, subDateUnits);
+			currentDateUnits.addAll(indexToInsertSubDateUnits, subDateUnits);
 		}
 		
 		saveColumnDateUnits(currentDateUnits);
