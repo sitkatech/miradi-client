@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 12:31-0500\n"
+"POT-Creation-Date: 2009-04-28 13:21-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -465,11 +465,11 @@ msgstr ""
 msgid "Are you sure you want to delete this Nested Target?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:177
+#: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:175
 msgid "Control Bar"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:332
+#: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:330
 #: miradi/source/org/miradi/diagram/DiagramModel.java:832
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -6091,11 +6091,11 @@ msgstr ""
 msgid "Title|Intermediate Result Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:242
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:243
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:262
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:263
 msgid "Collapse Selected Column"
 msgstr ""
 
