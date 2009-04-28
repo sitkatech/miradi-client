@@ -155,9 +155,9 @@ public class DateUnit
 		return parseEmbeddedInt(8, 10);
 	}
 
-	private int parseEmbeddedInt(int beginIndex, int endIndex)
+	private int parseEmbeddedInt(int start, int lenght)
 	{
-		return Integer.parseInt(getDateUnitCode().substring(beginIndex, endIndex));
+		return Integer.parseInt(getDateUnitCode().substring(start, lenght));
 	}
 
 	private int getQuarter()
