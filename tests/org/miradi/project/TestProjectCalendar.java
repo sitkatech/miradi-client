@@ -68,6 +68,18 @@ public class TestProjectCalendar extends TestCaseWithProject
 			assertEquals("FY07", pc.getDateRangeName((DateRange)yearlyRanges.get(1)));
 		}
 	}
+	
+	public void testGettingDatesThatAreNotSet() throws Exception
+	{
+		ProjectCalendar pc = getProjectCalendar();
+		
+		MultiCalendar startDate = MultiCalendar.createFromIsoDateString(pc.getPlanningStartDate());
+		assertEquals(1, startDate.getGregorianMonth());
+		assertEquals(1, startDate.getGregorianDay());
+		MultiCalendar endDate = MultiCalendar.createFromIsoDateString(pc.getPlanningEndDate());
+		assertEquals(12, endDate.getGregorianMonth());
+		assertEquals(31, endDate.getGregorianDay());
+	}
 
 	public void testGetFiscalYearQuarterName() throws Exception
 	{
