@@ -108,20 +108,45 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	public String getPlanningStartDate()
 	{
-		if (project.getMetadata().getWorkPlanStartDateAsString().length() != 0)
-			return project.getMetadata().getWorkPlanStartDateAsString();
+		MultiCalendar now = new MultiCalendar();
+		MultiCalendar startOfCalendarYear = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), 1, 1);
+
+		ProjectMetadata metadata = project.getMetadata();
+		String candidatesBestFirst[] = new String[] {
+			metadata.getWorkPlanStartDateAsString(),
+			metadata.getStartDate(),
+			startOfCalendarYear.toIsoDateString(),
+		};
 		
-		return project.getMetadata().getStartDate();
-	}
-	
-	public String getPlanningEndDate()
-	{
-		if (project.getMetadata().getWorkPlanEndDate().length() != 0)
-			return project.getMetadata().getWorkPlanEndDate();
-		
-		return project.getMetadata().getExpectedEndDate();
+		return firstNonBlank(candidatesBestFirst);
 	}
 
+	public String getPlanningEndDate()
+	{
+		MultiCalendar now = new MultiCalendar();
+		MultiCalendar endOfCalendarYear = MultiCalendar.createFromGregorianYearMonthDay(now.getGregorianYear(), 12, 31);
+
+		ProjectMetadata metadata = project.getMetadata();
+		String candidatesBestFirst[] = new String[] {
+			metadata.getWorkPlanEndDate(),
+			metadata.getExpectedEndDate(),
+			endOfCalendarYear.toIsoDateString(),
+		};
+		
+		return firstNonBlank(candidatesBestFirst);
+	}
+
+	private String firstNonBlank(String[] candidatesBestFirst)
+	{
+		for(String candidate : candidatesBestFirst)
+		{
+			if(candidate.length() != 0)
+				return candidate;
+		}
+		
+		throw new RuntimeException("All candidate strings were blank");
+	}
+	
 	private MultiCalendar calculatePlanningEndDate(MultiCalendar planningStartDate)
 	{
 		final int DEFAULT_YEAR_DIFF = 3;
