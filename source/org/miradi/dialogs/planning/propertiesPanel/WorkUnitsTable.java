@@ -151,9 +151,14 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
 		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);					
 		if (currentDateUnits.containsAll(subDateUnits))
+		{
 			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, dateUnit);
+		}
 		else
-			currentDateUnits.addAll(subDateUnits);
+		{
+			int indexToInsertSubDateUnits = currentDateUnits.indexOf(dateUnit);
+			currentDateUnits.addAll(indexToInsertSubDateUnits + 1, subDateUnits);
+		}
 		
 		saveColumnDateUnits(currentDateUnits);
 	}
