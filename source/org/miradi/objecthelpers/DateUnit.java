@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Vector;
@@ -37,6 +38,7 @@ public class DateUnit
 	public DateUnit(String dateUnitToUse)
 	{
 		dateUnit = dateUnitToUse;
+		twoDigitFormatter = new DecimalFormat("00");
 	}
 	
 	private String getDateUnitCode()
@@ -220,12 +222,12 @@ public class DateUnit
 	{
 		Vector<DateUnit> days = new Vector<DateUnit>();
 		int year = getYear();
-		String month = monthsPerYear[getMonth()-1];
+		String month = getTwoDigitFormatter().format(getMonth());
 		int daysInMonth = getNumberOfDaysInMonth(year, getMonth());
-		int daysInMonthArrayCount = daysInMonth - 1;
-		for(int day = 0; day <= daysInMonthArrayCount; ++day)
+		for(int day = 1; day <= daysInMonth; ++day)
 		{
-			days.add(new DateUnit(getYear() + "-" + month + "-" + daysPerMonth[day]));
+			String formattedDay = getTwoDigitFormatter().format(day);
+			days.add(new DateUnit(getYear() + "-" + month + "-" + formattedDay));
 		}
 		
 		return days;
@@ -247,6 +249,11 @@ public class DateUnit
 		return getDateUnitCode().toString();
 	}
 	
+	public DecimalFormat getTwoDigitFormatter()
+	{
+		return twoDigitFormatter;
+	}
+		
 	private static final String[][] monthsPerQuarter = { 
 		{"01", "02", "03"}, 
 		{"04", "05", "06"}, 
@@ -254,9 +261,6 @@ public class DateUnit
 		{"10", "11", "12"}, 
 	};
 	
-	private static final String[] monthsPerYear = {"01", "02", "03","04", "05", "06", "07", "08", "09", "10", "11", "12"};
-	private static final String[] daysPerMonth = {"01", "02", "03","04", "05", "06", "07", "08", "09", "10", "11", "12", 
-												  "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", 
-												  "25", "26", "27", "28", "29", "30", "31",};
 	private String dateUnit;
+	private DecimalFormat twoDigitFormatter;
 }
