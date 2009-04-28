@@ -19,7 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
+import org.martus.util.MultiCalendar;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TestDateRangeEffortList;
+import org.miradi.utils.DateRange;
+import org.miradi.utils.DateRangeEffort;
 
 public class TestAssignment extends ObjectTestCase
 {
@@ -31,5 +36,20 @@ public class TestAssignment extends ObjectTestCase
 	public void testFields() throws Exception
 	{
 		verifyFields(ObjectType.ASSIGNMENT);
+	}
+	
+	public void testGetWorkUnits() throws Exception
+	{
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		DateRangeEffort dateRangeEffort = TestDateRangeEffortList.createDateRangeEffort();
+		dateRangeEffortList.add(dateRangeEffort);
+
+		Assignment assignment = getProject().createAssignment();
+		getProject().fillObjectUsingCommand(assignment, Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 1, 1);
+		DateRange dateRange = new DateRange(startDate, endDate);
+		assertEquals("wrong assignment work units?", 1, assignment.getWorkUnits(dateRange));
 	}
 }
