@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.AbstractAction;
@@ -31,14 +28,12 @@ import javax.swing.Action;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
-import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
@@ -52,6 +47,7 @@ import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.utils.AbstractTableRightClickHandler;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
@@ -203,50 +199,23 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		getProject().executeCommand(setDateUnitsCommand);
 	}
 
-	class RightClickHandler extends MouseAdapter
+	class RightClickHandler extends AbstractTableRightClickHandler
 	{
-		public RightClickHandler(JTable tableToUse)
+		public RightClickHandler(WorkUnitsTable tableToUse)
 		{
-			table = tableToUse;
+			super(tableToUse.getMainWindow());
 			expandAction = new ExpandHandler();
 			collapseAction = new CollapseHandler();
 		}
 		
-		public void mousePressed(MouseEvent event)
+		@Override
+		protected void populateMenu(JPopupMenu popupMenu)
 		{
-			if(event.isPopupTrigger())
-				doRightClickMenu(event);
-		}
-
-		public void mouseReleased(MouseEvent event)
-		{
-			if(event.isPopupTrigger())
-				doRightClickMenu(event);
-		}
-		
-		public void doRightClickMenu(MouseEvent event)
-		{
-			Point clickLocation  = event.getPoint();
-			
-			int rowToSelect = rowAtPoint(clickLocation);
-			getSelectionModel().setSelectionInterval(rowToSelect, rowToSelect);
-			
-			int columnToSelect = columnAtPoint(clickLocation);
-			getColumnModel().getSelectionModel().setSelectionInterval(columnToSelect, columnToSelect);
-
-			JPopupMenu popupMenu = new JPopupMenu();
 			if (!isDayColumnSelected())
 				addColpseExpandColumnMenuItems(popupMenu);
 			popupMenu.addSeparator();
 			popupMenu.add(new EAMenuItem(getActions().get(ActionAssignResource.class)));
 			popupMenu.add(new EAMenuItem(getActions().get(ActionRemoveAssignment.class)));
-			
-			popupMenu.show(table, (int)clickLocation.getX(), (int)clickLocation.getY());
-		}
-
-		private Actions getActions()
-		{
-			return getMainWindow().getActions();
 		}
 
 		private void addColpseExpandColumnMenuItems(JPopupMenu popupMenu)
@@ -257,7 +226,6 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 				popupMenu.add(new JMenuItem(expandAction));
 		}
 		
-		private JTable table;
 		private Action expandAction;
 		private Action collapseAction;
 	}
