@@ -69,12 +69,7 @@ public class DateUnit
 	public boolean isDay()
 	{
 		String code = getDateUnitCode();
-		boolean matchesFormat1 = code.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d");
-		boolean matchesFormat2 = code.matches("\\d\\d\\d\\d-\\d-\\d\\d");
-		boolean matchesFormat3 = code.matches("\\d\\d\\d\\d-\\d\\d-\\d");
-		boolean matchesFormat4 = code.matches("\\d\\d\\d\\d-\\d-\\d");
-		
-		return matchesFormat1 ||  matchesFormat2 || matchesFormat3 || matchesFormat4;
+		return code.matches("\\d\\d\\d\\d-\\d\\d-\\d\\d");
 	}
 
 	public DateRange asDateRange() throws Exception
@@ -242,9 +237,10 @@ public class DateUnit
 		int year = getYear();
 		String month = monthsPerYear[getMonth()-1];
 		int daysInMonth = getNumberOfDaysInMonth(year, getMonth());
-		for(int day = 1; day <= daysInMonth; ++day)
+		int daysInMonthArrayCount = daysInMonth - 1;
+		for(int day = 0; day <= daysInMonthArrayCount; ++day)
 		{
-			days.add(new DateUnit(getYear() + "-" + month + "-" + day));
+			days.add(new DateUnit(getYear() + "-" + month + "-" + daysPerMonth[day]));
 		}
 		
 		return days;
@@ -274,5 +270,8 @@ public class DateUnit
 	};
 	
 	private static final String[] monthsPerYear = {"01", "02", "03","04", "05", "06", "07", "08", "09", "10", "11", "12"};
+	private static final String[] daysPerMonth = {"01", "02", "03","04", "05", "06", "07", "08", "09", "10", "11", "12", 
+												  "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", 
+												  "25", "26", "27", "28", "29", "30", "31",};
 	private String dateUnit;
 }
