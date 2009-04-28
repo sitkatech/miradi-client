@@ -48,7 +48,7 @@ public class DateUnitListData extends AbstractStringListData
 		CodeList dateUnitsAsCodeList = new CodeList();
 		for (int index = 0; index < dateUnits.size(); ++index)
 		{
-			dateUnitsAsCodeList.add(dateUnits.get(index).toString());
+			dateUnitsAsCodeList.add(dateUnits.get(index).getDateUnitCode());
 		}
 		
 		return dateUnitsAsCodeList;
