@@ -189,7 +189,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	
 	private boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
 	{
-		return getProjectCalendar().hasSunDateUnits(dateUnit);
+		return getProjectCalendar().hasSubDateUnits(dateUnit);
 	}
 	
 	private boolean isEmptySelection(int selectedColumnIndex)

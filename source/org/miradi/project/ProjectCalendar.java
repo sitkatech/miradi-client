@@ -438,7 +438,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return new DateRange(thisStartDate, thisEndDate);
 	}
 	
-	public boolean hasSunDateUnits(DateUnit dateUnit) throws Exception
+	public boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		return getSubDateUnits(dateUnit).size() > 0;
 	}
