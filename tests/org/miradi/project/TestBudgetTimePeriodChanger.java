@@ -133,6 +133,6 @@ public class TestBudgetTimePeriodChanger extends TestCaseWithProject
 
 	private Assignment createAssignment() throws Exception
 	{
-		return getProject().createAssignment2();
+		return getProject().createAssignment();
 	}
 }

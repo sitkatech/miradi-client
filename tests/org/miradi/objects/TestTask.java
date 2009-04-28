@@ -156,7 +156,7 @@ public class TestTask extends ObjectTestCase
 
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
 	{
-		Assignment assignment = getProject().createAssignment2();
+		Assignment assignment = getProject().createAssignment();
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
 		dateRangeEffort.setUnitQuantity(units);
