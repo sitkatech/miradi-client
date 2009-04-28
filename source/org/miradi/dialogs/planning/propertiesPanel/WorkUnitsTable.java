@@ -199,17 +199,20 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		
 		public void doRightClickMenu(MouseEvent event)
 		{
-			if (isDayColumnSelected())
-				return;
-			
 			JPopupMenu popupMenu = new JPopupMenu();
+			if (!isDayColumnSelected())
+				addColpseExpandColumnMenuItems(popupMenu);
+			
+			Point clickLocation  = event.getPoint();
+			popupMenu.show(table, (int)clickLocation.getX(), (int)clickLocation.getY());
+		}
+
+		private void addColpseExpandColumnMenuItems(JPopupMenu popupMenu)
+		{
 			if (isSelectedDateUnitColumnExpanded())
 				popupMenu.add(new JMenuItem(collapseAction));
 			else
 				popupMenu.add(new JMenuItem(expandAction));
-			
-			Point clickLocation  = event.getPoint();
-			popupMenu.show(table, (int)clickLocation.getX(), (int)clickLocation.getY());
 		}
 		
 		private JTable table;
