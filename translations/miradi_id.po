@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-27 17:04-0500\n"
+"POT-Creation-Date: 2009-04-28 09:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6575,11 +6575,11 @@ msgstr "Terjadi Kesalahan Tak Terduga "
 msgid "Title|Intermediate Result Properties"
 msgstr "Sifat-sifat Hasil Antara"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:225
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:224
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:245
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:244
 msgid "Collapse Selected Column"
 msgstr ""
 
