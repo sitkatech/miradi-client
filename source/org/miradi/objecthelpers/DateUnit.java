@@ -140,28 +140,17 @@ public class DateUnit
 
 	private int getYear()
 	{
-		return Integer.parseInt(getDateUnitCode().substring(0, 4));
+		return parseDateUnit(0, 4);
 	}
 	
 	public int getMonth()
 	{
-		String dateUnitCodeToParse = getDateUnitCode();
-		int indexOfYearMonthSeperator = dateUnitCodeToParse.indexOf("-");
-		int length = dateUnitCodeToParse.length();
-		String monthDayString = dateUnitCodeToParse.substring(indexOfYearMonthSeperator + 1, length);
-		int indexOfMonthDaySeperator = monthDayString.indexOf("-");
-		if (indexOfMonthDaySeperator < 0)
-			return Integer.parseInt(monthDayString);
-		
-		return Integer.parseInt(monthDayString.substring(0, indexOfMonthDaySeperator));
+		return parseDateUnit(5, 7);
 	}
 	
 	public int getDay()
 	{
-		int lastIndexOf = getDateUnitCode().lastIndexOf("-");
-		int length = getDateUnitCode().length();
-		
-		return parseDateUnit(lastIndexOf + 1, length);
+		return parseDateUnit(8, 10);
 	}
 
 	private int parseDateUnit(int beginIndex, int endIndex)
