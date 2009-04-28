@@ -249,6 +249,9 @@ public class DateUnit
 	@Override
 	public String toString()
 	{
+		if (isBlank())
+			return EAM.text("Total");
+		
 		return getDateUnitCode().toString();
 	}
 	
