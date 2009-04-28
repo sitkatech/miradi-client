@@ -36,6 +36,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
@@ -43,6 +45,7 @@ import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.EAMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateUnit;
@@ -207,11 +210,19 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		public void doRightClickMenu(MouseEvent event)
 		{
 			JPopupMenu popupMenu = new JPopupMenu();
+			
+			EAMenuItem expandAllRows = new EAMenuItem(getActions().get(ActionExpandAllNodes.class));
+			popupMenu.add(expandAllRows);
 			if (!isDayColumnSelected())
 				addColpseExpandColumnMenuItems(popupMenu);
 			
 			Point clickLocation  = event.getPoint();
 			popupMenu.show(table, (int)clickLocation.getX(), (int)clickLocation.getY());
+		}
+
+		private Actions getActions()
+		{
+			return getMainWindow().getActions();
 		}
 
 		private void addColpseExpandColumnMenuItems(JPopupMenu popupMenu)
