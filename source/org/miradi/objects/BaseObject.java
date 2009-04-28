@@ -503,7 +503,7 @@ abstract public class BaseObject
 		return 1;
 	}
 	
-	public int getWorkUnits(DateRange dateRangeToUse)
+	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		return 0;
 	}
