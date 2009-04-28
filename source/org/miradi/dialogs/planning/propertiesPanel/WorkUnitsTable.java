@@ -99,26 +99,34 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return JLabel.RIGHT;
 	}
 	
+	private DateUnit getSelectedColumnDateUnit()
+	{
+		int selectedTableColumn = getSelectedColumn();
+		int modelColumnIndex = convertColumnIndexToModel(selectedTableColumn);
+		if (isEmptySelection(modelColumnIndex))
+			return null;	
+		
+		return getWorkUnitsTableModel().getDateUnit(modelColumnIndex);
+	}
+	
 	private boolean isDayColumnSelected()
 	{
-		int selectedColumnIndex = getSelectedColumn();
-		if (isEmptySelection(selectedColumnIndex))
-			return false;	
+		DateUnit dateUnit = getSelectedColumnDateUnit();
+		if (dateUnit == null)
+			return false;
 		
-		DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
 		return dateUnit.isDay();
 	}
 	
 	private boolean isSelectedDateUnitColumnExpanded()
 	{
-		int selectedColumnIndex = getSelectedColumn();
-		if (isEmptySelection(selectedColumnIndex))
+		DateUnit dateUnit = getSelectedColumnDateUnit();
+		if (dateUnit == null)
 			return false;	
 		
 		try
 		{
 			Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
-			DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
 			if (dateUnit.hasSubDateUnits())
 				return currentDateUnits.containsAll(dateUnit.getSubDateUnits());
 			
