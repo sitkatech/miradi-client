@@ -41,7 +41,7 @@ public class DateUnit
 		twoDigitFormatter = new DecimalFormat("00");
 	}
 	
-	private String getDateUnitCode()
+	public String getDateUnitCode()
 	{
 		return dateUnit;
 	}
@@ -249,9 +249,6 @@ public class DateUnit
 	@Override
 	public String toString()
 	{
-		if (isBlank())
-			return EAM.text("Total");
-		
 		return getDateUnitCode().toString();
 	}
 	

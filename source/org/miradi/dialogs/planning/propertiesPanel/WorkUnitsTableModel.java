@@ -72,7 +72,11 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 		try
 		{
-			return getDateUnit(col).toString();
+			DateUnit dateUnit = getDateUnit(col);
+			if (dateUnit.isBlank())
+				return EAM.text("Total");
+			
+			return dateUnit.toString();
 		}
 		catch(Exception e)
 		{
