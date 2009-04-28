@@ -47,11 +47,13 @@ public class Assignment extends BaseObject
 		super(objectManager,new TaskId(idAsInt), json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -203,6 +205,12 @@ public class Assignment extends BaseObject
 		return (effortList.getTotalUnitQuantity() * costPerUnit);
 	}
 	
+	@Override
+	public int getWorkUnits(DateRange dateRangeToUse)
+	{
+		return 0;
+	}
+	
 	public DateRange getCombinedEffortListDateRange() throws Exception
 	{
 		return getDetails().getCombinedDateRange();
@@ -269,6 +277,7 @@ public class Assignment extends BaseObject
 		return find(project.getObjectManager(), assignmentRef);
 	}
 	
+	@Override
 	public void clear()
 	{
 		super.clear();
