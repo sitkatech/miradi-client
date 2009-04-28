@@ -76,7 +76,18 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 			if (dateUnit.isBlank())
 				return EAM.text("Total");
 			
-			return dateUnit.toString();
+			String name = dateUnit.toString();
+
+			if(dateUnit.isQuarter())
+				return name.substring(4);
+
+			if(dateUnit.isMonth())
+				return "M " + dateUnit.getMonth();
+			
+			if(dateUnit.isDay())
+				return Integer.toString(dateUnit.getDay());
+			
+			return name;
 		}
 		catch(Exception e)
 		{
