@@ -22,8 +22,6 @@ package org.miradi.views.diagram;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -35,7 +33,6 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 import org.martus.swing.UiLabel;
-import org.martus.swing.UiPopupMenu;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -58,6 +55,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.utils.AbstractTableRightClickHandler;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.Translation;
@@ -148,7 +146,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		selectionScrollPane.setBorder(newBorder);
 		selectionScrollPane.setMinimumSize(new Dimension(0,0));
 		
-		MouseHandler rightClickMouseHandler = new MouseHandler();
+		MouseHandler rightClickMouseHandler = new MouseHandler(getMainWindow(), selectionPanel);
 		selectionScrollPane.addMouseListener(rightClickMouseHandler);
 		selectionPanel.addMouseListener(rightClickMouseHandler);
 
@@ -479,46 +477,25 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		return mainWindow;
 	}
 	
-	public class MouseHandler extends MouseAdapter
+	public class MouseHandler extends AbstractTableRightClickHandler
 	{
-		public void mousePressed(MouseEvent event)
+		public MouseHandler(MainWindow mainWindowToUse, DiagramPageList tableToUse)
 		{
-			if(event.isPopupTrigger())
-				doRightClickMenu(event);
+			super(mainWindowToUse, tableToUse);
 		}
 
-		public void mouseReleased(MouseEvent event)
+		@Override
+		protected void populateMenu(JPopupMenu popupMenu)
 		{
-			if(event.isPopupTrigger())
-				doRightClickMenu(event);
+			Class[] rightClickMenuActions = getPopUpMenuActions();
+			for (int i = 0; i < rightClickMenuActions.length; ++i)
+			{
+				if(rightClickMenuActions[i] == null)
+					popupMenu.addSeparator();
+				else
+					popupMenu.add(getMainWindow().getActions().get(rightClickMenuActions[i]));
+			}
 		}
-		
-		private void doRightClickMenu(MouseEvent event)
-		{
-			handleRightClick(event);
-		}
-	}
-	
-	private void handleRightClick(MouseEvent event)
-	{
-		JPopupMenu menu = getPopupMenu();
-		getMainWindow().getActions().updateActionStates();
-		menu.show(this, event.getX(), event.getY());
-	}
-	
-	public JPopupMenu getPopupMenu()
-	{
-		UiPopupMenu menu = new UiPopupMenu();
-		Class[] rightClickMenuActions = getPopUpMenuActions();
-		for (int i = 0; i < rightClickMenuActions.length; ++i)
-		{
-			if(rightClickMenuActions[i] == null)
-				menu.addSeparator();
-			else
-				menu.add(getMainWindow().getActions().get(rightClickMenuActions[i]));
-		}
-
-		return menu;
 	}
 	
 	abstract public Class[] getPopUpMenuActions();
