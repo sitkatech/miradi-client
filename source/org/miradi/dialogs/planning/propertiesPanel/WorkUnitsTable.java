@@ -36,7 +36,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
@@ -211,7 +211,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		{
 			JPopupMenu popupMenu = new JPopupMenu();
 			
-			EAMenuItem expandAllRows = new EAMenuItem(getActions().get(ActionExpandAllNodes.class));
+			EAMenuItem expandAllRows = new EAMenuItem(getActions().get(ActionExpandAllRows.class));
 			popupMenu.add(expandAllRows);
 			if (!isDayColumnSelected())
 				addColpseExpandColumnMenuItems(popupMenu);

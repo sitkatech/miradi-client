@@ -28,7 +28,7 @@ import org.miradi.actions.ActionCreateKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttribute;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
-import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTablePanelWithFourButtonColumns;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
@@ -124,7 +124,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 			ActionCreateKeyEcologicalAttribute.class, 
 			ActionCreateKeyEcologicalAttributeIndicator.class,
 			ActionCreateKeyEcologicalAttributeMeasurement.class,
-			ActionExpandAllNodes.class,
+			ActionExpandAllRows.class,
 			
 			ActionDeleteKeyEcologicalAttribute.class,
 			ActionDeleteKeyEcologicalAttributeIndicator.class,

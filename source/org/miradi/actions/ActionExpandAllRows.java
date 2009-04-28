@@ -17,14 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
+package org.miradi.actions;
 
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-
-public class CollapseAllNodesDoer extends AbstractTreeRowExpansionDoer
+public class ActionExpandAllRows extends ObjectsAction
 {
-	public void doWork() throws Exception
+	public ActionExpandAllRows(MainWindow mainWindow)
 	{
-		getPicker().collapseAll();
+		super(mainWindow, getLabel());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Expand All");
+	}
+	
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Expand All Tree Items");
 	}
 }

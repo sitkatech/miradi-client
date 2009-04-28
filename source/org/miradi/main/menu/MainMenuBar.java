@@ -59,7 +59,7 @@ import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResultsChain;
 import org.miradi.actions.ActionDiagramProperties;
 import org.miradi.actions.ActionExit;
-import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionExportConProXml;
 import org.miradi.actions.ActionExportProjectXml;
 import org.miradi.actions.ActionExportRtf;
@@ -499,7 +499,7 @@ public class MainMenuBar extends JMenuBar
 		
 		if(isPlanningView() || isViabilityView())
 		{
-			addMenuItem(actions, menu, ActionExpandAllNodes.class);
+			addMenuItem(actions, menu, ActionExpandAllRows.class);
 			addMenuItem(actions, menu, ActionCollapseAllNodes.class);
 		}
 		

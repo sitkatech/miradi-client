@@ -23,7 +23,7 @@ import org.miradi.actions.ActionCollapseAllNodes;
 import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.actions.ActionExpandAllNodes;
+import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningColumnsEditor;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionPlanningRowsEditor;
@@ -60,7 +60,7 @@ public class ConfigurablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	private static Class[] getButtonActions()
 	{
 		return new Class[] {
-			ActionExpandAllNodes.class,
+			ActionExpandAllRows.class,
 			ActionCollapseAllNodes.class,
 			ActionTreeNodeUp.class,
 			ActionTreeNodeDown.class,
