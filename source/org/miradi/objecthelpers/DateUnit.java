@@ -222,15 +222,18 @@ public class DateUnit
 	{
 		Vector<DateUnit> days = new Vector<DateUnit>();
 		int year = getYear();
-		String month = getTwoDigitFormatter().format(getMonth());
 		int daysInMonth = getNumberOfDaysInMonth(year, getMonth());
 		for(int day = 1; day <= daysInMonth; ++day)
 		{
-			String formattedDay = getTwoDigitFormatter().format(day);
-			days.add(new DateUnit(getYear() + "-" + month + "-" + formattedDay));
+			days.add(new DateUnit(getYear() + "-" + asTwoDigitString(getMonth()) + "-" + asTwoDigitString(day)));
 		}
 		
 		return days;
+	}
+
+	private String asTwoDigitString(int numberToFormat)
+	{
+		return getTwoDigitFormatter().format(numberToFormat);
 	}
 
 	@Override
