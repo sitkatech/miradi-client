@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCollapseAllNodes extends ObjectsAction
+public class ActionCollapseAllRows extends ObjectsAction
 {
-	public ActionCollapseAllNodes(MainWindow mainWindow)
+	public ActionCollapseAllRows(MainWindow mainWindow)
 	{
 		super(mainWindow, getLabel());
 	}

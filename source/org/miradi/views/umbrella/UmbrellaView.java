@@ -36,7 +36,7 @@ import org.miradi.actions.ActionAbout;
 import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
 import org.miradi.actions.ActionClose;
-import org.miradi.actions.ActionCollapseAllNodes;
+import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionConfigureExport;
 import org.miradi.actions.ActionCreateActivityProgressReport;
 import org.miradi.actions.ActionCreateGoalProgressPercent;
@@ -433,7 +433,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionDeleteLegacyTncStrategyRanking.class, new DeleteLegacyTncStrategyRankingDoer());
 		
 		addDoerToMap(ActionExpandAllRows.class, new ExpandAllRowsDoer());
-		addDoerToMap(ActionCollapseAllNodes.class, new CollapseAllRowsDoer());	
+		addDoerToMap(ActionCollapseAllRows.class, new CollapseAllRowsDoer());	
 		
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionShowCurrentWizardFileName.class, new ShowCurrentWizardFileNameDoer());

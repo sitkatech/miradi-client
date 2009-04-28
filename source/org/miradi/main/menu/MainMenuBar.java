@@ -34,7 +34,7 @@ import org.miradi.actions.ActionAbout;
 import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
 import org.miradi.actions.ActionClose;
-import org.miradi.actions.ActionCollapseAllNodes;
+import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionConfigureLayers;
 import org.miradi.actions.ActionCopy;
 import org.miradi.actions.ActionCreateBendPoint;
@@ -500,7 +500,7 @@ public class MainMenuBar extends JMenuBar
 		if(isPlanningView() || isViabilityView())
 		{
 			addMenuItem(actions, menu, ActionExpandAllRows.class);
-			addMenuItem(actions, menu, ActionCollapseAllNodes.class);
+			addMenuItem(actions, menu, ActionCollapseAllRows.class);
 		}
 		
 		if(isThreatView())

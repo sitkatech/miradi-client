@@ -443,7 +443,7 @@ public class Actions
 		registerAction(new ActionHideActivityBubble(mainWindow));
 		registerAction(new ActionShowCurrentWizardFileName(mainWindow));
 		registerAction(new ActionExpandAllRows(mainWindow));
-		registerAction(new ActionCollapseAllNodes(mainWindow));
+		registerAction(new ActionCollapseAllRows(mainWindow));
 	}
 	
 	public EAMAction get(Class c)

@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.actions.ActionCollapseAllNodes;
+import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
@@ -49,7 +49,7 @@ public class MonitoringPlanningTreeTablePanel extends PlanningTreeTablePanel
 	{
 		return new Class[] {
 				ActionExpandAllRows.class, 
-				ActionCollapseAllNodes.class, 
+				ActionCollapseAllRows.class, 
 				ActionPlanningCreationMenu.class,			
 		};
 	}
