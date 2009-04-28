@@ -233,6 +233,8 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		
 		resourceTable.rebuildColumnEditorsAndRenderers();
 		resourceTable.repaint();
+		
+		workplanTable.invalidate();
 		workplanTable.repaint();
 	}
 	
