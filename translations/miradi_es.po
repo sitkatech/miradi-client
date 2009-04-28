@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:55-0500\n"
+"POT-Creation-Date: 2009-04-28 10:58-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4625,6 +4625,14 @@ msgstr "Editar porcentajes de progreso..."
 msgid "TT|Edit the list of progress percents for this objective."
 msgstr "Editar la lista de informes de progreso para esta meta"
 
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
+msgid "Action|Collapse All"
+msgstr "Contraer todo "
+
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
+msgid "TT|Collapse All Tree Items"
+msgstr "TT|Contraer todos los elementos del árbol"
+
 #: miradi/source/org/miradi/actions/ActionZoomToFit.java:34
 msgid "Action|Zoom To Fit"
 msgstr "Ampliar para ajustar"
@@ -5314,14 +5322,6 @@ msgstr "Crear indicador"
 msgid "TT|Create an Indicator for the selected factor"
 msgstr "TT|Create an Indicator for the selected factor"
 
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:34
-msgid "Action|Expand All"
-msgstr "Expandir todo "
-
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:39
-msgid "TT|Expand All Tree Items"
-msgstr "TT|Expandir todos los elementos del árbol"
-
 #: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
 #, fuzzy
 msgid "Action|Save As..."
@@ -5722,14 +5722,6 @@ msgstr "Insertar amenaza directa"
 msgid "TT|Insert a Direct Threat"
 msgstr "Insertar una amenaza directa"
 
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:34
-msgid "Action|Collapse All"
-msgstr "Contraer todo "
-
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:39
-msgid "TT|Collapse All Tree Items"
-msgstr "TT|Contraer todos los elementos del árbol"
-
 #: miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
 msgid "Action|Delete Custom"
 msgstr "Eliminar personalización"
@@ -6016,6 +6008,14 @@ msgstr "Crear una nueva medición"
 #: miradi/source/org/miradi/actions/ActionEditIndicatorProgressReports.java:39
 msgid "TT|Edit the list of progress reports for this indicator"
 msgstr "Editar la lista de informes de progreso para este indicador"
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
+msgid "Action|Expand All"
+msgstr "Expandir todo "
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
+msgid "TT|Expand All Tree Items"
+msgstr "TT|Expandir todos los elementos del árbol"
 
 #: miradi/source/org/miradi/actions/ActionDiagramProperties.java:34
 msgid "Action|Diagram Properties..."

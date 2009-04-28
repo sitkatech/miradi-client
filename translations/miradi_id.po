@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:55-0500\n"
+"POT-Creation-Date: 2009-04-28 10:58-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -4603,6 +4603,14 @@ msgstr "Edit Persentase Kemajuan… "
 msgid "TT|Edit the list of progress percents for this objective."
 msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
 
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
+msgid "Action|Collapse All"
+msgstr "Tutup Semua"
+
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
+msgid "TT|Collapse All Tree Items"
+msgstr "Tutup Kesemua Tiga Butir"
+
 #: miradi/source/org/miradi/actions/ActionZoomToFit.java:34
 msgid "Action|Zoom To Fit"
 msgstr "Zum sampai Sesuai "
@@ -5290,14 +5298,6 @@ msgstr "Buat Indikator "
 msgid "TT|Create an Indicator for the selected factor"
 msgstr "TT|Create an Indicator for the selected factor"
 
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:34
-msgid "Action|Expand All"
-msgstr "Perluas Semua"
-
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:39
-msgid "TT|Expand All Tree Items"
-msgstr "Perluas Kesemua Tiga Butir"
-
 #: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
 #, fuzzy
 msgid "Action|Save As..."
@@ -5698,14 +5698,6 @@ msgstr "Sisipkan Ancaman Langsung "
 msgid "TT|Insert a Direct Threat"
 msgstr "Sisipkan satu Ancaman Langsung "
 
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:34
-msgid "Action|Collapse All"
-msgstr "Tutup Semua"
-
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:39
-msgid "TT|Collapse All Tree Items"
-msgstr "Tutup Kesemua Tiga Butir"
-
 #: miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
 msgid "Action|Delete Custom"
 msgstr "Hapus Sesuaian "
@@ -5992,6 +5984,14 @@ msgstr "Buat Pengukuran baru "
 #: miradi/source/org/miradi/actions/ActionEditIndicatorProgressReports.java:39
 msgid "TT|Edit the list of progress reports for this indicator"
 msgstr "Edit daftar laporan kemajuan untuk indikator ini "
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
+msgid "Action|Expand All"
+msgstr "Perluas Semua"
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
+msgid "TT|Expand All Tree Items"
+msgstr "Perluas Kesemua Tiga Butir"
 
 #: miradi/source/org/miradi/actions/ActionDiagramProperties.java:34
 msgid "Action|Diagram Properties..."

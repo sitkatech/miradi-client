@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:55-0500\n"
+"POT-Creation-Date: 2009-04-28 10:58-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4160,6 +4160,14 @@ msgstr ""
 msgid "TT|Edit the list of progress percents for this objective."
 msgstr ""
 
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
+msgid "Action|Collapse All"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
+msgid "TT|Collapse All Tree Items"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionZoomToFit.java:34
 msgid "Action|Zoom To Fit"
 msgstr ""
@@ -4844,14 +4852,6 @@ msgstr ""
 msgid "TT|Create an Indicator for the selected factor"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:34
-msgid "Action|Expand All"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionExpandAllNodes.java:39
-msgid "TT|Expand All Tree Items"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionSaveProjectAs.java:34
 msgid "Action|Save As..."
 msgstr ""
@@ -5246,14 +5246,6 @@ msgstr ""
 msgid "TT|Insert a Direct Threat"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:34
-msgid "Action|Collapse All"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionCollapseAllNodes.java:39
-msgid "TT|Collapse All Tree Items"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionDeletePlanningViewConfiguration.java:35
 msgid "Action|Delete Custom"
 msgstr ""
@@ -5535,6 +5527,14 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionEditIndicatorProgressReports.java:39
 msgid "TT|Edit the list of progress reports for this indicator"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
+msgid "Action|Expand All"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
+msgid "TT|Expand All Tree Items"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDiagramProperties.java:34
