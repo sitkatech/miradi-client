@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 10:58-0500\n"
+"POT-Creation-Date: 2009-04-28 11:01-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -4604,12 +4604,12 @@ msgid "TT|Edit the list of progress percents for this objective."
 msgstr "Edit daftar persentase kemajuan untuk tujuan instruksional ini \t"
 
 #: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:34
-msgid "Action|Collapse All"
-msgstr "Tutup Semua"
+msgid "Action|Collapse All Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCollapseAllRows.java:39
-msgid "TT|Collapse All Tree Items"
-msgstr "Tutup Kesemua Tiga Butir"
+msgid "TT|Collapse All Tree Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionZoomToFit.java:34
 msgid "Action|Zoom To Fit"
@@ -5986,12 +5986,12 @@ msgid "TT|Edit the list of progress reports for this indicator"
 msgstr "Edit daftar laporan kemajuan untuk indikator ini "
 
 #: miradi/source/org/miradi/actions/ActionExpandAllRows.java:34
-msgid "Action|Expand All"
-msgstr "Perluas Semua"
+msgid "Action|Expand All Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionExpandAllRows.java:39
-msgid "TT|Expand All Tree Items"
-msgstr "Perluas Kesemua Tiga Butir"
+msgid "TT|Expand All Tree Rows"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDiagramProperties.java:34
 msgid "Action|Diagram Properties..."
@@ -32642,6 +32642,18 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Collapse All"
+#~ msgstr "Tutup Semua"
+
+#~ msgid "TT|Collapse All Tree Items"
+#~ msgstr "Tutup Kesemua Tiga Butir"
+
+#~ msgid "Action|Expand All"
+#~ msgstr "Perluas Semua"
+
+#~ msgid "TT|Expand All Tree Items"
+#~ msgstr "Perluas Kesemua Tiga Butir"
 
 #~ msgid "Total"
 #~ msgstr "Total "
