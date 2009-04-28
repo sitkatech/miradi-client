@@ -43,6 +43,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -457,6 +458,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		setObjectData(taggedObjectSet.getRef(), TaggedObjectSet.TAG_LABEL, labelToUse);
 		
 		return taggedObjectSet;
+	}
+	
+	public Assignment createAssignment2() throws Exception
+	{
+		ORef assignmentRef = createObject(Assignment.getObjectType());
+		return Assignment.find(this, assignmentRef);
 	}
 
 	public void populateTarget(Target target) throws Exception

@@ -22,7 +22,6 @@ package org.miradi.project;
 import java.awt.Dimension;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.AssignmentId;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -181,8 +180,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testRepairAssignmentsReferringToNonExistantData() throws Exception
 	{
-		AssignmentId assignmentId = getProject().createAssignment();
-		Assignment assignment = Assignment.find(getProject(), new ORef(Assignment.getObjectType(), assignmentId));
+		Assignment assignment = getProject().createAssignment2();
 		assignment.setData(Assignment.TAG_ACCOUNTING_CODE, new BaseId(40000).toString());
 		assignment.setData(Assignment.TAG_FUNDING_SOURCE, new BaseId(50000).toString());
 		

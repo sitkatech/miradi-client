@@ -140,7 +140,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		BaseId factorId = project.createFactorAndReturnId(ObjectType.STRATEGY);
 		BaseId taskId = project.createTaskAndReturnId();
 		BaseId subTaskId = project.createTaskAndReturnId();
-		BaseId assignmentId = project.createAssignment();
+		ORef assignmentRef = project.createAssignment2().getRef();
 		
 		IdList taskList = new IdList(Task.getObjectType(), new BaseId[] {taskId});
 		project.setObjectData(ObjectType.STRATEGY, factorId, Strategy.TAG_ACTIVITY_IDS, taskList.toString());
@@ -148,36 +148,35 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		IdList subTaskList = new IdList(Task.getObjectType(), new BaseId[] {subTaskId});
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
 
-		IdList assignmentList = new IdList(Assignment.getObjectType(), new BaseId[] {assignmentId});
+		IdList assignmentList = new IdList(Assignment.getObjectType(), new BaseId[] {assignmentRef.getObjectId()});
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_ASSIGNMENT_IDS, assignmentList.toString());
 
 		//----------- start test -----------
 		
 	   	ORef owner = new ORef(ObjectType.TASK, taskId);
 		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.TASK, subTaskId));
-		verifyOwnershipFunctions(1,owner, new ORef(ObjectType.ASSIGNMENT, assignmentId));
+		verifyOwnershipFunctions(1,owner, assignmentRef);
 	}
 	
 	
 	public void testAssignmentRefer() throws Exception
 	{
-		BaseId assignmentId = project.createAssignment();
+		ORef assignmentRef = project.createAssignment2().getRef();
 		
 		BaseId projectResourceId = project.createObjectAndReturnId(ObjectType.PROJECT_RESOURCE);
-		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, projectResourceId.toString());
+		project.setObjectData(assignmentRef, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, projectResourceId.toString());
 		
 		BaseId accountingCodeId = project.createObjectAndReturnId(ObjectType.ACCOUNTING_CODE);
-		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
+		project.setObjectData(assignmentRef, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
 		
 		BaseId fundingSourceId = project.createObjectAndReturnId(ObjectType.FUNDING_SOURCE);
-		project.setObjectData(ObjectType.ASSIGNMENT, assignmentId, Assignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
+		project.setObjectData(assignmentRef, Assignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
 		
 		//----------- start test -----------
 		
-	   	ORef owner = new ORef(ObjectType.ASSIGNMENT, assignmentId);
-		verifyReferenceFunctions(1,owner, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
-		verifyReferenceFunctions(1,owner, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
-		verifyReferenceFunctions(1,owner, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
+		verifyReferenceFunctions(1, assignmentRef, new ORef(ObjectType.PROJECT_RESOURCE, projectResourceId));
+		verifyReferenceFunctions(1, assignmentRef, new ORef(ObjectType.ACCOUNTING_CODE, accountingCodeId));
+		verifyReferenceFunctions(1, assignmentRef, new ORef(ObjectType.FUNDING_SOURCE, fundingSourceId));
 	}
 
 
