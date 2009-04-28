@@ -147,6 +147,15 @@ public class TestDateUnit extends TestCaseWithProject
 		assertEquals("wrong day?", expectedDay, dateUnit.getDay());
 	}
 	
+	public void testToString()
+	{
+		DateUnit blankDateUnit = new DateUnit();
+		assertEquals("wrong tostring value?","Total", blankDateUnit.toString());
+		
+		DateUnit dateUnit = new DateUnit("2008-12-10");
+		assertEquals("wrong toString value?", "2008-12-10", dateUnit.toString());
+	}
+	
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
 	private final DateUnit year = new DateUnit("2006");
