@@ -73,10 +73,10 @@ public class OperationalPlanView extends TabbedView
 	{
 		super.becomeActive();
 	
-		workPlanManagementPanel.updateSplitterLocation();
-		resourceManagementPanel.updateSplitterLocation();
-		accountingCodePoolManagementPanel.updateSplitterLocation();
-		fundingSourcePoolManagementPanel.updateSplitterLocation();
+		workPlanManagementPanel.becomeActive();
+		resourceManagementPanel.becomeActive();
+		accountingCodePoolManagementPanel.becomeActive();
+		fundingSourcePoolManagementPanel.becomeActive();
 	}
 
 	@Override
