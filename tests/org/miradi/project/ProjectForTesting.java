@@ -459,7 +459,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return taggedObjectSet;
 	}
 	
-	public Assignment createAssignment2() throws Exception
+	public Assignment createAssignment() throws Exception
 	{
 		ORef assignmentRef = createObject(Assignment.getObjectType());
 		return Assignment.find(this, assignmentRef);
