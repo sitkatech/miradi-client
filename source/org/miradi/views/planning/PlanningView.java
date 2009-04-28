@@ -68,7 +68,6 @@ import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
-import org.miradi.views.planning.doers.AddAssignmentDoer;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
 import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationMenuDoer;
@@ -81,7 +80,6 @@ import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 import org.miradi.views.planning.doers.PlanningColumnsEditorDoer;
 import org.miradi.views.planning.doers.PlanningRowsEditorDoer;
 import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
-import org.miradi.views.planning.doers.RemoveAssignmentDoer;
 import org.miradi.views.planning.doers.RenamePlanningViewConfigurationDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateIndicatorDoer;
@@ -92,6 +90,8 @@ import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
 import org.miradi.views.umbrella.UmbrellaView;
+import org.miradi.views.umbrella.doers.AddAssignmentDoer;
+import org.miradi.views.umbrella.doers.RemoveAssignmentDoer;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
@@ -213,6 +213,8 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeNodeUp.class, new TaskMoveUpDoer());
 		addDoerToMap(ActionTreeNodeDown.class, new TaskMoveDownDoer());
 		
+		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
+
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 		addDoerToMap(ActionTreeCreateActivityIconOnly.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethodIconOnly.class, new TreeNodeCreateMethodDoer());
@@ -220,7 +222,6 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateActivity.class, new TreeNodeCreateActivityDoer());
 		addDoerToMap(ActionTreeCreateMethod.class, new TreeNodeCreateMethodDoer());	
 		addDoerToMap(ActionTreeCreateTask.class, new TreeNodeCreateTaskDoer());
-		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
 		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
 		addDoerToMap(ActionTreeCreateIndicator.class, new TreeNodeCreateIndicatorDoer());
 		addDoerToMap(ActionTreeCreateObjective.class, new TreeNodeCreateObjectiveDoer());
