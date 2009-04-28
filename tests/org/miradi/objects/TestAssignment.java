@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.martus.util.MultiCalendar;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.TestDateRangeEffortList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
@@ -33,6 +32,15 @@ public class TestAssignment extends ObjectTestCase
 		super(name);
 	}
 	
+	@Override
+	public void setUp() throws Exception
+	{
+		super.setUp();
+		
+		dateRange1 = createDateRange(createMultiCalendar(2008, 1, 1), createMultiCalendar(2008, 2, 1));
+		dateRange2 = createDateRange(createMultiCalendar(2009, 1, 1), createMultiCalendar(2009, 2, 1));
+	}
+	
 	public void testFields() throws Exception
 	{
 		verifyFields(ObjectType.ASSIGNMENT);
@@ -41,15 +49,31 @@ public class TestAssignment extends ObjectTestCase
 	public void testGetWorkUnits() throws Exception
 	{
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
-		DateRangeEffort dateRangeEffort = TestDateRangeEffortList.createDateRangeEffort();
-		dateRangeEffortList.add(dateRangeEffort);
+		dateRangeEffortList.add(createDateRangeEffort(2, dateRange1));
+		dateRangeEffortList.add(createDateRangeEffort(5, dateRange2));
 
 		Assignment assignment = getProject().createAssignment();
 		getProject().fillObjectUsingCommand(assignment, Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 
-		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
-		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 1, 1);
-		DateRange dateRange = new DateRange(startDate, endDate);
-		assertEquals("wrong assignment work units?", 1, assignment.getWorkUnits(dateRange));
+		assertEquals("wrong assignment work units?", 2, assignment.getWorkUnits(dateRange1));
+		assertEquals("wrong assignment work units?", 5, assignment.getWorkUnits(dateRange2));
 	}
+	
+	public DateRangeEffort createDateRangeEffort(int unitQuantatiy, DateRange dateRange) throws Exception
+	{
+		return new DateRangeEffort("", unitQuantatiy, dateRange);
+	}
+
+	private DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception
+	{
+		return new DateRange(startDate, endDate);
+	}
+
+	private MultiCalendar createMultiCalendar(int year, int month, int day)
+	{
+		return MultiCalendar.createFromGregorianYearMonthDay(year, month, day);
+	}
+	
+	private DateRange dateRange1;
+	private DateRange dateRange2;
 }
