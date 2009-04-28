@@ -62,7 +62,7 @@ public class DateUnit
 		return code.matches("\\d\\d\\d\\dQ\\d");
 	}
 	
-	private boolean isMonth()
+	public boolean isMonth()
 	{
 		String code = getDateUnitCode();
 		return code.matches("\\d\\d\\d\\d-\\d\\d");
@@ -147,18 +147,17 @@ public class DateUnit
 	
 	public int getMonth()
 	{
-		return parseEmbeddedInt(5, 2);
+		return parseEmbeddedInt(5, 7);
 	}
 	
 	public int getDay()
 	{
-		return parseEmbeddedInt(8, 2);
+		return parseEmbeddedInt(8, 10);
 	}
 
 	private int parseEmbeddedInt(int start, int length)
 	{
-		int endIndex = start + length;
-		return Integer.parseInt(getDateUnitCode().substring(start, endIndex));
+		return Integer.parseInt(getDateUnitCode().substring(start, length));
 	}
 
 	private int getQuarter()
