@@ -147,17 +147,18 @@ public class DateUnit
 	
 	public int getMonth()
 	{
-		return parseEmbeddedInt(5, 7);
+		return parseEmbeddedInt(5, 2);
 	}
 	
 	public int getDay()
 	{
-		return parseEmbeddedInt(8, 10);
+		return parseEmbeddedInt(8, 2);
 	}
 
 	private int parseEmbeddedInt(int start, int length)
 	{
-		return Integer.parseInt(getDateUnitCode().substring(start, length));
+		int endIndex = start + length;
+		return Integer.parseInt(getDateUnitCode().substring(start, endIndex));
 	}
 
 	private int getQuarter()
