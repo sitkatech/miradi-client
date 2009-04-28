@@ -39,9 +39,9 @@ public class CreateConceptualModelPageDoer extends ViewDoer
 		if(!getProject().isOpen())
 			return false;
 		
-		if (!isInDiagram())
+		if (! DiagramView.is(getView()))
 			return false;
-
+		
 		if (getDiagramView().isResultsChainTab())
 			return false;
 		
