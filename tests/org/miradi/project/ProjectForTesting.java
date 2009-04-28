@@ -26,7 +26,6 @@ import org.miradi.database.ProjectServer;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.AssignmentId;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
@@ -74,10 +73,8 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
-import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -88,6 +85,8 @@ import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
@@ -879,12 +878,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return (FactorId)createObjectAndReturnId(ObjectType.TASK, BaseId.INVALID);
 	}
 
-	public AssignmentId createAssignment() throws Exception
-	{
-		AssignmentId cmAssignmentId = (AssignmentId)createObjectAndReturnId(ObjectType.ASSIGNMENT, BaseId.INVALID);
-		return cmAssignmentId;
-	}
-	
 	public DiagramFactorId createAndAddFactorToDiagram(int nodeType) throws Exception
 	{
 		return createAndAddFactorToDiagram(nodeType, takeNextId(nodeType));
