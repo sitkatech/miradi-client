@@ -156,7 +156,7 @@ public class TestTask extends ObjectTestCase
 
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
 	{
-		Assignment assignment = createAssignment();
+		Assignment assignment = getProject().createAssignment2();
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
 		dateRangeEffort.setUnitQuantity(units);
@@ -173,12 +173,6 @@ public class TestTask extends ObjectTestCase
 		return Task.find(getProject(), taskRef);
 	}
 
-	private Assignment createAssignment() throws Exception
-	{
-		ORef assignmentRef = getProject().createObject(Assignment.getObjectType());
-		return Assignment.find(getProject(), assignmentRef);
-	}
-	
 	public static DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
 	{
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
