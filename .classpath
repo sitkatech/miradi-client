@@ -8,7 +8,7 @@
 	<classpathentry kind="lib" path="/miradi-thirdparty/JUnit/bin/junit.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/martus-utils/bin/martus-utils.jar" sourcepath="/miradi-thirdparty/martus-utils/source/martus-utils-src.jar"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/martus-swing/bin/martus-swing.jar" sourcepath="/miradi-thirdparty/martus-swing/source/martus-swing-src.jar"/>
-	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph.jar" sourcepath="/miradi-jgraph/source"/>
 	<classpathentry kind="lib" path="/miradi-thirdparty/jing/bin/jing.jar" sourcepath="/miradi-thirdparty/jing/jing-src-20030619.zip"/>
+	<classpathentry kind="lib" path="/miradi-thirdparty/jgraph/miradi-jgraph-5.12.2.2b.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
