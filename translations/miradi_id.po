@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 12:42-0500\n"
+"POT-Creation-Date: 2009-04-29 15:34-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6566,6 +6566,10 @@ msgstr ""
 "Silakan pilih butir mana yang harus diklon ke faktor ini, lalu tekan tombol "
 "Klon "
 
+#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:33
+msgid "Collapse Selected Column"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/PlanningViewConfigurableControlPanel.java:87
 #: miradi/source/org/miradi/dialogs/planning/PlanningViewObjectsOnlyDropDownPanel.java:77
 msgid "Unexpected Error Occurred"
@@ -6617,6 +6621,10 @@ msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandColumnAction.java:33
+msgid "Expand Selected Column"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
@@ -6630,14 +6638,6 @@ msgstr "Total "
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "(Kesalahan) "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningRightClickHandler.java:74
-msgid "Expand Selected Column"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningRightClickHandler.java:94
-msgid "Collapse Selected Column"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
