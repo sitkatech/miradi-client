@@ -46,7 +46,7 @@ class PlanningRightClickHandler extends AbstractTableRightClickHandler
 	@Override
 	protected void populateMenu(JPopupMenu popupMenu)
 	{
-		if (!this.workUnitsTable.isDayColumnSelected())
+		if (!workUnitsTable.isDayColumnSelected())
 			addColpseExpandColumnMenuItems(popupMenu);
 		
 		popupMenu.addSeparator();
@@ -56,7 +56,7 @@ class PlanningRightClickHandler extends AbstractTableRightClickHandler
 
 	private void addColpseExpandColumnMenuItems(JPopupMenu popupMenu)
 	{
-		if (this.workUnitsTable.isSelectedDateUnitColumnExpanded())
+		if (workUnitsTable.isSelectedDateUnitColumnExpanded())
 			popupMenu.add(new JMenuItem(collapseAction));
 		else
 			popupMenu.add(new JMenuItem(expandAction));
