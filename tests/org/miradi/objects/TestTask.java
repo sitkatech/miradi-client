@@ -25,7 +25,6 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateRangeEffortList;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
@@ -169,8 +168,7 @@ public class TestTask extends ObjectTestCase
 
 	private Task createTask() throws Exception
 	{
-		ORef taskRef = getProject().createObject(Task.getObjectType());
-		return Task.find(getProject(), taskRef);
+		return getProject().createTask();
 	}
 
 	public static DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
