@@ -263,6 +263,20 @@ public class Strategy extends Factor
 		return ObjectType.STRATEGY;
 	}
 	
+	@Override
+	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
+	{
+		int totalStrategyWorkUnits = 0;
+		ORefList activityRefs = getActivityRefs();
+		for (int index = 0; index < activityRefs.size(); ++index)
+		{
+			Task activity = Task.find(getProject(), activityRefs.get(index));
+			totalStrategyWorkUnits =+ activity.getWorkUnits(dateRangeToUse);
+		}
+		
+		return totalStrategyWorkUnits;
+	}
+	
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		return getTasksBudgetCostRollUp(dateRangeToUse, getActivityRefs());

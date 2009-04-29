@@ -27,6 +27,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.DateRange;
 
 public class TestStrategy extends ObjectTestCase
 {
@@ -125,6 +126,22 @@ public class TestStrategy extends ObjectTestCase
 		Strategy got = (Strategy)BaseObject.createFromJson(project.getObjectManager(), intervention.getType(), intervention.toJson());
 		assertTrue("Didn't restore status?", got.isStatusDraft());
 		assertEquals("Didn't read activities?", intervention.getActivityIds(), got.getActivityIds());
+	}
+	
+	public void testGetWorkUnits() throws Exception
+	{
+		Task task = getProject().createTask();
+		TestTask.addAssignment(getProject(), task, 14, 2006, 2009);
+		TestTask.addAssignment(getProject(), task, 15, 2006, 2009);
+		Strategy strategy = getProject().createStrategy();
+		IdList activityIds = new IdList(Task.getObjectType());
+		activityIds.addRef(task.getRef());
+		getProject().setObjectData(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
+		
+		assertEquals("wrong activity count?", 1, strategy.getActivityRefs().size());
+		
+		DateRange dateRange = new DateRange(TestTask.createMultiCalendar(2006), TestTask.createMultiCalendar(2009));
+		assertEquals("wrong work units for activities", 29, strategy.getWorkUnits(dateRange));
 	}
 	
 

@@ -26,6 +26,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
@@ -152,10 +153,15 @@ public class TestTask extends ObjectTestCase
 		addAssignment(subTask, 0, 9998, 9999);
 		assertEquals("wrong sub task combined date range?", createDateRangeEffort(10, 2010).getDateRange(), taskWithSubtasks.getWhenRollup());
 	}
-
+	
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
 	{
-		Assignment assignment = getProject().createAssignment();
+		addAssignment(getProject(), task, units, startYear, endYear);
+	}
+
+	public static void addAssignment(ProjectForTesting project, Task task, double units, int startYear, int endYear) throws Exception
+	{
+		Assignment assignment = project.createAssignment();
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
 		dateRangeEffort.setUnitQuantity(units);
@@ -209,7 +215,7 @@ public class TestTask extends ObjectTestCase
 		assertEquals("wrong subtask work units for date range?", 113, task.getWorkUnits(dateRange2));
 	}
 	
-	private static MultiCalendar createMultiCalendar(int year)
+	public static MultiCalendar createMultiCalendar(int year)
 	{
 		return MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 	}
