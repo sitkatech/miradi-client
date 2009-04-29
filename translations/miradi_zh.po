@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 15:34-0500\n"
+"POT-Creation-Date: 2009-04-29 15:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6383,6 +6383,10 @@ msgid ""
 "Clone button"
 msgstr "请选择那个应当与本因素共享的选项，然后按克隆按钮 \t\t"
 
+#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:33
+msgid "Expand Selected Column"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:33
 msgid "Collapse Selected Column"
 msgstr ""
@@ -6437,10 +6441,6 @@ msgstr "计划视图配置标签属性 \t\t"
 #, fuzzy
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandColumnAction.java:33
-msgid "Expand Selected Column"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"

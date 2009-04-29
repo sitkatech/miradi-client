@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 15:34-0500\n"
+"POT-Creation-Date: 2009-04-29 15:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6590,6 +6590,10 @@ msgstr ""
 "Seleccione el elemento que se debe clonar con este factor y oprima el botón "
 "Clonar."
 
+#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:33
+msgid "Expand Selected Column"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:33
 msgid "Collapse Selected Column"
 msgstr ""
@@ -6644,10 +6648,6 @@ msgstr "Propiedades de la etiqueta de configuración de la vista Planificación"
 #, fuzzy
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandColumnAction.java:33
-msgid "Expand Selected Column"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
