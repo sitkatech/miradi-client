@@ -67,6 +67,11 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	{
 		return FactorRenderer.ANNOTATIONS_COLOR;
 	}
+	
+	public void updateColumnsToShow() throws Exception
+	{
+		fireTableStructureChanged();
+	}
 
 	public final static String[] columnTags = {Indicator.TAG_FUTURE_STATUS_DATE, Indicator.TAG_FUTURE_STATUS_SUMMARY};
 }

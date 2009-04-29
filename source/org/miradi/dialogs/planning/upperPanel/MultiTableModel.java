@@ -57,6 +57,14 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 		}
 	}
 	
+	public void updateColumnsToShow() throws Exception
+	{
+		for(ChoiceItemTableModel model : models)
+		{
+			model.updateColumnsToShow();
+		}
+	}
+	
 	public int getColumnCount()
 	{
 		int count = 0;

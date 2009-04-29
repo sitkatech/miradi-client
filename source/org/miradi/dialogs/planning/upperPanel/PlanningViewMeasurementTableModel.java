@@ -146,6 +146,11 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	{
 		return AppPreferences.MEASUREMENT_COLOR_BACKGROUND;
 	}
+	
+	public void updateColumnsToShow() throws Exception
+	{
+		fireTableStructureChanged();
+	}
 
 	public final static String[] columnTags = {
 		Measurement.TAG_DATE, 

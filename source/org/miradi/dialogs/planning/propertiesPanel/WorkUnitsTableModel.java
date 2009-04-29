@@ -265,6 +265,11 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		return new TaglessChoiceItem(getValueAt(row, column));
 	}
 	
+	public void updateColumnsToShow() throws Exception
+	{
+		restoreDateUnits();
+	}
+	
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_TABLE_MODEL_IDENTIFIER;

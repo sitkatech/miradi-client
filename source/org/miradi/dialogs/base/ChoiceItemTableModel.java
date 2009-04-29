@@ -25,5 +25,6 @@ import org.miradi.questions.ChoiceItem;
 
 public interface ChoiceItemTableModel extends TableModel
 {
-	public ChoiceItem getChoiceItemAt(int row, int column);	
+	public ChoiceItem getChoiceItemAt(int row, int column);
+	public void updateColumnsToShow() throws Exception;
 }

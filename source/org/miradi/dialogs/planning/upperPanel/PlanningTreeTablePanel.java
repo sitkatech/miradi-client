@@ -276,7 +276,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		getPlanningModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
 
-		mainModel.updateColumnsToShow();
+		multiModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
