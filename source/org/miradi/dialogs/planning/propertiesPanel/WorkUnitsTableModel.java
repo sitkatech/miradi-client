@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateRangeEffortList;
@@ -34,15 +34,16 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
-public class WorkUnitsTableModel extends EditableObjectTableModel implements ColumnTagProvider
+public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
 {
 	public WorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, providerToUse);
 
 		provider = providerToUse;
 		restoreDateUnits();
@@ -65,6 +66,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return getProject().getProjectCalendar();
 	}
 
+	@Override
 	public String getColumnName(int col)
 	{
 		try
@@ -121,26 +123,24 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return dateRangeEffort;
 	}
 	
+	@Override
 	public String getColumnTag(int column)
 	{
 		return getColumnName(column);
 	}
 	
+	@Override
 	public boolean isCellEditable(int row, int column)
 	{
-		DateUnit dateUnit = getDateUnit(column);
-		if (getProject().getMetadata().isBudgetTimePeriodYearly())
-			return dateUnit.isYear();
+		if (getAssignment(row) == null)
+			return false;
 		
-		else if (getProject().getMetadata().isBudgetTimePeriodQuarterly())
-			return dateUnit.isQuarter();
-		
-		return false;
+		return true;
 	}
 
 	public Object getValueAt(int row, int column)
 	{
-		try
+		try	
 		{
 			BaseObject baseObject = getBaseObjectForRowColumn(row, column);
 			DateRange dateRange = getDateRange(column);
@@ -155,6 +155,7 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 		return "";
 	}
 
+	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
 		try
@@ -205,11 +206,13 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 	}
 
+	@Override
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getProvider().getBaseObjectForRowColumn(row, column);
 	}
 
+	@Override
 	public int getRowCount()
 	{
 		return getProvider().getRowCount();
@@ -239,6 +242,16 @@ public class WorkUnitsTableModel extends EditableObjectTableModel implements Col
 	{
 		DateUnit dateUnit = getDateUnit(column);
 		return getProjectCalendar().convertToDateRange(dateUnit);
+	}
+
+	public Color getCellBackgroundColor(int column)
+	{
+		return null;
+	}
+
+	public ChoiceItem getChoiceItemAt(int row, int column)
+	{
+		return null;
 	}
 	
 	public String getUniqueTableModelIdentifier()
