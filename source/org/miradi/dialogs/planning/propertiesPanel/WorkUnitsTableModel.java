@@ -25,6 +25,7 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
@@ -256,7 +257,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 
 	public Color getCellBackgroundColor(int column)
 	{
-		return null;
+		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
 	}
 
 	public ChoiceItem getChoiceItemAt(int row, int column)
