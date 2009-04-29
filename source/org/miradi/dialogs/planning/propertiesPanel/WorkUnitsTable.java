@@ -20,10 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.util.Vector;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
@@ -38,7 +36,6 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
@@ -59,7 +56,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	{
 		Vector<Action> rightClickActions = new Vector();
 		rightClickActions.add(new CollapseAction(this, getWorkUnitsTableModel()));
-		rightClickActions.add(new ExpandAction());
+		rightClickActions.add(new ExpandAction(this, getWorkUnitsTableModel()));
 		
 		rightClickActions.add(getActions().get(ActionAssignResource.class));
 		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
@@ -132,26 +129,6 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		int selectedTableColumn = getSelectedColumn();
 		
 		return convertColumnIndexToModel(selectedTableColumn);
-	}
-	
-	class ExpandAction extends AbstractAction
-	{
-		public ExpandAction()
-		{
-			super(EAM.text("Expand Selected Column"));
-		}
-		
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				respondToExpandOrCollapseColumnEvent();
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}	
 	}
 	
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
