@@ -39,7 +39,7 @@
 
 	<!-- third-party jars -->
 	<property name="browserlauncher.jar" value="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar"/>
-	<property name="miradi-jgraph.jar" value="${dist.temp.jars}/jgraph/miradi-jgraph.jar"/>
+	<property name="miradi-jgraph.jar" value="${dist.temp.jars}/jgraph/miradi-jgraph-5.12.2.2b.jar"/>
 	<property name="jcalendar.jar" value="${dist.temp.jars}/jcalendar-1.3.2/jcalendar-1.3.2.jar"/>
 	<property name="jing.jar" value="${dist.temp.jars}/jing/bin/jing.jar" />
 	<property name="martus-swing.jar" value="${dist.temp.jars}/martus-swing/bin/martus-swing.jar" />
@@ -260,11 +260,11 @@
 
 	<antcall target='download'>
 		<param name='directory' value='jgraph' />
-		<param name='filename' value='miradi-jgraph-5.12.2.2.zip' />
+		<param name='filename' value='miradi-jgraph-5.12.2.2b-src.zip' />
 	</antcall>
 	<antcall target='download'>
 		<param name='directory' value='jgraph' />
-		<param name='filename' value='miradi-jgraph.jar' />
+		<param name='filename' value='miradi-jgraph-5.12.2.2b.jar' />
 	</antcall>
 	<antcall target='download'>
 		<param name='directory' value='jgraph' />
@@ -406,7 +406,7 @@
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='${JarFolder}' includes="jcalendar*.jar" />
-    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="miradi-jgraph.jar" />
+    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='${JarFolder}' includes="miradi-jgraph-5.12.2.2b.jar" />
     	<zipfileset dir="${dist.temp.jars}/martus-utils/bin/" prefix='${JarFolder}' includes="martus-utils.jar" />
        	<zipfileset dir="${dist.temp.jars}/martus-swing/bin/" prefix='${JarFolder}' includes="martus-swing.jar" />
         <zipfileset dir="${dist.temp.jars}/jing/bin/" prefix='${JarFolder}' includes="jing.jar" />
@@ -418,7 +418,7 @@
 	<zip destfile="${dist.dir}/Miradi-Thirdparty-Source.zip">
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='source' includes="BrowserLauncher2-all-10rc4.jar" />
     	<zipfileset dir="${dist.temp.jars}/jcalendar-1.3.2/" prefix='source' includes="jcalendar-1.3.2-src.zip" />
-    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.*.zip" />
+    	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='source' includes="jing-src*.zip" />
    		<zipfileset dir="${dist.temp.jars}/PersianCalendar/source/" prefix='source' includes="PersianCalendar*.zip" />
 	</zip>
