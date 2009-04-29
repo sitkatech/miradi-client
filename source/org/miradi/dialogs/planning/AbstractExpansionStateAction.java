@@ -19,13 +19,35 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import java.awt.event.ActionEvent;
+
+import javax.swing.AbstractAction;
+
 import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
 import org.miradi.main.EAM;
 
-abstract public class AbstractExpandColumnAction extends AbstractExpansionStateAction
+abstract public class AbstractExpansionStateAction extends AbstractAction
 {
-	public AbstractExpandColumnAction(WorkUnitsTableModel workUnitsTableModelToUse)
+	public AbstractExpansionStateAction(WorkUnitsTableModel workUnitsTableModelToUse, String actionLabel)
 	{
-		super(workUnitsTableModelToUse, EAM.text("Expand Selected Column"));		
+		super(actionLabel);
+		
+		workUnitsTableModel = workUnitsTableModelToUse;
 	}
+	
+	public void actionPerformed(ActionEvent event)
+	{
+		try
+		{
+			workUnitsTableModel.respondToExpandOrCollapseColumnEvent(getSelectedColumn());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
+
+	abstract protected int getSelectedColumn();
+
+	private WorkUnitsTableModel workUnitsTableModel;
 }
