@@ -372,6 +372,40 @@ public class Task extends Factor
 	}
 	
 	@Override
+	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
+	{
+		if (hasSubTasks())
+			return getWorkUnitsForSubTasks(getSubtaskRefs(), dateRangeToUse);
+		
+		return getWorkUnitsForAssignments(dateRangeToUse);
+	}
+
+	private int getWorkUnitsForAssignments(DateRange dateRangeToUse) throws Exception
+	{
+		int totalWorkUnits = 0;
+		ORefList assignmentRefs = getAssignmentRefs();
+		for (int index = 0; index < assignmentRefs.size(); index++)
+		{
+			Assignment assignment = Assignment.find(getProject(), assignmentRefs.get(index));
+			totalWorkUnits += assignment.getWorkUnits(dateRangeToUse);
+		}
+		
+		return totalWorkUnits;
+	}
+		
+	private int getWorkUnitsForSubTasks(ORefList subTaskRefs, DateRange dateRangeToUse) throws Exception
+	{
+		int totalWorkUnits = 0;
+		for (int index = 0; index < subTaskRefs.size(); ++index)
+		{
+			Task task = Task.find(getProject(), subTaskRefs.get(index));
+			totalWorkUnits += task.getWorkUnits(dateRangeToUse);
+		}
+		
+		return totalWorkUnits;
+	}
+
+	@Override
 	public int getTotalShareCount()
 	{
 		int type = getTypeOfParent();
