@@ -21,7 +21,6 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
-import java.util.Vector;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -34,7 +33,6 @@ import javax.swing.table.TableColumn;
 
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -43,12 +41,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.EAMenuItem;
 import org.miradi.main.MainWindow;
-import org.miradi.objectdata.DateUnitListData;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objects.TableSettings;
-import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.AbstractTableRightClickHandler;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
 public class WorkUnitsTable extends AssignmentsComponentTable
@@ -101,110 +94,28 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return JLabel.RIGHT;
 	}
 	
-	private DateUnit getSelectedColumnDateUnit()
-	{
-		int selectedTableColumn = getSelectedColumn();
-		int modelColumnIndex = convertColumnIndexToModel(selectedTableColumn);
-		if (isEmptySelection(modelColumnIndex))
-			return null;	
-		
-		return getWorkUnitsTableModel().getDateUnit(modelColumnIndex);
-	}
-	
 	private boolean isDayColumnSelected()
 	{
-		DateUnit dateUnit = getSelectedColumnDateUnit();
-		if (dateUnit == null)
-			return false;
-		
-		return dateUnit.isDay();
+		return getWorkUnitsTableModel().isDayColumn(getSelectedModelColumn());
 	}
-	
+
 	private boolean isSelectedDateUnitColumnExpanded()
 	{
-		DateUnit dateUnit = getSelectedColumnDateUnit();
-		if (dateUnit == null)
-			return false;	
-		
-		try
-		{
-			Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
-			if (hasSubDateUnits(dateUnit))
-				return currentDateUnits.containsAll(getSubDateUnits(dateUnit));
-			
-			return currentDateUnits.contains(dateUnit);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return false;
-			
-		}
+		return getWorkUnitsTableModel().isDateUnitColumnExpanded(getSelectedModelColumn());
 	}
 
 	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
-		int selectedColumnIndex = getSelectedColumn();
-		if (isEmptySelection(selectedColumnIndex))
-			return;
-	
-		Vector<DateUnit> currentDateUnits = getWorkUnitsTableModel().getCopyOfDateUnits();
-		DateUnit dateUnit = getWorkUnitsTableModel().getDateUnit(selectedColumnIndex);
-		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);					
-		if (currentDateUnits.containsAll(subDateUnits))
-		{
-			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, dateUnit);
-		}
-		else
-		{
-			int indexToInsertSubDateUnits = currentDateUnits.indexOf(dateUnit);
-			currentDateUnits.addAll(indexToInsertSubDateUnits, subDateUnits);
-		}
-		
-		saveColumnDateUnits(currentDateUnits);
-	}
-
-	private ProjectCalendar getProjectCalendar()
-	{
-		return getProject().getProjectCalendar();
-	}
-
-	private void recursivleyCollapseDateUnitAndItsSubDateUnits(Vector<DateUnit> currentDateUnits, DateUnit dateUnit) throws Exception
-	{
-		if (!hasSubDateUnits(dateUnit))
-			return;
-		
-		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);
-		currentDateUnits.removeAll(subDateUnits);
-		for(DateUnit thisDateUnit : subDateUnits)
-		{
-			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, thisDateUnit);
-		}
-	}
-
-	private Vector<DateUnit> getSubDateUnits(DateUnit dateUnit)	throws Exception
-	{
-		return getProjectCalendar().getSubDateUnits(dateUnit);
+		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(getSelectedModelColumn());
 	}
 	
-	private boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
+	private int getSelectedModelColumn()
 	{
-		return getProjectCalendar().hasSubDateUnits(dateUnit);
+		int selectedTableColumn = getSelectedColumn();
+		
+		return convertColumnIndexToModel(selectedTableColumn);
 	}
 	
-	private boolean isEmptySelection(int selectedColumnIndex)
-	{
-		return selectedColumnIndex < 0;
-	}
-		
-	private void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
-	{	
-		CodeList dateUnits = DateUnitListData.convertToCodeList(currentDateUnits);
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkUnitsTableModel().getUniqueTableModelIdentifier());
-		CommandSetObjectData setDateUnitsCommand = tableSettings.createCommandToUpdateDateUnitList(dateUnits);
-		getProject().executeCommand(setDateUnitsCommand);
-	}
-
 	class RightClickHandler extends AbstractTableRightClickHandler
 	{
 		public RightClickHandler(WorkUnitsTable tableToUse)

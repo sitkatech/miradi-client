@@ -27,6 +27,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
@@ -37,6 +38,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
@@ -254,7 +256,87 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		DateUnit dateUnit = getDateUnit(column);
 		return getProjectCalendar().convertToDateRange(dateUnit);
 	}
+	
+	public boolean isDateUnitColumnExpanded(int column)
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		if (dateUnit == null)
+			return false;	
+		
+		try
+		{
+			Vector<DateUnit> currentDateUnits = getCopyOfDateUnits();
+			if (hasSubDateUnits(dateUnit))
+				return currentDateUnits.containsAll(getSubDateUnits(dateUnit));
+			
+			return currentDateUnits.contains(dateUnit);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return false;
+			
+		}
+	}
+	
+	public boolean isDayColumn(int column)
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		if (dateUnit == null)
+			return false;
+		
+		return dateUnit.isDay();
+	}
+	
+	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception
+	{
+		Vector<DateUnit> currentDateUnits = getCopyOfDateUnits();
+		DateUnit dateUnit = getDateUnit(column);
+		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);					
+		if (currentDateUnits.containsAll(subDateUnits))
+		{
+			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, dateUnit);
+		}
+		else
+		{
+			int indexToInsertSubDateUnits = currentDateUnits.indexOf(dateUnit);
+			currentDateUnits.addAll(indexToInsertSubDateUnits, subDateUnits);
+		}
+		
+		saveColumnDateUnits(currentDateUnits);
+	}
+	
+	private void recursivleyCollapseDateUnitAndItsSubDateUnits(Vector<DateUnit> currentDateUnits, DateUnit dateUnit) throws Exception
+	{
+		if (!hasSubDateUnits(dateUnit))
+			return;
+		
+		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);
+		currentDateUnits.removeAll(subDateUnits);
+		for(DateUnit thisDateUnit : subDateUnits)
+		{
+			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, thisDateUnit);
+		}
+	}
+	
+	private void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
+	{	
+		CodeList thisDateUnits = DateUnitListData.convertToCodeList(currentDateUnits);
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableModelIdentifier());
+		CommandSetObjectData setDateUnitsCommand = tableSettings.createCommandToUpdateDateUnitList(thisDateUnits);
+		getProject().executeCommand(setDateUnitsCommand);
+	}
 
+	private Vector<DateUnit> getSubDateUnits(DateUnit dateUnit)	throws Exception
+	{
+		return getProjectCalendar().getSubDateUnits(dateUnit);
+	}
+	
+	private boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
+	{
+		return getProjectCalendar().hasSubDateUnits(dateUnit);
+	}
+	
 	public Color getCellBackgroundColor(int column)
 	{
 		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
