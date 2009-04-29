@@ -21,12 +21,14 @@ package org.miradi.objects;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.DateRange;
 
 
 public class TestIndicator extends ObjectTestCase
@@ -98,6 +100,22 @@ public class TestIndicator extends ObjectTestCase
 		ORef indicatorRef = project.createObject(Indicator.getObjectType());
 		Indicator indicator = (Indicator) project.findObject(indicatorRef);
 		assertEquals("is wrong annotation type?", Measurement.getObjectType(), indicator.getAnnotationType(Indicator.TAG_MEASUREMENT_REFS));
+	}
+	
+	public void testGetWorkUnits() throws Exception
+	{
+		Task task = getProject().createTask();
+		TestTask.addAssignment(getProject(), task, 14, 2006, 2009);
+		TestTask.addAssignment(getProject(), task, 15, 2006, 2009);
+		Indicator indicator = getProject().createIndicator();
+		IdList methodIds = new IdList(Task.getObjectType());
+		methodIds.addRef(task.getRef());
+		getProject().setObjectData(indicator.getRef(), Indicator.TAG_TASK_IDS, methodIds.toString());
+		
+		assertEquals("wrong method count?", 1, indicator.getMethodRefs().size());
+		
+		DateRange dateRange = new DateRange(TestTask.createMultiCalendar(2006), TestTask.createMultiCalendar(2009));
+		assertEquals("wrong work units for methods", 29, indicator.getWorkUnits(dateRange));
 	}
 
 	private ProjectForTesting project;
