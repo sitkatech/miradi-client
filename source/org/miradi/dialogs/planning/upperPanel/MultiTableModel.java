@@ -116,7 +116,7 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 		throw new RuntimeException("MultiTable.findTable: Table column out of bounds: " + originalColumn);
 	}
 	
-	int findColumnWithinSubTable(int column)
+	public int findColumnWithinSubTable(int column)
 	{
 		int originalColumn = column;
 		for(TableModel model : models)

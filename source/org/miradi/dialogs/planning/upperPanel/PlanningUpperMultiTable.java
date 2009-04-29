@@ -71,7 +71,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return factory;
 	}
 
-	private PlanningTreeMultiTableModel getCastedModel()
+	public PlanningTreeMultiTableModel getCastedModel()
 	{
 		return (PlanningTreeMultiTableModel)getModel();
 	}

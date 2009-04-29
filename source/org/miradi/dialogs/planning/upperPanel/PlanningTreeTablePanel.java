@@ -20,11 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
+import java.util.Vector;
 
+import javax.swing.Action;
 import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
@@ -87,6 +92,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
+		
+		Vector<Action> actions = new Vector();
+		actions.add(new MultiTableExpandColumnAction(mainTable, workUnitsTableModel));
+		actions.add(new MultiTableCollapseColumnAction(mainTable, workUnitsTableModel));
+		mainTable.addMouseListener(new PlanningRightClickHandler(getMainWindow(), mainTable, actions));
 		
 		mainTableScrollPane = integrateTable(treeTableScrollPane.getVerticalScrollBar(), scrollController, rowHeightController, selectionController, treeToUse, mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
