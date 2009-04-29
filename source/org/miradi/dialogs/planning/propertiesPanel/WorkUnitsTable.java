@@ -58,7 +58,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	private void addRightClickHandler()
 	{
 		Vector<Action> rightClickActions = new Vector();
-		rightClickActions.add(new CollapseAction());
+		rightClickActions.add(new CollapseAction(this, getWorkUnitsTableModel()));
 		rightClickActions.add(new ExpandAction());
 		
 		rightClickActions.add(getActions().get(ActionAssignResource.class));
@@ -154,26 +154,6 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		}	
 	}
 	
-	class CollapseAction extends AbstractAction
-	{
-		public CollapseAction()
-		{
-			super(EAM.text("Collapse Selected Column"));
-		}
-		
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				respondToExpandOrCollapseColumnEvent();
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}	
-	}
-		
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellRendererFactory renderer;
