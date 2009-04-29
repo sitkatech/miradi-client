@@ -44,7 +44,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.questions.PlanningColumnsQuestion;
+import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -310,7 +310,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		if (columnsToShow.contains(PlanningColumnsQuestion.ASSIGNMENT_META_COLUMN_CODE))
+		if (columnsToShow.contains(ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
 		mainTable.reloadColumnSequences();

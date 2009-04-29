@@ -44,6 +44,7 @@ import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
@@ -136,6 +137,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			columnsToShow.removeCode(Indicator.META_COLUMN_TAG);
+		
+		if (columnsToShow.contains(ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE))
+			columnsToShow.removeCode(ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE);
 	}
 
 	public int getColumnCount()
