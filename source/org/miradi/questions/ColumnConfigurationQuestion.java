@@ -53,6 +53,7 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
+				createChoiceItem(META_ASSIGNMENT_COLUMN_CODE),				
 				createChoiceItem(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL),
 				createChoiceItem(Factor.TAG_COMMENT),
 		};
@@ -62,4 +63,6 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}
+
+	public static final String META_ASSIGNMENT_COLUMN_CODE = "MetaWorkUnitColumnCode";
 }

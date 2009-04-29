@@ -25,7 +25,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
-import org.miradi.questions.PlanningColumnsQuestion;
+import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProvider implements RowColumnProvider
@@ -37,7 +37,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL,
-				PlanningColumnsQuestion.ASSIGNMENT_META_COLUMN_CODE,
+				ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE,
 				});
 	}
 
