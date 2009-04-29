@@ -173,11 +173,45 @@ public class TestTask extends ObjectTestCase
 
 	public static DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
 	{
-		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
-		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, 1, 1);
+		MultiCalendar startDate = createMultiCalendar(startYear);
+		MultiCalendar endDate = createMultiCalendar(endYear);
 		DateRange dateRange = new DateRange(startDate, endDate);
 		
 		return new DateRangeEffort("", 0, dateRange);
+	}
+
+	public void testGetWorkUnitsForTaskWithoutSubTasks() throws Exception
+	{
+		Task task = createTask();
+		addAssignment(task, 5, 2000, 2010);
+		addAssignment(task, 15, 2000, 2010);
+		DateRange dateRange = new DateRange(createMultiCalendar(2000), createMultiCalendar(2010));
+		assertEquals("wrong task work units for date range?", 20, task.getWorkUnits(dateRange));
+	}
+	
+	public void testGetWorkUnitsForTaskWithSubTasks() throws Exception
+	{
+		Task task = createTask();
+		addAssignment(task, 99, 2000, 2010);
+		
+		Task subTask = createTask();
+		IdList subTaskIds = new IdList(Task.getObjectType());
+		subTaskIds.add(subTask.getId());
+		task.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
+		addAssignment(subTask, 5, 2000, 2010);
+		addAssignment(subTask, 15, 2005, 2010);
+		
+		DateRange dateRange = new DateRange(createMultiCalendar(2000), createMultiCalendar(2011));
+		assertEquals("wrong subtask work units for date range?", 20, task.getWorkUnits(dateRange));
+		
+		addAssignment(subTask, 113, 2015, 2020);
+		DateRange dateRange2 = new DateRange(createMultiCalendar(2015), createMultiCalendar(2020));
+		assertEquals("wrong subtask work units for date range?", 113, task.getWorkUnits(dateRange2));
+	}
+	
+	private static MultiCalendar createMultiCalendar(int year)
+	{
+		return MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 	}
 }
 
