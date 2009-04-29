@@ -56,7 +56,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	{
 		Vector<Action> rightClickActions = new Vector();
 		rightClickActions.add(new CollapseColumnAction(this, getWorkUnitsTableModel()));
-		rightClickActions.add(new ExpandAction(this, getWorkUnitsTableModel()));
+		rightClickActions.add(new ExpandColumnAction(this, getWorkUnitsTableModel()));
 		
 		rightClickActions.add(getActions().get(ActionAssignResource.class));
 		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
