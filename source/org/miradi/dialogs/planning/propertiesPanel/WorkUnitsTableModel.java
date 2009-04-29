@@ -35,6 +35,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
@@ -260,7 +261,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return null;
+		return new TaglessChoiceItem(getValueAt(row, column));
 	}
 	
 	public String getUniqueTableModelIdentifier()
