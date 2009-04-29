@@ -52,12 +52,14 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return (WorkUnitsTableModel) getModel();
 	}
 	
+	@Override
 	public TableCellRenderer getCellRenderer(int row, int column)
 	{
 		renderer.setCellBackgroundColor(getColumnBackGroundColor(column));
 		return renderer;	
 	}
 	
+	@Override
 	public Color getColumnBackGroundColor(int column)
 	{
 		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
@@ -74,6 +76,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		}
 	}
 	
+	@Override
 	protected int getColumnWidth(int column)
 	{
 		return getColumnHeaderWidth(column);
