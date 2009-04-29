@@ -132,10 +132,19 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	@Override
 	public boolean isCellEditable(int row, int column)
 	{
-		if (getAssignment(row) == null)
-			return false;
+		if (getAssignment(row) != null)
+			isAssignmentCellEditable(column);
 		
-		return true;
+		return false;
+	}
+
+	private boolean isAssignmentCellEditable(int column)
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		if (getProject().getMetadata().isBudgetTimePeriodYearly())
+			return dateUnit.isYear();
+		
+		return dateUnit.isQuarter();
 	}
 
 	public Object getValueAt(int row, int column)
