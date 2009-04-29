@@ -17,26 +17,37 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.propertiesPanel;
+package org.miradi.dialogs.planning;
 
-import javax.swing.JTable;
+import java.awt.event.ActionEvent;
 
-import org.miradi.dialogs.planning.AbstractExpandColumnAction;
+import javax.swing.AbstractAction;
 
-public class ExpandColumnAction extends AbstractExpandColumnAction
+import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
+import org.miradi.main.EAM;
+
+abstract public class AbstractExpandColumnAction extends AbstractAction
 {
-	public ExpandColumnAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
+	public AbstractExpandColumnAction(WorkUnitsTableModel workUnitsTableModelToUse)
 	{
-		super(workUnitsTableModelToUse);
+		super(EAM.text("Expand Selected Column"));
 		
-		table = tableToUse;
+		workUnitsTableModel = workUnitsTableModelToUse;
 	}
 	
-	@Override
-	protected int getSelectedColumn()
+	public void actionPerformed(ActionEvent event)
 	{
-		return table.getSelectedColumn();
+		try
+		{
+			workUnitsTableModel.respondToExpandOrCollapseColumnEvent(getSelectedColumn());
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
 	}
-	
-	private JTable table;
+
+	abstract protected int getSelectedColumn();
+
+	private WorkUnitsTableModel workUnitsTableModel;
 }
