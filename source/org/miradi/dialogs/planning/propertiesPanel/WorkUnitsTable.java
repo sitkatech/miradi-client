@@ -64,7 +64,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		rightClickActions.add(getActions().get(ActionAssignResource.class));
 		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
 				
-		addMouseListener(new PlanningRightClickHandler(this, rightClickActions));
+		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, rightClickActions));
 	}
 	
 	private Actions getActions()
