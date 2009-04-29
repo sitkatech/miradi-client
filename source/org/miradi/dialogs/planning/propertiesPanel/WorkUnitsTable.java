@@ -51,7 +51,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		setBackground(getColumnBackGroundColor(0));	
 		setAllColumnsToUseSingleClickEditors();
-		addMouseListener(new RightClickHandler(this));
+		addMouseListener(new PlanningRightClickHandler(this));
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		renderer = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
@@ -116,9 +116,9 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return convertColumnIndexToModel(selectedTableColumn);
 	}
 	
-	class RightClickHandler extends AbstractTableRightClickHandler
+	class PlanningRightClickHandler extends AbstractTableRightClickHandler
 	{
-		public RightClickHandler(WorkUnitsTable tableToUse)
+		public PlanningRightClickHandler(WorkUnitsTable tableToUse)
 		{
 			super(tableToUse.getMainWindow(), tableToUse);
 			expandAction = new ExpandHandler();
