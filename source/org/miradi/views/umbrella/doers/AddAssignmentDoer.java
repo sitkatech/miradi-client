@@ -56,7 +56,7 @@ public class AddAssignmentDoer extends ObjectsDoer
 			ORefList selectedRefs = getSelectionHierarchy();
 			ORefList selectedTaskRefs = selectedRefs.filterByType(Task.getObjectType());
 			Task selectedTask = Task.find(getProject(), selectedTaskRefs.get(0));
-			if (selectedTask.getSubtaskCount() > 0)
+			if (selectedTask.hasSubTasks())
 			{
 				EAM.errorDialog(EAM.text("Resources cannot be added to this task because it already has subtasks."));
 				return;
