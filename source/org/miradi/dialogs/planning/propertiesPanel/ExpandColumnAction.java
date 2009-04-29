@@ -35,7 +35,8 @@ public class ExpandColumnAction extends AbstractExpandColumnAction
 	@Override
 	protected int getSelectedColumn()
 	{
-		return table.getSelectedColumn();
+		int tableColumn = table.getSelectedColumn();
+		return table.convertColumnIndexToModel(tableColumn);
 	}
 	
 	private JTable table;

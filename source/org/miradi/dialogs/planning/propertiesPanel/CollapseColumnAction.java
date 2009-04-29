@@ -34,7 +34,8 @@ public class CollapseColumnAction extends AbstractCollapseColumnAction
 	
 	protected int getSelectedColumn()
 	{
-		return table.getSelectedColumn();
+		int tableColumn = table.getSelectedColumn();
+		return table.convertColumnIndexToModel(tableColumn);
 	}
 	
 	private JTable table;
