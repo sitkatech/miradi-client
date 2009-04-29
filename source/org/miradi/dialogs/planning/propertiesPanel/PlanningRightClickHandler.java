@@ -23,15 +23,17 @@ import java.util.Vector;
 
 import javax.swing.Action;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
 
 import org.miradi.main.EAMenuItem;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableRightClickHandler;
 
-class PlanningRightClickHandler extends AbstractTableRightClickHandler
+public class PlanningRightClickHandler extends AbstractTableRightClickHandler
 {
-	public PlanningRightClickHandler(WorkUnitsTable workUnitsTableToUse, Vector<Action> rightClickActionsToUse)
+	public PlanningRightClickHandler(MainWindow mainWindow, JTable tableToUse, Vector<Action> rightClickActionsToUse)
 	{
-		super(workUnitsTableToUse.getMainWindow(), workUnitsTableToUse);
+		super(mainWindow, tableToUse);
 		
 		rightClickActions = rightClickActionsToUse;
 	}
