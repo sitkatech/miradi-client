@@ -133,7 +133,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	public boolean isCellEditable(int row, int column)
 	{
 		if (getAssignment(row) != null)
-			isAssignmentCellEditable(column);
+			return isAssignmentCellEditable(column);
 		
 		return false;
 	}
