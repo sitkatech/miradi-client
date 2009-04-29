@@ -26,7 +26,7 @@ import javax.swing.JTable;
 
 import org.miradi.main.EAM;
 
-class CollapseAction extends AbstractAction
+public class CollapseAction extends AbstractAction
 {
 	public CollapseAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
 	{
