@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 09:40-0500\n"
+"POT-Creation-Date: 2009-04-29 10:19-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -7281,6 +7281,9 @@ msgid "FieldLabel|12.WhenOverride|When"
 msgstr ""
 
 msgid "FieldLabel|12.WhoOverrideRefs|Who"
+msgstr ""
+
+msgid "FieldLabel|12.AssignmentMetaColumnCode|Assignment"
 msgstr ""
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
