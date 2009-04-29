@@ -26,9 +26,9 @@ import javax.swing.JTable;
 
 import org.miradi.main.EAM;
 
-public class ExpandAction extends AbstractAction
+public class ExpandColumnAction extends AbstractAction
 {
-	public ExpandAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
+	public ExpandColumnAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(EAM.text("Expand Selected Column"));
 		
