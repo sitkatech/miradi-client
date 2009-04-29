@@ -149,6 +149,11 @@ public class PlanningViewBudgetAnnualTotalTableModel extends PlanningViewAbstrac
 		
 		return AppPreferences.BUDGET_TABLE_BACKGROUND;
 	}
+	
+	public void updateColumnsToShow() throws Exception
+	{
+		fireTableStructureChanged();
+	}
 
 	private DateRange combinedDataRange;
 	private Vector yearlyDateRanges;
