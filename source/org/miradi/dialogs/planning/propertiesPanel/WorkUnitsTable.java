@@ -55,7 +55,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	private void addRightClickHandler()
 	{
 		Vector<Action> rightClickActions = new Vector();
-		rightClickActions.add(new CollapseAction(this, getWorkUnitsTableModel()));
+		rightClickActions.add(new CollapseColumnAction(this, getWorkUnitsTableModel()));
 		rightClickActions.add(new ExpandAction(this, getWorkUnitsTableModel()));
 		
 		rightClickActions.add(getActions().get(ActionAssignResource.class));

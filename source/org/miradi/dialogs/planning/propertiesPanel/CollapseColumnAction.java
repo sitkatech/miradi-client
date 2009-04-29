@@ -26,9 +26,9 @@ import javax.swing.JTable;
 
 import org.miradi.main.EAM;
 
-public class CollapseAction extends AbstractAction
+public class CollapseColumnAction extends AbstractAction
 {
-	public CollapseAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
+	public CollapseColumnAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(EAM.text("Collapse Selected Column"));
 		
