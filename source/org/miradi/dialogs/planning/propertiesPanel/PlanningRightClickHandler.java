@@ -19,95 +19,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.event.ActionEvent;
+import java.util.Vector;
 
-import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 
-import org.miradi.actions.ActionAssignResource;
-import org.miradi.actions.ActionRemoveAssignment;
-import org.miradi.main.EAM;
 import org.miradi.main.EAMenuItem;
 import org.miradi.utils.AbstractTableRightClickHandler;
 
 class PlanningRightClickHandler extends AbstractTableRightClickHandler
 {
-	public PlanningRightClickHandler(WorkUnitsTable workUnitsTableToUse)
+	public PlanningRightClickHandler(WorkUnitsTable workUnitsTableToUse, Vector<Action> rightClickActionsToUse)
 	{
 		super(workUnitsTableToUse.getMainWindow(), workUnitsTableToUse);
 		
-		workUnitsTable = workUnitsTableToUse;
-		expandAction = new ExpandAction();
-		collapseAction = new CollapseAction();
+		rightClickActions = rightClickActionsToUse;
 	}
 	
 	@Override
 	protected void populateMenu(JPopupMenu popupMenu)
 	{
-		if (!workUnitsTable.isDayColumnSelected())
-			addColpseExpandColumnMenuItems(popupMenu);
-		
-		popupMenu.addSeparator();
-		popupMenu.add(new EAMenuItem(getActions().get(ActionAssignResource.class)));
-		popupMenu.add(new EAMenuItem(getActions().get(ActionRemoveAssignment.class)));
-	}
-
-	private void addColpseExpandColumnMenuItems(JPopupMenu popupMenu)
-	{
-		if (workUnitsTable.isSelectedDateUnitColumnExpanded())
-			popupMenu.add(new JMenuItem(collapseAction));
-		else
-			popupMenu.add(new JMenuItem(expandAction));
-	}
-	
-	private WorkUnitsTable getWorkUnitsTable()
-	{
-		return workUnitsTable;
-	}
-	
-	class ExpandAction extends AbstractAction
-	{
-		public ExpandAction()
+		for(Action action : rightClickActions)
 		{
-			super(EAM.text("Expand Selected Column"));
+			popupMenu.add(new EAMenuItem(action));
 		}
-		
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				getWorkUnitsTable().respondToExpandOrCollapseColumnEvent();
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}	
 	}
 	
-	class CollapseAction extends AbstractAction
-	{
-		public CollapseAction()
-		{
-			super(EAM.text("Collapse Selected Column"));
-		}
-		
-		public void actionPerformed(ActionEvent event)
-		{
-			try
-			{
-				getWorkUnitsTable().respondToExpandOrCollapseColumnEvent();
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-			}
-		}	
-	}
-	
-	private Action expandAction;
-	private Action collapseAction;
-	private WorkUnitsTable workUnitsTable;
+	private Vector<Action> rightClickActions;
 }
