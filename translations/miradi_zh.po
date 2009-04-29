@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 11:34-0500\n"
+"POT-Creation-Date: 2009-04-29 12:42-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6392,14 +6392,6 @@ msgstr "出现意外错误 \t\t"
 msgid "Title|Intermediate Result Properties"
 msgstr "标题|中途结果属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:243
-msgid "Expand Selected Column"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTable.java:263
-msgid "Collapse Selected Column"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:39
 msgid "Title|Threat Reduction Result Properties"
 msgstr "标题|威胁因子减少结果属性"
@@ -6446,15 +6438,23 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:78
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:80
 msgid "Total"
 msgstr "总计 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:96
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:98
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "（错误） \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningRightClickHandler.java:74
+msgid "Expand Selected Column"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningRightClickHandler.java:94
+msgid "Collapse Selected Column"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
