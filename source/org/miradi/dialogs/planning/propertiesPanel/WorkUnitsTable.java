@@ -197,7 +197,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return selectedColumnIndex < 0;
 	}
 		
-	public void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
+	private void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
 	{	
 		CodeList dateUnits = DateUnitListData.convertToCodeList(currentDateUnits);
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkUnitsTableModel().getUniqueTableModelIdentifier());
