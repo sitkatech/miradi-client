@@ -26,6 +26,7 @@ import javax.swing.JScrollPane;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
+import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
@@ -43,6 +44,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.questions.PlanningColumnsQuestion;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -78,12 +80,10 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse, rowColumnProvider);
 		multiModel = new PlanningTreeMultiTableModel();
-
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
-		
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
-		
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
+		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse);
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
@@ -283,6 +283,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		annualTotalsModel.fireTableDataChanged();
 		measurementModel.fireTableDataChanged();
 		futureStatusModel.fireTableDataChanged();
+		workUnitsTableModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -308,6 +309,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
+		
+		if (columnsToShow.contains(PlanningColumnsQuestion.ASSIGNMENT_META_COLUMN_CODE))
+			multiModel.addModel(workUnitsTableModel);
 		
 		mainTable.reloadColumnSequences();
 		mainTable.reloadColumnWidths();
@@ -343,6 +347,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
+	private WorkUnitsTableModel workUnitsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	
