@@ -26,7 +26,7 @@ import javax.swing.JTable;
 
 import org.miradi.main.EAM;
 
-class ExpandAction extends AbstractAction
+public class ExpandAction extends AbstractAction
 {
 	public ExpandAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
 	{
