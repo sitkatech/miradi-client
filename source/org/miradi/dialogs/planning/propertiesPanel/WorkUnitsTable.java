@@ -20,17 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.util.Vector;
 
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JLabel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.miradi.actions.ActionAssignResource;
+import org.miradi.actions.ActionRemoveAssignment;
+import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
@@ -41,10 +49,27 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		setBackground(getColumnBackGroundColor(0));	
 		setAllColumnsToUseSingleClickEditors();
-		addMouseListener(new PlanningRightClickHandler(this));
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		renderer = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
+		addRightClickHandler();
+	}
+
+	private void addRightClickHandler()
+	{
+		Vector<Action> rightClickActions = new Vector();
+		rightClickActions.add(new CollapseAction());
+		rightClickActions.add(new ExpandAction());
+		
+		rightClickActions.add(getActions().get(ActionAssignResource.class));
+		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
+				
+		addMouseListener(new PlanningRightClickHandler(this, rightClickActions));
+	}
+	
+	private Actions getActions()
+	{
+		return getMainWindow().getActions();
 	}
 	
 	private WorkUnitsTableModel getWorkUnitsTableModel()
@@ -88,7 +113,7 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	}
 	
 	public boolean isDayColumnSelected()
-	{
+	{ 
 		return getWorkUnitsTableModel().isDayColumn(getSelectedModelColumn());
 	}
 
@@ -109,6 +134,46 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 		return convertColumnIndexToModel(selectedTableColumn);
 	}
 	
+	class ExpandAction extends AbstractAction
+	{
+		public ExpandAction()
+		{
+			super(EAM.text("Expand Selected Column"));
+		}
+		
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				respondToExpandOrCollapseColumnEvent();
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}	
+	}
+	
+	class CollapseAction extends AbstractAction
+	{
+		public CollapseAction()
+		{
+			super(EAM.text("Collapse Selected Column"));
+		}
+		
+		public void actionPerformed(ActionEvent event)
+		{
+			try
+			{
+				respondToExpandOrCollapseColumnEvent();
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}	
+	}
+		
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellRendererFactory renderer;
