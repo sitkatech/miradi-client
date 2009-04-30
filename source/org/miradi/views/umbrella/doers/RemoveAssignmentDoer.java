@@ -29,8 +29,8 @@ import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Assignment;
@@ -74,7 +74,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		Vector commands = new Vector();
 
 		commands.addAll(Arrays.asList(assignmentToRemove.createCommandsToClear()));
-		commands.add(getCommandsToRemoveAssignmenRefFromTask(project, assignmentToRemove));
+		commands.addAll(getCommandsToRemoveAssignmenRefFromBaseObject(project, assignmentToRemove));
 		
 		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, assignmentToRemove.getId());
 		commands.add(deleteCommand);
@@ -82,16 +82,20 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		project.executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
 	}
 
-	private static Command getCommandsToRemoveAssignmenRefFromTask(Project project, Assignment assignmentToRemove) throws ParseException
+	private static Vector<Command> getCommandsToRemoveAssignmenRefFromBaseObject(Project project, Assignment assignmentToRemove) throws ParseException
 	{
+		Vector<Command> commandsToRemoveFromReferrers = new Vector<Command>();
 		ORefList referrerRefs = assignmentToRemove.findObjectsThatReferToUs();
-		if (referrerRefs.size() != 1)
-			throw new RuntimeException(EAM.text("Assignment has invalid owner count:") + assignmentToRemove.getRef());
+		for (int index = 0; index < referrerRefs.size(); ++index)
+		{
+			BaseObject baseObject = project.findObject(referrerRefs.get(index));
+			IdList assignmentIds = new IdList(Assignment.getObjectType(), baseObject.getData(BaseObject.TAG_ASSIGNMENT_IDS));
+			if (assignmentIds.contains(assignmentToRemove.getId()))
+			{
+				commandsToRemoveFromReferrers.add(CommandSetObjectData.createRemoveIdCommand(baseObject, BaseObject.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId()));
+			}
+		}
 
-		final int FIRST_REF_INDEX = 0;
-		ORef ownerRef = referrerRefs.get(FIRST_REF_INDEX);
-		BaseObject baseObject = project.findObject(ownerRef);	
-		
-		return CommandSetObjectData.createRemoveIdCommand(baseObject, BaseObject.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
+		return commandsToRemoveFromReferrers; 
 	}
 }
