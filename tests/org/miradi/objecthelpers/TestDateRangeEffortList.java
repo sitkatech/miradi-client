@@ -58,4 +58,17 @@ public class TestDateRangeEffortList extends EAMTestCase
 		
 		return new DateRangeEffort("", 1, dateRange);
 	}
+	
+	public void testRemoveDateRangeEffort() throws Exception
+	{
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 1, 1);
+		DateRange dateRange = new DateRange(startDate, endDate);
+		DateRangeEffort dateRangeEffort = new DateRangeEffort("", 1, dateRange);
+		
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		dateRangeEffortList.add(dateRangeEffort);
+		dateRangeEffortList.remove(dateRange);
+		assertEquals(0, dateRangeEffortList.size());
+	}
 }
