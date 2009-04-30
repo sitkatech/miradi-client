@@ -716,6 +716,7 @@ abstract public class BaseObject
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
+		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, Assignment.getObjectType());
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
@@ -734,6 +735,7 @@ abstract public class BaseObject
 		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
+		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
 		
 		addField(PSEUDO_TAG_BUDGET_TOTAL, budgetTotal);
 		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);

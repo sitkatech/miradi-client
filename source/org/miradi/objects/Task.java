@@ -526,7 +526,6 @@ public class Task extends Factor
 	{
 		super.clear();
 		subtaskIds = new IdListData(TAG_SUBTASK_IDS, Task.getObjectType());
-		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, Assignment.getObjectType());
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		details = new StringData(TAG_DETAILS);
 		
@@ -535,7 +534,6 @@ public class Task extends Factor
 		taskTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
-		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
 		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 		addField(TAG_DETAILS, details);
 		
