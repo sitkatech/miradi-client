@@ -213,7 +213,7 @@ public class DateUnit
 
 	private DateUnit getMonthSuper()
 	{
-		int quarter = getMonth() / 3;
+		int quarter = (getMonth() - 1) / 3;
 		String quarterString = "Q" + (quarter + 1);
 		return new DateUnit(getDateUnitCode().substring(0, 4) + quarterString);
 	}
