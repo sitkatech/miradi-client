@@ -23,11 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.utils.DateRange;
 
 public class TestStrategy extends ObjectTestCase
 {
@@ -130,21 +126,9 @@ public class TestStrategy extends ObjectTestCase
 	
 	public void testGetWorkUnits() throws Exception
 	{
-		Task task = getProject().createTask();
-		getProject().addAssignment(task, 14, 2006, 2009);
-		getProject().addAssignment(task, 15, 2006, 2009);
-		Strategy strategy = getProject().createStrategy();
-		IdList activityIds = new IdList(Task.getObjectType());
-		activityIds.addRef(task.getRef());
-		getProject().setObjectData(strategy.getRef(), Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
-		
-		assertEquals("wrong activity count?", 1, strategy.getActivityRefs().size());
-		
-		DateRange dateRange = new DateRange(getProject().createMultiCalendar(2006), getProject().createMultiCalendar(2009));
-		assertEquals("wrong work units for activities", 29, strategy.getWorkUnits(dateRange));
+		TestIndicator.testGetWorkUnits(getProject(), Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
 	}
 	
-
 	static final BaseId criterionId1 = new BaseId(17);
 	static final BaseId criterionId2 = new BaseId(952);
 	static final BaseId criterionId3 = new BaseId(2833);
