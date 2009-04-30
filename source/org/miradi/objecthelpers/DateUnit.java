@@ -194,7 +194,7 @@ public class DateUnit
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 
-	public Object getSuperDateUnit()
+	public DateUnit getSuperDateUnit()
 	{
 		if(isDay())
 			return new DateUnit(getDateUnitCode().substring(0, 7));
