@@ -79,10 +79,7 @@ public class Task extends Factor
 		if (tag.equals(TAG_SUBTASK_IDS))
 			return Task.getObjectType();
 		
-		if (tag.equals(TAG_ASSIGNMENT_IDS))
-			return Assignment.getObjectType();
-
-		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			if (tag.equals(TAG_PROGRESS_REPORT_REFS))
 			return ProgressReport.getObjectType();
 		
 		return super.getAnnotationType(tag);
@@ -92,9 +89,6 @@ public class Task extends Factor
 	public boolean isIdListTag(String tag)
 	{
 		if (tag.equals(TAG_SUBTASK_IDS))
-			return true;
-		
-		if (tag.equals(TAG_ASSIGNMENT_IDS))
 			return true;
 		
 		return false;
@@ -160,9 +154,6 @@ public class Task extends Factor
 		{
 			case ObjectType.TASK: 
 				list.addAll(new ORefList(objectType, getSubtaskIdList()));
-				break;
-			case ObjectType.ASSIGNMENT: 
-				list.addAll(new ORefList(objectType, getAssignmentIdList()));
 				break;
 		}
 		return list;
@@ -259,16 +250,6 @@ public class Task extends Factor
 		return subtaskIds.getIdList().createClone();
 	}
 	
-	public IdList getAssignmentIdList()
-	{
-		return assignmentIds.getIdList().createClone();
-	}
-	
-	public ORefList getAssignmentRefs()
-	{
-		return new ORefList(Assignment.getObjectType(), getAssignmentIdList());
-	}
-
 	@Override
 	public String toString()
 	{
