@@ -66,7 +66,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
 		objectivePropertiesPanel = new ObjectivePropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
-		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow());
+		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow(), objectPicker);
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow());
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());

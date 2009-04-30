@@ -32,10 +32,11 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.views.umbrella.ObjectPicker;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public IndicatorPropertiesPanel(MainWindow mainWindow) throws Exception
+	public IndicatorPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
 	{
 		super(mainWindow.getProject(), Indicator.getObjectType());			
 		setLayout(new OneColumnGridLayout());
