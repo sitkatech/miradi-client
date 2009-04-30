@@ -375,31 +375,18 @@ public class Task extends Factor
 	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		if (hasSubTasks())
-			return getWorkUnitsForSubTasks(getSubtaskRefs(), dateRangeToUse);
+			return getWorkUnits(getSubtaskRefs(), dateRangeToUse);
 		
-		return getWorkUnitsForAssignments(dateRangeToUse);
+		return getWorkUnits(getAssignmentRefs(), dateRangeToUse);
 	}
 
-	private int getWorkUnitsForAssignments(DateRange dateRangeToUse) throws Exception
+	private int getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
 	{
 		int totalWorkUnits = 0;
-		ORefList assignmentRefs = getAssignmentRefs();
-		for (int index = 0; index < assignmentRefs.size(); index++)
+		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
-			Assignment assignment = Assignment.find(getProject(), assignmentRefs.get(index));
-			totalWorkUnits += assignment.getWorkUnits(dateRangeToUse);
-		}
-		
-		return totalWorkUnits;
-	}
-		
-	private int getWorkUnitsForSubTasks(ORefList subTaskRefs, DateRange dateRangeToUse) throws Exception
-	{
-		int totalWorkUnits = 0;
-		for (int index = 0; index < subTaskRefs.size(); ++index)
-		{
-			Task task = Task.find(getProject(), subTaskRefs.get(index));
-			totalWorkUnits += task.getWorkUnits(dateRangeToUse);
+			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
+			totalWorkUnits += baseObject.getWorkUnits(dateRangeToUse);
 		}
 		
 		return totalWorkUnits;
