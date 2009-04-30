@@ -38,8 +38,8 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
-import org.miradi.objects.Task;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -92,13 +92,13 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		
 		if (hierarchyToSelectedRef.length == 0)
 		{
-			setTaskId(ORef.createInvalidWithType(Task.getObjectType()));
+			setRef(ORef.INVALID);
 		}
 		else
 		{
 			ORefList selectionHierarchyRefs = new ORefList(hierarchyToSelectedRef[0]);
-			ORef taskRef = selectionHierarchyRefs.getRefForType(Task.getObjectType());
-			setTaskId(taskRef);
+			ORef baseObjectRef = selectionHierarchyRefs.get(0);
+			setRef(baseObjectRef);
 		}
 
 		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
@@ -238,16 +238,18 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		workplanTable.repaint();
 	}
 	
-	private void setTaskId(ORef taskRef)
+	private void setRef(ORef ref)
 	{ 
-		Task task = Task.find(getProject(), taskRef);
+		BaseObject baseObject = null;
+		if (!ref.isInvalid())
+			baseObject = BaseObject.find(getProject(), ref);
 		
 		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
 		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container
 		//that way we just loop through the tbales.  
 		workplanTable.stopCellEditing();
 		
-		resourceTableModel.setTask(task);
+		resourceTableModel.setBaseObject(baseObject);
 	}
 	
 	public ORefList[] getSelectedHierarchies()
