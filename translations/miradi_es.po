@@ -591,7 +591,7 @@ msgstr "¿Está seguro de que desea eliminar este informe de progreso?"
 #: miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:36
 #: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
 msgid "Tag"
-msgstr "Lengüeta"
+msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/doers/InsertGroupBoxDoer.java:102
 msgid "Label|New Group Box"
