@@ -97,6 +97,17 @@ public class OperationalPlanView extends TabbedView
 		accountingCodePoolManagementPanel.becomeActive();
 		fundingSourcePoolManagementPanel.becomeActive();
 	}
+	
+	@Override
+	public void becomeInactive() throws Exception
+	{
+		workPlanManagementPanel.becomeInactive();
+		resourceManagementPanel.becomeInactive();
+		accountingCodePoolManagementPanel.becomeInactive();
+		fundingSourcePoolManagementPanel.becomeInactive();
+		
+		super.becomeInactive();
+	}
 
 	@Override
 	public void deleteTabs() throws Exception
