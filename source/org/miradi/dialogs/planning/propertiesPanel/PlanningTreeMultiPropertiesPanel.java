@@ -106,9 +106,14 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
+		
+		if (currentCard != null)
+			currentCard.becomeInactive();
+		
 		currentCard = findPanel(orefsToUse);
 		cardLayout.show(this, currentCard.getPanelDescription());
-	
+		currentCard.becomeActive();
+		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
 		// NOTE: The following are an attempt to fix a reported problem 
