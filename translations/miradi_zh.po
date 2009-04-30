@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 16:01-0500\n"
+"POT-Creation-Date: 2009-04-30 12:58-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6538,10 +6538,6 @@ msgstr "简单生存力 \t\t"
 msgid "Title|Activity Properties"
 msgstr "Title|Activity Properties"
 
-#: miradi/source/org/miradi/dialogs/task/TaskPropertiesPanel.java:49
-msgid "Assignments"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:41
 #, fuzzy
 msgid "Title|Method Properties"
@@ -6967,6 +6963,10 @@ msgstr "分级 "
 #: miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:62
 msgid "Title|Stress Details"
 msgstr "压力详情"
+
+#: miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:71
+msgid "Assignments"
+msgstr ""
 
 msgid "FieldLabel|3.Task|Task"
 msgstr "任务"
