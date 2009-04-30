@@ -140,7 +140,7 @@ public class DateUnit
 		return new DateRange(startDate, endDate);
 	}
 
-	private int getYear()
+	public int getYear()
 	{
 		return parseEmbeddedInt(0, 4);
 	}
