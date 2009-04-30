@@ -20,12 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.task;
 
 import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
+import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAssignmentEditorComponent;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Target;
@@ -43,45 +42,12 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 		if(shouldHaveVisibilityPanel())
 			addSubPanelWithTitledBorder(new ActivityFactorVisibilityControlPanel(mainWindow));
 		
-		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Task.getObjectType(), BaseId.INVALID)));
-		
-		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindow, objectPickerToUse);
-		createSingleSection(EAM.text("Assignments"));
-		add(assignmentEditor);
+		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Task.getObjectType(), BaseId.INVALID)));		
+		addSubPanelWithoutTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), objectPickerToUse));
 		
 		updateFieldsFromProject();
 	}
 
-	public void dispose()
-	{
-		assignmentEditor.dispose();
-		assignmentEditor = null;
-
-		super.dispose();
-	}
-	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		assignmentEditor.becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		assignmentEditor.becomeInactive();
-		super.becomeInactive();
-	}
-	
-	abstract protected boolean shouldHaveVisibilityPanel();
-
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
-	{
-		super.setObjectRefs(hierarchyToSelectedRef);
-		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
@@ -89,6 +55,6 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
 			reloadSelectedRefs();
 	}
-
-	private PlanningViewAssignmentEditorComponent assignmentEditor;
+	
+	abstract protected boolean shouldHaveVisibilityPanel();
 }
