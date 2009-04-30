@@ -546,7 +546,6 @@ public class Task extends Factor
 
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
-	public final static String TAG_ASSIGNMENT_IDS = "AssignmentIds";
 	public final static String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public final static String TAG_DETAILS = "Details";
 	
@@ -561,7 +560,6 @@ public class Task extends Factor
 	private String cachedObjectTypeName;
 	
 	private IdListData subtaskIds;
-	private IdListData assignmentIds;
 	private ORefListData progressReportRefs;
 	private StringData details;
 	
