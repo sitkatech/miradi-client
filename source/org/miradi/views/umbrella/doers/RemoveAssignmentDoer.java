@@ -31,9 +31,10 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Assignment;
-import org.miradi.objects.Task;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
 
@@ -81,13 +82,16 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		project.executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
 	}
 
-	//FIXME assignment needs to be removed from all referrers
 	private static Command getCommandsToRemoveAssignmenRefFromTask(Project project, Assignment assignmentToRemove) throws ParseException
 	{
-		ORef ownerRef = assignmentToRemove.findObjectWhoOwnsUs(project.getObjectManager(), Task.getObjectType(), assignmentToRemove.getRef());
-		Task task = (Task)project.findObject(ownerRef);	
-		Command removeIdCommand = CommandSetObjectData.createRemoveIdCommand(task, Task.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
+		ORefList referrerRefs = assignmentToRemove.findObjectsThatReferToUs();
+		if (referrerRefs.size() != 1)
+			throw new RuntimeException(EAM.text("Assignment has invalid owner count:") + assignmentToRemove.getRef());
+
+		final int FIRST_REF_INDEX = 0;
+		ORef ownerRef = referrerRefs.get(FIRST_REF_INDEX);
+		BaseObject baseObject = project.findObject(ownerRef);	
 		
-		return removeIdCommand;
+		return CommandSetObjectData.createRemoveIdCommand(baseObject, BaseObject.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId());
 	}
 }
