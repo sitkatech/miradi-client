@@ -140,6 +140,18 @@ public class DateRangeEffortList
 		data.add(dateRangeEffortToUse);
 	}
 	
+	public void remove(DateRange dateRange)
+	{
+		for(DateRangeEffort dateRangeEffort : data)
+		{
+			if(dateRangeEffort.getDateRange().equals(dateRange))
+			{
+				data.remove(dateRangeEffort);
+				return;
+			}
+		}
+	}
+
 	public DateRangeEffort get(int index)
 	{
 		return data.get(index);
