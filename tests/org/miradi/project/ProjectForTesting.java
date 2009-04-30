@@ -395,6 +395,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Indicator.find(this, indicatorRef);
 	}
 	
+	public BaseObject createBaseObject(int objectType) throws Exception
+	{
+		ORef baseObjectRef = createObject(objectType);
+		return BaseObject.find(this, baseObjectRef);
+	}
+	
 	public Task createTaskWithWho() throws Exception
 	{
 		Task task = createAndPopulateTask("some label");

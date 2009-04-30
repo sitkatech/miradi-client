@@ -137,6 +137,9 @@ public class Indicator extends BaseObject
 	@Override
 	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
+		if (getMethodRefs().isEmpty())
+			return super.getWorkUnits(dateRangeToUse);
+		
 		return getWorkUnits(getMethodRefs(), dateRangeToUse);
 	}
 
