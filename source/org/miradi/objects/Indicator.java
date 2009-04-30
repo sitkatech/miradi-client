@@ -135,21 +135,12 @@ public class Indicator extends BaseObject
 		return result.toString();
 	}
 	
-	//FIXME this is duplciate of strategy.  
 	@Override
 	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		int totalIndicatorWorkUnits = 0;
-		ORefList methodRefs = getMethodRefs();
-		for (int index = 0; index < methodRefs.size(); ++index)
-		{
-			Task method = Task.find(getProject(), methodRefs.get(index));
-			totalIndicatorWorkUnits =+ method.getWorkUnits(dateRangeToUse);
-		}
-		
-		return totalIndicatorWorkUnits;
+		return getWorkUnits(getMethodRefs(), dateRangeToUse);
 	}
-	
+
 	public ORefList getMethodRefs()
 	{
 		return new ORefList(Task.getObjectType(), getTaskIdList());

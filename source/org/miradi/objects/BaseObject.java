@@ -508,6 +508,18 @@ abstract public class BaseObject
 		return 0;
 	}
 	
+	public int getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
+	{
+		int totalWorkUnits = 0;
+		for (int index = 0; index < baseObjectRefs.size(); ++index)
+		{
+			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
+			totalWorkUnits += baseObject.getWorkUnits(dateRangeToUse);
+		}
+		
+		return totalWorkUnits;
+	}
+	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
 	{
 		if (dateRange == null)
