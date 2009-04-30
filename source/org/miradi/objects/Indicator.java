@@ -61,7 +61,7 @@ public class Indicator extends BaseObject
 	
 	public IdList getMethodIds()
 	{
-		return taskIds.getIdList().createClone();
+		return methodIds.getIdList().createClone();
 	}
 	
 	public ORefList getTaskRefs()
@@ -324,7 +324,7 @@ public class Indicator extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
 		status = new ChoiceData(TAG_STATUS, getQuestion(IndicatorStatusRatingQuestion.class));
-		taskIds = new IdListData(TAG_TASK_IDS, Task.getObjectType());
+		methodIds = new IdListData(TAG_TASK_IDS, Task.getObjectType());
 		indicatorThreshold = new StringMapData(TAG_INDICATOR_THRESHOLD);
 		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
@@ -357,7 +357,7 @@ public class Indicator extends BaseObject
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
-		addField(TAG_TASK_IDS, taskIds);
+		addField(TAG_TASK_IDS, methodIds);
 		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_RATING_SOURCE, ratingSource);
 		addField(TAG_MEASUREMENT_REFS, measurementRefs);
@@ -432,7 +432,7 @@ public class Indicator extends BaseObject
 	private StringData shortLabel;
 	private ChoiceData priority;
 	private ChoiceData status;
-	private IdListData taskIds;
+	private IdListData methodIds;
 	private StringMapData indicatorThreshold;
 	private ChoiceData ratingSource;
 	private ORefListData measurementRefs;
