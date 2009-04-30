@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-30 13:01-0500\n"
+"POT-Creation-Date: 2009-04-30 15:01-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6304,7 +6304,7 @@ msgstr "摘要 \t\t"
 msgid "Viability Ratings"
 msgstr "生存力分级 \t\t"
 
-#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:72
+#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:75
 msgid "Title|Indicator Properties"
 msgstr "指示物属性 \t\t"
 
@@ -8308,6 +8308,15 @@ msgid "FieldLabel|50.PseudoTagDiagramRefs|Conceptual Model Pages"
 msgstr ""
 
 msgid "FieldLabel|50.PseudoTagResultsChainDiagramRefs|Results Chains"
+msgstr ""
+
+msgid "FieldLabel|50.Comment|Comment"
+msgstr ""
+
+msgid "FieldLabel|50.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|50.ScopeBox|Project Scope Box"
 msgstr ""
 
 msgid ""
