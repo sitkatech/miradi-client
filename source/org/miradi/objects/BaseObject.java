@@ -37,6 +37,7 @@ import org.miradi.diagram.factortypes.FactorTypeStrategy;
 import org.miradi.diagram.factortypes.FactorTypeTarget;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateRangeData;
@@ -132,6 +133,9 @@ abstract public class BaseObject
 	
 	public boolean isIdListTag(String tag)
 	{
+		if (tag.equals(TAG_ASSIGNMENT_IDS))
+			return true;
+		
 		return false;
 	}
 	
@@ -152,6 +156,9 @@ abstract public class BaseObject
 	{
 		if (tag.equals(TAG_WHO_OVERRIDE_REFS))
 			return ProjectResource.getObjectType();
+		
+		if (tag.equals(TAG_ASSIGNMENT_IDS))
+			return Assignment.getObjectType();
 		
 		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}
@@ -1067,7 +1074,25 @@ abstract public class BaseObject
 	
 	public ORefList getOwnedObjects(int objectType)
 	{
-		return new ORefList();
+		ORefList list = new ORefList();
+		switch(objectType)
+		{
+			case ObjectType.ASSIGNMENT: 
+				list.addAll(getAssignmentRefs());
+				break;
+		}
+		
+		return list;
+	}
+	
+	public IdList getAssignmentIdList()
+	{
+		return assignmentIds.getIdList().createClone();
+	}
+	
+	public ORefList getAssignmentRefs()
+	{
+		return new ORefList(Assignment.getObjectType(), getAssignmentIdList());
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
