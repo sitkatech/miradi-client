@@ -28,6 +28,7 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
+import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
@@ -43,6 +44,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 
 public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 {
@@ -56,7 +58,11 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), diagramFactorToEdit);
 		addSubPanelWithTitledBorder(corePanel);
 		if(getFactor().isStrategy())
+		{
 			addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindowToUse, diagramFactorToEdit.getWrappedORef()));
+			addSubPanelWithoutTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
+		}
+		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), diagramFactorToEdit.getWrappedType()));
 		
 		detailIcon = createIcon();

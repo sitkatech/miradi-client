@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 
+import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
@@ -27,10 +28,12 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
+import org.miradi.views.umbrella.ObjectPicker;
 
 public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public StrategyPropertiesPanel(MainWindow mainWindow)
+	public StrategyPropertiesPanel(MainWindow mainWindow, ObjectPicker picker) throws Exception
 	{
 		super(mainWindow.getProject(), Strategy.getObjectType());
 		setLayout(new OneColumnGridLayout());
@@ -43,6 +46,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
 		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
+		addSubPanelWithoutTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
 		
 		updateFieldsFromProject();
 	}
