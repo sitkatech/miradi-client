@@ -81,13 +81,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return AppPreferences.INDICATOR_COLOR;
 		
 		if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
-			return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
+			return AppPreferences.getWorkUnitsBackgroundColor();
 		
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
 			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 		
 		if(columnTag.equals(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL))
-			return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
+			return AppPreferences.getWorkUnitsBackgroundColor();
 			
 		return null;
 	}
