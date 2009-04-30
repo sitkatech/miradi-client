@@ -81,6 +81,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		project.executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
 	}
 
+	//FIXME assignment needs to be removed from all referrers
 	private static Command getCommandsToRemoveAssignmenRefFromTask(Project project, Assignment assignmentToRemove) throws ParseException
 	{
 		ORef ownerRef = assignmentToRemove.findObjectWhoOwnsUs(project.getObjectManager(), Task.getObjectType(), assignmentToRemove.getRef());
