@@ -40,6 +40,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateRangeData;
+import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
@@ -1439,6 +1440,7 @@ abstract public class BaseObject
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
+	public static final String TAG_ASSIGNMENT_IDS = "AssignmentIds";
 
 	protected BaseId id;
 	protected StringData label;
@@ -1465,4 +1467,5 @@ abstract public class BaseObject
 	
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
+	protected IdListData assignmentIds;
 }
