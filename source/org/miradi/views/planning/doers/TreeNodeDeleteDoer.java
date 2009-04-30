@@ -91,7 +91,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 				deleteAnnotation(selected, Indicator.TAG_MEASUREMENT_REFS);
 			
 			if (Assignment.is(selected))
-				deleteAnnotation(selected, Task.TAG_ASSIGNMENT_IDS);
+				deleteAnnotation(selected, BaseObject.TAG_ASSIGNMENT_IDS);
 		}
 		catch (Exception e)
 		{
