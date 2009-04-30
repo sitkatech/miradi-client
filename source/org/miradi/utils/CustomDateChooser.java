@@ -29,6 +29,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.swing.event.CaretEvent;
 import javax.swing.event.PopupMenuEvent;
@@ -99,8 +100,11 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 		if (date == null)
 			return "";
 		
-		MultiCalendar calendar = new MultiCalendar();
-		calendar.setTime(date);
+		// NOTE: MultiCalendar(date) can't handle dates before 1970,
+		// so go through a GregorianCalendar instead
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(date);
+		MultiCalendar calendar = new MultiCalendar(cal);
 		return calendar.toIsoDateString();
 	}
 		
