@@ -380,18 +380,6 @@ public class Task extends Factor
 		return getWorkUnits(getAssignmentRefs(), dateRangeToUse);
 	}
 
-	private int getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
-	{
-		int totalWorkUnits = 0;
-		for (int index = 0; index < baseObjectRefs.size(); ++index)
-		{
-			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			totalWorkUnits += baseObject.getWorkUnits(dateRangeToUse);
-		}
-		
-		return totalWorkUnits;
-	}
-
 	@Override
 	public int getTotalShareCount()
 	{
