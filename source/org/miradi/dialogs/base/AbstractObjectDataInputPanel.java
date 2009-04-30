@@ -242,19 +242,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	{
 		super.becomeActive();
 		getPicker().becomeActive();
-		for(AbstractObjectDataInputPanel panel : subPanels)
-		{
-			panel.becomeActive();
-		}
 	}
 	
 	public void becomeInactive()
 	{
 		getPicker().becomeInactive();
-		for(AbstractObjectDataInputPanel panel : subPanels)
-		{
-			panel.becomeInactive();
-		}
 		super.becomeInactive();
 	}
 
@@ -813,7 +805,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		private boolean isActive;
 	}
 
-	private Vector<AbstractObjectDataInputPanel> getSubPanels()
+	protected Vector<AbstractObjectDataInputPanel> getSubPanels()
 	{
 		return subPanels; 
 	}
@@ -825,7 +817,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		panel.add(component, BorderLayout.BEFORE_LINE_BEGINS);
 		add(panel);
 	}
-
+	
 	public static int STD_SHORT = 5;
 	public static final int DEFAULT_TEXT_COLUM_COUNT = 50;
 	
