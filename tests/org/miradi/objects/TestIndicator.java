@@ -110,7 +110,7 @@ public class TestIndicator extends ObjectTestCase
 		Indicator indicator = getProject().createIndicator();
 		IdList methodIds = new IdList(Task.getObjectType());
 		methodIds.addRef(task.getRef());
-		getProject().setObjectData(indicator.getRef(), Indicator.TAG_TASK_IDS, methodIds.toString());
+		getProject().setObjectData(indicator.getRef(), Indicator.TAG_METHOD_IDS, methodIds.toString());
 		
 		assertEquals("wrong method count?", 1, indicator.getMethodRefs().size());
 		

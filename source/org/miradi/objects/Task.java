@@ -480,7 +480,7 @@ public class Task extends Factor
 				return Strategy.TAG_ACTIVITY_IDS;
 				
 			case ObjectType.INDICATOR:
-				return Indicator.TAG_TASK_IDS;
+				return Indicator.TAG_METHOD_IDS;
 		}
 		
 		throw new Exception("getTaskIdsTag called for non-task container type " + type);

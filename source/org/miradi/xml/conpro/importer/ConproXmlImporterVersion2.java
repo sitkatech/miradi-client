@@ -369,7 +369,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			methodRefs.add(methodRef);
 		}
 			
-		setIdListFromRefListData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs, Task.getObjectType());
+		setIdListFromRefListData(indicatorRef, Indicator.TAG_METHOD_IDS, methodRefs, Task.getObjectType());
 	}
 	
 	private void importMeasurements(Node indicatorNode, ORef indicatorRef) throws Exception

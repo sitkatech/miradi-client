@@ -186,7 +186,7 @@ public class Indicator extends BaseObject
 	
 	public int getAnnotationType(String tag)
 	{
-		if (tag.equals(TAG_TASK_IDS))
+		if (tag.equals(TAG_METHOD_IDS))
 			return Task.getObjectType();
 		
 		if (tag.equals(TAG_MEASUREMENT_REFS))
@@ -200,7 +200,7 @@ public class Indicator extends BaseObject
 
 	public boolean isIdListTag(String tag)
 	{
-		if (tag.equals(TAG_TASK_IDS))
+		if (tag.equals(TAG_METHOD_IDS))
 			return true;
 		
 		return super.isIdListTag(tag);
@@ -324,7 +324,7 @@ public class Indicator extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
 		status = new ChoiceData(TAG_STATUS, getQuestion(IndicatorStatusRatingQuestion.class));
-		methodIds = new IdListData(TAG_TASK_IDS, Task.getObjectType());
+		methodIds = new IdListData(TAG_METHOD_IDS, Task.getObjectType());
 		indicatorThreshold = new StringMapData(TAG_INDICATOR_THRESHOLD);
 		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
@@ -357,7 +357,7 @@ public class Indicator extends BaseObject
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
 		addField(TAG_STATUS, status);
-		addField(TAG_TASK_IDS, methodIds);
+		addField(TAG_METHOD_IDS, methodIds);
 		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_RATING_SOURCE, ratingSource);
 		addField(TAG_MEASUREMENT_REFS, measurementRefs);
@@ -394,7 +394,7 @@ public class Indicator extends BaseObject
 	// See Strategy, Measurement, and overall Project Viability which use the same string
 	public static final String TAG_STATUS = "Status";
 	
-	public final static String TAG_TASK_IDS = "TaskIds";
+	public final static String TAG_METHOD_IDS = "TaskIds";
 	public static final String TAG_INDICATOR_THRESHOLD = "IndicatorThresholds";
 	public static final String TAG_RATING_SOURCE = "RatingSource";
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";

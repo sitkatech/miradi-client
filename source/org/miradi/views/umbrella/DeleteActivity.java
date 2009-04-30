@@ -147,7 +147,7 @@ public class DeleteActivity extends ObjectsDoer
 		if (! task.isMethod())
 			return new Vector();
 		
-		return buildRemoveCommands(project, Indicator.getObjectType(), selectionHierarchy, Indicator.TAG_TASK_IDS, task);
+		return buildRemoveCommands(project, Indicator.getObjectType(), selectionHierarchy, Indicator.TAG_METHOD_IDS, task);
 	}
 	
 	private static Vector buildRemoveCommandsForTaskIds(Project project, Task task) throws ParseException

@@ -51,7 +51,7 @@ public class CreateMethodDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ORef createdRef = createAndAppendId(indicator, Indicator.TAG_TASK_IDS, Task.getObjectType());
+			ORef createdRef = createAndAppendId(indicator, Indicator.TAG_METHOD_IDS, Task.getObjectType());
 			getPicker().ensureObjectVisible(createdRef);
 		}
 		catch (Exception e)

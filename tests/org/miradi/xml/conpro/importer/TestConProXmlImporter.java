@@ -165,7 +165,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		
 		Task task = projectWithWhoData.createTaskWithWho();
 		ORefList taskRefs = new ORefList(task.getRef());
-		indicator.setData(Indicator.TAG_TASK_IDS, taskRefs.convertToIdList(Task.getObjectType()).toString());
+		indicator.setData(Indicator.TAG_METHOD_IDS, taskRefs.convertToIdList(Task.getObjectType()).toString());
 
 		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFillWithWho");
 		try

@@ -30,7 +30,7 @@ public class MethodListTableModel extends ObjectListTableModel
 {
 	public MethodListTableModel(Project projectToUse, ORefList selectedHierarchy)
 	{
-		super(projectToUse, selectedHierarchy, Indicator.TAG_TASK_IDS, ObjectType.TASK, COLUMN_TAGS);
+		super(projectToUse, selectedHierarchy, Indicator.TAG_METHOD_IDS, ObjectType.TASK, COLUMN_TAGS);
 	}
 
 	private static String[] COLUMN_TAGS = {
