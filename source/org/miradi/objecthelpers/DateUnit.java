@@ -194,6 +194,30 @@ public class DateUnit
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 
+	public Object getSuperDateUnit()
+	{
+		if(isDay())
+			return new DateUnit(getDateUnitCode().substring(0, 7));
+		
+		if(isMonth())
+			return getMonthSuper();
+		
+		if(isQuarter())
+			return new DateUnit(getDateUnitCode().substring(0, 4));
+		
+		if(isYear())
+			return new DateUnit("");
+		
+		throw new RuntimeException("getSuperDateUnit called for unknown date unit: " + getDateUnitCode());
+	}
+
+	private DateUnit getMonthSuper()
+	{
+		int quarter = getMonth() / 3;
+		String quarterString = "Q" + (quarter + 1);
+		return new DateUnit(getDateUnitCode().substring(0, 4) + quarterString);
+	}
+
 	private Vector<DateUnit> getYearSubDateUnits()
 	{
 		Vector<DateUnit> quarters = new Vector<DateUnit>();

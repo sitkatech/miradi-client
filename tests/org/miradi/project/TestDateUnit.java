@@ -153,6 +153,23 @@ public class TestDateUnit extends TestCaseWithProject
 		assertEquals("wrong toString value?", "2008-12-10", dateUnit.toString());
 	}
 	
+	public void testGetSuperDateUnit() throws Exception
+	{
+		assertEquals(new DateUnit("2005-07"), new DateUnit("2005-07-15").getSuperDateUnit());
+		assertEquals(new DateUnit("2005Q3"), new DateUnit("2005-07").getSuperDateUnit());
+		assertEquals(new DateUnit("2005"), new DateUnit("2005Q3").getSuperDateUnit());
+		assertEquals(new DateUnit(""), new DateUnit("2005").getSuperDateUnit());
+		
+		try
+		{
+			new DateUnit("abc").getSuperDateUnit();
+			fail("Should have thrown for bogus date unit");
+		}
+		catch(RuntimeException ignoreExpected)
+		{
+		}
+	}
+	
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
 	private final DateUnit year = new DateUnit("2006");
