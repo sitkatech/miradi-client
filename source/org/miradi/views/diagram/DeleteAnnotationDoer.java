@@ -250,7 +250,7 @@ public abstract class DeleteAnnotationDoer extends ObjectsDoer
 	private static Vector buildCommandsToDeleteMethods(Project project, Indicator indicator) throws Exception
 	{
 		Vector commands = new Vector();
-		IdList subtaskList = indicator.getTaskIdList();
+		IdList subtaskList = indicator.getMethodIds();
 		for (int i  = 0; i < subtaskList.size(); i++)
 		{
 			Task methodToDelete = (Task)project.findObject(ObjectType.TASK, subtaskList.get(i));
