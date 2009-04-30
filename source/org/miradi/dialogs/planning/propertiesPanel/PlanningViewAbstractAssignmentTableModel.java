@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.Task;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 
@@ -49,19 +48,17 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 			return;
 		
 		ORef selectedRef = hierarchyToSelectedRef[0];
-		if (selectedRef.getObjectType() != Task.getObjectType())
-			return;
 		
-		task = (Task) getProject().findObject(selectedRef);
-		assignmentRefs = getAssignmentsForTask(task);
+		baseObject = getProject().findObject(selectedRef);
+		assignmentRefs = getAssignmentsForBaseObject(baseObject);
 	}
 			
-	public void setTask(Task taskToUse)
+	public void setBaseObject(BaseObject baseObjectToUse)
 	{
-		if (isAlreadyCurrentTask(taskToUse))
+		if (isAlreadyCurrentBaseObject(baseObjectToUse))
 			return;
 			
-		task = taskToUse;
+		baseObject = baseObjectToUse;
 		updateAssignmentIdList();	
 	}
 	
@@ -73,31 +70,31 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		updateAssignmentIdList();
 	}
 
-	private boolean isAlreadyCurrentTask(Task taskToUse)
+	private boolean isAlreadyCurrentBaseObject(BaseObject baseObjectToUse)
 	{
-		 if(task == null || taskToUse == null)
+		 if(baseObject == null || baseObjectToUse == null)
 			 return false;
 		 
-		 return task.getId().equals(taskToUse.getId());
+		 return baseObject.getId().equals(baseObjectToUse.getId());
 	}
 	
 	private boolean isAlreadyCurrentAssignmentIdList()
 	{
-		return assignmentRefs.equals(getAssignmentsForTask(task));
+		return assignmentRefs.equals(getAssignmentsForBaseObject(baseObject));
 	}
 	
 	private void updateAssignmentIdList()
 	{
-		assignmentRefs = getAssignmentsForTask(task);
+		assignmentRefs = getAssignmentsForBaseObject(baseObject);
 		fireTableDataChanged();
 	}
 		
-	private ORefList getAssignmentsForTask(Task taskToUse)
+	private ORefList getAssignmentsForBaseObject(BaseObject baseObjectToUse)
 	{
-		if (taskToUse == null)
+		if (baseObjectToUse == null)
 			return new ORefList();
 		
-		return taskToUse.getAssignmentRefs();
+		return baseObjectToUse.getAssignmentRefs();
 	}
 	
 	public ORef getAssignmentForRow(int row)
@@ -135,7 +132,7 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 	}
 	
 	protected ORefList assignmentRefs;
-	protected Task task;
+	protected BaseObject baseObject;
 
 	protected CurrencyFormat currencyFormatter;
 }
