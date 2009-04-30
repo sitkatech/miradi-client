@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -170,6 +172,20 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals("wrong sub date units count?", 2, subDateUnits.size());
 		assertTrue("does not contain date?", subDateUnits.contains(new DateUnit("2006")));
 		assertTrue("does not contain date?", subDateUnits.contains(new DateUnit("2007")));
+	}
+	
+	public void testMultiCalendarBefore1970() throws Exception
+	{
+		MultiCalendar ancient = MultiCalendar.createFromGregorianYearMonthDay(1919, 1, 9);
+		assertEquals("1919-01-09", ancient.toIsoDateString());
+		ancient.addDays(1);
+		assertEquals("1919-01-10", ancient.toIsoDateString());
+		Date date = ancient.getTime();
+		GregorianCalendar cal = new GregorianCalendar();
+		cal.setTime(date);
+		MultiCalendar fromDate = new MultiCalendar(cal);
+		assertEquals("1919-01-10", fromDate.toIsoDateString());
+		
 	}
 
 	private ProjectCalendar getProjectCalendar()
