@@ -21,7 +21,6 @@ package org.miradi.views.OperationalPlan;
 
 import javax.swing.JToolBar;
 
-import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionCreateResource;
@@ -31,7 +30,6 @@ import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
-import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.ActionTreeCreateActivity;
 import org.miradi.actions.ActionTreeCreateActivityIconOnly;
 import org.miradi.actions.ActionTreeCreateMethod;
@@ -62,8 +60,6 @@ import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
 import org.miradi.views.umbrella.UmbrellaView;
-import org.miradi.views.umbrella.doers.AddAssignmentDoer;
-import org.miradi.views.umbrella.doers.RemoveAssignmentDoer;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
@@ -151,9 +147,6 @@ public class OperationalPlanView extends TabbedView
 		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
 		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
 
-		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
-		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
-		
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 

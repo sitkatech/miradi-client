@@ -35,6 +35,7 @@ import org.martus.swing.Utilities;
 import org.miradi.actions.ActionAbout;
 import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
+import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionClose;
 import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionConfigureExport;
@@ -84,6 +85,7 @@ import org.miradi.actions.ActionImportZippedProjectFile;
 import org.miradi.actions.ActionPreferences;
 import org.miradi.actions.ActionPrint;
 import org.miradi.actions.ActionRedo;
+import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.ActionReportsDemo;
 import org.miradi.actions.ActionSaveImageJPEG;
 import org.miradi.actions.ActionSaveImagePng;
@@ -200,6 +202,7 @@ import org.miradi.views.diagram.doers.EditEstimatedResourceDoer;
 import org.miradi.views.diagram.doers.EditIndicatorProgressReportDoer;
 import org.miradi.views.diagram.doers.EditObjectiveProgressPercentDoer;
 import org.miradi.views.diagram.doers.EditStrategyProgressReportDoer;
+import org.miradi.views.umbrella.doers.AddAssignmentDoer;
 import org.miradi.views.umbrella.doers.CollapseAllRowsDoer;
 import org.miradi.views.umbrella.doers.CreateGoalProgressPercentDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
@@ -217,6 +220,7 @@ import org.miradi.views.umbrella.doers.ExportRtfDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
 import org.miradi.views.umbrella.doers.ImportCpmzVersion2Doer;
+import org.miradi.views.umbrella.doers.RemoveAssignmentDoer;
 import org.miradi.views.umbrella.doers.SaveProjectAsDoer;
 import org.miradi.views.umbrella.doers.ShowCurrentWizardFileNameDoer;
 import org.miradi.views.umbrella.doers.SwitchToOperationalPlanViewDoer;
@@ -433,8 +437,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionDeleteLegacyTncStrategyRanking.class, new DeleteLegacyTncStrategyRankingDoer());
 		
 		addDoerToMap(ActionExpandAllRows.class, new ExpandAllRowsDoer());
-		addDoerToMap(ActionCollapseAllRows.class, new CollapseAllRowsDoer());	
+		addDoerToMap(ActionCollapseAllRows.class, new CollapseAllRowsDoer());
 		
+		addDoerToMap(ActionAssignResource.class, new AddAssignmentDoer());
+		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
+				
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionShowCurrentWizardFileName.class, new ShowCurrentWizardFileNameDoer());
 		
