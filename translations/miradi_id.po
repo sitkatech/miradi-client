@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-30 15:31-0500\n"
+"POT-Creation-Date: 2009-04-30 16:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -896,6 +896,10 @@ msgid "Error occurred while trying to export current page as RTF.\n"
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor halaman yang tampak saat ini "
 "sebagai format RTF.\n"
+
+#: miradi/source/org/miradi/views/umbrella/doers/RemoveAssignmentDoer.java:89
+msgid "Assignment has invalid owner count:"
+msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/doers/EditMethodsDoer.java:31
 msgid "Edit Methods"
