@@ -75,9 +75,14 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);
+		
+		if (currentCard != null)
+			currentCard.becomeInactive();
+		
 		currentCard = findPanel(orefsToUse);
 		String panelDescription = currentCard.getPanelDescription();
 		cardLayout.show(this, panelDescription);
+		currentCard.becomeActive();
 
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
