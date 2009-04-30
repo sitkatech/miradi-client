@@ -401,7 +401,7 @@ abstract public class Factor extends BaseObject
 		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
 			return true;
 		
-		return false;
+		return super.isIdListTag(tag);
 	}
 
 	public String getPseudoData(String fieldTag)
