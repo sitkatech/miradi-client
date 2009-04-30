@@ -28,7 +28,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Task;
+import org.miradi.objects.BaseObject;
 import org.miradi.views.ObjectsDoer;
 
 public class AddAssignmentDoer extends ObjectsDoer
@@ -36,11 +36,6 @@ public class AddAssignmentDoer extends ObjectsDoer
 	public boolean isAvailable()
 	{
 		if(!super.isAvailable())
-			return false;
-		
-		ORefList selectedRefs = getSelectionHierarchy();
-		ORefList selectedTaskRefs = selectedRefs.filterByType(Task.getObjectType());
-		if(selectedTaskRefs.size() < 1)
 			return false;
 		
 		return true;
@@ -54,15 +49,8 @@ public class AddAssignmentDoer extends ObjectsDoer
 		try 
 		{
 			ORefList selectedRefs = getSelectionHierarchy();
-			ORefList selectedTaskRefs = selectedRefs.filterByType(Task.getObjectType());
-			Task selectedTask = Task.find(getProject(), selectedTaskRefs.get(0));
-			if (selectedTask.hasSubTasks())
-			{
-				EAM.errorDialog(EAM.text("Resources cannot be added to this task because it already has subtasks."));
-				return;
-			}
-			
-			createAssignment(selectedTask);
+			BaseObject selectedBaseObject = BaseObject.find(getProject(), selectedRefs.get(0));			
+			createAssignment(selectedBaseObject);
 		}
 		catch (Exception e)
 		{
@@ -70,7 +58,7 @@ public class AddAssignmentDoer extends ObjectsDoer
 		}
 	}
 
-	private void createAssignment(Task selectedTask) throws Exception
+	private void createAssignment(BaseObject selectedBaseObject) throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
@@ -78,7 +66,7 @@ public class AddAssignmentDoer extends ObjectsDoer
 			CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT);
 			getProject().executeCommand(createAssignment);
 
-			Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedTask, Task.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
+			Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedBaseObject, BaseObject.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
 			getProject().executeCommand(appendAssignment);
 		}
 		finally 
