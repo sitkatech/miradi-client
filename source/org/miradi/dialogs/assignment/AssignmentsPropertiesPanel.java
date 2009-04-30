@@ -20,21 +20,56 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.assignment;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.project.Project;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAssignmentEditorComponent;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.views.umbrella.ObjectPicker;
 
-//FIXME add functionality to this assignment
 public class AssignmentsPropertiesPanel extends ObjectDataInputPanel
 {
-	public AssignmentsPropertiesPanel(Project projectToUse, int objectType, ObjectPicker picker)
+	public AssignmentsPropertiesPanel(MainWindow mainWindowToUse, int objectType, ObjectPicker picker) throws Exception
 	{
-		super(projectToUse, objectType);
+		super(mainWindowToUse.getProject(), objectType);
+		
+		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, picker);
+		add(assignmentEditor);
+		updateFieldsFromProject();
 	}
 
+	public void dispose()
+	{
+		assignmentEditor.dispose();
+		assignmentEditor = null;
+
+		super.dispose();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		assignmentEditor.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		assignmentEditor.becomeInactive();
+		super.becomeInactive();
+	}
+	
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		super.setObjectRefs(hierarchyToSelectedRef);
+		assignmentEditor.setObjectRefs(hierarchyToSelectedRef);
+	}
+	
 	@Override
 	public String getPanelDescription()
 	{
-		return null;
+		return EAM.text("Assignments");
 	}
-
+	
+	private PlanningViewAssignmentEditorComponent assignmentEditor;
 }
