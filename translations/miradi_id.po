@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-30 16:40-0500\n"
+"POT-Creation-Date: 2009-04-30 17:12-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6473,7 +6473,7 @@ msgstr "Metode "
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:135
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:141
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:129
 msgid "Summary"
@@ -6986,7 +6986,7 @@ msgstr "Sifat-sifat Faktor "
 msgid "Related Items"
 msgstr "Butir-butir Terkait "
 
-#: miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:52
+#: miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:56
 msgid "Title|Strategy Properties"
 msgstr "Sifat-sifat Strategi "
 
