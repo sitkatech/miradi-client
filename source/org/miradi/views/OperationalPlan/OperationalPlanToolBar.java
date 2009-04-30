@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.OperationalPlan;
 
+import javax.swing.JComponent;
+
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewOperationalPlan;
 import org.miradi.main.EAMToolBar;
@@ -27,6 +29,18 @@ public class OperationalPlanToolBar extends EAMToolBar
 {
 	public OperationalPlanToolBar(Actions actions)
 	{
-		super(actions, ActionViewOperationalPlan.class);
+		super(actions, ActionViewOperationalPlan.class, createButtons(actions));
+	
 	}
+
+	static JComponent[][] createButtons(Actions actions)
+	{
+		JComponent[][] buttons = new JComponent[][] {
+			{
+			},
+		};
+
+		return buttons;
+	}
+	
 }
