@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-30 15:01-0500\n"
+"POT-Creation-Date: 2009-04-30 15:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -830,10 +830,6 @@ msgstr "Ayuda"
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:53
 msgid "Share Method"
 msgstr "Compartir método"
-
-#: miradi/source/org/miradi/views/umbrella/doers/AddAssignmentDoer.java:61
-msgid "Resources cannot be added to this task because it already has subtasks."
-msgstr "Los recursos no pueden agregarse a esta tarea porque ya tiene tareas."
 
 #: miradi/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:47
 msgid "Share Activity"
@@ -32814,6 +32810,11 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid ""
+#~ "Resources cannot be added to this task because it already has subtasks."
+#~ msgstr ""
+#~ "Los recursos no pueden agregarse a esta tarea porque ya tiene tareas."
 
 #~ msgid "Action|Collapse All"
 #~ msgstr "Contraer todo "
