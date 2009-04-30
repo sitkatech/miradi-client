@@ -339,7 +339,8 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	
 	public Color getCellBackgroundColor(int column)
 	{
-		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
+		DateUnit dateUnit = getDateUnit(column);
+		return AppPreferences.getWorkUnitsBackgroundColor(dateUnit);
 	}
 
 	public ChoiceItem getChoiceItemAt(int row, int column)

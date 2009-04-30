@@ -35,7 +35,6 @@ import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
@@ -84,7 +83,8 @@ public class WorkUnitsTable extends AssignmentsComponentTable
 	@Override
 	public Color getColumnBackGroundColor(int column)
 	{
-		return AppPreferences.WORKPLAN_TABLE_BACKGROUND;
+		int modelColumn = convertColumnIndexToModel(column);
+		return getWorkUnitsTableModel().getCellBackgroundColor(modelColumn);
 	}
 
 	private void setAllColumnsToUseSingleClickEditors()

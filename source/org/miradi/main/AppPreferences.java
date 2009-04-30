@@ -27,6 +27,7 @@ import java.util.Iterator;
 
 import org.miradi.database.JSONFile;
 import org.miradi.diagram.DiagramConstants;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -520,6 +521,27 @@ public class AppPreferences
 		return controlPanelBackgroundColor;
 	}
 	
+	public static Color getWorkUnitsBackgroundColor()
+	{
+		return WORK_UNITS_TOTAL_BACKGROUND;
+	}
+	
+	public static Color getWorkUnitsBackgroundColor(DateUnit dateUnit)
+	{
+		if(dateUnit.isBlank())
+			return getWorkUnitsBackgroundColor();
+		if(dateUnit.isYear())
+			return WORK_UNITS_YEAR_BACKGROUND;
+		if(dateUnit.isQuarter())
+			return WORK_UNITS_QUARTER_BACKGROUND;
+		if(dateUnit.isMonth())
+			return WORK_UNITS_MONTH_BACKGROUND;
+		if(dateUnit.isDay())
+			return WORK_UNITS_DAY_BACKGROUND;
+		EAM.logWarning("Unknown work units date unit type: " + dateUnit);
+		return WORK_UNITS_TOTAL_BACKGROUND;
+	}
+
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
 	public static final String TAG_COLOR_CONTRIBUTING_FACTOR = "ColorIndirectFactor";
@@ -569,11 +591,16 @@ public class AppPreferences
 	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
 	
 	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
-	public static final Color WORKPLAN_TABLE_BACKGROUND = new Color(0xff, 0xDD, 0x66);
 	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
 	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(0x99, 0xee, 0x99);
 	public static final Color MEASUREMENT_COLOR_BACKGROUND = new Color(0xff, 0xf0, 0xb6);
-	
+
+	private static final Color WORK_UNITS_TOTAL_BACKGROUND = new Color(0xff, 0xCC, 0x55);
+	private static final Color WORK_UNITS_YEAR_BACKGROUND = new Color(0xff, 0xDD, 0x66);
+	private static final Color WORK_UNITS_QUARTER_BACKGROUND = new Color(0xff, 0xEE, 0x77);
+	private static final Color WORK_UNITS_MONTH_BACKGROUND = new Color(0xff, 0xFF, 0x88);
+	private static final Color WORK_UNITS_DAY_BACKGROUND = new Color(0xff, 0xFF, 0xAA);
+
 	private static final boolean DEFAULT_GRID_VISIBILITY_VALUE = false;
 	private static final boolean DEFAULT_IS_MAXIMIZED_VALUE = false;
 	private static final boolean DEFAULT_IS_CELL_RATING_VISIBLE = false;
