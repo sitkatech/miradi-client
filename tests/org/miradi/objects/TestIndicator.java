@@ -104,10 +104,10 @@ public class TestIndicator extends ObjectTestCase
 	
 	public void testGetWorkUnits() throws Exception
 	{
-		testGetWorkUnits(getProject(), Indicator.getObjectType(), Indicator.TAG_METHOD_IDS);
+		verifyGetWorkUnits(getProject(), Indicator.getObjectType(), Indicator.TAG_METHOD_IDS);
 	}
 	
-	public static void testGetWorkUnits(ProjectForTesting project, int objectType, String taskTag) throws Exception
+	public static void verifyGetWorkUnits(ProjectForTesting project, int objectType, String taskTag) throws Exception
 	{
 		Task task = project.createTask();
 		project.addAssignment(task, 14, 2006, 2009);

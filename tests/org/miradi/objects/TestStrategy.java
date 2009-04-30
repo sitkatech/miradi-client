@@ -126,7 +126,7 @@ public class TestStrategy extends ObjectTestCase
 	
 	public void testGetWorkUnits() throws Exception
 	{
-		TestIndicator.testGetWorkUnits(getProject(), Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
+		TestIndicator.verifyGetWorkUnits(getProject(), Strategy.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
 	}
 	
 	static final BaseId criterionId1 = new BaseId(17);
