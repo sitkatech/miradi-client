@@ -24,9 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
@@ -156,34 +154,17 @@ public class TestTask extends ObjectTestCase
 	
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
 	{
-		addAssignment(getProject(), task, units, startYear, endYear);
+		getProject().addAssignment(task, units, startYear, endYear);
 	}
-
-	public static void addAssignment(ProjectForTesting project, Task task, double units, int startYear, int endYear) throws Exception
-	{
-		Assignment assignment = project.createAssignment();
-		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
-		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
-		dateRangeEffort.setUnitQuantity(units);
-		dateRangeEffortList.add(dateRangeEffort);
-		assignment.setData(Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
-		IdList currentAssignmentIdList = task.getAssignmentIdList();
-		currentAssignmentIdList.add(assignment.getId());
-		task.setData(Task.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
-	}
-
+	
 	private Task createTask() throws Exception
 	{
 		return getProject().createTask();
 	}
 
-	public static DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
+	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
 	{
-		MultiCalendar startDate = createMultiCalendar(startYear);
-		MultiCalendar endDate = createMultiCalendar(endYear);
-		DateRange dateRange = new DateRange(startDate, endDate);
-		
-		return new DateRangeEffort("", 0, dateRange);
+		return getProject().createDateRangeEffort(startYear, endYear);
 	}
 
 	public void testGetWorkUnitsForTaskWithoutSubTasks() throws Exception
@@ -215,9 +196,9 @@ public class TestTask extends ObjectTestCase
 		assertEquals("wrong subtask work units for date range?", 113, task.getWorkUnits(dateRange2));
 	}
 	
-	public static MultiCalendar createMultiCalendar(int year)
+	public MultiCalendar createMultiCalendar(int year)
 	{
-		return MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
+		return getProject().createMultiCalendar(year);
 	}
 }
 

@@ -35,6 +35,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -90,6 +91,7 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -1176,6 +1178,33 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public MultiCalendar parseIsoDate(String date)
 	{
 		return MultiCalendar.createFromIsoDateString(date);
+	}
+
+	public void addAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception
+	{
+		Assignment assignment = createAssignment();
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
+		dateRangeEffort.setUnitQuantity(units);
+		dateRangeEffortList.add(dateRangeEffort);
+		assignment.setData(Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+		IdList currentAssignmentIdList = baseObject.getAssignmentIdList();
+		currentAssignmentIdList.add(assignment.getId());
+		baseObject.setData(Task.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+	}
+	
+	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
+	{
+		MultiCalendar startDate = createMultiCalendar(startYear);
+		MultiCalendar endDate = createMultiCalendar(endYear);
+		DateRange dateRange = new DateRange(startDate, endDate);
+		
+		return new DateRangeEffort("", 0, dateRange);
+	}
+	
+	public MultiCalendar createMultiCalendar(int year)
+	{
+		return MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 	}
 			
 	private static int nextTargetId;
