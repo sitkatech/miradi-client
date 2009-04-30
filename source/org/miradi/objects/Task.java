@@ -358,7 +358,7 @@ public class Task extends Factor
 		if (hasSubTasks())
 			return getWorkUnits(getSubtaskRefs(), dateRangeToUse);
 		
-		return getWorkUnits(getAssignmentRefs(), dateRangeToUse);
+		return super.getWorkUnits(dateRangeToUse);
 	}
 
 	@Override

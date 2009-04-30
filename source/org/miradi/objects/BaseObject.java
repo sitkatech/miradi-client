@@ -513,7 +513,7 @@ abstract public class BaseObject
 	
 	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		return 0;
+		return getWorkUnits(getAssignmentRefs(), dateRangeToUse);
 	}
 	
 	public int getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
