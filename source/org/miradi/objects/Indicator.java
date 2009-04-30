@@ -121,14 +121,13 @@ public class Indicator extends BaseObject
 	private String getIndicatorMethodsSingleLine()
 	{
 		StringBuffer result = new StringBuffer();
-		IdList methodIds = getMethodIds();
-		for(int i = 0; i < methodIds.size(); ++i)
+		ORefList methodRefs = getMethodRefs();
+		for(int index = 0; index < methodRefs.size(); ++index)
 		{
-			if(i > 0)
+			if(index > 0)
 				result.append("; ");
 			
-			BaseId methodId = methodIds.get(i);
-			BaseObject method = objectManager.findObject(ObjectType.TASK, methodId);
+			Task method = Task.find(getProject(), methodRefs.get(index));
 			result.append(method.getData(Task.TAG_LABEL));
 		}
 		
