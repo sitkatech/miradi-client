@@ -91,7 +91,7 @@ public class Task extends Factor
 		if (tag.equals(TAG_SUBTASK_IDS))
 			return true;
 		
-		return false;
+		return super.isIdListTag(tag);
 	}
 
 	@Override
