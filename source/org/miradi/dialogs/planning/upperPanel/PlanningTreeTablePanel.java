@@ -263,7 +263,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			return true;
 		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
-		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_TASK_IDS))
+		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;
 		if(type == Task.getObjectType() && tag.equals(Task.TAG_ASSIGNMENT_IDS))
 			return true;

@@ -341,7 +341,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		}
 		
 		ORefList methodRefs = new ORefList(methodRef);
-		setIdListFromRefListData(indicatorRef, Indicator.TAG_TASK_IDS, methodRefs, Task.getObjectType());
+		setIdListFromRefListData(indicatorRef, Indicator.TAG_METHOD_IDS, methodRefs, Task.getObjectType());
 	}
 
 	private void importThreats() throws Exception

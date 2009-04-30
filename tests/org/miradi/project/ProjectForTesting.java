@@ -577,7 +577,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		Task task = createAndPopulateTask("Some Method Name");
 		IdList taskIds = new IdList(Task.getObjectType());
 		taskIds.addRef(task.getRef());
-		fillObjectUsingCommand(indicator, Indicator.TAG_TASK_IDS, taskIds.toString());
+		fillObjectUsingCommand(indicator, Indicator.TAG_METHOD_IDS, taskIds.toString());
 		
 		Measurement measurement = createAndPopulateMeasurement();
 		ORefList measurementRefs = new ORefList(measurement.getRef());

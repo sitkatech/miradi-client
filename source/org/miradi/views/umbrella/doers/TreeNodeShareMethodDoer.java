@@ -38,7 +38,7 @@ public class TreeNodeShareMethodDoer extends AbstractShareDoer
 	@Override
 	protected String getParentTaskIdsTag()
 	{
-		return Indicator.TAG_TASK_IDS;
+		return Indicator.TAG_METHOD_IDS;
 	}
 
 	@Override

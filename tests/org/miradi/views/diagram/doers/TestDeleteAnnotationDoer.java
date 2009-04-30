@@ -68,11 +68,11 @@ public class TestDeleteAnnotationDoer extends EAMTestCase
 		project.executeCommand(addIndicator2);
 		assertEquals("wrong number of indicators?", 2, strategy.getIndicatorIds().size());
 		
-		CommandSetObjectData addSharedMethod1 = CommandSetObjectData.createAppendIdCommand(indicator1, Indicator.TAG_TASK_IDS, methodRef.getObjectId());
+		CommandSetObjectData addSharedMethod1 = CommandSetObjectData.createAppendIdCommand(indicator1, Indicator.TAG_METHOD_IDS, methodRef.getObjectId());
 		project.executeCommand(addSharedMethod1);
 		assertEquals("wrong number of tasks?", 1, indicator1.getMethodRefs().size());
 		
-		CommandSetObjectData addSharedMethod2 = CommandSetObjectData.createAppendIdCommand(indicator2, Indicator.TAG_TASK_IDS, methodRef.getObjectId());
+		CommandSetObjectData addSharedMethod2 = CommandSetObjectData.createAppendIdCommand(indicator2, Indicator.TAG_METHOD_IDS, methodRef.getObjectId());
 		project.executeCommand(addSharedMethod2);
 		assertEquals("wrong number of tasks?", 1, indicator2.getMethodRefs().size());
 	

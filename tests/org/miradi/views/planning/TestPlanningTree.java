@@ -69,7 +69,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
 		goalId = project.addItemToGoalList(diagramTarget.getWrappedORef(), Target.TAG_GOAL_IDS);
-		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_TASK_IDS);
+		taskId = project.addItemToIndicatorList(indicatorId, Task.getObjectType(), Indicator.TAG_METHOD_IDS);
 		activityId = project.addActivityToStrateyList(diagramStrategy1.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
 		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
 		
