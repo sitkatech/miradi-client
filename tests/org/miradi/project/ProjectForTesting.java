@@ -1196,7 +1196,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		assignment.setData(Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 		IdList currentAssignmentIdList = baseObject.getAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
-		baseObject.setData(Task.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+		baseObject.setData(BaseObject.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
 	}
 	
 	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
