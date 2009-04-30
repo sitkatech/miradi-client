@@ -105,8 +105,8 @@ public class TestIndicator extends ObjectTestCase
 	public void testGetWorkUnits() throws Exception
 	{
 		Task task = getProject().createTask();
-		TestTask.addAssignment(getProject(), task, 14, 2006, 2009);
-		TestTask.addAssignment(getProject(), task, 15, 2006, 2009);
+		getProject().addAssignment(task, 14, 2006, 2009);
+		getProject().addAssignment(task, 15, 2006, 2009);
 		Indicator indicator = getProject().createIndicator();
 		IdList methodIds = new IdList(Task.getObjectType());
 		methodIds.addRef(task.getRef());
@@ -114,7 +114,7 @@ public class TestIndicator extends ObjectTestCase
 		
 		assertEquals("wrong method count?", 1, indicator.getMethodRefs().size());
 		
-		DateRange dateRange = new DateRange(TestTask.createMultiCalendar(2006), TestTask.createMultiCalendar(2009));
+		DateRange dateRange = new DateRange(getProject().createMultiCalendar(2006), getProject().createMultiCalendar(2009));
 		assertEquals("wrong work units for methods", 29, indicator.getWorkUnits(dateRange));
 	}
 
