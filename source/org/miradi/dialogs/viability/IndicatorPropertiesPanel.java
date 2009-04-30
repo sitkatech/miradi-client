@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
+import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
@@ -32,6 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
+import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
@@ -48,6 +50,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Indicator.getObjectType(), BaseId.INVALID)));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
+		addSubPanelWithoutTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
 		
 		updateFieldsFromProject();
 	}

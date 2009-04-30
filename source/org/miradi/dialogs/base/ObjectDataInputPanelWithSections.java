@@ -122,6 +122,24 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		return singleSection.add(component);
 	}
 	
+	public void becomeActive()
+	{
+		super.becomeActive();
+		for(AbstractObjectDataInputPanel panel : getSubPanels())
+		{
+			panel.becomeActive();
+		}
+	}
+	
+	public void becomeInactive()
+	{
+		for(AbstractObjectDataInputPanel panel : getSubPanels())
+		{
+			panel.becomeInactive();
+		}
+		super.becomeInactive();
+	}
+	
 	private ObjectDataInputPanel singleSection;
 	private PanelTabbedPane tabPanel;
 	private int objectType;

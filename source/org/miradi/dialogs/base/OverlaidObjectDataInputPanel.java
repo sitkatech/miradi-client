@@ -22,7 +22,7 @@ package org.miradi.dialogs.base;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public abstract class OverlaidObjectDataInputPanel extends ObjectDataInputPanel
+public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInputPanel
 {
 	public OverlaidObjectDataInputPanel(Project project, ORef orefToUse)
 	{
