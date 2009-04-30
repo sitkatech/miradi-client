@@ -38,7 +38,7 @@ public class AddAssignmentDoer extends ObjectsDoer
 		if(!super.isAvailable())
 			return false;
 		
-		return true;
+		return getSelectionHierarchy().size() > 0;
 	}
 	
 	public void doIt() throws CommandFailedException
