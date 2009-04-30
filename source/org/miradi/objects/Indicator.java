@@ -59,14 +59,14 @@ public class Indicator extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
-	public IdList getTaskIdList()
+	public IdList getMethodIds()
 	{
 		return taskIds.getIdList().createClone();
 	}
 	
 	public ORefList getTaskRefs()
 	{
-		return new ORefList(Task.getObjectType(), getTaskIdList());
+		return new ORefList(Task.getObjectType(), getMethodIds());
 	}
 	
 	public StringMapData getThreshold()
@@ -121,7 +121,7 @@ public class Indicator extends BaseObject
 	private String getIndicatorMethodsSingleLine()
 	{
 		StringBuffer result = new StringBuffer();
-		IdList methodIds = getTaskIdList();
+		IdList methodIds = getMethodIds();
 		for(int i = 0; i < methodIds.size(); ++i)
 		{
 			if(i > 0)
@@ -143,7 +143,7 @@ public class Indicator extends BaseObject
 
 	public ORefList getMethodRefs()
 	{
-		return new ORefList(Task.getObjectType(), getTaskIdList());
+		return new ORefList(Task.getObjectType(), getMethodIds());
 	}
 	
 	public Vector<Task> getMethods()
