@@ -55,9 +55,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public void becomeInactive()
 	{
-		if (assignmentEditor != null)
-			assignmentEditor.becomeInactive();
-		
+		assignmentEditor.becomeInactive();
 		super.becomeInactive();
 	}
 	
