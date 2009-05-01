@@ -187,6 +187,7 @@ import org.miradi.project.Project;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.views.Doer;
+import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.NullDoer;
 import org.miradi.views.diagram.Print;
 import org.miradi.views.diagram.doers.CreateActivityProgressReportDoer;
@@ -241,7 +242,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	}
 	
 	abstract public String cardName();
-	
+
+	abstract public MiradiTabContentsPanelInterface getCurrentTabPanel();
+
 	public void setTabForStep(SkeletonWizardStep step)
 	{
 	}

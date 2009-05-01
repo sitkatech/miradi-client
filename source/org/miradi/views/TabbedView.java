@@ -292,6 +292,12 @@ abstract public class TabbedView extends UmbrellaView
 		return tabs.getComponent(index);
 	}
 	
+	@Override
+	public MiradiTabContentsPanelInterface getCurrentTabPanel()
+	{
+		return getSelectedTabPanel();
+	}
+	
 	public Component getCurrentTabContents()
 	{
 		return tabs.getSelectedComponent();
