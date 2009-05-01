@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-01 15:58-0500\n"
+"POT-Creation-Date: 2009-05-01 16:07-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6505,7 +6505,7 @@ msgstr "Resumen"
 msgid "Viability Ratings"
 msgstr "Calificaciones de viabilidad"
 
-#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:89
+#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:87
 msgid "Title|Indicator Properties"
 msgstr "Propiedades del indicador"
 
