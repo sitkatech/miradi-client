@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-30 17:55-0500\n"
+"POT-Creation-Date: 2009-05-01 10:49-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6960,7 +6960,7 @@ msgstr "分级 "
 msgid "Title|Stress Details"
 msgstr "压力详情"
 
-#: miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:71
+#: miradi/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:73
 msgid "Assignments"
 msgstr ""
 
