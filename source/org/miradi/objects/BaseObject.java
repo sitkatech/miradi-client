@@ -511,16 +511,19 @@ abstract public class BaseObject
 		return 1;
 	}
 	
-	public double getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public Double getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		return getWorkUnits(getAssignmentRefs(), dateRangeToUse);
 	}
 	
-	public double getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
+	public Double getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
 	{
-		double totalWorkUnits = 0.0;
+		Double totalWorkUnits = null;
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
+			if (totalWorkUnits == null)
+				totalWorkUnits = 0.0;
+			
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
 			totalWorkUnits += baseObject.getWorkUnits(dateRangeToUse);
 		}

@@ -264,7 +264,7 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	public double getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public Double getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		if (getActivityRefs().isEmpty())
 			return super.getWorkUnits(dateRangeToUse);

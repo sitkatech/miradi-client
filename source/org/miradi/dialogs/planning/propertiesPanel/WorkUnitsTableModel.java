@@ -37,6 +37,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
@@ -401,7 +402,11 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return new TaglessChoiceItem(getValueAt(row, column));
+		Object valueAt = getValueAt(row, column);
+		if (valueAt == null)
+			return new EmptyChoiceItem();
+		
+		return new TaglessChoiceItem(valueAt);
 	}
 	
 	public void updateColumnsToShow() throws Exception
