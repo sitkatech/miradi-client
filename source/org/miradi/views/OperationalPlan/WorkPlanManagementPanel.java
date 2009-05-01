@@ -41,7 +41,7 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return panelDescription;
+		return EAM.text("Tab|Work Plan");
 	}
 
 	@Override
@@ -59,5 +59,4 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 		return new WorkPlanManagementPanel(mainWindowToUse, workPlanTreeTablePanel, workPlanPropertiesPanel);
 	}
 
-	private final String panelDescription = EAM.text("Tab|Work Plan");
 }
