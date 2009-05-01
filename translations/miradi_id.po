@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-01 16:49-0500\n"
+"POT-Creation-Date: 2009-05-01 17:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -209,11 +209,11 @@ msgstr ""
 msgid "Attempted to execute side effect command while not in side effect mode."
 msgstr ""
 
-#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:62
+#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:44
 msgid "Tab|Work Plan"
 msgstr ""
 
-#: miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:56
+#: miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
 msgid "Tab|Custom"
 msgstr ""
 
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Accounting Code"
 msgstr "Kode Akuntansi "
 
-#: miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:65
+#: miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
 msgstr ""
 
@@ -273,7 +273,7 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-#: miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:65
+#: miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:47
 msgid "Tab|Monitoring Plan"
 msgstr ""
 
@@ -6479,7 +6479,7 @@ msgstr "Ringkasan "
 msgid "Viability Ratings"
 msgstr "Peringkat Kelangsungan "
 
-#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:87
+#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:75
 msgid "Title|Indicator Properties"
 msgstr "Sifat-sifat Indikator "
 
@@ -6694,7 +6694,7 @@ msgstr "Anggota Tim "
 msgid "Title|Team Properties"
 msgstr "Sifat-sifat Tim "
 
-#: miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:116
+#: miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:48
 msgid "Title|Team"
 msgstr "Tim "
 
@@ -7022,7 +7022,7 @@ msgstr "Persentase Kemajuan "
 msgid "Title|Organization Properties"
 msgstr "Sifat-sifat Organisasi "
 
-#: miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:91
+#: miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:45
 msgid "Title|Other Orgs"
 msgstr "Organisasi Lain "
 

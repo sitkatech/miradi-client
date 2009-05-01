@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-01 16:49-0500\n"
+"POT-Creation-Date: 2009-05-01 17:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -194,11 +194,11 @@ msgstr ""
 msgid "Attempted to execute side effect command while not in side effect mode."
 msgstr ""
 
-#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:62
+#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:44
 msgid "Tab|Work Plan"
 msgstr ""
 
-#: miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:56
+#: miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
 msgid "Tab|Custom"
 msgstr ""
 
@@ -248,7 +248,7 @@ msgstr ""
 msgid "Accounting Code"
 msgstr "会计编码 \t\t"
 
-#: miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:65
+#: miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
 msgstr ""
 
@@ -256,7 +256,7 @@ msgstr ""
 msgid "Lists"
 msgstr ""
 
-#: miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:65
+#: miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:47
 msgid "Tab|Monitoring Plan"
 msgstr ""
 
@@ -6300,7 +6300,7 @@ msgstr "摘要 \t\t"
 msgid "Viability Ratings"
 msgstr "生存力分级 \t\t"
 
-#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:87
+#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:75
 msgid "Title|Indicator Properties"
 msgstr "指示物属性 \t\t"
 
@@ -6513,7 +6513,7 @@ msgstr "团队成员 \t\t"
 msgid "Title|Team Properties"
 msgstr "团队属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:116
+#: miradi/source/org/miradi/dialogs/summary/TeamManagementPanel.java:48
 msgid "Title|Team"
 msgstr "团队 \t\t"
 
@@ -6833,7 +6833,7 @@ msgstr "进展百分比"
 msgid "Title|Organization Properties"
 msgstr "组织属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:91
+#: miradi/source/org/miradi/dialogs/organization/OrganizationManagementPanel.java:45
 msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
