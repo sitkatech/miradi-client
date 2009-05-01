@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-01 13:58-0500\n"
+"POT-Creation-Date: 2009-05-01 14:55-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6783,11 +6783,11 @@ msgstr "图表属性 \t\t"
 msgid "Comments"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:428
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:448
 msgid "Viability Analysis Mode"
 msgstr "生存力分析模式 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:517
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:537
 msgid "Factor Properties"
 msgstr "因素属性 \t\t"
 
