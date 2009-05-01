@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-01 16:19-0500\n"
+"POT-Creation-Date: 2009-05-01 16:49-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -87,19 +87,19 @@ msgid ""
 "section of the Target Viability to store the same data."
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:42
+#: miradi/source/org/miradi/database/DataUpgrader.java:43
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
 "migrated to the current data format before it can be opened. A backup will "
 "be saved first in case anything goes wrong. Perform the automatic migration?"
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:47
+#: miradi/source/org/miradi/database/DataUpgrader.java:48
 msgid "Button|Migrate"
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:47
-#: miradi/source/org/miradi/database/DataUpgrader.java:59
+#: miradi/source/org/miradi/database/DataUpgrader.java:48
+#: miradi/source/org/miradi/database/DataUpgrader.java:60
 #: miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
 #: miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:224
@@ -110,43 +110,43 @@ msgstr ""
 msgid "Button|Cancel"
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:48
+#: miradi/source/org/miradi/database/DataUpgrader.java:49
 msgid "Project Migration Required"
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:55
+#: miradi/source/org/miradi/database/DataUpgrader.java:56
 msgid ""
 "A backup archive for this project already exists.Continuing with this "
 "migration will replace the existing backup with a new copy.It is probably "
 "safe to do this, unless an earlier migration attempt failed."
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:59
+#: miradi/source/org/miradi/database/DataUpgrader.java:60
 msgid "Button|Replace Backup"
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:60
+#: miradi/source/org/miradi/database/DataUpgrader.java:61
 msgid "WARNING"
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:75
+#: miradi/source/org/miradi/database/DataUpgrader.java:76
 msgid ""
 "That project is too old to be migrated by this version of Miradi. You can "
 "use Miradi 1.0 to migrate it to a modern data format, and after that it can "
 "be opened and migrated by this version."
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:91
+#: miradi/source/org/miradi/database/DataUpgrader.java:92
 msgid "Project was migrated to the current data format"
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:93
+#: miradi/source/org/miradi/database/DataUpgrader.java:94
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
 msgstr ""
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:94
+#: miradi/source/org/miradi/database/DataUpgrader.java:95
 msgid ""
 "\n"
 "WARNING: Attempting to open this project again before repairing the problem "
