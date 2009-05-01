@@ -140,20 +140,6 @@ public class PlanningView extends TabbedView
 		
 		return new EmptyRowColumnProvider();
 	}
-
-	@Override
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-		planningManagementPanel.updateSplitterLocation();
-		strategicPlanManagementPanel.updateSplitterLocation();
-		monitoringPlanManagementPanel.updateSplitterLocation();
-		objectsOnlyManagementPanel.updateSplitterLocation();
-		resourceManagementPanel.updateSplitterLocation();
-		accountingCodePoolManagementPanel.updateSplitterLocation();
-		fundingSourcePoolManagementPanel.updateSplitterLocation();
-	}
-
 	
 	public void deleteTabs() throws Exception
 	{
