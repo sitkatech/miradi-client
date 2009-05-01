@@ -42,7 +42,7 @@ class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPane
 	@Override
 	public String getPanelDescription()
 	{
-		return panelDescription;
+		return EAM.text("Tab|Custom");
 	}
 	
 	public static PlanningTreeManagementPanel createConfigurablePlanningPanel(MainWindow mainWindowToUse) throws Exception
@@ -53,5 +53,4 @@ class ConfigurablePlanningTreeManagementPanel extends PlanningTreeManagementPane
 		return new ConfigurablePlanningTreeManagementPanel(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
-	private final String panelDescription = EAM.text("Tab|Custom");
 }

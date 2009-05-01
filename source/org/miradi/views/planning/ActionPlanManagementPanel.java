@@ -44,7 +44,7 @@ class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return panelDescription;
+		return EAM.text("Tab|Action Plan");
 	}
 	
 	@Override
@@ -61,6 +61,4 @@ class ActionPlanManagementPanel extends PlanningTreeManagementPanel
 		
 		return new ActionPlanManagementPanel(mainWindowToUse, strategicPlanTreeTablePanel, strategicPlanPropertiesPanel);
 	}
-
-	private final String panelDescription = EAM.text("Tab|Action Plan");
 }

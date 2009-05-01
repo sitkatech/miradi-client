@@ -44,7 +44,7 @@ class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return panelDescription;
+		return EAM.text("Tab|Monitoring Plan");
 	}
 
 	@Override
@@ -62,5 +62,4 @@ class MonitoringPlanManagementPanel extends PlanningTreeManagementPanel
 		return new MonitoringPlanManagementPanel(mainWindowToUse, monitoringPlanTreeTablePanel, monitoringPlanPropertiesPanel);
 	}
 
-	private final String panelDescription = EAM.text("Tab|Monitoring Plan");
 }
