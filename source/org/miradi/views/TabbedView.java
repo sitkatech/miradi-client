@@ -282,6 +282,9 @@ abstract public class TabbedView extends UmbrellaView
 	{
 		getMainWindow().updateActionStates();
 		getMainWindow().updateToolBar();
+		MiradiTabContentsPanelInterface newPanel = getTabPanel(getSelectedTabIndex());
+		if(newPanel != null)
+			newPanel.becomeActive();
 	}
 	
 	public Component getTabContents(int index)
@@ -446,13 +449,6 @@ abstract public class TabbedView extends UmbrellaView
 			if(!ignoreTabChanges)
 				tabWasSelected();
 
-			if(newTab >= 0)
-			{
-				MiradiTabContentsPanelInterface newPanel = getTabPanel(newTab);
-				if(newPanel != null)
-					newPanel.becomeActive();
-			}
-			
 			if(oldTab != newTab)
 				getMainWindow().updateActionsAndStatusBar();
 		}
