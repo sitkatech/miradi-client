@@ -69,6 +69,25 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		diactivateCurrentCard();
 	}
 	
+	private void diactivateCurrentCard()
+	{
+		isActive = false;
+		if (currentCard != null)
+			currentCard.becomeInactive();
+	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		isActive = true;
+	}
+	
+	private boolean isMultiPropertiesPanelActive()
+	{
+		return isActive;
+	}
+	
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
@@ -118,7 +137,8 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		
 		currentCard = findPanel(orefsToUse);
 		cardLayout.show(this, currentCard.getPanelDescription());
-		currentCard.becomeActive();
+		if (isMultiPropertiesPanelActive())
+			currentCard.becomeActive();
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
@@ -130,12 +150,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		repaint();
 	}
 
-	private void diactivateCurrentCard()
-	{
-		if (currentCard != null)
-			currentCard.becomeInactive();
-	}
-	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)
@@ -227,6 +241,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private ObjectPicker objectPicker;
 	private CardLayout cardLayout;
 	private AbstractObjectDataInputPanel currentCard;
+	private boolean isActive;
 	
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
