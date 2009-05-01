@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-01 17:19-0500\n"
+"POT-Creation-Date: 2009-05-01 17:27-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -404,7 +404,7 @@ msgstr "Organisasi "
 msgid "Planning"
 msgstr "Perencanaan "
 
-#: miradi/source/org/miradi/views/summary/SummaryView.java:166
+#: miradi/source/org/miradi/views/summary/SummaryView.java:158
 msgid "Work plan start date is before project start date"
 msgstr "Tanggal mulai rencana kerja lebih awal daripada tanggal mulai proyek "
 
@@ -786,7 +786,7 @@ msgstr "Tidak bisa Membuat Tautan "
 msgid "Can't link a group to an item it contains"
 msgstr "Tidak bisa menautkan grup ke butir yang dikandungnya "
 
-#: miradi/source/org/miradi/views/TabbedView.java:226
+#: miradi/source/org/miradi/views/TabbedView.java:232
 #: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
 msgid "Instructions"
 msgstr "Instruksi "
