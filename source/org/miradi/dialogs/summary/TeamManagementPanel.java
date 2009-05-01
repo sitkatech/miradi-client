@@ -45,7 +45,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return EAM.text("Title|Team");
 	}
 	
 	public Icon getIcon()
@@ -112,6 +112,4 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	{
 		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
 	}
-		
-	private static String PANEL_DESCRIPTION = EAM.text("Title|Team");
 }
