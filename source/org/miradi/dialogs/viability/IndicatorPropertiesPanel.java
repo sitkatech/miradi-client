@@ -58,14 +58,12 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 	@Override
 	public void becomeActive()
 	{
-		System.out.println("IPP.becomeActive");
 		super.becomeActive();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		System.out.println("IPP.becomeInactive");
 		super.becomeInactive();
 	}
 	
