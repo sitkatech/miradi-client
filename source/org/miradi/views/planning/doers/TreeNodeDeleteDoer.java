@@ -108,27 +108,47 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		getProject().executeCommandsAsTransaction(buildCommandsToDeleteAnnotation(getProject(), selected, annotationListTag));
 	}
 	
-	public static Vector<Command> buildCommandsToDeleteAnnotation(Project project, BaseObject selected, String annotationListTag) throws ParseException
+	public static Vector<Command> buildCommandsToDeleteAnnotation(Project project, BaseObject objectToRemove, String annotationListTag) throws ParseException
 	{
 		Vector commands = new Vector();
-		ORefList ownerRefs = selected.findObjectsThatReferToUs();
+		ORefList ownerRefs = objectToRemove.findObjectsThatReferToUs();
 		for (int refIndex = 0; refIndex < ownerRefs.size(); ++refIndex)
 		{
 			ORef ownerRef = ownerRefs.get(refIndex);
 			BaseObject owner = project.findObject(ownerRef);
 			if (owner.doesFieldExist(annotationListTag))
 			{
-				IdList assignmentIds = new IdList(selected.getType(), owner.getData(annotationListTag));
-				if (assignmentIds.contains(selected.getId()))
-				{
-					commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationListTag, selected.getId()));
-				}
+				if (owner.isIdListTag(annotationListTag))
+					commands.addAll(createCommandToRemoveId(owner, objectToRemove, annotationListTag));
+				
+				if (owner.isRefList(annotationListTag))
+					commands.addAll(createCommandToRemoveRef(owner, objectToRemove, annotationListTag));
 			}
 		}
 		
-		commands.addAll(Arrays.asList(selected.createCommandsToClear()));
-		commands.add(new CommandDeleteObject(selected.getRef()));
+		commands.addAll(Arrays.asList(objectToRemove.createCommandsToClear()));
+		commands.add(new CommandDeleteObject(objectToRemove.getRef()));
 	
+		return commands;
+	}
+
+	private static Vector<Command> createCommandToRemoveId(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
+	{
+		Vector commands = new Vector();
+		IdList idsToRemoveFrom = new IdList(selected.getType(), owner.getData(annotationListTag));
+		if (idsToRemoveFrom.contains(selected.getId()))
+			commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationListTag, selected.getId()));
+		
+		return commands;
+	}
+	
+	private static Vector<Command> createCommandToRemoveRef(BaseObject owner, BaseObject selected, String annotationListTag) throws ParseException
+	{
+		Vector commands = new Vector();
+		ORefList refsToRemoveFrom = new ORefList(owner.getData(annotationListTag));
+		if (refsToRemoveFrom.contains(selected.getRef()))
+			commands.add(CommandSetObjectData.createRemoveORefCommand(owner, annotationListTag, selected.getRef()));
+		
 		return commands;
 	}
 
