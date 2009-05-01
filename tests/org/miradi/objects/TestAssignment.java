@@ -55,11 +55,11 @@ public class TestAssignment extends ObjectTestCase
 		Assignment assignment = getProject().createAssignment();
 		getProject().fillObjectUsingCommand(assignment, Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 
-		assertEquals("wrong assignment work units?", 2, assignment.getWorkUnits(dateRange1));
-		assertEquals("wrong assignment work units?", 5, assignment.getWorkUnits(dateRange2));
+		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateRange1));
+		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateRange2));
 		
 		DateRange totalProjectDateRange = DateRange.combine(dateRange1, dateRange2);
-		assertEquals("wrong totals work units", 7, assignment.getWorkUnits(totalProjectDateRange));
+		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateRange));
 	}
 	
 	public DateRangeEffort createDateRangeEffort(int unitQuantatiy, DateRange dateRange) throws Exception
