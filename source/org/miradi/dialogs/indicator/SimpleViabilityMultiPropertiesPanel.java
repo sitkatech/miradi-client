@@ -56,26 +56,6 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		blankPropertiesPanel.dispose();
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		indicatorPropertiesPanel.becomeActive();
-		measurementPropertiesPanel.becomeActive();
-		futureStatusPropertiesPanel.becomeActive();
-		blankPropertiesPanel.becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		indicatorPropertiesPanel.becomeInactive();
-		measurementPropertiesPanel.becomeInactive();
-		futureStatusPropertiesPanel.becomeInactive();
-		blankPropertiesPanel.becomeInactive();
-		super.becomeInactive();
-	}
-	
 	private void createPropertiesPanels() throws Exception
 	{
 		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow(), getPicker());
