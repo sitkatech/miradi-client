@@ -40,6 +40,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatStressRating;
@@ -164,7 +165,7 @@ public class ProjectRepairer
 		EAM.logException(e);
 	}
 	
-	public void possiblyShowMissingObjectsWarningDialog() throws Exception
+	private void possiblyShowMissingObjectsWarningDialog() throws Exception
 	{
 		ORefList missingObjectRefs = findAllMissingObjects();
 		if (missingObjectRefs.size() == 0 )
@@ -174,6 +175,9 @@ public class ProjectRepairer
 		{
 			ORef missingRef = missingObjectRefs.get(i);
 			ORefSet referrers = project.getObjectManager().getReferringObjects(missingRef);
+			if (hasOnlyTableSettingReferrers(referrers))
+				continue;
+			
 			EAM.logError("Missing object: " + missingRef + " referred to by: " + referrers);
 		}
 		
@@ -186,6 +190,17 @@ public class ProjectRepairer
 //						 "which may cause error messages or unexpected results within Miradi. <br>" +
 //						 "Please contact the Miradi team to report this problem, " +
 //						 "and/or to have them repair this project.");
+	}
+
+	private boolean hasOnlyTableSettingReferrers(ORefSet referrers)
+	{
+		for(ORef ref : referrers)
+		{
+			if (!TableSettings.is(ref))
+				return false;
+		}
+		
+		return true;
 	}
 
 	private void detectAndReportOrphans(int possibleOrphanType,
