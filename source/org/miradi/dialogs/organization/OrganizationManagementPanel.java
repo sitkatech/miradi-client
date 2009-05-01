@@ -42,7 +42,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return EAM.text("Title|Other Orgs");
 	}
 	
 	public Icon getIcon()
@@ -87,6 +87,4 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 	{
 		return ActionJumpSummaryWizardRolesAndResponsibilities.class;
 	}
-	
-	private static String PANEL_DESCRIPTION = EAM.text("Title|Other Orgs"); 
 }
