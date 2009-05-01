@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-01 16:19-0500\n"
+"POT-Creation-Date: 2009-05-01 16:49-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -105,7 +105,7 @@ msgstr ""
 "一项或多项与KEA指示物相关联的总目标组已被删除。请根据需要创建新的总目标组，或"
 "使用“对象生存力”选项中“未来状态”这一新选项来储存同样的数据。 \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:42
+#: miradi/source/org/miradi/database/DataUpgrader.java:43
 msgid ""
 "This project was created with an older version of Miradi, so it needs to be "
 "migrated to the current data format before it can be opened. A backup will "
@@ -114,12 +114,12 @@ msgstr ""
 "本项目是用旧版Miradi创建的，因此需要迁移到当前的数据格式才能打开。首先要保存"
 "一个备份以防万一出错。要执行自动迁移吗？"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:47
+#: miradi/source/org/miradi/database/DataUpgrader.java:48
 msgid "Button|Migrate"
 msgstr "迁移 \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:47
-#: miradi/source/org/miradi/database/DataUpgrader.java:59
+#: miradi/source/org/miradi/database/DataUpgrader.java:48
+#: miradi/source/org/miradi/database/DataUpgrader.java:60
 #: miradi/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:71
 #: miradi/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:224
@@ -130,11 +130,11 @@ msgstr "迁移 \t\t"
 msgid "Button|Cancel"
 msgstr "取消 \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:48
+#: miradi/source/org/miradi/database/DataUpgrader.java:49
 msgid "Project Migration Required"
 msgstr "必须执行项目迁移"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:55
+#: miradi/source/org/miradi/database/DataUpgrader.java:56
 msgid ""
 "A backup archive for this project already exists.Continuing with this "
 "migration will replace the existing backup with a new copy.It is probably "
@@ -143,15 +143,15 @@ msgstr ""
 "已存在该项目的备份文档。继续该移动将会使已存在的备份被替换为新的拷贝。这样做"
 "可能是安全的，除非早先的移动尝试失败。 \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:59
+#: miradi/source/org/miradi/database/DataUpgrader.java:60
 msgid "Button|Replace Backup"
 msgstr "按钮|替换备份 \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:60
+#: miradi/source/org/miradi/database/DataUpgrader.java:61
 msgid "WARNING"
 msgstr "警告"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:75
+#: miradi/source/org/miradi/database/DataUpgrader.java:76
 msgid ""
 "That project is too old to be migrated by this version of Miradi. You can "
 "use Miradi 1.0 to migrate it to a modern data format, and after that it can "
@@ -160,11 +160,11 @@ msgstr ""
 "该项目过于陈旧，无法用本版本Miradi迁移。您可以使用Miradi 1.0将其迁移为新数据"
 "格式，之后就可以用本版本软件打开和迁移了。 \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:91
+#: miradi/source/org/miradi/database/DataUpgrader.java:92
 msgid "Project was migrated to the current data format"
 msgstr "项目被迁移为当前数据格式 \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:93
+#: miradi/source/org/miradi/database/DataUpgrader.java:94
 msgid ""
 "Attempt to migrate project to the current data format FAILED\n"
 "The pre-migration project was archived in: "
@@ -172,7 +172,7 @@ msgstr ""
 "尝试迁移项目为当前数据格式失败\n"
 " 预迁移项目存档于： \t\t"
 
-#: miradi/source/org/miradi/database/DataUpgrader.java:94
+#: miradi/source/org/miradi/database/DataUpgrader.java:95
 msgid ""
 "\n"
 "WARNING: Attempting to open this project again before repairing the problem "
