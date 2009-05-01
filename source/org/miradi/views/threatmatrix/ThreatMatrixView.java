@@ -44,6 +44,7 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.views.CardedView;
+import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.diagram.doers.CloneStressDoer;
 import org.miradi.views.diagram.doers.CreateStressDoer;
 import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
@@ -162,6 +163,12 @@ public class ThreatMatrixView extends CardedView
 	{
 		threatStressRatingManagementPanel.becomeActive();
 		super.becomeInactive();
+	}
+	
+	@Override
+	public MiradiTabContentsPanelInterface getCurrentTabPanel()
+	{
+		return threatStressRatingManagementPanel;
 	}
 
 	@Override

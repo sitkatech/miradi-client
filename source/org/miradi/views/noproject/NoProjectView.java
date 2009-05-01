@@ -25,6 +25,7 @@ import org.miradi.actions.jump.ActionJumpWelcomeCreateStep;
 import org.miradi.actions.jump.ActionJumpWelcomeImportStep;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.umbrella.UmbrellaView;
 
 public class NoProjectView extends UmbrellaView
@@ -33,6 +34,12 @@ public class NoProjectView extends UmbrellaView
 	{
 		super(mainWindow);
 		addDoersToMap();
+	}
+	
+	@Override
+	public MiradiTabContentsPanelInterface getCurrentTabPanel()
+	{
+		return null;
 	}
 	
 	public JToolBar createToolBar()
