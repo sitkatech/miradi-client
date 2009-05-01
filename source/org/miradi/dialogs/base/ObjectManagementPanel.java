@@ -59,9 +59,9 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	
 	public void becomeActive()
 	{
-		updateSplitterLocation();
 		getListPanel().becomeActive();
 		propertiesPanel.becomeActive();
+		updateSplitterLocation();
 	}
 	
 	public void becomeInactive()

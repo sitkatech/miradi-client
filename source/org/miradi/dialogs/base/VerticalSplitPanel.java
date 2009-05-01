@@ -25,6 +25,7 @@ import java.awt.LayoutManager2;
 
 import javax.swing.JScrollPane;
 
+import org.miradi.main.EAM;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
 import org.miradi.views.umbrella.ManagementPanelSplitPane;
@@ -69,7 +70,10 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 	
 	public String getSplitterDescription()
 	{
-		return getPanelDescription();
+		String panelDescription = getPanelDescription();
+		if(panelDescription == null)
+			EAM.logWarning("VerticalSplitPanel splitter description is null: " + getClass().getSimpleName());
+		return panelDescription;
 	}
 	
 	public void setDividerThick()
