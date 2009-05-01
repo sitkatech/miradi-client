@@ -70,14 +70,6 @@ public class SummaryView extends TabbedView
 		return Project.SUMMARY_VIEW_NAME;
 	}
 
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-		
-		teamManagementPanel.updateSplitterLocation();
-		organizationManagementPanel.updateSplitterLocation();
-	}
-	
 	public JToolBar createToolBar()
 	{
 		return new SummaryToolBar(getMainWindow().getActions());
