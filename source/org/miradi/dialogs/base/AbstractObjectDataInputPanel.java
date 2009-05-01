@@ -119,6 +119,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public void dispose()
 	{
+		becomeInactive();
 		project.removeCommandExecutedListener(this);
 		for(AbstractObjectDataInputPanel subPanel : subPanels)
 		{
