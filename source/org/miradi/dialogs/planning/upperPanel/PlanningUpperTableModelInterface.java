@@ -27,8 +27,9 @@ import org.miradi.utils.ColumnTagProvider;
 
 public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, ColumnTagProvider
 {
-	Color getCellBackgroundColor(int column);
-	boolean isCurrencyColumn(int column);
-	boolean isChoiceItemColumn(int findColumnWithinSubTable);
-	boolean isProgressColumn(int findColumnWithinSubTable);
+	public Color getCellBackgroundColor(int column);
+	public boolean isCurrencyColumn(int column);
+	public boolean isChoiceItemColumn(int column);
+	public boolean isProgressColumn(int column);
+	public boolean isWorkUnitColumn(int column); 
 }

@@ -88,6 +88,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	public boolean isWorkUnitColumn(int column)
+	{
+		return false;
+	}
+	
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }

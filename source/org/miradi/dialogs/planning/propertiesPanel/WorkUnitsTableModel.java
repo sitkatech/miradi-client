@@ -226,8 +226,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		setUnits(assignment, effortList, effort, units);
 	}
 
-	private void clearSuperDateUnitColumns(Assignment assignment, DateUnit dateUnit)
-			throws Exception
+	private void clearSuperDateUnitColumns(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		DateUnit superDateUnit = new DateUnit(dateUnit.getDateUnitCode());
 		while(!superDateUnit.isBlank())
@@ -408,6 +407,11 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	public void updateColumnsToShow() throws Exception
 	{
 		restoreDateUnits();
+	}
+	
+	public boolean isWorkUnitColumn(int column)
+	{
+		return getDateUnit(column) != null;
 	}
 	
 	public String getUniqueTableModelIdentifier()
