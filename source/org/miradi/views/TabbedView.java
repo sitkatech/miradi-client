@@ -113,6 +113,7 @@ abstract public class TabbedView extends UmbrellaView
 				EAM.logDebug("Ignoring setting tab selection, setting selection to 0");
 				desiredTab = 0;
 			}
+			validateSoUpdateSplittersWillWork();
 			setTab(desiredTab);
 		}
 		catch (Exception e)
@@ -125,6 +126,11 @@ abstract public class TabbedView extends UmbrellaView
 		}
 
 		forceLayoutSoSplittersWork();
+	}
+
+	private void validateSoUpdateSplittersWillWork()
+	{
+		validate();
 	}
 
 	public void becomeInactive() throws Exception
