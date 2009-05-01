@@ -55,6 +55,20 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		futureStatusPropertiesPanel.dispose();
 		blankPropertiesPanel.dispose();
 	}
+
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		isActive = true;
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		isActive = false;
+		super.becomeInactive();
+	}
 	
 	private void createPropertiesPanels() throws Exception
 	{
@@ -72,16 +86,15 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
-		if(currentPanel != null)
-			currentPanel.becomeInactive();
+		deactivateCurrentPanel();
 		
 		super.setObjectRefs(orefsToUse);
 		currentPanel = findPanel(orefsToUse);
 		removeAll();
 		add(currentPanel, BorderLayout.CENTER);
 
-		if(currentPanel != null)
-			currentPanel.becomeActive();
+		if(isActive)
+			activateCurrentPanel();
 
 		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
 		measurementPropertiesPanel.setObjectRefs(orefsToUse);
@@ -96,6 +109,18 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		// and in TargetViabilityTreePropertiesPanel.java
 		validate();
 		repaint();
+	}
+
+	private void activateCurrentPanel()
+	{
+		if(currentPanel != null)
+			currentPanel.becomeActive();
+	}
+
+	private void deactivateCurrentPanel()
+	{
+		if(currentPanel != null)
+			currentPanel.becomeInactive();
 	}
 	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
@@ -132,6 +157,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
 	private MainWindow mainWindow;
+	private boolean isActive;
 	
 	private AbstractObjectDataInputPanel currentPanel;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;

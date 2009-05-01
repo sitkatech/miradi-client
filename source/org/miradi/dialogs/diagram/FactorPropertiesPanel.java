@@ -93,9 +93,12 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		mainWindow = parent;
 		diagram = diagramToUse;
+		tabs = new FactorPropertiesTabbedPane();
+
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
 		tabChangeHandler = new TabChangeHandler();
+		tabs.addChangeListener(tabChangeHandler);
 
 		getProject().addCommandExecutedListener(this);
 	}
@@ -166,24 +169,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	@Override
 	public void becomeInactive()
 	{
-		if(detailsTab != null)
-			detailsTab.becomeInactive();
-		if(indicatorsTab != null)
-			indicatorsTab.becomeInactive();
-		if(goalsTab != null)
-			goalsTab.becomeInactive();
-		if(objectivesTab != null)
-			objectivesTab.becomeInactive();
-		if(activitiesTab != null)
-			activitiesTab.becomeInactive();
-		if(viabilityTab != null)
-			viabilityTab.becomeInactive();
-		if (simpleViabilityTab != null)
-			simpleViabilityTab.becomeInactive();
-		if (stressTab != null)
-			stressTab.becomeInactive();
-		if (subTargetTab != null)
-			subTargetTab.becomeInactive();
+		deactivateCurrentTab();
 		if(grid != null)
 			grid.becomeInactive();
 		super.becomeInactive();
@@ -223,10 +209,12 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return dialog;
 	}
 
-	private Component createTabbedPane(DiagramFactor diagramFactor) throws Exception
+	private Component rebuildTabs(DiagramFactor diagramFactor) throws Exception
 	{
-		tabs = new FactorPropertiesTabbedPane();
+		deactivateAllTabs();
 		tabs.setFocusable(false);
+		tabs.removeAll();
+		disposeTabs();
 		detailsTab = new FactorSummaryScrollablePanel(mainWindow, diagramFactor);
 		
 		tabs.addTab(detailsTab.getPanelDescription(), detailsTab.getIcon(), detailsTab);
@@ -289,7 +277,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			tabs.addTab(subTargetTab.getPanelDescription(), subTargetTab.getIcon(), subTargetTab);
 		}
 		
-		tabs.addChangeListener(tabChangeHandler);
 		return tabs;
 	}
 
@@ -297,13 +284,45 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		public void stateChanged(ChangeEvent e)
 		{
-			becomeInactive();
-			DisposablePanelWithDescription panel = (DisposablePanelWithDescription)tabs.getSelectedComponent();
-			if(panel != null)
-				panel.becomeActive();
+			deactivateAllTabs();
+			activateCurrentTab();
 		}
+
 	}
 
+	private void activateCurrentTab()
+	{
+		DisposablePanelWithDescription panel = (DisposablePanelWithDescription)tabs.getSelectedComponent();
+		if(panel != null)
+			panel.becomeActive();
+	}
+
+	
+	private void deactivateCurrentTab()
+	{
+		DisposablePanelWithDescription panel = (DisposablePanelWithDescription)tabs.getSelectedComponent();
+		deactivateTab(panel);
+	}
+
+	private void deactivateTab(DisposablePanelWithDescription panel)
+	{
+		if(panel != null)
+			panel.becomeInactive();
+	}
+
+	private void deactivateAllTabs()
+	{
+		deactivateTab(detailsTab);
+		deactivateTab(indicatorsTab);
+		deactivateTab(goalsTab);
+		deactivateTab(objectivesTab);
+		deactivateTab(activitiesTab);
+		deactivateTab(viabilityTab);
+		deactivateTab(simpleViabilityTab);
+		deactivateTab(stressTab);
+		deactivateTab(subTargetTab);
+	}
+	
 	public void selectTab(int tabIdentifier)
 	{
 		switch(tabIdentifier)
@@ -384,12 +403,13 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 	private void rebuildPanel()
 	{
-		disposeTabs();
-		removeAll();
 		try
 		{
+			removeAll();
+			rebuildTabs(currentDiagramFactor);
+
 			add(createLabelBar(currentDiagramFactor),	BorderLayout.BEFORE_FIRST_LINE);
-			add(createTabbedPane(currentDiagramFactor), BorderLayout.CENTER);
+			add(tabs, BorderLayout.CENTER);
 			
 			getFactorPropertiesDialog().pack();
 			becomeActive();
@@ -521,27 +541,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	{
 		//TODO: refactor entire tab add remove mechisisim
 		if (shouldRebuildPanel(event))
-		{
 			rebuildPanel();
-			
-			if(viabilityTab != null)
-				viabilityTab.becomeActive();
-			
-			if (stressTab != null)
-				stressTab.becomeActive();
-			
-			if(subTargetTab != null)
-				subTargetTab.becomeActive();
-			
-			if(goalsTab != null)
-				goalsTab.becomeActive();
-			
-			if(indicatorsTab != null)
-				indicatorsTab.becomeActive();
-			
-			if (simpleViabilityTab != null)
-				simpleViabilityTab.becomeActive();
-		}
 		
 		if (event.isSetDataCommandWithThisTag(Factor.TAG_LABEL)  || event.isSetDataCommandWithThisTag(Factor.TAG_SHORT_LABEL))
 			rebuildFactorChangerComboBox();
