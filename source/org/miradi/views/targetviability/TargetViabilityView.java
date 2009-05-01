@@ -70,22 +70,6 @@ public class TargetViabilityView extends TabbedView
 		addNonScrollingTab(viabilityPanel);
 	}
 
-	@Override
-	public void becomeActive() throws Exception
-	{
-		super.becomeActive();
-		
-		viabilityPanel.becomeActive();
-	}
-	
-	@Override
-	public void becomeInactive() throws Exception
-	{
-		viabilityPanel.becomeInactive();
-		
-		super.becomeInactive();
-	}
-	
 	public void deleteTabs() throws Exception
 	{
 		viabilityPanel.dispose();

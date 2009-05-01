@@ -55,6 +55,20 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 
+	@Override
+	public void becomeActive()
+	{
+		System.out.println("IPP.becomeActive");
+		super.becomeActive();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		System.out.println("IPP.becomeInactive");
+		super.becomeInactive();
+	}
+	
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		super.setObjectRefs(orefsToUse);

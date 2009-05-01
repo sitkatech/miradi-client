@@ -67,6 +67,22 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		updateFieldsFromProject();
 	}
 	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		isActive = true;
+		activateCurrentPanel();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		deactivateCurrentPanel();
+		isActive = false;
+		super.becomeInactive();
+	}
+	
 	public String getPanelDescription()
 	{
 		return EAM.text("Title|Target Viability Properties");
@@ -74,15 +90,14 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
+		deactivateCurrentPanel();
+		
 		super.setObjectRefs(orefsToUse);
-		
-		if (currentCard != null)
-			currentCard.becomeInactive();
-		
 		currentCard = findPanel(orefsToUse);
 		String panelDescription = currentCard.getPanelDescription();
 		cardLayout.show(this, panelDescription);
-		currentCard.becomeActive();
+		if(isActive)
+			activateCurrentPanel();
 
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
@@ -92,6 +107,18 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		// and DirectIndicatorPropertiesPanel.java
 		validate();
 		repaint();
+	}
+	
+	private void activateCurrentPanel()
+	{
+		if(currentCard != null)
+			currentCard.becomeActive();
+	}
+
+	private void deactivateCurrentPanel()
+	{
+		if(currentCard != null)
+			currentCard.becomeInactive();
 	}
 	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
@@ -137,6 +164,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 			reloadSelectedRefs();		
 	}
 
+	private boolean isActive;
 	private CardLayout cardLayout;
 	private AbstractObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
