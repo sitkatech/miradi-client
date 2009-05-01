@@ -25,6 +25,7 @@ import java.io.IOException;
 import org.martus.util.DirectoryLock;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.DirectoryLock.AlreadyLockedException;
+import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.main.EAM;
 import org.miradi.project.ProjectZipper;
@@ -185,6 +186,9 @@ public class DataUpgrader
 			
 			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 39)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion40();
+			
+			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 40)
+				MigrationsForMiradi3.upgradeToVersion41();
 		}
 		finally 
 		{
