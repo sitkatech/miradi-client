@@ -206,9 +206,9 @@ public class Assignment extends BaseObject
 	}
 	
 	@Override
-	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public double getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		return (int) getDateRangeEffortList().getTotalUnitQuantity(dateRangeToUse);
+		return getDateRangeEffortList().getTotalUnitQuantity(dateRangeToUse);
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception

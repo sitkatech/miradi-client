@@ -353,7 +353,7 @@ public class Task extends Factor
 	}
 	
 	@Override
-	public int getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public double getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		if (hasSubTasks())
 			return getWorkUnits(getSubtaskRefs(), dateRangeToUse);
