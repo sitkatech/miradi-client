@@ -115,7 +115,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		restoreTreeState(getExpandedNodeList());
 	}
 
-	public void restoreTreeState(ORefList expandedNodeRefs) throws Exception
+	private void restoreTreeState(ORefList expandedNodeRefs) throws Exception
 	{
 		ignoreNotifications = true;
 		try
