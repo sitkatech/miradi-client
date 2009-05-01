@@ -19,24 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import java.text.ParseException;
-import java.util.Arrays;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
+import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
 public class RemoveAssignmentDoer extends ObjectsDoer
 {
@@ -71,31 +65,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 
 	public static void removeAssignment(Project project, Assignment assignmentToRemove) throws Exception
 	{
-		Vector commands = new Vector();
-
-		commands.addAll(Arrays.asList(assignmentToRemove.createCommandsToClear()));
-		commands.addAll(getCommandsToRemoveAssignmenRefFromBaseObject(project, assignmentToRemove));
-		
-		Command deleteCommand = new CommandDeleteObject(ObjectType.ASSIGNMENT, assignmentToRemove.getId());
-		commands.add(deleteCommand);
-		
-		project.executeCommandsWithoutTransaction((Command[])commands.toArray(new Command[0]));
-	}
-
-	private static Vector<Command> getCommandsToRemoveAssignmenRefFromBaseObject(Project project, Assignment assignmentToRemove) throws ParseException
-	{
-		Vector<Command> commandsToRemoveFromReferrers = new Vector<Command>();
-		ORefList referrerRefs = assignmentToRemove.findObjectsThatReferToUs();
-		for (int index = 0; index < referrerRefs.size(); ++index)
-		{
-			BaseObject baseObject = project.findObject(referrerRefs.get(index));
-			IdList assignmentIds = new IdList(Assignment.getObjectType(), baseObject.getData(BaseObject.TAG_ASSIGNMENT_IDS));
-			if (assignmentIds.contains(assignmentToRemove.getId()))
-			{
-				commandsToRemoveFromReferrers.add(CommandSetObjectData.createRemoveIdCommand(baseObject, BaseObject.TAG_ASSIGNMENT_IDS, assignmentToRemove.getId()));
-			}
-		}
-
-		return commandsToRemoveFromReferrers; 
+		Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, assignmentToRemove, BaseObject.TAG_ASSIGNMENT_IDS);
+		project.executeCommandsWithoutTransaction(commands);
 	}
 }

@@ -19,11 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Vector;
 
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -33,7 +37,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Task;
-import org.miradi.views.diagram.DeleteAnnotationDoer;
+import org.miradi.project.Project;
 import org.miradi.views.umbrella.DeleteActivity;
 import org.miradi.views.umbrella.doers.AbstractDeleteDoer;
 
@@ -101,18 +105,31 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 
 	private void deleteAnnotation(BaseObject selected, String annotationListTag) throws Exception
 	{
+		getProject().executeCommandsAsTransaction(buildCommandsToDeleteAnnotation(getProject(), selected, annotationListTag));
+	}
+	
+	public static Vector<Command> buildCommandsToDeleteAnnotation(Project project, BaseObject selected, String annotationListTag) throws ParseException
+	{
 		Vector commands = new Vector();
 		ORefList ownerRefs = selected.findObjectsThatReferToUs();
 		for (int refIndex = 0; refIndex < ownerRefs.size(); ++refIndex)
 		{
 			ORef ownerRef = ownerRefs.get(refIndex);
-			BaseObject owner = getProject().findObject(ownerRef);
-			commands.add(DeleteAnnotationDoer.buildCommandToRemoveAnnotationFromObject(owner, annotationListTag, selected.getRef()));
+			BaseObject owner = project.findObject(ownerRef);
+			if (owner.doesFieldExist(annotationListTag))
+			{
+				IdList assignmentIds = new IdList(selected.getType(), owner.getData(annotationListTag));
+				if (assignmentIds.contains(selected.getId()))
+				{
+					commands.add(CommandSetObjectData.createRemoveIdCommand(owner, annotationListTag, selected.getId()));
+				}
+			}
 		}
 		
 		commands.addAll(Arrays.asList(selected.createCommandsToClear()));
 		commands.add(new CommandDeleteObject(selected.getRef()));
-		getProject().executeCommandsAsTransaction(commands);
+	
+		return commands;
 	}
 
 	private void deleteTask(BaseObject selected) throws CommandFailedException
