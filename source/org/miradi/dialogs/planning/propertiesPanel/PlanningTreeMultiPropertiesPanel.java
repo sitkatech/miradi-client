@@ -62,6 +62,13 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		createPropertiesPanels();
 	}
 	
+	@Override
+	public void becomeInactive()
+	{
+		super.becomeInactive();
+		diactivateCurrentCard();
+	}
+	
 	private void createPropertiesPanels() throws Exception
 	{
 		goalPropertiesPanel = new GoalPropertiesPanel(getProject(), getMainWindow().getActions(), objectPicker);
@@ -107,8 +114,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		super.setObjectRefs(orefsToUse);
 		
-		if (currentCard != null)
-			currentCard.becomeInactive();
+		diactivateCurrentCard();
 		
 		currentCard = findPanel(orefsToUse);
 		cardLayout.show(this, currentCard.getPanelDescription());
@@ -122,6 +128,12 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		// and DirectIndicatorPropertiesPanel.java
 		validate();
 		repaint();
+	}
+
+	private void diactivateCurrentCard()
+	{
+		if (currentCard != null)
+			currentCard.becomeInactive();
 	}
 	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
