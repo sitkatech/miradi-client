@@ -75,14 +75,12 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 	{
 		super.becomeActive();
 		resourceTable.becomeActive();
-		objectPicker.becomeActive();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
 		resourceTable.becomeInactive();
-		objectPicker.becomeInactive();
 		super.becomeInactive();
 	}
 	

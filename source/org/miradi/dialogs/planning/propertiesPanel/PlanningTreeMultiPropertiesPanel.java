@@ -63,24 +63,31 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	}
 	
 	@Override
-	public void becomeInactive()
-	{
-		super.becomeInactive();
-		diactivateCurrentCard();
-	}
-	
-	private void diactivateCurrentCard()
-	{
-		isActive = false;
-		if (currentCard != null)
-			currentCard.becomeInactive();
-	}
-	
-	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
 		isActive = true;
+		activateCurrentCard();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		deactivateCurrentCard();
+		isActive = false;
+		super.becomeInactive();
+	}
+	
+	private void deactivateCurrentCard()
+	{
+		if (currentCard != null)
+			currentCard.becomeInactive();
+	}
+	
+	private void activateCurrentCard()
+	{
+		if (currentCard != null)
+			currentCard.becomeActive();
 	}
 	
 	private boolean isMultiPropertiesPanelActive()
@@ -133,12 +140,12 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	{
 		super.setObjectRefs(orefsToUse);
 		
-		diactivateCurrentCard();
+		deactivateCurrentCard();
 		
 		currentCard = findPanel(orefsToUse);
 		cardLayout.show(this, currentCard.getPanelDescription());
 		if (isMultiPropertiesPanelActive())
-			currentCard.becomeActive();
+			activateCurrentCard();
 		
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
