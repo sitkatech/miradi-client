@@ -99,8 +99,7 @@ public class FactorTagListEditor extends AbstractListComponent implements Comman
 		
 		sortToKeepOrderInSyncWithDisk(taggedSet);
 		CommandSetObjectData tagFactorCommand = new CommandSetObjectData(taggedObjectSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedSet.toString());
-		if (!tagFactorCommand.isDoNothingCommand(getProject()))
-			getProject().executeCommand(tagFactorCommand);
+		getProject().executeCommand(tagFactorCommand);
 	}
 
 	private void sortToKeepOrderInSyncWithDisk(ORefList taggedSet)
