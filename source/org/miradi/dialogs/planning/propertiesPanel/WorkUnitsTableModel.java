@@ -84,6 +84,12 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	{
 		return getProject().getProjectCalendar();
 	}
+	
+	@Override
+	public String getTableColumnSequenceKey(int modelColumn)
+	{
+		return "WorkUnitTableColumnSeqeunceKey";
+	}
 
 	@Override
 	public String getColumnName(int col)

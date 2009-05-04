@@ -93,6 +93,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
+	public String getTableColumnSequenceKey(int modelColumn)
+	{
+		return getColumnName(modelColumn);
+	}
+	
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }

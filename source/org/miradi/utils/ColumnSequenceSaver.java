@@ -38,26 +38,64 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	public void restoreColumnSequences() throws Exception
 	{
-		CodeList currentColumnTagSequences = getCurrentSequence();		
-		CodeList storedColumnTagSequences = new CodeList(getStoredColumnSequenceCodes());
-		storedColumnTagSequences.retainAll(currentColumnTagSequences);
-		currentColumnTagSequences.subtract(storedColumnTagSequences);
-		
-		CodeList newSequenceList = new CodeList();
-		newSequenceList.addAll(storedColumnTagSequences);
-		newSequenceList.addAll(currentColumnTagSequences);
-		for (int codeIndex = 0; codeIndex < newSequenceList.size(); ++codeIndex)
-		{			
-			int currentLocation = findCurrentTagLocation(newSequenceList.get(codeIndex));
-			if(currentLocation < 0)
-				continue;
-			int destination = Math.min(codeIndex, table.getColumnModel().getColumnCount() - 1);
-			if(currentLocation != destination)
-				table.getColumnModel().moveColumn(currentLocation, destination);
+		int destination = 0;
+		CodeList desiredSequenceCodes = calculateDesiredSequenceCodes();
+		for (int codeIndex = 0; codeIndex < desiredSequenceCodes.size(); ++codeIndex)
+		{	
+			String desiredSequenceCode = desiredSequenceCodes.get(codeIndex);
+			for (int tableColumn = 0; tableColumn < getTableColumnCount(); ++tableColumn)
+			{
+				String thisTag = getColumnSequenceKey(tableColumn);	
+				if (thisTag.equals(desiredSequenceCode))
+				{
+					if(tableColumn != destination)
+					{
+						moveColumn(tableColumn, destination);
+					}
+					
+					++destination;
+				}
+			}
 		}
 	}
 
-	private CodeList getStoredColumnSequenceCodes() throws Exception
+	private CodeList calculateDesiredSequenceCodes() throws Exception
+	{
+		CodeList currentColumnTagSequences = getCurrentSequence();		
+		CodeList storedColumnSequenceCodes = getStoredColumnSequenceCodes();
+		
+		return calculateDesiredSequenceCodes(storedColumnSequenceCodes, currentColumnTagSequences);
+	}
+
+	protected void moveColumn(int tableColumn, int destination)
+	{
+		table.getColumnModel().moveColumn(tableColumn, destination);
+	}
+
+	protected int getColumnModelColumnCount()
+	{
+		return table.getColumnModel().getColumnCount();
+	}
+
+	protected int getTableColumnCount()
+	{
+		return table.getColumnCount();
+	}
+
+	public CodeList calculateDesiredSequenceCodes(CodeList storedColumnSequenceCodes, CodeList currentColumnTagSequences)
+	{
+		CodeList storedColumnTagSequences = new CodeList(storedColumnSequenceCodes);
+		storedColumnTagSequences.retainAll(currentColumnTagSequences);
+		currentColumnTagSequences.subtract(storedColumnTagSequences);
+		
+		CodeList desiredSequenceList = new CodeList();
+		desiredSequenceList.addAll(storedColumnTagSequences);
+		desiredSequenceList.addAll(currentColumnTagSequences);
+		
+		return desiredSequenceList.withoutDuplicates();
+	}
+
+	protected CodeList getStoredColumnSequenceCodes() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.find(getProject(), uniqueTableIdentifier);
 		if (tableSettings == null)
@@ -75,24 +113,10 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return project;
 	}
 
-	private int findCurrentTagLocation(String keyToFind)
-	{
-		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
-		{
-			String thisTag = getColumnSequenceKey(tableColumn);
-			if (thisTag.equals(keyToFind))
-			{
-				return tableColumn;
-			}
-		}
-		
-		return -1;
-	}
-
-	private CodeList getCurrentSequence()
+	protected CodeList getCurrentSequence()
 	{
 		CodeList currentColumnTagSequences = new CodeList();
-		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
+		for (int tableColumn = 0; tableColumn < getTableColumnCount(); ++tableColumn)
 		{	
 			currentColumnTagSequences.add(getColumnSequenceKey(tableColumn));
 		}
@@ -103,7 +127,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	private CodeList getDefaultSequence()
 	{
 		CodeList defaultColumnTagSequence = new CodeList();
-		for (int column = 0; column < table.getColumnCount(); ++column)
+		for (int column = 0; column < getTableColumnCount(); ++column)
 		{
 			String columnTag = getColumnSequenceKey(column);
 			defaultColumnTagSequence.add(columnTag);
@@ -119,7 +143,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		getProject().executeCommand(setColumnSequence);
 	}
 
-	private String getColumnSequenceKey(int tableColumn)
+	protected String getColumnSequenceKey(int tableColumn)
 	{
 		return table.getTableColumnSequenceKey(tableColumn);
 	}

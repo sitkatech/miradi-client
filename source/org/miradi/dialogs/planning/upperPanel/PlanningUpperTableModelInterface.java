@@ -31,5 +31,6 @@ public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, 
 	public boolean isCurrencyColumn(int column);
 	public boolean isChoiceItemColumn(int column);
 	public boolean isProgressColumn(int column);
-	public boolean isWorkUnitColumn(int column); 
+	public boolean isWorkUnitColumn(int column);
+	public String getTableColumnSequenceKey(int modelColumn); 
 }

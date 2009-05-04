@@ -75,4 +75,8 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		return (PlanningUpperTableModelInterface) findTable(column);
 	}
 
+	public String getTableColumnSequenceKey(int modelColumn)
+	{
+		return getCastedModel(modelColumn).getTableColumnSequenceKey(findColumnWithinSubTable(modelColumn));
+	}
 }

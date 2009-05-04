@@ -170,6 +170,7 @@ import org.miradi.ratings.TestStrategyRatingSummary;
 import org.miradi.utils.TestBaseObjectDateAndIdComparator;
 import org.miradi.utils.TestBendPointList;
 import org.miradi.utils.TestCodeList;
+import org.miradi.utils.TestColumnSequenceSaver;
 import org.miradi.utils.TestConproMiradiHabitatCodeMap;
 import org.miradi.utils.TestDateRange;
 import org.miradi.utils.TestDelimitedFileLoader;
@@ -282,6 +283,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestDiagramCorruptionDetector.class));
 		suite.addTest(new TestSuite(TestRtfWriter.class));
 		suite.addTest(new TestSuite(TestThreatStressRatingHelper.class));
+		suite.addTest(new TestSuite(TestColumnSequenceSaver.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));

@@ -104,6 +104,13 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		
 		return super.getValueAt(row, column);
 	}
+	
+	@Override
+	public String getTableColumnSequenceKey(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		return getCastedModel().getTableColumnSequenceKey(modelColumn);
+	}
 
 	private PlanningTreeTable masterTree;
 	private BasicTableCellRendererFactory defaultRendererFactory;
