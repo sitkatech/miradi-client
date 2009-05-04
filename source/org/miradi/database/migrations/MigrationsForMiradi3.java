@@ -20,13 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.database.migrations;
 
 import org.miradi.database.DataUpgrader;
-import org.miradi.main.EAM;
 
 public class MigrationsForMiradi3
 {
 	public static void upgradeToVersion41() throws Exception
 	{
-		EAM.notifyDialog("<HTML>Allow saving work units for more types of date units.</HTML>");
+		//NOTE: Allow saving work units for more types of date units
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 41);
 	}
 }
