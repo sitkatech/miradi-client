@@ -156,10 +156,32 @@ public class CodeList
 	{
 		return data.hashCode();
 	}
+	
+	public void removeCodeAt(int index)
+	{
+		data.removeElementAt(index);
+	}
+	
+	public void insertElementAt(String code, int index)
+	{
+		data.insertElementAt(code, index);
+	}
+	
+	public CodeList withoutDuplicates()
+	{
+		CodeList withoutDuplicates = new CodeList();
+		for(int index = 0; index < size(); ++index)
+		{
+			String code = get(index);
+			if (!withoutDuplicates.contains(code))
+				withoutDuplicates.add(code);
+		}
+		
+		return withoutDuplicates;
+	}
 		
 	private static final String TAG_IDS = "Codes";
 
-	Vector<String> data;
-
+	private Vector<String> data;
 }
 

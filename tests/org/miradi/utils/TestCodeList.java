@@ -142,5 +142,17 @@ public class TestCodeList extends EAMTestCase
 		assertEquals("Found non-existant?", -1, list.find(new String("Role27")));
 
 	}
+	
+	public void testWithoutDuplicates()
+	{
+		CodeList emptyCodeList = new CodeList();
+		assertTrue("should be empty?", emptyCodeList.size() == 0);
+		
+		CodeList withoutDuplicates = new CodeList(new String[]{"A", "B", "C"});
+		assertEquals("list was corrupted?", withoutDuplicates, withoutDuplicates.withoutDuplicates());
+		
+		CodeList withDuplicates = new CodeList(new String[]{"A", "B", "A", "B", "C"});
+		assertEquals("incorrect duplicate list?", withoutDuplicates, withDuplicates.withoutDuplicates());
+	}
 }
 
