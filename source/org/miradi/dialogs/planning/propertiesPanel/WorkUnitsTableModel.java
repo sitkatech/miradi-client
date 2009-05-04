@@ -58,6 +58,10 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableModelIdentifier());
 		Vector<DateUnit> dateUnitsToUse = tableSettings.getDateUnitList();
+		
+		if (!areAllDateUnitsValid(dateUnitsToUse))
+			dateUnitsToUse.clear();
+		
 		if (dateUnitsToUse.isEmpty())
 			dateUnitsToUse.add(new DateUnit());
 		
@@ -66,6 +70,16 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		fireTableStructureChanged();
 	}
 	
+	private boolean areAllDateUnitsValid(Vector<DateUnit> dateUnitsToUse)
+	{
+		for(DateUnit dateUnit : dateUnitsToUse)
+		{
+			if(!dateUnit.isValid())
+				return false;
+		}
+		return true;
+	}
+
 	private ProjectCalendar getProjectCalendar() throws Exception
 	{
 		return getProject().getProjectCalendar();
