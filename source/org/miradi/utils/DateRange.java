@@ -117,6 +117,9 @@ public class DateRange
 		if(startMonth == 1 && nextMonth == 1)
 			return yearString;
 		
+		if(startMonth == endDate.getGregorianMonth())
+			return yearString + "-" + startMonth;
+		
 		if(endDate.getGregorianMonth() != startMonth + 2)
 			return fullDateRangeString();
 		

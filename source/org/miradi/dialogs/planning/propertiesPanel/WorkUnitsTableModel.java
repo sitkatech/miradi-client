@@ -80,18 +80,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 			if (dateUnit.isBlank())
 				return EAM.text("Total");
 			
-			String name = dateUnit.toString();
-
-			if(dateUnit.isQuarter())
-				return name.substring(4);
-
-			if(dateUnit.isMonth())
-				return "M " + dateUnit.getMonth();
-			
-			if(dateUnit.isDay())
-				return Integer.toString(dateUnit.getDay());
-			
-			return name;
+			return getDateRange(dateUnit).toString();
 		}
 		catch(Exception e)
 		{
