@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-04 14:17-0500\n"
+"POT-Creation-Date: 2009-05-04 16:22-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2064,7 +2064,7 @@ msgstr ""
 msgid "Place scope on diagram"
 msgstr ""
 
-#: miradi/source/org/miradi/objecthelpers/DateUnit.java:91
+#: miradi/source/org/miradi/objecthelpers/DateUnit.java:100
 msgid "No date range for date Unit = "
 msgstr ""
 
@@ -6139,11 +6139,11 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:81
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:95
 msgid "Total"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:88
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:102
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
