@@ -38,14 +38,23 @@ public class DateUnit
 	public DateUnit(String dateUnitToUse)
 	{
 		dateUnit = dateUnitToUse;
-		twoDigitFormatter = new DecimalFormat("00");
 	}
 	
+	public static DateUnit createFiscalYear(Integer startingYear, int startingMonth)
+	{
+		return new DateUnit(YEAR_PREFIX + asFourDigitString(startingYear) + "-" + asTwoDigitString(startingMonth));
+	}
+
 	public String getDateUnitCode()
 	{
 		return dateUnit;
 	}
 	
+	public boolean isValid()
+	{
+		return (isBlank() || isYear() || isQuarter() || isMonth() || isDay());
+	}
+
 	public boolean isBlank()
 	{
 		return getDateUnitCode().length() == 0;
@@ -53,7 +62,7 @@ public class DateUnit
 	
 	public boolean isYear()
 	{
-		return getDateUnitCode().matches("\\d\\d\\d\\d");
+		return getDateUnitCode().matches("YEARFROM:\\d\\d\\d\\d-\\d\\d");
 	}
 	
 	public boolean isQuarter()
@@ -119,10 +128,27 @@ public class DateUnit
 
 	private DateRange getYearDateRange() throws Exception
 	{
-		int year = Integer.parseInt(getDateUnitCode());
+		int year = getYearYear();
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(year, 12, 31);
 		return new DateRange(startDate, endDate);
+	}
+
+	private int getYearYear()
+	{
+		return Integer.parseInt(getYearYearString());
+	}
+
+	private String getYearYearString()
+	{
+		int startAt = YEAR_PREFIX.length();
+		return getDateUnitCode().substring(startAt, startAt+4);
+	}
+	
+	private int getYearStartMonth()
+	{
+		int startAt = YEAR_PREFIX.length() + 5;
+		return Integer.parseInt(getDateUnitCode().substring(startAt, startAt+2));
 	}
 	
 	private DateRange getQuarterDateRange() throws Exception
@@ -203,7 +229,7 @@ public class DateUnit
 			return getMonthSuper();
 		
 		if(isQuarter())
-			return new DateUnit(getDateUnitCode().substring(0, 4));
+			return new DateUnit(YEAR_PREFIX + getDateUnitCode().substring(0, 4) + "-01");
 		
 		if(isYear())
 			return new DateUnit("");
@@ -221,9 +247,16 @@ public class DateUnit
 	private Vector<DateUnit> getYearSubDateUnits()
 	{
 		Vector<DateUnit> quarters = new Vector<DateUnit>();
+		int year = getYearYear();
+		int startMonth = getYearStartMonth();
 		for(int index = 0; index < 4; ++index)
 		{
-			quarters.add(new DateUnit(getDateUnitCode() + "Q" + (index+1)));
+			int quarterIndex = (startMonth-1) / 3;
+			int unboundedQuarter = quarterIndex + index;
+			if(unboundedQuarter == 4)
+				++year;
+			int quarter = unboundedQuarter % 4;
+			quarters.add(new DateUnit(asFourDigitString(year) + "Q" + (quarter+1)));
 		}
 		
 		return quarters;
@@ -255,9 +288,14 @@ public class DateUnit
 		return days;
 	}
 
-	private String asTwoDigitString(int numberToFormat)
+	private static String asTwoDigitString(int numberToFormat)
 	{
-		return getTwoDigitFormatter().format(numberToFormat);
+		return new DecimalFormat("00").format(numberToFormat);
+	}
+
+	private static String asFourDigitString(int numberToFormat)
+	{
+		return new DecimalFormat("0000").format(numberToFormat);
 	}
 
 	@Override
@@ -276,11 +314,6 @@ public class DateUnit
 		return getDateUnitCode().toString();
 	}
 	
-	public DecimalFormat getTwoDigitFormatter()
-	{
-		return twoDigitFormatter;
-	}
-		
 	private static final String[][] monthsPerQuarter = { 
 		{"01", "02", "03"}, 
 		{"04", "05", "06"}, 
@@ -288,6 +321,6 @@ public class DateUnit
 		{"10", "11", "12"}, 
 	};
 	
+	private static final String YEAR_PREFIX = "YEARFROM:";
 	private String dateUnit;
-	private DecimalFormat twoDigitFormatter;
 }

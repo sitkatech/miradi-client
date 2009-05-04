@@ -127,7 +127,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	public void testWithYearDateUnit() throws Exception
 	{
-		DateUnit dateUnit = new DateUnit("2006");
+		DateUnit dateUnit = new DateUnit("YEARFROM:2006-01");
 		DateRange dateRange = getProjectCalendar().convertToDateRange(dateUnit);
 		assertEquals("wrong start date?", "2006-01-01", dateRange.getStartDate().toIsoDateString());
 		assertEquals("wrong end date?", "2006-12-31", dateRange.getEndDate().toIsoDateString());
@@ -170,8 +170,8 @@ public class TestProjectCalendar extends TestCaseWithProject
 		DateUnit blankDateUnit = new DateUnit();
 		Vector<DateUnit> subDateUnits = getProjectCalendar().getSubDateUnits(blankDateUnit);
 		assertEquals("wrong sub date units count?", 2, subDateUnits.size());
-		assertTrue("does not contain date?", subDateUnits.contains(new DateUnit("2006")));
-		assertTrue("does not contain date?", subDateUnits.contains(new DateUnit("2007")));
+		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2006, 1)));
+		assertTrue("does not contain date?", subDateUnits.contains(DateUnit.createFiscalYear(2007, 1)));
 	}
 	
 	public void testMultiCalendarBefore1970() throws Exception
