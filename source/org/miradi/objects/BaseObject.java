@@ -518,12 +518,9 @@ abstract public class BaseObject
 	
 	public Double getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
 	{
-		Double totalWorkUnits = null;
+		Double totalWorkUnits = 0.0;
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
-			if (totalWorkUnits == null)
-				totalWorkUnits = 0.0;
-			
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
 			totalWorkUnits += baseObject.getWorkUnits(dateRangeToUse);
 		}

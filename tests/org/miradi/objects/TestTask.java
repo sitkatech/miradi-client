@@ -178,7 +178,10 @@ public class TestTask extends ObjectTestCase
 	
 	public void testGetWorkUnitsForTaskWithSubTasks() throws Exception
 	{
+		DateRange dateRange = new DateRange(createMultiCalendar(2000), createMultiCalendar(2011));
+
 		Task task = createTask();
+		assertEquals("Doesn't default to zero work units?", 0.0, task.getWorkUnits(dateRange));
 		addAssignment(task, 99, 2000, 2010);
 		
 		Task subTask = createTask();
@@ -188,7 +191,6 @@ public class TestTask extends ObjectTestCase
 		addAssignment(subTask, 5, 2000, 2010);
 		addAssignment(subTask, 15, 2005, 2010);
 		
-		DateRange dateRange = new DateRange(createMultiCalendar(2000), createMultiCalendar(2011));
 		assertEquals("wrong subtask work units for date range?", 20.0, task.getWorkUnits(dateRange));
 		
 		addAssignment(subTask, 113, 2015, 2020);
