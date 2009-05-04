@@ -959,6 +959,9 @@ public class Project
 
 	public void executeCommand(Command command) throws UnexpectedNonSideEffectException, CommandFailedException
 	{
+		if (command.isDoNothingCommand(this))
+			return;
+		
 		if (isInCommandSideEffectMode())
 			throw new UnexpectedNonSideEffectException(); 
 
@@ -979,9 +982,6 @@ public class Project
 
 	private boolean internalExecuteCommand(Command command) throws CommandFailedException
 	{
-		if(command.isDoNothingCommand(this))
-			return false;
-		
 		isExecuting = true;
 		try
 		{
@@ -1120,7 +1120,10 @@ public class Project
 	
 	public void executeAsSideEffect(Command command) throws UnexpectedSideEffectException, CommandFailedException
 	{
-		if(!isInCommandSideEffectMode())
+		if (command.isDoNothingCommand(this))
+			return;
+
+		if (!isInCommandSideEffectMode())
 			throw new UnexpectedSideEffectException(command);
 		
 		internalExecuteCommand(command);
