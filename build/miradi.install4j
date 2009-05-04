@@ -39,7 +39,7 @@
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/saxon.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/jing.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jing/bin/isorelax.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
-      <fileEntry mountPoint="95" file="../dist/temp/jars/jgraph/miradi-jgraph.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
+      <fileEntry mountPoint="95" file="../dist/temp/jars/jgraph/miradi-jgraph-5.12.2.2b.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/jcalendar-1.3.2/jcalendar-1.3.2.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="95" file="../dist/temp/jars/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar" overwrite="4" shared="false" mode="644" uninstallMode="0" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/MarineExample-2.4.0.mpz" overwrite="4" shared="false" mode="644" uninstallMode="0" />
