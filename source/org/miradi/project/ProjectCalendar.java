@@ -461,7 +461,8 @@ public class ProjectCalendar implements CommandExecutedListener
 		Vector<Integer> years = dateRange.extractYears();
 		for (int index = 0; index < years.size(); ++index)
 		{
-			dateUnits.add(new DateUnit(years.get(index).toString()));
+			int startingMonth = 1;
+			dateUnits.add(DateUnit.createFiscalYear(years.get(index), startingMonth));
 		}
 		
 		return dateUnits;

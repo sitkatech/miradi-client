@@ -58,7 +58,7 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testAsDateRange() throws Exception
 	{
-		verifyDateUnit(fiscalYearStartJan, "2006-01-01", "2006-12-31");
+		verifyDateUnit(fiscalYearStartJanuary, "2006-01-01", "2006-12-31");
 		
 		verifyDateUnit(quarter, "2009-10-01", "2009-12-31");
 		
@@ -107,15 +107,29 @@ public class TestDateUnit extends TestCaseWithProject
 		}
 	}
 	
-	public void testGetSubDateUnits() throws Exception
+	public void testGetSubDateUnitsForCalendarYear() throws Exception
 	{
-		Vector<DateUnit> yearSubs = fiscalYearStartJan.getSubDateUnits();
-		assertEquals(4, yearSubs.size());
-		assertEquals(new DateUnit("2006Q1"), yearSubs.get(0));
-		assertEquals(new DateUnit("2006Q2"), yearSubs.get(1));
-		assertEquals(new DateUnit("2006Q3"), yearSubs.get(2));
-		assertEquals(new DateUnit("2006Q4"), yearSubs.get(3));
-		
+		Vector<DateUnit> yearSubs = fiscalYearStartJanuary.getSubDateUnits();
+		String[] expected = {"2006Q1", "2006Q2", "2006Q3", "2006Q4", };
+		verifyDateUnits(expected, yearSubs);
+	}
+	
+	private void verifyDateUnits(String[] expectedCodes, Vector<DateUnit>gotDateUnits)
+	{
+		assertEquals(expectedCodes.length, gotDateUnits.size());
+		for(int i = 0; i < expectedCodes.length; ++i)
+			assertEquals(new DateUnit(expectedCodes[i]), gotDateUnits.get(i));
+	}
+	
+	public void testGetSubDateUnitsForFiscalYear() throws Exception
+	{
+		verifyDateUnits(new String[] {"2005Q2", "2005Q3", "2005Q4", "2006Q1", }, fiscalYearStartApril.getSubDateUnits());
+		verifyDateUnits(new String[] {"2005Q3", "2005Q4", "2006Q1", "2006Q2", }, fiscalYearStartJuly.getSubDateUnits());
+		verifyDateUnits(new String[] {"2005Q4", "2006Q1", "2006Q2", "2006Q3", }, fiscalYearStartOctober.getSubDateUnits());
+	}
+	
+	public void testGetSubDateUnitsForQuarter() throws Exception
+	{
 		Vector<DateUnit> quarterSubs = quarter.getSubDateUnits();
 		assertEquals(3, quarterSubs.size());
 		assertEquals(new DateUnit("2009-10"), quarterSubs.get(0));
@@ -128,7 +142,7 @@ public class TestDateUnit extends TestCaseWithProject
 	{
 		assertEquals(false, empty.hasSubDateUnits());
 		assertEquals(false, bogus.hasSubDateUnits());
-		assertEquals(true, fiscalYearStartJan.hasSubDateUnits());
+		assertEquals(true, fiscalYearStartJanuary.hasSubDateUnits());
 		assertEquals(true, quarter.hasSubDateUnits());
 		assertEquals(true, month.hasSubDateUnits());
 	}
@@ -157,8 +171,11 @@ public class TestDateUnit extends TestCaseWithProject
 	{
 		assertEquals(new DateUnit("2005-07"), new DateUnit("2005-07-15").getSuperDateUnit());
 		assertEquals(new DateUnit("2005Q3"), new DateUnit("2005-07").getSuperDateUnit());
-		assertEquals(new DateUnit("2005"), new DateUnit("2005Q3").getSuperDateUnit());
-		assertEquals(new DateUnit(""), new DateUnit("2005").getSuperDateUnit());
+		assertEquals(new DateUnit("YEARFROM:2005-01"), new DateUnit("2005Q3").getSuperDateUnit());
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-01").getSuperDateUnit());
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-04").getSuperDateUnit());
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-07").getSuperDateUnit());
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-10").getSuperDateUnit());
 		
 		try
 		{
@@ -172,7 +189,10 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
-	private final DateUnit fiscalYearStartJan = new DateUnit("2006");
+	private final DateUnit fiscalYearStartJanuary = new DateUnit("YEARFROM:2006-01");
+	private final DateUnit fiscalYearStartApril = new DateUnit("YEARFROM:2005-04");
+	private final DateUnit fiscalYearStartJuly = new DateUnit("YEARFROM:2005-07");
+	private final DateUnit fiscalYearStartOctober = new DateUnit("YEARFROM:2005-10");
 	private final DateUnit quarter = new DateUnit("2009Q4");
 	
 	private final DateUnit month = new DateUnit("2008-12");
