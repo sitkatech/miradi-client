@@ -101,6 +101,9 @@ public class DateRange
 		
 		if(year != endDate.getGregorianYear())
 			return fullDateRangeString();
+		
+		if(startDate.equals(endDate))
+			return startDate.toIsoDateString();
 
 		MultiCalendar nextDate = new MultiCalendar(endDate);
 		nextDate.addDays(1);
@@ -118,7 +121,7 @@ public class DateRange
 			return yearString;
 		
 		if(startMonth == endDate.getGregorianMonth())
-			return yearString + "-" + startMonth;
+			return startDate.toIsoDateString().substring(0, 7);
 		
 		if(endDate.getGregorianMonth() != startMonth + 2)
 			return fullDateRangeString();
