@@ -58,7 +58,7 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testAsDateRange() throws Exception
 	{
-		verifyDateUnit(year, "2006-01-01", "2006-12-31");
+		verifyDateUnit(fiscalYearStartJan, "2006-01-01", "2006-12-31");
 		
 		verifyDateUnit(quarter, "2009-10-01", "2009-12-31");
 		
@@ -109,7 +109,7 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testGetSubDateUnits() throws Exception
 	{
-		Vector<DateUnit> yearSubs = year.getSubDateUnits();
+		Vector<DateUnit> yearSubs = fiscalYearStartJan.getSubDateUnits();
 		assertEquals(4, yearSubs.size());
 		assertEquals(new DateUnit("2006Q1"), yearSubs.get(0));
 		assertEquals(new DateUnit("2006Q2"), yearSubs.get(1));
@@ -128,7 +128,7 @@ public class TestDateUnit extends TestCaseWithProject
 	{
 		assertEquals(false, empty.hasSubDateUnits());
 		assertEquals(false, bogus.hasSubDateUnits());
-		assertEquals(true, year.hasSubDateUnits());
+		assertEquals(true, fiscalYearStartJan.hasSubDateUnits());
 		assertEquals(true, quarter.hasSubDateUnits());
 		assertEquals(true, month.hasSubDateUnits());
 	}
@@ -172,7 +172,7 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	private final DateUnit empty = new DateUnit("");
 	private final DateUnit bogus = new DateUnit("Bogus");
-	private final DateUnit year = new DateUnit("2006");
+	private final DateUnit fiscalYearStartJan = new DateUnit("2006");
 	private final DateUnit quarter = new DateUnit("2009Q4");
 	
 	private final DateUnit month = new DateUnit("2008-12");
