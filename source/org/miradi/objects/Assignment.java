@@ -209,7 +209,7 @@ public class Assignment extends BaseObject
 	@Override
 	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		return getDateRangeEffortList().getSafeTotalUnitQuantity(dateRangeToUse);
+		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception
