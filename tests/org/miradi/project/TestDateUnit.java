@@ -59,6 +59,9 @@ public class TestDateUnit extends TestCaseWithProject
 	public void testAsDateRange() throws Exception
 	{
 		verifyDateUnit(fiscalYearStartJanuary, "2006-01-01", "2006-12-31");
+		verifyDateUnit(fiscalYearStartApril, "2005-04-01", "2006-03-31");
+		verifyDateUnit(fiscalYearStartJuly, "2005-07-01", "2006-06-30");
+		verifyDateUnit(fiscalYearStartOctober, "2005-10-01", "2006-09-30");
 		
 		verifyDateUnit(quarter, "2009-10-01", "2009-12-31");
 		

@@ -129,8 +129,10 @@ public class DateUnit
 	private DateRange getYearDateRange() throws Exception
 	{
 		int year = getYearYear();
-		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
-		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(year, 12, 31);
+		int month = getYearStartMonth();
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(year, month, 1);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(year + 1, month, 1);
+		endDate.addDays(-1);
 		return new DateRange(startDate, endDate);
 	}
 
