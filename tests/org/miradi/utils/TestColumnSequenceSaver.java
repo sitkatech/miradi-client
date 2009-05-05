@@ -36,8 +36,8 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		ColumnSequenceSaver columnSequenceSaver = new ColumnSequenceSaver(getProject(), null, getName());
 		CodeList desiredList = columnSequenceSaver.calculateDesiredSequenceCodes(storedCodeList, currentCodeList);
 		
-		CodeList expendedCodeList = new CodeList(new String[]{"A","C","B","D"}); 
-		assertEquals("new sequence list was calculated incorrectly?", expendedCodeList, desiredList);
+		CodeList expectedCodeList = new CodeList(new String[]{"A","C","B","D"}); 
+		assertEquals("new sequence list was calculated incorrectly?", expectedCodeList, desiredList);
 	}
 
 	public void testRestoreColumnSequences() throws Exception
