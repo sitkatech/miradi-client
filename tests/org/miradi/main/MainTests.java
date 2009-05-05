@@ -88,6 +88,7 @@ import org.miradi.objects.TestDiagramChainObject;
 import org.miradi.objects.TestDiagramContentsObject;
 import org.miradi.objects.TestDiagramLink;
 import org.miradi.objects.TestDiagramObject;
+import org.miradi.objects.TestExpense;
 import org.miradi.objects.TestFactor;
 import org.miradi.objects.TestFactorLink;
 import org.miradi.objects.TestFosProjectData;
@@ -391,6 +392,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTaggedObjectSet.class));
 		suite.addTest(new TestSuite(TestTableSettings.class));
 		suite.addTest(new TestSuite(TestThreatRatingCommentsData.class));
+		suite.addTest(new TestSuite(TestExpense.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

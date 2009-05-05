@@ -47,6 +47,7 @@ import org.miradi.objectpools.DiagramFactorLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.EAMNormalObjectPool;
 import org.miradi.objectpools.EAMObjectPool;
+import org.miradi.objectpools.ExpensePool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.FosProjectDataPool;
 import org.miradi.objectpools.FundingSourcePool;
@@ -157,6 +158,7 @@ public class ObjectManager
 		addNormalPool(new TableSetttingsPool(ida));
 		addNormalPool(new ThreatRatingCommentsDataPool(ida));
 		addNormalPool(new ScopeBoxPool(ida));
+		addNormalPool(new ExpensePool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -428,6 +430,7 @@ public class ObjectManager
 			ObjectType.TABLE_SETTINGS,
 			ObjectType.THREAT_RATING_COMMENTS_DATA,
 			ObjectType.SCOPE_BOX,
+			ObjectType.EXPENSE,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));
