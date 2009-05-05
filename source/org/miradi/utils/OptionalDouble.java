@@ -41,6 +41,11 @@ public class OptionalDouble
 			hasValue = true;
 	}
 	
+	public OptionalDouble addValue(Double doubleToAdd)
+	{
+		return add(new OptionalDouble(doubleToAdd));
+	}
+	
 	public OptionalDouble add(OptionalDouble optionalDoubleToAdd)
 	{ 
 		if (isValidValue(optionalDoubleToAdd) && hasValue)
