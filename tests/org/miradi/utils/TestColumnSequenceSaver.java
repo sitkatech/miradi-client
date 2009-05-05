@@ -43,13 +43,14 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 	public void testRestoreColumnSequences() throws Exception
 	{
 		CodeList expectedSequenceAfterMove0 = new CodeList(new String[]{"D", "D", "C", "B", "A"});
-		verifyRestoreSequenceChange(expectedSequenceAfterMove0, new CodeList(new String[]{"D", "C", "B", }), new CodeList(new String[]{"B", "C", "D", "D","A"}));
+		CodeList currentCodeList = new CodeList(new String[]{"B", "C", "D", "D","A"});
+		verifyRestoreSequenceChange(expectedSequenceAfterMove0, new CodeList(new String[]{"D", "C", "B", }), currentCodeList);
 		
 		CodeList expectedSequenceAfterMove1 = new CodeList(new String[]{"A","C","B","D","D"});
-		verifyRestoreSequenceChange(expectedSequenceAfterMove1, new CodeList(new String[]{"A", "C", "B", }), new CodeList(new String[]{"B", "C", "D", "D","A"}));
+		verifyRestoreSequenceChange(expectedSequenceAfterMove1, new CodeList(new String[]{"A", "C", "B", }), currentCodeList);
 		
 		CodeList expectedSequenceAfterMove2 = new CodeList(new String[]{"A","D","D","C","B"});
-		verifyRestoreSequenceChange(expectedSequenceAfterMove2, new CodeList(new String[]{"A", "D", "C", "B", }), new CodeList(new String[]{"B", "C", "D", "D","A"}));
+		verifyRestoreSequenceChange(expectedSequenceAfterMove2, new CodeList(new String[]{"A", "D", "C", "B", }), currentCodeList);
 	}
 
 	private void verifyRestoreSequenceChange(CodeList expectedSequenceAfterMove, CodeList storedCodeList, CodeList currentCodeList) throws Exception
