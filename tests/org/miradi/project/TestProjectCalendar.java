@@ -187,6 +187,53 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals("1919-01-10", fromDate.toIsoDateString());
 		
 	}
+	
+	public void testGetStartOfFiscalYearContaining() throws Exception
+	{
+		MultiCalendar feb2008 = MultiCalendar.createFromGregorianYearMonthDay(2008, 2, 1);
+		
+		MultiCalendar jan2008 = MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1);
+		MultiCalendar april2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 4, 1);
+		MultiCalendar july2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 7, 1);
+		MultiCalendar oct2007 = MultiCalendar.createFromGregorianYearMonthDay(2007, 10, 1);
+		
+		assertEquals(jan2008, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
+
+		setFiscalYearStartMonth(4);
+		assertEquals(april2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
+
+		setFiscalYearStartMonth(7);
+		assertEquals(july2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
+
+		setFiscalYearStartMonth(10);
+		assertEquals(oct2007, getProjectCalendar().getStartOfFiscalYearContaining(feb2008));
+	}
+
+	private void setFiscalYearStartMonth(int startMonth) throws Exception
+	{
+		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, Integer.toString(startMonth));
+	}
+	
+	public void testGetProjectStartEndDateUnits() throws Exception
+	{
+		MultiCalendar start2008 = MultiCalendar.createFromGregorianYearMonthDay(2008, 1, 1);
+		MultiCalendar end2009 = MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31);
+		DateRange twoCalendarYears = new DateRange(start2008, end2009);
+		Vector<DateUnit> twoYears = getProjectCalendar().getProjectYearsDateUnits(twoCalendarYears);
+		assertEquals(2, twoYears.size());
+		assertEquals(DateUnit.createFiscalYear(2008, 1), twoYears.get(0));
+		assertEquals(DateUnit.createFiscalYear(2009, 1), twoYears.get(1));
+		
+		setFiscalYearStartMonth(7);
+		MultiCalendar startMid2006 = MultiCalendar.createFromGregorianYearMonthDay(2006, 7, 1);
+		MultiCalendar endMid2009 = MultiCalendar.createFromGregorianYearMonthDay(2009, 6, 30);
+		DateRange threeFiscalYears = new DateRange(startMid2006, endMid2009);
+		Vector<DateUnit> threeYears = getProjectCalendar().getProjectYearsDateUnits(threeFiscalYears);
+		assertEquals(3, threeYears.size());
+		assertEquals(DateUnit.createFiscalYear(2006, 7), threeYears.get(0));
+		assertEquals(DateUnit.createFiscalYear(2007, 7), threeYears.get(1));
+		assertEquals(DateUnit.createFiscalYear(2008, 7), threeYears.get(2));
+	}
 
 	private ProjectCalendar getProjectCalendar()
 	{
