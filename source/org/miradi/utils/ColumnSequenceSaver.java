@@ -43,12 +43,13 @@ public class ColumnSequenceSaver extends MouseAdapter
 		for (int codeIndex = 0; codeIndex < desiredSequenceCodes.size(); ++codeIndex)
 		{	
 			String desiredSequenceCode = desiredSequenceCodes.get(codeIndex);
-			destination = findAndMoveColumn(destination, desiredSequenceCode);
+			destination += findAndMoveColumn(destination, desiredSequenceCode);
 		}
 	}
 
-	private int findAndMoveColumn(int destination, String desiredSequenceCode)
+	private int findAndMoveColumn(final int destination, String desiredSequenceCode)
 	{
+		int foundCount = 0;
 		for (int tableColumn = 0; tableColumn < getTableColumnCount(); ++tableColumn)
 		{
 			String thisTag = getColumnSequenceKey(tableColumn);	
@@ -59,11 +60,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 					moveColumn(tableColumn, destination);
 				}
 				
-				++destination;
+				++foundCount;
 			}
 		}
 		
-		return destination;
+		return foundCount;
 	}
 
 	private CodeList calculateDesiredSequenceCodes() throws Exception
