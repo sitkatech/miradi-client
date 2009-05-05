@@ -53,15 +53,13 @@ public class ColumnSequenceSaver extends MouseAdapter
 		for (int tableColumn = 0; tableColumn < getTableColumnCount(); ++tableColumn)
 		{
 			String thisTag = getColumnSequenceKey(tableColumn);	
-			if (thisTag.equals(desiredSequenceCode))
-			{
-				if(tableColumn != destination)
-				{
-					moveColumn(tableColumn, destination + foundCount);
-				}
+			if (!thisTag.equals(desiredSequenceCode))
+				continue;
+			
+			if(tableColumn != destination)
+				moveColumn(tableColumn, destination + foundCount);
 				
-				++foundCount;
-			}
+			++foundCount;
 		}
 		
 		return foundCount;
