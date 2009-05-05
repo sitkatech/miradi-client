@@ -103,6 +103,18 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 	{
 		return findTable(columnIndex).getColumnName(findColumnWithinSubTable(columnIndex));
 	}
+	
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex)
+	{
+		return findTable(columnIndex).isCellEditable(rowIndex, findColumnWithinSubTable(columnIndex));
+	}
+		
+	@Override
+	public void setValueAt(Object value, int rowIndex, int columnIndex)
+	{
+		findTable(columnIndex).setValueAt(value, rowIndex, findColumnWithinSubTable(columnIndex));
+	}
 
 	ChoiceItemTableModel findTable(int column)
 	{
