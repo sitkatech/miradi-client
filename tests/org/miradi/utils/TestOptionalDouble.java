@@ -48,4 +48,19 @@ public class TestOptionalDouble extends EAMTestCase
 		assertTrue("should have value?", returendOptionalDouble3.hasValue());
 		assertEquals("wrong value?", 22.0, returendOptionalDouble3.getValue());
 	}
+	
+	public void testMultiplication()
+	{
+		OptionalDouble optionalDouble = new OptionalDouble();
+		OptionalDouble returnedValue1 = optionalDouble.multiply(new OptionalDouble());
+		assertFalse("should have no value?", returnedValue1.hasValue());
+		
+		OptionalDouble returnedValue2 = optionalDouble.multiply(new OptionalDouble(10.0));
+		assertFalse("should have no value?", returnedValue2.hasValue());
+		
+		OptionalDouble optionalDoubleWithValue = new OptionalDouble(10.0);
+		OptionalDouble returnedValue3 = optionalDoubleWithValue.multiply(new OptionalDouble(10.0));
+		assertTrue("should have value?", returnedValue3.hasValue());
+		assertEquals("wrong value?", 100.0, returnedValue3.getValue());
+	}
 }
