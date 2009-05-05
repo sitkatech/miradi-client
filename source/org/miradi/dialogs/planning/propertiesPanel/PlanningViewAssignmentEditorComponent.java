@@ -40,7 +40,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
-import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class PlanningViewAssignmentEditorComponent extends MultiTablePanel implements CommandExecutedListener
@@ -189,11 +188,8 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		ObjectsActionButton addButton = createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), objectPicker);
-		box.add(addButton);
-		
-		ObjectsActionButton removeButton = createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), resourceTable);
-		box.add(removeButton);
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), objectPicker));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), resourceTable));
 		
 		return box;
 	}
