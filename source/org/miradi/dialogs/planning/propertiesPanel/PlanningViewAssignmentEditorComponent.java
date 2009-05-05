@@ -183,7 +183,7 @@ public class PlanningViewAssignmentEditorComponent extends MultiTablePanel imple
 		selectionController.addTable(workplanTable);
 	}
 	
-	protected JPanel createButtonBar()
+	private JPanel createButtonBar()
 	{
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
