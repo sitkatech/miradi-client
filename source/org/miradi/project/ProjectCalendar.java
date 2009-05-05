@@ -94,10 +94,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		while(planningStartDate.before(planningEndDate))
 		{
 			createQuartersPlustYearlyRange(planningStartDate);
-			planningStartDate = MultiCalendar.createFromGregorianYearMonthDay(
-					planningStartDate.getGregorianYear() + 1, 
-					planningStartDate.getGregorianMonth(), 
-					planningStartDate.getGregorianDay());
+			planningStartDate = getOneYearLater(planningStartDate);
 		}
 	}
 
@@ -426,7 +423,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		if(dateUnit.isBlank())
 			return getProjectStartEndDateRange();
-			
+		
 		return dateUnit.asDateRange();
 	}
 
@@ -447,7 +444,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	{
 		DateRange dateRange = convertToDateRange(dateUnit);
 		if (dateUnit.isBlank())
-			return ProjectCalendar.getProjectStartEndDateUnits(dateRange);
+			return getProjectYearsDateUnits(dateRange);
 		
 		if (dateUnit.hasSubDateUnits())
 			return dateUnit.getSubDateUnits();
@@ -455,17 +452,51 @@ public class ProjectCalendar implements CommandExecutedListener
 		return new Vector<DateUnit>();
 	}
 
-	public static Vector<DateUnit> getProjectStartEndDateUnits(DateRange dateRange)
+	public Vector<DateUnit> getProjectYearsDateUnits(DateRange dateRange)
 	{
 		Vector<DateUnit> dateUnits = new Vector();
-		Vector<Integer> years = dateRange.extractYears();
-		for (int index = 0; index < years.size(); ++index)
+		MultiCalendar start = dateRange.getStartDate();
+		MultiCalendar end = dateRange.getEndDate();
+
+		MultiCalendar startOfFiscalYear = getStartOfFiscalYearContaining(start);
+		while(startOfFiscalYear.before(end))
 		{
-			int startingMonth = 1;
-			dateUnits.add(DateUnit.createFiscalYear(years.get(index), startingMonth));
+			DateUnit year = DateUnit.createFiscalYear(startOfFiscalYear.getGregorianYear(), startOfFiscalYear.getGregorianMonth());
+			dateUnits.add(year);
+			startOfFiscalYear = getOneYearLater(startOfFiscalYear);
 		}
 		
 		return dateUnits;
+	}
+
+	public MultiCalendar getStartOfFiscalYearContaining(MultiCalendar start)
+	{
+		int startYear = start.getGregorianYear();
+		int startMonth = getFiscalYearFirstMonth();
+		MultiCalendar startOfFiscalYear = MultiCalendar.createFromGregorianYearMonthDay(startYear, startMonth, 1);
+		while(startOfFiscalYear.after(start))
+			startOfFiscalYear = getOneYearEarlier(startOfFiscalYear);
+
+		return startOfFiscalYear;
+	}
+
+	private MultiCalendar getOneYearLater(MultiCalendar startOfFiscalYear)
+	{
+		return getShiftedByYears(startOfFiscalYear, 1);
+	}
+
+	private MultiCalendar getOneYearEarlier(MultiCalendar startOfFiscalYear)
+	{
+		return getShiftedByYears(startOfFiscalYear, -1);
+	}
+
+	private MultiCalendar getShiftedByYears(MultiCalendar startOfFiscalYear,
+			int delta)
+	{
+		return MultiCalendar.createFromGregorianYearMonthDay(
+				startOfFiscalYear.getGregorianYear() + delta, 
+				startOfFiscalYear.getGregorianMonth(), 
+				startOfFiscalYear.getGregorianDay());
 	}
 
 	private Project project;
