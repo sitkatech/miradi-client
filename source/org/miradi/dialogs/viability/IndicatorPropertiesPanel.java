@@ -50,7 +50,9 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Indicator.getObjectType(), BaseId.INVALID)));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
-		addSubPanelWithoutTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
+		//FIXME enabled onece the expense properties side tab is working
+		//addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 		
 		updateFieldsFromProject();
 	}

@@ -46,7 +46,9 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
 		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
-		addSubPanelWithoutTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
+		//FIXME enabled onece the expense properties side tab is working
+		//addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 		
 		updateFieldsFromProject();
 	}
