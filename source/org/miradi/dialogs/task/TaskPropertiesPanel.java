@@ -43,7 +43,9 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 			addSubPanelWithTitledBorder(new ActivityFactorVisibilityControlPanel(mainWindow));
 		
 		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Task.getObjectType(), BaseId.INVALID)));		
-		addSubPanelWithoutTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), objectPickerToUse));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), objectPickerToUse));
+		//FIXME enabled onece the expense properties side tab is working
+		//addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), objectPickerToUse));
 		
 		updateFieldsFromProject();
 	}
