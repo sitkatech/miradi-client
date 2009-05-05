@@ -99,7 +99,7 @@ public class DateRangeEffortList
 		return totalUnits;
 	}
 	
-	public OptionalDouble getSafeTotalUnitQuantity(DateRange dateRange)
+	public OptionalDouble getOptionalTotalUnitQuantity(DateRange dateRange)
 	{
 		return new OptionalDouble(getTotalUnitQuantity(dateRange));
 	}
