@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-05 11:07-0500\n"
+"POT-Creation-Date: 2009-05-05 11:16-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6159,6 +6159,11 @@ msgstr "取消 \t\t"
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:29
 msgid "Create"
 msgstr "创建 \t\t"
+
+#: miradi/source/org/miradi/utils/OptionalDouble.java:76
+#: miradi/source/org/miradi/utils/OptionalDouble.java:82
+msgid " has no implementation"
+msgstr ""
 
 #: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:55
 msgid "All on One Page"
