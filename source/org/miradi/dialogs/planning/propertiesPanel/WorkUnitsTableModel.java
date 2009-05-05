@@ -87,7 +87,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	}
 	
 	@Override
-	public String getTableColumnSequenceKey(int modelColumn)
+	public String getColumnGroupCode(int modelColumn)
 	{
 		return ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE;
 	}

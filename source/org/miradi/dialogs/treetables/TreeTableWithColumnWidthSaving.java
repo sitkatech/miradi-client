@@ -49,7 +49,7 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 		getTableHeader().addMouseListener(columnWidthSaver);
 	}
 	
-	public String getTableColumnSequenceKey(int tableColumn)
+	public String getColumnGroupCode(int tableColumn)
 	{
 		return getColumnName(tableColumn);
 	}

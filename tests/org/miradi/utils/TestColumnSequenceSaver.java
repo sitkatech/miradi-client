@@ -73,7 +73,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		}
 
 		@Override
-		protected String getColumnSequenceKey(int tableColumn)
+		protected String getColumnGroupCode(int tableColumn)
 		{
 			return currentCodeList.get(tableColumn);
 		}

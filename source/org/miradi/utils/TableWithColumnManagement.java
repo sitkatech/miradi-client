@@ -23,7 +23,7 @@ import javax.swing.table.TableColumnModel;
 
 public interface TableWithColumnManagement
 {
-	public String getTableColumnSequenceKey(int tableColumn);
+	public String getColumnGroupCode(int tableColumn);
 	public int getColumnCount();
 	public TableColumnModel getColumnModel();
 	public void repaint();
