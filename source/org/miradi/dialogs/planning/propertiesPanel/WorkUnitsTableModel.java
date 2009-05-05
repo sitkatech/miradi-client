@@ -37,6 +37,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
@@ -88,7 +89,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	@Override
 	public String getTableColumnSequenceKey(int modelColumn)
 	{
-		return "WorkUnitTableColumnSeqeunceKey";
+		return ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE;
 	}
 
 	@Override
