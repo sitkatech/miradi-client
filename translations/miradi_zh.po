@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-05 09:19-0500\n"
+"POT-Creation-Date: 2009-05-05 11:07-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -755,7 +755,7 @@ msgstr "不能创建链接 \t\t"
 msgid "Can't link a group to an item it contains"
 msgstr "不能将组链接到其所包含的条目 \t\t"
 
-#: miradi/source/org/miradi/views/TabbedView.java:232
+#: miradi/source/org/miradi/views/TabbedView.java:226
 #: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
 msgid "Instructions"
 msgstr "说明 \t\t"

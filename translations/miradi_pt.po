@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-05 09:19-0500\n"
+"POT-Creation-Date: 2009-05-05 11:07-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -705,7 +705,7 @@ msgstr ""
 msgid "Can't link a group to an item it contains"
 msgstr ""
 
-#: miradi/source/org/miradi/views/TabbedView.java:232
+#: miradi/source/org/miradi/views/TabbedView.java:226
 #: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
 msgid "Instructions"
 msgstr ""
