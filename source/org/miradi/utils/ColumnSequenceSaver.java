@@ -52,7 +52,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		int foundCount = 0;
 		for (int tableColumn = 0; tableColumn < getTableColumnCount(); ++tableColumn)
 		{
-			String thisTag = getColumnSequenceKey(tableColumn);	
+			String thisTag = getColumnGroupCode(tableColumn);	
 			if (!thisTag.equals(desiredSequenceCode))
 				continue;
 			
@@ -124,7 +124,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		CodeList currentColumnTagSequences = new CodeList();
 		for (int tableColumn = 0; tableColumn < getTableColumnCount(); ++tableColumn)
 		{	
-			currentColumnTagSequences.add(getColumnSequenceKey(tableColumn));
+			currentColumnTagSequences.add(getColumnGroupCode(tableColumn));
 		}
 		
 		return currentColumnTagSequences;
@@ -135,7 +135,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		CodeList defaultColumnTagSequence = new CodeList();
 		for (int column = 0; column < getTableColumnCount(); ++column)
 		{
-			String columnTag = getColumnSequenceKey(column);
+			String columnTag = getColumnGroupCode(column);
 			defaultColumnTagSequence.add(columnTag);
 		}
 		
@@ -149,9 +149,9 @@ public class ColumnSequenceSaver extends MouseAdapter
 		getProject().executeCommand(setColumnSequence);
 	}
 
-	protected String getColumnSequenceKey(int tableColumn)
+	protected String getColumnGroupCode(int tableColumn)
 	{
-		return table.getTableColumnSequenceKey(tableColumn);
+		return table.getColumnGroupCode(tableColumn);
 	}
 	
 	public void mouseReleased(MouseEvent event)

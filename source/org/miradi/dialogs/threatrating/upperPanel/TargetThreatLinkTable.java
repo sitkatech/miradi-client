@@ -69,10 +69,10 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 	}
 	
 	@Override
-	public String getTableColumnSequenceKey(int tableColumn)
+	public String getColumnGroupCode(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		String tableColumnSequenceKey = getTargetThreatLinkTableModel().getTableColumnSequenceKey(modelColumn);
+		String tableColumnSequenceKey = getTargetThreatLinkTableModel().getColumnGroupCode(modelColumn);
 		
 		return tableColumnSequenceKey;
 	}

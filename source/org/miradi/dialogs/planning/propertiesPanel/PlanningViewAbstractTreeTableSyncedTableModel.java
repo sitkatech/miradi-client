@@ -93,7 +93,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public String getTableColumnSequenceKey(int modelColumn)
+	public String getColumnGroupCode(int modelColumn)
 	{
 		return getColumnName(modelColumn);
 	}

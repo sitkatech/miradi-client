@@ -91,7 +91,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		}
 	}
 	
-	public String getTableColumnSequenceKey(int tableColumn)
+	public String getColumnGroupCode(int tableColumn)
 	{
 		return getColumnName(tableColumn);
 	}
