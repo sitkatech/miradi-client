@@ -28,7 +28,6 @@ import org.martus.swing.UiScrollPane;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -43,7 +42,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
 //FIXME this class is duplicate and under constrcut
-public class ExpenseEditorComponent extends MultiTablePanel implements CommandExecutedListener
+public class ExpenseEditorComponent extends AbstractCostMultiTablePanel implements CommandExecutedListener
 {
 	public ExpenseEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{

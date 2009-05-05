@@ -28,7 +28,6 @@ import org.martus.swing.UiScrollPane;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -42,7 +41,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningViewAssignmentEditorComponent extends MultiTablePanel implements CommandExecutedListener
+public class PlanningViewAssignmentEditorComponent extends AbstractCostMultiTablePanel implements CommandExecutedListener
 {
 	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
