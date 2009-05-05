@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.Vector;
-
 import org.martus.util.MultiCalendar;
 
 public class DateRange
@@ -99,9 +97,6 @@ public class DateRange
 	{
 		int year = startDate.getGregorianYear();
 		
-		if(year != endDate.getGregorianYear())
-			return fullDateRangeString();
-		
 		if(startDate.equals(endDate))
 			return startDate.toIsoDateString();
 
@@ -119,6 +114,12 @@ public class DateRange
 		String yearString = Integer.toString(year);
 		if(startMonth == 1 && nextMonth == 1)
 			return yearString;
+		
+		if(startMonth == nextMonth && startDate.getGregorianYear()+1 == endDate.getGregorianYear())
+			return "FY " + endDate.toIsoDateString().substring(0, 4);
+		
+		if(year != endDate.getGregorianYear())
+			return fullDateRangeString();
 		
 		if(startMonth == endDate.getGregorianMonth())
 			return startDate.toIsoDateString().substring(0, 7);
@@ -205,19 +206,6 @@ public class DateRange
 		return toString().equals(rawOther.toString());
 	}
 	
-	public Vector<Integer> extractYears()
-	{
-		int startYear = getStartDate().getGregorianYear();
-		int endYear = getEndDate().getGregorianYear();
-		Vector<Integer> years = new Vector<Integer>();
-		for (int year = startYear; year <= endYear; ++year)
-		{
-			years.add(year);
-		}
-		
-		return years;
-	}
-
 	public static DateRange createFromJson(MultiCalendar date1, MultiCalendar date2) throws Exception
 	{
 		if (date1.after(date2))
