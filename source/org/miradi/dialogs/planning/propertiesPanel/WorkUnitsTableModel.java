@@ -164,8 +164,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		if(thisCellEffort != null)
 			return true;
 		
-		//FIXME return assignment.getWorkUnits(dateRange) == 0; not true
-		return true;
+		return !assignment.getWorkUnits(dateRange).hasValue();
 	}
 
 	public Object getValueAt(int row, int column)
@@ -285,7 +284,11 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	
 	public Assignment getAssignment(int row)
 	{
-		return (Assignment) getBaseObjectForRowColumn(row, 0);
+		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
+		if (Assignment.is(baseObjectForRowColumn))
+			return (Assignment) baseObjectForRowColumn;
+		
+		return null;
 	}
 	
 	public RowColumnBaseObjectProvider getProvider()
