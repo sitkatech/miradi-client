@@ -32,7 +32,6 @@ import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableS
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -42,7 +41,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
 //FIXME this class is duplicate and under constrcut
-public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorComponent implements CommandExecutedListener
+public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorComponent
 {
 	public ExpenseEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
