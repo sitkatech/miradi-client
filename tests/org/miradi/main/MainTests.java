@@ -178,6 +178,7 @@ import org.miradi.utils.TestDiagramCorruptionDetector;
 import org.miradi.utils.TestEnhancedJsonObject;
 import org.miradi.utils.TestLogging;
 import org.miradi.utils.TestMiradiMap;
+import org.miradi.utils.TestOptionalDouble;
 import org.miradi.utils.TestPointList;
 import org.miradi.utils.TestRtfWriter;
 import org.miradi.utils.TestStringMap;
@@ -284,6 +285,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestRtfWriter.class));
 		suite.addTest(new TestSuite(TestThreatStressRatingHelper.class));
 		suite.addTest(new TestSuite(TestColumnSequenceSaver.class));
+		suite.addTest(new TestSuite(TestOptionalDouble.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
