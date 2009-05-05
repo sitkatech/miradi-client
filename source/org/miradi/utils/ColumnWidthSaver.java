@@ -63,7 +63,7 @@ public class ColumnWidthSaver extends MouseAdapter
 
 	protected int getColumnWidth(int tableColumn) throws Exception
 	{
-		String columnKey = getColumnWidthKey(tableColumn);
+		String columnKey = getUniqueColumnCode(tableColumn);
 		
 		String columnWidthAsString = "";
 		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueTableIdentifier());
@@ -133,7 +133,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		for (int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{		
 			TableColumn column = table.getColumnModel().getColumn(tableColumn);
-			columnWidthMap.add(getColumnWidthKey(tableColumn), Integer.toString(column.getWidth()));
+			columnWidthMap.add(getUniqueColumnCode(tableColumn), Integer.toString(column.getWidth()));
 		}
 		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableIdentifier());
@@ -146,7 +146,7 @@ public class ColumnWidthSaver extends MouseAdapter
 		return project;
 	}
 	
-	private String getColumnWidthKey(int tableColumn)
+	private String getUniqueColumnCode(int tableColumn)
 	{
 		return table.getColumnName(tableColumn);
 	}
