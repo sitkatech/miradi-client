@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.assignment;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAssignmentEditorComponent;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentEditorComponent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -32,7 +32,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), objectType);
 		
-		assignmentEditor = new PlanningViewAssignmentEditorComponent(mainWindowToUse, picker);
+		assignmentEditor = new AssignmentEditorComponent(mainWindowToUse, picker);
 		add(assignmentEditor);
 		updateFieldsFromProject();
 	}
@@ -71,5 +71,5 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanel
 		return EAM.text("Assignments");
 	}
 	
-	private PlanningViewAssignmentEditorComponent assignmentEditor;
+	private AssignmentEditorComponent assignmentEditor;
 }
