@@ -67,7 +67,7 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 		getProject().removeCommandExecutedListener(this);
 		
 		resourceTable.dispose();
-		workplanTable.dispose();
+		workUnitsTable.dispose();
 	}
 	
 	@Override
@@ -100,16 +100,16 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 		}
 
 		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
-		workPlanModel.setObjectRefs(hierarchyToSelectedRef);
+		workUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
 		
 		resourceTableModel.fireTableDataChanged();
-		workPlanModel.fireTableDataChanged();
+		workUnitsTableModel.fireTableDataChanged();
 	}
 	
 	private void savePendingEdits()
 	{
 		resourceTable.stopCellEditing();
-		workplanTable.stopCellEditing();
+		workUnitsTable.stopCellEditing();
 	}
 
 	private void createTables() throws Exception
@@ -117,8 +117,8 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 		resourceTableModel = new PlanningViewResourceTableModel(getProject());
 		resourceTable = new PlanningViewResourceTable(mainWindow, resourceTableModel);
 		
-		workPlanModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
-		workplanTable = new WorkUnitsTable(mainWindow, workPlanModel);		
+		workUnitsTableModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
+		workUnitsTable = new WorkUnitsTable(mainWindow, workUnitsTableModel);		
 	}
 	
 	private void addTables()
@@ -126,7 +126,7 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 		OneRowPanel tables = new OneRowPanel();
 
 		addTableToPanel(tables, resourceTable);
-		addToHorizontalController(addTableToPanel(tables, workplanTable));
+		addToHorizontalController(addTableToPanel(tables, workUnitsTable));
 		
 		add(tables, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
@@ -181,7 +181,7 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 	protected void addTablesToSelectionController()
 	{
 		selectionController.addTable(resourceTable);
-		selectionController.addTable(workplanTable);
+		selectionController.addTable(workUnitsTable);
 	}
 	
 	private JPanel createButtonBar()
@@ -219,7 +219,7 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 
 	private void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
-		workPlanModel.restoreDateUnits();
+		workUnitsTableModel.restoreDateUnits();
 	}
 
 	private void dataWasChanged() throws Exception
@@ -229,8 +229,8 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 		resourceTable.rebuildColumnEditorsAndRenderers();
 		resourceTable.repaint();
 		
-		workplanTable.invalidate();
-		workplanTable.repaint();
+		workUnitsTable.invalidate();
+		workUnitsTable.repaint();
 	}
 	
 	private void setRef(ORef ref)
@@ -242,7 +242,7 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
 		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container
 		//that way we just loop through the tbales.  
-		workplanTable.stopCellEditing();
+		workUnitsTable.stopCellEditing();
 		
 		resourceTableModel.setBaseObject(baseObject);
 	}
@@ -255,10 +255,10 @@ public class ExpenseEditorComponent extends MultiTablePanel implements CommandEx
 	private MainWindow mainWindow;
 	
 	private PlanningViewResourceTable resourceTable;
-	private WorkUnitsTable workplanTable;
+	private WorkUnitsTable workUnitsTable;
 	
 	private PlanningViewResourceTableModel resourceTableModel;
-	private WorkUnitsTableModel workPlanModel;
+	private WorkUnitsTableModel workUnitsTableModel;
 	
 	private ObjectPicker objectPicker;
 }
