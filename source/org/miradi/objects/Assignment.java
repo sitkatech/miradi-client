@@ -209,8 +209,7 @@ public class Assignment extends BaseObject
 	@Override
 	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		//FIXME getTotalUnitQuantity return 0.0,  make sure it should return 0 and not a OptionalDouble
-		return new OptionalDouble(getDateRangeEffortList().getTotalUnitQuantity(dateRangeToUse));
+		return getDateRangeEffortList().getSafeTotalUnitQuantity(dateRangeToUse);
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception
