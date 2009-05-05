@@ -42,7 +42,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
 //FIXME this class is duplicate and under constrcut
-public class ExpenseEditorComponent extends AbstractCostMultiTablePanel implements CommandExecutedListener
+public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorComponent implements CommandExecutedListener
 {
 	public ExpenseEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{

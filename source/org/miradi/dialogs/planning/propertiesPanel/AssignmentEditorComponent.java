@@ -41,7 +41,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class AssignmentEditorComponent extends AbstractCostMultiTablePanel implements CommandExecutedListener
+public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComponent implements CommandExecutedListener
 {
 	public AssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
