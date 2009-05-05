@@ -30,7 +30,6 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.DraftStrategyIcon;
