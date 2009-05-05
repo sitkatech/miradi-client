@@ -41,9 +41,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class PlanningViewAssignmentEditorComponent extends AbstractCostMultiTablePanel implements CommandExecutedListener
+public class AssignmentEditorComponent extends AbstractCostMultiTablePanel implements CommandExecutedListener
 {
-	public PlanningViewAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
+	public AssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
