@@ -181,7 +181,7 @@ public class TestTask extends ObjectTestCase
 		DateRange dateRange = new DateRange(createMultiCalendar(2000), createMultiCalendar(2011));
 
 		Task task = createTask();
-		assertFalse("Should not have a value?", task.getWorkUnits(dateRange).hasValue());
+		assertFalse("Empty task has work unit values?", task.getWorkUnits(dateRange).hasValue());
 		addAssignment(task, 99, 2000, 2010);
 		
 		Task subTask = createTask();
