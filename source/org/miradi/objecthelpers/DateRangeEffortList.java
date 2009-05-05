@@ -27,6 +27,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 public class DateRangeEffortList
 {
@@ -96,6 +97,11 @@ public class DateRangeEffortList
 				totalUnits += effort.getUnitQuantity();
 		}
 		return totalUnits;
+	}
+	
+	public OptionalDouble getSafeTotalUnitQuantity(DateRange dateRange)
+	{
+		return new OptionalDouble(getTotalUnitQuantity(dateRange));
 	}
 	
 	public double getTotalUnitQuantity()
