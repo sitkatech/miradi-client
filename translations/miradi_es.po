@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-05 14:46-0500\n"
+"POT-Creation-Date: 2009-05-05 16:28-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -974,7 +974,8 @@ msgid "Button|Save"
 msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewAssignmentEditorComponent.java:219
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseEditorComponent.java:214
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentEditorComponent.java:213
 #, fuzzy
 msgid "An unexpected error has occurred"
 msgstr "An unexpected error has occurred"
@@ -4750,6 +4751,14 @@ msgstr "Crear cuadro de grupo"
 msgid "TT|Create a Group Box"
 msgstr "Crear un cuadro de grupo"
 
+#: miradi/source/org/miradi/actions/ActionAssignExpense.java:34
+msgid "Action|Assign Expense"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionAssignExpense.java:39
+msgid "TT|Assign an expense"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionResourceListAdd.java:34
 msgid "Action|Manage|Add Resource"
 msgstr "Agregar recurso"
@@ -5109,6 +5118,14 @@ msgstr ""
 #: miradi/source/org/miradi/actions/ActionCreateConceptualModel.java:35
 msgid "Action|Create Conceptual Model Page"
 msgstr "Página Crear modelo conceptual"
+
+#: miradi/source/org/miradi/actions/ActionRemoveExpense.java:34
+msgid "Action|Remove Expense"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionRemoveExpense.java:39
+msgid "TT|Remove expense from list"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteStress.java:35
 msgid "Action|Delete Stress"
@@ -6457,6 +6474,10 @@ msgstr "Amenazas"
 msgid "Targets"
 msgstr "Targets"
 
+#: miradi/source/org/miradi/dialogs/expense/ExpensesPropertiesPanel.java:71
+msgid "Expenses"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:46
 #, fuzzy
@@ -6499,7 +6520,7 @@ msgstr "Métodos"
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:141
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:129
 msgid "Summary"
@@ -6509,7 +6530,7 @@ msgstr "Resumen"
 msgid "Viability Ratings"
 msgstr "Calificaciones de viabilidad"
 
-#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:75
+#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:77
 msgid "Title|Indicator Properties"
 msgstr "Propiedades del indicador"
 
@@ -7013,7 +7034,7 @@ msgstr "Propiedades del factor"
 msgid "Related Items"
 msgstr "Elementos relacionados"
 
-#: miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:56
+#: miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:58
 msgid "Title|Strategy Properties"
 msgstr "Propiedades de la estrategia"
 
