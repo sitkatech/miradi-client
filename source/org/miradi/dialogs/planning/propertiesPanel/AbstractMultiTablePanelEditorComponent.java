@@ -22,9 +22,9 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.main.MainWindow;
 
-abstract public class AbstractCostMultiTablePanel extends MultiTablePanel
+abstract public class AbstractMultiTablePanelEditorComponent extends MultiTablePanel
 {
-	public AbstractCostMultiTablePanel(MainWindow mainWindowToUse)
+	public AbstractMultiTablePanelEditorComponent(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 	}
