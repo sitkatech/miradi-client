@@ -335,6 +335,9 @@ abstract public class BaseObject
 			case ObjectType.SCOPE_BOX:
 				return new ScopeBox(objectManager, new FactorId(idAsInt), json);
 				
+			case ObjectType.EXPENSE:
+				return new Expense(objectManager, idAsInt, json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}
