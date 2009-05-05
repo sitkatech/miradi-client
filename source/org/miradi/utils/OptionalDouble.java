@@ -77,9 +77,15 @@ public class OptionalDouble
 	}
 	
 	@Override
+	public String toString()
+	{
+		throw new RuntimeException("OptionalDouble.toString()" + EAM.text(" has no implementation"));
+	}
+	
+	@Override
 	public int hashCode()
 	{
-		throw new RuntimeException("OptionalDouble.hashCode()" + EAM.text(" has no implementation"));
+		return optionalDouble.hashCode();
 	}
 	
 	private boolean hasValue;

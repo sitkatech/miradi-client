@@ -44,6 +44,7 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.StringMapData;
 
 public class Indicator extends BaseObject
@@ -135,7 +136,7 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	public Double getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		if (getMethodRefs().isEmpty())
 			return super.getWorkUnits(dateRangeToUse);

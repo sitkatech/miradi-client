@@ -64,6 +64,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.InvalidNumberException;
+import org.miradi.utils.OptionalDouble;
 
 abstract public class BaseObject
 {
@@ -511,18 +512,18 @@ abstract public class BaseObject
 		return 1;
 	}
 	
-	public Double getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		return getWorkUnits(getAssignmentRefs(), dateRangeToUse);
 	}
 	
-	public Double getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
 	{
-		Double totalWorkUnits = 0.0;
+		OptionalDouble totalWorkUnits = new OptionalDouble();
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			totalWorkUnits += baseObject.getWorkUnits(dateRangeToUse);
+			totalWorkUnits = totalWorkUnits.add(baseObject.getWorkUnits(dateRangeToUse));
 		}
 		
 		return totalWorkUnits;

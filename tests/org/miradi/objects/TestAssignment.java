@@ -49,7 +49,7 @@ public class TestAssignment extends ObjectTestCase
 	public void testGetWorkUnits() throws Exception
 	{
 		Assignment assignment = getProject().createAssignment();
-		assertEquals("Doesn't default to zero work units?", 0.0, assignment.getWorkUnits(dateRange1));
+		assertEquals("Doesn't default to zero work units?", 0.0, assignment.getWorkUnits(dateRange1).getValue());
 
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		dateRangeEffortList.add(createDateRangeEffort(2, dateRange1));
@@ -57,11 +57,11 @@ public class TestAssignment extends ObjectTestCase
 
 		getProject().fillObjectUsingCommand(assignment, Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 
-		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateRange1));
-		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateRange2));
+		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateRange1).getValue());
+		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateRange2).getValue());
 		
 		DateRange totalProjectDateRange = DateRange.combine(dateRange1, dateRange2);
-		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateRange));
+		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateRange).getValue());
 	}
 	
 	public DateRangeEffort createDateRangeEffort(int unitQuantatiy, DateRange dateRange) throws Exception

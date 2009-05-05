@@ -42,6 +42,7 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 
 public class Strategy extends Factor
@@ -264,7 +265,7 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	public Double getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		if (getActivityRefs().isEmpty())
 			return super.getWorkUnits(dateRangeToUse);
