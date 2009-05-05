@@ -49,7 +49,7 @@ public class TestAssignment extends ObjectTestCase
 	public void testGetWorkUnits() throws Exception
 	{
 		Assignment assignment = getProject().createAssignment();
-		assertFalse("Should not have a value?", assignment.getWorkUnits(dateRange1).hasValue());
+		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateRange1).hasValue());
 
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		dateRangeEffortList.add(createDateRangeEffort(2, dateRange1));
