@@ -88,20 +88,24 @@ public class DateRangeEffortList
 	
 	public double getTotalUnitQuantity(DateRange boundryDateRange)
 	{
-		double totalUnits = 0.0;
+		OptionalDouble totalUnitQuantity = getOptionalTotalUnitQuantity(boundryDateRange);
+		if (totalUnitQuantity.hasValue())
+			return totalUnitQuantity.getValue();
+		
+		return 0.0;
+	}
+	
+	public OptionalDouble getOptionalTotalUnitQuantity(DateRange dateRangeToUse)
+	{
+		OptionalDouble totalUnits = new OptionalDouble();
 		for (int i = 0; i < data.size(); i++)
 		{
 			DateRangeEffort effort = data.get(i);
 			DateRange dateRange = effort.getDateRange();
-			if (boundryDateRange.contains(dateRange))
-				totalUnits += effort.getUnitQuantity();
+			if (dateRangeToUse.contains(dateRange))
+				totalUnits = totalUnits.addValue(effort.getUnitQuantity());
 		}
 		return totalUnits;
-	}
-	
-	public OptionalDouble getOptionalTotalUnitQuantity(DateRange dateRange)
-	{
-		return new OptionalDouble(getTotalUnitQuantity(dateRange));
 	}
 	
 	public double getTotalUnitQuantity()
