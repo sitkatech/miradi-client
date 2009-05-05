@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-05 12:04-0500\n"
+"POT-Creation-Date: 2009-05-05 14:46-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -5866,8 +5866,7 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: miradi/source/org/miradi/utils/OptionalDouble.java:76
-#: miradi/source/org/miradi/utils/OptionalDouble.java:82
+#: miradi/source/org/miradi/utils/OptionalDouble.java:94
 msgid " has no implementation"
 msgstr ""
 
