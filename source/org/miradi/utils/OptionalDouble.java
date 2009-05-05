@@ -57,6 +57,11 @@ public class OptionalDouble
 		return new OptionalDouble(getValue());
 	}
 	
+	public OptionalDouble multiplyValue(Double doubleToMultiply)
+	{
+		return multiply(new OptionalDouble(doubleToMultiply));
+	}
+	
 	public OptionalDouble multiply(OptionalDouble optionalDoubleToMultiply)
 	{
 		if (isValidValue(optionalDoubleToMultiply) && hasValue())
