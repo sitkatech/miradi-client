@@ -33,11 +33,16 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 	{
 		CodeList storedCodeList = new CodeList(new String[]{"A", "C", "B", });
 		CodeList currentCodeList = new CodeList(new String[]{"B", "C", "D", "D","A"});
-		ColumnSequenceSaver columnSequenceSaver = new ColumnSequenceSaver(getProject(), null, "uniqueIdentifierForTesting");
+		ColumnSequenceSaver columnSequenceSaver = new ColumnSequenceSaver(getProject(), null, getUniqueIdentifierForTesting());
 		CodeList desiredList = columnSequenceSaver.calculateDesiredSequenceCodes(storedCodeList, currentCodeList);
 		
 		CodeList expendedCodeList = new CodeList(new String[]{"A","C","B","D"}); 
 		assertEquals("new sequence list was calculated incorrectly?", expendedCodeList, desiredList);
+	}
+
+	private String getUniqueIdentifierForTesting()
+	{
+		return "uniqueIdentifierForTesting";
 	}
 	
 	public void testRestoreColumnSequences() throws Exception
@@ -65,7 +70,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 	{
 		public ColumnSequenceSaverForTesting(Project projectToUse, CodeList storedCodeListToUse, CodeList currentCodeListToUse)
 		{
-			super(projectToUse, null, "uniqueIdentifierForTesting");
+			super(projectToUse, null, getUniqueIdentifierForTesting());
 			
 			storedCodeList = storedCodeListToUse;
 			currentCodeList = currentCodeListToUse;
