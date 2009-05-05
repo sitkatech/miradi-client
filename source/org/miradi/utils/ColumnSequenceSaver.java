@@ -57,7 +57,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 			{
 				if(tableColumn != destination)
 				{
-					moveColumn(tableColumn, destination);
+					moveColumn(tableColumn, destination + foundCount);
 				}
 				
 				++foundCount;
