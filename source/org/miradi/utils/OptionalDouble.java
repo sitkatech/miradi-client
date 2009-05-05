@@ -48,7 +48,7 @@ public class OptionalDouble
 	
 	public OptionalDouble add(OptionalDouble optionalDoubleToAdd)
 	{ 
-		if (isValidValue(optionalDoubleToAdd) && hasValue)
+		if (isValidValue(optionalDoubleToAdd) && hasValue())
 			return new OptionalDouble(optionalDouble + optionalDoubleToAdd.getValue()); 
 
 		if (isValidValue(optionalDoubleToAdd))
@@ -56,13 +56,21 @@ public class OptionalDouble
 		
 		return new OptionalDouble(getValue());
 	}
+	
+	public OptionalDouble multiply(OptionalDouble optionalDoubleToMultiply)
+	{
+		if (isValidValue(optionalDoubleToMultiply) && hasValue())
+			return new OptionalDouble(optionalDoubleToMultiply.getValue() * getValue());
+		
+		return new OptionalDouble();
+	}
 
 	private boolean isValidValue(OptionalDouble optionalDoubleToUse)
 	{
 		if (optionalDoubleToUse == null)
 			return false;
 		
-		return optionalDoubleToUse.hasValue;
+		return optionalDoubleToUse.hasValue();
 	}
 	
 	public boolean hasValue()
