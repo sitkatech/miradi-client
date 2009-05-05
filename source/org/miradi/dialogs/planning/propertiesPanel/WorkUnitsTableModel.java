@@ -44,6 +44,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
+import org.miradi.utils.OptionalDouble;
 
 public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
 {
@@ -163,24 +164,13 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		if(thisCellEffort != null)
 			return true;
 		
-		return (assignment.getWorkUnits(dateRange) == 0);
+		//FIXME return assignment.getWorkUnits(dateRange) == 0; not true
+		return true;
 	}
 
 	public Object getValueAt(int row, int column)
 	{
-		try	
-		{
-			BaseObject baseObject = getBaseObjectForRowColumn(row, column);
-			DateRange dateRange = getDateRange(column);
-			
-			return baseObject.getWorkUnits(dateRange);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-	
-		return "";
+		return getChoiceItemAt(row, column);
 	}
 
 	@Override
@@ -412,11 +402,28 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		Object valueAt = getValueAt(row, column);
-		if (valueAt == null)
-			return new EmptyChoiceItem();
+		OptionalDouble optionalDouble = getOptionalDoubleAt(row, column);
+		if (optionalDouble.hasValue())
+			return new TaglessChoiceItem(optionalDouble.getValue());
 		
-		return new TaglessChoiceItem(valueAt);
+		return new EmptyChoiceItem();
+	}
+	
+	private OptionalDouble getOptionalDoubleAt(int row, int column)
+	{
+		try	
+		{
+			BaseObject baseObject = getBaseObjectForRowColumn(row, column);
+			DateRange dateRange = getDateRange(column);
+			
+			return baseObject.getWorkUnits(dateRange);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+		}
+	
+		return new OptionalDouble();
 	}
 	
 	public void updateColumnsToShow() throws Exception

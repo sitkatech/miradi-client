@@ -33,6 +33,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 public class Assignment extends BaseObject
 {
@@ -206,9 +207,10 @@ public class Assignment extends BaseObject
 	}
 	
 	@Override
-	public Double getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		return getDateRangeEffortList().getTotalUnitQuantity(dateRangeToUse);
+		//FIXME getTotalUnitQuantity return 0.0,  make sure it should return 0 and not a OptionalDouble
+		return new OptionalDouble(getDateRangeEffortList().getTotalUnitQuantity(dateRangeToUse));
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception

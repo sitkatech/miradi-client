@@ -39,6 +39,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 public class Task extends Factor
 {
@@ -353,7 +354,7 @@ public class Task extends Factor
 	}
 	
 	@Override
-	public Double getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		if (hasSubTasks())
 			return getWorkUnits(getSubtaskRefs(), dateRangeToUse);
