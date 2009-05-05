@@ -20,9 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.MainWindow;
 
-abstract public class AbstractMultiTablePanelEditorComponent extends MultiTablePanel
+abstract public class AbstractMultiTablePanelEditorComponent extends MultiTablePanel  implements CommandExecutedListener
 {
 	public AbstractMultiTablePanelEditorComponent(MainWindow mainWindowToUse)
 	{
