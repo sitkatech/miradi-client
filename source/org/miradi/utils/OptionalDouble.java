@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import org.miradi.main.EAM;
+
 public class OptionalDouble
 {	
 	public OptionalDouble()
@@ -66,6 +68,18 @@ public class OptionalDouble
 	public Double getValue()
 	{
 		return optionalDouble;
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		throw new RuntimeException("OptionalDouble.equals()" + EAM.text(" has no implementation"));
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		throw new RuntimeException("OptionalDouble.hashCode()" + EAM.text(" has no implementation"));
 	}
 	
 	private boolean hasValue;
