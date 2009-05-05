@@ -110,12 +110,22 @@ public class DateRangeEffortList
 	
 	public double getTotalUnitQuantity()
 	{
-		double totalUnits = 0.0;
+		OptionalDouble totalUnitQuantity = getOptionalTotalUnitQuantity();
+		if (totalUnitQuantity.hasValue())
+			return totalUnitQuantity.getValue();
+		
+		return 0.0;
+	}
+	
+	public OptionalDouble getOptionalTotalUnitQuantity()
+	{
+		OptionalDouble totalUnits = new OptionalDouble();
 		for (int i = 0; i < data.size(); i++)
 		{
 			DateRangeEffort effort = data.get(i);
-			totalUnits += effort.getUnitQuantity();
+			totalUnits = totalUnits.addValue(effort.getUnitQuantity());
 		}
+		
 		return totalUnits;
 	}
 		
