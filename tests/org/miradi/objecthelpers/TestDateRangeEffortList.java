@@ -119,11 +119,17 @@ public class TestDateRangeEffortList extends EAMTestCase
 		assertEquals(7.0, mainList.getTotalUnitQuantity());
 
 		DateRangeEffortList list5 = new DateRangeEffortList();
-		DateRangeEffort month = createMonthDateRangeEffort(2007, 5, 16);
+		int unitsForMonth = 16;
+		DateRangeEffort month = createMonthDateRangeEffort(2007, 5, unitsForMonth);
 		list5.add(month);
 		mainList.mergeAdd(list5, projectDateRange);
 		DateRange expectedDateRange = DateRange.combine(dre2006.getDateRange(), month.getDateRange());
-		double expectedUnitQuantity = dre2006.getUnitQuantity() + month.getUnitQuantity();
+		double expectedUnitQuantity = dre2006.getUnitQuantity() + unitsForMonth;
+		assertEquals(expectedDateRange, mainList.getCombinedDateRange());
+		assertEquals(expectedUnitQuantity, mainList.getTotalUnitQuantity());
+		
+		mainList.mergeAdd(list5, projectDateRange);
+		expectedUnitQuantity += unitsForMonth;
 		assertEquals(expectedDateRange, mainList.getCombinedDateRange());
 		assertEquals(expectedUnitQuantity, mainList.getTotalUnitQuantity());
 	}
