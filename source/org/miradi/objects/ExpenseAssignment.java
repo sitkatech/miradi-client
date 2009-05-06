@@ -27,15 +27,15 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class Expense extends BaseObject
+public class ExpenseAssignment extends BaseObject
 {
-	public Expense(ObjectManager objectManager, BaseId idToUse)
+	public ExpenseAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, idToUse);
 		clear();
 	}
 		
-	public Expense(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	public ExpenseAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
 	}
@@ -81,12 +81,12 @@ public class Expense extends BaseObject
 		return objectType == getObjectType();
 	}
 	
-	public static Expense find(ObjectManager objectManager, ORef expenseRef)
+	public static ExpenseAssignment find(ObjectManager objectManager, ORef expenseRef)
 	{
-		return (Expense) objectManager.findObject(expenseRef);
+		return (ExpenseAssignment) objectManager.findObject(expenseRef);
 	}
 	
-	public static Expense find(Project project, ORef expenseRef)
+	public static ExpenseAssignment find(Project project, ORef expenseRef)
 	{
 		return find(project.getObjectManager(), expenseRef);
 	}

@@ -23,28 +23,28 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Expense;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.ObjectManager;
 
 public class ExpensePool extends EAMNormalObjectPool
 {
 	public ExpensePool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, Expense.getObjectType());
+		super(idAssignerToUse, ExpenseAssignment.getObjectType());
 	}
 	
-	public void put(Expense expense) throws Exception
+	public void put(ExpenseAssignment expense) throws Exception
 	{
 		put(expense.getId(), expense);
 	}
 	
-	public Expense find(BaseId id)
+	public ExpenseAssignment find(BaseId id)
 	{
-		return (Expense) getRawObject(id);
+		return (ExpenseAssignment) getRawObject(id);
 	}
 
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo)
 	{
-		return new Expense(objectManager, actualId);
+		return new ExpenseAssignment(objectManager, actualId);
 	}
 }

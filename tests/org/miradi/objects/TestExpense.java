@@ -29,6 +29,6 @@ public class TestExpense extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(Expense.getObjectType());
+		verifyFields(ExpenseAssignment.getObjectType());
 	}
 }
