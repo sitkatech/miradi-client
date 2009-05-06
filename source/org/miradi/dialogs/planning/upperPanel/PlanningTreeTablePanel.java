@@ -31,7 +31,7 @@ import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
-import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
@@ -88,7 +88,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
-		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse);
+		workUnitsTableModel = new AssignmentDateUnitsTableModel(getProject(), treeToUse);
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
@@ -357,7 +357,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
-	private WorkUnitsTableModel workUnitsTableModel;
+	private AssignmentDateUnitsTableModel workUnitsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	

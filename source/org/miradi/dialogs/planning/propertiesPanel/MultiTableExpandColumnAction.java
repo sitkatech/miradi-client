@@ -24,7 +24,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 
 public class MultiTableExpandColumnAction extends AbstractExpandColumnAction
 {
-	public MultiTableExpandColumnAction(PlanningUpperMultiTable multiTableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
+	public MultiTableExpandColumnAction(PlanningUpperMultiTable multiTableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(workUnitsTableModelToUse);
 		

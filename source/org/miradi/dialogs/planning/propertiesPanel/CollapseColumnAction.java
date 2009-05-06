@@ -25,7 +25,7 @@ import org.miradi.dialogs.planning.AbstractCollapseColumnAction;
 
 public class CollapseColumnAction extends AbstractCollapseColumnAction
 {
-	public CollapseColumnAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
+	public CollapseColumnAction(JTable tableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(workUnitsTableModelToUse);
 		

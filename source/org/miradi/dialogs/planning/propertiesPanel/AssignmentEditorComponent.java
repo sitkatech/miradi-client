@@ -101,7 +101,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 		assignmentSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
 		assignmentSummaryTable = new ResourceAssignmentMainTable(getMainWindow(), assignmentSummaryTableModel);
 		
-		workUnitsTableModel = new WorkUnitsTableModel(getProject(), assignmentSummaryTableModel);
+		workUnitsTableModel = new AssignmentDateUnitsTableModel(getProject(), assignmentSummaryTableModel);
 		workUnitsTable = new WorkUnitsTable(getMainWindow(), workUnitsTableModel);		
 	}
 	
@@ -182,5 +182,5 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 	private WorkUnitsTable workUnitsTable;
 	
 	private ResourceAssignmentMainTableModel assignmentSummaryTableModel;
-	private WorkUnitsTableModel workUnitsTableModel;
+	private AssignmentDateUnitsTableModel workUnitsTableModel;
 }
