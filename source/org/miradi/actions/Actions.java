@@ -266,7 +266,7 @@ public class Actions
 		registerAction(new ActionCreateFundingSource(mainWindow));
 		registerAction(new ActionDeleteFundingSource(mainWindow));
 		registerAction(new ActionCreateExpense(mainWindow));
-		registerAction(new ActionRemoveExpense(mainWindow));
+		registerAction(new ActionDeleteExpense(mainWindow));
 		
 		registerAction(new ActionDeleteWorkPlanNode(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));
