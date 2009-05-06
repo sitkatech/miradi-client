@@ -19,12 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
 
@@ -79,20 +76,6 @@ abstract public class PlanningViewResourceTableModel extends PlanningViewAbstrac
 			setFundingSource(value, refForRow, column);
 	}
 	
-	private void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
-	{
-		AccountingCode accountingCode = (AccountingCode)value;
-		BaseId accountingCodeId = accountingCode.getId();
-		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCodeId);
-	}
-
-	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
-	{
-		FundingSource fundingSource = (FundingSource)value;
-		BaseId fundingSourceId = fundingSource.getId();
-		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceId);
-	}
-
 	public String getColumnTag(int column)
 	{
 		return getColumnName(column);
@@ -113,4 +96,8 @@ abstract public class PlanningViewResourceTableModel extends PlanningViewAbstrac
 	abstract protected String getAccountingCodeTag();
 	
 	abstract protected String getFundingSourceTag();
+	
+	abstract protected void setAccountingCode(Object value, ORef assignmentRefForRow, int column);
+
+	abstract protected void setFundingSource(Object value, ORef assignmentRefForRow, int column);
 }
