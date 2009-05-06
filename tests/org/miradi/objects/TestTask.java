@@ -137,7 +137,7 @@ public class TestTask extends ObjectTestCase
 		Task taskWithoutUnits = createTask();
 		addAssignment(taskWithoutUnits, 0, 1000, 1001);
 		assertEquals("assignment was not added?", 1, taskWithoutUnits.getAssignmentIdList().size());
-		assertEquals("wrong combined date range?", null, taskWithoutUnits.getWhenRollup());
+		assertEquals("wrong combined date range?", createDateRangeEffort(1000, 1001).getDateRange(), taskWithoutUnits.getWhenRollup());
 		
 		Task taskWithSubtasks = createTask();
 		Task subTask = createTask();
@@ -149,7 +149,7 @@ public class TestTask extends ObjectTestCase
 		addAssignment(subTask, 1.0, 2000, 2010);
 		addAssignment(subTask, 1.0, 10, 20);
 		addAssignment(subTask, 0, 9998, 9999);
-		assertEquals("wrong sub task combined date range?", createDateRangeEffort(10, 2010).getDateRange(), taskWithSubtasks.getWhenRollup());
+		assertEquals("wrong sub task combined date range?", createDateRangeEffort(10, 9999).getDateRange(), taskWithSubtasks.getWhenRollup());
 	}
 	
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception

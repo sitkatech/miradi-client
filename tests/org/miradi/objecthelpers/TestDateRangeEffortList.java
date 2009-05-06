@@ -50,6 +50,16 @@ public class TestDateRangeEffortList extends EAMTestCase
 		assertEquals("wrong end date?", expectedEndDate, combinedDateRange2.getEndDate());
 	}
 	
+	public void testGetCombinedDateRangeWithZeros() throws Exception
+	{
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		DateRangeEffort dre = createDateRangeEffort();
+		dre.setUnitQuantity(0);
+		dateRangeEffortList.add(dre);
+		DateRange combinedDateRange = dateRangeEffortList.getCombinedDateRange();
+		assertNotNull("combinedDateRange was null?", combinedDateRange);
+	}
+	
 	private DateRangeEffort createDateRangeEffort() throws Exception
 	{
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
