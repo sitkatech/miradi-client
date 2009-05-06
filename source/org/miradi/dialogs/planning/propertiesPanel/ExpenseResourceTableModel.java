@@ -23,6 +23,8 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Expense;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
@@ -120,6 +122,18 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 	private int getExpenseNameColumn()
 	{
 		return EXPENSE_NAME_COLUMN;
+	}
+	
+	@Override
+	protected String getListTag()
+	{
+		return BaseObject.TAG_EXPENSE_REFS;
+	}
+
+	@Override
+	protected int getListType()
+	{
+		return Expense.getObjectType();
 	}
 						
 	private static final int COLUMN_COUNT = 3;

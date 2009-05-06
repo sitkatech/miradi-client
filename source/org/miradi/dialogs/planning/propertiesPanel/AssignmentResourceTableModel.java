@@ -193,6 +193,18 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 	{
 		return RESOURCE_COLUMM;
 	}
+	
+	@Override
+	protected String getListTag()
+	{
+		return BaseObject.TAG_ASSIGNMENT_IDS;
+	}
+
+	@Override
+	protected int getListType()
+	{
+		return Assignment.getObjectType();
+	}
 			
 	private static final int COLUMN_COUNT = 5;
 	
