@@ -320,7 +320,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		if (columnsToShow.contains(ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE))
+		if (columnsToShow.contains(ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
 		mainTable.reloadColumnSequences();
