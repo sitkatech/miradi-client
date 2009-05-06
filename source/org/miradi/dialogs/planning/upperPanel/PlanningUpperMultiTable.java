@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
 
+import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
@@ -42,6 +43,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		super(masterTreeToUse.getMainWindow(), model, masterTreeToUse.getUniqueTableIdentifier());
 		setAutoResizeMode(AUTO_RESIZE_OFF);
+		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		setCellSelectionEnabled(true);
 
 		masterTree = masterTreeToUse;
 		defaultRendererFactory = new MultiLineObjectTableCellRendererFactory(this, fontProvider);
