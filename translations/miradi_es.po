@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 13:23-0500\n"
+"POT-Creation-Date: 2009-05-06 13:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -211,7 +211,7 @@ msgstr ""
 msgid "Attempted to execute side effect command while not in side effect mode."
 msgstr ""
 
-#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:44
+#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:58
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -3978,11 +3978,11 @@ msgstr "Install Sample Project"
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Software de manejo adaptivo para proyectos de conservación"
 
-#: miradi/source/org/miradi/main/MainWindow.java:276
+#: miradi/source/org/miradi/main/MainWindow.java:274
 msgid "Information"
 msgstr "Información"
 
-#: miradi/source/org/miradi/main/MainWindow.java:485
+#: miradi/source/org/miradi/main/MainWindow.java:483
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -3992,11 +3992,11 @@ msgstr ""
 " Probablemente esté intentando cargar un proyecto anterior que contiene "
 "comandos obsoletos que ya no se admiten."
 
-#: miradi/source/org/miradi/main/MainWindow.java:490
+#: miradi/source/org/miradi/main/MainWindow.java:488
 msgid "That project is in use by another copy of this application"
 msgstr "Otra copia de esta aplicación está usando ese proyecto."
 
-#: miradi/source/org/miradi/main/MainWindow.java:494
+#: miradi/source/org/miradi/main/MainWindow.java:492
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -4004,32 +4004,32 @@ msgstr ""
 "Ese proyecto no puede abrirse porque se creó con una versión más nueva de "
 "esta aplicación."
 
-#: miradi/source/org/miradi/main/MainWindow.java:498
+#: miradi/source/org/miradi/main/MainWindow.java:496
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Ese proyecto no puede abrirse hasta que se migre al formato de datos actual."
 
-#: miradi/source/org/miradi/main/MainWindow.java:503
+#: miradi/source/org/miradi/main/MainWindow.java:501
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
-#: miradi/source/org/miradi/main/MainWindow.java:636
+#: miradi/source/org/miradi/main/MainWindow.java:634
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 "Los datos financieros/del plan de trabajo fuera de las fechas de inicio/fin "
 "del proyecto no se mostrarán."
 
-#: miradi/source/org/miradi/main/MainWindow.java:662
+#: miradi/source/org/miradi/main/MainWindow.java:664
 msgid "WARNING: Project end date before start date."
 msgstr "ADVERTENCIA: Fecha de fin del proyecto anterior a la fecha de inicio"
 
-#: miradi/source/org/miradi/main/MainWindow.java:1013
+#: miradi/source/org/miradi/main/MainWindow.java:1010
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
-#: miradi/source/org/miradi/main/MainWindow.java:1030
+#: miradi/source/org/miradi/main/MainWindow.java:1027
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -6648,7 +6648,7 @@ msgid "Unit"
 msgstr "Unidad"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
 msgid "An error has occured while writing assignment data."
 msgstr "Se produjo un error al escribir los datos de la asignación."
 
@@ -6674,7 +6674,7 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "Propiedades de amenaza directa  "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:43
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:40
 msgid "Name"
 msgstr ""
 

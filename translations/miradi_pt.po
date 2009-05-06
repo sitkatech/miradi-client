@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 13:23-0500\n"
+"POT-Creation-Date: 2009-05-06 13:46-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -168,7 +168,7 @@ msgstr ""
 msgid "Attempted to execute side effect command while not in side effect mode."
 msgstr ""
 
-#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:44
+#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:58
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -3547,50 +3547,50 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:276
+#: miradi/source/org/miradi/main/MainWindow.java:274
 msgid "Information"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:485
+#: miradi/source/org/miradi/main/MainWindow.java:483
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:490
+#: miradi/source/org/miradi/main/MainWindow.java:488
 msgid "That project is in use by another copy of this application"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:494
+#: miradi/source/org/miradi/main/MainWindow.java:492
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:498
+#: miradi/source/org/miradi/main/MainWindow.java:496
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:503
+#: miradi/source/org/miradi/main/MainWindow.java:501
 msgid "Unknown error prevented opening that project"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:636
+#: miradi/source/org/miradi/main/MainWindow.java:634
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:662
+#: miradi/source/org/miradi/main/MainWindow.java:664
 msgid "WARNING: Project end date before start date."
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:1013
+#: miradi/source/org/miradi/main/MainWindow.java:1010
 msgid "Unable to launch external web browser"
 msgstr ""
 
-#: miradi/source/org/miradi/main/MainWindow.java:1030
+#: miradi/source/org/miradi/main/MainWindow.java:1027
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -6140,7 +6140,7 @@ msgid "Unit"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
 msgid "An error has occured while writing assignment data."
 msgstr ""
 
@@ -6164,7 +6164,7 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:43
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:40
 msgid "Name"
 msgstr ""
 
