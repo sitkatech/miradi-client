@@ -25,7 +25,6 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
@@ -46,7 +45,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.OptionalDouble;
 
-public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
+abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
 {
 	public AssignmentDateUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
@@ -397,12 +396,6 @@ public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTable
 		return getProjectCalendar().hasSubDateUnits(dateUnit);
 	}
 	
-	public Color getCellBackgroundColor(int column)
-	{
-		DateUnit dateUnit = getDateUnit(column);
-		return AppPreferences.getWorkUnitsBackgroundColor(dateUnit);
-	}
-
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
 		OptionalDouble optionalDouble = getOptionalDoubleAt(row, column);
@@ -443,6 +436,8 @@ public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTable
 	{
 		return UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
+	
+	abstract public Color getCellBackgroundColor(int column);
 
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
