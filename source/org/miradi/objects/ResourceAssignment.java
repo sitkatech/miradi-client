@@ -181,10 +181,10 @@ public class ResourceAssignment extends BaseObject
 	@Override
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
-		return getTotalAssignmentCost(dateRangeToUse);
+		return getTotalResourceAssignmentCost(dateRangeToUse);
 	}
 	
-	public double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
+	public double getTotalResourceAssignmentCost(DateRange dateRangeToUse) throws Exception
 	{
 		double cost = 0;
 		ProjectResource projectResource = getProjectResource();
