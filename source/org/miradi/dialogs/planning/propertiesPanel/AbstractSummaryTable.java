@@ -23,12 +23,9 @@ import java.awt.Color;
 
 import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.FundingSource;
-import org.miradi.objects.ProjectResource;
 
 public class AbstractSummaryTable extends AbstractComponentTable
 {
@@ -50,7 +47,6 @@ public class AbstractSummaryTable extends AbstractComponentTable
 	{
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
-			createResourceCombo(tableColumn);
 			createFundingSourceColumn(tableColumn);
 			createAccountingCodeColumn(tableColumn);
 		}
@@ -59,7 +55,7 @@ public class AbstractSummaryTable extends AbstractComponentTable
 	private void createAccountingCodeColumn(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! model.isAccountingCodeColumn(modelColumn))
+		if (! getPlanningViewResourceTableModel().isAccountingCodeColumn(modelColumn))
 			return;
 		
 		AccountingCode[] accountingCodes = getObjectManager().getAccountingCodePool().getAllAccountingCodes();
@@ -67,22 +63,10 @@ public class AbstractSummaryTable extends AbstractComponentTable
 		createComboColumn(accountingCodes, tableColumn, invalidAccountingCode);
 	}
 	
-	private void createResourceCombo(int tableColumn) throws Exception
-	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! model.isResourceColumn(modelColumn))
-			return;
-		
-		ProjectResource[] resources = getAllProjectResources();
-		ProjectResource invalidResource = new ProjectResource(getObjectManager(), BaseId.INVALID);
-		invalidResource.setData(ProjectResource.TAG_GIVEN_NAME, EAM.text("(not specified)"));
-		createComboColumn(resources, tableColumn, invalidResource);
-	}
-	
 	private void createFundingSourceColumn(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! model.isFundingSourceColumn(modelColumn))
+		if (! getPlanningViewResourceTableModel().isFundingSourceColumn(modelColumn))
 			return;
 
 		FundingSource[] fundingSources = getObjectManager().getFundingSourcePool().getAllFundingSources();
@@ -90,16 +74,11 @@ public class AbstractSummaryTable extends AbstractComponentTable
 		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
 	}
 	
-	private ProjectResource[] getAllProjectResources()
+	protected PlanningViewResourceTableModel getPlanningViewResourceTableModel()
 	{
-		return  getResourcePool().getAllProjectResources();
+		return model;
 	}
 	
-	private ResourcePool getResourcePool()
-	{
-		return getObjectManager().getResourcePool();
-	}
-
 	private PlanningViewResourceTableModel model;
     public static final String UNIQUE_IDENTIFIER = "PlanningViewResourceTable";
 }
