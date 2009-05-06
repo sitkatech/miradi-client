@@ -68,7 +68,7 @@ public class ExpenseAssignment extends BaseObject
 	
 	public static int getObjectType()
 	{
-		return ObjectType.EXPENSE;
+		return ObjectType.EXPENSE_ASSIGNMENT;
 	}
 	
 	public static boolean is(ORef ref)

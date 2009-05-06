@@ -343,7 +343,7 @@ abstract public class BaseObject
 			case ObjectType.SCOPE_BOX:
 				return new ScopeBox(objectManager, new FactorId(idAsInt), json);
 				
-			case ObjectType.EXPENSE:
+			case ObjectType.EXPENSE_ASSIGNMENT:
 				return new ExpenseAssignment(objectManager, idAsInt, json);
 				
 			default:
@@ -1104,7 +1104,7 @@ abstract public class BaseObject
 			case ObjectType.RESOURCE_ASSIGNMENT: 
 				list.addAll(getAssignmentRefs());
 				break;
-			case ObjectType.EXPENSE:
+			case ObjectType.EXPENSE_ASSIGNMENT:
 				list.addAll(getExpenseRefs());
 				break;
 		}
