@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 11:28-0500\n"
+"POT-Creation-Date: 2009-05-06 11:34-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6683,7 +6683,7 @@ msgstr "Costo/unidad"
 msgid "Unit"
 msgstr "Unidad"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:96
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:108
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:71
 msgid "An error has occured while writing assignment data."
 msgstr "Se produjo un error al escribir los datos de la asignación."
