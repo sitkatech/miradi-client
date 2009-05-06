@@ -24,8 +24,8 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 import org.martus.swing.UiScrollPane;
-import org.miradi.actions.ActionAssignResource;
-import org.miradi.actions.ActionRemoveAssignment;
+import org.miradi.actions.ActionCreateExpense;
+import org.miradi.actions.ActionDeleteExpense;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
@@ -138,8 +138,8 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), getPicker()));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), resourceTable));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateExpense.class), getPicker()));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteExpense.class), resourceTable));
 		
 		return box;
 	}
