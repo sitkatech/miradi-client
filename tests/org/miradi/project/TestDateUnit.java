@@ -32,6 +32,20 @@ public class TestDateUnit extends TestCaseWithProject
 		super(name);
 	}
 	
+	public void testConstructFromDaterange() throws Exception
+	{
+		verifyConstruction(fiscalYearStartApril);
+		verifyConstruction(quarter);
+		verifyConstruction(month);
+	}
+	
+	private void verifyConstruction(DateUnit dateUnit) throws Exception
+	{
+		DateRange dateRange = dateUnit.asDateRange();
+		DateUnit constructed = DateUnit.createFromDateRange(dateRange);
+		assertEquals(dateRange, constructed.asDateRange());
+	}
+
 	public void testAsDateRangeForEmpty() throws Exception
 	{
 		try

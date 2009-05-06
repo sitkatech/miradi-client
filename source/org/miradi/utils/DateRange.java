@@ -85,6 +85,72 @@ public class DateRange
 		return startDate.toString() +" - "+ endDate.toString();
 	}
 	
+	public boolean isDay()
+	{
+		return (startDate.equals(endDate));
+	}
+	
+	public boolean isMonth()
+	{
+		if(!isDay1(startDate))
+			return false;
+		
+		return isEndDateAfterStartByMonths(1);
+	}
+
+	public boolean isQuarter()
+	{
+		if(!isStartOnQuarter())
+			return false;
+		
+		return isEndDateAfterStartByMonths(3);
+	}
+	
+	public boolean isYear()
+	{
+		if(!isStartOnQuarter())
+			return false;
+		
+		return isEndDateAfterStartByMonths(12);
+	}
+	
+	private boolean isStartOnQuarter()
+	{
+		if(!isDay1(startDate))
+			return false;
+		
+		int startMonthIndex = startDate.getGregorianMonth() - 1;
+		return (startMonthIndex % 3 == 0);
+	}
+
+	private boolean isEndDateAfterStartByMonths(int monthDelta)
+	{
+		MultiCalendar nextDate = new MultiCalendar(endDate);
+		nextDate.addDays(1);
+		if(startDate.getGregorianDay() != nextDate.getGregorianDay())
+			return false;
+		
+		int expectedNextMonth = startDate.getGregorianMonth() + monthDelta;
+		int expectedNextYear = startDate.getGregorianYear();
+		if(expectedNextMonth > 12)
+		{
+			expectedNextMonth -= 12;
+			++expectedNextYear;
+		}
+		if(nextDate.getGregorianYear() != expectedNextYear)
+			return false;
+		
+		if(nextDate.getGregorianMonth() != expectedNextMonth)
+			return false;
+		
+		return true;
+	}
+
+	private boolean isDay1(MultiCalendar date)
+	{
+		return date.getGregorianDay() == 1;
+	}
+
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
