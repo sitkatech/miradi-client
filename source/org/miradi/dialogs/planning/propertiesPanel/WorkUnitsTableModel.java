@@ -31,7 +31,7 @@ import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
@@ -126,7 +126,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		return getDateRange(column);
 	}
 
-	protected DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
+	protected DateRangeEffort getDateRangeEffort(ResourceAssignment assignment, DateRange dateRange) throws Exception
 	{
 		DateRangeEffort dateRangeEffort = null;
 		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
@@ -159,7 +159,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	private boolean isAssignmentCellEditable(int row, int column) throws Exception
 	{
 		DateRange dateRange = getDateRange(column);
-		Assignment assignment = getAssignment(row);
+		ResourceAssignment assignment = getAssignment(row);
 		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
 		if(thisCellEffort != null)
 			return true;
@@ -193,7 +193,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		getProject().executeBeginTransaction();
 		try
 		{
-			Assignment assignment = getAssignment(row);
+			ResourceAssignment assignment = getAssignment(row);
 			DateUnit dateUnit = getDateUnit(column);
 
 			String valueAsString = value.toString().trim();
@@ -216,7 +216,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		}
 	}
 
-	private void setUnits(Assignment assignment, DateUnit dateUnit, double units) throws Exception
+	private void setUnits(ResourceAssignment assignment, DateUnit dateUnit, double units) throws Exception
 	{
 		DateRangeEffort effort = getDateRangeEffort(assignment, getDateRange(dateUnit));
 		if (effort == null)
@@ -226,7 +226,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		setUnits(assignment, effortList, effort, units);
 	}
 
-	private void clearSuperDateUnitColumns(Assignment assignment, DateUnit dateUnit) throws Exception
+	private void clearSuperDateUnitColumns(ResourceAssignment assignment, DateUnit dateUnit) throws Exception
 	{
 		DateUnit superDateUnit = new DateUnit(dateUnit.getDateUnitCode());
 		while(!superDateUnit.isBlank())
@@ -241,7 +241,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		}
 	}
 
-	public void setUnits(Assignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
+	public void setUnits(ResourceAssignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
 	{
 		effort.setUnitQuantity(units);
 		effortList.setDateRangeEffort(effort);
@@ -253,7 +253,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		getProject().executeCommand(command);
 	}
 
-	public void clearUnits(Assignment assignment, DateUnit dateUnit) throws Exception
+	public void clearUnits(ResourceAssignment assignment, DateUnit dateUnit) throws Exception
 	{
 		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
 		effortList.remove(getDateRange(dateUnit));
@@ -282,11 +282,11 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 		return getProvider().getRowCount();
 	}
 	
-	public Assignment getAssignment(int row)
+	public ResourceAssignment getAssignment(int row)
 	{
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
-		if (Assignment.is(baseObjectForRowColumn))
-			return (Assignment) baseObjectForRowColumn;
+		if (ResourceAssignment.is(baseObjectForRowColumn))
+			return (ResourceAssignment) baseObjectForRowColumn;
 		
 		return null;
 	}

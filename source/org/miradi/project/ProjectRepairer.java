@@ -31,7 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -305,13 +305,13 @@ public class ProjectRepairer
 		ORefList allAssignmentRefs = getProject().getAssignmentPool().getRefList();
 		for (int index = 0; index < allAssignmentRefs.size(); ++index)
 		{
-			Assignment assignment = Assignment.find(getProject(), allAssignmentRefs.get(index));
-			possiblyClearField(assignment, assignment.getAccountingCodeRef(), Assignment.TAG_ACCOUNTING_CODE);
-			possiblyClearField(assignment, assignment.getFundingSourceRef(), Assignment.TAG_FUNDING_SOURCE);
+			ResourceAssignment assignment = ResourceAssignment.find(getProject(), allAssignmentRefs.get(index));
+			possiblyClearField(assignment, assignment.getAccountingCodeRef(), ResourceAssignment.TAG_ACCOUNTING_CODE);
+			possiblyClearField(assignment, assignment.getFundingSourceRef(), ResourceAssignment.TAG_FUNDING_SOURCE);
 		}
 	}
 	
-	private void possiblyClearField(Assignment assignment, ORef refToTestForExistance, String tagToClear) throws Exception
+	private void possiblyClearField(ResourceAssignment assignment, ORef refToTestForExistance, String tagToClear) throws Exception
 	{
 		BaseObject foundObject = getProject().findObject(refToTestForExistance);
 		if (foundObject == null)

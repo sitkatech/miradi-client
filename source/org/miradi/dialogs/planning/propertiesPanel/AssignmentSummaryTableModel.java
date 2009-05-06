@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
@@ -74,7 +74,7 @@ public class AssignmentSummaryTableModel extends AbstractSummaryTableModel
 	protected Object getCellValue(int row, int column)
 	{
 		ORef assignmentRef = getRefForRow(row);
-		Assignment assignment = Assignment.find(getProject(), assignmentRef);
+		ResourceAssignment assignment = ResourceAssignment.find(getProject(), assignmentRef);
 		if (isResourceColumn(column))
 			return findProjectResource(assignment);
 		
@@ -89,7 +89,7 @@ public class AssignmentSummaryTableModel extends AbstractSummaryTableModel
 	
 	//FIXME planning table - there should be methods that return the raw value,  then that value
 	//can be used in budgetmodel to calculate the cost. (cost per unit and units need to return raw values)
-	private Object getResourceCostPerUnit(Assignment assignment)
+	private Object getResourceCostPerUnit(ResourceAssignment assignment)
 	{
 		ProjectResource resource = findProjectResource(assignment);
 		if (resource == null)
@@ -124,10 +124,10 @@ public class AssignmentSummaryTableModel extends AbstractSummaryTableModel
 
 		ProjectResource projectResource = (ProjectResource)value;
 		BaseId resourceId = projectResource.getId();
-		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
+		setValueUsingCommand(assignmentRefForRow, ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
 	}
 	
-	private String getResourceCost(Assignment assignment)
+	private String getResourceCost(ResourceAssignment assignment)
 	{
 		ProjectResource resource = findProjectResource(assignment);
 		if (resource == null)
@@ -136,7 +136,7 @@ public class AssignmentSummaryTableModel extends AbstractSummaryTableModel
 		return resource.getCostUnitValue();
 	}
 	
-	private ProjectResource findProjectResource(Assignment assignment)
+	private ProjectResource findProjectResource(ResourceAssignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();
 		return ProjectResource.find(getProject(), resourceRef);
@@ -201,13 +201,13 @@ public class AssignmentSummaryTableModel extends AbstractSummaryTableModel
 	@Override
 	protected int getListType()
 	{
-		return Assignment.getObjectType();
+		return ResourceAssignment.getObjectType();
 	}
 	
 	@Override
 	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
 	{
-		Assignment assignment = castToAssignment(baseObjectToUse);
+		ResourceAssignment assignment = castToAssignment(baseObjectToUse);
 		ORef fundingSourceRef = assignment.getFundingSourceRef();
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}
@@ -215,26 +215,26 @@ public class AssignmentSummaryTableModel extends AbstractSummaryTableModel
 	@Override
 	protected BaseObject getAccountingCode(BaseObject baseObjectToUse)
 	{
-		Assignment assignment = castToAssignment(baseObjectToUse);
+		ResourceAssignment assignment = castToAssignment(baseObjectToUse);
 		ORef accountingCodeRef = assignment.getAccountingCodeRef();
 		return AccountingCode.find(getProject(), accountingCodeRef);
 	}
 	
-	private Assignment castToAssignment(BaseObject baseObjectToUse)
+	private ResourceAssignment castToAssignment(BaseObject baseObjectToUse)
 	{
-		return (Assignment) baseObjectToUse;
+		return (ResourceAssignment) baseObjectToUse;
 	}
 		
 	@Override
 	protected String getAccountingCodeTag()
 	{
-		return Assignment.TAG_ACCOUNTING_CODE;
+		return ResourceAssignment.TAG_ACCOUNTING_CODE;
 	}
 	
 	@Override
 	protected String getFundingSourceTag()
 	{
-		return Assignment.TAG_FUNDING_SOURCE;
+		return ResourceAssignment.TAG_FUNDING_SOURCE;
 	}
 
 	@Override

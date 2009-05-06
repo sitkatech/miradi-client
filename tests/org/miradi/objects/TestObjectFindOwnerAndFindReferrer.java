@@ -31,7 +31,7 @@ import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -148,7 +148,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		IdList subTaskList = new IdList(Task.getObjectType(), new BaseId[] {subTaskId});
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
 
-		IdList assignmentList = new IdList(Assignment.getObjectType(), new BaseId[] {assignmentRef.getObjectId()});
+		IdList assignmentList = new IdList(ResourceAssignment.getObjectType(), new BaseId[] {assignmentRef.getObjectId()});
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_ASSIGNMENT_IDS, assignmentList.toString());
 
 		//----------- start test -----------
@@ -164,13 +164,13 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		ORef assignmentRef = project.createAssignment().getRef();
 		
 		BaseId projectResourceId = project.createObjectAndReturnId(ObjectType.PROJECT_RESOURCE);
-		project.setObjectData(assignmentRef, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, projectResourceId.toString());
+		project.setObjectData(assignmentRef, ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID, projectResourceId.toString());
 		
 		BaseId accountingCodeId = project.createObjectAndReturnId(ObjectType.ACCOUNTING_CODE);
-		project.setObjectData(assignmentRef, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
+		project.setObjectData(assignmentRef, ResourceAssignment.TAG_ACCOUNTING_CODE, accountingCodeId.toString());
 		
 		BaseId fundingSourceId = project.createObjectAndReturnId(ObjectType.FUNDING_SOURCE);
-		project.setObjectData(assignmentRef, Assignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
+		project.setObjectData(assignmentRef, ResourceAssignment.TAG_FUNDING_SOURCE, fundingSourceId.toString());
 		
 		//----------- start test -----------
 		

@@ -25,7 +25,7 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
@@ -165,8 +165,8 @@ public class ColumnManager
 	{
 		String[] list = {
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
-				Assignment.PSEUDO_TAG_WHEN_TOTAL,
-				Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL,
+				ResourceAssignment.PSEUDO_TAG_WHEN_TOTAL,
+				ResourceAssignment.PSEUDO_TAG_WORK_UNIT_TOTAL,
 				Indicator.PSEUDO_TAG_FACTOR,
 				};
 		return new CodeList(list);
@@ -231,7 +231,7 @@ public class ColumnManager
 		if (propertyName.equals(ThreatReductionResult.OBJECT_NAME))
 			return ColumnManager.getThreatReductionResultColumns();
 		
-		if (propertyName.equals(Assignment.OBJECT_NAME))
+		if (propertyName.equals(ResourceAssignment.OBJECT_NAME))
 			return ColumnManager.getAssignmentColumns();
 		
 		EAM.logError("getVisibleColumnsForSingleType unknown choice: " + propertyName);

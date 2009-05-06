@@ -21,7 +21,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramObject;
@@ -56,7 +56,7 @@ public class PlanningTreeGoalNode extends PlanningTreeAbstractDesireNode
 				Objective.getObjectType(),
 				Task.getObjectType(),
 				Measurement.getObjectType(),
-				Assignment.getObjectType(),
+				ResourceAssignment.getObjectType(),
 			};
 	}
 

@@ -22,7 +22,7 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
@@ -49,7 +49,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	private void buildAssignmentNodes() throws Exception
 	{
 		// NOTE: Speed optimization
-		if(!visibleRows.contains(Assignment.OBJECT_NAME))
+		if(!visibleRows.contains(ResourceAssignment.OBJECT_NAME))
 			return;
 
 		ORefList assignmentRefs = task.getAssignmentRefs();

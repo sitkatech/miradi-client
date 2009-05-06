@@ -28,7 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
@@ -265,7 +265,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			Indicator.getObjectType(),
 			Task.getObjectType(),
 			Measurement.getObjectType(),
-			Assignment.getObjectType(),
+			ResourceAssignment.getObjectType(),
 		};
 	}
 	
@@ -338,7 +338,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
 		if (type == Task.getObjectType())
 			return new PlanningTreeTaskNode(project, refToAdd, visibleRows);
-		if (type == Assignment.getObjectType())
+		if (type == ResourceAssignment.getObjectType())
 			return new PlanningTreeAssignmentNode(project, refToAdd, visibleRows);
 		
 				

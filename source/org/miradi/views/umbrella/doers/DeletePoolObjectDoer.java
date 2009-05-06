@@ -27,7 +27,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.ObjectsDoer;
 
@@ -80,7 +80,7 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 	
 	protected void clearFromAssignment(BaseObject objectToDelete, String referringTag) throws Exception
 	{
-		ORefList assignmentReferrerRefs = objectToDelete.findObjectsThatReferToUs(Assignment.getObjectType());
+		ORefList assignmentReferrerRefs = objectToDelete.findObjectsThatReferToUs(ResourceAssignment.getObjectType());
 		for (int index = 0; index < assignmentReferrerRefs.size(); ++index)
 		{
 			CommandSetObjectData clearTag = new CommandSetObjectData(assignmentReferrerRefs.get(index), referringTag, BaseId.INVALID.toString());

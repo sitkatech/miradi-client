@@ -38,7 +38,7 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
@@ -78,7 +78,7 @@ public class RowConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(Task.getObjectType(), Task.METHOD_NAME, new MethodIcon()),
 				createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()),
 				createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()),
-				createChoiceItem(Assignment.getObjectType(), Assignment.OBJECT_NAME, new AssignmentIcon()),
+				createChoiceItem(ResourceAssignment.getObjectType(), ResourceAssignment.OBJECT_NAME, new AssignmentIcon()),
 		};
 	}
 

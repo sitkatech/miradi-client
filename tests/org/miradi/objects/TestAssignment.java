@@ -48,14 +48,14 @@ public class TestAssignment extends ObjectTestCase
 	
 	public void testGetWorkUnits() throws Exception
 	{
-		Assignment assignment = getProject().createAssignment();
+		ResourceAssignment assignment = getProject().createAssignment();
 		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateRange1).hasValue());
 
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		dateRangeEffortList.add(createDateRangeEffort(2, dateRange1));
 		dateRangeEffortList.add(createDateRangeEffort(5, dateRange2));
 
-		getProject().fillObjectUsingCommand(assignment, Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 
 		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateRange1).getValue());
 		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateRange2).getValue());

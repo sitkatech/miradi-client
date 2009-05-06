@@ -23,7 +23,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.BudgetTimePeriodChanger;
 import org.miradi.project.Project;
@@ -117,7 +117,7 @@ public class ObjectBudgetTimePeriodChoiceField extends ObjectRadioButtonGroupFie
 
 	private String askUserForConversionType(String oldCode, String newCode) throws Exception
 	{
-		if(project.getPool(Assignment.getObjectType()).getRefList().size() == 0)
+		if(project.getPool(ResourceAssignment.getObjectType()).getRefList().size() == 0)
 			return null;
 		
 		boolean wasByQuarter = (oldCode.equals(BudgetTimePeriodQuestion.BUDGET_BY_QUARTER_CODE));

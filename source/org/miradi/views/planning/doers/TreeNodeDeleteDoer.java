@@ -30,7 +30,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
@@ -63,7 +63,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		if (Measurement.is(selected))
 			return true;
 		
-		if (Assignment.is(selected))
+		if (ResourceAssignment.is(selected))
 			return true;
 		
 		return Task.is(selected.getType());
@@ -94,7 +94,7 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			if (Measurement.is(selected))
 				deleteAnnotation(selected, Indicator.TAG_MEASUREMENT_REFS);
 			
-			if (Assignment.is(selected))
+			if (ResourceAssignment.is(selected))
 				deleteAnnotation(selected, BaseObject.TAG_ASSIGNMENT_IDS);
 		}
 		catch (Exception e)

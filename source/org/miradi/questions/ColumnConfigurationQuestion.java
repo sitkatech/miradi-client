@@ -21,7 +21,7 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
@@ -54,7 +54,7 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
 				createChoiceItem(META_ASSIGNMENT_COLUMN_CODE),				
-				createChoiceItem(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL),
+				createChoiceItem(ResourceAssignment.PSEUDO_TAG_WORK_UNIT_TOTAL),
 				createChoiceItem(Factor.TAG_COMMENT),
 		};
 	}
