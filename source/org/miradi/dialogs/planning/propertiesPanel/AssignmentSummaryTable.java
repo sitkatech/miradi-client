@@ -21,9 +21,9 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.main.MainWindow;
 
-public class AssignmentResourceTable extends PlanningViewResourceTable
+public class AssignmentSummaryTable extends PlanningViewResourceTable
 {
-	public AssignmentResourceTable(MainWindow mainWindowToUse, AssignmentSummaryTableModel modelToUse) throws Exception
+	public AssignmentSummaryTable(MainWindow mainWindowToUse, AssignmentSummaryTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);
 	}

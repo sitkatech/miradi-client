@@ -99,7 +99,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 	private void createTables() throws Exception
 	{
 		resourceTableModel = new AssignmentSummaryTableModel(getProject());
-		resourceTable = new AssignmentResourceTable(getMainWindow(), resourceTableModel);
+		resourceTable = new AssignmentSummaryTable(getMainWindow(), resourceTableModel);
 		
 		workUnitsTableModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
 		workUnitsTable = new WorkUnitsTable(getMainWindow(), workUnitsTableModel);		
@@ -178,7 +178,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 		return resourceTable.getSelectedHierarchies();
 	}
 	
-	private AssignmentResourceTable resourceTable;
+	private AssignmentSummaryTable resourceTable;
 	private WorkUnitsTable workUnitsTable;
 	
 	private AssignmentSummaryTableModel resourceTableModel;
