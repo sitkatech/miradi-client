@@ -47,6 +47,7 @@ import org.miradi.actions.ActionCreateObjectiveProgressPercent;
 import org.miradi.actions.ActionCreateStrategyProgressReport;
 import org.miradi.actions.ActionDatabasesDemo;
 import org.miradi.actions.ActionDeleteActivityProgressReport;
+import org.miradi.actions.ActionDeleteExpense;
 import org.miradi.actions.ActionDeleteGoalProgressPercent;
 import org.miradi.actions.ActionDeleteIndicatorProgressReport;
 import org.miradi.actions.ActionDeleteLegacyTncStrategyRanking;
@@ -209,6 +210,7 @@ import org.miradi.views.umbrella.doers.CollapseAllRowsDoer;
 import org.miradi.views.umbrella.doers.CreateExpenseDoer;
 import org.miradi.views.umbrella.doers.CreateGoalProgressPercentDoer;
 import org.miradi.views.umbrella.doers.CreateMethodDoer;
+import org.miradi.views.umbrella.doers.DeleteExpenseDoer;
 import org.miradi.views.umbrella.doers.DeleteGoalProgressPercentDoer;
 import org.miradi.views.umbrella.doers.DeleteLegacyTncStrategyRankingDoer;
 import org.miradi.views.umbrella.doers.DeleteMethodDoer;
@@ -447,6 +449,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionAssignResource.class, new CreateAssignmentDoer());
 		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
 		addDoerToMap(ActionCreateExpense.class, new CreateExpenseDoer());
+		addDoerToMap(ActionDeleteExpense.class, new DeleteExpenseDoer());
 				
 		addDoerToMap(ActionPrint.class, new Print());
 		addDoerToMap(ActionShowCurrentWizardFileName.class, new ShowCurrentWizardFileNameDoer());
