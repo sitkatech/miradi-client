@@ -22,7 +22,7 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Expense;
 
-public class CreateExpenseDoer extends AbstractCreateNewBaseObjectToListDoer
+public class CreateExpenseDoer extends CreateListedObjectDoer
 {
 	@Override
 	protected String getListTag()

@@ -30,7 +30,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
-abstract public class AbstractCreateNewBaseObjectToListDoer extends ObjectsDoer
+abstract public class CreateListedObjectDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
