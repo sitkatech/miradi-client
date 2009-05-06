@@ -25,7 +25,7 @@ import org.miradi.dialogs.planning.AbstractExpandColumnAction;
 
 public class ExpandColumnAction extends AbstractExpandColumnAction
 {
-	public ExpandColumnAction(JTable tableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
+	public ExpandColumnAction(JTable tableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(workUnitsTableModelToUse);
 		

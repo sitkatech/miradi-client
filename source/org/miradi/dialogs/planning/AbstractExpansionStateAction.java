@@ -23,12 +23,12 @@ import java.awt.event.ActionEvent;
 
 import javax.swing.AbstractAction;
 
-import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.main.EAM;
 
 abstract public class AbstractExpansionStateAction extends AbstractAction
 {
-	public AbstractExpansionStateAction(WorkUnitsTableModel workUnitsTableModelToUse, String actionLabel)
+	public AbstractExpansionStateAction(AssignmentDateUnitsTableModel workUnitsTableModelToUse, String actionLabel)
 	{
 		super(actionLabel);
 		
@@ -49,5 +49,5 @@ abstract public class AbstractExpansionStateAction extends AbstractAction
 
 	abstract protected int getSelectedColumn();
 
-	private WorkUnitsTableModel workUnitsTableModel;
+	private AssignmentDateUnitsTableModel workUnitsTableModel;
 }

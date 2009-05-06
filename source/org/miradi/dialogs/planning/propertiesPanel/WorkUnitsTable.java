@@ -40,7 +40,7 @@ import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
 public class WorkUnitsTable extends AbstractComponentTable
 {
-	public WorkUnitsTable(MainWindow mainWindowToUse, WorkUnitsTableModel modelToUse) throws Exception
+	public WorkUnitsTable(MainWindow mainWindowToUse, AssignmentDateUnitsTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		setBackground(getColumnBackGroundColor(0));	
@@ -68,9 +68,9 @@ public class WorkUnitsTable extends AbstractComponentTable
 		return getMainWindow().getActions();
 	}
 	
-	protected WorkUnitsTableModel getWorkUnitsTableModel()
+	protected AssignmentDateUnitsTableModel getWorkUnitsTableModel()
 	{
-		return (WorkUnitsTableModel) getModel();
+		return (AssignmentDateUnitsTableModel) getModel();
 	}
 	
 	@Override

@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
-import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.main.EAM;
 
 abstract public class AbstractCollapseColumnAction extends AbstractExpansionStateAction
 {
-	public AbstractCollapseColumnAction(WorkUnitsTableModel workUnitsTableModelToUse)
+	public AbstractCollapseColumnAction(AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(workUnitsTableModelToUse, EAM.text("Collapse Selected Column"));
 	}

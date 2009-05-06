@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
-import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.main.EAM;
 
 abstract public class AbstractExpandColumnAction extends AbstractExpansionStateAction
 {
-	public AbstractExpandColumnAction(WorkUnitsTableModel workUnitsTableModelToUse)
+	public AbstractExpandColumnAction(AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(workUnitsTableModelToUse, EAM.text("Expand Selected Column"));		
 	}

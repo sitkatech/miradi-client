@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
-import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 
 public class MultiTableCollapseColumnAction extends AbstractCollapseColumnAction
 {
-	public MultiTableCollapseColumnAction(PlanningUpperMultiTable multiTableToUse, WorkUnitsTableModel workUnitsTableModelToUse)
+	public MultiTableCollapseColumnAction(PlanningUpperMultiTable multiTableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
 		super(workUnitsTableModelToUse);
 		
