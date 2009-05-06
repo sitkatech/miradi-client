@@ -19,60 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.commands.Command;
-import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandCreateObject;
-import org.miradi.commands.CommandEndTransaction;
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.views.ObjectsDoer;
 
-public class AddAssignmentDoer extends ObjectsDoer
+public class AddAssignmentDoer extends AbstractAddNewBaseObjectToListDoer
 {
-	public boolean isAvailable()
+	protected String getListTag()
 	{
-		if(!super.isAvailable())
-			return false;
-		
-		return getSelectionHierarchy().size() > 0;
-	}
-	
-	public void doIt() throws CommandFailedException
-	{
-		if (! isAvailable())
-			return;
-
-		try 
-		{
-			ORefList selectedRefs = getSelectionHierarchy();
-			BaseObject selectedBaseObject = BaseObject.find(getProject(), selectedRefs.get(0));			
-			createAssignment(selectedBaseObject);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
+		return BaseObject.TAG_ASSIGNMENT_IDS;
 	}
 
-	private void createAssignment(BaseObject selectedBaseObject) throws Exception
+	protected int getTypeToCreate()
 	{
-		getProject().executeCommand(new CommandBeginTransaction());
-		try
-		{
-			CommandCreateObject createAssignment = new CommandCreateObject(ObjectType.ASSIGNMENT);
-			getProject().executeCommand(createAssignment);
-
-			Command appendAssignment = CommandSetObjectData.createAppendIdCommand(selectedBaseObject, BaseObject.TAG_ASSIGNMENT_IDS, createAssignment.getCreatedId());
-			getProject().executeCommand(appendAssignment);
-		}
-		finally 
-		{
-			getProject().executeCommand(new CommandEndTransaction());	
-		}
-	}
-	
+		return ObjectType.ASSIGNMENT;
+	}	
 }
