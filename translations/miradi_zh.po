@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-05 16:59-0500\n"
+"POT-Creation-Date: 2009-05-06 09:28-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -4556,14 +4556,6 @@ msgstr "创建组合框 \t\t"
 msgid "TT|Create a Group Box"
 msgstr "创建一个组合框 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionAssignExpense.java:34
-msgid "Action|Assign Expense"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionAssignExpense.java:39
-msgid "TT|Assign an expense"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionResourceListAdd.java:34
 msgid "Action|Manage|Add Resource"
 msgstr "添加资源 \t\t"
@@ -4923,14 +4915,6 @@ msgstr ""
 msgid "Action|Create Conceptual Model Page"
 msgstr "创建概念模型页 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionRemoveExpense.java:34
-msgid "Action|Remove Expense"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionRemoveExpense.java:39
-msgid "TT|Remove expense from list"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionDeleteStress.java:35
 msgid "Action|Delete Stress"
 msgstr "删除压力 \t\t"
@@ -5207,6 +5191,14 @@ msgstr "创建曲点 \t\t"
 msgid "TT|Create a Bend Point"
 msgstr "创建一个曲点 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionCreateExpense.java:34
+msgid "Action|Assign Expense"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCreateExpense.java:39
+msgid "TT|Assign an expense"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionCreateIndicator.java:40
 msgid "TT|Create an Indicator"
 msgstr "创建一项指示物 \t\t"
@@ -5218,6 +5210,14 @@ msgstr "粘贴内容 \t\t"
 #: miradi/source/org/miradi/actions/ActionPasteFactorContent.java:47
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "从剪贴板中粘贴单一因素的内容 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:34
+msgid "Action|Remove Expense"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:39
+msgid "TT|Remove expense from list"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:40
 msgid "TT|Delete a Tag"
