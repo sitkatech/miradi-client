@@ -25,7 +25,7 @@ import org.miradi.main.MainWindow;
 
 public class ExpenseAmountsTable extends WorkUnitsTable
 {
-	public ExpenseAmountsTable(MainWindow mainWindowToUse, ExpenseAmountTableModel modelToUse) throws Exception
+	public ExpenseAmountsTable(MainWindow mainWindowToUse, ExpenseAmountsTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);
 	}

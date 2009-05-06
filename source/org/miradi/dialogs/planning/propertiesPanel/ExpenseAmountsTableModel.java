@@ -26,9 +26,9 @@ import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.Project;
 
-public class ExpenseAmountTableModel extends WorkUnitsTableModel
+public class ExpenseAmountsTableModel extends WorkUnitsTableModel
 {
-	public ExpenseAmountTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
+	public ExpenseAmountsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
 	{
 		super(projectToUse, providerToUse);
 	}
