@@ -55,7 +55,7 @@ public class AbstractSummaryTable extends AbstractComponentTable
 	private void createAccountingCodeColumn(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getPlanningViewResourceTableModel().isAccountingCodeColumn(modelColumn))
+		if (! getAbstractSummaryTableModel().isAccountingCodeColumn(modelColumn))
 			return;
 		
 		AccountingCode[] accountingCodes = getObjectManager().getAccountingCodePool().getAllAccountingCodes();
@@ -66,7 +66,7 @@ public class AbstractSummaryTable extends AbstractComponentTable
 	private void createFundingSourceColumn(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getPlanningViewResourceTableModel().isFundingSourceColumn(modelColumn))
+		if (! getAbstractSummaryTableModel().isFundingSourceColumn(modelColumn))
 			return;
 
 		FundingSource[] fundingSources = getObjectManager().getFundingSourcePool().getAllFundingSources();
@@ -74,7 +74,7 @@ public class AbstractSummaryTable extends AbstractComponentTable
 		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
 	}
 	
-	protected AbstractSummaryTableModel getPlanningViewResourceTableModel()
+	protected AbstractSummaryTableModel getAbstractSummaryTableModel()
 	{
 		return model;
 	}
