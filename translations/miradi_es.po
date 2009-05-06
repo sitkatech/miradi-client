@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 09:55-0500\n"
+"POT-Creation-Date: 2009-05-06 10:40-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -220,8 +220,7 @@ msgid "Tab|Custom"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:66
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:65
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:50
 msgid "Funding Source"
 msgstr "Fuente de financiamiento"
 
@@ -6632,30 +6631,9 @@ msgstr "Propiedades del resultado intermedio "
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Propiedades del resultado de reducción de amenazas "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:54
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:53
-msgid "Resource (Who)"
-msgstr "Recurso (quién)"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:57
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:56
-msgid "Cost/Unit"
-msgstr "Costo/unidad"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:60
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:59
-msgid "Unit"
-msgstr "Unidad"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:63
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:62
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:47
 msgid "Acct Code"
 msgstr "Código contable"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:111
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:110
-msgid "An error has occured while writing assignment data."
-msgstr "Se produjo un error al escribir los datos de la asignación."
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:42
 msgid "Title|Task Properties"
@@ -6688,6 +6666,27 @@ msgstr "Total"
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "(Error)"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:52
+msgid "Resource (Who)"
+msgstr "Recurso (quién)"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:55
+msgid "Cost/Unit"
+msgstr "Costo/unidad"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:58
+msgid "Unit"
+msgstr "Unidad"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:96
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:69
+msgid "An error has occured while writing assignment data."
+msgstr "Se produjo un error al escribir los datos de la asignación."
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:39
+msgid "Name"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
