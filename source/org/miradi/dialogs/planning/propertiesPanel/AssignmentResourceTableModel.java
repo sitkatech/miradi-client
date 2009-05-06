@@ -194,11 +194,6 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		return RESOURCE_COLUMM;
 	}
 			
-	public String getColumnTag(int column)
-	{
-		return getColumnName(column);
-	}
-	
 	private static final int COLUMN_COUNT = 5;
 	
 	private static final int RESOURCE_COLUMM = 0;
