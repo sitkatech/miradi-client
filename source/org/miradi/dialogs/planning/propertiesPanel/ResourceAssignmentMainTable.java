@@ -29,7 +29,7 @@ public class ResourceAssignmentMainTable extends AbstractSummaryTable
 {
 	public ResourceAssignmentMainTable(MainWindow mainWindowToUse, ResourceAssignmentSummaryTableModel modelToUse) throws Exception
 	{
-		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, modelToUse, getUniqueIdentifier());
 	}
 	
 	public void rebuildColumnEditorsAndRenderers() throws Exception
@@ -64,5 +64,8 @@ public class ResourceAssignmentMainTable extends AbstractSummaryTable
 		return getObjectManager().getResourcePool();
 	}
 	
-    public static final String UNIQUE_IDENTIFIER = "ResourceAssignmentMainTable";
+	static private String getUniqueIdentifier()
+	{
+		return "ResourceAssignmentMainTable"; 
+	} 
 }
