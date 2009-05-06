@@ -42,7 +42,7 @@ abstract public class AbstractComponentTable extends EditableObjectTable
 		return false;
 	}
 	
-	
+	@Override
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		return getPreferredSize();
