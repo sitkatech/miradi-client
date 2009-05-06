@@ -103,7 +103,7 @@ public class ExpenseAssignment extends BaseObject
 		addField(TAG_FUNDING_SOURCE_REF, fundingSourceRef);
 	}
 	
-	public static final String OBJECT_NAME = "Expense";
+	public static final String OBJECT_NAME = "ExpenseAssignment";
 	
 	public static final String TAG_ACCOUNTING_CODE_REF = "AccountingCodeRef";
 	public static final String TAG_FUNDING_SOURCE_REF = "FundingSourceRef";
