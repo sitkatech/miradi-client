@@ -225,7 +225,7 @@ import org.miradi.views.umbrella.doers.ExportRtfDoer;
 import org.miradi.views.umbrella.doers.ExportTableDoer;
 import org.miradi.views.umbrella.doers.HowToSaveDoer;
 import org.miradi.views.umbrella.doers.ImportCpmzVersion2Doer;
-import org.miradi.views.umbrella.doers.RemoveAssignmentDoer;
+import org.miradi.views.umbrella.doers.RemoveResourceAssignmentDoer;
 import org.miradi.views.umbrella.doers.SaveProjectAsDoer;
 import org.miradi.views.umbrella.doers.ShowCurrentWizardFileNameDoer;
 import org.miradi.views.umbrella.doers.SwitchToOperationalPlanViewDoer;
@@ -447,7 +447,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionCollapseAllRows.class, new CollapseAllRowsDoer());
 		
 		addDoerToMap(ActionAssignResource.class, new CreateAssignmentDoer());
-		addDoerToMap(ActionRemoveAssignment.class, new RemoveAssignmentDoer());
+		addDoerToMap(ActionRemoveAssignment.class, new RemoveResourceAssignmentDoer());
 		addDoerToMap(ActionCreateExpense.class, new CreateExpenseDoer());
 		addDoerToMap(ActionDeleteExpense.class, new DeleteExpenseDoer());
 				
