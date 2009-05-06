@@ -51,7 +51,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		try
 		{
 			Assignment selectedObject = (Assignment)getObjects()[0];
-			removeAssignment(getProject(), selectedObject);
+			removeBaseObject(getProject(), selectedObject);
 		}
 		catch (Exception e)
 		{
@@ -63,7 +63,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		}
 	}
 
-	public static void removeAssignment(Project project, Assignment assignmentToRemove) throws Exception
+	public static void removeBaseObject(Project project, Assignment assignmentToRemove) throws Exception
 	{
 		Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, assignmentToRemove, BaseObject.TAG_ASSIGNMENT_IDS);
 		project.executeCommandsWithoutTransaction(commands);
