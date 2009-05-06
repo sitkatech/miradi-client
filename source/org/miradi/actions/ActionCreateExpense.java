@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionAssignExpense extends ObjectsAction
+public class ActionCreateExpense extends ObjectsAction
 {
-	public ActionAssignExpense(MainWindow mainWindowToUse)
+	public ActionCreateExpense(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
