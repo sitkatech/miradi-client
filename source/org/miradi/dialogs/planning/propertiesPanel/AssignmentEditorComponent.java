@@ -98,7 +98,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 
 	private void createTables() throws Exception
 	{
-		resourceTableModel = new AssignmentResourceTableModel(getProject());
+		resourceTableModel = new AssignmentSummaryTableModel(getProject());
 		resourceTable = new AssignmentResourceTable(getMainWindow(), resourceTableModel);
 		
 		workUnitsTableModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
@@ -181,6 +181,6 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 	private AssignmentResourceTable resourceTable;
 	private WorkUnitsTable workUnitsTable;
 	
-	private AssignmentResourceTableModel resourceTableModel;
+	private AssignmentSummaryTableModel resourceTableModel;
 	private WorkUnitsTableModel workUnitsTableModel;
 }
