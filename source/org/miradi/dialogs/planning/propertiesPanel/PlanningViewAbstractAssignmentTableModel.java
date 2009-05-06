@@ -106,14 +106,14 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		}
 	}
 	
-	public ORef getAssignmentForRow(int row)
+	public ORef getRefForRow(int row)
 	{
 		return baseObjectRefs.get(row);
 	}
 	
 	public Assignment getAssignment(int row)
 	{
-		return (Assignment) getProject().findObject(getAssignmentForRow(row));
+		return (Assignment) getProject().findObject(getRefForRow(row));
 	}
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)

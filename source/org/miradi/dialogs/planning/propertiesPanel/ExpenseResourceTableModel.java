@@ -73,7 +73,7 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 			return;
 		}
 		
-		ORef assignmentRefForRow = getAssignmentForRow(row);
+		ORef assignmentRefForRow = getRefForRow(row);
 		setExpenseNameCell(value, assignmentRefForRow, column);
 		
 		super.setValueAt(value, row, column);

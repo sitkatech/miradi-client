@@ -72,7 +72,7 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 	
 	protected Object getCellValue(int row, int column)
 	{
-		ORef assignmentRef = getAssignmentForRow(row);
+		ORef assignmentRef = getRefForRow(row);
 		Assignment assignment = (Assignment) getProject().findObject(assignmentRef);
 		if (isResourceColumn(column))
 			return getResource(assignment);
@@ -98,7 +98,7 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 			return;
 		}
 		
-		ORef assignmentRefForRow = getAssignmentForRow(row);
+		ORef assignmentRefForRow = getRefForRow(row);
 		setResourceCell(value, assignmentRefForRow, column);
 		
 		super.setValueAt(value, row, column);

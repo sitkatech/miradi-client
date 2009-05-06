@@ -59,7 +59,7 @@ abstract public class PlanningViewResourceTableModel extends PlanningViewAbstrac
 	
 	protected Object getCellValue(int row, int column)
 	{
-		ORef assignmentRef = getAssignmentForRow(row);
+		ORef assignmentRef = getRefForRow(row);
 		Assignment assignment = (Assignment) getProject().findObject(assignmentRef);
 		if (isFundingSourceColumn(column))
 			return getFundingSource(assignment);
@@ -72,7 +72,7 @@ abstract public class PlanningViewResourceTableModel extends PlanningViewAbstrac
 
 	public void setValueAt(Object value, int row, int column)
 	{
-		ORef assignmentRefForRow = getAssignmentForRow(row);
+		ORef assignmentRefForRow = getRefForRow(row);
 		setAccountingCode(value, assignmentRefForRow, column);
 		setFundingSource(value, assignmentRefForRow, column);
 	}
