@@ -23,7 +23,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Expense;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 
@@ -84,7 +84,7 @@ public class ExpenseSummaryTableModel extends AbstractSummaryTableModel
 			return;
 
 		String expenseName = value.toString();
-		setValueUsingCommand(refForRow, Expense.TAG_LABEL, expenseName);
+		setValueUsingCommand(refForRow, ExpenseAssignment.TAG_LABEL, expenseName);
 	}
 	
 	public boolean isResourceColumn(int column)
@@ -131,13 +131,13 @@ public class ExpenseSummaryTableModel extends AbstractSummaryTableModel
 	@Override
 	protected int getListType()
 	{
-		return Expense.getObjectType();
+		return ExpenseAssignment.getObjectType();
 	}
 	
 	@Override
 	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
 	{
-		Expense expense = (Expense) baseObjectToUse;
+		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
 		ORef fundingSourceRef = expense.getFundingSourceRef();
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}
@@ -145,7 +145,7 @@ public class ExpenseSummaryTableModel extends AbstractSummaryTableModel
 	@Override
 	protected BaseObject getAccountingCode(BaseObject baseObjectToUse)
 	{
-		Expense expense = (Expense) baseObjectToUse;
+		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
 		ORef accountingCodeRef = expense.getAccountingCodeRef();
 		return AccountingCode.find(getProject(), accountingCodeRef);
 	}
@@ -153,13 +153,13 @@ public class ExpenseSummaryTableModel extends AbstractSummaryTableModel
 	@Override
 	protected String getAccountingCodeTag()
 	{
-		return Expense.TAG_ACCOUNTING_CODE_REF;
+		return ExpenseAssignment.TAG_ACCOUNTING_CODE_REF;
 	}
 	
 	@Override
 	protected String getFundingSourceTag()
 	{
-		return Expense.TAG_FUNDING_SOURCE_REF;
+		return ExpenseAssignment.TAG_FUNDING_SOURCE_REF;
 	}
 	
 	@Override
