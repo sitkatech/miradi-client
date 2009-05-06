@@ -135,7 +135,6 @@ import org.miradi.objects.TestWcpaProjectData;
 import org.miradi.objects.TestWcsProjectData;
 import org.miradi.objects.TestWwfProjectData;
 import org.miradi.objects.TestXenodata;
-import org.miradi.project.TestBudgetTimePeriodChanger;
 import org.miradi.project.TestCausePool;
 import org.miradi.project.TestChainManager;
 import org.miradi.project.TestDateUnit;
@@ -240,7 +239,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestEAM.class));
 		
 		// project package
-		suite.addTest(new TestSuite(TestBudgetTimePeriodChanger.class));
 		suite.addTest(new TestSuite(TestThreatReductionResultPool.class));
 		suite.addTest(new TestSuite(TestTextBoxPool.class));
 		suite.addTest(new TestSuite(TestScopeBoxPool.class));
