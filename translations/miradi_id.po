@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 13:46-0500\n"
+"POT-Creation-Date: 2009-05-06 13:52-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -218,7 +218,7 @@ msgid "Tab|Custom"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:46
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:46
 msgid "Funding Source"
 msgstr "Sumber Dana "
 
@@ -6601,13 +6601,13 @@ msgstr "Terjadi Kesalahan Tak Terduga "
 msgid "Title|Intermediate Result Properties"
 msgstr "Sifat-sifat Hasil Antara"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:43
+msgid "Acct Code"
+msgstr "Kode Akuntansi "
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:39
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Sifat-sifat Hasil Pengurangan Ancaman"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:43
-msgid "Acct Code"
-msgstr "Kode Akuntansi "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:53
 msgid "Resource (Who)"
