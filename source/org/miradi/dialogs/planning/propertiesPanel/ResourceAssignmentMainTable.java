@@ -25,9 +25,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.ProjectResource;
 
-public class AssignmentSummaryTable extends AbstractSummaryTable
+public class ResourceAssignmentMainTable extends AbstractSummaryTable
 {
-	public AssignmentSummaryTable(MainWindow mainWindowToUse, AssignmentSummaryTableModel modelToUse) throws Exception
+	public ResourceAssignmentMainTable(MainWindow mainWindowToUse, AssignmentSummaryTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 	}
