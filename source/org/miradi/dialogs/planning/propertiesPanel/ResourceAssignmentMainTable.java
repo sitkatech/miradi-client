@@ -64,5 +64,5 @@ public class ResourceAssignmentMainTable extends AbstractSummaryTable
 		return getObjectManager().getResourcePool();
 	}
 	
-    public static final String UNIQUE_IDENTIFIER = "AssignmentSummaryTable";
+    public static final String UNIQUE_IDENTIFIER = "ResourceAssignmentMainTable";
 }
