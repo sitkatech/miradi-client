@@ -89,7 +89,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return ColumnConfigurationQuestion.META_ASSIGNMENT_COLUMN_CODE;
+		return ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 	}
 
 	@Override
