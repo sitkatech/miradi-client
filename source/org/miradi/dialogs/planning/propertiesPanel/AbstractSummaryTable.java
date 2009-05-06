@@ -32,7 +32,7 @@ import org.miradi.objects.AccountingCode;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 
-public class AbstractSummaryTable extends AssignmentsComponentTable
+public class AbstractSummaryTable extends AbstractComponentTable
 {
 	public AbstractSummaryTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse) throws Exception
 	{

@@ -117,7 +117,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
 	
-	private UiScrollPane addTableToPanel(OneRowPanel tables, AssignmentsComponentTable table)
+	private UiScrollPane addTableToPanel(OneRowPanel tables, AbstractComponentTable table)
 	{
 		addRowHeightControlledTable(table);
 		AssignmentsComponentTableScrollPane scroller = new AssignmentsComponentTableScrollPane(table);

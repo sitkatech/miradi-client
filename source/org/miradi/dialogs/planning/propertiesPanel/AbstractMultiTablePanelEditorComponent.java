@@ -79,7 +79,7 @@ abstract public class AbstractMultiTablePanelEditorComponent extends MultiTableP
 	
 	static class AssignmentsComponentTableScrollPane extends ScrollPaneWithHideableScrollBar
 	{
-		public AssignmentsComponentTableScrollPane(AssignmentsComponentTable contents)
+		public AssignmentsComponentTableScrollPane(AbstractComponentTable contents)
 		{
 			super(contents);
 			setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);
