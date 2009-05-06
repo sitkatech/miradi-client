@@ -23,7 +23,7 @@ import org.miradi.main.MainWindow;
 
 public class AssignmentResourceTable extends PlanningViewResourceTable
 {
-	public AssignmentResourceTable(MainWindow mainWindowToUse, AssignmentResourceTableModel modelToUse) throws Exception
+	public AssignmentResourceTable(MainWindow mainWindowToUse, AssignmentSummaryTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);
 	}

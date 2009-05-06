@@ -29,9 +29,9 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
-public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
+public class AssignmentSummaryTableModel extends PlanningViewResourceTableModel
 {
-	public AssignmentResourceTableModel(Project projectToUse)
+	public AssignmentSummaryTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
