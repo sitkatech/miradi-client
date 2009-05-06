@@ -100,7 +100,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	private void createTables() throws Exception
 	{
 		resourceTableModel = new ExpenseSummaryTableModel(getProject());
-		resourceTable = new ExpenseResourceTable(getMainWindow(), resourceTableModel);
+		resourceTable = new ExpenseSummaryTable(getMainWindow(), resourceTableModel);
 		
 		workUnitsTableModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
 		workUnitsTable = new WorkUnitsTable(getMainWindow(), workUnitsTableModel);		
@@ -179,7 +179,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		return resourceTable.getSelectedHierarchies();
 	}
 	
-	private ExpenseResourceTable resourceTable;
+	private ExpenseSummaryTable resourceTable;
 	private WorkUnitsTable workUnitsTable;
 	
 	private ExpenseSummaryTableModel resourceTableModel;
