@@ -183,29 +183,54 @@ public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignme
 
 	public boolean isResourceColumn(int column)
 	{
-		return RESOURCE_COLUMM == column;
+		return getResourceColumn() == column;
 	}
-	
+
 	public boolean isFundingSourceColumn(int column)
 	{
-		return FUNDING_SOURCE_COLUMN == column;
+		return getFundingSourceColumn() == column;
 	}
-	
+
 	public boolean isAccountingCodeColumn(int column)
 	{
-		return ACCOUNTING_CODE_COLUMN == column;
+		return getAccountingCodeColumn() == column;
 	}
-	
+
 	public boolean isResourceCostColumn(int column)
 	{
-		return RESOURCE_COST_COLUMN == column;
+		return getResourceCostColumn() == column;
 	}
-	
+
 	public boolean isResourceCostPerUnitColumn(int column)
 	{
-		return RESOURCE_COST_PER_UNIT_COLUMN == column;
+		return getResourceCostPerUnitColumn() == column;
+	}
+
+	protected int getResourceCostPerUnitColumn()
+	{
+		return RESOURCE_COST_PER_UNIT_COLUMN;
 	}
 	
+	protected int getResourceCostColumn()
+	{
+		return RESOURCE_COST_COLUMN;
+	}
+	
+	protected int getAccountingCodeColumn()
+	{
+		return ACCOUNTING_CODE_COLUMN;
+	}
+	
+	protected int getFundingSourceColumn()
+	{
+		return FUNDING_SOURCE_COLUMN;
+	}
+	
+	protected int getResourceColumn()
+	{
+		return RESOURCE_COLUMM;
+	}
+			
 	public String getColumnTag(int column)
 	{
 		return getColumnName(column);
