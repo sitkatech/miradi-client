@@ -50,8 +50,8 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		
 		ORef selectedRef = hierarchyToSelectedRef[0];
 		
-		baseObject = getProject().findObject(selectedRef);
-		baseObjectRefs = getAssignmentsForBaseObject(baseObject);
+		baseObject = BaseObject.find(getProject(), selectedRef);
+		baseObjectRefs = getRefsForBaseObject(baseObject);
 	}
 			
 	public void setBaseObject(BaseObject baseObjectToUse)
@@ -60,15 +60,15 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 			return;
 			
 		baseObject = baseObjectToUse;
-		updateAssignmentIdList();	
+		updateRefList();	
 	}
 	
 	public void dataWasChanged() throws Exception
 	{
-		if (isAlreadyCurrentAssignmentIdList())
+		if (isAlreadyCurrentRefList())
 			return;
 		
-		updateAssignmentIdList();
+		updateRefList();
 	}
 
 	private boolean isAlreadyCurrentBaseObject(BaseObject baseObjectToUse)
@@ -79,18 +79,18 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		 return baseObject.getId().equals(baseObjectToUse.getId());
 	}
 	
-	private boolean isAlreadyCurrentAssignmentIdList()
+	private boolean isAlreadyCurrentRefList()
 	{
-		return baseObjectRefs.equals(getAssignmentsForBaseObject(baseObject));
+		return baseObjectRefs.equals(getRefsForBaseObject(baseObject));
 	}
 	
-	private void updateAssignmentIdList()
+	private void updateRefList()
 	{
-		baseObjectRefs = getAssignmentsForBaseObject(baseObject);
+		baseObjectRefs = getRefsForBaseObject(baseObject);
 		fireTableDataChanged();
 	}
 		
-	private ORefList getAssignmentsForBaseObject(BaseObject baseObjectToUse)
+	private ORefList getRefsForBaseObject(BaseObject baseObjectToUse)
 	{
 		if (baseObjectToUse == null)
 			return new ORefList();
