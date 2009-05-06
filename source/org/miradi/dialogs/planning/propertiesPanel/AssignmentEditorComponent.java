@@ -50,7 +50,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 	public void dispose()
 	{
 		super.dispose();
-		resourceTable.dispose();
+		assignmentSummaryTable.dispose();
 		workUnitsTable.dispose();
 	}
 	
@@ -58,13 +58,13 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 	public void becomeActive()
 	{
 		super.becomeActive();
-		resourceTable.becomeActive();
+		assignmentSummaryTable.becomeActive();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		resourceTable.becomeInactive();
+		assignmentSummaryTable.becomeInactive();
 		super.becomeInactive();
 	}
 	
@@ -83,25 +83,25 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 			setRef(baseObjectRef);
 		}
 
-		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
+		assignmentSummaryTableModel.setObjectRefs(hierarchyToSelectedRef);
 		workUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
 		
-		resourceTableModel.fireTableDataChanged();
+		assignmentSummaryTableModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
 	}
 	
 	private void savePendingEdits()
 	{
-		resourceTable.stopCellEditing();
+		assignmentSummaryTable.stopCellEditing();
 		workUnitsTable.stopCellEditing();
 	}
 
 	private void createTables() throws Exception
 	{
-		resourceTableModel = new AssignmentSummaryTableModel(getProject());
-		resourceTable = new AssignmentSummaryTable(getMainWindow(), resourceTableModel);
+		assignmentSummaryTableModel = new AssignmentSummaryTableModel(getProject());
+		assignmentSummaryTable = new AssignmentSummaryTable(getMainWindow(), assignmentSummaryTableModel);
 		
-		workUnitsTableModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
+		workUnitsTableModel = new WorkUnitsTableModel(getProject(), assignmentSummaryTableModel);
 		workUnitsTable = new WorkUnitsTable(getMainWindow(), workUnitsTableModel);		
 	}
 	
@@ -109,7 +109,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 	{
 		OneRowPanel tables = new OneRowPanel();
 
-		addTableToPanel(tables, resourceTable);
+		addTableToPanel(tables, assignmentSummaryTable);
 		addToHorizontalController(addTableToPanel(tables, workUnitsTable));
 		
 		add(tables, BorderLayout.CENTER);
@@ -128,7 +128,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 	
 	protected void addTablesToSelectionController()
 	{
-		selectionController.addTable(resourceTable);
+		selectionController.addTable(assignmentSummaryTable);
 		selectionController.addTable(workUnitsTable);
 	}
 	
@@ -138,7 +138,7 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), getPicker()));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), resourceTable));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), assignmentSummaryTable));
 		
 		return box;
 	}
@@ -150,10 +150,10 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 
 	protected void dataWasChanged() throws Exception
 	{
-		resourceTableModel.dataWasChanged();
+		assignmentSummaryTableModel.dataWasChanged();
 		
-		resourceTable.rebuildColumnEditorsAndRenderers();
-		resourceTable.repaint();
+		assignmentSummaryTable.rebuildColumnEditorsAndRenderers();
+		assignmentSummaryTable.repaint();
 		
 		workUnitsTable.invalidate();
 		workUnitsTable.repaint();
@@ -170,17 +170,17 @@ public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComp
 		//that way we just loop through the tbales.  
 		workUnitsTable.stopCellEditing();
 		
-		resourceTableModel.setBaseObject(baseObject);
+		assignmentSummaryTableModel.setBaseObject(baseObject);
 	}
 	
 	public ORefList[] getSelectedHierarchies()
 	{
-		return resourceTable.getSelectedHierarchies();
+		return assignmentSummaryTable.getSelectedHierarchies();
 	}
 	
-	private AssignmentSummaryTable resourceTable;
+	private AssignmentSummaryTable assignmentSummaryTable;
 	private WorkUnitsTable workUnitsTable;
 	
-	private AssignmentSummaryTableModel resourceTableModel;
+	private AssignmentSummaryTableModel assignmentSummaryTableModel;
 	private WorkUnitsTableModel workUnitsTableModel;
 }
