@@ -203,7 +203,14 @@ public class DateRange
 		if (! (rawOther instanceof DateRange))
 			return false;
 		
-		return toString().equals(rawOther.toString());
+		DateRange other = (DateRange)rawOther;
+		return getStartDate().equals(other.getStartDate()) && getEndDate().equals(other.getEndDate());
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return startDate.hashCode() + endDate.hashCode();
 	}
 	
 	public static DateRange createFromJson(MultiCalendar date1, MultiCalendar date2) throws Exception
@@ -213,6 +220,7 @@ public class DateRange
 		
 		return new DateRange(date1, date2);
 	}
+	
 	
 	private static final String TAG_START_DATE = "StartDate";
 	private static final String TAG_END_DATE = "EndDate";

@@ -128,16 +128,11 @@ public class DateRangeEffortList
 		
 	public void setDateRangeEffort(DateRangeEffort dateRangeEffortToUse)
 	{
-		for (int i = 0; i < data.size(); i++)
-		{
-			DateRangeEffort dateRangeEffort = data.get(i);
-			if (dateRangeEffort.getDateRange().equals(dateRangeEffortToUse.getDateRange()))
-			{
-				data.set(i, dateRangeEffortToUse);
-				return;
-			}
-		}
-		add(dateRangeEffortToUse);
+		DateRangeEffort dre = getDateRangeEffortForSpecificDateRange(dateRangeEffortToUse.getDateRange());
+		if(dre != null)
+			data.remove(dre);
+
+		data.add(dateRangeEffortToUse);
 	}
 
 	public EnhancedJsonObject toJson()
@@ -157,6 +152,37 @@ public class DateRangeEffortList
 		data.add(dateRangeEffortToUse);
 	}
 	
+	public void mergeAdd(DateRangeEffortList dateRangeEffortListToAdd)
+	{
+		for(DateRangeEffort dre : dateRangeEffortListToAdd.data)
+		{
+			DateRange thisDateRange = dre.getDateRange();
+			if(hasAnyEntriesWithin(thisDateRange))
+				continue;
+			
+			DateRangeEffort existing = getDateRangeEffortForSpecificDateRange(thisDateRange);
+			if(existing != null)
+				existing.setUnitQuantity(existing.getUnitQuantity() + dre.getUnitQuantity());
+			else
+				add(dre);
+		}
+	}
+	
+	private boolean hasAnyEntriesWithin(DateRange largerDateRange)
+	{
+		for(DateRangeEffort dre : data)
+		{
+			DateRange thisDateRange = dre.getDateRange();
+			if(largerDateRange.equals(thisDateRange))
+				continue;
+			
+			if(largerDateRange.contains(thisDateRange))
+				return true;
+		}
+		
+		return false;
+	}
+
 	public void remove(DateRange dateRange)
 	{
 		for(DateRangeEffort dateRangeEffort : data)
