@@ -40,6 +40,22 @@ public class Expense extends BaseObject
 		super(objectManager, new BaseId(idAsInt), json);
 	}
 	
+	public ORef getFundingSourceRef()
+	{
+		if (fundingSourceRef.getRawRef().isInvalid())
+			return ORef.createInvalidWithType(FundingSource.getObjectType());
+		
+		return fundingSourceRef.getRawRef();
+	}
+	
+	public ORef getAccountingCodeRef()
+	{
+		if (accountingCodeRef.getRawRef().isInvalid())
+			return ORef.createInvalidWithType(AccountingCode.getObjectType());
+		
+		return accountingCodeRef.getRawRef();
+	}
+	
 	public int getType()
 	{
 		return getObjectType();
