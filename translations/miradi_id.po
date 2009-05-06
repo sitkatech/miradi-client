@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 10:40-0500\n"
+"POT-Creation-Date: 2009-05-06 11:28-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -41,6 +41,10 @@ msgstr " (Sumber Daya Tak Terdefinisi) "
 #: miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
+
+#: miradi/source/org/miradi/objects/BaseObject.java:162
+msgid "No List exists for this tag:"
+msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
 msgid ""
@@ -6654,11 +6658,11 @@ msgid "Unit"
 msgstr "Unit "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:96
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:69
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:71
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:39
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:41
 msgid "Name"
 msgstr ""
 
