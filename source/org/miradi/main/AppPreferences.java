@@ -526,6 +526,11 @@ public class AppPreferences
 		return WORK_UNITS_TOTAL_BACKGROUND;
 	}
 	
+	public static Color getExpenseAmountsBackgroundColor()
+	{
+		return EXPENSE_AMOUNT_TOTAL_BACKGROUND;
+	}
+	
 	public static Color getWorkUnitsBackgroundColor(DateUnit dateUnit)
 	{
 		if(dateUnit.isBlank())
@@ -538,6 +543,22 @@ public class AppPreferences
 			return WORK_UNITS_MONTH_BACKGROUND;
 		if(dateUnit.isDay())
 			return WORK_UNITS_DAY_BACKGROUND;
+		EAM.logWarning("Unknown work units date unit type: " + dateUnit);
+		return WORK_UNITS_TOTAL_BACKGROUND;
+	}
+	
+	public static Color getExpenseAmountBackgroundColor(DateUnit dateUnit)
+	{
+		if(dateUnit.isBlank())
+			return getExpenseAmountsBackgroundColor();
+		if(dateUnit.isYear())
+			return EXPENSE_AMOUNT_YEAR_BACKGROUND;
+		if(dateUnit.isQuarter())
+			return EXPENSE_AMOUNT_QUARTER_BACKGROUND;
+		if(dateUnit.isMonth())
+			return EXPENSE_AMOUNT_MONTH_BACKGROUND;
+		if(dateUnit.isDay())
+			return EXPENSE_AMOUNT_DAY_BACKGROUND;
 		EAM.logWarning("Unknown work units date unit type: " + dateUnit);
 		return WORK_UNITS_TOTAL_BACKGROUND;
 	}
@@ -595,11 +616,17 @@ public class AppPreferences
 	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(0x99, 0xee, 0x99);
 	public static final Color MEASUREMENT_COLOR_BACKGROUND = new Color(0xff, 0xf0, 0xb6);
 
-	private static final Color WORK_UNITS_TOTAL_BACKGROUND = new Color(0xff, 0xCC, 0x55);
-	private static final Color WORK_UNITS_YEAR_BACKGROUND = new Color(0xff, 0xDD, 0x66);
+	private static final Color WORK_UNITS_TOTAL_BACKGROUND =   new Color(0xff, 0xCC, 0x55);
+	private static final Color WORK_UNITS_YEAR_BACKGROUND =    new Color(0xff, 0xDD, 0x66);
 	private static final Color WORK_UNITS_QUARTER_BACKGROUND = new Color(0xff, 0xEE, 0x77);
-	private static final Color WORK_UNITS_MONTH_BACKGROUND = new Color(0xff, 0xFF, 0x88);
-	private static final Color WORK_UNITS_DAY_BACKGROUND = new Color(0xff, 0xFF, 0xAA);
+	private static final Color WORK_UNITS_MONTH_BACKGROUND =   new Color(0xff, 0xFF, 0x88);
+	private static final Color WORK_UNITS_DAY_BACKGROUND =     new Color(0xff, 0xFF, 0xAA);
+	
+	private static final Color EXPENSE_AMOUNT_TOTAL_BACKGROUND =   new Color(0x99, 0xEE, 0x99);
+	private static final Color EXPENSE_AMOUNT_YEAR_BACKGROUND =    new Color(0xAA, 0xEE, 0xAA);
+	private static final Color EXPENSE_AMOUNT_QUARTER_BACKGROUND = new Color(0xBB, 0xEE, 0xBB);
+	private static final Color EXPENSE_AMOUNT_MONTH_BACKGROUND =   new Color(0xCC, 0xFF, 0xCC);
+	private static final Color EXPENSE_AMOUNT_DAY_BACKGROUND =     new Color(0xDD, 0xFF, 0xDD);
 
 	private static final boolean DEFAULT_GRID_VISIBILITY_VALUE = false;
 	private static final boolean DEFAULT_IS_MAXIMIZED_VALUE = false;

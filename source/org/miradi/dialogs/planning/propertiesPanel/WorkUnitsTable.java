@@ -68,7 +68,7 @@ public class WorkUnitsTable extends AbstractComponentTable
 		return getMainWindow().getActions();
 	}
 	
-	private WorkUnitsTableModel getWorkUnitsTableModel()
+	protected WorkUnitsTableModel getWorkUnitsTableModel()
 	{
 		return (WorkUnitsTableModel) getModel();
 	}
