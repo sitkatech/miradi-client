@@ -19,9 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.TaskId;
+import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objectdata.DateRangeEffortListData;
@@ -45,7 +44,7 @@ public class ResourceAssignment extends BaseObject
 	
 	public ResourceAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
-		super(objectManager,new TaskId(idAsInt), json);
+		super(objectManager, new ResourceAssignmentId(idAsInt), json);
 	}
 	
 	@Override
