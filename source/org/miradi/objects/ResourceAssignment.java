@@ -34,7 +34,7 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
-public class ResourceAssignment extends BaseObject
+public class ResourceAssignment extends Assignment
 {
 	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
