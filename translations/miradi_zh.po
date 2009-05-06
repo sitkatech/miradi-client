@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 12:34-0500\n"
+"POT-Creation-Date: 2009-05-06 12:52-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -41,10 +41,6 @@ msgstr "（未定义的资源） \t\t"
 #: miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Accounting Code)"
 msgstr "（未定义的会计代码） \t\t"
-
-#: miradi/source/org/miradi/objects/BaseObject.java:162
-msgid "No List exists for this tag:"
-msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
 msgid ""
@@ -207,7 +203,7 @@ msgid "Tab|Custom"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:49
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:46
 msgid "Funding Source"
 msgstr "资金来源 \t\t"
 
@@ -6428,7 +6424,7 @@ msgstr "标题|中途结果属性"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "标题|威胁因子减少结果属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:46
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:43
 msgid "Acct Code"
 msgstr "会计代码 \t\t"
 
@@ -6454,6 +6450,15 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:43
+msgid "Name"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
+msgid "An error has occured while writing assignment data."
+msgstr "编写分配数据时出现一个错误。 \t\t"
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:103
 msgid "Total"
 msgstr "总计 \t\t"
@@ -6475,15 +6480,6 @@ msgstr "开销/单位 \t\t"
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:59
 msgid "Unit"
 msgstr "单位 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:73
-msgid "An error has occured while writing assignment data."
-msgstr "编写分配数据时出现一个错误。 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:43
-msgid "Name"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"

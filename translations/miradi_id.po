@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 12:34-0500\n"
+"POT-Creation-Date: 2009-05-06 12:52-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -41,10 +41,6 @@ msgstr " (Sumber Daya Tak Terdefinisi) "
 #: miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
-
-#: miradi/source/org/miradi/objects/BaseObject.java:162
-msgid "No List exists for this tag:"
-msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
 msgid ""
@@ -222,7 +218,7 @@ msgid "Tab|Custom"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:49
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:46
 msgid "Funding Source"
 msgstr "Sumber Dana "
 
@@ -6609,7 +6605,7 @@ msgstr "Sifat-sifat Hasil Antara"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Sifat-sifat Hasil Pengurangan Ancaman"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:46
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:43
 msgid "Acct Code"
 msgstr "Kode Akuntansi "
 
@@ -6635,6 +6631,15 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:43
+msgid "Name"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
+msgid "An error has occured while writing assignment data."
+msgstr "Terjadi kesalahan saat menulis data alokasi. "
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:103
 msgid "Total"
 msgstr "Total "
@@ -6656,15 +6661,6 @@ msgstr "Biaya/Unit "
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:59
 msgid "Unit"
 msgstr "Unit "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:73
-msgid "An error has occured while writing assignment data."
-msgstr "Terjadi kesalahan saat menulis data alokasi. "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:43
-msgid "Name"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
