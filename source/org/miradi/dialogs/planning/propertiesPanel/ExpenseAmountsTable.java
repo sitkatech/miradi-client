@@ -21,7 +21,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.main.MainWindow;
 
-public class ExpenseAmountsTable extends WorkUnitsTable
+public class ExpenseAmountsTable extends AssignmentDateUnitsTable
 {
 	public ExpenseAmountsTable(MainWindow mainWindowToUse, ExpenseAmountsTableModel modelToUse) throws Exception
 	{
