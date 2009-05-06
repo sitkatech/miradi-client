@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 14:37-0500\n"
+"POT-Creation-Date: 2009-05-06 14:43-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6144,7 +6144,7 @@ msgstr ""
 msgid "An error has occured while writing assignment data."
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTable.java:53
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTable.java:53
 msgid "(not specified)"
 msgstr ""
 
