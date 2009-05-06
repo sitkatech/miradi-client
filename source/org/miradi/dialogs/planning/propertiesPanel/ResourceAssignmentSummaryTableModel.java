@@ -73,25 +73,25 @@ public class ResourceAssignmentSummaryTableModel extends AbstractSummaryTableMod
 	
 	protected Object getCellValue(int row, int column)
 	{
-		ORef assignmentRef = getRefForRow(row);
-		ResourceAssignment assignment = ResourceAssignment.find(getProject(), assignmentRef);
+		ORef resourceAssignmentRef = getRefForRow(row);
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
 		if (isResourceColumn(column))
-			return findProjectResource(assignment);
+			return findProjectResource(resourceAssignment);
 		
 		if (isResourceCostColumn(column))
-			return getResourceCost(assignment);
+			return getResourceCost(resourceAssignment);
 		
 		if (isResourceCostPerUnitColumn(column))
-			return getResourceCostPerUnit(assignment);	
+			return getResourceCostPerUnit(resourceAssignment);	
 		
 		return super.getCellValue(row, column);
 	}
 	
 	//FIXME planning table - there should be methods that return the raw value,  then that value
 	//can be used in budgetmodel to calculate the cost. (cost per unit and units need to return raw values)
-	private Object getResourceCostPerUnit(ResourceAssignment assignment)
+	private Object getResourceCostPerUnit(ResourceAssignment resourceAssignment)
 	{
-		ProjectResource resource = findProjectResource(assignment);
+		ProjectResource resource = findProjectResource(resourceAssignment);
 		if (resource == null)
 			return "";
 				
@@ -111,20 +111,20 @@ public class ResourceAssignmentSummaryTableModel extends AbstractSummaryTableMod
 			return;
 		}
 		
-		ORef assignmentRefForRow = getRefForRow(row);
-		setResourceCell(value, assignmentRefForRow, column);
+		ORef resourceAssignmentRefForRow = getRefForRow(row);
+		setResourceCell(value, resourceAssignmentRefForRow, column);
 		
 		super.setValueAt(value, row, column);
 	}
 	
-	private void setResourceCell(Object value, ORef assignmentRefForRow, int column)
+	private void setResourceCell(Object value, ORef resourceAssignmentRefForRow, int column)
 	{
 		if (! isResourceColumn(column))
 			return;
 
 		ProjectResource projectResource = (ProjectResource)value;
 		BaseId resourceId = projectResource.getId();
-		setValueUsingCommand(assignmentRefForRow, ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
+		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
 	}
 	
 	private String getResourceCost(ResourceAssignment assignment)
