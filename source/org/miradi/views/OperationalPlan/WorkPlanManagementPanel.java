@@ -39,6 +39,20 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	}
 	
 	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		getMainWindow().setStatusBarIfDataExistsOutOfRange();
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		getMainWindow().clearStatusBar();
+		super.becomeInactive();
+	}
+	
+	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Tab|Work Plan");

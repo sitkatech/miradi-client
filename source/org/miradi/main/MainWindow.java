@@ -60,7 +60,6 @@ import org.miradi.exceptions.UnknownCommandException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.menu.MainMenuBar;
 import org.miradi.objecthelpers.ColorsFileLoader;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TwoLevelEntry;
@@ -72,7 +71,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.DefaultHyperlinkHandler;
 import org.miradi.utils.HtmlViewPanel;
 import org.miradi.utils.HtmlViewPanelWithMargins;
@@ -637,7 +635,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			if (isDataOutsideOfcurrentProjectDateRange())
 				mainStatusBar.setStatus(dataOutOfRange);
 			else
-				mainStatusBar.setStatusReady();
+				clearStatusBar();
 		}
 		catch (InvalidDateRangeException e)
 		{
@@ -645,8 +643,12 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			EAM.logError(e.getMessage());
 		}
 	}
+	
+	public void clearStatusBar()
+	{
+		mainStatusBar.setStatus("");
+	}
 
-	//TODO refactor this method (nested for loops)
 	private boolean isDataOutsideOfcurrentProjectDateRange() throws InvalidDateRangeException
 	{
 		String startDate = getProject().getProjectCalendar().getPlanningStartDate();
@@ -669,14 +671,9 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			for (int i = 0; i < assignmentIds.length; i++)
 			{
 				Assignment assignment = (Assignment) getProject().findObject(new ORef(ObjectType.ASSIGNMENT, assignmentIds[i]));
-				DateRangeEffortList effortList = assignment.getDetails();
-				for (int j = 0; j < effortList.size(); j++)
-				{
-					DateRangeEffort effort = effortList.get(j);
-					DateRange effortDateRange = effort.getDateRange();
-					if (!projectDateRange.contains(effortDateRange))
-						return true;
-				}
+				DateRange assignmentDateRange = assignment.getCombinedEffortListDateRange();
+				if (assignmentDateRange != null && !projectDateRange.contains(assignmentDateRange))
+					return true;
 			}
 			
 		}
