@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 12:52-0500\n"
+"POT-Creation-Date: 2009-05-06 13:15-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6428,14 +6428,26 @@ msgstr "标题|威胁因子减少结果属性"
 msgid "Acct Code"
 msgstr "会计代码 \t\t"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:53
+msgid "Resource (Who)"
+msgstr "资源（何人） \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:56
+msgid "Cost/Unit"
+msgstr "开销/单位 \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:59
+msgid "Unit"
+msgstr "单位 \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+msgid "An error has occured while writing assignment data."
+msgstr "编写分配数据时出现一个错误。 \t\t"
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:42
 msgid "Title|Task Properties"
 msgstr "任务属性 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
-#, fuzzy
-msgid "(not specified)"
-msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:39
 msgid "Planning View Configuration Label Properties"
@@ -6454,11 +6466,6 @@ msgstr "标题|直接威胁因子属性"
 msgid "Name"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
-msgid "An error has occured while writing assignment data."
-msgstr "编写分配数据时出现一个错误。 \t\t"
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:103
 msgid "Total"
 msgstr "总计 \t\t"
@@ -6469,17 +6476,10 @@ msgstr "总计 \t\t"
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:53
-msgid "Resource (Who)"
-msgstr "资源（何人） \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:56
-msgid "Cost/Unit"
-msgstr "开销/单位 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:59
-msgid "Unit"
-msgstr "单位 \t\t"
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTable.java:80
+#, fuzzy
+msgid "(not specified)"
+msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"

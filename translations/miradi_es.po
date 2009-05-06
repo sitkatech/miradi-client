@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 12:52-0500\n"
+"POT-Creation-Date: 2009-05-06 13:15-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6635,14 +6635,26 @@ msgstr "Propiedades del resultado de reducción de amenazas "
 msgid "Acct Code"
 msgstr "Código contable"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:53
+msgid "Resource (Who)"
+msgstr "Recurso (quién)"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:56
+msgid "Cost/Unit"
+msgstr "Costo/unidad"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:59
+msgid "Unit"
+msgstr "Unidad"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+msgid "An error has occured while writing assignment data."
+msgstr "Se produjo un error al escribir los datos de la asignación."
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:42
 msgid "Title|Task Properties"
 msgstr "Propiedades de la tarea"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTable.java:80
-#, fuzzy
-msgid "(not specified)"
-msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewCustomLabelPropertiesPanel.java:39
 msgid "Planning View Configuration Label Properties"
@@ -6661,11 +6673,6 @@ msgstr "Propiedades de amenaza directa  "
 msgid "Name"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
-msgid "An error has occured while writing assignment data."
-msgstr "Se produjo un error al escribir los datos de la asignación."
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:103
 msgid "Total"
 msgstr "Total"
@@ -6676,17 +6683,10 @@ msgstr "Total"
 msgid "(Error)"
 msgstr "(Error)"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:53
-msgid "Resource (Who)"
-msgstr "Recurso (quién)"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:56
-msgid "Cost/Unit"
-msgstr "Costo/unidad"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:59
-msgid "Unit"
-msgstr "Unidad"
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTable.java:80
+#, fuzzy
+msgid "(not specified)"
+msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
