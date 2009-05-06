@@ -85,7 +85,19 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		
 		return super.getCellValue(row, column);
 	}
-
+	
+	//FIXME planning table - there should be methods that return the raw value,  then that value
+	//can be used in budgetmodel to calculate the cost. (cost per unit and units need to return raw values)
+	private Object getResourceCostPerUnit(Assignment assignment)
+	{
+		ProjectResource resource = findProjectResource(assignment);
+		if (resource == null)
+			return "";
+				
+		double cost = resource.getCostPerUnit();
+		return currencyFormatter.format(cost);
+	}
+	
 	public void setValueAt(Object value, int row, int column)
 	{
 		if (value == null)
@@ -139,6 +151,13 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		return resource.getCostUnitValue();
 	}
 	
+	private ProjectResource findProjectResource(Assignment assignment)
+	{
+		ORef resourceRef = assignment.getResourceRef();
+		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
+		return resource;
+	}
+		
 	private BaseObject findObject(ORef ref)
 	{
 		return getProject().findObject(ref);
