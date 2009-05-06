@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 13:15-0500\n"
+"POT-Creation-Date: 2009-05-06 13:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6626,6 +6626,11 @@ msgstr "Unit "
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTable.java:53
+#, fuzzy
+msgid "(not specified)"
+msgstr "(not specified)"
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:42
 msgid "Title|Task Properties"
 msgstr "Sifat-sifat Tugas "
@@ -6656,11 +6661,6 @@ msgstr "Total "
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "(Kesalahan) "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTable.java:80
-#, fuzzy
-msgid "(not specified)"
-msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"

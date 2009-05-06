@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 13:15-0500\n"
+"POT-Creation-Date: 2009-05-06 13:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6445,6 +6445,11 @@ msgstr "单位 \t\t"
 msgid "An error has occured while writing assignment data."
 msgstr "编写分配数据时出现一个错误。 \t\t"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTable.java:53
+#, fuzzy
+msgid "(not specified)"
+msgstr "(not specified)"
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:42
 msgid "Title|Task Properties"
 msgstr "任务属性 \t\t"
@@ -6475,11 +6480,6 @@ msgstr "总计 \t\t"
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "（错误） \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTable.java:80
-#, fuzzy
-msgid "(not specified)"
-msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
