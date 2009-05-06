@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 12:34-0500\n"
+"POT-Creation-Date: 2009-05-06 12:52-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -40,10 +40,6 @@ msgstr ""
 #: miradi/source/org/miradi/objects/AccountingCode.java:72
 #: miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Accounting Code)"
-msgstr ""
-
-#: miradi/source/org/miradi/objects/BaseObject.java:162
-msgid "No List exists for this tag:"
 msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
@@ -181,7 +177,7 @@ msgid "Tab|Custom"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:49
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:46
 msgid "Funding Source"
 msgstr ""
 
@@ -6127,7 +6123,7 @@ msgstr ""
 msgid "Title|Threat Reduction Result Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:46
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:43
 msgid "Acct Code"
 msgstr ""
 
@@ -6151,6 +6147,15 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:43
+msgid "Name"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
+msgid "An error has occured while writing assignment data."
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:103
 msgid "Total"
 msgstr ""
@@ -6171,15 +6176,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:59
 msgid "Unit"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:73
-msgid "An error has occured while writing assignment data."
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseResourceTableModel.java:43
-msgid "Name"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
