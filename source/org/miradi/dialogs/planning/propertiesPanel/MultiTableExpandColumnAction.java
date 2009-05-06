@@ -24,9 +24,9 @@ import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 
 public class MultiTableExpandColumnAction extends AbstractExpandColumnAction
 {
-	public MultiTableExpandColumnAction(PlanningUpperMultiTable multiTableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
+	public MultiTableExpandColumnAction(PlanningUpperMultiTable multiTableToUse)
 	{
-		super(workUnitsTableModelToUse);
+		super();
 		
 		multiTable = multiTableToUse;
 	}
@@ -34,9 +34,19 @@ public class MultiTableExpandColumnAction extends AbstractExpandColumnAction
 	@Override
 	protected int getSelectedColumn()
 	{
+		return multiTable.getCastedModel().findColumnWithinSubTable(getSelectedModelColumn());
+	}
+	
+	@Override
+	protected AssignmentDateUnitsTableModel getModelForSelectedColumn()
+	{
+		return (AssignmentDateUnitsTableModel) multiTable.getCastedModel().getCastedModel(getSelectedModelColumn());
+	}
+
+	private int getSelectedModelColumn()
+	{
 		int tableColumn = multiTable.getSelectedColumn();
-		int modelColumn = multiTable.convertColumnIndexToModel(tableColumn);
-		return multiTable.getCastedModel().findColumnWithinSubTable(modelColumn);
+		return multiTable.convertColumnIndexToModel(tableColumn);
 	}
 
 	private PlanningUpperMultiTable multiTable;

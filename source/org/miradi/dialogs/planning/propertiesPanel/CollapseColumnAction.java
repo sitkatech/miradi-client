@@ -27,9 +27,11 @@ public class CollapseColumnAction extends AbstractCollapseColumnAction
 {
 	public CollapseColumnAction(JTable tableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
-		super(workUnitsTableModelToUse);
+		super();
 		
 		table = tableToUse;
+		workUnitsTableModel = workUnitsTableModelToUse;
+		
 	}
 	
 	protected int getSelectedColumn()
@@ -38,5 +40,12 @@ public class CollapseColumnAction extends AbstractCollapseColumnAction
 		return table.convertColumnIndexToModel(tableColumn);
 	}
 	
+	@Override
+	protected AssignmentDateUnitsTableModel getModelForSelectedColumn()
+	{
+		return workUnitsTableModel;
+	}
+	
 	private JTable table;
+	private AssignmentDateUnitsTableModel workUnitsTableModel;
 }
