@@ -70,7 +70,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 		return getCastedModel(modelColumn).isWorkUnitColumn(findColumnWithinSubTable(modelColumn));
 	}
 
-	private PlanningUpperTableModelInterface getCastedModel(int column)
+	public PlanningUpperTableModelInterface getCastedModel(int column)
 	{
 		return (PlanningUpperTableModelInterface) findTable(column);
 	}

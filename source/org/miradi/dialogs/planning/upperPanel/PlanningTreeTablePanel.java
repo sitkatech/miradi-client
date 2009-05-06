@@ -96,8 +96,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
 		
 		Vector<Action> actions = new Vector();
-		actions.add(new MultiTableExpandColumnAction(mainTable, workUnitsTableModel));
-		actions.add(new MultiTableCollapseColumnAction(mainTable, workUnitsTableModel));
+		actions.add(new MultiTableExpandColumnAction(mainTable));
+		actions.add(new MultiTableCollapseColumnAction(mainTable));
 		mainTable.addMouseListener(new PlanningRightClickHandler(getMainWindow(), mainTable, actions));
 		
 		mainTableScrollPane = integrateTable(treeTableScrollPane.getVerticalScrollBar(), scrollController, rowHeightController, selectionController, treeToUse, mainTable);

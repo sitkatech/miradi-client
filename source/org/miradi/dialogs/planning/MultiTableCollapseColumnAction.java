@@ -24,9 +24,9 @@ import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 
 public class MultiTableCollapseColumnAction extends AbstractCollapseColumnAction
 {
-	public MultiTableCollapseColumnAction(PlanningUpperMultiTable multiTableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
+	public MultiTableCollapseColumnAction(PlanningUpperMultiTable multiTableToUse)
 	{
-		super(workUnitsTableModelToUse);
+		super();
 		
 		multiTable = multiTableToUse;
 	}
@@ -34,10 +34,20 @@ public class MultiTableCollapseColumnAction extends AbstractCollapseColumnAction
 	@Override
 	protected int getSelectedColumn()
 	{
-		int tableColumn = multiTable.getSelectedColumn();
-		int modelColumn = multiTable.convertColumnIndexToModel(tableColumn);
-		return multiTable.getCastedModel().findColumnWithinSubTable(modelColumn);
+		return multiTable.getCastedModel().findColumnWithinSubTable(getSelectedModelColumn());
 	}
 
+	private int getSelectedModelColumn()
+	{
+		int tableColumn = multiTable.getSelectedColumn();
+		return multiTable.convertColumnIndexToModel(tableColumn);
+	}
+
+	@Override
+	protected AssignmentDateUnitsTableModel getModelForSelectedColumn()
+	{
+		return (AssignmentDateUnitsTableModel) multiTable.getCastedModel().getCastedModel(getSelectedModelColumn());
+	}
+	
 	private PlanningUpperMultiTable multiTable;
 }

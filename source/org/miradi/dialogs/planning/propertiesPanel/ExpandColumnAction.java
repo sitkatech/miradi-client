@@ -27,9 +27,10 @@ public class ExpandColumnAction extends AbstractExpandColumnAction
 {
 	public ExpandColumnAction(JTable tableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
-		super(workUnitsTableModelToUse);
+		super();
 		
 		table = tableToUse;
+		workUnitsTableModel = workUnitsTableModelToUse;
 	}
 	
 	@Override
@@ -39,5 +40,12 @@ public class ExpandColumnAction extends AbstractExpandColumnAction
 		return table.convertColumnIndexToModel(tableColumn);
 	}
 	
+	@Override
+	protected AssignmentDateUnitsTableModel getModelForSelectedColumn()
+	{
+		return workUnitsTableModel;
+	}
+	
 	private JTable table;
+	private AssignmentDateUnitsTableModel workUnitsTableModel;
 }

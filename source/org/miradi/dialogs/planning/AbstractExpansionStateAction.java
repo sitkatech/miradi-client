@@ -28,26 +28,24 @@ import org.miradi.main.EAM;
 
 abstract public class AbstractExpansionStateAction extends AbstractAction
 {
-	public AbstractExpansionStateAction(AssignmentDateUnitsTableModel workUnitsTableModelToUse, String actionLabel)
+	public AbstractExpansionStateAction(String actionLabel)
 	{
 		super(actionLabel);
-		
-		workUnitsTableModel = workUnitsTableModelToUse;
 	}
 	
 	public void actionPerformed(ActionEvent event)
 	{
 		try
 		{
-			workUnitsTableModel.respondToExpandOrCollapseColumnEvent(getSelectedColumn());
+			getModelForSelectedColumn().respondToExpandOrCollapseColumnEvent(getSelectedColumn());
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 		}
 	}
-
+	
 	abstract protected int getSelectedColumn();
-
-	private AssignmentDateUnitsTableModel workUnitsTableModel;
+	
+	abstract protected AssignmentDateUnitsTableModel getModelForSelectedColumn();
 }
