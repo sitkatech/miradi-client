@@ -23,9 +23,7 @@ import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 
@@ -34,6 +32,7 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 	public PlanningViewAbstractAssignmentTableModel(Project projectToUse)
 	{
 		super(projectToUse);
+		
 		baseObjectRefs = new ORefList();
 		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 	}
@@ -114,25 +113,6 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return BaseObject.find(getProject(), getRefForRow(row));
-	}
-	
-	//FIXME planning table - there should be methods that return the raw value,  then that value
-	//can be used in budgetmodel to calculate the cost. (cost per unit and units need to return raw values)
-	protected Object getResourceCostPerUnit(Assignment assignment)
-	{
-		ProjectResource resource = findProjectResource(assignment);
-		if (resource == null)
-			return "";
-				
-		double cost = resource.getCostPerUnit();
-		return currencyFormatter.format(cost);
-	}
-	
-	protected ProjectResource findProjectResource(Assignment assignment)
-	{
-		ORef resourceRef = assignment.getResourceRef();
-		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
-		return resource;
 	}
 	
 	abstract protected String getListTag();
