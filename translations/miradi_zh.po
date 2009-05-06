@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 15:25-0500\n"
+"POT-Creation-Date: 2009-05-06 15:43-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6407,6 +6407,16 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:103
+msgid "Total"
+msgstr "总计 \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:110
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
+#: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
+msgid "(Error)"
+msgstr "（错误） \t\t"
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:53
 msgid "Resource (Who)"
 msgstr "资源（何人） \t\t"
@@ -6427,16 +6437,6 @@ msgstr "编写分配数据时出现一个错误。 \t\t"
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:40
 msgid "Name"
 msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:103
-msgid "Total"
-msgstr "总计 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/WorkUnitsTableModel.java:110
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
-#: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
-msgid "(Error)"
-msgstr "（错误） \t\t"
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
