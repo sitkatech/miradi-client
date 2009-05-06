@@ -45,7 +45,7 @@ public class AssignmentSummaryTable extends AbstractSummaryTable
 	private void createResourceCombo(int tableColumn) throws Exception
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getPlanningViewResourceTableModel().isResourceColumn(modelColumn))
+		if (! getAbstractSummaryTableModel().isResourceColumn(modelColumn))
 			return;
 		
 		ProjectResource[] resources = getAllProjectResources();
