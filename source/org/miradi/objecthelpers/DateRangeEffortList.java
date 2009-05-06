@@ -133,7 +133,7 @@ public class DateRangeEffortList
 			DateRangeEffort dateRangeEffort = data.get(i);
 			if (dateRangeEffort.getDateRange().equals(dateRangeEffortToUse.getDateRange()))
 			{
-				dateRangeEffort.setUnitQuantity(dateRangeEffortToUse.getUnitQuantity());
+				data.set(i, dateRangeEffortToUse);
 				return;
 			}
 		}
