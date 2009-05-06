@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
@@ -59,65 +58,49 @@ abstract public class PlanningViewResourceTableModel extends PlanningViewAbstrac
 	
 	protected Object getCellValue(int row, int column)
 	{
-		ORef assignmentRef = getRefForRow(row);
-		Assignment assignment = (Assignment) getProject().findObject(assignmentRef);
+		ORef baseObjectRefForRow = getRefForRow(row);
+		BaseObject baseObjectForRow = getProject().findObject(baseObjectRefForRow);
 		if (isFundingSourceColumn(column))
-			return getFundingSource(assignment);
+			return getFundingSource(baseObjectForRow);
 		
 		if (isAccountingCodeColumn(column))
-			return getAccountingCode(assignment);
+			return getAccountingCode(baseObjectForRow);
 		
 		return null;
 	}
 
 	public void setValueAt(Object value, int row, int column)
 	{
-		ORef assignmentRefForRow = getRefForRow(row);
-		setAccountingCode(value, assignmentRefForRow, column);
-		setFundingSource(value, assignmentRefForRow, column);
+		ORef refForRow = getRefForRow(row);
+		if (isAccountingCodeColumn(column))
+			setAccountingCode(value, refForRow, column);
+		
+		if (isFundingSourceColumn(column))
+			setFundingSource(value, refForRow, column);
 	}
 	
-	public void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
+	private void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
 	{
-		if (! isAccountingCodeColumn(column))
-			return;
-		
 		AccountingCode accountingCode = (AccountingCode)value;
 		BaseId accountingCodeId = accountingCode.getId();
-		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId);
+		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCodeId);
 	}
-	
+
 	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
 	{
-		if (! isFundingSourceColumn(column))
-			return;
-		
 		FundingSource fundingSource = (FundingSource)value;
 		BaseId fundingSourceId = fundingSource.getId();
-		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_FUNDING_SOURCE, fundingSourceId);
+		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceId);
 	}
 
-	private BaseObject getFundingSource(Assignment assignment)
-	{
-		ORef fundingSourceRef = assignment.getFundingSourceRef();
-		return findObject(fundingSourceRef);
-	}
-	
-	private BaseObject getAccountingCode(Assignment assignment)
-	{
-		ORef accountingCodeRef = assignment.getAccountingCodeRef();
-		return findObject(accountingCodeRef);
-	}
-
-	private BaseObject findObject(ORef ref)
-	{
-		return getProject().findObject(ref);
-	}
-	
 	public String getColumnTag(int column)
 	{
 		return getColumnName(column);
 	}
+	
+	abstract protected BaseObject getFundingSource(BaseObject assignment);
+	
+	abstract protected BaseObject getAccountingCode(BaseObject assignment);
 
 	abstract public boolean isFundingSourceColumn(int column);
 
@@ -126,4 +109,8 @@ abstract public class PlanningViewResourceTableModel extends PlanningViewAbstrac
 	abstract public int getColumnCount();
 	
 	abstract public boolean isResourceColumn(int column);
+	
+	abstract protected String getAccountingCodeTag();
+	
+	abstract protected String getFundingSourceTag();
 }

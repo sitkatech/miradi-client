@@ -22,9 +22,11 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Expense;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
@@ -134,6 +136,34 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 	protected int getListType()
 	{
 		return Expense.getObjectType();
+	}
+	
+	@Override
+	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
+	{
+		Expense expense = (Expense) baseObjectToUse;
+		ORef fundingSourceRef = expense.getFundingSourceRef();
+		return FundingSource.find(getProject(), fundingSourceRef);
+	}
+	
+	@Override
+	protected BaseObject getAccountingCode(BaseObject baseObjectToUse)
+	{
+		Expense expense = (Expense) baseObjectToUse;
+		ORef accountingCodeRef = expense.getAccountingCodeRef();
+		return AccountingCode.find(getProject(), accountingCodeRef);
+	}
+	
+	@Override
+	protected String getAccountingCodeTag()
+	{
+		return Expense.TAG_ACCOUNTING_CODE_REF;
+	}
+	
+	@Override
+	protected String getFundingSourceTag()
+	{
+		return Expense.TAG_FUNDING_SOURCE_REF;
 	}
 						
 	private static final int COLUMN_COUNT = 3;

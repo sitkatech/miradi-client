@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
@@ -212,7 +213,35 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 	{
 		return Assignment.getObjectType();
 	}
-			
+	
+	@Override
+	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
+	{
+		Assignment assignment = (Assignment) baseObjectToUse;
+		ORef fundingSourceRef = assignment.getFundingSourceRef();
+		return FundingSource.find(getProject(), fundingSourceRef);
+	}
+	
+	@Override
+	protected BaseObject getAccountingCode(BaseObject baseObjectToUse)
+	{
+		Assignment assignment = (Assignment) baseObjectToUse;
+		ORef accountingCodeRef = assignment.getAccountingCodeRef();
+		return AccountingCode.find(getProject(), accountingCodeRef);
+	}
+	
+	@Override
+	protected String getAccountingCodeTag()
+	{
+		return Assignment.TAG_ACCOUNTING_CODE;
+	}
+	
+	@Override
+	protected String getFundingSourceTag()
+	{
+		return Assignment.TAG_FUNDING_SOURCE;
+	}
+	
 	private static final int COLUMN_COUNT = 5;
 	
 	private static final int RESOURCE_COLUMM = 0;
