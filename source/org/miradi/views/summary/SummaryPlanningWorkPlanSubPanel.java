@@ -19,15 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
-import org.miradi.dialogfields.ObjectBudgetTimePeriodChoiceField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 
 public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
@@ -46,8 +43,6 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		ObjectDataInputField[] workPlanDateFields = new ObjectDataInputField[] {workPlanStartDate, workPlanEndDate, };
 		addFieldsOnOneLine(EAM.text("Label|Workplan Dates"), workPlanDateFields);
 		
-		ObjectBudgetTimePeriodChoiceField objectBudgetTimePeriodChoiceField = new ObjectBudgetTimePeriodChoiceField(getProject(), ProjectMetadata.getObjectType(), BaseId.INVALID, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, new BudgetTimePeriodQuestion());
-		addField(objectBudgetTimePeriodChoiceField);
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
