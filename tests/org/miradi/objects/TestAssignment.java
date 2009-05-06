@@ -43,7 +43,7 @@ public class TestAssignment extends ObjectTestCase
 	
 	public void testFields() throws Exception
 	{
-		verifyFields(ObjectType.ASSIGNMENT);
+		verifyFields(ObjectType.RESOURCE_ASSIGNMENT);
 	}
 	
 	public void testGetWorkUnits() throws Exception

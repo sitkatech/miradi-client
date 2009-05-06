@@ -31,6 +31,6 @@ public class CreateAssignmentDoer extends CreateListedObjectDoer
 
 	protected int getTypeToCreate()
 	{
-		return ObjectType.ASSIGNMENT;
+		return ObjectType.RESOURCE_ASSIGNMENT;
 	}	
 }

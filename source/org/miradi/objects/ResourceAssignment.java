@@ -62,7 +62,7 @@ public class ResourceAssignment extends BaseObject
 
 	public static int getObjectType()
 	{
-		return ObjectType.ASSIGNMENT;
+		return ObjectType.RESOURCE_ASSIGNMENT;
 	}
 	
 	public static boolean canOwnThisType(int type)

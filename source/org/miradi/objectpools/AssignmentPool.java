@@ -31,7 +31,7 @@ public class AssignmentPool extends EAMNormalObjectPool
 {
 	public AssignmentPool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.ASSIGNMENT);
+		super(idAssignerToUse, ObjectType.RESOURCE_ASSIGNMENT);
 	}
 	
 	public void put(ResourceAssignment assignment) throws Exception
