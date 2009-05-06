@@ -532,6 +532,16 @@ abstract public class BaseObject
 		return totalWorkUnits;
 	}
 	
+	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
+	{
+		return getExpenseAmounts(getExpenseRefs(), dateRangeToUse);
+	}
+	
+	public OptionalDouble getExpenseAmounts(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
+	{
+		return new OptionalDouble();
+	}
+	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
 	{
 		if (dateRange == null)
@@ -1086,6 +1096,9 @@ abstract public class BaseObject
 			case ObjectType.ASSIGNMENT: 
 				list.addAll(getAssignmentRefs());
 				break;
+			case ObjectType.EXPENSE:
+				list.addAll(getExpenseRefs());
+				break;
 		}
 		
 		return list;
@@ -1099,6 +1112,11 @@ abstract public class BaseObject
 	public ORefList getAssignmentRefs()
 	{
 		return new ORefList(Assignment.getObjectType(), getAssignmentIdList());
+	}
+	
+	public ORefList getExpenseRefs()
+	{
+		return expenseRefs.getORefList();
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
