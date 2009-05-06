@@ -92,11 +92,6 @@ public class AbstractSummaryTable extends AbstractComponentTable
 		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
 	}
 	
-	public int getColumnAlignment()
-	{
-		return JLabel.RIGHT;
-	}
-	
 	private ProjectResource[] getAllProjectResources()
 	{
 		return  getResourcePool().getAllProjectResources();
