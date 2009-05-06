@@ -22,7 +22,7 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.objects.BaseObject;
 
-public class RemoveAssignmentDoer extends DeleteListedObjectDoer
+public class RemoveResourceAssignmentDoer extends DeleteListedObjectDoer
 {
 	protected String getListTag()
 	{
