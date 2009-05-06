@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -75,19 +74,5 @@ public class Expense extends BaseObject
 		return find(project.getObjectManager(), expenseRef);
 	}
 	
-	@Override
-	void clear()
-	{
-		super.clear();
-		
-		expenseItem = new StringData(TAG_EXPENSE_ITEM);
-		
-		addField(TAG_EXPENSE_ITEM, expenseItem);
-	}
-	
 	public static final String OBJECT_NAME = "Expense";
-	
-	public static final String TAG_EXPENSE_ITEM = "ExpenseItem";
-	
-	private StringData expenseItem;
 }
