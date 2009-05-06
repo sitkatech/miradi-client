@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 18:16-0500\n"
+"POT-Creation-Date: 2009-05-06 18:51-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6064,11 +6064,11 @@ msgid ""
 "Clone button"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
+#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:28
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
+#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:28
 msgid "Collapse Selected Column"
 msgstr ""
 
