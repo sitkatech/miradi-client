@@ -30,7 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.ObjectsDoer;
 
-abstract public class AbstractAddNewBaseObjectToListDoer extends ObjectsDoer
+abstract public class AbstractCreateNewBaseObjectToListDoer extends ObjectsDoer
 {
 	public boolean isAvailable()
 	{
