@@ -29,7 +29,7 @@ import org.miradi.objects.FundingSource;
 
 public class AbstractSummaryTable extends AbstractComponentTable
 {
-	public AbstractSummaryTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse, String uniqueIdentifier) throws Exception
+	public AbstractSummaryTable(MainWindow mainWindowToUse, AbstractSummaryTableModel modelToUse, String uniqueIdentifier) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, uniqueIdentifier);
 		model = modelToUse;
@@ -74,10 +74,10 @@ public class AbstractSummaryTable extends AbstractComponentTable
 		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
 	}
 	
-	protected PlanningViewResourceTableModel getPlanningViewResourceTableModel()
+	protected AbstractSummaryTableModel getPlanningViewResourceTableModel()
 	{
 		return model;
 	}
 	
-	private PlanningViewResourceTableModel model;
+	private AbstractSummaryTableModel model;
 }
