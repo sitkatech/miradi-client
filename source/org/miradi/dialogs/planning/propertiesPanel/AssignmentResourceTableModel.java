@@ -73,9 +73,9 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 	protected Object getCellValue(int row, int column)
 	{
 		ORef assignmentRef = getRefForRow(row);
-		Assignment assignment = (Assignment) getProject().findObject(assignmentRef);
+		Assignment assignment = Assignment.find(getProject(), assignmentRef);
 		if (isResourceColumn(column))
-			return getResource(assignment);
+			return findProjectResource(assignment);
 		
 		if (isResourceCostColumn(column))
 			return getResourceCost(assignment);
@@ -136,12 +136,6 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId);
 	}
 	
-	private BaseObject getResource(Assignment assignment)
-	{
-		ORef resourceRef = assignment.getResourceRef();
-		return findObject(resourceRef);
-	}
-	
 	private String getResourceCost(Assignment assignment)
 	{
 		ProjectResource resource = findProjectResource(assignment);
@@ -154,15 +148,9 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 	private ProjectResource findProjectResource(Assignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();
-		ProjectResource resource = (ProjectResource) getProject().findObject(resourceRef);
-		return resource;
+		return ProjectResource.find(getProject(), resourceRef);
 	}
 		
-	private BaseObject findObject(ORef ref)
-	{
-		return getProject().findObject(ref);
-	}
-
 	public boolean isResourceColumn(int column)
 	{
 		return getResourceColumn() == column;
