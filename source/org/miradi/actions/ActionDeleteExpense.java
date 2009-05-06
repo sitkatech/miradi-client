@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
+import org.miradi.icons.DeleteIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -26,16 +27,16 @@ public class ActionDeleteExpense extends ObjectsAction
 {
 	public ActionDeleteExpense(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel());
+		super(mainWindowToUse, getLabel(), new DeleteIcon());
 	}
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Remove Expense");
+		return EAM.text("Action|Delete Expense");
 	}
 
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Remove expense from list");
+		return EAM.text("TT|Delete expense from list");
 	}
 }
