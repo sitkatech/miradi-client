@@ -728,6 +728,7 @@ abstract public class BaseObject
 	{
 		label = new StringData(TAG_LABEL);
 		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, Assignment.getObjectType());
+		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
@@ -747,6 +748,7 @@ abstract public class BaseObject
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
+		addField(TAG_EXPENSE_REFS, expenseRefs);
 		
 		addField(PSEUDO_TAG_BUDGET_TOTAL, budgetTotal);
 		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
@@ -1472,6 +1474,7 @@ abstract public class BaseObject
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
 	public static final String TAG_ASSIGNMENT_IDS = "AssignmentIds";
+	public static final String TAG_EXPENSE_REFS = "ExpenseRefs";
 
 	protected BaseId id;
 	protected StringData label;
@@ -1499,4 +1502,5 @@ abstract public class BaseObject
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
 	protected IdListData assignmentIds;
+	protected ORefListData expenseRefs;
 }
