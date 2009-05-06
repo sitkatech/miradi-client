@@ -30,7 +30,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
 
-public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
+abstract public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
 {
 	public PlanningViewResourceTableModel(Project projectToUse)
 	{
