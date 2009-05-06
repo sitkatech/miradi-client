@@ -23,7 +23,7 @@ import org.miradi.main.MainWindow;
 
 public class ExpenseResourceTable extends PlanningViewResourceTable
 {
-	public ExpenseResourceTable(MainWindow mainWindowToUse,	ExpenseResourceTableModel modelToUse) throws Exception
+	public ExpenseResourceTable(MainWindow mainWindowToUse,	ExpenseSummaryTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);
 	}

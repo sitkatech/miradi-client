@@ -30,9 +30,9 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
-public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
+public class ExpenseSummaryTableModel extends PlanningViewResourceTableModel
 {
-	public ExpenseResourceTableModel(Project projectToUse)
+	public ExpenseSummaryTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
