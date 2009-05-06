@@ -26,7 +26,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
@@ -50,7 +49,7 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			Assignment selectedObject = (Assignment)getObjects()[0];
+			BaseObject selectedObject = getObjects()[0];
 			removeBaseObject(getProject(), selectedObject);
 		}
 		catch (Exception e)
@@ -63,9 +62,14 @@ public class RemoveAssignmentDoer extends ObjectsDoer
 		}
 	}
 
-	public static void removeBaseObject(Project project, Assignment assignmentToRemove) throws Exception
+	public static void removeBaseObject(Project project, BaseObject baseObjectToRemove) throws Exception
 	{
-		Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, assignmentToRemove, BaseObject.TAG_ASSIGNMENT_IDS);
+		Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, baseObjectToRemove, getListTag());
 		project.executeCommandsWithoutTransaction(commands);
+	}
+
+	private static String getListTag()
+	{
+		return BaseObject.TAG_ASSIGNMENT_IDS;
 	}
 }
