@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.objecthelpers.DateRangeEffortList;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.utils.DateRange;
@@ -32,19 +32,19 @@ public class BudgetCalculator
 		project = projectToUse;
 	}
 	
-	public double getTotalUnits(Assignment assignment, DateRange dateRange) throws Exception
+	public double getTotalUnits(ResourceAssignment assignment, DateRange dateRange) throws Exception
 	{
 		DateRangeEffortList effortList = getDateRangeEffortList(assignment);
 		return effortList.getTotalUnitQuantity(dateRange);
 	}
 	
-	private DateRangeEffortList getDateRangeEffortList(Assignment assignment) throws Exception
+	private DateRangeEffortList getDateRangeEffortList(ResourceAssignment assignment) throws Exception
 	{
-		String effortListAsString = assignment.getData(Assignment.TAG_DATERANGE_EFFORTS);
+		String effortListAsString = assignment.getData(ResourceAssignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(effortListAsString);
 	}
 	
-	public double getTotalCost(Assignment assignment, DateRange dateRange) throws Exception
+	public double getTotalCost(ResourceAssignment assignment, DateRange dateRange) throws Exception
 	{
 		ProjectResource resource = ProjectResource.find(project, assignment.getResourceRef());
 		if (resource == null)

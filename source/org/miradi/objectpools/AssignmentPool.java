@@ -23,7 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 
@@ -34,18 +34,18 @@ public class AssignmentPool extends EAMNormalObjectPool
 		super(idAssignerToUse, ObjectType.ASSIGNMENT);
 	}
 	
-	public void put(Assignment assignment) throws Exception
+	public void put(ResourceAssignment assignment) throws Exception
 	{
 		put(assignment.getId(), assignment);
 	}
 	
-	public Assignment find(BaseId id)
+	public ResourceAssignment find(BaseId id)
 	{
-		return (Assignment)getRawObject(id);
+		return (ResourceAssignment)getRawObject(id);
 	}
 	
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
-		return new Assignment(objectManager ,actualId);
+		return new ResourceAssignment(objectManager ,actualId);
 	}
 }

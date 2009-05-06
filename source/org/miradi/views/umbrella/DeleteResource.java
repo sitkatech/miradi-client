@@ -31,7 +31,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
@@ -116,8 +116,8 @@ public class DeleteResource extends ObjectsDoer
 	private Vector<Command> removeFromAssignment(ORef ref)
 	{
 		Vector<Command> commands = new Vector<Command>();
-		if (Assignment.is(ref))
-			commands.add(new CommandSetObjectData(ref, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, BaseId.INVALID.toString()));
+		if (ResourceAssignment.is(ref))
+			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID, BaseId.INVALID.toString()));
 		
 		return commands;
 	}

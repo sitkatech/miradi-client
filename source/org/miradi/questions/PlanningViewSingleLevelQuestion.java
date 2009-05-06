@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
@@ -47,7 +47,7 @@ public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activities Only")),
 				new ChoiceItem(Indicator.OBJECT_NAME, EAM.text("Indicators Only")),
 				new ChoiceItem(Task.METHOD_NAME, EAM.text("Methods Only")),
-				new ChoiceItem(Assignment.OBJECT_NAME, EAM.text("Assigned Resources Only")),
+				new ChoiceItem(ResourceAssignment.OBJECT_NAME, EAM.text("Assigned Resources Only")),
 		};
 	}
 }

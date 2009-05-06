@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -30,7 +30,7 @@ public class PlanningTreeAssignmentNode extends AbstractPlanningTreeNode
 	public PlanningTreeAssignmentNode(Project projectToUse, ORef assignmentRef, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
-		assignment = Assignment.find(projectToUse, assignmentRef);
+		assignment = ResourceAssignment.find(projectToUse, assignmentRef);
 	}
 
 	public void rebuild() throws Exception
@@ -47,5 +47,5 @@ public class PlanningTreeAssignmentNode extends AbstractPlanningTreeNode
 		return assignment.toString();
 	}
 	
-	private Assignment assignment;
+	private ResourceAssignment assignment;
 }

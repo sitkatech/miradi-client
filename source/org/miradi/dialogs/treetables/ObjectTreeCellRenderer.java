@@ -49,7 +49,7 @@ import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Factor;
@@ -189,7 +189,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = textBoxRenderer;
 		else if(node.getType() == GroupBox.getObjectType())
 			renderer = groupBoxRenderer;
-		else if(Assignment.is(node.getType()))
+		else if(ResourceAssignment.is(node.getType()))
 			renderer = assignmentRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);

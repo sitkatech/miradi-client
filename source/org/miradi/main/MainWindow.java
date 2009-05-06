@@ -63,7 +63,7 @@ import org.miradi.objecthelpers.ColorsFileLoader;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TwoLevelEntry;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectRepairer;
@@ -670,7 +670,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			BaseId[] assignmentIds = getProject().getAssignmentPool().getIds();
 			for (int i = 0; i < assignmentIds.length; i++)
 			{
-				Assignment assignment = (Assignment) getProject().findObject(new ORef(ObjectType.ASSIGNMENT, assignmentIds[i]));
+				ResourceAssignment assignment = (ResourceAssignment) getProject().findObject(new ORef(ObjectType.ASSIGNMENT, assignmentIds[i]));
 				DateRange assignmentDateRange = assignment.getCombinedEffortListDateRange();
 				if (assignmentDateRange != null && !projectDateRange.contains(assignmentDateRange))
 					return true;

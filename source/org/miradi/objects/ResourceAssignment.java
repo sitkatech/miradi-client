@@ -35,15 +35,15 @@ import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
-public class Assignment extends BaseObject
+public class ResourceAssignment extends BaseObject
 {
-	public Assignment(ObjectManager objectManager, BaseId idToUse)
+	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
 		super(objectManager, new AssignmentId(idToUse.asInt()));
 		clear();
 	}
 	
-	public Assignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
+	public ResourceAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager,new TaskId(idAsInt), json);
 	}
@@ -239,7 +239,7 @@ public class Assignment extends BaseObject
 	
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
 	{
-		String dREffortListAsString = getData(Assignment.TAG_DATERANGE_EFFORTS);
+		String dREffortListAsString = getData(ResourceAssignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(dREffortListAsString);
 	}
 	
@@ -268,12 +268,12 @@ public class Assignment extends BaseObject
 		return objectType == getObjectType();
 	}
 	
-	public static Assignment find(ObjectManager objectManager, ORef assignmentRef)
+	public static ResourceAssignment find(ObjectManager objectManager, ORef assignmentRef)
 	{
-		return (Assignment) objectManager.findObject(assignmentRef);
+		return (ResourceAssignment) objectManager.findObject(assignmentRef);
 	}
 	
-	public static Assignment find(Project project, ORef assignmentRef)
+	public static ResourceAssignment find(Project project, ORef assignmentRef)
 	{
 		return find(project.getObjectManager(), assignmentRef);
 	}

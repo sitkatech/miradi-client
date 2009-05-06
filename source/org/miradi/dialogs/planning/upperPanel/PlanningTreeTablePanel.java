@@ -39,7 +39,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
@@ -129,7 +129,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			if(isTreeExpansionCommand(event))
 				restoreTreeExpansionState();
 			
-			if(isSelectedObjectModification(event, Assignment.getObjectType()))
+			if(isSelectedObjectModification(event, ResourceAssignment.getObjectType()))
 				validate();
 		
 			repaintToGrowIfTreeIsTaller();

@@ -29,7 +29,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -180,9 +180,9 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testRepairAssignmentsReferringToNonExistantData() throws Exception
 	{
-		Assignment assignment = getProject().createAssignment();
-		assignment.setData(Assignment.TAG_ACCOUNTING_CODE, new BaseId(40000).toString());
-		assignment.setData(Assignment.TAG_FUNDING_SOURCE, new BaseId(50000).toString());
+		ResourceAssignment assignment = getProject().createAssignment();
+		assignment.setData(ResourceAssignment.TAG_ACCOUNTING_CODE, new BaseId(40000).toString());
+		assignment.setData(ResourceAssignment.TAG_FUNDING_SOURCE, new BaseId(50000).toString());
 		
 		ProjectRepairer repairer = new ProjectRepairer(getProject());
 		repairer.repairAssignmentsReferringToNonExistantData();

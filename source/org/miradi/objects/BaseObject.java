@@ -167,7 +167,7 @@ abstract public class BaseObject
 			return ProjectResource.getObjectType();
 		
 		if (tag.equals(TAG_ASSIGNMENT_IDS))
-			return Assignment.getObjectType();
+			return ResourceAssignment.getObjectType();
 		
 		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}
@@ -263,7 +263,7 @@ abstract public class BaseObject
 				return new DiagramLink(objectManager, idAsInt, json);
 				
 			case ObjectType.ASSIGNMENT:
-				return new Assignment(objectManager, idAsInt, json);
+				return new ResourceAssignment(objectManager, idAsInt, json);
 				
 			case ObjectType.ACCOUNTING_CODE:
 				return new AccountingCode(objectManager, idAsInt, json);
@@ -745,7 +745,7 @@ abstract public class BaseObject
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
-		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, Assignment.getObjectType());
+		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
 		budgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
@@ -1119,7 +1119,7 @@ abstract public class BaseObject
 	
 	public ORefList getAssignmentRefs()
 	{
-		return new ORefList(Assignment.getObjectType(), getAssignmentIdList());
+		return new ORefList(ResourceAssignment.getObjectType(), getAssignmentIdList());
 	}
 	
 	public ORefList getExpenseRefs()
@@ -1190,8 +1190,8 @@ abstract public class BaseObject
 		if (DiagramLink.canOwnThisType(type))
 			objectTypes[i++] = DiagramLink.getObjectType();
 
-		if (Assignment.canOwnThisType(type))
-			objectTypes[i++] = Assignment.getObjectType();
+		if (ResourceAssignment.canOwnThisType(type))
+			objectTypes[i++] = ResourceAssignment.getObjectType();
 
 		if (AccountingCode.canOwnThisType(type))
 			objectTypes[i++] = AccountingCode.getObjectType();

@@ -25,7 +25,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objectpools.ObjectPool;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
 
@@ -33,13 +33,13 @@ public class BudgetTimePeriodChanger
 {
 	public static void convertQuarterlyToYearly(Project project) throws Exception
 	{
-		ObjectPool assignmentPool = project.getPool(Assignment.getObjectType());
+		ObjectPool assignmentPool = project.getPool(ResourceAssignment.getObjectType());
 		ORefList refs = assignmentPool.getRefList();
 		for(int i = 0; i < refs.size(); ++i)
-			convertQuarterlyToYearly(Assignment.find(project, refs.get(i)));
+			convertQuarterlyToYearly(ResourceAssignment.find(project, refs.get(i)));
 	}
 
-	private static void convertQuarterlyToYearly(Assignment assignment) throws Exception
+	private static void convertQuarterlyToYearly(ResourceAssignment assignment) throws Exception
 	{
 		Project project = assignment.getProject();
 		ProjectCalendar projectCalendar = project.getProjectCalendar();
@@ -61,20 +61,20 @@ public class BudgetTimePeriodChanger
 			}
 		}
 		
-		CommandSetObjectData cmd = new CommandSetObjectData(assignment.getRef(), Assignment.TAG_DATERANGE_EFFORTS, newEffortList.toString());
+		CommandSetObjectData cmd = new CommandSetObjectData(assignment.getRef(), ResourceAssignment.TAG_DATERANGE_EFFORTS, newEffortList.toString());
 		project.executeCommand(cmd);
 	}
 
 	public static void convertYearlyToQuarterly(Project project) throws Exception
 	{
-		ObjectPool assignmentPool = project.getPool(Assignment.getObjectType());
+		ObjectPool assignmentPool = project.getPool(ResourceAssignment.getObjectType());
 		ORefList refs = assignmentPool.getRefList();
 		for(int i = 0; i < refs.size(); ++i)
-			convertYearlyToQuarterly(Assignment.find(project, refs.get(i)));
+			convertYearlyToQuarterly(ResourceAssignment.find(project, refs.get(i)));
 	
 	}
 
-	private static void convertYearlyToQuarterly(Assignment assignment) throws Exception
+	private static void convertYearlyToQuarterly(ResourceAssignment assignment) throws Exception
 	{
 		Project project = assignment.getProject();
 		ProjectCalendar projectCalendar = project.getProjectCalendar();
@@ -93,7 +93,7 @@ public class BudgetTimePeriodChanger
 			newEffortList.add(newDre);
 		}
 		
-		CommandSetObjectData cmd = new CommandSetObjectData(assignment.getRef(), Assignment.TAG_DATERANGE_EFFORTS, newEffortList.toString());
+		CommandSetObjectData cmd = new CommandSetObjectData(assignment.getRef(), ResourceAssignment.TAG_DATERANGE_EFFORTS, newEffortList.toString());
 		project.executeCommand(cmd);
 	}
 

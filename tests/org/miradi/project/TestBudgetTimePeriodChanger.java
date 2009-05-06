@@ -22,7 +22,7 @@ package org.miradi.project;
 import org.martus.util.MultiCalendar;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateRangeEffortList;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.BudgetTimePeriodChanger;
 import org.miradi.project.ProjectCalendar;
@@ -46,12 +46,12 @@ public class TestBudgetTimePeriodChanger extends TestCaseWithProject
 		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "7");
 		getProjectCalendar().clearDateRanges();
 
-		Assignment a1 = createAssignment();
+		ResourceAssignment a1 = createAssignment();
 		
-		Assignment a2 = createAssignment();
+		ResourceAssignment a2 = createAssignment();
 		createAndAddDateRangeEffort(a2, "2007-01-01", 1.0);
 		
-		Assignment a3 = createAssignment();
+		ResourceAssignment a3 = createAssignment();
 		createAndAddDateRangeEffort(a3, "2007-01-01", 2.0);
 		createAndAddDateRangeEffort(a3, "2007-03-01", 3.0);
 		createAndAddDateRangeEffort(a3, "2007-09-01", 4.0);
@@ -110,11 +110,11 @@ public class TestBudgetTimePeriodChanger extends TestCaseWithProject
 		}
 	}
 
-	private void createAndAddDateRangeEffort(Assignment assignment, String startDate, double effort) throws Exception
+	private void createAndAddDateRangeEffort(ResourceAssignment assignment, String startDate, double effort) throws Exception
 	{
 		DateRangeEffortList drel = assignment.getDateRangeEffortList();
 		drel.add(createQuarterlyEffort(startDate, effort));
-		assignment.setData(Assignment.TAG_DATERANGE_EFFORTS, drel.toString());
+		assignment.setData(ResourceAssignment.TAG_DATERANGE_EFFORTS, drel.toString());
 	}
 	
 	private DateRangeEffort createQuarterlyEffort(String startDate, double units) throws Exception
@@ -131,7 +131,7 @@ public class TestBudgetTimePeriodChanger extends TestCaseWithProject
 		return getProject().getProjectCalendar();
 	}
 
-	private Assignment createAssignment() throws Exception
+	private ResourceAssignment createAssignment() throws Exception
 	{
 		return getProject().createAssignment();
 	}

@@ -27,7 +27,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -86,7 +86,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
 			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
 		
-		if(columnTag.equals(Assignment.PSEUDO_TAG_WORK_UNIT_TOTAL))
+		if(columnTag.equals(ResourceAssignment.PSEUDO_TAG_WORK_UNIT_TOTAL))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 			
 		return null;
@@ -307,16 +307,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return "";
 		}
 		
-		if(Assignment.is(nodeType))
+		if(ResourceAssignment.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
-				return Assignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
+				return ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
-				return Assignment.PSEUDO_TAG_OWNING_FACTOR_NAME;
+				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
-				return Assignment.PSEUDO_TAG_WHEN;
+				return ResourceAssignment.PSEUDO_TAG_WHEN;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
-				return Assignment.PSEUDO_TAG_BUDGET_TOTAL;				
+				return ResourceAssignment.PSEUDO_TAG_BUDGET_TOTAL;				
 		}
 		
 		return columnTag;

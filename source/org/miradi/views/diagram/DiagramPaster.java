@@ -51,7 +51,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.ThreatStressPair;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -161,15 +161,15 @@ abstract public class DiagramPaster
 	
 	private Command[] getCommandToFixUpIdRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
-		if (Assignment.getObjectType() == newObject.getType())
+		if (ResourceAssignment.getObjectType() == newObject.getType())
 		{
-			if (Assignment.TAG_ACCOUNTING_CODE.equals(tag))
+			if (ResourceAssignment.TAG_ACCOUNTING_CODE.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, AccountingCode.getObjectType(), tag);
 
-			if (Assignment.TAG_FUNDING_SOURCE.equals(tag))
+			if (ResourceAssignment.TAG_FUNDING_SOURCE.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, FundingSource.getObjectType(), tag);
 
-			if (Assignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
+			if (ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, ProjectResource.getObjectType(), tag);
 		}
 		
@@ -723,7 +723,7 @@ abstract public class DiagramPaster
 			String jsonAsString = factorDeepCopies.get(i);
 			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
 			int type = getTypeFromJson(json);
-			if (Assignment.getObjectType() == type)
+			if (ResourceAssignment.getObjectType() == type)
 				return true;
 		}
 		

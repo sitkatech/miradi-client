@@ -43,7 +43,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -467,10 +467,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return taggedObjectSet;
 	}
 	
-	public Assignment createAssignment() throws Exception
+	public ResourceAssignment createAssignment() throws Exception
 	{
-		ORef assignmentRef = createObject(Assignment.getObjectType());
-		return Assignment.find(this, assignmentRef);
+		ORef assignmentRef = createObject(ResourceAssignment.getObjectType());
+		return ResourceAssignment.find(this, assignmentRef);
 	}
 	
 	public void populateTarget(Target target) throws Exception
@@ -1188,12 +1188,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public void addAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception
 	{
-		Assignment assignment = createAssignment();
+		ResourceAssignment assignment = createAssignment();
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
 		dateRangeEffort.setUnitQuantity(units);
 		dateRangeEffortList.add(dateRangeEffort);
-		assignment.setData(Assignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+		assignment.setData(ResourceAssignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 		IdList currentAssignmentIdList = baseObject.getAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
 		baseObject.setData(BaseObject.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());

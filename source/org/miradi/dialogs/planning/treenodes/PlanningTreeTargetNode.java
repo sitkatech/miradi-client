@@ -23,7 +23,7 @@ import org.miradi.diagram.DiagramChainObject;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Assignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -89,7 +89,7 @@ public class PlanningTreeTargetNode extends AbstractPlanningTreeNode
 				ThreatReductionResult.getObjectType(),
 				Task.getObjectType(),
 				Measurement.getObjectType(),
-				Assignment.getObjectType(),
+				ResourceAssignment.getObjectType(),
 			};
 	}
 

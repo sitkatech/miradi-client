@@ -298,7 +298,7 @@ public class Task extends Factor
 		ORefList assignmentRefs = getAssignmentRefs();
 		for (int i = 0; i < assignmentRefs.size(); ++i)
 		{
-			Assignment assignment = (Assignment.find(getProject(), assignmentRefs.get(i)));
+			ResourceAssignment assignment = (ResourceAssignment.find(getProject(), assignmentRefs.get(i)));
 			resourceRefs.add(assignment.getResourceRef());	
 		}
 		
@@ -311,7 +311,7 @@ public class Task extends Factor
 		ORefList assignmentRefs = getAssignmentRefs();
 		for (int i = 0; i < assignmentRefs.size(); ++i)
 		{
- 			Assignment assignment = (Assignment) objectManager.findObject(assignmentRefs.get(i));
+ 			ResourceAssignment assignment = (ResourceAssignment) objectManager.findObject(assignmentRefs.get(i));
 			DateRange dateRange = assignment.getCombinedEffortListDateRange();
 			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
 		}
@@ -420,7 +420,7 @@ public class Task extends Factor
 		ORefList assignmentRefs = getAssignmentRefs();
 		for (int index = 0; index < assignmentRefs.size(); index++)
 		{
-			Assignment assignment = Assignment.find(getProject(), assignmentRefs.get(index));
+			ResourceAssignment assignment = ResourceAssignment.find(getProject(), assignmentRefs.get(index));
 			totalAssignmentsCost += assignment.getTotalAssignmentCost(dateRangeToUse);
 		}
 		
