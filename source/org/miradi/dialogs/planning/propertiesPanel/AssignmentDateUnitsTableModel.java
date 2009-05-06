@@ -431,15 +431,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return getDateUnit(column) != null;
 	}
-	
-	public String getUniqueTableModelIdentifier()
-	{
-		return UNIQUE_TABLE_MODEL_IDENTIFIER;
-	}
+
+	abstract public String getUniqueTableModelIdentifier();
 	
 	abstract public Color getCellBackgroundColor(int column);
 
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
-	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";
 }

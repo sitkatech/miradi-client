@@ -45,4 +45,11 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 	{
 		return ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 	}
+	
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_TABLE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";
 }
