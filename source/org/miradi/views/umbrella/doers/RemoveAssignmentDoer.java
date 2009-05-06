@@ -19,56 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import java.util.Vector;
 
-import org.miradi.commands.Command;
-import org.miradi.commands.CommandBeginTransaction;
-import org.miradi.commands.CommandEndTransaction;
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
-import org.miradi.views.ObjectsDoer;
-import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
-public class RemoveAssignmentDoer extends ObjectsDoer
+public class RemoveAssignmentDoer extends DeleteListedObjectDoer
 {
-	public boolean isAvailable()
-	{
-		if (getObjects().length == 0 )
-			return false;
-		
-		return true;
-	}
-
-	public void doIt() throws CommandFailedException
-	{
-		if (! isAvailable())
-			return;
-	
-		getProject().executeCommand(new CommandBeginTransaction());
-		try
-		{
-			BaseObject selectedObject = getObjects()[0];
-			removeBaseObject(getProject(), selectedObject);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
-		finally
-		{
-			getProject().executeCommand(new CommandEndTransaction());
-		}
-	}
-
-	public static void removeBaseObject(Project project, BaseObject baseObjectToRemove) throws Exception
-	{
-		Vector<Command> commands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, baseObjectToRemove, getListTag());
-		project.executeCommandsWithoutTransaction(commands);
-	}
-
-	private static String getListTag()
+	protected String getListTag()
 	{
 		return BaseObject.TAG_ASSIGNMENT_IDS;
 	}
