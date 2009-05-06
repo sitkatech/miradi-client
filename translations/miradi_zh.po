@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 14:43-0500\n"
+"POT-Creation-Date: 2009-05-06 14:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6428,23 +6428,6 @@ msgstr "会计代码 \t\t"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "标题|威胁因子减少结果属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:53
-msgid "Resource (Who)"
-msgstr "资源（何人） \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:56
-msgid "Cost/Unit"
-msgstr "开销/单位 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:59
-msgid "Unit"
-msgstr "单位 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
-msgid "An error has occured while writing assignment data."
-msgstr "编写分配数据时出现一个错误。 \t\t"
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTable.java:53
 #, fuzzy
 msgid "(not specified)"
@@ -6462,6 +6445,23 @@ msgstr "计划视图配置标签属性 \t\t"
 #, fuzzy
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:53
+msgid "Resource (Who)"
+msgstr "资源（何人） \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:56
+msgid "Cost/Unit"
+msgstr "开销/单位 \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:59
+msgid "Unit"
+msgstr "单位 \t\t"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
+msgid "An error has occured while writing assignment data."
+msgstr "编写分配数据时出现一个错误。 \t\t"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
