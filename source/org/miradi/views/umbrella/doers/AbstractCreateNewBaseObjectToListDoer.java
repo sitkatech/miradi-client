@@ -23,12 +23,12 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.ObjectsDoer;
+import org.miradi.views.diagram.CreateAnnotationDoer;
 
 abstract public class AbstractCreateNewBaseObjectToListDoer extends ObjectsDoer
 {
@@ -65,7 +65,7 @@ abstract public class AbstractCreateNewBaseObjectToListDoer extends ObjectsDoer
 			CommandCreateObject createCommand = new CommandCreateObject(getTypeToCreate());
 			getProject().executeCommand(createCommand);
 
-			Command appendCommand = CommandSetObjectData.createAppendIdCommand(selectedBaseObject, getListTag(), createCommand.getCreatedId());
+			Command appendCommand = CreateAnnotationDoer.createAppendCommand(selectedBaseObject, createCommand.getObjectRef(), getListTag());
 			getProject().executeCommand(appendCommand);
 		}
 		finally 
