@@ -144,9 +144,9 @@ public class DateRangeEffortList
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		JSONArray array = new JSONArray();
-		for (int i = 0; i < data.size(); i++)
+		for(DateRangeEffort dateRangeEffort : data)
 		{
-			array.put(get(i).toJson());
+			array.put(dateRangeEffort.toJson());
 		}
 		json.put(TAG_DATERANGE_EFFORTS, array);
 		return json;
@@ -169,11 +169,6 @@ public class DateRangeEffortList
 		}
 	}
 
-	private DateRangeEffort get(int index)
-	{
-		return data.get(index);
-	}
-		
 	public String toString()
 	{
 		if(size() == 0)
