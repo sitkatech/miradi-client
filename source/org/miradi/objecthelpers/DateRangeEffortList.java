@@ -152,11 +152,14 @@ public class DateRangeEffortList
 		data.add(dateRangeEffortToUse);
 	}
 	
-	public void mergeAdd(DateRangeEffortList dateRangeEffortListToAdd)
+	public void mergeAdd(DateRangeEffortList dateRangeEffortListToAdd, DateRange projectDateRange) throws Exception
 	{
 		for(DateRangeEffort dre : dateRangeEffortListToAdd.data)
 		{
 			DateRange thisDateRange = dre.getDateRange();
+			DateUnit dateUnit = DateUnit.createFromDateRange(thisDateRange);
+			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnit, projectDateRange);
+
 			if(hasAnyEntriesWithin(thisDateRange))
 				continue;
 			
@@ -168,6 +171,19 @@ public class DateRangeEffortList
 		}
 	}
 	
+	private void removeEntriesForLargerDateUnitsThatContainThisOne(DateUnit dateUnit, DateRange projectDateRange) throws Exception
+	{
+		if(dateUnit.isBlank())
+			return;
+		
+		DateUnit larger = dateUnit.getSuperDateUnit();
+		DateRange dateRangeToRemove = projectDateRange;
+		if(!larger.isBlank())
+			dateRangeToRemove = larger.asDateRange();
+		remove(dateRangeToRemove);
+		removeEntriesForLargerDateUnitsThatContainThisOne(larger, projectDateRange);
+	}
+
 	private boolean hasAnyEntriesWithin(DateRange largerDateRange)
 	{
 		for(DateRangeEffort dre : data)
