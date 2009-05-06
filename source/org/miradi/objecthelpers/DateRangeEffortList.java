@@ -169,7 +169,7 @@ public class DateRangeEffortList
 		}
 	}
 
-	public DateRangeEffort get(int index)
+	private DateRangeEffort get(int index)
 	{
 		return data.get(index);
 	}
