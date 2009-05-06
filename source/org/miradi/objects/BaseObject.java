@@ -145,7 +145,21 @@ abstract public class BaseObject
 		if (tag.equals(TAG_WHO_OVERRIDE_REFS))
 			return true;
 		
+		if (tag.equals(TAG_EXPENSE_REFS))
+			return true;
+		
 		return false;
+	}
+	
+	public ORefList getRefList(String tag, int objectType) throws Exception
+	{
+		if (isRefList(tag))
+			return new ORefList(getData(tag));
+		
+		if (isIdListTag(tag))
+			return new ORefList(objectType, new IdList(objectType, getData(tag)));
+		
+		throw new RuntimeException(EAM.text("No List exists for this tag:" + tag));
 	}
 	
 	public boolean isRelevancyOverrideSet(String tag)

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
@@ -33,13 +34,13 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 	public PlanningViewAbstractAssignmentTableModel(Project projectToUse)
 	{
 		super(projectToUse);
-		assignmentRefs = new ORefList();
+		baseObjectRefs = new ORefList();
 		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 	}
 	
 	public int getRowCount()
 	{
-		return assignmentRefs.size();
+		return baseObjectRefs.size();
 	}
 	
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
@@ -50,7 +51,7 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		ORef selectedRef = hierarchyToSelectedRef[0];
 		
 		baseObject = getProject().findObject(selectedRef);
-		assignmentRefs = getAssignmentsForBaseObject(baseObject);
+		baseObjectRefs = getAssignmentsForBaseObject(baseObject);
 	}
 			
 	public void setBaseObject(BaseObject baseObjectToUse)
@@ -80,12 +81,12 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 	
 	private boolean isAlreadyCurrentAssignmentIdList()
 	{
-		return assignmentRefs.equals(getAssignmentsForBaseObject(baseObject));
+		return baseObjectRefs.equals(getAssignmentsForBaseObject(baseObject));
 	}
 	
 	private void updateAssignmentIdList()
 	{
-		assignmentRefs = getAssignmentsForBaseObject(baseObject);
+		baseObjectRefs = getAssignmentsForBaseObject(baseObject);
 		fireTableDataChanged();
 	}
 		
@@ -94,12 +95,20 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		if (baseObjectToUse == null)
 			return new ORefList();
 		
-		return baseObjectToUse.getAssignmentRefs();
+		try
+		{
+			return baseObjectToUse.getRefList(getListTag(), getListType());	
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new ORefList();
+		}
 	}
 	
 	public ORef getAssignmentForRow(int row)
 	{
-		return assignmentRefs.get(row);
+		return baseObjectRefs.get(row);
 	}
 	
 	public Assignment getAssignment(int row)
@@ -131,7 +140,11 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		return resource;
 	}
 	
-	protected ORefList assignmentRefs;
+	abstract protected String getListTag();
+	
+	abstract protected int getListType();
+	
+	protected ORefList baseObjectRefs;
 	protected BaseObject baseObject;
 
 	protected CurrencyFormat currencyFormatter;
