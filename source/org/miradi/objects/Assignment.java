@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.DateRangeEffortListData;
+import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ObjectManager;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -34,4 +37,46 @@ abstract public class Assignment extends BaseObject
 	{
 		super(objectManager, idToUse, json);
 	}
+	
+	public DateRangeEffortList getDateRangeEffortList() throws Exception
+	{
+		String dREffortListAsString = getData(ResourceAssignment.TAG_DATERANGE_EFFORTS);
+		return new DateRangeEffortList(dREffortListAsString);
+	}
+	
+	public DateRangeEffortList getDetails()
+	{
+		return detailListData.getDateRangeEffortList();
+	}
+	
+	public static boolean isAssignment(BaseObject baseObject)
+	{
+		return isAssignment(baseObject.getType());
+	}
+	
+	public static boolean is(ORef ref)
+	{
+		return isAssignment(ref.getObjectType());
+	}
+	
+	public static boolean isAssignment(int objectType)
+	{
+		if (ResourceAssignment.is(objectType))
+			return true;
+		
+		return ExpenseAssignment.is(objectType);
+	}
+	
+	@Override
+	public void clear()
+	{
+		super.clear();
+		detailListData = new DateRangeEffortListData(TAG_DATERANGE_EFFORTS);
+		
+		addField(TAG_DATERANGE_EFFORTS, detailListData);
+	}
+	
+	public static final String TAG_DATERANGE_EFFORTS = "Details";
+	
+	private DateRangeEffortListData detailListData;
 }
