@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 15:16-0500\n"
+"POT-Creation-Date: 2009-05-06 15:25-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -335,17 +335,17 @@ msgstr "无效的项目名称： \t\t"
 msgid "Enter New Name"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:42
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:39
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "项目日期 \t\t"
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:47
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:44
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:37
 msgid "Label|Workplan Dates"
 msgstr "工作计划日期 \t\t"
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:59
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:54
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -4155,49 +4155,6 @@ msgstr "粘贴 \t\t"
 #: miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
 msgstr "内部错误 \t\t"
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:140
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:163
-msgid ""
-"<html><p>If you have existing budget data, it can be migrated to the new "
-"time periods.</p><p><p>Please select how to handle existing budget data:</"
-"p><p><table><tr><td>&lt;"
-msgstr ""
-"<html><p>如果您有现有的预算数据，它可以被迁移为新的时段。</p><p><p>请选择如何"
-"处理现有的预算数据：</p><p><table><tr><td>&lt; \t\t"
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:145
-msgid "&gt;<td>Consolidates quarterly data into years<tr><td>&lt;"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:146
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:172
-msgid ""
-"&gt;<td>Revert to the yearly planning with no data changes</"
-"table><p><p><em>NOTE:</em> If you don't like the changes, you can undo this "
-"operation to restore the old values,<br>but only within this session, before "
-"you close this project."
-msgstr ""
-"&gt;<td>返回到年度计划，不作数据改动</table><p><p><em>注意：</em>如果您对改动"
-"不满意，可以撤销该操作并恢复旧数值，<br>但仅限于本会话阶段，在您关闭该项目之"
-"前。 \t\t"
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:154
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:180
-msgid "Change Budget Time Period"
-msgstr "更改预算时间范围 \t\t"
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:169
-msgid "&gt;<td>Put each year's value into its first quarter<tr><td>&lt;"
-msgstr "&gt;<td>将每年的数值输入其第一季度<tr><td>&lt; \t\t"
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:187
-msgid "Combine"
-msgstr "合并 \t\t"
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:188
-msgid "First Quarter"
-msgstr "第一季度 \t\t"
 
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
@@ -29285,6 +29242,36 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "<html><p>If you have existing budget data, it can be migrated to the new "
+#~ "time periods.</p><p><p>Please select how to handle existing budget data:</"
+#~ "p><p><table><tr><td>&lt;"
+#~ msgstr ""
+#~ "<html><p>如果您有现有的预算数据，它可以被迁移为新的时段。</p><p><p>请选择"
+#~ "如何处理现有的预算数据：</p><p><table><tr><td>&lt; \t\t"
+
+#~ msgid ""
+#~ "&gt;<td>Revert to the yearly planning with no data changes</"
+#~ "table><p><p><em>NOTE:</em> If you don't like the changes, you can undo "
+#~ "this operation to restore the old values,<br>but only within this "
+#~ "session, before you close this project."
+#~ msgstr ""
+#~ "&gt;<td>返回到年度计划，不作数据改动</table><p><p><em>注意：</em>如果您对"
+#~ "改动不满意，可以撤销该操作并恢复旧数值，<br>但仅限于本会话阶段，在您关闭该"
+#~ "项目之前。 \t\t"
+
+#~ msgid "Change Budget Time Period"
+#~ msgstr "更改预算时间范围 \t\t"
+
+#~ msgid "&gt;<td>Put each year's value into its first quarter<tr><td>&lt;"
+#~ msgstr "&gt;<td>将每年的数值输入其第一季度<tr><td>&lt; \t\t"
+
+#~ msgid "Combine"
+#~ msgstr "合并 \t\t"
+
+#~ msgid "First Quarter"
+#~ msgstr "第一季度 \t\t"
 
 #~ msgid ""
 #~ "Resources cannot be added to this task because it already has subtasks."

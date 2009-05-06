@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 15:16-0500\n"
+"POT-Creation-Date: 2009-05-06 15:25-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -299,17 +299,17 @@ msgstr ""
 msgid "Enter New Name"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:42
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:39
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:47
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:44
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:37
 msgid "Label|Workplan Dates"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:59
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:54
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -3892,44 +3892,6 @@ msgstr ""
 #: miradi/source/org/miradi/dialogfields/CodeListComponent.java:83
 #: miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:140
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:163
-msgid ""
-"<html><p>If you have existing budget data, it can be migrated to the new "
-"time periods.</p><p><p>Please select how to handle existing budget data:</"
-"p><p><table><tr><td>&lt;"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:145
-msgid "&gt;<td>Consolidates quarterly data into years<tr><td>&lt;"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:146
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:172
-msgid ""
-"&gt;<td>Revert to the yearly planning with no data changes</"
-"table><p><p><em>NOTE:</em> If you don't like the changes, you can undo this "
-"operation to restore the old values,<br>but only within this session, before "
-"you close this project."
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:154
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:180
-msgid "Change Budget Time Period"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:169
-msgid "&gt;<td>Put each year's value into its first quarter<tr><td>&lt;"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:187
-msgid "Combine"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:188
-msgid "First Quarter"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50

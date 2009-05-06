@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 15:16-0500\n"
+"POT-Creation-Date: 2009-05-06 15:25-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -355,17 +355,17 @@ msgstr "Nama proyek tidak valid: "
 msgid "Enter New Name"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:42
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:39
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:47
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:44
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:37
 msgid "Label|Workplan Dates"
 msgstr "Tanggal Rencana Kerja "
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:59
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:54
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -4321,52 +4321,6 @@ msgstr "Tempel "
 #: miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
 msgstr "Kesalahan Internal "
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:140
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:163
-msgid ""
-"<html><p>If you have existing budget data, it can be migrated to the new "
-"time periods.</p><p><p>Please select how to handle existing budget data:</"
-"p><p><table><tr><td>&lt;"
-msgstr ""
-"<html><p>Jika ada data anggaran saat ini, bisa dipindahkan ke periode waktu "
-"yang baru.</p><p><p>Silakan pilih cara menangani data anggaran saat ini:</"
-"p><p><table><tr><td>&lt;"
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:145
-msgid "&gt;<td>Consolidates quarterly data into years<tr><td>&lt;"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:146
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:172
-msgid ""
-"&gt;<td>Revert to the yearly planning with no data changes</"
-"table><p><p><em>NOTE:</em> If you don't like the changes, you can undo this "
-"operation to restore the old values,<br>but only within this session, before "
-"you close this project."
-msgstr ""
-"&gt;<td>Kembalikan ke perencanaan tahunan tanpa perubahan data</"
-"table><p><p><em>CATATAN:</em> Jika tidak menyukai perubahan tersebut, Anda "
-"bisa membatalkan operasi ini dan mengembalikan nilai-nilai sebelumnya,"
-"<br>tetapi hanya dalam sesi ini, sebelum proyek ditutup. "
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:154
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:180
-msgid "Change Budget Time Period"
-msgstr "Ubah Periode Waktu Anggaran "
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:169
-msgid "&gt;<td>Put each year's value into its first quarter<tr><td>&lt;"
-msgstr ""
-"&gt;<td>Isikan nilai setiap tahun ke dalam kuartal pertama<tr><td>&lt; "
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:187
-msgid "Combine"
-msgstr "Gabungkan "
-
-#: miradi/source/org/miradi/dialogfields/ObjectBudgetTimePeriodChoiceField.java:188
-msgid "First Quarter"
-msgstr "Kuartal Pertama "
 
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
@@ -32681,6 +32635,39 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "<html><p>If you have existing budget data, it can be migrated to the new "
+#~ "time periods.</p><p><p>Please select how to handle existing budget data:</"
+#~ "p><p><table><tr><td>&lt;"
+#~ msgstr ""
+#~ "<html><p>Jika ada data anggaran saat ini, bisa dipindahkan ke periode "
+#~ "waktu yang baru.</p><p><p>Silakan pilih cara menangani data anggaran saat "
+#~ "ini:</p><p><table><tr><td>&lt;"
+
+#~ msgid ""
+#~ "&gt;<td>Revert to the yearly planning with no data changes</"
+#~ "table><p><p><em>NOTE:</em> If you don't like the changes, you can undo "
+#~ "this operation to restore the old values,<br>but only within this "
+#~ "session, before you close this project."
+#~ msgstr ""
+#~ "&gt;<td>Kembalikan ke perencanaan tahunan tanpa perubahan data</"
+#~ "table><p><p><em>CATATAN:</em> Jika tidak menyukai perubahan tersebut, "
+#~ "Anda bisa membatalkan operasi ini dan mengembalikan nilai-nilai "
+#~ "sebelumnya,<br>tetapi hanya dalam sesi ini, sebelum proyek ditutup. "
+
+#~ msgid "Change Budget Time Period"
+#~ msgstr "Ubah Periode Waktu Anggaran "
+
+#~ msgid "&gt;<td>Put each year's value into its first quarter<tr><td>&lt;"
+#~ msgstr ""
+#~ "&gt;<td>Isikan nilai setiap tahun ke dalam kuartal pertama<tr><td>&lt; "
+
+#~ msgid "Combine"
+#~ msgstr "Gabungkan "
+
+#~ msgid "First Quarter"
+#~ msgstr "Kuartal Pertama "
 
 #~ msgid ""
 #~ "Resources cannot be added to this task because it already has subtasks."
