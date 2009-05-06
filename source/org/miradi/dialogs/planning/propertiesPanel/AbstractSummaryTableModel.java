@@ -25,9 +25,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.ColumnTagProvider;
 
-abstract public class PlanningViewResourceTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
+abstract public class AbstractSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ColumnTagProvider
 {
-	public PlanningViewResourceTableModel(Project projectToUse)
+	public AbstractSummaryTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}

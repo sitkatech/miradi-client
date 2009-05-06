@@ -27,7 +27,7 @@ import org.miradi.objects.Expense;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 
-public class ExpenseSummaryTableModel extends PlanningViewResourceTableModel
+public class ExpenseSummaryTableModel extends AbstractSummaryTableModel
 {
 	public ExpenseSummaryTableModel(Project projectToUse)
 	{
