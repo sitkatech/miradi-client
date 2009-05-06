@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 13:23-0500\n"
+"POT-Creation-Date: 2009-05-06 13:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -209,7 +209,7 @@ msgstr ""
 msgid "Attempted to execute side effect command while not in side effect mode."
 msgstr ""
 
-#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:44
+#: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:58
 msgid "Tab|Work Plan"
 msgstr ""
 
@@ -3952,11 +3952,11 @@ msgstr "Install Sample Project"
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Perangkat Lunak Manajemen Adaptif untuk Proyek Konservasi "
 
-#: miradi/source/org/miradi/main/MainWindow.java:276
+#: miradi/source/org/miradi/main/MainWindow.java:274
 msgid "Information"
 msgstr "Informasi "
 
-#: miradi/source/org/miradi/main/MainWindow.java:485
+#: miradi/source/org/miradi/main/MainWindow.java:483
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -3966,11 +3966,11 @@ msgstr ""
 "Anda mungkin mencoba menampilkan proyek lama yang berisi perintah yang tidak "
 "berlaku yang tidak didukung lagi. "
 
-#: miradi/source/org/miradi/main/MainWindow.java:490
+#: miradi/source/org/miradi/main/MainWindow.java:488
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:494
+#: miradi/source/org/miradi/main/MainWindow.java:492
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -3978,33 +3978,33 @@ msgstr ""
 "Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
 "aplikasi ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:498
+#: miradi/source/org/miradi/main/MainWindow.java:496
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:503
+#: miradi/source/org/miradi/main/MainWindow.java:501
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
-#: miradi/source/org/miradi/main/MainWindow.java:636
+#: miradi/source/org/miradi/main/MainWindow.java:634
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 "RencanaKerja/Data Keuangan di luar tanggal awal/akhir proyek tidak akan "
 "ditampakkan "
 
-#: miradi/source/org/miradi/main/MainWindow.java:662
+#: miradi/source/org/miradi/main/MainWindow.java:664
 msgid "WARNING: Project end date before start date."
 msgstr "PERINGATAN: Tanggal akhir proyek lebih awal daripada tanggal mulai. "
 
-#: miradi/source/org/miradi/main/MainWindow.java:1013
+#: miradi/source/org/miradi/main/MainWindow.java:1010
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
-#: miradi/source/org/miradi/main/MainWindow.java:1030
+#: miradi/source/org/miradi/main/MainWindow.java:1027
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -6622,7 +6622,7 @@ msgid "Unit"
 msgstr "Unit "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentSummaryTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:73
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
@@ -6648,7 +6648,7 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:43
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:40
 msgid "Name"
 msgstr ""
 
