@@ -51,7 +51,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	public void dispose()
 	{
 		super.dispose();
-		resourceTable.dispose();
+		expenseSummaryTable.dispose();
 		workUnitsTable.dispose();
 	}
 	
@@ -59,13 +59,13 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	public void becomeActive()
 	{
 		super.becomeActive();
-		resourceTable.becomeActive();
+		expenseSummaryTable.becomeActive();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		resourceTable.becomeInactive();
+		expenseSummaryTable.becomeInactive();
 		super.becomeInactive();
 	}
 	
@@ -84,25 +84,25 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 			setRef(baseObjectRef);
 		}
 
-		resourceTableModel.setObjectRefs(hierarchyToSelectedRef);
+		expenseSummaryTableModel.setObjectRefs(hierarchyToSelectedRef);
 		workUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
 		
-		resourceTableModel.fireTableDataChanged();
+		expenseSummaryTableModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
 	}
 	
 	private void savePendingEdits()
 	{
-		resourceTable.stopCellEditing();
+		expenseSummaryTable.stopCellEditing();
 		workUnitsTable.stopCellEditing();
 	}
 
 	private void createTables() throws Exception
 	{
-		resourceTableModel = new ExpenseSummaryTableModel(getProject());
-		resourceTable = new ExpenseSummaryTable(getMainWindow(), resourceTableModel);
+		expenseSummaryTableModel = new ExpenseSummaryTableModel(getProject());
+		expenseSummaryTable = new ExpenseSummaryTable(getMainWindow(), expenseSummaryTableModel);
 		
-		workUnitsTableModel = new WorkUnitsTableModel(getProject(), resourceTableModel);
+		workUnitsTableModel = new WorkUnitsTableModel(getProject(), expenseSummaryTableModel);
 		workUnitsTable = new WorkUnitsTable(getMainWindow(), workUnitsTableModel);		
 	}
 	
@@ -110,7 +110,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	{
 		OneRowPanel tables = new OneRowPanel();
 
-		addTableToPanel(tables, resourceTable);
+		addTableToPanel(tables, expenseSummaryTable);
 		addToHorizontalController(addTableToPanel(tables, workUnitsTable));
 		
 		add(tables, BorderLayout.CENTER);
@@ -129,7 +129,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	
 	protected void addTablesToSelectionController()
 	{
-		selectionController.addTable(resourceTable);
+		selectionController.addTable(expenseSummaryTable);
 		selectionController.addTable(workUnitsTable);
 	}
 	
@@ -139,7 +139,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateExpense.class), getPicker()));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteExpense.class), resourceTable));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteExpense.class), expenseSummaryTable));
 		
 		return box;
 	}
@@ -151,10 +151,10 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 
 	protected void dataWasChanged() throws Exception
 	{
-		resourceTableModel.dataWasChanged();
+		expenseSummaryTableModel.dataWasChanged();
 		
-		resourceTable.rebuildColumnEditorsAndRenderers();
-		resourceTable.repaint();
+		expenseSummaryTable.rebuildColumnEditorsAndRenderers();
+		expenseSummaryTable.repaint();
 		
 		workUnitsTable.invalidate();
 		workUnitsTable.repaint();
@@ -171,17 +171,17 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		//that way we just loop through the tbales.  
 		workUnitsTable.stopCellEditing();
 		
-		resourceTableModel.setBaseObject(baseObject);
+		expenseSummaryTableModel.setBaseObject(baseObject);
 	}
 	
 	public ORefList[] getSelectedHierarchies()
 	{
-		return resourceTable.getSelectedHierarchies();
+		return expenseSummaryTable.getSelectedHierarchies();
 	}
 	
-	private ExpenseSummaryTable resourceTable;
+	private ExpenseSummaryTable expenseSummaryTable;
 	private WorkUnitsTable workUnitsTable;
 	
-	private ExpenseSummaryTableModel resourceTableModel;
+	private ExpenseSummaryTableModel expenseSummaryTableModel;
 	private WorkUnitsTableModel workUnitsTableModel;
 }
