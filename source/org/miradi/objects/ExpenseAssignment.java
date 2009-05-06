@@ -27,7 +27,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class ExpenseAssignment extends BaseObject
+public class ExpenseAssignment extends Assignment
 {
 	public ExpenseAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
@@ -92,7 +92,7 @@ public class ExpenseAssignment extends BaseObject
 	}
 	
 	@Override
-	void clear()
+	public void clear()
 	{
 		super.clear();
 		

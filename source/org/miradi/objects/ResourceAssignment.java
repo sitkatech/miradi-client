@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
-import org.miradi.objectdata.DateRangeEffortListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -67,11 +66,6 @@ public class ResourceAssignment extends Assignment
 	public static boolean canOwnThisType(int type)
 	{
 		return false;
-	}
-	
-	public DateRangeEffortList getDetails()
-	{
-		return detailListData.getDateRangeEffortList();
 	}
 	
 	@Override
@@ -236,12 +230,6 @@ public class ResourceAssignment extends Assignment
 		return resourceIdData.getRef();
 	}
 	
-	public DateRangeEffortList getDateRangeEffortList() throws Exception
-	{
-		String dREffortListAsString = getData(ResourceAssignment.TAG_DATERANGE_EFFORTS);
-		return new DateRangeEffortList(dREffortListAsString);
-	}
-	
 	@Override
 	public String toString()
 	{
@@ -282,7 +270,6 @@ public class ResourceAssignment extends Assignment
 	{
 		super.clear();
 		resourceIdData = new BaseIdData(TAG_RESOURCE_ID, ProjectResource.getObjectType());
-		detailListData = new DateRangeEffortListData(TAG_DATERANGE_EFFORTS);
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
 		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
@@ -292,7 +279,6 @@ public class ResourceAssignment extends Assignment
 		pseudoWorkUnitTotal = new PseudoStringData(PSEUDO_TAG_WORK_UNIT_TOTAL);
 		
 		addField(TAG_RESOURCE_ID, resourceIdData);
-		addField(TAG_DATERANGE_EFFORTS, detailListData);
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
@@ -303,7 +289,6 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	public static final String TAG_RESOURCE_ID = "ResourceId";
-	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
@@ -316,7 +301,6 @@ public class ResourceAssignment extends Assignment
 	public static final String OBJECT_NAME = "Assignment";
 	
 	private BaseIdData resourceIdData;
-	private DateRangeEffortListData detailListData;
 	private BaseIdData accountingIdData;
 	private BaseIdData fundingIdData;
 	private PseudoStringData pseudoProjectResourceLabel;
