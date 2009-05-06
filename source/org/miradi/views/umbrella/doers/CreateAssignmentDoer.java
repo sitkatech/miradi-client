@@ -22,7 +22,7 @@ package org.miradi.views.umbrella.doers;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 
-public class CreateAssignmentDoer extends AbstractAddNewBaseObjectToListDoer
+public class CreateAssignmentDoer extends AbstractCreateNewBaseObjectToListDoer
 {
 	protected String getListTag()
 	{
