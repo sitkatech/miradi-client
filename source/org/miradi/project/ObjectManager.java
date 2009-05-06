@@ -430,7 +430,7 @@ public class ObjectManager
 			ObjectType.TABLE_SETTINGS,
 			ObjectType.THREAT_RATING_COMMENTS_DATA,
 			ObjectType.SCOPE_BOX,
-			ObjectType.EXPENSE,
+			ObjectType.EXPENSE_ASSIGNMENT,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));
