@@ -28,9 +28,9 @@ import org.miradi.dialogs.base.EditableObjectTable;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.main.MainWindow;
 
-abstract public class AssignmentsComponentTable extends EditableObjectTable
+abstract public class AbstractComponentTable extends EditableObjectTable
 {
-	public AssignmentsComponentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
+	public AbstractComponentTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
 	{
 		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

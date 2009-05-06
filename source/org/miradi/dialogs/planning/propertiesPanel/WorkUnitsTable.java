@@ -38,7 +38,7 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
-public class WorkUnitsTable extends AssignmentsComponentTable
+public class WorkUnitsTable extends AbstractComponentTable
 {
 	public WorkUnitsTable(MainWindow mainWindowToUse, WorkUnitsTableModel modelToUse) throws Exception
 	{
