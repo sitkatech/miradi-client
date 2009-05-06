@@ -22,9 +22,9 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionRemoveExpense extends ObjectsAction
+public class ActionDeleteExpense extends ObjectsAction
 {
-	public ActionRemoveExpense(MainWindow mainWindowToUse)
+	public ActionDeleteExpense(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
