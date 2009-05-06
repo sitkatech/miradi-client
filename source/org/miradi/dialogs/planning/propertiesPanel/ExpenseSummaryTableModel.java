@@ -19,15 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Expense;
 import org.miradi.objects.FundingSource;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
 public class ExpenseSummaryTableModel extends PlanningViewResourceTableModel
@@ -58,7 +55,7 @@ public class ExpenseSummaryTableModel extends PlanningViewResourceTableModel
 	protected Object getCellValue(int row, int column)
 	{
 		if (isExpenseNameColumn(column))
-			return "DUMMY EXPENSE NAME";
+			return getBaseObjectForRowColumn(row, column).getLabel();
 		
 		return super.getCellValue(row, column);
 	}
@@ -81,14 +78,13 @@ public class ExpenseSummaryTableModel extends PlanningViewResourceTableModel
 		super.setValueAt(value, row, column);
 	}
 	
-	private void setExpenseNameCell(Object value, ORef assignmentRefForRow, int column)
+	private void setExpenseNameCell(Object value, ORef refForRow, int column)
 	{
 		if (! isExpenseNameColumn(column))
 			return;
 
-		ProjectResource projectResource = (ProjectResource)value;
-		BaseId resourceId = projectResource.getId();
-		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
+		String expenseName = value.toString();
+		setValueUsingCommand(refForRow, Expense.TAG_LABEL, expenseName);
 	}
 	
 	public boolean isResourceColumn(int column)
