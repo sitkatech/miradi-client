@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-05 16:59-0500\n"
+"POT-Creation-Date: 2009-05-06 09:28-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -4725,14 +4725,6 @@ msgstr "Buat Kotak Grup "
 msgid "TT|Create a Group Box"
 msgstr "Buat satu Kotak Grup "
 
-#: miradi/source/org/miradi/actions/ActionAssignExpense.java:34
-msgid "Action|Assign Expense"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionAssignExpense.java:39
-msgid "TT|Assign an expense"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionResourceListAdd.java:34
 msgid "Action|Manage|Add Resource"
 msgstr "Tambahkan Sumber Daya "
@@ -5092,14 +5084,6 @@ msgstr ""
 msgid "Action|Create Conceptual Model Page"
 msgstr "Buat Halaman Model Konsep "
 
-#: miradi/source/org/miradi/actions/ActionRemoveExpense.java:34
-msgid "Action|Remove Expense"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionRemoveExpense.java:39
-msgid "TT|Remove expense from list"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionDeleteStress.java:35
 msgid "Action|Delete Stress"
 msgstr "Hapus Tekanan "
@@ -5376,6 +5360,14 @@ msgstr "Buat Titik Belok "
 msgid "TT|Create a Bend Point"
 msgstr "Buat satu Titik Belok "
 
+#: miradi/source/org/miradi/actions/ActionCreateExpense.java:34
+msgid "Action|Assign Expense"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionCreateExpense.java:39
+msgid "TT|Assign an expense"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionCreateIndicator.java:40
 msgid "TT|Create an Indicator"
 msgstr "Buat satu Indikator "
@@ -5387,6 +5379,14 @@ msgstr "Tempelkan Isi  "
 #: miradi/source/org/miradi/actions/ActionPasteFactorContent.java:47
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr "Tempelkan isi Faktor Tunggal dari papan klip "
+
+#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:34
+msgid "Action|Remove Expense"
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:39
+msgid "TT|Remove expense from list"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:40
 msgid "TT|Delete a Tag"
