@@ -102,7 +102,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		expenseSummaryTableModel = new ExpenseSummaryTableModel(getProject());
 		expenseSummaryTable = new ExpenseSummaryTable(getMainWindow(), expenseSummaryTableModel);
 		
-		workUnitsTableModel = new ExpenseAmountTableModel(getProject(), expenseSummaryTableModel);
+		workUnitsTableModel = new ExpenseAmountsTableModel(getProject(), expenseSummaryTableModel);
 		workUnitsTable = new ExpenseAmountsTable(getMainWindow(), workUnitsTableModel);		
 	}
 	
@@ -183,5 +183,5 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	private ExpenseAmountsTable workUnitsTable;
 	
 	private ExpenseSummaryTableModel expenseSummaryTableModel;
-	private ExpenseAmountTableModel workUnitsTableModel;
+	private ExpenseAmountsTableModel workUnitsTableModel;
 }
