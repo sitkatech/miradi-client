@@ -91,6 +91,7 @@ public class TestDateRangeEffortList extends EAMTestCase
 	
 	public void testMergeAdd() throws Exception
 	{
+		DateRange projectDateRange = createYearDateRange(2000, 2010);
 		DateRangeEffortList mainList = new DateRangeEffortList();
 		DateRangeEffort dre2006 = createYearDateRangeEffort(2006, 2006, 1);
 		mainList.add(dre2006);
@@ -99,31 +100,32 @@ public class TestDateRangeEffortList extends EAMTestCase
 		DateRangeEffortList list2 = new DateRangeEffortList();
 		DateRangeEffort dre2007 = createYearDateRangeEffort(2007, 2007, 2);
 		list2.add(dre2007);
-		mainList.mergeAdd(list2);
+		mainList.mergeAdd(list2, projectDateRange);
 		DateRange twoYears = new DateRange(dre2006.getDateRange().getStartDate(), dre2007.getDateRange().getEndDate());
 		assertEquals(twoYears, mainList.getCombinedDateRange());
 		
 		DateRangeEffortList list3 = new DateRangeEffortList();
 		DateRangeEffort another2007 = createYearDateRangeEffort(2007, 2007, 4);
 		list3.add(another2007);
-		mainList.mergeAdd(list3);
+		mainList.mergeAdd(list3, projectDateRange);
 		assertEquals(twoYears, mainList.getCombinedDateRange());
 		assertEquals(7.0, mainList.getTotalUnitQuantity());
 		
 		DateRangeEffortList list4 = new DateRangeEffortList();
 		DateRangeEffort projectTotal = createYearDateRangeEffort(2007, 2009, 8);
 		list4.add(projectTotal);
-		mainList.mergeAdd(list4);
+		mainList.mergeAdd(list4, projectDateRange);
 		assertEquals(twoYears, mainList.getCombinedDateRange());
 		assertEquals(7.0, mainList.getTotalUnitQuantity());
 
 		DateRangeEffortList list5 = new DateRangeEffortList();
 		DateRangeEffort month = createMonthDateRangeEffort(2007, 5, 16);
 		list5.add(month);
-		mainList.mergeAdd(list5);
-		// FIXME: Commenting out since this test doesn't pass yet
-//		assertEquals(month.getDateRange(), mainList.getCombinedDateRange());
-//		assertEquals(month.getUnitQuantity(), mainList.getTotalUnitQuantity());
+		mainList.mergeAdd(list5, projectDateRange);
+		DateRange expectedDateRange = DateRange.combine(dre2006.getDateRange(), month.getDateRange());
+		double expectedUnitQuantity = dre2006.getUnitQuantity() + month.getUnitQuantity();
+		assertEquals(expectedDateRange, mainList.getCombinedDateRange());
+		assertEquals(expectedUnitQuantity, mainList.getTotalUnitQuantity());
 	}
 
 	private DateRangeEffort createDateRangeEffort() throws Exception
@@ -137,11 +139,17 @@ public class TestDateRangeEffortList extends EAMTestCase
 	private DateRangeEffort createYearDateRangeEffort(int startYear, int endYear,
 			int units) throws Exception
 	{
+		DateRange dateRange = createYearDateRange(startYear, endYear);
+		return new DateRangeEffort("", units, dateRange);
+	}
+
+	private DateRange createYearDateRange(int startYear, int endYear)
+			throws Exception
+	{
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, 12, 31);
 		DateRange dateRange = new DateRange(startDate, endDate);
-		
-		return new DateRangeEffort("", units, dateRange);
+		return dateRange;
 	}
 	
 	private DateRangeEffort createMonthDateRangeEffort(int year, int month,	int units) throws Exception
