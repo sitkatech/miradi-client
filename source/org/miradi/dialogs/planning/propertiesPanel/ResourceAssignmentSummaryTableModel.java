@@ -124,7 +124,7 @@ public class ResourceAssignmentSummaryTableModel extends AbstractSummaryTableMod
 
 		ProjectResource projectResource = (ProjectResource)value;
 		BaseId resourceId = projectResource.getId();
-		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
+		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_RESOURCE_ID, resourceId);
 	}
 	
 	private String getResourceCost(ResourceAssignment assignment)
