@@ -23,6 +23,7 @@ import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.ForecastSubPanel;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
+import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.layout.OneColumnGridLayout;
@@ -51,8 +52,7 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindow, new ORef(Indicator.getObjectType(), BaseId.INVALID)));
 		addSubPanelWithTitledBorder(new IndicatorFutureStatusSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(mainWindow, Task.getObjectType(), picker));
-		//FIXME enabled onece the expense properties side tab is working
-		//addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
+		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), picker));
 		
 		updateFieldsFromProject();
 	}
