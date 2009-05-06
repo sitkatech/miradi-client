@@ -97,12 +97,12 @@ public class AbstractSummaryTable extends AbstractComponentTable
 		return JLabel.RIGHT;
 	}
 	
-	public ProjectResource[] getAllProjectResources()
+	private ProjectResource[] getAllProjectResources()
 	{
 		return  getResourcePool().getAllProjectResources();
 	}
 	
-	public ResourcePool getResourcePool()
+	private ResourcePool getResourcePool()
 	{
 		return getObjectManager().getResourcePool();
 	}
