@@ -118,7 +118,7 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 	
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
-		return getAssignment(row);
+		return BaseObject.find(getProject(), getRefForRow(row));
 	}
 	
 	//FIXME planning table - there should be methods that return the raw value,  then that value
