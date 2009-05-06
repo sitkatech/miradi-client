@@ -35,7 +35,7 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 	
 	public String getColumnName(int column)
 	{
-		if (isResourceColumn(column))
+		if (isExpenseNameColumn(column))
 			return EAM.text("Name");
 		
 		return super.getColumnName(column);
@@ -94,7 +94,7 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 	
 	public boolean isExpenseNameColumn(int column)
 	{
-		return getResourceColumn() == column;
+		return getExpenseNameColumn() == column;
 	}
 
 	public boolean isFundingSourceColumn(int column)
@@ -107,16 +107,6 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 		return getAccountingCodeColumn() == column;
 	}
 
-	public boolean isResourceCostColumn(int column)
-	{
-		return false;
-	}
-
-	public boolean isResourceCostPerUnitColumn(int column)
-	{
-		return false;
-	}
-
 	private int getAccountingCodeColumn()
 	{
 		return ACCOUNTING_CODE_COLUMN;
@@ -127,16 +117,11 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 		return FUNDING_SOURCE_COLUMN;
 	}
 	
-	private int getResourceColumn()
+	private int getExpenseNameColumn()
 	{
 		return EXPENSE_NAME_COLUMN;
 	}
 						
-	public String getColumnTag(int column)
-	{
-		return getColumnName(column);
-	}
-	
 	private static final int COLUMN_COUNT = 3;
 	
 	private static final int EXPENSE_NAME_COLUMN = 0;
