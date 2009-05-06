@@ -138,7 +138,7 @@ public class Task extends Factor
 		{
 			case ObjectType.TASK: 
 				return true;
-			case ObjectType.ASSIGNMENT: 
+			case ObjectType.RESOURCE_ASSIGNMENT: 
 				return true;
 			default:
 				return false;

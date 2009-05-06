@@ -239,7 +239,7 @@ public class ObjectManager
 
 	public AssignmentPool getAssignmentPool()
 	{
-		return (AssignmentPool)getPool(ObjectType.ASSIGNMENT);
+		return (AssignmentPool)getPool(ObjectType.RESOURCE_ASSIGNMENT);
 	}
 
 	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()
@@ -396,7 +396,7 @@ public class ObjectManager
 			ObjectType.VALUE_OPTION,
 			ObjectType.PROJECT_METADATA,
 			ObjectType.DIAGRAM_LINK,
-			ObjectType.ASSIGNMENT,
+			ObjectType.RESOURCE_ASSIGNMENT,
 			ObjectType.ACCOUNTING_CODE,
 			ObjectType.FUNDING_SOURCE,
 			ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,

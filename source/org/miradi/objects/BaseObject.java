@@ -262,7 +262,7 @@ abstract public class BaseObject
 			case ObjectType.DIAGRAM_LINK:
 				return new DiagramLink(objectManager, idAsInt, json);
 				
-			case ObjectType.ASSIGNMENT:
+			case ObjectType.RESOURCE_ASSIGNMENT:
 				return new ResourceAssignment(objectManager, idAsInt, json);
 				
 			case ObjectType.ACCOUNTING_CODE:
@@ -1101,7 +1101,7 @@ abstract public class BaseObject
 		ORefList list = new ORefList();
 		switch(objectType)
 		{
-			case ObjectType.ASSIGNMENT: 
+			case ObjectType.RESOURCE_ASSIGNMENT: 
 				list.addAll(getAssignmentRefs());
 				break;
 			case ObjectType.EXPENSE:

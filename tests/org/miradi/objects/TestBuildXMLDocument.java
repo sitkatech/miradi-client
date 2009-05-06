@@ -71,7 +71,7 @@ public class TestBuildXMLDocument extends EAMTestCase
 
 			
 			processObjectPool(project, "AccountingCodes" , "AccountingCode", ObjectType.ACCOUNTING_CODE);
-			processObjectPool(project, "Assignments", "Assignment", ObjectType.ASSIGNMENT);
+			processObjectPool(project, "Assignments", "Assignment", ObjectType.RESOURCE_ASSIGNMENT);
 			processObjectPool(project, "DiagramLinks", "DiagramLink",ObjectType.DIAGRAM_LINK);
 			
 			processFactorObjectPool(project, "Strategys", "Strategy", ObjectType.STRATEGY);
