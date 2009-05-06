@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
@@ -44,7 +43,7 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		if (isResourceCostColumn(column))
 			return false;
 		
-		return true;
+		return super.isCellEditable(row, column);
 	}
 	
 	public String getColumnName(int column)
@@ -58,13 +57,7 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		if (isResourceCostColumn(column))
 			return EAM.text("Unit");
 		
-		if (isAccountingCodeColumn(column))
-			return EAM.text("Acct Code");
-		
-		if (isFundingSourceColumn(column))
-			return EAM.text("Funding Source");
-		
-		return null;
+		return super.getColumnName(column);
 	}
 	
 	public int getColumnCount()
@@ -77,7 +70,7 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		return getCellValue(row, column);
 	}
 	
-	private Object getCellValue(int row, int column)
+	protected Object getCellValue(int row, int column)
 	{
 		ORef assignmentRef = getAssignmentForRow(row);
 		Assignment assignment = (Assignment) getProject().findObject(assignmentRef);
@@ -88,16 +81,9 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 			return getResourceCost(assignment);
 		
 		if (isResourceCostPerUnitColumn(column))
-			return getResourceCostPerUnit(assignment);
+			return getResourceCostPerUnit(assignment);	
 		
-		if (isFundingSourceColumn(column))
-			return getFundingSource(assignment);
-		
-		if (isAccountingCodeColumn(column))
-			return getAccountingCode(assignment);
-		
-		
-		return null;
+		return super.getCellValue(row, column);
 	}
 
 	public void setValueAt(Object value, int row, int column)
@@ -114,8 +100,8 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		
 		ORef assignmentRefForRow = getAssignmentForRow(row);
 		setResourceCell(value, assignmentRefForRow, column);
-		setAccountingCode(value, assignmentRefForRow, column);
-		setFundingSource(value, assignmentRefForRow, column);
+		
+		super.setValueAt(value, row, column);
 	}
 	
 	private void setResourceCell(Object value, ORef assignmentRefForRow, int column)
@@ -138,32 +124,10 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId);
 	}
 	
-	private void setFundingSource(Object value, ORef assignmentRefForRow, int column)
-	{
-		if (! isFundingSourceColumn(column))
-			return;
-		
-		FundingSource fundingSource = (FundingSource)value;
-		BaseId fundingSourceId = fundingSource.getId();
-		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_FUNDING_SOURCE, fundingSourceId);
-	}
-
 	private BaseObject getResource(Assignment assignment)
 	{
 		ORef resourceRef = assignment.getResourceRef();
 		return findObject(resourceRef);
-	}
-	
-	private BaseObject getFundingSource(Assignment assignment)
-	{
-		ORef fundingSourceRef = assignment.getFundingSourceRef();
-		return findObject(fundingSourceRef);
-	}
-	
-	private BaseObject getAccountingCode(Assignment assignment)
-	{
-		ORef accountingCodeRef = assignment.getAccountingCodeRef();
-		return findObject(accountingCodeRef);
 	}
 	
 	private String getResourceCost(Assignment assignment)
@@ -215,17 +179,17 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		return RESOURCE_COST_COLUMN;
 	}
 	
-	protected int getAccountingCodeColumn()
+	private int getAccountingCodeColumn()
 	{
 		return ACCOUNTING_CODE_COLUMN;
 	}
 	
-	protected int getFundingSourceColumn()
+	private int getFundingSourceColumn()
 	{
 		return FUNDING_SOURCE_COLUMN;
 	}
 	
-	protected int getResourceColumn()
+	private int getResourceColumn()
 	{
 		return RESOURCE_COLUMM;
 	}
