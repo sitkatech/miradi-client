@@ -21,8 +21,6 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 
-import javax.swing.JLabel;
-
 import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
