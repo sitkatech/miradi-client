@@ -25,6 +25,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.Project;
+import org.miradi.questions.ColumnConfigurationQuestion;
 
 public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 {
@@ -37,5 +38,11 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 	{
 		DateUnit dateUnit = getDateUnit(column);
 		return AppPreferences.getExpenseAmountBackgroundColor(dateUnit);
+	}
+	
+	@Override
+	public String getColumnGroupCode(int modelColumn)
+	{
+		return ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 	}
 }

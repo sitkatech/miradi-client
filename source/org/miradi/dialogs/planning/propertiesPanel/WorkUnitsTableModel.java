@@ -25,6 +25,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.Project;
+import org.miradi.questions.ColumnConfigurationQuestion;
 
 public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 {
@@ -38,5 +39,11 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	{
 		DateUnit dateUnit = getDateUnit(column);
 		return AppPreferences.getWorkUnitsBackgroundColor(dateUnit);
+	}
+	
+	@Override
+	public String getColumnGroupCode(int modelColumn)
+	{
+		return ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 	}
 }

@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
@@ -89,6 +90,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
 		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse);
+		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse);
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
@@ -294,6 +296,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		measurementModel.fireTableDataChanged();
 		futureStatusModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
+		expenseAmountsTableModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -322,6 +325,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		if (columnsToShow.contains(ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
+		
+		if (columnsToShow.contains(ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+			multiModel.addModel(expenseAmountsTableModel);
 		
 		mainTable.reloadColumnSequences();
 		mainTable.reloadColumnWidths();
@@ -358,6 +364,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
 	private WorkUnitsTableModel workUnitsTableModel;
+	private ExpenseAmountsTableModel expenseAmountsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	

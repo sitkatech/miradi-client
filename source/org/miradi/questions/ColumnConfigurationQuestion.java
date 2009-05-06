@@ -53,7 +53,8 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
-				createChoiceItem(META_RESOURCE_ASSIGNMENT_COLUMN_CODE),				
+				createChoiceItem(META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
+				createChoiceItem(META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(ResourceAssignment.PSEUDO_TAG_WORK_UNIT_TOTAL),
 				createChoiceItem(Factor.TAG_COMMENT),
 		};
@@ -65,4 +66,5 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 	}
 
 	public static final String META_RESOURCE_ASSIGNMENT_COLUMN_CODE = "MetaWorkUnitColumnCode";
+	public static final String META_EXPENSE_ASSIGNMENT_COLUMN_CODE = "MetaExpenseAmountColumnCode";
 }
