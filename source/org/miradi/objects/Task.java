@@ -421,7 +421,7 @@ public class Task extends Factor
 		for (int index = 0; index < assignmentRefs.size(); index++)
 		{
 			ResourceAssignment assignment = ResourceAssignment.find(getProject(), assignmentRefs.get(index));
-			totalAssignmentsCost += assignment.getTotalAssignmentCost(dateRangeToUse);
+			totalAssignmentsCost += assignment.getTotalResourceAssignmentCost(dateRangeToUse);
 		}
 		
 		return totalAssignmentsCost;
