@@ -127,18 +127,18 @@ public class ResourceAssignmentSummaryTableModel extends AbstractSummaryTableMod
 		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_RESOURCE_ID, resourceId);
 	}
 	
-	private String getResourceCost(ResourceAssignment assignment)
+	private String getResourceCost(ResourceAssignment resourceAssignment)
 	{
-		ProjectResource resource = findProjectResource(assignment);
+		ProjectResource resource = findProjectResource(resourceAssignment);
 		if (resource == null)
 			return "";
 		
 		return resource.getCostUnitValue();
 	}
 	
-	private ProjectResource findProjectResource(ResourceAssignment assignment)
+	private ProjectResource findProjectResource(ResourceAssignment resourceAssignment)
 	{
-		ORef resourceRef = assignment.getResourceRef();
+		ORef resourceRef = resourceAssignment.getResourceRef();
 		return ProjectResource.find(getProject(), resourceRef);
 	}
 		
@@ -207,8 +207,8 @@ public class ResourceAssignmentSummaryTableModel extends AbstractSummaryTableMod
 	@Override
 	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
 	{
-		ResourceAssignment assignment = castToAssignment(baseObjectToUse);
-		ORef fundingSourceRef = assignment.getFundingSourceRef();
+		ResourceAssignment resourceAssignment = castToAssignment(baseObjectToUse);
+		ORef fundingSourceRef = resourceAssignment.getFundingSourceRef();
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}
 
