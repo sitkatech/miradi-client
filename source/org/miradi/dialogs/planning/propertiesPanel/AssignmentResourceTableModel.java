@@ -127,16 +127,6 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ASSIGNMENT_RESOURCE_ID, resourceId);
 	}
 	
-	public void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
-	{
-		if (! isAccountingCodeColumn(column))
-			return;
-		
-		AccountingCode accountingCode = (AccountingCode)value;
-		BaseId accountingCodeId = accountingCode.getId();
-		setValueUsingCommand(assignmentRefForRow, Assignment.TAG_ACCOUNTING_CODE, accountingCodeId);
-	}
-	
 	private String getResourceCost(Assignment assignment)
 	{
 		ProjectResource resource = findProjectResource(assignment);
@@ -240,6 +230,22 @@ public class AssignmentResourceTableModel extends PlanningViewResourceTableModel
 	protected String getFundingSourceTag()
 	{
 		return Assignment.TAG_FUNDING_SOURCE;
+	}
+
+	@Override
+	protected void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
+	{
+		AccountingCode accountingCode = (AccountingCode)value;
+		BaseId accountingCodeId = accountingCode.getId();
+		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCodeId);
+	}
+
+	@Override
+	protected void setFundingSource(Object value, ORef assignmentRefForRow, int column)
+	{
+		FundingSource fundingSource = (FundingSource)value;
+		BaseId fundingSourceId = fundingSource.getId();
+		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceId);
 	}
 	
 	private static final int COLUMN_COUNT = 5;

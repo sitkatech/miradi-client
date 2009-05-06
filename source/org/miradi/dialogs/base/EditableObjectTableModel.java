@@ -49,6 +49,11 @@ abstract public class EditableObjectTableModel extends AbstractTableModel implem
 	{
 		return getProject().getObjectManager();
 	}
+
+	public void setValueUsingCommand(ORef refToUse, String fieldTag, ORef refToSave)
+	{
+		setValueUsingCommand(refToUse, fieldTag, refToSave.toString());
+	}
 	
 	public void setValueUsingCommand(ORef refToUse, String fieldTag, BaseId idToSave)
 	{

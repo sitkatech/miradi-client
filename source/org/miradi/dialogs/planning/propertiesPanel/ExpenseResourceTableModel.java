@@ -165,6 +165,20 @@ public class ExpenseResourceTableModel extends PlanningViewResourceTableModel
 	{
 		return Expense.TAG_FUNDING_SOURCE_REF;
 	}
+	
+	@Override
+	protected void setAccountingCode(Object value, ORef assignmentRefForRow, int column)
+	{
+		AccountingCode accountingCode = (AccountingCode)value;
+		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCode.getRef());
+	}
+
+	@Override
+	protected void setFundingSource(Object value, ORef assignmentRefForRow, int column)
+	{
+		FundingSource fundingSource = (FundingSource)value;
+		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSource.getRef());
+	}
 						
 	private static final int COLUMN_COUNT = 3;
 	
