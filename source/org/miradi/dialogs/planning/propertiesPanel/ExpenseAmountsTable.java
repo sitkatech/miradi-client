@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
-
 import org.miradi.main.MainWindow;
 
 public class ExpenseAmountsTable extends WorkUnitsTable
@@ -28,12 +26,5 @@ public class ExpenseAmountsTable extends WorkUnitsTable
 	public ExpenseAmountsTable(MainWindow mainWindowToUse, ExpenseAmountsTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);
-	}
-	
-	@Override
-	public Color getColumnBackGroundColor(int column)
-	{
-		int modelColumn = convertColumnIndexToModel(column);
-		return getWorkUnitsTableModel().getCellBackgroundColor(modelColumn);
 	}
 }
