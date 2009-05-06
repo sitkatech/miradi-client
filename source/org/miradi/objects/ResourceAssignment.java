@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.ids.AssignmentId;
+import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.TaskId;
 import org.miradi.main.EAM;
@@ -39,7 +39,7 @@ public class ResourceAssignment extends BaseObject
 {
 	public ResourceAssignment(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, new AssignmentId(idToUse.asInt()));
+		super(objectManager, new ResourceAssignmentId(idToUse.asInt()));
 		clear();
 	}
 	

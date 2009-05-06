@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.ids;
 
-public class AssignmentId extends ObjectId
+public class ResourceAssignmentId extends ObjectId
 {
 
-	public AssignmentId(int idToUse)
+	public ResourceAssignmentId(int idToUse)
 	{
 		super(idToUse);
 	}
