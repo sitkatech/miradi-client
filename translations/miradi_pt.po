@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 14:58-0500\n"
+"POT-Creation-Date: 2009-05-06 15:04-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6143,25 +6143,25 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:53
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
+msgid "Title|Direct Threat Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:53
 msgid "Resource (Who)"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:56
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:56
 msgid "Cost/Unit"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:59
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:59
 msgid "Unit"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:109
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
 msgid "An error has occured while writing assignment data."
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
-msgid "Title|Direct Threat Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:40

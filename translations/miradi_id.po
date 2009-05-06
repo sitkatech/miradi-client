@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 14:58-0500\n"
+"POT-Creation-Date: 2009-05-06 15:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6627,26 +6627,26 @@ msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:53
-msgid "Resource (Who)"
-msgstr "Sumber Daya (Siapa) "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:56
-msgid "Cost/Unit"
-msgstr "Biaya/Unit "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:59
-msgid "Unit"
-msgstr "Unit "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSummaryTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
-msgid "An error has occured while writing assignment data."
-msgstr "Terjadi kesalahan saat menulis data alokasi. "
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:53
+msgid "Resource (Who)"
+msgstr "Sumber Daya (Siapa) "
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:56
+msgid "Cost/Unit"
+msgstr "Biaya/Unit "
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:59
+msgid "Unit"
+msgstr "Unit "
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
+msgid "An error has occured while writing assignment data."
+msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:40
 msgid "Name"
