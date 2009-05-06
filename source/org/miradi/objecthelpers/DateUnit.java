@@ -40,6 +40,34 @@ public class DateUnit
 		dateUnit = dateUnitToUse;
 	}
 	
+	public static DateUnit createFromDateRange(DateRange dateRange)
+	{
+		MultiCalendar startDate = dateRange.getStartDate();
+		String startIso = startDate.toIsoDateString();
+		String yearString = startIso.substring(0, 4);
+		int startingYear = startDate.getGregorianYear();
+		int startingMonth = startDate.getGregorianMonth();
+
+		if(dateRange.isDay())
+			return new DateUnit(startIso);
+		
+		if(dateRange.isMonth())
+			return new DateUnit(startIso.substring(0, 7));
+		
+		if(dateRange.isQuarter())
+		{
+			int startingQuarter = (startingMonth - 1) / 3 + 1;
+			return new DateUnit(yearString + "Q" + startingQuarter);
+		}
+		
+		if(dateRange.isYear())
+		{
+			return createFiscalYear(startingYear, startingMonth);
+		}
+		
+		return new DateUnit();
+	}
+
 	public static DateUnit createFiscalYear(Integer startingYear, int startingMonth)
 	{
 		return new DateUnit(YEAR_PREFIX + asFourDigitString(startingYear) + "-" + asTwoDigitString(startingMonth));

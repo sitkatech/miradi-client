@@ -116,4 +116,44 @@ public class TestDateRange extends EAMTestCase
 		assertEquals("FY 2007", fyApril.toString());
 	}
 	
+	public void testIsDay() throws Exception
+	{
+		assertFalse(createDateRange("2006-01-01", "2006-01-02").isDay());
+		assertTrue(createDateRange("2006-01-01", "2006-01-01").isDay());
+	}
+
+	public void testIsMonth() throws Exception
+	{
+		assertFalse(createDateRange("2006-01-01", "2006-02-01").isMonth());
+		assertTrue(createDateRange("2006-01-01", "2006-01-31").isMonth());
+		assertTrue(createDateRange("2006-12-01", "2006-12-31").isMonth());
+	}
+	
+	public void testIsQuarter() throws Exception
+	{
+		assertFalse(createDateRange("2006-01-01", "2006-01-31").isQuarter());
+		assertFalse(createDateRange("2006-01-01", "2007-03-31").isQuarter());
+		assertFalse(createDateRange("2006-01-03", "2006-04-02").isQuarter());
+		assertTrue(createDateRange("2006-01-01", "2006-03-31").isQuarter());
+		assertTrue(createDateRange("2006-10-01", "2006-12-31").isQuarter());
+		assertFalse(createDateRange("2006-02-01", "2006-04-30").isQuarter());
+	}
+	
+	public void testIsYear() throws Exception
+	{
+		assertFalse(createDateRange("2006-01-01", "2006-12-30").isYear());
+		assertFalse(createDateRange("2006-01-01", "2007-12-31").isYear());
+		assertFalse(createDateRange("2006-01-02", "2007-01-01").isYear());
+		assertTrue(createDateRange("2006-01-01", "2006-12-31").isYear());
+		assertTrue(createDateRange("2006-04-01", "2007-03-31").isYear());
+		assertFalse(createDateRange("2006-02-01", "2007-01-31").isYear());
+	}
+	
+	private DateRange createDateRange(String startIso, String endIso) throws Exception
+	{
+		MultiCalendar start = MultiCalendar.createFromIsoDateString(startIso);
+		MultiCalendar end = MultiCalendar.createFromIsoDateString(endIso);
+		return new DateRange(start, end);
+	}
+	
 }
