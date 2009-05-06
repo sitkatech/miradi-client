@@ -29,7 +29,7 @@ public class AssignmentSummaryTable extends AbstractSummaryTable
 {
 	public AssignmentSummaryTable(MainWindow mainWindowToUse, AssignmentSummaryTableModel modelToUse) throws Exception
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 	}
 	
 	public void rebuildColumnEditorsAndRenderers() throws Exception
@@ -63,4 +63,6 @@ public class AssignmentSummaryTable extends AbstractSummaryTable
 	{
 		return getObjectManager().getResourcePool();
 	}
+	
+    public static final String UNIQUE_IDENTIFIER = "AssignmentSummaryTable";
 }

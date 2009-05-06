@@ -25,6 +25,8 @@ public class ExpenseSummaryTable extends AbstractSummaryTable
 {
 	public ExpenseSummaryTable(MainWindow mainWindowToUse,	ExpenseSummaryTableModel modelToUse) throws Exception
 	{
-		super(mainWindowToUse, modelToUse);
+		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 	}
+	
+	private static final String UNIQUE_IDENTIFIER = "ExpenseSummaryTable";
 }

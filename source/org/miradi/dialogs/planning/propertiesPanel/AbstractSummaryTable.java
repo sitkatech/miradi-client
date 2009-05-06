@@ -29,9 +29,9 @@ import org.miradi.objects.FundingSource;
 
 public class AbstractSummaryTable extends AbstractComponentTable
 {
-	public AbstractSummaryTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse) throws Exception
+	public AbstractSummaryTable(MainWindow mainWindowToUse, PlanningViewResourceTableModel modelToUse, String uniqueIdentifier) throws Exception
 	{
-		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, modelToUse, uniqueIdentifier);
 		model = modelToUse;
 		
 		setBackground(getColumnBackGroundColor(0));
@@ -80,5 +80,4 @@ public class AbstractSummaryTable extends AbstractComponentTable
 	}
 	
 	private PlanningViewResourceTableModel model;
-    public static final String UNIQUE_IDENTIFIER = "PlanningViewResourceTable";
 }
