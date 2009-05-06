@@ -282,7 +282,7 @@ public class ResourceAssignment extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		resourceIdData = new BaseIdData(TAG_ASSIGNMENT_RESOURCE_ID, ProjectResource.getObjectType());
+		resourceIdData = new BaseIdData(TAG_RESOURCE_ID, ProjectResource.getObjectType());
 		detailListData = new DateRangeEffortListData(TAG_DATERANGE_EFFORTS);
 		accountingIdData = new BaseIdData(TAG_ACCOUNTING_CODE, AccountingCode.getObjectType());
 		fundingIdData = new BaseIdData(TAG_FUNDING_SOURCE, FundingSource.getObjectType());
@@ -292,7 +292,7 @@ public class ResourceAssignment extends BaseObject
 		pseudoBudgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		pseudoWorkUnitTotal = new PseudoStringData(PSEUDO_TAG_WORK_UNIT_TOTAL);
 		
-		addField(TAG_ASSIGNMENT_RESOURCE_ID, resourceIdData);
+		addField(TAG_RESOURCE_ID, resourceIdData);
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
 		addField(TAG_FUNDING_SOURCE, fundingIdData);
@@ -303,7 +303,7 @@ public class ResourceAssignment extends BaseObject
 		addField(PSEUDO_TAG_WORK_UNIT_TOTAL, pseudoWorkUnitTotal);
 	}
 	
-	public static final String TAG_ASSIGNMENT_RESOURCE_ID = "ResourceId";
+	public static final String TAG_RESOURCE_ID = "ResourceId";
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	public static final String TAG_ACCOUNTING_CODE = "AccountingCode";
 	public static final String TAG_FUNDING_SOURCE = "FundingSource";

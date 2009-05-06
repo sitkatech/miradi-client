@@ -169,7 +169,7 @@ abstract public class DiagramPaster
 			if (ResourceAssignment.TAG_FUNDING_SOURCE.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, FundingSource.getObjectType(), tag);
 
-			if (ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID.equals(tag))
+			if (ResourceAssignment.TAG_RESOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, ProjectResource.getObjectType(), tag);
 		}
 		

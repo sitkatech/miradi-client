@@ -117,7 +117,7 @@ public class DeleteResource extends ObjectsDoer
 	{
 		Vector<Command> commands = new Vector<Command>();
 		if (ResourceAssignment.is(ref))
-			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_ASSIGNMENT_RESOURCE_ID, BaseId.INVALID.toString()));
+			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 		
 		return commands;
 	}
