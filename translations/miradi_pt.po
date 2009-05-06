@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 09:28-0500\n"
+"POT-Creation-Date: 2009-05-06 09:31-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4915,11 +4915,11 @@ msgid "TT|Create a Bend Point"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateExpense.java:34
-msgid "Action|Assign Expense"
+msgid "Action|Create Expense"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateExpense.java:39
-msgid "TT|Assign an expense"
+msgid "TT|Create an expense"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCreateIndicator.java:40
@@ -4934,12 +4934,12 @@ msgstr ""
 msgid "TT|Paste the Single Factor's content from the clipboard"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:34
-msgid "Action|Remove Expense"
+#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:35
+msgid "Action|Delete Expense"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:39
-msgid "TT|Remove expense from list"
+#: miradi/source/org/miradi/actions/ActionDeleteExpense.java:40
+msgid "TT|Delete expense from list"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteTaggedObjectSet.java:40
