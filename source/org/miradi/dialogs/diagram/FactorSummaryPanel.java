@@ -30,6 +30,7 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep
 import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.DraftStrategyIcon;
@@ -61,8 +62,7 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		{
 			addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindowToUse, diagramFactorToEdit.getWrappedORef()));
 			addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
-			//FIXME enabled onece the expense properties side tab is working
-			//addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
+			addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
 		}
 		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), diagramFactorToEdit.getWrappedType()));
