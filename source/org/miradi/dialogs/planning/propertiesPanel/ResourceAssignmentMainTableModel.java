@@ -29,9 +29,9 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 
-public class ResourceAssignmentSummaryTableModel extends AbstractSummaryTableModel
+public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 {
-	public ResourceAssignmentSummaryTableModel(Project projectToUse)
+	public ResourceAssignmentMainTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}
