@@ -63,9 +63,6 @@ public class DateRangeEffortList
 		for (int i = 0; i < data.size(); ++i)
 		{
 			DateRangeEffort dateRangeEffort = data.get(i);
-			if (dateRangeEffort.getUnitQuantity() == 0)
-				continue;
-			
 			DateRange dateRange = dateRangeEffort.getDateRange();
 			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
 		}
