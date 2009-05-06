@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 09:31-0500\n"
+"POT-Creation-Date: 2009-05-06 09:55-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -219,6 +219,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:66
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:65
 msgid "Funding Source"
 msgstr "Sumber Dana "
 
@@ -6606,22 +6607,27 @@ msgid "Title|Threat Reduction Result Properties"
 msgstr "Sifat-sifat Hasil Pengurangan Ancaman"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:54
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:53
 msgid "Resource (Who)"
 msgstr "Sumber Daya (Siapa) "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:57
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:56
 msgid "Cost/Unit"
 msgstr "Biaya/Unit "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:60
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:59
 msgid "Unit"
 msgstr "Unit "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:63
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:62
 msgid "Acct Code"
 msgstr "Kode Akuntansi "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewResourceTableModel.java:111
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentResourceTableModel.java:110
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
