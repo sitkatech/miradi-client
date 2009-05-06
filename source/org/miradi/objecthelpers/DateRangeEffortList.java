@@ -70,7 +70,7 @@ public class DateRangeEffortList
 		return combinedDateRange;
 	}
 	
-	public DateRangeEffort getEffortForDateRange(DateRange dateRangeToUse)
+	public DateRangeEffort getDateRangeEffortForSpecificDateRange(DateRange dateRangeToUse)
 	{
 		for (int i = 0; i < data.size(); i++)
 		{

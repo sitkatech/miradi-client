@@ -130,7 +130,7 @@ public class WorkUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTabl
 	{
 		DateRangeEffort dateRangeEffort = null;
 		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
-		dateRangeEffort = effortList.getEffortForDateRange(dateRange);
+		dateRangeEffort = effortList.getDateRangeEffortForSpecificDateRange(dateRange);
 		return dateRangeEffort;
 	}
 	
