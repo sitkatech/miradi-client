@@ -207,19 +207,24 @@ public class AssignmentSummaryTableModel extends PlanningViewResourceTableModel
 	@Override
 	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
 	{
-		Assignment assignment = (Assignment) baseObjectToUse;
+		Assignment assignment = castToAssignment(baseObjectToUse);
 		ORef fundingSourceRef = assignment.getFundingSourceRef();
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}
-	
+
 	@Override
 	protected BaseObject getAccountingCode(BaseObject baseObjectToUse)
 	{
-		Assignment assignment = (Assignment) baseObjectToUse;
+		Assignment assignment = castToAssignment(baseObjectToUse);
 		ORef accountingCodeRef = assignment.getAccountingCodeRef();
 		return AccountingCode.find(getProject(), accountingCodeRef);
 	}
 	
+	private Assignment castToAssignment(BaseObject baseObjectToUse)
+	{
+		return (Assignment) baseObjectToUse;
+	}
+		
 	@Override
 	protected String getAccountingCodeTag()
 	{
