@@ -47,6 +47,7 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateObjectParameter;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -525,36 +526,46 @@ abstract public class BaseObject
 	
 	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		return getWorkUnits(getAssignmentRefs(), dateRangeToUse);
+		DateRangeEffortList dateRangeEffortList = getDateRangeEffortList(TAG_ASSIGNMENT_IDS);
+		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
-	
-	public OptionalDouble getWorkUnits(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
-	{
-		OptionalDouble totalWorkUnits = new OptionalDouble();
-		for (int index = 0; index < baseObjectRefs.size(); ++index)
-		{
-			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			totalWorkUnits = totalWorkUnits.add(baseObject.getWorkUnits(dateRangeToUse));
-		}
-		
-		return totalWorkUnits;
-	}
-	
+
 	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
 	{
-		return getExpenseAmounts(getExpenseRefs(), dateRangeToUse);
+		DateRangeEffortList dateRangeEffortList = getDateRangeEffortList(TAG_EXPENSE_REFS);
+		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
-	public OptionalDouble getExpenseAmounts(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
+	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs)
+			throws Exception
 	{
-		OptionalDouble totalExpenseAmounts = new OptionalDouble();
+		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
+		DateRangeEffortList dateRangeEffortList = getDateRangeEffortListForAssignments(tag);
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			totalExpenseAmounts = totalExpenseAmounts.add(baseObject.getExpenseAmounts(dateRangeToUse));
+			dateRangeEffortList.mergeOverlay(baseObject.getDateRangeEffortList(tag), projectDateRange);
 		}
-		
-		return totalExpenseAmounts;
+		return dateRangeEffortList;
+	}
+	
+	protected DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
+	{
+		return getDateRangeEffortListForAssignments(tag);	
+	}
+
+	private DateRangeEffortList getDateRangeEffortListForAssignments(String tag)
+			throws Exception
+	{
+		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		ORefList assignmentRefs = getRefList(tag);
+		for(int i = 0; i < assignmentRefs.size(); ++i)
+		{
+			ResourceAssignment assignment = ResourceAssignment.find(getObjectManager(), assignmentRefs.get(i));
+			dateRangeEffortList.mergeAdd(assignment.getDateRangeEffortList(), projectDateRange);
+		}
+		return dateRangeEffortList;
 	}
 	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception

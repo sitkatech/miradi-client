@@ -38,12 +38,18 @@ abstract public class Assignment extends BaseObject
 		super(objectManager, idToUse, json);
 	}
 	
+	@Override
+	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
+	{
+		return getDateRangeEffortList();
+	}
+	
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
 	{
 		String dREffortListAsString = getData(ResourceAssignment.TAG_DATERANGE_EFFORTS);
 		return new DateRangeEffortList(dREffortListAsString);
 	}
-	
+
 	public DateRangeEffortList getDetails()
 	{
 		return detailListData.getDateRangeEffortList();

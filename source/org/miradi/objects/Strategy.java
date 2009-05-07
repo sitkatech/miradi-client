@@ -28,6 +28,7 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -42,7 +43,6 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.OptionalDouble;
 
 
 public class Strategy extends Factor
@@ -265,28 +265,11 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		if (hasActivities())
-			return getWorkUnits(getActivityRefs(), dateRangeToUse);
-		
-		return super.getWorkUnits(dateRangeToUse);
-	}
-
-	@Override
-	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
-	{
-		if (hasActivities())
-			return getExpenseAmounts(getActivityRefs(), dateRangeToUse);
-		
-		return super.getExpenseAmounts(dateRangeToUse);
+		return getDateRangeEffortListForSubtasks(tag, getActivityRefs());
 	}
 	
-	private boolean hasActivities()
-	{
-		return !getActivityRefs().isEmpty();
-	}
-		
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		return getTasksBudgetCostRollUp(dateRangeToUse, getActivityRefs());

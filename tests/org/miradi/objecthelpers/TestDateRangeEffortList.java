@@ -89,7 +89,7 @@ public class TestDateRangeEffortList extends EAMTestCase
 		
 	}
 	
-	public void testMergeAdd() throws Exception
+	public void testMergeOverlay() throws Exception
 	{
 		DateRange projectDateRange = createYearDateRange(2000, 2010);
 		DateRangeEffortList mainList = new DateRangeEffortList();
@@ -100,21 +100,21 @@ public class TestDateRangeEffortList extends EAMTestCase
 		DateRangeEffortList list2 = new DateRangeEffortList();
 		DateRangeEffort dre2007 = createYearDateRangeEffort(2007, 2007, 2);
 		list2.add(dre2007);
-		mainList.mergeAdd(list2, projectDateRange);
+		mainList.mergeOverlay(list2, projectDateRange);
 		DateRange twoYears = new DateRange(dre2006.getDateRange().getStartDate(), dre2007.getDateRange().getEndDate());
 		assertEquals(twoYears, mainList.getCombinedDateRange());
 		
 		DateRangeEffortList list3 = new DateRangeEffortList();
 		DateRangeEffort another2007 = createYearDateRangeEffort(2007, 2007, 4);
 		list3.add(another2007);
-		mainList.mergeAdd(list3, projectDateRange);
+		mainList.mergeOverlay(list3, projectDateRange);
 		assertEquals(twoYears, mainList.getCombinedDateRange());
 		assertEquals(7.0, mainList.getTotalUnitQuantity());
 		
 		DateRangeEffortList list4 = new DateRangeEffortList();
 		DateRangeEffort projectTotal = createYearDateRangeEffort(2007, 2009, 8);
 		list4.add(projectTotal);
-		mainList.mergeAdd(list4, projectDateRange);
+		mainList.mergeOverlay(list4, projectDateRange);
 		assertEquals(twoYears, mainList.getCombinedDateRange());
 		assertEquals(7.0, mainList.getTotalUnitQuantity());
 
@@ -122,13 +122,13 @@ public class TestDateRangeEffortList extends EAMTestCase
 		int unitsForMonth = 16;
 		DateRangeEffort month = createMonthDateRangeEffort(2007, 5, unitsForMonth);
 		list5.add(month);
-		mainList.mergeAdd(list5, projectDateRange);
+		mainList.mergeOverlay(list5, projectDateRange);
 		DateRange expectedDateRange = DateRange.combine(dre2006.getDateRange(), month.getDateRange());
 		double expectedUnitQuantity = dre2006.getUnitQuantity() + unitsForMonth;
 		assertEquals(expectedDateRange, mainList.getCombinedDateRange());
 		assertEquals(expectedUnitQuantity, mainList.getTotalUnitQuantity());
 		
-		mainList.mergeAdd(list5, projectDateRange);
+		mainList.mergeOverlay(list5, projectDateRange);
 		expectedUnitQuantity += unitsForMonth;
 		assertEquals(expectedDateRange, mainList.getCombinedDateRange());
 		assertEquals(expectedUnitQuantity, mainList.getTotalUnitQuantity());

@@ -31,6 +31,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -39,7 +40,6 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.OptionalDouble;
 
 public class Task extends Factor
 {
@@ -354,23 +354,11 @@ public class Task extends Factor
 	}
 	
 	@Override
-	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		if (hasSubTasks())
-			return getWorkUnits(getSubtaskRefs(), dateRangeToUse);
-		
-		return super.getWorkUnits(dateRangeToUse);
+		return getDateRangeEffortListForSubtasks(tag, getSubtaskRefs());
 	}
 	
-	@Override
-	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
-	{
-		if (hasSubTasks())
-			return getExpenseAmounts(getSubtaskRefs(), dateRangeToUse);
-		
-		return super.getExpenseAmounts(dateRangeToUse);
-	}
-
 	@Override
 	public int getTotalShareCount()
 	{
