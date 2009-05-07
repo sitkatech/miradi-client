@@ -135,7 +135,7 @@ public class ResourceAssignment extends Assignment
 	{
 		try
 		{
-			DateRange combinedDateRange = getDetails().getCombinedDateRange();
+			DateRange combinedDateRange = getDateRangeEffortList().getCombinedDateRange();
 			if (combinedDateRange != null)
 				return combinedDateRange.toString();
 			
@@ -207,7 +207,7 @@ public class ResourceAssignment extends Assignment
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception
 	{
-		return getDetails().getCombinedDateRange();
+		return getDateRangeEffortList().getCombinedDateRange();
 	}
 	
 	public void setResourceId(BaseId resourceIdToUse)

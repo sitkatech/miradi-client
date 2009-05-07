@@ -562,8 +562,8 @@ abstract public class BaseObject
 		ORefList assignmentRefs = getRefList(tag);
 		for(int i = 0; i < assignmentRefs.size(); ++i)
 		{
-			ResourceAssignment assignment = ResourceAssignment.find(getObjectManager(), assignmentRefs.get(i));
-			dateRangeEffortList.mergeAdd(assignment.getDateRangeEffortList(), projectDateRange);
+			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
+			dateRangeEffortList.mergeAdd(assignment.getDateRangeEffortList(tag), projectDateRange);
 		}
 		return dateRangeEffortList;
 	}
