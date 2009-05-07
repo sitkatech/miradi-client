@@ -155,17 +155,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return false;
 	}
 
-	private boolean isAssignmentCellEditable(int row, int column) throws Exception
-	{
-		DateRange dateRange = getDateRange(column);
-		Assignment assignment = getAssignment(row);
-		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
-		if(thisCellEffort != null)
-			return true;
-		
-		return !assignment.getWorkUnits(dateRange).hasValue();
-	}
-
 	public Object getValueAt(int row, int column)
 	{
 		return getChoiceItemAt(row, column);
@@ -305,7 +294,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return new Vector(getDateUnits());
 	}
 	
-	private DateRange getDateRange(int column) throws Exception
+	protected DateRange getDateRange(int column) throws Exception
 	{
 		DateUnit dateUnit = getDateUnit(column);
 		return getDateRange(dateUnit);
@@ -437,6 +426,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	abstract public Color getCellBackgroundColor(int column);
 	
 	abstract protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception;
+	
+	abstract protected boolean isAssignmentCellEditable(int row, int column) throws Exception;
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;

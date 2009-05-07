@@ -24,10 +24,13 @@ import java.awt.Color;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.OptionalDouble;
 
 public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
@@ -50,14 +53,31 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 		return ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 	}
 	
+	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception
 	{
 		return baseObject.getWorkUnits(dateRange);
 	}
 	
+	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_TABLE_MODEL_IDENTIFIER;
+	}
+	
+	@Override
+	protected boolean isAssignmentCellEditable(int row, int column) throws Exception
+	{
+		DateRange dateRange = getDateRange(column);
+		Assignment assignment = getAssignment(row);
+		if (!ResourceAssignment.is(assignment))
+			return false;
+		
+		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
+		if(thisCellEffort != null)
+			return true;
+		
+		return !assignment.getWorkUnits(dateRange).hasValue();
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";
