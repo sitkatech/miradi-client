@@ -35,7 +35,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.ObjectPicker;
 
 //FIXME this class is duplicate and under constrcut
-public class ExpenseAssignmentEditorComponent extends AbstractMultiTablePanelEditorComponent
+public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorComponent
 {
 	public ExpenseAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
