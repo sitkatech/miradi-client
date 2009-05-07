@@ -41,12 +41,13 @@ abstract public class Assignment extends BaseObject
 	@Override
 	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		return new DateRangeEffortList(getData(tag));
+		System.out.println("tagg=" +tag);
+		return new DateRangeEffortList(getData(TAG_DATERANGE_EFFORTS));
 	}
 	
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
 	{
-		return detailListData.getDateRangeEffortList();
+		return new DateRangeEffortList(getData(TAG_DATERANGE_EFFORTS));
 	}
 
 	public static boolean isAssignment(BaseObject baseObject)
