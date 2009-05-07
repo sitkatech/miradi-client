@@ -50,21 +50,21 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 	public void dispose()
 	{
 		super.dispose();
-		assignmentSummaryTable.dispose();
-		workUnitsTable.dispose();
+		abstractSummartTable.dispose();
+		assignmentDateUnitsTable.dispose();
 	}
 	
 	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
-		assignmentSummaryTable.becomeActive();
+		abstractSummartTable.becomeActive();
 	}
 	
 	@Override
 	public void becomeInactive()
 	{
-		assignmentSummaryTable.becomeInactive();
+		abstractSummartTable.becomeInactive();
 		super.becomeInactive();
 	}
 	
@@ -83,34 +83,34 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 			setRef(baseObjectRef);
 		}
 
-		assignmentSummaryTableModel.setObjectRefs(hierarchyToSelectedRef);
-		workUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
+		abstractSummaryTableModel.setObjectRefs(hierarchyToSelectedRef);
+		assignmentDateUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
 		
-		assignmentSummaryTableModel.fireTableDataChanged();
-		workUnitsTableModel.fireTableDataChanged();
+		abstractSummaryTableModel.fireTableDataChanged();
+		assignmentDateUnitsTableModel.fireTableDataChanged();
 	}
 	
 	private void savePendingEdits()
 	{
-		assignmentSummaryTable.stopCellEditing();
-		workUnitsTable.stopCellEditing();
+		abstractSummartTable.stopCellEditing();
+		assignmentDateUnitsTable.stopCellEditing();
 	}
 
 	private void createTables() throws Exception
 	{
-		assignmentSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
-		assignmentSummaryTable = new ResourceAssignmentMainTable(getMainWindow(), assignmentSummaryTableModel);
+		abstractSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
+		abstractSummartTable = new ResourceAssignmentMainTable(getMainWindow(), abstractSummaryTableModel);
 		
-		workUnitsTableModel = new WorkUnitsTableModel(getProject(), assignmentSummaryTableModel);
-		workUnitsTable = new AssignmentDateUnitsTable(getMainWindow(), workUnitsTableModel);		
+		assignmentDateUnitsTableModel = new WorkUnitsTableModel(getProject(), abstractSummaryTableModel);
+		assignmentDateUnitsTable = new AssignmentDateUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	
 	private void addTables()
 	{
 		OneRowPanel tables = new OneRowPanel();
 
-		addTableToPanel(tables, assignmentSummaryTable);
-		addToHorizontalController(addTableToPanel(tables, workUnitsTable));
+		addTableToPanel(tables, abstractSummartTable);
+		addToHorizontalController(addTableToPanel(tables, assignmentDateUnitsTable));
 		
 		add(tables, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
@@ -128,8 +128,8 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 	
 	protected void addTablesToSelectionController()
 	{
-		selectionController.addTable(assignmentSummaryTable);
-		selectionController.addTable(workUnitsTable);
+		selectionController.addTable(abstractSummartTable);
+		selectionController.addTable(assignmentDateUnitsTable);
 	}
 	
 	private JPanel createButtonBar()
@@ -145,23 +145,23 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 	protected void addButtons(OneRowPanel box)
 	{
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), getPicker()));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), assignmentSummaryTable));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), abstractSummartTable));
 	}
 	
 	protected void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
-		workUnitsTableModel.restoreDateUnits();
+		assignmentDateUnitsTableModel.restoreDateUnits();
 	}
 
 	protected void dataWasChanged() throws Exception
 	{
-		assignmentSummaryTableModel.dataWasChanged();
+		abstractSummaryTableModel.dataWasChanged();
 		
-		assignmentSummaryTable.rebuildColumnEditorsAndRenderers();
-		assignmentSummaryTable.repaint();
+		abstractSummartTable.rebuildColumnEditorsAndRenderers();
+		abstractSummartTable.repaint();
 		
-		workUnitsTable.invalidate();
-		workUnitsTable.repaint();
+		assignmentDateUnitsTable.invalidate();
+		assignmentDateUnitsTable.repaint();
 	}
 	
 	private void setRef(ORef ref)
@@ -173,19 +173,19 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
 		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container
 		//that way we just loop through the tbales.  
-		workUnitsTable.stopCellEditing();
+		assignmentDateUnitsTable.stopCellEditing();
 		
-		assignmentSummaryTableModel.setBaseObject(baseObject);
+		abstractSummaryTableModel.setBaseObject(baseObject);
 	}
 	
 	public ORefList[] getSelectedHierarchies()
 	{
-		return assignmentSummaryTable.getSelectedHierarchies();
+		return abstractSummartTable.getSelectedHierarchies();
 	}
 	
-	private AbstractSummaryTable assignmentSummaryTable;
-	private AssignmentDateUnitsTable workUnitsTable;
+	private AbstractSummaryTable abstractSummartTable;
+	private AssignmentDateUnitsTable assignmentDateUnitsTable;
 	
-	private AbstractSummaryTableModel assignmentSummaryTableModel;
-	private AssignmentDateUnitsTableModel workUnitsTableModel;
+	private AbstractSummaryTableModel abstractSummaryTableModel;
+	private AssignmentDateUnitsTableModel assignmentDateUnitsTableModel;
 }
