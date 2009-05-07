@@ -137,10 +137,15 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), getPicker()));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), assignmentSummaryTable));
+		addButtons(box);
 		
 		return box;
+	}
+
+	protected void addButtons(OneRowPanel box)
+	{
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), getPicker()));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), assignmentSummaryTable));
 	}
 	
 	protected void respondToExpandOrCollapseColumnEvent() throws Exception

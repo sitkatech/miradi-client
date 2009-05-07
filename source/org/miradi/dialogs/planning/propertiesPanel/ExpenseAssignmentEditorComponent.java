@@ -138,10 +138,15 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 		OneRowPanel box = new OneRowPanel();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		box.setGaps(3);
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateExpense.class), getPicker()));
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteExpense.class), expenseSummaryTable));
+		addButtons(box);
 		
 		return box;
+	}
+
+	protected void addButtons(OneRowPanel box)
+	{
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionCreateExpense.class), getPicker()));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionDeleteExpense.class), expenseSummaryTable));
 	}
 	
 	protected void respondToExpandOrCollapseColumnEvent() throws Exception
