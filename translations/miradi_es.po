@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 19:25-0500\n"
+"POT-Creation-Date: 2009-05-07 10:43-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -974,7 +974,7 @@ msgid "Button|Save"
 msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractMultiTablePanelEditorComponent.java:66
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractAssignmentEditorComponent.java:66
 #, fuzzy
 msgid "An unexpected error has occurred"
 msgstr "An unexpected error has occurred"
@@ -7831,9 +7831,8 @@ msgstr "Para"
 msgid "FieldLabel|13.Color|Color"
 msgstr "Color"
 
-#, fuzzy
-msgid "FieldLabel|14.Assignment|Assignment"
-msgstr "FieldLabel|14.Assignment|Assignment"
+msgid "FieldLabel|14.ResourceAssignment|Assignment"
+msgstr ""
 
 msgid "FieldLabel|15.Label|Category Name"
 msgstr "Nombre de categoría"
@@ -8517,6 +8516,9 @@ msgid "FieldLabel|50.ShortLabel|ID"
 msgstr ""
 
 msgid "FieldLabel|50.ScopeBox|Project Scope Box"
+msgstr ""
+
+msgid "FieldLabel|51.ExpenseAssignment|Expense"
 msgstr ""
 
 msgid ""
@@ -32796,6 +32798,10 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#, fuzzy
+#~ msgid "FieldLabel|14.Assignment|Assignment"
+#~ msgstr "FieldLabel|14.Assignment|Assignment"
 
 #~ msgid ""
 #~ "<html><p>If you have existing budget data, it can be migrated to the new "
