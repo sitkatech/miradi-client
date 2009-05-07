@@ -26,19 +26,22 @@ import org.miradi.diagram.renderers.RectangleRenderer;
 
 public class ExpenseAssignmentIcon extends AbstractShapeIcon
 {
+	@Override
 	Color getIconColor()
 	{
 		return LITE_GREEN;
 	}
 
+	@Override
 	FactorRenderer getRenderer()
 	{
 		return new RectangleRenderer();
 	}
 	
-	public int getIconWidth()
+	@Override
+	public int getIconHeight()
 	{
-		return 6;
+		return 8;
 	}
 
 	final private static Color LITE_GREEN = Color.green.brighter();
