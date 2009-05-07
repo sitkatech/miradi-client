@@ -547,7 +547,14 @@ abstract public class BaseObject
 	
 	public OptionalDouble getExpenseAmounts(ORefList baseObjectRefs, DateRange dateRangeToUse) throws Exception
 	{
-		return new OptionalDouble();
+		OptionalDouble totalExpenseAmounts = new OptionalDouble();
+		for (int index = 0; index < baseObjectRefs.size(); ++index)
+		{
+			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
+			totalExpenseAmounts = totalExpenseAmounts.add(baseObject.getExpenseAmounts(dateRangeToUse));
+		}
+		
+		return totalExpenseAmounts;
 	}
 	
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception

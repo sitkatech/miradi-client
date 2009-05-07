@@ -138,12 +138,26 @@ public class Indicator extends BaseObject
 	@Override
 	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		if (getMethodRefs().isEmpty())
-			return super.getWorkUnits(dateRangeToUse);
+		if (hasMethods())
+			return getWorkUnits(getMethodRefs(), dateRangeToUse);
 		
-		return getWorkUnits(getMethodRefs(), dateRangeToUse);
+		return super.getWorkUnits(dateRangeToUse);
 	}
 
+	@Override
+	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
+	{
+		if (hasMethods())
+			return getExpenseAmounts(getMethodRefs(), dateRangeToUse);
+		
+		return super.getExpenseAmounts(dateRangeToUse);
+	}
+	
+	private boolean hasMethods()
+	{
+		return !getMethodRefs().isEmpty();
+	}
+	
 	public ORefList getMethodRefs()
 	{
 		return new ORefList(Task.getObjectType(), getMethodIds());

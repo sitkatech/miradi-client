@@ -25,7 +25,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 public class ExpenseAssignment extends Assignment
 {
@@ -38,6 +40,12 @@ public class ExpenseAssignment extends Assignment
 	public ExpenseAssignment(ObjectManager objectManager, int idAsInt, EnhancedJsonObject json) throws Exception
 	{
 		super(objectManager, new BaseId(idAsInt), json);
+	}
+	
+	@Override
+	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
+	{
+		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
 	public ORef getFundingSourceRef()
