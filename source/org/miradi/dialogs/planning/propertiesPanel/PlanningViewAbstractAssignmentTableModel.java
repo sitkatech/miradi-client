@@ -96,7 +96,7 @@ abstract public class PlanningViewAbstractAssignmentTableModel extends EditableO
 		
 		try
 		{
-			return baseObjectToUse.getRefList(getListTag(), getListType());	
+			return baseObjectToUse.getRefList(getListTag());	
 		}
 		catch (Exception e)
 		{

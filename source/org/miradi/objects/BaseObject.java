@@ -151,7 +151,7 @@ abstract public class BaseObject
 		return false;
 	}
 	
-	public ORefList getRefList(String tag, int objectType) throws Exception
+	public ORefList getRefList(String tag) throws Exception
 	{
 		return getRefListForField(getField(tag));
 	}
