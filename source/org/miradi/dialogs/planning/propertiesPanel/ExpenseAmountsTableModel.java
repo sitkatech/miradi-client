@@ -40,6 +40,12 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 	}
 	
 	@Override
+	public boolean isCurrencyColumn(int column)
+	{
+		return true;
+	}
+	
+	@Override
 	public Color getCellBackgroundColor(int column)
 	{
 		DateUnit dateUnit = getDateUnit(column);

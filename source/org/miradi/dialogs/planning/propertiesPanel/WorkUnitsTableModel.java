@@ -40,6 +40,12 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	}
 	
 	@Override
+	public boolean isWorkUnitColumn(int column)
+	{
+		return true;
+	}
+	
+	@Override
 	public Color getCellBackgroundColor(int column)
 	{
 		DateUnit dateUnit = getDateUnit(column);
