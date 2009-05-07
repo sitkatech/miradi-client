@@ -53,6 +53,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				Task.METHOD_NAME,
 				Task.OBJECT_NAME,
 				ResourceAssignment.OBJECT_NAME,
-				ExpenseAssignment.OBJECT_NAME, });
+				ExpenseAssignment.OBJECT_NAME, 
+				});
 	}
 }
