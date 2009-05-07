@@ -152,23 +152,36 @@ public class DateRangeEffortList
 		data.add(dateRangeEffortToUse);
 	}
 	
+	public void mergeOverlay(DateRangeEffortList dateRangeEffortListToAdd, DateRange projectDateRange) throws Exception
+	{
+		for(DateRangeEffort dre : dateRangeEffortListToAdd.data)
+		{
+			DateRange dateRange = dre.getDateRange();
+			DateUnit dateUnit = DateUnit.createFromDateRange(dateRange);
+			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnit, projectDateRange);
+
+			if(hasAnyEntriesWithin(dateRange))
+				continue;
+			
+			addUnits(dre);
+		}
+	}
+
 	public void mergeAdd(DateRangeEffortList dateRangeEffortListToAdd, DateRange projectDateRange) throws Exception
 	{
 		for(DateRangeEffort dre : dateRangeEffortListToAdd.data)
 		{
-			DateRange thisDateRange = dre.getDateRange();
-			DateUnit dateUnit = DateUnit.createFromDateRange(thisDateRange);
-			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnit, projectDateRange);
-
-			if(hasAnyEntriesWithin(thisDateRange))
-				continue;
-			
-			DateRangeEffort existing = getDateRangeEffortForSpecificDateRange(thisDateRange);
-			if(existing != null)
-				existing.setUnitQuantity(existing.getUnitQuantity() + dre.getUnitQuantity());
-			else
-				add(dre);
+			addUnits(dre);
 		}
+	}
+
+	private void addUnits(DateRangeEffort dre)
+	{
+		DateRangeEffort existing = getDateRangeEffortForSpecificDateRange(dre.getDateRange());
+		if(existing != null)
+			existing.setUnitQuantity(existing.getUnitQuantity() + dre.getUnitQuantity());
+		else
+			add(dre);
 	}
 	
 	private void removeEntriesForLargerDateUnitsThatContainThisOne(DateUnit dateUnit, DateRange projectDateRange) throws Exception

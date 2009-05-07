@@ -479,6 +479,22 @@ public class ProjectCalendar implements CommandExecutedListener
 
 		return startOfFiscalYear;
 	}
+	
+	public DateRange getProjectPlanningDateRange() throws Exception
+	{
+		DateRange dateRange = null;
+		Vector<DateUnit> dateUnits = getProjectYearsDateUnits(getProjectStartEndDateRange());
+		for(DateUnit dateUnit : dateUnits)
+		{
+			DateRange thisDateRange = dateUnit.asDateRange();
+			if(dateRange == null)
+				dateRange = new DateRange(thisDateRange);
+			else
+				dateRange = DateRange.combine(dateRange, thisDateRange);
+		}
+		
+		return dateRange;
+	}
 
 	private MultiCalendar getOneYearLater(MultiCalendar startOfFiscalYear)
 	{

@@ -191,7 +191,7 @@ public class TestTask extends ObjectTestCase
 		addAssignment(subTask, 5, 2000, 2010);
 		addAssignment(subTask, 15, 2005, 2010);
 		
-		assertEquals("wrong subtask work units for date range?", 20.0, task.getWorkUnits(dateRange).getValue());
+		assertEquals("wrong subtask work units for date range?", 119.0, task.getWorkUnits(dateRange).getValue());
 		
 		addAssignment(subTask, 113, 2015, 2020);
 		DateRange dateRange2 = new DateRange(createMultiCalendar(2015), createMultiCalendar(2020));

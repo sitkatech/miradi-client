@@ -29,6 +29,7 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
@@ -44,7 +45,6 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.StringMapData;
 
 public class Indicator extends BaseObject
@@ -136,26 +136,9 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		if (hasMethods())
-			return getWorkUnits(getMethodRefs(), dateRangeToUse);
-		
-		return super.getWorkUnits(dateRangeToUse);
-	}
-
-	@Override
-	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
-	{
-		if (hasMethods())
-			return getExpenseAmounts(getMethodRefs(), dateRangeToUse);
-		
-		return super.getExpenseAmounts(dateRangeToUse);
-	}
-	
-	private boolean hasMethods()
-	{
-		return !getMethodRefs().isEmpty();
+		return getDateRangeEffortListForSubtasks(tag, getMethodRefs());
 	}
 	
 	public ORefList getMethodRefs()
