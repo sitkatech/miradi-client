@@ -19,25 +19,39 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 
+import javax.swing.JPanel;
+
+import org.martus.swing.UiScrollPane;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.MultiTablePanel;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel  implements CommandExecutedListener
 {
-	public AbstractAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse)
+	public AbstractAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse);
 		
 		objectPicker = objectPickerToUse;
+		
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
+		createTables();
+		addTables();
+		addTablesToSelectionController();
 		
 		getProject().addCommandExecutedListener(this);
 	}
@@ -48,6 +62,8 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		super.dispose();
 		becomeInactive();
 		getProject().removeCommandExecutedListener(this);
+		abstractSummaryTable.dispose();
+		assignmentDateUnitsTable.dispose();
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -113,9 +129,127 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		private PersistentWidthSetterComponent widthSetter;
 	}
 	
-	abstract protected void respondToExpandOrCollapseColumnEvent() throws Exception;
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		abstractSummaryTable.becomeActive();
+	}
+
+	@Override
+	public void becomeInactive()
+	{
+		abstractSummaryTable.becomeInactive();
+		super.becomeInactive();
+	}
+
+	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
+		savePendingEdits();
+		
+		if (hierarchyToSelectedRef.length == 0)
+		{
+			setRef(ORef.INVALID);
+		}
+		else
+		{
+			ORefList selectionHierarchyRefs = new ORefList(hierarchyToSelectedRef[0]);
+			ORef baseObjectRef = selectionHierarchyRefs.get(0);
+			setRef(baseObjectRef);
+		}
 	
-	abstract protected void dataWasChanged() throws Exception;
+		abstractSummaryTableModel.setObjectRefs(hierarchyToSelectedRef);
+		assignmentDateUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
+		
+		abstractSummaryTableModel.fireTableDataChanged();
+		assignmentDateUnitsTableModel.fireTableDataChanged();
+	}
+
+	private void savePendingEdits()
+	{
+		abstractSummaryTable.stopCellEditing();
+		assignmentDateUnitsTable.stopCellEditing();
+	}
+
+	protected void addTables()
+	{
+		OneRowPanel tables = new OneRowPanel();
 	
+		addTableToPanel(tables, abstractSummaryTable);
+		addToHorizontalController(addTableToPanel(tables, assignmentDateUnitsTable));
+		
+		add(tables, BorderLayout.CENTER);
+		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
+	}
+
+	private UiScrollPane addTableToPanel(OneRowPanel tables, AbstractComponentTable table)
+	{
+		addRowHeightControlledTable(table);
+		AssignmentsComponentTableScrollPane scroller = new AssignmentsComponentTableScrollPane(table);
+		addToVerticalController(scroller);
+		tables.add(scroller);
+		tables.add(scroller.getWidthSetterComponent());
+		return scroller;
+	}
+
+	protected void addTablesToSelectionController()
+	{
+		selectionController.addTable(abstractSummaryTable);
+		selectionController.addTable(assignmentDateUnitsTable);
+	}
+
+	protected void respondToExpandOrCollapseColumnEvent() throws Exception
+	{
+		assignmentDateUnitsTableModel.restoreDateUnits();
+	}
+
+	protected void dataWasChanged() throws Exception
+	{
+		abstractSummaryTableModel.dataWasChanged();
+		
+		abstractSummaryTable.rebuildColumnEditorsAndRenderers();
+		abstractSummaryTable.repaint();
+		
+		assignmentDateUnitsTable.invalidate();
+		assignmentDateUnitsTable.repaint();
+	}
+
+	private void setRef(ORef ref)
+	{ 
+		BaseObject baseObject = null;
+		if (!ref.isInvalid())
+			baseObject = BaseObject.find(getProject(), ref);
+		
+		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
+		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container
+		//that way we just loop through the tbales.  
+		assignmentDateUnitsTable.stopCellEditing();
+		
+		abstractSummaryTableModel.setBaseObject(baseObject);
+	}
+
+	public ORefList[] getSelectedHierarchies()
+	{
+		return abstractSummaryTable.getSelectedHierarchies();
+	}
+
+	protected JPanel createButtonBar()
+	{
+		OneRowPanel box = new OneRowPanel();
+		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		box.setGaps(3);
+		addButtons(box);
+		
+		return box;
+	}
+	
+	abstract protected void createTables() throws Exception;
+	
+	abstract protected void addButtons(OneRowPanel box);
+
 	private ObjectPicker objectPicker;
+	protected AbstractSummaryTable abstractSummaryTable;
+	protected AssignmentDateUnitsTable assignmentDateUnitsTable;
+	protected AbstractSummaryTableModel abstractSummaryTableModel;
+	protected AssignmentDateUnitsTableModel assignmentDateUnitsTableModel;
 }
