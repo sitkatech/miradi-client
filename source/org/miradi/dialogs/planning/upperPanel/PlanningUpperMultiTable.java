@@ -120,11 +120,16 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return getCastedModel().getColumnGroupCode(modelColumn);
 	}
 
-	public Vector<Action> getActionsForRightClickMenu()
+	public Vector<Action> getActionsForRightClickMenu(int tableColumn)
 	{
+		int multiModelColumn = convertColumnIndexToModel(tableColumn);
+		int modelColumn = getCastedModel().findColumnWithinSubTable(multiModelColumn);
+		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(multiModelColumn);
 		Vector<Action> actions = new Vector();
-		actions.add(new MultiTableExpandColumnAction(this));
-		actions.add(new MultiTableCollapseColumnAction(this));
+		if(model.isColumnExpandable(modelColumn))
+			actions.add(new MultiTableExpandColumnAction(this));
+		if(model.isColumnCollapsable(modelColumn))
+			actions.add(new MultiTableCollapseColumnAction(this));
 		return actions;
 	}
 

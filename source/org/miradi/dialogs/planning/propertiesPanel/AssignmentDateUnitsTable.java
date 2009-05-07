@@ -118,7 +118,7 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(getSelectedModelColumn());
 	}
 	
-	public Vector<Action> getActionsForRightClickMenu()
+	public Vector<Action> getActionsForRightClickMenu(int tableColumn)
 	{
 		Vector<Action> rightClickActions = new Vector();
 		rightClickActions.add(new CollapseColumnAction(this, getWorkUnitsTableModel()));

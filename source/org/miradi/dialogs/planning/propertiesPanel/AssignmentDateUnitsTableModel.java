@@ -110,6 +110,16 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
+	public boolean isColumnCollapsable(int modelColumn)
+	{
+		return true;
+	}
+
+	public boolean isColumnExpandable(int modelColumn)
+	{
+		return true;
+	}
+
 	public DateUnit getDateUnit(int column)
 	{
 		return getDateUnits().get(column);
