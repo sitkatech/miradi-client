@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import java.text.NumberFormat;
-
 import javax.swing.Icon;
 
 public class TaglessChoiceItem extends ChoiceItem
@@ -32,7 +30,7 @@ public class TaglessChoiceItem extends ChoiceItem
 	
 	public TaglessChoiceItem(double labelAsDouble)
 	{
-		super(EMPTY_CHOICE_ITEM_CODE, NumberFormat.getNumberInstance().format(labelAsDouble));
+		super(EMPTY_CHOICE_ITEM_CODE, Double.toString(labelAsDouble));
 	}
 	
 	public TaglessChoiceItem(String labelToUse)

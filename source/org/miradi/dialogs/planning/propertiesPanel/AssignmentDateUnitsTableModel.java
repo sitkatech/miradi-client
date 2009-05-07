@@ -435,8 +435,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		OptionalDouble optionalDouble = getOptionalDoubleAt(row, column);
 		if (optionalDouble.hasValue())
 		{
-			double value = optionalDouble.getValue().doubleValue();
-			return new TaglessChoiceItem(value);
+			return new TaglessChoiceItem(optionalDouble);
 		}
 		
 		return new EmptyChoiceItem();

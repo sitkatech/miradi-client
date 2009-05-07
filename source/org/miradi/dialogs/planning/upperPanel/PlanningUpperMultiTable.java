@@ -39,6 +39,7 @@ import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objects.BaseObject;
@@ -64,6 +65,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
+		
+		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 	}
 	
 	@Override
@@ -78,6 +81,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = choiceRendererFactory;
 		else if(getCastedModel().isProgressColumn(modelColumn))
 			factory = progressRendererFactory;
+		else if(getCastedModel().isWorkUnitColumn(modelColumn))
+			factory = doubleRendererFactory;
 		
 		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
 		factory.setCellBackgroundColor(background);
@@ -153,4 +158,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellRendererFactory currencyRendererFactory;
 	private BasicTableCellRendererFactory choiceRendererFactory;
 	private BasicTableCellRendererFactory progressRendererFactory;
+	private BasicTableCellRendererFactory doubleRendererFactory;
 }
