@@ -412,7 +412,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			BaseObject baseObject = getBaseObjectForRowColumn(row, column);
 			DateRange dateRange = getDateRange(column);
 			
-			return baseObject.getWorkUnits(dateRange);
+			return getOptionalDoubleData(baseObject, dateRange);
 		}
 		catch(Exception e)
 		{
@@ -420,6 +420,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	
 		return new OptionalDouble();
+	}
+
+	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception
+	{
+		return baseObject.getWorkUnits(dateRange);
 	}
 	
 	public void updateColumnsToShow() throws Exception
