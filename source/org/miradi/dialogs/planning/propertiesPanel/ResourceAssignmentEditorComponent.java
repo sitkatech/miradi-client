@@ -181,6 +181,6 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 	private AbstractSummaryTable assignmentSummaryTable;
 	private AssignmentDateUnitsTable workUnitsTable;
 	
-	private ResourceAssignmentMainTableModel assignmentSummaryTableModel;
-	private WorkUnitsTableModel workUnitsTableModel;
+	private AbstractSummaryTableModel assignmentSummaryTableModel;
+	private AssignmentDateUnitsTableModel workUnitsTableModel;
 }

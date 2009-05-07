@@ -179,7 +179,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 		return expenseSummaryTable.getSelectedHierarchies();
 	}
 	
-	private ExpenseSummaryTable expenseSummaryTable;
+	private AbstractSummaryTable expenseSummaryTable;
 	private AssignmentDateUnitsTable expenseAmountsTable;
 	
 	private AbstractSummaryTableModel expenseSummaryTableModel;
