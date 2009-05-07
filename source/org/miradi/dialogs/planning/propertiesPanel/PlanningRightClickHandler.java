@@ -44,7 +44,10 @@ public class PlanningRightClickHandler extends AbstractTableRightClickHandler
 		Vector<Action> rightClickActions = actionProvider.getActionsForRightClickMenu(getSelectedColumn());
 		for(Action action : rightClickActions)
 		{
-			popupMenu.add(new EAMenuItem(action));
+			if(action == null)
+				popupMenu.addSeparator();
+			else
+				popupMenu.add(new EAMenuItem(action));
 		}
 	}
 	

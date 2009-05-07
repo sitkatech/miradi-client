@@ -27,6 +27,10 @@ import javax.swing.Action;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
+import org.miradi.actions.ActionCollapseAllRows;
+import org.miradi.actions.ActionDeletePlanningViewTreeNode;
+import org.miradi.actions.ActionExpandAllRows;
+import org.miradi.actions.Actions;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
@@ -125,12 +129,23 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int multiModelColumn = convertColumnIndexToModel(tableColumn);
 		int modelColumn = getCastedModel().findColumnWithinSubTable(multiModelColumn);
 		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(multiModelColumn);
+
 		Vector<Action> actions = new Vector();
+		actions.add(getActions().get(ActionDeletePlanningViewTreeNode.class));
+		actions.add(null);
+		actions.add(getActions().get(ActionExpandAllRows.class));
+		actions.add(getActions().get(ActionCollapseAllRows.class));
+		actions.add(null);
 		if(model.isColumnExpandable(modelColumn))
 			actions.add(new MultiTableExpandColumnAction(this));
 		if(model.isColumnCollapsable(modelColumn))
 			actions.add(new MultiTableCollapseColumnAction(this));
 		return actions;
+	}
+
+	private Actions getActions()
+	{
+		return getMainWindow().getActions();
 	}
 
 	private PlanningTreeTable masterTree;

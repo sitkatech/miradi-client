@@ -110,14 +110,30 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
-	public boolean isColumnCollapsable(int modelColumn)
-	{
-		return true;
-	}
-
 	public boolean isColumnExpandable(int modelColumn)
 	{
-		return true;
+		try
+		{
+			return !isExpanded(modelColumn);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
+	public boolean isColumnCollapsable(int modelColumn)
+	{
+		try
+		{
+			return isExpanded(modelColumn);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
 	}
 
 	public DateUnit getDateUnit(int column)
@@ -360,20 +376,26 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception
 	{
-		Vector<DateUnit> currentDateUnits = getCopyOfDateUnits();
+		boolean isExpanded = isExpanded(column);
 		DateUnit dateUnit = getDateUnit(column);
-		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);					
-		if (currentDateUnits.containsAll(subDateUnits))
+		Vector<DateUnit> visibleDateUnits = getCopyOfDateUnits();
+		if (isExpanded)
 		{
-			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, dateUnit);
+			recursivleyCollapseDateUnitAndItsSubDateUnits(visibleDateUnits, dateUnit);
 		}
 		else
 		{
-			int indexToInsertSubDateUnits = currentDateUnits.indexOf(dateUnit);
-			currentDateUnits.addAll(indexToInsertSubDateUnits, subDateUnits);
+			int indexToInsertSubDateUnits = visibleDateUnits.indexOf(dateUnit);
+			visibleDateUnits.addAll(indexToInsertSubDateUnits, getSubDateUnits(dateUnit));
 		}
 		
-		saveColumnDateUnits(currentDateUnits);
+		saveColumnDateUnits(visibleDateUnits);
+	}
+
+	private boolean isExpanded(int column) throws Exception
+	{
+		Vector<DateUnit> visibleDateUnits = getCopyOfDateUnits();
+		return visibleDateUnits.containsAll(getSubDateUnits(getDateUnit(column)));
 	}
 	
 	private void recursivleyCollapseDateUnitAndItsSubDateUnits(Vector<DateUnit> currentDateUnits, DateUnit dateUnit) throws Exception
