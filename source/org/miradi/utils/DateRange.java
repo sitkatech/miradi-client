@@ -161,46 +161,27 @@ public class DateRange
 	
 	public String toString()
 	{
-		int year = startDate.getGregorianYear();
-		
-		if(startDate.equals(endDate))
-			return startDate.toIsoDateString();
+		String isoDateString = endDate.toIsoDateString();
+		String yearString = isoDateString.substring(0, 4);
 
-		MultiCalendar nextDate = new MultiCalendar(endDate);
-		nextDate.addDays(1);
+		if(isDay())
+			return isoDateString;
 		
 		int startMonth = startDate.getGregorianMonth();
-		int startDay = startDate.getGregorianDay();
-		int nextMonth = nextDate.getGregorianMonth();
-		int nextDay = nextDate.getGregorianDay();
+		if(isYear())
+		{
+			if(startMonth == 1)
+				return yearString;
+			return "FY " + yearString;
+		}
 		
-		if(startDay != 1 || nextDay != 1)
-			return fullDateRangeString();
+		if(isMonth())
+			return isoDateString.substring(0, 7);
 
-		String yearString = Integer.toString(year);
-		if(startMonth == 1 && nextMonth == 1)
-			return yearString;
-		
-		if(startMonth == nextMonth && startDate.getGregorianYear()+1 == endDate.getGregorianYear())
-			return "FY " + endDate.toIsoDateString().substring(0, 4);
-		
-		if(year != endDate.getGregorianYear())
-			return fullDateRangeString();
-		
-		if(startMonth == endDate.getGregorianMonth())
-			return startDate.toIsoDateString().substring(0, 7);
-		
-		if(endDate.getGregorianMonth() != startMonth + 2)
-			return fullDateRangeString();
-		
-		if(startMonth == 1)
-			return "Q1 " + yearString;
-		if(startMonth == 4)
-			return "Q2 " + yearString;
-		if(startMonth == 7)
-			return "Q3 " + yearString;
-		if(startMonth == 10)
-			return "Q4 " + yearString;
+		if(isQuarter())
+		{
+			return "Q" + startMonth/3 + " " + yearString;
+		}
 
 		return fullDateRangeString();
 	}
