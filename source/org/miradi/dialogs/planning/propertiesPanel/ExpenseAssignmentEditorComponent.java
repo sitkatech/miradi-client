@@ -182,6 +182,6 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 	private ExpenseSummaryTable expenseSummaryTable;
 	private AssignmentDateUnitsTable expenseAmountsTable;
 	
-	private ExpenseAssignmentMainTableModel expenseSummaryTableModel;
-	private ExpenseAmountsTableModel expenseAmountsTableModel;
+	private AbstractSummaryTableModel expenseSummaryTableModel;
+	private AssignmentDateUnitsTableModel expenseAmountsTableModel;
 }
