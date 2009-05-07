@@ -31,9 +31,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
 
-abstract public class AbstractMultiTablePanelEditorComponent extends MultiTablePanel  implements CommandExecutedListener
+abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel  implements CommandExecutedListener
 {
-	public AbstractMultiTablePanelEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse)
+	public AbstractAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse)
 	{
 		super(mainWindowToUse);
 		

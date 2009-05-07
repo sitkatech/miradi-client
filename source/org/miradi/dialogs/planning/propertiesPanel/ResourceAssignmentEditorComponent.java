@@ -34,7 +34,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ResourceAssignmentEditorComponent extends AbstractMultiTablePanelEditorComponent
+public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorComponent
 {
 	public ResourceAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
