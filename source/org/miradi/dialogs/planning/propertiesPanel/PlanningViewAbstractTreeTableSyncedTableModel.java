@@ -98,6 +98,16 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return getColumnName(modelColumn);
 	}
 	
+	public boolean isColumnCollapsable(int modelColumn)
+	{
+		return false;
+	}
+
+	public boolean isColumnExpandable(int modelColumn)
+	{
+		return false;
+	}
+
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }

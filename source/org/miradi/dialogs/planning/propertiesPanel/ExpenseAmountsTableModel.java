@@ -81,4 +81,5 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";
+
 }
