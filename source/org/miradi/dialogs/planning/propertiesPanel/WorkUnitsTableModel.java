@@ -24,8 +24,11 @@ import java.awt.Color;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.utils.DateRange;
+import org.miradi.utils.OptionalDouble;
 
 public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 {
@@ -45,6 +48,11 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
+	}
+	
+	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception
+	{
+		return baseObject.getWorkUnits(dateRange);
 	}
 	
 	public String getUniqueTableModelIdentifier()
