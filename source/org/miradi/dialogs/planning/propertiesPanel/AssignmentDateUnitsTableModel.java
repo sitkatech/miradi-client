@@ -422,11 +422,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return new OptionalDouble();
 	}
 
-	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception
-	{
-		return baseObject.getWorkUnits(dateRange);
-	}
-	
 	public void updateColumnsToShow() throws Exception
 	{
 		restoreDateUnits();
@@ -440,7 +435,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	abstract public String getUniqueTableModelIdentifier();
 	
 	abstract public Color getCellBackgroundColor(int column);
-
+	
+	abstract protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception;
+	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
 }
