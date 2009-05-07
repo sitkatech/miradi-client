@@ -34,9 +34,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class AssignmentEditorComponent extends AbstractMultiTablePanelEditorComponent
+public class ResourceAssignmentEditorComponent extends AbstractMultiTablePanelEditorComponent
 {
-	public AssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
+	public ResourceAssignmentEditorComponent(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
 		super(mainWindowToUse, objectPickerToUse);
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
