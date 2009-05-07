@@ -32,13 +32,14 @@ import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
-public class AssignmentDateUnitsTable extends AbstractComponentTable
+public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider
 {
 	public AssignmentDateUnitsTable(MainWindow mainWindowToUse, AssignmentDateUnitsTableModel modelToUse) throws Exception
 	{
@@ -53,14 +54,7 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable
 
 	private void addRightClickHandler()
 	{
-		Vector<Action> rightClickActions = new Vector();
-		rightClickActions.add(new CollapseColumnAction(this, getWorkUnitsTableModel()));
-		rightClickActions.add(new ExpandColumnAction(this, getWorkUnitsTableModel()));
-		
-		rightClickActions.add(getActions().get(ActionAssignResource.class));
-		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
-				
-		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, rightClickActions));
+		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
 	
 	private Actions getActions()
@@ -124,6 +118,17 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable
 		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(getSelectedModelColumn());
 	}
 	
+	public Vector<Action> getActionsForRightClickMenu()
+	{
+		Vector<Action> rightClickActions = new Vector();
+		rightClickActions.add(new CollapseColumnAction(this, getWorkUnitsTableModel()));
+		rightClickActions.add(new ExpandColumnAction(this, getWorkUnitsTableModel()));
+		
+		rightClickActions.add(getActions().get(ActionAssignResource.class));
+		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
+		return rightClickActions;		
+	}
+
 	private int getSelectedModelColumn()
 	{
 		int selectedTableColumn = getSelectedColumn();
@@ -134,4 +139,5 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
 	private BasicTableCellRendererFactory renderer;
+
 }
