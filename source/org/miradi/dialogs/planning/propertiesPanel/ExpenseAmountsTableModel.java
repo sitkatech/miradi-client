@@ -30,7 +30,6 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.OptionalDouble;
 
 public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
@@ -65,18 +64,13 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 		return UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
-	@Override
-	protected boolean isAssignmentCellEditable(int row, int column) throws Exception
+	protected boolean isCorrectType(Assignment assignment)
 	{
-		DateRange dateRange = getDateRange(column);
-		Assignment assignment = getAssignment(row);
-		if (!ExpenseAssignment.is(assignment))
-			return false;
-		
-		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
-		if(thisCellEffort != null)
-			return true;
-		
+		return ExpenseAssignment.is(assignment);
+	}
+
+	protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception
+	{
 		return !assignment.getExpenseAmounts(dateRange).hasValue();
 	}
 	

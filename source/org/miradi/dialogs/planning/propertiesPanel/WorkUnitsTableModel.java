@@ -30,7 +30,6 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.OptionalDouble;
 
 public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
@@ -66,17 +65,14 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	}
 	
 	@Override
-	protected boolean isAssignmentCellEditable(int row, int column) throws Exception
+	protected boolean isCorrectType(Assignment assignment)
 	{
-		DateRange dateRange = getDateRange(column);
-		Assignment assignment = getAssignment(row);
-		if (!ResourceAssignment.is(assignment))
-			return false;
-		
-		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
-		if(thisCellEffort != null)
-			return true;
-		
+		return ResourceAssignment.is(assignment);
+	}
+
+	@Override
+	protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception
+	{
 		return !assignment.getWorkUnits(dateRange).hasValue();
 	}
 	
