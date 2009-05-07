@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResultsChainDiagram;
@@ -52,8 +50,6 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				Indicator.OBJECT_NAME,
 				Task.METHOD_NAME,
 				Task.OBJECT_NAME,
-				ResourceAssignment.OBJECT_NAME,
-				ExpenseAssignment.OBJECT_NAME, 
 				});
 	}
 }
