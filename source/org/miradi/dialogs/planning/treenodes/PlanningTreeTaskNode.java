@@ -43,31 +43,29 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		buildResourceAssignmentNodes();
-		buildExpenseAssignmentNodes();
+		buildResourceAssignmentNodes(task.getAssignmentRefs());
+		buildExpenseAssignmentNodes(task.getExpenseRefs());
 		buildTaskNodes();
 	}
 
-	private void buildExpenseAssignmentNodes() throws Exception
+	private void buildExpenseAssignmentNodes(ORefList expenseAssignmentRefs) throws Exception
 	{
 		// NOTE: Speed optimization
 		if(!visibleRows.contains(ExpenseAssignment.OBJECT_NAME))
 			return;
 
-		ORefList expenseAssignmentRefs = task.getExpenseRefs();
 		for (int index = 0; index < expenseAssignmentRefs.size(); ++index)
 		{
 			children.add(new PlanningTreeExpenseAssignmentNode(project, expenseAssignmentRefs.get(index), visibleRows));
 		}
 	}
 
-	private void buildResourceAssignmentNodes() throws Exception
+	private void buildResourceAssignmentNodes(ORefList assignmentRefs) throws Exception
 	{
 		// NOTE: Speed optimization
 		if(!visibleRows.contains(ResourceAssignment.OBJECT_NAME))
 			return;
 
-		ORefList assignmentRefs = task.getAssignmentRefs();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
 			children.add(new PlanningTreeResourceAssignmentNode(project, assignmentRefs.get(index), visibleRows));
