@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
+import java.util.Vector;
+
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -43,47 +45,50 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		buildResourceAssignmentNodes(task.getAssignmentRefs());
-		buildExpenseAssignmentNodes(task.getExpenseRefs());
-		buildTaskNodes();
+		// NOTE: IF is for Speed optimization
+		if(visibleRows.contains(ResourceAssignment.OBJECT_NAME))
+			children.addAll(buildResourceAssignmentNodes(task.getAssignmentRefs()));
+		
+		// NOTE: IF is for Speed optimization
+		if(visibleRows.contains(ExpenseAssignment.OBJECT_NAME))
+			children.addAll(buildExpenseAssignmentNodes(task.getExpenseRefs()));
+
+		// NOTE: IF is for Speed optimization
+		if(visibleRows.contains(Task.OBJECT_NAME))
+			buildTaskNodes(task.getSubtaskRefs());
 	}
 
-	private void buildExpenseAssignmentNodes(ORefList expenseAssignmentRefs) throws Exception
+	protected Vector<AbstractPlanningTreeNode> buildExpenseAssignmentNodes(ORefList expenseAssignmentRefs) throws Exception
 	{
-		// NOTE: Speed optimization
-		if(!visibleRows.contains(ExpenseAssignment.OBJECT_NAME))
-			return;
-
+		Vector<AbstractPlanningTreeNode> expenseAssignmentNodes = new Vector();
 		for (int index = 0; index < expenseAssignmentRefs.size(); ++index)
 		{
-			children.add(new PlanningTreeExpenseAssignmentNode(project, expenseAssignmentRefs.get(index), visibleRows));
+			expenseAssignmentNodes.add(new PlanningTreeExpenseAssignmentNode(project, expenseAssignmentRefs.get(index), visibleRows));
 		}
+	
+		return expenseAssignmentNodes;
 	}
 
-	private void buildResourceAssignmentNodes(ORefList assignmentRefs) throws Exception
+	protected Vector<AbstractPlanningTreeNode> buildResourceAssignmentNodes(ORefList assignmentRefs) throws Exception
 	{
-		// NOTE: Speed optimization
-		if(!visibleRows.contains(ResourceAssignment.OBJECT_NAME))
-			return;
-
+		Vector<AbstractPlanningTreeNode> resourceAssignmentNodes = new Vector();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
-			children.add(new PlanningTreeResourceAssignmentNode(project, assignmentRefs.get(index), visibleRows));
+			resourceAssignmentNodes.add(new PlanningTreeResourceAssignmentNode(project, assignmentRefs.get(index), visibleRows));
 		}
+		return resourceAssignmentNodes;
 	}
 
-	private void buildTaskNodes() throws Exception
+	private Vector<AbstractPlanningTreeNode> buildTaskNodes(ORefList subtaskRefs) throws Exception
 	{
-		// NOTE: Speed optimization
-		if(!visibleRows.contains(Task.OBJECT_NAME))
-			return;
-		
-		ORefList subtaskRefs = task.getSubtaskRefs();
+		Vector<AbstractPlanningTreeNode> subTaskNodes = new Vector();
 		for(int i = 0; i < subtaskRefs.size(); ++i)
 		{
 			ORef taskRef = subtaskRefs.get(i);
-			children.add(new PlanningTreeTaskNode(project, taskRef, visibleRows));
+			subTaskNodes.add(new PlanningTreeTaskNode(project, taskRef, visibleRows));
 		}
+		
+		return subTaskNodes;
 	}
 
 	public BaseObject getObject()
