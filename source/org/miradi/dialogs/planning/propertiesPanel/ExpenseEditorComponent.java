@@ -52,7 +52,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	{
 		super.dispose();
 		expenseSummaryTable.dispose();
-		workUnitsTable.dispose();
+		expenseAmountsTable.dispose();
 	}
 	
 	@Override
@@ -85,16 +85,16 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		}
 
 		expenseSummaryTableModel.setObjectRefs(hierarchyToSelectedRef);
-		workUnitsTableModel.setObjectRefs(hierarchyToSelectedRef);
+		expenseAmountsTableModel.setObjectRefs(hierarchyToSelectedRef);
 		
 		expenseSummaryTableModel.fireTableDataChanged();
-		workUnitsTableModel.fireTableDataChanged();
+		expenseAmountsTableModel.fireTableDataChanged();
 	}
 	
 	private void savePendingEdits()
 	{
 		expenseSummaryTable.stopCellEditing();
-		workUnitsTable.stopCellEditing();
+		expenseAmountsTable.stopCellEditing();
 	}
 
 	private void createTables() throws Exception
@@ -102,8 +102,8 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		expenseSummaryTableModel = new ExpenseSummaryTableModel(getProject());
 		expenseSummaryTable = new ExpenseSummaryTable(getMainWindow(), expenseSummaryTableModel);
 		
-		workUnitsTableModel = new ExpenseAmountsTableModel(getProject(), expenseSummaryTableModel);
-		workUnitsTable = new ExpenseAmountsTable(getMainWindow(), workUnitsTableModel);		
+		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), expenseSummaryTableModel);
+		expenseAmountsTable = new ExpenseAmountsTable(getMainWindow(), expenseAmountsTableModel);		
 	}
 	
 	private void addTables()
@@ -111,7 +111,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		OneRowPanel tables = new OneRowPanel();
 
 		addTableToPanel(tables, expenseSummaryTable);
-		addToHorizontalController(addTableToPanel(tables, workUnitsTable));
+		addToHorizontalController(addTableToPanel(tables, expenseAmountsTable));
 		
 		add(tables, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
@@ -130,7 +130,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	protected void addTablesToSelectionController()
 	{
 		selectionController.addTable(expenseSummaryTable);
-		selectionController.addTable(workUnitsTable);
+		selectionController.addTable(expenseAmountsTable);
 	}
 	
 	private JPanel createButtonBar()
@@ -146,7 +146,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	
 	protected void respondToExpandOrCollapseColumnEvent() throws Exception
 	{
-		workUnitsTableModel.restoreDateUnits();
+		expenseAmountsTableModel.restoreDateUnits();
 	}
 
 	protected void dataWasChanged() throws Exception
@@ -156,8 +156,8 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		expenseSummaryTable.rebuildColumnEditorsAndRenderers();
 		expenseSummaryTable.repaint();
 		
-		workUnitsTable.invalidate();
-		workUnitsTable.repaint();
+		expenseAmountsTable.invalidate();
+		expenseAmountsTable.repaint();
 	}
 	
 	private void setRef(ORef ref)
@@ -169,7 +169,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
 		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container
 		//that way we just loop through the tbales.  
-		workUnitsTable.stopCellEditing();
+		expenseAmountsTable.stopCellEditing();
 		
 		expenseSummaryTableModel.setBaseObject(baseObject);
 	}
@@ -180,8 +180,8 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	}
 	
 	private ExpenseSummaryTable expenseSummaryTable;
-	private ExpenseAmountsTable workUnitsTable;
+	private ExpenseAmountsTable expenseAmountsTable;
 	
 	private ExpenseSummaryTableModel expenseSummaryTableModel;
-	private ExpenseAmountsTableModel workUnitsTableModel;
+	private ExpenseAmountsTableModel expenseAmountsTableModel;
 }
