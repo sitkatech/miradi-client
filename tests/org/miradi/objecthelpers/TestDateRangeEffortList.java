@@ -31,12 +31,6 @@ public class TestDateRangeEffortList extends EAMTestCase
 		super(name);
 	}
 	
-	public void testBasics() throws Exception
-	{
-		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
-		dateRangeEffortList.add(createDateRangeEffort());
-	}
-	
 	public void testGetCombinedDateRange() throws Exception
 	{
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
