@@ -267,12 +267,26 @@ public class Strategy extends Factor
 	@Override
 	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		if (getActivityRefs().isEmpty())
-			return super.getWorkUnits(dateRangeToUse);
+		if (hasActivities())
+			return getWorkUnits(getActivityRefs(), dateRangeToUse);
 		
-		return getWorkUnits(getActivityRefs(), dateRangeToUse);
+		return super.getWorkUnits(dateRangeToUse);
+	}
+
+	@Override
+	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
+	{
+		if (hasActivities())
+			return getExpenseAmounts(getActivityRefs(), dateRangeToUse);
+		
+		return super.getExpenseAmounts(dateRangeToUse);
 	}
 	
+	private boolean hasActivities()
+	{
+		return !getActivityRefs().isEmpty();
+	}
+		
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
 	{
 		return getTasksBudgetCostRollUp(dateRangeToUse, getActivityRefs());

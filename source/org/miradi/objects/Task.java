@@ -361,6 +361,15 @@ public class Task extends Factor
 		
 		return super.getWorkUnits(dateRangeToUse);
 	}
+	
+	@Override
+	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
+	{
+		if (hasSubTasks())
+			return getExpenseAmounts(getSubtaskRefs(), dateRangeToUse);
+		
+		return super.getExpenseAmounts(dateRangeToUse);
+	}
 
 	@Override
 	public int getTotalShareCount()
