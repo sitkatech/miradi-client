@@ -24,10 +24,13 @@ import java.awt.Color;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.OptionalDouble;
 
 public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
@@ -37,6 +40,7 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 		super(projectToUse, providerToUse);
 	}
 	
+	@Override
 	public Color getCellBackgroundColor(int column)
 	{
 		DateUnit dateUnit = getDateUnit(column);
@@ -49,14 +53,31 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 		return ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 	}
 	
+	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception
 	{
 		return baseObject.getExpenseAmounts(dateRange);
 	}
 	
+	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_TABLE_MODEL_IDENTIFIER;
+	}
+	
+	@Override
+	protected boolean isAssignmentCellEditable(int row, int column) throws Exception
+	{
+		DateRange dateRange = getDateRange(column);
+		Assignment assignment = getAssignment(row);
+		if (!ExpenseAssignment.is(assignment))
+			return false;
+		
+		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
+		if(thisCellEffort != null)
+			return true;
+		
+		return !assignment.getExpenseAmounts(dateRange).hasValue();
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";

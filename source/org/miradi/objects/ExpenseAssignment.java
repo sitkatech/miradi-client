@@ -95,6 +95,11 @@ public class ExpenseAssignment extends Assignment
 		return objectType == getObjectType();
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
 	public static ExpenseAssignment find(ObjectManager objectManager, ORef expenseRef)
 	{
 		return (ExpenseAssignment) objectManager.findObject(expenseRef);
