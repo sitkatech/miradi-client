@@ -178,7 +178,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		return assignmentSummaryTable.getSelectedHierarchies();
 	}
 	
-	private ResourceAssignmentMainTable assignmentSummaryTable;
+	private AbstractSummaryTable assignmentSummaryTable;
 	private AssignmentDateUnitsTable workUnitsTable;
 	
 	private ResourceAssignmentMainTableModel assignmentSummaryTableModel;
