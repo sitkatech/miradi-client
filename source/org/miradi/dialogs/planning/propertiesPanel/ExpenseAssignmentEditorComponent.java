@@ -103,7 +103,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 		expenseSummaryTable = new ExpenseSummaryTable(getMainWindow(), expenseSummaryTableModel);
 		
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), expenseSummaryTableModel);
-		expenseAmountsTable = new ExpenseAmountsTable(getMainWindow(), expenseAmountsTableModel);		
+		expenseAmountsTable = new AssignmentDateUnitsTable(getMainWindow(), expenseAmountsTableModel);		
 	}
 	
 	private void addTables()
@@ -180,7 +180,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 	}
 	
 	private ExpenseSummaryTable expenseSummaryTable;
-	private ExpenseAmountsTable expenseAmountsTable;
+	private AssignmentDateUnitsTable expenseAmountsTable;
 	
 	private ExpenseAssignmentMainTableModel expenseSummaryTableModel;
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
