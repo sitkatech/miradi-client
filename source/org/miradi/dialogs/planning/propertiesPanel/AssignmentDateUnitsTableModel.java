@@ -251,6 +251,19 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
 		setUnits(assignment, effortList, effort, units);
 	}
+	
+	private void setUnits(Assignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
+	{
+		effort.setUnitQuantity(units);
+		effortList.setDateRangeEffort(effort);
+		String newEffortListString = effortList.toString();
+		String data = assignment.getData(assignment.TAG_DATERANGE_EFFORTS);
+		if(newEffortListString.equals(data))
+			return;
+		
+		Command command = new CommandSetObjectData(assignment, Assignment.TAG_DATERANGE_EFFORTS, newEffortListString);
+		getProject().executeCommand(command);
+	}
 
 	private void clearSuperDateUnitColumns(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
@@ -265,18 +278,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			
 			clearUnits(assignment, superDateUnit);
 		}
-	}
-
-	public void setUnits(Assignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
-	{
-		effort.setUnitQuantity(units);
-		effortList.setDateRangeEffort(effort);
-		String newEffortListString = effortList.toString();
-		if(newEffortListString.equals(assignment.getData(assignment.TAG_DATERANGE_EFFORTS)))
-			return;
-		
-		Command command = new CommandSetObjectData(assignment, Assignment.TAG_DATERANGE_EFFORTS, newEffortListString);
-		getProject().executeCommand(command);
 	}
 
 	public void clearUnits(Assignment assignment, DateUnit dateUnit) throws Exception
