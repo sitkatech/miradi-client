@@ -267,6 +267,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			Task.getObjectType(),
 			Measurement.getObjectType(),
 			ResourceAssignment.getObjectType(),
+			ExpenseAssignment.getObjectType(),
 		};
 	}
 	
