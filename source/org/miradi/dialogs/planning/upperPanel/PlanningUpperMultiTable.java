@@ -21,10 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
+import java.util.Vector;
 
+import javax.swing.Action;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 
+import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
+import org.miradi.dialogs.planning.RightClickActionProvider;
+import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
@@ -37,7 +42,7 @@ import org.miradi.project.CurrencyFormat;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
-public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider
+public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider
 {
 	public PlanningUpperMultiTable(PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model, FontForObjectTypeProvider fontProvider)
 	{
@@ -113,6 +118,14 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		return getCastedModel().getColumnGroupCode(modelColumn);
+	}
+
+	public Vector<Action> getActionsForRightClickMenu()
+	{
+		Vector<Action> actions = new Vector();
+		actions.add(new MultiTableExpandColumnAction(this));
+		actions.add(new MultiTableCollapseColumnAction(this));
+		return actions;
 	}
 
 	private PlanningTreeTable masterTree;

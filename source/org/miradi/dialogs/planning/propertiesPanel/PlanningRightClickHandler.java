@@ -25,27 +25,28 @@ import javax.swing.Action;
 import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 
+import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.main.EAMenuItem;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractTableRightClickHandler;
 
 public class PlanningRightClickHandler extends AbstractTableRightClickHandler
 {
-	public PlanningRightClickHandler(MainWindow mainWindow, JTable tableToUse, Vector<Action> rightClickActionsToUse)
+	public PlanningRightClickHandler(MainWindow mainWindow, JTable tableToUse, RightClickActionProvider rightClickProvider)
 	{
 		super(mainWindow, tableToUse);
-		
-		rightClickActions = rightClickActionsToUse;
+		actionProvider = rightClickProvider;
 	}
 	
 	@Override
 	protected void populateMenu(JPopupMenu popupMenu)
 	{
+		Vector<Action> rightClickActions = actionProvider.getActionsForRightClickMenu();
 		for(Action action : rightClickActions)
 		{
 			popupMenu.add(new EAMenuItem(action));
 		}
 	}
 	
-	private Vector<Action> rightClickActions;
+	private RightClickActionProvider actionProvider;
 }
