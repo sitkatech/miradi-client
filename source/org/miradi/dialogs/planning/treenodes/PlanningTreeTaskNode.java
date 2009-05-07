@@ -22,8 +22,9 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -42,11 +43,25 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	@Override
 	public void rebuild() throws Exception
 	{
-		buildAssignmentNodes();
+		buildResourceAssignmentNodes();
+		buildExpenseAssignmentNodes();
 		buildTaskNodes();
 	}
 
-	private void buildAssignmentNodes() throws Exception
+	private void buildExpenseAssignmentNodes() throws Exception
+	{
+		// NOTE: Speed optimization
+		if(!visibleRows.contains(ExpenseAssignment.OBJECT_NAME))
+			return;
+
+		ORefList expenseAssignmentRefs = task.getExpenseRefs();
+		for (int index = 0; index < expenseAssignmentRefs.size(); ++index)
+		{
+			children.add(new PlanningTreeExpenseAssignmentNode(project, expenseAssignmentRefs.get(index), visibleRows));
+		}
+	}
+
+	private void buildResourceAssignmentNodes() throws Exception
 	{
 		// NOTE: Speed optimization
 		if(!visibleRows.contains(ResourceAssignment.OBJECT_NAME))

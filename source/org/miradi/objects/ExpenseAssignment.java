@@ -64,6 +64,12 @@ public class ExpenseAssignment extends Assignment
 		return accountingCodeRef.getRawRef();
 	}
 	
+	@Override
+	public String toString()
+	{
+		return getLabel();
+	}
+	
 	public int getType()
 	{
 		return getObjectType();
