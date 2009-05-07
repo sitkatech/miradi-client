@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-06 18:51-0500\n"
+"POT-Creation-Date: 2009-05-06 19:25-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6563,6 +6563,15 @@ msgstr "Kode Akuntansi "
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Sifat-sifat Hasil Pengurangan Ancaman"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:40
+msgid "Name"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:70
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:109
+msgid "An error has occured while writing assignment data."
+msgstr "Terjadi kesalahan saat menulis data alokasi. "
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTable.java:53
 #, fuzzy
 msgid "(not specified)"
@@ -6606,15 +6615,6 @@ msgstr "Biaya/Unit "
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:59
 msgid "Unit"
 msgstr "Unit "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:109
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:70
-msgid "An error has occured while writing assignment data."
-msgstr "Terjadi kesalahan saat menulis data alokasi. "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseSummaryTableModel.java:40
-msgid "Name"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
