@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 import org.miradi.main.EAM;
 
 public class OptionalDouble
@@ -98,6 +101,20 @@ public class OptionalDouble
 	public int hashCode()
 	{
 		return optionalDouble.hashCode();
+	}
+	
+	@Override
+	public String toString()
+	{
+		if(hasValue)
+		{
+			NumberFormat formatter = new DecimalFormat();
+			formatter.setGroupingUsed(false);
+			formatter.setMinimumFractionDigits(0);
+			return formatter.format(getValue());
+		}
+		
+		return "";
 	}
 	
 	private boolean hasValue;
