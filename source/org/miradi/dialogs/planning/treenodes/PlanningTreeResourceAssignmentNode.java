@@ -25,9 +25,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class PlanningTreeAssignmentNode extends AbstractPlanningTreeNode
+public class PlanningTreeResourceAssignmentNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeAssignmentNode(Project projectToUse, ORef assignmentRef, CodeList visibleRowsToUse) throws Exception
+	public PlanningTreeResourceAssignmentNode(Project projectToUse, ORef assignmentRef, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		assignment = ResourceAssignment.find(projectToUse, assignmentRef);
