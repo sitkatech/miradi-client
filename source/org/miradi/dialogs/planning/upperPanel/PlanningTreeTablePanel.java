@@ -165,6 +165,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if(PlanningView.isRowOrColumnChangingCommand(event))
 			return true;
 		
+		if(didAffectResourceAssignmentsAndExpenseAssignments(event))
+			return true;
+		
 		if(didAffectTaskInTree(event))
 			return true;
 		
@@ -183,6 +186,17 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
+	private boolean didAffectResourceAssignmentsAndExpenseAssignments(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_ASSIGNMENT_IDS))
+			return true;
+		
+		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_REFS))
+			return true;
+			
+		return false;
+	}
+
 	private boolean didAffectMeasurementInTree(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS);
@@ -259,8 +273,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if(type == Strategy.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		if(type == Indicator.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
-			return true;
-		if(tag.equals(Task.TAG_ASSIGNMENT_IDS))
 			return true;
 		
 		return false;

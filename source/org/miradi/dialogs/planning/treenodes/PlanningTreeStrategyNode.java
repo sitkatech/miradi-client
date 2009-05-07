@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
@@ -37,8 +36,9 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 	
 	public void rebuild() throws Exception
 	{
-		ORefList activityRefs = strategy.getActivityRefs();
-		createAndAddTaskNodes(activityRefs);
+		children.addAll(buildResourceAssignmentNodes(strategy.getAssignmentRefs()));
+		children.addAll(buildExpenseAssignmentNodes(strategy.getExpenseRefs()));
+		createAndAddTaskNodes(strategy.getActivityRefs());
 	}
 
 	public BaseObject getObject()

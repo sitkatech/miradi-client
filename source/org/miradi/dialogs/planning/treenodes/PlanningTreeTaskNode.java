@@ -58,27 +58,6 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 			buildTaskNodes(task.getSubtaskRefs());
 	}
 
-	protected Vector<AbstractPlanningTreeNode> buildExpenseAssignmentNodes(ORefList expenseAssignmentRefs) throws Exception
-	{
-		Vector<AbstractPlanningTreeNode> expenseAssignmentNodes = new Vector();
-		for (int index = 0; index < expenseAssignmentRefs.size(); ++index)
-		{
-			expenseAssignmentNodes.add(new PlanningTreeExpenseAssignmentNode(project, expenseAssignmentRefs.get(index), visibleRows));
-		}
-	
-		return expenseAssignmentNodes;
-	}
-
-	protected Vector<AbstractPlanningTreeNode> buildResourceAssignmentNodes(ORefList assignmentRefs) throws Exception
-	{
-		Vector<AbstractPlanningTreeNode> resourceAssignmentNodes = new Vector();
-		for (int index = 0; index < assignmentRefs.size(); ++index)
-		{
-			resourceAssignmentNodes.add(new PlanningTreeResourceAssignmentNode(project, assignmentRefs.get(index), visibleRows));
-		}
-		return resourceAssignmentNodes;
-	}
-
 	private Vector<AbstractPlanningTreeNode> buildTaskNodes(ORefList subtaskRefs) throws Exception
 	{
 		Vector<AbstractPlanningTreeNode> subTaskNodes = new Vector();
