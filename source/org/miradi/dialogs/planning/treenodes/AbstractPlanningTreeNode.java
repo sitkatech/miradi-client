@@ -28,6 +28,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -340,6 +341,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeTaskNode(project, refToAdd, visibleRows);
 		if (type == ResourceAssignment.getObjectType())
 			return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
+		if (type == ExpenseAssignment.getObjectType())
+			return new PlanningTreeExpenseAssignmentNode(project, refToAdd, visibleRows);
 		
 				
 		throw new Exception("Attempted to create node of unknown type: " + refToAdd);

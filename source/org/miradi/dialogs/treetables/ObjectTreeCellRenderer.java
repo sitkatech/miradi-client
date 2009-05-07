@@ -32,6 +32,7 @@ import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
+import org.miradi.icons.ExpenseAssignmentIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.IconManager;
@@ -49,6 +50,7 @@ import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -133,6 +135,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		assignmentRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(assignmentRenderer, new AssignmentIcon(), getPlainFont());
+		
+		expenseAssignmentRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(expenseAssignmentRenderer, new ExpenseAssignmentIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -191,6 +196,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = groupBoxRenderer;
 		else if(ResourceAssignment.is(node.getType()))
 			renderer = assignmentRenderer;
+		else if(ExpenseAssignment.is(node.getType()))
+			renderer = expenseAssignmentRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -276,4 +283,5 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private	VariableHeightTreeCellRenderer groupBoxRenderer;
 	private VariableHeightTreeCellRenderer contributingFactorRenderer;
 	private VariableHeightTreeCellRenderer assignmentRenderer;
+	private VariableHeightTreeCellRenderer expenseAssignmentRenderer;
 }

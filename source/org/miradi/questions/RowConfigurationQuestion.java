@@ -26,6 +26,7 @@ import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
+import org.miradi.icons.ExpenseAssignmentIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.IntermediateResultIcon;
@@ -38,14 +39,15 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -79,6 +81,7 @@ public class RowConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()),
 				createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()),
 				createChoiceItem(ResourceAssignment.getObjectType(), ResourceAssignment.OBJECT_NAME, new AssignmentIcon()),
+				createChoiceItem(ExpenseAssignment.getObjectType(), ExpenseAssignment.OBJECT_NAME, new ExpenseAssignmentIcon()),
 		};
 	}
 
