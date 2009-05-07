@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.expense;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.planning.propertiesPanel.ExpenseEditorComponent;
+import org.miradi.dialogs.planning.propertiesPanel.ExpenseAssignmentEditorComponent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -32,7 +32,7 @@ public class ExpensesPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(mainWindowToUse.getProject(), objectType);
 		
-		expenseEditor = new ExpenseEditorComponent(mainWindowToUse, picker);
+		expenseEditor = new ExpenseAssignmentEditorComponent(mainWindowToUse, picker);
 		add(expenseEditor);
 		updateFieldsFromProject();
 	}
@@ -71,5 +71,5 @@ public class ExpensesPropertiesPanel extends ObjectDataInputPanel
 		return EAM.text("Expenses");
 	}
 	
-	private ExpenseEditorComponent expenseEditor;
+	private ExpenseAssignmentEditorComponent expenseEditor;
 }
