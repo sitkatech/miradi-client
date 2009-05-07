@@ -298,7 +298,7 @@ public class ResourceAssignment extends Assignment
 	public static final String PSEUDO_TAG_WORK_UNIT_TOTAL = "PseudoWorkUnitTotal";
 	
 	
-	public static final String OBJECT_NAME = "Assignment";
+	public static final String OBJECT_NAME = "ResourceAssignment";
 	
 	private BaseIdData resourceIdData;
 	private BaseIdData accountingIdData;
