@@ -99,7 +99,7 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 
 	private void createTables() throws Exception
 	{
-		expenseSummaryTableModel = new ExpenseSummaryTableModel(getProject());
+		expenseSummaryTableModel = new ExpenseAssignmentMainTableModel(getProject());
 		expenseSummaryTable = new ExpenseSummaryTable(getMainWindow(), expenseSummaryTableModel);
 		
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), expenseSummaryTableModel);
@@ -182,6 +182,6 @@ public class ExpenseEditorComponent extends AbstractMultiTablePanelEditorCompone
 	private ExpenseSummaryTable expenseSummaryTable;
 	private ExpenseAmountsTable expenseAmountsTable;
 	
-	private ExpenseSummaryTableModel expenseSummaryTableModel;
+	private ExpenseAssignmentMainTableModel expenseSummaryTableModel;
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
 }
