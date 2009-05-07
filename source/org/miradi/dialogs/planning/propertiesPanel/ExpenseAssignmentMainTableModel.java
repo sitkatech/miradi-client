@@ -27,9 +27,9 @@ import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 
-public class ExpenseSummaryTableModel extends AbstractSummaryTableModel
+public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 {
-	public ExpenseSummaryTableModel(Project projectToUse)
+	public ExpenseAssignmentMainTableModel(Project projectToUse)
 	{
 		super(projectToUse);
 	}

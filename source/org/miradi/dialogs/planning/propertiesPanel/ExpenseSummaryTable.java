@@ -23,7 +23,7 @@ import org.miradi.main.MainWindow;
 
 public class ExpenseSummaryTable extends AbstractSummaryTable
 {
-	public ExpenseSummaryTable(MainWindow mainWindowToUse,	ExpenseSummaryTableModel modelToUse) throws Exception
+	public ExpenseSummaryTable(MainWindow mainWindowToUse,	ExpenseAssignmentMainTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, getUniqueIdentifier());
 	}
