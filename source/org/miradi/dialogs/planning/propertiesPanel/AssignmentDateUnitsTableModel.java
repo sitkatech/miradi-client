@@ -155,7 +155,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			if (getAssignment(row) != null)
-				return isAssignmentCellEditable(row, column);
+				return isAssignmentCellEditable(getAssignment(row), getDateRange(column));
 		}
 		catch(Exception e)
 		{
@@ -163,6 +163,18 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 		
 		return false;
+	}
+	
+	protected boolean isAssignmentCellEditable(Assignment assignment, DateRange dateRange) throws Exception
+	{
+		if (!isCorrectType(assignment))
+			return false;
+		
+		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
+		if(thisCellEffort != null)
+			return true;
+		
+		return hasValue(assignment, dateRange);
 	}
 
 	public Object getValueAt(int row, int column)
@@ -437,7 +449,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	abstract protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception;
 	
-	abstract protected boolean isAssignmentCellEditable(int row, int column) throws Exception;
+	abstract protected boolean isCorrectType(Assignment assignment);
+
+	abstract protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception;
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
