@@ -40,6 +40,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		super(projectToUse, visibleRowsToUse);
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 		ORefList diagramFactorRefs = diagramObject.getAllDiagramFactorRefs();
@@ -64,6 +65,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 		addMissingChildren(extractIndicatorRefs(allWrappedFactors), diagramObject);
 	}
 
+	@Override
 	public BaseObject getObject()
 	{
 		return diagramObject;
