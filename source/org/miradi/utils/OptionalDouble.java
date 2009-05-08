@@ -108,13 +108,16 @@ public class OptionalDouble
 	@Override
 	public int hashCode()
 	{
-		return optionalDouble.hashCode();
+		if (hasValue())
+			return optionalDouble.hashCode();
+		
+		return 0;
 	}
 	
 	@Override
 	public String toString()
 	{
-		if(hasValue)
+		if(hasValue())
 		{
 			NumberFormat formatter = new DecimalFormat();
 			formatter.setGroupingUsed(false);
