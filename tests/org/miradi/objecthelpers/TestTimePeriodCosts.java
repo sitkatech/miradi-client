@@ -59,7 +59,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts();		
 		timePeriodCosts2.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));		
 		timePeriodCosts2.setExpense(new OptionalDouble(5000.0));
-		assertNotEquals("time period costs was equal?", timePeriodCosts1, timePeriodCosts2);
+		assertNotEquals("Different expenses were equal?", timePeriodCosts1, timePeriodCosts2);
 		
 		timePeriodCosts2.setExpense(new OptionalDouble(20.0));
 		assertEquals("time period costs are equal?", timePeriodCosts1, timePeriodCosts2);
