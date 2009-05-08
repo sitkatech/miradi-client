@@ -53,6 +53,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -536,6 +537,21 @@ abstract public class BaseObject
 		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
+	public TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception
+	{
+		return new TimePeriodCostsMap();
+	}
+	
+	protected TimePeriodCostsMap getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs)
+	{
+		return new TimePeriodCostsMap();
+	}
+	
+	protected TimePeriodCostsMap getTimePeriodCostsMapForAssignments(String tag)
+	{
+		return new TimePeriodCostsMap();
+	}
+			
 	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs) throws Exception
 	{
 		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
@@ -548,11 +564,6 @@ abstract public class BaseObject
 		return dateRangeEffortList;
 	}
 	
-	protected DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
-	{
-		return getDateRangeEffortListForAssignments(tag);	
-	}
-
 	private DateRangeEffortList getDateRangeEffortListForAssignments(String tag) throws Exception
 	{
 		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
@@ -565,7 +576,12 @@ abstract public class BaseObject
 		}
 		return dateRangeEffortList;
 	}
-	
+		
+	protected DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
+	{
+		return getDateRangeEffortListForAssignments(tag);	
+	}
+
 	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
 	{
 		if (dateRange == null)
