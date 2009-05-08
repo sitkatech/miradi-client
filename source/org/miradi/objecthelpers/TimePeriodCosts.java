@@ -78,6 +78,12 @@ public class TimePeriodCosts
 		return other.resourceUnitsMap.equals(resourceUnitsMap);
 	}
 	
+	@Override
+	public int hashCode()
+	{
+		return expense.hashCode() + resourceUnitsMap.hashCode();
+	}
+	
 	public OptionalDouble getUnits(ORef resourceRef)
 	{
 		return resourceUnitsMap.get(resourceRef);
