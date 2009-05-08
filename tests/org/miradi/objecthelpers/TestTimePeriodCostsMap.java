@@ -43,7 +43,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		
 		timePeriodCostsMap.add(dateUnit, timePeriodCosts);
 		TimePeriodCosts foundTimePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		assertEquals("time period costs should not be equal?", foundTimePeriodCosts, timePeriodCosts);
+		assertEquals("Single TPC wasn't found?", foundTimePeriodCosts, timePeriodCosts);
 	}
 
 	public void testMergeAdd() throws Exception
