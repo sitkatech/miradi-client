@@ -67,12 +67,18 @@ public class TestOptionalDouble extends EAMTestCase
 	public void testEquals()
 	{
 		OptionalDouble optionalDouble1 = new OptionalDouble();
-		assertEquals("should be equal to itself?", optionalDouble1, optionalDouble1);
+		assertEquals("Empty OD not equal to itself?", optionalDouble1, optionalDouble1);
 		
 		OptionalDouble optionalDouble2 = new OptionalDouble(10.0);
-		assertEquals("should be equal to itself?", optionalDouble2, optionalDouble2);
+		assertEquals("OD with value not equal to itself?", optionalDouble2, optionalDouble2);
 		
 		OptionalDouble optionalDouble3 = new OptionalDouble(20.0);
-		assertNotEquals("should not be equals", optionalDouble2, optionalDouble3);
+		assertNotEquals("Different OD's claimed to be equal?", optionalDouble2, optionalDouble3);
+		assertNotEquals("Different OD's claimed to be equal (args swapped)?", optionalDouble3, optionalDouble2);
+		
+		OptionalDouble optionalDouble4 = new OptionalDouble(20.0);
+		assertEquals("OD with value not equal to itself?", optionalDouble4, optionalDouble3);
+		assertEquals("OD with value not equal to itself (args swapped)?", optionalDouble3, optionalDouble4);
+		
 	}
 }
