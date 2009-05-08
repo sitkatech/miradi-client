@@ -536,8 +536,7 @@ abstract public class BaseObject
 		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
-	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs)
-			throws Exception
+	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs) throws Exception
 	{
 		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		DateRangeEffortList dateRangeEffortList = getDateRangeEffortListForAssignments(tag);
@@ -554,8 +553,7 @@ abstract public class BaseObject
 		return getDateRangeEffortListForAssignments(tag);	
 	}
 
-	private DateRangeEffortList getDateRangeEffortListForAssignments(String tag)
-			throws Exception
+	private DateRangeEffortList getDateRangeEffortListForAssignments(String tag) throws Exception
 	{
 		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
