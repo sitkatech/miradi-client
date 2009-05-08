@@ -49,16 +49,12 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	public void testEquals() throws Exception
 	{
-		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts();
 		ProjectResource projectResource = createProjectResource();
-		timePeriodCosts1.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));		
-		timePeriodCosts1.setExpense(new OptionalDouble(20.0));
+		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(20.0, projectResource.getRef(), 10.0);
 		
 		assertEquals("time period costs is not equals to itself?", timePeriodCosts1, timePeriodCosts1);
 		
-		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts();		
-		timePeriodCosts2.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));		
-		timePeriodCosts2.setExpense(new OptionalDouble(5000.0));
+		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(500.0, projectResource.getRef(), 10.0);
 		assertNotEquals("Different expenses were equal?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("Different expenses were equal?", timePeriodCosts2, timePeriodCosts1);
 		
@@ -71,7 +67,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts2, timePeriodCosts1);
 	}
-
+	
 	private ProjectResource createProjectResource() throws Exception
 	{
 		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
