@@ -21,25 +21,23 @@ package org.miradi.objecthelpers;
 
 import java.util.HashMap;
 
-import org.miradi.utils.DateRange;
-
 public class TimePeriodCostsMap
 {
 	public TimePeriodCostsMap()
 	{
-		data = new HashMap<DateRange, TimePeriodCosts>();
+		data = new HashMap<DateUnit, TimePeriodCosts>();
 	}
 	
-	public TimePeriodCostsMap(DateRange dateRange, TimePeriodCosts timePeriodCosts)
+	public TimePeriodCostsMap(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		this();
-		add(dateRange, timePeriodCosts);
+		add(dateUnit, timePeriodCosts);
 	}
 	
-	public void add(DateRange dateRange, TimePeriodCosts timePeriodCosts)
+	public void add(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
-		data.put(dateRange, timePeriodCosts);
+		data.put(dateUnit, timePeriodCosts);
 	}
 	
-	private HashMap<DateRange, TimePeriodCosts> data;
+	private HashMap<DateUnit, TimePeriodCosts> data;
 }
