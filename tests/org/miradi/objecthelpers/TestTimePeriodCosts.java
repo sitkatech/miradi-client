@@ -60,13 +60,16 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		timePeriodCosts2.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));		
 		timePeriodCosts2.setExpense(new OptionalDouble(5000.0));
 		assertNotEquals("Different expenses were equal?", timePeriodCosts1, timePeriodCosts2);
+		assertNotEquals("Different expenses were equal?", timePeriodCosts2, timePeriodCosts1);
 		
 		timePeriodCosts2.setExpense(new OptionalDouble(20.0));
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts1, timePeriodCosts2);
+		assertEquals("Identical TPC's were not equal?", timePeriodCosts2, timePeriodCosts1);
 		
 		ProjectResource projectResource2 = createProjectResource();
 		timePeriodCosts1.addResourceCost(projectResource2.getRef(), new OptionalDouble(30.0));
-		assertNotEquals("time period costs should not be equal?", timePeriodCosts1, timePeriodCosts2);
+		assertNotEquals("Different units for resource were not equal?", timePeriodCosts1, timePeriodCosts2);
+		assertNotEquals("Different units for resource were not equal?", timePeriodCosts2, timePeriodCosts1);
 	}
 
 	private ProjectResource createProjectResource() throws Exception
