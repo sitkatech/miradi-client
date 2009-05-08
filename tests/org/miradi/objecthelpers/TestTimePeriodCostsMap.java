@@ -39,7 +39,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		timePeriodCosts.setExpense(new OptionalDouble(500.0));
 		ProjectResource projectResource = createProjectResource();
 		timePeriodCosts.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));
-		DateUnit dateUnit = getProject().createDateUnit(2000, 2009);
+		DateUnit dateUnit = getProject().createDateUnit(2000, 2008);
 		
 		timePeriodCostsMap.add(dateUnit, timePeriodCosts);
 		TimePeriodCosts foundTimePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
@@ -51,7 +51,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCosts timePeriodCostsWithProjectResource = new TimePeriodCosts();
 		ProjectResource projectResource = createProjectResource();
 		timePeriodCostsWithProjectResource.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));
-		DateUnit dateUnit = getProject().createDateUnit(2000, 2009);
+		DateUnit dateUnit = getProject().createDateUnit(2000, 2008);
 		TimePeriodCostsMap resourceTimePeriodCostsMap = new TimePeriodCostsMap();
 		resourceTimePeriodCostsMap.add(dateUnit, timePeriodCostsWithProjectResource);
 		
