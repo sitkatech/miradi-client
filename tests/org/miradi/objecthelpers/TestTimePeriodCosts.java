@@ -37,6 +37,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertNull("should not have value?", emptyDouble);
 		
 		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		getProject().fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_PER_UNIT, "10");
 		timePeriodCosts.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));
 		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getUnits(projectResource.getRef()).getValue());
 		
