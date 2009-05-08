@@ -48,6 +48,7 @@ import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -537,7 +538,7 @@ abstract public class BaseObject
 		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
-	public TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception
+	public TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
 	{
 		return new TimePeriodCostsMap();
 	}

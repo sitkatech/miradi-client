@@ -24,6 +24,7 @@ import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -208,12 +209,12 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	public TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception
+	public TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.addResourceCost(getResourceRef(), getWorkUnits(dateRangeToUse));
+		timePeriodCosts.addResourceCost(getResourceRef(), getWorkUnits(dateUnitToUse.asDateRange()));
 		
-		return new TimePeriodCostsMap(dateRangeToUse, timePeriodCosts);
+		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception
