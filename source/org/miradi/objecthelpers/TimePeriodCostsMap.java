@@ -56,11 +56,11 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnitKey : keys)
 		{
 			TimePeriodCosts timePeriodCosts = timePeriodCostsMapToMerge.data.get(dateUnitKey);
-			addUnits(timePeriodCosts, dateUnit);
+			addUnits(dateUnit, timePeriodCosts);
 		}
 	}
 	
-	private void addUnits(TimePeriodCosts timePeriodCosts, DateUnit dateUnit)
+	private void addUnits(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
