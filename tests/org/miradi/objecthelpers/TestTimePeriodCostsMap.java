@@ -35,13 +35,21 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		assertTrue("time period costs map is not empty?", timePeriodCostsMap.isEmpty());
 		
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.setExpense(new OptionalDouble(500.0));
 		ProjectResource projectResource = createProjectResource();
-		timePeriodCosts.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));
-		DateUnit dateUnit = getProject().createDateUnit(2000, 2008);
+		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(500.0, projectResource.getRef(), 10.0);
+		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(600.0, projectResource.getRef(), 20.0);
 		
-		timePeriodCostsMap.add(dateUnit, timePeriodCosts);
+		DateUnit dateUnit1 = getProject().createDateUnit(2008, 2008);
+		DateUnit dateUnit2 = getProject().createDateUnit(2009, 2009);
+		timePeriodCostsMap.add(dateUnit1, timePeriodCosts1);
+		timePeriodCostsMap.add(dateUnit2, timePeriodCosts2);
+		
+		verifyGetTimePeriodCostsForSpecificDateUnit(timePeriodCostsMap, timePeriodCosts1, dateUnit1);
+		verifyGetTimePeriodCostsForSpecificDateUnit(timePeriodCostsMap, timePeriodCosts2, dateUnit2);
+	}
+
+	private void verifyGetTimePeriodCostsForSpecificDateUnit(TimePeriodCostsMap timePeriodCostsMap, TimePeriodCosts timePeriodCosts, DateUnit dateUnit)
+	{
 		TimePeriodCosts foundTimePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		assertEquals("Single TPC wasn't found?", foundTimePeriodCosts, timePeriodCosts);
 	}
