@@ -44,10 +44,7 @@ public class TimePeriodCostsMap
 	
 	public TimePeriodCosts getTimePeriodCostsForSpecificDateUnit(DateUnit dateUnitToUse)
 	{
-		if (data.containsKey(dateUnitToUse))
-			return data.get(dateUnitToUse);
-		
-		return new TimePeriodCosts();
+		return data.get(dateUnitToUse);
 	}
 	
 	public void mergeAdd(TimePeriodCostsMap timePeriodCostsMapToMerge, DateUnit dateUnit)
