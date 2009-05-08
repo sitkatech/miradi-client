@@ -70,6 +70,7 @@ import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.BudgetCostModeQuestion;
+import org.miradi.questions.BudgetCostUnitQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
@@ -164,12 +165,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return refMap.toString();
 	}
 
-	public ORef createAndPopulateProjectResource() throws Exception
+	public ProjectResource createAndPopulateProjectResource() throws Exception
 	{
-		ORef projectResourceRef = createProjectResource().getRef();
-		populateProjectResource(projectResourceRef);
+		ProjectResource projectResource = createProjectResource();
+		populateProjectResource(projectResource);
 		
-		return projectResourceRef;
+		return projectResource;
 	}
 	
 	public Target createAndPopulateTarget() throws Exception
@@ -404,8 +405,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public Task createTaskWithWho() throws Exception
 	{
 		Task task = createAndPopulateTask("some label");
-		ORef projectResourceRef = createAndPopulateProjectResource();
-		ORefList projectResourceRefs = new ORefList(projectResourceRef);
+		ORefList projectResourceRefs = new ORefList(createAndPopulateProjectResource());
 		fillObjectUsingCommand(task, Task.TAG_WHO_OVERRIDE_REFS, projectResourceRefs.toString());
 		
 		return task;
@@ -534,19 +534,21 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(threatStressRating, ThreatStressRating.TAG_CONTRIBUTION, StressContributionQuestion.HIGH_CODE);
 	}
 	
-	private void populateProjectResource(ORef projectResourceRef) throws Exception
+	private void populateProjectResource(ProjectResource projectResource) throws Exception
 	{
 		CodeList roleCodes = new CodeList();
 		roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);
 		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
 		
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LABEL, PROJECT_RESOURCE_LABEL_TEXT);
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_GIVEN_NAME, "John");
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_SUR_NAME, "Doe");
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
-		fillObjectUsingCommand(projectResourceRef, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LABEL, PROJECT_RESOURCE_LABEL_TEXT);
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_GIVEN_NAME, "John");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_SUR_NAME, "Doe");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_PER_UNIT, "10");
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_UNIT, BudgetCostUnitQuestion.DAYS_CODE);
 	}
 	
 	public void populateSubTarget(SubTarget subTarget) throws Exception

@@ -77,6 +77,8 @@ import org.miradi.objecthelpers.TestRelevancyOverride;
 import org.miradi.objecthelpers.TestRelevancyOverrideSet;
 import org.miradi.objecthelpers.TestStringRefMap;
 import org.miradi.objecthelpers.TestThreatStressRatingEnsurer;
+import org.miradi.objecthelpers.TestTimePeriodCosts;
+import org.miradi.objecthelpers.TestTimePeriodCostsMap;
 import org.miradi.objects.TestAccountingCode;
 import org.miradi.objects.TestAssignment;
 import org.miradi.objects.TestBaseObject;
@@ -322,6 +324,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestRelevancyOverrideSet.class));
 		suite.addTest(new TestSuite(TestStringRefMap.class));
 		suite.addTest(new TestSuite(TestThreatStressRatingEnsurer.class));
+		suite.addTest(new TestSuite(TestTimePeriodCosts.class));
+		suite.addTest(new TestSuite(TestTimePeriodCostsMap.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
