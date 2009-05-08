@@ -102,9 +102,6 @@ public class OptionalDouble
 		if (!other.hasValue())
 			return false;
 		
-		if (!hasValue())
-			return false;
-		
 		return other.getValue().equals(getValue());
 	}
 	
