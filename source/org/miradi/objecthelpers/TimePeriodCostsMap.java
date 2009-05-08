@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import java.util.HashMap;
+import java.util.Set;
+
+import org.miradi.utils.OptionalDouble;
 
 public class TimePeriodCostsMap
 {
@@ -39,5 +42,41 @@ public class TimePeriodCostsMap
 		data.put(dateUnit, timePeriodCosts);
 	}
 	
+	public TimePeriodCosts getTimePeriodCostsForSpecificDateUnit(DateUnit dateUnitToUse)
+	{
+		return data.get(dateUnitToUse);
+	}
+	
+	public void mergeAdd(TimePeriodCostsMap timePeriodCostsMapToMerge, DateUnit dateUnit)
+	{
+		Set<DateUnit> keys = timePeriodCostsMapToMerge.data.keySet();
+		for(DateUnit dateUnitKey : keys)
+		{
+			TimePeriodCosts timePeriodCosts = timePeriodCostsMapToMerge.data.get(dateUnitKey);
+			addUnits(timePeriodCosts, dateUnit);
+		}
+	}
+	
+	private void addUnits(TimePeriodCosts timePeriodCosts, DateUnit dateUnit)
+	{
+		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		if(existing != null)
+		{
+			existing.setExpense(existing.getExpense().add(timePeriodCosts.getExpense()));
+			HashMap<ORef, OptionalDouble> thisResourceUnitsMap = existing.getResourceUnitsMap();
+			thisResourceUnitsMap.putAll(timePeriodCosts.getResourceUnitsMap());
+			existing.setResourceUnitsMap(thisResourceUnitsMap);
+		}
+		else
+		{
+			add(dateUnit, timePeriodCosts);
+		}
+	}
+	
+	public boolean isEmpty()
+	{
+		return data.isEmpty();
+	}
+
 	private HashMap<DateUnit, TimePeriodCosts> data;
 }

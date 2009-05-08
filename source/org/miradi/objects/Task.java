@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
@@ -357,6 +358,12 @@ public class Task extends Factor
 	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
 		return getDateRangeEffortListForSubtasks(tag, getSubtaskRefs());
+	}
+	
+	@Override
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
+	{
+		return getTimePeriodCostsMapForSubTasks(tag, getSubtaskRefs());	
 	}
 	
 	@Override

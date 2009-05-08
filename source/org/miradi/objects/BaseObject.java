@@ -540,6 +540,12 @@ abstract public class BaseObject
 	
 	public TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
 	{
+		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
+		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
+		
+		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
+		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap, dateUnitToUse);
+		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap, dateUnitToUse);
 		return new TimePeriodCostsMap();
 	}
 	
@@ -551,6 +557,11 @@ abstract public class BaseObject
 	protected TimePeriodCostsMap getTimePeriodCostsMapForAssignments(String tag)
 	{
 		return new TimePeriodCostsMap();
+	}
+	
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
+	{
+		return getTimePeriodCostsMapForAssignments(tag);	
 	}
 			
 	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs) throws Exception

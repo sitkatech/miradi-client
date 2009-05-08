@@ -63,4 +63,16 @@ public class TestOptionalDouble extends EAMTestCase
 		assertTrue("should have value?", returnedValue3.hasValue());
 		assertEquals("wrong value?", 100.0, returnedValue3.getValue());
 	}
+	
+	public void testEquals()
+	{
+		OptionalDouble optionalDouble1 = new OptionalDouble();
+		assertEquals("should be equal to itself?", optionalDouble1, optionalDouble1);
+		
+		OptionalDouble optionalDouble2 = new OptionalDouble(10.0);
+		assertEquals("should be equal to itself?", optionalDouble2, optionalDouble2);
+		
+		OptionalDouble optionalDouble3 = new OptionalDouble(20.0);
+		assertNotEquals("should not be equals", optionalDouble2, optionalDouble3);
+	}
 }

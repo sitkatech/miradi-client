@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -547,7 +548,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LOCATION, "1 SomeStreet ave. Tampa FL 33600");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
-		fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_PER_UNIT, "10");
+		fillCostPerUnitField(projectResource, "10");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_UNIT, BudgetCostUnitQuestion.DAYS_CODE);
 	}
 	
@@ -793,6 +794,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return countriesCodeList;
 	}
 
+	public void fillCostPerUnitField(ProjectResource projectResource, String costPerUnit) throws Exception
+	{
+		fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_PER_UNIT, costPerUnit);
+	}
+	
 	private void fillObjectUsingCommand(ORef objectRef, String fieldTag, String data) throws Exception
 	{
 		CommandSetObjectData setData = new CommandSetObjectData(objectRef, fieldTag, data);
@@ -1203,11 +1209,21 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
 	{
-		MultiCalendar startDate = createMultiCalendar(startYear);
-		MultiCalendar endDate = createMultiCalendar(endYear);
-		DateRange dateRange = new DateRange(startDate, endDate);
+		DateRange dateRange = createDateRange(startYear, endYear);
 		
 		return new DateRangeEffort("", 0, dateRange);
+	}
+
+	public DateRange createDateRange(int startYear, int endYear) throws Exception
+	{
+		MultiCalendar startDate = createMultiCalendar(startYear);
+		MultiCalendar endDate = createMultiCalendar(endYear);
+		return new DateRange(startDate, endDate);
+	}
+	
+	public DateUnit createDateUnit(int startYear, int endYear) throws Exception
+	{
+		return DateUnit.createFromDateRange(createDateRange(startYear, endYear));
 	}
 	
 	public MultiCalendar createMultiCalendar(int year)
