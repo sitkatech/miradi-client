@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-08 10:14-0500\n"
+"POT-Creation-Date: 2009-05-08 13:07-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -5842,10 +5842,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:29
 msgid "Create"
-msgstr ""
-
-#: miradi/source/org/miradi/utils/OptionalDouble.java:97
-msgid " has no implementation"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:55
