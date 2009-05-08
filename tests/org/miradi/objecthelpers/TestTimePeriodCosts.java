@@ -36,8 +36,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		OptionalDouble emptyDouble = timePeriodCosts.getUnits(ORef.INVALID);
 		assertNull("should not have value?", emptyDouble);
 		
-		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
-		getProject().fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_PER_UNIT, "10");
+		ProjectResource projectResource = createProjectResource();
 		timePeriodCosts.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));
 		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getUnits(projectResource.getRef()).getValue());
 		
@@ -46,5 +45,34 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		
 		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateProjectResources(getProject()).getValue());
 		assertEquals("wrong total cost?", 120.0, timePeriodCosts.calculateTotal(getProject()).getValue());
+	}
+	
+	public void testEquals() throws Exception
+	{
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts();
+		ProjectResource projectResource = createProjectResource();
+		timePeriodCosts1.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));		
+		timePeriodCosts1.setExpense(new OptionalDouble(20.0));
+		
+		assertEquals("time period costs is not equals to itself?", timePeriodCosts1, timePeriodCosts1);
+		
+		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts();		
+		timePeriodCosts2.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));		
+		timePeriodCosts2.setExpense(new OptionalDouble(5000.0));
+		assertNotEquals("time period costs was equal?", timePeriodCosts1, timePeriodCosts2);
+		
+		timePeriodCosts2.setExpense(new OptionalDouble(20.0));
+		assertEquals("time period costs are equal?", timePeriodCosts1, timePeriodCosts2);
+		
+		ProjectResource projectResource2 = createProjectResource();
+		timePeriodCosts1.addResourceCost(projectResource2.getRef(), new OptionalDouble(30.0));
+		assertNotEquals("time period costs should not be equal?", timePeriodCosts1, timePeriodCosts2);
+	}
+
+	private ProjectResource createProjectResource() throws Exception
+	{
+		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		getProject().fillCostPerUnitField(projectResource, "10");
+		return projectResource;
 	}
 }

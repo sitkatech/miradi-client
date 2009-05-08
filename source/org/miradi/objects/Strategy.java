@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -268,6 +269,12 @@ public class Strategy extends Factor
 	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
 		return getDateRangeEffortListForSubtasks(tag, getActivityRefs());
+	}
+	
+	@Override
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
+	{
+		return getTimePeriodCostsMapForSubTasks(tag, getActivityRefs());	
 	}
 	
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception

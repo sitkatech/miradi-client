@@ -22,8 +22,6 @@ package org.miradi.utils;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-import org.miradi.main.EAM;
-
 public class OptionalDouble
 {	
 	public OptionalDouble()
@@ -92,9 +90,22 @@ public class OptionalDouble
 	}
 	
 	@Override
-	public boolean equals(Object obj)
+	public boolean equals(Object rawOther)
 	{
-		throw new RuntimeException("OptionalDouble.equals()" + EAM.text(" has no implementation"));
+		if (! (rawOther instanceof OptionalDouble))
+			return false;
+	
+		OptionalDouble other = (OptionalDouble) rawOther;
+		if (!other.hasValue() && !hasValue())
+			return true;
+		
+		if (!other.hasValue())
+			return false;
+		
+		if (!hasValue())
+			return false;
+		
+		return other.getValue().equals(getValue());
 	}
 	
 	@Override

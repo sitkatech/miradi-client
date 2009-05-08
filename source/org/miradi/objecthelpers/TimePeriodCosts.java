@@ -65,6 +65,19 @@ public class TimePeriodCosts
 		return projectResourceTotalUnits;
 	}
 	
+	@Override
+	public boolean equals(Object rawOther)
+	{
+		if (! (rawOther instanceof TimePeriodCosts))
+			return false;
+		
+		TimePeriodCosts other = (TimePeriodCosts) rawOther;
+		if (!other.getExpense().equals(getExpense()))
+			return false;
+		
+		return other.resourceUnitsMap.equals(resourceUnitsMap);
+	}
+	
 	public OptionalDouble getUnits(ORef resourceRef)
 	{
 		return resourceUnitsMap.get(resourceRef);
@@ -73,6 +86,16 @@ public class TimePeriodCosts
 	public OptionalDouble getExpense()
 	{
 		return expense;
+	}
+	
+	public HashMap<ORef, OptionalDouble> getResourceUnitsMap()
+	{
+		return new HashMap(resourceUnitsMap);
+	}
+	
+	public void setResourceUnitsMap(HashMap<ORef, OptionalDouble> resourceUnitsMapToUse)
+	{
+		resourceUnitsMap = resourceUnitsMapToUse;
 	}
 	
 	private OptionalDouble expense;
