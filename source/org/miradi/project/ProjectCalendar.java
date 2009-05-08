@@ -495,6 +495,11 @@ public class ProjectCalendar implements CommandExecutedListener
 		
 		return dateRange;
 	}
+	
+	public DateUnit getProjectPlanningDateUnit() throws Exception
+	{		
+		return DateUnit.createFromDateRange(getProjectPlanningDateRange());
+	}
 
 	private MultiCalendar getOneYearLater(MultiCalendar startOfFiscalYear)
 	{
