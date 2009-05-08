@@ -27,8 +27,19 @@ public class TimePeriodCostsMap
 {
 	public TimePeriodCostsMap()
 	{
-		data = new HashMap();
+		data = new HashMap<DateRange, TimePeriodCosts>();
 	}
 	
-	HashMap<DateRange, TimePeriodCosts> data;
+	public TimePeriodCostsMap(DateRange dateRange, TimePeriodCosts timePeriodCosts)
+	{
+		this();
+		add(dateRange, timePeriodCosts);
+	}
+	
+	public void add(DateRange dateRange, TimePeriodCosts timePeriodCosts)
+	{
+		data.put(dateRange, timePeriodCosts);
+	}
+	
+	private HashMap<DateRange, TimePeriodCosts> data;
 }

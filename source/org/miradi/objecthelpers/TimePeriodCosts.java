@@ -31,7 +31,7 @@ public class TimePeriodCosts
 	public TimePeriodCosts()
 	{
 		expense = new OptionalDouble();
-		resourceUnitsMap = new HashMap();
+		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
 	}
 	
 	public void setExpense(OptionalDouble expenseToUse)
