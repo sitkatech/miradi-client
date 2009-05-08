@@ -546,7 +546,8 @@ abstract public class BaseObject
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap, dateUnitToUse);
 		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap, dateUnitToUse);
-		return new TimePeriodCostsMap();
+		
+		return mergedTimePeriodCostsMap;
 	}
 	
 	protected TimePeriodCostsMap getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs)
