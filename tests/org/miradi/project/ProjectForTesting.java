@@ -44,6 +44,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -94,6 +95,7 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -1230,7 +1232,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		return MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
 	}
-			
+	
+	public TimePeriodCosts createTimePeriodCosts(double expenses, ORef projectResourceRef, double units)
+	{
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
+		timePeriodCosts.addResourceCost(projectResourceRef, new OptionalDouble(units));		
+		timePeriodCosts.setExpense(new OptionalDouble(expenses));
+		
+		return timePeriodCosts;
+	}
+	
 	private static int nextTargetId;
 	private static int nextCauseId;
 	private static int nextStrategyId;

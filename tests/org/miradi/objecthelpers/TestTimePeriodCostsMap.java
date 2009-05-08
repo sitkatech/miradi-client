@@ -64,9 +64,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		mergedTimePeriodCostsMap.mergeAdd(expenseTimePerdiodCostsMap, dateUnit);
 		mergedTimePeriodCostsMap.mergeAdd(resourceTimePeriodCostsMap, dateUnit);
 		
-		TimePeriodCosts expectedTimePeriodCosts = new TimePeriodCosts();
-		expectedTimePeriodCosts.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));
-		expectedTimePeriodCosts.setExpense(new OptionalDouble(500.0));
+		TimePeriodCosts expectedTimePeriodCosts = getProject().createTimePeriodCosts(500.0, projectResource.getRef(), 10.0);
 		
 		TimePeriodCosts timePeriodCosts = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		assertEquals("incorrect time period costs?", expectedTimePeriodCosts, timePeriodCosts);
