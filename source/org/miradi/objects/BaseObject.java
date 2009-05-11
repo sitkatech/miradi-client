@@ -557,7 +557,7 @@ abstract public class BaseObject
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			timePeriodCostsMap.mergeAdd(baseObject.getTimePeriodCostsMap(tag), projectDateUnit);
+			timePeriodCostsMap.mergeOverlay(baseObject.getTimePeriodCostsMap(tag), projectDateUnit);
 		}
 		
 		return timePeriodCostsMap;
