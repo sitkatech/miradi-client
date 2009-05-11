@@ -56,6 +56,48 @@ public class TimePeriodCostsMap
 			addTimePeriodCosts(dateUnit, timePeriodCosts);
 		}
 	}
+		
+	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMap,	DateUnit projectDateUnit) throws Exception
+	{
+		Set<DateUnit> keys = timePeriodCostsMap.getDateUnitTimePeriodCostsMap().keySet();
+		for(DateUnit dateUnit : keys)
+		{
+			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnit, projectDateUnit);
+			if(hasAnyEntriesWithin(dateUnit))
+				continue;
+			
+			TimePeriodCosts timePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+			addTimePeriodCosts(dateUnit, timePeriodCosts);
+		}	
+	}
+	
+	private void removeEntriesForLargerDateUnitsThatContainThisOne(DateUnit dateUnit, DateUnit projectDateUnit) throws Exception
+	{
+		if(dateUnit.isBlank())
+			return;
+		
+		DateUnit larger = dateUnit.getSuperDateUnit();
+		DateUnit dateUnitToRemove = projectDateUnit;
+		if(!larger.isBlank())
+			dateUnitToRemove = larger;
+		data.remove(dateUnitToRemove);
+		removeEntriesForLargerDateUnitsThatContainThisOne(larger, projectDateUnit);
+	}
+	
+	private boolean hasAnyEntriesWithin(DateUnit largerDateUnit) throws Exception
+	{
+		Set<DateUnit> dateUnits = data.keySet();
+		for(DateUnit thisDateUnit : dateUnits)
+		{
+			if(largerDateUnit.equals(thisDateUnit))
+				continue;
+			
+			if (largerDateUnit.asDateRange().contains(thisDateUnit.asDateRange()))
+				return true;
+		}
+		
+		return false;
+	}
 	
 	private void addTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
@@ -76,6 +118,11 @@ public class TimePeriodCostsMap
 	public boolean isEmpty()
 	{
 		return data.isEmpty();
+	}
+	
+	public HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
+	{
+		return new HashMap(data);
 	}
 
 	private HashMap<DateUnit, TimePeriodCosts> data;
