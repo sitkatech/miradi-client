@@ -53,7 +53,7 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnitKey : keys)
 		{
 			TimePeriodCosts timePeriodCosts = timePeriodCostsMapToMerge.data.get(dateUnitKey);
-			addTimePeriodCosts(dateUnit, timePeriodCosts);
+			mergeAddTimePeriodCosts(dateUnit, timePeriodCosts);
 		}
 	}
 		
@@ -67,7 +67,7 @@ public class TimePeriodCostsMap
 				continue;
 			
 			TimePeriodCosts timePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-			addTimePeriodCosts(dateUnit, timePeriodCosts);
+			mergeOverlayTimePeriodCosts(dateUnit, timePeriodCosts);
 		}	
 	}
 	
@@ -99,7 +99,38 @@ public class TimePeriodCostsMap
 		return false;
 	}
 	
-	private void addTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
+	private void mergeAddTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
+	{
+		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		if(existing != null)
+		{
+			existing.setExpense(existing.getExpense().add(timePeriodCosts.getExpense()));
+			HashMap<ORef, OptionalDouble> merged = mergeAddProjectResources(existing.getResourceUnitsMap(), timePeriodCosts.getResourceUnitsMap());
+			existing.setResourceUnitsMap(merged);
+		}
+		else
+		{
+			add(dateUnit, timePeriodCosts);
+		}
+	}
+
+	private HashMap mergeAddProjectResources(HashMap<ORef, OptionalDouble> existingResourceUnitsMap, HashMap<ORef, OptionalDouble> resourceUnitsMapToMerge)
+	{
+		HashMap<ORef, OptionalDouble> mergedProjectResources = new HashMap();
+		Set<ORef> keys = existingResourceUnitsMap.keySet();
+		for(ORef projectResourceRef : keys)
+		{
+			OptionalDouble costUnit = existingResourceUnitsMap.get(projectResourceRef);
+			if (resourceUnitsMapToMerge.containsKey(projectResourceRef))
+				costUnit = costUnit.add(resourceUnitsMapToMerge.get(projectResourceRef));
+			
+			mergedProjectResources.put(projectResourceRef, costUnit);
+		}
+		
+		return mergedProjectResources;
+	}
+	
+	private void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
