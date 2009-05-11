@@ -39,8 +39,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(500.0, projectResource.getRef(), 10.0);
 		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(600.0, projectResource.getRef(), 20.0);
 		
-		DateUnit dateUnit1 = getProject().createDateUnit(2008, 2008);
-		DateUnit dateUnit2 = getProject().createDateUnit(2009, 2009);
+		DateUnit dateUnit1 = getProject().createSingleYearDateUnit(2008);
+		DateUnit dateUnit2 = getProject().createSingleYearDateUnit(2009);
 		timePeriodCostsMap.add(dateUnit1, timePeriodCosts1);
 		timePeriodCostsMap.add(dateUnit2, timePeriodCosts2);
 		
@@ -59,12 +59,12 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap2006 = new TimePeriodCostsMap();
 		ProjectResource projectResource = createProjectResource();
 		TimePeriodCosts timePeriodCosts2006 = getProject().createTimePeriodCosts(20.0, projectResource.getRef(), 10.0);
-		DateUnit dateUnit2006 = getProject().createDateUnit(2006, 2006);
+		DateUnit dateUnit2006 = getProject().createSingleYearDateUnit(2006);
 		timePeriodCostsMap2006.add(dateUnit2006, timePeriodCosts2006);
 		assertEquals(timePeriodCosts2006, timePeriodCostsMap2006.getTimePeriodCostsForSpecificDateUnit(dateUnit2006));
 		
 		TimePeriodCostsMap timePeriodCostsMap2007 = new TimePeriodCostsMap();
-		DateUnit dateUnit2007 = getProject().createDateUnit(2007, 2007);
+		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
 		TimePeriodCosts timePeriodCosts2007 = getProject().createTimePeriodCosts(22.0, projectResource.getRef(), 12.0);
 		timePeriodCostsMap2007.add(dateUnit2007, timePeriodCosts2007);
 		

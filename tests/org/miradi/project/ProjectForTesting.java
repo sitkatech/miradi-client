@@ -1228,6 +1228,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return DateUnit.createFromDateRange(createDateRange(startYear, endYear));
 	}
 	
+	public DateUnit createSingleYearDateUnit(int year) throws Exception
+	{
+		return createDateUnit(year, year);
+	}
+	
 	public MultiCalendar createMultiCalendar(int year)
 	{
 		return MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
