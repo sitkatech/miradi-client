@@ -36,7 +36,6 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ColumnConfigurationQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
@@ -86,12 +85,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return getProject().getProjectCalendar();
 	}
 	
-	@Override
-	public String getColumnGroupCode(int modelColumn)
-	{
-		return ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
-	}
-
 	@Override
 	public String getColumnName(int col)
 	{
