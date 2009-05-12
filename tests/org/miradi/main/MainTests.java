@@ -68,6 +68,8 @@ import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objectdata.TestIntegerData;
 import org.miradi.objecthelpers.TestDateRangeEffortList;
+import org.miradi.objecthelpers.TestDateUnitEffortList;
+import org.miradi.objecthelpers.TestDateUnitEffort;
 import org.miradi.objecthelpers.TestMapList;
 import org.miradi.objecthelpers.TestORef;
 import org.miradi.objecthelpers.TestORefList;
@@ -326,6 +328,8 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestThreatStressRatingEnsurer.class));
 		suite.addTest(new TestSuite(TestTimePeriodCosts.class));
 		suite.addTest(new TestSuite(TestTimePeriodCostsMap.class));
+		suite.addTest(new TestSuite(TestDateUnitEffort.class));
+		suite.addTest(new TestSuite(TestDateUnitEffortList.class));
 		
 		// objects package
 		suite.addTest(new TestSuite(TestStrategy.class));
