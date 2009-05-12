@@ -112,6 +112,26 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCosts timePeriodCosts4 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		assertEquals("wrong expense?", 3.0, timePeriodCosts4.getExpense().getValue());
 		assertEquals("wrong unit cost?", 50.0, timePeriodCosts4.calculateProjectResources(getProject()).getValue());
+		
+		verifyMergeAddingIncompletedMaps(projectResource, dateUnit2008);
+	}
+
+	private void verifyMergeAddingIncompletedMaps(ProjectResource projectResource, DateUnit dateUnit2008)
+	{
+		TimePeriodCostsMap incompleteMapWithoutResource = new TimePeriodCostsMap();
+		TimePeriodCosts incompleteWithoutResource = new TimePeriodCosts();		
+		incompleteWithoutResource.setExpense(new OptionalDouble(10.0));
+		incompleteMapWithoutResource.add(dateUnit2008, incompleteWithoutResource);
+		
+		TimePeriodCostsMap incompleteMapWithoutExpense = new TimePeriodCostsMap();
+		TimePeriodCosts incompleteWithoutExpense = new TimePeriodCosts();		
+		incompleteWithoutExpense.addResourceCost(projectResource.getRef(), new OptionalDouble(3.0));
+		incompleteMapWithoutExpense.add(dateUnit2008, incompleteWithoutExpense);
+		
+		incompleteMapWithoutResource.mergeAdd(incompleteMapWithoutExpense, dateUnit2008);
+		TimePeriodCosts timePeriodCostsWithExpenseAndResource = incompleteMapWithoutResource.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
+		OptionalDouble resourceExpense = timePeriodCostsWithExpenseAndResource.calculateProjectResources(getProject());
+		assertEquals("wrong resource expense?", 30.0, resourceExpense.getValue());
 	}
 	
 	private ProjectResource createProjectResource() throws Exception
