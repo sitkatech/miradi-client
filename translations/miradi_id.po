@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-08 13:07-0500\n"
+"POT-Creation-Date: 2009-05-12 09:22-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6590,11 +6590,11 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:102
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:95
 msgid "Total"
 msgstr "Total "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:102
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
@@ -7787,6 +7787,9 @@ msgid "FieldLabel|12.MetaWorkUnitColumnCode|Work Unit Detail"
 msgstr ""
 
 msgid "FieldLabel|12.MetaExpenseAmountColumnCode|Expense Amount Detail"
+msgstr ""
+
+msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Details"
 msgstr ""
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
