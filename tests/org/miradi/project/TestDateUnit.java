@@ -24,12 +24,47 @@ import java.util.Vector;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TestDateUnit extends TestCaseWithProject
 {
 	public TestDateUnit(String name)
 	{
 		super(name);
+	}
+	
+	public void test() throws Exception
+	{
+		verifyStoreAndRestore(empty);
+		verifyStoreAndRestore(fiscalYearStartApril);
+		verifyStoreAndRestore(quarter);
+		verifyStoreAndRestore(month);
+	}
+	
+	private void verifyStoreAndRestore(DateUnit dateUnitToVerifyAgainst) throws Exception
+	{
+		EnhancedJsonObject json = dateUnitToVerifyAgainst.toJson();
+		
+		DateUnit dateUnitFromJson = new DateUnit(json);
+		assertEquals("date is same?", dateUnitToVerifyAgainst, dateUnitFromJson);
+	}
+		
+	public void testCreateFromJson() throws Exception
+	{
+		verifyCreateFromJson(empty);
+		verifyCreateFromJson(fiscalYearStartApril);
+		verifyCreateFromJson(quarter);
+		verifyCreateFromJson(month);
+	}
+
+	private void verifyCreateFromJson(DateUnit dateUnitToVerifyAgainst) throws Exception
+	{
+		DateUnit dateUnitFromJson = DateUnit.createFromJson(dateUnitToVerifyAgainst.toJson());
+		assertEquals("not same date range?", dateUnitToVerifyAgainst, dateUnitFromJson);
+			
+		assertNull("not null?", DateRange.createFromJson(null));
+		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject()));
+		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject("{bogusTag:\"\"}")));
 	}
 	
 	public void testConstructFromDaterange() throws Exception
