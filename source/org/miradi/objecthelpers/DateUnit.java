@@ -27,6 +27,7 @@ import java.util.Vector;
 import org.martus.util.MultiCalendar;
 import org.miradi.main.EAM;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class DateUnit
 {
@@ -35,11 +36,40 @@ public class DateUnit
 		this("");
 	}
 	
+	public DateUnit(EnhancedJsonObject json) throws Exception
+	{
+		this(createFromJson(json));
+	}
+	
+	private DateUnit(DateUnit otherDateUnit)
+	{
+		this(otherDateUnit.toString());
+	}
+	
 	public DateUnit(String dateUnitToUse)
 	{
 		dateUnit = dateUnitToUse;
 	}
 	
+	public EnhancedJsonObject toJson()
+	{
+		EnhancedJsonObject json = new EnhancedJsonObject();
+		json.put(TAG_DATE, toString());
+		return json;
+	}
+	
+	public static DateUnit createFromJson(EnhancedJsonObject json) throws Exception 
+	{
+		if (json == null)
+			return null;
+	
+		if (!json.has(TAG_DATE))
+			return null;
+		
+		String dateUnitAsString = json.get(TAG_DATE).toString();
+		return new DateUnit(dateUnitAsString);
+	}
+		
 	public static DateUnit createFromDateRange(DateRange dateRange)
 	{
 		MultiCalendar startDate = dateRange.getStartDate();
@@ -351,6 +381,7 @@ public class DateUnit
 		{"10", "11", "12"}, 
 	};
 	
+	private static final String TAG_DATE = "Date";
 	private static final String YEAR_PREFIX = "YEARFROM:";
 	private String dateUnit;
 }
