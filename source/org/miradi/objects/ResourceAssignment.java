@@ -209,12 +209,15 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	public TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.addResourceCost(getResourceRef(), getWorkUnits(dateUnitToUse.asDateRange()));
-		
-		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
+		OptionalDouble workUnits = getWorkUnits(dateRange);
+		ORef resourceRef = getResourceRef();
+		timePeriodCosts.addResourceCost(resourceRef, workUnits);
+
+		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);	
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception

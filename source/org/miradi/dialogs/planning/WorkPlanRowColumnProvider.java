@@ -38,6 +38,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL,
 				ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE,
 				ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE,
+				ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE,
 				});
 	}
 

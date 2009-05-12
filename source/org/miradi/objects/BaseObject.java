@@ -54,6 +54,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
@@ -538,32 +539,43 @@ abstract public class BaseObject
 		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
-	public TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
+	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
-		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
+		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(dateUnitToUse);
+		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
+		return timePeriodCosts.calculateTotal(getProject());
+	}
+	
+	private TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
+	{
+		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS, dateUnitToUse);
+		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS, dateUnitToUse);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap, dateUnitToUse);
 		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap, dateUnitToUse);
-		
 		return mergedTimePeriodCostsMap;
 	}
 	
-	protected TimePeriodCostsMap getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	{
+		return getTimePeriodCostsMapForAssignments(tag, dateUnitToUse);	
+	}
+				
+	protected TimePeriodCostsMap getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs, DateUnit dateUnitToUse) throws Exception
 	{
 		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
-		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMapForAssignments(tag);
+		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMapForAssignments(tag, dateUnitToUse);
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			timePeriodCostsMap.mergeOverlay(baseObject.getTimePeriodCostsMap(tag), projectDateUnit);
+			timePeriodCostsMap.mergeOverlay(baseObject.getTimePeriodCostsMap(tag, dateUnitToUse), projectDateUnit);
 		}
 		
 		return timePeriodCostsMap;
 	}
 	
-	protected TimePeriodCostsMap getTimePeriodCostsMapForAssignments(String tag) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMapForAssignments(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
@@ -571,17 +583,12 @@ abstract public class BaseObject
 		for(int i = 0; i < assignmentRefs.size(); ++i)
 		{
 			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
-			timePeriodCostsMap.mergeAdd(assignment.getTimePeriodCostsMap(tag), projectDateUnit);
+			timePeriodCostsMap.mergeAdd(assignment.getTimePeriodCostsMap(tag, dateUnitToUse), projectDateUnit);
 		}
 		
 		return timePeriodCostsMap;
 	}
 	
-	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
-	{
-		return getTimePeriodCostsMapForAssignments(tag);	
-	}
-			
 	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs) throws Exception
 	{
 		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();

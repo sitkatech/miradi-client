@@ -52,12 +52,14 @@ public class ExpenseAssignment extends Assignment
 	}
 	
 	@Override
-	public TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.setExpense(getExpenseAmounts(dateUnitToUse.asDateRange()));
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
+		OptionalDouble expense = getExpenseAmounts(dateRange);
+		timePeriodCosts.setExpense(expense);
 		
-		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);
+		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);	
 	}
 	
 	public ORef getFundingSourceRef()
