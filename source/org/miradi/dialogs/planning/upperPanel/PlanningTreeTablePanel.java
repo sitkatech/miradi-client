@@ -25,6 +25,7 @@ import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
@@ -87,6 +88,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
 		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse);
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse);
+		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), treeToUse);
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
@@ -302,6 +304,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		futureStatusModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
 		expenseAmountsTableModel.fireTableDataChanged();
+		budgetDetailsTableModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -333,6 +336,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		if (columnsToShow.contains(ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
+		
+		if (columnsToShow.contains(ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+			multiModel.addModel(budgetDetailsTableModel);
 		
 		mainTable.reloadColumnSequences();
 		mainTable.reloadColumnWidths();
@@ -370,6 +376,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private PlanningViewFutureStatusTableModel futureStatusModel;
 	private WorkUnitsTableModel workUnitsTableModel;
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
+	private BudgetDetailsTableModel budgetDetailsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	

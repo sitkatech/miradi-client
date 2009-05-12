@@ -526,9 +526,9 @@ public class AppPreferences
 		return WORK_UNITS_TOTAL_BACKGROUND;
 	}
 	
-	public static Color getExpenseAmountsBackgroundColor()
+	public static Color getBudgetDetaislBackgroundColor()
 	{
-		return EXPENSE_AMOUNT_TOTAL_BACKGROUND;
+		return BUDGET_DETAILS_TOTAL_BACKGROUND;
 	}
 	
 	public static Color getWorkUnitsBackgroundColor(DateUnit dateUnit)
@@ -550,7 +550,7 @@ public class AppPreferences
 	public static Color getExpenseAmountBackgroundColor(DateUnit dateUnit)
 	{
 		if(dateUnit.isBlank())
-			return getExpenseAmountsBackgroundColor();
+			return EXPENSE_AMOUNT_TOTAL_BACKGROUND;
 		if(dateUnit.isYear())
 			return EXPENSE_AMOUNT_YEAR_BACKGROUND;
 		if(dateUnit.isQuarter())
@@ -562,6 +562,23 @@ public class AppPreferences
 		EAM.logWarning("Unknown work units date unit type: " + dateUnit);
 		return WORK_UNITS_TOTAL_BACKGROUND;
 	}
+	
+	public static Color getBudgetDetailsBackgroundColor(DateUnit dateUnit)
+	{
+		if(dateUnit.isBlank())
+			return BUDGET_DETAILS_TOTAL_BACKGROUND;
+		if(dateUnit.isYear())
+			return BUDGET_DETAILS_YEAR_BACKGROUND;
+		if(dateUnit.isQuarter())
+			return BUDGET_DETAILS_QUARTER_BACKGROUND;
+		if(dateUnit.isMonth())
+			return BUDGET_DETAILS_MONTH_BACKGROUND;
+		if(dateUnit.isDay())
+			return BUDGET_DETAILS_DAY_BACKGROUND;
+		EAM.logWarning("Unknown work units date unit type: " + dateUnit);
+		return BUDGET_DETAILS_TOTAL_BACKGROUND;
+	}
+
 
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
@@ -627,6 +644,12 @@ public class AppPreferences
 	private static final Color EXPENSE_AMOUNT_QUARTER_BACKGROUND = new Color(0xBB, 0xEE, 0xBB);
 	private static final Color EXPENSE_AMOUNT_MONTH_BACKGROUND =   new Color(0xCC, 0xFF, 0xCC);
 	private static final Color EXPENSE_AMOUNT_DAY_BACKGROUND =     new Color(0xDD, 0xFF, 0xDD);
+	
+	private static final Color BUDGET_DETAILS_TOTAL_BACKGROUND =   new Color(0xAA, 0x99, 0x99);
+	private static final Color BUDGET_DETAILS_YEAR_BACKGROUND =    new Color(0xBB, 0x99, 0x99);
+	private static final Color BUDGET_DETAILS_QUARTER_BACKGROUND = new Color(0xCC, 0x99, 0x99);
+	private static final Color BUDGET_DETAILS_MONTH_BACKGROUND =   new Color(0xDD, 0x99, 0x99);
+	private static final Color BUDGET_DETAILS_DAY_BACKGROUND =     new Color(0xEE, 0x99, 0x99);
 
 	private static final boolean DEFAULT_GRID_VISIBILITY_VALUE = false;
 	private static final boolean DEFAULT_IS_MAXIMIZED_VALUE = false;
