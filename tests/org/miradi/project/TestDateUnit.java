@@ -60,7 +60,7 @@ public class TestDateUnit extends TestCaseWithProject
 	private void verifyCreateFromJson(DateUnit dateUnitToVerifyAgainst) throws Exception
 	{
 		DateUnit dateUnitFromJson = DateUnit.createFromJson(dateUnitToVerifyAgainst.toJson());
-		assertEquals("not same date range?", dateUnitToVerifyAgainst, dateUnitFromJson);
+		assertEquals("not same date unit?", dateUnitToVerifyAgainst, dateUnitFromJson);
 			
 		assertNull("not null?", DateRange.createFromJson(null));
 		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject()));
@@ -247,7 +247,7 @@ public class TestDateUnit extends TestCaseWithProject
 	private final DateUnit fiscalYearStartOctober = new DateUnit("YEARFROM:2005-10");
 	private final DateUnit quarter = new DateUnit("2009Q4");
 	
-	private final DateUnit month = new DateUnit("2008-12");
+	public static final DateUnit month = new DateUnit("2008-12");
 	
 	private final DateUnit month01 = new DateUnit("2008-01");
 	private final DateUnit month02 = new DateUnit("2008-02");
