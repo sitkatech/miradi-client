@@ -120,11 +120,11 @@ public class TimePeriodCostsMap
 		Set<ORef> keys = resourceUnitsMapToMerge.keySet();
 		for(ORef projectResourceRef : keys)
 		{
-			OptionalDouble costUnit = resourceUnitsMapToMerge.get(projectResourceRef);
+			OptionalDouble workUnitsForResource = resourceUnitsMapToMerge.get(projectResourceRef);
 			if (existingResourceUnitsMap.containsKey(projectResourceRef))
-				costUnit = costUnit.add(existingResourceUnitsMap.get(projectResourceRef));
+				workUnitsForResource = workUnitsForResource.add(existingResourceUnitsMap.get(projectResourceRef));
 			
-			mergedResourceWorkUnits.put(projectResourceRef, costUnit);
+			mergedResourceWorkUnits.put(projectResourceRef, workUnitsForResource);
 		}
 		
 		return mergedResourceWorkUnits;
