@@ -28,8 +28,10 @@ import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
+import org.json.JSONArray;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
+import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
@@ -151,6 +153,45 @@ public class TestDataUpgrader extends EAMTestCase
 		File objectsDir = new File(parentDir, dirName);
 		objectsDir.mkdirs();
 		return objectsDir;
+	}
+	
+	public void testConvertToDateUnitEffortList() throws Exception
+	{
+		String resourceAssignment = "{\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"36\",\"Details\":\"{\\\"DateRangeEfforts\\\":[{\\\"NumberOfUnits\\\":15,\\\"DateRange\\\":{\\\"EndDate\\\":\\\"2010-12-31\\\",\\\"StartDate\\\":\\\"2010-01-01\\\"},\\\"CostUnitCode\\\":\\\"\\\"}]}\",\"ExpenseRefs\":\"\",\"BudgetCostOverride\":\"\",\"FundingSource\":\"\",\"WhoOverrideRefs\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1242142436461\",\"BudgetCostMode\":\"\",\"Id\":35,\"Label\":\"\"}";
+		String expenseAssignment = "{\"AssignmentIds\":\"\",\"WhenOverride\":\"\",\"AccountingCodeRef\":\"\",\"FundingSourceRef\":\"\",\"TimeStampModified\":\"1242143768537\",\"BudgetCostOverride\":\"\",\"ExpenseRefs\":\"\",\"Details\":\"{\\\"DateRangeEfforts\\\":[{\\\"NumberOfUnits\\\":10,\\\"DateRange\\\":{\\\"EndDate\\\":\\\"2010-12-31\\\",\\\"StartDate\\\":\\\"2010-01-01\\\"},\\\"CostUnitCode\\\":\\\"\\\"}]}\",\"BudgetCostMode\":\"\",\"Label\":\"n\",\"Id\":34,\"WhoOverrideRefs\":\"\"}";
+		
+		File jsonDir = createJsonDir();
+		
+		int[] resourceAssignmentRawIds = {35, };
+		final int RESOURCE_ASSIGNMENT_TYPE = 14;
+		createObjectFiles(jsonDir, RESOURCE_ASSIGNMENT_TYPE, resourceAssignmentRawIds, new String[] {resourceAssignment, });
+		
+		int[] expenseAssignmentRawIds = {34, };
+		final int EXPENSE_ASSIGNMENT_TYPE = 51;
+		createObjectFiles(jsonDir, EXPENSE_ASSIGNMENT_TYPE, expenseAssignmentRawIds, new String[] {expenseAssignment, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion42();
+		
+		assertDateRangeEffortListWasConverted(jsonDir, resourceAssignmentRawIds, RESOURCE_ASSIGNMENT_TYPE, 15);
+		assertDateRangeEffortListWasConverted(jsonDir, expenseAssignmentRawIds, EXPENSE_ASSIGNMENT_TYPE, 10);
+	}
+
+	private void assertDateRangeEffortListWasConverted(File jsonDir, int[] assignmentRawIds, final int ASSIGNMENT_TYPE, int expectedNumberOfUnits) throws Exception
+	{
+		File assignmentDir = DataUpgrader.getObjectsDir(jsonDir, ASSIGNMENT_TYPE);
+		File assignmentFile =  new File(assignmentDir, Integer.toString(assignmentRawIds[0]));
+		EnhancedJsonObject assignmentJson = new EnhancedJsonObject(readFile(assignmentFile));
+		EnhancedJsonObject detailsJson = new EnhancedJsonObject(assignmentJson.getString("Details"));
+		
+		JSONArray dateUnitEffortsJsonArray = new JSONArray(detailsJson.getString("DateUnitEfforts"));
+		assertEquals("wrong number of date unit efforts?", 1, dateUnitEffortsJsonArray.length());
+		
+		EnhancedJsonObject dateUnitEffortJson = new EnhancedJsonObject(dateUnitEffortsJsonArray.getString(0));
+		assertEquals("incorrect number of units?", expectedNumberOfUnits, dateUnitEffortJson.getInt("NumberOfUnits"));
+		
+		EnhancedJsonObject dateUnitJson = new EnhancedJsonObject(dateUnitEffortJson.getString("DateUnit"));
+		assertEquals("wrong date unit?", "YEARFROM:2010-01", dateUnitJson.getString("Date"));
 	}
 	
 	public void testSurroundTargetsWithNewScopeBoxType() throws Exception

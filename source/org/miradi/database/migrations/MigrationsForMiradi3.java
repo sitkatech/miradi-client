@@ -28,4 +28,10 @@ public class MigrationsForMiradi3
 		//NOTE: Allow saving work units for more types of date units
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 41);
 	}
+
+	public static void upgradeToVersion42() throws Exception
+	{
+		ConvertDateRangeEffortListToDateUnitEffortList.convertToDateUnitEffortList();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 42);
+	}
 }
