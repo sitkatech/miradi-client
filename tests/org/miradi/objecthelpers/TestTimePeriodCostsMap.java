@@ -149,7 +149,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		mapWithOnlyExpenses.mergeAdd(mapWithOnlyResourceWorkUnits, dateUnit2008);
 		TimePeriodCosts timePeriodCostsWithExpenseAndResource = mapWithOnlyExpenses.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		OptionalDouble resourceExpense = timePeriodCostsWithExpenseAndResource.calculateProjectResources(getProject());
-		assertEquals("wrong resource expense?", 30.0, resourceExpense.getValue());
+		assertEquals("wrong resource expense?", (3.0 * 10.0), resourceExpense.getValue());
 	}
 	
 	private ProjectResource createProjectResource() throws Exception
