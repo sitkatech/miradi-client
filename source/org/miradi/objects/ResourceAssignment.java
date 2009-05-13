@@ -212,9 +212,12 @@ public class ResourceAssignment extends Assignment
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
+		ORef resourceRef = getResourceRef();
+		if (resourceRef.isInvalid())
+			return new TimePeriodCostsMap();
+		
 		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
 		OptionalDouble workUnits = getWorkUnits(dateRange);
-		ORef resourceRef = getResourceRef();
 		timePeriodCosts.addResourceCost(resourceRef, workUnits);
 
 		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);	
