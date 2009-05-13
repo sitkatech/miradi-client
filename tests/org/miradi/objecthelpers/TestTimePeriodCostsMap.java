@@ -56,15 +56,18 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	
 	public void testMergeOverlay() throws Exception
 	{	
+		DateUnit projectDateUnit = getProject().createDateUnit(2000, 2010);
+		DateUnit dateUnit2006 = getProject().createSingleYearDateUnit(2006);
+		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
+		
+		
 		TimePeriodCostsMap timePeriodCostsMap2006 = new TimePeriodCostsMap();
 		ProjectResource projectResourcePaul = createProjectResource();
-		TimePeriodCosts timePeriodCosts2006 = getProject().createTimePeriodCosts(20.0, projectResourcePaul.getRef(), 10.0);
-		DateUnit dateUnit2006 = getProject().createSingleYearDateUnit(2006);
+		TimePeriodCosts timePeriodCosts2006 = getProject().createTimePeriodCosts(20.0, projectResourcePaul.getRef(), 10.0);		
 		timePeriodCostsMap2006.add(dateUnit2006, timePeriodCosts2006);
 		assertEquals(timePeriodCosts2006, timePeriodCostsMap2006.getTimePeriodCostsForSpecificDateUnit(dateUnit2006));
 		
 		TimePeriodCostsMap timePeriodCostsMap2007 = new TimePeriodCostsMap();
-		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
 		TimePeriodCosts timePeriodCosts2007 = getProject().createTimePeriodCosts(22.0, projectResourcePaul.getRef(), 12.0);
 		TimePeriodCosts timePeriodCosts2007Q1 = getProject().createTimePeriodCosts(23.0, projectResourcePaul.getRef(), 11.0);
 		timePeriodCostsMap2007.add(dateUnit2007, timePeriodCosts2007);
@@ -75,7 +78,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong calculated project resource?", 120.0, timePeriodCosts2007.calculateProjectResources(getProject()).getValue());
 		
 		TimePeriodCostsMap projectTimePeriodCostsMap = new TimePeriodCostsMap();
-		DateUnit projectDateUnit = getProject().createDateUnit(2000, 2010);
 		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMap2006, projectDateUnit);
 		TimePeriodCosts specificTimePeriodCostsFor2006 = projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2006);
 		assertEquals("Merging larger unit changed existing data?", timePeriodCosts2006, specificTimePeriodCostsFor2006);
