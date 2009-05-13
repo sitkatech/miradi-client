@@ -87,7 +87,7 @@ public class DateRangeEffortList
 	{
 		OptionalDouble totalUnitQuantity = getOptionalTotalUnitQuantity(boundryDateRange);
 		if (totalUnitQuantity.hasValue())
-			return totalUnitQuantity.getValue();
+			return totalUnitQuantity.getRawValue();
 		
 		return 0.0;
 	}
@@ -109,7 +109,7 @@ public class DateRangeEffortList
 	{
 		OptionalDouble totalUnitQuantity = getOptionalTotalUnitQuantity();
 		if (totalUnitQuantity.hasValue())
-			return totalUnitQuantity.getValue();
+			return totalUnitQuantity.getRawValue();
 		
 		return 0.0;
 	}
