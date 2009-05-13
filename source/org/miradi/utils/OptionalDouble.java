@@ -50,12 +50,12 @@ public class OptionalDouble
 	public OptionalDouble add(OptionalDouble optionalDoubleToAdd)
 	{ 
 		if (isValidValue(optionalDoubleToAdd) && hasValue())
-			return new OptionalDouble(optionalDouble + optionalDoubleToAdd.getValue()); 
+			return new OptionalDouble(optionalDouble + optionalDoubleToAdd.getRawValue()); 
 
 		if (isValidValue(optionalDoubleToAdd))
-			return new OptionalDouble(optionalDoubleToAdd.getValue());
+			return new OptionalDouble(optionalDoubleToAdd.getRawValue());
 		
-		return new OptionalDouble(getValue());
+		return new OptionalDouble(getRawValue());
 	}
 	
 	public OptionalDouble multiplyValue(Double doubleToMultiply)
@@ -66,7 +66,7 @@ public class OptionalDouble
 	public OptionalDouble multiply(OptionalDouble optionalDoubleToMultiply)
 	{
 		if (isValidValue(optionalDoubleToMultiply) && hasValue())
-			return new OptionalDouble(optionalDoubleToMultiply.getValue() * getValue());
+			return new OptionalDouble(optionalDoubleToMultiply.getRawValue() * getRawValue());
 		
 		return new OptionalDouble();
 	}
@@ -84,7 +84,7 @@ public class OptionalDouble
 		return hasValue;
 	}
 	
-	public Double getValue()
+	public Double getRawValue()
 	{
 		return optionalDouble;
 	}
@@ -102,7 +102,7 @@ public class OptionalDouble
 		if (!other.hasValue())
 			return false;
 		
-		return other.getValue().equals(getValue());
+		return other.getRawValue().equals(getRawValue());
 	}
 	
 	@Override
@@ -122,7 +122,7 @@ public class OptionalDouble
 			NumberFormat formatter = new DecimalFormat();
 			formatter.setGroupingUsed(false);
 			formatter.setMinimumFractionDigits(0);
-			return formatter.format(getValue());
+			return formatter.format(getRawValue());
 		}
 		
 		return "";

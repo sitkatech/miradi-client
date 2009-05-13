@@ -57,11 +57,11 @@ public class TestAssignment extends ObjectTestCase
 
 		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
 
-		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateRange1).getValue());
-		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateRange2).getValue());
+		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateRange1).getRawValue());
+		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateRange2).getRawValue());
 		
 		DateRange totalProjectDateRange = DateRange.combine(dateRange1, dateRange2);
-		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateRange).getValue());
+		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateRange).getRawValue());
 	}
 	
 	public DateRangeEffort createDateRangeEffort(int unitQuantatiy, DateRange dateRange) throws Exception
