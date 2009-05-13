@@ -151,7 +151,7 @@ public class TimePeriodCostsMap
 		return data.isEmpty();
 	}
 	
-	public HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
+	private HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
 	{
 		return new HashMap(data);
 	}
