@@ -57,15 +57,15 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	public void testMergeOverlay() throws Exception
 	{	
 		TimePeriodCostsMap timePeriodCostsMap2006 = new TimePeriodCostsMap();
-		ProjectResource projectResource = createProjectResource();
-		TimePeriodCosts timePeriodCosts2006 = getProject().createTimePeriodCosts(20.0, projectResource.getRef(), 10.0);
+		ProjectResource projectResourcePaul = createProjectResource();
+		TimePeriodCosts timePeriodCosts2006 = getProject().createTimePeriodCosts(20.0, projectResourcePaul.getRef(), 10.0);
 		DateUnit dateUnit2006 = getProject().createSingleYearDateUnit(2006);
 		timePeriodCostsMap2006.add(dateUnit2006, timePeriodCosts2006);
 		assertEquals(timePeriodCosts2006, timePeriodCostsMap2006.getTimePeriodCostsForSpecificDateUnit(dateUnit2006));
 		
 		TimePeriodCostsMap timePeriodCostsMap2007 = new TimePeriodCostsMap();
 		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
-		TimePeriodCosts timePeriodCosts2007 = getProject().createTimePeriodCosts(22.0, projectResource.getRef(), 12.0);
+		TimePeriodCosts timePeriodCosts2007 = getProject().createTimePeriodCosts(22.0, projectResourcePaul.getRef(), 12.0);
 		timePeriodCostsMap2007.add(dateUnit2007, timePeriodCosts2007);
 		
 		assertEquals("wrong expense?", 22.0, timePeriodCosts2007.getExpense().getValue());
@@ -82,8 +82,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("Merging larger unit changed existing data?", timePeriodCosts2007, specificTimePeriodCostsFor2007);
 		
 		TimePeriodCostsMap timePeriodCostsMapSecond2007 = new TimePeriodCostsMap();
-		ProjectResource projectResource2 = createProjectResource();
-		TimePeriodCosts timePeriodCostsSecond2007 = getProject().createTimePeriodCosts(25.0, projectResource2.getRef(), 15.0);
+		ProjectResource projectResourceJon = createProjectResource();
+		TimePeriodCosts timePeriodCostsSecond2007 = getProject().createTimePeriodCosts(25.0, projectResourceJon.getRef(), 15.0);
 		timePeriodCostsMapSecond2007.add(dateUnit2007, timePeriodCostsSecond2007);
 		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMapSecond2007, projectDateUnit);
 		TimePeriodCosts timePeriodCostsAfterOverlay = specificTimePeriodCostsFor2007;
