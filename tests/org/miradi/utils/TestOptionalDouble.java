@@ -31,7 +31,7 @@ public class TestOptionalDouble extends EAMTestCase
 	public void testBasics()
 	{
 		OptionalDouble optionalDouble = new OptionalDouble();
-		assertEquals("wrong hashcode for empty value?", 0, optionalDouble.hashCode());
+		assertEquals("wrong hashcode for empty value?", new OptionalDouble().hashCode(), optionalDouble.hashCode());
 		assertFalse("should not have value?", optionalDouble.hasValue());
 		
 		OptionalDouble returnedOptionalDouble1 = optionalDouble.add(null);
