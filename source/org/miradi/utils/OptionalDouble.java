@@ -84,9 +84,14 @@ public class OptionalDouble
 		return hasValue;
 	}
 	
-	public Double getRawValue()
+	private Double getRawValue()
 	{
 		return optionalDouble;
+	}
+	
+	public double getValue()
+	{
+		return getRawValue().doubleValue();
 	}
 	
 	@Override
