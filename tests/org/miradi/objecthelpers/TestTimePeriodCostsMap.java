@@ -61,15 +61,15 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
 		
 		
-		TimePeriodCostsMap timePeriodCostsMap2006 = new TimePeriodCostsMap();
 		ProjectResource projectResourcePaul = createProjectResource();
-		TimePeriodCosts timePeriodCosts2006 = getProject().createTimePeriodCosts(20.0, projectResourcePaul.getRef(), 10.0);		
+		TimePeriodCostsMap timePeriodCostsMap2006 = new TimePeriodCostsMap();
+		TimePeriodCosts timePeriodCosts2006 = createTimePeriodCosts(22.0, projectResourcePaul, 10.0);		
 		timePeriodCostsMap2006.add(dateUnit2006, timePeriodCosts2006);
 		assertEquals(timePeriodCosts2006, timePeriodCostsMap2006.getTimePeriodCostsForSpecificDateUnit(dateUnit2006));
 		
 		TimePeriodCostsMap timePeriodCostsMap2007 = new TimePeriodCostsMap();
-		TimePeriodCosts timePeriodCosts2007 = getProject().createTimePeriodCosts(22.0, projectResourcePaul.getRef(), 12.0);
-		TimePeriodCosts timePeriodCosts2007Q1 = getProject().createTimePeriodCosts(23.0, projectResourcePaul.getRef(), 11.0);
+		TimePeriodCosts timePeriodCosts2007 = createTimePeriodCosts(22.0, projectResourcePaul, 12.0);
+		TimePeriodCosts timePeriodCosts2007Q1 = createTimePeriodCosts(23.0, projectResourcePaul, 11.0);
 		timePeriodCostsMap2007.add(dateUnit2007, timePeriodCosts2007);
 		DateUnit dateUnit2007Q1 = new DateUnit("2007Q1");
 		timePeriodCostsMap2007.add(dateUnit2007Q1, timePeriodCosts2007Q1);
@@ -88,13 +88,18 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		
 		TimePeriodCostsMap timePeriodCostsMapSecond2007 = new TimePeriodCostsMap();
 		ProjectResource projectResourceJon = createProjectResource();
-		TimePeriodCosts timePeriodCostsSecond2007 = getProject().createTimePeriodCosts(25.0, projectResourceJon.getRef(), 15.0);
+		TimePeriodCosts timePeriodCostsSecond2007 = createTimePeriodCosts(25.0, projectResourceJon, 15.0);
 		timePeriodCostsMapSecond2007.add(dateUnit2007, timePeriodCostsSecond2007);
 		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMapSecond2007, projectDateUnit);
 		TimePeriodCosts timePeriodCostsAfterOverlay = specificTimePeriodCostsFor2007;
 		assertEquals("wrong expense after merge overlay?", 47.0, timePeriodCostsAfterOverlay.getExpense().getValue());
 		OptionalDouble projectResourceCost = timePeriodCostsAfterOverlay.calculateProjectResources(getProject());
 		assertEquals("wrong project resource cost?", 270.0, projectResourceCost.getValue());
+	}
+
+	private TimePeriodCosts createTimePeriodCosts(double expenses, ProjectResource projectResource, double units)
+	{
+		return getProject().createTimePeriodCosts(expenses, projectResource.getRef(), units);
 	}
 
 	public void testMergeAdd() throws Exception
