@@ -38,13 +38,13 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		
 		ProjectResource projectResource = createProjectResource();
 		timePeriodCosts.addResourceCost(projectResource.getRef(), new OptionalDouble(10.0));
-		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getUnits(projectResource.getRef()).getRawValue());
+		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getUnits(projectResource.getRef()).getValue());
 		
 		timePeriodCosts.setExpense(new OptionalDouble(20.0));
-		assertEquals("wrong expense?", 20.0, timePeriodCosts.getExpense().getRawValue());
+		assertEquals("wrong expense?", 20.0, timePeriodCosts.getExpense().getValue());
 		
-		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateProjectResources(getProject()).getRawValue());
-		assertEquals("wrong total cost?", 120.0, timePeriodCosts.calculateTotal(getProject()).getRawValue());
+		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateProjectResources(getProject()).getValue());
+		assertEquals("wrong total cost?", 120.0, timePeriodCosts.calculateTotal(getProject()).getValue());
 	}
 	
 	public void testEquals() throws Exception

@@ -36,18 +36,17 @@ public class TestOptionalDouble extends EAMTestCase
 		
 		OptionalDouble returnedOptionalDouble1 = optionalDouble.add(null);
 		assertFalse("should not have value?", returnedOptionalDouble1.hasValue());
-		assertNull("should have been null?", returnedOptionalDouble1.getRawValue());
 		
 		OptionalDouble returnedOptionalDouble2 = optionalDouble.add(new OptionalDouble(10.0));
 		assertTrue("should have value?", returnedOptionalDouble2.hasValue());
-		assertEquals("wrong value?", 10.0, returnedOptionalDouble2.getRawValue());
+		assertEquals("wrong value?", 10.0, returnedOptionalDouble2.getValue());
 		
 		OptionalDouble optionalDoubleWithValue = new OptionalDouble(11.0);
 		assertTrue("should have value?", optionalDoubleWithValue.hasValue());
 		
 		OptionalDouble returendOptionalDouble3 = optionalDoubleWithValue.add(new OptionalDouble(11.0));
 		assertTrue("should have value?", returendOptionalDouble3.hasValue());
-		assertEquals("wrong value?", 22.0, returendOptionalDouble3.getRawValue());
+		assertEquals("wrong value?", 22.0, returendOptionalDouble3.getValue());
 	}
 	
 	public void testMultiplication()
@@ -62,7 +61,7 @@ public class TestOptionalDouble extends EAMTestCase
 		OptionalDouble optionalDoubleWithValue = new OptionalDouble(10.0);
 		OptionalDouble returnedValue3 = optionalDoubleWithValue.multiply(new OptionalDouble(10.0));
 		assertTrue("should have value?", returnedValue3.hasValue());
-		assertEquals("wrong value?", 100.0, returnedValue3.getRawValue());
+		assertEquals("wrong value?", 100.0, returnedValue3.getValue());
 	}
 	
 	public void testEquals()
