@@ -141,12 +141,12 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		incompleteWithoutResource.setExpense(new OptionalDouble(10.0));
 		mapWithOnlyExpenses.add(dateUnit2008, incompleteWithoutResource);
 		
-		TimePeriodCostsMap incompleteMapWithoutExpense = new TimePeriodCostsMap();
+		TimePeriodCostsMap mapWithOnlyResourceWorkUnits = new TimePeriodCostsMap();
 		TimePeriodCosts incompleteWithoutExpense = new TimePeriodCosts();		
 		incompleteWithoutExpense.addResourceCost(projectResource.getRef(), new OptionalDouble(3.0));
-		incompleteMapWithoutExpense.add(dateUnit2008, incompleteWithoutExpense);
+		mapWithOnlyResourceWorkUnits.add(dateUnit2008, incompleteWithoutExpense);
 		
-		mapWithOnlyExpenses.mergeAdd(incompleteMapWithoutExpense, dateUnit2008);
+		mapWithOnlyExpenses.mergeAdd(mapWithOnlyResourceWorkUnits, dateUnit2008);
 		TimePeriodCosts timePeriodCostsWithExpenseAndResource = mapWithOnlyExpenses.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		OptionalDouble resourceExpense = timePeriodCostsWithExpenseAndResource.calculateProjectResources(getProject());
 		assertEquals("wrong resource expense?", 30.0, resourceExpense.getValue());
