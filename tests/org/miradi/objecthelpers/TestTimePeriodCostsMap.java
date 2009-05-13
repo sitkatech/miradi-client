@@ -71,10 +71,12 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap projectTimePeriodCostsMap = new TimePeriodCostsMap();
 		DateUnit projectDateUnit = getProject().createDateUnit(2000, 2010);
 		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMap2006, projectDateUnit);
-		assertEquals("did not get correct time period cost after merge overlay?", timePeriodCosts2006, projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2006));
+		TimePeriodCosts specificTimePeriodCostsFor2006 = projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2006);
+		assertEquals("Merging larger unit changed existing data?", timePeriodCosts2006, specificTimePeriodCostsFor2006);
 		
 		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMap2007, projectDateUnit);
-		assertEquals("did not get correct time period cost after merge overlay?", timePeriodCosts2007, projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2007));
+		TimePeriodCosts specificTimePeriodCostsFor2007 = projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2007);
+		assertEquals("Merging larger unit changed existing data?", timePeriodCosts2007, specificTimePeriodCostsFor2007);
 		
 		assertEquals("wrong expense?", 22.0, timePeriodCosts2007.getExpense().getValue());
 		assertEquals("wrong calculated project resource?", 120.0, timePeriodCosts2007.calculateProjectResources(getProject()).getValue());
@@ -84,7 +86,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCosts timePeriodCostsSecond2007 = getProject().createTimePeriodCosts(25.0, projectResource2.getRef(), 15.0);
 		timePeriodCostsMapSecond2007.add(dateUnit2007, timePeriodCostsSecond2007);
 		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMapSecond2007, projectDateUnit);
-		TimePeriodCosts timePeriodCostsAfterOverlay = projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2007);
+		TimePeriodCosts timePeriodCostsAfterOverlay = specificTimePeriodCostsFor2007;
 		assertEquals("wrong expense after merge overlay?", 47.0, timePeriodCostsAfterOverlay.getExpense().getValue());
 		OptionalDouble projectResourceCost = timePeriodCostsAfterOverlay.calculateProjectResources(getProject());
 		assertEquals("wrong project resource cost?", 270.0, projectResourceCost.getValue());
