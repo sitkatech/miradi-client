@@ -66,7 +66,10 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap2007 = new TimePeriodCostsMap();
 		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
 		TimePeriodCosts timePeriodCosts2007 = getProject().createTimePeriodCosts(22.0, projectResourcePaul.getRef(), 12.0);
+		TimePeriodCosts timePeriodCosts2007Q1 = getProject().createTimePeriodCosts(23.0, projectResourcePaul.getRef(), 11.0);
 		timePeriodCostsMap2007.add(dateUnit2007, timePeriodCosts2007);
+		DateUnit dateUnit2007Q1 = new DateUnit("2007Q1");
+		timePeriodCostsMap2007.add(dateUnit2007Q1, timePeriodCosts2007Q1);
 		
 		assertEquals("wrong expense?", 22.0, timePeriodCosts2007.getExpense().getValue());
 		assertEquals("wrong calculated project resource?", 120.0, timePeriodCosts2007.calculateProjectResources(getProject()).getValue());
