@@ -278,36 +278,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return project;
 	}
 
-	public Vector<DateRange> getYearlyDateRanges() throws Exception
-	{
-		if(isInvalidProjectCalendar())
-			rebuildProjectDateRanges();
-		return yearlyDateRanges;
-	}
-	
-	private boolean isInvalidProjectCalendar()
-	{
-		if (dateRanges == null)
-			return true;
-		
-		if (yearlyDateRanges == null)
-			return true;
-			
-		if (!getPlanningStartDate().equals(startDate))
-			return true;
-		
-		if (!getPlanningEndDate().equals(endDate))
-			return true;
-		
-		if (firstCalendarMonth != getFiscalYearFirstMonth())
-			return true;
-		
-		if (isBudgetTimePeriodQuarterly != isProjectBudgetTimePeriodQuarterly())
-			return true;
-		
-		return false;
-	}
-
 	private static int getFiscalYearMonthSkew(int fiscalYearFirstMonth)
 	{
 		switch(fiscalYearFirstMonth)
