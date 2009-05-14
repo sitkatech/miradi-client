@@ -35,41 +35,6 @@ public class TestProjectCalendar extends TestCaseWithProject
 	{
 		super(name);
 	}
-
-	public void testBasics() throws Exception
-	{
-		ProjectCalendar pc = getProjectCalendar();
-		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, "2006-01-01");
-		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, "2007-12-31");
-		pc.rebuildProjectDateRanges();
-		{
-			Vector yearlyRanges = pc.getYearlyDateRanges();
-			assertEquals(2, yearlyRanges.size());
-			assertEquals("FY06", pc.getDateRangeName((DateRange)yearlyRanges.get(0)));
-			assertEquals("FY07", pc.getDateRangeName((DateRange)yearlyRanges.get(1)));
-		}
-
-		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "7");
-		pc.rebuildProjectDateRanges();
-		{
-			Vector yearlyRanges = pc.getYearlyDateRanges();
-			assertEquals(3, yearlyRanges.size());
-			assertEquals("FY06", pc.getDateRangeName((DateRange)yearlyRanges.get(0)));
-			assertEquals("FY07", pc.getDateRangeName((DateRange)yearlyRanges.get(1)));
-			assertEquals("FY08", pc.getDateRangeName((DateRange)yearlyRanges.get(2)));
-		}
-
-		getProject().getMetadata().setData(ProjectMetadata.TAG_START_DATE, "2006-01-02");
-		getProject().getMetadata().setData(ProjectMetadata.TAG_EXPECTED_END_DATE, "2007-01-02");
-		getProject().getMetadata().setData(ProjectMetadata.TAG_FISCAL_YEAR_START, "1");
-		pc.rebuildProjectDateRanges();
-		{
-			Vector yearlyRanges = pc.getYearlyDateRanges();
-			assertEquals(2, yearlyRanges.size());
-			assertEquals("FY06", pc.getDateRangeName((DateRange)yearlyRanges.get(0)));
-			assertEquals("FY07", pc.getDateRangeName((DateRange)yearlyRanges.get(1)));
-		}
-	}
 	
 	public void testGettingDatesThatAreNotSet() throws Exception
 	{
