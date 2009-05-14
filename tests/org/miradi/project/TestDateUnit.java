@@ -62,9 +62,9 @@ public class TestDateUnit extends TestCaseWithProject
 		DateUnit dateUnitFromJson = DateUnit.createFromJson(dateUnitToVerifyAgainst.toJson());
 		assertEquals("Create from Json not same date range?", dateUnitToVerifyAgainst, dateUnitFromJson);
 			
-		assertNull("not null?", DateRange.createFromJson(null));
-		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject()));
-		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject("{bogusTag:\"\"}")));
+		assertNull("json from null worked?", DateUnit.createFromJson(null));
+		assertNull("Json with no tags worked?", DateUnit.createFromJson(new EnhancedJsonObject()));
+		assertNull("Json without expected tag worked?", DateUnit.createFromJson(new EnhancedJsonObject("{bogusTag:\"\"}")));
 	}
 	
 	public void testConstructFromDaterange() throws Exception
