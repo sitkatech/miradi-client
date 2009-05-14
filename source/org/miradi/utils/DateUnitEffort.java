@@ -40,12 +40,10 @@ public class DateUnitEffort
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		if (dateUnit != null)
-		{
-			json.put(TAG_COST_UNIT_CODE, costUnitCode);
-			json.put(TAG_DATEUNIT, dateUnit.toJson());
-			json.put(TAG_NUMBER_OF_UNITS, numberOfUnits);
-		}
+		json.put(TAG_COST_UNIT_CODE, costUnitCode);
+		json.put(TAG_DATEUNIT, dateUnit.toJson());
+		json.put(TAG_NUMBER_OF_UNITS, numberOfUnits);
+		
 		return json;	
 	}
 	
