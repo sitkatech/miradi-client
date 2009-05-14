@@ -208,21 +208,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return getProject().getMetadata().isBudgetTimePeriodQuarterly();
 	}
 
-	public DateRange createYear(String isoYearStart) throws Exception
-	{
-		return createYear(MultiCalendar.createFromIsoDateString(isoYearStart));
-	}
-
-	public DateRange createYear(MultiCalendar yearStart) throws Exception
-	{
-		int endYear = yearStart.getGregorianYear() + 1;
-		int endMonth = yearStart.getGregorianMonth();
-		int endDay = yearStart.getGregorianDay();
-		MultiCalendar yearEnd = MultiCalendar.createFromGregorianYearMonthDay(endYear, endMonth, endDay);
-		yearEnd.addDays(-1);
-		return new DateRange(yearStart, yearEnd);
-	}
-
 	private DateRange createQuarter(MultiCalendar quarterStart) throws Exception
 	{
 		MultiCalendar end = nextQuarter(quarterStart);
