@@ -81,6 +81,11 @@ public class DateUnitEffort
 		return toString().equals(other.toString());
 	}
 	
+	public DateRangeEffort asDateRangeEffort() throws Exception
+	{
+		return new DateRangeEffort(getUnitQuantity(), getDateUnit().asDateRange());
+	}
+		
 	private static final String TAG_DATEUNIT = "DateUnit";
 	private static final String TAG_NUMBER_OF_UNITS = "NumberOfUnits";
 	

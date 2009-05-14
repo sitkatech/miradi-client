@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.Vector;
 
 import org.json.JSONArray;
+import org.miradi.objecthelpers.DateRangeEffortList;
 
 public class DateUnitEffortList
 {
@@ -96,6 +97,17 @@ public class DateUnitEffortList
 	public int size()
 	{
 		return data.size();
+	}
+	
+	public DateRangeEffortList asDateRangeEffortList() throws Exception
+	{
+		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
+		for(DateUnitEffort dateUnitEffort : data)
+		{
+			dateRangeEffortList.add(dateUnitEffort.asDateRangeEffort());
+		}
+		
+		return dateRangeEffortList;
 	}
 	
 	private Vector<DateUnitEffort> data;
