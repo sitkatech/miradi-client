@@ -223,11 +223,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return new DateRange(yearStart, yearEnd);
 	}
 
-	public DateRange createQuarter(String isoQuarterStart) throws Exception
-	{
-		return createQuarter(MultiCalendar.createFromIsoDateString(isoQuarterStart));
-	}
-	
 	private DateRange createQuarter(MultiCalendar quarterStart) throws Exception
 	{
 		MultiCalendar end = nextQuarter(quarterStart);
