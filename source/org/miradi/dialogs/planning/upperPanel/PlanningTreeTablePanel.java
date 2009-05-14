@@ -83,7 +83,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse, rowColumnProvider);
 		multiModel = new PlanningTreeMultiTableModel();
-		annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(getProject(), treeToUse);
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
 		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse);
@@ -299,7 +298,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getPlanningModel().rebuildEntireTree();
-		annualTotalsModel.fireTableDataChanged();
 		measurementModel.fireTableDataChanged();
 		futureStatusModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
@@ -368,7 +366,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private PlanningTreeMultiTableModel multiModel;
 	private PlanningUpperMultiTable mainTable;
 
-	private PlanningViewBudgetAnnualTotalTableModel annualTotalsModel;
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
 	private WorkUnitsTableModel workUnitsTableModel;
