@@ -46,8 +46,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	public void clearDateRanges()
 	{
 		dateRanges = null;
-		yearlyDateRanges = null;
-		editableDateRanges = null;
 	}
 
 	public String getDateRangeName(DateRange dateRange)
@@ -63,36 +61,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		return DateRange.combine(startDateRange, endDateRange);
 	}
 	
-	public void rebuildProjectDateRanges() throws Exception
-	{
-		//TODO budget code -  move project start/end code to Project
-		startDate = getPlanningStartDate();
-		int firstCalendarYear = new MultiCalendar().getGregorianYear();
-		firstCalendarMonth = getFiscalYearFirstMonth();
-
-		if (startDate.length() > 0 )
-		{
-			MultiCalendar projectStartDate = MultiCalendar.createFromIsoDateString(startDate);
-			firstCalendarYear = projectStartDate.getGregorianYear();
-			int quarterStartMonth = projectStartDate.getGregorianMonth();
-			quarterStartMonth -= (quarterStartMonth-1)%3;
-			if(quarterStartMonth < firstCalendarMonth)
-				--firstCalendarYear;	
-		}
-		
-		MultiCalendar planningStartDate = MultiCalendar.createFromGregorianYearMonthDay(firstCalendarYear, firstCalendarMonth, 1);
-		MultiCalendar planningEndDate = calculatePlanningEndDate(planningStartDate);
-		
-		yearlyDateRanges = new Vector();
-		editableDateRanges = new Vector();
-		dateRanges = new Vector();
-		while(planningStartDate.before(planningEndDate))
-		{
-			createQuartersPlustYearlyRange(planningStartDate);
-			planningStartDate = getOneYearLater(planningStartDate);
-		}
-	}
-
 	private int getFiscalYearFirstMonth()
 	{
 		return project.getMetadata().getFiscalYearFirstMonth();
@@ -137,95 +105,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		}
 		
 		throw new RuntimeException("All candidate strings were blank");
-	}
-	
-	private MultiCalendar calculatePlanningEndDate(MultiCalendar planningStartDate)
-	{
-		final int DEFAULT_YEAR_DIFF = 3;
-		MultiCalendar defaultEndDate = MultiCalendar.createFromGregorianYearMonthDay(
-				planningStartDate.getGregorianYear() + DEFAULT_YEAR_DIFF, 
-				planningStartDate.getGregorianMonth(), 
-				planningStartDate.getGregorianDay());
-		defaultEndDate.addDays(-1);
-		
-		endDate = getPlanningEndDate();
-		if (endDate.length() <= 0)
-			return defaultEndDate;
-		
-		MultiCalendar projectEndDate = MultiCalendar.createFromIsoDateString(endDate);
-		projectEndDate.addDays(1);
-		int endYear = projectEndDate.getGregorianYear();
-		int endMonth = planningStartDate.getGregorianMonth();
-		
-		int userSpecifiedLastMonth = projectEndDate.getGregorianMonth();
-		boolean extendsIntoFollowingYear = userSpecifiedLastMonth > endMonth;
-		if(userSpecifiedLastMonth == endMonth && projectEndDate.getGregorianDay() > 1)
-			extendsIntoFollowingYear = true;
-		if(extendsIntoFollowingYear)
-			++endYear;
-		
-		MultiCalendar planningEndDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, endMonth, 1);
-		
-		if (!planningStartDate.before(planningEndDate))
-			return defaultEndDate;
-		
-		planningEndDate.addDays(-1);
-		return planningEndDate;
-	}
-
-	private void createQuartersPlustYearlyRange(MultiCalendar startingDate) throws Exception
-	{
-		Vector<DateRange> quarterlyRanges = new Vector();
-		for(int quarter = 0; quarter < 4; ++quarter)
-		{
-			DateRange quarterRange = createQuarter(startingDate);
-			quarterlyRanges.add(quarterRange);
-			startingDate = nextQuarter(startingDate);
-		}
-		
-		isBudgetTimePeriodQuarterly = isProjectBudgetTimePeriodQuarterly();
-		if(isBudgetTimePeriodQuarterly)
-		{
-			dateRanges.addAll(quarterlyRanges);
-			editableDateRanges.addAll(quarterlyRanges);
-		}
-		
-		DateRange firstQuarter = quarterlyRanges.get(0);
-		DateRange lastQuarter = quarterlyRanges.get(3);
-		DateRange yearRange = DateRange.combine(firstQuarter, lastQuarter);	
-
-		dateRanges.add(yearRange);
-		yearlyDateRanges.add(yearRange);
-		
-		if(getProject().getMetadata().isBudgetTimePeriodYearly())
-		{
-			editableDateRanges.add(yearRange);
-		}
-	}
-
-	private boolean isProjectBudgetTimePeriodQuarterly()
-	{
-		return getProject().getMetadata().isBudgetTimePeriodQuarterly();
-	}
-
-	private DateRange createQuarter(MultiCalendar quarterStart) throws Exception
-	{
-		MultiCalendar end = nextQuarter(quarterStart);
-		end.addDays(-1);
-		return new DateRange(quarterStart, end);
-	}
-	
-	private MultiCalendar nextQuarter(MultiCalendar quarterStart)
-	{
-		int year = quarterStart.getGregorianYear();
-		int month = quarterStart.getGregorianMonth();
-		month += 3;
-		if(month > 12)
-		{
-			month -= 12;
-			++year;
-		}
-		return MultiCalendar.createFromGregorianYearMonthDay(year, month, 1);
 	}
 	
 	public void commandExecuted(CommandExecutedEvent event)
@@ -463,11 +342,4 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	private Project project;
 	private Vector<DateRange> dateRanges;
-	private Vector<DateRange> yearlyDateRanges;
-	private Vector<DateRange> editableDateRanges;
-	
-	private String startDate;
-	private String endDate;
-	private int firstCalendarMonth;
-	private boolean isBudgetTimePeriodQuarterly;
 }
