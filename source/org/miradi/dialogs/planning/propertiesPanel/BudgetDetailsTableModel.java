@@ -70,7 +70,7 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 		return UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
-	protected boolean isCorrectType(Assignment assignment)
+	protected boolean isAssignmentForModel(Assignment assignment)
 	{
 		return false;
 	}
