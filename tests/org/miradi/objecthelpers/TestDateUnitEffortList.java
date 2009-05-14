@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 import org.miradi.main.EAMTestCase;
 import org.miradi.project.TestDateUnit;
-import org.miradi.questions.BudgetCostUnitQuestion;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -54,7 +53,7 @@ public class TestDateUnitEffortList extends EAMTestCase
 	
 	private DateUnitEffortList createSampleData()
 	{
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(BudgetCostUnitQuestion.DAYS_CODE, 10.0, TestDateUnit.month);
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(10.0, TestDateUnit.month);
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
 		

@@ -23,16 +23,14 @@ import org.miradi.objecthelpers.DateUnit;
 
 public class DateUnitEffort
 {
-	public DateUnitEffort(String costUnitToUse, double unitQuantityToUse, DateUnit dateUnitToUse)
+	public DateUnitEffort(double unitQuantityToUse, DateUnit dateUnitToUse)
 	{
-		costUnitCode = costUnitToUse;
 		numberOfUnits = unitQuantityToUse;
 		dateUnit = dateUnitToUse;
 	}
 	
 	public DateUnitEffort(EnhancedJsonObject json) throws Exception 
 	{
-		costUnitCode = json.getString(TAG_COST_UNIT_CODE);
 		numberOfUnits = json.getDouble(TAG_NUMBER_OF_UNITS);
 		dateUnit = new DateUnit(json.getJson(TAG_DATEUNIT));
 	}
@@ -40,7 +38,6 @@ public class DateUnitEffort
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_COST_UNIT_CODE, costUnitCode);
 		json.put(TAG_DATEUNIT, dateUnit.toJson());
 		json.put(TAG_NUMBER_OF_UNITS, numberOfUnits);
 		
@@ -94,7 +91,6 @@ public class DateUnitEffort
 		return toString().equals(other.toString());
 	}
 	
-	private static final String TAG_COST_UNIT_CODE = "CostUnitCode";
 	private static final String TAG_DATEUNIT = "DateUnit";
 	private static final String TAG_NUMBER_OF_UNITS = "NumberOfUnits";
 	
