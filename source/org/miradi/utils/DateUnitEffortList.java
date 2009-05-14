@@ -93,11 +93,6 @@ public class DateUnitEffortList
 		return other.toString().equals(toString());	
 	}
 	
-	public boolean contains(DateUnitEffort dateUnitEffort)
-	{
-		return data.contains(dateUnitEffort);
-	}
-	
 	public int size()
 	{
 		return data.size();
