@@ -434,9 +434,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try	
 		{
 			BaseObject baseObject = getBaseObjectForRowColumn(row, column);
-			DateRange dateRange = getDateRange(column);
+			DateUnit dateUnit = getDateUnit(column);
 			
-			return getOptionalDoubleData(baseObject, dateRange);
+			return getOptionalDoubleData(baseObject, dateUnit);
 		}
 		catch(Exception e)
 		{
@@ -460,7 +460,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	abstract public Color getCellBackgroundColor(int column);
 	
-	abstract protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception;
+	abstract protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception;
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
 
