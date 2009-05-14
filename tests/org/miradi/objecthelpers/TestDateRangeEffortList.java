@@ -81,12 +81,9 @@ public class TestDateRangeEffortList extends EAMTestCase
 		assertEquals(dre.getUnitQuantity(), drel.getTotalUnitQuantity());
 		
 		DateRangeEffort dre2 = createDateRangeEffort();
-		dre2.setCostUnit("test");
 		dre2.setUnitQuantity(22.2);
 		drel.setDateRangeEffort(dre2);
 		assertEquals("Didn't replace existing unit quantity?", dre2.getUnitQuantity(), drel.getTotalUnitQuantity());
-		assertEquals("Didn't replace existing cost unit?", dre2.getCostUnit(), drel.getDateRangeEffortForSpecificDateRange(dre.getDateRange()).getCostUnit());
-		
 	}
 	
 	public void testMergeOverlay() throws Exception
