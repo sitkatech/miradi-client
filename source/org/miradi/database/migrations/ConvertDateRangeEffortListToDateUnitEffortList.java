@@ -60,7 +60,7 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 			File assignmentFile = new File(assignmentDir, Integer.toString(thisAssignmentId.asInt()));
 			EnhancedJsonObject assignmentJson = DataUpgrader.readFile(assignmentFile);
 			EnhancedJsonObject dateUnitEffortList = writeAsDateUnitEfforts(assignmentJson);
-			assignmentJson.put("Details", dateUnitEffortList.toString());
+			assignmentJson.put("Details", dateUnitEffortList);
 			DataUpgrader.writeJson(assignmentFile, assignmentJson);
 		}
 	}
@@ -84,17 +84,17 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 			
 			EnhancedJsonObject dateUnitEffortJson = new EnhancedJsonObject();
 			dateUnitEffortJson.put("NumberOfUnits", numberOfUnits);
-			String dateUnitAsString = convertDateRange(new EnhancedJsonObject(dateRangeAsString));
-			dateUnitEffortJson.put("DateUnit", dateUnitAsString);
-			dateUnitEffortsArray.put(dateUnitEffortJson.toString());
+			EnhancedJsonObject dateUnitJson = convertDateRange(new EnhancedJsonObject(dateRangeAsString));
+			dateUnitEffortJson.put("DateUnit", dateUnitJson);
+			dateUnitEffortsArray.put(dateUnitEffortJson);
 		}
 		
-		dateUnitEffortList.put("DateUnitEfforts", dateUnitEffortsArray.toString());
+		dateUnitEffortList.put("DateUnitEfforts", dateUnitEffortsArray);
 		
 		return dateUnitEffortList;
 	}
 
-	private static String convertDateRange(EnhancedJsonObject dateRangeJson)
+	private static EnhancedJsonObject convertDateRange(EnhancedJsonObject dateRangeJson)
 	{		
 		String startIsoDate = dateRangeJson.getString("StartDate");
 		String endIsoDate = dateRangeJson.getString("EndDate");
@@ -103,7 +103,7 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 		EnhancedJsonObject dateUnitJson = new EnhancedJsonObject();
 		dateUnitJson.put("DateUnitCode", createFromDateRange(startDate, endDate));
 		
-		return dateUnitJson.toString();
+		return dateUnitJson;
 	}
 	
 	public static String createFromDateRange(MultiCalendar startDate, MultiCalendar endDate)

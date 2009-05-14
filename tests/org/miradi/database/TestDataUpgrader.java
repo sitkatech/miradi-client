@@ -28,7 +28,6 @@ import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
-import org.json.JSONArray;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
 import org.miradi.database.migrations.MigrationsForMiradi3;
@@ -54,6 +53,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
@@ -184,13 +184,13 @@ public class TestDataUpgrader extends EAMTestCase
 		EnhancedJsonObject assignmentJson = new EnhancedJsonObject(readFile(assignmentFile));
 		EnhancedJsonObject detailsJson = new EnhancedJsonObject(assignmentJson.getString("Details"));
 		
-		JSONArray dateUnitEffortsJsonArray = new JSONArray(detailsJson.getString("DateUnitEfforts"));
+		EnhancedJsonArray dateUnitEffortsJsonArray = detailsJson.getJsonArray("DateUnitEfforts");
 		assertEquals("wrong number of date unit efforts?", 1, dateUnitEffortsJsonArray.length());
 		
 		EnhancedJsonObject dateUnitEffortJson = new EnhancedJsonObject(dateUnitEffortsJsonArray.getString(0));
 		assertEquals("incorrect number of units?", expectedNumberOfUnits, dateUnitEffortJson.getInt("NumberOfUnits"));
 		
-		EnhancedJsonObject dateUnitJson = new EnhancedJsonObject(dateUnitEffortJson.getString("DateUnit"));
+		EnhancedJsonObject dateUnitJson = dateUnitEffortJson.getJson("DateUnit");
 		assertEquals("wrong date unit?", "YEARFROM:2010-01", dateUnitJson.getString("DateUnitCode"));
 	}
 	
