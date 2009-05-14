@@ -29,6 +29,11 @@ public class DateUnitEffort
 		dateUnit = dateUnitToUse;
 	}
 	
+	public DateUnitEffort(DateRangeEffort dateRangeEffort)
+	{
+		this(dateRangeEffort.getUnitQuantity(), DateUnit.createFromDateRange(dateRangeEffort.getDateRange()));
+	}
+	
 	public DateUnitEffort(EnhancedJsonObject json) throws Exception 
 	{
 		numberOfUnits = json.getDouble(TAG_NUMBER_OF_UNITS);

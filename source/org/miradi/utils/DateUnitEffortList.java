@@ -32,6 +32,16 @@ public class DateUnitEffortList
 		this(new Vector());
 	}
 	
+	public DateUnitEffortList(DateRangeEffortList dateRangeEffortList)
+	{
+		for (int index = 0; index < dateRangeEffortList.size(); ++index)
+		{
+			DateRangeEffort dateRangeEffort = dateRangeEffortList.getDateRangeEffort(index);
+			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateRangeEffort);
+			add(dateUnitEffort);
+		}
+	}
+	
 	public DateUnitEffortList(String listAsJsonString) throws Exception
 	{
 		this(new EnhancedJsonObject(listAsJsonString));
