@@ -22,8 +22,12 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateRangeEffortListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Assignment extends BaseObject
@@ -48,7 +52,15 @@ abstract public class Assignment extends BaseObject
 	{
 		return new DateRangeEffortList(getData(TAG_DATERANGE_EFFORTS));
 	}
-
+	
+	@Override
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	{
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
+		TimePeriodCosts timePeriodCosts = fillTimePeriodCosts(dateRange);		
+		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);	
+	}
+	
 	public static boolean isAssignment(BaseObject baseObject)
 	{
 		return isAssignment(baseObject.getType());
@@ -75,6 +87,8 @@ abstract public class Assignment extends BaseObject
 		
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
 	}
+	
+	abstract protected TimePeriodCosts fillTimePeriodCosts(DateRange dateRangeToUse) throws Exception;
 	
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	
