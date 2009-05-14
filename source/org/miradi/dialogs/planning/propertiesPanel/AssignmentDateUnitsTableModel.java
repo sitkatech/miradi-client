@@ -139,7 +139,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return getDateUnits().size();
 	}
 	
-	protected DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
+	private DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
 	{
 		DateRangeEffort dateRangeEffort = null;
 		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
