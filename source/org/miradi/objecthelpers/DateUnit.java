@@ -54,7 +54,7 @@ public class DateUnit
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
-		json.put(TAG_DATE, toString());
+		json.put(TAG_DATE_UNIT_CODE, toString());
 		return json;
 	}
 	
@@ -63,10 +63,10 @@ public class DateUnit
 		if (json == null)
 			return null;
 	
-		if (!json.has(TAG_DATE))
+		if (!json.has(TAG_DATE_UNIT_CODE))
 			return null;
 		
-		String dateUnitAsString = json.get(TAG_DATE).toString();
+		String dateUnitAsString = json.get(TAG_DATE_UNIT_CODE).toString();
 		return new DateUnit(dateUnitAsString);
 	}
 		
@@ -381,7 +381,7 @@ public class DateUnit
 		{"10", "11", "12"}, 
 	};
 	
-	private static final String TAG_DATE = "Date";
+	private static final String TAG_DATE_UNIT_CODE = "Date";
 	private static final String YEAR_PREFIX = "YEARFROM:";
 	private String dateUnit;
 }
