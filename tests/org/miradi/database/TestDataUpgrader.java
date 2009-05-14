@@ -191,7 +191,7 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("incorrect number of units?", expectedNumberOfUnits, dateUnitEffortJson.getInt("NumberOfUnits"));
 		
 		EnhancedJsonObject dateUnitJson = new EnhancedJsonObject(dateUnitEffortJson.getString("DateUnit"));
-		assertEquals("wrong date unit?", "YEARFROM:2010-01", dateUnitJson.getString("Date"));
+		assertEquals("wrong date unit?", "YEARFROM:2010-01", dateUnitJson.getString("DateUnitCode"));
 	}
 	
 	public void testSurroundTargetsWithNewScopeBoxType() throws Exception
