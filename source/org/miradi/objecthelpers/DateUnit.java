@@ -381,7 +381,7 @@ public class DateUnit
 		{"10", "11", "12"}, 
 	};
 	
-	private static final String TAG_DATE_UNIT_CODE = "Date";
+	private static final String TAG_DATE_UNIT_CODE = "DateUnitCode";
 	private static final String YEAR_PREFIX = "YEARFROM:";
 	private String dateUnit;
 }
