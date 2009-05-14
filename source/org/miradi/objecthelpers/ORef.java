@@ -89,6 +89,11 @@ public class ORef implements Comparable<ORef>
 		return getObjectId().isInvalid();
 	}
 	
+	public boolean isValid()
+	{
+		return !isInvalid();
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if (! (rawOther instanceof ORef))
