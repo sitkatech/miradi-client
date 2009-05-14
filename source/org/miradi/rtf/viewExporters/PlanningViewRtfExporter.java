@@ -28,7 +28,6 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.PlanningViewBudgetAnnualTotalTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
@@ -37,7 +36,6 @@ import org.miradi.dialogs.resource.ResourcePoolTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
@@ -101,11 +99,6 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel, model));
 		
 		CodeList columnsToShow = rowColumnProvider.getColumnListToShow();
-		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
-		{
-			PlanningViewBudgetAnnualTotalTableModel annualTotalsModel = new PlanningViewBudgetAnnualTotalTableModel(project, model);	
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(annualTotalsModel, model));
-		}
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(project, model);

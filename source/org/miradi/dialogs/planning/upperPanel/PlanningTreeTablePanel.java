@@ -322,9 +322,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		mainTableScrollPane.showVerticalScrollBar();
 
 		CodeList columnsToShow = getRowColumnProvider().getColumnListToShow();
-		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
-			multiModel.addModel(annualTotalsModel);
-
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 			multiModel.addModel(measurementModel);
 

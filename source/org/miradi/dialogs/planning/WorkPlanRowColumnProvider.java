@@ -35,7 +35,6 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
-				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL,
 				ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE,
 				ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE,
 				ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE,
