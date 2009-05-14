@@ -129,9 +129,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void omitColumnTagsRepresentedByColumnTables()
 	{
-		if (columnsToShow.contains(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL))
-			columnsToShow.removeCode(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL);
-		
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 			columnsToShow.removeCode(Measurement.META_COLUMN_TAG);
 		

@@ -84,7 +84,6 @@ public class ColumnManager
 		String[] list = {
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
-				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
 			
 		return new CodeList(list);
@@ -108,7 +107,6 @@ public class ColumnManager
 		String[] list = {
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
-				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
 	
 		return new CodeList(list);
@@ -119,7 +117,6 @@ public class ColumnManager
 		String[] list = {
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
-				Task.PSEUDO_TAG_TASK_BUDGET_DETAIL, 
 				};
 		
 		return new CodeList(list);

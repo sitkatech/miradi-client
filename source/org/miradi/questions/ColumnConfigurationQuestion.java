@@ -21,13 +21,12 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.Task;
+import org.miradi.objects.ResourceAssignment;
 
 public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 {
@@ -50,7 +49,6 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(BaseObject.PSEUDO_TAG_WHO_TOTAL),
 				createChoiceItem(BaseObject.PSEUDO_TAG_WHEN_TOTAL),
 				createChoiceItem(BaseObject.PSEUDO_TAG_BUDGET_TOTAL),
-				createChoiceItem(Task.PSEUDO_TAG_TASK_BUDGET_DETAIL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
 				createChoiceItem(META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
