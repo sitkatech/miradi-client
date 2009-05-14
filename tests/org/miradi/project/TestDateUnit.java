@@ -60,7 +60,7 @@ public class TestDateUnit extends TestCaseWithProject
 	private void verifyCreateFromJson(DateUnit dateUnitToVerifyAgainst) throws Exception
 	{
 		DateUnit dateUnitFromJson = DateUnit.createFromJson(dateUnitToVerifyAgainst.toJson());
-		assertEquals("not same date unit?", dateUnitToVerifyAgainst, dateUnitFromJson);
+		assertEquals("Create from Json not same date range?", dateUnitToVerifyAgainst, dateUnitFromJson);
 			
 		assertNull("not null?", DateRange.createFromJson(null));
 		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject()));
