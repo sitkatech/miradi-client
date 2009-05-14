@@ -21,7 +21,7 @@ package org.miradi.utils;
 
 public class DateRangeEffort
 {
-	public DateRangeEffort(String costUnitToUse, double unitQuantityToUse, DateRange dateRangeToUse)
+	public DateRangeEffort(double unitQuantityToUse, DateRange dateRangeToUse)
 	{
 		numberOfUnits = unitQuantityToUse;
 		dateRange = dateRangeToUse;

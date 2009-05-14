@@ -64,7 +64,7 @@ public class TestDateRangeEffortList extends EAMTestCase
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(1000, 1, 1);
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 1, 1);
 		DateRange dateRange = new DateRange(startDate, endDate);
-		DateRangeEffort dateRangeEffort = new DateRangeEffort("", 1, dateRange);
+		DateRangeEffort dateRangeEffort = new DateRangeEffort(1, dateRange);
 		
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		dateRangeEffortList.add(dateRangeEffort);
@@ -143,7 +143,7 @@ public class TestDateRangeEffortList extends EAMTestCase
 			int units) throws Exception
 	{
 		DateRange dateRange = createYearDateRange(startYear, endYear);
-		return new DateRangeEffort("", units, dateRange);
+		return new DateRangeEffort(units, dateRange);
 	}
 
 	private DateRange createYearDateRange(int startYear, int endYear)
@@ -162,6 +162,6 @@ public class TestDateRangeEffortList extends EAMTestCase
 		endDate.addDays(-1);
 		DateRange dateRange = new DateRange(startDate, endDate);
 		
-		return new DateRangeEffort("", units, dateRange);
+		return new DateRangeEffort(units, dateRange);
 	}
 }
