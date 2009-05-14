@@ -234,7 +234,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		DateRangeEffort effort = getDateRangeEffort(assignment, getDateRange(dateUnit));
 		if (effort == null)
-			effort = new DateRangeEffort("", units, getDateRange(dateUnit));
+			effort = new DateRangeEffort(units, getDateRange(dateUnit));
 
 		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
 		setUnits(assignment, effortList, effort, units);

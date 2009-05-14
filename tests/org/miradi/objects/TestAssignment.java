@@ -66,7 +66,7 @@ public class TestAssignment extends ObjectTestCase
 	
 	public DateRangeEffort createDateRangeEffort(int unitQuantatiy, DateRange dateRange) throws Exception
 	{
-		return new DateRangeEffort("", unitQuantatiy, dateRange);
+		return new DateRangeEffort(unitQuantatiy, dateRange);
 	}
 
 	private DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception

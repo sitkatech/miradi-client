@@ -242,7 +242,7 @@ public class ObjectTestCase extends TestCaseWithProject
 			MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 03, 29);
 			MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 03, 30);
 			DateRange range = new DateRange(startDate, endDate);
-			list.add(new DateRangeEffort("hours", 5.0, range));
+			list.add(new DateRangeEffort(5.0, range));
 			return list.toString();
 		}
 		else if(field instanceof StringData)

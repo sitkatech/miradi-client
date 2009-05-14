@@ -1213,7 +1213,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		DateRange dateRange = createDateRange(startYear, endYear);
 		
-		return new DateRangeEffort("", 0, dateRange);
+		return new DateRangeEffort(0, dateRange);
 	}
 
 	public DateRange createDateRange(int startYear, int endYear) throws Exception
