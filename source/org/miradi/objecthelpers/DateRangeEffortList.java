@@ -255,6 +255,11 @@ public class DateRangeEffortList
 		return data.size();
 	}
 	
+	public DateRangeEffort getDateRangeEffort(int index)
+	{
+		return data.get(index);
+	}
+	
 	private Vector<DateRangeEffort> data;
 	private static final String TAG_DATERANGE_EFFORTS = "DateRangeEfforts";
 }
