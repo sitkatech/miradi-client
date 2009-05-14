@@ -46,7 +46,7 @@ public class TestDateUnit extends TestCaseWithProject
 		EnhancedJsonObject json = dateUnitToVerifyAgainst.toJson();
 		
 		DateUnit dateUnitFromJson = new DateUnit(json);
-		assertEquals("date is same?", dateUnitToVerifyAgainst, dateUnitFromJson);
+		assertEquals("Json round trip didn't work?", dateUnitToVerifyAgainst, dateUnitFromJson);
 	}
 		
 	public void testCreateFromJson() throws Exception
