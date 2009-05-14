@@ -20,9 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.objecthelpers.DateRangeEffortList;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.utils.DateRange;
 
 public class BudgetCalculator
@@ -54,11 +53,6 @@ public class BudgetCalculator
 		double costPerUnit = resource.getCostPerUnit();
 	
 		return totalUnits * costPerUnit;
-	}
-	
-	public double calculateBudgetCost(BaseObject baseObject, DateRange dateRange, double costAllocationPercentage) throws Exception
-	{
-		return baseObject.getBudgetCost(dateRange) * costAllocationPercentage;
 	}
 	
 	private Project project;
