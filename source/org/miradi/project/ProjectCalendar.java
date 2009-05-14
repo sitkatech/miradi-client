@@ -228,7 +228,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return createQuarter(MultiCalendar.createFromIsoDateString(isoQuarterStart));
 	}
 	
-	public DateRange createQuarter(MultiCalendar quarterStart) throws Exception
+	private DateRange createQuarter(MultiCalendar quarterStart) throws Exception
 	{
 		MultiCalendar end = nextQuarter(quarterStart);
 		end.addDays(-1);
