@@ -176,7 +176,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	protected boolean isAssignmentCellEditable(Assignment assignment, DateRange dateRange) throws Exception
 	{
-		if (!isCorrectType(assignment))
+		if (!isAssignmentForModel(assignment))
 			return false;
 		
 		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
@@ -467,7 +467,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	abstract protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateRange dateRange) throws Exception;
 	
-	abstract protected boolean isCorrectType(Assignment assignment);
+	abstract protected boolean isAssignmentForModel(Assignment assignment);
 
 	abstract protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception;
 	

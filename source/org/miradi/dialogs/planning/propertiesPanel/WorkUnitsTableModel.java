@@ -71,7 +71,7 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	}
 	
 	@Override
-	protected boolean isCorrectType(Assignment assignment)
+	protected boolean isAssignmentForModel(Assignment assignment)
 	{
 		return ResourceAssignment.is(assignment);
 	}
