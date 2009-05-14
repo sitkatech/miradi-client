@@ -44,11 +44,6 @@ public class DateUnitEffort
 		return json;	
 	}
 	
-	public String getCostUnit()
-	{
-		return costUnitCode;
-	}
-	
 	public double getUnitQuantity()
 	{
 		return numberOfUnits;
@@ -57,11 +52,6 @@ public class DateUnitEffort
 	public DateUnit getDateUnit()
 	{
 		return dateUnit;
-	}
-	
-	public void setCostUnit(String costUnitCodeToUse)
-	{
-		costUnitCode = costUnitCodeToUse;
 	}
 	
 	public void setUnitQuantity(double unitQuantity)
@@ -94,7 +84,6 @@ public class DateUnitEffort
 	private static final String TAG_DATEUNIT = "DateUnit";
 	private static final String TAG_NUMBER_OF_UNITS = "NumberOfUnits";
 	
-	private String costUnitCode;
 	private DateUnit dateUnit;
 	private double numberOfUnits;
 }
