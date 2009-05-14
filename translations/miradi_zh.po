@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-14 12:52-0500\n"
+"POT-Creation-Date: 2009-05-14 13:18-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6417,7 +6417,6 @@ msgid "Total"
 msgstr "总计 \t\t"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:102
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "（错误） \t\t"
@@ -6443,7 +6442,6 @@ msgid "Show: "
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:193
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
 #, fuzzy
 msgid "[Error]"
 msgstr "[Error]"
@@ -6454,10 +6452,6 @@ msgid ""
 "<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:161
-msgid "Budget Total"
-msgstr "预算总额 \t\t"
 
 #: miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:66
 msgid "Tab|Methods"
@@ -29246,6 +29240,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Budget Total"
+#~ msgstr "预算总额 \t\t"
 
 #, fuzzy
 #~ msgid "FieldLabel|14.Assignment|Assignment"

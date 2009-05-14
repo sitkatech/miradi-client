@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-14 12:52-0500\n"
+"POT-Creation-Date: 2009-05-14 13:18-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6595,7 +6595,6 @@ msgid "Total"
 msgstr "Total "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:102
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:67
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "(Kesalahan) "
@@ -6621,7 +6620,6 @@ msgid "Show: "
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:193
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:112
 #, fuzzy
 msgid "[Error]"
 msgstr "[Error]"
@@ -6632,10 +6630,6 @@ msgid ""
 "<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewBudgetAnnualTotalTableModel.java:161
-msgid "Budget Total"
-msgstr "Total Anggaran "
 
 #: miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:66
 msgid "Tab|Methods"
@@ -32639,6 +32633,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Budget Total"
+#~ msgstr "Total Anggaran "
 
 #, fuzzy
 #~ msgid "FieldLabel|14.Assignment|Assignment"
