@@ -50,11 +50,6 @@ public class ProjectCalendar implements CommandExecutedListener
 		editableDateRanges = null;
 	}
 
-	public DateRange[] getQuarterlyDateRanges() throws Exception
-	{
-		return getDateRanges();
-	}
-	
 	public String getDateRangeName(DateRange dateRange)
 	{
 		return getFiscalYearQuarterName(dateRange, getProject().getMetadata().getFiscalYearFirstMonth());
@@ -281,13 +276,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	private Project getProject()
 	{
 		return project;
-	}
-
-	private DateRange[] getDateRanges() throws Exception
-	{
-		if(isInvalidProjectCalendar())
-			rebuildProjectDateRanges();
-		return dateRanges.toArray(new DateRange[0]);
 	}
 
 	public Vector<DateRange> getYearlyDateRanges() throws Exception
