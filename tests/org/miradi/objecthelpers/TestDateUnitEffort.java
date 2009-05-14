@@ -22,7 +22,6 @@ package org.miradi.objecthelpers;
 import org.miradi.main.EAMTestCase;
 import org.miradi.project.TestDateUnit;
 import org.miradi.questions.BudgetCostUnitQuestion;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -43,17 +42,13 @@ public class TestDateUnitEffort extends EAMTestCase
 	{
 		EnhancedJsonObject json = dateUnitEffortToVerifyAgainst.toJson();
 		DateUnitEffort dateUnitEffortFromJson = new DateUnitEffort(json);
-		assertEquals("dateUnitEffort is same?", dateUnitEffortToVerifyAgainst, dateUnitEffortFromJson);
+		assertEquals("Json round trip failed?", dateUnitEffortToVerifyAgainst, dateUnitEffortFromJson);
 	}
 
 	private void verifyCreateFromJson(DateUnitEffort dateUnitEffortToVerifyAgainst) throws Exception
 	{
 		DateUnitEffort dateUnitEffortFromJson = new DateUnitEffort(dateUnitEffortToVerifyAgainst.toJson());
-		assertEquals("not same date unit effort?", dateUnitEffortToVerifyAgainst, dateUnitEffortFromJson);
-			
-		assertNull("not null?", DateRange.createFromJson(null));
-		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject()));
-		assertNull("not null?", DateRange.createFromJson(new EnhancedJsonObject("{bogusTag:\"\"}")));
+		assertEquals("Json round trip failed?", dateUnitEffortToVerifyAgainst, dateUnitEffortFromJson);			
 	}
 	
 	private DateUnitEffort createSampleData()
