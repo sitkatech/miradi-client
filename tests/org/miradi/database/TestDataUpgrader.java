@@ -173,11 +173,11 @@ public class TestDataUpgrader extends EAMTestCase
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsForMiradi3.upgradeToVersion42();
 		
-		assertDateRangeEffortListWasConverted(jsonDir, resourceAssignmentRawIds, RESOURCE_ASSIGNMENT_TYPE, 15);
-		assertDateRangeEffortListWasConverted(jsonDir, expenseAssignmentRawIds, EXPENSE_ASSIGNMENT_TYPE, 10);
+		verifyDateRangeEffortListWasConverted(15, jsonDir, RESOURCE_ASSIGNMENT_TYPE, resourceAssignmentRawIds);
+		verifyDateRangeEffortListWasConverted(10, jsonDir, EXPENSE_ASSIGNMENT_TYPE, expenseAssignmentRawIds);
 	}
 
-	private void assertDateRangeEffortListWasConverted(File jsonDir, int[] assignmentRawIds, final int ASSIGNMENT_TYPE, int expectedNumberOfUnits) throws Exception
+	private void verifyDateRangeEffortListWasConverted(int expectedNumberOfUnits, File jsonDir, final int ASSIGNMENT_TYPE, int[] assignmentRawIds) throws Exception
 	{
 		File assignmentDir = DataUpgrader.getObjectsDir(jsonDir, ASSIGNMENT_TYPE);
 		File assignmentFile =  new File(assignmentDir, Integer.toString(assignmentRawIds[0]));
