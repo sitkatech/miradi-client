@@ -85,7 +85,7 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 			String numberOfUnits = dateRangeEffort.getString("NumberOfUnits");
 			
 			EnhancedJsonObject dateUnitEffortJson = new EnhancedJsonObject();
-			EnhancedJsonObject dateUnitJson = convertDateRange(new EnhancedJsonObject(dateRangeAsString));
+			EnhancedJsonObject dateUnitJson = toDateRange(new EnhancedJsonObject(dateRangeAsString));
 			dateUnitEffortJson.put("DateUnit", dateUnitJson);
 			dateUnitEffortJson.put("NumberOfUnits", numberOfUnits);
 			
@@ -97,7 +97,7 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 		return dateUnitEffortList;
 	}
 
-	private static EnhancedJsonObject convertDateRange(EnhancedJsonObject dateRangeJson)
+	private static EnhancedJsonObject toDateRange(EnhancedJsonObject dateRangeJson)
 	{		
 		String startIsoDate = dateRangeJson.getString("StartDate");
 		String endIsoDate = dateRangeJson.getString("EndDate");
