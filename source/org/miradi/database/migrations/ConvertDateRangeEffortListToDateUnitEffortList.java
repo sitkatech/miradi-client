@@ -59,21 +59,23 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 			BaseId thisAssignmentId = assignmentIds[index];
 			File assignmentFile = new File(assignmentDir, Integer.toString(thisAssignmentId.asInt()));
 			EnhancedJsonObject assignmentJson = DataUpgrader.readFile(assignmentFile);
-			EnhancedJsonObject dateUnitEffortList = createDateUnitEffortList(assignmentJson);
+			
+			EnhancedJsonObject dateUnitEffortList = new EnhancedJsonObject();
+			String detailsAsString = assignmentJson.optString("Details");
+			if (!detailsAsString.isEmpty())
+			{
+				EnhancedJsonObject detailsJson = new EnhancedJsonObject(detailsAsString);
+				EnhancedJsonArray dateRangeEfforts = detailsJson.getJsonArray("DateRangeEfforts");
+				dateUnitEffortList = convertToDateUnitEffortList(dateRangeEfforts);
+			}
+			
 			assignmentJson.put("Details", dateUnitEffortList);
 			DataUpgrader.writeJson(assignmentFile, assignmentJson);
 		}
 	}
 
-	private static EnhancedJsonObject createDateUnitEffortList(EnhancedJsonObject assignmentJson) throws Exception
+	private static EnhancedJsonObject convertToDateUnitEffortList(EnhancedJsonArray dateRangeEfforts) throws Exception
 	{
-		String detailsAsString = assignmentJson.optString("Details");
-		if (detailsAsString.isEmpty())
-			return new EnhancedJsonObject();
-		
-		EnhancedJsonObject detailsJson = new EnhancedJsonObject(detailsAsString);
-		EnhancedJsonArray dateRangeEfforts = detailsJson.getJsonArray("DateRangeEfforts");
-		
 		EnhancedJsonArray dateUnitEffortsArray = new EnhancedJsonArray();
 		EnhancedJsonObject dateUnitEffortList = new EnhancedJsonObject();
 		for (int index = 0; index < dateRangeEfforts.length(); ++index)
