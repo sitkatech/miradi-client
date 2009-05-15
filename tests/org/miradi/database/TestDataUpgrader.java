@@ -23,19 +23,15 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Vector;
 
-import org.martus.util.DirectoryUtils;
-import org.martus.util.UnicodeReader;
 import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.database.migrations.MigrationsOlderThanMiradiVersion2;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -49,34 +45,16 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
-import org.miradi.project.ObjectManager;
-import org.miradi.project.Project;
-import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
-public class TestDataUpgrader extends EAMTestCase
+public class TestDataUpgrader extends AbstractMigration
 {
 	public TestDataUpgrader(String name)
 	{
 		super(name);
-	}
-	
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		tempDirectory = createTempDirectory();
-		project = new ProjectForTesting(getName());
-	}
-	
-	public void tearDown() throws Exception
-	{
-		DirectoryUtils.deleteEntireDirectoryTree(tempDirectory);
-		project.close();
-		project = null;
-		super.tearDown();
 	}
 	
 	public void testMigrateTooOldProject() throws Exception
@@ -148,13 +126,6 @@ public class TestDataUpgrader extends EAMTestCase
 		MigrationsOlderThanMiradiVersion2.upgradeToVersion16();
 	}
 
-	private File createObjectsDir(File parentDir, String dirName)
-	{
-		File objectsDir = new File(parentDir, dirName);
-		objectsDir.mkdirs();
-		return objectsDir;
-	}
-	
 	public void testConvertToDateUnitEffortList() throws Exception
 	{
 		String resourceAssignment = "{\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"36\",\"Details\":\"{\\\"DateRangeEfforts\\\":[{\\\"NumberOfUnits\\\":15,\\\"DateRange\\\":{\\\"EndDate\\\":\\\"2010-12-31\\\",\\\"StartDate\\\":\\\"2010-01-01\\\"},\\\"CostUnitCode\\\":\\\"\\\"}]}\",\"ExpenseRefs\":\"\",\"BudgetCostOverride\":\"\",\"FundingSource\":\"\",\"WhoOverrideRefs\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1242142436461\",\"BudgetCostMode\":\"\",\"Id\":35,\"Label\":\"\"}";
@@ -514,17 +485,6 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("wrong threat link Ref", expectedRef, MigrationsOlderThanMiradiVersion2.getCauseIfDirectlyUpstreamFromTarget(factorLinkJson));
 	}
 	
-	private void createObjectFiles(File jsonDir, final int objectType, int[] objectIds, String[] jsonStrings)	throws Exception
-	{
-		File objectsDir = DataUpgrader.createObjectsDir(jsonDir, objectType);
-		File manifestFile = createManifestFile(objectsDir, objectIds);
-		assertTrue(manifestFile.exists());
-		for (int index = 0; index < jsonStrings.length; ++index)
-		{
-			createObjectFile(jsonStrings[index], objectIds[index], objectsDir);
-		}
-	}
-	
 	public void testMoveFactorsToSpecificDirs() throws Exception
 	{
 		File jsonDir = createJsonDir();
@@ -658,13 +618,6 @@ public class TestDataUpgrader extends EAMTestCase
 		assertTrue("manifest does not contain owned task?", ownedTaskIdList.contains(new BaseId(taskIds[1])));
 	}
 
-	private void createObjectFile(String jsonAsString, int id, File dir) throws Exception
-	{
-		File objectFile = new File(dir, Integer.toString(id));
-		createFile(objectFile, jsonAsString);
-		assertTrue(objectFile.exists());
-	}
-	
 	public void testRemoveDuplicateBendPoints() throws Exception
 	{
 		File jsonDir = createJsonDir();
@@ -1243,12 +1196,6 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("wrong conceptual model link size?", 2, conceptualModelLinks.size());
 	}
 
-	private void createObjectFile(File objectDir, String fileName, String objectString) throws Exception
-	{
-		File objectFile = new File(objectDir, fileName);
-		createFile(objectFile, objectString);
-	}
-	
 	public void testUpgradeTo20AddORefsInFactorLinks() throws Exception
 	{
 		File jsonDir = new File(tempDirectory, "json");
@@ -1584,48 +1531,5 @@ public class TestDataUpgrader extends EAMTestCase
 		assertEquals("manifests has same content?", expectedManifestContent.trim(), migratedManifestContents.trim());
 	}
 
-	private String readFile(File file) throws IOException
-	{
-		UnicodeReader reader = new UnicodeReader(file);
-		String contents = reader.readAll();
-		reader.close();
-		return contents;
-	}
-	
-	private File createManifestFile(File parent, int[] ids) throws Exception
-	{
-		return DataUpgrader.createManifestFile(parent, ids);
-	}
-	
-	private String buildManifestContents(int[] ids)
-	{
-		return DataUpgrader.buildManifestContents(ids);
-	}
-	
-	private void createFile(File file, String contents) throws Exception
-	{
-		DataUpgrader.createFile(file, contents);
-	}
-	
-	private File createJsonDir()
-	{
-		File jsonDir = new File(tempDirectory, "json");
-		jsonDir.mkdirs();
-		
-		return jsonDir;
-	}
-	
-	private Project getProject()
-	{
-		return project;
-	}
-	
-	private ObjectManager getObjectManager()
-	{
-		return getProject().getObjectManager();
-	}
-	
 	public static IdAssigner idAssigner = new IdAssigner();
-	File tempDirectory;
-	ProjectForTesting project;
 }
