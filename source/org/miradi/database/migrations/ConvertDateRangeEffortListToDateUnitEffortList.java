@@ -109,6 +109,10 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 		return dateUnitJson;
 	}
 	
+	//NOTE: that this is duplicated, from DateUnit and DateRange. 
+	//It was duplicated so that any changes there do not have an affect here.  
+	//Future fixes in original code do not apply here because this is a snap shot of 
+	//the original on the day the migration was written.   
 	public static String createDateUnitCodeFromDateRange(MultiCalendar startDate, MultiCalendar endDate)
 	{
 		String startIso = startDate.toIsoDateString();
