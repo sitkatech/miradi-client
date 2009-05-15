@@ -104,12 +104,12 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 		MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startIsoDate);
 		MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endIsoDate);
 		EnhancedJsonObject dateUnitJson = new EnhancedJsonObject();
-		dateUnitJson.put("DateUnitCode", createFromDateRange(startDate, endDate));
+		dateUnitJson.put("DateUnitCode", createDateUnitCodeFromDateRange(startDate, endDate));
 		
 		return dateUnitJson;
 	}
 	
-	public static String createFromDateRange(MultiCalendar startDate, MultiCalendar endDate)
+	public static String createDateUnitCodeFromDateRange(MultiCalendar startDate, MultiCalendar endDate)
 	{
 		String startIso = startDate.toIsoDateString();
 		String yearString = startIso.substring(0, 4);
