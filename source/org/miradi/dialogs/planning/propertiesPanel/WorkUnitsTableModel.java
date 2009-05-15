@@ -78,8 +78,9 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	}
 
 	@Override
-	protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception
+	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnit);
 		return !assignment.getWorkUnits(dateRange).hasValue();
 	}
 	

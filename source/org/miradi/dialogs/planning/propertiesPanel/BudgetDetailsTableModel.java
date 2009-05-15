@@ -28,7 +28,6 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
 public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
@@ -74,7 +73,7 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 		return false;
 	}
 
-	protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception
+	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		return true;
 	}

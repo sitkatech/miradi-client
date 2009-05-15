@@ -35,7 +35,6 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -45,7 +44,6 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -61,6 +59,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.SubTarget;
@@ -95,6 +94,8 @@ import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
@@ -128,7 +129,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void fillGeneralProjectData() throws Exception
 	{
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_NAME, "Some Project Name");
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_START_DATE, new MultiCalendar().toString());
+		fillProjectStartDate(new MultiCalendar());
+		fillProjectExpectedEndDate(new MultiCalendar());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES, "10000");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "10");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE, "30");
@@ -155,6 +157,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		projectTypes.add(TncProjectPlaceTypeQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
 		projectTypes.add(TncProjectPlaceTypeQuestion.NON_PLACE_BASED_PROJECT_CODE);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
+	}
+
+	public void fillProjectExpectedEndDate(MultiCalendar expectedEndDate) throws Exception
+	{
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_EXPECTED_END_DATE, expectedEndDate.toString());
+	}
+	
+	public void fillProjectStartDate(MultiCalendar projectStartDate) throws Exception
+	{
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_START_DATE, projectStartDate.toString());
 	}
 	
 	private String createConproXenodata() throws Exception
@@ -1199,11 +1211,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void addAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception
 	{
 		ResourceAssignment assignment = createAssignment();
-		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
-		DateRangeEffort dateRangeEffort = createDateRangeEffort(startYear, endYear);
-		dateRangeEffort.setUnitQuantity(units);
-		dateRangeEffortList.add(dateRangeEffort);
-		assignment.setData(ResourceAssignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
+		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, 12, 31);
+		DateUnitEffort dateUnitEffort = createDateUnitEffort(startDate, endDate);
+		dateUnitEffort.setUnitQuantity(units);
+		dateUnitEffortList.add(dateUnitEffort);
+		assignment.setData(ResourceAssignment.TAG_DATERANGE_EFFORTS, dateUnitEffortList.toString());
 		IdList currentAssignmentIdList = baseObject.getAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
 		baseObject.setData(BaseObject.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
@@ -1212,14 +1226,34 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
 	{
 		DateRange dateRange = createDateRange(startYear, endYear);
-		
 		return new DateRangeEffort(0, dateRange);
+	}
+	
+	public DateRangeEffort createDateRangeEffort(MultiCalendar startDate, MultiCalendar endDate) throws Exception
+	{
+		DateRange dateRange = createDateRange(startDate, endDate);
+		return new DateRangeEffort(0, dateRange);
+	}
+	
+	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
+	{
+		return new DateUnitEffort(createDateRangeEffort(startYear, endYear));
+	}
+	
+	public DateUnitEffort createDateUnitEffort(MultiCalendar startDate, MultiCalendar endDate) throws Exception
+	{
+		return new DateUnitEffort(createDateRangeEffort(startDate, endDate));
 	}
 
 	public DateRange createDateRange(int startYear, int endYear) throws Exception
 	{
 		MultiCalendar startDate = createMultiCalendar(startYear);
 		MultiCalendar endDate = createMultiCalendar(endYear);
+		return createDateRange(startDate, endDate);
+	}
+	
+	public DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception
+	{
 		return new DateRange(startDate, endDate);
 	}
 	

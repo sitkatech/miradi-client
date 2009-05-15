@@ -26,7 +26,7 @@ import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
+import org.miradi.utils.DateUnitEffort;
 
 public class TestTask extends ObjectTestCase
 {
@@ -130,14 +130,15 @@ public class TestTask extends ObjectTestCase
 		assertEquals("combined date range is not null?", null, combinedDateRange);
 		
 		Task taskWithNoSubTasksWithAssignment = createTask();
-		addAssignment(taskWithNoSubTasksWithAssignment, 1.0, 1000, 3000);
+		addAssignment(taskWithNoSubTasksWithAssignment, 1.0, 2006, 2006);
 		assertEquals("assignment was not added?", 1, taskWithNoSubTasksWithAssignment.getAssignmentIdList().size());
-		assertEquals("wrong combined date range?", createDateRangeEffort(1000, 3000).getDateRange(), taskWithNoSubTasksWithAssignment.getWhenRollup());
+		DateRange whenRollup = taskWithNoSubTasksWithAssignment.getWhenRollup();
+		assertEquals("wrong combined date range?", "2006", whenRollup.toString());
 		
 		Task taskWithoutUnits = createTask();
-		addAssignment(taskWithoutUnits, 0, 1000, 1001);
+		addAssignment(taskWithoutUnits, 0, 2003, 2003);
 		assertEquals("assignment was not added?", 1, taskWithoutUnits.getAssignmentIdList().size());
-		assertEquals("wrong combined date range?", createDateRangeEffort(1000, 1001).getDateRange(), taskWithoutUnits.getWhenRollup());
+		assertEquals("wrong combined date range?", "2003", taskWithoutUnits.getWhenRollup().toString());
 		
 		Task taskWithSubtasks = createTask();
 		Task subTask = createTask();
@@ -146,10 +147,15 @@ public class TestTask extends ObjectTestCase
 		taskWithSubtasks.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
 		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getWhenRollup());
 		
+		
+		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(1995, 1, 1);
+		MultiCalendar projectEndDate = MultiCalendar.createFromGregorianYearMonthDay(2011, 12, 31);
+		getProject().fillProjectStartDate(projectStartDate);
+		getProject().fillProjectExpectedEndDate(projectEndDate);
 		addAssignment(subTask, 1.0, 2000, 2010);
-		addAssignment(subTask, 1.0, 10, 20);
-		addAssignment(subTask, 0, 9998, 9999);
-		assertEquals("wrong sub task combined date range?", createDateRangeEffort(10, 9999).getDateRange(), taskWithSubtasks.getWhenRollup());
+		addAssignment(subTask, 1.0, 1995, 1998);
+		addAssignment(subTask, 0, 2011, 2013);
+		assertEquals("wrong sub task combined date range?", getProject().createDateRange(projectStartDate, projectEndDate), taskWithSubtasks.getWhenRollup());
 	}
 	
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
@@ -162,11 +168,11 @@ public class TestTask extends ObjectTestCase
 		return getProject().createTask();
 	}
 
-	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
+	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
 	{
-		return getProject().createDateRangeEffort(startYear, endYear);
+		return getProject().createDateUnitEffort(startYear, endYear);
 	}
-
+	
 	public void testGetWorkUnitsForTaskWithoutSubTasks() throws Exception
 	{
 		Task task = createTask();
@@ -177,8 +183,13 @@ public class TestTask extends ObjectTestCase
 	}
 	
 	public void testGetWorkUnitsForTaskWithSubTasks() throws Exception
-	{
-		DateRange dateRange = new DateRange(createMultiCalendar(2000), createMultiCalendar(2011));
+	{		
+		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(1999, 1, 1);
+		MultiCalendar projectEndDate = MultiCalendar.createFromGregorianYearMonthDay(2012, 12, 31);
+		getProject().fillProjectStartDate(projectStartDate);
+		getProject().fillProjectExpectedEndDate(projectEndDate);
+
+		DateRange dateRange = new DateRange(projectStartDate, projectEndDate);
 
 		Task task = createTask();
 		assertFalse("Empty task has work unit values?", task.getWorkUnits(dateRange).hasValue());
@@ -195,7 +206,7 @@ public class TestTask extends ObjectTestCase
 		
 		addAssignment(subTask, 113, 2015, 2020);
 		DateRange dateRange2 = new DateRange(createMultiCalendar(2015), createMultiCalendar(2020));
-		assertEquals("wrong subtask work units for date range?", 113.0, task.getWorkUnits(dateRange2).getValue());
+		assertFalse("work units outside project start end bounds are not considered?", task.getWorkUnits(dateRange2).hasValue());
 	}
 	
 	public MultiCalendar createMultiCalendar(int year)

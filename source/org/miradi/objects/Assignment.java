@@ -20,14 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objectdata.DateRangeEffortListData;
+import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 
 abstract public class Assignment extends BaseObject
@@ -50,7 +52,13 @@ abstract public class Assignment extends BaseObject
 	
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
 	{
-		return new DateRangeEffortList(getData(TAG_DATERANGE_EFFORTS));
+		ProjectCalendar projectCalendar = getProject().getProjectCalendar();
+		return getDateUnitEffortList().asDateRangeEffortList(projectCalendar);
+	}
+
+	public DateUnitEffortList getDateUnitEffortList() throws Exception
+	{
+		return new DateUnitEffortList(getData(TAG_DATERANGE_EFFORTS));
 	}
 	
 	@Override
@@ -83,7 +91,7 @@ abstract public class Assignment extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		detailListData = new DateRangeEffortListData(TAG_DATERANGE_EFFORTS);
+		detailListData = new DateUnitEffortListData(TAG_DATERANGE_EFFORTS);
 		
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
 	}
@@ -92,5 +100,5 @@ abstract public class Assignment extends BaseObject
 	
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	
-	private DateRangeEffortListData detailListData;
+	private DateUnitEffortListData detailListData;
 }
