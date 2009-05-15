@@ -35,6 +35,7 @@ import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.DateRangeEffortListData;
+import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.IntegerData;
@@ -47,6 +48,7 @@ import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -58,10 +60,13 @@ import org.miradi.objects.BaseObject.PseudoQuestionData;
 import org.miradi.objects.BaseObject.PseudoStringData;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.project.TestDateUnit;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateRangeEffort;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.StringMapData;
 
 public class ObjectTestCase extends TestCaseWithProject
@@ -324,6 +329,13 @@ public class ObjectTestCase extends TestCaseWithProject
 			dateUnitListData.add("2009");
 			
 			return dateUnitListData.toString();
+		}
+		else if (field instanceof DateUnitEffortListData)
+		{
+			DateUnitEffortList list = new DateUnitEffortList();
+			DateUnit dateUnit = TestDateUnit.month;
+			list.add(new DateUnitEffort(5.0, dateUnit));
+			return list.toString();
 		}
 		else
 		{

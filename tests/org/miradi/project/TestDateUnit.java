@@ -249,7 +249,7 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public static final DateUnit month = new DateUnit("2008-12");
 	
-	private final DateUnit month01 = new DateUnit("2008-01");
+	public static final DateUnit month01 = new DateUnit("2008-01");
 	private final DateUnit month02 = new DateUnit("2008-02");
 	private final DateUnit month03 = new DateUnit("2008-03");
 	private final DateUnit month04 = new DateUnit("2008-04");

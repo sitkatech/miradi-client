@@ -24,6 +24,8 @@ import java.util.Vector;
 
 import org.json.JSONArray;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.project.ProjectCalendar;
 
 public class DateUnitEffortList
 {
@@ -89,6 +91,26 @@ public class DateUnitEffortList
 		return toJson().toString();
 	}
 	
+	public DateUnitEffort getDateUnitEffortForSpecificDateUnit(DateUnit dateUnitToUse)
+	{
+		for(DateUnitEffort dateUnitEffort : data)
+		{
+			if (dateUnitEffort.getDateUnit().equals(dateUnitToUse))
+				return dateUnitEffort;
+		}
+		
+		return null;
+	}
+	
+	public void setDateUnitEffort(DateUnitEffort dateUnitEffortToUse)
+	{
+		DateUnitEffort dre = getDateUnitEffortForSpecificDateUnit(dateUnitEffortToUse.getDateUnit());
+		if(dre != null)
+			data.remove(dre);
+
+		data.add(dateUnitEffortToUse);
+	}
+		
 	@Override
 	public int hashCode()
 	{
@@ -109,12 +131,29 @@ public class DateUnitEffortList
 		return data.size();
 	}
 	
-	public DateRangeEffortList asDateRangeEffortList() throws Exception
+	public DateUnitEffort getDateUnitEffort(int index)
+	{
+		return data.get(index);
+	}
+	
+	public void remove(DateUnit dateUnit)
+	{
+		for(DateUnitEffort dateUnitEffort : data)
+		{
+			if(dateUnitEffort.getDateUnit().equals(dateUnit))
+			{
+				data.remove(dateUnitEffort);
+				return;
+			}
+		}
+	}
+	
+	public DateRangeEffortList asDateRangeEffortList(ProjectCalendar projectCalendar) throws Exception
 	{
 		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
 		for(DateUnitEffort dateUnitEffort : data)
 		{
-			dateRangeEffortList.add(dateUnitEffort.asDateRangeEffort());
+			dateRangeEffortList.add(dateUnitEffort.asDateRangeEffort(projectCalendar));
 		}
 		
 		return dateRangeEffortList;

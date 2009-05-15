@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.martus.util.MultiCalendar;
-import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.project.TestDateUnit;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 
 public class TestAssignment extends ObjectTestCase
 {
@@ -51,22 +53,24 @@ public class TestAssignment extends ObjectTestCase
 		ResourceAssignment assignment = getProject().createAssignment();
 		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateRange1).hasValue());
 
-		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
-		dateRangeEffortList.add(createDateRangeEffort(2, dateRange1));
-		dateRangeEffortList.add(createDateRangeEffort(5, dateRange2));
+		DateUnit dateUnit1 = TestDateUnit.month;
+		DateUnit dateUnit2 = TestDateUnit.month01;
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(createDateUnitEffort(2, dateUnit1));
+		dateUnitEffortList.add(createDateUnitEffort(5, dateUnit2));
 
-		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATERANGE_EFFORTS, dateRangeEffortList.toString());
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATERANGE_EFFORTS, dateUnitEffortList.toString());
 
-		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateRange1).getValue());
-		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateRange2).getValue());
+		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateUnit1.asDateRange()).getValue());
+		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateUnit2.asDateRange()).getValue());
 		
 		DateRange totalProjectDateRange = DateRange.combine(dateRange1, dateRange2);
 		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateRange).getValue());
 	}
 	
-	public DateRangeEffort createDateRangeEffort(int unitQuantatiy, DateRange dateRange) throws Exception
+	public DateUnitEffort createDateUnitEffort(int unitQuantatiy, DateUnit dateUnit) throws Exception
 	{
-		return new DateRangeEffort(unitQuantatiy, dateRange);
+		return new DateUnitEffort(unitQuantatiy, dateUnit);
 	}
 
 	private DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception

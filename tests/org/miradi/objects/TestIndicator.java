@@ -25,8 +25,6 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateRange;
 
@@ -120,7 +118,9 @@ public class TestIndicator extends ObjectTestCase
 		IdList taskIdsFromObject = new IdList(Task.getObjectType(), baseObject.getData(taskTag));
 		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
 		
-		DateRange dateRange = new DateRange(project.createMultiCalendar(2006), project.createMultiCalendar(2009));
+		MultiCalendar thisStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
+		MultiCalendar thisEndDate = MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31);
+		DateRange dateRange = new DateRange(thisStartDate, thisEndDate);
 		assertEquals("wrong work units for methods", 29.0, baseObject.getWorkUnits(dateRange).getValue());
 		
 		BaseObject objectWithNoTasks = project.createBaseObject(objectType);

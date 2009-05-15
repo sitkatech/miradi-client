@@ -27,7 +27,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.DateUnitListData;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
@@ -41,7 +40,8 @@ import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColumnTagProvider;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
@@ -139,12 +139,13 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return getDateUnits().size();
 	}
 	
-	private DateRangeEffort getDateRangeEffort(Assignment assignment, DateRange dateRange) throws Exception
+	private DateUnitEffort getDateUnitEffort(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
-		DateRangeEffort dateRangeEffort = null;
-		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
-		dateRangeEffort = effortList.getDateRangeEffortForSpecificDateRange(dateRange);
-		return dateRangeEffort;
+		DateUnitEffort dateUnitEffort = null;
+		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
+		dateUnitEffort = effortList.getDateUnitEffortForSpecificDateUnit(dateUnit);
+		
+		return dateUnitEffort;
 	}
 	
 	@Override
@@ -159,7 +160,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			if (getAssignment(row) != null)
-				return isAssignmentCellEditable(getAssignment(row), getDateRange(column));
+				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 		}
 		catch(Exception e)
 		{
@@ -169,16 +170,16 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return false;
 	}
 	
-	protected boolean isAssignmentCellEditable(Assignment assignment, DateRange dateRange) throws Exception
+	private boolean isAssignmentCellEditable(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		if (!isAssignmentForModel(assignment))
 			return false;
 		
-		DateRangeEffort thisCellEffort = getDateRangeEffort(assignment, dateRange);
+		DateUnitEffort thisCellEffort = getDateUnitEffort(assignment, dateUnit);
 		if(thisCellEffort != null)
 			return true;
 		
-		return hasValue(assignment, dateRange);
+		return hasValue(assignment, dateUnit);
 	}
 
 	public Object getValueAt(int row, int column)
@@ -232,18 +233,18 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	private void setUnits(Assignment assignment, DateUnit dateUnit, double units) throws Exception
 	{
-		DateRangeEffort effort = getDateRangeEffort(assignment, getDateRange(dateUnit));
+		DateUnitEffort effort = getDateUnitEffort(assignment, dateUnit);
 		if (effort == null)
-			effort = new DateRangeEffort(units, getDateRange(dateUnit));
+			effort = new DateUnitEffort(units, dateUnit);
 
-		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
+		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
 		setUnits(assignment, effortList, effort, units);
 	}
 	
-	private void setUnits(Assignment assignment, DateRangeEffortList effortList, DateRangeEffort effort, double units) throws Exception
+	private void setUnits(Assignment assignment, DateUnitEffortList effortList, DateUnitEffort effort, double units) throws Exception
 	{
 		effort.setUnitQuantity(units);
-		effortList.setDateRangeEffort(effort);
+		effortList.setDateUnitEffort(effort);
 		String newEffortListString = effortList.toString();
 		String data = assignment.getData(assignment.TAG_DATERANGE_EFFORTS);
 		if(newEffortListString.equals(data))
@@ -259,9 +260,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		while(!superDateUnit.isBlank())
 		{
 			superDateUnit = superDateUnit.getSuperDateUnit();
-			DateRange thisDateRange = getDateRange(superDateUnit);
-			DateRangeEffort dateRangeEffort = getDateRangeEffort(assignment, thisDateRange);
-			if(dateRangeEffort == null)
+			DateUnitEffort dateUnitEffort = getDateUnitEffort(assignment, superDateUnit);
+			if(dateUnitEffort == null)
 				continue;
 			
 			clearUnits(assignment, superDateUnit);
@@ -270,8 +270,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	public void clearUnits(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
-		DateRangeEffortList effortList = assignment.getDateRangeEffortList();
-		effortList.remove(getDateRange(dateUnit));
+		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
+		effortList.remove(dateUnit);
 		String newEffortListString = effortList.toString();
 		if(newEffortListString.equals(assignment.getData(assignment.TAG_DATERANGE_EFFORTS)))
 			return;
@@ -464,7 +464,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
 
-	abstract protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception;
+    abstract protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception;
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;

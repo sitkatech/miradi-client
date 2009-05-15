@@ -76,8 +76,9 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 		return ExpenseAssignment.is(assignment);
 	}
 
-	protected boolean hasValue(Assignment assignment, DateRange dateRange) throws Exception
+	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnit);
 		return !assignment.getExpenseAmounts(dateRange).hasValue();
 	}
 	
