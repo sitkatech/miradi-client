@@ -59,13 +59,13 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 			BaseId thisAssignmentId = assignmentIds[index];
 			File assignmentFile = new File(assignmentDir, Integer.toString(thisAssignmentId.asInt()));
 			EnhancedJsonObject assignmentJson = DataUpgrader.readFile(assignmentFile);
-			EnhancedJsonObject dateUnitEffortList = writeAsDateUnitEfforts(assignmentJson);
+			EnhancedJsonObject dateUnitEffortList = createDateUnitEffortList(assignmentJson);
 			assignmentJson.put("Details", dateUnitEffortList);
 			DataUpgrader.writeJson(assignmentFile, assignmentJson);
 		}
 	}
 
-	private static EnhancedJsonObject writeAsDateUnitEfforts(EnhancedJsonObject assignmentJson) throws Exception
+	private static EnhancedJsonObject createDateUnitEffortList(EnhancedJsonObject assignmentJson) throws Exception
 	{
 		String detailsAsString = assignmentJson.optString("Details");
 		if (detailsAsString.isEmpty())
