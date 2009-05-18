@@ -630,7 +630,6 @@ public class AppPreferences
 	
 	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
 	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
-	public static final Color BUDGET_TOTAL_TABLE_BACKGROUND = new Color(0x99, 0xee, 0x99);
 	public static final Color MEASUREMENT_COLOR_BACKGROUND = new Color(0xff, 0xf0, 0xb6);
 
 	private static final Color WORK_UNITS_TOTAL_BACKGROUND =   new Color(0xff, 0xCC, 0x55);
