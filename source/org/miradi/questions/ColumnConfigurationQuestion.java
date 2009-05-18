@@ -26,7 +26,6 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
-import org.miradi.objects.ResourceAssignment;
 
 public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 {
@@ -53,7 +52,6 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(META_BUDGET_DETAIL_COLUMN_CODE),
-				createChoiceItem(ResourceAssignment.PSEUDO_TAG_WORK_UNIT_TOTAL),
 				createChoiceItem(Factor.TAG_COMMENT),
 		};
 	}

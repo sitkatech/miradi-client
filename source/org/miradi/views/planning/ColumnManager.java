@@ -154,7 +154,6 @@ public class ColumnManager
 		String[] list = {
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				ResourceAssignment.PSEUDO_TAG_WHEN_TOTAL,
-				ResourceAssignment.PSEUDO_TAG_WORK_UNIT_TOTAL,
 				Indicator.PSEUDO_TAG_FACTOR,
 				};
 		return new CodeList(list);
