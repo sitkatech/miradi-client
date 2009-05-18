@@ -84,36 +84,9 @@ public class ResourceAssignment extends Assignment
 		if (fieldTag.equals(PSEUDO_TAG_BUDGET_TOTAL))
 			return getBudgetTotal();
 		
-		if (fieldTag.equals(PSEUDO_TAG_WORK_UNIT_TOTAL))
-			return getWorkUnitTotal();
-		
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String getWorkUnitTotal()
-	{
-		StringBuffer workUnitTotal = new StringBuffer("");
-		ProjectResource projectResource = getProjectResource();
-		if (projectResource == null)
-			return workUnitTotal.toString();
-
-		try
-		{	
-			workUnitTotal.append(getDateRangeEffortList().getTotalUnitQuantity());
-			workUnitTotal.append(" ");
-			
-			String costUnit = projectResource.getCostUnitValue();
-			workUnitTotal.append(costUnit);
-
-			return workUnitTotal.toString();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return null;
-		}
-	}
-
 	private String getBudgetTotal()
 	{
 		try
