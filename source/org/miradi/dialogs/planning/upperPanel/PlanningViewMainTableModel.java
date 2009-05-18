@@ -83,23 +83,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 		
-		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return AppPreferences.BUDGET_TOTAL_TABLE_BACKGROUND;
-		
 		if(columnTag.equals(ResourceAssignment.PSEUDO_TAG_WORK_UNIT_TOTAL))
 			return AppPreferences.getWorkUnitsBackgroundColor();
 			
 		return null;
-	}
-	
-	@Override
-	public boolean isCurrencyColumn(int column)
-	{
-		String columnTag = getColumnTag(column);
-		if(columnTag.equals(Task.PSEUDO_TAG_BUDGET_TOTAL))
-			return true;
-		
-		return false;
 	}
 	
 	@Override
@@ -182,9 +169,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
-			if(columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
-				return new TaglessChoiceItem(calculateProportion(row, rawValue));
-				
 			return new TaglessChoiceItem(rawValue);
 		}
 		catch (Exception e)
@@ -197,17 +181,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public Object getValueAt(int row, int column)
 	{
 		return getChoiceItemAt(row, column);
-	}
-
-	private double calculateProportion(int row, String rawValue)
-	{
-		if(rawValue == null || rawValue.length() == 0)
-			return 0.0;
-		
-		Double value = Double.parseDouble(rawValue);
-		int totalShares = getBaseObjectForRow(row).getTotalShareCount();
-		int proportionShares = getProportionShares(row);
-		return value * proportionShares / totalShares;
 	}
 
 	private String getColumnTagForNode(int nodeType, int column)
@@ -312,8 +285,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
 				return ResourceAssignment.PSEUDO_TAG_WHEN;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_BUDGET_TOTAL))
-				return ResourceAssignment.PSEUDO_TAG_BUDGET_TOTAL;				
 		}
 		
 		return columnTag;

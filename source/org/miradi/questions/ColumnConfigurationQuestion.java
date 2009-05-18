@@ -48,7 +48,6 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE),
 				createChoiceItem(BaseObject.PSEUDO_TAG_WHO_TOTAL),
 				createChoiceItem(BaseObject.PSEUDO_TAG_WHEN_TOTAL),
-				createChoiceItem(BaseObject.PSEUDO_TAG_BUDGET_TOTAL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
 				createChoiceItem(META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
