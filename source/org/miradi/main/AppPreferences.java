@@ -526,11 +526,6 @@ public class AppPreferences
 		return WORK_UNITS_TOTAL_BACKGROUND;
 	}
 	
-	public static Color getBudgetDetaislBackgroundColor()
-	{
-		return BUDGET_DETAILS_TOTAL_BACKGROUND;
-	}
-	
 	public static Color getWorkUnitsBackgroundColor(DateUnit dateUnit)
 	{
 		if(dateUnit.isBlank())
