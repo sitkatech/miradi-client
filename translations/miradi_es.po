@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-14 13:18-0500\n"
+"POT-Creation-Date: 2009-05-18 08:43-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6346,6 +6346,10 @@ msgstr "XML (*.xml)"
 #: miradi/source/org/miradi/utils/PNGFileFilter.java:33
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png)"
+
+#: miradi/source/org/miradi/utils/DateUnitEffort.java:48
+msgid "is invalid"
+msgstr ""
 
 #: miradi/source/org/miradi/utils/JasperReportFileFilter.java:41
 msgid "FileFilter|JASPER (*.jasper)"
