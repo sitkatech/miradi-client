@@ -644,20 +644,6 @@ abstract public class BaseObject
 	}
 	
 	
-	public String getBudgetCostAsString()
-	{
-		try
-		{
-			return Double.toString(getTotalBudgetCost());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total for strategy");
-			return "";
-		}
-	}
-	
 	public String getWhoRollupAsString()
 	{
 		try
