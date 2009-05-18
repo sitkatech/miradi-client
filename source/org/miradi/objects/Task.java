@@ -518,7 +518,6 @@ public class Task extends Factor
 		
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
-		taskTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
 		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
@@ -526,7 +525,6 @@ public class Task extends Factor
 		
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
 		addField(PSEUDO_TAG_INDICATOR_LABEL, indicatorLabel);
-		addField(PSEUDO_TAG_BUDGET_TOTAL, taskTotal);		
 	}
 
 	
@@ -549,6 +547,4 @@ public class Task extends Factor
 	
 	private PseudoStringData strategyLabel;
 	private PseudoStringData indicatorLabel;
-	private PseudoStringData taskTotal;
-	
 }
