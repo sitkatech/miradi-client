@@ -37,7 +37,6 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 				Desire.TAG_FULL_TEXT,
 				Strategy.PSEUDO_TAG_RATING_SUMMARY,
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_BUDGET_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				});
 	}

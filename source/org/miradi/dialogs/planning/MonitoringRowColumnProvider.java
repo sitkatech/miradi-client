@@ -39,7 +39,6 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 				Indicator.TAG_PRIORITY,
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
-				BaseObject.PSEUDO_TAG_BUDGET_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		});
 	}

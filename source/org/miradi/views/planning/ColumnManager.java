@@ -25,7 +25,6 @@ import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
@@ -34,10 +33,10 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ViewData;
 import org.miradi.utils.CodeList;
 
@@ -150,14 +149,6 @@ public class ColumnManager
 		return new CodeList(list);		
 	}
 
-	private static CodeList getThreatReductionResultColumns()
-	{
-		String[] list = {
-				ThreatReductionResult.PSEUDO_TAG_BUDGET_TOTAL,
-				};
-		return new CodeList(list);		
-	}
-	
 	private static CodeList getAssignmentColumns()
 	{
 		String[] list = {
@@ -224,9 +215,6 @@ public class ColumnManager
 		
 		if (propertyName.equals(Cause.OBJECT_NAME_THREAT) || propertyName.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
 			return ColumnManager.getDirectThreatsColumns();
-		
-		if (propertyName.equals(ThreatReductionResult.OBJECT_NAME))
-			return ColumnManager.getThreatReductionResultColumns();
 		
 		if (propertyName.equals(ResourceAssignment.OBJECT_NAME))
 			return ColumnManager.getAssignmentColumns();
