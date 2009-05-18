@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-18 08:43-0500\n"
+"POT-Creation-Date: 2009-05-18 10:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -7710,9 +7710,6 @@ msgstr "Klasifikasi Standar "
 
 msgid "FieldLabel|12.PseudoMeasurementFields|Measurement"
 msgstr "Pengukuran "
-
-msgid "FieldLabel|12.PseudoTaskBudgetDetail|Budget Details"
-msgstr "Rincian Anggaran "
 
 msgid "FieldLabel|12.IndicatorMetaColumnTag|Future Status"
 msgstr "Status Masa Depan "
@@ -32637,6 +32634,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|12.PseudoTaskBudgetDetail|Budget Details"
+#~ msgstr "Rincian Anggaran "
 
 #~ msgid "Budget Total"
 #~ msgstr "Total Anggaran "
