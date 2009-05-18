@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-18 08:43-0500\n"
+"POT-Creation-Date: 2009-05-18 10:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -7524,9 +7524,6 @@ msgstr "标准分类 \t\t"
 
 msgid "FieldLabel|12.PseudoMeasurementFields|Measurement"
 msgstr "测量 \t\t"
-
-msgid "FieldLabel|12.PseudoTaskBudgetDetail|Budget Details"
-msgstr "预算详情 \t\t"
 
 msgid "FieldLabel|12.IndicatorMetaColumnTag|Future Status"
 msgstr "未来状态 \t\t"
@@ -29244,6 +29241,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|12.PseudoTaskBudgetDetail|Budget Details"
+#~ msgstr "预算详情 \t\t"
 
 #~ msgid "Budget Total"
 #~ msgstr "预算总额 \t\t"
