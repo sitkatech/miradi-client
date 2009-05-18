@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-18 10:58-0500\n"
+"POT-Creation-Date: 2009-05-18 11:01-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -7721,9 +7721,6 @@ msgstr "Quién"
 
 msgid "FieldLabel|12.EffortDatesTotal|When"
 msgstr "Cuándo"
-
-msgid "FieldLabel|12.PseudoTaskBudgetTotal|Budget Total"
-msgstr "Total del presupuesto"
 
 msgid "FieldLabel|12.TaskBudgetDetail|Budget Details"
 msgstr "Detalles del presupuesto"
@@ -32792,6 +32789,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FieldLabel|12.PseudoTaskBudgetTotal|Budget Total"
+#~ msgstr "Total del presupuesto"
 
 #~ msgid "FieldLabel|12.PseudoTaskBudgetDetail|Budget Details"
 #~ msgstr "Detalles del presupuesto"
