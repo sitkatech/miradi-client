@@ -450,7 +450,7 @@ public class ProjectServer
 		return new File(getRelativeJsonDirectory(), VERSION_FILE);
 	}
 
-	public static final int DATA_VERSION = 41;
+	public static final int DATA_VERSION = 42;
 	private static final String LAST_MODIFIED_FILE_NAME = "LastModifiedProjectTime.txt";
 	private static final String TAG_VERSION = "Version";
 	private static final String JSON_DIRECTORY = "json";
