@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-18 11:10-0500\n"
+"POT-Creation-Date: 2009-05-18 11:22-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -7777,10 +7777,6 @@ msgstr "|Porcentaje completo de progreso "
 msgid ""
 "FieldLabel|12.PseudoLatestProgressPercentDetails|Progress Percent Details"
 msgstr "Detalles del porcentaje de progreso "
-
-#, fuzzy
-msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
-msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #, fuzzy
 msgid "FieldLabel|12.Comment|Comments"
@@ -32789,6 +32785,10 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#, fuzzy
+#~ msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
+#~ msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #~ msgid "FieldLabel|12.PseudoTaskBudgetTotal|Budget Total"
 #~ msgstr "Total del presupuesto"

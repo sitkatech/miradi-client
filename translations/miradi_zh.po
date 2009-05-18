@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-18 11:10-0500\n"
+"POT-Creation-Date: 2009-05-18 11:22-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -7562,10 +7562,6 @@ msgstr "完成进度百分比"
 msgid ""
 "FieldLabel|12.PseudoLatestProgressPercentDetails|Progress Percent Details"
 msgstr "进度百分比详情"
-
-#, fuzzy
-msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
-msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #, fuzzy
 msgid "FieldLabel|12.Comment|Comments"
@@ -29238,6 +29234,10 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#, fuzzy
+#~ msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
+#~ msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #~ msgid "FieldLabel|12.PseudoTaskBudgetTotal|Budget Total"
 #~ msgstr "预算总额 \t\t"

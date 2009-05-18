@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-18 11:10-0500\n"
+"POT-Creation-Date: 2009-05-18 11:22-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -7748,10 +7748,6 @@ msgstr "Persentase Kemajuan Sudah Lengkap"
 msgid ""
 "FieldLabel|12.PseudoLatestProgressPercentDetails|Progress Percent Details"
 msgstr "Rincian Persentase Kemajuan"
-
-#, fuzzy
-msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
-msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #, fuzzy
 msgid "FieldLabel|12.Comment|Comments"
@@ -32631,6 +32627,10 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#, fuzzy
+#~ msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
+#~ msgstr "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
 
 #~ msgid "FieldLabel|12.PseudoTaskBudgetTotal|Budget Total"
 #~ msgstr "Total Anggaran "
