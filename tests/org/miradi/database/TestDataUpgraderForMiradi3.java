@@ -48,11 +48,11 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		
 		int[] resourceAssignmentRawIds = {35, };
 		final int RESOURCE_ASSIGNMENT_TYPE = 14;
-		createObjectFiles(jsonDir, RESOURCE_ASSIGNMENT_TYPE, resourceAssignmentRawIds, new String[] {resourceAssignment, });
+		createObjectFiles(jsonDir, RESOURCE_ASSIGNMENT_TYPE, new String[] {resourceAssignment, });
 		
 		int[] expenseAssignmentRawIds = {34, };
 		final int EXPENSE_ASSIGNMENT_TYPE = 51;
-		createObjectFiles(jsonDir, EXPENSE_ASSIGNMENT_TYPE, expenseAssignmentRawIds, new String[] {expenseAssignment, });
+		createObjectFiles(jsonDir, EXPENSE_ASSIGNMENT_TYPE, new String[] {expenseAssignment, });
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsForMiradi3.upgradeToVersion42();
@@ -98,15 +98,15 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		
 		int[] taskRawIds = {39, };
 		final int TASK_TYPE = 3;
-		createObjectFiles(jsonDir, TASK_TYPE, taskRawIds, new String[] {taskWithCostWhenWho, });
+		createObjectFiles(jsonDir, TASK_TYPE, new String[] {taskWithCostWhenWho, });
 		
 		int[] indicatorRawIds = {38, 37, };
 		final int INDICATOR_TYPE = 8;
-		createObjectFiles(jsonDir, INDICATOR_TYPE, indicatorRawIds, new String[] {indicatorWithCostWhenWho, indicatorInRollupMode, });
+		createObjectFiles(jsonDir, INDICATOR_TYPE, new String[] {indicatorWithCostWhenWho, indicatorInRollupMode, });
 		
 		int[] strategyRawIds = {24, 45, 51, 53, 55, 57, 61, 63};
 		final int STRATEGY_TYPE = 21;
-		createObjectFiles(jsonDir, STRATEGY_TYPE, strategyRawIds, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
+		createObjectFiles(jsonDir, STRATEGY_TYPE, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
 																				strategyWithCostWhen, strategyWithCostWho, strategyWithWhoWhen, });
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);

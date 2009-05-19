@@ -21,6 +21,7 @@ package org.miradi.database;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
 import org.martus.util.UnicodeReader;
@@ -28,6 +29,8 @@ import org.miradi.main.EAMTestCase;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.Utility;
 
 abstract public class AbstractMigration extends EAMTestCase
 {
@@ -58,15 +61,21 @@ abstract public class AbstractMigration extends EAMTestCase
 		return objectsDir;
 	}
 
-	protected void createObjectFiles(File jsonDir, final int objectType, int[] objectIds, String[] jsonStrings) throws Exception
+	protected void createObjectFiles(File jsonDir, final int objectType, String[] jsonStrings) throws Exception
 	{
 		File objectsDir = DataUpgrader.createObjectsDir(jsonDir, objectType);
-		File manifestFile = createManifestFile(objectsDir, objectIds);
-		assertTrue(manifestFile.exists());
+		Vector<Integer> objectIds = new Vector();
+		
 		for (int index = 0; index < jsonStrings.length; ++index)
 		{
-			createObjectFile(jsonStrings[index], objectIds[index], objectsDir);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonStrings[index]);
+			int id = json.getId("Id").asInt();
+			objectIds.add(id);
+			createObjectFile(jsonStrings[index], id, objectsDir);
 		}
+		
+		File manifestFile = createManifestFile(objectsDir, Utility.convertToIntArray(objectIds));
+		assertTrue(manifestFile.exists());
 	}
 
 	protected void createObjectFile(String jsonAsString, int id, File dir) throws Exception
