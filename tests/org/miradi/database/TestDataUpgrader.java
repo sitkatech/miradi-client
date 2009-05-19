@@ -143,25 +143,22 @@ public class TestDataUpgrader extends AbstractMigration
 		
 		File jsonDir = createJsonDir();
 
-		int[] projectMetadataRawIds = {0, };
 		final int PROJECT_METADATA_TYPE = 11;
-		createObjectFiles(jsonDir, PROJECT_METADATA_TYPE, projectMetadataRawIds, new String[]{projectMetadataJsonString, });
+		createObjectFiles(jsonDir, PROJECT_METADATA_TYPE, new String[]{projectMetadataJsonString, });
 		
 		int[] conceptualModelRawIds = {9, 24, };
 		final int CONCEPTUAL_MODEL_TYPE = 19;
-		createObjectFiles(jsonDir, CONCEPTUAL_MODEL_TYPE, conceptualModelRawIds, new String[]{emptyConceptualModelJsonString, targetPopulatedConceptualModelJsonString, });
+		createObjectFiles(jsonDir, CONCEPTUAL_MODEL_TYPE, new String[]{emptyConceptualModelJsonString, targetPopulatedConceptualModelJsonString, });
 		
 		int[] resultsChainRawIds = {29, };
 		final int RESULTS_CHAIN_TYPE = 24;
-		createObjectFiles(jsonDir, RESULTS_CHAIN_TYPE, resultsChainRawIds, new String[]{targetPopulatedResultsChainJsonString, });
+		createObjectFiles(jsonDir, RESULTS_CHAIN_TYPE, new String[]{targetPopulatedResultsChainJsonString, });
 		
-		int[] targetRawIds = {25, 27, 30, };
 		final int TARGET_TYPE = 22;
-		createObjectFiles(jsonDir, TARGET_TYPE, targetRawIds, new String[]{target1InConceptualModelJsonString, target2InConceptualModelJsonString, targetInResultsChainJsonString, });
+		createObjectFiles(jsonDir, TARGET_TYPE, new String[]{target1InConceptualModelJsonString, target2InConceptualModelJsonString, targetInResultsChainJsonString, });
 		
-		int[] diagramFactorRawIds = {26, 28, 31, 32, };
 		final int DIAGRAM_FACTOR_TYPE = 18;
-		createObjectFiles(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorRawIds, new String[]{target1DiagramFactorInConceptualModelJsonString, target2DiagramFactorInConceptualModelJsonString, targetDiagramFactorInResultsChainJsonString, groupBoxDiagramFactorInRessultsChainJsonString, });
+		createObjectFiles(jsonDir, DIAGRAM_FACTOR_TYPE, new String[]{target1DiagramFactorInConceptualModelJsonString, target2DiagramFactorInConceptualModelJsonString, targetDiagramFactorInResultsChainJsonString, groupBoxDiagramFactorInRessultsChainJsonString, });
 		
 		
 		File projectFile = new File(jsonDir, "project");
@@ -266,21 +263,18 @@ public class TestDataUpgrader extends AbstractMigration
 		
 		File jsonDir = createJsonDir();
 
-		int[] strategyIds = {131, };
 		final int STRATEGY_TYPE = 21;
-		createObjectFiles(jsonDir, STRATEGY_TYPE, strategyIds, new String[]{strategyJsonString, });
+		createObjectFiles(jsonDir, STRATEGY_TYPE, new String[]{strategyJsonString, });
 	
 		int[] causeIds = {55, 56, 57, 58, };
 		final int CAUSE_TYPE = 20;
-		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threat1JsonString, threat2JsonString, cause1JsonString, cause2JsonString, });
+		createObjectFiles(jsonDir, CAUSE_TYPE, new String[]{threat1JsonString, threat2JsonString, cause1JsonString, cause2JsonString, });
 
-		int[] targetIds = {30, };
 		final int TARGET_TYPE = 22;
-		createObjectFiles(jsonDir, TARGET_TYPE, targetIds, new String[]{targetJsonString, });
+		createObjectFiles(jsonDir, TARGET_TYPE, new String[]{targetJsonString, });
 		
-		int[] factorLinkIds = {71, 72, 73, 74, 75, };
 		final int FACTOR_LINK_TYPE = 6;
-		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
+		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
 
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsOlderThanMiradiVersion2.upgradeToVersion39();
@@ -324,15 +318,15 @@ public class TestDataUpgrader extends AbstractMigration
 
 		int[] causeIds = {25, };
 		final int CAUSE_TYPE = 20;
-		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threatJsonString, });
+		createObjectFiles(jsonDir, CAUSE_TYPE, new String[]{threatJsonString, });
 
 		int[] targetIds = {23, };
 		final int TARGET_TYPE = 22;
-		createObjectFiles(jsonDir, TARGET_TYPE, targetIds, new String[]{targetJsonString, });
+		createObjectFiles(jsonDir, TARGET_TYPE, new String[]{targetJsonString, });
 	
 		int[] factorLinkIds = {27, };
 		final int FACTOR_LINK_TYPE = 6;
-		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{linkWithCommentsFieldsJsonString, });
+		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, new String[]{linkWithCommentsFieldsJsonString, });
 		
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":27}");
@@ -392,17 +386,15 @@ public class TestDataUpgrader extends AbstractMigration
 		
 		String threatStressRatingJsonString = "{\"WhenOverride\":\"\",\"IsActive\":\"1\",\"TimeStampModified\":\"1235566196548\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"Contribution\":\"2\",\"Label\":\"\",\"Id\":178,\"StressRef\":\"{\\\"ObjectType\\\":33,\\\"ObjectId\\\":177}\",\"WhoOverrideRefs\":\"\",\"Irreversibility\":\"2\"}";
 
-		int[] causeIds = {138, 211, 219,};
 		final int CAUSE_TYPE = 20;
-		createObjectFiles(jsonDir, CAUSE_TYPE, causeIds, new String[]{threat1JsonString, threat2JsonString, threat3JsonString, });
+		createObjectFiles(jsonDir, CAUSE_TYPE, new String[]{threat1JsonString, threat2JsonString, threat3JsonString, });
 
-		int[] targetIds = {210, 97};
 		final int TARGET_TYPE = 22;
-		createObjectFiles(jsonDir, TARGET_TYPE, targetIds, new String[]{target1JsonString, target2JsonString, });
+		createObjectFiles(jsonDir, TARGET_TYPE, new String[]{target1JsonString, target2JsonString, });
 		
 		int[] factorLinkIds = {227, 140, 217, };
 		final int FACTOR_LINK_TYPE = 6;
-		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, factorLinkIds, new String[]{bidiFactorLinkWithOneThreatStressRatingJsonString, factorLinkWithOneThreatStressRatingJsonString, factorLinkWithNoThreatStressRatingJsonString, });
+		createObjectFiles(jsonDir, FACTOR_LINK_TYPE, new String[]{bidiFactorLinkWithOneThreatStressRatingJsonString, factorLinkWithOneThreatStressRatingJsonString, factorLinkWithNoThreatStressRatingJsonString, });
 		
 		int[] threatStressRatingIds = {178,}; 
 		final int THREAT_STRESS_RATING_TYPE = 34;
