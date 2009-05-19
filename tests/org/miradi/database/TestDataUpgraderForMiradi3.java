@@ -96,17 +96,14 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		
 		File jsonDir = createJsonDir();
 		
-		int[] taskRawIds = {39, };
 		final int TASK_TYPE = 3;
-		createObjectFiles(jsonDir, TASK_TYPE, new String[] {taskWithCostWhenWho, });
+		int[] taskRawIds = createObjectFiles(jsonDir, TASK_TYPE, new String[] {taskWithCostWhenWho, });
 		
-		int[] indicatorRawIds = {38, 37, };
 		final int INDICATOR_TYPE = 8;
-		createObjectFiles(jsonDir, INDICATOR_TYPE, new String[] {indicatorWithCostWhenWho, indicatorInRollupMode, });
+		int[] indicatorRawIds = createObjectFiles(jsonDir, INDICATOR_TYPE, new String[] {indicatorWithCostWhenWho, indicatorInRollupMode, });
 		
-		int[] strategyRawIds = {24, 45, 51, 53, 55, 57, 61, 63};
 		final int STRATEGY_TYPE = 21;
-		createObjectFiles(jsonDir, STRATEGY_TYPE, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
+		int[] strategyRawIds = createObjectFiles(jsonDir, STRATEGY_TYPE, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
 																				strategyWithCostWhen, strategyWithCostWho, strategyWithWhoWhen, });
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);

@@ -61,7 +61,7 @@ abstract public class AbstractMigration extends EAMTestCase
 		return objectsDir;
 	}
 
-	protected void createObjectFiles(File jsonDir, final int objectType, String[] jsonStrings) throws Exception
+	protected int[] createObjectFiles(File jsonDir, final int objectType, String[] jsonStrings) throws Exception
 	{
 		File objectsDir = DataUpgrader.createObjectsDir(jsonDir, objectType);
 		Vector<Integer> objectIds = new Vector();
@@ -74,8 +74,11 @@ abstract public class AbstractMigration extends EAMTestCase
 			createObjectFile(jsonStrings[index], id, objectsDir);
 		}
 		
-		File manifestFile = createManifestFile(objectsDir, Utility.convertToIntArray(objectIds));
+		int[] ids = Utility.convertToIntArray(objectIds);
+		File manifestFile = createManifestFile(objectsDir, ids);
 		assertTrue(manifestFile.exists());
+		
+		return ids;
 	}
 
 	protected void createObjectFile(String jsonAsString, int id, File dir) throws Exception
