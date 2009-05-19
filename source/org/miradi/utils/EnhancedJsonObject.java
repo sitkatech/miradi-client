@@ -28,6 +28,7 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 
@@ -237,6 +238,11 @@ public class EnhancedJsonObject extends JSONObject
 	public ORefList getRefList(String tag) throws Exception
 	{
 		return new ORefList(getString(tag));
+	}
+	
+	public IdList getIdList(int type, String tag) throws Exception
+	{
+		return new IdList(type, getString(tag));
 	}
 	
 	public ORefList optRefList(String tag) throws Exception

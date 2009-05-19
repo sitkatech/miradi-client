@@ -19,25 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.database.migrations;
 
-import org.miradi.database.DataUpgrader;
-
-public class MigrationsForMiradi3
+public class ConvertHighLevelEstimatesIntoAssignments
 {
-	public static void upgradeToVersion41() throws Exception
+	public static void convertToAssignments()
 	{
-		//NOTE: Allow saving work units for more types of date units
-		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 41);
-	}
-
-	public static void upgradeToVersion42() throws Exception
-	{
-		ConvertDateRangeEffortListToDateUnitEffortList.convertToDateUnitEffortList();
-		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 42);
-	}
-	
-	public static void upgradeToVersion43() throws Exception
-	{
-		ConvertHighLevelEstimatesIntoAssignments.convertToAssignments();
-		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 43);
 	}
 }
