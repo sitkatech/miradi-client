@@ -206,7 +206,7 @@ public class TestTask extends ObjectTestCase
 		
 		addAssignment(subTask, 113, 2015, 2020);
 		DateRange dateRange2 = new DateRange(createMultiCalendar(2015), createMultiCalendar(2020));
-		assertFalse("work units outside project start end bounds are not considered?", task.getWorkUnits(dateRange2).hasValue());
+		assertFalse("Included work units outside project start end bounds?", task.getWorkUnits(dateRange2).hasValue());
 	}
 	
 	public MultiCalendar createMultiCalendar(int year)
