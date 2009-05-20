@@ -129,31 +129,74 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		allResources.addAll(expected30ResourceList);
 		
 		
-		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], 2000.0, expected36ResourceList, 1, "Text", "2009-01-18 - 2009-05-18", "", "Jenny Boo");
+		EnhancedJsonObject taskJson = getObjectFileAsJson(jsonDir, TASK_TYPE, taskRawIds[0]);
+		verifyDetailsField(jsonDir, taskJson, "Text", Double.toString(2000.0), expected36ResourceList, "2009-01-18 - 2009-05-18", "", "Jenny Boo");
+		verifyResourceAssignments(jsonDir, taskJson, expected36ResourceList);
+		verifyExpenseAssignment(jsonDir, taskJson, 2000.0, 1);
 		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], 5000.0, allResources, 1, "Detail", "2009-01-01 - 2009-03-18", "This is some indicator sample details.", "Jenny Boo, Johny Doo");		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[1], 0.0, new Vector(),      0, "Detail", "", "", "");
 		
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[0], 125.0, expected36ResourceList,    1, "Text", "2009-05-18 - 2009-06-27", "This is some sample details.", "Jenny Boo");
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[1], Double.NaN, new Vector(),        0, "Text", "", "", "");
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[2], 4500.0, new Vector(),   1, "Text", "", "", "");
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[3], Double.NaN, new Vector(),        0, "Text", "2009-05-19 - 2010-05-19", "", "");
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[4], Double.NaN, allResources,        0, "Text", "", "", "Jenny Boo, Johny Doo");
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[5], 3300.0, new Vector(),   1, "Text", "2009-01-01 - 2009-12-31", "", "");
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[6], 1300.0, expected30ResourceList,   1, "Text", "", "", "Johny Doo");
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[7], Double.NaN, expected36ResourceList,        0, "Text", "2009-01-01 - 2009-12-31", "", "Jenny Boo");
-	}
-	
-	private void verifyAssignments(File jsonDir, final int objectType, int idAsInt, double expectedExpenseAmount, Vector<Integer> expectedResourceIds, int expectedExpenseAssignmentCount, String detailTag, String expectedOverrideWhen, String originalDetailsString, String appendedResourceNames) throws Exception
-	{
-		File objectsDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
-		File objectFile =  new File(objectsDir, Integer.toString(idAsInt));
-		EnhancedJsonObject parentJson = new EnhancedJsonObject(readFile(objectFile));
-		verifyDetailsField(jsonDir, parentJson, detailTag, Double.toString(expectedExpenseAmount), expectedResourceIds, expectedOverrideWhen, originalDetailsString, appendedResourceNames);
-		verifyResourceAssignments(jsonDir, parentJson, expectedResourceIds);
-		verifyExpenseAssignment(jsonDir, parentJson, expectedExpenseAmount, expectedExpenseAssignmentCount);
+		EnhancedJsonObject indicator1Json = getObjectFileAsJson(jsonDir, INDICATOR_TYPE, indicatorRawIds[0]);
+		verifyDetailsField(jsonDir, indicator1Json, "Detail", Double.toString(5000.0), allResources, "2009-01-01 - 2009-03-18", "This is some indicator sample details.", "Jenny Boo, Johny Doo");
+		verifyResourceAssignments(jsonDir, indicator1Json, allResources);
+		verifyExpenseAssignment(jsonDir, indicator1Json, 5000.0, 1);
+		
+		EnhancedJsonObject indicator2Json = getObjectFileAsJson(jsonDir, INDICATOR_TYPE, indicatorRawIds[1]);
+		Vector<Integer> expectedResourceIds = new Vector();
+		verifyDetailsField(jsonDir, indicator2Json, "Detail", Double.toString(0.0), expectedResourceIds, "", "", "");
+		verifyResourceAssignments(jsonDir, indicator2Json, expectedResourceIds);
+		verifyExpenseAssignment(jsonDir, indicator2Json, 0.0, 0);
+		
+		
+		EnhancedJsonObject strategy1Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[0]);
+		verifyDetailsField(jsonDir, strategy1Json, "Text", Double.toString(125.0), expected36ResourceList, "2009-05-18 - 2009-06-27", "This is some sample details.", "Jenny Boo");
+		verifyResourceAssignments(jsonDir, strategy1Json, expected36ResourceList);
+		verifyExpenseAssignment(jsonDir, strategy1Json, 125.0, 1);
+		
+		EnhancedJsonObject strategy2Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[1]);
+		Vector<Integer> expectedResourceIds1 = new Vector();
+		verifyDetailsField(jsonDir, strategy2Json, "Text", Double.toString(Double.NaN), expectedResourceIds1, "", "", "");
+		verifyResourceAssignments(jsonDir, strategy2Json, expectedResourceIds1);
+		verifyExpenseAssignment(jsonDir, strategy2Json, Double.NaN, 0);
+		
+		EnhancedJsonObject strategy3Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[2]);
+		verifyDetailsField(jsonDir, strategy3Json, "Text", Double.toString(4500.0), new Vector(), "", "", "");
+		verifyResourceAssignments(jsonDir, strategy3Json, new Vector());
+		verifyExpenseAssignment(jsonDir, strategy3Json, 4500.0, 1);
+		
+		EnhancedJsonObject strategy4Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[3]);
+		verifyDetailsField(jsonDir, strategy4Json, "Text", Double.toString(Double.NaN), new Vector(), "2009-05-19 - 2010-05-19", "", "");
+		verifyResourceAssignments(jsonDir, strategy4Json, new Vector());
+		verifyExpenseAssignment(jsonDir, strategy4Json, Double.NaN, 0);
+		
+		EnhancedJsonObject strategy5Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[4]);
+		verifyDetailsField(jsonDir, strategy5Json, "Text", Double.toString(Double.NaN), allResources, "", "", "Jenny Boo, Johny Doo");
+		verifyResourceAssignments(jsonDir, strategy5Json, allResources);
+		verifyExpenseAssignment(jsonDir, strategy5Json, Double.NaN, 0);
+		
+		EnhancedJsonObject strategy6Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[5]);
+		verifyDetailsField(jsonDir, strategy6Json, "Text", Double.toString(3300.0), new Vector(), "2009-01-01 - 2009-12-31", "", "");
+		verifyResourceAssignments(jsonDir, strategy6Json, new Vector());
+		verifyExpenseAssignment(jsonDir, strategy6Json, 3300.0, 1);
+		
+		EnhancedJsonObject strategy7Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[6]);
+		verifyDetailsField(jsonDir, strategy7Json, "Text", Double.toString(1300.0), expected30ResourceList, "", "", "Johny Doo");
+		verifyResourceAssignments(jsonDir, strategy7Json, expected30ResourceList);
+		verifyExpenseAssignment(jsonDir, strategy7Json, 1300.0, 1);
+		
+		EnhancedJsonObject strategy8Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[7]);
+		verifyDetailsField(jsonDir, strategy8Json, "Text", Double.toString(Double.NaN), expected36ResourceList, "2009-01-01 - 2009-12-31", "", "Jenny Boo");
+		verifyResourceAssignments(jsonDir, strategy8Json, expected36ResourceList);
+		verifyExpenseAssignment(jsonDir, strategy8Json, Double.NaN, 0);
 	}
 
+	private EnhancedJsonObject getObjectFileAsJson(File jsonDir, final int objectType, final int rawId) throws Exception
+	{
+		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
+		File objectFile =  new File(objectDir, Integer.toString(rawId));
+		
+		return new EnhancedJsonObject(readFile(objectFile));
+	}
+	
 	private void verifyDetailsField(File jsonDir, EnhancedJsonObject parentJson, String detailTag, String expectedExpenseAmount, Vector<Integer> expectedResourceIds, String expectedOverrideWhen, String originalDetailsString, String appendedResourceNames) throws Exception
 	{
 		if (parentJson.getString("BudgetCostMode").equals(""))
@@ -201,9 +244,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		int expenseAssignmentId = expenseAssignmentRefs.get(0).getObjectId().asInt();
 		
 		final int EXPENSE_ASSIGNMENT_TYPE = 51;
-		File expenseAssignmentDir = DataUpgrader.getObjectsDir(jsonDir, EXPENSE_ASSIGNMENT_TYPE);
-		File expenseAssignmentFile = new File(expenseAssignmentDir, Integer.toString(expenseAssignmentId));
-		EnhancedJsonObject expenseAssignmentJson = new EnhancedJsonObject(readFile(expenseAssignmentFile));
+		EnhancedJsonObject expenseAssignmentJson = getObjectFileAsJson(jsonDir, EXPENSE_ASSIGNMENT_TYPE, expenseAssignmentId);
 		
 		verifyDateUnitEffortList(expenseAssignmentJson, new DateUnit(), expectedExpenseAmount);
 	}
