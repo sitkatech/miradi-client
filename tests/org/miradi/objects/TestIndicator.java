@@ -118,14 +118,20 @@ public class TestIndicator extends ObjectTestCase
 		IdList taskIdsFromObject = new IdList(Task.getObjectType(), baseObject.getData(taskTag));
 		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
 		
-		MultiCalendar thisStartDate = MultiCalendar.createFromGregorianYearMonthDay(2006, 1, 1);
-		MultiCalendar thisEndDate = MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31);
-		DateRange dateRange = new DateRange(thisStartDate, thisEndDate);
+		DateRange dateRange = createDateRange(project);
 		assertEquals("wrong work units for methods", 29.0, baseObject.getWorkUnits(dateRange).getValue());
 		
 		BaseObject objectWithNoTasks = project.createBaseObject(objectType);
 		project.addAssignment(objectWithNoTasks, 45, 2006, 2009);
 		assertEquals("wrong work units for methods", 45.0, objectWithNoTasks.getWorkUnits(dateRange).getValue());
+	}
+
+	private static DateRange createDateRange(ProjectForTesting project)	throws Exception
+	{
+		MultiCalendar thisStartDate = project.createStartYear(2006);
+		MultiCalendar thisEndDate = project.createEndYear(2009);
+		
+		return new DateRange(thisStartDate, thisEndDate);
 	}
 
 	private ProjectForTesting project;
