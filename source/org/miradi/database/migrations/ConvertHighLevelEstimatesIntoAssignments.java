@@ -26,6 +26,7 @@ import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -123,14 +124,14 @@ public class ConvertHighLevelEstimatesIntoAssignments
 	private static void updateDetailsTextWithOverrideData(File jsonDir,	File objectFile, EnhancedJsonObject objectJson, String detailsTag) throws Exception
 	{
 		String originalDetailsText = objectJson.optString(detailsTag);
-		String migrationDetialsText = "Migrated High Level Estimate:";
+		String migrationDetialsText = EAM.text("Migrated High Level Estimate:");
 		final String NEW_LINE = "\n";
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += ("Budget Override was:" + objectJson.optDouble("BudgetCostOverride")) ;
+		migrationDetialsText += EAM.substitute(EAM.text("Budget Override was:%s"), Double.toString(objectJson.optDouble("BudgetCostOverride")));
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += ("When Override was:" + createOverrideWhenString(objectJson));
+		migrationDetialsText += EAM.substitute(EAM.text("When Override was:%s"), createOverrideWhenString(objectJson));
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += ("Who Override was:" + createAppendedResourceNames(jsonDir, objectJson));
+		migrationDetialsText += EAM.substitute(EAM.text("Who Override was:%s"), createAppendedResourceNames(jsonDir, objectJson));
 		migrationDetialsText += NEW_LINE;
 		migrationDetialsText += "---------------------------------------------------";
 		migrationDetialsText += NEW_LINE;
