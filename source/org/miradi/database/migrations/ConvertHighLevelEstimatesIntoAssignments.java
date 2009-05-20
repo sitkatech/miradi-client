@@ -110,8 +110,6 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		EnhancedJsonObject resourceAssignmentManifestJson = getOrCreateExpenseManifestObject(resourceAssignmentDir);
 		
 		IdList newlyCreatedResourceAssignmentIds = objectJson.optIdList(RESOURCE_ASSIGNMENT_TYPE, "AssignmentIds");
-		//FIXME need to store dateUnit but need to convert it first
-		//String dateUnit = objectJson.optString("WhenOverride");
 		for (int index = 0; index < whoOverrideRefs.size(); ++index)
 		{
 			EnhancedJsonObject resourceAssignmentJson = new EnhancedJsonObject();
