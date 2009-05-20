@@ -25,6 +25,7 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 
@@ -148,8 +149,8 @@ public class TestTask extends ObjectTestCase
 		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getWhenRollup());
 		
 		
-		MultiCalendar projectStartDate = getProject().createStartYear(1995);
-		MultiCalendar projectEndDate = getProject().createEndYear(2011);
+		MultiCalendar projectStartDate = ProjectForTesting.createStartYear(1995);
+		MultiCalendar projectEndDate = ProjectForTesting.createEndYear(2011);
 		getProject().setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
 		getProject().setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
 		addAssignment(subTask, 1.0, 2000, 2010);
@@ -184,8 +185,8 @@ public class TestTask extends ObjectTestCase
 	
 	public void testGetWorkUnitsForTaskWithSubTasks() throws Exception
 	{		
-		MultiCalendar projectStartDate = getProject().createStartYear(1999);
-		MultiCalendar projectEndDate = getProject().createEndYear(2012);
+		MultiCalendar projectStartDate = ProjectForTesting.createStartYear(1999);
+		MultiCalendar projectEndDate = ProjectForTesting.createEndYear(2012);
 		getProject().setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
 		getProject().setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
 
