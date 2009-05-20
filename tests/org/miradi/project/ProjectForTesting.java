@@ -1212,8 +1212,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ResourceAssignment assignment = createAssignment();
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
-		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(endYear, 12, 31);
+		MultiCalendar startDate = createStartYear(startYear);
+		MultiCalendar endDate = createEndYear(endYear);
 		DateUnitEffort dateUnitEffort = createDateUnitEffort(startDate, endDate);
 		dateUnitEffort.setUnitQuantity(units);
 		dateUnitEffortList.add(dateUnitEffort);
@@ -1221,6 +1221,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		IdList currentAssignmentIdList = baseObject.getAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
 		baseObject.setData(BaseObject.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+	}
+
+	public MultiCalendar createStartYear(int startYear)
+	{
+		return MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
+	}
+	
+	public MultiCalendar createEndYear(int endYear)
+	{
+		return MultiCalendar.createFromGregorianYearMonthDay(endYear, 12, 31);
 	}
 	
 	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
@@ -1269,7 +1279,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public MultiCalendar createMultiCalendar(int year)
 	{
-		return MultiCalendar.createFromGregorianYearMonthDay(year, 1, 1);
+		return createStartYear(year);
 	}
 	
 	public TimePeriodCosts createTimePeriodCosts(double expenses, ORef projectResourceRef, double units)
