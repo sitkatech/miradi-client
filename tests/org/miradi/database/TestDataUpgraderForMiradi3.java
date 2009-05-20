@@ -81,8 +81,8 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 	
 	public void testConvertHighLevelEstimatesIntoAssignments() throws Exception
 	{
-		String projectResourceJohny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Doo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"100.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Johny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671324141\",\"Initials\":\"\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":30,\"IMService\":\"\"}";
-		String projectResourceJenny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Boo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"135.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Jenny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671363962\",\"Initials\":\"\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":36,\"IMService\":\"\"}";
+		String projectResourceJohny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Doo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"100.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Johny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671324141\",\"Initials\":\"JD\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":30,\"IMService\":\"\"}";
+		String projectResourceJenny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Boo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"135.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Jenny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671363962\",\"Initials\":\"JB\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":36,\"IMService\":\"\"}";
 		
 		String taskWithCostWhenWho = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"This is a task detail\",\"ExpenseRefs\":\"\",\"BudgetCostOverride\":\"2000.0\",\"Comment\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":7,\\\"ObjectId\\\":36}]}\",\"Text\":\"\",\"WhenOverride\":\"{\\\"EndDate\\\":\\\"2009-05-18\\\",\\\"StartDate\\\":\\\"2009-01-18\\\"}\",\"GoalIds\":\"\",\"TimeStampModified\":\"1242671492099\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":39,\"ProgressReportRefs\":\"\"}";
 		
@@ -131,13 +131,13 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		
 		
 		EnhancedJsonObject taskJson = getObjectFileAsJson(jsonDir, TASK_TYPE, taskRawIds[0]);
-		verifyDetailsField(jsonDir, taskJson, "Details", Double.toString(2000.0), expected36ResourceList, "2009-01-18 - 2009-05-18", "This is a task detail", "Jenny Boo");
+		verifyDetailsField(jsonDir, taskJson, "Details", Double.toString(2000.0), expected36ResourceList, "2009-01-18 - 2009-05-18", "This is a task detail", "JB Jenny Boo");
 		verifyResourceAssignments(jsonDir, taskJson, expected36ResourceList);
 		verifyExpenseAssignment(jsonDir, taskJson, 2000.0, 1);
 		
 		
 		EnhancedJsonObject indicator1Json = getObjectFileAsJson(jsonDir, INDICATOR_TYPE, indicatorRawIds[0]);
-		verifyDetailsField(jsonDir, indicator1Json, "Detail", Double.toString(5000.0), allResources, "2009-01-01 - 2009-03-18", "This is some indicator sample details.", "Jenny Boo, Johny Doo");
+		verifyDetailsField(jsonDir, indicator1Json, "Detail", Double.toString(5000.0), allResources, "2009-01-01 - 2009-03-18", "This is some indicator sample details.", "JB Jenny Boo, JD Johny Doo");
 		verifyResourceAssignments(jsonDir, indicator1Json, allResources);
 		verifyExpenseAssignment(jsonDir, indicator1Json, 5000.0, 1);
 		
@@ -149,7 +149,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		
 		
 		EnhancedJsonObject strategy1Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[0]);
-		verifyDetailsField(jsonDir, strategy1Json, "Text", Double.toString(125.0), expected36ResourceList, "2009-05-18 - 2009-06-27", "This is some sample details.", "Jenny Boo");
+		verifyDetailsField(jsonDir, strategy1Json, "Text", Double.toString(125.0), expected36ResourceList, "2009-05-18 - 2009-06-27", "This is some sample details.", "JB Jenny Boo");
 		verifyResourceAssignments(jsonDir, strategy1Json, expected36ResourceList);
 		verifyExpenseAssignment(jsonDir, strategy1Json, 125.0, 1);
 		
@@ -170,7 +170,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		verifyExpenseAssignment(jsonDir, strategy4Json, Double.NaN, 0);
 		
 		EnhancedJsonObject strategy5Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[4]);
-		verifyDetailsField(jsonDir, strategy5Json, "Text", Double.toString(Double.NaN), allResources, "", "", "Jenny Boo, Johny Doo");
+		verifyDetailsField(jsonDir, strategy5Json, "Text", Double.toString(Double.NaN), allResources, "", "", "JB Jenny Boo, JD Johny Doo");
 		verifyResourceAssignments(jsonDir, strategy5Json, allResources);
 		verifyExpenseAssignment(jsonDir, strategy5Json, Double.NaN, 0);
 		
@@ -180,12 +180,12 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		verifyExpenseAssignment(jsonDir, strategy6Json, 3300.0, 1);
 		
 		EnhancedJsonObject strategy7Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[6]);
-		verifyDetailsField(jsonDir, strategy7Json, "Text", Double.toString(1300.0), expected30ResourceList, "", "", "Johny Doo");
+		verifyDetailsField(jsonDir, strategy7Json, "Text", Double.toString(1300.0), expected30ResourceList, "", "", "JD Johny Doo");
 		verifyResourceAssignments(jsonDir, strategy7Json, expected30ResourceList);
 		verifyExpenseAssignment(jsonDir, strategy7Json, 1300.0, 1);
 		
 		EnhancedJsonObject strategy8Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[7]);
-		verifyDetailsField(jsonDir, strategy8Json, "Text", Double.toString(Double.NaN), expected36ResourceList, "2009-01-01 - 2009-12-31", "", "Jenny Boo");
+		verifyDetailsField(jsonDir, strategy8Json, "Text", Double.toString(Double.NaN), expected36ResourceList, "2009-01-01 - 2009-12-31", "", "JB Jenny Boo");
 		verifyResourceAssignments(jsonDir, strategy8Json, expected36ResourceList);
 		verifyExpenseAssignment(jsonDir, strategy8Json, Double.NaN, 0);
 	}
