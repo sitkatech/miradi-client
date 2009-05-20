@@ -85,11 +85,9 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		if (! expenseAssignmentDir.exists())
 			DataUpgrader.createObjectsDir(jsonDir, EXPENSE_ASSIGNMENT_TYPE);
 
-		EnhancedJsonObject expenseAssignmentManifestJson = getOrCreateExpenseManifestObject(expenseAssignmentDir);
-		
 		EnhancedJsonObject expenseAssignmentJson = new EnhancedJsonObject();
 		expenseAssignmentJson.put("Details", createSingleElementDateUnitEffortList(costOverride));
-		int newlyCreatedId = createAssignment(jsonDir, expenseAssignmentDir, expenseAssignmentManifestJson, expenseAssignmentJson);
+		int newlyCreatedId = createAssignment(jsonDir, expenseAssignmentDir, expenseAssignmentJson);
 		
 		ORefList currentExpenseAssignmentRefs = objectJson.optRefList("ExpenseRefs");
 		currentExpenseAssignmentRefs.add(new ORef(EXPENSE_ASSIGNMENT_TYPE, new BaseId(newlyCreatedId)));
@@ -108,15 +106,13 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		if (! resourceAssignmentDir.exists())
 			DataUpgrader.createObjectsDir(jsonDir, RESOURCE_ASSIGNMENT_TYPE);
 
-		EnhancedJsonObject resourceAssignmentManifestJson = getOrCreateExpenseManifestObject(resourceAssignmentDir);
-		
 		IdList newlyCreatedResourceAssignmentIds = objectJson.optIdList(RESOURCE_ASSIGNMENT_TYPE, "AssignmentIds");
 		for (int index = 0; index < whoOverrideRefs.size(); ++index)
 		{
 			EnhancedJsonObject resourceAssignmentJson = new EnhancedJsonObject();
 			resourceAssignmentJson.put("ResourceId", whoOverrideRefs.get(index).getObjectId().toString());
 			resourceAssignmentJson.put("Details", createSingleElementDateUnitEffortList(0.0));
-			int newlyCreatedId = createAssignment(jsonDir, resourceAssignmentDir, resourceAssignmentManifestJson, resourceAssignmentJson);
+			int newlyCreatedId = createAssignment(jsonDir, resourceAssignmentDir, resourceAssignmentJson);
 			newlyCreatedResourceAssignmentIds.add(new BaseId(newlyCreatedId));
 		}
 		
@@ -190,10 +186,12 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		return assignemtnManifestJson;
 	}
 	
-	private static int createAssignment(File jsonDir, File assignmentDir, EnhancedJsonObject assignmentManifestJson, EnhancedJsonObject assignmentJsonWithoutIdKey) throws Exception
+	private static int createAssignment(File jsonDir, File assignmentDir, EnhancedJsonObject assignmentJsonWithoutIdKey) throws Exception
 	{
 		int highestId = DataUpgrader.readHighestIdInProjectFile(jsonDir);
 		int id = ++highestId;
+		
+		EnhancedJsonObject assignmentManifestJson = getOrCreateExpenseManifestObject(assignmentDir);
 		assignmentManifestJson.put(Integer.toString(id), "true");
 		assignmentJsonWithoutIdKey.put("Id", Integer.toString(id));
 		
