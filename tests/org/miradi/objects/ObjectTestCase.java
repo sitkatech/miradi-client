@@ -333,7 +333,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if (field instanceof DateUnitEffortListData)
 		{
 			DateUnitEffortList list = new DateUnitEffortList();
-			DateUnit dateUnit = TestDateUnit.month;
+			DateUnit dateUnit = TestDateUnit.month12;
 			list.add(new DateUnitEffort(5.0, dateUnit));
 			return list.toString();
 		}

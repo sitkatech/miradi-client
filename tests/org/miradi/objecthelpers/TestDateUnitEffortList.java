@@ -53,7 +53,7 @@ public class TestDateUnitEffortList extends EAMTestCase
 	
 	private DateUnitEffortList createSampleData()
 	{
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(10.0, TestDateUnit.month);
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(10.0, TestDateUnit.month12);
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
 		
