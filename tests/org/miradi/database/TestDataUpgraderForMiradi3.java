@@ -80,6 +80,9 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 	
 	public void testConvertHighLevelEstimatesIntoAssignments() throws Exception
 	{
+		String projectResourceJohny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Doo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"100.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Johny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671324141\",\"Initials\":\"\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":30,\"IMService\":\"\"}";
+		String projectResourceJenny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Boo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"135.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Jenny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671363962\",\"Initials\":\"\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":36,\"IMService\":\"\"}";
+		
 		String taskWithCostWhenWho = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"BudgetCostOverride\":\"2000.0\",\"Comment\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":7,\\\"ObjectId\\\":36}]}\",\"Text\":\"\",\"WhenOverride\":\"{\\\"EndDate\\\":\\\"2009-05-18\\\",\\\"StartDate\\\":\\\"2009-01-18\\\"}\",\"GoalIds\":\"\",\"TimeStampModified\":\"1242671492099\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":39,\"ProgressReportRefs\":\"\"}";
 		
 		String indicatorWithCostWhenWho = "{\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"ExpenseRefs\":\"\",\"MeasurementRefs\":\"\",\"Detail\":\"This is some indicator sample details.\",\"FutureStatusRating\":\"\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"FutureStatusDate\":\"\",\"FutureStatusComment\":\"\",\"ViabilityRatingsComment\":\"\",\"ProgressReportRefs\":\"\",\"ThresholdDetails\":\"\",\"IndicatorThresholds\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"BudgetCostOverride\":\"5000.0\",\"Comment\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":7,\\\"ObjectId\\\":36},{\\\"ObjectType\\\":7,\\\"ObjectId\\\":30}]}\",\"Priority\":\"\",\"Status\":\"\",\"WhenOverride\":\"{\\\"EndDate\\\":\\\"2009-03-18\\\",\\\"StartDate\\\":\\\"2009-01-01\\\"}\",\"TimeStampModified\":\"1242671448223\",\"TaskIds\":\"\",\"Label\":\"\",\"Id\":38}";
@@ -106,6 +109,9 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		int[] strategyRawIds = createObjectFiles(jsonDir, STRATEGY_TYPE, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
 																				strategyWithCostWhen, strategyWithCostWho, strategyWithWhoWhen, });
 		
+		final int PROJECT_RESOURCE_TYPE = 7;
+		createObjectFiles(jsonDir, PROJECT_RESOURCE_TYPE, new String[]{projectResourceJohny, projectResourceJenny, });
+		
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
 		
@@ -118,33 +124,56 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		Vector<Integer> expected30ResourceList = new Vector<Integer>();
 		expected30ResourceList.add(30);
 		
-		Vector<Integer> allResources = new Vector<Integer>();
-		allResources.add(30);
-		allResources.add(36);
+		Vector<Integer> allResources = new Vector();
+		allResources.addAll(expected36ResourceList);
+		allResources.addAll(expected30ResourceList);
 		
 		
-		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], 2000.0, expected36ResourceList, 1);
+		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], 2000.0, expected36ResourceList, 1, "Text", "2009-01-18 - 2009-05-18", "", "Jenny Boo");
 		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], 5000.0, allResources, 1);		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[1], 0, new Vector(),      0);
+		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], 5000.0, allResources, 1, "Detail", "2009-01-01 - 2009-03-18", "This is some indicator sample details.", "Jenny Boo, Johny Doo");		
+		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[1], 0.0, new Vector(),      0, "Detail", "", "", "");
 		
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[0], 125.0, expected36ResourceList,    1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[1], 0, new Vector(),        0);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[2], 4500.0, new Vector(),   1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[3], 0, new Vector(),        0);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[4], 0, allResources,        0);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[5], 3300.0, new Vector(),   1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[6], 1300.0, expected30ResourceList,   1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[7], 0, expected36ResourceList,        0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[0], 125.0, expected36ResourceList,    1, "Text", "2009-05-18 - 2009-06-27", "This is some sample details.", "Jenny Boo");
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[1], Double.NaN, new Vector(),        0, "Text", "", "", "");
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[2], 4500.0, new Vector(),   1, "Text", "", "", "");
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[3], Double.NaN, new Vector(),        0, "Text", "2009-05-19 - 2010-05-19", "", "");
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[4], Double.NaN, allResources,        0, "Text", "", "", "Jenny Boo, Johny Doo");
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[5], 3300.0, new Vector(),   1, "Text", "2009-01-01 - 2009-12-31", "", "");
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[6], 1300.0, expected30ResourceList,   1, "Text", "", "", "Johny Doo");
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[7], Double.NaN, expected36ResourceList,        0, "Text", "2009-01-01 - 2009-12-31", "", "Jenny Boo");
 	}
 	
-	private void verifyAssignments(File jsonDir, final int objectType, int idAsInt, double expectedExpenseAmount, Vector<Integer> expectedResourceIds, int expectedExpenseAssignmentCount) throws Exception
+	private void verifyAssignments(File jsonDir, final int objectType, int idAsInt, double expectedExpenseAmount, Vector<Integer> expectedResourceIds, int expectedExpenseAssignmentCount, String detailTag, String expectedOverrideWhen, String originalDetailsString, String appendedResourceNames) throws Exception
 	{
 		File objectsDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
 		File objectFile =  new File(objectsDir, Integer.toString(idAsInt));
 		EnhancedJsonObject parentJson = new EnhancedJsonObject(readFile(objectFile));
+		verifyDetailsField(jsonDir, parentJson, detailTag, Double.toString(expectedExpenseAmount), expectedResourceIds, expectedOverrideWhen, originalDetailsString, appendedResourceNames);
 		verifyResourceAssignments(jsonDir, parentJson, expectedResourceIds);
 		verifyExpenseAssignment(jsonDir, parentJson, expectedExpenseAmount, expectedExpenseAssignmentCount);
+	}
+
+	private void verifyDetailsField(File jsonDir, EnhancedJsonObject parentJson, String detailTag, String expectedExpenseAmount, Vector<Integer> expectedResourceIds, String expectedOverrideWhen, String originalDetailsString, String appendedResourceNames) throws Exception
+	{
+		if (parentJson.getString("BudgetCostMode").equals(""))
+				return;
+				
+		String migrationDetialsText = "Migrated High Level Estimate:";
+		final String NEW_LINE = "\n";
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += ("Budget Override was:" + expectedExpenseAmount) ;
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += ("When Override was:" + expectedOverrideWhen);
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += ("Who Override was:" + appendedResourceNames);
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += "---------------------------------------------------";
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += originalDetailsString;
+		
+		String expectedDetailsString = parentJson.getString(detailTag);
+		assertEquals("wrong detials for object?", migrationDetialsText, expectedDetailsString);
 	}
 
 	private void verifyResourceAssignments(File jsonDir, EnhancedJsonObject json, Vector<Integer> expectedResourceIds) throws Exception
