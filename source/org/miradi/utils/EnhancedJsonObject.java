@@ -245,6 +245,14 @@ public class EnhancedJsonObject extends JSONObject
 		return new IdList(type, getString(tag));
 	}
 	
+	public IdList optIdList(int type, String tag) throws Exception
+	{
+		if (has(tag))
+			return getIdList(type, tag);
+		
+		return new IdList(type);
+	}
+	
 	public ORefList optRefList(String tag) throws Exception
 	{
 		if (has(tag))

@@ -78,7 +78,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		assertEquals("wrong date unit?", "YEARFROM:2010-01", dateUnitJson.getString("DateUnitCode"));
 	}
 	
-	public void TURNEDOFFTEST_testConvertHighLevelEstimatesIntoAssignments() throws Exception
+	public void testConvertHighLevelEstimatesIntoAssignments() throws Exception
 	{
 		String taskWithCostWhenWho = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"Details\":\"\",\"ExpenseRefs\":\"\",\"BudgetCostOverride\":\"2000.0\",\"Comment\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"WhoOverrideRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":7,\\\"ObjectId\\\":36}]}\",\"Text\":\"\",\"WhenOverride\":\"{\\\"EndDate\\\":\\\"2009-05-18\\\",\\\"StartDate\\\":\\\"2009-01-18\\\"}\",\"GoalIds\":\"\",\"TimeStampModified\":\"1242671492099\",\"BudgetCostMode\":\"BudgetOverrideMode\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":39,\"ProgressReportRefs\":\"\"}";
 		
@@ -106,6 +106,9 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		int[] strategyRawIds = createObjectFiles(jsonDir, STRATEGY_TYPE, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
 																				strategyWithCostWhen, strategyWithCostWho, strategyWithWhoWhen, });
 		
+		File projectFile = new File(jsonDir, "project");
+		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
+		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsForMiradi3.upgradeToVersion43();
 		
@@ -119,28 +122,30 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		allResources.add(30);
 		allResources.add(36);
 		
-		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], new DateUnit(), 2000.0, expected36ResourceList);
 		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], new DateUnit(), 5000.0, allResources);		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[1], new DateUnit(), 0,      allResources);
+		//FIXME need to test real dateUnits instead of all these blank ones
+		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], new DateUnit(), 2000.0, expected36ResourceList, 1);
 		
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[0], new DateUnit(), 125.0,    expected36ResourceList);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[1], new DateUnit(), 0,        new Vector());
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[2], new DateUnit(), 4500.0,   new Vector());
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[3], new DateUnit(), 0,        new Vector());
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[4], new DateUnit(), 0,        allResources);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[5], new DateUnit(), 3300.0,   new Vector());
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[6], new DateUnit(), 1300.0,   expected30ResourceList);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[7], new DateUnit(), 0,        expected36ResourceList);
+		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], new DateUnit(), 5000.0, allResources, 1);		
+		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[1], new DateUnit(), 0,      new Vector(), 0);
+		
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[0], new DateUnit(), 125.0,    expected36ResourceList, 1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[1], new DateUnit(), 0,        new Vector(), 0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[2], new DateUnit(), 4500.0,   new Vector(), 1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[3], new DateUnit(), 0,        new Vector(), 0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[4], new DateUnit(), 0,        allResources, 0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[5], new DateUnit(), 3300.0,   new Vector(), 1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[6], new DateUnit(), 1300.0,   expected30ResourceList, 1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[7], new DateUnit(), 0,        expected36ResourceList, 0);
 	}
 	
-	private void verifyAssignments(File jsonDir, final int objectType, int idAsInt, DateUnit expectedDateUnit,	double expectedExpenseAmount, Vector<Integer> expectedResourceIds) throws Exception
+	private void verifyAssignments(File jsonDir, final int objectType, int idAsInt, DateUnit expectedDateUnit,	double expectedExpenseAmount, Vector<Integer> expectedResourceIds, int expectedExpenseAssignmentCount) throws Exception
 	{
 		File objectsDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
 		File objectFile =  new File(objectsDir, Integer.toString(idAsInt));
 		EnhancedJsonObject parentJson = new EnhancedJsonObject(readFile(objectFile));
 		verifyResourceAssignments(jsonDir, parentJson, expectedDateUnit, expectedResourceIds);
-		verifyExpenseAssignment(jsonDir, parentJson, expectedExpenseAmount);
+		verifyExpenseAssignment(jsonDir, parentJson, expectedExpenseAmount, expectedExpenseAssignmentCount);
 	}
 
 	private void verifyResourceAssignments(File jsonDir, EnhancedJsonObject json, DateUnit expectedDateUnit, Vector<Integer> expectedResourceIds) throws Exception
@@ -158,10 +163,13 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		}
 	}
 
-	private void verifyExpenseAssignment(File jsonDir, EnhancedJsonObject parentJson, double expectedExpenseAmount) throws Exception
+	private void verifyExpenseAssignment(File jsonDir, EnhancedJsonObject parentJson, double expectedExpenseAmount, int expectedExpenseAssignmentCount) throws Exception
 	{
 		ORefList expenseAssignmentRefs = parentJson.getRefList("ExpenseRefs");
-		assertEquals("wrong expense assignment count?", 1, expenseAssignmentRefs.size());
+		assertEquals("wrong expense assignment count?", expectedExpenseAssignmentCount, expenseAssignmentRefs.size());
+		if (expectedExpenseAssignmentCount == 0)
+			return;
+		
 		int expenseAssignmentId = expenseAssignmentRefs.get(0).getObjectId().asInt();
 		
 		final int EXPENSE_ASSIGNMENT_TYPE = 51;
