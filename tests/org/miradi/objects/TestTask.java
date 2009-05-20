@@ -148,10 +148,10 @@ public class TestTask extends ObjectTestCase
 		assertEquals("sub task combined date range was not null?", null, taskWithSubtasks.getWhenRollup());
 		
 		
-		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(1995, 1, 1);
-		MultiCalendar projectEndDate = MultiCalendar.createFromGregorianYearMonthDay(2011, 12, 31);
-		getProject().fillProjectStartDate(projectStartDate);
-		getProject().fillProjectExpectedEndDate(projectEndDate);
+		MultiCalendar projectStartDate = getProject().createStartYear(1995);
+		MultiCalendar projectEndDate = getProject().createEndYear(2011);
+		getProject().setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
+		getProject().setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
 		addAssignment(subTask, 1.0, 2000, 2010);
 		addAssignment(subTask, 1.0, 1995, 1998);
 		addAssignment(subTask, 0, 2011, 2013);
@@ -184,10 +184,10 @@ public class TestTask extends ObjectTestCase
 	
 	public void testGetWorkUnitsForTaskWithSubTasks() throws Exception
 	{		
-		MultiCalendar projectStartDate = MultiCalendar.createFromGregorianYearMonthDay(1999, 1, 1);
-		MultiCalendar projectEndDate = MultiCalendar.createFromGregorianYearMonthDay(2012, 12, 31);
-		getProject().fillProjectStartDate(projectStartDate);
-		getProject().fillProjectExpectedEndDate(projectEndDate);
+		MultiCalendar projectStartDate = getProject().createStartYear(1999);
+		MultiCalendar projectEndDate = getProject().createEndYear(2012);
+		getProject().setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
+		getProject().setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
 
 		DateRange dateRange = new DateRange(projectStartDate, projectEndDate);
 
