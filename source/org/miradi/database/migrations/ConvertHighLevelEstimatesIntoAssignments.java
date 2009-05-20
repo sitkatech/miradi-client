@@ -166,10 +166,11 @@ public class ConvertHighLevelEstimatesIntoAssignments
 			EnhancedJsonObject projectResourceJson = new EnhancedJsonObject(DataUpgrader.readFile(projectResourceFile));
 			String name = projectResourceJson.getString("Name");
 			String surName = projectResourceJson.getString("SurName");
+			String id = projectResourceJson.getString("Initials");
 			if (index > 0)
 				appendedNames += ", ";
 
-			appendedNames += (name + " " +surName);
+			appendedNames += (id + " " + name + " " +surName);
 		}
 
 		return appendedNames;
