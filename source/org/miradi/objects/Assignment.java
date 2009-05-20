@@ -65,7 +65,7 @@ abstract public class Assignment extends BaseObject
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
-		TimePeriodCosts timePeriodCosts = fillTimePeriodCosts(dateRange);		
+		TimePeriodCosts timePeriodCosts = getTimePeriodCosts(dateRange);		
 		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);	
 	}
 	
@@ -96,7 +96,7 @@ abstract public class Assignment extends BaseObject
 		addField(TAG_DATERANGE_EFFORTS, detailListData);
 	}
 	
-	abstract protected TimePeriodCosts fillTimePeriodCosts(DateRange dateRangeToUse) throws Exception;
+	abstract protected TimePeriodCosts getTimePeriodCosts(DateRange dateRangeToUse) throws Exception;
 	
 	public static final String TAG_DATERANGE_EFFORTS = "Details";
 	
