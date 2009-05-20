@@ -39,16 +39,17 @@ public class ConvertHighLevelEstimatesIntoAssignments
 	{	
 		File jsonDir = DataUpgrader.getTopJsonDir();
 		final int TASK_TYPE = 3;
-		convertToAssignments(jsonDir, TASK_TYPE);
+		String factorDetailsTag = "Text";
+		convertToAssignments(jsonDir, TASK_TYPE, factorDetailsTag);
 		
 		final int INDICATOR_TYPE = 8;
-		convertToAssignments(jsonDir, INDICATOR_TYPE);
+		convertToAssignments(jsonDir, INDICATOR_TYPE, "Detail");
 		
 		final int STRATEGY_TYPE = 21;
-		convertToAssignments(jsonDir, STRATEGY_TYPE);
+		convertToAssignments(jsonDir, STRATEGY_TYPE, factorDetailsTag);
 	}
 
-	private static void convertToAssignments(File jsonDir, final int objectType) throws Exception
+	private static void convertToAssignments(File jsonDir, final int objectType, String detailsTag) throws Exception
 	{
 		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
 		if (! objectDir.exists())
@@ -69,6 +70,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 			{
 				createExpenseAssignment(jsonDir, objectFile, objectJson);
 				createResourceAssignment(jsonDir, objectFile, objectJson);
+				updateDetailsTextWithOverrideData(jsonDir, objectFile, objectJson, detailsTag);
 			}
 		}
 	}
@@ -123,6 +125,60 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		DataUpgrader.writeJson(objectFile, objectJson);
 	}
 	
+	private static void updateDetailsTextWithOverrideData(File jsonDir,	File objectFile, EnhancedJsonObject objectJson, String detailsTag) throws Exception
+	{
+		String originalDetailsText = objectJson.getString(detailsTag);
+		String migrationDetialsText = "Migrated High Level Estimate:";
+		final String NEW_LINE = "\n";
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += ("Budget Override was:" + objectJson.optDouble("BudgetCostOverride")) ;
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += ("When Override was:" + createOverrideWhenString(objectJson));
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += ("Who Override was:" + createAppendedResourceNames(jsonDir, objectJson));
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += "---------------------------------------------------";
+		migrationDetialsText += NEW_LINE;
+		migrationDetialsText += originalDetailsText;
+		
+		objectJson.put(detailsTag, migrationDetialsText);
+		DataUpgrader.writeJson(objectFile, objectJson);
+	}
+
+	private static String createOverrideWhenString(EnhancedJsonObject objectJson) throws Exception
+	{
+		EnhancedJsonObject whenOverrideJson = new EnhancedJsonObject(objectJson.getString("WhenOverride"));
+		String startDateAsString = whenOverrideJson.optString("StartDate");
+		String endDateAsString = whenOverrideJson.optString("EndDate");
+		if (startDateAsString.isEmpty() || endDateAsString.isEmpty())
+			return "";
+		
+		String overrideWhenDates = startDateAsString + " - " + endDateAsString;
+		return overrideWhenDates;
+	}
+
+	private static String createAppendedResourceNames(File jsonDir,	EnhancedJsonObject objectJson) throws Exception
+	{
+		ORefList whoOverrideRefs = objectJson.getRefList("WhoOverrideRefs");
+		final int PROJECT_RESOURCE_TYPE = 7;
+		File resourceDir = DataUpgrader.getObjectsDir(jsonDir, PROJECT_RESOURCE_TYPE);
+		String appendedNames = "";
+		for (int index = 0; index < whoOverrideRefs.size(); ++index)
+		{
+			Integer integer = whoOverrideRefs.get(index).getObjectId().asInt();
+			File projectResourceFile = new File(resourceDir, Integer.toString(integer));
+			EnhancedJsonObject projectResourceJson = new EnhancedJsonObject(DataUpgrader.readFile(projectResourceFile));
+			String name = projectResourceJson.getString("Name");
+			String surName = projectResourceJson.getString("SurName");
+			if (index > 0)
+				appendedNames += ", ";
+
+			appendedNames += (name + " " +surName);
+		}
+
+		return appendedNames;
+	}
+
 	private static EnhancedJsonObject getOrCreateExpenseManifestObject(File assignmentDir) throws Exception
 	{
 		File assignmentManifestFile = new File(assignmentDir, "manifest");
