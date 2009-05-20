@@ -33,10 +33,6 @@ import javax.swing.table.TableModel;
 
 abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 {
-	public TableWithHelperMethods()
-	{
-	}
-
 	public TableWithHelperMethods(TableModel model)
 	{
 		super(model);

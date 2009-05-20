@@ -27,11 +27,6 @@ import javax.swing.table.TableModel;
 
 public class TableWithSunBugWorkarounds extends JTable
 {
-	public TableWithSunBugWorkarounds()
-	{
-		super();
-	}
-	
 	public TableWithSunBugWorkarounds(TableModel model)
 	{
 		super(model);
