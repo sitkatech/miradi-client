@@ -55,7 +55,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		if (! objectDir.exists())
 			return;
 		
-		File manifestFile = new File(objectDir, "manifest");
+		File manifestFile = createManifestFile(objectDir);
 		if (! manifestFile.exists())
 			return;
 		
@@ -181,7 +181,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 
 	private static EnhancedJsonObject getOrCreateExpenseManifestObject(File assignmentDir) throws Exception
 	{
-		File assignmentManifestFile = new File(assignmentDir, "manifest");
+		File assignmentManifestFile = createManifestFile(assignmentDir);
 		if (assignmentManifestFile.exists())
 			return DataUpgrader.readFile(assignmentManifestFile);
 
@@ -201,10 +201,17 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		File expenseAssignmentFile = new File(assignmentDir, Integer.toString(id));
 		DataUpgrader.createFile(expenseAssignmentFile, assignmentJsonWithoutIdKey.toString());	
 		DataUpgrader.writeHighestIdToProjectFile(jsonDir, id);
+		File assignmentManifestFile = createManifestFile(assignmentDir);
+		DataUpgrader.writeJson(assignmentManifestFile, assignmentManifestJson);
 		
 		return id;
 	}
 	
+	private static File createManifestFile(File assignmentDir)
+	{
+		return new File(assignmentDir, "manifest");
+	}
+		
 	private static String createSingleElementDateUnitEffortList(double cost, DateUnit dateUnitToUse)
 	{
 		DateUnitEffort dateUnitEffort = new DateUnitEffort(cost, dateUnitToUse);

@@ -23,6 +23,7 @@ import java.io.File;
 import java.util.Vector;
 
 import org.miradi.database.migrations.MigrationsForMiradi3;
+import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
@@ -227,8 +228,11 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		assertEquals("wrong resource assignment count?", expectedResourceIds.size(), resourceAssignmentIds.size());
 		for (int index = 0; index < resourceAssignmentIds.size(); ++index)
 		{
-			File resourceAssignmentFile = new File(resourceAssignmentDir, Integer.toString(resourceAssignmentIds.get(index).asInt()));
+			BaseId resourceAssignmentId = resourceAssignmentIds.get(index);
+			File resourceAssignmentFile = new File(resourceAssignmentDir, Integer.toString(resourceAssignmentId.asInt()));
 			EnhancedJsonObject resourceAssignmentJson = new EnhancedJsonObject(readFile(resourceAssignmentFile));
+			
+			verifyManifestFile(jsonDir, RESOURCE_ASSIGNMENT_TYPE, resourceAssignmentId);
 			assertTrue("wrong resource id for resourceAssignment?", expectedResourceIds.contains(resourceAssignmentJson.getId("ResourceId").asInt()));
 			verifyDateUnitEffortList(resourceAssignmentJson, new DateUnit(), 0);
 		}
@@ -241,12 +245,22 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		if (expectedExpenseAssignmentCount == 0)
 			return;
 		
-		int expenseAssignmentId = expenseAssignmentRefs.get(0).getObjectId().asInt();
-		
+		BaseId expenseAssignmentId = expenseAssignmentRefs.get(0).getObjectId();
 		final int EXPENSE_ASSIGNMENT_TYPE = 51;
-		EnhancedJsonObject expenseAssignmentJson = getObjectFileAsJson(jsonDir, EXPENSE_ASSIGNMENT_TYPE, expenseAssignmentId);
+		verifyManifestFile(jsonDir, EXPENSE_ASSIGNMENT_TYPE, expenseAssignmentId);
 		
+		EnhancedJsonObject expenseAssignmentJson = getObjectFileAsJson(jsonDir, EXPENSE_ASSIGNMENT_TYPE, expenseAssignmentId.asInt());
 		verifyDateUnitEffortList(expenseAssignmentJson, new DateUnit(), expectedExpenseAmount);
+	}
+
+	private void verifyManifestFile(File jsonDir, final int objectType, BaseId idInsideManifest) throws Exception
+	{
+		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
+		File manifestFile = new File(objectDir, "manifest");
+		assertTrue("assignment manifest file could not be found?", manifestFile.exists());
+		
+		ObjectManifest manifest = new ObjectManifest(JSONFile.read(manifestFile));
+		assertTrue("manifest does not contain id as a key?", manifest.has(idInsideManifest));
 	}
 	
 	private void verifyDateUnitEffortList(EnhancedJsonObject assignmentJson, DateUnit expectedDateUnit, double expectedCost) throws Exception
