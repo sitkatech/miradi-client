@@ -123,31 +123,31 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		allResources.add(36);
 		
 		
-		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], new DateUnit(), 2000.0, expected36ResourceList, 1);
+		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], 2000.0, expected36ResourceList, 1);
 		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], new DateUnit(), 5000.0, allResources, 1);		
-		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[1], new DateUnit(), 0,      new Vector(), 0);
+		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], 5000.0, allResources, 1);		
+		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[1], 0, new Vector(),      0);
 		
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[0], new DateUnit(), 125.0,    expected36ResourceList, 1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[1], new DateUnit(), 0,        new Vector(), 0);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[2], new DateUnit(), 4500.0,   new Vector(), 1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[3], new DateUnit(), 0,        new Vector(), 0);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[4], new DateUnit(), 0,        allResources, 0);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[5], new DateUnit(), 3300.0,   new Vector(), 1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[6], new DateUnit(), 1300.0,   expected30ResourceList, 1);
-		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[7], new DateUnit(), 0,        expected36ResourceList, 0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[0], 125.0, expected36ResourceList,    1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[1], 0, new Vector(),        0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[2], 4500.0, new Vector(),   1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[3], 0, new Vector(),        0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[4], 0, allResources,        0);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[5], 3300.0, new Vector(),   1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[6], 1300.0, expected30ResourceList,   1);
+		verifyAssignments(jsonDir, STRATEGY_TYPE, strategyRawIds[7], 0, expected36ResourceList,        0);
 	}
 	
-	private void verifyAssignments(File jsonDir, final int objectType, int idAsInt, DateUnit expectedDateUnit,	double expectedExpenseAmount, Vector<Integer> expectedResourceIds, int expectedExpenseAssignmentCount) throws Exception
+	private void verifyAssignments(File jsonDir, final int objectType, int idAsInt, double expectedExpenseAmount, Vector<Integer> expectedResourceIds, int expectedExpenseAssignmentCount) throws Exception
 	{
 		File objectsDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
 		File objectFile =  new File(objectsDir, Integer.toString(idAsInt));
 		EnhancedJsonObject parentJson = new EnhancedJsonObject(readFile(objectFile));
-		verifyResourceAssignments(jsonDir, parentJson, expectedDateUnit, expectedResourceIds);
+		verifyResourceAssignments(jsonDir, parentJson, expectedResourceIds);
 		verifyExpenseAssignment(jsonDir, parentJson, expectedExpenseAmount, expectedExpenseAssignmentCount);
 	}
 
-	private void verifyResourceAssignments(File jsonDir, EnhancedJsonObject json, DateUnit expectedDateUnit, Vector<Integer> expectedResourceIds) throws Exception
+	private void verifyResourceAssignments(File jsonDir, EnhancedJsonObject json, Vector<Integer> expectedResourceIds) throws Exception
 	{
 		final int RESOURCE_ASSIGNMENT_TYPE = 14;
 		File resourceAssignmentDir = DataUpgrader.getObjectsDir(jsonDir, RESOURCE_ASSIGNMENT_TYPE);
@@ -158,7 +158,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 			File resourceAssignmentFile = new File(resourceAssignmentDir, Integer.toString(resourceAssignmentIds.get(index).asInt()));
 			EnhancedJsonObject resourceAssignmentJson = new EnhancedJsonObject(readFile(resourceAssignmentFile));
 			assertTrue("wrong resource id for resourceAssignment?", expectedResourceIds.contains(resourceAssignmentJson.getId("ResourceId").asInt()));
-			verifyDateUnitEffortList(resourceAssignmentJson, expectedDateUnit, 0);
+			verifyDateUnitEffortList(resourceAssignmentJson, new DateUnit(), 0);
 		}
 	}
 
