@@ -180,7 +180,7 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	protected TimePeriodCosts fillTimePeriodCosts(DateRange dateRangeToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCosts(DateRange dateRangeToUse) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 		ORef resourceRef = getResourceRef();

@@ -49,7 +49,7 @@ public class ExpenseAssignment extends Assignment
 		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRangeToUse);
 	}
 	
-	protected TimePeriodCosts fillTimePeriodCosts(DateRange dateRangeToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCosts(DateRange dateRangeToUse) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 		OptionalDouble expense = getExpenseAmounts(dateRangeToUse);
