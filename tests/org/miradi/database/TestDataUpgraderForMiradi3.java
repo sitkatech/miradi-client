@@ -123,7 +123,6 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		allResources.add(36);
 		
 		
-		//FIXME need to test real dateUnits instead of all these blank ones
 		verifyAssignments(jsonDir, TASK_TYPE, taskRawIds[0], new DateUnit(), 2000.0, expected36ResourceList, 1);
 		
 		verifyAssignments(jsonDir, INDICATOR_TYPE, indicatorRawIds[0], new DateUnit(), 5000.0, allResources, 1);		
