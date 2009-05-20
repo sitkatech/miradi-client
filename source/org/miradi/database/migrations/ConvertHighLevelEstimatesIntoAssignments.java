@@ -88,7 +88,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		EnhancedJsonObject expenseAssignmentManifestJson = getOrCreateExpenseManifestObject(expenseAssignmentDir);
 		
 		EnhancedJsonObject expenseAssignmentJson = new EnhancedJsonObject();
-		expenseAssignmentJson.put("Details", createSingleElementDateUnitEffortList(costOverride, new DateUnit()));
+		expenseAssignmentJson.put("Details", createSingleElementDateUnitEffortList(costOverride));
 		int newlyCreatedId = createAssignment(jsonDir, expenseAssignmentDir, expenseAssignmentManifestJson, expenseAssignmentJson);
 		
 		ORefList currentExpenseAssignmentRefs = objectJson.optRefList("ExpenseRefs");
@@ -115,7 +115,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		{
 			EnhancedJsonObject resourceAssignmentJson = new EnhancedJsonObject();
 			resourceAssignmentJson.put("ResourceId", whoOverrideRefs.get(index).getObjectId().toString());
-			resourceAssignmentJson.put("Details", createSingleElementDateUnitEffortList(0.0, new DateUnit()));
+			resourceAssignmentJson.put("Details", createSingleElementDateUnitEffortList(0.0));
 			int newlyCreatedId = createAssignment(jsonDir, resourceAssignmentDir, resourceAssignmentManifestJson, resourceAssignmentJson);
 			newlyCreatedResourceAssignmentIds.add(new BaseId(newlyCreatedId));
 		}
@@ -211,9 +211,9 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		return new File(assignmentDir, "manifest");
 	}
 		
-	private static String createSingleElementDateUnitEffortList(double cost, DateUnit dateUnitToUse)
+	private static String createSingleElementDateUnitEffortList(double cost)
 	{
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(cost, dateUnitToUse);
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(cost, new DateUnit());
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
 		
