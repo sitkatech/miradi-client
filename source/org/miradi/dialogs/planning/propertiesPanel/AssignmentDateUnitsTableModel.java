@@ -120,6 +120,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		try
 		{
+			if(isDayColumn(modelColumn))
+				return false;
 			return isExpanded(modelColumn);
 		}
 		catch(Exception e)

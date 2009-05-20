@@ -34,6 +34,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
+import org.miradi.utils.MiradiResourceImageIcon;
  
 public class IconManager
 {
@@ -226,4 +227,21 @@ public class IconManager
 	{
 		return new DirectThreatIcon();
 	}
+
+	public static Icon getExpandIcon()
+	{
+		if(expandIcon == null)
+			expandIcon = new MiradiResourceImageIcon("icons/expand.png");
+		return expandIcon;
+	}
+
+	public static Icon getCollapseIcon()
+	{
+		if(collapseIcon == null)
+			collapseIcon = new MiradiResourceImageIcon("icons/collapse.png");
+		return collapseIcon;
+	}
+	
+	private static Icon expandIcon;
+	private static Icon collapseIcon;
 }

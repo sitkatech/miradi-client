@@ -26,7 +26,9 @@ import javax.swing.JPanel;
 
 import org.martus.swing.UiScrollPane;
 import org.miradi.actions.Actions;
+import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.MultiTablePanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -39,6 +41,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.views.umbrella.ObjectPicker;
+
+import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel  implements CommandExecutedListener
 {
@@ -173,16 +177,25 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 
 	protected void addTables()
 	{
-		OneRowPanel tables = new OneRowPanel();
+		DataInputPanel tablesPanel = new DataInputPanel(getProject());
+		tablesPanel.setLayout(new GridLayoutPlus(2, 4));
 	
-		addTableToPanel(tables, abstractSummaryTable);
-		addToHorizontalController(addTableToPanel(tables, assignmentDateUnitsTable));
+		tablesPanel.add(new PanelTitleLabel(""));
+		tablesPanel.add(new PanelTitleLabel(""));
+		ExpandAndCollapseColumnsButtonRow aboveTableButtonRow = new ExpandAndCollapseColumnsButtonRow(assignmentDateUnitsTable);
+		tablesPanel.add(aboveTableButtonRow);
+		tablesPanel.add(new PanelTitleLabel(""));
 		
-		add(tables, BorderLayout.CENTER);
+		addTableToPanel(tablesPanel, abstractSummaryTable);
+		UiScrollPane dateUnitsTableScrollPanel = addTableToPanel(tablesPanel, assignmentDateUnitsTable);
+		addToHorizontalController(dateUnitsTableScrollPanel);
+		aboveTableButtonRow.setTableScrollPane(dateUnitsTableScrollPanel);
+		
+		add(tablesPanel, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
 	}
-
-	private UiScrollPane addTableToPanel(OneRowPanel tables, AbstractComponentTable table)
+	
+	private UiScrollPane addTableToPanel(JPanel tables, AbstractComponentTable table)
 	{
 		addRowHeightControlledTable(table);
 		AssignmentsComponentTableScrollPane scroller = new AssignmentsComponentTableScrollPane(table);
