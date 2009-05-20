@@ -53,7 +53,7 @@ public class TestAssignment extends ObjectTestCase
 		ResourceAssignment assignment = getProject().createAssignment();
 		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateRange1).hasValue());
 
-		DateUnit dateUnit1 = TestDateUnit.month;
+		DateUnit dateUnit1 = TestDateUnit.month12;
 		DateUnit dateUnit2 = TestDateUnit.month01;
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2, dateUnit1));

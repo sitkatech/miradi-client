@@ -38,7 +38,7 @@ public class TestDateUnit extends TestCaseWithProject
 		verifyStoreAndRestore(empty);
 		verifyStoreAndRestore(fiscalYearStartApril);
 		verifyStoreAndRestore(quarter);
-		verifyStoreAndRestore(month);
+		verifyStoreAndRestore(month12);
 	}
 	
 	private void verifyStoreAndRestore(DateUnit dateUnitToVerifyAgainst) throws Exception
@@ -54,7 +54,7 @@ public class TestDateUnit extends TestCaseWithProject
 		verifyCreateFromJson(empty);
 		verifyCreateFromJson(fiscalYearStartApril);
 		verifyCreateFromJson(quarter);
-		verifyCreateFromJson(month);
+		verifyCreateFromJson(month12);
 	}
 
 	private void verifyCreateFromJson(DateUnit dateUnitToVerifyAgainst) throws Exception
@@ -71,7 +71,7 @@ public class TestDateUnit extends TestCaseWithProject
 	{
 		verifyConstruction(fiscalYearStartApril);
 		verifyConstruction(quarter);
-		verifyConstruction(month);
+		verifyConstruction(month12);
 	}
 	
 	private void verifyConstruction(DateUnit dateUnit) throws Exception
@@ -196,7 +196,7 @@ public class TestDateUnit extends TestCaseWithProject
 		assertEquals(false, bogus.hasSubDateUnits());
 		assertEquals(true, fiscalYearStartJanuary.hasSubDateUnits());
 		assertEquals(true, quarter.hasSubDateUnits());
-		assertEquals(true, month.hasSubDateUnits());
+		assertEquals(true, month12.hasSubDateUnits());
 	}
 	
 	public void testGetDay()
@@ -247,8 +247,6 @@ public class TestDateUnit extends TestCaseWithProject
 	private final DateUnit fiscalYearStartOctober = new DateUnit("YEARFROM:2005-10");
 	private final DateUnit quarter = new DateUnit("2009Q4");
 	
-	public static final DateUnit month = new DateUnit("2008-12");
-	
 	public static final DateUnit month01 = new DateUnit("2008-01");
 	private final DateUnit month02 = new DateUnit("2008-02");
 	private final DateUnit month03 = new DateUnit("2008-03");
@@ -260,5 +258,5 @@ public class TestDateUnit extends TestCaseWithProject
 	private final DateUnit month09 = new DateUnit("2008-09");
 	private final DateUnit month10 = new DateUnit("2008-10");
 	private final DateUnit month11 = new DateUnit("2008-11");
-	private final DateUnit month12 = new DateUnit("2008-12");
+	public static final DateUnit month12 = new DateUnit("2008-12");
 }
