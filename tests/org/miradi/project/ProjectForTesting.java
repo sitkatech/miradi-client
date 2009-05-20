@@ -129,8 +129,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void fillGeneralProjectData() throws Exception
 	{
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_NAME, "Some Project Name");
-		fillProjectStartDate(new MultiCalendar());
-		fillProjectExpectedEndDate(new MultiCalendar());
+		setProjectDate(new MultiCalendar(), ProjectMetadata.TAG_START_DATE);
+		setProjectDate(new MultiCalendar(), ProjectMetadata.TAG_EXPECTED_END_DATE);
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES, "10000");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "10");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE, "30");
@@ -159,14 +159,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
 	}
 
-	public void fillProjectExpectedEndDate(MultiCalendar expectedEndDate) throws Exception
+	public void setProjectDate(MultiCalendar projectStartDate, String tag) throws Exception
 	{
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_EXPECTED_END_DATE, expectedEndDate.toString());
-	}
-	
-	public void fillProjectStartDate(MultiCalendar projectStartDate) throws Exception
-	{
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_START_DATE, projectStartDate.toString());
+		fillObjectUsingCommand(getMetadata().getRef(), tag, projectStartDate.toString());
 	}
 	
 	private String createConproXenodata() throws Exception
