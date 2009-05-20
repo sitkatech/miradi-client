@@ -39,14 +39,13 @@ public class ConvertHighLevelEstimatesIntoAssignments
 	{	
 		File jsonDir = DataUpgrader.getTopJsonDir();
 		final int TASK_TYPE = 3;
-		String factorDetailsTag = "Text";
-		convertToAssignments(jsonDir, TASK_TYPE, factorDetailsTag);
+		convertToAssignments(jsonDir, TASK_TYPE, "Details");
 		
 		final int INDICATOR_TYPE = 8;
 		convertToAssignments(jsonDir, INDICATOR_TYPE, "Detail");
 		
 		final int STRATEGY_TYPE = 21;
-		convertToAssignments(jsonDir, STRATEGY_TYPE, factorDetailsTag);
+		convertToAssignments(jsonDir, STRATEGY_TYPE, "Text");
 	}
 
 	private static void convertToAssignments(File jsonDir, final int objectType, String detailsTag) throws Exception
@@ -127,7 +126,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 	
 	private static void updateDetailsTextWithOverrideData(File jsonDir,	File objectFile, EnhancedJsonObject objectJson, String detailsTag) throws Exception
 	{
-		String originalDetailsText = objectJson.getString(detailsTag);
+		String originalDetailsText = objectJson.optString(detailsTag);
 		String migrationDetialsText = "Migrated High Level Estimate:";
 		final String NEW_LINE = "\n";
 		migrationDetialsText += NEW_LINE;
