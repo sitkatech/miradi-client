@@ -193,8 +193,9 @@ public class DataUpgrader
 			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 41)
 				MigrationsForMiradi3.upgradeToVersion42();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 42)
-				MigrationsForMiradi3.upgradeToVersion43();
+			//FIXME this migration is still under construction
+			//if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 42)
+			//	MigrationsForMiradi3.upgradeToVersion43();
 		}
 		finally 
 		{
