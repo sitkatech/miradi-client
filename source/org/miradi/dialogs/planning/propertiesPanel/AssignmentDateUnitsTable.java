@@ -103,6 +103,18 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 		return JLabel.RIGHT;
 	}
 	
+	public boolean isColumnExpandable(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		return getWorkUnitsTableModel().isColumnExpandable(modelColumn);
+	}
+	
+	public boolean isColumnCollapsable(int tableColumn)
+	{
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		return getWorkUnitsTableModel().isColumnCollapsable(modelColumn);
+	}
+	
 	public boolean isDayColumnSelected()
 	{ 
 		return getWorkUnitsTableModel().isDayColumn(getSelectedModelColumn());
