@@ -1218,12 +1218,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		baseObject.setData(BaseObject.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
 	}
 
-	public MultiCalendar createStartYear(int startYear)
+	public static MultiCalendar createStartYear(int startYear)
 	{
 		return MultiCalendar.createFromGregorianYearMonthDay(startYear, 1, 1);
 	}
 	
-	public MultiCalendar createEndYear(int endYear)
+	public static MultiCalendar createEndYear(int endYear)
 	{
 		return MultiCalendar.createFromGregorianYearMonthDay(endYear, 12, 31);
 	}
