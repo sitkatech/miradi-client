@@ -50,7 +50,7 @@ public class DateUnitEffort
 		return json;	
 	}
 	
-	public double getUnitQuantity()
+	public double getQuantity()
 	{
 		return numberOfUnits;
 	}
@@ -89,7 +89,7 @@ public class DateUnitEffort
 	
 	public DateRangeEffort asDateRangeEffort(ProjectCalendar projectCalendar) throws Exception
 	{
-		return new DateRangeEffort(getUnitQuantity(), projectCalendar.convertToDateRange(getDateUnit()));
+		return new DateRangeEffort(getQuantity(), projectCalendar.convertToDateRange(getDateUnit()));
 	}
 		
 	private static final String TAG_DATEUNIT = "DateUnit";

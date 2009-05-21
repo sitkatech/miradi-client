@@ -268,7 +268,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		DateUnitEffortList assignmentDetails = new DateUnitEffortList(assignmentJson.getString("Details"));
 		assertEquals("wrong dateUnitEffortList element count for expense assignment details?", 1, assignmentDetails.size());
 		DateUnitEffort dateUnitEffort = assignmentDetails.getDateUnitEffort(0);
-		assertEquals("wrong expense ?", expectedCost, dateUnitEffort.getUnitQuantity());
+		assertEquals("wrong expense ?", expectedCost, dateUnitEffort.getQuantity());
 		assertEquals("wrong date unit for effort?", expectedDateUnit, dateUnitEffort.getDateUnit());
 	}
 }
