@@ -47,6 +47,11 @@ public class TimePeriodCostsMap
 		return data.get(dateUnitToUse);
 	}
 	
+	public boolean containsSpecificDateUnit(DateUnit dateUnitToUse)
+	{
+		return data.containsKey(dateUnitToUse);
+	}
+	
 	public void mergeAdd(TimePeriodCostsMap timePeriodCostsMapToMerge, DateUnit dateUnit)
 	{
 		Set<DateUnit> keys = timePeriodCostsMapToMerge.data.keySet();
@@ -151,6 +156,11 @@ public class TimePeriodCostsMap
 		return data.isEmpty();
 	}
 	
+	public Object size()
+	{
+		return data.size();
+	}
+
 	private HashMap<DateUnit, TimePeriodCosts> getDateUnitTimePeriodCostsMap()
 	{
 		return new HashMap(data);

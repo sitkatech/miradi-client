@@ -369,6 +369,12 @@ public class DateUnit
 	}
 	
 	@Override
+	public int hashCode()
+	{
+		return toString().hashCode();
+	}
+	
+	@Override
 	public String toString()
 	{
 		return getDateUnitCode().toString();

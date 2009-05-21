@@ -1252,8 +1252,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public DateRange createDateRange(int startYear, int endYear) throws Exception
 	{
-		MultiCalendar startDate = createMultiCalendar(startYear);
-		MultiCalendar endDate = createMultiCalendar(endYear);
+		MultiCalendar startDate = createStartYear(startYear);
+		MultiCalendar endDate = createEndYear(endYear);
 		return createDateRange(startDate, endDate);
 	}
 	
@@ -1269,6 +1269,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DateUnit createSingleYearDateUnit(int year) throws Exception
 	{
+		
 		return createDateUnit(year, year);
 	}
 	
