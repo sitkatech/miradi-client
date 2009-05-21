@@ -49,11 +49,11 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		
 		int[] resourceAssignmentRawIds = {35, };
 		final int RESOURCE_ASSIGNMENT_TYPE = 14;
-		createObjectFiles(jsonDir, RESOURCE_ASSIGNMENT_TYPE, new String[] {resourceAssignment, });
+		createObjectFilesFromScratch(jsonDir, RESOURCE_ASSIGNMENT_TYPE, new String[] {resourceAssignment, });
 		
 		int[] expenseAssignmentRawIds = {34, };
 		final int EXPENSE_ASSIGNMENT_TYPE = 51;
-		createObjectFiles(jsonDir, EXPENSE_ASSIGNMENT_TYPE, new String[] {expenseAssignment, });
+		createObjectFilesFromScratch(jsonDir, EXPENSE_ASSIGNMENT_TYPE, new String[] {expenseAssignment, });
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsForMiradi3.upgradeToVersion42();
@@ -101,17 +101,17 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		File jsonDir = createJsonDir();
 		
 		final int TASK_TYPE = 3;
-		int[] taskRawIds = createObjectFiles(jsonDir, TASK_TYPE, new String[] {taskWithCostWhenWho, });
+		int[] taskRawIds = createObjectFilesFromScratch(jsonDir, TASK_TYPE, new String[] {taskWithCostWhenWho, });
 		
 		final int INDICATOR_TYPE = 8;
-		int[] indicatorRawIds = createObjectFiles(jsonDir, INDICATOR_TYPE, new String[] {indicatorWithCostWhenWho, indicatorInRollupMode, });
+		int[] indicatorRawIds = createObjectFilesFromScratch(jsonDir, INDICATOR_TYPE, new String[] {indicatorWithCostWhenWho, indicatorInRollupMode, });
 		
 		final int STRATEGY_TYPE = 21;
-		int[] strategyRawIds = createObjectFiles(jsonDir, STRATEGY_TYPE, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
+		int[] strategyRawIds = createObjectFilesFromScratch(jsonDir, STRATEGY_TYPE, new String[] {strategyStringWithAll, strategyWithNoData, strategyWithCost, strategyWithWhen, strategyWithWho, 
 																				strategyWithCostWhen, strategyWithCostWho, strategyWithWhoWhen, });
 		
 		final int PROJECT_RESOURCE_TYPE = 7;
-		createObjectFiles(jsonDir, PROJECT_RESOURCE_TYPE, new String[]{projectResourceJohny, projectResourceJenny, });
+		createObjectFilesFromScratch(jsonDir, PROJECT_RESOURCE_TYPE, new String[]{projectResourceJohny, projectResourceJenny, });
 		
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
