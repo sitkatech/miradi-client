@@ -263,12 +263,12 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		assertTrue("manifest does not contain id as a key?", manifest.has(idInsideManifest));
 	}
 	
-	private void verifyDateUnitEffortList(EnhancedJsonObject assignmentJson, DateUnit expectedDateUnit, double expectedCost) throws Exception
+	private void verifyDateUnitEffortList(EnhancedJsonObject assignmentJson, DateUnit expectedDateUnit, double expectedQuantity) throws Exception
 	{
 		DateUnitEffortList assignmentDetails = new DateUnitEffortList(assignmentJson.getString("Details"));
 		assertEquals("wrong dateUnitEffortList element count for expense assignment details?", 1, assignmentDetails.size());
 		DateUnitEffort dateUnitEffort = assignmentDetails.getDateUnitEffort(0);
-		assertEquals("wrong expense ?", expectedCost, dateUnitEffort.getQuantity());
+		assertEquals("wrong quantity?", expectedQuantity, dateUnitEffort.getQuantity());
 		assertEquals("wrong date unit for effort?", expectedDateUnit, dateUnitEffort.getDateUnit());
 	}
 }
