@@ -33,7 +33,7 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class TestDataUpgraderForMiradi3 extends AbstractMigration
+public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 {
 	public TestDataUpgraderForMiradi3(String name)
 	{

@@ -32,9 +32,9 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
-abstract public class AbstractMigration extends EAMTestCase
+abstract public class AbstractMigrationTestCase extends EAMTestCase
 {
-	public AbstractMigration(String name)
+	public AbstractMigrationTestCase(String name)
 	{
 		super(name);
 	}

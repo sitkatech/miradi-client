@@ -48,7 +48,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 
-public class TestDataUpgrader extends AbstractMigration
+public class TestDataUpgrader extends AbstractMigrationTestCase
 {
 	public TestDataUpgrader(String name)
 	{
