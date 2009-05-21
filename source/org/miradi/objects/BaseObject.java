@@ -543,6 +543,9 @@ abstract public class BaseObject
 	{
 		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(dateUnitToUse);
 		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
+		if (timePeriodCosts == null)
+			return new OptionalDouble();
+		
 		return timePeriodCosts.calculateTotal(getProject());
 	}
 	
