@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Kevin Smith <info@miradi.org>, 2008.
 #
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:43
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-21 17:22-0500\n"
+"POT-Creation-Date: 2009-05-21 18:07-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -121,6 +120,15 @@ msgid ""
 msgstr ""
 "一项或多项与KEA指示物相关联的总目标组已被删除。请根据需要创建新的总目标组，或"
 "使用“对象生存力”选项中“未来状态”这一新选项来储存同样的数据。 \t\t"
+
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:43
+msgid ""
+"<html>One or more Overrides (High Level Estimates) have been migrated. "
+"<br><br>Any Who overrides have been converted to Resource Assignments, "
+"<br>and any Budget overrides have been converted to Expenses. <br><br>The "
+"original overrides have been inserted as text into the Details fields,<br>in "
+"case you want to refer to them. You can delete them at any time."
+msgstr ""
 
 #: miradi/source/org/miradi/database/DataUpgrader.java:43
 msgid ""

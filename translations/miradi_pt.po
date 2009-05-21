@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Kevin Smith <info@miradi.org>, 2008.
 #
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:43
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-21 17:22-0500\n"
+"POT-Creation-Date: 2009-05-21 18:07-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -102,6 +101,15 @@ msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
 "section of the Target Viability to store the same data."
+msgstr ""
+
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:43
+msgid ""
+"<html>One or more Overrides (High Level Estimates) have been migrated. "
+"<br><br>Any Who overrides have been converted to Resource Assignments, "
+"<br>and any Budget overrides have been converted to Expenses. <br><br>The "
+"original overrides have been inserted as text into the Details fields,<br>in "
+"case you want to refer to them. You can delete them at any time."
 msgstr ""
 
 #: miradi/source/org/miradi/database/DataUpgrader.java:43
