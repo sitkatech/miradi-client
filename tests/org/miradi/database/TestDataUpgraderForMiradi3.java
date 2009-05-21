@@ -206,11 +206,11 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigration
 		String migrationDetialsText = "Migrated High Level Estimate:";
 		final String NEW_LINE = "\n";
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += ("Budget Override was:" + expectedExpenseAmount) ;
+		migrationDetialsText += ("Budget Override was: " + expectedExpenseAmount) ;
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += ("When Override was:" + expectedOverrideWhen);
+		migrationDetialsText += ("When Override was: " + expectedOverrideWhen);
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += ("Who Override was:" + appendedResourceNames);
+		migrationDetialsText += ("Who Override was: " + appendedResourceNames);
 		migrationDetialsText += NEW_LINE;
 		migrationDetialsText += "---------------------------------------------------";
 		migrationDetialsText += NEW_LINE;
