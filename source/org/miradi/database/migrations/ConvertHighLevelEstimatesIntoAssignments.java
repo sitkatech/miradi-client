@@ -21,17 +21,15 @@ package org.miradi.database.migrations;
 
 import java.io.File;
 
+import org.json.JSONArray;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ConvertHighLevelEstimatesIntoAssignments
@@ -211,12 +209,20 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		return new File(assignmentDir, "manifest");
 	}
 		
-	private static String createSingleElementDateUnitEffortList(double cost)
+	private static EnhancedJsonObject createSingleElementDateUnitEffortList(double cost)
 	{
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(cost, new DateUnit());
-		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(dateUnitEffort);
+		EnhancedJsonObject dateUnitJson = new EnhancedJsonObject();
+		dateUnitJson.put("DateUnitCode", "");
 		
-		return dateUnitEffortList.toString();
+		EnhancedJsonObject dateUnitEffortJson = new EnhancedJsonObject();
+		dateUnitEffortJson.put("DateUnit", dateUnitJson);
+		dateUnitEffortJson.put("NumberOfUnits", cost);
+		
+		EnhancedJsonObject dateUnitEffortListJson = new EnhancedJsonObject();
+		JSONArray array = new JSONArray();
+		array.put(dateUnitEffortJson);	
+		dateUnitEffortListJson.put("DateUnitEfforts", array);
+		
+		return dateUnitEffortListJson;
 	}
 }
