@@ -127,7 +127,8 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			try
 			{
 				int columnClicked = findModelColumn(event.getPoint());
-				table.getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(columnClicked);
+				if (columnClicked >= 0)
+					table.getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(columnClicked);
 			}
 			catch (Exception e)
 			{
@@ -154,7 +155,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 				iconBounds.x = columnX;
 			}
 			
-			throw new RuntimeException("Did not find icon that was clicked on to expand/colapse");
+			return -1;
 		}
 	}
 
