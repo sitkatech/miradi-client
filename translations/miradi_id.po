@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-21 09:10-0500\n"
+"POT-Creation-Date: 2009-05-21 09:34-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -42,19 +42,19 @@ msgstr " (Sumber Daya Tak Terdefinisi) "
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
 
-#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:127
+#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:125
 msgid "Migrated High Level Estimate:"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:130
+#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:128
 msgid "Budget Override was: %s"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:132
+#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:130
 msgid "When Override was: %s"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:134
+#: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:132
 msgid "Who Override was: %s"
 msgstr ""
 
