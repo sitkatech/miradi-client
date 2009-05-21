@@ -155,7 +155,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		
 		EnhancedJsonObject strategy2Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[1]);
 		Vector<Integer> expectedResourceIds1 = new Vector();
-		verifyDetailsField(jsonDir, strategy2Json, "Text", Double.toString(Double.NaN), expectedResourceIds1, "", "", "");
+		verifyDetailsField(jsonDir, strategy2Json, "Text", "", expectedResourceIds1, "", "", "");
 		verifyResourceAssignments(jsonDir, strategy2Json, expectedResourceIds1);
 		verifyExpenseAssignment(jsonDir, strategy2Json, Double.NaN, 0);
 		
@@ -165,12 +165,12 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		verifyExpenseAssignment(jsonDir, strategy3Json, 4500.0, 1);
 		
 		EnhancedJsonObject strategy4Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[3]);
-		verifyDetailsField(jsonDir, strategy4Json, "Text", Double.toString(Double.NaN), new Vector(), "2009-05-19 - 2010-05-19", "", "");
+		verifyDetailsField(jsonDir, strategy4Json, "Text", "", new Vector(), "2009-05-19 - 2010-05-19", "", "");
 		verifyResourceAssignments(jsonDir, strategy4Json, new Vector());
 		verifyExpenseAssignment(jsonDir, strategy4Json, Double.NaN, 0);
 		
 		EnhancedJsonObject strategy5Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[4]);
-		verifyDetailsField(jsonDir, strategy5Json, "Text", Double.toString(Double.NaN), allResources, "", "", "JB Jenny Boo, JD Johny Doo");
+		verifyDetailsField(jsonDir, strategy5Json, "Text", "", allResources, "", "", "JB Jenny Boo, JD Johny Doo");
 		verifyResourceAssignments(jsonDir, strategy5Json, allResources);
 		verifyExpenseAssignment(jsonDir, strategy5Json, Double.NaN, 0);
 		
@@ -185,7 +185,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		verifyExpenseAssignment(jsonDir, strategy7Json, 1300.0, 1);
 		
 		EnhancedJsonObject strategy8Json = getObjectFileAsJson(jsonDir, STRATEGY_TYPE, strategyRawIds[7]);
-		verifyDetailsField(jsonDir, strategy8Json, "Text", Double.toString(Double.NaN), expected36ResourceList, "2009-01-01 - 2009-12-31", "", "JB Jenny Boo");
+		verifyDetailsField(jsonDir, strategy8Json, "Text", "", expected36ResourceList, "2009-01-01 - 2009-12-31", "", "JB Jenny Boo");
 		verifyResourceAssignments(jsonDir, strategy8Json, expected36ResourceList);
 		verifyExpenseAssignment(jsonDir, strategy8Json, Double.NaN, 0);
 	}
