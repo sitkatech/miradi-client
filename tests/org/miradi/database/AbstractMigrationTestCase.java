@@ -61,7 +61,7 @@ abstract public class AbstractMigrationTestCase extends EAMTestCase
 		return objectsDir;
 	}
 
-	protected int[] createObjectFiles(File jsonDir, final int objectType, String[] jsonStrings) throws Exception
+	protected int[] createObjectFilesFromScratch(File jsonDir, final int objectType, String[] jsonStrings) throws Exception
 	{
 		File objectsDir = DataUpgrader.createObjectsDir(jsonDir, objectType);
 		Vector<Integer> objectIds = new Vector();
