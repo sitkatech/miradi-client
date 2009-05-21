@@ -144,21 +144,21 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		File jsonDir = createJsonDir();
 
 		final int PROJECT_METADATA_TYPE = 11;
-		createObjectFilesFromScratch(jsonDir, PROJECT_METADATA_TYPE, new String[]{projectMetadataJsonString, });
+		createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, new String[]{projectMetadataJsonString, });
 		
 		int[] conceptualModelRawIds = {9, 24, };
 		final int CONCEPTUAL_MODEL_TYPE = 19;
-		createObjectFilesFromScratch(jsonDir, CONCEPTUAL_MODEL_TYPE, new String[]{emptyConceptualModelJsonString, targetPopulatedConceptualModelJsonString, });
+		createAndPopulateObjectDir(jsonDir, CONCEPTUAL_MODEL_TYPE, new String[]{emptyConceptualModelJsonString, targetPopulatedConceptualModelJsonString, });
 		
 		int[] resultsChainRawIds = {29, };
 		final int RESULTS_CHAIN_TYPE = 24;
-		createObjectFilesFromScratch(jsonDir, RESULTS_CHAIN_TYPE, new String[]{targetPopulatedResultsChainJsonString, });
+		createAndPopulateObjectDir(jsonDir, RESULTS_CHAIN_TYPE, new String[]{targetPopulatedResultsChainJsonString, });
 		
 		final int TARGET_TYPE = 22;
-		createObjectFilesFromScratch(jsonDir, TARGET_TYPE, new String[]{target1InConceptualModelJsonString, target2InConceptualModelJsonString, targetInResultsChainJsonString, });
+		createAndPopulateObjectDir(jsonDir, TARGET_TYPE, new String[]{target1InConceptualModelJsonString, target2InConceptualModelJsonString, targetInResultsChainJsonString, });
 		
 		final int DIAGRAM_FACTOR_TYPE = 18;
-		createObjectFilesFromScratch(jsonDir, DIAGRAM_FACTOR_TYPE, new String[]{target1DiagramFactorInConceptualModelJsonString, target2DiagramFactorInConceptualModelJsonString, targetDiagramFactorInResultsChainJsonString, groupBoxDiagramFactorInRessultsChainJsonString, });
+		createAndPopulateObjectDir(jsonDir, DIAGRAM_FACTOR_TYPE, new String[]{target1DiagramFactorInConceptualModelJsonString, target2DiagramFactorInConceptualModelJsonString, targetDiagramFactorInResultsChainJsonString, groupBoxDiagramFactorInRessultsChainJsonString, });
 		
 		
 		File projectFile = new File(jsonDir, "project");
@@ -264,17 +264,17 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		File jsonDir = createJsonDir();
 
 		final int STRATEGY_TYPE = 21;
-		createObjectFilesFromScratch(jsonDir, STRATEGY_TYPE, new String[]{strategyJsonString, });
+		createAndPopulateObjectDir(jsonDir, STRATEGY_TYPE, new String[]{strategyJsonString, });
 	
 		int[] causeIds = {55, 56, 57, 58, };
 		final int CAUSE_TYPE = 20;
-		createObjectFilesFromScratch(jsonDir, CAUSE_TYPE, new String[]{threat1JsonString, threat2JsonString, cause1JsonString, cause2JsonString, });
+		createAndPopulateObjectDir(jsonDir, CAUSE_TYPE, new String[]{threat1JsonString, threat2JsonString, cause1JsonString, cause2JsonString, });
 
 		final int TARGET_TYPE = 22;
-		createObjectFilesFromScratch(jsonDir, TARGET_TYPE, new String[]{targetJsonString, });
+		createAndPopulateObjectDir(jsonDir, TARGET_TYPE, new String[]{targetJsonString, });
 		
 		final int FACTOR_LINK_TYPE = 6;
-		createObjectFilesFromScratch(jsonDir, FACTOR_LINK_TYPE, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
+		createAndPopulateObjectDir(jsonDir, FACTOR_LINK_TYPE, new String[]{threatTargetLinkJsonString, strategyThreatLinkJsonString, targetCauseBidiLinkJsonString, causeStrategyLinkJsonString, targetCauseLinkJsonString, });
 
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
 		MigrationsOlderThanMiradiVersion2.upgradeToVersion39();
@@ -318,15 +318,15 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 
 		int[] causeIds = {25, };
 		final int CAUSE_TYPE = 20;
-		createObjectFilesFromScratch(jsonDir, CAUSE_TYPE, new String[]{threatJsonString, });
+		createAndPopulateObjectDir(jsonDir, CAUSE_TYPE, new String[]{threatJsonString, });
 
 		int[] targetIds = {23, };
 		final int TARGET_TYPE = 22;
-		createObjectFilesFromScratch(jsonDir, TARGET_TYPE, new String[]{targetJsonString, });
+		createAndPopulateObjectDir(jsonDir, TARGET_TYPE, new String[]{targetJsonString, });
 	
 		int[] factorLinkIds = {27, };
 		final int FACTOR_LINK_TYPE = 6;
-		createObjectFilesFromScratch(jsonDir, FACTOR_LINK_TYPE, new String[]{linkWithCommentsFieldsJsonString, });
+		createAndPopulateObjectDir(jsonDir, FACTOR_LINK_TYPE, new String[]{linkWithCommentsFieldsJsonString, });
 		
 		File projectFile = new File(jsonDir, "project");
 		createFile(projectFile, "{\"HighestUsedNodeId\":27}");
@@ -387,14 +387,14 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		String threatStressRatingJsonString = "{\"WhenOverride\":\"\",\"IsActive\":\"1\",\"TimeStampModified\":\"1235566196548\",\"BudgetCostOverride\":\"\",\"BudgetCostMode\":\"\",\"Contribution\":\"2\",\"Label\":\"\",\"Id\":178,\"StressRef\":\"{\\\"ObjectType\\\":33,\\\"ObjectId\\\":177}\",\"WhoOverrideRefs\":\"\",\"Irreversibility\":\"2\"}";
 
 		final int CAUSE_TYPE = 20;
-		createObjectFilesFromScratch(jsonDir, CAUSE_TYPE, new String[]{threat1JsonString, threat2JsonString, threat3JsonString, });
+		createAndPopulateObjectDir(jsonDir, CAUSE_TYPE, new String[]{threat1JsonString, threat2JsonString, threat3JsonString, });
 
 		final int TARGET_TYPE = 22;
-		createObjectFilesFromScratch(jsonDir, TARGET_TYPE, new String[]{target1JsonString, target2JsonString, });
+		createAndPopulateObjectDir(jsonDir, TARGET_TYPE, new String[]{target1JsonString, target2JsonString, });
 		
 		int[] factorLinkIds = {227, 140, 217, };
 		final int FACTOR_LINK_TYPE = 6;
-		createObjectFilesFromScratch(jsonDir, FACTOR_LINK_TYPE, new String[]{bidiFactorLinkWithOneThreatStressRatingJsonString, factorLinkWithOneThreatStressRatingJsonString, factorLinkWithNoThreatStressRatingJsonString, });
+		createAndPopulateObjectDir(jsonDir, FACTOR_LINK_TYPE, new String[]{bidiFactorLinkWithOneThreatStressRatingJsonString, factorLinkWithOneThreatStressRatingJsonString, factorLinkWithNoThreatStressRatingJsonString, });
 		
 		int[] threatStressRatingIds = {178,}; 
 		final int THREAT_STRESS_RATING_TYPE = 34;
