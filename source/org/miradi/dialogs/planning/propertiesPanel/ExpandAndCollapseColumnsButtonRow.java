@@ -22,8 +22,12 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -31,6 +35,7 @@ import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.IconManager;
+import org.miradi.main.EAM;
 
 public class ExpandAndCollapseColumnsButtonRow extends JComponent implements AdjustmentListener
 {
@@ -38,6 +43,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	{
 		table = tableToSitAbove;
 		add(new PanelTitleLabel(IconManager.getActivityIcon()));
+		addMouseListener(new MouseClickHandler());
 	}
 	
 	public void setTableScrollPane(JScrollPane tableScrollPaneToUse)
@@ -49,16 +55,24 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	@Override
 	protected void paintComponent(Graphics g)
 	{
-		int columnX = 1;
-		if(tableScrollPane != null)
-			columnX -= tableScrollPane.getViewport().getViewPosition().x;
+		int columnX = getInitialColumnX();
 		for(int column = 0; column < table.getColumnCount(); ++column)
 		{
 			Icon icon = getIcon(column);
 			if (icon != null)
 				icon.paintIcon(this, g, columnX, ARBITRARY_MARGIN / 2);
+			
 			columnX += table.getColumnModel().getColumn(column).getWidth();
 		}
+	}
+	
+	private int getInitialColumnX()
+	{
+		int columnX = 1;
+		if(tableScrollPane != null)
+			columnX -= tableScrollPane.getViewport().getViewPosition().x;
+		
+		return columnX;
 	}
 	
 	private Icon getIcon(int tableColumn)
@@ -73,8 +87,18 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	@Override
 	public Dimension getPreferredSize()
 	{
+		return new Dimension(0, getPreferredHeight());
+	}
+
+	private int getPreferredHeight()
+	{
 		int height = Math.max(getExpandIcon().getIconHeight(), getCollapseIcon().getIconHeight());
-		return new Dimension(0, height + ARBITRARY_MARGIN);
+		return height + ARBITRARY_MARGIN;
+	}
+	
+	private int getPreferredWidth()
+	{
+		return Math.max(getExpandIcon().getIconWidth(), getCollapseIcon().getIconWidth());
 	}
 	
 	public void adjustmentValueChanged(AdjustmentEvent e)
@@ -91,6 +115,47 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	private Icon getCollapseIcon()
 	{
 		return IconManager.getCollapseIcon();
+	}
+	
+	class MouseClickHandler extends MouseAdapter
+	{
+		@Override
+		public void mouseClicked(MouseEvent event)
+		{
+			super.mouseClicked(event);
+			
+			try
+			{
+				int columnClicked = findColumn(event.getPoint());
+				table.getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(columnClicked);
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+
+		private int findColumn(Point point)
+		{
+			int columnX = getInitialColumnX();
+			
+			Rectangle iconBounds = new Rectangle();
+			iconBounds.y = ARBITRARY_MARGIN / 2;
+			iconBounds.x = columnX;
+			iconBounds.height = getPreferredHeight();
+			iconBounds.width = getPreferredWidth();
+			
+			for(int column = 0; column < table.getColumnCount(); ++column)
+			{	
+				if (iconBounds.contains(point))
+					return column;
+				
+				columnX += table.getColumnModel().getColumn(column).getWidth();
+				iconBounds.x = columnX;
+			}
+			
+			throw new RuntimeException("Did not find icon that was clicked on to expand/colapse");
+		}
 	}
 
 	private final static int ARBITRARY_MARGIN = 2;
