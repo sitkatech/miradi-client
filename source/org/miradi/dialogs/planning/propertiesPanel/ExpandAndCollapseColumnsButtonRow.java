@@ -87,16 +87,16 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	@Override
 	public Dimension getPreferredSize()
 	{
-		return new Dimension(0, getPreferredHeight());
+		return new Dimension(0, getIconHeight());
 	}
 
-	private int getPreferredHeight()
+	private int getIconHeight()
 	{
 		int height = Math.max(getExpandIcon().getIconHeight(), getCollapseIcon().getIconHeight());
 		return height + ARBITRARY_MARGIN;
 	}
 	
-	private int getPreferredWidth()
+	private int getIconWidth()
 	{
 		return Math.max(getExpandIcon().getIconWidth(), getCollapseIcon().getIconWidth());
 	}
@@ -143,8 +143,8 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			Rectangle iconBounds = new Rectangle();
 			iconBounds.y = ARBITRARY_MARGIN / 2;
 			iconBounds.x = columnX;
-			iconBounds.height = getPreferredHeight();
-			iconBounds.width = getPreferredWidth();
+			iconBounds.height = getIconHeight();
+			iconBounds.width = getIconWidth();
 			
 			for(int column = 0; column < table.getColumnCount(); ++column)
 			{	
