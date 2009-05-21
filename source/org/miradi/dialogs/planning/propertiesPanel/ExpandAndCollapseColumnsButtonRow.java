@@ -133,6 +133,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			catch (Exception e)
 			{
 				EAM.logException(e);
+				EAM.errorDialog(EAM.text("An error occurred while trying to expand/collapse the column."));
 			}
 		}
 
