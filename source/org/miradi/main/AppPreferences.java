@@ -633,17 +633,18 @@ public class AppPreferences
 	private static final Color WORK_UNITS_MONTH_BACKGROUND =   new Color(0xff, 0xFF, 0x88);
 	private static final Color WORK_UNITS_DAY_BACKGROUND =     new Color(0xff, 0xFF, 0xAA);
 	
-	private static final Color EXPENSE_AMOUNT_TOTAL_BACKGROUND =   new Color(0x99, 0xEE, 0x99);
-	private static final Color EXPENSE_AMOUNT_YEAR_BACKGROUND =    new Color(0xAA, 0xEE, 0xAA);
-	private static final Color EXPENSE_AMOUNT_QUARTER_BACKGROUND = new Color(0xBB, 0xEE, 0xBB);
-	private static final Color EXPENSE_AMOUNT_MONTH_BACKGROUND =   new Color(0xCC, 0xFF, 0xCC);
-	private static final Color EXPENSE_AMOUNT_DAY_BACKGROUND =     new Color(0xDD, 0xFF, 0xDD);
+	// Was: 9e9, aea, beb, cfc, dfd
+	private static final Color EXPENSE_AMOUNT_TOTAL_BACKGROUND =   new Color(0x55, 0xBB, 0x88);
+	private static final Color EXPENSE_AMOUNT_YEAR_BACKGROUND =    new Color(0x77, 0xCC, 0xAA);
+	private static final Color EXPENSE_AMOUNT_QUARTER_BACKGROUND = new Color(0x88, 0xDD, 0xBB);
+	private static final Color EXPENSE_AMOUNT_MONTH_BACKGROUND =   new Color(0x99, 0xEE, 0xCC);
+	private static final Color EXPENSE_AMOUNT_DAY_BACKGROUND =     new Color(0xBB, 0xFF, 0xDD);
 	
-	private static final Color BUDGET_DETAILS_TOTAL_BACKGROUND =   new Color(0xAA, 0x99, 0x99);
-	private static final Color BUDGET_DETAILS_YEAR_BACKGROUND =    new Color(0xBB, 0x99, 0x99);
-	private static final Color BUDGET_DETAILS_QUARTER_BACKGROUND = new Color(0xCC, 0x99, 0x99);
-	private static final Color BUDGET_DETAILS_MONTH_BACKGROUND =   new Color(0xDD, 0x99, 0x99);
-	private static final Color BUDGET_DETAILS_DAY_BACKGROUND =     new Color(0xEE, 0x99, 0x99);
+	private static final Color BUDGET_DETAILS_TOTAL_BACKGROUND =   new Color(0x88, 0xBB, 0x88);
+	private static final Color BUDGET_DETAILS_YEAR_BACKGROUND =    new Color(0xAA, 0xCC, 0x99);
+	private static final Color BUDGET_DETAILS_QUARTER_BACKGROUND = new Color(0xBB, 0xDD, 0xAA);
+	private static final Color BUDGET_DETAILS_MONTH_BACKGROUND =   new Color(0xCC, 0xEE, 0xBB);
+	private static final Color BUDGET_DETAILS_DAY_BACKGROUND =     new Color(0xDD, 0xFF, 0xCC);
 
 	private static final boolean DEFAULT_GRID_VISIBILITY_VALUE = false;
 	private static final boolean DEFAULT_IS_MAXIMIZED_VALUE = false;
