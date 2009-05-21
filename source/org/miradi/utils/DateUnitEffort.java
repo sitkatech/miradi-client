@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
 
@@ -44,9 +43,6 @@ public class DateUnitEffort
 	
 	public EnhancedJsonObject toJson()
 	{
-		if (dateUnit == null)
-			throw new RuntimeException("DateUnit " + EAM.text("is invalid"));
-		
 		EnhancedJsonObject json = new EnhancedJsonObject();
 		json.put(TAG_DATEUNIT, dateUnit.toJson());
 		json.put(TAG_NUMBER_OF_UNITS, numberOfUnits);
