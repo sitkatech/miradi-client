@@ -126,7 +126,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			
 			try
 			{
-				int columnClicked = findColumn(event.getPoint());
+				int columnClicked = findModelColumn(event.getPoint());
 				table.getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(columnClicked);
 			}
 			catch (Exception e)
@@ -135,7 +135,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			}
 		}
 
-		private int findColumn(Point point)
+		private int findModelColumn(Point point)
 		{
 			int columnX = getInitialColumnX();
 			
@@ -148,7 +148,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			for(int column = 0; column < table.getColumnCount(); ++column)
 			{	
 				if (iconBounds.contains(point))
-					return column;
+					return table.convertColumnIndexToModel(column);
 				
 				columnX += table.getColumnModel().getColumn(column).getWidth();
 				iconBounds.x = columnX;
