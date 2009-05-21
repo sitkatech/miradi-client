@@ -34,29 +34,32 @@ import org.miradi.utils.EnhancedJsonObject;
 
 public class ConvertHighLevelEstimatesIntoAssignments
 {
-	public static void convertToAssignments() throws Exception
+	public static int convertToAssignments() throws Exception
 	{	
 		File jsonDir = DataUpgrader.getTopJsonDir();
 		final int TASK_TYPE = 3;
-		convertToAssignments(jsonDir, TASK_TYPE, "Details");
+		int convertedHightLevelEstimateCount = convertToAssignments(jsonDir, TASK_TYPE, "Details");
 		
 		final int INDICATOR_TYPE = 8;
-		convertToAssignments(jsonDir, INDICATOR_TYPE, "Detail");
+		convertedHightLevelEstimateCount += convertToAssignments(jsonDir, INDICATOR_TYPE, "Detail");
 		
 		final int STRATEGY_TYPE = 21;
-		convertToAssignments(jsonDir, STRATEGY_TYPE, "Text");
+		convertedHightLevelEstimateCount += convertToAssignments(jsonDir, STRATEGY_TYPE, "Text");
+		
+		return convertedHightLevelEstimateCount;
 	}
 
-	private static void convertToAssignments(File jsonDir, final int objectType, String detailsTag) throws Exception
+	private static int convertToAssignments(File jsonDir, final int objectType, String detailsTag) throws Exception
 	{
 		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
 		if (! objectDir.exists())
-			return;
+			return 0;
 		
 		File manifestFile = createManifestFile(objectDir);
 		if (! manifestFile.exists())
-			return;
+			return 0;
 		
+		int convertedHightLevelEstimateCount = 0;
 		ObjectManifest taskManifestObject = new ObjectManifest(JSONFile.read(manifestFile));
 		BaseId[] ids = taskManifestObject.getAllKeys();
 		for (int index = 0; index < ids.length; ++index)
@@ -69,8 +72,11 @@ public class ConvertHighLevelEstimatesIntoAssignments
 				createExpenseAssignment(jsonDir, objectFile, objectJson);
 				createResourceAssignment(jsonDir, objectFile, objectJson);
 				updateDetailsTextWithOverrideData(jsonDir, objectFile, objectJson, detailsTag);
+				++convertedHightLevelEstimateCount;
 			}
 		}
+		
+		return convertedHightLevelEstimateCount;
 	}
 
 	private static void createExpenseAssignment(File jsonDir, File objectFile, EnhancedJsonObject objectJson) throws Exception

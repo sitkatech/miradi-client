@@ -22,6 +22,7 @@ package org.miradi.database;
 import java.io.File;
 import java.util.Vector;
 
+import org.miradi.database.migrations.ConvertHighLevelEstimatesIntoAssignments;
 import org.miradi.database.migrations.MigrationsForMiradi3;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -117,7 +118,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		MigrationsForMiradi3.upgradeToVersion43();
+		ConvertHighLevelEstimatesIntoAssignments.convertToAssignments();
 		
 		Vector<Integer> expected36ResourceList = new Vector<Integer>();
 		expected36ResourceList.add(36);
