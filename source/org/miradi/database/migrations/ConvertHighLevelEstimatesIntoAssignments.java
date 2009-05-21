@@ -125,7 +125,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		String migrationDetialsText = EAM.text("Migrated High Level Estimate:");
 		final String NEW_LINE = "\n";
 		migrationDetialsText += NEW_LINE;
-		migrationDetialsText += EAM.substitute(EAM.text("Budget Override was: %s"), Double.toString(objectJson.optDouble("BudgetCostOverride")));
+		migrationDetialsText += EAM.substitute(EAM.text("Budget Override was: %s"), getSafeBudgetCostOverride(objectJson));
 		migrationDetialsText += NEW_LINE;
 		migrationDetialsText += EAM.substitute(EAM.text("When Override was: %s"), createOverrideWhenString(objectJson));
 		migrationDetialsText += NEW_LINE;
@@ -137,6 +137,15 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		
 		objectJson.put(detailsTag, migrationDetialsText);
 		DataUpgrader.writeJson(objectFile, objectJson);
+	}
+
+	private static String getSafeBudgetCostOverride(EnhancedJsonObject objectJson)
+	{
+		Double budgetCostOverride = objectJson.optDouble("BudgetCostOverride");
+		if (budgetCostOverride.isNaN())
+			return "";
+		
+		return Double.toString(budgetCostOverride);
 	}
 
 	private static String createOverrideWhenString(EnhancedJsonObject objectJson) throws Exception
