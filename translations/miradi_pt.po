@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-20 16:49-0500\n"
+"POT-Creation-Date: 2009-05-21 09:10-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -47,15 +47,15 @@ msgid "Migrated High Level Estimate:"
 msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:130
-msgid "Budget Override was:%s"
+msgid "Budget Override was: %s"
 msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:132
-msgid "When Override was:%s"
+msgid "When Override was: %s"
 msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:134
-msgid "Who Override was:%s"
+msgid "Who Override was: %s"
 msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
