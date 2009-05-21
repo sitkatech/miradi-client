@@ -82,6 +82,9 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	
 	public void testConvertHighLevelEstimatesIntoAssignments() throws Exception
 	{
+		
+		verifyHighLevelConversion(0);
+		
 		String projectResourceJohny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Doo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"100.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Johny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671324141\",\"Initials\":\"JD\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":30,\"IMService\":\"\"}";
 		String projectResourceJenny = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Boo\",\"BudgetCostMode\":\"\",\"AlternativeEmail\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"BudgetCostOverride\":\"\",\"Location\":\"\",\"CostUnit\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"135.0\",\"WhoOverrideRefs\":\"\",\"Name\":\"Jenny\",\"WhenOverride\":\"\",\"Email\":\"\",\"TimeStampModified\":\"1242671363962\",\"Initials\":\"JB\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"Position\":\"\",\"DateUpdated\":\"\",\"Label\":\"\",\"Id\":36,\"IMService\":\"\"}";
 		
@@ -118,7 +121,7 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		createFile(projectFile, "{\"HighestUsedNodeId\":90}");
 		
 		DataUpgrader.initializeStaticDirectory(tempDirectory);
-		ConvertHighLevelEstimatesIntoAssignments.convertToAssignments();
+		verifyHighLevelConversion(10);
 		
 		Vector<Integer> expected36ResourceList = new Vector<Integer>();
 		expected36ResourceList.add(36);
@@ -189,6 +192,12 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		verifyDetailsField(jsonDir, strategy8Json, "Text", "", expected36ResourceList, "2009-01-01 - 2009-12-31", "", "JB Jenny Boo");
 		verifyResourceAssignments(jsonDir, strategy8Json, expected36ResourceList);
 		verifyExpenseAssignment(jsonDir, strategy8Json, Double.NaN, 0);
+	}
+
+	private void verifyHighLevelConversion(int expectedHighLevelConversionCount) throws Exception
+	{
+		int convertHighLevelEstimatesCount = ConvertHighLevelEstimatesIntoAssignments.convertToAssignments();
+		assertEquals("wrong number of high level estimates were converted?", expectedHighLevelConversionCount, convertHighLevelEstimatesCount);
 	}
 
 	private EnhancedJsonObject getObjectFileAsJson(File jsonDir, final int objectType, final int rawId) throws Exception
