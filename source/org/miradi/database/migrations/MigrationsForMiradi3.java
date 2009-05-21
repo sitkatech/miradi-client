@@ -40,7 +40,14 @@ public class MigrationsForMiradi3
 	{
 		int convertedHightLevelEstimateCount = ConvertHighLevelEstimatesIntoAssignments.convertToAssignments();
 		if (convertedHightLevelEstimateCount > 0)
-			EAM.notifyDialog(EAM.text(""));
+			EAM.notifyDialog(EAM.text("<html>" +
+					"One or more Overrides (High Level Estimates) have been migrated. <br>" +
+					"<br>" +
+					"Any Who overrides have been converted to Resource Assignments, <br>" +
+					"and any Budget overrides have been converted to Expenses. <br>" +
+					"<br>" +
+					"The original overrides have been inserted as text into the Details fields,<br>" +
+					"in case you want to refer to them. You can delete them at any time."));
 		
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 43);
 	}
