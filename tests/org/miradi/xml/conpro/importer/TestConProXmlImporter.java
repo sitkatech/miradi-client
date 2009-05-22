@@ -177,13 +177,6 @@ public class TestConProXmlImporter extends TestCaseWithProject
 			
 			assertTrue("has no indicator?", indicatorRefs.size() > 1);
 			assertTrue("ref list does not contain indicator ref?", indicatorRefs.contains(indicator.getRef()));
-
-			Indicator importedIndicator = Indicator.find(projectToFill, indicator.getRef());
-			String indicatorDetailsText = importedIndicator.getData(Indicator.TAG_DETAIL);
-			assertTrue("indicator has no detail?", indicatorDetailsText.length() > 0);
-
-			String detailsTextWitoutSemiColonSeperator = indicatorDetailsText.replace(";", "");
-			assertEquals("wrong project resource name?", ProjectForTesting.PROJECT_RESOURCE_LABEL_TEXT, detailsTextWitoutSemiColonSeperator);
 		}
 		finally 
 		{

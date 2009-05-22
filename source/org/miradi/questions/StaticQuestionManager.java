@@ -28,7 +28,6 @@ public class StaticQuestionManager
 		questions = new HashMap();
 		addQuestion(new InternalQuestionWithoutValues());
 		
-		addQuestion(new BudgetCostModeQuestion());
 		addQuestion(new BudgetCostUnitQuestion());
 		addQuestion(new BudgetTimePeriodQuestion());
 		addQuestion(new CountriesQuestion());

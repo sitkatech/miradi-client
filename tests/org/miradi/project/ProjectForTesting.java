@@ -70,7 +70,6 @@ import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
-import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.BudgetCostUnitQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
@@ -617,7 +616,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENT, "Some Indicator future status comment");
-		fillObjectUsingCommand(indicator, Indicator.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
 		fillObjectUsingCommand(indicator, Indicator.TAG_BUDGET_COST_OVERRIDE, Double.toString(444.44));
 		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENT, "Some indicator Comment");
 	}
@@ -627,7 +625,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
 		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 03, 19);
 		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2010, 3, 19);
-		fillObjectUsingCommand(task, Task.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
 		fillObjectUsingCommand(task, Task.TAG_WHEN_OVERRIDE, new DateRange(startDate, endDate).toJson().toString());
 	}
 	
