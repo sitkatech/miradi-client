@@ -25,7 +25,6 @@ import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateRange;
@@ -62,11 +61,11 @@ abstract public class Assignment extends BaseObject
 	}
 	
 	@Override
-	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
 		TimePeriodCosts timePeriodCosts = getTimePeriodCosts(dateRange);		
-		return new TimePeriodCostsMap(dateUnitToUse, timePeriodCosts);	
+		return timePeriodCosts;	
 	}
 	
 	public static boolean isAssignment(BaseObject baseObject)

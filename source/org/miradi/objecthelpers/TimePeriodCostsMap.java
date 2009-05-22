@@ -104,7 +104,7 @@ public class TimePeriodCostsMap
 		return false;
 	}
 	
-	private void mergeAddTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
+	public void mergeAddTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
@@ -135,7 +135,7 @@ public class TimePeriodCostsMap
 		return mergedResourceWorkUnits;
 	}
 	
-	private void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
+	public void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
