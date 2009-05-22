@@ -616,7 +616,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_RATING, StatusQuestion.GOOD);
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_DATE, "2020-01-23");
 		fillObjectUsingCommand(indicator, Indicator.TAG_FUTURE_STATUS_COMMENT, "Some Indicator future status comment");
-		fillObjectUsingCommand(indicator, Indicator.TAG_BUDGET_COST_OVERRIDE, Double.toString(444.44));
 		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENT, "Some indicator Comment");
 	}
 	
