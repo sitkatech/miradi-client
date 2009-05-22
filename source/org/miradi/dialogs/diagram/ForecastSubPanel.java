@@ -41,15 +41,6 @@ public class ForecastSubPanel extends ObjectDataInputPanel
 		addRawField(modeField);		
 		add(modeField.getComponent(question.findIndexByCode(question.ROLLUP_MODE_CODE)));
 		add(modeField.getComponent(question.findIndexByCode(question.OVERRIDE_MODE_CODE)));
-
-		ForecastRollupSubPanel forecastRollupSubPanel = new ForecastRollupSubPanel(getProject(), initialRef);
-		addSubPanel(forecastRollupSubPanel);
-		add(forecastRollupSubPanel);
-		
-		ForecastEstimateSubPanel forecastEstimateSubPanel = new ForecastEstimateSubPanel(mainWindow, mainWindow.getActions(), initialRef);
-		addSubPanel(forecastEstimateSubPanel);
-		add(forecastEstimateSubPanel);
-		
 	}
 	
 	public String getPanelDescription()
