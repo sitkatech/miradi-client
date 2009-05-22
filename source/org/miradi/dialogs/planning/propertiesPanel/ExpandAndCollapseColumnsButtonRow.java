@@ -77,7 +77,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			iconHeaderBound.x = columnX;
 			iconHeaderBound.y = 0;
 			iconHeaderBound.width = columnWidth;
-			iconHeaderBound.height = getIconHeight();
+			iconHeaderBound.height = getIconHeight() + ARBITRARY_MARGIN;
 			
 			iconHeaderBounds.add(iconHeaderBound);
 			columnX += columnWidth;
