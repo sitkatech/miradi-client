@@ -222,9 +222,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 	private void writeAnnualCost(UnicodeWriter out, Task task) throws Exception
 	{
-		if (task.isBudgetOverrideMode() && task.isEmptyBudgetCostOverride())
-			return; 
-	
 		writeElement(out, METHOD_ANNUAL_COST, Double.toString(task.getTotalBudgetCost()));
 	}
 
