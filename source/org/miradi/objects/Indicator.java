@@ -38,7 +38,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
-import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.IndicatorStatusRatingQuestion;
@@ -144,9 +144,9 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	protected TimePeriodCosts getTimePeriodCosts(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
 	{
-		return getTimePeriodCostsForSubTasks(tag, getMethodRefs(), dateUnitToUse);	
+		return getTimePeriodCostsMapForSubTasks(tag, getMethodRefs(), dateUnitToUse);	
 	}
 	
 	public ORefList getMethodRefs()
