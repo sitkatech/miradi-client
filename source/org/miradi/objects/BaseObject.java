@@ -487,7 +487,7 @@ abstract public class BaseObject
 		return getTotalBudgetCost(null);
 	}
 
-	public double getTotalBudgetCost(DateRange dateRange) throws Exception
+	private double getTotalBudgetCost(DateRange dateRange) throws Exception
 	{
 		return getBudgetCost(dateRange);
 	}
