@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 09:55-0500\n"
+"POT-Creation-Date: 2009-05-22 14:34-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -5997,7 +5997,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:142
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:129
 msgid "Summary"
@@ -6007,7 +6007,7 @@ msgstr ""
 msgid "Viability Ratings"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:77
+#: miradi/source/org/miradi/dialogs/viability/IndicatorPropertiesPanel.java:75
 msgid "Title|Indicator Properties"
 msgstr ""
 
@@ -6490,7 +6490,7 @@ msgstr ""
 msgid "Related Items"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:58
+#: miradi/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:53
 msgid "Title|Strategy Properties"
 msgstr ""
 
