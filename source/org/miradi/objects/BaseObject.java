@@ -500,11 +500,6 @@ abstract public class BaseObject
 		if (isBudgetOverrideMode())
 			return getBudgetCostOverrideValue();
 	
-		return getBudgetCostRollup(dateRange);
-	}
-	
-	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
-	{
 		return 0;
 	}
 	
@@ -688,7 +683,7 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return Double.toString(getBudgetCostRollup(null));
+			return Double.toString(0);
 		}
 		catch(Exception e)
 		{
