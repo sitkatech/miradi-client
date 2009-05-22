@@ -272,11 +272,6 @@ public class Indicator extends BaseObject
 		return getData(TAG_SHORT_LABEL);
 	}
 	
-	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
-	{
-		return getTasksBudgetCostRollUp(dateRangeToUse, getMethodRefs());
-	}
-	
 	public DateRange getWhenRollup() throws Exception
 	{
 		return combineSubtaskEffortListDateRanges(getMethodRefs());

@@ -278,11 +278,6 @@ public class Strategy extends Factor
 		return getTimePeriodCostsMapForSubTasks(tag, getActivityRefs(), dateUnitToUse);	
 	}
 	
-	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
-	{
-		return getTasksBudgetCostRollUp(dateRangeToUse, getActivityRefs());
-	}
-	
 	public DateRange getWhenRollup() throws Exception
 	{
 		return combineSubtaskEffortListDateRanges(getActivityRefs());
