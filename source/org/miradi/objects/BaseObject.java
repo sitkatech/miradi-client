@@ -777,11 +777,6 @@ abstract public class BaseObject
 		return combinedDateRange;		
 	}
 
-	public DateRange combineAssignmentEffortListDateRanges(Task task) throws Exception
-	{	
-		return task.getWhenRollup();
-	}
-
 	public String convertToSafeString(DateRange combinedDateRange)
 	{
 		if (combinedDateRange == null)
