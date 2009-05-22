@@ -144,9 +144,9 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	protected TimePeriodCosts getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCosts(String tag, DateUnit dateUnitToUse) throws Exception
 	{
-		return getTimePeriodCostsMapForSubTasks(tag, getMethodRefs(), dateUnitToUse);	
+		return getTimePeriodCostsForSubTasks(tag, getMethodRefs(), dateUnitToUse);	
 	}
 	
 	public ORefList getMethodRefs()
