@@ -616,15 +616,12 @@ abstract public class BaseObject
 
 	private double getBudgetCostOverrideValue() throws Exception
 	{
-		if (isEmptyBudgetCostOverride())
-			return 0;
-		
-		return Double.parseDouble(budgetCostOverride.get());
+		return 0;
 	}
 
 	public boolean isEmptyBudgetCostOverride()
 	{
-		return budgetCostOverride.get().length() == 0;
+		return true;
 	}
 	
 	
