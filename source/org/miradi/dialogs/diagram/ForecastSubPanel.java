@@ -19,28 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.diagram;
 
-import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.layout.TwoColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.questions.BudgetCostModeQuestion;
 
 public class ForecastSubPanel extends ObjectDataInputPanel
 {
 	public ForecastSubPanel(MainWindow mainWindow, ORef initialRef)
 	{
 		super(mainWindow.getProject(), initialRef);
-		
-		setLayout(new TwoColumnGridLayout());
 				
-		BudgetCostModeQuestion question = new BudgetCostModeQuestion();
-		RadioButtonsField modeField = createRadioButtonsField(initialRef.getObjectType(), BaseObject.TAG_BUDGET_COST_MODE, question);
-		addRawField(modeField);		
-		add(modeField.getComponent(question.findIndexByCode(question.ROLLUP_MODE_CODE)));
-		add(modeField.getComponent(question.findIndexByCode(question.OVERRIDE_MODE_CODE)));
+		
 	}
 	
 	public String getPanelDescription()

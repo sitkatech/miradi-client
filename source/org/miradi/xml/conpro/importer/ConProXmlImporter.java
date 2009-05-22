@@ -88,7 +88,6 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectChainObject;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -258,7 +257,6 @@ public class ConProXmlImporter implements ConProMiradiXml
 			MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
 			MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
 			DateRange dateRange = new DateRange(startDate, endDate);
-			setData(activityRef, Task.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
 			setData(activityRef, Task.TAG_WHEN_OVERRIDE, dateRange.toJson().toString());
 		}
 	}
@@ -313,8 +311,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void importBudgetData(Node indicatorNode, ORef indicatorRef) throws Exception
 	{
-		importField(indicatorNode, ANNUAL_COST, indicatorRef, Indicator.TAG_BUDGET_COST_OVERRIDE);
-		setData(indicatorRef, Indicator.TAG_BUDGET_COST_MODE, BudgetCostModeQuestion.OVERRIDE_MODE_CODE);	
+		importField(indicatorNode, ANNUAL_COST, indicatorRef, Indicator.TAG_BUDGET_COST_OVERRIDE);	
 	}
 
 	private void importProgressReport(Node indicatorNode, ORef indicatorRef) throws Exception

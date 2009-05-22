@@ -39,7 +39,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.NumberData;
@@ -60,7 +59,6 @@ import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectChainObject;
-import org.miradi.questions.BudgetCostModeQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
@@ -802,7 +800,6 @@ abstract public class BaseObject
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
 		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
-		budgetCostMode = new ChoiceData(TAG_BUDGET_COST_MODE, getQuestion(BudgetCostModeQuestion.class));
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		whenRollup = new PseudoStringData(PSEUDO_TAG_WHEN_ROLLUP);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
@@ -822,7 +819,6 @@ abstract public class BaseObject
 		
 		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
-		addField(TAG_BUDGET_COST_MODE, budgetCostMode);
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_WHEN_ROLLUP, whenRollup);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
@@ -1378,10 +1374,7 @@ abstract public class BaseObject
 
 	public boolean isBudgetOverrideMode()
 	{
-		BudgetCostModeQuestion question = new BudgetCostModeQuestion();
-		ChoiceItem choice = question.findChoiceByCode(budgetCostMode.get());
-		
-		return choice.getCode().equals(BudgetCostModeQuestion.OVERRIDE_MODE_CODE);
+		return false;
 	}
 	
 	public static BaseObject find(ObjectManager objectManager, ORef objectRef)
@@ -1569,7 +1562,6 @@ abstract public class BaseObject
 	private HashSet<String> presentationDataFields; 
 	private Vector<String> nonClearedFieldTags;
 	protected NumberData budgetCostOverride;
-	protected ChoiceData budgetCostMode;
 	
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
