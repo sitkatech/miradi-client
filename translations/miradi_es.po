@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 15:46-0500\n"
+"POT-Creation-Date: 2009-05-22 15:55-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -7196,9 +7196,6 @@ msgstr "Costo de la tarea"
 msgid "FieldLabel|3.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "Acumulación de presupuesto"
 
-msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
-msgstr "Reemplazo de presupuesto"
-
 msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
 msgstr "Modo de costo de presupuesto"
 
@@ -7410,9 +7407,6 @@ msgstr "Quién acumula"
 
 msgid "FieldLabel|8.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "Acumulación de presupuesto"
-
-msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
-msgstr "Reemplazo de presupuesto"
 
 msgid "FieldLabel|8.Priority|Priority"
 msgstr "Prioridad"
@@ -7796,9 +7790,6 @@ msgstr ""
 msgid "FieldLabel|12.WhoRollupRefs|Who"
 msgstr ""
 
-msgid "FieldLabel|12.BudgetCostOverride|Budget"
-msgstr ""
-
 msgid "FieldLabel|12.WhenOverride|When"
 msgstr ""
 
@@ -7966,9 +7957,6 @@ msgstr "Factibilidad"
 
 msgid "FieldLabel|21.RatingSummary|Roll-up"
 msgstr "Acumulación"
-
-msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
-msgstr "Reemplazo de presupuesto"
 
 msgid "FieldLabel|21.BudgetCostMode|Budget Cost Mode"
 msgstr "Modo Costo de presupuesto"
@@ -32790,6 +32778,15 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
+#~ msgstr "Reemplazo de presupuesto"
+
+#~ msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
+#~ msgstr "Reemplazo de presupuesto"
+
+#~ msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
+#~ msgstr "Reemplazo de presupuesto"
 
 #~ msgid "Rollup"
 #~ msgstr "Acumulación"

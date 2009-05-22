@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 15:46-0500\n"
+"POT-Creation-Date: 2009-05-22 15:55-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -7169,9 +7169,6 @@ msgstr "Biaya Tugas "
 msgid "FieldLabel|3.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "Agregasi Anggaran "
 
-msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
-msgstr "Penghapusan Anggaran "
-
 msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
 msgstr "Mode Biaya Anggaran "
 
@@ -7383,9 +7380,6 @@ msgstr "Siapa yang Mengagregasi "
 
 msgid "FieldLabel|8.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "Agregasi Anggaran "
-
-msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
-msgstr "Penghapusan Anggaran "
 
 msgid "FieldLabel|8.Priority|Priority"
 msgstr "Prioritas "
@@ -7767,9 +7761,6 @@ msgstr ""
 msgid "FieldLabel|12.WhoRollupRefs|Who"
 msgstr ""
 
-msgid "FieldLabel|12.BudgetCostOverride|Budget"
-msgstr ""
-
 msgid "FieldLabel|12.WhenOverride|When"
 msgstr ""
 
@@ -7936,9 +7927,6 @@ msgstr "Kelayakan"
 
 msgid "FieldLabel|21.RatingSummary|Roll-up"
 msgstr "Agregasi"
-
-msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
-msgstr "Penghapusan Anggaran "
 
 msgid "FieldLabel|21.BudgetCostMode|Budget Cost Mode"
 msgstr "Mode Biaya Anggaran "
@@ -32632,6 +32620,15 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
+#~ msgstr "Penghapusan Anggaran "
+
+#~ msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
+#~ msgstr "Penghapusan Anggaran "
+
+#~ msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
+#~ msgstr "Penghapusan Anggaran "
 
 #~ msgid "Rollup"
 #~ msgstr "Gulir Atas "
