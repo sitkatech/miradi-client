@@ -362,9 +362,9 @@ public class Task extends Factor
 	}
 	
 	@Override
-	protected TimePeriodCosts getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCosts(String tag, DateUnit dateUnitToUse) throws Exception
 	{
-		return getTimePeriodCostsMapForSubTasks(tag, getSubtaskRefs(), dateUnitToUse);	
+		return getTimePeriodCostsForSubTasks(tag, getSubtaskRefs(), dateUnitToUse);	
 	}
 	
 	@Override

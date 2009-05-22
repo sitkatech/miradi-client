@@ -273,9 +273,9 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	protected TimePeriodCosts getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCosts(String tag, DateUnit dateUnitToUse) throws Exception
 	{
-		return getTimePeriodCostsMapForSubTasks(tag, getActivityRefs(), dateUnitToUse);	
+		return getTimePeriodCostsForSubTasks(tag, getActivityRefs(), dateUnitToUse);	
 	}
 	
 	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception

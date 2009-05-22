@@ -61,7 +61,7 @@ abstract public class Assignment extends BaseObject
 	}
 	
 	@Override
-	protected TimePeriodCosts getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCosts(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
 		TimePeriodCosts timePeriodCosts = getTimePeriodCosts(dateRange);		
