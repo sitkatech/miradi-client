@@ -551,45 +551,44 @@ abstract public class BaseObject
 	
 	private TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS, dateUnitToUse);
-		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS, dateUnitToUse);
+		TimePeriodCosts expenseAssignmentsTimePeriodCosts = getTimePeriodCostsMap(TAG_EXPENSE_REFS, dateUnitToUse);
+		TimePeriodCosts resourceAssignmentsTimePeriodCosts = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS, dateUnitToUse);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap, dateUnitToUse);
-		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap, dateUnitToUse);
+		mergedTimePeriodCostsMap.mergeAddTimePeriodCosts(dateUnitToUse, expenseAssignmentsTimePeriodCosts);
+		mergedTimePeriodCostsMap.mergeAddTimePeriodCosts(dateUnitToUse, resourceAssignmentsTimePeriodCosts);
+		
 		return mergedTimePeriodCostsMap;
 	}
 	
-	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
 	{
 		return getTimePeriodCostsMapForAssignments(tag, dateUnitToUse);	
 	}
 				
-	protected TimePeriodCostsMap getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs, DateUnit dateUnitToUse) throws Exception
 	{
-		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
-		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMapForAssignments(tag, dateUnitToUse);
+		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap(dateUnitToUse, getTimePeriodCostsMapForAssignments(tag, dateUnitToUse));
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			timePeriodCostsMap.mergeOverlay(baseObject.getTimePeriodCostsMap(tag, dateUnitToUse), projectDateUnit);
+			timePeriodCostsMap.mergeOverlayTimePeriodCosts(dateUnitToUse, baseObject.getTimePeriodCostsMap(tag, dateUnitToUse));
 		}
 		
-		return timePeriodCostsMap;
+		return timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
 	}
 	
-	protected TimePeriodCostsMap getTimePeriodCostsMapForAssignments(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCosts getTimePeriodCostsMapForAssignments(String tag, DateUnit dateUnitToUse) throws Exception
 	{
-		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		ORefList assignmentRefs = getRefList(tag);
 		for(int i = 0; i < assignmentRefs.size(); ++i)
 		{
 			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
-			timePeriodCostsMap.mergeAdd(assignment.getTimePeriodCostsMap(tag, dateUnitToUse), projectDateUnit);
+			timePeriodCostsMap.mergeAddTimePeriodCosts(dateUnitToUse, assignment.getTimePeriodCostsMap(tag, dateUnitToUse));
 		}
 		
-		return timePeriodCostsMap;
+		return timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
 	}
 	
 	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs) throws Exception
