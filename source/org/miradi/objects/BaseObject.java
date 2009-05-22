@@ -679,20 +679,6 @@ abstract public class BaseObject
 		return new ORefSet();
 	}
 
-	public String getBudgetCostRollupAsString()
-	{
-		try
-		{
-			return Double.toString(0);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			EAM.logWarning("Error occurred while calculating budget total");
-			return "";
-		}
-	}
-
 	public String formatCurrency(double cost)
 	{
 		if(cost == 0.0)
