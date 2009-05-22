@@ -494,12 +494,6 @@ abstract public class BaseObject
 	
 	private double getBudgetCost(DateRange dateRange) throws Exception
 	{
-		if (isBudgetOverrideMode() && !isWholeProjectDateRange(dateRange))
-			return 0;
-		
-		if (isBudgetOverrideMode())
-			return getBudgetCostOverrideValue();
-	
 		return 0;
 	}
 	
@@ -601,22 +595,6 @@ abstract public class BaseObject
 	protected DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
 		return getDateRangeEffortListForAssignments(tag);	
-	}
-
-	private boolean isWholeProjectDateRange(DateRange dateRange) throws Exception
-	{
-		if (dateRange == null)
-			return true;
-		
-		if (dateRange.contains(getProject().getProjectCalendar().combineStartToEndProjectRange()))
-			return true;
-		
-		return false;
-	}
-
-	private double getBudgetCostOverrideValue() throws Exception
-	{
-		return 0;
 	}
 
 	public boolean isEmptyBudgetCostOverride()
