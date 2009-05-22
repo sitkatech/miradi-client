@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 14:34-0500\n"
+"POT-Creation-Date: 2009-05-22 15:00-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2312,14 +2312,6 @@ msgstr ""
 #: miradi/source/org/miradi/questions/StressSeverityChoiceQuestion.java:40
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:40
 msgid "Very High"
-msgstr ""
-
-#: miradi/source/org/miradi/questions/BudgetCostModeQuestion.java:36
-msgid "Rollup"
-msgstr ""
-
-#: miradi/source/org/miradi/questions/BudgetCostModeQuestion.java:37
-msgid "High Level Est."
 msgstr ""
 
 #: miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
@@ -5717,33 +5709,33 @@ msgstr ""
 msgid "Threat"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:159
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:165
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:158
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:164
 msgid "File to import does not validate."
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1038
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1097
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1035
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1093
 msgid "Placeholder - From ConPro"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1042
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1101
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1039
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1097
 msgid "Objective Holder"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1048
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1107
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1045
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1103
 msgid "Indicator Holder"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1145
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1204
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1142
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1200
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1146
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1205
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1143
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1201
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -6366,14 +6358,6 @@ msgstr ""
 msgid "Title|Scope Box Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/ForecastSubPanel.java:57
-msgid "Cost/When/Who"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/diagram/ForecastEstimateSubPanel.java:42
-msgid "Estimate Panel"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:91
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr ""
@@ -6448,10 +6432,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
 msgid "Conceptual Model Page Properties"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/diagram/ForecastRollupSubPanel.java:43
-msgid "Rollup Panel"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68

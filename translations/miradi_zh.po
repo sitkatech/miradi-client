@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 14:34-0500\n"
+"POT-Creation-Date: 2009-05-22 15:00-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2556,14 +2556,6 @@ msgstr "高"
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:40
 msgid "Very High"
 msgstr "非常高"
-
-#: miradi/source/org/miradi/questions/BudgetCostModeQuestion.java:36
-msgid "Rollup"
-msgstr "小计 \t\t"
-
-#: miradi/source/org/miradi/questions/BudgetCostModeQuestion.java:37
-msgid "High Level Est."
-msgstr "高水平估计"
 
 #: miradi/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: miradi/source/org/miradi/questions/RatingSourceQuestion.java:36
@@ -6001,35 +5993,35 @@ msgstr "选择哪个策略和活动与本分目标相关联"
 msgid "Threat"
 msgstr "威胁因子"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:159
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:165
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:158
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:164
 msgid "File to import does not validate."
 msgstr "要导入的文件不正确 \t\t"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1038
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1097
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1035
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1093
 msgid "Placeholder - From ConPro"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1042
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1101
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1039
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1097
 #, fuzzy
 msgid "Objective Holder"
 msgstr "Objective Holder"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1048
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1107
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1045
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1103
 #, fuzzy
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1145
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1204
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1142
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1200
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1146
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1205
+#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1143
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1201
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -6670,14 +6662,6 @@ msgstr "编辑器 \t\t"
 msgid "Title|Scope Box Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/ForecastSubPanel.java:57
-msgid "Cost/When/Who"
-msgstr "开销/何时/何人 \t\t"
-
-#: miradi/source/org/miradi/dialogs/diagram/ForecastEstimateSubPanel.java:42
-msgid "Estimate Panel"
-msgstr "评估面板 \t\t"
-
 #: miradi/source/org/miradi/dialogs/diagram/LegacyTncStrategyRankingEditorPropertiesSubPanel.java:91
 msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr "传承TNC（大自然保护协会）策略编辑器排行属性 \t\t"
@@ -6758,10 +6742,6 @@ msgstr "结果链属性 \t\t"
 #: miradi/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
 msgid "Conceptual Model Page Properties"
 msgstr "概念模型页面属性 \t\t"
-
-#: miradi/source/org/miradi/dialogs/diagram/ForecastRollupSubPanel.java:43
-msgid "Rollup Panel"
-msgstr "小计面板 \t\t"
 
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68
 msgid "Font"
@@ -29259,6 +29239,21 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Rollup"
+#~ msgstr "小计 \t\t"
+
+#~ msgid "High Level Est."
+#~ msgstr "高水平估计"
+
+#~ msgid "Cost/When/Who"
+#~ msgstr "开销/何时/何人 \t\t"
+
+#~ msgid "Estimate Panel"
+#~ msgstr "评估面板 \t\t"
+
+#~ msgid "Rollup Panel"
+#~ msgstr "小计面板 \t\t"
 
 #, fuzzy
 #~ msgid "FieldLabel|12.PseudoWorkUnitTotal|Work Unit Total"
