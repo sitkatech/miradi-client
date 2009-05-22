@@ -165,7 +165,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 				Rectangle columnHeaderBounds = new Rectangle(iconHeaderBounds.get(index));
 				int restWidthWithoutIconWidth = columnHeaderBounds.width - getIconWidth();
 				columnHeaderBounds.width -= restWidthWithoutIconWidth;
-				if (iconHeaderBounds.get(index).contains(point))
+				if (columnHeaderBounds.contains(point))
 					return index;
 			}
 			
