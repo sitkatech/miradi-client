@@ -798,7 +798,6 @@ abstract public class BaseObject
 		label = new StringData(TAG_LABEL);
 		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
-		budgetCostRollup = new PseudoStringData(PSEUDO_TAG_BUDGET_COST_ROLLUP);
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		whenRollup = new PseudoStringData(PSEUDO_TAG_WHEN_ROLLUP);
@@ -817,7 +816,6 @@ abstract public class BaseObject
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
 		addField(TAG_EXPENSE_REFS, expenseRefs);
 		
-		addField(PSEUDO_TAG_BUDGET_COST_ROLLUP, budgetCostRollup);
 		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_WHEN_ROLLUP, whenRollup);
@@ -1280,9 +1278,6 @@ abstract public class BaseObject
 
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TAG_BUDGET_COST_ROLLUP))
-			return getBudgetCostRollupAsString();
-				
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))
 			return getWhenTotalAsString();
 		
@@ -1525,7 +1520,6 @@ abstract public class BaseObject
 	
 	public static final String DEFAULT_LABEL = "";
 	
-	public final static String PSEUDO_TAG_BUDGET_COST_ROLLUP = "PseudoBudgetRollupCost";
 	public static final String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
@@ -1545,7 +1539,6 @@ abstract public class BaseObject
 	protected BaseId id;
 	protected StringData label;
 	
-	private PseudoStringData budgetCostRollup;
 	protected PseudoStringData whenTotal;
 	private PseudoStringData whenRollup;
 	protected DateRangeData whenOverride;
