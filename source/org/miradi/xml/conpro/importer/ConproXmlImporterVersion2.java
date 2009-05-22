@@ -393,7 +393,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 
 	private void importBudgetData(Node indicatorNode, ORef indicatorRef) throws Exception
 	{
-		importField(indicatorNode, ANNUAL_COST, indicatorRef, Indicator.TAG_BUDGET_COST_OVERRIDE);	
+		//FIXME need to import budget data by creating new assignment
 	}
 
 	private void importProgressReports(Node parentNode, ORef parentRef, String tag) throws Exception
