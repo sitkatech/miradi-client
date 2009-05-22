@@ -131,9 +131,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private String getAnnualCost(Indicator indicator) throws Exception
 	{
-		if (indicator.isBudgetOverrideMode() && indicator.isEmptyBudgetCostOverride())
-			return null; 
-	
 		return Double.toString(indicator.getTotalBudgetCost());
 	}
 
