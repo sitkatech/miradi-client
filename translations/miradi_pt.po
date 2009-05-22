@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 15:46-0500\n"
+"POT-Creation-Date: 2009-05-22 15:55-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6658,9 +6658,6 @@ msgstr ""
 msgid "FieldLabel|3.PseudoBudgetRollupCost|Budget Rollup"
 msgstr ""
 
-msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
-msgstr ""
-
 msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
 msgstr ""
 
@@ -6869,9 +6866,6 @@ msgid "FieldLabel|8.WhoRollupRefs|Who Rollup"
 msgstr ""
 
 msgid "FieldLabel|8.PseudoBudgetRollupCost|Budget Rollup"
-msgstr ""
-
-msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
 msgstr ""
 
 msgid "FieldLabel|8.Priority|Priority"
@@ -7251,9 +7245,6 @@ msgstr ""
 msgid "FieldLabel|12.WhoRollupRefs|Who"
 msgstr ""
 
-msgid "FieldLabel|12.BudgetCostOverride|Budget"
-msgstr ""
-
 msgid "FieldLabel|12.WhenOverride|When"
 msgstr ""
 
@@ -7417,9 +7408,6 @@ msgid "FieldLabel|21.FeasibilityRating|Feasibility"
 msgstr ""
 
 msgid "FieldLabel|21.RatingSummary|Roll-up"
-msgstr ""
-
-msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
 msgstr ""
 
 msgid "FieldLabel|21.BudgetCostMode|Budget Cost Mode"

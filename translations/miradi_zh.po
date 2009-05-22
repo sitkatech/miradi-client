@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-22 15:46-0500\n"
+"POT-Creation-Date: 2009-05-22 15:55-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6983,9 +6983,6 @@ msgstr "任务开支 \t\t"
 msgid "FieldLabel|3.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "预算小计 \t\t"
 
-msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
-msgstr "预算否决 \t\t"
-
 msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
 msgstr "预算开支模式 \t\t"
 
@@ -7197,9 +7194,6 @@ msgstr "何人小计 \t\t"
 
 msgid "FieldLabel|8.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "预算小计 \t\t"
-
-msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
-msgstr "预算否决 \t\t"
 
 msgid "FieldLabel|8.Priority|Priority"
 msgstr "优先 \t\t"
@@ -7581,9 +7575,6 @@ msgstr ""
 msgid "FieldLabel|12.WhoRollupRefs|Who"
 msgstr ""
 
-msgid "FieldLabel|12.BudgetCostOverride|Budget"
-msgstr ""
-
 msgid "FieldLabel|12.WhenOverride|When"
 msgstr ""
 
@@ -7750,9 +7741,6 @@ msgstr "可行性 \t\t"
 
 msgid "FieldLabel|21.RatingSummary|Roll-up"
 msgstr "小计 \t\t"
-
-msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
-msgstr "预算否决 \t\t"
 
 msgid "FieldLabel|21.BudgetCostMode|Budget Cost Mode"
 msgstr "预算开支模式 \t\t"
@@ -29239,6 +29227,15 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
+#~ msgstr "预算否决 \t\t"
+
+#~ msgid "FieldLabel|8.BudgetCostOverride|Budget Override"
+#~ msgstr "预算否决 \t\t"
+
+#~ msgid "FieldLabel|21.BudgetCostOverride|Budget Override"
+#~ msgstr "预算否决 \t\t"
 
 #~ msgid "Rollup"
 #~ msgstr "小计 \t\t"
