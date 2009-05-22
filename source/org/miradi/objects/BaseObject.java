@@ -41,7 +41,6 @@ import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.NumberData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
@@ -484,19 +483,9 @@ abstract public class BaseObject
 	
 	public double getTotalBudgetCost() throws Exception
 	{
-		return getTotalBudgetCost(null);
-	}
-
-	private double getTotalBudgetCost(DateRange dateRange) throws Exception
-	{
-		return getBudgetCost(dateRange);
-	}
-	
-	private double getBudgetCost(DateRange dateRange) throws Exception
-	{
 		return 0;
 	}
-	
+
 	public int getTotalShareCount()
 	{
 		return 1;
@@ -742,7 +731,6 @@ abstract public class BaseObject
 		label = new StringData(TAG_LABEL);
 		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
-		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
 		
@@ -759,7 +747,6 @@ abstract public class BaseObject
 		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
 		addField(TAG_EXPENSE_REFS, expenseRefs);
 		
-		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
@@ -1459,7 +1446,6 @@ abstract public class BaseObject
 	
 	public static final String DEFAULT_LABEL = "";
 	
-	public static final String TAG_BUDGET_COST_OVERRIDE = "BudgetCostOverride";
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
@@ -1491,7 +1477,6 @@ abstract public class BaseObject
 	private HashMap<String, ObjectData> fields;
 	private HashSet<String> presentationDataFields; 
 	private Vector<String> nonClearedFieldTags;
-	protected NumberData budgetCostOverride;
 	
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
