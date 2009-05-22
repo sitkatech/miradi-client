@@ -396,29 +396,6 @@ public class Task extends Factor
 		throw new RuntimeException("Unknown task type: " + getRef());
 	}
 
-	@Override
-	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
-	{
-		if (getSubtaskCount() == 0)
-			return getTotalAssignmentCost(dateRangeToUse);
-
-		return getTotalSubtasksCost(dateRangeToUse);
-	}
-
-	private double getTotalSubtasksCost(DateRange dateRangeToUse) throws Exception
-	{
-		double total = getTotalAssignmentCost(dateRangeToUse);
-		int subTaskCount = getSubtaskCount();
-		for (int index = 0; index < subTaskCount; index++)
-		{
-			BaseId subTaskId = getSubtaskId(index);
-			Task  subTask = (Task)getProject().findObject(ObjectType.TASK, subTaskId);
-			total += subTask.getBudgetCost(dateRangeToUse);
-		}
-		
-		return total;
-	}
-	
 	public double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
 	{
 		double totalAssignmentsCost = 0;

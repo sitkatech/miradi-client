@@ -145,12 +145,6 @@ public class ResourceAssignment extends Assignment
 		return ProjectResource.find(getProject(), getResourceRef());
 	}
 	
-	@Override
-	public double getBudgetCostRollup(DateRange dateRangeToUse) throws Exception
-	{
-		return getTotalResourceAssignmentCost(dateRangeToUse);
-	}
-	
 	public double getTotalResourceAssignmentCost(DateRange dateRangeToUse) throws Exception
 	{
 		double cost = 0;
