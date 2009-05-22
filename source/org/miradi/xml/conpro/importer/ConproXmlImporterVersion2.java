@@ -329,8 +329,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			
 			importField(methodNode, METHOD_NAME, methodRef, Task.TAG_LABEL);
 			importField(methodNode, METHOD_DETAIL, methodRef, Task.TAG_DETAILS);
-			importField(methodNode, METHOD_ANNUAL_COST, methodRef, Task.TAG_BUDGET_COST_OVERRIDE);
-
 			importField(methodNode, METHOD_COMMENT, methodRef, Task.TAG_COMMENT);
 		}
 	}
