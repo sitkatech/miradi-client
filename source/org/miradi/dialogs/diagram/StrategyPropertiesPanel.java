@@ -23,11 +23,9 @@ package org.miradi.dialogs.diagram;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
-import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -41,9 +39,6 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 		
 		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));
 		
-		ForecastSubPanel budgetSubPanel = new ForecastSubPanel(mainWindow, new ORef(Strategy.getObjectType(), BaseId.INVALID));
-		addSubPanelWithTitledBorder(budgetSubPanel);
-
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), Strategy.getObjectType()));
 		
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), mainWindow.getActions(), Strategy.getObjectType()));

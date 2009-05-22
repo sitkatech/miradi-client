@@ -60,7 +60,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(corePanel);
 		if(getFactor().isStrategy())
 		{
-			addSubPanelWithTitledBorder(new ForecastSubPanel(mainWindowToUse, diagramFactorToEdit.getWrappedORef()));
 			addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
 			addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), Task.getObjectType(), getPicker()));
 		}
