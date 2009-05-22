@@ -20,13 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.PanelHolderSpec;
-import org.miradi.objects.Task;
 
 public class TaskPropertiesForm extends PanelHolderSpec
 {
 	public TaskPropertiesForm()
 	{
 		addPanel(new TaskDetailsSubForm());
-		addAllPanels(new ForecastSubForm(Task.getObjectType()));
 	}
 }

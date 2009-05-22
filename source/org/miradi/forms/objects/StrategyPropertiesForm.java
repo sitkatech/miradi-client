@@ -20,14 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.PanelHolderSpec;
-import org.miradi.objects.Strategy;
 
 public class StrategyPropertiesForm extends PanelHolderSpec
 {
 	public StrategyPropertiesForm()
 	{	
 		addPanel(new StrategyCoreSubForm());
-		addAllPanels(new ForecastSubForm(Strategy.getObjectType()));
 		addPanel(new StrategyRelatedItemsSubForm());
 		addPanel(new StrategySummaryCommentsSubForm());
 	}
