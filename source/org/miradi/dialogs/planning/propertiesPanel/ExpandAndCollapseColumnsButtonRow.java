@@ -28,6 +28,7 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Vector;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
@@ -55,15 +56,34 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	@Override
 	protected void paintComponent(Graphics g)
 	{
+		Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
+		for(int index = 0; index < iconHeaderBounds.size(); ++index)
+		{
+			Icon icon = getIcon(index);
+			if (icon != null)
+				icon.paintIcon(this, g, iconHeaderBounds.get(index).x, ARBITRARY_MARGIN / 2);
+		}
+	}
+	
+	private Vector<Rectangle> getColumnIconHeaderBounds()
+	{
+		Vector<Rectangle> iconHeaderBounds = new Vector();
 		int columnX = getInitialColumnX();
 		for(int column = 0; column < table.getColumnCount(); ++column)
-		{
-			Icon icon = getIcon(column);
-			if (icon != null)
-				icon.paintIcon(this, g, columnX, ARBITRARY_MARGIN / 2);
+		{	
+			final int columnWidth = table.getColumnModel().getColumn(column).getWidth();
 			
-			columnX += table.getColumnModel().getColumn(column).getWidth();
+			Rectangle iconHeaderBound = new Rectangle();
+			iconHeaderBound.x = columnX;
+			iconHeaderBound.y = 0;
+			iconHeaderBound.width = columnWidth;
+			iconHeaderBound.height = getIconHeight();
+			
+			iconHeaderBounds.add(iconHeaderBound);
+			columnX += columnWidth;
 		}
+		
+		return iconHeaderBounds;
 	}
 	
 	private int getInitialColumnX()
@@ -125,9 +145,10 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			
 			try
 			{
-				int columnClicked = findModelColumn(event.getPoint());
+				int columnClicked = findTableColumn(event.getPoint());
+				int modelColumn = table.convertColumnIndexToModel(columnClicked);
 				if (columnClicked >= 0)
-					table.getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(columnClicked);
+					table.getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(modelColumn);
 			}
 			catch (Exception e)
 			{
@@ -136,23 +157,16 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			}
 		}
 
-		private int findModelColumn(Point point)
+		private int findTableColumn(Point point)
 		{
-			int columnX = getInitialColumnX();
-			
-			Rectangle iconBounds = new Rectangle();
-			iconBounds.y = ARBITRARY_MARGIN / 2;
-			iconBounds.x = columnX;
-			iconBounds.height = getIconHeight();
-			iconBounds.width = getIconWidth();
-			
-			for(int column = 0; column < table.getColumnCount(); ++column)
-			{	
-				if (iconBounds.contains(point))
-					return table.convertColumnIndexToModel(column);
-				
-				columnX += table.getColumnModel().getColumn(column).getWidth();
-				iconBounds.x = columnX;
+			Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
+			for(int index = 0; index < iconHeaderBounds.size(); ++index)
+			{
+				Rectangle columnHeaderBounds = new Rectangle(iconHeaderBounds.get(index));
+				int restWidthWithoutIconWidth = columnHeaderBounds.width - getIconWidth();
+				columnHeaderBounds.width -= restWidthWithoutIconWidth;
+				if (iconHeaderBounds.get(index).contains(point))
+					return index;
 			}
 			
 			return -1;
