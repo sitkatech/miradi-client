@@ -800,7 +800,6 @@ abstract public class BaseObject
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
 		budgetCostOverride = new NumberData(TAG_BUDGET_COST_OVERRIDE);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
-		whenRollup = new PseudoStringData(PSEUDO_TAG_WHEN_ROLLUP);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
 		
 		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL);
@@ -818,7 +817,6 @@ abstract public class BaseObject
 		
 		addField(TAG_BUDGET_COST_OVERRIDE, budgetCostOverride);
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
-		addField(PSEUDO_TAG_WHEN_ROLLUP, whenRollup);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
 		addField(PSEUDO_TAG_WHO_ROLLUP, whoRollupRefs);
@@ -1281,9 +1279,6 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))
 			return getWhenTotalAsString();
 		
-		if (fieldTag.equals(PSEUDO_TAG_WHEN_ROLLUP))
-			return getWhenRollupAsString();
-		
 		if (fieldTag.equals(PSEUDO_TAG_WHO_TOTAL))
 			return getWhoTotalAsString();
 						
@@ -1524,7 +1519,6 @@ abstract public class BaseObject
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
-	public final static String PSEUDO_TAG_WHEN_ROLLUP = "PseudoWhenRollupAsString";
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
@@ -1540,7 +1534,6 @@ abstract public class BaseObject
 	protected StringData label;
 	
 	protected PseudoStringData whenTotal;
-	private PseudoStringData whenRollup;
 	protected DateRangeData whenOverride;
 
 	private PseudoStringData whoTotal;
