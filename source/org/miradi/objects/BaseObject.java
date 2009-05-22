@@ -492,7 +492,7 @@ abstract public class BaseObject
 		return getBudgetCost(dateRange);
 	}
 	
-	public double getBudgetCost(DateRange dateRange) throws Exception
+	private double getBudgetCost(DateRange dateRange) throws Exception
 	{
 		if (isBudgetOverrideMode() && !isWholeProjectDateRange(dateRange))
 			return 0;
