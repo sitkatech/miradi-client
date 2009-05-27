@@ -608,9 +608,6 @@ abstract public class BaseObject
 
 	public ORefSet getWhoTotal() throws Exception
 	{
-		if (isBudgetOverrideMode())
-			return getOverridenWho();
-		
 		return getWhoRollup();
 	}
 	
@@ -668,9 +665,6 @@ abstract public class BaseObject
 	
 	public DateRange getWhenTotal() throws Exception
 	{
-		if (isBudgetOverrideMode())
-			return getWhenEstimate();
-		
 		return getWhenRollup();
 	}
 	
