@@ -637,19 +637,6 @@ abstract public class BaseObject
 		} 
 	}
 	
-	public String getWhenRollupAsString()
-	{
-		try
-		{
-			return convertToSafeString(getWhenRollup());
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-	
 	public DateRange getWhenTotal() throws Exception
 	{
 		return getWhenRollup();
