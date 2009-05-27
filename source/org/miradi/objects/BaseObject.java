@@ -593,19 +593,6 @@ abstract public class BaseObject
 	}
 	
 	
-	private String getWhoRollupAsString()
-	{
-		try
-		{
-			return new ORefList(getWhoRollup()).toString();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-	
 	public String getWhoTotalAsString()
 	{		
 		try
@@ -1214,9 +1201,6 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_WHO_TOTAL))
 			return getWhoTotalAsString();
 						
-		if (fieldTag.equals(PSEUDO_TAG_WHO_ROLLUP))
-			return getWhoRollupAsString();
-		
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
