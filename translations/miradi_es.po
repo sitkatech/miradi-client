@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-27 11:21-0500\n"
+"POT-Creation-Date: 2009-05-27 11:42-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -873,13 +873,13 @@ msgstr ""
 " %s"
 
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:63
 #: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
 msgstr "Sí"
 
 #: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:63
 #: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
 msgstr "No"
@@ -1065,14 +1065,14 @@ msgstr ""
 "tenga permiso para escribir en él, o bien, esté usando caracteres  inválidos "
 "en el nombre del archivo"
 
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:61
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:60
 msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
 msgstr ""
 "Este recurso del proyecto se utiliza en el Plan de trabajo y presupuesto "
 "financiero."
 
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:63
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:62
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -1080,7 +1080,7 @@ msgstr ""
 "\n"
 "¿Está seguro de que desea eliminar este recurso? "
 
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:65
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
 msgid "Delete Resource"
 msgstr "Eliminar recurso "
 
