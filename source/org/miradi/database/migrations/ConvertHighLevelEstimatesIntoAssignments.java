@@ -159,11 +159,16 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		EnhancedJsonObject whenOverrideJson = new EnhancedJsonObject(objectJson.getString("WhenOverride"));
 		String startDateAsString = whenOverrideJson.optString("StartDate");
 		String endDateAsString = whenOverrideJson.optString("EndDate");
-		if (startDateAsString.isEmpty() || endDateAsString.isEmpty())
+		if (isEmpty(startDateAsString) || isEmpty(endDateAsString))
 			return "";
 		
 		String overrideWhenDates = startDateAsString + " - " + endDateAsString;
 		return overrideWhenDates;
+	}
+
+	public static boolean isEmpty(String string)
+	{
+		return string.length() == 0;
 	}
 
 	private static String createAppendedResourceNames(File jsonDir,	EnhancedJsonObject objectJson) throws Exception
