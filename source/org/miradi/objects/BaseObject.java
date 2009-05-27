@@ -722,8 +722,7 @@ abstract public class BaseObject
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
 		
-		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL);
-		whoRollupRefs = new PseudoORefListData(PSEUDO_TAG_WHO_ROLLUP); 
+		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL); 
 		whoOverrideRefs = new ORefListData(TAG_WHO_OVERRIDE_REFS);
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
@@ -738,7 +737,6 @@ abstract public class BaseObject
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(TAG_WHEN_OVERRIDE, whenOverride);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
-		addField(PSEUDO_TAG_WHO_ROLLUP, whoRollupRefs);
 		addField(TAG_WHO_OVERRIDE_REFS, whoOverrideRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
@@ -1437,7 +1435,6 @@ abstract public class BaseObject
 	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
-	public final static String PSEUDO_TAG_WHO_ROLLUP = "WhoRollupRefs";
 	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
@@ -1452,7 +1449,6 @@ abstract public class BaseObject
 	protected DateRangeData whenOverride;
 
 	private PseudoStringData whoTotal;
-	protected PseudoORefListData whoRollupRefs;
 	protected ORefListData whoOverrideRefs;
 	
 
