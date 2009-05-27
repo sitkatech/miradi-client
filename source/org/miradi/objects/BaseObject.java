@@ -699,7 +699,6 @@ abstract public class BaseObject
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		
 		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL); 
-		whoOverrideRefs = new ORefListData(TAG_WHO_OVERRIDE_REFS);
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
@@ -712,7 +711,6 @@ abstract public class BaseObject
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
-		addField(TAG_WHO_OVERRIDE_REFS, whoOverrideRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
 	}
@@ -1404,7 +1402,6 @@ abstract public class BaseObject
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
 	
 	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
-	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
@@ -1417,8 +1414,6 @@ abstract public class BaseObject
 	protected PseudoStringData whenTotal;
 
 	private PseudoStringData whoTotal;
-	protected ORefListData whoOverrideRefs;
-	
 
 	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
