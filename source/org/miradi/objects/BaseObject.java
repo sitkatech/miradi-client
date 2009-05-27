@@ -142,9 +142,6 @@ abstract public class BaseObject
 	
 	public boolean isRefList(String tag)
 	{
-		if (tag.equals(TAG_WHO_OVERRIDE_REFS))
-			return true;
-		
 		if (tag.equals(TAG_EXPENSE_REFS))
 			return true;
 		
@@ -163,9 +160,6 @@ abstract public class BaseObject
 			
 	public int getAnnotationType(String tag)
 	{
-		if (tag.equals(TAG_WHO_OVERRIDE_REFS))
-			return ProjectResource.getObjectType();
-		
 		if (tag.equals(TAG_ASSIGNMENT_IDS))
 			return ResourceAssignment.getObjectType();
 		
