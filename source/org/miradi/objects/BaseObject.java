@@ -593,7 +593,7 @@ abstract public class BaseObject
 		}
 	}
 
-	public ORefSet getWhoTotal() throws Exception
+	protected ORefSet getWhoTotal() throws Exception
 	{
 		return getWhoRollup();
 	}
