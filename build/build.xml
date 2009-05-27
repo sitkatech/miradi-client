@@ -45,6 +45,8 @@
 	<property name="martus-swing.jar" value="${dist.temp.jars}/martus-swing/bin/martus-swing.jar" />
 	<property name="martus-utils.jar" value="${dist.temp.jars}/martus-utils/bin/martus-utils.jar" />
 	<property name="swingx.jar" value="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
+	<property name="cleansheets.jar" value="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/Miradi-CleanSheets-1.4b-0.jar" />
+	<property name="antlr.jar" value="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/antlr.jar" />
     
 	<property name="junit.jar" value="${dist.temp.jars}/junit/3.8.1/bin/junit-3.8.1.jar" />
 
@@ -60,6 +62,8 @@
     	<pathelement path="${jcalendar.jar}"/>
     	<pathelement path="${jing.jar}"/>
     	<pathelement path="${swingx.jar}"/>
+    	<pathelement path="${cleansheets.jar}"/>
+    	<pathelement path="${antlr.jar}"/>
      </path>
     
     <!-- defined values -->
@@ -394,11 +398,24 @@
 
 	<antcall target='download'>
 		<param name='directory' value='swingx/0.9.7' />
-		<param name='filename' value='swingx-0.9.7.zip' />
+		<param name='filename' value='swingx-0.9.7.jar' />
 	</antcall>
 	<antcall target='download'>
 		<param name='directory' value='swingx/0.9.7' />
 		<param name='filename' value='swingx-0.9.7-src.zip' />
+	</antcall>
+
+	<antcall target='download'>
+		<param name='directory' value='Miradi-CleanSheets/1.4b-0' />
+		<param name='filename' value='Miradi-CleanSheets-1.4b-0-src.zip' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='Miradi-CleanSheets/1.4b-0' />
+		<param name='filename' value='Miradi-CleanSheets-1.4b-0.jar' />
+	</antcall>
+	<antcall target='download'>
+		<param name='directory' value='Miradi-CleanSheets/1.4b-0' />
+		<param name='filename' value='antlr.jar' />
 	</antcall>
 </target>
 
@@ -422,6 +439,7 @@
        	<zipfileset dir="${dist.temp.jars}/martus-swing/bin/" prefix='${JarFolder}' includes="martus-swing.jar" />
         <zipfileset dir="${dist.temp.jars}/jing/bin/" prefix='${JarFolder}' includes="jing.jar" />
         <zipfileset dir="${dist.temp.jars}/swingx/0.9.7/" prefix='${JarFolder}' includes="swingx-0.9.7.jar" />
+    	<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0/" prefix='${JarFolder}' includes="*.jar"/>
 
     	<zipfileset dir="${dist.temp.jars}/PersianCalendar/bin/" prefix='${JarFolder}' includes="*.jar" />
     </zip>
@@ -433,7 +451,8 @@
     	<zipfileset dir="${dist.temp.jars}/jgraph/" prefix='source' includes="miradi-jgraph-5.12.2.2b-src.zip" />
     	<zipfileset dir="${dist.temp.jars}/jing/" prefix='source' includes="jing-src*.zip" />
    		<zipfileset dir="${dist.temp.jars}/PersianCalendar/source/" prefix='source' includes="PersianCalendar*.zip" />
-    	<zipfileset dir="${dist.temp.jars}/swingx" prefix='0.9.7' includes="swingx-0.9.7-src.zip" />
+    	<zipfileset dir="${dist.temp.jars}/swingx/0.9.7" prefix="source" includes="swingx-0.9.7-src.zip" />
+		<zipfileset dir="${dist.temp.jars}/Miradi-CleanSheets/1.4b-0" prefix="source" includes="*-src.zip" />
 	</zip>
 	
 	<copy file="${installer.buildfiles.dir}/${samples.marine.mpz}" todir="${dist.dir}" />
@@ -646,7 +665,7 @@
 <!-- ================================================================== -->
 <target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
 	<property name="rawdmgfile" value="/home/j2ee-hudson/Miradi/Miradi.dmg" />
-	<property name="dmgsizemegs" value="13" />
+	<property name="dmgsizemegs" value="14" />
 	<property name="dmgmount" value="/mounts/Miradi/dmgfile" />
 
 	<exec os="Linux"  executable="umount" failonerror="false">
