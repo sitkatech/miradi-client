@@ -622,9 +622,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateTask(Task task, String customLabel) throws Exception
 	{
 		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
-		MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2000, 03, 19);
-		MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2010, 3, 19);
-		fillObjectUsingCommand(task, Task.TAG_WHEN_OVERRIDE, new DateRange(startDate, endDate).toJson().toString());
 	}
 	
 	public void populateMeasurement(Measurement measurement) throws Exception
