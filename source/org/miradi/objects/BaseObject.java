@@ -483,6 +483,7 @@ abstract public class BaseObject
 	
 	public double getTotalBudgetCost() throws Exception
 	{
+		//FIXME this needs to calculate the correct total budget cost using assignments
 		return 0;
 	}
 
