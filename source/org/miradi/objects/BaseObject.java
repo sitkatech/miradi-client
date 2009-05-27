@@ -39,7 +39,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.DateRangeData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.ObjectData;
@@ -704,7 +703,6 @@ abstract public class BaseObject
 		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
-		whenOverride = new DateRangeData(TAG_WHEN_OVERRIDE);
 		
 		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL); 
 		whoOverrideRefs = new ORefListData(TAG_WHO_OVERRIDE_REFS);
@@ -719,7 +717,6 @@ abstract public class BaseObject
 		addField(TAG_EXPENSE_REFS, expenseRefs);
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
-		addField(TAG_WHEN_OVERRIDE, whenOverride);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
 		addField(TAG_WHO_OVERRIDE_REFS, whoOverrideRefs);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
@@ -1411,7 +1408,6 @@ abstract public class BaseObject
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
-	public final static String TAG_WHEN_OVERRIDE = "WhenOverride";
 	
 	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
 	public final static String TAG_WHO_OVERRIDE_REFS = "WhoOverrideRefs";
@@ -1425,7 +1421,6 @@ abstract public class BaseObject
 	protected StringData label;
 	
 	protected PseudoStringData whenTotal;
-	protected DateRangeData whenOverride;
 
 	private PseudoStringData whoTotal;
 	protected ORefListData whoOverrideRefs;
