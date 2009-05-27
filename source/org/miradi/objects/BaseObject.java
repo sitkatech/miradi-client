@@ -580,12 +580,6 @@ abstract public class BaseObject
 		return getDateRangeEffortListForAssignments(tag);	
 	}
 
-	public boolean isEmptyBudgetCostOverride()
-	{
-		return true;
-	}
-	
-	
 	public String getWhoTotalAsString()
 	{		
 		try
