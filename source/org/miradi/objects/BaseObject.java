@@ -698,16 +698,6 @@ abstract public class BaseObject
 		return  getProject().getProjectCalendar().getDateRangeName(combinedDateRange);
 	}
 	
-	public DateRange getWhenEstimate() throws Exception
-	{
-		return DateRange.createFromJson(new EnhancedJsonObject(getData(TAG_WHEN_OVERRIDE)));
-	}
-	
-	public ORefSet getOverridenWho()throws Exception
-	{
-		return new ORefSet(whoOverrideRefs.getORefList());
-	}
-	
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
