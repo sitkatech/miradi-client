@@ -87,9 +87,6 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		if(object == null)
 			return baseText;
 		
-		if(object.isBudgetOverrideMode())
-			return "~ " + baseText;
-		
 		return baseText;
 	}
 	
