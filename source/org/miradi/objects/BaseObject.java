@@ -593,7 +593,7 @@ abstract public class BaseObject
 	}
 	
 	
-	public String getWhoRollupAsString()
+	private String getWhoRollupAsString()
 	{
 		try
 		{
