@@ -33,7 +33,6 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
-import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -99,7 +98,6 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -254,10 +252,10 @@ public class ConProXmlImporter implements ConProMiradiXml
 		String endDateAsString = getNodeContent(activityNode, ACTIVITY_END_DATE);
 		if (startDateAsString.length() > 0 && endDateAsString.length() > 0)
 		{
-			MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
-			MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
-			DateRange dateRange = new DateRange(startDate, endDate);
-			setData(activityRef, Task.TAG_WHEN_OVERRIDE, dateRange.toJson().toString());
+			//FIXME,  no longer saving when override in a field.  need to create a resourceAssignment
+			//MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
+			//MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
+			//DateRange dateRange = new DateRange(startDate, endDate);
 		}
 	}
 		private void importObjectives() throws Exception
