@@ -1270,11 +1270,6 @@ abstract public class BaseObject
 		return null;
 	}
 
-	public boolean isBudgetOverrideMode()
-	{
-		return false;
-	}
-	
 	public static BaseObject find(ObjectManager objectManager, ORef objectRef)
 	{
 		return objectManager.findObject(objectRef);
