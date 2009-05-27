@@ -163,7 +163,7 @@ public class TestConProXmlImporter extends TestCaseWithProject
 		
 		createStrategyWithIndicator(projectWithWhoData, indicator);
 		
-		Task task = projectWithWhoData.createTaskWithWho();
+		Task task = projectWithWhoData.createAndPopulateTask("some label");
 		ORefList taskRefs = new ORefList(task.getRef());
 		indicator.setData(Indicator.TAG_METHOD_IDS, taskRefs.convertToIdList(Task.getObjectType()).toString());
 

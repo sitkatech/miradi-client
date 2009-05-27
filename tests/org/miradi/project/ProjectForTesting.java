@@ -414,8 +414,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public Task createTaskWithWho() throws Exception
 	{
 		Task task = createAndPopulateTask("some label");
-		ORefList projectResourceRefs = new ORefList(createAndPopulateProjectResource());
-		fillObjectUsingCommand(task, Task.TAG_WHO_OVERRIDE_REFS, projectResourceRefs.toString());
 		
 		return task;
 	}
