@@ -29,7 +29,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
 public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
@@ -61,8 +60,7 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnit);
-		return baseObject.getExpenseAmounts(dateRange);
+		return baseObject.getExpenseAmounts(dateUnit);
 	}
 	
 	@Override
@@ -78,8 +76,7 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 
 	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
-		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnit);
-		return !assignment.getExpenseAmounts(dateRange).hasValue();
+		return !(getOptionalDoubleData(assignment, dateUnit).hasValue());
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";

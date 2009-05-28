@@ -491,12 +491,11 @@ abstract public class BaseObject
 		return mergedTimePeriodCostsMap.getTotal(dateUnitToUse).calculateProjectResources(getProject());
 	}
 
-	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getExpenseAmounts(DateUnit dateUnitToUse) throws Exception
 	{
-		DateUnit dateUnit = DateUnit.createFromDateRange(dateRangeToUse);
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
 		
-		return mergedTimePeriodCostsMap.getTotal(dateUnit).getExpense();
+		return mergedTimePeriodCostsMap.getTotal(dateUnitToUse).getExpense();
 	}
 
 	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception

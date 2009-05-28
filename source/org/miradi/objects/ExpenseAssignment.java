@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ORefData;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -47,9 +48,10 @@ public class ExpenseAssignment extends Assignment
 	}
 	
 	@Override
-	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getExpenseAmounts(DateUnit dateUnitToUse) throws Exception
 	{
-		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRangeToUse);
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
+		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRange);
 	}
 	
 	protected TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception
