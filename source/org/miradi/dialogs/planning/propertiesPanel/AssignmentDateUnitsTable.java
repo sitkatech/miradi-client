@@ -132,12 +132,20 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 	
 	public Vector<Action> getActionsForRightClickMenu(int tableColumn)
 	{
-		Vector<Action> rightClickActions = new Vector();
-		rightClickActions.add(new CollapseColumnAction(this, getWorkUnitsTableModel()));
-		rightClickActions.add(new ExpandColumnAction(this, getWorkUnitsTableModel()));
+		int modelColumn = convertColumnIndexToModel(tableColumn);
+		AssignmentDateUnitsTableModel model = getWorkUnitsTableModel();
 		
+		Vector<Action> rightClickActions = new Vector();
 		rightClickActions.add(getActions().get(ActionAssignResource.class));
 		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
+		
+		rightClickActions.add(null);
+
+		if(model.isColumnExpandable(modelColumn))
+			rightClickActions.add(new ExpandColumnAction(this, model));
+		if(model.isColumnCollapsable(modelColumn))
+			rightClickActions.add(new CollapseColumnAction(this, model));
+		
 		return rightClickActions;		
 	}
 
