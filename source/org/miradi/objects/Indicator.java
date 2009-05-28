@@ -140,7 +140,7 @@ public class Indicator extends BaseObject
 	@Override
 	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		return getDateRangeEffortListForSubtasks(tag, getMethodRefs());
+		return new DateRangeEffortList();
 	}
 	
 	@Override

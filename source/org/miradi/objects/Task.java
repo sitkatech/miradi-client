@@ -358,7 +358,7 @@ public class Task extends Factor
 	@Override
 	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		return getDateRangeEffortListForSubtasks(tag, getSubtaskRefs());
+		return new DateRangeEffortList();
 	}
 	
 	@Override
