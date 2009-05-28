@@ -31,7 +31,6 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -353,12 +352,6 @@ public class Task extends Factor
 			return METHOD_NAME;
 		
 		return OBJECT_NAME;
-	}
-	
-	@Override
-	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
-	{
-		return new DateRangeEffortList();
 	}
 	
 	@Override
