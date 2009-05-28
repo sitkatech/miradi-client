@@ -28,10 +28,47 @@ import org.miradi.utils.OptionalDouble;
 
 public class TimePeriodCosts
 {
+	public TimePeriodCosts(OptionalDouble expenseToUse)
+	{
+		this();
+		setExpense(expenseToUse);
+	}
+	
 	public TimePeriodCosts()
 	{
 		expense = new OptionalDouble();
 		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
+	}
+	
+	public void add(TimePeriodCosts timePeriodCosts)
+	{
+		addExpenses(timePeriodCosts.getExpense());
+		addResources(timePeriodCosts.getResourceUnitsMap());
+	}
+
+	private void addResources(HashMap<ORef, OptionalDouble> resourceUnitsMapToAdd)
+	{
+		Set<ORef> resourceRefKeysToAdd = resourceUnitsMapToAdd.keySet();
+		for(ORef resourceRefToAdd : resourceRefKeysToAdd)
+		{
+			if (resourceUnitsMap.containsKey(resourceRefToAdd))
+			{
+				OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
+				OptionalDouble unitToAdd = resourceUnitsMapToAdd.get(resourceRefToAdd);
+				OptionalDouble newUnit = thisUnit.add(unitToAdd);
+				resourceUnitsMap.put(resourceRefToAdd, newUnit);
+			}
+			else
+			{
+				addResourceCost(resourceRefToAdd, resourceUnitsMapToAdd.get(resourceRefToAdd));
+			}
+			
+		}
+	}
+
+	private void addExpenses(OptionalDouble expenseToAdd)
+	{
+		expense = expense.add(expenseToAdd);
 	}
 	
 	public void setExpense(OptionalDouble expenseToUse)
@@ -102,6 +139,22 @@ public class TimePeriodCosts
 	public void setResourceUnitsMap(HashMap<ORef, OptionalDouble> resourceUnitsMapToUse)
 	{
 		resourceUnitsMap = resourceUnitsMapToUse;
+	}
+	
+	@Override
+	public String toString()
+	{
+		String asString = "";
+		if (expense.hasValue())
+			asString = "expense = " + expense.getValue() + "\n";
+		
+		Set<ORef> refs = resourceUnitsMap.keySet();
+		for(ORef ref : refs)
+		{
+			asString += resourceUnitsMap.get(ref) + "\n";
+		}
+		
+		return asString;
 	}
 	
 	private OptionalDouble expense;

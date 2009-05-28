@@ -68,6 +68,27 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts2, timePeriodCosts1);
 	}
 	
+	public void testAdd() throws Exception
+	{
+		ORef projectResourceRef1 = createProjectResource().getRef();
+		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(20.0, projectResourceRef1, 10.0);
+		verifyAddition(timePeriodCosts1, new TimePeriodCosts(), projectResourceRef1, 20.0, 10.0);
+		
+		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(1.0, projectResourceRef1, 1.0);
+		verifyAddition(timePeriodCosts1, timePeriodCosts2, projectResourceRef1, 21.0, 11.0);
+		
+		ORef projectResourceRef2 = createProjectResource().getRef();
+		TimePeriodCosts timePeriodCosts3 = getProject().createTimePeriodCosts(3.0, projectResourceRef2, 10.0);
+		verifyAddition(timePeriodCosts1, timePeriodCosts3, projectResourceRef2, 24.0, 10.0);
+	}
+
+	private void verifyAddition(TimePeriodCosts mainTimePeriodCosts, TimePeriodCosts timePeriodCostsToAdd, ORef projectResourceRef1, double expectedExpense, double expectedUnits)
+	{
+		mainTimePeriodCosts.add(timePeriodCostsToAdd);
+		assertEquals("incorrect expense after adding a timePeriodCosts", expectedExpense, mainTimePeriodCosts.getExpense().getValue());
+		assertEquals("incorrect project resource after adding a timePeriodCosts", expectedUnits, mainTimePeriodCosts.getUnits(projectResourceRef1).getValue());
+	}
+	
 	private ProjectResource createProjectResource() throws Exception
 	{
 		ProjectResource projectResource = getProject().createAndPopulateProjectResource();

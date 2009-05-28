@@ -180,7 +180,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	
 	public void testRepairAssignmentsReferringToNonExistantData() throws Exception
 	{
-		ResourceAssignment assignment = getProject().createAssignment();
+		ResourceAssignment assignment = getProject().createResourceAssignment();
 		assignment.setData(ResourceAssignment.TAG_ACCOUNTING_CODE, new BaseId(40000).toString());
 		assignment.setData(ResourceAssignment.TAG_FUNDING_SOURCE, new BaseId(50000).toString());
 		

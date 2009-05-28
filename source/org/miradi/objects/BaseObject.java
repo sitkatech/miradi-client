@@ -487,20 +487,24 @@ abstract public class BaseObject
 	
 	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
-		DateRangeEffortList dateRangeEffortList = getDateRangeEffortList(TAG_ASSIGNMENT_IDS);
-		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
+		DateUnit dateUnit = DateUnit.createFromDateRange(dateRangeToUse);
+		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap(dateUnit);
+		
+		return mergedTimePeriodCostsMap.getTotal(dateUnit).calculateProjectResources(getProject());
 	}
 
 	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
 	{
-		DateRangeEffortList dateRangeEffortList = getDateRangeEffortList(TAG_EXPENSE_REFS);
-		return dateRangeEffortList.getOptionalTotalUnitQuantity(dateRangeToUse);
+		DateUnit dateUnit = DateUnit.createFromDateRange(dateRangeToUse);
+		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap(dateUnit);
+		
+		return mergedTimePeriodCostsMap.getTotal(dateUnit).getExpense();
 	}
-	
+
 	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(dateUnitToUse);
-		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
+		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap(dateUnitToUse);
+		TimePeriodCosts timePeriodCosts = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
 		if (timePeriodCosts == null)
 			return new OptionalDouble();
 		
@@ -509,12 +513,14 @@ abstract public class BaseObject
 	
 	private TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS, dateUnitToUse);
-		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS, dateUnitToUse);
+		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
+		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS, projectDateUnit);
+		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS, projectDateUnit);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap, dateUnitToUse);
-		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap, dateUnitToUse);
+		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap, projectDateUnit);
+		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap, projectDateUnit);
+		
 		return mergedTimePeriodCostsMap;
 	}
 	

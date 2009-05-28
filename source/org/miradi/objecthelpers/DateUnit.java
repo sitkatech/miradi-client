@@ -265,6 +265,17 @@ public class DateUnit
 		
 		return false;
 	}
+	
+	public boolean contains(DateUnit otherDateUnit) throws Exception
+	{
+		if (isBlank())
+			return true;
+		
+		if (otherDateUnit.isBlank())
+			return false;
+		
+		return asDateRange().contains(otherDateUnit.asDateRange());
+	}
 
 	public Vector<DateUnit> getSubDateUnits() throws Exception
 	{

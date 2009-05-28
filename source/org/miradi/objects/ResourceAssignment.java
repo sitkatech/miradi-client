@@ -24,13 +24,17 @@ import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objecthelpers.DateRangeEffortList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.BudgetCalculator;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -174,17 +178,25 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	protected TimePeriodCosts getTimePeriodCosts(DateRange dateRangeToUse) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		ORef resourceRef = getResourceRef();
-		if (resourceRef.isValid())
+		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
+		DateUnitEffortList duel = getDateUnitEffortList();
+		for (int index = 0; index < duel.size(); ++index)
 		{
-			OptionalDouble workUnits = getWorkUnits(dateRangeToUse);
+			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
+			ORef resourceRef = getResourceRef();
+			if (resourceRef.isInvalid())
+				continue; 
+			
+			DateUnit dateUnit = dateUnitEffort.getDateUnit();
+			OptionalDouble workUnits = getWorkUnits(getProject().getProjectCalendar().convertToDateRange(dateUnit));
+			TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 			timePeriodCosts.addResourceCost(resourceRef, workUnits);
+			tpcm.add(dateUnit, timePeriodCosts);
 		}
-
-		return timePeriodCosts;	
+		
+		return tpcm;	
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception

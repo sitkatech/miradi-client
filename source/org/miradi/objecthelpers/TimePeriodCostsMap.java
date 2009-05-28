@@ -47,6 +47,20 @@ public class TimePeriodCostsMap
 		return data.get(dateUnitToUse);
 	}
 	
+	public TimePeriodCosts getTotal(DateUnit dateUnitToUse) throws Exception
+	{
+		TimePeriodCosts totalTimePeriodCosts = new TimePeriodCosts();
+		Set<DateUnit> dateUnitKeys = data.keySet();
+		for(DateUnit dateUnitKey : dateUnitKeys)
+		{
+			TimePeriodCosts timePeriodCosts = data.get(dateUnitKey);
+			if (dateUnitToUse.contains(dateUnitKey))
+				totalTimePeriodCosts.add(timePeriodCosts);
+		}
+		
+		return totalTimePeriodCosts;
+	}
+	
 	public boolean containsSpecificDateUnit(DateUnit dateUnitToUse)
 	{
 		return data.containsKey(dateUnitToUse);
@@ -58,7 +72,7 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnitKey : keys)
 		{
 			TimePeriodCosts timePeriodCosts = timePeriodCostsMapToMerge.data.get(dateUnitKey);
-			mergeAddTimePeriodCosts(dateUnit, timePeriodCosts);
+			mergeAddTimePeriodCosts(dateUnitKey, timePeriodCosts);
 		}
 	}
 		
