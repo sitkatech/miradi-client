@@ -35,12 +35,13 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 
 public class ExpandAndCollapseColumnsButtonRow extends JComponent implements AdjustmentListener
 {
-	public ExpandAndCollapseColumnsButtonRow(AssignmentDateUnitsTable tableToSitAbove)
+	public ExpandAndCollapseColumnsButtonRow(TableWithExpandableColumnsInterface tableToSitAbove)
 	{
 		table = tableToSitAbove;
 		add(new PanelTitleLabel(IconManager.getActivityIcon()));
@@ -71,7 +72,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 		int columnX = getInitialColumnX();
 		for(int column = 0; column < table.getColumnCount(); ++column)
 		{	
-			final int columnWidth = table.getColumnModel().getColumn(column).getWidth();
+			final int columnWidth = table.getColumnWidth(column);
 			
 			Rectangle iconHeaderBound = new Rectangle();
 			iconHeaderBound.x = columnX;
@@ -146,9 +147,8 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			try
 			{
 				int columnClicked = findTableColumn(event.getPoint());
-				int modelColumn = table.convertColumnIndexToModel(columnClicked);
 				if (columnClicked >= 0)
-					table.getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(modelColumn);
+					table.respondToExpandOrCollapseColumnEvent(columnClicked);
 			}
 			catch (Exception e)
 			{
@@ -174,6 +174,6 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 
 	private final static int ARBITRARY_MARGIN = 2;
 
-	private AssignmentDateUnitsTable table;
+	private TableWithExpandableColumnsInterface table;
 	private JScrollPane tableScrollPane;
 }

@@ -30,6 +30,7 @@ import javax.swing.table.TableColumn;
 
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
@@ -37,7 +38,7 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.SingleClickAutoSelectCellEditor;
 
-public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider
+public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface
 {
 	public AssignmentDateUnitsTable(MainWindow mainWindowToUse, AssignmentDateUnitsTableModel modelToUse) throws Exception
 	{
@@ -91,9 +92,9 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 	}
 	
 	@Override
-	protected int getColumnWidth(int column)
+	public int getColumnWidth(int column)
 	{
-		return getColumnHeaderWidth(column);
+		return getColumnModel().getColumn(column).getWidth();
 	}
 	
 	public int getColumnAlignment()
@@ -123,11 +124,12 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 		return getWorkUnitsTableModel().isDateUnitColumnExpanded(getSelectedModelColumn());
 	}
 
-	public void respondToExpandOrCollapseColumnEvent() throws Exception
+	public void respondToExpandOrCollapseColumnEvent(int tableColumnIndex) throws Exception
 	{
-		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(getSelectedModelColumn());
+		int modelColumn = convertColumnIndexToModel(tableColumnIndex);
+		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(modelColumn);
 	}
-	
+
 	public Vector<Action> getActionsForRightClickMenu(int tableColumn)
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
