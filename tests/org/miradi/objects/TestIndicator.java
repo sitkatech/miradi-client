@@ -22,11 +22,11 @@ package org.miradi.objects;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.IdList;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.utils.DateRange;
 
 
 public class TestIndicator extends ObjectTestCase
@@ -107,10 +107,7 @@ public class TestIndicator extends ObjectTestCase
 	
 	public static void verifyGetWorkUnits(ProjectForTesting project, int objectType, String taskTag) throws Exception
 	{
-		MultiCalendar projectStartDate = ProjectForTesting.createStartYear(1999);
-		MultiCalendar projectEndDate = ProjectForTesting.createEndYear(2012);
-		project.setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
-		project.setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
+		project.setProjectDates(1999, 2012);
 
 		Task task = project.createTask();
 		project.addResourceAssignment(task, 14, 2007, 2007);
@@ -123,14 +120,12 @@ public class TestIndicator extends ObjectTestCase
 		IdList taskIdsFromObject = new IdList(Task.getObjectType(), baseObject.getData(taskTag));
 		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
 		
-		MultiCalendar thisStartDate = ProjectForTesting.createStartYear(2006);
-		MultiCalendar thisEndDate = ProjectForTesting.createEndYear(2006);		
-		DateRange dateRange = new DateRange(thisStartDate, thisEndDate);
-		assertEquals("wrong work units for methods", 150.0, baseObject.getWorkUnits(dateRange).getValue());
+		DateUnit dateUnit = project.createDateUnit(2006, 2006);
+		assertEquals("wrong work units for methods", 150.0, baseObject.getWorkUnits(dateUnit).getValue());
 		
 		BaseObject objectWithNoTasks = project.createBaseObject(objectType);
 		project.addResourceAssignment(objectWithNoTasks, 45, 2006, 2006);
-		assertEquals("wrong work units for methods", 450.0, objectWithNoTasks.getWorkUnits(dateRange).getValue());
+		assertEquals("wrong work units for methods", 450.0, objectWithNoTasks.getWorkUnits(dateUnit).getValue());
 	}
 
 	private ProjectForTesting project;

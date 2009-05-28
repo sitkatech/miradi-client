@@ -19,11 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.TestDateUnit;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 
@@ -34,15 +32,6 @@ public class TestAssignment extends ObjectTestCase
 		super(name);
 	}
 	
-	@Override
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		
-		dateRange1 = createDateRange(createMultiCalendar(2008, 1, 1), createMultiCalendar(2008, 2, 1));
-		dateRange2 = createDateRange(createMultiCalendar(2009, 1, 1), createMultiCalendar(2009, 2, 1));
-	}
-	
 	public void testFields() throws Exception
 	{
 		verifyFields(ObjectType.RESOURCE_ASSIGNMENT);
@@ -50,8 +39,10 @@ public class TestAssignment extends ObjectTestCase
 	
 	public void testGetWorkUnits() throws Exception
 	{
+		getProject().setSingleYearProjectDate(2008);
 		ResourceAssignment assignment = getProject().createResourceAssignment();
-		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateRange1).hasValue());
+		DateUnit dateUnit = getProject().createDateUnit(2008);
+		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateUnit).hasValue());
 
 		DateUnit dateUnit1 = TestDateUnit.month12;
 		DateUnit dateUnit2 = TestDateUnit.month01;
@@ -61,28 +52,15 @@ public class TestAssignment extends ObjectTestCase
 
 		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATERANGE_EFFORTS, dateUnitEffortList.toString());
 
-		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateUnit1.asDateRange()).getValue());
-		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateUnit2.asDateRange()).getValue());
+		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateUnit1).getValue());
+		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateUnit2).getValue());
 		
-		DateRange totalProjectDateRange = DateRange.combine(dateRange1, dateRange2);
-		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateRange).getValue());
+		DateUnit totalProjectDateUnit = new DateUnit();
+		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateUnit).getValue());
 	}
 	
 	public DateUnitEffort createDateUnitEffort(int unitQuantatiy, DateUnit dateUnit) throws Exception
 	{
 		return new DateUnitEffort(unitQuantatiy, dateUnit);
 	}
-
-	private DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception
-	{
-		return new DateRange(startDate, endDate);
-	}
-
-	private MultiCalendar createMultiCalendar(int year, int month, int day)
-	{
-		return MultiCalendar.createFromGregorianYearMonthDay(year, month, day);
-	}
-	
-	private DateRange dateRange1;
-	private DateRange dateRange2;
 }

@@ -172,9 +172,10 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
 	{
-		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRangeToUse);
+		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
+		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRange);
 	}
 	
 	@Override
@@ -190,7 +191,7 @@ public class ResourceAssignment extends Assignment
 				continue; 
 			
 			DateUnit dateUnit = dateUnitEffort.getDateUnit();
-			OptionalDouble workUnits = getWorkUnits(getProject().getProjectCalendar().convertToDateRange(dateUnit));
+			OptionalDouble workUnits = getWorkUnits(dateUnit);
 			TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 			timePeriodCosts.addResourceCost(resourceRef, workUnits);
 			tpcm.add(dateUnit, timePeriodCosts);
