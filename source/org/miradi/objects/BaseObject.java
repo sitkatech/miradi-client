@@ -51,7 +51,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
@@ -503,11 +502,7 @@ abstract public class BaseObject
 	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
-		TimePeriodCosts timePeriodCosts = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
-		if (timePeriodCosts == null)
-			return new OptionalDouble();
-		
-		return timePeriodCosts.calculateTotal(getProject());
+		return mergedTimePeriodCostsMap.getTotal(dateUnitToUse).calculateTotal(getProject());
 	}
 	
 	private TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
