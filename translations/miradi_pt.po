@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-27 11:42-0500\n"
+"POT-Creation-Date: 2009-05-28 13:23-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -4163,11 +4163,11 @@ msgstr ""
 msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionAssignResource.java:34
+#: miradi/source/org/miradi/actions/ActionAssignResource.java:35
 msgid "Action|Assign Resource"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionAssignResource.java:39
+#: miradi/source/org/miradi/actions/ActionAssignResource.java:40
 msgid "TT|Assign a resource to this task"
 msgstr ""
 
@@ -4929,11 +4929,11 @@ msgstr ""
 msgid "Action|Close Project"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:34
+#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:35
 msgid "Action|Remove Resource"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:39
+#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:40
 #: miradi/source/org/miradi/actions/ActionResourceListRemove.java:39
 msgid "TT|Remove resource from list"
 msgstr ""
@@ -6077,11 +6077,11 @@ msgid ""
 "Clone button"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:28
+#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:28
+#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
 msgid "Collapse Selected Column"
 msgstr ""
 
