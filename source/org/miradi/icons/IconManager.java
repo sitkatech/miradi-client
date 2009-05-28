@@ -242,6 +242,22 @@ public class IconManager
 		return collapseIcon;
 	}
 	
+	public static Icon getResourceIcon()
+	{
+		if(resourceIcon == null)
+			resourceIcon = new ProjectResourceIcon();
+		return resourceIcon;
+	}
+
+	public static Icon getDeleteIcon()
+	{
+		if(deleteIcon == null)
+			deleteIcon = new DeleteIcon();
+		return deleteIcon;
+	}
+
 	private static Icon expandIcon;
 	private static Icon collapseIcon;
+	private static Icon resourceIcon;
+	private static Icon deleteIcon;
 }

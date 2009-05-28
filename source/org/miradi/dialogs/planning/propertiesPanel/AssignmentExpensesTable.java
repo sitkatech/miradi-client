@@ -17,26 +17,32 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions;
 
-import org.miradi.icons.IconManager;
-import org.miradi.main.EAM;
+package org.miradi.dialogs.planning.propertiesPanel;
+
+import java.util.Vector;
+
+import javax.swing.Action;
+
+import org.miradi.actions.ActionCreateExpense;
+import org.miradi.actions.ActionDeleteExpense;
 import org.miradi.main.MainWindow;
 
-public class ActionRemoveAssignment extends ObjectsAction
+public class AssignmentExpensesTable extends AssignmentDateUnitsTable
 {
-	public ActionRemoveAssignment(MainWindow mainWindowToUse)
+	public AssignmentExpensesTable(MainWindow mainWindowToUse, AssignmentDateUnitsTableModel modelToUse) throws Exception
 	{
-		super(mainWindowToUse, getLabel(), IconManager.getDeleteIcon());
+		super(mainWindowToUse, modelToUse);
 	}
 
-	public static String getLabel()
+	@Override
+	public Vector<Action> getActionsForRightClickMenu(int tableColumn)
 	{
-		return EAM.text("Action|Remove Resource");
-	}
-
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Remove resource from list");
+		Vector<Action> actions = new Vector<Action>();
+		actions.add(getActions().get(ActionCreateExpense.class));
+		actions.add(getActions().get(ActionDeleteExpense.class));
+		actions.add(null);
+		actions.addAll(super.getActionsForRightClickMenu(tableColumn));
+		return actions;
 	}
 }

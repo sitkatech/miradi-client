@@ -27,8 +27,6 @@ public class CollapseColumnAction extends AbstractCollapseColumnAction
 {
 	public CollapseColumnAction(JTable tableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
-		super();
-		
 		table = tableToUse;
 		workUnitsTableModel = workUnitsTableModelToUse;
 		

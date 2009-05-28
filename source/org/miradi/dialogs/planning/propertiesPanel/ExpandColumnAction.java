@@ -27,8 +27,6 @@ public class ExpandColumnAction extends AbstractExpandColumnAction
 {
 	public ExpandColumnAction(JTable tableToUse, AssignmentDateUnitsTableModel workUnitsTableModelToUse)
 	{
-		super();
-		
 		table = tableToUse;
 		workUnitsTableModel = workUnitsTableModelToUse;
 	}
