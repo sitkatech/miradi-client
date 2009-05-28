@@ -549,36 +549,6 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 	
-	protected DateRangeEffortList getDateRangeEffortListForSubtasks(String tag, ORefList baseObjectRefs) throws Exception
-	{
-		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
-		DateRangeEffortList dateRangeEffortList = getDateRangeEffortListForAssignments(tag);
-		for (int index = 0; index < baseObjectRefs.size(); ++index)
-		{
-			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			dateRangeEffortList.mergeOverlay(baseObject.getDateRangeEffortList(tag), projectDateRange);
-		}
-		return dateRangeEffortList;
-	}
-	
-	private DateRangeEffortList getDateRangeEffortListForAssignments(String tag) throws Exception
-	{
-		DateRange projectDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
-		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
-		ORefList assignmentRefs = getRefList(tag);
-		for(int i = 0; i < assignmentRefs.size(); ++i)
-		{
-			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
-			dateRangeEffortList.mergeAdd(assignment.getDateRangeEffortList(tag), projectDateRange);
-		}
-		return dateRangeEffortList;
-	}
-		
-	protected DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
-	{
-		return new DateRangeEffortList();	
-	}
-
 	public String getWhoTotalAsString()
 	{		
 		try
