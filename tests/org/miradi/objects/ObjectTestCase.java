@@ -34,7 +34,6 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.DateRangeData;
-import org.miradi.objectdata.DateRangeEffortListData;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objectdata.IdListData;
@@ -47,7 +46,6 @@ import org.miradi.objectdata.PointListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objectdata.TagListData;
 import org.miradi.objecthelpers.CreateObjectParameter;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -64,7 +62,6 @@ import org.miradi.project.TestDateUnit;
 import org.miradi.questions.InternalQuestionWithoutValues;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.StringMapData;
@@ -195,9 +192,6 @@ public class ObjectTestCase extends TestCaseWithProject
 	private String getEmptyData(BaseObject object, String tag)
 	{
 		ObjectData field = object.getField(tag);
-		if(field instanceof DateRangeEffortListData)
-			return new DateRangeEffortList().toString();
-		
 		if(field instanceof ORefData)
 			return ORef.INVALID.toString();
 		
@@ -240,15 +234,6 @@ public class ObjectTestCase extends TestCaseWithProject
 			pointList.add(new Point(-1, 55));
 			
 			return pointList.toString();
-		}
-		else if(field instanceof DateRangeEffortListData)
-		{
-			DateRangeEffortList list = new DateRangeEffortList();
-			MultiCalendar startDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 03, 29);
-			MultiCalendar endDate = MultiCalendar.createFromGregorianYearMonthDay(2007, 03, 30);
-			DateRange range = new DateRange(startDate, endDate);
-			list.add(new DateRangeEffort(5.0, range));
-			return list.toString();
 		}
 		else if(field instanceof StringData)
 		{
