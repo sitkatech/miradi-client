@@ -161,7 +161,7 @@ public class TestTask extends ObjectTestCase
 	
 	private void addAssignment(Task task, double units, int startYear, int endYear) throws Exception
 	{
-		getProject().addAssignment(task, units, startYear, endYear);
+		getProject().addResourceAssignment(task, units, startYear, endYear);
 	}
 	
 	private Task createTask() throws Exception
@@ -177,10 +177,11 @@ public class TestTask extends ObjectTestCase
 	public void testGetWorkUnitsForTaskWithoutSubTasks() throws Exception
 	{
 		Task task = createTask();
-		addAssignment(task, 5, 2000, 2010);
-		addAssignment(task, 15, 2000, 2010);
-		DateRange dateRange = new DateRange(createMultiCalendar(2000), createMultiCalendar(2010));
-		assertEquals("wrong task work units for date range?", 20.0, task.getWorkUnits(dateRange).getValue());
+		addAssignment(task, 5, 2009, 2009);
+		addAssignment(task, 15, 2010, 2010);
+		
+		DateRange dateRange = getProject().createDateRange(2010, 2010);
+		assertEquals("wrong task work units for date range?", 150.0, task.getWorkUnits(dateRange).getValue());
 	}
 	
 	public void testGetWorkUnitsForTaskWithSubTasks() throws Exception
@@ -190,23 +191,26 @@ public class TestTask extends ObjectTestCase
 		getProject().setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
 		getProject().setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
 
-		DateRange dateRange = new DateRange(projectStartDate, projectEndDate);
-
 		Task task = createTask();
-		assertFalse("Empty task has work unit values?", task.getWorkUnits(dateRange).hasValue());
+		DateRange projectDateRange = new DateRange(projectStartDate, projectEndDate);
+		assertFalse("Empty task has work unit values?", task.getWorkUnits(projectDateRange).hasValue());
 		addAssignment(task, 99, 2000, 2010);
 		
 		Task subTask = createTask();
 		IdList subTaskIds = new IdList(Task.getObjectType());
 		subTaskIds.add(subTask.getId());
 		task.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
-		addAssignment(subTask, 5, 2000, 2010);
-		addAssignment(subTask, 15, 2005, 2010);
+		addAssignment(subTask, 5, 2010, 2010);
+		addAssignment(subTask, 15, 2005, 2005);
+
+		DateRange dateRange = getProject().createDateRange(2005, 2005);
+		assertEquals("wrong subtask work units for date range?", 150.0, task.getWorkUnits(dateRange).getValue());
 		
-		assertEquals("wrong subtask work units for date range?", 119.0, task.getWorkUnits(dateRange).getValue());
+		DateRange dateRange1 = getProject().createDateRange(2010, 2010);
+		assertEquals("wrong subtask work units for date range?", 50.0, task.getWorkUnits(dateRange1).getValue());
 		
-		addAssignment(subTask, 113, 2015, 2020);
-		DateRange dateRange2 = new DateRange(createMultiCalendar(2015), createMultiCalendar(2020));
+		addAssignment(subTask, 113, 2015, 2015);
+		DateRange dateRange2 = new DateRange(createMultiCalendar(2015), createMultiCalendar(2015));
 		assertFalse("Included work units outside project start end bounds?", task.getWorkUnits(dateRange2).hasValue());
 	}
 	

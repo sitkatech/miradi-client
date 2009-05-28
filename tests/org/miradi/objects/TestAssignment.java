@@ -50,7 +50,7 @@ public class TestAssignment extends ObjectTestCase
 	
 	public void testGetWorkUnits() throws Exception
 	{
-		ResourceAssignment assignment = getProject().createAssignment();
+		ResourceAssignment assignment = getProject().createResourceAssignment();
 		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateRange1).hasValue());
 
 		DateUnit dateUnit1 = TestDateUnit.month12;

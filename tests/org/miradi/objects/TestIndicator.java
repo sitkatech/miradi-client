@@ -107,9 +107,14 @@ public class TestIndicator extends ObjectTestCase
 	
 	public static void verifyGetWorkUnits(ProjectForTesting project, int objectType, String taskTag) throws Exception
 	{
+		MultiCalendar projectStartDate = ProjectForTesting.createStartYear(1999);
+		MultiCalendar projectEndDate = ProjectForTesting.createEndYear(2012);
+		project.setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
+		project.setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
+
 		Task task = project.createTask();
-		project.addAssignment(task, 14, 2006, 2009);
-		project.addAssignment(task, 15, 2006, 2009);
+		project.addResourceAssignment(task, 14, 2007, 2007);
+		project.addResourceAssignment(task, 15, 2006, 2006);
 		BaseObject baseObject = project.createBaseObject(objectType);
 		IdList taskIds = new IdList(Task.getObjectType());
 		taskIds.addRef(task.getRef());
@@ -118,20 +123,14 @@ public class TestIndicator extends ObjectTestCase
 		IdList taskIdsFromObject = new IdList(Task.getObjectType(), baseObject.getData(taskTag));
 		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
 		
-		DateRange dateRange = createDateRange();
-		assertEquals("wrong work units for methods", 29.0, baseObject.getWorkUnits(dateRange).getValue());
+		MultiCalendar thisStartDate = ProjectForTesting.createStartYear(2006);
+		MultiCalendar thisEndDate = ProjectForTesting.createEndYear(2006);		
+		DateRange dateRange = new DateRange(thisStartDate, thisEndDate);
+		assertEquals("wrong work units for methods", 150.0, baseObject.getWorkUnits(dateRange).getValue());
 		
 		BaseObject objectWithNoTasks = project.createBaseObject(objectType);
-		project.addAssignment(objectWithNoTasks, 45, 2006, 2009);
-		assertEquals("wrong work units for methods", 45.0, objectWithNoTasks.getWorkUnits(dateRange).getValue());
-	}
-
-	private static DateRange createDateRange()	throws Exception
-	{
-		MultiCalendar thisStartDate = ProjectForTesting.createStartYear(2006);
-		MultiCalendar thisEndDate = ProjectForTesting.createEndYear(2009);
-		
-		return new DateRange(thisStartDate, thisEndDate);
+		project.addResourceAssignment(objectWithNoTasks, 45, 2006, 2006);
+		assertEquals("wrong work units for methods", 450.0, objectWithNoTasks.getWorkUnits(dateRange).getValue());
 	}
 
 	private ProjectForTesting project;

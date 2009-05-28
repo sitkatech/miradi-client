@@ -21,6 +21,7 @@ package org.miradi.objecthelpers;
 
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.ProjectResource;
+import org.miradi.project.TestDateUnit;
 import org.miradi.utils.OptionalDouble;
 
 public class TestTimePeriodCostsMap extends TestCaseWithProject
@@ -162,6 +163,29 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong unit cost?", 50.0, timePeriodCosts4.calculateProjectResources(getProject()).getValue());
 		
 		verifyMergeAddingIncompletedMaps(projectResource, dateUnit2008);
+		verifyMergeDifferentDates();
+	}
+
+	private void verifyMergeDifferentDates() throws Exception
+	{
+		ProjectResource projectResource = createProjectResource();
+		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(1.0, projectResource.getRef(), 2.0);
+		TimePeriodCostsMap timePeriodCostsMap1 = new TimePeriodCostsMap();
+		timePeriodCostsMap1.add(TestDateUnit.month01, timePeriodCosts1);
+		
+		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(3.0, ORef.INVALID, 0.0);
+		TimePeriodCostsMap timePeriodCostsMap2 = new TimePeriodCostsMap();
+		timePeriodCostsMap2.add(TestDateUnit.month12, timePeriodCosts2);
+		
+		DateUnit projectDateUnit = getProject().createSingleYearDateUnit(2008);
+		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
+		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap1, projectDateUnit);
+		TimePeriodCosts foundTimePeriodCosts1 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(TestDateUnit.month01);
+		assertEquals("wrong expense for dateunit", 1.0, foundTimePeriodCosts1.getExpense().getValue());
+		
+		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap2, projectDateUnit);
+		TimePeriodCosts foundTimePeriodCosts2 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(TestDateUnit.month12);
+		assertEquals("wrong expense for dateunit", 3.0, foundTimePeriodCosts2.getExpense().getValue());
 	}
 
 	private void verifyMergeAddingIncompletedMaps(ProjectResource projectResource, DateUnit dateUnit2008)
