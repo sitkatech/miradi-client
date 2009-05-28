@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-27 11:42-0500\n"
+"POT-Creation-Date: 2009-05-28 13:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4621,11 +4621,11 @@ msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr ""
 "Mostrar esta presión para que aparezca en esta página Modelo conceptual"
 
-#: miradi/source/org/miradi/actions/ActionAssignResource.java:34
+#: miradi/source/org/miradi/actions/ActionAssignResource.java:35
 msgid "Action|Assign Resource"
 msgstr "Asignar recurso"
 
-#: miradi/source/org/miradi/actions/ActionAssignResource.java:39
+#: miradi/source/org/miradi/actions/ActionAssignResource.java:40
 msgid "TT|Assign a resource to this task"
 msgstr "Asignar un recurso a esta tarea"
 
@@ -5393,11 +5393,11 @@ msgstr "Eliminar una etiqueta "
 msgid "Action|Close Project"
 msgstr "Cerrar proyecto"
 
-#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:34
+#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:35
 msgid "Action|Remove Resource"
 msgstr "Quitar recurso"
 
-#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:39
+#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:40
 #: miradi/source/org/miradi/actions/ActionResourceListRemove.java:39
 msgid "TT|Remove resource from list"
 msgstr "Quitar recurso de la lista"
@@ -6577,11 +6577,11 @@ msgstr ""
 "Seleccione el elemento que se debe clonar con este factor y oprima el botón "
 "Clonar."
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:28
+#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:28
+#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
 msgid "Collapse Selected Column"
 msgstr ""
 

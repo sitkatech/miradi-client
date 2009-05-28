@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-27 11:42-0500\n"
+"POT-Creation-Date: 2009-05-28 13:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -4430,11 +4430,11 @@ msgstr "在本页面显示压力 \t\t"
 msgid "TT|Show this Stress so it appears on this Conceptual Model page"
 msgstr "显示该压力使之出现于该概念模型页面 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionAssignResource.java:34
+#: miradi/source/org/miradi/actions/ActionAssignResource.java:35
 msgid "Action|Assign Resource"
 msgstr "分配资源 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionAssignResource.java:39
+#: miradi/source/org/miradi/actions/ActionAssignResource.java:40
 msgid "TT|Assign a resource to this task"
 msgstr "分配一项资源到该任务 \t\t"
 
@@ -5201,11 +5201,11 @@ msgstr "删除一个标签"
 msgid "Action|Close Project"
 msgstr "关闭项目 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:34
+#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:35
 msgid "Action|Remove Resource"
 msgstr "删除资源 \t\t"
 
-#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:39
+#: miradi/source/org/miradi/actions/ActionRemoveAssignment.java:40
 #: miradi/source/org/miradi/actions/ActionResourceListRemove.java:39
 msgid "TT|Remove resource from list"
 msgstr "从列表中去除资源 \t\t"
@@ -6373,11 +6373,11 @@ msgid ""
 "Clone button"
 msgstr "请选择那个应当与本因素共享的选项，然后按克隆按钮 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:28
+#: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
 msgid "Expand Selected Column"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:28
+#: miradi/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
 msgid "Collapse Selected Column"
 msgstr ""
 
