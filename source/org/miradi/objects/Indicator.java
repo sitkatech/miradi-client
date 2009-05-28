@@ -29,7 +29,6 @@ import org.miradi.objectdata.DateData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
@@ -135,12 +134,6 @@ public class Indicator extends BaseObject
 		}
 		
 		return result.toString();
-	}
-	
-	@Override
-	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
-	{
-		return new DateRangeEffortList();
 	}
 	
 	@Override

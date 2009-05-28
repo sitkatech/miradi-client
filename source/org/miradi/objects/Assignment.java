@@ -43,12 +43,6 @@ abstract public class Assignment extends BaseObject
 		super(objectManager, idToUse, json);
 	}
 	
-	@Override
-	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
-	{
-		return getDateRangeEffortList();
-	}
-	
 	public DateRangeEffortList getDateRangeEffortList() throws Exception
 	{
 		ProjectCalendar projectCalendar = getProject().getProjectCalendar();

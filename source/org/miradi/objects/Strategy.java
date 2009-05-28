@@ -28,7 +28,6 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -264,12 +263,6 @@ public class Strategy extends Factor
 	public static int getObjectType()
 	{
 		return ObjectType.STRATEGY;
-	}
-	
-	@Override
-	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
-	{
-		return new DateRangeEffortList();
 	}
 	
 	@Override
