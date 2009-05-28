@@ -158,6 +158,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
 	}
 
+	public void setSingleYearProjectDate(int singleYear) throws Exception
+	{
+		setProjectDates(singleYear, singleYear);	
+	}
+
+	public void setProjectDates(int startYear, int endYear) throws Exception
+	{
+		MultiCalendar projectStartDate = ProjectForTesting.createStartYear(startYear);
+		MultiCalendar projectEndDate = ProjectForTesting.createEndYear(endYear);
+		setProjectDate(projectStartDate, ProjectMetadata.TAG_START_DATE);
+		setProjectDate(projectEndDate, ProjectMetadata.TAG_EXPECTED_END_DATE);
+	}
+	
 	public void setProjectDate(MultiCalendar projectStartDate, String tag) throws Exception
 	{
 		fillObjectUsingCommand(getMetadata().getRef(), tag, projectStartDate.toString());
@@ -1254,6 +1267,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public DateRange createDateRange(MultiCalendar startDate, MultiCalendar endDate) throws Exception
 	{
 		return new DateRange(startDate, endDate);
+	}
+	
+	public DateUnit createDateUnit(int sameYear) throws Exception
+	{
+		return createDateUnit(sameYear, sameYear);
 	}
 	
 	public DateUnit createDateUnit(int startYear, int endYear) throws Exception

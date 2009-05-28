@@ -29,7 +29,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ColumnConfigurationQuestion;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
 public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
@@ -61,8 +60,7 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnit);
-		return baseObject.getWorkUnits(dateRange);
+		return baseObject.getWorkUnits(dateUnit);
 	}
 	
 	@Override
@@ -80,8 +78,7 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
-		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnit);
-		return !assignment.getWorkUnits(dateRange).hasValue();
+		return !getOptionalDoubleData(assignment, dateUnit).hasValue();
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";

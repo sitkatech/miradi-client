@@ -485,12 +485,11 @@ abstract public class BaseObject
 		return 1;
 	}
 	
-	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
+	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
 	{
-		DateUnit dateUnit = DateUnit.createFromDateRange(dateRangeToUse);
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
 		
-		return mergedTimePeriodCostsMap.getTotal(dateUnit).calculateProjectResources(getProject());
+		return mergedTimePeriodCostsMap.getTotal(dateUnitToUse).calculateProjectResources(getProject());
 	}
 
 	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
