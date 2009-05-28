@@ -19,12 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 
 abstract public class AbstractCollapseColumnAction extends AbstractExpansionStateAction
 {
 	public AbstractCollapseColumnAction()
 	{
-		super(EAM.text("Collapse Selected Column"));
+		super(EAM.text("Collapse Selected Column"), IconManager.getCollapseIcon());
 	}
 }

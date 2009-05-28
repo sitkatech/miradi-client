@@ -28,8 +28,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
-import org.miradi.actions.ActionAssignResource;
-import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.planning.RightClickActionProvider;
@@ -57,7 +55,7 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
 	
-	private Actions getActions()
+	protected Actions getActions()
 	{
 		return getMainWindow().getActions();
 	}
@@ -136,10 +134,6 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 		AssignmentDateUnitsTableModel model = getWorkUnitsTableModel();
 		
 		Vector<Action> rightClickActions = new Vector();
-		rightClickActions.add(getActions().get(ActionAssignResource.class));
-		rightClickActions.add(getActions().get(ActionRemoveAssignment.class));
-		
-		rightClickActions.add(null);
 
 		if(model.isColumnExpandable(modelColumn))
 			rightClickActions.add(new ExpandColumnAction(this, model));

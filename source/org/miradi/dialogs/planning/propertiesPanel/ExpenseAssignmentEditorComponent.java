@@ -38,7 +38,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 		abstractSummaryTable = new ExpenseSummaryTable(getMainWindow(), abstractSummaryTableModel);
 		
 		assignmentDateUnitsTableModel = new ExpenseAmountsTableModel(getProject(), abstractSummaryTableModel);
-		assignmentDateUnitsTable = new AssignmentDateUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
+		assignmentDateUnitsTable = new AssignmentExpensesTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	
 	protected void addButtons(OneRowPanel box)

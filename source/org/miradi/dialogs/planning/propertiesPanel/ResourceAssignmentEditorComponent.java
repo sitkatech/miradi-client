@@ -40,7 +40,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		abstractSummaryTable = new ResourceAssignmentMainTable(getMainWindow(), abstractSummaryTableModel);
 		
 		assignmentDateUnitsTableModel = new WorkUnitsTableModel(getProject(), abstractSummaryTableModel);
-		assignmentDateUnitsTable = new AssignmentDateUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
+		assignmentDateUnitsTable = new AssignmentWorkUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	
 	protected void addButtons(OneRowPanel box)
