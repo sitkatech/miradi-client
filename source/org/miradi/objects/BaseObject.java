@@ -488,7 +488,7 @@ abstract public class BaseObject
 	public OptionalDouble getWorkUnits(DateRange dateRangeToUse) throws Exception
 	{
 		DateUnit dateUnit = DateUnit.createFromDateRange(dateRangeToUse);
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap(dateUnit);
+		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
 		
 		return mergedTimePeriodCostsMap.getTotal(dateUnit).calculateProjectResources(getProject());
 	}
@@ -496,14 +496,14 @@ abstract public class BaseObject
 	public OptionalDouble getExpenseAmounts(DateRange dateRangeToUse) throws Exception
 	{
 		DateUnit dateUnit = DateUnit.createFromDateRange(dateRangeToUse);
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap(dateUnit);
+		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
 		
 		return mergedTimePeriodCostsMap.getTotal(dateUnit).getExpense();
 	}
 
 	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap(dateUnitToUse);
+		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
 		TimePeriodCosts timePeriodCosts = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
 		if (timePeriodCosts == null)
 			return new OptionalDouble();
@@ -511,7 +511,7 @@ abstract public class BaseObject
 		return timePeriodCosts.calculateTotal(getProject());
 	}
 	
-	private TimePeriodCostsMap getTimePeriodCostsMap(DateUnit dateUnitToUse) throws Exception
+	private TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
 	{
 		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS, projectDateUnit);
