@@ -269,7 +269,7 @@ public class Strategy extends Factor
 	@Override
 	public DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		return getDateRangeEffortListForSubtasks(tag, getActivityRefs());
+		return new DateRangeEffortList();
 	}
 	
 	@Override

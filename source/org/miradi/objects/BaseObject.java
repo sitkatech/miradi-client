@@ -576,7 +576,7 @@ abstract public class BaseObject
 		
 	protected DateRangeEffortList getDateRangeEffortList(String tag) throws Exception
 	{
-		return getDateRangeEffortListForAssignments(tag);	
+		return new DateRangeEffortList();	
 	}
 
 	public String getWhoTotalAsString()
