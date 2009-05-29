@@ -62,7 +62,7 @@ public class ConvertDateRangeEffortListToDateUnitEffortList
 			
 			EnhancedJsonObject dateUnitEffortList = new EnhancedJsonObject();
 			String detailsAsString = assignmentJson.optString("Details");
-			if (!ConvertHighLevelEstimatesIntoAssignments.isEmpty(detailsAsString))
+			if (detailsAsString.length() > 0)
 			{
 				EnhancedJsonObject detailsJson = new EnhancedJsonObject(detailsAsString);
 				EnhancedJsonArray dateRangeEfforts = detailsJson.getJsonArray("DateRangeEfforts");
