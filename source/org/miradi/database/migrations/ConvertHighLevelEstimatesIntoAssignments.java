@@ -166,7 +166,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 		return overrideWhenDates;
 	}
 
-	public static boolean isEmpty(String string)
+	private static boolean isEmpty(String string)
 	{
 		return string.length() == 0;
 	}
