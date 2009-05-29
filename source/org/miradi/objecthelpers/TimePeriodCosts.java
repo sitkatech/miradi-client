@@ -51,13 +51,13 @@ public class TimePeriodCosts
 		Set<ORef> resourceRefKeysToAdd = resourceUnitsMapToAdd.keySet();
 		for(ORef resourceRefToAdd : resourceRefKeysToAdd)
 		{
-			addResource(resourceUnitsMapToAdd, resourceRefToAdd);			
+			final OptionalDouble unitsToUse = resourceUnitsMapToAdd.get(resourceRefToAdd);
+			addResource(resourceRefToAdd, unitsToUse);			
 		}
 	}
 
-	private void addResource(HashMap<ORef, OptionalDouble> resourceUnitsMapToAdd, ORef resourceRefToAdd)
+	private void addResource(ORef resourceRefToAdd,	final OptionalDouble unitsToUse)
 	{
-		final OptionalDouble unitsToUse = resourceUnitsMapToAdd.get(resourceRefToAdd);
 		if (resourceUnitsMap.containsKey(resourceRefToAdd))
 		{
 			OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
