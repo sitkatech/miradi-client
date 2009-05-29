@@ -50,6 +50,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.ObjectManager;
@@ -479,20 +480,22 @@ abstract public class BaseObject
 	
 	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
-		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).calculateResourceCosts(getProject());
+		return getTotalCost(dateUnitToUse).calculateResourceCosts(getProject());
 	}
 
 	public OptionalDouble getExpenseAmount(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
-		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).getExpense();
+		return getTotalCost(dateUnitToUse).getExpense();
 	}
 
 	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
 	{
-		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
-		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).calculateTotal(getProject());
+		return getTotalCost(dateUnitToUse).calculateTotal(getProject());
+	}
+
+	private TimePeriodCosts getTotalCost(DateUnit dateUnitToUse)throws Exception
+	{
+		return getTimePeriodCostsMap().getTotalCost(dateUnitToUse);
 	}
 	
 	private TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
