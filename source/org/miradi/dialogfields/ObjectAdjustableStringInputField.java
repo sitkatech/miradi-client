@@ -46,11 +46,6 @@ public class ObjectAdjustableStringInputField extends ObjectStringInputField
 			if (document.getLength()<=columns)
 				return;
 			e.getEdit().undo();
-			// FIXME: Avoid beeping when loading legacy projects
-			// Also similar code in ObjectStringInputField, 
-			// ObjectAdjustableStringInputField, and 
-			// UiTextFieldWithLengthLimit
-			//Toolkit.getDefaultToolkit().beep();
 		}
 	}
 	
