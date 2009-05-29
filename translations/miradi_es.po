@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-28 14:59-0500\n"
+"POT-Creation-Date: 2009-05-28 22:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6602,7 +6602,7 @@ msgstr "Código contable"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Propiedades del resultado de reducción de amenazas "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:156
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:159
 msgid "An error occurred while trying to expand/collapse the column."
 msgstr ""
 
