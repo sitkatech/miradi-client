@@ -137,7 +137,7 @@ public class ResourceAssignment extends Assignment
 	{
 		ORef resourceRef = getResourceRef();
 		if (resourceRef.isValid())
-			timePeriodCosts.addResourceCost(resourceRef, quantity);
+			timePeriodCosts.addResource(resourceRef, quantity);
 	}
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception

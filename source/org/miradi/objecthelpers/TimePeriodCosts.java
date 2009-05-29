@@ -50,7 +50,7 @@ public class TimePeriodCosts
 		}
 	}
 
-	private void addResource(ORef resourceRefToAdd,	final OptionalDouble unitsToUse)
+	public void addResource(ORef resourceRefToAdd,	final OptionalDouble unitsToUse)
 	{
 		if (resourceUnitsMap.containsKey(resourceRefToAdd))
 		{
@@ -60,7 +60,7 @@ public class TimePeriodCosts
 		}
 		else
 		{
-			addResourceCost(resourceRefToAdd, unitsToUse);
+			resourceUnitsMap.put(resourceRefToAdd, unitsToUse);
 		}
 	}
 
@@ -72,11 +72,6 @@ public class TimePeriodCosts
 	public void setExpense(OptionalDouble expenseToUse)
 	{
 		expense = expenseToUse;
-	}
-	
-	public void addResourceCost(ORef resourceRef, OptionalDouble unitsToUse)
-	{
-		resourceUnitsMap.put(resourceRef, unitsToUse);
 	}
 	
 	public OptionalDouble calculateTotal(Project projectToUse)
