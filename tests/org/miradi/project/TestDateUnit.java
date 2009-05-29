@@ -290,12 +290,12 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	private void verifyContains(DateUnit outer, DateUnit inner) throws Exception
 	{
-		assertTrue("should contain?", outer.contains(inner));
+		assertTrue(outer + " didn't contain " + inner + "?", outer.contains(inner));
 	}
 	
 	private void verifyNotContains(DateUnit outer, DateUnit inner) throws Exception
 	{
-		assertFalse("should not contain?", outer.contains(inner));
+		 assertFalse(outer + " did contain " + inner + "?", outer.contains(inner));
 	}
 	
 	private final DateUnit empty = new DateUnit("");
