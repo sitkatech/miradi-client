@@ -37,6 +37,7 @@ import javax.swing.JScrollPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.icons.IconManager;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 public class ExpandAndCollapseColumnsButtonRow extends JComponent implements AdjustmentListener
@@ -57,6 +58,7 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	@Override
 	protected void paintComponent(Graphics g)
 	{
+		g.setColor(AppPreferences.getControlPanelBackgroundColor());
 		Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
 		for(int index = 0; index < iconHeaderBounds.size(); ++index)
 		{
