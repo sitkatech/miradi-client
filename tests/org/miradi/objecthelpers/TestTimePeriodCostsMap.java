@@ -157,12 +157,12 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		timePerdiodCostsMap2.add(dateUnit2008, timePeriodCosts2);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeAdd(timePerdiodCostsMap2, dateUnit2008);
+		mergedTimePeriodCostsMap.mergeAdd(timePerdiodCostsMap2);
 		TimePeriodCosts timePeriodCosts3 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		assertEquals("wrong expense?", 2.0, timePeriodCosts3.getExpense().getValue());
 		assertEquals("wrong unit cost?", 30.0, timePeriodCosts3.calculateResourceCosts(getProject()).getValue());
 		
-		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap1, dateUnit2008);		
+		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap1);		
 		TimePeriodCosts timePeriodCosts4 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		assertEquals("wrong expense?", 3.0, timePeriodCosts4.getExpense().getValue());
 		assertEquals("wrong unit cost?", 50.0, timePeriodCosts4.calculateResourceCosts(getProject()).getValue());
@@ -182,13 +182,12 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap2 = new TimePeriodCostsMap();
 		timePeriodCostsMap2.add(TestDateUnit.month12, timePeriodCosts2);
 		
-		DateUnit projectDateUnit = getProject().createSingleYearDateUnit(2008);
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap1, projectDateUnit);
+		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap1);
 		TimePeriodCosts foundTimePeriodCosts1 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(TestDateUnit.month01);
 		assertEquals("wrong expense for dateunit", 1.0, foundTimePeriodCosts1.getExpense().getValue());
 		
-		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap2, projectDateUnit);
+		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap2);
 		TimePeriodCosts foundTimePeriodCosts2 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(TestDateUnit.month12);
 		assertEquals("wrong expense for dateunit", 3.0, foundTimePeriodCosts2.getExpense().getValue());
 	}
@@ -205,7 +204,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		incompleteWithoutExpense.addResourceCost(projectResource.getRef(), new OptionalDouble(3.0));
 		mapWithOnlyResourceWorkUnits.add(dateUnit2008, incompleteWithoutExpense);
 		
-		mapWithOnlyExpenses.mergeAdd(mapWithOnlyResourceWorkUnits, dateUnit2008);
+		mapWithOnlyExpenses.mergeAdd(mapWithOnlyResourceWorkUnits);
 		TimePeriodCosts timePeriodCostsWithExpenseAndResource = mapWithOnlyExpenses.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		OptionalDouble resourceExpense = timePeriodCostsWithExpenseAndResource.calculateResourceCosts(getProject());
 		assertEquals("wrong resource expense?", (3.0 * 10.0), resourceExpense.getValue());
