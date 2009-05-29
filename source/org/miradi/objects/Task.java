@@ -388,19 +388,6 @@ public class Task extends Factor
 		throw new RuntimeException("Unknown task type: " + getRef());
 	}
 
-	public double getTotalAssignmentCost(DateRange dateRangeToUse) throws Exception
-	{
-		double totalAssignmentsCost = 0;
-		ORefList assignmentRefs = getAssignmentRefs();
-		for (int index = 0; index < assignmentRefs.size(); index++)
-		{
-			ResourceAssignment assignment = ResourceAssignment.find(getProject(), assignmentRefs.get(index));
-			totalAssignmentsCost += assignment.getTotalResourceAssignmentCost(dateRangeToUse);
-		}
-		
-		return totalAssignmentsCost;
-	}
-	
 	private String getLabelOfTaskParent()
 	{
 
