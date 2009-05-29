@@ -248,11 +248,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		effort.setUnitQuantity(units);
 		effortList.setDateUnitEffort(effort);
 		String newEffortListString = effortList.toString();
-		String data = assignment.getData(assignment.TAG_DATERANGE_EFFORTS);
+		String data = assignment.getData(assignment.TAG_DATEUNIT_EFFORTS);
 		if(newEffortListString.equals(data))
 			return;
 		
-		Command command = new CommandSetObjectData(assignment, Assignment.TAG_DATERANGE_EFFORTS, newEffortListString);
+		Command command = new CommandSetObjectData(assignment, Assignment.TAG_DATEUNIT_EFFORTS, newEffortListString);
 		getProject().executeCommand(command);
 	}
 
@@ -275,10 +275,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
 		effortList.remove(dateUnit);
 		String newEffortListString = effortList.toString();
-		if(newEffortListString.equals(assignment.getData(assignment.TAG_DATERANGE_EFFORTS)))
+		if(newEffortListString.equals(assignment.getData(assignment.TAG_DATEUNIT_EFFORTS)))
 			return;
 		
-		Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATERANGE_EFFORTS, newEffortListString);
+		Command command = new CommandSetObjectData(assignment.getType(), assignment.getId(), assignment.TAG_DATEUNIT_EFFORTS, newEffortListString);
 		getProject().executeCommand(command);
 	}
 

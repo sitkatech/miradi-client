@@ -39,7 +39,7 @@ public class BudgetCalculator
 	
 	private DateRangeEffortList getDateRangeEffortList(ResourceAssignment assignment) throws Exception
 	{
-		String effortListAsString = assignment.getData(ResourceAssignment.TAG_DATERANGE_EFFORTS);
+		String effortListAsString = assignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS);
 		return new DateRangeEffortList(effortListAsString);
 	}
 	

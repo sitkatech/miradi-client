@@ -1219,7 +1219,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		DateUnitEffort dateUnitEffort = createDateUnitEffort(startDate, endDate);
 		dateUnitEffort.setUnitQuantity(units);
 		dateUnitEffortList.add(dateUnitEffort);
-		assignment.setData(ResourceAssignment.TAG_DATERANGE_EFFORTS, dateUnitEffortList.toString());
+		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		IdList currentAssignmentIdList = baseObject.getAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
 		baseObject.setData(BaseObject.TAG_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
