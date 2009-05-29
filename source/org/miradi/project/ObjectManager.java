@@ -64,14 +64,12 @@ import org.miradi.objectpools.PoolWithIdAssigner;
 import org.miradi.objectpools.ProgressPercentPool;
 import org.miradi.objectpools.ProgressReportPool;
 import org.miradi.objectpools.ProjectMetadataPool;
-import org.miradi.objectpools.ScopeBoxPool;
 import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.RatingCriterionPool;
 import org.miradi.objectpools.ReportTemplatePool;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objectpools.ResultsChainDiagramPool;
-import org.miradi.objectpools.SlidePool;
-import org.miradi.objectpools.SlideShowPool;
+import org.miradi.objectpools.ScopeBoxPool;
 import org.miradi.objectpools.StrategyPool;
 import org.miradi.objectpools.StressPool;
 import org.miradi.objectpools.SubTargetPool;
@@ -134,8 +132,6 @@ public class ObjectManager
 		addNormalPool(new ConceptualModelDiagramPool(ida));
 		addNormalPool(new ThreatReductionResultPool(ida));
 		addNormalPool(new TextBoxPool(ida));
-		addNormalPool(new SlidePool(ida));
-		addNormalPool(new SlideShowPool(ida));
 		addNormalPool(new PlanningViewConfigurationPool(ida));
 		addNormalPool(new WwfProjectDataPool(ida));
 		addNormalPool(new CostAllocationRulePool(ida));
@@ -267,16 +263,6 @@ public class ObjectManager
 		return (ResultsChainDiagramPool) getPool(ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
-	public SlidePool getSlidePool()
-	{
-		return (SlidePool)getPool(ObjectType.SLIDE);
-	}
-	
-	public SlideShowPool getSlideShowPool()
-	{
-		return (SlideShowPool)getPool(ObjectType.SLIDESHOW);
-	}
-	
 	public PlanningViewConfigurationPool getPlanningConfigurationPool()
 	{
 		return (PlanningViewConfigurationPool) getPool(PlanningViewConfiguration.getObjectType());
@@ -406,8 +392,6 @@ public class ObjectManager
 			ObjectType.INTERMEDIATE_RESULT,
 			ObjectType.THREAT_REDUCTION_RESULT,
 			ObjectType.TEXT_BOX,
-			ObjectType.SLIDE,
-			ObjectType.SLIDESHOW,
 			ObjectType.PLANNING_VIEW_CONFIGURATION,
 			ObjectType.WWF_PROJECT_DATA,
 			ObjectType.COST_ALLOCATION_RULE,

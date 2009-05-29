@@ -185,13 +185,6 @@ public class Actions
 		registerAction(new ActionViewOperationalPlan(mainWindow));
 		registerAction(new ActionViewReports(mainWindow));
 		
-		registerAction(new ActionCreateSlide(mainWindow));
-		registerAction(new ActionDeleteSlide(mainWindow));
-		registerAction(new ActionToggleSlideShowPanel(mainWindow));
-		registerAction(new ActionMoveSlideUp(mainWindow));
-		registerAction(new ActionMoveSlideDown(mainWindow));
-		registerAction(new ActionSlideShowViewer(mainWindow));
-		
 		registerAction(new ActionConfigureLayers(mainWindow));
 		registerAction(new ActionShowSelectedChainMode(mainWindow));
 		registerAction(new ActionShowFullModelMode(mainWindow));

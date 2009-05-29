@@ -194,12 +194,6 @@ abstract public class BaseObject
 		int idAsInt = json.getInt(TAG_ID);
 		switch(type)
 		{
-			case ObjectType.SLIDESHOW:
-				return new SlideShow(objectManager, idAsInt, json);
-				
-			case ObjectType.SLIDE:
-				return new Slide(objectManager, idAsInt, json);
-				
 			case ObjectType.RATING_CRITERION:
 				return new RatingCriterion(objectManager, idAsInt, json);
 				
@@ -1098,12 +1092,6 @@ abstract public class BaseObject
 		
 		if (ThreatReductionResult.canOwnThisType(type))
 			objectTypes[i++] = ThreatReductionResult.getObjectType();
-		
-		if (Slide.canOwnThisType(type))
-			objectTypes[i++] = Slide.getObjectType();
-		
-		if (SlideShow.canOwnThisType(type))
-			objectTypes[i++] = SlideShow.getObjectType();
 		
 		if (Task.canOwnThisType(type))
 			objectTypes[i++] = Task.getObjectType();

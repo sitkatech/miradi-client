@@ -28,11 +28,9 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Slide;
 import org.miradi.objects.ViewData;
 import org.miradi.views.diagram.LinkDeletor;
 
@@ -49,7 +47,6 @@ public class DiagramObjectDeleteHelper
 		DiagramObject diagramObject = diagramPanel.getDiagramObject();
 		deleteAllDiagramFactorLinks();
 		deleteAllDiagramFactors();
-		deleteAllSlideReferences(diagramObject);
 		clearObject(diagramObject);
 		removeAsCurrentDiagram();
 		deleteDiagramObject(diagramObject);
@@ -73,15 +70,6 @@ public class DiagramObjectDeleteHelper
 	{
 		CommandSetObjectData[] commands = diagramObject.createCommandsToClear();
 		project.executeCommandsWithoutTransaction(commands);
-	}
-	
-	private void deleteAllSlideReferences(DiagramObject diagramObject) throws Exception
-	{
-		ORefList list = diagramObject.findObjectsThatReferToUs(Slide.getObjectType());
-		for (int i=0; i<list.size(); ++i)
-		{
-			project.executeCommand(new CommandSetObjectData(list.get(i), Slide.TAG_DIAGRAM_OBJECT_REF, ORef.INVALID));
-		}
 	}
 	
 	
