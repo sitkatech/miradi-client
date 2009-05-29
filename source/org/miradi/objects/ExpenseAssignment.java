@@ -25,11 +25,8 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.OptionalDouble;
 
@@ -49,21 +46,13 @@ public class ExpenseAssignment extends Assignment
 	@Override
 	public OptionalDouble getExpenseAmount(DateUnit dateUnitToUse) throws Exception
 	{
-		return getTimePeriodCostsMap().getTotalCost(dateUnitToUse).getExpense();
+		return convertDateUnitEffortList().getTotalCost(dateUnitToUse).getExpense();
 	}
 	
-	protected TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
+	@Override
+	protected void updateTimePeriodCosts(TimePeriodCosts timePeriodCosts, OptionalDouble quantity)
 	{
-		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
-		DateUnitEffortList duel = getDateUnitEffortList();
-		for (int index = 0; index < duel.size(); ++index)
-		{
-			DateUnitEffort due = duel.getDateUnitEffort(index);
-			OptionalDouble expense = new OptionalDouble(due.getQuantity());
-			tpcm.add(due.getDateUnit(), new TimePeriodCosts(expense));
-		}
-		
-		return tpcm;
+		timePeriodCosts.setExpense(quantity);
 	}
 	
 	public ORef getFundingSourceRef()

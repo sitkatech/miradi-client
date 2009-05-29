@@ -23,11 +23,14 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 abstract public class Assignment extends BaseObject
 {
@@ -55,7 +58,7 @@ abstract public class Assignment extends BaseObject
 	@Override
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		return getTimePeriodCostsMap();
+		return convertDateUnitEffortList();
 	}
 	
 	public static boolean isAssignment(BaseObject baseObject)
@@ -85,7 +88,22 @@ abstract public class Assignment extends BaseObject
 		addField(TAG_DATEUNIT_EFFORTS, detailListData);
 	}
 	
-	abstract protected TimePeriodCostsMap getTimePeriodCostsMap() throws Exception;
+	protected TimePeriodCostsMap convertDateUnitEffortList() throws Exception
+	{
+		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
+		DateUnitEffortList duel = getDateUnitEffortList();
+		for (int index = 0; index < duel.size(); ++index)
+		{
+			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
+			TimePeriodCosts timePeriodCostsToUpdate = new TimePeriodCosts();
+			updateTimePeriodCosts(timePeriodCostsToUpdate, new OptionalDouble(dateUnitEffort.getQuantity()));
+			tpcm.add(dateUnitEffort.getDateUnit(), timePeriodCostsToUpdate);
+		}
+		
+		return tpcm;	
+	}
+	
+	abstract protected void updateTimePeriodCosts(TimePeriodCosts timePeriodCosts, OptionalDouble quantity);
 	
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	
