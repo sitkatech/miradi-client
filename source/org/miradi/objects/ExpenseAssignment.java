@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ORefData;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -42,13 +41,7 @@ public class ExpenseAssignment extends Assignment
 	{
 		super(objectManager, new BaseId(idAsInt), json);
 	}
-	
-	@Override
-	public OptionalDouble getExpenseAmount(DateUnit dateUnitToUse) throws Exception
-	{
-		return convertDateUnitEffortList().getTotalCost(dateUnitToUse).getExpense();
-	}
-	
+		
 	@Override
 	protected void updateTimePeriodCosts(TimePeriodCosts timePeriodCosts, OptionalDouble quantity)
 	{
