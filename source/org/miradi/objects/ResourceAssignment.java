@@ -176,7 +176,7 @@ public class ResourceAssignment extends Assignment
 	{
 		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap();
 		TimePeriodCosts timePeriodCostsForSpecificDateUnit = timePeriodCostsMap.getTotalCost(dateUnitToUse);
-		return timePeriodCostsForSpecificDateUnit.calculateProjectResources(getProject());
+		return timePeriodCostsForSpecificDateUnit.calculateResourceCosts(getProject());
 	}
 	
 	@Override

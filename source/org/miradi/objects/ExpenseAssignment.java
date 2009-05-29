@@ -47,7 +47,7 @@ public class ExpenseAssignment extends Assignment
 	}
 	
 	@Override
-	public OptionalDouble getExpenseAmounts(DateUnit dateUnitToUse) throws Exception
+	public OptionalDouble getExpenseAmount(DateUnit dateUnitToUse) throws Exception
 	{
 		return getTimePeriodCostsMap().getTotalCost(dateUnitToUse).getExpense();
 	}
