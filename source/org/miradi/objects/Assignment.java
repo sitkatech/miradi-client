@@ -22,7 +22,6 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitEffortListData;
 import org.miradi.objecthelpers.DateRangeEffortList;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
@@ -54,7 +53,7 @@ abstract public class Assignment extends BaseObject
 	}
 	
 	@Override
-	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
 		return getTimePeriodCostsMap();
 	}

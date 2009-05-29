@@ -28,7 +28,6 @@ import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -266,9 +265,9 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag, DateUnit dateUnitToUse) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		return getTimePeriodCostsMapForSubTasks(tag, getActivityRefs(), dateUnitToUse);	
+		return getTimePeriodCostsMapForSubTasks(tag, getActivityRefs());	
 	}
 	
 	public DateRange getWhenRollup() throws Exception
