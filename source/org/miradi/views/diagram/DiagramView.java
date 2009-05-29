@@ -55,7 +55,6 @@ import org.miradi.actions.ActionCreateObjective;
 import org.miradi.actions.ActionCreateOrShowResultsChain;
 import org.miradi.actions.ActionCreateOutgoingJunction;
 import org.miradi.actions.ActionCreateResultsChain;
-import org.miradi.actions.ActionCreateSlide;
 import org.miradi.actions.ActionCreateStress;
 import org.miradi.actions.ActionCreateStressFromKea;
 import org.miradi.actions.ActionCreateSubTarget;
@@ -74,7 +73,6 @@ import org.miradi.actions.ActionDeleteKeyEcologicalAttributeIndicator;
 import org.miradi.actions.ActionDeleteKeyEcologicalAttributeMeasurement;
 import org.miradi.actions.ActionDeleteObjective;
 import org.miradi.actions.ActionDeleteResultsChain;
-import org.miradi.actions.ActionDeleteSlide;
 import org.miradi.actions.ActionDeleteStress;
 import org.miradi.actions.ActionDeleteSubTarget;
 import org.miradi.actions.ActionDeleteTaggedObjectSet;
@@ -98,8 +96,6 @@ import org.miradi.actions.ActionInsertThreatReductionResult;
 import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.actions.ActionManageFactorTagsFromMenu;
 import org.miradi.actions.ActionManageStresses;
-import org.miradi.actions.ActionMoveSlideDown;
-import org.miradi.actions.ActionMoveSlideUp;
 import org.miradi.actions.ActionNudgeDown;
 import org.miradi.actions.ActionNudgeLeft;
 import org.miradi.actions.ActionNudgeRight;
@@ -119,13 +115,10 @@ import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.ActionShowResultsChain;
 import org.miradi.actions.ActionShowSelectedChainMode;
 import org.miradi.actions.ActionShowStressBubble;
-import org.miradi.actions.ActionSlideShowViewer;
-import org.miradi.actions.ActionToggleSlideShowPanel;
 import org.miradi.actions.ActionZoomIn;
 import org.miradi.actions.ActionZoomOut;
 import org.miradi.actions.ActionZoomToFit;
 import org.miradi.actions.EAMAction;
-import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
@@ -138,9 +131,6 @@ import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.dialogs.diagram.FactorPropertiesDialog;
 import org.miradi.dialogs.diagram.FactorPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainDiagramPanel;
-import org.miradi.dialogs.slideshow.SlideListManagementPanel;
-import org.miradi.dialogs.slideshow.SlideShowDialog;
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.IdList;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -158,7 +148,6 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.SlideShow;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
@@ -214,51 +203,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDiagramViewDoersToMap();
 	}
 
-	
-	public boolean isSlideShowVisible()
-	{
-		return (slideShowDlg!=null) && (slideShowDlg.isVisible());
-	}
-
-	public void showSlideShowPanel() throws Exception
-	{
-		disposeOfSlideShowDialog();
-		ORef slideShowRef = createSlideShowIfNeeded().getRef(); 
-		SlideListManagementPanel slideShowPoolManagementPanel =  new SlideListManagementPanel(getMainWindow(), slideShowRef, getActions());
-		slideShowPoolManagementPanel.updateSplitterLocationToMiddle();
-		slideShowDlg = new SlideShowDialog(getMainWindow(), slideShowPoolManagementPanel, slideShowPoolManagementPanel.getPanelDescription());
-		slideShowDlg.pack();
-		
-		Utilities.centerDlg(slideShowDlg);
-		slideShowDlg.setVisible(true);
-	}
-
-	public SlideShow getSlideShow() throws CommandFailedException
-	{
-		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
-		if (pool.size()==0)
-		{
-			throw new CommandFailedException("Slide Show not found in pool");
-		}
-
-		return (SlideShow) getProject().findObject(SlideShow.getObjectType(), pool.getIds()[0]);
-	}
-	
-	private BaseObject createSlideShowIfNeeded() throws CommandFailedException
-	{
-		ORef oref = ORef.INVALID;
-		EAMObjectPool pool = getProject().getPool(SlideShow.getObjectType());
-		if (pool.size()==0)
-		{
-			CommandCreateObject cmd = new CommandCreateObject(SlideShow.getObjectType());
-			getProject().executeCommand(cmd);
-			oref = cmd.getObjectRef();
-		}
-		else
-			oref = pool.getORefList().get(0);
-		
-		return getProject().findObject(oref);
-	}
 	
 	private void updateToolBar()
 	{
@@ -390,13 +334,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionGroupBoxAddFactor.class, new GroupBoxAddDiagramFactorDoer());
 		addDoerToMap(ActionGroupBoxRemoveFactor.class, new GroupBoxRemoveDiagramFactorDoer());
 		addDoerToMap(ActionDeleteGroupBox.class, new DeleteGroupBoxDoer());
-		
-		addDoerToMap(ActionCreateSlide.class, new CreateSlideDoer());
-		addDoerToMap(ActionDeleteSlide.class, new DeleteSlideDoer());
-		addDoerToMap(ActionMoveSlideDown.class, new MoveSlideDownDoer());
-		addDoerToMap(ActionMoveSlideUp.class, new MoveSlideUpDoer());
-		addDoerToMap(ActionToggleSlideShowPanel.class, new ToggleSlideShowPanelDoer());
-		addDoerToMap(ActionSlideShowViewer.class, new SlideShowViewerDoer());
 		
 		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());
 		
@@ -626,7 +563,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		// TODO: This should completely tear down the view
 		disposeOfNodePropertiesDialog();
-		disposeOfSlideShowDialog();
 		
 		for(int i = 0; i < getTabCount(); ++i)
 		{
@@ -1033,13 +969,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		nodePropertiesPanel = null;
 	}
 	
-	public void disposeOfSlideShowDialog()
-	{
-		if(slideShowDlg != null)
-			slideShowDlg.dispose();
-		slideShowDlg = null;
-	}
-	
 	
 	public void selectionWasChanged()
 	{
@@ -1119,7 +1048,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	private PropertiesDoer propertiesDoer;
 	private String mode;
 	
-	private SlideShowDialog slideShowDlg;
 	private ModelessDialogWithClose nodePropertiesDlg;
 	private FactorPropertiesPanel nodePropertiesPanel;
 	
