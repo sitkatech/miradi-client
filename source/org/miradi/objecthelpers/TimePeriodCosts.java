@@ -155,7 +155,7 @@ public class TimePeriodCosts
 		Set<ORef> refs = resourceUnitsMap.keySet();
 		for(ORef ref : refs)
 		{
-			asString += resourceUnitsMap.get(ref) + "\n";
+			asString += "resourceRef = " + ref + " units = " + resourceUnitsMap.get(ref) + "\n";
 		}
 		
 		return asString;
