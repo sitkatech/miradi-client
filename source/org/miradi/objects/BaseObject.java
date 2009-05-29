@@ -490,7 +490,7 @@ abstract public class BaseObject
 
 	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
 	{
-		return getTotalCost(dateUnitToUse).calculateTotal(getProject());
+		return getTotalCost(dateUnitToUse).calculateTotalCost(getProject());
 	}
 
 	private TimePeriodCosts getTotalCost(DateUnit dateUnitToUse)throws Exception
