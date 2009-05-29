@@ -517,12 +517,11 @@ abstract public class BaseObject
 				
 	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs) throws Exception
 	{
-		DateUnit projectDateUnit = getProjectDateUnit();
 		TimePeriodCostsMap timePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
-			timePeriodCostsMap.mergeOverlay(baseObject.getTimePeriodCostsMap(tag), projectDateUnit);
+			timePeriodCostsMap.mergeOverlay(baseObject.getTimePeriodCostsMap(tag));
 		}
 		
 		return timePeriodCostsMap;
@@ -541,11 +540,6 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 	
-	private DateUnit getProjectDateUnit() throws Exception
-	{
-		return getProject().getProjectCalendar().getProjectPlanningDateUnit();
-	}
-		
 	public String getWhoTotalAsString()
 	{		
 		try
