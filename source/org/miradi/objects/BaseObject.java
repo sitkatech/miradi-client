@@ -500,7 +500,7 @@ abstract public class BaseObject
 	
 	private TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
 	{
-		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
+		DateUnit projectDateUnit = getProjectDateUnit();
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
 		
@@ -518,7 +518,7 @@ abstract public class BaseObject
 				
 	protected TimePeriodCostsMap getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs) throws Exception
 	{
-		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
+		DateUnit projectDateUnit = getProjectDateUnit();
 		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMapForAssignments(tag);
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
@@ -528,10 +528,10 @@ abstract public class BaseObject
 		
 		return timePeriodCostsMap;
 	}
-	
+
 	protected TimePeriodCostsMap getTimePeriodCostsMapForAssignments(String tag) throws Exception
 	{
-		DateUnit projectDateUnit = getProject().getProjectCalendar().getProjectPlanningDateUnit();
+		DateUnit projectDateUnit = getProjectDateUnit();
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		ORefList assignmentRefs = getRefList(tag);
 		for(int i = 0; i < assignmentRefs.size(); ++i)
@@ -543,6 +543,11 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 	
+	private DateUnit getProjectDateUnit() throws Exception
+	{
+		return getProject().getProjectCalendar().getProjectPlanningDateUnit();
+	}
+		
 	public String getWhoTotalAsString()
 	{		
 		try
