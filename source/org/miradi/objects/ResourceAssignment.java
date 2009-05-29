@@ -174,14 +174,13 @@ public class ResourceAssignment extends Assignment
 	@Override
 	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
 	{
-		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
-		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(dateRange);
+		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap();
 		TimePeriodCosts timePeriodCostsForSpecificDateUnit = timePeriodCostsMap.getTotalCost(dateUnitToUse);
 		return timePeriodCostsForSpecificDateUnit.calculateProjectResources(getProject());
 	}
 	
 	@Override
-	protected TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception
+	protected TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
 	{
 		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
 		DateUnitEffortList duel = getDateUnitEffortList();
