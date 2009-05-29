@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -145,28 +144,6 @@ public class ResourceAssignment extends Assignment
 	private ProjectResource getProjectResource()
 	{
 		return ProjectResource.find(getProject(), getResourceRef());
-	}
-	
-	public double getTotalResourceAssignmentCost(DateRange dateRangeToUse) throws Exception
-	{
-		double cost = 0;
-		ProjectResource projectResource = getProjectResource();
-		if (projectResource != null)
-		{
-			DateRangeEffortList effortList = getDateRangeEffortList();
-			double totalCostPerResourceAssignment = getTotalUnitQuantity(dateRangeToUse, projectResource.getCostPerUnit(), effortList);
-			cost += totalCostPerResourceAssignment;
-		}
-		
-		return cost;
-	}
-	
-	private double getTotalUnitQuantity(DateRange dateRangeToUse, double costPerUnit, DateRangeEffortList effortList)
-	{
-		if (dateRangeToUse != null)
-			return (effortList.getTotalUnitQuantity(dateRangeToUse) * costPerUnit);
-		
-		return (effortList.getTotalUnitQuantity() * costPerUnit);
 	}
 	
 	@Override
