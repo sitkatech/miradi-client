@@ -199,7 +199,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		
 		TimePeriodCostsMap mapWithOnlyResourceWorkUnits = new TimePeriodCostsMap();
 		TimePeriodCosts incompleteWithoutExpense = new TimePeriodCosts();		
-		incompleteWithoutExpense.addResourceCost(projectResource.getRef(), new OptionalDouble(3.0));
+		incompleteWithoutExpense.addResource(projectResource.getRef(), new OptionalDouble(3.0));
 		mapWithOnlyResourceWorkUnits.add(dateUnit2008, incompleteWithoutExpense);
 		
 		mapWithOnlyExpenses.mergeAdd(mapWithOnlyResourceWorkUnits);
