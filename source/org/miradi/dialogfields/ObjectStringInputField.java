@@ -58,12 +58,6 @@ public class ObjectStringInputField extends ObjectTextInputField
 				if (index>=0)
 				{
 					e.getEdit().undo();
-					
-					// FIXME: Avoid beeping when loading legacy projects
-					// Also similar code in ObjectStringInputField, 
-					// ObjectAdjustableStringInputField, and 
-					// UiTextFieldWithLengthLimit
-					//Toolkit.getDefaultToolkit().beep();
 				}
 			}
 			catch(BadLocationException e1)

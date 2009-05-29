@@ -45,11 +45,6 @@ class PlainDocumentWithLengthLimit extends PlainDocument
 		int proposedLength = this.getLength() + str.length();
 		if (str != null && proposedLength > maxLength) 
 		{
-			// FIXME: Avoid beeping when loading legacy projects
-			// Also similar code in ObjectStringInputField, 
-			// ObjectAdjustableStringInputField, and 
-			// UiTextFieldWithLengthLimit
-			//java.awt.Toolkit.getDefaultToolkit().beep();
 			return;
 		}
  
