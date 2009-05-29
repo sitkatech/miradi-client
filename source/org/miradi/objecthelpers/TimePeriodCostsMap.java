@@ -82,7 +82,7 @@ public class TimePeriodCostsMap
 		Set<DateUnit> keys = timePeriodCostsMap.getDateUnitTimePeriodCostsMap().keySet();
 		for(DateUnit dateUnit : keys)
 		{
-			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnit, projectDateUnit);
+			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnit);
 			if(hasAnyEntriesWithin(dateUnit))
 				continue;
 			
@@ -91,7 +91,7 @@ public class TimePeriodCostsMap
 		}	
 	}
 	
-	private void removeEntriesForLargerDateUnitsThatContainThisOne(DateUnit dateUnit, DateUnit projectDateUnit) throws Exception
+	private void removeEntriesForLargerDateUnitsThatContainThisOne(DateUnit dateUnit) throws Exception
 	{
 		if(dateUnit.isBlank())
 			return;
@@ -101,7 +101,7 @@ public class TimePeriodCostsMap
 		if(!larger.isBlank())
 			dateUnitToRemove = larger;
 		data.remove(dateUnitToRemove);
-		removeEntriesForLargerDateUnitsThatContainThisOne(larger, projectDateUnit);
+		removeEntriesForLargerDateUnitsThatContainThisOne(larger);
 	}
 	
 	private boolean hasAnyEntriesWithin(DateUnit largerDateUnit) throws Exception
