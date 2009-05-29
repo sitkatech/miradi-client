@@ -76,7 +76,7 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 
 	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
-		return !(getOptionalDoubleData(assignment, dateUnit).hasValue());
+		return getOptionalDoubleData(assignment, dateUnit).hasValue();
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";

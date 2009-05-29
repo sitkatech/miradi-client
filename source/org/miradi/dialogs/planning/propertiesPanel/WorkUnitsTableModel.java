@@ -78,7 +78,7 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
-		return !getOptionalDoubleData(assignment, dateUnit).hasValue();
+		return getOptionalDoubleData(assignment, dateUnit).hasValue();
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";
