@@ -236,7 +236,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			Task activity = Task.find(getProject(), activityRefs.get(refIndex));
 			writeStartElement(out, ACTIVITY);
 			writeLabelElement(out, NAME, activity, Task.TAG_LABEL);
-			DateRange whenTotal = activity.getWhenTotal();
+			DateRange whenTotal = activity.getWhenRollup();
 			if (whenTotal != null)
 			{
 				writeElement(out, ACTIVITY_START_DATE, whenTotal.getStartDate().toString());

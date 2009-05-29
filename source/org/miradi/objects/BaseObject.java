@@ -596,18 +596,13 @@ abstract public class BaseObject
 	{
 		try
 		{
-			return convertToSafeString(getWhenTotal());
+			return convertToSafeString(getWhenRollup());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return "";
 		} 
-	}
-	
-	public DateRange getWhenTotal() throws Exception
-	{
-		return getWhenRollup();
 	}
 	
 	public DateRange getWhenRollup() throws Exception
@@ -621,7 +616,7 @@ abstract public class BaseObject
 		for (int i = 0; i < taskRefs.size(); ++i)
 		{
 			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			DateRange thisCombineEffortListDateRanges = thisTask.getWhenTotal();
+			DateRange thisCombineEffortListDateRanges = thisTask.getWhenRollup();
 			if (thisCombineEffortListDateRanges == null)
 				continue;
 			
