@@ -252,7 +252,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		String endDateAsString = getNodeContent(activityNode, ACTIVITY_END_DATE);
 		if (startDateAsString.length() > 0 && endDateAsString.length() > 0)
 		{
-			//FIXME,  no longer saving when override in a field.  need to create a resourceAssignment
+			//FIXME urgent,  no longer saving when override in a field.  need to create a resourceAssignment
 			//MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
 			//MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
 			//DateRange dateRange = new DateRange(startDate, endDate);
