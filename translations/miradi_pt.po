@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-28 23:19-0500\n"
+"POT-Creation-Date: 2009-05-29 10:01-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -511,15 +511,15 @@ msgstr ""
 msgid "Are you sure you want to delete this Objective?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:443
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:380
 msgid "Unknown error displaying diagram"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:513
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:450
 msgid "Found Corrupted Data:"
 msgstr ""
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:1007
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:943
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
@@ -3975,10 +3975,6 @@ msgstr ""
 msgid "TT|Move the selected item up"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionSlideShowViewer.java:34
-msgid "Action|Show Slide Show"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionInsertTextBox.java:35
 msgid "Action|Insert|Insert Text Box"
 msgstr ""
@@ -4632,14 +4628,6 @@ msgstr ""
 msgid "Action|ContextSensitive|Help"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionCreateSlide.java:34
-msgid "Action|Create Slide"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionCreateSlide.java:39
-msgid "TT|Create slide"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionDeleteMethod.java:35
 msgid "Action|Manage|Delete Method"
 msgstr ""
@@ -4938,14 +4926,6 @@ msgstr ""
 msgid "TT|Remove resource from list"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/ActionDeleteSlide.java:34
-msgid "Action|Delete Slide"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionDeleteSlide.java:39
-msgid "TT|Delete slide"
-msgstr ""
-
 #: miradi/source/org/miradi/actions/ActionTreeShareMethod.java:35
 #: miradi/source/org/miradi/actions/ActionShareMethod.java:35
 msgid "Action|Share Method"
@@ -4954,14 +4934,6 @@ msgstr ""
 #: miradi/source/org/miradi/actions/ActionTreeShareMethod.java:40
 #: miradi/source/org/miradi/actions/ActionShareMethod.java:40
 msgid "TT|Share an existing Method into this Indicator"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionToggleSlideShowPanel.java:35
-msgid "Action|Edit Slide Show"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionToggleSlideShowPanel.java:40
-msgid "TT|Hides or shows the Slide Show editor"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionCopy.java:34
@@ -5024,14 +4996,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionHowToSave.java:39
 msgid "TT|How to save files in Miradi"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideDown.java:34
-msgid "Action|Move Down"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideDown.java:39
-msgid "TT|Move Down"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:35
@@ -5359,14 +5323,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionEditStrategyProgressReports.java:39
 msgid "TT|Edit the list of progress reports for this strategy"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideUp.java:34
-msgid "Action|Move Up"
-msgstr ""
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideUp.java:39
-msgid "TT|Move Up"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionInsertScopeBox.java:35
@@ -6233,14 +6189,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/task/MethodPropertiesPanel.java:41
 msgid "Title|Method Properties"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/slideshow/SlideListManagementPanel.java:50
-msgid "Title|Slide Show"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/slideshow/SlidePropertiesPanel.java:41
-msgid "Title|Slide Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
