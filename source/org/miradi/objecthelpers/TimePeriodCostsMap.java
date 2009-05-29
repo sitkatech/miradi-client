@@ -32,12 +32,6 @@ public class TimePeriodCostsMap
 		data = new HashMap<DateUnit, TimePeriodCosts>();
 	}
 	
-	public TimePeriodCostsMap(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
-	{
-		this();
-		add(dateUnit, timePeriodCosts);
-	}
-	
 	public void add(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		data.put(dateUnit, timePeriodCosts);
