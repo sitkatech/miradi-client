@@ -483,17 +483,7 @@ abstract public class BaseObject
 		return getTotalCost(dateUnitToUse).calculateTotalCost(getProject());
 	}
 
-	public OptionalDouble getExpenseAmount(DateUnit dateUnitToUse) throws Exception
-	{
-		return getTotalCost(dateUnitToUse).getExpense();
-	}
-
-	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
-	{
-		return getTotalCost(dateUnitToUse).calculateTotalCost(getProject());
-	}
-
-	private TimePeriodCosts getTotalCost(DateUnit dateUnitToUse)throws Exception
+	public TimePeriodCosts getTotalCost(DateUnit dateUnitToUse)throws Exception
 	{
 		return getTotalTimePeriodCostMap().getTotalCost(dateUnitToUse);
 	}
