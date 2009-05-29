@@ -97,7 +97,7 @@ public class TimePeriodCostsMap
 			return;
 		
 		DateUnit larger = dateUnit.getSuperDateUnit();
-		DateUnit dateUnitToRemove = projectDateUnit;
+		DateUnit dateUnitToRemove = new DateUnit();
 		if(!larger.isBlank())
 			dateUnitToRemove = larger;
 		data.remove(dateUnitToRemove);
