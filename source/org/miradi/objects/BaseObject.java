@@ -612,7 +612,7 @@ abstract public class BaseObject
 	
 	public DateRange getWhenRollup() throws Exception
 	{
-		return null;
+		return getTotalTimePeriodCostMap().getRolledUpDates();
 	}
 
 	public DateRange combineSubtaskEffortListDateRanges(ORefList taskRefs) throws Exception
