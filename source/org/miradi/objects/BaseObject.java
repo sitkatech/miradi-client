@@ -495,10 +495,10 @@ abstract public class BaseObject
 
 	private TimePeriodCosts getTotalCost(DateUnit dateUnitToUse)throws Exception
 	{
-		return getTimePeriodCostsMap().getTotalCost(dateUnitToUse);
+		return getTotalTimePeriodCostMap().getTotalCost(dateUnitToUse);
 	}
 	
-	private TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
+	private TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
@@ -513,13 +513,13 @@ abstract public class BaseObject
 	
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		return getTimePeriodCostsMapForAssignments(tag);	
+		return getTotalTimePeriodCostsMapForAssignments(tag);	
 	}
 				
-	protected TimePeriodCostsMap getTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs) throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs) throws Exception
 	{
 		DateUnit projectDateUnit = getProjectDateUnit();
-		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMapForAssignments(tag);
+		TimePeriodCostsMap timePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
@@ -529,7 +529,7 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 
-	protected TimePeriodCostsMap getTimePeriodCostsMapForAssignments(String tag) throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
 	{
 		DateUnit projectDateUnit = getProjectDateUnit();
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
