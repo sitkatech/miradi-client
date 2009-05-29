@@ -94,7 +94,7 @@ public class SummaryView extends TabbedView
 		
 		addSummaryTab(new SummaryProjectPanel(getProject(), metadata.getRef()));
 		addNonScrollingTab(teamManagementPanel);
-		addNonScrollingTab(organizationManagementPanel);
+		addNonScrollingTab(new OrganizationalTabPanel(getMainWindow(), organizationManagementPanel));
 		addSummaryTab(new SummaryScopeTabPanel(getProject(), allRelatedRefs));
 		addSummaryTab(new SummaryLocationPanel(getProject(), metadata.getRef()));
 		addSummaryTab(new SummaryPlanningPanel(getMainWindow(), metadata.getRef()));
