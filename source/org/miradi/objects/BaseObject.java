@@ -515,7 +515,7 @@ abstract public class BaseObject
 		return getTotalTimePeriodCostsMapForAssignments(tag);	
 	}
 				
-	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(String tag, ORefList baseObjectRefs) throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList baseObjectRefs, String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
 		for (int index = 0; index < baseObjectRefs.size(); ++index)

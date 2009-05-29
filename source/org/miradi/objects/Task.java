@@ -356,7 +356,7 @@ public class Task extends Factor
 	@Override
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		return getTotalTimePeriodCostsMapForSubTasks(tag, getSubtaskRefs());	
+		return getTotalTimePeriodCostsMapForSubTasks(getSubtaskRefs(), tag);	
 	}
 	
 	@Override
