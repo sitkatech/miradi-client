@@ -481,20 +481,20 @@ abstract public class BaseObject
 	{
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
 		
-		return mergedTimePeriodCostsMap.getTotal(dateUnitToUse).calculateProjectResources(getProject());
+		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).calculateProjectResources(getProject());
 	}
 
 	public OptionalDouble getExpenseAmounts(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
 		
-		return mergedTimePeriodCostsMap.getTotal(dateUnitToUse).getExpense();
+		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).getExpense();
 	}
 
 	public OptionalDouble getBudgetDetails(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
-		return mergedTimePeriodCostsMap.getTotal(dateUnitToUse).calculateTotal(getProject());
+		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).calculateTotal(getProject());
 	}
 	
 	private TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
