@@ -138,7 +138,7 @@ public class Indicator extends BaseObject
 	@Override
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		return getTimePeriodCostsMapForSubTasks(tag, getMethodRefs());	
+		return getTotalTimePeriodCostsMapForSubTasks(tag, getMethodRefs());	
 	}
 	
 	public ORefList getMethodRefs()

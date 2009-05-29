@@ -267,7 +267,7 @@ public class Strategy extends Factor
 	@Override
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		return getTimePeriodCostsMapForSubTasks(tag, getActivityRefs());	
+		return getTotalTimePeriodCostsMapForSubTasks(tag, getActivityRefs());	
 	}
 	
 	public DateRange getWhenRollup() throws Exception
