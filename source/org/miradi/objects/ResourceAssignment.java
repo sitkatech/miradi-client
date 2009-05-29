@@ -210,7 +210,6 @@ public class ResourceAssignment extends Assignment
 		pseudoProjectResourceLabel = new PseudoStringData(PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		pseudoOwningFactorNameLabel = new PseudoStringData(PSEUDO_TAG_OWNING_FACTOR_NAME);
 		pseudoWhen = new PseudoStringData(PSEUDO_TAG_WHEN);
-		pseudoBudgetTotal = new PseudoStringData(PSEUDO_TAG_BUDGET_TOTAL);
 		
 		addField(TAG_RESOURCE_ID, resourceIdData);
 		addField(TAG_ACCOUNTING_CODE, accountingIdData);
@@ -218,7 +217,6 @@ public class ResourceAssignment extends Assignment
 		addField(PSEUDO_TAG_PROJECT_RESOURCE_LABEL, pseudoProjectResourceLabel);
 		addField(PSEUDO_TAG_OWNING_FACTOR_NAME, pseudoOwningFactorNameLabel);
 		addField(PSEUDO_TAG_WHEN, pseudoWhen);
-		addField(PSEUDO_TAG_BUDGET_TOTAL, pseudoBudgetTotal);
 	}
 	
 	public static final String TAG_RESOURCE_ID = "ResourceId";
@@ -227,7 +225,6 @@ public class ResourceAssignment extends Assignment
 	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
 	public static final String PSEUDO_TAG_WHEN = "PseudoWhen";
-	public static final String PSEUDO_TAG_BUDGET_TOTAL = "PseudoBudgetTotal";
 	
 	
 	public static final String OBJECT_NAME = "ResourceAssignment";
@@ -238,5 +235,4 @@ public class ResourceAssignment extends Assignment
 	private PseudoStringData pseudoProjectResourceLabel;
 	private PseudoStringData pseudoOwningFactorNameLabel;
 	private PseudoStringData pseudoWhen;
-	private PseudoStringData pseudoBudgetTotal;
 }
