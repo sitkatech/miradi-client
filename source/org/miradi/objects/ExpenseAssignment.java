@@ -51,7 +51,7 @@ public class ExpenseAssignment extends Assignment
 	public OptionalDouble getExpenseAmounts(DateUnit dateUnitToUse) throws Exception
 	{
 		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
-		return getDateRangeEffortList().getOptionalTotalUnitQuantity(dateRange);
+		return getTimePeriodCostsMap(dateRange).getTotal(dateUnitToUse).getExpense();
 	}
 	
 	protected TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception
