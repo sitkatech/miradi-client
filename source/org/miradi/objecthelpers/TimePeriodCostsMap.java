@@ -77,7 +77,7 @@ public class TimePeriodCostsMap
 		}
 	}
 		
-	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMap,	DateUnit projectDateUnit) throws Exception
+	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMap) throws Exception
 	{
 		Set<DateUnit> keys = timePeriodCostsMap.getDateUnitTimePeriodCostsMap().keySet();
 		for(DateUnit dateUnit : keys)
