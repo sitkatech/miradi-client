@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-28 23:19-0500\n"
+"POT-Creation-Date: 2009-05-29 10:01-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -571,15 +571,15 @@ msgstr "Pilih Sasaran yang ingin Diklon "
 msgid "Are you sure you want to delete this Objective?"
 msgstr "Anda yakin ingin menghapus Tujuan ini?"
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:443
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:380
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:513
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:450
 msgid "Found Corrupted Data:"
 msgstr "Data yang Rusak Ditemukan: "
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:1007
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:943
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
@@ -4406,10 +4406,6 @@ msgstr "Pindahkan Butir ke Atas "
 msgid "TT|Move the selected item up"
 msgstr "Pindahkan butir terpilih ke atas "
 
-#: miradi/source/org/miradi/actions/ActionSlideShowViewer.java:34
-msgid "Action|Show Slide Show"
-msgstr "Tunjukkan Tayangan Salindia "
-
 #: miradi/source/org/miradi/actions/ActionInsertTextBox.java:35
 msgid "Action|Insert|Insert Text Box"
 msgstr "Sisipkan Kotak Teks "
@@ -5067,14 +5063,6 @@ msgstr "Hapus Tekanan terpilih "
 msgid "Action|ContextSensitive|Help"
 msgstr "Bantuan "
 
-#: miradi/source/org/miradi/actions/ActionCreateSlide.java:34
-msgid "Action|Create Slide"
-msgstr "Buat Salindia "
-
-#: miradi/source/org/miradi/actions/ActionCreateSlide.java:39
-msgid "TT|Create slide"
-msgstr "Buat Salindia "
-
 #: miradi/source/org/miradi/actions/ActionDeleteMethod.java:35
 msgid "Action|Manage|Delete Method"
 msgstr "Hapus Metode "
@@ -5376,14 +5364,6 @@ msgstr "Hilangkan Sumber Daya "
 msgid "TT|Remove resource from list"
 msgstr "Hilangkan sumber daya dari daftar "
 
-#: miradi/source/org/miradi/actions/ActionDeleteSlide.java:34
-msgid "Action|Delete Slide"
-msgstr "Hapus Salindia "
-
-#: miradi/source/org/miradi/actions/ActionDeleteSlide.java:39
-msgid "TT|Delete slide"
-msgstr "Hapus Salindia "
-
 #: miradi/source/org/miradi/actions/ActionTreeShareMethod.java:35
 #: miradi/source/org/miradi/actions/ActionShareMethod.java:35
 msgid "Action|Share Method"
@@ -5393,14 +5373,6 @@ msgstr "Berbagi Metode "
 #: miradi/source/org/miradi/actions/ActionShareMethod.java:40
 msgid "TT|Share an existing Method into this Indicator"
 msgstr "Berbagi Metode yang ada ke dalam Indikator ini "
-
-#: miradi/source/org/miradi/actions/ActionToggleSlideShowPanel.java:35
-msgid "Action|Edit Slide Show"
-msgstr "Edit Tayangan Salindia "
-
-#: miradi/source/org/miradi/actions/ActionToggleSlideShowPanel.java:40
-msgid "TT|Hides or shows the Slide Show editor"
-msgstr "Sembunyikan atau tampakkan editor Tayangan Salindia "
 
 #: miradi/source/org/miradi/actions/ActionCopy.java:34
 msgid "Action|Copy"
@@ -5463,14 +5435,6 @@ msgstr "Cara Menyimpan "
 #: miradi/source/org/miradi/actions/ActionHowToSave.java:39
 msgid "TT|How to save files in Miradi"
 msgstr "Cara menyimpan berkas di Miradi "
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideDown.java:34
-msgid "Action|Move Down"
-msgstr "Gerak ke Bawah "
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideDown.java:39
-msgid "TT|Move Down"
-msgstr "Gerak ke Bawah "
 
 #: miradi/source/org/miradi/actions/ActionDeleteFundingSource.java:35
 msgid "Action|Manage|Delete Funding Source"
@@ -5804,14 +5768,6 @@ msgstr "Ekspor berkas yang bisa diimpor ConPro "
 #: miradi/source/org/miradi/actions/ActionEditStrategyProgressReports.java:39
 msgid "TT|Edit the list of progress reports for this strategy"
 msgstr "Edit daftar laporan kemajuan untuk strategi ini "
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideUp.java:34
-msgid "Action|Move Up"
-msgstr "Bergerak ke Atas "
-
-#: miradi/source/org/miradi/actions/ActionMoveSlideUp.java:39
-msgid "TT|Move Up"
-msgstr "Bergerak ke Atas "
 
 #: miradi/source/org/miradi/actions/ActionInsertScopeBox.java:35
 msgid "Action|Insert|Insert Scope Box"
@@ -6713,14 +6669,6 @@ msgstr "Title|Activity Properties"
 #, fuzzy
 msgid "Title|Method Properties"
 msgstr "Title|Method Properties"
-
-#: miradi/source/org/miradi/dialogs/slideshow/SlideListManagementPanel.java:50
-msgid "Title|Slide Show"
-msgstr "Tayangan Salindia "
-
-#: miradi/source/org/miradi/dialogs/slideshow/SlidePropertiesPanel.java:41
-msgid "Title|Slide Properties"
-msgstr "Sifat-sifat Salindia "
 
 #: miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:55
 msgid "Select Location..."
@@ -32620,6 +32568,45 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Action|Show Slide Show"
+#~ msgstr "Tunjukkan Tayangan Salindia "
+
+#~ msgid "Action|Create Slide"
+#~ msgstr "Buat Salindia "
+
+#~ msgid "TT|Create slide"
+#~ msgstr "Buat Salindia "
+
+#~ msgid "Action|Delete Slide"
+#~ msgstr "Hapus Salindia "
+
+#~ msgid "TT|Delete slide"
+#~ msgstr "Hapus Salindia "
+
+#~ msgid "Action|Edit Slide Show"
+#~ msgstr "Edit Tayangan Salindia "
+
+#~ msgid "TT|Hides or shows the Slide Show editor"
+#~ msgstr "Sembunyikan atau tampakkan editor Tayangan Salindia "
+
+#~ msgid "Action|Move Down"
+#~ msgstr "Gerak ke Bawah "
+
+#~ msgid "TT|Move Down"
+#~ msgstr "Gerak ke Bawah "
+
+#~ msgid "Action|Move Up"
+#~ msgstr "Bergerak ke Atas "
+
+#~ msgid "TT|Move Up"
+#~ msgstr "Bergerak ke Atas "
+
+#~ msgid "Title|Slide Show"
+#~ msgstr "Tayangan Salindia "
+
+#~ msgid "Title|Slide Properties"
+#~ msgstr "Sifat-sifat Salindia "
 
 #~ msgid "FieldLabel|3.BudgetCostOverride|Budget Override"
 #~ msgstr "Penghapusan Anggaran "
