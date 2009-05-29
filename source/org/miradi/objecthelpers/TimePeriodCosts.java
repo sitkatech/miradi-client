@@ -77,10 +77,10 @@ public class TimePeriodCosts
 	public OptionalDouble calculateTotalCost(Project projectToUse)
 	{
 		final OptionalDouble expenseToAdd = getExpense();
-		return calculateResourceCost(projectToUse).add(expenseToAdd);
+		return calculateResourcesTotalCost(projectToUse).add(expenseToAdd);
 	}
 	
-	private OptionalDouble calculateResourceCost(Project projectToUse)
+	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
 	{
 		OptionalDouble projectResourceTotalCosts = new OptionalDouble();
 		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
