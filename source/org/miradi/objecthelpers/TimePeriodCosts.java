@@ -51,18 +51,22 @@ public class TimePeriodCosts
 		Set<ORef> resourceRefKeysToAdd = resourceUnitsMapToAdd.keySet();
 		for(ORef resourceRefToAdd : resourceRefKeysToAdd)
 		{
-			if (resourceUnitsMap.containsKey(resourceRefToAdd))
-			{
-				OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
-				OptionalDouble unitToAdd = resourceUnitsMapToAdd.get(resourceRefToAdd);
-				OptionalDouble newUnit = thisUnit.add(unitToAdd);
-				resourceUnitsMap.put(resourceRefToAdd, newUnit);
-			}
-			else
-			{
-				addResourceCost(resourceRefToAdd, resourceUnitsMapToAdd.get(resourceRefToAdd));
-			}
-			
+			addResource(resourceUnitsMapToAdd, resourceRefToAdd);			
+		}
+	}
+
+	private void addResource(HashMap<ORef, OptionalDouble> resourceUnitsMapToAdd, ORef resourceRefToAdd)
+	{
+		final OptionalDouble unitsToUse = resourceUnitsMapToAdd.get(resourceRefToAdd);
+		if (resourceUnitsMap.containsKey(resourceRefToAdd))
+		{
+			OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
+			OptionalDouble newUnit = thisUnit.add(unitsToUse);
+			resourceUnitsMap.put(resourceRefToAdd, newUnit);
+		}
+		else
+		{
+			addResourceCost(resourceRefToAdd, unitsToUse);
 		}
 	}
 
