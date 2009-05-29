@@ -59,7 +59,7 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		return baseObject.getBudgetDetails(dateUnit);
+		return baseObject.getTotalCost(dateUnit).calculateTotalCost(baseObject.getProject());
 	}
 	
 	@Override
