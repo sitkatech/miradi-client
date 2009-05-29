@@ -41,6 +41,9 @@ public class TestAssignment extends ObjectTestCase
 	{
 		getProject().setSingleYearProjectDate(2008);
 		ResourceAssignment assignment = getProject().createResourceAssignment();
+		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		
 		DateUnit dateUnit = getProject().createDateUnit(2008);
 		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateUnit).hasValue());
 
@@ -52,11 +55,11 @@ public class TestAssignment extends ObjectTestCase
 
 		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATERANGE_EFFORTS, dateUnitEffortList.toString());
 
-		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateUnit1).getValue());
-		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateUnit2).getValue());
+		assertEquals("wrong assignment work units?", 20.0, assignment.getWorkUnits(dateUnit1).getValue());
+		assertEquals("wrong assignment work units?", 50.0, assignment.getWorkUnits(dateUnit2).getValue());
 		
 		DateUnit totalProjectDateUnit = new DateUnit();
-		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateUnit).getValue());
+		assertEquals("wrong totals work units", 70.0, assignment.getWorkUnits(totalProjectDateUnit).getValue());
 	}
 	
 	public DateUnitEffort createDateUnitEffort(int unitQuantatiy, DateUnit dateUnit) throws Exception
