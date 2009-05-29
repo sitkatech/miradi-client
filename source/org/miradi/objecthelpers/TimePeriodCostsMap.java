@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
 public class TimePeriodCostsMap
@@ -164,6 +165,18 @@ public class TimePeriodCostsMap
 			add(dateUnit, timePeriodCosts);
 		}
 	}
+	
+	public DateRange getRolledUpDates() throws Exception
+	{
+		DateRange combinedDateRange = null;
+		Set<DateUnit> keys = data.keySet();
+		for(DateUnit dateUnit : keys)
+		{
+			combinedDateRange = DateRange.combine(combinedDateRange, dateUnit.asDateRange());
+		}
+		
+		return combinedDateRange;
+	} 
 	
 	public boolean isEmpty()
 	{

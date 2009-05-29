@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.TestDateUnit;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
 public class TestTimePeriodCostsMap extends TestCaseWithProject
@@ -47,6 +48,10 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		
 		verifyGetTimePeriodCostsForSpecificDateUnit(timePeriodCostsMap, timePeriodCosts1, dateUnit1);
 		verifyGetTimePeriodCostsForSpecificDateUnit(timePeriodCostsMap, timePeriodCosts2, dateUnit2);
+		
+		DateRange rolledUpDates = timePeriodCostsMap.getRolledUpDates();
+		assertEquals("wrong rolled up start date? ", "2008-01-01", rolledUpDates.getStartDate().toIsoDateString());
+		assertEquals("wrong rolled up end date? ", "2009-12-31", rolledUpDates.getEndDate().toIsoDateString());
 	}
 
 	private void verifyGetTimePeriodCostsForSpecificDateUnit(TimePeriodCostsMap timePeriodCostsMap, TimePeriodCosts timePeriodCosts, DateUnit dateUnit)
