@@ -191,7 +191,7 @@ public class ResourceAssignment extends Assignment
 				continue; 
 			
 			DateUnit dateUnit = dateUnitEffort.getDateUnit();
-			OptionalDouble workUnits = getWorkUnits(dateUnit);
+			OptionalDouble workUnits = new OptionalDouble(dateUnitEffort.getQuantity());
 			TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 			timePeriodCosts.addResourceCost(resourceRef, workUnits);
 			tpcm.add(dateUnit, timePeriodCosts);
