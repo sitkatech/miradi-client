@@ -120,8 +120,9 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
 		try
 		{
-			//FIXME this is a temp method to output the xml into a file. remove when class is done 
-			//OutputToFileForDevelopment(fileInputStream);	
+			//FIXME urgent: this is a temp method to output the xml into a file. remove when class is done
+			// maybe use a runtime flag to decide whether to putput for debugging or not?
+			//OutputToFileForDevelopment(fileInputStream);
 			conProXmlImporter.importConProProject(fileInputStream);
 		}
 		finally

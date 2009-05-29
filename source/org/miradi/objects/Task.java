@@ -210,7 +210,7 @@ public class Task extends Factor
 			return;
 		}
 
-		// FIXME: We should be able to do this test first, but in Marine Example 1.0.7
+		// NOTE: We should be able to do this test first, but in Marine Example 1.0.7
 		// there are Activities that somehow have owners
 		ORef ownerRef = getOwnerRef();
 		if (ownerRef != null && !ownerRef.isInvalid())

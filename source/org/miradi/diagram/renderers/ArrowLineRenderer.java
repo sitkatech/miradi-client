@@ -112,7 +112,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 
 	/**
-	 * FIXME This code was copied directly from jgraph source, 
+	 * NOTE This code was copied directly from jgraph source, 
 	 * and has enough side effects and interactions that any version 
 	 * upgrades will probably break it.
 	 */

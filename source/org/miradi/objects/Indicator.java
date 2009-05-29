@@ -387,7 +387,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_PRIORITY = "Priority";
 	
-	//FIXME: The following is not actually stored on disk for Indicator any more
+	//FIXME urgent: The following is not actually stored on disk for Indicator any more
 	// See Strategy, Measurement, and overall Project Viability which use the same string
 	public static final String TAG_STATUS = "Status";
 	

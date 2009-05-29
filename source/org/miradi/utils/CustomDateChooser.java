@@ -111,7 +111,7 @@ public class CustomDateChooser extends JDateChooser implements PropertyChangeLis
 	private void setDateChooserPreferredSizeWithPadding()
 	{
 		Dimension preferredDimension = getPreferredSize();
-		//FIXME: Why do we need EXTRA PADDING....I beleive the JDataChooser for this third party is not inlcuding the icon width in its pref
+		//FIXME low: Why do we need EXTRA PADDING....I beleive the JDataChooser for this third party is not inlcuding the icon width in its pref
 		preferredDimension.width = preferredDimension.width + EXTRA_PADDING;
 		setMinimumSize(preferredDimension);
 		setPreferredSize(preferredDimension);

@@ -113,7 +113,7 @@ public class RtfFormExporter
 		
 		encodedRowContent.append(RtfWriter.CELL_COMMAND);
 
-		//FIXME this is temprorarly done before freeze. Needs to be done as autofit.
+		//FIXME medium: this is temprorarly done before freeze. Needs to be done as autofit.
 		final int INCHES_FROM_LEFT_MARGIN_TO_FIRST_COLUMN_RIGHT_EDGE_MINUS_ONE = 2 - 1;
 		final int INCHES_FROM_LEFT_MARGIN_TO_SECOND_COLUMN_RIGHT_EDGE_MINUS_ONE = 8 - 1;
 		rowFormatting.append(getCellxCommand(INCHES_FROM_LEFT_MARGIN_TO_FIRST_COLUMN_RIGHT_EDGE_MINUS_ONE));

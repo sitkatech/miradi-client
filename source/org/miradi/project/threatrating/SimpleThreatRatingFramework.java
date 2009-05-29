@@ -382,7 +382,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return null;
 	}
 	
-	//FIXME creating factorId from id.asInt  (cant cast)
+	//FIXME medium: creating factorId from id.asInt  (cant cast)
 	public ThreatRatingBundle getBundle(ORef threatRef, ORef targetRef) throws Exception
 	{
 		return getBundle(new FactorId(threatRef.getObjectId().asInt()), new FactorId(targetRef.getObjectId().asInt()));

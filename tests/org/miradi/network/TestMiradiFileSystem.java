@@ -376,7 +376,7 @@ public class TestMiradiFileSystem extends EAMTestCase
 
 	private void verifyDotDot()
 	{
-		// FIXME: Write this test
+		// TODO: Write this test
 		//fail("Test not implemented yet");
 	}
 

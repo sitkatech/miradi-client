@@ -246,7 +246,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 				return;
 			}
 			
-			//FIXME why does loading all the cards work (shows newly created RC)
+			//FIXME low: why does loading all the cards work (shows newly created RC)
 			reloadDiagramCards(ref.getObjectType());
 			DiagramComponent diagramComponent = findByRef(ref);
 			getLegendPanel().resetCheckBoxes();

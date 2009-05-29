@@ -43,7 +43,7 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 		}
 		catch(Exception e)
 		{
-			//FIXME do something else with this exception
+			//FIXME medium: do something else with this exception
 			EAM.logException(e);
 		}
 		
@@ -60,7 +60,7 @@ public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListFi
 		}
 		catch(Exception e)
 		{
-			//FIXME do something else with this exception
+			//FIXME medium: do something else with this exception
 			EAM.logException(e);
 		}	
 	}

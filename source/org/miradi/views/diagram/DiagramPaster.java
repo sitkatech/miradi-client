@@ -228,7 +228,7 @@ abstract public class DiagramPaster
 
 	private Command fixUpIdList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag, int annotationType) throws Exception
 	{
-		//FIXME currently items ids found in list but not in map are not added to new list
+		//FIXME urgent: currently items ids found in list but not in map are not added to new list
 		IdList oldList = new IdList(annotationType, newObject.getData(annotationTag));
 		ORefList newRefList = getNewFixedUpRefList(pastedObjectMap, new ORefList(annotationType, oldList));		
 		IdList newList = newRefList.convertToIdList(annotationType);
@@ -238,7 +238,7 @@ abstract public class DiagramPaster
   
 	private Command fixUpRefList(HashMap pastedObjectMap, BaseObject newObject, String annotationTag) throws Exception
 	{
-		//FIXME currently items ids found in list but not in map are not added to new list
+		//FIXME urgent: currently items ids found in list but not in map are not added to new list
 		ORefList oldList = new ORefList(newObject.getData(annotationTag));
 		ORefList newList = getNewFixedUpRefList(pastedObjectMap, oldList);
 		

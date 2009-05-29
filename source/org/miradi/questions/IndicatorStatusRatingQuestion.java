@@ -23,7 +23,7 @@ import java.awt.Color;
 
 import org.miradi.main.EAM;
 
-//FIXME remove after TAG_STATUS is removed
+//FIXME medium: remove after TAG_STATUS is removed
 public class IndicatorStatusRatingQuestion extends StaticChoiceQuestion
 {
 	public IndicatorStatusRatingQuestion()

@@ -83,7 +83,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 			return "";
 		}
 		
-		// FIXME: Should probably log and return "" for this case
+		// FIXME low: Should probably log and return "" for this case
 		throw new RuntimeException("Unknown column: " + column);
 	}
 

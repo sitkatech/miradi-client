@@ -42,7 +42,7 @@ public class TargetViabilityTreeModel extends GenericViabilityTreeModel
 		return super.getValueAt(rawNode, getAdjustedColumn(column));
 	}
 
-	//FIXME this is to ajust for the missing column in each node.  
+	//FIXME medium: this is to ajust for the missing column in each node.  
 	private int getAdjustedColumn(int column)
 	{
 		if (column >= 1)

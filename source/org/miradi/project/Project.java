@@ -1512,7 +1512,7 @@ public class Project
 	
 	private boolean inTransaction;
 	
-	// FIXME: This should go away, but it's difficult
+	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
 	
 	public static final int PROJECT_WAS_CREATED = 100;

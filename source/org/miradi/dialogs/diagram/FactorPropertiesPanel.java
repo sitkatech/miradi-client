@@ -459,7 +459,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return grid;
 	}
 	
-	//FIXME there is much duplicated code between this method and FactorType.getTypeLabel(factor)
+	//FIXME medium: there is much duplicated code between this method and FactorType.getTypeLabel(factor)
 	private UiLabel createFactorTypeLabel(Factor factor)
 	{
 		if(factor.isDirectThreat())

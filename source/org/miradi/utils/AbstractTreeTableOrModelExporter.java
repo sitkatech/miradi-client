@@ -91,7 +91,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 			int rowType = getRowType(row);
 			return IconManager.getImage(rowType);
 		}
-		//FIXME this needs to return correct cell icon
+		//FIXME medium: this needs to return correct cell icon
 		return null;
 	}
 	

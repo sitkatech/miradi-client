@@ -131,7 +131,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			//FIXME do something with this exception
+			//FIXME medium: do something with this exception
 		}
 	}
 	

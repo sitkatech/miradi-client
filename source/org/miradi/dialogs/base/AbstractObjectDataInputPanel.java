@@ -142,7 +142,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	
 	public MainWindow getMainWindow()
 	{
-		// FIXME: Should have mainWindow passed into the AODIP constructor
+		// TODO: Should have mainWindow passed into the AODIP constructor
 		return EAM.getMainWindow();
 	}
 

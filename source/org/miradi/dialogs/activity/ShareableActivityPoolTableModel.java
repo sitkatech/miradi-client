@@ -38,7 +38,6 @@ public class ShareableActivityPoolTableModel extends ObjectPoolTableModel
 	
 	private static final String[] COLUMN_TAGS = new String[] {
 		Task.TAG_LABEL,
-		//FIXME include associated factor
 	};
 	
 	public ORefList getLatestRefListFromProject()

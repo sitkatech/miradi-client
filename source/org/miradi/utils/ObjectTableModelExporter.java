@@ -63,7 +63,7 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 
 	private Icon getIcon(int row, int column)
 	{
-		//FIXME is there a better way to get the choice time rather than instanceof
+		//FIXME medium: is there a better way to get the choice item rather than instanceof
 		Object value = getObjectTableModel().getValueAt(row, column);
 		if (value instanceof ChoiceItem)
 			return ((ChoiceItem)value).getIcon();
