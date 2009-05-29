@@ -67,7 +67,7 @@ public class TimePeriodCostsMap
 		return data.containsKey(dateUnitToUse);
 	}
 	
-	public void mergeAdd(TimePeriodCostsMap timePeriodCostsMapToMerge, DateUnit dateUnit)
+	public void mergeAdd(TimePeriodCostsMap timePeriodCostsMapToMerge)
 	{
 		Set<DateUnit> keys = timePeriodCostsMapToMerge.data.keySet();
 		for(DateUnit dateUnitKey : keys)
