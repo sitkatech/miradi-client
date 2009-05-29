@@ -60,7 +60,7 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		return baseObject.getExpenseAmounts(dateUnit);
+		return baseObject.getExpenseAmount(dateUnit);
 	}
 	
 	@Override
