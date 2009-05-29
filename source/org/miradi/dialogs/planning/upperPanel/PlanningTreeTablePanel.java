@@ -106,7 +106,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		leftPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		
 		JPanel rightPanel = new MiradiPanel(new BorderLayout());
-		rightPanel.add(new ExpandAndCollapseColumnsButtonRow(mainTable), BorderLayout.BEFORE_FIRST_LINE);
+		ExpandAndCollapseColumnsButtonRow expandAndCollapseColumnsButtonRow = new ExpandAndCollapseColumnsButtonRow(mainTable);
+		expandAndCollapseColumnsButtonRow.setTableScrollPane(mainTableScrollPane);
+		rightPanel.add(expandAndCollapseColumnsButtonRow, BorderLayout.BEFORE_FIRST_LINE);
 		rightPanel.add(mainTableScrollPane, BorderLayout.CENTER);
 		
 		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
