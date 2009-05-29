@@ -51,7 +51,7 @@ abstract public class Assignment extends BaseObject
 
 	public DateUnitEffortList getDateUnitEffortList() throws Exception
 	{
-		return new DateUnitEffortList(getData(TAG_DATERANGE_EFFORTS));
+		return new DateUnitEffortList(getData(TAG_DATEUNIT_EFFORTS));
 	}
 	
 	@Override
@@ -83,14 +83,14 @@ abstract public class Assignment extends BaseObject
 	public void clear()
 	{
 		super.clear();
-		detailListData = new DateUnitEffortListData(TAG_DATERANGE_EFFORTS);
+		detailListData = new DateUnitEffortListData(TAG_DATEUNIT_EFFORTS);
 		
-		addField(TAG_DATERANGE_EFFORTS, detailListData);
+		addField(TAG_DATEUNIT_EFFORTS, detailListData);
 	}
 	
 	abstract protected TimePeriodCostsMap getTimePeriodCostsMap(DateRange dateRangeToUse) throws Exception;
 	
-	public static final String TAG_DATERANGE_EFFORTS = "Details";
+	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	
 	private DateUnitEffortListData detailListData;
 }

@@ -53,7 +53,7 @@ public class TestAssignment extends ObjectTestCase
 		dateUnitEffortList.add(createDateUnitEffort(2, dateUnit1));
 		dateUnitEffortList.add(createDateUnitEffort(5, dateUnit2));
 
-		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATERANGE_EFFORTS, dateUnitEffortList.toString());
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 
 		assertEquals("wrong assignment work units?", 20.0, assignment.getWorkUnits(dateUnit1).getValue());
 		assertEquals("wrong assignment work units?", 50.0, assignment.getWorkUnits(dateUnit2).getValue());
