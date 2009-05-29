@@ -28,12 +28,6 @@ import org.miradi.utils.OptionalDouble;
 
 public class TimePeriodCosts
 {
-	public TimePeriodCosts(OptionalDouble expenseToUse)
-	{
-		this();
-		setExpense(expenseToUse);
-	}
-	
 	public TimePeriodCosts()
 	{
 		expense = new OptionalDouble();
