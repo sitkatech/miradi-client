@@ -23,7 +23,6 @@ import org.miradi.utils.MiradiResourceImageIcon;
 
 public class OperationalPlanIcon extends MiradiResourceImageIcon
 {
-	//FIXME need own icon
 	public OperationalPlanIcon()
 	{
 		super("icons/grid.png");

@@ -468,7 +468,7 @@ abstract public class BaseObject
 	
 	public double getTotalBudgetCost() throws Exception
 	{
-		//FIXME this needs to calculate the correct total budget cost using assignments
+		//FIXME urgent: this needs to calculate the correct total budget cost using assignments
 		return 0;
 	}
 
@@ -1020,7 +1020,7 @@ abstract public class BaseObject
 		return allOwnedObjects;
 	}
 	
-	//FIXME This method is not contain all objects and is not reliable
+	//FIXME medium: This method is not contain all objects and is not reliable
 	static public int[] getTypesThatCanOwnUs(int type)
 	{
 		// TODO: get rid of static number
@@ -1196,7 +1196,7 @@ abstract public class BaseObject
 		return find(project.getObjectManager(), objectRef);
 	}
 	
-	//FIXME move these classes into their own class in order to avoid dup code and inner classes
+	//FIXME medium: move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{
 	

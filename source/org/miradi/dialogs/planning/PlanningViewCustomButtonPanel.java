@@ -24,7 +24,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.project.Project;
 
-//FIXME class under construction
+//FIXME urgent: class under construction
 abstract public class PlanningViewCustomButtonPanel extends DisposablePanel implements CommandExecutedListener
 {
 	public PlanningViewCustomButtonPanel(Project projectToUse)

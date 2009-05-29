@@ -67,7 +67,7 @@ public class ObjectStringMapInputField extends ObjectStringInputField
 		}
 		catch (Exception e)
 		{
-			//FIXME when fixing other setText fixmes, fix this as well
+			//FIXME medium: when fixing other setText fixmes, fix this as well
 			EAM.logException(e);
 		}
 	}

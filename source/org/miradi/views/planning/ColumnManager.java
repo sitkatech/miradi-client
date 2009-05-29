@@ -123,7 +123,6 @@ public class ColumnManager
 	
 	public static CodeList getMeasurementColumns()
 	{
-		//FIXME add the right tags here.  All measurement fields?
 		String[] list = {
 				Measurement.TAG_DATE,
 				};

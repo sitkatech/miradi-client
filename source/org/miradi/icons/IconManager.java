@@ -38,7 +38,7 @@ import org.miradi.utils.MiradiResourceImageIcon;
  
 public class IconManager
 {
-	//FIXME not all Icons are AbstractMiradiIcon.  But all icons should be.
+	//TODO: not all Icons are AbstractMiradiIcon.  But all icons should be.
 	public static Icon getImage(BaseObject baseObject)
 	{
 		int type = baseObject.getType();

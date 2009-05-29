@@ -45,7 +45,7 @@ public class TestLinkBendPointsMoveHandler extends EAMTestCase
 		project = null;
 	}
 	
-	//FIXME create test for moving BendPoints
+	//TODO: create test for moving BendPoints
 	//Disable test due to the need of a diagramComponent in the move handler
 	public void testMoveBendPoints() throws Exception
 	{

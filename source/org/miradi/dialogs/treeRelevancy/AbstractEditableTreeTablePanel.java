@@ -46,7 +46,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 {
 	public AbstractEditableTreeTablePanel(MainWindow mainWindowToUse, GenericTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject) throws Exception
 	{
-		// FIXME: Much duplicated code with PlanningTreeTablePanel
+		// FIXME medium: Much duplicated code with PlanningTreeTablePanel
 		super(mainWindowToUse, treeTable);
 
 		model = modelToUse;
@@ -84,7 +84,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 
 		treePlusTablesPanel = new PersistentNonPercentageHorizontalSplitPane(this, mainWindowToUse, getDividerName());
 		treePlusTablesPanel.setDividerSize(5);
-		// FIXME: Remove this when persistence actually works!
+		// FIXME medium: Remove this when persistence actually works!
 		configureSplitter(tablesScrollPane);
 
 		// NOTE: Replace treeScrollPane that super constructor put in CENTER

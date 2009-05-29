@@ -51,7 +51,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 
 
-//FIXME Examine all the methods and try to make it more uniform, simpler, etc....
+//FIXME low: Examine all the methods and try to make it more uniform, simpler, etc....
 //seems like a ton of very similar methods, among other things
 public class LinkCreator
 {

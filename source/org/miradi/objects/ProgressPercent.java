@@ -57,7 +57,7 @@ public class ProgressPercent extends BaseObject
 		return ObjectType.PROGRESS_PERCENT;
 	}
 	
-	//FIXME verify this is correct label
+	//FIXME medium: verify this is correct label
 	public String getLabel()
 	{
 		return getData(TAG_DATE);	

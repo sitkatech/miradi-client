@@ -56,7 +56,7 @@ public class ObjectOverridenListField extends RelevancyOverrideListField
 		}
 		catch(Exception e)
 		{
-			//FIXME do something else with this exception
+			//FIXME medium: do something else with this exception
 			EAM.logException(e);
 		}	
 	}

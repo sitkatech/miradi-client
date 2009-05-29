@@ -123,7 +123,7 @@ public class DeleteActivity extends ObjectsDoer
 	private static Vector createDeleteCommands(Project project, ORefList selectionHierachy, Task task) throws Exception
 	{
 		
-		//FIXME need to consider parent hierachy when creating commands.  first refactor dup code.  
+		//FIXME medium: need to consider parent hierachy when creating commands.  first refactor dup code.  
 		Vector commandsToDeleteTasks = new Vector();
 		commandsToDeleteTasks.addAll(buildRemoveFromRelevancyListCommands(project, task.getRef()));
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierachy, task));

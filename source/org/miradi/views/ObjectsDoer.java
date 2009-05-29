@@ -159,7 +159,7 @@ abstract public class ObjectsDoer extends ViewDoer
 				if (Factor.isFactor(factorRef))
 				{
 					Factor factor = Factor.findFactor(getProject(), factorRef);
-					//FIXME this is a hack,  we need to exclude factors that are not parents
+					//FIXME medium: this is a hack,  we need to exclude factors that are not parents
 					if (!factor.isStress() && !factor.isActivity())
 						return factor;
 				}

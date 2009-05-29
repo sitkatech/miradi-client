@@ -309,7 +309,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void importBudgetData(Node indicatorNode, ORef indicatorRef) throws Exception
 	{
-		//FIXME need to import budget data by creating new assignment
+		//FIXME urgent: need to import budget data by creating new assignment
 	}
 
 	private void importProgressReport(Node indicatorNode, ORef indicatorRef) throws Exception

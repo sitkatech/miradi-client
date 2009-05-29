@@ -127,7 +127,7 @@ public class DiagramModelUpdater
 		}
 	}
 	
-	//FIXME This is a hack and needs to have a better solution. 
+	//FIXME low: This is a hack and needs to have a better solution. 
 	// after undoing a create link,  isAvailable was getting selected cells,
 	// the delted link was included in the selected cells.  
 	private void clearDiagramSelection(EAMGraphCell cell)

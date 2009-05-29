@@ -233,7 +233,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		if (!ref.isInvalid())
 			baseObject = BaseObject.find(getProject(), ref);
 		
-		//FIXME need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
+		//FIXME medium: need to this for all the tables.  not doing it now becuase resourcetable.stopCellEditing
 		//throws command exec inside commandExected exceptions.  also these tables need to be inside a container
 		//that way we just loop through the tbales.  
 		assignmentDateUnitsTable.stopCellEditing();

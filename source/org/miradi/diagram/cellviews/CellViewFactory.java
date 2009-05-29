@@ -29,7 +29,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 {
 	protected VertexView createVertexView(Object cell)
 	{
-		// FIXME: We should have a MiradiVertexView that is the base 
+		// TODO: We should have a MiradiVertexView that is the base 
 		// class for all the others, which should include Rectangle, 
 		// RoundedRectangle, Factor, etc.
 		EAMGraphCell eamGraphCell = (EAMGraphCell)cell;

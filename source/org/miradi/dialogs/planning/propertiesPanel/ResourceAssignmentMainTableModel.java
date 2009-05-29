@@ -87,7 +87,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		return super.getCellValue(row, column);
 	}
 	
-	//FIXME planning table - there should be methods that return the raw value,  then that value
+	//FIXME medium: planning table - there should be methods that return the raw value,  then that value
 	//can be used in budgetmodel to calculate the cost. (cost per unit and units need to return raw values)
 	private Object getResourceCostPerUnit(ResourceAssignment resourceAssignment)
 	{
