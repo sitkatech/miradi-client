@@ -480,14 +480,12 @@ abstract public class BaseObject
 	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
-		
 		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).calculateResourceCosts(getProject());
 	}
 
 	public OptionalDouble getExpenseAmount(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCostsMap mergedTimePeriodCostsMap = getTimePeriodCostsMap();
-		
 		return mergedTimePeriodCostsMap.getTotalCost(dateUnitToUse).getExpense();
 	}
 
