@@ -33,7 +33,9 @@ import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
+import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
@@ -47,7 +49,7 @@ import org.miradi.project.CurrencyFormat;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
-public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider
+public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
 {
 	public PlanningUpperMultiTable(PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model, FontForObjectTypeProvider fontProvider)
 	{
@@ -67,6 +69,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
 		
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
+		
+		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
 	
 	@Override
@@ -147,6 +151,45 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			actions.add(new MultiTableCollapseColumnAction(this));
 		return actions;
 	}
+
+	public int getColumnWidth(int tableColumnIndex)
+	{
+		return getColumnModel().getColumn(tableColumnIndex).getWidth();
+	}
+
+	public boolean isColumnCollapsable(int tableColumnIndex)
+	{
+		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
+		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
+		return model.isColumnCollapsable(modelColumn);
+	}
+
+	public boolean isColumnExpandable(int tableColumnIndex)
+	{
+		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
+		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
+		return model.isColumnExpandable(modelColumn);
+	}
+
+	public void respondToExpandOrCollapseColumnEvent(int tableColumnIndex) throws Exception
+	{
+		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
+		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
+		model.respondToExpandOrCollapseColumnEvent(modelColumn);
+	}
+
+	private PlanningUpperTableModelInterface getModel(int modelColumnIndex)
+	{
+		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(modelColumnIndex);
+		return model;
+	}
+
+	private int getModelColumnWithinModel(int tableColumnIndex)
+	{
+		int modelColumn = getCastedModel().findColumnWithinSubTable(convertColumnIndexToModel(tableColumnIndex));
+		return modelColumn;
+	}
+
 
 	private Actions getActions()
 	{

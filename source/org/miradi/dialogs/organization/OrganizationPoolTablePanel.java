@@ -19,15 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.organization;
 
-import javax.swing.BorderFactory;
-
 import org.miradi.actions.ActionCreateOrganization;
 import org.miradi.actions.ActionDeleteOrganization;
 import org.miradi.dialogs.base.ObjectTablePanelWithCreateAndDelete;
-import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.FlexibleWidthHtmlViewer;
-import org.miradi.utils.Translation;
 
 public class OrganizationPoolTablePanel extends ObjectTablePanelWithCreateAndDelete
 {
@@ -35,13 +30,6 @@ public class OrganizationPoolTablePanel extends ObjectTablePanelWithCreateAndDel
 	{
 		super(mainWindowToUse, new OrganizationPoolTable(mainWindowToUse, new OrganizationPoolTableModel(mainWindowToUse.getProject())), mainWindowToUse.getActions(), buttons);
 		
-		String html = Translation.getHtmlContent("OtherOrgOverview.html");
-		FlexibleWidthHtmlViewer htmlViewer = new FlexibleWidthHtmlViewer(mainWindowToUse, html);
-		
-		// NOTE: For some reason, without a border, the htmlViewer is not visible
-		htmlViewer.setBorder(BorderFactory.createLineBorder(AppPreferences.getDataPanelBackgroundColor()));
-		
-		addAboveTable(htmlViewer);
 	}
 	
 	static Class[] buttons = new Class[] {

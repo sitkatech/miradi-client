@@ -21,13 +21,15 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButtonRow;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
@@ -92,14 +94,23 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
 		
-		mainTable.addMouseListener(new PlanningRightClickHandler(getMainWindow(), mainTable, mainTable));
-		
 		mainTableScrollPane = integrateTable(treeTableScrollPane.getVerticalScrollBar(), scrollController, rowHeightController, selectionController, treeToUse, mainTable);
 		mainTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-		// NOTE: Replace treeScrollPane that super constructor put in CENTER
-		add(treeTableScrollPane, BorderLayout.BEFORE_LINE_BEGINS);
-		add(mainTableScrollPane, BorderLayout.CENTER);
+		// NOTE: Replace treeScrollPane that super constructor added
+		removeAll();
+		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
+		
+		JPanel leftPanel = new MiradiPanel(new BorderLayout());
+		leftPanel.add(new ExpandAndCollapseColumnsButtonRow(null), BorderLayout.BEFORE_FIRST_LINE);
+		leftPanel.add(treeTableScrollPane, BorderLayout.CENTER);
+		
+		JPanel rightPanel = new MiradiPanel(new BorderLayout());
+		rightPanel.add(new ExpandAndCollapseColumnsButtonRow(mainTable), BorderLayout.BEFORE_FIRST_LINE);
+		rightPanel.add(mainTableScrollPane, BorderLayout.CENTER);
+		
+		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
+		add(rightPanel, BorderLayout.CENTER);
 		
 		rebuildEntireTreeTable();
 	}

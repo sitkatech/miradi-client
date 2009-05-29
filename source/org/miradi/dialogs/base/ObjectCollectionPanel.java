@@ -82,12 +82,6 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 		return propertiesPanel;
 	}
 
-	public void addAboveTable(JComponent componentToAdd)
-	{
-		add(componentToAdd, BorderLayout.BEFORE_FIRST_LINE);
-		validate();
-	}
-	
 	public void addButton(ObjectsAction action)
 	{
 		addButton(createObjectsActionButton(action, component));

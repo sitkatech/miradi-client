@@ -108,6 +108,10 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 
+	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception
+	{
+	}
+	
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }

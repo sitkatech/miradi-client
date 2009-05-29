@@ -69,6 +69,9 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 	private Vector<Rectangle> getColumnIconHeaderBounds()
 	{
 		Vector<Rectangle> iconHeaderBounds = new Vector();
+		if(table == null)
+			return iconHeaderBounds;
+		
 		int columnX = getInitialColumnX();
 		for(int column = 0; column < table.getColumnCount(); ++column)
 		{	

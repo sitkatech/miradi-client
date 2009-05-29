@@ -62,13 +62,13 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		mainWindow = mainWindowToUse;
 		tree = treeToUse;
 		
+		buttonBox = createButtonBox(buttonActionClasses);
+		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
+
 		restoreTreeExpansionState();
 		treeTableScrollPane = new ScrollPaneWithHideableScrollBar(tree);
 		add(treeTableScrollPane, BorderLayout.CENTER);
 		
-		buttonBox = createButtonBox(buttonActionClasses);
-		addAboveTable(buttonBox);
-
 		tree.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tree.getTree().addSelectionRow(0);
 		tree.getTree().addTreeSelectionListener(this);
