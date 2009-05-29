@@ -176,7 +176,7 @@ public class ResourceAssignment extends Assignment
 	{
 		DateRange dateRange = getProject().getProjectCalendar().convertToDateRange(dateUnitToUse);
 		TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(dateRange);
-		TimePeriodCosts timePeriodCostsForSpecificDateUnit = timePeriodCostsMap.getTotal(dateUnitToUse);
+		TimePeriodCosts timePeriodCostsForSpecificDateUnit = timePeriodCostsMap.getTotalCost(dateUnitToUse);
 		return timePeriodCostsForSpecificDateUnit.calculateProjectResources(getProject());
 	}
 	
