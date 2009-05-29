@@ -77,7 +77,9 @@ public class TimePeriodCosts
 	public OptionalDouble calculateTotalCost(Project projectToUse)
 	{
 		final OptionalDouble expenseToAdd = getExpense();
-		return calculateResourcesTotalCost(projectToUse).add(expenseToAdd);
+		final OptionalDouble totalResourceCost = calculateResourcesTotalCost(projectToUse);
+		
+		return totalResourceCost.add(expenseToAdd);
 	}
 	
 	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
