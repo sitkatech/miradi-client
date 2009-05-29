@@ -181,7 +181,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if(thisCellEffort != null)
 			return true;
 		
-		return hasValue(assignment, dateUnit);
+		return !hasValue(assignment, dateUnit);
 	}
 
 	public Object getValueAt(int row, int column)
