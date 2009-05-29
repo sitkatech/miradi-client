@@ -500,11 +500,11 @@ abstract public class BaseObject
 	
 	private TimePeriodCostsMap getTimePeriodCostsMap() throws Exception
 	{
-		DateUnit projectDateUnit = getProjectDateUnit();
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
+		DateUnit projectDateUnit = getProjectDateUnit();
 		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap, projectDateUnit);
 		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap, projectDateUnit);
 		
