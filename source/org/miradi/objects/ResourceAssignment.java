@@ -23,7 +23,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -101,6 +100,12 @@ public class ResourceAssignment extends Assignment
 		}
 	}
 
+	@Override
+	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
+	{
+		return getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
+	}
+	
 	private String getOwningFactorName()
 	{
 		Factor owningFactor = getDirectOrIndirectOwningFactor();
@@ -122,14 +127,6 @@ public class ResourceAssignment extends Assignment
 	private ProjectResource getProjectResource()
 	{
 		return ProjectResource.find(getProject(), getResourceRef());
-	}
-	
-	@Override
-	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
-	{
-		TimePeriodCostsMap timePeriodCostsMap = convertDateUnitEffortList();
-		TimePeriodCosts timePeriodCostsForSpecificDateUnit = timePeriodCostsMap.getTotalCost(dateUnitToUse);
-		return timePeriodCostsForSpecificDateUnit.calculateTotalCost(getProject());
 	}
 	
 	@Override

@@ -24,6 +24,7 @@ import org.miradi.objectdata.ORefData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
@@ -62,6 +63,12 @@ public class ExpenseAssignment extends Assignment
 			return ORef.createInvalidWithType(AccountingCode.getObjectType());
 		
 		return accountingCodeRef.getRawRef();
+	}
+	
+	@Override
+	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
+	{
+		return getTimePeriodCostsMap(TAG_EXPENSE_REFS);
 	}
 	
 	@Override
