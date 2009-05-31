@@ -488,7 +488,7 @@ abstract public class BaseObject
 		return getTotalTimePeriodCostMap().getTotalCost(dateUnitToUse);
 	}
 	
-	private TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
@@ -502,12 +502,19 @@ abstract public class BaseObject
 	
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
 	{
-		return getTotalTimePeriodCostsMapForAssignments(tag);	
+		TimePeriodCostsMap subTaskTimePeriodCosts = getTotalTimePeriodCostsMapForSubTasks(getSubTaskRefs(), tag);
+		TimePeriodCostsMap assignmentTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
+		
+		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
+		mergedTimePeriodCostsMap.mergeAdd(subTaskTimePeriodCosts);
+		mergedTimePeriodCostsMap.mergeAdd(assignmentTimePeriodCostsMap);
+		
+		return mergedTimePeriodCostsMap;	
 	}
-				
-	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList baseObjectRefs, String tag) throws Exception
+	
+	private TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList baseObjectRefs, String tag) throws Exception
 	{
-		TimePeriodCostsMap timePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
+		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
@@ -517,7 +524,7 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 
-	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
+	private TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		ORefList assignmentRefs = getRefList(tag);
@@ -530,6 +537,11 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 	
+	protected ORefList getSubTaskRefs()
+	{
+		return new ORefList();
+	}
+					
 	public String getWhoTotalAsString()
 	{		
 		try
