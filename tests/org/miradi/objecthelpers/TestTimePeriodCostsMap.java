@@ -163,7 +163,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		mergedTimePeriodCostsMap.mergeAdd(timePeriodCostsMap1);
 		TimePeriodCosts  foundTimePeriodCosts = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		assertEquals("wrong expense after merge?", 1.0, foundTimePeriodCosts.getExpense().getValue());
-		assertEquals("wrong unit cost after merge?", 20.0 + 1.0, foundTimePeriodCosts.calculateTotalCost(getProject()).getValue());
+		assertEquals("wrong total cost after merge?", 20.0 + 1.0, foundTimePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
 
 	public void testMergeAddWithDifferentResrouce() throws Exception
@@ -178,7 +178,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		timePeriodCostsMap1.mergeAdd(timePeriodCostsMap2);
 		TimePeriodCosts timePeriodCostsAfterMerge = timePeriodCostsMap1.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		assertEquals("wrong expense after merge?", 2.0, timePeriodCostsAfterMerge.getExpense().getValue());
-		assertEquals("wrong unit cost after merge?", 30.0 + 2.0, timePeriodCostsAfterMerge.calculateTotalCost(getProject()).getValue());
+		assertEquals("wrong total cost after merge?", 30.0 + 2.0, timePeriodCostsAfterMerge.calculateTotalCost(getProject()).getValue());
 	}
 	
 	public void testMergeAddWithSameResource() throws Exception
@@ -191,7 +191,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		timePeriodCostsMap1.mergeAdd(timePeriodCostsMap2);
 		TimePeriodCosts timePeriodCostsAfterMerge = timePeriodCostsMap1.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
 		assertEquals("wrong expense after merge?", 4.0, timePeriodCostsAfterMerge.getExpense().getValue());
-		assertEquals("wrong unit cost after merge?", 50.0 + 4.0, timePeriodCostsAfterMerge.calculateTotalCost(getProject()).getValue());
+		assertEquals("wrong total cost after merge?", 50.0 + 4.0, timePeriodCostsAfterMerge.calculateTotalCost(getProject()).getValue());
 	}
 	
 	private TimePeriodCostsMap createTimePeriodCostsMap(DateUnit dateUnit2008, double expense, ProjectResource projectResource1, double units)
