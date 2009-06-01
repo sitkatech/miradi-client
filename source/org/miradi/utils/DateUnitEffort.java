@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.project.ProjectCalendar;
 
 public class DateUnitEffort
 {
@@ -28,11 +27,6 @@ public class DateUnitEffort
 	{
 		numberOfUnits = unitQuantityToUse;
 		dateUnit = dateUnitToUse;
-	}
-	
-	public DateUnitEffort(DateRangeEffort dateRangeEffort)
-	{
-		this(dateRangeEffort.getUnitQuantity(), DateUnit.createFromDateRange(dateRangeEffort.getDateRange()));
 	}
 	
 	public DateUnitEffort(EnhancedJsonObject json) throws Exception 
@@ -87,11 +81,6 @@ public class DateUnitEffort
 		return toString().equals(other.toString());
 	}
 	
-	public DateRangeEffort asDateRangeEffort(ProjectCalendar projectCalendar) throws Exception
-	{
-		return new DateRangeEffort(getQuantity(), projectCalendar.convertToDateRange(getDateUnit()));
-	}
-		
 	private static final String TAG_DATEUNIT = "DateUnit";
 	private static final String TAG_NUMBER_OF_UNITS = "NumberOfUnits";
 	
