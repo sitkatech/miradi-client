@@ -132,16 +132,23 @@ public class TimePeriodCostsMap
 	{
 		HashMap<ORef, OptionalDouble> mergedResourceWorkUnits = new HashMap();
 		mergedResourceWorkUnits.putAll(existingResourceUnitsMap);
-		mergedResourceWorkUnits.putAll(resourceUnitsMapToMerge);
-		
 		Set<ORef> keys = existingResourceUnitsMap.keySet();
-		for(ORef existingProjectResourceRef : keys)
+		for(ORef ref : keys)
 		{
-			OptionalDouble workUnits = existingResourceUnitsMap.get(existingProjectResourceRef);
-			if (resourceUnitsMapToMerge.containsKey(existingProjectResourceRef))
-				workUnits = workUnits.add(existingResourceUnitsMap.get(existingProjectResourceRef));
-
-			mergedResourceWorkUnits.put(existingProjectResourceRef, workUnits);
+			OptionalDouble workUnits = existingResourceUnitsMap.get(ref);
+			if (resourceUnitsMapToMerge.containsKey(ref))
+			{
+				workUnits = workUnits.add(resourceUnitsMapToMerge.get(ref));
+			}
+			
+			mergedResourceWorkUnits.put(ref, workUnits);
+		}
+		
+		Set<ORef> keysToMerge = resourceUnitsMapToMerge.keySet();
+		for(ORef ref : keysToMerge)
+		{
+			if (!mergedResourceWorkUnits.containsKey(ref))
+				mergedResourceWorkUnits.put(ref, resourceUnitsMapToMerge.get(ref));
 		}
 		
 		return mergedResourceWorkUnits;
