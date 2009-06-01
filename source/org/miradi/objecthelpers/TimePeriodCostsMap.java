@@ -127,23 +127,26 @@ public class TimePeriodCostsMap
 			add(dateUnit, timePeriodCosts);
 		}
 	}
-
+	
 	private HashMap mergeAddProjectResources(HashMap<ORef, OptionalDouble> existingResourceUnitsMap, HashMap<ORef, OptionalDouble> resourceUnitsMapToMerge)
 	{
 		HashMap<ORef, OptionalDouble> mergedResourceWorkUnits = new HashMap();
-		Set<ORef> keys = resourceUnitsMapToMerge.keySet();
-		for(ORef projectResourceRef : keys)
+		mergedResourceWorkUnits.putAll(existingResourceUnitsMap);
+		mergedResourceWorkUnits.putAll(resourceUnitsMapToMerge);
+		
+		Set<ORef> keys = existingResourceUnitsMap.keySet();
+		for(ORef existingProjectResourceRef : keys)
 		{
-			OptionalDouble workUnitsForResource = resourceUnitsMapToMerge.get(projectResourceRef);
-			if (existingResourceUnitsMap.containsKey(projectResourceRef))
-				workUnitsForResource = workUnitsForResource.add(existingResourceUnitsMap.get(projectResourceRef));
-			
-			mergedResourceWorkUnits.put(projectResourceRef, workUnitsForResource);
+			OptionalDouble workUnits = existingResourceUnitsMap.get(existingProjectResourceRef);
+			if (resourceUnitsMapToMerge.containsKey(existingProjectResourceRef))
+				workUnits = workUnits.add(existingResourceUnitsMap.get(existingProjectResourceRef));
+
+			mergedResourceWorkUnits.put(existingProjectResourceRef, workUnits);
 		}
 		
 		return mergedResourceWorkUnits;
 	}
-	
+
 	private void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
