@@ -153,17 +153,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		return getProject().createTimePeriodCosts(expenses, projectResource.getRef(), units);
 	}
 
-	public void testMergeAdd() throws Exception
-	{
-		verifySingleAdd();
-		verifyMergeAddWithDifferentResrouce();
-		verifyMergeAddWithSameResource();
-		
-		verifyMergeAddingIncompletedMaps();
-		verifyMergeDifferentDates();
-	}
-	
-	public void verifySingleAdd() throws Exception
+	public void testSingleAdd() throws Exception
 	{
 		ProjectResource projectResource1 = createProjectResource();
 		DateUnit dateUnit2008 = getProject().createSingleYearDateUnit(2008);
@@ -176,7 +166,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong unit cost after merge?", 20.0 + 1.0, foundTimePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
 
-	public void verifyMergeAddWithDifferentResrouce() throws Exception
+	public void testMergeAddWithDifferentResrouce() throws Exception
 	{
 		DateUnit dateUnit2008 = getProject().createSingleYearDateUnit(2008);
 		ProjectResource projectResource1 = createProjectResource();
@@ -191,7 +181,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong unit cost after merge?", 30.0 + 2.0, timePeriodCostsAfterMerge.calculateTotalCost(getProject()).getValue());
 	}
 	
-	public void verifyMergeAddWithSameResource() throws Exception
+	public void testMergeAddWithSameResource() throws Exception
 	{
 		DateUnit dateUnit2008 = getProject().createSingleYearDateUnit(2008);
 		ProjectResource projectResource = createProjectResource();
@@ -213,7 +203,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		return timePeriodCostsMap1;
 	}
 	
-	private void verifyMergeDifferentDates() throws Exception
+	public void testMergeDifferentDates() throws Exception
 	{
 		ProjectResource projectResource = createProjectResource();
 		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(1.0, projectResource.getRef(), 2.0);
@@ -234,7 +224,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong expense for dateunit", 3.0, foundTimePeriodCosts2.getExpense().getValue());
 	}
 
-	private void verifyMergeAddingIncompletedMaps() throws Exception
+	public void testMergeAddingIncompletedMaps() throws Exception
 	{
 		ProjectResource projectResource = createProjectResource();
 		DateUnit dateUnit2008 = getProject().createSingleYearDateUnit(2008);
