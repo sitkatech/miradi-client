@@ -176,7 +176,7 @@ public class TimePeriodCostsMap
 		Set<DateUnit> keys = data.keySet();
 		for(DateUnit dateUnit : keys)
 		{
-			combinedDateRange = DateRange.combine(combinedDateRange, convertToDateRange(projectDateRange, dateUnit));
+			combinedDateRange = DateRange.combine(combinedDateRange, convertToDateRange(dateUnit, projectDateRange));
 		}
 		
 		return combinedDateRange;
@@ -195,7 +195,7 @@ public class TimePeriodCostsMap
 		return allProjectResourceRefs;
 	}
 
-	private DateRange convertToDateRange(DateRange projectDateRange, DateUnit dateUnit) throws Exception
+	private DateRange convertToDateRange(DateUnit dateUnit, DateRange projectDateRange) throws Exception
 	{
 		if (dateUnit.isBlank())
 			return projectDateRange;
