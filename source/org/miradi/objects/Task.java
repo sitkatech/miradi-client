@@ -37,7 +37,6 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class Task extends Factor
@@ -295,20 +294,6 @@ public class Task extends Factor
 		return resourceRefs;
 	}
 	
-	public DateRange combineAssignmentEffortListDateRanges() throws Exception
-	{
-		DateRange combinedDateRange = null;
-		ORefList assignmentRefs = getAssignmentRefs();
-		for (int i = 0; i < assignmentRefs.size(); ++i)
-		{
- 			ResourceAssignment assignment = (ResourceAssignment) objectManager.findObject(assignmentRefs.get(i));
-			DateRange dateRange = assignment.getCombinedEffortListDateRange();
-			combinedDateRange = DateRange.combine(combinedDateRange, dateRange);
-		}
-		
-		return combinedDateRange;
-	}
-
 	public ORefList getSubtaskRefs()
 	{
 		return new ORefList(Task.getObjectType(), getSubtaskIdList());
