@@ -98,6 +98,19 @@ public class TimePeriodCosts
 		return resourcesTotalCost;
 	}
 	
+	public OptionalDouble calculateResourcesTotalUnits()
+	{
+		OptionalDouble resourcesTotalCost = new OptionalDouble();
+		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
+		for(ORef projectResourceRef : projectResourcRefs)
+		{
+			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
+			resourcesTotalCost = resourcesTotalCost.add(units);
+		}
+		
+		return resourcesTotalCost;
+	}
+	
 	@Override
 	public boolean equals(Object rawOther)
 	{

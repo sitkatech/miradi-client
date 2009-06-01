@@ -182,7 +182,7 @@ public class TestTask extends ObjectTestCase
 		addAssignment(task, 15, 2010, 2010);
 		
 		DateUnit dateUnit = getProject().createDateUnit(2010, 2010);
-		assertEquals("wrong task work units for date range?", 150.0, task.getWorkUnits(dateUnit).getValue());
+		assertEquals("wrong task work units for date range?", 15.0, task.getWorkUnits(dateUnit).getValue());
 	}
 	
 	public void testGetWorkUnitsForTaskWithSubTasks() throws Exception
@@ -202,10 +202,10 @@ public class TestTask extends ObjectTestCase
 		addAssignment(subTask, 15, 2005, 2005);
 
 		DateUnit dateUnit = getProject().createDateUnit(2005);
-		assertEquals("wrong subtask work units for date range?", 150.0, task.getWorkUnits(dateUnit).getValue());
+		assertEquals("wrong subtask work units for date range?", 15.0, task.getWorkUnits(dateUnit).getValue());
 		
 		DateUnit dateUnit1 = getProject().createDateUnit(2010);
-		assertEquals("wrong subtask work units for date range?", 50.0, task.getWorkUnits(dateUnit1).getValue());
+		assertEquals("wrong subtask work units for date range?", 5.0, task.getWorkUnits(dateUnit1).getValue());
 	}
 	
 	public MultiCalendar createMultiCalendar(int year)
