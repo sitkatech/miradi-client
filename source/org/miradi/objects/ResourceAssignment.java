@@ -118,7 +118,8 @@ public class ResourceAssignment extends Assignment
 	
 	public DateRange getCombinedEffortListDateRange() throws Exception
 	{
-		return getDateRangeEffortList().getCombinedDateRange();
+		DateRange projectDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
+		return convertDateUnitEffortList().getRolledUpDateRange(projectDateRange);
 	}
 	
 	public void setResourceId(BaseId resourceIdToUse)
