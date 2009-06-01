@@ -121,11 +121,11 @@ public class TestIndicator extends ObjectTestCase
 		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
 		
 		DateUnit dateUnit = project.createDateUnit(2006, 2006);
-		assertEquals("wrong work units for methods", 150.0, baseObject.getWorkUnits(dateUnit).getValue());
+		assertEquals("wrong work units for methods", 15.0, baseObject.getWorkUnits(dateUnit).getValue());
 		
 		BaseObject objectWithNoTasks = project.createBaseObject(objectType);
 		project.addResourceAssignment(objectWithNoTasks, 45, 2006, 2006);
-		assertEquals("wrong work units for methods", 450.0, objectWithNoTasks.getWorkUnits(dateUnit).getValue());
+		assertEquals("wrong work units for methods", 45.0, objectWithNoTasks.getWorkUnits(dateUnit).getValue());
 	}
 
 	private ProjectForTesting project;
