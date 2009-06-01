@@ -171,6 +171,19 @@ public class TimePeriodCostsMap
 		
 		return combinedDateRange;
 	}
+	
+	public ORefSet getAllProjectResourceRefs()
+	{
+		ORefSet allProjectResourceRefs = new ORefSet();
+		Set<DateUnit> keys = data.keySet();
+		for(DateUnit dateUnit : keys)
+		{
+			final TimePeriodCosts timePeriodCosts = data.get(dateUnit);
+			allProjectResourceRefs.addAll(timePeriodCosts.getResourceUnitsMap().keySet());
+		}
+		
+		return allProjectResourceRefs;
+	}
 
 	private DateRange convertToDateRange(DateRange projectDateRange, DateUnit dateUnit) throws Exception
 	{

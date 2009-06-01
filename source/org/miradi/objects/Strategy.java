@@ -30,7 +30,6 @@ import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -268,11 +267,6 @@ public class Strategy extends Factor
 		return getActivityRefs();
 	}
 	
-	public ORefSet getWhoRollup() throws Exception
-	{
-		return getAllResources(getActivityRefs());
-	}
-
 	public static Strategy find(ObjectManager objectManager, ORef strategyRef)
 	{
 		return (Strategy) objectManager.findObject(strategyRef);
