@@ -601,7 +601,8 @@ abstract public class BaseObject
 	
 	public DateRange getWhenRollup() throws Exception
 	{
-		return getTotalTimePeriodCostMap().getRolledUpDates();
+		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
+		return getTotalTimePeriodCostMap().getRolledUpDateRange(projectStartEndDateRange);
 	}
 
 	public DateRange combineSubtaskEffortListDateRanges(ORefList taskRefs) throws Exception
