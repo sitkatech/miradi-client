@@ -21,12 +21,10 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitEffortListData;
-import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
-import org.miradi.project.ProjectCalendar;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -44,12 +42,6 @@ abstract public class Assignment extends BaseObject
 		super(objectManager, idToUse, json);
 	}
 	
-	public DateRangeEffortList getDateRangeEffortList() throws Exception
-	{
-		ProjectCalendar projectCalendar = getProject().getProjectCalendar();
-		return getDateUnitEffortList().asDateRangeEffortList(projectCalendar);
-	}
-
 	public DateUnitEffortList getDateUnitEffortList() throws Exception
 	{
 		return new DateUnitEffortList(getData(TAG_DATEUNIT_EFFORTS));
