@@ -269,15 +269,6 @@ public class Task extends Factor
 	}
 
 	@Override
-	public DateRange getWhenRollup() throws Exception
-	{
-		if (hasSubTasks())
-			return combineSubtaskEffortListDateRanges(getSubtaskRefs());
-		
-		return combineAssignmentEffortListDateRanges();
-	}
-
-	@Override
 	public ORefSet getWhoRollup() throws Exception
 	{
 		if (hasSubTasks())

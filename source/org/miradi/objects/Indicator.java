@@ -42,7 +42,6 @@ import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.StringMapData;
 
@@ -261,11 +260,6 @@ public class Indicator extends BaseObject
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
-	}
-	
-	public DateRange getWhenRollup() throws Exception
-	{
-		return combineSubtaskEffortListDateRanges(getMethodRefs());
 	}
 	
 	public ORefSet getWhoRollup() throws Exception

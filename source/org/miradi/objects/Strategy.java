@@ -40,7 +40,6 @@ import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
-import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
 
 
@@ -267,11 +266,6 @@ public class Strategy extends Factor
 	protected ORefList getSubTaskRefs()
 	{
 		return getActivityRefs();
-	}
-	
-	public DateRange getWhenRollup() throws Exception
-	{
-		return combineSubtaskEffortListDateRanges(getActivityRefs());
 	}
 	
 	public ORefSet getWhoRollup() throws Exception
