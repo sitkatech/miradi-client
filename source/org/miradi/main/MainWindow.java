@@ -671,7 +671,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			for (int i = 0; i < assignmentIds.length; i++)
 			{
 				ResourceAssignment assignment = (ResourceAssignment) getProject().findObject(new ORef(ObjectType.RESOURCE_ASSIGNMENT, assignmentIds[i]));
-				DateRange assignmentDateRange = assignment.getCombinedEffortListDateRange();
+				DateRange assignmentDateRange = assignment.getCombinedTimePeriodCostsMapDateRange();
 				if (assignmentDateRange != null && !projectDateRange.contains(assignmentDateRange))
 					return true;
 			}
