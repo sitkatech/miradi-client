@@ -92,7 +92,6 @@ import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateRangeEffort;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
@@ -1235,26 +1234,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return MultiCalendar.createFromGregorianYearMonthDay(endYear, 12, 31);
 	}
 	
-	public DateRangeEffort createDateRangeEffort(int startYear, int endYear) throws Exception
-	{
-		DateRange dateRange = createDateRange(startYear, endYear);
-		return new DateRangeEffort(0, dateRange);
-	}
-	
-	public DateRangeEffort createDateRangeEffort(MultiCalendar startDate, MultiCalendar endDate) throws Exception
-	{
-		DateRange dateRange = createDateRange(startDate, endDate);
-		return new DateRangeEffort(0, dateRange);
-	}
-	
 	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
 	{
-		return new DateUnitEffort(createDateRangeEffort(startYear, endYear));
+		DateUnit dateUnit = createDateUnit(startYear, endYear);
+		return new DateUnitEffort(0.0,  dateUnit);
 	}
 	
 	public DateUnitEffort createDateUnitEffort(MultiCalendar startDate, MultiCalendar endDate) throws Exception
 	{
-		return new DateUnitEffort(createDateRangeEffort(startDate, endDate));
+		DateRange dateRange = createDateRange(startDate, endDate);
+		return new DateUnitEffort(0, DateUnit.createFromDateRange(dateRange));
 	}
 
 	public DateRange createDateRange(int startYear, int endYear) throws Exception
