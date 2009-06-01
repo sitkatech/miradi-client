@@ -21,7 +21,6 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
-import org.miradi.main.EAM;
 import org.miradi.objectdata.BaseIdData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -77,29 +76,9 @@ public class ResourceAssignment extends Assignment
 		if (fieldTag.equals(PSEUDO_TAG_OWNING_FACTOR_NAME))
 			return getOwningFactorName();
 		
-		if (fieldTag.equals(PSEUDO_TAG_WHEN))
-			return getWhen();
-		
 		return super.getPseudoData(fieldTag);
 	}
 	
-	private String getWhen()
-	{
-		try
-		{
-			DateRange combinedDateRange = getDateRangeEffortList().getCombinedDateRange();
-			if (combinedDateRange != null)
-				return combinedDateRange.toString();
-			
-			return "";
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-
 	@Override
 	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
 	{
