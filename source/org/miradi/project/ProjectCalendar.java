@@ -244,7 +244,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return dateUnit.asDateRange();
 	}
 
-	private DateRange getProjectStartEndDateRange() throws Exception
+	public DateRange getProjectStartEndDateRange() throws Exception
 	{
 		int thisStartYear = MultiCalendar.createFromIsoDateString(getPlanningStartDate()).getGregorianYear();
 		int thisEndYear = MultiCalendar.createFromIsoDateString(getPlanningEndDate()).getGregorianYear();
