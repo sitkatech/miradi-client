@@ -267,15 +267,6 @@ public class Task extends Factor
 		return super.getPseudoData(fieldTag);
 	}
 
-	@Override
-	public ORefSet getWhoRollup() throws Exception
-	{
-		if (hasSubTasks())
-			return getAllResources(getSubtaskRefs());
-		
-		return getTaskResources();
-	}
-	
 	public boolean hasSubTasks()
 	{
 		return getSubtaskCount() > 0;

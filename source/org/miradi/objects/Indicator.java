@@ -33,7 +33,6 @@ import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.NonDraftStrategySet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
@@ -260,11 +259,6 @@ public class Indicator extends BaseObject
 	public String getShortLabel()
 	{
 		return getData(TAG_SHORT_LABEL);
-	}
-	
-	public ORefSet getWhoRollup() throws Exception
-	{
-		return getAllResources(getMethodRefs());
 	}
 	
 	public String toString()

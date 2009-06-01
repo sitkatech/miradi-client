@@ -574,7 +574,7 @@ abstract public class BaseObject
 	
 	public ORefSet getWhoRollup() throws Exception
 	{
-		return new ORefSet();
+		return getTotalTimePeriodCostMap().getAllProjectResourceRefs();
 	}
 
 	public String formatCurrency(double cost)
