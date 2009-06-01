@@ -25,7 +25,6 @@ import java.util.Vector;
 import org.json.JSONArray;
 import org.miradi.objecthelpers.DateRangeEffortList;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.project.ProjectCalendar;
 
 public class DateUnitEffortList
 {
@@ -146,17 +145,6 @@ public class DateUnitEffortList
 				return;
 			}
 		}
-	}
-	
-	public DateRangeEffortList asDateRangeEffortList(ProjectCalendar projectCalendar) throws Exception
-	{
-		DateRangeEffortList dateRangeEffortList = new DateRangeEffortList();
-		for(DateUnitEffort dateUnitEffort : data)
-		{
-			dateRangeEffortList.add(dateUnitEffort.asDateRangeEffort(projectCalendar));
-		}
-		
-		return dateRangeEffortList;
 	}
 	
 	private Vector<DateUnitEffort> data;
