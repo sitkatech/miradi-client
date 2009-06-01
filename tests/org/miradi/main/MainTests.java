@@ -68,7 +68,6 @@ import org.miradi.ids.TestIdList;
 import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objectdata.TestIntegerData;
-import org.miradi.objecthelpers.TestDateRangeEffortList;
 import org.miradi.objecthelpers.TestDateUnitEffort;
 import org.miradi.objecthelpers.TestDateUnitEffortList;
 import org.miradi.objecthelpers.TestMapList;
@@ -318,7 +317,6 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestMapList.class));
 		suite.addTest(new TestSuite(TestORef.class));
 		suite.addTest(new TestSuite(TestObjectDeepCopier.class));
-		suite.addTest(new TestSuite(TestDateRangeEffortList.class));
 		suite.addTest(new TestSuite(TestORefSet.class));
 		suite.addTest(new TestSuite(TestRelevancyOverride.class));
 		suite.addTest(new TestSuite(TestRelevancyOverrideSet.class));
