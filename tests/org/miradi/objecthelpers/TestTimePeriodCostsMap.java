@@ -155,19 +155,20 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 
 	public void testMergeAdd() throws Exception
 	{
-		ProjectResource projectResource = createProjectResource();
-		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(1.0, projectResource.getRef(), 2.0);
+		ProjectResource projectResource1 = createProjectResource();
+		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(1.0, projectResource1.getRef(), 2.0);
 		TimePeriodCostsMap timePeriodCostsMap1 = new TimePeriodCostsMap();
 		DateUnit dateUnit2008 = getProject().createSingleYearDateUnit(2008);
 		timePeriodCostsMap1.add(dateUnit2008, timePeriodCosts1);
 		
-		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(2.0, projectResource.getRef(), 3.0);
+		ProjectResource projectResource2 = createProjectResource();
+		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(2.0, projectResource2.getRef(), 3.0);
 		TimePeriodCostsMap timePerdiodCostsMap2 = new TimePeriodCostsMap();
 		timePerdiodCostsMap2.add(dateUnit2008, timePeriodCosts2);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeAdd(timePerdiodCostsMap2);
-		TimePeriodCosts timePeriodCosts3 = mergedTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2008);
+		TimePeriodCosts timePeriodCosts3 = mergedTimePeriodCostsMap.getTotalCost(dateUnit2008);
 		assertEquals("wrong expense?", 2.0, timePeriodCosts3.getExpense().getValue());
 		assertEquals("wrong unit cost?", 30.0 + 2.0, timePeriodCosts3.calculateTotalCost(getProject()).getValue());
 		
@@ -176,7 +177,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong expense?", 3.0, timePeriodCosts4.getExpense().getValue());
 		assertEquals("wrong unit cost?", 50.0 + 3.0, timePeriodCosts4.calculateTotalCost(getProject()).getValue());
 		
-		verifyMergeAddingIncompletedMaps(projectResource, dateUnit2008);
+		verifyMergeAddingIncompletedMaps(projectResource1, dateUnit2008);
 		verifyMergeDifferentDates();
 	}
 
