@@ -34,6 +34,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	
 	public void testBasics() throws Exception
 	{
+		getProject().setProjectDates(2005, 2011);
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		assertTrue("time period costs map is not empty?", timePeriodCostsMap.isEmpty());
 		
@@ -49,9 +50,19 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		verifyGetTimePeriodCostsForSpecificDateUnit(timePeriodCostsMap, timePeriodCosts1, dateUnit1);
 		verifyGetTimePeriodCostsForSpecificDateUnit(timePeriodCostsMap, timePeriodCosts2, dateUnit2);
 		
-		DateRange rolledUpDates = timePeriodCostsMap.getRolledUpDates();
-		assertEquals("wrong rolled up start date? ", "2008-01-01", rolledUpDates.getStartDate().toIsoDateString());
-		assertEquals("wrong rolled up end date? ", "2009-12-31", rolledUpDates.getEndDate().toIsoDateString());
+		verifyRolledUpDates(timePeriodCostsMap, "2008-01-01", "2009-12-31");
+		
+		TimePeriodCosts timePeriodCosts = getProject().createTimePeriodCosts(500.0, projectResource.getRef(), 10.0);
+		timePeriodCostsMap.add(new DateUnit(), timePeriodCosts);
+		verifyRolledUpDates(timePeriodCostsMap, "2005-01-01", "2011-12-31");
+	}
+
+	private void verifyRolledUpDates(TimePeriodCostsMap timePeriodCostsMap, String expectedStartDate, String expectedEndDate) throws Exception
+	{
+		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
+		DateRange rolledUpDates = timePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange);
+		assertEquals("wrong rolled up end date? ", expectedStartDate, rolledUpDates.getStartDate().toIsoDateString());
+		assertEquals("wrong rolled up end date? ", expectedEndDate, rolledUpDates.getEndDate().toIsoDateString());
 	}
 
 	private void verifyGetTimePeriodCostsForSpecificDateUnit(TimePeriodCostsMap timePeriodCostsMap, TimePeriodCosts timePeriodCosts, DateUnit dateUnit)

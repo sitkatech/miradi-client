@@ -160,18 +160,26 @@ public class TimePeriodCostsMap
 		}
 	}
 	
-	public DateRange getRolledUpDates() throws Exception
+	public DateRange getRolledUpDateRange(DateRange projectDateRange) throws Exception
 	{
 		DateRange combinedDateRange = null;
 		Set<DateUnit> keys = data.keySet();
 		for(DateUnit dateUnit : keys)
 		{
-			combinedDateRange = DateRange.combine(combinedDateRange, dateUnit.asDateRange());
+			combinedDateRange = DateRange.combine(combinedDateRange, convertToDateRange(projectDateRange, dateUnit));
 		}
 		
 		return combinedDateRange;
+	}
+
+	private DateRange convertToDateRange(DateRange projectDateRange, DateUnit dateUnit) throws Exception
+	{
+		if (dateUnit.isBlank())
+			return projectDateRange;
+		
+		return dateUnit.asDateRange();
 	} 
-	
+		
 	public boolean isEmpty()
 	{
 		return data.isEmpty();
