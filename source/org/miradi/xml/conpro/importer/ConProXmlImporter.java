@@ -63,6 +63,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
@@ -271,7 +272,14 @@ public class ConProXmlImporter implements ConProMiradiXml
 		MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
 		DateRange dateRange = new DateRange(startDate, endDate);
 		DateUnit dateUnit = DateUnit.createFromDateRange(dateRange);
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(0.0, dateUnit);
+		final double unitQuantity = 0.0;
+		
+		return createDateUnitEffortList(dateUnit, unitQuantity);
+	}
+
+	private DateUnitEffortList createDateUnitEffortList(DateUnit dateUnit, final double unitQuantity)
+	{
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(unitQuantity, dateUnit);
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
 		
@@ -328,7 +336,16 @@ public class ConProXmlImporter implements ConProMiradiXml
 	
 	private void importBudgetData(Node indicatorNode, ORef indicatorRef) throws Exception
 	{
-		//FIXME urgent: need to import budget data by creating new assignment
+		String annualCost = getPathData(indicatorNode, new String[]{ANNUAL_COST, });
+		if (annualCost.length() > 0)
+		{
+			ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignment.getObjectType());
+			ORefList expenseAssignmentRefs = new ORefList(expenseAssignmentRef);
+			setData(indicatorRef, Indicator.TAG_EXPENSE_REFS, expenseAssignmentRefs);
+
+			DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(new DateUnit(), Double.parseDouble(annualCost));
+			setData(expenseAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		}
 	}
 
 	private void importProgressReport(Node indicatorNode, ORef indicatorRef) throws Exception
