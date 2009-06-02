@@ -125,7 +125,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected String getListTag()
 	{
-		return BaseObject.TAG_EXPENSE_REFS;
+		return BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS;
 	}
 
 	@Override

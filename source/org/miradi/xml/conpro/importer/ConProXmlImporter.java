@@ -341,7 +341,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		{
 			ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignment.getObjectType());
 			ORefList expenseAssignmentRefs = new ORefList(expenseAssignmentRef);
-			setData(indicatorRef, Indicator.TAG_EXPENSE_REFS, expenseAssignmentRefs);
+			setData(indicatorRef, Indicator.TAG_EXPENSE_ASSIGNMENT_REFS, expenseAssignmentRefs);
 
 			DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(new DateUnit(), Double.parseDouble(annualCost));
 			setData(expenseAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
