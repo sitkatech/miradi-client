@@ -74,6 +74,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiMultiCalendar;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelperVersion2;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
@@ -222,7 +223,9 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 	private void writeAnnualCost(UnicodeWriter out, Task task) throws Exception
 	{
-		writeElement(out, METHOD_ANNUAL_COST, Double.toString(task.getTotalBudgetCost()));
+		final OptionalDouble totalBudgetCost = task.getTotalBudgetCost();
+		if (totalBudgetCost.hasValue())
+			writeElement(out, METHOD_ANNUAL_COST, Double.toString(totalBudgetCost.getValue()));
 	}
 
 	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception

@@ -467,10 +467,10 @@ abstract public class BaseObject
 	}
 	
 	
-	public double getTotalBudgetCost() throws Exception
+	public OptionalDouble getTotalBudgetCost() throws Exception
 	{
 		//FIXME urgent: this needs to calculate the correct total budget cost using assignments
-		return 0;
+		return new OptionalDouble();
 	}
 
 	public int getTotalShareCount()

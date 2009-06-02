@@ -70,6 +70,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiMultiCalendar;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -131,7 +132,11 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private String getAnnualCost(Indicator indicator) throws Exception
 	{
-		return Double.toString(indicator.getTotalBudgetCost());
+		final OptionalDouble totalBudgetCost = indicator.getTotalBudgetCost();
+		if (totalBudgetCost.hasValue())
+			return Double.toString(totalBudgetCost.getValue());
+		
+		return "";
 	}
 
 	private void writeOptionalProgressReportStatus(UnicodeWriter out, BaseObject baseObject) throws Exception
