@@ -950,14 +950,14 @@ abstract public class BaseObject
 		return list;
 	}
 	
-	public IdList getAssignmentIdList()
+	public IdList getResourceAssignmentIdList()
 	{
 		return resourceAssignmentIds.getIdList().createClone();
 	}
 	
 	public ORefList getAssignmentRefs()
 	{
-		return new ORefList(ResourceAssignment.getObjectType(), getAssignmentIdList());
+		return new ORefList(ResourceAssignment.getObjectType(), getResourceAssignmentIdList());
 	}
 	
 	public ORefList getExpenseRefs()

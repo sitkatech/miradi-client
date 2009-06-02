@@ -133,13 +133,13 @@ public class TestTask extends ObjectTestCase
 		
 		Task taskWithNoSubTasksWithAssignment = createTask();
 		addAssignment(taskWithNoSubTasksWithAssignment, 1.0, 2006, 2006);
-		assertEquals("assignment was not added?", 1, taskWithNoSubTasksWithAssignment.getAssignmentIdList().size());
+		assertEquals("assignment was not added?", 1, taskWithNoSubTasksWithAssignment.getResourceAssignmentIdList().size());
 		DateRange whenRollup = taskWithNoSubTasksWithAssignment.getWhenRollup();
 		assertEquals("wrong combined date range?", "2006", whenRollup.toString());
 		
 		Task taskWithoutUnits = createTask();
 		addAssignment(taskWithoutUnits, 0, 2003, 2003);
-		assertEquals("assignment was not added?", 1, taskWithoutUnits.getAssignmentIdList().size());
+		assertEquals("assignment was not added?", 1, taskWithoutUnits.getResourceAssignmentIdList().size());
 		assertEquals("wrong combined date range?", "2003", taskWithoutUnits.getWhenRollup().toString());
 		
 		Task taskWithSubtasks = createTask();
