@@ -178,11 +178,6 @@ public class TimePeriodCosts
 		resourceUnitsMap.putAll(timePeriodCostsToMerge.getResourceUnitsMap());
 	}
 
-	public void setResourceUnitsMap(HashMap<ORef, OptionalDouble> resourceUnitsMapToUse)
-	{
-		resourceUnitsMap = resourceUnitsMapToUse;
-	}
-	
 	@Override
 	public String toString()
 	{
