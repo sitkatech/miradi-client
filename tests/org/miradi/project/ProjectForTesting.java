@@ -728,6 +728,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillGeneralProjectData();
 		createAndPopulateDirectThreatLink();
 		createAndPopulateIndicator();
+		createIndicator();
 		createAndPopulateKea();
 		createAndPopulateMeasurement();
 		createAndPopulateProjectResource();
