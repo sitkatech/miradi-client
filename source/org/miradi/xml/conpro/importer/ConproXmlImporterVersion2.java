@@ -269,7 +269,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			ORef resourceAssignmentRef = getProject().createObject(ResourceAssignment.getObjectType());
 			DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(startDateAsString, endDateAsString);
 			setData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
-			setIdListFromRefListData(activityRef, ResourceAssignment.TAG_ASSIGNMENT_IDS, new ORefList(resourceAssignmentRef), ResourceAssignment.getObjectType());
+			setIdListFromRefListData(activityRef, ResourceAssignment.TAG_RESOURCE_ASSIGNMENT_IDS, new ORefList(resourceAssignmentRef), ResourceAssignment.getObjectType());
 		}
 	}
 

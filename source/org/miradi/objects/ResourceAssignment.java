@@ -82,7 +82,7 @@ public class ResourceAssignment extends Assignment
 	@Override
 	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
 	{
-		return getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
+		return getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
 	private String getOwningFactorName()

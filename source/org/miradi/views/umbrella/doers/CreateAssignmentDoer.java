@@ -26,7 +26,7 @@ public class CreateAssignmentDoer extends CreateListedObjectDoer
 {
 	protected String getListTag()
 	{
-		return BaseObject.TAG_ASSIGNMENT_IDS;
+		return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
 	}
 
 	protected int getTypeToCreate()
