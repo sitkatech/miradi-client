@@ -180,7 +180,7 @@ public class DateRange
 
 		if(isQuarter())
 		{
-			return "Q" + startMonth/3 + " " + yearString;
+			return "Q" + ((startMonth/3) + 1) + " " + yearString;
 		}
 
 		return fullDateRangeString();
