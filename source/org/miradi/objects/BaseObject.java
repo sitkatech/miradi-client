@@ -600,7 +600,7 @@ abstract public class BaseObject
 	{
 		label = new StringData(TAG_LABEL);
 		resourceAssignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
-		expenseRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
+		expenseAssignmentRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		
 		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL); 
@@ -612,7 +612,7 @@ abstract public class BaseObject
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		addField(TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
-		addField(TAG_EXPENSE_ASSIGNMENT_REFS, expenseRefs);
+		addField(TAG_EXPENSE_ASSIGNMENT_REFS, expenseAssignmentRefs);
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
@@ -962,7 +962,7 @@ abstract public class BaseObject
 	
 	public ORefList getExpenseRefs()
 	{
-		return expenseRefs.getORefList();
+		return expenseAssignmentRefs.getORefList();
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
@@ -1324,5 +1324,5 @@ abstract public class BaseObject
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
 	protected IdListData resourceAssignmentIds;
-	protected ORefListData expenseRefs;
+	protected ORefListData expenseAssignmentRefs;
 }
