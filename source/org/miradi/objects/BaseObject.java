@@ -940,7 +940,7 @@ abstract public class BaseObject
 		switch(objectType)
 		{
 			case ObjectType.RESOURCE_ASSIGNMENT: 
-				list.addAll(getAssignmentRefs());
+				list.addAll(getResourceAssignmentRefs());
 				break;
 			case ObjectType.EXPENSE_ASSIGNMENT:
 				list.addAll(getExpenseRefs());
@@ -955,7 +955,7 @@ abstract public class BaseObject
 		return resourceAssignmentIds.getIdList().createClone();
 	}
 	
-	public ORefList getAssignmentRefs()
+	public ORefList getResourceAssignmentRefs()
 	{
 		return new ORefList(ResourceAssignment.getObjectType(), getResourceAssignmentIdList());
 	}

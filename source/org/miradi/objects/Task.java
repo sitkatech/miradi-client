@@ -275,7 +275,7 @@ public class Task extends Factor
 	public ORefSet getTaskResources()
 	{
 		ORefSet resourceRefs = new ORefSet();
-		ORefList assignmentRefs = getAssignmentRefs();
+		ORefList assignmentRefs = getResourceAssignmentRefs();
 		for (int i = 0; i < assignmentRefs.size(); ++i)
 		{
 			ResourceAssignment assignment = (ResourceAssignment.find(getProject(), assignmentRefs.get(i)));

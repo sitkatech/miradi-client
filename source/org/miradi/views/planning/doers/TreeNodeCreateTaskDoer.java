@@ -75,7 +75,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 			return false;
 		
 		Task task = (Task) selectedObject;
-		if (task.getAssignmentRefs().size() == 0)
+		if (task.getResourceAssignmentRefs().size() == 0)
 			return true;
 		
 		String[] buttons = {ConstantButtonNames.CANCEL, ConstantButtonNames.CREATE};
