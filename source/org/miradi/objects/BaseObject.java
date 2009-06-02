@@ -469,8 +469,8 @@ abstract public class BaseObject
 	
 	public OptionalDouble getTotalBudgetCost() throws Exception
 	{
-		//FIXME urgent: this needs to calculate the correct total budget cost using assignments
-		return new OptionalDouble();
+		final TimePeriodCosts totalTimePeriodCosts = getTotalTimePeriodCostMap().calculateTimePeriodCosts(new DateUnit());
+		return totalTimePeriodCosts.calculateTotalCost(getProject());
 	}
 
 	public int getTotalShareCount()
