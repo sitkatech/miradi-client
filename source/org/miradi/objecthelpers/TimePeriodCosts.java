@@ -143,7 +143,7 @@ public class TimePeriodCosts
 		return expense;
 	}
 	
-	public HashMap<ORef, OptionalDouble> getResourceUnitsMap()
+	private HashMap<ORef, OptionalDouble> getResourceUnitsMap()
 	{
 		return new HashMap(resourceUnitsMap);
 	}
