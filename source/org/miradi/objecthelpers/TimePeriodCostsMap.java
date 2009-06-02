@@ -62,25 +62,25 @@ public class TimePeriodCostsMap
 	
 	public void mergeAdd(TimePeriodCostsMap timePeriodCostsMapToMerge)
 	{
-		Set<DateUnit> keys = timePeriodCostsMapToMerge.data.keySet();
-		for(DateUnit dateUnitKey : keys)
+		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.data.keySet();
+		for(DateUnit dateUnitToMerge : keysToMerge)
 		{
-			TimePeriodCosts timePeriodCosts = timePeriodCostsMapToMerge.data.get(dateUnitKey);
-			mergeAddTimePeriodCosts(dateUnitKey, timePeriodCosts);
+			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.data.get(dateUnitToMerge);
+			mergeAddTimePeriodCosts(dateUnitToMerge, timePeriodCostsToMerge);
 		}
 	}
 		
-	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMap) throws Exception
+	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
 	{
-		Set<DateUnit> keys = timePeriodCostsMap.getDateUnitTimePeriodCostsMap().keySet();
-		for(DateUnit dateUnit : keys)
+		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.getDateUnitTimePeriodCostsMap().keySet();
+		for(DateUnit dateUnitToMerge : keysToMerge)
 		{
-			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnit);
-			if(hasAnyEntriesWithin(dateUnit))
+			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnitToMerge);
+			if(hasAnyEntriesWithin(dateUnitToMerge))
 				continue;
 			
-			TimePeriodCosts timePeriodCosts = timePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-			mergeOverlayTimePeriodCosts(dateUnit, timePeriodCosts);
+			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.getTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
+			mergeOverlayTimePeriodCosts(dateUnitToMerge, timePeriodCostsToMerge);
 		}	
 	}
 	
