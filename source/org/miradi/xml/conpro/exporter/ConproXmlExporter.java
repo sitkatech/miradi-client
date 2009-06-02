@@ -151,8 +151,14 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 
 	private String createAppendedResourceNames(UnicodeWriter out, Indicator indicator) throws Exception
 	{
-		// FIXME urgent: Needs real implementation
 		String allResourceNames = "";
+		ORefSet resourceRefs = indicator.getAssignedResourceRefs();
+		for(ORef resourceRef : resourceRefs)
+		{
+			ProjectResource resource = ProjectResource.find(getProject(), resourceRef);
+			allResourceNames += resource.getFullName() + "; ";
+		}
+		
 		return allResourceNames;
 	}
 
