@@ -163,8 +163,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	public void testSingleAdd() throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = createTimePeriodCostsMap(1.0, createProjectResource(), 2.0);
-		verifyMerge(new TimePeriodCostsMap(), timePeriodCostsMap, 1.0, 20.0 + 1.0);
-		verifyMerge(timePeriodCostsMap, new TimePeriodCostsMap(), 1.0, 20.0 + 1.0);
+		verifyMerge(1.0, 20.0 + 1.0, new TimePeriodCostsMap(), timePeriodCostsMap);
+		verifyMerge(1.0, 20.0 + 1.0, timePeriodCostsMap, new TimePeriodCostsMap());
 	}
 
 	public void testMergeAddWithDifferentResrouce() throws Exception
@@ -172,7 +172,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(1.0, createProjectResource(), 2.0);
 		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(1.0, createProjectResource(), 1.0);
 		
-		verifyMerge(timePeriodCostsMap1, timePeriodCostsMap2, 2.0, 30.0 + 2.0);
+		verifyMerge(2.0, 30.0 + 2.0, timePeriodCostsMap1, timePeriodCostsMap2);
 	}
 	
 	public void testMergeAddWithSameResource() throws Exception
@@ -181,7 +181,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(1.0, projectResource, 2.0);
 		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(3.0, projectResource, 3.0);
 		
-		verifyMerge(timePeriodCostsMap1, timePeriodCostsMap2, 4.0, 50.0 + 4.0);
+		verifyMerge(4.0, 50.0 + 4.0, timePeriodCostsMap1, timePeriodCostsMap2);
 	}
 	
 	public void testMergeDifferentDates() throws Exception
@@ -200,10 +200,10 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap mapWithOnlyExpenses = createTimePeriodCostsMap(dateUnit2008, 10.0);
 		TimePeriodCostsMap mapWithOnlyResourceWorkUnits = createTimePeriodCostsMap(dateUnit2008, projectResource.getRef(), 3.0);
 		
-		verifyMerge(mapWithOnlyExpenses, mapWithOnlyResourceWorkUnits, 10.0, ((3.0 * 10.0) + 10.0));
+		verifyMerge(10.0, ((3.0 * 10.0) + 10.0), mapWithOnlyExpenses, mapWithOnlyResourceWorkUnits);
 	}
 	
-	private void verifyMerge(TimePeriodCostsMap destinationTimePeriodCostsMap, TimePeriodCostsMap timePeriodCostsMapToBeMerged, double expectedExpense, double expectedTotalCost)
+	private void verifyMerge(double expectedExpense, double expectedTotalCost, TimePeriodCostsMap destinationTimePeriodCostsMap, TimePeriodCostsMap timePeriodCostsMapToBeMerged)
 	{
 		verifyMerge(destinationTimePeriodCostsMap,timePeriodCostsMapToBeMerged, dateUnit2008, expectedExpense,expectedTotalCost);
 	}
