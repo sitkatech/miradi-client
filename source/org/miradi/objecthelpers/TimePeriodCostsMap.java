@@ -113,36 +113,15 @@ public class TimePeriodCostsMap
 		return false;
 	}
 	
-	private void mergeAddTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
+	private void mergeAddTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
-		{
-			existing.setExpense(existing.getExpense().add(timePeriodCosts.getExpense()));
-			HashMap<ORef, OptionalDouble> merged = mergeAddProjectResources(existing.getResourceUnitsMap(), timePeriodCosts.getResourceUnitsMap());
-			existing.setResourceUnitsMap(merged);
-		}
+			existing.mergeAddTimePeriodCosts(timePeriodCostsToMerge);
 		else
-		{
-			add(dateUnit, timePeriodCosts);
-		}
+			add(dateUnit, timePeriodCostsToMerge);
 	}
 	
-	private HashMap mergeAddProjectResources(HashMap<ORef, OptionalDouble> existingResourceUnitsMap, HashMap<ORef, OptionalDouble> resourceUnitsMapToMerge)
-	{
-		Set<ORef> keys = resourceUnitsMapToMerge.keySet();
-		for(ORef ref : keys)
-		{
-			OptionalDouble workUnits = resourceUnitsMapToMerge.get(ref);
-			if (existingResourceUnitsMap.containsKey(ref))
-				workUnits = workUnits.add(existingResourceUnitsMap.get(ref));
-			
-			existingResourceUnitsMap.put(ref, workUnits);
-		}
-		
-		return existingResourceUnitsMap;
-	}
-
 	private void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);

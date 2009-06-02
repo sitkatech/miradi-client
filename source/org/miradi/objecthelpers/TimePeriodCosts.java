@@ -145,6 +145,25 @@ public class TimePeriodCosts
 		return new HashMap(resourceUnitsMap);
 	}
 	
+	public void mergeAddTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
+	{
+		addExpenses(timePeriodCostsToMergeAdd.getExpense());
+		mergeAddProjectResourcesInPlace(timePeriodCostsToMergeAdd.getResourceUnitsMap());
+	}
+	
+	private void mergeAddProjectResourcesInPlace(HashMap<ORef, OptionalDouble> resourceUnitsMapToMerge)
+	{
+		Set<ORef> keys = resourceUnitsMapToMerge.keySet();
+		for(ORef ref : keys)
+		{
+			OptionalDouble workUnits = resourceUnitsMapToMerge.get(ref);
+			if (resourceUnitsMap.containsKey(ref))
+				workUnits = workUnits.add(resourceUnitsMap.get(ref));
+			
+			resourceUnitsMap.put(ref, workUnits);
+		}
+	}
+
 	public void setResourceUnitsMap(HashMap<ORef, OptionalDouble> resourceUnitsMapToUse)
 	{
 		resourceUnitsMap = resourceUnitsMapToUse;
