@@ -588,23 +588,6 @@ abstract public class BaseObject
 		return getTotalTimePeriodCostMap().getRolledUpDateRange(projectStartEndDateRange);
 	}
 
-	public DateRange combineSubtaskEffortListDateRanges(ORefList taskRefs) throws Exception
-	{
-		DateRange combinedDateRange = null;
-		for (int i = 0; i < taskRefs.size(); ++i)
-		{
-			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			DateRange thisCombineEffortListDateRanges = thisTask.getWhenRollup();
-			if (thisCombineEffortListDateRanges == null)
-				continue;
-			
-			DateRange thisDateRange = new DateRange(thisCombineEffortListDateRanges);
-			combinedDateRange = DateRange.combine(combinedDateRange, thisDateRange);
-		}
-		
-		return combinedDateRange;		
-	}
-
 	public String convertToSafeString(DateRange combinedDateRange)
 	{
 		if (combinedDateRange == null)
