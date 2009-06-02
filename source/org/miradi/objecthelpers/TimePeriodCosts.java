@@ -158,7 +158,7 @@ public class TimePeriodCosts
 		{
 			OptionalDouble workUnits = resourceUnitsMapToMerge.get(refToMerge);
 			if (resourceUnitsMap.containsKey(refToMerge))
-				workUnits = workUnits.add(resourceUnitsMap.get(refToMerge));
+				workUnits = workUnits.add(getUnits(refToMerge));
 			
 			resourceUnitsMap.put(refToMerge, workUnits);
 		}
