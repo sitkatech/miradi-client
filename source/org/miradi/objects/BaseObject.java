@@ -478,11 +478,6 @@ abstract public class BaseObject
 		return 1;
 	}
 	
-	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
-	{
-		return calculateTimePeriodCosts(dateUnitToUse).calculateResourcesTotalUnits();
-	}
-
 	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse)throws Exception
 	{
 		return getTotalTimePeriodCostMap().calculateTimePeriodCosts(dateUnitToUse);

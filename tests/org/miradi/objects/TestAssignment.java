@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.project.ProjectForTesting;
 import org.miradi.project.TestDateUnit;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -45,7 +46,7 @@ public class TestAssignment extends ObjectTestCase
 		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
 		
 		DateUnit dateUnit = getProject().createDateUnit(2008);
-		assertFalse("Empty assignment has work unit values?", assignment.getWorkUnits(dateUnit).hasValue());
+		assertFalse("Empty assignment has work unit values?", ProjectForTesting.calculateRawTimePeriodCosts(assignment, dateUnit).hasValue());
 
 		DateUnit dateUnit1 = TestDateUnit.month12;
 		DateUnit dateUnit2 = TestDateUnit.month01;
@@ -55,11 +56,11 @@ public class TestAssignment extends ObjectTestCase
 
 		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 
-		assertEquals("wrong assignment work units?", 2.0, assignment.getWorkUnits(dateUnit1).getValue());
-		assertEquals("wrong assignment work units?", 5.0, assignment.getWorkUnits(dateUnit2).getValue());
+		assertEquals("wrong assignment work units?", 2.0, ProjectForTesting.calculateTimePeriodCosts(assignment, dateUnit1));
+		assertEquals("wrong assignment work units?", 5.0, ProjectForTesting.calculateTimePeriodCosts(assignment, dateUnit2));
 		
 		DateUnit totalProjectDateUnit = new DateUnit();
-		assertEquals("wrong totals work units", 7.0, assignment.getWorkUnits(totalProjectDateUnit).getValue());
+		assertEquals("wrong totals work units", 7.0, ProjectForTesting.calculateTimePeriodCosts(assignment, totalProjectDateUnit));
 	}
 	
 	public DateUnitEffort createDateUnitEffort(int unitQuantatiy, DateUnit dateUnit) throws Exception

@@ -1304,6 +1304,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return timePeriodCosts;
 	}
 	
+	public static double calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	{
+		return calculateRawTimePeriodCosts(baseObject, dateUnit).getValue();
+	}
+	
+	public static OptionalDouble calculateRawTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	{
+		return baseObject.calculateTimePeriodCosts(dateUnit).calculateResourcesTotalUnits();
+	}
+			
 	private static int nextTargetId;
 	private static int nextCauseId;
 	private static int nextStrategyId;
