@@ -86,11 +86,11 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap2007 = createTimePeriodCostsMap(dateUnit2007, 22.0, projectResourcePaul, 12.0);
 		TimePeriodCostsMap timePeriodCostsMap2007Q1 = createTimePeriodCostsMap(new DateUnit("2007Q1"), 23.0, projectResourcePaul, 11.0);
 		
-		verifyMergeOverlay(timePeriodCostsMap2007, timePeriodCostsMap2007Q1);
-		verifyMergeOverlay(timePeriodCostsMap2007Q1, timePeriodCostsMap2007);
+		verifyMergeOverlay(23, timePeriodCostsMap2007, timePeriodCostsMap2007Q1);
+		verifyMergeOverlay(23, timePeriodCostsMap2007Q1, timePeriodCostsMap2007);
 	}
 
-	private void verifyMergeOverlay(TimePeriodCostsMap timePeriodCostsMap1, TimePeriodCostsMap timePeriodCostsMap2) throws Exception
+	private void verifyMergeOverlay(double expectedExpenses, TimePeriodCostsMap timePeriodCostsMap1, TimePeriodCostsMap timePeriodCostsMap2) throws Exception
 	{
 		TimePeriodCostsMap overlaidMap = new TimePeriodCostsMap();
 		
@@ -99,6 +99,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		
 		overlaidMap.mergeOverlay(timePeriodCostsMap2);
 		assertEquals("wrong size after merging map?", 1, overlaidMap.size());
+		
+		assertEquals(expectedExpenses, overlaidMap.calculateTimePeriodCosts(new DateUnit("")).getExpense().getValue());
 	}
 
 	public void testMergeOverlay() throws Exception
