@@ -47,7 +47,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	{
 		// NOTE: IF is for Speed optimization
 		if(visibleRows.contains(ResourceAssignment.OBJECT_NAME))
-			children.addAll(buildResourceAssignmentNodes(task.getAssignmentRefs()));
+			children.addAll(buildResourceAssignmentNodes(task.getResourceAssignmentRefs()));
 		
 		// NOTE: IF is for Speed optimization
 		if(visibleRows.contains(ExpenseAssignment.OBJECT_NAME))

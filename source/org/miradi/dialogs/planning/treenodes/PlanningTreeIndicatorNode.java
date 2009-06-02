@@ -40,7 +40,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 
 	public void rebuild() throws Exception
 	{
-		children.addAll(buildResourceAssignmentNodes(indicator.getAssignmentRefs()));
+		children.addAll(buildResourceAssignmentNodes(indicator.getResourceAssignmentRefs()));
 		children.addAll(buildExpenseAssignmentNodes(indicator.getExpenseRefs()));
 		createAndAddTaskNodes(indicator.getMethodRefs());
 		addSortedMeasurementChildren();
