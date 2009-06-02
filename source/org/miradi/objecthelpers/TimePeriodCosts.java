@@ -132,6 +132,9 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getUnits(ORef resourceRef)
 	{
+		if (!resourceUnitsMap.containsKey(resourceRef))
+			return new OptionalDouble();
+		
 		return resourceUnitsMap.get(resourceRef);
 	}
 	
@@ -157,8 +160,7 @@ public class TimePeriodCosts
 		for(ORef refToMerge : keysToMerge)
 		{
 			OptionalDouble workUnits = resourceUnitsMapToMerge.get(refToMerge);
-			if (resourceUnitsMap.containsKey(refToMerge))
-				workUnits = workUnits.add(getUnits(refToMerge));
+			workUnits = workUnits.add(getUnits(refToMerge));
 			
 			resourceUnitsMap.put(refToMerge, workUnits);
 		}
