@@ -60,7 +60,7 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		return baseObject.getWorkUnits(dateUnit);
+		return baseObject.calculateTimePeriodCosts(dateUnit).calculateResourcesTotalUnits();
 	}
 	
 	@Override
