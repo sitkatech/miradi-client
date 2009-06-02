@@ -34,7 +34,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 		OptionalDouble emptyDouble = timePeriodCosts.getUnits(ORef.INVALID);
-		assertNull("should not have value?", emptyDouble);
+		assertFalse("getUnits for bogus resource returned a value?", emptyDouble.hasValue());
 		
 		ProjectResource projectResource = createProjectResource();
 		timePeriodCosts.addResource(projectResource.getRef(), new OptionalDouble(10.0));
