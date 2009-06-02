@@ -21,7 +21,6 @@ package org.miradi.objecthelpers;
 
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.ProjectResource;
-import org.miradi.project.TestDateUnit;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
@@ -83,8 +82,9 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	{
 		ProjectResource projectResourcePaul = createProjectResource();
 		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
-		TimePeriodCostsMap timePeriodCostsMap2007 = createTimePeriodCostsMap(dateUnit2007, 22.0, projectResourcePaul, 12.0);
 		DateUnit smallerDateUnit = dateUnit2007.getSubDateUnits().get(0);
+
+		TimePeriodCostsMap timePeriodCostsMap2007 = createTimePeriodCostsMap(dateUnit2007, 22.0, projectResourcePaul, 12.0);
 		TimePeriodCostsMap timePeriodCostsMap2007Q1 = createTimePeriodCostsMap(smallerDateUnit, 23.0, projectResourcePaul, 11.0);
 		
 		verifyMergeOverlay(23, timePeriodCostsMap2007, timePeriodCostsMap2007Q1);
@@ -162,57 +162,92 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 
 	public void testSingleAdd() throws Exception
 	{
-		TimePeriodCostsMap timePeriodCostsMap = createTimePeriodCostsMap(1.0, createProjectResource(), 2.0);
-		verifyMerge(1.0, 20.0, new TimePeriodCostsMap(), timePeriodCostsMap);
-		verifyMerge(1.0, 20.0, timePeriodCostsMap, new TimePeriodCostsMap());
+		ProjectResource resource = createProjectResource();
+		double expenses = 1.0;
+		double workUnits = 2.0;
+		double resourceCosts = workUnits * resource.getCostPerUnit();
+		
+		TimePeriodCostsMap timePeriodCostsMap = createTimePeriodCostsMap(expenses, resource, workUnits);
+
+		verifyMerge(expenses, resourceCosts, new TimePeriodCostsMap(), timePeriodCostsMap);
+		verifyMerge(expenses, resourceCosts, timePeriodCostsMap, new TimePeriodCostsMap());
 	}
 
 	public void testMergeAddWithDifferentResrouce() throws Exception
 	{
-		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(1.0, createProjectResource(), 2.0);
-		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(1.0, createProjectResource(), 1.0);
+		ProjectResource resource1 = createProjectResource();
+		ProjectResource resource2 = createProjectResource();
+		double expenses1 = 1.0;
+		double expenses2 = 2.0;
+		double workUnits1 = 4.0;
+		double workUnits2 = 8.0;
+		double resourceCosts1 = workUnits1 * resource1.getCostPerUnit();
+		double resourceCosts2 = workUnits2 * resource2.getCostPerUnit();
+
+		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(expenses1, resource1, workUnits1);
+		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(expenses2, resource2, workUnits2);
 		
-		verifyMerge(2.0, 30.0, timePeriodCostsMap1, timePeriodCostsMap2);
+		verifyMerge(expenses1+expenses2, resourceCosts1+resourceCosts2, timePeriodCostsMap1, timePeriodCostsMap2);
 	}
 	
 	public void testMergeAddWithSameResource() throws Exception
 	{
-		ProjectResource projectResource = createProjectResource();
-		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(1.0, projectResource, 2.0);
-		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(3.0, projectResource, 3.0);
+		ProjectResource resource = createProjectResource();
+		double expenses1 = 1.0;
+		double expenses2 = 2.0;
+		double workUnits1 = 4.0;
+		double workUnits2 = 8.0;
+		double resourceCosts = (workUnits1 + workUnits2) * resource.getCostPerUnit();
+
+		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(expenses1, resource, workUnits1);
+		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(expenses2, resource, workUnits2);
 		
-		verifyMerge(4.0, 50.0, timePeriodCostsMap1, timePeriodCostsMap2);
+		verifyMerge(expenses1+expenses2, resourceCosts, timePeriodCostsMap1, timePeriodCostsMap2);
 	}
 	
 	public void testMergeDifferentDates() throws Exception
 	{
-		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(TestDateUnit.month01, 1.0, createProjectResource(), 2.0);
-		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(TestDateUnit.month12, 3.0);
-		
+		ProjectResource resource = createProjectResource();
+		double expenses1 = 1.0;
+		double expenses2 = 2.0;
+		double workUnits = 4.0;
+		double resourceCosts1 = workUnits * resource.getCostPerUnit();
+
+		DateUnit q1 = dateUnit2008.getSubDateUnits().get(0);
+		DateUnit q2 = dateUnit2008.getSubDateUnits().get(1);
+		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(q1, expenses1, resource, workUnits);
+		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(q2, expenses2);
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		verifyMerge(1.0, 20.0, mergedTimePeriodCostsMap, timePeriodCostsMap1, TestDateUnit.month01);
-		verifyMerge(3.0, 0.0, mergedTimePeriodCostsMap, timePeriodCostsMap2, TestDateUnit.month12);
+		
+		verifyMerge(expenses1, resourceCosts1, mergedTimePeriodCostsMap, timePeriodCostsMap1, q1);
+		verifyMerge(expenses2, 0.0, mergedTimePeriodCostsMap, timePeriodCostsMap2, q2);
+		assertEquals(expenses1+expenses2, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getExpense().getValue());
+		assertEquals(workUnits, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getUnits(resource.getRef()).getValue());
 	}
 
 	public void testMergeAddingIncompletedMaps() throws Exception
 	{
-		ProjectResource projectResource = createProjectResource();
-		TimePeriodCostsMap mapWithOnlyExpenses = createTimePeriodCostsMap(dateUnit2008, 10.0);
-		TimePeriodCostsMap mapWithOnlyResourceWorkUnits = createTimePeriodCostsMap(dateUnit2008, projectResource.getRef(), 3.0);
+		ProjectResource resource = createProjectResource();
+		double expenses = 1.0;
+		double workUnits = 2.0;
+		double resourceCosts = workUnits * resource.getCostPerUnit();
+
+		TimePeriodCostsMap mapWithOnlyExpenses = createTimePeriodCostsMap(dateUnit2008, expenses);
+		TimePeriodCostsMap mapWithOnlyResourceWorkUnits = createTimePeriodCostsMap(dateUnit2008, resource.getRef(), workUnits);
 		
-		verifyMerge(10.0, (3.0 * 10.0), mapWithOnlyExpenses, mapWithOnlyResourceWorkUnits);
+		verifyMerge(expenses, resourceCosts, mapWithOnlyExpenses, mapWithOnlyResourceWorkUnits);
 	}
 	
-	private void verifyMerge(double expectedExpense, double expectedResourcesCost, TimePeriodCostsMap destinationTimePeriodCostsMap, TimePeriodCostsMap timePeriodCostsMapToBeMerged)
+	private void verifyMerge(double expectedExpense, double expectedResourcesCost, TimePeriodCostsMap destinationTimePeriodCostsMap, TimePeriodCostsMap timePeriodCostsMapToBeMerged) throws Exception
 	{
 		verifyMerge(expectedExpense,expectedResourcesCost, destinationTimePeriodCostsMap, timePeriodCostsMapToBeMerged,dateUnit2008);
 	}
 
-	private void verifyMerge(double expectedExpense, double expectedResourcesCost, TimePeriodCostsMap destinationTimePeriodCostsMap,	TimePeriodCostsMap timePeriodCostsMapToBeMerged, DateUnit dateUnitForTimePeriodCosts)
+	private void verifyMerge(double expectedExpense, double expectedResourcesCost, TimePeriodCostsMap destinationTimePeriodCostsMap, TimePeriodCostsMap timePeriodCostsMapToBeMerged, DateUnit dateUnitForTimePeriodCosts) throws Exception
 	{
 		double expectedTotalCost = expectedExpense + expectedResourcesCost;
 		destinationTimePeriodCostsMap.mergeAdd(timePeriodCostsMapToBeMerged);
-		TimePeriodCosts  foundTimePeriodCosts = destinationTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnitForTimePeriodCosts);
+		TimePeriodCosts  foundTimePeriodCosts = destinationTimePeriodCostsMap.calculateTimePeriodCosts(dateUnitForTimePeriodCosts);
 		assertEquals("wrong expense after merge?", expectedExpense, foundTimePeriodCosts.getExpense().getValue());
 		assertEquals("wrong total cost after merge?", expectedTotalCost, foundTimePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
