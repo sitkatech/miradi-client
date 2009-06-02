@@ -1281,9 +1281,24 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public TimePeriodCosts createTimePeriodCosts(double expenses, ORef projectResourceRef, double units)
 	{
+		TimePeriodCosts timePeriodCosts = createTimePeriodCosts(projectResourceRef, units);
+		timePeriodCosts.setExpense(new OptionalDouble(expenses));
+		
+		return timePeriodCosts;
+	}
+	
+	public TimePeriodCosts createTimePeriodCosts(double expenses)
+	{
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
+		timePeriodCosts.setExpense(new OptionalDouble(expenses));
+		
+		return timePeriodCosts;
+	}
+	
+	public TimePeriodCosts createTimePeriodCosts(ORef projectResourceRef, double units)
+	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 		timePeriodCosts.addResource(projectResourceRef, new OptionalDouble(units));		
-		timePeriodCosts.setExpense(new OptionalDouble(expenses));
 		
 		return timePeriodCosts;
 	}
