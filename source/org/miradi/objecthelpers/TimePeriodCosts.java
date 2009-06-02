@@ -148,6 +148,11 @@ public class TimePeriodCosts
 		return new HashMap(resourceUnitsMap);
 	}
 	
+	public Set<ORef> getResourceRefSet()
+	{
+		return getResourceUnitsMap().keySet();
+	}
+	
 	public void mergeAddTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpenses(timePeriodCostsToMergeAdd.getExpense());

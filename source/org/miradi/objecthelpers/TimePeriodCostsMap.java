@@ -157,7 +157,7 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnit : keys)
 		{
 			final TimePeriodCosts timePeriodCosts = data.get(dateUnit);
-			allProjectResourceRefs.addAll(timePeriodCosts.getResourceUnitsMap().keySet());
+			allProjectResourceRefs.addAll(timePeriodCosts.getResourceRefSet());
 		}
 		
 		return allProjectResourceRefs;
