@@ -480,10 +480,10 @@ abstract public class BaseObject
 	
 	public OptionalDouble getWorkUnits(DateUnit dateUnitToUse) throws Exception
 	{
-		return getTotalCost(dateUnitToUse).calculateResourcesTotalUnits();
+		return calculateTimePeriodCosts(dateUnitToUse).calculateResourcesTotalUnits();
 	}
 
-	public TimePeriodCosts getTotalCost(DateUnit dateUnitToUse)throws Exception
+	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse)throws Exception
 	{
 		return getTotalTimePeriodCostMap().calculateTimePeriodCosts(dateUnitToUse);
 	}
