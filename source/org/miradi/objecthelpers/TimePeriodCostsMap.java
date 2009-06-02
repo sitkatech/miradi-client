@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.utils.DateRange;
-import org.miradi.utils.OptionalDouble;
 
 public class TimePeriodCostsMap
 {
@@ -126,16 +125,9 @@ public class TimePeriodCostsMap
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
-		{
-			existing.setExpense(existing.getExpense().add(timePeriodCostsToMerge.getExpense()));
-			HashMap<ORef, OptionalDouble> thisResourceUnitsMap = existing.getResourceUnitsMap();
-			thisResourceUnitsMap.putAll(timePeriodCostsToMerge.getResourceUnitsMap());
-			existing.setResourceUnitsMap(thisResourceUnitsMap);
-		}
+			existing.mergeOverlayTimePeriodCosts(timePeriodCostsToMerge);
 		else
-		{
 			add(dateUnit, timePeriodCostsToMerge);
-		}
 	}
 	
 	public DateRange getRolledUpDateRange(DateRange projectDateRange) throws Exception
