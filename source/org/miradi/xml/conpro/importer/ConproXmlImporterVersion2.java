@@ -64,6 +64,7 @@ import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
@@ -278,7 +279,14 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
 		DateRange dateRange = new DateRange(startDate, endDate);
 		DateUnit dateUnit = DateUnit.createFromDateRange(dateRange);
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(0.0, dateUnit);
+		final double unitQuantity = 0.0;
+		
+		return createDateUnitEffortList(dateUnit, unitQuantity);
+	}
+
+	private DateUnitEffortList createDateUnitEffortList(DateUnit dateUnit, final double unitQuantity)
+	{
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(unitQuantity, dateUnit);
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
 		
@@ -347,6 +355,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importField(methodNode, METHOD_NAME, methodRef, Task.TAG_LABEL);
 			importField(methodNode, METHOD_DETAIL, methodRef, Task.TAG_DETAILS);
 			importField(methodNode, METHOD_COMMENT, methodRef, Task.TAG_COMMENT);
+			importBudgetData(methodNode, methodRef);
 		}
 	}
 	
@@ -364,7 +373,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importCodeField(indicatorNode, PRIORITY, indicatorRef, Indicator.TAG_PRIORITY, getCodeMapHelper().getConProToMiradiRatingMap());
 			importProgressReports(indicatorNode, indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS);
 			importMeasurements(indicatorNode, indicatorRef);
-			importBudgetData(indicatorNode, indicatorRef);
 			importField(indicatorNode, COMMENT, indicatorRef, Indicator.TAG_COMMENT);
 		}
 	}
@@ -406,9 +414,18 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		setData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, measurementRefs);
 	}
 
-	private void importBudgetData(Node indicatorNode, ORef indicatorRef) throws Exception
+	private void importBudgetData(Node methodNode, ORef methodRef) throws Exception
 	{
-		//FIXME urgent: need to import budget data by creating new assignment
+		String annualCost = getPathData(methodNode, new String[]{ANNUAL_COST, });
+		if (annualCost.length() > 0)
+		{
+			ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignment.getObjectType());
+			ORefList expenseAssignmentRefs = new ORefList(expenseAssignmentRef);
+			setData(methodRef, Task.TAG_EXPENSE_REFS, expenseAssignmentRefs);
+
+			DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(new DateUnit(), Double.parseDouble(annualCost));
+			setData(expenseAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		}
 	}
 
 	private void importProgressReports(Node parentNode, ORef parentRef, String tag) throws Exception
