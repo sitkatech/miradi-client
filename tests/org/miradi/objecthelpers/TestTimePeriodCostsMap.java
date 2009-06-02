@@ -84,7 +84,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		ProjectResource projectResourcePaul = createProjectResource();
 		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
 		TimePeriodCostsMap timePeriodCostsMap2007 = createTimePeriodCostsMap(dateUnit2007, 22.0, projectResourcePaul, 12.0);
-		TimePeriodCostsMap timePeriodCostsMap2007Q1 = createTimePeriodCostsMap(new DateUnit("2007Q1"), 23.0, projectResourcePaul, 11.0);
+		DateUnit smallerDateUnit = dateUnit2007.getSubDateUnits().get(0);
+		TimePeriodCostsMap timePeriodCostsMap2007Q1 = createTimePeriodCostsMap(smallerDateUnit, 23.0, projectResourcePaul, 11.0);
 		
 		verifyMergeOverlay(23, timePeriodCostsMap2007, timePeriodCostsMap2007Q1);
 		verifyMergeOverlay(23, timePeriodCostsMap2007Q1, timePeriodCostsMap2007);
