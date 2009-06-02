@@ -466,7 +466,7 @@ indicators.element =
             & element cp:comment { text }?
             & # cp:detail - data going to Miradi but not returned
               element cp:detail { text }?
-            & measures.element
+            & measures.element?
             & element cp:methods {
                   [
                       documentation [
@@ -501,7 +501,7 @@ measures.combination1.element =
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }?
         & element cp:rating { vocabulary_rating_vggfp }?
-    }
+    }*
 measures.combination2.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
@@ -510,7 +510,7 @@ measures.combination2.element =
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }?
         & element cp:rating { vocabulary_rating_vggfp }?
-    }
+    }*
 measures.combination3.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
@@ -519,7 +519,7 @@ measures.combination3.element =
         & element cp:source { vocabulary_source_measures }
         & element cp:trend { vocabulary_trend }?
         & element cp:rating { vocabulary_rating_vggfp }?
-    }
+    }*
 measures.combination4.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
@@ -528,7 +528,7 @@ measures.combination4.element =
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }
         & element cp:rating { vocabulary_rating_vggfp }?
-    }
+    }*
 measures.combination5.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
@@ -537,7 +537,7 @@ measures.combination5.element =
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }?
         & element cp:rating { vocabulary_rating_vggfp }
-    }
+    }*
 #
 methods.element =
     element cp:methods {

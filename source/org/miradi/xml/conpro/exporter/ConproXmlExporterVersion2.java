@@ -275,24 +275,19 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		for (int refIndex = 0; refIndex < measurementRefs.size(); ++refIndex)
 		{
 			Measurement measurement = Measurement.find(getProject(), measurementRefs.get(refIndex));
-			String measurementSummary = measurement.getData(Measurement.TAG_SUMMARY);
 			String measurementDate = measurement.getData(Measurement.TAG_DATE);
 			String measurementStatusConfidenceCode = statusConfidenceToXmlValue(measurement.getData(Measurement.TAG_STATUS_CONFIDENCE));
 			String measurementTrendCode = trendToXmlValue(measurement.getData(Measurement.TAG_TREND));
 			String measurementRankingCode = rankingCodeToXmlValue(measurement.getData(Measurement.TAG_STATUS));
 				
-			String[] valuesToVerify = new String[]{measurementSummary, measurementDate, measurementStatusConfidenceCode, measurementTrendCode, measurementRankingCode,};
-			if (isAtLeastOneStringNonBlank(valuesToVerify))
-			{
-				writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, ++sequenceCounter);
-				writeElement(out, MEASUREMENT_SUMMARY, measurementSummary);
-				writeOptionalElement(out, MEASUREMENT_DATE, measurementDate);
-				writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  measurementStatusConfidenceCode);
-				writeOptionalElement(out, MEASUREMENT_TREND, measurementTrendCode);
-				writeOptionalElement(out, MEASUREMENT_RATING, measurementRankingCode);
+			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, ++sequenceCounter);
+			writeLabelElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
+			writeOptionalElement(out, MEASUREMENT_DATE, measurementDate);
+			writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  measurementStatusConfidenceCode);
+			writeOptionalElement(out, MEASUREMENT_TREND, measurementTrendCode);
+			writeOptionalElement(out, MEASUREMENT_RATING, measurementRankingCode);
 
-				writeEndElement(out, MEASUREMENT);
-			}
+			writeEndElement(out, MEASUREMENT);
 		}
 		
 		writeEndElement(out, MEASUREMENTS);
