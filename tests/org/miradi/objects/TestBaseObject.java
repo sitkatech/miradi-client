@@ -97,5 +97,14 @@ public class TestBaseObject extends EAMTestCase
 		assertNotEquals("Target/Cause with same Id were equal?", cause, target);
 	}
 	
+	public void testGetBudgetTotal() throws Exception
+	{
+		Indicator indicator = project.createIndicator();
+		assertFalse("indicator should not have a total cost?", indicator.getTotalBudgetCost().hasValue());
+		
+		project.addResourceAssignment(indicator, 20.0, 2006, 2006);
+		assertEquals("wrong total budget cost?", 200.0, indicator.getTotalBudgetCost().getValue());
+	}
+	
 	ProjectForTesting project;
 }
