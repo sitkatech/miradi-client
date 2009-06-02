@@ -546,7 +546,7 @@ abstract public class BaseObject
 	{		
 		try
 		{
-			return ProjectResource.getResourcesAsString(getProject(), getWhoTotal());
+			return ProjectResource.getResourcesAsString(getProject(), getWhoRollup());
 		}
 		catch (Exception e)
 		{
@@ -555,11 +555,6 @@ abstract public class BaseObject
 		}
 	}
 
-	protected ORefSet getWhoTotal() throws Exception
-	{
-		return getWhoRollup();
-	}
-	
 	public ORefSet getWhoRollup() throws Exception
 	{
 		return getTotalTimePeriodCostMap().getAllProjectResourceRefs();
