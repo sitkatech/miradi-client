@@ -33,6 +33,7 @@ import javax.xml.xpath.XPathExpression;
 import javax.xml.xpath.XPathExpressionException;
 import javax.xml.xpath.XPathFactory;
 
+import org.martus.util.MultiCalendar;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -49,6 +50,7 @@ import org.miradi.objecthelpers.CreateDiagramFactorLinkParameter;
 import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateFactorLinkParameter;
 import org.miradi.objecthelpers.CreateThreatStressRatingParameter;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -73,6 +75,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -100,6 +103,9 @@ import org.miradi.questions.TncMarineEcoRegionQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateRange;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelperVersion2;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
@@ -259,11 +265,24 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		String endDateAsString = getNodeContent(activityNode, ACTIVITY_END_DATE);
 		if (startDateAsString.length() > 0 && endDateAsString.length() > 0)
 		{
-			//FIXME urgent,  no longer saving when override in a field.  need to create a resourceAssignment
-			//MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
-			//MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
-			//DateRange dateRange = new DateRange(startDate, endDate);
+			ORef resourceAssignmentRef = getProject().createObject(ResourceAssignment.getObjectType());
+			DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(startDateAsString, endDateAsString);
+			setData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+			setIdListFromRefListData(activityRef, ResourceAssignment.TAG_ASSIGNMENT_IDS, new ORefList(resourceAssignmentRef), ResourceAssignment.getObjectType());
 		}
+	}
+
+	private DateUnitEffortList createDateUnitEffortList(String startDateAsString, String endDateAsString) throws Exception
+	{
+		MultiCalendar startDate = MultiCalendar.createFromIsoDateString(startDateAsString);
+		MultiCalendar endDate = MultiCalendar.createFromIsoDateString(endDateAsString);
+		DateRange dateRange = new DateRange(startDate, endDate);
+		DateUnit dateUnit = DateUnit.createFromDateRange(dateRange);
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(0.0, dateUnit);
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(dateUnitEffort);
+		
+		return dateUnitEffortList;
 	}
 	
 	private void importObjectives() throws Exception
