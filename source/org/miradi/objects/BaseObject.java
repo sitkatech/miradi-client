@@ -943,7 +943,7 @@ abstract public class BaseObject
 				list.addAll(getResourceAssignmentRefs());
 				break;
 			case ObjectType.EXPENSE_ASSIGNMENT:
-				list.addAll(getExpenseRefs());
+				list.addAll(getExpenseAssignmentRefs());
 				break;
 		}
 		
@@ -960,7 +960,7 @@ abstract public class BaseObject
 		return new ORefList(ResourceAssignment.getObjectType(), getResourceAssignmentIdList());
 	}
 	
-	public ORefList getExpenseRefs()
+	public ORefList getExpenseAssignmentRefs()
 	{
 		return expenseAssignmentRefs.getORefList();
 	}
