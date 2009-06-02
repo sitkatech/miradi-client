@@ -599,7 +599,7 @@ abstract public class BaseObject
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
-		assignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
+		resourceAssignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		
@@ -611,7 +611,7 @@ abstract public class BaseObject
 		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
-		addField(TAG_RESOURCE_ASSIGNMENT_IDS, assignmentIds);
+		addField(TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
 		addField(TAG_EXPENSE_REFS, expenseRefs);
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
@@ -952,7 +952,7 @@ abstract public class BaseObject
 	
 	public IdList getAssignmentIdList()
 	{
-		return assignmentIds.getIdList().createClone();
+		return resourceAssignmentIds.getIdList().createClone();
 	}
 	
 	public ORefList getAssignmentRefs()
@@ -1323,6 +1323,6 @@ abstract public class BaseObject
 	
 	private PseudoQuestionData latestProgressReport;
 	private PseudoStringData latestProgressReportDetails;
-	protected IdListData assignmentIds;
+	protected IdListData resourceAssignmentIds;
 	protected ORefListData expenseRefs;
 }
