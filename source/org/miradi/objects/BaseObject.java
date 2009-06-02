@@ -560,18 +560,6 @@ abstract public class BaseObject
 		return getWhoRollup();
 	}
 	
-	public ORefSet getAllResources(ORefList taskRefs) throws Exception
-	{
-		ORefSet resourceRefs = new ORefSet();
-		for (int i = 0; i < taskRefs.size(); ++i)
-		{
-			Task thisTask = Task.find(getProject(), taskRefs.get(i));
-			resourceRefs.addAll(thisTask.getWhoTotal());
-		}
-		
-		return resourceRefs;		
-	}
-	
 	public ORefSet getWhoRollup() throws Exception
 	{
 		return getTotalTimePeriodCostMap().getAllProjectResourceRefs();
