@@ -149,7 +149,7 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_SUBTASK_IDS, subTaskList.toString());
 
 		IdList assignmentList = new IdList(ResourceAssignment.getObjectType(), new BaseId[] {assignmentRef.getObjectId()});
-		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_ASSIGNMENT_IDS, assignmentList.toString());
+		project.setObjectData(ObjectType.TASK, taskId, Task.TAG_RESOURCE_ASSIGNMENT_IDS, assignmentList.toString());
 
 		//----------- start test -----------
 		

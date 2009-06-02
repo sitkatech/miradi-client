@@ -133,7 +133,7 @@ abstract public class BaseObject
 	
 	public boolean isIdListTag(String tag)
 	{
-		if (tag.equals(TAG_ASSIGNMENT_IDS))
+		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 		
 		return false;
@@ -159,7 +159,7 @@ abstract public class BaseObject
 			
 	public int getAnnotationType(String tag)
 	{
-		if (tag.equals(TAG_ASSIGNMENT_IDS))
+		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
 			return ResourceAssignment.getObjectType();
 		
 		throw new RuntimeException("Cannot find annotation type for " + tag);
@@ -491,7 +491,7 @@ abstract public class BaseObject
 	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
-		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_ASSIGNMENT_IDS);
+		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap);
@@ -599,7 +599,7 @@ abstract public class BaseObject
 	void clear()
 	{
 		label = new StringData(TAG_LABEL);
-		assignmentIds = new IdListData(TAG_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
+		assignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		
@@ -611,7 +611,7 @@ abstract public class BaseObject
 		presentationDataFields = new HashSet();
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
-		addField(TAG_ASSIGNMENT_IDS, assignmentIds);
+		addField(TAG_RESOURCE_ASSIGNMENT_IDS, assignmentIds);
 		addField(TAG_EXPENSE_REFS, expenseRefs);
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
@@ -1304,7 +1304,7 @@ abstract public class BaseObject
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
-	public static final String TAG_ASSIGNMENT_IDS = "AssignmentIds";
+	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_REFS = "ExpenseRefs";
 
 	protected BaseId id;

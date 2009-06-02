@@ -195,7 +195,7 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	@Override
 	protected String getListTag()
 	{
-		return BaseObject.TAG_ASSIGNMENT_IDS;
+		return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
 	}
 
 	@Override

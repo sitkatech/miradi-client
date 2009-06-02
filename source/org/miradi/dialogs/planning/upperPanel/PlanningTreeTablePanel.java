@@ -202,7 +202,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private boolean didAffectResourceAssignmentsAndExpenseAssignments(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_ASSIGNMENT_IDS))
+		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 		
 		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_REFS))
