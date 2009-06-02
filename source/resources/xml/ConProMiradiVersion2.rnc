@@ -466,7 +466,7 @@ indicators.element =
             & element cp:comment { text }?
             & # cp:detail - data going to Miradi but not returned
               element cp:detail { text }?
-            & measures.element?
+            & measures.element
             & element cp:methods {
                   [
                       documentation [
