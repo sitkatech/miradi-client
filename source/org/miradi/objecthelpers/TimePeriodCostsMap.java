@@ -41,7 +41,7 @@ public class TimePeriodCostsMap
 		return data.get(dateUnitToUse);
 	}
 	
-	public TimePeriodCosts getTotalCost(DateUnit dateUnitToUse) throws Exception
+	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCosts totalTimePeriodCosts = new TimePeriodCosts();
 		Set<DateUnit> dateUnitKeys = data.keySet();

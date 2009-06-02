@@ -485,7 +485,7 @@ abstract public class BaseObject
 
 	public TimePeriodCosts getTotalCost(DateUnit dateUnitToUse)throws Exception
 	{
-		return getTotalTimePeriodCostMap().getTotalCost(dateUnitToUse);
+		return getTotalTimePeriodCostMap().calculateTimePeriodCosts(dateUnitToUse);
 	}
 	
 	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
