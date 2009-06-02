@@ -153,14 +153,14 @@ public class TimePeriodCosts
 	
 	private void mergeAddProjectResourcesInPlace(HashMap<ORef, OptionalDouble> resourceUnitsMapToMerge)
 	{
-		Set<ORef> keys = resourceUnitsMapToMerge.keySet();
-		for(ORef ref : keys)
+		Set<ORef> keysToMerge = resourceUnitsMapToMerge.keySet();
+		for(ORef refToMerge : keysToMerge)
 		{
-			OptionalDouble workUnits = resourceUnitsMapToMerge.get(ref);
-			if (resourceUnitsMap.containsKey(ref))
-				workUnits = workUnits.add(resourceUnitsMap.get(ref));
+			OptionalDouble workUnits = resourceUnitsMapToMerge.get(refToMerge);
+			if (resourceUnitsMap.containsKey(refToMerge))
+				workUnits = workUnits.add(resourceUnitsMap.get(refToMerge));
 			
-			resourceUnitsMap.put(ref, workUnits);
+			resourceUnitsMap.put(refToMerge, workUnits);
 		}
 	}
 
