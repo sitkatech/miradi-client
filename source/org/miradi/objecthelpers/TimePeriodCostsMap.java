@@ -122,19 +122,19 @@ public class TimePeriodCostsMap
 			add(dateUnit, timePeriodCostsToMerge);
 	}
 	
-	private void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
+	private void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
 		{
-			existing.setExpense(existing.getExpense().add(timePeriodCosts.getExpense()));
+			existing.setExpense(existing.getExpense().add(timePeriodCostsToMerge.getExpense()));
 			HashMap<ORef, OptionalDouble> thisResourceUnitsMap = existing.getResourceUnitsMap();
-			thisResourceUnitsMap.putAll(timePeriodCosts.getResourceUnitsMap());
+			thisResourceUnitsMap.putAll(timePeriodCostsToMerge.getResourceUnitsMap());
 			existing.setResourceUnitsMap(thisResourceUnitsMap);
 		}
 		else
 		{
-			add(dateUnit, timePeriodCosts);
+			add(dateUnit, timePeriodCostsToMerge);
 		}
 	}
 	
