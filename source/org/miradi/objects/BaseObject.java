@@ -141,7 +141,7 @@ abstract public class BaseObject
 	
 	public boolean isRefList(String tag)
 	{
-		if (tag.equals(TAG_EXPENSE_REFS))
+		if (tag.equals(TAG_EXPENSE_ASSIGNMENT_REFS))
 			return true;
 		
 		return false;
@@ -490,7 +490,7 @@ abstract public class BaseObject
 	
 	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
 	{
-		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_REFS);
+		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_ASSIGNMENT_REFS);
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
@@ -600,7 +600,7 @@ abstract public class BaseObject
 	{
 		label = new StringData(TAG_LABEL);
 		resourceAssignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
-		expenseRefs = new ORefListData(TAG_EXPENSE_REFS);
+		expenseRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		
 		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL); 
@@ -612,7 +612,7 @@ abstract public class BaseObject
 		nonClearedFieldTags = new Vector();
 		addField(TAG_LABEL, label);
 		addField(TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
-		addField(TAG_EXPENSE_REFS, expenseRefs);
+		addField(TAG_EXPENSE_ASSIGNMENT_REFS, expenseRefs);
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
@@ -1305,7 +1305,7 @@ abstract public class BaseObject
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
-	public static final String TAG_EXPENSE_REFS = "ExpenseRefs";
+	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 
 	protected BaseId id;
 	protected StringData label;

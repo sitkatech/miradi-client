@@ -26,6 +26,6 @@ public class DeleteExpenseDoer extends DeleteListedObjectDoer
 	@Override
 	protected String getListTag()
 	{
-		return BaseObject.TAG_EXPENSE_REFS;
+		return BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS;
 	}
 }
