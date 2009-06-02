@@ -171,6 +171,13 @@ public class TimePeriodCosts
 		}
 	}
 
+	public void mergeOverlayTimePeriodCosts(TimePeriodCosts timePeriodCostsToMerge)
+	{
+		setExpense(getExpense().add(timePeriodCostsToMerge.getExpense()));
+		
+		resourceUnitsMap.putAll(timePeriodCostsToMerge.getResourceUnitsMap());
+	}
+
 	public void setResourceUnitsMap(HashMap<ORef, OptionalDouble> resourceUnitsMapToUse)
 	{
 		resourceUnitsMap = resourceUnitsMapToUse;
