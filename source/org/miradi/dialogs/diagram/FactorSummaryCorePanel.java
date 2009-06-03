@@ -77,7 +77,6 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		
 		if(factorToEdit.isStrategy())
 		{
-			
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);
 			addField(createClassificationChoiceField(Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
 

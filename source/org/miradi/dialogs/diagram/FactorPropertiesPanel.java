@@ -250,13 +250,13 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(activitiesTab);
 		}
 
-		if (factor.canHaveIndicators() && !isKeaViabilityMode && !factor.isTarget())
+		if (factor.canHaveIndicators() && !isKeaViabilityMode && !factor.isTarget() && !factor.isHumanWelfareTarget())
 		{
 			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			addTab(indicatorsTab);
 		}
 		
-		if ( factor.isTarget() && !isKeaViabilityMode)
+		if ( (factor.isTarget() || factor.isHumanWelfareTarget()) && !isKeaViabilityMode)
 		{
 			simpleViabilityTab = new SimpleViabilityPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			tabs.addTab(simpleViabilityTab.getPanelDescription(), simpleViabilityTab.getIcon(), simpleViabilityTab);
@@ -274,7 +274,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(stressTab);
 		}
 			
-		if (factor.isTarget())
+		if (factor.isTarget() || factor.isHumanWelfareTarget())
 		{
 			subTargetTab = new SubTargetManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			addTab(subTargetTab);
