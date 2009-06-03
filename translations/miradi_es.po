@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 15:24-0500\n"
+"POT-Creation-Date: 2009-06-03 15:33-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2480,7 +2480,7 @@ msgstr "Versión: "
 
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
 msgid "Priority"
 msgstr "Prioridad"
 
@@ -2527,7 +2527,7 @@ msgstr "Objeto "
 #: miradi/source/org/miradi/forms/objects/TaskDetailsSubForm.java:33
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:53
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
 msgid "Progress Reports"
 msgstr "Informes de progreso"
 
@@ -6438,7 +6438,7 @@ msgstr "Métodos"
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:142
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:129
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:128
 msgid "Summary"
 msgstr "Resumen"
 
@@ -6876,7 +6876,7 @@ msgid "Link Properties"
 msgstr "Propiedades del enlace"
 
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Legacy TNC Ratings"
 msgstr "Calificaciones de TNC heredadas"
 
@@ -6896,11 +6896,11 @@ msgstr "Propiedades de la cadena de resultados"
 msgid "Conceptual Model Page Properties"
 msgstr "Propiedades de la página Modelo conceptual"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:67
 msgid "Font"
 msgstr "Fuente"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:108
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:107
 #, fuzzy
 msgid "Tags"
 msgstr "Tags"
