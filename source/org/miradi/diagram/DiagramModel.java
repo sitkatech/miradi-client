@@ -106,8 +106,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 
 		cellInventory = new CellInventory();
 		graphLayoutCache = new PartialGraphLayoutCache(this);
-		//FIXME urgent: disabled adding old kind of scope box. remove all old scope box code
-		//insertCellIntoGraph(projectScopeBox);
 	}
 
 	public Project getProject()
