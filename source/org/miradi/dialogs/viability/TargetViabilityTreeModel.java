@@ -59,7 +59,7 @@ public class TargetViabilityTreeModel extends GenericViabilityTreeModel
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "TargetViabilityTreeModel";
 	
 	public static String[] columnTags = {DEFAULT_COLUMN, 
-										 ViabilityTreeModel.TAG_STATUS,
+										 ViabilityTreeModel.VIRTUAL_TAG_STATUS,
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 										 ViabilityMeasurementNode.POOR,
 										 ViabilityMeasurementNode.FAIR,

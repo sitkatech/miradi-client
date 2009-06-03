@@ -68,7 +68,7 @@ public class ViabilityProjectNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		if (ViabilityTreeModel.columnTags[column].equals(ViabilityTreeModel.TAG_STATUS))
+		if (ViabilityTreeModel.columnTags[column].equals(ViabilityTreeModel.VIRTUAL_TAG_STATUS))
 		{
 			String code = Target.computeTNCViability(project);
 			return statusQuestion.findChoiceByCode(code);
