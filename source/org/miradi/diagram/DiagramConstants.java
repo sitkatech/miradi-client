@@ -53,6 +53,11 @@ public class DiagramConstants
 		new Color(200, 255, 200), 
 		new Color(80, 255, 80), 
 		new Color(64, 220, 64)};
+	public static final Color[] humanWelfareTargetColorChoices = {
+		new Color(255, 204, 102),
+		new Color(235, 184, 82), 
+		new Color(215, 164, 62), 
+		new Color(195, 124, 42),};
 	public static final Color[] scopeColorChoices = {
 		new Color(0, 255, 0), 
 		new Color(128, 255, 128), 
@@ -73,6 +78,7 @@ public class DiagramConstants
 		new Color(240, 150, 255)};
 	
 	public static final Color DEFAULT_TARGET_COLOR = targetColorChoices[1];
+	public static final Color DEFAULT_HUMAN_WELFARE_TARGET_COLOR = humanWelfareTargetColorChoices[1];
 	public static final Color DEFAULT_DIRECT_THREAT_COLOR = directThreatColorChoices[0];
 	public static final Color DEFAULT_CONTRIBUTING_FACTOR_COLOR = contributingFactorColorChoices[0];
 	public static final Color DEFAULT_STRATEGY_COLOR = strategyColorChoices[0];

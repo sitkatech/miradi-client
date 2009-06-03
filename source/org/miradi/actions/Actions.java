@@ -148,6 +148,7 @@ public class Actions
 		registerAction(new ActionInsertThreatReductionResult(mainWindow));
 		registerAction(new ActionInsertFactorLink(mainWindow));
 		registerAction(new ActionInsertTarget(mainWindow));
+		registerAction(new ActionInsertHumanWelfareTarget(mainWindow));
 		registerAction(new ActionInsertDraftStrategy(mainWindow));
 		registerAction(new ActionInsertStrategy(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));

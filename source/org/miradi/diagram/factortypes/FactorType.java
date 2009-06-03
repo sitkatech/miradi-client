@@ -25,6 +25,7 @@ import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
+import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
@@ -37,6 +38,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
@@ -129,6 +131,9 @@ public abstract class FactorType
 		if (factor.isTarget())
 			return EAM.fieldLabel(Target.getObjectType(), Target.OBJECT_NAME);
 		
+		if (factor.isHumanWelfareTarget())
+			return EAM.fieldLabel(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME);
+		
 		if (factor.isIntermediateResult())
 			return EAM.fieldLabel(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME);
 
@@ -167,6 +172,9 @@ public abstract class FactorType
 		
 		if (factor.isTarget())
 			return new TargetIcon();
+		
+		if (factor.isHumanWelfareTarget())
+			return new HumanWelfareTargetIcon();
 		
 		if (factor.isStress())
 			return new StressIcon();

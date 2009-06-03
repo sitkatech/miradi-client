@@ -30,6 +30,7 @@ import javax.swing.border.EmptyBorder;
 import org.miradi.actions.ActionInsertDraftStrategy;
 import org.miradi.actions.ActionInsertFactorLink;
 import org.miradi.actions.ActionInsertGroupBox;
+import org.miradi.actions.ActionInsertHumanWelfareTarget;
 import org.miradi.actions.ActionInsertScopeBox;
 import org.miradi.actions.ActionInsertStrategy;
 import org.miradi.actions.ActionInsertTarget;
@@ -40,6 +41,7 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
+import org.miradi.diagram.cells.DiagramHumanWelfareTarget;
 import org.miradi.diagram.cells.DiagramScopeBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
 import org.miradi.diagram.cells.DiagramTargetCell;
@@ -67,6 +69,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
@@ -145,6 +148,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		createCheckBox(ScopeBox.OBJECT_NAME);
 		createCheckBox(Target.OBJECT_NAME);
+		createCheckBox(HumanWelfareTarget.OBJECT_NAME);
 		
 		createCheckBox(Cause.OBJECT_NAME_THREAT);
 		createCheckBox(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR);
@@ -176,6 +180,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addButtonLineWithCheckBox(jpanel, ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME, actions.get(ActionInsertScopeBox.class));
 		
 		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
+		addButtonLineWithCheckBox(jpanel, HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
 		createCustomLegendPanelSection(actions, jpanel);
 		
 		addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(),Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
@@ -276,6 +281,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			manager.setVisibility(DiagramStrategyCell.class, checkBox.isSelected());
 		else if (property.equals(Target.OBJECT_NAME))
 			manager.setVisibility(DiagramTargetCell.class, checkBox.isSelected());
+		else if (property.equals(HumanWelfareTarget.OBJECT_NAME))
+			manager.setVisibility(DiagramHumanWelfareTarget.class, checkBox.isSelected());
 		else if (property.equals(FactorLink.OBJECT_NAME))
 		{
 			manager.setFactorLinksVisible(checkBox.isSelected());
@@ -318,6 +325,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	
 		else if (property.equals(Target.OBJECT_NAME))
 			checkBox.setSelected(manager.isTypeVisible(DiagramTargetCell.class));
+		
+		else if (property.equals(HumanWelfareTarget.OBJECT_NAME))
+			checkBox.setSelected(manager.isTypeVisible(DiagramHumanWelfareTarget.class));
 		
 		else if (property.equals(Strategy.OBJECT_NAME))
 			checkBox.setSelected(manager.isTypeVisible(DiagramStrategyCell.class));
