@@ -306,7 +306,6 @@ public class Indicator extends BaseObject
 		super.clear();
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		priority = new ChoiceData(TAG_PRIORITY, getQuestion(PriorityRatingQuestion.class));
-		status = new ChoiceData(TAG_STATUS, getQuestion(IndicatorStatusRatingQuestion.class));
 		methodIds = new IdListData(TAG_METHOD_IDS, Task.getObjectType());
 		indicatorThreshold = new StringMapData(TAG_INDICATOR_THRESHOLD);
 		ratingSource= new ChoiceData(TAG_RATING_SOURCE, getQuestion(RatingSourceQuestion.class));
@@ -339,7 +338,6 @@ public class Indicator extends BaseObject
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_PRIORITY, priority);
-		addField(TAG_STATUS, status);
 		addField(TAG_METHOD_IDS, methodIds);
 		addField(TAG_INDICATOR_THRESHOLD, indicatorThreshold);
 		addField(TAG_RATING_SOURCE, ratingSource);
@@ -414,7 +412,6 @@ public class Indicator extends BaseObject
 
 	private StringData shortLabel;
 	private ChoiceData priority;
-	private ChoiceData status;
 	private IdListData methodIds;
 	private StringMapData indicatorThreshold;
 	private ChoiceData ratingSource;
