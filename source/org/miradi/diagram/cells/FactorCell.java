@@ -323,6 +323,11 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedFactor().isTarget();
 	}
 	
+	public boolean isHumanWelfareTarget()
+	{
+		return getWrappedFactor().isHumanWelfareTarget();
+	}
+	
 	public boolean isContributingFactor()
 	{
 		return getWrappedFactor().isContributingFactor();

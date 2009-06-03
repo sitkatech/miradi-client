@@ -270,6 +270,11 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 	
+	public boolean isHumanWelfareTarget()
+	{
+		return false;
+	}
+	
 	public boolean isContributingFactor()
 	{
 		return false;

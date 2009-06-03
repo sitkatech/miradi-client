@@ -53,6 +53,7 @@ import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.GroupBoxIcon;
+import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
@@ -73,6 +74,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
@@ -473,6 +475,9 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if (factor.isTarget())
 			return new PanelTitleLabel(EAM.fieldLabel(Target.getObjectType(), Target.OBJECT_NAME), new TargetIcon(), UiLabel.LEADING);
+		
+		if (factor.isHumanWelfareTarget())
+			return  new PanelTitleLabel(EAM.fieldLabel(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME), new HumanWelfareTargetIcon(), UiLabel.LEADING);
 		
 		if (factor.isIntermediateResult())
 			return new PanelTitleLabel(EAM.fieldLabel(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME), new IntermediateResultIcon(), UiLabel.LEADING);

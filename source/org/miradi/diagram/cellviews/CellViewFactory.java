@@ -43,6 +43,10 @@ public class CellViewFactory extends DefaultCellViewFactory
 		{
 			return new EllipseFactorView(diagramFactor);
 		}
+		if(diagramFactor.isHumanWelfareTarget())
+		{
+			return new EllipseFactorView(diagramFactor);
+		}
 		if(diagramFactor.isDirectThreat())
 		{
 			return new RectangleFactorView(diagramFactor);

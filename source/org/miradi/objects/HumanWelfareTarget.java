@@ -41,6 +41,12 @@ public class HumanWelfareTarget extends AbstractTarget
 	}
 	
 	@Override
+	public boolean isHumanWelfareTarget()
+	{
+		return true;
+	}
+	
+	@Override
 	public int getType()
 	{
 		return getObjectType();

@@ -38,6 +38,7 @@ import org.jgraph.graph.GraphLayoutCache;
 import org.miradi.diagram.cells.DiagramActivityCell;
 import org.miradi.diagram.cells.DiagramCauseCell;
 import org.miradi.diagram.cells.DiagramGroupBoxCell;
+import org.miradi.diagram.cells.DiagramHumanWelfareTarget;
 import org.miradi.diagram.cells.DiagramIntermediateResultCell;
 import org.miradi.diagram.cells.DiagramScopeBoxCell;
 import org.miradi.diagram.cells.DiagramStrategyCell;
@@ -71,6 +72,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Goal;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ScopeBox;
@@ -162,6 +164,9 @@ abstract public class DiagramModel extends DefaultGraphModel
 		
 		if (factorType == ObjectType.SCOPE_BOX)
 			return new DiagramScopeBoxCell((ScopeBox) factor, diagramFactor);
+		
+		if (HumanWelfareTarget.is(factorType))
+			return new DiagramHumanWelfareTarget((HumanWelfareTarget) factor, diagramFactor);
 		
 		throw new RuntimeException("Unknown factor type "+factorType);
 	}
