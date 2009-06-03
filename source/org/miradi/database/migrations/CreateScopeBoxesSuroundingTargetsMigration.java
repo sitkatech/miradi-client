@@ -39,6 +39,19 @@ import org.miradi.views.diagram.doers.InsertScopeBoxDoer;
 
 public class CreateScopeBoxesSuroundingTargetsMigration
 {
+	private static final String DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
+
+	private static final String LOCATION = "Location";
+
+	private static final String SIZE = "Size";
+
+	private static final String WRAPPED_FACTOR_REF = "WrappedFactorRef";
+
+	private static final String TRUE = "true";
+
+	private static final String ID = "Id";
+
+	private static final String MANIFEST_LABEL = "manifest";
 	public CreateScopeBoxesSuroundingTargetsMigration(File jsonDirToUse)
 	{
 		jsonDir = jsonDirToUse;
@@ -59,7 +72,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 			throw new RuntimeException("There are no diagramFactors.");
 			
 		
-		File diagramFactorManifestFile = new File(getDiagramFactorDir(), "manifest");
+		File diagramFactorManifestFile = new File(getDiagramFactorDir(), MANIFEST_LABEL);
 		if (! diagramFactorManifestFile.exists())
 			throw new RuntimeException("no diagram factor manifest exists");
 		
@@ -81,7 +94,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		
 		EnhancedJsonObject scopeBoxManifestJson = new EnhancedJsonObject();
 		scopeBoxManifestJson.put("Type", "ObjectManifest");
-		File scopeBoxManifestFile = new File(scopeBoxDir, "manifest");
+		File scopeBoxManifestFile = new File(scopeBoxDir, MANIFEST_LABEL);
 		DataUpgrader.createFile(scopeBoxManifestFile, scopeBoxManifestJson.toString());
 		if (! scopeBoxManifestFile.exists())
 			throw new RuntimeException("no scopeBox manifest exists");
@@ -105,7 +118,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	
 	private void createScopeBoxes(File diagramObjectDir, File scopeBoxDir, EnhancedJsonObject scopeBoxManifestJson, final int diagramObjectType) throws Exception
 	{
-		File diagramObjectManifestFile = new File(diagramObjectDir, "manifest");
+		File diagramObjectManifestFile = new File(diagramObjectDir, MANIFEST_LABEL);
 		if (! diagramObjectManifestFile.exists())
 			return;
 		
@@ -116,7 +129,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 			BaseId thisDiagramObjectId = diagramObjectIds[i];
 			File diagramObjectJsonFile = new File(diagramObjectDir, Integer.toString(thisDiagramObjectId.asInt()));
 			EnhancedJsonObject diagramObjectJson = readFile(diagramObjectJsonFile);
-			IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString("DiagramFactorIds"));
+			IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString(DIAGRAM_FACTOR_IDS));
 			Rectangle scopeBoxBounds = getScopeBoxBounds(diagramFactorIds);
 			if (!scopeBoxBounds.isEmpty())
 			{
@@ -189,10 +202,10 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		int newScopeBoxId = ++highestId;
 		DataUpgrader.writeHighestIdToProjectFile(getJsonDir(), newScopeBoxId);
 	
-		scopeBoxManifestJson.put(Integer.toString(newScopeBoxId), "true");	
+		scopeBoxManifestJson.put(Integer.toString(newScopeBoxId), TRUE);	
 		
 		EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject();
-		scopeBoxJson.put("Id", Integer.toString(newScopeBoxId));
+		scopeBoxJson.put(ID, Integer.toString(newScopeBoxId));
 		scopeBoxJson.put("Label", getShortScope());
 		scopeBoxJson.put("Text", getScope());
 		
@@ -206,7 +219,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	
 	private void createScopeBoxDiagramFactor(File diagramObjectJsonFile, EnhancedJsonObject diagramObjectJson, final int diagramObjectType, BaseId newlyCreatedScopeBoxId, Rectangle scopeBoxBounds) throws Exception
 	{
-		File diagramFactorManifestFile = new File(getDiagramFactorDir(), "manifest");
+		File diagramFactorManifestFile = new File(getDiagramFactorDir(), MANIFEST_LABEL);
 		if (! diagramFactorManifestFile.exists())
 			throw new RuntimeException("Diagram factor manifest file does not exist.");
 	
@@ -214,20 +227,20 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		int highestId = DataUpgrader.readHighestIdInProjectFile(getJsonDir());
 		int newScopeBoxDiagramFactorId = ++highestId;
 		DataUpgrader.writeHighestIdToProjectFile(getJsonDir(), newScopeBoxDiagramFactorId);
-		diagramFactorManifestJson.put(Integer.toString(newScopeBoxDiagramFactorId), "true");
+		diagramFactorManifestJson.put(Integer.toString(newScopeBoxDiagramFactorId), TRUE);
 		
 		EnhancedJsonObject scopeBoxDiagramFactorJson = readFile(diagramFactorManifestFile);
-		scopeBoxDiagramFactorJson.put(Integer.toString(newScopeBoxDiagramFactorId), "true");
+		scopeBoxDiagramFactorJson.put(Integer.toString(newScopeBoxDiagramFactorId), TRUE);
 		
 		EnhancedJsonObject scopeBoxJson = new EnhancedJsonObject();
-		scopeBoxJson.put("Id", Integer.toString(newScopeBoxDiagramFactorId));
-		scopeBoxJson.put("WrappedFactorRef", new ORef(SCOPE_BOX_TYPE, newlyCreatedScopeBoxId).toString());
-		scopeBoxJson.put("Size", EnhancedJsonObject.convertFromDimension(scopeBoxBounds.getSize()));
-		scopeBoxJson.put("Location", EnhancedJsonObject.convertFromPoint(scopeBoxBounds.getLocation()));
+		scopeBoxJson.put(ID, Integer.toString(newScopeBoxDiagramFactorId));
+		scopeBoxJson.put(WRAPPED_FACTOR_REF, new ORef(SCOPE_BOX_TYPE, newlyCreatedScopeBoxId).toString());
+		scopeBoxJson.put(SIZE, EnhancedJsonObject.convertFromDimension(scopeBoxBounds.getSize()));
+		scopeBoxJson.put(LOCATION, EnhancedJsonObject.convertFromPoint(scopeBoxBounds.getLocation()));
 		
-		IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString("DiagramFactorIds"));
+		IdList diagramFactorIds = new IdList(diagramObjectType, diagramObjectJson.optString(DIAGRAM_FACTOR_IDS));
 		diagramFactorIds.add(newScopeBoxDiagramFactorId);
-		diagramObjectJson.put("DiagramFactorIds", diagramFactorIds.toString());
+		diagramObjectJson.put(DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
 		DataUpgrader.writeJson(diagramObjectJsonFile, diagramObjectJson);
 		
 		File scopeBoxFile = new File(getDiagramFactorDir(), Integer.toString(newScopeBoxDiagramFactorId));
@@ -252,11 +265,11 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		for (int index = 0; index < getAllDiagramFactorJsons().size(); ++index)
 		{
 			EnhancedJsonObject diagramFactorJson = getAllDiagramFactorJsons().get(index);
-			BaseId diagramFactorId = diagramFactorJson.getId("Id");
+			BaseId diagramFactorId = diagramFactorJson.getId(ID);
 			if (!diagramFactorIdsFromDiagramObject.contains(diagramFactorId))
 				continue;
 			
-			ORef wrappedRef = diagramFactorJson.getRef("WrappedFactorRef");
+			ORef wrappedRef = diagramFactorJson.getRef(WRAPPED_FACTOR_REF);
 			if (TARGET_TYPE == wrappedRef.getObjectType())
 				targetDiagramFactorJsons.add(diagramFactorJson);
 		}
@@ -267,8 +280,8 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 	private Rectangle getBoundsOfDiagramFactorOrItsGroupBox(EnhancedJsonObject targetDiagramFactorJson) throws Exception
 	{
 		EnhancedJsonObject targetOrItsGroupBoxDiagramFactorJson = getTargetOrItsGroupBoxJson(targetDiagramFactorJson);
-		Point location = targetOrItsGroupBoxDiagramFactorJson.getPoint("Location");
-		Dimension size = targetOrItsGroupBoxDiagramFactorJson.getDimension("Size");
+		Point location = targetOrItsGroupBoxDiagramFactorJson.getPoint(LOCATION);
+		Dimension size = targetOrItsGroupBoxDiagramFactorJson.getDimension(SIZE);
 		
 		return new Rectangle(location.x, location.y, size.width, size.height);
 	}
@@ -279,7 +292,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		{
 			EnhancedJsonObject diagramFactorJson = getAllDiagramFactorJsons().get(index);
 			ORefList groupBoxChildren = diagramFactorJson.optRefList("GroupBoxChildrenRefs");
-			BaseId targetDiagramFactorId = targetDiagramFactorJson.getId("Id");
+			BaseId targetDiagramFactorId = targetDiagramFactorJson.getId(ID);
 			if (groupBoxChildren.contains(new ORef(DiagramFactor.getObjectType(), targetDiagramFactorId)))
 				return diagramFactorJson;
 		}
@@ -305,7 +318,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		if (! projectMetadataDir.exists())
 			throw new RuntimeException("Could not find project metadata folder");
 
-		File projectMetadataManifestFile = new File(projectMetadataDir, "manifest");
+		File projectMetadataManifestFile = new File(projectMetadataDir, MANIFEST_LABEL);
 		if (!projectMetadataManifestFile.exists())
 			throw new RuntimeException("Could not find project metadata manifest file");
 		
