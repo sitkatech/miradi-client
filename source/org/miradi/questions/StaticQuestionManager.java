@@ -41,7 +41,6 @@ public class StaticQuestionManager
 		addQuestion(new FiscalYearStartQuestion());
 		addQuestion(new FontFamiliyQuestion());
 		addQuestion(new FontSizeQuestion());
-		addQuestion(new IndicatorStatusRatingQuestion());
 		addQuestion(new KeyEcologicalAttributeTypeQuestion());
 		addQuestion(new LanguageQuestion());
 		addQuestion(new PriorityRatingQuestion());
