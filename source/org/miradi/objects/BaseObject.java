@@ -469,7 +469,7 @@ abstract public class BaseObject
 	
 	public OptionalDouble getTotalBudgetCost() throws Exception
 	{
-		final TimePeriodCosts totalTimePeriodCosts = getTotalTimePeriodCostMap().calculateTimePeriodCosts(new DateUnit());
+		final TimePeriodCosts totalTimePeriodCosts = getTotalTimePeriodCostsMap().calculateTimePeriodCosts(new DateUnit());
 		return totalTimePeriodCosts.calculateTotalCost(getProject());
 	}
 
@@ -480,10 +480,10 @@ abstract public class BaseObject
 	
 	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse)throws Exception
 	{
-		return getTotalTimePeriodCostMap().calculateTimePeriodCosts(dateUnitToUse);
+		return getTotalTimePeriodCostsMap().calculateTimePeriodCosts(dateUnitToUse);
 	}
 	
-	protected TimePeriodCostsMap getTotalTimePeriodCostMap() throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMap() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_ASSIGNMENT_REFS);
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
@@ -552,7 +552,7 @@ abstract public class BaseObject
 
 	public ORefSet getAssignedResourceRefs() throws Exception
 	{
-		return getTotalTimePeriodCostMap().getAllProjectResourceRefs();
+		return getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
 	}
 
 	public String formatCurrency(double cost)
@@ -580,7 +580,7 @@ abstract public class BaseObject
 	public DateRange getWhenRollup() throws Exception
 	{
 		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
-		return getTotalTimePeriodCostMap().getRolledUpDateRange(projectStartEndDateRange);
+		return getTotalTimePeriodCostsMap().getRolledUpDateRange(projectStartEndDateRange);
 	}
 
 	public String convertToSafeString(DateRange combinedDateRange)
