@@ -122,6 +122,8 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 		{
 			//FIXME urgent: this is a temp method to output the xml into a file. remove when class is done
 			// maybe use a runtime flag to decide whether to putput for debugging or not?
+			//The first time this is needed again while debugging conpro use the current debugging flag and make 
+			//sure the .xml file is placed in the project dir.
 			//OutputToFileForDevelopment(fileInputStream);
 			conProXmlImporter.importConProProject(fileInputStream);
 		}
