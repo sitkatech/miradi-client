@@ -25,6 +25,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -33,6 +34,7 @@ import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
 import org.miradi.dialogs.base.DisposablePanel;
@@ -52,16 +54,6 @@ import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
 import org.miradi.dialogs.viability.FactorPropertiesViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetPropertiesKeaViabilityTreeManagementPanel;
 import org.miradi.dialogs.viability.TargetViabilityManagementPanel;
-import org.miradi.icons.ContributingFactorIcon;
-import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.GroupBoxIcon;
-import org.miradi.icons.HumanWelfareTargetIcon;
-import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.ScopeBoxIcon;
-import org.miradi.icons.StrategyIcon;
-import org.miradi.icons.TargetIcon;
-import org.miradi.icons.TextBoxIcon;
-import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -76,13 +68,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
-import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -411,7 +397,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		currentFactorChangerComboBox.rebuild();
 	}
 
-	private Component createLabelBar(DiagramFactor diagramFactor)
+	private Component createLabelBar(DiagramFactor diagramFactor) throws Exception
 	{
 		ORef factorORef = diagramFactor.getWrappedORef();
 		Factor factor = (Factor) getProject().findObject(factorORef);
@@ -439,40 +425,11 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		return grid;
 	}
 	
-	//FIXME medium: there is much duplicated code between this method and FactorType.getTypeLabel(factor)
-	private UiLabel createFactorTypeLabel(Factor factor)
+	private UiLabel createFactorTypeLabel(Factor factor) throws Exception
 	{
-		if(factor.isDirectThreat())
-			return new PanelTitleLabel(EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT), new DirectThreatIcon(), UiLabel.LEADING);
-		
-		if (factor.isContributingFactor())
-			return new PanelTitleLabel(EAM.fieldLabel(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR), new ContributingFactorIcon(), UiLabel.LEADING);
-		
-		if (factor.isStrategy())
-			return new PanelTitleLabel(EAM.fieldLabel(Strategy.getObjectType(), Strategy.OBJECT_NAME), new StrategyIcon(), UiLabel.LEADING);
-		
-		if (factor.isTarget())
-			return new PanelTitleLabel(EAM.fieldLabel(Target.getObjectType(), Target.OBJECT_NAME), new TargetIcon(), UiLabel.LEADING);
-		
-		if (factor.isHumanWelfareTarget())
-			return  new PanelTitleLabel(EAM.fieldLabel(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME), new HumanWelfareTargetIcon(), UiLabel.LEADING);
-		
-		if (factor.isIntermediateResult())
-			return new PanelTitleLabel(EAM.fieldLabel(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME), new IntermediateResultIcon(), UiLabel.LEADING);
-
-		if (factor.isThreatReductionResult())
-			return new PanelTitleLabel(EAM.fieldLabel(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME), new ThreatReductionResultIcon(), UiLabel.LEADING);
-		
-		if (factor.isTextBox())
-			return new PanelTitleLabel(EAM.fieldLabel(TextBox.getObjectType(), TextBox.OBJECT_NAME), new TextBoxIcon(), UiLabel.LEADING);
-		
-		if (factor.isScopeBox())
-			return new PanelTitleLabel(EAM.fieldLabel(ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME), new ScopeBoxIcon(), UiLabel.LEADING);
-
-		if (factor.isGroupBox())
-			return new PanelTitleLabel(EAM.fieldLabel(GroupBox.getObjectType(), GroupBox.OBJECT_NAME), new GroupBoxIcon(), UiLabel.LEADING);
-		
-		throw new RuntimeException("Unknown factor type");
+		Icon factorIcon = FactorType.getFactorIcon(factor);
+		String factorLabel = FactorType.getFactorTypeLabel(factor);
+		return new PanelTitleLabel(factorLabel, factorIcon, UiLabel.LEADING);
 	}
 	
 	private ObjectDataInputField createTargetStatusField(Factor factor)
