@@ -56,7 +56,6 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		ObjectDataInputField shortLabelField = createShortStringField(Factor.TAG_SHORT_LABEL);
 		labelField = createExpandableField(Factor.TAG_LABEL);
 		
-		//TODO extract a local factor var. instead of getFactor
 		addFieldsOnOneLine(FactorType.getFactorTypeLabel(factorToEdit), 
 				FactorType.getFactorIcon(factorToEdit), 
 				new ObjectDataInputField[]{shortLabelField, labelField});
