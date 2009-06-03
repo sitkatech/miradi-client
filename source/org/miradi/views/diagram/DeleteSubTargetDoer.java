@@ -28,7 +28,7 @@ public class DeleteSubTargetDoer extends DeleteAnnotationDoer
 {	
 	protected BaseObject getParent(BaseObject annotationToDelete)
 	{
-		return getSingleSelected(Target.getObjectType());  
+		return getSelectedFactor();  
 	}
 
 	public String getAnnotationIdListTag()
