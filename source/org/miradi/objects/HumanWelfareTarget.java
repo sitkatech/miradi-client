@@ -27,7 +27,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class HumanWelfareTarget extends Factor
+public class HumanWelfareTarget extends AbstractTarget
 {
 	public HumanWelfareTarget(ObjectManager objectManager, FactorId idToUse)
 	{

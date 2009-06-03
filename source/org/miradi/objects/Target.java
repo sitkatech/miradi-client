@@ -44,7 +44,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 
-public class Target extends Factor
+public class Target extends AbstractTarget
 {
 	public Target(ObjectManager objectManager, FactorId idToUse)
 	{
