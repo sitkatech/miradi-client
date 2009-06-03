@@ -41,6 +41,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
@@ -287,7 +288,7 @@ abstract public class FactorCell extends EAMGraphCell
 	public IdList getGoals()
 	{
 		if (getWrappedFactor().canHaveGoal())
-			return ((Target)getWrappedFactor()).getGoals();
+			return ((AbstractTarget)getWrappedFactor()).getGoals();
 		return  new IdList(Goal.getObjectType());
 	}
 	
