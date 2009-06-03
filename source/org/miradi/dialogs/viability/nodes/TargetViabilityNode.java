@@ -28,6 +28,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -42,7 +43,7 @@ public class TargetViabilityNode extends TreeTableNode
 	public TargetViabilityNode(Project projectToUse, ORef targetRef) throws Exception
 	{
 		project = projectToUse;
-		target =  Target.find(project, targetRef);
+		target =  AbstractTarget.findTarget(project, targetRef);
 		rebuild();
 	}
 	
@@ -126,7 +127,7 @@ public class TargetViabilityNode extends TreeTableNode
 		return viabilityIndicatorNodes.toArray(new ViabilityIndicatorNode[0]);
 	}
 
-	static public KeyEcologicalAttributeNode[] getKeaNodes(Target target) throws Exception
+	static public KeyEcologicalAttributeNode[] getKeaNodes(AbstractTarget target) throws Exception
 	{
 		if (!target.isViabilityModeTNC())
 			return new KeyEcologicalAttributeNode[0];
@@ -169,6 +170,6 @@ public class TargetViabilityNode extends TreeTableNode
 		};
 	
 	private Project project;
-	private Target target;
+	private AbstractTarget target;
 	private TreeTableNode[] children;
 }
