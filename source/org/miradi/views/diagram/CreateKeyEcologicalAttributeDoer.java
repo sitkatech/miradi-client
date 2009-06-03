@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Target;
 
 public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 {
@@ -35,8 +35,8 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 		if (!Factor.isFactor(selectedParent.getRef()))
 			return false;
 		
-		if (((Factor)selectedParent).isTarget())
-			return ((Target)selectedParent).isViabilityModeTNC();
+		if (AbstractTarget.isTarget(selectedParent))
+			return ((AbstractTarget)selectedParent).isViabilityModeTNC();
 
 		return false;
 	}
