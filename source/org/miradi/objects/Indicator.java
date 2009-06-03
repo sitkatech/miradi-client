@@ -37,7 +37,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.IndicatorStatusRatingQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -329,7 +328,7 @@ public class Indicator extends BaseObject
 		multiLineMethods = new PseudoStringData(PSEUDO_TAG_METHODS);
 		indicatorThresholdLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_THRESHOLD_VALUE);
 		priorityLabel = new PseudoQuestionData(PSEUDO_TAG_PRIORITY_VALUE, new PriorityRatingQuestion());
-		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, new IndicatorStatusRatingQuestion());
+		statusLabel = new PseudoQuestionData(PSEUDO_TAG_STATUS_VALUE, new StatusQuestion());
 		ratingSourceLabel = new PseudoQuestionData(PSEUDO_TAG_RATING_SOURCE_VALUE, new RatingSourceQuestion());
 		latestMeasurement = new PseudoQuestionData(PSEUDO_TAG_LATEST_MEASUREMENT_REF, new StatusQuestion());
 		
