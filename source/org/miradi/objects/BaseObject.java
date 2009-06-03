@@ -1177,6 +1177,7 @@ abstract public class BaseObject
 			return getPseudoData(getTag());
 		}
 		
+		//NOTE: as of 2009-06-03 this is never called
 		public ChoiceItem getChoiceItem()
 		{
 			return question.findChoiceByCode(getPseudoData(getTag()));
