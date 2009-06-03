@@ -102,7 +102,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		String columnTag = getColumnTag(modelColumn);
 		boolean isChoiceItemColumn =
 			columnTag == Target.TAG_VIABILITY_MODE || 
-			columnTag == ViabilityTreeModel.TAG_STATUS ||
+			columnTag == ViabilityTreeModel.VIRTUAL_TAG_STATUS ||
 			columnTag == BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE ||
 			columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY || 
 			columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS || 
