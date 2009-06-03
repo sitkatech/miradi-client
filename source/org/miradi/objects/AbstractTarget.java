@@ -277,6 +277,19 @@ abstract public class AbstractTarget extends Factor
 		return allCodes;
 	}
 	
+	public static boolean isTarget(BaseObject baseObject)
+	{
+		return isTarget(baseObject.getType());
+	}
+	
+	public static boolean isTarget(int type)
+	{
+		if (Target.is(type))
+			return true;
+		
+		return HumanWelfareTarget.is(type);
+	}
+	
 	@Override
 	public IdList getDirectOrIndirectIndicators()
 	{

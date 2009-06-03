@@ -70,6 +70,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
@@ -199,7 +200,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		selectedHierarchy.add(diagramFactor.getRef());
 		selectedHierarchy.add(getDiagramObject().getRef());
 
-		boolean isKeaViabilityMode = (factor.isTarget() && factor.getData(Target.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE));
+		boolean isKeaViabilityMode = (AbstractTarget.isTarget(factor) && factor.getData(AbstractTarget.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE));
 		
 		if(factor.canHaveGoal())
 		{
@@ -221,13 +222,13 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(activitiesTab);
 		}
 
-		if (factor.canHaveIndicators() && !isKeaViabilityMode && !factor.isTarget() && !factor.isHumanWelfareTarget())
+		if (factor.canHaveIndicators() && !isKeaViabilityMode && !AbstractTarget.isTarget(factor))
 		{
 			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			addTab(indicatorsTab);
 		}
 		
-		if ( (factor.isTarget() || factor.isHumanWelfareTarget()) && !isKeaViabilityMode)
+		if ( AbstractTarget.isTarget(factor) && !isKeaViabilityMode)
 		{
 			simpleViabilityTab = new SimpleViabilityPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			tabs.addTab(simpleViabilityTab.getPanelDescription(), simpleViabilityTab.getIcon(), simpleViabilityTab);
@@ -245,7 +246,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(stressTab);
 		}
 			
-		if (factor.isTarget() || factor.isHumanWelfareTarget())
+		if (AbstractTarget.isTarget(factor))
 		{
 			subTargetTab = new SubTargetManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			addTab(subTargetTab);
@@ -421,7 +422,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		currentFactorChangerComboBox = new CurrentFactorChangerComboBox(currentDiagramFactorsQuestion);
 		grid.addFieldComponent(currentFactorChangerComboBox);
 		
-		if (factor.isTarget())
+		if (AbstractTarget.isTarget(factor))
 		{
 			grid.addField(createTargetStatusField(factor));
 			PanelTitleLabel modeLabel = new PanelTitleLabel(EAM.text("Viability Analysis Mode"));
