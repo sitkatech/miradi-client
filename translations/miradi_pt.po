@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:41-0500\n"
+"POT-Creation-Date: 2009-06-03 10:21-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2257,7 +2257,6 @@ msgstr ""
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:37
 msgid "Not Specified"
 msgstr ""
 
@@ -3460,22 +3459,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:58
 msgid "Leader"
-msgstr ""
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:38
-msgid "Not Started"
-msgstr ""
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:39
-msgid "Problems Implementing"
-msgstr ""
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:40
-msgid "Going Well"
-msgstr ""
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:41
-msgid "Fully on Schedule"
 msgstr ""
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:94
