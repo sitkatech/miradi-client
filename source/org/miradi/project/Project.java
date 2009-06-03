@@ -68,6 +68,7 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.FactorLinkPool;
 import org.miradi.objectpools.GoalPool;
 import org.miradi.objectpools.GroupBoxPool;
+import org.miradi.objectpools.HumanWelfareTargetPool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.IntermediateResultPool;
 import org.miradi.objectpools.KeyEcologicalAttributePool;
@@ -289,6 +290,11 @@ public class Project
 	public TargetPool getTargetPool()
 	{
 		return (TargetPool) getPool(ObjectType.TARGET);
+	}
+	
+	public HumanWelfareTargetPool getHumanWelfareTargetPool()
+	{
+		return (HumanWelfareTargetPool) getPool(ObjectType.HUMAN_WELFARE_TARGET);
 	}
 	
 	public DiagramFactorPool getDiagramFactorPool()
