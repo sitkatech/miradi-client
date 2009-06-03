@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.project.Project;
 
@@ -45,10 +44,6 @@ abstract public class PlanningViewCustomButtonPanel extends DisposablePanel impl
 	public Project getProject()
 	{
 		return project;
-	}
-	
-	public void commandExecuted(CommandExecutedEvent event)
-	{
 	}
 	
 	private Project project;
