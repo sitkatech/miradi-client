@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 15:24-0500\n"
+"POT-Creation-Date: 2009-06-03 15:33-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2115,7 +2115,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
 msgid "Priority"
 msgstr ""
 
@@ -2162,7 +2162,7 @@ msgstr ""
 #: miradi/source/org/miradi/forms/objects/TaskDetailsSubForm.java:33
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:53
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:94
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
 msgid "Progress Reports"
 msgstr ""
 
@@ -5941,7 +5941,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
 #: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:142
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:129
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:128
 msgid "Summary"
 msgstr ""
 
@@ -6358,7 +6358,7 @@ msgid "Link Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:90
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
 msgid "Legacy TNC Ratings"
 msgstr ""
 
@@ -6376,11 +6376,11 @@ msgstr ""
 msgid "Conceptual Model Page Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:68
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:67
 msgid "Font"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:108
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:107
 msgid "Tags"
 msgstr ""
 
