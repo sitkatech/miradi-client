@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 15:33-0500\n"
+"POT-Creation-Date: 2009-06-03 15:35-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2358,7 +2358,7 @@ msgstr "版本："
 
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:86
 msgid "Priority"
 msgstr "优先 \t\t"
 
@@ -2405,7 +2405,7 @@ msgstr "对象"
 #: miradi/source/org/miradi/forms/objects/TaskDetailsSubForm.java:33
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:53
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:92
 msgid "Progress Reports"
 msgstr "进展报告 \t\t"
 
@@ -3713,19 +3713,19 @@ msgstr "团队成员"
 msgid "Leader"
 msgstr "领导者"
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr "指示物: \t\t"
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:101
 msgid "Goals:"
 msgstr "总目标组: \t\t"
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:113
 msgid "Details:"
 msgstr "详情： \t\t"
 
@@ -6234,9 +6234,9 @@ msgstr "方法 \t\t"
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:142
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:145
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:128
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:127
 msgid "Summary"
 msgstr "摘要 \t\t"
 
@@ -6666,7 +6666,7 @@ msgid "Link Properties"
 msgstr "链接属性 \t\t"
 
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Legacy TNC Ratings"
 msgstr "传承TNC分级 \t\t"
 
@@ -6689,7 +6689,7 @@ msgstr "概念模型页面属性 \t\t"
 msgid "Font"
 msgstr "字体 \t\t"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:107
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:106
 #, fuzzy
 msgid "Tags"
 msgstr "Tags"

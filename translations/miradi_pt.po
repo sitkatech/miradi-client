@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 15:33-0500\n"
+"POT-Creation-Date: 2009-06-03 15:35-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2115,7 +2115,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:86
 msgid "Priority"
 msgstr ""
 
@@ -2162,7 +2162,7 @@ msgstr ""
 #: miradi/source/org/miradi/forms/objects/TaskDetailsSubForm.java:33
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:52
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:53
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:93
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:92
 msgid "Progress Reports"
 msgstr ""
 
@@ -3465,19 +3465,19 @@ msgstr ""
 msgid "Leader"
 msgstr ""
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:94
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
 msgstr ""
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:100
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:101
 msgid "Goals:"
 msgstr ""
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:106
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:107
 msgid "Objectives:"
 msgstr ""
 
-#: miradi/source/org/miradi/diagram/cells/FactorCell.java:112
+#: miradi/source/org/miradi/diagram/cells/FactorCell.java:113
 msgid "Details:"
 msgstr ""
 
@@ -5939,9 +5939,9 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:142
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:145
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:67
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:128
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:127
 msgid "Summary"
 msgstr ""
 
@@ -6358,7 +6358,7 @@ msgid "Link Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:57
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:89
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:88
 msgid "Legacy TNC Ratings"
 msgstr ""
 
@@ -6380,7 +6380,7 @@ msgstr ""
 msgid "Font"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:107
+#: miradi/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:106
 msgid "Tags"
 msgstr ""
 
