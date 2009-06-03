@@ -21,7 +21,9 @@ package org.miradi.objects;
 
 
 import org.miradi.ids.FactorId;
+import org.miradi.objectdata.ORefListData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -45,6 +47,38 @@ public class Target extends AbstractTarget
 	public boolean isTarget()
 	{
 		return true;
+	}
+	
+	public ORefList getStressRefs()
+	{
+		return stressRefs.getORefList();
+	}
+	
+	@Override
+	public boolean isRefList(String tag)
+	{
+		if (tag.equals(TAG_STRESS_REFS))
+			return true;
+		
+		return super.isRefList(tag);
+	}
+
+	@Override
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_STRESS_REFS))
+			return Stress.getObjectType();
+	
+		return super.getAnnotationType(tag);
+	}
+	
+	@Override
+	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
+	{
+		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
+		deepObjectRefsToCopy.addAll(getStressRefs());
+		
+		return deepObjectRefsToCopy;
 	}
 	
 	@Override
@@ -89,5 +123,18 @@ public class Target extends AbstractTarget
 		return is(ref.getObjectType());
 	}
 	
+	@Override
+	protected void clear()
+	{
+		super.clear();
+		stressRefs = new ORefListData(TAG_STRESS_REFS);
+		
+		addField(TAG_STRESS_REFS, stressRefs);
+	}
+
 	public static final String OBJECT_NAME = "Target";
+	
+	public static final String TAG_STRESS_REFS = "StressRefs";
+	
+	private ORefListData stressRefs;
 }

@@ -93,15 +93,9 @@ abstract public class AbstractTarget extends Factor
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
-		deepObjectRefsToCopy.addAll(getStressRefs());
 		deepObjectRefsToCopy.addAll(getSubTargetRefs());
 		
 		return deepObjectRefsToCopy;
-	}
-
-	public ORefList getStressRefs()
-	{
-		return stressRefs.getORefList();
 	}
 
 	public ORefList getSubTargetRefs()
@@ -143,9 +137,6 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public boolean isRefList(String tag)
 	{
-		if (tag.equals(TAG_STRESS_REFS))
-			return true;
-		
 		if (tag.equals(TAG_SUB_TARGET_REFS))
 			return true;
 		
@@ -155,9 +146,6 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public int getAnnotationType(String tag)
 	{
-		if (tag.equals(TAG_STRESS_REFS))
-			return Stress.getObjectType();
-	
 		if (tag.equals(TAG_SUB_TARGET_REFS))
 			return SubTarget.getObjectType();
 		
@@ -332,7 +320,6 @@ abstract public class AbstractTarget extends Factor
 		targetStatus = new ChoiceData(TAG_TARGET_STATUS, getQuestion(StatusQuestion.class));
 		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
 		currentStatusJustification = new StringData(TAG_CURRENT_STATUS_JUSTIFICATION);
-		stressRefs = new ORefListData(TAG_STRESS_REFS);
 		speciesLatinName = new StringData(TAG_SPECIES_LATIN_NAME);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
 		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
@@ -345,7 +332,6 @@ abstract public class AbstractTarget extends Factor
 		addField(TAG_TARGET_STATUS, targetStatus);
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
 		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
-		addField(TAG_STRESS_REFS, stressRefs);
 		addField(TAG_SPECIES_LATIN_NAME, speciesLatinName);
 		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
 		addField(TAG_HABITAT_ASSOCIATION, habitatAssociation);
@@ -359,7 +345,6 @@ abstract public class AbstractTarget extends Factor
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String TAG_CURRENT_STATUS_JUSTIFICATION = "CurrentStatusJustification";
-	public static final String TAG_STRESS_REFS = "StressRefs";
 	public static final String TAG_SPECIES_LATIN_NAME = "SpeciesLatinName";
 	public static final String TAG_SUB_TARGET_REFS = "SubTargetRefs";
 	public static final String TAG_HABITAT_ASSOCIATION = "HabitatAssociation";
@@ -372,7 +357,6 @@ abstract public class AbstractTarget extends Factor
 	private ChoiceData targetStatus;
 	private ChoiceData viabiltyMode;
 	private StringData currentStatusJustification;
-	private ORefListData stressRefs;
 	private StringData speciesLatinName;
 	private ORefListData subTargetRefs;
 	private CodeListData habitatAssociation;
