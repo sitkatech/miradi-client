@@ -98,6 +98,7 @@ import org.miradi.objects.TestFactorLink;
 import org.miradi.objects.TestFosProjectData;
 import org.miradi.objects.TestFundingSource;
 import org.miradi.objects.TestGoal;
+import org.miradi.objects.TestHumanWelfareTarget;
 import org.miradi.objects.TestIndicator;
 import org.miradi.objects.TestIntermediateResult;
 import org.miradi.objects.TestKeyEcologicalAttribute;
@@ -143,6 +144,7 @@ import org.miradi.project.TestDateUnit;
 import org.miradi.project.TestFactorDeleteHelper;
 import org.miradi.project.TestFactorLinkPool;
 import org.miradi.project.TestGroupBoxPool;
+import org.miradi.project.TestHumanWelfareTargetPool;
 import org.miradi.project.TestIdAssigner;
 import org.miradi.project.TestIntermediateResultPool;
 import org.miradi.project.TestProject;
@@ -248,6 +250,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestFactorLinkPool.class));
 		suite.addTest(new TestSuite(TestStrategyPool.class));
 		suite.addTest(new TestSuite(TestTargetPool.class));
+		suite.addTest(new TestSuite(TestHumanWelfareTargetPool.class));
 		suite.addTest(new TestSuite(TestCausePool.class));
 		suite.addTest(new TestSuite(TestProject.class));
 		suite.addTest(new TestSuite(TestProjectCommandExecutions.class));
@@ -393,6 +396,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestTableSettings.class));
 		suite.addTest(new TestSuite(TestThreatRatingCommentsData.class));
 		suite.addTest(new TestSuite(TestExpense.class));
+		suite.addTest(new TestSuite(TestHumanWelfareTarget.class));
 			
 		// commands package
 		suite.addTest(new TestSuite(TestCommands.class));

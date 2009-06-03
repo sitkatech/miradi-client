@@ -25,6 +25,7 @@ import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.diagram.factortypes.FactorTypeActivity;
 import org.miradi.diagram.factortypes.FactorTypeCause;
 import org.miradi.diagram.factortypes.FactorTypeGroupBox;
+import org.miradi.diagram.factortypes.FactorTypeHumanWelfareTarget;
 import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
 import org.miradi.diagram.factortypes.FactorTypeScopeBox;
 import org.miradi.diagram.factortypes.FactorTypeStrategy;
@@ -367,6 +368,9 @@ abstract public class Factor extends BaseObject
 		else if (objectType == ObjectType.SCOPE_BOX)
 			return new ScopeBox(objectManager, idToCreate);
 		
+		else if (objectType == ObjectType.HUMAN_WELFARE_TARGET)
+			return new HumanWelfareTarget(objectManager, idToCreate);
+		
 		throw new RuntimeException("Tried to create unknown node type: " + objectType);
 	}
 	
@@ -546,6 +550,7 @@ abstract public class Factor extends BaseObject
 	public static final FactorType TYPE_TARGET = new FactorTypeTarget();
 	public static final FactorType TYPE_CAUSE = new FactorTypeCause();
 	public static final FactorType TYPE_STRATEGY = new FactorTypeStrategy();
+	public static final FactorType TYPE_HUMAN_WELFARE_TARGET = new FactorTypeHumanWelfareTarget();
 	
 	public static final String TAG_NODE_TYPE = "Type";
 	public static final String TAG_COMMENT = "Comment";

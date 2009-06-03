@@ -333,6 +333,9 @@ abstract public class BaseObject
 			case ObjectType.EXPENSE_ASSIGNMENT:
 				return new ExpenseAssignment(objectManager, idAsInt, json);
 				
+			case ObjectType.HUMAN_WELFARE_TARGET:
+				return new HumanWelfareTarget(objectManager, new FactorId(idAsInt), json);
+				
 			default:
 				throw new RuntimeException("Attempted to create unknown EAMObject type " + type);
 		}

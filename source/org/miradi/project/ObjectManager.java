@@ -53,6 +53,7 @@ import org.miradi.objectpools.FosProjectDataPool;
 import org.miradi.objectpools.FundingSourcePool;
 import org.miradi.objectpools.GoalPool;
 import org.miradi.objectpools.GroupBoxPool;
+import org.miradi.objectpools.HumanWelfareTargetPool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.IntermediateResultPool;
 import org.miradi.objectpools.KeyEcologicalAttributePool;
@@ -155,6 +156,7 @@ public class ObjectManager
 		addNormalPool(new ThreatRatingCommentsDataPool(ida));
 		addNormalPool(new ScopeBoxPool(ida));
 		addNormalPool(new ExpensePool(ida));
+		addNormalPool(new HumanWelfareTargetPool(ida));
 	}
 	
 	public ProjectChainObject getProjectChainBuilder()
@@ -415,6 +417,7 @@ public class ObjectManager
 			ObjectType.THREAT_RATING_COMMENTS_DATA,
 			ObjectType.SCOPE_BOX,
 			ObjectType.EXPENSE_ASSIGNMENT,
+			ObjectType.HUMAN_WELFARE_TARGET,
 		};
 		for(int type : types)
 			loadPool(type, extractManifest(manifests, type));
