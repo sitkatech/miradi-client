@@ -412,7 +412,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			grid.addField(createTargetStatusField(factor));
 			PanelTitleLabel modeLabel = new PanelTitleLabel(EAM.text("Viability Analysis Mode"));
-			ObjectDataInputField modeField = grid.createChoiceField(ObjectType.TARGET, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
+			ObjectDataInputField modeField = grid.createChoiceField(factor.getType(), AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
 			grid.addFieldWithCustomLabel(modeField, modeLabel);
 		}
 		
