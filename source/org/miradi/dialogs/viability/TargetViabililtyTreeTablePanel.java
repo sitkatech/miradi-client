@@ -37,8 +37,10 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -70,22 +72,22 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		GenericTreeTableModel treeTableModel = getModel();
-		final boolean wereKEANodesAddedOrRemoved = 
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		final boolean wereTargetKEANodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		final boolean wereHumanWelfareTargetKEANodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
-		final boolean wereIndicatorNodesAddedOrRemoved = 
-			event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
+		final boolean wereIndicatorNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, KeyEcologicalAttribute.TAG_INDICATOR_IDS);
 
 		final boolean wereMeasuremetNodesAddedOrRemoved = event.isSetDataCommandWithThisTypeAndTag(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS);
 		
 		final boolean wereFactorIndicatorNodesAddedOrRemoved = event.isFactorSetDataCommandWithThisTypeAndTag(Factor.TAG_INDICATOR_IDS);
 		
-		final boolean wereNodesAddedOrRemoved = wereKEANodesAddedOrRemoved || 
+		final boolean wereNodesAddedOrRemoved = wereTargetKEANodesAddedOrRemoved ||
+												wereHumanWelfareTargetKEANodesAddedOrRemoved ||
 												wereIndicatorNodesAddedOrRemoved ||
 												wereMeasuremetNodesAddedOrRemoved ||
 												wereFactorIndicatorNodesAddedOrRemoved;
 		
-		final boolean wasTargetModeChanged = event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE);
+		final boolean wasTargetModeChanged = isTargetModeChange(event);
 		
 		if(wereNodesAddedOrRemoved || wasTargetModeChanged)
 		{
@@ -110,6 +112,14 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 		validateModifiedObject(event, Measurement.getObjectType());
 		
 		repaintToGrowIfTreeIsTaller();	
+	}
+
+	private boolean isTargetModeChange(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), Target.TAG_VIABILITY_MODE))
+			return true;
+		
+		return event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), Target.TAG_VIABILITY_MODE);
 	}
 	
 	private void validateModifiedObject(CommandExecutedEvent event, int type)
