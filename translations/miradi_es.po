@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 13:44-0500\n"
+"POT-Creation-Date: 2009-06-03 15:24-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6921,11 +6921,11 @@ msgstr "Propiedades del diagrama"
 msgid "Comments"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:450
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:456
 msgid "Viability Analysis Mode"
 msgstr "Modo Análisis de viabilidad"
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:542
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:548
 msgid "Factor Properties"
 msgstr "Propiedades del factor"
 
