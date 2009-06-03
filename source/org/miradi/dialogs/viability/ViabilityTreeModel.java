@@ -21,7 +21,6 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.viability.nodes.ViabilityMeasurementNode;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Target;
@@ -48,7 +47,7 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 	
 	public static String[] columnTags = {DEFAULT_COLUMN, 
 										 Target.TAG_VIABILITY_MODE,
-										 Indicator.TAG_STATUS,
+										 ViabilityTreeModel.TAG_STATUS,
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 										 ViabilityMeasurementNode.POOR,
 										 ViabilityMeasurementNode.FAIR,
@@ -56,4 +55,6 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 										 ViabilityMeasurementNode.VERY_GOOD,
 										 Measurement.TAG_STATUS_CONFIDENCE,
 										 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,};
+
+	public static final String TAG_STATUS = "Status";
 }

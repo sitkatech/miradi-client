@@ -26,7 +26,6 @@ import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
@@ -69,7 +68,7 @@ public class ViabilityProjectNode extends TreeTableNode
 
 	public Object getValueAt(int column)
 	{
-		if (ViabilityTreeModel.columnTags[column].equals(Indicator.TAG_STATUS))
+		if (ViabilityTreeModel.columnTags[column].equals(ViabilityTreeModel.TAG_STATUS))
 		{
 			String code = Target.computeTNCViability(project);
 			return statusQuestion.findChoiceByCode(code);
