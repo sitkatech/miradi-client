@@ -29,6 +29,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
@@ -275,6 +276,11 @@ abstract public class AbstractTarget extends Factor
 				allCodes.add(category);
 		}
 		return allCodes;
+	}
+	
+	public static AbstractTarget findTarget(Project project, ORef abstractTargetRef)
+	{
+		return (AbstractTarget) project.findObject(abstractTargetRef);
 	}
 	
 	public static boolean isTarget(BaseObject baseObject)
