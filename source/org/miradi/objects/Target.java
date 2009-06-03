@@ -21,12 +21,18 @@ package org.miradi.objects;
 
 
 import org.miradi.ids.FactorId;
+import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 
@@ -47,6 +53,32 @@ public class Target extends AbstractTarget
 	public boolean isTarget()
 	{
 		return true;
+	}
+	
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		if(fieldTag.equals(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE))
+			return getHabitatAssociationValue();
+		
+		return super.getPseudoData(fieldTag);
+	}
+
+	private String getHabitatAssociationValue()
+	{
+		StringBuffer appendedChoiceValues = new StringBuffer();
+		ChoiceQuestion question = getHabitatAssociationQuestion();
+		CodeList habitatCodes = habitatAssociation.getCodeList();
+		for(int index = 0; index < habitatCodes.size(); ++index)
+		{
+			if (index > 0)
+				appendedChoiceValues.append(";");
+			
+			ChoiceItem choiceItem = question.findChoiceByCode(habitatCodes.get(index));
+			appendedChoiceValues.append(choiceItem);
+		}
+		
+		return appendedChoiceValues.toString();
 	}
 	
 	public ORefList getStressRefs()
@@ -79,6 +111,11 @@ public class Target extends AbstractTarget
 		deepObjectRefsToCopy.addAll(getStressRefs());
 		
 		return deepObjectRefsToCopy;
+	}
+	
+	private ChoiceQuestion getHabitatAssociationQuestion()
+	{
+		return getQuestion(HabitatAssociationQuestion.class);
 	}
 	
 	@Override
@@ -128,13 +165,29 @@ public class Target extends AbstractTarget
 	{
 		super.clear();
 		stressRefs = new ORefListData(TAG_STRESS_REFS);
+		speciesLatinName = new StringData(TAG_SPECIES_LATIN_NAME);
+		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
 		
+		habitatAssociationLabel = new PseudoQuestionData(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, getHabitatAssociationQuestion());
+
 		addField(TAG_STRESS_REFS, stressRefs);
+		addField(TAG_HABITAT_ASSOCIATION, habitatAssociation);
+		addField(TAG_SPECIES_LATIN_NAME, speciesLatinName);
+		
+		addField(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, habitatAssociationLabel);
 	}
 
 	public static final String OBJECT_NAME = "Target";
 	
 	public static final String TAG_STRESS_REFS = "StressRefs";
+	public static final String TAG_HABITAT_ASSOCIATION = "HabitatAssociation";
+	public static final String TAG_SPECIES_LATIN_NAME = "SpeciesLatinName";
+	
+	public static final String PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE = "HabitatAssociationValue";
 	
 	private ORefListData stressRefs;
+	private StringData speciesLatinName;
+	private CodeListData habitatAssociation;
+	
+	private PseudoQuestionData habitatAssociationLabel;
 }

@@ -27,7 +27,6 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORefList;
@@ -37,7 +36,6 @@ import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -158,27 +156,7 @@ abstract public class AbstractTarget extends Factor
 		if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
 			return getTargetViability();
 		
-		if(fieldTag.equals(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE))
-			return getHabitatAssociationValue();
-		
 		return super.getPseudoData(fieldTag);
-	}
-
-	private String getHabitatAssociationValue()
-	{
-		StringBuffer appendedChoiceValues = new StringBuffer();
-		ChoiceQuestion question = getHabitatAssociationQuestion();
-		CodeList habitatCodes = habitatAssociation.getCodeList();
-		for(int index = 0; index < habitatCodes.size(); ++index)
-		{
-			if (index > 0)
-				appendedChoiceValues.append(";");
-			
-			ChoiceItem choiceItem = question.findChoiceByCode(habitatCodes.get(index));
-			appendedChoiceValues.append(choiceItem);
-		}
-		
-		return appendedChoiceValues.toString();
 	}
 
 	public ORefList findAllKeaIndicatorRefs()
@@ -299,11 +277,6 @@ abstract public class AbstractTarget extends Factor
 		return allCodes;
 	}
 	
-	private ChoiceQuestion getHabitatAssociationQuestion()
-	{
-		return getQuestion(HabitatAssociationQuestion.class);
-	}
-	
 	@Override
 	public IdList getDirectOrIndirectIndicators()
 	{
@@ -320,49 +293,37 @@ abstract public class AbstractTarget extends Factor
 		targetStatus = new ChoiceData(TAG_TARGET_STATUS, getQuestion(StatusQuestion.class));
 		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
 		currentStatusJustification = new StringData(TAG_CURRENT_STATUS_JUSTIFICATION);
-		speciesLatinName = new StringData(TAG_SPECIES_LATIN_NAME);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
-		habitatAssociation = new CodeListData(TAG_HABITAT_ASSOCIATION, getHabitatAssociationQuestion());
 			
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
 		viabiltyModeLabel = new PseudoQuestionData(PSEUDO_TAG_VIABILITY_MODE_VALUE, new ViabilityModeQuestion());
-		habitatAssociationLabel = new PseudoQuestionData(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, getHabitatAssociationQuestion());
 		
 		addField(TAG_TARGET_STATUS, targetStatus);
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
 		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
-		addField(TAG_SPECIES_LATIN_NAME, speciesLatinName);
 		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
-		addField(TAG_HABITAT_ASSOCIATION, habitatAssociation);
 		
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
 		addField(PSEUDO_TAG_VIABILITY_MODE_VALUE, viabiltyModeLabel);
-		addField(PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE, habitatAssociationLabel);
 	}
 
 	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String TAG_CURRENT_STATUS_JUSTIFICATION = "CurrentStatusJustification";
-	public static final String TAG_SPECIES_LATIN_NAME = "SpeciesLatinName";
 	public static final String TAG_SUB_TARGET_REFS = "SubTargetRefs";
-	public static final String TAG_HABITAT_ASSOCIATION = "HabitatAssociation";
 	
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
-	public static final String PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE = "HabitatAssociationValue";
 	
 	private ChoiceData targetStatus;
 	private ChoiceData viabiltyMode;
 	private StringData currentStatusJustification;
-	private StringData speciesLatinName;
 	private ORefListData subTargetRefs;
-	private CodeListData habitatAssociation;
 	
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
 	private PseudoQuestionData viabiltyModeLabel;
-	private PseudoQuestionData habitatAssociationLabel;
 }
