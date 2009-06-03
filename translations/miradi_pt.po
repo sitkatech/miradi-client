@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 15:35-0500\n"
+"POT-Creation-Date: 2009-06-03 15:41-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6400,11 +6400,11 @@ msgstr ""
 msgid "Comments"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:456
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:427
 msgid "Viability Analysis Mode"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:548
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:519
 msgid "Factor Properties"
 msgstr ""
 
@@ -7900,6 +7900,12 @@ msgid "FieldLabel|52.PseudoTagResultsChainDiagramRefs|Result Chains"
 msgstr ""
 
 msgid "FieldLabel|52.Comment|Comment"
+msgstr ""
+
+msgid "FieldLabel|52.CurrentStatusJustification|Current Status Justification"
+msgstr ""
+
+msgid "FieldLabel|52.TargetStatus|Target Viability Status"
 msgstr ""
 
 msgid ""
