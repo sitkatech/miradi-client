@@ -35,6 +35,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
+import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -117,55 +118,25 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private void disposeTabs()
 	{
 		becomeInactive();
-		if(detailsTab != null)
+
+		dispose(detailsTab);
+		dispose(indicatorsTab);
+		dispose(goalsTab);
+		dispose(objectivesTab);
+		dispose(activitiesTab);
+		dispose(viabilityTab);
+		dispose(simpleViabilityTab);
+		dispose(stressTab);
+		dispose(subTargetTab);
+		dispose(grid);
+	}
+	
+	private void dispose(DisposablePanel panelToDispose)
+	{
+		if (panelToDispose != null)
 		{
-			detailsTab.dispose();
-			detailsTab = null;
-		}
-		if(indicatorsTab != null)
-		{
-			indicatorsTab.dispose();
-			indicatorsTab = null;
-		}
-		if(goalsTab != null)
-		{
-			goalsTab.dispose();
-			goalsTab = null;
-		}
-		if(objectivesTab != null)
-		{
-			objectivesTab.dispose();
-			objectivesTab = null;
-		}
-		if(activitiesTab != null)
-		{
-			activitiesTab.dispose();
-			activitiesTab = null;
-		}
-		if(viabilityTab != null)
-		{
-			viabilityTab.dispose();
-			viabilityTab = null;
-		}
-		if (simpleViabilityTab != null)
-		{
-			simpleViabilityTab.dispose();
-			simpleViabilityTab = null;
-		}
-		if (stressTab != null)
-		{
-			stressTab.dispose();
-			stressTab = null;
-		}
-		if (subTargetTab != null)
-		{
-			subTargetTab.dispose();
-			subTargetTab = null;
-		}
-		if(grid != null)
-		{
-			grid.dispose();
-			grid = null;
+			panelToDispose.dispose();
+			panelToDispose = null;
 		}
 	}
 	
