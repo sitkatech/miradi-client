@@ -1002,6 +1002,9 @@ abstract public class BaseObject
 		if (Target.canOwnThisType(type))
 			objectTypes[i++] = Target.getObjectType();
 		
+		if (HumanWelfareTarget.canOwnThisType(type))
+			objectTypes[i++] = HumanWelfareTarget.getObjectType();
+		
 		if (ViewData.canOwnThisType(type))
 			objectTypes[i++] = ViewData.getObjectType();
 
