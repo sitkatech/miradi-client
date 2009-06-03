@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:41-0500\n"
+"POT-Creation-Date: 2009-06-03 10:21-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2622,7 +2622,6 @@ msgstr "Plan de trabajo"
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:37
 msgid "Not Specified"
 msgstr "No especificado"
 
@@ -3886,22 +3885,6 @@ msgstr "Miembro del equipo "
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:58
 msgid "Leader"
 msgstr "Líder "
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:38
-msgid "Not Started"
-msgstr "No ha comenzado "
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:39
-msgid "Problems Implementing"
-msgstr "Problemas de implementación "
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:40
-msgid "Going Well"
-msgstr "Está bien"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:41
-msgid "Fully on Schedule"
-msgstr "Completamente al día "
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
@@ -32725,6 +32708,18 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Not Started"
+#~ msgstr "No ha comenzado "
+
+#~ msgid "Problems Implementing"
+#~ msgstr "Problemas de implementación "
+
+#~ msgid "Going Well"
+#~ msgstr "Está bien"
+
+#~ msgid "Fully on Schedule"
+#~ msgstr "Completamente al día "
 
 #~ msgid "Action|Show Slide Show"
 #~ msgstr "Mostrar presentación de diapositivas"

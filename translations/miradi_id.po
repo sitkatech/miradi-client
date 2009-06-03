@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:41-0500\n"
+"POT-Creation-Date: 2009-06-03 10:21-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2618,7 +2618,6 @@ msgstr "Rencana Kerja "
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:37
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
 
@@ -3860,22 +3859,6 @@ msgstr "Anggota Tim"
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:58
 msgid "Leader"
 msgstr "Pemimpin"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:38
-msgid "Not Started"
-msgstr "Tidak Dimulai"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:39
-msgid "Problems Implementing"
-msgstr "Masalah Pelaksanaan"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:40
-msgid "Going Well"
-msgstr "Berlangsung Baik"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:41
-msgid "Fully on Schedule"
-msgstr "Sangat Sesuai Jadwal"
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
@@ -32567,6 +32550,18 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Not Started"
+#~ msgstr "Tidak Dimulai"
+
+#~ msgid "Problems Implementing"
+#~ msgstr "Masalah Pelaksanaan"
+
+#~ msgid "Going Well"
+#~ msgstr "Berlangsung Baik"
+
+#~ msgid "Fully on Schedule"
+#~ msgstr "Sangat Sesuai Jadwal"
 
 #~ msgid "Action|Show Slide Show"
 #~ msgstr "Tunjukkan Tayangan Salindia "

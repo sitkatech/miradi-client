@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-03 09:41-0500\n"
+"POT-Creation-Date: 2009-06-03 10:21-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2500,7 +2500,6 @@ msgstr "工作计划 \t\t"
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:37
 msgid "Not Specified"
 msgstr "未指定 \t\t"
 
@@ -3709,22 +3708,6 @@ msgstr "团队成员"
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:58
 msgid "Leader"
 msgstr "领导者"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:38
-msgid "Not Started"
-msgstr "未开始"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:39
-msgid "Problems Implementing"
-msgstr "问题实施"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:40
-msgid "Going Well"
-msgstr "进展良好"
-
-#: miradi/source/org/miradi/questions/IndicatorStatusRatingQuestion.java:41
-msgid "Fully on Schedule"
-msgstr "完全按时"
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:94
 msgid "Indicators:"
@@ -29174,6 +29157,18 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Not Started"
+#~ msgstr "未开始"
+
+#~ msgid "Problems Implementing"
+#~ msgstr "问题实施"
+
+#~ msgid "Going Well"
+#~ msgstr "进展良好"
+
+#~ msgid "Fully on Schedule"
+#~ msgstr "完全按时"
 
 #~ msgid "Action|Show Slide Show"
 #~ msgstr "显示幻灯播放 \t\t"
