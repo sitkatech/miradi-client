@@ -40,11 +40,13 @@ public class HumanWelfareTarget extends AbstractTarget
 		super(objectManager, idToUse, Factor.TYPE_HUMAN_WELFARE_TARGET, json);
 	}
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 	
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
