@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-02 15:40-0500\n"
+"POT-Creation-Date: 2009-06-03 09:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -540,7 +540,7 @@ msgid "Control Bar"
 msgstr "Barra de control"
 
 #: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:330
-#: miradi/source/org/miradi/diagram/DiagramModel.java:832
+#: miradi/source/org/miradi/diagram/DiagramModel.java:830
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
