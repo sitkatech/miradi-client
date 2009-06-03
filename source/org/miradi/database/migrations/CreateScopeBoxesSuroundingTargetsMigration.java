@@ -37,8 +37,6 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.doers.InsertScopeBoxDoer;
 
-//FIXME urgent: this migraiton is still under contruction and its test is fialing.  It also needs a bit of refactoring to remove duplication
-// of strings
 public class CreateScopeBoxesSuroundingTargetsMigration
 {
 	public CreateScopeBoxesSuroundingTargetsMigration(File jsonDirToUse)
