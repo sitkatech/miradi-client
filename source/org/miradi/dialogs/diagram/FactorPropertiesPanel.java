@@ -38,6 +38,7 @@ import org.miradi.dialogs.activity.ActivityListManagementPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -233,26 +234,26 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		{
 			GoalListTablePanel goalListPanel = new GoalListTablePanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			goalsTab = new GoalListManagementPanel(mainWindow, goalListPanel, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(goalsTab.getPanelDescription(), goalsTab.getIcon(), goalsTab );
+			addTab(goalsTab);
 		}
 		
 		if(factor.canHaveObjectives())
 		{
 			ObjectiveListTablePanel objectListPanel = new ObjectiveListTablePanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			objectivesTab = new ObjectiveListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
-			tabs.addTab(objectivesTab.getPanelDescription(), objectivesTab.getIcon(),  objectivesTab);
+			addTab(objectivesTab);
 		}
 		
 		if(factor.isStrategy())
 		{
 			activitiesTab = ActivityListManagementPanel.create(mainWindow, selectedHierarchy);
-			tabs.addTab(activitiesTab.getPanelDescription(), activitiesTab.getIcon() , activitiesTab);
+			addTab(activitiesTab);
 		}
 
 		if (factor.canHaveIndicators() && !isKeaViabilityMode && !factor.isTarget())
 		{
 			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(indicatorsTab.getPanelDescription(), indicatorsTab.getIcon(), indicatorsTab );
+			addTab(indicatorsTab);
 		}
 		
 		if ( factor.isTarget() && !isKeaViabilityMode)
@@ -264,22 +265,27 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		if(isKeaViabilityMode)
 		{
 			viabilityTab = new TargetPropertiesKeaViabilityTreeManagementPanel(mainWindow, mainWindow, getCurrentDiagramFactor().getWrappedORef());
-			tabs.addTab(viabilityTab.getPanelDescription(), viabilityTab.getIcon(), viabilityTab);
+			addTab(viabilityTab);
 		}
 
 		if (factor.isTarget())
 		{
 			stressTab = new StressListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(stressTab.getPanelDescription(), stressTab.getIcon(), stressTab);
+			addTab(stressTab);
 		}
 			
 		if (factor.isTarget())
 		{
 			subTargetTab = new SubTargetManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
-			tabs.addTab(subTargetTab.getPanelDescription(), subTargetTab.getIcon(), subTargetTab);
+			addTab(subTargetTab);
 		}
 		
 		return tabs;
+	}
+	
+	private void addTab(ObjectManagementPanel managementPanel)
+	{
+		tabs.addTab(managementPanel.getPanelDescription(), managementPanel.getIcon(), managementPanel);
 	}
 
 	class TabChangeHandler implements ChangeListener
