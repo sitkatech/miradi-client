@@ -227,6 +227,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.SCOPE_BOX)
 			return true;
 		
+		if (HumanWelfareTarget.is(typeToUse))
+			return true;
+		
 		return false;
 	}
 
