@@ -34,6 +34,7 @@ import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.DraftStrategyIcon;
+import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.TargetIcon;
@@ -102,6 +103,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 			return new ContributingFactorIcon();
 		if(factor.isTarget())
 			return new TargetIcon();
+		if(factor.isHumanWelfareTarget())
+			return new HumanWelfareTargetIcon();
 		if(factor.isIntermediateResult())
 			return new IntermediateResultIcon();
 		if(factor.isThreatReductionResult())
