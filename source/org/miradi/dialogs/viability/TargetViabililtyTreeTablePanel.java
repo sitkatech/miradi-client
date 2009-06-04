@@ -108,6 +108,7 @@ public class TargetViabililtyTreeTablePanel extends TreeTablePanelWithFourButton
 		
 		validateModifiedObject(event, KeyEcologicalAttribute.getObjectType());
 		validateModifiedObject(event, Target.getObjectType());
+		validateModifiedObject(event, HumanWelfareTarget.getObjectType());
 		validateModifiedObject(event, Indicator.getObjectType());
 		validateModifiedObject(event, Measurement.getObjectType());
 		
