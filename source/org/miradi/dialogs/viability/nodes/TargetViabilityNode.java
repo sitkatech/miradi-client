@@ -69,7 +69,7 @@ public class TargetViabilityNode extends TreeTableNode
 	
 	public int getType()
 	{
-		return Target.getObjectType();
+		return target.getType();
 	}
 
 	public Object getValueAt(int column)
