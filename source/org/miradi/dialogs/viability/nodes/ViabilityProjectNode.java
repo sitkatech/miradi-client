@@ -25,6 +25,7 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
@@ -91,10 +92,16 @@ public class ViabilityProjectNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		Vector vector = new Vector();
-		Target[] factors  = project.getTargetPool().getTargets();
-		for (int i=0; i< factors.length; ++i)
+		Target[] targets  = project.getTargetPool().getTargets();
+		for (int i=0; i< targets.length; ++i)
 		{
-			vector.add(new TargetViabilityNode(project, factors[i].getRef()));
+			vector.add(new TargetViabilityNode(project, targets[i].getRef()));
+		}
+		
+		ORefList humanWelfareTargetRefs = getProject().getHumanWelfareTargetPool().getSortedRefList();
+		for(int index = 0; index < humanWelfareTargetRefs.size(); ++index)
+		{
+			vector.add(new TargetViabilityNode(getProject(), humanWelfareTargetRefs.get(index)));
 		}
 		children = vector;
 	}
