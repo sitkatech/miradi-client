@@ -28,7 +28,9 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -257,6 +259,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			ResultsChainDiagram.getObjectType(),
 			ConceptualModelDiagram.getObjectType(),
 			Target.getObjectType(),
+			HumanWelfareTarget.getObjectType(),
 			Goal.getObjectType(),
 			Cause.getObjectType(),
 			ThreatReductionResult.getObjectType(),
@@ -341,7 +344,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeConceptualModelPageNode(project, refToAdd, visibleRows);
 		if(type == ResultsChainDiagram.getObjectType())
 			return new PlanningTreeResultsChainNode(project, refToAdd, visibleRows);
-		if(type == Target.getObjectType())
+		if(AbstractTarget.isTarget(type))
 			return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
 		if(type == Goal.getObjectType())
 			return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);

@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
@@ -49,7 +50,7 @@ public abstract class AbstractPlanningTreeDiagramNode extends AbstractPlanningTr
 			DiagramFactor diagramFactor = (DiagramFactor)project.findObject(diagramFactorRefs.get(i));
 			Factor factor = diagramFactor.getWrappedFactor();
 			int type = factor.getType();
-			if(factor.isTarget() || factor.isDirectThreat() || factor.isContributingFactor() ||  
+			if(AbstractTarget.isTarget(factor) || factor.isDirectThreat() || factor.isContributingFactor() ||  
 					type == ThreatReductionResult.getObjectType() || 
 					type == IntermediateResult.getObjectType())
 			{
