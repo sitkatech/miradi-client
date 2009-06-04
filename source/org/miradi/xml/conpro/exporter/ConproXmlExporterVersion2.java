@@ -542,7 +542,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 	private void writeTargets(UnicodeWriter out) throws Exception
 	{
-		Target[] targets = getProject().getTargetPool().getTargets();
+		Target[] targets = getProject().getTargetPool().getSortedTargets();
 		Arrays.sort(targets, new ObjectToStringSorter());
 		writeStartElement(out, TARGETS);
 		for (int index = 0; index < targets.length; ++index)

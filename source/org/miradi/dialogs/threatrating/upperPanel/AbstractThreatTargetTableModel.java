@@ -51,7 +51,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	private Vector<Target> getOnlyTargetsInConceptualModelDiagrams()
 	{
 		Vector<Target> targetsInConceptualModelDiagrams = new Vector();
-		Target[] allTargets =  getProject().getTargetPool().getTargets();
+		Target[] allTargets =  getProject().getTargetPool().getSortedTargets();
 		for (int index = 0; index < allTargets.length; ++index)
 		{
 			ORefList diagramRefsContainingTarget = DiagramObject.getDiagramRefsContainingFactor(getProject(), allTargets[index].getRef());

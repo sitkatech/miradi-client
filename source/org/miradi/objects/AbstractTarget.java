@@ -255,7 +255,7 @@ abstract public class AbstractTarget extends Factor
 
 	public static String computeTNCViability(Project project)
 	{
-		Target[] targets = project.getTargetPool().getTargets();
+		Target[] targets = project.getTargetPool().getSortedTargets();
 		CodeList codes = new CodeList();
 		for(int i = 0; i < targets.length; ++i)
 		{

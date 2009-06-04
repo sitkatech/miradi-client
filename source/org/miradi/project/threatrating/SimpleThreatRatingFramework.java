@@ -232,7 +232,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public ValueOption getProjectMajorityRating()
 	{
-		Factor[] targets = getProject().getTargetPool().getTargets();
+		Factor[] targets = getProject().getTargetPool().getSortedTargets();
 		Vector<Integer> highestValues = new Vector();
 		for(int i = 0; i < targets.length; ++i)
 		{
