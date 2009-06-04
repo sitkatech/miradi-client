@@ -20,9 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objectpools;
 
+import java.util.Arrays;
+
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.HumanWelfareTarget;
@@ -48,5 +51,12 @@ public class HumanWelfareTargetPool extends EAMNormalObjectPool
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId, CreateObjectParameter extraInfo) throws Exception
 	{
 		return new HumanWelfareTarget(objectManager ,new FactorId(actualId.asInt()));
+	}
+	
+	public HumanWelfareTarget[] getSortedHumanWelfareTargets()
+	{
+		HumanWelfareTarget[] humanWelfareTargets = (HumanWelfareTarget[]) getValues().toArray(new HumanWelfareTarget[0]);
+		Arrays.sort(humanWelfareTargets, new BaseObjectByFullNameSorter());
+		return humanWelfareTargets;
 	}
 }
