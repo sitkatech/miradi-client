@@ -267,7 +267,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		SimpleThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
-			FactorId targetId = trf.getProject().getTargetPool().getTargets()[0].getFactorId();
+			FactorId targetId = trf.getProject().getTargetPool().getSortedTargets()[0].getFactorId();
 			assertEquals(4, trf.getHighestValueForTarget(targetId));
 		}
 		finally
@@ -282,7 +282,7 @@ public class TestSimpleThreatRatingFramework extends EAMTestCase
 		SimpleThreatRatingFramework trf = createFramework(bundleValues);
 		try
 		{
-			FactorId targetId = trf.getProject().getTargetPool().getTargets()[0].getFactorId();
+			FactorId targetId = trf.getProject().getTargetPool().getSortedTargets()[0].getFactorId();
 			assertEquals(4, trf.getHighestValueForTarget(targetId));
 		}
 		finally
