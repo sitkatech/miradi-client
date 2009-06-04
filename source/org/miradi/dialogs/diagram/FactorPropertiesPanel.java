@@ -68,6 +68,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatReductionResult;
 import org.miradi.project.Project;
@@ -492,7 +493,10 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		if (event.isSetDataCommandWithThisTypeAndTag(Cause.getObjectType(), Cause.TAG_IS_DIRECT_THREAT))
 			return true;
 		
-		return event.isSetDataCommandWithThisTypeAndTag(ObjectType.TARGET, Target.TAG_VIABILITY_MODE);
+		if (event.isSetDataCommandWithThisTypeAndTag(Target.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE))
+			return true;
+		
+		return event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTarget.getObjectType(), AbstractTarget.TAG_VIABILITY_MODE);
 	}
 	
 	class CurrentFactorChangerComboBox extends ChoiceItemComboBox implements ItemListener 
