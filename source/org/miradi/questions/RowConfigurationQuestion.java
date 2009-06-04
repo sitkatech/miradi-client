@@ -28,6 +28,7 @@ import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.ExpenseAssignmentIcon;
 import org.miradi.icons.GoalIcon;
+import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.icons.MeasurementIcon;
@@ -43,6 +44,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -68,6 +70,7 @@ public class RowConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon()),
 				createChoiceItem(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon()),
 				createChoiceItem(Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon()),
+				createChoiceItem(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, new HumanWelfareTargetIcon()),
 				createChoiceItem(Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon()),
 				createChoiceItem(Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon()),
 				createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()),
