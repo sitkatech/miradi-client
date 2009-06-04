@@ -35,6 +35,7 @@ import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.ExpenseAssignmentIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.GroupBoxIcon;
+import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IconManager;
 import org.miradi.icons.IndicatorIcon;
 import org.miradi.icons.IntermediateResultIcon;
@@ -72,6 +73,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 
 		targetRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(targetRenderer, new TargetIcon(), getBoldFont());
+		
+		humanWelfareTargetRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(humanWelfareTargetRenderer, new HumanWelfareTargetIcon(), getBoldFont());
 
 		directThreatRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(directThreatRenderer, new DirectThreatIcon(), getPlainFont());
@@ -166,6 +170,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = resultsChainRenderer;
 		else if(node.getType() == ObjectType.TARGET)
 			renderer = targetRenderer;
+		else if (node.getType() == ObjectType.HUMAN_WELFARE_TARGET)
+			renderer = humanWelfareTargetRenderer;
 		else if(node.getType() == ObjectType.CAUSE)
 			renderer = getCauseRenderer((Cause)node.getObject());
 		else if(node.getType() == ObjectType.THREAT_REDUCTION_RESULT)
@@ -262,6 +268,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	
 	private VariableHeightTreeCellRenderer projectMetaDataRenderer;
 	private VariableHeightTreeCellRenderer targetRenderer;
+	private VariableHeightTreeCellRenderer humanWelfareTargetRenderer;
 	private VariableHeightTreeCellRenderer strategyRenderer;
 	private VariableHeightTreeCellRenderer objectiveRenderer;
 	protected VariableHeightTreeCellRenderer goalRenderer;
