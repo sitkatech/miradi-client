@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objectpools;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
@@ -56,16 +56,8 @@ public class TargetPool extends EAMNormalObjectPool
 	
 	public Target[] getTargets()
 	{
-		class TargetSorter implements Comparator
-		{
-			public int compare(Object arg0, Object arg1)
-			{
-				return arg0.toString().trim().compareTo(arg1.toString().trim());
-			}
-		}
-		
 		Target[] targets = (Target[]) getValues().toArray(new Target[0]);
-		Arrays.sort(targets, new TargetSorter());
+		Arrays.sort(targets, new BaseObjectByFullNameSorter());
 		return targets;
 	}
 
