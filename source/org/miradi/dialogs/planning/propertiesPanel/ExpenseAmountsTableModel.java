@@ -77,11 +77,6 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 		return ExpenseAssignment.is(assignment);
 	}
 
-	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
-	{
-		return getOptionalDoubleData(assignment, dateUnit).hasValue();
-	}
-	
 	@Override
 	protected boolean isEditableModel()
 	{

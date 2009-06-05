@@ -76,11 +76,6 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 		return false;
 	}
 
-	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
-	{
-		return true;
-	}
-	
 	@Override
 	protected boolean isEditableModel()
 	{

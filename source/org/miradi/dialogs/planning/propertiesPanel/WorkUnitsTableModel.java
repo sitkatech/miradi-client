@@ -79,12 +79,6 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	}
 
 	@Override
-	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
-	{
-		return getOptionalDoubleData(assignment, dateUnit).hasValue();
-	}
-	
-	@Override
 	protected boolean isEditableModel()
 	{
 		return true;
