@@ -219,7 +219,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if(thisCellEffort != null)
 			return true;
 		
-		return !hasValue(assignment, dateUnit);
+		return !getOptionalDoubleData(assignment, dateUnit).hasValue();
 	}
 
 	public Object getValueAt(int row, int column)
@@ -532,8 +532,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
 
-    abstract protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception;
-    
     abstract protected boolean isEditableModel();
     
     abstract protected String getAssignmentsTag();
