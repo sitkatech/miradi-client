@@ -283,12 +283,12 @@ abstract public class AbstractTarget extends Factor
 		return (AbstractTarget) project.findObject(abstractTargetRef);
 	}
 	
-	public static boolean isTarget(BaseObject baseObject)
+	public static boolean isAbstractTarget(BaseObject baseObject)
 	{
-		return isTarget(baseObject.getType());
+		return isAbstractTarget(baseObject.getType());
 	}
 	
-	public static boolean isTarget(int type)
+	public static boolean isAbstractTarget(int type)
 	{
 		if (Target.is(type))
 			return true;

@@ -344,7 +344,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			return new PlanningTreeConceptualModelPageNode(project, refToAdd, visibleRows);
 		if(type == ResultsChainDiagram.getObjectType())
 			return new PlanningTreeResultsChainNode(project, refToAdd, visibleRows);
-		if(AbstractTarget.isTarget(type))
+		if(AbstractTarget.isAbstractTarget(type))
 			return new PlanningTreeTargetNode(project, diagram, refToAdd, visibleRows);
 		if(type == Goal.getObjectType())
 			return new PlanningTreeGoalNode(project, diagram, refToAdd, visibleRows);

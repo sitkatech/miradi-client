@@ -216,7 +216,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		selectedHierarchy.add(diagramFactor.getRef());
 		selectedHierarchy.add(getDiagramObject().getRef());
 
-		boolean isKeaViabilityMode = (AbstractTarget.isTarget(factor) && factor.getData(AbstractTarget.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE));
+		boolean isKeaViabilityMode = (AbstractTarget.isAbstractTarget(factor) && factor.getData(AbstractTarget.TAG_VIABILITY_MODE).equals(ViabilityModeQuestion.TNC_STYLE_CODE));
 		
 		if(factor.canHaveGoal())
 		{
@@ -238,13 +238,13 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(activitiesTab);
 		}
 
-		if (factor.canHaveIndicators() && !isKeaViabilityMode && !AbstractTarget.isTarget(factor))
+		if (factor.canHaveIndicators() && !isKeaViabilityMode && !AbstractTarget.isAbstractTarget(factor))
 		{
 			indicatorsTab = new FactorPropertiesViabilityTreeManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			addTab(indicatorsTab);
 		}
 		
-		if ( AbstractTarget.isTarget(factor) && !isKeaViabilityMode)
+		if ( AbstractTarget.isAbstractTarget(factor) && !isKeaViabilityMode)
 		{
 			simpleViabilityTab = new SimpleViabilityPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
 			tabs.addTab(simpleViabilityTab.getPanelDescription(), simpleViabilityTab.getIcon(), simpleViabilityTab);
@@ -262,7 +262,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(stressTab);
 		}
 			
-		if (AbstractTarget.isTarget(factor))
+		if (AbstractTarget.isAbstractTarget(factor))
 		{
 			subTargetTab = new SubTargetManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions());
 			addTab(subTargetTab);
@@ -438,7 +438,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		currentFactorChangerComboBox = new CurrentFactorChangerComboBox(currentDiagramFactorsQuestion);
 		grid.addFieldComponent(currentFactorChangerComboBox);
 		
-		if (AbstractTarget.isTarget(factor))
+		if (AbstractTarget.isAbstractTarget(factor))
 		{
 			grid.addField(createTargetStatusField(factor));
 			PanelTitleLabel modeLabel = new PanelTitleLabel(EAM.text("Viability Analysis Mode"));
