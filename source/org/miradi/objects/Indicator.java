@@ -132,7 +132,7 @@ public class Indicator extends BaseObject
 	}
 	
 	@Override
-	protected ORefList getSubTaskRefs()
+	public ORefList getSubTaskRefs()
 	{
 		return getMethodRefs();
 	}

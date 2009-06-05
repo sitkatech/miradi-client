@@ -320,7 +320,7 @@ public class Task extends Factor
 	}
 	
 	@Override
-	protected ORefList getSubTaskRefs()
+	public ORefList getSubTaskRefs()
 	{
 		return getSubtaskRefs();
 	}
