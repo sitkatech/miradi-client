@@ -23,6 +23,7 @@ import java.awt.Color;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
@@ -76,6 +77,18 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 	protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		return true;
+	}
+	
+	@Override
+	protected boolean isEditableModel()
+	{
+		return false;
+	}
+	
+	@Override
+	protected String getAssignmentsTag()
+	{
+		 throw new RuntimeException(EAM.text("This model does not contain an assignment tag"));
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "BudgetDetailsTableModel";
