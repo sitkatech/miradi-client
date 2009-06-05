@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-05 16:35-0500\n"
+"POT-Creation-Date: 2009-06-05 17:24-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -368,6 +368,11 @@ msgstr "Nombre de proyecto inválido:"
 msgid "Enter New Name"
 msgstr ""
 
+#: miradi/source/org/miradi/views/ProjectSettingsPanel.java:46
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:105
+msgid "Project Settings"
+msgstr ""
+
 #: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:39
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
@@ -413,7 +418,7 @@ msgid "Organization"
 msgstr "Organización"
 
 #: miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:54
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:99
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:102
 msgid "Planning"
 msgstr "Planificación"
 
@@ -3716,6 +3721,14 @@ msgstr "En línea "
 msgid "FOS Training Type|Other"
 msgstr "Capacitación FOS "
 
+#: miradi/source/org/miradi/questions/TargetModeQuestion.java:37
+msgid "Default Mode"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/TargetModeQuestion.java:38
+msgid "Human Welfare Target Mode"
+msgstr ""
+
 #: miradi/source/org/miradi/questions/ChoiceQuestion.java:100
 msgid "Unknown code: "
 msgstr "Código desconocido:"
@@ -3818,7 +3831,7 @@ msgid "Strategic Plan"
 msgstr "Plan estratégico"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:117
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:98
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:101
 msgid "Threat Ratings"
 msgstr "Calificaciones de amenazas"
 
@@ -6710,71 +6723,71 @@ msgstr "Seleccione Localización…"
 msgid "Error occured while saving data location"
 msgstr "Se produjo un error al grabar la localización de los datos."
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:92
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:95
 msgid "Systemwide"
 msgstr "En todo el sistema"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:93
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:96
 msgid "Diagram"
 msgstr "Diagrama"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:106
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Data Location"
 msgstr "Localización de los datos"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:129
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:135
 msgid "Font Size"
 msgstr "Tamaño de la fuente"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:132
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:138
 msgid "Font Family"
 msgstr "Familia de fuentes"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:137
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:143
 msgid "Table Row Height Mode"
 msgstr "Modo de altura de las filas de la tabla"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:177
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:183
 msgid "Show Ratings in Cell"
 msgstr "Mostrar calificaciones en celdas"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:199
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:205
 msgid "Choose the colors that look best on your system:"
 msgstr "Seleccione los colores que mejor luzcan en su sistema."
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:201
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:207
 msgid "Strategy (Yellow)"
 msgstr "Estrategia (amarillo)"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:207
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:213
 msgid "Direct Threat (Pink)"
 msgstr "Amenaza directa (rosa)"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:213
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:219
 msgid "Contributing Factor (Orange)"
 msgstr "Factor influyente (naranja)"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:219
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:225
 msgid "Target (Light Green)"
 msgstr "Objeto (verde claro)"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:225
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:231
 msgid "Project Scope (Dark Green)"
 msgstr "Alcance del proyecto (verde oscuro)"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:231
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
 msgid "Intermediate Result (Light Blue)"
 msgstr "Resultado intermedio (celeste)"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:237
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:243
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Resultado de reducción de amenazas (lila)"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:243
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Show Diagram Grid"
 msgstr "Mostrar cuadrícula del diagrama"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:255
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:261
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -6782,7 +6795,7 @@ msgstr ""
 "<div class='DataPanel'><p>¿Por qué mis elecciones se limitan a una familia "
 "de color para cada tipo de factor?</p>"
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:256
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:262
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
@@ -6794,11 +6807,11 @@ msgstr ""
 "reconocen un octógono rojo como una señal de pare, esperamos que reconozcan "
 "un óvalo verde como un objeto o un hexágono amarillo como una estrategia."
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:322
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:328
 msgid "Unable to save preferences"
 msgstr "No se pudieron grabar las preferencias."
 
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:381
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:387
 msgid "Preferences"
 msgstr "Preferencias"
 
@@ -7644,6 +7657,9 @@ msgstr "Municipios"
 
 msgid "FieldLabel|11.XenodataRefs|ConPro Project Number"
 msgstr "Número de proyecto de ConPro"
+
+msgid "FieldLabel|11.TargetMode|Target Mode"
+msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "ID"
