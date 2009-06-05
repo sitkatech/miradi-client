@@ -33,7 +33,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
+import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.questions.ChoiceItem;
@@ -163,13 +166,16 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		try
 		{
+			BaseObject baseObjectForRow = getBaseObjectForRow(row);
+			if (!isOrCanReferToAssignments(baseObjectForRow))
+				return false;
+			
 			if (!isEditableModel())
 				return false;
 		
 			if (getAssignment(row) != null)
 				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 			
-			BaseObject baseObjectForRow = getBaseObjectForRow(row);
 			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
 			final boolean hasNoSubTasks = baseObjectForRow.getSubTaskRefs().isEmpty();
 			if (hasNoSubTasks && assignmentRefs.size() == 1)
@@ -187,6 +193,23 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 	
+	private boolean isOrCanReferToAssignments(BaseObject baseObjectForRow)
+	{
+		if (Assignment.isAssignment(baseObjectForRow))
+			return true;
+		
+		if (Indicator.is(baseObjectForRow))
+			return true;
+		
+		if (Strategy.is(baseObjectForRow))
+			return true;
+		
+		if (Task.is(baseObjectForRow))
+			return true;
+		
+		return false;
+	}
+
 	private boolean isAssignmentCellEditable(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		if (!isAssignmentForModel(assignment))
