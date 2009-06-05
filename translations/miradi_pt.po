@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-05 12:26-0500\n"
+"POT-Creation-Date: 2009-06-05 14:24-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6078,6 +6078,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:39
 msgid "Title|Contributing Factor Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:91
+msgid "This model does not contain an assignment tag"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
