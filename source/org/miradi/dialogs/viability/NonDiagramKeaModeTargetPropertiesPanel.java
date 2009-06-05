@@ -20,14 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.viability;
 
 import org.miradi.dialogfields.ObjectDataInputField;
-import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 
-public class NonDiagramKeaModeTargetPropertiesPanel extends ObjectDataInputPanelWithSections
+public class NonDiagramKeaModeTargetPropertiesPanel extends AbstractNonDiagramModelessTargetPropertiesPanel
 {
 	public NonDiagramKeaModeTargetPropertiesPanel(Project projectToUse)
 	{
