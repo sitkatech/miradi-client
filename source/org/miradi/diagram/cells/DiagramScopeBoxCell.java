@@ -21,10 +21,11 @@ package org.miradi.diagram.cells;
 
 import java.awt.Color;
 
-import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.ScopeBox;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ScopeBoxColorQuestion;
 
 public class DiagramScopeBoxCell extends FactorCell
 {
@@ -36,7 +37,11 @@ public class DiagramScopeBoxCell extends FactorCell
 	@Override
 	public Color getColor()
 	{
-		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_SCOPE_BOX);
+		ScopeBox scopeBox = (ScopeBox) getWrappedFactor();
+		ChoiceQuestion colorQuestion = scopeBox.getProject().getQuestion(ScopeBoxColorQuestion.class);
+		ChoiceItem currentScopeBoxChoice = colorQuestion.findChoiceByCode(scopeBox.getScopeBoxColorCode());
+		
+		return currentScopeBoxChoice.getColor();
 	}
 	
 	@Override
