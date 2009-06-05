@@ -161,11 +161,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		try
 		{
-			if (getAssignment(row) != null)
-				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
-			
 			if (!isEditableModel())
 				return false;
+		
+			if (getAssignment(row) != null)
+				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 			
 			return false;
 		}
