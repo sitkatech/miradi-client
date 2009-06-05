@@ -21,11 +21,13 @@ package org.miradi.objects;
 
 import org.miradi.diagram.factortypes.FactorTypeScopeBox;
 import org.miradi.ids.FactorId;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ScopeBoxColorQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ScopeBox extends Factor
@@ -76,6 +78,11 @@ public class ScopeBox extends Factor
 		return new ORefList();
 	}
 	
+	public String getScopeBoxColorCode()
+	{
+		return scopeBoxColorCode.get();
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
@@ -96,5 +103,19 @@ public class ScopeBox extends Factor
 		return find(project.getObjectManager(), objectRef);
 	}
 	
+	@Override
+	void clear()
+	{
+		super.clear();
+		
+		scopeBoxColorCode = new ChoiceData(TAG_SCOPE_BOX_COLOR_CODE, getProject().getQuestion(ScopeBoxColorQuestion.class));
+		
+		addPresentationDataField(TAG_SCOPE_BOX_COLOR_CODE, scopeBoxColorCode);
+	}
+	
 	public static final String OBJECT_NAME = "ScopeBox";
+	
+	public static final String TAG_SCOPE_BOX_COLOR_CODE = "ScopeBoxColorCode";
+	
+	private ChoiceData scopeBoxColorCode;
 }
