@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-05 09:44-0500\n"
+"POT-Creation-Date: 2009-06-05 10:38-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6216,12 +6216,7 @@ msgstr "期望的价值/地位 \t\t"
 msgid "Tab|Indicators"
 msgstr "指示物 \t\t"
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:37
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:38
-msgid "Status"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:50
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:43
 #, fuzzy
 msgid "Title|Simple Mode Target Properties"
 msgstr "Title|Simple Mode Target Properties"
@@ -6254,6 +6249,10 @@ msgstr "指示物属性 \t\t"
 msgid "Tab|Viability"
 msgstr "生存力 \t\t"
 
+#: miradi/source/org/miradi/dialogs/viability/AbstractNonDiagramModelessTargetPropertiesPanel.java:37
+msgid "Status"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:41
 msgid "Key Ecological Attribute (KEA)"
 msgstr "关键生态学属性(KEA) \t\t"
@@ -6266,7 +6265,7 @@ msgstr "关键生态学属性的特性 \t\t"
 msgid "Title|Target Viability Properties"
 msgstr "对象存活属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:51
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:44
 #, fuzzy
 msgid "Title|Key Attribute Mode Target Properties"
 msgstr "Title|Key Attribute Mode Target Properties"
