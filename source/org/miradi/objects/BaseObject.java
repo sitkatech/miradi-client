@@ -535,7 +535,7 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 	
-	protected ORefList getSubTaskRefs()
+	public ORefList getSubTaskRefs()
 	{
 		return new ORefList();
 	}

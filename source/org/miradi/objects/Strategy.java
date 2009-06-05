@@ -262,7 +262,7 @@ public class Strategy extends Factor
 	}
 	
 	@Override
-	protected ORefList getSubTaskRefs()
+	public ORefList getSubTaskRefs()
 	{
 		return getActivityRefs();
 	}
