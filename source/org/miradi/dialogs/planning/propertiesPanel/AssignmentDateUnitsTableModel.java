@@ -163,13 +163,17 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			if (getAssignment(row) != null)
 				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
+			
+			if (!isEditableModel())
+				return false;
+			
+			return false;
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
+			return false;
 		}
-		
-		return false;
 	}
 	
 	private boolean isAssignmentCellEditable(Assignment assignment, DateUnit dateUnit) throws Exception
@@ -467,6 +471,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
 
     abstract protected boolean hasValue(Assignment assignment, DateUnit dateUnit) throws Exception;
+    
+    abstract protected boolean isEditableModel();
+    
+    abstract protected String getAssignmentsTag();
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;

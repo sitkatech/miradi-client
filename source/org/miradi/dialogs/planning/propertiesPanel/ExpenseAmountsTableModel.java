@@ -79,6 +79,18 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 		return getOptionalDoubleData(assignment, dateUnit).hasValue();
 	}
 	
+	@Override
+	protected boolean isEditableModel()
+	{
+		return true;
+	}
+	
+	@Override
+	protected String getAssignmentsTag()
+	{
+		 return BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS;
+	}
+	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";
 
 }
