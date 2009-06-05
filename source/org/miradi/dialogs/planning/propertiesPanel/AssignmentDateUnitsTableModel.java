@@ -179,7 +179,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
 			final boolean hasNoSubTasks = baseObjectForRow.getSubTaskRefs().isEmpty();
 			if (hasNoSubTasks && assignmentRefs.size() == 1)
-				return true;
+				return isAssignmentCellEditable(getSingleAssignmentForBaseObject(baseObjectForRow), getDateUnit(column));
 			
 			if (hasNoSubTasks && assignmentRefs.isEmpty())
 				return true;
@@ -193,6 +193,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 	
+	private Assignment getSingleAssignmentForBaseObject(BaseObject baseObjectForRow) throws Exception
+	{
+		ORefList assignmentRefsForRowObject = baseObjectForRow.getRefList(getAssignmentsTag());
+		return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
+	}
+
 	private boolean isOrCanReferToAssignments(BaseObject baseObjectForRow)
 	{
 		if (Assignment.isAssignment(baseObjectForRow))
