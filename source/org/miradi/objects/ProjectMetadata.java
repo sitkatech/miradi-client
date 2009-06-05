@@ -41,6 +41,7 @@ import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
+import org.miradi.questions.TargetModeQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
@@ -410,11 +411,13 @@ public class ProjectMetadata extends BaseObject
 		diagramFontFamily = new ChoiceData(TAG_DIAGRAM_FONT_FAMILY, getQuestion(FontFamiliyQuestion.class));
 		threatRatingMode = new ChoiceData(TAG_THREAT_RATING_MODE, getQuestion(ThreatRatingModeChoiceQuestion.class));
 		xenodataRefs = new StringRefMapData(TAG_XENODATA_STRING_REF_MAP);
+		targetMode = new ChoiceData(TAG_TARGET_MODE, getQuestion(TargetModeQuestion.class));
 		
 		addField(TAG_DIAGRAM_FONT_SIZE, diagramFontSize);
 		addField(TAG_DIAGRAM_FONT_FAMILY, diagramFontFamily);
 		addField(TAG_THREAT_RATING_MODE, threatRatingMode);
 		addField(TAG_XENODATA_STRING_REF_MAP, xenodataRefs);
+		addField(TAG_TARGET_MODE, targetMode);
 		
 		projectFileName = new PseudoStringData(PSEUDO_TAG_PROJECT_FILENAME);
 		addField(PSEUDO_TAG_PROJECT_FILENAME, projectFileName);
@@ -485,6 +488,7 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_THREAT_RATING_MODE = "ThreatRatingMode";
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
+	public static final String TAG_TARGET_MODE = "TargetMode";
 	
 	public static final String OBJECT_NAME = "ProjectMetadata";
 
@@ -550,6 +554,7 @@ public class ProjectMetadata extends BaseObject
 	private ChoiceData diagramFontFamily;
 	private ChoiceData diagramFontSize;
 	private ChoiceData threatRatingMode;
+	private ChoiceData targetMode;
 	
 	private StringRefMapData xenodataRefs;
 	private PseudoStringData projectFileName;

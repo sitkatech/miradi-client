@@ -55,6 +55,7 @@ import org.miradi.questions.FontSizeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.HyperlinkLabel;
+import org.miradi.views.ProjectSettingsPanel;
 import org.miradi.views.summary.SummaryPlanningPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
@@ -79,7 +80,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		diagramProjectPreferencesPanel = null;
 		
 		if(summaryPlanningPanel != null)
-			summaryPlanningPanel.dispose(); 
+			summaryPlanningPanel.dispose();
+		if (projectSettingsPanel != null)
+			projectSettingsPanel.dispose();
 		if(threatRatingPreferencesPanel != null)
 			threatRatingPreferencesPanel.dispose();
 		threatRatingPreferencesPanel = null;
@@ -97,6 +100,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			summaryPlanningPanel = new SummaryPlanningPanel(mainWindow, project.getMetadata().getRef());
 			tabPane.addTab(EAM.text("Threat Ratings"), createThreatRatingTab());
 			tabPane.addTab(EAM.text("Planning"), summaryPlanningPanel);
+			
+			projectSettingsPanel = new ProjectSettingsPanel(project);
+			tabPane.addTab(EAM.text("Project Settings"), projectSettingsPanel);
 		}
 		else
 		{
@@ -391,6 +397,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private DiagramProjectPreferencesPanel diagramProjectPreferencesPanel;
 	private ThreatRatingPreferencesPanel threatRatingPreferencesPanel;
 	private SummaryPlanningPanel summaryPlanningPanel;
+	private ProjectSettingsPanel projectSettingsPanel;
 	
 	private UiComboBox interventionDropdown;
 	private UiComboBox directThreatDropdown;
