@@ -215,6 +215,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (!isAssignmentForModel(assignment))
 			return false;
 		
+		return isHorizontallyEditable(assignment, dateUnit);
+	}
+
+	private boolean isHorizontallyEditable(Assignment assignment, DateUnit dateUnit) throws Exception
+	{
 		DateUnitEffort thisCellEffort = getDateUnitEffort(assignment, dateUnit);
 		if(thisCellEffort != null)
 			return true;
