@@ -35,7 +35,7 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 		if (!Factor.isFactor(selectedParent.getRef()))
 			return false;
 		
-		if (AbstractTarget.isTarget(selectedParent))
+		if (AbstractTarget.isAbstractTarget(selectedParent))
 			return ((AbstractTarget)selectedParent).isViabilityModeTNC();
 
 		return false;
