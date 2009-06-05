@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
+import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 abstract public class AbstractNonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPanelWithSections
@@ -28,5 +30,18 @@ abstract public class AbstractNonDiagramModelessTargetPropertiesPanel extends Ob
 	public AbstractNonDiagramModelessTargetPropertiesPanel(Project projectToUse, int objectTypeToUse)
 	{
 		super(projectToUse, objectTypeToUse);
+		
+		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
+		addSubPanelWithTitledBorder(targetCoreSubPanel);
+		
+		createSingleSection(EAM.text("Status"));
+		addFieldsOnOneLine("", new ObjectDataInputField[]{createStatusField()});
+		
+		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
+		addSubPanelWithTitledBorder(modelessTargetSubPanel);
+		
+		updateFieldsFromProject();
 	}
+	
+	abstract protected ObjectDataInputField createStatusField(); 
 }

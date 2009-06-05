@@ -31,18 +31,11 @@ public class NonDiagramKeaModeTargetPropertiesPanel extends AbstractNonDiagramMo
 	public NonDiagramKeaModeTargetPropertiesPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
-		
-		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
-		addSubPanelWithTitledBorder(targetCoreSubPanel);
-		
-		createSingleSection(EAM.text("Status"));
-		ObjectDataInputField ratingChoiceField = createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion());
-		addFieldsOnOneLine("", new ObjectDataInputField[]{ratingChoiceField});
-		
-		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
-		addSubPanelWithTitledBorder(modelessTargetSubPanel);
-		
-		updateFieldsFromProject();
+	}
+
+	protected ObjectDataInputField createStatusField()
+	{
+		return createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion());
 	}
 
 	@Override
