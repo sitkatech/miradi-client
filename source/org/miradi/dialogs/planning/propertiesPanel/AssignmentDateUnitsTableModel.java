@@ -23,6 +23,7 @@ import java.awt.Color;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
+import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
@@ -170,7 +171,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			
 			BaseObject baseObjectForRow = getBaseObjectForRow(row);
 			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
-			if (baseObjectForRow.getSubTaskRefs().isEmpty() && assignmentRefs.size() == 1)
+			final boolean hasNoSubTasks = baseObjectForRow.getSubTaskRefs().isEmpty();
+			if (hasNoSubTasks && assignmentRefs.size() == 1)
+				return true;
+			
+			if (hasNoSubTasks && assignmentRefs.isEmpty())
 				return true;
 			
 			return false;
@@ -220,7 +225,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		getProject().executeBeginTransaction();
 		try
 		{
-			Assignment assignment = getAssignment(row);
+			Assignment assignment = getSingleAssignmentToEdit(row);
 			DateUnit dateUnit = getDateUnit(column);
 
 			String valueAsString = value.toString().trim();
@@ -309,7 +314,16 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return getProvider().getRowCount();
 	}
 	
-	public Assignment getAssignment(int row) throws Exception
+	public Assignment getAssignment(int row)
+	{
+		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
+		if (Assignment.isAssignment(baseObjectForRowColumn))
+			return (Assignment) baseObjectForRowColumn;
+	
+		return null;
+	}
+	
+	public Assignment getSingleAssignmentToEdit(int row) throws Exception
 	{
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
 		if (Assignment.isAssignment(baseObjectForRowColumn))
@@ -319,9 +333,24 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (assignmentRefsForRowObject.size() == 1)
 			return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
 		
+		if (assignmentRefsForRowObject.isEmpty())
+			return createAndAddNewAssignment(baseObjectForRowColumn);
+		
 		return null;
 	}
 	
+	private Assignment createAndAddNewAssignment(BaseObject baseObjectForRowColumn) throws Exception
+	{
+		CommandCreateObject createAssignment = new CommandCreateObject(getAssignmentType());
+		getProject().executeCommand(createAssignment);
+		
+		ORef assignmentRef = createAssignment.getObjectRef();
+		CommandSetObjectData addAssignment = createAppendAssignmentCommand(baseObjectForRowColumn, assignmentRef);
+		getProject().executeCommand(addAssignment);
+		
+		return Assignment.findAssignment(getProject(), assignmentRef);
+	}
+
 	public RowColumnBaseObjectProvider getProvider()
 	{
 		return provider;
@@ -485,6 +514,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
     abstract protected boolean isEditableModel();
     
     abstract protected String getAssignmentsTag();
+    
+    abstract protected int getAssignmentType();
+    
+    abstract protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws Exception;
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;

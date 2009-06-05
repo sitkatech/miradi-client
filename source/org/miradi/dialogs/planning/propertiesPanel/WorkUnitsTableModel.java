@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
+import java.text.ParseException;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
@@ -91,6 +94,18 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	protected String getAssignmentsTag()
 	{
 		 return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
+	}
+	
+	@Override
+	protected int getAssignmentType()
+	{
+		return ResourceAssignment.getObjectType();
+	}
+	
+	@Override
+	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws ParseException
+	{
+		return CommandSetObjectData.createAppendIdCommand(baseObjectForRowColumn, getAssignmentsTag(), assignmentRef.getObjectId());
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";

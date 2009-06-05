@@ -21,10 +21,12 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -88,7 +90,24 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	protected String getAssignmentsTag()
 	{
-		 throw new RuntimeException(EAM.text("This model does not contain an assignment tag"));
+		 throw new RuntimeException(getErrorMessage());
+	}
+	
+	@Override
+	protected int getAssignmentType()
+	{
+		throw new RuntimeException(getErrorMessage());
+	}
+	
+	@Override
+	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef)	throws Exception
+	{
+		throw new RuntimeException(getErrorMessage());
+	}
+
+	private String getErrorMessage()
+	{
+		return EAM.text("This model is not for a single assignment and has no assignment information");
 	}
 	
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "BudgetDetailsTableModel";
