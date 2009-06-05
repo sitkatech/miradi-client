@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-05 15:37-0500\n"
+"POT-Creation-Date: 2009-06-05 16:35-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -3816,6 +3816,14 @@ msgstr "Penurunan Kecil"
 msgid "Strong Decrease"
 msgstr "Penurunan Besar"
 
+#: miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:36
+msgid "Green"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ScopeBoxColorQuestion.java:37
+msgid "Brown (Human Welfare Target)"
+msgstr ""
+
 #: miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:38
 msgid "Not Effective"
 msgstr "Tidak Efektif"
@@ -6786,7 +6794,7 @@ msgstr ""
 msgid "Editor"
 msgstr "Editor "
 
-#: miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:47
+#: miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:49
 msgid "Title|Scope Box Properties"
 msgstr ""
 
@@ -8412,6 +8420,9 @@ msgid "FieldLabel|50.ShortLabel|ID"
 msgstr ""
 
 msgid "FieldLabel|50.ScopeBox|Project Scope Box"
+msgstr ""
+
+msgid "FieldLabel|50.ScopeBoxColorCode|Scope Box Color"
 msgstr ""
 
 msgid "FieldLabel|51.ExpenseAssignment|Expense"
