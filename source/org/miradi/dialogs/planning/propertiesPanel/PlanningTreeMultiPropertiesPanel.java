@@ -23,6 +23,7 @@ import java.awt.CardLayout;
 import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.dialogs.base.FormBaseDataPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
@@ -33,12 +34,14 @@ import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramKeaModeTargetPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramSimpleModeTargetPropertiesPanel;
+import org.miradi.forms.HumanWelfareTargetPropertiesForm;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
@@ -105,6 +108,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		targetSimpleModePropertiesPanel = new NonDiagramSimpleModeTargetPropertiesPanel(getProject());
 		targetKeaModePropertiesPanel = new NonDiagramKeaModeTargetPropertiesPanel(getProject());
+		humanWelfareTargetPropertiesPanel = new FormBaseDataPanel(getProject(), new HumanWelfareTargetPropertiesForm());
 		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
 		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
 		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
@@ -122,6 +126,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(measurementPropertiesPanel);
 		addPanel(targetSimpleModePropertiesPanel);
 		addPanel(targetKeaModePropertiesPanel);
+		addPanel(humanWelfareTargetPropertiesPanel);
 		addPanel(threatPropertiesPanel);
 		addPanel(contributingFactorPropertiesPanel);
 		addPanel(intermediateResultPropertiesPanel);
@@ -184,6 +189,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		
 		if (Target.getObjectType() == objectType)
 			return getTargetPropertiesPanel(firstRef);
+		
+		if (HumanWelfareTarget.is(objectType))
+			return humanWelfareTargetPropertiesPanel;
 		
 		if (Cause.getObjectType() == objectType)
 			return getCausePropertiesPanel(firstRef);
@@ -257,6 +265,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private NonDiagramSimpleModeTargetPropertiesPanel targetSimpleModePropertiesPanel;
 	private NonDiagramKeaModeTargetPropertiesPanel targetKeaModePropertiesPanel;
+	private FormBaseDataPanel humanWelfareTargetPropertiesPanel; 
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
 	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
