@@ -89,34 +89,34 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 
 	public ChoiceItem getChoiceItemAt(int row, int column)
 	{
-		return findTable(column).getChoiceItemAt(row, findColumnWithinSubTable(column));
+		return findModel(column).getChoiceItemAt(row, findColumnWithinSubTable(column));
 	}
 
 	@Override
 	public Class<?> getColumnClass(int columnIndex)
 	{
-		return findTable(columnIndex).getColumnClass(findColumnWithinSubTable(columnIndex));
+		return findModel(columnIndex).getColumnClass(findColumnWithinSubTable(columnIndex));
 	}
 
 	@Override
 	public String getColumnName(int columnIndex)
 	{
-		return findTable(columnIndex).getColumnName(findColumnWithinSubTable(columnIndex));
+		return findModel(columnIndex).getColumnName(findColumnWithinSubTable(columnIndex));
 	}
 	
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex)
 	{
-		return findTable(columnIndex).isCellEditable(rowIndex, findColumnWithinSubTable(columnIndex));
+		return findModel(columnIndex).isCellEditable(rowIndex, findColumnWithinSubTable(columnIndex));
 	}
 		
 	@Override
 	public void setValueAt(Object value, int rowIndex, int columnIndex)
 	{
-		findTable(columnIndex).setValueAt(value, rowIndex, findColumnWithinSubTable(columnIndex));
+		findModel(columnIndex).setValueAt(value, rowIndex, findColumnWithinSubTable(columnIndex));
 	}
 
-	ChoiceItemTableModel findTable(int column)
+	ChoiceItemTableModel findModel(int column)
 	{
 		int originalColumn = column;
 		for(ChoiceItemTableModel model : models)

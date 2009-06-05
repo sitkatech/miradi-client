@@ -72,7 +72,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 
 	public PlanningUpperTableModelInterface getCastedModel(int column)
 	{
-		return (PlanningUpperTableModelInterface) findTable(column);
+		return (PlanningUpperTableModelInterface) findModel(column);
 	}
 
 	public String getColumnGroupCode(int modelColumn)
