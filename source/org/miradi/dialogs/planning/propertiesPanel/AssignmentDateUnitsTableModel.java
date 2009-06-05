@@ -29,6 +29,7 @@ import org.miradi.main.EAM;
 import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
@@ -167,6 +168,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (getAssignment(row) != null)
 				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 			
+			BaseObject baseObjectForRow = getBaseObjectForRow(row);
+			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
+			if (baseObjectForRow.getSubTaskRefs().isEmpty() && assignmentRefs.size() == 1)
+				return true;
+			
 			return false;
 		}
 		catch(Exception e)
@@ -303,11 +309,15 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return getProvider().getRowCount();
 	}
 	
-	public Assignment getAssignment(int row)
+	public Assignment getAssignment(int row) throws Exception
 	{
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
 		if (Assignment.isAssignment(baseObjectForRowColumn))
 			return (Assignment) baseObjectForRowColumn;
+		
+		ORefList assignmentRefsForRowObject = baseObjectForRowColumn.getRefList(getAssignmentsTag());
+		if (assignmentRefsForRowObject.size() == 1)
+			return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
 		
 		return null;
 	}
