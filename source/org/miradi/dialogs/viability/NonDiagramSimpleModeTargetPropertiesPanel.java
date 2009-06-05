@@ -30,18 +30,11 @@ public class NonDiagramSimpleModeTargetPropertiesPanel extends AbstractNonDiagra
 	public NonDiagramSimpleModeTargetPropertiesPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
-		
-		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
-		addSubPanelWithTitledBorder(targetCoreSubPanel);
-	
-		createSingleSection(EAM.text("Status"));
-		ObjectDataInputField ratingChoiceField = createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
-		addFieldsOnOneLine("", new ObjectDataInputField[]{ratingChoiceField});
-		
-		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
-		addSubPanelWithTitledBorder(modelessTargetSubPanel);
-		
-		updateFieldsFromProject();
+	}
+
+	protected ObjectDataInputField createStatusField()
+	{
+		return createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
 	}
 
 	@Override
