@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -71,6 +72,16 @@ abstract public class Assignment extends BaseObject
 		return ExpenseAssignment.is(objectType);
 	}
 	
+	public static Assignment findAssignment(ObjectManager objectManager, ORef assignmentRef)
+	{
+		return (Assignment) find(objectManager, assignmentRef);
+	}
+	
+	public static Assignment findAssignment(Project project, ORef assignmentRef)
+	{
+		return findAssignment(project.getObjectManager(), assignmentRef);
+	}
+		
 	@Override
 	public void clear()
 	{
