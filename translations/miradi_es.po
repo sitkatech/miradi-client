@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-05 15:12-0500\n"
+"POT-Creation-Date: 2009-06-05 15:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6582,7 +6582,7 @@ msgstr "Propiedades de la etiqueta de configuración de la vista Planificación"
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:110
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:105
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
