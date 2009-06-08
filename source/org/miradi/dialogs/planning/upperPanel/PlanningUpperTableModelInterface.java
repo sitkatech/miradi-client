@@ -36,4 +36,5 @@ public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, 
 	public boolean isColumnExpandable(int modelColumn);
 	public boolean isColumnCollapsable(int modelColumn);
 	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception;
+	public boolean shouldHideNonEditableExpandedRowData();
 }
