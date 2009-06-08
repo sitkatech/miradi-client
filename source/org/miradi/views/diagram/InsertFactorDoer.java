@@ -193,7 +193,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return createAt;
 		
 		if (Target.is(factorType))
-			return getTargetLocation(getDiagramModel().getAllDiagramTargets(), factorWidth);
+			return getTargetLocation(getDiagramModel().getAllDiagramTargets(), factorWidth, TARGET_RIGHT_SPACING);
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, factorWidth);
 	}
@@ -225,13 +225,13 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(Vector<FactorCell> allTargets, int factorWidth) throws Exception
+	public Point getTargetLocation(Vector<FactorCell> allTargets, int factorWidth, int targetRightSpacing) throws Exception
 	{
 		Rectangle visibleRectangle = getDiagramVisibleRect();
 		Point deltaPoint = new Point();
 		if (allTargets.size() == 0)
 		{
-			deltaPoint.x = visibleRectangle.width - TARGET_RIGHT_SPACING - factorWidth;
+			deltaPoint.x = visibleRectangle.width - targetRightSpacing - factorWidth;
 			deltaPoint.y = TARGET_TOP_LOCATION;
 		}
 		else
