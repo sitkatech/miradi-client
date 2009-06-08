@@ -922,23 +922,23 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return project.getGoalPool();
 	}
 	
-	public FactorCell[] getAllDiagramTargetsAsArray()
-	{
-		return getAllDiagramTargets().toArray(new FactorCell[0]);
-	}
-	
 	public Vector<FactorCell> getAllDiagramTargets()
 	{
-		Vector<FactorCell> allTargets = new Vector<FactorCell>();
+		return getFactorCells(Target.getObjectType());
+	}
+
+	private Vector<FactorCell> getFactorCells(int wrappedType)
+	{
+		Vector<FactorCell> allFactorCells = new Vector<FactorCell>();
 		Vector allFactors = getAllFactorCells();
 		for (int i = 0; i < allFactors.size(); i++)
 		{
-			FactorCell diagramFactor = (FactorCell)allFactors.get(i);
-			if (diagramFactor.isTarget())
-				allTargets.add(diagramFactor);
+			FactorCell factorCell = (FactorCell)allFactors.get(i);
+			if (factorCell.getWrappedType() == wrappedType)
+				allFactorCells.add(factorCell);
 		}
 		
-		return allTargets;
+		return allFactorCells;
 	}
 	
 	public void updateGroupBoxCells()
