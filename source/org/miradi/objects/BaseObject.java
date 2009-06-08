@@ -510,7 +510,7 @@ abstract public class BaseObject
 		return mergedTimePeriodCostsMap;	
 	}
 	
-	private TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList baseObjectRefs, String tag) throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList baseObjectRefs, String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		for (int index = 0; index < baseObjectRefs.size(); ++index)
