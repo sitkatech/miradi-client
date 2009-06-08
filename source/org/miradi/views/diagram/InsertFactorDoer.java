@@ -204,7 +204,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	private int getTargetRightSpacing()
 	{
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
-			return TARGET_RIGHT_SPACING;
+			return TARGET_RIGHT_SPACING + TARGET_BETWEEN_SPACING;
 		
 		return DEFAULT_TARGET_RIGHT_SPACING;
 	}
@@ -343,7 +343,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	private static final int TARGET_TOP_LOCATION = 150;
 	private static final int TARGET_BETWEEN_SPACING = 20;
-	private static final int TARGET_RIGHT_SPACING = 150;
+	private static final int TARGET_RIGHT_SPACING = 130;
 	private static final int DEFAULT_TARGET_RIGHT_SPACING = 10;
 	private static final int HUMAN_WELFARE_TARGET_SPACING = DEFAULT_TARGET_RIGHT_SPACING;
 	private static final int DEFAULT_MOVE = 150;
