@@ -197,16 +197,17 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return getTargetLocation(factorWidth, getTargetRightSpacing());
 		
 		if (HumanWelfareTarget.is(factorType))
-			return getTargetLocation(factorWidth, HUMAN_WELFARE_TARGET_SPACING);
+			return getTargetLocation(factorWidth, DEFAULT_ABSTRACT_TARGET_RIGHT_MARGIN);
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, factorWidth);
 	}
+	
 	private int getTargetRightSpacing()
 	{
 		if (getProject().getMetadata().isHumanWelfareTargetMode())
-			return TARGET_OFFSET_FROM_RIGHT_EDGE + TARGET_BETWEEN_SPACING;
+			return TARGET_RIGHT_MARGIN + TARGET_BETWEEN_SPACING;
 		
-		return DEFAULT_TARGET_OFFSET_FROM_RIGHT_EDGE;
+		return DEFAULT_ABSTRACT_TARGET_RIGHT_MARGIN;
 	}
 	
 	private Point getNonTargetDeltaPoint(FactorCell[] selectedFactors, int factorType, int factorWidth)
@@ -274,7 +275,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		Point nodeLocation = selectedFactorCell.getLocation();
 		int x = Math.max(0, nodeLocation.x - DEFAULT_MOVE - nodeWidth);
 		if (selectedFactorCell.isHumanWelfareTarget())
-			x = (x - DEFAULT_MOVE + DEFAULT_TARGET_OFFSET_FROM_RIGHT_EDGE);
+			x = (x - DEFAULT_MOVE + DEFAULT_ABSTRACT_TARGET_RIGHT_MARGIN);
 		
 		return new Point(x, nodeLocation.y);
 	}
@@ -345,8 +346,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	private static final int TARGET_TOP_LOCATION = 150;
 	private static final int TARGET_BETWEEN_SPACING = 20;
-	private static final int TARGET_OFFSET_FROM_RIGHT_EDGE = 130;
-	private static final int DEFAULT_TARGET_OFFSET_FROM_RIGHT_EDGE = 10;
-	private static final int HUMAN_WELFARE_TARGET_SPACING = DEFAULT_TARGET_OFFSET_FROM_RIGHT_EDGE;
+	private static final int TARGET_RIGHT_MARGIN = 130;
+	private static final int DEFAULT_ABSTRACT_TARGET_RIGHT_MARGIN = 10;
 	private static final int DEFAULT_MOVE = 150;
 }
