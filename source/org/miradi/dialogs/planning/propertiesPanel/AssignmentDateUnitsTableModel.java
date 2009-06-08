@@ -176,10 +176,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (getAssignment(row) != null)
 				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 			
-			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
 			if (baseObjectForRow.getSubTaskRefs().size() > 0)
 				return false;
 			
+			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
 			if (assignmentRefs.size() == 1)
 				return isAssignmentCellEditable(getSingleAssignmentForBaseObject(baseObjectForRow), getDateUnit(column));
 			
