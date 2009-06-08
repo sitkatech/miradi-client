@@ -40,6 +40,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 import org.miradi.project.FactorCommandHelper;
@@ -190,8 +191,8 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (createAt != null)
 			return createAt;
 		
-		if (factorType == ObjectType.TARGET)
-			return getTargetLocation(getDiagramModel(), getDiagramVisibleRect(), factorWidth);
+		if (Target.is(factorType))
+			return getTargetLocation(getDiagramModel().getAllDiagramTargetsAsArray(), factorWidth);
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, factorWidth);
 	}
@@ -223,11 +224,10 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(DiagramModel diagramModel, Rectangle visibleRectangle, int factorWidth) throws Exception
+	public Point getTargetLocation(FactorCell[] allTargets, int factorWidth) throws Exception
 	{
+		Rectangle visibleRectangle = getDiagramVisibleRect();
 		Point deltaPoint = new Point();
-		FactorCell[] allTargets = diagramModel.getAllDiagramTargetsAsArray();
-
 		if (allTargets.length == 0)
 		{
 			deltaPoint.x = visibleRectangle.width - TARGET_RIGHT_SPACING - factorWidth;
