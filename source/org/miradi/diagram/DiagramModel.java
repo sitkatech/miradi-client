@@ -927,7 +927,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return getFactorCells(Target.getObjectType());
 	}
 
-	private Vector<FactorCell> getFactorCells(int wrappedType)
+	public Vector<FactorCell> getFactorCells(int wrappedType)
 	{
 		Vector<FactorCell> allFactorCells = new Vector<FactorCell>();
 		Vector allFactors = getAllFactorCells();
