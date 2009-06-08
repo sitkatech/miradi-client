@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-05 17:24-0500\n"
+"POT-Creation-Date: 2009-06-08 08:56-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -662,11 +662,11 @@ msgstr "Elementos etiquetados "
 msgid "Are you sure you want to delete this Indicator?"
 msgstr "¿Está seguro de que desea eliminar este indicador? "
 
-#: miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:142
+#: miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:143
 msgid "Manage Tags (BETA)..."
 msgstr "Administrar etiquetas (BETA)… "
 
-#: miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:471
+#: miradi/source/org/miradi/views/diagram/DiagramLegendPanel.java:475
 msgid "Manage Tagged Object Sets"
 msgstr "Administrar conjuntos de objetos etiquetados"
 
