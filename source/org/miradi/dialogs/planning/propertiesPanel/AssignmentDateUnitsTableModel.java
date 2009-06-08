@@ -31,6 +31,8 @@ import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
@@ -177,7 +179,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 			
 			if (baseObjectForRow.getSubTaskRefs().size() > 0)
-				return false;
+				return hasNonConflictingValues(baseObjectForRow, getDateUnit(column));
 			
 			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
 			if (assignmentRefs.size() == 1)
@@ -192,6 +194,19 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 	
+	private boolean hasNonConflictingValues(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
+	{
+		if (baseObjectForRow.getRefList(getAssignmentsTag()).size() > 1)
+			return false;
+		
+		ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
+		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, getAssignmentsTag());
+		final TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
+		final OptionalDouble totalCost = timePeriodCosts.calculateTotalCost(getProject());
+
+		return !totalCost.hasValue();
+	}
+
 	private Assignment getSingleAssignmentForBaseObject(BaseObject baseObjectForRow) throws Exception
 	{
 		ORefList assignmentRefsForRowObject = baseObjectForRow.getRefList(getAssignmentsTag());
