@@ -212,7 +212,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	private Point getNonTargetDeltaPoint(FactorCell[] selectedFactors, int factorType, int factorWidth)
 	{
 		if (selectedFactors.length > 0 && !(factorType == ObjectType.TARGET))
-			return getLocationSelectedNonTargetNode(selectedFactors, factorWidth);
+			return getLocationSelectedNonTargetNode(selectedFactors[0], factorWidth);
 		
 		return getCenterLocation(getDiagramVisibleRect());
 	}
@@ -269,9 +269,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getLocationSelectedNonTargetNode(FactorCell[] selectedNodes, int nodeWidth)
+	private Point getLocationSelectedNonTargetNode(FactorCell selectedNode, int nodeWidth)
 	{
-		Point nodeLocation = selectedNodes[0].getLocation();
+		Point nodeLocation = selectedNode.getLocation();
 		int x = Math.max(0, nodeLocation.x - DEFAULT_MOVE - nodeWidth);
 		
 		return new Point(x, nodeLocation.y);
