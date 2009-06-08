@@ -46,7 +46,6 @@ import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.CurrencyFormat;
-import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
@@ -111,19 +110,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	public boolean areBudgetValuesAllocated(int row)
 	{
 		return masterTree.areBudgetValuesAllocated(row);
-	}
-	
-	@Override
-	public Object getValueAt(int row, int column)
-	{
-		final int modelColumn = convertColumnIndexToModel(column);
-		if(getCastedModel().isWorkUnitColumn(modelColumn))
-		{
-			if (masterTree.getTree().isExpanded(row))
-				return new EmptyChoiceItem();
-		}
-		
-		return super.getValueAt(row, column);
 	}
 	
 	@Override
