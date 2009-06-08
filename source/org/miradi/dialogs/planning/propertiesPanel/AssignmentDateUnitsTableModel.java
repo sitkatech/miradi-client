@@ -359,10 +359,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	public Assignment getSingleAssignmentToEdit(int row) throws Exception
 	{
-		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
-		if (Assignment.isAssignment(baseObjectForRowColumn))
-			return (Assignment) baseObjectForRowColumn;
+		Assignment assignmentForRow = getAssignment(row);
+		if (assignmentForRow != null)
+			return assignmentForRow;
 		
+		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
 		ORefList assignmentRefsForRowObject = baseObjectForRowColumn.getRefList(getAssignmentsTag());
 		if (assignmentRefsForRowObject.size() == 1)
 			return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
