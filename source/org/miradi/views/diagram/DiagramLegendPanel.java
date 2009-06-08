@@ -73,6 +73,7 @@ import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TaggedObjectSet;
@@ -180,14 +181,14 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addButtonLineWithCheckBox(jpanel, ScopeBox.getObjectType(), ScopeBox.OBJECT_NAME, actions.get(ActionInsertScopeBox.class));
 		
 		addButtonLineWithCheckBox(jpanel, Target.getObjectType(), Target.OBJECT_NAME, actions.get(ActionInsertTarget.class));
-		addButtonLineWithCheckBox(jpanel, HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
+		if (getProject().getMetadata().isHumanWelfareTargetMode())
+			addButtonLineWithCheckBox(jpanel, HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, actions.get(ActionInsertHumanWelfareTarget.class));
+		
 		createCustomLegendPanelSection(actions, jpanel);
 		
 		addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(),Strategy.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		if (mainWindow.getDiagramView().isStategyBrainstormMode())
-		{
 			addButtonLineWithCheckBox(jpanel, Strategy.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
-		}
 
 		addButtonLineWithCheckBox(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME, actions.get(ActionInsertFactorLink.class));
 		addTargetLinkLine(jpanel, FactorLink.getObjectType(), FactorLink.OBJECT_NAME_TARGETLINK);
@@ -411,6 +412,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if (isUpdateTaggedObjectSetsCommand(event))
+			resetCheckBoxes();
+		
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_MODE))
 			resetCheckBoxes();
 	}
 	
