@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Stress;
 import org.miradi.objects.TaggedObjectSet;
@@ -193,9 +194,19 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return createAt;
 		
 		if (Target.is(factorType))
-			return getTargetLocation(factorWidth, TARGET_RIGHT_SPACING);
+			return getTargetLocation(factorWidth, getTargetRightSpacing());
+		
+		if (HumanWelfareTarget.is(factorType))
+			return getTargetLocation(factorWidth, HUMAN_WELFARE_TARGET_SPACING);
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, factorWidth);
+	}
+	private int getTargetRightSpacing()
+	{
+		if (getProject().getMetadata().isHumanWelfareTargetMode())
+			return TARGET_RIGHT_SPACING;
+		
+		return DEFAULT_TARGET_RIGHT_SPACING;
 	}
 	
 	private Point getNonTargetDeltaPoint(FactorCell[] selectedFactors, int factorType, int factorWidth)
@@ -330,8 +341,10 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return getDiagramView().getDiagramModel().getLayerManager();
 	}
 	
-	public static final int TARGET_TOP_LOCATION = 150;
-	public static final int TARGET_BETWEEN_SPACING = 20;
-	public static final int TARGET_RIGHT_SPACING = 10;
-	public static final int DEFAULT_MOVE = 150;
+	private static final int TARGET_TOP_LOCATION = 150;
+	private static final int TARGET_BETWEEN_SPACING = 20;
+	private static final int TARGET_RIGHT_SPACING = 150;
+	private static final int DEFAULT_TARGET_RIGHT_SPACING = 10;
+	private static final int HUMAN_WELFARE_TARGET_SPACING = DEFAULT_TARGET_RIGHT_SPACING;
+	private static final int DEFAULT_MOVE = 150;
 }
