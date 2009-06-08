@@ -237,7 +237,11 @@ public class ProjectMetadata extends BaseObject
 		return false;
 	}
 	
-	
+	public boolean isHumanWelfareTargetMode()
+	{
+		return targetMode.get().equals(TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
+	}
+		
 	public String getThreatRatingMode()
 	{
 		return threatRatingMode.get();
