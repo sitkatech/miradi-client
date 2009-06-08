@@ -179,8 +179,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 			
 			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
-			if (assignmentRefs.size()  <= 1 && baseObjectForRow.getSubTaskRefs().size() > 0)
-				return !hasConflictingValue(baseObjectForRow, getDateUnit(column));
+			if (assignmentRefs.size() >  1)
+				return false;
+			
+			if (hasConflictingValue(baseObjectForRow, getDateUnit(column)))
+				return false;
 			
 			if (assignmentRefs.size() == 1)
 				return isAssignmentCellEditable(getSingleAssignmentForBaseObject(baseObjectForRow), getDateUnit(column));
@@ -196,6 +199,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private boolean hasConflictingValue(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
 	{
+		if (baseObjectForRow.getSubTaskRefs().size() == 0)
+			return false;
+		
 		ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
 		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, getAssignmentsTag());
 		final TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
