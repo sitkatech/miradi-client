@@ -552,6 +552,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return getDateUnit(column) != null;
 	}
+	
+	@Override
+	public boolean shouldHideNonEditableExpandedRowData()
+	{
+		return true;
+	}
 
 	abstract public String getUniqueTableModelIdentifier();
 	

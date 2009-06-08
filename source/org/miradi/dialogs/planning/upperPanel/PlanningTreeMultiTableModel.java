@@ -79,4 +79,9 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 	{
 		return getCastedModel(modelColumn).getColumnGroupCode(findColumnWithinSubTable(modelColumn));
 	}
+	
+	public boolean shouldHideNonEditableExpandedRowData(int modelColumn)
+	{
+		return getCastedModel(modelColumn).shouldHideNonEditableExpandedRowData();
+	}
 }
