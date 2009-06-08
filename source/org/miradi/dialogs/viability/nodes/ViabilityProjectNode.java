@@ -92,16 +92,16 @@ public class ViabilityProjectNode extends TreeTableNode
 	public void rebuild() throws Exception
 	{
 		Vector vector = new Vector();
-		Target[] targets  = project.getTargetPool().getSortedTargets();
-		for (int i=0; i< targets.length; ++i)
-		{
-			vector.add(new TargetViabilityNode(project, targets[i].getRef()));
-		}
-		
 		HumanWelfareTarget[] humanWelfareTargetRefs = getProject().getHumanWelfareTargetPool().getSortedHumanWelfareTargets();
 		for(int index = 0; index < humanWelfareTargetRefs.length; ++index)
 		{
 			vector.add(new TargetViabilityNode(getProject(), humanWelfareTargetRefs[index].getRef()));
+		}
+		
+		Target[] targets  = project.getTargetPool().getSortedTargets();
+		for (int i=0; i< targets.length; ++i)
+		{
+			vector.add(new TargetViabilityNode(project, targets[i].getRef()));
 		}
 		
 		children = vector;
