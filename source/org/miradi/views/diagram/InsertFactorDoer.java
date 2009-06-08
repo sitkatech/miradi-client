@@ -269,10 +269,12 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	private Point getLocationSelectedNonTargetNode(FactorCell selectedNode, int nodeWidth)
+	private Point getLocationSelectedNonTargetNode(FactorCell selectedFactorCell, int nodeWidth)
 	{
-		Point nodeLocation = selectedNode.getLocation();
+		Point nodeLocation = selectedFactorCell.getLocation();
 		int x = Math.max(0, nodeLocation.x - DEFAULT_MOVE - nodeWidth);
+		if (selectedFactorCell.isHumanWelfareTarget())
+			x = (x - DEFAULT_MOVE + DEFAULT_TARGET_RIGHT_SPACING);
 		
 		return new Point(x, nodeLocation.y);
 	}
