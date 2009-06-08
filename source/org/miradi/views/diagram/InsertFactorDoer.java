@@ -21,6 +21,7 @@ package org.miradi.views.diagram;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
@@ -192,7 +193,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			return createAt;
 		
 		if (Target.is(factorType))
-			return getTargetLocation(getDiagramModel().getAllDiagramTargetsAsArray(), factorWidth);
+			return getTargetLocation(getDiagramModel().getAllDiagramTargets(), factorWidth);
 		
 		return getNonTargetDeltaPoint(selectedFactors, factorType, factorWidth);
 	}
@@ -224,11 +225,11 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(FactorCell[] allTargets, int factorWidth) throws Exception
+	public Point getTargetLocation(Vector<FactorCell> allTargets, int factorWidth) throws Exception
 	{
 		Rectangle visibleRectangle = getDiagramVisibleRect();
 		Point deltaPoint = new Point();
-		if (allTargets.length == 0)
+		if (allTargets.size() == 0)
 		{
 			deltaPoint.x = visibleRectangle.width - TARGET_RIGHT_SPACING - factorWidth;
 			deltaPoint.y = TARGET_TOP_LOCATION;
@@ -238,9 +239,9 @@ abstract public class InsertFactorDoer extends LocationDoer
 			int highestYIndex = 0;
 			int highestY = 0;
 			
-			for (int i = 0; i < allTargets.length; i++)
+			for (int i = 0; i < allTargets.size(); i++)
 			{
-				double y = allTargets[i].getBounds().getY();
+				double y = allTargets.get(i).getBounds().getY();
 				if (highestY < y)
 				{
 					highestY = (int) y;
@@ -248,7 +249,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 				}
 			}
 			
-			FactorCell targetCell = allTargets[highestYIndex];
+			FactorCell targetCell = allTargets.get(highestYIndex);
 			deltaPoint.x = (int)targetCell.getBounds().getX();
 			deltaPoint.y = highestY + (int)targetCell.getBounds().getHeight() + TARGET_BETWEEN_SPACING;
 		}
