@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-09 10:11-0500\n"
+"POT-Creation-Date: 2009-06-09 15:48-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2245,6 +2245,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:31
 msgid "Workplan"
+msgstr ""
+
+#: miradi/source/org/miradi/forms/PropertiesPanelSpec.java:49
+msgid "Sub classes need to override this method."
 msgstr ""
 
 #: miradi/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
