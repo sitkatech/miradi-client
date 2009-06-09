@@ -44,11 +44,6 @@ public abstract class SavableField implements FocusListener
 		fieldSaver.setSavableField(null);
 	}
 
-	public static void saveFocusedFieldPendingEdits()
-	{
-		FieldSaver.savePendingEdits();
-	}
-
 	abstract public void saveIfNeeded();
 
 	private static FieldSaver fieldSaver;

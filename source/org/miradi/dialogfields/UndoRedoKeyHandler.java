@@ -43,12 +43,12 @@ public class UndoRedoKeyHandler extends KeyAdapter
 			char keyChar = event.getKeyChar();
 			if(keyChar == ctrl('Z'))
 			{
-				SavableField.saveFocusedFieldPendingEdits();
+				FieldSaver.savePendingEdits();
 				getUndoAction().doAction();
 			}
 			if(keyChar == ctrl('Y'))
 			{
-				SavableField.saveFocusedFieldPendingEdits();
+				FieldSaver.savePendingEdits();
 				getRedoAction().doAction();
 			}
 		}

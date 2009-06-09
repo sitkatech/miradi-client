@@ -26,7 +26,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableColumn;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.SavableField;
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.StringMap;
@@ -117,7 +117,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	{
 		try
 		{
-			SavableField.saveFocusedFieldPendingEdits();
+			FieldSaver.savePendingEdits();
 			saveColumnWidths();
 		}
 		catch(Exception e1)

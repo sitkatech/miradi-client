@@ -23,6 +23,7 @@ import javax.swing.JComponent;
 
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.SavableField;
 import org.miradi.dialogfields.TextAreaRightClickMouseHandler;
@@ -60,7 +61,7 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	
 	public void setObjectRefs(ORefList selectedHeirearchyToUse)
 	{
-		saveFocusedFieldPendingEdits();
+		FieldSaver.savePendingEdits();
 		selectedHeirearchy = selectedHeirearchyToUse;
 
 		updateText();
