@@ -128,6 +128,20 @@ public class Cause extends Factor
 		return objectType == getObjectType();
 	}
 	
+	public static boolean is(BaseObject object)
+	{
+		return is(object.getType());
+	}
+	
+	public static boolean isDirectThreat(BaseObject object)
+	{
+		if(!is(object))
+			return false;
+		
+		Cause cause = (Cause)object;
+		return cause.isDirectThreat();
+	}
+
 	public static Cause find(ObjectManager objectManager, ORef causeRef)
 	{
 		return (Cause) objectManager.findObject(causeRef);
