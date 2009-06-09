@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
-import java.util.EventObject;
 import java.util.Vector;
 
 import javax.swing.Action;
@@ -32,7 +31,6 @@ import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.Actions;
-import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
@@ -198,14 +196,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return getMainWindow().getActions();
 	}
 	
-	@Override
-	public boolean editCellAt(int row, int column, EventObject e)
-	{
-		FieldSaver.setEditingTable(this);
-		
-		return super.editCellAt(row, column, e);
-	}
-
 	private PlanningTreeTable masterTree;
 	private BasicTableCellRendererFactory defaultRendererFactory;
 	private BasicTableCellRendererFactory currencyRendererFactory;

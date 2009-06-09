@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.utils;
 
+import java.util.EventObject;
+
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogfields.FieldSaver;
@@ -44,6 +46,13 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	{
 		FieldSaver.setEditingTable(null);
 		getMainWindow().getProject().removeCommandExecutedListener(this);
+	}
+	
+	@Override
+	public boolean editCellAt(int row, int column, EventObject e)
+	{
+		FieldSaver.setEditingTable(this);		
+		return super.editCellAt(row, column, e);
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
