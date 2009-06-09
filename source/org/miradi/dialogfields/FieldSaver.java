@@ -17,39 +17,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.dialogfields;
 
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
+import org.miradi.utils.TableWithHelperMethods;
 
-import org.miradi.main.EAM;
-
-public abstract class SavableField implements FocusListener
-{	
-	public SavableField()
+public class FieldSaver
+{
+	public void setSavableField(SavableField savableFieldToUse)
 	{
-		fieldSaver = new FieldSaver();
+		focusedField = savableFieldToUse;
 	}
 	
-	public void focusGained(FocusEvent e)
-	{
-		EAM.logVerbose("focusGained");
-		fieldSaver.setSavableField(this);
-	}
-
-	public void focusLost(FocusEvent e)
-	{
-		EAM.logVerbose("focusLost");
-		saveIfNeeded();
-		fieldSaver.setSavableField(this);
-	}
-
 	public static void saveFocusedFieldPendingEdits()
 	{
-		fieldSaver.saveFocusedFieldPendingEdits();
+		if(focusedField != null)
+			focusedField.saveIfNeeded();
+		
+		if (tableBeingEdited != null)
+			tableBeingEdited.stopCellEditing();
 	}
 
-	abstract public void saveIfNeeded();
-
-	private static FieldSaver fieldSaver;
+	private static SavableField focusedField;
+	private static TableWithHelperMethods tableBeingEdited;
 }

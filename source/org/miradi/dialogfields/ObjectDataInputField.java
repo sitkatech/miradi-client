@@ -46,6 +46,7 @@ abstract public class ObjectDataInputField extends SavableField
 	
 	public ObjectDataInputField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse)
 	{
+		super();
 		project = projectToUse;
 		objectType = objectTypeToUse;
 		objectId = objectIdToUse;
