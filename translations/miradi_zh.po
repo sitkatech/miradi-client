@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-08 14:21-0500\n"
+"POT-Creation-Date: 2009-06-09 07:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2634,41 +2634,45 @@ msgstr "7月到6月 \t\t"
 msgid "April to March"
 msgstr "4月到3月 \t\t"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:42
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:43
 msgid "Goals Only"
 msgstr "仅限于总目标 \t\t"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:43
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:44
 msgid "Objectives Only"
 msgstr "仅限于分目标组 \t\t"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:44
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:45
 #, fuzzy
 msgid "Targets Only"
 msgstr "Targets Only"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:45
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:46
+msgid "Human Welfare Targets Only"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:47
 #, fuzzy
 msgid "Direct Threats Only"
 msgstr "Direct Threats Only"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:46
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:48
 msgid "Strategies Only"
 msgstr "仅限于策略 \t\t"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:47
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
 msgid "Activities Only"
 msgstr "仅限于活动 \t\t"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:48
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 msgid "Indicators Only"
 msgstr "仅限于指示物 \t\t"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
 msgid "Methods Only"
 msgstr "仅限于方法 \t\t"
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:52
 #, fuzzy
 msgid "Assigned Resources Only"
 msgstr "Assigned Resources Only"
