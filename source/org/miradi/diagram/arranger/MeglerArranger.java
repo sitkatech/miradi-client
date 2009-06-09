@@ -57,11 +57,14 @@ public class MeglerArranger
 
 	private void moveFactors(Vector<DiagramFactor> factors, int x, int initialY) throws Exception
 	{
+		int y = initialY;
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
 		for(DiagramFactor diagramFactor : factors)
 		{
-			Point newLocation = new Point(x, initialY);
+			Point newLocation = new Point(x, y);
 			helper.setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), newLocation);
+			
+			y += DELTA_Y;
 		}
 	}
 	
@@ -98,7 +101,9 @@ public class MeglerArranger
 	private static final int STRATEGY_COLUMN_X = 30;
 	private static final int THREAT_COLUMN_X = 180;
 	private static final int TARGET_COLUMN_X = 330;
+	
 	private static final int TOP_Y = 30;
+	private static final int DELTA_Y = 90;
 
 	private DiagramObject diagram;
 	private Vector<DiagramFactor> strategies;

@@ -36,7 +36,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		super(name);
 	}
 
-	public void testOneOfEachType() throws Exception
+	public void testHorizontalColumns() throws Exception
 	{
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
@@ -55,4 +55,17 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertEquals("Threat not at top?", 30, threatDiagramFactor.getLocation().y);
 		assertEquals("Target not at top?", 30, targetDiagramFactor.getLocation().y);
 	}
+	
+	public void testVerticalSpacing() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		MeglerArranger arranger = new MeglerArranger(getProject().getMainDiagramObject());
+		arranger.arrange();
+		
+		int y1 = strategyDiagramFactor1.getLocation().y;
+		int y2 = strategyDiagramFactor2.getLocation().y;
+		assertEquals("Strategies not spaced vertically?", 90, Math.abs(y1 - y2));
+	}
+
 }
