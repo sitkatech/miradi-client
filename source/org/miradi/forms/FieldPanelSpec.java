@@ -41,12 +41,6 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	}
 	
 	@Override
-	public int getPanelCount()
-	{
-		return 1;
-	}
-
-	@Override
 	public FieldPanelSpec getPanel(int index)
 	{
 		return this;

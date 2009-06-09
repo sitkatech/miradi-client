@@ -36,6 +36,7 @@ public class FormBaseDataPanel extends ObjectDataInputPanel
 		super(projectToUse, ORef.INVALID);
 		
 		addSubPanels(propertiesPanelSpec);
+		addFields(propertiesPanelSpec);
 		updateFieldsFromProject();
 	}
 
@@ -57,7 +58,7 @@ public class FormBaseDataPanel extends ObjectDataInputPanel
 		}
 	}
 
-	private void addFields(FieldPanelSpec fieldPanelSpec)
+	private void addFields(PropertiesPanelSpec fieldPanelSpec)
 	{
 		for (int index = 0; index < fieldPanelSpec.getFieldRowCount(); ++index)
 		{
