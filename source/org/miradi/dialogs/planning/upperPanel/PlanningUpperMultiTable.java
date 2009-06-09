@@ -78,7 +78,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	@Override
 	public void dispose()
 	{
-		FieldSaver.getSingletonInstance().setEditingTable(null);
+		FieldSaver.setEditingTable(null);
 		
 		super.dispose();
 	}
@@ -209,7 +209,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	@Override
 	public boolean editCellAt(int row, int column, EventObject e)
 	{
-		FieldSaver.getSingletonInstance().setEditingTable(this);
+		FieldSaver.setEditingTable(this);
 		
 		return super.editCellAt(row, column, e);
 	}
