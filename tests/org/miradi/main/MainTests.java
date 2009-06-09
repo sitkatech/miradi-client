@@ -54,6 +54,7 @@ import org.miradi.diagram.TestLayerSorter;
 import org.miradi.diagram.TestLinkCreator;
 import org.miradi.diagram.TestSetFactorSize;
 import org.miradi.diagram.TestUndoAndRedo;
+import org.miradi.diagram.arranger.TestMeglerArranger;
 import org.miradi.diagram.cells.TestDiagramFactor;
 import org.miradi.diagram.cells.TestLinkCell;
 import org.miradi.export.TestReportXmlExporter;
@@ -299,7 +300,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestLinkCreator.class));
 		suite.addTest(new TestSuite(TestGroupBoxLinking.class));
 		suite.addTest(new TestSuite(TestLayerSorter.class));
-		suite.addTest(new TestSuite(TestEAMGraphCellByFactorTypeSorter.class));		
+		suite.addTest(new TestSuite(TestEAMGraphCellByFactorTypeSorter.class));
+		
+		suite.addTest(new TestSuite(TestMeglerArranger.class));
 
 		// factors package
 		suite.addTest(new TestSuite(TestDiagramAddFactorLink.class));

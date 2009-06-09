@@ -123,6 +123,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		super.close();
 	}
 	
+	public DiagramObject getMainDiagramObject()
+	{
+		return getDiagramModel().getDiagramObject();
+	}
+	
 	public void fillGeneralProjectData() throws Exception
 	{
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_NAME, "Some Project Name");
