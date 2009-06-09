@@ -76,14 +76,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	}
 	
 	@Override
-	public void dispose()
-	{
-		FieldSaver.setEditingTable(null);
-		
-		super.dispose();
-	}
-	
-	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
 		final int modelColumn = convertColumnIndexToModel(tableColumn);
