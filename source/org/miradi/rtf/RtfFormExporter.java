@@ -177,6 +177,9 @@ public class RtfFormExporter
 	private String getFieldData(FormFieldData formFieldData, FormRow formRow)
 	{
 		ORef ref = getRefs().getRefForType(formFieldData.getObjectType());
+		if (ref.isInvalid())
+			return "";
+		
 		BaseObject baseObject = getProject().findObject(ref);
 		String fieldTag = formFieldData.getObjectTag();
 		if (baseObject.isPseudoField(fieldTag))
