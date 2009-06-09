@@ -23,11 +23,11 @@ package org.miradi.diagram.arranger;
 import java.awt.Point;
 import java.util.Vector;
 
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
@@ -84,17 +84,13 @@ public class MeglerArranger
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			ORef wrappedRef = diagramFactor.getWrappedORef();
-			if(Strategy.is(wrappedRef))
+			Factor factor = diagramFactor.getWrappedFactor();
+			if(Strategy.is(factor))
 				strategies.add(diagramFactor);
-			if(Target.is(wrappedRef))
+			if(Target.is(factor))
 				targets.add(diagramFactor);
-			if(Cause.is(wrappedRef))
-			{
-				Cause cause = Cause.find(project, wrappedRef);
-				if(cause.isDirectThreat())
-					threats.add(diagramFactor);
-			}
+			if(Cause.isDirectThreat(factor))
+				threats.add(diagramFactor);
 		}
 	}
 
