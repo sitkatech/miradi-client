@@ -28,7 +28,7 @@ public abstract class SavableField implements FocusListener
 {	
 	public SavableField()
 	{
-		fieldSaver = new FieldSaver();
+		fieldSaver = FieldSaver.getSingletonInstance();
 	}
 	
 	public void focusGained(FocusEvent e)

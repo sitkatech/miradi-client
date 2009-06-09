@@ -24,20 +24,38 @@ import org.miradi.utils.TableWithHelperMethods;
 
 public class FieldSaver
 {
+	private FieldSaver()
+	{
+	}
+	
+	public static FieldSaver getSingletonInstance()
+	{
+		if (instance == null)
+			instance = new FieldSaver();
+		
+		return instance;
+	}
+	
 	public void setSavableField(SavableField savableFieldToUse)
 	{
-		focusedField = savableFieldToUse;
+		savableField = savableFieldToUse;
+	}
+	
+	public void setEditingTable(TableWithHelperMethods tableBeingEditedToUse)
+	{
+		tableBeingEdited = tableBeingEditedToUse;
 	}
 	
 	public static void saveFocusedFieldPendingEdits()
 	{
-		if(focusedField != null)
-			focusedField.saveIfNeeded();
+		if(savableField != null)
+			savableField.saveIfNeeded();
 		
 		if (tableBeingEdited != null)
 			tableBeingEdited.stopCellEditing();
 	}
 
-	private static SavableField focusedField;
+	private static SavableField savableField;
 	private static TableWithHelperMethods tableBeingEdited;
+	private static FieldSaver instance;
 }
