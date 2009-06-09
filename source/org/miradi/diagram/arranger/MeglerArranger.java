@@ -50,12 +50,12 @@ public class MeglerArranger
 
 	private void setLocations() throws Exception
 	{
-		moveFactors(strategies, STRATEGY_COLUMN_X, TOP_Y);
-		moveFactors(threats, THREAT_COLUMN_X, TOP_Y);
-		moveFactors(targets, TARGET_COLUMN_X, TOP_Y);
+		moveFactorsToFinalLocations(strategies, STRATEGY_COLUMN_X, TOP_Y);
+		moveFactorsToFinalLocations(threats, THREAT_COLUMN_X, TOP_Y);
+		moveFactorsToFinalLocations(targets, TARGET_COLUMN_X, TOP_Y);
 	}
 
-	private void moveFactors(Vector<DiagramFactor> factors, int x, int initialY) throws Exception
+	private void moveFactorsToFinalLocations(Vector<DiagramFactor> factors, int x, int initialY) throws Exception
 	{
 		int y = initialY;
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
