@@ -21,6 +21,7 @@ package org.miradi.utils;
 
 import javax.swing.table.TableModel;
 
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
@@ -41,6 +42,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	
 	public void dispose()
 	{
+		FieldSaver.setEditingTable(null);
 		getMainWindow().getProject().removeCommandExecutedListener(this);
 	}
 
