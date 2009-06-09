@@ -46,7 +46,7 @@ public class FieldSaver
 		tableBeingEdited = tableBeingEditedToUse;
 	}
 	
-	public static void saveFocusedFieldPendingEdits()
+	public static void savePendingEdits()
 	{
 		if(savableField != null)
 			savableField.saveIfNeeded();
