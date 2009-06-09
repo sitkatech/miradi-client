@@ -26,7 +26,7 @@ import java.util.EventObject;
 import javax.swing.Icon;
 
 import org.miradi.commands.Command;
-import org.miradi.dialogfields.SavableField;
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
@@ -121,7 +121,7 @@ public abstract class MainWindowAction extends EAMAction
 		
 		try
 		{
-			SavableField.saveFocusedFieldPendingEdits();
+			FieldSaver.savePendingEdits();
 			
 			getDoer().doIt(event);
 			getMainWindow().updateActionStates();

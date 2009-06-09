@@ -52,7 +52,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
-import org.miradi.dialogfields.SavableField;
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.InvalidDateRangeException;
 import org.miradi.exceptions.OldVersionException;
@@ -964,7 +964,7 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		{
 			try
 			{
-				SavableField.saveFocusedFieldPendingEdits();
+				FieldSaver.savePendingEdits();
 				exitNormally();
 			}
 			catch (Exception e)
