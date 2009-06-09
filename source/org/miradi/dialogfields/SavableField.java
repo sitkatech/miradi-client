@@ -46,7 +46,7 @@ public abstract class SavableField implements FocusListener
 
 	public static void saveFocusedFieldPendingEdits()
 	{
-		fieldSaver.savePendingEdits();
+		FieldSaver.savePendingEdits();
 	}
 
 	abstract public void saveIfNeeded();
