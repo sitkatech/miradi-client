@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.importer;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
@@ -31,7 +32,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.TncProjectData;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion2;
 
@@ -42,15 +45,20 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 		super(name);
 	}
 	
-	@Override
-	public void setUp() throws Exception
-	{
-		super.setUp();
-	}
-	
 	public void testImportConProProject() throws Exception
 	{
 		getProject().populateEverything();
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		
+		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, TncProjectSharingQuestion.SHARE_WITH_ANYONE);
+		verifyImport();
+		
+		getProject().fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, TncProjectSharingQuestion.SHARE_TNC_ONLY);
+		verifyImport();
+	}
+
+	private void verifyImport() throws IOException, Exception
+	{
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
 		
 		File afterXmlOutFile = createTempFileFromName("conproVersion2AfterFirstImport.xml");
