@@ -21,9 +21,12 @@ package org.miradi.dialogs.treetables;
 
 import javax.swing.event.TreeExpansionEvent;
 import javax.swing.event.TreeExpansionListener;
+import javax.swing.event.TreeWillExpandListener;
+import javax.swing.tree.ExpandVetoException;
 import javax.swing.tree.TreePath;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogfields.SavableField;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
@@ -44,6 +47,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		
 		getProject().addCommandExecutedListener(this);
 		tree.addTreeExpansionListener(this);
+		tree.addTreeWillExpandListener(new TreeWillExpandHandler());
 	}
 	
 	public void dispose()
@@ -272,6 +276,24 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 	private TableSettings getTableSettingsForTreeTable() throws Exception
 	{
 		return TableSettings.findOrCreate(getProject(), getTreeTableModel().getUniqueTreeTableModelIdentifier());
+	}
+	
+	class TreeWillExpandHandler implements TreeWillExpandListener
+	{
+		public void treeWillCollapse(TreeExpansionEvent event) throws ExpandVetoException
+		{
+			savePendingEdits();
+		}
+
+		public void treeWillExpand(TreeExpansionEvent event) throws ExpandVetoException
+		{
+			savePendingEdits();
+		}
+		
+		private void savePendingEdits()
+		{
+			FieldSaver.getSingletonInstance().saveFocusedFieldPendingEdits();
+		}
 	}
 		
 	protected EAMTreeTableModelAdapter treeTableModelAdapter;
