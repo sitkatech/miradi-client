@@ -41,7 +41,7 @@ public abstract class SavableField implements FocusListener
 	{
 		EAM.logVerbose("focusLost");
 		saveIfNeeded();
-		fieldSaver.setSavableField(this);
+		fieldSaver.setSavableField(null);
 	}
 
 	public static void saveFocusedFieldPendingEdits()
