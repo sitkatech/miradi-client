@@ -292,7 +292,7 @@ abstract public class TreeTableWithStateSaving extends ObjectTreeTable implement
 		
 		private void savePendingEdits()
 		{
-			FieldSaver.getSingletonInstance().saveFocusedFieldPendingEdits();
+			FieldSaver.getSingletonInstance().savePendingEdits();
 		}
 	}
 		
