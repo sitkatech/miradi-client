@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
@@ -42,6 +43,7 @@ public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
 				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")),
 				new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objectives Only")),
 				new ChoiceItem(Target.OBJECT_NAME, EAM.text("Targets Only")),
+				new ChoiceItem(HumanWelfareTarget.OBJECT_NAME, EAM.text("Human Welfare Targets Only")),
 				new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")),
 				new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategies Only")),
 				new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activities Only")),
