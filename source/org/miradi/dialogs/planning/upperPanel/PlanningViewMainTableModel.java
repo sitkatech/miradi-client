@@ -27,6 +27,7 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -206,17 +207,18 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
 		}
-
-		if(Target.is(nodeType))
+		if (AbstractTarget.isAbstractTarget(nodeType))
 		{
-			if(isDetailsColumn(column))
-				return Target.TAG_TEXT;
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return "";
+			if(isDetailsColumn(column))
+				return AbstractTarget.TAG_TEXT;	
+		}
+		if(Target.is(nodeType))
+		{
 			if (columnTag.equals(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE))
 				return Target.PSEUDO_TAG_HABITAT_ASSOCIATION_VALUE;
-		}
-		
+		}		
 		if(Desire.isDesire(nodeType))
 		{
 			if (columnTag.equals(Factor.TAG_COMMENT))
