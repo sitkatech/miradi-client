@@ -28,23 +28,20 @@ public abstract class SavableField implements FocusListener
 {	
 	public SavableField()
 	{
-		fieldSaver = FieldSaver.getSingletonInstance();
 	}
 	
 	public void focusGained(FocusEvent e)
 	{
 		EAM.logVerbose("focusGained");
-		fieldSaver.setSavableField(this);
+		FieldSaver.setSavableField(this);
 	}
 
 	public void focusLost(FocusEvent e)
 	{
 		EAM.logVerbose("focusLost");
 		saveIfNeeded();
-		fieldSaver.setSavableField(null);
+		FieldSaver.setSavableField(null);
 	}
 
 	abstract public void saveIfNeeded();
-
-	private static FieldSaver fieldSaver;
 }

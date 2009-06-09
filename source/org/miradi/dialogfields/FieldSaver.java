@@ -24,24 +24,12 @@ import org.miradi.utils.TableWithHelperMethods;
 
 public class FieldSaver
 {
-	private FieldSaver()
-	{
-	}
-	
-	public static FieldSaver getSingletonInstance()
-	{
-		if (instance == null)
-			instance = new FieldSaver();
-		
-		return instance;
-	}
-	
-	public void setSavableField(SavableField savableFieldToUse)
+	public static void setSavableField(SavableField savableFieldToUse)
 	{
 		savableField = savableFieldToUse;
 	}
 	
-	public void setEditingTable(TableWithHelperMethods tableBeingEditedToUse)
+	public static void setEditingTable(TableWithHelperMethods tableBeingEditedToUse)
 	{
 		tableBeingEdited = tableBeingEditedToUse;
 	}
@@ -57,5 +45,4 @@ public class FieldSaver
 
 	private static SavableField savableField;
 	private static TableWithHelperMethods tableBeingEdited;
-	private static FieldSaver instance;
 }
