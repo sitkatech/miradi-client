@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.exceptions;
 
-public class UnsupportedCpmzVersionException extends Exception
+public class CpmzVersionTooOldException extends Exception
 {
-	public UnsupportedCpmzVersionException(UnsupportedCpmzVersionException e)
+	public CpmzVersionTooOldException(CpmzVersionTooOldException e)
 	{
 		super(e);
 	}
 
-	public UnsupportedCpmzVersionException()
+	public CpmzVersionTooOldException()
 	{
 		super();
 	}
