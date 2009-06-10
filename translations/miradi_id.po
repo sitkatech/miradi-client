@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-10 09:38-0500\n"
+"POT-Creation-Date: 2009-06-10 10:38-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -247,7 +247,7 @@ msgid "Import Accounting Codes"
 msgstr "Impor Kode Akuntansi "
 
 #: miradi/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:71
-#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:98
+#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:104
 msgid "Import Completed"
 msgstr "Impor Selesai "
 
@@ -907,7 +907,7 @@ msgstr "Tampilan… "
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "Anda yakin ingin menghapus Persentase Kemajuan ini? "
 
-#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:236
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:252
 msgid "Import"
 msgstr "Impor "
 
@@ -1088,15 +1088,19 @@ msgstr "Hapus Sumber Daya"
 msgid "Choose Relevant Indicator(s)"
 msgstr "Pilih Indikator(-indikator) yang Relevan "
 
-#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:58
+#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:59
 msgid "Import Project"
 msgstr "Impor Proyek "
 
-#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:112
+#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:88
+msgid "CPMZ Version being imported is no longer supported."
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:118
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
-#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:133
+#: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:139
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
