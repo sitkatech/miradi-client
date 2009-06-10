@@ -33,7 +33,7 @@ import org.martus.util.DirectoryUtils;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.exceptions.UnsupportedCpmzVersionException;
+import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -83,10 +83,10 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		{
 			importProject(importFile, projectToFill, newProjectDir);
 		}
-		catch (UnsupportedCpmzVersionException e)
+		catch (CpmzVersionTooOldException e)
 		{
 			handleException(projectToFill, newProjectDir);
-			throw new UnsupportedCpmzVersionException(e);
+			throw new CpmzVersionTooOldException(e);
 		}
 		catch (Exception e)
 		{
@@ -113,7 +113,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		byte[] extractXmlBytesV2 = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_2);
 		if (extractXmlBytes.length > 0 && extractXmlBytesV2.length == 0)
-			throw new UnsupportedCpmzVersionException();
+			throw new CpmzVersionTooOldException();
 		
 		try
 		{
