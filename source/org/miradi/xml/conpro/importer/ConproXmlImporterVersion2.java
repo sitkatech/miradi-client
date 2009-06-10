@@ -550,7 +550,8 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		
 		String tncProjectSharingXmlValue = getAttributeValue(projectSumaryNode, SHARE_OUTSIDE_ORGANIZATION);
 		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
-		importCodeField(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, getCodeMapHelper().getConProToMiradiTncProjectSharingMap(), tncProjectSharingXmlValue);
+		final String booleanAsString = Boolean.toString(isTrue(tncProjectSharingXmlValue));
+		importCodeField(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, getCodeMapHelper().getConProToMiradiTncProjectSharingMap(), booleanAsString);
 		importOrganizationalPriority(projectSumaryNode, tncProjectSharingXmlValue, tncProjectDataRef);
 		importProjectTypes(tncProjectSharingXmlValue, tncProjectDataRef);
 		
