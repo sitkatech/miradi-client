@@ -581,6 +581,11 @@ public class Project
 		setObjectData(new ORef(objectType, objectId), fieldTag, dataValue);
 	}
 	
+	public void setObjectData(BaseObject baseObject, String fieldTag, String dataValue) throws Exception
+	{
+		setObjectData(baseObject.getRef(), fieldTag, dataValue);
+	}
+	
 	public void setObjectData(ORef objectRef, String fieldTag, String dataValue) throws Exception
 	{
 		objectManager.setObjectData(objectRef, fieldTag, dataValue);

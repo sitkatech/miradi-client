@@ -30,6 +30,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
@@ -71,6 +72,7 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 			importProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
 			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
+			verifyConcatenatedProjectScopeAndDescription(projectToFill1);
 			stripDelimiterTagFromObjectiveNames(projectToFill1);
 			
 			exportProject(afterXmlOutFile, projectToFill1);
@@ -101,6 +103,26 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 			objective.setData(Objective.TAG_LABEL, splittedFields[1]);
 			objective.setData(Objective.TAG_FULL_TEXT, splittedFields[2]);
 		}
+	}
+	
+	private void verifyConcatenatedProjectScopeAndDescription(ProjectForTesting projectToFill1) throws Exception
+	{
+		ProjectMetadata projectMetadata = projectToFill1.getMetadata();
+		String projectScope = projectMetadata.getProjectScope();
+		String expectedProjectScopeValue = "Project Description:\nSome project description\n\nSite/Scope Description:\nSome project scope";
+		assertEquals("wrong project scope?", expectedProjectScopeValue, projectScope);
+		
+		String projectDescription = expectedProjectScopeValue.replaceAll("Project Description:\n", "");
+		final String scopeLabel = "Site/Scope Description:";
+		int scopeLabelIndex = expectedProjectScopeValue.indexOf(scopeLabel);
+		projectDescription = projectDescription.substring(0, scopeLabelIndex - scopeLabel.length());
+		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_DESCRIPTION, projectDescription);
+		
+		int lastScopeLabelIndex = projectScope.lastIndexOf(scopeLabel);
+		projectScope = projectScope.substring(lastScopeLabelIndex, projectScope.length());
+		projectScope = projectScope.replaceAll(scopeLabel, "");
+		projectScope = projectScope.replaceAll("\n", "");
+		projectToFill1.setObjectData(projectMetadata, ProjectMetadata.TAG_PROJECT_SCOPE, projectScope);
 	}
 	
 	private void stripDelimiterTagFromObjectiveNames(ProjectForTesting projectToFill1) throws Exception

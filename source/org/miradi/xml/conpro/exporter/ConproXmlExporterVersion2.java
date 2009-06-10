@@ -796,7 +796,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeOptionalAreaSize(out);
 			writeOptionalLocation(out);
 			
-			writeOptionalElement(out, DESCRIPTION_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_PROJECT_SCOPE);
+			writeOptionalElement(out, DESCRIPTION_COMMENT, getConcatenatedProjectDescriptionAndScope());
 			writeOptionalElement(out, GOAL_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_PROJECT_VISION);
 			writeOptionalElement(out, PLANNING_TEAM_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 			writeOptionalElement(out, LESSONS_LEARNED, getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
@@ -821,6 +821,33 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeProjectTypes(out);
 			
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private String getConcatenatedProjectDescriptionAndScope()
+	{
+		String concatenatedDescriptionAndScope = "";
+		String projectDescriptionToConcatenate = concatenate(EAM.text("Project Description:"), getProjectMetadata().getProjectDescription());
+		String projectScopeToConcatenate = concatenate(EAM.text("Site/Scope Description:"), getProjectMetadata().getProjectScope());
+		concatenatedDescriptionAndScope += projectDescriptionToConcatenate;
+		if (concatenatedDescriptionAndScope.length() > 0)
+			concatenatedDescriptionAndScope += "\n\n";
+		
+		concatenatedDescriptionAndScope +=projectScopeToConcatenate;
+		
+		return concatenatedDescriptionAndScope;
+	}
+
+	private String concatenate(final String fieldLabel, String description)
+	{
+		String concatenated = "";
+		if (description.length() > 0)
+		{
+			concatenated += fieldLabel;
+			concatenated += "\n";
+			concatenated +=description;
+		}
+		
+		return concatenated;
 	}
 	
 	private void writeProjectTypes(UnicodeWriter out) throws Exception
