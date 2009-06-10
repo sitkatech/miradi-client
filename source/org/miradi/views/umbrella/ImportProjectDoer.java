@@ -85,7 +85,7 @@ public abstract class ImportProjectDoer extends ViewDoer
 		catch (CpmzVersionTooOldException e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog(EAM.text("CPMZ Version being imported is no longer supported."));
+			EAM.errorDialog(EAM.text("This CPMZ file cannot be imported because it is an older version that is no longer supported."));
 		}
 		catch (ValidationException e)
 		{
