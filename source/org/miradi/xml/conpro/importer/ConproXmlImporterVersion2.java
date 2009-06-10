@@ -225,14 +225,14 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 
 	private boolean isDraft(String data)
 	{
-		if (data.length() == 0)
-			return false;
-			
 		return !isTrue(data);
 	}
 	
 	private boolean isTrue(String value)
 	{
+		if (value.length() == 0)
+			return false;
+		
 		if (value.equals(BooleanData.BOOLEAN_TRUE))
 			return true;
 		
