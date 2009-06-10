@@ -110,7 +110,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 	private void importProject(File zipFileToImport, Project projectToFill, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERDION_1);
 		byte[] extractXmlBytesV2 = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_2);
 		if (extractXmlBytes.length > 0 && extractXmlBytesV2.length == 0)
 			throw new CpmzVersionTooOldException();
