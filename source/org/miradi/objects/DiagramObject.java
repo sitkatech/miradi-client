@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import java.awt.Rectangle;
 import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.ids.BaseId;
@@ -180,21 +181,29 @@ abstract public class DiagramObject extends BaseObject
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
-	//TODO the majority of this method was copied form DiagramModel.  this also has a test, so everyone should start using this method.
-	public boolean areDiagramFactorsLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	//TODO the majority of this method was copied form DiagramModel.  
+	// this is tested via the (id, id) variant, so everyone should start using this method.
+	public boolean areDiagramFactorsLinked(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
 		ORefList diagramLinkRefs = getAllDiagramLinkRefs();
 		for (int i  = 0; i < diagramLinkRefs.size(); ++i)
 		{
 			DiagramLink diagramLink = (DiagramLink) getObjectManager().findObject(diagramLinkRefs.get(i));
-			if (diagramLink.getFromDiagramFactorId().equals(fromDiagramFactorId) && diagramLink.getToDiagramFactorId().equals(toDiagramFactorId))
+			if (diagramLink.getFromDiagramFactorRef().equals(fromDiagramFactorRef) && diagramLink.getToDiagramFactorRef().equals(toDiagramFactorRef))
 				return true;
 			
-			if (diagramLink.getFromDiagramFactorId().equals(toDiagramFactorId) && diagramLink.getToDiagramFactorId().equals(fromDiagramFactorId))
+			if (diagramLink.getFromDiagramFactorId().equals(toDiagramFactorRef) && diagramLink.getToDiagramFactorId().equals(fromDiagramFactorRef))
 				return true;
 		}
 		
 		return false;
+	}
+	
+	public boolean areDiagramFactorsLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
+	{
+		ORef fromRef = new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId);
+		ORef toRef = new ORef(DiagramFactor.getObjectType(), toDiagramFactorId);
+		return areDiagramFactorsLinked(fromRef, toRef);
 	}
 	
 	public IdList getAllDiagramFactorIds()
@@ -207,6 +216,20 @@ abstract public class DiagramObject extends BaseObject
 		return new ORefList(DiagramFactor.getObjectType(), getAllDiagramFactorIds());
 	}
 	
+	public Set<DiagramFactor> getDiagramFactorsThatWrap(int objectType)
+	{
+		HashSet<DiagramFactor> matches = new HashSet<DiagramFactor>();
+		ORefList allDiagramFactorRefs = getAllDiagramFactorRefs();
+		for(int i = 0; i < allDiagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getObjectManager(), allDiagramFactorRefs.get(i));
+			if(diagramFactor.getWrappedType() == objectType)
+				matches.add(diagramFactor);
+		}
+		
+		return matches;
+	}
+
 	public ORefList getAllDiagramLinkRefs()
 	{
 		return new ORefList(DiagramLink.getObjectType(), getAllDiagramFactorLinkIds());
