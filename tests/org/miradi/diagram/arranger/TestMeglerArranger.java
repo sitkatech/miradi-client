@@ -20,14 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.diagram.arranger;
 
+import java.util.Set;
+
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 
@@ -44,8 +49,8 @@ public class TestMeglerArranger extends TestCaseWithProject
 		DiagramFactor threatDiagramFactor = createThreat();
 		DiagramFactor strategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		
-		getProject().createDiagramFactorLink(strategyDiagramFactor, threatDiagramFactor);
-		getProject().createDiagramFactorLink(threatDiagramFactor, targetDiagramFactor);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor, threatDiagramFactor);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor);
 
 		MeglerArranger arranger = new MeglerArranger(getProject().getMainDiagramObject());
 		arranger.arrange();
@@ -82,8 +87,8 @@ public class TestMeglerArranger extends TestCaseWithProject
 		DiagramFactor linkedThreatDiagramFactor = createThreat();
 		DiagramFactor linkedStrategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		
-		getProject().createDiagramFactorLink(linkedStrategyDiagramFactor, linkedThreatDiagramFactor);
-		getProject().createDiagramFactorLink(linkedThreatDiagramFactor, linkedTargetDiagramFactor);
+		getProject().createDiagramFactorLinkAndAddToDiagram(linkedStrategyDiagramFactor, linkedThreatDiagramFactor);
+		getProject().createDiagramFactorLinkAndAddToDiagram(linkedThreatDiagramFactor, linkedTargetDiagramFactor);
 		
 		MeglerArranger arranger = new MeglerArranger(getProject().getMainDiagramObject());
 		arranger.arrange();
@@ -91,6 +96,28 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertEquals("unlinked strategy not in column 0?", 30, unlinkedStrategyDiagramFactor.getLocation().x);
 		assertEquals("unlinked threat not in column 0?", 30, unlinkedThreatDiagramFactor.getLocation().x);
 		assertEquals("unlinked target not in column 0?", 30, unlinkedTargetDiagramFactor.getLocation().x);
+	}
+	
+	public void testOneObviousTargetGroup() throws Exception
+	{
+		DiagramFactor threatDiagramFactor = createThreat();
+		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor2);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create one group?", 1, groupBoxDiagramFactors.size());
+		ORefList children = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0].getGroupBoxChildrenRefs();
+		assertEquals("Didn't group both targets?", 2, children.size());
+		assertTrue("Didn't group target1?", children.contains(targetDiagramFactor1.getRef()));
+		assertTrue("Didn't group target2?", children.contains(targetDiagramFactor2.getRef()));
+		
 	}
 
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException

@@ -941,6 +941,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return createDiagramFactorAndAddToDiagram(objectType, takeNextId(objectType));
 	}
 	
+	public ORef createDiagramFactorLinkAndAddToDiagram(DiagramFactor from, DiagramFactor to) throws Exception
+	{
+		ORef diagramLinkRef = createDiagramLink(from, to);
+		CommandSetObjectData cmd = CommandSetObjectData.createAppendIdCommand(getMainDiagramObject(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkRef.getObjectId());
+		executeCommand(cmd);
+		return diagramLinkRef;
+	}
+
 	private int takeNextId(int objectType)
 	{
 		if(nextStrategyId == 0)

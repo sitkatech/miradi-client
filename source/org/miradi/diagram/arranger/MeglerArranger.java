@@ -21,14 +21,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram.arranger;
 
 import java.awt.Point;
+import java.util.HashSet;
 import java.util.Vector;
 
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
@@ -46,6 +51,7 @@ public class MeglerArranger
 	{
 		extractFactorsOfInterest();
 		segregateUnlinkedFactors();
+		createGroupBoxes();
 		setLocations();
 	}
 
@@ -56,6 +62,66 @@ public class MeglerArranger
 		unlinked.addAll(extractUnlinkedDiagramFactors(strategies));
 		unlinked.addAll(extractUnlinkedDiagramFactors(threats));
 		unlinked.addAll(extractUnlinkedDiagramFactors(targets));
+	}
+	
+	private void createGroupBoxes() throws Exception
+	{
+		createTargetGroupBoxes();
+	}
+
+	private void createTargetGroupBoxes() throws Exception
+	{
+		HashSet<DiagramFactor> groupCandidates = new HashSet<DiagramFactor>();
+		groupCandidates.addAll(targets);
+		
+		int wouldRemoveLinkCount = 0;
+		ORefSet fromDiagramFactorRefs = getRefsOfFactorsThatLinkTo(groupCandidates);
+		for(ORef fromRef : fromDiagramFactorRefs)
+		{
+			if(isLinkedToAll(fromRef, groupCandidates))
+				wouldRemoveLinkCount += groupCandidates.size();
+		}
+		
+		if(wouldRemoveLinkCount > 1)
+		{
+			ORefList childRefs = new ORefList(groupCandidates.toArray(new DiagramFactor[0]));
+			FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
+			ORef created = new ORef(DiagramFactor.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
+			CommandSetObjectData addChildren = new CommandSetObjectData(created, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
+			getProject().executeCommand(addChildren);
+		}
+	}
+
+	private boolean isLinkedToAll(ORef fromRef, HashSet<DiagramFactor> groupCandidates)
+	{
+		for(DiagramFactor factor : groupCandidates)
+		{
+			if(!diagram.areDiagramFactorsLinked(fromRef, factor.getRef()))
+				return false;
+		}
+		
+		return true;
+	}
+
+	private ORefSet getRefsOfFactorsThatLinkTo(HashSet<DiagramFactor> groupCandidates)
+	{
+		ORefSet allFroms = new ORefSet();
+		for(DiagramFactor factor : groupCandidates)
+			allFroms.addAll(getRefsOfFactorsThatLinkTo(factor));
+		
+		return allFroms;
+	}
+
+	private ORefSet getRefsOfFactorsThatLinkTo(DiagramFactor factor)
+	{
+		ORefList linkRefs = factor.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefSet froms = new ORefSet();
+		for(int i = 0; i < linkRefs.size(); ++i)
+		{
+			DiagramLink link = DiagramLink.find(getProject(), linkRefs.get(i));
+			froms.add(link.getFromDiagramFactorRef());
+		}
+		return froms;
 	}
 
 	private Vector<DiagramFactor> extractUnlinkedDiagramFactors(Vector<DiagramFactor> candidates)
