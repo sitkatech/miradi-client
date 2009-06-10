@@ -33,6 +33,7 @@ import org.martus.util.DirectoryUtils;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UnsupportedCpmzVersionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -72,7 +73,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 	{
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
-		
+			
 		Project projectToFill = new Project();
 		projectToFill.setLocalDataLocation(EAM.getHomeDirectory());
 		projectToFill.createOrOpen(newProjectFilename);
@@ -82,11 +83,14 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		{
 			importProject(importFile, projectToFill, newProjectDir);
 		}
+		catch (UnsupportedCpmzVersionException e)
+		{
+			handleException(projectToFill, newProjectDir);
+			throw new UnsupportedCpmzVersionException(e);
+		}
 		catch (Exception e)
 		{
-			projectToFill.close();
-			DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
-
+			handleException(projectToFill, newProjectDir);
 			throw new Exception(e);
 		}
 		finally
@@ -95,10 +99,22 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		}
 	}
 
+	private void handleException(Project projectToFill, File newProjectDir)
+			throws Exception
+	{
+		projectToFill.close();
+		DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
+	}
+
 	//TODO this method needs to have a project dir parameter only.  the project should not created when importing mpz,  just when importing project.xml
 	private void importProject(File zipFileToImport, Project projectToFill, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		byte[] extractXmlBytesV2 = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_2);
+		if (extractXmlBytes.length > 0 && extractXmlBytesV2.length == 0)
+			throw new UnsupportedCpmzVersionException();
+		
 		try
 		{
 			if (zipContainsMpzProject(zipFile))
