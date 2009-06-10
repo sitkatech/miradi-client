@@ -26,6 +26,7 @@ import javax.swing.filechooser.FileFilter;
 
 import org.martus.swing.UiFileChooser;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UnsupportedCpmzVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
@@ -80,6 +81,11 @@ public abstract class ImportProjectDoer extends ViewDoer
 		{
 			EAM.logException(e);
 			showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);
+		}
+		catch (UnsupportedCpmzVersionException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("CPMZ Version being imported is no longer supported."));
 		}
 		catch (ValidationException e)
 		{
