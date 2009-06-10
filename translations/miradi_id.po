@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-10 10:38-0500\n"
+"POT-Creation-Date: 2009-06-10 13:48-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -907,7 +907,7 @@ msgstr "Tampilan… "
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "Anda yakin ingin menghapus Persentase Kemajuan ini? "
 
-#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:252
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:251
 msgid "Import"
 msgstr "Impor "
 
@@ -1093,7 +1093,9 @@ msgid "Import Project"
 msgstr "Impor Proyek "
 
 #: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:88
-msgid "CPMZ Version being imported is no longer supported."
+msgid ""
+"This CPMZ file cannot be imported because it is an older version that is no "
+"longer supported."
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:118
@@ -2093,7 +2095,7 @@ msgstr "Sudah ada proyek lain yang memakai nama ini: "
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:894
+#: miradi/source/org/miradi/project/Project.java:899
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
@@ -6142,6 +6144,14 @@ msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Ancaman"
+
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:829
+msgid "Project Description:"
+msgstr ""
+
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:830
+msgid "Site/Scope Description:"
+msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:163
 #: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:169

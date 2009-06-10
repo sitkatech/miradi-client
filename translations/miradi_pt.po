@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-10 10:38-0500\n"
+"POT-Creation-Date: 2009-06-10 13:48-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -820,7 +820,7 @@ msgstr ""
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:252
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:251
 msgid "Import"
 msgstr ""
 
@@ -987,7 +987,9 @@ msgid "Import Project"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:88
-msgid "CPMZ Version being imported is no longer supported."
+msgid ""
+"This CPMZ file cannot be imported because it is an older version that is no "
+"longer supported."
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/ImportProjectDoer.java:118
@@ -1758,7 +1760,7 @@ msgstr ""
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:894
+#: miradi/source/org/miradi/project/Project.java:899
 msgid "[No Project]"
 msgstr ""
 
@@ -5690,6 +5692,14 @@ msgstr ""
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:344
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
+msgstr ""
+
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:829
+msgid "Project Description:"
+msgstr ""
+
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:830
+msgid "Site/Scope Description:"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:163
