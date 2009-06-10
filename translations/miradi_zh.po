@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-10 13:48-0500\n"
+"POT-Creation-Date: 2009-06-10 14:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -875,7 +875,7 @@ msgstr "视图… \t\t"
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "您是否确定要删除该进展报告？ \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:251
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:250
 msgid "Import"
 msgstr "导入 \t\t"
 
