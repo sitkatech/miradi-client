@@ -112,6 +112,11 @@ public class ProjectMetadata extends BaseObject
 		return projectScope.get();
 	}
 	
+	public String getProjectDescription()
+	{
+		return projectDescription.get();
+	}
+	
 	public String getShortProjectScope()
 	{
 		return shortProjectScope.get();
