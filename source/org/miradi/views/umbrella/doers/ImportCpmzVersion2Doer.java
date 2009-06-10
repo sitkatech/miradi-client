@@ -101,7 +101,6 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 
 	private void deleteIncompleteProject(Project projectToFill, File newProjectDir)	throws Exception
 	{
-		projectToFill.close();
 		DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
 	}
 
