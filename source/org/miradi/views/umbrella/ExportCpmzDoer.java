@@ -194,7 +194,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 				throw new ValidationException(EAM.text("Exported file does not validate."));
 			}
 
-			writeContent(zipOut, PROJECT_XML_FILE_NAME_VERDION_1, projectXmlInBytes);
+			writeContent(zipOut, PROJECT_XML_FILE_NAME_VERSION_1, projectXmlInBytes);
 		}
 		finally
 		{
@@ -242,7 +242,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		out.write(bytes);
 	}
 
-	public static final String PROJECT_XML_FILE_NAME_VERDION_1 = "project.xml";
+	public static final String PROJECT_XML_FILE_NAME_VERSION_1 = "project.xml";
 	public static final String PROJECT_XML_FILE_NAME_VERSION_2 = "projectv2.xml";
 	public static final String IMAGES_DIR_NAME_IN_ZIP = "images/";
 	public static final String PROJECT_ZIP_FILE_NAME = "project" + MpzFileFilterForChooserDialog.EXTENSION;
