@@ -827,11 +827,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		String concatenatedDescriptionAndScope = "";
 		String projectDescriptionToConcatenate = concatenate(EAM.text("Project Description:"), getProjectMetadata().getProjectDescription());
-		String projectScopeToConcatenate = concatenate(EAM.text("Site/Scope Description:"), getProjectMetadata().getProjectScope());
 		concatenatedDescriptionAndScope += projectDescriptionToConcatenate;
 		if (concatenatedDescriptionAndScope.length() > 0)
 			concatenatedDescriptionAndScope += "\n\n";
 		
+		String projectScopeToConcatenate = concatenate(EAM.text("Site/Scope Description:"), getProjectMetadata().getProjectScope());
 		concatenatedDescriptionAndScope +=projectScopeToConcatenate;
 		
 		return concatenatedDescriptionAndScope;
