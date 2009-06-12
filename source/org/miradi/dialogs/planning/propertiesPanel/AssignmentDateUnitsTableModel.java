@@ -293,7 +293,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		getProject().executeBeginTransaction();
 		try
 		{
-			Vector<Assignment> assignments = getSingleAssignmentToEdit(row);
+			Vector<Assignment> assignments = getAssignmentsToEdit(row);
 			setAssignmentValues(value, column, assignments);	
 		}
 		finally
@@ -413,7 +413,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return null;
 	}
 	
-	public Vector<Assignment> getSingleAssignmentToEdit(int row) throws Exception
+	public Vector<Assignment> getAssignmentsToEdit(int row) throws Exception
 	{
 		Assignment assignmentForRow = getAssignment(row);
 		if (assignmentForRow != null)
