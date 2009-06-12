@@ -313,6 +313,12 @@ public class LinkCreator
 		getProject().executeCommand(setChildrenRefs);
 	}
 	
+	public ORef createGroupDiagramLink(DiagramObject diagramObject, ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws CommandFailedException, ParseException
+	{
+		CreateDiagramFactorLinkParameter extraInfo = createDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
+		return createDiagramLink(diagramObject, extraInfo);
+	}
+	
 	public ORef createDiagramLink(DiagramObject diagramObject, CreateDiagramFactorLinkParameter diagramLinkExtraInfo) throws CommandFailedException, ParseException
 	{
 		CommandCreateObject createDiagramLinkCommand =  new CommandCreateObject(ObjectType.DIAGRAM_LINK, diagramLinkExtraInfo);
@@ -325,6 +331,13 @@ public class LinkCreator
 		project.executeCommand(addDiagramLink);
 		
 		return createDiagramLinkCommand.getObjectRef();
+	}
+
+	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
+	{
+		CreateDiagramFactorLinkParameter diagramLinkExtraInfo = new CreateDiagramFactorLinkParameter(fromDiagramFactorRef, toDiagramFactorRef);
+		
+		return diagramLinkExtraInfo;
 	}
 
 	private CreateDiagramFactorLinkParameter createDiagramFactorLinkParameter(ORef fromDiagramFactorRef, ORef toDiagramFactorRef, ORef factorlLinkRef)

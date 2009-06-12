@@ -113,11 +113,13 @@ public class TestMeglerArranger extends TestCaseWithProject
 		
 		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
 		assertEquals("Didn't create one group?", 1, groupBoxDiagramFactors.size());
-		ORefList children = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0].getGroupBoxChildrenRefs();
+		DiagramFactor groupBoxDiagramFactor = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
+		ORefList children = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		assertEquals("Didn't group both targets?", 2, children.size());
 		assertTrue("Didn't group target1?", children.contains(targetDiagramFactor1.getRef()));
 		assertTrue("Didn't group target2?", children.contains(targetDiagramFactor2.getRef()));
 		
+		assertTrue("Didn't create group link?", diagram.areDiagramFactorsLinked(threatDiagramFactor.getRef(), groupBoxDiagramFactor.getRef()));
 	}
 	
 	public void testOneGroupWithOneExcludedTarget() throws Exception

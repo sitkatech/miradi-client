@@ -25,6 +25,8 @@ import java.util.AbstractCollection;
 import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -38,6 +40,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
+import org.miradi.views.diagram.LinkCreator;
 
 public class MeglerArranger
 {
@@ -86,16 +89,24 @@ public class MeglerArranger
 			
 			if(wouldRemoveLinkCount > 1)
 			{
-				ORefList childRefs = new ORefList(groupCandidates.toArray(new DiagramFactor[0]));
-				FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
-				ORef created = new ORef(DiagramFactor.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
-				CommandSetObjectData addChildren = new CommandSetObjectData(created, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
-				getProject().executeCommand(addChildren);
+				createAndLinkToGroupBox(fromDiagramFactorRefs, groupCandidates);
 				return;
 			}
 			
 			groupCandidates.remove(groupCandidates.size() - 1);
 		}
+	}
+
+	private void createAndLinkToGroupBox(ORefSet fromDiagramFactorRefs, Vector<DiagramFactor> groupCandidates) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
+	{
+		ORefList childRefs = new ORefList(groupCandidates.toArray(new DiagramFactor[0]));
+		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
+		ORef groupDiagramFactorRef = new ORef(DiagramFactor.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
+		CommandSetObjectData addChildren = new CommandSetObjectData(groupDiagramFactorRef, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
+		getProject().executeCommand(addChildren);
+		LinkCreator linkCreator = new LinkCreator(getProject());
+		for(ORef fromRef : fromDiagramFactorRefs)
+			linkCreator.createGroupDiagramLink(diagram, fromRef, groupDiagramFactorRef);
 	}
 
 	private boolean isLinkedToAll(ORef fromRef, AbstractCollection<DiagramFactor> groupCandidates)
