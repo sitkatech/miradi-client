@@ -204,6 +204,8 @@ public class MeglerArranger
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
+			if(isAlreadyInGroup(diagramFactor))
+				continue;
 			Factor factor = diagramFactor.getWrappedFactor();
 			if(Strategy.is(factor))
 				strategies.add(diagramFactor);
@@ -212,6 +214,20 @@ public class MeglerArranger
 			if(Cause.isDirectThreat(factor))
 				threats.add(diagramFactor);
 		}
+	}
+
+	private boolean isAlreadyInGroup(DiagramFactor diagramFactor)
+	{
+		ORef childRef = diagramFactor.getRef();
+		ORefList likelyGroupRefs = diagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		for(int i = 0; i < likelyGroupRefs.size(); ++i)
+		{
+			DiagramFactor possibleGroup = DiagramFactor.find(getProject(), likelyGroupRefs.get(i));
+			if(possibleGroup.getGroupBoxChildrenRefs().contains(childRef))
+				return true;
+		}
+		
+		return false;
 	}
 
 	private static final int UNLINKED_COLUMN_X = 30;
