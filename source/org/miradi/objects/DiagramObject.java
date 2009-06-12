@@ -192,7 +192,7 @@ abstract public class DiagramObject extends BaseObject
 			if (diagramLink.getFromDiagramFactorRef().equals(fromDiagramFactorRef) && diagramLink.getToDiagramFactorRef().equals(toDiagramFactorRef))
 				return true;
 			
-			if (diagramLink.getFromDiagramFactorId().equals(toDiagramFactorRef) && diagramLink.getToDiagramFactorId().equals(fromDiagramFactorRef))
+			if (diagramLink.getFromDiagramFactorRef().equals(toDiagramFactorRef) && diagramLink.getToDiagramFactorRef().equals(fromDiagramFactorRef))
 				return true;
 		}
 		
