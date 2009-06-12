@@ -181,29 +181,23 @@ abstract public class DiagramObject extends BaseObject
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
-	//TODO the majority of this method was copied form DiagramModel.  
-	// this is tested via the (id, id) variant, so everyone should start using this method.
-	public boolean areDiagramFactorsLinked(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
+	public boolean areDiagramFactorsLinkedFromTo(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
 		ORefList diagramLinkRefs = getAllDiagramLinkRefs();
 		for (int i  = 0; i < diagramLinkRefs.size(); ++i)
 		{
 			DiagramLink diagramLink = (DiagramLink) getObjectManager().findObject(diagramLinkRefs.get(i));
-			if (diagramLink.getFromDiagramFactorRef().equals(fromDiagramFactorRef) && diagramLink.getToDiagramFactorRef().equals(toDiagramFactorRef))
+			if (diagramLink.getFromDiagramFactorRef().equals(fromDiagramFactorRef) && 
+					diagramLink.getToDiagramFactorRef().equals(toDiagramFactorRef))
 				return true;
 			
-			if (diagramLink.getFromDiagramFactorRef().equals(toDiagramFactorRef) && diagramLink.getToDiagramFactorRef().equals(fromDiagramFactorRef))
+			if (diagramLink.isBidirectional() && 
+					diagramLink.getFromDiagramFactorRef().equals(toDiagramFactorRef) && 
+					diagramLink.getToDiagramFactorRef().equals(fromDiagramFactorRef))
 				return true;
 		}
 		
 		return false;
-	}
-	
-	public boolean areDiagramFactorsLinked(DiagramFactorId fromDiagramFactorId, DiagramFactorId toDiagramFactorId) throws Exception
-	{
-		ORef fromRef = new ORef(DiagramFactor.getObjectType(), fromDiagramFactorId);
-		ORef toRef = new ORef(DiagramFactor.getObjectType(), toDiagramFactorId);
-		return areDiagramFactorsLinked(fromRef, toRef);
 	}
 	
 	public IdList getAllDiagramFactorIds()

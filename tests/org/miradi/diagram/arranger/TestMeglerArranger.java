@@ -119,7 +119,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertTrue("Didn't group target1?", children.contains(targetDiagramFactor1.getRef()));
 		assertTrue("Didn't group target2?", children.contains(targetDiagramFactor2.getRef()));
 		
-		assertTrue("Didn't create group link?", diagram.areDiagramFactorsLinked(threatDiagramFactor.getRef(), groupBoxDiagramFactor.getRef()));
+		assertTrue("Didn't create group link?", diagram.areDiagramFactorsLinkedFromTo(threatDiagramFactor.getRef(), groupBoxDiagramFactor.getRef()));
 	}
 	
 	public void testOneGroupWithOneExcludedTarget() throws Exception

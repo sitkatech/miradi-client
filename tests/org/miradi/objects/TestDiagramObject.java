@@ -21,7 +21,9 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ProjectForTesting;
@@ -52,18 +54,28 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		DiagramObject diagramObject = project.getTestingDiagramObject();
-		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
+		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromTo(cause.getRef(), target.getRef()));
 		
 		BaseId diagramLinkId = project.createDiagramFactorLink(cause, target);
+		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
 		project.addDiagramLinkToModel(diagramLinkId);
-		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinked(cause.getDiagramFactorId(), target.getDiagramFactorId()));
-		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinked(target.getDiagramFactorId(), cause.getDiagramFactorId()));
+		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinkedFromTo(cause.getRef(), target.getRef()));
+		assertFalse("link reported as bidi?", diagramObject.areDiagramFactorsLinkedFromTo(target.getRef(), cause.getRef()));
+		makeLinkBidirectional(diagramLinkRef);
+		assertTrue("Bidi link not recognized?", diagramObject.areDiagramFactorsLinkedFromTo(target.getRef(), cause.getRef()));
 		
 		DiagramFactor nonLinkedCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(nonLinkedCause.getDiagramFactorId(), target.getDiagramFactorId()));
-		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinked(target.getDiagramFactorId(), nonLinkedCause.getDiagramFactorId()));
+		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromTo(nonLinkedCause.getRef(), target.getRef()));
+		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromTo(target.getRef(), nonLinkedCause.getRef()));
 	}
 	
+	private void makeLinkBidirectional(ORef diagramLinkRef) throws Exception
+	{
+		DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRef);
+		CommandSetObjectData cmd = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
+		project.executeCommand(cmd);
+	}
+
 	public void testFindReferrersOnSameDiagram() throws Exception
 	{
 		DiagramObject diagramObject = project.getTestingDiagramObject();
