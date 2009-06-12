@@ -179,6 +179,9 @@ public class TestMeglerArranger extends TestCaseWithProject
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor3);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor4);
 
+		ORefList targets1And2 = new ORefList(new DiagramFactor[] {targetDiagramFactor1, targetDiagramFactor2});
+		ORefList targets3And4 = new ORefList(new DiagramFactor[] {targetDiagramFactor3, targetDiagramFactor4});
+
 		DiagramObject diagram = getProject().getMainDiagramObject();
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
@@ -192,13 +195,48 @@ public class TestMeglerArranger extends TestCaseWithProject
 		ORefList children2 = groupBoxDiagramFactor2.getGroupBoxChildrenRefs();
 		assertEquals("Second group doesn't contain two targets?", 2, children2.size());
 		
-		ORefList targets1And2 = new ORefList(new DiagramFactor[] {targetDiagramFactor1, targetDiagramFactor2});
-		ORefList targets3And4 = new ORefList(new DiagramFactor[] {targetDiagramFactor3, targetDiagramFactor4});
-
 		assertTrue("Didn't group target1 with target2?", children1.equals(targets1And2) || children2.equals(targets1And2));
 		assertTrue("Didn't group target3 with target4?", children1.equals(targets3And4) || children2.equals(targets3And4));
 	}
 
+	public void testSkipAlreadyGroupedTargets() throws Exception
+	{
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor4 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor3);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor4);
+
+		ORefList targets1And2 = new ORefList(new DiagramFactor[] {targetDiagramFactor1, targetDiagramFactor2});
+		ORefList targets3And4 = new ORefList(new DiagramFactor[] {targetDiagramFactor3, targetDiagramFactor4});
+
+		DiagramFactor groupDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
+		CommandSetObjectData addChildren = new CommandSetObjectData(groupDiagramFactor.getRef(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, targets1And2.toString());
+		getProject().executeCommand(addChildren);
+		
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create one new group?", 2, groupBoxDiagramFactors.size());
+		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
+		ORefList children1 = groupBoxDiagramFactor1.getGroupBoxChildrenRefs();
+		assertEquals("First group doesn't contain two targets?", 2, children1.size());
+		DiagramFactor groupBoxDiagramFactor2 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[1];
+		ORefList children2 = groupBoxDiagramFactor2.getGroupBoxChildrenRefs();
+		assertEquals("Second group doesn't contain two targets?", 2, children2.size());
+		
+		assertTrue("Didn't keep existing group?", children1.equals(targets1And2) || children2.equals(targets1And2));
+		assertTrue("Didn't group target3 with target4?", children1.equals(targets3And4) || children2.equals(targets3And4));
+	}
+	
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
