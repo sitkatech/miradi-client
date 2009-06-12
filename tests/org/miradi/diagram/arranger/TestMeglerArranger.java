@@ -35,6 +35,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.objects.TestDiagramObject;
 
 public class TestMeglerArranger extends TestCaseWithProject
 {
@@ -119,7 +120,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertTrue("Didn't group target1?", children.contains(targetDiagramFactor1.getRef()));
 		assertTrue("Didn't group target2?", children.contains(targetDiagramFactor2.getRef()));
 		
-		assertTrue("Didn't create group link?", diagram.areDiagramFactorsLinkedFromTo(threatDiagramFactor.getRef(), groupBoxDiagramFactor.getRef()));
+		assertTrue("Didn't create group link?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatDiagramFactor.getRef(), groupBoxDiagramFactor.getRef()));
 	}
 	
 	public void testOneGroupWithOneExcludedTarget() throws Exception
@@ -144,6 +145,24 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertEquals("Didn't group top two targets?", 2, children.size());
 		assertTrue("Didn't group target1?", children.contains(targetDiagramFactor1.getRef()));
 		assertTrue("Didn't group target2?", children.contains(targetDiagramFactor2.getRef()));
+	}
+
+	public void testDontGroupIfBidirectionalLink() throws Exception
+	{
+		DiagramFactor threatDiagramFactor = createThreat();
+		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor1);
+		ORef factorLink2Ref = getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor2);
+		TestDiagramObject.makeLinkBidirectional(getProject(), factorLink2Ref);
+		
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
 	}
 
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException

@@ -26,6 +26,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 
 public class TestDiagramObject extends ObjectTestCase
@@ -49,27 +50,28 @@ public class TestDiagramObject extends ObjectTestCase
 		project = null;
 	}
 
-	public void testAreDiagramFactorsLinked() throws Exception
+	public void testAreDiagramFactorsLinkedFromToNonBidirectional() throws Exception
 	{
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		DiagramObject diagramObject = project.getTestingDiagramObject();
-		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromTo(cause.getRef(), target.getRef()));
+		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		
 		BaseId diagramLinkId = project.createDiagramFactorLink(cause, target);
 		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
 		project.addDiagramLinkToModel(diagramLinkId);
-		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinkedFromTo(cause.getRef(), target.getRef()));
-		assertFalse("link reported as bidi?", diagramObject.areDiagramFactorsLinkedFromTo(target.getRef(), cause.getRef()));
-		makeLinkBidirectional(diagramLinkRef);
-		assertTrue("Bidi link not recognized?", diagramObject.areDiagramFactorsLinkedFromTo(target.getRef(), cause.getRef()));
+		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
+		assertFalse("wrong direction appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), cause.getRef()));
+		makeLinkBidirectional(project, diagramLinkRef);
+		assertFalse("Bidi appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
+		assertFalse("Bidi other direction appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), cause.getRef()));
 		
 		DiagramFactor nonLinkedCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromTo(nonLinkedCause.getRef(), target.getRef()));
-		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromTo(target.getRef(), nonLinkedCause.getRef()));
+		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(nonLinkedCause.getRef(), target.getRef()));
+		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), nonLinkedCause.getRef()));
 	}
 	
-	private void makeLinkBidirectional(ORef diagramLinkRef) throws Exception
+	public static void makeLinkBidirectional(Project project, ORef diagramLinkRef) throws Exception
 	{
 		DiagramLink diagramLink = DiagramLink.find(project, diagramLinkRef);
 		CommandSetObjectData cmd = new CommandSetObjectData(diagramLink.getWrappedRef(), FactorLink.TAG_BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_TRUE);
