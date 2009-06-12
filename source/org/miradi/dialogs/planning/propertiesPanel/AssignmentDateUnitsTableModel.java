@@ -178,12 +178,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (getAssignment(row) != null)
 				return isAssignmentCellEditable(getAssignment(row), getDateUnit(column));
 			
-			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
-			if (assignmentRefs.size() >  1)
-				return false;
-			
 			if (hasConflictingValue(baseObjectForRow, getDateUnit(column)))
 				return false;
+			
+			ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
+			if (assignmentRefs.size() >  1)
+				return canEditMultipleAssignments(baseObjectForRow, getDateUnit(column));
 			
 			if (assignmentRefs.size() == 1)
 				return isAssignmentCellEditable(getSingleAssignmentForBaseObject(baseObjectForRow), getDateUnit(column));
@@ -195,6 +195,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			EAM.logException(e);
 			return false;
 		}
+	}
+	
+	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
+	{
+		return false;
 	}
 	
 	private boolean hasConflictingValue(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
@@ -241,6 +246,18 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return isHorizontallyEditable(assignment, dateUnit);
 	}
 
+	protected boolean isHorizontallyEditable(ORefList assignmentRefs, DateUnit dateUnit) throws Exception
+	{
+		for (int index = 0; index < assignmentRefs.size(); ++index)
+		{
+			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
+			if (!isHorizontallyEditable(assignment, dateUnit))
+				return false;
+		}
+		
+		return true;
+	}
+	
 	private boolean isHorizontallyEditable(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		DateUnitEffort thisCellEffort = getDateUnitEffort(assignment, dateUnit);
@@ -276,27 +293,49 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		getProject().executeBeginTransaction();
 		try
 		{
-			Assignment assignment = getSingleAssignmentToEdit(row);
-			DateUnit dateUnit = getDateUnit(column);
-
-			String valueAsString = value.toString().trim();
-			if (valueAsString.equals(""))
-			{
-				clearUnits(assignment, dateUnit);
-			}
-			else
-			{
-				double units = Double.parseDouble(valueAsString);
-				setUnits(assignment, dateUnit, units);
-			}
-			
-			clearSuperDateUnitColumns(assignment, dateUnit);
-			
+			Vector<Assignment> assignments = getSingleAssignmentToEdit(row);
+			setAssignmentValues(value, column, assignments);	
 		}
 		finally
 		{
 			getProject().executeEndTransaction();
 		}
+	}
+
+	private void setAssignmentValues(Object value, int column, Vector<Assignment> assignments) throws Exception
+	{
+		value = divideValue(value, assignments.size());
+		for (int index = 0; index < assignments.size(); ++index)
+		{
+			setAssignmentValue(value, column, assignments.get(index));
+		}
+	}
+	
+	private Object divideValue(Object value, int portionCount)
+	{
+		String valueAsString = value.toString().trim();
+		if (valueAsString.equals(""))
+			return value;
+		
+		double parsedValue = Double.parseDouble(valueAsString);
+		return parsedValue  / portionCount;
+	}
+
+	private void setAssignmentValue(Object value, int column, Assignment assignment) throws Exception
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		String valueAsString = value.toString().trim();
+		if (valueAsString.equals(""))
+		{
+			clearUnits(assignment, dateUnit);
+		}
+		else
+		{
+			double units = Double.parseDouble(valueAsString);
+			setUnits(assignment, dateUnit, units);
+		}
+		
+		clearSuperDateUnitColumns(assignment, dateUnit);
 	}
 
 	private void setUnits(Assignment assignment, DateUnit dateUnit, double units) throws Exception
@@ -374,21 +413,40 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return null;
 	}
 	
-	public Assignment getSingleAssignmentToEdit(int row) throws Exception
+	public Vector<Assignment> getSingleAssignmentToEdit(int row) throws Exception
 	{
 		Assignment assignmentForRow = getAssignment(row);
 		if (assignmentForRow != null)
-			return assignmentForRow;
+			return convertToVector(assignmentForRow);
 		
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
 		ORefList assignmentRefsForRowObject = baseObjectForRowColumn.getRefList(getAssignmentsTag());
-		if (assignmentRefsForRowObject.size() == 1)
-			return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
+		if (assignmentRefsForRowObject.size() > 0)
+			return convertToVector(assignmentRefsForRowObject);
 		
 		if (assignmentRefsForRowObject.isEmpty())
-			return createAndAddNewAssignment(baseObjectForRowColumn);
+			return convertToVector(createAndAddNewAssignment(baseObjectForRowColumn));
 		
-		return null;
+		return new Vector<Assignment>();
+	}
+	
+	private Vector<Assignment> convertToVector(ORefList assignmentRefs)
+	{
+		Vector<Assignment> assignments = new Vector();
+		for (int index = 0; index < assignmentRefs.size(); ++index)
+		{
+			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
+			assignments.add(assignment);
+		}
+		
+		return assignments;
+	}
+	
+	private Vector<Assignment> convertToVector(Assignment assignment)
+	{
+		Vector<Assignment> singleList = new Vector();
+		singleList.add(assignment);
+		return singleList;
 	}
 	
 	private Assignment createAndAddNewAssignment(BaseObject baseObjectForRowColumn) throws Exception

@@ -27,6 +27,8 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
@@ -44,6 +46,31 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	public boolean isWorkUnitColumn(int column)
 	{
+		return true;
+	}
+	
+	@Override
+	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
+	{
+		ORefList assignmentRefs = baseObjectForRow.getRefList(getAssignmentsTag());
+		if (!isHorizontallyEditable(assignmentRefs, dateUnit))
+			return false;
+			
+		OptionalDouble resourceTotal = new OptionalDouble();
+		for (int index = 0; index < assignmentRefs.size(); ++index)
+		{
+			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
+			TimePeriodCosts timePeriodCosts = assignment.calculateTimePeriodCosts(dateUnit);
+			OptionalDouble thisResourceTotal = timePeriodCosts.calculateResourcesTotalUnits();
+			if (index == 0)
+				resourceTotal = thisResourceTotal;
+			
+			if (!thisResourceTotal.equals(resourceTotal))
+				return false;
+			
+			resourceTotal = thisResourceTotal;
+		}
+		
 		return true;
 	}
 	
