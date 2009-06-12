@@ -119,6 +119,30 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertTrue("Didn't group target2?", children.contains(targetDiagramFactor2.getRef()));
 		
 	}
+	
+	public void testOneGroupWithOneExcludedTarget() throws Exception
+	{
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor3);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create one group?", 1, groupBoxDiagramFactors.size());
+		ORefList children = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0].getGroupBoxChildrenRefs();
+		assertEquals("Didn't group top two targets?", 2, children.size());
+		assertTrue("Didn't group target1?", children.contains(targetDiagramFactor1.getRef()));
+		assertTrue("Didn't group target2?", children.contains(targetDiagramFactor2.getRef()));
+	}
 
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{

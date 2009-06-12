@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram.arranger;
 
 import java.awt.Point;
-import java.util.HashSet;
+import java.util.AbstractCollection;
 import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
@@ -71,28 +71,34 @@ public class MeglerArranger
 
 	private void createTargetGroupBoxes() throws Exception
 	{
-		HashSet<DiagramFactor> groupCandidates = new HashSet<DiagramFactor>();
+		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>();
 		groupCandidates.addAll(targets);
 		
-		int wouldRemoveLinkCount = 0;
-		ORefSet fromDiagramFactorRefs = getRefsOfFactorsThatLinkTo(groupCandidates);
-		for(ORef fromRef : fromDiagramFactorRefs)
+		while(groupCandidates.size() > 1)
 		{
-			if(isLinkedToAll(fromRef, groupCandidates))
-				wouldRemoveLinkCount += groupCandidates.size();
-		}
-		
-		if(wouldRemoveLinkCount > 1)
-		{
-			ORefList childRefs = new ORefList(groupCandidates.toArray(new DiagramFactor[0]));
-			FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
-			ORef created = new ORef(DiagramFactor.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
-			CommandSetObjectData addChildren = new CommandSetObjectData(created, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
-			getProject().executeCommand(addChildren);
+			int wouldRemoveLinkCount = 0;
+			ORefSet fromDiagramFactorRefs = getRefsOfFactorsThatLinkTo(groupCandidates);
+			for(ORef fromRef : fromDiagramFactorRefs)
+			{
+				if(isLinkedToAll(fromRef, groupCandidates))
+					wouldRemoveLinkCount += groupCandidates.size();
+			}
+			
+			if(wouldRemoveLinkCount > 1)
+			{
+				ORefList childRefs = new ORefList(groupCandidates.toArray(new DiagramFactor[0]));
+				FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
+				ORef created = new ORef(DiagramFactor.getObjectType(), helper.createFactorAndDiagramFactor(GroupBox.getObjectType()).getCreatedId());
+				CommandSetObjectData addChildren = new CommandSetObjectData(created, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, childRefs.toString());
+				getProject().executeCommand(addChildren);
+				return;
+			}
+			
+			groupCandidates.remove(groupCandidates.size() - 1);
 		}
 	}
 
-	private boolean isLinkedToAll(ORef fromRef, HashSet<DiagramFactor> groupCandidates)
+	private boolean isLinkedToAll(ORef fromRef, AbstractCollection<DiagramFactor> groupCandidates)
 	{
 		for(DiagramFactor factor : groupCandidates)
 		{
@@ -103,7 +109,7 @@ public class MeglerArranger
 		return true;
 	}
 
-	private ORefSet getRefsOfFactorsThatLinkTo(HashSet<DiagramFactor> groupCandidates)
+	private ORefSet getRefsOfFactorsThatLinkTo(AbstractCollection<DiagramFactor> groupCandidates)
 	{
 		ORefSet allFroms = new ORefSet();
 		for(DiagramFactor factor : groupCandidates)
