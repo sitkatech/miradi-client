@@ -76,7 +76,18 @@ public class MeglerArranger
 	{
 		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>();
 		groupCandidates.addAll(targets);
-		
+
+		while(groupCandidates.size() > 1)
+		{
+			Vector<DiagramFactor> groupedTargets = createBiggestPossibleGroup(new Vector<DiagramFactor>(groupCandidates));
+			if(groupedTargets.size() == 0)
+				break;
+			groupCandidates.removeAll(groupedTargets);
+		}
+	}
+
+	private Vector<DiagramFactor> createBiggestPossibleGroup(Vector<DiagramFactor> groupCandidates) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
+	{
 		while(groupCandidates.size() > 1)
 		{
 			int wouldRemoveLinkCount = 0;
@@ -90,11 +101,13 @@ public class MeglerArranger
 			if(wouldRemoveLinkCount > 1)
 			{
 				createAndLinkToGroupBox(fromDiagramFactorRefs, groupCandidates);
-				return;
+				break;
 			}
 			
 			groupCandidates.remove(groupCandidates.size() - 1);
 		}
+		
+		return groupCandidates;
 	}
 
 	private void createAndLinkToGroupBox(ORefSet fromDiagramFactorRefs, Vector<DiagramFactor> groupCandidates) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
