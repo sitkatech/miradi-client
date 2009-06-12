@@ -113,7 +113,7 @@ public class MeglerArranger
 	{
 		for(DiagramFactor factor : groupCandidates)
 		{
-			if(!diagram.areDiagramFactorsLinkedFromTo(fromRef, factor.getRef()))
+			if(!diagram.areDiagramFactorsLinkedFromToNonBidirectional(fromRef, factor.getRef()))
 				return false;
 		}
 		

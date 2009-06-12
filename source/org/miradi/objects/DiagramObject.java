@@ -181,20 +181,17 @@ abstract public class DiagramObject extends BaseObject
 		return (getType() == ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 	
-	public boolean areDiagramFactorsLinkedFromTo(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
+	public boolean areDiagramFactorsLinkedFromToNonBidirectional(ORef fromDiagramFactorRef, ORef toDiagramFactorRef)
 	{
 		ORefList diagramLinkRefs = getAllDiagramLinkRefs();
 		for (int i  = 0; i < diagramLinkRefs.size(); ++i)
 		{
 			DiagramLink diagramLink = (DiagramLink) getObjectManager().findObject(diagramLinkRefs.get(i));
-			if (diagramLink.getFromDiagramFactorRef().equals(fromDiagramFactorRef) && 
+			if (!diagramLink.isBidirectional()  && 
+					diagramLink.getFromDiagramFactorRef().equals(fromDiagramFactorRef) && 
 					diagramLink.getToDiagramFactorRef().equals(toDiagramFactorRef))
 				return true;
 			
-			if (diagramLink.isBidirectional() && 
-					diagramLink.getFromDiagramFactorRef().equals(toDiagramFactorRef) && 
-					diagramLink.getToDiagramFactorRef().equals(fromDiagramFactorRef))
-				return true;
 		}
 		
 		return false;
