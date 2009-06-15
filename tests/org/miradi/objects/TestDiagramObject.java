@@ -120,9 +120,9 @@ public class TestDiagramObject extends ObjectTestCase
 		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		createLinkAndAddToDiagram(cause, target);
 		
-		assertFalse("strategy is linked to cause?", diagramObject.areLinked(strategy.getWrappedORef(), cause.getWrappedORef()));
-		assertTrue("cause not linked to target?", diagramObject.areLinked(cause.getWrappedORef(), target.getWrappedORef()));
-		assertTrue("target not linked to cause?", diagramObject.areLinked(target.getWrappedORef(), cause.getWrappedORef()));
+		assertFalse("strategy is linked to cause?", diagramObject.areLinkedEitherDirection(strategy.getWrappedORef(), cause.getWrappedORef()));
+		assertTrue("cause not linked to target?", diagramObject.areLinkedEitherDirection(cause.getWrappedORef(), target.getWrappedORef()));
+		assertTrue("target not linked to cause?", diagramObject.areLinkedEitherDirection(target.getWrappedORef(), cause.getWrappedORef()));
 		
 	}
 	

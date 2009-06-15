@@ -212,7 +212,7 @@ abstract public class DiagramObject extends BaseObject
 		return false;
 	}
 	
-	public boolean areLinked(ORef fromFactorRef, ORef toFactorRef)
+	public boolean areLinkedEitherDirection(ORef fromFactorRef, ORef toFactorRef)
 	{
 		Factor.ensureFactor(fromFactorRef);
 		Factor.ensureFactor(toFactorRef);

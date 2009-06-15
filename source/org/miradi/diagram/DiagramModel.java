@@ -282,7 +282,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	{
 		Factor.ensureFactor(fromFactorRef);
 		Factor.ensureFactor(toFactorRef);
-		return getDiagramObject().areLinked(fromFactorRef, toFactorRef);
+		return getDiagramObject().areLinkedEitherDirection(fromFactorRef, toFactorRef);
 	}
 
 	public DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
