@@ -294,7 +294,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			Vector<Assignment> assignments = getAssignmentsToEdit(row);
-			setAssignmentValues(value, column, assignments);	
+			setAssignmentValues(assignments, column, value);	
 		}
 		finally
 		{
@@ -302,7 +302,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
-	private void setAssignmentValues(Object value, int column, Vector<Assignment> assignments) throws Exception
+	private void setAssignmentValues(Vector<Assignment> assignments, int column, Object value) throws Exception
 	{
 		value = divideValue(value, assignments.size());
 		for (int index = 0; index < assignments.size(); ++index)
