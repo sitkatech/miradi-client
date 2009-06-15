@@ -143,6 +143,12 @@ public class FactorLink extends BaseObject
 		return direction == FROM;
 	}
 		
+	public static void ensure(ORef linkRef)
+	{
+		if (!is(linkRef))
+			throw new RuntimeException(linkRef + " is not a factor link ref");
+	}
+	
 	public static boolean is(BaseObject object)
 	{
 		return is(object.getType());
