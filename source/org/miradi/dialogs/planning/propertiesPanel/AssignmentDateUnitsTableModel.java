@@ -302,11 +302,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
-	private void setAssignmentValues(Vector<Assignment> assignments, int column, Object totalValue) throws Exception
+	private void setAssignmentValues(Vector<Assignment> assignments, int column, Object dividedValue) throws Exception
 	{
 		for (int index = 0; index < assignments.size(); ++index)
 		{
-			setAssignmentValue(totalValue, column, assignments.get(index));
+			setAssignmentValue(dividedValue, column, assignments.get(index));
 		}
 	}
 	
@@ -320,10 +320,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return parsedValue  / portionCount;
 	}
 
-	private void setAssignmentValue(Object value, int column, Assignment assignment) throws Exception
+	private void setAssignmentValue(Object dividedValue, int column, Assignment assignment) throws Exception
 	{
 		DateUnit dateUnit = getDateUnit(column);
-		String valueAsString = value.toString().trim();
+		String valueAsString = dividedValue.toString().trim();
 		if (valueAsString.equals(""))
 		{
 			clearUnits(assignment, dateUnit);
