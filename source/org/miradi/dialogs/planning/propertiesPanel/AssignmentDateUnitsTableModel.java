@@ -294,7 +294,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			Vector<Assignment> assignments = getAssignmentsToEdit(row);
-			setAssignmentValues(assignments, column, value);	
+			setAssignmentValues(assignments, column, divideValue(value, assignments.size()));	
 		}
 		finally
 		{
@@ -304,7 +304,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	private void setAssignmentValues(Vector<Assignment> assignments, int column, Object totalValue) throws Exception
 	{
-		totalValue = divideValue(totalValue, assignments.size());
 		for (int index = 0; index < assignments.size(); ++index)
 		{
 			setAssignmentValue(totalValue, column, assignments.get(index));
@@ -424,10 +423,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		if (assignmentRefsForRowObject.size() > 0)
 			return convertToVector(assignmentRefsForRowObject);
 		
-		if (assignmentRefsForRowObject.isEmpty())
-			return convertToVector(createAndAddNewAssignment(baseObjectForRowColumn));
-		
-		return new Vector<Assignment>();
+		return convertToVector(createAndAddNewAssignment(baseObjectForRowColumn));
 	}
 	
 	private Vector<Assignment> convertToVector(ORefList assignmentRefs)
