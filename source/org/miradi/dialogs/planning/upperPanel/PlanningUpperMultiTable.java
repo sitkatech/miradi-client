@@ -71,6 +71,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
+		
 	}
 	
 	@Override
