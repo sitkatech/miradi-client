@@ -143,7 +143,7 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkReferrers.get(i));
 			DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), diagramLink.getFromDiagramFactorRef());
 			DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), diagramLink.getToDiagramFactorRef());
-			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramView().getDiagramModel(), fromDiagramFactor, toDiagramFactor);
+			linkCreator.createGroupBoxChildrenDiagramLinks(getDiagramView().getDiagramModel().getDiagramObject(), fromDiagramFactor, toDiagramFactor);
 		}
 	}
 	

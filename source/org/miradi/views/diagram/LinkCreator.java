@@ -347,40 +347,39 @@ public class LinkCreator
 		return diagramLinkExtraInfo;
 	}
 	
-	public ORefList createGroupBoxChildrenDiagramLinks(DiagramModel model, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
+	public ORefList createGroupBoxChildrenDiagramLinks(DiagramObject diagramObject, DiagramFactor fromDiagramFactorToUse, DiagramFactor toDiagramFactorToUse) throws Exception
 	{
 		if (fromDiagramFactorToUse.isGroupBoxFactor() && toDiagramFactorToUse.isGroupBoxFactor())
 		{
-			deleteRelatedGroupBoxLinks(model, fromDiagramFactorToUse, toDiagramFactorToUse.getGroupBoxChildrenRefs());
-			deleteRelatedGroupBoxLinks(model, toDiagramFactorToUse, fromDiagramFactorToUse.getGroupBoxChildrenRefs());
+			deleteRelatedGroupBoxLinks(diagramObject, fromDiagramFactorToUse, toDiagramFactorToUse.getGroupBoxChildrenRefs());
+			deleteRelatedGroupBoxLinks(diagramObject, toDiagramFactorToUse, fromDiagramFactorToUse.getGroupBoxChildrenRefs());
 		}
 		
 		ORefList allNonGroupBoxDiagramLinkRefs = new ORefList();
 		ORefList fromDiagramFactorRefs = fromDiagramFactorToUse.getSelfOrChildren();
 		ORefList toDiagramFactorRefs = toDiagramFactorToUse.getSelfOrChildren();
-		DiagramObject diagramObject = model.getDiagramObject();
 		for (int from = 0; from < fromDiagramFactorRefs.size(); ++from)
 		{
 			for (int to = 0; to < toDiagramFactorRefs.size(); ++to)
 			{
 				DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRefs.get(from));
 				DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRefs.get(to));
-				if (model.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
+				if (diagramObject.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
 				{
-					DiagramLink diagramLink = model.getDiagramLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
+					DiagramLink diagramLink = diagramObject.getDiagramLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 					allNonGroupBoxDiagramLinkRefs.add(diagramLink.getRef());
 					continue;
 				}
 				
 				ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, fromDiagramFactor, toDiagramFactor);
-				DiagramLink diagramLink = model.getDiagramLinkByWrappedRef(factorLinkRef);
+				DiagramLink diagramLink = diagramObject.getDiagramLinkByWrappedRef(factorLinkRef);
 				allNonGroupBoxDiagramLinkRefs.add(diagramLink.getRef());
 			}
 		}
 		
-		if (model.areLinked(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
+		if (diagramObject.areLinked(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
 		{
-			DiagramLink groupBoxDiagramLink = model.getDiagramLink(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef());
+			DiagramLink groupBoxDiagramLink = diagramObject.getDiagramLink(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef());
 			updateGroupBoxChildrenRefs(allNonGroupBoxDiagramLinkRefs, groupBoxDiagramLink.getRef());
 		}
 		else
@@ -431,12 +430,12 @@ public class LinkCreator
 		return false;
 	}
 	
-	private void deleteRelatedGroupBoxLinks(DiagramModel model, DiagramFactor groupBoxDiagramFactor, ORefList groupBoxChildren) throws Exception
+	private void deleteRelatedGroupBoxLinks(DiagramObject diagramObject, DiagramFactor groupBoxDiagramFactor, ORefList groupBoxChildren) throws Exception
 	{
 		LinkDeletor linkDeletor = new LinkDeletor(getProject());
 		for (int childRef = 0; childRef < groupBoxChildren.size(); ++childRef)
 		{
-			ORefList diagramLinkRefs = model.getDiagramLinkFromDiagramFactors(groupBoxDiagramFactor.getRef(), groupBoxChildren.get(childRef));
+			ORefList diagramLinkRefs = diagramObject.getDiagramLinkFromDiagramFactors(groupBoxDiagramFactor.getRef(), groupBoxChildren.get(childRef));
 			for (int refIndex = 0; refIndex < diagramLinkRefs.size(); ++refIndex)
 			{
 				DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(refIndex));
@@ -478,11 +477,11 @@ public class LinkCreator
 		linkDeletor.deleteDiagramLinkAndOrphandFactorLink(diagramLink);
 	
 
-		ORefList newFactorLinkRefs1 = createFactorLinkAndDiagramLink(diagramModel, fromDiagramFactor, newlyInsertedDiagramFactor);
+		ORefList newFactorLinkRefs1 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), fromDiagramFactor, newlyInsertedDiagramFactor);
 		if (isBidirectional)
 			enableBidirectionality(newFactorLinkRefs1);
 		
-		ORefList newFactorLinkRefs2 = createFactorLinkAndDiagramLink(diagramModel, newlyInsertedDiagramFactor, toDiagramFactor);
+		ORefList newFactorLinkRefs2 = createFactorLinkAndDiagramLink(diagramModel.getDiagramObject(), newlyInsertedDiagramFactor, toDiagramFactor);
 		if (isBidirectional)
 			enableBidirectionality(newFactorLinkRefs2);
 	}
@@ -507,15 +506,15 @@ public class LinkCreator
 		return factorLinkRefs;
 	}
 	
-	public ORefList createFactorLinkAndDiagramLink(DiagramModel model, DiagramFactor from, DiagramFactor to) throws Exception
+	public ORefList createFactorLinkAndDiagramLink(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		if (!from.isGroupBoxFactor() && !to.isGroupBoxFactor())
 		{
-			ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(model, from, to);
+			ORef factorLinkRef = createFactorLinkAndAddToDiagramUsingCommands(diagramObject, from, to);
 			return new ORefList(factorLinkRef);
 		}
 		
-		ORefList groupBoxChildrenDiagramFactorRefs = createGroupBoxChildrenDiagramLinks(model, from, to);
+		ORefList groupBoxChildrenDiagramFactorRefs = createGroupBoxChildrenDiagramLinks(diagramObject, from, to);
 		return convertToFactorLinks(groupBoxChildrenDiagramFactorRefs);
 	}
 	
