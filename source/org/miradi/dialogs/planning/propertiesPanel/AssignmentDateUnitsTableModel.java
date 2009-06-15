@@ -421,12 +421,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		BaseObject baseObjectForRowColumn = getBaseObjectForRowColumn(row, 0);
 		ORefList assignmentRefsForRowObject = baseObjectForRowColumn.getRefList(getAssignmentsTag());
 		if (assignmentRefsForRowObject.size() > 0)
-			return convertToVector(assignmentRefsForRowObject);
+			return refsToAssignments(assignmentRefsForRowObject);
 		
 		return convertToVector(createAndAddNewAssignment(baseObjectForRowColumn));
 	}
 	
-	private Vector<Assignment> convertToVector(ORefList assignmentRefs)
+	private Vector<Assignment> refsToAssignments(ORefList assignmentRefs)
 	{
 		Vector<Assignment> assignments = new Vector();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
