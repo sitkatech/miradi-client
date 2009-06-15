@@ -302,12 +302,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
-	private void setAssignmentValues(Vector<Assignment> assignments, int column, Object value) throws Exception
+	private void setAssignmentValues(Vector<Assignment> assignments, int column, Object totalValue) throws Exception
 	{
-		value = divideValue(value, assignments.size());
+		totalValue = divideValue(totalValue, assignments.size());
 		for (int index = 0; index < assignments.size(); ++index)
 		{
-			setAssignmentValue(value, column, assignments.get(index));
+			setAssignmentValue(totalValue, column, assignments.get(index));
 		}
 	}
 	
