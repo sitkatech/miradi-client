@@ -364,7 +364,7 @@ public class LinkCreator
 			{
 				DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), fromDiagramFactorRefs.get(from));
 				DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), toDiagramFactorRefs.get(to));
-				if (diagramObject.areLinked(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
+				if (diagramObject.areLinkedEitherDirection(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef()))
 				{
 					DiagramLink diagramLink = diagramObject.getDiagramLink(fromDiagramFactor.getWrappedORef(), toDiagramFactor.getWrappedORef());
 					allNonGroupBoxDiagramLinkRefs.add(diagramLink.getRef());
@@ -377,7 +377,7 @@ public class LinkCreator
 			}
 		}
 		
-		if (diagramObject.areLinked(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
+		if (diagramObject.areLinkedEitherDirection(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef()))
 		{
 			DiagramLink groupBoxDiagramLink = diagramObject.getDiagramLink(fromDiagramFactorToUse.getWrappedORef(), toDiagramFactorToUse.getWrappedORef());
 			updateGroupBoxChildrenRefs(allNonGroupBoxDiagramLinkRefs, groupBoxDiagramLink.getRef());
