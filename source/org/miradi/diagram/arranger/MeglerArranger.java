@@ -119,7 +119,7 @@ public class MeglerArranger
 		getProject().executeCommand(addChildren);
 		LinkCreator linkCreator = new LinkCreator(getProject());
 		for(ORef fromRef : fromDiagramFactorRefs)
-			linkCreator.createGroupDiagramLink(diagram, fromRef, groupDiagramFactorRef);
+			linkCreator.createFactorLinkAndDiagramLink(diagram, DiagramFactor.find(getProject(), fromRef), DiagramFactor.find(getProject(), groupDiagramFactorRef));
 	}
 
 	private boolean isLinkedToAll(ORef fromRef, AbstractCollection<DiagramFactor> groupCandidates)

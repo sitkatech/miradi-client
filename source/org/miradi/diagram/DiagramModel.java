@@ -266,6 +266,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 		notifyListeners(createDiagramModelEvent(cell), new ModelEventNotifierFactorLinkDeleted());
 	}
 	
+	// TODO: This method is only called by tests
 	public boolean areDiagramFactorsLinked(ORef fromDiagramFactorRef, ORef toDiagramFactorRef) throws Exception
 	{
 		DiagramFactor.ensureType(fromDiagramFactorRef);
@@ -281,49 +282,14 @@ abstract public class DiagramModel extends DefaultGraphModel
 	{
 		Factor.ensureFactor(fromFactorRef);
 		Factor.ensureFactor(toFactorRef);
-		return (getDiagramLink(fromFactorRef, toFactorRef) != null);
+		return getDiagramObject().areLinked(fromFactorRef, toFactorRef);
 	}
 
 	public DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
 	{
 		Factor.ensureFactor(factorRef1);
 		Factor.ensureFactor(factorRef2);
-		
-		Vector links = cellInventory.getAllFactorLinks();
-		for(int i = 0; i < links.size(); ++i)
-		{
-			DiagramLink thisLink = (DiagramLink)links.get(i);
-			LinkCell link = findLinkCell(thisLink);
-			ORef foundRef1 = link.getFrom().getWrappedFactorRef();
-			ORef foundRef2 = link.getTo().getWrappedFactorRef();
-			if(foundRef1.equals(factorRef1) && foundRef2.equals(factorRef2))
-				return link.getDiagramLink();
-			
-			if(foundRef1.equals(factorRef2) && foundRef2.equals(factorRef1))
-				return link.getDiagramLink();
-		}
-		
-		return null;
-	}
-
-	public ORefList getDiagramLinkFromDiagramFactors(ORef diagramFactorRef1, ORef diagramFactorRef2)
-	{
-		if (!DiagramFactor.is(diagramFactorRef1) || !DiagramFactor.is(diagramFactorRef2))
-			throw new RuntimeException("Trying to find link for wrong type.");
-		
-		DiagramFactor diagramFactor1 = DiagramFactor.find(getProject(), diagramFactorRef1);
-		DiagramFactor diagramFactor2 = DiagramFactor.find(getProject(), diagramFactorRef2);
-		ORefList diagramFactor1LinkReferrers = diagramFactor1.findObjectsThatReferToUs(DiagramLink.getObjectType());
-		ORefList diagramFactor2LinkReferrers = diagramFactor2.findObjectsThatReferToUs(DiagramLink.getObjectType());
-
-		ORefList sharedLinks = diagramFactor1LinkReferrers.getOverlappingRefs(diagramFactor2LinkReferrers);
-		if(sharedLinks.size() == 0)
-			return new ORefList();
-		
-		if(sharedLinks.size() > 1)
-			EAM.logWarning("Found two factors linked more than twice");
-		
-		return sharedLinks;
+		return getDiagramObject().getDiagramLink(factorRef1, factorRef2);
 	}
 
 	

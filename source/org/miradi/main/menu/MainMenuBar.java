@@ -33,6 +33,7 @@ import org.martus.swing.UiMenu;
 import org.miradi.actions.ActionAbout;
 import org.miradi.actions.ActionAboutBenetech;
 import org.miradi.actions.ActionAboutCMP;
+import org.miradi.actions.ActionArrangeConceptualModel;
 import org.miradi.actions.ActionClose;
 import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionConfigureLayers;
@@ -363,6 +364,7 @@ public class MainMenuBar extends JMenuBar
 
 		addMenuItem(actions, menu, ActionCreateConceptualModel.class);
 		addMenuItem(actions, menu, ActionRenameConceptualModel.class);
+		addMenuItem(actions, menu, ActionArrangeConceptualModel.class);
 		addMenuItem(actions, menu, ActionDeleteConceptualModel.class);
 
 		menu.addSeparator();

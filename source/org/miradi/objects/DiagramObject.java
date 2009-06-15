@@ -28,6 +28,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramContentsId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
@@ -82,6 +83,20 @@ abstract public class DiagramObject extends BaseObject
 		return null;
 	}
 	
+	public DiagramLink getDiagramLinkByWrappedRef(ORef factorLinkRef)
+	{
+		FactorLink.ensure(factorLinkRef);
+		
+		FactorLink link = FactorLink.find(getProject(), factorLinkRef);
+		ORefList wrappingDiagramLinkRefs = link.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramLinkOnThisDiagram = wrappingDiagramLinkRefs.getOverlappingRefs(getAllDiagramLinkRefs());
+		if(diagramLinkOnThisDiagram.size() == 1)
+			return DiagramLink.find(getProject(), diagramLinkOnThisDiagram.get(0));
+		if(diagramLinkOnThisDiagram.size() > 1)
+			throw new RuntimeException("On " + getRef() + " FL " + factorLinkRef + " has multiple DL: " + diagramLinkOnThisDiagram);
+		return null;
+	}
+
 	public DiagramFactor getDiagramFactor(ORef factorRef)
 	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
@@ -196,6 +211,59 @@ abstract public class DiagramObject extends BaseObject
 		
 		return false;
 	}
+	
+	public boolean areLinked(ORef fromFactorRef, ORef toFactorRef)
+	{
+		Factor.ensureFactor(fromFactorRef);
+		Factor.ensureFactor(toFactorRef);
+		return (getDiagramLink(fromFactorRef, toFactorRef) != null);
+	}
+
+	public DiagramLink getDiagramLink(ORef factorRef1, ORef factorRef2)
+	{
+		Factor.ensureFactor(factorRef1);
+		Factor.ensureFactor(factorRef2);
+		
+		ORefList diagramLinkRefs = getAllDiagramLinkRefs();
+		for(int i = 0; i < diagramLinkRefs.size(); ++i)
+		{
+			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(i));
+			ORef fromDiagramFactorRef = diagramLink.getFromDiagramFactorRef();
+			DiagramFactor diagramFactor1 = DiagramFactor.find(getProject(), fromDiagramFactorRef);
+			ORef toDiagramFactorRef = diagramLink.getToDiagramFactorRef();
+			DiagramFactor diagramFactor2 = DiagramFactor.find(getProject(), toDiagramFactorRef);
+			ORef foundFactorRef1 = diagramFactor1.getWrappedORef();
+			ORef foundFactorRef2 = diagramFactor2.getWrappedORef();
+			if(foundFactorRef1.equals(factorRef1) && foundFactorRef2.equals(factorRef2))
+				return diagramLink;
+			
+			if(foundFactorRef1.equals(factorRef2) && foundFactorRef2.equals(factorRef1))
+				return diagramLink;
+		}
+		
+		return null;
+	}
+
+	public ORefList getDiagramLinkFromDiagramFactors(ORef diagramFactorRef1, ORef diagramFactorRef2)
+	{
+		if (!DiagramFactor.is(diagramFactorRef1) || !DiagramFactor.is(diagramFactorRef2))
+			throw new RuntimeException("Trying to find link for wrong type.");
+		
+		DiagramFactor diagramFactor1 = DiagramFactor.find(getProject(), diagramFactorRef1);
+		DiagramFactor diagramFactor2 = DiagramFactor.find(getProject(), diagramFactorRef2);
+		ORefList diagramFactor1LinkReferrers = diagramFactor1.findObjectsThatReferToUs(DiagramLink.getObjectType());
+		ORefList diagramFactor2LinkReferrers = diagramFactor2.findObjectsThatReferToUs(DiagramLink.getObjectType());
+
+		ORefList sharedLinks = diagramFactor1LinkReferrers.getOverlappingRefs(diagramFactor2LinkReferrers);
+		if(sharedLinks.size() == 0)
+			return new ORefList();
+		
+		if(sharedLinks.size() > 1)
+			EAM.logWarning("Found two factors linked more than once");
+		
+		return sharedLinks;
+	}
+
 	
 	public IdList getAllDiagramFactorIds()
 	{

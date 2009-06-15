@@ -27,7 +27,6 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectForTesting;
 
 public class TestDiagramObject extends ObjectTestCase
 {
@@ -37,36 +36,23 @@ public class TestDiagramObject extends ObjectTestCase
 		super(name);
 	}
 	
-	public void setUp() throws Exception
-	{
-		super.setUp();
-		project = new ProjectForTesting(getName());
-	}
-
-	public void tearDown() throws Exception
-	{
-		super.tearDown();
-		project.close();
-		project = null;
-	}
-
 	public void testAreDiagramFactorsLinkedFromToNonBidirectional() throws Exception
 	{
-		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramObject diagramObject = project.getTestingDiagramObject();
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		
-		BaseId diagramLinkId = project.createDiagramFactorLink(cause, target);
+		BaseId diagramLinkId = getProject().createDiagramFactorLink(cause, target);
 		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
-		project.addDiagramLinkToModel(diagramLinkId);
+		getProject().addDiagramLinkToModel(diagramLinkId);
 		assertTrue("link does not exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		assertFalse("wrong direction appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), cause.getRef()));
-		makeLinkBidirectional(project, diagramLinkRef);
+		makeLinkBidirectional(getProject(), diagramLinkRef);
 		assertFalse("Bidi appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(cause.getRef(), target.getRef()));
 		assertFalse("Bidi other direction appears linked?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), cause.getRef()));
 		
-		DiagramFactor nonLinkedCause = project.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor nonLinkedCause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(nonLinkedCause.getRef(), target.getRef()));
 		assertFalse("link does exist?", diagramObject.areDiagramFactorsLinkedFromToNonBidirectional(target.getRef(), nonLinkedCause.getRef()));
 	}
@@ -80,9 +66,9 @@ public class TestDiagramObject extends ObjectTestCase
 
 	public void testFindReferrersOnSameDiagram() throws Exception
 	{
-		DiagramObject diagramObject = project.getTestingDiagramObject();
-		ORef stressRef = project.createFactorAndReturnRef(Stress.getObjectType());
-		DiagramFactor targetDiagramFactor = project.createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramObject diagramObject = getProject().getTestingDiagramObject();
+		ORef stressRef = getProject().createFactorAndReturnRef(Stress.getObjectType());
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
 		
 		ORefList foundTargetReferrerRefs1 = diagramObject.findReferrersOnSameDiagram(stressRef, Target.getObjectType());
 		assertEquals("has referrers?", 0, foundTargetReferrerRefs1.size());
@@ -114,5 +100,77 @@ public class TestDiagramObject extends ObjectTestCase
 		assertTrue("is not cause?", Cause.isFactor(factor));
 	}
 	
-	ProjectForTesting project;
+	public void testGetDiagramLinkByWrappedRef() throws Exception
+	{
+		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
+
+		assertEquals(diagramLink.getRef(), diagramObject.getDiagramLinkByWrappedRef(diagramLink.getWrappedRef()).getRef());
+	}
+
+	public void testAreLinkedEitherDirection() throws Exception
+	{
+		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		createLinkAndAddToDiagram(cause, target);
+		
+		assertFalse("strategy is linked to cause?", diagramObject.areLinked(strategy.getWrappedORef(), cause.getWrappedORef()));
+		assertTrue("cause not linked to target?", diagramObject.areLinked(cause.getWrappedORef(), target.getWrappedORef()));
+		assertTrue("target not linked to cause?", diagramObject.areLinked(target.getWrappedORef(), cause.getWrappedORef()));
+		
+	}
+	
+	public void testGetDiagramLink() throws Exception
+	{
+		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
+		
+		assertNull("found a non-existant link?", diagramObject.getDiagramLink(strategy.getWrappedORef(), cause.getWrappedORef()));
+		assertEquals("Didn't find normal link?", diagramLink.getRef(), diagramObject.getDiagramLink(cause.getWrappedORef(), target.getWrappedORef()).getRef());
+		assertEquals("Didn't find normal link opposite direction?", diagramLink.getRef(), diagramObject.getDiagramLink(cause.getWrappedORef(), target.getWrappedORef()).getRef());
+	}
+	
+	public void testGetDiagramLinkFromDiagramFactors() throws Exception
+	{
+		DiagramObject diagramObject = getProject().getDiagramModel().getDiagramObject();
+
+		DiagramFactor strategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor cause = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramLink diagramLink = createLinkAndAddToDiagram(cause, target);
+		
+		assertNull("found a non-existant link?", getDiagramLinkRefFromDiagramFactors(diagramObject, strategy, cause));
+		assertEquals("Didn't find normal link?", diagramLink.getRef(), getDiagramLinkRefFromDiagramFactors(diagramObject, cause, target));
+		assertEquals("Didn't find normal link opposite direction?", diagramLink.getRef(), getDiagramLinkRefFromDiagramFactors(diagramObject, cause, target));
+	}
+
+	private ORef getDiagramLinkRefFromDiagramFactors(DiagramObject diagramObject, DiagramFactor strategy, DiagramFactor cause)
+	{
+		ORefList diagramLinkRefs = diagramObject.getDiagramLinkFromDiagramFactors(strategy.getRef(), cause.getRef());
+		if(diagramLinkRefs.size() == 0)
+			return null;
+		if(diagramLinkRefs.size() > 1)
+			throw new RuntimeException("Found multiple links");
+		return diagramLinkRefs.get(0);
+	}
+	
+	private DiagramLink createLinkAndAddToDiagram(DiagramFactor cause, DiagramFactor target) throws Exception
+	{
+		BaseId diagramLinkId = getProject().createDiagramFactorLink(cause, target);
+		ORef diagramLinkRef = new ORef(DiagramLink.getObjectType(), diagramLinkId);
+		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);
+		getProject().addDiagramLinkToModel(diagramLink.getId());
+		return diagramLink;
+	}
+	
 }
