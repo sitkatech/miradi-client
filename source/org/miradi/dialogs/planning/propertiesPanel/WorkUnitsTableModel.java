@@ -56,6 +56,11 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 		if (!isHorizontallyEditable(assignmentRefs, dateUnit))
 			return false;
 			
+		return isTotalUnitsEqualForAssignments(assignmentRefs, dateUnit);
+	}
+
+	private boolean isTotalUnitsEqualForAssignments(ORefList assignmentRefs, DateUnit dateUnit) throws Exception
+	{
 		OptionalDouble resourceTotal = new OptionalDouble();
 		for (int index = 0; index < assignmentRefs.size(); ++index)
 		{
