@@ -73,6 +73,11 @@ public class DisposablePanel extends JPanel
 		return null;
 	}
 	
+	public void showDialog(MainWindow mainWindow, String dialogTitle)
+	{
+		showDialog(mainWindow, dialogTitle, null);
+	}
+	
 	public void showDialog(MainWindow mainWindow, String dialogTitle, Dimension preferredSize)
 	{
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, dialogTitle);
