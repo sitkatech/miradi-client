@@ -61,6 +61,9 @@ http://coronet.iicm.edu/wbtmaster/allcoursescontent/netlib/library.htm
 Here is a GREAT slide show about DBTG databases:
 http://nlp.postech.ac.kr/Course/ITEC521/dbslide-5thedition/appA.ppt
 
+Neo4j looks very similar to what we have.
+http://neo4j.org/doc/
+
 CouchDB is pretty similar to our existing database, as it stores JSON
 documents. It provides a REST HTTP API, and supports replication and 
 multi-user access with conflict detection.
