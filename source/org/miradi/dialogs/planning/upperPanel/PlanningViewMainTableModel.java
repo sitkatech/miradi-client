@@ -20,15 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
+import java.util.Vector;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -38,6 +39,8 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -174,6 +177,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+				return appendedProjectResources(new CodeList(rawValue));
+			
 			return new TaglessChoiceItem(rawValue);
 		}
 		catch (Exception e)
@@ -183,6 +189,25 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
+	private ChoiceItem appendedProjectResources(CodeList codeList)
+	{
+		boolean isFirstIteration = true; 
+		String appendedResources = "";
+		Vector<String> projectResourceRefCodes = codeList.toVector();
+		for(String projectResourceRef : projectResourceRefCodes)
+		{
+			ORef ref = ORef.createFromString(projectResourceRef);
+			ProjectResource projectResource = ProjectResource.find(getProject(), ref);
+			if (!isFirstIteration)
+				appendedResources += ", ";
+					
+			appendedResources += projectResource.getWho();
+			isFirstIteration = false;	
+		}
+		
+		return new TaglessChoiceItem(appendedResources);
+	}
+
 	public Object getValueAt(int row, int column)
 	{
 		return getChoiceItemAt(row, column);
