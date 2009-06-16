@@ -37,7 +37,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
-//FIXME urgent - this class is still under construction,  needs to add and remove assignments from parentObject
+
 public class StandAloneCodeListComponent extends AbstractCodeListComponent
 {
 	public StandAloneCodeListComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
