@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-16 10:46-0500\n"
+"POT-Creation-Date: 2009-06-16 11:15-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3927,8 +3927,8 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:67
 #: miradi/source/org/miradi/dialogfields/RefListComponent.java:73
+#: miradi/source/org/miradi/dialogfields/CodeListFieldComponent.java:60
 #: miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
-#: miradi/source/org/miradi/dialogfields/AbstractCodeListComponent.java:75
 msgid "Internal Error"
 msgstr ""
 
