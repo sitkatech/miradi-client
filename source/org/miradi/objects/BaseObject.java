@@ -59,6 +59,7 @@ import org.miradi.project.ProjectChainObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.EnhancedJsonObject;
@@ -540,16 +541,16 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 					
-	public String getWhoTotalAsString()
+	public CodeList getWhoTotalCodes()
 	{		
 		try
 		{
-			return ProjectResource.getResourcesAsString(getProject(), getAssignedResourceRefs());
+			return ProjectResource.getSortedProjectResourceCodes(getProject(), getAssignedResourceRefs());
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return "";
+			return new CodeList();
 		}
 	}
 
@@ -601,7 +602,7 @@ abstract public class BaseObject
 		expenseAssignmentRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		
-		whoTotal = new PseudoStringData(PSEUDO_TAG_WHO_TOTAL); 
+		whoTotal = new PseudoQuestionData(PSEUDO_TAG_WHO_TOTAL, new ProjectResourceQuestion(getProject())); 
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
@@ -1070,7 +1071,7 @@ abstract public class BaseObject
 			return getWhenTotalAsString();
 		
 		if (fieldTag.equals(PSEUDO_TAG_WHO_TOTAL))
-			return getWhoTotalAsString();
+			return getWhoTotalCodes().toString();
 						
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
@@ -1314,7 +1315,7 @@ abstract public class BaseObject
 	
 	protected PseudoStringData whenTotal;
 
-	private PseudoStringData whoTotal;
+	private PseudoQuestionData whoTotal;
 
 	private boolean isCachedOwnerValid;
 	private ORef cachedOwnerRef;
