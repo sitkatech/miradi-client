@@ -91,7 +91,7 @@ public class RightClickTableCellEditor extends CodeListRendererFactory implement
 		{
 			final BaseObject baseObjectForRow = getBaseObjectForRow(table.getSelectedRow(), table.getSelectedColumn());
 			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
-			codeListEditor.showDialog(getMainWindow(), EAM.text("Project Resource"));
+			codeListEditor.showModalDialog(getMainWindow(), EAM.text("Project Resource"));
 		}
 	}
 
