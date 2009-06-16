@@ -57,10 +57,10 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 	
 	public void setText(String codesToUse)
 	{
+		CodeList codes = createCodeListFromString(codesToUse);
 		skipNotice=true;
 		try
 		{
-			CodeList codes = createCodeListFromString(codesToUse);
 			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
 			{
 				checkBoxes[choiceIndex].setSelected(false);
