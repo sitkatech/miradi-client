@@ -20,14 +20,25 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.event.ListSelectionListener;
-
+import org.miradi.objects.BaseObject;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-
+//FIXME urgen - this class is still under construction,  needs to add and remove assignments from parentObject
 public class StandAloneCodeListComponent extends AbstractCodeListComponent
 {
-	public StandAloneCodeListComponent(ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
+	public StandAloneCodeListComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
 	{
-		super(questionToUse, columnCount, listener);
+		super(questionToUse, LAYOUT_COLUMN_COUNT, null);
+		
+		disableSkipNotice();
+		createCheckBoxes(questionToUse.getAllCodes());
 	}
+	
+	@Override
+	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
+	{
+		super.valueChanged(choiceItem, isSelected);
+	}
+	
+	private static final int LAYOUT_COLUMN_COUNT = 1;
 }

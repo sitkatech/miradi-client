@@ -55,7 +55,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 	
 	protected void createCheckBoxes(CodeList codes)
 	{
-		skipNotice=true;
+		enableSkipNotice();
 		try
 		{
 			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
@@ -70,7 +70,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		}
 		finally
 		{
-			skipNotice=false;
+			disableSkipNotice();
 		}
 	}
 

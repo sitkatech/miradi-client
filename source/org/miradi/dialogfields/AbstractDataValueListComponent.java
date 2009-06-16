@@ -36,17 +36,32 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 	
 	public void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
-		if (!skipNotice)
+		if (!isSkipNotice())
 		{
 			ListSelectionEvent event = new ListSelectionEvent("DUMMY EVENT",0,0, false);
 			listSelectionListener.valueChanged(event);
 		}
+	}
+
+	private boolean isSkipNotice()
+	{
+		return skipNotice;
+	}
+	
+	protected void enableSkipNotice()
+	{
+		skipNotice = true;
+	}
+	
+	protected void disableSkipNotice()
+	{
+		skipNotice = false;
 	}
 	
 	abstract public String getText();
 	
 	abstract public void setText(String codesToUse);
 	
-	protected boolean skipNotice;
+	private boolean skipNotice;
 	protected ListSelectionListener listSelectionListener;
 }
