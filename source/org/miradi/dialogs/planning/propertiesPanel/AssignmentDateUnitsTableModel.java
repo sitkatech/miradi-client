@@ -221,7 +221,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
 	}
 
-	private boolean isOrCanReferToAssignments(BaseObject baseObjectForRow)
+	public static boolean isOrCanReferToAssignments(BaseObject baseObjectForRow)
 	{
 		if (Assignment.isAssignment(baseObjectForRow))
 			return true;

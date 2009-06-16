@@ -35,6 +35,7 @@ import org.miradi.actions.Actions;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
@@ -47,13 +48,17 @@ import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RightClickTableCellEditor;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
@@ -84,11 +89,12 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	@Override
 	public boolean isCellEditable(int row, int column)
 	{
-		String columnTag = getCastedModel().getColumnTag(column);
+		int modelColumn = convertColumnIndexToModel(column);
+		String columnTag = getCastedModel().getColumnTag(modelColumn);
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
-			return areResourceAssignmentsWithWorkUnits(row, column);
+			return areResourceAssignmentsWithWorkUnits(row, modelColumn);
 		
-		return super.isCellEditable(row, column);
+		return getCastedModel().isCellEditable(row, column);
 	}
 	
 	private boolean areResourceAssignmentsWithWorkUnits(int row, int column)
@@ -96,8 +102,16 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		try
 		{
 			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, column);
-			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
+			if (!AssignmentDateUnitsTableModel.isOrCanReferToAssignments(baseObjectForRow))
+				return false;
 			
+			TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+			TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
+			OptionalDouble totalUnits = timePeriodCosts.calculateResourcesTotalUnits();
+			if (totalUnits.hasValue())
+				return false;
+
+			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
 			Vector<DateUnitEffortList> matchingDateUnitEffortLists = new Vector();
 			for (int index = 0; index < resourceAssignments.size(); ++index)
 			{
