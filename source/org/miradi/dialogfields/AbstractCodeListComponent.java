@@ -58,6 +58,11 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 	public void setText(String codesToUse)
 	{
 		CodeList codes = createCodeListFromString(codesToUse);
+		createCheckBoxes(codes);
+	}
+
+	private void createCheckBoxes(CodeList codes)
+	{
 		skipNotice=true;
 		try
 		{
