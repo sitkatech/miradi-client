@@ -19,13 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.text.ParseException;
 
 import javax.swing.JCheckBox;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.util.xml.XmlUtilities;
-import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -55,13 +53,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		return codes;
 	}
 	
-	public void setText(String codesToUse)
-	{
-		CodeList codes = createCodeListFromString(codesToUse);
-		createCheckBoxes(codes);
-	}
-
-	private void createCheckBoxes(CodeList codes)
+	protected void createCheckBoxes(CodeList codes)
 	{
 		skipNotice=true;
 		try
@@ -82,20 +74,6 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		}
 	}
 
-	private CodeList createCodeListFromString(String codesToUse)
-	{
-		try
-		{
-			return new CodeList(codesToUse);
-		}
-		catch(ParseException e)
-		{
-			EAM.errorDialog(EAM.text("Internal Error"));
-			EAM.logException(e);
-			return new CodeList();
-		}
-	}
-	
 	protected String setSameToolTipForAllCheckBoxes()
 	{
 		String partialToolTip = ""; 

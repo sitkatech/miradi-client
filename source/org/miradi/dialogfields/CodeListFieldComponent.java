@@ -20,8 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.text.ParseException;
+
 import javax.swing.event.ListSelectionListener;
 
+import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
@@ -38,5 +41,25 @@ public class CodeListFieldComponent extends AbstractCodeListComponent
 		setSameToolTipForAllCheckBoxes();
 		
 		return codes.toString();
+	}
+
+	public void setText(String codesToUse)
+	{
+		CodeList codes = createCodeListFromString(codesToUse);
+		createCheckBoxes(codes);
+	}
+
+	protected CodeList createCodeListFromString(String codesToUse)
+	{
+		try
+		{
+			return new CodeList(codesToUse);
+		}
+		catch(ParseException e)
+		{
+			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 }
