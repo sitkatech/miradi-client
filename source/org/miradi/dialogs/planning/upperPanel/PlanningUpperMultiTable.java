@@ -25,6 +25,7 @@ import java.util.Vector;
 
 import javax.swing.Action;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
 import org.miradi.actions.ActionCollapseAllRows;
@@ -43,9 +44,11 @@ import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.RightClickTableCellEditor;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.CurrencyFormat;
+import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
@@ -72,6 +75,27 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 		
+	}
+	
+	@Override
+	public boolean isCellEditable(int row, int column)
+	{
+		String columnTag = getCastedModel().getColumnTag(column);
+		//FIXME urgent - only allow editing if all RA rows are the the same
+		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+			return true;
+		
+		return super.isCellEditable(row, column);
+	}
+	
+	@Override
+	public TableCellEditor getCellEditor(int row, int column)
+	{
+		String columnTag = getCastedModel().getColumnTag(column);
+		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+			return new RightClickTableCellEditor(getMainWindow(), this);
+		
+		return super.getCellEditor(row, column);
 	}
 	
 	@Override
@@ -190,8 +214,12 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int modelColumn = getCastedModel().findColumnWithinSubTable(convertColumnIndexToModel(tableColumnIndex));
 		return modelColumn;
 	}
-
-
+	
+	public Project getProject()
+	{
+		return getMainWindow().getProject();
+	}
+	
 	private Actions getActions()
 	{
 		return getMainWindow().getActions();
