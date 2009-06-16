@@ -37,15 +37,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		codesToDisable = new CodeList();
 	}
 	
-	public String getText()
-	{
-		CodeList codes = getSelectedCodes();
-		setSameToolTipForAllCheckBoxes();
-		
-		return codes.toString();
-	}
-
-	private CodeList getSelectedCodes()
+	protected CodeList getSelectedCodes()
 	{
 		CodeList codes = new CodeList();
 		for (int checkBoxIndex = 0; checkBoxIndex<checkBoxes.length; ++checkBoxIndex )
@@ -89,7 +81,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		}
 	}
 	
-	private String setSameToolTipForAllCheckBoxes()
+	protected String setSameToolTipForAllCheckBoxes()
 	{
 		String partialToolTip = ""; 
 		int selectionCount = 0;
