@@ -20,11 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 
+import javax.swing.DefaultCellEditor;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.TableColumn;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.StandAloneCodeListComponent;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
@@ -49,7 +56,9 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -115,7 +124,41 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		add(rightPanel, BorderLayout.CENTER);
 		
 		rebuildEntireTreeTable();
+		addRightClickEditor();
 	}
+	
+	private void addRightClickEditor()
+	{
+		for (int column = 0; column < getMainTable().getColumnCount(); ++column)
+		{
+			int modelColumn = getMainTable().convertColumnIndexToModel(column);
+			TableColumn tableColumn = getMainTable().getColumnModel().getColumn(modelColumn);
+			tableColumn.setCellEditor(new RightClickTableCellEditor(new JTextField()));
+		}
+	}
+	
+	 public class RightClickTableCellEditor extends DefaultCellEditor 
+	 {
+		public RightClickTableCellEditor(JTextField textField)
+		{
+			super(textField);
+			
+			component = textField;
+		}
+
+		 public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int rowIndex, int vColIndex) 
+		 {
+			ChoiceItem choiceItem = (ChoiceItem)value;
+			((JTextField)component).setText(choiceItem.getLabel());
+			
+			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(getSelectedObject(), new ProjectResourceQuestion(getProject()));
+			codeListEditor.showDialog(getMainWindow(), EAM.text("Project Resource"));
+			
+			 return component;
+		 }
+		 
+		 private JComponent component;
+	 }
 	
 	@Override
 	public void dispose()
