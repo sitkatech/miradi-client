@@ -24,6 +24,7 @@ import javax.swing.JCheckBox;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
@@ -125,12 +126,13 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 	@Override
 	public String getText()
 	{
-		return "";
+		throw new RuntimeException(EAM.text("Unexpected call to getText"));
 	}
 
 	@Override
 	public void setText(String codesToUse)
 	{
+		throw new RuntimeException(EAM.text("Unexpected call to setText"));
 	}
 	
 	private CodeList codesToDisable;
