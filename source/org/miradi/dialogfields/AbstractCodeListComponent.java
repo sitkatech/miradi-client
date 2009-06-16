@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.text.ParseException;
+
 import javax.swing.JCheckBox;
 import javax.swing.event.ListSelectionListener;
 
@@ -58,8 +60,7 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		skipNotice=true;
 		try
 		{
-			CodeList codes = new CodeList(codesToUse);
-
+			CodeList codes = createCodeListFromString(codesToUse);
 			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
 			{
 				checkBoxes[choiceIndex].setSelected(false);
@@ -70,14 +71,23 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 			
 			setSameToolTipForAllCheckBoxes();
 		}
-		catch(Exception e)
-		{
-			EAM.errorDialog(EAM.text("Internal Error"));
-			EAM.logException(e);
-		}
 		finally
 		{
 			skipNotice=false;
+		}
+	}
+
+	private CodeList createCodeListFromString(String codesToUse)
+	{
+		try
+		{
+			return new CodeList(codesToUse);
+		}
+		catch(ParseException e)
+		{
+			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.logException(e);
+			return new CodeList();
 		}
 	}
 	
