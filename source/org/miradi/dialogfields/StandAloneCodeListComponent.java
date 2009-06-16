@@ -45,7 +45,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		super(questionToUse, LAYOUT_COLUMN_COUNT, null);
 		
 		parentObject = parentObjectToUse;
-		createCheckBoxes(parentObjectToUse.getWhoTotalCodes());
+		createCheckBoxes(parentObject.getWhoTotalCodes());
 	}
 	
 	@Override
