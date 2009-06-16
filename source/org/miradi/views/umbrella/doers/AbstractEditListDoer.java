@@ -21,9 +21,7 @@ package org.miradi.views.umbrella.doers;
 
 import java.awt.Dimension;
 
-import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.ObjectsDoer;
@@ -45,11 +43,12 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		
 		try
 		{
-			ModalDialogWithClose dialog = new ModalDialogWithClose(getMainWindow(), getDialogTitle());
-			dialog.setScrollableMainPanel(createEditPanel());
-			setPreferredSizeOfDialog(dialog);
-			Utilities.centerDlg(dialog);
-			dialog.setVisible(true);
+			final DisposablePanel editPanel = createEditPanel();
+			Dimension preferredSize = null;
+			if (getDialogPreferredSize() != null)
+				preferredSize = getDialogPreferredSize();
+			
+			editPanel.showDialog(getMainWindow(), getDialogTitle(), preferredSize);
 		}
 		catch (Exception e)
 		{
@@ -62,12 +61,6 @@ public abstract class AbstractEditListDoer extends ObjectsDoer
 		return null;
 	}
 	
-	protected void setPreferredSizeOfDialog(ModalDialogWithClose dialog)
-	{
-		if (getDialogPreferredSize() != null)
-			dialog.setPreferredSize(getDialogPreferredSize());
-	}
-		
 	protected BaseObject getSelectedObject()
 	{
 		BaseObject singleSelected = getSingleSelected(getObjectType());
