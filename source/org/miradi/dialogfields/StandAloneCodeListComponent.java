@@ -23,22 +23,24 @@ package org.miradi.dialogfields;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-//FIXME urgen - this class is still under construction,  needs to add and remove assignments from parentObject
+//FIXME urgent - this class is still under construction,  needs to add and remove assignments from parentObject
 public class StandAloneCodeListComponent extends AbstractCodeListComponent
 {
 	public StandAloneCodeListComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
 	{
 		super(questionToUse, LAYOUT_COLUMN_COUNT, null);
 		
-		disableSkipNotice();
-		createCheckBoxes(questionToUse.getAllCodes());
+		parentObject = parentObjectToUse;
+		createCheckBoxes(parentObjectToUse.getWhoTotalCodes());
 	}
 	
 	@Override
 	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
 	{
+		enableSkipNotice();
 		super.valueChanged(choiceItem, isSelected);
 	}
 	
 	private static final int LAYOUT_COLUMN_COUNT = 1;
+	BaseObject parentObject;
 }

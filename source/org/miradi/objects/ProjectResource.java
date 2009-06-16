@@ -172,7 +172,7 @@ public class ProjectResource extends BaseObject
 		return question.findChoiceByCode(getCostUnitCode()).getLabel();
 	}
 	
-	public static String getResourcesAsString(Project project, ORefSet resourceRefs)
+	public static CodeList getSortedProjectResourceCodes(Project project, ORefSet resourceRefs)
 	{
 		Vector<ProjectResource> sortedProjectResources = new Vector();
 		for(ORef projectResourceRef : resourceRefs)
@@ -182,23 +182,19 @@ public class ProjectResource extends BaseObject
 			ProjectResource projectResource = ProjectResource.find(project, projectResourceRef);
 			sortedProjectResources.add(projectResource);
 		}
+		
 		Collections.sort(sortedProjectResources, new BaseObjectByFullNameSorter());
 		
-		boolean isFirstIteration = true; 
-		String appendedResources = "";
+		CodeList projectResourceCodes = new CodeList();
 		for(ProjectResource resource : sortedProjectResources)
 		{
 			if (resource == null)
 				continue;
 			
-			if (!isFirstIteration)
-				appendedResources += ", ";
-					
-			appendedResources += resource.getWho();
-			isFirstIteration = false;
+			projectResourceCodes.add(resource.getRef().toString());
 		}
 		
-		return appendedResources;
+		return projectResourceCodes;
 	}
 	
 	public static boolean is(int objectType)
