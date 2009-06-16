@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-16 12:07-0500\n"
+"POT-Creation-Date: 2009-06-16 16:25-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6683,10 +6683,6 @@ msgid ""
 "\">support@miradi.org<a>) for assistance</HTML>"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTablePanel.java:155
-msgid "Project Resource"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:66
 msgid "Tab|Methods"
 msgstr "Métodos"
@@ -6738,6 +6734,10 @@ msgstr "Fuentes de financiamiento"
 #: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:44
 msgid "Title|Simple Viability"
 msgstr "Viabilidad simple"
+
+#: miradi/source/org/miradi/dialogs/tablerenderers/RightClickTableCellEditor.java:94
+msgid "Project Resource"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/task/ActivityPropertiesPanel.java:42
 #, fuzzy
