@@ -46,10 +46,14 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RightClickTableCellEditor;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
@@ -81,13 +85,42 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	public boolean isCellEditable(int row, int column)
 	{
 		String columnTag = getCastedModel().getColumnTag(column);
-		//FIXME urgent - only allow editing if all RA rows are the the same
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
-			return true;
+			return areResourceAssignmentsWithWorkUnits(row, column);
 		
 		return super.isCellEditable(row, column);
 	}
 	
+	private boolean areResourceAssignmentsWithWorkUnits(int row, int column)
+	{
+		try
+		{
+			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, column);
+			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
+			
+			Vector<DateUnitEffortList> matchingDateUnitEffortLists = new Vector();
+			for (int index = 0; index < resourceAssignments.size(); ++index)
+			{
+				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
+				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
+				if (matchingDateUnitEffortLists.size() == 0)
+					matchingDateUnitEffortLists.add(thisDateUnitEffortList);
+				
+				if (!matchingDateUnitEffortLists.contains(thisDateUnitEffortList))
+					return false;
+				
+				matchingDateUnitEffortLists.add(thisDateUnitEffortList);
+			}
+			
+			return true;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
 	@Override
 	public TableCellEditor getCellEditor(int row, int column)
 	{
