@@ -30,6 +30,7 @@ import org.miradi.utils.CodeList;
 
 public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFactory
 {
+	//TODO, remove mainWindow as arg.
 	public CodeListRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
