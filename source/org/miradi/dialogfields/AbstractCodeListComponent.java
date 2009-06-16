@@ -122,6 +122,17 @@ abstract public class AbstractCodeListComponent extends AbstractDataValueListCom
 		codesToDisable = codesToDiableToUse;
 	}
 	
+	@Override
+	public String getText()
+	{
+		return "";
+	}
+
+	@Override
+	public void setText(String codesToUse)
+	{
+	}
+	
 	private CodeList codesToDisable;
 	private static final int MAX_ITEMS_COUNT_IN_TOOLTIP = 5;
 }
