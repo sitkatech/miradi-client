@@ -53,7 +53,7 @@ public class RefListComponent extends AbstractDataValueListComponent
 	
 	public void setText(String codesToUse)
 	{
-		skipNotice=true;
+		enableSkipNotice();
 		try
 		{
 			ORefList refs = new ORefList(codesToUse);
@@ -75,7 +75,7 @@ public class RefListComponent extends AbstractDataValueListComponent
 		}
 		finally
 		{
-			skipNotice=false;
+			disableSkipNotice();
 		}
 	}
 }
