@@ -23,6 +23,7 @@ package org.miradi.dialogfields;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 public class CodeListFieldComponent extends AbstractCodeListComponent
 {
@@ -30,6 +31,12 @@ public class CodeListFieldComponent extends AbstractCodeListComponent
 	{
 		super(questionToUse, columnCount, listener);
 	}
-	
 
+	public String getText()
+	{
+		CodeList codes = getSelectedCodes();
+		setSameToolTipForAllCheckBoxes();
+		
+		return codes.toString();
+	}
 }
