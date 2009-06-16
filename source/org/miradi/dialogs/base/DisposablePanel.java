@@ -20,12 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.LayoutManager2;
 import java.util.Vector;
 
 import javax.swing.JPanel;
 
+import org.martus.swing.Utilities;
 import org.miradi.actions.ObjectsAction;
+import org.miradi.main.MainWindow;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -68,6 +71,17 @@ public class DisposablePanel extends JPanel
 	public Class getJumpActionClass()
 	{
 		return null;
+	}
+	
+	public void showDialog(MainWindow mainWindow, String dialogTitle, Dimension preferredSize)
+	{
+		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, dialogTitle);
+		dialog.setScrollableMainPanel(this);
+		if (preferredSize != null)
+			dialog.setPreferredSize(preferredSize);
+		
+		Utilities.centerDlg(dialog);
+		dialog.setVisible(true);
 	}
 	
 	Vector<ObjectsAction> objectsActionsToRelease;
