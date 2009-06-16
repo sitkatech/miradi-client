@@ -69,7 +69,7 @@ abstract public class ObjectTable extends UiTableWithAlternatingRows implements 
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		otherRenderer = new MultiLineObjectTableCellRendererFactory(this, fontProvider);
-		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
+		codeListRenderer = new CodeListRendererFactory(this, fontProvider);
 	}
 	
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)

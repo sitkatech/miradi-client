@@ -41,7 +41,7 @@ public class RightClickTableCellEditor extends CodeListRendererFactory implement
 {
 	public RightClickTableCellEditor(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
-		super(mainWindowToUse, tableToUse, new DefaultFontProvider(mainWindowToUse));
+		super(tableToUse, new DefaultFontProvider(mainWindowToUse));
 
 		mainWindow = mainWindowToUse;
 		table = tableToUse;

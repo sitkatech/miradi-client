@@ -24,14 +24,12 @@ import java.awt.Component;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
-import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 
 public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFactory
 {
-	//TODO, remove mainWindow as arg.
-	public CodeListRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
+	public CodeListRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}
