@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-16 11:15-0500\n"
+"POT-Creation-Date: 2009-06-16 11:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6477,6 +6477,10 @@ msgid ""
 "<HTML>A severe error has prevented this Planning Subview from being shown."
 "<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org"
 "\">support@miradi.org<a>) for assistance</HTML>"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTablePanel.java:155
+msgid "Project Resource"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:66
