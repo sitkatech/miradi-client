@@ -120,26 +120,31 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 	private void updateDividedDateUnitEffortList(int oldResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
 	{
 		ORefList newResourceAssignmentRefs = getResourceAssignmentRefs();
+		DateUnitEffortList templateDateUnitEffortList = createTemplateDateUnitEffortList(oldResourceAssignmentCount, newResourceAssignmentRefs.size(), oldDateUnitEffortList);		
+		updateDateUnitEffortLists(newResourceAssignmentRefs, templateDateUnitEffortList);
+	}
+
+	private DateUnitEffortList createTemplateDateUnitEffortList(int oldResourceAssignmentCount,	int newResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
+	{
 		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
 		for (int index = 0; index < oldDateUnitEffortList.size(); ++index)
 		{
 			DateUnitEffort oldDateUnitEffort = oldDateUnitEffortList.getDateUnitEffort(index);
 			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldResourceAssignmentCount;
-			double newUnitQuantity = oldTotalUnits / newResourceAssignmentRefs.size(); 
+			double newUnitQuantity = oldTotalUnits / newResourceAssignmentCount; 
 			DateUnitEffort newDateUnitEffort = new DateUnitEffort(newUnitQuantity, oldDateUnitEffort.getDateUnit());
 			newDateUnitEffortList.add(newDateUnitEffort);
 		}
 		
-		updateDateUnitEffortLists(newDateUnitEffortList);
+		return newDateUnitEffortList;
 	}
 	
-	private void updateDateUnitEffortLists(DateUnitEffortList newDateUnitEffortList) throws Exception
+	private void updateDateUnitEffortLists(ORefList newResourceAssignmentRefs, DateUnitEffortList templateDateUnitEffortList) throws Exception
 	{
-		ORefList newResourceAssignmentRefs = getResourceAssignmentRefs();
 		for (int index = 0; index < newResourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), newResourceAssignmentRefs.get(index));
-			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, newDateUnitEffortList.toString());
+			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, templateDateUnitEffortList.toString());
 			getProject().executeCommand(setDateUnitEffortList);
 		}
 	}
