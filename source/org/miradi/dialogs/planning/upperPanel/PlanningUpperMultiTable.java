@@ -99,23 +99,30 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	
 	private boolean isWhoCellEditable(int row, int modelColumn)
 	{
-		return doAllResourceAssignmentsHaveIdenticalWorkUnits(row, modelColumn);	
-	}
-	
-	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(int row, int column)
-	{
 		try
 		{
-			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, column);
+			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
 			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObjectForRow))
 				return false;
-			
+
 			TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
 			TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
 			OptionalDouble totalUnits = timePeriodCosts.calculateResourcesTotalUnits();
 			if (totalUnits.hasValue())
 				return false;
 
+			return doAllResourceAssignmentsHaveIdenticalWorkUnits(row, modelColumn);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;		
+		}
+	}
+	
+	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(int row, int modelColumn) throws Exception
+	{
+			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
 			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
 			DateUnitEffortList expectedDateUnitEffortList = null;
 			for (int index = 0; index < resourceAssignments.size(); ++index)
@@ -130,12 +137,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			}
 			
 			return true;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
 	}
 
 	@Override
