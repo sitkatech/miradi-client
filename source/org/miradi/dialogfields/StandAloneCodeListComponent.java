@@ -125,7 +125,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		updateDateUnitEffortLists(newResourceAssignmentRefs, templateDateUnitEffortList);
 	}
 
-	private DateUnitEffortList createTemplateDateUnitEffortList(DateUnitEffortList oldDateUnitEffortList,	int oldResourceAssignmentCount, int newResourceAssignmentCount) throws Exception
+	private DateUnitEffortList createTemplateDateUnitEffortList(DateUnitEffortList oldDateUnitEffortList, int oldResourceAssignmentCount, int newResourceAssignmentCount) throws Exception
 	{
 		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
 		for (int index = 0; index < oldDateUnitEffortList.size(); ++index)
