@@ -120,10 +120,10 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private boolean doAnySubtasksHaveAnyWorkUnitData(BaseObject baseObjectForRow) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
-		OptionalDouble totalUnits = timePeriodCosts.calculateResourcesTotalUnits();
+		TimePeriodCosts wholeProjectTimePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
+		OptionalDouble totalSubtaskWorkUnitsForAllTimePeriods = wholeProjectTimePeriodCosts.calculateResourcesTotalUnits();
 
-		return totalUnits.hasValue();
+		return totalSubtaskWorkUnitsForAllTimePeriods.hasValue();
 	}
 	
 	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(int row, int modelColumn) throws Exception
