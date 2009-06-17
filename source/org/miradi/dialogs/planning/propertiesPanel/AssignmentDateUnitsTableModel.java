@@ -169,7 +169,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			BaseObject baseObjectForRow = getBaseObjectForRow(row);
-			if (!isOrCanReferToAssignments(baseObjectForRow.getType()))
+			if (!isOrCanReferToAssignments(baseObjectForRow.getRef()))
 				return false;
 			
 			if (!isEditableModel())
@@ -221,23 +221,23 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
 	}
 
-	private static boolean isOrCanReferToAssignments(int objectType)
+	private static boolean isOrCanReferToAssignments(ORef ref)
 	{
-		if (Assignment.isAssignment(objectType))
+		if (Assignment.isAssignment(ref))
 			return true;
 		
-		return canReferToAssignments(objectType);
+		return canReferToAssignments(ref);
 	}
 
-	public static boolean canReferToAssignments(int objectType)
+	public static boolean canReferToAssignments(ORef ref)
 	{
-		if (Indicator.is(objectType))
+		if (Indicator.is(ref))
 			return true;
 		
-		if (Strategy.is(objectType))
+		if (Strategy.is(ref))
 			return true;
 		
-		if (Task.is(objectType))
+		if (Task.is(ref))
 			return true;
 		
 		return false;

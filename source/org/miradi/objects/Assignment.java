@@ -59,6 +59,11 @@ abstract public class Assignment extends BaseObject
 		return isAssignment(baseObject.getType());
 	}
 	
+	public static boolean isAssignment(ORef ref)
+	{
+		return isAssignment(ref.getObjectType());
+	}
+	
 	public static boolean is(ORef ref)
 	{
 		return isAssignment(ref.getObjectType());
