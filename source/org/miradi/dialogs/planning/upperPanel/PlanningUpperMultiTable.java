@@ -148,7 +148,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	@Override
 	public TableCellEditor getCellEditor(int row, int column)
 	{
-		String columnTag = getCastedModel().getColumnTag(column);
+		int modelColumn = convertColumnIndexToModel(column);
+		String columnTag = getCastedModel().getColumnTag(modelColumn);
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
 			return new WhoColumnTableCellEditorFactory(getMainWindow(), this, row, column);
 		
