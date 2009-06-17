@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-16 18:54-0500\n"
+"POT-Creation-Date: 2009-06-16 22:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6743,7 +6743,7 @@ msgstr "Fuentes de financiamiento"
 msgid "Title|Simple Viability"
 msgstr "Viabilidad simple"
 
-#: miradi/source/org/miradi/dialogs/tablerenderers/RightClickTableCellEditor.java:94
+#: miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:94
 msgid "Project Resource"
 msgstr ""
 
