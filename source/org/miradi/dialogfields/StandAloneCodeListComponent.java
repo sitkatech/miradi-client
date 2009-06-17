@@ -96,6 +96,9 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
+			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList(); 	
+	
 			CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
 			getProject().executeCommand(createCommand);
 
@@ -103,9 +106,6 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			CommandSetObjectData setResouce = new CommandSetObjectData(newResourceAssignmentRef, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
 			getProject().executeCommand(setResouce);
 			
-			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
-			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList(); 
-		
 			Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, getResourceAssignmentTag());
 			getProject().executeCommand(appendCommand);
 			
