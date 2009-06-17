@@ -55,9 +55,11 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 	{
 		CodeList currentCodes = getParentObject().getWhoTotalCodes();
 		boolean doesAssignmentExist = currentCodes.contains(choiceItem.getCode());
-		if (doesAssignmentExist && !isSelected)
-			deleteMatchingResourceAssignments(choiceItem);  
-		else if (!doesAssignmentExist)
+		final boolean needToDelete = doesAssignmentExist && !isSelected;
+		final boolean needToCreate = !doesAssignmentExist;
+		if (needToDelete)
+			deleteMatchingResourceAssignments(choiceItem);
+		else if (needToCreate)
 			createResourceAssignment(ORef.createFromString(choiceItem.getCode()));
 	}
 
