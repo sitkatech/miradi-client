@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-16 22:37-0500\n"
+"POT-Creation-Date: 2009-06-17 12:09-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6717,7 +6717,7 @@ msgstr "Sumber Dana "
 msgid "Title|Simple Viability"
 msgstr "Kelangsungan Sederhana "
 
-#: miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:94
+#: miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:98
 msgid "Project Resource"
 msgstr ""
 
