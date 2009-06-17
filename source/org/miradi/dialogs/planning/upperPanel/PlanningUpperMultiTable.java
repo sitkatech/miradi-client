@@ -135,7 +135,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			{
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
 				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
-				if (index == 0)
+				if (expectedDateUnitEffortList == null)
 					expectedDateUnitEffortList = thisDateUnitEffortList;
 				
 				if (!expectedDateUnitEffortList.equals(thisDateUnitEffortList))
