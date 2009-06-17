@@ -39,17 +39,14 @@ import org.miradi.questions.ProjectResourceQuestion;
 
 public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory implements TableCellEditor 
 {
-	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse, int row, int column)
+	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
 		super(tableToUse, new DefaultFontProvider(mainWindowToUse));
 
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
-		
-		boolean isCellSelected = table.isCellSelected(row, column);
-		Object value = table.getValueAt(row, column);
-		Component component = getTableCellEditorComponent(table, value, isCellSelected, row, column);
-		component.addMouseListener(new LeftClickHandler());
+
+		getRendererComponent().addMouseListener(new LeftClickHandler());
 	}
 	
 	public Component getTableCellEditorComponent(JTable tableToUse, Object value, boolean isSelected, int row, int column) 

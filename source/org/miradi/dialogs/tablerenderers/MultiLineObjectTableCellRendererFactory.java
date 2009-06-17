@@ -100,6 +100,11 @@ public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRend
 		}		
 	}
 
+	protected TableCellHtmlRendererComponent getRendererComponent()
+	{
+		return rendererComponent;
+	}
+	
 	private TableCellHtmlRendererComponent rendererComponent;
 
 }
