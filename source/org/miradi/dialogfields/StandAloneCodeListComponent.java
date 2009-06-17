@@ -54,9 +54,10 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
 	{
 		CodeList currentCodes = getParentObject().getWhoTotalCodes();
-		if (currentCodes.contains(choiceItem.getCode()) && !isSelected)
+		boolean doesAssignmentExist = currentCodes.contains(choiceItem.getCode());
+		if (doesAssignmentExist && !isSelected)
 			deleteMatchingResourceAssignments(choiceItem);  
-		else if (!currentCodes.contains(choiceItem.getCode()))
+		else if (!doesAssignmentExist)
 			createResourceExpense(ORef.createFromString(choiceItem.getCode()));
 	}
 
