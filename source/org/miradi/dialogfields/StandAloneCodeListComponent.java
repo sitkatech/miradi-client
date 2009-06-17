@@ -66,13 +66,13 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		getProject().executeBeginTransaction();
 		try
 		{
-			DateUnitEffortList dateUnitEffortList = getAnExistingDateUnitEffortList();
-			Vector<Command> commands = new Vector();
-			ORefList resourceAssignmentRefs = getParentObject().getRefList(getResourceAssignmentTag());
+			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList();
+			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
 			
-			for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+			Vector<Command> commands = new Vector();	
+			for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
 			{
-				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
+				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
 				ORef resourceRef = resourceAssignment.getResourceRef();
 				ORef selectedResourceRef = ORef.createFromString(choiceItem.getCode());
 				if (resourceRef.equals(selectedResourceRef))
@@ -81,8 +81,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 
 			getProject().executeCommandsWithoutTransaction(commands);
 			
-			final int DELTA_PORTION_AMOUNT = 1;
-			updateDateUnitEffortLists(dateUnitEffortList, DELTA_PORTION_AMOUNT);
+			updateDividedDateUnitEffortList(oldResourceAssignmentRefs, oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -95,19 +94,20 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			DateUnitEffortList dateUnitEffortList = getAnExistingDateUnitEffortList(); 
 			CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
 			getProject().executeCommand(createCommand);
 
 			ORef newResourceAssignmentRef = createCommand.getObjectRef();
 			CommandSetObjectData setResouce = new CommandSetObjectData(newResourceAssignmentRef, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
 			getProject().executeCommand(setResouce);
-
+			
+			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList(); 
+		
 			Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, getResourceAssignmentTag());
 			getProject().executeCommand(appendCommand);
 			
-			final int DELTA_PORTION_AMOUNT = -1;
-			updateDateUnitEffortLists(dateUnitEffortList, DELTA_PORTION_AMOUNT);
+			updateDividedDateUnitEffortList(oldResourceAssignmentRefs, oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -115,41 +115,48 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		}
 	}
 
-	private void updateDateUnitEffortLists(DateUnitEffortList dateUnitEffortList, final int deltaPortionAmount) throws Exception
+	private void updateDividedDateUnitEffortList(ORefList oldResourceAssignmentRefs, DateUnitEffortList oldDateUnitEffortList) throws Exception
 	{
-		ORefList updatedResourceAssignmentRefs = getParentObject().getRefList(getResourceAssignmentTag());
-		for (int index = 0; index < updatedResourceAssignmentRefs.size(); ++index)
-		{
-			ResourceAssignment thisResourceAssignment = ResourceAssignment.find(getProject(), updatedResourceAssignmentRefs.get(index));
-			updateDateUnitEffortList(dateUnitEffortList, thisResourceAssignment, updatedResourceAssignmentRefs.size(), deltaPortionAmount);
-		}
-	}
-	
-	private void updateDateUnitEffortList(DateUnitEffortList dateUnitEffortList, ResourceAssignment resourceAssignment, int portion, int portionDelta) throws Exception
-	{		
+		ORefList newResourceAssignmentRefs = getResourceAssignmentRefs();
 		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
-		for (int index = 0; index < dateUnitEffortList.size(); ++index)
+		for (int index = 0; index < oldDateUnitEffortList.size(); ++index)
 		{
-			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
-			double newUnitQuantity = ((dateUnitEffort.getQuantity() * (portion + portionDelta)) / portion);
-			DateUnitEffort newDateUnitEffort = new DateUnitEffort(newUnitQuantity, dateUnitEffort.getDateUnit());
+			DateUnitEffort oldDateUnitEffort = oldDateUnitEffortList.getDateUnitEffort(index);
+			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldResourceAssignmentRefs.size();
+			double newUnitQuantity = oldTotalUnits / newResourceAssignmentRefs.size(); 
+			DateUnitEffort newDateUnitEffort = new DateUnitEffort(newUnitQuantity, oldDateUnitEffort.getDateUnit());
 			newDateUnitEffortList.add(newDateUnitEffort);
 		}
 		
-		CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, newDateUnitEffortList.toString());
-		getProject().executeCommand(setDateUnitEffortList);
+		updateDateUnitEffortLists(newDateUnitEffortList);
+	}
+	
+	private void updateDateUnitEffortLists(DateUnitEffortList newDateUnitEffortList) throws Exception
+	{
+		ORefList newResourceAssignmentRefs = getResourceAssignmentRefs();
+		for (int index = 0; index < newResourceAssignmentRefs.size(); ++index)
+		{
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), newResourceAssignmentRefs.get(index));
+			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, newDateUnitEffortList.toString());
+			getProject().executeCommand(setDateUnitEffortList);
+		}
 	}
 	
 	private DateUnitEffortList getAnExistingDateUnitEffortList() throws Exception
 	{
-		ORefList existingResourceAssignmentRefs = getParentObject().getRefList(getResourceAssignmentTag());
+		ORefList existingResourceAssignmentRefs = getResourceAssignmentRefs();
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.getRefForType(ResourceAssignment.getObjectType()));
 		if (resourceAssignment == null)
 			return new DateUnitEffortList();
 		
 		return resourceAssignment.getDateUnitEffortList();
 	}
-
+	
+	private ORefList getResourceAssignmentRefs() throws Exception
+	{
+		return getParentObject().getRefList(getResourceAssignmentTag());
+	}
+	
 	private String getResourceAssignmentTag()
 	{
 		return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
