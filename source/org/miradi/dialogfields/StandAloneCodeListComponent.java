@@ -147,11 +147,11 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 	private DateUnitEffortList getAnExistingDateUnitEffortList() throws Exception
 	{
 		ORefList existingResourceAssignmentRefs = getResourceAssignmentRefs();
-		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.getRefForType(ResourceAssignment.getObjectType()));
-		if (resourceAssignment == null)
+		if (existingResourceAssignmentRefs.isEmpty())
 			return new DateUnitEffortList();
 		
-		return resourceAssignment.getDateUnitEffortList();
+		ResourceAssignment firstResourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.get(0));
+		return firstResourceAssignment.getDateUnitEffortList();
 	}
 	
 	private ORefList getResourceAssignmentRefs() throws Exception
