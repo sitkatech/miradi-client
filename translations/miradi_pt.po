@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-17 13:34-0500\n"
+"POT-Creation-Date: 2009-06-17 14:50-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2276,6 +2276,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
+#: miradi/source/org/miradi/utils/Translation.java:306
 msgid "Not Specified"
 msgstr ""
 
@@ -6177,7 +6178,7 @@ msgstr ""
 msgid "Show: "
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:188
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:189
 msgid "[Error]"
 msgstr ""
 
