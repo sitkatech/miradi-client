@@ -37,9 +37,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectResourceQuestion;
 
-public class RightClickTableCellEditor extends CodeListRendererFactory implements TableCellEditor 
+public class LeftClickTableCellEditor extends CodeListRendererFactory implements TableCellEditor 
 {
-	public RightClickTableCellEditor(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
+	public LeftClickTableCellEditor(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
 		super(tableToUse, new DefaultFontProvider(mainWindowToUse));
 
