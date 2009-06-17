@@ -205,7 +205,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			isFirstIteration = false;	
 		}
 		
-		return new TaglessChoiceItem(appendedResources);
+		return new ChoiceItem(codeList.toString(), appendedResources);
 	}
 	
 	private String getWhoName(ORef resourceRef)
