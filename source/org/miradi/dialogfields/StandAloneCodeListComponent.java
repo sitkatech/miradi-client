@@ -74,7 +74,8 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			{
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
 				ORef resourceRef = resourceAssignment.getResourceRef();
-				if (resourceRef.equals(ORef.createFromString(choiceItem.getCode())))
+				ORef selectedResourceRef = ORef.createFromString(choiceItem.getCode());
+				if (resourceRef.equals(selectedResourceRef))
 					commands.addAll(TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag()));
 			}
 
