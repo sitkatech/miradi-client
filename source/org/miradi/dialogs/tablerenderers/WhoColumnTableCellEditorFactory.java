@@ -23,7 +23,6 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.text.ParseException;
 
 import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
@@ -37,9 +36,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ProjectResourceQuestion;
-import org.miradi.utils.CodeList;
 
 public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
 {
@@ -48,9 +45,8 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
 
-		rendererFactory = new CodeListRendererFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
+		rendererFactory = new MultiLineObjectTableCellRendererFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
 		rendererFactory.setCellBackgroundColor(AppPreferences.RESOURCE_TABLE_BACKGROUND);
-		rendererFactory.setQuestion(new ProjectResourceQuestion(getProject()));
 
 		TableCellHtmlRendererComponent rendererComponent = rendererFactory.getRendererComponent();
 		rendererComponent.addMouseListener(new LeftClickHandler());
@@ -58,22 +54,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	
 	public Component getTableCellEditorComponent(JTable tableToUse, Object value, boolean isSelected, int row, int column) 
 	{
-		ChoiceItem choiceItem = (ChoiceItem)value;
-		CodeList codeList = getCodeListFromChoiceItemTag(choiceItem);
-		return rendererFactory.getTableCellRendererComponent(tableToUse, codeList, true, false, row, column);
-	}
-
-	private CodeList getCodeListFromChoiceItemTag(ChoiceItem choiceItem)
-	{
-		try
-		{
-			return new CodeList(choiceItem.getCode());
-		}
-		catch(ParseException e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
+		return rendererFactory.getTableCellRendererComponent(tableToUse, value, true, false, row, column);
 	}
 
 	class LeftClickHandler extends MouseAdapter
@@ -103,5 +84,5 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	
 	private PlanningUpperMultiTable table;
 	private MainWindow mainWindow;
-	private CodeListRendererFactory rendererFactory;
+	private MultiLineObjectTableCellRendererFactory rendererFactory;
 }
