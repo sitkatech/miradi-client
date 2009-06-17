@@ -37,9 +37,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectResourceQuestion;
 
-public class WhoTableCellEditorFactory extends CodeListRendererFactory implements TableCellEditor 
+public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory implements TableCellEditor 
 {
-	public WhoTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
+	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
 		super(tableToUse, new DefaultFontProvider(mainWindowToUse));
 

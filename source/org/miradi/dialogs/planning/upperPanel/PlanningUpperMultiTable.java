@@ -45,7 +45,7 @@ import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.WhoTableCellEditorFactory;
+import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
@@ -140,7 +140,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		String columnTag = getCastedModel().getColumnTag(column);
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
-			return new WhoTableCellEditorFactory(getMainWindow(), this);
+			return new WhoColumnTableCellEditorFactory(getMainWindow(), this);
 		
 		return super.getCellEditor(row, column);
 	}
