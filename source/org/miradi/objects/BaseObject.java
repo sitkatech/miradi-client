@@ -561,9 +561,7 @@ abstract public class BaseObject
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(),resourceAssignmentRefs.get(index)); 
-			ORef resourceRef = resourceAssignment.getResourceRef();
-			if (resourceRef.isValid())
-				projectResourceRefs.add(resourceRef);
+			projectResourceRefs.add(resourceAssignment.getResourceRef());
 		}
 		
 		return projectResourceRefs;
