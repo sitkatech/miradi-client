@@ -556,7 +556,15 @@ abstract public class BaseObject
 
 	public ORefSet getAssignedResourceRefs() throws Exception
 	{
-		return getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
+		ORefSet projectResourceRefs = new ORefSet();
+		ORefList resourceAssignmentRefs = getRefList(TAG_RESOURCE_ASSIGNMENT_IDS);
+		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+		{
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(),resourceAssignmentRefs.get(index));
+			projectResourceRefs.add(resourceAssignment.getResourceRef());
+		}
+		
+		return projectResourceRefs;
 	}
 
 	public String formatCurrency(double cost)
