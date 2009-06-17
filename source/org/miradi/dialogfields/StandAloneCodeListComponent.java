@@ -61,7 +61,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		
 		if (needToDelete)
 			deleteMatchingResourceAssignments(refCode);
-		else if (needToCreate)
+		if (needToCreate)
 			createResourceAssignment(refCode);
 	}
 
