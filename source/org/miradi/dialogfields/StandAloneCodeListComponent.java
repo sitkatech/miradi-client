@@ -144,6 +144,8 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 	{
 		ORefList existingResourceAssignmentRefs = getParentObject().getRefList(getResourceAssignmentTag());
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.getRefForType(ResourceAssignment.getObjectType()));
+		if (resourceAssignment == null)
+			return new DateUnitEffortList();
 		
 		return resourceAssignment.getDateUnitEffortList();
 	}
