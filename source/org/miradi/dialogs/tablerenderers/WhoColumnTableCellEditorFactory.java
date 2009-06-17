@@ -28,7 +28,6 @@ import java.text.ParseException;
 import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
-import javax.swing.text.JTextComponent;
 
 import org.miradi.dialogfields.StandAloneCodeListComponent;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
@@ -59,8 +58,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	{
 		ChoiceItem choiceItem = (ChoiceItem)value;
 		CodeList codeList = getCodeListFromChoiceItemTag(choiceItem);
-		JTextComponent rendererComponent = (JTextComponent) rendererFactory.getTableCellRendererComponent(tableToUse, codeList, isSelected, false, row, column);
-		return rendererComponent;
+		return rendererFactory.getTableCellRendererComponent(tableToUse, codeList, isSelected, false, row, column);
 	}
 
 	private CodeList getCodeListFromChoiceItemTag(ChoiceItem choiceItem)
