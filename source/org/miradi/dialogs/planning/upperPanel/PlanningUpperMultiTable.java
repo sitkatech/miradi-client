@@ -92,12 +92,12 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int modelColumn = convertColumnIndexToModel(column);
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
-			return areResourceAssignmentsWithWorkUnits(row, modelColumn);
+			return doAllResourceAssignmentsHaveIdenticalWorkUnits(row, modelColumn);
 		
 		return getCastedModel().isCellEditable(row, column);
 	}
 	
-	private boolean areResourceAssignmentsWithWorkUnits(int row, int column)
+	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(int row, int column)
 	{
 		try
 		{
