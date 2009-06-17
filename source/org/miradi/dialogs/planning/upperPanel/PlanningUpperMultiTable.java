@@ -112,15 +112,15 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 				return false;
 
 			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
-			DateUnitEffortList dateUnitEffortList = null;
+			DateUnitEffortList expectedDateUnitEffortList = null;
 			for (int index = 0; index < resourceAssignments.size(); ++index)
 			{
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
 				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
 				if (index == 0)
-					dateUnitEffortList = thisDateUnitEffortList;
+					expectedDateUnitEffortList = thisDateUnitEffortList;
 				
-				if (!dateUnitEffortList.equals(thisDateUnitEffortList))
+				if (!expectedDateUnitEffortList.equals(thisDateUnitEffortList))
 					return false;
 			}
 			
