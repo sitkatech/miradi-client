@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import java.util.Vector;
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
@@ -73,16 +71,13 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList();
 			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
 			
-			Vector<Command> commands = new Vector();	
 			for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
 			{
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
 				ORef resourceRef = resourceAssignment.getResourceRef();
 				if (resourceRef.equals(selectedResourceRef))
-					commands.addAll(TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag()));
+					getProject().executeCommandsWithoutTransaction(TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag()));
 			}
-
-			getProject().executeCommandsWithoutTransaction(commands);
 			
 			updateDividedDateUnitEffortList(oldResourceAssignmentRefs.size(), oldDateUnitEffortList);
 		}
