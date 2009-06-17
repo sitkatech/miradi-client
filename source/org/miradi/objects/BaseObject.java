@@ -560,8 +560,10 @@ abstract public class BaseObject
 		ORefList resourceAssignmentRefs = getRefList(TAG_RESOURCE_ASSIGNMENT_IDS);
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(),resourceAssignmentRefs.get(index));
-			projectResourceRefs.add(resourceAssignment.getResourceRef());
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(),resourceAssignmentRefs.get(index)); 
+			ORef resourceRef = resourceAssignment.getResourceRef();
+			if (resourceRef.isValid())
+				projectResourceRefs.add(resourceRef);
 		}
 		
 		return projectResourceRefs;
