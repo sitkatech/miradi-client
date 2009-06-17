@@ -23,7 +23,7 @@ import org.miradi.objecthelpers.DateUnit;
 
 public class DateUnitEffort
 {
-	public DateUnitEffort(double unitQuantityToUse, DateUnit dateUnitToUse)
+	public DateUnitEffort(DateUnit dateUnitToUse, double unitQuantityToUse)
 	{
 		numberOfUnits = unitQuantityToUse;
 		dateUnit = dateUnitToUse;

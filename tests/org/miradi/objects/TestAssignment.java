@@ -65,6 +65,6 @@ public class TestAssignment extends ObjectTestCase
 	
 	public DateUnitEffort createDateUnitEffort(int unitQuantatiy, DateUnit dateUnit) throws Exception
 	{
-		return new DateUnitEffort(unitQuantatiy, dateUnit);
+		return new DateUnitEffort(dateUnit, unitQuantatiy);
 	}
 }

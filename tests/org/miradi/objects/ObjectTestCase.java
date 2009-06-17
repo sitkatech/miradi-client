@@ -319,7 +319,7 @@ public class ObjectTestCase extends TestCaseWithProject
 		{
 			DateUnitEffortList list = new DateUnitEffortList();
 			DateUnit dateUnit = TestDateUnit.month12;
-			list.add(new DateUnitEffort(5.0, dateUnit));
+			list.add(new DateUnitEffort(dateUnit, 5.0));
 			return list.toString();
 		}
 		else

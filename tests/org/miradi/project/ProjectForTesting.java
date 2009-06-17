@@ -1250,13 +1250,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
 	{
 		DateUnit dateUnit = createDateUnit(startYear, endYear);
-		return new DateUnitEffort(0.0,  dateUnit);
+		return new DateUnitEffort(dateUnit,  0.0);
 	}
 	
 	public DateUnitEffort createDateUnitEffort(MultiCalendar startDate, MultiCalendar endDate) throws Exception
 	{
 		DateRange dateRange = createDateRange(startDate, endDate);
-		return new DateUnitEffort(0, DateUnit.createFromDateRange(dateRange));
+		return new DateUnitEffort(DateUnit.createFromDateRange(dateRange), 0);
 	}
 
 	public DateRange createDateRange(int startYear, int endYear) throws Exception

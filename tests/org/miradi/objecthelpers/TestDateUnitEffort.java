@@ -52,6 +52,6 @@ public class TestDateUnitEffort extends EAMTestCase
 	
 	private DateUnitEffort createSampleData()
 	{
-		return new DateUnitEffort(10.0, TestDateUnit.month12);
+		return new DateUnitEffort(TestDateUnit.month12, 10.0);
 	}
 }
