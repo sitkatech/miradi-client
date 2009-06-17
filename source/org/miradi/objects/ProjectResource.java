@@ -177,8 +177,6 @@ public class ProjectResource extends BaseObject
 		Vector<ProjectResource> sortedProjectResources = new Vector();
 		for(ORef projectResourceRef : resourceRefs)
 		{
-			if(projectResourceRef.isInvalid())
-				continue;
 			ProjectResource projectResource = ProjectResource.find(project, projectResourceRef);
 			sortedProjectResources.add(projectResource);
 		}
@@ -189,9 +187,9 @@ public class ProjectResource extends BaseObject
 		for(ProjectResource resource : sortedProjectResources)
 		{
 			if (resource == null)
-				continue;
-			
-			projectResourceCodes.add(resource.getRef().toString());
+				projectResourceCodes.add(ORef.INVALID.toString());
+			else
+				projectResourceCodes.add(resource.getRef().toString());
 		}
 		
 		return projectResourceCodes;

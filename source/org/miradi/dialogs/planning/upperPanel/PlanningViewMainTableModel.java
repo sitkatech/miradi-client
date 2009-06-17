@@ -55,6 +55,7 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.Translation;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -196,16 +197,24 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		Vector<String> projectResourceRefCodes = codeList.toVector();
 		for(String projectResourceRef : projectResourceRefCodes)
 		{
-			ORef ref = ORef.createFromString(projectResourceRef);
-			ProjectResource projectResource = ProjectResource.find(getProject(), ref);
 			if (!isFirstIteration)
 				appendedResources += ", ";
-					
-			appendedResources += projectResource.getWho();
+			
+			ORef ref = ORef.createFromString(projectResourceRef);
+			appendedResources += getWhoName(ref);
 			isFirstIteration = false;	
 		}
 		
 		return new TaglessChoiceItem(appendedResources);
+	}
+	
+	private String getWhoName(ORef resourceRef)
+	{
+		if (resourceRef.isInvalid())
+			return Translation.getNotSpecifiedText();
+
+		ProjectResource projectResource = ProjectResource.find(getProject(), resourceRef);
+		return projectResource.getWho();	
 	}
 
 	public Object getValueAt(int row, int column)
