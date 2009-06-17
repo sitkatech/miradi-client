@@ -83,7 +83,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 
 			getProject().executeCommandsWithoutTransaction(commands);
 			
-			updateDividedDateUnitEffortList(oldResourceAssignmentRefs, oldDateUnitEffortList);
+			updateDividedDateUnitEffortList(oldResourceAssignmentRefs.size(), oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -109,7 +109,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, getResourceAssignmentTag());
 			getProject().executeCommand(appendCommand);
 			
-			updateDividedDateUnitEffortList(oldResourceAssignmentRefs, oldDateUnitEffortList);
+			updateDividedDateUnitEffortList(oldResourceAssignmentRefs.size(), oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -117,14 +117,14 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		}
 	}
 
-	private void updateDividedDateUnitEffortList(ORefList oldResourceAssignmentRefs, DateUnitEffortList oldDateUnitEffortList) throws Exception
+	private void updateDividedDateUnitEffortList(int oldResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
 	{
 		ORefList newResourceAssignmentRefs = getResourceAssignmentRefs();
 		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
 		for (int index = 0; index < oldDateUnitEffortList.size(); ++index)
 		{
 			DateUnitEffort oldDateUnitEffort = oldDateUnitEffortList.getDateUnitEffort(index);
-			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldResourceAssignmentRefs.size();
+			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldResourceAssignmentCount;
 			double newUnitQuantity = oldTotalUnits / newResourceAssignmentRefs.size(); 
 			DateUnitEffort newDateUnitEffort = new DateUnitEffort(newUnitQuantity, oldDateUnitEffort.getDateUnit());
 			newDateUnitEffortList.add(newDateUnitEffort);
