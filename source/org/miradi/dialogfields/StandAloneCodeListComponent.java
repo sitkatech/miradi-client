@@ -121,11 +121,11 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 	private void updateDividedDateUnitEffortList(int oldResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
 	{
 		ORefList newResourceAssignmentRefs = getResourceAssignmentRefs();
-		DateUnitEffortList templateDateUnitEffortList = createTemplateDateUnitEffortList(oldResourceAssignmentCount, newResourceAssignmentRefs.size(), oldDateUnitEffortList);		
+		DateUnitEffortList templateDateUnitEffortList = createTemplateDateUnitEffortList(oldDateUnitEffortList, oldResourceAssignmentCount, newResourceAssignmentRefs.size());		
 		updateDateUnitEffortLists(newResourceAssignmentRefs, templateDateUnitEffortList);
 	}
 
-	private DateUnitEffortList createTemplateDateUnitEffortList(int oldResourceAssignmentCount,	int newResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
+	private DateUnitEffortList createTemplateDateUnitEffortList(DateUnitEffortList oldDateUnitEffortList,	int oldResourceAssignmentCount, int newResourceAssignmentCount) throws Exception
 	{
 		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
 		for (int index = 0; index < oldDateUnitEffortList.size(); ++index)
