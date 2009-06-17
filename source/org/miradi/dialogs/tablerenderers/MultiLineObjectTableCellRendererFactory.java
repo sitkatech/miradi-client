@@ -64,6 +64,7 @@ public class MultiLineObjectTableCellRendererFactory extends ObjectTableCellRend
 		{
 			setLineWrap(true);
 			setWrapStyleWord(true);
+			setEditable(false);
 		}
 		
 		public int getPreferredHeight(JTable table, int row, int column, Object value)
