@@ -300,6 +300,11 @@ public class Translation
 	
 		return result;
 	}
+	
+	public static String getNotSpecifiedText()
+	{
+		return EAM.text("Not Specified");
+	}
 
 	public final static String TAB_SUBSTITUTE = "___";
 	public final static String TRANSLATION_VERSION_KEY = "TranslationVersion";
