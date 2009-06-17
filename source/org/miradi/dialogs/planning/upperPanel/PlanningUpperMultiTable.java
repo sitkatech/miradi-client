@@ -72,18 +72,14 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 		masterTree = masterTreeToUse;
 		defaultRendererFactory = new MultiLineObjectTableCellRendererFactory(this, fontProvider);
-
 		CurrencyFormat currencyFormatter = masterTree.getProject().getCurrencyFormatterWithCommas();
 		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
-
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
-		
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
+		whoColumnTableCellEditorFactory = new WhoColumnTableCellEditorFactory(getMainWindow(), this);
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
-		
 	}
 	
 	@Override
@@ -151,7 +147,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
-			return new WhoColumnTableCellEditorFactory(getMainWindow(), this);
+			return whoColumnTableCellEditorFactory;
 		
 		return super.getCellEditor(row, tableColumn);
 	}
@@ -289,4 +285,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellRendererFactory choiceRendererFactory;
 	private BasicTableCellRendererFactory progressRendererFactory;
 	private BasicTableCellRendererFactory doubleRendererFactory;
+	WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 }
