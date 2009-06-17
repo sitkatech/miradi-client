@@ -133,7 +133,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			DateUnitEffort oldDateUnitEffort = oldDateUnitEffortList.getDateUnitEffort(index);
 			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldResourceAssignmentCount;
 			double newUnitQuantity = oldTotalUnits / newResourceAssignmentCount; 
-			DateUnitEffort newDateUnitEffort = new DateUnitEffort(newUnitQuantity, oldDateUnitEffort.getDateUnit());
+			DateUnitEffort newDateUnitEffort = new DateUnitEffort(oldDateUnitEffort.getDateUnit(), newUnitQuantity);
 			newDateUnitEffortList.add(newDateUnitEffort);
 		}
 		

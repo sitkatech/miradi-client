@@ -279,7 +279,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 
 	private DateUnitEffortList createDateUnitEffortList(DateUnit dateUnit, final double unitQuantity)
 	{
-		DateUnitEffort dateUnitEffort = new DateUnitEffort(unitQuantity, dateUnit);
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, unitQuantity);
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
 		

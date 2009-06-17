@@ -346,7 +346,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		DateUnitEffort effort = getDateUnitEffort(assignment, dateUnit);
 		if (effort == null)
-			effort = new DateUnitEffort(units, dateUnit);
+			effort = new DateUnitEffort(dateUnit, units);
 
 		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
 		setUnits(assignment, effortList, effort, units);
