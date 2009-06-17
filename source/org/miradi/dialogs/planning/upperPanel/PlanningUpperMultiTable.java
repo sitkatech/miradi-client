@@ -112,18 +112,16 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 				return false;
 
 			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
-			Vector<DateUnitEffortList> matchingDateUnitEffortLists = new Vector();
+			DateUnitEffortList dateUnitEffortList = null;
 			for (int index = 0; index < resourceAssignments.size(); ++index)
 			{
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
 				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
-				if (matchingDateUnitEffortLists.size() == 0)
-					matchingDateUnitEffortLists.add(thisDateUnitEffortList);
+				if (index == 0)
+					dateUnitEffortList = thisDateUnitEffortList;
 				
-				if (!matchingDateUnitEffortLists.contains(thisDateUnitEffortList))
+				if (!dateUnitEffortList.equals(thisDateUnitEffortList))
 					return false;
-				
-				matchingDateUnitEffortLists.add(thisDateUnitEffortList);
 			}
 			
 			return true;
