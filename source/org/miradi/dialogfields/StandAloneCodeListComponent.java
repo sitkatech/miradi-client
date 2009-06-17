@@ -58,7 +58,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		if (doesAssignmentExist && !isSelected)
 			deleteMatchingResourceAssignments(choiceItem);  
 		else if (!doesAssignmentExist)
-			createResourceExpense(ORef.createFromString(choiceItem.getCode()));
+			createResourceAssignment(ORef.createFromString(choiceItem.getCode()));
 	}
 
 	private void deleteMatchingResourceAssignments(ChoiceItem choiceItem) throws Exception
@@ -89,7 +89,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		}
 	}
 	
-	private void createResourceExpense(ORef resourceRef) throws Exception
+	private void createResourceAssignment(ORef resourceRef) throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
