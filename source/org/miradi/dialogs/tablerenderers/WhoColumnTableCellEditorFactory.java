@@ -46,8 +46,9 @@ public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory imp
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
 		
+		boolean isCellSelected = table.isCellSelected(row, column);
 		Object value = table.getValueAt(row, column);
-		Component component = getTableCellEditorComponent(table, value, true, row, column);
+		Component component = getTableCellEditorComponent(table, value, isCellSelected, row, column);
 		component.addMouseListener(new LeftClickHandler());
 	}
 	
