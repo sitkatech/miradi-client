@@ -39,13 +39,16 @@ import org.miradi.questions.ProjectResourceQuestion;
 
 public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory implements TableCellEditor 
 {
-	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
+	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse, int row, int column)
 	{
 		super(tableToUse, new DefaultFontProvider(mainWindowToUse));
 
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
-		table.addMouseListener(new LeftClickHandler());
+		
+		Object value = table.getValueAt(row, column);
+		Component component = getTableCellEditorComponent(table, value, true, row, column);
+		component.addMouseListener(new LeftClickHandler());
 	}
 	
 	public Component getTableCellEditorComponent(JTable tableToUse, Object value, boolean isSelected, int row, int column) 
@@ -68,7 +71,7 @@ public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory imp
 
 	public boolean isCellEditable(EventObject anEvent)
 	{
-		return false;
+		return true;
 	}
 
 	public void removeCellEditorListener(CellEditorListener l)
@@ -77,12 +80,12 @@ public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory imp
 
 	public boolean shouldSelectCell(EventObject anEvent)
 	{
-		return false;
+		return true;
 	}
 
 	public boolean stopCellEditing()
 	{
-		return false;
+		return true;
 	}
 
 	class LeftClickHandler extends MouseAdapter
