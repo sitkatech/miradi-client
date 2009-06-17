@@ -105,10 +105,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObjectForRow.getType()))
 				return false;
 
-			TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-			TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
-			OptionalDouble totalUnits = timePeriodCosts.calculateResourcesTotalUnits();
-			if (totalUnits.hasValue())
+			if (doAnySubtasksHaveAnyWorkUnitData(baseObjectForRow))
 				return false;
 
 			return doAllResourceAssignmentsHaveIdenticalWorkUnits(row, modelColumn);
@@ -118,6 +115,15 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			EAM.logException(e);
 			return false;		
 		}
+	}
+
+	private boolean doAnySubtasksHaveAnyWorkUnitData(BaseObject baseObjectForRow) throws Exception
+	{
+		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
+		OptionalDouble totalUnits = timePeriodCosts.calculateResourcesTotalUnits();
+
+		return totalUnits.hasValue();
 	}
 	
 	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(int row, int modelColumn) throws Exception
