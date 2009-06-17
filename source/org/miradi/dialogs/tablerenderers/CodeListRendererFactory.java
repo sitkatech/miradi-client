@@ -40,9 +40,10 @@ public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFac
 		String labelText = getLabelText(value);
 		JComponent renderer = (JComponent) super.getTableCellRendererComponent(table, labelText, isSelected, hasFocus, row, tableColumn);
 
-		// TODO: This doesn't look like it would have any effect
 		if(isSelected)
-			renderer.setBackground(renderer.getBackground());
+			renderer.setBackground(table.getSelectionBackground());
+		else
+			renderer.setBackground(getCellBackgroundColor());
 
 		return renderer;
 	}

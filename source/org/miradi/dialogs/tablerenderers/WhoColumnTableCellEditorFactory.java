@@ -32,6 +32,7 @@ import javax.swing.table.TableCellEditor;
 import org.miradi.dialogfields.StandAloneCodeListComponent;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory.TableCellHtmlRendererComponent;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -48,6 +49,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 		table = tableToUse;
 
 		rendererFactory = new CodeListRendererFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
+		rendererFactory.setCellBackgroundColor(AppPreferences.RESOURCE_TABLE_BACKGROUND);
 		rendererFactory.setQuestion(new ProjectResourceQuestion(getProject()));
 
 		TableCellHtmlRendererComponent rendererComponent = rendererFactory.getRendererComponent();
@@ -58,7 +60,7 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	{
 		ChoiceItem choiceItem = (ChoiceItem)value;
 		CodeList codeList = getCodeListFromChoiceItemTag(choiceItem);
-		return rendererFactory.getTableCellRendererComponent(tableToUse, codeList, isSelected, false, row, column);
+		return rendererFactory.getTableCellRendererComponent(tableToUse, codeList, true, false, row, column);
 	}
 
 	private CodeList getCodeListFromChoiceItemTag(ChoiceItem choiceItem)
