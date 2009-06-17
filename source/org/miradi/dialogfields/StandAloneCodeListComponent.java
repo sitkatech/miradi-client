@@ -69,12 +69,12 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList();
 			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
 			
+			ORef selectedResourceRef = ORef.createFromString(choiceItem.getCode());
 			Vector<Command> commands = new Vector();	
 			for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
 			{
 				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
 				ORef resourceRef = resourceAssignment.getResourceRef();
-				ORef selectedResourceRef = ORef.createFromString(choiceItem.getCode());
 				if (resourceRef.equals(selectedResourceRef))
 					commands.addAll(TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag()));
 			}
