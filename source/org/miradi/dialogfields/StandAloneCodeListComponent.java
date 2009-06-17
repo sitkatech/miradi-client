@@ -35,6 +35,8 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
@@ -58,19 +60,52 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			createResourceExpense(ORef.createFromString(choiceItem.getCode()));
 	}
 
+	private void deleteMatchingResourceAssignments(ChoiceItem choiceItem) throws Exception
+	{
+		getProject().executeBeginTransaction();
+		try
+		{
+			DateUnitEffortList dateUnitEffortList = getAnExistingDateUnitEffortList();
+			Vector<Command> commands = new Vector();
+			ORefList resourceAssignmentRefs = getParentObject().getRefList(getResourceAssignmentTag());
+			
+			for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
+			{
+				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
+				ORef resourceRef = resourceAssignment.getResourceRef();
+				if (resourceRef.equals(ORef.createFromString(choiceItem.getCode())))
+					commands.addAll(TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag()));
+			}
+
+			getProject().executeCommandsWithoutTransaction(commands);
+			
+			final int DELTA_PORTION_AMOUNT = 1;
+			updateDateUnitEffortLists(dateUnitEffortList, DELTA_PORTION_AMOUNT);
+		}
+		finally
+		{
+			getProject().executeEndTransaction();
+		}
+	}
+	
 	private void createResourceExpense(ORef resourceRef) throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
+			DateUnitEffortList dateUnitEffortList = getAnExistingDateUnitEffortList(); 
 			CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
 			getProject().executeCommand(createCommand);
 
 			ORef newResourceAssignmentRef = createCommand.getObjectRef();
-			cloneFromExistingObject(resourceRef, newResourceAssignmentRef);
+			CommandSetObjectData setResouce = new CommandSetObjectData(newResourceAssignmentRef, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
+			getProject().executeCommand(setResouce);
 
-			Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+			Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, getResourceAssignmentTag());
 			getProject().executeCommand(appendCommand);
+			
+			final int DELTA_PORTION_AMOUNT = -1;
+			updateDateUnitEffortLists(dateUnitEffortList, DELTA_PORTION_AMOUNT);
 		}
 		finally
 		{
@@ -78,38 +113,47 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		}
 	}
 
-	private void cloneFromExistingObject(ORef resourceRef, ORef newResourceAssignmentRef)	throws Exception
+	private void updateDateUnitEffortLists(DateUnitEffortList dateUnitEffortList, final int deltaPortionAmount) throws Exception
 	{
-		ORefList existingResourceAssignmentRefs = getParentObject().getRefList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-		ORef existingResourceAssignmentRef = existingResourceAssignmentRefs.getRefForType(ResourceAssignment.getObjectType());
-		if (existingResourceAssignmentRef.isValid())
+		ORefList updatedResourceAssignmentRefs = getParentObject().getRefList(getResourceAssignmentTag());
+		for (int index = 0; index < updatedResourceAssignmentRefs.size(); ++index)
 		{
-			ResourceAssignment existingResourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRef);
-			getProject().executeCommandsWithoutTransaction(existingResourceAssignment.createCommandsToClone(newResourceAssignmentRef.getObjectId()));
+			ResourceAssignment thisResourceAssignment = ResourceAssignment.find(getProject(), updatedResourceAssignmentRefs.get(index));
+			updateDateUnitEffortList(dateUnitEffortList, thisResourceAssignment, updatedResourceAssignmentRefs.size(), deltaPortionAmount);
+		}
+	}
+	
+	private void updateDateUnitEffortList(DateUnitEffortList dateUnitEffortList, ResourceAssignment resourceAssignment, int portion, int portionDelta) throws Exception
+	{		
+		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
+		for (int index = 0; index < dateUnitEffortList.size(); ++index)
+		{
+			DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(index);
+			double newUnitQuantity = ((dateUnitEffort.getQuantity() * (portion + portionDelta)) / portion);
+			DateUnitEffort newDateUnitEffort = new DateUnitEffort(newUnitQuantity, dateUnitEffort.getDateUnit());
+			newDateUnitEffortList.add(newDateUnitEffort);
 		}
 		
-		CommandSetObjectData setResouce = new CommandSetObjectData(newResourceAssignmentRef, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
-		getProject().executeCommand(setResouce);
+		CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, newDateUnitEffortList.toString());
+		getProject().executeCommand(setDateUnitEffortList);
+	}
+	
+	private DateUnitEffortList getAnExistingDateUnitEffortList() throws Exception
+	{
+		ORefList existingResourceAssignmentRefs = getParentObject().getRefList(getResourceAssignmentTag());
+		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.getRefForType(ResourceAssignment.getObjectType()));
+		
+		return resourceAssignment.getDateUnitEffortList();
 	}
 
+	private String getResourceAssignmentTag()
+	{
+		return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
+	}
+	
 	private BaseObject getParentObject()
 	{
 		return parentObject;
-	}
-
-	private void deleteMatchingResourceAssignments(ChoiceItem choiceItem) throws Exception
-	{
-		Vector<Command> commands = new Vector();
-		ORefList resourceAssignmentRefs = getParentObject().getRefList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			ORef resourceRef = resourceAssignment.getResourceRef();
-			if (resourceRef.equals(ORef.createFromString(choiceItem.getCode())))
-				commands.addAll(TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS));
-		}
-		
-		getProject().executeCommandsAsTransaction(commands);
 	}
 	
 	private Project getProject()
