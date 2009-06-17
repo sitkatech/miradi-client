@@ -285,5 +285,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellRendererFactory choiceRendererFactory;
 	private BasicTableCellRendererFactory progressRendererFactory;
 	private BasicTableCellRendererFactory doubleRendererFactory;
-	WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
+	private WhoColumnTableCellEditorFactory whoColumnTableCellEditorFactory;
 }
