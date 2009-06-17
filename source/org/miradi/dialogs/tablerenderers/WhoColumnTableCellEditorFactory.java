@@ -23,77 +23,72 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.EventObject;
+import java.text.ParseException;
 
+import javax.swing.AbstractCellEditor;
 import javax.swing.JTable;
-import javax.swing.event.CellEditorListener;
 import javax.swing.table.TableCellEditor;
+import javax.swing.text.JTextComponent;
 
 import org.miradi.dialogfields.StandAloneCodeListComponent;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
+import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory.TableCellHtmlRendererComponent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ProjectResourceQuestion;
+import org.miradi.utils.CodeList;
 
-public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory implements TableCellEditor 
+public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
 {
 	public WhoColumnTableCellEditorFactory(MainWindow mainWindowToUse, PlanningUpperMultiTable tableToUse)
 	{
-		super(tableToUse, new DefaultFontProvider(mainWindowToUse));
-
 		mainWindow = mainWindowToUse;
 		table = tableToUse;
 
-		getRendererComponent().addMouseListener(new LeftClickHandler());
+		rendererFactory = new CodeListRendererFactory(tableToUse, new DefaultFontProvider(mainWindowToUse));
+		rendererFactory.setQuestion(new ProjectResourceQuestion(getProject()));
+
+		TableCellHtmlRendererComponent rendererComponent = rendererFactory.getRendererComponent();
+		rendererComponent.addMouseListener(new LeftClickHandler());
 	}
 	
 	public Component getTableCellEditorComponent(JTable tableToUse, Object value, boolean isSelected, int row, int column) 
 	{
-		return super.getTableCellRendererComponent(tableToUse, value, isSelected, false, row, column);
+		ChoiceItem choiceItem = (ChoiceItem)value;
+		CodeList codeList = getCodeListFromChoiceItemTag(choiceItem);
+		JTextComponent rendererComponent = (JTextComponent) rendererFactory.getTableCellRendererComponent(tableToUse, codeList, isSelected, false, row, column);
+		return rendererComponent;
 	}
 
-	public void addCellEditorListener(CellEditorListener l)
+	private CodeList getCodeListFromChoiceItemTag(ChoiceItem choiceItem)
 	{
-	}
-
-	public void cancelCellEditing()
-	{
-	}
-
-	public Object getCellEditorValue()
-	{
-		return null;
-	}
-
-	public boolean isCellEditable(EventObject anEvent)
-	{
-		return true;
-	}
-
-	public void removeCellEditorListener(CellEditorListener l)
-	{
-	}
-
-	public boolean shouldSelectCell(EventObject anEvent)
-	{
-		return true;
-	}
-
-	public boolean stopCellEditing()
-	{
-		return true;
+		try
+		{
+			return new CodeList(choiceItem.getCode());
+		}
+		catch(ParseException e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 
 	class LeftClickHandler extends MouseAdapter
 	{
 		public void mouseClicked(MouseEvent e)
 		{
-			final BaseObject baseObjectForRow = getBaseObjectForRow(table.getSelectedRow(), table.getSelectedColumn());
+			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
 			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
 			codeListEditor.showModalDialog(getMainWindow(), EAM.text("Project Resource"));
 		}
+	}
+
+	public Object getCellEditorValue()
+	{
+		return null;
 	}
 
 	public Project getProject()
@@ -108,4 +103,5 @@ public class WhoColumnTableCellEditorFactory extends CodeListRendererFactory imp
 	
 	private PlanningUpperMultiTable table;
 	private MainWindow mainWindow;
+	private CodeListRendererFactory rendererFactory;
 }
