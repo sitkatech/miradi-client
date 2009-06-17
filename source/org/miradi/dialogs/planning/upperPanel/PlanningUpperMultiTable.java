@@ -102,7 +102,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		try
 		{
 			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObjectForRow))
+			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObjectForRow.getType()))
 				return false;
 
 			TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
