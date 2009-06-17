@@ -26,6 +26,7 @@ import javax.swing.JTable;
 
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.Translation;
 
 public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFactory
 {
@@ -70,7 +71,11 @@ public class CodeListRendererFactory extends MultiLineObjectTableCellRendererFac
 			if (i > 0)
 				commaSeperatedValues +=", ";
 			
-			commaSeperatedValues += question.getValue(codeList.get(i));
+			String code = codeList.get(i);
+			if(question.findChoiceByCode(code) != null)
+				commaSeperatedValues += question.getValue(code);
+			else
+				commaSeperatedValues += Translation.getNotSpecifiedText();
 		}
 		
 		return commaSeperatedValues;
