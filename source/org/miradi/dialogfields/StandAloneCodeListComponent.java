@@ -57,13 +57,14 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		boolean doesAssignmentExist = currentCodes.contains(choiceItem.getCode());
 		final boolean needToDelete = doesAssignmentExist && !isSelected;
 		final boolean needToCreate = !doesAssignmentExist;
+		ORef refCode = ORef.createFromString(choiceItem.getCode());
 		if (needToDelete)
-			deleteMatchingResourceAssignments(choiceItem);
+			deleteMatchingResourceAssignments(refCode);
 		else if (needToCreate)
-			createResourceAssignment(ORef.createFromString(choiceItem.getCode()));
+			createResourceAssignment(refCode);
 	}
 
-	private void deleteMatchingResourceAssignments(ChoiceItem choiceItem) throws Exception
+	private void deleteMatchingResourceAssignments(ORef selectedResourceRef ) throws Exception
 	{
 		getProject().executeBeginTransaction();
 		try
@@ -71,7 +72,6 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList();
 			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
 			
-			ORef selectedResourceRef = ORef.createFromString(choiceItem.getCode());
 			Vector<Command> commands = new Vector();	
 			for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
 			{
