@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-17 17:00-0500\n"
+"POT-Creation-Date: 2009-06-18 08:05-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6373,10 +6373,6 @@ msgstr "XML (*.xml)"
 #: miradi/source/org/miradi/utils/PNGFileFilter.java:33
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png)"
-
-#: miradi/source/org/miradi/utils/JasperReportFileFilter.java:41
-msgid "FileFilter|JASPER (*.jasper)"
-msgstr "JASPER (*.jasper)"
 
 #: miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
@@ -32851,6 +32847,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FileFilter|JASPER (*.jasper)"
+#~ msgstr "JASPER (*.jasper)"
 
 #~ msgid "Not Started"
 #~ msgstr "No ha comenzado "
