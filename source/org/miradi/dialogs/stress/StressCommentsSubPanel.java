@@ -32,7 +32,7 @@ public class StressCommentsSubPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.STRESS, BaseId.INVALID);
 		
-		addField(createMultilineField(Stress.TAG_COMMENTS));
+		addField(createMultilineField(Stress.TAG_COMMENT));
 		updateFieldsFromProject();
 	}
 
