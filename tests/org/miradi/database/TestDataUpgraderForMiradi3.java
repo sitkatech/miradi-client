@@ -41,6 +41,36 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testMoveStressCommentsToCommentField() throws Exception
+	{
+		String stressWithNoComments = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Stress\",\"ExpenseRefs\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"Detail\":\"\",\"Severity\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245332434233\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":29,\"Scope\":\"\"}";
+		String stressWithComments = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Comments\":\"Some Stress Comments\",\"AssignmentIds\":\"\",\"Type\":\"Stress\",\"ExpenseRefs\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"Detail\":\"\",\"Severity\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245332454419\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":30,\"Scope\":\"\"}";
+		
+		File jsonDir = createJsonDir();
+		
+		final int STRESS_TYPE = 33;
+		int[] stressIds = createAndPopulateObjectDir(jsonDir, STRESS_TYPE, new String[] {stressWithNoComments, stressWithComments, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion44();
+		
+		verifyCommentsValue(jsonDir, STRESS_TYPE, stressIds[0], "");
+		verifyCommentsValue(jsonDir, STRESS_TYPE, stressIds[1], "Some Stress Comments");
+	}
+
+	private void verifyCommentsValue(File jsonDir, final int STRESS_TYPE, final int stressId, String expectedCommentValue)	throws Exception
+	{
+		File stressDir = DataUpgrader.getObjectsDir(jsonDir, STRESS_TYPE);		
+		File stressWithNoCommentsFile =  new File(stressDir, Integer.toString(stressId));
+		EnhancedJsonObject stressWithNoCommentsJson = new EnhancedJsonObject(readFile(stressWithNoCommentsFile));
+		
+		String commentsData = stressWithNoCommentsJson.getString("Comments");
+		assertEquals("wrong comments value, should have been empty?", "", commentsData);
+		
+		String commentData = stressWithNoCommentsJson.getString("Comment");
+		assertEquals("worng comment value", expectedCommentValue, commentData);
+	}
+	
 	public void testConvertToDateUnitEffortList() throws Exception
 	{
 		String resourceAssignment = "{\"AssignmentIds\":\"\",\"AccountingCode\":\"\",\"ResourceId\":\"36\",\"Details\":\"{\\\"DateRangeEfforts\\\":[{\\\"NumberOfUnits\\\":15,\\\"DateRange\\\":{\\\"EndDate\\\":\\\"2010-12-31\\\",\\\"StartDate\\\":\\\"2010-01-01\\\"},\\\"CostUnitCode\\\":\\\"\\\"}]}\",\"ExpenseRefs\":\"\",\"BudgetCostOverride\":\"\",\"FundingSource\":\"\",\"WhoOverrideRefs\":\"\",\"WhenOverride\":\"\",\"TimeStampModified\":\"1242142436461\",\"BudgetCostMode\":\"\",\"Id\":35,\"Label\":\"\"}";
