@@ -173,14 +173,12 @@ public class Stress extends Factor
 		
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		detail = new StringData(TAG_DETAIL);
-		comments = new StringData(TAG_COMMENTS);
 		scope = new ChoiceData(TAG_SCOPE, getQuestion(StressScopeChoiceQuestion.class));
 		severity = new ChoiceData(TAG_SEVERITY, getQuestion(StressSeverityChoiceQuestion.class));
 		pseudoStressRating = new PseudoQuestionData(PSEUDO_STRESS_RATING, new StressRatingChoiceQuestion());
 		
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_DETAIL, detail);
-		addField(TAG_COMMENTS, comments);
 		addField(TAG_SCOPE, scope);
 		addField(TAG_SEVERITY, severity);
 		addField(PSEUDO_STRESS_RATING, pseudoStressRating);
@@ -188,14 +186,12 @@ public class Stress extends Factor
 	
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAIL = "Detail";
-	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_SCOPE = "Scope";
 	public static final String TAG_SEVERITY = "Severity";
 	public static final String PSEUDO_STRESS_RATING = "PseudoStressRating";
 	
 	private StringData shortLabel;
 	private StringData detail;
-	private StringData comments;
 	private ChoiceData scope;
 	private ChoiceData severity;
 	
