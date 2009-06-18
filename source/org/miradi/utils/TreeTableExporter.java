@@ -24,15 +24,15 @@ import javax.swing.JTree;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.objects.BaseObject;
-
-import com.java.sun.jtreetable.JTreeTable;
 
 public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 {
-	public TreeTableExporter(JTreeTable treeToUse)
+	public TreeTableExporter(TreeTableWithStateSaving treeToUse) throws Exception
 	{
 		treeTable = treeToUse;
+		treeTable.restoreTreeState();
 	}
 	
 	public BaseObject getBaseObjectForRow(int row)
@@ -100,7 +100,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	
 	protected ObjectTreeTable getTreeTable()
 	{
-		return (ObjectTreeTable) treeTable;
+		return treeTable;
 	}
 	
 	public GenericTreeTableModel getModel()
@@ -108,5 +108,5 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		return getTreeTable().getTreeTableModel();
 	}
 
-	private JTreeTable treeTable;
+	private TreeTableWithStateSaving treeTable;
 }
