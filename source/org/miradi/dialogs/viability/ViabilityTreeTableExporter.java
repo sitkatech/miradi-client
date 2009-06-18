@@ -25,7 +25,7 @@ import org.miradi.utils.TreeTableExporter;
 
 public class ViabilityTreeTableExporter extends TreeTableExporter
 {
-	public ViabilityTreeTableExporter(TargetViabilityTreeTable viabilityTreeTable)
+	public ViabilityTreeTableExporter(TargetViabilityTreeTable viabilityTreeTable) throws Exception
 	{
 		super(viabilityTreeTable);
 	}
