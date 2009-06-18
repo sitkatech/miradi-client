@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-18 08:05-0500\n"
+"POT-Creation-Date: 2009-06-18 13:07-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:115
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:114
 msgid ""
 "<HTML>The TNC ecoregion field has been changed from a single text field to "
 "three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
@@ -61,7 +61,7 @@ msgstr ""
 "Tampilan Ringkasan, tab TNC, dan periksa bahwa wilayah ekologi untuk proyek "
 "ini sudah benar.</HTML> "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:125
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:124
 msgid ""
 "<HTML>The TNC Operating Unit field has been changed from a text field to a "
 "picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
@@ -74,7 +74,7 @@ msgstr ""
 "dan konfirmasikan bahwa penyetelan Unit Operasi untuk proyek ini sudah benar."
 "</HTML> "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:151
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:150
 msgid ""
 "<html>Miradi now allows you to specify what currency is being used for "
 "budgeting, <br>and to specify Fiscal Years that are different from Calendar "
@@ -100,7 +100,7 @@ msgstr ""
 "Miradi untuk mempelajari pilihan dalam menyesuaikannya dengan <br>tahun "
 "fiskal. "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:866
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:865
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -112,7 +112,7 @@ msgstr ""
 "Kelayakan sekarang meliputi atribut-atribut tersebut.<br><br>Silakan "
 "meninjau peringkat Strategi Anda untuk memastikan kelayakannya. "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1230
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1229
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
