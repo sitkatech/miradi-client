@@ -35,7 +35,6 @@ import org.miradi.database.DataUpgrader;
 import org.miradi.database.DataUpgraderDiagramObjectLinkAdder;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
-import org.miradi.database.ProjectServer;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.ids.BaseId;
@@ -1362,11 +1361,6 @@ public class MigrationsOlderThanMiradiVersion2
 		readIn.put("DiagramFactorIds", diagramFactorIds.toJson());
 		readIn.put("Id", highestId);
 		DataUpgrader.writeJson(idFile, readIn);
-	}
-
-	public static int readDataVersion(File projectDirectory) throws Exception
-	{
-		return new ProjectServer().readLocalDataVersion(projectDirectory);
 	}
 
 	public static void createDiagramFactorLinksFromRawFactorLinks(HashMap mappedFactorIds) throws Exception

@@ -69,7 +69,7 @@ public class DataUpgrader
 			
 			initializeStaticDirectory(projectDirectory);
 			DataUpgrader.upgrade();
-			versionAfterUpgrading = MigrationsOlderThanMiradiVersion2.readDataVersion(projectDirectory);			
+			versionAfterUpgrading = DataUpgrader.readDataVersion(projectDirectory);			
 		}
 		catch (DataUpgrader.MigrationTooOldException e)
 		{
@@ -105,104 +105,109 @@ public class DataUpgrader
 
 	public static void upgrade() throws Exception
 	{
-		if(MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) < 15)
+		if(DataUpgrader.readDataVersion(getTopDirectory()) < 15)
 			throw new MigrationTooOldException();
 		
 		DirectoryLock migrationLock = new DirectoryLock();
 		migrationLock.lock(getTopDirectory());
 		try
 		{
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 15)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 15)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion16();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 16)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 16)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion17();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 17)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 17)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion18();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 18)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 18)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion19();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 19)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 19)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion20();
 
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 20)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 20)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion21();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 21)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 21)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion22();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 22)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 22)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion23();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 23)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 23)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion24();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 24)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 24)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion25();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 25)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 25)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion26();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 26)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 26)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion27();
 
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 27)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 27)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion28();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 28)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 28)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion29();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 29)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 29)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion30();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 30)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 30)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion31();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 31)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 31)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion32();
 
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 32)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 32)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion33();
 
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 33)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 33)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion34();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 34)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 34)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion35();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 35)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 35)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion36();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 36)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 36)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion37();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 37)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 37)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion38();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 38)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 38)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion39();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 39)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 39)
 				MigrationsOlderThanMiradiVersion2.upgradeToVersion40();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 40)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 40)
 				MigrationsForMiradi3.upgradeToVersion41();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 41)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 41)
 				MigrationsForMiradi3.upgradeToVersion42();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 42)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 42)
 				MigrationsForMiradi3.upgradeToVersion43();
 			
-			if (MigrationsOlderThanMiradiVersion2.readDataVersion(getTopDirectory()) == 43)
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 43)
 				MigrationsForMiradi3.upgradeToVersion44();
 		}
 		finally 
 		{
 			migrationLock.close();
 		}			
+	}
+	
+	public static int readDataVersion(File projectDirectory) throws Exception
+	{
+		return new ProjectServer().readLocalDataVersion(projectDirectory);
 	}
 	
 	public static void writeLocalVersion(File projectDirectory, int versionToWrite) throws Exception
