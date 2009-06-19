@@ -86,7 +86,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	
 	public ObjectDataInputField addRawField(ObjectDataInputField field)
 	{
-		return super.addField(field);
+		return addFieldToList(field);
 	}
 
 	public void addRadioButtonField(int objectType, String fieldTag, ChoiceQuestion question)
@@ -129,7 +129,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 
 	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, UiLabel label)
 	{
-		super.addField(field);
+		addFieldToList(field);
 		addLabel(label);
 		addFieldComponent(field.getComponent());
 		return field;
@@ -137,7 +137,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	
 	public ObjectDataInputField addFieldWithCustomLabelAndHint(ObjectDataInputField field, String hint)
 	{
-		super.addField(field);
+		addFieldToList(field);
 		addLabel(field.getObjectType(), field.getTag());
 		Box box = Box.createHorizontalBox();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
@@ -175,7 +175,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		{
 			PanelTitleLabel fieldLabel = (PanelTitleLabel) labelsAndFields[i];
 			ObjectDataInputField objectDataInputField = (ObjectDataInputField) labelsAndFields[i+1];
-			super.addField(objectDataInputField);
+			addFieldToList(objectDataInputField);
 			fieldPanel.add(fieldLabel);
 			fieldPanel.add((objectDataInputField).getComponent());
 		}
@@ -205,7 +205,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
 		{
-			super.addField(fields[i]);
+			addFieldToList(fields[i]);
 			fieldPanel.add(new PanelFieldLabel(fields[i].getObjectType(), fields[i].getTag()));
 			fieldPanel.add(fields[i].getComponent());
 			fieldPanel.add(new JLabel(" "));
@@ -221,7 +221,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 		for(int i = 0; i < fields.length; ++i)
 		{
-			super.addField(fields[i]);
+			addFieldToList(fields[i]);
 			fieldPanel.add(new PanelTitleLabel(labelTexts[i]));
 			fieldPanel.add(fields[i].getComponent());
 			fieldPanel.add(new JLabel(" "));
@@ -232,7 +232,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 
 	protected void addFieldWithEditButton(PanelTitleLabel label, ObjectDataInputField field, PanelButton button)
 	{
-		super.addField(field);
+		addFieldToList(field);
 		OneRowPanel fieldPanel = new OneRowPanel();
 		fieldPanel.setGaps(3);
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
@@ -244,7 +244,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 
 	protected void addFieldWithEditButton(String translatedLabel, ObjectDataInputField field, PanelButton button)
 	{
-		super.addField(field);
+		addFieldToList(field);
 		OneRowPanel fieldPanel = new OneRowPanel();
 		fieldPanel.setGaps(3);
 		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
