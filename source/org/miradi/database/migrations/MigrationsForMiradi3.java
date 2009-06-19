@@ -57,4 +57,10 @@ public class MigrationsForMiradi3
 		MoveStressCommentsDataToCommentField.moveCommentsToComment();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 44);
 	}
+	
+	public static void upgradeToVersion45() throws Exception
+	{
+		RenameCommentFieldToCommentsMigration.renameCommentFieldToComments();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 45);
+	}
 }

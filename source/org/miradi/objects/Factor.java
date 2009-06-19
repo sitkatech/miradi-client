@@ -561,7 +561,7 @@ abstract public class Factor extends BaseObject
 	public static final FactorType TYPE_HUMAN_WELFARE_TARGET = new FactorTypeHumanWelfareTarget();
 	
 	public static final String TAG_NODE_TYPE = "Type";
-	public static final String TAG_COMMENT = "Comment";
+	public static final String TAG_COMMENT = "Comments";
 	public static final String TAG_TEXT = "Text";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";

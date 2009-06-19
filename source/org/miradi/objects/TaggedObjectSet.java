@@ -112,7 +112,7 @@ public class TaggedObjectSet extends BaseObject
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_TAGGED_OBJECT_REFS = "TaggedObjectRefs";
-	public static final String TAG_COMMENT = "Comment";
+	public static final String TAG_COMMENT = "Comments";
 	
 	private StringData shortLabel;
 	private ORefListData taggedObjectRefs;

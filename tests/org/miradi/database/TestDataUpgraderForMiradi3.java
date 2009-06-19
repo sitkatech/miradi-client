@@ -41,6 +41,104 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testRenameCommentFieldToComments() throws Exception
+	{
+		String taskString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"ExpenseRefs\":\"\",\"Details\":\"\",\"Comment\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429693315\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":32,\"ProgressReportRefs\":\"\"}";
+		String causeString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Factor\",\"ExpenseRefs\":\"\",\"Comment\":\"some cause comment\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429716763\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":33,\"Label\":\"New Factor\",\"IsDirectThreat\":\"\"}";
+		String strategyString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Intervention\",\"ExpenseRefs\":\"\",\"Comment\":\"some strategy comment\",\"TaxonomyCode\":\"\",\"LegacyTncStrategyRanking\":\"\",\"ShortLabel\":\"\",\"ImpactRating\":\"\",\"Status\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429730578\",\"ActivityIds\":\"\",\"FeasibilityRating\":\"\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Strategy\",\"Id\":35,\"ProgressReportRefs\":\"\"}";
+		String targetString  = "{\"ObjectiveIds\":\"\",\"SpeciesLatinName\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"{\\\"Ids\\\":[29]}\",\"AssignmentIds\":\"\",\"Type\":\"Target\",\"ExpenseRefs\":\"\",\"Comment\":\"some target comment\",\"ShortLabel\":\"\",\"StressRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":33,\\\"ObjectId\\\":30}]}\",\"Text\":\"\",\"HabitatAssociation\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429551827\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Target\",\"Id\":23,\"CurrentStatusJustification\":\"\"}";
+		String intermediateResultString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"Intermediate Result\",\"Comment\":\"some intermediate result comment\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429867772\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":53,\"Label\":\"New Intermediate Result\"}";
+		String threatReductionResultString  = "{\"ObjectiveIds\":\"\",\"RelatedDirectThreatRef\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Threat Reduction Result\",\"ExpenseRefs\":\"\",\"Comment\":\"some threat reduction result comment\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429849533\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":47,\"Label\":\"New Threat Reduction Result\"}";
+		String textBoxString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"TextBox\",\"Comment\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429739700\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":37,\"Label\":\"New Text Box\"}";
+		String indicatorString  = "{\"ThresholdDetails\":\"\",\"RatingSource\":\"\",\"FutureStatusDetail\":\"\",\"IndicatorThresholds\":\"\",\"AssignmentIds\":\"\",\"FutureStatusSummary\":\"\",\"ExpenseRefs\":\"\",\"Comment\":\"some indicator comment\",\"ShortLabel\":\"\",\"MeasurementRefs\":\"{\\\"References\\\":[{\\\"ObjectType\\\":32,\\\"ObjectId\\\":31}]}\",\"Priority\":\"\",\"Detail\":\"\",\"FutureStatusRating\":\"\",\"TaskIds\":\"{\\\"Ids\\\":[32]}\",\"TimeStampModified\":\"1245429675754\",\"FutureStatusDate\":\"\",\"Label\":\"\",\"Id\":29,\"FutureStatusComment\":\"\",\"ProgressReportRefs\":\"\",\"ViabilityRatingsComment\":\"\"}";
+		String measurementString  = "{\"Status\":\"\",\"Detail\":\"\",\"StatusConfidence\":\"\",\"AssignmentIds\":\"\",\"Date\":\"\",\"TimeStampModified\":\"1245429622038\",\"ExpenseRefs\":\"\",\"Comment\":\"some measurement comment\",\"Label\":\"\",\"Id\":31,\"Trend\":\"\",\"Summary\":\"\"}";
+		String stressString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Stress\",\"ExpenseRefs\":\"\",\"Comment\":\"some stress comment\",\"ShortLabel\":\"\",\"Text\":\"\",\"Detail\":\"\",\"Severity\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429543143\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":30,\"Scope\":\"\"}";
+		String groupBoxString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"GroupBox\",\"Comment\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429759616\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":39,\"Label\":\"New Group Box\"}";
+		String reportTemplateString  = "{\"AssignmentIds\":\"\",\"IncludeSectionCodes\":\"\",\"TimeStampModified\":\"1245429885769\",\"ExpenseRefs\":\"\",\"Comment\":\"some report template comment\",\"Label\":\"\",\"Id\":58,\"ShortLabel\":\"\"}";
+		String taggedObjectSetString  = "{\"AssignmentIds\":\"\",\"TimeStampModified\":\"1245429777788\",\"ExpenseRefs\":\"\",\"Comment\":\"some taggedObjectSet comment\",\"Label\":\"\",\"Id\":41,\"ShortLabel\":\"\",\"TaggedObjectRefs\":\"\"}";
+		String scopeBoxString  = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"ScopeBox\",\"ExpenseRefs\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429785629\",\"KeyEcologicalAttributeIds\":\"\",\"Id\":42,\"Label\":\"\",\"ScopeBoxColorCode\":\"\"}";
+		String humanWelfareTargetString  = "{\"ObjectiveIds\":\"\",\"ViabilityMode\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"HumanWelfareTarget\",\"ExpenseRefs\":\"\",\"Comment\":\"some human welfare target comment\",\"ShortLabel\":\"\",\"Text\":\"\",\"TargetStatus\":\"\",\"SubTargetRefs\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429826030\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"New Human Welfare Target\",\"Id\":44,\"CurrentStatusJustification\":\"\"}";
+		
+		File jsonDir = createJsonDir();
+		final int TASK_TYPE = 3;
+		int[] taskIds = createAndPopulateObjectDir(jsonDir, TASK_TYPE, new String[] {taskString, });
+		
+		final int CAUSE_TYPE = 20;
+		int[] causeIds = createAndPopulateObjectDir(jsonDir, CAUSE_TYPE, new String[] {causeString});
+		
+		final int STRATEGY_TYPE = 21;
+		int[] strategyIds = createAndPopulateObjectDir(jsonDir, STRATEGY_TYPE, new String[] {strategyString});
+		
+		final int TARGET_TYPE = 22;
+		int[] targetIds = createAndPopulateObjectDir(jsonDir, TARGET_TYPE, new String[] {targetString});
+		 
+		final int INTERMEDIATE_RESULT_TYPE = 23;
+		int[] intermediateResultIds = createAndPopulateObjectDir(jsonDir, INTERMEDIATE_RESULT_TYPE, new String[] {intermediateResultString});
+		
+		final int THREAT_REDUCTION_RESULT_TYPE = 25;
+		int[] threatReductionResultIds = createAndPopulateObjectDir(jsonDir, THREAT_REDUCTION_RESULT_TYPE, new String[]{threatReductionResultString});
+		
+		final int TEXT_BOX_TYPE = 26;
+		int[] textBoxIds = createAndPopulateObjectDir(jsonDir, TEXT_BOX_TYPE, new String[]{textBoxString});
+		
+		final int INDICATOR_TYPE = 8;
+		int[] indicatorIds = createAndPopulateObjectDir(jsonDir, INDICATOR_TYPE, new String[]{indicatorString});
+		
+		final int MEASUREMENT_TYPE = 32;
+		int[] measurementIds = createAndPopulateObjectDir(jsonDir, MEASUREMENT_TYPE, new String[]{measurementString});
+		
+		final int STRESS_TYPE = 33;
+		int[] stressIds = createAndPopulateObjectDir(jsonDir, STRESS_TYPE, new String[]{stressString});
+		
+		final int GROUP_BOX_TYPE = 35;
+		int[] groupBoxIds = createAndPopulateObjectDir(jsonDir, GROUP_BOX_TYPE, new String[]{groupBoxString});
+		
+		final int REPORT_TEMPLATE_TYPE = 46;
+		int[] reportTemplateIds = createAndPopulateObjectDir(jsonDir, REPORT_TEMPLATE_TYPE, new String[]{reportTemplateString});
+		
+		final int TAGGED_OBJECT_SET_TYPE = 47;
+		int[] taggedObjectSetIds = createAndPopulateObjectDir(jsonDir, TAGGED_OBJECT_SET_TYPE, new String[]{taggedObjectSetString});
+		
+		final int SCOPE_BOX_TYPE = 50;
+		int[] scopeBoxIds = createAndPopulateObjectDir(jsonDir, SCOPE_BOX_TYPE, new String[]{scopeBoxString});
+		
+		final int HUMAN_WELFARE_TARGET_TYPE = 52;
+		int[] humanWelfareTargetIds = createAndPopulateObjectDir(jsonDir, HUMAN_WELFARE_TARGET_TYPE, new String[]{humanWelfareTargetString});
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion45();
+		
+		verifyCommentsField(jsonDir, TASK_TYPE, taskIds, "");		
+		verifyCommentsField(jsonDir, CAUSE_TYPE, causeIds, "some cause comment");
+		verifyCommentsField(jsonDir, STRATEGY_TYPE, strategyIds, "some strategy comment");
+		verifyCommentsField(jsonDir, TARGET_TYPE, targetIds, "some target comment");
+		verifyCommentsField(jsonDir, INTERMEDIATE_RESULT_TYPE, intermediateResultIds, "some intermediate result comment");
+		verifyCommentsField(jsonDir, THREAT_REDUCTION_RESULT_TYPE, threatReductionResultIds, "some threat reduction result comment");
+		verifyCommentsField(jsonDir, TEXT_BOX_TYPE, textBoxIds, "");
+		verifyCommentsField(jsonDir, INDICATOR_TYPE, indicatorIds, "some indicator comment");
+		verifyCommentsField(jsonDir, MEASUREMENT_TYPE, measurementIds, "some measurement comment");
+		verifyCommentsField(jsonDir, STRESS_TYPE, stressIds, "some stress comment");
+		verifyCommentsField(jsonDir, GROUP_BOX_TYPE, groupBoxIds, "");
+		verifyCommentsField(jsonDir, REPORT_TEMPLATE_TYPE, reportTemplateIds, "some report template comment");
+		verifyCommentsField(jsonDir, TAGGED_OBJECT_SET_TYPE, taggedObjectSetIds, "some taggedObjectSet comment");
+		verifyCommentsField(jsonDir, SCOPE_BOX_TYPE, scopeBoxIds, "");
+		verifyCommentsField(jsonDir, HUMAN_WELFARE_TARGET_TYPE, humanWelfareTargetIds, "some human welfare target comment");
+	}
+
+	private void verifyCommentsField(File jsonDir, final int objectType, int[] objectIds, String expectedCommensValue) throws Exception
+	{	
+		int objectId = objectIds[0];
+		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);		
+		File objectFile =  new File(objectDir, Integer.toString(objectId));
+		EnhancedJsonObject json = new EnhancedJsonObject(readFile(objectFile));
+		
+		assertFalse("should not contain comment field?", json.has("Comment"));
+		assertTrue("should contain comments field?", json.has("Comments"));
+		
+		String commentsData = json.getString("Comments");
+		assertEquals("wrong comments value?", expectedCommensValue, commentsData);
+	}
+		
 	public void testMoveStressCommentsToCommentField() throws Exception
 	{
 		String stressWithNoComments = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Stress\",\"ExpenseRefs\":\"\",\"Comment\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"Detail\":\"\",\"Severity\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245332434233\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":29,\"Scope\":\"\"}";
