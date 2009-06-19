@@ -125,7 +125,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalProgressReportStatus(out, indicator);
 		writeOptionalElement(out, WHO_MONITORS, createAppendedResourceNames(out, indicator));
 		writeOptionalElement(out, ANNUAL_COST, getAnnualCost(indicator)); 
-		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
+		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENTS);
 
 		writeEndElement(out, INDICATOR);
 	}

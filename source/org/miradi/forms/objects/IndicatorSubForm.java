@@ -31,6 +31,6 @@ public class IndicatorSubForm extends FieldPanelSpec
 		int type = Indicator.getObjectType();
 		addStandardNameRow(new IndicatorIcon(), EAM.text("Indicator"), type, new String[]{Indicator.TAG_SHORT_LABEL, Indicator.TAG_LABEL});
 		addLabelAndField(type, Indicator.TAG_DETAIL);
-		addLabelAndField(type, Indicator.TAG_COMMENT);
+		addLabelAndField(type, Indicator.TAG_COMMENTS);
 	}
 }
