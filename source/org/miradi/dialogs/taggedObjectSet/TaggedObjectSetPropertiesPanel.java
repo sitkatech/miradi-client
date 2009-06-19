@@ -42,7 +42,7 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 		
 		addFieldWithEditButton(EAM.text("Tagged Items"), createReadOnlyObjectList(TaggedObjectSet.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
 		
-		addField(createMultilineField(TaggedObjectSet.TAG_COMMENT));
+		addField(createMultilineField(TaggedObjectSet.TAG_COMMENTS));
 		updateFieldsFromProject();
 	}
 	
