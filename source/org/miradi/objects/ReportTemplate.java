@@ -89,16 +89,16 @@ public class ReportTemplate extends BaseObject
 
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 		content = new CodeListData(TAG_INCLUDE_SECTION_CODES, getQuestion(ReportTemplateContentQuestion.class));
-		comment = new StringData(TAG_COMMENT);
+		comment = new StringData(TAG_COMMENTS);
 
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INCLUDE_SECTION_CODES, content);
-		addField(TAG_COMMENT, comment);
+		addField(TAG_COMMENTS, comment);
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INCLUDE_SECTION_CODES = "IncludeSectionCodes";
-	public static final String TAG_COMMENT = "Comments";
+	public static final String TAG_COMMENTS = "Comments";
 	
 	private StringData shortLabel;
 	private CodeListData content;

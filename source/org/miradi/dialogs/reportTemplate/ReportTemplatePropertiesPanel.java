@@ -39,7 +39,7 @@ public class ReportTemplatePropertiesPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Report Template"), new ReportTemplateIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		
 		addField(createSingleColumnCodeListField(ReportTemplate.getObjectType(), ReportTemplate.TAG_INCLUDE_SECTION_CODES, getProject().getQuestion(ReportTemplateContentQuestion.class)));
-		addField(createMultilineField(ReportTemplate.TAG_COMMENT));
+		addField(createMultilineField(ReportTemplate.TAG_COMMENTS));
 		updateFieldsFromProject();
 	}
 	
