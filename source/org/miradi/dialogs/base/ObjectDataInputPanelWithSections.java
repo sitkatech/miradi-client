@@ -28,7 +28,6 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
 
@@ -60,12 +59,6 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		}
 
 		private String title;
-	}
-	
-	@Override
-	public ObjectDataInputField addField(ObjectDataInputField field)
-	{
-		throw new RuntimeException(EAM.text("Should not use this addField method, please use addSingleField instead."));
 	}
 	
 	public void createSingleSection(String title)
@@ -120,9 +113,10 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		singleSection.addFieldsOnOneLine(labelComponent, componentsOrFields);
 	}
 	
-	public void addSingleField(ObjectDataInputField field)
+	@Override
+	public ObjectDataInputField addField(ObjectDataInputField field)
 	{
-		singleSection.addField(field);
+		return singleSection.addField(field);
 	}
  
 	@Override

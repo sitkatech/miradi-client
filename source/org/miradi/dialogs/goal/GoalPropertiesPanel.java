@@ -47,10 +47,10 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		ObjectDataInputField labelField = createExpandableField(Goal.getObjectType(), Goal.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Goal"), new GoalIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
-		addSingleField(createMultilineField(Goal.getObjectType(), Desire.TAG_FULL_TEXT));
+		addField(createMultilineField(Goal.getObjectType(), Desire.TAG_FULL_TEXT));
 		
-		addSingleField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));
-		addSingleField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
+		addField(createReadonlyTextField(Goal.PSEUDO_TAG_FACTOR));
+		addField(createReadonlyTextField(Goal.PSEUDO_TAG_DIRECT_THREATS));
 		
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Goal.getObjectType(), Goal.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalStrategyActivityRelevancyList.class), picker));
@@ -61,7 +61,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditGoalProgressPercent.class), getPicker());
 		addFieldWithEditButton(progressPercentsLabel, readOnlyProgressPercentsList, editProgressPercentButton);
 		
-		addSingleField(createMultilineField(Goal.TAG_COMMENTS));
+		addField(createMultilineField(Goal.TAG_COMMENTS));
 		
 		updateFieldsFromProject();
 	}
