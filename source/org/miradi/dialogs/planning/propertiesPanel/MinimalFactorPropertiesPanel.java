@@ -43,8 +43,8 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSectio
 		
 		addCustomInBetweenFields();
 		
-		addField(createMultilineField(Factor.TAG_TEXT));
-		addField(createMultilineField(Factor.TAG_COMMENT));
+		addSingleField(createMultilineField(Factor.TAG_TEXT));
+		addSingleField(createMultilineField(Factor.TAG_COMMENT));
 	}
 
 	protected void addCustomInBetweenFields()

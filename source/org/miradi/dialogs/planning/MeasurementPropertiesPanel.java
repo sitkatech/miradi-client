@@ -49,7 +49,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		ObjectDataInputField summaryField = createMediumStringField(Measurement.TAG_SUMMARY);
 		addFieldsOnOneLine(measurementLabel, new Object[]{dateLabel, dateField, valueLabel, summaryField,});
 
-		addField(createMultilineField(Measurement.TAG_DETAIL));		
+		addSingleField(createMultilineField(Measurement.TAG_DETAIL));		
 		
 		PanelTitleLabel statusLabel = new PanelTitleLabel(EAM.text("Current Status"));
 		statusField = createRatingChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS, new StatusQuestion());
@@ -58,8 +58,8 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		PanelTitleLabel trendLabelField = new PanelFieldLabel(trendField.getObjectType(), trendField.getTag());
 		addFieldsOnOneLine(statusLabel, new Object[]{statusLabelField, statusField, trendLabelField, trendField});
 
-		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
-		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENT));
+		addSingleField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
+		addSingleField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENT));
 
 		updateFieldsFromProject();
 	}
