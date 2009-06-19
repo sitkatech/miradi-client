@@ -643,7 +643,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS, StatusQuestion.GOOD);
 		fillObjectUsingCommand(measurement, Measurement.TAG_DATE, "2007-03-19");
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.ROUGH_GUESS_CODE);
-		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENT, "Some Measurement comment");
+		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENTS, "Some Measurement comment");
 	}
 	
 	public void populateObjective(Objective objective) throws Exception

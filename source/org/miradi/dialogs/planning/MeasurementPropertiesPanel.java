@@ -59,7 +59,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldsOnOneLine(statusLabel, new Object[]{statusLabelField, statusField, trendLabelField, trendField});
 
 		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
-		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENT));
+		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENTS));
 
 		updateFieldsFromProject();
 	}
