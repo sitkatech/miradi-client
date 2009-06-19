@@ -33,6 +33,6 @@ public class TaggedObjectSetPoolTableModel extends ObjectPoolTableModel
 
 	public static final String[] COLUMN_TAGS = new String[] {
 		ReportTemplate.TAG_LABEL,
-		ReportTemplate.TAG_COMMENT,
+		ReportTemplate.TAG_COMMENTS,
 	};
 }
