@@ -373,7 +373,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importCodeField(indicatorNode, PRIORITY, indicatorRef, Indicator.TAG_PRIORITY, getCodeMapHelper().getConProToMiradiRatingMap());
 			importProgressReports(indicatorNode, indicatorRef, Indicator.TAG_PROGRESS_REPORT_REFS);
 			importMeasurements(indicatorNode, indicatorRef);
-			importField(indicatorNode, COMMENT, indicatorRef, Indicator.TAG_COMMENT);
+			importField(indicatorNode, COMMENT, indicatorRef, Indicator.TAG_COMMENTS);
 		}
 	}
 	

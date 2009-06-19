@@ -330,7 +330,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importProgressReport(indicatorNode, indicatorRef);
 			importField(indicatorNode, WHO_MONITORS, indicatorRef, Indicator.TAG_DETAIL);
 			importBudgetData(indicatorNode, indicatorRef);
-			importField(indicatorNode, COMMENT, indicatorRef, Indicator.TAG_COMMENT);
+			importField(indicatorNode, COMMENT, indicatorRef, Indicator.TAG_COMMENTS);
 		}
 	}
 	

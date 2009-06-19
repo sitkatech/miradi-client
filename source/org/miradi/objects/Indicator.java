@@ -311,7 +311,7 @@ public class Indicator extends BaseObject
 		measurementRefs = new ORefListData(TAG_MEASUREMENT_REFS);
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		detail = new StringData(TAG_DETAIL);
-		comment = new StringData(TAG_COMMENT);
+		comment = new StringData(TAG_COMMENTS);
 		viabilityRatingsComment = new StringData(TAG_VIABILITY_RATINGS_COMMENT);
 	    thresholdDetails = new StringMapData(TAG_THRESHOLD_DETAILS);
 
@@ -343,7 +343,7 @@ public class Indicator extends BaseObject
 		addField(TAG_MEASUREMENT_REFS, measurementRefs);
 		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 		addField(TAG_DETAIL, detail);
-		addField(TAG_COMMENT, comment);
+		addField(TAG_COMMENTS, comment);
 		addField(TAG_VIABILITY_RATINGS_COMMENT, viabilityRatingsComment);
 		addField(TAG_THRESHOLD_DETAILS, thresholdDetails); 
 		
@@ -376,7 +376,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public static final String TAG_DETAIL = "Detail";
-	public static final String TAG_COMMENT = "Comments";
+	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_VIABILITY_RATINGS_COMMENT = "ViabilityRatingsComment";
 	public static final String TAG_THRESHOLD_DETAILS = "ThresholdDetails"; 
 

@@ -127,7 +127,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeStartElementWithAttribute(out, INDICATOR, ID, indicator.getId().toString());
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
-		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENT);
+		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENTS);
 		writeMeasurements(out, indicator.getMeasurementRefs());		
 		writeIds(out, indicator.getMethodRefs(), METHODS,	METHOD_ID);
 		writeProgressReports(out, indicator.getProgressReportRefs());
