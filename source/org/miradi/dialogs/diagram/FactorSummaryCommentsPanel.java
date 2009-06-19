@@ -31,7 +31,7 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 	{
 		super(project, factorType);
 
-		addField(createMultilineField(factorType, Factor.TAG_COMMENT));		
+		addField(createMultilineField(factorType, Factor.TAG_COMMENTS));		
 	}
 
 	@Override

@@ -197,7 +197,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			importField(strategyNode, TAXONOMY_CODE, strategyRef, Strategy.TAG_TAXONOMY_CODE);
 			
 			importStrategyStatus(strategyNode, strategyRef);
-			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
+			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENTS);
 			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importProgressReport(strategyNode, strategyRef);
 			importActivities(strategyNode, strategyRef);
@@ -594,7 +594,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 			
 			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
 			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
-			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
+			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENTS);
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 			importOptionalTargetViabilityRankElement(targetNode, targetRef);

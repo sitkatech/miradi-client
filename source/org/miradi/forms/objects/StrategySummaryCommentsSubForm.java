@@ -27,6 +27,6 @@ public class StrategySummaryCommentsSubForm extends FieldPanelSpec
 {
 	public StrategySummaryCommentsSubForm()
 	{
-		addLabelAndField(Strategy.getObjectType(), Factor.TAG_COMMENT);
+		addLabelAndField(Strategy.getObjectType(), Factor.TAG_COMMENTS);
 	}
 }

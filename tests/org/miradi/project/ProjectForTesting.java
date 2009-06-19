@@ -501,7 +501,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(target, Target.TAG_LABEL, "Reefs " + target.getId().toString());
 		fillObjectUsingCommand(target, Target.TAG_TEXT, "Some Description Text");
-		fillObjectUsingCommand(target, Target.TAG_COMMENT, "Some comment Text");
+		fillObjectUsingCommand(target, Target.TAG_COMMENTS, "Some comment Text");
 		fillObjectUsingCommand(target, Target.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
 		fillObjectUsingCommand(target, Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
 		fillObjectUsingCommand(target, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
@@ -669,7 +669,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateStrategy(Strategy strategy) throws Exception
 	{
 		fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "Some Strategy label");
-		fillObjectUsingCommand(strategy, Strategy.TAG_COMMENT, "Some Strategy comments");
+		fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, "Some Strategy comments");
 		
 		final int FIRST_CODE = 0;
 		ChoiceQuestion question = getQuestion(StrategyTaxonomyQuestion.class);

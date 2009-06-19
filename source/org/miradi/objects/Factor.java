@@ -517,7 +517,7 @@ abstract public class Factor extends BaseObject
 	void clear()
 	{
 		super.clear();
-		comment = new StringData(TAG_COMMENT);
+		comment = new StringData(TAG_COMMENTS);
 		text = new StringData(TAG_TEXT);
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
@@ -532,7 +532,7 @@ abstract public class Factor extends BaseObject
 		pseudoResultsChainRefs = new PseudoORefListData(PSEUDO_TAG_RESULTS_CHAIN_REFS);
 		pseudoTagReferringTagRefs = new PseudoORefListData(PSEUDO_TAG_REFERRING_TAG_REFS);
 		
-		addField(TAG_COMMENT, comment);
+		addField(TAG_COMMENTS, comment);
 		addField(TAG_TEXT, text);
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INDICATOR_IDS, indicators);
@@ -561,7 +561,7 @@ abstract public class Factor extends BaseObject
 	public static final FactorType TYPE_HUMAN_WELFARE_TARGET = new FactorTypeHumanWelfareTarget();
 	
 	public static final String TAG_NODE_TYPE = "Type";
-	public static final String TAG_COMMENT = "Comments";
+	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_TEXT = "Text";
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";

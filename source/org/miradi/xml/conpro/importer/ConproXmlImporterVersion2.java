@@ -204,7 +204,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			importField(strategyNode, TAXONOMY_CODE, strategyRef, Strategy.TAG_TAXONOMY_CODE);
 			
 			importStrategyStatus(strategyNode, strategyRef);
-			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENT);
+			importField(strategyNode, COMMENT, strategyRef, Strategy.TAG_COMMENTS);
 			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importProgressReports(strategyNode, strategyRef, Strategy.TAG_PROGRESS_REPORT_REFS);
 			importActivities(strategyNode, strategyRef);
@@ -354,7 +354,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			
 			importField(methodNode, METHOD_NAME, methodRef, Task.TAG_LABEL);
 			importField(methodNode, METHOD_DETAIL, methodRef, Task.TAG_DETAILS);
-			importField(methodNode, METHOD_COMMENT, methodRef, Task.TAG_COMMENT);
+			importField(methodNode, METHOD_COMMENT, methodRef, Task.TAG_COMMENTS);
 			importBudgetData(methodNode, methodRef);
 		}
 	}
@@ -652,7 +652,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 			
 			importField(targetNode, TARGET_NAME, targetRef, Target.TAG_LABEL);
 			importField(targetNode, TARGET_DESCRIPTION, targetRef, Target.TAG_TEXT);
-			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENT);
+			importField(targetNode, TARGET_DESCRIPTION_COMMENT, targetRef, Target.TAG_COMMENTS);
 			importField(targetNode, TARGET_VIABILITY_COMMENT, targetRef	, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			importCodeField(targetNode, TARGET_VIABILITY_RANK, targetRef, Target.TAG_TARGET_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 			importOptionalTargetViabilityRankElement(targetNode, targetRef);
