@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-19 09:46-0500\n"
+"POT-Creation-Date: 2009-06-19 10:11-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -7445,8 +7445,8 @@ msgstr "Indikator yang Relevan"
 msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
 msgstr "Persentase Kemajuan"
 
-msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategys"
-msgstr "Strategi yang Relevan"
+msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
+msgstr ""
 
 msgid "FieldLabel|10.Goal|Goal"
 msgstr "Sasaran "
@@ -7475,6 +7475,15 @@ msgstr "Komentar "
 #, fuzzy
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 msgstr "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
+
+msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
+msgstr ""
+
+msgid "FieldLabel|10.PseudoRelevantIndicatorRefs|Relevant Indicators"
+msgstr ""
+
+msgid "FieldLabel|10.PseudoRelevantStrategyRefs|Relevant Strategies"
+msgstr ""
 
 msgid "FieldLabel|11.ProjectMetadata|Project"
 msgstr ""
@@ -32693,6 +32702,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategys"
+#~ msgstr "Strategi yang Relevan"
 
 #~ msgid "FieldLabel|33.Comments|Comments"
 #~ msgstr "Komentar"

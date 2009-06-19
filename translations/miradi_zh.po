@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-19 09:46-0500\n"
+"POT-Creation-Date: 2009-06-19 10:11-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -7259,8 +7259,8 @@ msgstr "相关指示物"
 msgid "FieldLabel|9.ProgressPrecentRefs|Progress Precents"
 msgstr "进度百分比"
 
-msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategys"
-msgstr "相关策略"
+msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategies"
+msgstr ""
 
 msgid "FieldLabel|10.Goal|Goal"
 msgstr "总目标 \t\t"
@@ -7289,6 +7289,15 @@ msgstr "评论 \t\t"
 #, fuzzy
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 msgstr "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
+
+msgid "FieldLabel|10.ProgressPrecentRefs|Progress Precents"
+msgstr ""
+
+msgid "FieldLabel|10.PseudoRelevantIndicatorRefs|Relevant Indicators"
+msgstr ""
+
+msgid "FieldLabel|10.PseudoRelevantStrategyRefs|Relevant Strategies"
+msgstr ""
 
 msgid "FieldLabel|11.ProjectMetadata|Project"
 msgstr ""
@@ -29300,6 +29309,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategys"
+#~ msgstr "相关策略"
 
 #~ msgid "FieldLabel|33.Comments|Comments"
 #~ msgstr "评论 \t\t"
