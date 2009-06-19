@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-19 10:19-0500\n"
+"POT-Creation-Date: 2009-06-19 14:23-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6841,7 +6841,7 @@ msgstr ""
 msgid "FieldLabel|8.Detail|Details"
 msgstr ""
 
-msgid "FieldLabel|8.Comment|Comments"
+msgid "FieldLabel|8.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
@@ -7251,7 +7251,7 @@ msgid ""
 "FieldLabel|12.PseudoLatestProgressPercentDetails|Progress Percent Details"
 msgstr ""
 
-msgid "FieldLabel|12.Comment|Comments"
+msgid "FieldLabel|12.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|12.PseudoBudgetRollupCost|Budget"
@@ -7374,7 +7374,7 @@ msgstr ""
 msgid "FieldLabel|20.ShortLabel|ID"
 msgstr ""
 
-msgid "FieldLabel|20.Comment|Comments"
+msgid "FieldLabel|20.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|20.TaxonomyCode|Standard Classification"
@@ -7413,7 +7413,7 @@ msgstr ""
 msgid "FieldLabel|21.Status|Draft"
 msgstr ""
 
-msgid "FieldLabel|21.Comment|Comments"
+msgid "FieldLabel|21.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|21.TaxonomyCode|Standard Classification"
@@ -7515,7 +7515,7 @@ msgstr ""
 msgid "FieldLabel|22.SpeciesLatinName|Species Latin Name"
 msgstr ""
 
-msgid "FieldLabel|22.Comment|Comments"
+msgid "FieldLabel|22.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|22.Text|Details"
@@ -7542,7 +7542,7 @@ msgstr ""
 msgid "FieldLabel|23.Text|Details"
 msgstr ""
 
-msgid "FieldLabel|23.Comment|Comment"
+msgid "FieldLabel|23.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|24.Label|Results Chain Name"
@@ -7584,7 +7584,7 @@ msgstr ""
 msgid "FieldLabel|25.Text|Details"
 msgstr ""
 
-msgid "FieldLabel|25.Comment|Comment"
+msgid "FieldLabel|25.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|26.Label|Text"
@@ -7638,7 +7638,7 @@ msgstr ""
 msgid "FieldLabel|32.StatusConfidence|Source"
 msgstr ""
 
-msgid "FieldLabel|32.Comment|Comments"
+msgid "FieldLabel|32.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|32.Summary|Measurement Value"
@@ -7674,7 +7674,7 @@ msgstr ""
 msgid "FieldLabel|33.Severity|Severity"
 msgstr ""
 
-msgid "FieldLabel|33.Comment|Comments"
+msgid "FieldLabel|33.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
@@ -7915,7 +7915,7 @@ msgstr ""
 msgid "FieldLabel|46.ShortLabel|ID"
 msgstr ""
 
-msgid "FieldLabel|46.Comment|Comments"
+msgid "FieldLabel|46.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|46.IncludeSectionCodes|Content"
@@ -7927,7 +7927,7 @@ msgstr ""
 msgid "FieldLabel|47.Label|Name"
 msgstr ""
 
-msgid "FieldLabel|47.Comment|Comments"
+msgid "FieldLabel|47.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
@@ -7945,7 +7945,7 @@ msgstr ""
 msgid "FieldLabel|50.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgstr ""
 
-msgid "FieldLabel|50.Comment|Comment"
+msgid "FieldLabel|50.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|50.ShortLabel|ID"
@@ -7978,7 +7978,7 @@ msgstr ""
 msgid "FieldLabel|52.PseudoTagResultsChainDiagramRefs|Result Chains"
 msgstr ""
 
-msgid "FieldLabel|52.Comment|Comment"
+msgid "FieldLabel|52.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|52.CurrentStatusJustification|Current Status Justification"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-19 10:19-0500\n"
+"POT-Creation-Date: 2009-06-19 14:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -7381,8 +7381,8 @@ msgstr "Calificación"
 msgid "FieldLabel|8.Detail|Details"
 msgstr "Detalles"
 
-msgid "FieldLabel|8.Comment|Comments"
-msgstr "Comentarios"
+msgid "FieldLabel|8.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
 msgstr "Comentarios"
@@ -7795,9 +7795,8 @@ msgid ""
 "FieldLabel|12.PseudoLatestProgressPercentDetails|Progress Percent Details"
 msgstr "Detalles del porcentaje de progreso "
 
-#, fuzzy
-msgid "FieldLabel|12.Comment|Comments"
-msgstr "FieldLabel|12.Comment|Comments"
+msgid "FieldLabel|12.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|12.PseudoBudgetRollupCost|Budget"
 msgstr ""
@@ -7920,8 +7919,8 @@ msgstr "Amenaza"
 msgid "FieldLabel|20.ShortLabel|ID"
 msgstr "ID"
 
-msgid "FieldLabel|20.Comment|Comments"
-msgstr "Comentarios"
+msgid "FieldLabel|20.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|20.TaxonomyCode|Standard Classification"
 msgstr "Clasificación estándar"
@@ -7961,8 +7960,8 @@ msgstr "ID"
 msgid "FieldLabel|21.Status|Draft"
 msgstr "Borrador"
 
-msgid "FieldLabel|21.Comment|Comments"
-msgstr "Comentarios"
+msgid "FieldLabel|21.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|21.TaxonomyCode|Standard Classification"
 msgstr "Clasificación estándar"
@@ -8067,8 +8066,8 @@ msgstr "FieldLabel|22.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgid "FieldLabel|22.SpeciesLatinName|Species Latin Name"
 msgstr "Nombre en latín de las especies"
 
-msgid "FieldLabel|22.Comment|Comments"
-msgstr "Comentarios"
+msgid "FieldLabel|22.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|22.Text|Details"
 msgstr "Detalles"
@@ -8097,8 +8096,8 @@ msgstr "FieldLabel|23.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgid "FieldLabel|23.Text|Details"
 msgstr "Detalles"
 
-msgid "FieldLabel|23.Comment|Comment"
-msgstr "Comentario"
+msgid "FieldLabel|23.Comments|Comment"
+msgstr ""
 
 msgid "FieldLabel|24.Label|Results Chain Name"
 msgstr "Nombre de la cadena de resultados"
@@ -8141,8 +8140,8 @@ msgstr "FieldLabel|25.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgid "FieldLabel|25.Text|Details"
 msgstr "Detalles"
 
-msgid "FieldLabel|25.Comment|Comment"
-msgstr "Comentario"
+msgid "FieldLabel|25.Comments|Comment"
+msgstr ""
 
 msgid "FieldLabel|26.Label|Text"
 msgstr "Texto"
@@ -8197,8 +8196,8 @@ msgstr "Medición"
 msgid "FieldLabel|32.StatusConfidence|Source"
 msgstr "Origen"
 
-msgid "FieldLabel|32.Comment|Comments"
-msgstr "Comentarios"
+msgid "FieldLabel|32.Comments|Comments"
+msgstr ""
 
 #, fuzzy
 msgid "FieldLabel|32.Summary|Measurement Value"
@@ -8235,8 +8234,8 @@ msgstr "Alcance"
 msgid "FieldLabel|33.Severity|Severity"
 msgstr "Gravedad"
 
-msgid "FieldLabel|33.Comment|Comments"
-msgstr ""
+msgid "FieldLabel|33.Comments|Comments"
+msgstr "Comentarios"
 
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
 msgstr "Calificación del resumen"
@@ -8477,8 +8476,8 @@ msgstr "Nombre"
 msgid "FieldLabel|46.ShortLabel|ID"
 msgstr "|ID "
 
-msgid "FieldLabel|46.Comment|Comments"
-msgstr "Comentarios "
+msgid "FieldLabel|46.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|46.IncludeSectionCodes|Content"
 msgstr "Contenido "
@@ -8489,8 +8488,8 @@ msgstr "ID"
 msgid "FieldLabel|47.Label|Name"
 msgstr "Nomber"
 
-msgid "FieldLabel|47.Comment|Comments"
-msgstr "Comentarios "
+msgid "FieldLabel|47.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
 msgstr ""
@@ -8507,7 +8506,7 @@ msgstr ""
 msgid "FieldLabel|50.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgstr ""
 
-msgid "FieldLabel|50.Comment|Comment"
+msgid "FieldLabel|50.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|50.ShortLabel|ID"
@@ -8540,7 +8539,7 @@ msgstr ""
 msgid "FieldLabel|52.PseudoTagResultsChainDiagramRefs|Result Chains"
 msgstr ""
 
-msgid "FieldLabel|52.Comment|Comment"
+msgid "FieldLabel|52.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|52.CurrentStatusJustification|Current Status Justification"
@@ -32857,11 +32856,39 @@ msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
 
+#~ msgid "FieldLabel|8.Comment|Comments"
+#~ msgstr "Comentarios"
+
+#, fuzzy
+#~ msgid "FieldLabel|12.Comment|Comments"
+#~ msgstr "FieldLabel|12.Comment|Comments"
+
+#~ msgid "FieldLabel|20.Comment|Comments"
+#~ msgstr "Comentarios"
+
+#~ msgid "FieldLabel|21.Comment|Comments"
+#~ msgstr "Comentarios"
+
+#~ msgid "FieldLabel|22.Comment|Comments"
+#~ msgstr "Comentarios"
+
+#~ msgid "FieldLabel|23.Comment|Comment"
+#~ msgstr "Comentario"
+
+#~ msgid "FieldLabel|25.Comment|Comment"
+#~ msgstr "Comentario"
+
+#~ msgid "FieldLabel|32.Comment|Comments"
+#~ msgstr "Comentarios"
+
+#~ msgid "FieldLabel|46.Comment|Comments"
+#~ msgstr "Comentarios "
+
+#~ msgid "FieldLabel|47.Comment|Comments"
+#~ msgstr "Comentarios "
+
 #~ msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategys"
 #~ msgstr "Estrategias relevantes "
-
-#~ msgid "FieldLabel|33.Comments|Comments"
-#~ msgstr "Comentarios"
 
 #~ msgid "FileFilter|JASPER (*.jasper)"
 #~ msgstr "JASPER (*.jasper)"
