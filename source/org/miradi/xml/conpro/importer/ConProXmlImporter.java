@@ -444,7 +444,7 @@ public class ConProXmlImporter implements ConProMiradiXml
 		importCodeField(viabilityAssessmentNode, CURRENT_VIABILITY_RATING, measurementRef, Measurement.TAG_STATUS, getCodeMapHelper().getConProToMiradiRankingMap());
 		importField(viabilityAssessmentNode, CURRENT_RATING_DATE, measurementRef, Measurement.TAG_DATE);
 		importCodeField(viabilityAssessmentNode, CONFIDENE_CURRENT_RATING, measurementRef, Measurement.TAG_STATUS_CONFIDENCE, getCodeMapHelper().getConProToMiradiStatusConfidenceMap());
-		importField(viabilityAssessmentNode, CURRENT_RATING_COMMENT, measurementRef, Measurement.TAG_COMMENT);		
+		importField(viabilityAssessmentNode, CURRENT_RATING_COMMENT, measurementRef, Measurement.TAG_COMMENTS);		
 	}
 
 	private boolean isEmpty(Node node, String element) throws Exception
