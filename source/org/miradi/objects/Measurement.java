@@ -148,7 +148,7 @@ public class Measurement extends BaseObject
 	public static final String TAG_SUMMARY = "Summary";
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
-	public static final String TAG_COMMENT = "Comment";
+	public static final String TAG_COMMENT = "Comments";
 
 	public static final String META_COLUMN_TAG = "MeasurementMetaColumnTag";
 

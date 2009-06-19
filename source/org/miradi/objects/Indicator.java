@@ -376,7 +376,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_MEASUREMENT_REFS = "MeasurementRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public static final String TAG_DETAIL = "Detail";
-	public static final String TAG_COMMENT = "Comment";
+	public static final String TAG_COMMENT = "Comments";
 	public static final String TAG_VIABILITY_RATINGS_COMMENT = "ViabilityRatingsComment";
 	public static final String TAG_THRESHOLD_DETAILS = "ThresholdDetails"; 
 
