@@ -27,7 +27,6 @@ import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import org.martus.swing.UiLabel;
 import org.miradi.dialogfields.ObjectDataInputField;
@@ -128,14 +127,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		return field;
 	}
 
-	public ObjectDataInputField addField(ObjectDataInputField field)
-	{
-		super.addField(field);
-		addLabel(field.getObjectType(), field.getTag());
-		addFieldComponent(field.getComponent());
-		return field;
-	}
-	
 	public ObjectDataInputField addFieldWithCustomLabel(ObjectDataInputField field, UiLabel label)
 	{
 		super.addField(field);
@@ -263,37 +254,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		add(fieldPanel);
 	}
 
-	public void addLabelWithIcon(String translatedString, Icon icon)
-	{
-		UiLabel label = new PanelTitleLabel(translatedString, icon);
-		addLabel(label);
-	}
-	
-	public void addLabel(String translatedText)
-	{
-		UiLabel label = new PanelTitleLabel(translatedText);
-		addLabel(label);
-	}
-	
-	public void addLabel(int objectType, String fieldTag)
-	{
-		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
-		addLabel(label);
-	}
-	
-	public void addLabel(int objectType, String fieldTag, Icon icon)
-	{
-		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
-		label.setIcon(icon);
-		addLabel(label);
-	}
-
-	public void addLabel(UiLabel label)
-	{
-		label.setVerticalAlignment(SwingConstants.TOP);
-		add(label);
-	}
-	
 	static final int HGAP = 6;
 	static final int VGAP = 6;
 }

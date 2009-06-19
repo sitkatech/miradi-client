@@ -36,6 +36,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import org.martus.swing.UiLabel;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogfields.IndicatorRelevancyOverrideListField;
 import org.miradi.dialogfields.ObjectCheckBoxField;
@@ -64,6 +65,7 @@ import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.ObjectStringInputField;
 import org.miradi.dialogfields.ObjectStringMapInputField;
 import org.miradi.dialogfields.RadioButtonsField;
+import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitledBorder;
 import org.miradi.dialogs.treetables.TreeTableNode;
@@ -268,6 +270,14 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	}
 		
 	public ObjectDataInputField addField(ObjectDataInputField field)
+	{
+		addFieldToList(field);
+		addLabel(field.getObjectType(), field.getTag());
+		addFieldComponent(field.getComponent());
+		return field;
+	}
+	
+	public ObjectDataInputField addFieldToList(ObjectDataInputField field)
 	{
 		getFields().add(field);
 		return field;
@@ -818,6 +828,41 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		add(panel);
 	}
 	
+	public void addLabelWithIcon(String translatedString, Icon icon)
+	{
+		UiLabel label = new PanelTitleLabel(translatedString, icon);
+		addLabel(label);
+	}
+
+
+	public void addLabel(String translatedText)
+	{
+		UiLabel label = new PanelTitleLabel(translatedText);
+		addLabel(label);
+	}
+
+
+	public void addLabel(int objectType, String fieldTag)
+	{
+		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
+		addLabel(label);
+	}
+
+
+	public void addLabel(int objectType, String fieldTag, Icon icon)
+	{
+		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
+		label.setIcon(icon);
+		addLabel(label);
+	}
+
+
+	public void addLabel(UiLabel label)
+	{
+		label.setVerticalAlignment(SwingConstants.TOP);
+		add(label);
+	}
+
 	public static int STD_SHORT = 5;
 	public static final int DEFAULT_TEXT_COLUM_COUNT = 50;
 	
