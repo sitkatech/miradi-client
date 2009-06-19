@@ -48,11 +48,11 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		ObjectDataInputField labelField = createExpandableField(Objective.getObjectType(), Objective.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Objective"), new ObjectiveIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
-		addField(createMultilineField(Objective.getObjectType(), Desire.TAG_FULL_TEXT));
+		addSingleField(createMultilineField(Objective.getObjectType(), Desire.TAG_FULL_TEXT));
 
-		addField(createReadonlyTextField(Objective.PSEUDO_TAG_FACTOR));
-		addField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
-		addField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
+		addSingleField(createReadonlyTextField(Objective.PSEUDO_TAG_FACTOR));
+		addSingleField(createReadonlyTextField(Objective.PSEUDO_TAG_DIRECT_THREATS));
+		addSingleField(createReadonlyTextField(Objective.PSEUDO_TAG_TARGETS));
 		
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveIndicatorRelevancyList.class), picker));
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(Objective.getObjectType(), Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveStrategyActivityRelevancyList.class), picker));
@@ -64,7 +64,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 		ObjectsActionButton editProgressPercentButton = createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditObjectiveProgressPercent.class), getPicker());
 		addFieldWithEditButton(progressPercentsLabel, readOnlyProgressPercentsList, editProgressPercentButton);
 		
-		addField(createMultilineField(Goal.TAG_COMMENTS));
+		addSingleField(createMultilineField(Goal.TAG_COMMENTS));
 
 		updateFieldsFromProject();
 	}

@@ -112,8 +112,12 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	{
 		singleSection.addFieldsOnOneLine(labelComponent, componentsOrFields);
 	}
-
-
+	
+	public void addSingleField(ObjectDataInputField field)
+	{
+		singleSection.addField(field);
+	}
+ 
 	@Override
 	public Component add(Component component)
 	{

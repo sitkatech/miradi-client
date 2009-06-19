@@ -38,7 +38,7 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSect
 		ObjectDataInputField labelField = createMediumStringField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
 	
-		addField(createMultilineField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_DETAIL));
+		addSingleField(createMultilineField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_DETAIL));
 
 		updateFieldsFromProject();
 	}

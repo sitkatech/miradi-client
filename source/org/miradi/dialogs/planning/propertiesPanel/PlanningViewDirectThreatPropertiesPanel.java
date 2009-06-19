@@ -39,7 +39,7 @@ public class PlanningViewDirectThreatPropertiesPanel extends MinimalFactorProper
 	{
 		super.addCustomInBetweenFields();
 		
-		addField(createClassificationChoiceField(Cause.TAG_TAXONOMY_CODE, getProject().getQuestion(ThreatClassificationQuestion.class)));
+		addSingleField(createClassificationChoiceField(Cause.TAG_TAXONOMY_CODE, getProject().getQuestion(ThreatClassificationQuestion.class)));
 	}
 
 	@Override
