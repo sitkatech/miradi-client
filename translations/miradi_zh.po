@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-19 10:19-0500\n"
+"POT-Creation-Date: 2009-06-19 14:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -7168,8 +7168,8 @@ msgstr "评级 \t\t"
 msgid "FieldLabel|8.Detail|Details"
 msgstr "详情 \t\t"
 
-msgid "FieldLabel|8.Comment|Comments"
-msgstr "评论 \t\t"
+msgid "FieldLabel|8.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
 msgstr "评论 \t\t"
@@ -7580,9 +7580,8 @@ msgid ""
 "FieldLabel|12.PseudoLatestProgressPercentDetails|Progress Percent Details"
 msgstr "进度百分比详情"
 
-#, fuzzy
-msgid "FieldLabel|12.Comment|Comments"
-msgstr "FieldLabel|12.Comment|Comments"
+msgid "FieldLabel|12.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|12.PseudoBudgetRollupCost|Budget"
 msgstr ""
@@ -7704,8 +7703,8 @@ msgstr "威胁因子 \t\t"
 msgid "FieldLabel|20.ShortLabel|ID"
 msgstr "ID \t\t"
 
-msgid "FieldLabel|20.Comment|Comments"
-msgstr "评论 \t\t"
+msgid "FieldLabel|20.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|20.TaxonomyCode|Standard Classification"
 msgstr "标准分类 \t\t"
@@ -7745,8 +7744,8 @@ msgstr "ID \t\t"
 msgid "FieldLabel|21.Status|Draft"
 msgstr "草案 \t\t"
 
-msgid "FieldLabel|21.Comment|Comments"
-msgstr "评论 \t\t"
+msgid "FieldLabel|21.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|21.TaxonomyCode|Standard Classification"
 msgstr "标准分类 \t\t"
@@ -7851,8 +7850,8 @@ msgstr "FieldLabel|22.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgid "FieldLabel|22.SpeciesLatinName|Species Latin Name"
 msgstr "物种拉丁名 \t\t"
 
-msgid "FieldLabel|22.Comment|Comments"
-msgstr "评论 \t\t"
+msgid "FieldLabel|22.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|22.Text|Details"
 msgstr "详情 \t\t"
@@ -7881,8 +7880,8 @@ msgstr "FieldLabel|23.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgid "FieldLabel|23.Text|Details"
 msgstr "详情 \t\t"
 
-msgid "FieldLabel|23.Comment|Comment"
-msgstr "评论 \t\t"
+msgid "FieldLabel|23.Comments|Comment"
+msgstr ""
 
 msgid "FieldLabel|24.Label|Results Chain Name"
 msgstr "结果链名称 \t\t"
@@ -7925,8 +7924,8 @@ msgstr "FieldLabel|25.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgid "FieldLabel|25.Text|Details"
 msgstr "详情 \t\t"
 
-msgid "FieldLabel|25.Comment|Comment"
-msgstr "评论 \t\t"
+msgid "FieldLabel|25.Comments|Comment"
+msgstr ""
 
 msgid "FieldLabel|26.Label|Text"
 msgstr "文本 \t\t"
@@ -7981,8 +7980,8 @@ msgstr "测量 \t\t"
 msgid "FieldLabel|32.StatusConfidence|Source"
 msgstr "来源 \t\t"
 
-msgid "FieldLabel|32.Comment|Comments"
-msgstr "评论 \t\t"
+msgid "FieldLabel|32.Comments|Comments"
+msgstr ""
 
 #, fuzzy
 msgid "FieldLabel|32.Summary|Measurement Value"
@@ -8019,8 +8018,8 @@ msgstr "范围 \t\t"
 msgid "FieldLabel|33.Severity|Severity"
 msgstr "严重性 \t\t"
 
-msgid "FieldLabel|33.Comment|Comments"
-msgstr ""
+msgid "FieldLabel|33.Comments|Comments"
+msgstr "评论 \t\t"
 
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
 msgstr "评级概要 \t\t"
@@ -8262,8 +8261,8 @@ msgstr "名称"
 msgid "FieldLabel|46.ShortLabel|ID"
 msgstr "ID"
 
-msgid "FieldLabel|46.Comment|Comments"
-msgstr "评论"
+msgid "FieldLabel|46.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|46.IncludeSectionCodes|Content"
 msgstr "内容"
@@ -8274,8 +8273,8 @@ msgstr "ID"
 msgid "FieldLabel|47.Label|Name"
 msgstr "名称"
 
-msgid "FieldLabel|47.Comment|Comments"
-msgstr "评论"
+msgid "FieldLabel|47.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
 msgstr ""
@@ -8292,7 +8291,7 @@ msgstr ""
 msgid "FieldLabel|50.PseudoTagResultsChainDiagramRefs|Results Chains"
 msgstr ""
 
-msgid "FieldLabel|50.Comment|Comment"
+msgid "FieldLabel|50.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|50.ShortLabel|ID"
@@ -8325,7 +8324,7 @@ msgstr ""
 msgid "FieldLabel|52.PseudoTagResultsChainDiagramRefs|Result Chains"
 msgstr ""
 
-msgid "FieldLabel|52.Comment|Comment"
+msgid "FieldLabel|52.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|52.CurrentStatusJustification|Current Status Justification"
@@ -29306,11 +29305,39 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
 
+#~ msgid "FieldLabel|8.Comment|Comments"
+#~ msgstr "评论 \t\t"
+
+#, fuzzy
+#~ msgid "FieldLabel|12.Comment|Comments"
+#~ msgstr "FieldLabel|12.Comment|Comments"
+
+#~ msgid "FieldLabel|20.Comment|Comments"
+#~ msgstr "评论 \t\t"
+
+#~ msgid "FieldLabel|21.Comment|Comments"
+#~ msgstr "评论 \t\t"
+
+#~ msgid "FieldLabel|22.Comment|Comments"
+#~ msgstr "评论 \t\t"
+
+#~ msgid "FieldLabel|23.Comment|Comment"
+#~ msgstr "评论 \t\t"
+
+#~ msgid "FieldLabel|25.Comment|Comment"
+#~ msgstr "评论 \t\t"
+
+#~ msgid "FieldLabel|32.Comment|Comments"
+#~ msgstr "评论 \t\t"
+
+#~ msgid "FieldLabel|46.Comment|Comments"
+#~ msgstr "评论"
+
+#~ msgid "FieldLabel|47.Comment|Comments"
+#~ msgstr "评论"
+
 #~ msgid "FieldLabel|9.PseudoRelevantStrategyRefs|Relevant Strategys"
 #~ msgstr "相关策略"
-
-#~ msgid "FieldLabel|33.Comments|Comments"
-#~ msgstr "评论 \t\t"
 
 #~ msgid "FileFilter|JASPER (*.jasper)"
 #~ msgstr "JASPER (*.jasper) \t\t"
