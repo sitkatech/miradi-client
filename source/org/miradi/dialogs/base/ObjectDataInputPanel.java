@@ -110,7 +110,7 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 	
 	public ObjectDataInputField addRadioButtonFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] radioButons)
 	{
-		super.addField(field);
+		addFieldToList(field);
 		
 		Box box = Box.createHorizontalBox();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
