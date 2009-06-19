@@ -52,7 +52,7 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
 				createChoiceItem(META_BUDGET_DETAIL_COLUMN_CODE),
-				createChoiceItem(Factor.TAG_COMMENT),
+				createChoiceItem(Factor.TAG_COMMENTS),
 		};
 	}
 

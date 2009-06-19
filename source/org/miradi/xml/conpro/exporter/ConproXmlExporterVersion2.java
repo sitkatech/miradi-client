@@ -151,7 +151,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeLabelElement(out, NAME, strategy, Strategy.TAG_LABEL);
 			writeOptionalElement(out, TAXONOMY_CODE, strategy, Strategy.TAG_TAXONOMY_CODE);
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
-			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENT);
+			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENTS);
 			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			writeProgressReports(out, strategy.getProgressReportRefs());
 			writeActivities(out, strategy.getActivityRefs());
@@ -214,7 +214,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeLabelElement(out, METHOD_NAME, method, Task.TAG_LABEL);
 			writeElement(out, METHOD_DETAIL, method, Task.TAG_DETAILS);
 			writeAnnualCost(out, method);
-			writeElement(out, METHOD_COMMENT, method, Task.TAG_COMMENT);
+			writeElement(out, METHOD_COMMENT, method, Task.TAG_COMMENTS);
 			writeEndElement(out, METHOD);
 		}
 		
@@ -552,7 +552,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			
 			writeLabelElement(out, TARGET_NAME, target, Target.TAG_LABEL);
 			writeOptionalElement(out, TARGET_DESCRIPTION, target, Target.TAG_TEXT);
-			writeOptionalElement(out, TARGET_DESCRIPTION_COMMENT, target, Target.TAG_COMMENT);
+			writeOptionalElement(out, TARGET_DESCRIPTION_COMMENT, target, Target.TAG_COMMENTS);
 			writeOptionalElement(out, TARGET_VIABILITY_COMMENT, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRank(out, target);
 			writeHabitatMappedCodes(out, target);

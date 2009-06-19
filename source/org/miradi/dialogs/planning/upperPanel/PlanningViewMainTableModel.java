@@ -255,7 +255,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}		
 		if(Desire.isDesire(nodeType))
 		{
-			if (columnTag.equals(Factor.TAG_COMMENT))
+			if (columnTag.equals(Factor.TAG_COMMENTS))
 				return Desire.TAG_COMMENTS;
 		}
 		

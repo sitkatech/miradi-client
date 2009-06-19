@@ -28,6 +28,6 @@ public class HumanWelfareTargetPropertiesForm extends FieldPanelSpec
 	{
 		int type = HumanWelfareTarget.getObjectType();
 		addLabelAndField(type, HumanWelfareTarget.TAG_TEXT);
-		addLabelAndField(type, HumanWelfareTarget.TAG_COMMENT);
+		addLabelAndField(type, HumanWelfareTarget.TAG_COMMENTS);
 	}
 }

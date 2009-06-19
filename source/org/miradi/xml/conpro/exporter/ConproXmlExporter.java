@@ -205,7 +205,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeLabelElement(out, NAME, strategy, Strategy.TAG_LABEL);
 			writeOptionalElement(out, TAXONOMY_CODE, strategy, Strategy.TAG_TAXONOMY_CODE);
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
-			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENT);
+			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENTS);
 			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			writeOptionalProgressReportStatus(out, strategy);
 			writeActivities(out, strategy.getActivityRefs());
@@ -497,7 +497,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			
 			writeLabelElement(out, TARGET_NAME, target, Target.TAG_LABEL);
 			writeOptionalElement(out, TARGET_DESCRIPTION, target, Target.TAG_TEXT);
-			writeOptionalElement(out, TARGET_DESCRIPTION_COMMENT, target, Target.TAG_COMMENT);
+			writeOptionalElement(out, TARGET_DESCRIPTION_COMMENT, target, Target.TAG_COMMENTS);
 			writeOptionalElement(out, TARGET_VIABILITY_COMMENT, target, Target.TAG_CURRENT_STATUS_JUSTIFICATION);
 			writeOptionalRank(out, target);
 			writeHabitatMappedCodes(out, target);

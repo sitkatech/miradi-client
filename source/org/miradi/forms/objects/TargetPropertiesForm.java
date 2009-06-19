@@ -38,6 +38,6 @@ public class TargetPropertiesForm extends FieldPanelSpec
 		addLabelAndField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME);
 		addLabelAndField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION);
 		addLabelAndField(Target.getObjectType(), Target.TAG_TEXT);
-		addLabelAndField(Target.getObjectType(), Target.TAG_COMMENT);
+		addLabelAndField(Target.getObjectType(), Target.TAG_COMMENTS);
 	}
 }

@@ -49,7 +49,7 @@ public class TestFactor extends TestCaseWithProject
 		FactorId id = new FactorId(72);
 		Target target = new Target(getObjectManager(), id);
 		String[] tags = {
-			Factor.TAG_COMMENT,
+			Factor.TAG_COMMENTS,
 			Factor.TAG_INDICATOR_IDS,
 			Factor.TAG_GOAL_IDS,
 			Factor.TAG_OBJECTIVE_IDS,

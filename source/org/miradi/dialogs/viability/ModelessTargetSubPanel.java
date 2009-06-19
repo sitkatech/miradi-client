@@ -40,7 +40,7 @@ public class ModelessTargetSubPanel extends ObjectDataInputPanel
 		addField(createReadOnlyObjectList(Target.getObjectType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
 
 		addField(createMultilineField(Target.getObjectType(), Factor.TAG_TEXT));
-		addField(createMultilineField(Target.getObjectType(), Factor.TAG_COMMENT));
+		addField(createMultilineField(Target.getObjectType(), Factor.TAG_COMMENTS));
 
 		updateFieldsFromProject();
 	}
