@@ -106,7 +106,7 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTextAt(int row, int column)
+	public String getTextAt(int row, int tableColumn)
 	{
 		return "";
 	}

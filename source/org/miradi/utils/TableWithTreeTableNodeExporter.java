@@ -83,9 +83,9 @@ public class TableWithTreeTableNodeExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTextAt(int row, int column)
+	public String getTextAt(int row, int tableColumn)
 	{
-		return getSafeValue(table.getValueAt(row, column));
+		return getSafeValue(table.getValueAt(row, tableColumn));
 	}
 	
 	@Override
