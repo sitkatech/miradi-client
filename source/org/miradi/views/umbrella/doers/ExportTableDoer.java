@@ -113,7 +113,7 @@ public class ExportTableDoer extends ViewDoer
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)
 		{
-			out.write(withoutTabsAndNewlines(table.getHeaderFor(column)) + "\t");
+			out.write(withoutTabsAndNewlines(table.getTranslatedHeader(column)) + "\t");
 			pad(out, maxDepeth, column);
 		}
 		

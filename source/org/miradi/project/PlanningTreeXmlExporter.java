@@ -94,7 +94,7 @@ public class PlanningTreeXmlExporter
 
 	private String getElementName(int column)
 	{
-		return multiModelExporter.getHeaderFor(column).replaceAll(" ", "");
+		return multiModelExporter.getTranslatedHeader(column).replaceAll(" ", "");
 	}
 	
 	private String getSafeValue(AbstractTableExporter table, int row, int column, String objectTypeName)

@@ -36,7 +36,7 @@ public abstract class AbstractTableExporter
 	abstract public ChoiceItem getChoiceItemAt(int row, int column);
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
-	abstract public String getHeaderFor(int column);
+	abstract public String getTranslatedHeader(int column);
 	
 	//TODO these two methods were created to export details of tree or table.
 	// we currently dont export details of tree or tables, and these methods might

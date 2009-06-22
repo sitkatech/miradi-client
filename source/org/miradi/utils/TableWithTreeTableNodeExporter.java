@@ -53,7 +53,7 @@ public class TableWithTreeTableNodeExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getHeaderFor(int column)
+	public String getTranslatedHeader(int column)
 	{
 		return table.getColumnName(column);
 	}

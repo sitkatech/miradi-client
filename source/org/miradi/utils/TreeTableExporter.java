@@ -41,7 +41,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		return node.getObject();
 	}
 	
-	public String getHeaderFor(int column)
+	public String getTranslatedHeader(int column)
 	{
 		return getTreeTable().getColumnName(column);
 	}
