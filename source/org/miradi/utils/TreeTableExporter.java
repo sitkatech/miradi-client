@@ -52,9 +52,9 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		return getTreeTable().getColumnCount();
 	}
 
-	public int getDepth(int row, int column)
+	public int getDepth(int row, int tableColumn)
 	{
-		if (isTreeColumn(column))
+		if (isTreeColumn(tableColumn))
 			return getTree().getPathForRow(row).getPath().length - TOPLEVEL_ADJUSTMENT;
 		
 		return 0;
