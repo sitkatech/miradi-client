@@ -109,9 +109,9 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTextAt(int row, int column)
+	public String getTextAt(int row, int tableColumn)
 	{
-		return getSafeValue(mainThreatTableModel.getValueAt(row, column));
+		return getSafeValue(mainThreatTableModel.getValueAt(row, tableColumn));
 	}
 	
 	private AbstractThreatTargetTableModel mainThreatTableModel;
