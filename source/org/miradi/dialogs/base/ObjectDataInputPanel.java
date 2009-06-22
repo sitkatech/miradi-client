@@ -84,11 +84,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanel
 		addFieldComponent(new UiLabel(" "));
 	}
 	
-	public ObjectDataInputField addRawField(ObjectDataInputField field)
-	{
-		return addFieldToList(field);
-	}
-
 	public void addRadioButtonField(int objectType, String fieldTag, ChoiceQuestion question)
 	{
 		addRadioButtonFieldWithCustomLabel(objectType, fieldTag, question, "");
