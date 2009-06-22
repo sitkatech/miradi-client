@@ -62,9 +62,9 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return 0;
 	}
 	
-	public String getTranslatedHeader(int column)
+	public String getTranslatedHeader(int tableColumn)
 	{
-		return getModel().getColumnName(column);
+		return getModel().getColumnName(tableColumn);
 	}
 	
 	@Override

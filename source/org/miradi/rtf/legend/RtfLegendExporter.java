@@ -93,7 +93,7 @@ class LegendModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTranslatedHeader(int column)
+	public String getTranslatedHeader(int tableColumn)
 	{
 		return EAM.text("Legend Table");
 	}

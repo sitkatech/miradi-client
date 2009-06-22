@@ -71,9 +71,9 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTranslatedHeader(int column)
+	public String getTranslatedHeader(int tableColumn)
 	{
-		return mainThreatTableModel.getColumnName(column);
+		return mainThreatTableModel.getColumnName(tableColumn);
 	}
 
 	@Override
