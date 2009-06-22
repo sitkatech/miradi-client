@@ -77,9 +77,9 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int column)
+	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
 	{
-		Object value = mainThreatTableModel.getValueAt(row, column);
+		Object value = mainThreatTableModel.getValueAt(row, tableColumn);
 		if (value == null)
 			return new EmptyChoiceItem();
 		
