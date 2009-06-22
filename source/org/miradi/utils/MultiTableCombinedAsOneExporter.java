@@ -82,9 +82,9 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return 0;
 	}
 
-	public String getTranslatedHeader(int column)
+	public String getTranslatedHeader(int tableColumn)
 	{
-		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(column);
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(tableColumn);
 		return tableAndColumnHolder.getTable().getTranslatedHeader(tableAndColumnHolder.getColumn());
 	}
 	
