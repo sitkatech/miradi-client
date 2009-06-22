@@ -67,15 +67,15 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 	}
 	
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int column)
+	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
 	{
 		if (isTopRowTable(row))
-			return super.getChoiceItemAt(row, column);
+			return super.getChoiceItemAt(row, tableColumn);
 
-		if (isFirstBlankTableSummaryRow(column))
+		if (isFirstBlankTableSummaryRow(tableColumn))
 			return new EmptyChoiceItem();
 
-		int columnWithinSummaryTable = convertToSummaryTableColumn(column);		
+		int columnWithinSummaryTable = convertToSummaryTableColumn(tableColumn);		
 		if (isColumnWithinSummaryTable(columnWithinSummaryTable))
 			return targetSummaryRowTable.getChoiceItemAt(0, columnWithinSummaryTable);
 		

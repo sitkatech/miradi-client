@@ -96,9 +96,9 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 	}
 	
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int column)
+	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
 	{
-		return new TaglessChoiceItem(getTextAt(row, column), getIcon(row, column));
+		return new TaglessChoiceItem(getTextAt(row, tableColumn), getIcon(row, tableColumn));
 	}
 
 	protected boolean isTreeColumn(int column)

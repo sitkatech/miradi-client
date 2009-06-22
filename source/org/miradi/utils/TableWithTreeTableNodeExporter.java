@@ -59,9 +59,9 @@ public class TableWithTreeTableNodeExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int column)
+	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
 	{
-		return new TaglessChoiceItem(getSafeValue(table.getValueAt(row, column)), null);
+		return new TaglessChoiceItem(getSafeValue(table.getValueAt(row, tableColumn)), null);
 	}
 
 	@Override
