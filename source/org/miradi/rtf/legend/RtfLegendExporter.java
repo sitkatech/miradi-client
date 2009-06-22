@@ -87,7 +87,7 @@ class LegendModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public int getDepth(int row, int column)
+	public int getDepth(int row, int tableColumn)
 	{
 		return 0;
 	}
