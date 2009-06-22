@@ -31,9 +31,11 @@ import org.miradi.project.Project;
 
 public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
 {
-	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider) throws Exception
+	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
+		
+		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
 		rowObjectRefs = getFullyExpandedRefList();
 	}
 	
@@ -84,11 +86,10 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{
-		return UNIQUE_TREE_TABLE_IDENTIFIER;
+		return uniqueTreeTableModelIdentifier;
 	}
 	
-	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ExportablePlanningTreeTableModel";
+	private String uniqueTreeTableModelIdentifier;
 
 	private ORefList rowObjectRefs;
-
 }

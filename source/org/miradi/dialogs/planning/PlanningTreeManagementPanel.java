@@ -72,8 +72,9 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	
 	public AbstractTableExporter getTableExporter() throws Exception
 	{
+		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
 		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
-		PlanningTreeTablePanel panel = ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider);
+		PlanningTreeTablePanel panel = ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
 		AbstractTableExporter table = panel.getTableForExporting();
 		panel.dispose();
 		
@@ -83,8 +84,9 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	@Override
 	public JComponent getPrintableComponent() throws Exception
 	{
+		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
 		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
-		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(getMainWindow(), rowColumnProvider);
+		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
 	}
 	
 	public PlanningTreeTablePanel getPlanningTreeTablePanel()
