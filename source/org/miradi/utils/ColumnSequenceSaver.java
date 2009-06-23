@@ -68,7 +68,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	private CodeList calculateDesiredSequenceCodes() throws Exception
 	{
 		CodeList currentColumnTagSequences = getCurrentSequence();		
-		CodeList storedColumnSequenceCodes = getStoredColumnSequenceCodes(getProject(), uniqueTableIdentifier);
+		CodeList storedColumnSequenceCodes = getStoredColumnSequenceCodes();
 		if (storedColumnSequenceCodes == null)
 			storedColumnSequenceCodes = getCurrentSequence();
 		
@@ -101,6 +101,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 		desiredSequenceList.addAll(currentColumnTagSequences);
 		
 		return desiredSequenceList.withoutDuplicates();
+	}
+	
+	protected CodeList getStoredColumnSequenceCodes()
+	{
+		return getStoredColumnSequenceCodes(getProject(), uniqueTableIdentifier);
 	}
 
 	public static CodeList getStoredColumnSequenceCodes(Project project, String uniqueTableIdentifierToUse)
