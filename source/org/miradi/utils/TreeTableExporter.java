@@ -31,7 +31,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 {
 	public TreeTableExporter(TreeTableWithStateSaving treeToUse) throws Exception
 	{
-		super(treeToUse.getUniqueTableIdentifier());
+		super(treeToUse.getProject(), treeToUse.getUniqueTableIdentifier());
 		treeTable = treeToUse;
 		treeTable.restoreTreeState();
 	}

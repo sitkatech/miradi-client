@@ -23,13 +23,14 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 
 public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 {
-	public MultiTableCombinedAsOneExporter()
+	public MultiTableCombinedAsOneExporter(Project projectToUse)
 	{
-		super();
+		super(projectToUse);
 		
 		clear();
 	}

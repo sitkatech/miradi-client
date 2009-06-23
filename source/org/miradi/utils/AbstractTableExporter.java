@@ -23,17 +23,18 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 public abstract class AbstractTableExporter
 {
-	public AbstractTableExporter()
+	public AbstractTableExporter(Project projectToUse)
 	{
-		this(NO_UNIQUE_MODEL_IDENTIFIER);
+		this(projectToUse, NO_UNIQUE_MODEL_IDENTIFIER);
 	}
 	
-	public AbstractTableExporter(String uniqueModelIdentifierToUse)
+	public AbstractTableExporter(Project projectToUse, String uniqueModelIdentifierToUse)
 	{
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
 	}
