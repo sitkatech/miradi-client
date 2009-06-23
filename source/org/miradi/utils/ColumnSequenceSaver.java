@@ -88,7 +88,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return table.getColumnCount();
 	}
 
-	public CodeList calculateDesiredSequenceCodes(CodeList storedColumnSequenceCodes, CodeList currentColumnTagSequences)
+	public static CodeList calculateDesiredSequenceCodes(CodeList storedColumnSequenceCodes, CodeList currentColumnTagSequences)
 	{
 		CodeList storedColumnTagSequences = new CodeList(storedColumnSequenceCodes);
 		storedColumnTagSequences.retainAll(currentColumnTagSequences);
