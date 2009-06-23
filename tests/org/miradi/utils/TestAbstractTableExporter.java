@@ -34,7 +34,10 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		CodeList desiredCodeList = new CodeList(new String[] {"c", "a", "d", "b"});
 		int[] expectedColumnIndexes1 = new int[]{1, 3, 0, 2,};
 		verifyColumnIndexes(expectedColumnIndexes1, desiredCodeList);
-		
+	}
+
+	public void testEmptyDesiredColumnCodes()
+	{
 		CodeList emptyDesiredColumnCodes = new CodeList();
 		int[] expectedColumnIndexes2 = new int[]{0, 1, 2, 3, };
 		verifyColumnIndexes(expectedColumnIndexes2, emptyDesiredColumnCodes);
