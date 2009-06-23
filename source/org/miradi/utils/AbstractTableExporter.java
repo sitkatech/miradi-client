@@ -38,7 +38,10 @@ public abstract class AbstractTableExporter
 	{
 		project = projectToUse;
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
-		modelColumnIndexes  = createModelColumnArray(getColumnSequenceCodes());
+		
+		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateDesiredSequenceCodes(getColumnSequenceCodes(), getModelColumnSequence());
+		CodeList modelColumnCodes = getModelColumnSequence();
+		modelColumnIndexes  = getModelColumnIndexArray(desiredSequenceCodes, modelColumnCodes);
 	}
 		
 	public int convertToModelColumn(int tableColumn)
@@ -55,13 +58,12 @@ public abstract class AbstractTableExporter
 		return storedColumnSequenceCodes;
 	}
 
-	private int[] createModelColumnArray(CodeList storedColumnSequenceCodes)
+	private int[] getModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
 	{
-		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateDesiredSequenceCodes(storedColumnSequenceCodes, getModelColumnSequence());
-		int[] thisModelColumnIndexes = new int[getColumnCount()];
-		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
+		int[] thisModelColumnIndexes = new int[modelColumnCodes.size()];
+		for (int tableColumn = 0; tableColumn < modelColumnCodes.size(); ++tableColumn)
 		{
-			String modelColumnName = getColumnName(tableColumn);
+			String modelColumnName = modelColumnCodes.get(tableColumn);
 			int indexOfModelColumn = desiredSequenceCodes.find(modelColumnName);
 			thisModelColumnIndexes[tableColumn] = indexOfModelColumn;
 		}
