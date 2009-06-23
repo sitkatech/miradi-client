@@ -34,7 +34,7 @@ public class ObjectListTable extends ObjectTable
 {
 	public ObjectListTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, getUniqueTableIdentifier((ObjectListTableModel) modelToUse));
+		super(mainWindowToUse, modelToUse);
 		
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
@@ -44,11 +44,6 @@ public class ObjectListTable extends ObjectTable
 	{
 		this(mainWindowToUse, modelToUse);
 		sort(sortColumn);
-	}
-	
-	private static String getUniqueTableIdentifier(ObjectListTableModel objectListTableModel)
-	{
-		return UNIQUE_IDENTIFIER + "." + objectListTableModel.getContainingObjectType() + "." + objectListTableModel.getRowObjectType();
 	}
 	
 	public ObjectListTableModel getObjectListTableModel()
@@ -118,6 +113,4 @@ public class ObjectListTable extends ObjectTable
 		if(desiredSelectionRow >= 0)
 			setRowSelectionInterval(desiredSelectionRow, desiredSelectionRow);
 	}
-	
-	private static final String UNIQUE_IDENTIFIER = "ObjectListTable";
 }

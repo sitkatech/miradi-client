@@ -28,8 +28,6 @@ public class ResourcePoolTable extends ObjectPoolTable
 {
 	public ResourcePoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, modelToUse);
 	}
-	
-	public static final String UNIQUE_IDENTIFIER = "ResourcePoolTable";
 }

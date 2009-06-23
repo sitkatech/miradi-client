@@ -26,16 +26,16 @@ import org.miradi.objecthelpers.ORef;
 
 public class ObjectPoolTable extends ObjectTable
 {
-	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse, String uniqueTableIdentifier)
+	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, uniqueTableIdentifier);
+		super(mainWindowToUse, modelToUse);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		resizeTable(4);
 	}
 	
-	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse, int sortColumn, String uniqueTableIdentifier)
+	public ObjectPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse, int sortColumn)
 	{
-		this(mainWindowToUse, modelToUse, uniqueTableIdentifier);
+		this(mainWindowToUse, modelToUse);
 		sort(sortColumn);
 	}
 	

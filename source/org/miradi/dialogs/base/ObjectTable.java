@@ -51,9 +51,9 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class ObjectTable extends UiTableWithAlternatingRows implements ObjectPicker, RowColumnBaseObjectProvider, SortableTable
 {
-	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse, String uniqueTableIdentifierToUse)
+	public ObjectTable(MainWindow mainWindowToUse, ObjectTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, uniqueTableIdentifierToUse);
+		super(mainWindowToUse, modelToUse, modelToUse.getUniqueModelIdentifier());
 		selectionListeners = new Vector();
 		currentSortColumn = -1;
 		

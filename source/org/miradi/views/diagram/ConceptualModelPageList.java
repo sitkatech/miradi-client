@@ -29,7 +29,7 @@ public class ConceptualModelPageList extends DiagramPageList
 {
 	public ConceptualModelPageList(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ConceptualModelPoolTableModel(mainWindowToUse.getProject(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()), UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, new ConceptualModelPoolTableModel(mainWindowToUse.getProject(), ObjectType.CONCEPTUAL_MODEL_DIAGRAM, getTags()));
 	}
 
 	private static String[] getTags()
@@ -51,7 +51,4 @@ public class ConceptualModelPageList extends DiagramPageList
 	{
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
-	
-	//FIXME urgent need to use the model's unique identifier,  no need to pass this to super
-	public static final String UNIQUE_IDENTIFIER = "ConceptualModelPageList";
 }
