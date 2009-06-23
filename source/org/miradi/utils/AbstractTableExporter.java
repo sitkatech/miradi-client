@@ -39,9 +39,9 @@ public abstract class AbstractTableExporter
 		project = projectToUse;
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
 		
-		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateDesiredSequenceCodes(getColumnSequenceCodes(), getModelColumnSequence());
+		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getDesiredColumnCodes(), getModelColumnSequence());
 		CodeList modelColumnCodes = getModelColumnSequence();
-		modelColumnIndexes  = getModelColumnIndexArray(desiredSequenceCodes, modelColumnCodes);
+		modelColumnIndexes  = getModelColumnIndexArray(arrangedColumnCodes, modelColumnCodes);
 	}
 		
 	public int convertToModelColumn(int tableColumn)
@@ -49,16 +49,16 @@ public abstract class AbstractTableExporter
 		return modelColumnIndexes[tableColumn];
 	}
 
-	private CodeList getColumnSequenceCodes()
+	private CodeList getDesiredColumnCodes()
 	{
-		CodeList storedColumnSequenceCodes = ColumnSequenceSaver.getStoredColumnSequenceCodes(getProject(), getUniqueModelIdentifier());
-		if (storedColumnSequenceCodes == null)
-			storedColumnSequenceCodes = getModelColumnSequence();
+		CodeList storedColumnCodes = ColumnSequenceSaver.getStoredColumnCodes(getProject(), getUniqueModelIdentifier());
+		if (storedColumnCodes == null)
+			storedColumnCodes = getModelColumnSequence();
 		
-		return storedColumnSequenceCodes;
+		return storedColumnCodes;
 	}
 
-	private int[] getModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
+	public static int[] getModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
 	{
 		int[] thisModelColumnIndexes = new int[modelColumnCodes.size()];
 		for (int tableColumn = 0; tableColumn < modelColumnCodes.size(); ++tableColumn)

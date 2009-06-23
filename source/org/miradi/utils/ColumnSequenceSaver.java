@@ -72,7 +72,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		if (storedColumnSequenceCodes == null)
 			storedColumnSequenceCodes = getCurrentSequence();
 		
-		return calculateDesiredSequenceCodes(storedColumnSequenceCodes, currentColumnTagSequences);
+		return calculateArrangedColumnCodes(storedColumnSequenceCodes, currentColumnTagSequences);
 	}
 
 	protected void moveColumn(int tableColumn, int destination)
@@ -90,14 +90,14 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return table.getColumnCount();
 	}
 
-	public static CodeList calculateDesiredSequenceCodes(CodeList storedColumnSequenceCodes, CodeList currentColumnTagSequences)
+	public static CodeList calculateArrangedColumnCodes(CodeList desiredColumnCodes, CodeList currentColumnTagSequences)
 	{
-		CodeList storedColumnTagSequences = new CodeList(storedColumnSequenceCodes);
-		storedColumnTagSequences.retainAll(currentColumnTagSequences);
-		currentColumnTagSequences.subtract(storedColumnTagSequences);
+		CodeList storedColumnTags = new CodeList(desiredColumnCodes);
+		storedColumnTags.retainAll(currentColumnTagSequences);
+		currentColumnTagSequences.subtract(storedColumnTags);
 		
 		CodeList desiredSequenceList = new CodeList();
-		desiredSequenceList.addAll(storedColumnTagSequences);
+		desiredSequenceList.addAll(storedColumnTags);
 		desiredSequenceList.addAll(currentColumnTagSequences);
 		
 		return desiredSequenceList.withoutDuplicates();
@@ -105,10 +105,10 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	protected CodeList getStoredColumnSequenceCodes()
 	{
-		return getStoredColumnSequenceCodes(getProject(), uniqueTableIdentifier);
+		return getStoredColumnCodes(getProject(), uniqueTableIdentifier);
 	}
 
-	public static CodeList getStoredColumnSequenceCodes(Project project, String uniqueTableIdentifierToUse)
+	public static CodeList getStoredColumnCodes(Project project, String uniqueTableIdentifierToUse)
 	{
 		TableSettings tableSettings = TableSettings.find(project, uniqueTableIdentifierToUse);
 		if (tableSettings == null)
