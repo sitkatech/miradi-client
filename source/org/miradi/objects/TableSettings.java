@@ -72,6 +72,11 @@ public class TableSettings extends BaseObject
 		return rowHeight.asInt();
 	}
 	
+	public CodeList getColumnSequenceCodes()
+	{
+		return columnSequenceCodes.getCodeList();
+	}
+	
 	public Vector<DateUnit> getDateUnitList()
 	{
 		return dateUnitListList.getDateUnits();
