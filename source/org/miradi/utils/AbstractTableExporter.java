@@ -40,23 +40,7 @@ public abstract class AbstractTableExporter
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
 		modelColumnIndexes  = createModelColumnArray(getColumnSequenceCodes());
 	}
-	
-	abstract public int getMaxDepthCount();
-	abstract public int getDepth(int row, int tableColumn);
-	abstract public int getColumnCount();
-	abstract public int getRowCount();
-	abstract public String getTextAt(int row, int tableColumn);
-	abstract public ChoiceItem getChoiceItemAt(int row, int tableColumn);
-	abstract public int getRowType(int row);
-	abstract public BaseObject getBaseObjectForRow(int row);
-	abstract public String getColumnName(int tableColumn);
-	
-	//TODO these two methods were created to export details of tree or table.
-	// we currently dont export details of tree or tables, and these methods might
-	// need to be removed
-	abstract public Vector<Integer> getAllTypes();
-	abstract public ORefList getAllRefs(int objectType);
-	
+		
 	public int convertToModelColumn(int tableColumn)
 	{
 		return modelColumnIndexes[tableColumn];
@@ -127,6 +111,22 @@ public abstract class AbstractTableExporter
 	{
 		return uniqueModelIdentifier;
 	}
+	
+	abstract public int getMaxDepthCount();
+	abstract public int getDepth(int row, int tableColumn);
+	abstract public int getColumnCount();
+	abstract public int getRowCount();
+	abstract public String getTextAt(int row, int tableColumn);
+	abstract public ChoiceItem getChoiceItemAt(int row, int tableColumn);
+	abstract public int getRowType(int row);
+	abstract public BaseObject getBaseObjectForRow(int row);
+	abstract public String getColumnName(int tableColumn);
+	
+	//TODO these two methods were created to export details of tree or table.
+	// we currently dont export details of tree or tables, and these methods might
+	// need to be removed
+	abstract public Vector<Integer> getAllTypes();
+	abstract public ORefList getAllRefs(int objectType);
 	
 	private static final String CODE_LIST_SEPERATOR = ";";
 	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
