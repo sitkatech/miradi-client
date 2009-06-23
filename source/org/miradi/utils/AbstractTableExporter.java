@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -36,6 +37,7 @@ public abstract class AbstractTableExporter
 	
 	public AbstractTableExporter(Project projectToUse, String uniqueModelIdentifierToUse)
 	{
+		project = projectToUse;
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
 	}
 	
@@ -54,6 +56,30 @@ public abstract class AbstractTableExporter
 	// need to be removed
 	abstract public Vector<Integer> getAllTypes();
 	abstract public ORefList getAllRefs(int objectType);
+	
+	public int convertToModelColumn(int tableColumn)
+	{
+		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueModelIdentifier());
+		if (tableSettings == null)
+			return tableColumn;
+		
+		int[] modelColumnIndexes  = createModelColumnArray(tableSettings.getColumnSequenceCodes());
+		
+		return modelColumnIndexes[tableColumn];
+	}
+
+	private int[] createModelColumnArray(CodeList columnSequenceCodes )
+	{
+		int[] modelColumnIndexes = new int[getColumnCount()];
+		for (int column = 0; column < getColumnCount(); ++column)
+		{
+			String currentColumnName = getColumnName(column);
+			int indexOfModelColumn = columnSequenceCodes.find(currentColumnName);
+			modelColumnIndexes[column] = indexOfModelColumn;
+		}
+		
+		return modelColumnIndexes;
+	}
 	
 	public String getStyleTagAt(int row, int column)
 	{
@@ -81,7 +107,18 @@ public abstract class AbstractTableExporter
 		return codeListAsString.toString();
 	}
 	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private String getUniqueModelIdentifier()
+	{
+		return uniqueModelIdentifier;
+	}
+	
 	private static final String CODE_LIST_SEPERATOR = ";";
 	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
 	String uniqueModelIdentifier;
+	private Project project;
 }
