@@ -23,7 +23,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.Project;
 
-public class ObjectPoolTableModel extends ObjectTableModel
+abstract public class ObjectPoolTableModel extends ObjectTableModel
 {
 	public ObjectPoolTableModel(Project projectToUse, int listedItemType, String[] columnTagsToUse)
 	{
