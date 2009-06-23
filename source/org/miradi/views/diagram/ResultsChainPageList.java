@@ -28,7 +28,7 @@ public class ResultsChainPageList extends DiagramPageList
 {
 	public ResultsChainPageList(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ResultsChainPoolTableModel(mainWindowToUse.getProject(), getTags()), UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, new ResultsChainPoolTableModel(mainWindowToUse.getProject(), getTags()));
 	}
 	
 	private static String[] getTags()
@@ -50,7 +50,4 @@ public class ResultsChainPageList extends DiagramPageList
 	{
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
-	
-	//FIXME urgent need to use the model's unique identifier,  no need to pass this to super
-	public static final String UNIQUE_IDENTIFIER = "ResultsChainPageList";
 }

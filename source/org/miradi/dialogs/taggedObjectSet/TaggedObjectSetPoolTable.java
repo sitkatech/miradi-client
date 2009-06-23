@@ -27,8 +27,6 @@ public class TaggedObjectSetPoolTable extends ObjectPoolTable
 {
 	public TaggedObjectSetPoolTable(MainWindow mainWindowToUse, ObjectPoolTableModel modelToUse)
 	{
-		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, modelToUse);
 	}
-
-	public static final String UNIQUE_IDENTIFIER = "TaggedObjectSetPoolTable";
 }
