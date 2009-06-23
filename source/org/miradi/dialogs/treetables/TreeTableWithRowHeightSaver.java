@@ -177,8 +177,10 @@ abstract public class TreeTableWithRowHeightSaver extends PanelTreeTable impleme
 		return this;
 	}
 	
-	//FIXME urgent - this needs to go away since the identifier is coming from the model
-	abstract public String getUniqueTableIdentifier();
+	public String getUniqueTableIdentifier()
+	{
+		return getTreeTableModel().getUniqueTreeTableModelIdentifier();
+	}
 	
 	private GenericTreeTableModel treeTableModel;
 	private TableRowHeightManager rowHeightSaver;

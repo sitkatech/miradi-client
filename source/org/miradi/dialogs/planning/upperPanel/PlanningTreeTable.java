@@ -45,12 +45,6 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 	}
 	
-	@Override
-	public String getUniqueTableIdentifier()
-	{
-		return getTreeTableModel().getUniqueTreeTableModelIdentifier();
-	}
-
 	public Dimension getPreferredScrollableViewportSize()
 	{
 		return getPreferredSize();
@@ -92,6 +86,4 @@ public class PlanningTreeTable extends TreeTableWithStateSaving implements RowCo
 		actions.add(ActionDeletePlanningViewTreeNode.class);
 		return actions;
 	}
-
-	public static final String UNIQUE_IDENTIFIER = "PlanningTreeTable";
 }

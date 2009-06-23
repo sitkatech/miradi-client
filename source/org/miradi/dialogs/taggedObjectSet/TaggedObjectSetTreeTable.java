@@ -29,11 +29,4 @@ public class TaggedObjectSetTreeTable extends TreeTableWithStateSaving
 	{
 		super(mainWindowToUse, treeTableModel);
 	}
-
-	@Override
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_TABLE_IDENTIFIER;
-	}
-
-	public static final String UNIQUE_TABLE_IDENTIFIER = "TaggedObjectSetTreeTable";}
+}
