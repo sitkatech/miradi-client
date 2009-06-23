@@ -109,7 +109,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		
 		CodeList storedColumnSequences = tableSettings.getCodeList(TableSettings.TAG_COLUMN_SEQUENCE_CODES);
 		if (storedColumnSequences.size() == 0)
-			return getDefaultSequence();
+			return getCurrentSequence();
 
 		return storedColumnSequences;
 	}
@@ -128,11 +128,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 		}
 		
 		return currentColumnTagSequences;
-	}
-	
-	private CodeList getDefaultSequence()
-	{
-		return getCurrentSequence();
 	}
 	
 	private void saveColumnSequences() throws Exception
