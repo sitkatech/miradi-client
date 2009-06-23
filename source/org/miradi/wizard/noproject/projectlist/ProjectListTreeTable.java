@@ -101,11 +101,6 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		return false;
 	}
 	
-	public String getUniqueTableIdentifier()
-	{
-		return EAM.text("Project List");
-	}
-	
 	public File getSelectedFile()
 	{
 		int row = getSelectedRow();

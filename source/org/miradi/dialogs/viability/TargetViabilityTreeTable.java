@@ -65,11 +65,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 		rebuildTableCompletely();
 	}
 	
-	public String getUniqueTableIdentifier()
-	{
-		return UNIQUE_IDENTIFIER;
-	}
-	
 	public int getProportionShares(int row)
 	{
 		return getNodeForRow(row).getProportionShares();
@@ -195,8 +190,6 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 	{
 		return (GenericViabilityTreeModel)getTreeTableModel();
 	}
-	
-	public static final String UNIQUE_IDENTIFIER = "TargetViabilityTree";
 
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private MultiLineObjectTableCellRendererFactory multiLineRenderer;
