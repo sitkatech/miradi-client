@@ -43,10 +43,10 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 	private void verifyColumnIndexes(int[] expectedColumnIndexes, CodeList desiredCodeList)
 	{
 		CodeList modelColumnCodes = new CodeList(new String[]{"a", "b", "c", "d",});
-		int[] modelColumnArray2 = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
-		for (int column = 0; column < modelColumnArray2.length; ++column)
+		int[] modelColumnArray = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
+		for (int column = 0; column < modelColumnArray.length; ++column)
 		{
-			assertEquals("wrong column index", expectedColumnIndexes[column], modelColumnArray2[column]);
+			assertEquals("wrong column index", expectedColumnIndexes[column], modelColumnArray[column]);
 		}
 	}
 }
