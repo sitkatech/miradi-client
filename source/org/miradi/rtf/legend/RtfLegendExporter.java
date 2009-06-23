@@ -59,7 +59,7 @@ class LegendModelExporter extends AbstractTableExporter
 {
 	public LegendModelExporter(ChoiceItem[]  choicesToUse)
 	{
-		super(AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		super();
 		
 		choices = choicesToUse;
 	}

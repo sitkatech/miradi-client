@@ -29,7 +29,8 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 {
 	public MultiTableCombinedAsOneExporter()
 	{
-		super(AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		super();
+		
 		clear();
 	}
 
