@@ -635,7 +635,7 @@ public class Project
 	// between writeStartingLogEntry and writeLogLine...the two new File() lines
 	private void writeStartingLogEntry() throws Exception
 	{
-		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
+		File thisProjectDirectory = createProjectDirectory();
 		File commandLogFile = new File(thisProjectDirectory, COMMAND_LOG_FILE_NAME);
 		if (commandLogFile.exists())
 			commandLogFile.delete();
@@ -644,7 +644,7 @@ public class Project
 
 	public void writeLogLine(String logLine) throws IOException
 	{
-		File thisProjectDirectory = new File(EAM.getHomeDirectory(), getFilename());
+		File thisProjectDirectory = createProjectDirectory();
 		
 		//TODO: this line is here to support test code
 		if (!thisProjectDirectory.exists())
@@ -656,6 +656,11 @@ public class Project
 		logPrintStream.println(logLine);
 		EAM.logVerbose("Command Executed: " +logLine);
 		os.close();
+	}
+	
+	public File createProjectDirectory()
+	{
+		return new File(EAM.getHomeDirectory(), getFilename());
 	}
 	
 	private void applyDefaultBehavior() throws Exception
