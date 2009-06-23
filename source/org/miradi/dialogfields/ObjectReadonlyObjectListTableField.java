@@ -23,6 +23,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.ObjectListTable;
 import org.miradi.dialogs.base.ObjectListTableModel;
+import org.miradi.dialogs.base.ObjectReadOnlyListTableModel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -34,7 +35,7 @@ public class ObjectReadonlyObjectListTableField extends ObjectDataInputField
 	{
 		super(mainWindowToUse.getProject(), refToUse.getObjectType(), refToUse.getObjectId(), listFieldTag);
 		
-		model = new ObjectListTableModel(mainWindowToUse.getProject(), refToUse, listFieldTag, listedType, columnTags);
+		model = new ObjectReadOnlyListTableModel(mainWindowToUse.getProject(), refToUse, listFieldTag, listedType, columnTags);
 	    table = new ObjectListTable(mainWindowToUse, model);
 	    
 		setDefaultFieldBorder();
