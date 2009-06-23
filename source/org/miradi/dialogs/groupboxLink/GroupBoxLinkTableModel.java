@@ -43,6 +43,14 @@ public class GroupBoxLinkTableModel extends ObjectListTableModel
 		return diagramFactor.getWrappedFactor().getLabel();
 	}
 
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "GroupBoxLinkTableModel";
+	
 	public static final String[] COLUMN_TAGS = new String[] {
 		DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID,
 		DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID,

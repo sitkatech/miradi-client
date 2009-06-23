@@ -31,6 +31,14 @@ public class SubTargetListTableModel extends ObjectListTableModel
 	{
 		super(projectToUse, nodeRef, Target.TAG_SUB_TARGET_REFS, SubTarget.getObjectType(), COLUMN_TAGS);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "SubTargetListTableModel";
 
 	public static final String[] COLUMN_TAGS = new String[] {
 		SubTarget.TAG_SHORT_LABEL,

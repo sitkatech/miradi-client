@@ -40,4 +40,11 @@ public class ActivityListTableModel extends ObjectListTableModel
 // renderer that will right-align and indicate estimate vs. roll-up
 //		Task.PSEUDO_TAG_BUDGET_TOTAL,
 	};
+	
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ActivityListTableModel";
 }

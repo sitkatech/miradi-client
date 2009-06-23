@@ -32,7 +32,14 @@ public class MethodListTableModel extends ObjectListTableModel
 	{
 		super(projectToUse, selectedHierarchy, Indicator.TAG_METHOD_IDS, ObjectType.TASK, COLUMN_TAGS);
 	}
-
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "MethodListTableModel";
 	private static String[] COLUMN_TAGS = {
 		Task.TAG_SHORT_LABEL,
 		Task.TAG_LABEL,

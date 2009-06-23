@@ -31,6 +31,14 @@ public class KeyEcologicalAttributeTableModel extends ObjectPoolTableModel
 		super(projectToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, COLUMN_TAGS);
 	}
 	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "KeyEcologicalAttributeTableModel";
+	
 	private static final String[] COLUMN_TAGS = new String[] {
 		KeyEcologicalAttribute.TAG_LABEL,
 	};

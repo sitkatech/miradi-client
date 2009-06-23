@@ -220,6 +220,8 @@ abstract public class ObjectTableModel extends AbstractTableModel implements Col
 	
 	abstract public ORefList getLatestRefListFromProject();
 	
+	abstract public String getUniqueModelIdentifier();
+	
 	protected Project project;
 	private int rowObjectType;
 	private ORefList rowObjectRefs;

@@ -65,6 +65,14 @@ public class ShareableMethodPoolTableModel extends ObjectPoolTableModel
 				
 		return filteredTaskRefs.convertToIdList(Task.getObjectType());
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ShareableMethodPoolTableModel";
 
 	private ORef parentRef;
 }

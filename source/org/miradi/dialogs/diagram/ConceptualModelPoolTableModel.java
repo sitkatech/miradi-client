@@ -45,4 +45,13 @@ public class ConceptualModelPoolTableModel extends ObjectPoolTableModel
 		
 		return ConceptualModelDiagram.DEFAULT_BLANK_NAME;
 	}
+	
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ConceptualModelPoolTableModel";
 }

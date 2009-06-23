@@ -33,4 +33,12 @@ public class KeyEcologicalAttributeListTableModel extends ObjectListTableModel
 	{
 		super(projectToUse, new ORef(ObjectType.TARGET, nodeId), Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new String[] {KeyEcologicalAttribute.TAG_LABEL});
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "KeyEcologicalAttributeListTableModel";
 }

@@ -86,6 +86,14 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 		private ObjectTableModel model;
 	}
 	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ProgressReportListTableModel";
+	
 	private ProgressReportStatusQuestion progressReportQuestion; 
 	
 	public static final String[] COLUMN_TAGS = new String[] {

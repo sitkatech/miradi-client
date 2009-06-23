@@ -55,6 +55,14 @@ public class ResourcePoolTableModel extends ObjectPoolTableModel
 		return super.getColumnQuestion(column);
 	}
 	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourcePoolTableModel";
+	
 	private static final String[] COLUMN_TAGS = new String[] {
 		ProjectResource.TAG_RESOURCE_TYPE,
 		ProjectResource.TAG_INITIALS,

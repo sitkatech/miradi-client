@@ -30,7 +30,15 @@ public class FundingSourcePoolTableModel extends ObjectPoolTableModel
 	{
 		super(project, ObjectType.FUNDING_SOURCE, COLUMN_TAGS);
 	}
-
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "FundingSourcePoolTableModel";
+	
 	private static final String[] COLUMN_TAGS = new String[] {
 		FundingSource.TAG_CODE,
 		FundingSource.TAG_LABEL,
