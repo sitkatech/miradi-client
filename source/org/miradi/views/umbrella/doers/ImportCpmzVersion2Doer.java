@@ -85,12 +85,12 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		}
 		catch (CpmzVersionTooOldException e)
 		{
-			deleteIncompleteProject(newProjectDir, projectToFill);
+			deleteIncompleteProject(projectToFill);
 			throw new CpmzVersionTooOldException(e);
 		}
 		catch (Exception e)
 		{
-			deleteIncompleteProject(newProjectDir, projectToFill);
+			deleteIncompleteProject(projectToFill);
 			throw new Exception(e);
 		}
 		finally
@@ -99,10 +99,11 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		}
 	}
 
-	private void deleteIncompleteProject(File newProjectDir, Project projectToFill)	throws Exception
+	private void deleteIncompleteProject(Project projectToFill)	throws Exception
 	{
+		File projectDirectory = projectToFill.createProjectDirectory();
 		projectToFill.close();
-		DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
+		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 	}
 
 	//TODO this method needs to have a project dir parameter only.  the project should not created when importing mpz,  just when importing project.xml
