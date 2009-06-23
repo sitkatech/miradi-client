@@ -27,8 +27,6 @@ public class KeyEcologicalAttributePoolTablePanel extends ObjectPoolTablePanel
 {
 	public KeyEcologicalAttributePoolTablePanel(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTableModel(mainWindowToUse.getProject()), UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, new KeyEcologicalAttributeTableModel(mainWindowToUse.getProject()));
 	}
-	
-	public static final String UNIQUE_IDENTIFIER = "KeyEcologicalAttributePoolTablePanel";
 }

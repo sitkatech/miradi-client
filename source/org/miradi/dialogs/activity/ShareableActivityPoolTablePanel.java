@@ -28,8 +28,6 @@ public class ShareableActivityPoolTablePanel extends ObjectPoolTablePanel
 {
 	public ShareableActivityPoolTablePanel(MainWindow mainWindowToUse, ORef parentRef)
 	{
-		super(mainWindowToUse, ObjectType.TASK, new ShareableActivityPoolTableModel(mainWindowToUse.getProject(), parentRef), UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, ObjectType.TASK, new ShareableActivityPoolTableModel(mainWindowToUse.getProject(), parentRef));
 	}
-	
-	public static final String UNIQUE_IDENTIFIER = "ShareableActivityPoolTablePanel";
 }
