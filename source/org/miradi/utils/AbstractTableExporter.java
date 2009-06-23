@@ -76,6 +76,6 @@ public abstract class AbstractTableExporter
 	}
 	
 	private static final String CODE_LIST_SEPERATOR = ";";
-	
+	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
 	String uniqueModelIdentifier;
 }

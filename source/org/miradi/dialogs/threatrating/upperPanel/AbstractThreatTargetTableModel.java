@@ -32,7 +32,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.utils.MultiTableCombinedAsOneExporter;
+import org.miradi.utils.AbstractTableExporter;
 
 abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 {
@@ -171,7 +171,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	
 	public String getUniqueModelIdentifier()
 	{
-		return MultiTableCombinedAsOneExporter.NO_UNIQUE_MODEL_IDENTIFIER;
+		return AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER;
 	}
 	
 	private Project project;
