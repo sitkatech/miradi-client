@@ -37,6 +37,11 @@ import org.miradi.rtf.RtfStyleManager;
 
 abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExporter
 {
+	public AbstractTreeTableOrModelExporter(String uniqueModelIdentifierToUse)
+	{
+		super(uniqueModelIdentifierToUse);
+	}
+
 	@Override
 	public String getStyleTagAt(int row, int column)
 	{

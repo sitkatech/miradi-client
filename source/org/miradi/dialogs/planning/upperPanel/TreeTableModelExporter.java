@@ -34,6 +34,8 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 {
 	public TreeTableModelExporter(Project projectToUse, GenericTreeTableModel modelToUse) throws Exception
 	{
+		super(modelToUse.getUniqueTreeTableModelIdentifier());
+		
 		project = projectToUse;
 		model = modelToUse;
 		fullyExpandedTreePaths = model.getFullyExpandedTreePathList();

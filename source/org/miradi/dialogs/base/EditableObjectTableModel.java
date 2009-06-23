@@ -90,5 +90,7 @@ abstract public class EditableObjectTableModel extends AbstractTableModel implem
 	
 	abstract public void setObjectRefs(ORef[] hierarchyToSelectedRef);
 	
+	abstract public String getUniqueTableModelIdentifier();
+	
 	private Project project;
 }

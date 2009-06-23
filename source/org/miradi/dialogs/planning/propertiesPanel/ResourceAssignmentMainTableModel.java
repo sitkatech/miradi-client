@@ -253,6 +253,14 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceId);
 	}
 	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
+	
 	private static final int COLUMN_COUNT = 5;
 	
 	private static final int RESOURCE_COLUMM = 0;

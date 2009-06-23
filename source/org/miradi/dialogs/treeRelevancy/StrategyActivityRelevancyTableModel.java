@@ -68,5 +68,13 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 		return getRelevantStrategyActivityRefs();
 	}
 	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "StrategyActivityRelevancyTableModel";
+	
 	private Desire desireAsParent;
 }

@@ -32,6 +32,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.utils.MultiTableCombinedAsOneExporter;
 
 abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 {
@@ -166,6 +167,11 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	public Comparator getComparator(int columnToSortOn)
 	{
 		return new TableModelStringComparator(this, columnToSortOn);
+	}
+	
+	public String getUniqueModelIdentifier()
+	{
+		return MultiTableCombinedAsOneExporter.NO_UNIQUE_MODEL_IDENTIFIER;
 	}
 	
 	private Project project;

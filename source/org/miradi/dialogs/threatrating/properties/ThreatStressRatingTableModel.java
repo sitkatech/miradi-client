@@ -285,6 +285,13 @@ public class ThreatStressRatingTableModel extends EditableObjectTableModel imple
 		};
 	}
 	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ThreatStressRatingTableModel";
 	private static final String THREAT_NAME_COLUMN_TAG = "Fake Tag: Threat Name";
 	private static final String STRESS_NAME_COLUMN_TAG = "Fake Tag: Stress Name";
 	private ThreatStressRating[] ratings;

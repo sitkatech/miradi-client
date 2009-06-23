@@ -342,6 +342,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		return rowColumnProvider;
 	}
+	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewMainTableModel";
 
 	private CodeList columnsToShow;
 	private RowColumnProvider rowColumnProvider;
