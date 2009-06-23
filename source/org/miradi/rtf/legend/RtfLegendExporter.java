@@ -31,7 +31,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.RtfLegendObjectsQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
-import org.miradi.utils.MultiTableCombinedAsOneExporter;
 
 public class RtfLegendExporter
 {
@@ -60,7 +59,7 @@ class LegendModelExporter extends AbstractTableExporter
 {
 	public LegendModelExporter(ChoiceItem[]  choicesToUse)
 	{
-		super(MultiTableCombinedAsOneExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		super(AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		
 		choices = choicesToUse;
 	}

@@ -39,6 +39,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 
@@ -92,7 +93,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiModelExporter = new MultiTableCombinedAsOneExporter();
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, MultiTableCombinedAsOneExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		multiModelExporter.addExportable(new TreeTableModelExporter(project, model));
 		
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, rowColumnProvider);
