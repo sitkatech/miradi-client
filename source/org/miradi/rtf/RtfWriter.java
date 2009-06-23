@@ -271,6 +271,7 @@ public class RtfWriter
 		writeRaw(ROW_COMMAND);
 		newLine();
 		newLine();
+		writePlainCommand();
 	}
 	
 	public static String encode(String stringToEncode)
@@ -429,6 +430,11 @@ public class RtfWriter
 	{
 		writeRaw(PAR_COMMAND);
 	}
+	
+	private void writePlainCommand() throws Exception
+	{
+		writeRaw(PLAIN_COMMAND);
+	}
 		
 	public void newParagraph() throws Exception
 	{
@@ -488,6 +494,7 @@ public class RtfWriter
 	public static final String ROW_COMMAND = "\\row \\pard";
 	public static final String PARAGRAPH_COMMAND = "\\pard\\par ";
 	public static final String PAR_COMMAND = "\\par";
+	public static final String PLAIN_COMMAND = "\\plain";
 	public static final String ROW_HEADER = "\\pard \\trowd\\trql\\trpaddft3\\trpaddt60\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb60\\trpaddfr3\\trpaddr55 ";
 	public static final String TABLE_ROW_HEADER = "\\trowd\\trautofit1\\trql\\trhdr\\trpaddft3\\trpaddt60\\trpaddfl3\\trpaddl55\\trpaddfb3\\trpaddb60\\trpaddfr3\\trpaddr55 ";
 	public static final String LANDSCAPE_COMMAND = "\\landscape\\paperh12240\\paperw15840\\margl1134\\margr1134\\margt1134\\margb1134\\sectd\\sbknone\\lndscpsxn ";
