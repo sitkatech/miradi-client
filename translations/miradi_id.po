@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-23 09:32-0500\n"
+"POT-Creation-Date: 2009-06-23 12:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2261,10 +2261,6 @@ msgstr "Buka \t"
 msgid "Last Modified"
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:106
-msgid "Project List"
-msgstr "Daftar Proyek "
-
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:46
 msgid "Error renaming project: "
 msgstr "Kesalahan mengganti nama proyek: "
@@ -2471,7 +2467,7 @@ msgstr "Error"
 msgid "--Select a classification--"
 msgstr "--Pilih klasifikasi-- "
 
-#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
+#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
 msgid "Legend Table"
 msgstr "Tabel Keterangan Gambar"
@@ -6990,7 +6986,7 @@ msgstr ""
 "Silakan pilih butir mana yang harus dibagi dengan faktor ini, lalu tekan "
 "tombol Bagi "
 
-#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:79
+#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:87
 msgid "Is Tagged"
 msgstr "Ditandai"
 
@@ -32697,6 +32693,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Project List"
+#~ msgstr "Daftar Proyek "
 
 #~ msgid "FieldLabel|8.Comment|Comments"
 #~ msgstr "Komentar "

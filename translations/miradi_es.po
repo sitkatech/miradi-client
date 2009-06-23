@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-23 09:32-0500\n"
+"POT-Creation-Date: 2009-06-23 12:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2263,10 +2263,6 @@ msgstr "Abrir"
 msgid "Last Modified"
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:106
-msgid "Project List"
-msgstr "Lista de proyectos"
-
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:46
 msgid "Error renaming project: "
 msgstr "Error al cambiar nombre del proyecto:"
@@ -2476,7 +2472,7 @@ msgstr "Error"
 msgid "--Select a classification--"
 msgstr "--Seleccionar una clasificación--"
 
-#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
+#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
 msgid "Legend Table"
 msgstr "Tabla de leyendas"
@@ -7017,7 +7013,7 @@ msgstr ""
 "Seleccione el elemento que se debe compartir con este factor y oprima el "
 "botón Compartir."
 
-#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:79
+#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:87
 msgid "Is Tagged"
 msgstr "Está etiquetado"
 
@@ -32855,6 +32851,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Project List"
+#~ msgstr "Lista de proyectos"
 
 #~ msgid "FieldLabel|8.Comment|Comments"
 #~ msgstr "Comentarios"

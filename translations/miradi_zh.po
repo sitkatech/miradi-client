@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-23 09:32-0500\n"
+"POT-Creation-Date: 2009-06-23 12:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2146,10 +2146,6 @@ msgstr "打开 \t\t"
 msgid "Last Modified"
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:106
-msgid "Project List"
-msgstr "项目列表 \t\t"
-
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:46
 msgid "Error renaming project: "
 msgstr "项目重命名出错： \t\t"
@@ -2354,7 +2350,7 @@ msgstr "Error"
 msgid "--Select a classification--"
 msgstr "--选定一个类别-- \t\t"
 
-#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
+#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
 msgid "Legend Table"
 msgstr "图例表格 "
@@ -6804,7 +6800,7 @@ msgid ""
 "Share button"
 msgstr "请选择那个应当与本因素共享的条目，然后按共享按钮 \t\t"
 
-#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:79
+#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:87
 msgid "Is Tagged"
 msgstr "加标签的"
 
@@ -29304,6 +29300,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Project List"
+#~ msgstr "项目列表 \t\t"
 
 #~ msgid "FieldLabel|8.Comment|Comments"
 #~ msgstr "评论 \t\t"
