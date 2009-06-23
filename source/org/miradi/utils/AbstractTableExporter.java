@@ -69,15 +69,16 @@ public abstract class AbstractTableExporter
 
 	private int[] createModelColumnArray(CodeList storedColumnSequenceCodes)
 	{
-		modelColumnIndexes = new int[getColumnCount()];
+		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateDesiredSequenceCodes(storedColumnSequenceCodes, getModelColumnSequence());
+		int[] thisModelColumnIndexes = new int[getColumnCount()];
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
-			String tableColumnName = getColumnName(tableColumn);
-			int indexOfModelColumn = storedColumnSequenceCodes.find(tableColumnName);
-			modelColumnIndexes[tableColumn] = indexOfModelColumn;
+			String modelColumnName = getColumnName(tableColumn);
+			int indexOfModelColumn = desiredSequenceCodes.find(modelColumnName);
+			thisModelColumnIndexes[tableColumn] = indexOfModelColumn;
 		}
 		
-		return modelColumnIndexes;
+		return thisModelColumnIndexes;
 	}
 	
 	private CodeList getModelColumnSequence()
