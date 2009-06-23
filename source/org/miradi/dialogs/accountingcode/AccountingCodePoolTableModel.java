@@ -30,7 +30,15 @@ public class AccountingCodePoolTableModel extends ObjectPoolTableModel
 	{
 		super(project, ObjectType.ACCOUNTING_CODE, COLUMN_TAGS);
 	}
-
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "AccountingCodePoolTableModel";
+	
 	private static final String[] COLUMN_TAGS = new String[] {
 		AccountingCode.TAG_CODE,
 		AccountingCode.TAG_LABEL,

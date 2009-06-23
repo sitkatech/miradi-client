@@ -30,6 +30,15 @@ public class TaggedObjectSetPoolTableModel extends ObjectPoolTableModel
 	{
 		super(projectToUse, TaggedObjectSet.getObjectType(), COLUMN_TAGS);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "TaggedObjectSetPoolTableModel";
+	
 
 	public static final String[] COLUMN_TAGS = new String[] {
 		ReportTemplate.TAG_LABEL,

@@ -41,4 +41,12 @@ public class ObjectiveListTableModel extends ObjectListTableModel
 			Objective.TAG_FULL_TEXT,
 		};
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ObjectiveListTableModel";
 }

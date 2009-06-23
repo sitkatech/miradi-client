@@ -29,6 +29,14 @@ public class ReportTemplatePoolTableModel extends ObjectPoolTableModel
 	{
 		super(projectToUse, ReportTemplate.getObjectType(), COLUMN_TAGS);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ReportTemplatePoolTableModel";
 
 	public static final String[] COLUMN_TAGS = new String[] {
 		ReportTemplate.TAG_LABEL,

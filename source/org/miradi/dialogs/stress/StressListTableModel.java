@@ -42,4 +42,12 @@ public class StressListTableModel extends ObjectListTableModel
 	{
 		return StressPoolTableModel.getStressColumnTags(projectToUse);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "StressListTableModel";
 }

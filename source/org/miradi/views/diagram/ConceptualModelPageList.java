@@ -52,5 +52,6 @@ public class ConceptualModelPageList extends DiagramPageList
 		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
 	}
 	
+	//FIXME urgent need to use the model's unique identifier,  no need to pass this to super
 	public static final String UNIQUE_IDENTIFIER = "ConceptualModelPageList";
 }

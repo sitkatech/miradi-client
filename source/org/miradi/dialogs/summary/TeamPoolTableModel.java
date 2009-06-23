@@ -59,6 +59,14 @@ public class TeamPoolTableModel extends ObjectPoolTableModel
 	{
 		return getColumnTag(column).equals(ProjectResource.TAG_ROLE_CODES);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "TeamPoolTableModel";
 		
 	private static final String[] COLUMN_TAGS = new String[] {
 		ProjectResource.TAG_GIVEN_NAME,

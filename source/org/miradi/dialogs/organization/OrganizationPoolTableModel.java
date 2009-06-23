@@ -30,6 +30,14 @@ public class OrganizationPoolTableModel extends ObjectPoolTableModel
 	{
 		super(project, ObjectType.ORGANIZATION, COLUMN_TAGS);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "OrganizationPoolTableModel";
 
 	private static final String[] COLUMN_TAGS = new String[] {
 		Organization.TAG_SHORT_LABEL,

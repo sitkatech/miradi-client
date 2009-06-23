@@ -31,6 +31,14 @@ public class ObjectivePoolTableModel extends ObjectPoolTableModel
 	{
 		super(projectToUse, ObjectType.OBJECTIVE, COLUMN_TAGS);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ObjectivePoolTableModel";
 
 	private static final String[] COLUMN_TAGS = new String[] {
 		Objective.TAG_SHORT_LABEL,

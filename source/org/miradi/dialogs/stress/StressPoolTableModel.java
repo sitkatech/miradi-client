@@ -61,6 +61,14 @@ public class StressPoolTableModel extends ObjectPoolTableModel
 		return SIMPLE_MODE_COLUMN_TAGS;
 	}
 	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "StressPoolTableModel";
+	
 	private static final String[] STRESS_BASED_COLUMN_TAGS = new String[] {
 		Stress.TAG_SHORT_LABEL, 
 		Stress.TAG_LABEL,

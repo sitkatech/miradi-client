@@ -30,4 +30,12 @@ public class ResultsChainPoolTableModel extends ObjectPoolTableModel
 	{
 		super(project, ResultsChainDiagram.getObjectType(), tags);
 	}
+	
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ResultsChainPoolTableModel";
 }

@@ -41,4 +41,11 @@ public class GoalListTableModel extends ObjectListTableModel
 			Goal.TAG_FULL_TEXT,
 		};
 	}
+	
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "GoalListTableModel";
 }

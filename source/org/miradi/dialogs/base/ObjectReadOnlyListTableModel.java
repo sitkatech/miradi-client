@@ -29,4 +29,12 @@ public class ObjectReadOnlyListTableModel extends ObjectListTableModel
 	{
 		super(projectToUse, containingRefToUse, listFieldTag, listedItemType, columnTags);
 	}
+
+	@Override
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ObjectReadOnlyListTableModel";
 }
