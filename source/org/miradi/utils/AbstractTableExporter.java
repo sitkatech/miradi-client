@@ -23,7 +23,6 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -65,8 +64,7 @@ public abstract class AbstractTableExporter
 
 	private CodeList getColumnSequenceCodes()
 	{
-		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueModelIdentifier());
-		return tableSettings.getColumnSequenceCodes();
+		return ColumnSequenceSaver.getStoredColumnSequenceCodes(getProject(), getUniqueModelIdentifier(), getModelColumnSequence());
 	}
 
 	private int[] createModelColumnArray(CodeList storedColumnSequenceCodes)
@@ -80,6 +78,17 @@ public abstract class AbstractTableExporter
 		}
 		
 		return modelColumnIndexes;
+	}
+	
+	private CodeList getModelColumnSequence()
+	{
+		CodeList currentColumnTagSequences = new CodeList();
+		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
+		{	
+			currentColumnTagSequences.add(getColumnName(tableColumn));
+		}
+		
+		return currentColumnTagSequences;
 	}
 	
 	public String getStyleTagAt(int row, int column)
