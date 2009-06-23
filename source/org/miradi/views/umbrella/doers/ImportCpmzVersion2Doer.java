@@ -85,12 +85,12 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		}
 		catch (CpmzVersionTooOldException e)
 		{
-			deleteIncompleteProject(newProjectDir);
+			deleteIncompleteProject(newProjectDir, projectToFill);
 			throw new CpmzVersionTooOldException(e);
 		}
 		catch (Exception e)
 		{
-			deleteIncompleteProject(newProjectDir);
+			deleteIncompleteProject(newProjectDir, projectToFill);
 			throw new Exception(e);
 		}
 		finally
@@ -99,8 +99,9 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		}
 	}
 
-	private void deleteIncompleteProject(File newProjectDir)	throws Exception
+	private void deleteIncompleteProject(File newProjectDir, Project projectToFill)	throws Exception
 	{
+		projectToFill.close();
 		DirectoryUtils.deleteEntireDirectoryTree(newProjectDir);
 	}
 
