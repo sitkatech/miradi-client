@@ -29,7 +29,7 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void testGetModelColumnIndexArray()
+	public void testBuildModelColumnIndexArray()
 	{		
 		CodeList desiredCodeList = new CodeList(new String[] {"c", "a", "d", "b"});
 		int[] expectedColumnIndexes1 = new int[]{1, 3, 0, 2,};
@@ -43,7 +43,7 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 	private void verifyColumnIndexes(CodeList desiredCodeList, int[] expectedColumnIndexes)
 	{
 		CodeList modelColumnCodes = new CodeList(new String[]{"a", "b", "c", "d",});
-		int[] modelColumnArray2 = AbstractTableExporter.getModelColumnIndexArray(desiredCodeList, modelColumnCodes);
+		int[] modelColumnArray2 = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
 		for (int column = 0; column < modelColumnArray2.length; ++column)
 		{
 			assertEquals("wrong column index", expectedColumnIndexes[column], modelColumnArray2[column]);
