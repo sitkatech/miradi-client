@@ -39,6 +39,7 @@ public abstract class AbstractTableExporter
 	{
 		project = projectToUse;
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
+		modelColumnIndexes  = createModelColumnArray(getColumnSequenceCodes());
 	}
 	
 	abstract public int getMaxDepthCount();
@@ -59,23 +60,23 @@ public abstract class AbstractTableExporter
 	
 	public int convertToModelColumn(int tableColumn)
 	{
-		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueModelIdentifier());
-		if (tableSettings == null)
-			return tableColumn;
-		
-		int[] modelColumnIndexes  = createModelColumnArray(tableSettings.getColumnSequenceCodes());
-		
 		return modelColumnIndexes[tableColumn];
 	}
 
-	private int[] createModelColumnArray(CodeList columnSequenceCodes )
+	private CodeList getColumnSequenceCodes()
 	{
-		int[] modelColumnIndexes = new int[getColumnCount()];
-		for (int column = 0; column < getColumnCount(); ++column)
+		TableSettings tableSettings = TableSettings.find(getProject(), getUniqueModelIdentifier());
+		return tableSettings.getColumnSequenceCodes();
+	}
+
+	private int[] createModelColumnArray(CodeList columnSequenceCodes)
+	{
+		modelColumnIndexes = new int[getColumnCount()];
+		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{
-			String currentColumnName = getColumnName(column);
-			int indexOfModelColumn = columnSequenceCodes.find(currentColumnName);
-			modelColumnIndexes[column] = indexOfModelColumn;
+			String tableColumnName = getColumnName(tableColumn);
+			int indexOfModelColumn = columnSequenceCodes.find(tableColumnName);
+			modelColumnIndexes[tableColumn] = indexOfModelColumn;
 		}
 		
 		return modelColumnIndexes;
@@ -119,6 +120,7 @@ public abstract class AbstractTableExporter
 	
 	private static final String CODE_LIST_SEPERATOR = ";";
 	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
-	String uniqueModelIdentifier;
+	private String uniqueModelIdentifier;
 	private Project project;
+	private int[] modelColumnIndexes;  
 }
