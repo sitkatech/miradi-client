@@ -33,14 +33,14 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 	{		
 		CodeList desiredCodeList = new CodeList(new String[] {"c", "a", "d", "b"});
 		int[] expectedColumnIndexes1 = new int[]{1, 3, 0, 2,};
-		verifyColumnIndexes(desiredCodeList, expectedColumnIndexes1);
+		verifyColumnIndexes(expectedColumnIndexes1, desiredCodeList);
 		
 		CodeList emptyDesiredColumnCodes = new CodeList();
 		int[] expectedColumnIndexes2 = new int[]{0, 1, 2, 3, };
-		verifyColumnIndexes(emptyDesiredColumnCodes, expectedColumnIndexes2);
+		verifyColumnIndexes(expectedColumnIndexes2, emptyDesiredColumnCodes);
 	}
 	
-	private void verifyColumnIndexes(CodeList desiredCodeList, int[] expectedColumnIndexes)
+	private void verifyColumnIndexes(int[] expectedColumnIndexes, CodeList desiredCodeList)
 	{
 		CodeList modelColumnCodes = new CodeList(new String[]{"a", "b", "c", "d",});
 		int[] modelColumnArray2 = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
