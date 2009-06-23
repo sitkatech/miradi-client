@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-23 07:58-0500\n"
+"POT-Creation-Date: 2009-06-23 09:32-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -820,7 +820,7 @@ msgstr ""
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:251
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzVersion2Doer.java:252
 msgid "Import"
 msgstr ""
 
@@ -1760,7 +1760,7 @@ msgstr ""
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:899
+#: miradi/source/org/miradi/project/Project.java:904
 msgid "[No Project]"
 msgstr ""
 
