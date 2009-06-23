@@ -51,11 +51,11 @@ public abstract class AbstractTableExporter
 
 	private CodeList getDesiredColumnCodes()
 	{
-		CodeList storedColumnCodes = ColumnSequenceSaver.getStoredColumnCodes(getProject(), getUniqueModelIdentifier());
-		if (storedColumnCodes == null)
-			storedColumnCodes = getModelColumnSequence();
+		CodeList resultingColumnCodes = ColumnSequenceSaver.getStoredColumnCodes(getProject(), getUniqueModelIdentifier());
+		if (resultingColumnCodes == null)
+			resultingColumnCodes = getModelColumnSequence();
 		
-		return storedColumnCodes;
+		return resultingColumnCodes;
 	}
 
 	public static int[] getModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
