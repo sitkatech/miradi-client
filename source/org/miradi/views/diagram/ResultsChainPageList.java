@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import org.miradi.dialogs.base.ObjectPoolTableModel;
+import org.miradi.dialogs.diagram.ResultsChainPoolTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ResultsChainDiagram;
@@ -28,7 +28,7 @@ public class ResultsChainPageList extends DiagramPageList
 {
 	public ResultsChainPageList(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, new ObjectPoolTableModel(mainWindowToUse.getProject(), ObjectType.RESULTS_CHAIN_DIAGRAM, getTags()), UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, new ResultsChainPoolTableModel(mainWindowToUse.getProject(), getTags()), UNIQUE_IDENTIFIER);
 	}
 	
 	private static String[] getTags()
@@ -51,5 +51,6 @@ public class ResultsChainPageList extends DiagramPageList
 		return ObjectType.RESULTS_CHAIN_DIAGRAM;
 	}
 	
+	//FIXME urgent need to use the model's unique identifier,  no need to pass this to super
 	public static final String UNIQUE_IDENTIFIER = "ResultsChainPageList";
 }
