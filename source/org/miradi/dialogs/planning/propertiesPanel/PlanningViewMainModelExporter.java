@@ -26,14 +26,15 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 
 public class PlanningViewMainModelExporter extends AbstractTableExporter
 {
-	public PlanningViewMainModelExporter(ChoiceItemTableModel choiceItemTableModelToUse, RowColumnBaseObjectProvider objectProviderToUse, String uniqueModelIdentifier)
+	public PlanningViewMainModelExporter(Project projectToUse, ChoiceItemTableModel choiceItemTableModelToUse, RowColumnBaseObjectProvider objectProviderToUse, String uniqueModelIdentifier)
 	{
-		super(uniqueModelIdentifier);
+		super(projectToUse, uniqueModelIdentifier);
 		
 		choiceItemTableModel = choiceItemTableModelToUse;
 		objectProvider = objectProviderToUse;

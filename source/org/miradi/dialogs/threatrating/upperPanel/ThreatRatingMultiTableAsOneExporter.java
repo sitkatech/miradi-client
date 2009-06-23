@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
@@ -32,9 +33,9 @@ import org.miradi.utils.MultiTableCombinedAsOneExporter;
 
 public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOneExporter
 {
-	public ThreatRatingMultiTableAsOneExporter()
+	public ThreatRatingMultiTableAsOneExporter(Project projectToUse)
 	{
-		super();
+		super(projectToUse);
 	}
 
 	@Override

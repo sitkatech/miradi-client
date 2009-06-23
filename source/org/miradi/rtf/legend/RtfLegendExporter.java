@@ -43,7 +43,7 @@ public class RtfLegendExporter
 	{
 		writer.newParagraph();
 		ChoiceQuestion question = getProject().getQuestion(RtfLegendObjectsQuestion.class);
-		writer.writeRtfTable(new LegendModelExporter(question.getChoices()));
+		writer.writeRtfTable(new LegendModelExporter(getProject(), question.getChoices()));
 		writer.newParagraph();
 	}
 	
@@ -57,9 +57,9 @@ public class RtfLegendExporter
 
 class LegendModelExporter extends AbstractTableExporter
 {
-	public LegendModelExporter(ChoiceItem[]  choicesToUse)
+	public LegendModelExporter(Project projectToUse, ChoiceItem[]  choicesToUse)
 	{
-		super();
+		super(projectToUse);
 		
 		choices = choicesToUse;
 	}

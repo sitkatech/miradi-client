@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.rtf.RtfStyleManager;
@@ -37,9 +38,9 @@ import org.miradi.rtf.RtfStyleManager;
 
 abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExporter
 {
-	public AbstractTreeTableOrModelExporter(String uniqueModelIdentifierToUse)
+	public AbstractTreeTableOrModelExporter(Project projectToUse, String uniqueModelIdentifierToUse)
 	{
-		super(uniqueModelIdentifierToUse);
+		super(projectToUse, uniqueModelIdentifierToUse);
 	}
 
 	@Override
