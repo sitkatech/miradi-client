@@ -65,6 +65,9 @@ public abstract class AbstractTableExporter
 		{
 			String modelColumnName = modelColumnCodes.get(tableColumn);
 			int indexOfModelColumn = desiredSequenceCodes.find(modelColumnName);
+			if (indexOfModelColumn < 0)
+				indexOfModelColumn = tableColumn;
+			
 			thisModelColumnIndexes[tableColumn] = indexOfModelColumn;
 		}
 		

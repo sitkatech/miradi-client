@@ -171,6 +171,7 @@ import org.miradi.questions.TestChoiceQuestion;
 import org.miradi.ratings.TestRatingChoice;
 import org.miradi.ratings.TestRatingQuestion;
 import org.miradi.ratings.TestStrategyRatingSummary;
+import org.miradi.utils.TestAbstractTableExporter;
 import org.miradi.utils.TestBaseObjectDateAndIdComparator;
 import org.miradi.utils.TestBendPointList;
 import org.miradi.utils.TestCodeList;
@@ -290,6 +291,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestThreatStressRatingHelper.class));
 		suite.addTest(new TestSuite(TestColumnSequenceSaver.class));
 		suite.addTest(new TestSuite(TestOptionalDouble.class));
+		suite.addTest(new TestSuite(TestAbstractTableExporter.class));
 		
 		// diagram package
 		suite.addTest(new TestSuite(TestDiagramModel.class));
