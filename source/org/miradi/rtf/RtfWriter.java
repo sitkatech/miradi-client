@@ -256,7 +256,7 @@ public class RtfWriter
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.COLUMN_HEADER_STYLE_TAG);
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
-			String header = exportableTable.getTranslatedHeader(columnIndex);
+			String header = exportableTable.getColumnName(columnIndex);
 			writeRaw(PRE_TABLE_HEADER_CELL_COMMAND);
 			writeRaw(styleFormattingCommand);
 			startBlock();
