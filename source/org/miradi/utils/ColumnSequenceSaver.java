@@ -132,14 +132,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 	
 	private CodeList getDefaultSequence()
 	{
-		CodeList defaultColumnTagSequence = new CodeList();
-		for (int column = 0; column < getTableColumnCount(); ++column)
-		{
-			String columnTag = getColumnGroupCode(column);
-			defaultColumnTagSequence.add(columnTag);
-		}
-		
-		return defaultColumnTagSequence;
+		return getCurrentSequence();
 	}
 	
 	private void saveColumnSequences() throws Exception
