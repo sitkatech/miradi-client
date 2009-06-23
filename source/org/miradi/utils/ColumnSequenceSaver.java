@@ -96,11 +96,11 @@ public class ColumnSequenceSaver extends MouseAdapter
 		storedColumnTags.retainAll(currentColumnTagSequences);
 		currentColumnTagSequences.subtract(storedColumnTags);
 		
-		CodeList desiredSequenceList = new CodeList();
-		desiredSequenceList.addAll(storedColumnTags);
-		desiredSequenceList.addAll(currentColumnTagSequences);
+		CodeList arrangedColumnCodes = new CodeList();
+		arrangedColumnCodes.addAll(storedColumnTags);
+		arrangedColumnCodes.addAll(currentColumnTagSequences);
 		
-		return desiredSequenceList.withoutDuplicates();
+		return arrangedColumnCodes.withoutDuplicates();
 	}
 	
 	protected CodeList getStoredColumnSequenceCodes()
