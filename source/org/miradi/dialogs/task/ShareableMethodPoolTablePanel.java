@@ -28,8 +28,6 @@ public class ShareableMethodPoolTablePanel extends ObjectPoolTablePanel
 {
 	public ShareableMethodPoolTablePanel(MainWindow mainWindowToUse, ORef parentRef)
 	{
-		super(mainWindowToUse, ObjectType.TASK, new ShareableMethodPoolTableModel(mainWindowToUse.getProject(), parentRef), UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, ObjectType.TASK, new ShareableMethodPoolTableModel(mainWindowToUse.getProject(), parentRef));
 	}
-	
-	public static final String UNIQUE_IDENTIFIER = "ShareableMethodPoolTablePanel";
 }

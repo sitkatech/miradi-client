@@ -28,9 +28,6 @@ public class GoalPoolTablePanel extends ObjectPoolTablePanel
 	public GoalPoolTablePanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, ObjectType.GOAL, 
-				new GoalPoolTableModel(mainWindowToUse.getProject()), UNIQUE_IDENTIFIER
-		);
+				new GoalPoolTableModel(mainWindowToUse.getProject()));
 	}
-	
-	public static final String UNIQUE_IDENTIFIER = "GoalPoolTablePanel";
 }

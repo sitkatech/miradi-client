@@ -28,9 +28,7 @@ public class StressPoolTablePanel extends ObjectPoolTablePanel
 	public StressPoolTablePanel(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, Stress.getObjectType(), 
-				new StressPoolTableModel(mainWindowToUse.getProject()), UNIQUE_IDENTIFIER 
+				new StressPoolTableModel(mainWindowToUse.getProject()) 
 		);
 	}
-	
-	public static final String UNIQUE_IDENTIFIER = "StressPoolTablePanel";
 }
