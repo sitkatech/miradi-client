@@ -28,6 +28,11 @@ import org.miradi.questions.ChoiceQuestion;
 
 public abstract class AbstractTableExporter
 {
+	public AbstractTableExporter()
+	{
+		this(NO_UNIQUE_MODEL_IDENTIFIER);
+	}
+	
 	public AbstractTableExporter(String uniqueModelIdentifierToUse)
 	{
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;

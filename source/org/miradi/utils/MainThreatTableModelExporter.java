@@ -34,7 +34,8 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 {
 	public MainThreatTableModelExporter(AbstractThreatTargetTableModel mainThreatTableModelToUse)
 	{
-		super(mainThreatTableModelToUse.getUniqueModelIdentifier());
+		super();
+		
 		mainThreatTableModel = mainThreatTableModelToUse;
 		threatRatingQuestion = (ThreatRatingQuestion) mainThreatTableModel.getProject().getQuestion(ThreatRatingQuestion.class);
 	}
