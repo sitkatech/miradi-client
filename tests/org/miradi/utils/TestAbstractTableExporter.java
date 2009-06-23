@@ -32,24 +32,32 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 	public void testBuildModelColumnIndexArray()
 	{		
 		CodeList desiredCodeList = new CodeList(new String[] {"c", "a", "d", "b"});
-		int[] expectedColumnIndexes = new int[]{1, 3, 0, 2,};
-		verifyColumnIndexes(expectedColumnIndexes, desiredCodeList);
+		verifyColumnIndexes(desiredCodeList);
 	}
 
 	public void testEmptyDesiredColumnCodes()
 	{
 		CodeList emptyDesiredColumnCodes = new CodeList();
-		int[] expectedColumnIndexes = new int[]{0, 1, 2, 3, };
-		verifyColumnIndexes(expectedColumnIndexes, emptyDesiredColumnCodes);
+		verifyColumnIndexes(emptyDesiredColumnCodes);
 	}
 	
-	private void verifyColumnIndexes(int[] expectedColumnIndexes, CodeList desiredCodeList)
+	private void verifyColumnIndexes(CodeList desiredCodeList)
 	{
 		CodeList modelColumnCodes = new CodeList(new String[]{"a", "b", "c", "d",});
+		int[] createdExpectedColumnIndexes = new int[modelColumnCodes.size()];
+		for (int index  = 0; index < modelColumnCodes.size(); ++index)
+		{
+			String expectedCode = modelColumnCodes.get(index);
+			if (desiredCodeList.contains(expectedCode))
+				createdExpectedColumnIndexes[index] = desiredCodeList.find(expectedCode);
+			else
+				createdExpectedColumnIndexes[index] = index;
+		}
+		
 		int[] modelColumnArray = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
 		for (int column = 0; column < modelColumnArray.length; ++column)
 		{
-			assertEquals("wrong column index", expectedColumnIndexes[column], modelColumnArray[column]);
+			assertEquals("wrong column index", createdExpectedColumnIndexes[column], modelColumnArray[column]);
 		}
 	}
 }
