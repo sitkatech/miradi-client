@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-23 09:32-0500\n"
+"POT-Creation-Date: 2009-06-23 12:31-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -1918,10 +1918,6 @@ msgstr ""
 msgid "Last Modified"
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTable.java:106
-msgid "Project List"
-msgstr ""
-
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListRenameAction.java:46
 msgid "Error renaming project: "
 msgstr ""
@@ -2111,7 +2107,7 @@ msgstr ""
 msgid "--Select a classification--"
 msgstr ""
 
-#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:98
+#: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
 msgid "Legend Table"
 msgstr ""
@@ -6494,7 +6490,7 @@ msgid ""
 "Share button"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:79
+#: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:87
 msgid "Is Tagged"
 msgstr ""
 
