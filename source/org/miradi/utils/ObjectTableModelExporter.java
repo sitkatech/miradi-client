@@ -56,7 +56,7 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTranslatedHeader(int tableColumn)
+	public String getColumnName(int tableColumn)
 	{
 		return getObjectTableModel().getColumnName(tableColumn);
 	}
