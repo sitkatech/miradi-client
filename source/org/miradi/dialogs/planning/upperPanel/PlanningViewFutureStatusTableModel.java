@@ -72,6 +72,14 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	{
 		fireTableStructureChanged();
 	}
-
+	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewFutureStatusTableModel";
+	
 	public final static String[] columnTags = {Indicator.TAG_FUTURE_STATUS_DATE, Indicator.TAG_FUTURE_STATUS_SUMMARY};
 }

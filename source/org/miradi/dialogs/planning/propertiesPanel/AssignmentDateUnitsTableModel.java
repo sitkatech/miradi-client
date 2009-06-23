@@ -617,8 +617,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return true;
 	}
-
-	abstract public String getUniqueTableModelIdentifier();
 	
 	abstract public Color getCellBackgroundColor(int column);
 	

@@ -329,7 +329,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		multiModel.addModel(mainModel);
 
 		multiTableExporter.addAsMasterTable(new TreeTableExporter(getTree()));
-		multiTableExporter.addExportable(new PlanningViewMainModelExporter(multiModel, getTree()));
+		multiTableExporter.addExportable(new PlanningViewMainModelExporter(multiModel, getTree(), getTree().getUniqueTableIdentifier()));
 		mainTableScrollPane.showVerticalScrollBar();
 
 		CodeList columnsToShow = getRowColumnProvider().getColumnListToShow();

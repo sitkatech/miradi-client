@@ -75,6 +75,14 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 		return new ORefList(taggedObjectSet.getTaggedObjectRefs());
 	}
 	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "TaggedObjectSetEditableTableModel";
+	
 	private TaggedObjectSet taggedObjectSet;
 	public static final String SINGLE_COLUMN_NAME = EAM.text("Is Tagged");
 }

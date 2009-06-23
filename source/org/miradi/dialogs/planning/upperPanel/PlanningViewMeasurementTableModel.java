@@ -151,6 +151,14 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 	{
 		fireTableStructureChanged();
 	}
+	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningViewMeasurementTableModel";
 
 	public final static String[] columnTags = {
 		Measurement.TAG_DATE, 

@@ -92,23 +92,22 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiModelExporter = new MultiTableCombinedAsOneExporter();
-		final String NO_UNIQUE_MODEL_IDENTIFIER = "";
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, NO_UNIQUE_MODEL_IDENTIFIER);
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, MultiTableCombinedAsOneExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		multiModelExporter.addExportable(new TreeTableModelExporter(project, model));
 		
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, rowColumnProvider);
-		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel, model));
+		multiModelExporter.addExportable(new PlanningViewMainModelExporter(mainModel, model, model.getUniqueTreeTableModelIdentifier()));
 		
 		CodeList columnsToShow = rowColumnProvider.getColumnListToShow();
 		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
 		{
 			PlanningViewMeasurementTableModel measurementModel = new PlanningViewMeasurementTableModel(project, model);
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(measurementModel, model));
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(measurementModel, model, measurementModel.getUniqueTableModelIdentifier()));
 		}
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 		{
 			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(project, model);
-			multiModelExporter.addExportable(new PlanningViewMainModelExporter(futureStatusModel, model));
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(futureStatusModel, model, futureStatusModel.getUniqueTableModelIdentifier()));
 		}
 		
 		return multiModelExporter;

@@ -31,8 +31,10 @@ import org.miradi.utils.AbstractTableExporter;
 
 public class PlanningViewMainModelExporter extends AbstractTableExporter
 {
-	public PlanningViewMainModelExporter(ChoiceItemTableModel choiceItemTableModelToUse, RowColumnBaseObjectProvider objectProviderToUse)
+	public PlanningViewMainModelExporter(ChoiceItemTableModel choiceItemTableModelToUse, RowColumnBaseObjectProvider objectProviderToUse, String uniqueModelIdentifier)
 	{
+		super(uniqueModelIdentifier);
+		
 		choiceItemTableModel = choiceItemTableModelToUse;
 		objectProvider = objectProviderToUse;
 	}

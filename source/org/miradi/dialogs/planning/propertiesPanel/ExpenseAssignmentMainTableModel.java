@@ -175,7 +175,15 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		FundingSource fundingSource = (FundingSource)value;
 		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSource.getRef());
 	}
-						
+	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+				
+	private static final String UNIQUE_MODEL_IDENTIFIER = "ExpenseAssignmentMainTableModel";
+	
 	private static final int COLUMN_COUNT = 3;
 	
 	private static final int EXPENSE_NAME_COLUMN = 0;

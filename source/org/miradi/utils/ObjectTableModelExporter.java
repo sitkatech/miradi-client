@@ -34,6 +34,8 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 {
 	public ObjectTableModelExporter(ObjectTableModel objectTableModelToUse)
 	{
+		super(objectTableModelToUse.getUniqueModelIdentifier());
+		
 		objectTableModel = objectTableModelToUse;
 	}
 

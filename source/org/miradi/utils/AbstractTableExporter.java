@@ -28,6 +28,11 @@ import org.miradi.questions.ChoiceQuestion;
 
 public abstract class AbstractTableExporter
 {
+	public AbstractTableExporter(String uniqueModelIdentifierToUse)
+	{
+		uniqueModelIdentifier = uniqueModelIdentifierToUse;
+	}
+	
 	abstract public int getMaxDepthCount();
 	abstract public int getDepth(int row, int tableColumn);
 	abstract public int getColumnCount();
@@ -71,4 +76,6 @@ public abstract class AbstractTableExporter
 	}
 	
 	private static final String CODE_LIST_SEPERATOR = ";";
+	
+	String uniqueModelIdentifier;
 }

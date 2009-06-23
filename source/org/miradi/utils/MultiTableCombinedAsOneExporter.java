@@ -29,6 +29,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 {
 	public MultiTableCombinedAsOneExporter()
 	{
+		super(NO_UNIQUE_MODEL_IDENTIFIER);
 		clear();
 	}
 
@@ -188,4 +189,5 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	
 	private Vector<AbstractTableExporter> tables;
 	private static final int MASTER_TABLE_INDEX = 0;
+	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
 }
