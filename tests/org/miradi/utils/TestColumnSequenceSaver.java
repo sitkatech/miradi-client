@@ -97,7 +97,7 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		}
 		
 		@Override
-		protected CodeList getStoredColumnSequenceCodes() throws Exception
+		protected CodeList getStoredColumnSequenceCodes()
 		{
 			return new CodeList(storedCodeList);
 		}
