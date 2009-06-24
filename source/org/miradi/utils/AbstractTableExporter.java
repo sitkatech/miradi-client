@@ -43,17 +43,17 @@ public abstract class AbstractTableExporter
 
 	public int convertToModelColumn(int tableColumn)
 	{
-		if (modelColumnIndexesMap == null)
+		if (tableToModelColumnIndexMap == null)
 			buildColumnModelIndexes();
 		
-		return modelColumnIndexesMap.get(tableColumn);
+		return tableToModelColumnIndexMap.get(tableColumn);
 	}
 	
 	private void buildColumnModelIndexes()
 	{
 		CodeList modelColumnSequence = getModelColumnSequence();
 		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
-		modelColumnIndexesMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
+		tableToModelColumnIndexMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
 	}
 
 	private CodeList getArrangedColumnCodes()
@@ -178,5 +178,5 @@ public abstract class AbstractTableExporter
 	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
 	private String uniqueModelIdentifier;
 	private Project project;
-	private HashMap<Integer, Integer> modelColumnIndexesMap;  
+	private HashMap<Integer, Integer> tableToModelColumnIndexMap;  
 }
