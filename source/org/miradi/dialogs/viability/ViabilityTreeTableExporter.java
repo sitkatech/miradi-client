@@ -30,10 +30,12 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 		super(viabilityTreeTable);
 	}
 	
+	//FIXME urgent - test this case to make sure that its working properly,  this 
+	//method is complex
 	@Override
 	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{
-		Object valueAt = getViabilityTreeTable().getValueAt(row, modelColumn);
+		Object valueAt = getViabilityTreeTable().getModel().getValueAt(row, modelColumn);
 		if (valueAt == null)
 			return new EmptyChoiceItem();
 
