@@ -38,15 +38,22 @@ public abstract class AbstractTableExporter
 	{
 		project = projectToUse;
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
-		
-		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), getModelColumnSequence());
-		CodeList modelColumnCodes = getModelColumnSequence();
-		modelColumnIndexes  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnCodes);
 	}
-		
+
 	public int convertToModelColumn(int tableColumn)
 	{
+		buildColumnModelIndexes();
 		return modelColumnIndexes[tableColumn];
+	}
+	
+	private void buildColumnModelIndexes()
+	{
+		if (modelColumnIndexes == null)
+		{
+			CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), getModelColumnSequence());
+			CodeList modelColumnCodes = getModelColumnSequence();
+			modelColumnIndexes  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnCodes);
+		}
 	}
 
 	private CodeList getArrangedColumnCodes()
