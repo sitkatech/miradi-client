@@ -85,9 +85,9 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return 0;
 	}
 
-	public String getModelColumnName(int tableColumn)
+	public String getModelColumnName(int modelColumn)
 	{
-		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(tableColumn);
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(modelColumn);
 		return tableAndColumnHolder.getTable().getModelColumnName(tableAndColumnHolder.getColumn());
 	}
 	

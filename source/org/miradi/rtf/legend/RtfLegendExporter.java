@@ -95,7 +95,7 @@ class LegendModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getModelColumnName(int tableColumn)
+	public String getModelColumnName(int modelColumn)
 	{
 		return EAM.text("Legend Table");
 	}

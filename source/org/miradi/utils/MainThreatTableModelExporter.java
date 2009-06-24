@@ -73,9 +73,9 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getModelColumnName(int tableColumn)
+	public String getModelColumnName(int modelColumn)
 	{
-		return mainThreatTableModel.getColumnName(tableColumn);
+		return mainThreatTableModel.getColumnName(modelColumn);
 	}
 
 	@Override
