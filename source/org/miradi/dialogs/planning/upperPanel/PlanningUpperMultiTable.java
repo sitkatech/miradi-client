@@ -65,7 +65,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 {
 	public PlanningUpperMultiTable(PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model, FontForObjectTypeProvider fontProvider)
 	{
-		super(masterTreeToUse.getMainWindow(), model, masterTreeToUse.getUniqueTableIdentifier()+"UpperTable");
+		super(masterTreeToUse.getMainWindow(), model, masterTreeToUse.getUniqueTableIdentifier());
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setCellSelectionEnabled(true);
