@@ -89,9 +89,9 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getModelTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int modelColumn)
 	{
-		Object value = getModel().getValueAt(row, tableColumn);
+		Object value = getModel().getValueAt(row, modelColumn);
 		return getSafeValue(value);
 	}
 

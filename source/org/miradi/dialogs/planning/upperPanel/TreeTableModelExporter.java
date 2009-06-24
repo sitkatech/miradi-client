@@ -92,13 +92,13 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	}
 	
 	@Override
-	public String getModelTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int modelColumn)
 	{
 		TreeTableNode node = getTreeTableNodeForRow(row);
-		if (isTreeColumn(tableColumn))
+		if (isTreeColumn(modelColumn))
 			return node.toRawString();
 		
-		Object value = getModel().getValueAt(node, tableColumn);
+		Object value = getModel().getValueAt(node, modelColumn);
 		return getSafeValue(value);
 	}
 	
