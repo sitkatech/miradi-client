@@ -125,7 +125,7 @@ class LegendModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getModelTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int modelColumn)
 	{
 		return "";
 	}

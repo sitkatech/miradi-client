@@ -160,7 +160,7 @@ public abstract class AbstractTableExporter
 	abstract public BaseObject getBaseObjectForRow(int row);
 	
 	abstract protected String getModelColumnName(int modelColumn);
-	abstract protected String getModelTextAt(int row, int tableColumn);
+	abstract protected String getModelTextAt(int row, int modelColumn);
 	abstract protected ChoiceItem getModelChoiceItemAt(int row, int tableColumn);
 	abstract protected int getModelDepth(int row, int tableColumn);
 	

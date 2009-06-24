@@ -112,9 +112,9 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getModelTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int modelColumn)
 	{
-		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(tableColumn);
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(modelColumn);
 		Object value = tableAndColumnHolder.getTable().getModelTextAt(row, tableAndColumnHolder.getColumn());
 		return getSafeValue(value);
 	}
