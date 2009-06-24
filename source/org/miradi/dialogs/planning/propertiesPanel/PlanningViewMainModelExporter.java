@@ -65,9 +65,9 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return 0;
 	}
 	
-	public String getModelColumnName(int tableColumn)
+	public String getModelColumnName(int modelColumn)
 	{
-		return getModel().getColumnName(tableColumn);
+		return getModel().getColumnName(modelColumn);
 	}
 	
 	@Override
