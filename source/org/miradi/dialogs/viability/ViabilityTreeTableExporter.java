@@ -37,11 +37,10 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 		if (valueAt == null)
 			return new EmptyChoiceItem();
 
-		int modelColumn = getViabilityTreeTable().convertColumnIndexToModel(tableColumn);
-		if (getViabilityTreeTable().isChoiceItemCell(row, modelColumn))
+		if (getViabilityTreeTable().isChoiceItemCell(row, tableColumn))
 			return (ChoiceItem) valueAt;
 		
-		return super.getModelChoiceItemAt(row, modelColumn);
+		return super.getModelChoiceItemAt(row, tableColumn);
 	}
 	
 	private TargetViabilityTreeTable getViabilityTreeTable()
