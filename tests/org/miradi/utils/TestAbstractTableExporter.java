@@ -51,10 +51,11 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		for (int modelColumnIndex  = 0; modelColumnIndex < modelColumnCodes.size(); ++modelColumnIndex)
 		{
 			String expectedCode = modelColumnCodes.get(modelColumnIndex);
+			int tableColumnIndex = modelColumnIndex;
 			if (desiredCodeList.contains(expectedCode))
-				tableColumnToModelColumnMap.put(desiredCodeList.find(expectedCode), modelColumnIndex);
-			else
-				tableColumnToModelColumnMap.put(modelColumnIndex, modelColumnIndex);
+				tableColumnIndex = desiredCodeList.find(expectedCode);
+			
+			tableColumnToModelColumnMap.put(tableColumnIndex, modelColumnIndex);
 		}
 		
 		int[] modelColumnArray = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
