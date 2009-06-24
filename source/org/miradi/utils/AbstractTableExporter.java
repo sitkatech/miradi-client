@@ -121,31 +121,31 @@ public abstract class AbstractTableExporter
 		return uniqueModelIdentifier;
 	}
 	
-//FIXME urgen uncomment after rename	
-//	public int getModelDepth(int row, int tableColumn)
-//	{
-//		int modelColumn = convertToModelColumn(tableColumn);
-//		return getDepth(row, modelColumn);
-//	}
-//	
-//	public String getModelTextAt(int row, int tableColumn)
-//	{
-//		int modelColumn = convertToModelColumn(tableColumn);
-//		return getTextAt(row, modelColumn);
-//	}
-//	
-//	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
-//	{
-//		int modelColumn = convertToModelColumn(tableColumn);
-//		return getChoiceItemAt(row, modelColumn);
-//	}
-//	
-//	public String getModelColumnName(int tableColumn)
-//	{
-//		int modelColumn = convertToModelColumn(tableColumn);
-//		return getColumnName(modelColumn);
-//	}
-//	
+	
+	public int getDepth(int row, int tableColumn)
+	{
+		int modelColumn = convertToModelColumn(tableColumn);
+		return getModelDepth(row, modelColumn);
+	}
+	
+	public String getTextAt(int row, int tableColumn)
+	{
+		int modelColumn = convertToModelColumn(tableColumn);
+		return getTextAt(row, modelColumn);
+	}
+	
+	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	{
+		int modelColumn = convertToModelColumn(tableColumn);
+		return getModelChoiceItemAt(row, modelColumn);
+	}
+	
+	public String getColumnName(int tableColumn)
+	{
+		int modelColumn = convertToModelColumn(tableColumn);
+		return getModelColumnName(modelColumn);
+	}
+	
 	abstract public int getMaxDepthCount();
 	abstract public int getModelDepth(int row, int tableColumn);
 	abstract public int getColumnCount();
