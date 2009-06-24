@@ -42,18 +42,17 @@ public abstract class AbstractTableExporter
 
 	public int convertToModelColumn(int tableColumn)
 	{
-		buildColumnModelIndexes();
+		if (modelColumnIndexes == null)
+			buildColumnModelIndexes();
+		
 		return modelColumnIndexes[tableColumn];
 	}
 	
 	private void buildColumnModelIndexes()
 	{
-		if (modelColumnIndexes == null)
-		{
-			CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), getModelColumnSequence());
-			CodeList modelColumnCodes = getModelColumnSequence();
-			modelColumnIndexes  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnCodes);
-		}
+		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), getModelColumnSequence());
+		CodeList modelColumnCodes = getModelColumnSequence();
+		modelColumnIndexes  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnCodes);
 	}
 
 	private CodeList getArrangedColumnCodes()
