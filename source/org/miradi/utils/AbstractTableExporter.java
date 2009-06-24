@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
@@ -42,17 +43,17 @@ public abstract class AbstractTableExporter
 
 	public int convertToModelColumn(int tableColumn)
 	{
-		if (modelColumnIndexes == null)
+		if (modelColumnIndexesMap == null)
 			buildColumnModelIndexes();
 		
-		return modelColumnIndexes[tableColumn];
+		return modelColumnIndexesMap.get(tableColumn);
 	}
 	
 	private void buildColumnModelIndexes()
 	{
 		CodeList modelColumnSequence = getModelColumnSequence();
 		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
-		modelColumnIndexes  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
+		modelColumnIndexesMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
 	}
 
 	private CodeList getArrangedColumnCodes()
@@ -64,9 +65,9 @@ public abstract class AbstractTableExporter
 		return getModelColumnSequence();
 	}
 
-	public static int[] buildModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
+	public static HashMap<Integer, Integer> buildModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
 	{
-		int[] thisModelColumnIndexes = new int[modelColumnCodes.size()];
+		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
 		for (int modelColumn = 0; modelColumn < modelColumnCodes.size(); ++modelColumn)
 		{
 			String code = modelColumnCodes.get(modelColumn);
@@ -78,10 +79,10 @@ public abstract class AbstractTableExporter
 			if (indexOfModelColumn < 0)
 				indexOfModelColumn = modelColumn;
 			
-			thisModelColumnIndexes[modelColumn] = indexOfModelColumn;
+			tableColumnToModelColumnMap.put(modelColumn, indexOfModelColumn);
 		}
 		
-		return thisModelColumnIndexes;
+		return tableColumnToModelColumnMap;
 	}
 	
 	private CodeList getModelColumnSequence()
@@ -177,5 +178,5 @@ public abstract class AbstractTableExporter
 	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
 	private String uniqueModelIdentifier;
 	private Project project;
-	private int[] modelColumnIndexes;  
+	private HashMap<Integer, Integer> modelColumnIndexesMap;  
 }
