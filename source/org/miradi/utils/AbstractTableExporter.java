@@ -154,14 +154,15 @@ public abstract class AbstractTableExporter
 	}
 	
 	abstract public int getMaxDepthCount();
-	abstract public int getModelDepth(int row, int tableColumn);
 	abstract public int getColumnCount();
 	abstract public int getRowCount();
-	abstract public String getModelTextAt(int row, int tableColumn);
-	abstract public ChoiceItem getModelChoiceItemAt(int row, int tableColumn);
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
+	
 	abstract public String getModelColumnName(int tableColumn);
+	abstract public String getModelTextAt(int row, int tableColumn);
+	abstract public ChoiceItem getModelChoiceItemAt(int row, int tableColumn);
+	abstract public int getModelDepth(int row, int tableColumn);
 	
 	//TODO these two methods were created to export details of tree or table.
 	// we currently dont export details of tree or tables, and these methods might
