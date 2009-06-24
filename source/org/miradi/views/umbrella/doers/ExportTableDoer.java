@@ -81,11 +81,11 @@ public class ExportTableDoer extends ViewDoer
 			{
 				for (int column = 0; column < columnCount; ++column)
 				{
-					pad(out, table.getModelDepth(row, column), column);
+					pad(out, table.getDepth(row, column), column);
 					String safeValue = getSafeValue(table, row, column);
 					out.write(withoutTabsAndNewlines(safeValue) + "\t");
 					
-					int postPadCount = maxDepth - table.getModelDepth(row, column);
+					int postPadCount = maxDepth - table.getDepth(row, column);
 					pad(out, postPadCount, column);
 				}
 				
@@ -100,7 +100,7 @@ public class ExportTableDoer extends ViewDoer
 
 	private String getSafeValue(AbstractTableExporter table, int row, int column)
 	{
-		ChoiceItem choiceItem = table.getModelChoiceItemAt(row, column);
+		ChoiceItem choiceItem = table.getChoiceItemAt(row, column);
 		String label = choiceItem.getLabel();
 		if (label == null)
 			return "";
@@ -113,7 +113,7 @@ public class ExportTableDoer extends ViewDoer
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)
 		{
-			out.write(withoutTabsAndNewlines(table.getModelColumnName(column)) + "\t");
+			out.write(withoutTabsAndNewlines(table.getColumnName(column)) + "\t");
 			pad(out, maxDepeth, column);
 		}
 		
