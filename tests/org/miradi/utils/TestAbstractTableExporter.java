@@ -62,7 +62,8 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		Set<Integer> tableColumnKeys = tableColumnToModelColumnMap.keySet();
 		for(Integer tableColumn : tableColumnKeys)
 		{
-			assertEquals("wrong column index", tableColumnToModelColumnMap.get(tableColumn).intValue(), modelColumnArray[tableColumn]);
+			int expectedModelColumnIndex = tableColumnToModelColumnMap.get(tableColumn).intValue();
+			assertEquals("wrong column index", expectedModelColumnIndex, modelColumnArray[tableColumn]);
 		}
 	}
 }
