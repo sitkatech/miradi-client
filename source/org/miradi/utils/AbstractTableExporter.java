@@ -50,8 +50,9 @@ public abstract class AbstractTableExporter
 	
 	private void buildColumnModelIndexes()
 	{
-		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), getModelColumnSequence());
-		CodeList modelColumnCodes = getModelColumnSequence();
+		CodeList modelColumnSequence = getModelColumnSequence();
+		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
+		CodeList modelColumnCodes = modelColumnSequence;
 		modelColumnIndexes  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnCodes);
 	}
 
