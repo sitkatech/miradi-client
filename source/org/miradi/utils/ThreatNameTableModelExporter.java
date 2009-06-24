@@ -32,9 +32,9 @@ public class ThreatNameTableModelExporter extends MainThreatTableModelExporter
 	}
 	
 	@Override
-	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{		
-		return getThreatNameModel().getChoiceItemAt(row, tableColumn);
+		return getThreatNameModel().getChoiceItemAt(row, modelColumn);
 	}
 	
 	private ThreatNameColumnTableModel getThreatNameModel()

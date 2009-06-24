@@ -101,7 +101,7 @@ class LegendModelExporter extends AbstractTableExporter
 	}
 	
 	@Override
-	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{
 		return getChoice(row);
 	}
