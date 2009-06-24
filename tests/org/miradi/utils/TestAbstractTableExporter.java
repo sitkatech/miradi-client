@@ -58,12 +58,12 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 			tableColumnToModelColumnMap.put(tableColumnIndex, modelColumnIndex);
 		}
 		
-		int[] modelColumnArray = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
+		HashMap<Integer, Integer> modelColumnArray = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
 		Set<Integer> tableColumnKeys = tableColumnToModelColumnMap.keySet();
 		for(Integer tableColumn : tableColumnKeys)
 		{
 			int expectedModelColumnIndex = tableColumnToModelColumnMap.get(tableColumn).intValue();
-			assertEquals("wrong column index", expectedModelColumnIndex, modelColumnArray[tableColumn]);
+			assertEquals("wrong column index", expectedModelColumnIndex, modelColumnArray.get(tableColumn).intValue());
 		}
 	}
 }
