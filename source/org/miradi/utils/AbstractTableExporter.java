@@ -75,6 +75,9 @@ public abstract class AbstractTableExporter
 		{
 			String desiredCode = desiredSequenceCodes.get(tableColumn);
 			int modelColumnIndexInModelColumnCodes = modelColumnCodes.find(desiredCode);
+			if (modelColumnIndexInModelColumnCodes < 0)
+				modelColumnIndexInModelColumnCodes = tableColumn;
+			
 			tableColumnToModelColumnMap.put(tableColumn, modelColumnIndexInModelColumnCodes);
 		}
 		

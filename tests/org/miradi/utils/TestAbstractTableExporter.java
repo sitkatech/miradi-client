@@ -83,7 +83,9 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		for(Integer tableColumn : tableColumnKeys)
 		{
 			int expectedModelColumnIndex = tableColumnToModelColumnMap.get(tableColumn).intValue();
-			assertEquals("wrong column index", expectedModelColumnIndex, modelColumnArray.get(tableColumn).intValue());
+			int columnIndex = modelColumnArray.get(tableColumn).intValue();
+			assertEquals("wrong column index", expectedModelColumnIndex, columnIndex);
+			assertTrue("column index cannot be less than 0?", columnIndex >= 0);
 		}
 	}
 }
