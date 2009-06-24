@@ -92,9 +92,9 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	}
 	
 	@Override
-	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{
-		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(tableColumn);		
+		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(modelColumn);		
 		return tableAndColumnHolder.getTable().getModelChoiceItemAt(row, tableAndColumnHolder.getColumn());
 	}
 	

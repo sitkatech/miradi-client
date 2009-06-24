@@ -77,9 +77,9 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{
-		return getModel().getChoiceItemAt(row, tableColumn);
+		return getModel().getChoiceItemAt(row, modelColumn);
 	}
 
 	@Override

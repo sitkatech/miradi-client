@@ -84,9 +84,9 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	}
 	
 	@Override
-	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{
-		return new TaglessChoiceItem(getText(row, tableColumn), getIcon(row, tableColumn));
+		return new TaglessChoiceItem(getText(row, modelColumn), getIcon(row, modelColumn));
 	}
 
 	@Override

@@ -37,13 +37,13 @@ public class ViabilityTreeTableModelExporter extends TreeTableModelExporter
 	}
 
 	@Override
-	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{
 		TreeTableNode node = getTreeTableNodeForRow(row);
-		if (isTreeColumn(tableColumn))
+		if (isTreeColumn(modelColumn))
 			return new TaglessChoiceItem(node.toRawString(), getNodeIcon(row));
 
-		return (ChoiceItem) node.getValueAt(tableColumn);
+		return (ChoiceItem) node.getValueAt(modelColumn);
 	}
 
 	private Icon getNodeIcon(int row)
