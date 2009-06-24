@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.HashMap;
+import java.util.Set;
+
 import org.miradi.main.TestCaseWithProject;
 
 public class TestAbstractTableExporter extends TestCaseWithProject
@@ -44,20 +47,21 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 	private void verifyColumnIndexes(CodeList desiredCodeList)
 	{
 		CodeList modelColumnCodes = new CodeList(new String[]{"a", "b", "c", "d",});
-		int[] createdExpectedColumnIndexes = new int[modelColumnCodes.size()];
-		for (int index  = 0; index < modelColumnCodes.size(); ++index)
+		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
+		for (int modelColumnIndex  = 0; modelColumnIndex < modelColumnCodes.size(); ++modelColumnIndex)
 		{
-			String expectedCode = modelColumnCodes.get(index);
+			String expectedCode = modelColumnCodes.get(modelColumnIndex);
 			if (desiredCodeList.contains(expectedCode))
-				createdExpectedColumnIndexes[index] = desiredCodeList.find(expectedCode);
+				tableColumnToModelColumnMap.put(desiredCodeList.find(expectedCode), modelColumnIndex);
 			else
-				createdExpectedColumnIndexes[index] = index;
+				tableColumnToModelColumnMap.put(modelColumnIndex, modelColumnIndex);
 		}
 		
 		int[] modelColumnArray = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
-		for (int column = 0; column < modelColumnArray.length; ++column)
+		Set<Integer> tableColumnKeys = tableColumnToModelColumnMap.keySet();
+		for(Integer tableColumn : tableColumnKeys)
 		{
-			assertEquals("wrong column index", createdExpectedColumnIndexes[column], modelColumnArray[column]);
+			assertEquals("wrong column index", tableColumnToModelColumnMap.get(tableColumn).intValue(), modelColumnArray[tableColumn]);
 		}
 	}
 }
