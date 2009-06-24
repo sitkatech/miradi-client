@@ -44,12 +44,12 @@ public abstract class AbstractTableExporter
 	public int convertToModelColumn(int tableColumn)
 	{
 		if (tableToModelColumnIndexMap == null)
-			buildColumnModelIndexes();
+			buildTableToModelColumnIndexMap();
 		
 		return tableToModelColumnIndexMap.get(tableColumn);
 	}
 	
-	private void buildColumnModelIndexes()
+	private void buildTableToModelColumnIndexMap()
 	{
 		CodeList modelColumnSequence = getModelColumnSequence();
 		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
@@ -67,30 +67,37 @@ public abstract class AbstractTableExporter
 
 	public static HashMap<Integer, Integer> buildModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
 	{
+		if (desiredSequenceCodes.size() == 0)
+			return fillUsingModelColumnSameKeyAsValue(modelColumnCodes);
+		
 		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
-		for (int modelColumn = 0; modelColumn < modelColumnCodes.size(); ++modelColumn)
+		for (int tableColumn = 0; tableColumn < desiredSequenceCodes.size(); ++tableColumn)
 		{
-			String code = modelColumnCodes.get(modelColumn);
-			String modelColumnName = "";
-			if (desiredSequenceCodes.contains(code))
-				modelColumnName = desiredSequenceCodes.get(modelColumn);
-			
-			int indexOfModelColumn = modelColumnCodes.find(modelColumnName);
-			if (indexOfModelColumn < 0)
-				indexOfModelColumn = modelColumn;
-			
-			tableColumnToModelColumnMap.put(modelColumn, indexOfModelColumn);
+			String desiredCode = desiredSequenceCodes.get(tableColumn);
+			int modelColumnIndexInModelColumnCodes = modelColumnCodes.find(desiredCode);
+			tableColumnToModelColumnMap.put(tableColumn, modelColumnIndexInModelColumnCodes);
 		}
 		
 		return tableColumnToModelColumnMap;
+	}
+
+	private static HashMap<Integer, Integer> fillUsingModelColumnSameKeyAsValue(CodeList modelColumnCodes)
+	{
+		HashMap<Integer, Integer> modelColumnToModelColumnMap = new HashMap();
+		for (int modelColumn = 0; modelColumn < modelColumnCodes.size(); ++modelColumn)
+		{
+			modelColumnToModelColumnMap.put(modelColumn, modelColumn);
+		}
+		
+		return modelColumnToModelColumnMap;
 	}
 	
 	private CodeList getModelColumnSequence()
 	{
 		CodeList currentColumnTagSequences = new CodeList();
-		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
+		for (int modelColumn = 0; modelColumn < getColumnCount(); ++modelColumn)
 		{	
-			currentColumnTagSequences.add(getModelColumnName(tableColumn));
+			currentColumnTagSequences.add(getModelColumnName(modelColumn));
 		}
 		
 		return currentColumnTagSequences;
