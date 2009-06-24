@@ -181,11 +181,11 @@ public class RtfWriter
 		{
 			writeRaw(PRE_CELL_COMMAND);
 		
-			ChoiceItem choiceItem = exportableTable.getChoiceItemAt(row, column);
+			ChoiceItem choiceItem = exportableTable.getModelChoiceItemAt(row, column);
 			Icon cellIcon = choiceItem.getIcon();
 			if (cellIcon != null)
 			{
-				int paddingCount = exportableTable.getDepth(row, column);
+				int paddingCount = exportableTable.getModelDepth(row, column);
 				insertIndents(paddingCount);
 				writeImage(BufferedImageFactory.getImage(cellIcon));
 				insertTab();
@@ -225,7 +225,7 @@ public class RtfWriter
 	{
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
-			ChoiceItem choiceItem = exportableTable.getChoiceItemAt(row, column);
+			ChoiceItem choiceItem = exportableTable.getModelChoiceItemAt(row, column);
 			writeCellBackgroundColorCommand(choiceItem);
 			writelnRaw(createCellxCommand(column));	
 		}
@@ -256,7 +256,7 @@ public class RtfWriter
 		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.COLUMN_HEADER_STYLE_TAG);
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
-			String header = exportableTable.getColumnName(columnIndex);
+			String header = exportableTable.getModelColumnName(columnIndex);
 			writeRaw(PRE_TABLE_HEADER_CELL_COMMAND);
 			writeRaw(styleFormattingCommand);
 			startBlock();

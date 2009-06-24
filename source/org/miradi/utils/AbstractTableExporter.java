@@ -79,7 +79,7 @@ public abstract class AbstractTableExporter
 		CodeList currentColumnTagSequences = new CodeList();
 		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
 		{	
-			currentColumnTagSequences.add(getColumnName(tableColumn));
+			currentColumnTagSequences.add(getModelColumnName(tableColumn));
 		}
 		
 		return currentColumnTagSequences;
@@ -147,14 +147,14 @@ public abstract class AbstractTableExporter
 //	}
 //	
 	abstract public int getMaxDepthCount();
-	abstract public int getDepth(int row, int tableColumn);
+	abstract public int getModelDepth(int row, int tableColumn);
 	abstract public int getColumnCount();
 	abstract public int getRowCount();
-	abstract public String getTextAt(int row, int tableColumn);
-	abstract public ChoiceItem getChoiceItemAt(int row, int tableColumn);
+	abstract public String getModelTextAt(int row, int tableColumn);
+	abstract public ChoiceItem getModelChoiceItemAt(int row, int tableColumn);
 	abstract public int getRowType(int row);
 	abstract public BaseObject getBaseObjectForRow(int row);
-	abstract public String getColumnName(int tableColumn);
+	abstract public String getModelColumnName(int tableColumn);
 	
 	//TODO these two methods were created to export details of tree or table.
 	// we currently dont export details of tree or tables, and these methods might

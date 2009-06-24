@@ -37,7 +37,7 @@ public class ViabilityTreeTableModelExporter extends TreeTableModelExporter
 	}
 
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
 	{
 		TreeTableNode node = getTreeTableNodeForRow(row);
 		if (isTreeColumn(tableColumn))

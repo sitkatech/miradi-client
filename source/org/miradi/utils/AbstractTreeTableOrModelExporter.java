@@ -79,7 +79,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 		int rowCount = getRowCount();
 		for (int row = 0; row < rowCount; ++row)
 		{
-			int rowDepth = getDepth(row, 0);
+			int rowDepth = getModelDepth(row, 0);
 			maxRowDepth = Math.max(maxRowDepth, rowDepth);
 		}
 		
@@ -102,9 +102,9 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExpo
 	}
 	
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
 	{
-		return new TaglessChoiceItem(getTextAt(row, tableColumn), getIcon(row, tableColumn));
+		return new TaglessChoiceItem(getModelTextAt(row, tableColumn), getIcon(row, tableColumn));
 	}
 
 	protected boolean isTreeColumn(int column)

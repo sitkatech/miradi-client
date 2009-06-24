@@ -55,7 +55,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return getBaseObjectForRowColumn(row, 0);
 	}
 	
-	public int getDepth(int row, int tableColumn)
+	public int getModelDepth(int row, int tableColumn)
 	{
 		return 0;
 	}
@@ -65,7 +65,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return 0;
 	}
 	
-	public String getColumnName(int tableColumn)
+	public String getModelColumnName(int tableColumn)
 	{
 		return getModel().getColumnName(tableColumn);
 	}
@@ -77,7 +77,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
 	{
 		return getModel().getChoiceItemAt(row, tableColumn);
 	}
@@ -89,7 +89,7 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int tableColumn)
 	{
 		Object value = getModel().getValueAt(row, tableColumn);
 		return getSafeValue(value);

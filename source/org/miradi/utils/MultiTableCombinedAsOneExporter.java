@@ -61,12 +61,12 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return combinedCount;
 	}
 
-	public int getDepth(int row, int tableColumn)
+	public int getModelDepth(int row, int tableColumn)
 	{
 		if (tables.size() == 0)
 			return 0;
 		
-		return tables.get(0).getDepth(row, tableColumn);
+		return tables.get(0).getModelDepth(row, tableColumn);
 	}
 
 	public int getMaxDepthCount()
@@ -85,17 +85,17 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return 0;
 	}
 
-	public String getColumnName(int tableColumn)
+	public String getModelColumnName(int tableColumn)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(tableColumn);
-		return tableAndColumnHolder.getTable().getColumnName(tableAndColumnHolder.getColumn());
+		return tableAndColumnHolder.getTable().getModelColumnName(tableAndColumnHolder.getColumn());
 	}
 	
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(tableColumn);		
-		return tableAndColumnHolder.getTable().getChoiceItemAt(row, tableAndColumnHolder.getColumn());
+		return tableAndColumnHolder.getTable().getModelChoiceItemAt(row, tableAndColumnHolder.getColumn());
 	}
 	
 	public String getStyleTagAt(int row, int column)
@@ -112,10 +112,10 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int tableColumn)
 	{
 		TableAndColumnHolder tableAndColumnHolder = getTableAndColumn(tableColumn);
-		Object value = tableAndColumnHolder.getTable().getTextAt(row, tableAndColumnHolder.getColumn());
+		Object value = tableAndColumnHolder.getTable().getModelTextAt(row, tableAndColumnHolder.getColumn());
 		return getSafeValue(value);
 	}
 			

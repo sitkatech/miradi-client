@@ -72,7 +72,7 @@ public class PlanningTreeXmlExporter
 				
 				String elementName = getElementName(column);
 				out.write("<" + elementName + ">");
-				String padding = pad(multiModelExporter.getDepth(row, column), column);
+				String padding = pad(multiModelExporter.getModelDepth(row, column), column);
 				String safeValue = getSafeValue(multiModelExporter, row, column, objectTypeName);
 				out.write(padding + safeValue);
 				out.writeln("</" + elementName + ">");
@@ -94,12 +94,12 @@ public class PlanningTreeXmlExporter
 
 	private String getElementName(int column)
 	{
-		return multiModelExporter.getColumnName(column).replaceAll(" ", "");
+		return multiModelExporter.getModelColumnName(column).replaceAll(" ", "");
 	}
 	
 	private String getSafeValue(AbstractTableExporter table, int row, int column, String objectTypeName)
 	{
-		ChoiceItem choiceItem = table.getChoiceItemAt(row, column);
+		ChoiceItem choiceItem = table.getModelChoiceItemAt(row, column);
 		String label = choiceItem.getLabel();
 		if (label == null)
 			return "";
