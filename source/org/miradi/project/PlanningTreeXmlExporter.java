@@ -99,7 +99,7 @@ public class PlanningTreeXmlExporter
 	
 	private String getSafeValue(AbstractTableExporter table, int row, int column, String objectTypeName)
 	{
-		ChoiceItem choiceItem = table.getModelChoiceItemAt(row, column);
+		ChoiceItem choiceItem = table.getChoiceItemAt(row, column);
 		String label = choiceItem.getLabel();
 		if (label == null)
 			return "";

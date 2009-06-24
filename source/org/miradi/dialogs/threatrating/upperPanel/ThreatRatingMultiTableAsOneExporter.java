@@ -78,9 +78,9 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 
 		int columnWithinSummaryTable = convertToSummaryTableColumn(tableColumn);		
 		if (isColumnWithinSummaryTable(columnWithinSummaryTable))
-			return targetSummaryRowTable.getModelChoiceItemAt(0, columnWithinSummaryTable);
+			return targetSummaryRowTable.getChoiceItemAt(0, columnWithinSummaryTable);
 		
-		return overallProjectRatingSummaryTable.getModelChoiceItemAt(0, 0);
+		return overallProjectRatingSummaryTable.getChoiceItemAt(0, 0);
 	}
 
 	private boolean isColumnWithinSummaryTable(int columnWithinSummaryTable)
