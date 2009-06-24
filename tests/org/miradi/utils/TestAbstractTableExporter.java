@@ -65,8 +65,7 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		verifyColumnIndexes(desiredCodeList, modelColumnCodes);
 	}
 
-	private void verifyColumnIndexes(CodeList desiredCodeList,
-			CodeList modelColumnCodes)
+	private void verifyColumnIndexes(CodeList desiredCodeList, CodeList modelColumnCodes)
 	{
 		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
 		for (int modelColumnIndex  = 0; modelColumnIndex < modelColumnCodes.size(); ++modelColumnIndex)
