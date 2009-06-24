@@ -67,7 +67,7 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public int getModelDepth(int row, int tableColumn)
+	public int getModelDepth(int row, int modelColumn)
 	{
 		return 0;
 	}

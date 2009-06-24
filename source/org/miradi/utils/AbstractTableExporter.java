@@ -162,7 +162,7 @@ public abstract class AbstractTableExporter
 	abstract protected String getModelColumnName(int modelColumn);
 	abstract protected String getModelTextAt(int row, int modelColumn);
 	abstract protected ChoiceItem getModelChoiceItemAt(int row, int modelColumn);
-	abstract protected int getModelDepth(int row, int tableColumn);
+	abstract protected int getModelDepth(int row, int modelColumn);
 	
 	//TODO these two methods were created to export details of tree or table.
 	// we currently dont export details of tree or tables, and these methods might
