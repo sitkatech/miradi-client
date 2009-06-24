@@ -44,9 +44,30 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		verifyColumnIndexes(emptyDesiredColumnCodes);
 	}
 	
+	public void testNonExistingCodesFromDesiredColumnCodes()
+	{
+		String nonExistingCodeInsideModelColumnCodes = "z";
+		CodeList desiredCodeList = new CodeList(new String[] {nonExistingCodeInsideModelColumnCodes, "a", "d", "b"});
+		verifyColumnIndexes(desiredCodeList);
+	}
+	
+	public void testNonExistingCodesFromModelColumnCodes()
+	{
+		String nonExistingCodeInDesiredCodeList = "z";
+		CodeList modelColumnCodes = new CodeList(new String[]{nonExistingCodeInDesiredCodeList, "b", "c", "d",});
+		CodeList desiredCodeList = new CodeList(new String[] {"c", "a", "d", "b"});
+		verifyColumnIndexes(desiredCodeList, modelColumnCodes);
+	}
+	
 	private void verifyColumnIndexes(CodeList desiredCodeList)
 	{
 		CodeList modelColumnCodes = new CodeList(new String[]{"a", "b", "c", "d",});
+		verifyColumnIndexes(desiredCodeList, modelColumnCodes);
+	}
+
+	private void verifyColumnIndexes(CodeList desiredCodeList,
+			CodeList modelColumnCodes)
+	{
 		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
 		for (int modelColumnIndex  = 0; modelColumnIndex < modelColumnCodes.size(); ++modelColumnIndex)
 		{
