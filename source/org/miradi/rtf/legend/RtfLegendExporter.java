@@ -89,19 +89,19 @@ class LegendModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public int getDepth(int row, int tableColumn)
+	public int getModelDepth(int row, int tableColumn)
 	{
 		return 0;
 	}
 
 	@Override
-	public String getColumnName(int tableColumn)
+	public String getModelColumnName(int tableColumn)
 	{
 		return EAM.text("Legend Table");
 	}
 	
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
 	{
 		return getChoice(row);
 	}
@@ -125,7 +125,7 @@ class LegendModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int tableColumn)
 	{
 		return "";
 	}

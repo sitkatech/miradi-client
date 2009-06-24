@@ -31,7 +31,7 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 	}
 	
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
 	{
 		Object valueAt = getViabilityTreeTable().getValueAt(row, tableColumn);
 		if (valueAt == null)
@@ -41,7 +41,7 @@ public class ViabilityTreeTableExporter extends TreeTableExporter
 		if (getViabilityTreeTable().isChoiceItemCell(row, modelColumn))
 			return (ChoiceItem) valueAt;
 		
-		return super.getChoiceItemAt(row, modelColumn);
+		return super.getModelChoiceItemAt(row, modelColumn);
 	}
 	
 	private TargetViabilityTreeTable getViabilityTreeTable()

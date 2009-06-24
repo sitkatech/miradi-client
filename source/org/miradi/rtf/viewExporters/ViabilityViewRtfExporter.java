@@ -58,7 +58,7 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 			if (baseObjectForRow == null)
 				continue; 
 
-			int indentation = treeTableModelExporter.getDepth(row, FIRST_COLUMN_INDEX);
+			int indentation = treeTableModelExporter.getModelDepth(row, FIRST_COLUMN_INDEX);
 			PropertiesPanelSpec form = ViabilityObjectToFormMap.getForm(baseObjectForRow);
 			new RtfFormExporter(getProject(), writer, baseObjectForRow.getRef()).exportForm(form, indentation);
 		}

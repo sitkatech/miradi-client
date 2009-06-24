@@ -67,19 +67,19 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public int getDepth(int row, int tableColumn)
+	public int getModelDepth(int row, int tableColumn)
 	{
 		return 0;
 	}
 
 	@Override
-	public String getColumnName(int tableColumn)
+	public String getModelColumnName(int tableColumn)
 	{
 		return mainThreatTableModel.getColumnName(tableColumn);
 	}
 
 	@Override
-	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
+	public ChoiceItem getModelChoiceItemAt(int row, int tableColumn)
 	{
 		Object value = mainThreatTableModel.getValueAt(row, tableColumn);
 		if (value == null)
@@ -111,7 +111,7 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	}
 
 	@Override
-	public String getTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int tableColumn)
 	{
 		return getSafeValue(mainThreatTableModel.getValueAt(row, tableColumn));
 	}

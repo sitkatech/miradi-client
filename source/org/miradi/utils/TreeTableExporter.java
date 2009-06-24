@@ -42,7 +42,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		return node.getObject();
 	}
 	
-	public String getColumnName(int tableColumn)
+	public String getModelColumnName(int tableColumn)
 	{
 		return getTreeTable().getColumnName(tableColumn);
 	}
@@ -53,7 +53,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 		return getTreeTable().getColumnCount();
 	}
 
-	public int getDepth(int row, int tableColumn)
+	public int getModelDepth(int row, int tableColumn)
 	{
 		if (isTreeColumn(tableColumn))
 			return getTree().getPathForRow(row).getPath().length - TOPLEVEL_ADJUSTMENT;
@@ -75,7 +75,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	}
 	
 	@Override
-	public String getTextAt(int row, int tableColumn)
+	public String getModelTextAt(int row, int tableColumn)
 	{
 		BaseObject baseObjectForRowColumn = getTreeTable().getBaseObjectForRowColumn(row, tableColumn);
 		if (isTreeColumn(tableColumn))
