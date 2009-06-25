@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf;
 
 import org.miradi.project.Project;
-import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.TableExporter;
 
 public class RtfManagementExporter
 {
@@ -29,7 +29,7 @@ public class RtfManagementExporter
 		project = projectToUse;
 	}
 	
-	public void writeManagement(AbstractTableExporter tableExporter, RtfWriter writer) throws Exception
+	public void writeManagement(TableExporter tableExporter, RtfWriter writer) throws Exception
 	{
 		writer.writeRtfTable(tableExporter);
 		writer.newParagraph();

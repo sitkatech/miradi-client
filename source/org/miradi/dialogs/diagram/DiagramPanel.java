@@ -40,8 +40,8 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.TableExporter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.diagram.DiagramLegendPanel;
 import org.miradi.views.diagram.DiagramSplitPane;
@@ -192,7 +192,7 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		return getTabContentsComponent() != null;
 	}
 
-	public AbstractTableExporter getTableExporter()
+	public TableExporter getTableExporter()
 	{
 		return null;
 	}

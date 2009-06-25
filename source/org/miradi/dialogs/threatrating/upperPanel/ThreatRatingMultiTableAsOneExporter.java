@@ -30,6 +30,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
+import org.miradi.utils.TableExporter;
 
 public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOneExporter
 {
@@ -49,12 +50,12 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 		super.addExportable(table);
 	}
 	
-	public void setTargetSummaryRowTable(AbstractTableExporter table)
+	public void setTargetSummaryRowTable(TableExporter table)
 	{
 		targetSummaryRowTable = table;
 	}
 	
-	public void setOverallSummaryRowTable(AbstractTableExporter table)
+	public void setOverallSummaryRowTable(TableExporter table)
 	{
 		overallProjectRatingSummaryTable = table;
 	}
@@ -136,8 +137,8 @@ public class ThreatRatingMultiTableAsOneExporter extends MultiTableCombinedAsOne
 		return new Vector<Integer>();
 	}
 			
-	private AbstractTableExporter targetSummaryRowTable;
-	private AbstractTableExporter overallProjectRatingSummaryTable;
+	private TableExporter targetSummaryRowTable;
+	private TableExporter overallProjectRatingSummaryTable;
 	public static final int TARGET_SUMMARY_ROW_TABLE_INDEX = 0;
 	public static final int OVERALL_PROJECT_RATING_ROW_TABLE_INDEX = 1;
 }

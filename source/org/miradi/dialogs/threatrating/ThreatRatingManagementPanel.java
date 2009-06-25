@@ -30,7 +30,7 @@ import org.miradi.icons.StressIcon;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.TableExporter;
 
 public class ThreatRatingManagementPanel extends ObjectManagementPanel
 {
@@ -72,7 +72,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 		return null;
 	}
 	
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		return tableExporter;
 	}
@@ -88,5 +88,5 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	}
 		
 	private static String PANEL_DESCRIPTION = "ThreatStressRating";
-	private AbstractTableExporter tableExporter;
+	private TableExporter tableExporter;
 }

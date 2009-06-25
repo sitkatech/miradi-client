@@ -30,8 +30,8 @@ import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
+import org.miradi.utils.TableExporter;
 
 abstract public class PlanningTreeManagementPanel extends ObjectListManagementPanel
 {
@@ -70,12 +70,12 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 		return true;
 	}
 	
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
 		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
 		PlanningTreeTablePanel panel = ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
-		AbstractTableExporter table = panel.getTableForExporting();
+		TableExporter table = panel.getTableForExporting();
 		panel.dispose();
 		
 		return table;

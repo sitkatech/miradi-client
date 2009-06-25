@@ -24,9 +24,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ObjectTableModelExporter;
+import org.miradi.utils.TableExporter;
 
 abstract public class RtfViewExporter
 {
@@ -40,7 +40,7 @@ abstract public class RtfViewExporter
 		exportTable(writer, new ObjectTableModelExporter(objectTableModel), translatedTableName);
 	}
 	
-	protected void exportTable(RtfWriter writer, AbstractTableExporter tableExporter, String translatedTableName) throws Exception
+	protected void exportTable(RtfWriter writer, TableExporter tableExporter, String translatedTableName) throws Exception
 	{
 		writer.startBlock();
 		writer.writeHeading2Style();

@@ -26,8 +26,8 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiTabDelimitedFileChooser;
+import org.miradi.utils.TableExporter;
 import org.miradi.views.ViewDoer;
 
 public class ExportTableDoer extends ViewDoer
@@ -70,7 +70,7 @@ public class ExportTableDoer extends ViewDoer
 		UnicodeWriter out = new UnicodeWriter(destination);
 		try
 		{
-			AbstractTableExporter table = getView().getTableExporter();
+			TableExporter table = getView().getTableExporter();
 			int maxDepth = table.getMaxDepthCount();
 			int columnCount = table.getColumnCount();
 			int rowCount = table.getRowCount();
@@ -98,7 +98,7 @@ public class ExportTableDoer extends ViewDoer
 		}
 	}
 
-	private String getSafeValue(AbstractTableExporter table, int row, int column)
+	private String getSafeValue(TableExporter table, int row, int column)
 	{
 		ChoiceItem choiceItem = table.getChoiceItemAt(row, column);
 		String label = choiceItem.getLabel();
@@ -108,7 +108,7 @@ public class ExportTableDoer extends ViewDoer
 		return label;
 	}
 
-	private void putHeaders(UnicodeWriter out, AbstractTableExporter table, int maxDepeth) throws Exception
+	private void putHeaders(UnicodeWriter out, TableExporter table, int maxDepeth) throws Exception
 	{
 		int columnCount = table.getColumnCount();
 		for (int column = 0; column < columnCount; ++column)

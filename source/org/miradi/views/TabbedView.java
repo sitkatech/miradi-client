@@ -51,9 +51,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ViewData;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.MiradiScrollPane;
+import org.miradi.utils.TableExporter;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.wizard.SkeletonWizardStep;
 
@@ -334,7 +334,7 @@ abstract public class TabbedView extends UmbrellaView
 	}
 
 	@Override
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		MiradiTabContentsPanelInterface panel = getSelectedTabPanel();
 		if(panel == null)

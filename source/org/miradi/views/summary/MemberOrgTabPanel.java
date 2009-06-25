@@ -30,7 +30,7 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.TableExporter;
 import org.miradi.utils.Translation;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.wizard.MiradiHtmlViewer;
@@ -62,7 +62,7 @@ public class MemberOrgTabPanel extends DisposablePanelWithDescription implements
 		return this;
 	}
 
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		return dataPanel.getTableExporter();
 	}

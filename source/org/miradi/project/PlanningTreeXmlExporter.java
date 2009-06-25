@@ -30,8 +30,8 @@ import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.rtf.viewExporters.PlanningViewRtfExporter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
+import org.miradi.utils.TableExporter;
 
 public class PlanningTreeXmlExporter
 {
@@ -97,7 +97,7 @@ public class PlanningTreeXmlExporter
 		return multiModelExporter.getModelColumnName(column).replaceAll(" ", "");
 	}
 	
-	private String getSafeValue(AbstractTableExporter table, int row, int column, String objectTypeName)
+	private String getSafeValue(TableExporter table, int row, int column, String objectTypeName)
 	{
 		ChoiceItem choiceItem = table.getChoiceItemAt(row, column);
 		String label = choiceItem.getLabel();

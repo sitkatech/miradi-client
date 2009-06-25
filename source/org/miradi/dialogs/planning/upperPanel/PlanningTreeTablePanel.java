@@ -50,12 +50,12 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.questions.ColumnConfigurationQuestion;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultipleTableSelectionController;
+import org.miradi.utils.TableExporter;
 import org.miradi.utils.TreeTableExporter;
 import org.miradi.views.planning.PlanningView;
 
@@ -359,7 +359,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return (PlanningTreeTableModel)getModel();
 	}
 	
-	public AbstractTableExporter getTableForExporting()
+	public TableExporter getTableForExporting()
 	{
 		return multiTableExporter;
 	}
