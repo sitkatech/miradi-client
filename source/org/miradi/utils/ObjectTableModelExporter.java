@@ -62,6 +62,11 @@ public class ObjectTableModelExporter extends AbstractTableExporter
 	{
 		return getObjectTableModel().getColumnName(modelColumn);
 	}
+	
+	public String getColumnGroupName(int modelColumn)
+	{
+		return getModelColumnName(modelColumn);
+	}
 
 	private Icon getIcon(int row, int column)
 	{

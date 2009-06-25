@@ -70,6 +70,11 @@ public class PlanningViewMainModelExporter extends AbstractTableExporter
 		return getModel().getColumnName(modelColumn);
 	}
 	
+	public String getColumnGroupName(int modelColumn)
+	{
+		return getModel().getColumnGroupCode(modelColumn);
+	}
+	
 	@Override
 	public int getColumnCount()
 	{

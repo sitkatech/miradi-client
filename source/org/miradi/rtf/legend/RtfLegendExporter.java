@@ -134,6 +134,11 @@ class LegendModelExporter extends AbstractTableExporter
 	{
 		return choices[row];
 	}
+	
+	public String getColumnGroupName(int modelColumn)
+	{
+		return getModelColumnName(modelColumn);
+	}
 		
 	private static final int COLUMN_COUNT = 1;
 	private ChoiceItem[] choices;

@@ -42,6 +42,8 @@ public interface TableExporter
 	public ChoiceItem getChoiceItemAt(int row, int tableColumn);
 
 	public String getColumnName(int tableColumn);
+	
+	public String getColumnGroupName(int modelColumn);
 
 	public int getMaxDepthCount();
 
