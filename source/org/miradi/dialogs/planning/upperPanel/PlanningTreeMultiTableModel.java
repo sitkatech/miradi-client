@@ -84,4 +84,11 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 	{
 		return getCastedModel(modelColumn).shouldHideNonEditableExpandedRowData();
 	}
+
+	public String getUniqueModelIdentifier()
+	{
+		return UNIQUE_MODEL_IDENTIFIER;
+	}
+	
+	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningTreeMultiTableModel";
 }
