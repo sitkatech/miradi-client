@@ -27,6 +27,11 @@ import org.miradi.utils.ColumnTagProvider;
 
 public class PlanningTreeMultiTableModel extends MultiTableModel implements ColumnTagProvider
 {
+	public PlanningTreeMultiTableModel(String subViewModelIdentifierToUse)
+	{
+		super(subViewModelIdentifierToUse);
+	}
+
 	@Override
 	public void addModel(ChoiceItemTableModel modelToAdd)
 	{
@@ -84,11 +89,4 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Colu
 	{
 		return getCastedModel(modelColumn).shouldHideNonEditableExpandedRowData();
 	}
-
-	public String getUniqueModelIdentifier()
-	{
-		return UNIQUE_MODEL_IDENTIFIER;
-	}
-	
-	private static final String UNIQUE_MODEL_IDENTIFIER = "PlanningTreeMultiTableModel";
 }
