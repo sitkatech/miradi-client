@@ -56,8 +56,13 @@ public abstract class AbstractTableExporter implements TableExporter
 	private void buildTableToModelColumnIndexMap()
 	{
 		CodeList modelColumnSequence = getModelColumnSequence();
-		CodeList arrangedColumnCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
+		CodeList arrangedColumnCodes = calculateArrangedColumnCodes(modelColumnSequence);
 		tableToModelColumnIndexMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
+	}
+
+	protected CodeList calculateArrangedColumnCodes(CodeList modelColumnSequence)
+	{
+		return ColumnSequenceSaver.calculateArrangedColumnCodes(getArrangedColumnCodes(), new CodeList(modelColumnSequence));
 	}
 
 	private CodeList getArrangedColumnCodes()
