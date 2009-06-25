@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public abstract class AbstractTableExporter
+public abstract class AbstractTableExporter implements TableExporter
 {
 	public AbstractTableExporter(Project projectToUse)
 	{
@@ -185,7 +185,6 @@ public abstract class AbstractTableExporter
 	abstract public ORefList getAllRefs(int objectType);
 	
 	private static final String CODE_LIST_SEPERATOR = ";";
-	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
 	private String uniqueModelIdentifier;
 	private Project project;
 	private HashMap<Integer, Integer> tableToModelColumnIndexMap;  
