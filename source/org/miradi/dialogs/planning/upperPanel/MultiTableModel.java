@@ -32,8 +32,9 @@ import org.miradi.questions.ChoiceItem;
 
 public class MultiTableModel extends AbstractTableModel implements ChoiceItemTableModel 
 {
-	public MultiTableModel()
+	public MultiTableModel(String subViewModelIdentifierToUse)
 	{
+		subViewModelIdentifier = subViewModelIdentifierToUse;
 		models = new Vector();
 	}
 	
@@ -143,8 +144,9 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 
 	public String getUniqueTableModelIdentifier()
 	{
-		return "MultiTableModel";
+		return "MultiTableModel" + subViewModelIdentifier;
 	}
 	
 	private Vector<ChoiceItemTableModel> models;
+	private String subViewModelIdentifier;
 }
