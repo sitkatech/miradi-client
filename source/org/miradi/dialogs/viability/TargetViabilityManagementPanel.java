@@ -35,9 +35,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.SplitterPositionSaverAndGetter;
+import org.miradi.utils.TableExporter;
 
 abstract public class TargetViabilityManagementPanel extends ObjectListManagementPanel
 {
@@ -110,7 +110,7 @@ abstract public class TargetViabilityManagementPanel extends ObjectListManagemen
 	}
 	
 	@Override
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		return new ViabilityTreeTableExporter(targetViabilityTreeTableExporter);
 	}

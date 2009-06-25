@@ -179,7 +179,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return getMasterTable().getAllTypes();
 	}
 	
-	private AbstractTableExporter getMasterTable()
+	private TableExporter getMasterTable()
 	{
 		return getTables().get(MASTER_TABLE_INDEX);
 	}

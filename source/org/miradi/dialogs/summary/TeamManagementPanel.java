@@ -31,9 +31,9 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfManagementExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ObjectTableModelExporter;
+import org.miradi.utils.TableExporter;
 
 public class TeamManagementPanel extends ObjectManagementPanel
 {
@@ -70,7 +70,7 @@ public class TeamManagementPanel extends ObjectManagementPanel
 		return true;
 	}
 	
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		return new ObjectTableModelExporter(createTableModel());
 	}

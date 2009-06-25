@@ -30,9 +30,9 @@ import javax.swing.Icon;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.ColorManager;
+import org.miradi.utils.TableExporter;
 import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class RtfWriter
@@ -158,14 +158,14 @@ public class RtfWriter
 		return firstDigit + secondDigit;
 	}
 	
-	public void writeRtfTable(AbstractTableExporter exportableTable) throws Exception
+	public void writeRtfTable(TableExporter exportableTable) throws Exception
 	{
 		writeTableHeader(exportableTable);
 		writeTableBody(exportableTable);
 		pageBreak();
 	}
 
-	private void writeTableBody(AbstractTableExporter exportableTable) throws Exception
+	private void writeTableBody(TableExporter exportableTable) throws Exception
 	{
 		for (int row = 0; row < exportableTable.getRowCount(); ++row)
 		{
@@ -173,7 +173,7 @@ public class RtfWriter
 		}
 	}
 
-	private void writeRowData(AbstractTableExporter exportableTable, int row) throws Exception
+	private void writeRowData(TableExporter exportableTable, int row) throws Exception
 	{
 		writeRtfCommand(ROW_HEADER);
 		writeCellCommands(exportableTable, row);
@@ -221,7 +221,7 @@ public class RtfWriter
 		writeRaw(backgroundColorAsString);
 	}
 
-	private void writeCellCommands(AbstractTableExporter exportableTable, int row) throws Exception
+	private void writeCellCommands(TableExporter exportableTable, int row) throws Exception
 	{
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
@@ -231,7 +231,7 @@ public class RtfWriter
 		}
 	}
 	
-	private void writeCellCommandsWithoutBackground(AbstractTableExporter exportableTable) throws Exception
+	private void writeCellCommandsWithoutBackground(TableExporter exportableTable) throws Exception
 	{
 		for (int column = 0; column < exportableTable.getColumnCount(); ++column)
 		{
@@ -249,7 +249,7 @@ public class RtfWriter
 		return BACKGROUND_COLOR_COMMAND + colorIndex + " ";
 	}
 
-	private void writeTableHeader(AbstractTableExporter exportableTable) throws Exception
+	private void writeTableHeader(TableExporter exportableTable) throws Exception
 	{
 		writelnRaw(TABLE_ROW_HEADER);
 		writeCellCommandsWithoutBackground(exportableTable);

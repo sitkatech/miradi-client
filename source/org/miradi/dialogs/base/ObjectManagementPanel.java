@@ -29,7 +29,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.TableExporter;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 
 abstract public class ObjectManagementPanel extends VerticalSplitPanel implements MiradiTabContentsPanelInterface
@@ -130,7 +130,7 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 		return false;
 	}
 	
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		return null;
 	}

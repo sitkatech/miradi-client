@@ -41,9 +41,9 @@ import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.MainThreatTableModelExporter;
+import org.miradi.utils.TableExporter;
 import org.miradi.utils.ThreatNameTableModelExporter;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -130,7 +130,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		return exporter;
 	}
 	
-	public AbstractTableExporter getTableForExporting()
+	public TableExporter getTableForExporting()
 	{
 		return multiTableExporter;
 	}	

@@ -26,7 +26,7 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.TableExporter;
 
 public interface MiradiTabContentsPanelInterface
 {
@@ -36,7 +36,7 @@ public interface MiradiTabContentsPanelInterface
 	public boolean isImageAvailable();
 	public BufferedImage getImage() throws Exception;
 	public boolean isExportableTableAvailable();
-	public AbstractTableExporter getTableExporter() throws Exception;
+	public TableExporter getTableExporter() throws Exception;
 	public JComponent getPrintableComponent() throws Exception;
 	public boolean isPrintable();
 	public Class getJumpActionClass();

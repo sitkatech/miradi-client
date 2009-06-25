@@ -28,7 +28,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public abstract class AbstractTableExporter
+public abstract class AbstractTableExporter implements TableExporter
 {
 	public AbstractTableExporter(Project projectToUse)
 	{

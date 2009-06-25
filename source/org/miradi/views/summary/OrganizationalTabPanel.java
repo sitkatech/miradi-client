@@ -32,8 +32,8 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.FlexibleWidthHtmlViewer;
+import org.miradi.utils.TableExporter;
 import org.miradi.utils.Translation;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 
@@ -106,7 +106,7 @@ class OrganizationalTabPanel extends DisposablePanelWithDescription implements M
 		return wrappedPanel.getTabName();
 	}
 
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		return wrappedPanel.getTableExporter();
 	}

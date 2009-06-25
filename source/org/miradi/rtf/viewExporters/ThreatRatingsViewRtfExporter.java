@@ -23,8 +23,8 @@ import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.TableExporter;
 
 public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 {
@@ -44,7 +44,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	private void exportThreatRating(RtfWriter writer) throws Exception
 	{
 		ThreatRatingMultiTablePanel threatRatingMultiTablePanel = new ThreatRatingMultiTablePanel(getMainWindow());
-		AbstractTableExporter tableExporter = threatRatingMultiTablePanel.getTableForExporting();
+		TableExporter tableExporter = threatRatingMultiTablePanel.getTableForExporting();
 		exportTable(writer, tableExporter, ReportTemplateContentQuestion.getThreatRatingsLabel());
 		threatRatingMultiTablePanel.dispose();
 	}

@@ -28,8 +28,8 @@ import org.miradi.icons.OrganizationIcon;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.AbstractTableExporter;
 import org.miradi.utils.ObjectTableModelExporter;
+import org.miradi.utils.TableExporter;
 
 public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 {
@@ -55,7 +55,7 @@ public class OrganizationManagementPanel extends ObjectPoolManagementPanel
 		return true;
 	}
 	
-	public AbstractTableExporter getTableExporter() throws Exception
+	public TableExporter getTableExporter() throws Exception
 	{
 		return new ObjectTableModelExporter(createTableModel());
 	}
