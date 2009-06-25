@@ -22,6 +22,7 @@ package org.miradi.utils;
 import java.util.HashMap;
 import java.util.Vector;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -45,6 +46,9 @@ public abstract class AbstractTableExporter implements TableExporter
 	{
 		if (tableToModelColumnIndexMap == null)
 			buildTableToModelColumnIndexMap();
+		
+		if (!tableToModelColumnIndexMap.containsKey(tableColumn))
+			throw new RuntimeException(EAM.text("Could not find tableColumn in map. tableColumn = " + tableColumn));
 		
 		return tableToModelColumnIndexMap.get(tableColumn);
 	}
