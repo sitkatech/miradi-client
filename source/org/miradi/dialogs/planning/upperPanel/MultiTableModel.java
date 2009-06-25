@@ -141,5 +141,10 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 		throw new RuntimeException("MultiTable.findColumnWithinSubTable: Table column out of bounds: " + originalColumn);
 	}
 
+	public String getUniqueTableModelIdentifier()
+	{
+		return "MultiTableModel";
+	}
+	
 	private Vector<ChoiceItemTableModel> models;
 }
