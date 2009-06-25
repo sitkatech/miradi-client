@@ -48,7 +48,7 @@ public abstract class AbstractTableExporter implements TableExporter
 			buildTableToModelColumnIndexMap();
 		
 		if (!tableToModelColumnIndexMap.containsKey(tableColumn))
-			throw new RuntimeException(EAM.text("Could not find tableColumn in map. tableColumn = " + tableColumn));
+			throw new RuntimeException(EAM.text("Could not find tableColumn in map. tableColumn = " + tableColumn + ".") + EAM.text("UniqueModelIdentifier=" + uniqueModelIdentifier));
 		
 		return tableToModelColumnIndexMap.get(tableColumn);
 	}
