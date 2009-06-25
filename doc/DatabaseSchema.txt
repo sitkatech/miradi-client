@@ -61,6 +61,12 @@ http://coronet.iicm.edu/wbtmaster/allcoursescontent/netlib/library.htm
 Here is a GREAT slide show about DBTG databases:
 http://nlp.postech.ac.kr/Course/ITEC521/dbslide-5thedition/appA.ppt
 
+JCR (Java Content Repository) might serve as a reasonable back-end.
+It relies on a FileSystem or RelationalDatabase engine to do the real work, 
+but exposes a tree node structure, and provides searching.
+http://en.wikipedia.org/wiki/Content_repository_API_for_Java
+http://jackrabbit.apache.org/
+
 Neo4j looks very similar to what we have.
 http://neo4j.org/doc/
 
