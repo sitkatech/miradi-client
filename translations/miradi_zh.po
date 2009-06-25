@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-23 12:31-0500\n"
+"POT-Creation-Date: 2009-06-25 14:29-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6167,6 +6167,10 @@ msgstr "XML (*.xml)"
 #: miradi/source/org/miradi/utils/PNGFileFilter.java:33
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png) \t\t"
+
+#: miradi/source/org/miradi/utils/AbstractTableExporter.java:51
+msgid "Could not find tableColumn in map. tableColumn = "
+msgstr ""
 
 #: miradi/source/org/miradi/utils/TabDelimitedFileFilter.java:40
 msgid "FileFilter|Tab Delimited (*.txt)"
