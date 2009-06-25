@@ -83,6 +83,11 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	{
 		return model.getColumnCount();
 	}
+	
+	public String getColumnGroupName(int modelColumn)
+	{
+		return getModelColumnName(modelColumn);
+	}
 
 	@Override
 	public int getRowType(int row)

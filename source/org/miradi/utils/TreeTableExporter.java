@@ -44,7 +44,17 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	
 	public String getModelColumnName(int modelColumn)
 	{
-		return getTreeTable().getTreeTableModel().getColumnName(modelColumn);
+		return getTreeTableModel().getColumnName(modelColumn);
+	}
+	
+	public String getColumnGroupName(int modelColumn)
+	{
+		return getModelColumnName(modelColumn);
+	}
+
+	private GenericTreeTableModel getTreeTableModel()
+	{
+		return getTreeTable().getTreeTableModel();
 	}
 	
 	@Override
@@ -106,7 +116,7 @@ public class TreeTableExporter extends AbstractTreeTableOrModelExporter
 	
 	public GenericTreeTableModel getModel()
 	{
-		return getTreeTable().getTreeTableModel();
+		return getTreeTableModel();
 	}
 
 	private TreeTableWithStateSaving treeTable;

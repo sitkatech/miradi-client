@@ -105,6 +105,11 @@ public class MultiTableModel extends AbstractTableModel implements ChoiceItemTab
 		return findModel(columnIndex).getColumnName(findColumnWithinSubTable(columnIndex));
 	}
 	
+	public String getColumnGroupCode(int modelColumn)
+	{
+		return findModel(modelColumn).getColumnGroupCode(findColumnWithinSubTable(modelColumn));
+	}
+	
 	@Override
 	public boolean isCellEditable(int rowIndex, int columnIndex)
 	{

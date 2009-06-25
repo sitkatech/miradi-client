@@ -28,4 +28,5 @@ public interface ChoiceItemTableModel extends TableModel
 	public ChoiceItem getChoiceItemAt(int row, int column);
 	public void updateColumnsToShow() throws Exception;
 	public String getUniqueTableModelIdentifier();
+	public String getColumnGroupCode(int modelColumn);
 }

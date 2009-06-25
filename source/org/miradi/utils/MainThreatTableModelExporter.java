@@ -77,6 +77,11 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	{
 		return mainThreatTableModel.getColumnName(modelColumn);
 	}
+	
+	public String getColumnGroupName(int modelColumn)
+	{
+		return getModelColumnName(modelColumn);
+	}
 
 	@Override
 	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)

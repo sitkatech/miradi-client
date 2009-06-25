@@ -104,7 +104,7 @@ public abstract class AbstractTableExporter implements TableExporter
 		CodeList currentColumnTagSequences = new CodeList();
 		for (int modelColumn = 0; modelColumn < getColumnCount(); ++modelColumn)
 		{	
-			currentColumnTagSequences.add(getModelColumnName(modelColumn));
+			currentColumnTagSequences.add(getColumnGroupName(modelColumn));
 		}
 		
 		return currentColumnTagSequences;
