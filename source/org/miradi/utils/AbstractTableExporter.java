@@ -55,25 +55,43 @@ public abstract class AbstractTableExporter implements TableExporter
 		return getModelColumnSequence();
 	}
 
-	public static HashMap<Integer, Integer> buildModelColumnIndexMap(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
+	public static HashMap<Integer, Integer> buildModelColumnIndexMap(CodeList desiredSequenceCodesToUse, CodeList modelColumnCodes)
 	{
-		if (desiredSequenceCodes.size() == 0)
+		if (desiredSequenceCodesToUse.size() == 0)
 			return fillUsingModelColumnSameKeyAsValue(modelColumnCodes);
 		
+		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(new CodeList(desiredSequenceCodesToUse), new CodeList(modelColumnCodes));
+		
+		int destination = 0;
 		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
 		for (int tableColumn = 0; tableColumn < desiredSequenceCodes.size(); ++tableColumn)
 		{
 			String desiredCode = desiredSequenceCodes.get(tableColumn);
-			int modelColumnIndexInModelColumnCodes = modelColumnCodes.find(desiredCode);
-			if (modelColumnIndexInModelColumnCodes < 0)
-				modelColumnIndexInModelColumnCodes = tableColumn;
-			
-			tableColumnToModelColumnMap.put(tableColumn, modelColumnIndexInModelColumnCodes);
+			if (modelColumnCodes.contains(desiredCode))
+				destination += fillAllMatchingIndexes(tableColumnToModelColumnMap, modelColumnCodes, desiredCode, destination);
+			else
+				tableColumnToModelColumnMap.put(tableColumn, tableColumn);
 		}
 		
 		return tableColumnToModelColumnMap;
 	}
-
+	
+	private static int fillAllMatchingIndexes(HashMap<Integer, Integer> tableColumnToModelColumnMap, CodeList modelColumnCodes, String desiredCode, int destination)
+	{
+		int foundCount = 0;
+		for (int modelIndex = 0; modelIndex < modelColumnCodes.size(); ++modelIndex)
+		{
+			String modelCode = modelColumnCodes.get(modelIndex);
+			if (modelCode.equals(desiredCode))
+			{
+				tableColumnToModelColumnMap.put(destination + foundCount, modelIndex);
+				++foundCount;
+			}
+		}
+		
+		return foundCount; 
+	}
+	
 	private static HashMap<Integer, Integer> fillUsingModelColumnSameKeyAsValue(CodeList modelColumnCodes)
 	{
 		HashMap<Integer, Integer> modelColumnToModelColumnMap = new HashMap();
