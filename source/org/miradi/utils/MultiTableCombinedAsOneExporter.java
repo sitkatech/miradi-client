@@ -135,6 +135,7 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	{
 		int columnWithinTable = modelColumn;
 		int thisColumnCount = 0;
+		int tableStartingColumn = 0;
 		for (int i = 0; i < tables.size(); ++i)
 		{
 			AbstractTableExporter thisTable = tables.get(i);
@@ -142,10 +143,11 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 			if (thisColumnCount <= modelColumn)
 			{
 				columnWithinTable -= thisTable.getColumnCount();
+				tableStartingColumn += thisTable.getColumnCount();
 				continue;
 			}
 			
-			return new TableAndColumnHolder(thisTable, columnWithinTable);
+			return new TableAndColumnHolder(thisTable, columnWithinTable, tableStartingColumn);
 		}
 		
 		throw new RuntimeException("Error occurred while exporting table.");
@@ -153,10 +155,11 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	
 	protected class TableAndColumnHolder
 	{
-		public TableAndColumnHolder(AbstractTableExporter tableToUse, int columnToUse)
+		public TableAndColumnHolder(AbstractTableExporter tableToUse, int columnToUse, int tableStartingColumnToUse)
 		{
 			table = tableToUse;
 			column = columnToUse;
+			tableStartingColumn = tableStartingColumnToUse;
 		}
 		
 		public int getColumn()
@@ -169,8 +172,14 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 			return table;
 		}
 		
+		public int getTableStartingColumn()
+		{
+			return tableStartingColumn;
+		}
+		
 		private AbstractTableExporter table;
 		private int column;
+		private int tableStartingColumn;
 	}
 	
 	@Override
@@ -197,7 +206,14 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	
 	public int convertToModelColumn(int tableColumn)
 	{
-		return tableColumn;
+		int pretendModelColumn = tableColumn;
+		TableAndColumnHolder tableAndColumn = getTableAndColumn(pretendModelColumn);
+		AbstractTableExporter exporter = tableAndColumn.getTable();
+		int relativeTableColumn = tableAndColumn.getColumn();
+		int relativeModelColumn = exporter.convertToModelColumn(relativeTableColumn);
+		int absoluteModelColumn = relativeModelColumn + tableAndColumn.getTableStartingColumn();
+		
+		return absoluteModelColumn;
 	}
 
 	private Vector<AbstractTableExporter> tables;
