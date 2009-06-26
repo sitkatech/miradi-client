@@ -28,9 +28,9 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.utils.AbstractTableExporter;
+import org.miradi.utils.AbstractSingleTableExporter;
 
-public class PlanningViewMainModelExporter extends AbstractTableExporter
+public class PlanningViewMainModelExporter extends AbstractSingleTableExporter
 {
 	public PlanningViewMainModelExporter(Project projectToUse, ChoiceItemTableModel choiceItemTableModelToUse, RowColumnBaseObjectProvider objectProviderToUse, String uniqueModelIdentifier)
 	{
