@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-25 21:01-0500\n"
+"POT-Creation-Date: 2009-06-25 21:10-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6344,15 +6344,15 @@ msgstr "XML (*.xml) "
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png) "
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:48
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "Could not find tableColumn in map. tableColumn = "
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:48
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "."
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:48
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "UniqueModelIdentifier="
 msgstr ""
 
