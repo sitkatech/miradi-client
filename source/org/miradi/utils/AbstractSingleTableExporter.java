@@ -37,8 +37,6 @@ public abstract class AbstractSingleTableExporter extends AbstractTableExporter
 		super(projectToUse);
 	}
 
-	private HashMap<Integer, Integer> tableToModelColumnIndexMap;
-
 	public int convertToModelColumn(int tableColumn)
 	{
 		if (tableToModelColumnIndexMap == null)
@@ -56,4 +54,6 @@ public abstract class AbstractSingleTableExporter extends AbstractTableExporter
 		CodeList arrangedColumnCodes = calculateArrangedColumnCodes(new CodeList(modelColumnSequence));
 		tableToModelColumnIndexMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
 	}
+	
+	private HashMap<Integer, Integer> tableToModelColumnIndexMap;
 }
