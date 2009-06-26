@@ -36,7 +36,7 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 {
 	public TargetThreatLinkTable(MainWindow mainWindowToUse, TargetThreatLinkTableModel tableModel)
 	{
-		super(mainWindowToUse, tableModel, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, tableModel, tableModel.getUniqueTableModelIdentifier());
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
@@ -112,7 +112,6 @@ public class TargetThreatLinkTable extends AbstractTableWithChoiceItemRenderer
 		return new ORefList[]{hierarchyRefs};
 	}
 	
-	public static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTable";
 	public static final int PREFERRED_VIEWPORT_WIDTH = 500;
 	public static final int PREFERRED_VIEWPORT_SUMMARY_COLUMN_WIDTH = 130;
 	public static final int PREFERRED_VIEWPORT_HEIGHT = 100;

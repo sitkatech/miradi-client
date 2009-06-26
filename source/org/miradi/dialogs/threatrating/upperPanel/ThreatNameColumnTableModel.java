@@ -33,6 +33,12 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 		super(projectToUse);
 	}
 	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+
 	public int getColumnCount()
 	{
 		return COLUMN_COUNT;
@@ -80,6 +86,8 @@ public class ThreatNameColumnTableModel extends MainThreatTableModel
 	{
 		return getDirectThreat(row);
 	}
+
+	private static final String UNIQUE_IDENTIFIER = "ThreatNameColumnTableModel";
 	
 	public static final int THREAT_ICON_COLUMN_INDEX = 0;
 	public static final int THREAT_NAME_COLUMN_INDEX = 1;

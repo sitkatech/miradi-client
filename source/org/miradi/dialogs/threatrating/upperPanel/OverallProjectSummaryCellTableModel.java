@@ -30,6 +30,12 @@ public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 		super(projectToUse);
 	}
 
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+
 	public String getColumnTag(int column)
 	{
 		return "";
@@ -57,4 +63,6 @@ public class OverallProjectSummaryCellTableModel extends MainThreatTableModel
 	{
 		return null;
 	}
+	
+	private static final String UNIQUE_IDENTIFIER = "OverallProjectSummaryCellTableModel";
 }

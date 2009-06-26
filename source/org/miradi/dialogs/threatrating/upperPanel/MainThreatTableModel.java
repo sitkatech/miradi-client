@@ -39,6 +39,8 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		emptyChoiceItem = new ChoiceItem("Not Specified", "", Color.WHITE);
 		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
+	
+	abstract public String getUniqueTableModelIdentifier();
 
 	public int getRowCount()
 	{

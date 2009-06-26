@@ -30,7 +30,7 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 {
 	public TargetSummaryRowTable(MainWindow mainWindowToUse, TargetSummaryRowTableModel model, TargetThreatLinkTable tableThatControlsColumns) throws Exception
 	{
-		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, model, model.getUniqueTableModelIdentifier());
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
@@ -91,5 +91,4 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 
 	private TargetThreatLinkTable columnController;
 	
-	public static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTable";
 }

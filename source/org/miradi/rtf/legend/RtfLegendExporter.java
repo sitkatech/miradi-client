@@ -59,7 +59,7 @@ class LegendModelExporter extends AbstractSingleTableExporter
 {
 	public LegendModelExporter(Project projectToUse, ChoiceItem[]  choicesToUse)
 	{
-		super(projectToUse);
+		super(projectToUse, NO_IDENTIFIER_BECAUSE_USER_CANT_CHANGE_COLUMNS);
 		
 		choices = choicesToUse;
 	}
@@ -140,6 +140,8 @@ class LegendModelExporter extends AbstractSingleTableExporter
 		return getModelColumnName(modelColumn);
 	}
 		
+	private static final String NO_IDENTIFIER_BECAUSE_USER_CANT_CHANGE_COLUMNS = "";
+
 	private static final int COLUMN_COUNT = 1;
 	private ChoiceItem[] choices;
 }

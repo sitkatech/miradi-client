@@ -22,7 +22,9 @@ package org.miradi.utils;
 import java.util.Vector;
 
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
+import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
@@ -32,9 +34,9 @@ import org.miradi.questions.ThreatRatingQuestion;
 
 public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 {
-	public MainThreatTableModelExporter(AbstractThreatTargetTableModel mainThreatTableModelToUse)
+	public MainThreatTableModelExporter(MainThreatTableModel mainThreatTableModelToUse)
 	{
-		super(mainThreatTableModelToUse.getProject());
+		super(mainThreatTableModelToUse.getProject(), mainThreatTableModelToUse.getUniqueTableModelIdentifier());
 		
 		mainThreatTableModel = mainThreatTableModelToUse;
 		threatRatingQuestion = (ThreatRatingQuestion) mainThreatTableModel.getProject().getQuestion(ThreatRatingQuestion.class);
@@ -119,6 +121,19 @@ public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 	public String getModelTextAt(int row, int modelColumn)
 	{
 		return getSafeValue(mainThreatTableModel.getValueAt(row, modelColumn));
+	}
+	
+	@Override
+	protected CodeList getModelColumnSequence()
+	{
+		CodeList currentColumnTagSequences = new CodeList();
+		for (int modelColumn = 0; modelColumn < getColumnCount(); ++modelColumn)
+		{
+			ORef targetRef = mainThreatTableModel.getTarget(modelColumn).getRef();
+			currentColumnTagSequences.add(targetRef.toString());
+		}
+		
+		return currentColumnTagSequences;
 	}
 	
 	private AbstractThreatTargetTableModel mainThreatTableModel;

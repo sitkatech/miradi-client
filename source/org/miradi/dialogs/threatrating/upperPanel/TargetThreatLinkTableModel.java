@@ -35,6 +35,12 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		super(projectToUse);
 	}
 	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+
 	public int getColumnCount()
 	{
 		return targetColumns.length;
@@ -87,4 +93,6 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn);
 	}
+
+	private static final String UNIQUE_IDENTIFIER = "TargetThreatLinkTableModel";
 }

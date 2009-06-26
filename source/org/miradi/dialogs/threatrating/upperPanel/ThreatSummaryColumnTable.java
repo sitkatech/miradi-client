@@ -29,7 +29,7 @@ public class ThreatSummaryColumnTable extends TableWhoseScrollPaneAlwaysExactlyF
 {
 	public ThreatSummaryColumnTable(MainWindow mainWindowToUse, ThreatSummaryColumnTableModel model)
 	{
-		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, model, model.getUniqueTableModelIdentifier());
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setReorderingAllowed(false);
 	}
@@ -40,5 +40,4 @@ public class ThreatSummaryColumnTable extends TableWhoseScrollPaneAlwaysExactlyF
 		return false;
 	}
 		
-	public static final String UNIQUE_IDENTIFIER = "ThreatSummaryColumnTable";	
 }
