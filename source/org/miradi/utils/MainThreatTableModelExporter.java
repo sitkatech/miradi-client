@@ -30,7 +30,7 @@ import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 
-public class MainThreatTableModelExporter extends AbstractTableExporter
+public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 {
 	public MainThreatTableModelExporter(AbstractThreatTargetTableModel mainThreatTableModelToUse)
 	{
@@ -119,11 +119,6 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 	public String getModelTextAt(int row, int modelColumn)
 	{
 		return getSafeValue(mainThreatTableModel.getValueAt(row, modelColumn));
-	}
-	
-	public int convertToModelColumn(int tableColumn)
-	{
-		return tableColumn;
 	}
 	
 	private AbstractThreatTargetTableModel mainThreatTableModel;
