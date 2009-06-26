@@ -35,20 +35,8 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 	public void testEmptyDesiredColumnCodes()
 	{
 		verifyColumnIndexes("abcd", "abcd", "");
-	}
-	
-	public void testDifferentDesiredSizeThanModelColumnCodes()
-	{		
 		verifyColumnIndexes("abc", "abcd", "abc");
-	}
-	
-	public void testBuildModelColumnIndexArray()
-	{		
 		verifyColumnIndexes("cadb", "abcd", "cadb");
-	}
-	
-	public void testNonExistingCodesFromModelColumnCodes()
-	{
 		verifyColumnIndexes("efgh", "abcd", "efgh");
 	}
 	
