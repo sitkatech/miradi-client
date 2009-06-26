@@ -22,7 +22,6 @@ package org.miradi.utils;
 import java.util.HashMap;
 import java.util.Vector;
 
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -40,24 +39,6 @@ public abstract class AbstractTableExporter implements TableExporter
 	{
 		project = projectToUse;
 		uniqueModelIdentifier = uniqueModelIdentifierToUse;
-	}
-
-	public int convertToModelColumn(int tableColumn)
-	{
-		if (tableToModelColumnIndexMap == null)
-			buildTableToModelColumnIndexMap();
-		
-		if (!tableToModelColumnIndexMap.containsKey(tableColumn))
-			throw new RuntimeException(EAM.text("Could not find tableColumn in map. tableColumn = " + tableColumn + ".") + EAM.text("UniqueModelIdentifier=" + uniqueModelIdentifier));
-		
-		return tableToModelColumnIndexMap.get(tableColumn);
-	}
-	
-	private void buildTableToModelColumnIndexMap()
-	{
-		CodeList modelColumnSequence = getModelColumnSequence();
-		CodeList arrangedColumnCodes = calculateArrangedColumnCodes(new CodeList(modelColumnSequence));
-		tableToModelColumnIndexMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
 	}
 
 	protected CodeList calculateArrangedColumnCodes(CodeList modelColumnSequence)
@@ -104,7 +85,7 @@ public abstract class AbstractTableExporter implements TableExporter
 		return modelColumnToModelColumnMap;
 	}
 	
-	private CodeList getModelColumnSequence()
+	protected CodeList getModelColumnSequence()
 	{
 		CodeList currentColumnTagSequences = new CodeList();
 		for (int modelColumn = 0; modelColumn < getColumnCount(); ++modelColumn)
@@ -194,8 +175,7 @@ public abstract class AbstractTableExporter implements TableExporter
 	abstract public ORefList getAllRefs(int objectType);
 	
 	private static final String CODE_LIST_SEPERATOR = ";";
-	private String uniqueModelIdentifier;
+	protected String uniqueModelIdentifier;
 	private Project project;
-	private HashMap<Integer, Integer> tableToModelColumnIndexMap;
 	public static final String NO_UNIQUE_MODEL_IDENTIFIER = "";
 }
