@@ -57,9 +57,6 @@ public abstract class AbstractTableExporter implements TableExporter
 
 	public static HashMap<Integer, Integer> buildModelColumnIndexMap(CodeList desiredSequenceCodesToUse, CodeList modelColumnCodes)
 	{
-		if (desiredSequenceCodesToUse.size() == 0)
-			return fillUsingModelColumnSameKeyAsValue(modelColumnCodes);
-		
 		CodeList desiredSequenceCodes = ColumnSequenceSaver.calculateArrangedColumnCodes(new CodeList(desiredSequenceCodesToUse), new CodeList(modelColumnCodes));
 		
 		int destination = 0;
@@ -69,8 +66,6 @@ public abstract class AbstractTableExporter implements TableExporter
 			String desiredCode = desiredSequenceCodes.get(tableColumn);
 			if (modelColumnCodes.contains(desiredCode))
 				destination += fillAllMatchingIndexes(tableColumnToModelColumnMap, modelColumnCodes, desiredCode, destination);
-			else
-				tableColumnToModelColumnMap.put(tableColumn, tableColumn);
 		}
 		
 		return tableColumnToModelColumnMap;
@@ -90,17 +85,6 @@ public abstract class AbstractTableExporter implements TableExporter
 		}
 		
 		return foundCount; 
-	}
-	
-	private static HashMap<Integer, Integer> fillUsingModelColumnSameKeyAsValue(CodeList modelColumnCodes)
-	{
-		HashMap<Integer, Integer> modelColumnToModelColumnMap = new HashMap();
-		for (int modelColumn = 0; modelColumn < modelColumnCodes.size(); ++modelColumn)
-		{
-			modelColumnToModelColumnMap.put(modelColumn, modelColumn);
-		}
-		
-		return modelColumnToModelColumnMap;
 	}
 	
 	protected CodeList getModelColumnSequence()
