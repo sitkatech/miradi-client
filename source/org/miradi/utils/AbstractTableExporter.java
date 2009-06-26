@@ -161,7 +161,7 @@ public abstract class AbstractTableExporter implements TableExporter
 	public String getTextAt(int row, int tableColumn)
 	{
 		int modelColumn = convertToModelColumn(tableColumn);
-		return getTextAt(row, modelColumn);
+		return getModelTextAt(row, modelColumn);
 	}
 	
 	public ChoiceItem getChoiceItemAt(int row, int tableColumn)
