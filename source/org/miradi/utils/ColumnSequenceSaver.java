@@ -80,11 +80,6 @@ public class ColumnSequenceSaver extends MouseAdapter
 		table.getColumnModel().moveColumn(tableColumn, destination);
 	}
 
-	protected int getColumnModelColumnCount()
-	{
-		return table.getColumnModel().getColumnCount();
-	}
-
 	protected int getTableColumnCount()
 	{
 		return table.getColumnCount();
