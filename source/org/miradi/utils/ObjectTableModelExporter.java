@@ -30,7 +30,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 
-public class ObjectTableModelExporter extends AbstractTableExporter
+public class ObjectTableModelExporter extends AbstractSingleTableExporter
 {
 	public ObjectTableModelExporter(ObjectTableModel objectTableModelToUse)
 	{
