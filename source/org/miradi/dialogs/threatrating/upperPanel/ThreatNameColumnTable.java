@@ -38,7 +38,7 @@ public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 {
 	public ThreatNameColumnTable(MainWindow mainWindowToUse, MainThreatTableModel tableModel)
 	{
-		super(mainWindowToUse, tableModel, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, tableModel, tableModel.getUniqueTableModelIdentifier());
 		
 		iconCellRendererFactory = new BorderlessChoiceItemCellRendererFactory(tableModel, new DefaultFontProvider(getMainWindow()));
 		getColumnModel().getColumn(ThreatNameColumnTableModel.THREAT_ICON_COLUMN_INDEX).setCellRenderer(iconCellRendererFactory);
@@ -57,8 +57,6 @@ public class ThreatNameColumnTable extends TableWhoseScrollPaneAlwaysExactlyFits
 	{
 		return false;
 	}
-
-	public static final String UNIQUE_IDENTIFIER = "ThreatsTable"; 
 
 	private BorderlessChoiceItemCellRendererFactory iconCellRendererFactory;
 	private BorderlessMultilineCellRendererFactory textCellRendererFactory;

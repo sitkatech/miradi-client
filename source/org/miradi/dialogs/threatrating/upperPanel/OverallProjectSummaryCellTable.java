@@ -22,20 +22,18 @@ package org.miradi.dialogs.threatrating.upperPanel;
 import java.awt.Dimension;
 
 import javax.swing.JTable;
-import javax.swing.table.TableModel;
 
 import org.miradi.main.MainWindow;
 
 public class OverallProjectSummaryCellTable extends AbstractTableWithChoiceItemRenderer
 {
-	public OverallProjectSummaryCellTable(MainWindow mainWindowToUse, TableModel model)
+	public OverallProjectSummaryCellTable(MainWindow mainWindowToUse, OverallProjectSummaryCellTableModel model)
 	{
-		super(mainWindowToUse, model, UNIQUE_IDENTIFIER);
+		super(mainWindowToUse, model, model.getUniqueTableModelIdentifier());
 		
 		setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		getTableHeader().setPreferredSize(new Dimension(0, 0));
 		setCellSelectionEnabled(false);
 	}
 	
-	public static final String UNIQUE_IDENTIFIER = "OverallProjectSummaryCellTable";
 }

@@ -30,6 +30,12 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	{
 		super(projectToUse);
 	}
+	
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
 
 	public String getColumnTag(int column)
 	{
@@ -75,4 +81,6 @@ public class TargetSummaryRowTableModel extends MainThreatTableModel
 	{
 		return targetColumns[column];
 	}
+
+	private static final String UNIQUE_IDENTIFIER = "TargetSummaryRowTableModel";
 }

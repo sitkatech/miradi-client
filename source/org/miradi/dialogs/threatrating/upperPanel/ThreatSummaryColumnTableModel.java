@@ -33,6 +33,12 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 		super(projectToUse);
 	}
 
+	@Override
+	public String getUniqueTableModelIdentifier()
+	{
+		return UNIQUE_IDENTIFIER;
+	}
+
 	public String getColumnName(int column)
 	{
 		return EAM.text("Summary Threat Rating");
@@ -82,4 +88,6 @@ public class ThreatSummaryColumnTableModel extends MainThreatTableModel
 	{
 		return new TableModelChoiceItemComparator(this, columnToSortOn);
 	}
+
+	private static final String UNIQUE_IDENTIFIER = "ThreatSummaryColumnTableModel";
 }
