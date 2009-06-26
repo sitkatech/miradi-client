@@ -121,6 +121,11 @@ public class MainThreatTableModelExporter extends AbstractTableExporter
 		return getSafeValue(mainThreatTableModel.getValueAt(row, modelColumn));
 	}
 	
+	public int convertToModelColumn(int tableColumn)
+	{
+		return tableColumn;
+	}
+	
 	private AbstractThreatTargetTableModel mainThreatTableModel;
 	private ThreatRatingQuestion threatRatingQuestion;
 }

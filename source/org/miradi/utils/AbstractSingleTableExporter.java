@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
+import java.util.HashMap;
+
+import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
 public abstract class AbstractSingleTableExporter extends AbstractTableExporter
@@ -32,5 +35,25 @@ public abstract class AbstractSingleTableExporter extends AbstractTableExporter
 	public AbstractSingleTableExporter(Project projectToUse)
 	{
 		super(projectToUse);
+	}
+
+	private HashMap<Integer, Integer> tableToModelColumnIndexMap;
+
+	public int convertToModelColumn(int tableColumn)
+	{
+		if (tableToModelColumnIndexMap == null)
+			buildTableToModelColumnIndexMap();
+		
+		if (!tableToModelColumnIndexMap.containsKey(tableColumn))
+			throw new RuntimeException(EAM.text("Could not find tableColumn in map. tableColumn = " + tableColumn + ".") + EAM.text("UniqueModelIdentifier=" + uniqueModelIdentifier));
+		
+		return tableToModelColumnIndexMap.get(tableColumn);
+	}
+
+	private void buildTableToModelColumnIndexMap()
+	{
+		CodeList modelColumnSequence = getModelColumnSequence();
+		CodeList arrangedColumnCodes = calculateArrangedColumnCodes(new CodeList(modelColumnSequence));
+		tableToModelColumnIndexMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
 	}
 }

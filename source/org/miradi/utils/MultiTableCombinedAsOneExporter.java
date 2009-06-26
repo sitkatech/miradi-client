@@ -222,6 +222,11 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return duplicates;
 	}
 	
+	public int convertToModelColumn(int tableColumn)
+	{
+		return tableColumn;
+	}
+
 	private Vector<AbstractTableExporter> tables;
 	private static final int MASTER_TABLE_INDEX = 0;
 }
