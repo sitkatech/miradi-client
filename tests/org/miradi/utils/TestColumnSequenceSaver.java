@@ -79,12 +79,6 @@ public class TestColumnSequenceSaver extends TestCaseWithProject
 		}
 
 		@Override
-		protected int getColumnModelColumnCount()
-		{
-			return currentCodeList.size();
-		}
-
-		@Override
 		protected int getTableColumnCount()
 		{
 			return currentCodeList.size();
