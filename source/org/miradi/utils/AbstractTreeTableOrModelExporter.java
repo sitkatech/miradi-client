@@ -36,7 +36,7 @@ import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.rtf.RtfStyleManager;
 
 
-abstract public class AbstractTreeTableOrModelExporter extends AbstractTableExporter
+abstract public class AbstractTreeTableOrModelExporter extends AbstractSingleTableExporter
 {
 	public AbstractTreeTableOrModelExporter(Project projectToUse, String uniqueModelIdentifierToUse)
 	{
