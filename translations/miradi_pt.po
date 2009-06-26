@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-25 21:10-0500\n"
+"POT-Creation-Date: 2009-06-26 00:37-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2096,9 +2096,9 @@ msgid "No date range for date Unit = "
 msgstr ""
 
 #: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:67
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:72
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:65
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
 msgid "Error"
 msgstr ""
@@ -5879,15 +5879,15 @@ msgstr ""
 msgid "FileFilter|PNG (*.png)"
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
 msgid "Could not find tableColumn in map. tableColumn = "
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
 msgid "."
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
 msgid "UniqueModelIdentifier="
 msgstr ""
 
@@ -5939,7 +5939,7 @@ msgstr ""
 msgid "Title|Stress-Based Threat Rating"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:38
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:44
 msgid "Summary Threat Rating"
 msgstr ""
 
@@ -5951,11 +5951,11 @@ msgstr ""
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Threats"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Targets"
 msgstr ""
 
