@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import java.util.HashMap;
-import java.util.Set;
 
 import org.miradi.main.TestCaseWithProject;
 
@@ -39,8 +38,8 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		verifyColumnIndexes("acbd", "abcd", "acb");
 		verifyColumnIndexes("cadb", "abcd", "cadb");
 		verifyColumnIndexes("abcd", "abcd", "efgh");
-		//FIXME temporarly disabled
-		//verifyColumnIndexes("cabb", "abbc", "cab");
+		verifyColumnIndexes("bacd", "abcd", "ebag");
+		verifyColumnIndexes("cabb", "abbc", "cab");
 	}
 	
 	private void verifyColumnIndexes(String expectedExpectedColumnCodesAsString, String modelColumnCodesAsString, String desiredColumnCodesAsString)
@@ -51,13 +50,12 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 		HashMap<Integer, Integer> tableColumnToModelColumnMap = AbstractTableExporter.buildModelColumnIndexMap(desiredColumnCodes, modelColumnCodes);
 		
 		assertEquals("wrong map size", expectedColumnCodes.size(), tableColumnToModelColumnMap.size());
-		Set<Integer> tableColumnKeys = tableColumnToModelColumnMap.keySet();
-		for(Integer tableColumnKey : tableColumnKeys)
+		for (int tableColumn = 0; tableColumn < expectedColumnCodes.size(); ++tableColumn)
 		{
-			int modelColumnIndex = tableColumnToModelColumnMap.get(tableColumnKey);
-			String code = expectedColumnCodes.get(modelColumnIndex);
-			int foundIndex = expectedColumnCodes.find(code);
-			assertEquals("wrong model column index", foundIndex, modelColumnIndex);
+			String expectedColumnCode = expectedColumnCodes.get(tableColumn);
+			int modelColumn = tableColumnToModelColumnMap.get(tableColumn);
+			String modelColumnCode = modelColumnCodes.get(modelColumn);
+			assertEquals("wrong model column code?", expectedColumnCode, modelColumnCode);
 		}
 	}
 
