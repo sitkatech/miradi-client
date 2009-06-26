@@ -194,33 +194,6 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 	{
 		return tables;
 	}
-
-	@Override
-	protected CodeList calculateArrangedColumnCodes(CodeList modelColumnSequence)
-	{
-		CodeList arrangedColumnCodes = super.calculateArrangedColumnCodes(modelColumnSequence);
-		CodeList columnCodesWithDuplicates = new CodeList();
-		for (int index = 0; index < arrangedColumnCodes.size(); ++index)
-		{
-			String columnCode = arrangedColumnCodes.get(index);
-			CodeList removedDuplicateCodes = removeAllDuplicateCodes(modelColumnSequence, columnCode);
-			columnCodesWithDuplicates.addAll(removedDuplicateCodes);
-		}
-		
-		return columnCodesWithDuplicates;
-	}
-
-	private CodeList removeAllDuplicateCodes(CodeList modelColumnSequence, String columnCode)
-	{
-		CodeList duplicates = new CodeList();
-		while (modelColumnSequence.contains(columnCode))
-		{
-			duplicates.add(columnCode);
-			modelColumnSequence.removeCode(columnCode);
-		}
-		
-		return duplicates;
-	}
 	
 	public int convertToModelColumn(int tableColumn)
 	{
