@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-25 21:10-0500\n"
+"POT-Creation-Date: 2009-06-26 00:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2338,9 +2338,9 @@ msgid "No date range for date Unit = "
 msgstr ""
 
 #: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:67
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:72
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:65
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
 #, fuzzy
 msgid "Error"
@@ -6168,15 +6168,15 @@ msgstr "XML (*.xml)"
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png) \t\t"
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
 msgid "Could not find tableColumn in map. tableColumn = "
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
 msgid "."
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
 msgid "UniqueModelIdentifier="
 msgstr ""
 
@@ -6230,7 +6230,7 @@ msgstr "Title|Simple Threat Rating"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "基于压力的威胁因子分级 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:38
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:44
 msgid "Summary Threat Rating"
 msgstr "威胁因子分级摘要 \t\t"
 
@@ -6243,11 +6243,11 @@ msgstr "Summary Target Ratings:"
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 msgid "Threats"
 msgstr "威胁因子 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:48
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatNameColumnTableModel.java:54
 #, fuzzy
 msgid "Targets"
 msgstr "Targets"
