@@ -131,15 +131,15 @@ public class MultiTableCombinedAsOneExporter extends AbstractTableExporter
 		return tableAndColumnHolder.getTable().getBaseObjectForRow(row);
 	}
 
-	protected TableAndColumnHolder getTableAndColumn(int column)
+	protected TableAndColumnHolder getTableAndColumn(int modelColumn)
 	{
-		int columnWithinTable = column;
+		int columnWithinTable = modelColumn;
 		int thisColumnCount = 0;
 		for (int i = 0; i < tables.size(); ++i)
 		{
 			AbstractTableExporter thisTable = tables.get(i);
 			thisColumnCount += thisTable.getColumnCount();
-			if (thisColumnCount <= column)
+			if (thisColumnCount <= modelColumn)
 			{
 				columnWithinTable -= thisTable.getColumnCount();
 				continue;
