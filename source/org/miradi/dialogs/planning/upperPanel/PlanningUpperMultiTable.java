@@ -90,7 +90,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
 			return isWhoCellEditable(row, modelColumn);
 		
-		return getCastedModel().isCellEditable(row, column);
+		return getCastedModel().isCellEditable(row, modelColumn);
 	}
 	
 	private boolean isWhoCellEditable(int row, int modelColumn)
