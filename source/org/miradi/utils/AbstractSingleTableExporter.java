@@ -47,7 +47,7 @@ public abstract class AbstractSingleTableExporter extends AbstractTableExporter
 	{
 		CodeList modelColumnSequence = getModelColumnSequence();
 		CodeList arrangedColumnCodes = calculateArrangedColumnCodes(new CodeList(modelColumnSequence));
-		tableToModelColumnIndexMap  = buildModelColumnIndexArray(arrangedColumnCodes, modelColumnSequence);
+		tableToModelColumnIndexMap  = buildModelColumnIndexMap(arrangedColumnCodes, modelColumnSequence);
 	}
 	
 	private HashMap<Integer, Integer> tableToModelColumnIndexMap;
