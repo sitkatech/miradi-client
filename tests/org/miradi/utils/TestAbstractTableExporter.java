@@ -34,53 +34,50 @@ public class TestAbstractTableExporter extends TestCaseWithProject
 
 	public void testEmptyDesiredColumnCodes()
 	{
-		CodeList emptyDesiredColumnCodes = new CodeList();
-		verifyColumnIndexes(emptyDesiredColumnCodes);
+		verifyColumnIndexes("abcd", "abcd", "");
 	}
 	
 	public void testDifferentDesiredSizeThanModelColumnCodes()
 	{		
-		CodeList desiredCodeList = new CodeList(new String[] {"a", "b", "c"});
-		verifyColumnIndexes(desiredCodeList);
+		verifyColumnIndexes("abc", "abcd", "abc");
 	}
 	
 	public void testBuildModelColumnIndexArray()
 	{		
-		CodeList desiredCodeList = new CodeList(new String[] {"c", "a", "d", "b"});
-		verifyColumnIndexes(desiredCodeList);
+		verifyColumnIndexes("cadb", "abcd", "cadb");
 	}
 	
 	public void testNonExistingCodesFromModelColumnCodes()
 	{
-		CodeList desiredCodeList = new CodeList(new String[] {"e", "f", "g", "h"});
-		verifyColumnIndexes(desiredCodeList);
+		verifyColumnIndexes("efgh", "abcd", "efgh");
 	}
 	
-	private void verifyColumnIndexes(CodeList desiredCodeList)
+	private void verifyColumnIndexes(String expectedExpectedColumnCodesAsString, String modelColumnCodesAsString, String desiredColumnCodesAsString)
 	{
-		CodeList modelColumnCodes = new CodeList(new String[]{"a", "b", "c", "d",});
-		HashMap<Integer, Integer> tableColumnToModelColumnMap = new HashMap();
-		for (int modelColumnIndex  = 0; modelColumnIndex < modelColumnCodes.size(); ++modelColumnIndex)
-		{
-			String expectedCode = modelColumnCodes.get(modelColumnIndex);
-			int tableColumnIndex = modelColumnIndex;
-			if (desiredCodeList.contains(expectedCode))
-				tableColumnIndex = desiredCodeList.find(expectedCode);
-			
-			tableColumnToModelColumnMap.put(tableColumnIndex, modelColumnIndex);
-		}
+		CodeList expectedColumnCodes = createCodeList(expectedExpectedColumnCodesAsString);
+		CodeList modelColumnCodes = createCodeList(modelColumnCodesAsString);
+		CodeList desiredColumnCodes = createCodeList(desiredColumnCodesAsString);
+		HashMap<Integer, Integer> modelColumnMap = AbstractTableExporter.buildModelColumnIndexMap(desiredColumnCodes, modelColumnCodes);
 		
-		HashMap<Integer, Integer> modelColumnArray = AbstractTableExporter.buildModelColumnIndexArray(desiredCodeList, modelColumnCodes);
-		Set<Integer> tableColumnKeys = tableColumnToModelColumnMap.keySet();
-		for(Integer tableColumn : tableColumnKeys)
+		assertEquals("wrong map size", expectedColumnCodes.size(), modelColumnMap.size());
+		Set<Integer> keys = modelColumnMap.keySet();
+		for(Integer keyModelColumnIndex : keys)
 		{
-			int expectedModelColumnIndex = tableColumnToModelColumnMap.get(tableColumn).intValue();
-			if (modelColumnArray.size() <= expectedModelColumnIndex)
-				continue;
-			
-			int columnIndex = modelColumnArray.get(tableColumn).intValue();
-			assertEquals("wrong column index", expectedModelColumnIndex, columnIndex);
-			assertTrue("column index cannot be less than 0?", columnIndex >= 0);
+			int tableColumn = modelColumnMap.get(keyModelColumnIndex).intValue();
+			String code = expectedColumnCodes.get(tableColumn);
+			assertEquals("wrong table column index", tableColumn, expectedColumnCodes.find(code));
 		}
 	}
+
+	private CodeList createCodeList(String model)
+	{
+		CodeList codeList = new CodeList();
+		char[] codes = model.toCharArray();
+		for (int index = 0; index < codes.length; ++index)
+		{
+			codeList.add(Character.toString(codes[index]));
+		}
+		
+		return codeList;
+	}	
 }

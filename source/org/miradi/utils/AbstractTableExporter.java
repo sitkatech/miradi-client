@@ -55,7 +55,7 @@ public abstract class AbstractTableExporter implements TableExporter
 		return getModelColumnSequence();
 	}
 
-	public static HashMap<Integer, Integer> buildModelColumnIndexArray(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
+	public static HashMap<Integer, Integer> buildModelColumnIndexMap(CodeList desiredSequenceCodes, CodeList modelColumnCodes)
 	{
 		if (desiredSequenceCodes.size() == 0)
 			return fillUsingModelColumnSameKeyAsValue(modelColumnCodes);
