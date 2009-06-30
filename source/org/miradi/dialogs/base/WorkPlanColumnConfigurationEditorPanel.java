@@ -41,4 +41,6 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Work Plan Column Editor");
 	}
+
+	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
 }
