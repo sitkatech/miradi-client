@@ -79,8 +79,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
 		scrollController.addScrollPane(treeTableScrollPane);
 		
-		multiTableExporter = new MultiTableCombinedAsOneExporter(getProject());		
-		
 		listenForColumnWidthChanges(getTree());
 		
 		mainModel = new PlanningViewMainTableModel(getProject(), treeToUse, rowColumnProvider);
@@ -324,12 +322,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private void updateRightSideTablePanels() throws Exception
 	{
-		multiTableExporter.clear();
 		multiModel.removeAllModels();
 		multiModel.addModel(mainModel);
 
-		multiTableExporter.addAsMasterTable(new TreeTableExporter(getTree()));
-		multiTableExporter.addExportable(new PlanningViewMainModelExporter(getProject(), multiModel, getTree(), multiModel.getUniqueTableModelIdentifier()));
 		mainTableScrollPane.showVerticalScrollBar();
 
 		CodeList columnsToShow = getRowColumnProvider().getColumnListToShow();
@@ -359,8 +354,12 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return (PlanningTreeTableModel)getModel();
 	}
 	
-	public TableExporter getTableForExporting()
+	public TableExporter getTableForExporting() throws Exception
 	{
+		MultiTableCombinedAsOneExporter multiTableExporter = new MultiTableCombinedAsOneExporter(getProject());
+		multiTableExporter.addAsMasterTable(new TreeTableExporter(getTree()));
+		multiTableExporter.addExportable(new PlanningViewMainModelExporter(getProject(), multiModel, getTree(), multiModel.getUniqueTableModelIdentifier()));
+		
 		return multiTableExporter;
 	}
 	
@@ -386,6 +385,4 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private BudgetDetailsTableModel budgetDetailsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
-	
-	private MultiTableCombinedAsOneExporter multiTableExporter;
 }
