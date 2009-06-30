@@ -54,7 +54,6 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		super(mainWindowToUse);
 		
 		createTables();
-		multiTableExporter = createExporter();
 		
 		addTableToGridBag();
 		addTablesToSelectionController();
@@ -119,7 +118,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 
 	}
 
-	private ThreatRatingMultiTableAsOneExporter createExporter()
+	public TableExporter getTableForExporting()
 	{
 		ThreatRatingMultiTableAsOneExporter exporter = new ThreatRatingMultiTableAsOneExporter(getProject());
 		exporter.addAsTopRowTable(new ThreatNameTableModelExporter(threatNameTableModel));
@@ -127,12 +126,8 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		exporter.addAsTopRowTable(new MainThreatTableModelExporter(threatSummaryColumnTableModel));
 		exporter.setTargetSummaryRowTable(new MainThreatTableModelExporter(targetSummaryRowTableModel));
 		exporter.setOverallSummaryRowTable(new MainThreatTableModelExporter(overallProjectSummaryCellTableModel));
+		
 		return exporter;
-	}
-	
-	public TableExporter getTableForExporting()
-	{
-		return multiTableExporter;
 	}	
 
 	private void listenForColumnWidthChanges(JTable table)
@@ -493,6 +488,4 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 	
 	private OverallProjectSummaryCellTable overallProjectSummaryCellTable;
 	private OverallProjectSummaryCellTableModel overallProjectSummaryCellTableModel;
-	
-	private ThreatRatingMultiTableAsOneExporter multiTableExporter;
 }
