@@ -36,6 +36,10 @@ public class WorkPlanColumnsEditorDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
+		boolean superIsAvailable = super.isAvailable();
+		if (!superIsAvailable)
+			return false;
+		
 		return true;
 	}
 	
