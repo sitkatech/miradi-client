@@ -28,7 +28,7 @@ public class StringMapCodeListEditorField extends AbstractCodeListEditorField
 {
 	public StringMapCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
 	}
 
 	@Override
