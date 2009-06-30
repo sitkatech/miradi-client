@@ -31,7 +31,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MiradiScrollPane;
 
-public class ObjectCodeEditorField extends ObjectDataInputField implements ListSelectionListener
+public class ObjectCodeEditorField extends AbstractCodeListEditorField implements ListSelectionListener
 {
 	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
