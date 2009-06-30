@@ -63,6 +63,11 @@ public class TimePeriodCosts
 			resourceUnitsMap.put(resourceRefToAdd, unitsToUse);
 		}
 	}
+	
+	public void removeResource(ORef resourceRefToRemove)
+	{
+		resourceUnitsMap.remove(resourceRefToRemove);
+	}
 
 	private void addExpenses(OptionalDouble expenseToAdd)
 	{

@@ -142,6 +142,32 @@ public class TimePeriodCostsMap
 		return combinedDateRange;
 	}
 	
+	public void filterByProjectResource(ORef projectResourceRef)
+	{
+		Set<DateUnit> keys = data.keySet();
+		for(DateUnit dateUnit : keys)
+		{
+			TimePeriodCosts timePeriodCosts = data.get(dateUnit);
+			removeProjectResources(timePeriodCosts, projectResourceRef);
+		}	
+	}
+
+	private void removeProjectResources(TimePeriodCosts timePeriodCosts, ORef projectResourceRefToRetain)
+	{
+		ORefSet projectResourcesToRemove = new ORefSet();
+		Set<ORef> projectResourceRefs = timePeriodCosts.getResourceRefSet();
+		for(ORef projectResourceRef : projectResourceRefs)
+		{
+			if (!projectResourceRef.equals(projectResourceRefToRetain))
+				projectResourcesToRemove.add(projectResourceRef);
+		}
+		
+		for(ORef projectResourceRefsToRemove : projectResourcesToRemove)
+		{
+			timePeriodCosts.removeResource(projectResourceRefsToRemove);
+		}
+	}
+	
 	public ORefSet getAllProjectResourceRefs()
 	{
 		ORefSet allProjectResourceRefs = new ORefSet();
