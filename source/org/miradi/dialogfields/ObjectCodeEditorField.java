@@ -19,74 +19,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.awt.Dimension;
-
-import javax.swing.JComponent;
-import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.MiradiScrollPane;
 
 public class ObjectCodeEditorField extends AbstractCodeListEditorField implements ListSelectionListener
 {
 	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		this(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 3);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
 	}
 	
 	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
-		codeListEditor = createCodeListComponent(questionToUse, columnCount);
-		component = new MiradiScrollPane(codeListEditor);
-		Dimension preferredSize = component.getPreferredSize();
-		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
-		final int ARBITRARY_REASONABLE_MAX_HEIGHT = 600;
-		int width = Math.min(preferredSize.width, ARBITRARY_REASONABLE_MAX_WIDTH);
-		int height = Math.min(preferredSize.height, ARBITRARY_REASONABLE_MAX_HEIGHT);
-		component.getViewport().setPreferredSize(new Dimension(width, height));
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, columnCount);
 	}
 
 	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new CodeListFieldComponent(questionToUse, columnCount, this);
-	}
-	
-	public JComponent getComponent()
-	{
-		return component;
-	}
-
-	public String getText()
-	{
-		return codeListEditor.getText();
-	}
-
-	public void setText(String codes)
-	{
-		codeListEditor.setText(codes);
-	}
-	
-	public void updateEditableState()
-	{
-		boolean editable = allowEdits() && isValidObject();
-		codeListEditor.setEnabled(editable);
-	}
-	
-	public void valueChanged(ListSelectionEvent arg0)
-	{
-		forceSave();
-	}
-	
-	public void setDisabledCodes(CodeList codesToDiable)
-	{
-		codeListEditor.setDisabledCodes(codesToDiable);
-	}
-	
-	private AbstractCodeListComponent codeListEditor;
-	private MiradiScrollPane component; 
+	} 
 }
