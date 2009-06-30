@@ -618,9 +618,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return true;
 	}
 	
+	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	{
+		return calculateValue(baseObject.calculateTimePeriodCosts(dateUnit));
+	}
+	
 	abstract public Color getCellBackgroundColor(int column);
 	
-	abstract protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception;
+	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts);
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
 

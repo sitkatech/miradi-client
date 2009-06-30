@@ -27,6 +27,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -60,9 +61,9 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 	}
 	
 	@Override
-	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
 	{
-		return baseObject.calculateTimePeriodCosts(dateUnit).calculateTotalCost(getProject());
+		return timePeriodCosts.calculateTotalCost(getProject());
 	}
 	
 	@Override
