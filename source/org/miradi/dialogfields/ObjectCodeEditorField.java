@@ -41,7 +41,7 @@ public class ObjectCodeEditorField extends ObjectDataInputField implements ListS
 	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
-		codeListEditor = new CodeListFieldComponent(questionToUse, columnCount, this);
+		codeListEditor = createCodeListComponent(questionToUse, columnCount);
 		component = new MiradiScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();
 		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
@@ -49,6 +49,11 @@ public class ObjectCodeEditorField extends ObjectDataInputField implements ListS
 		int width = Math.min(preferredSize.width, ARBITRARY_REASONABLE_MAX_WIDTH);
 		int height = Math.min(preferredSize.height, ARBITRARY_REASONABLE_MAX_HEIGHT);
 		component.getViewport().setPreferredSize(new Dimension(width, height));
+	}
+
+	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		return new CodeListFieldComponent(questionToUse, columnCount, this);
 	}
 	
 	public JComponent getComponent()
@@ -82,6 +87,6 @@ public class ObjectCodeEditorField extends ObjectDataInputField implements ListS
 		codeListEditor.setDisabledCodes(codesToDiable);
 	}
 	
-	CodeListFieldComponent codeListEditor;
-	MiradiScrollPane component; 
+	private AbstractCodeListComponent codeListEditor;
+	private MiradiScrollPane component; 
 }
