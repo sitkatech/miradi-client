@@ -29,13 +29,6 @@ import org.miradi.questions.ProjectResourceQuestion;
 
 public class ProjectResourceWorkPlanFilterEditDoer extends AbstractWorkPlanStringMapEditorDoer
 {
-	//FIXME urgent - temporarly disabled
-	@Override
-	public boolean isAvailable()
-	{
-		return false;
-	}
-	
 	@Override
 	protected ObjectDataInputPanel createEditorPanel(TableSettings workPlanTableSettings)
 	{
