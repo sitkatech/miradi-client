@@ -20,26 +20,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.OperationalPlan.doers;
 
-import org.miradi.exceptions.CommandFailedException;
-import org.miradi.views.ObjectsDoer;
+import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.WorkPlanProjectResourceFilterEditorPanel;
+import org.miradi.objects.TableSettings;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ProjectResourceQuestion;
 
-public class ProjectResourceWorkPlanFilterEditDoer extends ObjectsDoer
+public class ProjectResourceWorkPlanFilterEditDoer extends AbstractWorkPlanStringMapEditorDoer
 {
+	//FIXME urgent - temporarly disabled
 	@Override
 	public boolean isAvailable()
 	{
-		boolean superIsAvailable = super.isAvailable();
-		if (!superIsAvailable)
-			return false;
-		
-		//FIXME enable this button once its functioning
 		return false;
 	}
 	
 	@Override
-	public void doIt() throws CommandFailedException
+	protected ObjectDataInputPanel createEditorPanel(TableSettings workPlanTableSettings)
 	{
-		if (!isAvailable())
-			return;
+		ChoiceQuestion columnConfigurationQuestion = new ProjectResourceQuestion(getProject());
+		return new WorkPlanProjectResourceFilterEditorPanel(getProject(), workPlanTableSettings.getRef(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion);
 	}
 }
