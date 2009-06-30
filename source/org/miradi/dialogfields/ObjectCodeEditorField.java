@@ -19,13 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import javax.swing.event.ListSelectionListener;
-
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ObjectCodeEditorField extends AbstractCodeListEditorField implements ListSelectionListener
+public class ObjectCodeEditorField extends AbstractCodeListEditorField
 {
 	public ObjectCodeEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{

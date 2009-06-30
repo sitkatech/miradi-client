@@ -40,6 +40,7 @@ import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
+import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
@@ -57,6 +58,7 @@ import org.miradi.views.planning.doers.TreeNodeCreateActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
+import org.miradi.views.planning.doers.WorkPlanColumnsEditorDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -147,6 +149,7 @@ public class OperationalPlanView extends TabbedView
 		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
+		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanColumnsEditorDoer());
 	}
 	
 	public static boolean is(UmbrellaView view)

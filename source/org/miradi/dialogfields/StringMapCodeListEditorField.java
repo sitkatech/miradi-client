@@ -34,7 +34,6 @@ public class StringMapCodeListEditorField extends AbstractCodeListEditorField
 	@Override
 	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		//FIXME urgent - this needs to return valid component;
-		return null;
+		return new StringMapCodeListFieldComponent(getProject(), questionToUse, columnCount, this);
 	}
 }

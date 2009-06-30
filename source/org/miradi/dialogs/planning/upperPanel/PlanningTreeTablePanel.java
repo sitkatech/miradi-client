@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.StringMapCodeListFieldComponent;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
@@ -39,6 +40,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
@@ -47,6 +49,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.questions.ColumnConfigurationQuestion;
@@ -195,6 +198,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (didAffectMeasurementInTree(event))
 			return true;
 		
+		if (didAffectTableSettingsMapForBudgetColumns(event))
+			return true;
+		
 		return false;
 	}
 	
@@ -212,6 +218,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private boolean didAffectMeasurementInTree(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(Indicator.getObjectType(), Indicator.TAG_MEASUREMENT_REFS);
+	}
+	
+	private boolean didAffectTableSettingsMapForBudgetColumns(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP);
 	}
 
 	private boolean isTargetModeChange (CommandExecutedEvent event)
@@ -334,19 +345,37 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		if (columnsToShow.contains(ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		CodeList budgetColumnCodes = getBudgetColumnCodesFromTableSettingsMap();
+		if (shouldShow(columnsToShow, budgetColumnCodes, ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
-		if (columnsToShow.contains(ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(columnsToShow, budgetColumnCodes, ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
 		
-		if (columnsToShow.contains(ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (shouldShow(columnsToShow, budgetColumnCodes, ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
 		mainTable.reloadColumnSequences();
 		mainTable.reloadColumnWidths();
 		validate();
 		repaint();
+	}
+
+	private boolean shouldShow(CodeList columnsToShow, CodeList budgetColumnCodes, String metaColumnCode)
+	{
+		if (!columnsToShow.contains(metaColumnCode))
+			return false;
+				
+		return budgetColumnCodes.contains(metaColumnCode);
+	}
+
+	private CodeList getBudgetColumnCodesFromTableSettingsMap()	throws Exception
+	{
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+		String codeListAsString = tableSettingsMap.get(StringMapCodeListFieldComponent.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		
+		return new CodeList(codeListAsString);
 	}
 
 	private PlanningTreeTableModel getPlanningModel()
