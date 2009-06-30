@@ -118,7 +118,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 
 	}
 
-	public TableExporter getTableForExporting()
+	public TableExporter createTableForExporting()
 	{
 		ThreatRatingMultiTableAsOneExporter exporter = new ThreatRatingMultiTableAsOneExporter(getProject());
 		exporter.addAsTopRowTable(new ThreatNameTableModelExporter(threatNameTableModel));

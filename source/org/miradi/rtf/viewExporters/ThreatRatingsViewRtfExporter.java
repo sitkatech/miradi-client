@@ -44,7 +44,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	private void exportThreatRating(RtfWriter writer) throws Exception
 	{
 		ThreatRatingMultiTablePanel threatRatingMultiTablePanel = new ThreatRatingMultiTablePanel(getMainWindow());
-		TableExporter tableExporter = threatRatingMultiTablePanel.getTableForExporting();
+		TableExporter tableExporter = threatRatingMultiTablePanel.createTableForExporting();
 		exportTable(writer, tableExporter, ReportTemplateContentQuestion.getThreatRatingsLabel());
 		threatRatingMultiTablePanel.dispose();
 	}
