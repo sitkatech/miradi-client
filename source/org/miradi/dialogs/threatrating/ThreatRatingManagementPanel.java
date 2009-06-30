@@ -49,7 +49,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	{
 		super(splitPositionSaverToUse,  listTablePanel, propertiesPanel);
 		
-		tableExporter = listTablePanel.getMultiTablePanel().getTableForExporting();
+		threatRatingUpperPanel = listTablePanel;
 	}
 
 	public String getSplitterDescription()
@@ -74,7 +74,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	
 	public TableExporter getTableExporter() throws Exception
 	{
-		return tableExporter;
+		return threatRatingUpperPanel.getMultiTablePanel().getTableForExporting();
 	}
 	
 	public boolean isRtfExportable()
@@ -88,5 +88,5 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	}
 		
 	private static String PANEL_DESCRIPTION = "ThreatStressRating";
-	private TableExporter tableExporter;
+	private ThreatRatingUpperPanel threatRatingUpperPanel;
 }
