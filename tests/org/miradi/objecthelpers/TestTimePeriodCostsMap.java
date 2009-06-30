@@ -251,6 +251,32 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong expense after merge?", expectedExpense, foundTimePeriodCosts.getExpense().getValue());
 		assertEquals("wrong total cost after merge?", expectedTotalCost, foundTimePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
+	
+	public void testFilterByProjectResource() throws Exception
+	{
+		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
+		assertTrue("should not have any project resources?", timePeriodCostsMap.getAllProjectResourceRefs().isEmpty());
+		
+		DateUnit dateUnit2006Q1 = new DateUnit("2006Q1");
+		DateUnit dateUnit2006Q2 = new DateUnit("2006Q2");
+
+		ProjectResource projectResourcePaul = createProjectResource();
+		ProjectResource projectResourceJill = createProjectResource();
+		
+		TimePeriodCosts timePeriodCosts2006WithPaul = updateMapWithNewCreatedTimePeriodCosts(timePeriodCostsMap, dateUnit2006Q1, 22.0, projectResourcePaul, 10.0);
+		TimePeriodCosts timePeriodCosts2006WithJill = updateMapWithNewCreatedTimePeriodCosts(timePeriodCostsMap, dateUnit2006Q2, 12.0, projectResourceJill, 1.0);
+		
+		timePeriodCostsMap.add(dateUnit2006Q1, timePeriodCosts2006WithPaul);
+		timePeriodCostsMap.add(dateUnit2006Q2, timePeriodCosts2006WithJill);
+		
+		assertEquals("wrong project resource count?", 2, timePeriodCostsMap.getAllProjectResourceRefs().size());
+		
+		timePeriodCostsMap.filterByProjectResource(projectResourceJill.getRef());
+		
+		ORefSet projectResourceRefs = timePeriodCostsMap.getAllProjectResourceRefs();
+		assertEquals("map was not filtered properly?", 1, projectResourceRefs.size());
+		assertTrue("wrong project resource in map?", projectResourceRefs.contains(projectResourceJill.getRef()));
+	}
 		
 	private TimePeriodCostsMap createTimePeriodCostsMap(double expense, ProjectResource projectResource, double units)
 	{
