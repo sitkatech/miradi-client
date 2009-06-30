@@ -28,6 +28,7 @@ import org.miradi.actions.ActionDeleteAccountingCode;
 import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
+import org.miradi.actions.ActionFilterWorkPlanByProjectResource;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionTreeCreateActivity;
@@ -48,6 +49,7 @@ import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
+import org.miradi.views.OperationalPlan.doers.ProjectResourceWorkPlanFilterEditDoer;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
 import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
@@ -150,6 +152,7 @@ public class OperationalPlanView extends TabbedView
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanColumnsEditorDoer());
+		addDoerToMap(ActionFilterWorkPlanByProjectResource.class, new ProjectResourceWorkPlanFilterEditDoer());
 	}
 	
 	public static boolean is(UmbrellaView view)
