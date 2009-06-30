@@ -74,7 +74,7 @@ public class ThreatRatingManagementPanel extends ObjectManagementPanel
 	
 	public TableExporter getTableExporter() throws Exception
 	{
-		return threatRatingUpperPanel.getMultiTablePanel().getTableForExporting();
+		return threatRatingUpperPanel.getMultiTablePanel().createTableForExporting();
 	}
 	
 	public boolean isRtfExportable()
