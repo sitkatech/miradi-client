@@ -56,7 +56,7 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 		};
 	}
 
-	private static ChoiceItem createChoiceItem(String tag)
+	public static ChoiceItem createChoiceItem(String tag)
 	{
 		return new ChoiceItem(tag, EAM.fieldLabel(ObjectType.FAKE, tag));
 	}

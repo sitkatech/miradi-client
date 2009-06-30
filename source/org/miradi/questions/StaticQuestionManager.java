@@ -88,6 +88,7 @@ public class StaticQuestionManager
 		addQuestion(new TncProjectPlaceTypeQuestion());
 		addQuestion(new ScopeBoxColorQuestion());
 		addQuestion(new TargetModeQuestion());
+		addQuestion(new WorkPlanColumnConfigurationQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
