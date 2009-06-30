@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
@@ -80,6 +81,15 @@ public class TableSettings extends BaseObject
 	public Vector<DateUnit> getDateUnitList()
 	{
 		return dateUnitListList.getDateUnits();
+	}
+	
+	public CodeList getCodeListFromTableSettingsMap(String codeListKey) throws Exception
+	{
+		HashMap<String, String> settingsMap = tableSettingsMap.getStringMap().toHashMap();
+		if (settingsMap.containsKey(codeListKey))
+			return new CodeList(settingsMap.get(codeListKey));
+
+		return new CodeList();
 	}
 	
 	public CommandSetObjectData createCommandToUpdateDateUnitList(CodeList dateUnits)
@@ -148,6 +158,7 @@ public class TableSettings extends BaseObject
 		rowHeight = new IntegerData(TAG_ROW_HEIGHT);
 		expandedNodesRefList = new ORefListData(TAG_TREE_EXPANSION_LIST);
 		dateUnitListList = new DateUnitListData(TAG_DATE_UNIT_LIST_DATA);
+		tableSettingsMap = new StringMapData(TAG_TABLE_SETTINGS_MAP);
 		
 		addPresentationDataField(TAG_TABLE_IDENTIFIER, tableIdentifier);
 		addPresentationDataField(TAG_COLUMN_SEQUENCE_CODES, columnSequenceCodes);
@@ -155,6 +166,7 @@ public class TableSettings extends BaseObject
 		addPresentationDataField(TAG_ROW_HEIGHT, rowHeight);
 		addPresentationDataField(TAG_TREE_EXPANSION_LIST, expandedNodesRefList);
 		addPresentationDataField(TAG_DATE_UNIT_LIST_DATA, dateUnitListList);
+		addPresentationDataField(TAG_TABLE_SETTINGS_MAP, tableSettingsMap);
 	}
 	
 	public static final String OBJECT_NAME = "TableSettings";
@@ -165,6 +177,7 @@ public class TableSettings extends BaseObject
 	public static final String TAG_ROW_HEIGHT = "RowHeight";
 	public static final String TAG_TREE_EXPANSION_LIST  = "TreeExpansionList";
 	public static final String TAG_DATE_UNIT_LIST_DATA = "DateUnitListData";
+	public static final String TAG_TABLE_SETTINGS_MAP = "TagTableSettingsMap";
 	
 	private StringData tableIdentifier;
 	private TagListData columnSequenceCodes;
@@ -172,4 +185,5 @@ public class TableSettings extends BaseObject
 	private IntegerData rowHeight;
 	private ORefListData expandedNodesRefList;
 	private DateUnitListData dateUnitListList;
+	private StringMapData tableSettingsMap;
 }
