@@ -17,29 +17,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.upperPanel;
 
+package org.miradi.dialogfields;
+
+import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
+import org.miradi.questions.ChoiceQuestion;
 
-public class WorkPlanTreeTableModel extends PlanningTreeTableModel
+public class StringMapCodeListEditorField extends AbstractCodeListEditorField
 {
-	public WorkPlanTreeTableModel(Project project) throws Exception
+	public StringMapCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(project, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns());
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
 	}
 
 	@Override
-	public void updateColumnsToShow() throws Exception
+	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
+		//FIXME urgent - this needs to return valid component;
+		return null;
 	}
-	
-	@Override
-	public String getUniqueTreeTableModelIdentifier()
-	{
-		return UNIQUE_TREE_TABLE_IDENTIFIER;
-	}
-	
-	public static final String UNIQUE_TREE_TABLE_IDENTIFIER = "WorkPlanTreeTableModel";
 }
