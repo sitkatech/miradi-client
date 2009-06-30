@@ -83,6 +83,11 @@ public class TableSettings extends BaseObject
 		return dateUnitListList.getDateUnits();
 	}
 	
+	public StringMap getTableSettingsMap()
+	{
+		return new StringMap(tableSettingsMap.getStringMap()); 
+	}
+	
 	public CodeList getCodeListFromTableSettingsMap(String codeListKey) throws Exception
 	{
 		HashMap<String, String> settingsMap = tableSettingsMap.getStringMap().toHashMap();

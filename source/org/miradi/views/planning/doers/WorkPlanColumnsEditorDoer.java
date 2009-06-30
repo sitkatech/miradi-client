@@ -36,7 +36,7 @@ public class WorkPlanColumnsEditorDoer extends ObjectsDoer
 	@Override
 	public boolean isAvailable()
 	{
-		return false;
+		return true;
 	}
 	
 	@Override
