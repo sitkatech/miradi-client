@@ -31,7 +31,7 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createStringMapCodeListEditor(orefToUse.getObjectType(), tagToUse, WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, question));
+		addField(createStringMapWorkPlanBudgetColumnCodeListEditor(orefToUse.getObjectType(), tagToUse, question));
 		
 		updateFieldsFromProject();
 	}
@@ -41,6 +41,4 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Work Plan Column Editor");
 	}
-
-	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
 }

@@ -18,21 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.planning.doers;
+package org.miradi.dialogs.base;
 
-import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
-import org.miradi.dialogs.base.WorkPlanColumnConfigurationEditorPanel;
-import org.miradi.objects.TableSettings;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
-public class WorkPlanColumnsEditorDoer extends AbstractWorkPlanStringMapEditorDoer
+public class WorkPlanProjectResourceFilterEditorPanel extends ObjectDataInputPanel
 {
-	@Override
-	protected WorkPlanColumnConfigurationEditorPanel createEditorPanel(TableSettings workPlanTableSettings)
+	public WorkPlanProjectResourceFilterEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question)
 	{
-		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
+		super(projectToUse, orefToUse);
 		
-		return new WorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion);
+		addField(createStringMapProjectResourceFilterCodeListEditor(orefToUse.getObjectType(), tagToUse , question));
+		
+		updateFieldsFromProject();
+	}
+
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("Project Resource Filter Editor");
 	}
 }

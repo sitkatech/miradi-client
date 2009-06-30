@@ -25,8 +25,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.StringMapBudgetColumnCodeListEditorField;
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.base.WorkPlanColumnConfigurationEditorPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButtonRow;
@@ -373,7 +373,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
-		String codeListAsString = tableSettingsMap.get(WorkPlanColumnConfigurationEditorPanel.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		String codeListAsString = tableSettingsMap.get(StringMapBudgetColumnCodeListEditorField.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 		
 		return new CodeList(codeListAsString);
 	}

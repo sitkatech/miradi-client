@@ -18,21 +18,24 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.planning.doers;
+package org.miradi.dialogfields;
 
-import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
-import org.miradi.dialogs.base.WorkPlanColumnConfigurationEditorPanel;
-import org.miradi.objects.TableSettings;
+import org.miradi.ids.BaseId;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
-public class WorkPlanColumnsEditorDoer extends AbstractWorkPlanStringMapEditorDoer
+public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEditorField
 {
-	@Override
-	protected WorkPlanColumnConfigurationEditorPanel createEditorPanel(TableSettings workPlanTableSettings)
+	public StringMapBudgetColumnCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
-		
-		return new WorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion);
+		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
 	}
+
+	@Override
+	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
+	{
+		return new StringMapCodeListFieldComponent(getProject(), questionToUse, WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, columnCount, this);
+	}
+	
+	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
 }
