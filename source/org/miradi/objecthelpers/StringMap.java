@@ -97,7 +97,7 @@ public class StringMap
 		data.put(code, object);
 	}
 
-	public HashMap toHashMap()
+	public HashMap<String, String> toHashMap()
 	{
 		return data;
 	}
