@@ -31,7 +31,7 @@ public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createStringMapCodeListEditor(orefToUse.getObjectType(), tagToUse, question));
+		addField(createStringMapCodeListEditor(orefToUse.getObjectType(), tagToUse, WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, question));
 		
 		updateFieldsFromProject();
 	}

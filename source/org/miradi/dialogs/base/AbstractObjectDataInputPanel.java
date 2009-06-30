@@ -528,9 +528,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return objectCodeListField;
 	}
 	
-	public ObjectDataInputField createStringMapCodeListEditor(int objectType, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createStringMapCodeListEditor(int objectType, String tagToUse, String workPlanMapKey, ChoiceQuestion question)
 	{
-		return new StringMapCodeListEditorField(getProject(), objectType, getObjectIdForType(objectType), tagToUse, question);
+		return new StringMapCodeListEditorField(getProject(), objectType, getObjectIdForType(objectType), tagToUse, workPlanMapKey, question);
 	}
 	
 	public ObjectDataInputField createReadonlyTextField(String tag)

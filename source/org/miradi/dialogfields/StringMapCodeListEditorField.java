@@ -26,14 +26,18 @@ import org.miradi.questions.ChoiceQuestion;
 
 public class StringMapCodeListEditorField extends AbstractCodeListEditorField
 {
-	public StringMapCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
+	public StringMapCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, String workPlanMapKeyToUse, ChoiceQuestion questionToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
+		
+		workPlanMapKey = workPlanMapKeyToUse;
 	}
 
 	@Override
 	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new StringMapCodeListFieldComponent(getProject(), questionToUse, columnCount, this);
+		return new StringMapCodeListFieldComponent(getProject(), questionToUse, workPlanMapKey, columnCount, this);
 	}
+	
+	private String workPlanMapKey; 
 }

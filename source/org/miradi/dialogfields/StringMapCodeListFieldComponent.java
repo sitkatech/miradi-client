@@ -24,7 +24,6 @@ import java.text.ParseException;
 
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.dialogs.base.WorkPlanColumnConfigurationEditorPanel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.StringMap;
@@ -35,10 +34,11 @@ import org.miradi.utils.CodeList;
 
 public class StringMapCodeListFieldComponent extends AbstractCodeListComponent
 {
-	public StringMapCodeListFieldComponent(Project projectToUse, ChoiceQuestion questionToUse, int columnCount, ListSelectionListener listener)
+	public StringMapCodeListFieldComponent(Project projectToUse, ChoiceQuestion questionToUse, String workPlanMapKeyToUse, int columnCount, ListSelectionListener listener)
 	{
 		super(questionToUse, columnCount, listener);
 		
+		workPlanMapKey = workPlanMapKeyToUse;
 		project = projectToUse;
 	}
 
@@ -63,7 +63,7 @@ public class StringMapCodeListFieldComponent extends AbstractCodeListComponent
 
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		StringMap existingMap = tableSettings.getTableSettingsMap();
-		existingMap.add(WorkPlanColumnConfigurationEditorPanel.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, codes.toString());
+		existingMap.add(workPlanMapKey, codes.toString());
 		
 		return existingMap.toString();
 	}
@@ -79,7 +79,7 @@ public class StringMapCodeListFieldComponent extends AbstractCodeListComponent
 		try
 		{
 			StringMap stringMap = new StringMap(StringMapAsString);
-			String codeListAsString = stringMap.get(WorkPlanColumnConfigurationEditorPanel.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+			String codeListAsString = stringMap.get(workPlanMapKey);
 			
 			return new CodeList(codeListAsString);
 		}
@@ -97,4 +97,5 @@ public class StringMapCodeListFieldComponent extends AbstractCodeListComponent
 	}
 	
 	private Project project;
+	private String workPlanMapKey;
 }
