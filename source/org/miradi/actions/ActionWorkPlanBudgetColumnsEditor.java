@@ -17,29 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.project.Project;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
+package org.miradi.actions;
 
-public class WorkPlanTreeTableModel extends PlanningTreeTableModel
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+
+public class ActionWorkPlanBudgetColumnsEditor extends ObjectsAction
 {
-	public WorkPlanTreeTableModel(Project project) throws Exception
+	public ActionWorkPlanBudgetColumnsEditor(MainWindow mainWindowToUse)
 	{
-		super(project, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns());
+		super(mainWindowToUse, getLabel());
 	}
 
-	@Override
-	public void updateColumnsToShow() throws Exception
+	private static String getLabel()
 	{
+		return EAM.text("Action|Edit Budget Columns...");
 	}
-	
-	@Override
-	public String getUniqueTreeTableModelIdentifier()
+
+	public String getToolTipText()
 	{
-		return UNIQUE_TREE_TABLE_IDENTIFIER;
+		return EAM.text("TT|Change visible budget columns");
 	}
-	
-	public static final String UNIQUE_TREE_TABLE_IDENTIFIER = "WorkPlanTreeTableModel";
 }

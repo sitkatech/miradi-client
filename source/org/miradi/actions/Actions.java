@@ -216,6 +216,7 @@ public class Actions
 		registerAction(new ActionPlanningCreationMenu(mainWindow));
 		registerAction(new ActionPlanningRowsEditor(mainWindow));
 		registerAction(new ActionPlanningColumnsEditor(mainWindow));
+		registerAction(new ActionWorkPlanBudgetColumnsEditor(mainWindow));
 		
 		registerAction(new ActionCreateIndicator(mainWindow));
 		registerAction(new ActionCloneIndicator(mainWindow));

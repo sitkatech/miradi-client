@@ -17,29 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.upperPanel;
 
+package org.miradi.dialogs.base;
+
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
+import org.miradi.questions.ChoiceQuestion;
 
-public class WorkPlanTreeTableModel extends PlanningTreeTableModel
+public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 {
-	public WorkPlanTreeTableModel(Project project) throws Exception
+	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse, String tagToUse, ChoiceQuestion question)
 	{
-		super(project, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns());
+		super(projectToUse, orefToUse);
+		
+		addField(createStringMapCodeListEditor(orefToUse.getObjectType(), tagToUse, question));
+		
+		updateFieldsFromProject();
 	}
 
 	@Override
-	public void updateColumnsToShow() throws Exception
+	public String getPanelDescription()
 	{
+		return EAM.text("Work Plan Column Editor");
 	}
-	
-	@Override
-	public String getUniqueTreeTableModelIdentifier()
-	{
-		return UNIQUE_TREE_TABLE_IDENTIFIER;
-	}
-	
-	public static final String UNIQUE_TREE_TABLE_IDENTIFIER = "WorkPlanTreeTableModel";
 }

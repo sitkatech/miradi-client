@@ -52,6 +52,7 @@ import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
+import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.base.ObjectManagementPanel;
@@ -86,6 +87,7 @@ import org.miradi.views.planning.doers.TreeNodeCreateMethodDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateObjectiveDoer;
 import org.miradi.views.planning.doers.TreeNodeCreateTaskDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
+import org.miradi.views.planning.doers.WorkPlanColumnsEditorDoer;
 import org.miradi.views.umbrella.CreateResource;
 import org.miradi.views.umbrella.DeleteResource;
 import org.miradi.views.umbrella.UmbrellaView;
@@ -218,7 +220,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
 		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
-		
+		addDoerToMap(ActionWorkPlanBudgetColumnsEditor.class, new WorkPlanColumnsEditorDoer());
 	}
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
