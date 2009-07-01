@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -34,8 +35,6 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEd
 	@Override
 	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new StringMapCodeListFieldComponent(getProject(), questionToUse, WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, columnCount, this);
+		return new StringMapCodeListFieldComponent(getProject(), questionToUse, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, columnCount, this);
 	}
-	
-	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
 }
