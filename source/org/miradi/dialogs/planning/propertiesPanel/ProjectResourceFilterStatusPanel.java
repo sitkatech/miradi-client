@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.StringMap;
@@ -60,7 +59,7 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 			
 			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
-			String code = tableSettingsMap.get(StringMapProjectResourceFilterEditorField.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+			String code = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 
 			return new CodeList(code);
 		}
