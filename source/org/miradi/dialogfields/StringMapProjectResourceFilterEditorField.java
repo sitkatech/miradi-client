@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
@@ -54,10 +53,9 @@ public class StringMapProjectResourceFilterEditorField extends RefListEditorFiel
 
 	private String getStringMapAsString() throws Exception
 	{
-		ORefList projectResourceRefs = new ORefList(super.getText());
-
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		StringMap existingMap = tableSettings.getTableSettingsMap();
+		String superText = super.getText();
+		ORefList projectResourceRefs = new ORefList(superText);
+		StringMap existingMap = new StringMap(getProject().getObjectData(getORef(), getTag()));
 		existingMap.add(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, projectResourceRefs.toString());
 		
 		return existingMap.toString();
