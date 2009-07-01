@@ -83,9 +83,6 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 		codeListEditor.setDisabledCodes(codesToDiable);
 	}
 	
-	//FIXME urgent - this method is no longer used and needs to be removed
-	abstract protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount);
-
 	protected CodeListFieldComponent codeListEditor;
 	protected MiradiScrollPane component;
 }

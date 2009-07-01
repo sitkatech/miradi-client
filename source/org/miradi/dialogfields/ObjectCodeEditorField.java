@@ -34,9 +34,4 @@ public class ObjectCodeEditorField extends AbstractCodeListEditorField
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, columnCount);
 	}
-
-	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
-	{
-		return new CodeListFieldComponent(questionToUse, columnCount, this);
-	} 
 }
