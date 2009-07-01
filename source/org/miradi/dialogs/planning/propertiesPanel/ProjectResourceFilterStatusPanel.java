@@ -39,29 +39,44 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	@Override
 	public String getText()
 	{
-		try
-		{
-			return getUpperLeftPanelText();
-		}
-		catch (Exception e)
-		{
-			return "";
-		}
+		return getUpperLeftPanelText();
 	}
 	
-	private String getUpperLeftPanelText() throws Exception
+	private String getUpperLeftPanelText()
 	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
-		String code = tableSettingsMap.get(StringMapProjectResourceFilterEditorField.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
-		CodeList codeList = new CodeList(code);
+		CodeList codeList = getProjectResourceFilterCodes();
 		if (codeList.size() == 0)
 			return "";
 		
 		return EAM.text("Project Resource Filter On");
 	}
+
+	private CodeList getProjectResourceFilterCodes()
+	{
+		try
+		{
+			if (hasNotBeenConstructed())
+				return new CodeList();
+			
+			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+			String code = tableSettingsMap.get(StringMapProjectResourceFilterEditorField.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+
+			return new CodeList(code);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
+
+	private boolean hasNotBeenConstructed()
+	{
+		return getProject() ==  null;
+	}
 	
-	public Project getProject()
+	private Project getProject()
 	{
 		return project;
 	}
