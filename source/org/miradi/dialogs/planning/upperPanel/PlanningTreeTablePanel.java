@@ -32,6 +32,7 @@ import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButtonRow;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
+import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPanel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
@@ -103,7 +104,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
 		
 		JPanel leftPanel = new MiradiPanel(new BorderLayout());
-		leftPanel.add(new ExpandAndCollapseColumnsButtonRow(null), BorderLayout.BEFORE_FIRST_LINE);
+		filterStatusPanel = new ProjectResourceFilterStatusPanel(getProject());
+		leftPanel.add(filterStatusPanel, BorderLayout.BEFORE_FIRST_LINE);
 		leftPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		
 		JPanel rightPanel = new MiradiPanel(new BorderLayout());
@@ -328,6 +330,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
+		filterStatusPanel.invalidate();
+	
 		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
 	}
 	
@@ -414,4 +418,5 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private BudgetDetailsTableModel budgetDetailsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
+	private ProjectResourceFilterStatusPanel filterStatusPanel;
 }
