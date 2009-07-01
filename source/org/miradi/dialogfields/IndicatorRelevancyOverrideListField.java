@@ -26,7 +26,7 @@ import org.miradi.objects.Desire;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class IndicatorRelevancyOverrideListField extends RelevancyOverrideListField
+public class IndicatorRelevancyOverrideListField extends RefListEditorField
 {
 	public IndicatorRelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse)
 	{
