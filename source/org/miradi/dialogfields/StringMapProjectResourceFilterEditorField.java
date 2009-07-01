@@ -25,21 +25,19 @@ import java.text.ParseException;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.utils.CodeList;
 
-public class StringMapProjectResourceFilterEditorField extends AbstractCodeListEditorField
+public class StringMapProjectResourceFilterEditorField extends RelevancyOverrideListField
 {
 	public StringMapProjectResourceFilterEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{
-		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
+		super(projectToUse, objectTypeToUse, objectIdToUse, questionToUse, tagToUse);
 	}
 
-	//FIXME urgent setText and getText need to deal with refLists instead of codeLists right now,  refs are stored
-	// as codes inside string map
 	public String getText()
 	{
 		try
@@ -56,35 +54,35 @@ public class StringMapProjectResourceFilterEditorField extends AbstractCodeListE
 
 	private String getStringMapAsString() throws Exception
 	{
-		CodeList codes = new CodeList(super.getText());
+		ORefList projectResourceRefs = new ORefList(super.getText());
 
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		StringMap existingMap = tableSettings.getTableSettingsMap();
-		existingMap.add(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, codes.toString());
+		existingMap.add(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, projectResourceRefs.toString());
 		
 		return existingMap.toString();
 	}
 
 	public void setText(String stringMapAsString)
 	{
-		CodeList codes = createCodeListFromString(stringMapAsString);
+		ORefList codes = createCodeListFromString(stringMapAsString);
 		super.setText(codes.toString());
 	}
 
-	private CodeList createCodeListFromString(String StringMapAsString)
+	private ORefList createCodeListFromString(String StringMapAsString)
 	{
 		try
 		{
 			StringMap stringMap = new StringMap(StringMapAsString);
 			String codeListAsString = stringMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 			
-			return new CodeList(codeListAsString);
+			return new ORefList(codeListAsString);
 		}
 		catch(ParseException e)
 		{
 			EAM.errorDialog(EAM.text("Internal Error"));
 			EAM.logException(e);
-			return new CodeList();
+			return new ORefList();
 		}
 	}
 }

@@ -22,10 +22,10 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
 
 
 public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectlyAboveTreeTablePanel
@@ -43,30 +43,30 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	
 	private String getUpperLeftPanelText()
 	{
-		CodeList codeList = getProjectResourceFilterCodes();
-		if (codeList.size() == 0)
+		ORefList projectResourceRefs = getProjectResourceFilterRefs();
+		if (projectResourceRefs.size() == 0)
 			return "";
 		
 		return EAM.text("Project Resource Filter On");
 	}
 
-	private CodeList getProjectResourceFilterCodes()
+	private ORefList getProjectResourceFilterRefs()
 	{
 		try
 		{
 			if (hasNotBeenConstructed())
-				return new CodeList();
+				return new ORefList();
 			
 			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
-			String code = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+			String refs = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 
-			return new CodeList(code);
+			return new ORefList(refs);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new CodeList();
+			return new ORefList();
 		}
 	}
 

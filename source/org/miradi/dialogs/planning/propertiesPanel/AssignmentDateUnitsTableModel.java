@@ -625,15 +625,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		TimePeriodCosts timePeriodCosts = baseObject.calculateTimePeriodCosts(dateUnit);
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		String projectResourceFilterCodesAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
-		CodeList projectResourceFilterCodes = new CodeList(projectResourceFilterCodesAsString);
-		ORefSet projectResourceRefsToRetain = new ORefSet();
-		for (int index = 0; index < projectResourceFilterCodes.size(); ++index)
-		{
-			String refCodeAsString = projectResourceFilterCodes.get(index);
-			ORef projectResourceRefToRetain = ORef.createFromString(refCodeAsString);
-			projectResourceRefsToRetain.add(projectResourceRefToRetain);
-		}
+		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
+		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
 		
 		if (projectResourceRefsToRetain.size() > 0)
 			removeProjectResources(timePeriodCosts, projectResourceRefsToRetain);
