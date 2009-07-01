@@ -59,6 +59,11 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 
 	public String getText()
 	{
+		return getComponentText();
+	}
+
+	protected String getComponentText()
+	{
 		return codeListEditor.getText();
 	}
 

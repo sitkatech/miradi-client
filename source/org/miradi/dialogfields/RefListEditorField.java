@@ -45,6 +45,11 @@ public class RefListEditorField extends ObjectDataInputField implements ListSele
 
 	public String getText()
 	{
+		return getComponentText();
+	}
+
+	protected String getComponentText()
+	{
 		return refListEditor.getText();
 	}
 
