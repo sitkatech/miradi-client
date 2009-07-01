@@ -26,7 +26,6 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogfields.StringMapProjectResourceFilterEditorField;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
@@ -626,7 +625,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		TimePeriodCosts timePeriodCosts = baseObject.calculateTimePeriodCosts(dateUnit);
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		String projectResourceFilterCodesAsString = tableSettings.getTableSettingsMap().get(StringMapProjectResourceFilterEditorField.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+		String projectResourceFilterCodesAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 		CodeList projectResourceFilterCodes = new CodeList(projectResourceFilterCodesAsString);
 		ORefSet projectResourceRefsToRetain = new ORefSet();
 		for (int index = 0; index < projectResourceFilterCodes.size(); ++index)

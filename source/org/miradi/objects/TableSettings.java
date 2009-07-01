@@ -176,6 +176,8 @@ public class TableSettings extends BaseObject
 	
 	public static final String OBJECT_NAME = "TableSettings";
 	
+	public static final String WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY = "WorkPlanProjectResourceFilterCodeListKey";
+	
 	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";
 	public static final String TAG_COLUMN_SEQUENCE_CODES = "ColumnSequenceCodes";
 	public static final String TAG_COLUMN_WIDTHS = "ColumnWidths";
