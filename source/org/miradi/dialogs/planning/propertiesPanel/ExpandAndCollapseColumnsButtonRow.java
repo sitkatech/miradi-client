@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -31,7 +30,6 @@ import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.Icon;
-import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -40,7 +38,7 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
-public class ExpandAndCollapseColumnsButtonRow extends JComponent implements AdjustmentListener
+public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirectlyAboveTreeTablePanel implements AdjustmentListener
 {
 	public ExpandAndCollapseColumnsButtonRow(TableWithExpandableColumnsInterface tableToSitAbove)
 	{
@@ -110,17 +108,6 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 		return null;
 	}
 
-	@Override
-	public Dimension getPreferredSize()
-	{
-		return new Dimension(0, getIconHeight() + ARBITRARY_MARGIN);
-	}
-
-	private int getIconHeight()
-	{
-		return Math.max(getExpandIcon().getIconHeight(), getCollapseIcon().getIconHeight());
-	}
-	
 	private int getIconWidth()
 	{
 		return Math.max(getExpandIcon().getIconWidth(), getCollapseIcon().getIconWidth());
@@ -132,16 +119,6 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 		repaint();
 	}
 
-	private Icon getExpandIcon()
-	{
-		return IconManager.getExpandIcon();
-	}
-
-	private Icon getCollapseIcon()
-	{
-		return IconManager.getCollapseIcon();
-	}
-	
 	class MouseClickHandler extends MouseAdapter
 	{
 		@Override
@@ -176,8 +153,6 @@ public class ExpandAndCollapseColumnsButtonRow extends JComponent implements Adj
 			return -1;
 		}
 	}
-
-	private final static int ARBITRARY_MARGIN = 2;
 
 	private TableWithExpandableColumnsInterface table;
 	private JScrollPane tableScrollPane;
