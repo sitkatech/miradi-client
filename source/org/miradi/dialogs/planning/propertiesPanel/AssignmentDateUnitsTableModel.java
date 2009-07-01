@@ -34,6 +34,7 @@ import org.miradi.objectdata.DateUnitListData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
@@ -627,23 +628,27 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		String projectResourceFilterCodesAsString = tableSettings.getTableSettingsMap().get(StringMapProjectResourceFilterEditorField.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 		CodeList projectResourceFilterCodes = new CodeList(projectResourceFilterCodesAsString);
+		ORefSet projectResourceRefsToRetain = new ORefSet();
 		for (int index = 0; index < projectResourceFilterCodes.size(); ++index)
 		{
 			String refCodeAsString = projectResourceFilterCodes.get(index);
 			ORef projectResourceRefToRetain = ORef.createFromString(refCodeAsString);
-			removeProjectResources(timePeriodCosts, projectResourceRefToRetain);
+			projectResourceRefsToRetain.add(projectResourceRefToRetain);
 		}
+		
+		if (projectResourceRefsToRetain.size() > 0)
+			removeProjectResources(timePeriodCosts, projectResourceRefsToRetain);
 		
 		return calculateValue(timePeriodCosts);
 	}
 
-	private void removeProjectResources(TimePeriodCosts timePeriodCosts, ORef projectResourceRefToRetain)
+	private void removeProjectResources(TimePeriodCosts timePeriodCosts, ORefSet projectResourceRefsToRetain)
 	{
 		Set<ORef> existingRefs = timePeriodCosts.getResourceRefSet();
-		for(ORef ref : existingRefs)
+		existingRefs.removeAll(projectResourceRefsToRetain);
+		for(ORef projectResourceRefToRemove : existingRefs)
 		{
-			if (!ref.equals(projectResourceRefToRetain))
-				timePeriodCosts.removeResource(ref);
+			timePeriodCosts.removeResource(projectResourceRefToRemove);
 		}
 	}
 	
