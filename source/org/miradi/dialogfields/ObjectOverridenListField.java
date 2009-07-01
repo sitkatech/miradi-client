@@ -26,7 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class ObjectOverridenListField extends RelevancyOverrideListField
+public class ObjectOverridenListField extends RefListEditorField
 {
 	public ObjectOverridenListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{

@@ -31,7 +31,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 
-public class StringMapProjectResourceFilterEditorField extends RelevancyOverrideListField
+public class StringMapProjectResourceFilterEditorField extends RefListEditorField
 {
 	public StringMapProjectResourceFilterEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse)
 	{

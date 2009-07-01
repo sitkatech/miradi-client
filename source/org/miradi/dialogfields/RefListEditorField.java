@@ -28,11 +28,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.MiradiScrollPane;
 
-//FIXME urgent - this class should be abstract and renamed to something other than overrideListField. its 
-// more of a refList editor field
-public class RelevancyOverrideListField extends ObjectDataInputField implements ListSelectionListener
+public class RefListEditorField extends ObjectDataInputField implements ListSelectionListener
 {
-	public RelevancyOverrideListField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
+	public RefListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, ChoiceQuestion questionToUse, String tagToUse)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
 		
