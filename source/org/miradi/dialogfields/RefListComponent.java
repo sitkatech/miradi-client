@@ -51,12 +51,12 @@ public class RefListComponent extends AbstractDataValueListComponent
 		return refList.toString();
 	}
 	
-	public void setText(String codesToUse)
+	public void setText(String refListToUse)
 	{
 		enableSkipNotification();
 		try
 		{
-			ORefList refs = new ORefList(codesToUse);
+			ORefList refs = new ORefList(refListToUse);
 
 			for (int choiceIndex = 0; choiceIndex<choiceItems.length; ++choiceIndex)
 			{
