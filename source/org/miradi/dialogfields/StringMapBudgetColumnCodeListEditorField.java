@@ -20,10 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.text.ParseException;
+
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
 
 public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEditorField
 {
@@ -36,5 +42,53 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEd
 	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
 		return new StringMapCodeListFieldComponent(getProject(), questionToUse, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, columnCount, this);
+	}
+	
+	public String getText()
+	{
+		try
+		{
+			return getStringMapAsString();
+		}
+		catch (Exception e)
+		{
+			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	private String getStringMapAsString() throws Exception
+	{
+		CodeList codes = new CodeList(super.getText());
+
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+		StringMap existingMap = tableSettings.getTableSettingsMap();
+		existingMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, codes.toString());
+		
+		return existingMap.toString();
+	}
+
+	public void setText(String stringMapAsString)
+	{
+		CodeList codes = createCodeListFromString(stringMapAsString);
+		super.setText(codes.toString());
+	}
+
+	private CodeList createCodeListFromString(String StringMapAsString)
+	{
+		try
+		{
+			StringMap stringMap = new StringMap(StringMapAsString);
+			String codeListAsString = stringMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+			
+			return new CodeList(codeListAsString);
+		}
+		catch(ParseException e)
+		{
+			EAM.errorDialog(EAM.text("Internal Error"));
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 }

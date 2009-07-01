@@ -42,7 +42,7 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 	public AbstractCodeListEditorField(Project projectToUse, int objectTypeToUse, BaseId objectIdToUse, String tagToUse, ChoiceQuestion questionToUse, int columnCount)
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse);
-		codeListEditor = createCodeListComponent(questionToUse, columnCount);
+		codeListEditor = new CodeListFieldComponent(questionToUse, columnCount, this);
 		component = new MiradiScrollPane(codeListEditor);
 		Dimension preferredSize = component.getPreferredSize();
 		final int ARBITRARY_REASONABLE_MAX_WIDTH = 800;
@@ -83,8 +83,9 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 		codeListEditor.setDisabledCodes(codesToDiable);
 	}
 	
+	//FIXME urgent - this method is no longer used and needs to be removed
 	abstract protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount);
 
-	protected AbstractCodeListComponent codeListEditor;
+	protected CodeListFieldComponent codeListEditor;
 	protected MiradiScrollPane component;
 }
