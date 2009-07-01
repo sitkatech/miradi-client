@@ -348,14 +348,13 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		CodeList budgetColumnCodes = getBudgetColumnCodesFromTableSettingsMap();
-		if (shouldShow(columnsToShow, budgetColumnCodes, ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
-		if (shouldShow(columnsToShow, budgetColumnCodes, ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
 		
-		if (shouldShow(columnsToShow, budgetColumnCodes, ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (shouldShow(ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
 		mainTable.reloadColumnSequences();
@@ -364,11 +363,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		repaint();
 	}
 
-	private boolean shouldShow(CodeList columnsToShow, CodeList budgetColumnCodes, String metaColumnCode)
+	private boolean shouldShow(String metaColumnCode) throws Exception
 	{
-		if (!columnsToShow.contains(metaColumnCode))
-			return false;
-				
+		CodeList budgetColumnCodes = getBudgetColumnCodesFromTableSettingsMap();
 		return budgetColumnCodes.contains(metaColumnCode);
 	}
 
