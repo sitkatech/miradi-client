@@ -22,7 +22,6 @@ package org.miradi.dialogfields;
 
 import java.text.ParseException;
 
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.StringMap;
@@ -54,11 +53,10 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEd
 
 	private String getStringMapAsString() throws Exception
 	{
-		CodeList codes = new CodeList(super.getText());
-
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		StringMap existingMap = tableSettings.getTableSettingsMap();
-		existingMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, codes.toString());
+		String superText = super.getText();
+		CodeList projectResourceRefs = new CodeList(superText);
+		StringMap existingMap = new StringMap(getProject().getObjectData(getORef(), getTag()));
+		existingMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, projectResourceRefs.toString());
 		
 		return existingMap.toString();
 	}
