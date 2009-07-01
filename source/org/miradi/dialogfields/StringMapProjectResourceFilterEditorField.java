@@ -41,7 +41,7 @@ public class StringMapProjectResourceFilterEditorField extends AbstractCodeListE
 	@Override
 	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new StringMapCodeListFieldComponent(getProject(), questionToUse, TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, columnCount, this);
+		return null;
 	}
 	
 	//FIXME urgent setText and getText need to deal with refLists instead of codeLists right now,  refs are stored

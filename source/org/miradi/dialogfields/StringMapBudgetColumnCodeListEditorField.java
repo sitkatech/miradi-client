@@ -41,7 +41,7 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEd
 	@Override
 	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
 	{
-		return new StringMapCodeListFieldComponent(getProject(), questionToUse, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, columnCount, this);
+		return null;
 	}
 	
 	public String getText()
