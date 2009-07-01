@@ -38,12 +38,6 @@ public class StringMapProjectResourceFilterEditorField extends AbstractCodeListE
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
 	}
 
-	@Override
-	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
-	{
-		return null;
-	}
-	
 	//FIXME urgent setText and getText need to deal with refLists instead of codeLists right now,  refs are stored
 	// as codes inside string map
 	public String getText()

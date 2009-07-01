@@ -38,12 +38,6 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEd
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse, 1);
 	}
 
-	@Override
-	protected AbstractCodeListComponent createCodeListComponent(ChoiceQuestion questionToUse, int columnCount)
-	{
-		return null;
-	}
-	
 	public String getText()
 	{
 		try
