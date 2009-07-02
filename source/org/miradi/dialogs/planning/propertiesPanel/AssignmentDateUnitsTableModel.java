@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
-import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -628,25 +627,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
 		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
-		filterProjectResources(timePeriodCosts, projectResourceRefsToRetain);
+		timePeriodCosts.filterProjectResources(projectResourceRefsToRetain);
 		
 		return calculateValue(timePeriodCosts);
 	}
 
-	//TODO move this into TPC
-	private void filterProjectResources(TimePeriodCosts timePeriodCosts, ORefSet projectResourceRefsToRetain)
-	{
-		if (projectResourceRefsToRetain.size() == 0)
-			return;
-		
-		Set<ORef> refsToBeRemoved = timePeriodCosts.getResourceRefSet();
-		refsToBeRemoved.removeAll(projectResourceRefsToRetain);
-		for(ORef projectResourceRefToRemove : refsToBeRemoved)
-		{
-			timePeriodCosts.removeResource(projectResourceRefToRemove);
-		}
-	}
-	
 	abstract public Color getCellBackgroundColor(int column);
 	
 	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts);
