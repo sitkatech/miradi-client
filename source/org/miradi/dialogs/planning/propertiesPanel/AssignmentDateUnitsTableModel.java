@@ -25,7 +25,6 @@ import java.util.Vector;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.DateUnitListData;
@@ -60,6 +59,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		super(projectToUse, providerToUse);
 
 		provider = providerToUse;
+		resourceRefFilers = new ORefSet();
 		restoreDateUnits();
 	}
 	
@@ -623,13 +623,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = baseObject.calculateTimePeriodCosts(dateUnit);
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
-		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
-		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
-		timePeriodCosts.filterProjectResources(projectResourceRefsToRetain);
+		timePeriodCosts.filterProjectResources(resourceRefFilers);
 		
 		return calculateValue(timePeriodCosts);
+	}
+	
+	public void setResourceFilters(ORefSet resourceRefFiltersToUse)
+	{
+		resourceRefFilers = resourceRefFiltersToUse;
 	}
 
 	abstract public Color getCellBackgroundColor(int column);
@@ -648,4 +649,5 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
+	private ORefSet resourceRefFilers;
 }
