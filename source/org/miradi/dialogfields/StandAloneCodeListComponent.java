@@ -27,7 +27,6 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -111,7 +110,12 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 	
 	private void clearProjectResourceRef(ResourceAssignment resourceAssignment) throws Exception
 	{
-		CommandSetObjectData clearProjectResourceRef = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString());
+		setResourceAssignmentResource(resourceAssignment, ORef.INVALID);
+	}
+
+	private void setResourceAssignmentResource(ResourceAssignment resourceAssignment, ORef resourceRef) throws Exception
+	{
+		CommandSetObjectData clearProjectResourceRef = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
 		getProject().executeCommand(clearProjectResourceRef);
 	}
 
@@ -130,18 +134,15 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			int oldResourceAssignmentsCount = getResourceAssignmentRefs().size();
+			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+			int oldResourceAssignmentsCount = oldResourceAssignmentRefs.size();
 			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList(); 	
-	
-			CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
-			getProject().executeCommand(createCommand);
 
-			ORef newResourceAssignmentRef = createCommand.getObjectRef();
-			CommandSetObjectData setResouce = new CommandSetObjectData(newResourceAssignmentRef, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
-			getProject().executeCommand(setResouce);
-			
-			Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, getResourceAssignmentTag());
-			getProject().executeCommand(appendCommand);
+			ResourceAssignment resourceAssignmentWithoutResource = findResourceAssignmentWithoutResource();
+			if (resourceAssignmentWithoutResource != null)
+				setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
+			else
+				createNewResourceAssignment(resourceRef);
 			
 			updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
 		}
@@ -149,6 +150,33 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		{
 			getProject().executeCommand(new CommandEndTransaction());
 		}
+	}
+
+	private ResourceAssignment findResourceAssignmentWithoutResource() throws Exception
+	{
+		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+		for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
+		{
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
+			ORef resourceRef = resourceAssignment.getResourceRef();
+			if (resourceRef.isInvalid())
+				return resourceAssignment;
+		}
+
+		return null;
+	}
+
+	private void createNewResourceAssignment(ORef resourceRef) throws Exception
+	{
+		CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
+		getProject().executeCommand(createCommand);
+
+		ORef newResourceAssignmentRef = createCommand.getObjectRef();
+		CommandSetObjectData setResouce = new CommandSetObjectData(newResourceAssignmentRef, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
+		getProject().executeCommand(setResouce);
+
+		Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, getResourceAssignmentTag());
+		getProject().executeCommand(appendCommand);
 	}
 
 	private void updateDividedDateUnitEffortList(int oldResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
