@@ -20,19 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import javax.swing.Icon;
+import javax.swing.JPanel;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.IconManager;
+import org.miradi.main.AppPreferences;
 
-public class AbstractFixedHeightDirectlyAboveTreeTablePanel extends PanelTitleLabel
+public class AbstractFixedHeightDirectlyAboveTreeTablePanel extends JPanel
 {
 	@Override
 	public Dimension getPreferredSize()
 	{
 		return new Dimension(0, getIconHeight() + ARBITRARY_MARGIN);
+	}
+	
+	@Override
+	public Color getBackground()
+	{
+		return AppPreferences.getDataPanelBackgroundColor();
 	}
 
 	protected int getIconHeight()

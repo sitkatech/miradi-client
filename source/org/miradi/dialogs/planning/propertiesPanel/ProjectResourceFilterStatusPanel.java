@@ -20,6 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.awt.BorderLayout;
+
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
@@ -33,14 +36,18 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	public ProjectResourceFilterStatusPanel(Project projectToUse)
 	{
 		project = projectToUse;
+		filterStatusLabel = new PanelTitleLabel();
+		updateStatusLabel();
+		setLayout(new BorderLayout());
+		add(filterStatusLabel);
 	}
 	
-	@Override
-	public String getText()
+	public void updateStatusLabel()
 	{
-		return getUpperLeftPanelText();
+		filterStatusLabel.setText(getUpperLeftPanelText());
+		filterStatusLabel.invalidate();
 	}
-	
+		
 	private String getUpperLeftPanelText()
 	{
 		ORefList projectResourceRefs = getProjectResourceFilterRefs();
@@ -54,9 +61,6 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	{
 		try
 		{
-			if (hasNotBeenConstructed())
-				return new ORefList();
-			
 			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 			String refs = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
@@ -69,11 +73,6 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 			return new ORefList();
 		}
 	}
-
-	private boolean hasNotBeenConstructed()
-	{
-		return getProject() ==  null;
-	}
 	
 	private Project getProject()
 	{
@@ -81,4 +80,5 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	}
 	
 	private Project project;
+	private PanelTitleLabel filterStatusLabel;
 }
