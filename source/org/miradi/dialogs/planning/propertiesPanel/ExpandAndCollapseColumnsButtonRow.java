@@ -32,9 +32,7 @@ import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.JScrollPane;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
-import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
@@ -43,7 +41,6 @@ public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirect
 	public ExpandAndCollapseColumnsButtonRow(TableWithExpandableColumnsInterface tableToSitAbove)
 	{
 		table = tableToSitAbove;
-		add(new PanelTitleLabel(IconManager.getActivityIcon()));
 		addMouseListener(new MouseClickHandler());
 	}
 	
