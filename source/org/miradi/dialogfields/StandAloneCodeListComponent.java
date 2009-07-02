@@ -27,6 +27,7 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -71,27 +72,59 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		try
 		{
 			DateUnitEffortList oldDateUnitEffortList = getAnExistingDateUnitEffortList();
-			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+			Vector<ResourceAssignment> resourceAssignmentsToDelete = extractResourceAssignmentsToDelete(selectedResourceRef);
+			if (isResourceAssignmentToBeCleared(resourceAssignmentsToDelete))
+				clearProjectResourceRef(resourceAssignmentsToDelete.get(0));
+			else
+				removeResourceAssignments(resourceAssignmentsToDelete);
 			
-			for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
-			{
-				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
-				ORef resourceRef = resourceAssignment.getResourceRef();
-				if (resourceRef.equals(selectedResourceRef))
-				{
-					Vector<Command> deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
-					getProject().executeCommandsWithoutTransaction(deleteResourceAssignment);
-				}
-			}
-			
-			updateDividedDateUnitEffortList(oldResourceAssignmentRefs.size(), oldDateUnitEffortList);
+			updateDividedDateUnitEffortList(getResourceAssignmentRefs().size(), oldDateUnitEffortList);
 		}
 		finally
 		{
 			getProject().executeEndTransaction();
 		}
 	}
+
+	private boolean isResourceAssignmentToBeCleared(Vector<ResourceAssignment> resourceAssignmentsToDelete) throws Exception
+	{
+		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+		if (oldResourceAssignmentRefs.size() != 1)
+			return false;
+		
+		return resourceAssignmentsToDelete.size() == 1;
+	}
+
+	private Vector<ResourceAssignment> extractResourceAssignmentsToDelete(ORef selectedResourceRef) throws Exception
+	{
+		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+		Vector<ResourceAssignment> resourceAssignmentsToDelete = new Vector();
+		for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
+		{
+			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
+			ORef resourceRef = resourceAssignment.getResourceRef();
+			if (resourceRef.equals(selectedResourceRef))
+				resourceAssignmentsToDelete.add(resourceAssignment);
+		}
+		return resourceAssignmentsToDelete;
+	}
 	
+	private void clearProjectResourceRef(ResourceAssignment resourceAssignment) throws Exception
+	{
+		CommandSetObjectData clearProjectResourceRef = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString());
+		getProject().executeCommand(clearProjectResourceRef);
+	}
+
+	private void removeResourceAssignments(Vector<ResourceAssignment> resourceAssignmentsToDelete) throws Exception
+	{
+		for (int index = 0; index < resourceAssignmentsToDelete.size(); ++index)
+		{
+			ResourceAssignment resourceAssignment = resourceAssignmentsToDelete.get(index);
+			Vector<Command> deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
+			getProject().executeCommandsWithoutTransaction(deleteResourceAssignment);
+		}
+	}
+
 	private void createResourceAssignment(ORef resourceRef) throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
