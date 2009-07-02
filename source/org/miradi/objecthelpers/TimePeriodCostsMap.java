@@ -194,7 +194,7 @@ public class TimePeriodCostsMap
 		return data.isEmpty();
 	}
 	
-	public Object size()
+	public int size()
 	{
 		return data.size();
 	}
