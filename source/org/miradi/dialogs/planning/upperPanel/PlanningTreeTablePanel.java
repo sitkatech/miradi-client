@@ -329,7 +329,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
-		filterStatusPanel.invalidate();
+		filterStatusPanel.updateStatusLabel();
 	
 		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
 	}
