@@ -74,6 +74,19 @@ public class TimePeriodCosts
 		expense = expense.add(expenseToAdd);
 	}
 	
+	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
+	{
+		if (projectResourceRefsToRetain.size() == 0)
+			return;
+		
+		Set<ORef> refsToBeRemoved = getResourceRefSet();
+		refsToBeRemoved.removeAll(projectResourceRefsToRetain);
+		for(ORef projectResourceRefToRemove : refsToBeRemoved)
+		{
+			removeResource(projectResourceRefToRemove);
+		}
+	}
+	
 	public void setExpense(OptionalDouble expenseToUse)
 	{
 		expense = expenseToUse;
