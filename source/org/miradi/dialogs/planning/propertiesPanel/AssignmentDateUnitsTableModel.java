@@ -628,18 +628,20 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
 		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
-		
-		if (projectResourceRefsToRetain.size() > 0)
-			removeProjectResources(timePeriodCosts, projectResourceRefsToRetain);
+		filterProjectResources(timePeriodCosts, projectResourceRefsToRetain);
 		
 		return calculateValue(timePeriodCosts);
 	}
 
-	private void removeProjectResources(TimePeriodCosts timePeriodCosts, ORefSet projectResourceRefsToRetain)
+	//TODO move this into TPC
+	private void filterProjectResources(TimePeriodCosts timePeriodCosts, ORefSet projectResourceRefsToRetain)
 	{
-		Set<ORef> existingRefs = timePeriodCosts.getResourceRefSet();
-		existingRefs.removeAll(projectResourceRefsToRetain);
-		for(ORef projectResourceRefToRemove : existingRefs)
+		if (projectResourceRefsToRetain.size() == 0)
+			return;
+		
+		Set<ORef> refsToBeRemoved = timePeriodCosts.getResourceRefSet();
+		refsToBeRemoved.removeAll(projectResourceRefsToRetain);
+		for(ORef projectResourceRefToRemove : refsToBeRemoved)
 		{
 			timePeriodCosts.removeResource(projectResourceRefToRemove);
 		}
