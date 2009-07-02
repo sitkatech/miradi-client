@@ -40,6 +40,8 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -317,6 +319,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		getPlanningModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
 
+		updateResourceFilters();
 		multiModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
@@ -334,6 +337,18 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
 	}
 	
+	private void updateResourceFilters() throws Exception
+	{
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
+		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
+		
+		workUnitsTableModel.setResourceFilters(projectResourceRefsToRetain);
+		expenseAmountsTableModel.setResourceFilters(projectResourceRefsToRetain);
+		budgetDetailsTableModel.setResourceFilters(projectResourceRefsToRetain);
+	}
+
 	private void updateRightSideTablePanels() throws Exception
 	{
 		multiModel.removeAllModels();
