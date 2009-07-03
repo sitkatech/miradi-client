@@ -84,6 +84,11 @@ public class OptionalDouble
 		return hasValue;
 	}
 	
+	public boolean hasNoValue()
+	{
+		return !hasValue();
+	}
+	
 	private Double getRawValue()
 	{
 		return optionalDouble;
