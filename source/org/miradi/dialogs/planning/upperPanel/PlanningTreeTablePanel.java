@@ -319,7 +319,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		getPlanningModel().updateColumnsToShow();
 		tree.rebuildTableCompletely();
 
-		updateResourceFilters();
+		updateResourceFilter();
 		multiModel.updateColumnsToShow();
 		
 		// NOTE: The following rebuild the tree but don't touch the columns
@@ -337,7 +337,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
 	}
 	
-	private void updateResourceFilters() throws Exception
+	private void updateResourceFilter() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
