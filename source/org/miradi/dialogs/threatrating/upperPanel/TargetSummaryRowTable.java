@@ -43,8 +43,7 @@ public class TargetSummaryRowTable extends AbstractTableWithChoiceItemRenderer
 	{
 		columnController = tableThatControlsColumns;
 		
-		reloadColumnSequences();
-		reloadColumnWidths();
+		updateToReflectNewColumns();
 		
 		model.fireTableDataChanged();
 	}

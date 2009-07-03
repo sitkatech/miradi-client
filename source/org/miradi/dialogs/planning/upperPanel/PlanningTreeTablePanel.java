@@ -362,8 +362,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (shouldShow(ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
-		mainTable.reloadColumnSequences();
-		mainTable.reloadColumnWidths();
+		mainTable.updateToReflectNewColumns();
 		validate();
 		repaint();
 	}

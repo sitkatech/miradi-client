@@ -107,7 +107,13 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		return getColumnName(tableColumn);
 	}
 	
-	public void reloadColumnSequences() throws Exception
+	public void updateToReflectNewColumns() throws Exception
+	{
+		reloadColumnSequences();
+		reloadColumnWidths();
+	}
+	
+	protected void reloadColumnSequences() throws Exception
 	{
 		if(columnSequenceSaver != null)
 			columnSequenceSaver.restoreColumnSequences();
@@ -115,7 +121,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		invalidate();
 	}
 
-	public void reloadColumnWidths()
+	protected void reloadColumnWidths()
 	{
 		if(columnWidthSaver != null)
 			columnWidthSaver.restoreColumnWidths();
