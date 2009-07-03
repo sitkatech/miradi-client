@@ -131,14 +131,10 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 
 			ResourceAssignment resourceAssignmentWithoutResource = findResourceAssignmentWithoutResource();
 			if (resourceAssignmentWithoutResource == null)
-			{
-				createNewResourceAssignment(resourceRef);
-				updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
-			}
-			else
-			{
-				setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
-			}
+				resourceAssignmentWithoutResource = createNewResourceAssignment(resourceRef);
+			
+			setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
+			updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -170,17 +166,16 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		return resourceAssignmentsToDelete;
 	}
 
-	private void createNewResourceAssignment(ORef resourceRef) throws Exception
+	private ResourceAssignment createNewResourceAssignment(ORef resourceRef) throws Exception
 	{
 		CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
 		getProject().executeCommand(createCommand);
 
 		ORef newResourceAssignmentRef = createCommand.getObjectRef();
-		CommandSetObjectData setResouce = new CommandSetObjectData(newResourceAssignmentRef, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
-		getProject().executeCommand(setResouce);
-
 		Command appendCommand = CreateAnnotationDoer.createAppendCommand(getParentObject(), newResourceAssignmentRef, getResourceAssignmentTag());
 		getProject().executeCommand(appendCommand);
+		
+		return ResourceAssignment.find(getProject(), newResourceAssignmentRef);
 	}
 
 	private void updateDividedDateUnitEffortList(int oldResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
