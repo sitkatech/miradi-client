@@ -131,7 +131,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 
 			ResourceAssignment resourceAssignmentWithoutResource = findResourceAssignmentWithoutResource();
 			if (resourceAssignmentWithoutResource == null)
-				resourceAssignmentWithoutResource = createNewResourceAssignment(resourceRef);
+				resourceAssignmentWithoutResource = createNewResourceAssignment();
 			
 			setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
 			updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
@@ -166,7 +166,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		return resourceAssignmentsToDelete;
 	}
 
-	private ResourceAssignment createNewResourceAssignment(ORef resourceRef) throws Exception
+	private ResourceAssignment createNewResourceAssignment() throws Exception
 	{
 		CommandCreateObject createCommand = new CommandCreateObject(ResourceAssignment.getObjectType());
 		getProject().executeCommand(createCommand);
