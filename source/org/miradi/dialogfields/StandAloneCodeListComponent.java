@@ -74,11 +74,14 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromResourceAssignment();
 			Vector<ResourceAssignment> resourceAssignmentsToDelete = extractResourceAssignments(selectedResourceRef);
 			if (isResourceAssignmentToBeCleared(resourceAssignmentsToDelete))
+			{
 				clearProjectResourceRef(resourceAssignmentsToDelete.get(0));
+			}
 			else
+			{
 				removeResourceAssignments(resourceAssignmentsToDelete);
-			
-			updateDividedDateUnitEffortList(oldResourceRefsSize, oldDateUnitEffortList);
+				updateDividedDateUnitEffortList(oldResourceRefsSize, oldDateUnitEffortList);
+			}
 		}
 		finally
 		{
@@ -141,11 +144,14 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 
 			ResourceAssignment resourceAssignmentWithoutResource = findResourceAssignmentWithoutResource();
 			if (resourceAssignmentWithoutResource != null)
+			{
 				setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
+			}
 			else
+			{
 				createNewResourceAssignment(resourceRef);
-			
-			updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
+				updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
+			}
 		}
 		finally
 		{
