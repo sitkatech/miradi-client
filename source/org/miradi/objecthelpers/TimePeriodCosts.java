@@ -106,17 +106,25 @@ public class TimePeriodCosts
 		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
 		for(ORef projectResourceRef : projectResourcRefs)
 		{
+			OptionalDouble costPerUnit = new OptionalDouble();
 			if (projectResourceRef.isValid())
-			{
-				ProjectResource projectResource = ProjectResource.find(projectToUse, projectResourceRef);
-				Double costPerUnit = projectResource.getCostPerUnit();
-				OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
-				OptionalDouble multiplyValue = units.multiplyValue(costPerUnit);
-				resourcesTotalCost = resourcesTotalCost.add(multiplyValue);
-			}
+				costPerUnit = getCostPerUnit(projectToUse, projectResourceRef);
+			
+			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
+			OptionalDouble multiplyValue = units.multiply(costPerUnit);
+			if (multiplyValue.hasNoValue())	
+				multiplyValue = units;
+			
+			resourcesTotalCost = resourcesTotalCost.add(multiplyValue);
 		}
 		
 		return resourcesTotalCost;
+	}
+
+	private OptionalDouble getCostPerUnit(Project projectToUse,	ORef projectResourceRef)
+	{
+		ProjectResource projectResource = ProjectResource.find(projectToUse, projectResourceRef);
+		return new OptionalDouble(projectResource.getCostPerUnit());
 	}
 	
 	public OptionalDouble calculateResourcesTotalUnits()
