@@ -91,11 +91,11 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 
 	private boolean isLastRemainingResourceAssignment(Vector<ResourceAssignment> resourceAssignmentsToDelete) throws Exception
 	{
-		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
-		if (oldResourceAssignmentRefs.size() != 1)
+		if (resourceAssignmentsToDelete.size() != 1)
 			return false;
 		
-		return resourceAssignmentsToDelete.size() == 1;
+		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+		return oldResourceAssignmentRefs.size() == 1;
 	}
 
 	private Vector<ResourceAssignment> extractResourceAssignments(ORef selectedResourceRef) throws Exception
