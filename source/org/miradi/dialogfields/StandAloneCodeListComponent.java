@@ -30,6 +30,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -98,20 +99,6 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		return oldResourceAssignmentRefs.size() == 1;
 	}
 
-	private Vector<ResourceAssignment> extractResourceAssignments(ORef selectedResourceRef) throws Exception
-	{
-		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
-		Vector<ResourceAssignment> resourceAssignmentsToDelete = new Vector();
-		for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
-		{
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
-			ORef resourceRef = resourceAssignment.getResourceRef();
-			if (resourceRef.equals(selectedResourceRef))
-				resourceAssignmentsToDelete.add(resourceAssignment);
-		}
-		return resourceAssignmentsToDelete;
-	}
-	
 	private void clearResourceRef(ResourceAssignment resourceAssignment) throws Exception
 	{
 		setResourceAssignmentResource(resourceAssignment, ORef.INVALID);
@@ -161,16 +148,26 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 
 	private ResourceAssignment findResourceAssignmentWithoutResource() throws Exception
 	{
+		ORef invalidResourceRef = ORef.createInvalidWithType(ProjectResource.getObjectType());
+		Vector<ResourceAssignment> resourceAssignmentsWithoutResource = extractResourceAssignments(invalidResourceRef);
+		if (resourceAssignmentsWithoutResource.size() == 0)
+			return null;
+		
+		return resourceAssignmentsWithoutResource.get(0);
+	}
+	
+	private Vector<ResourceAssignment> extractResourceAssignments(ORef selectedResourceRef) throws Exception
+	{
 		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
+		Vector<ResourceAssignment> resourceAssignmentsToDelete = new Vector();
 		for (int index = 0; index < oldResourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), oldResourceAssignmentRefs.get(index));
 			ORef resourceRef = resourceAssignment.getResourceRef();
-			if (resourceRef.isInvalid())
-				return resourceAssignment;
+			if (resourceRef.equals(selectedResourceRef))
+				resourceAssignmentsToDelete.add(resourceAssignment);
 		}
-
-		return null;
+		return resourceAssignmentsToDelete;
 	}
 
 	private void createNewResourceAssignment(ORef resourceRef) throws Exception
