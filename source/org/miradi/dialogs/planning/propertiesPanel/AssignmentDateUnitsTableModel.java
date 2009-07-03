@@ -59,7 +59,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		super(projectToUse, providerToUse);
 
 		provider = providerToUse;
-		resourceRefFilers = new ORefSet();
+		resourceRefsFiler = new ORefSet();
 		restoreDateUnits();
 	}
 	
@@ -623,14 +623,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = baseObject.calculateTimePeriodCosts(dateUnit);
-		timePeriodCosts.filterProjectResources(resourceRefFilers);
+		timePeriodCosts.filterProjectResources(resourceRefsFiler);
 		
 		return calculateValue(timePeriodCosts);
 	}
 	
 	public void setResourcesFilter(ORefSet resourceRefFiltersToUse)
 	{
-		resourceRefFilers = resourceRefFiltersToUse;
+		resourceRefsFiler = resourceRefFiltersToUse;
 	}
 
 	abstract public Color getCellBackgroundColor(int column);
@@ -649,5 +649,5 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
-	private ORefSet resourceRefFilers;
+	private ORefSet resourceRefsFiler;
 }
