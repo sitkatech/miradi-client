@@ -54,9 +54,9 @@ public class StringMapBudgetColumnCodeListEditorField extends AbstractCodeListEd
 	private String getStringMapAsString() throws Exception
 	{
 		String componentText = getComponentText();
-		CodeList projectResourceRefs = new CodeList(componentText);
+		CodeList budgetColumnCodes = new CodeList(componentText);
 		StringMap existingMap = new StringMap(getProject().getObjectData(getORef(), getTag()));
-		existingMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, projectResourceRefs.toString());
+		existingMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes.toString());
 		
 		return existingMap.toString();
 	}
