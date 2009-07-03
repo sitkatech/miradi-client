@@ -143,14 +143,14 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromResourceAssignment(); 	
 
 			ResourceAssignment resourceAssignmentWithoutResource = findResourceAssignmentWithoutResource();
-			if (resourceAssignmentWithoutResource != null)
-			{
-				setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
-			}
-			else
+			if (resourceAssignmentWithoutResource == null)
 			{
 				createNewResourceAssignment(resourceRef);
 				updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
+			}
+			else
+			{
+				setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
 			}
 		}
 		finally
