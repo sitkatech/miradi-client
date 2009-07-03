@@ -213,8 +213,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		ORefList subTaskRefs = baseObjectForRow.getSubTaskRefs();
 		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(subTaskRefs, getAssignmentsTag());
+		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
+		OptionalDouble totalCost = timePeriodCosts.calculateTotalCost(getProject());
 
-		return timePeriodCostsMap.size() > 0;
+		return totalCost.hasValue();
 	}
 
 	private Assignment getSingleAssignmentForBaseObject(BaseObject baseObjectForRow) throws Exception
