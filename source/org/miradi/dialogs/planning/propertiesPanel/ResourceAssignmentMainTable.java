@@ -50,7 +50,7 @@ public class ResourceAssignmentMainTable extends AbstractSummaryTable
 		
 		ProjectResource[] resources = getAllProjectResources();
 		ProjectResource invalidResource = new ProjectResource(getObjectManager(), BaseId.INVALID);
-		invalidResource.setData(ProjectResource.TAG_GIVEN_NAME, "(" + EAM.text("Not Specified" + ")"));
+		invalidResource.setData(ProjectResource.TAG_GIVEN_NAME, "(" + EAM.text("Not Specified") + ")");
 		createComboColumn(resources, tableColumn, invalidResource);
 	}
 	
