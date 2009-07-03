@@ -40,8 +40,6 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -337,16 +335,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
 	}
 	
-	private void updateResourceFilter() throws Exception
+	protected void updateResourceFilter() throws Exception
 	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
-		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
-		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
-		
-		workUnitsTableModel.setResourcesFilter(projectResourceRefsToRetain);
-		expenseAmountsTableModel.setResourcesFilter(projectResourceRefsToRetain);
-		budgetDetailsTableModel.setResourcesFilter(projectResourceRefsToRetain);
 	}
 
 	private void updateRightSideTablePanels() throws Exception
@@ -389,11 +379,16 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private CodeList getBudgetColumnCodesFromTableSettingsMap()	throws Exception
 	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkPlanModelIdentifier());
 		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 		String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 		
 		return new CodeList(codeListAsString);
+	}
+
+	protected String getWorkPlanModelIdentifier()
+	{
+		return WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER;
 	}
 
 	private PlanningTreeTableModel getPlanningModel()
@@ -420,6 +415,16 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return rowColumnProvider;
 	}
 	
+	protected WorkUnitsTableModel getWorkUnitsTableModel()
+	{
+		return workUnitsTableModel;
+	}
+	
+	protected BudgetDetailsTableModel getBudgetDetailsTableModel()
+	{
+		return budgetDetailsTableModel;
+	}
+	
 	private RowColumnProvider rowColumnProvider;
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
@@ -427,9 +432,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
-	private WorkUnitsTableModel workUnitsTableModel;
+	protected WorkUnitsTableModel workUnitsTableModel;
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
-	private BudgetDetailsTableModel budgetDetailsTableModel;
+	protected BudgetDetailsTableModel budgetDetailsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	private ProjectResourceFilterStatusPanel filterStatusPanel;

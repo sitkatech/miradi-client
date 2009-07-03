@@ -28,6 +28,9 @@ import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.TableSettings;
 
 public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -47,6 +50,28 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider();
 
 		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+	}
+	
+	protected void updateResourceFilter() throws Exception
+	{
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkPlanModelIdentifier());
+		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
+		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
+		
+		getWorkUnitsTableModel().setResourcesFilter(projectResourceRefsToRetain);
+		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
+	}
+	
+	protected String getWorkPlanModelIdentifier()
+	{
+		return getTabSpecificitModelIdentifier();
+	}
+
+	public static String getTabSpecificitModelIdentifier()
+	{
+		final String TAB_TAG = "Tab_Tag";
+		return WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER + TAB_TAG;
 	}
 
 	private static Class[] getButtonActions()
