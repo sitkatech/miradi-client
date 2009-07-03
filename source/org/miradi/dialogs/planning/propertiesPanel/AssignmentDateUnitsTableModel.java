@@ -63,6 +63,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		restoreDateUnits();
 	}
 	
+	//TODO Should not be using TableSettings in this model.  TableSettings should be found outside in the table and
+	//should be calling the model's restore passing in the dateUnits.
 	public void restoreDateUnits() throws Exception
 	{
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getUniqueTableModelIdentifier());
