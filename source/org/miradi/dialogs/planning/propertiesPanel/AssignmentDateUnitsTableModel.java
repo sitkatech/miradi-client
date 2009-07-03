@@ -628,7 +628,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return calculateValue(timePeriodCosts);
 	}
 	
-	public void setResourceFilters(ORefSet resourceRefFiltersToUse)
+	public void setResourcesFilter(ORefSet resourceRefFiltersToUse)
 	{
 		resourceRefFilers = resourceRefFiltersToUse;
 	}
