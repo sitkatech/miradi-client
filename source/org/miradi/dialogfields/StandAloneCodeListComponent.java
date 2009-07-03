@@ -75,7 +75,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			Vector<ResourceAssignment> resourceAssignmentsToDelete = extractResourceAssignments(selectedResourceRef);
 			if (isLastRemainingResourceAssignment(resourceAssignmentsToDelete))
 			{
-				clearProjectResourceRef(resourceAssignmentsToDelete.get(0));
+				clearResourceRef(resourceAssignmentsToDelete.get(0));
 			}
 			else
 			{
@@ -112,7 +112,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		return resourceAssignmentsToDelete;
 	}
 	
-	private void clearProjectResourceRef(ResourceAssignment resourceAssignment) throws Exception
+	private void clearResourceRef(ResourceAssignment resourceAssignment) throws Exception
 	{
 		setResourceAssignmentResource(resourceAssignment, ORef.INVALID);
 	}
