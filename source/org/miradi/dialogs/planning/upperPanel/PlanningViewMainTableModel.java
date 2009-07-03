@@ -23,12 +23,17 @@ import java.awt.Color;
 import java.util.Vector;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -55,6 +60,8 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
@@ -89,6 +96,64 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return AppPreferences.getWorkUnitsBackgroundColor();
 		
 		return null;
+	}
+	
+	@Override
+	public boolean isCellEditable(int row, int modelColumn)
+	{
+		String columnTag = getColumnTag(modelColumn);
+		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+			return isWhoCellEditable(row, modelColumn);
+		
+		return super.isCellEditable(row, modelColumn);
+	}
+	
+	private boolean isWhoCellEditable(int row, int modelColumn)
+	{
+		try
+		{
+			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
+			if (!AssignmentDateUnitsTableModel.canReferToAssignments(baseObjectForRow.getRef()))
+				return false;
+
+			if (doAnySubtasksHaveAnyWorkUnitData(baseObjectForRow))
+				return false;
+
+			return doAllResourceAssignmentsHaveIdenticalWorkUnits(row, modelColumn);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;		
+		}
+	}
+
+	private boolean doAnySubtasksHaveAnyWorkUnitData(BaseObject baseObjectForRow) throws Exception
+	{
+		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForSubTasks(baseObjectForRow.getSubTaskRefs(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
+		TimePeriodCosts wholeProjectTimePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
+		OptionalDouble totalSubtaskWorkUnitsForAllTimePeriods = wholeProjectTimePeriodCosts.calculateResourcesTotalUnits();
+
+		return totalSubtaskWorkUnitsForAllTimePeriods.hasValue();
+	}
+	
+	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(int row, int modelColumn) throws Exception
+	{
+			BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
+			ORefList resourceAssignments = baseObjectForRow.getResourceAssignmentRefs();
+			DateUnitEffortList expectedDateUnitEffortList = null;
+			for (int index = 0; index < resourceAssignments.size(); ++index)
+			{
+				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
+				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
+				if (expectedDateUnitEffortList == null)
+					expectedDateUnitEffortList = thisDateUnitEffortList;
+				
+				if (!expectedDateUnitEffortList.equals(thisDateUnitEffortList))
+					return false;
+			}
+			
+			return true;
 	}
 	
 	@Override
