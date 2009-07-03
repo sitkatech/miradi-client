@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
@@ -47,7 +47,7 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 		
 		try
 		{
-			TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+			TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificitModelIdentifier());
 			ObjectDataInputPanel codeListPanel = createEditorPanel(workPlanTableSettings);
 			codeListPanel.showModalDialog(getMainWindow(), EAM.text("Editor"));
 		}
