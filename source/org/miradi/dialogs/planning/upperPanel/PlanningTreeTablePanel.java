@@ -363,13 +363,13 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		if (shouldShow(ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(columnsToShow, ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
-		if (shouldShow(ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(columnsToShow, ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
 		
-		if (shouldShow(ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (shouldShow(columnsToShow, ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
 		mainTable.reloadColumnSequences();
@@ -378,8 +378,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		repaint();
 	}
 
-	private boolean shouldShow(String metaColumnCode) throws Exception
+	private boolean shouldShow(CodeList columnsToShow, String metaColumnCode) throws Exception
 	{
+		if (!columnsToShow.contains(metaColumnCode))
+			return false;
+		
 		CodeList budgetColumnCodes = getBudgetColumnCodesFromTableSettingsMap();
 		return budgetColumnCodes.contains(metaColumnCode);
 	}
