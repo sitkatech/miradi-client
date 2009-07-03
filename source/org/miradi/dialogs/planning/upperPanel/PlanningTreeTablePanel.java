@@ -344,9 +344,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
 		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
 		
-		workUnitsTableModel.setResourceFilters(projectResourceRefsToRetain);
-		expenseAmountsTableModel.setResourceFilters(projectResourceRefsToRetain);
-		budgetDetailsTableModel.setResourceFilters(projectResourceRefsToRetain);
+		workUnitsTableModel.setResourcesFilter(projectResourceRefsToRetain);
+		expenseAmountsTableModel.setResourcesFilter(projectResourceRefsToRetain);
+		budgetDetailsTableModel.setResourcesFilter(projectResourceRefsToRetain);
 	}
 
 	private void updateRightSideTablePanels() throws Exception
