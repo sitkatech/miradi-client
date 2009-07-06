@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAMTestCase;
@@ -29,10 +30,14 @@ import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.RowConfigurationQuestion;
+import org.miradi.questions.StaticQuestionManager;
 
 abstract public class TestPlanningTree extends EAMTestCase
 {
@@ -75,6 +80,17 @@ abstract public class TestPlanningTree extends EAMTestCase
 		
 		IdList activityIds = new IdList(Task.getObjectType(), new BaseId[] {activityId});
 		project.setObjectData(diagramStrategy2.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
+		
+		strategyResourceAssignmentRef = project.addResourceAssignment(getStrategy(), 1, 2001, 2001).getRef();
+		indicatorResourceAssignmentRef = project.addResourceAssignment(getIndicator(), 2, 2002, 2002).getRef();
+		subtaskResourceAssignmentRef = project.addResourceAssignment(getSubtask(), 4, 2004, 2004).getRef();
+	}
+	
+	public PlanningTreeRootNode createCompleteTree() throws Exception
+	{
+		ChoiceQuestion rowChoiceQuestion= new StaticQuestionManager().getQuestion(RowConfigurationQuestion.class);
+		PlanningTreeRootNode root = new PlanningTreeRootNode(project, rowChoiceQuestion.getAllCodes());
+		return root;
 	}
 	
 	public Goal getGoal()
@@ -127,6 +143,21 @@ abstract public class TestPlanningTree extends EAMTestCase
 		return projectMetadata;
 	}
 	
+	public ResourceAssignment getStrategyResourceAssignment()
+	{
+		return ResourceAssignment.find(project, strategyResourceAssignmentRef);
+	}
+	
+	public ResourceAssignment getIndicatorResourceAssignment()
+	{
+		return ResourceAssignment.find(project, indicatorResourceAssignmentRef);
+	}
+	
+	public ResourceAssignment getSubtaskResourceAssignment()
+	{
+		return ResourceAssignment.find(project, subtaskResourceAssignmentRef);
+	}
+	
 	ProjectForTesting project;
 	ProjectMetadata projectMetadata;
 	DiagramFactor diagramStrategy1;		
@@ -143,4 +174,8 @@ abstract public class TestPlanningTree extends EAMTestCase
 	BaseId taskId;
 	BaseId activityId;
 	BaseId subtaskId;
+	
+	private ORef strategyResourceAssignmentRef;
+	private ORef indicatorResourceAssignmentRef;
+	private ORef subtaskResourceAssignmentRef;
 }

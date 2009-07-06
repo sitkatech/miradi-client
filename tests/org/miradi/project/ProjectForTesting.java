@@ -1219,7 +1219,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return MultiCalendar.createFromIsoDateString(date);
 	}
 
-	public void addResourceAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception
+	public ResourceAssignment addResourceAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception
 	{
 		ResourceAssignment assignment = createResourceAssignment();
 		ProjectResource projectResource = createAndPopulateProjectResource();
@@ -1235,6 +1235,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		IdList currentAssignmentIdList = baseObject.getResourceAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
 		baseObject.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+		
+		return assignment;
 	}
 
 	public static MultiCalendar createStartYear(int startYear)
