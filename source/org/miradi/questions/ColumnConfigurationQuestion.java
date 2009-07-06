@@ -49,9 +49,6 @@ public class ColumnConfigurationQuestion extends StaticChoiceQuestion
 				createChoiceItem(BaseObject.PSEUDO_TAG_WHEN_TOTAL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
-				createChoiceItem(META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(META_BUDGET_DETAIL_COLUMN_CODE),
 				createChoiceItem(Factor.TAG_COMMENTS),
 		};
 	}
