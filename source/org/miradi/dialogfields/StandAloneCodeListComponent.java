@@ -74,29 +74,14 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			int oldResourceRefsSize = getResourceAssignmentRefs().size();
 			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromResourceAssignment();
 			Vector<ResourceAssignment> resourceAssignmentsToDelete = extractResourceAssignments(selectedResourceRef);
-			if (isLastRemainingResourceAssignment(resourceAssignmentsToDelete))
-			{
-				clearResourceRef(resourceAssignmentsToDelete.get(0));
-			}
-			else
-			{
-				removeResourceAssignments(resourceAssignmentsToDelete);
-				updateDividedDateUnitEffortList(oldResourceRefsSize, oldDateUnitEffortList);
-			}
+			
+			removeResourceAssignments(resourceAssignmentsToDelete);
+			updateDividedDateUnitEffortList(oldResourceRefsSize, oldDateUnitEffortList);
 		}
 		finally
 		{
 			getProject().executeEndTransaction();
 		}
-	}
-
-	private boolean isLastRemainingResourceAssignment(Vector<ResourceAssignment> resourceAssignmentsToDelete) throws Exception
-	{
-		if (resourceAssignmentsToDelete.size() != 1)
-			return false;
-		
-		ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
-		return oldResourceAssignmentRefs.size() == 1;
 	}
 
 	private void clearResourceRef(ResourceAssignment resourceAssignment) throws Exception
