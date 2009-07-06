@@ -40,7 +40,6 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
@@ -367,32 +366,14 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		repaint();
 	}
 
-	private boolean shouldShow(String metaColumnCode) throws Exception
+	protected boolean shouldShow(String metaColumnCode) throws Exception
 	{
-		if (!getColumnsToShow().contains(metaColumnCode))
-			return false;
-		
-		CodeList budgetColumnCodes = getBudgetColumnCodesFromTableSettingsMap();
-		return budgetColumnCodes.contains(metaColumnCode);
+		return getColumnsToShow().contains(metaColumnCode);
 	}
 
-	private CodeList getColumnsToShow() throws Exception
+	protected CodeList getColumnsToShow() throws Exception
 	{
 		return getRowColumnProvider().getColumnListToShow();
-	}
-
-	private CodeList getBudgetColumnCodesFromTableSettingsMap()	throws Exception
-	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkPlanModelIdentifier());
-		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
-		String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-		
-		return new CodeList(codeListAsString);
-	}
-
-	protected String getWorkPlanModelIdentifier()
-	{
-		return WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER;
 	}
 
 	private PlanningTreeTableModel getPlanningModel()
