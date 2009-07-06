@@ -36,9 +36,9 @@ import org.miradi.utils.OptionalDouble;
 
 public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 {
-	public BudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
+	public BudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse);
+		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
 	@Override
@@ -69,7 +69,7 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{
-		return UNIQUE_TABLE_MODEL_IDENTIFIER;
+		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
 	protected boolean isAssignmentForModel(Assignment assignment)

@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -39,7 +40,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		abstractSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
 		abstractSummaryTable = new ResourceAssignmentMainTable(getMainWindow(), abstractSummaryTableModel);
 		
-		assignmentDateUnitsTableModel = new WorkUnitsTableModel(getProject(), abstractSummaryTableModel);
+		assignmentDateUnitsTableModel = new WorkUnitsTableModel(getProject(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		assignmentDateUnitsTable = new AssignmentWorkUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	

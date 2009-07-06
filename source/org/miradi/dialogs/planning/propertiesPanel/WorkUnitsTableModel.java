@@ -38,9 +38,9 @@ import org.miradi.utils.OptionalDouble;
 
 public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 {
-	public WorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
+	public WorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
-		super(projectToUse, providerToUse);
+		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
 	@Override
@@ -101,7 +101,7 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{
-		return UNIQUE_TABLE_MODEL_IDENTIFIER;
+		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
 	@Override
