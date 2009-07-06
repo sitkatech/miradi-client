@@ -115,8 +115,12 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		for (int index = 0; index < resourceAssignmentsToDelete.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = resourceAssignmentsToDelete.get(index);
-			Vector<Command> deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
-			getProject().executeCommandsWithoutTransaction(deleteResourceAssignment);
+			clearResourceRef(resourceAssignment);
+			if (getResourceAssignmentRefs().size() > 1)
+			{
+				Vector<Command> deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
+				getProject().executeCommandsWithoutTransaction(deleteResourceAssignment);
+			}
 		}
 	}
 
@@ -163,6 +167,7 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 			if (resourceRef.equals(selectedResourceRef))
 				resourceAssignmentsToDelete.add(resourceAssignment);
 		}
+		
 		return resourceAssignmentsToDelete;
 	}
 
