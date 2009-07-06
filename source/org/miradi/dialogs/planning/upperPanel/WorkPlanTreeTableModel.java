@@ -27,7 +27,7 @@ public class WorkPlanTreeTableModel extends PlanningTreeTableModel
 {
 	public WorkPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, RowManager.getWorkPlanRows(), ColumnManager.getWorkPlanColumns());
+		super(project, RowManager.getWorkPlanRows(project), ColumnManager.getWorkPlanColumns(project));
 	}
 
 	@Override

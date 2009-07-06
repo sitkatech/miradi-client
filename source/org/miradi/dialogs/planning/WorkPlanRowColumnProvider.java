@@ -19,26 +19,53 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
-import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProvider implements RowColumnProvider
 {
+	public WorkPlanRowColumnProvider(Project projectToUse)
+	{
+		project = projectToUse;
+	}
+	
 	public CodeList getColumnListToShow()
 	{
-		return new CodeList(new String[] {
+		CodeList columnCodesToShow = new CodeList(new String[] {
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				BaseObject.PSEUDO_TAG_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
-				ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE,
-				ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE,
-				ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE,
 				});
+		
+		columnCodesToShow.addAll(getBudgetColumnCodesFromTableSettingsMap());
+		
+		return columnCodesToShow;
+	}
+	
+	private CodeList getBudgetColumnCodesFromTableSettingsMap()
+	{
+		try
+		{
+			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificitModelIdentifier());
+			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+			String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+
+			return new CodeList(codeListAsString);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 
 	public CodeList getRowListToShow()
@@ -52,4 +79,11 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 				Task.OBJECT_NAME,
 				});
 	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }

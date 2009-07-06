@@ -38,6 +38,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
+import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 public class ColumnManager
@@ -173,9 +174,9 @@ public class ColumnManager
 		return new MonitoringRowColumnProvider().getColumnListToShow();
 	}
 
-	public static CodeList getWorkPlanColumns()
+	public static CodeList getWorkPlanColumns(Project project)
 	{
-		return new WorkPlanRowColumnProvider().getColumnListToShow();
+		return new WorkPlanRowColumnProvider(project).getColumnListToShow();
 	}
 
 	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)

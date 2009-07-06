@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Goal;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ViewData;
+import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 public class RowManager
@@ -41,9 +42,9 @@ public class RowManager
 		return new MonitoringRowColumnProvider().getRowListToShow();
 	}
 
-	public static CodeList getWorkPlanRows()
+	public static CodeList getWorkPlanRows(Project project)
 	{
-		return new WorkPlanRowColumnProvider().getRowListToShow();
+		return new WorkPlanRowColumnProvider(project).getRowListToShow();
 	}
 
 	public static CodeList getVisibleRowsForSingleType(ViewData viewData)

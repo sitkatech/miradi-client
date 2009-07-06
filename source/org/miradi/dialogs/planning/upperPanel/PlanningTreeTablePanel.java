@@ -366,12 +366,12 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		repaint();
 	}
 
-	protected boolean shouldShow(String metaColumnCode) throws Exception
+	private boolean shouldShow(String metaColumnCode) throws Exception
 	{
 		return getColumnsToShow().contains(metaColumnCode);
 	}
 
-	protected CodeList getColumnsToShow() throws Exception
+	private CodeList getColumnsToShow() throws Exception
 	{
 		return getRowColumnProvider().getColumnListToShow();
 	}

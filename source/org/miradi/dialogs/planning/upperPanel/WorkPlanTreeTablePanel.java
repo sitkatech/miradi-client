@@ -30,9 +30,7 @@ import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.TableSettings;
-import org.miradi.utils.CodeList;
 
 public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -49,7 +47,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	{
 		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider();
+		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider(mainWindowToUse.getProject());
 
 		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
 	}
@@ -64,26 +62,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		getWorkUnitsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 	}
-	
-	protected boolean shouldShow(String metaColumnCode) throws Exception
-	{
-		boolean superShouldShow = super.shouldShow(metaColumnCode);
-		if (!superShouldShow)
-			return false;
 		
-		CodeList budgetColumnCodes = getBudgetColumnCodesFromTableSettingsMap();
-		return budgetColumnCodes.contains(metaColumnCode);
-	}
-	
-	private CodeList getBudgetColumnCodesFromTableSettingsMap()	throws Exception
-	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificitModelIdentifier());
-		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
-		String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-		
-		return new CodeList(codeListAsString);
-	}
-
 	public static String getTabSpecificitModelIdentifier()
 	{
 		final String TAB_TAG = "Tab_Tag";
