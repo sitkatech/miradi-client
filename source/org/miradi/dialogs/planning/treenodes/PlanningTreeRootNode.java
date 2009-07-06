@@ -21,7 +21,6 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -41,16 +40,6 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 	
-	public TreeTableNode getChild(int index)
-	{
-		return children.get(index);
-	}
-
-	public int getChildCount()
-	{
-		return children.size();
-	}
-	
 	@Override
 	public int getType()
 	{
@@ -60,11 +49,6 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	public BaseObject getObject()
 	{
 		return project.getMetadata();
-	}
-
-	public ORef getObjectReference()
-	{
-		return getObject().getRef();
 	}
 
 	public Object getValueAt(int column)
