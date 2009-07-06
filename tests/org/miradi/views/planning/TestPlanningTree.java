@@ -113,6 +113,11 @@ abstract public class TestPlanningTree extends EAMTestCase
 		return (Strategy) project.findObject(diagramStrategy2.getWrappedORef());
 	}
 	
+	public Task getActivity()
+	{
+		return Task.find(project, new ORef(Task.getObjectType(), activityId));
+	}
+	
 	public Indicator getIndicator()
 	{
 		return (Indicator) project.findObject(new ORef(Indicator.getObjectType(), indicatorId));
