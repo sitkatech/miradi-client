@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
@@ -112,7 +111,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		throw new Exception("Can't call rebuild on " + getClass().getCanonicalName());
 	}
 	
-	public void addChildren(Collection<AbstractPlanningTreeNode> nodesToAdd)
+	public void addChildren(Vector<AbstractPlanningTreeNode> nodesToAdd)
 	{
 		children.addAll(nodesToAdd);
 	}
@@ -408,6 +407,11 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		}
 		
 		return potentialChildIndicatorRefs;
+	}
+	
+	public CodeList getVisibleRows()
+	{
+		return visibleRows;
 	}
 
 	protected Project project;
