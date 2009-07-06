@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.actions.ActionCreateExpense;
 import org.miradi.actions.ActionDeleteExpense;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -37,7 +38,7 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 		abstractSummaryTableModel = new ExpenseAssignmentMainTableModel(getProject());
 		abstractSummaryTable = new ExpenseSummaryTable(getMainWindow(), abstractSummaryTableModel);
 		
-		assignmentDateUnitsTableModel = new ExpenseAmountsTableModel(getProject(), abstractSummaryTableModel);
+		assignmentDateUnitsTableModel = new ExpenseAmountsTableModel(getProject(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		assignmentDateUnitsTable = new AssignmentExpensesTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	

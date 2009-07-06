@@ -87,9 +87,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		multiModel = new PlanningTreeMultiTableModel(treeToUse.getUniqueTableIdentifier());
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
-		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse);
-		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse);
-		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), treeToUse);
+		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
+		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
+		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);

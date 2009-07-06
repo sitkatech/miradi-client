@@ -54,12 +54,14 @@ import org.miradi.utils.OptionalDouble;
 
 abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstractTreeTableSyncedTableModel implements ColumnTagProvider
 {
-	public AssignmentDateUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse) throws Exception
+	public AssignmentDateUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse);
 
 		provider = providerToUse;
 		resourceRefsFilter = new ORefSet();
+		treeModelIdentifierAsTag = treeModelIdentifierAsTagToUse;
+		
 		restoreDateUnits();
 	}
 	
@@ -634,6 +636,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		resourceRefsFilter = resourceRefFiltersToUse;
 	}
+	
+	protected String getTreeModelIdentifierAsTag()
+	{
+		return treeModelIdentifierAsTag;
+	}
 
 	abstract public Color getCellBackgroundColor(int column);
 	
@@ -652,4 +659,5 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
 	private ORefSet resourceRefsFilter;
+	private String treeModelIdentifierAsTag;
 }
