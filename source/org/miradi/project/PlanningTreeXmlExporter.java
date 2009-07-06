@@ -52,7 +52,7 @@ public class PlanningTreeXmlExporter
 	{
 		toXml(out, new StrategicRowColumnProvider(), "StrategicPlanTree");
 		toXml(out, new MonitoringRowColumnProvider(), "MonitoringPlanTree");
-		toXml(out, new WorkPlanRowColumnProvider(), "WorkPlanTree");
+		toXml(out, new WorkPlanRowColumnProvider(getProject()), "WorkPlanTree");
 	}
 	
 	private void toXml(UnicodeWriter out, RowColumnProvider rowColumnProvider, String treeName) throws Exception
