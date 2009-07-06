@@ -22,6 +22,7 @@ package org.miradi.views.planning;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Task;
 import org.miradi.utils.CodeList;
 
@@ -39,6 +40,20 @@ public class TestPlanningTreeActivityNode extends TestPlanningTree
 		assertEquals("wrong type returned?", Task.getObjectType(), taskRefs.get(0).getObjectType());
 	}
 
+	public void testAssignments() throws Exception
+	{
+		PlanningTreeRootNode root = createCompleteTree();
+		ORefSet refsInTree = root.getAllRefsInTree();
+		assertTrue("Didn't add assignment to tree?", refsInTree.contains(getSubtaskResourceAssignment().getRef()));
+	}
+
+	public void testSubtasks() throws Exception
+	{
+		PlanningTreeRootNode root = createCompleteTree();
+		ORefSet refsInTree = root.getAllRefsInTree();
+		assertTrue("Didn't add subtask to tree?", refsInTree.contains(getSubtask().getRef()));
+	}
+
 	public void testMerging() throws Exception
 	{
 		CodeList rowCodes = new CodeList();
@@ -50,6 +65,7 @@ public class TestPlanningTreeActivityNode extends TestPlanningTree
 		assertEquals(Task.getObjectType(), firstChild.getType());
 		assertEquals(2, firstChild.getProportionShares());
 		assertFalse("Full proportion task is allocated?", firstChild.areBudgetValuesAllocated());
+
 	}
 
 }

@@ -47,15 +47,15 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	{
 		// NOTE: IF is for Speed optimization
 		if(visibleRows.contains(ResourceAssignment.OBJECT_NAME))
-			children.addAll(buildResourceAssignmentNodes(task.getResourceAssignmentRefs()));
+			addChildren(buildResourceAssignmentNodes(task.getResourceAssignmentRefs()));
 		
 		// NOTE: IF is for Speed optimization
 		if(visibleRows.contains(ExpenseAssignment.OBJECT_NAME))
-			children.addAll(buildExpenseAssignmentNodes(task.getExpenseAssignmentRefs()));
+			addChildren(buildExpenseAssignmentNodes(task.getExpenseAssignmentRefs()));
 
 		// NOTE: IF is for Speed optimization
 		if(visibleRows.contains(Task.OBJECT_NAME))
-			children.addAll(buildTaskNodes(task.getSubtaskRefs()));
+			addChildren(buildTaskNodes(task.getSubtaskRefs()));
 	}
 
 	private Vector<AbstractPlanningTreeNode> buildTaskNodes(ORefList subtaskRefs) throws Exception

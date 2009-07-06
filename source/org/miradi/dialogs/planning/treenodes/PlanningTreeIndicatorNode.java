@@ -40,8 +40,8 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 
 	public void rebuild() throws Exception
 	{
-		children.addAll(buildResourceAssignmentNodes(indicator.getResourceAssignmentRefs()));
-		children.addAll(buildExpenseAssignmentNodes(indicator.getExpenseAssignmentRefs()));
+		addChildren(buildResourceAssignmentNodes(indicator.getResourceAssignmentRefs()));
+		addChildren(buildExpenseAssignmentNodes(indicator.getExpenseAssignmentRefs()));
 		createAndAddTaskNodes(indicator.getMethodRefs());
 		addSortedMeasurementChildren();
 	}
@@ -56,7 +56,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 		}
 		
 		Collections.sort(measurementChildren, new NodeSorter());
-		children.addAll(measurementChildren);
+		addChildren(measurementChildren);
 	}
 
 	public BaseObject getObject()

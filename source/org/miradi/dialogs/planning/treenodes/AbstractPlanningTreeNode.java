@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.treenodes;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Vector;
@@ -29,18 +30,18 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -111,6 +112,11 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		throw new Exception("Can't call rebuild on " + getClass().getCanonicalName());
 	}
 	
+	public void addChildren(Collection<AbstractPlanningTreeNode> nodesToAdd)
+	{
+		children.addAll(nodesToAdd);
+	}
+	
 	public void setVisibleRowCodes(CodeList visibleRowsToUse)
 	{
 		visibleRows = visibleRowsToUse;
@@ -129,7 +135,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		return getObject().combineShortLabelAndLabel();
 	}
 
-	protected ORefSet getAllRefsInTree()
+	public ORefSet getAllRefsInTree()
 	{
 		ORefSet refs = new ORefSet();
 		for(int i = 0; i < children.size(); ++i)
