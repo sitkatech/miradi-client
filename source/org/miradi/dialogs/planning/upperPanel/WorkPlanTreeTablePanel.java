@@ -30,7 +30,9 @@ import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objects.TableSettings;
+import org.miradi.utils.CodeList;
 
 public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -54,7 +56,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	
 	protected void updateResourceFilter() throws Exception
 	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getWorkPlanModelIdentifier());
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificitModelIdentifier());
 		String projectResourceFilterRefsAsString = tableSettings.getTableSettingsMap().get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 		ORefList projectResourceFilterRefs = new ORefList(projectResourceFilterRefsAsString);
 		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
@@ -63,9 +65,23 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 	}
 	
-	protected String getWorkPlanModelIdentifier()
+	protected boolean shouldShow(String metaColumnCode) throws Exception
 	{
-		return getTabSpecificitModelIdentifier();
+		boolean superShouldShow = super.shouldShow(metaColumnCode);
+		if (!superShouldShow)
+			return false;
+		
+		CodeList budgetColumnCodes = getBudgetColumnCodesFromTableSettingsMap();
+		return budgetColumnCodes.contains(metaColumnCode);
+	}
+	
+	private CodeList getBudgetColumnCodesFromTableSettingsMap()	throws Exception
+	{
+		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificitModelIdentifier());
+		StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
+		String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		
+		return new CodeList(codeListAsString);
 	}
 
 	public static String getTabSpecificitModelIdentifier()
