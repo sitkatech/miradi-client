@@ -113,9 +113,33 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	
 	public void addChildren(Vector<AbstractPlanningTreeNode> nodesToAdd)
 	{
-		children.addAll(nodesToAdd);
+		for(AbstractPlanningTreeNode node : nodesToAdd)
+			addChild(node);
+	}
+
+	private void addChild(AbstractPlanningTreeNode node)
+	{
+		ORefSet existingGrandChildRefs = getGrandChildRefs();
+		if(!existingGrandChildRefs.contains(node.getObjectReference()))
+			children.add(node);
 	}
 	
+	private ORefSet getGrandChildRefs()
+	{
+		ORefSet grandchildRefs = new ORefSet();
+		for(int childIndex = 0; childIndex < getChildCount(); ++childIndex)
+		{
+			TreeTableNode child = getChild(childIndex);
+			for(int grandchildIndex = 0; grandchildIndex < child.getChildCount(); ++grandchildIndex)
+			{
+				TreeTableNode grandchild = child.getChild(grandchildIndex);
+				grandchildRefs.add(grandchild.getObjectReference());
+			}
+		}
+		
+		return grandchildRefs;
+	}
+
 	public void setVisibleRowCodes(CodeList visibleRowsToUse)
 	{
 		visibleRows = visibleRowsToUse;
@@ -306,7 +330,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		for(int i = 0; i < taskRefs.size(); ++i)
 		{
 			ORef taskRef = taskRefs.get(i);
-			children.add(new PlanningTreeTaskNode(project, taskRef, visibleRows));
+			addChild(new PlanningTreeTaskNode(project, taskRef, visibleRows));
 		}
 	}
 	
@@ -339,7 +363,8 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 
 	protected void createAndAddChild(ORef refToAdd, DiagramObject diagram) throws Exception
 	{
-		children.add(createChildNode(refToAdd, diagram));
+		AbstractPlanningTreeNode childNode = createChildNode(refToAdd, diagram);
+		addChild(childNode);
 	}
 
 	protected AbstractPlanningTreeNode createChildNode(ORef refToAdd, DiagramObject diagram) throws Exception
