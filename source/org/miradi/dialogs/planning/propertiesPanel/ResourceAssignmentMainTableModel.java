@@ -213,6 +213,9 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	{
 		ResourceAssignment resourceAssignment = castToAssignment(baseObjectToUse);
 		ORef fundingSourceRef = resourceAssignment.getFundingSourceRef();
+		if (fundingSourceRef.isInvalid())
+			return createInvalidFundingSource(getObjectManager());
+			
 		return FundingSource.find(getProject(), fundingSourceRef);
 	}
 
@@ -221,6 +224,9 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	{
 		ResourceAssignment assignment = castToAssignment(baseObjectToUse);
 		ORef accountingCodeRef = assignment.getAccountingCodeRef();
+		if (accountingCodeRef.isInvalid())
+			return createInvalidAccountingCode(getObjectManager());
+		
 		return AccountingCode.find(getProject(), accountingCodeRef);
 	}
 	
@@ -277,6 +283,16 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 			EAM.logException(e);
 			return null;
 		}
+	}
+	
+	public static FundingSource createInvalidFundingSource(ObjectManager objectManager)
+	{
+		return new FundingSource(objectManager, BaseId.INVALID);
+	}
+	
+	public static AccountingCode createInvalidAccountingCode(ObjectManager objectManager)
+	{
+		return new AccountingCode(objectManager, BaseId.INVALID);
 	}
 
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
