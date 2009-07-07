@@ -69,7 +69,7 @@ public class FundingSource extends BaseObject
 		String result = getLabel();
 		if(result.length() > 0)
 			return result;
-		return EAM.text("Label|(Undefined Accounting Code)");
+		return EAM.text("Label|(Undefined Funding Source)");
 	}
 	
 	public static boolean is(int objectType)
