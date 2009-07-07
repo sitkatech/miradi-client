@@ -112,11 +112,6 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 	}
 	
-	public boolean shouldHideNonEditableExpandedRowData()
-	{
-		return false;
-	}
-	
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
 }

@@ -618,12 +618,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return getDateUnit(column) != null;
 	}
 	
-	@Override
-	public boolean shouldHideNonEditableExpandedRowData()
-	{
-		return true;
-	}
-	
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = baseObject.calculateTimePeriodCosts(dateUnit);
