@@ -38,7 +38,6 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.TableCellPreferredHeightProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -115,15 +114,6 @@ abstract public class EditableObjectTable extends TableWithColumnWidthAndSequenc
 		final int EMPTY_SPACE = 0;
 		BaseObject[]  comboContent = new BaseObject[content.length + 1];
 		comboContent[EMPTY_SPACE] = invalidObject;
-
-		try
-		{
-			invalidObject.setLabel(" ");
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-		}
 	
 		System.arraycopy(content, 0, comboContent, 1, content.length);	
 		return comboContent;

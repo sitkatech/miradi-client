@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.ids.BaseId;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.ProjectResource;
@@ -49,8 +47,7 @@ public class ResourceAssignmentMainTable extends AbstractSummaryTable
 			return;
 		
 		ProjectResource[] resources = getAllProjectResources();
-		ProjectResource invalidResource = new ProjectResource(getObjectManager(), BaseId.INVALID);
-		invalidResource.setData(ProjectResource.TAG_GIVEN_NAME, "(" + EAM.text("Not Specified") + ")");
+		ProjectResource invalidResource = ResourceAssignmentMainTableModel.createInvalidResource(getObjectManager());
 		createComboColumn(resources, tableColumn, invalidResource);
 	}
 	

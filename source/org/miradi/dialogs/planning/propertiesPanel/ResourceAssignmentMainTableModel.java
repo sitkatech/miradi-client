@@ -27,6 +27,7 @@ import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
+import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 
 public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
@@ -139,6 +140,9 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	private ProjectResource findProjectResource(ResourceAssignment resourceAssignment)
 	{
 		ORef resourceRef = resourceAssignment.getResourceRef();
+		if (resourceRef.isInvalid())
+			return createInvalidResource(getObjectManager());
+		
 		return ProjectResource.find(getProject(), resourceRef);
 	}
 		
@@ -259,6 +263,22 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		return UNIQUE_MODEL_IDENTIFIER;
 	}
 				
+	public static ProjectResource createInvalidResource(ObjectManager objectManager)
+	{
+		try
+		{
+			ProjectResource invalidResource = new ProjectResource(objectManager, BaseId.INVALID);
+			invalidResource.setData(ProjectResource.TAG_GIVEN_NAME, "(" + EAM.text("Not Specified") + ")");
+	
+			return invalidResource;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return null;
+		}
+	}
+
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
 	
 	private static final int COLUMN_COUNT = 5;
