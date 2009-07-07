@@ -22,8 +22,8 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.BorderLayout;
 
+import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.StringMap;
@@ -61,7 +61,7 @@ public class ProjectResourceFilterStatusPanel extends AbstractFixedHeightDirectl
 	{
 		try
 		{
-			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificitModelIdentifier());
+			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
 			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 			String refs = tableSettingsMap.get(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
 

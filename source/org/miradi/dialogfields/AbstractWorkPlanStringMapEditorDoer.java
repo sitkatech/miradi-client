@@ -47,7 +47,7 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 		
 		try
 		{
-			TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificitModelIdentifier());
+			TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
 			ObjectDataInputPanel codeListPanel = createEditorPanel(workPlanTableSettings);
 			codeListPanel.showModalDialog(getMainWindow(), EAM.text("Editor"));
 		}
@@ -55,6 +55,11 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 		{
 			throw new CommandFailedException(e);
 		}
+	}
+
+	public static String getTabSpecificModelIdentifier()
+	{
+		return WorkPlanTreeTablePanel.getTabSpecificitModelIdentifier();
 	}
 
 	abstract protected ObjectDataInputPanel createEditorPanel(TableSettings workPlanTableSettings);
