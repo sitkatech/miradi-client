@@ -36,7 +36,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	{
 		super.setUp();
 		
-		dateUnit2008 = getProject().createSingleYearDateUnit(2008);	
+		dateUnit2008 = createSingleYearDateUnit(2008);	
 	}
 	
 	public void testBasics() throws Exception
@@ -49,8 +49,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(500.0, projectResource.getRef(), 10.0);
 		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(600.0, projectResource.getRef(), 20.0);
 		
-		DateUnit dateUnit1 = getProject().createSingleYearDateUnit(2008);
-		DateUnit dateUnit2 = getProject().createSingleYearDateUnit(2009);
+		DateUnit dateUnit1 = createSingleYearDateUnit(2008);
+		DateUnit dateUnit2 = createSingleYearDateUnit(2009);
 		timePeriodCostsMap.add(dateUnit1, timePeriodCosts1);
 		timePeriodCostsMap.add(dateUnit2, timePeriodCosts2);
 		
@@ -81,7 +81,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	public void testMergeOverlayWithOverlappingDateUnits() throws Exception
 	{
 		ProjectResource projectResourcePaul = createProjectResource();
-		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
+		DateUnit dateUnit2007 = createSingleYearDateUnit(2007);
 		DateUnit smallerDateUnit = dateUnit2007.getSubDateUnits().get(0);
 
 		TimePeriodCostsMap timePeriodCostsMap2007 = createTimePeriodCostsMap(dateUnit2007, 22.0, projectResourcePaul, 12.0);
@@ -106,8 +106,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 
 	public void testMergeOverlay() throws Exception
 	{	
-		DateUnit dateUnit2006 = getProject().createSingleYearDateUnit(2006);
-		DateUnit dateUnit2007 = getProject().createSingleYearDateUnit(2007);
+		DateUnit dateUnit2006 = createSingleYearDateUnit(2006);
+		DateUnit dateUnit2007 = createSingleYearDateUnit(2007);
 		DateUnit dateUnit2007Q1 = new DateUnit("2007Q1");
 		
 		ProjectResource projectResourcePaul = createProjectResource();
@@ -277,7 +277,32 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("map was not filtered properly?", 1, projectResourceRefs.size());
 		assertTrue("wrong project resource in map?", projectResourceRefs.contains(projectResourceJill.getRef()));
 	}
+	
+	//FIXME urgent - finish this test and add verify calls
+	public void NONWORKINGtestMergeNonConflictingExpenses() throws Exception
+	{
+		DateUnit dateUnitTotal = new DateUnit("");
+		DateUnit dateUnit2007 = createSingleYearDateUnit(2007);
+		DateUnit dateUnit2002 = createSingleYearDateUnit(2002);
 		
+		verifyMergeNonConflicting(dateUnitTotal, 2.0, 1.0, dateUnit2002, 1.0, 1.0);
+		verifyMergeNonConflicting(dateUnit2007, 1.0, 1.0, dateUnit2002, 2.0, 2.0);
+		verifyMergeNonConflicting(dateUnit2007, 1.0, 1.0, dateUnitTotal, 2.0, 2.0);
+	}
+	
+	private void verifyMergeNonConflicting(DateUnit strategyDateUnit, double strategyExpense, double expectedExpenseForStrategyDateUnit, DateUnit activityDateUnit, double activityExpense, double expectedExpenseForActivityDateUnit)
+	{
+		TimePeriodCostsMap strategyTimePeriodCostsMap = createTimePeriodCostsMap(strategyDateUnit, strategyExpense);
+		TimePeriodCostsMap activityTimePeriodCostsMap = createTimePeriodCostsMap(activityDateUnit, activityExpense);
+		
+		activityTimePeriodCostsMap.mergeNonConflicting(strategyTimePeriodCostsMap);
+		TimePeriodCosts timePeriodCostsForTotal = activityTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(strategyDateUnit);
+		assertEquals("wrong expense after merge?", expectedExpenseForStrategyDateUnit, timePeriodCostsForTotal.getExpense());
+			
+		TimePeriodCosts timePeriodCostsFor2002 = activityTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(activityDateUnit);
+		assertEquals("wrong expense after merge?", expectedExpenseForActivityDateUnit, timePeriodCostsFor2002.getExpense());
+	}
+
 	private TimePeriodCostsMap createTimePeriodCostsMap(double expense, ProjectResource projectResource, double units)
 	{
 		return createTimePeriodCostsMap(dateUnit2008, expense, projectResource, units);
@@ -308,8 +333,8 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	
 	private TimePeriodCostsMap createTimePeriodCostsMap(DateUnit dateUnitToUse, double expense)
 	{
-		TimePeriodCosts timePeriodCosts = getProject().createTimePeriodCosts(expense);
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
+		TimePeriodCosts timePeriodCosts = getProject().createTimePeriodCosts(expense);
 		timePeriodCostsMap.add(dateUnitToUse, timePeriodCosts);
 		
 		return timePeriodCostsMap;
@@ -321,6 +346,11 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		getProject().fillCostPerUnitField(projectResource, "10");
 		return projectResource;
 	}	
+
+	private DateUnit createSingleYearDateUnit(int year) throws Exception
+	{
+		return getProject().createSingleYearDateUnit(year);
+	}
 
 	private DateUnit dateUnit2008;
 }
