@@ -21,7 +21,6 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import java.awt.Color;
 
-import org.miradi.ids.BaseId;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.AccountingCode;
@@ -59,7 +58,7 @@ public class AbstractSummaryTable extends AbstractComponentTable
 			return;
 		
 		AccountingCode[] accountingCodes = getObjectManager().getAccountingCodePool().getAllAccountingCodes();
-		AccountingCode invalidAccountingCode = new AccountingCode(getObjectManager(), BaseId.INVALID);
+		AccountingCode invalidAccountingCode = ResourceAssignmentMainTableModel.createInvalidAccountingCode(getObjectManager());
 		createComboColumn(accountingCodes, tableColumn, invalidAccountingCode);
 	}
 	
@@ -70,7 +69,7 @@ public class AbstractSummaryTable extends AbstractComponentTable
 			return;
 
 		FundingSource[] fundingSources = getObjectManager().getFundingSourcePool().getAllFundingSources();
-		FundingSource invalidFundintSource = new FundingSource(getObjectManager(), BaseId.INVALID);
+		FundingSource invalidFundintSource = ResourceAssignmentMainTableModel.createInvalidFundingSource(getObjectManager());
 		createComboColumn(fundingSources, tableColumn, invalidFundintSource);
 	}
 	
