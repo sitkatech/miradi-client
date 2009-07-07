@@ -33,7 +33,7 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
-import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
 public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
@@ -89,7 +89,7 @@ public class WorkUnitsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
+		return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 	}
 	
 	@Override

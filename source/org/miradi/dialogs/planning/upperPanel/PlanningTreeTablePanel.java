@@ -51,7 +51,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
@@ -352,13 +352,13 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
 			multiModel.addModel(futureStatusModel);
 		
-		if (shouldShow(ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
 		
-		if (shouldShow(ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		if (shouldShow(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
 		
-		if (shouldShow(ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
 		
 		mainTable.updateToReflectNewColumns();
