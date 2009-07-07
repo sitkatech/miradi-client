@@ -56,9 +56,9 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
 
-public class RowConfigurationQuestion extends StaticChoiceQuestion
+public class CustomPlanningRowsQuestion extends StaticChoiceQuestion
 {
-	public RowConfigurationQuestion()
+	public CustomPlanningRowsQuestion()
 	{
 		super(getRowChoices());
 	}
