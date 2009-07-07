@@ -511,12 +511,12 @@ abstract public class BaseObject
 		return mergedTimePeriodCostsMap;	
 	}
 	
-	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList baseObjectRefs, String tag) throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodCostsMapForSubTasks(ORefList subTaskRefs, String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
-		for (int index = 0; index < baseObjectRefs.size(); ++index)
+		for (int index = 0; index < subTaskRefs.size(); ++index)
 		{
-			BaseObject baseObject = BaseObject.find(getProject(), baseObjectRefs.get(index));
+			BaseObject baseObject = BaseObject.find(getProject(), subTaskRefs.get(index));
 			timePeriodCostsMap.mergeOverlay(baseObject.getTimePeriodCostsMap(tag));
 		}
 		
