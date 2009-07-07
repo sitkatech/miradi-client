@@ -36,7 +36,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.RowConfigurationQuestion;
+import org.miradi.questions.CustomPlanningRowsQuestion;
 import org.miradi.questions.StaticQuestionManager;
 
 abstract public class TestPlanningTree extends EAMTestCase
@@ -88,7 +88,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 	
 	public PlanningTreeRootNode createCompleteTree() throws Exception
 	{
-		ChoiceQuestion rowChoiceQuestion= new StaticQuestionManager().getQuestion(RowConfigurationQuestion.class);
+		ChoiceQuestion rowChoiceQuestion= new StaticQuestionManager().getQuestion(CustomPlanningRowsQuestion.class);
 		PlanningTreeRootNode root = new PlanningTreeRootNode(project, rowChoiceQuestion.getAllCodes());
 		return root;
 	}

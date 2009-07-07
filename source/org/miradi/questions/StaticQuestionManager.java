@@ -82,7 +82,7 @@ public class StaticQuestionManager
 		addQuestion(new RtfLegendObjectsQuestion());
 		addQuestion(new TncProjectSharingQuestion());
 		addQuestion(new TextBoxZOrderQuestion());
-		addQuestion(new RowConfigurationQuestion());
+		addQuestion(new CustomPlanningRowsQuestion());
 		addQuestion(new CustomPlanningColumnsQuestion());
 		addQuestion(new TncOrganizationalPrioritiesQuestion());
 		addQuestion(new TncProjectPlaceTypeQuestion());
