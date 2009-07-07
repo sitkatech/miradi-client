@@ -32,7 +32,7 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.Project;
-import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
 public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
@@ -58,7 +58,7 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
+		return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 	}
 	
 	@Override

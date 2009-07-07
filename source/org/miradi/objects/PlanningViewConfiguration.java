@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.RowConfigurationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
@@ -97,7 +97,7 @@ public class PlanningViewConfiguration extends BaseObject
 	{
 		super.clear();
 		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION, getQuestion(RowConfigurationQuestion.class));
-		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION, getQuestion(ColumnConfigurationQuestion.class));
+		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION, getQuestion(CustomPlanningColumnsQuestion.class));
 		
 		addField(TAG_ROW_CONFIGURATION, rowConfigurationList);
 		addField(TAG_COL_CONFIGURATION, colConfigurationList);

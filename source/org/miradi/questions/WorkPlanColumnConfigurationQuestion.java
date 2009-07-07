@@ -32,14 +32,14 @@ public class WorkPlanColumnConfigurationQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] 
 		{
-				createChoiceItem(ColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(ColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
-				createChoiceItem(ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
+				createChoiceItem(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE),
+				createChoiceItem(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE),
+				createChoiceItem(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE),
 		};
 	}
 	
 	private static ChoiceItem createChoiceItem(String tag)
 	{
-		return ColumnConfigurationQuestion.createChoiceItem(tag);
+		return CustomPlanningColumnsQuestion.createChoiceItem(tag);
 	}
 }

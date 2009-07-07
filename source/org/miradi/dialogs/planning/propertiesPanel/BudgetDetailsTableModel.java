@@ -31,7 +31,7 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
-import org.miradi.questions.ColumnConfigurationQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
 public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
@@ -57,7 +57,7 @@ public class BudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return ColumnConfigurationQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
+		return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
 	}
 	
 	@Override

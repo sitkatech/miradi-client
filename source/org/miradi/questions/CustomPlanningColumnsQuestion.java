@@ -27,9 +27,9 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 
-public class ColumnConfigurationQuestion extends StaticChoiceQuestion
+public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 {
-	public ColumnConfigurationQuestion()
+	public CustomPlanningColumnsQuestion()
 	{
 		super(getColumnChoiceItems());
 	}
