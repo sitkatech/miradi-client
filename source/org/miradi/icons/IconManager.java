@@ -118,6 +118,9 @@ public class IconManager
 		
 		if (factor.isGroupBox())
 			return new GroupBoxIcon();
+		
+		if (factor.isHumanWelfareTarget())
+			return new HumanWelfareTargetIcon();	
 
 		throw new RuntimeException("type is factor but there is no icon for it was found:"  + factor.getType());
 	}
