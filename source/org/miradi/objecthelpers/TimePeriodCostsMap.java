@@ -60,13 +60,13 @@ public class TimePeriodCostsMap
 		return data.containsKey(dateUnitToUse);
 	}
 	
-	public void mergeAdd(TimePeriodCostsMap timePeriodCostsMapToMerge)
+	public void mergeAll(TimePeriodCostsMap timePeriodCostsMapToMerge)
 	{
 		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.data.keySet();
 		for(DateUnit dateUnitToMerge : keysToMerge)
 		{
 			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.data.get(dateUnitToMerge);
-			mergeAddTimePeriodCosts(dateUnitToMerge, timePeriodCostsToMerge);
+			mergeAllTimePeriodCosts(dateUnitToMerge, timePeriodCostsToMerge);
 		}
 	}
 		
@@ -112,7 +112,7 @@ public class TimePeriodCostsMap
 		return false;
 	}
 	
-	private void mergeAddTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
+	private void mergeAllTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
