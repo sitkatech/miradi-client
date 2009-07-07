@@ -493,8 +493,8 @@ abstract public class BaseObject
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeAdd(expenseAssignmentsTimePeriodCostsMap);
-		mergedTimePeriodCostsMap.mergeAdd(resourceAssignmentsTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.mergeAll(expenseAssignmentsTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.mergeAll(resourceAssignmentsTimePeriodCostsMap);
 		
 		return mergedTimePeriodCostsMap;
 	}
@@ -505,8 +505,8 @@ abstract public class BaseObject
 		TimePeriodCostsMap assignmentTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeAdd(subTaskTimePeriodCosts);
-		mergedTimePeriodCostsMap.mergeAdd(assignmentTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.mergeAll(subTaskTimePeriodCosts);
+		mergedTimePeriodCostsMap.mergeAll(assignmentTimePeriodCostsMap);
 		
 		return mergedTimePeriodCostsMap;	
 	}
@@ -530,7 +530,7 @@ abstract public class BaseObject
 		for(int i = 0; i < assignmentRefs.size(); ++i)
 		{
 			BaseObject assignment = BaseObject.find(getObjectManager(), assignmentRefs.get(i));
-			timePeriodCostsMap.mergeAdd(assignment.getTimePeriodCostsMap(tag));
+			timePeriodCostsMap.mergeAll(assignment.getTimePeriodCostsMap(tag));
 		}
 		
 		return timePeriodCostsMap;

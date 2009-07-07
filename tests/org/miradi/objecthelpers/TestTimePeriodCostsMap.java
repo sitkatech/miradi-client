@@ -246,7 +246,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	private void verifyMergeAdd(double expectedExpense, double expectedResourcesCost, TimePeriodCostsMap destinationTimePeriodCostsMap, TimePeriodCostsMap timePeriodCostsMapToBeMerged, DateUnit dateUnitForTimePeriodCosts) throws Exception
 	{
 		double expectedTotalCost = expectedExpense + expectedResourcesCost;
-		destinationTimePeriodCostsMap.mergeAdd(timePeriodCostsMapToBeMerged);
+		destinationTimePeriodCostsMap.mergeAll(timePeriodCostsMapToBeMerged);
 		TimePeriodCosts  foundTimePeriodCosts = destinationTimePeriodCostsMap.calculateTimePeriodCosts(dateUnitForTimePeriodCosts);
 		assertEquals("wrong expense after merge?", expectedExpense, foundTimePeriodCosts.getExpense().getValue());
 		assertEquals("wrong total cost after merge?", expectedTotalCost, foundTimePeriodCosts.calculateTotalCost(getProject()).getValue());
