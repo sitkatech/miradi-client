@@ -69,6 +69,11 @@ public class TimePeriodCostsMap
 			mergeAllTimePeriodCosts(dateUnitToMerge, timePeriodCostsToMerge);
 		}
 	}
+	
+	public void mergeNonConflicting(TimePeriodCostsMap timePeriodCostsMapToMerge)
+	{
+		//FIXME urgent - finish implementing this and its test, then use it instead of mergeOverlay	
+	}
 		
 	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
 	{
