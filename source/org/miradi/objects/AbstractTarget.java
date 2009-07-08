@@ -27,6 +27,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.ChoiceData;
+import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
@@ -306,6 +307,23 @@ abstract public class AbstractTarget extends Factor
 	}
 	
 	@Override
+	public IdList getGoals()
+	{
+		return goals.getIdList();
+	}
+	
+	@Override
+	public ORefList getGoalRefs()
+	{
+		return new ORefList(Goal.getObjectType(), goals.getIdList());
+	}
+	
+	public void setGoals(IdList goalsToUse)
+	{
+		goals.set(goalsToUse);
+	}
+	
+	@Override
 	protected void clear()
 	{
 		super.clear();
@@ -313,6 +331,7 @@ abstract public class AbstractTarget extends Factor
 		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
 		currentStatusJustification = new StringData(TAG_CURRENT_STATUS_JUSTIFICATION);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
+		goals = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
 			
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
@@ -322,7 +341,8 @@ abstract public class AbstractTarget extends Factor
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
 		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
 		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
-		
+		addField(TAG_GOAL_IDS, goals);
+
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
 		addField(PSEUDO_TAG_VIABILITY_MODE_VALUE, viabiltyModeLabel);
@@ -341,7 +361,8 @@ abstract public class AbstractTarget extends Factor
 	private ChoiceData viabiltyMode;
 	private StringData currentStatusJustification;
 	private ORefListData subTargetRefs;
-	
+	private IdListData goals;
+
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
 	private PseudoQuestionData viabiltyModeLabel;

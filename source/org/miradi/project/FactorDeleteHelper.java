@@ -229,7 +229,6 @@ public class FactorDeleteHelper
 	
 	public void deleteAnnotations(Factor factorToDelete) throws Exception
 	{
-		deleteAnnotationIds(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
 		deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
 		deleteAnnotationIds(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
 		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
@@ -241,6 +240,7 @@ public class FactorDeleteHelper
 		
 		if (factorToDelete.isTarget())
 		{
+			deleteAnnotationIds(factorToDelete, ObjectType.GOAL, factorToDelete.TAG_GOAL_IDS);
 			deleteAnnotationRefs(factorToDelete, Stress.getObjectType(), Target.TAG_STRESS_REFS);
 			deleteAnnotationIds(factorToDelete, KeyEcologicalAttribute.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		}
