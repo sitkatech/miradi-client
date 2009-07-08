@@ -36,7 +36,9 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	{
 		super.setUp();
 		
-		dateUnit2008 = createSingleYearDateUnit(2008);	
+		dateUnitTotal = new DateUnit("");
+		dateUnit2008 = createSingleYearDateUnit(2008);
+		dateUnit2007 = createSingleYearDateUnit(2007);
 	}
 	
 	public void testBasics() throws Exception
@@ -81,7 +83,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	public void testMergeOverlayWithOverlappingDateUnits() throws Exception
 	{
 		ProjectResource projectResourcePaul = createProjectResource();
-		DateUnit dateUnit2007 = createSingleYearDateUnit(2007);
 		DateUnit smallerDateUnit = dateUnit2007.getSubDateUnits().get(0);
 
 		TimePeriodCostsMap timePeriodCostsMap2007 = createTimePeriodCostsMap(dateUnit2007, 22.0, projectResourcePaul, 12.0);
@@ -107,7 +108,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	public void testMergeOverlay() throws Exception
 	{	
 		DateUnit dateUnit2006 = createSingleYearDateUnit(2006);
-		DateUnit dateUnit2007 = createSingleYearDateUnit(2007);
 		DateUnit dateUnit2007Q1 = new DateUnit("2007Q1");
 		
 		ProjectResource projectResourcePaul = createProjectResource();
@@ -281,9 +281,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	//FIXME urgent - finish this TESTS and add verify calls
 	public void NONWORKINGtestMergeNonConflictingExpenses() throws Exception
 	{
-		DateUnit dateUnitTotal = new DateUnit("");
-		DateUnit dateUnit2007 = createSingleYearDateUnit(2007);
-		
 		TimePeriodCostsMap strategyTimePeriodCostsMap = createTimePeriodCostsMap(dateUnitTotal, 2.0);
 		TimePeriodCostsMap activityTimePeriodCostsMap = createTimePeriodCostsMap(dateUnit2007, 1.0);
 		activityTimePeriodCostsMap.mergeNonConflicting(strategyTimePeriodCostsMap);
@@ -311,7 +308,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	
 	public void NONWORKINGtestMergeNonConflictingSameResourceSameYear() throws Exception
 	{
-		DateUnit dateUnit2007 = createSingleYearDateUnit(2007);
 		ProjectResource fred = createProjectResource();
 		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 1.0);
 		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 2.0);
@@ -370,4 +366,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	}
 
 	private DateUnit dateUnit2008;
+	private DateUnit dateUnit2007;
+	private DateUnit dateUnitTotal;
 }
