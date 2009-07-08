@@ -75,10 +75,6 @@ public class TestFactor extends TestCaseWithProject
 
 	public void testJson() throws Exception
 	{
-		IdList goals = new IdList(Goal.getObjectType());
-		goals.add(new BaseId(2));
-		goals.add(new BaseId(5));
-		
 		IdList objectives = new IdList(Objective.getObjectType());
 		objectives.add(new BaseId(7));
 		objectives.add(new BaseId(9));
@@ -92,7 +88,6 @@ public class TestFactor extends TestCaseWithProject
 		factor.setLabel("JustAName");
 		factor.setComment("This is a great comment");
 		factor.setIndicators(indicators);
-		factor.setGoals(goals);
 		factor.setObjectives(objectives);
 		Cause got = (Cause)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
 		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
@@ -101,10 +96,27 @@ public class TestFactor extends TestCaseWithProject
 		assertEquals("wrong comment?", factor.getComment(), got.getComment());
 		assertEquals("wrong indicator count?", factor.getIndicatorIds().size(), got.getIndicatorIds().size());
 		assertEquals("wrong indicators?", factor.getIndicatorIds(), got.getIndicatorIds());
-		assertEquals("wrong goals count?", factor.getGoals().size(), got.getGoals().size());
-		assertEquals("wrong goals?", factor.getGoals(), got.getGoals());
 		assertEquals("wrong objectives count?", factor.getObjectiveIds().size(), got.getObjectiveIds().size());
 		assertEquals("wrong objectives?", factor.getObjectiveIds(), got.getObjectiveIds());
+	}
+	
+	public void testTargetJson() throws Exception
+	{
+		IdList goals = new IdList(Goal.getObjectType());
+		goals.add(new BaseId(2));
+		goals.add(new BaseId(5));
+		
+		FactorId factorId = new FactorId(2342);
+		Target factor = new Target(getObjectManager(), factorId);
+		factor.setLabel("JustAName");
+		factor.setComment("This is a great comment");
+		factor.setGoals(goals);
+		Target got = (Target)Factor.createFromJson(getObjectManager(), factor.getType(), factor.toJson());
+		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
+		assertEquals("wrong id?", factor.getId(), got.getId());
+		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
+		assertEquals("wrong goals count?", factor.getGoals().size(), got.getGoals().size());
+		assertEquals("wrong goals?", factor.getGoals(), got.getGoals());
 	}
 	
 	public void testIsShared() throws Exception

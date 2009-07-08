@@ -163,17 +163,12 @@ abstract public class Factor extends BaseObject
 	
 	public IdList getGoals()
 	{
-		return goals.getIdList();
+		return new IdList(Goal.getObjectType());
 	}
 	
 	public ORefList getGoalRefs()
 	{
-		return new ORefList(Goal.getObjectType(), goals.getIdList());
-	}
-	
-	public void setGoals(IdList goalsToUse)
-	{
-		goals.set(goalsToUse);
+		return new ORefList();
 	}
 	
 	public static void ensureFactor(ORef factorRef)
@@ -522,7 +517,6 @@ abstract public class Factor extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
-		goals = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
 		keyEcologicalAttributes = new IdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 		multiLineGoals = new PseudoStringData(PSEUDO_TAG_GOALS);
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
@@ -537,7 +531,6 @@ abstract public class Factor extends BaseObject
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INDICATOR_IDS, indicators);
 		addField(TAG_OBJECTIVE_IDS, objectives);
-		addField(TAG_GOAL_IDS, goals);
 		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
 		addField(PSEUDO_TAG_GOALS, multiLineGoals);
 		addField(PSEUDO_TAG_OBJECTIVES, multiLineObjectives);
@@ -584,7 +577,6 @@ abstract public class Factor extends BaseObject
 
 	private IdListData indicators;
 	private IdListData objectives;
-	private IdListData goals;
 	protected IdListData keyEcologicalAttributes;
 	
 	PseudoStringData multiLineGoals;
