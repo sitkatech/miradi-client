@@ -326,6 +326,7 @@ abstract public class AbstractTarget extends Factor
 		currentStatusJustification = new StringData(TAG_CURRENT_STATUS_JUSTIFICATION);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
 		goalIds = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
+		keyEcologicalAttributes = new IdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 			
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
@@ -336,6 +337,7 @@ abstract public class AbstractTarget extends Factor
 		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
 		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
 		addField(TAG_GOAL_IDS, goalIds);
+		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
 
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
@@ -356,6 +358,7 @@ abstract public class AbstractTarget extends Factor
 	private StringData currentStatusJustification;
 	private ORefListData subTargetRefs;
 	private IdListData goalIds;
+	private IdListData keyEcologicalAttributes;
 
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
