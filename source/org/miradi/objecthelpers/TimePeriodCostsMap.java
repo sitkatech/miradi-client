@@ -138,7 +138,7 @@ public class TimePeriodCostsMap
 		}
 		else
 		{
-			existing.setExpense(timePeriodCostsToMerge.getExpense());
+			existing.replaceEmptyExpenseValue(timePeriodCostsToMerge.getExpense());
 		}
 	}
 	
