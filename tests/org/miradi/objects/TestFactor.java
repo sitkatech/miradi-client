@@ -51,7 +51,7 @@ public class TestFactor extends TestCaseWithProject
 		String[] tags = {
 			Factor.TAG_COMMENTS,
 			Factor.TAG_INDICATOR_IDS,
-			Factor.TAG_GOAL_IDS,
+			AbstractTarget.TAG_GOAL_IDS,
 			Factor.TAG_OBJECTIVE_IDS,
 		};
 

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
@@ -69,6 +70,6 @@ public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotation
 	
 	public String getAnnotationListTag()
 	{
-		return Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
+		return AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
 	}
 }

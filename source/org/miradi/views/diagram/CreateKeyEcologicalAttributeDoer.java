@@ -48,6 +48,6 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 	
 	public String getAnnotationListTag()
 	{
-		return Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
+		return AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
 	}
 }

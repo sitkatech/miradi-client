@@ -125,8 +125,8 @@ public class TestObjectFindOwnerAndFindReferrer extends EAMTestCase
 	{
 		ORef targetRef = project.createObject(ObjectType.TARGET);
 		BaseId indicatorId = project.addItemToFactorList(targetRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		BaseId goalId = project.addItemToFactorList(targetRef, ObjectType.GOAL, Factor.TAG_GOAL_IDS);
-		BaseId keaId = project.addItemToFactorList(targetRef, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		BaseId goalId = project.addItemToFactorList(targetRef, ObjectType.GOAL, AbstractTarget.TAG_GOAL_IDS);
+		BaseId keaId = project.addItemToFactorList(targetRef, ObjectType.KEY_ECOLOGICAL_ATTRIBUTE, AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 		
 		//----------- start test -----------
 		
