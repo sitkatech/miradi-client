@@ -100,7 +100,7 @@ abstract public class FactorCell extends EAMGraphCell
 		{
 			header = EAM.text("Goals:");
 			detailsTag = Goal.TAG_FULL_TEXT;
-			bullets = new ORefList(Goal.getObjectType(), factor.getGoals());
+			bullets = factor.getGoalRefs();
 		}
 		else if(isPointInObjective(pointRelativeToCellOrigin))
 		{

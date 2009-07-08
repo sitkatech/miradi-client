@@ -115,8 +115,8 @@ public class TestFactor extends TestCaseWithProject
 		assertEquals("wrong type?", factor.getNodeType(), got.getNodeType());
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
-		assertEquals("wrong goals count?", factor.getGoals().size(), got.getGoals().size());
-		assertEquals("wrong goals?", factor.getGoals(), got.getGoals());
+		assertEquals("wrong goals count?", factor.getGoalRefs().size(), got.getGoalRefs().size());
+		assertEquals("wrong goals?", factor.getGoalRefs(), got.getGoalRefs());
 	}
 	
 	public void testIsShared() throws Exception

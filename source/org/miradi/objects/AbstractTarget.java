@@ -80,7 +80,7 @@ abstract public class AbstractTarget extends Factor
 		switch(objectType)
 		{
 			case ObjectType.GOAL: 
-				list.addAll(new ORefList(objectType, getGoals()));
+				list.addAll(getGoalRefs());
 				break;
 			case ObjectType.KEY_ECOLOGICAL_ATTRIBUTE: 
 				list.addAll(new ORefList(objectType, getKeyEcologicalAttributes()));
