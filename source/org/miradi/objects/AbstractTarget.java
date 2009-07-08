@@ -315,7 +315,7 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public ORefList getGoalRefs()
 	{
-		return new ORefList(Goal.getObjectType(), goalIds.getIdList());
+		return goalIds.getRefList();
 	}
 	
 	public void setGoals(IdList goalsToUse)
