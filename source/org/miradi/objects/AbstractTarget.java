@@ -307,12 +307,6 @@ abstract public class AbstractTarget extends Factor
 	}
 	
 	@Override
-	public IdList getGoals()
-	{
-		return goalIds.getIdList();
-	}
-	
-	@Override
 	public ORefList getGoalRefs()
 	{
 		return goalIds.getRefList();
