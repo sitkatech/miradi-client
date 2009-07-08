@@ -148,12 +148,12 @@ public class TimePeriodCostsMap
 		if(existing == null)
 		{
 			TimePeriodCosts timePeriodCostsWithExpense = new TimePeriodCosts();
-			timePeriodCostsWithExpense.mergeAddProjectResourcesInPlace(timePeriodCostsToMerge);
+			timePeriodCostsWithExpense.mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
 			add(dateUnit, timePeriodCostsWithExpense);
 		}
 		else
 		{
-			existing.mergeAddProjectResourcesInPlace(timePeriodCostsToMerge);
+			existing.mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
 		}
 	}
 	
@@ -161,7 +161,7 @@ public class TimePeriodCostsMap
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
-			existing.mergeAddTimePeriodCosts(timePeriodCostsToMerge);
+			existing.mergeAllTimePeriodCosts(timePeriodCostsToMerge);
 		else
 			add(dateUnit, timePeriodCostsToMerge);
 	}
