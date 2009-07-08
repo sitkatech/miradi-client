@@ -512,7 +512,6 @@ abstract public class Factor extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
-		keyEcologicalAttributes = new IdListData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttribute.getObjectType());
 		multiLineGoals = new PseudoStringData(PSEUDO_TAG_GOALS);
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
@@ -526,7 +525,6 @@ abstract public class Factor extends BaseObject
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INDICATOR_IDS, indicators);
 		addField(TAG_OBJECTIVE_IDS, objectives);
-		addField(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keyEcologicalAttributes);
 		addField(PSEUDO_TAG_GOALS, multiLineGoals);
 		addField(PSEUDO_TAG_OBJECTIVES, multiLineObjectives);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
@@ -572,7 +570,6 @@ abstract public class Factor extends BaseObject
 
 	private IdListData indicators;
 	private IdListData objectives;
-	protected IdListData keyEcologicalAttributes;
 	
 	PseudoStringData multiLineGoals;
 	PseudoStringData multiLineObjectives;
