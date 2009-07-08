@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-26 00:37-0500\n"
+"POT-Creation-Date: 2009-07-07 22:53-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -28,9 +28,12 @@ msgid "Label|(Undefined Resource)"
 msgstr " (Sumber Daya Tak Terdefinisi) "
 
 #: miradi/source/org/miradi/objects/AccountingCode.java:72
-#: miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Accounting Code)"
 msgstr " (Kode Akuntansi Tak Terdefinisi) "
+
+#: miradi/source/org/miradi/objects/FundingSource.java:72
+msgid "Label|(Undefined Funding Source)"
+msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:131
 msgid "Migrated High Level Estimate:"
@@ -2634,6 +2637,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
 
@@ -4351,11 +4355,21 @@ msgid "Paste"
 msgstr "Tempel "
 
 #: miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:67
+#: miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
+#: miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
 #: miradi/source/org/miradi/dialogfields/RefListComponent.java:73
 #: miradi/source/org/miradi/dialogfields/CodeListFieldComponent.java:60
+#: miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
+#: miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
 #: miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
 msgstr "Kesalahan Internal "
+
+#: miradi/source/org/miradi/dialogfields/AbstractWorkPlanStringMapEditorDoer.java:52
+#: miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
+#: miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
+msgid "Editor"
+msgstr "Editor "
 
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
@@ -5096,6 +5110,14 @@ msgstr "Hapus Tekanan terpilih "
 #: miradi/source/org/miradi/actions/ActionContextualHelp.java:37
 msgid "Action|ContextSensitive|Help"
 msgstr "Bantuan "
+
+#: miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:35
+msgid "Action|Edit Project Resource Filter..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:40
+msgid "TT|Edit project resources to filter by"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteMethod.java:35
 msgid "Action|Manage|Delete Method"
@@ -5931,6 +5953,14 @@ msgstr "Hapus Kode Akuntansi "
 msgid "TT|Delete the selected Accounting Code"
 msgstr "Hapus Kode Akuntansi terpilih "
 
+#: miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
+msgid "Action|Edit Budget Columns..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40
+msgid "TT|Change visible budget columns"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionNudgeDown.java:34
 msgid "Action|Nudge Item Down"
 msgstr "Dorong Butir ke Bawah "
@@ -6410,12 +6440,12 @@ msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 msgid "Summary Threat Rating"
 msgstr "Ringkasan Peringkat Ancaman "
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:223
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "Summary Target Ratings:"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:409
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -6577,6 +6607,10 @@ msgstr ""
 msgid "Unexpected Error Occurred"
 msgstr "Terjadi Kesalahan Tak Terduga "
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:57
+msgid "Project Resource Filter On"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:39
 msgid "Title|Intermediate Result Properties"
 msgstr "Sifat-sifat Hasil Antara"
@@ -6589,7 +6623,7 @@ msgstr "Kode Akuntansi "
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Sifat-sifat Hasil Pengurangan Ancaman"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:161
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:135
 msgid "An error occurred while trying to expand/collapse the column."
 msgstr ""
 
@@ -6598,14 +6632,9 @@ msgid "Name"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:70
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:110
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTable.java:53
-#, fuzzy
-msgid "(not specified)"
-msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:42
 msgid "Title|Task Properties"
@@ -6620,7 +6649,7 @@ msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:105
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:106
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
@@ -6629,24 +6658,24 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:102
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:108
 msgid "Total"
 msgstr "Total "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:115
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "(Kesalahan) "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:53
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
 msgid "Resource (Who)"
 msgstr "Sumber Daya (Siapa) "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:56
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
 msgid "Cost/Unit"
 msgstr "Biaya/Unit "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:59
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:60
 msgid "Unit"
 msgstr "Unit "
 
@@ -6658,7 +6687,7 @@ msgstr "Sifat-sifat Pengukuran "
 msgid "Show: "
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:189
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:254
 #, fuzzy
 msgid "[Error]"
 msgstr "[Error]"
@@ -6743,6 +6772,14 @@ msgstr "Pilih Lokasi… "
 #: miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
 msgid "Error occured while saving data location"
 msgstr "Terjadi kesalahan saat menyimpan lokasi data "
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Work Plan Column Editor"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:42
+msgid "Project Resource Filter Editor"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:95
 msgid "Systemwide"
@@ -6848,11 +6885,6 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:52
 msgid "Folder Chooser"
 msgstr ""
-
-#: miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
-#: miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
-msgid "Editor"
-msgstr "Editor "
 
 #: miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:49
 msgid "Title|Scope Box Properties"
@@ -8467,6 +8499,9 @@ msgid "FieldLabel|47.Label|Name"
 msgstr "Nama "
 
 msgid "FieldLabel|47.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
@@ -32705,6 +32740,10 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#, fuzzy
+#~ msgid "(not specified)"
+#~ msgstr "(not specified)"
 
 #~ msgid "Project List"
 #~ msgstr "Daftar Proyek "
