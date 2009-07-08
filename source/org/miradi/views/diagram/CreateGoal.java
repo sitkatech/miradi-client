@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
+import org.miradi.objects.AbstractTarget;
 
 public class CreateGoal  extends CreateAnnotationDoer
 {
@@ -30,6 +30,6 @@ public class CreateGoal  extends CreateAnnotationDoer
 	}
 	public String getAnnotationListTag()
 	{
-		return Factor.TAG_GOAL_IDS;
+		return AbstractTarget.TAG_GOAL_IDS;
 	}
 }

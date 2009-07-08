@@ -21,7 +21,7 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.KeyEcologicalAttribute;
 
 public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
@@ -46,7 +46,7 @@ public class DeleteKeyEcologicalAttributeDoer extends DeleteAnnotationDoer
 
 	public String getAnnotationIdListTag()
 	{
-		return Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
+		return AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS;
 	}
 	
 	public int getAnnotationType()

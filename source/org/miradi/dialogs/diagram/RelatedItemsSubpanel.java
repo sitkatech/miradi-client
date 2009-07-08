@@ -32,7 +32,6 @@ public class RelatedItemsSubpanel extends ObjectDataInputPanel
 		
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_TARGETS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_DIRECT_THREATS));
-		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_GOALS));
 		addField(createReadonlyTextField(Strategy.PSEUDO_TAG_OBJECTIVES));		
 	}
 

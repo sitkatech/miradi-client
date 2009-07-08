@@ -26,6 +26,7 @@ import org.miradi.diagram.factortypes.FactorType;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
 import org.miradi.objectdata.ORefListData;
@@ -149,16 +150,42 @@ abstract public class AbstractTarget extends Factor
 		if (tag.equals(TAG_SUB_TARGET_REFS))
 			return SubTarget.getObjectType();
 		
+		if (tag.equals(TAG_GOAL_IDS))
+			return Goal.getObjectType();
+		
+		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
+			return KeyEcologicalAttribute.getObjectType();
+
 		return super.getAnnotationType(tag);
+	}
+
+	@Override
+	public boolean isIdListTag(String tag)
+	{
+		if (tag.equals(TAG_GOAL_IDS))
+			return true;
+		
+		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
+			return true;
+		
+		return super.isIdListTag(tag);
 	}
 
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
-		if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
-			return getTargetViability();
-		
-		return super.getPseudoData(fieldTag);
+		try
+		{
+			if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
+				return getTargetViability();
+			
+			return super.getPseudoData(fieldTag);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
 	}
 
 	public ORefList findAllKeaIndicatorRefs()
@@ -348,7 +375,9 @@ abstract public class AbstractTarget extends Factor
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
 	public static final String TAG_CURRENT_STATUS_JUSTIFICATION = "CurrentStatusJustification";
 	public static final String TAG_SUB_TARGET_REFS = "SubTargetRefs";
-	
+	public static final String TAG_GOAL_IDS = "GoalIds"; 
+	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS = "KeyEcologicalAttributeIds";
+
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";

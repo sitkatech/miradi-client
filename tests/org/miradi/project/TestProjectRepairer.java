@@ -29,7 +29,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -38,6 +38,7 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
@@ -63,7 +64,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 	public void testDeleteOrphanGoals() throws Exception
 	{
 		int annotationType = ObjectType.GOAL;
-		String nodeTagForAnnotationList = Factor.TAG_GOAL_IDS;
+		String nodeTagForAnnotationList = AbstractTarget.TAG_GOAL_IDS;
 
 		verifyDeleteOrphanAnnotations(annotationType, ObjectType.TARGET, nodeTagForAnnotationList);
 		

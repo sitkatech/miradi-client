@@ -34,6 +34,7 @@ import org.miradi.main.EAMTestCase;
 import org.miradi.main.TransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -72,8 +73,8 @@ public class TestDiagramPaster extends EAMTestCase
 	{
 		fixupRefs(Cause.getObjectType(), Indicator.getObjectType(), Factor.TAG_INDICATOR_IDS);
 		fixupRefs(Cause.getObjectType(), Objective.getObjectType(), Factor.TAG_OBJECTIVE_IDS);
-		fixupRefs(Target.getObjectType(), Goal.getObjectType(), Factor.TAG_GOAL_IDS);
-		fixupRefs(Target.getObjectType(), KeyEcologicalAttribute.getObjectType(), Factor.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
+		fixupRefs(Target.getObjectType(), Goal.getObjectType(), AbstractTarget.TAG_GOAL_IDS);
+		fixupRefs(Target.getObjectType(), KeyEcologicalAttribute.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 		
 	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception

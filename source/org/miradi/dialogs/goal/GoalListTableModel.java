@@ -22,7 +22,7 @@ package org.miradi.dialogs.goal;
 import org.miradi.dialogs.base.ObjectListTableModel;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
 import org.miradi.project.Project;
 
@@ -30,7 +30,7 @@ public class GoalListTableModel extends ObjectListTableModel
 {
 	public GoalListTableModel(Project projectToUse, ORef nodeRef)
 	{
-		super(projectToUse, nodeRef, Factor.TAG_GOAL_IDS, ObjectType.GOAL, getColumnTags());
+		super(projectToUse, nodeRef, AbstractTarget.TAG_GOAL_IDS, ObjectType.GOAL, getColumnTags());
 	}
 
 	private static String[] getColumnTags()

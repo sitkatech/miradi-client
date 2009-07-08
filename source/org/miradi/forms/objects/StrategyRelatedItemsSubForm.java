@@ -29,7 +29,6 @@ public class StrategyRelatedItemsSubForm extends FieldPanelSpec
 		int type = Strategy.getObjectType();
 		addLabelAndField(type, Strategy.PSEUDO_TAG_TARGETS);
 		addLabelAndField(type, Strategy.PSEUDO_TAG_DIRECT_THREATS);
-		addLabelAndField(type, Strategy.PSEUDO_TAG_GOALS);
 		addLabelAndField(type, Strategy.PSEUDO_TAG_OBJECTIVES);
 	}
 }

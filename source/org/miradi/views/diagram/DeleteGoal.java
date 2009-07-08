@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.Factor;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Goal;
 
 public class DeleteGoal extends DeleteAnnotationDoer
@@ -32,7 +32,7 @@ public class DeleteGoal extends DeleteAnnotationDoer
 
 	public String getAnnotationIdListTag()
 	{
-		return Factor.TAG_GOAL_IDS;
+		return AbstractTarget.TAG_GOAL_IDS;
 	}
 	
 	public int getAnnotationType()

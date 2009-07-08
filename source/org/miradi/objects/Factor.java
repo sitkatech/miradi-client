@@ -380,12 +380,6 @@ abstract public class Factor extends BaseObject
 		if (tag.equals(TAG_OBJECTIVE_IDS))
 			return Objective.getObjectType();
 		
-		if (tag.equals(TAG_GOAL_IDS))
-			return Goal.getObjectType();
-		
-		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
-			return KeyEcologicalAttribute.getObjectType();
-
 		return super.getAnnotationType(tag);
 	}
 
@@ -397,12 +391,6 @@ abstract public class Factor extends BaseObject
 		if (tag.equals(TAG_OBJECTIVE_IDS))
 			return true;
 		
-		if (tag.equals(TAG_GOAL_IDS))
-			return true;
-		
-		if (tag.equals(TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
-			return true;
-		
 		return super.isIdListTag(tag);
 	}
 
@@ -410,9 +398,6 @@ abstract public class Factor extends BaseObject
 	{
 		try
 		{
-			if(fieldTag.equals(PSEUDO_TAG_GOALS))
-				return getFactorGoalsAsMultiline();
-			
 			if(fieldTag.equals(PSEUDO_TAG_OBJECTIVES))
 				return getFactorObjectivesAsMultiline();
 			
@@ -468,19 +453,13 @@ abstract public class Factor extends BaseObject
 		return getLabelsAsMultiline(directThreats);
 	}
 	
-	private String getFactorGoalsAsMultiline() throws ParseException
-	{
-		IdList theseDesireIds = new IdList(Goal.getObjectType(), getData(TAG_GOAL_IDS));
-		return getDesiresAsMultiline(ObjectType.GOAL, theseDesireIds);
-	}
-
 	private String getFactorObjectivesAsMultiline() throws ParseException
 	{
 		IdList theseDesireIds = new IdList(Objective.getObjectType(), getData(TAG_OBJECTIVE_IDS));
 		return getDesiresAsMultiline(ObjectType.OBJECTIVE, theseDesireIds);
 	}
 	
-	private String getDesiresAsMultiline(int desireType, IdList desireIds)
+	protected String getDesiresAsMultiline(int desireType, IdList desireIds)
 	{
 		StringBuffer result = new StringBuffer();
 		for(int i = 0; i < desireIds.size(); ++i)
@@ -512,7 +491,6 @@ abstract public class Factor extends BaseObject
 		shortLabel = new StringData(TAG_SHORT_LABEL);
 	    indicators = new IdListData(TAG_INDICATOR_IDS, Indicator.getObjectType());
 		objectives = new IdListData(TAG_OBJECTIVE_IDS, Objective.getObjectType());
-		multiLineGoals = new PseudoStringData(PSEUDO_TAG_GOALS);
 		multiLineObjectives = new PseudoStringData(PSEUDO_TAG_OBJECTIVES);
 		multiLineDeirectThreats = new PseudoStringData(PSEUDO_TAG_DIRECT_THREATS);
 		multiLineTargets = new PseudoStringData(PSEUDO_TAG_TARGETS);
@@ -525,7 +503,6 @@ abstract public class Factor extends BaseObject
 		addField(TAG_SHORT_LABEL, shortLabel);
 		addField(TAG_INDICATOR_IDS, indicators);
 		addField(TAG_OBJECTIVE_IDS, objectives);
-		addField(PSEUDO_TAG_GOALS, multiLineGoals);
 		addField(PSEUDO_TAG_OBJECTIVES, multiLineObjectives);
 		addField(PSEUDO_TAG_DIRECT_THREATS, multiLineDeirectThreats);
 		addField(PSEUDO_TAG_TARGETS, multiLineTargets);
@@ -552,9 +529,6 @@ abstract public class Factor extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 	public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
-	public static final String TAG_GOAL_IDS = "GoalIds"; 
-	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS = "KeyEcologicalAttributeIds";
-	public static final String PSEUDO_TAG_GOALS = "PseudoTagGoals";
 	public static final String PSEUDO_TAG_OBJECTIVES = "PseudoTagObjectives";
 	public static final String PSEUDO_TAG_DIRECT_THREATS = "PseudoTagDirectThreats";
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
@@ -571,7 +545,6 @@ abstract public class Factor extends BaseObject
 	private IdListData indicators;
 	private IdListData objectives;
 	
-	PseudoStringData multiLineGoals;
 	PseudoStringData multiLineObjectives;
 	PseudoStringData multiLineDeirectThreats;
 	PseudoStringData multiLineTargets;
