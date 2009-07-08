@@ -85,48 +85,6 @@ public class TimePeriodCostsMap
 		}
 	}
 		
-	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
-	{
-		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.getDateUnitTimePeriodCostsMap().keySet();
-		for(DateUnit dateUnitToMerge : keysToMerge)
-		{
-			removeEntriesForLargerDateUnitsThatContainThisOne(dateUnitToMerge);
-			if(hasAnyEntriesWithin(dateUnitToMerge))
-				continue;
-			
-			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.getTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
-			mergeOverlayTimePeriodCosts(dateUnitToMerge, timePeriodCostsToMerge);
-		}	
-	}
-	
-	private void removeEntriesForLargerDateUnitsThatContainThisOne(DateUnit dateUnit) throws Exception
-	{
-		if(dateUnit.isBlank())
-			return;
-		
-		DateUnit larger = dateUnit.getSuperDateUnit();
-		DateUnit dateUnitToRemove = new DateUnit();
-		if(!larger.isBlank())
-			dateUnitToRemove = larger;
-		data.remove(dateUnitToRemove);
-		removeEntriesForLargerDateUnitsThatContainThisOne(larger);
-	}
-	
-	private boolean hasAnyEntriesWithin(DateUnit largerDateUnit) throws Exception
-	{
-		Set<DateUnit> dateUnits = data.keySet();
-		for(DateUnit thisDateUnit : dateUnits)
-		{
-			if(largerDateUnit.equals(thisDateUnit))
-				continue;
-			
-			if (largerDateUnit.asDateRange().contains(thisDateUnit.asDateRange()))
-				return true;
-		}
-		
-		return false;
-	}
-	
 	private void mergeNonConflictingExpenses(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
@@ -162,15 +120,6 @@ public class TimePeriodCostsMap
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing != null)
 			existing.mergeAllTimePeriodCosts(timePeriodCostsToMerge);
-		else
-			add(dateUnit, timePeriodCostsToMerge);
-	}
-	
-	private void mergeOverlayTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
-	{
-		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		if(existing != null)
-			existing.mergeOverlayTimePeriodCosts(timePeriodCostsToMerge);
 		else
 			add(dateUnit, timePeriodCostsToMerge);
 	}
