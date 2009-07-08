@@ -194,13 +194,13 @@ public class TimePeriodCosts
 		return getResourceUnitsMap().keySet();
 	}
 	
-	public void mergeAddTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
+	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpenses(timePeriodCostsToMergeAdd.getExpense());
-		mergeAddProjectResourcesInPlace(timePeriodCostsToMergeAdd);
+		mergeAllProjectResourcesInPlace(timePeriodCostsToMergeAdd);
 	}
 	
-	public void mergeAddProjectResourcesInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
+	public void mergeAllProjectResourcesInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		Set<ORef> keysToMerge = timePeriodCostsToMergeAdd.getResourceRefSet();
 		for(ORef refToMerge : keysToMerge)
