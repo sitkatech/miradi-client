@@ -309,18 +309,18 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public IdList getGoals()
 	{
-		return goals.getIdList();
+		return goalIds.getIdList();
 	}
 	
 	@Override
 	public ORefList getGoalRefs()
 	{
-		return new ORefList(Goal.getObjectType(), goals.getIdList());
+		return new ORefList(Goal.getObjectType(), goalIds.getIdList());
 	}
 	
 	public void setGoals(IdList goalsToUse)
 	{
-		goals.set(goalsToUse);
+		goalIds.set(goalsToUse);
 	}
 	
 	@Override
@@ -331,7 +331,7 @@ abstract public class AbstractTarget extends Factor
 		viabiltyMode = new ChoiceData(TAG_VIABILITY_MODE, getQuestion(ViabilityModeQuestion.class));
 		currentStatusJustification = new StringData(TAG_CURRENT_STATUS_JUSTIFICATION);
 		subTargetRefs = new ORefListData(TAG_SUB_TARGET_REFS);
-		goals = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
+		goalIds = new IdListData(TAG_GOAL_IDS, Goal.getObjectType());
 			
 		targetViability = new PseudoStringData(PSEUDO_TAG_TARGET_VIABILITY);
 		targetStatusLabel = new PseudoQuestionData(PSEUDO_TAG_TARGET_STATUS_VALUE, new StatusQuestion());
@@ -341,7 +341,7 @@ abstract public class AbstractTarget extends Factor
 		addField(TAG_VIABILITY_MODE, viabiltyMode);
 		addField(TAG_CURRENT_STATUS_JUSTIFICATION, currentStatusJustification);
 		addField(TAG_SUB_TARGET_REFS, subTargetRefs);
-		addField(TAG_GOAL_IDS, goals);
+		addField(TAG_GOAL_IDS, goalIds);
 
 		addField(PSEUDO_TAG_TARGET_VIABILITY, targetViability);
 		addField(PSEUDO_TAG_TARGET_STATUS_VALUE, targetStatusLabel);
@@ -361,7 +361,7 @@ abstract public class AbstractTarget extends Factor
 	private ChoiceData viabiltyMode;
 	private StringData currentStatusJustification;
 	private ORefListData subTargetRefs;
-	private IdListData goals;
+	private IdListData goalIds;
 
 	private PseudoStringData targetViability;
 	private PseudoQuestionData targetStatusLabel;
