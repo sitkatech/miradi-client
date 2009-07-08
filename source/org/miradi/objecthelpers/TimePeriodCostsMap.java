@@ -33,7 +33,7 @@ public class TimePeriodCostsMap
 	
 	public void add(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
-		data.put(dateUnit, timePeriodCosts);
+		data.put(dateUnit, new TimePeriodCosts(timePeriodCosts));
 	}
 	
 	public TimePeriodCosts getTimePeriodCostsForSpecificDateUnit(DateUnit dateUnitToUse)
@@ -70,9 +70,19 @@ public class TimePeriodCostsMap
 		}
 	}
 	
-	public void mergeNonConflicting(TimePeriodCostsMap timePeriodCostsMapToMerge)
+	public void mergeNonConflicting(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
 	{
-		//FIXME urgent - finish implementing this and its test, then use it instead of mergeOverlay	
+		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.getDateUnitTimePeriodCostsMap().keySet();
+		for(DateUnit dateUnitToMerge : keysToMerge)
+		{
+			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.getTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
+			TimePeriodCosts thisTimePeriodCosts = calculateTimePeriodCosts(dateUnitToMerge);
+			if (thisTimePeriodCosts.getExpense().hasNoValue())
+				mergeNonConflictingExpenses(dateUnitToMerge, timePeriodCostsToMerge);
+			
+			if (thisTimePeriodCosts.calculateResourcesTotalUnits().hasNoValue())
+				mergeNonConflictingWorkUnits(dateUnitToMerge, timePeriodCostsToMerge);
+		}
 	}
 		
 	public void mergeOverlay(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
@@ -115,6 +125,36 @@ public class TimePeriodCostsMap
 		}
 		
 		return false;
+	}
+	
+	private void mergeNonConflictingExpenses(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
+	{
+		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		if(existing == null)
+		{
+			TimePeriodCosts timePeriodCostsWithExpense = new TimePeriodCosts();
+			timePeriodCostsWithExpense.setExpense(timePeriodCostsToMerge.getExpense());
+			add(dateUnit, timePeriodCostsWithExpense);
+		}
+		else
+		{
+			existing.setExpense(timePeriodCostsToMerge.getExpense());
+		}
+	}
+	
+	private void mergeNonConflictingWorkUnits(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
+	{
+		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		if(existing == null)
+		{
+			TimePeriodCosts timePeriodCostsWithExpense = new TimePeriodCosts();
+			timePeriodCostsWithExpense.mergeAddProjectResourcesInPlace(timePeriodCostsToMerge);
+			add(dateUnit, timePeriodCostsWithExpense);
+		}
+		else
+		{
+			existing.mergeAddProjectResourcesInPlace(timePeriodCostsToMerge);
+		}
 	}
 	
 	private void mergeAllTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)

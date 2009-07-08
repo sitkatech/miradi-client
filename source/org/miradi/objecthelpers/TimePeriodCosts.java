@@ -34,6 +34,12 @@ public class TimePeriodCosts
 		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
 	}
 	
+	public TimePeriodCosts(TimePeriodCosts timePeriodCostsToUse)
+	{
+		this();
+		add(timePeriodCostsToUse);
+	}
+	
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpenses(timePeriodCosts.getExpense());
@@ -185,7 +191,7 @@ public class TimePeriodCosts
 		mergeAddProjectResourcesInPlace(timePeriodCostsToMergeAdd);
 	}
 	
-	private void mergeAddProjectResourcesInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
+	public void mergeAddProjectResourcesInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		Set<ORef> keysToMerge = timePeriodCostsToMergeAdd.getResourceRefSet();
 		for(ORef refToMerge : keysToMerge)
