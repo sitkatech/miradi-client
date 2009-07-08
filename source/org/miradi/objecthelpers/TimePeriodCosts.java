@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.main.EAM;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
@@ -96,6 +97,14 @@ public class TimePeriodCosts
 	public void setExpense(OptionalDouble expenseToUse)
 	{
 		expense = expenseToUse;
+	}
+	
+	public void replaceEmptyExpenseValue(OptionalDouble expenseToUse)
+	{
+		if (expense.hasValue())
+			throw new RuntimeException((EAM.text("Existing expense was not empty. value=" + expense.getValue())));
+		
+		setExpense(expenseToUse);
 	}
 	
 	public OptionalDouble calculateTotalCost(Project projectToUse)
