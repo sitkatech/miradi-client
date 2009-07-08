@@ -211,7 +211,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertTrue("wrong project resource in map?", projectResourceRefs.contains(projectResourceJill.getRef()));
 	}
 	
-	//FIXME urgent - finish this TESTS and add verify calls
 	public void testMergeNonConflictingExpenses() throws Exception
 	{
 		TimePeriodCostsMap strategyTimePeriodCostsMap = createTimePeriodCostsMap(dateUnitTotal, 2.0);
