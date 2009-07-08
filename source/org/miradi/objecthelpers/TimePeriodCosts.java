@@ -212,13 +212,6 @@ public class TimePeriodCosts
 		}
 	}
 
-	public void mergeOverlayTimePeriodCosts(TimePeriodCosts timePeriodCostsToMerge)
-	{
-		setExpense(getExpense().add(timePeriodCostsToMerge.getExpense()));
-		
-		resourceUnitsMap.putAll(timePeriodCostsToMerge.getResourceUnitsMap());
-	}
-
 	@Override
 	public String toString()
 	{
