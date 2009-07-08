@@ -22,7 +22,6 @@ package org.miradi.objecthelpers;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.OptionalDouble;
 
 public class TestTimePeriodCostsMap extends TestCaseWithProject
 {
@@ -80,72 +79,6 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("Single TPC wasn't found?", foundTimePeriodCosts, timePeriodCosts);
 	}
 	
-	public void testMergeOverlayWithOverlappingDateUnits() throws Exception
-	{
-		ProjectResource projectResourcePaul = createProjectResource();
-		DateUnit smallerDateUnit = dateUnit2007.getSubDateUnits().get(0);
-
-		TimePeriodCostsMap timePeriodCostsMap2007 = createTimePeriodCostsMap(dateUnit2007, 22.0, projectResourcePaul, 12.0);
-		TimePeriodCostsMap timePeriodCostsMap2007Q1 = createTimePeriodCostsMap(smallerDateUnit, 23.0, projectResourcePaul, 11.0);
-		
-		verifyMergeOverlay(23, timePeriodCostsMap2007, timePeriodCostsMap2007Q1);
-		verifyMergeOverlay(23, timePeriodCostsMap2007Q1, timePeriodCostsMap2007);
-	}
-
-	private void verifyMergeOverlay(double expectedExpenses, TimePeriodCostsMap timePeriodCostsMap1, TimePeriodCostsMap timePeriodCostsMap2) throws Exception
-	{
-		TimePeriodCostsMap overlaidMap = new TimePeriodCostsMap();
-		
-		overlaidMap.mergeOverlay(timePeriodCostsMap1);
-		assertEquals("wrong size after merging map?", 1, overlaidMap.size());
-		
-		overlaidMap.mergeOverlay(timePeriodCostsMap2);
-		assertEquals("wrong size after merging map?", 1, overlaidMap.size());
-		
-		assertEquals(expectedExpenses, overlaidMap.calculateTimePeriodCosts(new DateUnit("")).getExpense().getValue());
-	}
-
-	public void testMergeOverlay() throws Exception
-	{	
-		DateUnit dateUnit2006 = createSingleYearDateUnit(2006);
-		DateUnit dateUnit2007Q1 = new DateUnit("2007Q1");
-		
-		ProjectResource projectResourcePaul = createProjectResource();
-		
-		TimePeriodCostsMap timePeriodCostsMap2006 = new TimePeriodCostsMap();
-		TimePeriodCosts timePeriodCosts2006 = updateMapWithNewCreatedTimePeriodCosts(timePeriodCostsMap2006, dateUnit2006, 22.0, projectResourcePaul, 10.0);
-		
-		TimePeriodCostsMap timePeriodCostsMap2007 = new TimePeriodCostsMap();
-		TimePeriodCosts timePeriodCosts2007 = updateMapWithNewCreatedTimePeriodCosts(timePeriodCostsMap2007, dateUnit2007, 22.0, projectResourcePaul, 12.0);
-		TimePeriodCosts timePeriodCosts2007Q1 = updateMapWithNewCreatedTimePeriodCosts(timePeriodCostsMap2007, dateUnit2007Q1, 23.0, projectResourcePaul, 11.0);
-		
-		assertEquals("wrong expense?", 22.0, timePeriodCosts2007.getExpense().getValue());
-		assertEquals("wrong calculated project resource?", 120.0 + 22.0, timePeriodCosts2007.calculateTotalCost(getProject()).getValue());
-		
-		TimePeriodCostsMap projectTimePeriodCostsMap = new TimePeriodCostsMap();
-		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMap2006);
-		assertEquals("wrong content count after merge overlay?", 1, projectTimePeriodCostsMap.size());
-		TimePeriodCosts specificTimePeriodCostsFor2006 = projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2006);
-		assertEquals("Merging larger unit changed existing data?", timePeriodCosts2006, specificTimePeriodCostsFor2006);
-		
-		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMap2007);
-		assertEquals("wrong content count after merge overlay?", 2, projectTimePeriodCostsMap.size());
-		assertTrue("time period costs map does not contain dateUnit as key?", projectTimePeriodCostsMap.containsSpecificDateUnit(dateUnit2007Q1));
-		TimePeriodCosts specificTimePeriodCostsFor2007Q1 = projectTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2007Q1);
-		assertEquals("Merging larger unit changed existing data?", timePeriodCosts2007Q1, specificTimePeriodCostsFor2007Q1);
-		
-		TimePeriodCostsMap timePeriodCostsMapSecond2007Q1 = new TimePeriodCostsMap();
-		ProjectResource projectResourceJon = createProjectResource();
-		updateMapWithNewCreatedTimePeriodCosts(timePeriodCostsMapSecond2007Q1, dateUnit2007Q1, 25.0, projectResourceJon, 15.0);
-		
-		projectTimePeriodCostsMap.mergeOverlay(timePeriodCostsMapSecond2007Q1);
-		TimePeriodCosts timePeriodCostsAfterOverlay = specificTimePeriodCostsFor2007Q1;
-		assertEquals("wrong expense after merge overlay?", (23.0 + 25.0), timePeriodCostsAfterOverlay.getExpense().getValue());
-		
-		OptionalDouble projectResourceCost = timePeriodCostsAfterOverlay.calculateTotalCost(getProject());
-		assertEquals("wrong project resource cost?", (150.0 + 110.0) + 48.0, projectResourceCost.getValue());
-	}
-
 	private TimePeriodCosts updateMapWithNewCreatedTimePeriodCosts(TimePeriodCostsMap timePeriodCostsMap, DateUnit dateUnit, double expense, ProjectResource projectResource, double units)
 	{
 		TimePeriodCosts timePeriodCosts = createTimePeriodCosts(expense, projectResource, units);
