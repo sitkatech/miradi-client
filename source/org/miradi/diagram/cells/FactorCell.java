@@ -285,11 +285,11 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedFactor().getDetails();
 	}
 
-	public IdList getGoals()
+	public ORefList getGoalRefs()
 	{
 		if (getWrappedFactor().canHaveGoal())
-			return ((AbstractTarget)getWrappedFactor()).getGoals();
-		return  new IdList(Goal.getObjectType());
+			return ((AbstractTarget)getWrappedFactor()).getGoalRefs();
+		return  new ORefList();
 	}
 	
 	public IdList getObjectives()
@@ -458,7 +458,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean isPointInGoal(Point pointRelativeToOrigin)
 	{
-		if(getGoals().size() == 0)
+		if(getGoalRefs().size() == 0)
 			return false;
 		return getGoalRectWithinNode().contains(pointRelativeToOrigin);
 	}
