@@ -21,7 +21,6 @@ package org.miradi.main;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.Vector;
 
 import org.martus.util.DirectoryUtils;
@@ -71,7 +70,6 @@ public class ListAllFields
 			BaseObject object = createObject(project, type);
 			showObjectName(object);
 			Vector<String> fieldTags = object.getStoredFieldTags();
-			Collections.sort(fieldTags);
 			for(int field = 0; field < fieldTags.size(); ++field)
 			{
 				String tag = fieldTags.get(field);
