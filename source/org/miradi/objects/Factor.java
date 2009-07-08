@@ -161,11 +161,6 @@ abstract public class Factor extends BaseObject
 		objectives.set(objectivesToUse);
 	}
 	
-	public IdList getGoals()
-	{
-		return new IdList(Goal.getObjectType());
-	}
-	
 	public ORefList getGoalRefs()
 	{
 		return new ORefList();
