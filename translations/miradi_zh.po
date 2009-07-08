@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-26 00:37-0500\n"
+"POT-Creation-Date: 2009-07-07 22:53-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -28,9 +28,12 @@ msgid "Label|(Undefined Resource)"
 msgstr "（未定义的资源） \t\t"
 
 #: miradi/source/org/miradi/objects/AccountingCode.java:72
-#: miradi/source/org/miradi/objects/FundingSource.java:72
 msgid "Label|(Undefined Accounting Code)"
 msgstr "（未定义的会计代码） \t\t"
+
+#: miradi/source/org/miradi/objects/FundingSource.java:72
+msgid "Label|(Undefined Funding Source)"
+msgstr ""
 
 #: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:131
 msgid "Migrated High Level Estimate:"
@@ -2516,6 +2519,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
 msgid "Not Specified"
 msgstr "未指定 \t\t"
 
@@ -4185,11 +4189,21 @@ msgid "Paste"
 msgstr "粘贴 \t\t"
 
 #: miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:67
+#: miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
+#: miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
 #: miradi/source/org/miradi/dialogfields/RefListComponent.java:73
 #: miradi/source/org/miradi/dialogfields/CodeListFieldComponent.java:60
+#: miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:48
+#: miradi/source/org/miradi/dialogfields/StringMapBudgetColumnCodeListEditorField.java:79
 #: miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
 msgstr "内部错误 \t\t"
+
+#: miradi/source/org/miradi/dialogfields/AbstractWorkPlanStringMapEditorDoer.java:52
+#: miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
+#: miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
+msgid "Editor"
+msgstr "编辑器 \t\t"
 
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
@@ -4930,6 +4944,14 @@ msgstr "删除选定的压力 \t\t"
 #: miradi/source/org/miradi/actions/ActionContextualHelp.java:37
 msgid "Action|ContextSensitive|Help"
 msgstr "帮助 \t\t"
+
+#: miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:35
+msgid "Action|Edit Project Resource Filter..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:40
+msgid "TT|Edit project resources to filter by"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteMethod.java:35
 msgid "Action|Manage|Delete Method"
@@ -5765,6 +5787,14 @@ msgstr "删除会计编码 \t\t"
 msgid "TT|Delete the selected Accounting Code"
 msgstr "删除选定的会计编码 \t\t"
 
+#: miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
+msgid "Action|Edit Budget Columns..."
+msgstr ""
+
+#: miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40
+msgid "TT|Change visible budget columns"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/ActionNudgeDown.java:34
 msgid "Action|Nudge Item Down"
 msgstr "下移条目线框 \t\t"
@@ -6234,12 +6264,12 @@ msgstr "基于压力的威胁因子分级 \t\t"
 msgid "Summary Threat Rating"
 msgstr "威胁因子分级摘要 \t\t"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:228
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:223
 #, fuzzy
 msgid "Summary Target Ratings:"
 msgstr "Summary Target Ratings:"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:414
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:409
 msgid "<html><b>Overall<br>Project<br>Rating"
 msgstr ""
 
@@ -6399,6 +6429,10 @@ msgstr ""
 msgid "Unexpected Error Occurred"
 msgstr "出现意外错误 \t\t"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:57
+msgid "Project Resource Filter On"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:39
 msgid "Title|Intermediate Result Properties"
 msgstr "标题|中途结果属性"
@@ -6411,7 +6445,7 @@ msgstr "会计代码 \t\t"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "标题|威胁因子减少结果属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:161
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:135
 msgid "An error occurred while trying to expand/collapse the column."
 msgstr ""
 
@@ -6420,14 +6454,9 @@ msgid "Name"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:70
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:110
 msgid "An error has occured while writing assignment data."
 msgstr "编写分配数据时出现一个错误。 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTable.java:53
-#, fuzzy
-msgid "(not specified)"
-msgstr "(not specified)"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewTaskPropertiesPanel.java:42
 msgid "Title|Task Properties"
@@ -6442,7 +6471,7 @@ msgstr "计划视图配置标签属性 \t\t"
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:105
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:106
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
@@ -6451,24 +6480,24 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:102
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:108
 msgid "Total"
 msgstr "总计 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:109
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:115
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:53
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
 msgid "Resource (Who)"
 msgstr "资源（何人） \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:56
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
 msgid "Cost/Unit"
 msgstr "开销/单位 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:59
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:60
 msgid "Unit"
 msgstr "单位 \t\t"
 
@@ -6480,7 +6509,7 @@ msgstr "测量属性 \t\t"
 msgid "Show: "
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:189
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:254
 #, fuzzy
 msgid "[Error]"
 msgstr "[Error]"
@@ -6565,6 +6594,14 @@ msgstr "选择位置... \t\t"
 #: miradi/source/org/miradi/dialogs/base/DataLocationChooserPanel.java:102
 msgid "Error occured while saving data location"
 msgstr "保存数据位置时出错 \t\t"
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+msgid "Work Plan Column Editor"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:42
+msgid "Project Resource Filter Editor"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:95
 msgid "Systemwide"
@@ -6666,11 +6703,6 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:52
 msgid "Folder Chooser"
 msgstr ""
-
-#: miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
-#: miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
-msgid "Editor"
-msgstr "编辑器 \t\t"
 
 #: miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:49
 msgid "Title|Scope Box Properties"
@@ -8282,6 +8314,9 @@ msgid "FieldLabel|47.Label|Name"
 msgstr "名称"
 
 msgid "FieldLabel|47.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|48.TagTableSettingsMap|Table Settings"
 msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
@@ -29312,6 +29347,10 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#, fuzzy
+#~ msgid "(not specified)"
+#~ msgstr "(not specified)"
 
 #~ msgid "Project List"
 #~ msgstr "项目列表 \t\t"
