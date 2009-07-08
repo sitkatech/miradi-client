@@ -505,8 +505,8 @@ abstract public class BaseObject
 		TimePeriodCostsMap assignmentTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(tag);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeAll(subTaskTimePeriodCosts);
-		mergedTimePeriodCostsMap.mergeAll(assignmentTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.mergeNonConflicting(subTaskTimePeriodCosts);
+		mergedTimePeriodCostsMap.mergeNonConflicting(assignmentTimePeriodCostsMap);
 		
 		return mergedTimePeriodCostsMap;	
 	}
