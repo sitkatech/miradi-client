@@ -438,6 +438,11 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 	{
 		return visibleRows;
 	}
+	
+	protected Project getProject()
+	{
+		return project;
+	}
 
 	protected Project project;
 	protected CodeList visibleRows;

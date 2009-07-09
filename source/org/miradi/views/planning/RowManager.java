@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
+import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
@@ -45,6 +46,11 @@ public class RowManager
 	public static CodeList getWorkPlanRows(Project project)
 	{
 		return new WorkPlanRowColumnProvider(project).getRowListToShow();
+	}
+	
+	public static CodeList getProjectResourceRows()
+	{
+		return new ProjectResourceRowColumnProvider().getRowListToShow();
 	}
 
 	public static CodeList getVisibleRowsForSingleType(ViewData viewData)

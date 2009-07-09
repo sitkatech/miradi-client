@@ -108,6 +108,7 @@ public class PlanningView extends TabbedView
 		strategicPlanManagementPanel = ActionPlanManagementPanel.createStrategicPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
+		projectResourcesManagementPanel = ProjectResourceManagementPanel.createProjectResourcesPanel(getMainWindow());
 		
 		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
@@ -120,6 +121,7 @@ public class PlanningView extends TabbedView
 		addPlanningManagementTab(objectsOnlyManagementPanel);
 		addPlanningManagementTab(planningManagementPanel);
 		
+		addNonScrollingTab(projectResourcesManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
@@ -154,6 +156,9 @@ public class PlanningView extends TabbedView
 		
 		objectsOnlyManagementPanel.dispose();
 		objectsOnlyManagementPanel = null;
+		
+		projectResourcesManagementPanel.dispose();
+		projectResourcesManagementPanel = null;
 		
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
@@ -266,9 +271,11 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel planningManagementPanel;
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
+	private PlanningTreeManagementPanel projectResourcesManagementPanel;
 	private ResourcePoolManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
+	
 	
 	private HashMap<String, PlanningTreeManagementPanel> managementPanelMap;
 }

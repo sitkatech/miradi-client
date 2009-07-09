@@ -43,6 +43,7 @@ import org.miradi.icons.KeyEcologicalAttributeIcon;
 import org.miradi.icons.MeasurementIcon;
 import org.miradi.icons.MethodIcon;
 import org.miradi.icons.ObjectiveIcon;
+import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
@@ -52,6 +53,7 @@ import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -142,6 +144,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		expenseAssignmentRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(expenseAssignmentRenderer, new ExpenseAssignmentIcon(), getPlainFont());
+		
+		projectResourceRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(projectResourceRenderer, new ProjectResourceIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -204,6 +209,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = assignmentRenderer;
 		else if(ExpenseAssignment.is(node.getType()))
 			renderer = expenseAssignmentRenderer;
+		else if(ProjectResource.is(node.getType()))
+			renderer = projectResourceRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -291,4 +298,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer contributingFactorRenderer;
 	private VariableHeightTreeCellRenderer assignmentRenderer;
 	private VariableHeightTreeCellRenderer expenseAssignmentRenderer;
+	private VariableHeightTreeCellRenderer projectResourceRenderer;
+	
 }

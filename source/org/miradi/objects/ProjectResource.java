@@ -293,7 +293,7 @@ public class ProjectResource extends BaseObject
 	public static final String TAG_CUSTOM_FIELD_1 = "Custom.Custom1";
 	public static final String TAG_CUSTOM_FIELD_2 = "Custom.Custom2";
 
-	static final String OBJECT_NAME = "ProjectResource";
+	public static final String OBJECT_NAME = "ProjectResource";
 
 	private ChoiceData resourceType;
 	private StringData initials;
