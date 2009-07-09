@@ -487,7 +487,7 @@ abstract public class BaseObject
 		return getTotalTimePeriodCostsMap().calculateTimePeriodCosts(dateUnitToUse);
 	}
 	
-	protected TimePeriodCostsMap getTotalTimePeriodCostsMap() throws Exception
+	public TimePeriodCostsMap getTotalTimePeriodCostsMap() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_ASSIGNMENT_REFS);
 		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
