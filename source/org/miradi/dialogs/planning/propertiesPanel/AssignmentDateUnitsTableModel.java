@@ -621,16 +621,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = baseObject.calculateTimePeriodCosts(dateUnit);
-		timePeriodCosts.filterProjectResources(resourceRefsFilter);
+		timePeriodCosts.filterProjectResources(getResourcesFilter());
 		
 		return calculateValue(timePeriodCosts);
 	}
-	
-	public void setResourcesFilter(ORefSet resourceRefFiltersToUse)
-	{
-		resourceRefsFilter = resourceRefFiltersToUse;
-	}
-	
+
 	protected String getTreeModelIdentifierAsTag()
 	{
 		return treeModelIdentifierAsTag;
@@ -652,6 +647,5 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
-	private ORefSet resourceRefsFilter;
 	private String treeModelIdentifierAsTag;
 }
