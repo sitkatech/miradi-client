@@ -410,6 +410,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return budgetDetailsTableModel;
 	}
 	
+	protected PlanningViewMainTableModel getMainModel()
+	{
+		return mainModel;
+	}
+	
 	private RowColumnProvider rowColumnProvider;
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;
