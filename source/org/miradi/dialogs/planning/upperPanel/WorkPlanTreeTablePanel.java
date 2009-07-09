@@ -61,6 +61,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		
 		getWorkUnitsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
+		getMainModel().setResourcesFilter(projectResourceRefsToRetain);
 	}
 		
 	public static String getTabSpecificitModelIdentifier()

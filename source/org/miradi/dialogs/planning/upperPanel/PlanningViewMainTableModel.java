@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
-import java.util.Vector;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel;
@@ -31,6 +30,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -255,24 +255,52 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 	}
 	
-	private ChoiceItem appendedProjectResources(CodeList codeList)
+	private ChoiceItem appendedProjectResources(CodeList resourceRefsAsCodes)
 	{
+		ORefSet filteredResources = getFilteredResources(resourceRefsAsCodes);
+		
 		boolean isFirstIteration = true; 
 		String appendedResources = "";
-		Vector<String> projectResourceRefCodes = codeList.toVector();
-		for(String projectResourceRef : projectResourceRefCodes)
+		for(ORef projectResourceRef : filteredResources)
 		{
 			if (!isFirstIteration)
 				appendedResources += ", ";
 			
-			ORef ref = ORef.createFromString(projectResourceRef);
-			appendedResources += getWhoName(ref);
+			appendedResources += getWhoName(projectResourceRef);
 			isFirstIteration = false;	
 		}
 		
 		return new TaglessChoiceItem(appendedResources);
 	}
 	
+	private ORefSet getFilteredResources(CodeList codeList)
+	{
+		if (codeList.size() == 0)
+			return new ORefSet();
+		
+		ORefSet resourcesToFilter = convertToRefs(codeList);
+		ORefSet resourcesToRetain = getResourcesFilter();
+		if (resourcesToRetain.size() == 0)
+			return resourcesToFilter;
+		
+		resourcesToFilter.retainAll(resourcesToRetain);
+		
+		return resourcesToFilter;
+	}
+
+	private ORefSet convertToRefs(CodeList codeList)
+	{
+		ORefSet refs = new ORefSet();
+		for (int index = 0; index < codeList.size(); ++index)
+		{
+			String refCode = codeList.get(index);
+			ORef ref = ORef.createFromString(refCode);
+			refs.add(ref);
+		}	
+		
+		return refs;
+	}
+
 	private String getWhoName(ORef resourceRef)
 	{
 		if (resourceRef.isInvalid())
