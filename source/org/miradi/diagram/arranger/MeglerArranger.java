@@ -72,6 +72,7 @@ public class MeglerArranger
 	{
 		createGroupBoxes(targets, FactorLink.FROM);
 		createGroupBoxes(threats, FactorLink.TO);
+		createGroupBoxes(strategies, FactorLink.TO);
 	}
 
 	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction) throws Exception
