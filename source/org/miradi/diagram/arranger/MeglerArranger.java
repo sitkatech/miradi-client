@@ -35,6 +35,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -69,32 +70,33 @@ public class MeglerArranger
 	
 	private void createGroupBoxes() throws Exception
 	{
-		createTargetGroupBoxes();
+		createGroupBoxes(targets, FactorLink.FROM);
+		createGroupBoxes(threats, FactorLink.TO);
 	}
 
-	private void createTargetGroupBoxes() throws Exception
+	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction) throws Exception
 	{
 		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>();
-		groupCandidates.addAll(targets);
+		groupCandidates.addAll(diagramFactorsToGroup);
 
 		while(groupCandidates.size() > 1)
 		{
-			Vector<DiagramFactor> groupedTargets = createBiggestPossibleGroup(new Vector<DiagramFactor>(groupCandidates));
+			Vector<DiagramFactor> groupedTargets = createBiggestPossibleGroup(new Vector<DiagramFactor>(groupCandidates), direction);
 			if(groupedTargets.size() == 0)
 				break;
 			groupCandidates.removeAll(groupedTargets);
 		}
 	}
 
-	private Vector<DiagramFactor> createBiggestPossibleGroup(Vector<DiagramFactor> groupCandidates) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
+	private Vector<DiagramFactor> createBiggestPossibleGroup(Vector<DiagramFactor> groupCandidates, int direction) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
 		while(groupCandidates.size() > 1)
 		{
 			int wouldRemoveLinkCount = 0;
-			ORefSet fromDiagramFactorRefs = getRefsOfFactorsThatLinkTo(groupCandidates);
+			ORefSet fromDiagramFactorRefs = getRefsOfFactorsThatLink(groupCandidates, direction);
 			for(ORef fromRef : fromDiagramFactorRefs)
 			{
-				if(isLinkedToAll(fromRef, groupCandidates))
+				if(isLinkedToAll(fromRef, groupCandidates, direction))
 					wouldRemoveLinkCount += groupCandidates.size();
 			}
 			
@@ -122,34 +124,34 @@ public class MeglerArranger
 			linkCreator.createFactorLinkAndDiagramLink(diagram, DiagramFactor.find(getProject(), fromRef), DiagramFactor.find(getProject(), groupDiagramFactorRef));
 	}
 
-	private boolean isLinkedToAll(ORef fromRef, AbstractCollection<DiagramFactor> groupCandidates)
+	private boolean isLinkedToAll(ORef fromRef, AbstractCollection<DiagramFactor> groupCandidates, int direction)
 	{
 		for(DiagramFactor factor : groupCandidates)
 		{
-			if(!diagram.areDiagramFactorsLinkedFromToNonBidirectional(fromRef, factor.getRef()))
+			if(!diagram.areDiagramFactorsLinkedFromToNonBidirectional(fromRef, factor.getRef(), direction))
 				return false;
 		}
 		
 		return true;
 	}
 
-	private ORefSet getRefsOfFactorsThatLinkTo(AbstractCollection<DiagramFactor> groupCandidates)
+	private ORefSet getRefsOfFactorsThatLink(AbstractCollection<DiagramFactor> groupCandidates, int direction)
 	{
 		ORefSet allFroms = new ORefSet();
 		for(DiagramFactor factor : groupCandidates)
-			allFroms.addAll(getRefsOfFactorsThatLinkTo(factor));
+			allFroms.addAll(getRefsOfFactorsThatLink(factor, direction));
 		
 		return allFroms;
 	}
 
-	private ORefSet getRefsOfFactorsThatLinkTo(DiagramFactor factor)
+	private ORefSet getRefsOfFactorsThatLink(DiagramFactor factor, int direction)
 	{
 		ORefList linkRefs = factor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		ORefSet froms = new ORefSet();
 		for(int i = 0; i < linkRefs.size(); ++i)
 		{
 			DiagramLink link = DiagramLink.find(getProject(), linkRefs.get(i));
-			froms.add(link.getFromDiagramFactorRef());
+			froms.add(link.getDiagramFactor(direction).getRef());
 		}
 		return froms;
 	}

@@ -29,6 +29,7 @@ import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
@@ -235,6 +236,42 @@ public class TestMeglerArranger extends TestCaseWithProject
 		
 		assertTrue("Didn't keep existing group?", children1.equals(targets1And2) || children2.equals(targets1And2));
 		assertTrue("Didn't group target3 with target4?", children1.equals(targets3And4) || children2.equals(targets3And4));
+	}
+	
+	public void testThreatGrouping() throws Exception
+	{
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+		DiagramFactor threatDiagramFactor3 = createThreat();
+		DiagramFactor threatDiagramFactor4 = createThreat();
+
+		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor3, targetDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor4, targetDiagramFactor2);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create two threat groups?", 2, groupBoxDiagramFactors.size());
+		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
+		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
+		assertEquals("First group doesn't contain two threats?", 2, children1.size());
+		DiagramFactor groupBoxDiagramFactor2 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[1];
+		ORefSet children2 = new ORefSet(groupBoxDiagramFactor2.getGroupBoxChildrenRefs());
+		assertEquals("Second group doesn't contain two threats?", 2, children2.size());
+
+		ORefSet allGroupedThreats = new ORefSet(children1);
+		allGroupedThreats.addAll(children2);
+		assertContains("Threat 1 not in group?", threatDiagramFactor1.getRef(), allGroupedThreats);
+		assertContains("Threat 2 not in group?", threatDiagramFactor2.getRef(), allGroupedThreats);
+		assertContains("Threat 3 not in group?", threatDiagramFactor3.getRef(), allGroupedThreats);
+		assertContains("Threat 4 not in group?", threatDiagramFactor4.getRef(), allGroupedThreats);
 	}
 	
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException
