@@ -274,6 +274,42 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertContains("Threat 4 not in group?", threatDiagramFactor4.getRef(), allGroupedThreats);
 	}
 	
+	public void testStrategyGrouping() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor4 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor2, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor4, threatDiagramFactor2);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create two strategy groups?", 2, groupBoxDiagramFactors.size());
+		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
+		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
+		assertEquals("First group doesn't contain two strategies?", 2, children1.size());
+		DiagramFactor groupBoxDiagramFactor2 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[1];
+		ORefSet children2 = new ORefSet(groupBoxDiagramFactor2.getGroupBoxChildrenRefs());
+		assertEquals("Second group doesn't contain two strategies?", 2, children2.size());
+
+		ORefSet allGroupedStrategies= new ORefSet(children1);
+		allGroupedStrategies.addAll(children2);
+		assertContains("Strategy 1 not in group?", strategyDiagramFactor1.getRef(), allGroupedStrategies);
+		assertContains("Strategy 2 not in group?", strategyDiagramFactor2.getRef(), allGroupedStrategies);
+		assertContains("Strategy 3 not in group?", strategyDiagramFactor3.getRef(), allGroupedStrategies);
+		assertContains("Strategy 4 not in group?", strategyDiagramFactor4.getRef(), allGroupedStrategies);
+	}
+	
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
