@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 10:49-0500\n"
+"POT-Creation-Date: 2009-07-09 11:55-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -536,8 +536,7 @@ msgid "Project Scope"
 msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:56
-#: miradi/source/org/miradi/dialogfields/ObjectEditableObjectListField.java:86
-msgid "Edit Dialog"
+msgid "Choose Tags"
 msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/doers/EditIndicatorProgressReportDoer.java:31
@@ -3985,10 +3984,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogfields/UndoRedoKeyHandler.java:57
 msgid "An unexpected error prevented that operation"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogfields/ObjectEditableObjectListField.java:50
-msgid "Edit..."
 msgstr ""
 
 #: miradi/source/org/miradi/dialogfields/ObjectReadonlyTimestampField.java:54

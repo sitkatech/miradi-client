@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 10:49-0500\n"
+"POT-Creation-Date: 2009-07-09 11:55-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -596,9 +596,8 @@ msgid "Project Scope"
 msgstr "Project Scope"
 
 #: miradi/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:56
-#: miradi/source/org/miradi/dialogfields/ObjectEditableObjectListField.java:86
-msgid "Edit Dialog"
-msgstr "Dialog Edit "
+msgid "Choose Tags"
+msgstr ""
 
 #: miradi/source/org/miradi/views/diagram/doers/EditIndicatorProgressReportDoer.java:31
 #: miradi/source/org/miradi/views/diagram/doers/EditStrategyProgressReportDoer.java:31
@@ -4417,10 +4416,6 @@ msgstr ""
 #, fuzzy
 msgid "An unexpected error prevented that operation"
 msgstr "An unexpected error prevented that operation"
-
-#: miradi/source/org/miradi/dialogfields/ObjectEditableObjectListField.java:50
-msgid "Edit..."
-msgstr "Edit… "
 
 #: miradi/source/org/miradi/dialogfields/ObjectReadonlyTimestampField.java:54
 msgid "(Unknown)"
@@ -32744,6 +32739,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Edit Dialog"
+#~ msgstr "Dialog Edit "
+
+#~ msgid "Edit..."
+#~ msgstr "Edit… "
 
 #, fuzzy
 #~ msgid "(not specified)"
