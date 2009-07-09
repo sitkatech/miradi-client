@@ -583,7 +583,7 @@ abstract public class BaseObject
 		return formater.format(cost);
 	}
 	
-	public String getWhenTotalAsString()
+	private String getWhenTotalAsString()
 	{
 		try
 		{
