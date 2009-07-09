@@ -60,6 +60,7 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.Translation;
@@ -246,6 +247,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
 				return appendedProjectResources(new CodeList(rawValue));
 			
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
+				return getFilteredWhen(baseObject);
+			
 			return new TaglessChoiceItem(rawValue);
 		}
 		catch (Exception e)
@@ -253,6 +257,24 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			EAM.logException(e);
 			return new TaglessChoiceItem(EAM.text("[Error]"));
 		}
+	}
+	
+	private ChoiceItem getFilteredWhen(BaseObject baseObject) throws Exception
+	{
+		TimePeriodCostsMap totalTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+		DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
+		DateRange rolledUpDateRange = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange, getResourcesFilter());
+		String rolledUpWhen = convertToSafeString(rolledUpDateRange);
+		
+		return new TaglessChoiceItem(rolledUpWhen);
+	}
+	
+	public String convertToSafeString(DateRange combinedDateRange)
+	{
+		if (combinedDateRange == null)
+			return "";
+		
+		return  getProject().getProjectCalendar().getDateRangeName(combinedDateRange);
 	}
 	
 	private ChoiceItem appendedProjectResources(CodeList resourceRefsAsCodes)

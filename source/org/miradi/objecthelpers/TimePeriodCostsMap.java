@@ -126,11 +126,20 @@ public class TimePeriodCostsMap
 	
 	public DateRange getRolledUpDateRange(DateRange projectDateRange) throws Exception
 	{
+		return getRolledUpDateRange(projectDateRange, new ORefSet());
+	}
+	
+	public DateRange getRolledUpDateRange(DateRange projectDateRange, ORefSet resourcesToFilterBy) throws Exception
+	{
 		DateRange combinedDateRange = null;
 		Set<DateUnit> keys = data.keySet();
 		for(DateUnit dateUnit : keys)
 		{
-			combinedDateRange = DateRange.combine(combinedDateRange, convertToDateRange(dateUnit, projectDateRange));
+			TimePeriodCosts timePeriodCosts = data.get(dateUnit);
+			Set<ORef> resourceRefSet = timePeriodCosts.getResourceRefSet();
+			ORefSet resourcesRefs = new ORefSet(resourceRefSet);
+			if (resourcesToFilterBy.containsAny(resourcesRefs) || resourcesToFilterBy.isEmpty())
+				combinedDateRange = DateRange.combine(combinedDateRange, convertToDateRange(dateUnit, projectDateRange));
 		}
 		
 		return combinedDateRange;

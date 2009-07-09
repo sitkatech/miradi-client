@@ -21,6 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.miradi.objects.BaseObject;
 
@@ -48,7 +49,7 @@ public class ORefSet extends HashSet<ORef>
 		this(new ORefList(baseObjects));
 	}
 
-	public ORefSet(ORefSet other)
+	public ORefSet(Set<ORef> other)
 	{
 		super(other);
 	}
