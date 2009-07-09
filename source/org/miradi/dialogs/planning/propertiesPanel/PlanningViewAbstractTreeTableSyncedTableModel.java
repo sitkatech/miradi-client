@@ -36,6 +36,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		
 		project = projectToUse;
 		objectProvider = providerToUse;
+		resourceRefsFilter = new ORefSet();
 	}
 	
 	public int getRowCount()
