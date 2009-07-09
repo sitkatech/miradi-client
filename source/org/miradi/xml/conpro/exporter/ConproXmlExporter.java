@@ -66,7 +66,9 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiMultiCalendar;
@@ -203,7 +205,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeIds(out, OBJECTIVES, OBJECTIVE_ID, new ORefList(objectiveRefs));
 			
 			writeLabelElement(out, NAME, strategy, Strategy.TAG_LABEL);
-			writeOptionalElement(out, TAXONOMY_CODE, strategy, Strategy.TAG_TAXONOMY_CODE);
+			writeOptionalTaxonomyClassificationCode(out, strategy);
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
 			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENTS);
 			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
@@ -214,6 +216,22 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		}
 		
 		writeEndElement(out, STRATEGIES);
+	}
+	
+	private void writeOptionalTaxonomyClassificationCode(UnicodeWriter out,	Strategy strategy) throws Exception
+	{
+		String taxonomyCode = strategy.getTaxonomyCode();
+		ChoiceQuestion question = new StrategyClassificationQuestion();
+		ChoiceItem classificationChoice = question.findChoiceByCode(taxonomyCode);
+		if (classificationChoice.isSelectable())
+		{
+			writeOptionalElement(out, TAXONOMY_CODE, strategy, Strategy.TAG_TAXONOMY_CODE);
+			return;
+		}
+		
+		String errorText = EAM.substitute(EAM.text("Please choose a specific IUCN classification (Not a category). Fix needed for Strategy named:\n'%s'"), strategy.toString());
+		EAM.errorDialog(errorText);
+		throw new Exception(errorText);
 	}
 
 	//NOTE this approach is slow.  Another approach would be to 

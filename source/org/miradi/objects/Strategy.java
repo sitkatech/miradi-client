@@ -156,9 +156,14 @@ public class Strategy extends Factor
 			return getStrategyRatingSummary();
 		
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
-			return new StrategyClassificationQuestion().findChoiceByCode(taxonomyCode.get()).getLabel();
+			return new StrategyClassificationQuestion().findChoiceByCode(getTaxonomyCode()).getLabel();
 		
 		return super.getPseudoData(fieldTag);
+	}
+
+	public String getTaxonomyCode()
+	{
+		return taxonomyCode.get();
 	}
 	
 	@Override
