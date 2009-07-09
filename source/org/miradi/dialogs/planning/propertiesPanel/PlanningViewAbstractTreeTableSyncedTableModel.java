@@ -24,6 +24,7 @@ import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperTableModelInterface;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
@@ -112,6 +113,17 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 	}
 	
+	protected ORefSet getResourcesFilter()
+	{
+		return resourceRefsFilter;
+	}
+
+	public void setResourcesFilter(ORefSet resourceRefFiltersToUse)
+	{
+		resourceRefsFilter = resourceRefFiltersToUse;
+	}
+
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
+	protected ORefSet resourceRefsFilter;
 }
