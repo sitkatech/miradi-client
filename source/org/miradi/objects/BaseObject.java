@@ -545,7 +545,14 @@ abstract public class BaseObject
 	{		
 		try
 		{
-			return ProjectResource.getSortedProjectResourceCodes(getProject(), getAssignedResourceRefs());
+			ORefSet resourcesRefs = getTotalTimePeriodCostsMap().getAllProjectResourceRefs();		
+			CodeList projectResourceCodes = new CodeList();
+			for(ORef resourceRef : resourcesRefs)
+			{
+				projectResourceCodes.add(resourceRef.toString());
+			}
+
+			return projectResourceCodes;
 		}
 		catch (Exception e)
 		{
