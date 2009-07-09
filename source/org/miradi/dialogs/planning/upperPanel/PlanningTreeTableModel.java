@@ -34,7 +34,12 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 {	
 	public PlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
 	{
-		super(createPlanningTreeRootNode(projectToUse, visibleRowCodesToUse));
+		this(projectToUse, createPlanningTreeRootNode(projectToUse, visibleRowCodesToUse), visibleRowCodesToUse, visibleColumnCodesToUse);
+	}
+
+	public PlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, CodeList visibleRowCodesToUse, CodeList visibleColumnCodesToUse) throws Exception
+	{
+		super(rootNode);
 		
 		project = projectToUse;
 		rowsToShow = visibleRowCodesToUse;
