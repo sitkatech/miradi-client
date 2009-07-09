@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-09 15:31-0500\n"
+"POT-Creation-Date: 2009-07-09 17:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -231,6 +231,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/OperationalPlan/WorkPlanManagementPanel.java:58
 msgid "Tab|Work Plan"
+msgstr ""
+
+#: miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:47
+msgid "Project Resources"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
@@ -6725,7 +6729,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Error]"
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:53
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningTreeTableModel.java:58
 msgid ""
 "<HTML>A severe error has prevented this Planning Subview from being shown."
 "<BR>Please contact Miradi Support (<a href=\"mailto:support@miradi.org"
@@ -7867,6 +7871,33 @@ msgid "FieldLabel|12.MetaExpenseAmountColumnCode|Expense Amount Detail"
 msgstr ""
 
 msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Details"
+msgstr ""
+
+msgid "FieldLabel|12.ResourceType|Resource Type"
+msgstr ""
+
+msgid "FieldLabel|12.Initials|Resource ID"
+msgstr ""
+
+msgid "FieldLabel|12.Name|Given Name"
+msgstr ""
+
+msgid "FieldLabel|12.SurName|Surname"
+msgstr ""
+
+msgid "FieldLabel|12.PhoneNumber|Office"
+msgstr ""
+
+msgid "FieldLabel|12.Organization|Organization"
+msgstr ""
+
+msgid "FieldLabel|12.Position|Position"
+msgstr ""
+
+msgid "FieldLabel|12.Email|Email"
+msgstr ""
+
+msgid "FieldLabel|12.Location|Location"
 msgstr ""
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
