@@ -48,7 +48,6 @@ import org.miradi.dialogfields.ObjectCurrencyInputField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectDateChooserInputField;
 import org.miradi.dialogfields.ObjectDateRangeInputField;
-import org.miradi.dialogfields.ObjectEditableObjectListField;
 import org.miradi.dialogfields.ObjectExpandingMultilineInputField;
 import org.miradi.dialogfields.ObjectIconChoiceField;
 import org.miradi.dialogfields.ObjectMultilineDisplayField;
@@ -489,11 +488,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public ObjectDataInputField createIndicatorRelevancyOverrideListField(ChoiceQuestion question)
 	{
 		return new IndicatorRelevancyOverrideListField(project, getORef(0).getObjectType(), getObjectIdForType(getORef(0).getObjectType()), question);
-	}
-	
-	public ObjectDataInputField createEditableObjectListField(MainWindow mainWindowToUse, int objectType, String tagToUse)
-	{
-		return new ObjectEditableObjectListField(mainWindowToUse, getRefForType(objectType), tagToUse);
 	}
 	
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)
