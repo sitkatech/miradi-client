@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
+import org.miradi.dialogs.planning.ProjectResourceCoreRowColumnProvider;
+import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
@@ -30,6 +32,7 @@ import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.utils.CodeList;
 
 public class ProjectResourceManagementPanel extends PlanningTreeManagementPanel
 {
@@ -49,11 +52,33 @@ public class ProjectResourceManagementPanel extends PlanningTreeManagementPanel
 
 	public static PlanningTreeManagementPanel createProjectResourcesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		PlanningTreeTableModel projectResourcesTreeTableModel = new ProjectResourceTreeTableModel(mainWindowToUse.getProject());
-		PlanningTreeTablePanel projectResourcesPlanTreeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, projectResourcesTreeTableModel);
+		PlanningTreeTableModel projectResourcesTreeTableModel = new ProjectResourceTreeTableModel(mainWindowToUse.getProject(), getProjectResourceColumns());
+		ProjectResourceRowColumnProvider rowColumnProvider = new ProjectResourceRowColumnProvider();
+		PlanningTreeTablePanel projectResourcesPlanTreeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, projectResourcesTreeTableModel, rowColumnProvider);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)projectResourcesPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel projectResourcesPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		
 		return new ProjectResourceManagementPanel(mainWindowToUse, projectResourcesPlanTreeTablePanel, projectResourcesPlanPropertiesPanel);
+	}
+	
+	public static PlanningTreeManagementPanel createProjectResourcesPanelWithoutTotalsColumns(MainWindow mainWindowToUse) throws Exception
+	{
+		PlanningTreeTableModel projectResourcesTreeTableModel = new ProjectResourceTreeTableModel(mainWindowToUse.getProject(), getProjectResourceColumnsWithoutTotalsColumns());
+		ProjectResourceCoreRowColumnProvider rowColumnProvider = new ProjectResourceCoreRowColumnProvider();
+		PlanningTreeTablePanel projectResourcesPlanTreeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, projectResourcesTreeTableModel, rowColumnProvider);
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)projectResourcesPlanTreeTablePanel.getTree();
+		PlanningTreeMultiPropertiesPanel projectResourcesPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		
+		return new ProjectResourceManagementPanel(mainWindowToUse, projectResourcesPlanTreeTablePanel, projectResourcesPlanPropertiesPanel);
+	}
+	
+	private static CodeList getProjectResourceColumns()
+	{
+		return new ProjectResourceRowColumnProvider().getColumnListToShow();
+	}
+	
+	private static CodeList getProjectResourceColumnsWithoutTotalsColumns()
+	{
+		return new ProjectResourceCoreRowColumnProvider().getColumnListToShow();
 	}
 }

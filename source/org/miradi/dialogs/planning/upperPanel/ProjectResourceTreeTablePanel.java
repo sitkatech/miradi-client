@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 
@@ -36,11 +35,9 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 
 	}
 
-	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model) throws Exception
+	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTableModel model, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
-
-		ProjectResourceRowColumnProvider rowColumnProvider = new ProjectResourceRowColumnProvider();
 
 		return new ProjectResourceTreeTablePanel (mainWindowToUse, treeTable, model, rowColumnProvider);
 	}

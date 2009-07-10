@@ -28,19 +28,14 @@ import org.miradi.utils.CodeList;
 
 public class ProjectResourceTreeTableModel extends PlanningTreeTableModel
 {
-	public ProjectResourceTreeTableModel(Project project) throws Exception
+	public ProjectResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
 	{
-		super(project, createProjectResourceRootNode(project), getProjectResourceRows(), getProjectResourceColumns());
+		super(project, createProjectResourceRootNode(project), getProjectResourceRows(), visibleColumns);
 	}
 	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
 		return new ProjectResourceTreeRootNode(project, getProjectResourceRows());
-	}
-	
-	private static CodeList getProjectResourceColumns()
-	{
-		return new ProjectResourceRowColumnProvider().getColumnListToShow();
 	}
 	
 	private static CodeList getProjectResourceRows()
