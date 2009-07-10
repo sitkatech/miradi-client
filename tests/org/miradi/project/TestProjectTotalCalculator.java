@@ -21,12 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.project;
 
 import org.miradi.diagram.PersistentDiagramModel;
+import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectResource;
@@ -75,12 +77,31 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		assertEquals("did not include strategy inside results chain?", 10.0, strategyTimePeriodCosts.calculateResourcesTotalUnits().getValue());
 	}
 
-	public void testIndicatorProjectTotal() throws Exception
+	public void testConceptualModelIndicatorProjectTotal() throws Exception
 	{
 		Indicator indicatorWithResourceAssignment = getProject().createAndPopulateIndicator();
 		addResourceAssignment(indicatorWithResourceAssignment);
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.add(indicatorWithResourceAssignment.getId());
+		
+		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(Cause.getObjectType());
+		getProject().fillObjectUsingCommand(diagramFactor.getWrappedORef(), Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+		
+		assertEquals("did not include indicator in totals?", 0, calculator.calculateProjectTotals().size());
+	}
+	
+	public void testResultsChainIndicatorProjectTotal() throws Exception
+	{
+		Indicator indicatorWithResourceAssignment = getProject().createAndPopulateIndicator();
+		addResourceAssignment(indicatorWithResourceAssignment);
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.add(indicatorWithResourceAssignment.getId());
+		
+		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Cause.getObjectType());
+		getProject().fillObjectUsingCommand(diagramFactor.getWrappedORef(), Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+		
 		TimePeriodCostsMap totalsWithIndicator = calculator.calculateProjectTotals();
-		assertEquals("did not include indicator in totals?", 1, totalsWithIndicator.size());
+		assertEquals("did not include results chain indicator in totals?", 1, totalsWithIndicator.size());
 		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		
 		assertEquals("wrong resources total units calculation with indicator?", 10.0, indictorTimePeriodCosts.calculateResourcesTotalUnits().getValue());
