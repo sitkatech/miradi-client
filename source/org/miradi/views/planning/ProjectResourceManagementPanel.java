@@ -26,7 +26,7 @@ import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.ProjectResourcesTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -50,7 +50,7 @@ public class ProjectResourceManagementPanel extends PlanningTreeManagementPanel
 	public static PlanningTreeManagementPanel createProjectResourcesPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTableModel projectResourcesTreeTableModel = new ProjectResourceTreeTableModel(mainWindowToUse.getProject());
-		PlanningTreeTablePanel projectResourcesPlanTreeTablePanel = ProjectResourcesTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, projectResourcesTreeTableModel);
+		PlanningTreeTablePanel projectResourcesPlanTreeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, projectResourcesTreeTableModel);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)projectResourcesPlanTreeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel projectResourcesPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		
