@@ -31,10 +31,12 @@ import org.miradi.dialogs.diagram.StrategyPropertiesPanel;
 import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
+import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramKeaModeTargetPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramSimpleModeTargetPropertiesPanel;
 import org.miradi.forms.HumanWelfareTargetPropertiesForm;
+import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -46,6 +48,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -115,6 +118,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
 		resultsChainPropertiesPanel = new ResultsChainPropertiesPanel(getProject(), ORef.INVALID);
 		conceptualModelPropertiesPanel = new ConceptualModelPropertiesPanel(getProject(), ORef.INVALID);
+		projectResourcePropertiesPanel = new ResourcePropertiesPanel(getProject(), BaseId.INVALID);
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
@@ -133,6 +137,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(threatReductionResultPropertiesPanel);
 		addPanel(resultsChainPropertiesPanel);
 		addPanel(conceptualModelPropertiesPanel);
+		addPanel(projectResourcePropertiesPanel);
 		addPanel(blankPropertiesPanel);
 	}
 	
@@ -208,6 +213,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if (ConceptualModelDiagram.is(objectType))
 			return conceptualModelPropertiesPanel;
 		
+		if (ProjectResource.is(objectType))
+			return projectResourcePropertiesPanel;
+		
 		return blankPropertiesPanel;
 	}
 
@@ -273,5 +281,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private MeasurementPropertiesPanel measurementPropertiesPanel;
 	private ResultsChainPropertiesPanel resultsChainPropertiesPanel;
 	private ConceptualModelPropertiesPanel conceptualModelPropertiesPanel;
+	private ResourcePropertiesPanel projectResourcePropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }
