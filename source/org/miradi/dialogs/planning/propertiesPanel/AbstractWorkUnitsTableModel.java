@@ -20,7 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import java.awt.Color;
+
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.AppPreferences;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.Project;
 
 abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTableModel
@@ -28,5 +32,12 @@ abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTab
 	public AbstractWorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse,	String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+	}
+
+	@Override
+	public Color getCellBackgroundColor(int column)
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		return AppPreferences.getWorkUnitsBackgroundColor(dateUnit);
 	}
 }
