@@ -32,7 +32,7 @@ import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButto
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPanel;
-import org.miradi.dialogs.planning.propertiesPanel.WorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
@@ -87,7 +87,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		multiModel = new PlanningTreeMultiTableModel(treeToUse.getUniqueTableIdentifier());
 		measurementModel = new PlanningViewMeasurementTableModel(getProject(), treeToUse);
 		futureStatusModel = new PlanningViewFutureStatusTableModel(getProject(), treeToUse);
-		workUnitsTableModel = new WorkUnitsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
+		workUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
@@ -400,7 +400,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return rowColumnProvider;
 	}
 	
-	protected WorkUnitsTableModel getWorkUnitsTableModel()
+	protected PlanningWorkUnitsTableModel getWorkUnitsTableModel()
 	{
 		return workUnitsTableModel;
 	}
@@ -422,7 +422,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
-	protected WorkUnitsTableModel workUnitsTableModel;
+	protected PlanningWorkUnitsTableModel workUnitsTableModel;
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
 	protected BudgetDetailsTableModel budgetDetailsTableModel;
 
