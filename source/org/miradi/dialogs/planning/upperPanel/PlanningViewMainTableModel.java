@@ -193,6 +193,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		
+		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
+			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
 		

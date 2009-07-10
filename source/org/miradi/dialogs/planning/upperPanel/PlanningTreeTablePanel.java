@@ -27,12 +27,14 @@ import javax.swing.JScrollPane;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButtonRow;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
@@ -90,6 +92,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		workUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
+		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
@@ -324,6 +327,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		measurementModel.fireTableDataChanged();
 		futureStatusModel.fireTableDataChanged();
 		workUnitsTableModel.fireTableDataChanged();
+		resourceWorkUnitsTableModel.fireTableDataChanged();
 		expenseAmountsTableModel.fireTableDataChanged();
 		budgetDetailsTableModel.fireTableDataChanged();
 		restoreTreeExpansionState();
@@ -354,6 +358,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(workUnitsTableModel);
+		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
+			multiModel.addModel(resourceWorkUnitsTableModel);
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
@@ -400,7 +407,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return rowColumnProvider;
 	}
 	
-	protected PlanningWorkUnitsTableModel getWorkUnitsTableModel()
+	protected AbstractWorkUnitsTableModel getWorkUnitsTableModel()
 	{
 		return workUnitsTableModel;
 	}
@@ -422,9 +429,10 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
-	protected PlanningWorkUnitsTableModel workUnitsTableModel;
+	protected AbstractWorkUnitsTableModel workUnitsTableModel;
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
 	protected BudgetDetailsTableModel budgetDetailsTableModel;
+	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	private ProjectResourceFilterStatusPanel filterStatusPanel;
