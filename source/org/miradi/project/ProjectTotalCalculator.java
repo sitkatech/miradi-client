@@ -46,8 +46,8 @@ public class ProjectTotalCalculator
 		Set nonDraftStrategiesInResultsChains = getAllResultsChainNonDraftStrategies();
 		
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
-		totalTimePeriodCostsMap.mergeAll(mergeAll(allIndicators));
-		totalTimePeriodCostsMap.mergeAll(mergeAll(nonDraftStrategiesInResultsChains));
+		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(allIndicators));
+		totalTimePeriodCostsMap.mergeAll(getTotalTimePeriodCostsMap(nonDraftStrategiesInResultsChains));
 		
 		return totalTimePeriodCostsMap;
 	}
@@ -84,7 +84,7 @@ public class ProjectTotalCalculator
 		return indicators;
 	}
 
-	private TimePeriodCostsMap mergeAll(Set<BaseObject> baseObjects) throws Exception
+	private TimePeriodCostsMap getTotalTimePeriodCostsMap(Set<BaseObject> baseObjects) throws Exception
 	{
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
 		for(BaseObject baseObject : baseObjects)
