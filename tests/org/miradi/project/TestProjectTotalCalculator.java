@@ -51,44 +51,61 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		resultsChainDiagramModel.fillFrom(resultsChain);
 		
 		fred = getProject().createAndPopulateProjectResource();
+		calculator = new ProjectTotalCalculator(getProject());
+		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
 	}
 	
-	public void testProjectTotalCalculation() throws Exception
+	public void testResultsChainDraftStrategyProjectTotal() throws Exception
 	{
+		DiagramFactor resultsChainDraftStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Strategy.getObjectType());
+		addResourceAssignment(resultsChainDraftStrategy.getWrappedFactor());
+		getProject().turnOnDraft((Strategy)resultsChainDraftStrategy.getWrappedFactor());
+		TimePeriodCostsMap totalsWithDraftStrategy = calculator.calculateProjectTotals();
 		
-		assertEquals("no results chains created?", 1, getProject().getResultsChainDiagramPool().size());
-		ProjectTotalCalculator calculator = new ProjectTotalCalculator(getProject());
-		assertEquals("Empty project had non-zero totals data?", 0, calculator.calculateProjectTotals().size());
-		
-		DiagramFactor conceptualModelStrategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		getProject().addResourceAssignment(conceptualModelStrategy.getWrappedFactor(), fred, 10, YEAR_2008, YEAR_2009);
-		assertEquals("ConceptualModel Strategy included in project totals?", 0, calculator.calculateProjectTotals().size());
-		
-		DiagramFactor conceptualModelDraftStrategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		getProject().turnOnDraft((Strategy)conceptualModelDraftStrategy.getWrappedFactor());
-		getProject().addResourceAssignment(conceptualModelDraftStrategy.getWrappedFactor(), fred, 10, YEAR_2008, YEAR_2009);
-		assertEquals("ConceptualModel Draft Strategy included in project totals?", 0, calculator.calculateProjectTotals().size());
-		
-		Indicator indicatorWithResourceAssignment = getProject().createAndPopulateIndicator();
-		addResourceAssignment(indicatorWithResourceAssignment);
-		TimePeriodCostsMap totalsWithIndicator = calculator.calculateProjectTotals();
-		assertEquals("did not include indicator in totals?", 1, totalsWithIndicator.size());
-		DateUnit dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
-		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		assertEquals("wrong resources total units calculation with indicator?", 10.0, indictorTimePeriodCosts.calculateResourcesTotalUnits().getValue());
-		
+		assertEquals("Results chain Draft Strategy included in project totals?", 0, totalsWithDraftStrategy.size());
+	}
+
+	public void testResultsChainStrategyProjectTotal() throws Exception
+	{
 		DiagramFactor resultsChainNonDraftStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Strategy.getObjectType());
 		addResourceAssignment(resultsChainNonDraftStrategy.getWrappedFactor());
 		TimePeriodCostsMap totalsWithNonDraftStrategy = calculator.calculateProjectTotals();
 		TimePeriodCosts strategyTimePeriodCosts = totalsWithNonDraftStrategy.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		assertEquals("did not include strategy inside results chain?", 20.0, strategyTimePeriodCosts.calculateResourcesTotalUnits().getValue());
 		
-		DiagramFactor resultsChainDraftStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Strategy.getObjectType());
+		assertEquals("did not include strategy inside results chain?", 10.0, strategyTimePeriodCosts.calculateResourcesTotalUnits().getValue());
+	}
+
+	public void testIndicatorProjectTotal() throws Exception
+	{
+		Indicator indicatorWithResourceAssignment = getProject().createAndPopulateIndicator();
+		addResourceAssignment(indicatorWithResourceAssignment);
+		TimePeriodCostsMap totalsWithIndicator = calculator.calculateProjectTotals();
+		assertEquals("did not include indicator in totals?", 1, totalsWithIndicator.size());
+		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		
+		assertEquals("wrong resources total units calculation with indicator?", 10.0, indictorTimePeriodCosts.calculateResourcesTotalUnits().getValue());
+	}
+
+	public void testConceptualModelDraftStrategyProjectTotal() throws Exception
+	{
+		DiagramFactor conceptualModelDraftStrategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
 		getProject().turnOnDraft((Strategy)conceptualModelDraftStrategy.getWrappedFactor());
-		TimePeriodCostsMap totalsWithDraftStrategy = calculator.calculateProjectTotals();
-		TimePeriodCosts draftStrategyTimePeriodCosts = totalsWithDraftStrategy.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		addResourceAssignment(resultsChainDraftStrategy.getWrappedFactor());
-		assertEquals("Results chain Draft Strategy included in project totals?", 20.0, draftStrategyTimePeriodCosts.calculateResourcesTotalUnits().getValue());
+		addResourceAssignment(conceptualModelDraftStrategy.getWrappedFactor());
+		
+		assertEquals("ConceptualModel Draft Strategy included in project totals?", 0, calculator.calculateProjectTotals().size());
+	}
+
+	public void testConceptualModelStrategyProjectTotal() throws Exception
+	{
+		DiagramFactor conceptualModelStrategy = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		addResourceAssignment(conceptualModelStrategy.getWrappedFactor());
+		assertEquals("ConceptualModel Strategy included in project totals?", 0, calculator.calculateProjectTotals().size());
+	}
+
+	public void testEmptyProjectTotal() throws Exception
+	{
+		assertEquals("no results chains created?", 1, getProject().getResultsChainDiagramPool().size());
+		assertEquals("Empty project had non-zero totals data?", 0, calculator.calculateProjectTotals().size());
 	}
 
 	private void addResourceAssignment(BaseObject wrappedFactor) throws Exception
@@ -100,5 +117,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	private static final int YEAR_2009 = 2009;
 	
 	private PersistentDiagramModel resultsChainDiagramModel;
-	private ProjectResource fred; 
+	private ProjectResource fred;
+	private ProjectTotalCalculator calculator;
+	private DateUnit dateUnit;
 }
