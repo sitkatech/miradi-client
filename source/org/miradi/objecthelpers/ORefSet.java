@@ -32,6 +32,11 @@ public class ORefSet extends HashSet<ORef>
 		super();
 	}
 
+	public ORefSet(BaseObject baseObject)
+	{
+		this(baseObject.getRef());
+	}
+	
 	public ORefSet(ORef ref)
 	{
 		this();
