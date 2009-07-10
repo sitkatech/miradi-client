@@ -317,9 +317,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public Strategy createAndPopulateDraftStrategy() throws Exception
 	{
 		Strategy strategy = createAndPopulateStrategy();
-		fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
+		turnOnDraft(strategy);
 		
 		return strategy;
+	}
+
+	public void turnOnDraft(Strategy strategy) throws Exception
+	{
+		fillObjectUsingCommand(strategy, Strategy.TAG_STATUS, Strategy.STATUS_DRAFT);
 	}
 	
 	public ProgressReport createAndPopulateProgressReport() throws Exception
@@ -913,19 +918,31 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public DiagramFactorId createAndAddFactorToDiagram(int nodeType) throws Exception
 	{
-		return createAndAddFactorToDiagram(nodeType, takeNextId(nodeType));
+		return createAndAddFactorToDiagram(nodeType, takeNextId(nodeType)).getDiagramFactorId();
 	}
 	
-	public DiagramFactorId createAndAddFactorToDiagram(int nodeType, int id) throws Exception
+	private DiagramFactor createAndAddFactorToDiagram(int nodeType, int id) throws Exception
+	{
+		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
+		return createAndAddFactorToDiagram(diagramObject, nodeType, id);
+	}
+
+	public DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, int objectType) throws Exception
+	{
+		return createAndAddFactorToDiagram(diagramObject, objectType, takeNextId(objectType));
+	}
+	
+	private DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, int objectType, int id) throws Exception
 	{
 		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getDiagramModel());
-		CommandCreateObject createFactor = new CommandCreateObject(nodeType);
+		CommandCreateObject createFactor = new CommandCreateObject(objectType);
 		createFactor.setCreatedId(new BaseId(id));
 		executeCommand(createFactor);
 		ORef factorRef = new ORef(createFactor.getObjectType(), createFactor.getCreatedId());
-		CommandCreateObject createDiagramFactor = factorHelper.createDiagramFactor(getDiagramModel().getDiagramObject(), factorRef);
 		
-		return new DiagramFactorId(createDiagramFactor.getCreatedId().asInt());
+		CommandCreateObject createDiagramFactor = factorHelper.createDiagramFactor(diagramObject, factorRef);
+		
+		return DiagramFactor.find(this, createDiagramFactor.getObjectRef());
 	}
 	
 	public DiagramFactor createDiagramFactorWithWrappedRefLabelAndAddToDiagram(int objectType) throws Exception
@@ -939,7 +956,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramFactor createDiagramFactorAndAddToDiagram(int objectType) throws Exception
 	{
-		return createDiagramFactorAndAddToDiagram(objectType, takeNextId(objectType));
+		return createAndAddFactorToDiagram(objectType, takeNextId(objectType));
 	}
 	
 	public ORef createDiagramFactorLinkAndAddToDiagram(DiagramFactor from, DiagramFactor to) throws Exception
@@ -976,14 +993,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return next;
 	}
 	
-	private DiagramFactor createDiagramFactorAndAddToDiagram(int objectType, int factorId) throws Exception
-	{
-		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType, factorId);
-		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
-
-		return diagramFactor;
-	}
-	
 	public FactorId createNodeAndAddToDiagram(int objectType) throws Exception
 	{
 		return createNodeAndAddToDiagram(objectType, takeNextId(objectType));
@@ -991,10 +1000,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public FactorId createNodeAndAddToDiagram(int objectType, int factorId) throws Exception
 	{
-		DiagramFactorId diagramFactorId = createAndAddFactorToDiagram(objectType, factorId);
-		DiagramFactor diagramFactor = (DiagramFactor) findObject(new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId));
-	
-		return diagramFactor.getWrappedId();
+		return createAndAddFactorToDiagram(objectType, factorId).getWrappedId();
 	}
 	
 	public FactorCell createFactorCell(int objectType) throws Exception
@@ -1004,7 +1010,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public FactorCell createFactorCell(int objectType, int factorId) throws Exception
 	{
-		DiagramFactor diagramFactor = createDiagramFactorAndAddToDiagram(objectType, factorId);
+		DiagramFactor diagramFactor = createAndAddFactorToDiagram(objectType, factorId);
 		return getDiagramModel().getFactorCellByWrappedRef(diagramFactor.getWrappedORef());
 	}
 	
@@ -1035,8 +1041,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ORef createDiagramLink() throws Exception
 	{
-		DiagramFactor from = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
-		DiagramFactor to = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
+		DiagramFactor from = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
+		DiagramFactor to = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
 		return createDiagramLink(from, to);
 	}
 
@@ -1138,9 +1144,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createThreatTargetLink() throws Exception
 	{
-		DiagramFactor threat = createDiagramFactorAndAddToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
+		DiagramFactor threat = createAndAddFactorToDiagram(ObjectType.CAUSE, takeNextId(Cause.getObjectType()));
 		enableAsThreat(threat.getWrappedORef());
-		DiagramFactor target = createDiagramFactorAndAddToDiagram(ObjectType.TARGET, takeNextId(Target.getObjectType()));
+		DiagramFactor target = createAndAddFactorToDiagram(ObjectType.TARGET, takeNextId(Target.getObjectType()));
 
 		CreateFactorLinkParameter parameter = new CreateFactorLinkParameter(threat.getWrappedORef(), target.getWrappedORef());
 		
@@ -1221,8 +1227,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ResourceAssignment addResourceAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception
 	{
-		ResourceAssignment assignment = createResourceAssignment();
 		ProjectResource projectResource = createAndPopulateProjectResource();
+		return addResourceAssignment(baseObject, projectResource, units, startYear, endYear);
+	}
+
+	public ResourceAssignment addResourceAssignment(BaseObject parentObject, ProjectResource projectResource, double units, int startYear,	int endYear) throws Exception
+	{
+		ResourceAssignment assignment = createResourceAssignment();
 		fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
 		
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
@@ -1232,9 +1243,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		dateUnitEffort.setUnitQuantity(units);
 		dateUnitEffortList.add(dateUnitEffort);
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
-		IdList currentAssignmentIdList = baseObject.getResourceAssignmentIdList();
+		IdList currentAssignmentIdList = parentObject.getResourceAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
-		baseObject.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+		parentObject.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
 		
 		return assignment;
 	}

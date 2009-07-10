@@ -149,6 +149,7 @@ import org.miradi.project.TestHumanWelfareTargetPool;
 import org.miradi.project.TestIdAssigner;
 import org.miradi.project.TestIntermediateResultPool;
 import org.miradi.project.TestProject;
+import org.miradi.project.TestProjectTotalCalculator;
 import org.miradi.project.TestProjectCalendar;
 import org.miradi.project.TestProjectCommandExecutions;
 import org.miradi.project.TestProjectInfo;
@@ -271,6 +272,7 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestStressBasedThreatFormula.class));
 		suite.addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));
 		suite.addTest(new TestSuite(TestGroupBoxPool.class));
+		suite.addTest(new TestSuite(TestProjectTotalCalculator.class));
 		
 		//questions package
 		suite.addTest(new TestSuite(TestChoiceItem.class));
