@@ -55,6 +55,17 @@ abstract public class DiagramObject extends BaseObject
 		super(objectManager, new DiagramContentsId(idToUse), json);
 	}
 
+	public HashSet<Factor> getFactors(int wrappedType)
+	{
+		HashSet<Factor> filteredFactorsByType = new HashSet();
+		HashSet<DiagramFactor> filteredDiagramFactors = getFactorsFromDiagram(wrappedType);
+		for(DiagramFactor diagramFactor : filteredDiagramFactors)
+		{
+			filteredFactorsByType.add(diagramFactor.getWrappedFactor());
+		}
+		
+		return filteredFactorsByType;
+	}
 	
 	public HashSet<DiagramFactor> getFactorsFromDiagram(int wrappedType)
 	{
