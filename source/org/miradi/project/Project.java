@@ -143,6 +143,7 @@ public class Project
 		database = databaseToUse;
 		commandExecutedListeners = new Vector<CommandExecutedListener>();
 		projectCalendar = new ProjectCalendar(this);
+		projectTotalCalculator = new ProjectTotalCalculator(this);
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		enableThreatStressRatingEnsurer();
 
@@ -481,6 +482,11 @@ public class Project
 	public ProjectCalendar getProjectCalendar()
 	{
 		return projectCalendar;
+	}
+	
+	public ProjectTotalCalculator getProjectTotalCalculator()
+	{
+		return projectTotalCalculator;
 	}
 
 	public BaseObject findObject(ORef ref)
@@ -1523,6 +1529,7 @@ public class Project
 	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
+	private ProjectTotalCalculator projectTotalCalculator;
 
 	private Vector<CommandExecutedListener> commandExecutedListeners;
 	

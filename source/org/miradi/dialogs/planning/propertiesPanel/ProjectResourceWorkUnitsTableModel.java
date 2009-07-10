@@ -23,16 +23,33 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectTotalCalculator;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.utils.OptionalDouble;
 
 public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 {
 	public ProjectResourceWorkUnitsTableModel(Project projectToUse,	RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
+	}
+	
+	@Override
+	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	{
+		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
+		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals();
+		TimePeriodCosts timePeriodCosts = totalProject.calculateTimePeriodCosts(dateUnit);
+		timePeriodCosts.filterProjectResources(new ORefSet(baseObject));
+		
+		return calculateValue(timePeriodCosts);
 	}
 
 	@Override
