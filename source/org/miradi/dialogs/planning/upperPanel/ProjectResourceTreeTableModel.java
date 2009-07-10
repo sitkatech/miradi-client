@@ -26,9 +26,9 @@ import org.miradi.project.Project;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-public class ProjectResourcesPlanningTreeTableModel extends PlanningTreeTableModel
+public class ProjectResourceTreeTableModel extends PlanningTreeTableModel
 {
-	public ProjectResourcesPlanningTreeTableModel(Project project) throws Exception
+	public ProjectResourceTreeTableModel(Project project) throws Exception
 	{
 		super(project, createProjectResourceRootNode(project), RowManager.getProjectResourceRows(), ColumnManager.getProjectResourceColumns());
 	}
