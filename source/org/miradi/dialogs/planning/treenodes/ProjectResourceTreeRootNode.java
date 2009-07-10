@@ -29,9 +29,9 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class PlanningTreeProjectResourcesRootNode extends AbstractPlanningTreeNode
+public class ProjectResourceTreeRootNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeProjectResourcesRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public ProjectResourceTreeRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		
