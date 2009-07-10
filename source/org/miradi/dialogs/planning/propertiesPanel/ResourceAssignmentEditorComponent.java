@@ -40,7 +40,7 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 		abstractSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
 		abstractSummaryTable = new ResourceAssignmentMainTable(getMainWindow(), abstractSummaryTableModel);
 		
-		assignmentDateUnitsTableModel = new WorkUnitsTableModel(getProject(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
+		assignmentDateUnitsTableModel = new PlanningWorkUnitsTableModel(getProject(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
 		assignmentDateUnitsTable = new AssignmentWorkUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
 	}
 	
