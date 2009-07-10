@@ -20,22 +20,32 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.ProjectResourceTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.project.Project;
-import org.miradi.views.planning.ColumnManager;
-import org.miradi.views.planning.RowManager;
+import org.miradi.utils.CodeList;
 
 public class ProjectResourceTreeTableModel extends PlanningTreeTableModel
 {
 	public ProjectResourceTreeTableModel(Project project) throws Exception
 	{
-		super(project, createProjectResourceRootNode(project), RowManager.getProjectResourceRows(), ColumnManager.getProjectResourceColumns());
+		super(project, createProjectResourceRootNode(project), getProjectResourceRows(), getProjectResourceColumns());
 	}
 	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
-		return new ProjectResourceTreeRootNode(project, RowManager.getProjectResourceRows());
+		return new ProjectResourceTreeRootNode(project, getProjectResourceRows());
+	}
+	
+	public static CodeList getProjectResourceColumns()
+	{
+		return new ProjectResourceRowColumnProvider().getColumnListToShow();
+	}
+	
+	public static CodeList getProjectResourceRows()
+	{
+		return new ProjectResourceRowColumnProvider().getRowListToShow();
 	}
 
 	@Override
