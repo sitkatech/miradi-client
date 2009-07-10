@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-10 10:06-0500\n"
+"POT-Creation-Date: 2009-07-10 15:13-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -1981,15 +1981,15 @@ msgstr "标准报告 \t\t"
 msgid "Custom Reports"
 msgstr "定制报告 \t\t"
 
-#: miradi/source/org/miradi/project/Project.java:171
+#: miradi/source/org/miradi/project/Project.java:172
 msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
-#: miradi/source/org/miradi/project/Project.java:177
+#: miradi/source/org/miradi/project/Project.java:178
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:904
+#: miradi/source/org/miradi/project/Project.java:910
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
@@ -6477,7 +6477,7 @@ msgstr "任务属性 \t\t"
 msgid "Planning View Configuration Label Properties"
 msgstr "计划视图配置标签属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:41
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:64
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 
