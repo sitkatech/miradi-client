@@ -24,9 +24,9 @@ import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 
-public class ProjectResourcesTreeTablePanel  extends PlanningTreeTablePanel
+public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 {
-	protected ProjectResourcesTreeTablePanel (MainWindow mainWindowToUse,
+	protected ProjectResourceTreeTablePanel (MainWindow mainWindowToUse,
 			PlanningTreeTable treeToUse, 
 			PlanningTreeTableModel modelToUse, 
 			RowColumnProvider rowColumnProvider
@@ -42,6 +42,6 @@ public class ProjectResourcesTreeTablePanel  extends PlanningTreeTablePanel
 
 		ProjectResourceRowColumnProvider rowColumnProvider = new ProjectResourceRowColumnProvider();
 
-		return new ProjectResourcesTreeTablePanel (mainWindowToUse, treeTable, model, rowColumnProvider);
+		return new ProjectResourceTreeTablePanel (mainWindowToUse, treeTable, model, rowColumnProvider);
 	}
 }
