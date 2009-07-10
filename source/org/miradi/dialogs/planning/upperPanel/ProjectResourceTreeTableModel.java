@@ -49,5 +49,5 @@ public class ProjectResourceTreeTableModel extends PlanningTreeTableModel
 		return UNIQUE_TREE_TABLE_IDENTIFIER;
 	}
 	
-	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ProjectResourcesPlanningTreeTableModel";
+	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ProjectResourceTreeTableModel";
 }
