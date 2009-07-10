@@ -125,5 +125,5 @@ public class PlanningWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 		return CommandSetObjectData.createAppendIdCommand(baseObjectForRowColumn, getAssignmentsTag(), assignmentRef.getObjectId());
 	}
 	
-	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "WorkUnitsTableModel";
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "PlanningWorkUnitsTableModel";
 }
