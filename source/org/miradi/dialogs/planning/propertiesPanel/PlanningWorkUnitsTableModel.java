@@ -29,7 +29,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
@@ -39,12 +38,6 @@ public class PlanningWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 	public PlanningWorkUnitsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
-	}
-	
-	@Override
-	public boolean isWorkUnitColumn(int column)
-	{
-		return true;
 	}
 	
 	@Override
@@ -84,39 +77,15 @@ public class PlanningWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 	}
 	
 	@Override
-	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
-	{
-		return timePeriodCosts.calculateResourcesTotalUnits();
-	}
-	
-	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
 	@Override
-	protected boolean isAssignmentForModel(Assignment assignment)
-	{
-		return ResourceAssignment.is(assignment);
-	}
-
-	@Override
 	protected boolean isEditableModel()
 	{
 		return true;
-	}
-	
-	@Override
-	protected String getAssignmentsTag()
-	{
-		 return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
-	}
-	
-	@Override
-	protected int getAssignmentType()
-	{
-		return ResourceAssignment.getObjectType();
 	}
 	
 	@Override

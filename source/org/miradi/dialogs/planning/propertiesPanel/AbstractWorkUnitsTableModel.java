@@ -25,7 +25,12 @@ import java.awt.Color;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objects.Assignment;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
+import org.miradi.utils.OptionalDouble;
 
 abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTableModel
 {
@@ -39,5 +44,35 @@ abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTab
 	{
 		DateUnit dateUnit = getDateUnit(column);
 		return AppPreferences.getWorkUnitsBackgroundColor(dateUnit);
+	}
+	
+	@Override
+	protected String getAssignmentsTag()
+	{
+		 return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
+	}
+	
+	@Override
+	protected int getAssignmentType()
+	{
+		return ResourceAssignment.getObjectType();
+	}
+
+	@Override
+	public boolean isWorkUnitColumn(int column)
+	{
+		return true;
+	}
+
+	@Override
+	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
+	{
+		return timePeriodCosts.calculateResourcesTotalUnits();
+	}
+	
+	@Override
+	protected boolean isAssignmentForModel(Assignment assignment)
+	{
+		return ResourceAssignment.is(assignment);
 	}
 }

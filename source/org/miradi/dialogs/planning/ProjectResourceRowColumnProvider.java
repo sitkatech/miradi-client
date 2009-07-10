@@ -37,7 +37,7 @@ public class ProjectResourceRowColumnProvider implements RowColumnProvider
 				ProjectResource.TAG_POSITION,
 				ProjectResource.TAG_LOCATION,
 				ProjectResource.TAG_EMAIL,
-				CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE,
+				CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
 		});
 	}
 
