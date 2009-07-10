@@ -21,7 +21,6 @@ package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
-import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.main.EAM;
@@ -178,11 +177,6 @@ public class ColumnManager
 	public static CodeList getWorkPlanColumns(Project project)
 	{
 		return new WorkPlanRowColumnProvider(project).getColumnListToShow();
-	}
-	
-	public static CodeList getProjectResourceColumns()
-	{
-		return new ProjectResourceRowColumnProvider().getColumnListToShow();
 	}
 
 	public static CodeList getVisibleColumnsForSingleType(ViewData viewData)
