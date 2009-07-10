@@ -63,7 +63,7 @@ public class PlanningTreeProjectResourcesRootNode extends AbstractPlanningTreeNo
 		ProjectResource[] projectResources = getProject().getResourcePool().getAllProjectResources();
 		for (int index = 0; index < projectResources.length; ++index)
 		{
-			PlanningTreeProjectResourcesNode node = new PlanningTreeProjectResourcesNode(getProject(), visibleRows, projectResources[index]);
+			ResourceTreeProjectResourceNode node = new ResourceTreeProjectResourceNode(getProject(), visibleRows, projectResources[index]);
 			children.add(node);
 		}
 	}

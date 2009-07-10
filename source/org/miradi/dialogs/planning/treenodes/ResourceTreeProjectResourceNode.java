@@ -1,4 +1,5 @@
 /* 
+
 Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
@@ -25,9 +26,9 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class PlanningTreeProjectResourcesNode extends AbstractPlanningTreeNode
+public class ResourceTreeProjectResourceNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeProjectResourcesNode(Project projectToUse, CodeList visibleRowsToUse, ProjectResource projectResourceToUse) throws Exception
+	public ResourceTreeProjectResourceNode(Project projectToUse, CodeList visibleRowsToUse, ProjectResource projectResourceToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		
