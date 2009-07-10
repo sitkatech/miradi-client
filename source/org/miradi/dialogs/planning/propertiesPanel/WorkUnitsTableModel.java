@@ -19,12 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
 import java.text.ParseException;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -77,13 +75,6 @@ public class WorkUnitsTableModel extends AbstractWorkUnitsTableModel
 		}
 		
 		return true;
-	}
-	
-	@Override
-	public Color getCellBackgroundColor(int column)
-	{
-		DateUnit dateUnit = getDateUnit(column);
-		return AppPreferences.getWorkUnitsBackgroundColor(dateUnit);
 	}
 	
 	@Override
