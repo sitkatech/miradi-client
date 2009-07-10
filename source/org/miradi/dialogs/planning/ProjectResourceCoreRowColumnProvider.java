@@ -21,17 +21,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.ProjectResource;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceRowColumnProvider implements RowColumnProvider
+public class ProjectResourceCoreRowColumnProvider implements RowColumnProvider
 {
 	public CodeList getColumnListToShow()
 	{
-		CodeList coreVisibleColumnCodes = ProjectResourceCoreRowColumnProvider.getVisibleColumns();
-		coreVisibleColumnCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		
-		return coreVisibleColumnCodes;
+		return getVisibleColumns();
+	}
+
+	public static CodeList getVisibleColumns()
+	{
+		return new CodeList(new String[] {
+				ProjectResource.TAG_RESOURCE_TYPE,
+				ProjectResource.TAG_INITIALS,
+				ProjectResource.TAG_GIVEN_NAME,
+				ProjectResource.TAG_SUR_NAME,
+				ProjectResource.TAG_ORGANIZATION,
+				ProjectResource.TAG_POSITION,
+				ProjectResource.TAG_LOCATION,
+				ProjectResource.TAG_EMAIL,
+		});
 	}
 
 	public CodeList getRowListToShow()
