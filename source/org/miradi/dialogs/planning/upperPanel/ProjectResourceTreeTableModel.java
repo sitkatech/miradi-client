@@ -38,12 +38,12 @@ public class ProjectResourceTreeTableModel extends PlanningTreeTableModel
 		return new ProjectResourceTreeRootNode(project, getProjectResourceRows());
 	}
 	
-	public static CodeList getProjectResourceColumns()
+	private static CodeList getProjectResourceColumns()
 	{
 		return new ProjectResourceRowColumnProvider().getColumnListToShow();
 	}
 	
-	public static CodeList getProjectResourceRows()
+	private static CodeList getProjectResourceRows()
 	{
 		return new ProjectResourceRowColumnProvider().getRowListToShow();
 	}
