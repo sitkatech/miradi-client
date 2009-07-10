@@ -27,7 +27,6 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.FactorLinkId;
 import org.miradi.ids.IdList;
@@ -916,22 +915,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return (FactorId)createObjectAndReturnId(ObjectType.TASK, BaseId.INVALID);
 	}
 
-	public DiagramFactorId createAndAddFactorToDiagram(int nodeType) throws Exception
+	public DiagramFactor createAndAddFactorToDiagram(int nodeType) throws Exception
 	{
-		return createAndAddFactorToDiagram(nodeType, takeNextId(nodeType)).getDiagramFactorId();
+		return createAndAddFactorToDiagram(nodeType, takeNextId(nodeType));
 	}
 	
+	public DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, int objectType) throws Exception
+	{
+		return createAndAddFactorToDiagram(diagramObject, objectType, takeNextId(objectType));
+	}
+		
 	private DiagramFactor createAndAddFactorToDiagram(int nodeType, int id) throws Exception
 	{
 		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
 		return createAndAddFactorToDiagram(diagramObject, nodeType, id);
 	}
 
-	public DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, int objectType) throws Exception
-	{
-		return createAndAddFactorToDiagram(diagramObject, objectType, takeNextId(objectType));
-	}
-	
 	private DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, int objectType, int id) throws Exception
 	{
 		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getDiagramModel());

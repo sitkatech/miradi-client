@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAMTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -42,8 +41,7 @@ public class TestDelete extends EAMTestCase
 		ProjectForTesting project = new ProjectForTesting(getName());
 		DiagramModel model = project.getDiagramModel();
 		
-		DiagramFactorId interventionId = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
-		DiagramFactor intervention = (DiagramFactor) project.findObject(new ORef(ObjectType.DIAGRAM_FACTOR, interventionId));
+		DiagramFactor intervention = project.createAndAddFactorToDiagram(ObjectType.STRATEGY);
 		
 		DiagramFactor cause = project.createDiagramFactorAndAddToDiagram(ObjectType.CAUSE);
 		LinkCreator linkCreator = new LinkCreator(project);

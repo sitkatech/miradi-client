@@ -23,7 +23,9 @@ package org.miradi.project;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -40,24 +42,54 @@ public class ProjectTotalCalculator
 	
 	public TimePeriodCostsMap calculateProjectTotals() throws Exception
 	{
-		Indicator[] allIndicators = getProject().getIndicatorPool().getAllIndicators();
+		Set allIndicators = getResultsChainIndicators();
+		Set nonDraftStrategiesInResultsChains = getAllResultsChainNonDraftStrategies();
+		
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
-		
-		Set<Strategy> nonDraftStrategiesInResultsChains = getAllResultsChainNonDraftStrategies();
-		Strategy[] strategies = nonDraftStrategiesInResultsChains.toArray(new Strategy[0]);
-		
 		totalTimePeriodCostsMap.mergeAll(mergeAll(allIndicators));
-		totalTimePeriodCostsMap.mergeAll(mergeAll(strategies));
+		totalTimePeriodCostsMap.mergeAll(mergeAll(nonDraftStrategiesInResultsChains));
 		
 		return totalTimePeriodCostsMap;
 	}
+
+	private HashSet<Indicator> getResultsChainIndicators()
+	{
+		HashSet<Indicator> resultsChainIndicators = new HashSet();
+		ORefList resultsChainRefs = getProject().getResultsChainDiagramPool().getRefList();
+		for (int index = 0; index < resultsChainRefs.size(); ++index)
+		{
+			ResultsChainDiagram resultsChain = ResultsChainDiagram.find(getProject(), resultsChainRefs.get(index));
+			Factor[] allResultsChainFactors = resultsChain.getAllWrappedFactors();
+			resultsChainIndicators.addAll(getAllIndicators(allResultsChainFactors));
+		}
+		
+		return resultsChainIndicators;
+	}
 	
-	private TimePeriodCostsMap mergeAll(BaseObject[] baseObjects) throws Exception
+	private Set<Indicator> getAllIndicators(Factor[] allResultsChainFactors)
+	{
+		ORefSet indicatorRefs = new ORefSet();
+		for (int index = 0; index < allResultsChainFactors.length; ++index)
+		{
+			indicatorRefs.addAllRefs(allResultsChainFactors[index].getIndicatorRefs());
+		}
+		
+		HashSet<Indicator> indicators = new HashSet();
+		for(ORef indicatorRef : indicatorRefs)
+		{
+			Indicator indicator = Indicator.find(getProject(), indicatorRef);
+			indicators.add(indicator);
+		}
+		
+		return indicators;
+	}
+
+	private TimePeriodCostsMap mergeAll(Set<BaseObject> baseObjects) throws Exception
 	{
 		TimePeriodCostsMap totalTimePeriodCostsMap = new TimePeriodCostsMap();
-		for (int index = 0; index < baseObjects.length; ++index)
+		for(BaseObject baseObject : baseObjects)
 		{
-			TimePeriodCostsMap indicatorTimePeriodCostsMap = baseObjects[index].getTotalTimePeriodCostsMap();
+			TimePeriodCostsMap indicatorTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
 			totalTimePeriodCostsMap.mergeAll(indicatorTimePeriodCostsMap);
 		}
 		
