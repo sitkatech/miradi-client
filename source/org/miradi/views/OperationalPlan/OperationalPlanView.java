@@ -45,11 +45,11 @@ import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
-import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.OperationalPlan.doers.ProjectResourceWorkPlanFilterEditDoer;
+import org.miradi.views.planning.ProjectResourceManagementPanel;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
 import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
@@ -81,12 +81,12 @@ public class OperationalPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
+		projectResourceManagementPanel = ProjectResourceManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
 		addNonScrollingTab(workPlanManagementPanel);
-		addNonScrollingTab(resourceManagementPanel);
+		addNonScrollingTab(projectResourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
@@ -97,8 +97,8 @@ public class OperationalPlanView extends TabbedView
 		workPlanManagementPanel.dispose();
 		workPlanManagementPanel = null;
 		
-		resourceManagementPanel.dispose();
-		resourceManagementPanel = null;
+		projectResourceManagementPanel.dispose();
+		projectResourceManagementPanel = null;
 		
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
@@ -161,7 +161,7 @@ public class OperationalPlanView extends TabbedView
 	}
 	
 	private PlanningTreeManagementPanel workPlanManagementPanel;
-	private ResourcePoolManagementPanel resourceManagementPanel;
+	private PlanningTreeManagementPanel projectResourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 }
