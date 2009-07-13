@@ -31,6 +31,7 @@ import java.util.Vector;
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.diagram.ThreatTargetChainObject;
+import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.EAM;
@@ -176,8 +177,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		}
 		
 		String errorText = EAM.substitute(EAM.text("Please choose a specific IUCN classification (Not a category). Fix needed for Strategy named:\n'%s'"), strategy.toString());
-		EAM.errorDialog(errorText);
-		throw new Exception(errorText);
+		throw new InvalidICUNSelectionException(errorText);
 	}
 
 	//NOTE this approach is slow.  Another approach would be to 

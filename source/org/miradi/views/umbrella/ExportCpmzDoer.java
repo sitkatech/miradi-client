@@ -31,6 +31,7 @@ import java.util.zip.ZipOutputStream;
 
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.InvalidICUNSelectionException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -88,6 +89,11 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 			addDiagramImagesToZip(zipOut);
 		}
 		catch(ValidationException e)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(e.getMessage());
+		}
+		catch (InvalidICUNSelectionException e)
 		{
 			EAM.logException(e);
 			EAM.errorDialog(e.getMessage());
