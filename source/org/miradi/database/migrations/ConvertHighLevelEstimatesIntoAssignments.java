@@ -67,7 +67,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 			BaseId id = ids[index];
 			File objectFile = new File(objectDir, Integer.toString(id.asInt()));
 			EnhancedJsonObject objectJson = DataUpgrader.readFile(objectFile);
-			if (objectJson.getString("BudgetCostMode").equals("BudgetOverrideMode"))
+			if (objectJson.optString("BudgetCostMode").equals("BudgetOverrideMode"))
 			{
 				createExpenseAssignment(jsonDir, objectFile, objectJson);
 				createResourceAssignment(jsonDir, objectFile, objectJson);
@@ -156,7 +156,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 
 	private static String createOverrideWhenString(EnhancedJsonObject objectJson) throws Exception
 	{
-		EnhancedJsonObject whenOverrideJson = new EnhancedJsonObject(objectJson.getString("WhenOverride"));
+		EnhancedJsonObject whenOverrideJson = new EnhancedJsonObject(objectJson.optString("WhenOverride"));
 		String startDateAsString = whenOverrideJson.optString("StartDate");
 		String endDateAsString = whenOverrideJson.optString("EndDate");
 		if (isEmpty(startDateAsString) || isEmpty(endDateAsString))
@@ -173,7 +173,7 @@ public class ConvertHighLevelEstimatesIntoAssignments
 
 	private static String createAppendedResourceNames(File jsonDir,	EnhancedJsonObject objectJson) throws Exception
 	{
-		ORefList whoOverrideRefs = objectJson.getRefList("WhoOverrideRefs");
+		ORefList whoOverrideRefs = objectJson.optRefList("WhoOverrideRefs");
 		final int PROJECT_RESOURCE_TYPE = 7;
 		File resourceDir = DataUpgrader.getObjectsDir(jsonDir, PROJECT_RESOURCE_TYPE);
 		String appendedNames = "";
@@ -182,9 +182,9 @@ public class ConvertHighLevelEstimatesIntoAssignments
 			Integer integer = whoOverrideRefs.get(index).getObjectId().asInt();
 			File projectResourceFile = new File(resourceDir, Integer.toString(integer));
 			EnhancedJsonObject projectResourceJson = new EnhancedJsonObject(DataUpgrader.readFile(projectResourceFile));
-			String name = projectResourceJson.getString("Name");
-			String surName = projectResourceJson.getString("SurName");
-			String id = projectResourceJson.getString("Initials");
+			String name = projectResourceJson.optString("Name");
+			String surName = projectResourceJson.optString("SurName");
+			String id = projectResourceJson.optString("Initials");
 			if (index > 0)
 				appendedNames += ", ";
 
