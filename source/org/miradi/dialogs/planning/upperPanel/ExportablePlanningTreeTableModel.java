@@ -36,9 +36,22 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		super(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
 		
 		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
-		rowObjectRefs = getFullyExpandedRefList();
+		setRowObjectRefs();
+	}
+
+	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	{
+		super(projectToUse, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
+		
+		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
+		setRowObjectRefs();
 	}
 	
+	private void setRowObjectRefs() throws Exception
+	{
+		rowObjectRefs = getFullyExpandedRefList();
+	}
+		
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		ORef rowObjectRef = rowObjectRefs.get(row);

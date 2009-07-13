@@ -23,8 +23,8 @@ package org.miradi.dialogs.planning.treenodes;
 import java.util.Vector;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -47,7 +47,7 @@ public class ProjectResourceTreeRootNode extends AbstractPlanningTreeNode
 	@Override
 	public int getType()
 	{
-		return ObjectType.FAKE;
+		return ProjectMetadata.getObjectType();
 	}
 	
 	@Override

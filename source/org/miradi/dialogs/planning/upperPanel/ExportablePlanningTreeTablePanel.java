@@ -41,6 +41,11 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifier) throws Exception
 	{
 		PlanningTreeTableModel model = new ExportablePlanningTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider, uniqueTreeTableModelIdentifier);
+		return createPlanningTreeTablePanelWithoutButtons(mainWindowToUse, rowColumnProvider, model);
+	}
+
+	public static PlanningTreeTablePanel createPlanningTreeTablePanelWithoutButtons(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider, PlanningTreeTableModel model) throws Exception
+	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 			
 		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);
