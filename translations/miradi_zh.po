@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-13 10:22-0500\n"
+"POT-Creation-Date: 2009-07-13 10:59-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -899,8 +899,15 @@ msgstr ""
 msgid "Edit Methods"
 msgstr "编辑方法 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:180
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:200
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:98
+msgid ""
+"Please choose a specific IUCN classification (Not a category). Fix needed "
+"for Strategy named:\n"
+"'%s'"
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:181
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:201
 msgid "Exported file does not validate."
 msgstr "导出的文件不正确。 \t\t"
 
@@ -2413,8 +2420,8 @@ msgstr "当前状况 \t\t"
 
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:299
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:337
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:298
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:336
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "对象"
@@ -6018,25 +6025,17 @@ msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "选择哪个策略和活动与本分目标相关联"
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:233
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:179
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
-msgstr ""
-
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:324
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:362
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:323
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:361
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "威胁因子"
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:847
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:846
 msgid "Project Description:"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:852
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:851
 msgid "Site/Scope Description:"
 msgstr ""
 
