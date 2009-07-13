@@ -95,8 +95,9 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		}
 		catch (InvalidICUNSelectionException e)
 		{
+			String errorMessage = EAM.substitute(EAM.text("Please choose a specific IUCN classification (Not a category). Fix needed for Strategy named:\n'%s'"), e.getStrategy().toString());
 			EAM.logException(e);
-			EAM.errorDialog(e.getMessage());
+			EAM.errorDialog(errorMessage);
 		}
 		catch(Exception e)
 		{

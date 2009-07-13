@@ -20,10 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.exceptions;
 
+import org.miradi.objects.Strategy;
+
 public class InvalidICUNSelectionException extends Exception
 {
-	public InvalidICUNSelectionException(String message)
+	public InvalidICUNSelectionException(Strategy strategyToUse)
 	{
-		super(message);
+		super();
+		
+		strategy = strategyToUse;
 	}
+	
+	public Strategy getStrategy()
+	{
+		return strategy;
+	}
+
+	private Strategy strategy;
 }

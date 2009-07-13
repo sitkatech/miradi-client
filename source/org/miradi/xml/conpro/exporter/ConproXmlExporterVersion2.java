@@ -176,8 +176,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			return;
 		}
 		
-		String errorText = EAM.substitute(EAM.text("Please choose a specific IUCN classification (Not a category). Fix needed for Strategy named:\n'%s'"), strategy.toString());
-		throw new InvalidICUNSelectionException(errorText);
+		throw new InvalidICUNSelectionException(strategy);
 	}
 
 	//NOTE this approach is slow.  Another approach would be to 
