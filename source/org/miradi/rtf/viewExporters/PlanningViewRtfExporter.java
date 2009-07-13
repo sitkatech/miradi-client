@@ -23,6 +23,7 @@ import org.miradi.dialogs.accountingcode.AccountingCodePoolTableModel;
 import org.miradi.dialogs.fundingsource.FundingSourcePoolTableModel;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
+import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
@@ -31,8 +32,9 @@ import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewFutureStatusTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
+import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
-import org.miradi.dialogs.resource.ResourcePoolTableModel;
+import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -66,7 +68,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportReport(writer, new ProgressReportRowColumnProvider(), ReportTemplateContentQuestion.getProgressReportLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_RESOURCES_TAB_CODE))
-			exportResourcesTab(writer);
+			exportResourcesTab(writer, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE))
 			exportAccountingCodesTab(writer);
@@ -75,9 +77,9 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportFundingSourceTab(writer);
 	}
 
-	private void exportResourcesTab(RtfWriter writer) throws Exception
+	private void exportResourcesTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
-		exportObjectTableModel(writer, new ResourcePoolTableModel(getProject()), ReportTemplateContentQuestion.getResourcesLabel());
+		exportTable(writer, createResourcesTables(getProject(), rowColumnProvider), translatedTableName);
 	}
 
 	private void exportAccountingCodesTab(RtfWriter writer) throws Exception
@@ -92,8 +94,22 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	
 	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		MultiTableCombinedAsOneExporter multiModelExporter = new MultiTableCombinedAsOneExporter(project);
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		
+		return createMultiModelExporter(project, model, rowColumnProvider);
+	}
+	
+	public static MultiTableCombinedAsOneExporter createResourcesTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
+	{
+		TreeTableNode resourcesRootNode = ProjectResourceTreeTableModel.createProjectResourceRootNode(project);
+		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, resourcesRootNode, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		
+		return createMultiModelExporter(project, model, rowColumnProvider);	
+	}
+
+	private static MultiTableCombinedAsOneExporter createMultiModelExporter(Project project, ExportablePlanningTreeTableModel model, RowColumnProvider rowColumnProvider) throws Exception
+	{
+		MultiTableCombinedAsOneExporter multiModelExporter = new MultiTableCombinedAsOneExporter(project);
 		multiModelExporter.addExportable(new TreeTableModelExporter(project, model));
 		
 		PlanningViewMainTableModel mainModel = new PlanningViewMainTableModel(project, model, rowColumnProvider);

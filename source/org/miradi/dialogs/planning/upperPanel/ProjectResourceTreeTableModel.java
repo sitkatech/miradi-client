@@ -33,7 +33,7 @@ public class ProjectResourceTreeTableModel extends PlanningTreeTableModel
 		super(project, createProjectResourceRootNode(project), getProjectResourceRows(), visibleColumns);
 	}
 	
-	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
+	public static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
 		return new ProjectResourceTreeRootNode(project, getProjectResourceRows());
 	}
