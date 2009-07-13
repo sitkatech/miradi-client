@@ -59,7 +59,6 @@ import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.dialogs.resource.ResourcePoolManagementPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningViewConfiguration;
@@ -110,7 +109,6 @@ public class PlanningView extends TabbedView
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		projectResourceManagementPanel = ProjectResourceManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
-		resourceManagementPanel = new ResourcePoolManagementPanel(getMainWindow(), "");
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
@@ -122,7 +120,6 @@ public class PlanningView extends TabbedView
 		addPlanningManagementTab(planningManagementPanel);
 		
 		addNonScrollingTab(projectResourceManagementPanel);
-		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
@@ -159,9 +156,6 @@ public class PlanningView extends TabbedView
 		
 		projectResourceManagementPanel.dispose();
 		projectResourceManagementPanel = null;
-		
-		resourceManagementPanel.dispose();
-		resourceManagementPanel = null;
 		
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
@@ -272,7 +266,6 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel projectResourceManagementPanel;
-	private ResourcePoolManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 	
