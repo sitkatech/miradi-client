@@ -89,30 +89,20 @@ public class TimePeriodCostsMap
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing == null)
-		{
-			TimePeriodCosts timePeriodCostsWithExpense = new TimePeriodCosts();
-			timePeriodCostsWithExpense.setExpense(timePeriodCostsToMerge.getExpense());
-			add(dateUnit, timePeriodCostsWithExpense);
-		}
-		else
-		{
-			existing.replaceEmptyExpenseValue(timePeriodCostsToMerge.getExpense());
-		}
+			existing = new TimePeriodCosts();
+		
+		existing.replaceEmptyExpenseValue(timePeriodCostsToMerge.getExpense());
+		add(dateUnit, existing);
 	}
 	
 	private void mergeNonConflictingWorkUnits(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing == null)
-		{
-			TimePeriodCosts timePeriodCostsWithExpense = new TimePeriodCosts();
-			timePeriodCostsWithExpense.mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
-			add(dateUnit, timePeriodCostsWithExpense);
-		}
-		else
-		{
-			existing.mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
-		}
+			existing = new TimePeriodCosts();
+		
+		existing.mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
+		add(dateUnit, existing);
 	}
 	
 	private void mergeAllTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
