@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel;
 
+import org.miradi.actions.ActionCreateResource;
+import org.miradi.actions.ActionDeleteResource;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 
@@ -27,11 +29,12 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 {
 	protected ProjectResourceTreeTablePanel (MainWindow mainWindowToUse,
 			PlanningTreeTable treeToUse, 
-			PlanningTreeTableModel modelToUse, 
+			PlanningTreeTableModel modelToUse,
+			Class[] buttonClasses,
 			RowColumnProvider rowColumnProvider
 	) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, new Class[0], rowColumnProvider);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonClasses, rowColumnProvider);
 
 	}
 
@@ -39,6 +42,14 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 	{
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
-		return new ProjectResourceTreeTablePanel (mainWindowToUse, treeTable, model, rowColumnProvider);
+		return new ProjectResourceTreeTablePanel (mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+	}
+	
+	private static Class[] getButtonActions()
+	{
+		return new Class[] {
+				ActionCreateResource.class, 
+				ActionDeleteResource.class,
+		};
 	}
 }
