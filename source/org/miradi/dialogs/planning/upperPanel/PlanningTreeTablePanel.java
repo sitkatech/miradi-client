@@ -32,8 +32,8 @@ import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButtonRow;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
-import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPanel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
@@ -48,6 +48,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -180,6 +181,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
+		if(didAffectProjectResources(event))
+			return true;
+		
 		if(PlanningView.isRowOrColumnChangingCommand(event))
 			return true;
 		
@@ -207,6 +211,14 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
+	private boolean didAffectProjectResources(CommandExecutedEvent event)
+	{
+		if (event.isCreateCommandForThisType(ProjectResource.getObjectType()))
+			return true;
+		
+		return event.isDeleteCommandForThisType(ProjectResource.getObjectType());
+	}
+
 	private boolean didAffectResourceAssignmentsAndExpenseAssignments(CommandExecutedEvent event)
 	{
 		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
