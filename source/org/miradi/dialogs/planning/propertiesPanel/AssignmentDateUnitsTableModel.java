@@ -423,7 +423,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return null;
 	}
 	
-	public Vector<Assignment> getAssignmentsToEdit(int row) throws Exception
+	private Vector<Assignment> getAssignmentsToEdit(int row) throws Exception
 	{
 		Assignment assignmentForRow = getAssignment(row);
 		if (assignmentForRow != null)
