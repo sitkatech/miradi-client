@@ -299,7 +299,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
-	public void setUnitsForColumn(Object value, int row, int column) throws Exception
+	private void setUnitsForColumn(Object value, int row, int column) throws Exception
 	{
 		getProject().executeBeginTransaction();
 		try
