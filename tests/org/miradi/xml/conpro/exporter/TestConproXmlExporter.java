@@ -28,6 +28,9 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Strategy;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.TestTranslations;
 import org.miradi.utils.Translation;
@@ -91,5 +94,39 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		{
 			DirectoryUtils.deleteEntireDirectoryTree(tempXmlOutFile);
 		}
-	}	
+	}
+	
+	public void testExceptionThrownForIncorrectIUCNChoice() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		String nonSelectableCode = getNonSelectableTaxonomyCode();
+		strategy.setData(Strategy.TAG_TAXONOMY_CODE, nonSelectableCode);
+		
+		File tempXmlOutFile = createTempFileFromName("conpro.xml");
+		try
+		{
+			new ConproXmlExporter(getProject()).export(tempXmlOutFile);
+			fail("should not export non selectable IUCN code?");
+		}
+		catch (Exception ignoreException)
+		{
+		}
+		finally
+		{
+			DirectoryUtils.deleteEntireDirectoryTree(tempXmlOutFile);
+		}
+	}
+	
+	private String getNonSelectableTaxonomyCode()
+	{
+		StrategyClassificationQuestion question = new StrategyClassificationQuestion();
+		ChoiceItem[] choices = question.getChoices();
+		for (int index = 0; index < choices.length; ++index)
+		{
+			if (!choices[index].isSelectable())
+				return choices[index].getCode();
+		}
+		
+		throw new RuntimeException("Did not find a non selectable classification choice.");
+	}
 }
