@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-10 15:58-0500\n"
+"POT-Creation-Date: 2009-07-13 09:49-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -929,8 +929,8 @@ msgstr ""
 msgid "Edit Methods"
 msgstr "Editar métodos"
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:174
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:194
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:180
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:200
 msgid "Exported file does not validate."
 msgstr "No se valida el archivo exportado."
 
@@ -6211,8 +6211,8 @@ msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "Seleccionar las estrategias y actividades relevantes para esta meta. "
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:232
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:178
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:233
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:179
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
