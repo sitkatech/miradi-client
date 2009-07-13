@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-13 11:19-0500\n"
+"POT-Creation-Date: 2009-07-13 11:21-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6897,10 +6897,6 @@ msgid ""
 msgstr ""
 "您正从本项目团队中去除本资源，因此他/她将不会在摘要视图里的团队成员列表中出"
 "现。 \t\t"
-
-#: miradi/source/org/miradi/dialogs/resource/ResourcePoolManagementPanel.java:106
-msgid "Title|Resources"
-msgstr "资源 \t\t"
 
 #: miradi/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:41
 msgid "Is Relevant"
@@ -29388,6 +29384,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Title|Resources"
+#~ msgstr "资源 \t\t"
 
 #~ msgid "Edit Dialog"
 #~ msgstr "编辑对话框 \t\t"
