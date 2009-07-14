@@ -21,7 +21,7 @@ package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.dialogs.viability.ViabilityTreeTableModelExporter;
-import org.miradi.dialogs.viability.nodes.ViabilityProjectNode;
+import org.miradi.dialogs.viability.nodes.ViabilityRoot;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
@@ -68,6 +68,6 @@ public class ViabilityViewRtfExporter extends RtfViewExporter
 	
 	private ViabilityTreeModel createModel() throws Exception
 	{
-		return new ViabilityTreeModel(new ViabilityProjectNode(getProject()));
+		return new ViabilityTreeModel(new ViabilityRoot(getProject()));
 	}
 }
