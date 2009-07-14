@@ -87,7 +87,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(column);
 		
-		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+		if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
 		if (columnTag.equals(Indicator.PSEUDO_TAG_METHODS))
@@ -103,7 +103,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public boolean isCellEditable(int row, int modelColumn)
 	{
 		String columnTag = getColumnTag(modelColumn);
-		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+		if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 			return isWhoCellEditable(row, modelColumn);
 		
 		return super.isCellEditable(row, modelColumn);
@@ -247,7 +247,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
-			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+			if(columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 				return appendedProjectResources(baseObject);
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
@@ -424,7 +424,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		if(ResourceAssignment.is(nodeType))
 		{
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+			if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 				return ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;

@@ -49,6 +49,7 @@ import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
 
 public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSaver implements RowColumnBaseObjectProvider, RightClickActionProvider, TableWithExpandableColumnsInterface
@@ -77,7 +78,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
-		if (columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
+		if (columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 			return whoColumnTableCellEditorFactory;
 		
 		return super.getCellEditor(row, tableColumn);

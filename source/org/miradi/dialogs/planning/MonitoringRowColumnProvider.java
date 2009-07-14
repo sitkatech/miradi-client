@@ -27,6 +27,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Target;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
 public class MonitoringRowColumnProvider implements RowColumnProvider
@@ -37,7 +38,7 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 				Desire.TAG_FULL_TEXT,
 				Indicator.PSEUDO_TAG_METHODS,
 				Indicator.TAG_PRIORITY,
-				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		});

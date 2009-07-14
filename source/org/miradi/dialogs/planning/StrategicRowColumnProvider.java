@@ -27,6 +27,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
 public class StrategicRowColumnProvider implements RowColumnProvider
@@ -36,7 +37,7 @@ public class StrategicRowColumnProvider implements RowColumnProvider
 		return new CodeList(new String[] {
 				Desire.TAG_FULL_TEXT,
 				Strategy.PSEUDO_TAG_RATING_SUMMARY,
-				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				});
 	}

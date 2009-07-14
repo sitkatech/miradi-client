@@ -29,6 +29,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
 public class WorkPlanRowColumnProvider implements RowColumnProvider
@@ -42,7 +43,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 	{
 		CodeList columnCodesToShow = new CodeList(new String[] {
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
-				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				});
 		
