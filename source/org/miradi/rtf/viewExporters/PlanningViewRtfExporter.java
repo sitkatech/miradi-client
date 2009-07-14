@@ -34,7 +34,6 @@ import org.miradi.dialogs.planning.upperPanel.PlanningViewMainTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningViewMeasurementTableModel;
 import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.TreeTableModelExporter;
-import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
@@ -101,8 +100,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	
 	public static MultiTableCombinedAsOneExporter createResourcesTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		TreeTableNode resourcesRootNode = ProjectResourceTreeTableModel.createProjectResourceRootNode(project);
-		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, resourcesRootNode, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		ExportablePlanningTreeTableModel model = new ProjectResourceTreeTableModel(project, rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		
 		return createMultiModelExporter(project, model, rowColumnProvider);	
 	}
