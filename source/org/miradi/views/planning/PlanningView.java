@@ -107,7 +107,7 @@ public class PlanningView extends TabbedView
 		strategicPlanManagementPanel = ActionPlanManagementPanel.createStrategicPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
-		projectResourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
+		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
@@ -119,7 +119,7 @@ public class PlanningView extends TabbedView
 		addPlanningManagementTab(objectsOnlyManagementPanel);
 		addPlanningManagementTab(planningManagementPanel);
 		
-		addNonScrollingTab(projectResourceManagementPanel);
+		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
@@ -154,8 +154,8 @@ public class PlanningView extends TabbedView
 		objectsOnlyManagementPanel.dispose();
 		objectsOnlyManagementPanel = null;
 		
-		projectResourceManagementPanel.dispose();
-		projectResourceManagementPanel = null;
+		resourceManagementPanel.dispose();
+		resourceManagementPanel = null;
 		
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
@@ -265,7 +265,7 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel planningManagementPanel;
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
-	private PlanningTreeManagementPanel projectResourceManagementPanel;
+	private PlanningTreeManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 	
