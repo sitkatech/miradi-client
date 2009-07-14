@@ -46,22 +46,18 @@ public class OperationalPlanResourcesManagementPanel extends ProjectResourceMana
 
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
+		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createOperationalPlanResourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
 	}
 
 	public static PlanningTreeManagementPanel createProjectResourcesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		return createProjectResourcesPanel(mainWindowToUse, new ProjectResourceRowColumnProvider());
-	}
-	
-	protected static PlanningTreeManagementPanel createProjectResourcesPanel(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider)	throws Exception
-	{
-		PlanningTreeTableModel projectResourcesTreeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
-		PlanningTreeTablePanel projectResourcesPlanTreeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, projectResourcesTreeTableModel, rowColumnProvider);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)projectResourcesPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel projectResourcesPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
+		RowColumnProvider rowColumnProvider = new ProjectResourceRowColumnProvider();
+		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createOperationalPlanResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
+		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
+		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
+		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		
-		return new OperationalPlanResourcesManagementPanel(mainWindowToUse, projectResourcesPlanTreeTablePanel, projectResourcesPlanPropertiesPanel);
+		return new OperationalPlanResourcesManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}	
 }

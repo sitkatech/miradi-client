@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
+import org.miradi.dialogs.planning.treenodes.ProjectResourceHiddenNode;
 import org.miradi.dialogs.planning.treenodes.ProjectResourceTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.project.Project;
@@ -44,6 +45,12 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 		return new ProjectResourceTreeTableModel(project, projectRootNode, visibleColumns);
 	}
 	
+	public static ProjectResourceTreeTableModel createOperationalPlanResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
+	{
+		TreeTableNode projectRootNode = createHiddenResourceRootNode(project);
+		return new ProjectResourceTreeTableModel(project, projectRootNode, visibleColumns);
+	}
+	
 	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
 	{
 		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
@@ -54,6 +61,11 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
 		return new ProjectResourceTreeRootNode(project, getProjectResourceRows());
+	}
+	
+	private static TreeTableNode createHiddenResourceRootNode(Project project) throws Exception
+	{
+		return new ProjectResourceHiddenNode(project, getProjectResourceRows());
 	}
 	
 	private static CodeList getProjectResourceRows()
