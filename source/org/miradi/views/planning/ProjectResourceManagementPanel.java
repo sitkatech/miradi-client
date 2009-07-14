@@ -21,21 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
-import org.miradi.dialogs.planning.ProjectResourceCoreRowColumnProvider;
-import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
 
-public class ProjectResourceManagementPanel extends PlanningTreeManagementPanel
+abstract public class ProjectResourceManagementPanel extends PlanningTreeManagementPanel
 {
 	public ProjectResourceManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanel,
@@ -50,30 +41,4 @@ public class ProjectResourceManagementPanel extends PlanningTreeManagementPanel
 	{
 		return EAM.text("Project Resources");
 	}
-
-	public static PlanningTreeManagementPanel createProjectResourcesPanel(MainWindow mainWindowToUse) throws Exception
-	{
-		return createProjectResourcesPanel(mainWindowToUse, new ProjectResourceRowColumnProvider());
-	}
-	
-	public static PlanningTreeManagementPanel createProjectResourcesPanelWithoutBudgetColumns(MainWindow mainWindowToUse) throws Exception
-	{
-		return createProjectResourcesPanel(mainWindowToUse, new ProjectResourceCoreRowColumnProvider());
-	}
-
-	private static PlanningTreeManagementPanel createProjectResourcesPanel(MainWindow mainWindowToUse, RowColumnProvider rowColumnProvider)	throws Exception
-	{
-		PlanningTreeTableModel projectResourcesTreeTableModel = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
-		PlanningTreeTablePanel projectResourcesPlanTreeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, projectResourcesTreeTableModel, rowColumnProvider);
-		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)projectResourcesPlanTreeTablePanel.getTree();
-		PlanningTreeMultiPropertiesPanel projectResourcesPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
-		
-		return new ProjectResourceManagementPanel(mainWindowToUse, projectResourcesPlanTreeTablePanel, projectResourcesPlanPropertiesPanel);
-	}
-	
-	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
-	{
-		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
-		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
-	}	
 }
