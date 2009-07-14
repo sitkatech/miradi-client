@@ -278,11 +278,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return !getOptionalDoubleData(assignment, dateUnit).hasValue();
 	}
 
-	public Object getValueAt(int row, int column)
-	{
-		return getChoiceItemAt(row, column);
-	}
-
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
@@ -578,6 +573,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private boolean hasSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		return getProjectCalendar().hasSubDateUnits(dateUnit);
+	}
+	
+	public Object getValueAt(int row, int column)
+	{
+		return getChoiceItemAt(row, column);
 	}
 	
 	public ChoiceItem getChoiceItemAt(int row, int column)
