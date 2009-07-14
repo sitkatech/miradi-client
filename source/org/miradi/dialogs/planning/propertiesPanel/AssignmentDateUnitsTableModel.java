@@ -620,7 +620,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = baseObject.calculateTimePeriodCosts(dateUnit);
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, dateUnit);
 		timePeriodCosts.filterProjectResources(getResourcesFilter());
 		
 		return calculateValue(timePeriodCosts);

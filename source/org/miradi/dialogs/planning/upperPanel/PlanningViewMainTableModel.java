@@ -282,8 +282,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
 	{
-		ORefSet resourceRefs = baseObject.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
-		ORefSet filteredResources = getFilteredResources(resourceRefs);
+		TimePeriodCosts timePeriodCosts = calculateTimePeriodCosts(baseObject, new DateUnit());
+		timePeriodCosts.filterProjectResources(getResourcesFilter());
+		ORefSet filteredResources = new ORefSet(timePeriodCosts.getResourceRefSet());
 		
 		boolean isFirstIteration = true; 
 		String appendedResources = "";
@@ -299,20 +300,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return new TaglessChoiceItem(appendedResources);
 	}
 	
-	private ORefSet getFilteredResources(ORefSet resourcesToFilter)
-	{
-		if (resourcesToFilter.size() == 0)
-			return new ORefSet();
-		
-		ORefSet resourcesToRetain = getResourcesFilter();
-		if (resourcesToRetain.size() == 0)
-			return resourcesToFilter;
-		
-		resourcesToFilter.retainAll(resourcesToRetain);
-		
-		return resourcesToFilter;
-	}
-
 	private String getWhoName(ORef resourceRef)
 	{
 		if (resourceRef.isInvalid())
