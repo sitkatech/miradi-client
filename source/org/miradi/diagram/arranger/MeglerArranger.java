@@ -222,7 +222,8 @@ public class MeglerArranger
 			Point newLocation = new Point(x, y);
 			helper.setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), newLocation);
 			
-			y += DELTA_Y;
+			int height = diagramFactor.getSize().height;
+			y += Math.max(height + VERTICAL_CUSHION, DELTA_Y);
 		}
 	}
 	
@@ -273,8 +274,9 @@ public class MeglerArranger
 	private static final int THREAT_COLUMN_X = 450;
 	private static final int TARGET_COLUMN_X = 660;
 	
-	private static final int TOP_Y = 30;
-	private static final int DELTA_Y = 90;
+	private static final int VERTICAL_CUSHION = 30;
+	private static final int TOP_Y = VERTICAL_CUSHION;
+	private static final int DELTA_Y = 60 + VERTICAL_CUSHION;
 
 	private DiagramObject diagram;
 	private Vector<DiagramFactor> strategies;
