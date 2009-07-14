@@ -238,6 +238,27 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertTrue("Didn't group target3 with target4?", children1.equals(targets3And4) || children2.equals(targets3And4));
 	}
 	
+	public void testDontGroupTargetsUnlessLinkedByCauses() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+
+		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(targetDiagramFactor3, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(targetDiagramFactor3, targetDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, targetDiagramFactor2);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
+	}
+	
 	public void testThreatGrouping() throws Exception
 	{
 		DiagramFactor threatDiagramFactor1 = createThreat();
