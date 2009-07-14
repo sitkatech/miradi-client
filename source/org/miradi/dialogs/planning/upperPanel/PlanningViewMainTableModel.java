@@ -229,6 +229,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		try
 		{	
 			String columnTag = getColumnTagForNode(baseObject.getType(), column);
+			if(columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
+				return appendedProjectResources(baseObject);
+			
 			if (! baseObject.doesFieldExist(columnTag))
 				return new EmptyChoiceItem();
 
@@ -246,9 +249,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 			if(columnTag.equals(Strategy.PSEUDO_TAG_RATING_SUMMARY))
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
-			
-			if(columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
-				return appendedProjectResources(baseObject);
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
 				return getFilteredWhen(baseObject);
@@ -282,7 +282,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
 	{
-	ORefSet resourceRefs = baseObject.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
+		ORefSet resourceRefs = baseObject.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
 		ORefSet filteredResources = getFilteredResources(resourceRefs);
 		
 		boolean isFirstIteration = true; 
