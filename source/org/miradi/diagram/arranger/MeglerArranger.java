@@ -70,31 +70,31 @@ public class MeglerArranger
 	
 	private void createGroupBoxes() throws Exception
 	{
-		createGroupBoxes(targets, FactorLink.FROM);
-		createGroupBoxes(threats, FactorLink.TO);
-		createGroupBoxes(strategies, FactorLink.TO);
+		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
+		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
+		createGroupBoxes(strategies, FactorLink.TO, Cause.getObjectType());
 	}
 
-	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction) throws Exception
+	private void createGroupBoxes(Vector<DiagramFactor> diagramFactorsToGroup, int direction, int objectTypeInThatDirection) throws Exception
 	{
 		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>();
 		groupCandidates.addAll(diagramFactorsToGroup);
 
 		while(groupCandidates.size() > 1)
 		{
-			Vector<DiagramFactor> groupedTargets = createBiggestPossibleGroup(new Vector<DiagramFactor>(groupCandidates), direction);
+			Vector<DiagramFactor> groupedTargets = createBiggestPossibleGroup(new Vector<DiagramFactor>(groupCandidates), direction, objectTypeInThatDirection);
 			if(groupedTargets.size() == 0)
 				break;
 			groupCandidates.removeAll(groupedTargets);
 		}
 	}
 
-	private Vector<DiagramFactor> createBiggestPossibleGroup(Vector<DiagramFactor> groupCandidates, int direction) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
+	private Vector<DiagramFactor> createBiggestPossibleGroup(Vector<DiagramFactor> groupCandidates, int direction, int objectTypeInThatDirection) throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
 		while(groupCandidates.size() > 1)
 		{
 			int wouldRemoveLinkCount = 0;
-			ORefSet fromDiagramFactorRefs = getRefsOfFactorsThatLink(groupCandidates, direction);
+			ORefSet fromDiagramFactorRefs = getRefsOfFactorsThatLink(groupCandidates, direction, objectTypeInThatDirection);
 			for(ORef fromRef : fromDiagramFactorRefs)
 			{
 				if(isLinkedToAll(fromRef, groupCandidates, direction))
@@ -136,23 +136,24 @@ public class MeglerArranger
 		return true;
 	}
 
-	private ORefSet getRefsOfFactorsThatLink(AbstractCollection<DiagramFactor> groupCandidates, int direction)
+	private ORefSet getRefsOfFactorsThatLink(AbstractCollection<DiagramFactor> groupCandidates, int direction, int objectTypeInThatDirection)
 	{
 		ORefSet allFroms = new ORefSet();
 		for(DiagramFactor factor : groupCandidates)
-			allFroms.addAll(getRefsOfFactorsThatLink(factor, direction));
+			allFroms.addAll(getRefsOfFactorsThatLink(factor, direction, objectTypeInThatDirection));
 		
 		return allFroms;
 	}
 
-	private ORefSet getRefsOfFactorsThatLink(DiagramFactor factor, int direction)
+	private ORefSet getRefsOfFactorsThatLink(DiagramFactor factor, int direction, int objectTypeInThatDirection)
 	{
 		ORefList linkRefs = factor.findObjectsThatReferToUs(DiagramLink.getObjectType());
 		ORefSet froms = new ORefSet();
 		for(int i = 0; i < linkRefs.size(); ++i)
 		{
 			DiagramLink link = DiagramLink.find(getProject(), linkRefs.get(i));
-			froms.add(link.getDiagramFactor(direction).getRef());
+			if(link.getDiagramFactor(direction).getWrappedORef().getObjectType() == objectTypeInThatDirection)
+				froms.add(link.getDiagramFactor(direction).getRef());
 		}
 		return froms;
 	}
