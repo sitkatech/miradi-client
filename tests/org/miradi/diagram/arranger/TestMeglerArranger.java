@@ -57,9 +57,9 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(getProject().getMainDiagramObject());
 		arranger.arrange();
 		
-		assertEquals("Strategy not in column 1?", 180, strategyDiagramFactor.getLocation().x);
-		assertEquals("Threat not in column 2?", 330, threatDiagramFactor.getLocation().x);
-		assertEquals("Target not in column 3?", 480, targetDiagramFactor.getLocation().x);
+		assertEquals("Strategy not in column 1?", 240, strategyDiagramFactor.getLocation().x);
+		assertEquals("Threat not in column 2?", 450, threatDiagramFactor.getLocation().x);
+		assertEquals("Target not in column 3?", 660, targetDiagramFactor.getLocation().x);
 		
 		assertEquals("Strategy not at top?", 30, strategyDiagramFactor.getLocation().y);
 		assertEquals("Threat not at top?", 30, threatDiagramFactor.getLocation().y);
@@ -198,6 +198,35 @@ public class TestMeglerArranger extends TestCaseWithProject
 		
 		assertTrue("Didn't group target1 with target2?", children1.equals(targets1And2) || children2.equals(targets1And2));
 		assertTrue("Didn't group target3 with target4?", children1.equals(targets3And4) || children2.equals(targets3And4));
+
+		DiagramFactor targetGroup1 = getGroup(targetDiagramFactor1);
+		DiagramFactor targetGroup2 = getGroup(targetDiagramFactor3);
+		
+		assertTrue("Didn't link threat 1 to group 1?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatDiagramFactor1.getRef(), targetGroup1.getRef()));
+		assertTrue("Didn't link threat 2 to group 2?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatDiagramFactor2.getRef(), targetGroup2.getRef()));
+	}
+	
+	public void testAvoidGroupConflicts() throws Exception
+	{
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor2);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create one group?", 1, groupBoxDiagramFactors.size());
+		DiagramFactor targetGroup = getGroup(targetDiagramFactor1);
+		
+		assertTrue("Didn't link threat 1 to group 1?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatDiagramFactor1.getRef(), targetGroup.getRef()));
+		assertTrue("linked threat 2 to 1 group 1?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatDiagramFactor1.getRef(), targetGroup.getRef()));
 	}
 
 	public void testSkipAlreadyGroupedTargets() throws Exception
@@ -293,6 +322,19 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertContains("Threat 2 not in group?", threatDiagramFactor2.getRef(), allGroupedThreats);
 		assertContains("Threat 3 not in group?", threatDiagramFactor3.getRef(), allGroupedThreats);
 		assertContains("Threat 4 not in group?", threatDiagramFactor4.getRef(), allGroupedThreats);
+		
+		DiagramFactor threatGroup1 = getGroup(threatDiagramFactor1);
+		DiagramFactor threatGroup2 = getGroup(threatDiagramFactor3);
+		
+		assertTrue("Didn't link group 1 to target 1?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatGroup1.getRef(), targetDiagramFactor1.getRef()));
+		assertTrue("Didn't link group 2 to target 2?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatGroup2.getRef(), targetDiagramFactor2.getRef()));
+	}
+
+	private DiagramFactor getGroup(DiagramFactor diagramfactor)
+	{
+		ORef groupRef = diagramfactor.findObjectsThatReferToUs(DiagramFactor.getObjectType()).get(0);
+		DiagramFactor group = DiagramFactor.find(getProject(), groupRef);
+		return group;
 	}
 	
 	public void testDontGroupThreatsUnlessLinkedToTargets() throws Exception
@@ -350,6 +392,12 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertContains("Strategy 2 not in group?", strategyDiagramFactor2.getRef(), allGroupedStrategies);
 		assertContains("Strategy 3 not in group?", strategyDiagramFactor3.getRef(), allGroupedStrategies);
 		assertContains("Strategy 4 not in group?", strategyDiagramFactor4.getRef(), allGroupedStrategies);
+
+		DiagramFactor strategyGroup1 = getGroup(strategyDiagramFactor1);
+		DiagramFactor strategyGroup2 = getGroup(strategyDiagramFactor3);
+		
+		assertTrue("Didn't link group 1 to threat 1?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(strategyGroup1.getRef(), threatDiagramFactor1.getRef()));
+		assertTrue("Didn't link group 2 to threat 2?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(strategyGroup2.getRef(), threatDiagramFactor2.getRef()));
 	}
 	
 	public void testDontGroupStrategiesUnlessLinkedToCauses() throws Exception
