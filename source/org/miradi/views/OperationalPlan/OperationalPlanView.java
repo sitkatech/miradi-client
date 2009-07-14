@@ -49,7 +49,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.OperationalPlan.doers.ProjectResourceWorkPlanFilterEditDoer;
-import org.miradi.views.planning.ProjectResourceManagementPanel;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
 import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
@@ -81,7 +80,7 @@ public class OperationalPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-		projectResourceManagementPanel = ProjectResourceManagementPanel.createProjectResourcesPanel(getMainWindow());
+		projectResourceManagementPanel = OperationalPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		

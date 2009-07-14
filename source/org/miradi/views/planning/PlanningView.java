@@ -107,7 +107,7 @@ public class PlanningView extends TabbedView
 		strategicPlanManagementPanel = ActionPlanManagementPanel.createStrategicPlanPanel(getMainWindow());
 		monitoringPlanManagementPanel = MonitoringPlanManagementPanel.createMonitoringPlanPanel(getMainWindow());
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
-		projectResourceManagementPanel = ProjectResourceManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
+		projectResourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
