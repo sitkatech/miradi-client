@@ -100,7 +100,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	
 	public static MultiTableCombinedAsOneExporter createResourcesTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		ExportablePlanningTreeTableModel model = new ProjectResourceTreeTableModel(project, rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
+		ExportablePlanningTreeTableModel model = ProjectResourceTreeTableModel.createProjectResourceTreeTableModel(project, rowColumnProvider.getColumnListToShow(), AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
 		
 		return createMultiModelExporter(project, model, rowColumnProvider);	
 	}
