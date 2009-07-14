@@ -47,9 +47,9 @@ public class TestMeglerArranger extends TestCaseWithProject
 
 	public void testHorizontalColumns() throws Exception
 	{
-		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor = createTarget();
 		DiagramFactor threatDiagramFactor = createThreat();
-		DiagramFactor strategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor = createStrategy();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor, threatDiagramFactor);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor);
@@ -68,8 +68,8 @@ public class TestMeglerArranger extends TestCaseWithProject
 
 	public void testVerticalSpacing() throws Exception
 	{
-		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor strategyDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		DiagramFactor strategyDiagramFactor2 = createStrategy();
 		
 		MeglerArranger arranger = new MeglerArranger(getProject().getMainDiagramObject());
 		arranger.arrange();
@@ -81,13 +81,13 @@ public class TestMeglerArranger extends TestCaseWithProject
 	
 	public void testLinklessAtFarLeft() throws Exception
 	{
-		DiagramFactor unlinkedTargetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor unlinkedTargetDiagramFactor = createTarget();
 		DiagramFactor unlinkedThreatDiagramFactor = createThreat();
-		DiagramFactor unlinkedStrategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor unlinkedStrategyDiagramFactor = createStrategy();
 		
-		DiagramFactor linkedTargetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor linkedTargetDiagramFactor = createTarget();
 		DiagramFactor linkedThreatDiagramFactor = createThreat();
-		DiagramFactor linkedStrategyDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor linkedStrategyDiagramFactor = createStrategy();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(linkedStrategyDiagramFactor, linkedThreatDiagramFactor);
 		getProject().createDiagramFactorLinkAndAddToDiagram(linkedThreatDiagramFactor, linkedTargetDiagramFactor);
@@ -103,8 +103,8 @@ public class TestMeglerArranger extends TestCaseWithProject
 	public void testOneObviousTargetGroup() throws Exception
 	{
 		DiagramFactor threatDiagramFactor = createThreat();
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor2);
@@ -128,9 +128,9 @@ public class TestMeglerArranger extends TestCaseWithProject
 	{
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
+		DiagramFactor targetDiagramFactor3 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor2);
@@ -151,8 +151,8 @@ public class TestMeglerArranger extends TestCaseWithProject
 	public void testDontGroupIfBidirectionalLink() throws Exception
 	{
 		DiagramFactor threatDiagramFactor = createThreat();
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor1);
 		ORef factorLink2Ref = getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor, targetDiagramFactor2);
@@ -170,10 +170,10 @@ public class TestMeglerArranger extends TestCaseWithProject
 	{
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor4 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
+		DiagramFactor targetDiagramFactor3 = createTarget();
+		DiagramFactor targetDiagramFactor4 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor2);
@@ -210,8 +210,8 @@ public class TestMeglerArranger extends TestCaseWithProject
 	{
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor2);
@@ -233,10 +233,10 @@ public class TestMeglerArranger extends TestCaseWithProject
 	{
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor4 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
+		DiagramFactor targetDiagramFactor3 = createTarget();
+		DiagramFactor targetDiagramFactor4 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor2);
@@ -269,11 +269,11 @@ public class TestMeglerArranger extends TestCaseWithProject
 	
 	public void testDontGroupTargetsUnlessLinkedByCauses() throws Exception
 	{
-		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
 
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
+		DiagramFactor targetDiagramFactor3 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(targetDiagramFactor3, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(targetDiagramFactor3, targetDiagramFactor2);
@@ -295,8 +295,8 @@ public class TestMeglerArranger extends TestCaseWithProject
 		DiagramFactor threatDiagramFactor3 = createThreat();
 		DiagramFactor threatDiagramFactor4 = createThreat();
 
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		DiagramFactor targetDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor1);
@@ -330,16 +330,9 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertTrue("Didn't link group 2 to target 2?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatGroup2.getRef(), targetDiagramFactor2.getRef()));
 	}
 
-	private DiagramFactor getGroup(DiagramFactor diagramfactor)
-	{
-		ORef groupRef = diagramfactor.findObjectsThatReferToUs(DiagramFactor.getObjectType()).get(0);
-		DiagramFactor group = DiagramFactor.find(getProject(), groupRef);
-		return group;
-	}
-	
 	public void testDontGroupThreatsUnlessLinkedToTargets() throws Exception
 	{
-		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
 
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
@@ -360,10 +353,10 @@ public class TestMeglerArranger extends TestCaseWithProject
 	
 	public void testStrategyGrouping() throws Exception
 	{
-		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor strategyDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor strategyDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor strategyDiagramFactor4 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		DiagramFactor strategyDiagramFactor2 = createStrategy();
+		DiagramFactor strategyDiagramFactor3 = createStrategy();
+		DiagramFactor strategyDiagramFactor4 = createStrategy();
 		
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
@@ -402,11 +395,11 @@ public class TestMeglerArranger extends TestCaseWithProject
 	
 	public void testDontGroupStrategiesUnlessLinkedToCauses() throws Exception
 	{
-		DiagramFactor strategyDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor strategyDiagramFactor2 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
-		DiagramFactor strategyDiagramFactor3 = getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		DiagramFactor strategyDiagramFactor2 = createStrategy();
+		DiagramFactor strategyDiagramFactor3 = createStrategy();
 
-		DiagramFactor targetDiagramFactor1 = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		DiagramFactor targetDiagramFactor1 = createTarget();
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, strategyDiagramFactor3);
 		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor2, strategyDiagramFactor3);
@@ -421,6 +414,11 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
 	}
 	
+	private DiagramFactor createStrategy() throws Exception
+	{
+		return getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());
+	}
+
 	private DiagramFactor createThreat() throws Exception, UnexpectedNonSideEffectException, CommandFailedException
 	{
 		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
@@ -428,6 +426,18 @@ public class TestMeglerArranger extends TestCaseWithProject
 		CommandSetObjectData toThreat = new CommandSetObjectData(threatRef, Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE);
 		getProject().executeCommand(toThreat);
 		return threatDiagramFactor;
+	}
+	
+	private DiagramFactor createTarget() throws Exception
+	{
+		return getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+	}
+
+	private DiagramFactor getGroup(DiagramFactor diagramfactor)
+	{
+		ORef groupRef = diagramfactor.findObjectsThatReferToUs(DiagramFactor.getObjectType()).get(0);
+		DiagramFactor group = DiagramFactor.find(getProject(), groupRef);
+		return group;
 	}
 	
 }
