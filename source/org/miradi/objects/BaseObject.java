@@ -58,6 +58,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectChainObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.CodeList;
@@ -617,7 +618,7 @@ abstract public class BaseObject
 		expenseAssignmentRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		
-		whoTotal = new PseudoQuestionData(PSEUDO_TAG_WHO_TOTAL, new ProjectResourceQuestion(getProject())); 
+		whoTotal = new PseudoQuestionData(CustomPlanningColumnsQuestion.META_WHO_TOTAL, new ProjectResourceQuestion(getProject())); 
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
@@ -629,7 +630,7 @@ abstract public class BaseObject
 		addField(TAG_EXPENSE_ASSIGNMENT_REFS, expenseAssignmentRefs);
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
-		addField(PSEUDO_TAG_WHO_TOTAL, whoTotal);
+		addField(CustomPlanningColumnsQuestion.META_WHO_TOTAL, whoTotal);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
 	}
@@ -1085,9 +1086,6 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_WHEN_TOTAL))
 			return getWhenTotalAsString();
 		
-		if (fieldTag.equals(PSEUDO_TAG_WHO_TOTAL))
-			return getWhoTotalCodes().toString();
-						
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return getLatestProgressReportDate();
 		
@@ -1317,8 +1315,6 @@ abstract public class BaseObject
 	public static final String TAG_BUDGET_COST_MODE = "BudgetCostMode";
 	
 	public final static String PSEUDO_TAG_WHEN_TOTAL = "EffortDatesTotal";
-	
-	public final static String PSEUDO_TAG_WHO_TOTAL = "Who";
 	
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";

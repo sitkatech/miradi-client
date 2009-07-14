@@ -39,6 +39,7 @@ import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
 public class ColumnManager
@@ -82,7 +83,7 @@ public class ColumnManager
 	public static CodeList getActivityColumns()
 	{
 		String[] list = {
-				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				};
 			
@@ -105,7 +106,7 @@ public class ColumnManager
 	public static CodeList getMethodColumns()
 	{
 		String[] list = {
-				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				};
 	
@@ -115,7 +116,7 @@ public class ColumnManager
 	public static CodeList getTaskColumns()
 	{		
 		String[] list = {
-				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				};
 		
@@ -152,7 +153,7 @@ public class ColumnManager
 	private static CodeList getAssignmentColumns()
 	{
 		String[] list = {
-				BaseObject.PSEUDO_TAG_WHO_TOTAL,
+				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				ResourceAssignment.PSEUDO_TAG_WHEN_TOTAL,
 				Indicator.PSEUDO_TAG_FACTOR,
 				};
