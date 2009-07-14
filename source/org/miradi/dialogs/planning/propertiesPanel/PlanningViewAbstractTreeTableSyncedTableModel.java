@@ -27,7 +27,9 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 
 abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements PlanningUpperTableModelInterface, ChoiceItemTableModel
@@ -128,8 +130,15 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	
 	public TimePeriodCosts calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		//FIXME urgent - needs to consier projectmetadata
-		return baseObject.getTotalTimePeriodCostsMap().calculateTimePeriodCosts(dateUnit);
+		return calculateTimePeriodCostsMap(baseObject).calculateTimePeriodCosts(dateUnit);
+	}
+
+	public TimePeriodCostsMap calculateTimePeriodCostsMap(BaseObject baseObject) throws Exception
+	{
+		if (ProjectMetadata.is(baseObject))
+			return getProject().getProjectTotalCalculator().calculateProjectTotals();
+			
+		return baseObject.getTotalTimePeriodCostsMap();
 	}
 
 	protected Project project;

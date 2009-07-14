@@ -264,7 +264,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private ChoiceItem getFilteredWhen(BaseObject baseObject) throws Exception
 	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMap();
+		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodCostsMap(baseObject);
 		DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectStartEndDateRange();
 		DateRange rolledUpDateRange = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange, getResourcesFilter());
 		String rolledUpWhen = convertToSafeString(rolledUpDateRange);
