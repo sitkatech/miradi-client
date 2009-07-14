@@ -28,14 +28,27 @@ import org.miradi.utils.CodeList;
 
 public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableModel
 {
-	public ProjectResourceTreeTableModel(Project project, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
+	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, CodeList visibleColumnCodes) throws Exception
 	{
-		super(project, createProjectResourceRootNode(project), getProjectResourceRows(), visibleColumns, uniqueTreeTableModeIdentifier);
+		this(project, rootNode, visibleColumnCodes, UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 	
-	public ProjectResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
+	private ProjectResourceTreeTableModel(Project project, TreeTableNode rootNode, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
 	{
-		super(project, createProjectResourceRootNode(project), getProjectResourceRows(), visibleColumns, UNIQUE_TREE_TABLE_IDENTIFIER);
+		super(project, rootNode, getProjectResourceRows(), visibleColumns, uniqueTreeTableModeIdentifier);
+	}
+	
+	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns) throws Exception
+	{
+		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
+		return new ProjectResourceTreeTableModel(project, projectRootNode, visibleColumns);
+	}
+	
+	public static ProjectResourceTreeTableModel createProjectResourceTreeTableModel(Project project, CodeList visibleColumns, String uniqueTreeTableModeIdentifier) throws Exception
+	{
+		TreeTableNode projectRootNode = createProjectResourceRootNode(project);
+		
+		return new ProjectResourceTreeTableModel(project, projectRootNode, visibleColumns, uniqueTreeTableModeIdentifier);
 	}
 	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
