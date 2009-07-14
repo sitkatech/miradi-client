@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -35,6 +36,12 @@ public class ProjectResourceHiddenNode extends AbstractPlanningTreeNode
 		rebuild();
 	}
 
+	@Override
+	public int getType()
+	{
+		return ObjectType.FAKE;
+	}
+	
 	@Override
 	public BaseObject getObject()
 	{
