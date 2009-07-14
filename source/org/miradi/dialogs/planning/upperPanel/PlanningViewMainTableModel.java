@@ -248,7 +248,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 				return new StrategyRatingSummaryQuestion().findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHO_TOTAL))
-				return appendedProjectResources(new CodeList(rawValue));
+				return appendedProjectResources(baseObject);
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_WHEN_TOTAL))
 				return getFilteredWhen(baseObject);
@@ -280,30 +280,30 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return  getProject().getProjectCalendar().getDateRangeName(combinedDateRange);
 	}
 	
-	private ChoiceItem appendedProjectResources(CodeList resourceRefsAsCodes)
+	private ChoiceItem appendedProjectResources(BaseObject baseObject) throws Exception
 	{
-		ORefSet filteredResources = getFilteredResources(resourceRefsAsCodes);
+	ORefSet resourceRefs = baseObject.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();
+		ORefSet filteredResources = getFilteredResources(resourceRefs);
 		
 		boolean isFirstIteration = true; 
 		String appendedResources = "";
-		for(ORef projectResourceRef : filteredResources)
+		for(ORef resourceRef : filteredResources)
 		{
 			if (!isFirstIteration)
 				appendedResources += ", ";
 			
-			appendedResources += getWhoName(projectResourceRef);
+			appendedResources += getWhoName(resourceRef);
 			isFirstIteration = false;	
 		}
 		
 		return new TaglessChoiceItem(appendedResources);
 	}
 	
-	private ORefSet getFilteredResources(CodeList codeList)
+	private ORefSet getFilteredResources(ORefSet resourcesToFilter)
 	{
-		if (codeList.size() == 0)
+		if (resourcesToFilter.size() == 0)
 			return new ORefSet();
 		
-		ORefSet resourcesToFilter = convertToRefs(codeList);
 		ORefSet resourcesToRetain = getResourcesFilter();
 		if (resourcesToRetain.size() == 0)
 			return resourcesToFilter;
@@ -311,19 +311,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		resourcesToFilter.retainAll(resourcesToRetain);
 		
 		return resourcesToFilter;
-	}
-
-	private ORefSet convertToRefs(CodeList codeList)
-	{
-		ORefSet refs = new ORefSet();
-		for (int index = 0; index < codeList.size(); ++index)
-		{
-			String refCode = codeList.get(index);
-			ORef ref = ORef.createFromString(refCode);
-			refs.add(ref);
-		}	
-		
-		return refs;
 	}
 
 	private String getWhoName(ORef resourceRef)
