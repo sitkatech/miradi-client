@@ -80,12 +80,12 @@ public class OperationalPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-		projectResourceManagementPanel = OperationalPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
+		resourceManagementPanel = OperationalPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		
 		addNonScrollingTab(workPlanManagementPanel);
-		addNonScrollingTab(projectResourceManagementPanel);
+		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
@@ -96,8 +96,8 @@ public class OperationalPlanView extends TabbedView
 		workPlanManagementPanel.dispose();
 		workPlanManagementPanel = null;
 		
-		projectResourceManagementPanel.dispose();
-		projectResourceManagementPanel = null;
+		resourceManagementPanel.dispose();
+		resourceManagementPanel = null;
 		
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
@@ -160,7 +160,7 @@ public class OperationalPlanView extends TabbedView
 	}
 	
 	private PlanningTreeManagementPanel workPlanManagementPanel;
-	private PlanningTreeManagementPanel projectResourceManagementPanel;
+	private PlanningTreeManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 }
