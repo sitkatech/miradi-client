@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-14 12:19-0500\n"
+"POT-Creation-Date: 2009-07-14 14:16-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -7568,9 +7568,6 @@ msgstr "指示物优先选项 \t\t"
 msgid "FieldLabel|12.PseudoTagStatusValue|Progress"
 msgstr "进展 \t\t"
 
-msgid "FieldLabel|12.Who|Who"
-msgstr "何人 \t\t"
-
 msgid "FieldLabel|12.EffortDatesTotal|When"
 msgstr "何时 \t\t"
 
@@ -7682,6 +7679,9 @@ msgid "FieldLabel|12.Email|Email"
 msgstr ""
 
 msgid "FieldLabel|12.Location|Location"
+msgstr ""
+
+msgid "FieldLabel|12.MetaWhoTotal|Who"
 msgstr ""
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
@@ -29384,6 +29384,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|12.Who|Who"
+#~ msgstr "何人 \t\t"
 
 #~ msgid "Title|Resources"
 #~ msgstr "资源 \t\t"
