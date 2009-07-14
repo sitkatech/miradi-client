@@ -28,9 +28,26 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel implements RowColumnBaseObjectProvider
 {
+	public ExportablePlanningTreeTableModel(Project projectToUse, CodeList visibleRowCodes, CodeList visibleColumnCodes, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	{
+		super(projectToUse, visibleRowCodes, visibleColumnCodes);
+		
+		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
+		setRowObjectRefs();
+	}
+
+	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, CodeList visibleRowCodes, CodeList visibleColumnCodes, String uniqueTreeTableModelIdentifierToUse) throws Exception
+	{
+		super(projectToUse, rootNode, visibleRowCodes, visibleColumnCodes);
+		
+		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
+		setRowObjectRefs();
+	}
+	
 	public ExportablePlanningTreeTableModel(Project projectToUse, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
@@ -39,14 +56,6 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 		setRowObjectRefs();
 	}
 
-	public ExportablePlanningTreeTableModel(Project projectToUse, TreeTableNode rootNode, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifierToUse) throws Exception
-	{
-		super(projectToUse, rootNode, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
-		
-		uniqueTreeTableModelIdentifier = uniqueTreeTableModelIdentifierToUse;
-		setRowObjectRefs();
-	}
-	
 	private void setRowObjectRefs() throws Exception
 	{
 		rowObjectRefs = getFullyExpandedRefList();

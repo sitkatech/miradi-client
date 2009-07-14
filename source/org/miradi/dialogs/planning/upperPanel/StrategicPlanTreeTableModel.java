@@ -23,11 +23,11 @@ import org.miradi.project.Project;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-public class StrategicPlanTreeTableModel extends PlanningTreeTableModel
+public class StrategicPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public StrategicPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns());
+		super(project, RowManager.getStrategicPlanRows(), ColumnManager.getStrategicPlanColumns(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override

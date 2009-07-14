@@ -19,23 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-public class ConfigurablePlanningTreeTableModel extends PlanningTreeTableModel
+public class ConfigurablePlanningTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public ConfigurablePlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project));
-	}
-
-	public ConfigurablePlanningTreeTableModel(Project project, RowColumnProvider rowColumnProvider) throws Exception
-	{
-		super(project, rowColumnProvider.getRowListToShow(), rowColumnProvider.getColumnListToShow());
+		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception

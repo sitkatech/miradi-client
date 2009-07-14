@@ -23,11 +23,11 @@ import org.miradi.project.Project;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-public class MonitoringPlanTreeTableModel extends PlanningTreeTableModel
+public class MonitoringPlanTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public MonitoringPlanTreeTableModel(Project project) throws Exception
 	{
-		super(project, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns());
+		super(project, RowManager.getMonitoringPlanRows(), ColumnManager.getMonitoringPlanColumns(), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	@Override

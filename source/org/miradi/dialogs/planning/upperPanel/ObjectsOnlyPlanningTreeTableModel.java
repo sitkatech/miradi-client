@@ -25,11 +25,11 @@ import org.miradi.utils.CodeList;
 import org.miradi.views.planning.ColumnManager;
 import org.miradi.views.planning.RowManager;
 
-public class ObjectsOnlyPlanningTreeTableModel extends PlanningTreeTableModel
+public class ObjectsOnlyPlanningTreeTableModel extends ExportablePlanningTreeTableModel
 {
 	public ObjectsOnlyPlanningTreeTableModel(Project project) throws Exception
 	{
-		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project));
+		super(project, getVisibleRowCodes(project), getVisibleColumnCodes(project), UNIQUE_TREE_TABLE_IDENTIFIER);
 	}
 
 	private static CodeList getVisibleColumnCodes(Project projectToUse) throws Exception
