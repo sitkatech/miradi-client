@@ -542,26 +542,6 @@ abstract public class BaseObject
 		return new ORefList();
 	}
 					
-	public CodeList getWhoTotalCodes()
-	{		
-		try
-		{
-			ORefSet resourcesRefs = getTotalTimePeriodCostsMap().getAllProjectResourceRefs();		
-			CodeList projectResourceCodes = new CodeList();
-			for(ORef resourceRef : resourcesRefs)
-			{
-				projectResourceCodes.add(resourceRef.toString());
-			}
-
-			return projectResourceCodes;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
-	}
-
 	public ORefSet getAssignedResourceRefs() throws Exception
 	{
 		ORefSet projectResourceRefs = new ORefSet();

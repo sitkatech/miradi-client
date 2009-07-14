@@ -27,8 +27,10 @@ import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -48,13 +50,13 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		super(questionToUse, LAYOUT_COLUMN_COUNT, null);
 		
 		parentObject = parentObjectToUse;
-		createCheckBoxes(parentObject.getWhoTotalCodes());
+		createCheckBoxes(getWhoTotalCodes(parentObject));
 	}
 	
 	@Override
 	public void valueChanged(ChoiceItem choiceItem, boolean isSelected)	throws Exception
 	{
-		CodeList currentCodes = getParentObject().getWhoTotalCodes();
+		CodeList currentCodes = getWhoTotalCodes(getParentObject());
 		boolean doesAssignmentExist = currentCodes.contains(choiceItem.getCode());
 		final boolean needToDelete = doesAssignmentExist && !isSelected;
 		final boolean needToCreate = !doesAssignmentExist && isSelected;
@@ -208,6 +210,26 @@ public class StandAloneCodeListComponent extends AbstractCodeListComponent
 		
 		ResourceAssignment firstResourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.get(0));
 		return firstResourceAssignment.getDateUnitEffortList();
+	}
+	
+	public CodeList getWhoTotalCodes(BaseObject baseObject)
+	{		
+		try
+		{
+			ORefSet resourcesRefs = baseObject.getTotalTimePeriodCostsMap().getAllProjectResourceRefs();		
+			CodeList projectResourceCodes = new CodeList();
+			for(ORef resourceRef : resourcesRefs)
+			{
+				projectResourceCodes.add(resourceRef.toString());
+			}
+
+			return projectResourceCodes;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
 	}
 	
 	private ORefList getResourceAssignmentRefs() throws Exception
