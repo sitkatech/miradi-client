@@ -328,7 +328,7 @@ abstract public class AbstractTarget extends Factor
 	public IdList getDirectOrIndirectIndicators()
 	{
 		if(!isViabilityModeTNC())
-			return super.getIndicatorIds();
+			return super.getOnlyDirectIndicatorIds();
 		
 		return findAllKeaIndicators();
 	}

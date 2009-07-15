@@ -94,8 +94,8 @@ public class TestFactor extends TestCaseWithProject
 		assertEquals("wrong id?", factor.getId(), got.getId());
 		assertEquals("wrong name?", factor.getLabel(), got.getLabel());
 		assertEquals("wrong comment?", factor.getComment(), got.getComment());
-		assertEquals("wrong indicator count?", factor.getIndicatorIds().size(), got.getIndicatorIds().size());
-		assertEquals("wrong indicators?", factor.getIndicatorIds(), got.getIndicatorIds());
+		assertEquals("wrong indicator count?", factor.getOnlyDirectIndicatorIds().size(), got.getOnlyDirectIndicatorIds().size());
+		assertEquals("wrong indicators?", factor.getOnlyDirectIndicatorIds(), got.getOnlyDirectIndicatorIds());
 		assertEquals("wrong objectives count?", factor.getObjectiveIds().size(), got.getObjectiveIds().size());
 		assertEquals("wrong objectives?", factor.getObjectiveIds(), got.getObjectiveIds());
 	}

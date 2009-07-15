@@ -88,7 +88,7 @@ abstract public class Factor extends BaseObject
 		switch(objectType)
 		{
 			case ObjectType.INDICATOR: 
-				list.addAll(new ORefList(objectType, getIndicatorIds()));
+				list.addAll(new ORefList(objectType, getOnlyDirectIndicatorIds()));
 				break;
 		}
 		return list;
@@ -106,7 +106,7 @@ abstract public class Factor extends BaseObject
 	
 	public IdList getDirectOrIndirectIndicators()
 	{
-		return getIndicatorIds();
+		return getOnlyDirectIndicatorIds();
 	}
 	
 	public FactorType getNodeType()
@@ -136,14 +136,14 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
-	public IdList getIndicatorIds()
+	public IdList getOnlyDirectIndicatorIds()
 	{
 		return indicators.getIdList();
 	}
 	
-	public ORefList getIndicatorRefs()
+	public ORefList getOnlyDirectIndicatorRefs()
 	{
-		return new ORefList(Indicator.getObjectType(), getIndicatorIds());
+		return new ORefList(Indicator.getObjectType(), getOnlyDirectIndicatorIds());
 	}
 	
 	public void setIndicators(IdList indicatorsToUse)

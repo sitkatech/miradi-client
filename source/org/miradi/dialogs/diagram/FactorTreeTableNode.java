@@ -85,7 +85,7 @@ public class FactorTreeTableNode extends TreeTableNode
 	}
 	public void rebuild() throws Exception
 	{
-		ORefList indicatorRefs = factor.getIndicatorRefs();
+		ORefList indicatorRefs = factor.getOnlyDirectIndicatorRefs();
 		indicators = new ViabilityIndicatorNode[indicatorRefs.size()];
 		for (int i = 0; i < indicatorRefs.size(); ++i)
 		{
