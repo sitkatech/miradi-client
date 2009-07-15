@@ -20,23 +20,37 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
+import java.util.Vector;
+
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class ResourceTreeRootNodeWithUnspecifiedNode extends ResourceTreeRootNode
+public class ResourceTreeRootNode extends AbstractPlanningTreeNode
 {
-	public ResourceTreeRootNodeWithUnspecifiedNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public ResourceTreeRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		
 		rebuild();
 	}
-
+	
+	@Override
+	public BaseObject getObject()
+	{
+		return getProject().getMetadata();
+	}
+	
 	@Override
 	public void rebuild() throws Exception
 	{
-		super.rebuild();
-		
-		children.add(new ProjectResourceNotSpecifiedNode(getProject(), getVisibleRows()));
+		children = new Vector();
+		ProjectResource[] projectResources = getProject().getResourcePool().getAllProjectResources();
+		for (int index = 0; index < projectResources.length; ++index)
+		{
+			ProjectResourceTreeProjectResourceNode node = new ProjectResourceTreeProjectResourceNode(getProject(), visibleRows, projectResources[index]);
+			children.add(node);
+		}
 	}
 }
