@@ -48,7 +48,7 @@ public class PlanningTreeIntermediateResultsNode extends AbstractPlanningTreeNod
 		DiagramObject diagram = diagramObject;
 
 		createAndAddChildren(intermediateResult.getObjectiveRefs(), diagram);
-		addMissingChildren(intermediateResult.getIndicatorRefs(), diagram);
+		addMissingChildren(intermediateResult.getOnlyDirectIndicatorRefs(), diagram);
 	}
 
 	protected int[] getNodeSortOrder()

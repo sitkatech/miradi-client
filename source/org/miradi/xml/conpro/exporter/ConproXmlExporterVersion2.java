@@ -477,7 +477,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			if (threatRatingValue != null)
 				writeOptionalRatingCodeElement(out, THREAT_TO_PROJECT_RANK, threatRatingValue.getCode());
 			
-			writeIndicatorIds(out, directThreats[index].getIndicatorRefs());
+			writeIndicatorIds(out, directThreats[index].getOnlyDirectIndicatorRefs());
 			writeEndElement(out, THREAT);
 		}
 		

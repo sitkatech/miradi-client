@@ -116,7 +116,7 @@ public class TargetViabilityNode extends TreeTableNode
 	private ViabilityIndicatorNode[] getTargetIndicatorNodes() throws Exception
 	{
 		Vector<ViabilityIndicatorNode> viabilityIndicatorNodes = new Vector();
-		ORefList indicatorRefs = target.getIndicatorRefs();
+		ORefList indicatorRefs = target.getOnlyDirectIndicatorRefs();
 		for (int index = 0; index < indicatorRefs.size(); ++index)
 		{
 			Indicator indicator = Indicator.find(getProject(), indicatorRefs.get(index));
