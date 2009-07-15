@@ -29,6 +29,7 @@ import java.util.Vector;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -207,10 +208,63 @@ public class MeglerArranger
 
 	private void setLocations() throws Exception
 	{
+		Vector<DiagramFactorClump> threatClumps = buildThreatClumps();
+		
+		DiagramFactorClump mostActiveClump = findMostActiveFactorOrGroup(threatClumps);
+		if(mostActiveClump != null)
+			EAM.logVerbose("Most active threat: " + mostActiveClump.toString());
+		
 		moveFactorsToFinalLocations(unlinked, UNLINKED_COLUMN_X, TOP_Y);
 		moveFactorsToFinalLocations(strategies, STRATEGY_COLUMN_X, TOP_Y);
 		moveFactorsToFinalLocations(threats, THREAT_COLUMN_X, TOP_Y);
 		moveFactorsToFinalLocations(targets, TARGET_COLUMN_X, TOP_Y);
+	}
+
+	private Vector<DiagramFactorClump> buildThreatClumps()
+	{
+		Vector<DiagramFactorClump> clumps = new Vector<DiagramFactorClump>();
+		HashSet<DiagramFactor> alreadyClumpedGroups = new HashSet<DiagramFactor>();
+		
+		Project project = diagram.getProject();
+		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
+			if(!diagramFactor.getWrappedFactor().isDirectThreat())
+				continue;
+			
+			DiagramFactor diagramFactorMaybeGroup = diagramFactor;
+			DiagramFactor group = findGroup(diagramFactor);
+			if(group != null)
+				diagramFactorMaybeGroup = group;
+
+			if(!alreadyClumpedGroups.contains(diagramFactorMaybeGroup))
+				clumps.add(new DiagramFactorClump(diagram, diagramFactorMaybeGroup));
+		}
+		return clumps;
+	}
+
+	private DiagramFactorClump findMostActiveFactorOrGroup(Vector<DiagramFactorClump> clumps)
+	{
+		DiagramFactorClump mostActive = null;
+		for(DiagramFactorClump clump : clumps)
+		{
+			if(mostActive == null || clump.getTotalLinkCount() > mostActive.getTotalLinkCount())
+				mostActive = clump;
+		}
+		
+		return mostActive;
+	}
+
+	private DiagramFactor findGroup(DiagramFactor diagramFactor)
+	{
+		ORefList referringDiagramFactorRefs = diagramFactor.findObjectsThatReferToUs(DiagramFactor.getObjectType());
+		if(referringDiagramFactorRefs.size() < 1)
+			return null;
+		
+		ORef groupRef = referringDiagramFactorRefs.get(0);
+		DiagramFactor group = DiagramFactor.find(getProject(), groupRef);
+		return group;
 	}
 
 	private void moveFactorsToFinalLocations(Vector<DiagramFactor> factors, int x, int initialY) throws Exception
