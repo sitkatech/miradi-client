@@ -71,7 +71,7 @@ public class ProjectTotalCalculator
 		ORefSet indicatorRefs = new ORefSet();
 		for (int index = 0; index < allResultsChainFactors.length; ++index)
 		{
-			indicatorRefs.addAllRefs(allResultsChainFactors[index].getIndicatorRefs());
+			indicatorRefs.addAll(allResultsChainFactors[index].getDirectOrIndirectIndicatorRefSet());
 		}
 		
 		HashSet<Indicator> indicators = new HashSet();
