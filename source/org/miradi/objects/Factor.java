@@ -43,6 +43,7 @@ import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
@@ -93,6 +94,15 @@ abstract public class Factor extends BaseObject
 		return list;
 	}
 	
+	public ORefSet getDirectOrIndirectIndicatorRefSet()
+	{
+		return new ORefSet(getDirectOrIndirectIndicatorRefs());
+	}
+	
+	public ORefList getDirectOrIndirectIndicatorRefs()
+	{
+		return new ORefList(Indicator.getObjectType(), getDirectOrIndirectIndicators()); 
+	}
 	
 	public IdList getDirectOrIndirectIndicators()
 	{
