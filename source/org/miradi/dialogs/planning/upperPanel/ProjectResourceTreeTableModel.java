@@ -22,7 +22,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.ProjectResourceHiddenNode;
-import org.miradi.dialogs.planning.treenodes.ProjectResourceTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.ResourceTreeRootNodeWithUnspecifiedNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -60,7 +60,7 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
-		return new ProjectResourceTreeRootNode(project, getProjectResourceRows());
+		return new ResourceTreeRootNodeWithUnspecifiedNode(project, getProjectResourceRows());
 	}
 	
 	private static TreeTableNode createHiddenResourceRootNode(Project project) throws Exception

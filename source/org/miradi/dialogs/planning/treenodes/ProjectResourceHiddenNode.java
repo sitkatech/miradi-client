@@ -52,6 +52,6 @@ public class ProjectResourceHiddenNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		children.add(new ProjectResourceTreeRootNode(getProject(), getVisibleRows()));
+		children.add(new ResourceTreeRootNodeWithUnspecifiedNode(getProject(), getVisibleRows()));
 	}
 }
