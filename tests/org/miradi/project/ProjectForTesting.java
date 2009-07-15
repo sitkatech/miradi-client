@@ -508,7 +508,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target, Target.TAG_COMMENTS, "Some comment Text");
 		fillObjectUsingCommand(target, Target.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
 		fillObjectUsingCommand(target, Target.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
-		fillObjectUsingCommand(target, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+		turnOnTncMode(target);
 				
 		CodeList habitatCodes = new CodeList();
 		habitatCodes.add(HabitatAssociationQuestion.FOREST_CODE);
@@ -528,6 +528,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		IdList keaIds = new IdList(KeyEcologicalAttribute.getObjectType());
 		keaIds.addRef(kea.getRef());
 		fillObjectUsingCommand(target, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
+	}
+
+	public void turnOnTncMode(Target target) throws Exception
+	{
+		fillObjectUsingCommand(target, Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
 	}
 	
 	public void populateCause(Cause cause) throws Exception

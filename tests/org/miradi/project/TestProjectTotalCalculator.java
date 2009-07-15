@@ -25,15 +25,18 @@ import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Target;
 
 public class TestProjectTotalCalculator extends TestCaseWithProject
 {
@@ -55,6 +58,25 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		fred = getProject().createAndPopulateProjectResource();
 		calculator = new ProjectTotalCalculator(getProject());
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
+	}
+	
+	public void testKeaIndicatorInResultsChain() throws Exception
+	{
+		DiagramFactor target = getProject().createAndAddFactorToDiagram(resultsChainDiagramModel.getDiagramObject(), Target.getObjectType());
+		getProject().turnOnTncMode((Target) target.getWrappedFactor());
+		KeyEcologicalAttribute kea = getProject().createKea();
+		ORefList keaRefs = new ORefList(kea);
+		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaRefs.convertToIdList(KeyEcologicalAttribute.getObjectType()).toString());
+		
+		Indicator indicatorWithResourceAssignment = getProject().createIndicator();
+		addResourceAssignment(indicatorWithResourceAssignment);
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.add(indicatorWithResourceAssignment.getId());
+		getProject().fillObjectUsingCommand(kea.getRef(), KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
+		
+		TimePeriodCostsMap totalsWithIndicator = calculator.calculateProjectTotals();
+		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		assertEquals("did not include kea indicators in totals", 10.0, indictorTimePeriodCosts.calculateResourcesTotalUnits().getValue());
 	}
 	
 	public void testResultsChainDraftStrategyProjectTotal() throws Exception
