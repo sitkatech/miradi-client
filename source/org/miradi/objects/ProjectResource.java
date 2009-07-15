@@ -195,6 +195,11 @@ public class ProjectResource extends BaseObject
 		return projectResourceCodes;
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
 	public static boolean is(int objectType)
 	{
 		return objectType == getObjectType();
