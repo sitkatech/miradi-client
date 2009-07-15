@@ -90,7 +90,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	@Override
 	public String toRawString()
 	{
-		return getObject().toString();
+		return getProject().getFilename();
 	}
 
 	private void addConceptualModel() throws Exception
