@@ -28,10 +28,11 @@ public class ProjectResourceRowColumnProvider implements RowColumnProvider
 {
 	public CodeList getColumnListToShow()
 	{
-		CodeList coreVisibleColumnCodes = ProjectResourceCoreRowColumnProvider.getVisibleColumns();
-		coreVisibleColumnCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		return new CodeList(new String[] {
+				ProjectResource.TAG_RESOURCE_TYPE,
+				CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
+		});
 		
-		return coreVisibleColumnCodes;
 	}
 
 	public CodeList getRowListToShow()
