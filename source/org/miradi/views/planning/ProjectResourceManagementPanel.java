@@ -20,9 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
+import javax.swing.Icon;
+
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -36,6 +39,12 @@ abstract public class ProjectResourceManagementPanel extends PlanningTreeManagem
 		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
 
+	@Override
+	public Icon getIcon()
+	{
+		return new ProjectResourceIcon();
+	}
+	
 	@Override
 	public String getPanelDescription()
 	{
