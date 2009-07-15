@@ -64,7 +64,7 @@ public class ProjectResourceNotSpecifiedNode extends AbstractPlanningTreeNode
 		@Override
 		public String getTypeName()
 		{
-			throw new RuntimeException("This is method should not be used.");
+			return ProjectResource.OBJECT_NAME;
 		}
 		
 		@Override
