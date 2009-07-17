@@ -531,14 +531,13 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		Vector<DateUnit> visibleDateUnits = new Vector();
 		if (isExpanded)
 		{
-			DateUnit superDateUnit = dateUnit;
 			if (!dateUnit.isBlank())
 			{
-				superDateUnit = dateUnit.getSuperDateUnit();
-				visibleDateUnits.addAll(getSubDateUnits(superDateUnit));
+				dateUnit = dateUnit.getSuperDateUnit();
+				visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 			}
 			
-			recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, superDateUnit);
+			recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, dateUnit);
 		}
 		else
 		{
