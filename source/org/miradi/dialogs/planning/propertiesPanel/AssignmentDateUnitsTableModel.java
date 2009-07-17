@@ -541,17 +541,19 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 		}
 		
-		recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, dateUnit);
+		visibleDateUnits.addAll(recusivelyAddSuperDateUnitsInPlace(dateUnit));
 		saveColumnDateUnits(visibleDateUnits);
 	}
 	
-	private void recusivelyAddSuperDateUnitsInPlace(Vector<DateUnit> dateUnitsToUse, DateUnit dateUnit)
+	private Vector<DateUnit> recusivelyAddSuperDateUnitsInPlace(DateUnit dateUnit)
 	{
 		if (dateUnit == null)
-			return;
+			return new Vector();
 		
-		dateUnitsToUse.add(dateUnit);
-		recusivelyAddSuperDateUnitsInPlace(dateUnitsToUse, dateUnit.getSafeSuperDateUnit());
+		Vector<DateUnit> thisDateUnits = recusivelyAddSuperDateUnitsInPlace(dateUnit.getSafeSuperDateUnit());
+		thisDateUnits.insertElementAt(dateUnit, 0);
+		
+		return thisDateUnits;
 	}
 
 	private boolean isExpanded(int column) throws Exception
