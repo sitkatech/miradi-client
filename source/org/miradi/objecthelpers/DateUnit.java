@@ -266,20 +266,6 @@ public class DateUnit
 		return false;
 	}
 	
-	public boolean hasSuperDateUnit()
-	{
-		if(isYear())
-			return true;
-		
-		if(isQuarter())
-			return true;
-		
-		if (isMonth())
-			return true;
-		
-		return false;
-	}
-	
 	public boolean contains(DateUnit otherDateUnit) throws Exception
 	{
 		if (isBlank())
