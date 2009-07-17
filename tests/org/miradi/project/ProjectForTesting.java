@@ -1237,14 +1237,32 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ResourceAssignment addResourceAssignment(BaseObject parentObject, ProjectResource projectResource, double units, int startYear,	int endYear) throws Exception
 	{
-		ResourceAssignment assignment = createResourceAssignment();
-		fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
-		
-		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		MultiCalendar startDate = createStartYear(startYear);
 		MultiCalendar endDate = createEndYear(endYear);
 		DateUnitEffort dateUnitEffort = createDateUnitEffort(startDate, endDate);
 		dateUnitEffort.setUnitQuantity(units);
+		
+		return addResourceAssignment(parentObject, projectResource, dateUnitEffort);
+	}
+	
+	public ResourceAssignment addResourceAssignment(BaseObject parentObject, double units,  DateUnit dateUnit) throws Exception
+	{
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, units);
+		ResourceAssignment assignment = createResourceAssignment();
+		return addResourceAssignment(parentObject, assignment, dateUnitEffort);
+	}
+
+	public ResourceAssignment addResourceAssignment(BaseObject parentObject, ProjectResource projectResource, DateUnitEffort dateUnitEffort) throws Exception
+	{
+		ResourceAssignment assignment = createResourceAssignment();
+		fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		
+		return addResourceAssignment(parentObject, assignment, dateUnitEffort);
+	}
+
+	private ResourceAssignment addResourceAssignment(BaseObject parentObject, ResourceAssignment assignment, DateUnitEffort dateUnitEffort) throws Exception
+	{
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		IdList currentAssignmentIdList = parentObject.getResourceAssignmentIdList();

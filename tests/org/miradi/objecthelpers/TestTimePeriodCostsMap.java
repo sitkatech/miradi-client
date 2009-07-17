@@ -36,8 +36,10 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		super.setUp();
 		
 		dateUnitTotal = new DateUnit("");
+		dateUnit2009 = createSingleYearDateUnit(2009);
 		dateUnit2008 = createSingleYearDateUnit(2008);
 		dateUnit2007 = createSingleYearDateUnit(2007);
+		year2009Q1 = new DateUnit("2009Q1");
 	}
 	
 	public void testBasics() throws Exception
@@ -289,6 +291,21 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		assertEquals("wrong work units for resource?", 2.0, timePeriodCosts2007AfterMerge.calculateResourcesTotalUnits().getValue());
 	}
 	
+	public void testMultipleAssignmentsWithinSameTimePeriodCostsMapMerge() throws Exception
+	{
+		ProjectResource fred = createProjectResource();
+		ProjectResource jill = createProjectResource();
+		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(year2009Q1, fred.getRef(), 13.0);
+		TimePeriodCosts jillTimePeriodCosts = getProject().createTimePeriodCosts(jill.getRef(), 2.0);
+		timePeriodCostsMap1.add(dateUnit2009, jillTimePeriodCosts);
+		
+		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
+		timePeriodCostsMap.mergeNonConflicting(timePeriodCostsMap1);
+		
+		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnitTotal);
+		assertEquals("wrong work units?", 15.0, timePeriodCosts.calculateResourcesTotalUnits().getValue());
+	}
+	
 	private TimePeriodCostsMap createTimePeriodCostsMap(double expense, ProjectResource projectResource, double units)
 	{
 		return createTimePeriodCostsMap(dateUnit2008, expense, projectResource, units);
@@ -338,7 +355,9 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		return getProject().createSingleYearDateUnit(year);
 	}
 
+	private DateUnit dateUnit2009;
 	private DateUnit dateUnit2008;
 	private DateUnit dateUnit2007;
 	private DateUnit dateUnitTotal;
+	private DateUnit year2009Q1;
 }
