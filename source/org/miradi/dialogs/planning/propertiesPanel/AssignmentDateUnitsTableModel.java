@@ -527,38 +527,33 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception
 	{
 		DateUnit dateUnit = getDateUnit(column);
-		Vector<DateUnit> visibleDateUnits = new Vector();
 		if (isExpanded(column))
-			visibleDateUnits = getDateUnitsAfterCollapse(dateUnit);
+			setCollapsedDateUnit(dateUnit);
 		else
-			visibleDateUnits = getDateUnitsAfterExpand(dateUnit);
-		
-		saveColumnDateUnits(visibleDateUnits);
+			setExpandedDateUnit(dateUnit);
 	}
 	
-	private Vector<DateUnit> getDateUnitsAfterExpand(DateUnit dateUnit) throws Exception
+	private void setCollapsedDateUnit(DateUnit dateUnit) throws Exception
 	{
-		Vector<DateUnit> visibleDateUnits = new Vector();
-		visibleDateUnits.addAll(getSubDateUnits(dateUnit));
-		visibleDateUnits.add(dateUnit);
-		visibleDateUnits.addAll(getSuperDateUnits(dateUnit));
-		
-		return visibleDateUnits;
+		setDeepestExpandedColumn(dateUnit.getSafeSuperDateUnit());
 	}
 	
-	private Vector<DateUnit> getDateUnitsAfterCollapse(DateUnit dateUnit) throws Exception
+	private void setExpandedDateUnit(DateUnit dateUnit) throws Exception
+	{
+		setDeepestExpandedColumn(dateUnit);
+	}
+	
+	private void setDeepestExpandedColumn(DateUnit dateUnit) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = new Vector();
-		if (!dateUnit.isBlank())
+		if (dateUnit != null)
 		{
-			dateUnit = dateUnit.getSuperDateUnit();
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
+			visibleDateUnits.add(dateUnit);
+			visibleDateUnits.addAll(getSuperDateUnits(dateUnit));
 		}
 		
-		visibleDateUnits.add(dateUnit);
-		visibleDateUnits.addAll(getSuperDateUnits(dateUnit));
-		
-		return visibleDateUnits;
+		saveColumnDateUnits(visibleDateUnits);
 	}
 	
 	private Vector<DateUnit> getSuperDateUnits(DateUnit dateUnit)
