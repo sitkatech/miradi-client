@@ -526,18 +526,18 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception
 	{
+		DateUnit dateUnit = getDateUnit(column);
 		Vector<DateUnit> visibleDateUnits = new Vector();
 		if (isExpanded(column))
-			visibleDateUnits = getDateUnitsAfterCollapse(column);
+			visibleDateUnits = getDateUnitsAfterCollapse(dateUnit);
 		else
-			visibleDateUnits = getDateUnitsAfterExpand(column);
+			visibleDateUnits = getDateUnitsAfterExpand(dateUnit);
 		
 		saveColumnDateUnits(visibleDateUnits);
 	}
 	
-	private Vector<DateUnit> getDateUnitsAfterExpand(int column) throws Exception
+	private Vector<DateUnit> getDateUnitsAfterExpand(DateUnit dateUnit) throws Exception
 	{
-		DateUnit dateUnit = getDateUnit(column);
 		Vector<DateUnit> visibleDateUnits = new Vector();
 		visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 		visibleDateUnits.add(dateUnit);
@@ -546,9 +546,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return visibleDateUnits;
 	}
 	
-	private Vector<DateUnit> getDateUnitsAfterCollapse(int column) throws Exception
+	private Vector<DateUnit> getDateUnitsAfterCollapse(DateUnit dateUnit) throws Exception
 	{
-		DateUnit dateUnit = getDateUnit(column);
 		Vector<DateUnit> visibleDateUnits = new Vector();
 		if (!dateUnit.isBlank())
 		{
