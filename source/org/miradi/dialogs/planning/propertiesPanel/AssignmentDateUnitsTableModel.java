@@ -552,25 +552,12 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		{
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 			visibleDateUnits.add(dateUnit);
-			visibleDateUnits.addAll(getSuperDateUnitHierarchy(dateUnit));
+			visibleDateUnits.addAll(dateUnit.getSuperDateUnitHierarchy());
 		}
 		
 		saveColumnDateUnits(visibleDateUnits);
 	}
 	
-	private Vector<DateUnit> getSuperDateUnitHierarchy(DateUnit dateUnit)
-	{
-		Vector<DateUnit> superDateUnits = new Vector();
-		DateUnit superDateUnit = dateUnit.getSafeSuperDateUnit();
-		while(superDateUnit != null)
-		{
-			superDateUnits.add(superDateUnit);
-			superDateUnit = superDateUnit.getSafeSuperDateUnit();
-		}
-		
-		return superDateUnits;
-	}
-
 	private boolean isExpanded(int column) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = getCopyOfDateUnits();
