@@ -31,6 +31,12 @@ public class TimePeriodCostsMap
 		data = new HashMap<DateUnit, TimePeriodCosts>();
 	}
 	
+	public TimePeriodCostsMap(TimePeriodCostsMap timePeriodCostsMap)
+	{
+		this();
+		mergeAll(timePeriodCostsMap);
+	}
+	
 	public void add(DateUnit dateUnit, TimePeriodCosts timePeriodCosts)
 	{
 		data.put(dateUnit, new TimePeriodCosts(timePeriodCosts));
@@ -72,20 +78,23 @@ public class TimePeriodCostsMap
 	
 	public void mergeNonConflicting(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
 	{
+		TimePeriodCostsMap snapShot = new TimePeriodCostsMap(this);
 		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.getDateUnitTimePeriodCostsMap().keySet();
 		for(DateUnit dateUnitToMerge : keysToMerge)
 		{
 			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.getTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
-			TimePeriodCosts thisTimePeriodCosts = calculateTimePeriodCosts(dateUnitToMerge);
-			if (thisTimePeriodCosts.getExpense().hasNoValue())
-				mergeNonConflictingExpenses(dateUnitToMerge, timePeriodCostsToMerge);
+			TimePeriodCosts snapShotTimePeriodCosts = snapShot.calculateTimePeriodCosts(dateUnitToMerge);
+			boolean isExpenseDataNonConflicting = snapShotTimePeriodCosts.getExpense().hasNoValue();
+			if (isExpenseDataNonConflicting)
+				mergeExpenses(dateUnitToMerge, timePeriodCostsToMerge);
 			
-			if (thisTimePeriodCosts.calculateResourcesTotalUnits().hasNoValue())
-				mergeNonConflictingWorkUnits(dateUnitToMerge, timePeriodCostsToMerge);
+			boolean isWorkUnitDataNonConflicting = snapShotTimePeriodCosts.calculateResourcesTotalUnits().hasNoValue();
+			if (isWorkUnitDataNonConflicting)
+				mergeWorkUnits(dateUnitToMerge, timePeriodCostsToMerge);
 		}
 	}
 		
-	private void mergeNonConflictingExpenses(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
+	private void mergeExpenses(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing == null)
@@ -95,7 +104,7 @@ public class TimePeriodCostsMap
 		add(dateUnit, existing);
 	}
 	
-	private void mergeNonConflictingWorkUnits(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
+	private void mergeWorkUnits(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		if(existing == null)
