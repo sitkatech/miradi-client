@@ -266,6 +266,20 @@ public class DateUnit
 		return false;
 	}
 	
+	public boolean hasSuperDateUnit()
+	{
+		if(isYear())
+			return true;
+		
+		if(isQuarter())
+			return true;
+		
+		if (isMonth())
+			return true;
+		
+		return false;
+	}
+	
 	public boolean contains(DateUnit otherDateUnit) throws Exception
 	{
 		if (isBlank())
@@ -291,6 +305,18 @@ public class DateUnit
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 
+	public DateUnit getSafeSuperDateUnit()
+	{
+		try
+		{
+			return getSuperDateUnit();
+		}
+		catch(Exception ignoreException)
+		{
+			return null;
+		}
+	}
+	
 	public DateUnit getSuperDateUnit()
 	{
 		if(isDay())
