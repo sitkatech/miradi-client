@@ -22,7 +22,6 @@ package org.miradi.views.diagram;
 import java.util.Comparator;
 
 import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.DefaultPort;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.objects.DiagramFactor;
@@ -31,16 +30,17 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 {
 	public int compare(DefaultGraphCell c1, DefaultGraphCell c2)
 	{
-		//NOTE: This is a patch to deal with DiagramModel.roots contaning DefaultPorts.
-		//We do not know why Default ports are showing up in the roots.
-		if (c1 instanceof DefaultPort || c2 instanceof DefaultPort)
+		//NOTE: We do not know why Default ports are showing up in the roots.
+		boolean isC1Sortable = c1 instanceof EAMGraphCell;
+		boolean isC2Sortable = c2 instanceof EAMGraphCell;
+		if (!isC1Sortable && !isC2Sortable)
+			return 0;
+		
+		if (!isC1Sortable)
 			return 1;
 		
-		if (!(c1 instanceof EAMGraphCell))
-			return 0;
-		
-		if (!(c2 instanceof EAMGraphCell))
-			return 0;
+		if (!isC2Sortable)
+			return -1;
 		
 		EAMGraphCell cell1 = (EAMGraphCell) c1;
 		EAMGraphCell cell2 = (EAMGraphCell) c2;
