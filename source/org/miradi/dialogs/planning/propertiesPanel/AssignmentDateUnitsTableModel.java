@@ -120,6 +120,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		try
 		{
+			if(isDayColumn(modelColumn))
+				return false;
+		
 			return !isExpanded(modelColumn);
 		}
 		catch(Exception e)
@@ -519,42 +522,48 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		return dateUnit.isDay();
 	}
-	
+		
+	@Override
 	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception
 	{
 		boolean isExpanded = isExpanded(column);
 		DateUnit dateUnit = getDateUnit(column);
-		Vector<DateUnit> visibleDateUnits = getCopyOfDateUnits();
+		Vector<DateUnit> visibleDateUnits = new Vector();
 		if (isExpanded)
 		{
-			recursivleyCollapseDateUnitAndItsSubDateUnits(visibleDateUnits, dateUnit);
+			DateUnit superDateUnit = dateUnit;
+			if (!dateUnit.isBlank())
+			{
+				superDateUnit = dateUnit.getSuperDateUnit();
+				visibleDateUnits.addAll(getSubDateUnits(superDateUnit));
+			}
+			
+			recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, superDateUnit);
 		}
 		else
 		{
-			int indexToInsertSubDateUnits = visibleDateUnits.indexOf(dateUnit);
-			visibleDateUnits.addAll(indexToInsertSubDateUnits, getSubDateUnits(dateUnit));
+			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
+			recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, dateUnit);
 		}
 		
 		saveColumnDateUnits(visibleDateUnits);
+	}
+	
+	private void recusivelyAddSuperDateUnitsInPlace(Vector<DateUnit> dateUnitsToUse, DateUnit dateUnit)
+	{
+		if (dateUnit == null)
+			return;
+		
+		dateUnitsToUse.add(dateUnit);
+		recusivelyAddSuperDateUnitsInPlace(dateUnitsToUse, dateUnit.getSafeSuperDateUnit());
 	}
 
 	private boolean isExpanded(int column) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = getCopyOfDateUnits();
-		return visibleDateUnits.containsAll(getSubDateUnits(getDateUnit(column)));
-	}
-	
-	private void recursivleyCollapseDateUnitAndItsSubDateUnits(Vector<DateUnit> currentDateUnits, DateUnit dateUnit) throws Exception
-	{
-		if (!hasSubDateUnits(dateUnit))
-			return;
+		visibleDateUnits.retainAll(getSubDateUnits(getDateUnit(column)));
 		
-		Vector<DateUnit> subDateUnits = getSubDateUnits(dateUnit);
-		currentDateUnits.removeAll(subDateUnits);
-		for(DateUnit thisDateUnit : subDateUnits)
-		{
-			recursivleyCollapseDateUnitAndItsSubDateUnits(currentDateUnits, thisDateUnit);
-		}
+		return visibleDateUnits.size() > 0;
 	}
 	
 	private void saveColumnDateUnits(Vector<DateUnit> currentDateUnits) throws Exception
