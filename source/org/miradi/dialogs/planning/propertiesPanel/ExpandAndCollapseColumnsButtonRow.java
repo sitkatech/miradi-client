@@ -53,6 +53,8 @@ public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirect
 	@Override
 	protected void paintComponent(Graphics g)
 	{
+		g.setColor(getBackground());
+		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		g.setColor(AppPreferences.getControlPanelBackgroundColor());
 		Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
 		for(int index = 0; index < iconHeaderBounds.size(); ++index)
