@@ -371,6 +371,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	private void clearSuperDateUnitColumns(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
+		// TODO: The following loop is very similar to getSuperDateUnits(),
+		// so possibly should call that one and then loop through the results
 		DateUnit superDateUnit = new DateUnit(dateUnit.getDateUnitCode());
 		while(!superDateUnit.isProjectTotal())
 		{
