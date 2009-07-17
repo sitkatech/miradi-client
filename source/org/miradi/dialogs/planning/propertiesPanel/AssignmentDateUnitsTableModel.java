@@ -536,15 +536,13 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 				dateUnit = dateUnit.getSuperDateUnit();
 				visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 			}
-			
-			recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, dateUnit);
 		}
 		else
 		{
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
-			recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, dateUnit);
 		}
 		
+		recusivelyAddSuperDateUnitsInPlace(visibleDateUnits, dateUnit);
 		saveColumnDateUnits(visibleDateUnits);
 	}
 	
