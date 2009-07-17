@@ -540,7 +540,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		DateUnit dateUnit = getDateUnit(column);
 		Vector<DateUnit> visibleDateUnits = new Vector();
 		visibleDateUnits.addAll(getSubDateUnits(dateUnit));
-		visibleDateUnits.addAll(recusivelyAddSuperDateUnitsInPlace(dateUnit));
+		visibleDateUnits.add(dateUnit);
+		visibleDateUnits.addAll(getSuperDateUnits(dateUnit));
 		
 		return visibleDateUnits;
 	}
@@ -555,20 +556,23 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 		}
 		
-		visibleDateUnits.addAll(recusivelyAddSuperDateUnitsInPlace(dateUnit));
+		visibleDateUnits.add(dateUnit);
+		visibleDateUnits.addAll(getSuperDateUnits(dateUnit));
 		
 		return visibleDateUnits;
 	}
 	
-	private Vector<DateUnit> recusivelyAddSuperDateUnitsInPlace(DateUnit dateUnit)
+	private Vector<DateUnit> getSuperDateUnits(DateUnit dateUnit)
 	{
-		if (dateUnit == null)
-			return new Vector();
+		Vector<DateUnit> superDateUnits = new Vector();
+		DateUnit superDateUnit = dateUnit.getSafeSuperDateUnit();
+		while(superDateUnit != null)
+		{
+			superDateUnits.add(superDateUnit);
+			superDateUnit = superDateUnit.getSafeSuperDateUnit();
+		}
 		
-		Vector<DateUnit> thisDateUnits = recusivelyAddSuperDateUnitsInPlace(dateUnit.getSafeSuperDateUnit());
-		thisDateUnits.insertElementAt(dateUnit, 0);
-		
-		return thisDateUnits;
+		return superDateUnits;
 	}
 
 	private boolean isExpanded(int column) throws Exception
