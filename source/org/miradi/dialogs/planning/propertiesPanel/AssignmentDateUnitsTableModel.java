@@ -528,17 +528,17 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		DateUnit dateUnit = getDateUnit(column);
 		if (isExpanded(column))
-			setCollapsedDateUnit(dateUnit);
+			respondToCollapseColumnEvent(dateUnit);
 		else
-			setExpandedDateUnit(dateUnit);
+			respondToExpandedColumnEvent(dateUnit);
 	}
 	
-	private void setCollapsedDateUnit(DateUnit dateUnit) throws Exception
+	private void respondToCollapseColumnEvent(DateUnit dateUnit) throws Exception
 	{
 		setDeepestExpandedColumn(dateUnit.getSafeSuperDateUnit());
 	}
 	
-	private void setExpandedDateUnit(DateUnit dateUnit) throws Exception
+	private void respondToExpandedColumnEvent(DateUnit dateUnit) throws Exception
 	{
 		setDeepestExpandedColumn(dateUnit);
 	}
