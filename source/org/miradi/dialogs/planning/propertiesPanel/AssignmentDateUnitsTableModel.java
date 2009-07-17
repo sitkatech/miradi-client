@@ -526,10 +526,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception
 	{
-		boolean isExpanded = isExpanded(column);
 		DateUnit dateUnit = getDateUnit(column);
 		Vector<DateUnit> visibleDateUnits = new Vector();
-		if (isExpanded)
+		if (isExpanded(column))
 		{
 			if (!dateUnit.isBlank())
 			{
