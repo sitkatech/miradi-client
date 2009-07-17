@@ -238,7 +238,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public DateRange convertToDateRange(DateUnit dateUnit) throws Exception
 	{
-		if(dateUnit.isBlank())
+		if(dateUnit.isProjectTotal())
 			return getProjectStartEndDateRange();
 		
 		return dateUnit.asDateRange();
@@ -263,7 +263,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	public Vector<DateUnit> getSubDateUnits(DateUnit dateUnit) throws Exception
 	{
 		DateRange dateRange = convertToDateRange(dateUnit);
-		if (dateUnit.isBlank())
+		if (dateUnit.isProjectTotal())
 			return getProjectYearsDateUnits(dateRange);
 		
 		if (dateUnit.hasSubDateUnits())

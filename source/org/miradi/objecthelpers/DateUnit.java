@@ -110,10 +110,10 @@ public class DateUnit
 	
 	public boolean isValid()
 	{
-		return (isBlank() || isYear() || isQuarter() || isMonth() || isDay());
+		return (isProjectTotal() || isYear() || isQuarter() || isMonth() || isDay());
 	}
 
-	public boolean isBlank()
+	public boolean isProjectTotal()
 	{
 		return getDateUnitCode().length() == 0;
 	}
@@ -268,10 +268,10 @@ public class DateUnit
 	
 	public boolean contains(DateUnit otherDateUnit) throws Exception
 	{
-		if (isBlank())
+		if (isProjectTotal())
 			return true;
 		
-		if (otherDateUnit.isBlank())
+		if (otherDateUnit.isProjectTotal())
 			return false;
 		
 		return asDateRange().contains(otherDateUnit.asDateRange());
