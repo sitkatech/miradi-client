@@ -526,23 +526,38 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	@Override
 	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception
 	{
-		DateUnit dateUnit = getDateUnit(column);
 		Vector<DateUnit> visibleDateUnits = new Vector();
 		if (isExpanded(column))
-		{
-			if (!dateUnit.isBlank())
-			{
-				dateUnit = dateUnit.getSuperDateUnit();
-				visibleDateUnits.addAll(getSubDateUnits(dateUnit));
-			}
-		}
+			visibleDateUnits = getDateUnitsAfterCollapse(column);
 		else
+			visibleDateUnits = getDateUnitsAfterExpand(column);
+		
+		saveColumnDateUnits(visibleDateUnits);
+	}
+	
+	private Vector<DateUnit> getDateUnitsAfterExpand(int column) throws Exception
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		Vector<DateUnit> visibleDateUnits = new Vector();
+		visibleDateUnits.addAll(getSubDateUnits(dateUnit));
+		visibleDateUnits.addAll(recusivelyAddSuperDateUnitsInPlace(dateUnit));
+		
+		return visibleDateUnits;
+	}
+	
+	private Vector<DateUnit> getDateUnitsAfterCollapse(int column) throws Exception
+	{
+		DateUnit dateUnit = getDateUnit(column);
+		Vector<DateUnit> visibleDateUnits = new Vector();
+		if (!dateUnit.isBlank())
 		{
+			dateUnit = dateUnit.getSuperDateUnit();
 			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
 		}
 		
 		visibleDateUnits.addAll(recusivelyAddSuperDateUnitsInPlace(dateUnit));
-		saveColumnDateUnits(visibleDateUnits);
+		
+		return visibleDateUnits;
 	}
 	
 	private Vector<DateUnit> recusivelyAddSuperDateUnitsInPlace(DateUnit dateUnit)
