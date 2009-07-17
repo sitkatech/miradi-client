@@ -185,7 +185,7 @@ public class TimePeriodCostsMap
 
 	private DateRange convertToDateRange(DateUnit dateUnit, DateRange projectDateRange) throws Exception
 	{
-		if (dateUnit.isBlank())
+		if (dateUnit.isProjectTotal())
 			return projectDateRange;
 		
 		return dateUnit.asDateRange();

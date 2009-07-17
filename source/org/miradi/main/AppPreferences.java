@@ -534,7 +534,7 @@ public class AppPreferences
 	
 	public static Color getWorkUnitsBackgroundColor(DateUnit dateUnit)
 	{
-		if(dateUnit.isBlank())
+		if(dateUnit.isProjectTotal())
 			return getWorkUnitsBackgroundColor();
 		if(dateUnit.isYear())
 			return WORK_UNITS_YEAR_BACKGROUND;
@@ -550,7 +550,7 @@ public class AppPreferences
 	
 	public static Color getExpenseAmountBackgroundColor(DateUnit dateUnit)
 	{
-		if(dateUnit.isBlank())
+		if(dateUnit.isProjectTotal())
 			return EXPENSE_AMOUNT_TOTAL_BACKGROUND;
 		if(dateUnit.isYear())
 			return EXPENSE_AMOUNT_YEAR_BACKGROUND;
@@ -566,7 +566,7 @@ public class AppPreferences
 	
 	public static Color getBudgetDetailsBackgroundColor(DateUnit dateUnit)
 	{
-		if(dateUnit.isBlank())
+		if(dateUnit.isProjectTotal())
 			return BUDGET_DETAILS_TOTAL_BACKGROUND;
 		if(dateUnit.isYear())
 			return BUDGET_DETAILS_YEAR_BACKGROUND;

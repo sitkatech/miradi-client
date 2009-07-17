@@ -104,7 +104,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			DateUnit dateUnit = getDateUnit(col);
-			if (dateUnit.isBlank())
+			if (dateUnit.isProjectTotal())
 				return EAM.text("Total");
 			
 			return getDateRange(dateUnit).toString();
@@ -372,7 +372,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private void clearSuperDateUnitColumns(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		DateUnit superDateUnit = new DateUnit(dateUnit.getDateUnitCode());
-		while(!superDateUnit.isBlank())
+		while(!superDateUnit.isProjectTotal())
 		{
 			superDateUnit = superDateUnit.getSuperDateUnit();
 			DateUnitEffort dateUnitEffort = getDateUnitEffort(assignment, superDateUnit);
