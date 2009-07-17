@@ -293,14 +293,10 @@ public class DateUnit
 
 	public DateUnit getSafeSuperDateUnit()
 	{
-		try
-		{
-			return getSuperDateUnit();
-		}
-		catch(Exception ignoreException)
-		{
+		if (isProjectTotal())
 			return null;
-		}
+		
+		return getSuperDateUnit();
 	}
 	
 	public DateUnit getSuperDateUnit()
