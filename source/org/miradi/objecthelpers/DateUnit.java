@@ -399,6 +399,19 @@ public class DateUnit
 		return getDateUnitCode().toString();
 	}
 	
+	public Vector<DateUnit> getSuperDateUnitHierarchy()
+	{
+		Vector<DateUnit> superDateUnits = new Vector();
+		DateUnit superDateUnit = getSafeSuperDateUnit();
+		while(superDateUnit != null)
+		{
+			superDateUnits.add(superDateUnit);
+			superDateUnit = superDateUnit.getSafeSuperDateUnit();
+		}
+		
+		return superDateUnits;
+	}
+
 	private static final String[][] monthsPerQuarter = { 
 		{"01", "02", "03"}, 
 		{"04", "05", "06"}, 
