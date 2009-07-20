@@ -32,7 +32,13 @@ public class TimePeriodCosts
 	public TimePeriodCosts()
 	{
 		expense = new OptionalDouble();
+		
+	    fundingSourceExpenseMap = new HashMap<ORef, OptionalDouble>();
+		accountingCodeExpenseMap = new HashMap<ORef, OptionalDouble>();
+		
 		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
+		fundingSourceWorkUnitMap = new HashMap<ORef, OptionalDouble>();
+		accountingCodeWorkUnitMap = new HashMap<ORef, OptionalDouble>();
 		
 		updateWorkUnits();
 	}
@@ -242,5 +248,12 @@ public class TimePeriodCosts
 	
 	private OptionalDouble expense;
 	private OptionalDouble workUnits;
+	
+	HashMap<ORef, OptionalDouble> fundingSourceExpenseMap;
+	HashMap<ORef, OptionalDouble> accountingCodeExpenseMap;
+	
 	private HashMap<ORef, OptionalDouble> resourceUnitsMap;
+	HashMap<ORef, OptionalDouble> fundingSourceWorkUnitMap;
+	HashMap<ORef, OptionalDouble> accountingCodeWorkUnitMap;
+	
 }
