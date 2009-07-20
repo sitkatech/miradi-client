@@ -1358,7 +1358,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public static OptionalDouble calculateRawTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		return baseObject.calculateTimePeriodCosts(dateUnit).calculateResourcesTotalUnits();
+		return baseObject.calculateTimePeriodCosts(dateUnit).getResourcesTotalUnits();
 	}
 			
 	private static int nextTargetId;

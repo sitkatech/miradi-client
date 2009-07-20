@@ -141,7 +141,7 @@ public class TimePeriodCosts
 		return new OptionalDouble(projectResource.getCostPerUnit());
 	}
 	
-	public OptionalDouble calculateResourcesTotalUnits()
+	public OptionalDouble getResourcesTotalUnits()
 	{
 		calculateWorkUnits();
 		

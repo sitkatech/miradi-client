@@ -76,7 +76,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		
 		TimePeriodCostsMap totalsWithIndicator = calculator.calculateProjectTotals();
 		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		assertEquals("did not include kea indicators in totals", 10.0, indictorTimePeriodCosts.calculateResourcesTotalUnits().getValue());
+		assertEquals("did not include kea indicators in totals", 10.0, indictorTimePeriodCosts.getResourcesTotalUnits().getValue());
 	}
 	
 	public void testResultsChainDraftStrategyProjectTotal() throws Exception
@@ -96,7 +96,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		TimePeriodCostsMap totalsWithNonDraftStrategy = calculator.calculateProjectTotals();
 		TimePeriodCosts strategyTimePeriodCosts = totalsWithNonDraftStrategy.getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		
-		assertEquals("did not include strategy inside results chain?", 10.0, strategyTimePeriodCosts.calculateResourcesTotalUnits().getValue());
+		assertEquals("did not include strategy inside results chain?", 10.0, strategyTimePeriodCosts.getResourcesTotalUnits().getValue());
 	}
 
 	public void testConceptualModelIndicatorProjectTotal() throws Exception
@@ -126,7 +126,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		assertEquals("did not include results chain indicator in totals?", 1, totalsWithIndicator.size());
 		TimePeriodCosts indictorTimePeriodCosts = totalsWithIndicator.getTimePeriodCostsForSpecificDateUnit(dateUnit);
 		
-		assertEquals("wrong resources total units calculation with indicator?", 10.0, indictorTimePeriodCosts.calculateResourcesTotalUnits().getValue());
+		assertEquals("wrong resources total units calculation with indicator?", 10.0, indictorTimePeriodCosts.getResourcesTotalUnits().getValue());
 	}
 
 	public void testConceptualModelDraftStrategyProjectTotal() throws Exception
