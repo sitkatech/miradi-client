@@ -150,26 +150,10 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnit : keys)
 		{
 			TimePeriodCosts timePeriodCosts = data.get(dateUnit);
-			removeProjectResources(timePeriodCosts, projectResourceRef);
+			timePeriodCosts.removeProjectResources(projectResourceRef);
 		}	
 	}
 
-	private void removeProjectResources(TimePeriodCosts timePeriodCosts, ORef projectResourceRefToRetain)
-	{
-		ORefSet projectResourcesToRemove = new ORefSet();
-		Set<ORef> projectResourceRefs = timePeriodCosts.getResourceRefSet();
-		for(ORef projectResourceRef : projectResourceRefs)
-		{
-			if (!projectResourceRef.equals(projectResourceRefToRetain))
-				projectResourcesToRemove.add(projectResourceRef);
-		}
-		
-		for(ORef projectResourceRefsToRemove : projectResourcesToRemove)
-		{
-			timePeriodCosts.removeResource(projectResourceRefsToRemove);
-		}
-	}
-	
 	public ORefSet getAllProjectResourceRefs()
 	{
 		ORefSet allProjectResourceRefs = new ORefSet();

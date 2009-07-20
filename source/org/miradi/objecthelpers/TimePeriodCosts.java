@@ -246,6 +246,22 @@ public class TimePeriodCosts
 		return asString;
 	}
 	
+	public void removeProjectResources(ORef projectResourceRefToRetain)
+	{
+		ORefSet projectResourcesToRemove = new ORefSet();
+		Set<ORef> projectResourceRefs = getResourceRefSet();
+		for(ORef projectResourceRef : projectResourceRefs)
+		{
+			if (!projectResourceRef.equals(projectResourceRefToRetain))
+				projectResourcesToRemove.add(projectResourceRef);
+		}
+		
+		for(ORef projectResourceRefsToRemove : projectResourcesToRemove)
+		{
+			removeResource(projectResourceRefsToRemove);
+		}
+	}
+
 	private OptionalDouble expense;
 	private OptionalDouble workUnits;
 	
