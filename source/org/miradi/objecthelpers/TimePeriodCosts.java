@@ -84,7 +84,18 @@ public class TimePeriodCosts
 		resourceUnitsMap.remove(resourceRefToRemove);
 		updateWorkUnits();
 	}
-
+	
+	private void updateWorkUnits()
+	{
+		workUnits = new OptionalDouble();
+		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
+		for(ORef projectResourceRef : projectResourcRefs)
+		{
+			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
+			workUnits = workUnits.add(units);
+		}
+	}
+	
 	private void addExpenses(OptionalDouble expenseToAdd)
 	{
 		expense = expense.add(expenseToAdd);
@@ -150,22 +161,9 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getResourcesTotalUnits()
 	{
-		updateWorkUnits();
-		
 		return workUnits;
 	}
 
-	private void updateWorkUnits()
-	{
-		workUnits = new OptionalDouble();
-		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
-		for(ORef projectResourceRef : projectResourcRefs)
-		{
-			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
-			workUnits = workUnits.add(units);
-		}
-	}
-	
 	@Override
 	public boolean equals(Object rawOther)
 	{
