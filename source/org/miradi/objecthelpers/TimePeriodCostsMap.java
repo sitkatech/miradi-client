@@ -93,19 +93,14 @@ public class TimePeriodCostsMap
 		{
 			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.getTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
 			TimePeriodCosts snapShotTimePeriodCosts = snapShot.calculateTimePeriodCosts(dateUnitToMerge);
+			TimePeriodCosts existing = getSafeTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
 			if (snapShotTimePeriodCosts.isExpenseDataNonConflicting())
-			{
-				TimePeriodCosts existing = getSafeTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
 				existing.replaceEmptyExpenseValue(timePeriodCostsToMerge);
-				add(dateUnitToMerge, existing);
-			}
 			
 			if (snapShotTimePeriodCosts.isWorkUnitDataNonConflicting())
-			{
-				TimePeriodCosts existing = getSafeTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
 				existing.mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
-				add(dateUnitToMerge, existing);
-			}
+			
+			add(dateUnitToMerge, existing);
 		}
 	}
 
