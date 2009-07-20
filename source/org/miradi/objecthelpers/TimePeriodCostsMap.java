@@ -88,7 +88,7 @@ public class TimePeriodCostsMap
 			if (isExpenseDataNonConflicting)
 				mergeExpenses(dateUnitToMerge, timePeriodCostsToMerge);
 			
-			boolean isWorkUnitDataNonConflicting = snapShotTimePeriodCosts.calculateResourcesTotalUnits().hasNoValue();
+			boolean isWorkUnitDataNonConflicting = snapShotTimePeriodCosts.getResourcesTotalUnits().hasNoValue();
 			if (isWorkUnitDataNonConflicting)
 				mergeWorkUnits(dateUnitToMerge, timePeriodCostsToMerge);
 		}

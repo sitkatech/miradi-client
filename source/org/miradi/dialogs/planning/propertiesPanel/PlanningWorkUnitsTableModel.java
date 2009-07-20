@@ -57,7 +57,7 @@ public class PlanningWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 		{
 			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
 			TimePeriodCosts timePeriodCosts = assignment.calculateTimePeriodCosts(dateUnit);
-			OptionalDouble thisResourceTotal = timePeriodCosts.calculateResourcesTotalUnits();
+			OptionalDouble thisResourceTotal = timePeriodCosts.getResourcesTotalUnits();
 			if (index == 0)
 				resourceTotal = thisResourceTotal;
 			
