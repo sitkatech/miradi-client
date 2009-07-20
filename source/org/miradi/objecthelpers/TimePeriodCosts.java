@@ -125,12 +125,12 @@ public class TimePeriodCosts
 		expense = expenseToUse;
 	}
 	
-	public void replaceEmptyExpenseValue(OptionalDouble expenseToUse)
+	public void replaceEmptyExpenseValue(TimePeriodCosts timePeriodCosts)
 	{
 		if (getExpense().hasValue())
 			throw new RuntimeException((EAM.text("Existing expense was not empty. value=" + expense.getValue())));
 		
-		setExpense(expenseToUse);
+		setExpense(timePeriodCosts.getExpense());
 	}
 	
 	public OptionalDouble calculateTotalCost(Project projectToUse)
