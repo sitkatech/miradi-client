@@ -100,7 +100,7 @@ public class TimePeriodCostsMap
 		if(existing == null)
 			existing = new TimePeriodCosts();
 		
-		existing.replaceEmptyExpenseValue(timePeriodCostsToMerge.getExpense());
+		existing.replaceEmptyExpenseValue(timePeriodCostsToMerge);
 		add(dateUnit, existing);
 	}
 	
