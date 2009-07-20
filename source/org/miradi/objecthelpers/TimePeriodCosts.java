@@ -34,7 +34,7 @@ public class TimePeriodCosts
 		expense = new OptionalDouble();
 		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
 		
-		calculateWorkUnits();
+		updateWorkUnits();
 	}
 	
 	public TimePeriodCosts(TimePeriodCosts timePeriodCostsToUse)
@@ -65,17 +65,24 @@ public class TimePeriodCosts
 		{
 			OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
 			OptionalDouble newUnit = thisUnit.add(unitsToUse);
-			resourceUnitsMap.put(resourceRefToAdd, newUnit);
+			putResource(resourceRefToAdd, newUnit);
 		}
 		else
 		{
-			resourceUnitsMap.put(resourceRefToAdd, unitsToUse);
+			putResource(resourceRefToAdd, unitsToUse);
 		}
+	}
+	
+	private void putResource(ORef resourceRefToAdd,	OptionalDouble unitsToUse)
+	{
+		resourceUnitsMap.put(resourceRefToAdd, unitsToUse);
+		updateWorkUnits();
 	}
 	
 	public void removeResource(ORef resourceRefToRemove)
 	{
 		resourceUnitsMap.remove(resourceRefToRemove);
+		updateWorkUnits();
 	}
 
 	private void addExpenses(OptionalDouble expenseToAdd)
@@ -143,12 +150,12 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getResourcesTotalUnits()
 	{
-		calculateWorkUnits();
+		updateWorkUnits();
 		
 		return workUnits;
 	}
 
-	private void calculateWorkUnits()
+	private void updateWorkUnits()
 	{
 		workUnits = new OptionalDouble();
 		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
@@ -215,7 +222,7 @@ public class TimePeriodCosts
 			OptionalDouble thisWorkUnits = timePeriodCostsToMergeAdd.getUnits(refToMerge);
 			thisWorkUnits = thisWorkUnits.add(getUnits(refToMerge));
 			
-			resourceUnitsMap.put(refToMerge, thisWorkUnits);
+			putResource(refToMerge, thisWorkUnits);
 		}
 	}
 
