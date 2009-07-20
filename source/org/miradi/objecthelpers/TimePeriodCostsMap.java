@@ -47,7 +47,7 @@ public class TimePeriodCostsMap
 		return data.get(dateUnitToUse);
 	}
 	
-	public TimePeriodCosts getSafeTimePeriodCostsForSpecificDateUnit(DateUnit dateUnitToUse)
+	private TimePeriodCosts getSafeTimePeriodCostsForSpecificDateUnit(DateUnit dateUnitToUse)
 	{
 		TimePeriodCosts timePeriodCosts = getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
 		if(timePeriodCosts == null)
