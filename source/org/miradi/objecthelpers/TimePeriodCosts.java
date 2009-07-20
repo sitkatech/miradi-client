@@ -33,6 +33,8 @@ public class TimePeriodCosts
 	{
 		expense = new OptionalDouble();
 		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
+		
+		calculateWorkUnits();
 	}
 	
 	public TimePeriodCosts(TimePeriodCosts timePeriodCostsToUse)
@@ -141,15 +143,20 @@ public class TimePeriodCosts
 	
 	public OptionalDouble calculateResourcesTotalUnits()
 	{
-		OptionalDouble resourcesTotalCost = new OptionalDouble();
+		calculateWorkUnits();
+		
+		return workUnits;
+	}
+
+	private void calculateWorkUnits()
+	{
+		workUnits = new OptionalDouble();
 		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
 		for(ORef projectResourceRef : projectResourcRefs)
 		{
 			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
-			resourcesTotalCost = resourcesTotalCost.add(units);
+			workUnits = workUnits.add(units);
 		}
-		
-		return resourcesTotalCost;
 	}
 	
 	@Override
@@ -205,10 +212,10 @@ public class TimePeriodCosts
 		Set<ORef> keysToMerge = timePeriodCostsToMergeAdd.getResourceRefSet();
 		for(ORef refToMerge : keysToMerge)
 		{
-			OptionalDouble workUnits = timePeriodCostsToMergeAdd.getUnits(refToMerge);
-			workUnits = workUnits.add(getUnits(refToMerge));
+			OptionalDouble thisWorkUnits = timePeriodCostsToMergeAdd.getUnits(refToMerge);
+			thisWorkUnits = thisWorkUnits.add(getUnits(refToMerge));
 			
-			resourceUnitsMap.put(refToMerge, workUnits);
+			resourceUnitsMap.put(refToMerge, thisWorkUnits);
 		}
 	}
 
@@ -229,5 +236,6 @@ public class TimePeriodCosts
 	}
 	
 	private OptionalDouble expense;
+	private OptionalDouble workUnits;
 	private HashMap<ORef, OptionalDouble> resourceUnitsMap;
 }
