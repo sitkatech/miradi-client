@@ -272,6 +272,15 @@ public class TimePeriodCosts
 		return getResourcesTotalUnits().hasNoValue();
 	}
 
+	void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge)
+	{
+		if (snapShotTimePeriodCosts.isExpenseDataNonConflicting())
+			replaceEmptyExpenseValue(timePeriodCostsToMerge);
+		
+		if (snapShotTimePeriodCosts.isWorkUnitDataNonConflicting())
+			mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
+	}
+
 	private OptionalDouble expense;
 	private OptionalDouble workUnits;
 	
