@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-20 14:08-0500\n"
+"POT-Creation-Date: 2009-07-20 15:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2363,7 +2363,7 @@ msgstr "Error"
 msgid "--Select a classification--"
 msgstr "--选定一个类别-- \t\t"
 
-#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:125
+#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:131
 msgid "Existing expense was not empty. value="
 msgstr ""
 
