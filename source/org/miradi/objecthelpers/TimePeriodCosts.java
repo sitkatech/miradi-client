@@ -52,11 +52,12 @@ public class TimePeriodCosts
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpenses(timePeriodCosts);
-		addResources(timePeriodCosts.getResourceUnitsMap());
+		addResources(timePeriodCosts);
 	}
 
-	private void addResources(HashMap<ORef, OptionalDouble> resourceUnitsMapToAdd)
+	private void addResources(TimePeriodCosts timePeriodCosts)
 	{
+		HashMap<ORef, OptionalDouble> resourceUnitsMapToAdd = timePeriodCosts.getResourceUnitsMap();
 		Set<ORef> resourceRefKeysToAdd = resourceUnitsMapToAdd.keySet();
 		for(ORef resourceRefToAdd : resourceRefKeysToAdd)
 		{
