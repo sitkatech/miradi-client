@@ -51,7 +51,7 @@ public class TimePeriodCosts
 	
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
-		addExpenses(timePeriodCosts.getExpense());
+		addExpenses(timePeriodCosts);
 		addResources(timePeriodCosts.getResourceUnitsMap());
 	}
 
@@ -99,9 +99,9 @@ public class TimePeriodCosts
 		}
 	}
 	
-	private void addExpenses(OptionalDouble expenseToAdd)
+	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
 	{
-		expense = expense.add(expenseToAdd);
+		expense = expense.add(timePeriodCostsToUse.getExpense());
 	}
 	
 	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
@@ -211,7 +211,7 @@ public class TimePeriodCosts
 	
 	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
-		addExpenses(timePeriodCostsToMergeAdd.getExpense());
+		addExpenses(timePeriodCostsToMergeAdd);
 		mergeAllProjectResourcesInPlace(timePeriodCostsToMergeAdd);
 	}
 	
