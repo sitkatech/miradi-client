@@ -130,6 +130,14 @@ public class TimePeriodCostsMap
 		return combinedDateRange;
 	}
 	
+	private DateRange convertToDateRange(DateUnit dateUnit, DateRange projectDateRange) throws Exception
+	{
+		if (dateUnit.isProjectTotal())
+			return projectDateRange;
+		
+		return dateUnit.asDateRange();
+	} 
+			
 	public void filterByProjectResource(ORef projectResourceRef)
 	{
 		Set<DateUnit> keys = data.keySet();
@@ -153,14 +161,6 @@ public class TimePeriodCostsMap
 		return allProjectResourceRefs;
 	}
 
-	private DateRange convertToDateRange(DateUnit dateUnit, DateRange projectDateRange) throws Exception
-	{
-		if (dateUnit.isProjectTotal())
-			return projectDateRange;
-		
-		return dateUnit.asDateRange();
-	} 
-		
 	public boolean isEmpty()
 	{
 		return data.isEmpty();
