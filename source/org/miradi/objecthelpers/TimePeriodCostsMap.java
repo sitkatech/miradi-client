@@ -47,6 +47,15 @@ public class TimePeriodCostsMap
 		return data.get(dateUnitToUse);
 	}
 	
+	public TimePeriodCosts getSafeTimePeriodCostsForSpecificDateUnit(DateUnit dateUnitToUse)
+	{
+		TimePeriodCosts timePeriodCosts = getTimePeriodCostsForSpecificDateUnit(dateUnitToUse);
+		if(timePeriodCosts == null)
+			return new TimePeriodCosts();
+		
+		return timePeriodCosts;
+	}
+	
 	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse) throws Exception
 	{
 		TimePeriodCosts totalTimePeriodCosts = new TimePeriodCosts();
@@ -96,20 +105,14 @@ public class TimePeriodCostsMap
 		
 	private void mergeExpenses(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
-		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		if(existing == null)
-			existing = new TimePeriodCosts();
-		
+		TimePeriodCosts existing = getSafeTimePeriodCostsForSpecificDateUnit(dateUnit);
 		existing.replaceEmptyExpenseValue(timePeriodCostsToMerge);
 		add(dateUnit, existing);
 	}
 	
 	private void mergeWorkUnits(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
 	{
-		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		if(existing == null)
-			existing = new TimePeriodCosts();
-		
+		TimePeriodCosts existing = getSafeTimePeriodCostsForSpecificDateUnit(dateUnit);
 		existing.mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
 		add(dateUnit, existing);
 	}
