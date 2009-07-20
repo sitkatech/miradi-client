@@ -80,6 +80,15 @@ public class TimePeriodCostsMap
 		}
 	}
 	
+	private void mergeAllTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
+	{
+		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
+		if(existing != null)
+			existing.mergeAllTimePeriodCosts(timePeriodCostsToMerge);
+		else
+			add(dateUnit, timePeriodCostsToMerge);
+	}
+		
 	public void mergeNonConflicting(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
 	{
 		TimePeriodCostsMap snapShot = new TimePeriodCostsMap(this);
@@ -95,15 +104,6 @@ public class TimePeriodCostsMap
 		}
 	}
 
-	private void mergeAllTimePeriodCosts(DateUnit dateUnit, TimePeriodCosts timePeriodCostsToMerge)
-	{
-		TimePeriodCosts existing = getTimePeriodCostsForSpecificDateUnit(dateUnit);
-		if(existing != null)
-			existing.mergeAllTimePeriodCosts(timePeriodCostsToMerge);
-		else
-			add(dateUnit, timePeriodCostsToMerge);
-	}
-	
 	public DateRange getRolledUpDateRange(DateRange projectDateRange) throws Exception
 	{
 		return getRolledUpDateRange(projectDateRange, new ORefSet());
