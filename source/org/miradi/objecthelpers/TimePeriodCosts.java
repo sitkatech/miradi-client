@@ -65,18 +65,15 @@ public class TimePeriodCosts
 		}
 	}
 
-	public void addResource(ORef resourceRefToAdd,	final OptionalDouble unitsToUse)
+	public void addResource(ORef resourceRefToAdd, OptionalDouble unitsToUse)
 	{
 		if (resourceUnitsMap.containsKey(resourceRefToAdd))
 		{
 			OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
-			OptionalDouble newUnit = thisUnit.add(unitsToUse);
-			putResource(resourceRefToAdd, newUnit);
+			unitsToUse = thisUnit.add(unitsToUse);
 		}
-		else
-		{
-			putResource(resourceRefToAdd, unitsToUse);
-		}
+		
+		putResource(resourceRefToAdd, unitsToUse);
 	}
 	
 	private void putResource(ORef resourceRefToAdd,	OptionalDouble unitsToUse)
