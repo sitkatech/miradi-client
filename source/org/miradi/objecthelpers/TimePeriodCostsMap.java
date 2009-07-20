@@ -70,11 +70,6 @@ public class TimePeriodCostsMap
 		return totalTimePeriodCosts;
 	}
 	
-	public boolean containsSpecificDateUnit(DateUnit dateUnitToUse)
-	{
-		return data.containsKey(dateUnitToUse);
-	}
-	
 	public void mergeAll(TimePeriodCostsMap timePeriodCostsMapToMerge)
 	{
 		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.data.keySet();
