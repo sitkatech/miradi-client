@@ -262,17 +262,17 @@ public class TimePeriodCosts
 		}
 	}
 
-	boolean isExpenseDataNonConflicting()
+	private boolean isExpenseDataNonConflicting()
 	{
 		return getExpense().hasNoValue();
 	}
 
-	boolean isWorkUnitDataNonConflicting()
+	private boolean isWorkUnitDataNonConflicting()
 	{
 		return getResourcesTotalUnits().hasNoValue();
 	}
 
-	void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge)
+	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge)
 	{
 		if (snapShotTimePeriodCosts.isExpenseDataNonConflicting())
 			replaceEmptyExpenseValue(timePeriodCostsToMerge);
