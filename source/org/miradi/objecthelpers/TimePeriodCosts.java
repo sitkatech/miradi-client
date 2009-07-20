@@ -262,6 +262,11 @@ public class TimePeriodCosts
 		}
 	}
 
+	boolean isExpenseDataNonConflicting()
+	{
+		return getExpense().hasNoValue();
+	}
+
 	private OptionalDouble expense;
 	private OptionalDouble workUnits;
 	

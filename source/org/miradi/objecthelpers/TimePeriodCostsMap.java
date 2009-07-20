@@ -93,17 +93,12 @@ public class TimePeriodCostsMap
 		{
 			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.getTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
 			TimePeriodCosts snapShotTimePeriodCosts = snapShot.calculateTimePeriodCosts(dateUnitToMerge);
-			if (isExpenseDataNonConflicting(snapShotTimePeriodCosts))
+			if (snapShotTimePeriodCosts.isExpenseDataNonConflicting())
 				mergeExpenses(dateUnitToMerge, timePeriodCostsToMerge);
 			
 			if (isWorkUnitDataNonConflicting(snapShotTimePeriodCosts))
 				mergeWorkUnits(dateUnitToMerge, timePeriodCostsToMerge);
 		}
-	}
-
-	private boolean isExpenseDataNonConflicting(TimePeriodCosts snapShotTimePeriodCosts)
-	{
-		return snapShotTimePeriodCosts.getExpense().hasNoValue();
 	}
 
 	private boolean isWorkUnitDataNonConflicting(TimePeriodCosts snapShotTimePeriodCosts)
