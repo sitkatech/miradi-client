@@ -139,7 +139,7 @@ public class TimePeriodCostsMap
 		for(DateUnit dateUnit : keys)
 		{
 			TimePeriodCosts timePeriodCosts = data.get(dateUnit);
-			timePeriodCosts.removeProjectResources(projectResourceRef);
+			timePeriodCosts.removeAllResourcesExcept(projectResourceRef);
 		}	
 	}
 
