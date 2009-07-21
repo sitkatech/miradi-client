@@ -216,7 +216,7 @@ public class MeglerArranger
 		
 		moveFactorsToFinalLocations(unlinked, UNLINKED_COLUMN_X, TOP_Y);
 		moveFactorsToFinalLocations(strategies, STRATEGY_COLUMN_X, TOP_Y);
-		moveFactorsToFinalLocations(threats, THREAT_COLUMN_X, TOP_Y);
+		moveFactorClumpsToFinalLocations(threatClumps, THREAT_COLUMN_X, TOP_Y);
 		moveFactorsToFinalLocations(targets, TARGET_COLUMN_X, TOP_Y);
 	}
 
@@ -225,14 +225,8 @@ public class MeglerArranger
 		Vector<DiagramFactorClump> clumps = new Vector<DiagramFactorClump>();
 		HashSet<DiagramFactor> alreadyClumpedGroups = new HashSet<DiagramFactor>();
 		
-		Project project = diagram.getProject();
-		ORefList diagramFactorRefs = diagram.getAllDiagramFactorRefs();
-		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		for(DiagramFactor diagramFactor : threats)
 		{
-			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(i));
-			if(!diagramFactor.getWrappedFactor().isDirectThreat())
-				continue;
-			
 			DiagramFactor diagramFactorMaybeGroup = diagramFactor;
 			DiagramFactor group = findGroup(diagramFactor);
 			if(group != null)
@@ -281,6 +275,25 @@ public class MeglerArranger
 		}
 	}
 	
+	private void moveFactorClumpsToFinalLocations(Vector<DiagramFactorClump> threatClumps, int x, int topY) throws Exception
+	{
+		int y = topY;
+		FactorCommandHelper helper = new FactorCommandHelper(getProject(), diagram);
+		for(DiagramFactorClump threatClump : threatClumps)
+		{
+			for(int i = 0; i < threatClump.getRowCount(); ++i)
+			{
+				DiagramFactor diagramFactor = threatClump.getDiagramFactor(i);
+
+				Point newLocation = new Point(x, y);
+				helper.setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), newLocation);
+				
+				int height = diagramFactor.getSize().height;
+				y += Math.max(height + VERTICAL_CUSHION, DELTA_Y);
+			}
+		}
+	}
+
 	private Project getProject()
 	{
 		return diagram.getProject();
