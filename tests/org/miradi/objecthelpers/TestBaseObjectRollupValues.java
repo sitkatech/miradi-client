@@ -53,10 +53,10 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		
 		TimePeriodCostsMap timePeriodCostsMap = indicator.getTotalTimePeriodCostsMap();
 		TimePeriodCosts timePeriodCostsTotal = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
-		assertEquals("Wrong total for indicator rollup?", 15.0, timePeriodCostsTotal.getResourcesTotalUnits().getValue());
+		assertEquals("Wrong total for indicator rollup?", 15.0, timePeriodCostsTotal.getTotalWorkUnits().getValue());
 		
 		TimePeriodCosts timePeriodCosts2009 = timePeriodCostsMap.calculateTimePeriodCosts(year2009);
-		assertEquals("wrong total for 2009?", 15.0, timePeriodCosts2009.getResourcesTotalUnits().getValue());
+		assertEquals("wrong total for 2009?", 15.0, timePeriodCosts2009.getTotalWorkUnits().getValue());
 	}
 	
 	private DateUnit year2009Q1;

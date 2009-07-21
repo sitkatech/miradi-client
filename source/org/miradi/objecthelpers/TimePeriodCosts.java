@@ -163,7 +163,7 @@ public class TimePeriodCosts
 		return new OptionalDouble(projectResource.getCostPerUnit());
 	}
 	
-	public OptionalDouble getResourcesTotalUnits()
+	public OptionalDouble getTotalWorkUnits()
 	{
 		return workUnits;
 	}
@@ -267,7 +267,7 @@ public class TimePeriodCosts
 
 	private boolean isWorkUnitDataNonConflicting()
 	{
-		return getResourcesTotalUnits().hasNoValue();
+		return getTotalWorkUnits().hasNoValue();
 	}
 
 	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge)

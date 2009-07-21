@@ -266,7 +266,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	private void verifyMergedWorkUnits(double expectedWorkUnit, TimePeriodCostsMap mergedTimePeriodCostsMap, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
-		assertEquals("wrong total workUnits?", expectedWorkUnit, timePeriodCosts.getResourcesTotalUnits().getValue());
+		assertEquals("wrong total workUnits?", expectedWorkUnit, timePeriodCosts.getTotalWorkUnits().getValue());
 	}
 	
 	public void testMergeNonConflictingExpenseAndWorkUnits() throws Exception
@@ -288,7 +288,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 2.0);
 		timePeriodCostsMap2.mergeNonConflicting(timePeriodCostsMap1);
 		TimePeriodCosts timePeriodCosts2007AfterMerge = timePeriodCostsMap2.getTimePeriodCostsForSpecificDateUnit(dateUnit2007);
-		assertEquals("wrong work units for resource?", 2.0, timePeriodCosts2007AfterMerge.getResourcesTotalUnits().getValue());
+		assertEquals("wrong work units for resource?", 2.0, timePeriodCosts2007AfterMerge.getTotalWorkUnits().getValue());
 	}
 	
 	public void testMultipleAssignmentsWithinSameTimePeriodCostsMapMerge() throws Exception
@@ -303,7 +303,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		timePeriodCostsMap.mergeNonConflicting(timePeriodCostsMap1);
 		
 		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnitTotal);
-		assertEquals("wrong work units?", 15.0, timePeriodCosts.getResourcesTotalUnits().getValue());
+		assertEquals("wrong work units?", 15.0, timePeriodCosts.getTotalWorkUnits().getValue());
 	}
 	
 	private TimePeriodCostsMap createTimePeriodCostsMap(double expense, ProjectResource projectResource, double units)
