@@ -49,7 +49,7 @@ public class OptionalDouble
 	
 	public OptionalDouble subtract(OptionalDouble optionalDoubleToSubtract)
 	{
-		if (isValidValue(optionalDoubleToSubtract) && hasValue())
+		if (isNotNullWithValue(optionalDoubleToSubtract) && hasValue())
 			return new OptionalDouble(optionalDouble - optionalDoubleToSubtract.getRawValue());
 		
 		return calculateWithoutValue(optionalDoubleToSubtract);
@@ -57,16 +57,16 @@ public class OptionalDouble
 
 	public OptionalDouble add(OptionalDouble optionalDoubleToAdd)
 	{ 
-		if (isValidValue(optionalDoubleToAdd) && hasValue())
+		if (isNotNullWithValue(optionalDoubleToAdd) && hasValue())
 			return new OptionalDouble(optionalDouble + optionalDoubleToAdd.getRawValue()); 
 
 		return calculateWithoutValue(optionalDoubleToAdd);
 	}
 	
-	private OptionalDouble calculateWithoutValue(OptionalDouble optionalDoubleToSubtract)
+	private OptionalDouble calculateWithoutValue(OptionalDouble optionalDoubleToUse)
 	{
-		if (isValidValue(optionalDoubleToSubtract))
-			return new OptionalDouble(optionalDoubleToSubtract.getRawValue());
+		if (isNotNullWithValue(optionalDoubleToUse))
+			return new OptionalDouble(optionalDoubleToUse.getRawValue());
 		
 		return new OptionalDouble(getRawValue());
 	}
@@ -78,13 +78,13 @@ public class OptionalDouble
 	
 	public OptionalDouble multiply(OptionalDouble optionalDoubleToMultiply)
 	{
-		if (isValidValue(optionalDoubleToMultiply) && hasValue())
+		if (isNotNullWithValue(optionalDoubleToMultiply) && hasValue())
 			return new OptionalDouble(optionalDoubleToMultiply.getRawValue() * getRawValue());
 		
 		return new OptionalDouble();
 	}
 
-	private boolean isValidValue(OptionalDouble optionalDoubleToUse)
+	private boolean isNotNullWithValue(OptionalDouble optionalDoubleToUse)
 	{
 		if (optionalDoubleToUse == null)
 			return false;
