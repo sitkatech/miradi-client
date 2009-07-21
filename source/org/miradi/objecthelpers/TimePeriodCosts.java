@@ -91,12 +91,12 @@ public class TimePeriodCosts
 	
 	private void updateWorkUnits()
 	{
-		workUnits = new OptionalDouble();
+		totalWorkUnits = new OptionalDouble();
 		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
 		for(ORef projectResourceRef : projectResourcRefs)
 		{
 			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
-			workUnits = workUnits.add(units);
+			totalWorkUnits = totalWorkUnits.add(units);
 		}
 	}
 	
@@ -165,7 +165,7 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getTotalWorkUnits()
 	{
-		return workUnits;
+		return totalWorkUnits;
 	}
 
 	@Override
@@ -280,7 +280,7 @@ public class TimePeriodCosts
 	}
 
 	private OptionalDouble expense;
-	private OptionalDouble workUnits;
+	private OptionalDouble totalWorkUnits;
 	
 	HashMap<ORef, OptionalDouble> fundingSourceExpenseMap;
 	HashMap<ORef, OptionalDouble> accountingCodeExpenseMap;
