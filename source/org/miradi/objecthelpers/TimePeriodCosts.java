@@ -244,7 +244,7 @@ public class TimePeriodCosts
 		return asString;
 	}
 	
-	public void removeProjectResources(ORef projectResourceRefToRetain)
+	public void removeAllResourcesExcept(ORef projectResourceRefToRetain)
 	{
 		ORefSet projectResourcesToRemove = new ORefSet();
 		Set<ORef> projectResourceRefs = getResourceRefSet();
