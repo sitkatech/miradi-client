@@ -262,20 +262,20 @@ public class TimePeriodCosts
 
 	private boolean hasExpenseData()
 	{
-		return getExpense().hasNoValue();
+		return getExpense().hasValue();
 	}
 
 	private boolean hasTotalWorkUnitsData()
 	{
-		return getTotalWorkUnits().hasNoValue();
+		return getTotalWorkUnits().hasValue();
 	}
 
 	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge)
 	{
-		if (snapShotTimePeriodCosts.hasExpenseData())
+		if (!snapShotTimePeriodCosts.hasExpenseData())
 			replaceEmptyExpenseValue(timePeriodCostsToMerge);
 		
-		if (snapShotTimePeriodCosts.hasTotalWorkUnitsData())
+		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
 			mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
 	}
 
