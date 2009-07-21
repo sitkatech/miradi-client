@@ -22,7 +22,6 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Set;
 
-import org.miradi.main.EAM;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
@@ -123,11 +122,8 @@ public class TimePeriodCosts
 		expense = expenseToUse;
 	}
 	
-	private void replaceEmptyExpenseValue(TimePeriodCosts timePeriodCosts)
+	private void setExpenseValueFrom(TimePeriodCosts timePeriodCosts) throws Exception
 	{
-		if (getExpense().hasValue())
-			throw new RuntimeException((EAM.text("Existing expense was not empty. value=" + expense.getValue())));
-		
 		setExpense(timePeriodCosts.getExpense());
 	}
 	
@@ -270,10 +266,10 @@ public class TimePeriodCosts
 		return getTotalWorkUnits().hasValue();
 	}
 
-	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge)
+	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
 	{
 		if (!snapShotTimePeriodCosts.hasExpenseData())
-			replaceEmptyExpenseValue(timePeriodCostsToMerge);
+			setExpenseValueFrom(timePeriodCostsToMerge);
 		
 		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
 			mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
