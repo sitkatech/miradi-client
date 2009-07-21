@@ -191,7 +191,7 @@ public class TestTask extends ObjectTestCase
 
 		Task task = createTask();
 		DateUnit projectDateUnit = new DateUnit();
-		assertFalse("Empty task has work unit values?", task.calculateTimePeriodCosts(projectDateUnit).getResourcesTotalUnits().hasValue());
+		assertFalse("Empty task has work unit values?", task.calculateTimePeriodCosts(projectDateUnit).getTotalWorkUnits().hasValue());
 		addAssignment(task, 99, 2000, 2010);
 		
 		Task subTask = createTask();
