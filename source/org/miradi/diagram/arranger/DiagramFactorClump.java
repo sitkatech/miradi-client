@@ -23,6 +23,7 @@ package org.miradi.diagram.arranger;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
@@ -67,6 +68,15 @@ public class DiagramFactorClump
 	}
 	
 	
+	public DiagramFactor getDiagramFactor(int i)
+	{
+		if(!isGroup())
+			return diagramFactorMaybeGroup;
+		
+		ORef ref = diagramFactorMaybeGroup.getGroupBoxChildrenRefs().get(i);
+		return DiagramFactor.find(getProject(), ref);
+	}
+
 	private Set<DiagramLink> getLinks(int direction)
 	{
 		if(isGroup())
@@ -78,7 +88,7 @@ public class DiagramFactorClump
 	private Set<DiagramLink> getLinksForGroupAndChildren(int direction)
 	{
 		HashSet<DiagramLink> links = new HashSet<DiagramLink>();
-		Project project = diagram.getProject();
+		Project project = getProject();
 
 		links.addAll(getLinksForPlainDiagramFactor(diagramFactorMaybeGroup, direction));
 
@@ -92,11 +102,16 @@ public class DiagramFactorClump
 		return links;
 	}
 
+	private Project getProject()
+	{
+		return diagram.getProject();
+	}
+
 	private Set<DiagramLink> getLinksForPlainDiagramFactor(DiagramFactor diagramFactor, int direction)
 	{
 		HashSet<DiagramLink> links = new HashSet<DiagramLink>();
 
-		Project project = diagram.getProject();
+		Project project = getProject();
 		ORefList diagramLinkRefs = diagram.getAllDiagramLinkRefs();
 		for(int i = 0; i < diagramLinkRefs.size(); ++i)
 		{
