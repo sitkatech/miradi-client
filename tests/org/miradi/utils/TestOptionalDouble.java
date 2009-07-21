@@ -94,6 +94,9 @@ public class TestOptionalDouble extends EAMTestCase
 		OptionalDouble subtractedValue3 = emptyValue.subtract(two);
 		assertEquals("wrong value after subtracting from empty?", 2.0, subtractedValue3.getValue());
 		
+		OptionalDouble subtractedValue4 = two.subtract(null);
+		assertEquals("wrong value after subtracting null", 2.0, subtractedValue4.getValue());
+		
 		verifySubtraction(3.0, 5.0, 2.0);
 		verifySubtraction(-3.0, 2.0, 5.0);
 		verifySubtraction(-7.0, -5.0, 2.0);
