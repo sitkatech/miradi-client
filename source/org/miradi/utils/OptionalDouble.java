@@ -52,7 +52,7 @@ public class OptionalDouble
 		if (isNonNullAndHasValue(optionalDoubleToSubtract) && hasValue())
 			return new OptionalDouble(optionalDouble - optionalDoubleToSubtract.getRawValue());
 		
-		return getNotNullWithValue(optionalDoubleToSubtract);
+		return getSafeRawValue(optionalDoubleToSubtract);
 	}
 
 	public OptionalDouble add(OptionalDouble optionalDoubleToAdd)
@@ -60,10 +60,10 @@ public class OptionalDouble
 		if (isNonNullAndHasValue(optionalDoubleToAdd) && hasValue())
 			return new OptionalDouble(optionalDouble + optionalDoubleToAdd.getRawValue()); 
 
-		return getNotNullWithValue(optionalDoubleToAdd);
+		return getSafeRawValue(optionalDoubleToAdd);
 	}
 	
-	private OptionalDouble getNotNullWithValue(OptionalDouble optionalDoubleToUse)
+	private OptionalDouble getSafeRawValue(OptionalDouble optionalDoubleToUse)
 	{
 		if (isNonNullAndHasValue(optionalDoubleToUse))
 			return new OptionalDouble(optionalDoubleToUse.getRawValue());
