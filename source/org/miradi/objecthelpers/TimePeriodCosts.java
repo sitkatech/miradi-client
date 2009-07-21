@@ -123,7 +123,7 @@ public class TimePeriodCosts
 		expense = expenseToUse;
 	}
 	
-	public void replaceEmptyExpenseValue(TimePeriodCosts timePeriodCosts)
+	private void replaceEmptyExpenseValue(TimePeriodCosts timePeriodCosts)
 	{
 		if (getExpense().hasValue())
 			throw new RuntimeException((EAM.text("Existing expense was not empty. value=" + expense.getValue())));
