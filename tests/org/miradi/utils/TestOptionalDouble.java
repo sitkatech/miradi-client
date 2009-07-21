@@ -80,4 +80,30 @@ public class TestOptionalDouble extends EAMTestCase
 		assertEquals("ODs should be equal?", optionalDouble4, optionalDouble3);
 		assertEquals("ODs should be equal (args swapped)?", optionalDouble3, optionalDouble4);
 	}
+	
+	public void testSubtraction()
+	{
+		OptionalDouble emptyValue = new OptionalDouble();
+		OptionalDouble subtractedValue = emptyValue.subtract(new OptionalDouble());
+		assertTrue("should not have value", subtractedValue.hasNoValue());
+		
+		OptionalDouble two = new OptionalDouble(2.0);
+		OptionalDouble subtractedValue2 = two.subtract(emptyValue);
+		assertEquals("wrong value after subtraction?", 2.0, subtractedValue2.getValue());
+		
+		verifySubtraction(3.0, 5.0, 2.0);
+		verifySubtraction(-3.0, 2.0, 5.0);
+		verifySubtraction(-7.0, -5.0, 2.0);
+		verifySubtraction(7.0, 5.0, -2.0);
+		verifySubtraction(-3.0, -5.0, -2.0);
+	}
+	
+	private void verifySubtraction(double expectedValue, double value1, double value2)
+	{
+		OptionalDouble optionalDouble1 = new OptionalDouble(value1);
+		OptionalDouble optionalDouble2 = new OptionalDouble(value2);
+		OptionalDouble subtractedValue = optionalDouble1.subtract(optionalDouble2);
+		
+		assertEquals("wrong value after subtraction?", expectedValue, subtractedValue.getValue());
+	}
 }

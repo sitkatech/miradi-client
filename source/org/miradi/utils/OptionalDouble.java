@@ -47,13 +47,26 @@ public class OptionalDouble
 		return add(new OptionalDouble(doubleToAdd));
 	}
 	
+	public OptionalDouble subtract(OptionalDouble optionalDoubleToSubtract)
+	{
+		if (isValidValue(optionalDoubleToSubtract) && hasValue())
+			return new OptionalDouble(optionalDouble - optionalDoubleToSubtract.getRawValue());
+		
+		return calculateWithoutValue(optionalDoubleToSubtract);
+	}
+
 	public OptionalDouble add(OptionalDouble optionalDoubleToAdd)
 	{ 
 		if (isValidValue(optionalDoubleToAdd) && hasValue())
 			return new OptionalDouble(optionalDouble + optionalDoubleToAdd.getRawValue()); 
 
-		if (isValidValue(optionalDoubleToAdd))
-			return new OptionalDouble(optionalDoubleToAdd.getRawValue());
+		return calculateWithoutValue(optionalDoubleToAdd);
+	}
+	
+	private OptionalDouble calculateWithoutValue(OptionalDouble optionalDoubleToSubtract)
+	{
+		if (isValidValue(optionalDoubleToSubtract))
+			return new OptionalDouble(optionalDoubleToSubtract.getRawValue());
 		
 		return new OptionalDouble(getRawValue());
 	}
