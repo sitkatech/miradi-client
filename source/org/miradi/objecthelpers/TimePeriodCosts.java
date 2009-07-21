@@ -187,7 +187,7 @@ public class TimePeriodCosts
 		return expense.hashCode() + resourceUnitsMap.hashCode();
 	}
 	
-	public OptionalDouble getResourceUnits(ORef resourceRef)
+	public OptionalDouble getWorkUnits(ORef resourceRef)
 	{
 		if (!resourceUnitsMap.containsKey(resourceRef))
 			return new OptionalDouble();
@@ -221,8 +221,8 @@ public class TimePeriodCosts
 		Set<ORef> keysToMerge = timePeriodCostsToMergeAdd.getResourceRefSet();
 		for(ORef refToMerge : keysToMerge)
 		{
-			OptionalDouble thisWorkUnits = timePeriodCostsToMergeAdd.getResourceUnits(refToMerge);
-			thisWorkUnits = thisWorkUnits.add(getResourceUnits(refToMerge));
+			OptionalDouble thisWorkUnits = timePeriodCostsToMergeAdd.getWorkUnits(refToMerge);
+			thisWorkUnits = thisWorkUnits.add(getWorkUnits(refToMerge));
 			
 			putResource(refToMerge, thisWorkUnits);
 		}
