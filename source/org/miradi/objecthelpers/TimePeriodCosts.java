@@ -63,7 +63,7 @@ public class TimePeriodCosts
 		}
 	}
 		
-	public void addWorkUnit(ORef resourceRefToAdd, OptionalDouble workUnitsToUse)
+	public void addWorkUnit(ORef resourceRefToAdd, ORef fundingSourceRef, OptionalDouble workUnitsToUse)
 	{
 		addRefToMap(resourceWorkUnitMap, resourceRefToAdd, workUnitsToUse);
 	}

@@ -1353,7 +1353,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public TimePeriodCosts createTimePeriodCosts(ORef projectResourceRef, double units)
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.addWorkUnit(projectResourceRef, new OptionalDouble(units));		
+		timePeriodCosts.addWorkUnit(projectResourceRef, ORef.INVALID, new OptionalDouble(units));		
 		
 		return timePeriodCosts;
 	}
