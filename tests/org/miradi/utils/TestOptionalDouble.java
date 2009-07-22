@@ -69,11 +69,11 @@ public class TestOptionalDouble extends EAMTestCase
 		assertTrue("emptyPlusTen doesn't have value?", emptyPlusTen.hasValue());
 		assertEquals("emptyPlusTen wrong value?", 10.0, emptyPlusTen.getValue());
 		
-		OptionalDouble tenPlusNull = empty.add(null);
+		OptionalDouble tenPlusNull = ten.add(null);
 		assertTrue("tenPlusNull doesn't have value?", tenPlusNull.hasValue());
 		assertEquals("tenPlusNull wrong value?", 10.0, tenPlusNull.getValue());
 
-		OptionalDouble tenPlusEmpty = empty.add(anotherEmpty);
+		OptionalDouble tenPlusEmpty = ten.add(empty);
 		assertTrue("tenPlusEmpty doesn't have value?", tenPlusEmpty.hasValue());
 		assertEquals("tenPlusEmpty wrong value?", 10.0, tenPlusEmpty.getValue());
 		
