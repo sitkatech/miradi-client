@@ -51,27 +51,37 @@ public class TestOptionalDouble extends EAMTestCase
 		assertTrue("should have value?", emptyPlusTen.hasValue());
 		assertEquals("wrong value?", 10.0, emptyPlusTen.getValue());
 		
-		OptionalDouble tenPlusTen = ten.add(anotherTen);
-		assertTrue("should have value?", tenPlusTen.hasValue());
-		assertEquals("wrong value?", 20.0, tenPlusTen.getValue());
-		
+		OptionalDouble tenPlusNull = empty.add(null);
+		assertTrue("should have value?", tenPlusNull.hasValue());
+		assertEquals("wrong value?", 10.0, tenPlusNull.getValue());
+
 		OptionalDouble tenPlusEmpty = empty.add(anotherEmpty);
 		assertTrue("should have value?", tenPlusEmpty.hasValue());
 		assertEquals("wrong value?", 10.0, tenPlusEmpty.getValue());
 		
-		OptionalDouble tenPlusNull = empty.add(null);
-		assertTrue("should have value?", tenPlusNull.hasValue());
-		assertEquals("wrong value?", 10.0, tenPlusNull.getValue());
+		OptionalDouble tenPlusTen = ten.add(anotherTen);
+		assertTrue("should have value?", tenPlusTen.hasValue());
+		assertEquals("wrong value?", 20.0, tenPlusTen.getValue());
+		
 	}
 	
 	public void testMultiply()
 	{
-		OptionalDouble emptyTimesEmpty = empty.multiply(new OptionalDouble());
+		OptionalDouble emptyTimesNull = empty.multiply(null);
+		assertFalse("should have no value?", emptyTimesNull.hasValue());
+		
+		OptionalDouble emptyTimesEmpty = empty.multiply(anotherEmpty);
 		assertFalse("should have no value?", emptyTimesEmpty.hasValue());
 		
-		OptionalDouble emptyTimes10 = empty.multiply(ten);
-		assertFalse("should have no value?", emptyTimes10.hasValue());
+		OptionalDouble emptyTimesTen = empty.multiply(ten);
+		assertFalse("should have no value?", emptyTimesTen.hasValue());
 		
+		OptionalDouble tenTimesNull = ten.multiply(null);
+		assertFalse("should have no value?", tenTimesNull.hasValue());
+		
+		OptionalDouble tenTimesEmpty = ten.multiply(empty);
+		assertFalse("should have no value?", tenTimesEmpty.hasValue());
+
 		OptionalDouble tenTimesTen = ten.multiply(anotherTen);
 		assertTrue("should have value?", tenTimesTen.hasValue());
 		assertEquals("wrong value?", 100.0, tenTimesTen.getValue());
@@ -93,17 +103,20 @@ public class TestOptionalDouble extends EAMTestCase
 	
 	public void testSubtract()
 	{
-		OptionalDouble emptyMinusEmpty = empty.subtract(new OptionalDouble());
-		assertTrue("should not have value", emptyMinusEmpty.hasNoValue());
+		OptionalDouble emptyMinusNull = empty.subtract(null);
+		assertTrue("should not have value", emptyMinusNull.hasNoValue());
 		
-		OptionalDouble tenMinusEmpty = ten.subtract(empty);
-		assertEquals("wrong value after subtraction?", 10.0, tenMinusEmpty.getValue());
+		OptionalDouble emptyMinusEmpty = empty.subtract(anotherEmpty);
+		assertTrue("should not have value", emptyMinusEmpty.hasNoValue());
 		
 		OptionalDouble emptyMinusTen = empty.subtract(ten);
 		assertEquals("wrong value after subtracting from empty?", 10.0, emptyMinusTen.getValue());
 		
 		OptionalDouble tenMinusNull = ten.subtract(null);
-		assertEquals("wrong value after subtracting null", 10.0, tenMinusNull.getValue());
+		assertEquals("wrong value after subtraction?", 10.0, tenMinusNull.getValue());
+		
+		OptionalDouble tenMinusEmpty = ten.subtract(empty);
+		assertEquals("wrong value after subtraction?", 10.0, tenMinusEmpty.getValue());
 		
 		verifySubtraction(3.0, 5.0, 2.0);
 		verifySubtraction(-3.0, 2.0, 5.0);
