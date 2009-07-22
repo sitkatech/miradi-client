@@ -49,28 +49,28 @@ public class OptionalDouble
 	
 	public OptionalDouble subtract(OptionalDouble optionalDoubleToSubtract)
 	{
-		if (isNonNullAndHasValue(optionalDoubleToSubtract) && hasValue())
-			return new OptionalDouble(optionalDouble - optionalDoubleToSubtract.getRawValue());
+		if (isNonNullAndHasValue(optionalDoubleToSubtract))
+			return new OptionalDouble(getNonEmptyRawValue().getRawValue() - optionalDoubleToSubtract.getRawValue());
 		
-		return getSafeRawValue(optionalDoubleToSubtract);
+		return new OptionalDouble(getRawValue());
 	}
 
 	public OptionalDouble add(OptionalDouble optionalDoubleToAdd)
 	{ 
-		if (isNonNullAndHasValue(optionalDoubleToAdd) && hasValue())
-			return new OptionalDouble(optionalDouble + optionalDoubleToAdd.getRawValue()); 
+		if (isNonNullAndHasValue(optionalDoubleToAdd))
+			return new OptionalDouble(getNonEmptyRawValue().getRawValue() + optionalDoubleToAdd.getRawValue()); 
 
-		return getSafeRawValue(optionalDoubleToAdd);
-	}
-	
-	private OptionalDouble getSafeRawValue(OptionalDouble optionalDoubleToUse)
-	{
-		if (isNonNullAndHasValue(optionalDoubleToUse))
-			return new OptionalDouble(optionalDoubleToUse.getRawValue());
-		
 		return new OptionalDouble(getRawValue());
 	}
 	
+	private OptionalDouble getNonEmptyRawValue()
+	{
+		if (hasNoValue())
+			return new OptionalDouble(0.0);
+		
+		return this;
+	}
+
 	public OptionalDouble multiplyValue(Double doubleToMultiply)
 	{
 		return multiply(new OptionalDouble(doubleToMultiply));
