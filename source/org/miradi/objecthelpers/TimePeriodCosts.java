@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
@@ -65,8 +66,11 @@ public class TimePeriodCosts
 		
 	public void addWorkUnit(ORef resourceRefToAdd, ORef fundingSourceRef, OptionalDouble workUnitsToUse)
 	{
-		addRefToMap(resourceWorkUnitMap, resourceRefToAdd, workUnitsToUse);
-		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnitsToUse);
+		if (ProjectResource.is(resourceRefToAdd))
+			addRefToMap(resourceWorkUnitMap, resourceRefToAdd, workUnitsToUse);
+		
+		if (FundingSource.is(fundingSourceRef))
+			addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnitsToUse);
 	}
 	
 	private void addRefToMap(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
@@ -187,13 +191,16 @@ public class TimePeriodCosts
 		if (!other.getExpense().equals(getExpense()))
 			return false;
 		
+		if (!other.fundingSourceWorkUnitMap.equals(fundingSourceWorkUnitMap))
+			return false;
+		
 		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
 	}
 	
 	@Override
 	public int hashCode()
 	{
-		return expense.hashCode() + resourceWorkUnitMap.hashCode();
+		return expense.hashCode() + resourceWorkUnitMap.hashCode() + fundingSourceWorkUnitMap.hashCode();
 	}
 	
 	public OptionalDouble getResourceWorkUnits(ORef resourceRef)

@@ -46,14 +46,20 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("wrong total cost?", 100.0 + 20.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
 	
+	public void testBasicEquals()
+	{
+		TimePeriodCosts emptyTimePeriodCosts = new TimePeriodCosts();
+		assertEquals("empty TPC not equal to itself?", emptyTimePeriodCosts, emptyTimePeriodCosts);
+	}
+		
 	public void testEquals() throws Exception
 	{
-		ProjectResource projectResource = createProjectResource();
-		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(20.0, projectResource.getRef(), 10.0);
+		ProjectResource fred = createProjectResource();
+		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(20.0, fred.getRef(), 10.0);
 		
 		assertEquals("time period costs is not equals to itself?", timePeriodCosts1, timePeriodCosts1);
 		
-		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(500.0, projectResource.getRef(), 10.0);
+		TimePeriodCosts timePeriodCosts2 = getProject().createTimePeriodCosts(500.0, fred.getRef(), 10.0);
 		assertNotEquals("Different expenses were equal?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("Different expenses were equal?", timePeriodCosts2, timePeriodCosts1);
 		
@@ -61,10 +67,26 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts1, timePeriodCosts2);
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts2, timePeriodCosts1);
 		
-		ProjectResource projectResource2 = createProjectResource();
-		timePeriodCosts1.addWorkUnit(projectResource2.getRef(), ORef.INVALID, new OptionalDouble(30.0));
+		ProjectResource jill = createProjectResource();
+		timePeriodCosts1.addWorkUnit(jill.getRef(), ORef.INVALID, new OptionalDouble(30.0));
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts2, timePeriodCosts1);
+	}
+	
+	public void testEqualsWithFundingSource() throws Exception
+	{
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts();
+		ORef fundingSourceRef1 = getProject().createFundingSource().getRef();
+		timePeriodCosts1.addWorkUnit(ORef.INVALID, fundingSourceRef1, new OptionalDouble(10.0));
+		assertEquals("time period costs with funding source is not equals to itself?", timePeriodCosts1, timePeriodCosts1);
+		
+		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts();
+		assertNotEquals("TPC with fundingSource is equal to TPC without fundingSource?", timePeriodCosts1, timePeriodCosts2);
+		assertNotEquals("TPC with fundingSource is equal to TPC without fundingSource?", timePeriodCosts2, timePeriodCosts1);
+		
+		timePeriodCosts2.addWorkUnit(ORef.INVALID, fundingSourceRef1, new OptionalDouble(10.0));
+		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts1, timePeriodCosts2);
+		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts2, timePeriodCosts1);
 	}
 	
 	public void testAdd() throws Exception
