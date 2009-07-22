@@ -39,6 +39,20 @@ public class TestOptionalDouble extends EAMTestCase
 		
 	}
 	
+	public void testEquals()
+	{
+		assertEquals("Empty OD not equal to itself?", empty, empty);
+		
+		assertEquals("OD with value not equal to itself?", ten, ten);
+		
+		OptionalDouble twenty = new OptionalDouble(20.0);
+		assertNotEquals("Different ODs claimed to be equal?", ten, twenty);
+		assertNotEquals("Different ODs claimed to be equal (args swapped)?", twenty, ten);
+		
+		assertEquals("ODs should be equal?", anotherTen, ten);
+		assertEquals("ODs should be equal (args swapped)?", ten, anotherTen);
+	}
+	
 	public void testAdd() throws Exception
 	{
 		OptionalDouble emptyPlusNull = empty.add(null);
@@ -85,20 +99,6 @@ public class TestOptionalDouble extends EAMTestCase
 		OptionalDouble tenTimesTen = ten.multiply(anotherTen);
 		assertTrue("should have value?", tenTimesTen.hasValue());
 		assertEquals("wrong value?", 100.0, tenTimesTen.getValue());
-	}
-	
-	public void testEquals()
-	{
-		assertEquals("Empty OD not equal to itself?", empty, empty);
-		
-		assertEquals("OD with value not equal to itself?", ten, ten);
-		
-		OptionalDouble twenty = new OptionalDouble(20.0);
-		assertNotEquals("Different ODs claimed to be equal?", ten, twenty);
-		assertNotEquals("Different ODs claimed to be equal (args swapped)?", twenty, ten);
-		
-		assertEquals("ODs should be equal?", anotherTen, ten);
-		assertEquals("ODs should be equal (args swapped)?", ten, anotherTen);
 	}
 	
 	public void testSubtract()
