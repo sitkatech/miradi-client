@@ -37,6 +37,9 @@ public class TestOptionalDouble extends EAMTestCase
 		OptionalDouble optionalDoubleWithValue = new OptionalDouble(11.0);
 		assertTrue("should have value?", optionalDoubleWithValue.hasValue());
 		
+		assertEquals("different hashcodes for empties?", empty.hashCode(), anotherEmpty.hashCode());
+		assertEquals("different hashcodes for tens?", ten.hashCode(), anotherTen.hashCode());
+		
 	}
 	
 	public void testEquals()
