@@ -219,14 +219,9 @@ public class TimePeriodCosts
 		return expense;
 	}
 	
-	private HashMap<ORef, OptionalDouble> getResourceWorkUnitsMap()
-	{
-		return new HashMap(resourceWorkUnitMap);
-	}
-	
 	public Set<ORef> getResourceRefSet()
 	{
-		return getResourceWorkUnitsMap().keySet();
+		return new HashMap(resourceWorkUnitMap).keySet();
 	}
 	
 	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
