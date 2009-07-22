@@ -26,6 +26,7 @@ import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class FundingSource extends BaseObject
@@ -70,6 +71,16 @@ public class FundingSource extends BaseObject
 		if(result.length() > 0)
 			return result;
 		return EAM.text("Label|(Undefined Funding Source)");
+	}
+
+	public static FundingSource find(ObjectManager objectManager, ORef fundingSourceRef)
+	{
+		return (FundingSource) objectManager.findObject(fundingSourceRef);
+	}
+	
+	public static FundingSource find(Project project, ORef fundingSourceRef)
+	{
+		return find(project.getObjectManager(), fundingSourceRef);
 	}
 	
 	public static boolean is(int objectType)

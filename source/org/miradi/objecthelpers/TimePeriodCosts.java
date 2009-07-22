@@ -50,31 +50,51 @@ public class TimePeriodCosts
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpenses(timePeriodCosts);
-		addResources(timePeriodCosts);
+		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
 	}
 
-	private void addResources(TimePeriodCosts timePeriodCosts)
+	private void addMap(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToAdd)
 	{
-		HashMap<ORef, OptionalDouble> resourceWorkUnitsMapToAdd = timePeriodCosts.getResourceWorkUnitsMap();
-		Set<ORef> resourceRefKeysToAdd = resourceWorkUnitsMapToAdd.keySet();
-		for(ORef resourceRefToAdd : resourceRefKeysToAdd)
+		Set<ORef> refKeysToAdd = mapToAdd.keySet();
+		for(ORef refToAdd : refKeysToAdd)
 		{
-			final OptionalDouble unitsToUse = resourceWorkUnitsMapToAdd.get(resourceRefToAdd);
-			addResource(resourceRefToAdd, unitsToUse);			
+			OptionalDouble workUnitsToUse = mapToAdd.get(refToAdd);
+			addRefToMap(mapToUpdate, refToAdd, workUnitsToUse);			
 		}
 	}
-
-	public void addResource(ORef resourceRefToAdd, OptionalDouble unitsToUse)
-	{
-		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
-		{
-			OptionalDouble thisUnit = resourceWorkUnitMap.get(resourceRefToAdd);
-			unitsToUse = thisUnit.add(unitsToUse);
-		}
 		
-		putResource(resourceRefToAdd, unitsToUse);
+	public void addWorkUnit(ORef resourceRefToAdd, OptionalDouble unitsToUse)
+	{
+		addRefToMap(resourceWorkUnitMap, resourceRefToAdd, unitsToUse);
 	}
 	
+	private void addRefToMap(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
+	{
+		if (mapToUpdate.containsKey(refToAdd))
+		{
+			OptionalDouble thisWorkUnits = mapToUpdate.get(refToAdd);
+			workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
+		}
+		
+		putRef(mapToUpdate, refToAdd, workUnitsToAdd);
+	}
+	
+	private void putRef(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
+	{
+		if (ProjectResource.is(refToAdd))
+			updateTotalWorkUnits(refToAdd, workUnitsToAdd);
+		
+		mapToUpdate.put(refToAdd, workUnitsToAdd);
+	}
+
+	private void updateTotalWorkUnits(ORef resourceRefToAdd, OptionalDouble workUnitsToAdd)
+	{
+		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
+			removeResource(resourceRefToAdd);
+
+		totalWorkUnits = totalWorkUnits.add(workUnitsToAdd);		
+	}
+
 	private void putResource(ORef resourceRefToAdd,	OptionalDouble unitsToUse)
 	{
 		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))

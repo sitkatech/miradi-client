@@ -111,7 +111,7 @@ public class ResourceAssignment extends Assignment
 	@Override
 	protected void updateTimePeriodCosts(TimePeriodCosts timePeriodCosts, OptionalDouble quantity)
 	{
-		timePeriodCosts.addResource(getResourceRef(), quantity);
+		timePeriodCosts.addWorkUnit(getResourceRef(), quantity);
 	}
 	
 	public DateRange getCombinedTimePeriodCostsMapDateRange() throws Exception
