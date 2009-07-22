@@ -157,7 +157,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		verifyMergeAdd(expenses1, resourceCosts1, mergedTimePeriodCostsMap, timePeriodCostsMap1, q1);
 		verifyMergeAdd(expenses2, 0.0, mergedTimePeriodCostsMap, timePeriodCostsMap2, q2);
 		assertEquals(expenses1+expenses2, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getExpense().getValue());
-		assertEquals(workUnits, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getWorkUnits(resource.getRef()).getValue());
+		assertEquals(workUnits, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getResourceWorkUnits(resource.getRef()).getValue());
 	}
 
 	public void testMergeAddingIncompletedMaps() throws Exception
@@ -278,7 +278,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		
 		TimePeriodCosts timePeriodCosts = workUnitsTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2007);
 		assertEquals("wrong expense after megrge?", 13.0, timePeriodCosts.getExpense().getValue());
-		assertEquals("wrong work untis after merge?", 1.0, timePeriodCosts.getWorkUnits(fred.getRef()).getValue());
+		assertEquals("wrong work untis after merge?", 1.0, timePeriodCosts.getResourceWorkUnits(fred.getRef()).getValue());
 	}
 	
 	public void testMergeNonConflictingSameResourceSameYear() throws Exception

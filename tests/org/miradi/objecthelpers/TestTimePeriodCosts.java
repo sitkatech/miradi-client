@@ -33,12 +33,12 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	public void testBasics() throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		OptionalDouble emptyDouble = timePeriodCosts.getWorkUnits(ORef.INVALID);
+		OptionalDouble emptyDouble = timePeriodCosts.getResourceWorkUnits(ORef.INVALID);
 		assertFalse("getUnits for bogus resource returned a value?", emptyDouble.hasValue());
 		
 		ProjectResource projectResource = createProjectResource();
 		timePeriodCosts.addWorkUnit(projectResource.getRef(), ORef.INVALID, new OptionalDouble(10.0));
-		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getWorkUnits(projectResource.getRef()).getValue());
+		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getResourceWorkUnits(projectResource.getRef()).getValue());
 		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 		
 		timePeriodCosts.setExpense(new OptionalDouble(20.0));
@@ -109,7 +109,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	{
 		mainTimePeriodCosts.add(timePeriodCostsToAdd);
 		assertEquals("incorrect expense after adding a timePeriodCosts", expectedExpense, mainTimePeriodCosts.getExpense().getValue());
-		assertEquals("incorrect project resource after adding a timePeriodCosts", expectedUnits, mainTimePeriodCosts.getWorkUnits(projectResourceRef1).getValue());
+		assertEquals("incorrect project resource after adding a timePeriodCosts", expectedUnits, mainTimePeriodCosts.getResourceWorkUnits(projectResourceRef1).getValue());
 	}
 	
 	private ProjectResource createProjectResource() throws Exception
