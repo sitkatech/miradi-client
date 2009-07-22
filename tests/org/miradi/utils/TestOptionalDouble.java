@@ -41,19 +41,19 @@ public class TestOptionalDouble extends EAMTestCase
 	
 	public void testAddition() throws Exception
 	{
-		OptionalDouble optionalDouble = new OptionalDouble();
+		OptionalDouble empty = new OptionalDouble();
 		
-		OptionalDouble returnedOptionalDouble1 = optionalDouble.add(null);
-		assertFalse("should not have value?", returnedOptionalDouble1.hasValue());
+		OptionalDouble emptyPlusNull = empty.add(null);
+		assertFalse("should not have value?", emptyPlusNull.hasValue());
 		
-		OptionalDouble returnedOptionalDouble2 = optionalDouble.add(new OptionalDouble(10.0));
-		assertTrue("should have value?", returnedOptionalDouble2.hasValue());
-		assertEquals("wrong value?", 10.0, returnedOptionalDouble2.getValue());
+		OptionalDouble emptyPlusTen = empty.add(new OptionalDouble(10.0));
+		assertTrue("should have value?", emptyPlusTen.hasValue());
+		assertEquals("wrong value?", 10.0, emptyPlusTen.getValue());
 		
-		OptionalDouble optionalDoubleWithValue = new OptionalDouble(11.0);
-		OptionalDouble returendOptionalDouble3 = optionalDoubleWithValue.add(new OptionalDouble(11.0));
-		assertTrue("should have value?", returendOptionalDouble3.hasValue());
-		assertEquals("wrong value?", 22.0, returendOptionalDouble3.getValue());
+		OptionalDouble eleven = new OptionalDouble(11.0);
+		OptionalDouble elevenPlusEleven = eleven.add(new OptionalDouble(11.0));
+		assertTrue("should have value?", elevenPlusEleven.hasValue());
+		assertEquals("wrong value?", 22.0, elevenPlusEleven.getValue());
 	}
 	
 	public void testMultiplication()
