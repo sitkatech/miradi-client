@@ -49,6 +49,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -499,6 +500,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef assignmentRef = createObject(ResourceAssignment.getObjectType());
 		return ResourceAssignment.find(this, assignmentRef);
+	}
+	
+	public FundingSource createFundingSource() throws Exception
+	{
+		ORef fundingSourceRef = createObject(FundingSource.getObjectType());
+		return FundingSource.find(this, fundingSourceRef);
 	}
 	
 	public void populateTarget(Target target) throws Exception
@@ -1346,7 +1353,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public TimePeriodCosts createTimePeriodCosts(ORef projectResourceRef, double units)
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.addResource(projectResourceRef, new OptionalDouble(units));		
+		timePeriodCosts.addWorkUnit(projectResourceRef, new OptionalDouble(units));		
 		
 		return timePeriodCosts;
 	}
