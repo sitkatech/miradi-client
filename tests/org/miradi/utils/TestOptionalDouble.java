@@ -46,6 +46,9 @@ public class TestOptionalDouble extends EAMTestCase
 		OptionalDouble emptyPlusNull = empty.add(null);
 		assertFalse("should not have value?", emptyPlusNull.hasValue());
 		
+		OptionalDouble emptyPlusEmpty = empty.add(new OptionalDouble());
+		assertFalse("should not have value?", emptyPlusEmpty.hasValue());
+		
 		OptionalDouble emptyPlusTen = empty.add(new OptionalDouble(10.0));
 		assertTrue("should have value?", emptyPlusTen.hasValue());
 		assertEquals("wrong value?", 10.0, emptyPlusTen.getValue());
@@ -54,6 +57,14 @@ public class TestOptionalDouble extends EAMTestCase
 		OptionalDouble elevenPlusEleven = eleven.add(new OptionalDouble(11.0));
 		assertTrue("should have value?", elevenPlusEleven.hasValue());
 		assertEquals("wrong value?", 22.0, elevenPlusEleven.getValue());
+		
+		OptionalDouble elevenPlusEmpty = empty.add(new OptionalDouble());
+		assertTrue("should have value?", elevenPlusEmpty.hasValue());
+		assertEquals("wrong value?", 11.0, elevenPlusEmpty.getValue());
+		
+		OptionalDouble elevenPlusNull = empty.add(null);
+		assertTrue("should have value?", elevenPlusNull.hasValue());
+		assertEquals("wrong value?", 11.0, elevenPlusNull.getValue());
 	}
 	
 	public void testMultiply()
