@@ -55,11 +55,11 @@ public class TimePeriodCosts
 
 	private void addResources(TimePeriodCosts timePeriodCosts)
 	{
-		HashMap<ORef, OptionalDouble> resourceUnitsMapToAdd = timePeriodCosts.getResourceUnitsMap();
-		Set<ORef> resourceRefKeysToAdd = resourceUnitsMapToAdd.keySet();
+		HashMap<ORef, OptionalDouble> resourceWorkUnitsMapToAdd = timePeriodCosts.getResourceWorkUnitsMap();
+		Set<ORef> resourceRefKeysToAdd = resourceWorkUnitsMapToAdd.keySet();
 		for(ORef resourceRefToAdd : resourceRefKeysToAdd)
 		{
-			final OptionalDouble unitsToUse = resourceUnitsMapToAdd.get(resourceRefToAdd);
+			final OptionalDouble unitsToUse = resourceWorkUnitsMapToAdd.get(resourceRefToAdd);
 			addResource(resourceRefToAdd, unitsToUse);			
 		}
 	}
@@ -186,14 +186,14 @@ public class TimePeriodCosts
 		return expense;
 	}
 	
-	private HashMap<ORef, OptionalDouble> getResourceUnitsMap()
+	private HashMap<ORef, OptionalDouble> getResourceWorkUnitsMap()
 	{
 		return new HashMap(resourceWorkUnitMap);
 	}
 	
 	public Set<ORef> getResourceRefSet()
 	{
-		return getResourceUnitsMap().keySet();
+		return getResourceWorkUnitsMap().keySet();
 	}
 	
 	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
