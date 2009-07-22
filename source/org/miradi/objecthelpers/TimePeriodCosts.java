@@ -234,11 +234,12 @@ public class TimePeriodCosts
 	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpenses(timePeriodCostsToMergeAdd);
-		mergeAllProjectResourcesInPlace(timePeriodCostsToMergeAdd);
+		mergeAllWorkUnitMapsInPlace(timePeriodCostsToMergeAdd);
 	}
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
+		mergeAllWorkUnitMapsInPlance(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
 		mergeAllWorkUnitMapsInPlance(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
 	}
 	
@@ -316,7 +317,7 @@ public class TimePeriodCosts
 			setExpenseValueFrom(timePeriodCostsToMerge);
 		
 		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
-			mergeAllProjectResourcesInPlace(timePeriodCostsToMerge);
+			mergeAllWorkUnitMapsInPlace(timePeriodCostsToMerge);
 	}
 
 	private OptionalDouble expense;

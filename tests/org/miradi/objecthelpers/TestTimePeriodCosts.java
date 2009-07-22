@@ -123,10 +123,10 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		
 		ProjectResource fred = createProjectResource();
 		TimePeriodCosts fredTen = getProject().createTimePeriodCosts(fred.getRef(), 10.0);
-		totalTimePeriodCosts.mergeAllProjectResourcesInPlace(fredTen);
+		totalTimePeriodCosts.mergeAllWorkUnitMapsInPlace(fredTen);
 		assertEquals("wrong total work units?", 10.0, totalTimePeriodCosts.getTotalWorkUnits().getValue());
 		
-		totalTimePeriodCosts.mergeAllProjectResourcesInPlace(fredTen);
+		totalTimePeriodCosts.mergeAllWorkUnitMapsInPlace(fredTen);
 		assertEquals("wrong total work units?", 20.0, totalTimePeriodCosts.getTotalWorkUnits().getValue());		
 	}
 	
