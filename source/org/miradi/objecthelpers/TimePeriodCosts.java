@@ -265,6 +265,7 @@ public class TimePeriodCosts
 		return asString;
 	}
 	
+	//FIXME urgent - remove the caller for this method,  the caller is also only used by a test which is no longer needed.
 	public void removeAllResourcesExcept(ORef projectResourceRefToRetain)
 	{
 		ORefSet projectResourcesToRemove = new ORefSet();
