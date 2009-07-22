@@ -237,6 +237,23 @@ public class TimePeriodCosts
 		mergeAllProjectResourcesInPlace(timePeriodCostsToMergeAdd);
 	}
 	
+	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
+	{
+		mergeAllWorkUnitMapsInPlance(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
+	}
+	
+	private void mergeAllWorkUnitMapsInPlance(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToMergeFrom)
+	{
+		Set<ORef> keysToMerge = mapToMergeFrom.keySet();
+		for(ORef refToMerge : keysToMerge)
+		{
+			OptionalDouble thisWorkUnits = mapToMergeFrom.get(refToMerge);
+			thisWorkUnits = thisWorkUnits.add(getWorkUnits(mapToUpdate, refToMerge));
+			
+			putRef(mapToUpdate, refToMerge, thisWorkUnits);
+		}
+	}
+	
 	public void mergeAllProjectResourcesInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		Set<ORef> keysToMerge = timePeriodCostsToMergeAdd.getResourceRefSet();
