@@ -34,6 +34,15 @@ public class TestOptionalDouble extends EAMTestCase
 		assertEquals("wrong hashcode for empty value?", new OptionalDouble().hashCode(), optionalDouble.hashCode());
 		assertFalse("should not have value?", optionalDouble.hasValue());
 		
+		OptionalDouble optionalDoubleWithValue = new OptionalDouble(11.0);
+		assertTrue("should have value?", optionalDoubleWithValue.hasValue());
+		
+	}
+	
+	public void testAddition() throws Exception
+	{
+		OptionalDouble optionalDouble = new OptionalDouble();
+		
 		OptionalDouble returnedOptionalDouble1 = optionalDouble.add(null);
 		assertFalse("should not have value?", returnedOptionalDouble1.hasValue());
 		
@@ -42,8 +51,6 @@ public class TestOptionalDouble extends EAMTestCase
 		assertEquals("wrong value?", 10.0, returnedOptionalDouble2.getValue());
 		
 		OptionalDouble optionalDoubleWithValue = new OptionalDouble(11.0);
-		assertTrue("should have value?", optionalDoubleWithValue.hasValue());
-		
 		OptionalDouble returendOptionalDouble3 = optionalDoubleWithValue.add(new OptionalDouble(11.0));
 		assertTrue("should have value?", returendOptionalDouble3.hasValue());
 		assertEquals("wrong value?", 22.0, returendOptionalDouble3.getValue());
