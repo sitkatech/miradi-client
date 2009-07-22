@@ -100,15 +100,6 @@ public class TimePeriodCosts
 		totalWorkUnits = totalWorkUnits.add(workUnitsToAdd);		
 	}
 
-	private void putResource(ORef resourceRefToAdd,	OptionalDouble unitsToUse)
-	{
-		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
-			removeResource(resourceRefToAdd);
-
-		totalWorkUnits = totalWorkUnits.add(unitsToUse);
-		resourceWorkUnitMap.put(resourceRefToAdd, unitsToUse);
-	}
-	
 	public void removeResource(ORef resourceRefToRemove)
 	{
 		OptionalDouble workUnitToRemove = resourceWorkUnitMap.get(resourceRefToRemove);
@@ -255,18 +246,6 @@ public class TimePeriodCosts
 		}
 	}
 	
-	public void mergeAllProjectResourcesInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
-	{
-		Set<ORef> keysToMerge = timePeriodCostsToMergeAdd.getResourceRefSet();
-		for(ORef refToMerge : keysToMerge)
-		{
-			OptionalDouble thisWorkUnits = timePeriodCostsToMergeAdd.getResourceWorkUnits(refToMerge);
-			thisWorkUnits = thisWorkUnits.add(getResourceWorkUnits(refToMerge));
-			
-			putResource(refToMerge, thisWorkUnits);
-		}
-	}
-
 	@Override
 	public String toString()
 	{
