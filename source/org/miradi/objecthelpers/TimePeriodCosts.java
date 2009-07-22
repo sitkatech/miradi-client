@@ -52,6 +52,7 @@ public class TimePeriodCosts
 	{
 		addExpenses(timePeriodCosts);
 		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
+		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
 	}
 
 	private void addMap(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToAdd)
