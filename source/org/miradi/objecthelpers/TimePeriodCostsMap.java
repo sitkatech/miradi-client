@@ -133,6 +133,7 @@ public class TimePeriodCostsMap
 		return dateUnit.asDateRange();
 	} 
 			
+	//FIXME remove this method
 	public void filterByProjectResource(ORef projectResourceRef)
 	{
 		Set<DateUnit> keys = data.keySet();
