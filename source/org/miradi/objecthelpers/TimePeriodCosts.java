@@ -31,6 +31,7 @@ public class TimePeriodCosts
 	public TimePeriodCosts()
 	{
 		expense = new OptionalDouble();
+		totalWorkUnits = new OptionalDouble();
 		
 	    fundingSourceExpenseMap = new HashMap<ORef, OptionalDouble>();
 		accountingCodeExpenseMap = new HashMap<ORef, OptionalDouble>();
@@ -38,8 +39,6 @@ public class TimePeriodCosts
 		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
 		fundingSourceWorkUnitMap = new HashMap<ORef, OptionalDouble>();
 		accountingCodeWorkUnitMap = new HashMap<ORef, OptionalDouble>();
-		
-		updateWorkUnits();
 	}
 	
 	public TimePeriodCosts(TimePeriodCosts timePeriodCostsToUse)
@@ -71,6 +70,7 @@ public class TimePeriodCosts
 		{
 			OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
 			unitsToUse = thisUnit.add(unitsToUse);
+			removeResource(resourceRefToAdd);
 		}
 		
 		putResource(resourceRefToAdd, unitsToUse);
@@ -78,25 +78,15 @@ public class TimePeriodCosts
 	
 	private void putResource(ORef resourceRefToAdd,	OptionalDouble unitsToUse)
 	{
+		totalWorkUnits = totalWorkUnits.add(unitsToUse);
 		resourceUnitsMap.put(resourceRefToAdd, unitsToUse);
-		updateWorkUnits();
 	}
 	
 	public void removeResource(ORef resourceRefToRemove)
 	{
+		OptionalDouble workUnitToRemove = resourceUnitsMap.get(resourceRefToRemove);
 		resourceUnitsMap.remove(resourceRefToRemove);
-		updateWorkUnits();
-	}
-	
-	private void updateWorkUnits()
-	{
-		totalWorkUnits = new OptionalDouble();
-		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
-		for(ORef projectResourceRef : projectResourcRefs)
-		{
-			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
-			totalWorkUnits = totalWorkUnits.add(units);
-		}
+		totalWorkUnits = totalWorkUnits.subtract(workUnitToRemove);		
 	}
 	
 	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
@@ -236,6 +226,8 @@ public class TimePeriodCosts
 		{
 			asString += "resourceRef = " + ref + " units = " + resourceUnitsMap.get(ref) + "\n";
 		}
+		
+		asString += "\nTotalWorkUnits = " + getTotalWorkUnits() + "\n\n";
 		
 		return asString;
 	}
