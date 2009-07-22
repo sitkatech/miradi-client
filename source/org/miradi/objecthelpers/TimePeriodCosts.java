@@ -36,7 +36,7 @@ public class TimePeriodCosts
 	    fundingSourceExpenseMap = new HashMap<ORef, OptionalDouble>();
 		accountingCodeExpenseMap = new HashMap<ORef, OptionalDouble>();
 		
-		resourceUnitsMap = new HashMap<ORef, OptionalDouble>();
+		resourceWorkUnitMap = new HashMap<ORef, OptionalDouble>();
 		fundingSourceWorkUnitMap = new HashMap<ORef, OptionalDouble>();
 		accountingCodeWorkUnitMap = new HashMap<ORef, OptionalDouble>();
 	}
@@ -66,9 +66,9 @@ public class TimePeriodCosts
 
 	public void addResource(ORef resourceRefToAdd, OptionalDouble unitsToUse)
 	{
-		if (resourceUnitsMap.containsKey(resourceRefToAdd))
+		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
 		{
-			OptionalDouble thisUnit = resourceUnitsMap.get(resourceRefToAdd);
+			OptionalDouble thisUnit = resourceWorkUnitMap.get(resourceRefToAdd);
 			unitsToUse = thisUnit.add(unitsToUse);
 			removeResource(resourceRefToAdd);
 		}
@@ -79,13 +79,13 @@ public class TimePeriodCosts
 	private void putResource(ORef resourceRefToAdd,	OptionalDouble unitsToUse)
 	{
 		totalWorkUnits = totalWorkUnits.add(unitsToUse);
-		resourceUnitsMap.put(resourceRefToAdd, unitsToUse);
+		resourceWorkUnitMap.put(resourceRefToAdd, unitsToUse);
 	}
 	
 	public void removeResource(ORef resourceRefToRemove)
 	{
-		OptionalDouble workUnitToRemove = resourceUnitsMap.get(resourceRefToRemove);
-		resourceUnitsMap.remove(resourceRefToRemove);
+		OptionalDouble workUnitToRemove = resourceWorkUnitMap.get(resourceRefToRemove);
+		resourceWorkUnitMap.remove(resourceRefToRemove);
 		totalWorkUnits = totalWorkUnits.subtract(workUnitToRemove);		
 	}
 	
@@ -128,11 +128,11 @@ public class TimePeriodCosts
 	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
-		Set<ORef> projectResourcRefs = resourceUnitsMap.keySet();
+		Set<ORef> projectResourcRefs = resourceWorkUnitMap.keySet();
 		for(ORef projectResourceRef : projectResourcRefs)
 		{
 			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, projectResourceRef);
-			OptionalDouble units = resourceUnitsMap.get(projectResourceRef);
+			OptionalDouble units = resourceWorkUnitMap.get(projectResourceRef);
 			OptionalDouble multiplyValue = units.multiply(costPerUnit);
 			resourcesTotalCost = resourcesTotalCost.add(multiplyValue);
 		}
@@ -164,21 +164,21 @@ public class TimePeriodCosts
 		if (!other.getExpense().equals(getExpense()))
 			return false;
 		
-		return other.resourceUnitsMap.equals(resourceUnitsMap);
+		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
 	}
 	
 	@Override
 	public int hashCode()
 	{
-		return expense.hashCode() + resourceUnitsMap.hashCode();
+		return expense.hashCode() + resourceWorkUnitMap.hashCode();
 	}
 	
 	public OptionalDouble getWorkUnits(ORef resourceRef)
 	{
-		if (!resourceUnitsMap.containsKey(resourceRef))
+		if (!resourceWorkUnitMap.containsKey(resourceRef))
 			return new OptionalDouble();
 		
-		return resourceUnitsMap.get(resourceRef);
+		return resourceWorkUnitMap.get(resourceRef);
 	}
 	
 	public OptionalDouble getExpense()
@@ -188,7 +188,7 @@ public class TimePeriodCosts
 	
 	private HashMap<ORef, OptionalDouble> getResourceUnitsMap()
 	{
-		return new HashMap(resourceUnitsMap);
+		return new HashMap(resourceWorkUnitMap);
 	}
 	
 	public Set<ORef> getResourceRefSet()
@@ -221,10 +221,10 @@ public class TimePeriodCosts
 		if (expense.hasValue())
 			asString = "expense = " + expense.getValue() + "\n";
 		
-		Set<ORef> refs = resourceUnitsMap.keySet();
+		Set<ORef> refs = resourceWorkUnitMap.keySet();
 		for(ORef ref : refs)
 		{
-			asString += "resourceRef = " + ref + " units = " + resourceUnitsMap.get(ref) + "\n";
+			asString += "resourceRef = " + ref + " units = " + resourceWorkUnitMap.get(ref) + "\n";
 		}
 		
 		asString += "\nTotalWorkUnits = " + getTotalWorkUnits() + "\n\n";
@@ -273,7 +273,7 @@ public class TimePeriodCosts
 	HashMap<ORef, OptionalDouble> fundingSourceExpenseMap;
 	HashMap<ORef, OptionalDouble> accountingCodeExpenseMap;
 	
-	private HashMap<ORef, OptionalDouble> resourceUnitsMap;
+	private HashMap<ORef, OptionalDouble> resourceWorkUnitMap;
 	HashMap<ORef, OptionalDouble> fundingSourceWorkUnitMap;
 	HashMap<ORef, OptionalDouble> accountingCodeWorkUnitMap;
 	
