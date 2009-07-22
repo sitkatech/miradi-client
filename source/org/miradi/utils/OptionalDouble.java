@@ -63,6 +63,14 @@ public class OptionalDouble
 		return createCopy();
 	}
 	
+	public OptionalDouble multiply(OptionalDouble optionalDoubleToMultiply)
+	{
+		if (isNonNullAndHasValue(optionalDoubleToMultiply) && hasValue())
+			return new OptionalDouble(optionalDoubleToMultiply.getRawValue() * getRawValue());
+		
+		return new OptionalDouble();
+	}
+	
 	private double getSafeRawValue()
 	{
 		if (hasNoValue())
@@ -81,14 +89,6 @@ public class OptionalDouble
 		return multiply(new OptionalDouble(doubleToMultiply));
 	}
 	
-	public OptionalDouble multiply(OptionalDouble optionalDoubleToMultiply)
-	{
-		if (isNonNullAndHasValue(optionalDoubleToMultiply) && hasValue())
-			return new OptionalDouble(optionalDoubleToMultiply.getRawValue() * getRawValue());
-		
-		return new OptionalDouble();
-	}
-
 	private boolean isNonNullAndHasValue(OptionalDouble optionalDoubleToUse)
 	{
 		if (optionalDoubleToUse == null)
