@@ -39,7 +39,7 @@ public class TestOptionalDouble extends EAMTestCase
 		
 	}
 	
-	public void testAddition() throws Exception
+	public void testAdd() throws Exception
 	{
 		OptionalDouble empty = new OptionalDouble();
 		
@@ -56,7 +56,7 @@ public class TestOptionalDouble extends EAMTestCase
 		assertEquals("wrong value?", 22.0, elevenPlusEleven.getValue());
 	}
 	
-	public void testMultiplication()
+	public void testMultiply()
 	{
 		OptionalDouble empty = new OptionalDouble();
 		OptionalDouble emptyTimesEmpty = empty.multiply(new OptionalDouble());
@@ -88,7 +88,7 @@ public class TestOptionalDouble extends EAMTestCase
 		assertEquals("ODs should be equal (args swapped)?", twenty, anotherTwenty);
 	}
 	
-	public void testSubtraction()
+	public void testSubtract()
 	{
 		OptionalDouble emptyValue = new OptionalDouble();
 		OptionalDouble emptyMinusEmpty = emptyValue.subtract(new OptionalDouble());
