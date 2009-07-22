@@ -51,11 +51,11 @@ public class TestOptionalDouble extends EAMTestCase
 	
 	public void testMultiplication()
 	{
-		OptionalDouble optionalDouble = new OptionalDouble();
-		OptionalDouble returnedValue1 = optionalDouble.multiply(new OptionalDouble());
+		OptionalDouble empty = new OptionalDouble();
+		OptionalDouble returnedValue1 = empty.multiply(new OptionalDouble());
 		assertFalse("should have no value?", returnedValue1.hasValue());
 		
-		OptionalDouble returnedValue2 = optionalDouble.multiply(new OptionalDouble(10.0));
+		OptionalDouble returnedValue2 = empty.multiply(new OptionalDouble(10.0));
 		assertFalse("should have no value?", returnedValue2.hasValue());
 		
 		OptionalDouble optionalDoubleWithValue = new OptionalDouble(10.0);
@@ -66,8 +66,8 @@ public class TestOptionalDouble extends EAMTestCase
 	
 	public void testEquals()
 	{
-		OptionalDouble optionalDouble1 = new OptionalDouble();
-		assertEquals("Empty OD not equal to itself?", optionalDouble1, optionalDouble1);
+		OptionalDouble empty = new OptionalDouble();
+		assertEquals("Empty OD not equal to itself?", empty, empty);
 		
 		OptionalDouble optionalDouble2 = new OptionalDouble(10.0);
 		assertEquals("OD with value not equal to itself?", optionalDouble2, optionalDouble2);
