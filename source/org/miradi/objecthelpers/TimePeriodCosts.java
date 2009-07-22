@@ -70,7 +70,6 @@ public class TimePeriodCosts
 		{
 			OptionalDouble thisUnit = resourceWorkUnitMap.get(resourceRefToAdd);
 			unitsToUse = thisUnit.add(unitsToUse);
-			removeResource(resourceRefToAdd);
 		}
 		
 		putResource(resourceRefToAdd, unitsToUse);
@@ -78,6 +77,9 @@ public class TimePeriodCosts
 	
 	private void putResource(ORef resourceRefToAdd,	OptionalDouble unitsToUse)
 	{
+		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
+			removeResource(resourceRefToAdd);
+
 		totalWorkUnits = totalWorkUnits.add(unitsToUse);
 		resourceWorkUnitMap.put(resourceRefToAdd, unitsToUse);
 	}

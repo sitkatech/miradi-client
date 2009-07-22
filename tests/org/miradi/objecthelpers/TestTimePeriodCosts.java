@@ -80,6 +80,20 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		TimePeriodCosts timePeriodCosts3 = getProject().createTimePeriodCosts(3.0, projectResourceRef2, 10.0);
 		verifyAddition(timePeriodCosts1, timePeriodCosts3, projectResourceRef2, 24.0, 10.0);
 	}
+	
+	public void testTotalWorkUnitsAfterMergeAllProjectResourcesInPlace() throws Exception
+	{
+		TimePeriodCosts totalTimePeriodCosts = new TimePeriodCosts();
+		assertTrue("total work units not blank?", totalTimePeriodCosts.getTotalWorkUnits().hasNoValue());
+		
+		ProjectResource fred = createProjectResource();
+		TimePeriodCosts fredTen = getProject().createTimePeriodCosts(fred.getRef(), 10.0);
+		totalTimePeriodCosts.mergeAllProjectResourcesInPlace(fredTen);
+		assertEquals("wrong total work units?", 10.0, totalTimePeriodCosts.getTotalWorkUnits().getValue());
+		
+		totalTimePeriodCosts.mergeAllProjectResourcesInPlace(fredTen);
+		assertEquals("wrong total work units?", 20.0, totalTimePeriodCosts.getTotalWorkUnits().getValue());		
+	}
 
 	private void verifyAddition(TimePeriodCosts mainTimePeriodCosts, TimePeriodCosts timePeriodCostsToAdd, ORef projectResourceRef1, double expectedExpense, double expectedUnits)
 	{
