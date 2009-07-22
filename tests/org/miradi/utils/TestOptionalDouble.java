@@ -52,16 +52,16 @@ public class TestOptionalDouble extends EAMTestCase
 	public void testMultiplication()
 	{
 		OptionalDouble empty = new OptionalDouble();
-		OptionalDouble returnedValue1 = empty.multiply(new OptionalDouble());
-		assertFalse("should have no value?", returnedValue1.hasValue());
+		OptionalDouble emptyTimesEmpty = empty.multiply(new OptionalDouble());
+		assertFalse("should have no value?", emptyTimesEmpty.hasValue());
 		
-		OptionalDouble returnedValue2 = empty.multiply(new OptionalDouble(10.0));
-		assertFalse("should have no value?", returnedValue2.hasValue());
+		OptionalDouble emptyTimes10 = empty.multiply(new OptionalDouble(10.0));
+		assertFalse("should have no value?", emptyTimes10.hasValue());
 		
-		OptionalDouble optionalDoubleWithValue = new OptionalDouble(10.0);
-		OptionalDouble returnedValue3 = optionalDoubleWithValue.multiply(new OptionalDouble(10.0));
-		assertTrue("should have value?", returnedValue3.hasValue());
-		assertEquals("wrong value?", 100.0, returnedValue3.getValue());
+		OptionalDouble ten = new OptionalDouble(10.0);
+		OptionalDouble tenTimesTen = ten.multiply(new OptionalDouble(10.0));
+		assertTrue("should have value?", tenTimesTen.hasValue());
+		assertEquals("wrong value?", 100.0, tenTimesTen.getValue());
 	}
 	
 	public void testEquals()
@@ -69,33 +69,33 @@ public class TestOptionalDouble extends EAMTestCase
 		OptionalDouble empty = new OptionalDouble();
 		assertEquals("Empty OD not equal to itself?", empty, empty);
 		
-		OptionalDouble optionalDouble2 = new OptionalDouble(10.0);
-		assertEquals("OD with value not equal to itself?", optionalDouble2, optionalDouble2);
+		OptionalDouble ten = new OptionalDouble(10.0);
+		assertEquals("OD with value not equal to itself?", ten, ten);
 		
-		OptionalDouble optionalDouble3 = new OptionalDouble(20.0);
-		assertNotEquals("Different ODs claimed to be equal?", optionalDouble2, optionalDouble3);
-		assertNotEquals("Different ODs claimed to be equal (args swapped)?", optionalDouble3, optionalDouble2);
+		OptionalDouble twenty = new OptionalDouble(20.0);
+		assertNotEquals("Different ODs claimed to be equal?", ten, twenty);
+		assertNotEquals("Different ODs claimed to be equal (args swapped)?", twenty, ten);
 		
-		OptionalDouble optionalDouble4 = new OptionalDouble(20.0);
-		assertEquals("ODs should be equal?", optionalDouble4, optionalDouble3);
-		assertEquals("ODs should be equal (args swapped)?", optionalDouble3, optionalDouble4);
+		OptionalDouble anotherTwenty = new OptionalDouble(20.0);
+		assertEquals("ODs should be equal?", anotherTwenty, twenty);
+		assertEquals("ODs should be equal (args swapped)?", twenty, anotherTwenty);
 	}
 	
 	public void testSubtraction()
 	{
 		OptionalDouble emptyValue = new OptionalDouble();
-		OptionalDouble subtractedValue = emptyValue.subtract(new OptionalDouble());
-		assertTrue("should not have value", subtractedValue.hasNoValue());
+		OptionalDouble emptyMinusEmpty = emptyValue.subtract(new OptionalDouble());
+		assertTrue("should not have value", emptyMinusEmpty.hasNoValue());
 		
 		OptionalDouble two = new OptionalDouble(2.0);
-		OptionalDouble subtractedValue2 = two.subtract(emptyValue);
-		assertEquals("wrong value after subtraction?", 2.0, subtractedValue2.getValue());
+		OptionalDouble twoMinusEmpty = two.subtract(emptyValue);
+		assertEquals("wrong value after subtraction?", 2.0, twoMinusEmpty.getValue());
 		
-		OptionalDouble subtractedValue3 = emptyValue.subtract(two);
-		assertEquals("wrong value after subtracting from empty?", 2.0, subtractedValue3.getValue());
+		OptionalDouble emptyMinusTwo = emptyValue.subtract(two);
+		assertEquals("wrong value after subtracting from empty?", 2.0, emptyMinusTwo.getValue());
 		
-		OptionalDouble subtractedValue4 = two.subtract(null);
-		assertEquals("wrong value after subtracting null", 2.0, subtractedValue4.getValue());
+		OptionalDouble twoMinusNull = two.subtract(null);
+		assertEquals("wrong value after subtracting null", 2.0, twoMinusNull.getValue());
 		
 		verifySubtraction(3.0, 5.0, 2.0);
 		verifySubtraction(-3.0, 2.0, 5.0);
