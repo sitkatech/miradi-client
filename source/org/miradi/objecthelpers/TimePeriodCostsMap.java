@@ -133,17 +133,6 @@ public class TimePeriodCostsMap
 		return dateUnit.asDateRange();
 	} 
 			
-	//FIXME remove this method
-	public void filterByProjectResource(ORef projectResourceRef)
-	{
-		Set<DateUnit> keys = data.keySet();
-		for(DateUnit dateUnit : keys)
-		{
-			TimePeriodCosts timePeriodCosts = data.get(dateUnit);
-			timePeriodCosts.removeAllResourcesExcept(projectResourceRef);
-		}	
-	}
-
 	public ORefSet getAllProjectResourceRefs()
 	{
 		ORefSet allProjectResourceRefs = new ORefSet();
