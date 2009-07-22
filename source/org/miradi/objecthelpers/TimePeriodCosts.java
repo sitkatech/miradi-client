@@ -66,6 +66,7 @@ public class TimePeriodCosts
 	public void addWorkUnit(ORef resourceRefToAdd, ORef fundingSourceRef, OptionalDouble workUnitsToUse)
 	{
 		addRefToMap(resourceWorkUnitMap, resourceRefToAdd, workUnitsToUse);
+		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnitsToUse);
 	}
 	
 	private void addRefToMap(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
@@ -197,10 +198,20 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getWorkUnits(ORef resourceRef)
 	{
-		if (!resourceWorkUnitMap.containsKey(resourceRef))
+		return getWorkUnits(resourceWorkUnitMap, resourceRef);
+	}
+	
+	public OptionalDouble getFundingSourceWorkUnits(ORef fundingSourceRef)
+	{
+		return getWorkUnits(fundingSourceWorkUnitMap, fundingSourceRef);
+	}
+	
+	private OptionalDouble getWorkUnits(HashMap<ORef, OptionalDouble> mapToExtractFrom, ORef refToExtract)
+	{
+		if (!mapToExtractFrom.containsKey(refToExtract))
 			return new OptionalDouble();
 		
-		return resourceWorkUnitMap.get(resourceRef);
+		return mapToExtractFrom.get(refToExtract);
 	}
 	
 	public OptionalDouble getExpense()

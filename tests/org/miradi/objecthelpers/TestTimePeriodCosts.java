@@ -81,6 +81,16 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		verifyAddition(timePeriodCosts1, timePeriodCosts3, projectResourceRef2, 24.0, 10.0);
 	}
 	
+	public void testFundingSourceWorkUnitsMapBasics() throws Exception
+	{
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
+		ORef fundingSourceRef = getProject().createFundingSource().getRef();
+		timePeriodCosts.addWorkUnit(ORef.INVALID, fundingSourceRef, new OptionalDouble(10.0));
+		OptionalDouble retrievedWorkUnits = timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef);
+		assertTrue("funding source workUnits should have value?", retrievedWorkUnits.hasValue());
+		assertEquals("incorrect workUnits for fundingSource?", 10.0, retrievedWorkUnits.getValue());
+	}
+	
 	public void testTotalWorkUnitsAfterMergeAllProjectResourcesInPlace() throws Exception
 	{
 		TimePeriodCosts totalTimePeriodCosts = new TimePeriodCosts();
