@@ -89,7 +89,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts2, timePeriodCosts1);
 	}
 	
-	public void testAdd() throws Exception
+	public void testAddWithResourceOnly() throws Exception
 	{
 		ORef projectResourceRef1 = createProjectResource().getRef();
 		TimePeriodCosts timePeriodCosts1 = getProject().createTimePeriodCosts(20.0, projectResourceRef1, 10.0);
@@ -101,6 +101,19 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		ORef projectResourceRef2 = createProjectResource().getRef();
 		TimePeriodCosts timePeriodCosts3 = getProject().createTimePeriodCosts(3.0, projectResourceRef2, 10.0);
 		verifyAddition(timePeriodCosts1, timePeriodCosts3, projectResourceRef2, 24.0, 10.0);
+	}
+	
+	public void testAddWithFundingSourceOnly() throws Exception
+	{
+		ORef fundingSourceRef = createFundingSource();
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts();
+		timePeriodCosts1.addWorkUnit(ORef.INVALID, fundingSourceRef, new OptionalDouble(10.0));
+		
+		timePeriodCosts1.add(new TimePeriodCosts());
+		assertEquals("wrong work unit for funding source after addition?", 10.0, timePeriodCosts1.getFundingSourceWorkUnits(fundingSourceRef).getValue());
+		
+		timePeriodCosts1.add(timePeriodCosts1);
+		assertEquals("wrong work unit for funding source after addition?", 20.0, timePeriodCosts1.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 	}
 	
 	public void testFundingSourceWorkUnitsMapBasics() throws Exception
