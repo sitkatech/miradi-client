@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objecthelpers;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.miradi.main.EAM;
@@ -242,12 +243,12 @@ public class TimePeriodCosts
 	
 	public Set<ORef> getResourceRefSet()
 	{
-		return new HashMap(resourceWorkUnitMap).keySet();
+		return new HashSet(resourceWorkUnitMap.keySet());
 	}
 	
 	public Set<ORef> getFundingSourceRefSet()
 	{
-		return new HashMap(fundingSourceWorkUnitMap).keySet();
+		return new HashSet(fundingSourceWorkUnitMap.keySet());
 	}
 	
 	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
