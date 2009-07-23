@@ -75,16 +75,6 @@ public class TimePeriodCosts
 		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
 	}
 	
-	private void addToTotalWorkUnits(TimePeriodCosts timePeriodCosts)
-	{
-		addToTotalWorkUnits(timePeriodCosts.getTotalWorkUnits());
-	}
-	
-	private void addToTotalWorkUnits(OptionalDouble totalWorkUnitsToAdd)
-	{
-		totalWorkUnits = totalWorkUnits.add(totalWorkUnitsToAdd);	
-	}
-
 	private void addMap(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToAdd)
 	{
 		Set<ORef> refKeysToAdd = mapToAdd.keySet();
@@ -101,6 +91,16 @@ public class TimePeriodCosts
 		workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
 
 		mapToUpdate.put(refToAdd, workUnitsToAdd);
+	}
+	
+	private void addToTotalWorkUnits(TimePeriodCosts timePeriodCosts)
+	{
+		addToTotalWorkUnits(timePeriodCosts.getTotalWorkUnits());
+	}
+	
+	private void addToTotalWorkUnits(OptionalDouble totalWorkUnitsToAdd)
+	{
+		totalWorkUnits = totalWorkUnits.add(totalWorkUnitsToAdd);	
 	}
 	
 	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
