@@ -44,7 +44,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getResourceWorkUnits(projectResource.getRef()).getValue());
 		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 		
-		timePeriodCosts.setExpense(new OptionalDouble(20.0));
+		timePeriodCosts.add(new TimePeriodCosts(new OptionalDouble(20.0)));
 		assertEquals("wrong expense?", 20.0, timePeriodCosts.getExpense().getValue());
 		assertEquals("wrong total cost?", 100.0 + 20.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
@@ -66,7 +66,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertNotEquals("Different expenses were equal?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("Different expenses were equal?", timePeriodCosts2, timePeriodCosts1);
 		
-		timePeriodCosts2.setExpense(new OptionalDouble(20.0));
+		timePeriodCosts2 = getProject().createTimePeriodCosts(20.0, fred.getRef(), 10.0);
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts1, timePeriodCosts2);
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts2, timePeriodCosts1);
 
