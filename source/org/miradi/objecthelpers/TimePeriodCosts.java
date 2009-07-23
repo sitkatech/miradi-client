@@ -108,7 +108,7 @@ public class TimePeriodCosts
 		totalExpenses = totalExpenses.add(timePeriodCostsToUse.getExpense());
 	}
 	
-	public void setExpense(OptionalDouble expenseToUse)
+	private void setExpense(OptionalDouble expenseToUse)
 	{
 		totalExpenses = expenseToUse;
 	}
@@ -204,7 +204,7 @@ public class TimePeriodCosts
 	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
 	{
 		if (!snapShotTimePeriodCosts.hasExpenseData())
-			setExpense(timePeriodCostsToMerge.getExpense());
+			mergeAllExpenseMapsInPlace(timePeriodCostsToMerge);
 		
 		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
 			mergeAllWorkUnitMapsInPlace(timePeriodCostsToMerge);
