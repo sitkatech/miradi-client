@@ -22,6 +22,8 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.main.EAM;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
@@ -58,8 +60,23 @@ public class TimePeriodCosts
 	{
 		this();
 		
+		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
 		addRefToMap(resourceWorkUnitMap, resourceRef, workUnits);
 		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
+	}
+
+	private void ensureCorrectRefTypes(ORef resourceRef, ORef fundingSourceRef)
+	{
+		if (resourceRef.isValid() && !ProjectResource.is(resourceRef))
+			throw new RuntimeException(getWrongRefErrorMessage(resourceRef, "ProjectResource Ref"));
+		
+		if (fundingSourceRef.isValid() && !FundingSource.is(fundingSourceRef))
+			throw new RuntimeException(getWrongRefErrorMessage(fundingSourceRef, "FundingSource Ref"));
+	}
+	
+	private String getWrongRefErrorMessage(ORef ref, String substituionText)
+	{
+		return EAM.substitute(EAM.text("Was expecting a %s, instead got:\n" + ref.toString()), substituionText);
 	}
 	
 	public void add(TimePeriodCosts timePeriodCosts)
