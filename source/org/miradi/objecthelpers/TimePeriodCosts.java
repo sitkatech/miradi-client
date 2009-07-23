@@ -117,6 +117,11 @@ public class TimePeriodCosts
 	{
 		return totalExpenses;
 	}
+	
+	public OptionalDouble getTotalWorkUnits()
+	{
+		return totalWorkUnits;
+	}
 		
 	public OptionalDouble calculateTotalCost(Project projectToUse)
 	{
@@ -288,11 +293,6 @@ public class TimePeriodCosts
 	private boolean hasTotalWorkUnitsData()
 	{
 		return getTotalWorkUnits().hasValue();
-	}
-	
-	public OptionalDouble getTotalWorkUnits()
-	{
-		return totalWorkUnits;
 	}
 	
 	private void ensureCorrectRefTypes(ORef resourceRef, ORef fundingSourceRef)
