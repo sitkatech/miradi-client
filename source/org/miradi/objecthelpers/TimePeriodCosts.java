@@ -265,12 +265,8 @@ public class TimePeriodCosts
 		Set<ORef> keysToMerge = mapToMergeFrom.keySet();
 		for(ORef refToMerge : keysToMerge)
 		{
-			OptionalDouble workUnitsToAdd = mapToMergeFrom.get(refToMerge);
-			
-			OptionalDouble thisWorkUnits = getWorkUnits(mapToUpdate, refToMerge);
-			workUnitsToAdd = workUnitsToAdd.add(thisWorkUnits);
-			
-			putRef(mapToUpdate, refToMerge, workUnitsToAdd);
+			OptionalDouble workUnitsToAdd = mapToMergeFrom.get(refToMerge);			
+			addRefToMap(mapToUpdate, refToMerge, workUnitsToAdd);
 		}
 	}
 	
