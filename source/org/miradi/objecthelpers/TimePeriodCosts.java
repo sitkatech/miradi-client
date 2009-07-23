@@ -69,7 +69,7 @@ public class TimePeriodCosts
 
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
-		addExpenses(timePeriodCosts);
+		mergeAllExpenseMapsInPlace(timePeriodCosts);
 		addToTotalWorkUnits(timePeriodCosts);
 		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
 		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
@@ -170,8 +170,13 @@ public class TimePeriodCosts
 	
 	protected void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
-		addExpenses(timePeriodCostsToMergeAdd);
+		mergeAllExpenseMapsInPlace(timePeriodCostsToMergeAdd);
 		mergeAllWorkUnitMapsInPlace(timePeriodCostsToMergeAdd);
+	}
+
+	private void mergeAllExpenseMapsInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
+	{
+		addExpenses(timePeriodCostsToMergeAdd);
 	}
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
