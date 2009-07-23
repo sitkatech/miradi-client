@@ -103,15 +103,14 @@ abstract public class Assignment extends BaseObject
 		for (int index = 0; index < duel.size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
-			TimePeriodCosts timePeriodCostsToUpdate = new TimePeriodCosts();
-			updateTimePeriodCosts(timePeriodCostsToUpdate, new OptionalDouble(dateUnitEffort.getQuantity()));
-			tpcm.add(dateUnitEffort.getDateUnit(), timePeriodCostsToUpdate);
+			TimePeriodCosts timePeriodCosts = updateTimePeriodCosts(new OptionalDouble(dateUnitEffort.getQuantity()));
+			tpcm.add(dateUnitEffort.getDateUnit(), timePeriodCosts);
 		}
 		
 		return tpcm;	
 	}
 	
-	abstract protected void updateTimePeriodCosts(TimePeriodCosts timePeriodCosts, OptionalDouble quantity);
+	abstract protected TimePeriodCosts updateTimePeriodCosts(OptionalDouble quantity);
 	
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	
