@@ -96,15 +96,12 @@ public class TimePeriodCosts
 			addRefToMap(mapToUpdate, refToAdd, workUnitsToUse);			
 		}
 	}
-		
+
 	private void addRefToMap(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
 	{
-		if (mapToUpdate.containsKey(refToAdd))
-		{
-			OptionalDouble thisWorkUnits = mapToUpdate.get(refToAdd);
-			workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
-		}
-		
+		OptionalDouble thisWorkUnits = getWorkUnits(mapToUpdate, refToAdd);
+		workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
+
 		putRef(mapToUpdate, refToAdd, workUnitsToAdd);
 	}
 	
@@ -268,10 +265,12 @@ public class TimePeriodCosts
 		Set<ORef> keysToMerge = mapToMergeFrom.keySet();
 		for(ORef refToMerge : keysToMerge)
 		{
-			OptionalDouble thisWorkUnits = mapToMergeFrom.get(refToMerge);
-			thisWorkUnits = thisWorkUnits.add(getWorkUnits(mapToUpdate, refToMerge));
+			OptionalDouble workUnitsToAdd = mapToMergeFrom.get(refToMerge);
 			
-			putRef(mapToUpdate, refToMerge, thisWorkUnits);
+			OptionalDouble thisWorkUnits = getWorkUnits(mapToUpdate, refToMerge);
+			workUnitsToAdd = workUnitsToAdd.add(thisWorkUnits);
+			
+			putRef(mapToUpdate, refToMerge, workUnitsToAdd);
 		}
 	}
 	
