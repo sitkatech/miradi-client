@@ -239,7 +239,7 @@ public class TimePeriodCosts
 		return mapToExtractFrom.get(refToExtract);
 	}
 	
-	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
+	protected void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpenses(timePeriodCostsToMergeAdd);
 		mergeAllWorkUnitMapsInPlace(timePeriodCostsToMergeAdd);
