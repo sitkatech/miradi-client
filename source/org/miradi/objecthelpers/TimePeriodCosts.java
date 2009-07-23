@@ -102,17 +102,12 @@ public class TimePeriodCosts
 		OptionalDouble thisWorkUnits = getWorkUnits(mapToUpdate, refToAdd);
 		workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
 
-		putRef(mapToUpdate, refToAdd, workUnitsToAdd);
-	}
-	
-	private void putRef(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
-	{
 		if (ProjectResource.is(refToAdd))
 			updateTotalWorkUnits(refToAdd, workUnitsToAdd);
 		
 		mapToUpdate.put(refToAdd, workUnitsToAdd);
 	}
-
+	
 	private void updateTotalWorkUnits(ORef resourceRefToAdd, OptionalDouble workUnitsToAdd)
 	{
 		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
