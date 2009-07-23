@@ -1350,12 +1350,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return timePeriodCosts;
 	}
 	
-	public TimePeriodCosts createTimePeriodCosts(ORef projectResourceRef, double units)
+	public TimePeriodCosts createTimePeriodCosts(ORef projectResourceRef, double workUnits)
 	{
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.addWorkUnit(projectResourceRef, ORef.INVALID, new OptionalDouble(units));		
-		
-		return timePeriodCosts;
+		return new TimePeriodCosts(projectResourceRef, ORef.INVALID, new OptionalDouble(workUnits));
 	}
 	
 	public static double calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
