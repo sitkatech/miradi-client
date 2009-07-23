@@ -111,7 +111,7 @@ public class TimePeriodCosts
 	private void updateTotalWorkUnits(ORef resourceRefToAdd, OptionalDouble workUnitsToAdd)
 	{
 		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
-			removeResource(resourceRefToAdd);
+			totalWorkUnits = totalWorkUnits.subtract(resourceWorkUnitMap.get(resourceRefToAdd));
 
 		totalWorkUnits = totalWorkUnits.add(workUnitsToAdd);		
 	}
