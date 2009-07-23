@@ -236,11 +236,11 @@ public class TimePeriodCosts
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
-		mergeAllWorkUnitMapsInPlance(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
-		mergeAllWorkUnitMapsInPlance(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
+		mergeWorkUnitMapInPlace(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
+		mergeWorkUnitMapInPlace(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
 	}
 	
-	private void mergeAllWorkUnitMapsInPlance(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToMergeFrom)
+	private void mergeWorkUnitMapInPlace(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToMergeFrom)
 	{
 		Set<ORef> keysToMerge = mapToMergeFrom.keySet();
 		for(ORef refToMerge : keysToMerge)
