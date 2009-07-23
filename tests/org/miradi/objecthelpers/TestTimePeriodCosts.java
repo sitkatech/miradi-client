@@ -119,8 +119,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	public void testFundingSourceWorkUnitsMapBasics() throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		OptionalDouble bogusWorkUnits = timePeriodCosts.getFundingSourceWorkUnits(ORef.INVALID);
-		assertFalse("invalid fundingSource should not have workUnits?", bogusWorkUnits.hasValue());
+		assertEquals("funding source should be empty?", 0, timePeriodCosts.getFundingSourceRefSet().size());
 		
 		ORef fundingSourceRef = createFundingSource();
 		timePeriodCosts.addWorkUnit(ORef.INVALID, fundingSourceRef, new OptionalDouble(10.0));

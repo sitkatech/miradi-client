@@ -223,6 +223,11 @@ public class TimePeriodCosts
 		return new HashMap(resourceWorkUnitMap).keySet();
 	}
 	
+	public Set<ORef> getFundingSourceRefSet()
+	{
+		return new HashMap(fundingSourceWorkUnitMap).keySet();
+	}
+	
 	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpenses(timePeriodCostsToMergeAdd);
