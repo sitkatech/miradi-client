@@ -121,18 +121,6 @@ public class TimePeriodCosts
 		totalWorkUnits = totalWorkUnits.add(workUnitsToAdd);		
 	}
 
-	public void removeResource(ORef resourceRefToRemove)
-	{
-		OptionalDouble workUnitToRemove = resourceWorkUnitMap.get(resourceRefToRemove);
-		resourceWorkUnitMap.remove(resourceRefToRemove);
-		totalWorkUnits = totalWorkUnits.subtract(workUnitToRemove);		
-	}
-	
-	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
-	{
-		expense = expense.add(timePeriodCostsToUse.getExpense());
-	}
-	
 	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
 	{
 		if (projectResourceRefsToRetain.size() == 0)
@@ -146,6 +134,18 @@ public class TimePeriodCosts
 		}
 	}
 	
+	public void removeResource(ORef resourceRefToRemove)
+	{
+		OptionalDouble workUnitToRemove = resourceWorkUnitMap.get(resourceRefToRemove);
+		resourceWorkUnitMap.remove(resourceRefToRemove);
+		totalWorkUnits = totalWorkUnits.subtract(workUnitToRemove);		
+	}
+	
+	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
+	{
+		expense = expense.add(timePeriodCostsToUse.getExpense());
+	}
+	
 	public void setExpense(OptionalDouble expenseToUse)
 	{
 		expense = expenseToUse;
@@ -156,6 +156,11 @@ public class TimePeriodCosts
 		setExpense(timePeriodCosts.getExpense());
 	}
 	
+	public OptionalDouble getExpense()
+	{
+		return expense;
+	}
+		
 	public OptionalDouble calculateTotalCost(Project projectToUse)
 	{
 		final OptionalDouble expenseToAdd = getExpense();
@@ -233,21 +238,6 @@ public class TimePeriodCosts
 		return mapToExtractFrom.get(refToExtract);
 	}
 	
-	public OptionalDouble getExpense()
-	{
-		return expense;
-	}
-	
-	public Set<ORef> getResourceRefSet()
-	{
-		return new HashSet(resourceWorkUnitMap.keySet());
-	}
-	
-	public Set<ORef> getFundingSourceRefSet()
-	{
-		return new HashSet(fundingSourceWorkUnitMap.keySet());
-	}
-	
 	public void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpenses(timePeriodCostsToMergeAdd);
@@ -270,6 +260,15 @@ public class TimePeriodCosts
 		}
 	}
 	
+	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
+	{
+		if (!snapShotTimePeriodCosts.hasExpenseData())
+			setExpenseValueFrom(timePeriodCostsToMerge);
+		
+		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
+			mergeAllWorkUnitMapsInPlace(timePeriodCostsToMerge);
+	}
+	
 	@Override
 	public String toString()
 	{
@@ -288,6 +287,16 @@ public class TimePeriodCosts
 		return asString;
 	}
 	
+	public Set<ORef> getResourceRefSet()
+	{
+		return new HashSet(resourceWorkUnitMap.keySet());
+	}
+	
+	public Set<ORef> getFundingSourceRefSet()
+	{
+		return new HashSet(fundingSourceWorkUnitMap.keySet());
+	}
+	
 	private boolean hasExpenseData()
 	{
 		return getExpense().hasValue();
@@ -296,15 +305,6 @@ public class TimePeriodCosts
 	private boolean hasTotalWorkUnitsData()
 	{
 		return getTotalWorkUnits().hasValue();
-	}
-
-	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
-	{
-		if (!snapShotTimePeriodCosts.hasExpenseData())
-			setExpenseValueFrom(timePeriodCostsToMerge);
-		
-		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
-			mergeAllWorkUnitMapsInPlace(timePeriodCostsToMerge);
 	}
 
 	private OptionalDouble expense;
