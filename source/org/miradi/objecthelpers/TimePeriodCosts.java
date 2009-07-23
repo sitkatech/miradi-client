@@ -126,7 +126,7 @@ public class TimePeriodCosts
 		refsToBeRemoved.removeAll(projectResourceRefsToRetain);
 		for(ORef projectResourceRefToRemove : refsToBeRemoved)
 		{
-			removeResource(projectResourceRefToRemove);
+			resourceWorkUnitMap.remove(projectResourceRefToRemove);
 		}
 		
 		updateTotalWorkUnits();
@@ -142,11 +142,6 @@ public class TimePeriodCosts
 		}
 	}
 
-	private void removeResource(ORef resourceRefToRemove)
-	{
-		resourceWorkUnitMap.remove(resourceRefToRemove);
-	}
-	
 	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
 	{
 		expense = expense.add(timePeriodCostsToUse.getExpense());
