@@ -48,6 +48,21 @@ public class TimePeriodCosts
 		add(timePeriodCostsToUse);
 	}
 	
+	public TimePeriodCosts(OptionalDouble expenseToUse)
+	{
+		this();
+		
+		setExpense(expenseToUse);
+	}
+	
+	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	OptionalDouble workUnits)
+	{
+		this();
+		
+		addRefToMap(resourceWorkUnitMap, resourceRef, workUnits);
+		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
+	}
+	
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpenses(timePeriodCosts);

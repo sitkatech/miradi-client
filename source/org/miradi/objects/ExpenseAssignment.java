@@ -44,9 +44,9 @@ public class ExpenseAssignment extends Assignment
 	}
 		
 	@Override
-	protected void updateTimePeriodCosts(TimePeriodCosts timePeriodCosts, OptionalDouble quantity)
+	protected TimePeriodCosts updateTimePeriodCosts(OptionalDouble quantity)
 	{
-		timePeriodCosts.setExpense(quantity);
+		return new TimePeriodCosts(quantity);
 	}
 	
 	public ORef getFundingSourceRef()
