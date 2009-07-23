@@ -109,7 +109,7 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	protected TimePeriodCosts updateTimePeriodCosts(OptionalDouble quantity)
+	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
 		return new TimePeriodCosts(getResourceRef(), getFundingSourceRef(), quantity); 
 	}

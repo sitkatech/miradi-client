@@ -44,7 +44,7 @@ public class ExpenseAssignment extends Assignment
 	}
 		
 	@Override
-	protected TimePeriodCosts updateTimePeriodCosts(OptionalDouble quantity)
+	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
 		return new TimePeriodCosts(quantity);
 	}
