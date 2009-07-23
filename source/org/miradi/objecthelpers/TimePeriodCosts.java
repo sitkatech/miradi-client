@@ -62,6 +62,7 @@ public class TimePeriodCosts
 		this();
 		
 		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
+		addToTotalWorkUnits(workUnits);
 		addRefToMap(resourceWorkUnitMap, resourceRef, workUnits);
 		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
 	}
@@ -83,8 +84,19 @@ public class TimePeriodCosts
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpenses(timePeriodCosts);
+		addToTotalWorkUnits(timePeriodCosts);
 		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
 		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
+	}
+	
+	private void addToTotalWorkUnits(TimePeriodCosts timePeriodCosts)
+	{
+		addToTotalWorkUnits(timePeriodCosts.getTotalWorkUnits());
+	}
+	
+	private void addToTotalWorkUnits(OptionalDouble totalWorkUnitsToAdd)
+	{
+		totalWorkUnits = totalWorkUnits.add(totalWorkUnitsToAdd);	
 	}
 
 	private void addMap(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToAdd)
@@ -102,20 +114,9 @@ public class TimePeriodCosts
 		OptionalDouble thisWorkUnits = getWorkUnits(mapToUpdate, refToAdd);
 		workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
 
-		if (ProjectResource.is(refToAdd))
-			updateTotalWorkUnits(refToAdd, workUnitsToAdd);
-		
 		mapToUpdate.put(refToAdd, workUnitsToAdd);
 	}
 	
-	private void updateTotalWorkUnits(ORef resourceRefToAdd, OptionalDouble workUnitsToAdd)
-	{
-		if (resourceWorkUnitMap.containsKey(resourceRefToAdd))
-			totalWorkUnits = totalWorkUnits.subtract(resourceWorkUnitMap.get(resourceRefToAdd));
-
-		totalWorkUnits = totalWorkUnits.add(workUnitsToAdd);		
-	}
-
 	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
 	{
 		if (projectResourceRefsToRetain.size() == 0)
@@ -241,6 +242,7 @@ public class TimePeriodCosts
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
+		addToTotalWorkUnits(timePeriodCostsToMerge);
 		mergeWorkUnitMapInPlace(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
 		mergeWorkUnitMapInPlace(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
 	}
