@@ -54,7 +54,7 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		setExpense(expenseToUse);
+		addExpenses(expenseToUse);
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	OptionalDouble workUnits)
@@ -69,7 +69,7 @@ public class TimePeriodCosts
 
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
-		mergeAllExpenseMapsInPlace(timePeriodCosts);
+		addExpenses(timePeriodCosts);
 		addToTotalWorkUnits(timePeriodCosts);
 		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
 		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
@@ -105,12 +105,12 @@ public class TimePeriodCosts
 	
 	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
 	{
-		totalExpenses = totalExpenses.add(timePeriodCostsToUse.getExpense());
+		addExpenses(timePeriodCostsToUse.getExpense());
 	}
-	
-	private void setExpense(OptionalDouble expenseToUse)
+
+	private void addExpenses(OptionalDouble expense)
 	{
-		totalExpenses = expenseToUse;
+		totalExpenses = totalExpenses.add(expense);
 	}
 	
 	public OptionalDouble getExpense()
