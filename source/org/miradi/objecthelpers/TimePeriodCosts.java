@@ -67,20 +67,6 @@ public class TimePeriodCosts
 		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
 	}
 
-	private void ensureCorrectRefTypes(ORef resourceRef, ORef fundingSourceRef)
-	{
-		if (resourceRef.isValid() && !ProjectResource.is(resourceRef))
-			throw new RuntimeException(getWrongRefErrorMessage(resourceRef, "ProjectResource Ref"));
-		
-		if (fundingSourceRef.isValid() && !FundingSource.is(fundingSourceRef))
-			throw new RuntimeException(getWrongRefErrorMessage(fundingSourceRef, "FundingSource Ref"));
-	}
-	
-	private String getWrongRefErrorMessage(ORef ref, String substituionText)
-	{
-		return EAM.substitute(EAM.text("Was expecting a %s, instead got:\n" + ref.toString()), substituionText);
-	}
-	
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpenses(timePeriodCosts);
@@ -117,31 +103,6 @@ public class TimePeriodCosts
 		mapToUpdate.put(refToAdd, workUnitsToAdd);
 	}
 	
-	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
-	{
-		if (projectResourceRefsToRetain.size() == 0)
-			return;
-		
-		Set<ORef> refsToBeRemoved = getResourceRefSet();
-		refsToBeRemoved.removeAll(projectResourceRefsToRetain);
-		for(ORef projectResourceRefToRemove : refsToBeRemoved)
-		{
-			resourceWorkUnitMap.remove(projectResourceRefToRemove);
-		}
-		
-		updateTotalWorkUnits();
-	}
-	
-	private void updateTotalWorkUnits()
-	{
-		totalWorkUnits = new OptionalDouble();
-		Set<ORef> resourceRefs = resourceWorkUnitMap.keySet();
-		for(ORef  resourceRef: resourceRefs)
-		{
-			totalWorkUnits = totalWorkUnits.add(resourceWorkUnitMap.get(resourceRef));
-		}
-	}
-
 	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
 	{
 		expense = expense.add(timePeriodCostsToUse.getExpense());
@@ -194,33 +155,6 @@ public class TimePeriodCosts
 		return new OptionalDouble(projectResource.getCostPerUnit());
 	}
 	
-	public OptionalDouble getTotalWorkUnits()
-	{
-		return totalWorkUnits;
-	}
-
-	@Override
-	public boolean equals(Object rawOther)
-	{
-		if (! (rawOther instanceof TimePeriodCosts))
-			return false;
-		
-		TimePeriodCosts other = (TimePeriodCosts) rawOther;
-		if (!other.getExpense().equals(getExpense()))
-			return false;
-		
-		if (!other.fundingSourceWorkUnitMap.equals(fundingSourceWorkUnitMap))
-			return false;
-		
-		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
-	}
-	
-	@Override
-	public int hashCode()
-	{
-		return expense.hashCode() + resourceWorkUnitMap.hashCode() + fundingSourceWorkUnitMap.hashCode();
-	}
-	
 	public OptionalDouble getResourceWorkUnits(ORef resourceRef)
 	{
 		return getWorkUnits(resourceWorkUnitMap, resourceRef);
@@ -271,6 +205,53 @@ public class TimePeriodCosts
 			mergeAllWorkUnitMapsInPlace(timePeriodCostsToMerge);
 	}
 	
+	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
+	{
+		if (projectResourceRefsToRetain.size() == 0)
+			return;
+		
+		Set<ORef> refsToBeRemoved = getResourceRefSet();
+		refsToBeRemoved.removeAll(projectResourceRefsToRetain);
+		for(ORef projectResourceRefToRemove : refsToBeRemoved)
+		{
+			resourceWorkUnitMap.remove(projectResourceRefToRemove);
+		}
+		
+		updateTotalWorkUnits();
+	}
+	
+	private void updateTotalWorkUnits()
+	{
+		totalWorkUnits = new OptionalDouble();
+		Set<ORef> resourceRefs = resourceWorkUnitMap.keySet();
+		for(ORef  resourceRef: resourceRefs)
+		{
+			totalWorkUnits = totalWorkUnits.add(resourceWorkUnitMap.get(resourceRef));
+		}
+	}
+	
+	@Override
+	public boolean equals(Object rawOther)
+	{
+		if (! (rawOther instanceof TimePeriodCosts))
+			return false;
+		
+		TimePeriodCosts other = (TimePeriodCosts) rawOther;
+		if (!other.getExpense().equals(getExpense()))
+			return false;
+		
+		if (!other.fundingSourceWorkUnitMap.equals(fundingSourceWorkUnitMap))
+			return false;
+		
+		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return expense.hashCode() + resourceWorkUnitMap.hashCode() + fundingSourceWorkUnitMap.hashCode();
+	}
+	
 	@Override
 	public String toString()
 	{
@@ -308,7 +289,26 @@ public class TimePeriodCosts
 	{
 		return getTotalWorkUnits().hasValue();
 	}
-
+	
+	public OptionalDouble getTotalWorkUnits()
+	{
+		return totalWorkUnits;
+	}
+	
+	private void ensureCorrectRefTypes(ORef resourceRef, ORef fundingSourceRef)
+	{
+		if (resourceRef.isValid() && !ProjectResource.is(resourceRef))
+			throw new RuntimeException(getWrongRefErrorMessage(resourceRef, "ProjectResource Ref"));
+		
+		if (fundingSourceRef.isValid() && !FundingSource.is(fundingSourceRef))
+			throw new RuntimeException(getWrongRefErrorMessage(fundingSourceRef, "FundingSource Ref"));
+	}
+	
+	private String getWrongRefErrorMessage(ORef ref, String substituionText)
+	{
+		return EAM.substitute(EAM.text("Was expecting a %s, instead got:\n" + ref.toString()), substituionText);
+	}
+	
 	private OptionalDouble expense;
 	private OptionalDouble totalWorkUnits;
 	
