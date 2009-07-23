@@ -128,13 +128,23 @@ public class TimePeriodCosts
 		{
 			removeResource(projectResourceRefToRemove);
 		}
+		
+		updateTotalWorkUnits();
 	}
 	
+	private void updateTotalWorkUnits()
+	{
+		totalWorkUnits = new OptionalDouble();
+		Set<ORef> resourceRefs = resourceWorkUnitMap.keySet();
+		for(ORef  resourceRef: resourceRefs)
+		{
+			totalWorkUnits = totalWorkUnits.add(resourceWorkUnitMap.get(resourceRef));
+		}
+	}
+
 	public void removeResource(ORef resourceRefToRemove)
 	{
-		OptionalDouble workUnitToRemove = resourceWorkUnitMap.get(resourceRefToRemove);
 		resourceWorkUnitMap.remove(resourceRefToRemove);
-		totalWorkUnits = totalWorkUnits.subtract(workUnitToRemove);		
 	}
 	
 	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)

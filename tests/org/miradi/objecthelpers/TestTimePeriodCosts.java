@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
+import java.util.Set;
+
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
@@ -153,6 +155,36 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		
 		totalTimePeriodCosts.mergeAllWorkUnitMapsInPlace(timePeriodCosts);
 		assertEquals("funding source was not merged?", 22.0, totalTimePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
+	}
+	
+	public void testProjectResourceFilter() throws Exception
+	{
+		TimePeriodCosts empty = new TimePeriodCosts();
+		empty.filterProjectResources(new ORefSet());
+		assertEquals("resources map should still be empty after filtering nothing?", 0, empty.getResourceRefSet().size());
+
+		ProjectResource fred = createProjectResource();
+		empty.filterProjectResources(new ORefSet(fred));
+		assertEquals("resources map should still be empty after filter?", 0, empty.getResourceRefSet().size());
+		
+		ProjectResource jill = createProjectResource();
+		TimePeriodCosts withJillAndFred = new TimePeriodCosts();
+		withJillAndFred.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(12.0)));
+		withJillAndFred.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(13.0)));
+		
+		assertEquals("wrong resources count?", 2, withJillAndFred.getResourceRefSet().size());
+		assertEquals("wrong total work units for fred and jill?", 25.0, withJillAndFred.getTotalWorkUnits().getValue());
+		
+		withJillAndFred.filterProjectResources(new ORefSet(jill));
+		Set<ORef> afterFilteringOutFred = withJillAndFred.getResourceRefSet();
+		assertEquals("wrong resources count after filtering?", 1, afterFilteringOutFred.size());
+		assertTrue("jill was removed during filtering?", afterFilteringOutFred.contains(jill.getRef()));
+		assertEquals("wrong totals work Units after fred filtered out?", 12.0, withJillAndFred.getTotalWorkUnits().getValue());
+		
+		withJillAndFred.filterProjectResources(new ORefSet(fred));
+		Set<ORef> afterFilteringOutJillAndFred = withJillAndFred.getResourceRefSet();
+		assertEquals("wrong resources count after filtering out fred?", 0, afterFilteringOutJillAndFred.size());
+		assertTrue("wrong totals work Units after fred filtered out?", withJillAndFred.getTotalWorkUnits().hasNoValue());
 	}
 
 	private ORef createFundingSource() throws Exception
