@@ -142,7 +142,7 @@ public class TimePeriodCosts
 		}
 	}
 
-	public void removeResource(ORef resourceRefToRemove)
+	private void removeResource(ORef resourceRefToRemove)
 	{
 		resourceWorkUnitMap.remove(resourceRefToRemove);
 	}
