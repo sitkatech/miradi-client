@@ -37,7 +37,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertFalse("getUnits for bogus resource returned a value?", emptyDouble.hasValue());
 		
 		ProjectResource projectResource = createProjectResource();
-		timePeriodCosts.addWorkUnit(projectResource.getRef(), ORef.INVALID, new OptionalDouble(10.0));
+		timePeriodCosts = new TimePeriodCosts(projectResource.getRef(), ORef.INVALID, new OptionalDouble(10.0));
 		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getResourceWorkUnits(projectResource.getRef()).getValue());
 		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 		
@@ -66,27 +66,26 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		timePeriodCosts2.setExpense(new OptionalDouble(20.0));
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts1, timePeriodCosts2);
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts2, timePeriodCosts1);
-		
+
 		ProjectResource jill = createProjectResource();
-		timePeriodCosts1.addWorkUnit(jill.getRef(), ORef.INVALID, new OptionalDouble(30.0));
+		timePeriodCosts1.add(new TimePeriodCosts(jill.getRef(), ORef.INVALID, new OptionalDouble(30.0)));
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts2, timePeriodCosts1);
 	}
 	
 	public void testEqualsWithFundingSource() throws Exception
 	{
-		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts();
 		ORef fundingSourceRef1 = createFundingSource();
-		timePeriodCosts1.addWorkUnit(ORef.INVALID, fundingSourceRef1, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(ORef.INVALID, fundingSourceRef1, new OptionalDouble(10.0));
 		assertEquals("time period costs with funding source is not equals to itself?", timePeriodCosts1, timePeriodCosts1);
 		
 		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts();
 		assertNotEquals("TPC with fundingSource is equal to TPC without fundingSource?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("TPC with fundingSource is equal to TPC without fundingSource?", timePeriodCosts2, timePeriodCosts1);
 		
-		timePeriodCosts2.addWorkUnit(ORef.INVALID, fundingSourceRef1, new OptionalDouble(10.0));
-		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts1, timePeriodCosts2);
-		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts2, timePeriodCosts1);
+		TimePeriodCosts timePeriodCosts3 = new TimePeriodCosts(ORef.INVALID, fundingSourceRef1, new OptionalDouble(10.0));
+		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts1, timePeriodCosts3);
+		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts3, timePeriodCosts1);
 	}
 	
 	public void testAddWithResourceOnly() throws Exception
@@ -106,23 +105,21 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	public void testAddWithFundingSourceOnly() throws Exception
 	{
 		ORef fundingSourceRef = createFundingSource();
-		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts();
-		timePeriodCosts1.addWorkUnit(ORef.INVALID, fundingSourceRef, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(ORef.INVALID, fundingSourceRef, new OptionalDouble(10.0));
 		
-		timePeriodCosts1.add(new TimePeriodCosts());
-		assertEquals("wrong work unit for funding source after addition?", 10.0, timePeriodCosts1.getFundingSourceWorkUnits(fundingSourceRef).getValue());
+		timePeriodCosts.add(new TimePeriodCosts());
+		assertEquals("wrong work unit for funding source after addition?", 10.0, timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 		
-		timePeriodCosts1.add(timePeriodCosts1);
-		assertEquals("wrong work unit for funding source after addition?", 20.0, timePeriodCosts1.getFundingSourceWorkUnits(fundingSourceRef).getValue());
+		timePeriodCosts.add(timePeriodCosts);
+		assertEquals("wrong work unit for funding source after addition?", 20.0, timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 	}
 	
 	public void testFundingSourceWorkUnitsMapBasics() throws Exception
 	{
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		assertEquals("funding source should be empty?", 0, timePeriodCosts.getFundingSourceRefSet().size());
+		assertEquals("funding source should be empty?", 0, new TimePeriodCosts().getFundingSourceRefSet().size());
 		
 		ORef fundingSourceRef = createFundingSource();
-		timePeriodCosts.addWorkUnit(ORef.INVALID, fundingSourceRef, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(ORef.INVALID, fundingSourceRef, new OptionalDouble(10.0));
 		OptionalDouble retrievedWorkUnits = timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef);
 		assertTrue("funding source workUnits should have value?", retrievedWorkUnits.hasValue());
 		assertEquals("incorrect workUnits for fundingSource?", 10.0, retrievedWorkUnits.getValue());
@@ -146,15 +143,14 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	{
 		TimePeriodCosts totalTimePeriodCosts = new TimePeriodCosts();
 		
-		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts();
 		ORef fundingSourceRef = createFundingSource();
-		timePeriodCosts1.addWorkUnit(ORef.INVALID, fundingSourceRef, new OptionalDouble(11.0));
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(ORef.INVALID, fundingSourceRef, new OptionalDouble(11.0));
 		
-		totalTimePeriodCosts.mergeAllWorkUnitMapsInPlace(timePeriodCosts1);
+		totalTimePeriodCosts.mergeAllWorkUnitMapsInPlace(timePeriodCosts);
 		assertTrue("funding source does not have value after merge?", totalTimePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).hasValue());
 		assertEquals("funding source was not merged?", 11.0, totalTimePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 		
-		totalTimePeriodCosts.mergeAllWorkUnitMapsInPlace(timePeriodCosts1);
+		totalTimePeriodCosts.mergeAllWorkUnitMapsInPlace(timePeriodCosts);
 		assertEquals("funding source was not merged?", 22.0, totalTimePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 	}
 
