@@ -33,7 +33,7 @@ public class TimePeriodCosts
 {
 	public TimePeriodCosts()
 	{
-		expense = new OptionalDouble();
+		totalExpenses = new OptionalDouble();
 		totalWorkUnits = new OptionalDouble();
 		
 	    fundingSourceExpenseMap = new HashMap<ORef, OptionalDouble>();
@@ -105,17 +105,17 @@ public class TimePeriodCosts
 	
 	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
 	{
-		expense = expense.add(timePeriodCostsToUse.getExpense());
+		totalExpenses = totalExpenses.add(timePeriodCostsToUse.getExpense());
 	}
 	
 	public void setExpense(OptionalDouble expenseToUse)
 	{
-		expense = expenseToUse;
+		totalExpenses = expenseToUse;
 	}
 	
 	public OptionalDouble getExpense()
 	{
-		return expense;
+		return totalExpenses;
 	}
 		
 	public OptionalDouble calculateTotalCost(Project projectToUse)
@@ -249,15 +249,15 @@ public class TimePeriodCosts
 	@Override
 	public int hashCode()
 	{
-		return expense.hashCode() + resourceWorkUnitMap.hashCode() + fundingSourceWorkUnitMap.hashCode();
+		return totalExpenses.hashCode() + resourceWorkUnitMap.hashCode() + fundingSourceWorkUnitMap.hashCode();
 	}
 	
 	@Override
 	public String toString()
 	{
 		String asString = "";
-		if (expense.hasValue())
-			asString = "expense = " + expense.getValue() + "\n";
+		if (totalExpenses.hasValue())
+			asString = "expense = " + totalExpenses.getValue() + "\n";
 		
 		Set<ORef> refs = resourceWorkUnitMap.keySet();
 		for(ORef ref : refs)
@@ -309,7 +309,7 @@ public class TimePeriodCosts
 		return EAM.substitute(EAM.text("Was expecting a %s, instead got:\n" + ref.toString()), substituionText);
 	}
 	
-	private OptionalDouble expense;
+	private OptionalDouble totalExpenses;
 	private OptionalDouble totalWorkUnits;
 	
 	HashMap<ORef, OptionalDouble> fundingSourceExpenseMap;
