@@ -62,7 +62,7 @@ public class TimePeriodCosts
 		this();
 		
 		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
-		addTotalWorkUnitsToTotal(workUnits);
+		addWorkUnitsToTotal(workUnits);
 		addRefToMap(resourceWorkUnitMap, resourceRef, workUnits);
 		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
 	}
@@ -70,7 +70,7 @@ public class TimePeriodCosts
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpensesToTotal(timePeriodCosts);
-		addTotalWorkUnitsToTotal(timePeriodCosts);
+		addWorkUnitsToTotal(timePeriodCosts);
 		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
 		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
 	}
@@ -93,12 +93,12 @@ public class TimePeriodCosts
 		mapToUpdate.put(refToAdd, workUnitsToAdd);
 	}
 	
-	private void addTotalWorkUnitsToTotal(TimePeriodCosts timePeriodCosts)
+	private void addWorkUnitsToTotal(TimePeriodCosts timePeriodCosts)
 	{
-		addTotalWorkUnitsToTotal(timePeriodCosts.getTotalWorkUnits());
+		addWorkUnitsToTotal(timePeriodCosts.getTotalWorkUnits());
 	}
 	
-	private void addTotalWorkUnitsToTotal(OptionalDouble totalWorkUnitsToAdd)
+	private void addWorkUnitsToTotal(OptionalDouble totalWorkUnitsToAdd)
 	{
 		totalWorkUnits = totalWorkUnits.add(totalWorkUnitsToAdd);	
 	}
@@ -186,7 +186,7 @@ public class TimePeriodCosts
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
-		addTotalWorkUnitsToTotal(timePeriodCostsToMerge);
+		addWorkUnitsToTotal(timePeriodCostsToMerge);
 		mergeWorkUnitMapInPlace(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
 		mergeWorkUnitMapInPlace(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
 	}
@@ -248,10 +248,24 @@ public class TimePeriodCosts
 		if (!other.getTotalWorkUnits().equals(getTotalWorkUnits()))
 			return false;
 		
-		if (!other.fundingSourceWorkUnitMap.equals(fundingSourceWorkUnitMap))
+		if (areNotEqual(other.fundingSourceExpenseMap, fundingSourceExpenseMap))
 			return false;
 		
-		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
+		if (areNotEqual(other.accountingCodeExpenseMap, accountingCodeExpenseMap))
+			return false;
+		
+		if (areNotEqual(other.fundingSourceWorkUnitMap, fundingSourceWorkUnitMap))
+			return false;
+		
+		if (areNotEqual(other.accountingCodeWorkUnitMap, accountingCodeWorkUnitMap))
+			return false;
+		
+		return areNotEqual(other.resourceWorkUnitMap, resourceWorkUnitMap);
+	}
+	
+	private boolean areNotEqual(HashMap<ORef, OptionalDouble> map1, HashMap<ORef, OptionalDouble> map2)
+	{
+		return !map1.equals(map2);
 	}
 
 	@Override
@@ -319,7 +333,7 @@ public class TimePeriodCosts
 	HashMap<ORef, OptionalDouble> accountingCodeExpenseMap;
 	
 	private HashMap<ORef, OptionalDouble> resourceWorkUnitMap;
-	HashMap<ORef, OptionalDouble> fundingSourceWorkUnitMap;
+	private HashMap<ORef, OptionalDouble> fundingSourceWorkUnitMap;
 	HashMap<ORef, OptionalDouble> accountingCodeWorkUnitMap;
 	
 }
