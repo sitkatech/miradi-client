@@ -83,6 +83,11 @@ public class FundingSource extends BaseObject
 		return find(project.getObjectManager(), fundingSourceRef);
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
 	public static boolean is(int objectType)
 	{
 		return objectType == getObjectType();
