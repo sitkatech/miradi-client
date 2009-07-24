@@ -18,24 +18,27 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning.treenodes;
+package org.miradi.dialogs.planning;
 
-import java.util.Vector;
-
-import org.miradi.project.Project;
+import org.miradi.objects.FundingSource;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceHiddenNode extends AbstractHiddenRootNode
+public class FundingSourceRowColumnProvider implements RowColumnProvider
 {
-	public ProjectResourceHiddenNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public CodeList getColumnListToShow()
 	{
-		super(projectToUse, visibleRowsToUse);
+		return new CodeList(new String[] {
+				FundingSource.TAG_LABEL,
+				//FIXME urgent - funding source tree - use this tag or create a new one
+				//CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
+		});
+		
 	}
 
-	@Override
-	public void rebuild() throws Exception
+	public CodeList getRowListToShow()
 	{
-		children = new Vector();
-		children.add(new ResourceTreeRootNodeWithUnspecifiedNode(getProject(), getVisibleRows()));
+		return new CodeList(new String[] {
+				FundingSource.OBJECT_NAME,
+		});
 	}
 }
