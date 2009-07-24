@@ -288,6 +288,9 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.TARGET)
 			return diagramFactor.getWrappedORef();
 		
+		if (diagramFactor.getWrappedType() == ObjectType.HUMAN_WELFARE_TARGET)
+			return diagramFactor.getWrappedORef();
+		
 		if (diagramFactor.getWrappedType() == ObjectType.STRATEGY)
 			return diagramFactor.getWrappedORef();
 		
