@@ -245,10 +245,13 @@ public class TimePeriodCosts
 		if (!other.getExpense().equals(getExpense()))
 			return false;
 		
-		if (!other.totalExpenses.equals(totalExpenses))
+		if (!other.getTotalWorkUnits().equals(getTotalWorkUnits()))
 			return false;
 		
-		return other.totalWorkUnits.equals(totalWorkUnits);
+		if (!other.fundingSourceWorkUnitMap.equals(fundingSourceWorkUnitMap))
+			return false;
+		
+		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
 	}
 
 	@Override
