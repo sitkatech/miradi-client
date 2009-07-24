@@ -1349,7 +1349,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public TimePeriodCosts createTimePeriodCosts(double expenses)
 	{
-		return new TimePeriodCosts(new OptionalDouble(expenses));
+		return new TimePeriodCosts(ORef.INVALID, new OptionalDouble(expenses));
 	}
 	
 	public TimePeriodCosts createTimePeriodCosts(ORef projectResourceRef, double workUnits)

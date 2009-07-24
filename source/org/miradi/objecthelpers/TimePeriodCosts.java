@@ -50,11 +50,14 @@ public class TimePeriodCosts
 		add(timePeriodCostsToUse);
 	}
 	
-	public TimePeriodCosts(OptionalDouble expenseToUse)
+	public TimePeriodCosts(ORef fundingSourceRef, OptionalDouble expenseToUse)
 	{
 		this();
 		
+		ensureFundingSource(fundingSourceRef);
+		
 		addExpensesToTotal(expenseToUse);
+		addRefToMap(fundingSourceExpenseMap, fundingSourceRef, expenseToUse);
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	OptionalDouble workUnits)
@@ -62,6 +65,7 @@ public class TimePeriodCosts
 		this();
 		
 		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
+		
 		addWorkUnitsToTotal(workUnits);
 		addRefToMap(resourceWorkUnitMap, resourceRef, workUnits);
 		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
@@ -70,6 +74,8 @@ public class TimePeriodCosts
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpensesToTotal(timePeriodCosts);
+		addMap(fundingSourceExpenseMap, timePeriodCosts.fundingSourceExpenseMap);
+		
 		addWorkUnitsToTotal(timePeriodCosts);
 		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
 		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
@@ -87,7 +93,7 @@ public class TimePeriodCosts
 
 	private void addRefToMap(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
 	{
-		OptionalDouble thisWorkUnits = getWorkUnits(mapToUpdate, refToAdd);
+		OptionalDouble thisWorkUnits = getSafeValue(mapToUpdate, refToAdd);
 		workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
 
 		mapToUpdate.put(refToAdd, workUnitsToAdd);
@@ -157,15 +163,20 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getResourceWorkUnits(ORef resourceRef)
 	{
-		return getWorkUnits(resourceWorkUnitMap, resourceRef);
+		return getSafeValue(resourceWorkUnitMap, resourceRef);
 	}
 	
 	public OptionalDouble getFundingSourceWorkUnits(ORef fundingSourceRef)
 	{
-		return getWorkUnits(fundingSourceWorkUnitMap, fundingSourceRef);
+		return getSafeValue(fundingSourceWorkUnitMap, fundingSourceRef);
 	}
 	
-	private OptionalDouble getWorkUnits(HashMap<ORef, OptionalDouble> mapToExtractFrom, ORef refToExtract)
+	public OptionalDouble getFundingSourceExpenses(ORef fundingSourceRef)
+	{
+		return getSafeValue(fundingSourceExpenseMap, fundingSourceRef);
+	}
+	
+	private OptionalDouble getSafeValue(HashMap<ORef, OptionalDouble> mapToExtractFrom, ORef refToExtract)
 	{
 		if (!mapToExtractFrom.containsKey(refToExtract))
 			return new OptionalDouble();
@@ -182,22 +193,23 @@ public class TimePeriodCosts
 	private void mergeAllExpenseMapsInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpensesToTotal(timePeriodCostsToMergeAdd);
+		mergeMapInPlace(fundingSourceExpenseMap, timePeriodCostsToMergeAdd.fundingSourceExpenseMap);
 	}
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
 		addWorkUnitsToTotal(timePeriodCostsToMerge);
-		mergeWorkUnitMapInPlace(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
-		mergeWorkUnitMapInPlace(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
+		mergeMapInPlace(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
+		mergeMapInPlace(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
 	}
 	
-	private void mergeWorkUnitMapInPlace(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToMergeFrom)
+	private void mergeMapInPlace(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToMergeFrom)
 	{
 		Set<ORef> keysToMerge = mapToMergeFrom.keySet();
 		for(ORef refToMerge : keysToMerge)
 		{
-			OptionalDouble workUnitsToAdd = mapToMergeFrom.get(refToMerge);			
-			addRefToMap(mapToUpdate, refToMerge, workUnitsToAdd);
+			OptionalDouble valueToAdd = mapToMergeFrom.get(refToMerge);			
+			addRefToMap(mapToUpdate, refToMerge, valueToAdd);
 		}
 	}
 	
@@ -300,9 +312,14 @@ public class TimePeriodCosts
 		return new HashSet(resourceWorkUnitMap.keySet());
 	}
 	
-	public Set<ORef> getFundingSourceRefSet()
+	public Set<ORef> getFundingSourceWorkUnitsRefSet()
 	{
 		return new HashSet(fundingSourceWorkUnitMap.keySet());
+	}
+	
+	public Set<ORef> getFundingSourceExpensesRefSet()
+	{
+		return new HashSet(fundingSourceExpenseMap.keySet());
 	}
 	
 	private boolean hasExpenseData()
@@ -320,6 +337,11 @@ public class TimePeriodCosts
 		if (resourceRef.isValid() && !ProjectResource.is(resourceRef))
 			throw new RuntimeException(getWrongRefErrorMessage(resourceRef, "ProjectResource Ref"));
 		
+		ensureFundingSource(fundingSourceRef);
+	}
+
+	private void ensureFundingSource(ORef fundingSourceRef)
+	{
 		if (fundingSourceRef.isValid() && !FundingSource.is(fundingSourceRef))
 			throw new RuntimeException(getWrongRefErrorMessage(fundingSourceRef, "FundingSource Ref"));
 	}
