@@ -44,7 +44,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getResourceWorkUnits(projectResource.getRef()).getValue());
 		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 		
-		timePeriodCosts.add(new TimePeriodCosts(new OptionalDouble(20.0)));
+		getProject().addExpense(timePeriodCosts, 20.0);
 		assertEquals("wrong expense?", 20.0, timePeriodCosts.getExpense().getValue());
 		assertEquals("wrong total cost?", 100.0 + 20.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
