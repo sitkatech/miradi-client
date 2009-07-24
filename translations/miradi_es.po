@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-24 13:56-0500\n"
+"POT-Creation-Date: 2009-07-24 14:21-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -234,10 +234,10 @@ msgid "Tab|Work Plan"
 msgstr ""
 
 #: miradi/source/org/miradi/views/OperationalPlan/OperationalPlanFundingSourceManagementPanel.java:70
-#: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:46
-msgid "Funding Source"
-msgstr "Fuente de financiamiento"
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:87
+msgid "Funding Sources"
+msgstr "Fuentes de financiamiento "
 
 #: miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
 msgid "Project Resources"
@@ -246,6 +246,11 @@ msgstr ""
 #: miradi/source/org/miradi/views/planning/ConfigurablePlanningTreeManagementPanel.java:45
 msgid "Tab|Custom"
 msgstr ""
+
+#: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:46
+msgid "Funding Source"
+msgstr "Fuente de financiamiento"
 
 #: miradi/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:90
 #, fuzzy
@@ -1906,11 +1911,6 @@ msgstr ""
 "tabla y luego exportar como un archivo delimitado por tabulaciones. "
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:87
-msgid "Funding Sources"
-msgstr "Fuentes de financiamiento "
-
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
 msgid "Funding Sources - The sources of money available to your project."
 msgstr ""
 "Fuentes de financiamiento: las fuentes de dinero disponibles para el "
@@ -2657,7 +2657,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
-#: miradi/source/org/miradi/dialogs/planning/treenodes/ProjectResourceNotSpecifiedNode.java:73
+#: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:74
 msgid "Not Specified"
 msgstr "No especificado"
 
@@ -7906,6 +7906,9 @@ msgid "FieldLabel|12.Location|Location"
 msgstr ""
 
 msgid "FieldLabel|12.MetaWhoTotal|Who"
+msgstr ""
+
+msgid "FieldLabel|12.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|13.FromDiagramFactorId|From"
