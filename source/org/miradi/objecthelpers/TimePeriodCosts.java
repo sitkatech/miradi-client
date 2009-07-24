@@ -270,26 +270,21 @@ public class TimePeriodCosts
 		if (!other.getTotalWorkUnits().equals(getTotalWorkUnits()))
 			return false;
 		
-		if (areNotEqual(other.fundingSourceExpenseMap, fundingSourceExpenseMap))
+		if (!other.fundingSourceExpenseMap.equals(fundingSourceExpenseMap))
 			return false;
 		
-		if (areNotEqual(other.accountingCodeExpenseMap, accountingCodeExpenseMap))
+		if (!other.accountingCodeExpenseMap.equals(accountingCodeExpenseMap))
 			return false;
 		
-		if (areNotEqual(other.fundingSourceWorkUnitMap, fundingSourceWorkUnitMap))
+		if (!other.fundingSourceWorkUnitMap.equals(fundingSourceWorkUnitMap))
 			return false;
 		
-		if (areNotEqual(other.accountingCodeWorkUnitMap, accountingCodeWorkUnitMap))
+		if (!other.accountingCodeWorkUnitMap.equals(accountingCodeWorkUnitMap))
 			return false;
 		
 		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
 	}
 	
-	private boolean areNotEqual(HashMap<ORef, OptionalDouble> map1, HashMap<ORef, OptionalDouble> map2)
-	{
-		return !map1.equals(map2);
-	}
-
 	@Override
 	public int hashCode()
 	{
