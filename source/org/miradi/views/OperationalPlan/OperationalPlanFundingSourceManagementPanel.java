@@ -67,7 +67,7 @@ public class OperationalPlanFundingSourceManagementPanel extends PlanningTreeMan
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Funding Source");
+		return EAM.text("Funding Sources");
 	}	
 	
 	@Override
