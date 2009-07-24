@@ -260,7 +260,7 @@ public class TimePeriodCosts
 		if (areNotEqual(other.accountingCodeWorkUnitMap, accountingCodeWorkUnitMap))
 			return false;
 		
-		return areNotEqual(other.resourceWorkUnitMap, resourceWorkUnitMap);
+		return !areNotEqual(other.resourceWorkUnitMap, resourceWorkUnitMap);
 	}
 	
 	private boolean areNotEqual(HashMap<ORef, OptionalDouble> map1, HashMap<ORef, OptionalDouble> map2)
