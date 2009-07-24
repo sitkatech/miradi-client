@@ -88,7 +88,8 @@ public class OperationalPlanView extends TabbedView
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
-		addNonScrollingTab(fundingSourcePoolManagementPanel);
+		//FIXME remove uncommented code and and related unused code
+		//addNonScrollingTab(fundingSourcePoolManagementPanel);
 		addNonScrollingTab(fundingSourceManagementPanel);
 	}
 	
