@@ -44,6 +44,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -456,6 +457,7 @@ public class LinkCreator
 							   IntermediateResult.getObjectType(), 
 							   ThreatReductionResult.getObjectType(), 
 							   Target.getObjectType(),
+							   HumanWelfareTarget.getObjectType(),
 							   GroupBox.getObjectType(), };  
 		
 		HashSet linkableTypes = new HashSet();

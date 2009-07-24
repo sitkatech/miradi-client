@@ -31,6 +31,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -52,7 +53,7 @@ public class TestLinkCreator extends TestCaseWithProject
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			if (Strategy.is(type) || Cause.is(type) || IntermediateResult.is(type) || ThreatReductionResult.is(type) || Target.is(type) || GroupBox.is(type))
+			if (Strategy.is(type) || Cause.is(type) || IntermediateResult.is(type) || ThreatReductionResult.is(type) || Target.is(type) || HumanWelfareTarget.is(type)|| GroupBox.is(type))
 				assertTrue("not a linkable type?", LinkCreator.isValidLinkableType(type));
 			else
 				assertFalse("is a linkable type?", LinkCreator.isValidLinkableType(type));
