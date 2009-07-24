@@ -24,11 +24,11 @@ import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class ResourceTreeRootNodeWithUnspecifiedNode extends ResourceTreeRootNode
+public class BaseObjectTreeRootNodeWithUnspecifiedNode extends BaseObjectTreeRootNode
 {
-	public ResourceTreeRootNodeWithUnspecifiedNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public BaseObjectTreeRootNodeWithUnspecifiedNode(Project projectToUse, int objectTypeToUse, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse, visibleRowsToUse);
+		super(projectToUse, objectTypeToUse, visibleRowsToUse);
 		
 		rebuild();
 	}
