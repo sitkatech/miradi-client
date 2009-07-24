@@ -227,9 +227,14 @@ public class TimePeriodCosts
 		filterMap(resourceWorkUnitMap, projectResourceRefsToRetain);
 	}
 	
-	public void filterFundingSources(ORefSet fundingSoruceRefsToRetain)
+	public void filterFundingSourcesWorkUnits(ORefSet fundingSoruceRefsToRetain)
 	{
 		filterMap(fundingSourceWorkUnitMap, fundingSoruceRefsToRetain);
+	}
+	
+	public void filterFundingSourcesExpenses(ORefSet fundingSoruceRefsToRetain)
+	{
+		filterMap(fundingSourceExpenseMap, fundingSoruceRefsToRetain);
 	}
 	
 	public void filterMap(HashMap<ORef, OptionalDouble> map, ORefSet refsToRetain)
@@ -245,16 +250,29 @@ public class TimePeriodCosts
 		}
 		
 		updateTotalWorkUnits(map);
+		updateTotalExpenses(map);
 	}
 	
+	private void updateTotalExpenses(HashMap<ORef, OptionalDouble> map)
+	{
+		totalExpenses = getTotal(map);		
+	}
+
 	private void updateTotalWorkUnits(HashMap<ORef, OptionalDouble> map)
 	{
-		totalWorkUnits = new OptionalDouble();
+		totalWorkUnits = getTotal(map);
+	}
+	
+	private OptionalDouble getTotal(HashMap<ORef, OptionalDouble> map)
+	{
+		OptionalDouble totals = new OptionalDouble();
 		Set<ORef> refs = map.keySet();
 		for(ORef  ref: refs)
 		{
-			totalWorkUnits = totalWorkUnits.add(map.get(ref));
+			totals = totals.add(map.get(ref));
 		}
+		
+		return totals;
 	}
 	
 	@Override

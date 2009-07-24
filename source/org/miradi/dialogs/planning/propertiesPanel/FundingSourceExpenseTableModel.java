@@ -20,33 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectTotalCalculator;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableModel
+public class FundingSourceExpenseTableModel extends AbstractExpenseTableModel
 {
-	public ProjectResourceWorkUnitsTableModel(Project projectToUse,	RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public FundingSourceExpenseTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
-	}
-	
-	@Override
-	public boolean isCellEditable(int row, int column)
-	{
-		return false;
 	}
 	
 	@Override
@@ -55,31 +44,16 @@ public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableMo
 		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
 		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals();
 		TimePeriodCosts timePeriodCosts = totalProject.calculateTimePeriodCosts(dateUnit);
-		if (ProjectResource.is(baseObject))
-			timePeriodCosts.filterProjectResources(new ORefSet(baseObject));
-			
 		if (FundingSource.is(baseObject))
-			timePeriodCosts.filterFundingSourcesWorkUnits(new ORefSet(baseObject));
+			timePeriodCosts.filterFundingSourcesExpenses(new ORefSet(baseObject));
 		
 		return calculateValue(timePeriodCosts);
 	}
-
-	@Override
-	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef)	throws Exception
-	{
-		throw new RuntimeException(EAM.text("Project Resource Work Units Table is not editbale."));
-	}
-
+	
 	@Override
 	protected boolean isEditableModel()
 	{
 		return false;
-	}
-	
-	@Override
-	public String getColumnGroupCode(int modelColumn)
-	{
-		return CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE;
 	}
 
 	@Override
@@ -88,5 +62,5 @@ public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableMo
 		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
-	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ProjectResourceWorkUnitsTableModel";
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "FundingSourceExpenseTableModel";
 }
