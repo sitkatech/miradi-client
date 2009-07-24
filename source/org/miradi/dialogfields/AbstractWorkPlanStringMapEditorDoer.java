@@ -59,7 +59,7 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 
 	public static String getTabSpecificModelIdentifier()
 	{
-		return WorkPlanTreeTablePanel.getTabSpecificitModelIdentifier();
+		return WorkPlanTreeTablePanel.getTabSpecificModelIdentifier();
 	}
 
 	abstract protected ObjectDataInputPanel createEditorPanel(TableSettings workPlanTableSettings);

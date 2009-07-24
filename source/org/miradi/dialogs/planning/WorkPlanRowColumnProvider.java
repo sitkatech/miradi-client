@@ -56,7 +56,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 	{
 		try
 		{
-			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificitModelIdentifier());
+			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 			StringMap tableSettingsMap = tableSettings.getTableSettingsMap();
 			String codeListAsString = tableSettingsMap.get(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
