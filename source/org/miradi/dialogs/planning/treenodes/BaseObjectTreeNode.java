@@ -1,4 +1,5 @@
 /* 
+
 Copyright 2005-2009, Foundations of Success, Bethesda, Maryland 
 (on behalf of the Conservation Measures Partnership, "CMP") and 
 Beneficent Technology, Inc. ("Benetech"), Palo Alto, California. 
@@ -20,22 +21,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.treenodes;
 
-import java.util.Vector;
-
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceHiddenNode extends AbstractHiddenRootNode
+public class BaseObjectTreeNode extends AbstractPlanningTreeNode
 {
-	public ProjectResourceHiddenNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public BaseObjectTreeNode(Project projectToUse, CodeList visibleRowsToUse, ORef baseObjectRefToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
+		
+		baseObject = BaseObject.find(projectToUse, baseObjectRefToUse);
+	}
+	
+	public BaseObject getObject()
+	{
+		return baseObject;
 	}
 
-	@Override
-	public void rebuild() throws Exception
-	{
-		children = new Vector();
-		children.add(new ResourceTreeRootNodeWithUnspecifiedNode(getProject(), getVisibleRows()));
-	}
+	private BaseObject baseObject;
 }

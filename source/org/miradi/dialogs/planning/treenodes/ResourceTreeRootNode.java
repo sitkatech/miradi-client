@@ -22,8 +22,8 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -46,11 +46,10 @@ public class ResourceTreeRootNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		ProjectResource[] projectResources = getProject().getResourcePool().getAllProjectResources();
-		for (int index = 0; index < projectResources.length; ++index)
+		ORefList projectResourceRefs = getProject().getResourcePool().getRefList();
+		for (int index = 0; index < projectResourceRefs.size(); ++index)
 		{
-			ProjectResourceTreeProjectResourceNode node = new ProjectResourceTreeProjectResourceNode(getProject(), visibleRows, projectResources[index]);
-			children.add(node);
+			children.add(new BaseObjectTreeNode(getProject(), visibleRows, projectResourceRefs.get(index)));
 		}
 	}
 }

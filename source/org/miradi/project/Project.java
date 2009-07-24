@@ -66,6 +66,7 @@ import org.miradi.objectpools.DiagramFactorLinkPool;
 import org.miradi.objectpools.DiagramFactorPool;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objectpools.FactorLinkPool;
+import org.miradi.objectpools.FundingSourcePool;
 import org.miradi.objectpools.GoalPool;
 import org.miradi.objectpools.GroupBoxPool;
 import org.miradi.objectpools.HumanWelfareTargetPool;
@@ -331,6 +332,11 @@ public class Project
 	public ResourcePool getResourcePool()
 	{
 		return objectManager.getResourcePool();
+	}
+	
+	public FundingSourcePool getFundingSourcePool()
+	{
+		return objectManager.getFundingSourcePool();
 	}
 	
 	public IndicatorPool getIndicatorPool()

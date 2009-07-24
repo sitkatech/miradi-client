@@ -25,9 +25,9 @@ import java.util.Vector;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceHiddenNode extends AbstractHiddenRootNode
+public class FundingSourceHiddenNode extends AbstractHiddenRootNode
 {
-	public ProjectResourceHiddenNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public FundingSourceHiddenNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 	}
@@ -36,6 +36,7 @@ public class ProjectResourceHiddenNode extends AbstractHiddenRootNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
+		//FIXME urgent - funding soource create funding source unspecifid root node
 		children.add(new ResourceTreeRootNodeWithUnspecifiedNode(getProject(), getVisibleRows()));
 	}
 }

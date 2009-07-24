@@ -28,6 +28,7 @@ import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.dialogs.diagram.StrategyPropertiesPanel;
+import org.miradi.dialogs.fundingsource.FundingSourcePropertiesPanel;
 import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
@@ -42,6 +43,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
@@ -119,6 +121,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		resultsChainPropertiesPanel = new ResultsChainPropertiesPanel(getProject(), ORef.INVALID);
 		conceptualModelPropertiesPanel = new ConceptualModelPropertiesPanel(getProject(), ORef.INVALID);
 		projectResourcePropertiesPanel = new ResourcePropertiesPanel(getProject(), BaseId.INVALID);
+		fundingSourcePropertiesPanel = new FundingSourcePropertiesPanel(getProject(), BaseId.INVALID);
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
@@ -138,6 +141,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(resultsChainPropertiesPanel);
 		addPanel(conceptualModelPropertiesPanel);
 		addPanel(projectResourcePropertiesPanel);
+		addPanel(fundingSourcePropertiesPanel);
 		addPanel(blankPropertiesPanel);
 	}
 	
@@ -216,6 +220,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if (ProjectResource.is(objectType))
 			return projectResourcePropertiesPanel;
 		
+		if (FundingSource.is(objectType))
+			return fundingSourcePropertiesPanel;
+		
 		return blankPropertiesPanel;
 	}
 
@@ -282,5 +289,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private ResultsChainPropertiesPanel resultsChainPropertiesPanel;
 	private ConceptualModelPropertiesPanel conceptualModelPropertiesPanel;
 	private ResourcePropertiesPanel projectResourcePropertiesPanel;
+	private FundingSourcePropertiesPanel fundingSourcePropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

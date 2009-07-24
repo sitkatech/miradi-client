@@ -83,11 +83,14 @@ public class OperationalPlanView extends TabbedView
 		resourceManagementPanel = OperationalPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
 		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
+		fundingSourceManagementPanel = OperationalPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
 		
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
+		//FIXME urgent - funding source tree uncomment and add after the management is done.
+		//addNonScrollingTab(fundingSourceManagementPanel);
 	}
 	
 	@Override
@@ -104,6 +107,9 @@ public class OperationalPlanView extends TabbedView
 		
 		fundingSourcePoolManagementPanel.dispose();
 		fundingSourcePoolManagementPanel = null;
+		
+		fundingSourceManagementPanel.dispose();
+		fundingSourceManagementPanel = null;
 	}
 
 	@Override
@@ -163,4 +169,5 @@ public class OperationalPlanView extends TabbedView
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
 	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
+	private PlanningTreeManagementPanel fundingSourceManagementPanel;
 }
