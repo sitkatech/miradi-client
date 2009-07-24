@@ -19,52 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
-import java.text.ParseException;
-
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.main.AppPreferences;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.Assignment;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.utils.OptionalDouble;
 
-public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
+public class ExpenseAmountsTableModel extends AbstractExpenseTableModel
 {
 	public ExpenseAmountsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
-	}
-	
-	@Override
-	public boolean isCurrencyColumn(int column)
-	{
-		return true;
-	}
-	
-	@Override
-	public Color getCellBackgroundColor(int column)
-	{
-		DateUnit dateUnit = getDateUnit(column);
-		return AppPreferences.getExpenseAmountBackgroundColor(dateUnit);
-	}
-	
-	@Override
-	public String getColumnGroupCode(int modelColumn)
-	{
-		return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
-	}
-	
-	@Override
-	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
-	{
-		return timePeriodCosts.getExpense();
 	}
 	
 	@Override
@@ -73,34 +35,11 @@ public class ExpenseAmountsTableModel extends AssignmentDateUnitsTableModel
 		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
-	protected boolean isAssignmentForModel(Assignment assignment)
-	{
-		return ExpenseAssignment.is(assignment);
-	}
-
 	@Override
 	protected boolean isEditableModel()
 	{
 		return true;
 	}
 	
-	@Override
-	protected String getAssignmentsTag()
-	{
-		 return BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS;
-	}
-	
-	@Override
-	protected int getAssignmentType()
-	{
-		return ExpenseAssignment.getObjectType();
-	}
-	
-	@Override
-	protected CommandSetObjectData createAppendAssignmentCommand(BaseObject baseObjectForRowColumn, ORef assignmentRef) throws ParseException
-	{
-		return CommandSetObjectData.createAppendORefCommand(baseObjectForRowColumn, getAssignmentsTag(), assignmentRef);
-	}
-
 	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "ExpenseAmountsTableModel";
 }
