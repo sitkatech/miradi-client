@@ -224,14 +224,19 @@ public class TimePeriodCosts
 	
 	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
 	{
-		if (projectResourceRefsToRetain.size() == 0)
+		filterMap(resourceWorkUnitMap, projectResourceRefsToRetain);
+	}
+	
+	public void filterMap(HashMap<ORef, OptionalDouble> map, ORefSet refsToRetain)
+	{
+		if (refsToRetain.size() == 0)
 			return;
 		
-		Set<ORef> refsToBeRemoved = getResourceRefSet();
-		refsToBeRemoved.removeAll(projectResourceRefsToRetain);
-		for(ORef projectResourceRefToRemove : refsToBeRemoved)
+		Set<ORef> refsToBeRemoved = new HashSet<ORef>(map.keySet());
+		refsToBeRemoved.removeAll(refsToRetain);
+		for(ORef refToRemove : refsToBeRemoved)
 		{
-			resourceWorkUnitMap.remove(projectResourceRefToRemove);
+			map.remove(refToRemove);
 		}
 		
 		updateTotalWorkUnits();
