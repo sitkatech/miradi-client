@@ -54,7 +54,7 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		addExpenses(expenseToUse);
+		addExpensesToTotal(expenseToUse);
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	OptionalDouble workUnits)
@@ -62,15 +62,15 @@ public class TimePeriodCosts
 		this();
 		
 		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
-		addTotalWorkUnits(workUnits);
+		addTotalWorkUnitsToTotal(workUnits);
 		addRefToMap(resourceWorkUnitMap, resourceRef, workUnits);
 		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
-		addExpenses(timePeriodCosts);
-		addTotalWorkUnits(timePeriodCosts);
+		addExpensesToTotal(timePeriodCosts);
+		addTotalWorkUnitsToTotal(timePeriodCosts);
 		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
 		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
 	}
@@ -93,12 +93,12 @@ public class TimePeriodCosts
 		mapToUpdate.put(refToAdd, workUnitsToAdd);
 	}
 	
-	private void addTotalWorkUnits(TimePeriodCosts timePeriodCosts)
+	private void addTotalWorkUnitsToTotal(TimePeriodCosts timePeriodCosts)
 	{
-		addTotalWorkUnits(timePeriodCosts.getTotalWorkUnits());
+		addTotalWorkUnitsToTotal(timePeriodCosts.getTotalWorkUnits());
 	}
 	
-	private void addTotalWorkUnits(OptionalDouble totalWorkUnitsToAdd)
+	private void addTotalWorkUnitsToTotal(OptionalDouble totalWorkUnitsToAdd)
 	{
 		totalWorkUnits = totalWorkUnits.add(totalWorkUnitsToAdd);	
 	}
@@ -108,12 +108,12 @@ public class TimePeriodCosts
 		return totalWorkUnits;
 	}
 	
-	private void addExpenses(TimePeriodCosts timePeriodCostsToUse)
+	private void addExpensesToTotal(TimePeriodCosts timePeriodCostsToUse)
 	{
-		addExpenses(timePeriodCostsToUse.getExpense());
+		addExpensesToTotal(timePeriodCostsToUse.getExpense());
 	}
 
-	private void addExpenses(OptionalDouble expense)
+	private void addExpensesToTotal(OptionalDouble expense)
 	{
 		totalExpenses = totalExpenses.add(expense);
 	}
@@ -181,12 +181,12 @@ public class TimePeriodCosts
 
 	private void mergeAllExpenseMapsInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
-		addExpenses(timePeriodCostsToMergeAdd);
+		addExpensesToTotal(timePeriodCostsToMergeAdd);
 	}
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
-		addTotalWorkUnits(timePeriodCostsToMerge);
+		addTotalWorkUnitsToTotal(timePeriodCostsToMerge);
 		mergeWorkUnitMapInPlace(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
 		mergeWorkUnitMapInPlace(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
 	}
