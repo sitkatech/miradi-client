@@ -34,7 +34,7 @@ public class ProjectResourceNotSpecifiedNode extends AbstractPlanningTreeNode
 	{
 		super(projectToUse, visibleRowsToUse);
 		
-		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager(), BaseId.INVALID);
+		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager());
 		rebuild();
 	}
 	
@@ -50,9 +50,9 @@ public class ProjectResourceNotSpecifiedNode extends AbstractPlanningTreeNode
 	
 	public class UnspecifiedProjectResource extends BaseObject
 	{
-		public UnspecifiedProjectResource(ObjectManager objectManagerToUse, BaseId idToUse)
+		public UnspecifiedProjectResource(ObjectManager objectManagerToUse)
 		{
-			super(objectManagerToUse, idToUse);
+			super(objectManagerToUse, BaseId.INVALID);
 		}
 
 		@Override
