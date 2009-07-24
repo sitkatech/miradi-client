@@ -24,17 +24,17 @@ import java.util.Vector;
 
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 //FIXME urgent - simplify this and ProjectResource tree root node class to pass in type of pool 
 public class FundingSourceTreeRootNode extends AbstractPlanningTreeNode
 {
-	public FundingSourceTreeRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public FundingSourceTreeRootNode(Project projectToUse, int objectTypeToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
-		
+	
+		objectType = objectTypeToUse;
 		rebuild();
 	}
 	
@@ -48,10 +48,12 @@ public class FundingSourceTreeRootNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		ORefList fundingSourceRefs = getProject().getPool(FundingSource.getObjectType()).getRefList();
-		for (int index = 0; index < fundingSourceRefs.size(); ++index)
+		ORefList refs = getProject().getPool(objectType).getRefList();
+		for (int index = 0; index < refs.size(); ++index)
 		{
-			children.add(new BaseObjectTreeNode(getProject(), visibleRows, fundingSourceRefs.get(index)));
+			children.add(new BaseObjectTreeNode(getProject(), visibleRows, refs.get(index)));
 		}
 	}
+	
+	private int objectType;
 }

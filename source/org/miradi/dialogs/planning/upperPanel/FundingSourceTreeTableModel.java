@@ -24,6 +24,7 @@ import org.miradi.dialogs.planning.FundingSourceRowColumnProvider;
 import org.miradi.dialogs.planning.treenodes.FundingSourceHiddenNode;
 import org.miradi.dialogs.planning.treenodes.FundingSourceTreeRootNode;
 import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -60,7 +61,7 @@ public class FundingSourceTreeTableModel extends ExportablePlanningTreeTableMode
 	
 	private static TreeTableNode createFundingSourceRootNode(Project project) throws Exception
 	{
-		return new FundingSourceTreeRootNode(project, getFundingSourceRows());
+		return new FundingSourceTreeRootNode(project, FundingSource.getObjectType(), getFundingSourceRows());
 	}
 	
 	private static TreeTableNode createHiddenFundingSourceRootNode(Project project) throws Exception
