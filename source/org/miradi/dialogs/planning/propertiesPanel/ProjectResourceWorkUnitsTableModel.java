@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectTotalCalculator;
@@ -56,6 +57,9 @@ public class ProjectResourceWorkUnitsTableModel extends AbstractWorkUnitsTableMo
 		TimePeriodCosts timePeriodCosts = totalProject.calculateTimePeriodCosts(dateUnit);
 		if (ProjectResource.is(baseObject))
 			timePeriodCosts.filterProjectResources(new ORefSet(baseObject));
+			
+		if (FundingSource.is(baseObject))
+			timePeriodCosts.filterFundingSources(new ORefSet(baseObject));
 		
 		return calculateValue(timePeriodCosts);
 	}
