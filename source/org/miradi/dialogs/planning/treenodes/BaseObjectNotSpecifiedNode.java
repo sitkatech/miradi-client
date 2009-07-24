@@ -23,18 +23,17 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class ProjectResourceNotSpecifiedNode extends AbstractPlanningTreeNode
+public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 {
-	public ProjectResourceNotSpecifiedNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public BaseObjectNotSpecifiedNode(Project projectToUse, int objectType, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		
-		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager());
+		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager(), objectType);
 		rebuild();
 	}
 	
@@ -50,21 +49,23 @@ public class ProjectResourceNotSpecifiedNode extends AbstractPlanningTreeNode
 	
 	public class UnspecifiedProjectResource extends BaseObject
 	{
-		public UnspecifiedProjectResource(ObjectManager objectManagerToUse)
+		public UnspecifiedProjectResource(ObjectManager objectManagerToUse, int objectTypeToUse)
 		{
 			super(objectManagerToUse, BaseId.INVALID);
+			
+			objectType = objectTypeToUse;
 		}
 
 		@Override
 		public int getType()
 		{
-			return ProjectResource.getObjectType();
+			return objectType;
 		}
 
 		@Override
 		public String getTypeName()
 		{
-			return ProjectResource.OBJECT_NAME;
+			return "";
 		}
 		
 		@Override
@@ -72,6 +73,8 @@ public class ProjectResourceNotSpecifiedNode extends AbstractPlanningTreeNode
 		{
 			return EAM.text("Not Specified");
 		}
+		
+		private int objectType;
 	}
 	
 	private UnspecifiedProjectResource unspecifiedResource;

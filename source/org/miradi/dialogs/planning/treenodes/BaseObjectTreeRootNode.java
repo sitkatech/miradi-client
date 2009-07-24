@@ -29,11 +29,11 @@ import org.miradi.utils.CodeList;
  
 public class BaseObjectTreeRootNode extends AbstractPlanningTreeNode
 {
-	public BaseObjectTreeRootNode(Project projectToUse, int objectTypeToUse, CodeList visibleRowsToUse) throws Exception
+	public BaseObjectTreeRootNode(Project projectToUse, int childObjectTypeToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 	
-		objectType = objectTypeToUse;
+		childObjectType = childObjectTypeToUse;
 		rebuild();
 	}
 	
@@ -47,12 +47,17 @@ public class BaseObjectTreeRootNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		ORefList refs = getProject().getPool(objectType).getRefList();
+		ORefList refs = getProject().getPool(getChildObjectType()).getRefList();
 		for (int index = 0; index < refs.size(); ++index)
 		{
 			children.add(new BaseObjectTreeNode(getProject(), visibleRows, refs.get(index)));
 		}
 	}
 	
-	private int objectType;
+	protected int getChildObjectType()
+	{
+		return childObjectType;
+	}
+	
+	private int childObjectType;
 }
