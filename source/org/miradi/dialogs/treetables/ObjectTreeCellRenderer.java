@@ -33,6 +33,7 @@ import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.icons.ExpenseAssignmentIcon;
+import org.miradi.icons.FundingSourceIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.GroupBoxIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
@@ -53,6 +54,7 @@ import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
@@ -147,6 +149,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		projectResourceRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(projectResourceRenderer, new ProjectResourceIcon(), getPlainFont());
+		
+		fundingSourceRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(fundingSourceRenderer, new FundingSourceIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -211,6 +216,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = expenseAssignmentRenderer;
 		else if(ProjectResource.is(node.getType()))
 			renderer = projectResourceRenderer;
+		else if(FundingSource.is(node.getType()))
+			renderer = fundingSourceRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -299,5 +306,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer assignmentRenderer;
 	private VariableHeightTreeCellRenderer expenseAssignmentRenderer;
 	private VariableHeightTreeCellRenderer projectResourceRenderer;
+	private VariableHeightTreeCellRenderer fundingSourceRenderer;
 	
 }

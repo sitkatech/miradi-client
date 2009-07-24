@@ -89,8 +89,7 @@ public class OperationalPlanView extends TabbedView
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
 		addNonScrollingTab(fundingSourcePoolManagementPanel);
-		//FIXME urgent - funding source tree uncomment and add after the management is done.
-		//addNonScrollingTab(fundingSourceManagementPanel);
+		addNonScrollingTab(fundingSourceManagementPanel);
 	}
 	
 	@Override

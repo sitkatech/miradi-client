@@ -26,9 +26,9 @@ import org.miradi.utils.CodeList;
 
 public class BaseObjectTreeRootNodeWithUnspecifiedNode extends BaseObjectTreeRootNode
 {
-	public BaseObjectTreeRootNodeWithUnspecifiedNode(Project projectToUse, int objectTypeToUse, CodeList visibleRowsToUse) throws Exception
+	public BaseObjectTreeRootNodeWithUnspecifiedNode(Project projectToUse, int childObjectTypeToUse, CodeList visibleRowsToUse) throws Exception
 	{
-		super(projectToUse, objectTypeToUse, visibleRowsToUse);
+		super(projectToUse, childObjectTypeToUse, visibleRowsToUse);
 		
 		rebuild();
 	}
@@ -38,7 +38,7 @@ public class BaseObjectTreeRootNodeWithUnspecifiedNode extends BaseObjectTreeRoo
 	{
 		super.rebuild();
 		
-		children.add(new ProjectResourceNotSpecifiedNode(getProject(), getVisibleRows()));
+		children.add(new BaseObjectNotSpecifiedNode(getProject(), getChildObjectType(), getVisibleRows()));
 	}
 	
 	@Override
