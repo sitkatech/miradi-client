@@ -44,6 +44,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -181,7 +182,10 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
-		if(didAffectProjectResources(event))
+		if(didAffectType(event, ProjectResource.getObjectType()))
+			return true;
+		
+		if(didAffectType(event, FundingSource.getObjectType()))
 			return true;
 		
 		if(PlanningView.isRowOrColumnChangingCommand(event))
@@ -193,30 +197,30 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if(didAffectTaskInTree(event))
 			return true;
 		
-		if (didAffectIndicatorInTree(event))
+		if(didAffectIndicatorInTree(event))
 			return true;
 		
-		if (didAffectRelevancyInTree(event))
+		if(didAffectRelevancyInTree(event))
 			return true;
 		
-		if (isTargetModeChange(event))
+		if(isTargetModeChange(event))
 			return true;
 		
-		if (didAffectMeasurementInTree(event))
+		if(didAffectMeasurementInTree(event))
 			return true;
 		
-		if (didAffectTableSettingsMapForBudgetColumns(event))
+		if(didAffectTableSettingsMapForBudgetColumns(event))
 			return true;
 		
 		return false;
 	}
 	
-	private boolean didAffectProjectResources(CommandExecutedEvent event)
+	private boolean didAffectType(CommandExecutedEvent event, int objectType)
 	{
-		if (event.isCreateCommandForThisType(ProjectResource.getObjectType()))
+		if (event.isCreateCommandForThisType(objectType))
 			return true;
 		
-		return event.isDeleteCommandForThisType(ProjectResource.getObjectType());
+		return event.isDeleteCommandForThisType(objectType);
 	}
 
 	private boolean didAffectResourceAssignmentsAndExpenseAssignments(CommandExecutedEvent event)
