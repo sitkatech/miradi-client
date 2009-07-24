@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-24 15:40-0500\n"
+"POT-Creation-Date: 2009-07-24 17:48-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -778,16 +778,16 @@ msgstr "视图层 \t\t"
 msgid "Layers"
 msgstr "层 \t\t"
 
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:111
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:112
 msgid "Can't link an item to itself"
 msgstr "不能将条目链接到其本身 \t\t"
 
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:112
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:121
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:113
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:122
 msgid "Can't Create Link"
 msgstr "不能创建链接 \t\t"
 
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:121
 msgid "Can't link a group to an item it contains"
 msgstr "不能将组链接到其所包含的条目 \t\t"
 
@@ -2364,7 +2364,7 @@ msgstr "Error"
 msgid "--Select a classification--"
 msgstr "--选定一个类别-- \t\t"
 
-#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:353
+#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:371
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
@@ -6529,7 +6529,7 @@ msgstr ""
 msgid "Show: "
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:261
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:264
 #, fuzzy
 msgid "[Error]"
 msgstr "[Error]"
@@ -7719,6 +7719,9 @@ msgstr "类别编码 \t\t"
 
 msgid "FieldLabel|15.Comments|Comments"
 msgstr "评论 \t\t"
+
+msgid "FieldLabel|16.FundingSource|Funding Source"
+msgstr ""
 
 msgid "FieldLabel|16.Label|Source Name"
 msgstr "来源名称 \t\t"

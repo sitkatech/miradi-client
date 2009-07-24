@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-24 15:40-0500\n"
+"POT-Creation-Date: 2009-07-24 17:48-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -809,16 +809,16 @@ msgstr "Lihat Lapisan "
 msgid "Layers"
 msgstr "Lapisan "
 
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:111
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:112
 msgid "Can't link an item to itself"
 msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:112
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:121
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:113
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:122
 msgid "Can't Create Link"
 msgstr "Tidak bisa Membuat Tautan "
 
-#: miradi/source/org/miradi/views/diagram/LinkCreator.java:120
+#: miradi/source/org/miradi/views/diagram/LinkCreator.java:121
 msgid "Can't link a group to an item it contains"
 msgstr "Tidak bisa menautkan grup ke butir yang dikandungnya "
 
@@ -2481,7 +2481,7 @@ msgstr "Error"
 msgid "--Select a classification--"
 msgstr "--Pilih klasifikasi-- "
 
-#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:353
+#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:371
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
@@ -6707,7 +6707,7 @@ msgstr ""
 msgid "Show: "
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:261
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:264
 #, fuzzy
 msgid "[Error]"
 msgstr "[Error]"
@@ -7905,6 +7905,9 @@ msgstr "Kode Kategori "
 
 msgid "FieldLabel|15.Comments|Comments"
 msgstr "Komentar "
+
+msgid "FieldLabel|16.FundingSource|Funding Source"
+msgstr ""
 
 msgid "FieldLabel|16.Label|Source Name"
 msgstr "Nama Sumber "
