@@ -349,11 +349,10 @@ public class TimePeriodCosts
 	}
 	
 	private OptionalDouble totalExpenses;
-	private OptionalDouble totalWorkUnits;
-	
 	private HashMap<ORef, OptionalDouble> fundingSourceExpenseMap;
 	private HashMap<ORef, OptionalDouble> accountingCodeExpenseMap;
 	
+	private OptionalDouble totalWorkUnits;
 	private HashMap<ORef, OptionalDouble> resourceWorkUnitMap;
 	private HashMap<ORef, OptionalDouble> fundingSourceWorkUnitMap;
 	private HashMap<ORef, OptionalDouble> accountingCodeWorkUnitMap;
