@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.FundingSource;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
 public class FundingSourceRowColumnProvider implements RowColumnProvider
@@ -28,9 +29,9 @@ public class FundingSourceRowColumnProvider implements RowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
+				FundingSource.TAG_CODE,
 				FundingSource.TAG_LABEL,
-				//FIXME urgent - funding source tree - use this tag or create a new one
-				//CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
+				CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
 		});
 		
 	}
