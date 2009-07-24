@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -36,6 +37,6 @@ public class ProjectResourceHiddenNode extends AbstractHiddenRootNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		children.add(new ResourceTreeRootNodeWithUnspecifiedNode(getProject(), getVisibleRows()));
+		children.add(new BaseObjectTreeRootNodeWithUnspecifiedNode(getProject(), ProjectResource.getObjectType(), getVisibleRows()));
 	}
 }

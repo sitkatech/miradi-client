@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.treenodes;
 
 import java.util.Vector;
 
+import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -36,7 +37,6 @@ public class FundingSourceHiddenNode extends AbstractHiddenRootNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		//FIXME urgent - funding soource create funding source unspecifid root node
-		children.add(new ResourceTreeRootNodeWithUnspecifiedNode(getProject(), getVisibleRows()));
+		children.add(new BaseObjectTreeRootNodeWithUnspecifiedNode(getProject(), FundingSource.getObjectType(), getVisibleRows()));
 	}
 }
