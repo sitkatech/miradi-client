@@ -28,9 +28,9 @@ import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
 //FIXME urgent - simplify this and ProjectResource tree root node class to pass in type of pool 
-public class FundingSourceTreeRootNode extends AbstractPlanningTreeNode
+public class BaseObjectTreeRootNode extends AbstractPlanningTreeNode
 {
-	public FundingSourceTreeRootNode(Project projectToUse, int objectTypeToUse, CodeList visibleRowsToUse) throws Exception
+	public BaseObjectTreeRootNode(Project projectToUse, int objectTypeToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 	
