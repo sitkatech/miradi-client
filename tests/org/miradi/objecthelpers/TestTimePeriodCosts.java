@@ -119,13 +119,24 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	public void testFundingSourceWorkUnitsMapBasics() throws Exception
 	{
-		assertEquals("funding source should be empty?", 0, new TimePeriodCosts().getFundingSourceRefSet().size());
+		assertEquals("funding source should be empty?", 0, new TimePeriodCosts().getFundingSourceWorkUnitsRefSet().size());
 		
 		ORef fundingSourceRef = createFundingSource();
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, new OptionalDouble(10.0));
 		OptionalDouble retrievedWorkUnits = timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef);
 		assertTrue("funding source workUnits should have value?", retrievedWorkUnits.hasValue());
 		assertEquals("incorrect workUnits for fundingSource?", 10.0, retrievedWorkUnits.getValue());
+	}
+	
+	public void testFundingSourceExpenseMapBasics() throws Exception
+	{
+		assertEquals("funding source expense map should be empty?", 0, new TimePeriodCosts().getFundingSourceExpensesRefSet().size());
+		
+		ORef fundingSourceRef = createFundingSource();
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(fundingSourceRef, new OptionalDouble(10.0));
+		OptionalDouble retrievedExpenses = timePeriodCosts.getFundingSourceExpenses(fundingSourceRef);
+		assertTrue("funding source expenses should have value?", retrievedExpenses.hasValue());
+		assertEquals("incorrect expenses for fundingSource?", 10.0, retrievedExpenses.getValue());
 	}
 	
 	public void testTotalWorkUnitsAfterMergeAllProjectResourcesInPlace() throws Exception

@@ -46,7 +46,7 @@ public class ExpenseAssignment extends Assignment
 	@Override
 	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
-		return new TimePeriodCosts(quantity);
+		return new TimePeriodCosts(getFundingSourceRef(), quantity);
 	}
 	
 	public ORef getFundingSourceRef()
