@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 10:11-0500\n"
+"POT-Creation-Date: 2009-07-27 11:04-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -191,12 +191,6 @@ msgstr ""
 msgid "Tab|Work Plan"
 msgstr ""
 
-#: miradi/source/org/miradi/views/OperationalPlan/OperationalPlanFundingSourceManagementPanel.java:70
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:87
-msgid "Funding Sources"
-msgstr ""
-
 #: miradi/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
 msgid "Project Resources"
 msgstr ""
@@ -258,6 +252,12 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:47
 msgid "Tab|Monitoring Plan"
+msgstr ""
+
+#: miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:87
+msgid "Funding Sources"
 msgstr ""
 
 #: miradi/source/org/miradi/views/noproject/CopyProject.java:38
