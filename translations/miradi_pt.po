@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 12:58-0500\n"
+"POT-Creation-Date: 2009-07-27 13:20-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6190,11 +6190,6 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:118
-msgid ""
-"This model is not for a single assignment and has no assignment information"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
 msgstr ""
@@ -6224,6 +6219,11 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/planning/AbstractFundingSourceBudgetDetailsTableModel.java:106
+msgid ""
+"This model is not for a single assignment and has no assignment information"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectTreeRootNodeWithUnspecifiedNode.java:47
 msgid "Project Totals"
 msgstr ""
@@ -6232,7 +6232,7 @@ msgstr ""
 msgid "Show: "
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:264
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:266
 msgid "[Error]"
 msgstr ""
 
