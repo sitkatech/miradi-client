@@ -29,7 +29,6 @@ import java.util.Vector;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -223,7 +222,6 @@ public class MeglerArranger
 	private Vector<DiagramFactorClump> buildClumps(Vector<DiagramFactor> diagramFactors)
 	{
 		Vector<DiagramFactorClump> clumps = new Vector<DiagramFactorClump>();
-		HashSet<DiagramFactor> alreadyClumpedGroups = new HashSet<DiagramFactor>();
 		
 		for(DiagramFactor diagramFactor : diagramFactors)
 		{
@@ -232,18 +230,20 @@ public class MeglerArranger
 			if(group != null)
 				diagramFactorMaybeGroup = group;
 
-			if(!alreadyClumpedGroups.contains(diagramFactorMaybeGroup))
-				clumps.add(new DiagramFactorClump(diagram, diagramFactorMaybeGroup));
+			DiagramFactorClump newClump = new DiagramFactorClump(diagram, diagramFactorMaybeGroup);
+			if(!clumps.contains(newClump))
+				clumps.add(newClump);
 		}
 		return clumps;
 	}
 
-	private DiagramFactorClump findMostActiveFactorOrGroup(Vector<DiagramFactorClump> clumps)
+	private DiagramFactorClump findMostActiveClump(Vector<DiagramFactorClump> clumps)
 	{
 		DiagramFactorClump mostActive = null;
 		for(DiagramFactorClump clump : clumps)
 		{
-			if(mostActive == null || clump.getTotalLinkCount() > mostActive.getTotalLinkCount())
+			int thisLinkCount = clump.getTotalLinkCount();
+			if(mostActive == null || thisLinkCount > mostActive.getTotalLinkCount())
 				mostActive = clump;
 		}
 		
@@ -277,13 +277,59 @@ public class MeglerArranger
 	
 	private void rearrangeClumps(Vector<DiagramFactorClump> strategyClumps, Vector<DiagramFactorClump> threatClumps, Vector<DiagramFactorClump> targetClumps)
 	{
-		DiagramFactorClump mostActiveClump = findMostActiveFactorOrGroup(threatClumps);
-		if(mostActiveClump == null)
-			return;
+		Vector<DiagramFactorClump> arrangedStrategyClumps = new Vector<DiagramFactorClump>();
+		Vector<DiagramFactorClump> arrangedThreatClumps = new Vector<DiagramFactorClump>();
+		Vector<DiagramFactorClump> arrangedTargetClumps = new Vector<DiagramFactorClump>();
 		
-		EAM.logVerbose("Most active threat: " + mostActiveClump.toString());
-		int desiredPosition = Math.max(mostActiveClump.getIncomingLinks().size(), mostActiveClump.getOutgoingLinks().size());
-		EAM.logVerbose("position: " + desiredPosition);
+		while(threatClumps.size() > 0)
+		{
+			DiagramFactorClump mostActiveThreatClump = findMostActiveClump(threatClumps);
+			
+			arrangedThreatClumps.add(mostActiveThreatClump);
+			threatClumps.remove(mostActiveThreatClump);
+
+			addRelatedToArrangedList(arrangedStrategyClumps, strategyClumps, mostActiveThreatClump, FactorLink.FROM);
+			addRelatedToArrangedList(arrangedTargetClumps, targetClumps, mostActiveThreatClump, FactorLink.TO);
+		}
+		
+		arrangedStrategyClumps.addAll(strategyClumps);
+		arrangedTargetClumps.addAll(targetClumps);
+		
+		strategyClumps.clear();
+		strategyClumps.addAll(arrangedStrategyClumps);
+		threatClumps.clear();
+		threatClumps.addAll(arrangedThreatClumps);
+		targetClumps.clear();
+		targetClumps.addAll(arrangedTargetClumps);
+	}
+	
+	private void addRelatedToArrangedList(Vector<DiagramFactorClump> arranged, Vector<DiagramFactorClump> candidatesToInsert, DiagramFactorClump relatedTo, int direction)
+	{
+		Set<DiagramLink> links = relatedTo.getLinks(direction);
+		for(DiagramLink diagramLink : links)
+		{
+			DiagramFactor other = diagramLink.getDiagramFactor(direction);
+			DiagramFactorClump clump = findClump(candidatesToInsert, other);
+			if(clump == null)
+				continue;
+			arranged.add(clump);
+			candidatesToInsert.remove(clump);
+		}
+		
+	}
+	
+	private DiagramFactorClump findClump(Vector<DiagramFactorClump> clumpsToSearch, DiagramFactor diagramFactorOrGroupToFind)
+	{
+		for(DiagramFactorClump diagramFactorClump : clumpsToSearch)
+		{
+			for(int i = 0; i < diagramFactorClump.getRowCount(); ++i)
+			{
+				if(diagramFactorClump.getDiagramFactor(i).equals(diagramFactorOrGroupToFind))
+					return diagramFactorClump;
+			}
+		}
+		
+		return null;
 	}
 	
 	private void moveFactorClumpsToFinalLocations(Vector<DiagramFactorClump> threatClumps, int x, int topY) throws Exception
@@ -297,6 +343,7 @@ public class MeglerArranger
 				DiagramFactor diagramFactor = threatClump.getDiagramFactor(i);
 
 				Point newLocation = new Point(x, y);
+				
 				helper.setDiagramFactorLocation(diagramFactor.getDiagramFactorId(), newLocation);
 				
 				int height = diagramFactor.getSize().height;
@@ -348,12 +395,12 @@ public class MeglerArranger
 	}
 
 	private static final int UNLINKED_COLUMN_X = 30;
-	private static final int STRATEGY_COLUMN_X = 240;
-	private static final int THREAT_COLUMN_X = 450;
-	private static final int TARGET_COLUMN_X = 660;
+	private static final int STRATEGY_COLUMN_X = 330;
+	private static final int THREAT_COLUMN_X = 630;
+	private static final int TARGET_COLUMN_X = 930;
 	
-	private static final int VERTICAL_CUSHION = 30;
-	private static final int TOP_Y = VERTICAL_CUSHION;
+	private static final int VERTICAL_CUSHION = 45;
+	private static final int TOP_Y = VERTICAL_CUSHION * 2;
 	private static final int DELTA_Y = 60 + VERTICAL_CUSHION;
 
 	private DiagramObject diagram;

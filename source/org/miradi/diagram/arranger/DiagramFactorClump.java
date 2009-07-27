@@ -38,8 +38,8 @@ public class DiagramFactorClump
 	{
 		diagram = diagramToUse;
 		diagramFactorMaybeGroup = diagramFactorOrGroup;
-		incomingLinks = getLinks(FactorLink.TO);
-		outgoingLinks = getLinks(FactorLink.FROM);
+		incomingLinks = findLinks(FactorLink.TO);
+		outgoingLinks = findLinks(FactorLink.FROM);
 	}
 	
 	public int getTotalLinkCount()
@@ -57,6 +57,15 @@ public class DiagramFactorClump
 	public Set<DiagramLink> getIncomingLinks()
 	{
 		return incomingLinks;
+	}
+	
+	public Set<DiagramLink> getLinks(int direction)
+	{
+		if(direction == FactorLink.FROM)
+			return incomingLinks;
+		if(direction == FactorLink.TO)
+			return outgoingLinks;
+		throw new RuntimeException("Unrecognized direction: " + direction);
 	}
 	
 	public int getRowCount()
@@ -77,26 +86,26 @@ public class DiagramFactorClump
 		return DiagramFactor.find(getProject(), ref);
 	}
 
-	private Set<DiagramLink> getLinks(int direction)
+	private Set<DiagramLink> findLinks(int direction)
 	{
 		if(isGroup())
-			return getLinksForGroupAndChildren(direction);
+			return findLinksForGroupAndChildren(direction);
 		
-		return getLinksForPlainDiagramFactor(diagramFactorMaybeGroup, direction);
+		return findLinksForPlainDiagramFactor(diagramFactorMaybeGroup, direction);
 	}
 
-	private Set<DiagramLink> getLinksForGroupAndChildren(int direction)
+	private Set<DiagramLink> findLinksForGroupAndChildren(int direction)
 	{
 		HashSet<DiagramLink> links = new HashSet<DiagramLink>();
 		Project project = getProject();
 
-		links.addAll(getLinksForPlainDiagramFactor(diagramFactorMaybeGroup, direction));
+		links.addAll(findLinksForPlainDiagramFactor(diagramFactorMaybeGroup, direction));
 
 		ORefList childRefs = diagramFactorMaybeGroup.getGroupBoxChildrenRefs();
 		for(int i = 0; i < childRefs.size(); ++i)
 		{
 			DiagramFactor child = DiagramFactor.find(project, childRefs.get(i));
-			links.addAll(getLinksForPlainDiagramFactor(child, direction));
+			links.addAll(findLinksForPlainDiagramFactor(child, direction));
 		}
 		
 		return links;
@@ -107,7 +116,7 @@ public class DiagramFactorClump
 		return diagram.getProject();
 	}
 
-	private Set<DiagramLink> getLinksForPlainDiagramFactor(DiagramFactor diagramFactor, int direction)
+	private Set<DiagramLink> findLinksForPlainDiagramFactor(DiagramFactor diagramFactor, int direction)
 	{
 		HashSet<DiagramLink> links = new HashSet<DiagramLink>();
 
@@ -131,7 +140,7 @@ public class DiagramFactorClump
 		if(diagramLink.isBidirectional() && diagramLink.isToOrFrom(diagramFactor))
 			return true;
 		
-		if(diagramFactor.getRef().equals(diagramLink.getDiagramFactor(direction)))
+		if(diagramFactor.getRef().equals(diagramLink.getDiagramFactorRef(direction)))
 			return true;
 		
 		return false;
