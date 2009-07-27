@@ -57,6 +57,12 @@ abstract public class AbstractFundingSourceBudgetDetailsTableModel extends Assig
 		
 		return calculateValue(timePeriodCosts);
 	}
+
+	@Override
+	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
+	{
+		return timePeriodCosts.calculateTotalCost(getProject());
+	}
 		
 	@Override
 	public boolean isCurrencyColumn(int column)
