@@ -71,6 +71,12 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 		@Override
 		public String getLabel()
 		{
+			return toString();
+		}
+		
+		@Override
+		public String toString()
+		{
 			return EAM.text("Not Specified");
 		}
 		
