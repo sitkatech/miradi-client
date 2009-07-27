@@ -43,7 +43,6 @@ import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
-import org.miradi.dialogs.fundingsource.FundingSourcePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -82,14 +81,11 @@ public class OperationalPlanView extends TabbedView
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
 		resourceManagementPanel = OperationalPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
 		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
-		fundingSourcePoolManagementPanel = new FundingSourcePoolManagementPanel(getMainWindow(), "");
 		fundingSourceManagementPanel = OperationalPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
 		
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
 		addNonScrollingTab(accountingCodePoolManagementPanel);
-		//FIXME remove uncommented code and and related unused code
-		//addNonScrollingTab(fundingSourcePoolManagementPanel);
 		addNonScrollingTab(fundingSourceManagementPanel);
 	}
 	
@@ -104,9 +100,6 @@ public class OperationalPlanView extends TabbedView
 		
 		accountingCodePoolManagementPanel.dispose();
 		accountingCodePoolManagementPanel = null;
-		
-		fundingSourcePoolManagementPanel.dispose();
-		fundingSourcePoolManagementPanel = null;
 		
 		fundingSourceManagementPanel.dispose();
 		fundingSourceManagementPanel = null;
@@ -168,6 +161,5 @@ public class OperationalPlanView extends TabbedView
 	private PlanningTreeManagementPanel workPlanManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
 	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
-	private FundingSourcePoolManagementPanel fundingSourcePoolManagementPanel;
 	private PlanningTreeManagementPanel fundingSourceManagementPanel;
 }
