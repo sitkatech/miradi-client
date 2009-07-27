@@ -184,29 +184,20 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void omitColumnTagsRepresentedByColumnTables()
 	{
-		if (columnsToShow.contains(Measurement.META_COLUMN_TAG))
-			columnsToShow.removeCode(Measurement.META_COLUMN_TAG);
-		
-		if (columnsToShow.contains(Indicator.META_COLUMN_TAG))
-			columnsToShow.removeCode(Indicator.META_COLUMN_TAG);
-		
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
-			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE))
-			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
-			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
-			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
-			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-		
-		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
-			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		possiblyRemoveFromColumnsToShow(Measurement.META_COLUMN_TAG);
+		possiblyRemoveFromColumnsToShow(Indicator.META_COLUMN_TAG);
+		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
+		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
+	}
+	
+	private void possiblyRemoveFromColumnsToShow(String code)
+	{
+		if (columnsToShow.contains(code))
+			columnsToShow.removeCode(code);
 	}
 
 	public int getColumnCount()
