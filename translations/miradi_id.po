@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 11:04-0500\n"
+"POT-Creation-Date: 2009-07-27 12:10-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2653,7 +2653,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
-#: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:74
+#: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:80
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
 
@@ -6762,10 +6762,6 @@ msgstr "Tim "
 #: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:44
 msgid "Title|Funding Source Properties"
 msgstr "Sifat-sifat Sumber Dana "
-
-#: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePoolManagementPanel.java:104
-msgid "Title|Funding Sources"
-msgstr "Sumber Dana "
 
 #: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:44
 msgid "Title|Simple Viability"
@@ -32795,6 +32791,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Title|Funding Sources"
+#~ msgstr "Sumber Dana "
 
 #~ msgid "FieldLabel|12.Who|Who"
 #~ msgstr "Siapa "

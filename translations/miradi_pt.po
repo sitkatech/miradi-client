@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 11:04-0500\n"
+"POT-Creation-Date: 2009-07-27 12:10-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2292,7 +2292,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
-#: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:74
+#: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:80
 msgid "Not Specified"
 msgstr ""
 
@@ -6285,10 +6285,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:44
 msgid "Title|Funding Source Properties"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePoolManagementPanel.java:104
-msgid "Title|Funding Sources"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:44

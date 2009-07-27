@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-27 11:04-0500\n"
+"POT-Creation-Date: 2009-07-27 12:10-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2657,7 +2657,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
-#: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:74
+#: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:80
 msgid "Not Specified"
 msgstr "No especificado"
 
@@ -6788,10 +6788,6 @@ msgstr "Equipo"
 #: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePropertiesPanel.java:44
 msgid "Title|Funding Source Properties"
 msgstr "Propiedades de la fuente de financiamiento"
-
-#: miradi/source/org/miradi/dialogs/fundingsource/FundingSourcePoolManagementPanel.java:104
-msgid "Title|Funding Sources"
-msgstr "Fuentes de financiamiento"
 
 #: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:44
 msgid "Title|Simple Viability"
@@ -32953,6 +32949,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Title|Funding Sources"
+#~ msgstr "Fuentes de financiamiento"
 
 #~ msgid "FieldLabel|12.Who|Who"
 #~ msgstr "Quién"
