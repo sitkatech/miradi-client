@@ -142,7 +142,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		
 		verifyMergeAdd(expenses1, resourceCosts1, mergedTimePeriodCostsMap, timePeriodCostsMap1, q1);
 		verifyMergeAdd(expenses2, 0.0, mergedTimePeriodCostsMap, timePeriodCostsMap2, q2);
-		assertEquals(expenses1+expenses2, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getExpense().getValue());
+		assertEquals(expenses1+expenses2, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getTotalExpense().getValue());
 		assertEquals(workUnits, mergedTimePeriodCostsMap.calculateTimePeriodCosts(dateUnit2008).getResourceWorkUnits(resource.getRef()).getValue());
 	}
 
@@ -169,7 +169,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		double expectedTotalCost = expectedExpense + expectedResourcesCost;
 		destinationTimePeriodCostsMap.mergeAll(timePeriodCostsMapToBeMerged);
 		TimePeriodCosts  foundTimePeriodCosts = destinationTimePeriodCostsMap.calculateTimePeriodCosts(dateUnitForTimePeriodCosts);
-		assertEquals("wrong expense after merge?", expectedExpense, foundTimePeriodCosts.getExpense().getValue());
+		assertEquals("wrong expense after merge?", expectedExpense, foundTimePeriodCosts.getTotalExpense().getValue());
 		assertEquals("wrong total cost after merge?", expectedTotalCost, foundTimePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
 	
@@ -197,7 +197,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	private void verifyMergedExpense(double expectedExpense, TimePeriodCostsMap timePeriodCostsMap, DateUnit dateUnit) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnit);
-		assertEquals("wrong expense after merge?", expectedExpense, timePeriodCosts.getExpense().getValue());			
+		assertEquals("wrong expense after merge?", expectedExpense, timePeriodCosts.getTotalExpense().getValue());			
 	}
 	
 	public void testMergeNonConlictingWorkUnits() throws Exception
@@ -237,7 +237,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		workUnitsTimePeriodCostsMap.mergeNonConflicting(expenseTimePeriodCostsMap);
 		
 		TimePeriodCosts timePeriodCosts = workUnitsTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2007);
-		assertEquals("wrong expense after megrge?", 13.0, timePeriodCosts.getExpense().getValue());
+		assertEquals("wrong expense after megrge?", 13.0, timePeriodCosts.getTotalExpense().getValue());
 		assertEquals("wrong work untis after merge?", 1.0, timePeriodCosts.getResourceWorkUnits(fred.getRef()).getValue());
 	}
 	

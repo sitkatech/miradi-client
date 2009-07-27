@@ -42,7 +42,7 @@ public class FundingSourceBudgetDetailsTableModel extends AbstractFundingSourceB
 	@Override
 	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
 	{
-		return timePeriodCosts.getExpense().add(timePeriodCosts.getTotalWorkUnits());
+		return timePeriodCosts.getTotalExpense().add(timePeriodCosts.getTotalWorkUnits());
 	}
 	
 	@Override
