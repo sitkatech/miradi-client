@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.rtf.viewExporters;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePoolTableModel;
-import org.miradi.dialogs.fundingsource.FundingSourcePoolTableModel;
+import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
@@ -73,7 +73,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportAccountingCodesTab(writer);
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
-			exportFundingSourceTab(writer);
+			exportReport(writer, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
 	}
 
 	private void exportResourcesTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
@@ -86,11 +86,6 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		exportObjectTableModel(writer, new AccountingCodePoolTableModel(getProject()), ReportTemplateContentQuestion.getAccountingCodesLabel());
 	}
 
-	private void exportFundingSourceTab(RtfWriter writer) throws Exception
-	{
-		exportObjectTableModel(writer, new FundingSourcePoolTableModel(getProject()), ReportTemplateContentQuestion.getFundingSourcesLabel());
-	}
-	
 	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
 	{
 		ExportablePlanningTreeTableModel model = new ExportablePlanningTreeTableModel(project, rowColumnProvider, AbstractTableExporter.NO_UNIQUE_MODEL_IDENTIFIER);
