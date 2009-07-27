@@ -57,13 +57,13 @@ public class TestMeglerArranger extends TestCaseWithProject
 		MeglerArranger arranger = new MeglerArranger(getProject().getMainDiagramObject());
 		arranger.arrange();
 		
-		assertEquals("Strategy not in column 1?", 240, strategyDiagramFactor.getLocation().x);
-		assertEquals("Threat not in column 2?", 450, threatDiagramFactor.getLocation().x);
-		assertEquals("Target not in column 3?", 660, targetDiagramFactor.getLocation().x);
+		assertEquals("Strategy not in column 1?", 330, strategyDiagramFactor.getLocation().x);
+		assertEquals("Threat not in column 2?", 630, threatDiagramFactor.getLocation().x);
+		assertEquals("Target not in column 3?", 930, targetDiagramFactor.getLocation().x);
 		
-		assertEquals("Strategy not at top?", 30, strategyDiagramFactor.getLocation().y);
-		assertEquals("Threat not at top?", 30, threatDiagramFactor.getLocation().y);
-		assertEquals("Target not at top?", 30, targetDiagramFactor.getLocation().y);
+		assertEquals("Strategy not at top?", 90, strategyDiagramFactor.getLocation().y);
+		assertEquals("Threat not at top?", 90, threatDiagramFactor.getLocation().y);
+		assertEquals("Target not at top?", 90, targetDiagramFactor.getLocation().y);
 	}
 
 	public void testVerticalSpacing() throws Exception
@@ -76,7 +76,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		
 		int y1 = strategyDiagramFactor1.getLocation().y;
 		int y2 = strategyDiagramFactor2.getLocation().y;
-		assertEquals("Strategies not spaced vertically?", 90, Math.abs(y1 - y2));
+		assertEquals("Strategies not spaced vertically?", 105, Math.abs(y1 - y2));
 	}
 	
 	public void testLinklessAtFarLeft() throws Exception
