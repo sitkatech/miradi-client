@@ -42,6 +42,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
+import org.miradi.project.ProjectTotalCalculator;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
@@ -633,6 +634,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		timePeriodCosts.filterProjectResources(getResourcesFilter());
 		
 		return calculateValue(timePeriodCosts);
+	}
+	
+	protected TimePeriodCosts getProjectTotalTimePeriodCostFor(DateUnit dateUnit) throws Exception
+	{
+		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
+		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals();
+		
+		return totalProject.calculateTimePeriodCosts(dateUnit);
 	}
 
 	protected String getTreeModelIdentifierAsTag()
