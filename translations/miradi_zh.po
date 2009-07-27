@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-24 17:48-0500\n"
+"POT-Creation-Date: 2009-07-27 10:11-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6478,7 +6478,7 @@ msgstr "任务属性 \t\t"
 msgid "Planning View Configuration Label Properties"
 msgstr "计划视图配置标签属性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:66
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 
@@ -6487,7 +6487,7 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:106
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsTableModel.java:118
 msgid ""
 "This model is not for a single assignment and has no assignment information"
 msgstr ""
@@ -6496,11 +6496,11 @@ msgstr ""
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:108
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:109
 msgid "Total"
 msgstr "总计 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:115
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:116
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "（错误） \t\t"
