@@ -227,14 +227,14 @@ public class TimePeriodCosts
 		filterMap(resourceWorkUnitMap, projectResourceRefsToRetain);
 	}
 	
-	public void filterFundingSourcesWorkUnits(ORefSet fundingSoruceRefsToRetain)
+	public void filterFundingSourcesWorkUnits(ORefSet fundingSourceRefsToRetain)
 	{
-		filterMap(fundingSourceWorkUnitMap, fundingSoruceRefsToRetain);
+		filterMap(fundingSourceWorkUnitMap, fundingSourceRefsToRetain);
 	}
 	
-	public void filterFundingSourcesExpenses(ORefSet fundingSoruceRefsToRetain)
+	public void filterFundingSourcesExpenses(ORefSet fundingSourceRefsToRetain)
 	{
-		filterMap(fundingSourceExpenseMap, fundingSoruceRefsToRetain);
+		filterMap(fundingSourceExpenseMap, fundingSourceRefsToRetain);
 	}
 	
 	public void filterMap(HashMap<ORef, OptionalDouble> map, ORefSet refsToRetain)
