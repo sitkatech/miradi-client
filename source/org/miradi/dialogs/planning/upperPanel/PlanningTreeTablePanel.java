@@ -26,6 +26,7 @@ import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.planning.FundingSourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
@@ -96,6 +97,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		resourceWorkUnitsTableModel = new ProjectResourceWorkUnitsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
+		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
@@ -349,6 +351,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		fundingSourceExpenseTableModel.fireTableDataChanged();
 		expenseAmountsTableModel.fireTableDataChanged();
 		budgetDetailsTableModel.fireTableDataChanged();
+		fundingSourceBudgetDetailsTableModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -386,6 +389,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
+		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
+			multiModel.addModel(fundingSourceBudgetDetailsTableModel);
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(fundingSourceExpenseTableModel);
@@ -454,6 +460,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	protected AbstractWorkUnitsTableModel workUnitsTableModel;
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
 	protected BudgetDetailsTableModel budgetDetailsTableModel;
+	private FundingSourceBudgetDetailsTableModel fundingSourceBudgetDetailsTableModel;
 	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;
 
