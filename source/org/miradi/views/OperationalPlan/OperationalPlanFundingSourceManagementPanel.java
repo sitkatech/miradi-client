@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.OperationalPlan;
 
-import javax.swing.Icon;
-
 import org.miradi.dialogs.planning.FundingSourceRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
@@ -32,12 +30,11 @@ import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.icons.FundingSourceIcon;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.views.planning.AbstractFundingSourceManagementPanel;
 
-public class OperationalPlanFundingSourceManagementPanel extends PlanningTreeManagementPanel
+public class OperationalPlanFundingSourceManagementPanel extends AbstractFundingSourceManagementPanel
 {
 	public OperationalPlanFundingSourceManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanel,
@@ -62,17 +59,5 @@ public class OperationalPlanFundingSourceManagementPanel extends PlanningTreeMan
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		
 		return new OperationalPlanFundingSourceManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Funding Sources");
-	}	
-	
-	@Override
-	public Icon getIcon()
-	{
-		return new FundingSourceIcon();
 	}
 }
