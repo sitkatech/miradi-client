@@ -208,24 +208,24 @@ public class MeglerArranger
 
 	private void setLocations() throws Exception
 	{
-		Vector<DiagramFactorClump> threatClumps = buildThreatClumps();
+		Vector<DiagramFactorClump> strategyClumps = buildClumps(strategies);
+		Vector<DiagramFactorClump> threatClumps = buildClumps(threats);
+		Vector<DiagramFactorClump> targetClumps = buildClumps(targets);
 		
-		DiagramFactorClump mostActiveClump = findMostActiveFactorOrGroup(threatClumps);
-		if(mostActiveClump != null)
-			EAM.logVerbose("Most active threat: " + mostActiveClump.toString());
+		rearrangeClumps(strategyClumps, threatClumps, targetClumps);
 		
 		moveFactorsToFinalLocations(unlinked, UNLINKED_COLUMN_X, TOP_Y);
-		moveFactorsToFinalLocations(strategies, STRATEGY_COLUMN_X, TOP_Y);
+		moveFactorClumpsToFinalLocations(strategyClumps, STRATEGY_COLUMN_X, TOP_Y);
 		moveFactorClumpsToFinalLocations(threatClumps, THREAT_COLUMN_X, TOP_Y);
-		moveFactorsToFinalLocations(targets, TARGET_COLUMN_X, TOP_Y);
+		moveFactorClumpsToFinalLocations(targetClumps, TARGET_COLUMN_X, TOP_Y);
 	}
 
-	private Vector<DiagramFactorClump> buildThreatClumps()
+	private Vector<DiagramFactorClump> buildClumps(Vector<DiagramFactor> diagramFactors)
 	{
 		Vector<DiagramFactorClump> clumps = new Vector<DiagramFactorClump>();
 		HashSet<DiagramFactor> alreadyClumpedGroups = new HashSet<DiagramFactor>();
 		
-		for(DiagramFactor diagramFactor : threats)
+		for(DiagramFactor diagramFactor : diagramFactors)
 		{
 			DiagramFactor diagramFactorMaybeGroup = diagramFactor;
 			DiagramFactor group = findGroup(diagramFactor);
@@ -273,6 +273,17 @@ public class MeglerArranger
 			int height = diagramFactor.getSize().height;
 			y += Math.max(height + VERTICAL_CUSHION, DELTA_Y);
 		}
+	}
+	
+	private void rearrangeClumps(Vector<DiagramFactorClump> strategyClumps, Vector<DiagramFactorClump> threatClumps, Vector<DiagramFactorClump> targetClumps)
+	{
+		DiagramFactorClump mostActiveClump = findMostActiveFactorOrGroup(threatClumps);
+		if(mostActiveClump == null)
+			return;
+		
+		EAM.logVerbose("Most active threat: " + mostActiveClump.toString());
+		int desiredPosition = Math.max(mostActiveClump.getIncomingLinks().size(), mostActiveClump.getOutgoingLinks().size());
+		EAM.logVerbose("position: " + desiredPosition);
 	}
 	
 	private void moveFactorClumpsToFinalLocations(Vector<DiagramFactorClump> threatClumps, int x, int topY) throws Exception
