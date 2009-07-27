@@ -17,18 +17,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.planning.AbstractFundingSourceBudgetDetailsTableModel;
+package org.miradi.dialogs.planning;
+
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class BudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsTableModel
+public class FundingSourceBudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsTableModel
 {
-	public BudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public FundingSourceBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
@@ -36,13 +36,13 @@ public class BudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsT
 	@Override
 	public String getColumnGroupCode(int modelColumn)
 	{
-		return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
+		return CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE;
 	}
 	
 	@Override
 	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
 	{
-		return timePeriodCosts.calculateTotalCost(getProject());
+		return timePeriodCosts.getExpense().add(timePeriodCosts.getTotalWorkUnits());
 	}
 	
 	@Override
@@ -51,5 +51,5 @@ public class BudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsT
 		return getTreeModelIdentifierAsTag() + "." + UNIQUE_TABLE_MODEL_IDENTIFIER;
 	}
 	
-	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "BudgetDetailsTableModel";
+	private static final String UNIQUE_TABLE_MODEL_IDENTIFIER = "FundingSourceBudgetDetailsTableModel";
 }

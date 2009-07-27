@@ -204,7 +204,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-
+		
+		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
+			columnsToShow.removeCode(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
 	}
 
 	public int getColumnCount()

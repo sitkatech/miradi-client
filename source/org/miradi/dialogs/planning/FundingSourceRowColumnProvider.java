@@ -30,7 +30,7 @@ public class FundingSourceRowColumnProvider extends FundingSourceCoreRowColumnPr
 		CodeList superCodes = super.getColumnListToShow();
 		superCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
 		superCodes.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		superCodes.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		superCodes.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return superCodes;
 	}
