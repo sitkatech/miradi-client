@@ -116,7 +116,7 @@ public class TimePeriodCosts
 	
 	private void addExpensesToTotal(TimePeriodCosts timePeriodCostsToUse)
 	{
-		addExpensesToTotal(timePeriodCostsToUse.getExpense());
+		addExpensesToTotal(timePeriodCostsToUse.getTotalExpense());
 	}
 
 	private void addExpensesToTotal(OptionalDouble expense)
@@ -124,14 +124,14 @@ public class TimePeriodCosts
 		totalExpenses = totalExpenses.add(expense);
 	}
 	
-	public OptionalDouble getExpense()
+	public OptionalDouble getTotalExpense()
 	{
 		return totalExpenses;
 	}
 	
 	public OptionalDouble calculateTotalCost(Project projectToUse)
 	{
-		final OptionalDouble expenseToAdd = getExpense();
+		final OptionalDouble expenseToAdd = getTotalExpense();
 		final OptionalDouble totalResourceCost = calculateResourcesTotalCost(projectToUse);
 		
 		return totalResourceCost.add(expenseToAdd);
@@ -286,7 +286,7 @@ public class TimePeriodCosts
 			return false;
 		
 		TimePeriodCosts other = (TimePeriodCosts) rawOther;
-		if (!other.getExpense().equals(getExpense()))
+		if (!other.getTotalExpense().equals(getTotalExpense()))
 			return false;
 		
 		if (!other.getTotalWorkUnits().equals(getTotalWorkUnits()))
@@ -348,7 +348,7 @@ public class TimePeriodCosts
 	
 	private boolean hasExpenseData()
 	{
-		return getExpense().hasValue();
+		return getTotalExpense().hasValue();
 	}
 
 	private boolean hasTotalWorkUnitsData()

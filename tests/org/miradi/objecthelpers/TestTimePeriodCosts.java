@@ -45,7 +45,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 		
 		getProject().addExpense(timePeriodCosts, 20.0);
-		assertEquals("wrong expense?", 20.0, timePeriodCosts.getExpense().getValue());
+		assertEquals("wrong expense?", 20.0, timePeriodCosts.getTotalExpense().getValue());
 		assertEquals("wrong total cost?", 100.0 + 20.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 	}
 	
@@ -206,7 +206,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	private void verifyAddition(TimePeriodCosts mainTimePeriodCosts, TimePeriodCosts timePeriodCostsToAdd, ORef projectResourceRef1, double expectedExpense, double expectedUnits)
 	{
 		mainTimePeriodCosts.add(timePeriodCostsToAdd);
-		assertEquals("incorrect expense after adding a timePeriodCosts", expectedExpense, mainTimePeriodCosts.getExpense().getValue());
+		assertEquals("incorrect expense after adding a timePeriodCosts", expectedExpense, mainTimePeriodCosts.getTotalExpense().getValue());
 		assertEquals("incorrect project resource after adding a timePeriodCosts", expectedUnits, mainTimePeriodCosts.getResourceWorkUnits(projectResourceRef1).getValue());
 	}
 	

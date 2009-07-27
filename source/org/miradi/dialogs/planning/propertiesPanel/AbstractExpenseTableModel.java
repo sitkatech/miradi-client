@@ -46,7 +46,7 @@ abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTable
 	@Override
 	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
 	{
-		return timePeriodCosts.getExpense();
+		return timePeriodCosts.getTotalExpense();
 	}
 	
 	@Override
