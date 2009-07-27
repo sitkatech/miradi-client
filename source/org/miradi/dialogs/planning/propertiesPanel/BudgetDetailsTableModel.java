@@ -21,10 +21,8 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.planning.AbstractFundingSourceBudgetDetailsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
-import org.miradi.utils.OptionalDouble;
 
 public class BudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsTableModel
 {
@@ -37,12 +35,6 @@ public class BudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsT
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
-	}
-	
-	@Override
-	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
-	{
-		return timePeriodCosts.calculateTotalCost(getProject());
 	}
 	
 	@Override
