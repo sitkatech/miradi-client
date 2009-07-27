@@ -22,6 +22,7 @@ package org.miradi.icons;
 import javax.swing.Icon;
 
 import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
@@ -87,6 +88,9 @@ public class IconManager
 		
 		if (ProjectResource.is(type))
 			return new ProjectResourceIcon();
+		
+		if (FundingSource.is(type))
+			return new FundingSourceIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
