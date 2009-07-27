@@ -20,28 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
-import org.miradi.objects.FundingSource;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
-public class FundingSourceRowColumnProvider implements RowColumnProvider
+public class FundingSourceRowColumnProvider extends FundingSourceCoreRowColumnProvider
 {
 	public CodeList getColumnListToShow()
 	{
-		return new CodeList(new String[] {
-				FundingSource.TAG_CODE,
-				FundingSource.TAG_LABEL,
-				CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
-				CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE,
-				CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE,
-		});
+		CodeList superCodes = super.getColumnListToShow();
+		superCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		superCodes.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
+		superCodes.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
 		
-	}
-
-	public CodeList getRowListToShow()
-	{
-		return new CodeList(new String[] {
-				FundingSource.OBJECT_NAME,
-		});
+		return superCodes;
 	}
 }
