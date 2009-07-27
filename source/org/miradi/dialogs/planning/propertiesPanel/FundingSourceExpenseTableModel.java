@@ -24,11 +24,9 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
-import org.miradi.project.ProjectTotalCalculator;
 import org.miradi.utils.OptionalDouble;
 
 public class FundingSourceExpenseTableModel extends AbstractExpenseTableModel
@@ -41,9 +39,7 @@ public class FundingSourceExpenseTableModel extends AbstractExpenseTableModel
 	@Override
 	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
-		ProjectTotalCalculator projectTotalCalculator = getProject().getProjectTotalCalculator();
-		TimePeriodCostsMap totalProject = projectTotalCalculator.calculateProjectTotals();
-		TimePeriodCosts timePeriodCosts = totalProject.calculateTimePeriodCosts(dateUnit);
+		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 		if (FundingSource.is(baseObject))
 			timePeriodCosts.filterFundingSourcesExpenses(new ORefSet(baseObject));
 		

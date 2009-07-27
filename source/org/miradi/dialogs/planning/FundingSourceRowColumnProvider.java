@@ -33,6 +33,7 @@ public class FundingSourceRowColumnProvider implements RowColumnProvider
 				FundingSource.TAG_LABEL,
 				CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
 				CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE,
+				CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE,
 		});
 		
 	}
