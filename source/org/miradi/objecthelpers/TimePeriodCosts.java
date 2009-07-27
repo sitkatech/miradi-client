@@ -317,16 +317,25 @@ public class TimePeriodCosts
 	public String toString()
 	{
 		String asString = "";
-		if (totalExpenses.hasValue())
-			asString = "expense = " + totalExpenses.getValue() + "\n";
+		asString = "expense = " + getTotalExpense() + "\n";
 		
-		Set<ORef> refs = resourceWorkUnitMap.keySet();
+		asString += writeMap(resourceWorkUnitMap, "resource work units");
+		asString += writeMap(fundingSourceExpenseMap, "funding source expense");
+		asString += writeMap(fundingSourceWorkUnitMap, "funding source work units");
+		
+		asString += "\nTotalWorkUnits = " + getTotalWorkUnits() + "\n";
+		
+		return asString;
+	}
+
+	private String writeMap(HashMap<ORef, OptionalDouble> map, String mapTitle)
+	{
+		String asString = mapTitle + " map:\n";
+		Set<ORef> refs = map.keySet();
 		for(ORef ref : refs)
 		{
-			asString += "resourceRef = " + ref + " units = " + resourceWorkUnitMap.get(ref) + "\n";
+			asString += "ref = " + ref + " units = " + map.get(ref) + "\n";
 		}
-		
-		asString += "\nTotalWorkUnits = " + getTotalWorkUnits() + "\n\n";
 		
 		return asString;
 	}
