@@ -76,6 +76,7 @@ public class MeglerArranger
 	{
 		createGroupBoxes(targets, FactorLink.FROM, Cause.getObjectType());
 		createGroupBoxes(threats, FactorLink.TO, Target.getObjectType());
+		createGroupBoxes(threats, FactorLink.FROM, Strategy.getObjectType());
 		createGroupBoxes(strategies, FactorLink.TO, Cause.getObjectType());
 	}
 

@@ -288,7 +288,7 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
 	}
 	
-	public void testThreatGrouping() throws Exception
+	public void testThreatGroupingToTargets() throws Exception
 	{
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
@@ -330,9 +330,34 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertTrue("Didn't link group 2 to target 2?", diagram.areDiagramFactorsLinkedFromToNonBidirectional(threatGroup2.getRef(), targetDiagramFactor2.getRef()));
 	}
 
-	public void testDontGroupThreatsUnlessLinkedToTargets() throws Exception
+	public void testThreatGroupingFromStrategies() throws Exception
 	{
 		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor2);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Didn't create one threat group?", 1, groupBoxDiagramFactors.size());
+		DiagramFactor groupBoxDiagramFactor1 = groupBoxDiagramFactors.toArray(new DiagramFactor[0])[0];
+		ORefSet children1 = new ORefSet(groupBoxDiagramFactor1.getGroupBoxChildrenRefs());
+		assertEquals("Group doesn't contain two threats?", 2, children1.size());
+
+		ORefSet allGroupedThreats = new ORefSet(children1);
+		assertContains("Threat 1 not in group?", threatDiagramFactor1.getRef(), allGroupedThreats);
+		assertContains("Threat 2 not in group?", threatDiagramFactor2.getRef(), allGroupedThreats);
+	}
+
+	public void testDontGroupThreatsUnlessLinkedToTargetsOrStrategies() throws Exception
+	{
+		DiagramFactor groupDiagramFactor1 = createEmptyGroupBox();
 
 		DiagramFactor threatDiagramFactor1 = createThreat();
 		DiagramFactor threatDiagramFactor2 = createThreat();
@@ -340,15 +365,15 @@ public class TestMeglerArranger extends TestCaseWithProject
 		
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, threatDiagramFactor3);
 		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, threatDiagramFactor3);
-		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
-		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(groupDiagramFactor1, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(groupDiagramFactor1, threatDiagramFactor2);
 
 		DiagramObject diagram = getProject().getMainDiagramObject();
 		MeglerArranger arranger = new MeglerArranger(diagram);
 		arranger.arrange();
 		
 		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
-		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
+		assertEquals("Created another group?", 1, groupBoxDiagramFactors.size());
 	}
 	
 	public void testStrategyGrouping() throws Exception
@@ -465,6 +490,11 @@ public class TestMeglerArranger extends TestCaseWithProject
 	private DiagramFactor createTarget() throws Exception
 	{
 		return getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
+	}
+
+	private DiagramFactor createEmptyGroupBox() throws Exception
+	{
+		return getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
 	}
 
 	private DiagramFactor getGroup(DiagramFactor diagramfactor)
