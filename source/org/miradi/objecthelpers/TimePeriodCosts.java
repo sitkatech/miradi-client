@@ -194,7 +194,7 @@ public class TimePeriodCosts
 	protected void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		mergeAllExpensePacksInPlace(timePeriodCostsToMergeAdd);
-		mergeAllWorkUnitMapsInPlace(timePeriodCostsToMergeAdd);
+		mergeAllWorkUnitDataPackInPlace(timePeriodCostsToMergeAdd);
 	}
 
 	private void mergeAllExpensePacksInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
@@ -204,7 +204,7 @@ public class TimePeriodCosts
 		mergeDataPackInPlace(expensesPacks, timePeriodCostsToMergeAdd.expensesPacks);
 	}
 	
-	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
+	public void mergeAllWorkUnitDataPackInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
 		addWorkUnitsToTotal(timePeriodCostsToMerge);
 		
@@ -225,7 +225,7 @@ public class TimePeriodCosts
 			mergeAllExpensePacksInPlace(timePeriodCostsToMerge);
 		
 		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
-			mergeAllWorkUnitMapsInPlace(timePeriodCostsToMerge);
+			mergeAllWorkUnitDataPackInPlace(timePeriodCostsToMerge);
 	}
 	
 	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
