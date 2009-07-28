@@ -61,7 +61,7 @@ public class ProjectResourceTreeTableModel extends ExportablePlanningTreeTableMo
 	
 	private static TreeTableNode createProjectResourceRootNode(Project project) throws Exception
 	{
-		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), getProjectResourceRows());
+		return new BaseObjectTreeRootNode(project, ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getProjectResourceRows());
 	}
 	
 	private static TreeTableNode createHiddenResourceRootNode(Project project) throws Exception

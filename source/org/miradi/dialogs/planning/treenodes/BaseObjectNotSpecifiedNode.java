@@ -29,11 +29,11 @@ import org.miradi.utils.CodeList;
 
 public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 {
-	public BaseObjectNotSpecifiedNode(Project projectToUse, int objectType, CodeList visibleRowsToUse) throws Exception
+	public BaseObjectNotSpecifiedNode(Project projectToUse, int objectType, String objectNameToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		
-		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager(), objectType);
+		unspecifiedResource = new UnspecifiedProjectResource(getProject().getObjectManager(), objectType, objectNameToUse);
 		rebuild();
 	}
 	
@@ -49,11 +49,12 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 	
 	public class UnspecifiedProjectResource extends BaseObject
 	{
-		public UnspecifiedProjectResource(ObjectManager objectManagerToUse, int objectTypeToUse)
+		public UnspecifiedProjectResource(ObjectManager objectManagerToUse, int objectTypeToUse, String objectNameToUse)
 		{
 			super(objectManagerToUse, BaseId.INVALID);
 			
 			objectType = objectTypeToUse;
+			objectName = objectNameToUse;
 		}
 
 		@Override
@@ -65,7 +66,7 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 		@Override
 		public String getTypeName()
 		{
-			return "";
+			return objectName;
 		}
 		
 		@Override
@@ -81,6 +82,7 @@ public class BaseObjectNotSpecifiedNode extends AbstractPlanningTreeNode
 		}
 		
 		private int objectType;
+		private String objectName;
 	}
 	
 	private UnspecifiedProjectResource unspecifiedResource;
