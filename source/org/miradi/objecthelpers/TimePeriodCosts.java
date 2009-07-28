@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,15 +32,11 @@ public class TimePeriodCosts
 {
 	public TimePeriodCosts()
 	{
+		workUnitPacks = new HashSet();
+		expensesPacks = new HashSet();
+
 		totalExpenses = new OptionalDouble();
 		totalWorkUnits = new OptionalDouble();
-		
-	    fundingSourceExpenseMap = new HashMap<ORef, OptionalDouble>();
-		accountingCodeExpenseMap = new HashMap<ORef, OptionalDouble>();
-		
-		resourceWorkUnitMap = new HashMap<ORef, OptionalDouble>();
-		fundingSourceWorkUnitMap = new HashMap<ORef, OptionalDouble>();
-		accountingCodeWorkUnitMap = new HashMap<ORef, OptionalDouble>();
 	}
 	
 	public TimePeriodCosts(TimePeriodCosts timePeriodCostsToUse)
@@ -55,9 +50,8 @@ public class TimePeriodCosts
 		this();
 		
 		ensureFundingSource(fundingSourceRef);
-		
-		addExpensesToTotal(expenseToUse);
-		addRefToMap(fundingSourceExpenseMap, fundingSourceRef, expenseToUse);
+		addExpensesToTotal(expenseToUse);		
+		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, expenseToUse));
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	OptionalDouble workUnits)
@@ -65,40 +59,50 @@ public class TimePeriodCosts
 		this();
 		
 		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
-		
 		addWorkUnitsToTotal(workUnits);
-		addRefToMap(resourceWorkUnitMap, resourceRef, workUnits);
-		addRefToMap(fundingSourceWorkUnitMap, fundingSourceRef, workUnits);
+		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, workUnits));
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
 	{
 		addExpensesToTotal(timePeriodCosts);
-		addMap(fundingSourceExpenseMap, timePeriodCosts.fundingSourceExpenseMap);
+		addDataPack(expensesPacks, timePeriodCosts.expensesPacks);
 		
 		addWorkUnitsToTotal(timePeriodCosts);
-		addMap(resourceWorkUnitMap, timePeriodCosts.resourceWorkUnitMap);
-		addMap(fundingSourceWorkUnitMap, timePeriodCosts.fundingSourceWorkUnitMap);
+		addDataPack(workUnitPacks, timePeriodCosts.workUnitPacks);
 	}
 	
-	private void addMap(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToAdd)
+	private void addDataPack(HashSet<DataPack> packToUpdate, HashSet<DataPack> packToAdd)
 	{
-		Set<ORef> refKeysToAdd = mapToAdd.keySet();
-		for(ORef refToAdd : refKeysToAdd)
+		for(DataPack thisDataPack : packToAdd)
 		{
-			OptionalDouble workUnitsToUse = mapToAdd.get(refToAdd);
-			addRefToMap(mapToUpdate, refToAdd, workUnitsToUse);			
+			addToDataPacks(packToUpdate, thisDataPack);
 		}
 	}
-
-	private void addRefToMap(HashMap<ORef, OptionalDouble> mapToUpdate, ORef refToAdd, OptionalDouble workUnitsToAdd)
+	
+	private void addToDataPacks(HashSet<DataPack> dataPackToUpdate, DataPack dataPackToAdd)
 	{
-		OptionalDouble thisWorkUnits = getSafeValue(mapToUpdate, refToAdd);
-		workUnitsToAdd = thisWorkUnits.add(workUnitsToAdd);
-
-		mapToUpdate.put(refToAdd, workUnitsToAdd);
+		if (dataPackToUpdate.contains(dataPackToAdd))
+		{
+			DataPack foundDataPack = findDataPack(dataPackToUpdate, dataPackToAdd);
+			dataPackToUpdate.remove(dataPackToAdd);
+			dataPackToAdd.addQuantity(foundDataPack.getQuantity());
+		}
+		
+		dataPackToUpdate.add(dataPackToAdd);
 	}
 	
+	private DataPack findDataPack(HashSet<DataPack> dataPacksToSearch, DataPack dataPackToMatch)
+	{
+		for(DataPack thisDataPack : dataPacksToSearch)
+		{
+			if (thisDataPack.equals(dataPackToMatch))
+				return thisDataPack;
+		}
+		
+		return new DataPack();
+	}
+
 	private void addWorkUnitsToTotal(TimePeriodCosts timePeriodCosts)
 	{
 		addWorkUnitsToTotal(timePeriodCosts.getTotalWorkUnits());
@@ -140,12 +144,12 @@ public class TimePeriodCosts
 	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
-		Set<ORef> projectResourcRefs = resourceWorkUnitMap.keySet();
-		for(ORef projectResourceRef : projectResourcRefs)
+		Set<DataPack> dataPacks = workUnitPacks;
+		for(DataPack thisDataPack : dataPacks)
 		{
-			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, projectResourceRef);
-			OptionalDouble units = resourceWorkUnitMap.get(projectResourceRef);
-			OptionalDouble multiplyValue = units.multiply(costPerUnit);
+			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, thisDataPack.getResourceRef());
+			OptionalDouble workUnits = thisDataPack.getQuantity();
+			OptionalDouble multiplyValue = workUnits.multiply(costPerUnit);
 			resourcesTotalCost = resourcesTotalCost.add(multiplyValue);
 		}
 		
@@ -163,60 +167,62 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getResourceWorkUnits(ORef resourceRef)
 	{
-		return getSafeValue(resourceWorkUnitMap, resourceRef);
+		return getSafeQuantity(workUnitPacks, resourceRef);
 	}
 	
 	public OptionalDouble getFundingSourceWorkUnits(ORef fundingSourceRef)
 	{
-		return getSafeValue(fundingSourceWorkUnitMap, fundingSourceRef);
+		return getSafeQuantity(workUnitPacks, fundingSourceRef);
 	}
 	
 	public OptionalDouble getFundingSourceExpenses(ORef fundingSourceRef)
 	{
-		return getSafeValue(fundingSourceExpenseMap, fundingSourceRef);
+		return getSafeQuantity(expensesPacks, fundingSourceRef);
 	}
 	
-	private OptionalDouble getSafeValue(HashMap<ORef, OptionalDouble> mapToExtractFrom, ORef refToExtract)
+	private OptionalDouble getSafeQuantity(HashSet<DataPack> dataPacksToSearch, ORef refToFindBy)
 	{
-		if (!mapToExtractFrom.containsKey(refToExtract))
-			return new OptionalDouble();
+		for(DataPack thisDataPack : dataPacksToSearch)
+		{
+			if (thisDataPack.containsRef(refToFindBy))
+				return thisDataPack.getQuantity();
+		}
 		
-		return mapToExtractFrom.get(refToExtract);
+		return new OptionalDouble();
 	}
 	
 	protected void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
-		mergeAllExpenseMapsInPlace(timePeriodCostsToMergeAdd);
+		mergeAllExpensePacksInPlace(timePeriodCostsToMergeAdd);
 		mergeAllWorkUnitMapsInPlace(timePeriodCostsToMergeAdd);
 	}
 
-	private void mergeAllExpenseMapsInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
+	private void mergeAllExpensePacksInPlace(TimePeriodCosts timePeriodCostsToMergeAdd)
 	{
 		addExpensesToTotal(timePeriodCostsToMergeAdd);
-		mergeMapInPlace(fundingSourceExpenseMap, timePeriodCostsToMergeAdd.fundingSourceExpenseMap);
+		
+		mergeDataPackInPlace(expensesPacks, timePeriodCostsToMergeAdd.expensesPacks);
 	}
 	
 	public void mergeAllWorkUnitMapsInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
 		addWorkUnitsToTotal(timePeriodCostsToMerge);
-		mergeMapInPlace(resourceWorkUnitMap, timePeriodCostsToMerge.resourceWorkUnitMap);
-		mergeMapInPlace(fundingSourceWorkUnitMap, timePeriodCostsToMerge.fundingSourceWorkUnitMap);
+		
+		mergeDataPackInPlace(workUnitPacks, timePeriodCostsToMerge.workUnitPacks);
 	}
 	
-	private void mergeMapInPlace(HashMap<ORef, OptionalDouble> mapToUpdate, HashMap<ORef, OptionalDouble> mapToMergeFrom)
+	private void mergeDataPackInPlace(HashSet<DataPack> dataPackToUpdate, HashSet<DataPack> dataPackToMergeFrom)
 	{
-		Set<ORef> keysToMerge = mapToMergeFrom.keySet();
-		for(ORef refToMerge : keysToMerge)
+		for(DataPack thisDataPack : dataPackToMergeFrom)
 		{
-			OptionalDouble valueToAdd = mapToMergeFrom.get(refToMerge);			
-			addRefToMap(mapToUpdate, refToMerge, valueToAdd);
+			addToDataPacks(dataPackToUpdate, thisDataPack);
 		}
 	}
 	
 	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
 	{
 		if (!snapShotTimePeriodCosts.hasExpenseData())
-			mergeAllExpenseMapsInPlace(timePeriodCostsToMerge);
+			mergeAllExpensePacksInPlace(timePeriodCostsToMerge);
 		
 		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData())
 			mergeAllWorkUnitMapsInPlace(timePeriodCostsToMerge);
@@ -224,56 +230,68 @@ public class TimePeriodCosts
 	
 	public void filterProjectResources(ORefSet projectResourceRefsToRetain)
 	{
-		filterWorkUnitRelatedMap(resourceWorkUnitMap, projectResourceRefsToRetain);
+		filterWorkUnitRelated(workUnitPacks, projectResourceRefsToRetain);
 	}
 
 	public void filterFundingSourcesWorkUnits(ORefSet fundingSourceRefsToRetain)
 	{
-		filterWorkUnitRelatedMap(fundingSourceWorkUnitMap, fundingSourceRefsToRetain);
+		filterWorkUnitRelated(workUnitPacks, fundingSourceRefsToRetain);
 	}
 	
-	private void filterWorkUnitRelatedMap(HashMap<ORef, OptionalDouble> map, ORefSet projectResourceRefsToRetain)
+	private void filterWorkUnitRelated(HashSet<DataPack> dataPacks, ORefSet projectResourceRefsToRetain)
 	{
-		filterMap(map, projectResourceRefsToRetain);
-		updateTotalWorkUnits(map);
+		filterDataPacks(dataPacks, projectResourceRefsToRetain);
+		updateTotalWorkUnits(workUnitPacks);
 	}
 	
 	public void filterFundingSourcesExpenses(ORefSet fundingSourceRefsToRetain)
 	{
-		filterMap(fundingSourceExpenseMap, fundingSourceRefsToRetain);
-		updateTotalExpenses(fundingSourceExpenseMap);
+		filterDataPacks(expensesPacks, fundingSourceRefsToRetain);
+		updateTotalExpenses(expensesPacks);
 	}
 	
-	public void filterMap(HashMap<ORef, OptionalDouble> map, ORefSet refsToRetain)
+	private void filterDataPacks(HashSet<DataPack> dataPacks, ORefSet refsToRetain)
 	{
 		if (refsToRetain.size() == 0)
 			return;
 		
-		Set<ORef> refsToBeRemoved = new HashSet<ORef>(map.keySet());
-		refsToBeRemoved.removeAll(refsToRetain);
-		for(ORef refToRemove : refsToBeRemoved)
+		HashSet<DataPack> dataPacksToRemove = new HashSet();
+		for(DataPack dataPackToFilter : dataPacks)
 		{
-			map.remove(refToRemove);
+			for(ORef ref : refsToRetain)
+			{
+				if (dataPackToFilter.getFundingSourceRef().equals(ref))
+					continue;
+				
+				if (dataPackToFilter.getResourceRef().equals(ref))
+					continue;
+				
+				dataPacksToRemove.add(dataPackToFilter);
+			}
+		}
+		
+		for(DataPack dataPackToRemove : dataPacksToRemove)
+		{
+			dataPacks.remove(dataPackToRemove);
 		}
 	}
 	
-	private void updateTotalExpenses(HashMap<ORef, OptionalDouble> map)
+	private void updateTotalExpenses(HashSet<DataPack> dataPacks)
 	{
-		totalExpenses = getTotal(map);		
+		totalExpenses = getTotal(dataPacks);		
 	}
 
-	private void updateTotalWorkUnits(HashMap<ORef, OptionalDouble> map)
+	private void updateTotalWorkUnits(HashSet<DataPack> dataPacks)
 	{
-		totalWorkUnits = getTotal(map);
+		totalWorkUnits = getTotal(dataPacks);
 	}
 	
-	private OptionalDouble getTotal(HashMap<ORef, OptionalDouble> map)
+	private OptionalDouble getTotal(HashSet<DataPack> dataPacks)
 	{
 		OptionalDouble totals = new OptionalDouble();
-		Set<ORef> refs = map.keySet();
-		for(ORef  ref: refs)
+		for(DataPack dataPack: dataPacks)
 		{
-			totals = totals.add(map.get(ref));
+			totals = totals.add(dataPack.getQuantity());
 		}
 		
 		return totals;
@@ -292,19 +310,10 @@ public class TimePeriodCosts
 		if (!other.getTotalWorkUnits().equals(getTotalWorkUnits()))
 			return false;
 		
-		if (!other.fundingSourceExpenseMap.equals(fundingSourceExpenseMap))
+		if (!other.workUnitPacks.equals(workUnitPacks))
 			return false;
 		
-		if (!other.accountingCodeExpenseMap.equals(accountingCodeExpenseMap))
-			return false;
-		
-		if (!other.fundingSourceWorkUnitMap.equals(fundingSourceWorkUnitMap))
-			return false;
-		
-		if (!other.accountingCodeWorkUnitMap.equals(accountingCodeWorkUnitMap))
-			return false;
-		
-		return other.resourceWorkUnitMap.equals(resourceWorkUnitMap);
+		return other.expensesPacks.equals(expensesPacks);
 	}
 	
 	@Override
@@ -317,42 +326,42 @@ public class TimePeriodCosts
 	public String toString()
 	{
 		String asString = "";
-		asString = "expense = " + getTotalExpense() + "\n";
-		
-		asString += writeMap(resourceWorkUnitMap, "resource work units");
-		asString += writeMap(fundingSourceExpenseMap, "funding source expense");
-		asString += writeMap(fundingSourceWorkUnitMap, "funding source work units");
-		
+		asString = "expense = " + getTotalExpense() + "\n";		
 		asString += "\nTotalWorkUnits = " + getTotalWorkUnits() + "\n";
 		
 		return asString;
 	}
 
-	private String writeMap(HashMap<ORef, OptionalDouble> map, String mapTitle)
-	{
-		String asString = mapTitle + " map:\n";
-		Set<ORef> refs = map.keySet();
-		for(ORef ref : refs)
-		{
-			asString += "ref = " + ref + " units = " + map.get(ref) + "\n";
-		}
-		
-		return asString;
-	}
-	
 	public Set<ORef> getResourceRefSet()
 	{
-		return new HashSet(resourceWorkUnitMap.keySet());
+		return extractRefs(workUnitPacks, ProjectResource.getObjectType());
 	}
 	
 	public Set<ORef> getFundingSourceWorkUnitsRefSet()
 	{
-		return new HashSet(fundingSourceWorkUnitMap.keySet());
+		return extractRefs(workUnitPacks, FundingSource.getObjectType());
 	}
 	
 	public Set<ORef> getFundingSourceExpensesRefSet()
 	{
-		return new HashSet(fundingSourceExpenseMap.keySet());
+		return extractRefs(expensesPacks, FundingSource.getObjectType());
+	}
+	
+	private ORefSet extractRefs(HashSet<DataPack> dataPacksToUse, int type)
+	{
+		ORefSet extractedRefs = new ORefSet();
+		for(DataPack dataPack : dataPacksToUse)
+		{
+			ORef resourceRef = dataPack.getResourceRef();
+			if (resourceRef.getObjectType() == type)
+				extractedRefs.add(resourceRef);
+			
+			ORef fundingSourceRef = dataPack.getFundingSourceRef();
+			if (fundingSourceRef.getObjectType() == type)
+				extractedRefs.add(fundingSourceRef);
+		}
+		
+		return extractedRefs;
 	}
 	
 	private boolean hasExpenseData()
@@ -383,13 +392,85 @@ public class TimePeriodCosts
 	{
 		return EAM.substitute(EAM.text("Was expecting a %s, instead got:\n" + ref.toString()), substituionText);
 	}
+
+	
+	class DataPack 
+	{
+		public DataPack()
+		{
+			resourceRef = ORef.INVALID;
+			fundingSourceRef = ORef.INVALID;
+			quantity = new OptionalDouble();
+		}
+		
+		public DataPack(ORef resourceRefToUse, ORef fundingSourceRefToUse, OptionalDouble quantityToUse)
+		{
+			resourceRef = resourceRefToUse;
+			fundingSourceRef = fundingSourceRefToUse;
+			quantity = quantityToUse;
+		}
+		
+		public boolean containsRef(ORef refToMatch)
+		{
+			if (resourceRef.equals(refToMatch))
+				return true;
+			
+			return fundingSourceRef.equals(refToMatch);
+		}
+		
+		public void addQuantity(OptionalDouble quantityToAdd)
+		{
+			quantity = quantity.add(quantityToAdd);
+		}
+		
+		public ORef getResourceRef()
+		{
+			return resourceRef;
+		}
+		
+		public ORef getFundingSourceRef()
+		{
+			return fundingSourceRef;
+		}
+		
+		public OptionalDouble getQuantity()
+		{
+			return quantity;
+		}
+		
+		@Override
+		public int hashCode()
+		{
+			return fundingSourceRef.hashCode() + resourceRef.hashCode();
+		}
+		
+		@Override
+		public boolean equals(Object rawOther)
+		{
+			if (!(rawOther instanceof DataPack))
+				return false;
+			
+			DataPack other = (DataPack) rawOther;
+			if (!fundingSourceRef.equals(other.fundingSourceRef))
+				return false;
+			
+			return resourceRef.equals(other.resourceRef);
+		}
+		
+		@Override
+		public String toString()
+		{
+			return "rsourceRef=" + resourceRef + " fundingSourceRef=" + fundingSourceRef + " quantiy=" + quantity; 
+		}
+		
+		private ORef resourceRef;
+		private ORef fundingSourceRef;
+		private OptionalDouble quantity;
+	}
 	
 	private OptionalDouble totalExpenses;
-	private HashMap<ORef, OptionalDouble> fundingSourceExpenseMap;
-	private HashMap<ORef, OptionalDouble> accountingCodeExpenseMap;
-	
 	private OptionalDouble totalWorkUnits;
-	private HashMap<ORef, OptionalDouble> resourceWorkUnitMap;
-	private HashMap<ORef, OptionalDouble> fundingSourceWorkUnitMap;
-	private HashMap<ORef, OptionalDouble> accountingCodeWorkUnitMap;
+	
+	private HashSet<DataPack> workUnitPacks;
+	private HashSet<DataPack> expensesPacks;
 }

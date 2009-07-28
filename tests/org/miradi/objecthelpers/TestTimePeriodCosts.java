@@ -197,6 +197,37 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("wrong resources count after filtering out fred?", 0, afterFilteringOutJillAndFred.size());
 		assertTrue("wrong totals work Units after fred filtered out?", withJillAndFred.getTotalWorkUnits().hasNoValue());
 	}
+	
+	public void testFilter() throws Exception
+	{
+		ProjectResource jill = createProjectResource();
+		ProjectResource fred = createProjectResource();
+		ORef fundingSourceRefForJill = createFundingSource();
+		ORef fundingSourceRefForFred = createFundingSource();
+		TimePeriodCosts withWorkUnits = new TimePeriodCosts();
+		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, new OptionalDouble(12.0)));
+		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, new OptionalDouble(13.0)));
+		
+		withWorkUnits.filterProjectResources(new ORefSet(jill));
+		assertFalse("fred was not filtered out?", withWorkUnits.getResourceRefSet().contains(fred.getRef()));
+		assertFalse("funding source for fred was not removed?", withWorkUnits.getFundingSourceWorkUnitsRefSet().contains(fundingSourceRefForFred));
+		
+		withWorkUnits.filterFundingSourcesWorkUnits(new ORefSet(fundingSourceRefForJill));
+		assertEquals("jill should not have been filtered out?", 1, withWorkUnits.getResourceRefSet().size());
+		assertEquals("funding source related to jill was filtered out?", 1, withWorkUnits.getFundingSourceWorkUnitsRefSet().size());
+		
+		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, new OptionalDouble(12.0)));
+		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, new OptionalDouble(13.0)));
+		withWorkUnits.filterFundingSourcesWorkUnits(new ORefSet(fundingSourceRefForJill));
+		assertFalse("fred was not filtered out?", withWorkUnits.getResourceRefSet().contains(fred.getRef()));
+		assertFalse("funding source for fred was not removed?", withWorkUnits.getFundingSourceWorkUnitsRefSet().contains(fundingSourceRefForFred));
+		
+		TimePeriodCosts withExpenses = new TimePeriodCosts();
+		withExpenses.add(new TimePeriodCosts(fundingSourceRefForJill, new OptionalDouble(10.0)));
+		withExpenses.add(new TimePeriodCosts(fundingSourceRefForFred, new OptionalDouble(11.0)));
+		withExpenses.filterFundingSourcesExpenses(new ORefSet(fundingSourceRefForJill));
+		assertFalse("fred was not filtered out?", withExpenses.getFundingSourceExpensesRefSet().contains(fundingSourceRefForFred));
+	}
 
 	private ORef createFundingSource() throws Exception
 	{
