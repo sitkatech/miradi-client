@@ -61,7 +61,7 @@ public class FundingSourceTreeTableModel extends ExportablePlanningTreeTableMode
 	
 	private static TreeTableNode createFundingSourceRootNode(Project project) throws Exception
 	{
-		return new BaseObjectTreeRootNode(project, FundingSource.getObjectType(), getFundingSourceRows());
+		return new BaseObjectTreeRootNode(project, FundingSource.getObjectType(), FundingSource.OBJECT_NAME, getFundingSourceRows());
 	}
 	
 	private static TreeTableNode createHiddenFundingSourceRootNode(Project project) throws Exception

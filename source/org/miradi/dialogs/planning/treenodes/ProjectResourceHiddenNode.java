@@ -37,6 +37,6 @@ public class ProjectResourceHiddenNode extends AbstractHiddenRootNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		children.add(new BaseObjectTreeRootNodeWithUnspecifiedNode(getProject(), ProjectResource.getObjectType(), getVisibleRows()));
+		children.add(new BaseObjectTreeRootNodeWithUnspecifiedNode(getProject(), ProjectResource.getObjectType(), ProjectResource.OBJECT_NAME, getVisibleRows()));
 	}
 }
