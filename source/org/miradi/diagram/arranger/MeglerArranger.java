@@ -22,6 +22,8 @@ package org.miradi.diagram.arranger;
 
 import java.awt.Point;
 import java.util.AbstractCollection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -82,6 +84,8 @@ public class MeglerArranger
 		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>();
 		groupCandidates.addAll(diagramFactorsToGroup);
 		groupCandidates.removeAll(findAllThatAreLinkedToAGroup(groupCandidates, direction));
+		
+		sortGroupCandidatesByLinkCount(groupCandidates);
 
 		while(groupCandidates.size() > 1)
 		{
@@ -90,6 +94,36 @@ public class MeglerArranger
 				break;
 			groupCandidates.removeAll(groupedTargets);
 		}
+	}
+	
+	class LinkCountComparator implements Comparator
+	{
+		public int compare(Object arg1, Object arg2)
+		{
+			if(!(arg1 instanceof DiagramFactor))
+				throw new RuntimeException("Unexpected type: " + arg1.getClass().getCanonicalName());
+			if(!(arg2 instanceof DiagramFactor))
+				throw new RuntimeException("Unexpected type: " + arg2.getClass().getCanonicalName());
+			
+			DiagramFactor diagramFactor1 = (DiagramFactor)arg1;
+			DiagramFactor diagramFactor2 = (DiagramFactor)arg2;
+			
+			int linkCount1 = getRefsOfFactorsThatLink(diagramFactor1).size();
+			int linkCount2 = getRefsOfFactorsThatLink(diagramFactor2).size();
+
+			return Math.abs(linkCount2 - linkCount1);
+		}
+
+		private ORefSet getRefsOfFactorsThatLink(DiagramFactor diagramFactor)
+		{
+			return new ORefSet(diagramFactor.findObjectsThatReferToUs(DiagramLink.getObjectType()));
+		}
+		
+	}
+
+	private void sortGroupCandidatesByLinkCount(Vector<DiagramFactor> groupCandidates)
+	{
+		Collections.sort(groupCandidates, new LinkCountComparator());
 	}
 
 	private Set<DiagramFactor> findAllThatAreLinkedToAGroup(Vector<DiagramFactor> groupCandidates, int direction)
