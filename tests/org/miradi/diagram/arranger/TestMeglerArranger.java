@@ -414,6 +414,40 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertEquals("Created a group?", 0, groupBoxDiagramFactors.size());
 	}
 	
+	public void testArrangeThreatsVertically() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		DiagramFactor strategyDiagramFactor2 = createStrategy();
+		DiagramFactor strategyDiagramFactor3 = createStrategy();
+
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		DiagramFactor targetDiagramFactor2 = createTarget();
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor2, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor3, threatDiagramFactor2);
+
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor2);
+		
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		int yThreat1 = threatDiagramFactor1.getLocation().y;
+		int yThreat2 = threatDiagramFactor2.getLocation().y;
+		assertTrue("threat 2 not first?", yThreat2 < yThreat1);
+
+		int yStrategy1 = strategyDiagramFactor1.getLocation().y;
+		int yStrategy2 = strategyDiagramFactor2.getLocation().y;
+		int yStrategy3 = strategyDiagramFactor3.getLocation().y;
+		assertTrue("strategy 2 not first?", yStrategy2 < yStrategy1 && yStrategy2 < yStrategy3);
+	}
+	
 	private DiagramFactor createStrategy() throws Exception
 	{
 		return getProject().createDiagramFactorAndAddToDiagram(Strategy.getObjectType());

@@ -134,9 +134,6 @@ public class DiagramFactorClump
 
 	private boolean isLinkRelevant(DiagramLink diagramLink, DiagramFactor diagramFactor, int direction)
 	{
-		if(diagramLink.isCoveredByGroupBoxLink())
-			return false;
-		
 		if(diagramLink.isBidirectional() && diagramLink.isToOrFrom(diagramFactor))
 			return true;
 		
