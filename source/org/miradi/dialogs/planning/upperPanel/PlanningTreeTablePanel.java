@@ -387,14 +387,14 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (shouldShow(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 			multiModel.addModel(expenseAmountsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
-			multiModel.addModel(budgetDetailsTableModel);
+		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
+			multiModel.addModel(fundingSourceExpenseTableModel);
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(fundingSourceBudgetDetailsTableModel);
 		
-		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
-			multiModel.addModel(fundingSourceExpenseTableModel);
+		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+			multiModel.addModel(budgetDetailsTableModel);
 		
 		mainTable.updateToReflectNewColumns();
 		validate();
