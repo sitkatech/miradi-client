@@ -83,26 +83,11 @@ public class TimePeriodCosts
 	private void addToDataPacks(HashSet<DataPack> dataPacksToUpdate, DataPack dataPackToAdd)
 	{
 		if (dataPacksToUpdate.contains(dataPackToAdd))
-		{
-			DataPack foundDataPack = findDataPack(dataPacksToUpdate, dataPackToAdd);
-			dataPacksToUpdate.remove(dataPackToAdd);
-			dataPackToAdd.addQuantity(foundDataPack.getQuantity());
-		}
+			dataPackToAdd.addQuantity(dataPackToAdd.getQuantity());
 		
 		dataPacksToUpdate.add(dataPackToAdd);
 	}
 	
-	private DataPack findDataPack(HashSet<DataPack> dataPacksToSearch, DataPack dataPackToMatch)
-	{
-		for(DataPack thisDataPack : dataPacksToSearch)
-		{
-			if (thisDataPack.equals(dataPackToMatch))
-				return thisDataPack;
-		}
-		
-		return new DataPack();
-	}
-
 	private void addWorkUnitsToTotal(TimePeriodCosts timePeriodCosts)
 	{
 		addWorkUnitsToTotal(timePeriodCosts.getTotalWorkUnits());
@@ -167,28 +152,29 @@ public class TimePeriodCosts
 	
 	public OptionalDouble getResourceWorkUnits(ORef resourceRef)
 	{
-		return getSafeQuantity(workUnitPacks, resourceRef);
+		return getRolledUpQuantityForRef(workUnitPacks, resourceRef);
 	}
 	
 	public OptionalDouble getFundingSourceWorkUnits(ORef fundingSourceRef)
 	{
-		return getSafeQuantity(workUnitPacks, fundingSourceRef);
+		return getRolledUpQuantityForRef(workUnitPacks, fundingSourceRef);
 	}
 	
 	public OptionalDouble getFundingSourceExpenses(ORef fundingSourceRef)
 	{
-		return getSafeQuantity(expensesPacks, fundingSourceRef);
+		return getRolledUpQuantityForRef(expensesPacks, fundingSourceRef);
 	}
 	
-	private OptionalDouble getSafeQuantity(HashSet<DataPack> dataPacksToSearch, ORef refToFindBy)
+	private OptionalDouble getRolledUpQuantityForRef(HashSet<DataPack> dataPacksToSearch, ORef refToFindBy)
 	{
+		OptionalDouble totalQuantityForRef = new OptionalDouble();
 		for(DataPack thisDataPack : dataPacksToSearch)
 		{
 			if (thisDataPack.containsRef(refToFindBy))
-				return thisDataPack.getQuantity();
+				totalQuantityForRef = totalQuantityForRef.add(thisDataPack.getQuantity());
 		}
 		
-		return new OptionalDouble();
+		return totalQuantityForRef;
 	}
 	
 	protected void mergeAllTimePeriodCosts(TimePeriodCosts timePeriodCostsToMergeAdd)
@@ -454,7 +440,10 @@ public class TimePeriodCosts
 			if (!fundingSourceRef.equals(other.fundingSourceRef))
 				return false;
 			
-			return resourceRef.equals(other.resourceRef);
+			if (!resourceRef.equals(other.resourceRef))
+				return false;
+			
+			return quantity.equals(other.quantity);
 		}
 		
 		@Override
