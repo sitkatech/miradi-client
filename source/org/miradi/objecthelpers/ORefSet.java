@@ -103,4 +103,9 @@ public class ORefSet extends HashSet<ORef>
 		
 		return newList;
 	}
+	
+	public void addRef(BaseObject baseObject)
+	{
+		add(baseObject.getRef());
+	}
 }

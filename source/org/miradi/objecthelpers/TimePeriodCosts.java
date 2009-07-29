@@ -244,11 +244,8 @@ public class TimePeriodCosts
 		HashSet<DataPack> dataPacksToRemove = new HashSet();
 		for(DataPack dataPackToFilter : dataPacks)
 		{
-			for(ORef ref : refsToRetain)
-			{
-				if (!dataPackToFilter.containsRef(ref))
-					dataPacksToRemove.add(dataPackToFilter);
-			}
+			if (dataPackToFilter.containsAny(refsToRetain))
+				dataPacksToRemove.add(dataPackToFilter);
 		}
 		
 		for(DataPack dataPackToRemove : dataPacksToRemove)
@@ -396,6 +393,17 @@ public class TimePeriodCosts
 			return allContainingRefs;
 		}
 		
+		public boolean containsAny(ORefSet refsToRetain)
+		{
+			for(ORef ref : refsToRetain)
+			{
+				if (containsRef(ref))
+					return false;
+			}
+			
+			return true;
+		}
+				
 		public boolean containsRef(ORef refToMatch)
 		{
 			if (resourceRef.equals(refToMatch))
