@@ -29,11 +29,9 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
@@ -44,20 +42,6 @@ abstract public class AbstractFundingSourceBudgetDetailsTableModel extends Assig
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}
 	
-	@Override
-	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
-	{
-		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
-		if (FundingSource.is(baseObject))
-		{
-			ORefSet fundingSoruceRefsToRetain = new ORefSet(baseObject);
-			timePeriodCosts.filterFundingSourcesExpenses(fundingSoruceRefsToRetain);
-			timePeriodCosts.filterFundingSourcesWorkUnits(fundingSoruceRefsToRetain);
-		}
-		
-		return calculateValue(timePeriodCosts);
-	}
-
 	@Override
 	protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts)
 	{
