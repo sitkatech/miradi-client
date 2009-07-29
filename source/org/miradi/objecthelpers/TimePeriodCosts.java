@@ -326,8 +326,8 @@ public class TimePeriodCosts
 	public String toString()
 	{
 		String asString = "";
-		asString = "expense = " + getTotalExpense() + "\n";		
-		asString += "\nTotalWorkUnits = " + getTotalWorkUnits() + "\n";
+		asString = "TotalExpenses = " + getTotalExpense() + "\n";		
+		asString += "TotalWorkUnits = " + getTotalWorkUnits() + "\n";
 		
 		return asString;
 	}
