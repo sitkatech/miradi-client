@@ -201,17 +201,17 @@ public class TimePeriodCosts
 	{
 		addExpensesToTotal(timePeriodCostsToMergeAdd);
 		
-		mergeDataPackInPlace(expensesPacks, timePeriodCostsToMergeAdd.expensesPacks);
+		mergeDataPackSetInPlace(expensesPacks, timePeriodCostsToMergeAdd.expensesPacks);
 	}
 	
 	public void mergeAllWorkUnitDataPackInPlace(TimePeriodCosts timePeriodCostsToMerge)
 	{
 		addWorkUnitsToTotal(timePeriodCostsToMerge);
 		
-		mergeDataPackInPlace(workUnitPacks, timePeriodCostsToMerge.workUnitPacks);
+		mergeDataPackSetInPlace(workUnitPacks, timePeriodCostsToMerge.workUnitPacks);
 	}
 	
-	private void mergeDataPackInPlace(HashSet<DataPack> dataPackToUpdate, HashSet<DataPack> dataPackToMergeFrom)
+	private void mergeDataPackSetInPlace(HashSet<DataPack> dataPackToUpdate, HashSet<DataPack> dataPackToMergeFrom)
 	{
 		for(DataPack thisDataPack : dataPackToMergeFrom)
 		{
