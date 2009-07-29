@@ -244,7 +244,7 @@ public class TimePeriodCosts
 		HashSet<DataPack> dataPacksToRemove = new HashSet();
 		for(DataPack dataPackToFilter : dataPacks)
 		{
-			if (dataPackToFilter.containsNon(refsToRetain))
+			if (dataPackToFilter.containsNone(refsToRetain))
 				dataPacksToRemove.add(dataPackToFilter);
 		}
 		
@@ -393,7 +393,7 @@ public class TimePeriodCosts
 			return allContainingRefs;
 		}
 		
-		public boolean containsNon(ORefSet refsToRetain)
+		public boolean containsNone(ORefSet refsToRetain)
 		{
 			ORefSet containingRefs = getContainingRefs();
 			containingRefs.retainAll(refsToRetain);
