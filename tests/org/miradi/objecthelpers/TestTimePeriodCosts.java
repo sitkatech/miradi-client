@@ -233,9 +233,11 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	{
 		ProjectResource jill = createProjectResource();
 		ProjectResource fred = createProjectResource();
+		ProjectResource bill = createProjectResource();
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
 		timePeriodCosts.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(12.0)));
 		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(13.0)));
+		timePeriodCosts.add(new TimePeriodCosts(bill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(14.0)));
 		
 		ORefSet resourceRefsToRetain = new ORefSet(jill);
 		resourceRefsToRetain.addRef(fred);
@@ -244,6 +246,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		Set<ORef> resourceRefsAfterFiltering = timePeriodCosts.getResourceRefSet();
 		assertTrue("fred was filtered out?", resourceRefsAfterFiltering.contains(fred.getRef()));	
 		assertTrue("jill was filtered out?", resourceRefsAfterFiltering.contains(jill.getRef()));
+		assertFalse("bill was not filtered out?", resourceRefsAfterFiltering.contains(bill.getRef()));
 	}
 
 	private ORef createFundingSource() throws Exception
