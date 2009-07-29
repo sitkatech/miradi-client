@@ -72,7 +72,7 @@ public class TestORefList extends EAMTestCase
 		ORef objectRef2 = new ORef(ObjectType.GOAL, BaseId.INVALID);
 		ORef objectRef3 = new ORef(ObjectType.TASK, BaseId.INVALID);
 		ORefList objRefList = new ORefList(new ORef[] {objectRef1, objectRef2, objectRef3});
-		ORefList goalList = objRefList.filterByType(ObjectType.GOAL);
+		ORefList goalList = objRefList.getFilteredBy(ObjectType.GOAL);
 		assertTrue(goalList.size()==2);
 		assertTrue(goalList.contains(objectRef1));
 		assertTrue(goalList.contains(objectRef2));
