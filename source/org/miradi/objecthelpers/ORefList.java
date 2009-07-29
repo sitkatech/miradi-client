@@ -268,7 +268,7 @@ public class ORefList
 		return result;
 	}
 
-	public ORefList filterByType(int typeToFilterOn)
+	public ORefList getFilteredBy(int typeToFilterOn)
 	{
 		ORefList newList = new ORefList();
 		for(int i = 0; i < data.size(); ++i)

@@ -59,7 +59,7 @@ public class GroupBoxLinkListTable extends ObjectListTable
 
 	private DiagramLink getNonGroupBoxDiagramLink(ORefList selectedHierarchy)
 	{
-		ORefList diagramLinkRefs = selectedHierarchy.filterByType(DiagramLink.getObjectType());
+		ORefList diagramLinkRefs = selectedHierarchy.getFilteredBy(DiagramLink.getObjectType());
 		for (int index = 0; index < diagramLinkRefs.size(); ++index)
 		{
 			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
