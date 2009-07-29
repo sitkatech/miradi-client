@@ -260,13 +260,8 @@ public class TimePeriodCosts
 		{
 			for(ORef ref : refsToRetain)
 			{
-				if (dataPackToFilter.getFundingSourceRef().equals(ref))
-					continue;
-				
-				if (dataPackToFilter.getResourceRef().equals(ref))
-					continue;
-				
-				dataPacksToRemove.add(dataPackToFilter);
+				if (!dataPackToFilter.containsRef(ref))
+					dataPacksToRemove.add(dataPackToFilter);
 			}
 		}
 		
