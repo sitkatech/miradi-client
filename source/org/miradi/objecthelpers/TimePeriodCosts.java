@@ -72,9 +72,9 @@ public class TimePeriodCosts
 		addDataPack(workUnitPacks, timePeriodCosts.workUnitPacks);
 	}
 	
-	private void addDataPack(HashSet<DataPack> packToUpdate, HashSet<DataPack> packToAdd)
+	private void addDataPack(HashSet<DataPack> packToUpdate, HashSet<DataPack> packsToAdd)
 	{
-		for(DataPack thisDataPack : packToAdd)
+		for(DataPack thisDataPack : packsToAdd)
 		{
 			addToDataPacks(packToUpdate, thisDataPack);
 		}
