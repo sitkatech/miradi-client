@@ -347,13 +347,9 @@ public class TimePeriodCosts
 		ORefSet extractedRefs = new ORefSet();
 		for(DataPack dataPack : dataPacksToUse)
 		{
-			ORef resourceRef = dataPack.getResourceRef();
-			if (resourceRef.getObjectType() == type)
-				extractedRefs.add(resourceRef);
-			
-			ORef fundingSourceRef = dataPack.getFundingSourceRef();
-			if (fundingSourceRef.getObjectType() == type)
-				extractedRefs.add(fundingSourceRef);
+			ORefSet containingRefs = dataPack.getContainingRefs();
+			ORefSet filteredRefs = containingRefs.filterByType(type);
+			extractedRefs.addAll(filteredRefs);
 		}
 		
 		return extractedRefs;
@@ -403,6 +399,15 @@ public class TimePeriodCosts
 			resourceRef = resourceRefToUse;
 			fundingSourceRef = fundingSourceRefToUse;
 			quantity = quantityToUse;
+		}
+		
+		public ORefSet getContainingRefs()
+		{
+			ORefSet allContainingRefs = new ORefSet();
+			allContainingRefs.add(getResourceRef());
+			allContainingRefs.add(getFundingSourceRef());
+			
+			return allContainingRefs;
 		}
 		
 		public boolean containsRef(ORef refToMatch)

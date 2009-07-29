@@ -91,4 +91,16 @@ public class ORefSet extends HashSet<ORef>
 	{
 		return new ORefList(toArray(new ORef[0]));
 	}
+	
+	public ORefSet filterByType(int typeToFilterOn)
+	{
+		ORefSet newList = new ORefSet();
+		for(ORef ref : this)
+		{
+			if (ref.getObjectType() == typeToFilterOn)
+				newList.add(ref);	
+		}
+		
+		return newList;
+	}
 }
