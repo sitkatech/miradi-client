@@ -80,16 +80,16 @@ public class TimePeriodCosts
 		}
 	}
 	
-	private void addToDataPacks(HashSet<DataPack> dataPackToUpdate, DataPack dataPackToAdd)
+	private void addToDataPacks(HashSet<DataPack> dataPacksToUpdate, DataPack dataPackToAdd)
 	{
-		if (dataPackToUpdate.contains(dataPackToAdd))
+		if (dataPacksToUpdate.contains(dataPackToAdd))
 		{
-			DataPack foundDataPack = findDataPack(dataPackToUpdate, dataPackToAdd);
-			dataPackToUpdate.remove(dataPackToAdd);
+			DataPack foundDataPack = findDataPack(dataPacksToUpdate, dataPackToAdd);
+			dataPacksToUpdate.remove(dataPackToAdd);
 			dataPackToAdd.addQuantity(foundDataPack.getQuantity());
 		}
 		
-		dataPackToUpdate.add(dataPackToAdd);
+		dataPacksToUpdate.add(dataPackToAdd);
 	}
 	
 	private DataPack findDataPack(HashSet<DataPack> dataPacksToSearch, DataPack dataPackToMatch)
