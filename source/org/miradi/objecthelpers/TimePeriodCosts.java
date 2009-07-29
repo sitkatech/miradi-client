@@ -334,7 +334,7 @@ public class TimePeriodCosts
 		for(DataPack dataPack : dataPacksToUse)
 		{
 			ORefSet containingRefs = dataPack.getContainingRefs();
-			ORefSet filteredRefs = containingRefs.filterByType(type);
+			ORefSet filteredRefs = containingRefs.getFilteredBy(type);
 			extractedRefs.addAll(filteredRefs);
 		}
 		
