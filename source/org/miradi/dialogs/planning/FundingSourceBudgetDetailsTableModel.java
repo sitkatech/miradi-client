@@ -21,8 +21,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.utils.OptionalDouble;
 
 public class FundingSourceBudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsTableModel
 {
@@ -35,6 +41,20 @@ public class FundingSourceBudgetDetailsTableModel extends AbstractFundingSourceB
 	public String getColumnGroupCode(int modelColumn)
 	{
 		return CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE;
+	}
+	
+	@Override
+	protected OptionalDouble getOptionalDoubleData(BaseObject baseObject, DateUnit dateUnit) throws Exception
+	{
+		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
+		if (FundingSource.is(baseObject))
+		{
+			ORefSet fundingSoruceRefsToRetain = new ORefSet(baseObject);
+			timePeriodCosts.filterFundingSourcesExpenses(fundingSoruceRefsToRetain);
+			timePeriodCosts.filterFundingSourcesWorkUnits(fundingSoruceRefsToRetain);
+		}
+		
+		return calculateValue(timePeriodCosts);
 	}
 	
 	@Override
