@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
 
@@ -245,7 +244,7 @@ public class TimePeriodCosts
 		if (refsToRetain.contains(ORef.INVALID))
 			EAM.logError("WARNING: Filtering on invalid ref with no type");
 		
-		HashSet<DataPack> dataPacksToRemove = new HashSet();
+		Vector<DataPack> dataPacksToRemove = new Vector();
 		for(DataPack dataPackToFilter : dataPacks)
 		{
 			if (dataPackToFilter.containsNone(refsToRetain))
