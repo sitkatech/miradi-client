@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitEffortListData;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
@@ -107,7 +108,10 @@ abstract public class Assignment extends BaseObject
 			tpcm.add(dateUnitEffort.getDateUnit(), timePeriodCosts);
 		}
 		
-		return tpcm;	
+		if(tpcm.size() == 0)
+			tpcm.add(new DateUnit(), createTimePeriodCosts(new OptionalDouble()));
+
+		return tpcm;
 	}
 	
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);

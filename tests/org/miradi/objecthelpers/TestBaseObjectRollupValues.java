@@ -20,9 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objecthelpers;
 
+import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Task;
+import org.miradi.utils.DateUnitEffortList;
 
 public class TestBaseObjectRollupValues extends TestCaseWithProject
 {
@@ -57,6 +62,39 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		
 		TimePeriodCosts timePeriodCosts2009 = timePeriodCostsMap.calculateTimePeriodCosts(year2009);
 		assertEquals("wrong total for 2009?", 15.0, timePeriodCosts2009.getTotalWorkUnits().getValue());
+	}
+	
+	public void testRollupResourceAssignmentsWithNoQuantities() throws Exception
+	{
+		ResourceAssignment assignment = getProject().createResourceAssignment();
+		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
+
+		Task taskWithResourceAssignment = getProject().createTask();
+		IdList currentAssignmentIdList = taskWithResourceAssignment.getResourceAssignmentIdList();
+		currentAssignmentIdList.add(assignment.getId());
+		taskWithResourceAssignment.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+		
+		assertNotEquals("Ignored the resource assignment who?", 0, taskWithResourceAssignment.getTotalTimePeriodCostsMap().size());
+	}
+	
+	public void testRollupExpenseAssignmentsWithNoQuantities() throws Exception
+	{
+		ORef expenseRef = getProject().createObject(ExpenseAssignment.getObjectType());
+		ExpenseAssignment assignment = ExpenseAssignment.find(getProject(), expenseRef);
+		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
+
+		Task taskWithExpenseAssignment = getProject().createTask();
+		ORefList currentAssignmentRefList = taskWithExpenseAssignment.getExpenseAssignmentRefs();
+		currentAssignmentRefList.add(assignment.getRef());
+		taskWithExpenseAssignment.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
+		
+		assertNotEquals("Ignored the expense assignment who?", 0, taskWithExpenseAssignment.getTotalTimePeriodCostsMap().size());
+	}
+	
+	public void testRollupExpenseAssignmentsWithNoAssignments() throws Exception
+	{
+		Task taskWithNoAssignments = getProject().createTask();
+		assertEquals("Had a who?", 0, taskWithNoAssignments.getTotalTimePeriodCostsMap().size());
 	}
 	
 	private DateUnit year2009Q1;
