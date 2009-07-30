@@ -278,6 +278,22 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertTrue("jill was filtered out?", resourceRefsAfterFiltering.contains(jill.getRef()));
 		assertFalse("bill was not filtered out?", resourceRefsAfterFiltering.contains(bill.getRef()));
 	}
+	
+	public void testFilterDuplicateResources() throws Exception
+	{
+		ProjectResource jill = createProjectResource();
+		ProjectResource fred = createProjectResource();
+		
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
+		timePeriodCosts.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(60.0)));
+		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(30.0)));
+		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(30.0)));
+		
+		ORefSet resourceRefsToRetain = new ORefSet(jill);
+		timePeriodCosts.filterProjectResources(resourceRefsToRetain);
+		Set<ORef> resourceRefsAfterFiltering = timePeriodCosts.getResourceRefSet();
+		assertFalse("both freds were not removed?", resourceRefsAfterFiltering.contains(fred.getRef()));
+	}
 
 	private ORef createFundingSource() throws Exception
 	{
