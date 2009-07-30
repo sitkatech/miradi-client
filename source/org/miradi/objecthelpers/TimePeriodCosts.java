@@ -21,6 +21,7 @@ package org.miradi.objecthelpers;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Vector;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.FundingSource;
@@ -32,8 +33,8 @@ public class TimePeriodCosts
 {
 	public TimePeriodCosts()
 	{
-		workUnitPacks = new HashSet();
-		expensesPacks = new HashSet();
+		workUnitPacks = new Vector();
+		expensesPacks = new Vector();
 
 		totalExpenses = new OptionalDouble();
 		totalWorkUnits = new OptionalDouble();
@@ -72,22 +73,19 @@ public class TimePeriodCosts
 		addDataPack(workUnitPacks, timePeriodCosts.workUnitPacks);
 	}
 	
-	private void addDataPack(HashSet<DataPack> packToUpdate, HashSet<DataPack> packsToAdd)
+	private void addDataPack(Vector<DataPack> packToUpdate, Vector<DataPack> packsToAdd)
 	{
+		if (packToUpdate == packsToAdd)
+			throw new RuntimeException(EAM.text("Cannot add a vector to itself."));
+		
 		for(DataPack thisDataPack : packsToAdd)
 		{
 			addToDataPacks(packToUpdate, thisDataPack);
 		}
 	}
 	
-	private void addToDataPacks(HashSet<DataPack> dataPacksToUpdate, DataPack dataPackToAdd)
+	private void addToDataPacks(Vector<DataPack> dataPacksToUpdate, DataPack dataPackToAdd)
 	{
-		if (dataPacksToUpdate.contains(dataPackToAdd))
-		{
-			dataPacksToUpdate.remove(dataPackToAdd);
-			dataPackToAdd.addQuantity(dataPackToAdd.getQuantity());
-		}
-		
 		dataPacksToUpdate.add(dataPackToAdd);
 	}
 	
@@ -132,7 +130,7 @@ public class TimePeriodCosts
 	private OptionalDouble calculateResourcesTotalCost(Project projectToUse)
 	{
 		OptionalDouble resourcesTotalCost = new OptionalDouble();
-		Set<DataPack> dataPacks = workUnitPacks;
+		Vector<DataPack> dataPacks = workUnitPacks;
 		for(DataPack thisDataPack : dataPacks)
 		{
 			OptionalDouble costPerUnit = getCostPerUnit(projectToUse, thisDataPack.getResourceRef());
@@ -168,7 +166,7 @@ public class TimePeriodCosts
 		return getRolledUpQuantityForRef(expensesPacks, fundingSourceRef);
 	}
 	
-	private OptionalDouble getRolledUpQuantityForRef(HashSet<DataPack> dataPacksToSearch, ORef refToFindBy)
+	private OptionalDouble getRolledUpQuantityForRef(Vector<DataPack> dataPacksToSearch, ORef refToFindBy)
 	{
 		OptionalDouble totalQuantityForRef = new OptionalDouble();
 		for(DataPack thisDataPack : dataPacksToSearch)
@@ -200,7 +198,7 @@ public class TimePeriodCosts
 		mergeDataPackSetInPlace(workUnitPacks, timePeriodCostsToMerge.workUnitPacks);
 	}
 	
-	private void mergeDataPackSetInPlace(HashSet<DataPack> dataPackToUpdate, HashSet<DataPack> dataPackToMergeFrom)
+	private void mergeDataPackSetInPlace(Vector<DataPack> dataPackToUpdate, Vector<DataPack> dataPackToMergeFrom)
 	{
 		for(DataPack thisDataPack : dataPackToMergeFrom)
 		{
@@ -227,7 +225,7 @@ public class TimePeriodCosts
 		filterWorkUnitRelated(workUnitPacks, fundingSourceRefsToRetain);
 	}
 	
-	private void filterWorkUnitRelated(HashSet<DataPack> dataPacks, ORefSet projectResourceRefsToRetain)
+	private void filterWorkUnitRelated(Vector<DataPack> dataPacks, ORefSet projectResourceRefsToRetain)
 	{
 		filterDataPacks(dataPacks, projectResourceRefsToRetain);
 		updateTotalWorkUnits(workUnitPacks);
@@ -239,7 +237,7 @@ public class TimePeriodCosts
 		updateTotalExpenses(expensesPacks);
 	}
 	
-	private void filterDataPacks(HashSet<DataPack> dataPacks, ORefSet refsToRetain)
+	private void filterDataPacks(Vector<DataPack> dataPacks, ORefSet refsToRetain)
 	{
 		if (refsToRetain.size() == 0)
 			return;
@@ -260,17 +258,17 @@ public class TimePeriodCosts
 		}
 	}
 	
-	private void updateTotalExpenses(HashSet<DataPack> dataPacks)
+	private void updateTotalExpenses(Vector<DataPack> dataPacks)
 	{
 		totalExpenses = getTotal(dataPacks);		
 	}
 
-	private void updateTotalWorkUnits(HashSet<DataPack> dataPacks)
+	private void updateTotalWorkUnits(Vector<DataPack> dataPacks)
 	{
 		totalWorkUnits = getTotal(dataPacks);
 	}
 	
-	private OptionalDouble getTotal(HashSet<DataPack> dataPacks)
+	private OptionalDouble getTotal(Vector<DataPack> dataPacks)
 	{
 		OptionalDouble totals = new OptionalDouble();
 		for(DataPack dataPack: dataPacks)
@@ -331,7 +329,7 @@ public class TimePeriodCosts
 		return extractRefs(expensesPacks, FundingSource.getObjectType());
 	}
 	
-	private ORefSet extractRefs(HashSet<DataPack> dataPacksToUse, int type)
+	private ORefSet extractRefs(Vector<DataPack> dataPacksToUse, int type)
 	{
 		ORefSet extractedRefs = new ORefSet();
 		for(DataPack dataPack : dataPacksToUse)
@@ -471,6 +469,6 @@ public class TimePeriodCosts
 	private OptionalDouble totalExpenses;
 	private OptionalDouble totalWorkUnits;
 	
-	private HashSet<DataPack> workUnitPacks;
-	private HashSet<DataPack> expensesPacks;
+	private Vector<DataPack> workUnitPacks;
+	private Vector<DataPack> expensesPacks;
 }
