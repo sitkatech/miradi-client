@@ -113,7 +113,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		timePeriodCosts.add(new TimePeriodCosts());
 		assertEquals("wrong work unit for funding source after addition?", 10.0, timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 		
-		timePeriodCosts.add(timePeriodCosts);
+		timePeriodCosts.add(new TimePeriodCosts(timePeriodCosts));
 		assertEquals("wrong work unit for funding source after addition?", 20.0, timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 	}
 	
@@ -180,6 +180,22 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		total.filterProjectResources(new ORefSet());
 		
 		assertEquals("wrong total work units?", 2.0, total.getTotalWorkUnits().getValue());
+	}
+	
+	public void testWorkUnitTotalsAfterMergeAllWithDoubledValues()
+	{
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(4.0));
+		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(8.0));
+		TimePeriodCosts timePeriodCosts3 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(4.0));
+		
+		TimePeriodCosts total = new TimePeriodCosts();
+		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts1);
+		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts2);
+		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts3);
+		
+		total.filterProjectResources(new ORefSet());
+		
+		assertEquals("wrong total work units?", 16.0, total.getTotalWorkUnits().getValue());
 	}
 	
 	public void testProjectResourceFilter() throws Exception
