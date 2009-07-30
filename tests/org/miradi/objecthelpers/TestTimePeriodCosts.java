@@ -168,6 +168,20 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("funding source was not merged?", 22.0, totalTimePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
 	}
 	
+	public void testWorkUnitTotalsAfterMergeAll()
+	{
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(1.0));
+		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(1.0));
+		
+		TimePeriodCosts total = new TimePeriodCosts();
+		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts1);
+		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts2);
+		
+		total.filterProjectResources(new ORefSet());
+		
+		assertEquals("wrong total work units?", 2.0, total.getTotalWorkUnits().getValue());
+	}
+	
 	public void testProjectResourceFilter() throws Exception
 	{
 		TimePeriodCosts empty = new TimePeriodCosts();

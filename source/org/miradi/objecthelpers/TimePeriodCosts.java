@@ -83,7 +83,10 @@ public class TimePeriodCosts
 	private void addToDataPacks(HashSet<DataPack> dataPacksToUpdate, DataPack dataPackToAdd)
 	{
 		if (dataPacksToUpdate.contains(dataPackToAdd))
+		{
+			dataPacksToUpdate.remove(dataPackToAdd);
 			dataPackToAdd.addQuantity(dataPackToAdd.getQuantity());
+		}
 		
 		dataPacksToUpdate.add(dataPackToAdd);
 	}
