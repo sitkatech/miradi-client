@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-30 16:49-0500\n"
+"POT-Creation-Date: 2009-07-30 17:10-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2481,11 +2481,11 @@ msgstr "Error"
 msgid "--Select a classification--"
 msgstr "--Pilih klasifikasi-- "
 
-#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:79
+#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:78
 msgid "Cannot add a vector to itself."
 msgstr ""
 
-#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:371
+#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:370
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
