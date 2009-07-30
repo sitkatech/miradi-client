@@ -244,17 +244,14 @@ public class TimePeriodCosts
 		if (refsToRetain.contains(ORef.INVALID))
 			EAM.logError("WARNING: Filtering on invalid ref with no type");
 		
-		Vector<DataPack> dataPacksToRemove = new Vector();
+		Vector<DataPack> dataPacksToRetain = new Vector();
 		for(DataPack dataPackToFilter : dataPacks)
 		{
-			if (dataPackToFilter.containsNone(refsToRetain))
-				dataPacksToRemove.add(dataPackToFilter);
+			if (dataPackToFilter.containsAtleastOne(refsToRetain))
+				dataPacksToRetain.add(dataPackToFilter);
 		}
 		
-		for(DataPack dataPackToRemove : dataPacksToRemove)
-		{
-			dataPacks.remove(dataPackToRemove);
-		}
+		dataPacks.retainAll(dataPacksToRetain);
 	}
 	
 	private void updateTotalExpenses(Vector<DataPack> dataPacks)
@@ -396,14 +393,14 @@ public class TimePeriodCosts
 			return allContainingRefs;
 		}
 		
-		public boolean containsNone(ORefSet refsToRetain)
+		public boolean containsAtleastOne(ORefSet refsToRetain)
 		{
 			ORefSet containingRefs = getContainingRefs();
 			containingRefs.retainAll(refsToRetain);
 			
-			return containingRefs.size() == 0; 
+			return containingRefs.size() > 0;
 		}
-				
+		
 		public boolean containsRef(ORef refToMatch)
 		{
 			if (resourceRef.equals(refToMatch))
