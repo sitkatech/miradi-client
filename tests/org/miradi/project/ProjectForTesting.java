@@ -433,13 +433,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return BaseObject.find(this, baseObjectRef);
 	}
 	
-	public Task createTaskWithWho() throws Exception
-	{
-		Task task = createAndPopulateTask("some label");
-		
-		return task;
-	}
-	
 	public Task createTask() throws Exception
 	{
 		ORef taskRef = createObject(Task.getObjectType());
