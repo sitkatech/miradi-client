@@ -241,6 +241,9 @@ public class TimePeriodCosts
 		if (refsToRetain.size() == 0)
 			return;
 		
+		if (refsToRetain.contains(ORef.INVALID))
+			EAM.logError("WARNING: Filtering on invalid ref with no type");
+		
 		HashSet<DataPack> dataPacksToRemove = new HashSet();
 		for(DataPack dataPackToFilter : dataPacks)
 		{
