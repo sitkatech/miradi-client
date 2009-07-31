@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-30 17:18-0500\n"
+"POT-Creation-Date: 2009-07-31 16:49-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -4011,11 +4011,11 @@ msgstr "Install Sample Project"
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Perangkat Lunak Manajemen Adaptif untuk Proyek Konservasi "
 
-#: miradi/source/org/miradi/main/MainWindow.java:274
+#: miradi/source/org/miradi/main/MainWindow.java:273
 msgid "Information"
 msgstr "Informasi "
 
-#: miradi/source/org/miradi/main/MainWindow.java:483
+#: miradi/source/org/miradi/main/MainWindow.java:482
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -4025,11 +4025,11 @@ msgstr ""
 "Anda mungkin mencoba menampilkan proyek lama yang berisi perintah yang tidak "
 "berlaku yang tidak didukung lagi. "
 
-#: miradi/source/org/miradi/main/MainWindow.java:488
+#: miradi/source/org/miradi/main/MainWindow.java:487
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:492
+#: miradi/source/org/miradi/main/MainWindow.java:491
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -4037,33 +4037,33 @@ msgstr ""
 "Proyek tersebut tidak bisa dibuka karena dibuat oleh versi baru dari "
 "aplikasi ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:496
+#: miradi/source/org/miradi/main/MainWindow.java:495
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: miradi/source/org/miradi/main/MainWindow.java:501
+#: miradi/source/org/miradi/main/MainWindow.java:500
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
-#: miradi/source/org/miradi/main/MainWindow.java:634
+#: miradi/source/org/miradi/main/MainWindow.java:633
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 "RencanaKerja/Data Keuangan di luar tanggal awal/akhir proyek tidak akan "
 "ditampakkan "
 
-#: miradi/source/org/miradi/main/MainWindow.java:664
+#: miradi/source/org/miradi/main/MainWindow.java:663
 msgid "WARNING: Project end date before start date."
 msgstr "PERINGATAN: Tanggal akhir proyek lebih awal daripada tanggal mulai. "
 
-#: miradi/source/org/miradi/main/MainWindow.java:1010
+#: miradi/source/org/miradi/main/MainWindow.java:1009
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
-#: miradi/source/org/miradi/main/MainWindow.java:1027
+#: miradi/source/org/miradi/main/MainWindow.java:1026
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
