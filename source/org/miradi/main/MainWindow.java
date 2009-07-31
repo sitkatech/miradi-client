@@ -137,7 +137,6 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 			if(!VersionConstants.hasValidTimestamp())
 				EAM.logWarning("Invalid or missing Miradi build identifier");
 		}
-
 		
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
