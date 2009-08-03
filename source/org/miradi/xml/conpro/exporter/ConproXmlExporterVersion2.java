@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
 import org.martus.util.UnicodeWriter;
@@ -40,6 +41,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectToStringSorter;
+import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Desire;
@@ -64,6 +66,7 @@ import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.ValueOption;
+import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -799,8 +802,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		String tncProjectSharingCode = getProject().getObjectData(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE);
 		writeStartElementWithAttribute(out, PROJECT_SUMMARY, SHARE_OUTSIDE_ORGANIZATION, tncProjectSharingToXmlValue(tncProjectSharingCode));
 	
-	//FIXME urgent conpro temporarly not importing project id.  need to uncoment this and inside the schema and import project id
-			//writeProjectId(out);
+			writeProjectId(out);
 			
 			//TODO,  need to write out read project ids			
 //			out.writeln("<parent_project_id context='ConPro'>");
@@ -902,29 +904,28 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		return getProject().getFilename();
 	}
 
-	//FIXME urgent conpro uncomment and fix
-//	private void writeProjectId(UnicodeWriter out) throws Exception
-//	{
-//		String stringRefMapAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
-//		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
-//		Set keys = stringRefMap.getKeys();
-//		for(Object key: keys)
-//		{
-//			ORef xenodataRef = stringRefMap.getValue((String) key);
-//			if (xenodataRef.isInvalid())
-//			{
-//				EAM.logWarning("Invalid Xenodata ref found for key: " + key + " while exporting.");
-//				continue;
-//			}
-//
-//			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
-//			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
-//
-//			writeStartElementWithAttribute(out, PROJECT_ID, CONTEXT_ATTRIBUTE, key.toString());
-//			writeXmlEncodedData(out, projectId);
-//			writeEndElement(out, PROJECT_ID);
-//		}
-//	}
+	private void writeProjectId(UnicodeWriter out) throws Exception
+	{
+		String stringRefMapAsString = getProject().getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
+		StringRefMap stringRefMap = new StringRefMap(stringRefMapAsString);
+		Set keys = stringRefMap.getKeys();
+		for(Object key: keys)
+		{
+			ORef xenodataRef = stringRefMap.getValue((String) key);
+			if (xenodataRef.isInvalid())
+			{
+				EAM.logWarning("Invalid Xenodata ref found for key: " + key + " while exporting.");
+				continue;
+			}
+
+			Xenodata xenodata = Xenodata.find(getProject(), xenodataRef);
+			String projectId = xenodata.getData(Xenodata.TAG_PROJECT_ID);
+
+			writeStartElementWithAttribute(out, PROJECT_ID, CONTEXT_ATTRIBUTE, key.toString());
+			writeXmlEncodedData(out, projectId);
+			writeEndElement(out, PROJECT_ID);
+		}
+	}
 
 	private String getComputedTncViability()
 	{

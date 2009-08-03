@@ -183,10 +183,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	private String createConproXenodata() throws Exception
 	{
 		ORef xenodataRef1 = createAndPopulateXenodata("1").getRef();
-		ORef xenodataRef2 = createAndPopulateXenodata("2").getRef();
 		StringRefMap refMap = new StringRefMap();
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef1);
-		refMap.add("randomContext", xenodataRef2);
 		
 		return refMap.toString();
 	}
