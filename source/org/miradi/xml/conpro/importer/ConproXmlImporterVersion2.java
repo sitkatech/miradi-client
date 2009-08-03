@@ -814,7 +814,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 
 	private void importThreatRatingValueInMode(Node projectSummaryNode, ORef metadataRef) throws Exception
 	{
-		String stresslessThreatRatingValue = getPathData(projectSummaryNode, new String[]{STRESSLESS_THREAT_RANK, });
+		String stresslessThreatRatingValue = getPathData(projectSummaryNode, new String[]{STRESSLESS_THREAT_RANKING, });
 		String threatRatingModeCode = getThreatRatingMode(stresslessThreatRatingValue);
 		setData(metadataRef, ProjectMetadata.TAG_THREAT_RATING_MODE, threatRatingModeCode);
 	}
