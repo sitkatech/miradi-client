@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-03 16:14-0500\n"
+"POT-Creation-Date: 2009-08-03 16:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2548,7 +2548,7 @@ msgstr "Estadodo actual"
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:298
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:333
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:335
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "Objeto "
@@ -6225,16 +6225,16 @@ msgid ""
 msgstr "Seleccionar las estrategias y actividades relevantes para esta meta. "
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:323
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:358
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:360
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Amenaza "
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:844
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:846
 msgid "Project Description:"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:849
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:851
 msgid "Site/Scope Description:"
 msgstr ""
 
