@@ -1,6 +1,6 @@
-# $LastChangedBy: nima_ansari@hotmail.com $ 
-# $LastChangedDate: 2009-04-14 11:05:44 -0400 (Tue, 14 Apr 2009) $
-# $LastChangedRevision: 33 $ 
+# $LastChangedBy: ecoffman@tnc.org $
+# $LastChangedDate: 2009-08-02 20:38:24 -0400 (Sun, 02 Aug 2009) $
+# $LastChangedRevision: 48 $
 #
 
 namespace cp = "http://services.tnc.org/schema/conservation-project/2-working"
@@ -12,13 +12,15 @@ conservation_project.element =
     [
         documentation [
             "Schema definition to represent a Conservation Project. \x{a}" ~
-            "A Conservation Project is any set of strategies taken by a group of \x{a}" ~
-            "practitioners working to achieve a set of biodiversity goals and \x{a}" ~
-            "objectives within a specified geographic area. Some of these projects \x{a}" ~
-            "occur at single, priority conservation areas. \x{a}" ~
-            "Larger projects involve whole landscapes or multiple conservation \x{a}" ~
-            "areas to address the needs of coarse-scale systems, wide-ranging \x{a}" ~
-            "species, pervasive threats, and far-reaching factors."
+            "A Conservation Project is any set of strategies taken by \x{a}" ~
+            "group of practitioners working to achieve a set of \x{a}" ~
+            "biodiversity goals and objectives within a specified \x{a}" ~
+            "geographic area. Some of these projects occur at single, \x{a}" ~
+            "priority conservation areas. \x{a}" ~
+            "Larger projects involve whole landscapes or multiple \x{a}" ~
+            "conservation areas to address the needs of coarse-scale \x{a}" ~
+            "systems, wide-ranging species, pervasive threats, and \x{a}" ~
+            "far-reaching factors."
         ]
     ]
     element cp:conservation_project {
@@ -34,29 +36,33 @@ conservation_project.element =
 project_summary.element =
     element cp:project_summary {
         attribute share_outside_organization { xsd:boolean }
-        & project_id.element
+# FIXME urgen - temporarly not importing project_id        
+#        & project_id.element
         & parent_project_id.element
         & element cp:name {
               xsd:string { minLength = "1" }
           }
         & element cp:start_date { vocabulary_date }?
-        & area_size.element?
-        & geospatial_location.element?
+        & element cp:data_effective_date { vocabulary_date }?
+        & area_size.element
+        & geospatial_location.element
         & element cp:description_comment { text }?
         & [
               documentation [
-                  "A general summary of the desired state or ultimate condition of the \x{a}" ~
-                  "project area or scope that a project is working to achieve. A good \x{a}" ~
-                  "vision statement meets the criteria of being relatively general, \x{a}" ~
-                  "visionary and brief. For most biodiversity conservation projects, \x{a}" ~
-                  "the vision will describe the desired state of the biodiversity \x{a}" ~
-                  "of the project area."
+                  "A general summary of the desired state or ultimate \x{a}" ~
+                  "condition of the project area or scope that a \x{a}" ~
+                  "project is working to achieve. A good vision \x{a}" ~
+                  "statement meets the criteria of being relatively \x{a}" ~
+                  "general, visionary and brief. \x{a}" ~
+                  "For most biodiversity conservation projects, \x{a}" ~
+                  "the vision will describe the desired state of the \x{a}" ~
+                  "biodiversity of the project area."
               ]
           ]
           element cp:goal_comment { text }?
         & element cp:planning_team_comment { text }?
         & element cp:lessons_learned { text }?
-        & element cp:stressless_threat_rank { vocabulary_ranking_vhhml }?
+        & element cp:stressless_threat_ranking { xsd:boolean }?
         & element cp:project_threat_rank { vocabulary_ranking_vhhml }?
         & element cp:project_viability_rank { vocabulary_rating_vggfp }?
         & team.element
@@ -75,49 +81,51 @@ project_id.element =
         # Context, for now, is 'ConPro.' Revisit as required.
         attribute context { xsd:NMTOKEN }
         & xsd:NMTOKEN
-    }*
+    }?
 #
 parent_project_id.element =
     element cp:parent_project_id {
         # Context, for now, is 'ConPro.' Revisit as required.
         attribute context { xsd:NMTOKEN }
         & xsd:NMTOKEN
-    }*
+    }?
 #
 area_size.element =
     element cp:area_size {
         attribute unit { vocabulary_area_unit }
         & xsd:nonNegativeInteger
-    }
+    }?
 #
 geospatial_location.element =
     element cp:geospatial_location {
         attribute type { vocabulary_geospatial_type }
         & element cp:latitude { xsd:decimal }?
         & element cp:longitude { xsd:decimal }?
-    }
+    }?
 #
 team.element =
     element cp:team {
         element cp:person {
             element cp:role { vocabulary_team }+
-            & element cp:givenname { xsd:string }?
-            & element cp:surname { xsd:string }?
-            & element cp:email { xsd:string }?
+            & element cp:givenname { xsd:string }
+            & element cp:surname { xsd:string }
+            & element cp:email { xsd:string }
             & element cp:phone { xsd:string }?
             & element cp:organization { xsd:string }?
-        }*
+        }+
     }
 #
 ecoregions.element =
     element cp:ecoregions {
         [
             documentation [
-                "Ecoregions are relatively large geographic areas of land and water \x{a}" ~
-                "delineated by climate, vegetation, geology, and other ecological and \x{a}" ~
-                "environmental patterns. Ecoregional targets are the species, ecological \x{a}" ~
-                "communities, and ecological systems within a given ecoregion \x{a}" ~
-                "systems within a given ecoregion used to set conservation priorities."
+                "Ecoregions are relatively large geographic areas of \x{a}" ~
+                "land and water delineated by climate, vegetation, \x{a}" ~
+                "geology, and other ecological and environmental \x{a}" ~
+                "patterns. Ecoregional targets are the species, \x{a}" ~
+                "ecological communities, and ecological systems within \x{a}" ~
+                "a given ecoregion systems within a given ecoregion \x{a}" ~
+                "used to set conservation priorities."
             ]
         ]
         element cp:ecoregion_code { vocabulary_ecoregion }*
@@ -127,7 +135,8 @@ countries.element =
     element cp:countries {
         [
             documentation [
-                "These codes are the 3 letter country code(s) provided by the ISO 3166-1."
+                "These codes are the 3 letter country code(s) provided \x{a}" ~
+                "by the ISO 3166-1."
             ]
         ]
         element cp:country_code { vocabulary_country }*
@@ -137,7 +146,8 @@ ous.element =
     element cp:ous {
         [
             documentation [
-                "These are TNC generated 5 character alphanumeric codes to describe Operating Units at TNC."
+                "These are TNC generated 5 character alphanumeric \x{a}" ~
+                "codes to describe Operating Units at TNC."
             ]
         ]
         element cp:ou_code { vocabulary_ou }*
@@ -157,13 +167,15 @@ targets.element =
     element cp:targets {
         [
             documentation [
-                "A limited suite of species, communities, and ecological systems \x{a}" ~
-                "that are chosen to represent and encompass the needs of the broader \x{a}" ~
-                "set of biodiversity occurring within a project area. They are the \x{a}" ~
-                "basis for setting goals, carrying out conservation actions, and \x{a}" ~
-                "measuring conservation effectiveness. In theory, conservation of the \x{a}" ~
-                "focal targets will ensure conservation of all native biodiversity \x{a}" ~
-                "within functional landscapes."
+                "A limited suite of species, communities, and \x{a}" ~
+                "ecological systems that are chosen to represent and \x{a}" ~
+                "encompass the needs of the broader set of \x{a}" ~
+                "biodiversity occurring within a project area. They \x{a}" ~
+                "are the basis for setting goals, carrying out \x{a}" ~
+                "conservation actions, and measuring conservation \x{a}" ~
+                "effectiveness. In theory, conservation of the \x{a}" ~
+                "focal targets will ensure conservation of all \x{a}" ~
+                "native biodiversity within functional landscapes."
             ]
         ]
         element cp:target {
@@ -195,9 +207,10 @@ nested_targets.element =
     element cp:nested_targets {
         [
             documentation [
-                "Species, ecological communities, or ecological system targets whose \x{a}" ~
-                "conservation needs are subsumed in one or more focal conservation \x{a}" ~
-                "targets. Often includes targets identified as ecoregional targets."
+                "Species, ecological communities, or ecological system \x{a}" ~
+                "targets whose conservation needs are subsumed in one \x{a}" ~
+                "or more focal conservation targets. Often includes \x{a}" ~
+                "targets identified as ecoregional targets."
             ]
         ]
         element cp:nested_target {
@@ -219,17 +232,19 @@ stresses.element =
     element cp:stresses {
         [
             documentation [
-                "Stresses are impairments or degradations of Key Ecological Attributes \x{a}" ~
-                "that ultimately reduce the viability of conservation Targets. \x{a}" ~
-                "Examples: altered vegetation; ecosystem fragmentation. \x{a}" ~
+                "Stresses are impairments or degradations of Key \x{a}" ~
+                "Ecological that ultimately reduce the viability of \x{a}" ~
+                "conservation Targets. \x{a}" ~
+                "Ex: altered vegetation; ecosystem fragmentation. \x{a}" ~
                 "Stresses are subjectively rated as to their: \x{a}" ~
-                "- Scope Ð the proportion of the overall area of a project site \x{a}" ~
-                "          or target occurrence likely to be affected by a threat \x{a}" ~
-                "          within 10 years; \x{a}" ~
-                "- Severity Ð the level of damage to the conservation target that \x{a}" ~
-                "          can reasonably be expected within 10 years under current \x{a}" ~
-                "          circumstances (i.e., given the continuation of the existing \x{a}" ~
-                "          situation)."
+                "* Scope - the proportion of the overall area of a \x{a}" ~
+                "          project site  or target occurrence likely \x{a}" ~
+                "          to be affected by a threat within 10 years; \x{a}" ~
+                "* Severity - the level of damage to the conservation \x{a}" ~
+                "          target that can reasonably be expected \x{a}" ~
+                "          within 10 years under current circumstances \x{a}" ~
+                "          (i.e., given the continuation of the \x{a}" ~
+                "          existing situation)."
             ]
         ]
         element cp:stress {
@@ -239,6 +254,7 @@ stresses.element =
             & element cp:stress_scope { vocabulary_ranking_vhhml }?
             & element cp:stress_to_target_rank { vocabulary_ranking_vhhml }?
             & element cp:stress_ovrd_rank { text }?
+            & element cp:stress_comment { text }?
             & threat_stress_ratings.element
         }*
     }
@@ -247,16 +263,20 @@ threat_stress_ratings.element =
     element cp:threat_stress_ratings {
         [
             documentation [
-                "The degree to which a Stress contributes to the genesis or ongoing \x{a}" ~
-                "persistence of a Threat. Measured by: \x{a}" ~
-                "- Contribution - The degree to which a source of stress, acting alone, \x{a}" ~
-                "                 is likely to be responsible for the full expression of \x{a}" ~
-                "                 a stress within the project area within 10 years. \x{a}" ~
-                "- Irreversibility - The degree to which the effects of a source of \x{a}" ~
-                "                    stress can be restored or recovered. Typically \x{a}" ~
-                "                    includes an assessment of both the technical \x{a}" ~
-                "                    difficulty and the economic and/or social cost \x{a}" ~
-                "                    of restoration."
+                "The degree to which a Stress contributes to the \x{a}" ~
+                "genesis or ongoing persistence of a Threat. \x{a}" ~
+                "Measured by: \x{a}" ~
+                "* Contribution - The degree to which a source of \x{a}" ~
+                "                 stress, acting alone, is likely \x{a}" ~
+                "                 to be responsible for the full \x{a}" ~
+                "                 expression of a stress within the \x{a}" ~
+                "                 project area within 10 years. \x{a}" ~
+                "* Irreversibility - The degree to which the effects \x{a}" ~
+                "                 of a source of stress can be \x{a}" ~
+                "                 restored or recovered. Typically \x{a}" ~
+                "                 includes an assessment of both the \x{a}" ~
+                "                 technical difficulty and the \x{a}" ~
+                "                 economic and/or social cost of restoration."
             ]
         ]
         element cp:threat_stress_rating {
@@ -283,19 +303,23 @@ key_attributes.element =
     element cp:key_attributes {
         [
             documentation [
-                "Key Ecological Attributes are critical components of target's \x{a}" ~
-                "ecology, physical or biological processes, composition, \x{a}" ~
-                "or structure that:\x{a}" ~
-                "- Determine a target's temporal/spatial distribution that are necessary \x{a}" ~
-                "  for the continued persistence of the target \x{a}" ~
-                "- Vary within an 'acceptable range of variability' obtained by reviewing \x{a}" ~
-                "  scientific literature, consulting experts, and in some cases through \x{a}" ~
+                "Key Ecological Attributes are critical components of \x{a}" ~
+                "target's ecology, physical or biological processes, \x{a}" ~
+                "composition, or structure that: \x{a}" ~
+                "* Determine a target's temporal/spatial distribution \x{a}" ~
+                "  that are necessary for the continued persistence of \x{a}" ~
+                "  the target \x{a}" ~
+                "* Vary within an 'acceptable range of variability' \x{a}" ~
+                "  obtained by reviewing scientific literature, \x{a}" ~
+                "  consulting experts, and in some cases through \x{a}" ~
                 "  modeling efforts \x{a}" ~
-                "- Are assigned to categories of: Size, Condition, Landscape Context \x{a}" ~
-                "More technically, the most critical components of biological composition, \x{a}" ~
-                "structure, interactions and processes, environmental regimes, and landscape \x{a}" ~
-                "configuration that sustain a target's viability or ecological integrity \x{a}" ~
-                "over space and time."
+                "* Are assigned to categories of: Size, Condition, \x{a}" ~
+                "  Landscape Context More technically, the most \x{a}" ~
+                "  critical components of biological composition, \x{a}" ~
+                "  structure, interactions and processes, \x{a}" ~
+                "  environmental regimes, and landscape configuration \x{a}" ~
+                "  that sustain a target's viability or ecological \x{a}" ~
+                "  integrity over space and time."
             ]
         ]
         element cp:key_attribute {
@@ -310,14 +334,16 @@ viability.element =
         [
             documentation [
                 "The status or health of a component of biodiversity. \x{a}" ~
-                "More generally, Viability indicates the ability of a Conservation \x{a}" ~
-                "Target to withstand or recover from most natural or anthropogenic \x{a}" ~
-                "disturbances and thus to persist for many generations or over long time \x{a}" ~
-                "periods. \x{a}" ~
-                "Target Viability is evaluated objectively by scoring Indicator Ratings \x{a}" ~
-                "of the Key Attributes chosen to represent the health of a Target. \x{a}" ~
-                "Overall Project biodiversity Viability is then objectively evaluated by \x{a}" ~
-                "compositing the Viability scores of individual Targets."
+                "More generally, Viability indicates the ability of a \x{a}" ~
+                "Conservation Target to withstand or recover from most \x{a}" ~
+                "natural or anthropogenic disturbances and thus to \x{a}" ~
+                "persist for many generations or over long time \x{a}" ~
+                "periods. Target Viability is evaluated objectively by \x{a}" ~
+                "scoring Indicator Ratings of the Key Attributes \x{a}" ~
+                "chosen to represent the health of a Target. \x{a}" ~
+                "Overall Project biodiversity Viability is then \x{a}" ~
+                "objectively evaluated by compositing the Viability \x{a}" ~
+                "scores of individual Targets."
             ]
         ]
         element cp:viability_assessment {
@@ -339,10 +365,12 @@ threats.element =
     element cp:threats {
         [
             documentation [
-                "Threats, or Sources of Stress, are the proximate activities or processes \x{a}" ~
-                "that directly caused, are causing, or may cause stresses and thus \x{a}" ~
-                "the destruction, degradation and/or impairment of focal conservation \x{a}" ~
-                "targets. (See also Stresses and Threat-Stress Ratings)"
+                "Threats, or Sources of Stress, are the proximate \x{a}" ~
+                "activities or processes that directly caused, are \x{a}" ~
+                "causing, or may cause stresses and thus the \x{a}" ~
+                "destruction, degradation and/or impairment of focal \x{a}" ~
+                "conservation targets. (See also Stresses and \x{a}" ~
+                "Threat-Stress Ratings)"
             ]
         ]
         element cp:threat {
@@ -350,8 +378,7 @@ threats.element =
             & element cp:name { text }
             & element cp:threat_taxonomy_code { iucn_threat_taxonomy }?
             & element cp:threat_to_project_rank { vocabulary_ranking_vhhml }?
-            & # Indicator-threat relationships are export to Miradi but not imported from Miradi.
-              element cp:indicators {
+            & element cp:indicators {
                   element cp:indicator_id { vocabulary_id }*
               }
         }*
@@ -361,23 +388,31 @@ objectives.element =
     element cp:objectives {
         [
             documentation [
-                "Specific statements detailing the desired accomplishments or outcomes of \x{a}" ~
-                "a particular set of activities within a project. A typical project will \x{a}" ~
-                "have multiple Objectives. Objectives are typically set for abatement of \x{a}" ~
-                "critical Threats and for restoration of degraded Key Ecological Attributes. \x{a}" ~
-                "They can also be set, however, for the outcomes of specific conservation \x{a}" ~
-                "actions, or the acquisition of project resources. If the project is well \x{a}" ~
-                "conceptualized and designed, realization of all the project's objectives \x{a}" ~
-                "should lead to the fulfillment of the project's vision. \x{a}" ~
+                "Specific statements detailing the desired \x{a}" ~
+                "accomplishments or outcomes of a particular set of \x{a}" ~
+                "activities within a project. A typical project will \x{a}" ~
+                "have multiple Objectives. Objectives are typically \x{a}" ~
+                "set for abatement of critical Threats and for \x{a}" ~
+                "restoration of degraded Key Ecological Attributes. \x{a}" ~
+                "They can also be set, however, for the outcomes of \x{a}" ~
+                "specific conservation actions, or the acquisition of \x{a}" ~
+                "project resources. If the project is well \x{a}" ~
+                "conceptualized and designed, realization of all the \x{a}" ~
+                "project's objectives should lead to the fulfillment \x{a}" ~
+                "of the project's vision. \x{a}" ~
                 "Objectives should be: \x{a}" ~
-                "- Impact oriented (represents desired changes in ecological attributes or \x{a}" ~
-                "  critical threat factors) \x{a}" ~
-                "- Measurable (defined in relation to some standard scale) \x{a}" ~
-                "- Time limited (achievable within a specific period of time) \x{a}" ~
-                "- Specific (clearly defined for universal understanding) \x{a}" ~
-                "- Practical (achievable and appropriate within the project context) \x{a}" ~
-                "- Credible (representing the best scientific judgment as to what is \x{a}" ~
-                "  necessary for conservation success)."
+                "* Impact oriented (represents desired changes in \x{a}" ~
+                "  ecological attributes or critical threat factors) \x{a}" ~
+                "* Measurable (defined in relation to some standard \x{a}" ~
+                "  scale) \x{a}" ~
+                "* Time limited (achievable within a specific period \x{a}" ~
+                "  of time) \x{a}" ~
+                "* Specific (clearly defined for universal \x{a}" ~
+                "  understanding) \x{a}" ~
+                "* Practical (achievable and appropriate within the \x{a}" ~
+                "  project context) \x{a}" ~
+                "* Credible (representing the best scientific judgment \x{a}" ~
+                "  as to what is necessary for conservation success)."
             ]
         ]
         element cp:objective {
@@ -393,22 +428,40 @@ objectives.element =
 #
 percent_complete.element =
     element cp:percent_complete_measures {
-        element cp:percent_complete_measure {
-            # Sequence to order the rows for when there is no date.
-            attribute sequence { vocabulary_sequence }
-            & element cp:measure { xsd:decimal }?
-            & element cp:date { vocabulary_date }?
-            & element cp:comment { text }?
-        }*
+        percent_complete.combination1.element
+        | percent_complete.combination2.element
+        | percent_complete.combination3.element
     }
+percent_complete.combination1.element =
+    element cp:percent_complete_measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measure { xsd:decimal }
+        & element cp:date { vocabulary_date }?
+        & element cp:comment { text }?
+    }*
+percent_complete.combination2.element =
+    element cp:percent_complete_measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measure { xsd:decimal }?
+        & element cp:date { vocabulary_date }
+        & element cp:comment { text }?
+    }*
+percent_complete.combination3.element =
+    element cp:percent_complete_measure {
+        attribute sequence { vocabulary_sequence }
+        & element cp:measure { xsd:decimal }?
+        & element cp:date { vocabulary_date }?
+        & element cp:comment { text }
+    }*
 #
 strategies.element =
     element cp:strategies {
         [
             documentation [
-                "Interventions undertaken by project staff and/or partners designed to \x{a}" ~
-                "reach the project's objectives. A good action meets the criteria of being \x{a}" ~
-                "linked to objectives, focused, strategic, feasible, and appropriate."
+                "Interventions undertaken by project staff and/or \x{a}" ~
+                "partners designed to reach the project's objectives. \x{a}" ~
+                "A good action meets the criteria of being linked to \x{a}" ~
+                "objectives, focused, strategic, feasible, and appropriate."
             ]
         ]
         element cp:strategy {
@@ -420,6 +473,7 @@ strategies.element =
             & element cp:taxonomy_code { iucn_strategy_taxonomy }?
             & element cp:selected { xsd:boolean }?
             & element cp:comment { text }?
+            & element cp:total_cost { xsd:decimal }?
             & element cp:legacy_strategy_ranking { text }?
             & statuses.element?
             & activities.element?
@@ -432,7 +486,9 @@ activities.element =
             element cp:name { text }
             & element cp:start_date { vocabulary_date }?
             & element cp:end_date { vocabulary_date }?
-            & statuses.element
+            & element cp:total_cost { xsd:decimal }?
+            & element cp:detail { text }?
+            & statuses.element?
         }*
     }
 #
@@ -440,47 +496,57 @@ indicators.element =
     element cp:indicators {
         [
             documentation [
-                "Measurable factors related to a specific information need (for example, \x{a}" ~
-                "the status of a Key Ecological Attribute, change in a Threat, or \x{a}" ~
-                "progress towards an Objective). A good Indicator meets the criteria of \x{a}" ~
+                "Measurable factors related to a specific information \x{a}" ~
+                "need (for example, the status of a Key Ecological \x{a}" ~
+                "Attribute, change in a Threat, or progress towards an \x{a}" ~
+                "Objective). A good Indicator meets the criteria of \x{a}" ~
                 "being measurable, precise, consistent, and sensitive. \x{a}" ~
-                "Indicator Ratings are described based on criteria that objectively \x{a}" ~
-                "place an indicator into 1 of 4 categories corresponding to \x{a}" ~
-                "Poor, Fair, Good, and Very Good viability status. \x{a}" ~
-                "The guidance for defining different indicator ratings is centered on \x{a}" ~
-                "the concept of acceptable ranges of variability. \x{a}" ~
-                "-- Indicators in a 'Good' status are within an acceptable range of variation; \x{a}" ~
-                "   Some intervention is required for their maintenance. \x{a}" ~
-                "-- Very Good is an Ecologically desirable status; Requires little \x{a}" ~
-                "   intervention for maintenance. \x{a}" ~
-                "-- Fair status indicates a key attribute that is outside acceptable \x{a}" ~
-                "   range of variation; Requires human intervention. \x{a}" ~
-                "-- Poor status represents a situation where Restoration increasingly \x{a}" ~
-                "   difficult and the current conditions may lead to the extirpation of the target."
+                "Indicator Ratings are described based on criteria \x{a}" ~
+                "that objectively place an indicator into 1 of 4 \x{a}" ~
+                "categories corresponding to Poor, Fair, Good, and \x{a}" ~
+                "Very Good viability status. The guidance for defining \x{a}" ~
+                "different indicator ratings is centered on the \x{a}" ~
+                "concept of acceptable ranges of variability. \x{a}" ~
+                "* Indicators in a 'Good' status are within an \x{a}" ~
+                "  acceptable range of variation; Some intervention is \x{a}" ~
+                "  required for their maintenance. \x{a}" ~
+                "* Very Good is an Ecologically desirable status; \x{a}" ~
+                "  Requires little intervention for maintenance. \x{a}" ~
+                "* Fair status indicates a key attribute that is \x{a}" ~
+                "  outside acceptable range of variation; Requires \x{a}" ~
+                "  human intervention. \x{a}" ~
+                "* Poor status represents a situation where \x{a}" ~
+                "  Restoration increasingly difficult and the current \x{a}" ~
+                "  conditions may lead to the extirpation of the target."
             ]
         ]
         element cp:indicator {
             attribute id { vocabulary_id }
             & element cp:name { text }
+#            & element cp:factor_type { text }
+#            & element cp:factor_name { text }
             & element cp:priority { vocabulary_priority_vhhml }?
             & element cp:comment { text }?
-            & # cp:detail - data going to Miradi but not returned
-              element cp:detail { text }?
             & measures.element
             & element cp:methods {
                   [
                       documentation [
-                          "An Indicator may have more than one Method, and a Method is sharable among  \x{a}" ~
-                          "Indicators, so it probably needs to be represented in the manner of  \x{a}" ~
-                          "Objectives/Indicators. For Indicators originating with the Workbook, an Indicator  \x{a}" ~
-                          "will have only one Method but the Method will be shared among Indicators; for  \x{a}" ~
-                          "Indicators originating with Miradi, there may be more than one Method and a Method  \x{a}" ~
+                          "An Indicator may have more than one Method, \x{a}" ~
+                          "and a Method is sharable among  \x{a}" ~
+                          "Indicators, so it probably needs to be \x{a}" ~
+                          "represented in the manner of  \x{a}" ~
+                          "Objectives/Indicators. For Indicators \x{a}" ~
+                          "originating with the Workbook, an Indicator \x{a}" ~
+                          "will have only one Method but the Method \x{a}" ~
+                          "will be shared among Indicators; for  \x{a}" ~
+                          "Indicators originating with Miradi, there \x{a}" ~
+                          "may be more than one Method and a Method \x{a}" ~
                           "may be shared among Indicators."
                       ]
                   ]
                   element cp:method_id { vocabulary_id }*
               }
-            & statuses.element
+            & statuses.element?
         }*
     }
 #
@@ -492,11 +558,11 @@ measures.element =
         | measures.combination4.element
         | measures.combination5.element
     }
-#
 measures.combination1.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
         & element cp:measurement { text }
+        & element cp:comment { text }?
         & element cp:date { vocabulary_date }?
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }?
@@ -506,6 +572,7 @@ measures.combination2.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
         & element cp:measurement { text }?
+        & element cp:comment { text }?
         & element cp:date { vocabulary_date }
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }?
@@ -515,6 +582,7 @@ measures.combination3.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
         & element cp:measurement { text }?
+        & element cp:comment { text }?
         & element cp:date { vocabulary_date }?
         & element cp:source { vocabulary_source_measures }
         & element cp:trend { vocabulary_trend }?
@@ -524,6 +592,7 @@ measures.combination4.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
         & element cp:measurement { text }?
+        & element cp:comment { text }?
         & element cp:date { vocabulary_date }?
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }
@@ -545,25 +614,39 @@ methods.element =
             attribute id { vocabulary_id }
             & element cp:name { text }
             & element cp:detail { text }?
-            & element cp:annual_cost { xsd:decimal }?
             & element cp:comment { text }?
         }*
     }
 #
 statuses.element =
     element cp:statuses {
-        element cp:status {
-            attribute sequence { vocabulary_sequence }
-            & element cp:date { vocabulary_date }?
-            & element cp:measure { vocabulary_progress }?
-            & element cp:comment { text }?
-        }*
+        status.combination1.element | status.combination2.element | status.combination3.element
     }
+status.combination1.element =
+    element cp:status {
+        attribute sequence { vocabulary_sequence }
+        & element cp:date { vocabulary_date }
+        & element cp:measure { vocabulary_progress }?
+        & element cp:comment { text }?
+    }*
+status.combination2.element =
+    element cp:status {
+        attribute sequence { vocabulary_sequence }
+        & element cp:date { vocabulary_date }?
+        & element cp:measure { vocabulary_progress }
+        & element cp:comment { text }?
+    }*
+status.combination3.element =
+    element cp:status {
+        attribute sequence { vocabulary_sequence }
+        & element cp:date { vocabulary_date }?
+        & element cp:measure { vocabulary_progress }?
+        & element cp:comment { text }
+    }*
 #
 vocabulary_date = xsd:NMTOKEN { pattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}" }
 vocabulary_area_unit = "hectares"
 vocabulary_country = xsd:NMTOKEN { pattern = "[A-Z]{3}" }
-vocabulary_doc_exchange_status = "success" | "warning" | "fail"
 vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
 vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:nonNegativeInteger
@@ -615,51 +698,59 @@ vocabulary_viability_mode = "kea" | "simple"
 #
 [
     documentation [
-        "International Union for Conservation of Nature (IUCN) threat, habitat and \x{a}" ~
-        "strategy taxonomy formats:"
+        "International Union for Conservation of Nature (IUCN) threat, \x{a}" ~
+        "habitat and strategy taxonomy formats:"
     ]
 ]
-iucn_threat_taxonomy = xsd:NMTOKEN { pattern = "[T][0-9]{2,3}\.[0-9]{2,3}" }
 iucn_habitat_taxonomy = xsd:NMTOKEN { pattern = "[H][0-9]{2,3}\.[0-9]{2,3}" }
 iucn_strategy_taxonomy = xsd:NMTOKEN { pattern = "[A][0-9]{2,3}\.[0-9]{2,3}" }
-# 
-# 
+iucn_threat_taxonomy = xsd:NMTOKEN { pattern = "[T][0-9]{2,3}\.[0-9]{2,3}" }
 # 
 # 
 # Datatyping reference
-# xsd:boolean -  Its value space is true and false. Its lexical space accepts true, false, 1 and 0
-# vocabulary_date -     
-#                Its lexical space is the ISO 8601 extended format [-]CCYY-MM-DD[Z|(+|-)hh:mm] with 
-#                an optional time zone. 
-# xsd:decimal -  The set of all decimal numbers with arbitrary lengths. Its lexical space allows any
-#                number of insignificant leading and, after the decimal point, trailing zeros. A period
-#                is the only acceptable decimal seperator. No thousands seperators allowed.
-# xsd:integer -  Integer is derived from decimal by fixing the value of fractionDigits to be 0 and disallowing 
-#                the trailing decimal point. This results in the standard mathematical concept of the integer 
-#                numbers. The value space of integer is the infinite set {...,-2,-1,0,1,2,...}. 
-# xsd:nonNegativeInteger - 
-#                nonNegativeInteger is derived from integer by setting the value of
-#                minInclusive to be 0. This results in the standard mathematical concept of the 
-#                non-negative integers. The value space of nonNegativeInteger is the infinite 
-#                set {0,1,2,...}.
-# xsd:positiveInteger - 
-#                positiveInteger is derived from nonNegativeInteger by setting the value of
-#                minInclusive to be 1. This results in the standard mathematical concept of the 
-#                positive integer numbers. The value space of positiveInteger is the infinite 
-#                set {1,2,...}. 
-# xsd:string -   The lexical and value spaces are the set of all possible strings composed of any charachter 
-#                allowed in a XML 1.0 document without any treatment done on whitespace. That is the only 
-#                datatype that leaves all the whitespace. When whitespace isn't significant, xsd:token is
-#                preferred.
-# xsd:token -    The value space of token is the set of strings that do not contain the carriage return (#xD), 
-#                line feed (#xA) nor tab (#x9) characters, that have no leading or trailing spaces (#x20) and 
-#                that have no internal sequences of two or more spaces. The lexical space of token is the set 
-#                of strings that do not contain the carriage return (#xD), line feed (#xA) nor tab (#x9) 
-#                characters, that have no leading or trailing spaces (#x20) and that have no internal sequences 
-#                of two or more spaces.
-# xsd:NMTOKEN -  The lexical and value spaces are the set of XML 1.0 name tokens, tokens composed of characters
-#                digits, period, colons, hyphens and the characters defined by Unicode, such as "combining"
-#                or "extender." Invalid values include 'brought classical music' (spaces are forbidden) and
+# xsd:boolean -  Its value space is true and false. Its lexical space accepts
+#                true, false, 1 and 0
+# vocabulary_date - Its lexical space is the ISO 8601 extended format
+#                [-]CCYY-MM-DD[Z|(+|-)hh:mm] with an optional time zone.
+# xsd:decimal -  The set of all decimal numbers with arbitrary lengths.
+#                Its lexical space allows any number of insignificant leading
+#                and, after the decimal point, trailing zeros. A period is the
+#                only acceptable decimal seperator. No thousands seperators
+#                allowed.
+# xsd:integer -  Integer is derived from decimal by fixing the value of
+#                fractionDigits to be 0 and disallowing the trailing decimal
+#                point. This results in the standard mathematical concept of
+#                the integer numbers. The value space of integer is the
+#                infinite set {...,-2,-1,0,1,2,...}.
+# xsd:nonNegativeInteger - nonNegativeInteger is derived from integer by
+#                setting the value of minInclusive to be 0. This results in
+#                the standard mathematical concept of the non-negative
+#                integers. The value space of nonNegativeInteger is the
+#                infinite set {0,1,2,...}.
+# xsd:positiveInteger - positiveInteger is derived from nonNegativeInteger
+#                by setting the value of minInclusive to be 1. This results
+#                in the standard mathematical concept of the positive integer
+#                numbers. The value space of positiveInteger is the infinite
+#                set {1,2,...}.
+# xsd:string -   The lexical and value spaces are the set of all possible
+#                strings composed of any charachter allowed in a XML 1.0
+#                document without any treatment done on whitespace. That is
+#                the only datatype that leaves all the whitespace. When
+#                whitespace isn't significant, xsd:token is preferred.
+# xsd:token -    The value space of token is the set of strings that do not
+#                contain the carriage return (#xD), line feed (#xA) nor tab
+#                (#x9) characters, that have no leading or trailing spaces
+#                (#x20) and that have no internal sequences of two or more
+#                spaces. The lexical space of token is the set of strings that
+#                do not contain the carriage return (#xD), line feed (#xA) nor
+#                tab (#x9) characters, that have no leading or trailing spaces
+#                (#x20) and that have no internal sequences of two or more
+#                spaces.
+# xsd:NMTOKEN -  The lexical and value spaces are the set of XML 1.0 name
+#                tokens, tokens composed of characters digits, period, colons,
+#                hyphens and the characters defined by Unicode, such as
+#                "combining" or "extender." Invalid values include 'brought
+#                classical music' (spaces are forbidden) and
 #                'bold,brash' (commas are forbidden).
 # 
 #  * - 0 or more
