@@ -69,11 +69,11 @@ project_summary.element =
         & ecoregions.element
         & countries.element
         & ous.element
+        & organizational_priorities.element
+        & project_types.element
         & element cp:exporter_name { xsd:NMTOKEN }
         & element cp:exporter_version { xsd:NMTOKEN }
         & element cp:export_date { vocabulary_date }
-        & organizational_priorities.element
-        & project_types.element
     }
 #
 project_id.element =
@@ -523,8 +523,8 @@ indicators.element =
         element cp:indicator {
             attribute id { vocabulary_id }
             & element cp:name { text }
-#            & element cp:factor_type { text }
-#            & element cp:factor_name { text }
+            & element cp:factor_type { text }
+            & element cp:factor_name { text }
             & element cp:priority { vocabulary_priority_vhhml }?
             & element cp:comment { text }?
             & measures.element

@@ -126,6 +126,8 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		Indicator indicator = Indicator.find(getProject(), indicatorRef);
 		writeStartElementWithAttribute(out, INDICATOR, ID, indicator.getId().toString());
 		writeLabelElement(out, NAME, indicator, Indicator.TAG_LABEL);
+		writeElement(out, FACTOR_TYPE, "Indicator");
+		writeElement(out, FACTOR_NAME, "Indicator");
 		writeOptionalRatingCodeElement(out, PRIORITY, indicator, Indicator.TAG_PRIORITY);
 		writeOptionalElement(out, COMMENT, indicator, Indicator.TAG_COMMENTS);
 		writeMeasurements(out, indicator.getMeasurementRefs());		
