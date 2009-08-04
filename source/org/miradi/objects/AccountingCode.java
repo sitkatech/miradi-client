@@ -72,6 +72,11 @@ public class AccountingCode extends BaseObject
 		return EAM.text("Label|(Undefined Accounting Code)");
 	}
 	
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+	
 	public static boolean is(int objectType)
 	{
 		return objectType == getObjectType();
