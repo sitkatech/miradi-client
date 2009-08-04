@@ -143,6 +143,16 @@ public class ProjectResource extends BaseObject
 	{
 		return givenName.get();
 	}
+	
+	public String getSurName()
+	{
+		return surName.get();
+	}
+	
+	public String getEmail()
+	{
+		return email.get();
+	}
 
 	public boolean isPerson()
 	{

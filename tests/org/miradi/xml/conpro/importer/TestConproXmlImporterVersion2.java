@@ -29,13 +29,17 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion2;
 
@@ -69,7 +73,7 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 			exportProject(beforeXmlOutFile, getProject());
 			String firstExport = convertFileContentToString(beforeXmlOutFile);
 			
-			importProject(beforeXmlOutFile, projectToFill1);
+			verifyImportEmptyProject(beforeXmlOutFile, projectToFill1);
 			verifyThreatStressRatingPoolContents(getProject(), projectToFill1);
 			verifyObjectiveLabelsAndUnsplitLabel(projectToFill1);
 			verifyConcatenatedProjectScopeAndDescription(projectToFill1);
@@ -229,6 +233,77 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 		{
 			beforeXmlOutFile.delete();
 			projectToFill1.close();
+		}
+	}
+	
+	public void testEmptyProject() throws Exception
+	{
+		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		try
+		{
+			verifyEmpyProject(beforeXmlOutFile);
+			verifyImportEmptyProject(beforeXmlOutFile, projectToFill);
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
+		}
+	}
+
+	private void verifyImportEmptyProject(File beforeXmlOutFile, ProjectForTesting projectToFill)
+	{
+		try
+		{
+			importProject(beforeXmlOutFile, projectToFill);
+		}
+		catch (Exception e)
+		{
+			fail("Emty project could not be imported?");	
+		}
+	}
+
+	private void verifyEmpyProject(File beforeXmlOutFile)
+	{
+		try
+		{
+			new ConproXmlExporterVersion2(getProject()).export(beforeXmlOutFile);
+		}
+		catch (Exception e)
+		{
+			fail("Emty project could not be exported?");	
+		}
+	}
+	
+	public void testProjectResource() throws Exception
+	{
+		ProjectResource teamMember = getProject().createProjectResource();
+		CodeList roleCodes = new CodeList();
+		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
+		getProject().fillObjectUsingCommand(teamMember, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
+		assertEquals("wrong project resource count?", 1, getProject().getResourcePool().getRefSet().size());
+		
+		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		try
+		{
+			verifyEmpyProject(beforeXmlOutFile);
+			verifyImportEmptyProject(beforeXmlOutFile, projectToFill);
+			ORefSet resourceRefs = projectToFill.getResourcePool().getRefSet();
+			assertEquals("wrong project resource count?", 1, resourceRefs.size());
+			for(ORef resourceRef : resourceRefs)
+			{
+				ProjectResource resource = ProjectResource.find(projectToFill, resourceRef);
+				assertEquals("wrong given name?", "[Unspecified]", resource.getGivenName());
+				assertEquals("wrong sur name?", "[Unspecified]", resource.getSurName());
+				assertEquals("wrong email?", "[Unspecified]", resource.getEmail());
+			}
+		}
+		finally
+		{
+			beforeXmlOutFile.delete();
+			projectToFill.close();
 		}
 	}
 	

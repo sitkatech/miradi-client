@@ -992,9 +992,9 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			ProjectResource member = ProjectResource.find(getProject(), teamMemberRefs.get(memberIndex));
 			writeMemberRoles(out, member);
 			
-			writeElement(out, GIVEN_NAME, member, ProjectResource.TAG_GIVEN_NAME);
-			writeElement(out, SUR_NAME, member, ProjectResource.TAG_SUR_NAME);
-			writeElement(out, EMAIL, member, ProjectResource.TAG_EMAIL);
+			writeLabelElement(out, GIVEN_NAME, member, ProjectResource.TAG_GIVEN_NAME);
+			writeLabelElement(out, SUR_NAME, member, ProjectResource.TAG_SUR_NAME);
+			writeLabelElement(out, EMAIL, member, ProjectResource.TAG_EMAIL);
 			writeOptionalElement(out, PHONE, member, ProjectResource.TAG_PHONE_NUMBER);
 			writeOptionalElement(out, ORGANIZATION, member, ProjectResource.TAG_ORGANIZATION);
 			writeEndElement(out, PERSON);	

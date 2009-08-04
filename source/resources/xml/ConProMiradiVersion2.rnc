@@ -111,7 +111,7 @@ team.element =
             & element cp:email { xsd:string }
             & element cp:phone { xsd:string }?
             & element cp:organization { xsd:string }?
-        }+
+        }*
     }
 #
 ecoregions.element =
