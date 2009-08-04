@@ -42,7 +42,6 @@ import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
-import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
@@ -80,7 +79,7 @@ public class OperationalPlanView extends TabbedView
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
 		resourceManagementPanel = OperationalPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
-		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
+		accountingCodePoolManagementPanel = OperationalPlanAccountingCodeManagementPanel.createAccountingPanel(getMainWindow());
 		fundingSourceManagementPanel = OperationalPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
 		
 		addNonScrollingTab(workPlanManagementPanel);
@@ -160,6 +159,6 @@ public class OperationalPlanView extends TabbedView
 	
 	private PlanningTreeManagementPanel workPlanManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
-	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
+	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
 	private PlanningTreeManagementPanel fundingSourceManagementPanel;
 }

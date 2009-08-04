@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.CardLayout;
 import java.awt.Rectangle;
 
+import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.FormBaseDataPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
@@ -41,6 +42,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.FundingSource;
@@ -122,6 +124,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		conceptualModelPropertiesPanel = new ConceptualModelPropertiesPanel(getProject(), ORef.INVALID);
 		projectResourcePropertiesPanel = new ResourcePropertiesPanel(getProject(), BaseId.INVALID);
 		fundingSourcePropertiesPanel = new FundingSourcePropertiesPanel(getProject(), BaseId.INVALID);
+		accountingCodePropertiesPanel = new AccountingCodePropertiesPanel(getProject(), BaseId.INVALID);
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		
@@ -142,6 +145,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(conceptualModelPropertiesPanel);
 		addPanel(projectResourcePropertiesPanel);
 		addPanel(fundingSourcePropertiesPanel);
+		addPanel(accountingCodePropertiesPanel);
 		addPanel(blankPropertiesPanel);
 	}
 	
@@ -223,6 +227,9 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		if (FundingSource.is(objectType))
 			return fundingSourcePropertiesPanel;
 		
+		if (AccountingCode.is(objectType))
+			return accountingCodePropertiesPanel;
+		
 		return blankPropertiesPanel;
 	}
 
@@ -290,5 +297,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private ConceptualModelPropertiesPanel conceptualModelPropertiesPanel;
 	private ResourcePropertiesPanel projectResourcePropertiesPanel;
 	private FundingSourcePropertiesPanel fundingSourcePropertiesPanel;
+	private AccountingCodePropertiesPanel accountingCodePropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

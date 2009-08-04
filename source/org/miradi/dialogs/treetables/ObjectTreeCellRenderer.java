@@ -27,6 +27,7 @@ import javax.swing.Icon;
 import javax.swing.JTree;
 import javax.swing.tree.TreeCellRenderer;
 
+import org.miradi.icons.AccountCodeIcon;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.ConceptualModelIcon;
@@ -53,6 +54,7 @@ import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
@@ -152,6 +154,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		fundingSourceRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(fundingSourceRenderer, new FundingSourceIcon(), getPlainFont());
+		
+		accountingCodeRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(accountingCodeRenderer, new AccountCodeIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -218,6 +223,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = projectResourceRenderer;
 		else if(FundingSource.is(node.getType()))
 			renderer = fundingSourceRenderer;
+		else if (AccountingCode.is(node.getType()))
+			renderer = accountingCodeRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -307,5 +314,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer expenseAssignmentRenderer;
 	private VariableHeightTreeCellRenderer projectResourceRenderer;
 	private VariableHeightTreeCellRenderer fundingSourceRenderer;
+	private VariableHeightTreeCellRenderer accountingCodeRenderer;
 	
 }
