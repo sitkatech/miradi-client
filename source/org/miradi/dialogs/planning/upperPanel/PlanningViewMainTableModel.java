@@ -184,22 +184,27 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 	private void omitColumnTagsRepresentedByColumnTables()
 	{
-		possiblyRemoveFromColumnsToShow(Measurement.META_COLUMN_TAG);
-		possiblyRemoveFromColumnsToShow(Indicator.META_COLUMN_TAG);
-		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
-		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
-		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
-		possiblyRemoveFromColumnsToShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		String[] codesToOmit = new String[]{
+											Measurement.META_COLUMN_TAG,
+											Indicator.META_COLUMN_TAG,
+											CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE,
+											CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE,
+		};
+		
+		for (int index = 0; index < codesToOmit.length; ++index)
+		{
+			String codeToOmit = codesToOmit[index];
+			if (columnsToShow.contains(codeToOmit))
+				columnsToShow.removeCode(codeToOmit);
+		}
 	}
 	
-	private void possiblyRemoveFromColumnsToShow(String code)
-	{
-		if (columnsToShow.contains(code))
-			columnsToShow.removeCode(code);
-	}
-
 	public int getColumnCount()
 	{
 		return columnsToShow.size();
