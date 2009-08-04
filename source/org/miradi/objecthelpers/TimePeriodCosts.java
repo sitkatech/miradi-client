@@ -46,14 +46,15 @@ public class TimePeriodCosts
 		add(timePeriodCostsToUse);
 	}
 	
-	public TimePeriodCosts(ORef fundingSourceRef, OptionalDouble expenseToUse)
+	public TimePeriodCosts(ORef fundingSourceRef, ORef accountingCodeRef, OptionalDouble expenseToUse)
 	{
 		this();
 		
 		ensureFundingSource(fundingSourceRef);
+		ensureAccountingCode(accountingCodeRef);
+		
 		addExpensesToTotal(expenseToUse);
-		//FIXME urgent - dont pass invalid accounting code
-		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, ORef.INVALID, expenseToUse));
+		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, accountingCodeRef, expenseToUse));
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	ORef accountingCodeRef, OptionalDouble workUnits)
