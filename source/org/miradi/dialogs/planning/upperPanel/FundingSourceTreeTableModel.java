@@ -21,8 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.FundingSourceRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.FundingSourceHiddenNode;
 import org.miradi.dialogs.planning.treenodes.BaseObjectTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.HiddenRootNodeWithBaseObjectChild;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
@@ -66,7 +66,7 @@ public class FundingSourceTreeTableModel extends ExportablePlanningTreeTableMode
 	
 	private static TreeTableNode createHiddenFundingSourceRootNode(Project project) throws Exception
 	{
-		return new FundingSourceHiddenNode(project, getFundingSourceRows());
+		return new HiddenRootNodeWithBaseObjectChild(project, FundingSource.getObjectType(), FundingSource.OBJECT_NAME, getFundingSourceRows());
 	}
 	
 	private static CodeList getFundingSourceRows()
