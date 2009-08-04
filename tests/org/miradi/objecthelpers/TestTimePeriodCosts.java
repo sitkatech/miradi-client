@@ -134,7 +134,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("funding source expense map should be empty?", 0, new TimePeriodCosts().getFundingSourceExpensesRefSet().size());
 		
 		ORef fundingSourceRef = createFundingSource();
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(fundingSourceRef, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0));
 		OptionalDouble retrievedExpenses = timePeriodCosts.getFundingSourceExpenses(fundingSourceRef);
 		assertTrue("funding source expenses should have value?", retrievedExpenses.hasValue());
 		assertEquals("incorrect expenses for fundingSource?", 10.0, retrievedExpenses.getValue());
@@ -254,8 +254,8 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertFalse("funding source for fred was not removed?", withWorkUnits.getFundingSourceWorkUnitsRefSet().contains(fundingSourceRefForFred));
 		
 		TimePeriodCosts withExpenses = new TimePeriodCosts();
-		withExpenses.add(new TimePeriodCosts(fundingSourceRefForJill, new OptionalDouble(10.0)));
-		withExpenses.add(new TimePeriodCosts(fundingSourceRefForFred, new OptionalDouble(11.0)));
+		withExpenses.add(new TimePeriodCosts(fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0)));
+		withExpenses.add(new TimePeriodCosts(fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(11.0)));
 		withExpenses.filterFundingSourcesExpenses(new ORefSet(fundingSourceRefForJill));
 		assertFalse("fred was not filtered out?", withExpenses.getFundingSourceExpensesRefSet().contains(fundingSourceRefForFred));
 	}
