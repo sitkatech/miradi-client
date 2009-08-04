@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.accountingcode.AccountingCodePoolTableModel;
+import org.miradi.dialogs.planning.AccountingCodeCoreRowColumnProvider;
 import org.miradi.dialogs.planning.FundingSourceCoreRowColumnProvider;
 import org.miradi.dialogs.planning.MonitoringRowColumnProvider;
 import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
@@ -70,7 +70,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportResourcesTab(writer, new ProjectResourceRowColumnProvider(), ReportTemplateContentQuestion.getResourcesLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_ACCOUNTING_CODE_TAB_CODE))
-			exportAccountingCodesTab(writer);
+			exportReport(writer, new AccountingCodeCoreRowColumnProvider(), ReportTemplateContentQuestion.getAccountingCodesLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_FUNDING_SOURCE_TAB_CODE))
 			exportReport(writer, new FundingSourceCoreRowColumnProvider(), ReportTemplateContentQuestion.getFundingSourcesLabel());
@@ -79,11 +79,6 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	private void exportResourcesTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
 		exportTable(writer, createResourcesTables(getProject(), rowColumnProvider), translatedTableName);
-	}
-
-	private void exportAccountingCodesTab(RtfWriter writer) throws Exception
-	{
-		exportObjectTableModel(writer, new AccountingCodePoolTableModel(getProject()), ReportTemplateContentQuestion.getAccountingCodesLabel());
 	}
 
 	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception

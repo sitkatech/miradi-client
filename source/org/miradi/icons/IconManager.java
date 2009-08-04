@@ -21,19 +21,20 @@ package org.miradi.icons;
 
 import javax.swing.Icon;
 
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
 import org.miradi.utils.MiradiResourceImageIcon;
@@ -91,6 +92,9 @@ public class IconManager
 		
 		if (FundingSource.is(type))
 			return new FundingSourceIcon();
+		
+		if (AccountingCode.is(type))
+			return new AccountingCodeIcon();
 		
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
