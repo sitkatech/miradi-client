@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.util.Set;
 
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.utils.OptionalDouble;
@@ -40,7 +41,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertFalse("getUnits for bogus resource returned a value?", emptyDouble.hasValue());
 		
 		ProjectResource projectResource = createProjectResource();
-		timePeriodCosts = new TimePeriodCosts(projectResource.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(10.0));
+		timePeriodCosts = new TimePeriodCosts(projectResource.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0));
 		assertEquals("wrong units cost?", 10.0, timePeriodCosts.getResourceWorkUnits(projectResource.getRef()).getValue());
 		assertEquals("wrong project resources sum?", 100.0, timePeriodCosts.calculateTotalCost(getProject()).getValue());
 		
@@ -71,7 +72,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("Identical TPC's were not equal?", timePeriodCosts2, timePeriodCosts1);
 
 		ProjectResource jill = createProjectResource();
-		timePeriodCosts1.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(30.0)));
+		timePeriodCosts1.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(30.0)));
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("Different units for resource were not equal?", timePeriodCosts2, timePeriodCosts1);
 	}
@@ -79,14 +80,14 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	public void testEqualsWithFundingSource() throws Exception
 	{
 		ORef fundingSourceRef1 = createFundingSource();
-		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef1, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef1, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0));
 		assertEquals("time period costs with funding source is not equals to itself?", timePeriodCosts1, timePeriodCosts1);
 		
 		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts();
 		assertNotEquals("TPC with fundingSource is equal to TPC without fundingSource?", timePeriodCosts1, timePeriodCosts2);
 		assertNotEquals("TPC with fundingSource is equal to TPC without fundingSource?", timePeriodCosts2, timePeriodCosts1);
 		
-		TimePeriodCosts timePeriodCosts3 = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef1, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts3 = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef1, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0));
 		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts1, timePeriodCosts3);
 		assertEquals("Identical TPCs with fundsingSource were not equal", timePeriodCosts3, timePeriodCosts1);
 	}
@@ -108,7 +109,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	public void testAddWithFundingSourceOnly() throws Exception
 	{
 		ORef fundingSourceRef = createFundingSource();
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0));
 		
 		timePeriodCosts.add(new TimePeriodCosts());
 		assertEquals("wrong work unit for funding source after addition?", 10.0, timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).getValue());
@@ -122,7 +123,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("funding source should be empty?", 0, new TimePeriodCosts().getFundingSourceWorkUnitsRefSet().size());
 		
 		ORef fundingSourceRef = createFundingSource();
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, new OptionalDouble(10.0));
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(10.0));
 		OptionalDouble retrievedWorkUnits = timePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef);
 		assertTrue("funding source workUnits should have value?", retrievedWorkUnits.hasValue());
 		assertEquals("incorrect workUnits for fundingSource?", 10.0, retrievedWorkUnits.getValue());
@@ -158,7 +159,7 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		TimePeriodCosts totalTimePeriodCosts = new TimePeriodCosts();
 		
 		ORef fundingSourceRef = createFundingSource();
-		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, new OptionalDouble(11.0));
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts(INVALID_RESOURCE_REF, fundingSourceRef, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(11.0));
 		
 		totalTimePeriodCosts.mergeAllWorkUnitDataPackInPlace(timePeriodCosts);
 		assertTrue("funding source does not have value after merge?", totalTimePeriodCosts.getFundingSourceWorkUnits(fundingSourceRef).hasValue());
@@ -170,8 +171,8 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	public void testWorkUnitTotalsAfterMergeAll()
 	{
-		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(1.0));
-		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(1.0));
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(1.0));
+		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(1.0));
 		
 		TimePeriodCosts total = new TimePeriodCosts();
 		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts1);
@@ -184,9 +185,9 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	public void testWorkUnitTotalsAfterMergeAllWithDoubledValues()
 	{
-		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(4.0));
-		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(8.0));
-		TimePeriodCosts timePeriodCosts3 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, new OptionalDouble(4.0));
+		TimePeriodCosts timePeriodCosts1 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(4.0));
+		TimePeriodCosts timePeriodCosts2 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(8.0));
+		TimePeriodCosts timePeriodCosts3 = new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(4.0));
 		
 		TimePeriodCosts total = new TimePeriodCosts();
 		total.mergeAllWorkUnitDataPackInPlace(timePeriodCosts1);
@@ -210,8 +211,8 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		
 		ProjectResource jill = createProjectResource();
 		TimePeriodCosts withJillAndFred = new TimePeriodCosts();
-		withJillAndFred.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(12.0)));
-		withJillAndFred.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(13.0)));
+		withJillAndFred.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(12.0)));
+		withJillAndFred.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(13.0)));
 		
 		assertEquals("wrong resources count?", 2, withJillAndFred.getResourceRefSet().size());
 		assertEquals("wrong total work units for fred and jill?", 25.0, withJillAndFred.getTotalWorkUnits().getValue());
@@ -235,8 +236,8 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		ORef fundingSourceRefForJill = createFundingSource();
 		ORef fundingSourceRefForFred = createFundingSource();
 		TimePeriodCosts withWorkUnits = new TimePeriodCosts();
-		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, new OptionalDouble(12.0)));
-		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, new OptionalDouble(13.0)));
+		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(12.0)));
+		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(13.0)));
 		
 		withWorkUnits.filterProjectResources(new ORefSet(jill));
 		assertFalse("fred was not filtered out?", withWorkUnits.getResourceRefSet().contains(fred.getRef()));
@@ -246,8 +247,8 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		assertEquals("jill should not have been filtered out?", 1, withWorkUnits.getResourceRefSet().size());
 		assertEquals("funding source related to jill was filtered out?", 1, withWorkUnits.getFundingSourceWorkUnitsRefSet().size());
 		
-		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, new OptionalDouble(12.0)));
-		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, new OptionalDouble(13.0)));
+		withWorkUnits.add(new TimePeriodCosts(jill.getRef(), fundingSourceRefForJill, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(12.0)));
+		withWorkUnits.add(new TimePeriodCosts(fred.getRef(), fundingSourceRefForFred, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(13.0)));
 		withWorkUnits.filterFundingSourcesWorkUnits(new ORefSet(fundingSourceRefForJill));
 		assertFalse("fred was not filtered out?", withWorkUnits.getResourceRefSet().contains(fred.getRef()));
 		assertFalse("funding source for fred was not removed?", withWorkUnits.getFundingSourceWorkUnitsRefSet().contains(fundingSourceRefForFred));
@@ -265,9 +266,9 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		ProjectResource fred = createProjectResource();
 		ProjectResource bill = createProjectResource();
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(12.0)));
-		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(13.0)));
-		timePeriodCosts.add(new TimePeriodCosts(bill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(14.0)));
+		timePeriodCosts.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(12.0)));
+		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(13.0)));
+		timePeriodCosts.add(new TimePeriodCosts(bill.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(14.0)));
 		
 		ORefSet resourceRefsToRetain = new ORefSet(jill);
 		resourceRefsToRetain.addRef(fred);
@@ -285,9 +286,9 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		ProjectResource fred = createProjectResource();
 		
 		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
-		timePeriodCosts.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(60.0)));
-		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(30.0)));
-		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, new OptionalDouble(30.0)));
+		timePeriodCosts.add(new TimePeriodCosts(jill.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(60.0)));
+		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(30.0)));
+		timePeriodCosts.add(new TimePeriodCosts(fred.getRef(), INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(30.0)));
 		
 		ORefSet resourceRefsToRetain = new ORefSet(jill);
 		timePeriodCosts.filterProjectResources(resourceRefsToRetain);
@@ -316,4 +317,5 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 	
 	private ORef INVALID_RESOURCE_REF = ORef.createInvalidWithType(ProjectResource.getObjectType());
 	private ORef INVALID_FUNDING_SOURCE_REF = ORef.createInvalidWithType(FundingSource.getObjectType());
+	private ORef INVALID_ACCOUNTING_CODE_REF = ORef.createInvalidWithType(AccountingCode.getObjectType());
 }

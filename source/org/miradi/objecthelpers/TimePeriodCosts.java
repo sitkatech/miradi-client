@@ -23,6 +23,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
@@ -55,14 +56,15 @@ public class TimePeriodCosts
 		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, ORef.INVALID, expenseToUse));
 	}
 	
-	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	OptionalDouble workUnits)
+	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	ORef accountingCodeRef, OptionalDouble workUnits)
 	{
 		this();
 		
-		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
+		ensureCorrectRefTypes(resourceRef, fundingSourceRef);
+		ensureAccountingCode(accountingCodeRef);
+		
 		addWorkUnitsToTotal(workUnits);
-		//FIXME urgent - dont pass invalid accounting code
-		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, ORef.INVALID, workUnits));
+		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, accountingCodeRef, workUnits));
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
@@ -373,6 +375,12 @@ public class TimePeriodCosts
 	{
 		if (fundingSourceRef.isValid() && !FundingSource.is(fundingSourceRef))
 			throw new RuntimeException(getWrongRefErrorMessage(fundingSourceRef, "FundingSource Ref"));
+	}
+	
+	private void ensureAccountingCode(ORef accountingCodeRef)
+	{
+		if (accountingCodeRef.isValid() && !AccountingCode.is(accountingCodeRef))
+			throw new RuntimeException(getWrongRefErrorMessage(accountingCodeRef, "AccountingCode Ref"));
 	}
 	
 	private String getWrongRefErrorMessage(ORef ref, String substituionText)
