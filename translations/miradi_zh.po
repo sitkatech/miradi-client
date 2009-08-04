@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-03 16:38-0500\n"
+"POT-Creation-Date: 2009-08-04 12:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -273,6 +273,11 @@ msgstr "会计编码 \t\t"
 #: miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
 msgstr ""
+
+#: miradi/source/org/miradi/views/planning/AbstractAccountingCodeManagementPanel.java:45
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:92
+msgid "Accounting Codes"
+msgstr "会计编码"
 
 #: miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
 msgid "Lists"
@@ -3675,10 +3680,6 @@ msgstr "Target Viability - Details"
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
 msgid "Progress Report"
 msgstr "进度报告 "
-
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:92
-msgid "Accounting Codes"
-msgstr "会计编码"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:97
 msgid "Resources"
@@ -7719,6 +7720,9 @@ msgstr "类别编码 \t\t"
 
 msgid "FieldLabel|15.Comments|Comments"
 msgstr "评论 \t\t"
+
+msgid "FieldLabel|15.AccountingCode|Accounting Code"
+msgstr ""
 
 msgid "FieldLabel|16.FundingSource|Funding Source"
 msgstr ""
