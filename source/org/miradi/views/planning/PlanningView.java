@@ -53,7 +53,6 @@ import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.accountingcode.AccountingCodePoolManagementPanel;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
@@ -108,7 +107,7 @@ public class PlanningView extends TabbedView
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
-		accountingCodePoolManagementPanel = new AccountingCodePoolManagementPanel(getMainWindow(), "");
+		accountingCodePoolManagementPanel = StrategicPlanAccountingCodeManagementPanel.createAccountingCodePanel(getMainWindow());
 		fundingSourcePoolManagementPanel = StrategicPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
 		
 		managementPanelMap = new HashMap();
@@ -265,7 +264,7 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
-	private AccountingCodePoolManagementPanel accountingCodePoolManagementPanel;
+	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
 	private PlanningTreeManagementPanel fundingSourcePoolManagementPanel;
 	
 	
