@@ -404,7 +404,7 @@ public class TimePeriodCosts
 		{
 			resourceRef = resourceRefToUse;
 			fundingSourceRef = fundingSourceRefToUse;
-			accountingCodeRef = fundingSourceRefToUse;
+			accountingCodeRef = accountingCodeRefToUse;
 			quantity = quantityToUse;
 		}
 		
