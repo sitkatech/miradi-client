@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-04 14:01-0500\n"
+"POT-Creation-Date: 2009-08-04 14:04-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6091,10 +6091,6 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
 msgid "Title|Accounting Code Properties"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePoolManagementPanel.java:103
-msgid "Title|Accounting Codes"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:55

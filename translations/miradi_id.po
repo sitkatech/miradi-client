@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-04 14:01-0500\n"
+"POT-Creation-Date: 2009-08-04 14:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6564,10 +6564,6 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
 msgid "Title|Accounting Code Properties"
 msgstr "Sifat-sifat Kode Akuntansi "
-
-#: miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePoolManagementPanel.java:103
-msgid "Title|Accounting Codes"
-msgstr "Kode Akuntansi "
 
 #: miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:55
 #: miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:57
@@ -32799,6 +32795,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Title|Accounting Codes"
+#~ msgstr "Kode Akuntansi "
 
 #~ msgid "Title|Funding Sources"
 #~ msgstr "Sumber Dana "
