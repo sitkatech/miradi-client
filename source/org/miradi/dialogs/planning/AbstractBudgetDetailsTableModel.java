@@ -35,9 +35,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
-abstract public class AbstractFundingSourceBudgetDetailsTableModel extends AssignmentDateUnitsTableModel
+abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnitsTableModel
 {
-	public AbstractFundingSourceBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
+	public AbstractBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, providerToUse, treeModelIdentifierAsTagToUse);
 	}

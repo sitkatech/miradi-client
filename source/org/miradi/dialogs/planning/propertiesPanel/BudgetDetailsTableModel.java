@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.planning.AbstractFundingSourceBudgetDetailsTableModel;
+import org.miradi.dialogs.planning.AbstractBudgetDetailsTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 
-public class BudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsTableModel
+public class BudgetDetailsTableModel extends AbstractBudgetDetailsTableModel
 {
 	public BudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
