@@ -61,7 +61,8 @@ public class TimePeriodCosts
 	{
 		this();
 		
-		ensureCorrectRefTypes(resourceRef, fundingSourceRef);
+		ensureResource(resourceRef);
+		ensureFundingSource(fundingSourceRef);
 		ensureAccountingCode(accountingCodeRef);
 		
 		addWorkUnitsToTotal(workUnits);
@@ -364,12 +365,10 @@ public class TimePeriodCosts
 		return getTotalWorkUnits().hasValue();
 	}
 	
-	private void ensureCorrectRefTypes(ORef resourceRef, ORef fundingSourceRef)
+	private void ensureResource(ORef resourceRef)
 	{
 		if (resourceRef.isValid() && !ProjectResource.is(resourceRef))
 			throw new RuntimeException(getWrongRefErrorMessage(resourceRef, "ProjectResource Ref"));
-		
-		ensureFundingSource(fundingSourceRef);
 	}
 
 	private void ensureFundingSource(ORef fundingSourceRef)
