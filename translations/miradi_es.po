@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-03 16:38-0500\n"
+"POT-Creation-Date: 2009-08-04 12:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -291,6 +291,11 @@ msgstr "Código contable"
 #: miradi/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
 msgid "Tab|Action Plan"
 msgstr ""
+
+#: miradi/source/org/miradi/views/planning/AbstractAccountingCodeManagementPanel.java:45
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:92
+msgid "Accounting Codes"
+msgstr "Códigos contables "
 
 #: miradi/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:46
 msgid "Lists"
@@ -3852,10 +3857,6 @@ msgstr "Target Viability - Details"
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
 msgid "Progress Report"
 msgstr "Informe de progreso "
-
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:92
-msgid "Accounting Codes"
-msgstr "Códigos contables "
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:97
 msgid "Resources"
@@ -7934,6 +7935,9 @@ msgstr "Código de categoría"
 
 msgid "FieldLabel|15.Comments|Comments"
 msgstr "Comentarios"
+
+msgid "FieldLabel|15.AccountingCode|Accounting Code"
+msgstr ""
 
 msgid "FieldLabel|16.FundingSource|Funding Source"
 msgstr ""
