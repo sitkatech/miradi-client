@@ -26,9 +26,11 @@ import javax.swing.JScrollPane;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.planning.AccountingCodeBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.FundingSourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButtonRow;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
@@ -99,7 +101,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		expenseAmountsTableModel = new ExpenseAmountsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		budgetDetailsTableModel = new BudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		fundingSourceBudgetDetailsTableModel = new FundingSourceBudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
+		accoundingCodeBudgetDetailsTableModel = new AccountingCodeBudgetDetailsTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		fundingSourceExpenseTableModel = new FundingSourceExpenseTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
+		accountingCodeExpenseTableModel = new AccountingCodeExpenseTableModel(getProject(), treeToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
 		mainTable = new PlanningUpperMultiTable(treeToUse, multiModel, fontProvider);
@@ -353,9 +357,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		workUnitsTableModel.fireTableDataChanged();
 		resourceWorkUnitsTableModel.fireTableDataChanged();
 		fundingSourceExpenseTableModel.fireTableDataChanged();
+		accountingCodeExpenseTableModel.fireTableDataChanged();
 		expenseAmountsTableModel.fireTableDataChanged();
 		budgetDetailsTableModel.fireTableDataChanged();
 		fundingSourceBudgetDetailsTableModel.fireTableDataChanged();
+		accoundingCodeBudgetDetailsTableModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
@@ -394,8 +400,14 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE))
 			multiModel.addModel(fundingSourceExpenseTableModel);
 		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE))
+			multiModel.addModel(accountingCodeExpenseTableModel);
+		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE))
 			multiModel.addModel(fundingSourceBudgetDetailsTableModel);
+		
+		if (shouldShow(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE))
+			multiModel.addModel(accoundingCodeBudgetDetailsTableModel);
 		
 		if (shouldShow(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 			multiModel.addModel(budgetDetailsTableModel);
@@ -465,8 +477,10 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private ExpenseAmountsTableModel expenseAmountsTableModel;
 	protected BudgetDetailsTableModel budgetDetailsTableModel;
 	private FundingSourceBudgetDetailsTableModel fundingSourceBudgetDetailsTableModel;
+	private AccountingCodeBudgetDetailsTableModel accoundingCodeBudgetDetailsTableModel;
 	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
 	private FundingSourceExpenseTableModel fundingSourceExpenseTableModel;
+	private AccountingCodeExpenseTableModel accountingCodeExpenseTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	private ProjectResourceFilterStatusPanel filterStatusPanel;

@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.objects.AccountingCode;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 
 public class AccountingCodeRowColumnProvider extends AccountingCodeCoreRowColumnProvider
@@ -30,10 +31,9 @@ public class AccountingCodeRowColumnProvider extends AccountingCodeCoreRowColumn
 		CodeList columnCodes = new CodeList();
 		columnCodes.add(AccountingCode.TAG_CODE);
 		
-		//FIXME urgent - accounting code - uncomment and verify filter. create tags for acc code
-		//columnCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
-		//columnCodes.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
-		//columnCodes.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		columnCodes.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		columnCodes.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
+		columnCodes.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
 		
 		return columnCodes;
 	}
