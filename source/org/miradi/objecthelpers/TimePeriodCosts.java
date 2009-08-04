@@ -50,8 +50,9 @@ public class TimePeriodCosts
 		this();
 		
 		ensureFundingSource(fundingSourceRef);
-		addExpensesToTotal(expenseToUse);		
-		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, expenseToUse));
+		addExpensesToTotal(expenseToUse);
+		//FIXME urgent - dont pass invalid accounting code
+		addToDataPacks(expensesPacks, new DataPack(ORef.INVALID, fundingSourceRef, ORef.INVALID, expenseToUse));
 	}
 	
 	public TimePeriodCosts(ORef resourceRef, ORef fundingSourceRef,	OptionalDouble workUnits)
@@ -60,7 +61,8 @@ public class TimePeriodCosts
 		
 		ensureCorrectRefTypes(resourceRef, fundingSourceRef);		
 		addWorkUnitsToTotal(workUnits);
-		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, workUnits));
+		//FIXME urgent - dont pass invalid accounting code
+		addToDataPacks(workUnitPacks, new DataPack(resourceRef, fundingSourceRef, ORef.INVALID, workUnits));
 	}
 
 	public void add(TimePeriodCosts timePeriodCosts)
@@ -224,15 +226,26 @@ public class TimePeriodCosts
 		filterWorkUnitRelated(workUnitPacks, fundingSourceRefsToRetain);
 	}
 	
-	private void filterWorkUnitRelated(Vector<DataPack> dataPacks, ORefSet projectResourceRefsToRetain)
+	public void filterAccountingCodesWorkUnits(ORefSet accountingCodeRefsToRetain)
 	{
-		filterDataPacks(dataPacks, projectResourceRefsToRetain);
+		filterWorkUnitRelated(workUnitPacks, accountingCodeRefsToRetain);
+	}
+	
+	private void filterWorkUnitRelated(Vector<DataPack> dataPacks, ORefSet refsToRetain)
+	{
+		filterDataPacks(dataPacks, refsToRetain);
 		updateTotalWorkUnits(workUnitPacks);
 	}
 	
 	public void filterFundingSourcesExpenses(ORefSet fundingSourceRefsToRetain)
 	{
 		filterDataPacks(expensesPacks, fundingSourceRefsToRetain);
+		updateTotalExpenses(expensesPacks);
+	}
+	
+	public void filterAccountingCodeExpenses(ORefSet accountingCodeRefsToRetain)
+	{
+		filterDataPacks(expensesPacks, accountingCodeRefsToRetain);
 		updateTotalExpenses(expensesPacks);
 	}
 	
@@ -374,13 +387,15 @@ public class TimePeriodCosts
 		{
 			resourceRef = ORef.INVALID;
 			fundingSourceRef = ORef.INVALID;
+			accountingCodeRef = ORef.INVALID;
 			quantity = new OptionalDouble();
 		}
 		
-		public DataPack(ORef resourceRefToUse, ORef fundingSourceRefToUse, OptionalDouble quantityToUse)
+		public DataPack(ORef resourceRefToUse, ORef fundingSourceRefToUse, ORef accountingCodeRefToUse, OptionalDouble quantityToUse)
 		{
 			resourceRef = resourceRefToUse;
 			fundingSourceRef = fundingSourceRefToUse;
+			accountingCodeRef = fundingSourceRefToUse;
 			quantity = quantityToUse;
 		}
 		
@@ -389,6 +404,7 @@ public class TimePeriodCosts
 			ORefSet allContainingRefs = new ORefSet();
 			allContainingRefs.add(getResourceRef());
 			allContainingRefs.add(getFundingSourceRef());
+			allContainingRefs.add(getAccountingCodeRef());
 			
 			return allContainingRefs;
 		}
@@ -404,6 +420,9 @@ public class TimePeriodCosts
 		public boolean containsRef(ORef refToMatch)
 		{
 			if (resourceRef.equals(refToMatch))
+				return true;
+			
+			if (accountingCodeRef.equals(refToMatch))
 				return true;
 			
 			return fundingSourceRef.equals(refToMatch);
@@ -424,6 +443,11 @@ public class TimePeriodCosts
 			return fundingSourceRef;
 		}
 		
+		public ORef getAccountingCodeRef()
+		{
+			return accountingCodeRef;
+		}
+		
 		public OptionalDouble getQuantity()
 		{
 			return quantity;
@@ -432,7 +456,7 @@ public class TimePeriodCosts
 		@Override
 		public int hashCode()
 		{
-			return fundingSourceRef.hashCode() + resourceRef.hashCode();
+			return fundingSourceRef.hashCode() + resourceRef.hashCode() + accountingCodeRef.hashCode();
 		}
 		
 		@Override
@@ -448,17 +472,21 @@ public class TimePeriodCosts
 			if (!resourceRef.equals(other.resourceRef))
 				return false;
 			
+			if (!accountingCodeRef.equals(other.accountingCodeRef))
+				return false;
+			
 			return quantity.equals(other.quantity);
 		}
 		
 		@Override
 		public String toString()
 		{
-			return "rsourceRef=" + resourceRef + " fundingSourceRef=" + fundingSourceRef + " quantiy=" + quantity; 
+			return "rsourceRef=" + resourceRef + " fundingSourceRef=" + fundingSourceRef + " accountingCodeRef=" + accountingCodeRef + " quantiy=" + quantity; 
 		}
 		
 		private ORef resourceRef;
 		private ORef fundingSourceRef;
+		private ORef accountingCodeRef;
 		private OptionalDouble quantity;
 	}
 	
