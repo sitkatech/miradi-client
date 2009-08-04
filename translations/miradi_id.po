@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-04 13:49-0500\n"
+"POT-Creation-Date: 2009-08-04 13:58-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6661,7 +6661,7 @@ msgstr "Sifat-sifat Tugas "
 msgid "Planning View Configuration Label Properties"
 msgstr "Sifat-sifat Label Konfigurasi Tampilan Perencanaan "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:66
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceWorkUnitsTableModel.java:70
 msgid "Project Resource Work Units Table is not editbale."
 msgstr ""
 
