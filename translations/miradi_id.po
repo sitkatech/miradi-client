@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-04 13:43-0500\n"
+"POT-Creation-Date: 2009-08-04 13:49-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6699,13 +6699,13 @@ msgstr "Unit "
 msgid "Title|Measurement Properties"
 msgstr "Sifat-sifat Pengukuran "
 
-#: miradi/source/org/miradi/dialogs/planning/AbstractFundingSourceBudgetDetailsTableModel.java:96
-msgid ""
-"This model is not for a single assignment and has no assignment information"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectTreeRootNodeWithUnspecifiedNode.java:47
 msgid "Project Totals"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:96
+msgid ""
+"This model is not for a single assignment and has no assignment information"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/upperPanel/ObjectsOnlyPlanningTreeTablePanel.java:40
