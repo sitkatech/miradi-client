@@ -30,7 +30,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.OptionalDouble;
 
-public class FundingSourceBudgetDetailsTableModel extends AbstractFundingSourceBudgetDetailsTableModel
+public class FundingSourceBudgetDetailsTableModel extends AbstractBudgetDetailsTableModel
 {
 	public FundingSourceBudgetDetailsTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
