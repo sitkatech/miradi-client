@@ -911,6 +911,9 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		Set keys = stringRefMap.getKeys();
 		for(Object key: keys)
 		{
+			if (!key.equals(CONPRO_CONTEXT))
+				continue;
+			
 			ORef xenodataRef = stringRefMap.getValue((String) key);
 			if (xenodataRef.isInvalid())
 			{

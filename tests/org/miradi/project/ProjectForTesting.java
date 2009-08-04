@@ -186,7 +186,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef xenodataRef2 = createAndPopulateXenodata("2").getRef();
 		StringRefMap refMap = new StringRefMap();
 		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef1);
-		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef2);
+		refMap.add("RandomKey", xenodataRef2);
 		
 		return refMap.toString();
 	}
