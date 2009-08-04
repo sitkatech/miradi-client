@@ -49,9 +49,9 @@ public class AccountingCodeBudgetDetailsTableModel extends AbstractBudgetDetails
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 		if (AccountingCode.is(baseObject))
 		{
-			ORefSet fundingSoruceRefsToRetain = new ORefSet(baseObject);
-			timePeriodCosts.filterAccountingCodeExpenses(fundingSoruceRefsToRetain);
-			timePeriodCosts.filterAccountingCodeWorkUnits(fundingSoruceRefsToRetain);
+			ORefSet accountingCodeRefsToRetain = new ORefSet(baseObject);
+			timePeriodCosts.filterAccountingCodeExpenses(accountingCodeRefsToRetain);
+			timePeriodCosts.filterAccountingCodeWorkUnits(accountingCodeRefsToRetain);
 		}
 		
 		return calculateValue(timePeriodCosts);

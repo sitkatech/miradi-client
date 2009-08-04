@@ -49,9 +49,9 @@ public class FundingSourceBudgetDetailsTableModel extends AbstractBudgetDetailsT
 		TimePeriodCosts timePeriodCosts = getProjectTotalTimePeriodCostFor(dateUnit);
 		if (FundingSource.is(baseObject))
 		{
-			ORefSet fundingSoruceRefsToRetain = new ORefSet(baseObject);
-			timePeriodCosts.filterFundingSourcesExpenses(fundingSoruceRefsToRetain);
-			timePeriodCosts.filterFundingSourcesWorkUnits(fundingSoruceRefsToRetain);
+			ORefSet fundingSourceRefsToRetain = new ORefSet(baseObject);
+			timePeriodCosts.filterFundingSourcesExpenses(fundingSourceRefsToRetain);
+			timePeriodCosts.filterFundingSourcesWorkUnits(fundingSourceRefsToRetain);
 		}
 		
 		return calculateValue(timePeriodCosts);
