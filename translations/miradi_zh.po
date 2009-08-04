@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-04 14:01-0500\n"
+"POT-Creation-Date: 2009-08-04 14:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6388,10 +6388,6 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePropertiesPanel.java:44
 msgid "Title|Accounting Code Properties"
 msgstr "会计代码属性"
-
-#: miradi/source/org/miradi/dialogs/accountingcode/AccountingCodePoolManagementPanel.java:103
-msgid "Title|Accounting Codes"
-msgstr "会计代码"
 
 #: miradi/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:55
 #: miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:57
@@ -29406,6 +29402,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Title|Accounting Codes"
+#~ msgstr "会计代码"
 
 #~ msgid "Title|Funding Sources"
 #~ msgstr "资金来源 \t\t"
