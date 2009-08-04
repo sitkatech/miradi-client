@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.icons.AccountCodeIcon;
+import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -27,7 +27,7 @@ public class ActionCreateAccountingCode extends ObjectsAction
 {
 	public ActionCreateAccountingCode(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new AccountCodeIcon());
+		super(mainWindowToUse, getLabel(), new AccountingCodeIcon());
 	}
 
 	private static String getLabel()

@@ -25,7 +25,7 @@ import javax.swing.Icon;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.icons.AccountCodeIcon;
+import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
@@ -48,6 +48,6 @@ public class AbstractAccountingCodeManagementPanel extends PlanningTreeManagemen
 	@Override
 	public Icon getIcon()
 	{
-		return new AccountCodeIcon();
+		return new AccountingCodeIcon();
 	}
 }

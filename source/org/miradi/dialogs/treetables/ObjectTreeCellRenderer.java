@@ -27,7 +27,7 @@ import javax.swing.Icon;
 import javax.swing.JTree;
 import javax.swing.tree.TreeCellRenderer;
 
-import org.miradi.icons.AccountCodeIcon;
+import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.ConceptualModelIcon;
@@ -156,7 +156,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(fundingSourceRenderer, new FundingSourceIcon(), getPlainFont());
 		
 		accountingCodeRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(accountingCodeRenderer, new AccountCodeIcon(), getPlainFont());
+		setRendererDefaults(accountingCodeRenderer, new AccountingCodeIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)

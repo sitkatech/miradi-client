@@ -25,7 +25,7 @@ import java.awt.Graphics;
 
 import javax.swing.Icon;
 
-public class AccountCodeIcon implements Icon
+public class AccountingCodeIcon implements Icon
 {
 	public int getIconHeight()
 	{
