@@ -111,7 +111,7 @@ public class ResourceAssignment extends Assignment
 	@Override
 	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
-		return new TimePeriodCosts(getResourceRef(), getFundingSourceRef(), quantity); 
+		return new TimePeriodCosts(getResourceRef(), getFundingSourceRef(), getAccountingCodeRef(), quantity); 
 	}
 	
 	public DateRange getCombinedTimePeriodCostsMapDateRange() throws Exception
