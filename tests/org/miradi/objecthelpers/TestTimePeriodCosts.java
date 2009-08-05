@@ -295,6 +295,24 @@ public class TestTimePeriodCosts extends TestCaseWithProject
 		Set<ORef> resourceRefsAfterFiltering = timePeriodCosts.getResourceRefSet();
 		assertFalse("both freds were not removed?", resourceRefsAfterFiltering.contains(fred.getRef()));
 	}
+	
+	public void testDivideBy()
+	{
+		TimePeriodCosts timePeriodCosts = new TimePeriodCosts();
+		timePeriodCosts.divideBy(new OptionalDouble(3.0));
+		assertFalse("empty time period costs total work units should have no value?", timePeriodCosts.getTotalWorkUnits().hasValue());
+		assertFalse("empty time period costs total expenses should have no value?", timePeriodCosts.getTotalExpense().hasValue());
+		
+		timePeriodCosts.add(new TimePeriodCosts(INVALID_RESOURCE_REF, INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(6.0)));
+		assertEquals("wrong total work units?", 6.0, timePeriodCosts.getTotalWorkUnits().getValue());
+
+		timePeriodCosts.add(new TimePeriodCosts(INVALID_FUNDING_SOURCE_REF, INVALID_ACCOUNTING_CODE_REF, new OptionalDouble(15.0)));
+		assertEquals("wrong total expenses?", 15.0, timePeriodCosts.getTotalExpense().getValue());
+		
+		timePeriodCosts.divideBy(new OptionalDouble(3.0));
+		assertEquals("wrong total work units after divide?", 2.0, timePeriodCosts.getTotalWorkUnits().getValue());
+		assertEquals("wrong total expenses after divide?", 5.0, timePeriodCosts.getTotalExpense().getValue());
+	}
 
 	private ORef createFundingSource() throws Exception
 	{
