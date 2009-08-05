@@ -515,6 +515,12 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			
 			int modelColumn = mainTable.convertColumnIndexToModel(selectedColumn);
 			String columnGroupCode = multiModel.getColumnGroupCode(modelColumn);
+			
+			return convertToMatchingPropertiesPanel(columnGroupCode);
+		}
+
+		private String convertToMatchingPropertiesPanel(String columnGroupCode)
+		{
 			if (columnGroupCode.equals(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 				return ExpensesPropertiesPanel.getTranslatedExpensesText();
 			
