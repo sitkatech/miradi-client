@@ -36,8 +36,8 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	public ObjectDataInputPanelWithSections(Project projectToUse, int objectTypeToUse)
 	{
 		super(projectToUse, objectTypeToUse, BaseId.INVALID);
-		objectType = objectTypeToUse;
 		
+		objectType = objectTypeToUse;
 		tabPanel = new PanelTabbedPane();
 		tabPanel.setTabPlacement(tabPanel.LEFT);
 		add(tabPanel, BorderLayout.CENTER);
@@ -64,34 +64,27 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		addSubPanelWithoutTitledBorder(subPanel);
 	}
 
-	public void addFieldWithEditButton(PanelTitleLabel label,
-			ObjectDataInputField field,
-			ObjectsActionButton button)
+	public void addFieldWithEditButton(PanelTitleLabel label, ObjectDataInputField field, ObjectsActionButton button)
 	{
 		singleSection.addFieldWithEditButton(label, field, button);
 	}
 
-	public void addFieldWithEditButton(String translatedLabel,
-			ObjectDataInputField field,
-			ObjectsActionButton button)
+	public void addFieldWithEditButton(String translatedLabel, ObjectDataInputField field, ObjectsActionButton button)
 	{
 		singleSection.addFieldWithEditButton(translatedLabel, field, button);
 	}
 
-	public void addFieldsOnOneLine(String text, Icon icon,
-			ObjectDataInputField[] objectDataInputFields)
+	public void addFieldsOnOneLine(String text, Icon icon, ObjectDataInputField[] objectDataInputFields)
 	{
 		singleSection.addFieldsOnOneLine(text, icon, objectDataInputFields);
 	}
 	
-	public void addFieldsOnOneLine(String text, 
-			ObjectDataInputField[] objectDataInputFields)
+	public void addFieldsOnOneLine(String text, ObjectDataInputField[] objectDataInputFields)
 	{
 		singleSection.addFieldsOnOneLine(text, objectDataInputFields);
 	}
 
-	public void addFieldsOnOneLine(PanelTitleLabel labelComponent, 
-			Object[] componentsOrFields)
+	public void addFieldsOnOneLine(PanelTitleLabel labelComponent, Object[] componentsOrFields)
 	{
 		singleSection.addFieldsOnOneLine(labelComponent, componentsOrFields);
 	}
@@ -110,6 +103,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		return singleSection.add(component);
 	}
 	
+	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
@@ -119,6 +113,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		}
 	}
 	
+	@Override
 	public void becomeInactive()
 	{
 		for(AbstractObjectDataInputPanel panel : getSubPanels())
