@@ -44,23 +44,6 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		setBackground(getMainWindow().getAppPreferences().getDarkPanelBackgroundColor());
 	}
 	
-	class SimpleObjectDataInputPanel extends ObjectDataInputPanel
-	{
-		public SimpleObjectDataInputPanel(Project projectToUse, int objectTypeToUse, String titleToUse)
-		{
-			super(projectToUse, objectTypeToUse, BaseId.INVALID);
-			title = titleToUse;
-		}
-		
-		@Override
-		public String getPanelDescription()
-		{
-			return title;
-		}
-
-		private String title;
-	}
-	
 	public void createSingleSection(String title)
 	{
 		singleSection = new SimpleObjectDataInputPanel(getProject(), objectType, title);
@@ -143,6 +126,23 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 			panel.becomeInactive();
 		}
 		super.becomeInactive();
+	}
+	
+	class SimpleObjectDataInputPanel extends ObjectDataInputPanel
+	{
+		public SimpleObjectDataInputPanel(Project projectToUse, int objectTypeToUse, String titleToUse)
+		{
+			super(projectToUse, objectTypeToUse, BaseId.INVALID);
+			title = titleToUse;
+		}
+		
+		@Override
+		public String getPanelDescription()
+		{
+			return title;
+		}
+
+		private String title;
 	}
 	
 	private ObjectDataInputPanel singleSection;
