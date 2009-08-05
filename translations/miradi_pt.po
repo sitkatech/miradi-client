@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-05 16:29-0500\n"
+"POT-Creation-Date: 2009-08-05 17:22-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2130,7 +2130,7 @@ msgstr ""
 msgid "Cannot add a vector to itself."
 msgstr ""
 
-#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:388
+#: miradi/source/org/miradi/objecthelpers/TimePeriodCosts.java:405
 msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
