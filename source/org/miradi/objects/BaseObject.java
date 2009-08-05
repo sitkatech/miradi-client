@@ -515,8 +515,8 @@ abstract public class BaseObject
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		for (int index = 0; index < subTaskRefs.size(); ++index)
 		{
-			BaseObject baseObject = BaseObject.find(getProject(), subTaskRefs.get(index));
-			timePeriodCostsMap.mergeAll(baseObject.getTimePeriodCostsMap(tag));
+			Task task = Task.find(getProject(), subTaskRefs.get(index));
+			timePeriodCostsMap.mergeAll(task.getTimePeriodCostsMap(tag));
 		}
 		
 		return timePeriodCostsMap;
