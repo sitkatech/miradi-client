@@ -516,7 +516,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			if (selectedObject == null)
 				return "";
 				
-			return mainModel.getCellTagForNode(selectedObject.getType(), modelColumn);
+			return mainModel.getTagForCell(selectedObject.getType(), modelColumn);
 		}		
 	}
 
