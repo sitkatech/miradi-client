@@ -292,6 +292,23 @@ public class TimePeriodCosts
 		return totals;
 	}
 	
+	public void divideBy(OptionalDouble divideByValue)
+	{
+		divideByDataPacks(workUnitPacks, divideByValue);
+		updateTotalWorkUnits(workUnitPacks);
+		
+		divideByDataPacks(expensesPacks, divideByValue);
+		updateTotalExpenses(expensesPacks);
+	}
+	
+	private void divideByDataPacks(Vector<DataPack> dataPacksToDivide, OptionalDouble divideByValue)
+	{
+		for(DataPack dataPack : dataPacksToDivide)
+		{
+			dataPack.divideBy(divideByValue);
+		}
+	}
+	
 	@Override
 	public boolean equals(Object rawOther)
 	{
@@ -439,6 +456,11 @@ public class TimePeriodCosts
 		public void addQuantity(OptionalDouble quantityToAdd)
 		{
 			quantity = quantity.add(quantityToAdd);
+		}
+		
+		public void divideBy(OptionalDouble divideBy)
+		{
+			quantity = quantity.divideBy(divideBy);
 		}
 		
 		public ORef getResourceRef()

@@ -71,6 +71,14 @@ public class OptionalDouble
 		return new OptionalDouble();
 	}
 	
+	public OptionalDouble divideBy(OptionalDouble optionalDoubleToDivideBy)
+	{
+		if (isNonNullAndHasValue(optionalDoubleToDivideBy) && hasValue())
+			return new OptionalDouble(getRawValue() / optionalDoubleToDivideBy.getRawValue());
+		
+		return new OptionalDouble();
+	}
+	
 	private double getSafeRawValue()
 	{
 		if (hasNoValue())

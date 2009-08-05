@@ -105,6 +105,36 @@ public class TestOptionalDouble extends EAMTestCase
 		assertEquals("tenTimesTen wrong value?", 100.0, tenTimesTen.getValue());
 	}
 	
+	public void testDivideBy()
+	{
+		OptionalDouble emptyDividedByNull = empty.divideBy(null);
+		assertFalse("emptyDividedByNull has value?", emptyDividedByNull.hasValue());
+		
+		OptionalDouble emptyDividedByEmpty = empty.divideBy(anotherEmpty);
+		assertFalse("emptyDividedByEmpty has value?", emptyDividedByEmpty.hasValue());
+		
+		OptionalDouble emptyDividedByTen = empty.divideBy(ten);
+		assertFalse("emptyDividedByTen has value?", emptyDividedByTen.hasValue());
+		
+		OptionalDouble tenDividedByNull = ten.divideBy(null);
+		assertFalse("tenDividedByNull has value?", tenDividedByNull.hasValue());
+		
+		OptionalDouble tenDividedByEmpty = ten.divideBy(empty);
+		assertFalse("tenDividedByEmpty has value?", tenDividedByEmpty.hasValue());
+
+		OptionalDouble tenDividedByTen = ten.divideBy(anotherTen);
+		assertTrue("tenDividedByTen doesn't have value?", tenDividedByTen.hasValue());
+		assertEquals("tenDividedByTen wrong value?", 1.0, tenDividedByTen.getValue());
+		
+		OptionalDouble tenDividedByZero = ten.divideBy(zero);
+		assertTrue("tenDividedByZero doesn't have value", tenDividedByZero.hasValue());
+		assertEquals("tenDividedByZero has wrong value?", Double.POSITIVE_INFINITY, tenDividedByZero.getValue());
+		
+		OptionalDouble zeroDividedByTen = zero.divideBy(ten);
+		assertTrue("zeroDividedByTen doesn't have value?", zeroDividedByTen.hasValue());
+		assertEquals("zeroDividedByTen has wrong value?", 0.0, zeroDividedByTen.getValue());
+	}
+	
 	public void testSubtract()
 	{
 		OptionalDouble emptyMinusNull = empty.subtract(null);
@@ -145,5 +175,5 @@ public class TestOptionalDouble extends EAMTestCase
 	private final OptionalDouble anotherEmpty = new OptionalDouble();
 	private final OptionalDouble ten = new OptionalDouble(10.0);
 	private final OptionalDouble anotherTen = new OptionalDouble(10.0);
-	
+	private final OptionalDouble zero = new OptionalDouble(0.0);
 }
