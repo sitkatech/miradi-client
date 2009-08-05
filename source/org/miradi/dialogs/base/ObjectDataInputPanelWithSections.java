@@ -57,6 +57,9 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		for (int index = 0; index < tabPanel.getTabCount(); ++index)
 		{
 			AbstractObjectDataInputPanel panel = (AbstractObjectDataInputPanel) tabPanel.getComponentAt(index);
+			if (tag.equals(panel.getPanelDescription()))
+				return index;
+			
 			if (containsFieldWithTag(panel, tag))
 				return index;
 		}

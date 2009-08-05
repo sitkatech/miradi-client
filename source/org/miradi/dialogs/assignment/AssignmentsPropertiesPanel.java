@@ -68,6 +68,11 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
+		return getTranslatedAssignmentsText();
+	}
+
+	public static String getTranslatedAssignmentsText()
+	{
 		return EAM.text("Assignments");
 	}
 	

@@ -68,6 +68,11 @@ public class ExpensesPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
+		return getTranslatedExpensesText();
+	}
+
+	public static String getTranslatedExpensesText()
+	{
 		return EAM.text("Expenses");
 	}
 	
