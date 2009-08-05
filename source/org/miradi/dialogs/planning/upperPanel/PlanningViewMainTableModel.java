@@ -229,7 +229,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		try
 		{	
-			String columnTag = getCellTagForNode(baseObject.getType(), column);
+			String columnTag = getTagForCell(baseObject.getType(), column);
 			if(columnTag.equals(CustomPlanningColumnsQuestion.META_WHO_TOTAL))
 				return appendedProjectResources(baseObject);
 			
@@ -315,7 +315,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return getChoiceItemAt(row, column);
 	}
 
-	public String getCellTagForNode(int nodeType, int column)
+	public String getTagForCell(int nodeType, int column)
 	{
 		String columnTag = getColumnTag(column);
 
