@@ -23,6 +23,11 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.TableColumnModelEvent;
+import javax.swing.event.TableColumnModelListener;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.MiradiPanel;
@@ -130,6 +135,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		add(rightPanel, BorderLayout.CENTER);
 		
 		rebuildEntireTreeTable();
+		
+		listenForColumnSelectionChanges(mainTable);
 	}
 
 	@Override
@@ -466,6 +473,53 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return mainModel;
 	}
 	
+	private void listenForColumnSelectionChanges(JTable table)
+	{
+		table.getColumnModel().addColumnModelListener(new ColumnSelectionHandler());
+	}
+	
+	class ColumnSelectionHandler  implements TableColumnModelListener
+	{
+		public void columnAdded(TableColumnModelEvent e)
+		{
+		}
+
+		public void columnMarginChanged(ChangeEvent e)
+		{
+		}
+
+		public void columnMoved(TableColumnModelEvent e)
+		{
+		}
+
+		public void columnRemoved(TableColumnModelEvent e)
+		{
+		}
+
+		public void columnSelectionChanged(ListSelectionEvent e)
+		{
+			String selectedColumnTag = getSelectedColumnTag();
+			if (getPropertiesPanel() != null)
+			{
+				getPropertiesPanel().selectSectionForTag(selectedColumnTag);
+			}
+		}
+
+		private String getSelectedColumnTag()
+		{
+			int selectedColumn = mainTable.getSelectedColumn();
+			if (selectedColumn < 0)
+				return "";
+			
+			int modelColumn = mainTable.convertColumnIndexToModel(selectedColumn);
+			BaseObject selectedObject = getSelectedObject();
+			if (selectedObject == null)
+				return "";
+				
+			return mainModel.getCellTagForNode(selectedObject.getType(), modelColumn);
+		}		
+	}
+
 	private RowColumnProvider rowColumnProvider;
 	private PlanningViewMainTableModel mainModel;
 	private PlanningTreeMultiTableModel multiModel;

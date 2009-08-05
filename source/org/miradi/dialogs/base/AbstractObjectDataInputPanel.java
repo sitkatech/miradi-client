@@ -176,6 +176,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		updateFieldsFromProject();
 	}
 
+	public void setObjectRefs(ORef[] orefsToUse, String tag)
+	{
+		setObjectRefs(orefsToUse);
+		selectSectionForTag(tag);
+	}
 
 	private void setObjectRefsWithoutUpdatingFields(ORef[] orefsToUse)
 	{
@@ -187,6 +192,10 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		picker.setObjectRefs(selectedRefs);
 	}
 	
+	public void selectSectionForTag(String tag)
+	{
+	}
+		
 	public DisposablePanelWithDescription getTabContentsComponent()
 	{
 		return this;

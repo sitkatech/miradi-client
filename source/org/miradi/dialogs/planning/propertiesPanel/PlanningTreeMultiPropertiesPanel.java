@@ -175,6 +175,12 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		repaint();
 	}
 
+	@Override
+	public void selectSectionForTag(String tag)
+	{
+		currentCard.selectSectionForTag(tag);
+	}
+	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
 	{
 		if(orefsToUse.length == 0)

@@ -21,6 +21,7 @@ package org.miradi.dialogs.base;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.util.Vector;
 
 import javax.swing.Icon;
 
@@ -44,6 +45,40 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		setBackground(getMainWindow().getAppPreferences().getDarkPanelBackgroundColor());
 	}
 	
+	@Override
+	public void selectSectionForTag(String tag)
+	{
+		int indexToSelect = findSectionWithTag(tag);
+		tabPanel.setSelectedIndex(indexToSelect);
+	}
+	
+	private int findSectionWithTag(String tag)
+	{
+		for (int index = 0; index < tabPanel.getTabCount(); ++index)
+		{
+			AbstractObjectDataInputPanel panel = (AbstractObjectDataInputPanel) tabPanel.getComponentAt(index);
+			if (containsFieldWithTag(panel, tag))
+				return index;
+		}
+		
+		return 0;
+	}
+	
+	private boolean containsFieldWithTag(AbstractObjectDataInputPanel panel, String tag)
+	{
+		if (panel == null)
+			return false;
+		
+		Vector<ObjectDataInputField> fields = panel.getFields();
+		for(ObjectDataInputField field : fields)
+		{
+			if (field.getTag().equals(tag))
+				return true;
+		}
+		
+		return false;
+	}
+
 	public void createSingleSection(String title)
 	{
 		singleSection = new SimpleObjectDataInputPanel(getProject(), objectType, title);
