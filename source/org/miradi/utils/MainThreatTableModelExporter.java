@@ -24,7 +24,6 @@ import java.util.Vector;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.MainThreatTableModel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
@@ -123,17 +122,9 @@ public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 		return getSafeValue(mainThreatTableModel.getValueAt(row, modelColumn));
 	}
 	
-	@Override
-	protected CodeList getModelColumnSequence()
+	protected AbstractThreatTargetTableModel getMainThreatTableModel()
 	{
-		CodeList currentColumnTagSequences = new CodeList();
-		for (int modelColumn = 0; modelColumn < getColumnCount(); ++modelColumn)
-		{
-			ORef targetRef = mainThreatTableModel.getTarget(modelColumn).getRef();
-			currentColumnTagSequences.add(targetRef.toString());
-		}
-		
-		return currentColumnTagSequences;
+		return mainThreatTableModel;
 	}
 	
 	private AbstractThreatTargetTableModel mainThreatTableModel;
