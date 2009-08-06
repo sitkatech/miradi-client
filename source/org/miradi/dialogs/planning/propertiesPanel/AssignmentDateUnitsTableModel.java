@@ -167,7 +167,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return dateUnitEffort;
 	}
 	
-	@Override
 	public String getColumnTag(int column)
 	{
 		return getColumnName(column);

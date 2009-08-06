@@ -50,7 +50,6 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		return columnTags.length;
 	}
 	
-	@Override
 	public String getColumnTag(int column)
 	{
 		return columnTags[column];
