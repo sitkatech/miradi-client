@@ -48,11 +48,6 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return objectProvider.getRowCount();
 	}
 	
-	public String getColumnTag(int column)
-	{
-		return getColumnName(column);
-	}
-		
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return objectProvider.getBaseObjectForRowColumn(row, column);

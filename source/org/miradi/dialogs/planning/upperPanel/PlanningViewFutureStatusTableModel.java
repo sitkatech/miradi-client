@@ -44,9 +44,14 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 		return columnTags.length;
 	}
 	
+	public String getColumnTag(int column)
+	{
+		return columnTags[column];
+	}
+	
 	public String getColumnName(int column)
 	{
-		return EAM.fieldLabel(Indicator.getObjectType(), columnTags[column]);
+		return EAM.fieldLabel(Indicator.getObjectType(), getColumnTag(column));
 	}
 	
 	public Object getValueAt(int row, int column)
@@ -60,7 +65,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 		if (!Indicator.is(objectForRow))
 			return new EmptyChoiceItem();
 		
-		return new TaglessChoiceItem(objectForRow.getData(columnTags[column]));
+		return new TaglessChoiceItem(objectForRow.getData(getColumnTag(column)));
 	}
 	
 	public Color getCellBackgroundColor(int column)

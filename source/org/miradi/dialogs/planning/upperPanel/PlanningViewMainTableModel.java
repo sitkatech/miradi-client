@@ -210,7 +210,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return columnsToShow.size();
 	}
 
-	@Override
 	public String getColumnTag(int column)
 	{
 		return columnsToShow.get(column);
