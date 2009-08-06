@@ -181,6 +181,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (!isOrCanReferToAssignments(baseObjectForRow.getRef()))
 				return false;
 			
+			if (isSharedTask(baseObjectForRow))
+				return false;
+
 			if (!isEditableModel())
 				return false;
 		
@@ -206,6 +209,15 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 	
+	private boolean isSharedTask(BaseObject baseObjectForRow)
+	{
+		if (!Task.is(baseObjectForRow))
+			return false;
+		
+		Task task = (Task) baseObjectForRow;
+		return task.isShared();
+	}
+
 	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
 	{
 		return false;
