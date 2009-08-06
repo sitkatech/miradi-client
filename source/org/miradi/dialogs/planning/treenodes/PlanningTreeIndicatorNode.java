@@ -42,7 +42,7 @@ public class PlanningTreeIndicatorNode extends AbstractPlanningTreeNode
 	{
 		addChildren(buildResourceAssignmentNodes(indicator.getResourceAssignmentRefs()));
 		addChildren(buildExpenseAssignmentNodes(indicator.getExpenseAssignmentRefs()));
-		createAndAddTaskNodes(indicator.getMethodRefs());
+		createAndAddTaskNodes(indicator.getMethodRefs(), getObjectReference());
 		addSortedMeasurementChildren();
 	}
 

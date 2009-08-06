@@ -127,23 +127,23 @@ public class TestTask extends ObjectTestCase
 	
 	public void testGetCombinedEffortDates() throws Exception
 	{
-		Task taskWithNoSubtasksNoAssignment = createTask(); 
-		DateRange combinedDateRange = taskWithNoSubtasksNoAssignment.getWhenRollup();
+		Task activityWithNoSubtasksNoAssignment = getProject().createActivity(); 
+		DateRange combinedDateRange = activityWithNoSubtasksNoAssignment.getWhenRollup();
 		assertEquals("combined date range is not null?", null, combinedDateRange);
 		
-		Task taskWithNoSubTasksWithAssignment = createTask();
-		addAssignment(taskWithNoSubTasksWithAssignment, 1.0, 2006, 2006);
-		assertEquals("assignment was not added?", 1, taskWithNoSubTasksWithAssignment.getResourceAssignmentIdList().size());
-		DateRange whenRollup = taskWithNoSubTasksWithAssignment.getWhenRollup();
+		Task activityWithNoSubTasksWithAssignment = getProject().createActivity();
+		addAssignment(activityWithNoSubTasksWithAssignment, 1.0, 2006, 2006);
+		assertEquals("assignment was not added?", 1, activityWithNoSubTasksWithAssignment.getResourceAssignmentIdList().size());
+		DateRange whenRollup = activityWithNoSubTasksWithAssignment.getWhenRollup();
 		assertEquals("wrong combined date range?", "2006", whenRollup.toString());
 		
-		Task taskWithoutUnits = createTask();
-		addAssignment(taskWithoutUnits, 0, 2003, 2003);
-		assertEquals("assignment was not added?", 1, taskWithoutUnits.getResourceAssignmentIdList().size());
-		assertEquals("wrong combined date range?", "2003", taskWithoutUnits.getWhenRollup().toString());
+		Task activityWithoutUnits = getProject().createActivity();
+		addAssignment(activityWithoutUnits, 0, 2003, 2003);
+		assertEquals("assignment was not added?", 1, activityWithoutUnits.getResourceAssignmentIdList().size());
+		assertEquals("wrong combined date range?", "2003", activityWithoutUnits.getWhenRollup().toString());
 		
-		Task taskWithSubtasks = createTask();
-		Task subTask = createTask();
+		Task taskWithSubtasks = getProject().createActivity();
+		Task subTask = getProject().createTask();
 		IdList subTaskIds = new IdList(Task.getObjectType());
 		subTaskIds.add(subTask.getId());
 		taskWithSubtasks.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());
@@ -165,11 +165,6 @@ public class TestTask extends ObjectTestCase
 		getProject().addResourceAssignment(task, units, startYear, endYear);
 	}
 	
-	private Task createTask() throws Exception
-	{
-		return getProject().createTask();
-	}
-
 	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
 	{
 		return getProject().createDateUnitEffort(startYear, endYear);
@@ -177,7 +172,7 @@ public class TestTask extends ObjectTestCase
 	
 	public void testGetWorkUnitsForTaskWithoutSubTasks() throws Exception
 	{
-		Task task = createTask();
+		Task task = getProject().createActivity();
 		addAssignment(task, 5, 2009, 2009);
 		addAssignment(task, 15, 2010, 2010);
 		
@@ -189,12 +184,12 @@ public class TestTask extends ObjectTestCase
 	{		
 		getProject().setProjectDates(1999, 2012);
 
-		Task task = createTask();
+		Task task = getProject().createActivity();
 		DateUnit projectDateUnit = new DateUnit();
 		assertFalse("Empty task has work unit values?", task.calculateTimePeriodCosts(projectDateUnit).getTotalWorkUnits().hasValue());
 		addAssignment(task, 99, 2000, 2010);
 		
-		Task subTask = createTask();
+		Task subTask = getProject().createTask();
 		IdList subTaskIds = new IdList(Task.getObjectType());
 		subTaskIds.add(subTask.getId());
 		task.setData(Task.TAG_SUBTASK_IDS, subTaskIds.toString());

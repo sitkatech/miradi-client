@@ -522,7 +522,7 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 
-	private TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
 		ORefList assignmentRefs = getRefList(tag);

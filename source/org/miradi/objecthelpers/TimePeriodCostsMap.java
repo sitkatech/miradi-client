@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.utils.DateRange;
+import org.miradi.utils.OptionalDouble;
 
 public class TimePeriodCostsMap
 {
@@ -144,6 +145,16 @@ public class TimePeriodCostsMap
 		}
 		
 		return allProjectResourceRefs;
+	}
+	
+	public void divideBy(OptionalDouble divideByValue)
+	{
+		Set<DateUnit> keys = data.keySet();
+		for(DateUnit dateUnit : keys)
+		{
+			TimePeriodCosts timePeriodCosts = data.get(dateUnit);
+			timePeriodCosts.divideBy(divideByValue);
+		}
 	}
 
 	public boolean isEmpty()

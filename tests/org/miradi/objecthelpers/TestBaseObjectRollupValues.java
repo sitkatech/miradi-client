@@ -69,12 +69,12 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		ResourceAssignment assignment = getProject().createResourceAssignment();
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
 
-		Task taskWithResourceAssignment = getProject().createTask();
-		IdList currentAssignmentIdList = taskWithResourceAssignment.getResourceAssignmentIdList();
+		Task activityWithResourceAssignment = getProject().createActivity();
+		IdList currentAssignmentIdList = activityWithResourceAssignment.getResourceAssignmentIdList();
 		currentAssignmentIdList.add(assignment.getId());
-		taskWithResourceAssignment.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
+		activityWithResourceAssignment.setData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
 		
-		assertNotEquals("Ignored the resource assignment who?", 0, taskWithResourceAssignment.getTotalTimePeriodCostsMap().size());
+		assertNotEquals("Ignored the resource assignment who?", 0, activityWithResourceAssignment.getTotalTimePeriodCostsMap().size());
 	}
 	
 	public void testRollupExpenseAssignmentsWithNoQuantities() throws Exception
@@ -83,18 +83,18 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		ExpenseAssignment assignment = ExpenseAssignment.find(getProject(), expenseRef);
 		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
 
-		Task taskWithExpenseAssignment = getProject().createTask();
-		ORefList currentAssignmentRefList = taskWithExpenseAssignment.getExpenseAssignmentRefs();
+		Task activityWithExpenseAssignment = getProject().createActivity();
+		ORefList currentAssignmentRefList = activityWithExpenseAssignment.getExpenseAssignmentRefs();
 		currentAssignmentRefList.add(assignment.getRef());
-		taskWithExpenseAssignment.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
+		activityWithExpenseAssignment.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
 		
-		assertNotEquals("Ignored the expense assignment who?", 0, taskWithExpenseAssignment.getTotalTimePeriodCostsMap().size());
+		assertNotEquals("Ignored the expense assignment who?", 0, activityWithExpenseAssignment.getTotalTimePeriodCostsMap().size());
 	}
 	
 	public void testRollupExpenseAssignmentsWithNoAssignments() throws Exception
 	{
-		Task taskWithNoAssignments = getProject().createTask();
-		assertEquals("Had a who?", 0, taskWithNoAssignments.getTotalTimePeriodCostsMap().size());
+		Task activityWithNoAssignments = getProject().createActivity();
+		assertEquals("Had a who?", 0, activityWithNoAssignments.getTotalTimePeriodCostsMap().size());
 	}
 	
 	private DateUnit year2009Q1;
