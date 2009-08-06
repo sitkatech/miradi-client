@@ -1354,12 +1354,27 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		Strategy strategy = createStrategy();
 		Task activity = createTask();
-		ORefList activityRefs = new ORefList(activity);
-		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityRefs.convertToIdList(Task.getObjectType()).toString());
+		appendActivityToStrategy(strategy, activity);
 		
 		return activity;
 	}
-
+	
+	public void appendActivityToStrategy(Strategy strategy, Task activity) throws Exception
+	{
+		appendTaskToParentIdList(strategy, activity, Strategy.TAG_ACTIVITY_IDS);	
+	}
+	
+	public void appendMethodToIndicator(Indicator indicator, Task method) throws Exception
+	{
+		appendTaskToParentIdList(indicator, method, Indicator.TAG_METHOD_IDS);
+	}
+	
+	private void appendTaskToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
+	{
+		ORefList childTaskRefs = new ORefList(child);
+		fillObjectUsingCommand(parent, childListTag, childTaskRefs.convertToIdList(Task.getObjectType()).toString());
+	}
+	
 	public static double calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		return calculateRawTimePeriodCosts(baseObject, dateUnit).getValue();
