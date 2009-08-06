@@ -38,4 +38,10 @@ public class HiddenRootNodeWithBaseObjectChild extends BaseObjectTreeRootNode
 		children = new Vector();
 		children.add(new BaseObjectTreeRootNodeWithUnspecifiedNode(getProject(), getChildObjectType(), getChildObjectName(), getVisibleRows()));
 	}
+	
+	@Override
+	public boolean isAlwaysExpanded()
+	{
+		return true;
+	}
 }
