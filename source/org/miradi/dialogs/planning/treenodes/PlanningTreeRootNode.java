@@ -51,6 +51,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		return project.getMetadata();
 	}
 
+	@Override
 	public Object getValueAt(int column)
 	{
 		if (column == 0)
@@ -64,6 +65,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		return false;
 	}
 
+	@Override
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
@@ -82,6 +84,7 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		pruneUnwantedLayers(visibleRows);
 	}
 	
+	@Override
 	public boolean isAlwaysExpanded()
 	{
 		return true;
@@ -104,5 +107,4 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 		ORefList resultsChainRefs = project.getResultsChainDiagramPool().getORefList();
 		createAndAddChildren(resultsChainRefs, null);
 	}
-
 }
