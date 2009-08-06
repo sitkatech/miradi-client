@@ -42,7 +42,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		resetTargetAndThreats();
 	}
 	
-	public void resetTargetAndThreats()
+	private void resetTargetAndThreats()
 	{
 		threatRows =  getProject().getCausePool().getDirectThreats();
 		targetColumns = getOnlyTargetsInConceptualModelDiagrams().toArray(new Target[0]);
