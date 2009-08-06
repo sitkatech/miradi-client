@@ -249,6 +249,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
 			return true;
+		
+		if (event.isSetDataCommandWithThisTag(ResourceAssignment.TAG_RESOURCE_ID))
+			return true;
 			
 		return false;
 	}
