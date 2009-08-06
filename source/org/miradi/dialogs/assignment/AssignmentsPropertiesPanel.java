@@ -19,20 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.assignment;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.planning.propertiesPanel.ResourceAssignmentEditorComponent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class AssignmentsPropertiesPanel extends ObjectDataInputPanel
+public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public AssignmentsPropertiesPanel(MainWindow mainWindowToUse, int objectType, ObjectPicker picker) throws Exception
 	{
 		super(mainWindowToUse.getProject(), objectType);
 		
 		assignmentEditor = new ResourceAssignmentEditorComponent(mainWindowToUse, picker);
+		createSingleSection("");
 		add(assignmentEditor);
 		updateFieldsFromProject();
 	}
@@ -68,12 +70,16 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return getTranslatedAssignmentsText();
+		return EAM.text("Assignments");
 	}
 
-	public static String getTranslatedAssignmentsText()
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tag)
 	{
-		return EAM.text("Assignments");
+		if (tag.equals(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+			return true;
+		
+		return super.doesSectionContainFieldWithTag(tag);
 	}
 	
 	private ResourceAssignmentEditorComponent assignmentEditor;

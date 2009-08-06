@@ -877,6 +877,18 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		label.setVerticalAlignment(SwingConstants.TOP);
 		add(label);
 	}
+	
+	protected boolean doesSectionContainFieldWithTag(String tag)
+	{
+		Vector<ObjectDataInputField> thisFields = getFields();
+		for(ObjectDataInputField field : thisFields)
+		{
+			if (field.getTag().equals(tag))
+				return true;
+		}
+		
+		return false;
+	}
 
 	public static int STD_SHORT = 5;
 	public static final int DEFAULT_TEXT_COLUM_COUNT = 50;

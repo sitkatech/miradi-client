@@ -30,9 +30,7 @@ import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.dialogs.planning.AccountingCodeBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.FundingSourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.RowColumnProvider;
@@ -515,17 +513,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			
 			int modelColumn = mainTable.convertColumnIndexToModel(selectedColumn);
 			String columnGroupCode = multiModel.getColumnGroupCode(modelColumn);
-			
-			return convertToMatchingPropertiesPanel(columnGroupCode);
-		}
-
-		private String convertToMatchingPropertiesPanel(String columnGroupCode)
-		{
-			if (columnGroupCode.equals(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
-				return ExpensesPropertiesPanel.getTranslatedExpensesText();
-			
-			if (columnGroupCode.equals(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
-				return AssignmentsPropertiesPanel.getTranslatedAssignmentsText();
 			
 			return columnGroupCode;
 		}		
