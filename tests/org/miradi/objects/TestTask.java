@@ -25,6 +25,8 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.utils.DateRange;
@@ -201,6 +203,33 @@ public class TestTask extends ObjectTestCase
 		
 		DateUnit dateUnit1 = getProject().createDateUnit(2010);
 		assertEquals("wrong subtask work units for date range?", 5.0, ProjectForTesting.calculateTimePeriodCosts(task, dateUnit1));
+	}
+	
+	public void TestIsSharedTask() throws Exception
+	{
+		Task activity = getProject().createTask();
+		assertFalse("activity should not be shared?", activity.isShared());
+		
+		Strategy strategy1 = getProject().createStrategy();
+		getProject().appendActivityToStrategy(strategy1, activity);		
+		assertFalse("activity should not be shared?", activity.isShared());
+		
+		ORef tableSettingsRef = getProject().createObject(TableSettings.getObjectType());
+		getProject().fillObjectUsingCommand(tableSettingsRef, TableSettings.TAG_TREE_EXPANSION_LIST, new ORefList(activity).toString());
+		assertFalse("activity should not be shared?", activity.isShared());
+		
+		Strategy strategy2 = getProject().createStrategy();
+		getProject().appendActivityToStrategy(strategy2, activity);
+		assertTrue("activity should be shared?", activity.isShared());
+		
+		Task method = getProject().createTask();
+		Indicator indicator1 = getProject().createIndicator();
+		getProject().appendMethodToIndicator(indicator1, method);
+		assertFalse("method should not be shared?", method.isShared());
+		
+		Indicator indicator2 = getProject().createIndicator();
+		getProject().appendMethodToIndicator(indicator2, method);
+		assertTrue("method should be shared?", method.isShared());
 	}
 	
 	public MultiCalendar createMultiCalendar(int year)
