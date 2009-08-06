@@ -38,7 +38,7 @@ public class PlanningTreeStrategyNode extends AbstractPlanningTreeNode
 	{
 		addChildren(buildResourceAssignmentNodes(strategy.getResourceAssignmentRefs()));
 		addChildren(buildExpenseAssignmentNodes(strategy.getExpenseAssignmentRefs()));
-		createAndAddTaskNodes(strategy.getActivityRefs());
+		createAndAddTaskNodes(strategy.getActivityRefs(), getObjectReference());
 	}
 
 	public BaseObject getObject()

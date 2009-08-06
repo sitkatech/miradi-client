@@ -1350,6 +1350,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return new TimePeriodCosts(projectResourceRef, ORef.INVALID, ORef.INVALID, new OptionalDouble(workUnits));
 	}
 	
+	public Task createActivity() throws Exception
+	{
+		Strategy strategy = createStrategy();
+		Task activity = createTask();
+		ORefList activityRefs = new ORefList(activity);
+		fillObjectUsingCommand(strategy, Strategy.TAG_ACTIVITY_IDS, activityRefs.convertToIdList(Task.getObjectType()).toString());
+		
+		return activity;
+	}
+
 	public static double calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception
 	{
 		return calculateRawTimePeriodCosts(baseObject, dateUnit).getValue();

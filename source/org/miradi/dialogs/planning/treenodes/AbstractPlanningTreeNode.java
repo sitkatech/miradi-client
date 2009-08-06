@@ -325,12 +325,12 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		}
 	}
 	
-	protected void createAndAddTaskNodes(ORefList taskRefs) throws Exception
+	protected void createAndAddTaskNodes(ORefList taskRefs, ORef contextNodeRef) throws Exception
 	{
 		for(int i = 0; i < taskRefs.size(); ++i)
 		{
 			ORef taskRef = taskRefs.get(i);
-			addChild(new PlanningTreeTaskNode(project, taskRef, visibleRows));
+			addChild(new PlanningTreeTaskNode(project, contextNodeRef, taskRef, visibleRows));
 		}
 	}
 	
@@ -393,7 +393,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		if (type == Measurement.getObjectType())
 			return new PlanningTreeMeasurementNode(project, refToAdd, visibleRows);
 		if (type == Task.getObjectType())
-			return new PlanningTreeTaskNode(project, refToAdd, visibleRows);
+			throw new RuntimeException(EAM.text("This method is not responsible for creating task nodes."));
 		if (type == ResourceAssignment.getObjectType())
 			return new PlanningTreeResourceAssignmentNode(project, refToAdd, visibleRows);
 		if (type == ExpenseAssignment.getObjectType())

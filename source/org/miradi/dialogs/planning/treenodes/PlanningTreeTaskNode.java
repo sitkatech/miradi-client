@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
@@ -33,11 +34,14 @@ import org.miradi.utils.CodeList;
 
 public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeTaskNode(Project projectToUse, ORef taskRef, CodeList visibleRowsToUse) throws Exception
+	public PlanningTreeTaskNode(Project projectToUse, ORef contextNodeRefToUse, ORef taskRef, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
+		
 		task = (Task)project.findObject(taskRef);
-		proportionShares = 1;
+		contextNodeRef = contextNodeRefToUse;
+		contextNodeRefs = new ORefSet();
+		contextNodeRefs.add(contextNodeRef);
 		
 		rebuild();
 	}
@@ -64,7 +68,7 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 		for(int i = 0; i < subtaskRefs.size(); ++i)
 		{
 			ORef taskRef = subtaskRefs.get(i);
-			subTaskNodes.add(new PlanningTreeTaskNode(project, taskRef, visibleRows));
+			subTaskNodes.add(new PlanningTreeTaskNode(project, contextNodeRef, taskRef, visibleRows));
 		}
 		
 		return subTaskNodes;
@@ -89,16 +93,17 @@ public class PlanningTreeTaskNode extends AbstractPlanningTreeNode
 	@Override
 	public int getProportionShares()
 	{
-		return proportionShares;
+		return contextNodeRefs.size();
 	}
 	
 	@Override
-	public void addProportionShares(TreeTableNode otherNode)
+	public void addProportionShares(TreeTableNode rawNode)
 	{
-		proportionShares += otherNode.getProportionShares();
+		PlanningTreeTaskNode taskNode = (PlanningTreeTaskNode) rawNode;
+		contextNodeRefs.addAll(taskNode.contextNodeRefs);
 	}
 
 	private Task task;
-	private int proportionShares;
-
+	private ORefSet contextNodeRefs;
+	private ORef contextNodeRef;
 }

@@ -35,9 +35,11 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 public class Task extends Factor
 {
@@ -338,6 +340,15 @@ public class Task extends Factor
 		}
 		
 		return parentRefs.size();
+	}
+	
+	@Override
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
+	{
+		TimePeriodCostsMap timePeriodCostsMap = super.getTotalTimePeriodCostsMapForAssignments(tag);
+		timePeriodCostsMap.divideBy(new OptionalDouble((double)getTotalShareCount()));
+		
+		return timePeriodCostsMap;
 	}
 	
 	public int getTypeOfParent()
