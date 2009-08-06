@@ -24,6 +24,7 @@ import org.miradi.dialogs.planning.propertiesPanel.ExpenseAssignmentEditorCompon
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ExpensesPropertiesPanel extends ObjectDataInputPanel
@@ -68,13 +69,17 @@ public class ExpensesPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return getTranslatedExpensesText();
-	}
-
-	public static String getTranslatedExpensesText()
-	{
 		return EAM.text("Expenses");
 	}
 	
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tag)
+	{
+		if (tag.equals(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+			return true;
+			
+		return super.doesSectionContainFieldWithTag(tag);
+	}
+
 	private ExpenseAssignmentEditorComponent expenseEditor;
 }
