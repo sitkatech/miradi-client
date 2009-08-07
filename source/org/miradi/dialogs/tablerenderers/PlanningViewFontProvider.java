@@ -44,7 +44,7 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 			font = font.deriveFont(Font.BOLD);
 	
 		if(Task.is(baseObject))
-			font = deriveTaskFont((Task) baseObject, 1);
+			font = deriveTaskFont((Task) baseObject);
 
 		return font;
 	}
@@ -60,6 +60,12 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 		if(objectType == Indicator.getObjectType())
 			return true;
 		return false;
+	}
+	
+	private Font deriveTaskFont(Task task)
+	{
+		final int SINGLE_PROPORTION = 1;
+		return deriveTaskFont(task, SINGLE_PROPORTION);
 	}
 	
 	public Font deriveTaskFont(Task task, int proportionShares)
