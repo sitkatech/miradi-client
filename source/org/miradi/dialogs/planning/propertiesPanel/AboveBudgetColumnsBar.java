@@ -18,16 +18,32 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning;
+package org.miradi.dialogs.planning.propertiesPanel;
 
-import javax.swing.table.TableColumnModel;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 
-public interface TableWithExpandableColumnsInterface
+import javax.swing.JScrollPane;
+
+import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
+
+public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeTablePanel implements AdjustmentListener
 {
-	public int getColumnCount();
-	public int getColumnWidth(int tableColumnIndex);
-	public boolean isColumnExpandable(int tableColumnIndex);
-	public boolean isColumnCollapsable(int tableColumnIndex);
-	public void respondToExpandOrCollapseColumnEvent(int tableColumnIndex) throws Exception;
-	public TableColumnModel getColumnModel();
+	public AboveBudgetColumnsBar(TableWithExpandableColumnsInterface tableToSitAbove)
+	{
+	}
+	
+	public void setTableScrollPane(JScrollPane tableScrollPaneToUse)
+	{
+		tableScrollPane = tableScrollPaneToUse;
+		tableScrollPane.getHorizontalScrollBar().addAdjustmentListener(this);
+	}
+
+	public void adjustmentValueChanged(AdjustmentEvent e)
+	{
+		validate();
+		repaint();
+	}
+
+	private JScrollPane tableScrollPane;
 }

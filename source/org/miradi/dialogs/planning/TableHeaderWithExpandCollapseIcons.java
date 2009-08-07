@@ -15,48 +15,38 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.planning.propertiesPanel;
+package org.miradi.dialogs.planning;
 
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 import javax.swing.Icon;
-import javax.swing.JScrollPane;
+import javax.swing.table.JTableHeader;
 
-import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
+import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
-// FIXME: This class should be deleted 2009-08-07 
-// since its functionality has been taken over by TableHeaderWithExpandCollapseIcons
-public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirectlyAboveTreeTablePanel implements AdjustmentListener
+public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 {
-	public ExpandAndCollapseColumnsButtonRow(TableWithExpandableColumnsInterface tableToSitAbove)
+	public TableHeaderWithExpandCollapseIcons(TableWithExpandableColumnsInterface tableToUse)
 	{
-		table = tableToSitAbove;
-		addMouseListener(new MouseClickHandler());
+		super(tableToUse.getColumnModel());
+		table = tableToUse;
+		addMouseListener(new HeaderMouseHandler());
 	}
 	
-	public void setTableScrollPane(JScrollPane tableScrollPaneToUse)
-	{
-		tableScrollPane = tableScrollPaneToUse;
-		tableScrollPane.getHorizontalScrollBar().addAdjustmentListener(this);
-	}
-
 	@Override
-	protected void paintComponent(Graphics g)
+	public void paint(Graphics g)
 	{
-		g.setColor(getBackground());
-		g.fillRect(getX(), getY(), getWidth(), getHeight());
+		super.paint(g);
 		g.setColor(AppPreferences.getControlPanelBackgroundColor());
 		Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
 		for(int index = 0; index < iconHeaderBounds.size(); ++index)
@@ -66,14 +56,14 @@ public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirect
 				icon.paintIcon(this, g, iconHeaderBounds.get(index).x, ARBITRARY_MARGIN / 2);
 		}
 	}
-	
+
 	private Vector<Rectangle> getColumnIconHeaderBounds()
 	{
 		Vector<Rectangle> iconHeaderBounds = new Vector();
 		if(table == null)
 			return iconHeaderBounds;
 		
-		int columnX = getInitialColumnX();
+		int columnX = 0;
 		for(int column = 0; column < table.getColumnCount(); ++column)
 		{	
 			final int columnWidth = table.getColumnWidth(column);
@@ -81,7 +71,7 @@ public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirect
 			Rectangle iconHeaderBound = new Rectangle();
 			iconHeaderBound.x = columnX;
 			iconHeaderBound.y = 0;
-			iconHeaderBound.width = columnWidth;
+			iconHeaderBound.width = getIconWidth();
 			iconHeaderBound.height = getIconHeight() + ARBITRARY_MARGIN;
 			
 			iconHeaderBounds.add(iconHeaderBound);
@@ -89,15 +79,6 @@ public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirect
 		}
 		
 		return iconHeaderBounds;
-	}
-	
-	private int getInitialColumnX()
-	{
-		int columnX = 1;
-		if(tableScrollPane != null)
-			columnX -= tableScrollPane.getViewport().getViewPosition().x;
-		
-		return columnX;
 	}
 	
 	private Icon getIcon(int tableColumn)
@@ -114,47 +95,60 @@ public class ExpandAndCollapseColumnsButtonRow extends AbstractFixedHeightDirect
 		return Math.max(getExpandIcon().getIconWidth(), getCollapseIcon().getIconWidth());
 	}
 	
-	public void adjustmentValueChanged(AdjustmentEvent e)
+	private Icon getExpandIcon()
 	{
-		validate();
-		repaint();
+		return IconManager.getExpandIcon();
 	}
 
-	class MouseClickHandler extends MouseAdapter
+	private Icon getCollapseIcon()
+	{
+		return IconManager.getCollapseIcon();
+	}
+
+	private int getIconHeight()
+	{
+		return Math.max(getExpandIcon().getIconHeight(), getCollapseIcon().getIconHeight());
+	}
+
+	class HeaderMouseHandler extends MouseAdapter
 	{
 		@Override
-		public void mouseClicked(MouseEvent event)
+		public void mouseClicked(MouseEvent e)
 		{
-			super.mouseClicked(event);
+			super.mouseClicked(e);
 			
-			try
-			{
-				int columnClicked = findTableColumn(event.getPoint());
-				if (columnClicked >= 0)
-					table.respondToExpandOrCollapseColumnEvent(columnClicked);
-			}
-			catch (Exception e)
-			{
-				EAM.logException(e);
-				EAM.errorDialog(EAM.text("An error occurred while trying to expand/collapse the column."));
-			}
-		}
-
-		private int findTableColumn(Point point)
-		{
+			Point point = e.getPoint();
 			Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
 			for(int index = 0; index < iconHeaderBounds.size(); ++index)
 			{
-				Rectangle columnHeaderBounds = new Rectangle(iconHeaderBounds.get(index));
-				columnHeaderBounds.width = getIconWidth();
-				if (columnHeaderBounds.contains(point))
-					return index;
+				Rectangle iconRectangle = iconHeaderBounds.get(index);
+				if(iconRectangle.contains(point))
+				{
+					handleClick(index);
+					return;
+				}
 			}
+		}
+		
+		private void handleClick(int tableColumnIndex)
+		{
+			Icon icon = getIcon(tableColumnIndex);
+			if (icon == null)
+				return;
 			
-			return -1;
+			try
+			{
+				table.respondToExpandOrCollapseColumnEvent(tableColumnIndex);
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+				EAM.errorDialog(EAM.text("An unexpected error has occurred"));
+			}
 		}
 	}
+	
+	protected static final int ARBITRARY_MARGIN = 2;
 
 	private TableWithExpandableColumnsInterface table;
-	private JScrollPane tableScrollPane;
 }
