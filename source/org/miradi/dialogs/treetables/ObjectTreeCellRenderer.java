@@ -202,7 +202,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		else if(node.getType() == ObjectType.GOAL)
 			renderer = goalRenderer;
 		else if(node.getType() == ObjectType.TASK)
-			renderer = getTaskRenderer((Task)node.getObject());
+			renderer = getTaskRenderer((Task)node.getObject(), node.getProportionShares());
 		else if(node.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			renderer = keyEcologicalAttributeRenderer;
 		else if(node.getType() == ObjectType.STRESS)
@@ -238,19 +238,19 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return contributingFactorRenderer;
 	}
 	
-	private TreeCellRenderer getTaskRenderer(Task task)
+	private TreeCellRenderer getTaskRenderer(Task task, int proportionShares)
 	{
 		if(task.isActivity())
-			return getRendererWithSetSharedTaskItalicFont(activityRenderer, task);
+			return getRendererWithSetSharedTaskItalicFont(activityRenderer, task, proportionShares);
 		if(task.isMethod())
-			return getRendererWithSetSharedTaskItalicFont(methodRenderer, task);
+			return getRendererWithSetSharedTaskItalicFont(methodRenderer, task, proportionShares);
 		
 		return taskRenderer;
 	}
 	
-	private VariableHeightTreeCellRenderer getRendererWithSetSharedTaskItalicFont(VariableHeightTreeCellRenderer renderer, Task task)
+	private VariableHeightTreeCellRenderer getRendererWithSetSharedTaskItalicFont(VariableHeightTreeCellRenderer renderer, Task task, int proportionShares)
 	{
-		renderer.setFont(getSharedTaskFont(task));
+		renderer.setFont(getSharedTaskFont(task, proportionShares));
 		return renderer;
 	}
 	
@@ -269,10 +269,10 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return deriveFont(Font.PLAIN);
 	}
 	
-	private Font getSharedTaskFont(Task task)
+	private Font getSharedTaskFont(Task task, int proportionShares)
 	{
 		int style = Font.PLAIN;
-		if (task.isPartOfASharedTaskTree())
+		if (task.isPartOfASharedTaskTree() && proportionShares < task.getTotalShareCount())
 			style |= Font.ITALIC;
 
 		if (task.isMethod())
