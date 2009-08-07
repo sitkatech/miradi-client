@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -39,34 +40,59 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 	public TableHeaderWithExpandCollapseIcons(TableWithExpandableColumnsInterface tableToUse)
 	{
 		super(tableToUse.getColumnModel());
-		table = tableToUse;
+		tableWithExpandableColumnsInterface = tableToUse;
 		addMouseListener(new HeaderMouseHandler());
+	}
+	
+	@Override
+	public Dimension getPreferredSize()
+	{
+		Dimension size = super.getPreferredSize();
+		if(preferredHeight == 0)
+			return size;
+		
+		return new Dimension(size.width, preferredHeight);
 	}
 	
 	@Override
 	public void paint(Graphics g)
 	{
+		if(preferredHeight == 0)
+			preferredHeight = getPreferredSize().height;
+		
+		for(int column = 0; column < getColumnModel().getColumnCount(); ++column)
+			getColumnModel().getColumn(column).setHeaderValue("");
+
 		super.paint(g);
 		g.setColor(AppPreferences.getControlPanelBackgroundColor());
 		Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
 		for(int index = 0; index < iconHeaderBounds.size(); ++index)
 		{
+			Rectangle iconRectangle = iconHeaderBounds.get(index);
+
 			Icon icon = getIcon(index);
 			if (icon != null)
-				icon.paintIcon(this, g, iconHeaderBounds.get(index).x, ARBITRARY_MARGIN / 2);
+				icon.paintIcon(this, g, iconRectangle.x, ARBITRARY_MARGIN / 2);
+
+			int textX = iconRectangle.x + iconRectangle.width + ARBITRARY_MARGIN;
+			int textY = iconRectangle.y + iconRectangle.height - ARBITRARY_MARGIN;
+			String columnName = table.getColumnName(index);
+			g.setColor(getForeground());
+			g.setFont(getFont());
+			g.drawString(columnName, textX, textY);
 		}
 	}
 
 	private Vector<Rectangle> getColumnIconHeaderBounds()
 	{
 		Vector<Rectangle> iconHeaderBounds = new Vector();
-		if(table == null)
+		if(tableWithExpandableColumnsInterface == null)
 			return iconHeaderBounds;
 		
 		int columnX = 0;
-		for(int column = 0; column < table.getColumnCount(); ++column)
+		for(int column = 0; column < tableWithExpandableColumnsInterface.getColumnCount(); ++column)
 		{	
-			final int columnWidth = table.getColumnWidth(column);
+			final int columnWidth = tableWithExpandableColumnsInterface.getColumnWidth(column);
 			
 			Rectangle iconHeaderBound = new Rectangle();
 			iconHeaderBound.x = columnX;
@@ -83,9 +109,9 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 	
 	private Icon getIcon(int tableColumn)
 	{
-		if(table.isColumnExpandable(tableColumn))
+		if(tableWithExpandableColumnsInterface.isColumnExpandable(tableColumn))
 			return getExpandIcon();
-		if(table.isColumnCollapsable(tableColumn))
+		if(tableWithExpandableColumnsInterface.isColumnCollapsable(tableColumn))
 			return getCollapseIcon();
 		return null;
 	}
@@ -138,7 +164,7 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 			
 			try
 			{
-				table.respondToExpandOrCollapseColumnEvent(tableColumnIndex);
+				tableWithExpandableColumnsInterface.respondToExpandOrCollapseColumnEvent(tableColumnIndex);
 			}
 			catch(Exception e)
 			{
@@ -150,5 +176,6 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 	
 	protected static final int ARBITRARY_MARGIN = 2;
 
-	private TableWithExpandableColumnsInterface table;
+	private TableWithExpandableColumnsInterface tableWithExpandableColumnsInterface;
+	private int preferredHeight;
 }
