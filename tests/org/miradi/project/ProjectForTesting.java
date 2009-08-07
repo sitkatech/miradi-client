@@ -1369,6 +1369,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		appendTaskToParentIdList(indicator, method, Indicator.TAG_METHOD_IDS);
 	}
 	
+	public void appendTaskToTask(Task parentTask, Task childTask) throws Exception
+	{
+		appendTaskToParentIdList(parentTask, childTask, Task.TAG_SUBTASK_IDS);
+	}
+	
 	private void appendTaskToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
 	{
 		ORefList childTaskRefs = new ORefList(child);

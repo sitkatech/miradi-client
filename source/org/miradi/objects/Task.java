@@ -228,13 +228,7 @@ public class Task extends Factor
 	
 	public boolean isShared()
 	{
-		ORefList indicatorReferrers = findObjectsThatReferToUs(Indicator.getObjectType());
-		ORefList strategyReferrers = findObjectsThatReferToUs(Strategy.getObjectType());
-		
-		ORefList totalReferrers = new ORefList(indicatorReferrers);
-		totalReferrers.addAll(strategyReferrers);
-		
-		return totalReferrers.size() > 1;
+		return getTotalShareCount() > 1;
 	}
 
 	public void addSubtaskId(BaseId subtaskId)
