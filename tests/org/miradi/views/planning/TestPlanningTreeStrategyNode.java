@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.WorkPlanProjectNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -41,7 +41,7 @@ public class TestPlanningTreeStrategyNode extends TestPlanningTree
 	
 	public void testAssignments() throws Exception
 	{
-		PlanningTreeRootNode root = createCompleteTree();
+		WorkPlanProjectNode root = createCompleteTree();
 		ORefSet refsInTree = root.getAllRefsInTree();
 		assertTrue("Didn't add assignment to tree?", refsInTree.contains(getStrategyResourceAssignment().getRef()));
 	}
