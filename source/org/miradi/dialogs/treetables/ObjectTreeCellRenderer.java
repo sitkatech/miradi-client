@@ -53,17 +53,18 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.GroupBox;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
@@ -250,7 +251,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	
 	private VariableHeightTreeCellRenderer getRendererWithSetSharedTaskItalicFont(VariableHeightTreeCellRenderer renderer, Task task, int proportionShares)
 	{
-		renderer.setFont(getSharedTaskFont(task, proportionShares));
+		renderer.setFont(getSharedTaskFont(getMainWindow(), task, proportionShares));
 		return renderer;
 	}
 	
@@ -261,15 +262,15 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	
 	private Font getBoldFont()
 	{
-		return deriveFont(Font.BOLD);
+		return deriveFont(getMainWindow(), Font.BOLD);
 	}
 
 	protected Font getPlainFont()
 	{
-		return deriveFont(Font.PLAIN);
+		return deriveFont(getMainWindow(), Font.PLAIN);
 	}
 	
-	private Font getSharedTaskFont(Task task, int proportionShares)
+	public static Font getSharedTaskFont(MainWindow mainWindow, Task task, int proportionShares)
 	{
 		int style = Font.PLAIN;
 		if (task.isPartOfASharedTaskTree() && proportionShares < task.getTotalShareCount())
@@ -278,12 +279,12 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		if (task.isMethod())
 			style |= Font.BOLD;
 				
-		return deriveFont(style);
+		return deriveFont(mainWindow, style);
 	}
 	
-	private Font deriveFont(int style)
+	private static Font deriveFont(MainWindow mainWindow, int style)
 	{
-		Font defaultFont = getMainWindow().getUserDataPanelFont();
+		Font defaultFont = mainWindow.getUserDataPanelFont();
 		return defaultFont.deriveFont(style);
 	}
 	
