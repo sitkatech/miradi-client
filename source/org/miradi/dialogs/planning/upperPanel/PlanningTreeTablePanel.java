@@ -34,10 +34,10 @@ import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.planning.AccountingCodeBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.FundingSourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.ExpandAndCollapseColumnsButtonRow;
 import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
@@ -126,9 +126,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		leftPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		
 		JPanel rightPanel = new MiradiPanel(new BorderLayout());
-		ExpandAndCollapseColumnsButtonRow expandAndCollapseColumnsButtonRow = new ExpandAndCollapseColumnsButtonRow(mainTable);
-		expandAndCollapseColumnsButtonRow.setTableScrollPane(mainTableScrollPane);
-		rightPanel.add(expandAndCollapseColumnsButtonRow, BorderLayout.BEFORE_FIRST_LINE);
+		AboveBudgetColumnsBar aboveMainTableBar = new AboveBudgetColumnsBar(mainTable);
+		aboveMainTableBar.setTableScrollPane(mainTableScrollPane);
+		rightPanel.add(aboveMainTableBar, BorderLayout.BEFORE_FIRST_LINE);
 		rightPanel.add(mainTableScrollPane, BorderLayout.CENTER);
 		
 		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);

@@ -34,6 +34,7 @@ import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
+import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.planning.propertiesPanel.MultiTableExpandColumnAction;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
@@ -60,6 +61,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setAutoResizeMode(AUTO_RESIZE_OFF);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		setCellSelectionEnabled(true);
+		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 
 		masterTree = masterTreeToUse;
 		defaultRendererFactory = new MultiLineObjectTableCellRendererFactory(this, fontProvider);
