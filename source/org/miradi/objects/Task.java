@@ -226,7 +226,7 @@ public class Task extends Factor
 		return !hasReferrers();
 	}
 	
-	public boolean isShared()
+	public boolean isPartOfASharedTaskTree()
 	{
 		return getTotalShareCount() > 1;
 	}

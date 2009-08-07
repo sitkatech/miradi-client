@@ -272,7 +272,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private Font getSharedTaskFont(Task task)
 	{
 		int style = Font.PLAIN;
-		if (task.isShared())
+		if (task.isPartOfASharedTaskTree())
 			style |= Font.ITALIC;
 
 		if (task.isMethod())

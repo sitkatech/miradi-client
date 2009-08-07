@@ -65,7 +65,7 @@ abstract public class ObjectTableCellRendererFactory extends BasicTableCellRende
 			return false;
 		
 		Task task = (Task)object;
-		return task.isShared();
+		return task.isPartOfASharedTaskTree();
 	}
 
 	protected BaseObject getBaseObjectForRow(int row, int column)

@@ -205,37 +205,37 @@ public class TestTask extends ObjectTestCase
 		assertEquals("wrong subtask work units for date range?", 5.0, ProjectForTesting.calculateTimePeriodCosts(task, dateUnit1));
 	}
 	
-	public void testIsSharedTask() throws Exception
+	public void testIsPartOfASharedTaskTree() throws Exception
 	{
 		Strategy strategy1 = getProject().createStrategy();
 		Task activity = getProject().createTask();
 		getProject().appendActivityToStrategy(strategy1, activity);		
-		assertFalse("activity should not be shared?", activity.isShared());
+		assertFalse("activity should not be shared?", activity.isPartOfASharedTaskTree());
 		
 		ORef tableSettingsRef = getProject().createObject(TableSettings.getObjectType());
 		getProject().fillObjectUsingCommand(tableSettingsRef, TableSettings.TAG_TREE_EXPANSION_LIST, new ORefList(activity).toString());
-		assertFalse("activity should not be shared?", activity.isShared());
+		assertFalse("activity should not be shared?", activity.isPartOfASharedTaskTree());
 		
 		Strategy strategy2 = getProject().createStrategy();
 		getProject().appendActivityToStrategy(strategy2, activity);
-		assertTrue("activity should be shared?", activity.isShared());
+		assertTrue("activity should be shared?", activity.isPartOfASharedTaskTree());
 		
 		Task method = getProject().createTask();
 		Indicator indicator1 = getProject().createIndicator();
 		getProject().appendMethodToIndicator(indicator1, method);
-		assertFalse("method should not be shared?", method.isShared());
+		assertFalse("method should not be shared?", method.isPartOfASharedTaskTree());
 		
 		Indicator indicator2 = getProject().createIndicator();
 		getProject().appendMethodToIndicator(indicator2, method);
-		assertTrue("method should be shared?", method.isShared());
+		assertTrue("method should be shared?", method.isPartOfASharedTaskTree());
 		
 		Task task = getProject().createTask();
 		getProject().appendTaskToTask(method, task);
-		assertTrue("task should be shared, since parent method is shared?", task.isShared());
+		assertTrue("task should be shared, since parent method is shared?", task.isPartOfASharedTaskTree());
 		
 		Task subTask = getProject().createTask();
 		getProject().appendTaskToTask(task, subTask);
-		assertTrue("subtask should be shared, since parent task is shared?", subTask.isShared());
+		assertTrue("subtask should be shared, since parent task is shared?", subTask.isPartOfASharedTaskTree());
 	}
 	
 	public MultiCalendar createMultiCalendar(int year)
