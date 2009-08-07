@@ -58,6 +58,6 @@ public class WorkPlanHiddenTreeRootNode extends AbstractPlanningTreeNode
 	public void rebuild() throws Exception
 	{
 		children = new Vector();
-		children.add(new PlanningTreeRootNodeAsAlwaysCollapsed(getProject(), getVisibleRows()));
+		children.add(new PlanningTreeRootNode(getProject(), getVisibleRows()));
 	}
 }

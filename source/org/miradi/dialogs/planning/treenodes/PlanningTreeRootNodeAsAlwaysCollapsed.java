@@ -33,6 +33,6 @@ public class PlanningTreeRootNodeAsAlwaysCollapsed extends PlanningTreeRootNode
 	@Override
 	public boolean isAlwaysExpanded()
 	{
-		return false;
+		return true;
 	}
 }
