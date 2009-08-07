@@ -205,12 +205,10 @@ public class TestTask extends ObjectTestCase
 		assertEquals("wrong subtask work units for date range?", 5.0, ProjectForTesting.calculateTimePeriodCosts(task, dateUnit1));
 	}
 	
-	public void TestIsSharedTask() throws Exception
+	public void testIsSharedTask() throws Exception
 	{
-		Task activity = getProject().createTask();
-		assertFalse("activity should not be shared?", activity.isShared());
-		
 		Strategy strategy1 = getProject().createStrategy();
+		Task activity = getProject().createTask();
 		getProject().appendActivityToStrategy(strategy1, activity);		
 		assertFalse("activity should not be shared?", activity.isShared());
 		
@@ -230,6 +228,14 @@ public class TestTask extends ObjectTestCase
 		Indicator indicator2 = getProject().createIndicator();
 		getProject().appendMethodToIndicator(indicator2, method);
 		assertTrue("method should be shared?", method.isShared());
+		
+		Task task = getProject().createTask();
+		getProject().appendTaskToTask(method, task);
+		assertTrue("task should be shared, since parent method is shared?", task.isShared());
+		
+		Task subTask = getProject().createTask();
+		getProject().appendTaskToTask(task, subTask);
+		assertTrue("subtask should be shared, since parent task is shared?", subTask.isShared());
 	}
 	
 	public MultiCalendar createMultiCalendar(int year)
