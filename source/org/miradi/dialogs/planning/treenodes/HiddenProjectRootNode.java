@@ -23,9 +23,9 @@ package org.miradi.dialogs.planning.treenodes;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
-public class PlanningTreeRootNodeAsAlwaysExpanded extends WorkPlanProjectNode
+public class HiddenProjectRootNode extends WorkPlanProjectNode
 {
-	public PlanningTreeRootNodeAsAlwaysExpanded(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public HiddenProjectRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 	}
