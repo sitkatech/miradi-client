@@ -55,7 +55,7 @@ abstract public class ObjectTableCellRendererFactory extends BasicTableCellRende
 		return fontProvider.getFont(object.getType());
 	}
 	
-	boolean isSharedObject(int row, int column)
+	private boolean isSharedObject(int row, int column)
 	{
 		BaseObject object = getBaseObjectForRow(row, column);
 		if(object == null)
