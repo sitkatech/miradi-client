@@ -22,6 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Font;
 
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
 
 abstract public class FontForObjectTypeProvider
 {
@@ -31,6 +32,11 @@ abstract public class FontForObjectTypeProvider
 	}
 	
 	public Font getFont(int objectType)
+	{
+		return getPlainFont();
+	}
+	
+	public Font getFont(BaseObject baseObject)
 	{
 		return getPlainFont();
 	}

@@ -22,10 +22,12 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Font;
 
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 
 public class PlanningViewFontProvider extends FontForObjectTypeProvider
 {
@@ -42,6 +44,19 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 		
 		return font;
 	}
+	
+	@Override
+	public Font getFont(BaseObject baseObject)
+	{
+		Font font = super.getFont(baseObject);
+		if(shouldBeBold(baseObject.getType()))
+			font = font.deriveFont(Font.BOLD);
+	
+		if(isSharedTask(baseObject))
+			font = font.deriveFont(Font.ITALIC);
+
+		return font;
+	}
 
 	private boolean shouldBeBold(int objectType)
 	{
@@ -54,5 +69,17 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 		if(objectType == Indicator.getObjectType())
 			return true;
 		return false;
+	}
+	
+	private boolean isSharedTask(BaseObject object)
+	{
+		if(object == null)
+			return false;
+		
+		if(object.getType() != Task.getObjectType())
+			return false;
+		
+		Task task = (Task)object;
+		return task.isPartOfASharedTaskTree();
 	}
 }
