@@ -23,10 +23,9 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import javax.swing.Icon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import org.miradi.icons.IconManager;
 import org.miradi.main.AppPreferences;
 
 public class AbstractFixedHeightDirectlyAboveTreeTablePanel extends JPanel
@@ -34,28 +33,13 @@ public class AbstractFixedHeightDirectlyAboveTreeTablePanel extends JPanel
 	@Override
 	public Dimension getPreferredSize()
 	{
-		return new Dimension(0, getIconHeight() + ARBITRARY_MARGIN);
+		return new JLabel("X").getPreferredSize();
 	}
 	
 	@Override
 	public Color getBackground()
 	{
 		return AppPreferences.getDataPanelBackgroundColor();
-	}
-
-	protected int getIconHeight()
-	{
-		return Math.max(getExpandIcon().getIconHeight(), getCollapseIcon().getIconHeight());
-	}
-
-	protected Icon getExpandIcon()
-	{
-		return IconManager.getExpandIcon();
-	}
-
-	protected Icon getCollapseIcon()
-	{
-		return IconManager.getCollapseIcon();
 	}
 
 	protected static final int ARBITRARY_MARGIN = 2;
