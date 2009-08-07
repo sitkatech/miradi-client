@@ -21,7 +21,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
-import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAsAlwaysCollapsed;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
@@ -50,7 +50,7 @@ abstract public class PlanningTreeTableModel extends GenericTreeTableModel
 	{
 		try
 		{
-			return new PlanningTreeRootNode(projectToUse, visibleRowCodesToUse);
+			return new PlanningTreeRootNodeAsAlwaysCollapsed(projectToUse, visibleRowCodesToUse);
 		}
 		catch(Exception e)
 		{

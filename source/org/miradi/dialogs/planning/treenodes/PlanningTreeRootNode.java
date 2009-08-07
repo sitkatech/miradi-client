@@ -85,12 +85,6 @@ public class PlanningTreeRootNode extends AbstractPlanningTreeNode
 	}
 	
 	@Override
-	public boolean isAlwaysExpanded()
-	{
-		return true;
-	}
-	
-	@Override
 	public String toRawString()
 	{
 		return getProject().getFilename();
