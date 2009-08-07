@@ -26,7 +26,6 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Task;
 
 abstract public class ObjectTableCellRendererFactory extends BasicTableCellRendererFactory  implements TableCellPreferredHeightProvider
 {
@@ -34,51 +33,40 @@ abstract public class ObjectTableCellRendererFactory extends BasicTableCellRende
 	{
 		objectProvider = providerToUse;
 		fontProvider = fontProviderToUse;
-		
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JComponent renderer = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		Font font = getCellFont(row, tableColumn);
-		if(isSharedObject(row, tableColumn))
-			font = font.deriveFont(Font.ITALIC);
 		renderer.setFont(font);
 		return renderer;
 	}
 	
 	public Font getCellFont(int row, int column)
 	{
-		BaseObject object = getObjectProvider().getBaseObjectForRowColumn(row, column);
-		if(object == null)
-			return fontProvider.getPlainFont();
-		return fontProvider.getFont(object.getType());
-	}
-	
-	private boolean isSharedObject(int row, int column)
-	{
 		BaseObject object = getBaseObjectForRow(row, column);
 		if(object == null)
-			return false;
+			return getFontProvider().getPlainFont();
 		
-		if(object.getType() != Task.getObjectType())
-			return false;
-		
-		Task task = (Task)object;
-		return task.isPartOfASharedTaskTree();
+		return getFontProvider().getFont(object);
 	}
 
 	protected BaseObject getBaseObjectForRow(int row, int column)
 	{
-		BaseObject object = objectProvider.getBaseObjectForRowColumn(row, column);
-		return object;
+		return getObjectProvider().getBaseObjectForRowColumn(row, column);
 	}
 	
 	protected RowColumnBaseObjectProvider getObjectProvider()
 	{
 		return objectProvider;
 	}
-
+	
+	private FontForObjectTypeProvider getFontProvider()
+	{
+		return fontProvider;
+	}
+	
 	private RowColumnBaseObjectProvider objectProvider;
 	private FontForObjectTypeProvider fontProvider;
 }
