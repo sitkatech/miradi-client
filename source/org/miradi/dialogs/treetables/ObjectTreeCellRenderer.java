@@ -27,6 +27,7 @@ import javax.swing.Icon;
 import javax.swing.JTree;
 import javax.swing.tree.TreeCellRenderer;
 
+import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.icons.AccountingCodeIcon;
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.AssignmentIcon;
@@ -251,7 +252,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	
 	private VariableHeightTreeCellRenderer getRendererWithSetSharedTaskItalicFont(VariableHeightTreeCellRenderer renderer, Task task, int proportionShares)
 	{
-		renderer.setFont(getSharedTaskFont(getMainWindow(), task, proportionShares));
+		Font taskFont = new PlanningViewFontProvider(getMainWindow()).deriveTaskFont(task, proportionShares);
+		renderer.setFont(taskFont);
 		return renderer;
 	}
 	
@@ -268,18 +270,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	protected Font getPlainFont()
 	{
 		return deriveFont(getMainWindow(), Font.PLAIN);
-	}
-	
-	public static Font getSharedTaskFont(MainWindow mainWindow, Task task, int proportionShares)
-	{
-		int style = Font.PLAIN;
-		if (task.isPartOfASharedTaskTree() && proportionShares < task.getTotalShareCount())
-			style |= Font.ITALIC;
-
-		if (task.isMethod())
-			style |= Font.BOLD;
-				
-		return deriveFont(mainWindow, style);
 	}
 	
 	private static Font deriveFont(MainWindow mainWindow, int style)

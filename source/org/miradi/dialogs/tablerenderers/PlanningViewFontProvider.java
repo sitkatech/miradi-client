@@ -43,8 +43,8 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 		if(shouldBeBold(baseObject.getType()))
 			font = font.deriveFont(Font.BOLD);
 	
-		if(isSharedTask(baseObject))
-			font = font.deriveFont(Font.ITALIC);
+		if(Task.is(baseObject))
+			font = deriveTaskFont((Task) baseObject, 1);
 
 		return font;
 	}
@@ -62,15 +62,15 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 		return false;
 	}
 	
-	private boolean isSharedTask(BaseObject object)
+	public Font deriveTaskFont(Task task, int proportionShares)
 	{
-		if(object == null)
-			return false;
+		Font font = super.getFont(task);
+		if (task.isPartOfASharedTaskTree() && proportionShares < task.getTotalShareCount())
+			font = font.deriveFont(Font.ITALIC);
+
+		if (task.isMethod())
+			font = font.deriveFont(Font.BOLD);
 		
-		if(object.getType() != Task.getObjectType())
-			return false;
-		
-		Task task = (Task)object;
-		return task.isPartOfASharedTaskTree();
+		return font;
 	}
 }
