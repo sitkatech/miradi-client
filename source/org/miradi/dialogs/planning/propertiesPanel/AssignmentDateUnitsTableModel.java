@@ -215,7 +215,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			return false;
 		
 		Task task = (Task) baseObjectForRow;
-		return task.isShared();
+		return task.isPartOfASharedTaskTree();
 	}
 
 	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
