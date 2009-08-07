@@ -22,6 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 import java.awt.Font;
 
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Target;
 
 public class ViabilityViewFontProvider extends FontForObjectTypeProvider
@@ -31,10 +32,10 @@ public class ViabilityViewFontProvider extends FontForObjectTypeProvider
 		super(mainWindowToUse);
 	}
 
-	public Font getFont(int objectType)
+	public Font getFont(BaseObject baseObject)
 	{
-		Font font = super.getFont(objectType);
-		if(objectType == Target.getObjectType())
+		Font font = super.getFont(baseObject);
+		if(Target.is(baseObject))
 			return font.deriveFont(Font.BOLD);
 		
 		return font;

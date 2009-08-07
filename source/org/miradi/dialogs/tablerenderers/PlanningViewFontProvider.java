@@ -36,15 +36,6 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 		super(mainWindowToUse);
 	}
 
-	public Font getFont(int objectType)
-	{
-		Font font = super.getFont(objectType);
-		if(shouldBeBold(objectType))
-			return font.deriveFont(Font.BOLD);
-		
-		return font;
-	}
-	
 	@Override
 	public Font getFont(BaseObject baseObject)
 	{

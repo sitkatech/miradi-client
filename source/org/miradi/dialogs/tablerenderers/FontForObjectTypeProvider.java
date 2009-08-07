@@ -31,11 +31,6 @@ abstract public class FontForObjectTypeProvider
 		plainFont = mainWindowToUse.getUserDataPanelFont();
 	}
 	
-	public Font getFont(int objectType)
-	{
-		return getPlainFont();
-	}
-	
 	public Font getFont(BaseObject baseObject)
 	{
 		return getPlainFont();
