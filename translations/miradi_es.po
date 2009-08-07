@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-06 17:58-0500\n"
+"POT-Creation-Date: 2009-08-07 13:43-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -1023,6 +1023,7 @@ msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractAssignmentEditorComponent.java:86
+#: miradi/source/org/miradi/dialogs/planning/TableHeaderWithExpandCollapseIcons.java:146
 #, fuzzy
 msgid "An unexpected error has occurred"
 msgstr "An unexpected error has occurred"
@@ -6662,7 +6663,7 @@ msgstr "Código contable"
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Propiedades del resultado de reducción de amenazas "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:137
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpandAndCollapseColumnsButtonRow.java:139
 msgid "An error occurred while trying to expand/collapse the column."
 msgstr ""
 
