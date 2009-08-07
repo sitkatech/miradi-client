@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNode;
+import org.miradi.dialogs.planning.treenodes.WorkPlanProjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAsAlwaysExpanded;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -87,7 +87,7 @@ abstract public class TestPlanningTree extends EAMTestCase
 		subtaskResourceAssignmentRef = project.addResourceAssignment(getSubtask(), 4, 2004, 2004).getRef();
 	}
 	
-	public PlanningTreeRootNode createCompleteTree() throws Exception
+	public WorkPlanProjectNode createCompleteTree() throws Exception
 	{
 		ChoiceQuestion rowChoiceQuestion= new StaticQuestionManager().getQuestion(CustomPlanningRowsQuestion.class);
 		PlanningTreeRootNodeAsAlwaysExpanded root = new PlanningTreeRootNodeAsAlwaysExpanded(project, rowChoiceQuestion.getAllCodes());

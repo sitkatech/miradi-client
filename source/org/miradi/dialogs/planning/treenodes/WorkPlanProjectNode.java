@@ -32,9 +32,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.utils.CodeList;
 
-public class PlanningTreeRootNode extends AbstractPlanningTreeNode
+public class WorkPlanProjectNode extends AbstractPlanningTreeNode
 {
-	public PlanningTreeRootNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
+	public WorkPlanProjectNode(Project projectToUse, CodeList visibleRowsToUse) throws Exception
 	{
 		super(projectToUse, visibleRowsToUse);
 		rebuild();
