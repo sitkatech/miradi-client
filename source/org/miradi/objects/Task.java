@@ -352,7 +352,9 @@ public class Task extends Factor
 	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForAssignments(String tag) throws Exception
 	{
 		TimePeriodCostsMap timePeriodCostsMap = super.getTotalTimePeriodCostsMapForAssignments(tag);
-		timePeriodCostsMap.divideBy(new OptionalDouble((double)getTotalShareCount()));
+		double totalShareCount = getTotalShareCount();
+		if (totalShareCount > 1)
+			timePeriodCostsMap.divideBy(new OptionalDouble(totalShareCount));
 		
 		return timePeriodCostsMap;
 	}
