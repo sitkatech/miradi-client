@@ -182,7 +182,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	
 		tablesPanel.add(new PanelTitleLabel(""));
 		tablesPanel.add(new PanelTitleLabel(""));
-		ExpandAndCollapseColumnsButtonRow aboveTableButtonRow = new ExpandAndCollapseColumnsButtonRow(assignmentDateUnitsTable);
+		AboveBudgetColumnsBar aboveTableButtonRow = new AboveBudgetColumnsBar(assignmentDateUnitsTable);
 		tablesPanel.add(aboveTableButtonRow);
 		tablesPanel.add(new PanelTitleLabel(""));
 		
