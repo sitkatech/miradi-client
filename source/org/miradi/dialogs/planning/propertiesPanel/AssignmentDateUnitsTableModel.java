@@ -108,7 +108,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (dateUnit.isProjectTotal())
 				return EAM.text("Total");
 			
-			return getDateRange(dateUnit).toString();
+			DateRange dateRange = getDateRange(dateUnit);
+			return  getProject().getProjectCalendar().getDateRangeName(dateRange);
 		}
 		catch(Exception e)
 		{
