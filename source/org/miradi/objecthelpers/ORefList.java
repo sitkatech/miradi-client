@@ -131,6 +131,11 @@ public class ORefList
 		addAll(new ORefList(otherList));
 	}
 	
+	public void remove(int indexToRemove)
+	{
+		data.remove(indexToRemove);
+	}
+	
 	public void remove(ORef oRefToRemove)
 	{
 		data.remove(oRefToRemove);

@@ -59,6 +59,12 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	private void setRowObjectRefs() throws Exception
 	{
 		rowObjectRefs = getFullyExpandedRefList();
+		removeRootNode();
+	}
+	
+	private void removeRootNode()
+	{
+		rowObjectRefs.remove(0);
 	}
 		
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
