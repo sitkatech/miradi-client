@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-07 16:43-0500\n"
+"POT-Creation-Date: 2009-08-10 09:41-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6147,8 +6147,8 @@ msgstr ""
 msgid "Unexpected Error Occurred"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:57
-msgid "Project Resource Filter On"
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ProjectResourceFilterStatusPanel.java:53
+msgid "Project Resource Filter Is On"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:39
