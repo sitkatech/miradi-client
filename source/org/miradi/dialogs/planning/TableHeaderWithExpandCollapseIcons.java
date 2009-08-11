@@ -65,50 +65,52 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 
 		super.paint(g);
 		g.setColor(AppPreferences.getControlPanelBackgroundColor());
-		Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
-		for(int index = 0; index < iconHeaderBounds.size(); ++index)
+		Vector<Rectangle> iconHeaderBoundsVector = getColumnHeaderBounds();
+		for(int index = 0; index < iconHeaderBoundsVector.size(); ++index)
 		{
-			Rectangle iconRectangle = iconHeaderBounds.get(index);
-			drawColumnHeader(g, index, iconRectangle);
+			Rectangle columnHeaderBounds = iconHeaderBoundsVector.get(index);
+			drawColumnHeader(g, columnHeaderBounds, getIcon(index), table.getColumnName(index));
 		}
 	}
 
-	private void drawColumnHeader(Graphics g, int index, Rectangle iconRectangle)
+	private void drawColumnHeader(Graphics g, Rectangle columnHeaderBounds, Icon icon, String text)
 	{
-		Icon icon = getIcon(index);
-		if (icon != null)
-			icon.paintIcon(this, g, iconRectangle.x, ARBITRARY_MARGIN / 2);
+		int textX = columnHeaderBounds.x + ARBITRARY_MARGIN;
+		int textY = columnHeaderBounds.y + columnHeaderBounds.height - ARBITRARY_MARGIN;
 
-		int textX = iconRectangle.x + iconRectangle.width + ARBITRARY_MARGIN;
-		int textY = iconRectangle.y + iconRectangle.height - ARBITRARY_MARGIN;
-		String columnName = table.getColumnName(index);
+		if (icon != null)
+		{
+			icon.paintIcon(this, g, columnHeaderBounds.x, ARBITRARY_MARGIN / 2);
+			textX += icon.getIconWidth();
+		}
+
 		g.setColor(getForeground());
 		g.setFont(getFont());
-		g.drawString(columnName, textX, textY);
+		g.drawString(text, textX, textY);
 	}
 
-	private Vector<Rectangle> getColumnIconHeaderBounds()
+	private Vector<Rectangle> getColumnHeaderBounds()
 	{
-		Vector<Rectangle> iconHeaderBounds = new Vector();
+		Vector<Rectangle> columnHeaderBoundsVector = new Vector();
 		if(tableWithExpandableColumnsInterface == null)
-			return iconHeaderBounds;
+			return columnHeaderBoundsVector;
 		
 		int columnX = 0;
 		for(int column = 0; column < tableWithExpandableColumnsInterface.getColumnCount(); ++column)
 		{	
 			final int columnWidth = tableWithExpandableColumnsInterface.getColumnWidth(column);
 			
-			Rectangle iconHeaderBound = new Rectangle();
-			iconHeaderBound.x = columnX;
-			iconHeaderBound.y = 0;
-			iconHeaderBound.width = getIconWidth();
-			iconHeaderBound.height = getIconHeight() + ARBITRARY_MARGIN;
+			Rectangle columnHeaderBounds = new Rectangle();
+			columnHeaderBounds.x = columnX;
+			columnHeaderBounds.y = 0;
+			columnHeaderBounds.width = columnWidth;
+			columnHeaderBounds.height = getHeight();
 			
-			iconHeaderBounds.add(iconHeaderBound);
+			columnHeaderBoundsVector.add(columnHeaderBounds);
 			columnX += columnWidth;
 		}
 		
-		return iconHeaderBounds;
+		return columnHeaderBoundsVector;
 	}
 	
 	private Icon getIcon(int tableColumn)
@@ -120,11 +122,6 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 		return null;
 	}
 
-	private int getIconWidth()
-	{
-		return Math.max(getExpandIcon().getIconWidth(), getCollapseIcon().getIconWidth());
-	}
-	
 	private Icon getExpandIcon()
 	{
 		return IconManager.getExpandIcon();
@@ -135,11 +132,6 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 		return IconManager.getCollapseIcon();
 	}
 
-	private int getIconHeight()
-	{
-		return Math.max(getExpandIcon().getIconHeight(), getCollapseIcon().getIconHeight());
-	}
-
 	class HeaderMouseHandler extends MouseAdapter
 	{
 		@Override
@@ -148,10 +140,15 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 			super.mouseClicked(e);
 			
 			Point point = e.getPoint();
-			Vector<Rectangle> iconHeaderBounds = getColumnIconHeaderBounds();
-			for(int index = 0; index < iconHeaderBounds.size(); ++index)
+			Vector<Rectangle> columnHeaderBoundsVector = getColumnHeaderBounds();
+			for(int index = 0; index < columnHeaderBoundsVector.size(); ++index)
 			{
-				Rectangle iconRectangle = iconHeaderBounds.get(index);
+				Icon icon = getIcon(index);
+				if(icon == null)
+					continue;
+
+				Rectangle columnHeaderRectangle = columnHeaderBoundsVector.get(index);
+				Rectangle iconRectangle = createIconRectangle(columnHeaderRectangle, icon);
 				if(iconRectangle.contains(point))
 				{
 					handleClick(index);
@@ -160,12 +157,14 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 			}
 		}
 		
+		private Rectangle createIconRectangle(Rectangle columnHeaderRectangle, Icon icon)
+		{
+			Dimension iconSize = new Dimension(icon.getIconWidth(), icon.getIconHeight());
+			return new Rectangle(columnHeaderRectangle.getLocation(), iconSize);
+		}
+
 		private void handleClick(int tableColumnIndex)
 		{
-			Icon icon = getIcon(tableColumnIndex);
-			if (icon == null)
-				return;
-			
 			try
 			{
 				tableWithExpandableColumnsInterface.respondToExpandOrCollapseColumnEvent(tableColumnIndex);
