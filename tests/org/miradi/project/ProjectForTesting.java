@@ -836,6 +836,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(object.getRef(), fieldTag, data);
 	}
 	
+	public void fillObjectUsingCommand(BaseObject object, String fieldTag, ORefList data) throws Exception
+	{
+		fillObjectUsingCommand(object, fieldTag, data.toString());
+	}
+	
 	//TODO come up with a better name or eventualy all creates should return ref
 	public ORef createFactorAndReturnRef(int objectType) throws Exception
 	{

@@ -28,6 +28,8 @@ import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProjectMetadata;
@@ -133,13 +135,38 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		throw new RuntimeException("Did not find a non selectable classification choice.");
 	}
 	
+	public void testMeasurements() throws Exception
+	{
+		Indicator indicator = getProject().createIndicator();
+		verifyExport();
+
+		Measurement emptyMeasurement = getProject().createMeasurement();
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(emptyMeasurement));
+		verifyExport();
+		
+		ORef measurementRefWithSummary = verifyNewFilledMeasurement(indicator, "SomeSummary", "", "", "", "");		
+		ORef measurementRefWithDate =  verifyNewFilledMeasurement(indicator, "", "2009-10-10", "", "", "");
+		ORef measurementRefWithStatusConfidence = verifyNewFilledMeasurement(indicator, "", "", "Rapid Assessment", "", "");
+		ORef measurementRefWithTrend = verifyNewFilledMeasurement(indicator, "", "", "", "Strong Increase", "");
+		ORef measurementRefWithStatus = verifyNewFilledMeasurement(indicator, "", "", "", "", "Fair");
+		
+		ORefList measurementRefs = new ORefList();
+		measurementRefs.add(measurementRefWithStatus);
+		measurementRefs.add(measurementRefWithSummary);
+		measurementRefs.add(measurementRefWithDate);
+		measurementRefs.add(measurementRefWithStatusConfidence);
+		measurementRefs.add(measurementRefWithTrend);
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs);
+		verifyExport();
+	}
+	
 	public void testProgressPercent() throws Exception
 	{
 		Objective objective = getProject().createObjective();
 		verifyExport();
 		
 		ProgressPercent progressPercent1 = getProject().createProgressPercent();
-		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, new ORefList(progressPercent1).toString());
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, new ORefList(progressPercent1));
 		verifyExport();
 		
 		fillProgressPercent(progressPercent1, "2009-01-23", "", "");
@@ -161,7 +188,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		progressPercentRefs.add(progressPercent1);
 		progressPercentRefs.add(progressPercent2);
 		progressPercentRefs.add(progressPercent3);
-		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs.toString());
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
 		verifyExport();
 	}
 	
@@ -170,5 +197,20 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, date);
 		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE, percentComplete);
 		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, notes);
+	}
+	
+	private ORef verifyNewFilledMeasurement(Indicator indicator, String summary, String date, String statusConfidence, String trend, String status) throws Exception
+	{
+		Measurement measurement = getProject().createMeasurement();
+		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_SUMMARY, summary);
+		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_DATE, date);
+		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_STATUS_CONFIDENCE, statusConfidence);
+		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_TREND, trend);
+		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_STATUS, status);
+		
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurement));
+		verifyExport();
+		
+		return measurement.getRef();
 	}
 }
