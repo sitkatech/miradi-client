@@ -165,38 +165,33 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		Objective objective = getProject().createObjective();
 		verifyExport();
 		
-		ProgressPercent progressPercent1 = getProject().createProgressPercent();
-		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, new ORefList(progressPercent1));
+		ProgressPercent emptyProgressPercent = getProject().createProgressPercent();
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, new ORefList(emptyProgressPercent));
 		verifyExport();
 		
-		fillProgressPercent(progressPercent1, "2009-01-23", "", "");
-		verifyExport();
-		
-		fillProgressPercent(progressPercent1, "", "21", "");
-		verifyExport();
-		
-		fillProgressPercent(progressPercent1, "", "", "some percent complete notes");
-		verifyExport();
-		
-		ProgressPercent progressPercent2 = getProject().createProgressPercent();
-		fillProgressPercent(progressPercent2, "2009-01-23", "", "");
-		
-		ProgressPercent progressPercent3 = getProject().createProgressPercent();
-		fillProgressPercent(progressPercent3, "", "23", "");
+		ORef projectPercentWithDate = fillProgressPercent(objective, "2009-01-23", "", "");
+		ORef projectPercentWithPercentComplete = fillProgressPercent(objective, "", "21", "");
+		ORef projectPercentWithNotes = fillProgressPercent(objective, "", "", "some percent complete notes");
 		
 		ORefList progressPercentRefs = new ORefList();
-		progressPercentRefs.add(progressPercent1);
-		progressPercentRefs.add(progressPercent2);
-		progressPercentRefs.add(progressPercent3);
+		progressPercentRefs.add(projectPercentWithDate);
+		progressPercentRefs.add(projectPercentWithPercentComplete);
+		progressPercentRefs.add(projectPercentWithNotes);
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
 		verifyExport();
 	}
 	
-	private void fillProgressPercent(ProgressPercent progressPercent, String date, String percentComplete, String notes) throws Exception
+	private ORef fillProgressPercent(Objective objective, String date, String percentComplete, String notes) throws Exception
 	{
+		ProgressPercent progressPercent = getProject().createProgressPercent();
 		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, date);
 		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE, percentComplete);
 		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, notes);
+		
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, new ORefList(progressPercent));
+		verifyExport();
+		
+		return progressPercent.getRef();
 	}
 	
 	private ORef verifyNewFilledMeasurement(Indicator indicator, String summary, String date, String statusConfidence, String trend, String status) throws Exception
