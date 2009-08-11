@@ -69,18 +69,22 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 		for(int index = 0; index < iconHeaderBounds.size(); ++index)
 		{
 			Rectangle iconRectangle = iconHeaderBounds.get(index);
-
-			Icon icon = getIcon(index);
-			if (icon != null)
-				icon.paintIcon(this, g, iconRectangle.x, ARBITRARY_MARGIN / 2);
-
-			int textX = iconRectangle.x + iconRectangle.width + ARBITRARY_MARGIN;
-			int textY = iconRectangle.y + iconRectangle.height - ARBITRARY_MARGIN;
-			String columnName = table.getColumnName(index);
-			g.setColor(getForeground());
-			g.setFont(getFont());
-			g.drawString(columnName, textX, textY);
+			drawColumnHeader(g, index, iconRectangle);
 		}
+	}
+
+	private void drawColumnHeader(Graphics g, int index, Rectangle iconRectangle)
+	{
+		Icon icon = getIcon(index);
+		if (icon != null)
+			icon.paintIcon(this, g, iconRectangle.x, ARBITRARY_MARGIN / 2);
+
+		int textX = iconRectangle.x + iconRectangle.width + ARBITRARY_MARGIN;
+		int textY = iconRectangle.y + iconRectangle.height - ARBITRARY_MARGIN;
+		String columnName = table.getColumnName(index);
+		g.setColor(getForeground());
+		g.setFont(getFont());
+		g.drawString(columnName, textX, textY);
 	}
 
 	private Vector<Rectangle> getColumnIconHeaderBounds()
