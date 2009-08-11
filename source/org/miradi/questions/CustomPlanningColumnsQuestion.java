@@ -60,11 +60,14 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 
 	public static final String META_RESOURCE_ASSIGNMENT_COLUMN_CODE = "MetaWorkUnitColumnCode";
 	public static final String META_EXPENSE_ASSIGNMENT_COLUMN_CODE = "MetaExpenseAmountColumnCode";
+	
 	public static final String META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE = "MetaFundingSourceExpenseColumnCode";
-	public static final String META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE = "MetaAcountingCodeExpenseColumnCode";
-	public static final String META_BUDGET_DETAIL_COLUMN_CODE = "MetaBudgetDetailColumnCode";
 	public static final String META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE = "MetaFundingSourceBudgetDetailsColumnCode";
+	
+	public static final String META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE = "MetaAcountingCodeExpenseColumnCode";
 	public static final String META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE = "MetaAccountingCodeBudgetDetailsColumnCode";
+	
+	public static final String META_BUDGET_DETAIL_COLUMN_CODE = "MetaBudgetDetailColumnCode";
 	public static final String META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE = "MetaProjectResourceWorkUnitsColumnCode";
 	public final static String META_WHO_TOTAL = "MetaWhoTotal";
 }
