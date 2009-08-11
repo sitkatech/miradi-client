@@ -24,6 +24,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
@@ -78,15 +79,24 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 		int textX = columnHeaderBounds.x + ARBITRARY_MARGIN;
 		int textY = columnHeaderBounds.y + columnHeaderBounds.height - ARBITRARY_MARGIN;
 
-		if (icon != null)
+		Shape oldClip = g.getClip();
+		try
 		{
-			icon.paintIcon(this, g, columnHeaderBounds.x, ARBITRARY_MARGIN / 2);
-			textX += icon.getIconWidth();
+			g.setClip(columnHeaderBounds);
+			if (icon != null)
+			{
+				icon.paintIcon(this, g, columnHeaderBounds.x, ARBITRARY_MARGIN / 2);
+				textX += icon.getIconWidth();
+			}
+	
+			g.setColor(getForeground());
+			g.setFont(getFont());
+			g.drawString(text, textX, textY);
 		}
-
-		g.setColor(getForeground());
-		g.setFont(getFont());
-		g.drawString(text, textX, textY);
+		finally
+		{
+			g.setClip(oldClip);
+		}
 	}
 
 	private Vector<Rectangle> getColumnHeaderBounds()
