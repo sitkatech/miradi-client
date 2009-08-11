@@ -23,8 +23,10 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Shape;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
@@ -32,6 +34,7 @@ import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 
@@ -60,13 +63,12 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		g.setColor(getBackground());
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		DateUnit forever = new DateUnit();
-		drawColumnGroupHeader(g, findColumnGroup(getWorkUnitsColumnGroup()), AppPreferences.getWorkUnitsBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroup(getExpensesColumnGroup()), AppPreferences.getExpenseAmountBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroup(getBudgetTotalsColumnGroup()), AppPreferences.getBudgetDetailsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroup(getWorkUnitsColumnGroup()), EAM.text("Label|Work Units"), AppPreferences.getWorkUnitsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroup(getExpensesColumnGroup()), EAM.text("Label|Expenses"), AppPreferences.getExpenseAmountBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroup(getBudgetTotalsColumnGroup()), EAM.text("Label|Budget Totals"), AppPreferences.getBudgetDetailsBackgroundColor(forever));
 	}
 
-	private void drawColumnGroupHeader(Graphics g, Rectangle groupHeaderArea,
-			Color backgroundColor)
+	private void drawColumnGroupHeader(Graphics g, Rectangle groupHeaderArea, String text, Color backgroundColor)
 	{
 		if(groupHeaderArea == null)
 			return;
@@ -75,6 +77,21 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		g.fillRect(groupHeaderArea.x, groupHeaderArea.y, groupHeaderArea.width, groupHeaderArea.height);
 		g.setColor(Color.BLACK);
 		g.drawRect(groupHeaderArea.x, groupHeaderArea.y, groupHeaderArea.width, groupHeaderArea.height);
+		
+		Shape oldClip = g.getClip();
+		try
+		{
+			g.setClip(groupHeaderArea);
+			Graphics2D g2 = (Graphics2D) g;
+			Rectangle fontBounds = g.getFont().getStringBounds(text, g2.getFontRenderContext()).getBounds();
+			int textX = groupHeaderArea.x + groupHeaderArea.width/2 - fontBounds.width/2;
+			int textY = groupHeaderArea.y + groupHeaderArea.height/2 + fontBounds.height/2 - ARBITRARY_MARGIN;
+			g.drawString(text, textX, textY);
+		}
+		finally
+		{
+			g.setClip(oldClip);
+		}
 	}
 
 	private Rectangle findColumnGroup(String columnGroup)
