@@ -21,6 +21,7 @@ package org.miradi.utils;
 
 import java.util.EventObject;
 
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 import org.miradi.dialogfields.FieldSaver;
@@ -40,6 +41,15 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		
 		addColumnWidthSaver();
 		addColumnSequenceSaver();
+	}
+	
+	@Override
+	public void setTableHeader(JTableHeader tableHeader)
+	{
+		tableHeader.addMouseListener(columnWidthSaver);
+		tableHeader.addMouseListener(columnSequenceSaver);
+		
+		super.setTableHeader(tableHeader);
 	}
 	
 	public void dispose()
