@@ -32,6 +32,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProgressPercent;
+import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.ChoiceItem;
@@ -135,6 +136,27 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		throw new RuntimeException("Did not find a non selectable classification choice.");
 	}
 	
+	public void testStatuses() throws Exception
+	{
+		Indicator indicator = getProject().createIndicator();
+		verifyExport();
+
+		ProgressReport emptyProgressReport = getProject().createProgressReport();
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(emptyProgressReport));
+		verifyExport();
+		
+		ORef progressReportRefWithStatus = verifyNewFilledProgressReport(indicator, "Planned", "", "");		
+		ORef progressReportRefWithDate =  verifyNewFilledProgressReport(indicator, "", "2009-10-10", "");
+		ORef progressReportRefWithDetails = verifyNewFilledProgressReport(indicator, "", "", "Some Details");
+		
+		ORefList progressReportRefs = new ORefList();
+		progressReportRefs.add(progressReportRefWithStatus);
+		progressReportRefs.add(progressReportRefWithDate);
+		progressReportRefs.add(progressReportRefWithDetails);
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, progressReportRefs);
+		verifyExport();
+	}
+	
 	public void testMeasurements() throws Exception
 	{
 		Indicator indicator = getProject().createIndicator();
@@ -207,5 +229,18 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		verifyExport();
 		
 		return measurement.getRef();
+	}
+	
+	private ORef verifyNewFilledProgressReport(Indicator indicator, String status, String date, String details) throws Exception
+	{
+		ProgressReport progressReport = getProject().createProgressReport();
+		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, status);
+		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, date);
+		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_DETAILS, details);
+		
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReport));
+		verifyExport();
+		
+		return progressReport.getRef();
 	}
 }

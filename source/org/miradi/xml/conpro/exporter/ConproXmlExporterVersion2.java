@@ -249,9 +249,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception
 	{
-		if (progressReportRefs.size() == 0)
-			return;
-		
 		writeStartElement(out, PROGRESS_REPORTS);
 		int sequenceCounter = 0;
 		for (int refIndex = 0; refIndex < progressReportRefs.size(); ++refIndex)
