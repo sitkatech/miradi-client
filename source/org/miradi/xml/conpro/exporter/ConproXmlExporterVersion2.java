@@ -292,9 +292,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	
 	private void writeMeasurements(UnicodeWriter out, ORefList measurementRefs) throws Exception
 	{
-		if (measurementRefs.size() == 0)
-			return;
-		
 		writeStartElement(out, MEASUREMENTS);
 		int sequenceCounter = 0;
 		for (int refIndex = 0; refIndex < measurementRefs.size(); ++refIndex)
@@ -420,9 +417,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	
 	private void writeProgressPercents(UnicodeWriter out, ORefList progressPercentRefs) throws Exception
 	{
-		if (progressPercentRefs.size() == 0)
-			return;
-		
 		progressPercentRefs.sort();
 		writeStartElement(out, PROGRESS_PERCENT_REPORTS);
 		int sequenceCounter = 0;
