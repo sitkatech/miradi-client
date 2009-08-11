@@ -421,16 +421,18 @@ objectives.element =
               }
             & element cp:name { text }
             & element cp:comment { text }?
-            & percent_complete.element
+            & percent_complete.element?
         }*
     }
 #
 percent_complete.element =
-    element cp:percent_complete_measures {
-        percent_complete.combination1.element
+    element cp:percent_complete_measures
+    {
+       ( percent_complete.combination1.element
         | percent_complete.combination2.element
         | percent_complete.combination3.element
-    }*
+       )*
+    }
 percent_complete.combination1.element =
     element cp:percent_complete_measure {
         attribute sequence { vocabulary_sequence }

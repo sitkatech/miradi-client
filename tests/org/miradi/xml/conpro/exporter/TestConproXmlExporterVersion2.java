@@ -27,6 +27,9 @@ import java.io.IOException;
 import org.martus.util.DirectoryUtils;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Objective;
+import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.ChoiceItem;
@@ -128,5 +131,44 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		}
 		
 		throw new RuntimeException("Did not find a non selectable classification choice.");
+	}
+	
+	public void testProgressPercent() throws Exception
+	{
+		Objective objective = getProject().createObjective();
+		verifyExport();
+		
+		ProgressPercent progressPercent1 = getProject().createProgressPercent();
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, new ORefList(progressPercent1).toString());
+		verifyExport();
+		
+		fillProgressPercent(progressPercent1, "2009-01-23", "", "");
+		verifyExport();
+		
+		fillProgressPercent(progressPercent1, "", "21", "");
+		verifyExport();
+		
+		fillProgressPercent(progressPercent1, "", "", "some percent complete notes");
+		verifyExport();
+		
+		ProgressPercent progressPercent2 = getProject().createProgressPercent();
+		fillProgressPercent(progressPercent2, "2009-01-23", "", "");
+		
+		ProgressPercent progressPercent3 = getProject().createProgressPercent();
+		fillProgressPercent(progressPercent3, "", "23", "");
+		
+		ORefList progressPercentRefs = new ORefList();
+		progressPercentRefs.add(progressPercent1);
+		progressPercentRefs.add(progressPercent2);
+		progressPercentRefs.add(progressPercent3);
+		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs.toString());
+		verifyExport();
+	}
+	
+	private void fillProgressPercent(ProgressPercent progressPercent, String date, String percentComplete, String notes) throws Exception
+	{
+		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, date);
+		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE, percentComplete);
+		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, notes);
 	}
 }
