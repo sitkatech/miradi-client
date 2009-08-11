@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-11 14:24-0500\n"
+"POT-Creation-Date: 2009-08-11 14:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -992,7 +992,7 @@ msgstr "Button|Save"
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractAssignmentEditorComponent.java:86
-#: miradi/source/org/miradi/dialogs/planning/TableHeaderWithExpandCollapseIcons.java:182
+#: miradi/source/org/miradi/dialogs/planning/TableHeaderWithExpandCollapseIcons.java:181
 #, fuzzy
 msgid "An unexpected error has occurred"
 msgstr "An unexpected error has occurred"
