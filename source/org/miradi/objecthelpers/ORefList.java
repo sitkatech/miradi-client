@@ -110,6 +110,11 @@ public class ORefList
 		return json;
 	}
 	
+	public void add(BaseObject baseObject)
+	{
+		add(baseObject.getRef());
+	}
+	
 	public void add(ORef objectReferenceToUse)
 	{
 		data.add(objectReferenceToUse);
