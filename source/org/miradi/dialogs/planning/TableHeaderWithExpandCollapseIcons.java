@@ -150,21 +150,18 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 			super.mouseClicked(e);
 			
 			Point point = e.getPoint();
-			Vector<Rectangle> columnHeaderBoundsVector = getColumnHeaderBounds();
-			for(int index = 0; index < columnHeaderBoundsVector.size(); ++index)
-			{
-				Icon icon = getIcon(index);
-				if(icon == null)
-					continue;
+			int tableColumnIndex = getColumnModel().getColumnIndexAtX(point.x);
+			Icon icon = getIcon(tableColumnIndex);
+			if(icon == null)
+				return;
 
-				Rectangle columnHeaderRectangle = columnHeaderBoundsVector.get(index);
-				Rectangle iconRectangle = createIconRectangle(columnHeaderRectangle, icon);
-				if(iconRectangle.contains(point))
-				{
-					handleClick(index);
-					return;
-				}
-			}
+			Rectangle columnHeaderRectangle = getHeaderRect(tableColumnIndex);
+			Rectangle iconRectangle = createIconRectangle(columnHeaderRectangle, icon);
+System.out.println(tableColumnIndex + ": " + point + " " + columnHeaderRectangle + " " + iconRectangle);
+			if(!iconRectangle.contains(point))
+				return;
+
+			handleClick(tableColumnIndex);
 		}
 		
 		private Rectangle createIconRectangle(Rectangle columnHeaderRectangle, Icon icon)
