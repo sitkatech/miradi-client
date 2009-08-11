@@ -46,10 +46,10 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	@Override
 	public void setTableHeader(JTableHeader tableHeader)
 	{
+		super.setTableHeader(tableHeader);
+		
 		tableHeader.addMouseListener(columnWidthSaver);
 		tableHeader.addMouseListener(columnSequenceSaver);
-		
-		super.setTableHeader(tableHeader);
 	}
 	
 	public void dispose()
