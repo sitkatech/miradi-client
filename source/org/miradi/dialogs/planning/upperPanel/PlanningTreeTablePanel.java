@@ -26,6 +26,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
@@ -137,6 +138,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		rebuildEntireTreeTable();
 		
 		listenForColumnSelectionChanges(mainTable);
+		listenForTreeTableRowSelectionChanges(treeToUse);
 	}
 
 	@Override
@@ -480,6 +482,30 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	{
 		table.getColumnModel().addColumnModelListener(new ColumnSelectionHandler());
 	}
+
+	private void listenForTreeTableRowSelectionChanges(PlanningTreeTable treeToUse)
+	{
+		treeToUse.addSelectionChangeListener(new TreeTableRowSelectionHandler());
+	}
+	
+	
+	private void selectSectionForTag(String selectedColumnTag)
+	{
+		if (getPropertiesPanel() != null)
+			getPropertiesPanel().selectSectionForTag(selectedColumnTag);
+	}
+	
+	class TreeTableRowSelectionHandler implements ListSelectionListener
+	{
+		public void valueChanged(ListSelectionEvent e)
+		{
+			Object source = e.getSource();	
+			if (!getTree().getSelectionModel().equals(source))
+				return;
+			
+			selectSectionForTag(BaseObject.TAG_LABEL);
+		}
+	}
 	
 	class ColumnSelectionHandler  implements TableColumnModelListener
 	{
@@ -502,10 +528,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		public void columnSelectionChanged(ListSelectionEvent e)
 		{
 			String selectedColumnTag = getSelectedColumnTag();
-			if (getPropertiesPanel() != null)
-			{
-				getPropertiesPanel().selectSectionForTag(selectedColumnTag);
-			}
+			selectSectionForTag(selectedColumnTag);
 		}
 
 		private String getSelectedColumnTag()
