@@ -267,7 +267,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		for(int i = 0; i < selectionListeners.size(); ++i)
 		{
 			ListSelectionListener listener = selectionListeners.get(i);
-			listener.valueChanged(null);
+			listener.valueChanged(e);
 		}
 	}
 
