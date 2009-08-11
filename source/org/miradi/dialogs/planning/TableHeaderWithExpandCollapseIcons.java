@@ -157,7 +157,6 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 
 			Rectangle columnHeaderRectangle = getHeaderRect(tableColumnIndex);
 			Rectangle iconRectangle = createIconRectangle(columnHeaderRectangle, icon);
-System.out.println(tableColumnIndex + ": " + point + " " + columnHeaderRectangle + " " + iconRectangle);
 			if(!iconRectangle.contains(point))
 				return;
 
