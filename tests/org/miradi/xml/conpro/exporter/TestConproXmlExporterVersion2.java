@@ -145,9 +145,17 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(emptyProgressReport));
 		verifyExport();
 		
-		ORef progressReportRefWithStatus = verifyNewFilledProgressReport(indicator, "Planned", "", "");		
-		ORef progressReportRefWithDate =  verifyNewFilledProgressReport(indicator, "", "2009-10-10", "");
-		ORef progressReportRefWithDetails = verifyNewFilledProgressReport(indicator, "", "", "Some Details");
+		ORef progressReportRefWithStatus = createAndFillProgressReport(indicator, "Planned", "", "");
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReportRefWithStatus));
+		verifyExport();
+		
+		ORef progressReportRefWithDate =  createAndFillProgressReport(indicator, "", "2009-10-10", "");
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReportRefWithDate));
+		verifyExport();
+
+		ORef progressReportRefWithDetails = createAndFillProgressReport(indicator, "", "", "Some Details");
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReportRefWithDetails));
+		verifyExport();
 		
 		ORefList progressReportRefs = new ORefList();
 		progressReportRefs.add(progressReportRefWithStatus);
@@ -231,15 +239,12 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		return measurement.getRef();
 	}
 	
-	private ORef verifyNewFilledProgressReport(Indicator indicator, String status, String date, String details) throws Exception
+	private ORef createAndFillProgressReport(Indicator indicator, String status, String date, String details) throws Exception
 	{
 		ProgressReport progressReport = getProject().createProgressReport();
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, status);
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, date);
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_DETAILS, details);
-		
-		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReport));
-		verifyExport();
 		
 		return progressReport.getRef();
 	}
