@@ -145,15 +145,15 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(emptyProgressReport));
 		verifyExport();
 		
-		ORef progressReportRefWithStatus = createAndFillProgressReport(indicator, "Planned", "", "");
+		ORef progressReportRefWithStatus = createAndFillProgressReport("Planned", "", "");
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReportRefWithStatus));
 		verifyExport();
 		
-		ORef progressReportRefWithDate =  createAndFillProgressReport(indicator, "", "2009-10-10", "");
+		ORef progressReportRefWithDate =  createAndFillProgressReport("", "2009-10-10", "");
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReportRefWithDate));
 		verifyExport();
 
-		ORef progressReportRefWithDetails = createAndFillProgressReport(indicator, "", "", "Some Details");
+		ORef progressReportRefWithDetails = createAndFillProgressReport("", "", "Some Details");
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReportRefWithDetails));
 		verifyExport();
 		
@@ -239,7 +239,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		return measurement.getRef();
 	}
 	
-	private ORef createAndFillProgressReport(Indicator indicator, String status, String date, String details) throws Exception
+	private ORef createAndFillProgressReport(String status, String date, String details) throws Exception
 	{
 		ProgressReport progressReport = getProject().createProgressReport();
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, status);
