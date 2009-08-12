@@ -21,43 +21,26 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAMTestCase;
+import org.miradi.main.TestCaseWithProject;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Task;
-import org.miradi.project.ProjectForTesting;
 
-public class TestBaseObject extends EAMTestCase
+public class TestBaseObject extends TestCaseWithProject
 {
 	public TestBaseObject(String name)
 	{
 		super(name);
 	}
 	
-	public void setUp() throws Exception
-	{
-		project = new ProjectForTesting(getName());
-		super.setUp();
-	}
-	
-	public void tearDown() throws Exception
-	{
-		super.tearDown();
-		project.close();
-		project = null;
-	}
-	
 	public void testGetOwnerRef() throws Exception
 	{
-		ORef taskRef = project.createFactorAndReturnRef(Task.getObjectType());
-		Task task = (Task)project.findObject(taskRef);
+		ORef taskRef = getProject().createFactorAndReturnRef(Task.getObjectType());
+		Task task = (Task)getProject().findObject(taskRef);
 		
-		ORef parentRef = project.createFactorAndReturnRef(Task.getObjectType());
-		Task parent = (Task)project.findObject(parentRef);
+		ORef parentRef = getProject().createFactorAndReturnRef(Task.getObjectType());
+		Task parent = (Task)getProject().findObject(parentRef);
 		IdList children = new IdList(Task.getObjectType(), new BaseId[] {task.getId()});
 		parent.setData(Task.TAG_SUBTASK_IDS, children.toString());
 		assertEquals("Owner not detected?", parentRef, task.getOwnerRef());
@@ -65,26 +48,28 @@ public class TestBaseObject extends EAMTestCase
 
 	public void testGetAllOwnedObjects() throws Exception
 	{
-		ORef causeRef = project.createObject(ObjectType.CAUSE);
-		project.addItemToFactorList(causeRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
-		project.addItemToFactorList(causeRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		ORef causeRef = getProject().createObject(ObjectType.CAUSE);
+		getProject().addItemToFactorList(causeRef, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
+		getProject().addItemToFactorList(causeRef, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
+		ProgressReport progressReport = getProject().createProgressReport();
+		getProject().fillObjectUsingCommand(causeRef, BaseObject.TAG_PROGRESS_REPORT_REFS, new ORefList(progressReport).toString());
 		
-	   	BaseObject ownerObject = project.findObject(causeRef);	
+	   	BaseObject ownerObject = getProject().findObject(causeRef);	
 	   	ORefList allOwnedObjects = ownerObject.getAllOwnedObjects();
-	   	assertEquals("incorrect owned object count?", 2, allOwnedObjects.size());
+	   	assertEquals("incorrect owned object count?", 3, allOwnedObjects.size());
 	}
 	
 	public void testGetReferredObjects() throws Exception
 	{
-		ORef taskRef = project.createObject(Task.getObjectType());
-		Task task = Task.find(project, taskRef);
+		ORef taskRef = getProject().createObject(Task.getObjectType());
+		Task task = Task.find(getProject(), taskRef);
 		assertEquals("Had referenced objects?", 0, task.getAllReferencedObjects().size());
 	}
 	
 	public void testIsPresentationDataField() throws Exception
 	{
 		String someNonUserDefinedTag = "SomeTag";
-		Cause cause = project.createCause();
+		Cause cause = getProject().createCause();
 		cause.addPresentationDataField(someNonUserDefinedTag, new StringData(someNonUserDefinedTag));
 		assertTrue("is user tag?" , cause.isPresentationDataField(someNonUserDefinedTag));
 		assertFalse("is non user tag?", cause.isPresentationDataField(Cause.TAG_LABEL));
@@ -92,19 +77,17 @@ public class TestBaseObject extends EAMTestCase
 	
 	public void testEquals() throws Exception
 	{
-		Cause cause = project.createCause();
-		Target target = new Target(project.getObjectManager(), cause.getFactorId());
+		Cause cause = getProject().createCause();
+		Target target = new Target(getProject().getObjectManager(), cause.getFactorId());
 		assertNotEquals("Target/Cause with same Id were equal?", cause, target);
 	}
 	
 	public void testGetBudgetTotal() throws Exception
 	{
-		Indicator indicator = project.createIndicator();
+		Indicator indicator = getProject().createIndicator();
 		assertFalse("indicator should not have a total cost?", indicator.getTotalBudgetCost().hasValue());
 		
-		project.addResourceAssignment(indicator, 20.0, 2006, 2006);
+		getProject().addResourceAssignment(indicator, 20.0, 2006, 2006);
 		assertEquals("wrong total budget cost?", 200.0, indicator.getTotalBudgetCost().getValue());
 	}
-	
-	ProjectForTesting project;
 }
