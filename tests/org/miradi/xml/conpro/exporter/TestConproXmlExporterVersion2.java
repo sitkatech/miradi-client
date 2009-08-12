@@ -146,11 +146,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		verifyExport();
 		
 		createAndFillProgressReport(indicator, "Planned", "", "");
-		verifyExport();
-		
 		createAndFillProgressReport(indicator, "", "2009-10-10", "");
-		verifyExport();
-
 		createAndFillProgressReport(indicator, "", "", "Some Details");
 		verifyExport();
 	}
@@ -164,19 +160,11 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(emptyMeasurement));
 		verifyExport();
 		
-		ORef measurementRefWithSummary = verifyNewFilledMeasurement(indicator, "SomeSummary", "", "", "", "");		
-		ORef measurementRefWithDate =  verifyNewFilledMeasurement(indicator, "", "2009-10-10", "", "", "");
-		ORef measurementRefWithStatusConfidence = verifyNewFilledMeasurement(indicator, "", "", "Rapid Assessment", "", "");
-		ORef measurementRefWithTrend = verifyNewFilledMeasurement(indicator, "", "", "", "Strong Increase", "");
-		ORef measurementRefWithStatus = verifyNewFilledMeasurement(indicator, "", "", "", "", "Fair");
-		
-		ORefList measurementRefs = new ORefList();
-		measurementRefs.add(measurementRefWithStatus);
-		measurementRefs.add(measurementRefWithSummary);
-		measurementRefs.add(measurementRefWithDate);
-		measurementRefs.add(measurementRefWithStatusConfidence);
-		measurementRefs.add(measurementRefWithTrend);
-		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs);
+		createAndFillMeasurement(indicator, "SomeSummary", "", "", "", "");		
+		createAndFillMeasurement(indicator, "", "2009-10-10", "", "", "");
+		createAndFillMeasurement(indicator, "", "", "Rapid Assessment", "", "");
+		createAndFillMeasurement(indicator, "", "", "", "Strong Increase", "");
+		createAndFillMeasurement(indicator, "", "", "", "", "Fair");
 		verifyExport();
 	}
 	
@@ -214,7 +202,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		return progressPercent.getRef();
 	}
 	
-	private ORef verifyNewFilledMeasurement(Indicator indicator, String summary, String date, String statusConfidence, String trend, String status) throws Exception
+	private ORef createAndFillMeasurement(Indicator indicator, String summary, String date, String statusConfidence, String trend, String status) throws Exception
 	{
 		Measurement measurement = getProject().createMeasurement();
 		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_SUMMARY, summary);
@@ -223,8 +211,9 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_TREND, trend);
 		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_STATUS, status);
 		
-		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(measurement));
-		verifyExport();
+		ORefList measurementRefs = indicator.getMeasurementRefs();
+		measurementRefs.add(measurement);
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs);
 		
 		return measurement.getRef();
 	}
