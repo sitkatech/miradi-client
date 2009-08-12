@@ -426,14 +426,11 @@ objectives.element =
     }
 #
 percent_complete.element =
-    element cp:percent_complete_measures
-    {
-       ( 
-       	percent_complete.combination1.element |
-        percent_complete.combination2.element |
-        percent_complete.combination3.element
-       )*
-    }
+    element cp:percent_complete_measures {( 
+       	percent_complete.combination1.element
+        | percent_complete.combination2.element
+        | percent_complete.combination3.element
+     )*}
 percent_complete.combination1.element =
     element cp:percent_complete_measure {
         attribute sequence { vocabulary_sequence }
@@ -553,16 +550,13 @@ indicators.element =
     }
 #
 measures.element =
-    element cp:measures 
-    {
-      ( 
-      	measures.combination1.element |
-        measures.combination2.element |
-        measures.combination3.element |
-        measures.combination4.element |
-        measures.combination5.element
-      )*
-    }
+    element cp:measures {( 
+      	measures.combination1.element
+        | measures.combination2.element
+        | measures.combination3.element
+        | measures.combination4.element
+        | measures.combination5.element
+     )*}
 measures.combination1.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
@@ -624,14 +618,9 @@ methods.element =
     }
 #
 statuses.element =
-    element cp:statuses 
-    {
-		(    
-        	status.combination1.element | 
-        	status.combination2.element | 
-        	status.combination3.element
-        )*
-    }
+    element cp:statuses {(
+    	status.combination1.element | status.combination2.element | status.combination3.element
+    )*}
 status.combination1.element =
     element cp:status {
         attribute sequence { vocabulary_sequence }
