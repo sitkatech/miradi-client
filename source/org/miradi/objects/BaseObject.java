@@ -944,6 +944,9 @@ abstract public class BaseObject
 			case ObjectType.EXPENSE_ASSIGNMENT:
 				list.addAll(getExpenseAssignmentRefs());
 				break;
+			case ObjectType.PROGRESS_REPORT:
+				list.addAll(getProgressReportRefs());
+				break;
 		}
 		
 		return list;
@@ -966,11 +969,7 @@ abstract public class BaseObject
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		ORefList deepObjectRefsToCopy = new ORefList();
-		deepObjectRefsToCopy.addAll(getAllOwnedObjects());
-		deepObjectRefsToCopy.addAll(getProgressReportRefs());
-
-		return deepObjectRefsToCopy;
+		return new ORefList(getAllOwnedObjects());
 	}
 	
 	public ORefList getAllOwnedObjects()
