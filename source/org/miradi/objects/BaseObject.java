@@ -603,7 +603,7 @@ abstract public class BaseObject
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		 
-		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
+		latestProgressReport = new PseudoQuestionData(TAG_PROGRESS_REPORT_REFS, PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
@@ -1169,10 +1169,16 @@ abstract public class BaseObject
 	//FIXME medium: move these classes into their own class in order to avoid dup code and inner classes
 	public class PseudoQuestionData  extends ObjectData
 	{
-	
 		public PseudoQuestionData(String tagToUse, ChoiceQuestion questionToUse)
 		{
+			this("", tagToUse, questionToUse);
+		}
+
+		public PseudoQuestionData(String parentTagToUse, String tagToUse, ChoiceQuestion questionToUse)
+		{
 			super(tagToUse);
+			
+			parentTag = parentTagToUse;
 			question = questionToUse;
 		}
 		
@@ -1209,7 +1215,13 @@ abstract public class BaseObject
 		{
 			return get().hashCode();
 		}
+
+		public String getParentTag()
+		{
+			return parentTag;
+		}
 		
+		private String parentTag;
 		private ChoiceQuestion question;
 	}
 	
