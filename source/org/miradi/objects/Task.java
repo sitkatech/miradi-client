@@ -29,7 +29,6 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -80,9 +79,6 @@ public class Task extends Factor
 		if (tag.equals(TAG_SUBTASK_IDS))
 			return Task.getObjectType();
 		
-			if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return ProgressReport.getObjectType();
-		
 		return super.getAnnotationType(tag);
 	}
 
@@ -98,9 +94,6 @@ public class Task extends Factor
 	@Override
 	public boolean isRefList(String tag)
 	{
-		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return true;
-		
 		return super.isRefList(tag);
 	}
 	
@@ -292,18 +285,6 @@ public class Task extends Factor
 		return new ORefList(Task.getObjectType(), getSubtaskIdList());
 	}
 	
-	public ORefList getProgressReportRefs()
-	{
-		return progressReportRefs.getORefList();
-	}
-	
-	@Override
-	public ProgressReport getLatestProgressReport()
-	{
-		ProgressReport progressReport = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
-		return progressReport;
-	}
-	
 	public String getParentTypeCode()
 	{
 		if(isActivity())
@@ -448,14 +429,12 @@ public class Task extends Factor
 	{
 		super.clear();
 		subtaskIds = new IdListData(TAG_SUBTASK_IDS, Task.getObjectType());
-		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		details = new StringData(TAG_DETAILS);
 		
 		strategyLabel = new PseudoStringData(PSEUDO_TAG_STRATEGY_LABEL);
 		indicatorLabel = new PseudoStringData(PSEUDO_TAG_INDICATOR_LABEL);
 		
 		addField(TAG_SUBTASK_IDS, subtaskIds);
-		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 		addField(TAG_DETAILS, details);
 		
 		addField(PSEUDO_TAG_STRATEGY_LABEL, strategyLabel);
@@ -464,7 +443,6 @@ public class Task extends Factor
 
 	
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
-	public final static String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public final static String TAG_DETAILS = "Details";
 	
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
@@ -477,7 +455,6 @@ public class Task extends Factor
 	private String cachedObjectTypeName;
 	
 	private IdListData subtaskIds;
-	private ORefListData progressReportRefs;
 	private StringData details;
 	
 	private PseudoStringData strategyLabel;

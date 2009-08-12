@@ -26,7 +26,6 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.ORefListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -166,18 +165,6 @@ public class Strategy extends Factor
 		return taxonomyCode.get();
 	}
 	
-	@Override
-	public ProgressReport getLatestProgressReport()
-	{
-		ProgressReport progressReport = (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
-		return progressReport;
-	}
-	
-	public ORefList getProgressReportRefs()
-	{
-		return progressReportRefs.getORefList();
-	}
-	
 	public String getStrategyRatingSummary()
 	{
 		ChoiceItem rating = getStrategyRating();
@@ -206,7 +193,6 @@ public class Strategy extends Factor
 	{
 		ORefList deepObjectRefsToCopy = super.getAllObjectsToDeepCopy(deepCopiedFactorRefs);
 		deepObjectRefsToCopy.addAll(getActivityRefs());
-		deepObjectRefsToCopy.addAll(getProgressReportRefs());
 		
 		return deepObjectRefsToCopy;
 	}
@@ -229,9 +215,6 @@ public class Strategy extends Factor
 		if (tag.equals(TAG_ACTIVITY_IDS))
 			return Task.getObjectType();
 		
-		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return ProgressReport.getObjectType();
-		
 		return super.getAnnotationType(tag);
 	}
 
@@ -243,14 +226,6 @@ public class Strategy extends Factor
 		return super.isIdListTag(tag);
 	}
 	
-	public boolean isRefList(String tag)
-	{
-		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
-			return true;
-		
-		return super.isRefList(tag);
-	}
-
 	public int getType()
 	{
 		return getObjectType();
@@ -306,7 +281,6 @@ public class Strategy extends Factor
 		taxonomyCode = new ChoiceData(TAG_TAXONOMY_CODE, getQuestion(StrategyTaxonomyQuestion.class));
 		impactRating = new ChoiceData(TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		feasibilityRating = new ChoiceData(TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
-		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		legacyTncStrategyRanking = new StringData(TAG_LEGACY_TNC_STRATEGY_RANKING);
 	
 		tagRatingSummary = new PseudoStringData(PSEUDO_TAG_RATING_SUMMARY);
@@ -321,7 +295,6 @@ public class Strategy extends Factor
 		addField(TAG_TAXONOMY_CODE, taxonomyCode);
 		addField(TAG_IMPACT_RATING, impactRating);
 		addField(TAG_FEASIBILITY_RATING, feasibilityRating);
-		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 		addField(TAG_LEGACY_TNC_STRATEGY_RANKING, legacyTncStrategyRanking);
 		
 		addField(PSEUDO_TAG_RATING_SUMMARY, tagRatingSummary);
@@ -339,7 +312,6 @@ public class Strategy extends Factor
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
-	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";
 	
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
@@ -356,7 +328,6 @@ public class Strategy extends Factor
 	private ChoiceData taxonomyCode;
 	private ChoiceData impactRating;
 	private ChoiceData feasibilityRating;
-	private ORefListData progressReportRefs;
 	private StringData legacyTncStrategyRanking;
 	
 	private PseudoStringData tagRatingSummary;

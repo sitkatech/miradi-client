@@ -144,6 +144,9 @@ abstract public class BaseObject
 		if (tag.equals(TAG_EXPENSE_ASSIGNMENT_REFS))
 			return true;
 		
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return true;
+		
 		return false;
 	}
 	
@@ -161,6 +164,9 @@ abstract public class BaseObject
 	{
 		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
 			return ResourceAssignment.getObjectType();
+		
+		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
+			return ProgressReport.getObjectType();
 		
 		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}
@@ -594,6 +600,7 @@ abstract public class BaseObject
 		label = new StringData(TAG_LABEL);
 		resourceAssignmentIds = new IdListData(TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignment.getObjectType());
 		expenseAssignmentRefs = new ORefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
+		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		 
 		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
@@ -605,6 +612,7 @@ abstract public class BaseObject
 		addField(TAG_LABEL, label);
 		addField(TAG_RESOURCE_ASSIGNMENT_IDS, resourceAssignmentIds);
 		addField(TAG_EXPENSE_ASSIGNMENT_REFS, expenseAssignmentRefs);
+		addField(TAG_PROGRESS_REPORT_REFS, progressReportRefs);
 		
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
@@ -958,7 +966,11 @@ abstract public class BaseObject
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
-		return getAllOwnedObjects();
+		ORefList deepObjectRefsToCopy = new ORefList();
+		deepObjectRefsToCopy.addAll(getAllOwnedObjects());
+		deepObjectRefsToCopy.addAll(getProgressReportRefs());
+
+		return deepObjectRefsToCopy;
 	}
 	
 	public ORefList getAllOwnedObjects()
@@ -1098,7 +1110,7 @@ abstract public class BaseObject
 
 	public ProgressReport getLatestProgressReport()
 	{
-		return null;
+		return (ProgressReport) getLatestObject(getObjectManager(), getProgressReportRefs(), ProgressReport.TAG_PROGRESS_DATE);
 	}
 
 	protected static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)
@@ -1137,6 +1149,11 @@ abstract public class BaseObject
 			ownerRef = owner.getOwnerRef();
 		}
 		return null;
+	}
+
+	public ORefList getProgressReportRefs()
+	{
+		return progressReportRefs.getORefList();
 	}
 
 	public static BaseObject find(ObjectManager objectManager, ORef objectRef)
@@ -1296,6 +1313,7 @@ abstract public class BaseObject
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
+	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 
 	protected BaseId id;
 	protected StringData label;
@@ -1313,4 +1331,5 @@ abstract public class BaseObject
 	private PseudoStringData latestProgressReportDetails;
 	protected IdListData resourceAssignmentIds;
 	protected ORefListData expenseAssignmentRefs;
+	protected ORefListData progressReportRefs;
 }
