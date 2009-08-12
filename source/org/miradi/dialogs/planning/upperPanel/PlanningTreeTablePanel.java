@@ -480,7 +480,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private void listenForColumnSelectionChanges(JTable table)
 	{
-		table.getColumnModel().addColumnModelListener(new ColumnSelectionHandler());
+		MainTableSelectionHandler columnSelectionHandler = new MainTableSelectionHandler();
+		table.getColumnModel().addColumnModelListener(columnSelectionHandler);
+		table.getSelectionModel().addListSelectionListener(columnSelectionHandler);
 	}
 
 	private void listenForTreeTableRowSelectionChanges(PlanningTreeTable treeToUse)
@@ -507,7 +509,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		}
 	}
 	
-	class ColumnSelectionHandler  implements TableColumnModelListener
+	class MainTableSelectionHandler  implements TableColumnModelListener, ListSelectionListener
 	{
 		public void columnAdded(TableColumnModelEvent e)
 		{
@@ -526,6 +528,16 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		}
 
 		public void columnSelectionChanged(ListSelectionEvent e)
+		{
+			selectSectionForColumn();
+		}
+
+		public void valueChanged(ListSelectionEvent e)
+		{
+			selectSectionForColumn();
+		}
+		
+		private void selectSectionForColumn()
 		{
 			String selectedColumnTag = getSelectedColumnTag();
 			selectSectionForTag(selectedColumnTag);

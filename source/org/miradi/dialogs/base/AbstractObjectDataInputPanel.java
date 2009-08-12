@@ -80,6 +80,7 @@ import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.BaseObject.PseudoQuestionData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
@@ -878,16 +879,37 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		add(label);
 	}
 	
-	protected boolean doesSectionContainFieldWithTag(String tag)
+	protected boolean doesSectionContainFieldWithTag(String tagToUse)
 	{
 		Vector<ObjectDataInputField> thisFields = getFields();
 		for(ObjectDataInputField field : thisFields)
 		{
+			String tag = getTag(field, tagToUse);
 			if (field.getTag().equals(tag))
 				return true;
 		}
 		
 		return false;
+	}
+
+	private String getTag(ObjectDataInputField field, String tagToUse)
+	{
+		String tag = tagToUse;
+		BaseObject baseObject = BaseObject.find(getProject(), field.getORef());
+		if (!baseObject.doesFieldExist(tagToUse))
+			return tagToUse;
+			
+		if (!baseObject.isPseudoField(tagToUse))
+			return tagToUse;
+
+		//FIXME urgent - pseudo related - do not use instanceof.  cant pull up a abstract pseudo class.  maybe an interface that 
+		if (baseObject.getField(tagToUse) instanceof PseudoQuestionData)
+		{
+			PseudoQuestionData pseudoField = (PseudoQuestionData) baseObject.getField(tagToUse);
+			tag = pseudoField.getParentTag();
+		}
+		
+		return tag;
 	}
 
 	public static int STD_SHORT = 5;
