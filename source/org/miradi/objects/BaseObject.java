@@ -603,7 +603,7 @@ abstract public class BaseObject
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		 
-		latestProgressReport = new PseudoQuestionData(TAG_PROGRESS_REPORT_REFS, PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportStatusQuestion());
+		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, TAG_PROGRESS_REPORT_REFS, new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
@@ -1170,10 +1170,10 @@ abstract public class BaseObject
 	{
 		public PseudoQuestionData(String tagToUse, ChoiceQuestion questionToUse)
 		{
-			this("", tagToUse, questionToUse);
+			this(tagToUse, "", questionToUse);
 		}
 
-		public PseudoQuestionData(String parentTagToUse, String tagToUse, ChoiceQuestion questionToUse)
+		public PseudoQuestionData(String tagToUse, String parentTagToUse, ChoiceQuestion questionToUse)
 		{
 			super(tagToUse);
 			
