@@ -52,6 +52,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -550,10 +551,20 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 				return "";
 			
 			int modelColumn = mainTable.convertColumnIndexToModel(selectedColumn);
-			String columnGroupCode = multiModel.getColumnGroupCode(modelColumn);
-			
-			return columnGroupCode;
+			return multiModel.getTagForCell(getSafeTypeForSelectedRow(), modelColumn);
 		}		
+	}
+	
+	private int getSafeTypeForSelectedRow()
+	{
+		if (getTree().getSelectedObjects().length > 0)
+		{
+			BaseObject selectedObject = getTree().getSelectedObjects()[0];
+			return selectedObject.getType();
+		}
+		
+		return ObjectType.FAKE;
+	
 	}
 	
 	private RowColumnProvider rowColumnProvider;

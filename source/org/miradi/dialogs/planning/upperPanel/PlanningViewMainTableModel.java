@@ -314,6 +314,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return getChoiceItemAt(row, column);
 	}
 
+	@Override
 	public String getTagForCell(int nodeType, int column)
 	{
 		String columnTag = getColumnTag(column);

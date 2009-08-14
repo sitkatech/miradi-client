@@ -33,6 +33,7 @@ public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, 
 	public boolean isProgressColumn(int column);
 	public boolean isWorkUnitColumn(int column);
 	public String getColumnGroupCode(int modelColumn);
+	public String getTagForCell(int objectType, int modelColumn);
 	public boolean isColumnExpandable(int modelColumn);
 	public boolean isColumnCollapsable(int modelColumn);
 	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception;
