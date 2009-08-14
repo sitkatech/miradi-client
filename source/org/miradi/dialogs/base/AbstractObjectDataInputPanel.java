@@ -78,10 +78,10 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.BaseObject.PseudoQuestionData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
@@ -895,22 +895,15 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 	private HashSet<String> getTag(ObjectDataInputField field, String tagToUse)
 	{
-		HashSet<String> tags = BaseObject.createSet(tagToUse);
 		BaseObject baseObject = BaseObject.find(getProject(), field.getORef());
 		if (!baseObject.doesFieldExist(tagToUse))
-			return tags;
+			return BaseObject.createSet(tagToUse);;
 			
 		if (!baseObject.isPseudoField(tagToUse))
-			return tags;
-
-		//FIXME urgent - pseudo related - do not use instanceof.  cant pull up a abstract pseudo class.  maybe an interface that 
-		if (baseObject.getField(tagToUse) instanceof PseudoQuestionData)
-		{
-			PseudoQuestionData pseudoField = (PseudoQuestionData) baseObject.getField(tagToUse);
-			tags = pseudoField.getDependencyTags();
-		}
-		
-		return tags;
+			return BaseObject.createSet(tagToUse);;
+ 
+		ObjectData objectData = baseObject.getField(tagToUse);
+		return objectData.getDependencyTags();
 	}
 
 	public static int STD_SHORT = 5;

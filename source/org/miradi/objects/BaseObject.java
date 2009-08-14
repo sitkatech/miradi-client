@@ -1181,11 +1181,10 @@ abstract public class BaseObject
 			this(tagToUse, new HashSet<String>(), questionToUse);
 		}
 		
-		public PseudoQuestionData(String tagToUse, HashSet<String> parentTagsToUse, ChoiceQuestion questionToUse)
+		public PseudoQuestionData(String tagToUse, HashSet<String> dependencyTagsToUse, ChoiceQuestion questionToUse)
 		{
-			super(tagToUse);
+			super(tagToUse, dependencyTagsToUse);
 			
-			parentTag = parentTagsToUse;
 			question = questionToUse;
 		}
 		
@@ -1223,12 +1222,6 @@ abstract public class BaseObject
 			return get().hashCode();
 		}
 
-		public HashSet<String> getDependencyTags()
-		{
-			return parentTag;
-		}
-		
-		private HashSet<String> parentTag;
 		private ChoiceQuestion question;
 	}
 	
