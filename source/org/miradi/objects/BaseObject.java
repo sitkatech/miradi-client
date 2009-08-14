@@ -1223,7 +1223,7 @@ abstract public class BaseObject
 			return get().hashCode();
 		}
 
-		public HashSet<String> getParentTags()
+		public HashSet<String> getDependencyTags()
 		{
 			return parentTag;
 		}

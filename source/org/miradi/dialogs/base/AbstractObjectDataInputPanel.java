@@ -907,7 +907,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		if (baseObject.getField(tagToUse) instanceof PseudoQuestionData)
 		{
 			PseudoQuestionData pseudoField = (PseudoQuestionData) baseObject.getField(tagToUse);
-			tags = pseudoField.getParentTags();
+			tags = pseudoField.getDependencyTags();
 		}
 		
 		return tags;
