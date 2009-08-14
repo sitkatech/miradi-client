@@ -145,9 +145,9 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_PROGRESS_REPORT_REFS, new ORefList(emptyProgressReport));
 		verifyExport();
 		
-		createAndFillProgressReport(indicator, "Planned", "", "");
-		createAndFillProgressReport(indicator, "", "2009-10-10", "");
-		createAndFillProgressReport(indicator, "", "", "Some Details");
+		createFilledProgressReportAndAddToIndicator(indicator, "Planned", "", "");
+		createFilledProgressReportAndAddToIndicator(indicator, "", "2009-10-10", "");
+		createFilledProgressReportAndAddToIndicator(indicator, "", "", "Some Details");
 		verifyExport();
 	}
 	
@@ -160,11 +160,11 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, new ORefList(emptyMeasurement));
 		verifyExport();
 		
-		createAndFillMeasurement(indicator, "SomeSummary", "", "", "", "");		
-		createAndFillMeasurement(indicator, "", "2009-10-10", "", "", "");
-		createAndFillMeasurement(indicator, "", "", "Rapid Assessment", "", "");
-		createAndFillMeasurement(indicator, "", "", "", "Strong Increase", "");
-		createAndFillMeasurement(indicator, "", "", "", "", "Fair");
+		createFilledMeasurementAndAddToIndicator(indicator, "SomeSummary", "", "", "", "");		
+		createFilledMeasurementAndAddToIndicator(indicator, "", "2009-10-10", "", "", "");
+		createFilledMeasurementAndAddToIndicator(indicator, "", "", "Rapid Assessment", "", "");
+		createFilledMeasurementAndAddToIndicator(indicator, "", "", "", "Strong Increase", "");
+		createFilledMeasurementAndAddToIndicator(indicator, "", "", "", "", "Fair");
 		verifyExport();
 	}
 	
@@ -177,13 +177,13 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, new ORefList(emptyProgressPercent));
 		verifyExport();
 		
-		createAndfillProgressPercent(objective, "2009-01-23", "", "");
-		createAndfillProgressPercent(objective, "", "21", "");
-		createAndfillProgressPercent(objective, "", "", "some percent complete notes");
+		createfilledProgressPercentAndAddToObjective(objective, "2009-01-23", "", "");
+		createfilledProgressPercentAndAddToObjective(objective, "", "21", "");
+		createfilledProgressPercentAndAddToObjective(objective, "", "", "some percent complete notes");
 		verifyExport();
 	}
 	
-	private void createAndfillProgressPercent(Objective objective, String date, String percentComplete, String notes) throws Exception
+	private void createfilledProgressPercentAndAddToObjective(Objective objective, String date, String percentComplete, String notes) throws Exception
 	{
 		ProgressPercent progressPercent = getProject().createProgressPercent();
 		getProject().fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, date);
@@ -195,7 +195,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(objective, Objective.TAG_PROGRESS_PERCENT_REFS, progressPercentRefs);
 	}
 	
-	private void createAndFillMeasurement(Indicator indicator, String summary, String date, String statusConfidence, String trend, String status) throws Exception
+	private void createFilledMeasurementAndAddToIndicator(Indicator indicator, String summary, String date, String statusConfidence, String trend, String status) throws Exception
 	{
 		Measurement measurement = getProject().createMeasurement();
 		getProject().fillObjectUsingCommand(measurement, Measurement.TAG_SUMMARY, summary);
@@ -209,7 +209,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs);
 	}
 	
-	private void createAndFillProgressReport(Indicator indicator, String status, String date, String details) throws Exception
+	private void createFilledProgressReportAndAddToIndicator(Indicator indicator, String status, String date, String details) throws Exception
 	{
 		ProgressReport progressReport = getProject().createProgressReport();
 		getProject().fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, status);
