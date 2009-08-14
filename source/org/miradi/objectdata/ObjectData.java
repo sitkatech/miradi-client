@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objectdata;
 
+import java.util.HashSet;
+
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
 import org.miradi.objecthelpers.ORefList;
@@ -29,7 +31,13 @@ abstract public class ObjectData
 {
 	public ObjectData(String tagToUse)
 	{
+		this(tagToUse, new HashSet<String>());
+	}
+	
+	public ObjectData(String tagToUse, HashSet<String> dependencyTagsToUse)
+	{
 		tag = tagToUse;
+		dependencyTags = dependencyTagsToUse;
 	}
 	
 	abstract public void set(String newValue) throws Exception;
@@ -108,6 +116,12 @@ abstract public class ObjectData
 	{
 		return tag;
 	}
-
+	
+	public HashSet<String> getDependencyTags()
+	{
+		return dependencyTags;
+	}
+	
+	private HashSet<String> dependencyTags;
 	private String tag;
 }
