@@ -603,7 +603,7 @@ abstract public class BaseObject
 		progressReportRefs = new ORefListData(TAG_PROGRESS_REPORT_REFS);
 		whenTotal = new PseudoStringData(PSEUDO_TAG_WHEN_TOTAL);
 		 
-		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, TAG_PROGRESS_REPORT_REFS, new ProgressReportStatusQuestion());
+		latestProgressReport = new PseudoQuestionData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, createSet(TAG_PROGRESS_REPORT_REFS), new ProgressReportStatusQuestion());
 		latestProgressReportDetails = new PseudoStringData(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 
 		fields = new HashMap();
@@ -617,6 +617,14 @@ abstract public class BaseObject
 		addField(PSEUDO_TAG_WHEN_TOTAL, whenTotal);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, latestProgressReport);
 		addField(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS, latestProgressReportDetails);
+	}
+	
+	public static HashSet<String> createSet(String parentTagToUse)
+	{
+		HashSet<String> singleItemSet = new HashSet<String>();
+		singleItemSet.add(parentTagToUse);
+		
+		return singleItemSet;
 	}
 	
 	protected ChoiceQuestion getQuestion(Class questionClass)
@@ -1170,14 +1178,14 @@ abstract public class BaseObject
 	{
 		public PseudoQuestionData(String tagToUse, ChoiceQuestion questionToUse)
 		{
-			this(tagToUse, "", questionToUse);
+			this(tagToUse, new HashSet<String>(), questionToUse);
 		}
-
-		public PseudoQuestionData(String tagToUse, String parentTagToUse, ChoiceQuestion questionToUse)
+		
+		public PseudoQuestionData(String tagToUse, HashSet<String> parentTagsToUse, ChoiceQuestion questionToUse)
 		{
 			super(tagToUse);
 			
-			parentTag = parentTagToUse;
+			parentTag = parentTagsToUse;
 			question = questionToUse;
 		}
 		
@@ -1215,12 +1223,12 @@ abstract public class BaseObject
 			return get().hashCode();
 		}
 
-		public String getParentTag()
+		public HashSet<String> getParentTags()
 		{
 			return parentTag;
 		}
 		
-		private String parentTag;
+		private HashSet<String> parentTag;
 		private ChoiceQuestion question;
 	}
 	

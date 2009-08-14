@@ -24,6 +24,7 @@ import java.awt.Component;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -884,32 +885,32 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		Vector<ObjectDataInputField> thisFields = getFields();
 		for(ObjectDataInputField field : thisFields)
 		{
-			String tag = getTag(field, tagToUse);
-			if (field.getTag().equals(tag))
+			HashSet<String> tags = getTag(field, tagToUse);
+			if (tags.contains(field.getTag()))
 				return true;
 		}
 		
 		return false;
 	}
 
-	private String getTag(ObjectDataInputField field, String tagToUse)
+	private HashSet<String> getTag(ObjectDataInputField field, String tagToUse)
 	{
-		String tag = tagToUse;
+		HashSet<String> tags = BaseObject.createSet(tagToUse);
 		BaseObject baseObject = BaseObject.find(getProject(), field.getORef());
 		if (!baseObject.doesFieldExist(tagToUse))
-			return tagToUse;
+			return tags;
 			
 		if (!baseObject.isPseudoField(tagToUse))
-			return tagToUse;
+			return tags;
 
 		//FIXME urgent - pseudo related - do not use instanceof.  cant pull up a abstract pseudo class.  maybe an interface that 
 		if (baseObject.getField(tagToUse) instanceof PseudoQuestionData)
 		{
 			PseudoQuestionData pseudoField = (PseudoQuestionData) baseObject.getField(tagToUse);
-			tag = pseudoField.getParentTag();
+			tags = pseudoField.getParentTags();
 		}
 		
-		return tag;
+		return tags;
 	}
 
 	public static int STD_SHORT = 5;
