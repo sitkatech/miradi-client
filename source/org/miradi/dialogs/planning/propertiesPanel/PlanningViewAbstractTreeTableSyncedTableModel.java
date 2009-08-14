@@ -99,6 +99,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return getColumnTag(modelColumn);
 	}
 	
+	public String getTagForCell(int objectType, int modelColumn)
+	{
+		return getColumnGroupCode(modelColumn);
+	}
+	
 	public boolean isColumnCollapsable(int modelColumn)
 	{
 		return false;
