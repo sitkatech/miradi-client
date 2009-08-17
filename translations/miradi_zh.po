@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-11 14:31-0500\n"
+"POT-Creation-Date: 2009-08-17 12:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -3762,14 +3762,6 @@ msgstr "利益相关者"
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
 msgid "Team Member"
 msgstr "团队成员"
-
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:57
-msgid "TeamMember"
-msgstr "团队成员"
-
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:58
-msgid "Leader"
-msgstr "领导者"
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
@@ -29415,6 +29407,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "TeamMember"
+#~ msgstr "团队成员"
+
+#~ msgid "Leader"
+#~ msgstr "领导者"
 
 #~ msgid "Title|Accounting Codes"
 #~ msgstr "会计代码"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-11 14:31-0500\n"
+"POT-Creation-Date: 2009-08-17 12:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3939,14 +3939,6 @@ msgstr "Parte interesada "
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
 msgid "Team Member"
 msgstr "Miembro del equipo "
-
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:57
-msgid "TeamMember"
-msgstr "Miembro del equipo "
-
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:58
-msgid "Leader"
-msgstr "Líder "
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
@@ -32966,6 +32958,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "TeamMember"
+#~ msgstr "Miembro del equipo "
+
+#~ msgid "Leader"
+#~ msgstr "Líder "
 
 #~ msgid "Title|Accounting Codes"
 #~ msgstr "Códigos contables"
