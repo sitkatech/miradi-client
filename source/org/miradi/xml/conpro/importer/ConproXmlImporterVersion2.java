@@ -95,7 +95,6 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
@@ -628,14 +627,13 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	private void importProjectResourceRoles(Node teamMemberNode, ORef projectResourceRef) throws Exception
 	{
 		CodeList roleCodes = new CodeList();
-		roleCodes.add(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE);
-		
 		NodeList roleNodeList = getNodes(teamMemberNode, new String[]{ROLE});
 		for (int nodeIndex = 0; nodeIndex < roleNodeList.getLength(); ++nodeIndex)
 		{
 			Node roleNode = roleNodeList.item(nodeIndex);
-			if (roleNode.getTextContent().equals(TEAM_LEADER_VALUE))
-				roleCodes.add(ResourceRoleQuestion.TEAM_LEADER_CODE);		
+			String roleLabel = roleNode.getTextContent();
+			String roleCode = getCodeMapHelper().getConProToMiradiTeamRolesMap().get(roleLabel);
+			roleCodes.add(roleCode);		
 		}
 	
 		setData(projectResourceRef, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
