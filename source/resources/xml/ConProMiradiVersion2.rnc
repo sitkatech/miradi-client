@@ -522,8 +522,8 @@ indicators.element =
         element cp:indicator {
             attribute id { vocabulary_id }
             & element cp:name { text }
-            & element cp:factor_type { text }
-            & element cp:factor_name { text }
+            & element cp:factor_type { text }?
+            & element cp:factor_name { text }?
             & element cp:priority { vocabulary_priority_vhhml }?
             & element cp:comment { text }?
             & measures.element?
