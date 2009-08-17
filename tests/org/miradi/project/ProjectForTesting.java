@@ -571,7 +571,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		CodeList roleCodes = new CodeList();
 		roleCodes.add(ResourceRoleQuestion.TEAM_LEADER_CODE);
-		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
+		roleCodes.add(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE);
 		
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_LABEL, PROJECT_RESOURCE_LABEL_TEXT);

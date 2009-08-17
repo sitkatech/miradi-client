@@ -72,7 +72,7 @@ public class ResourcePool extends EAMNormalObjectPool
 			ProjectResource[] projectResources = getAllProjectResources();
 			for (int i = 0; i < projectResources.length; ++i)
 			{
-				if (projectResources[i].hasRole(ResourceRoleQuestion.TeamMemberRoleCode))
+				if (projectResources[i].hasRole(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
 					teamMembers.add(projectResources[i].getRef());
 			}
 			

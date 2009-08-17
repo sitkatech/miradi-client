@@ -280,7 +280,7 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 	{
 		ProjectResource teamMember = getProject().createProjectResource();
 		CodeList roleCodes = new CodeList();
-		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
+		roleCodes.add(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE);
 		getProject().fillObjectUsingCommand(teamMember, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
 		assertEquals("wrong project resource count?", 1, getProject().getResourcePool().getRefSet().size());
 		
