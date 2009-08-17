@@ -635,7 +635,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		{
 			Node roleNode = roleNodeList.item(nodeIndex);
 			if (roleNode.getTextContent().equals(TEAM_LEADER_VALUE))
-				roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);		
+				roleCodes.add(ResourceRoleQuestion.TEAM_LEADER_CODE);		
 		}
 	
 		setData(projectResourceRef, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());

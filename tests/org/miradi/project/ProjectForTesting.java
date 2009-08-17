@@ -570,7 +570,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	private void populateProjectResource(ProjectResource projectResource) throws Exception
 	{
 		CodeList roleCodes = new CodeList();
-		roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);
+		roleCodes.add(ResourceRoleQuestion.TEAM_LEADER_CODE);
 		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
 		
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
