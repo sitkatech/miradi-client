@@ -54,6 +54,6 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 	}
 	
 	public static final String TEAM_MEMBER_LABEL = EAM.text("Team Member");
-	public static final String TeamMemberRoleCode = EAM.text("TeamMember");
-	public static final String TeamLeaderCode = EAM.text("Leader");
+	public static final String TeamMemberRoleCode = "TeamMember";
+	public static final String TeamLeaderCode = "Leader";
 }
