@@ -61,6 +61,8 @@ project_summary.element =
           element cp:goal_comment { text }?
         & element cp:planning_team_comment { text }?
         & element cp:lessons_learned { text }?
+        & element cp:related_projects { text }?
+        & element cp:parent_child { text }?
         & element cp:stressless_threat_ranking { xsd:boolean }?
         & element cp:project_threat_rank { vocabulary_ranking_vhhml }?
         & element cp:project_viability_rank { vocabulary_rating_vggfp }?
