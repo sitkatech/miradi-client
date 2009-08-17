@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-11 14:31-0500\n"
+"POT-Creation-Date: 2009-08-17 12:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -3913,14 +3913,6 @@ msgstr "Pemilik Kepentingan"
 #: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:56
 msgid "Team Member"
 msgstr "Anggota Tim"
-
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:57
-msgid "TeamMember"
-msgstr "Anggota Tim"
-
-#: miradi/source/org/miradi/questions/ResourceRoleQuestion.java:58
-msgid "Leader"
-msgstr "Pemimpin"
 
 #: miradi/source/org/miradi/diagram/cells/FactorCell.java:95
 msgid "Indicators:"
@@ -32808,6 +32800,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "TeamMember"
+#~ msgstr "Anggota Tim"
+
+#~ msgid "Leader"
+#~ msgstr "Pemimpin"
 
 #~ msgid "Title|Accounting Codes"
 #~ msgstr "Kode Akuntansi "
