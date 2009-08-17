@@ -681,7 +681,13 @@ vocabulary_source_measures =
     | "Intensive Assessment"
 vocabulary_status =
     "Planned" | "Major Issues" | "Minor Issues" | "On Track" | "Completed" | "Abandoned"
-vocabulary_team = "Owner" | "Team Leader" | "Team Member"
+vocabulary_team =
+    "Team Contact"
+    | "Leader/Manager"
+    | "Team Member"
+    | "Process Facilitator"
+    | "Project Advisor"
+    | "Stakeholder"
 vocabulary_trend =
     "Not Specified"
     | "Unknown"

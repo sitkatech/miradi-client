@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
@@ -107,6 +108,14 @@ public class ConProMiradiCodeMapHelperVersion2
 		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_MARINE_CODE, "CSD - Marine");
 		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_FRESHWATER_CODE, "CSD - Freshwater");
 		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE, "CSD - Protected Areas");
+		
+		teamRolesMap = new HashMap<String, String>();
+		teamRolesMap.put(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE, "Team Member");
+		teamRolesMap.put(ResourceRoleQuestion.CONTACT_CODE, "Team Contact");
+		teamRolesMap.put(ResourceRoleQuestion.TEAM_LEADER_CODE, "Leader/Manager");
+		teamRolesMap.put(ResourceRoleQuestion.FACILITATOR_CODE, "Process Facilitator");
+		teamRolesMap.put(ResourceRoleQuestion.ADVISER_CODE, "Project Advisor");
+		teamRolesMap.put(ResourceRoleQuestion.STAKEHOLDER_CODE, "Stakeholder");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -156,6 +165,11 @@ public class ConProMiradiCodeMapHelperVersion2
 	public HashMap<String, String> getConProToMiradiOrganizationalPrioritiesMap()
 	{
 		return reverseMap(organizationalPrioritiesMap);
+	}
+	
+	public HashMap<String, String> getConProToMiradiTeamRolesMap()
+	{
+		return reverseMap(teamRolesMap);
 	}
 	
 	public HashMap<String, String> getConProToMiradiProgressStatusMap()
@@ -241,6 +255,11 @@ public class ConProMiradiCodeMapHelperVersion2
 		return organizationalPrioritiesMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProTeamRolesMap()
+	{
+		return teamRolesMap;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
@@ -252,6 +271,7 @@ public class ConProMiradiCodeMapHelperVersion2
 	private HashMap<String, String> indicatorRatingSourceMap;
 	private HashMap<String, String> trendMap;
 	private HashMap<String, String> organizationalPrioritiesMap;
+	private HashMap<String, String> teamRolesMap;
 	
 	private static final String CONPRO_STATUS_NOT_SPECIFIED = "Not Specified";
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";

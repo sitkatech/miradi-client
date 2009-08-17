@@ -72,6 +72,7 @@ import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.utils.CodeList;
@@ -1004,9 +1005,14 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 
 	private void writeMemberRoles(UnicodeWriter out, ProjectResource member) throws Exception
 	{
-		writeElement(out, ROLE, TEAM_MEMBER_VALUE);
-		if (member.isTeamLead())
-			writeElement(out, ROLE, TEAM_LEADER_VALUE);
+		ChoiceQuestion question = getProject().getQuestion(ResourceRoleQuestion.class);
+		CodeList roleCodes = member.getRoleCodes();
+		for(int index = 0; index < roleCodes.size(); ++index)
+		{
+			ChoiceItem role = question.findChoiceByCode(roleCodes.get(index));
+			String roleLabel = getCodeMapHelper().getMiradiToConProTeamRolesMap().get(role.getCode());
+			writeElement(out, ROLE, roleLabel);
+		}
 	}
 	
 	private void writeOptionalFloatElement(UnicodeWriter out, String elementName, float value) throws Exception
