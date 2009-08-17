@@ -69,9 +69,9 @@ public class TeamCreateMemberDoer extends ObjectsDoer
 	{
 		String codes = resource.getData(ProjectResource.TAG_ROLE_CODES);
 		CodeList listData = new CodeList(codes);
-		if (!listData.contains(ResourceRoleQuestion.TeamMemberRoleCode))
+		if (!listData.contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
 		{
-			listData.add(ResourceRoleQuestion.TeamMemberRoleCode);
+			listData.add(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE);
 			Command cmd = new CommandSetObjectData(resource.getType(), resource.getId(), resource.TAG_ROLE_CODES, listData.toString());
 			getProject().executeCommand(cmd);
 		}

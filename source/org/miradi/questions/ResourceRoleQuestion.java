@@ -35,7 +35,7 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 	private static Vector<ChoiceItem> getRoleChoices()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector();
-		choiceItems.add(new ChoiceItem(TeamMemberRoleCode, TEAM_MEMBER_LABEL));
+		choiceItems.add(new ChoiceItem(TEAM_MEMBER_ROLE_CODE, TEAM_MEMBER_LABEL));
 		choiceItems.addAll(getGenericChoiceItems());
 		
 		return choiceItems;
@@ -54,7 +54,7 @@ public class ResourceRoleQuestion extends StaticChoiceQuestion
 	}
 	
 	public static final String TEAM_MEMBER_LABEL = EAM.text("Team Member");
-	public static final String TeamMemberRoleCode = "TeamMember";
+	public static final String TEAM_MEMBER_ROLE_CODE = "TeamMember";
 	public static final String TEAM_LEADER_CODE = "Leader";
 	public static final String STAKEHOLDER_CODE = "Stakeholder";
 	public static final String ADVISER_CODE = "Advisor"; 

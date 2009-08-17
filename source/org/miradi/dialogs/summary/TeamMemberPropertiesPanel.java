@@ -50,7 +50,7 @@ public class TeamMemberPropertiesPanel extends ObjectDataInputPanel
 				};
 		addFieldsOnOneLine(EAM.text("Label|Team Member"), new ProjectResourceIcon(), nameLabelTexts, nameFields);
 		
-		CodeList disabledRoleCodes = new CodeList(new String[] {ResourceRoleQuestion.TeamMemberRoleCode});
+		CodeList disabledRoleCodes = new CodeList(new String[] {ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE});
 		addField(createMultiCodeEditorField(ProjectResource.TAG_ROLE_CODES, new ResourceRoleQuestion(), disabledRoleCodes, 3));
 		addField(createStringField(ProjectResource.TAG_ORGANIZATION));
 		addField(createStringField(ProjectResource.TAG_POSITION));

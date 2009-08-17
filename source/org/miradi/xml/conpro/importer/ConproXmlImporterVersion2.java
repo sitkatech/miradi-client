@@ -628,7 +628,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	private void importProjectResourceRoles(Node teamMemberNode, ORef projectResourceRef) throws Exception
 	{
 		CodeList roleCodes = new CodeList();
-		roleCodes.add(ResourceRoleQuestion.TeamMemberRoleCode);
+		roleCodes.add(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE);
 		
 		NodeList roleNodeList = getNodes(teamMemberNode, new String[]{ROLE});
 		for (int nodeIndex = 0; nodeIndex < roleNodeList.getLength(); ++nodeIndex)

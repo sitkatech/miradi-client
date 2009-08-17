@@ -112,7 +112,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 			CodeList oldCodes = new CodeList(cmd.getPreviousDataValue());
 			CodeList newCodes = new CodeList(cmd.getDataValue());
 			oldCodes.subtract(newCodes);
-			if(!oldCodes.contains(ResourceRoleQuestion.TeamMemberRoleCode))
+			if(!oldCodes.contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
 				return;
 			
 			EAM.okDialog(EAM.text("Remove Team Member"), new String[] {
