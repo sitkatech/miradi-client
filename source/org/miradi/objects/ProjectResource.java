@@ -161,7 +161,7 @@ public class ProjectResource extends BaseObject
 	
 	public boolean isTeamLead()
 	{
-		return getRoleCodes().contains(ResourceRoleQuestion.TeamLeaderCode);
+		return getRoleCodes().contains(ResourceRoleQuestion.TEAM_LEADER_CODE);
 	}
 	
 	public double getCostPerUnit()

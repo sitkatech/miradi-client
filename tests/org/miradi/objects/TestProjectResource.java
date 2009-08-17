@@ -107,7 +107,7 @@ public class TestProjectResource extends TestCaseWithProject
 		assertFalse("is not team lead?", resource.isTeamLead());
 		
 		CodeList roleCodes = new CodeList();
-		roleCodes.add(ResourceRoleQuestion.TeamLeaderCode);
+		roleCodes.add(ResourceRoleQuestion.TEAM_LEADER_CODE);
 		
 		resource.setData(ProjectResource.TAG_ROLE_CODES, roleCodes.toString());
 		assertTrue("is team lead?", resource.isTeamLead());	
