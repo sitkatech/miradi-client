@@ -24,6 +24,7 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -47,6 +48,7 @@ import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPa
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
+import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -352,6 +354,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if(selected.length == 1)
 			selectedRef = selected[0].getRef();
 		int selectedRow = tree.getSelectionModel().getAnchorSelectionIndex();
+		int selectedMainTableColumn = mainTable.getColumnModel().getSelectionModel().getAnchorSelectionIndex();
 
 		// TODO: Perhaps possibly detect exactly what changed and 
 		// only rebuild the columns or the rows rather than always doing both
@@ -380,7 +383,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 		filterStatusPanel.updateStatusLabel();
 	
-		tree.selectObjectAfterSwingClearsItDueToTreeStructureChange(selectedRef, selectedRow);
+		selectObjectAfterSwingClearsItDueToTreeStructureChange(mainTable, selectedRef, selectedRow, selectedMainTableColumn);
 	}
 	
 	protected void updateResourceFilter() throws Exception
@@ -565,6 +568,43 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		return ObjectType.FAKE;
 	
+	}
+	
+	public void selectObjectAfterSwingClearsItDueToTreeStructureChange(JTable table, ORef selectedRef, int fallbackRow, int fallbackColumnInTable)
+	{
+		tree.clearSelection();
+		table.clearSelection();
+		if(selectedRef == null || selectedRef.isInvalid())
+			return;
+		
+		SwingUtilities.invokeLater(new Reselecter(tree, table, selectedRef, fallbackRow, fallbackColumnInTable));
+	}
+	
+	class Reselecter implements Runnable
+	{
+		public Reselecter(ObjectTreeTable treeTableToUse, JTable tableToUse, ORef refToSelect, int rowToSelect, int fallbackColumnInTable)
+		{
+			treeTable = treeTableToUse;
+			table = tableToUse;
+			ref = refToSelect;
+			row = rowToSelect;
+			columnInTable = fallbackColumnInTable;
+		}
+		
+		public void run()
+		{
+			treeTable.selectObject(ref, row);
+			treeTable.ensureSelectedRowVisible();
+			
+			table.getSelectionModel().setSelectionInterval(row, row);	
+			table.getColumnModel().getSelectionModel().setSelectionInterval(columnInTable, columnInTable);
+		}
+		
+		private ObjectTreeTable treeTable;
+		private JTable table;
+		private ORef ref;
+		private int row;
+		private int columnInTable;
 	}
 	
 	private RowColumnProvider rowColumnProvider;
