@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-17 15:34-0500\n"
+"POT-Creation-Date: 2009-08-18 15:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6647,15 +6647,15 @@ msgstr ""
 msgid "Title|Intermediate Result Properties"
 msgstr "Propiedades del resultado intermedio "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:66
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:67
 msgid "Label|Work Units"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:67
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:68
 msgid "Label|Expenses"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:68
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:69
 msgid "Label|Budget Totals"
 msgstr ""
 
