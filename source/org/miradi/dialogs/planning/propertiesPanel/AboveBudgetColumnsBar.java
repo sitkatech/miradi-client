@@ -29,6 +29,7 @@ import java.awt.Rectangle;
 import java.awt.Shape;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.util.Vector;
 
 import javax.swing.JScrollPane;
 
@@ -63,9 +64,9 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		g.setColor(getBackground());
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		DateUnit forever = new DateUnit();
-		drawColumnGroupHeader(g, findColumnGroup(getWorkUnitsColumnGroup()), EAM.text("Label|Work Units"), AppPreferences.getWorkUnitsBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroup(getExpensesColumnGroup()), EAM.text("Label|Expenses"), AppPreferences.getExpenseAmountBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroup(getBudgetTotalsColumnGroup()), EAM.text("Label|Budget Totals"), AppPreferences.getBudgetDetailsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(getWorkUnitsColumnGroups()), EAM.text("Label|Work Units"), AppPreferences.getWorkUnitsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(getExpensesColumnGroups()), EAM.text("Label|Expenses"), AppPreferences.getExpenseAmountBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(getBudgetTotalsColumnGroups()), EAM.text("Label|Budget Totals"), AppPreferences.getBudgetDetailsBackgroundColor(forever));
 	}
 
 	private void drawColumnGroupHeader(Graphics g, Rectangle groupHeaderArea, String text, Color backgroundColor)
@@ -94,13 +95,13 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		}
 	}
 
-	private Rectangle findColumnGroup(String columnGroup)
+	private Rectangle findColumnGroupBounds(Vector<String> columnGroups)
 	{
 		int startColumn = -1;
 		int startX = 0;
 		for(int tableColumn = 0; tableColumn < table.getColumnCount(); ++tableColumn)
 		{
-			if(table.getColumnGroupCode(tableColumn).equals(columnGroup))
+			if(columnGroups.contains(table.getColumnGroupCode(tableColumn)))
 			{
 				startColumn = tableColumn;
 				break;
@@ -112,7 +113,7 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 			return null;
 
 		Rectangle rect = new Rectangle(new Point(startX, getY()), new Dimension(0, getHeight()));
-		while(startColumn < table.getColumnCount() && table.getColumnGroupCode(startColumn).equals(columnGroup))
+		while(startColumn < table.getColumnCount() && columnGroups.contains(table.getColumnGroupCode(startColumn)))
 		{
 			int thisColumnWidth = table.getColumnWidth(startColumn);
 			rect.width += thisColumnWidth;
@@ -123,19 +124,33 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		return rect;
 	}
 
-	private String getWorkUnitsColumnGroup()
+	private Vector<String> getWorkUnitsColumnGroups()
 	{
-		return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
+		Vector<String> columnGroups = new Vector();
+		columnGroups.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_PROJECT_RESOURCE_WORK_UNITS_COLUMN_CODE);
+		
+		return columnGroups;
 	}
 
-	private String getExpensesColumnGroup()
+	private Vector<String> getExpensesColumnGroups()
 	{
-		return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
+		Vector<String> columnGroups = new Vector();
+		columnGroups.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_EXPENSE_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_EXPENSE_COLUMN_CODE);
+		
+		return columnGroups;
 	}
 
-	private String getBudgetTotalsColumnGroup()
+	private Vector<String> getBudgetTotalsColumnGroups()
 	{
-		return CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE;
+		Vector<String> columnGroups = new Vector();
+		columnGroups.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_ACCOUNTING_CODE_BUDGET_DETAILS_COLUMN_CODE);
+		columnGroups.add(CustomPlanningColumnsQuestion.META_FUNDING_SOURCE_BUDGET_DETAILS_COLUMN_CODE);
+		
+		return columnGroups;
 	}
 
 	private TableWithExpandableColumnsInterface table;
