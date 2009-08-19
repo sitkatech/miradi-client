@@ -28,7 +28,7 @@ import java.util.prefs.Preferences;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -62,9 +62,9 @@ public class DataLocationChooserPanel extends MiradiPanel
 		add(buttonPanel, BorderLayout.SOUTH);
 	}
 
-	private PanelTextField createReadonlyDirectoryTextField()
+	private PanelTextFieldWithSelectAllOnFocusGained createReadonlyDirectoryTextField()
 	{
-		directoryReadonlyTextField = new PanelTextField(EAM.getHomeDirectory().getAbsolutePath());
+		directoryReadonlyTextField = new PanelTextFieldWithSelectAllOnFocusGained(EAM.getHomeDirectory().getAbsolutePath());
 		directoryReadonlyTextField.setEditable(false);
 		directoryReadonlyTextField.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		directoryReadonlyTextField.setBackground(EAM.READONLY_BACKGROUND_COLOR);
@@ -110,6 +110,6 @@ public class DataLocationChooserPanel extends MiradiPanel
 	}
 	
 	private MainWindow mainWindow;
-	private PanelTextField directoryReadonlyTextField;
+	private PanelTextFieldWithSelectAllOnFocusGained directoryReadonlyTextField;
 	private static final int PADDING = 10;
 }

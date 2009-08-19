@@ -23,11 +23,11 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 
-public class ProjectNameRestrictedTextField extends PanelTextField
+public class ProjectNameRestrictedTextField extends PanelTextFieldWithSelectAllOnFocusGained
 {
 	public ProjectNameRestrictedTextField()
 	{
