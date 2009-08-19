@@ -25,6 +25,7 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -36,6 +37,20 @@ abstract public class TableWithHelperMethods extends TableWithSunBugWorkarounds
 	public TableWithHelperMethods(TableModel model)
 	{
 		super(model);
+		
+		setSurrendersFocusOnKeystroke(true);
+	}
+	
+	@Override
+	public Component prepareEditor(TableCellEditor editor, int row, int column)
+	{
+		Component c = super.prepareEditor(editor, row, column);
+		if (c instanceof JTextField)
+		{
+			((JTextField)c).selectAll();
+		}
+
+		return c;
 	}
 
 	public void setForcedPreferredScrollableViewportHeight(int viewportheight)

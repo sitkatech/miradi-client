@@ -28,11 +28,11 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
+import org.martus.swing.UiTextField;
 import org.miradi.actions.Actions;
-import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
-import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
@@ -90,7 +90,7 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 		{
 			int modelColumn = convertColumnIndexToModel(i);
 			TableColumn column = getColumnModel().getColumn(modelColumn);
-			column.setCellEditor(new SingleClickAutoSelectCellEditor(new PanelTextField()));
+			column.setCellEditor(new SingleClickAutoSelectCellEditor(new UiTextField()));
 		}
 	}
 	
