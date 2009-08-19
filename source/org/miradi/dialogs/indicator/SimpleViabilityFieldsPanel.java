@@ -33,7 +33,7 @@ public class SimpleViabilityFieldsPanel extends ObjectDataInputPanel
 		super(projectToUse, refToUse);			
 		
 		addField(createRatingChoiceField(Target.TAG_TARGET_STATUS, new StatusQuestion()));		
-		addField(createStringField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
+		addField(createMultilineField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
 		
 		updateFieldsFromProject();
 	}
