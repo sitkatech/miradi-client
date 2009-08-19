@@ -27,4 +27,20 @@ public class DataInputPanel extends DisposablePanel
 	{
 		super();
 	}
+	
+	@Override
+	public void repaint()
+	{
+		super.repaint();
+		if (getTopLevelAncestor() != null)
+			getTopLevelAncestor().repaint();
+	}
+	
+	@Override
+	public void invalidate()
+	{
+		super.invalidate();
+		if (getTopLevelAncestor() != null)
+			getTopLevelAncestor().invalidate();
+	}
 }
