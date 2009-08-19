@@ -48,7 +48,7 @@ import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelTextField;
+import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -73,7 +73,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 		final Vector<Component> buttons = createButtonComponents();
 
-		final PanelTextField oldNameField = new PanelTextField(oldName);
+		final PanelTextFieldWithSelectAllOnFocusGained oldNameField = new PanelTextFieldWithSelectAllOnFocusGained(oldName);
 		oldNameField.setEditable(false);
 
 		projectFilenameField = createTextArea();

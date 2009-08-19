@@ -26,21 +26,21 @@ import org.martus.swing.UiTextField;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class PanelTextField extends UiTextField
+public class PanelTextFieldWithSelectAllOnFocusGained extends UiTextField
 {
-	public PanelTextField()
+	public PanelTextFieldWithSelectAllOnFocusGained()
 	{
 		super();
 		initialize();
 	}
 
-	public PanelTextField(int columns)
+	public PanelTextFieldWithSelectAllOnFocusGained(int columns)
 	{
 		super(columns);
 		initialize();
 	}
 	
-	public PanelTextField(String text)
+	public PanelTextFieldWithSelectAllOnFocusGained(String text)
 	{
 		super(text);
 		initialize();
