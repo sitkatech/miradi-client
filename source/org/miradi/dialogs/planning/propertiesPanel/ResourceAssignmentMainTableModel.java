@@ -42,9 +42,6 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		if (isResourceCostPerUnitColumn(column))
 			return false;
 		
-		if (isResourceCostColumn(column))
-			return false;
-		
 		return super.isCellEditable(row, column);
 	}
 	
@@ -56,9 +53,6 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		if (isResourceCostPerUnitColumn(column))
 			return EAM.text("Cost/Unit");
 			
-		if (isResourceCostColumn(column))
-			return EAM.text("Unit");
-		
 		return super.getColumnName(column);
 	}
 	
@@ -78,9 +72,6 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
 		if (isResourceColumn(column))
 			return findProjectResource(resourceAssignment);
-		
-		if (isResourceCostColumn(column))
-			return getResourceCost(resourceAssignment);
 		
 		if (isResourceCostPerUnitColumn(column))
 			return getResourceCostPerUnit(resourceAssignment);	
@@ -128,15 +119,6 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		setValueUsingCommand(resourceAssignmentRefForRow, ResourceAssignment.TAG_RESOURCE_ID, resourceId);
 	}
 	
-	private String getResourceCost(ResourceAssignment resourceAssignment)
-	{
-		ProjectResource resource = findProjectResource(resourceAssignment);
-		if (resource == null)
-			return "";
-		
-		return resource.getCostUnitValue();
-	}
-	
 	private ProjectResource findProjectResource(ResourceAssignment resourceAssignment)
 	{
 		ORef resourceRef = resourceAssignment.getResourceRef();
@@ -161,11 +143,6 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 		return getAccountingCodeColumn() == column;
 	}
 
-	public boolean isResourceCostColumn(int column)
-	{
-		return getResourceCostColumn() == column;
-	}
-
 	public boolean isResourceCostPerUnitColumn(int column)
 	{
 		return getResourceCostPerUnitColumn() == column;
@@ -174,11 +151,6 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 	protected int getResourceCostPerUnitColumn()
 	{
 		return RESOURCE_COST_PER_UNIT_COLUMN;
-	}
-	
-	protected int getResourceCostColumn()
-	{
-		return RESOURCE_COST_COLUMN;
 	}
 	
 	private int getAccountingCodeColumn()
@@ -297,11 +269,10 @@ public class ResourceAssignmentMainTableModel extends AbstractSummaryTableModel
 
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
 	
-	private static final int COLUMN_COUNT = 5;
+	private static final int COLUMN_COUNT = 4;
 	
 	private static final int RESOURCE_COLUMM = 0;
-	private static final int RESOURCE_COST_COLUMN = 1;
-	private static final int RESOURCE_COST_PER_UNIT_COLUMN = 2;
-	private static final int ACCOUNTING_CODE_COLUMN = 3;
-	private static final int FUNDING_SOURCE_COLUMN = 4;
+	private static final int RESOURCE_COST_PER_UNIT_COLUMN = 1;
+	private static final int ACCOUNTING_CODE_COLUMN = 2;
+	private static final int FUNDING_SOURCE_COLUMN = 3;
 }
