@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-18 15:37-0500\n"
+"POT-Creation-Date: 2009-08-19 12:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -266,22 +266,6 @@ msgstr "Tidak bisa mengolah berkas: verifikasi format berkas "
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "Dialog Pilihan "
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:82
-msgid "Create Task"
-msgstr "Buat Tugas "
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:83
-msgid ""
-"This activity/method/task already has resources assigned to it. If it also "
-"contains tasks/subtasks, those tasks will be rolled up into the overall "
-"activity, leading to possible double counting. Are you sure you want to "
-"proceed?"
-msgstr ""
-"Aktivitas/metode/tugas ini sudah mendapatkan alokasi sumber dayanya. Jika "
-"juga mengandung tugas/subtugas, maka tugas-tugas tersebut akan disertakan ke "
-"dalam keseluruhan aktivitas, yang bisa menyebabkan perhitungan ganda. Anda "
-"yakin ingin melanjutkan?"
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
 msgid "Accounting Code"
@@ -32800,6 +32784,20 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Create Task"
+#~ msgstr "Buat Tugas "
+
+#~ msgid ""
+#~ "This activity/method/task already has resources assigned to it. If it "
+#~ "also contains tasks/subtasks, those tasks will be rolled up into the "
+#~ "overall activity, leading to possible double counting. Are you sure you "
+#~ "want to proceed?"
+#~ msgstr ""
+#~ "Aktivitas/metode/tugas ini sudah mendapatkan alokasi sumber dayanya. Jika "
+#~ "juga mengandung tugas/subtugas, maka tugas-tugas tersebut akan disertakan "
+#~ "ke dalam keseluruhan aktivitas, yang bisa menyebabkan perhitungan ganda. "
+#~ "Anda yakin ingin melanjutkan?"
 
 #~ msgid "TeamMember"
 #~ msgstr "Anggota Tim"

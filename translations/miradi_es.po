@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-18 15:37-0500\n"
+"POT-Creation-Date: 2009-08-19 12:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -268,21 +268,6 @@ msgstr "No se pudo procesar el archivo: verifique el formato del archivo."
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "Cuadro de diálogo de selección"
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:82
-msgid "Create Task"
-msgstr "Crear tarea"
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:83
-msgid ""
-"This activity/method/task already has resources assigned to it. If it also "
-"contains tasks/subtasks, those tasks will be rolled up into the overall "
-"activity, leading to possible double counting. Are you sure you want to "
-"proceed?"
-msgstr ""
-"Esta actividad/método/tarea ya tiene recursos asignados. Si también contiene "
-"tareas/subtareas, aquellas se acumularán en la actividad general, provocando "
-"un posible conteo doble. ¿Está seguro de que desea continuar? "
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
 msgid "Accounting Code"
@@ -32958,6 +32943,20 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Create Task"
+#~ msgstr "Crear tarea"
+
+#~ msgid ""
+#~ "This activity/method/task already has resources assigned to it. If it "
+#~ "also contains tasks/subtasks, those tasks will be rolled up into the "
+#~ "overall activity, leading to possible double counting. Are you sure you "
+#~ "want to proceed?"
+#~ msgstr ""
+#~ "Esta actividad/método/tarea ya tiene recursos asignados. Si también "
+#~ "contiene tareas/subtareas, aquellas se acumularán en la actividad "
+#~ "general, provocando un posible conteo doble. ¿Está seguro de que desea "
+#~ "continuar? "
 
 #~ msgid "TeamMember"
 #~ msgstr "Miembro del equipo "

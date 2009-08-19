@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-18 15:37-0500\n"
+"POT-Creation-Date: 2009-08-19 12:44-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -224,18 +224,6 @@ msgstr ""
 #: miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:54
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
 msgid "Selection Dialog"
-msgstr ""
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:82
-msgid "Create Task"
-msgstr ""
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:83
-msgid ""
-"This activity/method/task already has resources assigned to it. If it also "
-"contains tasks/subtasks, those tasks will be rolled up into the overall "
-"activity, leading to possible double counting. Are you sure you want to "
-"proceed?"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
