@@ -64,10 +64,10 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 	//TODO refactor this method
 	private boolean userConfirmsCreateTask(BaseObject selectedObject)
 	{
-		if (selectedObject.getType() == Indicator.getObjectType())
+		if (Indicator.is(selectedObject.getType()))
 			return true;
 		
-		if (selectedObject.getType() == Strategy.getObjectType())
+		if (Strategy.is(selectedObject.getType()))
 			return true;
 		
 		return Task.is(selectedObject.getType());
