@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionDeleteAccountingCode;
+import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 
@@ -50,6 +51,7 @@ public class AccountingCodeTreeTablePanel extends PlanningTreeTablePanel
 		return new Class[] {
 				ActionCreateAccountingCode.class, 
 				ActionDeleteAccountingCode.class,
+				ActionImportAccountingCodes.class,
 		};
 	}
 }
