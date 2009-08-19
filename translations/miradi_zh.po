@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-18 15:37-0500\n"
+"POT-Creation-Date: 2009-08-19 12:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -251,20 +251,6 @@ msgstr "无法处理文件：确认文件格式 \t\t"
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "选项对话框 \t\t"
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:82
-msgid "Create Task"
-msgstr "创建任务 \t\t"
-
-#: miradi/source/org/miradi/views/planning/doers/TreeNodeCreateTaskDoer.java:83
-msgid ""
-"This activity/method/task already has resources assigned to it. If it also "
-"contains tasks/subtasks, those tasks will be rolled up into the overall "
-"activity, leading to possible double counting. Are you sure you want to "
-"proceed?"
-msgstr ""
-"本活动/方法/任务已有分配资源。 如果它包含任务/亚任务，这些任务将归入到总体活"
-"动中，可能导致重复计算。 您是否确定要继续？"
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
 msgid "Accounting Code"
@@ -29407,6 +29393,18 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Create Task"
+#~ msgstr "创建任务 \t\t"
+
+#~ msgid ""
+#~ "This activity/method/task already has resources assigned to it. If it "
+#~ "also contains tasks/subtasks, those tasks will be rolled up into the "
+#~ "overall activity, leading to possible double counting. Are you sure you "
+#~ "want to proceed?"
+#~ msgstr ""
+#~ "本活动/方法/任务已有分配资源。 如果它包含任务/亚任务，这些任务将归入到总体"
+#~ "活动中，可能导致重复计算。 您是否确定要继续？"
 
 #~ msgid "TeamMember"
 #~ msgstr "团队成员"
