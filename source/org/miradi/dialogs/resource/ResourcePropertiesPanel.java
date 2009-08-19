@@ -30,7 +30,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ProjectResource;
 import org.miradi.project.Project;
-import org.miradi.questions.BudgetCostUnitQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.utils.CodeList;
@@ -72,7 +71,6 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 
 		addField(createDateChooserField(ProjectResource.TAG_DATE_UPDATED));
 
-		addField(createRatingChoiceField(ProjectResource.TAG_COST_UNIT, new BudgetCostUnitQuestion()));
 		addField(createCurrencyField(ProjectResource.TAG_COST_PER_UNIT));
 
 		addField(createMultilineField(ProjectResource.TAG_COMMENTS));
