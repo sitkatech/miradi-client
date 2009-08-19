@@ -37,7 +37,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
-import org.miradi.utils.ConstantButtonNames;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
@@ -71,21 +70,7 @@ public class TreeNodeCreateTaskDoer extends AbstractTreeNodeCreateTaskDoer
 		if (selectedObject.getType() == Strategy.getObjectType())
 			return true;
 		
-		if (selectedObject.getType() != Task.getObjectType())
-			return false;
-		
-		Task task = (Task) selectedObject;
-		if (task.getResourceAssignmentRefs().size() == 0)
-			return true;
-		
-		String[] buttons = {ConstantButtonNames.CANCEL, ConstantButtonNames.CREATE};
-		String title = EAM.text("Create Task");
-		String[] body = {EAM.text("This activity/method/task already has resources assigned to it. If it also " +
-								  "contains tasks/subtasks, those tasks will be rolled up into the overall activity, " +
-								  "leading to possible double counting. Are you sure you want to proceed?")};
-		
-		String userChoice = EAM.choiceDialog(title, body, buttons);
-		return userChoice.equals(ConstantButtonNames.CREATE);
+		return Task.is(selectedObject.getType());
 	}
 	
 	public void createTask(Project project, BaseObject parent, ObjectPicker picker) throws CommandFailedException, ParseException, Exception
