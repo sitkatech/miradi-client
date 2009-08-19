@@ -19,11 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.util.EventObject;
-
 import javax.swing.DefaultCellEditor;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
 public class SingleClickAutoSelectCellEditor extends DefaultCellEditor 
 {
@@ -47,27 +44,6 @@ public class SingleClickAutoSelectCellEditor extends DefaultCellEditor
 		public Object getCellEditorValue() 
 		{
 			return ((JTextField)editorComponent).getText();
-		}
-
-		public boolean isCellEditable(EventObject anEvent) 
-		{
-			boolean isEditable = super.isCellEditable(anEvent);
-			
-			if (anEvent == null)
-				return isEditable;
-			
-			if(isEditable)
-				SwingUtilities.invokeLater(new LaterRunner());
-			
-			return isEditable;
-		}
-	}
-
-	final class LaterRunner implements Runnable
-	{
-		public void run() 
-		{
-			((JTextField)editorComponent).selectAll();
 		}
 	}
 }
