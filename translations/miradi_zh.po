@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-19 12:44-0500\n"
+"POT-Creation-Date: 2009-08-19 13:26-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2389,24 +2389,24 @@ msgid "Progress"
 msgstr "进展 "
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:32
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:50
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:49
 msgid "Label|Resource"
 msgstr "资源 "
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:53
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:52
 msgid "Label|Roles (people only)"
 msgstr "角色（仅限于人） \t\t"
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
 #: miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:60
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
 msgid "Label|Phone Numbers"
 msgstr "电话号码 \t\t"
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:38
 #: miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:71
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:70
 msgid "Label|IM Address"
 msgstr "IM地址 \t\t"
 
@@ -2530,7 +2530,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:249
 #: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:81
 msgid "Not Specified"
 msgstr "未指定 \t\t"
@@ -6454,7 +6454,7 @@ msgid "Name"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:70
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:110
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:101
 msgid "An error has occured while writing assignment data."
 msgstr "编写分配数据时出现一个错误。 \t\t"
 
@@ -6488,17 +6488,13 @@ msgstr "总计 \t\t"
 msgid "(Error)"
 msgstr "（错误） \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:51
 msgid "Resource (Who)"
 msgstr "资源（何人） \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
 msgid "Cost/Unit"
 msgstr "开销/单位 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:60
-msgid "Unit"
-msgstr "单位 \t\t"
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
@@ -6876,15 +6872,15 @@ msgstr "组织属性 \t\t"
 msgid "Title|Other Orgs"
 msgstr "其它组织 \t\t"
 
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:88
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
 msgid "Title|Resource Properties"
 msgstr "资源特性"
 
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:118
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:116
 msgid "Remove Team Member"
 msgstr "去除团队成员 \t\t"
 
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:119
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:117
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -7093,8 +7089,8 @@ msgstr "姓 \t\t"
 msgid "FieldLabel|7.PhoneNumber|Office"
 msgstr "办公室 \t\t"
 
-msgid "FieldLabel|7.CostPerUnit|Cost Per Unit"
-msgstr "每单元开支 \t\t"
+msgid "FieldLabel|7.CostPerUnit|Daily Rate"
+msgstr ""
 
 msgid "FieldLabel|7.CostUnit|Unit(s)"
 msgstr "单元 \t\t"
@@ -29393,6 +29389,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Unit"
+#~ msgstr "单位 \t\t"
+
+#~ msgid "FieldLabel|7.CostPerUnit|Cost Per Unit"
+#~ msgstr "每单元开支 \t\t"
 
 #~ msgid "Create Task"
 #~ msgstr "创建任务 \t\t"

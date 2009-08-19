@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-19 12:44-0500\n"
+"POT-Creation-Date: 2009-08-19 13:26-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2505,24 +2505,24 @@ msgid "Progress"
 msgstr "Kemajuan "
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:32
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:50
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:49
 msgid "Label|Resource"
 msgstr "Sumber daya "
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:53
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:52
 msgid "Label|Roles (people only)"
 msgstr "Peran (orang saja) "
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:34
 #: miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:61
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:60
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
 msgid "Label|Phone Numbers"
 msgstr "Nomor Telepon "
 
 #: miradi/source/org/miradi/forms/objects/ResourcePropertiesForm.java:38
 #: miradi/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:72
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:71
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:70
 msgid "Label|IM Address"
 msgstr "Alamat IM "
 
@@ -2646,7 +2646,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:277
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:249
 #: miradi/source/org/miradi/dialogs/planning/treenodes/BaseObjectNotSpecifiedNode.java:81
 msgid "Not Specified"
 msgstr "Tidak Terspesifikasi "
@@ -6630,7 +6630,7 @@ msgid "Name"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:70
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:110
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:101
 msgid "An error has occured while writing assignment data."
 msgstr "Terjadi kesalahan saat menulis data alokasi. "
 
@@ -6664,17 +6664,13 @@ msgstr "Total "
 msgid "(Error)"
 msgstr "(Kesalahan) "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:51
 msgid "Resource (Who)"
 msgstr "Sumber Daya (Siapa) "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:57
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
 msgid "Cost/Unit"
 msgstr "Biaya/Unit "
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:60
-msgid "Unit"
-msgstr "Unit "
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
@@ -7060,15 +7056,15 @@ msgstr "Sifat-sifat Organisasi "
 msgid "Title|Other Orgs"
 msgstr "Organisasi Lain "
 
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:88
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
 msgid "Title|Resource Properties"
 msgstr "Sifat-sifat Sumber Daya "
 
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:118
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:116
 msgid "Remove Team Member"
 msgstr "Menghilangkan Anggota Tim "
 
-#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:119
+#: miradi/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:117
 msgid ""
 "You are removing this resource from the project team, so he/she will no "
 "longer appear in the list of Team Members in the Summary View. "
@@ -7277,8 +7273,8 @@ msgstr "Nama Belakang "
 msgid "FieldLabel|7.PhoneNumber|Office"
 msgstr "Kantor "
 
-msgid "FieldLabel|7.CostPerUnit|Cost Per Unit"
-msgstr "Biaya per Unit "
+msgid "FieldLabel|7.CostPerUnit|Daily Rate"
+msgstr ""
 
 msgid "FieldLabel|7.CostUnit|Unit(s)"
 msgstr "Unit "
@@ -32784,6 +32780,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Unit"
+#~ msgstr "Unit "
+
+#~ msgid "FieldLabel|7.CostPerUnit|Cost Per Unit"
+#~ msgstr "Biaya per Unit "
 
 #~ msgid "Create Task"
 #~ msgstr "Buat Tugas "
