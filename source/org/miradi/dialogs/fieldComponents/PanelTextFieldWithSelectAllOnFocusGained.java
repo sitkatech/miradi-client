@@ -22,42 +22,30 @@ package org.miradi.dialogs.fieldComponents;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import org.martus.swing.UiTextField;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-
-public class PanelTextFieldWithSelectAllOnFocusGained extends UiTextField
+public class PanelTextFieldWithSelectAllOnFocusGained extends PanelTextField
 {
 	public PanelTextFieldWithSelectAllOnFocusGained()
 	{
 		super();
-		initialize();
 	}
 
 	public PanelTextFieldWithSelectAllOnFocusGained(int columns)
 	{
 		super(columns);
-		initialize();
 	}
 	
 	public PanelTextFieldWithSelectAllOnFocusGained(String text)
 	{
 		super(text);
-		initialize();
 	}
 	
-	private void initialize()
+	protected void initialize()
 	{
-		setFont(getMainWindow().getUserDataPanelFont());
+		super.initialize();
+		
         addFocusListener(new TextFieldFocusHandler());
 	}
 		
-	//TODO should not use static ref here
-	public MainWindow getMainWindow()
-	{
-		return EAM.getMainWindow();
-	}
-	
 	public class TextFieldFocusHandler implements FocusListener
 	{
 		public void focusGained(FocusEvent e)
