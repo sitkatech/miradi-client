@@ -45,6 +45,7 @@ public interface ConProMiradiXmlVersion2
 	public static final String PLANNING_TEAM_COMMENT = "planning_team_comment";
 	public static final String LESSONS_LEARNED = "lessons_learned";
 	public static final String RELATED_PROJECTS = "related_projects";
+	public static final String PARENT_CHILD = "parent_child";
 	public static final String STRESSLESS_THREAT_RANKING = "stressless_threat_ranking";
 	public static final String PROJECT_THREAT_RANK = "project_threat_rank";
 	public static final String PROJECT_VIABILITY_RANK = "project_viability_rank";

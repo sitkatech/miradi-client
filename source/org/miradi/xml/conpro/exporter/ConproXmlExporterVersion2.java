@@ -821,6 +821,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeOptionalElement(out, PLANNING_TEAM_COMMENT, getProjectMetadata(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 			writeOptionalElement(out, LESSONS_LEARNED, getProjectMetadata(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 			writeOptionalElement(out, RELATED_PROJECTS, getProjectMetadata(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
+			writeOptionalElement(out, PARENT_CHILD, getTncProjectData(), TncProjectData.TAG_PARENT_CHILD);
 			
 			if (getProject().isSimpleThreatRatingMode())
 				writeOptionalElement(out, STRESSLESS_THREAT_RANKING, getSimpleOverallProjectRating());
@@ -883,9 +884,14 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	
 	private void writeTncDataCodeList(UnicodeWriter out, String parentNodeElementName, String childElementName, String tag)	throws Exception
 	{
-		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
-		TncProjectData tncProjectData = TncProjectData.find(getProject(), tncProjectDataRef);
+		TncProjectData tncProjectData = getTncProjectData();
 		writeCodeListElements(out, parentNodeElementName, childElementName, tncProjectData, tag);
+	}
+
+	private TncProjectData getTncProjectData()
+	{
+		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		return TncProjectData.find(getProject(), tncProjectDataRef);
 	}
 	
 	private String getMiradiVersionAsToken() throws Exception
