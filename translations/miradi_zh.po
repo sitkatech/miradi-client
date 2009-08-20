@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-19 13:26-0500\n"
+"POT-Creation-Date: 2009-08-20 10:47-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -7091,9 +7091,6 @@ msgstr "办公室 \t\t"
 
 msgid "FieldLabel|7.CostPerUnit|Daily Rate"
 msgstr ""
-
-msgid "FieldLabel|7.CostUnit|Unit(s)"
-msgstr "单元 \t\t"
 
 msgid "FieldLabel|7.RoleCodes|Roles"
 msgstr "角色 "
@@ -29389,6 +29386,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|7.CostUnit|Unit(s)"
+#~ msgstr "单元 \t\t"
 
 #~ msgid "Unit"
 #~ msgstr "单位 \t\t"
