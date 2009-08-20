@@ -85,6 +85,8 @@ public class WidthSetterComponent extends JComponent
 			getParent().invalidate();
 			getParent().validate();
 			getParent().repaint();
+			
+			controlled.getTopLevelAncestor().repaint();
 		}
 	}
 
