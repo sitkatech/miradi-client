@@ -138,8 +138,14 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		if (ProjectMetadata.is(baseObject))
 			return getProject().getProjectTotalCalculator().calculateProjectTotals();
 			
+		return getTotalTimePeriodCostsMap(baseObject);
+	}
+
+	protected TimePeriodCostsMap getTotalTimePeriodCostsMap(BaseObject baseObject) throws Exception
+	{
 		return baseObject.getTotalTimePeriodCostsMap();
 	}
+	
 
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;
