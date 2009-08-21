@@ -161,7 +161,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		projectTypes.add(TncProjectPlaceTypeQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
 		projectTypes.add(TncProjectPlaceTypeQuestion.NON_PLACE_BASED_PROJECT_CODE);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PARENT_CHILD, "Some Parent Child Value");
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");
 	}
 
 	public void setSingleYearProjectDate(int singleYear) throws Exception
