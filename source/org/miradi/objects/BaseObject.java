@@ -495,13 +495,18 @@ abstract public class BaseObject
 	public TimePeriodCostsMap getTotalTimePeriodCostsMap() throws Exception
 	{
 		TimePeriodCostsMap expenseAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_EXPENSE_ASSIGNMENT_REFS);
-		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
+		TimePeriodCostsMap resourceAssignmentsTimePeriodCostsMap = getResourceAssignmentsTimePeriodCostsMap();
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeAll(expenseAssignmentsTimePeriodCostsMap);
 		mergedTimePeriodCostsMap.mergeAll(resourceAssignmentsTimePeriodCostsMap);
 		
 		return mergedTimePeriodCostsMap;
+	}
+
+	public TimePeriodCostsMap getResourceAssignmentsTimePeriodCostsMap() throws Exception
+	{
+		return getTimePeriodCostsMap(TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
