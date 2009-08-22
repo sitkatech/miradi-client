@@ -201,6 +201,9 @@ public class DataUpgrader
 			
 			if (DataUpgrader.readDataVersion(getTopDirectory()) == 44)
 				MigrationsForMiradi3.upgradeToVersion45();
+			
+			if (DataUpgrader.readDataVersion(getTopDirectory()) == 45)
+				MigrationsForMiradi3.upgradeToVersion46();
 		}
 		finally 
 		{
