@@ -41,6 +41,120 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testRemoveTextBoxLinksFromEmtyProject() throws Exception
+	{
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion46();
+	}
+	
+	public void testRemoveTextBoxLinksInResultsChain() throws Exception
+	{
+		String resultsChain = "{\"SelectedTaggedObjectSetRefs\":\"\",\"Detail\":\"\",\"AssignmentIds\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[38,40,41]}\",\"TimeStampModified\":\"1250886897878\",\"DiagramFactorLinkIds\":\"{\\\"Ids\\\":[42,44]}\",\"ExpenseRefs\":\"\",\"HiddenTypes\":\"\",\"Label\":\"New Strategy\",\"Id\":37,\"ShortLabel\":\"\",\"ProgressReportRefs\":\"\"}";
+		File jsonDir = createJsonDir();
+		final int RESULTS_CHAIN_DIAGRAM_TYPE = 24;
+		int[] resultsChainDiagramIds = createAndPopulateObjectDir(jsonDir, RESULTS_CHAIN_DIAGRAM_TYPE, new String[]{resultsChain, });
+
+		verifyTextBoxFactorLinks(jsonDir, RESULTS_CHAIN_DIAGRAM_TYPE, resultsChainDiagramIds);
+	}
+	
+	public void testRemoveTextBoxLinks() throws Exception 
+	{
+		File jsonDir = createJsonDir();
+		String diagramObjectString = "{\"SelectedTaggedObjectSetRefs\":\"\",\"Detail\":\"\",\"AssignmentIds\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[38,40,41]}\",\"TimeStampModified\":\"1250886897878\",\"DiagramFactorLinkIds\":\"{\\\"Ids\\\":[42,44]}\",\"ExpenseRefs\":\"\",\"HiddenTypes\":\"\",\"Label\":\"New Strategy\",\"Id\":37,\"ShortLabel\":\"\",\"ProgressReportRefs\":\"\"}";
+		final int CONCEPTUAL_MODEL_DIAGRAM_TYPE = 19;
+		int[] conceptualModelDiagramIds = createAndPopulateObjectDir(jsonDir, CONCEPTUAL_MODEL_DIAGRAM_TYPE, new String[]{diagramObjectString,});
+		
+		verifyTextBoxFactorLinks(jsonDir, CONCEPTUAL_MODEL_DIAGRAM_TYPE, conceptualModelDiagramIds);
+	}
+
+	private void verifyTextBoxFactorLinks(File jsonDir, final int diagramObjectType, int[] diagramObjectIds) throws Exception
+	{
+		String strategy1 = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Intervention\",\"ExpenseRefs\":\"\",\"LegacyTncStrategyRanking\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"ImpactRating\":\"\",\"Status\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1250886879948\",\"ActivityIds\":\"\",\"FeasibilityRating\":\"\",\"Label\":\"New Strategy\",\"Id\":31,\"ProgressReportRefs\":\"\"}";
+		String strategy2 = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Intervention\",\"ExpenseRefs\":\"\",\"LegacyTncStrategyRanking\":\"\",\"TaxonomyCode\":\"\",\"ShortLabel\":\"\",\"ImpactRating\":\"\",\"Status\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1250886878681\",\"ActivityIds\":\"\",\"FeasibilityRating\":\"\",\"Label\":\"New Strategy\",\"Id\":25,\"ProgressReportRefs\":\"\"}";
+		String textBox = "{\"ObjectiveIds\":\"\",\"Text\":\"\",\"IndicatorIds\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"TimeStampModified\":\"1250886894475\",\"Type\":\"TextBox\",\"ExpenseRefs\":\"\",\"Label\":\"[ New Text Box ]\",\"Id\":39,\"ShortLabel\":\"\",\"ProgressReportRefs\":\"\"}";
+		
+		String strategy1DiagramFactor = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":31}\",\"FontColor\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Location\":\"{\\\"Y\\\":165,\\\"X\\\":0}\",\"FontSize\":\"\",\"BackgroundColor\":\"\",\"TimeStampModified\":\"1250886894468\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"Id\":38,\"Label\":\"\",\"ProgressReportRefs\":\"\",\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
+		String strategy2DiagramFactor = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":25}\",\"FontColor\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Location\":\"{\\\"Y\\\":165,\\\"X\\\":210}\",\"FontSize\":\"\",\"BackgroundColor\":\"\",\"TimeStampModified\":\"1250886894491\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"Id\":41,\"Label\":\"\",\"ProgressReportRefs\":\"\",\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
+		String textBoxDiagramFactor = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":26,\\\"ObjectId\\\":39}\",\"FontColor\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Location\":\"{\\\"Y\\\":180,\\\"X\\\":480}\",\"FontSize\":\"\",\"BackgroundColor\":\"\",\"TimeStampModified\":\"1250886894484\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"Id\":40,\"Label\":\"\",\"ProgressReportRefs\":\"\",\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":30,\\\"Width\\\":180}\"}";
+		
+		String fromStrategy1ToStrategy2FactorLink = "{\"AssignmentIds\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":31}\",\"TimeStampModified\":\"1250886880018\",\"ExpenseRefs\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":25}\",\"Label\":\"\",\"Id\":33,\"BidirectionalLink\":\"\",\"ProgressReportRefs\":\"\"}";
+		String fromStrategy2ToTextBoxFactorLink   = "{\"AssignmentIds\":\"\",\"FromRef\":\"{\\\"ObjectType\\\":21,\\\"ObjectId\\\":25}\",\"TimeStampModified\":\"1250886897871\",\"ExpenseRefs\":\"\",\"ToRef\":\"{\\\"ObjectType\\\":26,\\\"ObjectId\\\":39}\",\"Label\":\"\",\"Id\":43,\"BidirectionalLink\":\"\",\"ProgressReportRefs\":\"\"}";
+		
+		String fromStrategy1ToStrategy2DiagramLink = "{\"FromDiagramFactorId\":38,\"ToDiagramFactorId\":41,\"AssignmentIds\":\"\",\"TimeStampModified\":\"1250886894500\",\"GroupedDiagramLinkRefs\":\"\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":42,\"WrappedLinkId\":33,\"ProgressReportRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\"}";
+		String fromStratefy2ToTextBoxDiagramLink = "{\"FromDiagramFactorId\":41,\"ToDiagramFactorId\":40,\"AssignmentIds\":\"\",\"TimeStampModified\":\"1250886897875\",\"GroupedDiagramLinkRefs\":\"\",\"ExpenseRefs\":\"\",\"Label\":\"\",\"Id\":44,\"WrappedLinkId\":43,\"ProgressReportRefs\":\"\",\"BendPoints\":\"\",\"Color\":\"\"}";
+		
+		final int TEXTBOX_TYPE = 26;
+		int[] textBoxIds = createAndPopulateObjectDir(jsonDir, TEXTBOX_TYPE, new String[]{textBox, });
+		
+		final int STRATEGY_TYPE = 21;
+		int[] strategyIds = createAndPopulateObjectDir(jsonDir, STRATEGY_TYPE, new String[]{strategy1, strategy2, });
+		
+		final int DIAGRAM_FACTOR_TYPE = 18;
+		int[] diagramFactorIds = createAndPopulateObjectDir(jsonDir, DIAGRAM_FACTOR_TYPE, new String[]{strategy1DiagramFactor, strategy2DiagramFactor, textBoxDiagramFactor, });
+		
+		final int FACTOR_LINK_TYPE = 6;
+		int[] factorLinkIds = createAndPopulateObjectDir(jsonDir, FACTOR_LINK_TYPE, new String[]{fromStrategy1ToStrategy2FactorLink, fromStrategy2ToTextBoxFactorLink, });
+		
+		final int DIAGRAM_LINK_TYPE = 13;
+		int[] diagramLinkIds = createAndPopulateObjectDir(jsonDir, DIAGRAM_LINK_TYPE, new String[]{fromStrategy1ToStrategy2DiagramLink, fromStratefy2ToTextBoxDiagramLink, });
+		
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion46();
+		
+		
+		verifyObjectFileWasNotRemoved(jsonDir, TEXTBOX_TYPE, textBoxIds);
+		verifyObjectFileWasNotRemoved(jsonDir, STRATEGY_TYPE, strategyIds);
+		
+		verifyObjectFileWasNotRemoved(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorIds);
+		
+		verifyObjectFileWasNotRemoved(jsonDir, FACTOR_LINK_TYPE, factorLinkIds[0]);
+		verifyObjectFileWasRemoved(jsonDir, FACTOR_LINK_TYPE, factorLinkIds[1]);
+		
+		verifyObjectFileWasNotRemoved(jsonDir, DIAGRAM_LINK_TYPE, diagramLinkIds[0]);
+		verifyObjectFileWasRemoved(jsonDir, DIAGRAM_LINK_TYPE, diagramLinkIds[1]);
+		
+		verifyObjectFileWasNotRemoved(jsonDir, diagramObjectType, diagramObjectIds);
+		
+		File diagramDir = DataUpgrader.getObjectsDir(jsonDir, diagramObjectType);
+		File diagramFile = new File(diagramDir, Integer.toString(diagramObjectIds[0]));
+		EnhancedJsonObject diagramJson = new EnhancedJsonObject(readFile(diagramFile));
+		IdList diagramLinkIdList = diagramJson.getIdList(DIAGRAM_FACTOR_TYPE, "DiagramFactorLinkIds");
+		assertEquals("diagram link ids for diagram was not updated?", 1, diagramLinkIdList.size());
+	}
+
+	private void verifyObjectFileWasRemoved(File jsonDir, final int objectType, int objectId) throws Exception
+	{
+		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
+		File objectFile = new File(objectDir, Integer.toString(objectId));
+		assertFalse("object was not removed?", objectFile.exists());
+		
+		File manifestFile = new File(objectDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
+		assertFalse("manifest should not contain key?", manifestObject.has(objectId));
+	}
+	
+	private void verifyObjectFileWasNotRemoved(File jsonDir, final int objectType, int[] objectIds) throws Exception
+	{
+		for (int index = 0; index < objectIds.length; ++index)
+		{
+			verifyObjectFileWasNotRemoved(jsonDir, objectType, objectIds[index]);
+		}
+	}
+
+	private void verifyObjectFileWasNotRemoved(File jsonDir, final int objectType, int objectId) throws Exception
+	{
+		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
+		File objectFile = new File(objectDir, Integer.toString(objectId));
+		assertTrue("object was removed?", objectFile.exists());
+		
+		File manifestFile = new File(objectDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
+		assertTrue("manifest does not contain key?", manifestObject.has(objectId));
+	}
+	
 	public void testRenameCommentFieldToComments() throws Exception
 	{
 		String taskString = "{\"ObjectiveIds\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"Type\":\"Activity\",\"ExpenseRefs\":\"\",\"Details\":\"\",\"Comment\":\"\",\"SubtaskIds\":\"\",\"ShortLabel\":\"\",\"Text\":\"\",\"GoalIds\":\"\",\"TimeStampModified\":\"1245429693315\",\"KeyEcologicalAttributeIds\":\"\",\"Label\":\"\",\"Id\":32,\"ProgressReportRefs\":\"\"}";

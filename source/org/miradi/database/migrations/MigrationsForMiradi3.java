@@ -63,4 +63,10 @@ public class MigrationsForMiradi3
 		RenameCommentFieldToCommentsMigration.renameCommentFieldToComments();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 45);
 	}
+	
+	public static void upgradeToVersion46() throws Exception
+	{
+		RemoveTextBoxLinksMigration.removeTextBoxLinks();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 46);
+	}
 }
