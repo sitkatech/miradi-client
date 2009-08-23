@@ -49,6 +49,7 @@ import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTable
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.treetables.TreeTablePanelWithSixButtonColumns;
+import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -142,7 +143,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		mainTableColumnSelectionListener = new MainTableSelectionHandler();
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
-		enableSelectionListeners(treeToUse);
+		enableSelectionListeners();
 	}
 
 	@Override
@@ -479,10 +480,10 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return mainModel;
 	}
 	
-	private void enableSelectionListeners(PlanningTreeTable treeToUse)
+	private void enableSelectionListeners()
 	{
 		listenForColumnSelectionChanges(mainTable);
-		listenForTreeTableRowSelectionChanges(treeToUse);
+		listenForTreeTableRowSelectionChanges(getTree());
 	}
 	
 	private void listenForColumnSelectionChanges(JTable table)
@@ -491,7 +492,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		table.getSelectionModel().addListSelectionListener(mainTableColumnSelectionListener);
 	}
 
-	private void listenForTreeTableRowSelectionChanges(PlanningTreeTable treeToUse)
+	private void listenForTreeTableRowSelectionChanges(TreeTableWithStateSaving treeToUse)
 	{
 		treeToUse.addSelectionChangeListener(treeTableRowSelectionListener);
 	}
