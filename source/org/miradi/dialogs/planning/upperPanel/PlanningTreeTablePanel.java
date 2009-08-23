@@ -202,6 +202,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
+		if (isColumnExpandCollapseCommand(event))
+			return true;
+		
 		if(PlanningView.isRowOrColumnChangingCommand(event))
 			return true;
 		
@@ -229,6 +232,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
+	private  boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
+	}
+		
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
 	{
 		if (event.isCreateCommandForThisType(objectType))
