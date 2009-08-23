@@ -24,7 +24,9 @@ import org.miradi.actions.ActionCreateAccountingCode;
 import org.miradi.actions.ActionDeleteAccountingCode;
 import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.AccountingCode;
 
 public class AccountingCodeTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -44,6 +46,15 @@ public class AccountingCodeTreeTablePanel extends PlanningTreeTablePanel
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
 		return new AccountingCodeTreeTablePanel (mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+	}
+	
+	@Override
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	{
+		if (super.doesCommandForceRebuild(event))
+			return true;
+			
+		return wasTypeCreatedOrDeleted(event, AccountingCode.getObjectType());
 	}
 	
 	private static Class[] getButtonActions()
