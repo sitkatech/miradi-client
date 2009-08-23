@@ -66,7 +66,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.objects.ViewData;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
@@ -202,9 +201,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
-		if (isSingleLevelChoice(event))
-			return true;
-		
 		if (isColumnExpandCollapseCommand(event))
 			return true;
 		
@@ -237,11 +233,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
 	}
 	
-	public boolean isSingleLevelChoice(CommandExecutedEvent event)
-	{
-		return event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
-	}
-		
 	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
 	{
 		if (event.isCreateCommandForThisType(objectType))
