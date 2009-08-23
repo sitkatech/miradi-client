@@ -111,7 +111,7 @@ public class RemoveTextBoxLinksMigration
 			BaseId diagramLinkId = allDiagramLinkIds[index];
 			File diagramLinkJsonFile = new File(getDiagramLinkDir(getJsonDir()), Integer.toString(diagramLinkId.asInt()));
 			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(diagramLinkJsonFile);
-			BaseId wrappedId = diagramLinkJson.optId(WRAPPEX_LINK_ID);
+			BaseId wrappedId = diagramLinkJson.optId(WRAPPED_LINK_ID);
 			if (wrappedId.asInt() == factorLinkId.asInt())
 			{
 				removeDiagramLinkFromDiagramObject(diagramLinkId);
@@ -182,7 +182,7 @@ public class RemoveTextBoxLinksMigration
 	private static final String FROM_REF = "FromRef";
 	private static final String TO_REF = "ToRef";
 	private static final String DIAGRAM_FACTOR_LINK_IDS = "DiagramFactorLinkIds";
-	private static final String WRAPPEX_LINK_ID = "WrappedLinkId";
+	private static final String WRAPPED_LINK_ID = "WrappedLinkId";
 	
 	private static final int FACTOR_LINK_TYPE = 6;
 	private static final int DIAGRAM_LINK_TYPE = 13;
