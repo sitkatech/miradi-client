@@ -63,7 +63,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -203,11 +202,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 
-	private boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
-		if(didAffectType(event, ProjectResource.getObjectType()))
-			return true;
-		
 		if(didAffectType(event, FundingSource.getObjectType()))
 			return true;
 		
@@ -241,7 +237,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
-	private boolean didAffectType(CommandExecutedEvent event, int objectType)
+	protected boolean didAffectType(CommandExecutedEvent event, int objectType)
 	{
 		if (event.isCreateCommandForThisType(objectType))
 			return true;
