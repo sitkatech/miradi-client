@@ -23,7 +23,9 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.FundingSource;
 
 public class FundingSourceTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -43,6 +45,15 @@ public class FundingSourceTreeTablePanel extends PlanningTreeTablePanel
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
 		return new FundingSourceTreeTablePanel (mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+	}
+	
+	@Override
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	{
+		if (super.doesCommandForceRebuild(event))
+			return true;
+			
+		return wasTypeCreatedOrDeleted(event, FundingSource.getObjectType());
 	}
 	
 	private static Class[] getButtonActions()
