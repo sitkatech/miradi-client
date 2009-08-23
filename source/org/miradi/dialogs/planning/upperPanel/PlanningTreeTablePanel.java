@@ -61,7 +61,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
-import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
@@ -209,9 +208,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (isColumnExpandCollapseCommand(event))
 			return true;
 		
-		if(isCustomConfigurationCommand(event))
-			return true;
-		
 		if(didAffectResourceAssignmentsAndExpenseAssignments(event))
 			return true;
 		
@@ -236,20 +232,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
-	private boolean isCustomConfigurationCommand(CommandExecutedEvent event)
-	{
-		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
-			return true;
-		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_COL_CONFIGURATION))
-			return true;
-		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
-			return true;
-				
-		return false;
-	}
-		
 	private  boolean isColumnExpandCollapseCommand(CommandExecutedEvent event)
 	{
 		return event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA);
