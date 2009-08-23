@@ -56,10 +56,7 @@ import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.PlanningViewConfiguration;
-import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
@@ -213,20 +210,6 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionRenamePlanningViewConfiguration.class, new RenamePlanningViewConfigurationDoer());
 		addDoerToMap(ActionPlanningRowsEditor.class, new PlanningRowsEditorDoer());
 		addDoerToMap(ActionPlanningColumnsEditor.class, new PlanningColumnsEditorDoer());
-	}
-	
-	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
-	{
-		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
-			return true;
-		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_COL_CONFIGURATION))
-			return true;
-		
-		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
-			return true;
-				
-		return false;
 	}
 	
 	public HashMap<String, PlanningTreeManagementPanel> getManagementPanelMap()
