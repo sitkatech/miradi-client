@@ -35,7 +35,7 @@ public class RemoveTextBoxLinksMigration
 {
 	public static void removeTextBoxLinks() throws Exception
 	{
-		File jsonDir = DataUpgrader.getTopJsonDir();
+		File jsonDir = getJsonDir();
 		File factorLinkDir = DataUpgrader.getObjectsDir(jsonDir, FACTOR_LINK_TYPE);
 		if (! factorLinkDir.exists())
 			return;
@@ -44,12 +44,10 @@ public class RemoveTextBoxLinksMigration
 		if (! factorLinkManifestFile.exists())
 			return;
 		
-		File diagramLinkDir = DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_LINK_TYPE);
-		if (! diagramLinkDir.exists())
+		if (! getDiagramLinkDir(jsonDir).exists())
 			return;
 		
-		File diagramLinkManifestFile = new File(diagramLinkDir, MANIFEST_FILE_NAME);
-		if (! diagramLinkManifestFile.exists())
+		if (! getDiagramLinkManifestFile(jsonDir).exists())
 			return;
 		
 		File textBoxDir = DataUpgrader.getObjectsDir(jsonDir, TEXTBOX_TYPE);
@@ -69,7 +67,7 @@ public class RemoveTextBoxLinksMigration
 			return;
 		
 		ObjectManifest factorLinkManifestObject = new ObjectManifest(JSONFile.read(factorLinkManifestFile));
-		ObjectManifest diagramLinkManifestObject = new ObjectManifest(JSONFile.read(diagramLinkManifestFile));
+		ObjectManifest diagramLinkManifestObject = new ObjectManifest(JSONFile.read(getDiagramLinkManifestFile(jsonDir)));
 		BaseId[] factorLinkIds = factorLinkManifestObject.getAllKeys();
 		Vector<BaseId> factorLinkIdsToRemove = new Vector();
 		Vector<BaseId> diagramLinkIdsToRemove = new Vector();
@@ -83,12 +81,12 @@ public class RemoveTextBoxLinksMigration
 			if (fromRef.getObjectType() == TEXTBOX_TYPE || toRef.getObjectType() == TEXTBOX_TYPE)
 			{
 				factorLinkIdsToRemove.add(factorLinkId);
-				diagramLinkIdsToRemove.addAll(deleteOwningDiagramLinkIds(factorLinkId, diagramLinkDir, diagramLinkManifestObject.getAllKeys()));
+				diagramLinkIdsToRemove.addAll(deleteOwningDiagramLinkIds(factorLinkId));
 			}
 		}
 		
 		removeObjectFiles(factorLinkDir, factorLinkManifestObject, factorLinkIdsToRemove);
-		removeObjectFiles(diagramLinkDir, diagramLinkManifestObject, diagramLinkIdsToRemove);
+		removeObjectFiles(getDiagramLinkDir(jsonDir), diagramLinkManifestObject, diagramLinkIdsToRemove);
 	}
 
 	private static void removeObjectFiles(File objectDir, ObjectManifest objectManifestObject, Vector<BaseId> idsToRemove) throws Exception
@@ -103,13 +101,15 @@ public class RemoveTextBoxLinksMigration
 		writeManifest(objectDir, objectManifestObject);
 	}
 	
-	private static Vector<BaseId> deleteOwningDiagramLinkIds(BaseId factorLinkId, File diagramLinkDir, BaseId[] allDiagramLinkIds) throws Exception
+	private static Vector<BaseId> deleteOwningDiagramLinkIds(BaseId factorLinkId) throws Exception
 	{
+		ObjectManifest diagramLinkManifestObject = new ObjectManifest(JSONFile.read(getDiagramLinkManifestFile(getJsonDir())));
+		BaseId[] allDiagramLinkIds = diagramLinkManifestObject.getAllKeys();
 		Vector<BaseId> diagramLinkIdsToRemove = new Vector();
 		for (int index = 0; index < allDiagramLinkIds.length; ++index)
 		{
 			BaseId diagramLinkId = allDiagramLinkIds[index];
-			File diagramLinkJsonFile = new File(diagramLinkDir, Integer.toString(diagramLinkId.asInt()));
+			File diagramLinkJsonFile = new File(getDiagramLinkDir(getJsonDir()), Integer.toString(diagramLinkId.asInt()));
 			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(diagramLinkJsonFile);
 			BaseId wrappedId = diagramLinkJson.optId(WRAPPEX_LINK_ID);
 			if (wrappedId.asInt() == factorLinkId.asInt())
@@ -130,7 +130,7 @@ public class RemoveTextBoxLinksMigration
 
 	private static void removeDiagramLinkFromDiagramObject(int diagramObjectType, BaseId diagramLinkIdToRemove) throws Exception
 	{
-		File jsonDir = DataUpgrader.getTopJsonDir();
+		File jsonDir = getJsonDir();
 		File diagramObjectDir = DataUpgrader.getObjectsDir(jsonDir, diagramObjectType);
 		if (! diagramObjectDir.exists())
 			return;
@@ -161,6 +161,21 @@ public class RemoveTextBoxLinksMigration
 	{
 		File manifestFile = new File(objectDir, MANIFEST_FILE_NAME);
 		DataUpgrader.writeJson(manifestFile, diagramLinkManifestObject.toJson());
+	}
+	
+	private static File getJsonDir()
+	{
+		return DataUpgrader.getTopJsonDir();
+	}
+
+	private static File getDiagramLinkDir(File jsonDir)
+	{
+		return DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_LINK_TYPE);
+	}
+	
+	private static File getDiagramLinkManifestFile(File jsonDir)
+	{
+		return new File(getDiagramLinkDir(jsonDir), MANIFEST_FILE_NAME);
 	}
 
 	private static final String MANIFEST_FILE_NAME = "manifest";
