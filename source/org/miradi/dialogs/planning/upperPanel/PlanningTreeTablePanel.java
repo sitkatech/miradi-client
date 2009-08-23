@@ -204,10 +204,10 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
-		if(didAffectType(event, FundingSource.getObjectType()))
+		if(wasTypeCreatedOrDeleted(event, FundingSource.getObjectType()))
 			return true;
 		
-		if(didAffectType(event, AccountingCode.getObjectType()))
+		if(wasTypeCreatedOrDeleted(event, AccountingCode.getObjectType()))
 			return true;
 				
 		if(PlanningView.isRowOrColumnChangingCommand(event))
@@ -237,7 +237,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
-	protected boolean didAffectType(CommandExecutedEvent event, int objectType)
+	protected boolean wasTypeCreatedOrDeleted(CommandExecutedEvent event, int objectType)
 	{
 		if (event.isCreateCommandForThisType(objectType))
 			return true;

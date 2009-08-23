@@ -54,7 +54,7 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 		if (!superDoesCommandForceRebuild)
 			return superDoesCommandForceRebuild;
 		
-		if(didAffectType(event, ProjectResource.getObjectType()))
+		if(wasTypeCreatedOrDeleted(event, ProjectResource.getObjectType()))
 			return true;
 		
 		return false;
