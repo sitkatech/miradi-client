@@ -140,7 +140,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
 		enableSelectionListeners();
-		enableSectionSwitchForFullRebuild();
+		enableSectionSwitch();
 	}
 
 	@Override
@@ -344,14 +344,14 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private void rebuildEntireTreeAndTable() throws Exception
 	{
-		disableSectionSwitchForFullRebuild();
+		disableSectionSwitchDuringFullRebuild();
 		try
 		{
 			rebuildEntireTreeTable();
 		}
 		finally
 		{
-			enableSectionSwitchForFullRebuild();
+			enableSectionSwitch();
 		}
 	}
 
@@ -491,12 +491,12 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return !disableSideTabSwitching;
 	}
 	
-	private void disableSectionSwitchForFullRebuild()
+	private void disableSectionSwitchDuringFullRebuild()
 	{
 		disableSideTabSwitching = false;
 	}
 	
-	private void enableSectionSwitchForFullRebuild()
+	private void enableSectionSwitch()
 	{
 		disableSideTabSwitching = true;
 	}
@@ -614,7 +614,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		public void run()
 		{
-			disableSectionSwitchForFullRebuild();
+			disableSectionSwitchDuringFullRebuild();
 			try
 			{
 				table.getSelectionModel().setSelectionInterval(row, row);
@@ -622,7 +622,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			}
 			finally 
 			{
-				enableSectionSwitchForFullRebuild();
+				enableSectionSwitch();
 			}
 		}
 		
