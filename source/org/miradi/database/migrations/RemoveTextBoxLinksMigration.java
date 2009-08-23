@@ -78,8 +78,8 @@ public class RemoveTextBoxLinksMigration
 			BaseId factorLinkId = factorLinkIds[index];
 			File factorLinkJsonFile = new File(factorLinkDir, Integer.toString(factorLinkId.asInt()));
 			EnhancedJsonObject factorLinkJson = DataUpgrader.readFile(factorLinkJsonFile);
-			ORef fromRef = factorLinkJson.getRef(FROM_REF);
-			ORef toRef = factorLinkJson.getRef(TO_REF);
+			ORef fromRef = factorLinkJson.optRef(FROM_REF);
+			ORef toRef = factorLinkJson.optRef(TO_REF);
 			if (fromRef.getObjectType() == TEXTBOX_TYPE || toRef.getObjectType() == TEXTBOX_TYPE)
 			{
 				factorLinkIdsToRemove.add(factorLinkId);
@@ -111,7 +111,7 @@ public class RemoveTextBoxLinksMigration
 			BaseId diagramLinkId = allDiagramLinkIds[index];
 			File diagramLinkJsonFile = new File(diagramLinkDir, Integer.toString(diagramLinkId.asInt()));
 			EnhancedJsonObject diagramLinkJson = DataUpgrader.readFile(diagramLinkJsonFile);
-			BaseId wrappedId = diagramLinkJson.getId(WRAPPEX_LINK_ID);
+			BaseId wrappedId = diagramLinkJson.optId(WRAPPEX_LINK_ID);
 			if (wrappedId.asInt() == factorLinkId.asInt())
 			{
 				removeDiagramLinkFromDiagramObject(diagramLinkId);
@@ -146,7 +146,7 @@ public class RemoveTextBoxLinksMigration
 			BaseId diagramObjectId = diagramObjectIds[index];
 			File diagramObjectJsonFile = new File(diagramObjectDir, Integer.toString(diagramObjectId.asInt()));
 			EnhancedJsonObject diagramObjectJson = DataUpgrader.readFile(diagramObjectJsonFile);
-			IdList diagramLinkIds = diagramObjectJson.getIdList(DIAGRAM_LINK_TYPE, DIAGRAM_FACTOR_LINK_IDS);
+			IdList diagramLinkIds = diagramObjectJson.optIdList(DIAGRAM_LINK_TYPE, DIAGRAM_FACTOR_LINK_IDS);
 			if (diagramLinkIds.contains(diagramLinkIdToRemove))
 			{
 				diagramLinkIds.removeId(diagramLinkIdToRemove);
