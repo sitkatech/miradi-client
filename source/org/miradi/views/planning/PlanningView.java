@@ -52,7 +52,6 @@ import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
 import org.miradi.actions.ActionTreeShareActivity;
 import org.miradi.actions.ActionTreeShareMethod;
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
@@ -218,24 +217,15 @@ public class PlanningView extends TabbedView
 	
 	public static boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
 	{
-		if (! event.isSetDataCommand())
-			return false;
-	
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		if(setCommand.getObjectType() == ViewData.getObjectType())
-		{
-			if(setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
-				return true;
-		}
+		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
+			return true;
 		
-		if(setCommand.getObjectType() == PlanningViewConfiguration.getObjectType())
-		{
-			if(setCommand.getFieldTag().equals(PlanningViewConfiguration.TAG_COL_CONFIGURATION))
-				return true;
-			if(setCommand.getFieldTag().equals(PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
-				return true;
-		}
+		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_COL_CONFIGURATION))
+			return true;
 		
+		if(event.isSetDataCommandWithThisTypeAndTag(PlanningViewConfiguration.getObjectType(), PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
+			return true;
+				
 		return false;
 	}
 	
