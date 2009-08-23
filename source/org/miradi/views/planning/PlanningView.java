@@ -224,8 +224,6 @@ public class PlanningView extends TabbedView
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		if(setCommand.getObjectType() == ViewData.getObjectType())
 		{
-			if(setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE))
-				return true;
 			if(setCommand.getFieldTag().equals(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
 				return true;
 		}
