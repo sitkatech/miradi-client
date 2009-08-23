@@ -23,8 +23,10 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningViewObjectsOnlyDropDownPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.ViewData;
 
 public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 {
@@ -50,6 +52,20 @@ public class ObjectsOnlyPlanningTreeTablePanel extends PlanningTreeTablePanel
 		return new ObjectsOnlyPlanningTreeTablePanel(mainWindowToUse, treeTable, model, rowColumnProvider);
 	}
 	
+	@Override
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	{
+		if (super.doesCommandForceRebuild(event))
+			return true;
+			
+		return isSingleLevelChoice(event);
+	}
+	
+	public boolean isSingleLevelChoice(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_SINGLE_LEVEL_CHOICE);
+	}
+		
 	@Override
 	public void dispose()
 	{
