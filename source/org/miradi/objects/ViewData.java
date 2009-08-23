@@ -151,7 +151,6 @@ public class ViewData extends BaseObject
 		currentResultsChainRef = new ORefData(TAG_CURRENT_RESULTS_CHAIN_REF);
 		currentConceptualModelRef = new ORefData(TAG_CURRENT_CONCEPTUAL_MODEL_REF);
 		diagramHiddenTypes = new CodeListData(TAG_DIAGRAM_HIDDEN_TYPES, getQuestion(InternalQuestionWithoutValues.class));
-		planningStyleChoice = new StringData(TAG_PLANNING_STYLE_CHOICE);
 		planningSingleLevelChoice = new StringData(TAG_PLANNING_SINGLE_LEVEL_CHOICE);
 		planningCustomChoiceRef = new ORefData(TAG_PLANNING_CUSTOM_PLAN_REF);
 		currentWizardStep = new StringData(TAG_CURRENT_WIZARD_STEP);
@@ -163,7 +162,6 @@ public class ViewData extends BaseObject
 		addPresentationDataField(TAG_CURRENT_TAB, currentTab);
 		addPresentationDataField(TAG_DIAGRAM_HIDDEN_TYPES, diagramHiddenTypes);
 		
-		addPresentationDataField(TAG_PLANNING_STYLE_CHOICE, planningStyleChoice);
 		addPresentationDataField(TAG_PLANNING_SINGLE_LEVEL_CHOICE, planningSingleLevelChoice);
 		addPresentationDataField(TAG_PLANNING_CUSTOM_PLAN_REF, planningCustomChoiceRef);
 		addPresentationDataField(TAG_CURRENT_WIZARD_STEP, currentWizardStep);
@@ -176,7 +174,6 @@ public class ViewData extends BaseObject
 	public static final String TAG_CURRENT_TAB = "CurrentTab";
 	public static final String TAG_DIAGRAM_HIDDEN_TYPES = "DiagramHiddenTypes";
 	
-	public static final String TAG_PLANNING_STYLE_CHOICE = "PlanningStyleChoice";
 	public static final String TAG_PLANNING_SINGLE_LEVEL_CHOICE = "SingleLevelChoice";
 	public static final String TAG_PLANNING_CUSTOM_PLAN_REF = "CustomPlanRef";
 	public static final String TAG_CURRENT_WIZARD_STEP = "CurrentWizardStep";
@@ -192,7 +189,6 @@ public class ViewData extends BaseObject
 	private ORefData currentResultsChainRef;
 	private ORefData currentConceptualModelRef;
 	private CodeListData diagramHiddenTypes;
-	private StringData planningStyleChoice;
 	private StringData planningSingleLevelChoice;
 	private ORefData planningCustomChoiceRef;
 	private StringData currentWizardStep;
