@@ -60,7 +60,6 @@ import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.PlanningViewConfiguration;
-import org.miradi.objects.TableSettings;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
@@ -239,11 +238,6 @@ public class PlanningView extends TabbedView
 				return true;
 			if(setCommand.getFieldTag().equals(PlanningViewConfiguration.TAG_ROW_CONFIGURATION))
 				return true;
-		}
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(TableSettings.getObjectType(), TableSettings.TAG_DATE_UNIT_LIST_DATA))
-		{
-			return true;
 		}
 		
 		return false;
