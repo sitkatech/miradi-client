@@ -55,7 +55,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
@@ -207,9 +206,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if(wasTypeCreatedOrDeleted(event, FundingSource.getObjectType()))
 			return true;
 		
-		if(wasTypeCreatedOrDeleted(event, AccountingCode.getObjectType()))
-			return true;
-				
 		if(PlanningView.isRowOrColumnChangingCommand(event))
 			return true;
 		
