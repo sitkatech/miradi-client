@@ -57,7 +57,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FundingSource;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -203,9 +202,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
-		if(wasTypeCreatedOrDeleted(event, FundingSource.getObjectType()))
-			return true;
-		
 		if(PlanningView.isRowOrColumnChangingCommand(event))
 			return true;
 		
