@@ -482,7 +482,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private void enableSelectionListeners()
 	{
-		listenForColumnSelectionChanges(mainTable);
+		listenForColumnSelectionChanges(getMainTable());
 		listenForTreeTableRowSelectionChanges(getTree());
 	}
 	
