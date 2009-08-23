@@ -31,18 +31,15 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.PoolWithIdAssigner;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.FactorLink;
-import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.utils.EnhancedJsonObject;
 
@@ -73,10 +70,7 @@ public class ProjectRepairer
 			repairDiagramObjectsReferringToNonExistantTags();
 		
 		if (ProjectServer.DATA_VERSION <= DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED)
-			repairAssignmentsReferringToNonExistantData();
-		
-		if (ProjectServer.DATA_VERSION <= DATA_VERSION_WITH_POSSIBLE_LINKED_TEXT_BOXES)
-			repairLinkedTextBoxes();
+			repairAssignmentsReferringToNonExistantData();	
 	}
 	 
 	private void repairUnsnappedNodes()
@@ -318,45 +312,6 @@ public class ProjectRepairer
 			getProject().setObjectData(assignment.getRef(), tagToClear, BaseId.INVALID.toString());
 	}
 	
-	public void repairLinkedTextBoxes() throws Exception
-	{
-		ORefList diagramLinkRefs = getProject().getDiagramFactorLinkPool().getORefList();
-		for (int index = 0; index < diagramLinkRefs.size(); ++index)
-		{
-			DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRefs.get(index));
-			DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
-			DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
-			if (TextBox.is(fromDiagramFactor.getWrappedORef()) || TextBox.is(toDiagramFactor.getWrappedORef()))
-			{
-				removeFromAllDiagramObjects(diagramLink);
-				ORef refForDiagramLinkToBeDeleted = diagramLink.getRef();
-				getProject().deleteObject(diagramLink);
-				FactorLink factorLink = diagramLink.getWrappedFactorLink();
-				
-				EAM.logDebug("A diagram link to a text box was deleted " + refForDiagramLinkToBeDeleted);
-				if (factorLink != null)
-					getProject().deleteObject(factorLink);
-			}
-		}
-	}
-
-	private void removeFromAllDiagramObjects(DiagramLink diagramLink) throws Exception
-	{
-		ORefList diagramObjectReferrerRefs = diagramLink.findObjectsThatReferToUs(ConceptualModelDiagram.getObjectType());
-		diagramObjectReferrerRefs.addAll(diagramLink.findObjectsThatReferToUs(ResultsChainDiagram.getObjectType()));
-		for (int index = 0; index < diagramObjectReferrerRefs.size(); ++index)
-		{
-			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectReferrerRefs.get(index));
-			ORefList diagramLinkRefs = new ORefList(diagramObject.getAllDiagramLinkRefs());
-			if (diagramLinkRefs.contains(diagramLink.getRef()))
-			{
-				diagramLinkRefs.remove(diagramLink.getRef());
-				IdList diagramLinkIds = diagramLinkRefs.convertToIdList(DiagramLink.getObjectType());
-				getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
-			}
-		}
-	}
-
 	private Project getProject()
 	{
 		return project;
@@ -365,5 +320,4 @@ public class ProjectRepairer
 	private Project project;
 	
 	private static final int DATA_VERSION_NON_EXISTANT_TAG_REFS_IN_DIAGRAM_OBJECT_FIXED = 36;
-	private static final int DATA_VERSION_WITH_POSSIBLE_LINKED_TEXT_BOXES = 36;
 }
