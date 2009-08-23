@@ -150,10 +150,9 @@ public class RemoveTextBoxLinksMigration
 			if (diagramLinkIds.contains(diagramLinkIdToRemove))
 			{
 				diagramLinkIds.removeId(diagramLinkIdToRemove);
+				diagramObjectJson.put(DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
+				DataUpgrader.writeJson(diagramObjectJsonFile, diagramObjectJson);
 			}
-			
-			diagramObjectJson.put(DIAGRAM_FACTOR_LINK_IDS, diagramLinkIds.toString());
-			DataUpgrader.writeJson(diagramObjectJsonFile, diagramObjectJson);
 		}
 	}
 	
