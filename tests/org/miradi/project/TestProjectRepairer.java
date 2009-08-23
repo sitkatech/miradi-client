@@ -32,17 +32,12 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
 import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TestProjectRepairer extends TestCaseWithProject
@@ -190,38 +185,5 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		assertTrue("assignment refers to valid accounting code?", assignment.getAccountingCodeRef().isInvalid());
 		assertTrue("assignment refers to valid funding source?", assignment.getFundingSourceRef().isInvalid());
-	}
-	
-	public void testRepairLinkedTextBoxes() throws Exception
-	{
-		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor textBox = getProject().createDiagramFactorAndAddToDiagram(TextBox.getObjectType());
-		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor causeInGroupBox = getProject().createDiagramFactorAndAddToDiagram(Cause.getObjectType());
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(Target.getObjectType());
-		getProject().createDiagramLinkAndAddToDiagram(cause1, textBox);
-		getProject().createDiagramLinkAndAddToDiagram(textBox, cause2);
-		getProject().createDiagramLinkAndAddToDiagram(cause2, target);
-		
-		DiagramFactor groupBox = getProject().createDiagramFactorAndAddToDiagram(GroupBox.getObjectType());
-		groupBox.setData(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, new ORefList(causeInGroupBox).toString());
-		ORef groupBoxDiagramLinkRef = getProject().createDiagramLinkAndAddToDiagram(groupBox, textBox);
-		DiagramLink groupBoxDiagramLink  = DiagramLink.find(getProject(), groupBoxDiagramLinkRef);
-		assertTrue("group box link was not created?", groupBoxDiagramLink.isGroupBoxLink());
-		
-		assertEquals("more than 3 factor links exist?", 3, getProject().getFactorLinkPool().getRefList().size());
-		assertEquals("more than 4 diagram links exist?", 4, getProject().getDiagramFactorLinkPool().getRefList().size());
-		
-		ProjectRepairer repairer = new ProjectRepairer(getProject());
-		repairer.repairLinkedTextBoxes();
-		
-		ORefList remainingFactorLinkRefs = getProject().getFactorLinkPool().getRefList();
-		assertEquals("FactorLinks were not deleted", 1, remainingFactorLinkRefs.size());
-		assertEquals("DiagramLinks were not deleted?", 1, getProject().getDiagramFactorLinkPool().getRefList().size());
-		
-		ORef factorLinkRef = remainingFactorLinkRefs.getRefForType(FactorLink.getObjectType());
-		FactorLink factorLink = FactorLink.find(getProject(), factorLinkRef);
-		assertEquals("from is not correct ref?", cause2.getWrappedORef(), factorLink.getFromFactorRef());
-		assertEquals("to is not correct ref?", target.getWrappedORef(), factorLink.getToFactorRef());
 	}	
 }
