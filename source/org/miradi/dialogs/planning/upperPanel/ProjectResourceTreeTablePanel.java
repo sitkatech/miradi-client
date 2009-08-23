@@ -51,7 +51,7 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
 		boolean superDoesCommandForceRebuild = super.doesCommandForceRebuild(event);
-		if (!superDoesCommandForceRebuild)
+		if (superDoesCommandForceRebuild)
 			return superDoesCommandForceRebuild;
 		
 		return wasTypeCreatedOrDeleted(event, ProjectResource.getObjectType());
