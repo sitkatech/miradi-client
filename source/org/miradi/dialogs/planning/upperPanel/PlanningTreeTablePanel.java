@@ -138,6 +138,9 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		add(rightPanel, BorderLayout.CENTER);
 		
 		rebuildEntireTreeTable();
+	
+		mainTableColumnSelectionListener = new MainTableSelectionHandler();
+		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
 		listenForColumnSelectionChanges(mainTable);
 		listenForTreeTableRowSelectionChanges(treeToUse);
@@ -479,16 +482,14 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private void listenForColumnSelectionChanges(JTable table)
 	{
-		MainTableSelectionHandler columnSelectionHandler = new MainTableSelectionHandler();
-		table.getColumnModel().addColumnModelListener(columnSelectionHandler);
-		table.getSelectionModel().addListSelectionListener(columnSelectionHandler);
+		table.getColumnModel().addColumnModelListener(mainTableColumnSelectionListener);
+		table.getSelectionModel().addListSelectionListener(mainTableColumnSelectionListener);
 	}
 
 	private void listenForTreeTableRowSelectionChanges(PlanningTreeTable treeToUse)
 	{
-		treeToUse.addSelectionChangeListener(new TreeTableRowSelectionHandler());
+		treeToUse.addSelectionChangeListener(treeTableRowSelectionListener);
 	}
-	
 	
 	private void selectSectionForTag(String selectedColumnTag)
 	{
@@ -608,4 +609,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
 	private ProjectResourceFilterStatusPanel filterStatusPanel;
+	
+	private MainTableSelectionHandler mainTableColumnSelectionListener;
+	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
 }
