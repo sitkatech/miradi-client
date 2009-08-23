@@ -142,8 +142,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		mainTableColumnSelectionListener = new MainTableSelectionHandler();
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
-		listenForColumnSelectionChanges(mainTable);
-		listenForTreeTableRowSelectionChanges(treeToUse);
+		enableSelectionListeners(treeToUse);
 	}
 
 	@Override
@@ -478,6 +477,12 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	protected PlanningViewMainTableModel getMainModel()
 	{
 		return mainModel;
+	}
+	
+	private void enableSelectionListeners(PlanningTreeTable treeToUse)
+	{
+		listenForColumnSelectionChanges(mainTable);
+		listenForTreeTableRowSelectionChanges(treeToUse);
 	}
 	
 	private void listenForColumnSelectionChanges(JTable table)
