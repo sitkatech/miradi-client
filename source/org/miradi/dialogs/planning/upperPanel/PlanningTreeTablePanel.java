@@ -209,7 +209,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (isColumnExpandCollapseCommand(event))
 			return true;
 		
-		if(isRowOrColumnChangingCommand(event))
+		if(isCustomConfigurationCommand(event))
 			return true;
 		
 		if(didAffectResourceAssignmentsAndExpenseAssignments(event))
@@ -236,7 +236,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
-	private boolean isRowOrColumnChangingCommand(CommandExecutedEvent event)
+	private boolean isCustomConfigurationCommand(CommandExecutedEvent event)
 	{
 		if(event.isSetDataCommandWithThisTypeAndTag(ViewData.getObjectType(), ViewData.TAG_PLANNING_CUSTOM_PLAN_REF))
 			return true;
