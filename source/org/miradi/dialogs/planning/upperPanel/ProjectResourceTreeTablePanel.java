@@ -23,7 +23,9 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.actions.ActionCreateResource;
 import org.miradi.actions.ActionDeleteResource;
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.ProjectResource;
 
 public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 {
@@ -43,6 +45,19 @@ public class ProjectResourceTreeTablePanel  extends PlanningTreeTablePanel
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 
 		return new ProjectResourceTreeTablePanel (mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+	}
+	
+	@Override
+	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
+	{
+		boolean superDoesCommandForceRebuild = super.doesCommandForceRebuild(event);
+		if (!superDoesCommandForceRebuild)
+			return superDoesCommandForceRebuild;
+		
+		if(didAffectType(event, ProjectResource.getObjectType()))
+			return true;
+		
+		return false;
 	}
 	
 	private static Class[] getButtonActions()
