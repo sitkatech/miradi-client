@@ -134,12 +134,13 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		add(leftPanel, BorderLayout.BEFORE_LINE_BEGINS);
 		add(rightPanel, BorderLayout.CENTER);
 		
-		rebuildEntireTreeTable();
+		rebuildEntireTreeAndTable();
 	
 		mainTableColumnSelectionListener = new MainTableSelectionHandler();
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
 		enableSelectionListeners();
+		enableSideTabSwitching();
 	}
 
 	@Override
@@ -155,7 +156,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		try
 		{		
 			if (doesCommandForceRebuild(event))
-				rebuildEntireTreeTable();
+				rebuildEntireTreeAndTable();
 			
 			if(doesAffectTableRowHeight(event))
 				mainTable.updateAutomaticRowHeights();
@@ -341,6 +342,19 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return false;
 	}
 	
+	private void rebuildEntireTreeAndTable() throws Exception
+	{
+		disableSideTabSwitching();
+		try
+		{
+			rebuildEntireTreeTable();
+		}
+		finally
+		{
+			enableSideTabSwitching();
+		}
+	}
+
 	private void rebuildEntireTreeTable() throws Exception
 	{
 		int selectedRow = tree.getSelectionModel().getAnchorSelectionIndex();
@@ -373,7 +387,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 		filterStatusPanel.updateStatusLabel();
 	
-		selectObjectAfterSwingClearsItDueToTreeStructureChange(mainTable, selectedRow, selectedColumn);
+		selectObjectAfterSwingClearsItDueToTreeStructureChange(getMainTable(), selectedRow, selectedColumn);
 	}
 	
 	protected void updateResourceFilter() throws Exception
@@ -472,6 +486,21 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return mainModel;
 	}
 	
+	private boolean isSideTabSwitchingDisabled()
+	{
+		return !disableSideTabSwitching;
+	}
+	
+	private void disableSideTabSwitching()
+	{
+		disableSideTabSwitching = false;
+	}
+	
+	private void enableSideTabSwitching()
+	{
+		disableSideTabSwitching = true;
+	}
+	
 	private void enableSelectionListeners()
 	{
 		listenForColumnSelectionChanges(getMainTable());
@@ -491,8 +520,13 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private void selectSectionForTag(String selectedColumnTag)
 	{
-		if (getPropertiesPanel() != null)
-			getPropertiesPanel().selectSectionForTag(selectedColumnTag);
+		if (isSideTabSwitchingDisabled())
+			return;
+		
+		if (getPropertiesPanel() == null)
+			return;
+		
+		getPropertiesPanel().selectSectionForTag(selectedColumnTag);
 	}
 	
 	class TreeTableRowSelectionHandler implements ListSelectionListener
@@ -580,8 +614,16 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		
 		public void run()
 		{
-			table.getSelectionModel().setSelectionInterval(row, row);	
-			table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
+			disableSideTabSwitching();
+			try
+			{
+				table.getSelectionModel().setSelectionInterval(row, row);
+				table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
+			}
+			finally 
+			{
+				enableSideTabSwitching();
+			}
 		}
 		
 		private JTable table;
@@ -610,4 +652,5 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
+	private boolean disableSideTabSwitching;
 }
