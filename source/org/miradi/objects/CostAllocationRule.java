@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.IntegerData;
 import org.miradi.objectdata.ORefData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.utils.EnhancedJsonObject;
@@ -83,7 +84,7 @@ public class CostAllocationRule extends BaseObject
 	
 	public static final String OBJECT_NAME = "CostAllocationRule";
 	
-	private ORefData parentRef;
-	private ORefData childRef;
-	private IntegerData costPercentage;
+	private ObjectData parentRef;
+	private ObjectData childRef;
+	private ObjectData costPercentage;
 }

@@ -25,6 +25,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.ORefListData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.DirectThreatSet;
 import org.miradi.objecthelpers.ORef;
@@ -403,17 +404,17 @@ abstract public class Desire extends BaseObject
 
 	public static final String OBJECT_NAME = "Desire";
 
-	private StringData shortLabel;
-	private StringData fullText;
-	private StringData comments;
+	private ObjectData shortLabel;
+	private ObjectData fullText;
+	private ObjectData comments;
 	private RelevancyOverrideSetData relevantStrategyActivityOverrides;
 	private RelevancyOverrideSetData relevantIndicatorOverrides;
-	private ORefListData progressPercentRefs;
-	private PseudoStringData multiLineTargets;
-	private PseudoStringData multiLineDirectThreats;
-	private PseudoStringData multiLineFactor;
-	private PseudoORefListData relevantIndicatorRefs;
-	private PseudoORefListData relevantStrategyRefs;
-	private PseudoStringData latestProgressPercentComplete;
-	private PseudoStringData latestProgressPercentDetails;
+	private ObjectData progressPercentRefs;
+	private ObjectData multiLineTargets;
+	private ObjectData multiLineDirectThreats;
+	private ObjectData multiLineFactor;
+	private ObjectData relevantIndicatorRefs;
+	private ObjectData relevantStrategyRefs;
+	private ObjectData latestProgressPercentComplete;
+	private ObjectData latestProgressPercentDetails;
 }

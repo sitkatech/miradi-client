@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.ResourceAssignmentId;
 import org.miradi.objectdata.BaseIdData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -196,9 +197,9 @@ public class ResourceAssignment extends Assignment
 	
 	public static final String OBJECT_NAME = "ResourceAssignment";
 	
-	private BaseIdData resourceIdData;
-	private BaseIdData accountingIdData;
-	private BaseIdData fundingIdData;
-	private PseudoStringData pseudoProjectResourceLabel;
-	private PseudoStringData pseudoOwningFactorNameLabel;
+	private ObjectData resourceIdData;
+	private ObjectData accountingIdData;
+	private ObjectData fundingIdData;
+	private ObjectData pseudoProjectResourceLabel;
+	private ObjectData pseudoOwningFactorNameLabel;
 }
