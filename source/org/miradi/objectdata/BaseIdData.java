@@ -59,11 +59,6 @@ public class BaseIdData extends ObjectData
 		return id;
 	}
 	
-	public void setId(BaseId newId) throws Exception
-	{
-		set(newId.toString());
-	}
-
 	public void set(String newValue) throws Exception
 	{
 		if(newValue.length() == 0)
