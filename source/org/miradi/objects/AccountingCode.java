@@ -22,6 +22,7 @@ package org.miradi.objects;
 import org.miradi.ids.AccountingCodeId;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -102,6 +103,6 @@ public class AccountingCode extends BaseObject
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String OBJECT_NAME = "AccountingCode";
 
-	private StringData code;
-	private StringData comments;
+	private ObjectData code;
+	private ObjectData comments;
 }
