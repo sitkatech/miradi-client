@@ -28,6 +28,12 @@ import javax.swing.event.ListSelectionListener;
 
 public class MultiTableSelectionController implements ListSelectionListener
 {
+	public MultiTableSelectionController(MultiTableSelectionChangingListener selectionChangingListenerToUse)
+	{
+		selectionChangingListener = selectionChangingListenerToUse;
+		disableEchoMode();
+	}
+	
 	public void addTable(JTable tableToAdd)
 	{
 		tables.add(tableToAdd);
@@ -36,9 +42,22 @@ public class MultiTableSelectionController implements ListSelectionListener
 
 	public void valueChanged(ListSelectionEvent event)
 	{
-		adjustSelectionOfAllTables(event);
+		if (isEchoMode())
+			return;
+		
+		selectionChangingListener.beginSelectionChangingProcess();
+		enableEchoMode();
+		try
+		{
+			adjustSelectionOfAllTables(event);
+		}
+		finally
+		{
+			selectionChangingListener.endSelectionChangingProcess();
+			disableEchoMode();
+		}
 	}
-	
+
 	private void adjustSelectionOfAllTables(ListSelectionEvent event)
 	{
 		ListSelectionModel source = (ListSelectionModel) event.getSource();
@@ -46,6 +65,7 @@ public class MultiTableSelectionController implements ListSelectionListener
 		for (int i = 0; i < tables.size(); ++i)
 		{
 			JTable table = tables.get(i);
+
 			ListSelectionModel selectionModel = table.getSelectionModel();
 			if(selectedRow == -1)
 				selectionModel.clearSelection();
@@ -54,5 +74,22 @@ public class MultiTableSelectionController implements ListSelectionListener
 		}
 	}
 
+	private boolean isEchoMode()
+	{
+		return isEchoMode;
+	}
+	
+	private void enableEchoMode()
+	{
+		isEchoMode = true;
+	}
+	
+	private void disableEchoMode()
+	{
+		isEchoMode = false;
+	}
+
 	private Vector<JTable> tables = new Vector();
+	private MultiTableSelectionChangingListener selectionChangingListener;
+	private boolean isEchoMode;
 }

@@ -35,8 +35,8 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.utils.MultiTableRowHeightController;
-import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultiTableSelectionController;
+import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.views.umbrella.PersistentHorizontalSplitPane;
 import org.miradi.views.umbrella.PersistentNonPercentageHorizontalSplitPane;
 
@@ -57,7 +57,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeTable);
 
-		selectionController = new MultiTableSelectionController();
+		selectionController = new MultiTableSelectionController(this);
 		selectionController.addTable(treeTable);
 
 		scrollController = new MultiTableVerticalScrollController();
