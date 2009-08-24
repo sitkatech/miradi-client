@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.DateUnitEffortListData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -118,5 +119,5 @@ abstract public class Assignment extends BaseObject
 	
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	
-	private DateUnitEffortListData detailListData;
+	private ObjectData detailListData;
 }
