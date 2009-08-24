@@ -28,6 +28,8 @@ import org.miradi.objects.Desire;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Objective;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 
@@ -45,7 +47,11 @@ abstract public class PlanningTreeAbstractDesireNode extends AbstractPlanningTre
 	public void rebuild() throws Exception
 	{
 		ORefList relevantStrategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
-		createAndAddChildren(relevantStrategyAndActivityRefs, getDiagramObject());
+		ORefList relevantStrategyRefs = relevantStrategyAndActivityRefs.getFilteredBy(Strategy.getObjectType());
+		createAndAddChildren(relevantStrategyRefs, getDiagramObject());
+		
+		ORefList releavatActivityRefs = relevantStrategyAndActivityRefs.getFilteredBy(Task.getObjectType());
+		createAndAddTaskNodes(releavatActivityRefs, getObjectReference());
 		
 		ORefList relevantIndicatorRefs = desire.getRelevantIndicatorRefList();
 		createAndAddChildren(relevantIndicatorRefs, getDiagramObject());
