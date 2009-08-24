@@ -59,9 +59,9 @@ public class BaseIdData extends ObjectData
 		return id;
 	}
 	
-	public void setId(BaseId newId)
+	public void setId(BaseId newId) throws Exception
 	{
-		id = newId;
+		set(newId.toString());
 	}
 
 	public void set(String newValue) throws Exception
