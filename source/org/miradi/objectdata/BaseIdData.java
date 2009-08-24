@@ -40,11 +40,13 @@ public class BaseIdData extends ObjectData
 		return id.toString();
 	}
 	
+	@Override
 	public ORef getRef()
 	{
 		return new ORef(objectType, id);
 	}
 	
+	@Override
 	public ORefList getRefList()
 	{
 		ORefList list = new ORefList();
@@ -70,6 +72,7 @@ public class BaseIdData extends ObjectData
 			id = new BaseId(Integer.parseInt(newValue));
 	}
 	
+	@Override
 	public void toXml(UnicodeWriter out) throws Exception
 	{
 		startTagToXml(out);
