@@ -75,10 +75,5 @@ public class ORefListData extends ObjectData
 		objectReferenceList = objectReferenceToUse;
 	}
 	
-	public boolean isORefListData()
-	{
-		return true;
-	}
-
 	private ORefList objectReferenceList;
 }

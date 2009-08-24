@@ -77,11 +77,6 @@ abstract public class ObjectData
 		return false;
 	}
 	
-	public boolean isORefListData()
-	{
-		return false;
-	}
-	
 	public boolean isIdListData()
 	{
 		return false;
