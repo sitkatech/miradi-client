@@ -103,7 +103,7 @@ abstract public class ObjectData
 		return null;
 	}
 	
-	public ORef getRawRef()
+	public ORef getRef()
 	{
 		throw new RuntimeException("Called getRawRef on " + getClass().getSimpleName());
 	}
