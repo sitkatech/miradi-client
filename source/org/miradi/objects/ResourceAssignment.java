@@ -120,11 +120,6 @@ public class ResourceAssignment extends Assignment
 		return convertDateUnitEffortList().getRolledUpDateRange(projectDateRange);
 	}
 	
-	public void setResourceId(BaseId resourceIdToUse)
-	{
-		resourceIdData.setId(resourceIdToUse);
-	}
-	
 	public ORef getFundingSourceRef()
 	{
 		return fundingIdData.getRef();
