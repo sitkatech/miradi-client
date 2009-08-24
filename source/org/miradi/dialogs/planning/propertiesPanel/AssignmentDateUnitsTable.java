@@ -37,7 +37,7 @@ import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.MainWindow;
-import org.miradi.utils.SingleClickAutoSelectCellEditor;
+import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 
 public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface
 {
@@ -90,7 +90,7 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 		{
 			int modelColumn = convertColumnIndexToModel(i);
 			TableColumn column = getColumnModel().getColumn(modelColumn);
-			column.setCellEditor(new SingleClickAutoSelectCellEditor(new PanelTextField()));
+			column.setCellEditor(new DoubleClickAutoSelectCellEditor(new PanelTextField()));
 		}
 	}
 	
