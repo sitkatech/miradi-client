@@ -26,7 +26,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class MultipleTableSelectionController implements ListSelectionListener
+public class MultiTableSelectionController implements ListSelectionListener
 {
 	public void addTable(JTable tableToAdd)
 	{

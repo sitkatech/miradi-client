@@ -43,7 +43,7 @@ import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
-import org.miradi.utils.MultipleTableSelectionController;
+import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.TableWithRowHeightSaver;
 
 abstract public class MultiTreeTablePanel extends TreeTablePanel
@@ -65,7 +65,7 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel
 		treeTableScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	
-	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, MultiTableRowHeightController rowHeightController, MultipleTableSelectionController selectionController, TreeTableWithStateSaving treeToUse, TableWithRowHeightSaver table)
+	protected ScrollPaneWithHideableScrollBar integrateTable(JScrollBar masterScrollBar, MultiTableVerticalScrollController scrollController, MultiTableRowHeightController rowHeightController, MultiTableSelectionController selectionController, TreeTableWithStateSaving treeToUse, TableWithRowHeightSaver table)
 	{
 		ModelUpdater modelUpdater = new ModelUpdater((AbstractTableModel)table.getModel());
 		treeToUse.getTreeTableAdapter().addTableModelListener(modelUpdater);
