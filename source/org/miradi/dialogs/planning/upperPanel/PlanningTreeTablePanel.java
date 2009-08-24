@@ -71,7 +71,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableVerticalScrollController;
-import org.miradi.utils.MultipleTableSelectionController;
+import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.TableExporter;
 import org.miradi.utils.TreeTableExporter;
 
@@ -89,7 +89,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeToUse);
 		
-		MultipleTableSelectionController selectionController = new MultipleTableSelectionController();
+		MultiTableSelectionController selectionController = new MultiTableSelectionController();
 		selectionController.addTable(treeToUse);
 		
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();

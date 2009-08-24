@@ -35,7 +35,7 @@ import org.miradi.utils.MultiTableHorizontalScrollController;
 import org.miradi.utils.MultiTableRowHeightController;
 import org.miradi.utils.MultiTableRowSortController;
 import org.miradi.utils.MultiTableVerticalScrollController;
-import org.miradi.utils.MultipleTableSelectionController;
+import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.views.umbrella.ObjectPicker;
 
@@ -46,7 +46,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 		super(new BorderLayout());
 		
 		mainWindow = mainWindowToUse;
-		selectionController = new MultipleTableSelectionController();
+		selectionController = new MultiTableSelectionController();
 		verticalController = new MultiTableVerticalScrollController();
 		horizontalController = new MultiTableHorizontalScrollController();
 		rowHeightController = new MultiTableRowHeightController(getMainWindow());
@@ -148,7 +148,7 @@ abstract public class MultiTablePanel extends DisposablePanel implements ObjectP
 
 
 	private MainWindow mainWindow;
-	protected MultipleTableSelectionController selectionController;
+	protected MultiTableSelectionController selectionController;
 	protected MultiTableVerticalScrollController verticalController;
 	protected MultiTableHorizontalScrollController horizontalController;
 	private MultiTableRowHeightController rowHeightController;
