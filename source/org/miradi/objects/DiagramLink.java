@@ -179,7 +179,7 @@ public class DiagramLink extends BaseObject
 	
 	public ORefList getGroupedDiagramLinkRefs()
 	{
-		return groupedDiagramLinkRefs.getORefList();
+		return groupedDiagramLinkRefs.getRefList();
 	}
 	
 	public ORef getWrappedRef()

@@ -83,7 +83,7 @@ public class Target extends AbstractTarget
 	
 	public ORefList getStressRefs()
 	{
-		return stressRefs.getORefList();
+		return stressRefs.getRefList();
 	}
 	
 	@Override

@@ -43,11 +43,6 @@ public class ORefListData extends ObjectData
 		return objectReferenceList.toString();
 	}
 
-	public ORefList getORefList()
-	{
-		return getRefList();
-	}
-	
 	public ORefList getRefList()
 	{
 		return objectReferenceList;
