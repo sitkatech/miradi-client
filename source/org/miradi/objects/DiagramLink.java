@@ -59,9 +59,9 @@ public class DiagramLink extends BaseObject
 	{
 		super(objectManager, new DiagramLinkId(idToUse), json);
 		
-		underlyingObjectId.setId(json.getId(TAG_WRAPPED_ID));
-		fromId.setId(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID));
-		toId.setId(json.getId(TAG_TO_DIAGRAM_FACTOR_ID));
+		underlyingObjectId.set(json.getId(TAG_WRAPPED_ID).toString());
+		fromId.set(json.getId(TAG_FROM_DIAGRAM_FACTOR_ID).toString());
+		toId.set(json.getId(TAG_TO_DIAGRAM_FACTOR_ID).toString());
 	}
 	
 	public EnhancedJsonObject toJson()
