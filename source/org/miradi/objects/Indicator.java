@@ -166,7 +166,7 @@ public class Indicator extends BaseObject
 	
 	public ORefList getMeasurementRefs()
 	{
-		return measurementRefs.getORefList();
+		return measurementRefs.getRefList();
 	}
 	
 	public int getAnnotationType(String tag)

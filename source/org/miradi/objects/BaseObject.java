@@ -977,7 +977,7 @@ abstract public class BaseObject
 	
 	public ORefList getExpenseAssignmentRefs()
 	{
-		return expenseAssignmentRefs.getORefList();
+		return expenseAssignmentRefs.getRefList();
 	}
 	
 	public ORefList getAllObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
@@ -1165,7 +1165,7 @@ abstract public class BaseObject
 
 	public ORefList getProgressReportRefs()
 	{
-		return progressReportRefs.getORefList();
+		return progressReportRefs.getRefList();
 	}
 
 	public static BaseObject find(ObjectManager objectManager, ORef objectRef)

@@ -101,7 +101,7 @@ abstract public class AbstractTarget extends Factor
 
 	public ORefList getSubTargetRefs()
 	{
-		return subTargetRefs.getORefList();
+		return subTargetRefs.getRefList();
 	}
 
 	public ORefList getKeyEcologicalAttributeRefs()

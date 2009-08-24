@@ -124,7 +124,7 @@ abstract public class DiagramObject extends BaseObject
 	
 	public ORefList getSelectedTaggedObjectSetRefs()
 	{
-		return selectedTaggedObjectSetRefs.getORefList();
+		return selectedTaggedObjectSetRefs.getRefList();
 	}
 	
 	// TODO: This really should have a test

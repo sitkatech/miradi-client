@@ -188,7 +188,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORefList getGroupBoxChildrenRefs()
 	{
-		return groupBoxChildrenRefs.getORefList();
+		return groupBoxChildrenRefs.getRefList();
 	}
 	
 	public ORef getOwningGroupBoxRef()

@@ -78,7 +78,7 @@ abstract public class Desire extends BaseObject
 
 	public ORefList getProgressPercentRefs()
 	{
-		return progressPercentRefs.getORefList();
+		return progressPercentRefs.getRefList();
 	}
 	
 	abstract public int getType();
