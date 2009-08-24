@@ -42,11 +42,12 @@ import org.miradi.utils.FastScrollBar;
 import org.miradi.utils.HideableScrollBar;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.MultiTableRowHeightController;
+import org.miradi.utils.MultiTableSelectionChangingListener;
 import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultiTableSelectionController;
 import org.miradi.utils.TableWithRowHeightSaver;
 
-abstract public class MultiTreeTablePanel extends TreeTablePanel
+abstract public class MultiTreeTablePanel extends TreeTablePanel implements MultiTableSelectionChangingListener
 {
 	public MultiTreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse) throws Exception
 	{
@@ -82,6 +83,14 @@ abstract public class MultiTreeTablePanel extends TreeTablePanel
 		scrollController.addScrollPane(scrollPane);
 		
 		return scrollPane;
+	}
+	
+	public void beginSelectionChangingProcess()
+	{
+	}
+	
+	public void endSelectionChangingProcess()
+	{
 	}
 	
 	public static class MouseWheelHandler implements MouseWheelListener

@@ -89,7 +89,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		MultiTableRowHeightController rowHeightController = new MultiTableRowHeightController(getMainWindow());
 		rowHeightController.addTable(treeToUse);
 		
-		MultiTableSelectionController selectionController = new MultiTableSelectionController();
+		MultiTableSelectionController selectionController = new MultiTableSelectionController(this);
 		selectionController.addTable(treeToUse);
 		
 		MultiTableVerticalScrollController scrollController = new MultiTableVerticalScrollController();
@@ -486,6 +486,16 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return mainModel;
 	}
 	
+	public void beginSelectionChangingProcess()
+	{
+		disableSectionSwitchDuringFullRebuild();
+	}
+	
+	public void endSelectionChangingProcess()
+	{
+		enableSectionSwitch();
+	}
+	
 	private boolean isSideTabSwitchingDisabled()
 	{
 		return !disableSideTabSwitching;
@@ -533,10 +543,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	{
 		public void valueChanged(ListSelectionEvent e)
 		{
-			Object source = e.getSource();	
-			if (!getTree().getSelectionModel().equals(source))
-				return;
-			
 			selectSectionForTag(BaseObject.TAG_LABEL);
 		}
 	}
