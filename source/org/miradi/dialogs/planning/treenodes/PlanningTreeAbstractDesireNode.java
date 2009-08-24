@@ -50,8 +50,8 @@ abstract public class PlanningTreeAbstractDesireNode extends AbstractPlanningTre
 		ORefList relevantStrategyRefs = relevantStrategyAndActivityRefs.getFilteredBy(Strategy.getObjectType());
 		createAndAddChildren(relevantStrategyRefs, getDiagramObject());
 		
-		ORefList releavatActivityRefs = relevantStrategyAndActivityRefs.getFilteredBy(Task.getObjectType());
-		createAndAddTaskNodes(releavatActivityRefs, getObjectReference());
+		ORefList relevantActivityRefs = relevantStrategyAndActivityRefs.getFilteredBy(Task.getObjectType());
+		createAndAddTaskNodes(relevantActivityRefs, getObjectReference());
 		
 		ORefList relevantIndicatorRefs = desire.getRelevantIndicatorRefList();
 		createAndAddChildren(relevantIndicatorRefs, getDiagramObject());
