@@ -23,6 +23,7 @@ import java.util.HashSet;
 
 import org.martus.util.UnicodeWriter;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.questions.ChoiceQuestion;
 
@@ -100,6 +101,11 @@ abstract public class ObjectData
 	public ChoiceQuestion getChoiceQuestion()
 	{
 		return null;
+	}
+	
+	public ORef getRawRef()
+	{
+		throw new RuntimeException("Called getRawRef on " + getClass().getSimpleName());
 	}
 	
 	public ORefList getRefList()
