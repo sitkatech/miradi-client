@@ -175,14 +175,14 @@ public class Miradi
 		return null;
 	}
 	
-	static void addThirdPartyJarsToClasspath() throws Exception
+	public static void addThirdPartyJarsToClasspath() throws Exception
 	{
 		String jarSubdirectoryName = "ThirdParty";
 		File miradiDirectory = getAppCodeDirectory();
 		File thirdPartyDirectory = new File(miradiDirectory, jarSubdirectoryName);
 		RuntimeJarLoader.addJarsInSubdirectoryToClasspath(thirdPartyDirectory);
-		System.out.println("Miradi code running from: " + miradiDirectory.getAbsolutePath());
-		System.out.println("Added jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
+		System.err.println("Miradi code running from: " + miradiDirectory.getAbsolutePath());
+		System.err.println("Added jars to classpath: " + thirdPartyDirectory.getAbsolutePath());
 	}
 	
 	public static File getAppCodeDirectory() throws URISyntaxException
