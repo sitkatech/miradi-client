@@ -79,7 +79,7 @@ public class FactorLink extends BaseObject
 	
 	public ORef getFromFactorRef()
 	{
-		ORef rawRef = fromRef.getRawRef();
+		ORef rawRef = fromRef.getRef();
 		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
 	}
 	
@@ -94,7 +94,7 @@ public class FactorLink extends BaseObject
 	
 	public ORef getToFactorRef()
 	{
-		ORef rawRef = toRef.getRawRef();
+		ORef rawRef = toRef.getRef();
 		return new ORef(rawRef.getObjectType(), new FactorId(rawRef.getObjectId().asInt()));
 	}
 	

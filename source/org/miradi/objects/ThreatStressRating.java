@@ -108,12 +108,12 @@ public class ThreatStressRating extends BaseObject
 	
 	public ORef getStressRef()
 	{
-		return stressRef.getRawRef();
+		return stressRef.getRef();
 	}
 	
 	public ORef getThreatRef()
 	{
-		return threatRef.getRawRef();
+		return threatRef.getRef();
 	}
 	
 	public ChoiceItem getContribution()

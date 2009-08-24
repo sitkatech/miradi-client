@@ -83,17 +83,17 @@ public class ViewData extends BaseObject
 	
 	public ORef getCurrentConceptualModelRef()
 	{
-		return currentConceptualModelRef.getRawRef();
+		return currentConceptualModelRef.getRef();
 	}
 	
 	public ORef getCurrentResultsChainRef()
 	{
-		return currentResultsChainRef.getRawRef();
+		return currentResultsChainRef.getRef();
 	}
 	
 	public ORef getPlanningCustomRef()
 	{
-		return planningCustomChoiceRef.getRawRef();
+		return planningCustomChoiceRef.getRef();
 	}
 	
 	public void setCurrentTab(int newTab) throws Exception

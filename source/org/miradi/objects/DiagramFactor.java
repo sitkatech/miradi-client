@@ -133,7 +133,7 @@ public class DiagramFactor extends BaseObject
 	
 	public ORef getWrappedORef()
 	{
-		return underlyingObjectRef.getRawRef();
+		return underlyingObjectRef.getRef();
 	}
 	
 	public Factor getWrappedFactor()

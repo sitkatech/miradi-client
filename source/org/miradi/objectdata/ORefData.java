@@ -32,7 +32,7 @@ public class ORefData extends ObjectData
 		ref = ORef.INVALID;
 	}
 	
-	public ORef getRawRef()
+	public ORef getRef()
 	{
 		return ref;
 	}
