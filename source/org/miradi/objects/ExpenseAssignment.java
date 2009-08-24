@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objectdata.ORefData;
+import org.miradi.objectdata.ObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
@@ -134,6 +135,6 @@ public class ExpenseAssignment extends Assignment
 	public static final String TAG_ACCOUNTING_CODE_REF = "AccountingCodeRef";
 	public static final String TAG_FUNDING_SOURCE_REF = "FundingSourceRef";
 	
-	private ORefData accountingCodeRef;
-	private ORefData fundingSourceRef;
+	private ObjectData accountingCodeRef;
+	private ObjectData fundingSourceRef;
 }
