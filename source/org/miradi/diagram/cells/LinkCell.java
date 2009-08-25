@@ -248,6 +248,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 		GraphConstants.setBackground(getAttributes(), getColor());
 	    GraphConstants.setForeground(getAttributes(), getColor());
 	    GraphConstants.setGradientColor(getAttributes(), getColor()); //Windows 2000 quirk required to see line.
+	    if (getDiagramLink().isBidirectional())
+	    	setTail(GraphConstants.ARROW_TECHNICAL);
+	    
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
 	}
