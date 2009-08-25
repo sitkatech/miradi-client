@@ -70,7 +70,6 @@ import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
-import org.miradi.questions.BudgetCostUnitQuestion;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
@@ -580,7 +579,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_PHONE_NUMBER, "555-555-5555");
 		fillObjectUsingCommand(projectResource, ProjectResource.TAG_ORGANIZATION, "TurtleWise Corp");
 		fillCostPerUnitField(projectResource, "10");
-		fillObjectUsingCommand(projectResource, ProjectResource.TAG_COST_UNIT, BudgetCostUnitQuestion.DAYS_CODE);
 	}
 	
 	public void populateSubTarget(SubTarget subTarget) throws Exception
