@@ -31,7 +31,7 @@ public class MultiTableSelectionController implements ListSelectionListener
 	public MultiTableSelectionController(MultiTableSelectionChangingListener selectionChangingListenerToUse)
 	{
 		selectionChangingListener = selectionChangingListenerToUse;
-		disableEchoMode();
+		startPropagatingSelections();
 	}
 	
 	public void addTable(JTable tableToAdd)
@@ -42,11 +42,11 @@ public class MultiTableSelectionController implements ListSelectionListener
 
 	public void valueChanged(ListSelectionEvent event)
 	{
-		if (isEchoMode())
+		if (!shouldPropagateSelections())
 			return;
 		
 		selectionChangingListener.beginSelectionChangingProcess();
-		enableEchoMode();
+		stopPropagatingSelections();
 		try
 		{
 			adjustSelectionOfAllTables(event);
@@ -54,7 +54,7 @@ public class MultiTableSelectionController implements ListSelectionListener
 		finally
 		{
 			selectionChangingListener.endSelectionChangingProcess();
-			disableEchoMode();
+			startPropagatingSelections();
 		}
 	}
 
@@ -74,22 +74,22 @@ public class MultiTableSelectionController implements ListSelectionListener
 		}
 	}
 
-	private boolean isEchoMode()
+	private boolean shouldPropagateSelections()
 	{
-		return isEchoMode;
+		return propagateSelectionsFlag;
 	}
 	
-	private void enableEchoMode()
+	private void startPropagatingSelections()
 	{
-		isEchoMode = true;
+		propagateSelectionsFlag = true;
 	}
 	
-	private void disableEchoMode()
+	private void stopPropagatingSelections()
 	{
-		isEchoMode = false;
+		propagateSelectionsFlag = false;
 	}
 
 	private Vector<JTable> tables = new Vector();
 	private MultiTableSelectionChangingListener selectionChangingListener;
-	private boolean isEchoMode;
+	private boolean propagateSelectionsFlag;
 }
