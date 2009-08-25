@@ -21,10 +21,11 @@ package org.miradi.dialogs.treetables;
 
 import org.miradi.main.MainWindow;
 import org.miradi.utils.ColumnSequenceSaver;
+import org.miradi.utils.ColumnWidthProvider;
 import org.miradi.utils.ColumnWidthSaver;
 import org.miradi.utils.TableWithColumnManagement;
 
-abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHeightSaver implements TableWithColumnManagement
+abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHeightSaver implements TableWithColumnManagement, ColumnWidthProvider
 {
 	public TreeTableWithColumnWidthSaving(MainWindow mainWindowToUse, GenericTreeTableModel treeTableModel)
 	{
@@ -45,7 +46,7 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 
 	private void addColumnWidthSaver(MainWindow mainWindowToUse)
 	{
-		columnWidthSaver = new ColumnWidthSaver(mainWindowToUse.getProject(), this, getUniqueTableIdentifier());
+		columnWidthSaver = new ColumnWidthSaver(mainWindowToUse.getProject(), this, this, getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
 	}
 	
@@ -73,6 +74,17 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 	public boolean shouldSaveColumnSequence()
 	{
 		return true;
+	}
+	
+	public int getDefaultColumnWidth(String columnTag, int columnHeaderWidth)
+	{
+		if (columnTag.equals(GenericTreeTableModel.DEFAULT_COLUMN))
+			return ColumnWidthSaver.DEFAULT_WIDE_COLUMN_WIDTH;
+		
+		else if (columnHeaderWidth < ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH)
+			return ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH;
+		
+		return columnHeaderWidth;
 	}
 		
 	private ColumnWidthSaver columnWidthSaver;
