@@ -85,6 +85,7 @@ public class MeglerArranger
 		Vector<DiagramFactor> groupCandidates = new Vector<DiagramFactor>();
 		groupCandidates.addAll(diagramFactorsToGroup);
 		groupCandidates.removeAll(findAllThatAreLinkedToAGroup(groupCandidates, direction));
+		groupCandidates.removeAll(findAllThatAreAlreadyGrouped(groupCandidates));
 		
 		sortGroupCandidatesByLinkCount(groupCandidates);
 
@@ -97,6 +98,17 @@ public class MeglerArranger
 		}
 	}
 	
+	private HashSet<DiagramFactor> findAllThatAreAlreadyGrouped(Vector<DiagramFactor> groupCandidates)
+	{
+		HashSet<DiagramFactor> toRemove = new HashSet<DiagramFactor>();
+		for(DiagramFactor diagramFactor : groupCandidates)
+		{
+			if(diagramFactor.isCoveredByGroupBox())
+				toRemove.add(diagramFactor);
+		}
+		return toRemove;
+	}
+
 	class LinkCountComparator implements Comparator
 	{
 		public int compare(Object arg1, Object arg2)
