@@ -82,7 +82,7 @@ public class TableHeaderWithExpandCollapseIcons extends JTableHeader
 		Shape oldClip = g.getClip();
 		try
 		{
-			g.setClip(columnHeaderBounds);
+			g.clipRect(columnHeaderBounds.x, columnHeaderBounds.y, columnHeaderBounds.width, columnHeaderBounds.height);
 			if (icon != null)
 			{
 				icon.paintIcon(this, g, columnHeaderBounds.x, ARBITRARY_MARGIN / 2);
