@@ -155,7 +155,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		return true;
 	}
 	
-	public int getDefaultColumnWidth(String columnTag, int columnHeaderWidth)
+	public int getDefaultColumnWidth(int tableColumn, String columnTag, int columnHeaderWidth)
 	{
 		if (columnTag.equals(BaseObject.TAG_LABEL))
 			return ColumnWidthSaver.DEFAULT_WIDE_COLUMN_WIDTH;

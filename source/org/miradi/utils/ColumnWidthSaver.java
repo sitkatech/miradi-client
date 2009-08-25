@@ -78,7 +78,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	private int getColumnWidth(int tableColumn, String columnTag, String columnWidthAsString)
 	{
 		int columnHeaderWidth = TableWithHelperMethods.getColumnHeaderWidth(table, tableColumn);
-		int defaultColumnWidth = columnWidthProvider.getDefaultColumnWidth(columnTag, columnHeaderWidth);
+		int defaultColumnWidth = columnWidthProvider.getDefaultColumnWidth(tableColumn, columnTag, columnHeaderWidth);
 		if (columnWidthAsString.length() == 0)
 			return defaultColumnWidth;
 		

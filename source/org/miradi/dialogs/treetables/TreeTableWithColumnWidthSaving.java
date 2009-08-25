@@ -76,7 +76,7 @@ abstract public class TreeTableWithColumnWidthSaving extends TreeTableWithRowHei
 		return true;
 	}
 	
-	public int getDefaultColumnWidth(String columnTag, int columnHeaderWidth)
+	public int getDefaultColumnWidth(int tableColumn, String columnTag, int columnHeaderWidth)
 	{
 		if (columnTag.equals(GenericTreeTableModel.DEFAULT_COLUMN))
 			return ColumnWidthSaver.DEFAULT_WIDE_COLUMN_WIDTH;
