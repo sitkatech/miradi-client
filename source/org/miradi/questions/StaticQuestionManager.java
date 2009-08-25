@@ -89,6 +89,7 @@ public class StaticQuestionManager
 		addQuestion(new ScopeBoxColorQuestion());
 		addQuestion(new TargetModeQuestion());
 		addQuestion(new WorkPlanColumnConfigurationQuestion());
+		addQuestion(new MonthAbbriviationsQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)
