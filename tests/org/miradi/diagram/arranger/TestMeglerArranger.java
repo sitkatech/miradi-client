@@ -354,6 +354,26 @@ public class TestMeglerArranger extends TestCaseWithProject
 		assertContains("Threat 1 not in group?", threatDiagramFactor1.getRef(), allGroupedThreats);
 		assertContains("Threat 2 not in group?", threatDiagramFactor2.getRef(), allGroupedThreats);
 	}
+	
+	public void testGroupThreatsBothDirections() throws Exception
+	{
+		DiagramFactor strategyDiagramFactor1 = createStrategy();
+		DiagramFactor threatDiagramFactor1 = createThreat();
+		DiagramFactor threatDiagramFactor2 = createThreat();
+		DiagramFactor targetDiagramFactor1 = createTarget();
+		
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(strategyDiagramFactor1, threatDiagramFactor2);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor1, targetDiagramFactor1);
+		getProject().createDiagramFactorLinkAndAddToDiagram(threatDiagramFactor2, targetDiagramFactor1);
+
+		DiagramObject diagram = getProject().getMainDiagramObject();
+		MeglerArranger arranger = new MeglerArranger(diagram);
+		arranger.arrange();
+		
+		Set<DiagramFactor> groupBoxDiagramFactors = diagram.getDiagramFactorsThatWrap(GroupBox.getObjectType());
+		assertEquals("Created more than one group?", 1, groupBoxDiagramFactors.size());
+	}
 
 	public void testDontGroupThreatsUnlessLinkedToTargetsOrStrategies() throws Exception
 	{
