@@ -300,6 +300,12 @@ abstract public class Desire extends BaseObject
 	{
 		for(RelevancyOverride override : relevantOverrides)
 		{
+			if (override.getRef().isInvalid())
+			{
+				EAM.logWarning("An invalid ref was found inside the relevancy list for Desire with ref = " + getRef());
+				continue;
+			}
+			
 			if (getProject().findObject(override.getRef()) == null)
 				continue;
 			

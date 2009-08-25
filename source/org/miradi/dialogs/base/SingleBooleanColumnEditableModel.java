@@ -103,6 +103,9 @@ abstract public class SingleBooleanColumnEditableModel extends EditableObjectTab
 	{
 		ORefSet selectedRefSet = new ORefSet(getCheckedRefsAccordingToTheDatabase());
 		ORef thisRef = getRefForRow(row);
+		if (thisRef.isInvalid())
+			return selectedRefSet.toRefList();
+		
 		boolean nowChecked = valueAsBoolean.booleanValue();
 		if(nowChecked)
 			selectedRefSet.add(thisRef);
