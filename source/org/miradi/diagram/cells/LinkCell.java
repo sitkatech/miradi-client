@@ -143,15 +143,20 @@ public class LinkCell extends EAMGraphCell implements Edge
 	
 	public void update(DiagramComponent diagram)
 	{
-		int arrowTailStyle = GraphConstants.ARROW_NONE;
-		
-		if (getDiagramLink().isBidirectional())
-			arrowTailStyle = GraphConstants.ARROW_TECHNICAL;
-		else if(!isThisLinkBodyVisible(diagram))
+		int arrowTailStyle = getArrowTailStyle();
+		if(!isThisLinkBodyVisible(diagram))
 			arrowTailStyle = ArrowLineRenderer.ARROW_STUB_LINE;
 
 		setTail(arrowTailStyle);
 		updateBendPoints();
+	}
+	
+	private int getArrowTailStyle()
+	{
+		if (getDiagramLink().isBidirectional())
+			return GraphConstants.ARROW_TECHNICAL;
+		
+		return GraphConstants.ARROW_NONE;
 	}
 
 	public boolean isThisLinkBodyVisible(DiagramComponent diagram)
@@ -248,8 +253,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		GraphConstants.setBackground(getAttributes(), getColor());
 	    GraphConstants.setForeground(getAttributes(), getColor());
 	    GraphConstants.setGradientColor(getAttributes(), getColor()); //Windows 2000 quirk required to see line.
-	    if (getDiagramLink().isBidirectional())
-	    	setTail(GraphConstants.ARROW_TECHNICAL);
+	    setTail(getArrowTailStyle());
 	    
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
 		GraphConstants.setEndFill(getAttributes(), true);
