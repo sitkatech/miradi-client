@@ -29,9 +29,10 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 
-abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener, TableWithColumnManagement
+abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowHeightSaver implements CommandExecutedListener, TableWithColumnManagement, ColumnWidthProvider
 {
 	public TableWithColumnWidthAndSequenceSaver(MainWindow mainWindowToUse, TableModel model, String uniqueTableIdentifierToUse)
 	{
@@ -89,7 +90,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		if (! shouldSaveColumnWidth())
 			return; 
 		
-		columnWidthSaver = new ColumnWidthSaver(getMainWindow().getProject(), this, getUniqueTableIdentifier());
+		columnWidthSaver = new ColumnWidthSaver(getMainWindow().getProject(), this, this, getUniqueTableIdentifier());
 		getTableHeader().addMouseListener(columnWidthSaver);
 		columnWidthSaver.restoreColumnWidths();
 	}
@@ -154,6 +155,17 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		return true;
 	}
 	
+	public int getDefaultColumnWidth(String columnTag, int columnHeaderWidth)
+	{
+		if (columnTag.equals(BaseObject.TAG_LABEL))
+			return ColumnWidthSaver.DEFAULT_WIDE_COLUMN_WIDTH;
+		
+		else if (columnHeaderWidth < ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH)
+			return ColumnWidthSaver.DEFAULT_NARROW_COLUMN_WIDTH;
+		
+		return columnHeaderWidth;
+	}
+		
 	private ColumnWidthSaver columnWidthSaver;
 	private ColumnSequenceSaver columnSequenceSaver;
 }

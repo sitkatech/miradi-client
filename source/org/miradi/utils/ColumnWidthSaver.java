@@ -27,19 +27,18 @@ import javax.swing.table.TableColumn;
 
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.FieldSaver;
-import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.StringMap;
-import org.miradi.objects.BaseObject;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 
 public class ColumnWidthSaver extends MouseAdapter
 {
-	public ColumnWidthSaver(Project projectToUse, JTable tableToUse, String uniqueTableIdentifierToUse)
+	public ColumnWidthSaver(Project projectToUse, JTable tableToUse, ColumnWidthProvider columnWithProviderToUse, String uniqueTableIdentifierToUse)
 	{
 		project = projectToUse;
 		table = tableToUse;
+		columnWidthProvider = columnWithProviderToUse;
 		uniqueTableIdentifier = uniqueTableIdentifierToUse;
 	}
 	
@@ -79,7 +78,7 @@ public class ColumnWidthSaver extends MouseAdapter
 	private int getColumnWidth(int tableColumn, String columnTag, String columnWidthAsString)
 	{
 		int columnHeaderWidth = TableWithHelperMethods.getColumnHeaderWidth(table, tableColumn);
-		int defaultColumnWidth = getDefaultColumnWidth(columnTag, columnHeaderWidth);
+		int defaultColumnWidth = columnWidthProvider.getDefaultColumnWidth(columnTag, columnHeaderWidth);
 		if (columnWidthAsString.length() == 0)
 			return defaultColumnWidth;
 		
@@ -90,28 +89,6 @@ public class ColumnWidthSaver extends MouseAdapter
 		return defaultColumnWidth;
 	}
 
-	private int getDefaultColumnWidth(String columnTag, int columnHeaderWidth)
-	{
-		if (isWideColumn(columnTag))
-			return DEFAULT_WIDE_COLUMN_WIDTH;
-		
-		else if (columnHeaderWidth < DEFAULT_NARROW_COLUMN_WIDTH)
-			return DEFAULT_NARROW_COLUMN_WIDTH;
-		
-		return columnHeaderWidth;
-	}
-	
-	private boolean isWideColumn(String columnTag)
-	{
-		if (columnTag.equals(GenericTreeTableModel.DEFAULT_COLUMN))
-			return true;
-		
-		if (columnTag.equals(BaseObject.TAG_LABEL))
-			return true;
-		
-		return false;
-	}
-	
 	@Override
 	public void mouseReleased(MouseEvent e)
 	{
@@ -158,6 +135,7 @@ public class ColumnWidthSaver extends MouseAdapter
 
 	private Project project;
 	private JTable table;
+	private ColumnWidthProvider columnWidthProvider;
 	private String uniqueTableIdentifier;
 	public static final int DEFAULT_NARROW_COLUMN_WIDTH = 75;
 	public static final int DEFAULT_WIDE_COLUMN_WIDTH = 200;
