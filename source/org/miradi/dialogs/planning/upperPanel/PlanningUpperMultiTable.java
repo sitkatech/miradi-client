@@ -85,6 +85,16 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		
 		return super.getCellEditor(row, tableColumn);
 	}
+
+	@Override
+	public int getDefaultColumnWidth(int tableColumn, String columnTag, int columnHeaderWidth)
+	{
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+		if (getCastedModel().isWorkUnitColumn(modelColumn))
+			return columnHeaderWidth;
+		
+		return super.getDefaultColumnWidth(tableColumn, columnTag, columnHeaderWidth);
+	}
 	
 	@Override
 	public TableCellRenderer getCellRenderer(int row, int tableColumn)
