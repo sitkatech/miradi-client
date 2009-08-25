@@ -36,7 +36,6 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.BudgetCostUnitQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.utils.CodeList;
@@ -230,7 +229,6 @@ public class ProjectResource extends BaseObject
 		phoneNumber = new StringData(TAG_PHONE_NUMBER);
 		email = new StringData(TAG_EMAIL);
 		costPerUnit = new NumberData(TAG_COST_PER_UNIT);
-		costUnit = new ChoiceData(TAG_COST_UNIT, getQuestion(BudgetCostUnitQuestion.class));
 		organization = new StringData(TAG_ORGANIZATION);
 		roleCodes = new CodeListData(TAG_ROLE_CODES, getQuestion(ResourceRoleQuestion.class));
 		comments = new StringData(TAG_COMMENTS);
@@ -251,7 +249,6 @@ public class ProjectResource extends BaseObject
 		addField(TAG_POSITION, position);
 		addField(TAG_PHONE_NUMBER, phoneNumber);
 		addField(TAG_EMAIL, email);
-		addField(TAG_COST_UNIT, costUnit);
 		addField(TAG_COST_PER_UNIT, costPerUnit);
 		addField(TAG_ROLE_CODES, roleCodes);
 		addField(TAG_COMMENTS, comments);
@@ -279,7 +276,6 @@ public class ProjectResource extends BaseObject
 	public static final String TAG_PHONE_NUMBER = "PhoneNumber";
 	public static final String TAG_EMAIL = "Email";
 	public static final String TAG_COST_PER_UNIT = "CostPerUnit";
-	public static final String TAG_COST_UNIT = "CostUnit";
 	public static final String TAG_ORGANIZATION = "Organization";
 	public static final String TAG_ROLE_CODES = "RoleCodes";
 	public static final String TAG_COMMENTS = "Comments";
@@ -306,7 +302,6 @@ public class ProjectResource extends BaseObject
 	private StringData phoneNumber;
 	private StringData email;
 	private NumberData costPerUnit;
-	private ChoiceData costUnit;
 	private StringData organization;
 	private CodeListData roleCodes;
 	private StringData comments;
