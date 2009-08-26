@@ -192,7 +192,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		int startFiscalQuarter = (fiscalYearFirstMonth - 1 ) / 3 + 1;
 		int fiscalYearQuarter = ((quarter - startFiscalQuarter) + 4) % 4 + 1;
 		
-		return EAM.text("Quarter Prefix|Q") + fiscalYearQuarter;
+		return getQuarterlyPrefixString() + fiscalYearQuarter;
 	}
 
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
@@ -279,17 +279,22 @@ public class ProjectCalendar implements CommandExecutedListener
 			return fullRange;
 		}
 		
-		String firstFiscalQuarter = "Q" + startFiscalQuarter + " " + startYearString;
+		String firstFiscalQuarter = getQuarterlyPrefixString() + startFiscalQuarter + " " + startYearString;
 		if (startFiscalQuarter == endFiscalQuarter)
 			return firstFiscalQuarter;
 		
-		return firstFiscalQuarter + " - Q" + endFiscalQuarter + " " + endYearString;
+		return firstFiscalQuarter + " - " + getQuarterlyPrefixString() + endFiscalQuarter + " " + endYearString;
 	}
 
 	private static String getFiscalYearString(int fiscalYear)
 	{
 		String yearString = Integer.toString(fiscalYear);
-		return FISCAL_YEAR_PREFIX + yearString.substring(2);
+		return EAM.text("Fiscal Year|FY") + yearString.substring(2);
+	}
+	
+	private static String getQuarterlyPrefixString()
+	{
+		return EAM.text("Quarter Prefix|Q");
 	}
 	
 	public DateRange convertToDateRange(DateUnit dateUnit) throws Exception
@@ -398,5 +403,4 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	private Project project;
 	private Vector<DateRange> dateRanges;
-	private static final String FISCAL_YEAR_PREFIX = "FY";
 }
