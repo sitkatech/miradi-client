@@ -252,11 +252,6 @@ public class DateUnit
 		return quarter;
 	}
 	
-	public String getQuarterWithPrefix()
-	{
-		return QUARTER_PREFIX + Integer.toString(getQuarter());
-	}
-	
 	public boolean hasSubDateUnits()
 	{
 		if(isYear())
