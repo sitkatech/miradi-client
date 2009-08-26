@@ -74,6 +74,7 @@ public class DialogWithButtonBar extends MiradiDialog
 	{
 		public void actionPerformed(ActionEvent e)
 		{
+			setVisible(false);
 			dispose();
 		}
 	}

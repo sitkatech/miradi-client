@@ -29,6 +29,7 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellEditor;
 
 import org.miradi.dialogfields.StandAloneCodeListComponent;
+import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory.TableCellHtmlRendererComponent;
 import org.miradi.main.AppPreferences;
@@ -63,7 +64,10 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 		{
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
 			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
-			codeListEditor.showModalDialog(getMainWindow(), EAM.text("Project Resource"));
+			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), EAM.text("Project Resource"));
+			dialog.add(codeListEditor);
+			dialog.pack();
+			getMainWindow().getCurrentView().showFloatingPropertiesDialog(dialog);
 		}
 	}
 
