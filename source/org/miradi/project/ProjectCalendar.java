@@ -195,7 +195,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		int startFiscalQuarter = (fiscalYearFirstMonth - 1 ) / 3 + 1;
 		int fiscalYearQuarter = ((quarter - startFiscalQuarter) + 4) % 4 + 1;
 		
-		return DateUnit.QUARTER_PREFIX + fiscalYearQuarter;
+		return EAM.text("Quarter Prefix|Q") + fiscalYearQuarter;
 	}
 
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
