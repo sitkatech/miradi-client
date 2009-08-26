@@ -202,6 +202,66 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals(DateUnit.createFiscalYear(2007, 7), threeYears.get(1));
 		assertEquals(DateUnit.createFiscalYear(2008, 7), threeYears.get(2));
 	}
+	
+	public void testGetShortDateUnitString()
+	{
+		DateUnit totalDateUnit = new DateUnit();
+		assertEquals("wrong string for total date unit?", "Total", getProjectCalendar().getShortDateUnit(totalDateUnit, 1));
+		
+		
+		DateUnit dateUnit2005 = new DateUnit("YEARFROM:2005-01");
+		assertEquals("wrong year?", "2005", getProjectCalendar().getShortDateUnit(dateUnit2005, 1));
+		
+		DateUnit fY2005 = new DateUnit("YEARFROM:2005-01");
+		assertEquals("wrong year?", "FY05", getProjectCalendar().getShortDateUnit(fY2005, 2));
+		
+		
+		int FISCAL_YEAR_START_JAN = 1;
+		int FISCAL_YEAR_START_APR = 4;
+		int FISCAL_YEAR_START_JUL = 7;
+		int FISCAL_YEAR_START_OCT = 10;
+
+		DateUnit quarter1Of2009 = new DateUnit("2009Q1");
+		assertEquals("wrong quarter?", "Q1", getProjectCalendar().getShortDateUnit(quarter1Of2009, FISCAL_YEAR_START_JAN));
+		assertEquals("wrong quarter?", "Q4", getProjectCalendar().getShortDateUnit(quarter1Of2009, FISCAL_YEAR_START_APR));
+		assertEquals("wrong quarter?", "Q3", getProjectCalendar().getShortDateUnit(quarter1Of2009, FISCAL_YEAR_START_JUL));
+		assertEquals("wrong quarter?", "Q2", getProjectCalendar().getShortDateUnit(quarter1Of2009, FISCAL_YEAR_START_OCT));
+		
+		DateUnit quarter2Of2009 = new DateUnit("2009Q2");
+		assertEquals("wrong quarter?", "Q2", getProjectCalendar().getShortDateUnit(quarter2Of2009, FISCAL_YEAR_START_JAN));
+		assertEquals("wrong quarter?", "Q1", getProjectCalendar().getShortDateUnit(quarter2Of2009, FISCAL_YEAR_START_APR));
+		assertEquals("wrong quarter?", "Q4", getProjectCalendar().getShortDateUnit(quarter2Of2009, FISCAL_YEAR_START_JUL));
+		assertEquals("wrong quarter?", "Q3", getProjectCalendar().getShortDateUnit(quarter2Of2009, FISCAL_YEAR_START_OCT));
+		
+		DateUnit quarter3Of2009 = new DateUnit("2009Q3");
+		assertEquals("wrong quarter?", "Q3", getProjectCalendar().getShortDateUnit(quarter3Of2009, FISCAL_YEAR_START_JAN));
+		assertEquals("wrong quarter?", "Q2", getProjectCalendar().getShortDateUnit(quarter3Of2009, FISCAL_YEAR_START_APR));
+		assertEquals("wrong quarter?", "Q1", getProjectCalendar().getShortDateUnit(quarter3Of2009, FISCAL_YEAR_START_JUL));
+		assertEquals("wrong quarter?", "Q4", getProjectCalendar().getShortDateUnit(quarter3Of2009, FISCAL_YEAR_START_OCT));
+		
+		DateUnit quarter4Of2009 = new DateUnit("2009Q4");
+		assertEquals("wrong quarter?", "Q4", getProjectCalendar().getShortDateUnit(quarter4Of2009, FISCAL_YEAR_START_JAN));
+		assertEquals("wrong quarter?", "Q3", getProjectCalendar().getShortDateUnit(quarter4Of2009, FISCAL_YEAR_START_APR));
+		assertEquals("wrong quarter?", "Q2", getProjectCalendar().getShortDateUnit(quarter4Of2009, FISCAL_YEAR_START_JUL));
+		assertEquals("wrong quarter?", "Q1", getProjectCalendar().getShortDateUnit(quarter4Of2009, FISCAL_YEAR_START_OCT));
+		
+		
+		DateUnit jan2008 = new DateUnit("2008-01");
+		assertEquals("wrong month?", "Jan", getProjectCalendar().getShortDateUnit(jan2008, 1));
+		
+		DateUnit jul2008 = new DateUnit("2008-07");
+		assertEquals("wrong month?", "Jul", getProjectCalendar().getShortDateUnit(jul2008, 1));
+		
+		DateUnit dec2008 = new DateUnit("2008-12");
+		assertEquals("wrong month?", "Dec", getProjectCalendar().getShortDateUnit(dec2008, 1));
+		
+		
+		DateUnit janFirst2008 = new DateUnit("2008-01-01");
+		assertEquals("wrong day?", "1", getProjectCalendar().getShortDateUnit(janFirst2008, 1));
+		
+		DateUnit lastDayOfDecember = new DateUnit("2008-12-31");
+		assertEquals("wrong day?", "31", getProjectCalendar().getShortDateUnit(lastDayOfDecember, 1));
+	}
 
 	private ProjectCalendar getProjectCalendar()
 	{
