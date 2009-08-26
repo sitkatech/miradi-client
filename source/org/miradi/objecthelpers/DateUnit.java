@@ -100,7 +100,7 @@ public class DateUnit
 
 	public static DateUnit createFiscalYear(Integer startingYear, int startingMonth)
 	{
-		return new DateUnit(YEAR_PREFIX + asFourDigitString(startingYear) + "-" + asTwoDigitString(startingMonth));
+		return new DateUnit(YEAR_PREFIX_CODE + asFourDigitString(startingYear) + "-" + asTwoDigitString(startingMonth));
 	}
 
 	public String getDateUnitCode()
@@ -201,13 +201,13 @@ public class DateUnit
 
 	public String getYearYearString()
 	{
-		int startAt = YEAR_PREFIX.length();
+		int startAt = YEAR_PREFIX_CODE.length();
 		return getDateUnitCode().substring(startAt, startAt+4);
 	}
 	
 	private int getYearStartMonth()
 	{
-		int startAt = YEAR_PREFIX.length() + 5;
+		int startAt = YEAR_PREFIX_CODE.length() + 5;
 		return Integer.parseInt(getDateUnitCode().substring(startAt, startAt+2));
 	}
 	
@@ -308,7 +308,7 @@ public class DateUnit
 			return getMonthSuper();
 		
 		if(isQuarter())
-			return new DateUnit(YEAR_PREFIX + getDateUnitCode().substring(0, 4) + "-01");
+			return new DateUnit(YEAR_PREFIX_CODE + getDateUnitCode().substring(0, 4) + "-01");
 		
 		if(isYear())
 			return new DateUnit("");
@@ -420,7 +420,7 @@ public class DateUnit
 	};
 	
 	private static final String TAG_DATE_UNIT_CODE = "DateUnitCode";
-	private static final String YEAR_PREFIX = "YEARFROM:";
+	private static final String YEAR_PREFIX_CODE = "YEARFROM:";
 	private static final String QUARTER_PREFIX_CODE = "Q";
 	private String dateUnit;
 }
