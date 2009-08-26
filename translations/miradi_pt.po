@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-25 19:01-0500\n"
+"POT-Creation-Date: 2009-08-26 10:53-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3918,7 +3918,7 @@ msgstr ""
 msgid "Internal Error"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogfields/AbstractWorkPlanStringMapEditorDoer.java:52
+#: miradi/source/org/miradi/dialogfields/AbstractWorkPlanStringMapEditorDoer.java:53
 #: miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
 #: miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
 msgid "Editor"
@@ -6260,7 +6260,7 @@ msgstr ""
 msgid "Title|Simple Viability"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:66
+#: miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:67
 msgid "Project Resource"
 msgstr ""
 
