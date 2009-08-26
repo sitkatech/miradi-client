@@ -269,9 +269,11 @@ public class TestProjectCalendar extends TestCaseWithProject
 		
 		DateUnit janFirst2008 = new DateUnit("2008-01-01");
 		assertEquals("wrong day?", "1", getProjectCalendar().getShortDateUnit(janFirst2008, FISCAL_YEAR_START_JAN));
+		assertEquals("wrong day (fiscal year oct.)?", "1", getProjectCalendar().getShortDateUnit(janFirst2008, FISCAL_YEAR_START_OCT));
 		
 		DateUnit lastDayOfDecember = new DateUnit("2008-12-31");
 		assertEquals("wrong day?", "31", getProjectCalendar().getShortDateUnit(lastDayOfDecember, FISCAL_YEAR_START_JAN));
+		assertEquals("wrong day (Fiscal year Oct.)?", "31", getProjectCalendar().getShortDateUnit(lastDayOfDecember, FISCAL_YEAR_START_OCT));
 	}
 
 	private ProjectCalendar getProjectCalendar()
