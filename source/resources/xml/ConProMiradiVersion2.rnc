@@ -37,7 +37,6 @@ project_summary.element =
     element cp:project_summary {
         attribute share_outside_organization { xsd:boolean }
         & project_id.element
-        & parent_project_id.element
         & element cp:name {
               xsd:string { minLength = "1" }
           }

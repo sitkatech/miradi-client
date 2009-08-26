@@ -804,12 +804,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		writeStartElementWithAttribute(out, PROJECT_SUMMARY, SHARE_OUTSIDE_ORGANIZATION, tncProjectSharingToXmlValue(tncProjectSharingCode));
 	
 			writeProjectId(out);
-			
-			//TODO,  need to write out read project ids			
-//			out.writeln("<parent_project_id context='ConPro'>");
-//			out.writeln("noId");
-//			out.writeln("</parent_project_id>");
-			
+						
 			writeElement(out, PROJECT_SUMMARY_NAME, getProjectName());
 			
 			writeOptionalElement(out, START_DATE, getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
