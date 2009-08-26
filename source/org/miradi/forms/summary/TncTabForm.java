@@ -39,7 +39,7 @@ public class TncTabForm extends FieldPanelSpec
 		addLabelAndField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.LEGACY_TAG_ORGANIZATIONAL_PRIORITY);
+		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
