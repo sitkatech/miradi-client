@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 15:20-0500\n"
+"POT-Creation-Date: 2009-08-26 16:08-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6173,11 +6173,11 @@ msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 msgid "Threat"
 msgstr "Ancaman"
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:851
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:846
 msgid "Project Description:"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:856
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporterVersion2.java:851
 msgid "Site/Scope Description:"
 msgstr ""
 
