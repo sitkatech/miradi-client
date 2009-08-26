@@ -58,7 +58,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	public String getDateRangeName(DateRange dateRange)
 	{
-		return getFiscalYearQuarterName(dateRange, getFiscalYearFirstMonth());
+		return getFullDateRangeString(dateRange, getFiscalYearFirstMonth());
 	}
 	
 	public DateRange combineStartToEndProjectRange() throws Exception
@@ -205,8 +205,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return getFiscalYearString(fiscalYear);
 	}
 
-	//TODO rename method to getFullDateRangeString
-	public static String getFiscalYearQuarterName(DateRange dateRange, int fiscalYearFirstMonth)
+	public static String getFullDateRangeString(DateRange dateRange, int fiscalYearFirstMonth)
 	{
 		String fullRange = dateRange.toString();
 		

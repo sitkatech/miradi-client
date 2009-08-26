@@ -86,7 +86,7 @@ public class TestProjectCalendar extends TestCaseWithProject
 		MultiCalendar begin = getProject().parseIsoDate(beginDate);
 		MultiCalendar end = getProject().parseIsoDate(endDate);
 		DateRange dateRange = new DateRange(begin, end);
-		String result = ProjectCalendar.getFiscalYearQuarterName(dateRange, fiscalYearFirstMonth);
+		String result = ProjectCalendar.getFullDateRangeString(dateRange, fiscalYearFirstMonth);
 		assertEquals(expectedName, result);
 	}
 	
