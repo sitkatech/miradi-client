@@ -87,7 +87,7 @@ public class DateUnit
 		if(dateRange.isQuarter())
 		{
 			int startingQuarter = (startingMonth - 1) / 3 + 1;
-			return new DateUnit(yearString + QUARTER_PREFIX + startingQuarter);
+			return new DateUnit(yearString + QUARTER_PREFIX_CODE + startingQuarter);
 		}
 		
 		if(dateRange.isYear())
@@ -319,7 +319,7 @@ public class DateUnit
 	private DateUnit getMonthSuper()
 	{
 		int quarter = (getMonth() - 1) / 3;
-		String quarterString = QUARTER_PREFIX + (quarter + 1);
+		String quarterString = QUARTER_PREFIX_CODE + (quarter + 1);
 		return new DateUnit(getDateUnitCode().substring(0, 4) + quarterString);
 	}
 
@@ -335,7 +335,7 @@ public class DateUnit
 			if(unboundedQuarter == 4)
 				++year;
 			int quarter = unboundedQuarter % 4;
-			quarters.add(new DateUnit(asFourDigitString(year) + QUARTER_PREFIX + (quarter+1)));
+			quarters.add(new DateUnit(asFourDigitString(year) + QUARTER_PREFIX_CODE + (quarter+1)));
 		}
 		
 		return quarters;
@@ -421,6 +421,6 @@ public class DateUnit
 	
 	private static final String TAG_DATE_UNIT_CODE = "DateUnitCode";
 	private static final String YEAR_PREFIX = "YEARFROM:";
-	private static final String QUARTER_PREFIX = "Q";
+	private static final String QUARTER_PREFIX_CODE = "Q";
 	private String dateUnit;
 }
