@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
@@ -49,7 +50,8 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 		{
 			TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
 			ObjectDataInputPanel codeListPanel = createEditorPanel(workPlanTableSettings);
-			codeListPanel.showModalDialog(getMainWindow(), EAM.text("Editor"));
+			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), codeListPanel, EAM.text("Editor"));
+			getView().showFloatingPropertiesDialog(dialog);
 		}
 		catch (Exception e)
 		{

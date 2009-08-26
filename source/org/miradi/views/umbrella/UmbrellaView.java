@@ -600,9 +600,17 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void closeActivePropertiesDialog()
 	{
-		if(activePropertiesPanel != null && activePropertiesDlg.isDisplayable())
-			activePropertiesDlg.dispose();
+		if(activePropertiesPanel != null && activePropertiesPanel.isDisplayable())
+		{
+			activePropertiesPanel.dispose();
+		}
 		activePropertiesPanel = null;
+
+		if(activePropertiesDlg != null && activePropertiesDlg.isDisplayable())
+		{
+			activePropertiesDlg.setVisible(false);
+			activePropertiesDlg.dispose();
+		}
 		activePropertiesDlg = null;
 	}
 	
