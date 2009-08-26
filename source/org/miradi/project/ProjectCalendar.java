@@ -28,6 +28,9 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.MonthAbbreviationsQuestion;
 import org.miradi.utils.DateRange;
 
 public class ProjectCalendar implements CommandExecutedListener
@@ -48,9 +51,14 @@ public class ProjectCalendar implements CommandExecutedListener
 		dateRanges = null;
 	}
 
+	public String getShortDateUnitString(DateUnit dateUnit)
+	{
+		return getShortDateUnit(dateUnit, getFiscalYearFirstMonth());
+	}
+	
 	public String getDateRangeName(DateRange dateRange)
 	{
-		return getFiscalYearQuarterName(dateRange, getProject().getMetadata().getFiscalYearFirstMonth());
+		return getFiscalYearQuarterName(dateRange, getFiscalYearFirstMonth());
 	}
 	
 	public DateRange combineStartToEndProjectRange() throws Exception
@@ -63,7 +71,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	private int getFiscalYearFirstMonth()
 	{
-		return project.getMetadata().getFiscalYearFirstMonth();
+		return getProject().getMetadata().getFiscalYearFirstMonth();
 	}
 
 	public String getPlanningStartDate()
@@ -150,6 +158,57 @@ public class ProjectCalendar implements CommandExecutedListener
 		throw new RuntimeException("Unknown fiscal year month start: " + fiscalYearFirstMonth);
 	}
 
+	public static String getShortDateUnit(DateUnit dateUnit, int fiscalYearFirstMonth)
+	{
+		if (dateUnit.isProjectTotal())
+			return EAM.text("Total");
+		
+		if (dateUnit.isYear())
+			return getYearString(dateUnit, fiscalYearFirstMonth);
+		
+		if (dateUnit.isQuarter())
+			return getQuarterString(dateUnit, fiscalYearFirstMonth);
+
+		if (dateUnit.isMonth())
+			return getMonthString(dateUnit);
+		
+		if (dateUnit.isDay())
+			return Integer.toString(dateUnit.getDay());
+		
+		throw new RuntimeException("DateUnit could not be converted to string. DateUnit = " + dateUnit + ".  Fiscal Year First Month = " + fiscalYearFirstMonth);
+	}
+
+	private static String getMonthString(DateUnit dateUnit)
+	{
+		ChoiceQuestion question = new MonthAbbreviationsQuestion();
+		String month = Integer.toString(dateUnit.getMonth());
+		ChoiceItem choiceItem = question.findChoiceByCode(month);
+		return choiceItem.getLabel();
+	}
+	
+	private static String getQuarterString(DateUnit dateUnit, int fiscalYearFirstMonth)
+	{
+		if (fiscalYearFirstMonth == 1)
+			return dateUnit.getQuarterWithPrefix();
+
+		int quarter = dateUnit.getQuarter();
+		int startFiscalQuarter = (fiscalYearFirstMonth - 1 ) / 3 + 1;
+		int fiscalYearQuarter = ((quarter - startFiscalQuarter) + 4) % 4 + 1;
+		
+		return DateUnit.QUARTER_PREFIX + fiscalYearQuarter;
+	}
+
+	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
+	{
+		String yearString = dateUnit.getYearYearString();
+		if (fiscalYearFirstMonth == 1)
+			return yearString;
+	
+		int fiscalYear = Integer.parseInt(yearString);
+		return getFiscalYearString(fiscalYear);
+	}
+
+	//TODO rename method to getFullDateRangeString
 	public static String getFiscalYearQuarterName(DateRange dateRange, int fiscalYearFirstMonth)
 	{
 		String fullRange = dateRange.toString();
@@ -233,7 +292,7 @@ public class ProjectCalendar implements CommandExecutedListener
 	private static String getFiscalYearString(int fiscalYear)
 	{
 		String yearString = Integer.toString(fiscalYear);
-		return "FY" + yearString.substring(2);
+		return FISCAL_YEAR_PREFIX + yearString.substring(2);
 	}
 	
 	public DateRange convertToDateRange(DateUnit dateUnit) throws Exception
@@ -342,4 +401,5 @@ public class ProjectCalendar implements CommandExecutedListener
 
 	private Project project;
 	private Vector<DateRange> dateRanges;
+	private static final String FISCAL_YEAR_PREFIX = "FY";
 }
