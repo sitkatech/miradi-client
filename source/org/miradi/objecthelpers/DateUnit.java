@@ -426,6 +426,6 @@ public class DateUnit
 	
 	private static final String TAG_DATE_UNIT_CODE = "DateUnitCode";
 	private static final String YEAR_PREFIX = "YEARFROM:";
-	public static final String QUARTER_PREFIX = "Q";
+	private static final String QUARTER_PREFIX = "Q";
 	private String dateUnit;
 }
