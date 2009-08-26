@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-24 12:43-0500\n"
+"POT-Creation-Date: 2009-08-25 18:58-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "[Not Named]"
 msgstr ""
 
-#: miradi/source/org/miradi/objects/ProjectResource.java:124
+#: miradi/source/org/miradi/objects/ProjectResource.java:122
 msgid "Label|(Undefined Resource)"
 msgstr ""
 
