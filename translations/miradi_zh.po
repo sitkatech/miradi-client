@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 10:53-0500\n"
+"POT-Creation-Date: 2009-08-26 12:59-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2002,6 +2002,10 @@ msgstr "[新结果链] \t\t"
 #: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
 msgstr "结果链 \t\t"
+
+#: miradi/source/org/miradi/project/ProjectCalendar.java:164
+msgid "Total"
+msgstr "总计 \t\t"
 
 #: miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:47
 msgid "2) Identify indicators"
@@ -6458,11 +6462,7 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "标题|直接威胁因子属性"
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:109
-msgid "Total"
-msgstr "总计 \t\t"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:117
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "（错误） \t\t"

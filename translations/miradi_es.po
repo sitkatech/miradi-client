@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-26 10:53-0500\n"
+"POT-Creation-Date: 2009-08-26 12:59-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2114,6 +2114,10 @@ msgstr "[Nueva cadena de resultados]"
 #: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
 msgstr "Cadena de resultados"
+
+#: miradi/source/org/miradi/project/ProjectCalendar.java:164
+msgid "Total"
+msgstr "Total"
 
 #: miradi/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:47
 msgid "2) Identify indicators"
@@ -6661,11 +6665,7 @@ msgstr "Title|Contributing Factor Properties"
 msgid "Title|Direct Threat Properties"
 msgstr "Propiedades de amenaza directa  "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:109
-msgid "Total"
-msgstr "Total"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:117
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
 msgstr "(Error)"
