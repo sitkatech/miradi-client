@@ -68,20 +68,14 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		ModalDialogWithClose dialog = new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle);
 		Utilities.centerDlg(dialog);
 
-		// NOTE: This solves the problem of popping up Edit Methods
-		// (which has an assignments side-tab) on top of an Indicator 
-		// Properties Panel (which also has a side-tab), which was 
-		// causing two pickers to be associated with the same actions
-		mainWindow.getCurrentView().getCurrentTabPanel().becomeInactive();
+		managementPanel.becomeActive();
 		try
 		{
-			managementPanel.becomeActive();
 			dialog.setVisible(true);
 		}
 		finally
 		{
 			managementPanel.becomeInactive();
-			mainWindow.getCurrentView().getCurrentTabPanel().becomeActive();
 		}
 	}
 
