@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import java.util.HashSet;
+import java.util.Vector;
 
 import javax.swing.Icon;
 import javax.swing.event.ListSelectionEvent;
@@ -52,7 +52,7 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 	
 	private void initialize()
 	{
-		pickers = new HashSet<ObjectPicker>();
+		pickers = new Vector<ObjectPicker>();
 	}
 
 	public boolean isObjectAction()
@@ -66,25 +66,27 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 			return;
 		
 		if(pickers.contains(newPicker))
+		{
+			EAM.logWarning("addPicker already exists: " + newPicker.getClass() + " on " + getClass());
 			return;
+		}
 		
 		pickers.add(newPicker);
 		newPicker.addSelectionChangeListener(this);
-
-		int activePickerCount = 0;
-		for(ObjectPicker picker : pickers)
-		{
-			if(picker.isActive())
-				++activePickerCount;
-		}
-		
-		if(activePickerCount > 1)
-			EAM.logWarning("Multiple active pickers for " + getClass().getSimpleName());
 	}
 
 	public void removePicker(ObjectPicker toRemove)
 	{
-		pickers.remove(toRemove);
+		removeLastAddedPicker(toRemove);
+	}
+
+	private void removeLastAddedPicker(ObjectPicker toRemove)
+	{
+		int at = pickers.lastIndexOf(toRemove);
+		if(at < 0)
+			return;
+		
+		pickers.remove(at);
 	}
 
 	public Doer getDoer()
@@ -102,19 +104,20 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 	
 	public ObjectPicker getPicker()
 	{
+		return getMostRecentlyAddedActivePicker();
+	}
+
+	private ObjectPicker getMostRecentlyAddedActivePicker()
+	{
 		ObjectPicker currentPicker = null;
 		for(ObjectPicker picker : pickers)
 		{
 			if(picker.isActive())
-			{
-				if(currentPicker != null)
-					EAM.logWarning("Two active pickers for " + getClass() + ":\n " + picker.getClass() + " and\n " + currentPicker.getClass());
 				currentPicker = picker;
-			}
 		}
 		return currentPicker;
 	}
 
-	private HashSet<ObjectPicker> pickers;
+	private Vector<ObjectPicker> pickers;
 
 }
