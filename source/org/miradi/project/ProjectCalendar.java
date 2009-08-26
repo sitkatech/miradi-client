@@ -188,9 +188,6 @@ public class ProjectCalendar implements CommandExecutedListener
 	
 	private static String getQuarterString(DateUnit dateUnit, int fiscalYearFirstMonth)
 	{
-		if (fiscalYearFirstMonth == 1)
-			return dateUnit.getQuarterWithPrefix();
-
 		int quarter = dateUnit.getQuarter();
 		int startFiscalQuarter = (fiscalYearFirstMonth - 1 ) / 3 + 1;
 		int fiscalYearQuarter = ((quarter - startFiscalQuarter) + 4) % 4 + 1;
