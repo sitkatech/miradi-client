@@ -24,18 +24,13 @@ import java.util.HashMap;
 
 import javax.swing.JToolBar;
 
-import org.miradi.actions.ActionCreateAccountingCode;
-import org.miradi.actions.ActionCreateFundingSource;
 import org.miradi.actions.ActionCreatePlanningViewConfigurationMenuDoer;
 import org.miradi.actions.ActionCreatePlanningViewEmptyConfiguration;
 import org.miradi.actions.ActionCreatePlanningViewPrefilledConfiguration;
 import org.miradi.actions.ActionCreateResource;
-import org.miradi.actions.ActionDeleteAccountingCode;
-import org.miradi.actions.ActionDeleteFundingSource;
 import org.miradi.actions.ActionDeletePlanningViewConfiguration;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionDeleteResource;
-import org.miradi.actions.ActionImportAccountingCodes;
 import org.miradi.actions.ActionPlanningColumnsEditor;
 import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionPlanningRowsEditor;
@@ -59,15 +54,10 @@ import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
-import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
-import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationMenuDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewPrefilledConfigurationDoer;
-import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
-import org.miradi.views.planning.doers.DeleteFundingSourceDoer;
 import org.miradi.views.planning.doers.DeletePlanningViewConfigurationDoer;
-import org.miradi.views.planning.doers.ImportAccountingCodesDoer;
 import org.miradi.views.planning.doers.PlanningColumnsEditorDoer;
 import org.miradi.views.planning.doers.PlanningRowsEditorDoer;
 import org.miradi.views.planning.doers.PlanningTreeNodeCreationMenuDoer;
@@ -102,9 +92,6 @@ public class PlanningView extends TabbedView
 		objectsOnlyManagementPanel = ObjectsOnlyManagementPanel.createObjectsOnlyPanel(getMainWindow());
 		resourceManagementPanel = StrategicPlanResourcesManagementPanel.createProjectResourcesPanelWithoutBudgetColumns(getMainWindow());
 		
-		accountingCodePoolManagementPanel = StrategicPlanAccountingCodeManagementPanel.createAccountingCodePanel(getMainWindow());
-		fundingSourcePoolManagementPanel = StrategicPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
-		
 		managementPanelMap = new HashMap();
 
 		addPlanningManagementTab(strategicPlanManagementPanel);
@@ -113,8 +100,6 @@ public class PlanningView extends TabbedView
 		addPlanningManagementTab(planningManagementPanel);
 		
 		addNonScrollingTab(resourceManagementPanel);
-		addNonScrollingTab(accountingCodePoolManagementPanel);
-		addNonScrollingTab(fundingSourcePoolManagementPanel);
 	}
 
 	private void addPlanningManagementTab(PlanningTreeManagementPanel managementPanel)
@@ -150,11 +135,6 @@ public class PlanningView extends TabbedView
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
 		
-		accountingCodePoolManagementPanel.dispose();
-		accountingCodePoolManagementPanel = null;
-		
-		fundingSourcePoolManagementPanel.dispose();
-		fundingSourcePoolManagementPanel = null;
 	}
 
 	public String cardName()
@@ -191,13 +171,6 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResource());
 
-		addDoerToMap(ActionCreateAccountingCode.class, new CreateAccountingCodeDoer());
-		addDoerToMap(ActionDeleteAccountingCode.class, new DeleteAccountingCodeDoer());
-		addDoerToMap(ActionImportAccountingCodes.class, new ImportAccountingCodesDoer());
-
-		addDoerToMap(ActionCreateFundingSource.class, new CreateFundingSourceDoer());
-		addDoerToMap(ActionDeleteFundingSource.class, new DeleteFundingSourceDoer());	
-		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
 
 		addDoerToMap(ActionTreeCreateIndicator.class, new TreeNodeCreateIndicatorDoer());
@@ -227,9 +200,6 @@ public class PlanningView extends TabbedView
 	private PlanningTreeManagementPanel strategicPlanManagementPanel;
 	private PlanningTreeManagementPanel monitoringPlanManagementPanel;
 	private PlanningTreeManagementPanel resourceManagementPanel;
-	private PlanningTreeManagementPanel accountingCodePoolManagementPanel;
-	private PlanningTreeManagementPanel fundingSourcePoolManagementPanel;
-	
 	
 	private HashMap<String, PlanningTreeManagementPanel> managementPanelMap;
 }
