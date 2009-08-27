@@ -55,11 +55,13 @@ public class ProjectResource extends BaseObject
 	}
 
 	
+	@Override
 	public int getType()
 	{
 		return getObjectType();
 	}
 
+	@Override
 	public String getTypeName()
 	{
 		return OBJECT_NAME;
@@ -91,11 +93,13 @@ public class ProjectResource extends BaseObject
 		return roleCodes.getCodeList();
 	}
 	
+	@Override
 	public String getLabel()
 	{
 		return getWho();
 	}
 	
+	@Override
 	public String toString()
 	{
 		return getFullName();
@@ -127,6 +131,7 @@ public class ProjectResource extends BaseObject
 		return initials.get();
 	}
 
+	@Override
 	public String getFullName()
 	{
 		String result = "";
@@ -217,6 +222,7 @@ public class ProjectResource extends BaseObject
 		return find(project.getObjectManager(), projectResourceRef);
 	}
 	
+	@Override
 	public void clear()
 	{
 		super.clear();
