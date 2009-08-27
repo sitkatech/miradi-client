@@ -27,17 +27,9 @@ import java.util.Vector;
 
 public class DelimitedFileLoader
 {
-	static String QUOTE = "\"";
-
-	static String TAB = "\t";
-	
-	static String COMMENT = "#";
-
-	public Vector<Vector<String>> getDelimitedContents(Reader rawReader)
-			throws IOException
+	public Vector<Vector<String>> getDelimitedContents(Reader rawReader) throws IOException
 	{
 		BufferedReader reader = new BufferedReader(rawReader);
-		
 		Vector<Vector<String>> lineVector = new Vector();
 		while(reader.ready())
 		{
@@ -63,12 +55,10 @@ public class DelimitedFileLoader
 		return lineVector;
 	}
 
-
 	protected String translateLine(String line)
 	{
 		return line;
 	}
-
 
 	private static void addElementToLine(Vector thisLine, String token)
 	{
@@ -77,4 +67,7 @@ public class DelimitedFileLoader
 		thisLine.addElement(token);
 	}
 
+	private static final String QUOTE = "\"";
+	public static final String TAB = "\t";
+	private static final String COMMENT = "#";
 }
