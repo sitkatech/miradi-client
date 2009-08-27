@@ -83,7 +83,6 @@ public class StaticQuestionManager
 		addQuestion(new TextBoxZOrderQuestion());
 		addQuestion(new CustomPlanningRowsQuestion());
 		addQuestion(new CustomPlanningColumnsQuestion());
-		addQuestion(new TncOrganizationalPrioritiesQuestion());
 		addQuestion(new TncProjectPlaceTypeQuestion());
 		addQuestion(new ScopeBoxColorQuestion());
 		addQuestion(new TargetModeQuestion());
