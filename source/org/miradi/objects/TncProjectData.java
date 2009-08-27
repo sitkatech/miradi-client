@@ -19,7 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import java.io.StringReader;
+import java.util.Vector;
+
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.StringData;
 import org.miradi.objecthelpers.ORef;
@@ -27,6 +31,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TncProjectData extends BaseObject
@@ -67,6 +72,43 @@ public class TncProjectData extends BaseObject
 		return false;
 	}
 	
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_CLASSIFICATIONS))
+			return parseClassifications();
+		
+		return super.getPseudoData(fieldTag);
+	}
+
+	private String parseClassifications()
+	{
+		try
+		{
+			StringReader reader = new StringReader(getClassifications());
+			Vector<Vector<String>> rawClassifications = new DelimitedFileLoader().getDelimitedContents(reader);
+			final String NEW_LINE = "\n";
+			String appendedClassications = "";
+			for(int index = 0; index < rawClassifications.size(); ++index)
+			{
+				if (index > 0)
+					appendedClassications += NEW_LINE;
+				
+				Vector<String> row = rawClassifications.get(index);
+				appendedClassications += row.get(2);
+				appendedClassications += ":";
+				appendedClassications += row.get(1);
+			}
+			
+			return appendedClassications;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return EAM.text("Error");
+		}
+	}
+	
 	public String getClassifications()
 	{
 		return classifications.get();
@@ -92,11 +134,15 @@ public class TncProjectData extends BaseObject
 		associatedProjectsText = new StringData(TAG_ASSOCIATED_PROJECTS_TEXT);
 		classifications = new StringData(TAG_CLASSIFICATIONS);
 		
+		pseudoClassifications = new PseudoStringData(PSEUDO_TAG_CLASSIFICATIONS);
+		
 		addField(projectSharingCode);
 		addField(projectTypes);
 		addField(parentChild);
 		addField(associatedProjectsText);
 		addField(classifications);
+		
+		addField(pseudoClassifications);
 	}
 	
 	public static final String OBJECT_NAME = "TncProjectData";
@@ -107,9 +153,13 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_ASSOCIATED_PROJECTS_TEXT = "AssociatedProjectsText";
 	public final static String TAG_CLASSIFICATIONS = "Classifications";
 	
+	public final static String PSEUDO_TAG_CLASSIFICATIONS = "PseudoClassifications";
+	
 	public StringData projectSharingCode;
 	public CodeListData projectTypes;
 	public StringData parentChild;
 	public StringData associatedProjectsText;
 	public StringData classifications;
+	
+	public PseudoStringData pseudoClassifications;
 }
