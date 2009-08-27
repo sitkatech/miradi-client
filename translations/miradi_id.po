@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-27 10:13-0500\n"
+"POT-Creation-Date: 2009-08-27 10:32-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6182,34 +6182,34 @@ msgid "Site/Scope Description:"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:163
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:168
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:167
 msgid "File to import does not validate."
 msgstr "Berkas yang akan diimpor tidak bisa divalidasi. "
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1069
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1114
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1098
 msgid "Placeholder - From ConPro"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1073
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1118
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1102
 #, fuzzy
 msgid "Objective Holder"
 msgstr "Objective Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1079
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1124
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1108
 #, fuzzy
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1176
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1221
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1205
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
 #: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1177
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1222
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1206
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
