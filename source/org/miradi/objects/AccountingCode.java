@@ -73,6 +73,18 @@ public class AccountingCode extends BaseObject
 		return EAM.text("Label|(Undefined Accounting Code)");
 	}
 	
+	@Override
+	public String getFullName()
+	{
+		String result = "";
+		String codeText = code.get();
+		if(codeText.length() > 0)
+			result += codeText + ": ";
+		result += toString();
+		
+		return result;
+	}
+	
 	public static boolean is(BaseObject baseObject)
 	{
 		return is(baseObject.getType());

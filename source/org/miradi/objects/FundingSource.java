@@ -73,6 +73,18 @@ public class FundingSource extends BaseObject
 		return EAM.text("Label|(Undefined Funding Source)");
 	}
 
+	@Override
+	public String getFullName()
+	{
+		String result = "";
+		String codeText = code.get();
+		if(codeText.length() > 0)
+			result += codeText + ": ";
+		result += toString();
+		
+		return result;
+	}
+	
 	public static FundingSource find(ObjectManager objectManager, ORef fundingSourceRef)
 	{
 		return (FundingSource) objectManager.findObject(fundingSourceRef);
