@@ -407,7 +407,7 @@ public class ThreatRatingMultiTablePanel extends MultiTablePanel implements List
 		overallPanelLayout.setMargins(5);
 		MiradiPanel overallPanel = new MiradiPanel(overallPanelLayout);
 		overallPanel.setBorder(BorderFactory.createEmptyBorder(2,2,2,2));
-		overallPanel.add(new PanelTitleLabel("<html><b>" + EAM.text("Overall Project Rating") + "</b></html>"));
+		overallPanel.add(new PanelTitleLabel(EAM.text("<html><b>Overall<br>Project<br>Rating</b></html>")));
 		overallPanel.add(overallProjectSummaryCellTable);
 		JScrollPane overallProjectSummaryCellTableScroller = new OverallProjectRatingScrollPane(overallPanel, threatSummaryColumnTableScroller);
 		overallProjectSummaryCellTableScroller.setBorder(null);
