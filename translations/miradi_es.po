@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-27 11:41-0500\n"
+"POT-Creation-Date: 2009-08-27 11:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -8437,12 +8437,6 @@ msgstr "URL"
 
 msgid "FieldLabel|40.ConProProjectNumber|ConPro Project Number"
 msgstr "Número de proyecto de ConPro"
-
-msgid "FieldLabel|40.OrganizationalPriority|Organizational Priority (legacy)"
-msgstr ""
-
-msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
-msgstr ""
 
 #, fuzzy
 msgid "FieldLabel|40.ProjectSharingCode|Data Sharing"
