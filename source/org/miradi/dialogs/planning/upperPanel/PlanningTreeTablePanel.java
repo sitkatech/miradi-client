@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.BorderLayout;
 
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -37,6 +38,7 @@ import org.miradi.dialogs.planning.AccountingCodeBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.FundingSourceBudgetDetailsTableModel;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
+import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
@@ -44,7 +46,6 @@ import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPanel;
 import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
 import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
@@ -70,14 +71,19 @@ import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.MultiTableCombinedAsOneExporter;
 import org.miradi.utils.MultiTableRowHeightController;
-import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.MultiTableSelectionController;
+import org.miradi.utils.MultiTableVerticalScrollController;
 import org.miradi.utils.TableExporter;
 import org.miradi.utils.TreeTableExporter;
 
 abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButtonColumns
 {
 	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse) throws Exception
+	{
+		this(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProviderToUse, new AbstractFixedHeightDirectlyAboveTreeTablePanel());
+	}
+	
+	protected PlanningTreeTablePanel(MainWindow mainWindowToUse, PlanningTreeTable treeToUse, PlanningTreeTableModel modelToUse, Class[] buttonActions, RowColumnProvider rowColumnProviderToUse, JComponent filterStatusPanel) throws Exception
 	{
 		super(mainWindowToUse, treeToUse, buttonActions);
 		
@@ -121,7 +127,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		add(buttonBox, BorderLayout.BEFORE_FIRST_LINE);
 		
 		JPanel leftPanel = new MiradiPanel(new BorderLayout());
-		filterStatusPanel = new ProjectResourceFilterStatusPanel(getProject());
 		leftPanel.add(filterStatusPanel, BorderLayout.BEFORE_FIRST_LINE);
 		leftPanel.add(treeTableScrollPane, BorderLayout.CENTER);
 		
@@ -387,8 +392,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		restoreTreeExpansionState();
 		updateRightSideTablePanels();
 
-		filterStatusPanel.updateStatusLabel();
-	
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(getMainTable(), selectedRow, selectedColumn);
 	}
 	
@@ -663,7 +666,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	private AccountingCodeExpenseTableModel accountingCodeExpenseTableModel;
 
 	private ScrollPaneWithHideableScrollBar mainTableScrollPane;
-	private ProjectResourceFilterStatusPanel filterStatusPanel;
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
