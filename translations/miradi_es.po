@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-27 10:32-0500\n"
+"POT-Creation-Date: 2009-08-27 11:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -469,7 +469,7 @@ msgstr "RARE"
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:94
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:95
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "TNC"
@@ -8452,6 +8452,9 @@ msgid "FieldLabel|40.ProjectPlaceTypes|Project Types"
 msgstr ""
 
 msgid "FieldLabel|40.ConProParentChildProjectText|Parent Child"
+msgstr ""
+
+msgid "FieldLabel|40.AssociatedProjectsText|Associated Projects"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
