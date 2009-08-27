@@ -85,7 +85,6 @@ import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
@@ -151,10 +150,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
 		
 		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectData.getObjectType());
-		CodeList organizationalPriorityCodes = new CodeList();
-		organizationalPriorityCodes.add(TncOrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
-		organizationalPriorityCodes.add(TncOrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE);
-		
 		CodeList projectTypes = new CodeList();
 		projectTypes.add(TncProjectPlaceTypeQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
 		projectTypes.add(TncProjectPlaceTypeQuestion.NON_PLACE_BASED_PROJECT_CODE);
