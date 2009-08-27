@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-27 11:44-0500\n"
+"POT-Creation-Date: 2009-08-27 12:05-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6663,7 +6663,7 @@ msgstr "Biaya/Unit "
 msgid "Title|Measurement Properties"
 msgstr "Sifat-sifat Pengukuran "
 
-#: miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:396
+#: miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:402
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
