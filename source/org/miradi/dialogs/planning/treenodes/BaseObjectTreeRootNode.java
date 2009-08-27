@@ -53,6 +53,8 @@ public class BaseObjectTreeRootNode extends AbstractPlanningTreeNode
 		{
 			children.add(new BaseObjectTreeNode(getProject(), visibleRows, refs.get(index)));
 		}
+		
+		pruneUnwantedLayers(getVisibleRows());
 	}
 	
 	protected int getChildObjectType()
