@@ -25,7 +25,6 @@ import javax.swing.Icon;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.views.Doer;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -65,28 +64,14 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 		if(newPicker == null)
 			return;
 		
-		if(pickers.contains(newPicker))
-		{
-			EAM.logWarning("addPicker already exists: " + newPicker.getClass() + " on " + getClass());
-			return;
-		}
-		
 		pickers.add(newPicker);
 		newPicker.addSelectionChangeListener(this);
 	}
 
 	public void removePicker(ObjectPicker toRemove)
 	{
-		removeLastAddedPicker(toRemove);
-	}
-
-	private void removeLastAddedPicker(ObjectPicker toRemove)
-	{
-		int at = pickers.lastIndexOf(toRemove);
-		if(at < 0)
-			return;
-		
-		pickers.remove(at);
+		toRemove.removeSelectionChangeListener(this);
+		pickers.remove(toRemove);
 	}
 
 	public Doer getDoer()
