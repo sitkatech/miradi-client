@@ -835,7 +835,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeElement(out, EXPORT_DATE, new MiradiMultiCalendar().toIsoDateString());
 			out.writeln();
 			writeOrganizationPriorities(out);
-			writeProjectTypes(out);
 			
 		writeEndElement(out, PROJECT_SUMMARY);
 	}
@@ -867,11 +866,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		return concatenated;
 	}
 	
-	private void writeProjectTypes(UnicodeWriter out) throws Exception
-	{
-		writeTncDataCodeList(out, PROJECT_PLACE_TYPES, PROJECT_PLACE_TYPE, TncProjectData.TAG_PROJECT_PLACE_TYPES);
-	}
-
 	private void writeOrganizationPriorities(UnicodeWriter out) throws Exception
 	{
 		writeTncDataCodeList(out, ORGANIZATIONAL_PRIORITIES, ORGANIZATIONAL_PRIORITY, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES);

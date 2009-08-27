@@ -552,7 +552,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		final String booleanAsString = Boolean.toString(isTrue(tncProjectSharingXmlValue));
 		importCodeField(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, getCodeMapHelper().getConProToMiradiTncProjectSharingMap(), booleanAsString);
 		importOrganizationalPriority(projectSumaryNode, tncProjectSharingXmlValue, tncProjectDataRef);
-		importProjectTypes(tncProjectSharingXmlValue, tncProjectDataRef);
 		
 		importField(projectSumaryNode, NAME, metadataRef,ProjectMetadata.TAG_PROJECT_NAME);
 		importProjectId(projectSumaryNode, metadataRef);
@@ -583,11 +582,6 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	private void importOrganizationalPriority(Node projectSumaryNode, String tncProjectSharingXmlValue, ORef tncProjectDataRef)	throws Exception
 	{
 		importCodeListField(projectSumaryNode, ORGANIZATIONAL_PRIORITIES, ORGANIZATIONAL_PRIORITY, tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getCodeMapHelper().getConProToMiradiOrganizationalPrioritiesMap());
-	}
-	
-	private void importProjectTypes(String tncProjectSharingXmlValue, ORef tncProjectDataRef)	throws Exception
-	{
-		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, PROJECT_PLACE_TYPES, PROJECT_PLACE_TYPE}), tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES);
 	}
 	
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
