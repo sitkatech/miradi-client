@@ -114,7 +114,7 @@ abstract public class AbstractEditableTreeTablePanel extends MultiTreeTablePanel
 		BaseObject[] selected = tree.getSelectedObjects();
 		if(selected.length == 1)
 			selectedRef = selected[0].getRef();
-		int selectedRow = getTree().getSelectionModel().getAnchorSelectionIndex();
+		int selectedRow = getTree().getSelectionModel().getMinSelectionIndex();
 		
 		getTree().rebuildTableCompletely();
 		getEditableSingleBooleanColumnTableModel().fireTableStructureChanged();
