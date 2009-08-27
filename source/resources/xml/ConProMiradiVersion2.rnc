@@ -83,13 +83,6 @@ project_id.element =
         & xsd:NMTOKEN
     }?
 #
-parent_project_id.element =
-    element cp:parent_project_id {
-        # Context, for now, is 'ConPro.' Revisit as required.
-        attribute context { xsd:NMTOKEN }
-        & xsd:NMTOKEN
-    }?
-#
 area_size.element =
     element cp:area_size {
         attribute unit { vocabulary_area_unit }
