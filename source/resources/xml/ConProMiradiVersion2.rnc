@@ -69,7 +69,6 @@ project_summary.element =
         & ecoregions.element
         & countries.element
         & ous.element
-        & organizational_priorities.element
         & element cp:exporter_name { xsd:NMTOKEN }
         & element cp:exporter_version { xsd:NMTOKEN }
         & element cp:export_date { vocabulary_date }
@@ -143,11 +142,6 @@ ous.element =
             ]
         ]
         element cp:ou_code { vocabulary_ou }*
-    }
-#
-organizational_priorities.element =
-    element cp:organizational_priorities {
-        element cp:priority { vocabulary_organizational_priorities }*
     }
 #
 targets.element =
@@ -636,13 +630,6 @@ vocabulary_ecoregion = xsd:NMTOKEN { pattern = "[123][\d]{4}" }
 vocabulary_geospatial_type = "point"
 vocabulary_id = xsd:nonNegativeInteger
 vocabulary_key_ecological_attribute_category = "Condition" | "Landscape Context" | "Size"
-vocabulary_organizational_priorities =
-    "Capital Campaign"
-    | "Regional Priority"
-    | "CSD - Climate"
-    | "CSD - Marine"
-    | "CSD - Freshwater"
-    | "CSD - Protected Areas"
 vocabulary_ou = xsd:NMTOKEN { pattern = "\S{5}" }
 vocabulary_priority_vhhml = "Very High" | "High" | "Medium" | "Low"
 vocabulary_progress =

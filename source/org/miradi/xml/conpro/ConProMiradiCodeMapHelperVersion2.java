@@ -23,10 +23,9 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.ResourceRoleQuestion;
-import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
@@ -101,14 +100,6 @@ public class ConProMiradiCodeMapHelperVersion2
 		trendMap.put(TrendQuestion.MILD_DECREASE_CODE, "Mild Decrease");
 		trendMap.put(TrendQuestion.STRONG_DECREASE_CODE, "Strong Increase");
 		
-		organizationalPrioritiesMap = new HashMap<String, String>();
-		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE, "Capital Campaign");
-		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.REGIONAL_PRIORITY_CODE, "Regional Priority");
-		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_CLIMATE_CODE, "CSD - Climate");
-		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_MARINE_CODE, "CSD - Marine");
-		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_FRESHWATER_CODE, "CSD - Freshwater");
-		organizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE, "CSD - Protected Areas");
-		
 		teamRolesMap = new HashMap<String, String>();
 		teamRolesMap.put(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE, "Team Member");
 		teamRolesMap.put(ResourceRoleQuestion.CONTACT_CODE, "Team Contact");
@@ -160,11 +151,6 @@ public class ConProMiradiCodeMapHelperVersion2
 	public HashMap<String, String> getConProToMiradiTrendMap()
 	{
 		return reverseMap(trendMap);
-	}
-	
-	public HashMap<String, String> getConProToMiradiOrganizationalPrioritiesMap()
-	{
-		return reverseMap(organizationalPrioritiesMap);
 	}
 	
 	public HashMap<String, String> getConProToMiradiTeamRolesMap()
@@ -250,11 +236,6 @@ public class ConProMiradiCodeMapHelperVersion2
 		return trendMap;
 	}
 	
-	public HashMap<String, String> getMiradiToConProOrganizationalPrioritiesMap()
-	{
-		return organizationalPrioritiesMap;
-	}
-	
 	public HashMap<String, String> getMiradiToConProTeamRolesMap()
 	{
 		return teamRolesMap;
@@ -270,7 +251,6 @@ public class ConProMiradiCodeMapHelperVersion2
 	private HashMap<String, String> tncProjectSharingMap;
 	private HashMap<String, String> indicatorRatingSourceMap;
 	private HashMap<String, String> trendMap;
-	private HashMap<String, String> organizationalPrioritiesMap;
 	private HashMap<String, String> teamRolesMap;
 	
 	private static final String CONPRO_STATUS_NOT_SPECIFIED = "Not Specified";
