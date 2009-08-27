@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-27 12:05-0500\n"
+"POT-Creation-Date: 2009-08-27 12:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -23,7 +23,7 @@ msgstr "[主要图表] \t\t"
 msgid "[Not Named]"
 msgstr "[未命名] \t\t"
 
-#: miradi/source/org/miradi/objects/ProjectResource.java:122
+#: miradi/source/org/miradi/objects/ProjectResource.java:126
 msgid "Label|(Undefined Resource)"
 msgstr "（未定义的资源） \t\t"
 
