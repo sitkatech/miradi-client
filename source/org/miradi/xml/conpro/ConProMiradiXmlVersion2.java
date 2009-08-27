@@ -149,8 +149,6 @@ public interface ConProMiradiXmlVersion2
 	public static final String STATUS = "status";
 	public static final String ANNUAL_COST = "annual_cost";
 	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
-	public static final String ORGANIZATIONAL_PRIORITIES = "organizational_priorities";
-	public static final String ORGANIZATIONAL_PRIORITY = "priority";
 	public static final String PROGRESS_PERCENT_REPORTS = "percent_complete_measures";
 	public static final String PROGRESS_PERCENT_REPORT = "percent_complete_measure";
 	public static final String PROGRESS_PERCENT_COMPLETE = "measure";
