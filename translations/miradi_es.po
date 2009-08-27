@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-27 17:51-0500\n"
+"POT-Creation-Date: 2009-08-27 18:20-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -36,6 +36,16 @@ msgstr "(Código contable sin definir)"
 #: miradi/source/org/miradi/objects/FundingSource.java:73
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
+
+#: miradi/source/org/miradi/objects/TncProjectData.java:108
+#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
+#: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+#, fuzzy
+msgid "Error"
+msgstr "Error"
 
 #: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:131
 msgid "Migrated High Level Estimate:"
@@ -469,7 +479,7 @@ msgstr "RARE"
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:95
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:96
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "TNC"
@@ -2475,15 +2485,6 @@ msgstr "Ubicar el alcance en el diagrama"
 #: miradi/source/org/miradi/objecthelpers/DateUnit.java:158
 msgid "No date range for date Unit = "
 msgstr ""
-
-#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
-#: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-#, fuzzy
-msgid "Error"
-msgstr "Error"
 
 #: miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
 msgid "--Select a classification--"
@@ -8449,6 +8450,9 @@ msgid "FieldLabel|40.ConProParentChildProjectText|Parent Child"
 msgstr ""
 
 msgid "FieldLabel|40.AssociatedProjectsText|Associated Projects"
+msgstr ""
+
+msgid "FieldLabel|40.PseudoClassifications|Classifications"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
