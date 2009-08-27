@@ -154,7 +154,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		CodeList organizationalPriorityCodes = new CodeList();
 		organizationalPriorityCodes.add(TncOrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE);
 		organizationalPriorityCodes.add(TncOrganizationalPrioritiesQuestion.CSD_PROTECTED_AREAS_CODE);
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
 		
 		CodeList projectTypes = new CodeList();
 		projectTypes.add(TncProjectPlaceTypeQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
