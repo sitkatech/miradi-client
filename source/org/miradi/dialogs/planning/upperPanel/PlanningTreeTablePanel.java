@@ -140,7 +140,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		treeTableRowSelectionListener = new TreeTableRowSelectionHandler();
 		
 		enableSelectionListeners();
-		enableSectionSwitch();
 	}
 
 	@Override
@@ -155,6 +154,12 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	{
 		try
 		{		
+			if (isColumnExpandCollapseCommand(event))
+			{
+				mainTable.clearColumnSelection();
+				rebuildEntireTreeAndTable();
+			}
+			
 			if (doesCommandForceRebuild(event))
 				rebuildEntireTreeAndTable();
 			
@@ -202,9 +207,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
-		if (isColumnExpandCollapseCommand(event))
-			return true;
-		
 		if(didAffectResourceAssignmentsAndExpenseAssignments(event))
 			return true;
 		
@@ -498,17 +500,24 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private boolean isSideTabSwitchingDisabled()
 	{
-		return !disableSideTabSwitching;
+		return (disableSideTabSwitchingCount > 0);
 	}
 	
 	private void disableSectionSwitchDuringFullRebuild()
 	{
-		disableSideTabSwitching = false;
+		++disableSideTabSwitchingCount;
 	}
 	
 	private void enableSectionSwitch()
 	{
-		disableSideTabSwitching = true;
+		if(disableSideTabSwitchingCount == 0)
+		{
+			EAM.logError("PlanningTreeTablePanel.enableSelectionSwitch called too many times");
+			EAM.logStackTrace();
+			return;
+		}
+		
+		--disableSideTabSwitchingCount;
 	}
 	
 	private void enableSelectionListeners()
@@ -658,5 +667,5 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	
 	private MainTableSelectionHandler mainTableColumnSelectionListener;
 	private TreeTableRowSelectionHandler treeTableRowSelectionListener;
-	private boolean disableSideTabSwitching;
+	private int disableSideTabSwitchingCount;
 }

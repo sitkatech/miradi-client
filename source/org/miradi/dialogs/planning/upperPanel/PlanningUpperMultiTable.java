@@ -183,16 +183,12 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 	public void respondToExpandOrCollapseColumnEvent(int tableColumnIndex) throws Exception
 	{
-		// TODO: we would not need to clear selection here if 
-		// the table re-selected based on grouptag+columnname instead of col index
-		clearColumnSelection();
-
 		int modelColumn = getModelColumnWithinModel(tableColumnIndex);
 		PlanningUpperTableModelInterface model = getModel(convertColumnIndexToModel(tableColumnIndex));
 		model.respondToExpandOrCollapseColumnEvent(modelColumn);
 	}
 
-	private void clearColumnSelection()
+	public void clearColumnSelection()
 	{
 		getColumnModel().getSelectionModel().clearSelection();
 	}
