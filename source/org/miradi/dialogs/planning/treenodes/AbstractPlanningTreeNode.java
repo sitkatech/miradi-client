@@ -29,17 +29,20 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.AbstractTarget;
+import org.miradi.objects.AccountingCode;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
@@ -296,6 +299,9 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 			Objective.getObjectType(),
 			Strategy.getObjectType(),
 			Indicator.getObjectType(),
+			ProjectResource.getObjectType(),
+			AccountingCode.getObjectType(),
+			FundingSource.getObjectType(),
 			Task.getObjectType(),
 			Measurement.getObjectType(),
 			ResourceAssignment.getObjectType(),
