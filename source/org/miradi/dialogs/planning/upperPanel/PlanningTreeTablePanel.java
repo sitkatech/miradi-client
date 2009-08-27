@@ -357,8 +357,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private void rebuildEntireTreeTable() throws Exception
 	{
-		int selectedRow = tree.getSelectionModel().getAnchorSelectionIndex();
-		int selectedColumn = mainTable.getColumnModel().getSelectionModel().getAnchorSelectionIndex();
+		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
+		int selectedColumn = mainTable.getColumnModel().getSelectionModel().getMinSelectionIndex();
 
 		// TODO: Perhaps possibly detect exactly what changed and 
 		// only rebuild the columns or the rows rather than always doing both
