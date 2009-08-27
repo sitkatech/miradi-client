@@ -69,10 +69,20 @@ project_summary.element =
         & ecoregions.element
         & countries.element
         & ous.element
+        & classifications.element
         & element cp:exporter_name { xsd:NMTOKEN }
         & element cp:exporter_version { xsd:NMTOKEN }
         & element cp:export_date { vocabulary_date }
     }
+#
+classifications.element =
+    element cp:classifications {
+        element cp:classification {
+            element cp:classification_category_name { text }
+            & element cp:classification_id { vocabulary_id }
+            & element cp:classification_name { text }*
+        }*
+    }?
 #
 project_id.element =
     element cp:project_id {
