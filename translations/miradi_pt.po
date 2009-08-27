@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-27 11:44-0500\n"
+"POT-Creation-Date: 2009-08-27 12:05-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6192,7 +6192,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:396
+#: miradi/source/org/miradi/dialogs/planning/treenodes/AbstractPlanningTreeNode.java:402
 msgid "This method is not responsible for creating task nodes."
 msgstr ""
 
