@@ -57,6 +57,7 @@ public class TNCSummaryPanel extends ObjectDataInputPanel
 
 		addField(createReadonlyTextField(metadata.TAG_TNC_PLANNING_TEAM_COMMENT));
 		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT));
+		addField(createReadonlyTextField(TncProjectData.getObjectType(), TncProjectData.TAG_ASSOCIATED_PROJECTS_TEXT));
 
 		addField(createSingleColumnCodeListField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, new TncOperatingUnitsQuestion()));
 
