@@ -67,6 +67,11 @@ public class TncProjectData extends BaseObject
 		return false;
 	}
 	
+	public String getClassifications()
+	{
+		return classifications.get();
+	}
+	
 	public static TncProjectData find(ObjectManager objectManager, ORef tncProjectDataRef)
 	{
 		return (TncProjectData) objectManager.findObject(tncProjectDataRef);
@@ -85,11 +90,13 @@ public class TncProjectData extends BaseObject
 		projectTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
 		parentChild = new StringData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		associatedProjectsText = new StringData(TAG_ASSOCIATED_PROJECTS_TEXT);
+		classifications = new StringData(TAG_CLASSIFICATIONS);
 		
 		addField(projectSharingCode);
 		addField(projectTypes);
 		addField(parentChild);
 		addField(associatedProjectsText);
+		addField(classifications);
 	}
 	
 	public static final String OBJECT_NAME = "TncProjectData";
@@ -98,9 +105,11 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectPlaceTypes";
 	public final static String TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT = "ConProParentChildProjectText";
 	public final static String TAG_ASSOCIATED_PROJECTS_TEXT = "AssociatedProjectsText";
+	public final static String TAG_CLASSIFICATIONS = "Classifications";
 	
 	public StringData projectSharingCode;
 	public CodeListData projectTypes;
 	public StringData parentChild;
 	public StringData associatedProjectsText;
+	public StringData classifications;
 }

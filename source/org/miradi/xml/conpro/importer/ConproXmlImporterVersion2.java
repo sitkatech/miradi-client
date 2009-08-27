@@ -105,6 +105,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelperVersion2;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
@@ -556,10 +557,32 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 		setData(metadataRef, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, extractEcoregions(allEcoregionCodes, TncTerrestrialEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TncMarineEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TncFreshwaterEcoRegionQuestion.class).toString());
+		setData(tncProjectDataRef, TncProjectData.TAG_CLASSIFICATIONS, extractClassifications(projectSumaryNode));
 		importField(projectSumaryNode, EXPORT_DATE, metadataRef, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+	}
+
+	private String extractClassifications(Node projectSumaryNode) throws Exception
+	{
+		NodeList classficiationNodes = getNodes(projectSumaryNode, CLASSIFICATIONS, CLASSIFICATION);
+		final String NEW_LINE = "\n";
+		String appendedClassifications = "";
+		for (int nodeIndex = 0; nodeIndex < classficiationNodes.getLength(); ++nodeIndex) 
+		{
+			Node classficiationNode = classficiationNodes.item(nodeIndex);
+			appendedClassifications += getPathData(classficiationNode, new String[]{CLASSIFICATION_ID, });
+			appendedClassifications += DelimitedFileLoader.TAB;
+
+			appendedClassifications += getPathData(classficiationNode, new String[]{CLASSIFICATION_NAME, });
+			appendedClassifications += DelimitedFileLoader.TAB;
+			
+			appendedClassifications += getPathData(classficiationNode, new String[]{CLASSIFICATION_CATEGORY_NAME, });
+			appendedClassifications += NEW_LINE;
+		}
+		
+		return appendedClassifications;
 	}
 
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
