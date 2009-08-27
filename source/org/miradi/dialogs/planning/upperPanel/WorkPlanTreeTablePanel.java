@@ -27,6 +27,7 @@ import org.miradi.actions.ActionPlanningCreationMenu;
 import org.miradi.actions.ActionWorkPlanBudgetColumnsEditor;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
+import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceFilterStatusPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -38,9 +39,11 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 									 PlanningTreeTable treeToUse,
 									 PlanningTreeTableModel modelToUse,
 									 Class[] buttonActions,
-									 RowColumnProvider rowColumnProvider) throws Exception
+									 RowColumnProvider rowColumnProvider, 
+									 ProjectResourceFilterStatusPanel filterStatusPanelToUse) throws Exception
 	{
-		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider);
+		super(mainWindowToUse, treeToUse, modelToUse, buttonActions, rowColumnProvider, filterStatusPanelToUse);
+		filterStatusPanel = filterStatusPanelToUse;
 	}
 
 	public static PlanningTreeTablePanel createPlanningTreeTablePanel(MainWindow mainWindowToUse) throws Exception
@@ -48,8 +51,9 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		PlanningTreeTableModel model = new WorkPlanTreeTableModel(mainWindowToUse.getProject());
 		PlanningTreeTable treeTable = new PlanningTreeTable(mainWindowToUse, model);
 		WorkPlanRowColumnProvider rowColumnProvider = new WorkPlanRowColumnProvider(mainWindowToUse.getProject());
+		ProjectResourceFilterStatusPanel filterStatusPanel = new ProjectResourceFilterStatusPanel(mainWindowToUse.getProject());
 
-		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider);
+		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, filterStatusPanel);
 	}
 	
 	protected void updateResourceFilter() throws Exception
@@ -62,6 +66,9 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		getWorkUnitsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getMainModel().setResourcesFilter(projectResourceRefsToRetain);
+
+		if(filterStatusPanel != null)
+			filterStatusPanel.updateStatusLabel();
 	}
 		
 	public static String getTabSpecificModelIdentifier()
@@ -81,4 +88,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 				ActionFilterWorkPlanByProjectResource.class,
 		};
 	}
+	
+	private ProjectResourceFilterStatusPanel filterStatusPanel;
+	
 }
