@@ -3,7 +3,7 @@
 # $LastChangedRevision: 59 $
 #
 
-namespace cp = "http://services.tnc.org/schema/conservation-project/2-working"
+namespace cp = "http://services.tnc.org/schema/conservation-project/4"
 
 #
 start = conservation_project.element

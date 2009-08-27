@@ -1064,7 +1064,7 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	
 	private boolean isUnsupportedNewVersion(String nameSpaceUri) throws Exception
 	{
-		return getSchemaVersionToImport(nameSpaceUri).compareTo(NAME_SPACE_VERSION) == 0;
+		return getSchemaVersionToImport(nameSpaceUri).compareTo(NAME_SPACE_VERSION) > 0;
 	}
 	
 	private boolean isUnsupportedOldVersion(String nameSpaceUri) throws Exception
