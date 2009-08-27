@@ -581,6 +581,7 @@ measures.combination5.element =
     element cp:measure {
         attribute sequence { vocabulary_sequence }
         & element cp:measurement { text }?
+        & element cp:comment { text }?
         & element cp:date { vocabulary_date }?
         & element cp:source { vocabulary_source_measures }?
         & element cp:trend { vocabulary_trend }?
