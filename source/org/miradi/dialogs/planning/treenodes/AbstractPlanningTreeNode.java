@@ -155,7 +155,7 @@ public abstract class AbstractPlanningTreeNode extends TreeTableNode
 		if (getObject() == null)
 			return "";
 		
-		return getObject().combineShortLabelAndLabel();
+		return getObject().getFullName();
 	}
 
 	public ORefSet getAllRefsInTree()
