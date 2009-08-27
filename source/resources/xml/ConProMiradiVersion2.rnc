@@ -70,7 +70,6 @@ project_summary.element =
         & countries.element
         & ous.element
         & organizational_priorities.element
-        & project_types.element
         & element cp:exporter_name { xsd:NMTOKEN }
         & element cp:exporter_version { xsd:NMTOKEN }
         & element cp:export_date { vocabulary_date }
@@ -149,11 +148,6 @@ ous.element =
 organizational_priorities.element =
     element cp:organizational_priorities {
         element cp:priority { vocabulary_organizational_priorities }*
-    }
-#
-project_types.element =
-    element cp:project_types {
-        element cp:project_type { vocabulary_project_types }*
     }
 #
 targets.element =
@@ -659,8 +653,6 @@ vocabulary_progress =
     | "On Track"
     | "Completed"
     | "Abandoned"
-vocabulary_project_types =
-    "Single-Place-Based Project" | "Multi-Place-Based Project" | "Non-Place-Based Project"
 vocabulary_rating_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vggfp = "Very Good" | "Good" | "Fair" | "Poor"
 vocabulary_ranking_vhhml = "Very High" | "High" | "Medium" | "Low"
