@@ -85,9 +85,9 @@ import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
 
 
 //FIXME urgent: This class is under construction
-public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMiradiXmlVersion2
+public class ConproXmlExporterVersion extends XmlExporter implements ConProMiradiXmlVersion2
 {
-	public ConproXmlExporterVersion2(Project project) throws Exception
+	public ConproXmlExporterVersion(Project project) throws Exception
 	{
 		super(project);
 		

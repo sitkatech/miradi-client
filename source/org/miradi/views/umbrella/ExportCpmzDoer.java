@@ -45,7 +45,7 @@ import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidatorVersion2;
-import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion2;
+import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion;
 
 public class ExportCpmzDoer extends AbstractFileSaverDoer
 {
@@ -191,7 +191,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
 		{
-			new ConproXmlExporterVersion2(getProject()).exportProject(writer);
+			new ConproXmlExporterVersion(getProject()).exportProject(writer);
 			writer.close();
 		}
 		finally
