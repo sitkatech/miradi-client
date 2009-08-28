@@ -26,7 +26,7 @@ import javax.xml.namespace.NamespaceContext;
 
 import org.miradi.xml.conpro.ConProMiradiXml;
 
-public class ConProMiradiNameSpaceContextVersion2 implements NamespaceContext
+public class ConProMiradiNameSpaceContext implements NamespaceContext
 {
 	public String getNamespaceURI(String prefix) 
 	{
