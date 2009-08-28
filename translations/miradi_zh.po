@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-28 10:11-0500\n"
+"POT-Creation-Date: 2009-08-28 10:32-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6020,34 +6020,28 @@ msgstr ""
 msgid "Site/Scope Description:"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:163
 #: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:167
 msgid "File to import does not validate."
 msgstr "要导入的文件不正确 \t\t"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1069
 #: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1112
 msgid "Placeholder - From ConPro"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1073
 #: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1116
 #, fuzzy
 msgid "Objective Holder"
 msgstr "Objective Holder"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1079
 #: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1122
 #, fuzzy
 msgid "Indicator Holder"
 msgstr "Indicator Holder"
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1176
 #: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1219
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConProXmlImporter.java:1177
 #: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporterVersion2.java:1220
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
