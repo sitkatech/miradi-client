@@ -33,9 +33,9 @@ import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.ConproMiradiHabitatCodeMap;
 
-public class ConProMiradiCodeMapHelperVersion2
+public class ConProMiradiCodeMapHelper
 {
-	public ConProMiradiCodeMapHelperVersion2() throws Exception
+	public ConProMiradiCodeMapHelper() throws Exception
 	{
 		createMiradiToConproCodeMaps();
 	}
