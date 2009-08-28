@@ -41,7 +41,7 @@ public class TestConProCodeMapHelper extends EAMTestCase
 		map.put(KEY_1, VALUE_1);
 		map.put(KEY_2, VALUE_2);
 		
-		HashMap<String, String> reversedMap = ConProMiradiCodeMapHelper.reverseMap(map);
+		HashMap<String, String> reversedMap = ConProMiradiCodeMapHelperVersion2.reverseMap(map);
 		assertEquals("wrong value?", KEY_1, reversedMap.get(VALUE_1));
 		assertEquals("wrong value?", KEY_2, reversedMap.get(VALUE_2));
 	}
