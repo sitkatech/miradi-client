@@ -80,7 +80,6 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.MiradiMultiCalendar;
-import org.miradi.utils.OptionalDouble;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelperVersion2;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
@@ -235,19 +234,11 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			
 			writeLabelElement(out, METHOD_NAME, method, Task.TAG_LABEL);
 			writeElement(out, METHOD_DETAIL, method, Task.TAG_DETAILS);
-			writeAnnualCost(out, method);
 			writeElement(out, METHOD_COMMENT, method, Task.TAG_COMMENTS);
 			writeEndElement(out, METHOD);
 		}
 		
 		writeEndElement(out, METHODS);
-	}
-
-	private void writeAnnualCost(UnicodeWriter out, Task task) throws Exception
-	{
-		final OptionalDouble totalBudgetCost = task.getTotalBudgetCost();
-		if (totalBudgetCost.hasValue())
-			writeElement(out, METHOD_ANNUAL_COST, Double.toString(totalBudgetCost.getValue()));
 	}
 
 	private void writeProgressReports(UnicodeWriter out, ORefList progressReportRefs) throws Exception
@@ -820,8 +811,7 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			writeOptionalElement(out, RELATED_PROJECTS, getTncProjectData(), TncProjectData.TAG_ASSOCIATED_PROJECTS_TEXT);
 			writeOptionalElement(out, PARENT_CHILD, getTncProjectData(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 			
-			if (getProject().isSimpleThreatRatingMode())
-				writeOptionalElement(out, STRESSLESS_THREAT_RANKING, getSimpleOverallProjectRating());
+			writeThreatRatingMode(out);
 
 			writeOptionalElement(out, PROJECT_THREAT_RANK, getStressBasedOverallProjectRating());
 			writeOptionalElement(out, PROJECT_VIABILITY_RANK, getComputedTncViability());
@@ -839,6 +829,12 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 			out.writeln();
 			
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private void writeThreatRatingMode(UnicodeWriter out) throws Exception
+	{
+		String threatRatingMode = getCodeMapHelper().getMiradiToConProThreatRatingModeMap().get(getProjectMetadata().getThreatRatingMode());
+		writeOptionalElement(out, STRESSLESS_THREAT_RANKING, threatRatingMode);
 	}
 
 	private void writeClassifications(UnicodeWriter out) throws Exception
@@ -953,12 +949,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 		return ratingCodeToXmlValue(overallProjectRating);
 	}
 	
-	private String getSimpleOverallProjectRating()
-	{
-		int overallProjectRating = getProject().getSimpleThreatRatingFramework().getOverallProjectRating().getNumericValue();
-		return ratingCodeToXmlValue(overallProjectRating);
-	}
-
 	private void writeEcoregionCodes(UnicodeWriter out) throws Exception
 	{
 		CodeList allTncEcoRegionCodes = new CodeList();

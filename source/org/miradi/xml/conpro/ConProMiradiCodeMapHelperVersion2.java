@@ -27,6 +27,7 @@ import org.miradi.questions.ProgressReportStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -107,6 +108,10 @@ public class ConProMiradiCodeMapHelperVersion2
 		teamRolesMap.put(ResourceRoleQuestion.FACILITATOR_CODE, "Process Facilitator");
 		teamRolesMap.put(ResourceRoleQuestion.ADVISER_CODE, "Project Advisor");
 		teamRolesMap.put(ResourceRoleQuestion.STAKEHOLDER_CODE, "Stakeholder");
+		
+		threatRatingMode = new HashMap<String, String>();
+		threatRatingMode.put(ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE, "true");
+		threatRatingMode.put(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE, "false");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -156,6 +161,11 @@ public class ConProMiradiCodeMapHelperVersion2
 	public HashMap<String, String> getConProToMiradiTeamRolesMap()
 	{
 		return reverseMap(teamRolesMap);
+	}
+	
+	public HashMap<String, String> getConProToMiradiThreatRatingModeMap()
+	{
+		return reverseMap(threatRatingMode);
 	}
 	
 	public HashMap<String, String> getConProToMiradiProgressStatusMap()
@@ -241,6 +251,11 @@ public class ConProMiradiCodeMapHelperVersion2
 		return teamRolesMap;
 	}
 	
+	public HashMap<String, String> getMiradiToConProThreatRatingModeMap()
+	{
+		return threatRatingMode;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
@@ -252,6 +267,7 @@ public class ConProMiradiCodeMapHelperVersion2
 	private HashMap<String, String> indicatorRatingSourceMap;
 	private HashMap<String, String> trendMap;
 	private HashMap<String, String> teamRolesMap;
+	private HashMap<String, String> threatRatingMode;
 	
 	private static final String CONPRO_STATUS_NOT_SPECIFIED = "Not Specified";
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";

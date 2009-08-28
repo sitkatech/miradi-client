@@ -95,7 +95,6 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
 import org.miradi.questions.TncMarineEcoRegionQuestion;
@@ -810,18 +809,10 @@ public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
 	private void importThreatRatingValueInMode(Node projectSummaryNode, ORef metadataRef) throws Exception
 	{
 		String stresslessThreatRatingValue = getPathData(projectSummaryNode, new String[]{STRESSLESS_THREAT_RANKING, });
-		String threatRatingModeCode = getThreatRatingMode(stresslessThreatRatingValue);
+		String threatRatingModeCode = getCodeMapHelper().getConProToMiradiThreatRatingModeMap().get(stresslessThreatRatingValue);
 		setData(metadataRef, ProjectMetadata.TAG_THREAT_RATING_MODE, threatRatingModeCode);
 	}
 
-	private String getThreatRatingMode(String stresslessThreatRating)
-	{
-		if (stresslessThreatRating.length() > 0)
-			return ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE;
-		
-		return ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE;
-	}
-	
 	private void importThreatRatingCommentsField(Node node, String path, ThreatRatingCommentsData threatRatingCommentsData, String threatTargetKey) throws Exception
 	{
 		String threatRatingComment = getPathData(node, new String[]{path,});
