@@ -108,7 +108,7 @@ import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
-import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidatorVersion2;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -162,7 +162,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		}
 		
 		projectAsInputStream.seek(0);			
-		if (!new ConProMiradiXmlValidatorVersion2().isValid(projectAsInputStream))
+		if (!new ConProMiradiXmlValidator().isValid(projectAsInputStream))
 		{
 			throw new ValidationException(EAM.text("File to import does not validate."));
 		}

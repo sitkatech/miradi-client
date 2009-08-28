@@ -34,7 +34,7 @@ import com.thaiopensource.validate.rng.RngProperty;
 
 //NOTE: tis class was duplicated from com.thaiopensource.validate.ValidationDriver. in order to 
 //have better error handling
-public class ConProMiradiXmlValidatorVersion2
+public class ConProMiradiXmlValidator
 {
 	public boolean isValid(InputStream xmlInputStream) throws Exception
 	{

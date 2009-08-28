@@ -44,7 +44,7 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.PNGFileFilter;
-import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidatorVersion2;
+import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion;
 
 public class ExportCpmzDoer extends AbstractFileSaverDoer
@@ -172,7 +172,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
 		try
 		{
-			if (!new ConProMiradiXmlValidatorVersion2().isValid(inputStream))
+			if (!new ConProMiradiXmlValidator().isValid(inputStream))
 			{
 				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
 				throw new ValidationException(EAM.text("Exported file does not validate."));
