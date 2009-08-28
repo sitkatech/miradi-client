@@ -51,7 +51,7 @@ import org.miradi.views.umbrella.ExportCpmzDoer;
 import org.miradi.views.umbrella.ImportProjectDoer;
 import org.miradi.xml.conpro.importer.ConproXmlImporter;
 
-public class ImportCpmzVersion2Doer extends ImportProjectDoer
+public class ImportCpmzDoer extends ImportProjectDoer
 {
 	@Override
 	public void doIt() throws CommandFailedException
