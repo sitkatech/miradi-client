@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-28 09:41-0500\n"
+"POT-Creation-Date: 2009-08-28 09:52-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -850,15 +850,15 @@ msgstr ""
 msgid "Edit Methods"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:98
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:99
 msgid ""
 "Please choose a specific IUCN classification (Not a category). Fix needed "
 "for Strategy named:\n"
 "'%s'"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:181
-#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:201
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:182
+#: miradi/source/org/miradi/views/umbrella/ExportCpmzDoer.java:202
 msgid "Exported file does not validate."
 msgstr ""
 
