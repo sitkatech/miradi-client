@@ -521,7 +521,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 	{
 		XPathFactory xPathFactory = XPathFactory.newInstance();
 		XPath  thisXPath = xPathFactory.newXPath();
-		thisXPath.setNamespaceContext(new ConProMiradiNameSpaceContextVersion2());
+		thisXPath.setNamespaceContext(new ConProMiradiNameSpaceContext());
 		
 		return thisXPath;
 	}
