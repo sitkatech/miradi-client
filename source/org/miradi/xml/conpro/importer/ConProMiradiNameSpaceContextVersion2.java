@@ -24,7 +24,7 @@ import java.util.Iterator;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 
-import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
+import org.miradi.xml.conpro.ConProMiradiXml;
 
 public class ConProMiradiNameSpaceContextVersion2 implements NamespaceContext
 {
@@ -34,7 +34,7 @@ public class ConProMiradiNameSpaceContextVersion2 implements NamespaceContext
 			throw new NullPointerException("Null prefix");
 		
 		else if (prefix.equals(CONPRO_MIRADI_SCHEMA_PREFIX)) 
-			return ConProMiradiXmlVersion2.NAME_SPACE;
+			return ConProMiradiXml.NAME_SPACE;
 		
 		else if ("xml".equals(prefix)) 
 			return XMLConstants.XML_NS_URI;
