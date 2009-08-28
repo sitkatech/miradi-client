@@ -51,9 +51,10 @@ public class MaterialToPersonCodeConverterMigration
 			EnhancedJsonObject resourceJson = DataUpgrader.readFile(resourceJsonFile);
 			String resourceType = resourceJson.optString(RESOURCE_TYPE);
 			if (resourceType.equals(MATERIAL_TYPE_CODE))
+			{
 				resourceJson.put(RESOURCE_TYPE, PERSON_TYPE_CODE);
-			
-			DataUpgrader.writeJson(resourceJsonFile, resourceJson);
+				DataUpgrader.writeJson(resourceJsonFile, resourceJson);
+			}
 		}
 	}
 	
