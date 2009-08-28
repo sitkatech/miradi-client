@@ -94,7 +94,7 @@ public class TestConproXmlExporterVersion2 extends TestCaseWithProject
 		try
 		{
 			new ConproXmlExporterVersion(getProject()).export(tempXmlOutFile);
-			assertTrue("did not validate?", new ConProMiradiXmlValidatorVersion2().isValid(new FileInputStream(tempXmlOutFile)));
+			assertTrue("did not validate?", new ConProMiradiXmlValidator().isValid(new FileInputStream(tempXmlOutFile)));
 		}
 		finally
 		{
