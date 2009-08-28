@@ -116,9 +116,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class ConproXmlImporterVersion2 implements ConProMiradiXml
+public class ConproXmlImporter implements ConProMiradiXml
 {
-	public ConproXmlImporterVersion2(Project projectToFill) throws Exception
+	public ConproXmlImporter(Project projectToFill) throws Exception
 	{
 		project = projectToFill;
 		codeMapHelper = new ConProMiradiCodeMapHelper();
