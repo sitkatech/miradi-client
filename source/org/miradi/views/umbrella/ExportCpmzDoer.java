@@ -163,11 +163,6 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 
 	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
 	{
-		exportUsingVersion2Exporter(zipOut);
-	}
-	
-	private void exportUsingVersion2Exporter(ZipOutputStream zipOut) throws Exception
-	{
 		byte[] projectXmlInBytes = exportVersion2ProjectXmlToBytes();
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
 		try
