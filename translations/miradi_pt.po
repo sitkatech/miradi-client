@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-28 11:01-0500\n"
+"POT-Creation-Date: 2009-08-28 13:26-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6205,7 +6205,7 @@ msgstr ""
 msgid "Show: "
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:261
+#: miradi/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:265
 msgid "[Error]"
 msgstr ""
 
