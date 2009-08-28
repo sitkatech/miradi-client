@@ -167,7 +167,6 @@ public interface ConProMiradiXmlVersion2
 	public static final String METHOD = "method";
 	public static final String METHOD_NAME = "name";
 	public static final String METHOD_DETAIL = "detail";
-	public static final String METHOD_ANNUAL_COST = "annual_cost";
 	public static final String METHOD_COMMENT = "comment";
 	public static final String MEASUREMENTS = "measures";
 	public static final String MEASUREMENT = "measure";

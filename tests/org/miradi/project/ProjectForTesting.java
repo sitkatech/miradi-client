@@ -638,6 +638,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateTask(Task task, String customLabel) throws Exception
 	{
 		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
+		addResourceAssignment(task, 10.0, new DateUnit());
 	}
 	
 	public void populateMeasurement(Measurement measurement) throws Exception
