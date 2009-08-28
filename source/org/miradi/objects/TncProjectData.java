@@ -75,7 +75,7 @@ public class TncProjectData extends BaseObject
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TAG_CLASSIFICATIONS))
+		if (fieldTag.equals(PSEUDO_TAG_CLASSIFICATIONS_AS_MULTILINE_TEXT))
 			return parseClassifications();
 		
 		return super.getPseudoData(fieldTag);
@@ -134,7 +134,7 @@ public class TncProjectData extends BaseObject
 		associatedProjectsText = new StringData(TAG_ASSOCIATED_PROJECTS_TEXT);
 		classifications = new StringData(TAG_CLASSIFICATIONS);
 		
-		pseudoClassifications = new PseudoStringData(PSEUDO_TAG_CLASSIFICATIONS);
+		pseudoClassifications = new PseudoStringData(PSEUDO_TAG_CLASSIFICATIONS_AS_MULTILINE_TEXT);
 		
 		addField(projectSharingCode);
 		addField(projectTypes);
@@ -153,7 +153,7 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_ASSOCIATED_PROJECTS_TEXT = "AssociatedProjectsText";
 	public final static String TAG_CLASSIFICATIONS = "Classifications";
 	
-	public final static String PSEUDO_TAG_CLASSIFICATIONS = "PsuedoClassificationsAsMultilineText";
+	public final static String PSEUDO_TAG_CLASSIFICATIONS_AS_MULTILINE_TEXT = "PsuedoClassificationsAsMultilineText";
 	
 	public StringData projectSharingCode;
 	public CodeListData projectTypes;
