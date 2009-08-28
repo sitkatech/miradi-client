@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.conpro.exporter;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.Arrays;
@@ -1196,21 +1195,6 @@ public class ConproXmlExporterVersion2 extends XmlExporter implements ConProMira
 	{
 		return codeMapHelper;
 	}
-	
-	public static void main(String[] commandLineArguments) throws Exception
-	{	
-		Project newProject = getOpenedProject(commandLineArguments);
-		try
-		{
-			new ConproXmlExporter(newProject).export(getXmlDestination(commandLineArguments));
-			new ConProMiradiXmlValidator().isValid(new FileInputStream(getXmlDestination(commandLineArguments)));
-			System.out.println("Export ConPro xml complete");
-		}
-		finally
-		{
-			newProject.close();
-		}
-	}	
 	
 	class ThreatStressRatingSorterByThreatRef implements Comparator<ORef>
 	{
