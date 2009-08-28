@@ -111,7 +111,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
 		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_1);
-		byte[] extractXmlBytesV2 = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_2);
+		byte[] extractXmlBytesV2 = extractXmlBytes(zipFile, ExportCpmzDoer.getXmlFileName());
 		if (extractXmlBytes.length > 0 && extractXmlBytesV2.length == 0)
 			throw new CpmzVersionTooOldException();
 		
@@ -178,7 +178,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 	
 	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
 	{
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_2);
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.getXmlFileName());
 		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
 	}
 
