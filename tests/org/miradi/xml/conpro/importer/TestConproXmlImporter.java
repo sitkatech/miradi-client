@@ -41,9 +41,9 @@ import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion;
 
-public class TestConproXmlImporterVersion2 extends TestCaseWithProject
+public class TestConproXmlImporter extends TestCaseWithProject
 {
-	public TestConproXmlImporterVersion2(String name)
+	public TestConproXmlImporter(String name)
 	{
 		super(name);
 	}
