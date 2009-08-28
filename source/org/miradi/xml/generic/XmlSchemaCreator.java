@@ -21,14 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import java.io.File;
-import java.net.URL;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Vector;
 
-import org.martus.util.UnicodeReader;
-import org.miradi.main.EAM;
 import org.miradi.main.Miradi;
-import org.miradi.main.ResourcesHandler;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.utils.Translation;
@@ -37,7 +34,7 @@ public class XmlSchemaCreator
 {
 	public static void main(String[] args) throws Exception
 	{
-		System.out.print(new XmlSchemaCreator().getXmlRncSchema());
+		new XmlSchemaCreator().printXmlRncSchema(new PrintWriter(System.out));
 	}
 
 	public XmlSchemaCreator() throws Exception
@@ -53,66 +50,162 @@ public class XmlSchemaCreator
 		project.createOrOpen("XmlSchemaCreator");
 	}
 
-	private String getXmlRncSchema() throws Exception
+	private void printXmlRncSchema(PrintWriter writer) throws Exception
 	{
-		URL resourceURL = ResourcesHandler.getEnglishResourceURL(MIRADI_XML_RNC_SCHEMA_SKELETON_FILE_NAME);
-		if(resourceURL == null)
-			throw new Exception("Schema skeleton not found: " + MIRADI_XML_RNC_SCHEMA_SKELETON_FILE_NAME);
-
-		UnicodeReader reader = new UnicodeReader(resourceURL.openStream());
-		String rnc = reader.readAll();
-		reader.close();
-		
-		rnc = EAM.substitute(rnc, "%ProjectSummary", buildProjectSummarySchema());
-
-		return rnc.toString();
+		ProjectElement rootElement = new ProjectElement();
+		writer.println("start = " + rootElement.getProjectElementName());
+		rootElement.output(writer);
+		writer.flush();
     }
-	
-	private String buildProjectSummarySchema() throws Exception
+
+	static class Element
 	{
-		Vector<String> summary = new Vector<String>();
-
-		ORef ref = project.createObject(ProjectMetadata.getObjectType());
-		StringBuffer asString = new StringBuffer();
-		String objectName = "ProjectSummary";
-		append(asString, objectName + ".element = ");
-		append(asString, "  element miradi:" + objectName);
-		append(asString, "  {");
-
-		String[] tags = 
+		public void output(PrintWriter writer) throws IOException
 		{
-			ProjectMetadata.TAG_PROJECT_NAME,
-			ProjectMetadata.TAG_PROJECT_SCOPE
-		};
-		
-		for(String tag : tags)
-		{
-			summary.add(buildFieldSchema(ref, objectName, tag));
-		}
-		
-		for(String thisFieldSchema : summary)
-		{
-			if(asString.length() > 0)
-				append(asString, "&");
-			append(asString, thisFieldSchema);
+			writer.print("element ");
 		}
 
-		append(asString, "  }");
-		return asString.toString();
-	}
-
-	private String buildFieldSchema(ORef ref, String objectName, String tagProjectName)
-	{
-		return "element miradi:" + objectName + "_" + tagProjectName + " { text }";
-	}
-
-	private static void append(StringBuffer rnc, String string)
-	{
-		rnc.append(string);
-		rnc.append("\n");
+		protected String getDotElement(String elementName)
+		{
+			return elementName + ".element";
+		}
+		
 	}
 	
-	private static final String MIRADI_XML_RNC_SCHEMA_SKELETON_FILE_NAME = "xml/XmlRncSchemaSkeleton.txt";
+	static class ProjectElement extends Element
+	{
+		public ProjectElement()
+		{
+			objectTypes = new Vector<ObjectElement>();
+			
+			objectTypes.add(new ProjectSummaryElement());
+		}
+		
+		public void output(PrintWriter writer) throws IOException
+		{
+			writer.println(getDotElement(getProjectElementName()) + " = ");
+			super.output(writer);
+			writer.println("miradi:" + getProjectElementName());
+			writer.println("{");
+			for(ObjectElement objectElement: objectTypes)
+			{
+				writer.println(getDotElement(objectElement.getObjectTypeName()) + "&");
+			}
+			writer.println("}");
+			writer.println();
+			
+			for(ObjectElement objectElement: objectTypes)
+			{
+				objectElement.output(writer);
+			}
+			
+		}
+		
+		private String getProjectElementName()
+		{
+			return "conservation_project";
+		}
+
+		private Vector<ObjectElement> objectTypes;
+	}
+	
+	static class ObjectElement extends Element
+	{
+		public ObjectElement(String objectTypeNameToUse)
+		{
+			objectTypeName = objectTypeNameToUse;
+			fields = new Vector<FieldElement>();
+		}
+		
+		public void createTextField(String fieldNameToUse)
+		{
+			FieldElement field = new TextFieldElement(getObjectTypeName(), fieldNameToUse);
+			fields.add(field);
+		}
+
+		public String getObjectTypeName()
+		{
+			return objectTypeName;
+		}
+
+		@Override
+		public void output(PrintWriter writer) throws IOException
+		{
+			writer.println(getDotElement(getObjectTypeName()) + " = ");
+			super.output(writer);
+			writer.print("miradi:" + getObjectTypeName());
+			writer.println();
+			
+			writer.println("{");
+			for(FieldElement fieldElement : fields)
+			{
+				fieldElement.output(writer);
+				writer.println("&");
+			}
+			writer.println("}");
+		}
+		
+		private String objectTypeName;
+		private Vector<FieldElement> fields;
+	}
+	
+	static class FieldElement extends Element
+	{
+		protected FieldElement(String objectTypeNameToUse, String fieldNameToUse)
+		{
+			objectTypeName = objectTypeNameToUse;
+			fieldName = fieldNameToUse;
+		}
+		
+		@Override
+		public void output(PrintWriter writer) throws IOException
+		{
+			super.output(writer);
+			writer.write(getFullName());
+		}
+		
+		private String getFullName()
+		{
+			return "miradi:" + getObjectTypeName() + getFieldName();
+		}
+
+		private String getObjectTypeName()
+		{
+			return objectTypeName;
+		}
+
+		private String getFieldName()
+		{
+			return fieldName;
+		}
+
+		private String objectTypeName;
+		private String fieldName;
+	}
+	
+	static class TextFieldElement extends FieldElement
+	{
+		TextFieldElement(String objectTypeNameToUse, String fieldNameToUse)
+		{
+			super(objectTypeNameToUse, fieldNameToUse);
+		}
+
+		public void output(PrintWriter writer) throws IOException
+		{
+			super.output(writer);
+			writer.write(" { text }");
+		}
+	}
+
+	static class ProjectSummaryElement extends ObjectElement
+	{
+		public ProjectSummaryElement()
+		{
+			super("ProjectSummary");
+			createTextField(ProjectMetadata.TAG_PROJECT_NAME);
+			createTextField(ProjectMetadata.TAG_PROJECT_SCOPE);
+		}
+	}
 	
 	private Project project;
 }
