@@ -73,18 +73,5 @@ public class ConProMiradiXmlValidator
 		return properties;
 	}
 	
-	public static void main(String[] args)
-	{
-		try
-		{
-			URL xmlUrl = ResourcesHandler.getResourceURL("xml/test.xml");
-			new ConProMiradiXmlValidator().isValid(xmlUrl.openStream());
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
 	public static final String MIRADI_CONPRO_SCHEMA_FILE_NAME = "xml/ConProMiradi.rnc";
 }
