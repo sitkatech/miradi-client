@@ -148,7 +148,7 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 
 	private void importProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
 	{		
-		ConproXmlImporterVersion2 conProXmlImporter = new ConproXmlImporterVersion2(projectToFill1);
+		ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill1);
 		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
 		try
 		{
@@ -195,7 +195,7 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 		String expectedPath = "cp:SomeElement/cp:SomeOtherElement";
 		
 		String[] pathElements = new String[]{"SomeElement", "SomeOtherElement"}; 
-		String generatedPath = new ConproXmlImporterVersion2(getProject()).generatePath(pathElements);
+		String generatedPath = new ConproXmlImporter(getProject()).generatePath(pathElements);
 		assertEquals("xpaths are not same?", expectedPath, generatedPath);
 	}
 	

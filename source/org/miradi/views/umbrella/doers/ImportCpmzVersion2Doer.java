@@ -49,7 +49,7 @@ import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.umbrella.ExportCpmzDoer;
 import org.miradi.views.umbrella.ImportProjectDoer;
-import org.miradi.xml.conpro.importer.ConproXmlImporterVersion2;
+import org.miradi.xml.conpro.importer.ConproXmlImporter;
 
 public class ImportCpmzVersion2Doer extends ImportProjectDoer
 {
@@ -151,7 +151,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
-			new ConproXmlImporterVersion2(projectToFill).importConProjectNumbers(projectAsInputStream);
+			new ConproXmlImporter(projectToFill).importConProjectNumbers(projectAsInputStream);
 		}
 		finally
 		{
@@ -164,7 +164,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
-			ConproXmlImporterVersion2 conProXmlImporter = new ConproXmlImporterVersion2(projectToFill);
+			ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
 			conProXmlImporter.importConProProject(projectAsInputStream);
 			ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
 			splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
