@@ -57,6 +57,7 @@ import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.CodeList;
@@ -243,6 +244,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 			if(columnTag.equals(Indicator.TAG_PRIORITY))
 				return new PriorityRatingQuestion().findChoiceByCode(rawValue);
+			
+			if(columnTag.equals(ProjectResource.TAG_RESOURCE_TYPE))
+				return getProject().getQuestion(ResourceTypeQuestion.class).findChoiceByCode(rawValue);
 			
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return new ProgressReportStatusQuestion().findChoiceByCode(rawValue);
