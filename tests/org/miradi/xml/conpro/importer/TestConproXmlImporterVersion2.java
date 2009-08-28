@@ -24,7 +24,6 @@ import java.io.IOException;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
-import org.miradi.exceptions.UnsupportedOldVersionSchemaException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
@@ -40,7 +39,6 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion2;
 
 public class TestConproXmlImporterVersion2 extends TestCaseWithProject
@@ -215,27 +213,6 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 		assertEquals("wrong id less than current highest id?", highestId2, highestId3);
 	}
 	
-	public void testUnsupportedOldSchemaVersion() throws Exception
-	{
-		getProject().populateEverything();
-		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
-		ProjectForTesting projectToFill1 = new ProjectForTesting("ProjectToFill1");
-		try
-		{
-			new ConproXmlExporter(getProject()).export(beforeXmlOutFile);
-			importOldProject(beforeXmlOutFile, projectToFill1);
-			fail("should have fialed due to importing unsupported old project");
-		}
-		catch (UnsupportedOldVersionSchemaException ignoreException)
-		{
-		}
-		finally
-		{
-			beforeXmlOutFile.delete();
-			projectToFill1.close();
-		}
-	}
-	
 	public void testEmptyProject() throws Exception
 	{
 		File beforeXmlOutFile = createTempFileFromName("conproVersion2BeforeImport.xml");
@@ -305,12 +282,5 @@ public class TestConproXmlImporterVersion2 extends TestCaseWithProject
 			beforeXmlOutFile.delete();
 			projectToFill.close();
 		}
-	}
-	
-	private void importOldProject(File beforeXmlOutFile, ProjectForTesting projectToFill1) throws Exception
-	{		
-		ConproXmlImporterVersion2 conProXmlImporter = new ConproXmlImporterVersion2(projectToFill1);
-		FileInputStreamWithSeek fileInputStream = new FileInputStreamWithSeek(beforeXmlOutFile); 
-		conProXmlImporter.importConProProject(fileInputStream);
 	}
 }
