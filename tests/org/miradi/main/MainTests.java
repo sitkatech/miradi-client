@@ -69,6 +69,7 @@ import org.miradi.ids.TestIdList;
 import org.miradi.objectdata.TestDateData;
 import org.miradi.objectdata.TestDateRangeData;
 import org.miradi.objectdata.TestIntegerData;
+import org.miradi.objecthelpers.TestBaseObjectRollupValues;
 import org.miradi.objecthelpers.TestDateUnitEffort;
 import org.miradi.objecthelpers.TestDateUnitEffortList;
 import org.miradi.objecthelpers.TestMapList;
@@ -78,7 +79,6 @@ import org.miradi.objecthelpers.TestORefSet;
 import org.miradi.objecthelpers.TestObjectDeepCopier;
 import org.miradi.objecthelpers.TestRelevancyOverride;
 import org.miradi.objecthelpers.TestRelevancyOverrideSet;
-import org.miradi.objecthelpers.TestBaseObjectRollupValues;
 import org.miradi.objecthelpers.TestStringRefMap;
 import org.miradi.objecthelpers.TestThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.TestTimePeriodCosts;
@@ -150,11 +150,11 @@ import org.miradi.project.TestHumanWelfareTargetPool;
 import org.miradi.project.TestIdAssigner;
 import org.miradi.project.TestIntermediateResultPool;
 import org.miradi.project.TestProject;
-import org.miradi.project.TestProjectTotalCalculator;
 import org.miradi.project.TestProjectCalendar;
 import org.miradi.project.TestProjectCommandExecutions;
 import org.miradi.project.TestProjectInfo;
 import org.miradi.project.TestProjectRepairer;
+import org.miradi.project.TestProjectTotalCalculator;
 import org.miradi.project.TestProjectUnzipper;
 import org.miradi.project.TestProjectZipper;
 import org.miradi.project.TestRealProject;
@@ -206,9 +206,7 @@ import org.miradi.views.planning.TestPlanningTreeTargetNode;
 import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
 import org.miradi.xml.conpro.TestConProCodeMapHelper;
-import org.miradi.xml.conpro.exporter.TestConproXmlExporter;
 import org.miradi.xml.conpro.exporter.TestConproXmlExporterVersion2;
-import org.miradi.xml.conpro.importer.TestConProXmlImporter;
 import org.miradi.xml.conpro.importer.TestConproXmlImporterVersion2;
 
 public class MainTests extends TestCase
@@ -465,11 +463,9 @@ public class MainTests extends TestCase
 		suite.addTest(new TestSuite(TestConProCodeMapHelper.class));
 		
 		//xml.conpro.export
-		suite.addTest(new TestSuite(TestConproXmlExporter.class));
 		suite.addTest(new TestSuite(TestConproXmlExporterVersion2.class));
 		
 		//xml.conpro.importer
-		suite.addTest(new TestSuite(TestConProXmlImporter.class));
 		suite.addTest(new TestSuite(TestConproXmlImporterVersion2.class));
 
 	    return suite;
