@@ -163,7 +163,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 
 	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
 	{
-		byte[] projectXmlInBytes = exportVersion2ProjectXmlToBytes();
+		byte[] projectXmlInBytes = exportProjectXmlToBytes();
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
 		try
 		{
@@ -181,7 +181,7 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		}
 	}
 
-	private byte[] exportVersion2ProjectXmlToBytes() throws IOException, Exception, UnsupportedEncodingException
+	private byte[] exportProjectXmlToBytes() throws IOException, Exception, UnsupportedEncodingException
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
 		try
