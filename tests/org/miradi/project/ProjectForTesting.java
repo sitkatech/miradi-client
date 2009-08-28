@@ -94,7 +94,7 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.PointList;
 import org.miradi.utils.Translation;
-import org.miradi.xml.conpro.ConProMiradiXml;
+import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
 
 
 
@@ -182,7 +182,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef xenodataRef1 = createAndPopulateXenodata("1").getRef();
 		ORef xenodataRef2 = createAndPopulateXenodata("2").getRef();
 		StringRefMap refMap = new StringRefMap();
-		refMap.add(ConProMiradiXml.CONPRO_CONTEXT, xenodataRef1);
+		refMap.add(ConProMiradiXmlVersion2.CONPRO_CONTEXT, xenodataRef1);
 		refMap.add("RandomKey", xenodataRef2);
 		
 		return refMap.toString();
