@@ -41,9 +41,9 @@ import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.utils.TestTranslations;
 import org.miradi.utils.Translation;
 
-public class TestConproXmlExporterVersion2 extends TestCaseWithProject
+public class TestConproXmlExporter extends TestCaseWithProject
 {
-	public TestConproXmlExporterVersion2(String name)
+	public TestConproXmlExporter(String name)
 	{
 		super(name);
 	}
