@@ -75,5 +75,5 @@ public class ConProMiradiXmlValidator
 		return properties;
 	}
 	
-	public static final String MIRADI_CONPRO_SCHEMA_FILE_NAME = "xml/ConProMiradiVersion2.rnc";
+	public static final String MIRADI_CONPRO_SCHEMA_FILE_NAME = "xml/ConProMiradi.rnc";
 }
