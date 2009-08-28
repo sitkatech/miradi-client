@@ -110,10 +110,9 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 	private void importProject(File zipFileToImport, Project projectToFill, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME_VERSION_1);
-		byte[] extractXmlBytesV2 = extractXmlBytes(zipFile, ExportCpmzDoer.getXmlFileName());
-		if (extractXmlBytes.length > 0 && extractXmlBytesV2.length == 0)
-			throw new CpmzVersionTooOldException();
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+		if (extractXmlBytes.length == 0)
+			throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
 		
 		try
 		{
@@ -178,7 +177,7 @@ public class ImportCpmzVersion2Doer extends ImportProjectDoer
 	
 	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
 	{
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.getXmlFileName());
+		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
 		return new ByteArrayInputStreamWithSeek(extractXmlBytes);
 	}
 
