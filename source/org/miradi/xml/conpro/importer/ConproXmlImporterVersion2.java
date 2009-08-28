@@ -107,7 +107,7 @@ import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
-import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
+import org.miradi.xml.conpro.ConProMiradiXml;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidatorVersion2;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -116,7 +116,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class ConproXmlImporterVersion2 implements ConProMiradiXmlVersion2
+public class ConproXmlImporterVersion2 implements ConProMiradiXml
 {
 	public ConproXmlImporterVersion2(Project projectToFill) throws Exception
 	{

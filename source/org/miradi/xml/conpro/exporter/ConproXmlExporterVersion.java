@@ -81,11 +81,11 @@ import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
-import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
+import org.miradi.xml.conpro.ConProMiradiXml;
 
 
 //FIXME urgent: This class is under construction
-public class ConproXmlExporterVersion extends XmlExporter implements ConProMiradiXmlVersion2
+public class ConproXmlExporterVersion extends XmlExporter implements ConProMiradiXml
 {
 	public ConproXmlExporterVersion(Project project) throws Exception
 	{
