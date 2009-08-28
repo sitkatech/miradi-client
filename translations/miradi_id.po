@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-28 13:26-0500\n"
+"POT-Creation-Date: 2009-08-28 13:29-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -3132,10 +3132,6 @@ msgstr "Orang"
 #: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
 msgid "Group"
 msgstr "Kelompok"
-
-#: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:37
-msgid "Material"
-msgstr "Bahan"
 
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
@@ -32764,6 +32760,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Material"
+#~ msgstr "Bahan"
 
 #~ msgid "Hours"
 #~ msgstr "Jam"
