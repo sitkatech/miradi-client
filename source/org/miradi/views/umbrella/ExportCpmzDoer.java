@@ -45,9 +45,7 @@ import org.miradi.utils.CpmzFileChooser;
 import org.miradi.utils.MpzFileFilterForChooserDialog;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.xml.conpro.ConProMiradiXmlVersion2;
-import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidator;
 import org.miradi.xml.conpro.exporter.ConProMiradiXmlValidatorVersion2;
-import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion2;
 
 public class ExportCpmzDoer extends AbstractFileSaverDoer
@@ -166,7 +164,6 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 
 	private void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
 	{
-		exportUsingOriginalExporter(zipOut);
 		exportUsingVersion2Exporter(zipOut);
 	}
 	
@@ -190,42 +187,6 @@ public class ExportCpmzDoer extends AbstractFileSaverDoer
 		}
 	}
 
-	private void exportUsingOriginalExporter(ZipOutputStream zipOut) throws Exception
-	{
-		byte[] projectXmlInBytes = exportProjectXmlToBytes();
-		ByteArrayInputStream inputStream = new ByteArrayInputStream(projectXmlInBytes);
-		try
-		{
-			if (!new ConProMiradiXmlValidator().isValid(inputStream))
-			{
-				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
-				throw new ValidationException(EAM.text("Exported file does not validate."));
-			}
-
-			writeContent(zipOut, PROJECT_XML_FILE_NAME_VERSION_1, projectXmlInBytes);
-		}
-		finally
-		{
-			inputStream.close();
-		}
-	}
-
-	private byte[] exportProjectXmlToBytes() throws IOException, Exception, UnsupportedEncodingException
-	{
-		UnicodeStringWriter writer = UnicodeStringWriter.create();
-		try
-		{
-			new ConproXmlExporter(getProject()).exportProject(writer);
-			writer.close();
-		}
-		finally
-		{
-			writer.close();
-		}
-		
-		return writer.toString().getBytes("UTF-8");
-	}
-	
 	private byte[] exportVersion2ProjectXmlToBytes() throws IOException, Exception, UnsupportedEncodingException
 	{
 		UnicodeStringWriter writer = UnicodeStringWriter.create();
