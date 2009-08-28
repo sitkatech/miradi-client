@@ -153,7 +153,7 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_ASSOCIATED_PROJECTS_TEXT = "AssociatedProjectsText";
 	public final static String TAG_CLASSIFICATIONS = "Classifications";
 	
-	public final static String PSEUDO_TAG_CLASSIFICATIONS = "PseudoClassifications";
+	public final static String PSEUDO_TAG_CLASSIFICATIONS = "PsuedoClassificationsAsMultilineText";
 	
 	public StringData projectSharingCode;
 	public CodeListData projectTypes;
