@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-28 13:26-0500\n"
+"POT-Creation-Date: 2009-08-28 13:29-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -3012,10 +3012,6 @@ msgstr "人员 "
 #: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:36
 msgid "Group"
 msgstr "小组"
-
-#: miradi/source/org/miradi/questions/ResourceTypeQuestion.java:37
-msgid "Material"
-msgstr "材料"
 
 #: miradi/source/org/miradi/questions/HabitatAssociationQuestion.java:34
 msgid "Forest"
@@ -29373,6 +29369,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Material"
+#~ msgstr "材料"
 
 #~ msgid "Hours"
 #~ msgstr "小时"
