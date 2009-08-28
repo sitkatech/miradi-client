@@ -34,7 +34,6 @@ public class ResourceTypeQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("Person")),
 			new ChoiceItem("Group", EAM.text("Group")),
-			new ChoiceItem("Material", EAM.text("Material")),
 		};
 	}
 

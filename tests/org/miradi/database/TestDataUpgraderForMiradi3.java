@@ -41,6 +41,37 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		super(name);
 	}
 	
+	public void testConvertMaterialToPersonCodeConverter() throws Exception
+	{
+		String projectResourceMaterial = "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"Material\",\"SurName\":\"\",\"AlternativeEmail\":\"\",\"ProgressReportRefs\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"Location\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"\",\"Name\":\"Semi Truck\",\"Email\":\"\",\"TimeStampModified\":\"1251478935415\",\"Initials\":\"\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"DateUpdated\":\"\",\"Position\":\"\",\"Label\":\"\",\"Id\":60,\"IMService\":\"\"}";
+		String projectResourcePerson =   "{\"ExpenseRefs\":\"\",\"Organization\":\"\",\"IMAddress\":\"\",\"RoleCodes\":\"\",\"ResourceType\":\"\",\"SurName\":\"Doe\",\"AlternativeEmail\":\"\",\"ProgressReportRefs\":\"\",\"Custom.Custom1\":\"\",\"Comments\":\"\",\"AssignmentIds\":\"\",\"PhoneNumberOther\":\"\",\"Custom.Custom2\":\"\",\"Location\":\"\",\"PhoneNumber\":\"\",\"CostPerUnit\":\"\",\"Name\":\"John\",\"Email\":\"\",\"TimeStampModified\":\"1251478937866\",\"Initials\":\"\",\"PhoneNumberMobile\":\"\",\"PhoneNumberHome\":\"\",\"DateUpdated\":\"\",\"Position\":\"\",\"Label\":\"\",\"Id\":61,\"IMService\":\"\"}";
+		
+		File jsonDir = createJsonDir();
+		
+		final int PROJECT_RESOURCE_TYPE = 7;
+		int[] resourceIds = createAndPopulateObjectDir(jsonDir, PROJECT_RESOURCE_TYPE, new String[]{projectResourceMaterial, projectResourcePerson, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		MigrationsForMiradi3.upgradeToVersion47();
+		
+		String PERSON_TYPE = "";
+		verifyResourceType(jsonDir, PROJECT_RESOURCE_TYPE, resourceIds[0], PERSON_TYPE);
+		verifyResourceType(jsonDir, PROJECT_RESOURCE_TYPE, resourceIds[1], PERSON_TYPE);
+	}
+
+	private void verifyResourceType(File jsonDir, final int ObjectType, int resourceId, String expectedResourceType) throws Exception
+	{
+		File resourceDir = DataUpgrader.getObjectsDir(jsonDir, ObjectType);
+		File resourceFile = new File(resourceDir, Integer.toString(resourceId));
+		assertTrue("resource was removed?", resourceFile.exists());
+		
+		EnhancedJsonObject resourceJson = new EnhancedJsonObject(readFile(resourceFile));
+		assertTrue("should contain resource type field?", resourceJson.has("ResourceType"));
+		
+		String resourceType = resourceJson.getString("ResourceType");
+		assertEquals("resource type was not updated?", expectedResourceType, resourceType);
+	}
+	
 	public void testRemoveTextBoxLinksFromEmtyProject() throws Exception
 	{
 		DataUpgrader.initializeStaticDirectory(tempDirectory);

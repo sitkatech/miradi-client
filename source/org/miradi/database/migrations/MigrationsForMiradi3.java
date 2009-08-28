@@ -69,4 +69,10 @@ public class MigrationsForMiradi3
 		RemoveTextBoxLinksMigration.removeTextBoxLinks();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 46);
 	}
+	
+	public static void upgradeToVersion47() throws Exception
+	{
+		MaterialToPersonCodeConverterMigration.convertMaterialToPersonCode();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 47);
+	}
 }
