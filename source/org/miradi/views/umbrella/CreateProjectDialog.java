@@ -102,10 +102,11 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		panel.add(uiScrollPane);
 		
 		getContentPane().add(new MiradiScrollPane(panel));
-		getRootPane().setDefaultButton(okButton);
+		
 		setButtons(buttons);
 		
 		projectFilenameField.requestFocusInWindow();
+		getRootPane().setDefaultButton(okButton);
 	}
 
 	public boolean showSaveAsDialog()
@@ -220,7 +221,6 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		okButton = new PanelButton("");
 		okButton.addActionListener(this);
 		okButton.setEnabled(false);
-		getRootPane().setDefaultButton(okButton);
 		cancelButton = new PanelButton(EAM.text("Button|Cancel"));
 		cancelButton.addActionListener(this);
 
