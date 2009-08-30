@@ -20,29 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.miradi.main.Miradi;
-import org.miradi.utils.Translation;
-
-public class XmlSchemaCreator
+class TextFieldSchemaElement extends FieldSchemaElement
 {
-	public static void main(String[] args) throws Exception
+	TextFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
-		new XmlSchemaCreator().printXmlRncSchema(new PrintWriter(System.out));
+		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
-	public XmlSchemaCreator() throws Exception
+	public void output(PrintWriter writer) throws IOException
 	{
-		Miradi.addThirdPartyJarsToClasspath();
-		Translation.initialize();
+		super.output(writer);
+		writer.write(" { text }");
 	}
-
-	private void printXmlRncSchema(PrintWriter writer) throws Exception
-	{
-		ProjectSchemaElement rootElement = new ProjectSchemaElement();
-		writer.println("start = " + rootElement.getProjectElementName());
-		rootElement.output(writer);
-		writer.flush();
-    }
 }
