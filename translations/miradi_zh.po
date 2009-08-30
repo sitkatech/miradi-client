@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-30 12:41-0500\n"
+"POT-Creation-Date: 2009-08-30 12:43-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -3651,27 +3651,27 @@ msgstr "威胁因子评级"
 msgid "Team"
 msgstr "团队"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:34
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:29
 msgid "Abandoned - No longer relevant or useful"
 msgstr "已弃用——不再相关或有用 "
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:34
 msgid "Completed - Successfully accomplished"
 msgstr "已完成——成功地完成"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:44
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
 msgid "On-Track - Ongoing, generally on track"
 msgstr "正轨上——正在进行、步入正轨"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:49
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:44
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr "次要问题——正在进行、需要注意到的次要问题"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:49
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr "主要问题——正在进行中、需要注意到的主要问题"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:59
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
 msgid "Scheduled for future implementation"
 msgstr "针对未来实施安排日程"
 

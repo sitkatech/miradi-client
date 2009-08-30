@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-30 12:41-0500\n"
+"POT-Creation-Date: 2009-08-30 12:43-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -3826,28 +3826,28 @@ msgstr "Calificaciones de amenazas"
 msgid "Team"
 msgstr "Equipo "
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:34
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:29
 msgid "Abandoned - No longer relevant or useful"
 msgstr "Abandonado - Ya no es relevante o útil  "
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:34
 msgid "Completed - Successfully accomplished"
 msgstr "Completo – Logrado con éxito "
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:44
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
 msgid "On-Track - Ongoing, generally on track"
 msgstr "Avanza bien – Activo, generalmente avanza bien "
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:49
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:44
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr "Problemas menores – Activo, problemas menores que requieren atención "
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:49
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr ""
 "Problemas importantes – Activo, problemas importantes que requieren atención "
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:59
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
 msgid "Scheduled for future implementation"
 msgstr "Programado para implementación futura "
 
