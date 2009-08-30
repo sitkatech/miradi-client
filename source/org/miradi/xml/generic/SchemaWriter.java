@@ -38,13 +38,28 @@ public class SchemaWriter extends PrintWriter
 	public void startBlock()
 	{
 		println("{");
+		++indentLevel;
 	}
 
 	public void endBlock()
 	{
+		--indentLevel;
 		println("}");
 		println();
 	}
-
 	
+	public void printIndented(String text)
+	{
+		for(int i = 0; i < indentLevel; ++i)
+			print("  ");
+		print(text);
+	}
+	
+	public void printlnIndented(String text)
+	{
+		printIndented(text);
+		println();
+	}
+
+	private int indentLevel;
 }

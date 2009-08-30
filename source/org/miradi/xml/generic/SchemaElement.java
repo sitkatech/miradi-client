@@ -22,12 +22,9 @@ package org.miradi.xml.generic;
 
 import java.io.IOException;
 
-class SchemaElement
+public abstract class SchemaElement
 {
-	public void output(SchemaWriter writer) throws IOException
-	{
-		writer.print("element ");
-	}
+	abstract public void output(SchemaWriter writer) throws IOException;
 
 	protected String getDotElement(String elementName)
 	{
