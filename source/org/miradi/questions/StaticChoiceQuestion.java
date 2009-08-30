@@ -23,6 +23,12 @@ import java.util.Vector;
 
 public class StaticChoiceQuestion extends ChoiceQuestion
 {
+	public StaticChoiceQuestion()
+	{
+		super();
+		choices = createChoices();
+	}
+	
 	public StaticChoiceQuestion(ChoiceItem[] choicesToUse)
 	{
 		super();
@@ -39,6 +45,10 @@ public class StaticChoiceQuestion extends ChoiceQuestion
 		return choices;
 	}
 	
-	ChoiceItem[] choices;
-
+	protected ChoiceItem[] createChoices()
+	{
+		throw new RuntimeException("The overriding class calling StaticChoiceQuestion() needs to override this method.");
+	}
+	
+	private ChoiceItem[] choices;
 }
