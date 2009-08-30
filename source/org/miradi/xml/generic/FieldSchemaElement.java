@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 class FieldSchemaElement extends SchemaElement
 {
@@ -32,7 +31,7 @@ class FieldSchemaElement extends SchemaElement
 	}
 	
 	@Override
-	public void output(PrintWriter writer) throws IOException
+	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
 		writer.write(getFullName());

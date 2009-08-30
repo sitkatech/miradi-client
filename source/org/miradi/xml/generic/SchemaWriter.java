@@ -20,40 +20,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.IOException;
-import java.util.Vector;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 
-
-class ProjectSchemaElement extends SchemaElement
+public class SchemaWriter extends PrintWriter
 {
-	public ProjectSchemaElement()
+	public SchemaWriter(PrintStream out)
 	{
-		objectTypes = new Vector<ObjectSchemaElement>();
-		
-		objectTypes.add(new ProjectSummarySchemaElement());
-	}
-	
-	public void output(SchemaWriter writer) throws IOException
-	{
-		writer.defineAlias(getDotElement(getProjectElementName()), "element miradi:" + getProjectElementName());
-		writer.startBlock();
-		for(ObjectSchemaElement objectElement: objectTypes)
-		{
-			writer.println(getDotElement(objectElement.getObjectTypeName()) + "&");
-		}
-		writer.endBlock();
-		
-		for(ObjectSchemaElement objectElement: objectTypes)
-		{
-			objectElement.output(writer);
-		}
-		
-	}
-	
-	String getProjectElementName()
-	{
-		return "ConservationProject";
+		super(out);
 	}
 
-	private Vector<ObjectSchemaElement> objectTypes;
+	public void defineAlias(String alias, String elementName)
+	{
+		println(alias + " = " + elementName);
+	}
+
+	public void startBlock()
+	{
+		println("{");
+	}
+
+	public void endBlock()
+	{
+		println("}");
+		println();
+	}
+
+	
 }

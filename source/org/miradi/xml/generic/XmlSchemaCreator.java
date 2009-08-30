@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.PrintWriter;
-
 import org.miradi.main.Miradi;
 import org.miradi.utils.Translation;
 
@@ -29,7 +27,7 @@ public class XmlSchemaCreator
 {
 	public static void main(String[] args) throws Exception
 	{
-		new XmlSchemaCreator().printXmlRncSchema(new PrintWriter(System.out));
+		new XmlSchemaCreator().printXmlRncSchema(new SchemaWriter(System.out));
 	}
 
 	public XmlSchemaCreator() throws Exception
@@ -38,10 +36,10 @@ public class XmlSchemaCreator
 		Translation.initialize();
 	}
 
-	private void printXmlRncSchema(PrintWriter writer) throws Exception
+	private void printXmlRncSchema(SchemaWriter writer) throws Exception
 	{
 		ProjectSchemaElement rootElement = new ProjectSchemaElement();
-		writer.println("start = " + rootElement.getProjectElementName());
+		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		writer.flush();
     }

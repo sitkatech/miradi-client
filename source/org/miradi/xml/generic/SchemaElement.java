@@ -21,11 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 class SchemaElement
 {
-	public void output(PrintWriter writer) throws IOException
+	public void output(SchemaWriter writer) throws IOException
 	{
 		writer.print("element ");
 	}
