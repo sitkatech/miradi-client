@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-29 09:23-0500\n"
+"POT-Creation-Date: 2009-08-30 11:56-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -2654,7 +2654,6 @@ msgstr ""
 #: miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:36
 #: miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
-#: miradi/source/org/miradi/questions/ProgressReportStatusQuestion.java:36
 #: miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
 #: miradi/source/org/miradi/questions/StressContributionQuestion.java:36
 #: miradi/source/org/miradi/questions/RatingSourceQuestion.java:35
@@ -2663,6 +2662,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/StatusQuestion.java:36
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:249
@@ -2842,31 +2842,6 @@ msgstr "Por trimestre"
 #: miradi/source/org/miradi/questions/BudgetTimePeriodQuestion.java:35
 msgid "By Year"
 msgstr "Por año"
-
-#: miradi/source/org/miradi/questions/ProgressReportStatusQuestion.java:37
-msgid "Scheduled for future implementation"
-msgstr "Programado para implementación futura "
-
-#: miradi/source/org/miradi/questions/ProgressReportStatusQuestion.java:38
-msgid "Major Issues - Ongoing, major issues that need attention"
-msgstr ""
-"Problemas importantes – Activo, problemas importantes que requieren atención "
-
-#: miradi/source/org/miradi/questions/ProgressReportStatusQuestion.java:39
-msgid "Minor Issues - Ongoing, has minor issues that need attention"
-msgstr "Problemas menores – Activo, problemas menores que requieren atención "
-
-#: miradi/source/org/miradi/questions/ProgressReportStatusQuestion.java:40
-msgid "On-Track - Ongoing, generally on track"
-msgstr "Avanza bien – Activo, generalmente avanza bien "
-
-#: miradi/source/org/miradi/questions/ProgressReportStatusQuestion.java:41
-msgid "Completed - Successfully accomplished"
-msgstr "Completo – Logrado con éxito "
-
-#: miradi/source/org/miradi/questions/ProgressReportStatusQuestion.java:42
-msgid "Abandoned - No longer relevant or useful"
-msgstr "Abandonado - Ya no es relevante o útil  "
 
 #: miradi/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:35
 msgid "Medium (Default)"
@@ -3850,6 +3825,31 @@ msgstr "Calificaciones de amenazas"
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:122
 msgid "Team"
 msgstr "Equipo "
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:37
+msgid "Scheduled for future implementation"
+msgstr "Programado para implementación futura "
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:38
+msgid "Major Issues - Ongoing, major issues that need attention"
+msgstr ""
+"Problemas importantes – Activo, problemas importantes que requieren atención "
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
+msgid "Minor Issues - Ongoing, has minor issues that need attention"
+msgstr "Problemas menores – Activo, problemas menores que requieren atención "
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:40
+msgid "On-Track - Ongoing, generally on track"
+msgstr "Avanza bien – Activo, generalmente avanza bien "
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:41
+msgid "Completed - Successfully accomplished"
+msgstr "Completo – Logrado con éxito "
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
+msgid "Abandoned - No longer relevant or useful"
+msgstr "Abandonado - Ya no es relevante o útil  "
 
 #: miradi/source/org/miradi/questions/TrendQuestion.java:39
 msgid "Strong Increase"
