@@ -38,6 +38,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 
+	public void createNumericField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new NumericFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+
 	public void createDateField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new DateFieldSchemaElement(getObjectTypeName(), fieldNameToUse);

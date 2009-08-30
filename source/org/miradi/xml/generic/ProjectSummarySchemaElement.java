@@ -34,16 +34,21 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createTextField(ProjectMetadata.TAG_PROJECT_VISION);
 		
 		createDateField(ProjectMetadata.TAG_START_DATE);
-		createTextField(ProjectMetadata.TAG_EXPECTED_END_DATE);
-		createTextField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
+		createDateField(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		createDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		
 		// TAG_CURRENCY_DECIMAL_PLACES
 		createLocationField("ProjectLocation");
+		// TAG_TOTAL_BUDGET_FOR_FUNDING
+		// TAG_BUDGET_SECURED_PERCENT
+		// TAG_CURRENCY_TYPE
+		// TAG_CURRENCY_SYMBOL
+		// TAG_FISCAL_YEAR_START
 		
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
+		createTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		createTextField(ProjectMetadata.TAG_PROJECT_URL);
+		createNumericField("ProjectAreaHectares"); //ProjectMetadata.TAG_PROJECT_AREA
+		createTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
