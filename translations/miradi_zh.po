@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-30 12:43-0500\n"
+"POT-Creation-Date: 2009-08-30 12:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2642,6 +2642,30 @@ msgstr "2"
 #: miradi/source/org/miradi/questions/CurrencyDecimalQuestion.java:37
 msgid "3"
 msgstr "3"
+
+#: miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:29
+msgid "Abandoned"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:34
+msgid "Completed"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:39
+msgid "On-Track"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:44
+msgid "Minor Issues"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:49
+msgid "Major Issues"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
+msgid "Scheduled"
+msgstr ""
 
 #: miradi/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:36
 msgid "KEA Type|Size"
