@@ -31,7 +31,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TaglessChoiceItem;
@@ -90,7 +90,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 			return new StatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
 		
 		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-			return new ProgressReportLongStatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
+			return new ProgressReportShortStatusQuestion().findChoiceByCode(getObject().getPseudoData(tag));
 		
 		if(tag.equals(Indicator.TAG_EMPTY))
 			return new EmptyChoiceItem();
