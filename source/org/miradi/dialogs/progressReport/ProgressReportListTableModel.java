@@ -28,7 +28,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProgressReport;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.utils.BaseObjectDateAndIdComparator;
 import org.miradi.utils.IgnoreCaseStringComparator;
 
@@ -38,7 +38,7 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 	{
 		super(projectToUse, nodeRef, annotationTag, ProgressReport.getObjectType(), COLUMN_TAGS);
 		
-		progressReportQuestion = new ProgressReportLongStatusQuestion();
+		progressReportQuestion = new ProgressReportShortStatusQuestion();
 	}
 
 	public boolean isChoiceItemColumn(int column)
@@ -94,7 +94,7 @@ public class ProgressReportListTableModel extends ObjectListTableModel
 	
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ProgressReportListTableModel";
 	
-	private ProgressReportLongStatusQuestion progressReportQuestion; 
+	private ProgressReportShortStatusQuestion progressReportQuestion; 
 	
 	public static final String[] COLUMN_TAGS = new String[] {
 		ProgressReport.TAG_PROGRESS_DATE,
