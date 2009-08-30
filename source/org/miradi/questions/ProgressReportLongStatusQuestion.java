@@ -19,36 +19,43 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import java.awt.Color;
 
 import org.miradi.main.EAM;
 
-public class ProgressReportLongStatusQuestion extends StaticChoiceQuestion
+public class ProgressReportLongStatusQuestion extends AbstractProgressReportStatusQuestion
 {
 	public ProgressReportLongStatusQuestion()
 	{
-		super(getChoiceItems());
-	}
-
-	static ChoiceItem[] getChoiceItems()
-	{
-		return new ChoiceItem[] {
-				new ChoiceItem(NOT_SPECIFIED, EAM.text("Not Specified"), Color.WHITE),
-				new ChoiceItem(PLANNED_CODE, EAM.text("Scheduled for future implementation"), Color.WHITE),
-				new ChoiceItem(MAJOR_ISSUES_CODE, EAM.text("Major Issues - Ongoing, major issues that need attention"), COLOR_ALERT),
-				new ChoiceItem(MINOR_ISSUES_CODE, EAM.text("Minor Issues - Ongoing, has minor issues that need attention"), COLOR_CAUTION),
-				new ChoiceItem(ON_TRACK_CODE, EAM.text("On-Track - Ongoing, generally on track"), COLOR_OK),
-				new ChoiceItem(COMPLETED_CODE, EAM.text("Completed - Successfully accomplished"), COLOR_GREAT),
-				new ChoiceItem(ABANDONED_CODE, EAM.text("Abandoned - No longer relevant or useful"), Color.WHITE),
-		};
+		super();
 	}
 	
-	public static final	String NOT_SPECIFIED = "";
-	public static final String PLANNED_CODE = "Planned";
-	public static final String MAJOR_ISSUES_CODE = "MajorIssues";
-	public static final String MINOR_ISSUES_CODE = "MinorIssues";
-	public static final String ON_TRACK_CODE = "OnTrack";
-	public static final String COMPLETED_CODE = "Completed";
-	public static final String ABANDONED_CODE = "Abandoned";
+	protected String getAbandonedLabel()
+	{
+		return EAM.text("Abandoned - No longer relevant or useful");
+	}
+	
+	protected String getCompletedLabel()
+	{
+		return EAM.text("Completed - Successfully accomplished");
+	}
 
+	protected String getOnTrackLabel()
+	{
+		return EAM.text("On-Track - Ongoing, generally on track");
+	}
+
+	protected String getMinorIssuesLabel()
+	{
+		return EAM.text("Minor Issues - Ongoing, has minor issues that need attention");
+	}
+
+	protected String getMajorIssuesLabel()
+	{
+		return EAM.text("Major Issues - Ongoing, major issues that need attention");
+	}
+
+	protected String getPlannedLabel()
+	{
+		return EAM.text("Scheduled for future implementation");
+	}
 }
