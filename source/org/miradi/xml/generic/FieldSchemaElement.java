@@ -33,8 +33,7 @@ class FieldSchemaElement extends SchemaElement
 	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
-		super.output(writer);
-		writer.write(getFullName());
+		writer.printIndented("element " + getFullName());
 	}
 	
 	private String getFullName()
