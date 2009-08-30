@@ -51,7 +51,7 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createNumericField(ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES);
 		createTextField(ProjectMetadata.TAG_PROJECT_AREA);
 		createTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-//		createTextField(ProjectMetadata.);
+		createCountriesField(ProjectMetadata.TAG_COUNTRIES);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);

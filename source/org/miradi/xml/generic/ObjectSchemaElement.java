@@ -55,6 +55,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new LocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	protected void createCountriesField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new CountriesFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	public String getObjectTypeName()
 	{
