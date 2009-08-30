@@ -24,11 +24,6 @@ import org.miradi.main.EAM;
 
 public class ProgressReportLongStatusQuestion extends AbstractProgressReportStatusQuestion
 {
-	public ProgressReportLongStatusQuestion()
-	{
-		super();
-	}
-	
 	protected String getAbandonedLabel()
 	{
 		return EAM.text("Abandoned - No longer relevant or useful");
