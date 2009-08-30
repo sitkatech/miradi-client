@@ -43,7 +43,7 @@ public class StaticQuestionManager
 		addQuestion(new KeyEcologicalAttributeTypeQuestion());
 		addQuestion(new LanguageQuestion());
 		addQuestion(new PriorityRatingQuestion());
-		addQuestion(new ProgressReportStatusQuestion());
+		addQuestion(new ProgressReportLongStatusQuestion());
 		addQuestion(new ProtectedAreaCategoryQuestion());
 		addQuestion(new RatingSourceQuestion());
 		addQuestion(new ResourceRoleQuestion());

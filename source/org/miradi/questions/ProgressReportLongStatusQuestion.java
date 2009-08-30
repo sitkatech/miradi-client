@@ -23,9 +23,9 @@ import java.awt.Color;
 
 import org.miradi.main.EAM;
 
-public class ProgressReportStatusQuestion extends StaticChoiceQuestion
+public class ProgressReportLongStatusQuestion extends StaticChoiceQuestion
 {
-	public ProgressReportStatusQuestion()
+	public ProgressReportLongStatusQuestion()
 	{
 		super(getChoiceItems());
 	}

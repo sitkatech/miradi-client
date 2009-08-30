@@ -24,7 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objects.ProgressReport;
 import org.miradi.project.Project;
-import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 
 public class ProgressReportPropertiesPanel extends ObjectDataInputPanel
 {
@@ -32,7 +32,7 @@ public class ProgressReportPropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ProgressReport.getObjectType(), BaseId.INVALID);
 			
-		ProgressReportStatusQuestion progressReportStatusQuestion = new ProgressReportStatusQuestion();
+		ProgressReportLongStatusQuestion progressReportStatusQuestion = new ProgressReportLongStatusQuestion();
 		addField(createDateChooserField(ProgressReport.TAG_PROGRESS_DATE));
 		addField(createChoiceField(ProgressReport.getObjectType(), ProgressReport.TAG_PROGRESS_STATUS, progressReportStatusQuestion));
 		addField(createMultilineField(ProgressReport.TAG_DETAILS));
