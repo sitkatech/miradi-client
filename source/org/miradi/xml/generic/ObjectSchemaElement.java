@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Vector;
 
 
@@ -45,20 +44,16 @@ class ObjectSchemaElement extends SchemaElement
 	}
 
 	@Override
-	public void output(PrintWriter writer) throws IOException
+	public void output(SchemaWriter writer) throws IOException
 	{
-		writer.println(getDotElement(getObjectTypeName()) + " = ");
-		super.output(writer);
-		writer.print("miradi:" + getObjectTypeName());
-		writer.println();
-		
-		writer.println("{");
+		writer.defineAlias(getDotElement(getObjectTypeName()), "element miradi:" + getObjectTypeName());
+		writer.startBlock();
 		for(FieldSchemaElement fieldElement : fields)
 		{
 			fieldElement.output(writer);
 			writer.println("&");
 		}
-		writer.println("}");
+		writer.endBlock();
 	}
 	
 	private String objectTypeName;
