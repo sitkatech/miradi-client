@@ -44,6 +44,7 @@ public class StaticQuestionManager
 		addQuestion(new LanguageQuestion());
 		addQuestion(new PriorityRatingQuestion());
 		addQuestion(new ProgressReportLongStatusQuestion());
+		addQuestion(new ProgressReportShortStatusQuestion());
 		addQuestion(new ProtectedAreaCategoryQuestion());
 		addQuestion(new RatingSourceQuestion());
 		addQuestion(new ResourceRoleQuestion());
