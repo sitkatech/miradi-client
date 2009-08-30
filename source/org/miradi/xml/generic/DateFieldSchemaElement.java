@@ -20,29 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.main.Miradi;
-import org.miradi.utils.Translation;
+import java.io.IOException;
 
-public class XmlSchemaCreator
+public class DateFieldSchemaElement extends FieldSchemaElement
 {
-	public static void main(String[] args) throws Exception
+	DateFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
-		new XmlSchemaCreator().printXmlRncSchema(new SchemaWriter(System.out));
+		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
-	public XmlSchemaCreator() throws Exception
+	public void output(SchemaWriter writer) throws IOException
 	{
-		Miradi.addThirdPartyJarsToClasspath();
-		Translation.initialize();
+		super.output(writer);
+		writer.write(" { vocabulary_date }");
 	}
 
-	private void printXmlRncSchema(SchemaWriter writer) throws Exception
-	{
-		ProjectSchemaElement rootElement = new ProjectSchemaElement();
-		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
-		rootElement.output(writer);
-		
-		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		writer.flush();
-    }
 }

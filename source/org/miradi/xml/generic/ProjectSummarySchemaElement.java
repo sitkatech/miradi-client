@@ -31,9 +31,9 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createTextField(ProjectMetadata.TAG_PROJECT_SCOPE);
 		createTextField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
 		createTextField(ProjectMetadata.TAG_PROJECT_VISION);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
+		createDateField(ProjectMetadata.TAG_START_DATE);
+		createTextField(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		createTextField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
@@ -52,4 +52,5 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
 	}
+
 }
