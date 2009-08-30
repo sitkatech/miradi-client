@@ -44,6 +44,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 
+	protected void createLocationField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new LocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+
 	public String getObjectTypeName()
 	{
 		return objectTypeName;
