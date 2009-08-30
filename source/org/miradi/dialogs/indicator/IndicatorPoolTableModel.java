@@ -26,7 +26,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.ProgressReportShortStatusQuestion;
 
 
 public class IndicatorPoolTableModel extends ObjectPoolTableModel
@@ -41,7 +41,7 @@ public class IndicatorPoolTableModel extends ObjectPoolTableModel
 		if (getColumnTag(column).equals(Indicator.TAG_PRIORITY))
 			return getProject().getQuestion(PriorityRatingQuestion.class);
 		if (getColumnTag(column).equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-			return getProject().getQuestion(ProgressReportLongStatusQuestion.class);
+			return getProject().getQuestion(ProgressReportShortStatusQuestion.class);
 		
 		return null;
 	}
