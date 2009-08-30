@@ -20,29 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.PrintWriter;
+import org.miradi.objects.ProjectMetadata;
 
-import org.miradi.main.Miradi;
-import org.miradi.utils.Translation;
-
-public class XmlSchemaCreator
+class ProjectSummarySchemaElement extends ObjectSchemaElement
 {
-	public static void main(String[] args) throws Exception
+	public ProjectSummarySchemaElement()
 	{
-		new XmlSchemaCreator().printXmlRncSchema(new PrintWriter(System.out));
+		super("ProjectSummary");
+		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
+		createTextField(ProjectMetadata.TAG_PROJECT_SCOPE);
 	}
-
-	public XmlSchemaCreator() throws Exception
-	{
-		Miradi.addThirdPartyJarsToClasspath();
-		Translation.initialize();
-	}
-
-	private void printXmlRncSchema(PrintWriter writer) throws Exception
-	{
-		ProjectSchemaElement rootElement = new ProjectSchemaElement();
-		writer.println("start = " + rootElement.getProjectElementName());
-		rootElement.output(writer);
-		writer.flush();
-    }
 }
