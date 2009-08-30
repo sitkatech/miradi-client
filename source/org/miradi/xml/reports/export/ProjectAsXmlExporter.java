@@ -51,7 +51,7 @@ import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.MiradiMultiCalendar;
@@ -182,7 +182,7 @@ public class ProjectAsXmlExporter extends XmlExporter
 		out.writeln("</CurrentStatus>");
 		
 		out.writeln("<LatestProgressReport>");
-		ChoiceItem latestProgressChoice = getProject().getQuestion(ProgressReportStatusQuestion.class).findChoiceByCode(indicator.getLatestProgressReportDate());
+		ChoiceItem latestProgressChoice = getProject().getQuestion(ProgressReportLongStatusQuestion.class).findChoiceByCode(indicator.getLatestProgressReportDate());
 		latestProgressChoice.toXml(out);
 		out.writeln("</LatestProgressReport>");
 		

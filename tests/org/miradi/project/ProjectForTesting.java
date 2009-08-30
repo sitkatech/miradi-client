@@ -74,7 +74,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
-import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -695,7 +695,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateProgressReport(ProgressReport progressReport) throws Exception
 	{
 		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, "2008-01-23");
-		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, ProgressReportStatusQuestion.PLANNED_CODE);
+		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, ProgressReportLongStatusQuestion.PLANNED_CODE);
 	}
 	
 	public void populateProgressPercent(ProgressPercent progressPercent) throws Exception

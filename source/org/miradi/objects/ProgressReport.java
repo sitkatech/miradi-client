@@ -29,7 +29,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProgressReport extends BaseObject
@@ -92,7 +92,7 @@ public class ProgressReport extends BaseObject
 	
 	public ChoiceItem getProgressStatusChoice()
 	{
-		return new ProgressReportStatusQuestion().findChoiceByCode(progressStatus.get());
+		return new ProgressReportLongStatusQuestion().findChoiceByCode(progressStatus.get());
 	}
 	
 	public static boolean is(ORef ref)
@@ -119,7 +119,7 @@ public class ProgressReport extends BaseObject
 	{
 		super.clear();
 		
-		progressStatus = new ChoiceData(TAG_PROGRESS_STATUS, getQuestion(ProgressReportStatusQuestion.class));
+		progressStatus = new ChoiceData(TAG_PROGRESS_STATUS, getQuestion(ProgressReportLongStatusQuestion.class));
 		progressDate = new DateData(TAG_PROGRESS_DATE);
 		details = new StringData(TAG_DETAILS);
 		

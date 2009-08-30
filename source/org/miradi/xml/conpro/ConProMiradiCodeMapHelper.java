@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.ProgressReportStatusQuestion;
+import org.miradi.questions.ProgressReportLongStatusQuestion;
 import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
@@ -43,13 +43,13 @@ public class ConProMiradiCodeMapHelper
 	private void createMiradiToConproCodeMaps() throws Exception
 	{
 		progressStatusMap = new HashMap<String, String>();
-		progressStatusMap.put(ProgressReportStatusQuestion.NOT_SPECIFIED, CONPRO_STATUS_NOT_SPECIFIED);
-		progressStatusMap.put(ProgressReportStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
-		progressStatusMap.put(ProgressReportStatusQuestion.MAJOR_ISSUES_CODE, CONPRO_STATUS_MAJOR_ISSUES_VALUE);
-		progressStatusMap.put(ProgressReportStatusQuestion.MINOR_ISSUES_CODE, CONPRO_STATUS_MINOR_ISSUES_VALUE);
-		progressStatusMap.put(ProgressReportStatusQuestion.ON_TRACK_CODE, CONPRO_STATUS_ON_TRACK_VALUE);
-		progressStatusMap.put(ProgressReportStatusQuestion.COMPLETED_CODE, CONPRO_STATUS_COMPLETED_VALUE);
-		progressStatusMap.put(ProgressReportStatusQuestion.ABANDONED_CODE, CONPRO_STATUS_ABANDONED_VALUE);
+		progressStatusMap.put(ProgressReportLongStatusQuestion.NOT_SPECIFIED, CONPRO_STATUS_NOT_SPECIFIED);
+		progressStatusMap.put(ProgressReportLongStatusQuestion.PLANNED_CODE, CONPRO_STATUS_PLANNED_VALUE);
+		progressStatusMap.put(ProgressReportLongStatusQuestion.MAJOR_ISSUES_CODE, CONPRO_STATUS_MAJOR_ISSUES_VALUE);
+		progressStatusMap.put(ProgressReportLongStatusQuestion.MINOR_ISSUES_CODE, CONPRO_STATUS_MINOR_ISSUES_VALUE);
+		progressStatusMap.put(ProgressReportLongStatusQuestion.ON_TRACK_CODE, CONPRO_STATUS_ON_TRACK_VALUE);
+		progressStatusMap.put(ProgressReportLongStatusQuestion.COMPLETED_CODE, CONPRO_STATUS_COMPLETED_VALUE);
+		progressStatusMap.put(ProgressReportLongStatusQuestion.ABANDONED_CODE, CONPRO_STATUS_ABANDONED_VALUE);
 		
 		rankingMap = new HashMap<String, String>();
 		rankingMap.put("1", "Poor");
