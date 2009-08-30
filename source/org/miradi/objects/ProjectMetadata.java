@@ -301,34 +301,39 @@ public class ProjectMetadata extends BaseObject
 	void clear()
 	{
 		super.clear();
-		currentWizardScreenName = new StringData(TAG_CURRENT_WIZARD_SCREEN_NAME);
 		projectName = new StringData(TAG_PROJECT_NAME);
+
+		projectDescription = new StringData(TAG_PROJECT_DESCRIPTION);
+		projectURL = new StringData(TAG_PROJECT_URL);
 		projectScope = new StringData(TAG_PROJECT_SCOPE);
 		shortProjectScope = new StringData(TAG_SHORT_PROJECT_SCOPE);
+		scopeComments = new StringData(TAG_SCOPE_COMMENTS);
 		projectVision = new StringData(TAG_PROJECT_VISION);
+		
 		startDate = new DateData(TAG_START_DATE);
 		expectedEndDate = new DateData(TAG_EXPECTED_END_DATE);
 		effectiveDate = new DateData(TAG_DATA_EFFECTIVE_DATE);
-		sizeInHectares = new NumberData(TAG_TNC_SIZE_IN_HECTARES);
+		
 		currencyDecimalPlaces = new IntegerData(TAG_CURRENCY_DECIMAL_PLACES);
-		latitude = new FloatData(TAG_PROJECT_LATITUDE);
-		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
-		totalBudgetForFunding = new NumberData(TAG_TOTAL_BUDGET_FOR_FUNDING);
-		budgetSecuredPercent = new PercentageData(TAG_BUDGET_SECURED_PERCENT);
 		currencyType = new ChoiceData(TAG_CURRENCY_TYPE, getQuestion(CurrencyTypeQuestion.class));
 		currencySymbol = new StringData(TAG_CURRENCY_SYMBOL);
+		totalBudgetForFunding = new NumberData(TAG_TOTAL_BUDGET_FOR_FUNDING);
+		budgetSecuredPercent = new PercentageData(TAG_BUDGET_SECURED_PERCENT);
 		fiscalYearStart = new ChoiceData(TAG_FISCAL_YEAR_START, getQuestion(FiscalYearStartQuestion.class));
-		projectDescription = new StringData(TAG_PROJECT_DESCRIPTION);
-		projectURL = new StringData(TAG_PROJECT_URL);
+		
+		latitude = new FloatData(TAG_PROJECT_LATITUDE);
+		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
+		sizeInHectares = new NumberData(TAG_TNC_SIZE_IN_HECTARES);
 		projectArea = new StringData(TAG_PROJECT_AREA);
 		projectAreaNotes = new StringData(TAG_PROJECT_AREA_NOTES);
-		scopeComments = new StringData(TAG_SCOPE_COMMENTS);
+
 		countries = new CodeListData(TAG_COUNTRIES, getQuestion(CountriesQuestion.class));
 		statesAndProvinces = new StringData(TAG_STATE_AND_PROVINCES);
 		municipalities = new StringData(TAG_MUNICIPALITIES);
 		legislativeDistricts = new StringData(TAG_LEGISLATIVE_DISTRICTS);
 		locationDetail = new StringData(TAG_LOCATION_DETAIL);
 		locationComments = new StringData(TAG_LOCATION_COMMENTS);
+
 		keyFundingSources = new StringData(TAG_KEY_FUNDING_SOURCES);
 		financialComments = new StringData(TAG_FINANCIAL_COMMENTS);
 		workPlanStartDate = new DateData(TAG_WORKPLAN_START_DATE);
@@ -345,6 +350,7 @@ public class ProjectMetadata extends BaseObject
 		protectedAreaCategoryNotes = new StringData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
 		projectStatus = new StringData(TAG_PROJECT_STATUS);
 		nextSteps = new StringData(TAG_NEXT_STEPS);
+		currentWizardScreenName = new StringData(TAG_CURRENT_WIZARD_SCREEN_NAME);
 
 		addPresentationDataField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
 		addField(TAG_PROJECT_NAME, projectName);
