@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-30 11:56-0500\n"
+"POT-Creation-Date: 2009-08-30 12:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2650,6 +2650,7 @@ msgstr ""
 #: miradi/source/org/miradi/questions/StressIrreversibilityQuestion.java:36
 #: miradi/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: miradi/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
+#: miradi/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:37
 #: miradi/source/org/miradi/questions/StressContributionQuestion.java:36
 #: miradi/source/org/miradi/questions/RatingSourceQuestion.java:35
 #: miradi/source/org/miradi/questions/StressRatingChoiceQuestion.java:36
@@ -2657,7 +2658,6 @@ msgstr ""
 #: miradi/source/org/miradi/questions/StatusQuestion.java:36
 #: miradi/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: miradi/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 #: miradi/source/org/miradi/questions/TrendQuestion.java:37
 #: miradi/source/org/miradi/utils/Translation.java:306
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:249
@@ -3796,33 +3796,33 @@ msgstr "Peringkat Ancaman"
 msgid "Team"
 msgstr "Tim"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:37
-msgid "Scheduled for future implementation"
-msgstr "Dijadwalkan untuk pelaksanaan di masa datang"
-
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:38
-msgid "Major Issues - Ongoing, major issues that need attention"
-msgstr ""
-"Masalah Utama – Sedang berlangsung, masalah-masalah utama yang memerlukan "
-"perhatian"
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:34
+msgid "Abandoned - No longer relevant or useful"
+msgstr "Ditelantarkan - Tidak lagi relevan atau berguna"
 
 #: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:39
+msgid "Completed - Successfully accomplished"
+msgstr "Selesai – Berhasil diselesaikan"
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:44
+msgid "On-Track - Ongoing, generally on track"
+msgstr "Sesuai Jadwal – Sedang berlangsung, secara umum sesuai jadwal"
+
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:49
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
 "Masalah Kecil – Sedang berlangsung, memiliki masalah-masalah kecil yang "
 "memerlukan perhatian"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:40
-msgid "On-Track - Ongoing, generally on track"
-msgstr "Sesuai Jadwal – Sedang berlangsung, secara umum sesuai jadwal"
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
+msgid "Major Issues - Ongoing, major issues that need attention"
+msgstr ""
+"Masalah Utama – Sedang berlangsung, masalah-masalah utama yang memerlukan "
+"perhatian"
 
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:41
-msgid "Completed - Successfully accomplished"
-msgstr "Selesai – Berhasil diselesaikan"
-
-#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
-msgid "Abandoned - No longer relevant or useful"
-msgstr "Ditelantarkan - Tidak lagi relevan atau berguna"
+#: miradi/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:59
+msgid "Scheduled for future implementation"
+msgstr "Dijadwalkan untuk pelaksanaan di masa datang"
 
 #: miradi/source/org/miradi/questions/TrendQuestion.java:39
 msgid "Strong Increase"
