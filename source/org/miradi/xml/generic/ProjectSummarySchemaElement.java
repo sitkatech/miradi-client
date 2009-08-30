@@ -29,8 +29,11 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		super("ProjectSummary");
 		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
 		
+		createTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+		createTextField(ProjectMetadata.TAG_PROJECT_URL);
 		createTextField(ProjectMetadata.TAG_PROJECT_SCOPE);
 		createTextField(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
+		createTextField(ProjectMetadata.TAG_SCOPE_COMMENTS);
 		createTextField(ProjectMetadata.TAG_PROJECT_VISION);
 		
 		createDateField(ProjectMetadata.TAG_START_DATE);
@@ -38,19 +41,16 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		
 		// TAG_CURRENCY_DECIMAL_PLACES
-		createLocationField("ProjectLocation");
-		// TAG_TOTAL_BUDGET_FOR_FUNDING
-		// TAG_BUDGET_SECURED_PERCENT
 		// TAG_CURRENCY_TYPE
 		// TAG_CURRENCY_SYMBOL
+		// TAG_TOTAL_BUDGET_FOR_FUNDING
+		// TAG_BUDGET_SECURED_PERCENT
 		// TAG_FISCAL_YEAR_START
 		
-		createTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		createTextField(ProjectMetadata.TAG_PROJECT_URL);
-		createNumericField("ProjectAreaHectares"); //ProjectMetadata.TAG_PROJECT_AREA
+		createLocationField("ProjectLocation");
+		createNumericField(ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES);
+		createTextField(ProjectMetadata.TAG_PROJECT_AREA);
 		createTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
 //		createTextField(ProjectMetadata.);
