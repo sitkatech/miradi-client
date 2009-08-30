@@ -43,6 +43,13 @@ public class XmlSchemaCreator
 		rootElement.output(writer);
 		
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		writer.flush();
+
+		writer.defineAlias("GeospatialLocation.element.element", "element cp:GeospatialLocation");
+		writer.startBlock();
+        writer.printlnIndented("element cp:latitude { xsd:decimal } &");
+        writer.printlnIndented("element cp:longitude { xsd:decimal } &");
+        writer.endBlock();
+
+        writer.flush();
     }
 }
