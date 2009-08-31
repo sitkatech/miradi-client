@@ -365,7 +365,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(Goal.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
+				return Goal.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
+				return Goal.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_DETAILS;
 		}
 
 		if(Cause.is(nodeType))
