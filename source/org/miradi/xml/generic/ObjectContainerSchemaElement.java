@@ -26,7 +26,7 @@ public class ObjectContainerSchemaElement extends ObjectSchemaElement
 {
 	public ObjectContainerSchemaElement(ObjectSchemaElement elementToWrap)
 	{
-		super(getContainerName(elementToWrap));
+		super(getContainerName(elementToWrap.getObjectTypeName()));
 		objectSchemaElement = elementToWrap;
 	}
 
@@ -34,13 +34,19 @@ public class ObjectContainerSchemaElement extends ObjectSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		String result = "{ " + getDotElement(objectSchemaElement.getObjectTypeName()) + "* }";
-		writer.defineAlias(getContainerName(objectSchemaElement), result);
+		writer.defineAlias(getDotElement(getObjectTypeName()), result);
 		objectSchemaElement.output(writer);
 	}
-
-	private static String getContainerName(ObjectSchemaElement elementToWrap)
+	
+	@Override
+	public String getObjectTypeName()
 	{
-		return elementToWrap.getObjectTypeName() + "Container";
+		return getContainerName(objectSchemaElement.getObjectTypeName());
+	}
+
+	private static String getContainerName(String wrappedObjectTypeName)
+	{
+		return wrappedObjectTypeName + "Container";
 	}
 
 	private ObjectSchemaElement objectSchemaElement;

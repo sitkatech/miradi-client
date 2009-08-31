@@ -32,7 +32,7 @@ public class CountriesFieldSchemaElement extends FieldSchemaElement
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { vocabulary_iso_country_code }*");
+		writer.write(" { vocabulary_iso_country_code* }");
 	}
 
 }
