@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-30 12:46-0500\n"
+"POT-Creation-Date: 2009-08-31 15:17-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -213,6 +213,10 @@ msgstr ""
 #: miradi/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
 msgid "Unknown"
 msgstr "未知"
+
+#: miradi/source/org/miradi/exceptions/UnsupportedOldVersionSchemaException.java:28
+msgid "The Cpmz file being imported is old and no longer supported."
+msgstr ""
 
 #: miradi/source/org/miradi/exceptions/UnexpectedNonSideEffectException.java:28
 msgid "Attempt to execute command while in side effect mode"
