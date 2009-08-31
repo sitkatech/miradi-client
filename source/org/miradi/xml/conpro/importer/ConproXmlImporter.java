@@ -39,8 +39,8 @@ import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
-import org.miradi.exceptions.UnsupportedOldVersionSchemaException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -158,7 +158,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		
 		if (isUnsupportedOldVersion(nameSpaceUri))
 		{
-			throw new UnsupportedOldVersionSchemaException();
+			throw new CpmzVersionTooOldException();
 		}
 		
 		projectAsInputStream.seek(0);			
