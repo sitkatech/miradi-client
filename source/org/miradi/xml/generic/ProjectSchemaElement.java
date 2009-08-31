@@ -31,13 +31,60 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes = new Vector<ObjectSchemaElement>();
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
+		// Scope
+		// Location
+		// Planning
+		// ProtectedArea
+		// FOS
+		// RARE
+		// TNC
+		// WCS
+		// WWF
+		
+		// ProjectResource
+		// OtherOrganization
 
 		objectTypes.add(new ObjectContainerSchemaElement(new ConceptualModelSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ResultsChainSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new DiagramFactorSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new DiagramLinkSchemaElement()));
 				
 		objectTypes.add(new ObjectContainerSchemaElement(new BiodiversityTargetObjectSchemaElement()));
+		// HWT
 		objectTypes.add(new ObjectContainerSchemaElement(new CauseObjectSchemaElement()));
+		// Strategy
+		// TRR
+		// IR
+		// Group Box
+		// Text Box
+		// Scope Box
+		
+		// KEA
+		// Stress
+		// Subtarget
+		// Goal
+		// Objective
+		// Indicator
+		
+		// ThreatRating
+		
+		// Activity
+		// Method
+		// Task
+		
+		// ResourceAssignment
+		// ExpenseAssignment
+		
+		// ProgressReport
+		// ProgressPercent
+		// Measurement
+		
+		// AccountingCode
+		// FundingSource
+		
+		// ReportTemplate
+		// PlanningCustomization
+		// TaggedObjectSet
 	}
 	
 	public void output(SchemaWriter writer) throws IOException

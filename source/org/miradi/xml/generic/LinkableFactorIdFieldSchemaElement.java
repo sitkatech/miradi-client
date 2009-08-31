@@ -20,21 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.Factor;
+import java.io.IOException;
 
-
-public class FactorObjectSchemaElement extends ObjectSchemaElement
+public class LinkableFactorIdFieldSchemaElement extends FieldSchemaElement
 {
-	public FactorObjectSchemaElement(String objectTypeName)
+	protected LinkableFactorIdFieldSchemaElement(String objectTypeNameToUse,
+			String fieldNameToUse)
 	{
-		super(objectTypeName);
-		createTextField(Factor.TAG_SHORT_LABEL);
-		createTextField(Factor.TAG_TEXT);
-		createTextField(Factor.TAG_COMMENTS);
-		createIdListField(Factor.TAG_INDICATOR_IDS, "Indicator");
-		
-		// TODO: Push down to exclude targets
-		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
+		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
+		writer.print("{ LinkableFactorId.element }");
+	}
 }

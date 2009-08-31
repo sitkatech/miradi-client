@@ -56,6 +56,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
+	protected void createLinkableFactorIdField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new LinkableFactorIdFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
 	protected void createGeospatialLocationField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new LocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
@@ -65,6 +71,12 @@ class ObjectSchemaElement extends SchemaElement
 	protected void createDiagramPointField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new DiagramPointFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
+	protected void createDiagramPointListField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new DiagramPointListFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
 	

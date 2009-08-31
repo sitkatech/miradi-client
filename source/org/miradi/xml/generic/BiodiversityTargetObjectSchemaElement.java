@@ -28,8 +28,8 @@ public class BiodiversityTargetObjectSchemaElement extends
 	public BiodiversityTargetObjectSchemaElement()
 	{
 		super("BiodiversityTarget");
+		createIdListField(Target.TAG_STRESS_REFS, "Stress");
 //		TAG_HABITAT_ASSOCIATION
-//		TAG_STRESS_REFS
 		
 		createTextField(Target.TAG_SPECIES_LATIN_NAME);
 	}

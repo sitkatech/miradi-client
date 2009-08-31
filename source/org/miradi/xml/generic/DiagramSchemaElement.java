@@ -30,7 +30,7 @@ abstract public class DiagramSchemaElement extends BaseObjectSchemaElement
 		createTextField(DiagramObject.TAG_SHORT_LABEL);
 		createTextField(DiagramObject.TAG_DETAIL);
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
-//		TAG_DIAGRAM_FACTOR_LINK_IDS
+		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "DiagramLink");
 	}
 
 }

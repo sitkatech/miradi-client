@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.AbstractTarget;
+
 
 abstract public class TargetObjectSchemaElement extends FactorObjectSchemaElement
 {
@@ -30,8 +32,7 @@ abstract public class TargetObjectSchemaElement extends FactorObjectSchemaElemen
 //		TAG_VIABILITY_MODE
 //		TAG_CURRENT_STATUS_JUSTIFICATION
 //		TAG_SUB_TARGET_REFS
-//		TAG_GOAL_IDS
-//		TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS
-//		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
+		createIdListField(AbstractTarget.TAG_GOAL_IDS, "Goal");
+		createIdListField(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, "KeyEcologicalAttribute");
 	}
 }
