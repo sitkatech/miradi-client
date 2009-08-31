@@ -340,16 +340,20 @@ public class ProjectMetadata extends BaseObject
 		workPlanEndDate = new DateData(TAG_WORKPLAN_END_DATE);
 		workPlanTimeUnit = new ChoiceData(TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
 		planningComments = new StringData(TAG_PLANNING_COMMENTS);
+		
 		redListSpecies = new StringData(TAG_RED_LIST_SPECIES);
 		otherNotableSpecies = new StringData(TAG_OTHER_NOTABLE_SPECIES);
 		humanPopulation = new IntegerData(TAG_HUMAN_POPULATION);
 		humanPopulationNotes = new StringData(TAG_HUMAN_POPULATION_NOTES);
 		socialContext = new StringData(TAG_SOCIAL_CONTEXT);
 		siteMapReference = new StringData(TAG_SITE_MAP_REFERENCE);
+
 		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
 		protectedAreaCategoryNotes = new StringData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
+
 		projectStatus = new StringData(TAG_PROJECT_STATUS);
 		nextSteps = new StringData(TAG_NEXT_STEPS);
+
 		currentWizardScreenName = new StringData(TAG_CURRENT_WIZARD_SCREEN_NAME);
 
 		addPresentationDataField(TAG_CURRENT_WIZARD_SCREEN_NAME, currentWizardScreenName);
