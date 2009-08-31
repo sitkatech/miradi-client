@@ -27,15 +27,15 @@ public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
 	public DiagramFactorSchemaElement()
 	{
 		super("DiagramFactor");
-//		TAG_WRAPPED_REF
+		createWrappedByDiagramFactorIdField(DiagramFactor.TAG_WRAPPED_REF);
 		createDiagramPointField(DiagramFactor.TAG_LOCATION);
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);
+		createIdListField(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, "DiagramFactor");
 //		TAG_FONT_SIZE
-//		TAG_FOREGROUND_COLOR
 //		TAG_FONT_STYLE
-//		TAG_GROUP_BOX_CHILDREN_REFS
-//		TAG_BACKGROUND_COLOR
 //		TAG_TEXT_BOX_Z_ORDER_CODE
+//		TAG_FOREGROUND_COLOR
+//		TAG_BACKGROUND_COLOR
 	}
 
 }

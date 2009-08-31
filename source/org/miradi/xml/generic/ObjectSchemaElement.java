@@ -50,6 +50,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 
+	protected void createWrappedByDiagramFactorIdField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new WrappedByDiagramFactorIdFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
 	protected void createGeospatialLocationField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new LocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
