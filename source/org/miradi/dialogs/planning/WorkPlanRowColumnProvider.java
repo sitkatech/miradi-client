@@ -52,7 +52,7 @@ public class WorkPlanRowColumnProvider implements RowColumnProvider
 		return columnCodesToShow;
 	}
 	
-	private CodeList getBudgetColumnCodesFromTableSettingsMap()
+	protected CodeList getBudgetColumnCodesFromTableSettingsMap()
 	{
 		try
 		{
