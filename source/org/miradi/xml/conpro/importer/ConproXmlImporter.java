@@ -808,8 +808,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private void importThreatRatingValueInMode(Node projectSummaryNode, ORef metadataRef) throws Exception
 	{
-		String stresslessThreatRatingValue = getPathData(projectSummaryNode, new String[]{STRESSLESS_THREAT_RANKING, });
-		String threatRatingModeCode = getCodeMapHelper().getConProToMiradiThreatRatingModeMap().get(stresslessThreatRatingValue);
+		String booleanAsString = getBooleanValue(projectSummaryNode, new String[]{STRESSLESS_THREAT_RANKING, });
+		String threatRatingModeCode = getCodeMapHelper().getConProToMiradiThreatRatingModeMap().get(booleanAsString);
 		setData(metadataRef, ProjectMetadata.TAG_THREAT_RATING_MODE, threatRatingModeCode);
 	}
 
@@ -903,6 +903,13 @@ public class ConproXmlImporter implements ConProMiradiXml
 				path += "/";
 		}
 		return path;
+	}
+	
+	private String getBooleanValue(Node node, String[] path) throws XPathExpressionException
+	{
+		String rawValue = getPathData(node, path);
+		
+		return Boolean.toString(isTrue(rawValue));
 	}
 	
 	public String[] extractNodesAsList(String path) throws Exception
