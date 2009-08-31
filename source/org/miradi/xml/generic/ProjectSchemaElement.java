@@ -46,7 +46,7 @@ class ProjectSchemaElement extends SchemaElement
 		writer.startBlock();
 		for(ObjectSchemaElement objectElement: objectTypes)
 		{
-			writer.printlnIndented(getDotElement(objectElement.getObjectTypeName()) + "&");
+			writer.printlnIndented(getDotElement(objectElement.getObjectTypeName()) + " &");
 		}
 		writer.endBlock();
 		

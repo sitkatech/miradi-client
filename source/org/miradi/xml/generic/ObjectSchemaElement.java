@@ -68,6 +68,12 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
+	protected void createIdListField(String fieldNameToUse, String storedObjectTypeName)
+	{
+		FieldSchemaElement field = new IdListFieldSchemaElement(getObjectTypeName(), fieldNameToUse, storedObjectTypeName);
+		fields.add(field);
+	}
+
 	protected void createCountriesField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new CountriesFieldSchemaElement(getObjectTypeName(), fieldNameToUse);

@@ -45,6 +45,8 @@ public class XmlSchemaCreator
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
         writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}'' }");
 
+        writer.println("DiagramFactorId = { xsd:integer }");
+        
 		writer.defineAlias("GeospatialLocation.element", "element cp:GeospatialLocation");
 		writer.startBlock();
         writer.printlnIndented("element cp:latitude { xsd:decimal } &");
