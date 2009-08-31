@@ -22,7 +22,7 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.DiagramLink;
 
-public class DiagramLinkSchemaElement extends ObjectSchemaElement
+public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
 {
 	public DiagramLinkSchemaElement()
 	{

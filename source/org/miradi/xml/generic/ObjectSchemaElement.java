@@ -29,7 +29,14 @@ class ObjectSchemaElement extends SchemaElement
 	public ObjectSchemaElement(String objectTypeNameToUse)
 	{
 		objectTypeName = objectTypeNameToUse;
+		attributes = new Vector<AttributeSchemaElement>();
 		fields = new Vector<FieldSchemaElement>();
+	}
+	
+	public void createNumericAttribute(String attributeNameToUse)
+	{
+		AttributeSchemaElement attribute = new IdAttributeSchemaElement(attributeNameToUse);
+		attributes.add(attribute);
 	}
 	
 	public void createTextField(String fieldNameToUse)
@@ -108,14 +115,28 @@ class ObjectSchemaElement extends SchemaElement
 	{
 		writer.defineAlias(getDotElement(getObjectTypeName()), "element miradi:" + getObjectTypeName());
 		writer.startBlock();
-		for(FieldSchemaElement fieldElement : fields)
+		for(int i = 0; i < attributes.size(); ++i)
 		{
+			AttributeSchemaElement attributeElement = attributes.get(i);
+			attributeElement.output(writer);
+			if(i < attributes.size() - 1)
+				writer.print(" &");
+			writer.println();
+		}
+		if(attributes.size() > 0 && fields.size() > 0)
+			writer.printlnIndented("&");
+		for(int i = 0; i < fields.size(); ++i)
+		{
+			FieldSchemaElement fieldElement = fields.get(i);
 			fieldElement.output(writer);
-			writer.println("&");
+			if(i < fields.size() - 1)
+				writer.print(" &");
+			writer.println();
 		}
 		writer.endBlock();
 	}
 	
 	private String objectTypeName;
+	private Vector<AttributeSchemaElement> attributes;
 	private Vector<FieldSchemaElement> fields;
 }

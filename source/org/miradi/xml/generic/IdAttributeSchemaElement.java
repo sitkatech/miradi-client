@@ -20,15 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.BaseObject;
+import java.io.IOException;
 
-abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
+public class IdAttributeSchemaElement extends AttributeSchemaElement
 {
-	public BaseObjectSchemaElement(String objectTypeNameToUse)
+	public IdAttributeSchemaElement(String typeNameOfIdToUse)
 	{
-		super(objectTypeNameToUse);
-		createNumericAttribute(objectTypeNameToUse);
-		createTextField(BaseObject.TAG_LABEL);
+		super("Id");
+		typeNameOfId = typeNameOfIdToUse;
 	}
 
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
+		writer.print("{ " + typeNameOfId + "Id.element }");
+	}
+
+	private String typeNameOfId;
 }

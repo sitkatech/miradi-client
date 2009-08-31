@@ -22,14 +22,13 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.Indicator;
 
-public class IndicatorObjectSchemaElement extends ObjectSchemaElement
+public class IndicatorObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public IndicatorObjectSchemaElement()
 	{
 		super("Indicator");
 		
 		createTextField(Indicator.TAG_SHORT_LABEL);
-		createTextField(Indicator.TAG_LABEL);
 		createTextField(Indicator.TAG_DETAIL);
 		createTextField(Indicator.TAG_COMMENTS);
 		

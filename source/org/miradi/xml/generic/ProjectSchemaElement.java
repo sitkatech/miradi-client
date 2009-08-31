@@ -91,9 +91,13 @@ class ProjectSchemaElement extends SchemaElement
 	{
 		writer.defineAlias(getDotElement(getProjectElementName()), "element miradi:" + getProjectElementName());
 		writer.startBlock();
-		for(ObjectSchemaElement objectElement: objectTypes)
+		for(int i = 0; i < objectTypes.size(); ++i)
 		{
-			writer.printlnIndented(getDotElement(objectElement.getObjectTypeName()) + " &");
+			ObjectSchemaElement objectElement = objectTypes.get(i);
+			writer.printIndented(getDotElement(objectElement.getObjectTypeName()));
+			if(i < objectTypes.size() - 1)
+				writer.print(" &");
+			writer.println();
 		}
 		writer.endBlock();
 		
