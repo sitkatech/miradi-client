@@ -32,12 +32,12 @@ class ProjectSchemaElement extends SchemaElement
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
 
-		objectTypes.add(new ConceptualModelSchemaElement());
-		objectTypes.add(new ResultsChainSchemaElement());
-		objectTypes.add(new DiagramFactorSchemaElement());
+		objectTypes.add(new ObjectContainerSchemaElement(new ConceptualModelSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ResultsChainSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new DiagramFactorSchemaElement()));
 				
-		objectTypes.add(new BiodiversityTargetObjectSchemaElement());
-		objectTypes.add(new CauseObjectSchemaElement());
+		objectTypes.add(new ObjectContainerSchemaElement(new BiodiversityTargetObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new CauseObjectSchemaElement()));
 	}
 	
 	public void output(SchemaWriter writer) throws IOException
