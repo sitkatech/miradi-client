@@ -31,6 +31,10 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes = new Vector<ObjectSchemaElement>();
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
+
+		objectTypes.add(new ConceptualModelSchemaElement());
+		objectTypes.add(new ResultsChainSchemaElement());
+				
 		objectTypes.add(new BiodiversityTargetObjectSchemaElement());
 		objectTypes.add(new CauseObjectSchemaElement());
 	}

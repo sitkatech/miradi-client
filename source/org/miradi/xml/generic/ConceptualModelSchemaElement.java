@@ -20,14 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.BaseObject;
-
-abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
+public class ConceptualModelSchemaElement extends DiagramSchemaElement
 {
-	public BaseObjectSchemaElement(String objectTypeNameToUse)
+	public ConceptualModelSchemaElement()
 	{
-		super(objectTypeNameToUse);
-		createTextField(BaseObject.TAG_LABEL);
+		super("ConceptualModel");
 	}
 
 }
