@@ -25,6 +25,7 @@ import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.util.Enumeration;
 
 import javax.swing.JComponent;
 import javax.swing.JPopupMenu;
@@ -35,6 +36,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.text.Position;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 
 import org.miradi.database.ProjectServer;
 import org.miradi.dialogs.tablerenderers.BorderlessTableCellRendererFactory;
@@ -178,11 +182,36 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 		return menu;
 	}
 	
-	void refresh()
+	public void refresh()
 	{
+		Enumeration expandedPaths = getTree().getExpandedDescendants(getTree().getPathForRow(ROOT_ROW_INDEX));
+		
 		ProjectListTreeTableModel model = getProjectListTreeTableModel();
 		model.rebuildEntireTree();
 		repaint();
+
+		if (expandedPaths != null)
+			restoreExpansion(expandedPaths);
+	}
+
+	private void restoreExpansion(Enumeration expandedPaths)
+	{
+		getTree().expandRow(ROOT_ROW_INDEX);
+		while(expandedPaths.hasMoreElements())
+		{
+			TreePath treePath = (TreePath)expandedPaths.nextElement();
+			Object lastPathComponent = treePath.getLastPathComponent();
+			if(lastPathComponent != null && !getTreeModel().isLeaf(lastPathComponent))
+			{
+				TreePath currentPath = getTree().getNextMatch(lastPathComponent.toString(), ROOT_ROW_INDEX, Position.Bias.Forward);
+				getTree().expandPath(currentPath);
+			}
+		}
+	}
+
+	private TreeModel getTreeModel()
+	{
+		return getTree().getModel();
 	}
 
 	private ProjectListTreeTableModel getProjectListTreeTableModel()
@@ -294,4 +323,5 @@ public class ProjectListTreeTable extends TreeTableWithColumnWidthSaving impleme
 	}
 
 	DefaultTableCellRendererWithPreferredHeightFactory dateRenderer;
+	private static final int ROOT_ROW_INDEX = 0;
 }
