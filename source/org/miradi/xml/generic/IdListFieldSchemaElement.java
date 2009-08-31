@@ -20,17 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.DiagramObject;
+import java.io.IOException;
 
-abstract public class DiagramSchemaElement extends BaseObjectSchemaElement
+public class IdListFieldSchemaElement extends FieldSchemaElement
 {
-	public DiagramSchemaElement(String objectTypeNameToUse)
+	protected IdListFieldSchemaElement(String objectTypeNameToUse,
+			String fieldNameToUse, String storedObjectTypeNameToUse)
 	{
-		super(objectTypeNameToUse);
-		createTextField(DiagramObject.TAG_SHORT_LABEL);
-		createTextField(DiagramObject.TAG_DETAIL);
-		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
-//		TAG_DIAGRAM_FACTOR_LINK_IDS
+		super(objectTypeNameToUse, fieldNameToUse);
+		storedObjectTypeName = storedObjectTypeNameToUse;
 	}
 
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
+		writer.write(" { " + storedObjectTypeName + "Id.element* }");
+	}
+
+	private String storedObjectTypeName;
 }
