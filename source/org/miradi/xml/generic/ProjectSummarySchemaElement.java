@@ -52,16 +52,31 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createTextField(ProjectMetadata.TAG_PROJECT_AREA);
 		createTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
 		createCountriesField(ProjectMetadata.TAG_COUNTRIES);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
-//		createTextField(ProjectMetadata.);
+		createTextField(ProjectMetadata.TAG_STATE_AND_PROVINCES);
+		createTextField(ProjectMetadata.TAG_MUNICIPALITIES);
+		createTextField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
+		createTextField(ProjectMetadata.TAG_LOCATION_DETAIL);
+		createTextField(ProjectMetadata.TAG_LOCATION_COMMENTS);
+
+//		TAG_KEY_FUNDING_SOURCES);
+//		TAG_FINANCIAL_COMMENTS);
+//		TAG_WORKPLAN_START_DATE);
+//		TAG_WORKPLAN_END_DATE);
+//		TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
+//		TAG_PLANNING_COMMENTS);
+		
+		createTextField(ProjectMetadata.TAG_RED_LIST_SPECIES);
+		createTextField(ProjectMetadata.TAG_OTHER_NOTABLE_SPECIES);
+		createNumericField(ProjectMetadata.TAG_HUMAN_POPULATION);
+		createTextField(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
+		createTextField(ProjectMetadata.TAG_SOCIAL_CONTEXT);
+		createTextField(ProjectMetadata.TAG_SITE_MAP_REFERENCE);
+
+//		protectedAreaCategories = new CodeListData(TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
+//		protectedAreaCategoryNotes = new StringData(TAG_PROTECTED_AREA_CATEGORY_NOTES);
+
+		createTextField(ProjectMetadata.TAG_PROJECT_STATUS);
+		createTextField(ProjectMetadata.TAG_NEXT_STEPS);
 	}
 
 }
