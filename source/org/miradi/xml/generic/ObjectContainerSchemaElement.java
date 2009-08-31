@@ -33,7 +33,7 @@ public class ObjectContainerSchemaElement extends ObjectSchemaElement
 	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
-		String result = "{ " + getDotElement(objectSchemaElement.getObjectTypeName()) + "* }";
+		String result = getDotElement(objectSchemaElement.getObjectTypeName()) + "*";
 		writer.defineAlias(getDotElement(getObjectTypeName()), result);
 		objectSchemaElement.output(writer);
 	}

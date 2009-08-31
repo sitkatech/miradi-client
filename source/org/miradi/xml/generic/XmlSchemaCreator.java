@@ -39,78 +39,87 @@ public class XmlSchemaCreator
 	private void printXmlRncSchema(SchemaWriter writer) throws Exception
 	{
 		ProjectSchemaElement rootElement = new ProjectSchemaElement();
+		writer.println("namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/1'");
 		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}'' }");
+		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}' }");
 		
-		writer.println("DiagramFactorId = { xsd:integer }");
-		writer.println("BiodiversityTargetId = { xsd:integer }");
-		writer.println("HumanWelfareTargetId = { xsd:integer }");
-		writer.println("CauseFactorId = { xsd:integer }");
-		writer.println("StrategyFactorId = { xsd:integer }");
-		writer.println("ThreatReductionResultFactorId = { xsd:integer }");
-		writer.println("IntermediateResultFactorId = { xsd:integer }");
-		writer.println("GroupBoxId = { xsd:integer }");
-		writer.println("TextBoxId = { xsd:integer }");
-		writer.println("ScopeBoxId = { xsd:integer }");
+		defineIdElement(writer, "ConceptualModel");
+		defineIdElement(writer, "ResultsChain");
+
+		defineIdElement(writer, "DiagramFactor");
+		defineIdElement(writer, "BiodiversityTarget");
+		defineIdElement(writer, "HumanWelfareTarget");
+		defineIdElement(writer, "Cause");
+		defineIdElement(writer, "Strategy");
+		defineIdElement(writer, "ThreatReductionResult");
+		defineIdElement(writer, "IntermediateResult");
+		defineIdElement(writer, "GroupBox");
+		defineIdElement(writer, "TextBox");
+		defineIdElement(writer, "ScopeBox");
 		
-		writer.println("ActivityId = { xsd:integer }");
-		writer.println("StressId = { xsd:integer }");
+		defineIdElement(writer, "Activity");
+		defineIdElement(writer, "Stress");
 		
-		writer.println("DiagramLinkId = { xsd:integer }");
+		defineIdElement(writer, "DiagramLink");
 		 
-		        writer.println("GoalId = { xsd:integer }");
-		writer.println("ObjectiveId = { xsd:integer }");
-		writer.println("IndicatorId = { xsd:integer }");
-		writer.println("KeyEcologicalAttributeId = { xsd:integer }");
+		defineIdElement(writer, "Goal");
+		defineIdElement(writer, "Objective");
+		defineIdElement(writer, "Indicator");
+		defineIdElement(writer, "KeyEcologicalAttribute");
 		
 		writer.defineAlias("WrappedByDiagramFactorId.element", "element WrappedByDiagramFactorId");
 		writer.startBlock();
-		writer.printlnIndented("BiodiversityTargetFactorId |");
-		writer.printlnIndented("HumanWelfareTargetFactorId |");
-		writer.printlnIndented("CauseFactorId |");
-		writer.printlnIndented("StrategyFactorId |");
-		writer.printlnIndented("ThreatReductionResultFactorId |");
-		writer.printlnIndented("IntermediateResultFactorId |");
-		writer.printlnIndented("GroupBoxId |");
-		writer.printlnIndented("TextBoxId |");
-		writer.printlnIndented("ScopeBoxId |");
-		writer.printlnIndented("ActivityId |");
-		writer.printlnIndented("StressId |");
+		writer.printlnIndented("BiodiversityTargetId.element |");
+		writer.printlnIndented("HumanWelfareTargetId.element |");
+		writer.printlnIndented("CauseId.element |");
+		writer.printlnIndented("StrategyId.element |");
+		writer.printlnIndented("ThreatReductionResultId.element |");
+		writer.printlnIndented("IntermediateResultId.element |");
+		writer.printlnIndented("GroupBoxId.element |");
+		writer.printlnIndented("TextBoxId.element |");
+		writer.printlnIndented("ScopeBoxId.element |");
+		writer.printlnIndented("ActivityId.element |");
+		writer.printlnIndented("StressId.element ");
 		writer.endBlock();
 		
 		writer.defineAlias("LinkableFactorId.element", "element WrappedByDiagramFactorId");
 		writer.startBlock();
-		writer.printlnIndented("BiodiversityTargetFactorId |");
-		writer.printlnIndented("HumanWelfareTargetFactorId |");
-		writer.printlnIndented("CauseFactorId |");
-		writer.printlnIndented("StrategyFactorId |");
-		writer.printlnIndented("ThreatReductionResultFactorId |");
-		writer.printlnIndented("IntermediateResultFactorId |");
-		writer.printlnIndented("GroupBoxId |");
+		writer.printlnIndented("BiodiversityTargetId.element |");
+		writer.printlnIndented("HumanWelfareTargetId.element |");
+		writer.printlnIndented("CauseId.element |");
+		writer.printlnIndented("StrategyId.element |");
+		writer.printlnIndented("ThreatReductionResultId.element |");
+		writer.printlnIndented("IntermediateResultId.element |");
+		writer.printlnIndented("GroupBoxId.element ");
 		writer.endBlock();
 		
-		writer.defineAlias("GeospatialLocation.element", "element cp:GeospatialLocation");
+		writer.defineAlias("GeospatialLocation.element", "element miradi:GeospatialLocation");
 		writer.startBlock();
-		writer.printlnIndented("element cp:latitude { xsd:decimal } &");
-		writer.printlnIndented("element cp:longitude { xsd:decimal } &");
+		writer.printlnIndented("element miradi:latitude { xsd:decimal } &");
+		writer.printlnIndented("element miradi:longitude { xsd:decimal } ");
 		writer.endBlock();
 		
-		writer.defineAlias("DiagramPoint.element", "element cp:DiagramPoint");
+		writer.defineAlias("DiagramPoint.element", "element miradi:DiagramPoint");
 		writer.startBlock();
-		writer.printlnIndented("element cp:x { xsd:integer } &");
-		writer.printlnIndented("element cp:y { xsd:integer } &");
+		writer.printlnIndented("element miradi:x { xsd:integer } &");
+		writer.printlnIndented("element miradi:y { xsd:integer } ");
 		writer.endBlock();
 		
-		writer.defineAlias("DiagramSize.element", "element cp:DiagramSize");
+		writer.defineAlias("DiagramSize.element", "element miradi:DiagramSize");
 		writer.startBlock();
-		writer.printlnIndented("element cp:width { xsd:integer } &");
-		writer.printlnIndented("element cp:height { xsd:integer } &");
+		writer.printlnIndented("element miradi:width { xsd:integer } &");
+		writer.printlnIndented("element miradi:height { xsd:integer } ");
 		writer.endBlock();
 		
 		
 		writer.flush();
     }
+	
+	private void defineIdElement(SchemaWriter writer, String baseName)
+	{
+		writer.println(baseName + "Id.element = element " + baseName + "Id { xsd:integer }");
+	}
 }
