@@ -19,6 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.exceptions;
 
+import org.miradi.main.EAM;
+
 public class UnsupportedOldVersionSchemaException extends Exception
 {
+	public UnsupportedOldVersionSchemaException()
+	{
+		super("<BR>" + EAM.text("The Cpmz file being imported is old and no longer supported."));
+	}
 }
