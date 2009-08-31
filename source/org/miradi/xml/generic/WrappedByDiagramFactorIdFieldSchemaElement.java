@@ -20,46 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.PrintStream;
-import java.io.PrintWriter;
+import java.io.IOException;
 
-public class SchemaWriter extends PrintWriter
+public class WrappedByDiagramFactorIdFieldSchemaElement extends
+		FieldSchemaElement
 {
-	public SchemaWriter(PrintStream out)
+	protected WrappedByDiagramFactorIdFieldSchemaElement(
+			String objectTypeNameToUse, String fieldNameToUse)
 	{
-		super(out);
+		super(objectTypeNameToUse, fieldNameToUse);
 	}
 
-	public void defineAlias(String alias, String elementName)
+	@Override
+	public void output(SchemaWriter writer) throws IOException
 	{
-		println(alias + " = " + elementName);
+		super.output(writer);
+		writer.print("{ WrappedByDiagramFactorId.element }");
 	}
-
-	public void startBlock()
-	{
-		printlnIndented("{");
-		++indentLevel;
-	}
-
-	public void endBlock()
-	{
-		--indentLevel;
-		printlnIndented("}");
-		println();
-	}
-	
-	public void printIndented(String text)
-	{
-		for(int i = 0; i < indentLevel; ++i)
-			print("  ");
-		print(text);
-	}
-	
-	public void printlnIndented(String text)
-	{
-		printIndented(text);
-		println();
-	}
-
-	private int indentLevel;
 }

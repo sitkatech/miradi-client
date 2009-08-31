@@ -46,6 +46,34 @@ public class XmlSchemaCreator
         writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}'' }");
 
         writer.println("DiagramFactorId = { xsd:integer }");
+        writer.println("BiodiversityTargetId = { xsd:integer }");
+        writer.println("HumanWelfareTargetId = { xsd:integer }");
+        writer.println("CauseFactorId = { xsd:integer }");
+        writer.println("StrategyFactorId = { xsd:integer }");
+        writer.println("ThreatReductionResultFactorId = { xsd:integer }");
+        writer.println("IntermediateResultFactorId = { xsd:integer }");
+        writer.println("GroupBoxId = { xsd:integer }");
+        writer.println("TextBoxId = { xsd:integer }");
+        writer.println("ScopeBoxId = { xsd:integer }");
+
+        writer.println("ActivityId = { xsd:integer }");
+        writer.println("StressId = { xsd:integer }");
+
+        writer.defineAlias("WrappedByDiagramFactorId.element", "element WrappedByDiagramFactorId");
+		writer.startBlock();
+		writer.printlnIndented("BiodiversityTargetFactorId |");
+		writer.printlnIndented("HumanWelfareTargetFactorId |");
+		writer.printlnIndented("CauseFactorId |");
+		writer.printlnIndented("StrategyFactorId |");
+		writer.printlnIndented("ThreatReductionResultFactorId |");
+		writer.printlnIndented("IntermediateResultFactorId |");
+		writer.printlnIndented("GroupBoxId |");
+		writer.printlnIndented("TextBoxId |");
+		writer.printlnIndented("ScopeBoxId |");
+		writer.printlnIndented("ActivityId |");
+		writer.printlnIndented("StressId |");
+		writer.endBlock();
+
         
 		writer.defineAlias("GeospatialLocation.element", "element cp:GeospatialLocation");
 		writer.startBlock();
