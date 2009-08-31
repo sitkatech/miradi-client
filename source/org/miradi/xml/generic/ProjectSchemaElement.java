@@ -64,7 +64,7 @@ class ProjectSchemaElement extends SchemaElement
 		// Subtarget
 		// Goal
 		// Objective
-		// Indicator
+		objectTypes.add(new ObjectContainerSchemaElement(new IndicatorObjectSchemaElement()));
 		
 		// ThreatRating
 		
