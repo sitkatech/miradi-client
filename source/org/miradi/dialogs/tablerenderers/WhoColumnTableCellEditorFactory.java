@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -30,8 +31,10 @@ import javax.swing.table.TableCellEditor;
 
 import org.miradi.dialogfields.StandAloneCodeListComponent;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.tablerenderers.MultiLineObjectTableCellRendererFactory.TableCellHtmlRendererComponent;
+import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -65,7 +68,9 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
 			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), EAM.text("Project Resource"));
-			dialog.add(codeListEditor);
+			String dialogObjectDescription = ObjectTreeTable.getToolTipString(baseObjectForRow);
+			dialog.add(new PanelTitleLabel(dialogObjectDescription), BorderLayout.BEFORE_FIRST_LINE);
+			dialog.add(codeListEditor, BorderLayout.CENTER);
 			dialog.pack();
 			getMainWindow().getCurrentView().showFloatingPropertiesDialog(dialog);
 		}
