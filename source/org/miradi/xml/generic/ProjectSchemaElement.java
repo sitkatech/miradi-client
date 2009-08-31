@@ -31,10 +31,10 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes = new Vector<ObjectSchemaElement>();
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
-		// Scope
-		// Location
-		// Planning
-		// ProtectedArea
+		objectTypes.add(new ProjectSummaryScopeSchemaElement());
+		objectTypes.add(new ProjectSummaryLocationSchemaElement());
+		objectTypes.add(new ProjectSummaryPlanningSchemaElement());
+
 		// FOS
 		// RARE
 		// TNC

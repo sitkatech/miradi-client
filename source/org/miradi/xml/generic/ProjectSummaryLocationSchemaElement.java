@@ -22,21 +22,20 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
 
-class ProjectSummarySchemaElement extends ObjectSchemaElement
+public class ProjectSummaryLocationSchemaElement extends ObjectSchemaElement
 {
-	public ProjectSummarySchemaElement()
+	public ProjectSummaryLocationSchemaElement()
 	{
-		super("ProjectSummary");
-		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
-		createDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		
-//		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-//		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		createTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		createTextField(ProjectMetadata.TAG_PROJECT_URL);
-		
-		createTextField(ProjectMetadata.TAG_PROJECT_STATUS);
-		createTextField(ProjectMetadata.TAG_NEXT_STEPS);
+		super("ProjectSummaryLocation");
+
+		createGeospatialLocationField("ProjectLocation");
+		createCountriesField(ProjectMetadata.TAG_COUNTRIES);
+		createTextField(ProjectMetadata.TAG_STATE_AND_PROVINCES);
+		createTextField(ProjectMetadata.TAG_MUNICIPALITIES);
+		createTextField(ProjectMetadata.TAG_LEGISLATIVE_DISTRICTS);
+		createTextField(ProjectMetadata.TAG_LOCATION_DETAIL);
+		createTextField(ProjectMetadata.TAG_SITE_MAP_REFERENCE);
+		createTextField(ProjectMetadata.TAG_LOCATION_COMMENTS);
 	}
 
 }

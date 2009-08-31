@@ -22,21 +22,28 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.ProjectMetadata;
 
-class ProjectSummarySchemaElement extends ObjectSchemaElement
+public class ProjectSummaryPlanningSchemaElement extends ObjectSchemaElement
 {
-	public ProjectSummarySchemaElement()
+	public ProjectSummaryPlanningSchemaElement()
 	{
-		super("ProjectSummary");
-		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
-		createDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
+		super("ProjectSummaryPlanning");
 		
-//		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
-//		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		createTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		createTextField(ProjectMetadata.TAG_PROJECT_URL);
+		createDateField(ProjectMetadata.TAG_START_DATE);
+		createDateField(ProjectMetadata.TAG_EXPECTED_END_DATE);
+		createDateField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
+		createDateField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
+//		TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
+//		TAG_FISCAL_YEAR_START
+//		TAG_PLANNING_COMMENTS);
+
+		// TAG_CURRENCY_TYPE
+		// TAG_CURRENCY_SYMBOL
+		// TAG_CURRENCY_DECIMAL_PLACES
+		// TAG_TOTAL_BUDGET_FOR_FUNDING
+		// TAG_BUDGET_SECURED_PERCENT
+//		TAG_KEY_FUNDING_SOURCES);
+//		TAG_FINANCIAL_COMMENTS);
 		
-		createTextField(ProjectMetadata.TAG_PROJECT_STATUS);
-		createTextField(ProjectMetadata.TAG_NEXT_STEPS);
 	}
 
 }
