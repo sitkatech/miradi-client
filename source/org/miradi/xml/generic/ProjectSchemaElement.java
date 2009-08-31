@@ -38,7 +38,7 @@ class ProjectSchemaElement extends SchemaElement
 		// FOS
 		// RARE
 		// TNC
-		// WCS
+		objectTypes.add(new WcsDataSchemaElement());
 		// WWF
 		
 		// ProjectResource
