@@ -20,21 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.Factor;
+import org.miradi.objects.DiagramLink;
 
-
-public class FactorObjectSchemaElement extends ObjectSchemaElement
+public class DiagramLinkSchemaElement extends ObjectSchemaElement
 {
-	public FactorObjectSchemaElement(String objectTypeName)
+	public DiagramLinkSchemaElement()
 	{
-		super(objectTypeName);
-		createTextField(Factor.TAG_SHORT_LABEL);
-		createTextField(Factor.TAG_TEXT);
-		createTextField(Factor.TAG_COMMENTS);
-		createIdListField(Factor.TAG_INDICATOR_IDS, "Indicator");
-		
-		// TODO: Push down to exclude targets
-		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
+		super("DiagramLink");
+//		TAG_WRAPPED_ID
+		createLinkableFactorIdField(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+		createLinkableFactorIdField(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+		createDiagramPointListField(DiagramLink.TAG_BEND_POINTS);
+//		TAG_GROUPED_DIAGRAM_LINK_REFS
+//		TAG_COLOR
 	}
 
 }

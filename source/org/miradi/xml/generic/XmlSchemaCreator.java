@@ -43,23 +43,30 @@ public class XmlSchemaCreator
 		rootElement.output(writer);
 		
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-        writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}'' }");
-
-        writer.println("DiagramFactorId = { xsd:integer }");
-        writer.println("BiodiversityTargetId = { xsd:integer }");
-        writer.println("HumanWelfareTargetId = { xsd:integer }");
-        writer.println("CauseFactorId = { xsd:integer }");
-        writer.println("StrategyFactorId = { xsd:integer }");
-        writer.println("ThreatReductionResultFactorId = { xsd:integer }");
-        writer.println("IntermediateResultFactorId = { xsd:integer }");
-        writer.println("GroupBoxId = { xsd:integer }");
-        writer.println("TextBoxId = { xsd:integer }");
-        writer.println("ScopeBoxId = { xsd:integer }");
-
-        writer.println("ActivityId = { xsd:integer }");
-        writer.println("StressId = { xsd:integer }");
-
-        writer.defineAlias("WrappedByDiagramFactorId.element", "element WrappedByDiagramFactorId");
+		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}'' }");
+		
+		writer.println("DiagramFactorId = { xsd:integer }");
+		writer.println("BiodiversityTargetId = { xsd:integer }");
+		writer.println("HumanWelfareTargetId = { xsd:integer }");
+		writer.println("CauseFactorId = { xsd:integer }");
+		writer.println("StrategyFactorId = { xsd:integer }");
+		writer.println("ThreatReductionResultFactorId = { xsd:integer }");
+		writer.println("IntermediateResultFactorId = { xsd:integer }");
+		writer.println("GroupBoxId = { xsd:integer }");
+		writer.println("TextBoxId = { xsd:integer }");
+		writer.println("ScopeBoxId = { xsd:integer }");
+		
+		writer.println("ActivityId = { xsd:integer }");
+		writer.println("StressId = { xsd:integer }");
+		
+		writer.println("DiagramLinkId = { xsd:integer }");
+		 
+		        writer.println("GoalId = { xsd:integer }");
+		writer.println("ObjectiveId = { xsd:integer }");
+		writer.println("IndicatorId = { xsd:integer }");
+		writer.println("KeyEcologicalAttributeId = { xsd:integer }");
+		
+		writer.defineAlias("WrappedByDiagramFactorId.element", "element WrappedByDiagramFactorId");
 		writer.startBlock();
 		writer.printlnIndented("BiodiversityTargetFactorId |");
 		writer.printlnIndented("HumanWelfareTargetFactorId |");
@@ -73,27 +80,37 @@ public class XmlSchemaCreator
 		writer.printlnIndented("ActivityId |");
 		writer.printlnIndented("StressId |");
 		writer.endBlock();
-
-        
+		
+		writer.defineAlias("LinkableFactorId.element", "element WrappedByDiagramFactorId");
+		writer.startBlock();
+		writer.printlnIndented("BiodiversityTargetFactorId |");
+		writer.printlnIndented("HumanWelfareTargetFactorId |");
+		writer.printlnIndented("CauseFactorId |");
+		writer.printlnIndented("StrategyFactorId |");
+		writer.printlnIndented("ThreatReductionResultFactorId |");
+		writer.printlnIndented("IntermediateResultFactorId |");
+		writer.printlnIndented("GroupBoxId |");
+		writer.endBlock();
+		
 		writer.defineAlias("GeospatialLocation.element", "element cp:GeospatialLocation");
 		writer.startBlock();
-        writer.printlnIndented("element cp:latitude { xsd:decimal } &");
-        writer.printlnIndented("element cp:longitude { xsd:decimal } &");
-        writer.endBlock();
-        
+		writer.printlnIndented("element cp:latitude { xsd:decimal } &");
+		writer.printlnIndented("element cp:longitude { xsd:decimal } &");
+		writer.endBlock();
+		
 		writer.defineAlias("DiagramPoint.element", "element cp:DiagramPoint");
 		writer.startBlock();
-        writer.printlnIndented("element cp:x { xsd:integer } &");
-        writer.printlnIndented("element cp:y { xsd:integer } &");
-        writer.endBlock();
-        
+		writer.printlnIndented("element cp:x { xsd:integer } &");
+		writer.printlnIndented("element cp:y { xsd:integer } &");
+		writer.endBlock();
+		
 		writer.defineAlias("DiagramSize.element", "element cp:DiagramSize");
 		writer.startBlock();
-        writer.printlnIndented("element cp:width { xsd:integer } &");
-        writer.printlnIndented("element cp:height { xsd:integer } &");
-        writer.endBlock();
-        
-
-        writer.flush();
+		writer.printlnIndented("element cp:width { xsd:integer } &");
+		writer.printlnIndented("element cp:height { xsd:integer } &");
+		writer.endBlock();
+		
+		
+		writer.flush();
     }
 }
