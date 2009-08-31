@@ -26,8 +26,11 @@ import org.miradi.dialogs.planning.ProgressReportRowColumnProvider;
 import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
-import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
+import org.miradi.dialogs.planning.WorkPlanRowColumnProviderWithBudgetColumns;
+import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
 import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTableModel;
@@ -40,6 +43,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.AbstractTableExporter;
@@ -63,7 +67,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 			exportReport(writer, new MonitoringRowColumnProvider(), ReportTemplateContentQuestion.getMonitoringPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PLANNING_VIEW_WORK_PLAN_CODE))
-			exportReport(writer, new WorkPlanRowColumnProvider(getProject()), ReportTemplateContentQuestion.getWorkPlanLabel());
+			exportReport(writer, new WorkPlanRowColumnProviderWithBudgetColumns(getProject()), ReportTemplateContentQuestion.getWorkPlanLabel());
 		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.PROGRESS_REPORT_CODE))
 			exportReport(writer, new ProgressReportRowColumnProvider(), ReportTemplateContentQuestion.getProgressReportLabel());
@@ -127,6 +131,21 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		{
 			PlanningViewFutureStatusTableModel futureStatusModel = new PlanningViewFutureStatusTableModel(project, model);
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, futureStatusModel, model, futureStatusModel.getUniqueTableModelIdentifier()));
+		}
+		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
+		{
+			PlanningWorkUnitsTableModel workUnitsModel = new PlanningWorkUnitsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, workUnitsModel, model, workUnitsModel.getUniqueTableModelIdentifier()));
+		}
+		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
+		{
+			ExpenseAmountsTableModel expensesModel = new ExpenseAmountsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, expensesModel, model, expensesModel.getUniqueTableModelIdentifier()));
+		}
+		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
+		{
+			BudgetDetailsTableModel budgetDetailsModel = new BudgetDetailsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, budgetDetailsModel, model, budgetDetailsModel.getUniqueTableModelIdentifier()));
 		}
 		
 		return multiModelExporter;
