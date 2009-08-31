@@ -20,14 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.BaseObject;
+import org.miradi.objects.DiagramObject;
 
-abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
+abstract public class DiagramSchemaElement extends BaseObjectSchemaElement
 {
-	public BaseObjectSchemaElement(String objectTypeNameToUse)
+	public DiagramSchemaElement(String objectTypeNameToUse)
 	{
 		super(objectTypeNameToUse);
-		createTextField(BaseObject.TAG_LABEL);
+		createTextField(DiagramObject.TAG_SHORT_LABEL);
+		createTextField(DiagramObject.TAG_DETAIL);
+//		TAG_DIAGRAM_FACTOR_IDS
+//		TAG_DIAGRAM_FACTOR_LINK_IDS
 	}
 
 }
