@@ -50,9 +50,21 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 
-	protected void createLocationField(String fieldNameToUse)
+	protected void createGeospatialLocationField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new LocationFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
+	protected void createDiagramPointField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new DiagramPointFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
+	protected void createDiagramSizeField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new DiagramSizeFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
 	

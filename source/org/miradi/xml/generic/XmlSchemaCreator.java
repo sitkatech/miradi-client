@@ -45,10 +45,22 @@ public class XmlSchemaCreator
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
         writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}'' }");
 
-		writer.defineAlias("GeospatialLocation.element.element", "element cp:GeospatialLocation");
+		writer.defineAlias("GeospatialLocation.element", "element cp:GeospatialLocation");
 		writer.startBlock();
         writer.printlnIndented("element cp:latitude { xsd:decimal } &");
         writer.printlnIndented("element cp:longitude { xsd:decimal } &");
+        writer.endBlock();
+        
+		writer.defineAlias("DiagramPoint.element", "element cp:DiagramPoint");
+		writer.startBlock();
+        writer.printlnIndented("element cp:x { xsd:integer } &");
+        writer.printlnIndented("element cp:y { xsd:integer } &");
+        writer.endBlock();
+        
+		writer.defineAlias("DiagramSize.element", "element cp:DiagramSize");
+		writer.startBlock();
+        writer.printlnIndented("element cp:width { xsd:integer } &");
+        writer.printlnIndented("element cp:height { xsd:integer } &");
         writer.endBlock();
         
 

@@ -47,7 +47,7 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		// TAG_BUDGET_SECURED_PERCENT
 		// TAG_FISCAL_YEAR_START
 		
-		createLocationField("ProjectLocation");
+		createGeospatialLocationField("ProjectLocation");
 		createNumericField(ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES);
 		createTextField(ProjectMetadata.TAG_PROJECT_AREA);
 		createTextField(ProjectMetadata.TAG_PROJECT_AREA_NOTES);

@@ -34,6 +34,7 @@ class ProjectSchemaElement extends SchemaElement
 
 		objectTypes.add(new ConceptualModelSchemaElement());
 		objectTypes.add(new ResultsChainSchemaElement());
+		objectTypes.add(new DiagramFactorSchemaElement());
 				
 		objectTypes.add(new BiodiversityTargetObjectSchemaElement());
 		objectTypes.add(new CauseObjectSchemaElement());
