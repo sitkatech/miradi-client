@@ -107,6 +107,11 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		if(object == null)
 			return null;
 		
+		return getToolTipString(object);
+	}
+
+	public static String getToolTipString(BaseObject object)
+	{
 		String typeName = EAM.fieldLabel(object.getType(), object.getTypeName());
 		String tooltip = "<html><b>" + typeName + "</b><br>";
 		
