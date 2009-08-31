@@ -31,6 +31,8 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes = new Vector<ObjectSchemaElement>();
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
+		objectTypes.add(new BiodiversityTargetObjectSchemaElement());
+		objectTypes.add(new CauseObjectSchemaElement());
 	}
 	
 	public void output(SchemaWriter writer) throws IOException
