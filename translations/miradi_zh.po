@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-01 15:02-0500\n"
+"POT-Creation-Date: 2009-09-01 16:56-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -4623,6 +4623,10 @@ msgstr "财务未来特征演示 \t\t"
 #: miradi/source/org/miradi/actions/jump/ActionJumpDevelopDraftStrategiesStep.java:35
 msgid "Develop draft strategies"
 msgstr "发展策略草案 \t\t"
+
+#: miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardDevelopOperationalPlan.java:37
+msgid "Develop operational plan"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpImplementStrategicAndMonitoringPlans.java:36
 msgid "Implement strategic and monitoring plans"
@@ -13986,6 +13990,10 @@ msgstr ""
 "&gt;</code>视图。</p> \t\t"
 
 msgid ""
+"html|/resources/wizard/OperationalPlanView/DevelopOperationalPlanLeft.html|"
+msgstr ""
+
+msgid ""
 "html|/resources/wizard/OperationalPlanView/OperationalPlanOverviewStepRight."
 "html|  <h3>Welcome to the Operational Plan View</h3>"
 msgstr ""
@@ -13994,6 +14002,10 @@ msgid ""
 "html|/resources/wizard/OperationalPlanView/OperationalPlanOverviewStep."
 "html|  <HTML>  <BODY>    <P><B>Operational Plan View</FONT></B></P>  </"
 "BODY></HTML>"
+msgstr ""
+
+msgid ""
+"html|/resources/wizard/OperationalPlanView/DevelopOperationalPlanRight.html|"
 msgstr ""
 
 msgid ""
