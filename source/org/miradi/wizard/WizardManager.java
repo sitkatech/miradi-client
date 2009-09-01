@@ -442,6 +442,7 @@ public class WizardManager
 				PlanningWizardFinalizeMonitoringPlanStep.class,
 
 				// STEP 3A
+				OperationalPlanOverviewStep.class,
 				WorkPlanOverviewStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
 				
@@ -461,7 +462,6 @@ public class WizardManager
 //				FinancialOverviewStep.class, 
 				
 				// NOT STEPS
-				OperationalPlanOverviewStep.class,
 				ReportsOverviewStep.class,
 				MapOverviewStep.class,
 				ScheduleOverviewStep.class,
