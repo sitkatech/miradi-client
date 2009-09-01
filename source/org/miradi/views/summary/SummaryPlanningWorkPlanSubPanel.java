@@ -44,6 +44,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Label|Workplan Dates"), workPlanDateFields);
 		
 		addField(createChoiceField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FISCAL_YEAR_START, new FiscalYearStartQuestion()));
+		addField(createNumericField(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR));
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
 		
 		updateFieldsFromProject();
