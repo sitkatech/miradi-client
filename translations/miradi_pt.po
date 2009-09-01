@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-31 16:05-0500\n"
+"POT-Creation-Date: 2009-09-01 10:37-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -345,7 +345,7 @@ msgstr ""
 msgid "Label|Workplan Dates"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:54
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:55
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -7074,6 +7074,9 @@ msgid "FieldLabel|11.CurrencyDecimalPlaces|Currency Decimal Places"
 msgstr ""
 
 msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
+msgstr ""
+
+msgid "FieldLabel|11.FullTimeEmployeeDaysPerYear|FTE Days per Year"
 msgstr ""
 
 msgid "FieldLabel|11.TNC.Ecoregion|Ecoregion (legacy)"
