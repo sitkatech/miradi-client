@@ -44,7 +44,7 @@ public class DialogWithButtonBar extends MiradiDialog
 		contents.setLayout(new BorderLayout());
 	}
 	
-	protected void setButtons(Vector<Component> buttons)
+	public void setButtons(Vector<Component> buttons)
 	{
 		Container contents = getContentPane();
 		contents.add(createButtonBar(buttons), BorderLayout.AFTER_LAST_LINE);
@@ -52,7 +52,7 @@ public class DialogWithButtonBar extends MiradiDialog
 		Utilities.fitInScreen(this);
 	}
 	
-	protected void setSimpleCloseButton(JButton closeButton)
+	public void setSimpleCloseButton(JButton closeButton)
 	{
 		closeButton.addActionListener(new DialogCloseListener());
 	}

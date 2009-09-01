@@ -89,6 +89,11 @@ public abstract class AbstractTableRightClickHandler extends MouseAdapter
 	{
 		return table.getSelectedColumn();
 	}
+	
+	public int getSelectedRow()
+	{
+		return table.getSelectedRow();
+	}
 
 	private MainWindow mainWindow;
 	private JTable table;

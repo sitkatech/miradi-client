@@ -26,5 +26,5 @@ import javax.swing.Action;
 
 public interface RightClickActionProvider
 {
-	public Vector<Action> getActionsForRightClickMenu(int tableColumn);
+	public Vector<Action> getActionsForRightClickMenu(int row, int tableColumn);
 }
