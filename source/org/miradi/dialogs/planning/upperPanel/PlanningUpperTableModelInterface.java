@@ -24,6 +24,7 @@ import java.awt.Color;
 
 import org.miradi.dialogs.base.ChoiceItemTableModel;
 import org.miradi.utils.ColumnTagProvider;
+import org.miradi.utils.OptionalDouble;
 
 public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, ColumnTagProvider
 {
@@ -39,4 +40,5 @@ public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, 
 	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception;
 	public boolean isFullTimeEmployeeDaysPerYearEditable(int row, int modelColumn);
 	public void updateFullTimeEmployeeDaysPerYearPercent(int row, int modelColumn, double percent);
+	public OptionalDouble getCellPercent(int row, int modelColumn);
 }

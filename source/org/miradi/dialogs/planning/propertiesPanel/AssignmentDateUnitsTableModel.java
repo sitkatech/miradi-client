@@ -557,7 +557,22 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
 		double value = (percent * fullTimeEmployeeDaysPerYear) / getTimeUnit(modelColumn);
 		
-		setValueAt(value, row, modelColumn);
+		
+		setValueAt(new TaglessChoiceItem(value), row, modelColumn);
+	}
+	
+	public OptionalDouble getCellPercent(int row, int modelColumn)
+	{
+		ChoiceItem choiceItem = (ChoiceItem) getValueAt(row, modelColumn);
+		String doubleAsString = choiceItem.getLabel();
+		if (doubleAsString.length() == 0)
+			return new OptionalDouble();
+		
+		double value = Double.parseDouble(doubleAsString);
+		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
+		double percent  = (value * getTimeUnit(modelColumn)) / fullTimeEmployeeDaysPerYear;
+		
+		return new OptionalDouble(percent);
 	}
 	
 	private int getTimeUnit(int modelColumn)
