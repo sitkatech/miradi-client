@@ -25,7 +25,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.text.DecimalFormat;
 import java.util.Vector;
 
 import org.miradi.commands.Command;
@@ -75,10 +74,10 @@ import org.miradi.objectpools.IntermediateResultPool;
 import org.miradi.objectpools.KeyEcologicalAttributePool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objectpools.PlanningViewConfigurationPool;
-import org.miradi.objectpools.ScopeBoxPool;
 import org.miradi.objectpools.RareProjectDataPool;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objectpools.ResultsChainDiagramPool;
+import org.miradi.objectpools.ScopeBoxPool;
 import org.miradi.objectpools.StrategyPool;
 import org.miradi.objectpools.StressPool;
 import org.miradi.objectpools.TableSetttingsPool;
@@ -102,8 +101,8 @@ import org.miradi.objects.FosProjectData;
 import org.miradi.objects.PlanningViewConfiguration;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ScopeBox;
 import org.miradi.objects.RareProjectData;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -1443,14 +1442,6 @@ public class Project
 		return diagramClipboard;
 	}
 
-	public DecimalFormat getDecimalFormatter()
-	{
-		DecimalFormat formatter = new DecimalFormat("##0.##");
-		formatter.setDecimalSeparatorAlwaysShown(false);
-		
-		return formatter;
-	}
-	
 	public CurrencyFormat getCurrencyFormatterWithCommas()
 	{
 		int currencyDecimalPlaces = getMetadata().getCurrencyDecimalPlaces();
