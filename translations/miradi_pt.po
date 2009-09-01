@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-01 10:37-0500\n"
+"POT-Creation-Date: 2009-09-01 14:50-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -5876,7 +5876,7 @@ msgid "FileFilter|ZIP (*.zip)"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/HtmlViewPanel.java:186
-#: miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:48
+#: miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:55
 msgid "Button|Close"
 msgstr ""
 
@@ -5894,6 +5894,7 @@ msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:65
 #: miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr ""
@@ -6121,6 +6122,26 @@ msgid ""
 "Clone button"
 msgstr ""
 
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:53
+msgid "Percent of FTE..."
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:62
+msgid "Insert"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:68
+msgid "Edit..."
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:91
+msgid "FTE Days Per Year:"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:97
+msgid "Percent:"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
 msgid "Expand Selected Column"
 msgstr ""
@@ -6194,6 +6215,10 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:113
 #: miradi/source/org/miradi/dialogs/tablerenderers/BudgetCostTreeTableCellRendererFactory.java:67
 msgid "(Error)"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:577
+msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:51
