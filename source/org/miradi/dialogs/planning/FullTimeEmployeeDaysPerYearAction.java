@@ -114,11 +114,16 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	   
 	     public void insertString(int offset, String str, AttributeSet attr) throws BadLocationException 
 	     {
-	    	 if (str == null)
-	    		 return;
-	    	 	    	 
-	    	 //TODO filter to be 0 <= x <= 
-	    	 super.insertString(offset, str, attr);
+	    	 try
+	    	 {
+	    		 String total = percentField.getText() + str; 
+	    		 double parsed = Double.parseDouble(total);
+	    		 if (0.0 <= parsed && parsed <= 1.0)
+	    			 super.insertString(offset, str, attr);
+	    	 }
+	    	 catch (NumberFormatException ignoreException)
+	    	 {
+	    	 }
 	     }
 	}
 	
