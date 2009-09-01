@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-31 16:05-0500\n"
+"POT-Creation-Date: 2009-09-01 10:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -379,7 +379,7 @@ msgstr "项目日期 \t\t"
 msgid "Label|Workplan Dates"
 msgstr "工作计划日期 \t\t"
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:54
+#: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:55
 msgid "Work Plan Settings"
 msgstr ""
 
@@ -7401,6 +7401,9 @@ msgstr "货币小数位 \t\t"
 
 msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
 msgstr "财政年 \t\t"
+
+msgid "FieldLabel|11.FullTimeEmployeeDaysPerYear|FTE Days per Year"
+msgstr ""
 
 msgid "FieldLabel|11.TNC.Ecoregion|Ecoregion (legacy)"
 msgstr "生态区(传承) \t\t"
