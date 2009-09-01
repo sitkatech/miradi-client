@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-01 16:56-0500\n"
+"POT-Creation-Date: 2009-09-01 17:23-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -4912,6 +4912,10 @@ msgstr "Kenali \"faktor kunci\" dan rancangan strategi "
 msgid "5C. Communicate Results Within Project Team"
 msgstr "5C. Komunikasikan Hasil dalam Tim Proyek "
 
+#: miradi/source/org/miradi/actions/jump/ActionJumpPlanningWizardImplementPlans.java:36
+msgid "Implement plans"
+msgstr ""
+
 #: miradi/source/org/miradi/actions/jump/ActionJumpAnalyzeResourcesFeasibilityAndRisk.java:35
 msgid "Analyze Resources, Feasibility, and Risk"
 msgstr "Analisis Sumber Daya, Kelayakan dan Risiko "
@@ -6359,7 +6363,7 @@ msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr "Zip Proyek Miradi (*.mpz) "
 
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:65
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:66
 #: miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr "Batalkan "
@@ -6596,23 +6600,23 @@ msgstr ""
 "Silakan pilih butir mana yang harus diklon ke faktor ini, lalu tekan tombol "
 "Klon "
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:53
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:54
 msgid "Percent of FTE..."
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:62
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:63
 msgid "Insert"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:68
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
 msgid "Edit..."
 msgstr "Edit… "
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:91
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:92
 msgid "FTE Days Per Year:"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:97
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:99
 msgid "Percent:"
 msgstr ""
 
@@ -6692,7 +6696,7 @@ msgstr "Sifat-sifat Ancaman Langsung"
 msgid "(Error)"
 msgstr "(Kesalahan) "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:577
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:592
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
@@ -15091,6 +15095,12 @@ msgstr ""
 
 msgid ""
 "html|/resources/wizard/OperationalPlanView/DevelopOperationalPlanRight.html|"
+msgstr ""
+
+msgid "html|/resources/wizard/OperationalPlanView/ImplementPlansLeft.html|"
+msgstr ""
+
+msgid "html|/resources/wizard/OperationalPlanView/ImplementPlansRight.html|"
 msgstr ""
 
 msgid ""
