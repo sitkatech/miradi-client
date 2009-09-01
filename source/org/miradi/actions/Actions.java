@@ -71,6 +71,7 @@ import org.miradi.actions.jump.ActionJumpObtainFinancing;
 import org.miradi.actions.jump.ActionJumpPlanDataStorage;
 import org.miradi.actions.jump.ActionJumpPlanProjectLifespan;
 import org.miradi.actions.jump.ActionJumpPlanningOverviewStep;
+import org.miradi.actions.jump.ActionJumpPlanningWizardDevelopOperationalPlan;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeMonitoringPlanStep;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
 import org.miradi.actions.jump.ActionJumpRankDraftStrategiesStep;
@@ -336,6 +337,7 @@ public class Actions
 		registerAction(new ActionJumpCloseTheLoop(mainWindow));
 		registerAction(new ActionJumpPlanningWizardFinalizeStrategicPlanStep(mainWindow));
 		registerAction(new ActionJumpPlanningWizardFinalizeMonitoringPlanStep(mainWindow));
+		registerAction(new ActionJumpPlanningWizardDevelopOperationalPlan(mainWindow));
 		registerAction(new ActionJumpStrategicPlanViewAllGoals(mainWindow));
 		registerAction(new ActionJumpStrategicPlanViewAllObjectives(mainWindow));
 		registerAction(new ActionJumpStrategicPlanHowToConstructStep(mainWindow));
