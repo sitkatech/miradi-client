@@ -252,6 +252,11 @@ public class ProjectMetadata extends BaseObject
 		return threatRatingMode.get();
 	}
 
+	public String getFullTimeEmployeeDaysPerYear()
+	{
+		return fullTimeEmployeeDaysPerYear.get();
+	}
+	
 	public int getFiscalYearFirstMonth()
 	{
 		return getFiscalYearFirstMonth(getData(TAG_FISCAL_YEAR_START));

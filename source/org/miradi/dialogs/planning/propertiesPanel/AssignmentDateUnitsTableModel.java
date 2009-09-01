@@ -533,6 +533,63 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		return dateUnit.isDay();
 	}
+	
+	@Override
+	public boolean isFullTimeEmployeeDaysPerYearEditable(int row, int modelColumn)
+	{
+		if (!isCellEditable(row, modelColumn))
+			return false;
+		
+		DateUnit dateUnit = getDateUnit(modelColumn);
+		if (dateUnit.isYear())
+			return true;
+		if (dateUnit.isQuarter())
+			return true;
+		if (dateUnit.isMonth())
+			return true;
+			
+		return false;
+	}
+	
+	@Override
+	public void updateFullTimeEmployeeDaysPerYearPercent(int row, int modelColumn, double percent)
+	{
+		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
+		double value = (percent * fullTimeEmployeeDaysPerYear) / getTimeUnit(modelColumn);
+		
+		setValueAt(value, row, modelColumn);
+	}
+	
+	private int getTimeUnit(int modelColumn)
+	{
+		final int MONTH_PER_YEAR = 12;
+		final int QUARTER_PER_YEAR = 4;
+		DateUnit dateUnit = getDateUnit(modelColumn);
+		if (dateUnit.isYear())
+			return 1;
+	
+		if (dateUnit.isQuarter())
+			return QUARTER_PER_YEAR;
+	
+		if (dateUnit.isMonth())
+			return MONTH_PER_YEAR;
+		
+		throw new RuntimeException(EAM.text("Should Now Allow Full Time Employee To Be Calculated For ") + "DateUnit = " + dateUnit);
+	}
+	
+	public static double getFullTimeEmployeeDaysPerYear(Project project)
+	{
+		return Double.parseDouble(getRawFullTimeEmployeeDaysPerYear(project));
+	}
+
+	public static String getRawFullTimeEmployeeDaysPerYear(Project project)
+	{
+		final String DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "240";
+		String fullTimeEmployeeDaysPerYearAsString = project.getMetadata().getFullTimeEmployeeDaysPerYear();
+		if (fullTimeEmployeeDaysPerYearAsString.length() == 0)
+			fullTimeEmployeeDaysPerYearAsString = DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR;
+		return fullTimeEmployeeDaysPerYearAsString;
+	}
 		
 	@Override
 	public void respondToExpandOrCollapseColumnEvent(int column) throws Exception

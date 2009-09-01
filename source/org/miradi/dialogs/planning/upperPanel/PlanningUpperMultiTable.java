@@ -32,6 +32,7 @@ import org.miradi.actions.ActionCollapseAllRows;
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionExpandAllRows;
 import org.miradi.actions.Actions;
+import org.miradi.dialogs.planning.FullTimeEmployeeDaysPerYearAction;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
@@ -143,7 +144,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return getCastedModel().getColumnGroupCode(modelColumn);
 	}
 
-	public Vector<Action> getActionsForRightClickMenu(int tableColumn)
+	public Vector<Action> getActionsForRightClickMenu(int row, int tableColumn)
 	{
 		int multiModelColumn = convertColumnIndexToModel(tableColumn);
 		int modelColumn = getCastedModel().findColumnWithinSubTable(multiModelColumn);
@@ -159,6 +160,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			actions.add(new MultiTableExpandColumnAction(this));
 		if(model.isColumnCollapsable(modelColumn))
 			actions.add(new MultiTableCollapseColumnAction(this));
+		if(model.isFullTimeEmployeeDaysPerYearEditable(row, modelColumn))
+			actions.add(new FullTimeEmployeeDaysPerYearAction(this));
 		return actions;
 	}
 

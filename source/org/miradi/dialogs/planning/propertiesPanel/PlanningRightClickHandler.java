@@ -41,7 +41,7 @@ public class PlanningRightClickHandler extends AbstractTableRightClickHandler
 	@Override
 	protected void populateMenu(JPopupMenu popupMenu)
 	{
-		Vector<Action> rightClickActions = actionProvider.getActionsForRightClickMenu(getSelectedColumn());
+		Vector<Action> rightClickActions = actionProvider.getActionsForRightClickMenu(getSelectedRow(), getSelectedColumn());
 		for(Action action : rightClickActions)
 		{
 			if(action == null)

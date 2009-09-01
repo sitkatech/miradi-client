@@ -36,13 +36,13 @@ public class AssignmentExpensesTable extends AssignmentDateUnitsTable
 	}
 
 	@Override
-	public Vector<Action> getActionsForRightClickMenu(int tableColumn)
+	public Vector<Action> getActionsForRightClickMenu(int row, int tableColumn)
 	{
 		Vector<Action> actions = new Vector<Action>();
 		actions.add(getActions().get(ActionCreateExpense.class));
 		actions.add(getActions().get(ActionDeleteExpense.class));
 		actions.add(null);
-		actions.addAll(super.getActionsForRightClickMenu(tableColumn));
+		actions.addAll(super.getActionsForRightClickMenu(row, tableColumn));
 		return actions;
 	}
 }

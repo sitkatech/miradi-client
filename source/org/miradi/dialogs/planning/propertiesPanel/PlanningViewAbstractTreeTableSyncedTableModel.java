@@ -118,6 +118,15 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 	}
 	
+	public boolean isFullTimeEmployeeDaysPerYearEditable(int row, int modelColumn)
+	{
+		return false;
+	}
+	
+	public void updateFullTimeEmployeeDaysPerYearPercent(int row, int modelColumn, double percent)
+	{
+	}
+	
 	protected ORefSet getResourcesFilter()
 	{
 		return resourceRefsFilter;
