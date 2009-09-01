@@ -66,6 +66,7 @@ import org.miradi.wizard.operationalPlan.OperationalPlanOverviewStep;
 import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
 import org.miradi.wizard.planning.BudgetWizardReconcileActualExpendituresStep;
+import org.miradi.wizard.planning.DevelopOperationalPlan;
 import org.miradi.wizard.planning.PlanningOverviewStep;
 import org.miradi.wizard.planning.PlanningWizardFinalizeMonitoringPlanStep;
 import org.miradi.wizard.planning.PlanningWizardFinalizeStrategicPlanStep;
@@ -322,6 +323,8 @@ public class WizardManager
 	{
 		createStepEntry(new PlanningOverviewStep(panel));
 		createStepEntry(new PlanningWizardFinalizeStrategicPlanStep(panel));
+		
+		createStepEntry(new DevelopOperationalPlan(panel));
 		createStepEntry(new WorkPlanDevelopActivitiesAndTasksStep(panel));
 		createStepEntry(new WorkPlanDevelopMethodsAndTasksStep(panel));
 		createStepEntry(new WorkPlanCreateResourcesStep(panel));
@@ -440,6 +443,9 @@ public class WizardManager
 				DiagramWizardDefineAudienceStep.class,
 				MonitoringWizardDefineIndicatorsStep.class,
 				PlanningWizardFinalizeMonitoringPlanStep.class,
+				
+				// STEP 2C
+				DevelopOperationalPlan.class,
 
 				// STEP 3A
 				OperationalPlanOverviewStep.class,
