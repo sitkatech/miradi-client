@@ -74,6 +74,7 @@ import org.miradi.actions.jump.ActionJumpPlanningOverviewStep;
 import org.miradi.actions.jump.ActionJumpPlanningWizardDevelopOperationalPlan;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeMonitoringPlanStep;
 import org.miradi.actions.jump.ActionJumpPlanningWizardFinalizeStrategicPlanStep;
+import org.miradi.actions.jump.ActionJumpPlanningWizardImplementPlans;
 import org.miradi.actions.jump.ActionJumpRankDraftStrategiesStep;
 import org.miradi.actions.jump.ActionJumpRefinePlans;
 import org.miradi.actions.jump.ActionJumpScheduleOverviewStep;
@@ -365,6 +366,7 @@ public class Actions
 		registerAction(new ActionJumpDevelopFundingProposals(mainWindow));
 		registerAction(new ActionJumpObtainFinancing(mainWindow));
 		registerAction(new ActionJumpImplementStrategicAndMonitoringPlans(mainWindow));
+		registerAction(new ActionJumpPlanningWizardImplementPlans(mainWindow));
 		
 		registerAction(new ActionJumpScheduleOverviewStep(mainWindow));
 //		registerAction(new ActionJumpFinancialOverviewStep(mainWindow));
