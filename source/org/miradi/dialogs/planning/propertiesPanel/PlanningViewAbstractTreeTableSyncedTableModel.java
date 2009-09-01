@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.utils.OptionalDouble;
 
 abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends EditableObjectTableModel implements PlanningUpperTableModelInterface, ChoiceItemTableModel
 {
@@ -125,6 +126,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	
 	public void updateFullTimeEmployeeDaysPerYearPercent(int row, int modelColumn, double percent)
 	{
+	}
+	
+	public OptionalDouble getCellPercent(int row, int modelColumn)
+	{
+		return new OptionalDouble();
 	}
 	
 	protected ORefSet getResourcesFilter()
