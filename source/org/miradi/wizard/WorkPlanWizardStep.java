@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.wizard;
 
-import org.miradi.views.planning.PlanningView;
+import org.miradi.views.workplan.WorkPlanView;
 
 public class WorkPlanWizardStep extends SplitWizardStep
 {
 
 	public WorkPlanWizardStep(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, PlanningView.getViewName());
+		super(wizardToUse, WorkPlanView.getViewName());
 	}
 
 }

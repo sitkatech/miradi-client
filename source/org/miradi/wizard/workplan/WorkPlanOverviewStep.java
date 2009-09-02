@@ -17,10 +17,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.planning;
+package org.miradi.wizard.workplan;
 
 import org.miradi.actions.views.ActionViewWorkPlan;
-import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.WizardPanel;
 import org.miradi.wizard.WorkPlanWizardStep;
 
@@ -33,7 +32,7 @@ public class WorkPlanOverviewStep extends WorkPlanWizardStep
 
 	public String getProcessStepTitle()
 	{
-		return ProcessSteps.PROCESS_STEP_3A;
+		return "";
 	}
 
 	public Class getAssociatedActionClass()

@@ -22,7 +22,7 @@ package org.miradi.wizard.planning;
 
 import org.miradi.actions.jump.ActionJumpPlanningWizardDevelopOperationalPlan;
 import org.miradi.main.menu.ProcessSteps;
-import org.miradi.views.OperationalPlan.OperationalPlanView;
+import org.miradi.views.planning.PlanningView;
 import org.miradi.wizard.SplitWizardStep;
 import org.miradi.wizard.WizardPanel;
 
@@ -30,7 +30,7 @@ public class DevelopOperationalPlan extends SplitWizardStep
 {
 	public DevelopOperationalPlan(WizardPanel wizardToUse)
 	{
-		super(wizardToUse, OperationalPlanView.getViewName());
+		super(wizardToUse, PlanningView.getViewName());
 	}
 
 	public String getProcessStepTitle()
