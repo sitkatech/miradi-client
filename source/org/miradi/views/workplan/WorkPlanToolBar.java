@@ -17,16 +17,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
+package org.miradi.views.workplan;
 
-import org.miradi.views.OperationalPlan.OperationalPlanView;
-import org.miradi.views.umbrella.ViewSwitchDoer;
+import javax.swing.JComponent;
 
-public class SwitchToOperationalPlanViewDoer extends ViewSwitchDoer
+import org.miradi.actions.Actions;
+import org.miradi.actions.views.ActionViewWorkPlan;
+import org.miradi.main.EAMToolBar;
+
+public class WorkPlanToolBar extends EAMToolBar
 {
-	@Override
-	protected String getViewName()
+	public WorkPlanToolBar(Actions actions)
 	{
-		return OperationalPlanView.getViewName();
+		super(actions, ActionViewWorkPlan.class, createButtons(actions));
+	
 	}
+
+	static JComponent[][] createButtons(Actions actions)
+	{
+		JComponent[][] buttons = new JComponent[][] {
+			{
+			},
+		};
+
+		return buttons;
+	}
+	
 }

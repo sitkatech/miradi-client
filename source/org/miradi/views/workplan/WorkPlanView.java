@@ -17,7 +17,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.OperationalPlan;
+package org.miradi.views.workplan;
 
 import javax.swing.JToolBar;
 
@@ -46,7 +46,6 @@ import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
-import org.miradi.views.OperationalPlan.doers.ProjectResourceWorkPlanFilterEditDoer;
 import org.miradi.views.planning.doers.CreateAccountingCodeDoer;
 import org.miradi.views.planning.doers.CreateFundingSourceDoer;
 import org.miradi.views.planning.doers.DeleteAccountingCodeDoer;
@@ -65,10 +64,11 @@ import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
+import org.miradi.views.workplan.doers.ProjectResourceWorkPlanFilterEditDoer;
 
-public class OperationalPlanView extends TabbedView
+public class WorkPlanView extends TabbedView
 {
-	public OperationalPlanView(MainWindow mainWindowToUse)
+	public WorkPlanView(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 		addPlanningViewDoersToMap();
@@ -78,9 +78,9 @@ public class OperationalPlanView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-		resourceManagementPanel = OperationalPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
-		accountingCodePoolManagementPanel = OperationalPlanAccountingCodeManagementPanel.createAccountingPanel(getMainWindow());
-		fundingSourceManagementPanel = OperationalPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
+		resourceManagementPanel = WorkPlanResourcesManagementPanel.createProjectResourcesPanel(getMainWindow());
+		accountingCodePoolManagementPanel = WorkPlanAccountingCodeManagementPanel.createAccountingPanel(getMainWindow());
+		fundingSourceManagementPanel = WorkPlanFundingSourceManagementPanel.createFundingSourcePanel(getMainWindow());
 		
 		addNonScrollingTab(workPlanManagementPanel);
 		addNonScrollingTab(resourceManagementPanel);
@@ -112,13 +112,13 @@ public class OperationalPlanView extends TabbedView
 
 	static public String getViewName()
 	{
-		return Project.OPERATIONAL_PLAN_VIEW;
+		return Project.WORK_PLAN_VIEW;
 	}
 
 	@Override
 	public JToolBar createToolBar()
 	{
-		return new OperationalPlanToolBar(getActions());
+		return new WorkPlanToolBar(getActions());
 	}
 	
 	private void addPlanningViewDoersToMap()

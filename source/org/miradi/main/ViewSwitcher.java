@@ -32,13 +32,13 @@ import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewDiagram;
 import org.miradi.actions.views.ActionViewImages;
 import org.miradi.actions.views.ActionViewMap;
-import org.miradi.actions.views.ActionViewOperationalPlan;
 import org.miradi.actions.views.ActionViewPlanning;
 import org.miradi.actions.views.ActionViewReports;
 import org.miradi.actions.views.ActionViewSchedule;
 import org.miradi.actions.views.ActionViewSummary;
 import org.miradi.actions.views.ActionViewTargetViability;
 import org.miradi.actions.views.ActionViewThreatMatrix;
+import org.miradi.actions.views.ActionViewWorkPlan;
 import org.miradi.dialogs.fieldComponents.PanelComboBox;
 
 public class ViewSwitcher extends PanelComboBox
@@ -60,7 +60,7 @@ public class ViewSwitcher extends PanelComboBox
 			actions.get(ActionViewTargetViability.class),
 			actions.get(ActionViewThreatMatrix.class),
 			actions.get(ActionViewPlanning.class),
-			actions.get(ActionViewOperationalPlan.class),
+			actions.get(ActionViewWorkPlan.class),
 			actions.get(ActionViewReports.class),
 		};
 		Vector<Action> viewVector = new Vector<Action>(Arrays.asList(views));

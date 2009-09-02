@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.OperationalPlan.doers;
+package org.miradi.views.workplan.doers;
 
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogs.base.ObjectDataInputPanel;

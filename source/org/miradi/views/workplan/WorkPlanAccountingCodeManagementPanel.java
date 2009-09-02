@@ -18,7 +18,7 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.OperationalPlan;
+package org.miradi.views.workplan;
 
 import org.miradi.dialogs.planning.AccountingCodeRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
@@ -34,9 +34,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.views.planning.AbstractAccountingCodeManagementPanel;
 
-public class OperationalPlanAccountingCodeManagementPanel extends AbstractAccountingCodeManagementPanel
+public class WorkPlanAccountingCodeManagementPanel extends AbstractAccountingCodeManagementPanel
 {
-	public OperationalPlanAccountingCodeManagementPanel(MainWindow mainWindowToUse,
+	public WorkPlanAccountingCodeManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanel,
 			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
 			throws Exception
@@ -58,6 +58,6 @@ public class OperationalPlanAccountingCodeManagementPanel extends AbstractAccoun
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		
-		return new OperationalPlanAccountingCodeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
+		return new WorkPlanAccountingCodeManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
 	}
 }

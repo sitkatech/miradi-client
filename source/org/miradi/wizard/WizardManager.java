@@ -62,7 +62,6 @@ import org.miradi.wizard.map.MapOverviewStep;
 import org.miradi.wizard.noproject.NoProjectOverviewStep;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 import org.miradi.wizard.noproject.WelcomeImportStep;
-import org.miradi.wizard.operationalPlan.OperationalPlanOverviewStep;
 import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
 import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
 import org.miradi.wizard.planning.BudgetWizardReconcileActualExpendituresStep;
@@ -75,7 +74,6 @@ import org.miradi.wizard.planning.WorkPlanAssignResourcesStep;
 import org.miradi.wizard.planning.WorkPlanCreateResourcesStep;
 import org.miradi.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
 import org.miradi.wizard.planning.WorkPlanDevelopMethodsAndTasksStep;
-import org.miradi.wizard.planning.WorkPlanOverviewStep;
 import org.miradi.wizard.reports.ReportsOverviewStep;
 import org.miradi.wizard.schedule.ScheduleOverviewStep;
 import org.miradi.wizard.summary.SummaryOverviewStep;
@@ -102,6 +100,7 @@ import org.miradi.wizard.threatmatrix.ThreatStressCheckThreatRatingStep;
 import org.miradi.wizard.threatmatrix.ThreatStressOverviewStep;
 import org.miradi.wizard.threatmatrix.ThreatStressRateContributionAndIrreversibilityStep;
 import org.miradi.wizard.threatmatrix.ThreatStressRateScopeAndSeverityStep;
+import org.miradi.wizard.workplan.WorkPlanOverviewStep;
 
 
 public class WizardManager
@@ -122,8 +121,7 @@ public class WizardManager
 		createTargetViabilityStepEntries(panel);
 		createThreatMatrixViewStepEntries(panel);
 		createPlanningViewStepEntries(panel);
-		createWorkPlanStepEntries(panel);
-		createOperationalPlanViewStepEntries(panel);
+		createWorkPlanViewStepEntries(panel);
 		createReportViewStepEntries(panel);
 		createScheduleStepEntries(panel);
 		createMapViewStepEntries(panel);
@@ -244,11 +242,6 @@ public class WizardManager
 		createStepEntry(new SummaryWizardDefineProjectVision(panel));
 	}
 	
-	public void createWorkPlanStepEntries(WizardPanel panel)
-	{
-		createStepEntry(new WorkPlanOverviewStep(panel));
-	}
-	
 	public void createDigramViewStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new DiagramOverviewStep(panel));
@@ -326,6 +319,11 @@ public class WizardManager
 		createStepEntry(new PlanningWizardFinalizeStrategicPlanStep(panel));
 		
 		createStepEntry(new DevelopOperationalPlan(panel));
+	}
+
+	public void createWorkPlanViewStepEntries(WizardPanel panel)
+	{
+		createStepEntry(new WorkPlanOverviewStep(panel));
 		createStepEntry(new WorkPlanDevelopActivitiesAndTasksStep(panel));
 		createStepEntry(new WorkPlanDevelopMethodsAndTasksStep(panel));
 		createStepEntry(new WorkPlanCreateResourcesStep(panel));
@@ -334,11 +332,6 @@ public class WizardManager
 		createStepEntry(new BudgetWizardBudgetDetail(panel));
 		createStepEntry(new BudgetWizardReconcileActualExpendituresStep(panel));
 		createStepEntry(new ImplementPlans(panel));
-	}
-
-	public void createOperationalPlanViewStepEntries(WizardPanel panel)
-	{
-		createStepEntry(new OperationalPlanOverviewStep(panel));
 	}
 	
 	public void createReportViewStepEntries(WizardPanel panel)
@@ -450,7 +443,6 @@ public class WizardManager
 				DevelopOperationalPlan.class,
 
 				// STEP 3A
-				OperationalPlanOverviewStep.class,
 				WorkPlanOverviewStep.class,
 				WorkPlanDevelopActivitiesAndTasksStep.class,
 				

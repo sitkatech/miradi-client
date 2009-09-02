@@ -18,25 +18,25 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.OperationalPlan;
+package org.miradi.views.workplan;
 
-import org.miradi.dialogs.planning.FundingSourceRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
+import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
-import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTableModel;
-import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTableModel;
+import org.miradi.dialogs.planning.upperPanel.ProjectResourceTreeTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.views.planning.AbstractFundingSourceManagementPanel;
+import org.miradi.views.planning.ProjectResourceManagementPanel;
 
-public class OperationalPlanFundingSourceManagementPanel extends AbstractFundingSourceManagementPanel
+public class WorkPlanResourcesManagementPanel extends ProjectResourceManagementPanel
 {
-	public OperationalPlanFundingSourceManagementPanel(MainWindow mainWindowToUse,
+	public WorkPlanResourcesManagementPanel(MainWindow mainWindowToUse,
 			PlanningTreeTablePanel planningTreeTablePanel,
 			PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)
 			throws Exception
@@ -46,18 +46,18 @@ public class OperationalPlanFundingSourceManagementPanel extends AbstractFunding
 
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, RowColumnProvider rowColumnProvider) throws Exception
 	{
-		PlanningTreeTableModel model = FundingSourceTreeTableModel.createOperationalPlanFundingSourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
+		PlanningTreeTableModel model = ProjectResourceTreeTableModel.createOperationalPlanResourceTreeTableModel(getProject(), rowColumnProvider.getColumnListToShow());
 		return ExportablePlanningTreeTablePanel.createPlanningTreeTablePanelWithoutButtons(getMainWindow(), rowColumnProvider, model);
 	}
 
-	public static PlanningTreeManagementPanel createFundingSourcePanel(MainWindow mainWindowToUse) throws Exception
+	public static PlanningTreeManagementPanel createProjectResourcesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		RowColumnProvider rowColumnProvider = new FundingSourceRowColumnProvider();
-		PlanningTreeTableModel treeTableModel = FundingSourceTreeTableModel.createOperationalPlanFundingSourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
-		PlanningTreeTablePanel treeTablePanel = FundingSourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
+		RowColumnProvider rowColumnProvider = new ProjectResourceRowColumnProvider();
+		PlanningTreeTableModel treeTableModel = ProjectResourceTreeTableModel.createOperationalPlanResourceTreeTableModel(mainWindowToUse.getProject(), rowColumnProvider.getColumnListToShow());
+		PlanningTreeTablePanel treeTablePanel = ProjectResourceTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, treeTableModel, rowColumnProvider);
 		PlanningTreeTable treeAsObjectPicker = (PlanningTreeTable)treeTablePanel.getTree();
 		PlanningTreeMultiPropertiesPanel propertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID, treeAsObjectPicker);
 		
-		return new OperationalPlanFundingSourceManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
-	}
+		return new WorkPlanResourcesManagementPanel(mainWindowToUse, treeTablePanel, propertiesPanel);
+	}	
 }
