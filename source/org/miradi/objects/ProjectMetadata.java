@@ -254,7 +254,12 @@ public class ProjectMetadata extends BaseObject
 
 	public String getFullTimeEmployeeDaysPerYear()
 	{
-		return fullTimeEmployeeDaysPerYear.get();
+		final String DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "240";
+		String fullTimeEmployeeDaysPerYearAsString = fullTimeEmployeeDaysPerYear.get();
+		if (fullTimeEmployeeDaysPerYearAsString.length() == 0)
+			return DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR;
+		
+		return fullTimeEmployeeDaysPerYearAsString;
 	}
 	
 	public int getFiscalYearFirstMonth()

@@ -599,11 +599,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 
 	public static String getRawFullTimeEmployeeDaysPerYear(Project project)
 	{
-		final String DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR = "240";
-		String fullTimeEmployeeDaysPerYearAsString = project.getMetadata().getFullTimeEmployeeDaysPerYear();
-		if (fullTimeEmployeeDaysPerYearAsString.length() == 0)
-			fullTimeEmployeeDaysPerYearAsString = DEFAULT_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR;
-		return fullTimeEmployeeDaysPerYearAsString;
+		return project.getMetadata().getFullTimeEmployeeDaysPerYear();
 	}
 		
 	@Override
