@@ -228,9 +228,9 @@ public class IconManager
 		return new PlanningIcon();
 	}
 	
-	public static Icon getOperationalPlanIcon()
+	public static Icon getWorkPlanIcon()
 	{
-		return new OperationalPlanIcon();
+		return new WorkPlanIcon();
 	}
 
 	public static Icon getReportIcon()

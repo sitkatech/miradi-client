@@ -21,9 +21,9 @@ package org.miradi.icons;
 
 import org.miradi.utils.MiradiResourceImageIcon;
 
-public class OperationalPlanIcon extends MiradiResourceImageIcon
+public class WorkPlanIcon extends MiradiResourceImageIcon
 {
-	public OperationalPlanIcon()
+	public WorkPlanIcon()
 	{
 		super("icons/grid.png");
 	}

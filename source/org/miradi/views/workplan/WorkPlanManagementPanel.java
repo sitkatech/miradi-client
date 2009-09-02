@@ -61,7 +61,7 @@ class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 	@Override
 	public Icon getIcon()
 	{
-		return IconManager.getActivityIcon();
+		return IconManager.getWorkPlanIcon();
 	}
 	
 	public static WorkPlanManagementPanel createWorkPlanPanel(MainWindow mainWindowToUse) throws Exception

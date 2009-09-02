@@ -28,7 +28,7 @@ public class ActionViewOperationalPlan extends MainWindowAction
 {
 	public ActionViewOperationalPlan(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), IconManager.getOperationalPlanIcon());
+		super(mainWindowToUse, getLabel(), IconManager.getWorkPlanIcon());
 	}
 
 	private static String getLabel()
