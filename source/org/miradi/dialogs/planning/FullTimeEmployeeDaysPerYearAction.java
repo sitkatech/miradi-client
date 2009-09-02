@@ -45,7 +45,9 @@ import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
+import org.miradi.utils.FlexibleWidthHtmlViewer;
 import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.Translation;
 
 public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 {
@@ -57,7 +59,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		multiTable = planningUpperMultiTable;
 	}
 
-	public void actionPerformed(ActionEvent e)
+	public void actionPerformed(ActionEvent event)
 	{
 		Vector<Component> buttons = new Vector();
 		PanelButton insertButton = new PanelButton(EAM.text("Insert"));
@@ -68,9 +70,24 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		
 		dialog = new ModalDialogWithClose(getMainWindow(), EAM.text("Insert FTE Percentage"), buttons);
 		dialog.setSimpleCloseButton(cancelButton);
-		dialog.add(createEditPanel(), BorderLayout.BEFORE_FIRST_LINE);
+		dialog.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
+		dialog.add(createEditPanel(), BorderLayout.CENTER);
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
+	}
+
+	private FlexibleWidthHtmlViewer createExplanationHtmlPanel()
+	{
+		try
+		{
+			String html = Translation.getHtmlContent("FteDaysPerYearDialogExplanation.html");
+			return new FlexibleWidthHtmlViewer(getMainWindow(), html);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return new FlexibleWidthHtmlViewer(getMainWindow(), EAM.text("Error"));
+		}
 	}
 	
 	private Project getProject()
