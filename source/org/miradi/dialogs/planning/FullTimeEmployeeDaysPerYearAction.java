@@ -66,7 +66,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		PanelButton cancelButton = new PanelButton(EAM.text("Cancel"));
 		buttons.add(cancelButton);
 		
-		dialog = new ModalDialogWithClose(getMainWindow(), EAM.text("Edit..."), buttons);
+		dialog = new ModalDialogWithClose(getMainWindow(), EAM.text("Insert FTE Percentage"), buttons);
 		dialog.setSimpleCloseButton(cancelButton);
 		dialog.add(createEditPanel(), BorderLayout.BEFORE_FIRST_LINE);
 		Utilities.centerDlg(dialog);
