@@ -577,17 +577,17 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	
 	private int getNumberOfMonthsRepresentedByColumn(int modelColumn)
 	{
-		final int MONTH_PER_YEAR = 12;
-		final int QUARTER_PER_YEAR = 4;
+		final int MONTHS_PER_YEAR = 12;
+		final int MONTHS_PER_QUARTER = 3;
 		DateUnit dateUnit = getDateUnit(modelColumn);
-		if (dateUnit.isYear())
+		if (dateUnit.isMonth())
 			return 1;
 	
 		if (dateUnit.isQuarter())
-			return QUARTER_PER_YEAR;
+			return MONTHS_PER_QUARTER;
 	
-		if (dateUnit.isMonth())
-			return MONTH_PER_YEAR;
+		if (dateUnit.isYear())
+			return MONTHS_PER_YEAR;
 		
 		throw new RuntimeException(EAM.text("Should Now Allow Full Time Employee To Be Calculated For ") + "DateUnit = " + dateUnit);
 	}
