@@ -535,7 +535,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 	
 	@Override
-	public boolean isFullTimeEmployeeDaysPerYearEditable(int row, int modelColumn)
+	public boolean isFullTimeEmployeePercentageAvailable(int row, int modelColumn)
 	{
 		if (!isCellEditable(row, modelColumn))
 			return false;
