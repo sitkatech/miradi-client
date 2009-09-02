@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.summary;
 
+import java.awt.BorderLayout;
 import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
@@ -28,7 +29,6 @@ import javax.swing.JComponent;
 
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectManagementPanel;
-import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
 import org.miradi.rtf.RtfWriter;
@@ -37,28 +37,19 @@ import org.miradi.utils.TableExporter;
 import org.miradi.utils.Translation;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 
-import com.jhlabs.awt.Alignment;
-
 class OrganizationalTabPanel extends DisposablePanelWithDescription implements MiradiTabContentsPanelInterface
 {
 	OrganizationalTabPanel(MainWindow mainWindowToUse, ObjectManagementPanel panelToWrap) throws Exception
 	{
 		wrappedPanel = panelToWrap;
-		
-		OneColumnGridLayout layout = new OneColumnGridLayout();
-		layout.setFill(Alignment.FILL_BOTH);
-		layout.setRowWeight(0, 0);
-		layout.setRowWeight(1, 100);
-		setLayout(layout);
-		
 		String html = Translation.getHtmlContent("OtherOrgOverview.html");
 		FlexibleWidthHtmlViewer htmlViewer = new FlexibleWidthHtmlViewer(mainWindowToUse, html);
 		
 		// NOTE: For some reason, without a border, the htmlViewer is not visible
 		htmlViewer.setBorder(BorderFactory.createLineBorder(AppPreferences.getDataPanelBackgroundColor()));
 		
-		add(htmlViewer);
-		add(wrappedPanel);
+		add(htmlViewer, BorderLayout.BEFORE_FIRST_LINE);
+		add(wrappedPanel, BorderLayout.CENTER);
 	}
 
 	public void becomeActive()
