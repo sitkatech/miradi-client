@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 13:33-0500\n"
+"POT-Creation-Date: 2009-09-02 13:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -5072,11 +5072,11 @@ msgstr "报告 \t\t"
 msgid "TT|Switch to the Reports View"
 msgstr "切换到报告视图 \t\t"
 
-#: miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:35
+#: miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:36
 msgid "Action|Work Plan"
 msgstr ""
 
-#: miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:40
+#: miradi/source/org/miradi/actions/views/ActionViewWorkPlan.java:41
 msgid "TT|Develop a work plan and budget"
 msgstr ""
 
