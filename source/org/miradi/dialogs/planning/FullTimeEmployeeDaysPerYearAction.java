@@ -33,7 +33,7 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
 import org.martus.swing.Utilities;
-import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -68,7 +68,9 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		PanelButton cancelButton = new PanelButton(EAM.text("Cancel"));
 		buttons.add(cancelButton);
 		
-		dialog = new ModalDialogWithClose(getMainWindow(), EAM.text("Insert FTE Percentage"), buttons);
+		dialog = new DialogWithButtonBar(getMainWindow(), EAM.text("Insert FTE Percentage"));
+		dialog.setButtons(buttons);
+		dialog.setModal(true);
 		dialog.setSimpleCloseButton(cancelButton);
 		dialog.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
 		dialog.add(createEditPanel(), BorderLayout.CENTER);
@@ -191,5 +193,5 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	private PlanningUpperMultiTable multiTable;
 	private MainWindow mainWindow;
 	private PanelTextField percentField;
-	private ModalDialogWithClose dialog;
+	private DialogWithButtonBar dialog;
 }

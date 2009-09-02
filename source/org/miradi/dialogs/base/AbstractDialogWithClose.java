@@ -43,13 +43,6 @@ abstract public class AbstractDialogWithClose extends DialogWithDisposablePanelA
 		setButtons(getButtonBarComponents());
 	}
 	
-	protected AbstractDialogWithClose(MainWindow parent, Vector<Component> otherButtons)
-	{
-		super(parent);
-		
-		setButtons(otherButtons);
-	}
-	
 	protected Vector<Component> getButtonBarComponents()
 	{
 		UiButton closeButton = new PanelButton(EAM.text("Button|Close"));

@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.Component;
-import java.util.Vector;
-
 import org.miradi.main.MainWindow;
 
 public class ModalDialogWithClose extends AbstractDialogWithClose
@@ -36,13 +33,6 @@ public class ModalDialogWithClose extends AbstractDialogWithClose
 	public ModalDialogWithClose(MainWindow parent, DisposablePanel panel, String title)
 	{
 		super(parent, panel);
-		setTitle(title);
-		setModal(true);
-	}
-	
-	public ModalDialogWithClose(MainWindow parent, String title, Vector<Component> otherButtons)
-	{
-		super(parent, otherButtons);
 		setTitle(title);
 		setModal(true);
 	}
