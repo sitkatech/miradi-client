@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 13:30-0500\n"
+"POT-Creation-Date: 2009-09-02 13:33-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -11069,6 +11069,9 @@ msgstr ""
 "almacenará la información por sí mismo, sino que le permitirá catalogarla y "
 "manejarla.</P>"
 
+msgid "html|/resources/wizard/PlanningView/DevelopOperationalPlanLeft.html|"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "html|/resources/wizard/PlanningView/PlanningOverviewStepRight.html|  <div "
@@ -11220,6 +11223,9 @@ msgstr ""
 "con esta meta.</p><p>Para una estrategia seleccionada, también puede usar el "
 "botón <code class='toolbarbutton'>&lt;Edit&nbsp;Progress&nbsp;Report&gt;</"
 "code> para actualizar el estatus de un indicador determinado.</p>"
+
+msgid "html|/resources/wizard/PlanningView/DevelopOperationalPlanRight.html|"
+msgstr ""
 
 msgid ""
 "html|/resources/wizard/PlanningView/"
