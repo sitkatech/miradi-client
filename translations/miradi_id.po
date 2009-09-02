@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 13:44-0500\n"
+"POT-Creation-Date: 2009-09-02 15:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6609,8 +6609,8 @@ msgid "Insert"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
-msgid "Edit..."
-msgstr "Edit… "
+msgid "Insert FTE Percentage"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:92
 msgid "FTE Days Per Year:"
@@ -32549,6 +32549,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Edit..."
+#~ msgstr "Edit… "
 
 #~ msgid "Action|Develop Work Plan"
 #~ msgstr "Kembangkan Rencana Kerja "

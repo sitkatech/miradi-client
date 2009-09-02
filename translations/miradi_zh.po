@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 13:44-0500\n"
+"POT-Creation-Date: 2009-09-02 15:41-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6433,8 +6433,8 @@ msgid "Insert"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
-msgid "Edit..."
-msgstr "编辑... \t\t"
+msgid "Insert FTE Percentage"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:92
 msgid "FTE Days Per Year:"
@@ -29249,6 +29249,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Edit..."
+#~ msgstr "编辑... \t\t"
 
 #~ msgid "Action|Develop Work Plan"
 #~ msgstr "发展工作计划 \t\t"
