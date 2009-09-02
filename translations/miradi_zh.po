@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 13:30-0500\n"
+"POT-Creation-Date: 2009-09-02 13:33-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -10593,6 +10593,9 @@ msgstr ""
 "LI></UL><P>注意Miradi本身将<U>不会</U>存储这些信息，但会使您能够对其进行分类"
 "和管理。</P>"
 
+msgid "html|/resources/wizard/PlanningView/DevelopOperationalPlanLeft.html|"
+msgstr ""
+
 #, fuzzy
 msgid ""
 "html|/resources/wizard/PlanningView/PlanningOverviewStepRight.html|  <div "
@@ -10738,6 +10741,9 @@ msgstr ""
 "择您想要使哪个策略或活动与该分目标相关联。</p><p>对于一个选定的策略，您也可以"
 "使用<code class='toolbarbutton'>&lt;编辑&nbsp;进展&nbsp;报告&gt;</code>按钮来"
 "更新特定指示物的状态。</p> "
+
+msgid "html|/resources/wizard/PlanningView/DevelopOperationalPlanRight.html|"
+msgstr ""
 
 msgid ""
 "html|/resources/wizard/PlanningView/"
