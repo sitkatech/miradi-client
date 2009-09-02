@@ -51,11 +51,6 @@ import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class TreeTablePanel extends ObjectCollectionPanel  implements TreeSelectionListener
 {
-	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse) throws Exception
-	{
-		this(mainWindowToUse, treeToUse, new Class[0]);
-	}
-	
 	public TreeTablePanel(MainWindow mainWindowToUse, TreeTableWithStateSaving treeToUse, Class[] buttonActionClasses) throws Exception
 	{
 		super(mainWindowToUse, treeToUse);
