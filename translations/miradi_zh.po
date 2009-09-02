@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 15:41-0500\n"
+"POT-Creation-Date: 2009-09-02 15:59-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -41,6 +41,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:89
 #, fuzzy
 msgid "Error"
 msgstr "Error"
@@ -6189,7 +6190,7 @@ msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr "Miradi项目压缩（*.mpz） \t\t"
 
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:66
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:68
 #: miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr "取消 \t\t"
@@ -6424,23 +6425,23 @@ msgid ""
 "Clone button"
 msgstr "请选择那个应当与本因素共享的选项，然后按克隆按钮 \t\t"
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:54
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:56
 msgid "Percent of FTE..."
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:63
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:65
 msgid "Insert"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:71
 msgid "Insert FTE Percentage"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:92
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:109
 msgid "FTE Days Per Year:"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:99
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:116
 msgid "Percent:"
 msgstr ""
 
@@ -8526,6 +8527,11 @@ msgstr ""
 "<p>导出图像的分辨率取决于当前的放大倍数。缩小会导致图像变得模糊，放大则使图像"
 "变得清晰。要得到更清晰的图像，就进一步放大。要使图像文档占用更少的磁盘空间，"
 "则进一步缩小图像。</p> \t\t"
+
+msgid ""
+"html|/resources/FteDaysPerYearDialogExplanation.html|<p>Full Time Emplyment "
+"Explanation:</p>"
+msgstr ""
 
 msgid ""
 "html|/resources/RAREPanel.html|  <div class='OrgTopPanel'><table "
