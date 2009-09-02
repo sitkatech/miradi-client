@@ -36,6 +36,13 @@ import org.martus.swing.Utilities;
 
 public class DialogWithButtonBar extends MiradiDialog
 {
+	public DialogWithButtonBar(JFrame parent, String title)
+	{
+		this(parent);
+		
+		setTitle(title);
+	}
+	
 	public DialogWithButtonBar(JFrame parent)
 	{
 		super(parent);
