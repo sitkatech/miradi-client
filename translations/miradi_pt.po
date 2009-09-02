@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 16:04-0500\n"
+"POT-Creation-Date: 2009-09-02 16:23-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -42,7 +42,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:89
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:91
 msgid "Error"
 msgstr ""
 
@@ -5885,7 +5885,7 @@ msgid "FileFilter|ZIP (*.zip)"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/HtmlViewPanel.java:186
-#: miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:55
+#: miradi/source/org/miradi/dialogs/base/AbstractDialogWithClose.java:48
 msgid "Button|Close"
 msgstr ""
 
@@ -6143,11 +6143,11 @@ msgstr ""
 msgid "Insert FTE Percentage"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:109
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:111
 msgid "FTE Days Per Year:"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:116
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:118
 msgid "Percent:"
 msgstr ""
 
