@@ -123,9 +123,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 
 	private String getPrePopulatedValue()
 	{
-		int selectedColumn = multiTable.getSelectedColumn();
-		int modelColumn = multiTable.convertColumnIndexToModel(selectedColumn);
-		int columnWithinMultiTableModel = getCastedModel().findColumnWithinSubTable(modelColumn);
+		int columnWithinMultiTableModel = getColumnWithinMultiTableModel();
 		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(columnWithinMultiTableModel);
 		
 		OptionalDouble value = model.getCellPercent(getSelectedRow(), columnWithinMultiTableModel);
@@ -134,7 +132,15 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		
 		return "";
 	}
-
+	
+	private int getColumnWithinMultiTableModel()
+	{
+		int selectedColumn = multiTable.getSelectedColumn();
+		int modelColumn = multiTable.convertColumnIndexToModel(selectedColumn);
+		
+		return getCastedModel().findColumnWithinSubTable(modelColumn);
+	}
+	
 	private int getSelectedRow()
 	{
 		return multiTable.getSelectedRow();
@@ -178,10 +184,8 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		{
 			String doubleAsString = percentField.getText();
 			double parsedDouble = Double.parseDouble(doubleAsString);
-			int selectedColumn = multiTable.getSelectedColumn();
-			int modelColumn = multiTable.convertColumnIndexToModel(selectedColumn);
 			
-			int columnWithinMultiTableModel = getCastedModel().findColumnWithinSubTable(modelColumn);
+			int columnWithinMultiTableModel = getColumnWithinMultiTableModel();
 			PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(columnWithinMultiTableModel);
 			model.updateFullTimeEmployeeDaysPerYearPercent(getSelectedRow(), columnWithinMultiTableModel, parsedDouble);
 			
