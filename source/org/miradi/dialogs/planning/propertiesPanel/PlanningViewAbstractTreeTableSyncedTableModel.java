@@ -119,7 +119,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 	{
 	}
 	
-	public boolean isFullTimeEmployeeDaysPerYearEditable(int row, int modelColumn)
+	public boolean isFullTimeEmployeePercentageAvailable(int row, int modelColumn)
 	{
 		return false;
 	}
