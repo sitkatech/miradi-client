@@ -63,7 +63,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	{
 		Vector<Component> buttons = new Vector();
 		PanelButton insertButton = new PanelButton(EAM.text("Insert"));
-		insertButton.addActionListener(new InsertHandler());
+		insertButton.addActionListener(new InsertButtonHandler());
 		buttons.add(insertButton);
 		PanelButton cancelButton = new PanelButton(EAM.text("Cancel"));
 		buttons.add(cancelButton);
@@ -170,7 +170,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	     }
 	}
 	
-	class InsertHandler implements ActionListener
+	class InsertButtonHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e)
 		{
