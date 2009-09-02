@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-02 15:41-0500\n"
+"POT-Creation-Date: 2009-09-02 15:59-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -42,6 +42,7 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:89
 msgid "Error"
 msgstr ""
 
@@ -5902,7 +5903,7 @@ msgid "FileFilter|Miradi Project Zip (*.mpz)"
 msgstr ""
 
 #: miradi/source/org/miradi/utils/ConstantButtonNames.java:28
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:66
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:68
 #: miradi/source/org/miradi/dialogs/base/AbstractSelectionDialog.java:90
 msgid "Cancel"
 msgstr ""
@@ -6130,23 +6131,23 @@ msgid ""
 "Clone button"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:54
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:56
 msgid "Percent of FTE..."
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:63
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:65
 msgid "Insert"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:69
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:71
 msgid "Insert FTE Percentage"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:92
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:109
 msgid "FTE Days Per Year:"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:99
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:116
 msgid "Percent:"
 msgstr ""
 
@@ -8162,6 +8163,11 @@ msgid ""
 "image to become fuzzier, and zooming in will cause the image to become "
 "sharper. For clearer images, zoom in farther. For image files that take up "
 "less disk space, zoom out more.</p>"
+msgstr ""
+
+msgid ""
+"html|/resources/FteDaysPerYearDialogExplanation.html|<p>Full Time Emplyment "
+"Explanation:</p>"
 msgstr ""
 
 msgid ""
