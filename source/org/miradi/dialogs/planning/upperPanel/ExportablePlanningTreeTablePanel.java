@@ -51,9 +51,9 @@ public class ExportablePlanningTreeTablePanel extends PlanningTreeTablePanel
 		return new ExportablePlanningTreeTablePanel(mainWindowToUse, treeTable, model, new Class[0], rowColumnProvider);
 	}
 	
-	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow, RowColumnProvider rowColumnProvider, String uniqueTreeTableModelIdentifier) throws Exception
+	public static JComponent createPrintablePlanningTreeTablePanel(MainWindow mainWindow, RowColumnProvider rowColumnProvider, PlanningTreeTableModel modelToUse) throws Exception
 	{
-		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow, rowColumnProvider, uniqueTreeTableModelIdentifier);
+		PlanningTreeTablePanel wholePanel = createPlanningTreeTablePanelWithoutButtons(mainWindow, rowColumnProvider, modelToUse);
 
 		JPanel reformatted = new JPanel(new BorderLayout());
 		
