@@ -74,6 +74,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		dialog.setSimpleCloseButton(cancelButton);
 		dialog.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
 		dialog.add(createEditPanel(), BorderLayout.CENTER);
+		dialog.getRootPane().setDefaultButton(insertButton);
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
 	}
