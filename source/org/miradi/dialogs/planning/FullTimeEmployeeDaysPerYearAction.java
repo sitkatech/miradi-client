@@ -167,10 +167,13 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	     {
 	    	 try
 	    	 {
-	    		 String total = percentField.getText() + str; 
+	    		final String LEADING_0_TO_ALLOW_DECIMAL_WITHOUT_0 = "0";
+				String total = LEADING_0_TO_ALLOW_DECIMAL_WITHOUT_0 + percentField.getText() + str; 
 	    		 double parsed = Double.parseDouble(total);
 	    		 if (0.0 <= parsed && parsed <= 1.0)
+	    		 {
 	    			 super.insertString(offset, str, attr);
+	    		 }
 	    	 }
 	    	 catch (NumberFormatException ignoreException)
 	    	 {
