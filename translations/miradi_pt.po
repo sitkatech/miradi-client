@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-01 17:23-0500\n"
+"POT-Creation-Date: 2009-09-02 10:03-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6289,7 +6289,7 @@ msgstr ""
 msgid "Tab|Progress Reports"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:108
+#: miradi/source/org/miradi/dialogs/treetables/TreeTablePanel.java:103
 msgid "Error restoring tree state"
 msgstr ""
 
