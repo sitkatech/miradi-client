@@ -27,6 +27,7 @@ import javax.swing.JComponent;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.PlanningIcon;
 import org.miradi.main.MainWindow;
@@ -91,7 +92,8 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	{
 		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
 		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
-		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(getMainWindow(), rowColumnProvider, uniqueTreeTableModelIdentifier);
+		PlanningTreeTableModel planningTreeTableModel = createPlanningTreeTablePanel(uniqueTreeTableModelIdentifier, rowColumnProvider).getPlanningTreeTableModel();
+		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(getMainWindow(), rowColumnProvider, planningTreeTableModel);
 	}
 	
 	public PlanningTreeTablePanel getPlanningTreeTablePanel()

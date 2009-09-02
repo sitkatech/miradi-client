@@ -551,6 +551,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		getPropertiesPanel().selectSectionForTag(selectedColumnTag);
 	}
 	
+	public PlanningTreeTableModel getPlanningTreeTableModel()
+	{
+		return (PlanningTreeTableModel) getModel();
+	}
+	
 	class TreeTableRowSelectionHandler implements ListSelectionListener
 	{
 		public void valueChanged(ListSelectionEvent e)
