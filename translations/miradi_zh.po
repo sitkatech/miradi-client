@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 15:07-0500\n"
+"POT-Creation-Date: 2009-09-03 15:20-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -125,13 +125,19 @@ msgstr ""
 "一项或多项与KEA指示物相关联的总目标组已被删除。请根据需要创建新的总目标组，或"
 "使用“对象生存力”选项中“未来状态”这一新选项来储存同样的数据。 \t\t"
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:43
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:44
 msgid ""
 "<html>One or more Overrides (High Level Estimates) have been migrated. "
 "<br><br>Any Who overrides have been converted to Resource Assignments, "
 "<br>and any Budget overrides have been converted to Expenses. <br><br>The "
 "original overrides have been inserted as text into the Details fields,<br>in "
 "case you want to refer to them. You can delete them at any time."
+msgstr ""
+
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:84
+msgid ""
+"<html>An Operating Unit for this project has been <br>superseded. Please "
+"select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
 #: miradi/source/org/miradi/database/DataUpgrader.java:43
@@ -18200,6 +18206,11 @@ msgstr ""
 "（debt-for-nature swaps）\""
 
 msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|(Superseded Operating "
+"Unit)"
+msgstr ""
+
+msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Australia___Asia "
 "Pacific___YES"
 msgstr "澳大利亚___亚洲太平洋___是"
@@ -18356,11 +18367,6 @@ msgid ""
 msgstr "加勒比国家___中美洲和加勒比___是"
 
 msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central American "
-"Countries___Mesoamerica and Caribbean___YES"
-msgstr "中美洲国家___中美洲和加勒比___是"
-
-msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mexico___Mesoamerica "
 "and Caribbean___YES"
 msgstr "墨西哥___中美洲和加勒比___是"
@@ -18441,16 +18447,6 @@ msgid ""
 msgstr "亚马逊___南美洲___是"
 
 msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Atlantic Forest___South "
-"America___YES"
-msgstr "大西洋森林___南美洲___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central "
-"Savannas___South America___YES"
-msgstr "中部稀树草原___南美洲___是"
-
-msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Northern Tropical "
 "Andes___South America___YES"
 msgstr "北部热带安第斯山脉___南美洲___是"
@@ -18459,11 +18455,6 @@ msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern Andes___South "
 "America___YES"
 msgstr "南部安第斯山脉___南美洲___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Alabama___Southern "
-"US___YES"
-msgstr "阿拉巴马州___美国南部___是"
 
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Arkansas___Southern "
@@ -18515,41 +18506,6 @@ msgid ""
 "Office___Asia Pacific___YES"
 msgstr "亚洲太平洋地区办公室___亚洲太平洋___是"
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central US Regional "
-"Office___Central US___YES"
-msgstr "美国中部地区办公室___美国中部___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Eastern US Regional "
-"Office___Eastern US___YES"
-msgstr "美国东部地区办公室___美国东部___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mesoamerica and "
-"Caribbean Regional Office___Mesoamerica and Caribbean___YES"
-msgstr "中美洲和加勒比地区办公室___中美洲和加勒比___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pacific North America "
-"Regional Office___Pacific North America___YES"
-msgstr "太平洋北美洲地区办公室___太平洋北美洲___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Rocky Mountains "
-"Regional Office___Rocky Mountains___YES"
-msgstr "落基山脉地区办公室___落基山脉___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|South America Regional "
-"Office___South America___YES"
-msgstr "南美洲地区办公室___南美洲___是"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern US Regional "
-"Office___Southern US___YES"
-msgstr "美国南部地区办公室___美国南部___是"
-
 #, fuzzy
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
@@ -18563,6 +18519,32 @@ msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
 msgstr ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mongolia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Atlantic Forest and "
+"Central Savannas"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Africa Program"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Latin America Regional "
+"Office"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|North America Regional "
+"Office"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|North Asia Regional "
+"Office"
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/WwfManagingOffices.tsv|"
@@ -29259,6 +29241,61 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central American "
+#~ "Countries___Mesoamerica and Caribbean___YES"
+#~ msgstr "中美洲国家___中美洲和加勒比___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Atlantic "
+#~ "Forest___South America___YES"
+#~ msgstr "大西洋森林___南美洲___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central "
+#~ "Savannas___South America___YES"
+#~ msgstr "中部稀树草原___南美洲___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Alabama___Southern "
+#~ "US___YES"
+#~ msgstr "阿拉巴马州___美国南部___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central US Regional "
+#~ "Office___Central US___YES"
+#~ msgstr "美国中部地区办公室___美国中部___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Eastern US Regional "
+#~ "Office___Eastern US___YES"
+#~ msgstr "美国东部地区办公室___美国东部___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mesoamerica and "
+#~ "Caribbean Regional Office___Mesoamerica and Caribbean___YES"
+#~ msgstr "中美洲和加勒比地区办公室___中美洲和加勒比___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pacific North "
+#~ "America Regional Office___Pacific North America___YES"
+#~ msgstr "太平洋北美洲地区办公室___太平洋北美洲___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Rocky Mountains "
+#~ "Regional Office___Rocky Mountains___YES"
+#~ msgstr "落基山脉地区办公室___落基山脉___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|South America "
+#~ "Regional Office___South America___YES"
+#~ msgstr "南美洲地区办公室___南美洲___是"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern US Regional "
+#~ "Office___Southern US___YES"
+#~ msgstr "美国南部地区办公室___美国南部___是"
 
 #~ msgid ""
 #~ "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sea of Japan "

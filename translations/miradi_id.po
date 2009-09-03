@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 15:07-0500\n"
+"POT-Creation-Date: 2009-09-03 15:20-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -136,13 +136,19 @@ msgstr ""
 "Buat Sasaran baru bila diperlukan, atau gunakan bagian Status Masa Depan "
 "yang baru dari Kelangsungan Target untuk menyimpan data yang sama. "
 
-#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:43
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:44
 msgid ""
 "<html>One or more Overrides (High Level Estimates) have been migrated. "
 "<br><br>Any Who overrides have been converted to Resource Assignments, "
 "<br>and any Budget overrides have been converted to Expenses. <br><br>The "
 "original overrides have been inserted as text into the Details fields,<br>in "
 "case you want to refer to them. You can delete them at any time."
+msgstr ""
+
+#: miradi/source/org/miradi/database/migrations/MigrationsForMiradi3.java:84
+msgid ""
+"<html>An Operating Unit for this project has been <br>superseded. Please "
+"select its replacement on the TNC Tab of the Summary Page.</html>"
 msgstr ""
 
 #: miradi/source/org/miradi/database/DataUpgrader.java:43
@@ -19737,6 +19743,11 @@ msgstr ""
 "\"___\"yayasan pribadi, penggantian hutang dengan konservasi alam\""
 
 msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|(Superseded Operating "
+"Unit)"
+msgstr ""
+
+msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Australia___Asia "
 "Pacific___YES"
 msgstr "Australia___Asia Pasifik___YES"
@@ -19893,11 +19904,6 @@ msgid ""
 msgstr "Negara-negara Karibia___Mesoamerika dan Karibia___YES"
 
 msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central American "
-"Countries___Mesoamerica and Caribbean___YES"
-msgstr "Negara-negara Amerika Tengah___Mesoamerika dan Karibia___YES"
-
-msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mexico___Mesoamerica "
 "and Caribbean___YES"
 msgstr "Meksiko___Mesoamerika dan Karibia___YES"
@@ -19978,16 +19984,6 @@ msgid ""
 msgstr "Amazon___Amerika Selatan___YES"
 
 msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Atlantic Forest___South "
-"America___YES"
-msgstr "Hutan Atlantik___Amerika Selatan___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central "
-"Savannas___South America___YES"
-msgstr "Savana Tengah___Amerika Selatan___YES"
-
-msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Northern Tropical "
 "Andes___South America___YES"
 msgstr "Andes Tropis Utara___Amerika Selatan___YES"
@@ -19996,11 +19992,6 @@ msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern Andes___South "
 "America___YES"
 msgstr "Andes Selatan___Amerika Selatan___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Alabama___Southern "
-"US___YES"
-msgstr "Alabama___AS Selatan___YES"
 
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Arkansas___Southern "
@@ -20052,41 +20043,6 @@ msgid ""
 "Office___Asia Pacific___YES"
 msgstr "Kantor Wilayah Asia Pasifik___Asia Pasifik___YES"
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central US Regional "
-"Office___Central US___YES"
-msgstr "Kantor Wilayah AS Tengah___AS Tengah___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Eastern US Regional "
-"Office___Eastern US___YES"
-msgstr "Kantor Wilayah US Timur___US Timur___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mesoamerica and "
-"Caribbean Regional Office___Mesoamerica and Caribbean___YES"
-msgstr "Kantor Wilayah Mesoamerika dan Karibia___Mesoamerika dan Karibia___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pacific North America "
-"Regional Office___Pacific North America___YES"
-msgstr "Kantor Wilayah Amerika Utara Pasifik___Amerika Utara Pasifik___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Rocky Mountains "
-"Regional Office___Rocky Mountains___YES"
-msgstr "Kantor Wilayah Pegunungan Rocky___Pegunungan Rocky___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|South America Regional "
-"Office___South America___YES"
-msgstr "Kantor Wilayah Amerika Selatan___Amerika Selatan___YES"
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern US Regional "
-"Office___Southern US___YES"
-msgstr "Kantor Wilayah US Selatan___US Selatan___YES"
-
 #, fuzzy
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
@@ -20100,6 +20056,32 @@ msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
 msgstr ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mongolia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Atlantic Forest and "
+"Central Savannas"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Africa Program"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Latin America Regional "
+"Office"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|North America Regional "
+"Office"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|North Asia Regional "
+"Office"
+msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/WwfManagingOffices.tsv|"
@@ -32546,6 +32528,62 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central American "
+#~ "Countries___Mesoamerica and Caribbean___YES"
+#~ msgstr "Negara-negara Amerika Tengah___Mesoamerika dan Karibia___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Atlantic "
+#~ "Forest___South America___YES"
+#~ msgstr "Hutan Atlantik___Amerika Selatan___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central "
+#~ "Savannas___South America___YES"
+#~ msgstr "Savana Tengah___Amerika Selatan___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Alabama___Southern "
+#~ "US___YES"
+#~ msgstr "Alabama___AS Selatan___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Central US Regional "
+#~ "Office___Central US___YES"
+#~ msgstr "Kantor Wilayah AS Tengah___AS Tengah___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Eastern US Regional "
+#~ "Office___Eastern US___YES"
+#~ msgstr "Kantor Wilayah US Timur___US Timur___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mesoamerica and "
+#~ "Caribbean Regional Office___Mesoamerica and Caribbean___YES"
+#~ msgstr ""
+#~ "Kantor Wilayah Mesoamerika dan Karibia___Mesoamerika dan Karibia___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pacific North "
+#~ "America Regional Office___Pacific North America___YES"
+#~ msgstr "Kantor Wilayah Amerika Utara Pasifik___Amerika Utara Pasifik___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Rocky Mountains "
+#~ "Regional Office___Rocky Mountains___YES"
+#~ msgstr "Kantor Wilayah Pegunungan Rocky___Pegunungan Rocky___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|South America "
+#~ "Regional Office___South America___YES"
+#~ msgstr "Kantor Wilayah Amerika Selatan___Amerika Selatan___YES"
+
+#~ msgid ""
+#~ "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern US Regional "
+#~ "Office___Southern US___YES"
+#~ msgstr "Kantor Wilayah US Selatan___US Selatan___YES"
 
 #~ msgid ""
 #~ "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sea of Japan "
