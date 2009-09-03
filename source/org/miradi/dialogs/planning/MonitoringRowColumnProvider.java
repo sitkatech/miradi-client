@@ -35,12 +35,12 @@ public class MonitoringRowColumnProvider implements RowColumnProvider
 	public CodeList getColumnListToShow()
 	{
 		return new CodeList(new String[] {
-				Desire.TAG_FULL_TEXT,
 				Indicator.PSEUDO_TAG_METHODS,
 				Indicator.TAG_PRIORITY,
 				CustomPlanningColumnsQuestion.META_WHO_TOTAL,
 				BaseObject.PSEUDO_TAG_WHEN_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+				Desire.TAG_FULL_TEXT,
 		});
 	}
 

@@ -47,8 +47,8 @@ public class ColumnManager
 	public static CodeList getGoalColumns()
 	{
 		String[] list = {
-			Goal.TAG_FULL_TEXT,
 			Goal.PSEUDO_TAG_FACTOR,
+			Goal.TAG_FULL_TEXT,
 			// % complete,
 			// Budget total,
 		};
@@ -58,8 +58,8 @@ public class ColumnManager
 	public static CodeList getObjectiveColumns()
 	{
 		String[] list = {
-				Objective.TAG_FULL_TEXT,
 				Objective.PSEUDO_TAG_FACTOR,
+				Objective.TAG_FULL_TEXT,
 				// % complete,
 				// Budget total,
 			};
@@ -135,8 +135,8 @@ public class ColumnManager
 	public static CodeList getTargetColumns()
 	{
 		String[] list = {
-				Target.TAG_TEXT,
 				Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
+				Target.TAG_TEXT,
 				};
 		return new CodeList(list);		
 	}
@@ -144,8 +144,8 @@ public class ColumnManager
 	public static CodeList getDirectThreatsColumns()
 	{
 		String[] list = {
-				Cause.TAG_TEXT,
 				Cause.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
+				Cause.TAG_TEXT,
 				};
 		return new CodeList(list);		
 	}
