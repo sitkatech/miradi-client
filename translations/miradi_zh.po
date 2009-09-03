@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 15:20-0500\n"
+"POT-Creation-Date: 2009-09-03 16:20-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -464,7 +464,7 @@ msgstr "RARE"
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:96
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:95
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "大自然保护协会 \t\t"
