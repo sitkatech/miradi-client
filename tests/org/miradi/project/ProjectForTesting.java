@@ -155,7 +155,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		projectTypes.add(TncProjectPlaceTypeQuestion.NON_PLACE_BASED_PROJECT_CODE);
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ASSOCIATED_PROJECTS_TEXT, "Some Associated Projects Text");
 		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CLASSIFICATIONS, "12\tSomeName\tSomeCategory\n13\tAnotherName\tAnotherCategory");		
 	}
 

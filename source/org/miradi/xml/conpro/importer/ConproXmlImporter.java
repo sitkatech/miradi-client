@@ -546,7 +546,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importField(projectSumaryNode, GOAL_COMMENT, metadataRef, ProjectMetadata.TAG_PROJECT_VISION);
 		importField(projectSumaryNode, PLANNING_TEAM_COMMENT, metadataRef, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
 		importField(projectSumaryNode, LESSONS_LEARNED, metadataRef, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
-		importField(projectSumaryNode, RELATED_PROJECTS, tncProjectDataRef, TncProjectData.TAG_ASSOCIATED_PROJECTS_TEXT);
+		importField(projectSumaryNode, RELATED_PROJECTS, metadataRef, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importField(projectSumaryNode, PARENT_CHILD, tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		importThreatRatingValueInMode(projectSumaryNode, metadataRef);
 		importTeamMembers(projectSumaryNode, metadataRef);

@@ -131,7 +131,6 @@ public class TncProjectData extends BaseObject
 		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
 		projectTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
 		parentChild = new StringData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		associatedProjectsText = new StringData(TAG_ASSOCIATED_PROJECTS_TEXT);
 		classifications = new StringData(TAG_CLASSIFICATIONS);
 		
 		pseudoClassifications = new PseudoStringData(PSEUDO_TAG_CLASSIFICATIONS_AS_MULTILINE_TEXT);
@@ -139,7 +138,6 @@ public class TncProjectData extends BaseObject
 		addField(projectSharingCode);
 		addField(projectTypes);
 		addField(parentChild);
-		addField(associatedProjectsText);
 		addField(classifications);
 		
 		addField(pseudoClassifications);
@@ -150,7 +148,6 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
 	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectPlaceTypes";
 	public final static String TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT = "ConProParentChildProjectText";
-	public final static String TAG_ASSOCIATED_PROJECTS_TEXT = "AssociatedProjectsText";
 	public final static String TAG_CLASSIFICATIONS = "Classifications";
 	
 	public final static String PSEUDO_TAG_CLASSIFICATIONS_AS_MULTILINE_TEXT = "PsuedoClassificationsAsMultilineText";
@@ -158,7 +155,6 @@ public class TncProjectData extends BaseObject
 	public StringData projectSharingCode;
 	public CodeListData projectTypes;
 	public StringData parentChild;
-	public StringData associatedProjectsText;
 	public StringData classifications;
 	
 	public PseudoStringData pseudoClassifications;
