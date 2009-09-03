@@ -2,7 +2,7 @@
 30424	Aegean Drainages	5	temperate coastal rivers
 30103	Alaska & Canada Pacific Coastal	5	temperate coastal rivers
 30101	Alaskan Coastal	11	polar freshwaters
-30420	Albania	5	temperate coastal rivers
+30420	Southeast Adriatic Drainages	5	temperate coastal rivers
 30541	Albertine Highlands	3	montane freshwaters
 30577	Amatolo - Winterberg Highlands	3	montane freshwaters
 30323	Amazonas Estuary & Coastal Drainages	2	large river deltas
@@ -114,7 +114,7 @@
 30709	Ganges Delta & Plain	2	large river deltas
 30710	Ganges Himalayan Foothills	3	montane freshwaters
 30131	Gila	4	xeric freshwaters and endorheic (closed) basins
-30806	Great Artesian Basin	4	xeric freshwaters and endorheic (closed) basins
+30806	Lake Eyre Basin	4	xeric freshwaters and endorheic (closed) basins
 30998	Greenland	11	polar freshwaters
 30173	Grijalva - Usumacinta	8	tropical and subtropical coastal rivers
 30319	Guapore - Itenez	9	tropical and subtropical upland rivers
@@ -156,7 +156,7 @@
 30803	Kimberley	8	tropical and subtropical coastal rivers
 30609	Kolyma	11	polar freshwaters
 30612	Koryakia	5	temperate coastal rivers
-30728	Kretie - Stung Treng (Mekong)	10	tropical and subtropical floodplain rivers and wetland complexes
+30728	Kratie - Stung Treng (Mekong)	10	tropical and subtropical floodplain rivers and wetland complexes
 30428	Kuban	5	temperate coastal rivers
 30434	Kura - South Caspian Drainages	7	temperate floodplain rivers and wetlands
 30334	Laguna dos Patos	5	temperate coastal rivers
@@ -185,11 +185,11 @@
 30722	Lower & Middle Salween	10	tropical and subtropical floodplain rivers and wetland complexes
 30626	Lower & Middle Syr Darya	6	temperate upland rivers
 30616	Lower Amur	7	temperate floodplain rivers and wetlands
-30719	Lower Brahmaputra - Arakan Coast	8	tropical and subtropical coastal rivers
+30719	Chin Hills - Arakan Coast	8	tropical and subtropical coastal rivers
 30550	Lower Congo	10	tropical and subtropical floodplain rivers and wetland complexes
 30549	Lower Congo Rapids	10	tropical and subtropical floodplain rivers and wetland complexes
 30636	Lower Huang He	7	temperate floodplain rivers and wetlands
-30726	Lower Lan Cang (Mekong)	10	tropical and subtropical floodplain rivers and wetland complexes
+30726	Lower Lancang (Mekong)	10	tropical and subtropical floodplain rivers and wetland complexes
 30105	Lower Mackenzie	11	polar freshwaters
 30149	Lower Mississippi	7	temperate floodplain rivers and wetlands
 30505	Lower Niger - Benue	10	tropical and subtropical floodplain rivers and wetland complexes
@@ -260,7 +260,7 @@
 30735	Northern Central Sumatra - Western Malaysia	8	tropical and subtropical coastal rivers
 30713	Northern Deccan Plateau	10	tropical and subtropical floodplain rivers and wetland complexes
 30528	Northern Eastern Rift	4	xeric freshwaters and endorheic (closed) basins
-30533	Northern Gulf of Guinea Drainages - Bioko	8	tropical and subtropical coastal rivers
+30533	Southern Gulf of Guinea Drainages - Bioko	8	tropical and subtropical coastal rivers
 30451	Northern Hormuz Drainages	5	temperate coastal rivers
 30755	Northern Philippine Islands	8	tropical and subtropical coastal rivers
 30511	Northern Upper Guinea	8	tropical and subtropical coastal rivers
@@ -347,7 +347,7 @@
 30738	Southern Central Sumatra	8	tropical and subtropical coastal rivers
 30714	Southern Deccan Plateau	10	tropical and subtropical floodplain rivers and wetland complexes
 30566	Southern Eastern Rift	4	xeric freshwaters and endorheic (closed) basins
-30518	Southern Gulf of Guinia Drainages	8	tropical and subtropical coastal rivers
+30518	Northern Gulf of Guinea Drainages	8	tropical and subtropical coastal rivers
 30110	Southern Hudson Bay	5	temperate coastal rivers
 30413	Southern Iberia	7	temperate floodplain rivers and wetlands
 30571	Southern Kalahari	4	xeric freshwaters and endorheic (closed) basins
@@ -391,7 +391,7 @@
 30634	Upper Huang He Corridor	3	montane freshwaters
 30706	Upper Indus	3	montane freshwaters
 30603	Upper Irtysh	6	temperate upland rivers
-30724	Upper Lan Cang (Mekong)	9	tropical and subtropical upland rivers
+30724	Upper Lancang (Mekong)	9	tropical and subtropical upland rivers
 30545	Upper Lualaba	10	tropical and subtropical floodplain rivers and wetland complexes
 30104	Upper Mackenzie	7	temperate floodplain rivers and wetlands
 30148	Upper Mississippi	7	temperate floodplain rivers and wetlands
