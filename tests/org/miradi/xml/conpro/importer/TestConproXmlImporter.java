@@ -39,7 +39,7 @@ import org.miradi.project.ProjectForTesting;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.utils.CodeList;
-import org.miradi.xml.conpro.exporter.ConproXmlExporterVersion;
+import org.miradi.xml.conpro.exporter.ConproXmlExporter;
 
 public class TestConproXmlImporter extends TestCaseWithProject
 {
@@ -182,7 +182,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 	private void exportProject(File afterXmlOutFile, ProjectForTesting projectToFill1) throws Exception
 	{
-		new ConproXmlExporterVersion(projectToFill1).export(afterXmlOutFile);
+		new ConproXmlExporter(projectToFill1).export(afterXmlOutFile);
 	}
 
 	private String convertFileContentToString(File fileToConvert) throws Exception
@@ -245,7 +245,7 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	{
 		try
 		{
-			new ConproXmlExporterVersion(getProject()).export(beforeXmlOutFile);
+			new ConproXmlExporter(getProject()).export(beforeXmlOutFile);
 		}
 		catch (Exception e)
 		{

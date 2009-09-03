@@ -93,7 +93,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		File tempXmlOutFile = createTempFileFromName("conproVersion2.xml");
 		try
 		{
-			new ConproXmlExporterVersion(getProject()).export(tempXmlOutFile);
+			new ConproXmlExporter(getProject()).export(tempXmlOutFile);
 			assertTrue("did not validate?", new ConProMiradiXmlValidator().isValid(new FileInputStream(tempXmlOutFile)));
 		}
 		finally
@@ -111,7 +111,7 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		File tempXmlOutFile = createTempFileFromName("conproVersion2.xml");
 		try
 		{
-			new ConproXmlExporterVersion(getProject()).export(tempXmlOutFile);
+			new ConproXmlExporter(getProject()).export(tempXmlOutFile);
 			fail("should not export non selectable IUCN code?");
 		}
 		catch (Exception ignoreException)
