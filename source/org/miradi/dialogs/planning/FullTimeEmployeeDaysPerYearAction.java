@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,6 +42,7 @@ import org.miradi.dialogs.planning.propertiesPanel.AssignmentDateUnitsTableModel
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeMultiTableModel;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.dialogs.planning.upperPanel.PlanningUpperTableModelInterface;
+import org.miradi.layout.OneColumnPanel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -72,8 +74,15 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		dialog.setButtons(buttons);
 		dialog.setModal(true);
 		dialog.setSimpleCloseButton(cancelButton);
-		dialog.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
-		dialog.add(createEditPanel(), BorderLayout.CENTER);
+		
+		OneColumnPanel panel = new OneColumnPanel();
+		panel.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
+		panel.add(createEditPanel(), BorderLayout.CENTER);
+		errorField = new PanelTextField(50);
+		errorField.setEditable(false);
+		panel.add(errorField, BorderLayout.AFTER_LAST_LINE);
+		dialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
+		
 		dialog.getRootPane().setDefaultButton(insertButton);
 		percentField.selectAll();
 		percentField.requestFocusInWindow();
@@ -176,12 +185,32 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	    		 if (0.0 <= parsed && parsed <= 1.0)
 	    		 {
 	    			 super.insertString(offset, str, attr);
+	    			 clearErrorField();
+	    			 return;
 	    		 }
+	    		 
+	    		 displayError();
 	    	 }
 	    	 catch (NumberFormatException ignoreException)
 	    	 {
+	    		 displayError();
 	    	 }
 	     }
+
+		private void clearErrorField()
+		{
+			if (errorField != null)
+			{
+				 errorField.setText("");
+				 errorField.setBackground(dialog.getBackground());
+			}
+		}
+
+		private void displayError()
+		{
+			errorField.setBackground(Color.RED);
+			errorField.setText(EAM.text("Must be between 0.00 and 1.00"));
+		}
 	}
 	
 	class InsertButtonHandler implements ActionListener
@@ -203,5 +232,6 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	private PlanningUpperMultiTable multiTable;
 	private MainWindow mainWindow;
 	private PanelTextField percentField;
+	private PanelTextField errorField;
 	private DialogWithButtonBar dialog;
 }
