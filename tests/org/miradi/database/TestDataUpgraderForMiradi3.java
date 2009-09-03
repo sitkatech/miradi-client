@@ -24,11 +24,13 @@ import java.util.Vector;
 
 import org.miradi.database.migrations.ConvertHighLevelEstimatesIntoAssignments;
 import org.miradi.database.migrations.MigrationsForMiradi3;
+import org.miradi.database.migrations.UpdateTncOpertingUnitMigration;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.EnhancedJsonArray;
@@ -39,6 +41,54 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	public TestDataUpgraderForMiradi3(String name)
 	{
 		super(name);
+	}
+	
+	public void testUpdateTncOperatingUnitCodesWithNoOparatingUnitCodes() throws Exception
+	{
+		String projectMetadataString = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProgressReportRefs\":\"\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1251992084820\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		File jsonDir = createJsonDir();
+		
+		final int PROJECT_METADATA_TYPE = 11;
+		int[] projectMetadataIds = createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, new String[]{projectMetadataString, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		CodeList operatingUnitCodesRemoved = UpdateTncOpertingUnitMigration.updateTncOperatingUnitsList();
+		assertTrue("operating unit codes were removed?", operatingUnitCodesRemoved.size() == 0);
+		
+		File projectMetadataDir = DataUpgrader.getObjectsDir(jsonDir, PROJECT_METADATA_TYPE);
+		File projectMetadataFile = new File(projectMetadataDir, Integer.toString(projectMetadataIds[0]));
+		EnhancedJsonObject projectMetadataJson = new EnhancedJsonObject(readFile(projectMetadataFile));
+		final String TNC_OPERATING_UNIT_LIST_FIELD_NAME = "TNC.OperatingUnitList";
+		assertTrue("should contain Tnc Operating Unit List?", projectMetadataJson.has(TNC_OPERATING_UNIT_LIST_FIELD_NAME));
+		assertEquals("should not have updated codes?", 0, projectMetadataJson.getCodeList(TNC_OPERATING_UNIT_LIST_FIELD_NAME).size());
+	}
+	
+	public void testUpdateTncOperatingUnitCodes() throws Exception
+	{
+		String projectMetadataString = "{\"FullTimeEmployeeDaysPerYear\":\"\",\"NextSteps\":\"\",\"FiscalYearStart\":\"\",\"BudgetSecuredPercent\":\"\",\"TNC.DatabaseDownloadDate\":\"\",\"SiteMapReference\":\"\",\"Countries\":\"\",\"StartDate\":\"\",\"Municipalities\":\"\",\"ProtectedAreaCategoryNotes\":\"\",\"LegislativeDistricts\":\"\",\"DiagramFontFamily\":\"\",\"ProtectedAreaCategories\":\"\",\"KeyFundingSources\":\"\",\"TotalBudgetForFunding\":\"\",\"LocationDetail\":\"\",\"TNC.LessonsLearned\":\"\",\"ProjectName\":\"\",\"AssignmentIds\":\"\",\"DiagramFontSize\":\"\",\"ProjectLatitude\":\"0.0\",\"TNC.OperatingUnitList\":\"{\\\"Codes\\\":[\\\"AL_US\\\",\\\"ATLFO\\\",\\\"CAMER\\\",\\\"CSAVA\\\",\\\"CUSRO\\\",\\\"EUSRO\\\",\\\"MCARO\\\",\\\"PNWRO\\\",\\\"RMTRO\\\",\\\"SAMRO\\\",\\\"SUSRO\\\"]}\",\"CurrencyType\":\"\",\"LocationComments\":\"\",\"RedListSpecies\":\"\",\"TargetMode\":\"\",\"ProjectLongitude\":\"0.0\",\"Id\":0,\"ScopeComments\":\"\",\"ExpectedEndDate\":\"\",\"CurrencySymbol\":\"$\",\"StateAndProvinces\":\"\",\"ProjectStatus\":\"\",\"OtherOrgProjectNumber\":\"\",\"CurrencyDecimalPlaces\":\"\",\"FinancialComments\":\"\",\"SocialContext\":\"\",\"ExpenseRefs\":\"\",\"TNC.PlanningTeamComment\":\"\",\"TNC.FreshwaterEcoRegion\":\"\",\"CurrentWizardScreenName\":\"\",\"TNC.TerrestrialEcoRegion\":\"\",\"WorkPlanEndDate\":\"\",\"ProjectDescription\":\"\",\"ThreatRatingMode\":\"\",\"PlanningComments\":\"\",\"ProjectURL\":\"\",\"WorkPlanTimeUnit\":\"YEARLY\",\"ProgressReportRefs\":\"\",\"ProjectScope\":\"\",\"OtherOrgRelatedProjects\":\"\",\"TNC.SizeInHectares\":\"\",\"TNC.WorkbookVersionNumber\":\"\",\"HumanPopulation\":\"\",\"OtherNotableSpecies\":\"\",\"DataEffectiveDate\":\"\",\"ProjectVision\":\"\",\"WorkPlanStartDate\":\"\",\"HumanPopulationNotes\":\"\",\"ShortProjectScope\":\"\",\"TNC.MarineEcoRegion\":\"\",\"TimeStampModified\":\"1251992084820\",\"ProjectAreaNote\":\"\",\"XenodataRefs\":\"\",\"TNC.WorkbookVersionDate\":\"\",\"Label\":\"\",\"ProjectArea\":\"\"}";
+		File jsonDir = createJsonDir();
+		
+		final int PROJECT_METADATA_TYPE = 11;
+		int[] projectMetadataIds = createAndPopulateObjectDir(jsonDir, PROJECT_METADATA_TYPE, new String[]{projectMetadataString, });
+		
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		CodeList operatingUnitCodesRemoved = UpdateTncOpertingUnitMigration.updateTncOperatingUnitsList();
+		assertTrue("no operating unit codes were removed?", operatingUnitCodesRemoved.size() > 0);
+		
+		File projectMetadataDir = DataUpgrader.getObjectsDir(jsonDir, PROJECT_METADATA_TYPE);
+		File projectMetadataFile = new File(projectMetadataDir, Integer.toString(projectMetadataIds[0]));
+		EnhancedJsonObject projectMetadataJson = new EnhancedJsonObject(readFile(projectMetadataFile));
+		final String TNC_OPERATING_UNIT_LIST_FIELD_NAME = "TNC.OperatingUnitList";
+		assertTrue("should contain Tnc Operating Unit List?", projectMetadataJson.has(TNC_OPERATING_UNIT_LIST_FIELD_NAME));
+		
+		CodeList tncOperatingUnitCodes = projectMetadataJson.getCodeList(TNC_OPERATING_UNIT_LIST_FIELD_NAME);
+		final String TNC_OPERATING_UNITS_OBSOLETE_CODE = "OBSOLETE";
+		assertTrue("updated operating unit codes does not contain obsolete code?", tncOperatingUnitCodes.contains(TNC_OPERATING_UNITS_OBSOLETE_CODE));
+		String[] oldRemovedCodes = new String[]{"AL_US", "ATLFO", "CAMER", "CSAVA", "CUSRO", "EUSRO", "MCARO", "PNWRO", "RMTRO", "SAMRO", "SUSRO", };
+		for (int index = 0; index < oldRemovedCodes.length; ++index)
+		{
+			assertFalse("new codes should not contain old value " + oldRemovedCodes[index] + "?", tncOperatingUnitCodes.contains(oldRemovedCodes[index]));
+		}
 	}
 	
 	public void testConvertMaterialToPersonCodeConverter() throws Exception

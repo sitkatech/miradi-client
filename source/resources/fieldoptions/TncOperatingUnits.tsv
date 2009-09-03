@@ -1,3 +1,4 @@
+OBSOLETE	(Superseded Operating Unit)	
 AUSTR	Australia	Asia Pacific	YES
 CHINA	China	Asia Pacific	YES
 INDON	Indonesia	Asia Pacific	YES
@@ -30,7 +31,6 @@ VT_US	Vermont	Eastern US	YES
 VA_US	Virginia	Eastern US	YES
 WV_US	West Virginia	Eastern US	YES
 CARIB	Caribbean Countries	Mesoamerica and Caribbean	YES
-CAMER	Central American Countries	Mesoamerica and Caribbean	YES
 MEXIC	Mexico	Mesoamerica and Caribbean	YES
 AK_US	Alaska	Pacific North America	YES
 CA_US	California	Pacific North America	YES
@@ -47,11 +47,8 @@ NM_US	New Mexico	Rocky Mountains	YES
 UT_US	Utah	Rocky Mountains	YES
 WY_US	Wyoming	Rocky Mountains	YES
 AMAZO	Amazon	South America	YES
-ATLFO	Atlantic Forest	South America	YES
-CSAVA	Central Savannas	South America	YES
 NANDE	Northern Tropical Andes	South America	YES
 SANDE	Southern Andes	South America	YES
-AL_US	Alabama	Southern US	YES
 AR_US	Arkansas	Southern US	YES
 FL_US	Florida	Southern US	YES
 GA_US	Georgia	Southern US	YES
@@ -62,12 +59,11 @@ NC_US	North Carolina	Southern US	YES
 SC_US	South Carolina	Southern US	YES
 TN_US	Tennessee	Southern US	YES
 APARO	Asia Pacific Regional Office	Asia Pacific	YES
-CUSRO	Central US Regional Office	Central US	YES
-EUSRO	Eastern US Regional Office	Eastern US	YES
-MCARO	Mesoamerica and Caribbean Regional Office	Mesoamerica and Caribbean	YES
-PNWRO	Pacific North America Regional Office	Pacific North America	YES
-RMTRO	Rocky Mountains Regional Office	Rocky Mountains	YES
-SAMRO	South America Regional Office	South America	YES
-SUSRO	Southern US Regional Office	Southern US	YES
 WORLD	Worldwide Office	Worldwide Office	YES
 OTHER	Non-TNC	Non-TNC	YES 
+MONGO	Mongolia
+ATLCS	Atlantic Forest and Central Savannas
+AFRRO	Africa Program
+LAMRO	Latin America Regional Office
+NAMRO	North America Regional Office
+NASRO	North Asia Regional Office

@@ -21,6 +21,7 @@ package org.miradi.database.migrations;
 
 import org.miradi.database.DataUpgrader;
 import org.miradi.main.EAM;
+import org.miradi.utils.CodeList;
 
 public class MigrationsForMiradi3
 {
@@ -74,5 +75,15 @@ public class MigrationsForMiradi3
 	{
 		MaterialToPersonCodeConverterMigration.convertMaterialToPersonCode();
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 47);
+	}
+	
+	public static void upgradeToVersion48() throws Exception
+	{
+		CodeList operatingUnitCodesRemoved = UpdateTncOpertingUnitMigration.updateTncOperatingUnitsList();
+		if (operatingUnitCodesRemoved.size() > 0)
+			EAM.notifyDialog(EAM.text("<html>An Operating Unit for this project has been <br>" +
+									  "superseded. Please select its replacement on the TNC Tab of the Summary Page.</html>"));
+	
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 48);
 	}
 }

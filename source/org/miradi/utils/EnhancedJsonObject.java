@@ -276,6 +276,19 @@ public class EnhancedJsonObject extends JSONObject
 		return BaseId.INVALID;
 	}
 	
+	public CodeList getCodeList(String tag) throws Exception
+	{
+		return new CodeList(getString(tag));
+	}
+	
+	public CodeList optCodeList(String tag) throws Exception
+	{
+		if (has(tag))
+			return getCodeList(tag);
+		
+		return new CodeList(); 
+	}
+	
 	public boolean equals(Object rawOther)
 	{
 		if(! (rawOther instanceof EnhancedJsonObject))
