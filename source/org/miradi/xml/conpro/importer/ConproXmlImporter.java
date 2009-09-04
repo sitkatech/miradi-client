@@ -555,33 +555,35 @@ public class ConproXmlImporter implements ConProMiradiXml
 		setData(metadataRef, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, extractEcoregions(allEcoregionCodes, TncTerrestrialEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TncMarineEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TncFreshwaterEcoRegionQuestion.class).toString());
+		
+		CodeList organizationalPriorityCodes = extractClassifications(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncOrganizationalPrioritiesMap());
+		importField(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
+		
+		CodeList projectPlaceTypeCodes = extractClassifications(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncProjectPlaceTypeMap());
+		importField(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectPlaceTypeCodes.toString());
+		
 		importField(projectSumaryNode, EXPORT_DATE, metadataRef, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, COUNTRIES, COUNTRY_CODE}), metadataRef, ProjectMetadata.TAG_COUNTRIES);
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 
-//TODO remove this code once classification has been dealt with thought types and priorities
-//	private String extractClassifications(Node projectSumaryNode) throws Exception
-//	{
-//		NodeList classficiationNodes = getNodes(projectSumaryNode, CLASSIFICATIONS, CLASSIFICATION);
-//		final String NEW_LINE = "\n";
-//		String appendedClassifications = "";
-//		for (int nodeIndex = 0; nodeIndex < classficiationNodes.getLength(); ++nodeIndex) 
-//		{
-//			Node classficiationNode = classficiationNodes.item(nodeIndex);
-//			appendedClassifications += getPathData(classficiationNode, new String[]{CLASSIFICATION_ID, });
-//			appendedClassifications += DelimitedFileLoader.TAB;
-//
-//			appendedClassifications += getPathData(classficiationNode, new String[]{CLASSIFICATION_NAME, });
-//			appendedClassifications += DelimitedFileLoader.TAB;
-//			
-//			appendedClassifications += getPathData(classficiationNode, new String[]{CLASSIFICATION_CATEGORY_NAME, });
-//			appendedClassifications += NEW_LINE;
-//		}
-//		
-//		return appendedClassifications;
-//	}
+	private CodeList extractClassifications(Node projectSumaryNode, HashMap<String, String> classificationRelatedMap) throws Exception
+	{
+		CodeList codes = new CodeList();		
+		NodeList classficiationIdNodes = getNodes(projectSumaryNode, CLASSIFICATIONS, CLASSIFICATION_ID);
+		for (int nodeIndex = 0; nodeIndex < classficiationIdNodes.getLength(); ++nodeIndex) 
+		{
+			Node classficiationIdNode = classficiationIdNodes.item(nodeIndex);
+			String classificationId = getSafeNodeContent(classficiationIdNode).trim();
+			if (classificationRelatedMap.containsKey(classificationId))
+			{
+				codes.add(classificationRelatedMap.get(classificationId));
+			}
+		}
+		
+		return codes;
+	}
 
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
 	{

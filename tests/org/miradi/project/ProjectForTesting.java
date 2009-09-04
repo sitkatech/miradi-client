@@ -85,6 +85,7 @@ import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
@@ -150,11 +151,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createConproXenodata());
 		
 		ORef tncProjectDataRef = getSingletonObjectRef(TncProjectData.getObjectType());
-		CodeList projectTypes = new CodeList();
-		projectTypes.add(TncProjectPlaceTypeQuestion.MULTI_PLACE_BASED_PROJECT_CODE);
-		projectTypes.add(TncProjectPlaceTypeQuestion.NON_PLACE_BASED_PROJECT_CODE);
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectTypes.toString());
-		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");		
+
+		TncProjectPlaceTypeQuestion projectPlaceTypeQuestion = new TncProjectPlaceTypeQuestion();
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectPlaceTypeQuestion.getAllCodes().toString());
+		
+		TncOrganizationalPrioritiesQuestion organiziationalPrioritiesQuestion = new TncOrganizationalPrioritiesQuestion();
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organiziationalPrioritiesQuestion.getAllCodes().toString());
+		
+		fillObjectUsingCommand(tncProjectDataRef, TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT, "Some Parent Child Value");
 	}
 
 	public void setSingleYearProjectDate(int singleYear) throws Exception

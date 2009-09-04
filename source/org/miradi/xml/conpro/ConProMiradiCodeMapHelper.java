@@ -28,6 +28,8 @@ import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -112,6 +114,19 @@ public class ConProMiradiCodeMapHelper
 		threatRatingMode = new HashMap<String, String>();
 		threatRatingMode.put(ThreatRatingModeChoiceQuestion.SIMPLE_BASED_CODE, "true");
 		threatRatingMode.put(ThreatRatingModeChoiceQuestion.STRESS_BASED_CODE, "false");
+		
+		tncProjectPlaceTypesMap = new HashMap<String, String>();
+		tncProjectPlaceTypesMap.put(TncProjectPlaceTypeQuestion.SINGLE_PLACE_BASED_PROJECT_CODE, "13");
+		tncProjectPlaceTypesMap.put(TncProjectPlaceTypeQuestion.MULTI_PLACE_BASED_PROJECT_CODE, "14");
+		tncProjectPlaceTypesMap.put(TncProjectPlaceTypeQuestion.NON_PLACE_BASED_PROJECT_CODE, "15");
+		
+		tncOrganizationalPrioritiesMap = new HashMap<String, String>();
+		tncOrganizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.CAPITAL_CAMPAIGN_CODE, "7");
+		tncOrganizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.REGIONAL_PRIORITY_CODE, "8");
+		tncOrganizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.FOCAL_AREA_CLIMATE_CODE, "9");
+		tncOrganizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.FOCAL_AREA_MARINE_CODE, "10");
+		tncOrganizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.FOCAL_AREA_FRESHWATER_CODE, "11");
+		tncOrganizationalPrioritiesMap.put(TncOrganizationalPrioritiesQuestion.FOCAL_AREA_PROTECTED_AREAS_CODE, "12");
 	}
 	
 	public static String getSafeXmlCode(HashMap<String, String> map, String code)
@@ -166,6 +181,16 @@ public class ConProMiradiCodeMapHelper
 	public HashMap<String, String> getConProToMiradiThreatRatingModeMap()
 	{
 		return reverseMap(threatRatingMode);
+	}
+	
+	public HashMap<String, String> getConProToMiradiTncProjectPlaceTypeMap()
+	{
+		return reverseMap(tncProjectPlaceTypesMap);
+	}
+	
+	public HashMap<String, String> getConProToMiradiTncOrganizationalPrioritiesMap()
+	{
+		return reverseMap(tncOrganizationalPrioritiesMap);
 	}
 	
 	public HashMap<String, String> getConProToMiradiProgressStatusMap()
@@ -256,6 +281,16 @@ public class ConProMiradiCodeMapHelper
 		return threatRatingMode;
 	}
 	
+	public HashMap<String, String> getMiradiToConProTncProjectPlaceTypesMap()
+	{
+		return tncProjectPlaceTypesMap;
+	}
+	
+	public HashMap<String, String> getMiradiToConProTncOrganizationalPrioritiesMap()
+	{
+		return tncOrganizationalPrioritiesMap;
+	}
+	
 	private HashMap<String, String> progressStatusMap;
 	private HashMap<String, String> rankingMap;
 	private HashMap<String, String> habitatCodeMap;
@@ -268,6 +303,8 @@ public class ConProMiradiCodeMapHelper
 	private HashMap<String, String> trendMap;
 	private HashMap<String, String> teamRolesMap;
 	private HashMap<String, String> threatRatingMode;
+	private HashMap<String, String> tncProjectPlaceTypesMap;
+	private HashMap<String, String> tncOrganizationalPrioritiesMap;
 	
 	private static final String CONPRO_STATUS_NOT_SPECIFIED = "Not Specified";
 	private static final String CONPRO_STATUS_PLANNED_VALUE = "Planned";

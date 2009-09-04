@@ -28,6 +28,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class TncProjectData extends BaseObject
@@ -41,6 +42,16 @@ public class TncProjectData extends BaseObject
 	public TncProjectData(ObjectManager objectManager, int idAsInt, EnhancedJsonObject jsonObject) throws Exception 
 	{
 		super(objectManager, new BaseId(idAsInt), jsonObject);
+	}
+	
+	public CodeList getOrganizationalPriorityCodes()
+	{
+		return organizationalPriorities.getCodeList();
+	}
+	
+	public CodeList getProjectPlaceTypeCodes()
+	{
+		return projectPlaceTypes.getCodeList();
 	}
 	
 	public int getType()
@@ -83,12 +94,12 @@ public class TncProjectData extends BaseObject
 		super.clear();
 		
 		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
-		projectTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
+		projectPlaceTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
 		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		parentChild = new StringData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		
 		addField(projectSharingCode);
-		addField(projectTypes);
+		addField(projectPlaceTypes);
 		addField(organizationalPriorities);
 		addField(parentChild);
 	}
@@ -101,7 +112,7 @@ public class TncProjectData extends BaseObject
 	public final static String TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT = "ConProParentChildProjectText";
 	
 	public StringData projectSharingCode;
-	public CodeListData projectTypes;
+	public CodeListData projectPlaceTypes;
 	public CodeListData organizationalPriorities;
 	public StringData parentChild;
 }

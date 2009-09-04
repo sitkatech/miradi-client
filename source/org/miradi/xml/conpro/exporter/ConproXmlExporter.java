@@ -816,6 +816,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeEcoregionCodes(out);
 			writeCodeListElements(out, COUNTRIES, COUNTRY_CODE, getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
 			writeCodeListElements(out, OUS, OU_CODE, getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+			writeClassifications(out);
 			
 			writeElement(out, EXPORTER_NAME, MIRADI);
 			out.writeln();
@@ -833,29 +834,26 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalElement(out, STRESSLESS_THREAT_RANKING, threatRatingMode);
 	}
 
-//TODO remove commented code when classification issues have been resolved.  
-//	private void writeClassifications(UnicodeWriter out) throws Exception
-//	{
-//		writeStartElement(out, CLASSIFICATIONS);
-//		
-//		String rawClassifications = getTncProjectData().getClassifications();
-//		Vector<Vector<String>> classifications = new DelimitedFileLoader().getDelimitedContents(new StringReader(rawClassifications));
-//		final int CLASSIFICATION_ID_INDEX = 0;
-//		final int CLASSIFICATION_NAME_INDEX = 1;
-//		final int CLASSIFICATION_CATEGORY_NAME_INDEX = 2;
-//		for(Vector<String> row : classifications)
-//		{
-//			writeStartElement(out, CLASSIFICATION);
-//			
-//			writeOptionalElement(out, CLASSIFICATION_ID, row.get(CLASSIFICATION_ID_INDEX));
-//			writeOptionalElement(out, CLASSIFICATION_NAME, row.get(CLASSIFICATION_NAME_INDEX));
-//			writeOptionalElement(out, CLASSIFICATION_CATEGORY_NAME, row.get(CLASSIFICATION_CATEGORY_NAME_INDEX));
-//			
-//			writeEndElement(out, CLASSIFICATION);
-//		}
-//		
-//		writeEndElement(out, CLASSIFICATIONS);
-//	}
+	private void writeClassifications(UnicodeWriter out) throws Exception
+	{
+		writeStartElement(out, CLASSIFICATIONS);
+		
+		HashMap<String, String> classificationRelatedMiradiToConproMap = new HashMap<String, String>();
+		classificationRelatedMiradiToConproMap.putAll(getCodeMapHelper().getMiradiToConProTncOrganizationalPrioritiesMap());
+		classificationRelatedMiradiToConproMap.putAll(getCodeMapHelper().getMiradiToConProTncProjectPlaceTypesMap());
+		
+		TncProjectData tncProjectData = getTncProjectData();
+		CodeList classificationRelatedCodes = new CodeList();
+		classificationRelatedCodes.addAll(tncProjectData.getOrganizationalPriorityCodes());
+		classificationRelatedCodes.addAll(tncProjectData.getProjectPlaceTypeCodes());
+		for(int index = 0; index < classificationRelatedCodes.size(); ++index)
+		{
+			String code = classificationRelatedCodes.get(index);
+			writeCodeElement(out, CLASSIFICATION_ID, code, classificationRelatedMiradiToConproMap);
+		}
+		
+		writeEndElement(out, CLASSIFICATIONS);
+	}
 
 	private String getConcatenatedProjectDescriptionAndScope()
 	{
