@@ -41,7 +41,7 @@ public class TestProjectMetadata extends TestCaseWithProject
 		verifyDataField(ProjectMetadata.TAG_START_DATE, "2006-05-22");
 		verifyDataField(ProjectMetadata.TAG_EXPECTED_END_DATE, "2006-05-22");
 		verifyDataField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
-		verifyDataField(ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES, "24.3");
+		verifyDataField(ProjectMetadata.TAG_PROJECT_AREA, "24.3");
 	}
 	
 	public void testTncDataFields() throws Exception

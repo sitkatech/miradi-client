@@ -539,7 +539,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importProjectId(projectSumaryNode, metadataRef);
 		importField(projectSumaryNode, START_DATE, metadataRef, ProjectMetadata.TAG_START_DATE);
 		importField(projectSumaryNode, DATA_EFFECTIVE_DATE, metadataRef, ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
-		importField(projectSumaryNode, AREA_SIZE, metadataRef, ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES);	
+		importField(projectSumaryNode, AREA_SIZE, metadataRef, ProjectMetadata.TAG_PROJECT_AREA);	
 		importField(projectSumaryNode, new String[]{GEOSPATIAL_LOCATION, LATITUDE}, metadataRef, ProjectMetadata.TAG_PROJECT_LATITUDE);
 		importField(projectSumaryNode, new String[]{GEOSPATIAL_LOCATION, LONGITUDE}, metadataRef, ProjectMetadata.TAG_PROJECT_LONGITUDE);
 		importField(projectSumaryNode, DESCRIPTION_COMMENT, metadataRef, ProjectMetadata.TAG_PROJECT_SCOPE);
