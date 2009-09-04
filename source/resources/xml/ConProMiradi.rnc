@@ -1,9 +1,9 @@
 # $LastChangedBy: ecoffman@tnc.org $
-# $LastChangedDate: 2009-08-28 14:13:35 -0400 (Fri, 28 Aug 2009) $
-# $LastChangedRevision: 61 $
+# $LastChangedDate: 2009-09-03 09:43:50 -0400 (Thu, 03 Sep 2009) $
+# $LastChangedRevision: 62 $
 #
 
-namespace cp = "http://services.tnc.org/schema/conservation-project/6"
+namespace cp = "http://services.tnc.org/schema/conservation-project/7"
 
 #
 start = conservation_project.element
@@ -77,11 +77,7 @@ project_summary.element =
 #
 classifications.element =
     element cp:classifications {
-        element cp:classification {
-            element cp:classification_category_name { string_with_collapsed_whitespace }
-            & element cp:classification_id { vocabulary_id }
-            & element cp:classification_name { string_with_collapsed_whitespace }
-        }*
+        element cp:classification_id { vocabulary_id }*
     }?
 #
 project_id.element =

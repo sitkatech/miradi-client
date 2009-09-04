@@ -23,7 +23,7 @@ public interface ConProMiradiXml
 {
 	public static final String CONSERVATION_PROJECT = "conservation_project";
 	public static final String XMLNS = "xmlns";
-	public static final String NAME_SPACE_VERSION = "6";
+	public static final String NAME_SPACE_VERSION = "7";
 	public static final String PARTIAL_NAME_SPACE = "http://services.tnc.org/schema/conservation-project/";
 	public static final String NAME_SPACE = PARTIAL_NAME_SPACE + NAME_SPACE_VERSION;
 	public static final String PROJECT_SUMMARY = "project_summary";
@@ -45,10 +45,7 @@ public interface ConProMiradiXml
 	public static final String LESSONS_LEARNED = "lessons_learned";
 	public static final String RELATED_PROJECTS = "related_projects";
 	public static final String CLASSIFICATIONS = "classifications";
-	public static final String CLASSIFICATION = "classification";
-	public static final String CLASSIFICATION_CATEGORY_NAME = "classification_category_name";
 	public static final String CLASSIFICATION_ID = "classification_id";
-	public static final String CLASSIFICATION_NAME = "classification_name";
 	public static final String PARENT_CHILD = "parent_child";
 	public static final String STRESSLESS_THREAT_RANKING = "stressless_threat_ranking";
 	public static final String PROJECT_THREAT_RANK = "project_threat_rank";
