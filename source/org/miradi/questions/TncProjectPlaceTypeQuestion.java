@@ -35,7 +35,7 @@ public class TncProjectPlaceTypeQuestion extends StaticChoiceQuestion
 		};
 	}
 	
-	public static final String SINGLE_PLACE_BASED_PROJECT_CODE = "Single-Place-Based Project";
-	public static final String MULTI_PLACE_BASED_PROJECT_CODE = "Multi-Place-Based Project";
-	public static final String NON_PLACE_BASED_PROJECT_CODE = "Non-Place-Based Project";
+	public static final String SINGLE_PLACE_BASED_PROJECT_CODE = "SinglePlaceBasedProject";
+	public static final String MULTI_PLACE_BASED_PROJECT_CODE = "MultiPlaceBasedProject";
+	public static final String NON_PLACE_BASED_PROJECT_CODE = "NonPlaceBasedProject";
 }
