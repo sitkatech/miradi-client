@@ -568,14 +568,24 @@ public class ConproXmlImporter implements ConProMiradiXml
 	{
 		CodeList allClassificationCodes = extractAllClassificationCodes(projectSumaryNode);
 		
-		CodeList organizationalPrioritiesPreMapCodes = importClassifications(allClassificationCodes, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getConProToMiradiTncOrganizationalPrioritiesMap());
+		CodeList organizationalPrioritiesPreMapCodes = importOrganizationalPriorities(allClassificationCodes);
 		allClassificationCodes.subtract(organizationalPrioritiesPreMapCodes);
 		
-		CodeList projectPlaceTypePreMapCodes = importClassifications(allClassificationCodes, TncProjectData.TAG_PROJECT_PLACE_TYPES, getConProToMiradiTncProjectPlaceTypeMap());
+		CodeList projectPlaceTypePreMapCodes = importProjectPlaceTypes(allClassificationCodes);
 		allClassificationCodes.subtract(projectPlaceTypePreMapCodes);
 		
 		if (allClassificationCodes.size() > 0)
 			throw new RuntimeException(EAM.text("Not all classification Codes could imported." + allClassificationCodes.toString()));
+	}
+
+	private CodeList importProjectPlaceTypes(CodeList allClassificationCodes) throws Exception
+	{
+		return importClassifications(allClassificationCodes, TncProjectData.TAG_PROJECT_PLACE_TYPES, getConProToMiradiTncProjectPlaceTypeMap());
+	}
+
+	private CodeList importOrganizationalPriorities(CodeList allClassificationCodes) throws Exception
+	{
+		return importClassifications(allClassificationCodes, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getConProToMiradiTncOrganizationalPrioritiesMap());
 	}
 
 	private CodeList importClassifications(CodeList allClassificationCodes,	final String tagOrganizationalPriorities, HashMap<String, String> conProToMiradiTncOrganizationalPrioritiesMap)	throws Exception
