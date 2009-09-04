@@ -33,6 +33,7 @@ public interface ConProMiradiXml
 	public static final String SHARE_OUTSIDE_ORGANIZATION = "share_outside_organization";
 	public static final String PROJECT_SUMMARY_NAME = "name";
 	public static final String START_DATE = "start_date";
+	public static final String DATA_EFFECTIVE_DATE = "data_effective_date";
 	public static final String AREA_SIZE = "area_size";
 	public static final String AREA_SIZE_UNIT = "unit";
 	public static final String GEOSPATIAL_LOCATION = "geospatial_location";

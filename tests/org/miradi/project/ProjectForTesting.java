@@ -132,6 +132,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_NAME, "Some Project Name");
 		setProjectDate(new MultiCalendar(), ProjectMetadata.TAG_START_DATE);
 		setProjectDate(new MultiCalendar(), ProjectMetadata.TAG_EXPECTED_END_DATE);
+		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_SIZE_IN_HECTARES, "10000");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT, "10");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_LONGITUDE, "30");
