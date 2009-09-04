@@ -29,9 +29,9 @@ public class TncProjectPlaceTypeQuestion extends StaticChoiceQuestion
 	private static ChoiceItem[] getProjectTypeChoices()
 	{
 		return new ChoiceItem[]{
-				new ChoiceItem(SINGLE_PLACE_BASED_PROJECT_CODE, "Single-Place-Based Project"),
-				new ChoiceItem(MULTI_PLACE_BASED_PROJECT_CODE, "Multi-Place-Based Project"),
-				new ChoiceItem(NON_PLACE_BASED_PROJECT_CODE, "Non-Place-Based Project"),
+				new ChoiceItem(SINGLE_PLACE_BASED_PROJECT_CODE, "Single-Place Based Project"),
+				new ChoiceItem(MULTI_PLACE_BASED_PROJECT_CODE, "Multi-Place Based Project"),
+				new ChoiceItem(NON_PLACE_BASED_PROJECT_CODE, "Non-Place Based Project"),
 		};
 	}
 	
