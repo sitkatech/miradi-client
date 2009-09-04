@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-04 10:38-0500\n"
+"POT-Creation-Date: 2009-09-04 11:14-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -8301,6 +8301,9 @@ msgstr ""
 
 msgid ""
 "FieldLabel|40.PsuedoClassificationsAsMultilineText|Project Classification(s)"
+msgstr ""
+
+msgid "FieldLabel|40.OrganizationalPriorities|Organizational Priorities"
 msgstr ""
 
 msgid "FieldLabel|41.TrainingType|Training Type"
