@@ -588,11 +588,11 @@ public class ConproXmlImporter implements ConProMiradiXml
 		return importClassifications(allClassificationCodes, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getConProToMiradiTncOrganizationalPrioritiesMap());
 	}
 
-	private CodeList importClassifications(CodeList allClassificationCodes,	final String tagOrganizationalPriorities, HashMap<String, String> conProToMiradiTncOrganizationalPrioritiesMap)	throws Exception
+	private CodeList importClassifications(CodeList allClassificationCodes,	final String tag, HashMap<String, String> conProToMiradiMap)	throws Exception
 	{
-		CodeList classificationPreMapCodes = extractCodesToRemove(allClassificationCodes, conProToMiradiTncOrganizationalPrioritiesMap);
-		CodeList classificationCodes = extractValidCodes(classificationPreMapCodes, conProToMiradiTncOrganizationalPrioritiesMap);
-		importField(getSingletonTncProjectDataRef(), tagOrganizationalPriorities, classificationCodes.toString());
+		CodeList classificationPreMapCodes = extractCodesToRemove(allClassificationCodes, conProToMiradiMap);
+		CodeList classificationCodes = extractValidCodes(classificationPreMapCodes, conProToMiradiMap);
+		importField(getSingletonTncProjectDataRef(), tag, classificationCodes.toString());
 		
 		return classificationPreMapCodes;
 	}
