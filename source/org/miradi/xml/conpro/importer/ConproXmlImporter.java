@@ -556,10 +556,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TncMarineEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TncFreshwaterEcoRegionQuestion.class).toString());
 		
-		CodeList organizationalPriorityCodes = extractClassifications(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncOrganizationalPrioritiesMap());
+		CodeList organizationalPriorityCodes = extractValidClassificationsOfType(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncOrganizationalPrioritiesMap());
 		importField(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
 		
-		CodeList projectPlaceTypeCodes = extractClassifications(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncProjectPlaceTypeMap());
+		CodeList projectPlaceTypeCodes = extractValidClassificationsOfType(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncProjectPlaceTypeMap());
 		importField(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectPlaceTypeCodes.toString());
 		
 		importField(projectSumaryNode, EXPORT_DATE, metadataRef, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
@@ -568,7 +568,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 
-	private CodeList extractClassifications(Node projectSumaryNode, HashMap<String, String> classificationRelatedMap) throws Exception
+	private CodeList extractValidClassificationsOfType(Node projectSumaryNode, HashMap<String, String> classificationRelatedMap) throws Exception
 	{
 		CodeList codes = new CodeList();		
 		NodeList classficiationIdNodes = getNodes(projectSumaryNode, CLASSIFICATIONS, CLASSIFICATION_ID);
