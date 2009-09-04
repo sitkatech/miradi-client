@@ -139,6 +139,7 @@ public class TncProjectData extends BaseObject
 		
 		addField(projectSharingCode);
 		addField(projectTypes);
+		addField(organizationalPriorities);
 		addField(parentChild);
 		addField(classifications);
 		
