@@ -591,14 +591,14 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private CodeList importClassifications(CodeList allClassificationCodes,	final String tag, HashMap<String, String> conProToMiradiMap)	throws Exception
 	{
-		CodeList classificationCodesToImportHere = extractCodesToRemove(allClassificationCodes, conProToMiradiMap);
+		CodeList classificationCodesToImportHere = getCodesThatAreKeys(allClassificationCodes, conProToMiradiMap);
 		CodeList mappedCodes = getMappedValues(classificationCodesToImportHere, conProToMiradiMap);
 		importField(getSingletonTncProjectDataRef(), tag, mappedCodes.toString());
 		
 		return classificationCodesToImportHere;
 	}
 
-	private CodeList extractCodesToRemove(CodeList allClassificationCodes, HashMap<String, String> classificationRelatedMap)
+	private CodeList getCodesThatAreKeys(CodeList allClassificationCodes, HashMap<String, String> classificationRelatedMap)
 	{
 		CodeList codesToRemove = new CodeList();
 		for (int index = 0; index < allClassificationCodes.size(); ++index)
