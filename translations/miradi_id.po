@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-03 16:32-0500\n"
+"POT-Creation-Date: 2009-09-04 10:38-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -35,7 +35,7 @@ msgstr " (Kode Akuntansi Tak Terdefinisi) "
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
-#: miradi/source/org/miradi/objects/TncProjectData.java:108
+#: miradi/source/org/miradi/objects/TncProjectData.java:109
 #: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
@@ -478,11 +478,11 @@ msgstr "WCS "
 msgid "Label|RARE"
 msgstr "RARE "
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:53
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:54
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:95
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:98
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "TNC "
