@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.ChoiceData;
 import org.miradi.objectdata.CodeListData;
 import org.miradi.objectdata.DateData;
@@ -49,6 +50,7 @@ import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.OptionalDouble;
 
 public class ProjectMetadata extends BaseObject
 {
@@ -162,13 +164,18 @@ public class ProjectMetadata extends BaseObject
 		return effectiveDate.get();
 	}
 	
-	public double getSizeInHectaresAsDouble()
+	public OptionalDouble getSizeInHectares()
 	{
-		String size = sizeInHectares.get();
-		if (size.length() == 0)
-			return 0;
-		
-		return Double.parseDouble(size);
+		try
+		{
+			String size = projectArea.get();
+			return new OptionalDouble(Double.parseDouble(size));
+		}
+		catch (Exception e)
+		{
+			EAM.logDebug("Exception ocurred while trying to parse project area.");
+			return new OptionalDouble();
+		}
 	}
 	
 	public String getProjectNumber()
@@ -329,7 +336,6 @@ public class ProjectMetadata extends BaseObject
 		
 		latitude = new FloatData(TAG_PROJECT_LATITUDE);
 		longitude = new FloatData(TAG_PROJECT_LONGITUDE);
-		sizeInHectares = new NumberData(TAG_TNC_SIZE_IN_HECTARES);
 		projectArea = new StringData(TAG_PROJECT_AREA);
 		projectAreaNotes = new StringData(TAG_PROJECT_AREA_NOTES);
 
@@ -370,7 +376,6 @@ public class ProjectMetadata extends BaseObject
 		addField(TAG_START_DATE, startDate);
 		addField(TAG_EXPECTED_END_DATE, expectedEndDate);
 		addField(TAG_DATA_EFFECTIVE_DATE, effectiveDate);
-		addField(TAG_TNC_SIZE_IN_HECTARES, sizeInHectares);
 		addField(TAG_CURRENCY_DECIMAL_PLACES, currencyDecimalPlaces);
 		addField(TAG_PROJECT_LATITUDE, latitude);
 		addField(TAG_PROJECT_LONGITUDE, longitude);
@@ -501,7 +506,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
 	public static final String TAG_TNC_DATABASE_DOWNLOAD_DATE = "TNC.DatabaseDownloadDate";
 	public static final String TAG_TNC_PLANNING_TEAM_COMMENT = "TNC.PlanningTeamComment";
-	public static final String TAG_TNC_SIZE_IN_HECTARES = "TNC.SizeInHectares";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnitList";
 	public static final String TAG_TNC_TERRESTRIAL_ECO_REGION = "TNC.TerrestrialEcoRegion";
 	public static final String TAG_TNC_MARINE_ECO_REGION = "TNC.MarineEcoRegion";
@@ -528,7 +532,6 @@ public class ProjectMetadata extends BaseObject
 	private DateData startDate;
 	private DateData expectedEndDate;
 	private DateData effectiveDate;
-	private NumberData sizeInHectares;
 	private IntegerData currencyDecimalPlaces;
 	private FloatData latitude;
 	private FloatData longitude;

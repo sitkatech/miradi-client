@@ -77,6 +77,7 @@ import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiMultiCalendar;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
 import org.miradi.xml.conpro.ConProMiradiXml;
@@ -957,12 +958,12 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 	
 	private void writeOptionalAreaSize(UnicodeWriter out) throws IOException
 	{
-		double sizeInHectaresAsInt = getProjectMetadata().getSizeInHectaresAsDouble();
-		if (sizeInHectaresAsInt == 0)
+		OptionalDouble sizeInHectares = getProjectMetadata().getSizeInHectares();
+		if (sizeInHectares.hasNoValue())
 			return;
 		
 		writeStartElementWithAttribute(out, AREA_SIZE, AREA_SIZE_UNIT, "hectares");
-		writeXmlEncodedData(out, Integer.toString((int)sizeInHectaresAsInt));
+		writeXmlEncodedData(out, sizeInHectares.toString());
 		writeEndElement(out, AREA_SIZE);
 	}
 	
