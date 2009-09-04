@@ -531,7 +531,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		Node projectSumaryNode = getNode(getRootNode(), PROJECT_SUMMARY);
 		
 		String tncProjectSharingXmlValue = getAttributeValue(projectSumaryNode, SHARE_OUTSIDE_ORGANIZATION);
-		ORef tncProjectDataRef = getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+		ORef tncProjectDataRef = getSingletonTncProjectDataRef();
 		final String booleanAsString = Boolean.toString(isTrue(tncProjectSharingXmlValue));
 		importCodeField(tncProjectDataRef, TncProjectData.TAG_PROJECT_SHARING_CODE, getCodeMapHelper().getConProToMiradiTncProjectSharingMap(), booleanAsString);
 		
@@ -556,11 +556,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 		setData(metadataRef, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, extractEcoregions(allEcoregionCodes, TncMarineEcoRegionQuestion.class).toString());
 		setData(metadataRef, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION, extractEcoregions(allEcoregionCodes, TncFreshwaterEcoRegionQuestion.class).toString());
 		
-		CodeList organizationalPriorityCodes = extractValidClassificationsOfType(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncOrganizationalPrioritiesMap());
-		importField(tncProjectDataRef, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, organizationalPriorityCodes.toString());
-		
-		CodeList projectPlaceTypeCodes = extractValidClassificationsOfType(projectSumaryNode, getCodeMapHelper().getConProToMiradiTncProjectPlaceTypeMap());
-		importField(tncProjectDataRef, TncProjectData.TAG_PROJECT_PLACE_TYPES, projectPlaceTypeCodes.toString());
+		importClassificationCodes(projectSumaryNode);
 		
 		importField(projectSumaryNode, EXPORT_DATE, metadataRef, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		
@@ -568,23 +564,84 @@ public class ConproXmlImporter implements ConProMiradiXml
 		importCodeListField(generatePath(new String[] {CONSERVATION_PROJECT, PROJECT_SUMMARY, OUS, OU_CODE}), metadataRef, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 	}
 
-	private CodeList extractValidClassificationsOfType(Node projectSumaryNode, HashMap<String, String> classificationRelatedMap) throws Exception
+	private void importClassificationCodes(Node projectSumaryNode) throws Exception
 	{
-		CodeList codes = new CodeList();		
+		CodeList allClassificationCodes = extractAllClassificationCodes(projectSumaryNode);
+		
+		CodeList organizationalPrioritiesPreMapCodes = importClassifications(allClassificationCodes, TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, getConProToMiradiTncOrganizationalPrioritiesMap());
+		allClassificationCodes.subtract(organizationalPrioritiesPreMapCodes);
+		
+		CodeList projectPlaceTypePreMapCodes = importClassifications(allClassificationCodes, TncProjectData.TAG_PROJECT_PLACE_TYPES, getConProToMiradiTncProjectPlaceTypeMap());
+		allClassificationCodes.subtract(projectPlaceTypePreMapCodes);
+		
+		if (allClassificationCodes.size() > 0)
+			throw new RuntimeException(EAM.text("Not all classification Codes could imported." + allClassificationCodes.toString()));
+	}
+
+	private CodeList importClassifications(CodeList allClassificationCodes,	final String tagOrganizationalPriorities, HashMap<String, String> conProToMiradiTncOrganizationalPrioritiesMap)	throws Exception
+	{
+		CodeList classificationPreMapCodes = extractCodesToRemove(allClassificationCodes, conProToMiradiTncOrganizationalPrioritiesMap);
+		CodeList classificationCodes = extractValidCodes(classificationPreMapCodes, conProToMiradiTncOrganizationalPrioritiesMap);
+		importField(getSingletonTncProjectDataRef(), tagOrganizationalPriorities, classificationCodes.toString());
+		
+		return classificationPreMapCodes;
+	}
+
+	private CodeList extractCodesToRemove(CodeList allClassificationCodes, HashMap<String, String> classificationRelatedMap)
+	{
+		CodeList codesToRemove = new CodeList();
+		for (int index = 0; index < allClassificationCodes.size(); ++index)
+		{
+			String code = allClassificationCodes.get(index);
+			if (classificationRelatedMap.containsKey(code))
+				codesToRemove.add(code);
+		}
+		
+		return codesToRemove;
+	}
+
+	private CodeList extractValidCodes(CodeList allCodes, HashMap<String, String> classificationRelatedMap) throws Exception
+	{
+		CodeList codesToImport = new CodeList();
+		for (int index = 0; index < allCodes.size(); ++index)
+		{
+			String code = allCodes.get(index);
+			if (classificationRelatedMap.containsKey(code))
+				codesToImport.add(classificationRelatedMap.get(code));
+		}
+		
+		return codesToImport;
+	}
+	
+	private CodeList extractAllClassificationCodes(Node projectSumaryNode) throws Exception
+	{
+		CodeList extractedCodes = new CodeList();		
 		NodeList classficiationIdNodes = getNodes(projectSumaryNode, CLASSIFICATIONS, CLASSIFICATION_ID);
 		for (int nodeIndex = 0; nodeIndex < classficiationIdNodes.getLength(); ++nodeIndex) 
 		{
 			Node classficiationIdNode = classficiationIdNodes.item(nodeIndex);
 			String classificationId = getSafeNodeContent(classficiationIdNode).trim();
-			if (classificationRelatedMap.containsKey(classificationId))
-			{
-				codes.add(classificationRelatedMap.get(classificationId));
-			}
+			extractedCodes.add(classificationId);
 		}
 		
-		return codes;
+		return extractedCodes;
+	}
+	
+	private HashMap<String, String> getConProToMiradiTncProjectPlaceTypeMap()
+	{
+		return getCodeMapHelper().getConProToMiradiTncProjectPlaceTypeMap();
 	}
 
+	private HashMap<String, String> getConProToMiradiTncOrganizationalPrioritiesMap()
+	{
+		return getCodeMapHelper().getConProToMiradiTncOrganizationalPrioritiesMap();
+	}
+	
+	private ORef getSingletonTncProjectDataRef()
+	{
+		return getProject().getSingletonObjectRef(TncProjectData.getObjectType());
+	}
+	
 	private void importProjectId(Node projectSumaryNode, ORef metadataRef) throws Exception
 	{
 		NodeList projectIdNodes = getNodes(projectSumaryNode, new String[]{PROJECT_ID});
