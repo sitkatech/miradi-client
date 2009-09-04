@@ -162,14 +162,9 @@ public class ProjectMetadata extends BaseObject
 		return effectiveDate.get();
 	}
 	
-	public String getSizeInHectares()
-	{
-		return sizeInHectares.get();
-	}
-	
 	public double getSizeInHectaresAsDouble()
 	{
-		String size = getSizeInHectares();
+		String size = sizeInHectares.get();
 		if (size.length() == 0)
 			return 0;
 		
