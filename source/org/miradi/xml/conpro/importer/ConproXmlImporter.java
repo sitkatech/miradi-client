@@ -591,8 +591,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private CodeList importClassifications(CodeList allClassificationCodes,	final String tag, HashMap<String, String> conProToMiradiMap)	throws Exception
 	{
 		CodeList classificationPreMapCodes = extractCodesToRemove(allClassificationCodes, conProToMiradiMap);
-		CodeList classificationCodes = extractValidCodes(classificationPreMapCodes, conProToMiradiMap);
-		importField(getSingletonTncProjectDataRef(), tag, classificationCodes.toString());
+		CodeList classificationMappedCodes = getMappedValues(classificationPreMapCodes, conProToMiradiMap);
+		importField(getSingletonTncProjectDataRef(), tag, classificationMappedCodes.toString());
 		
 		return classificationPreMapCodes;
 	}
@@ -610,17 +610,17 @@ public class ConproXmlImporter implements ConProMiradiXml
 		return codesToRemove;
 	}
 
-	private CodeList extractValidCodes(CodeList allCodes, HashMap<String, String> classificationRelatedMap) throws Exception
+	private CodeList getMappedValues(CodeList allCodes, HashMap<String, String> classificationRelatedMap) throws Exception
 	{
-		CodeList codesToImport = new CodeList();
+		CodeList mappedCodes = new CodeList();
 		for (int index = 0; index < allCodes.size(); ++index)
 		{
 			String code = allCodes.get(index);
 			if (classificationRelatedMap.containsKey(code))
-				codesToImport.add(classificationRelatedMap.get(code));
+				mappedCodes.add(classificationRelatedMap.get(code));
 		}
 		
-		return codesToImport;
+		return mappedCodes;
 	}
 	
 	private CodeList extractAllClassificationCodes(Node projectSumaryNode) throws Exception
