@@ -32,17 +32,17 @@ public class TncOrganizationalPrioritiesQuestion extends StaticChoiceQuestion
 		return new ChoiceItem[]{
 				new ChoiceItem(CAPITAL_CAMPAIGN_CODE, "Capital Campaign"),
 				new ChoiceItem(REGIONAL_PRIORITY_CODE, "Regional Priority"),
-				new ChoiceItem(CSD_CLIMATE_CODE, "Focal Area - Climate"),
-				new ChoiceItem(CSD_MARINE_CODE, "Focal Area - Marine"),
-				new ChoiceItem(CSD_FRESHWATER_CODE, "Focal Area - Freshwater"),
-				new ChoiceItem(CSD_PROTECTED_AREAS_CODE, "Focal Area - Protected Areas"),
+				new ChoiceItem(FOCAL_AREA_CLIMATE_CODE, "Focal Area - Climate"),
+				new ChoiceItem(FOCAL_AREA_MARINE_CODE, "Focal Area - Marine"),
+				new ChoiceItem(FOCAL_AREA_FRESHWATER_CODE, "Focal Area - Freshwater"),
+				new ChoiceItem(FOCAL_AREA_PROTECTED_AREAS_CODE, "Focal Area - Protected Areas"),
 		};
 	}
 	
 	public static final String CAPITAL_CAMPAIGN_CODE = "CapitalCampaign";
 	public static final String REGIONAL_PRIORITY_CODE = "RegionalPriority";
-	public static final String CSD_CLIMATE_CODE = "FocalAreaClimate";
-	public static final String CSD_MARINE_CODE = "FocalAreaMarine";
-	public static final String CSD_FRESHWATER_CODE = "FocalAreaFreshwater";
-	public static final String CSD_PROTECTED_AREAS_CODE = "FocalAreaProtected Areas";
+	public static final String FOCAL_AREA_CLIMATE_CODE = "FocalAreaClimate";
+	public static final String FOCAL_AREA_MARINE_CODE = "FocalAreaMarine";
+	public static final String FOCAL_AREA_FRESHWATER_CODE = "FocalAreaFreshwater";
+	public static final String FOCAL_AREA_PROTECTED_AREAS_CODE = "FocalAreaProtected Areas";
 }
