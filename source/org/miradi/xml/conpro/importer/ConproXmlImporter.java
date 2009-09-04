@@ -569,11 +569,11 @@ public class ConproXmlImporter implements ConProMiradiXml
 	{
 		CodeList classificationCodesToImport = extractAllClassificationCodes(projectSumaryNode);
 		
-		CodeList importedOrganizationalPriorityCodes = importOrganizationalPriorities(classificationCodesToImport);
-		classificationCodesToImport.subtract(importedOrganizationalPriorityCodes);
+		CodeList classificationCodesImportedAsOrganizationalPriorities = importOrganizationalPriorities(classificationCodesToImport);
+		classificationCodesToImport.subtract(classificationCodesImportedAsOrganizationalPriorities);
 		
-		CodeList importedProjectPlaceTypeCodes = importProjectPlaceTypes(classificationCodesToImport);
-		classificationCodesToImport.subtract(importedProjectPlaceTypeCodes);
+		CodeList classificationCodesImportedAsProjectPlaceTypes = importProjectPlaceTypes(classificationCodesToImport);
+		classificationCodesToImport.subtract(classificationCodesImportedAsProjectPlaceTypes);
 		
 		if (classificationCodesToImport.size() > 0)
 			throw new RuntimeException(EAM.text("Not all classification Codes could imported." + classificationCodesToImport.toString()));
@@ -591,11 +591,11 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private CodeList importClassifications(CodeList allClassificationCodes,	final String tag, HashMap<String, String> conProToMiradiMap)	throws Exception
 	{
-		CodeList classificationPreMapCodes = extractCodesToRemove(allClassificationCodes, conProToMiradiMap);
-		CodeList mappedCodes = getMappedValues(classificationPreMapCodes, conProToMiradiMap);
+		CodeList classificationCodesToImportHere = extractCodesToRemove(allClassificationCodes, conProToMiradiMap);
+		CodeList mappedCodes = getMappedValues(classificationCodesToImportHere, conProToMiradiMap);
 		importField(getSingletonTncProjectDataRef(), tag, mappedCodes.toString());
 		
-		return classificationPreMapCodes;
+		return classificationCodesToImportHere;
 	}
 
 	private CodeList extractCodesToRemove(CodeList allClassificationCodes, HashMap<String, String> classificationRelatedMap)
