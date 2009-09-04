@@ -566,16 +566,16 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private void importClassificationCodes(Node projectSumaryNode) throws Exception
 	{
-		CodeList allClassificationCodes = extractAllClassificationCodes(projectSumaryNode);
+		CodeList classificationCodesToImport = extractAllClassificationCodes(projectSumaryNode);
 		
-		CodeList importedOrganizationalPriorityCodes = importOrganizationalPriorities(allClassificationCodes);
-		allClassificationCodes.subtract(importedOrganizationalPriorityCodes);
+		CodeList importedOrganizationalPriorityCodes = importOrganizationalPriorities(classificationCodesToImport);
+		classificationCodesToImport.subtract(importedOrganizationalPriorityCodes);
 		
-		CodeList importedProjectPlaceTypeCodes = importProjectPlaceTypes(allClassificationCodes);
-		allClassificationCodes.subtract(importedProjectPlaceTypeCodes);
+		CodeList importedProjectPlaceTypeCodes = importProjectPlaceTypes(classificationCodesToImport);
+		classificationCodesToImport.subtract(importedProjectPlaceTypeCodes);
 		
-		if (allClassificationCodes.size() > 0)
-			throw new RuntimeException(EAM.text("Not all classification Codes could imported." + allClassificationCodes.toString()));
+		if (classificationCodesToImport.size() > 0)
+			throw new RuntimeException(EAM.text("Not all classification Codes could imported." + classificationCodesToImport.toString()));
 	}
 
 	private CodeList importProjectPlaceTypes(CodeList allClassificationCodes) throws Exception
