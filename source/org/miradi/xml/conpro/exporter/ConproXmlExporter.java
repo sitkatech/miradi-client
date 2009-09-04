@@ -798,6 +798,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeElement(out, PROJECT_SUMMARY_NAME, getProjectName());
 			
 			writeOptionalElement(out, START_DATE, getProjectMetadata(), ProjectMetadata.TAG_START_DATE);
+			writeOptionalElement(out, DATA_EFFECTIVE_DATE, getProjectMetadata(), ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 			writeOptionalAreaSize(out);
 			writeOptionalLocation(out);
 			
