@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.conpro.exporter;
 
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
@@ -77,7 +76,6 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.MiradiMultiCalendar;
 import org.miradi.xml.XmlExporter;
 import org.miradi.xml.conpro.ConProMiradiCodeMapHelper;
@@ -818,7 +816,6 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeEcoregionCodes(out);
 			writeCodeListElements(out, COUNTRIES, COUNTRY_CODE, getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
 			writeCodeListElements(out, OUS, OU_CODE, getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
-			writeClassifications(out);
 			
 			writeElement(out, EXPORTER_NAME, MIRADI);
 			out.writeln();
@@ -836,28 +833,29 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalElement(out, STRESSLESS_THREAT_RANKING, threatRatingMode);
 	}
 
-	private void writeClassifications(UnicodeWriter out) throws Exception
-	{
-		writeStartElement(out, CLASSIFICATIONS);
-		
-		String rawClassifications = getTncProjectData().getClassifications();
-		Vector<Vector<String>> classifications = new DelimitedFileLoader().getDelimitedContents(new StringReader(rawClassifications));
-		final int CLASSIFICATION_ID_INDEX = 0;
-		final int CLASSIFICATION_NAME_INDEX = 1;
-		final int CLASSIFICATION_CATEGORY_NAME_INDEX = 2;
-		for(Vector<String> row : classifications)
-		{
-			writeStartElement(out, CLASSIFICATION);
-			
-			writeOptionalElement(out, CLASSIFICATION_ID, row.get(CLASSIFICATION_ID_INDEX));
-			writeOptionalElement(out, CLASSIFICATION_NAME, row.get(CLASSIFICATION_NAME_INDEX));
-			writeOptionalElement(out, CLASSIFICATION_CATEGORY_NAME, row.get(CLASSIFICATION_CATEGORY_NAME_INDEX));
-			
-			writeEndElement(out, CLASSIFICATION);
-		}
-		
-		writeEndElement(out, CLASSIFICATIONS);
-	}
+//TODO remove commented code when classification issues have been resolved.  
+//	private void writeClassifications(UnicodeWriter out) throws Exception
+//	{
+//		writeStartElement(out, CLASSIFICATIONS);
+//		
+//		String rawClassifications = getTncProjectData().getClassifications();
+//		Vector<Vector<String>> classifications = new DelimitedFileLoader().getDelimitedContents(new StringReader(rawClassifications));
+//		final int CLASSIFICATION_ID_INDEX = 0;
+//		final int CLASSIFICATION_NAME_INDEX = 1;
+//		final int CLASSIFICATION_CATEGORY_NAME_INDEX = 2;
+//		for(Vector<String> row : classifications)
+//		{
+//			writeStartElement(out, CLASSIFICATION);
+//			
+//			writeOptionalElement(out, CLASSIFICATION_ID, row.get(CLASSIFICATION_ID_INDEX));
+//			writeOptionalElement(out, CLASSIFICATION_NAME, row.get(CLASSIFICATION_NAME_INDEX));
+//			writeOptionalElement(out, CLASSIFICATION_CATEGORY_NAME, row.get(CLASSIFICATION_CATEGORY_NAME_INDEX));
+//			
+//			writeEndElement(out, CLASSIFICATION);
+//		}
+//		
+//		writeEndElement(out, CLASSIFICATIONS);
+//	}
 
 	private String getConcatenatedProjectDescriptionAndScope()
 	{
