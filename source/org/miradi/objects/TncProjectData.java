@@ -30,6 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
 import org.miradi.questions.TncProjectPlaceTypeQuestion;
 import org.miradi.utils.DelimitedFileLoader;
 import org.miradi.utils.EnhancedJsonObject;
@@ -130,6 +131,7 @@ public class TncProjectData extends BaseObject
 		
 		projectSharingCode = new StringData(TAG_PROJECT_SHARING_CODE);
 		projectTypes = new CodeListData(TAG_PROJECT_PLACE_TYPES, getProject().getQuestion(TncProjectPlaceTypeQuestion.class));
+		organizationalPriorities = new CodeListData(TAG_ORGANIZATIONAL_PRIORITIES, getProject().getQuestion(TncOrganizationalPrioritiesQuestion.class));
 		parentChild = new StringData(TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		classifications = new StringData(TAG_CLASSIFICATIONS);
 		
@@ -147,6 +149,7 @@ public class TncProjectData extends BaseObject
 
 	public final static String TAG_PROJECT_SHARING_CODE = "ProjectSharingCode";
 	public final static String TAG_PROJECT_PLACE_TYPES = "ProjectPlaceTypes";
+	public final static String TAG_ORGANIZATIONAL_PRIORITIES = "OrganizationalPriorities";
 	public final static String TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT = "ConProParentChildProjectText";
 	public final static String TAG_CLASSIFICATIONS = "Classifications";
 	
@@ -154,6 +157,7 @@ public class TncProjectData extends BaseObject
 	
 	public StringData projectSharingCode;
 	public CodeListData projectTypes;
+	public CodeListData organizationalPriorities;
 	public StringData parentChild;
 	public StringData classifications;
 	
