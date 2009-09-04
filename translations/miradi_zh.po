@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-04 11:26-0500\n"
+"POT-Creation-Date: 2009-09-04 11:44-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -34,17 +34,6 @@ msgstr "（未定义的会计代码） \t\t"
 #: miradi/source/org/miradi/objects/FundingSource.java:73
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
-
-#: miradi/source/org/miradi/objects/TncProjectData.java:109
-#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
-#: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
-#, fuzzy
-msgid "Error"
-msgstr "Error"
 
 #: miradi/source/org/miradi/database/migrations/ConvertHighLevelEstimatesIntoAssignments.java:131
 msgid "Migrated High Level Estimate:"
@@ -464,7 +453,7 @@ msgstr "RARE"
 msgid "Share Outside of TNC?"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:98
+#: miradi/source/org/miradi/views/summary/TNCSummaryPanel.java:97
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:40
 msgid "TNC"
 msgstr "大自然保护协会 \t\t"
@@ -2375,6 +2364,16 @@ msgstr "在图表上设置范围 \t\t"
 msgid "No date range for date Unit = "
 msgstr ""
 
+#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:78
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
+#: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
+#, fuzzy
+msgid "Error"
+msgstr "Error"
+
 #: miradi/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:36
 msgid "--Select a classification--"
 msgstr "--选定一个类别-- \t\t"
@@ -2440,7 +2439,7 @@ msgstr "当前状况 \t\t"
 
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:331
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:329
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
 msgid "Target"
 msgstr "对象"
@@ -6040,16 +6039,16 @@ msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "选择哪个策略和活动与本分目标相关联"
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:356
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:354
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "威胁因子"
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:865
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:863
 msgid "Project Description:"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:870
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:868
 msgid "Site/Scope Description:"
 msgstr ""
 
