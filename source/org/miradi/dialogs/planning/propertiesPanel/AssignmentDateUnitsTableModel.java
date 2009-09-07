@@ -114,6 +114,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
+	@Override
 	public boolean isColumnExpandable(int modelColumn)
 	{
 		try
@@ -130,6 +131,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 
+	@Override
 	public boolean isColumnCollapsable(int modelColumn)
 	{
 		try
@@ -561,6 +563,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		setValueAt(new TaglessChoiceItem(value), row, modelColumn);
 	}
 	
+	@Override
 	public OptionalDouble getCellPercent(int row, int modelColumn)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) getValueAt(row, modelColumn);
@@ -710,6 +713,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		restoreDateUnits();
 	}
 	
+	@Override
 	public boolean isWorkUnitColumn(int column)
 	{
 		return getDateUnit(column) != null;
