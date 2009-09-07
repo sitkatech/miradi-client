@@ -33,44 +33,26 @@ public class TestFullTimeEmployeeCalculationsInsideModel extends TestCaseWithPro
 
 	public void testCalculateFullTimeEmployeeDays()
 	{
-		verifyCalculatedFullTimeEmployeeDays(year2009, 1.0, 240, 240);
-		verifyCalculatedFullTimeEmployeeDays(q12009, 1.0, 240, 60);
-		verifyCalculatedFullTimeEmployeeDays(jan2009, 1.0, 240, 20);
+		verifyCalculatedFullTimeEmployeeDays(240, year2009, 1.0, 240);
+		verifyCalculatedFullTimeEmployeeDays(60, q12009, 1.0, 240);
+		verifyCalculatedFullTimeEmployeeDays(20, jan2009, 1.0, 240);
 		
-		verifyCalculatedFullTimeEmployeeDays(year2009, 0.5, 240, 120);
-		verifyCalculatedFullTimeEmployeeDays(q12009, 0.5, 240, 30);
-		verifyCalculatedFullTimeEmployeeDays(jan2009, 0.5, 240, 10);
+		verifyCalculatedFullTimeEmployeeDays(120, year2009, 0.5, 240);
+		verifyCalculatedFullTimeEmployeeDays(30, q12009, 0.5, 240);
+		verifyCalculatedFullTimeEmployeeDays(10, jan2009, 0.5, 240);
 		
-		verifyCalculatedFullTimeEmployeeDays(year2009, 0.5, 120, 60);
-		verifyCalculatedFullTimeEmployeeDays(q12009, 0.5, 120, 15);
-		verifyCalculatedFullTimeEmployeeDays(jan2009, 0.5, 120, 5);
+		verifyCalculatedFullTimeEmployeeDays(60, year2009, 0.5, 120);
+		verifyCalculatedFullTimeEmployeeDays(15, q12009, 0.5, 120);
+		verifyCalculatedFullTimeEmployeeDays(5, jan2009, 0.5, 120);
 	}
 
-	private void verifyCalculatedFullTimeEmployeeDays(DateUnit dateUnit, double fraction, double fullTimeEmployeeDaysPerYear, double expectedValue)
+	private void verifyCalculatedFullTimeEmployeeDays(double expectedValue, DateUnit dateUnit, double fraction, double fullTimeEmployeeDaysPerYear)
 	{
 		double calculatedValue = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeDays(dateUnit, fraction, fullTimeEmployeeDaysPerYear);
 		assertEquals("wrong calculated full time employee days value?", expectedValue, calculatedValue);
-	}
-	
-	public void testCalculateFullTimeEmployeeFraction() throws Exception
-	{
-		verifyCalculatedFullTimeEmployeeFraction(year2009, 240, 240, 1.0);
-		verifyCalculatedFullTimeEmployeeFraction(q12009, 60, 240, 1.0);
-		verifyCalculatedFullTimeEmployeeFraction(jan2009, 20, 240, 1.0);
 		
-		verifyCalculatedFullTimeEmployeeFraction(year2009, 120, 240, 0.5);
-		verifyCalculatedFullTimeEmployeeFraction(q12009, 30, 240, 0.5);
-		verifyCalculatedFullTimeEmployeeFraction(jan2009, 10, 240, 0.5);
-		
-		verifyCalculatedFullTimeEmployeeFraction(year2009, 60, 120, 0.5);
-		verifyCalculatedFullTimeEmployeeFraction(q12009, 15, 120, 0.5);
-		verifyCalculatedFullTimeEmployeeFraction(jan2009, 5, 120, 0.5);
-	}
-	
-	private void verifyCalculatedFullTimeEmployeeFraction(DateUnit dateUnit, double assignedDayCount, double fullTimeEmployeeDaysPerYear, double expectedValue) throws Exception
-	{
-		double fraction = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeFraction(dateUnit, assignedDayCount, fullTimeEmployeeDaysPerYear);
-		assertEquals("wrong calculated full time employee fraction?", expectedValue, fraction);
+		double calculatedFraction = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeFraction(dateUnit, expectedValue, fullTimeEmployeeDaysPerYear);
+		assertEquals("wrong calculated full time employee fraction?", fraction, calculatedFraction);
 	}
 	
 	public void testGetNumberOfMonthsIn()
