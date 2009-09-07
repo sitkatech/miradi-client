@@ -558,7 +558,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
 		int numberOfRepresentedColumnDateUnitByYear = getNumberSlotsPerYear(getDateUnit(modelColumn));
-		double value = calculateReverseFullTimeEmployeeFraction(fraction, fullTimeEmployeeDaysPerYear, numberOfRepresentedColumnDateUnitByYear);
+		double value = calculateFullTimeEmployeeDays(fraction, fullTimeEmployeeDaysPerYear, numberOfRepresentedColumnDateUnitByYear);
 		
 		setValueAt(new TaglessChoiceItem(value), row, modelColumn);
 	}
@@ -584,7 +584,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return (value * numberOfRepresentedColumnDateUnitByYear) / fullTimeEmployeeDaysPerYear;
 	}
 	
-	public static double calculateReverseFullTimeEmployeeFraction(double fraction, double fullTimeEmployeeDaysPerYear,	int numberOfRepresentedColumnDateUnitByYear)
+	public static double calculateFullTimeEmployeeDays(double fraction, double fullTimeEmployeeDaysPerYear,	int numberOfRepresentedColumnDateUnitByYear)
 	{
 		return (fraction * fullTimeEmployeeDaysPerYear) / numberOfRepresentedColumnDateUnitByYear;
 	}
