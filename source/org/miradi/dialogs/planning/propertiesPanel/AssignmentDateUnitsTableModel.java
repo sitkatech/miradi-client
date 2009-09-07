@@ -555,8 +555,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	public void updateFullTimeEmployeeDaysPerYearPercent(int row, int modelColumn, double percent)
 	{
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
-		double value = (percent * fullTimeEmployeeDaysPerYear) / getNumberOfRepresentedColumnDateUnitByYear(modelColumn);
-		
+		int numberOfRepresentedColumnDateUnitByYear = getNumberSlotsPerYear(getDateUnit(modelColumn));
+		double value = calculateReverseFullTimeEmployeeFraction(percent, fullTimeEmployeeDaysPerYear, numberOfRepresentedColumnDateUnitByYear);
 		
 		setValueAt(new TaglessChoiceItem(value), row, modelColumn);
 	}
@@ -570,17 +570,27 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		double value = Double.parseDouble(doubleAsString);
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
-		double percent = (value * getNumberOfRepresentedColumnDateUnitByYear(modelColumn)) / fullTimeEmployeeDaysPerYear;
+		int numberOfRepresentedColumnDateUnitByYear = getNumberSlotsPerYear(getDateUnit(modelColumn));
+		double fraction = calculateFullTimeEmployeeFraction(numberOfRepresentedColumnDateUnitByYear, value, fullTimeEmployeeDaysPerYear);
 		
-		return new OptionalDouble(percent);
+		return new OptionalDouble(fraction);
+	}
+
+	public static double calculateFullTimeEmployeeFraction(int numberOfRepresentedColumnDateUnitByYear, double value, double fullTimeEmployeeDaysPerYear)
+	{
+		return (value * numberOfRepresentedColumnDateUnitByYear) / fullTimeEmployeeDaysPerYear;
 	}
 	
-	private int getNumberOfRepresentedColumnDateUnitByYear(int modelColumn)
+	public static double calculateReverseFullTimeEmployeeFraction(double percent, double fullTimeEmployeeDaysPerYear,	int numberOfRepresentedColumnDateUnitByYear)
+	{
+		return (percent * fullTimeEmployeeDaysPerYear) / numberOfRepresentedColumnDateUnitByYear;
+	}
+	
+	public static int getNumberSlotsPerYear(DateUnit dateUnit)
 	{
 		final int MONTHS_PER_YEAR = 12;
 		final int QUARTERS_PER_YEAR = 4;
 		final int YEAR_PER_YEAR = 1;
-		DateUnit dateUnit = getDateUnit(modelColumn);
 		if (dateUnit.isMonth())
 			return MONTHS_PER_YEAR;
 	
