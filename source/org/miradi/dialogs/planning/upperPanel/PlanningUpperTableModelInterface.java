@@ -39,6 +39,6 @@ public interface PlanningUpperTableModelInterface extends ChoiceItemTableModel, 
 	public boolean isColumnCollapsable(int modelColumn);
 	public void respondToExpandOrCollapseColumnEvent(int modelColumnIndex) throws Exception;
 	public boolean isFullTimeEmployeePercentageAvailable(int row, int modelColumn);
-	public void updateFullTimeEmployeeDaysPerYearPercent(int row, int modelColumn, double percent);
+	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double percent);
 	public OptionalDouble getCellPercent(int row, int modelColumn);
 }
