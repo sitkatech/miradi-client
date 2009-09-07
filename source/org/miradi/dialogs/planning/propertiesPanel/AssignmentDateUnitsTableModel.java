@@ -557,8 +557,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double fraction)
 	{
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
-		int numberOfRepresentedColumnDateUnitByYear = getNumberOfMonthsIn(getDateUnit(modelColumn));
-		double value = calculateFullTimeEmployeeDays(fraction, fullTimeEmployeeDaysPerYear, numberOfRepresentedColumnDateUnitByYear);
+		int numberOfMonths = getNumberOfMonthsIn(getDateUnit(modelColumn));
+		double value = calculateFullTimeEmployeeDays(fraction, fullTimeEmployeeDaysPerYear, numberOfMonths);
 		
 		setValueAt(new TaglessChoiceItem(value), row, modelColumn);
 	}
@@ -573,20 +573,20 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		double value = Double.parseDouble(doubleAsString);
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
-		int numberOfRepresentedColumnDateUnitByYear = getNumberOfMonthsIn(getDateUnit(modelColumn));
-		double fraction = calculateFullTimeEmployeeFraction(numberOfRepresentedColumnDateUnitByYear, value, fullTimeEmployeeDaysPerYear);
+		int numberOfMonths = getNumberOfMonthsIn(getDateUnit(modelColumn));
+		double fraction = calculateFullTimeEmployeeFraction(numberOfMonths, value, fullTimeEmployeeDaysPerYear);
 		
 		return new OptionalDouble(fraction);
 	}
 
-	public static double calculateFullTimeEmployeeFraction(int numberOfRepresentedColumnDateUnitByYear, double value, double fullTimeEmployeeDaysPerYear)
+	public static double calculateFullTimeEmployeeFraction(int numberOfMonth, double value, double fullTimeEmployeeDaysPerYear)
 	{
-		return (value * numberOfRepresentedColumnDateUnitByYear) / fullTimeEmployeeDaysPerYear;
+		return (value * numberOfMonth) / fullTimeEmployeeDaysPerYear;
 	}
 	
-	public static double calculateFullTimeEmployeeDays(double fraction, double fullTimeEmployeeDaysPerYear,	int numberOfRepresentedColumnDateUnitByYear)
+	public static double calculateFullTimeEmployeeDays(double fraction, double fullTimeEmployeeDaysPerYear,	int numberOfMonths)
 	{
-		return (fraction * fullTimeEmployeeDaysPerYear) / numberOfRepresentedColumnDateUnitByYear;
+		return (fraction * fullTimeEmployeeDaysPerYear) / numberOfMonths;
 	}
 	
 	public static int getNumberOfMonthsIn(DateUnit dateUnit)
