@@ -46,12 +46,12 @@ public class TestFullTimeEmployeeCalculationsInsideModel extends TestCaseWithPro
 		verifyCalculatedFullTimeEmployeeDays(5, jan2009, 0.5, 120);
 	}
 
-	private void verifyCalculatedFullTimeEmployeeDays(double expectedValue, DateUnit dateUnit, double fraction, double fullTimeEmployeeDaysPerYear)
+	private void verifyCalculatedFullTimeEmployeeDays(double assignedDayCount, DateUnit dateUnit, double fraction, double fullTimeEmployeeDaysPerYear)
 	{
 		double calculatedValue = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeDays(dateUnit, fraction, fullTimeEmployeeDaysPerYear);
-		assertEquals("wrong calculated full time employee days value?", expectedValue, calculatedValue);
+		assertEquals("wrong calculated full time employee days value?", assignedDayCount, calculatedValue);
 		
-		double calculatedFraction = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeFraction(dateUnit, expectedValue, fullTimeEmployeeDaysPerYear);
+		double calculatedFraction = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeFraction(dateUnit, assignedDayCount, fullTimeEmployeeDaysPerYear);
 		assertEquals("wrong calculated full time employee fraction?", fraction, calculatedFraction);
 	}
 	
