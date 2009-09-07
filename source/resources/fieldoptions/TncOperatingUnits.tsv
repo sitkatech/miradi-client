@@ -1,66 +1,67 @@
 OBSOLETE	(Superseded Operating Unit)	
-AUSTR	Australia	Asia Pacific	YES
-CHINA	China	Asia Pacific	YES
-INDON	Indonesia	Asia Pacific	YES
-PACIF	Pacific Island Countries	Asia Pacific	YES
-IL_US	Illinois	Central US	YES
-IN_US	Indiana	Central US	YES
-IA_US	Iowa	Central US	YES
-KS_US	Kansas	Central US	YES
-MI_US	Michigan	Central US	YES
-MN_US	Minnesota	Central US	YES
-MO_US	Missouri	Central US	YES
-NE_US	Nebraska	Central US	YES
-ND_US	North Dakota	Central US	YES
-OK_US	Oklahoma	Central US	YES
-SD_US	South Dakota	Central US	YES
-TX_US	Texas	Central US	YES
-WI_US	Wisconsin	Central US	YES
-CT_US	Connecticut	Eastern US	YES
-DE_US	Delaware	Eastern US	YES
-ME_US	Maine	Eastern US	YES
-MD_US	Maryland/DC	Eastern US	YES
-MA_US	Massachusetts	Eastern US	YES
-NH_US	New Hampshire	Eastern US	YES
-NJ_US	New Jersey	Eastern US	YES
-NY_US	New York	Eastern US	YES
-OH_US	Ohio	Eastern US	YES
-PA_US	Pennsylvania	Eastern US	YES
-RI_US	Rhode Island	Eastern US	YES
-VT_US	Vermont	Eastern US	YES
-VA_US	Virginia	Eastern US	YES
-WV_US	West Virginia	Eastern US	YES
-CARIB	Caribbean Countries	Mesoamerica and Caribbean	YES
-MEXIC	Mexico	Mesoamerica and Caribbean	YES
-AK_US	Alaska	Pacific North America	YES
-CA_US	California	Pacific North America	YES
-CANAD	Canada	Pacific North America	YES
-HI_US	Hawaii	Pacific North America	YES
-OR_US	Oregon	Pacific North America	YES
-WA_US	Washington	Pacific North America	YES
-AZ_US	Arizona	Rocky Mountains	YES
-CO_US	Colorado	Rocky Mountains	YES
-ID_US	Idaho	Rocky Mountains	YES
-MT_US	Montana	Rocky Mountains	YES
-NV_US	Nevada	Rocky Mountains	YES
-NM_US	New Mexico	Rocky Mountains	YES
-UT_US	Utah	Rocky Mountains	YES
-WY_US	Wyoming	Rocky Mountains	YES
-AMAZO	Amazon	South America	YES
-NANDE	Northern Tropical Andes	South America	YES
-SANDE	Southern Andes	South America	YES
-AR_US	Arkansas	Southern US	YES
-FL_US	Florida	Southern US	YES
-GA_US	Georgia	Southern US	YES
-KY_US	Kentucky	Southern US	YES
-LA_US	Louisiana	Southern US	YES
-MS_US	Mississippi	Southern US	YES
-NC_US	North Carolina	Southern US	YES
-SC_US	South Carolina	Southern US	YES
-TN_US	Tennessee	Southern US	YES
-APARO	Asia Pacific Regional Office	Asia Pacific	YES
-WORLD	Worldwide Office	Worldwide Office	YES
-OTHER	Non-TNC	Non-TNC	YES 
+AUSTR	Australia
+CHINA	China
+INDON	Indonesia
+PACIF	Pacific Island Countries
+IL_US	Illinois
+IN_US	Indiana
+IA_US	Iowa
+KS_US	Kansas
+MI_US	Michigan
+MN_US	Minnesota
+MO_US	Missouri
+NE_US	Nebraska
+ND_US	North Dakota
+OK_US	Oklahoma
+SD_US	South Dakota
+TX_US	Texas
+WI_US	Wisconsin
+CT_US	Connecticut
+DE_US	Delaware
+ME_US	Maine
+MD_US	Maryland/DC
+MA_US	Massachusetts
+NH_US	New Hampshire
+NJ_US	New Jersey
+NY_US	New York
+OH_US	Ohio
+PA_US	Pennsylvania
+RI_US	Rhode Island
+VT_US	Vermont
+VA_US	Virginia
+WV_US	West Virginia
+CARIB	Caribbean
+MEXIC	Mexico and Northern Central America
+AK_US	Alaska
+CA_US	California
+CANAD	Canada
+HI_US	Hawaii
+OR_US	Oregon
+WA_US	Washington
+AZ_US	Arizona
+CO_US	Colorado
+ID_US	Idaho
+MT_US	Montana
+NV_US	Nevada
+NM_US	New Mexico
+UT_US	Utah
+WY_US	Wyoming
+AMAZO	Amazon
+NANDE	Northern Andes and Southern Central America	
+SANDE	Southern Andes	
+AL_US	Alabama	
+AR_US	Arkansas	
+FL_US	Florida	
+GA_US	Georgia	
+KY_US	Kentucky	
+LA_US	Louisiana	
+MS_US	Mississippi
+NC_US	North Carolina
+SC_US	South Carolina
+TN_US	Tennessee
+APARO	Asia Pacific Regional Office
+WORLD	Worldwide Office
+OTHER	Non-TNC
 MONGO	Mongolia
 ATLCS	Atlantic Forest and Central Savannas
 AFRRO	Africa Program
