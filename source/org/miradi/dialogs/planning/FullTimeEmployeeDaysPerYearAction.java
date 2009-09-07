@@ -77,12 +77,12 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		
 		OneColumnPanel panel = new OneColumnPanel();
 		panel.add(createExplanationHtmlPanel(), BorderLayout.BEFORE_FIRST_LINE);
-		panel.add(createEditPanel(), BorderLayout.CENTER);
 		errorField = new PanelTextField(50);
 		errorField.setEditable(false);
 		panel.add(errorField, BorderLayout.AFTER_LAST_LINE);
 		dialog.add(panel, BorderLayout.BEFORE_FIRST_LINE);
 		
+		panel.add(createEditPanel(), BorderLayout.CENTER);
 		dialog.getRootPane().setDefaultButton(insertButton);
 		percentField.selectAll();
 		percentField.requestFocusInWindow();
@@ -135,9 +135,8 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 
 	private String getPrePopulatedValue()
 	{
+		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(getSelectedColumn());
 		int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
-		PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(columnWithinMultiTableModel);
-		
 		OptionalDouble value = model.getCellPercent(getSelectedRow(), columnWithinMultiTableModel);
 		if (value.hasValue())
 			return Double.toString(value.getValue());
@@ -145,12 +144,17 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		return "";
 	}
 	
-	private int getSelectedColumnWithinMultiTableModel()
+	private int getSelectedColumn()
 	{
 		int selectedColumn = multiTable.getSelectedColumn();
 		int modelColumn = multiTable.convertColumnIndexToModel(selectedColumn);
 		
-		return getCastedModel().findColumnWithinSubTable(modelColumn);
+		return modelColumn;
+	}
+	
+	private int getSelectedColumnWithinMultiTableModel()
+	{
+		return getCastedModel().findColumnWithinSubTable(getSelectedColumn());
 	}
 	
 	private int getSelectedRow()
@@ -220,8 +224,8 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 			String doubleAsString = percentField.getText();
 			double parsedDouble = Double.parseDouble(doubleAsString);
 			
+			PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(getSelectedColumn());
 			int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
-			PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(columnWithinMultiTableModel);
 			model.updateFullTimeEmployeeDaysPerYearPercent(getSelectedRow(), columnWithinMultiTableModel, parsedDouble);
 			
 			dialog.dispose();
