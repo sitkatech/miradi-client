@@ -124,7 +124,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public void updateFullTimeEmployeeDaysPerYearPercent(int row, int modelColumn, double percent)
+	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double percent)
 	{
 	}
 	

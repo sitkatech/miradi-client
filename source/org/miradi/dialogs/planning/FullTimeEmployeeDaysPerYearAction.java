@@ -226,7 +226,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 			
 			PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(getSelectedColumn());
 			int columnWithinMultiTableModel = getSelectedColumnWithinMultiTableModel();
-			model.updateFullTimeEmployeeDaysPerYearPercent(getSelectedRow(), columnWithinMultiTableModel, parsedDouble);
+			model.updateFullTimeEmployeeDaysPerYearFraction(getSelectedRow(), columnWithinMultiTableModel, parsedDouble);
 			
 			dialog.dispose();
 			dialog.setVisible(false);
