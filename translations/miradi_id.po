@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-04 16:26-0500\n"
+"POT-Creation-Date: 2009-09-06 19:39-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6611,7 +6611,7 @@ msgstr ""
 "Klon "
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:58
-msgid "Percent of FTE..."
+msgid "Fraction of FTE..."
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:67
@@ -6619,7 +6619,7 @@ msgid "Insert"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:73
-msgid "Insert FTE Percentage"
+msgid "Insert FTE Fraction"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:123
@@ -6627,7 +6627,7 @@ msgid "FTE Days Per Year:"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:130
-msgid "Percent:"
+msgid "Fraction:"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:212
@@ -8737,11 +8737,11 @@ msgstr ""
 "kapasitas disket, zum maju lebih jauh.</p> "
 
 msgid ""
-"html|/resources/FteDaysPerYearDialogExplanation.html|<p>Enter a percentage "
-"below to assign a fraction of a Full Time Employee (FTE) for the selected "
-"work item and time period. Miradi will convert the percentage to the "
-"appropriate number of days, according to the Planning configuration setting "
-"which is shown here.</p>"
+"html|/resources/FteDaysPerYearDialogExplanation.html|<p>Enter a value below "
+"to assign a fraction of a Full Time Employee (FTE) for the selected work "
+"item and time period. Miradi will convert the percentage to the appropriate "
+"number of days, according to the Planning configuration setting which is "
+"shown here.</p>"
 msgstr ""
 
 # edit phrase: Miradi Help In
