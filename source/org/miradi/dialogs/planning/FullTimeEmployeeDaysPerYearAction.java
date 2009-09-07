@@ -84,8 +84,8 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		
 		panel.add(createEditPanel(), BorderLayout.CENTER);
 		dialog.getRootPane().setDefaultButton(insertButton);
-		percentField.selectAll();
-		percentField.requestFocusInWindow();
+		fractionField.selectAll();
+		fractionField.requestFocusInWindow();
 		Utilities.centerDlg(dialog);
 		dialog.setVisible(true);
 	}
@@ -123,12 +123,12 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		panel.add(new PanelTitleLabel(EAM.text("FTE Days Per Year:")));
 		panel.add(daysPerYearField);
 
-		percentField = new PanelTextField(10);
-		percentField.setDocument(new NumericDocument());
-		percentField.setText(getPrePopulatedValue());
+		fractionField = new PanelTextField(10);
+		fractionField.setDocument(new NumericDocument());
+		fractionField.setText(getPrePopulatedValue());
 
 		panel.add(new PanelTitleLabel(EAM.text("Fraction:")));
-		panel.add(percentField);
+		panel.add(fractionField);
 		
 		return panel;
 	}
@@ -184,7 +184,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	    	 try
 	    	 {
 	    		final String LEADING_0_TO_ALLOW_DECIMAL_WITHOUT_0 = "0";
-				String total = LEADING_0_TO_ALLOW_DECIMAL_WITHOUT_0 + percentField.getText() + str; 
+				String total = LEADING_0_TO_ALLOW_DECIMAL_WITHOUT_0 + fractionField.getText() + str; 
 	    		 double parsed = Double.parseDouble(total);
 	    		 if (0.0 <= parsed && parsed <= 1.0)
 	    		 {
@@ -221,7 +221,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			String doubleAsString = percentField.getText();
+			String doubleAsString = fractionField.getText();
 			double parsedDouble = Double.parseDouble(doubleAsString);
 			
 			PlanningUpperTableModelInterface model = getCastedModel().getCastedModel(getSelectedColumn());
@@ -235,7 +235,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	
 	private PlanningUpperMultiTable multiTable;
 	private MainWindow mainWindow;
-	private PanelTextField percentField;
+	private PanelTextField fractionField;
 	private PanelTextField errorField;
 	private DialogWithButtonBar dialog;
 }
