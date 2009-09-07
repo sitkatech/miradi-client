@@ -564,7 +564,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 	
 	@Override
-	public OptionalDouble getCellPercent(int row, int modelColumn)
+	public OptionalDouble getCellFraction(int row, int modelColumn)
 	{
 		ChoiceItem choiceItem = (ChoiceItem) getValueAt(row, modelColumn);
 		String doubleAsString = choiceItem.getLabel();
