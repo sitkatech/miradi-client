@@ -55,7 +55,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 {
 	public FullTimeEmployeeDaysPerYearAction(PlanningUpperMultiTable planningUpperMultiTable)
 	{
-		super(EAM.text("Percent of FTE..."));
+		super(EAM.text("Fraction of FTE..."));
 		
 		mainWindow = planningUpperMultiTable.getMainWindow();
 		multiTable = planningUpperMultiTable;
@@ -70,7 +70,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		PanelButton cancelButton = new PanelButton(EAM.text("Cancel"));
 		buttons.add(cancelButton);
 		
-		dialog = new DialogWithButtonBar(getMainWindow(), EAM.text("Insert FTE Percentage"));
+		dialog = new DialogWithButtonBar(getMainWindow(), EAM.text("Insert FTE Fraction"));
 		dialog.setButtons(buttons);
 		dialog.setModal(true);
 		dialog.setSimpleCloseButton(cancelButton);
@@ -127,7 +127,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		percentField.setDocument(new NumericDocument());
 		percentField.setText(getPrePopulatedValue());
 
-		panel.add(new PanelTitleLabel(EAM.text("Percent:")));
+		panel.add(new PanelTitleLabel(EAM.text("Fraction:")));
 		panel.add(percentField);
 		
 		return panel;
