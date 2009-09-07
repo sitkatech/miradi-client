@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-06 20:11-0500\n"
+"POT-Creation-Date: 2009-09-06 20:19-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -6160,7 +6160,7 @@ msgstr ""
 msgid "Fraction:"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:212
+#: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:216
 msgid "Must be between 0.00 and 1.00"
 msgstr ""
 
