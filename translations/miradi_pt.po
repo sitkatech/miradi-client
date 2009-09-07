@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 16:23-0500\n"
+"POT-Creation-Date: 2009-09-07 16:50-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -12969,1389 +12969,1019 @@ msgid ""
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Adriatic Sea "
-"Marine___4___Mediterranean Sea___2___Temperate Northern "
-"Atlantic___Temperate___13633429___Adriatic Sea"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North Greenland Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Aegean Sea "
-"Marine___4___Mediterranean Sea___2___Temperate Northern "
-"Atlantic___Temperate___81713330___Aegean-Levantine Seas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Agulhas Bank "
-"Marine___51___Agulhas___10___Temperate Southern "
-"Africa___Temperate___36557821___Agulhas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Alboran Sea "
-"Marine___4___Mediterranean Sea___2___Temperate Northern "
-"Atlantic___Temperate___121622158___Aleutian Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Aleutian Islands "
-"Marine___10___Cold Temperate Northeast Pacific___3___Temperate Northern "
-"Pacific___Temperate___55528964___Amazonia"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Amazonia "
-"Marine___13___North Brazil Shelf___4___Tropical "
-"Atlantic___Tropical___39617185___Amsterdam-St Paul"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Amsterdam-St Paul "
-"Marine___52___Amsterdam-St Paul___10___Temperate Southern "
-"Africa___Temperate___106688840___Amundsen/Bellingshausen Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Amundsen/"
-"Bellingshausen Sea Marine___61___Continental High Antarctic___12___Southern "
-"Ocean___Polar___80644011___Andaman and Nicobar Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Andaman and Nicobar "
-"Islands Marine___24___Andaman___5___Western Indo-"
-"Pacific___Tropical___26316835___Andaman Sea Coral Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Andaman Sea Coral "
-"Coast Marine___24___Andaman___5___Western Indo-"
-"Pacific___Tropical___43609919___Angolan"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Angolan "
-"Marine___17___Gulf of Guinea___4___Tropical "
-"Atlantic___Temperate___44415434___Antarctic Peninsula"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Antarctic Peninsula "
-"Marine___60___Scotia Sea___12___Southern Ocean___Polar___24215161___Arabian "
-"(Persian) Gulf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Arabian (Persian) "
-"Gulf Marine___19___Somali/Arabian___5___Western Indo-"
-"Pacific___Tropical___29679535___Araucanian"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Arafura Sea "
-"Marine___32___Sahul Shelf___6___Central Indo-"
-"Pacific___Tropical___57908846___Arnhem Coast to Gulf of Carpenteria"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Araucanian "
-"Marine___45___Warm Temperate Southeastern Pacific___9___Temperate South "
-"America___Temperate___37808418___Arufura Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Arnhem Coast to Gulf "
-"of Carpenteria Marine___32___Sahul Shelf___6___Central Indo-"
-"Pacific___Tropical___16375398___Auckland Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Auckland Island "
-"Marine___62___Subantarctic New Zealand___12___Southern "
-"Ocean___Polar___163131047___Azores Canaries Madeira"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Azores Canaries "
-"Madeira Marine___3___Lusitanian___2___Temperate Northern "
-"Atlantic___Temperate___31487400___Baffin Bay - Davis Strait"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Baffin Bay - Davis "
-"Strait Marine___1___Arctic___1___Arctic___Polar___94526302___Bahamian"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bahamian "
-"Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___37798373___Baltic Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Baltic Sea "
-"Marine___2___Northern European Seas___2___Temperate Northern "
-"Atlantic___Temperate___94122681___Banda Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Banda Sea "
-"Marine___30___Western Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___44161483___Bassian"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bassian "
-"Marine___56___Southeast Australian Shelf___11___Temperate "
-"Australasia___Temperate___36430077___Beaufort Sea - continental coast and "
-"shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Beaufort Sea - "
-"continental coast and shelf "
-"Marine___1___Arctic___1___Arctic___Polar___47321098___Beaufort-Amundsen-"
-"Viscount Melville-Queen Maud"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Beaufort-Amundsen-"
-"Viscount Melville-Queen Maud "
-"Marine___1___Arctic___1___Arctic___Polar___37997919___Bermuda"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bermuda "
-"Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___26477242___Bight of Sofala/Swamp Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bight of Sofala/Swamp "
-"Coast Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___71354097___Bismark Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bismarck Sea "
-"Marine___31___Eastern Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___46214600___Black Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Black Sea "
-"Marine___7___Black Sea___2___Temperate Northern "
-"Atlantic___Temperate___29743053___Bonaparte Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bonaparte Coast "
-"Marine___32___Sahul Shelf___6___Central Indo-"
-"Pacific___Tropical___27314937___Bounty and Antipodes Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bounty and Antipodes "
-"Islands Marine___62___Subantarctic New Zealand___12___Southern "
-"Ocean___Polar___25665682___Bouvet Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bouvet Island "
-"Marine___59___Subantarctic Islands___12___Southern "
-"Ocean___Polar___21940447___Campbell Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Campbell Island "
-"Marine___62___Subantarctic New Zealand___12___Southern "
-"Ocean___Polar___25132975___Cape Howe"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cape Howe "
-"Marine___56___Southeast Australian Shelf___11___Temperate "
-"Australasia___Temperate___76843368___Cape Verde"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cape Verde "
-"Marine___16___West African Transition___4___Tropical "
-"Atlantic___Tropical___82709559___Cargados Carajos/Tromelin Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cargados Carajos/"
-"Tromelin Island Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___38799393___Carolinian"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Carolinian "
-"Marine___6___Warm Temperate Northwest Atlantic___2___Temperate Northern "
-"Atlantic___Temperate___76120249___Celtic Seas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Celtic Seas "
-"Marine___2___Northern European Seas___2___Temperate Northern "
-"Atlantic___Temperate___21051493___Central and Southern Great Barrier Reef"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central and Southern "
-"Great Barrier Reef Marine___33___Northeast Australian Shelf___6___Central "
-"Indo-Pacific___Tropical___29995481___Central Chile"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Chile "
-"Marine___45___Warm Temperate Southeastern Pacific___9___Temperate South "
-"America___Temperate___58294692___Central Kuroshio Current"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Kuroshio "
-"Current Marine___9___Warm Temperate Northwest Pacific___3___Temperate "
-"Northern Pacific___Temperate___69837093___Central New Zealand"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central New Zealand "
-"Marine___54___Southern New Zealand___11___Temperate "
-"Australasia___Temperate___31516175___Central Peru"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Peru "
-"Marine___45___Warm Temperate Southeastern Pacific___9___Temperate South "
-"America___Temperate___44256463___Central Somali Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Somali Coast "
-"Marine___19___Somali/Arabian___5___Western Indo-"
-"Pacific___Tropical___63188764___Chagos"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chagos "
-"Marine___22___Central Indian Ocean Islands___5___Western Indo-"
-"Pacific___Tropical___66642371___Channels and Fjords of Southern Chile"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Channels and Fjords "
-"of Southern Chile Marine___48___Magellanic___9___Temperate South "
-"America___Temperate___37164272___Chatham Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chatham Island "
-"Marine___54___Southern New Zealand___11___Temperate "
-"Australasia___Temperate___39136232___Chiapas-Nicaragua"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chiapas-Nicaragua "
-"Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___21751687___Chiloense"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chiloense "
-"Marine___48___Magellanic___9___Temperate South "
-"America___Temperate___63523365___Chukchi Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chukchi Sea "
-"Marine___1___Arctic___1___Arctic___Polar___43621618___Clipperton"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Clipperton "
-"Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___19999490___Coastal Forests and Mountains - BC"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cocos Islands "
-"Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___83276990___Cocos-Keeling/Christmas Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cocos-Keeling/"
-"Christmas Island Marine___27___Java Transitional___6___Central Indo-"
-"Pacific___Tropical___267409495___Cook/Austral Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Coral Sea "
-"Marine___35___Tropical Southwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___73287763___Coral Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cortezian "
-"Marine___11___Warm Temperate Northeast Pacific___3___Temperate Northern "
-"Pacific___Temperate___26192928___Cortezian"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Crozet Islands "
-"Marine___59___Subantarctic Islands___12___Southern "
-"Ocean___Polar___42997918___Crozet Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Delagoa "
-"Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___33497130___Delagoa"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East African Coral "
-"Coast Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___47207672___East African Coral Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Antarctic "
-"Dronning Maud Land Marine___61___Continental High Antarctic___12___Southern "
-"Ocean___Polar___23238271___East Antarctic Enderby Land"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Antarctic "
-"Enderby Land Marine___61___Continental High Antarctic___12___Southern "
-"Ocean___Polar___223932225___East Antarctic Wilkes Land"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Antarctic Wilkes "
-"Land Marine___61___Continental High Antarctic___12___Southern "
-"Ocean___Polar___72075950___East Antarctica Dronning Maud Land"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Caroline Islands "
-"Marine___29___Tropical Northwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___224129127___East Caroline Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East China Sea "
-"Marine___9___Warm Temperate Northwest Pacific___3___Temperate Northern "
-"Pacific___Temperate___70468392___East China Sea"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North and East "
+"Iceland Marine"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Greenland Shelf "
-"Marine___1___Arctic___1___Arctic___Polar___61607522___East Greenland Shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Siberian Sea "
-"Marine___1___Arctic___1___Arctic___Polar___92169589___East Siberian Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Easter Island "
-"Marine___42___Easter Island___7___Eastern Indo-"
-"Pacific___Tropical___66475912___Easter Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Bering Sea "
-"Marine___1___Arctic___1___Arctic___Polar___101368676___Eastern Bering Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Brazil "
-"Marine___14___Tropical Southwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___63306708___Eastern Brazil"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Caribbean "
-"Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___85207949___Eastern Caribbean"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Galapagos "
-"Islands Marine___44___Galapagos___8___Tropical Eastern "
-"Pacific___Tropical___39530327___Eastern Galapagos Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern India "
-"Marine___23___Bay of Bengal___5___Western Indo-"
-"Pacific___Tropical___43423063___Eastern India"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Philippines "
-"Marine___30___Western Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___92033973___Eastern Philippines"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Exmouth to Broome "
-"Marine___34___Northwest Australian Shelf___6___Central Indo-"
-"Pacific___Tropical___58462284___Exmouth to Broome"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Faroe Plateau "
-"Marine___2___Northern European Seas___2___Temperate Northern "
-"Atlantic___Temperate___20309016___Faroe Plateau"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Fernando de Naronha "
-"and Atoll das Rocas Marine___14___Tropical Southwestern "
-"Atlantic___4___Tropical Atlantic___Tropical___31200697___Fernando de Naronha "
-"and Atoll das Rocas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Fiji Islands "
-"Marine___35___Tropical Southwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___78546495___Fiji Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Floridian "
-"Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___17344520___Floridian"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gilbert/Ellis Islands "
-"Marine___38___\"Marshall, Gilbert and Ellis Islands\"___7___Eastern Indo-"
-"Pacific___Tropical___208421163___Gilbert/Ellis Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Great Australian "
-"Bight Marine___57___Southwest Australian Shelf___11___Temperate "
-"Australasia___Temperate___30431254___Great Australian Bight"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Greater Antilles "
-"Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___108003966___Greater Antilles"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Guayaquil "
-"Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___25713017___Guayaquil"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Guianan "
-"Marine___13___North Brazil Shelf___4___Tropical "
-"Atlantic___Tropical___45032253___Guianan"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Aden "
-"Marine___18___Red Sea and Gulf of Aden___5___Western Indo-"
-"Pacific___Tropical___55210256___Gulf of Aden"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Alaska "
-"Marine___10___Cold Temperate Northeast Pacific___3___Temperate Northern "
-"Pacific___Temperate___77907167___Gulf of Alaska"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea "
-"Central Marine___17___Gulf of Guinea___4___Tropical "
-"Atlantic___Tropical___39366648___Gulf of Guinea Central"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea "
-"Islands Marine___17___Gulf of Guinea___4___Tropical "
-"Atlantic___Tropical___41417588___Gulf of Guinea Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea South "
-"Marine___17___Gulf of Guinea___4___Tropical "
-"Atlantic___Tropical___31490328___Gulf of Guinea South"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea "
-"Upwelling Marine___17___Gulf of Guinea___4___Tropical "
-"Atlantic___Tropical___35935729___Gulf of Guinea Upwelling"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea West "
-"Marine___17___Gulf of Guinea___4___Tropical "
-"Atlantic___Tropical___47396911___Gulf of Guinea West"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Maine/Bay of "
-"Fundy Marine___5___Cold Temperate Northwest Atlantic___2___Temperate "
-"Northern Atlantic___Temperate___27450869___Gulf of Oman"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Oman "
-"Marine___19___Somali/Arabian___5___Western Indo-"
-"Pacific___Tropical___7333570___Gulf of Papua"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Papua "
-"Marine___32___Sahul Shelf___6___Central Indo-"
-"Pacific___Tropical___41467763___Gulf of St. Lawrence - Eastern Scotian Shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of St. Lawrence "
-"- Eastern Scotian Shelf Marine___5___Cold Temperate Northwest "
-"Atlantic___2___Temperate Northern Atlantic___Temperate___27165566___Gulf of "
-"Thailand"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Thailand "
-"Marine___26___Sunda Shelf___6___Central Indo-"
-"Pacific___Tropical___30632161___Gulf of Tonkin"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Tonkin "
-"Marine___25___South China Sea___6___Central Indo-"
-"Pacific___Tropical___26998323___Halmahera"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Halmahera "
-"Marine___30___Western Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___263988679___Hawaiian Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Hawaii "
-"Marine___37___Hawaii___7___Eastern Indo-"
-"Pacific___Tropical___25490910___Heard and Macdonald Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Heard and Macdonald "
-"Islands Marine___59___Subantarctic Islands___12___Southern "
-"Ocean___Polar___59431083___High Arctic Archipelago"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|High Arctic "
-"Archipelago Marine___1___Arctic___1___Arctic___Polar___18301608___Houtman"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Houtman "
-"Marine___58___West Central Australian Shelf___11___Temperate "
-"Australasia___Temperate___124551743___Hudson Complex"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Hudson Complex "
-"Marine___1___Arctic___1___Arctic___Polar___65852755___Humboldtian"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Humboldtian "
-"Marine___45___Warm Temperate Southeastern Pacific___9___Temperate South "
-"America___Temperate___73614248___Ionian Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ionian Sea "
-"Marine___4___Mediterranean Sea___2___Temperate Northern "
-"Atlantic___Temperate___88978943___Juan Fernández and Desventuradas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Juan Fernandez and "
-"Desventuradas Marine___46___Juan Fernandez and Desventuradas___9___Temperate "
-"South America___Temperate___81381448___Kamchatka Shelf and Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kamchatka Shelf and "
-"Coast Marine___8___Cold Temperate Northwest Pacific___3___Temperate Northern "
-"Pacific___Temperate___100989893___Kara Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kara Sea "
-"Marine___1___Arctic___1___Arctic___Polar___40087455___Kerguelen Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kerguelen Islands "
-"Marine___59___Subantarctic Islands___12___Southern "
-"Ocean___Polar___41592546___Kermadec Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kermadec Island "
-"Marine___53___Northern New Zealand___11___Temperate "
-"Australasia___Temperate___24553671___Lancaster Sound"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Lancaster Sound "
-"Marine___1___Arctic___1___Arctic___Polar___55596997___Laptev Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Laptev Sea "
-"Marine___1___Arctic___1___Arctic___Polar___54119261___Leeuwin"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Leeuwin "
-"Marine___57___Southwest Australian Shelf___11___Temperate "
-"Australasia___Temperate___69433180___Lesser Sunda"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Lesser Sunda "
-"Marine___30___Western Coral Triangle___6___Central Indo-Pacific___Tropical"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Levantine Sea "
-"Marine___4___Mediterranean Sea___2___Temperate Northern "
-"Atlantic___Temperate___149875984___Line Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Line Islands "
-"Marine___39___Central Polynesia___7___Eastern Indo-"
-"Pacific___Tropical___74474742___Lord Howe and Norfolk Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Lord Howe and Norfolk "
-"Islands Marine___36___Lord Howe and Norfolk Islands___6___Central Indo-"
-"Pacific___Tropical___26189903___Macquarie Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Macquarie Island "
-"Marine___59___Subantarctic Islands___12___Southern "
-"Ocean___Polar___18082392___Magdalena Transition"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Magdalena Transition "
-"Marine___11___Warm Temperate Northeast Pacific___3___Temperate Northern "
-"Pacific___Temperate___16515872___Malacca Strait"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Malacca Strait "
-"Marine___26___Sunda Shelf___6___Central Indo-"
-"Pacific___Tropical___130348846___Maldives"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Maldives "
-"Marine___22___Central Indian Ocean Islands___5___Western Indo-"
-"Pacific___Tropical___41606554___Malvinas/Falklands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Malvinas/Falklands "
-"Marine___48___Magellanic___9___Temperate South "
-"America___Temperate___18919811___Manning-Hawkesbury"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Manning-Hawkesbury "
-"Marine___55___East Central Australian Shelf___11___Temperate "
-"Australasia___Temperate___98922689___Mariana Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Mariana Islands "
-"Marine___29___Tropical Northwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___74258463___Marquesas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Marquesas "
-"Marine___41___Marquesas___7___Eastern Indo-"
-"Pacific___Tropical___219409584___Marshall Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Marshall Islands "
-"Marine___38___\"Marshall, Gilbert and Ellis Islands\"___7___Eastern Indo-"
-"Pacific___Tropical___100943486___Mascarene Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Mascarene Islands "
-"Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___65744971___Mexican Tropical Pacific"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Mexican Tropical "
-"Pacific Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___41731919___Namaqua"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Namaqua "
-"Marine___50___Benguela___10___Temperate Southern "
-"Africa___Temperate___28611354___Namib"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Namib "
-"Marine___50___Benguela___10___Temperate Southern "
-"Africa___Temperate___32540482___Natal"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Natal "
-"Marine___51___Agulhas___10___Temperate Southern "
-"Africa___Temperate___116836207___New Caledonia"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|New Caledonia "
-"Marine___35___Tropical Southwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___28744270___Nicoya"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Nicoya "
-"Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___14819604___Ningaloo"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ningaloo "
-"Marine___34___Northwest Australian Shelf___6___Central Indo-"
-"Pacific___Tropical"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North American "
-"Pacific Fijordland Marine___10___Cold Temperate Northeast "
-"Pacific___3___Temperate Northern Pacific___Temperate___179801530___North and "
-"East Barents Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North and East "
-"Barents Sea Marine___1___Arctic___1___Arctic___Polar___38159176___North and "
-"East Iceland"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North and East "
-"Iceland Marine___1___Arctic___1___Arctic___Polar___41962091___North Greenland"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North Greenland "
-"Marine___1___Arctic___1___Arctic___Polar___36580679___North Patagonian Gulfs"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North Patagonian "
-"Gulfs Marine___48___Magellanic___9___Temperate South "
-"America___Temperate___69949320___North Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North Sea "
-"Marine___2___Northern European Seas___2___Temperate Northern "
-"Atlantic___Temperate___7034279___Northeast Sulawesi"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeast Sulawesi "
-"Marine___30___Western Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___66003301___Northeastern Brazil"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeastern Brazil "
-"Marine___14___Tropical Southwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___23906520___Northeastern Honshu"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeastern Honshu "
-"Marine___8___Cold Temperate Northwest Pacific___3___Temperate Northern "
-"Pacific___Temperate___27390502___Northeastern New Zealand"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeastern New "
-"Zealand Marine___53___Northern New Zealand___11___Temperate "
-"Australasia___Temperate___22956704___Northern and Central Red Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern and Central "
-"Red Sea Marine___18___Red Sea and Gulf of Aden___5___Western Indo-"
-"Pacific___Tropical___45328217___Northern Bay of Bengal"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Bay of "
-"Bengal Marine___23___Bay of Bengal___5___Western Indo-"
-"Pacific___Tropical___37202512___Northern California"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern California "
-"Marine___10___Cold Temperate Northeast Pacific___3___Temperate Northern "
-"Pacific___Temperate___21505700___Northern Galapagos Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Galapagos "
-"Islands Marine___44___Galapagos___8___Tropical Eastern "
-"Pacific___Tropical___37300093___Northern Grand Banks - Southern Labrador"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Grand Banks "
-"- Southern Labrador "
-"Marine___1___Arctic___1___Arctic___Polar___60648894___Northern Gulf of Mexico"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Gulf of "
-"Mexico Marine___6___Warm Temperate Northwest Atlantic___2___Temperate "
-"Northern Atlantic___Temperate___33866082___Northern Labrador"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Labrador "
-"Marine___1___Arctic___1___Arctic___Polar___30825163___Northern Monsoon "
-"Current Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Monsoon "
-"Current Coast Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___29305398___Northern Norway and Finnmark"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Norway and "
-"Finnmark Marine___2___Northern European Seas___2___Temperate Northern "
-"Atlantic___Temperate___40559855___Northwest Atlantic Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ogasawara Islands "
-"Marine___29___Tropical Northwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___112366465___Ogasawara Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|\"Oregon, Washington, "
-"Vancouver Coast and Shelf Marine\"___10___Cold Temperate Northeast "
-"Pacific___3___Temperate Northern Pacific___Temperate___91786552___Oyashio "
-"Current"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Oyashio Current "
-"Marine___8___Cold Temperate Northwest Pacific___3___Temperate Northern "
-"Pacific___Temperate___32636409___Pacific Northwest Coast"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Palawan/North Borneo "
-"Marine___30___Western Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___56467945___Palawan/North Borneo"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Panama Bight "
-"Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___51406260___Panama Bight"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Papua "
-"Marine___30___Western Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___61466146___Papua"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Patagonian Shelf "
-"Marine___48___Magellanic___9___Temperate South "
-"America___Temperate___26891588___Patagonian Shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Peter the First "
-"Island Marine___59___Subantarctic Islands___12___Southern "
-"Ocean___Polar___12244980___Peter the First Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Phoenix/Tokelau/"
-"Northern Cook Islands Marine___39___Central Polynesia___7___Eastern Indo-"
-"Pacific___Tropical___152578674___Phoenix/Tokelau"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Prince Edward Islands "
-"Marine___59___Subantarctic Islands___12___Southern "
-"Ocean___Polar___32681513___Prince Edward Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Puget Trough/Georgia "
-"Basin Marine___10___Cold Temperate Northeast Pacific___3___Temperate "
-"Northern Pacific___Temperate___1587213___Puget Trough - Georgia Basin"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Rapa-Pitcairn "
-"Marine___40___Southeast Polynesia___7___Eastern Indo-"
-"Pacific___Tropical___117891076___Rapa-Pitcairn"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Revillagigedos "
-"Marine___43___Tropical East Pacific___8___Tropical Eastern "
-"Pacific___Tropical___64179322___Revillagigedos"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Rio de la Plata "
-"Marine___47___Warm Temperate Southwestern Atlantic___9___Temperate South "
-"America___Temperate___3197729___Rio de la Plata"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Rio Grande "
-"Marine___47___Warm Temperate Southwestern Atlantic___9___Temperate South "
-"America___Temperate___26075179___Rio Grande"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ross Sea "
-"Marine___61___Continental High Antarctic___12___Southern "
-"Ocean___Polar___96816790___Ross Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Saharan Upwelling "
-"Marine___3___Lusitanian___2___Temperate Northern "
-"Atlantic___Temperate___55963754___Saharan Upwelling"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sahelian Upwelling "
-"Marine___16___West African Transition___4___Tropical "
-"Atlantic___Tropical___49994645___Sahelian Upwelling"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Samoa Islands "
-"Marine___39___Central Polynesia___7___Eastern Indo-"
-"Pacific___Tropical___80624474___Samoa Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sao Pedro and Sao "
-"Paulo Islands Marine___14___Tropical Southwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___40708933___Sao Pedro and Sao Paulo Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Scotian Shelf "
-"Marine___5___Cold Temperate Northwest Atlantic___2___Temperate Northern "
-"Atlantic___Temperate___26137431___Scotian Shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sea of Japan/East Sea "
-"Marine___8___Cold Temperate Northwest Pacific___3___Temperate Northern "
-"Pacific___Temperate___99256379___Sea of Japan"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sea of Okhotsk "
-"Marine___8___Cold Temperate Northwest Pacific___3___Temperate Northern "
-"Pacific___Temperate___104021257___Sea of Okhotsk"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Seychelles "
-"Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___118340000___Seychelles"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Shark Bay "
-"Marine___58___West Central Australian Shelf___11___Temperate "
-"Australasia___Temperate___18846181___Shark Bay"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Snares Island "
-"Marine___54___Southern New Zealand___11___Temperate "
-"Australasia___Temperate___10688593___Snares Island"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Society Islands "
-"Marine___40___Southeast Polynesia___7___Eastern Indo-"
-"Pacific___Tropical___48079167___Society Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Solomon Archipelago "
-"Marine___31___Eastern Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___167201725___Solomon Archipelago"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Solomon Sea "
-"Marine___31___Eastern Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___64509570___Solomon Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South and West "
-"Iceland Marine___2___Northern European Seas___2___Temperate Northern "
-"Atlantic___Temperate___37647475___South and West Iceland"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Australian "
-"Gulfs Marine___57___Southwest Australian Shelf___11___Temperate "
-"Australasia___Temperate___18627667___South Australian Gulfs"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South China Sea "
-"Oceanic Islands Marine___25___South China Sea___6___Central Indo-"
-"Pacific___Tropical___126803003___South China Sea Oceanic Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South European "
-"Atlantic Shelf Marine___3___Lusitanian___2___Temperate Northern "
-"Atlantic___Temperate___66705456___South European Atlantic Shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Georgia "
-"Marine___60___Scotia Sea___12___Southern Ocean___Polar___40428639___South "
-"Georgia"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South India and Sri "
-"Lanka Marine___21___West and South Indian Shelf___5___Western Indo-"
-"Pacific___Tropical___65899635___South India and Sri Lanka"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Kuroshio "
-"Marine___28___South Kuroshio___6___Central Indo-"
-"Pacific___Tropical___101243151___South Kuroshio Current"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South New Zealand "
-"Marine___54___Southern New Zealand___11___Temperate "
-"Australasia___Temperate___27710258___South Orkney Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Orkney Islands "
-"Marine___60___Scotia Sea___12___Southern Ocean___Polar___40576581___South "
-"Sandwich Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Sandwich "
-"Islands Marine___60___Scotia Sea___12___Southern "
-"Ocean___Polar___35504652___South Shetland Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Shetland "
-"Islands Marine___60___Scotia Sea___12___Southern "
-"Ocean___Polar___42970038___Southeast Madagascar"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southeast Madagascar "
-"Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___22744353___Southeast Papua New Guinea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southeast Papua New "
-"Guinea Marine___31___Eastern Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___37540209___Southeastern Brazil"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southeastern Brazil "
-"Marine___47___Warm Temperate Southwestern Atlantic___9___Temperate South "
-"America___Temperate___52949685___Southern California"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern California "
-"Bight Marine___11___Warm Temperate Northeast Pacific___3___Temperate "
-"Northern Pacific___Temperate___58251801___Southern Caribbean"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Caribbean "
-"Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___28027091___Southern China"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern China "
-"Marine___25___South China Sea___6___Central Indo-Pacific___Tropical"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Cook/Austral "
-"Islands Marine___40___Southeast Polynesia___7___Eastern Indo-"
-"Pacific___Tropical___33737176___Southern Grand Banks - South Newfoundland"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Grand Banks "
-"- South Newfoundland Marine___5___Cold Temperate Northwest "
-"Atlantic___2___Temperate Northern Atlantic___Temperate___74666446___Southern "
-"Gulf of Mexico"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Gulf of "
-"Mexico Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___60484602___Southern Java"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Java "
-"Marine___27___Java Transitional___6___Central Indo-"
-"Pacific___Tropical___26261158___Southern New Zealand"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Norway "
-"Marine___2___Northern European Seas___2___Temperate Northern "
-"Atlantic___Temperate___25300493___Southern Norway"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Red Sea "
-"Marine___18___Red Sea and Gulf of Aden___5___Western Indo-"
-"Pacific___Tropical___22836617___Southern Red Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Vietnam "
-"Marine___26___Sunda Shelf___6___Central Indo-"
-"Pacific___Tropical___18557223___Southern Vietnam"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southwestern "
-"Caribbean Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___80275777___Southwestern Caribbean"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|St. Helena and "
-"Ascension Islands Marine___15___St. Helena and Ascension "
-"Islands___4___Tropical Atlantic___Tropical___86384865___St. Helena and "
-"Ascension Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sulawesi Sea/Makassar "
-"Strait Marine___30___Western Coral Triangle___6___Central Indo-"
-"Pacific___Tropical___76956923___Sulawesi Sea/Makassar Strait"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sunda Shelf/Java Sea "
-"Marine___26___Sunda Shelf___6___Central Indo-"
-"Pacific___Tropical___135865982___Sunda Shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Three Kings-North "
-"Cape Marine___53___Northern New Zealand___11___Temperate "
-"Australasia___Temperate___23654643___Three Kings-North Cape"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tonga Islands "
-"Marine___35___Tropical Southwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___75756623___Tonga Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Torres Strait "
-"Northern Great Barrier Reef Marine___33___Northeast Australian "
-"Shelf___6___Central Indo-Pacific___Tropical___18463735___Torres Strait "
-"Northern Great Barrier Reef"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Trindade and Martin "
-"Vaz Islands Marine___14___Tropical Southwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___43790513___Trindade and Martin Vaz Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tristan Gough "
-"Marine___49___Tristan Gough___9___Temperate South "
-"America___Temperate___96403354___Tristan Gough"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tuamotus "
-"Marine___40___Southeast Polynesia___7___Eastern Indo-"
-"Pacific___Tropical___241171961___Tuamotus"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tunisian Plateau/Gulf "
-"of Sidra Marine___4___Mediterranean Sea___2___Temperate Northern "
-"Atlantic___Temperate"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tweed-Moreton "
-"Marine___55___East Central Australian Shelf___11___Temperate "
-"Australasia___Temperate___24754970___Tweed-Moreton"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Uruguay-Buenos Aires "
-"Shelf Marine___47___Warm Temperate Southwestern Atlantic___9___Temperate "
-"South America___Temperate___36631727___Uruguay-Buenos Aires Shelf"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Vanuatu "
-"Marine___35___Tropical Southwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___149928642___Vanuatu"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Virginian "
-"Marine___5___Cold Temperate Northwest Atlantic___2___Temperate Northern "
-"Atlantic___Temperate___134698360___Weddell Sea"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Weddell Sea "
-"Marine___61___Continental High Antarctic___12___Southern "
-"Ocean___Polar___99550769___West Caroline Islands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|West Caroline Islands "
-"Marine___29___Tropical Northwestern Pacific___6___Central Indo-"
-"Pacific___Tropical___58728130___West Greenland Shelf"
+"Marine"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|West Greenland Shelf "
-"Marine___1___Arctic___1___Arctic___Polar___116075444___Western & Northern "
-"Madagascar"
+"Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western and Northern "
-"Madagascar Marine___20___Western Indian Ocean___5___Western Indo-"
-"Pacific___Tropical___53910026___Western Arabian Sea"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Grand Banks "
+"- Southern Labrador Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Arabian Sea "
-"Marine___19___Somali/Arabian___5___Western Indo-"
-"Pacific___Tropical___32341341___Western Bassian"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Labrador "
+"Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Bassian "
-"Marine___56___Southeast Australian Shelf___11___Temperate "
-"Australasia___Temperate___24663164___Western Caribbean"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Hudson Complex Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Beaufort-Amundsen-"
+"Viscount Melville-Queen Maud Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Beaufort Sea - "
+"continental coast and shelf Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chukchi Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Siberian Sea "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Laptev Sea Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kara Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North and East "
+"Barents Sea Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|White Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South and West "
+"Iceland Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Faroe Plateau Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Norway Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Norway and "
+"Finnmark Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Baltic Sea Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Celtic Seas Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South European "
+"Atlantic Shelf Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Saharan Upwelling "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Azores Canaries "
+"Madeira Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Adriatic Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of St. Lawrence "
+"- Eastern Scotian Shelf Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Grand Banks "
+"- South Newfoundland Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Scotian Shelf Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Virginian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Gulf of "
+"Mexico Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Black Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sea of Okhotsk Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Oyashio Current Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeastern Honshu "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sea of Japan/East Sea "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Yellow Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Kuroshio "
+"Current Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East China Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Aleutian Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Alaska Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cortezian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Magdalena Transition "
+"Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bermuda Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bahamian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Caribbean "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Greater Antilles "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Caribbean "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southwestern "
+"Caribbean Marine"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Caribbean "
-"Marine___12___Tropical Northwestern Atlantic___4___Tropical "
-"Atlantic___Tropical___23287123___Western Galapagos Archipelago"
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Gulf of "
+"Mexico Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Floridian Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Guianan Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Amazonia Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sao Pedro and Sao "
+"Paulo Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Fernando de Naronha "
+"and Atoll das Rocas Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeastern Brazil "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Brazil Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Trindade and Martin "
+"Vaz Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|St. Helena and "
+"Ascension Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cape Verde Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea "
+"Upwelling Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea "
+"Central Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern and Central "
+"Red Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Red Sea "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Aden Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Arabian (Persian) "
+"Gulf Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Oman Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Arabian Sea "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Somali Coast "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Monsoon "
+"Current Coast Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East African Coral "
+"Coast Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Seychelles Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cargados Carajos/"
+"Tromelin Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Mascarene Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southeast Madagascar "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western and Northern "
+"Madagascar Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bight of Sofala/Swamp "
+"Coast Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Delagoa Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western India Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South India and Sri "
+"Lanka Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Maldives Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chagos Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern India Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Bay of "
+"Bengal Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Andaman and Nicobar "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Andaman Sea Coral "
+"Coast Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Sumatra Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Tonkin Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern China Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South China Sea "
+"Oceanic Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Thailand "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Vietnam "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sunda Shelf/Java Sea "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Malacca Strait Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Java Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cocos-Keeling/"
+"Christmas Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Kuroshio Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ogasawara Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Mariana Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Caroline Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|West Caroline Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Palawan/North Borneo "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Philippines "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sulawesi Sea/Makassar "
+"Strait Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Halmahera Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Papua Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Banda Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Lesser Sunda Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeast Sulawesi "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bismarck Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Solomon Archipelago "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Solomon Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southeast Papua New "
+"Guinea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Papua Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Arafura Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Arnhem Coast to Gulf "
+"of Carpenteria Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bonaparte Coast Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Torres Strait "
+"Northern Great Barrier Reef Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central and Southern "
+"Great Barrier Reef Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Exmouth to Broome "
+"Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ningaloo Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tonga Islands Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Vanuatu Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|New Caledonia Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Coral Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Lord Howe and Norfolk "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Marshall Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Line Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Phoenix/Tokelau/"
+"Northern Cook Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Samoa Islands Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tuamotus Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Rapa-Pitcairn Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern Cook/Austral "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Society Islands Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Marquesas Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Easter Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Revillagigedos Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Clipperton Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Mexican Tropical "
+"Pacific Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chiapas-Nicaragua "
+"Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Nicoya Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cocos Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Panama Bight Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Guayaquil Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern Galapagos "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Galapagos "
+"Islands Marine"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Galapagos "
-"Islands Marine___44___Galapagos___8___Tropical Eastern "
-"Pacific___Tropical___63250636___Western India"
+"Islands Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western India "
-"Marine___21___West and South Indian Shelf___5___Western Indo-"
-"Pacific___Tropical___83512223___Western Mediterranean Sea"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Peru Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Humboldtian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central Chile Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Araucanian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Juan Fernandez and "
+"Desventuradas Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southeastern Brazil "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Rio Grande Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Rio de la Plata Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Uruguay-Buenos Aires "
+"Shelf Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Malvinas/Falklands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Channels and Fjords "
+"of Southern Chile Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chiloense Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tristan Gough Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Namaqua Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Agulhas Bank Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Natal Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Amsterdam-St Paul "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Three Kings-North "
+"Cape Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South New Zealand "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Snares Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tweed-Moreton Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Manning-Hawkesbury "
+"Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Cape Howe Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bassian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Bassian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Australian "
+"Gulfs Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Great Australian "
+"Bight Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Leeuwin Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Shark Bay Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Houtman Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Macquarie Island "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Heard and Macdonald "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kerguelen Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Crozet Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Prince Edward Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bouvet Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Peter the First "
+"Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Sandwich "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Georgia Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Orkney Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|South Shetland "
+"Islands Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Antarctic Peninsula "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Antarctic Wilkes "
+"Land Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Antarctic "
+"Enderby Land Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|East Antarctic "
+"Dronning Maud Land Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Weddell Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Amundsen/"
+"Bellingshausen Sea Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ross Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Campbell Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Auckland Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Baffin Bay - Davis "
+"Strait Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Lancaster Sound Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|High Arctic "
+"Archipelago Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Eastern Bering Sea "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Aegean Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Levantine Sea Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Tunisian Plateau/Gulf "
+"of Sidra Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Ionian Sea Marine"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Mediterranean "
-"Marine___4___Mediterranean Sea___2___Temperate Northern "
-"Atlantic___Temperate___73031376___Western Sumatra"
+"Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Western Sumatra "
-"Marine___24___Andaman___5___Western Indo-"
-"Pacific___Tropical___8707214___White Sea"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Alboran Sea Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|White Sea "
-"Marine___1___Arctic___1___Arctic___Polar___44139275___Yellow Sea"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Maine/Bay of "
+"Fundy Marine"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Yellow Sea "
-"Marine___8___Cold Temperate Northwest Pacific___3___Temperate Northern "
-"Pacific___Temperate"
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Carolinian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kamchatka Shelf and "
+"Coast Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North American "
+"Pacific Fijordland Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Puget Trough/Georgia "
+"Basin Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|\"Oregon, Washington, "
+"Vancouver Coast and Shelf Marine\""
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northern California "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Southern California "
+"Bight Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Sahelian Upwelling "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea West "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gulf of Guinea South "
+"Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Angolan Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Fiji Islands Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Hawaii Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Gilbert/Ellis Islands "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|North Patagonian "
+"Gulfs Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Patagonian Shelf "
+"Marine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Namib Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Kermadec Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Northeastern New "
+"Zealand Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Chatham Island Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Central New Zealand "
+"Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Bounty and Antipodes "
+"Islands Marine"
 msgstr ""
 
 msgid ""
@@ -14612,309 +14242,200 @@ msgid ""
 "Unit)"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Australia___Asia "
-"Pacific___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Australia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|China"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Indonesia"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|China___Asia "
-"Pacific___YES"
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pacific Island Countries"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Illinois"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Indiana"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Iowa"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Kansas"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Michigan"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Minnesota"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Missouri"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Nebraska"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|North Dakota"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Oklahoma"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|South Dakota"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Texas"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Wisconsin"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Connecticut"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Delaware"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Maine"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Maryland/DC"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Massachusetts"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|New Hampshire"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|New Jersey"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|New York"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Ohio"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pennsylvania"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Rhode Island"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Vermont"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Virginia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|West Virginia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Caribbean"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Indonesia___Asia "
-"Pacific___YES"
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mexico and Northern "
+"Central America"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Alaska"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|California"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Canada"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Hawaii"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Oregon"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Washington"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Arizona"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Colorado"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Idaho"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Montana"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Nevada"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|New Mexico"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Utah"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Wyoming"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Amazon"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pacific Island "
-"Countries___Asia Pacific___YES"
+"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Northern Andes and "
+"Southern Central America"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Illinois___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern Andes"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Indiana___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Alabama"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Iowa___Central US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Arkansas"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Kansas___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Florida"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Michigan___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Georgia"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Minnesota___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Kentucky"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Missouri___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Louisiana"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Nebraska___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mississippi"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|North Dakota___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|North Carolina"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Oklahoma___Central "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|South Carolina"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|South Dakota___Central "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Texas___Central US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Wisconsin___Central "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Connecticut___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Delaware___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Maine___Eastern US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Maryland/DC___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Massachusetts___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|New Hampshire___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|New Jersey___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|New York___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Ohio___Eastern US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Pennsylvania___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Rhode Island___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Vermont___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Virginia___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|West Virginia___Eastern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Caribbean "
-"Countries___Mesoamerica and Caribbean___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mexico___Mesoamerica "
-"and Caribbean___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Alaska___Pacific North "
-"America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|California___Pacific "
-"North America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Canada___Pacific North "
-"America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Hawaii___Pacific North "
-"America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Oregon___Pacific North "
-"America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Washington___Pacific "
-"North America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Arizona___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Colorado___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Idaho___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Montana___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Nevada___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|New Mexico___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Utah___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Wyoming___Rocky "
-"Mountains___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Amazon___South "
-"America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Northern Tropical "
-"Andes___South America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Southern Andes___South "
-"America___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Arkansas___Southern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Florida___Southern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Georgia___Southern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Kentucky___Southern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Louisiana___Southern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mississippi___Southern "
-"US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|North "
-"Carolina___Southern US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|South "
-"Carolina___Southern US___YES"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Tennessee___Southern "
-"US___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Tennessee"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Asia Pacific Regional "
-"Office___Asia Pacific___YES"
+"Office"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide "
-"Office___Worldwide Office___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Worldwide Office"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC___Non-TNC___YES"
+msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Non-TNC"
 msgstr ""
 
 msgid "choice|/resources/fieldoptions/TncOperatingUnits.tsv|Mongolia"
@@ -15694,2264 +15215,1803 @@ msgid ""
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Aceh___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Alaskan Coastal"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Aegean "
-"Drainages___5___temperate coastal rivers"
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Yukon"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Alaska & Canada "
-"Pacific Coastal___5___temperate coastal rivers"
+"Pacific Coastal"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Alaskan "
-"Coastal___11___polar freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Mackenzie"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeast "
-"Adriatic Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Albertine "
-"Highlands___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amatolo - "
-"Winterberg Highlands___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas Estuary "
-"& Coastal Drainages___2___large river deltas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas Guiana "
-"Shield___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas High "
-"Andes___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas "
-"Lowlands___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ameca - "
-"Manantlan___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Anadyr___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Andaman "
-"Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Apalachicola___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Appalachian "
-"Piedmont___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Arabian "
-"Interior___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Arafura - "
-"Carpentaria___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Aral Sea "
-"Drainages___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Argun___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Ashanti___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Atacama___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Atlantic "
-"Northwest Africa___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Azores___-1___No "
-"Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bahama "
-"Archipelago___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Balkash - "
-"Alakul___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Baluchistan___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bangweulu - "
-"Mweru___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Barents Sea "
-"Drainages___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bass Strait "
-"Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Bermuda___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bight "
-"Drainages___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bismarck "
-"Archipelago___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Biwa "
-"Ko___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bonaerensean "
-"Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Bonneville___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Borneo "
-"Highlands___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Canadian Arctic "
-"Archipelago___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Canadian Atlantic "
-"Islands___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Canary "
-"Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cantabric Coast - "
-"Languedoc___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cape "
-"Fold___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cape "
-"Verde___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Caspian "
-"Highlands___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Caspian "
-"Marine___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central & Eastern "
-"Java___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central & Western "
-"Europe___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central "
-"Anatolia___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central Andean "
-"Pacific Slopes___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Mackenzie"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central Arctic "
-"Coastal___11___polar freshwaters"
+"Coastal"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central Caroline "
-"Islands___-1___No Data"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Saskatchewan"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central "
-"Prairie___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Chaco___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chagos___-1___No "
-"Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Chagres___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chao "
-"Phraya___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chesapeake "
-"Bay___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chiapas - "
-"Fonseca___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Chiriqui___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Christmas "
-"Island___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Chuya___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal "
-"Amur___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal East "
-"Africa___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal Fujian - "
-"Zeijang___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal "
-"Levant___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Coatzacoalcos___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cocos Island "
-"(Costa Rica)___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cocos Islands___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Colorado___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Columbia "
-"Glaciated___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Columbia "
-"Unglaciated___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Comoros - "
-"Mayotte___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cook Islands___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Crimea "
-"Peninsula___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Cuanza___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuatro "
-"Cienegas___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuba - Cayman "
-"Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Cumberland___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuvette "
-"Centrale___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuyan - "
-"Desaguadero___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Dalmatia___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Death "
-"Valley___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dnieper - South "
-"Bug___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dniester - Lower "
-"Danube___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Don___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Drakensberg - "
-"Maluti Highlands___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dry "
-"Sahel___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Dzungaria___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|East Caroline "
-"Islands___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|East "
-"Chukotka___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|East Texas "
-"Gulf___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern "
-"Borneo___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Coastal "
-"Australia___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Gulf of "
-"Thailand Drainages___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Hudson "
-"Bay - Ungava___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern "
-"Iberia___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern "
-"Taiwan___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Yellow "
-"Sea Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Zimbabwe "
-"Highlands___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Eburneo___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle "
+"Saskatchewan"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|English - "
-"Winnipeg Lakes___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Er "
-"Hai___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Esfahan___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Essequibo___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Estero Real - "
-"Tempisque___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ethiopian "
-"Highlands___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Etosha___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Fiji___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Florida "
-"Peninsula___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Fluminense___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Fouta - "
-"Djalon___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Galapagos "
-"Islands___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gambier "
-"Islands___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ganges Delta & "
-"Plain___2___large river deltas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ganges Himalayan "
-"Foothills___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gila___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Eyre "
-"Basin___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Greenland___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Grijalva - "
-"Usumacinta___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Guapore - "
-"Itenez___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Guianas___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gulf of St."
-"Lawrence Coastal Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gulf of Venice "
-"Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Guzman - "
-"Samalayuca___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Hainan___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Hamgyong - "
-"Sanmaek___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Hawaiian "
-"Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Helmand - "
-"Sistan___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Hispaniola___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Honshu - Shikoku "
-"- Kyushu___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Horn of "
-"Africa___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Huang He Great "
-"Bend___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Iceland - Jan "
-"Mayen___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Iguassu___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Indian Ocean "
-"Slope of Sumatra & Java___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Indus Himalayan "
-"Foothills___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Inle "
-"Lake___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Inner Mongolia "
-"Endorheic Basins___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Inner Niger "
-"Delta___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ionian "
-"Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Irgyz -"
-"Turgai___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Isthmus "
-"Caribbean___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Italian Peninsula "
-"& Islands___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Jamaica___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Jordan "
-"River___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Juan Fernandez "
-"Island___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Kafue___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Kalahari___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kamchatka & "
-"Northern Kurils___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Kapuas___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Karoo___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Karstveld Sink "
-"Holes___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Kasai___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kavir & Lut "
-"Deserts___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Khorat Plateau "
-"(Mekong)___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Kimberley___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Kolyma___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Koryakia___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kratie - Stung "
-"Treng (Mekong)___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Kuban___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kura - South "
-"Caspian Drainages___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Laguna dos "
-"Patos___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Lahontan___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Baikal___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Chad___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Issyk Kul - "
-"Upper Chu___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Lanao___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Malawi___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Onega - Lake "
-"Ladoga___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Poso___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Rukwa___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Tana___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Tanganyika___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Turkana___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake "
-"Van___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Victoria "
-"Basin___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Laurentian Great "
-"Lakes___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lena___11___polar "
-"freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lerma - "
-"Chapala___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lesser Sunda "
-"Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Liao "
-"He___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Llanos El "
-"Salado___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lord Howe "
-"Island___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower & Middle "
-"Indus___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower & Middle "
-"Salween___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower & Middle "
-"Syr Darya___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Amur___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chin Hills - "
-"Arakan Coast___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Congo___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Congo "
-"Rapids___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Huang "
-"He___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Lancang "
-"(Mekong)___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Mackenzie___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Mississippi___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Niger - "
-"Benue___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Nile___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Parana___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Rio Grande "
-"- Bravo___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Tigris & "
-"Euphrates___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Uruguay___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Yangtze___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower "
-"Zambezi___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madagascar "
-"Eastern Highlands___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madagascar "
-"Eastern Lowlands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madeira "
-"Archipelago___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madeira Brazilian "
-"Shield___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mae "
-"Khlong___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Magdalena - "
-"Sinu___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mai "
-"Ndombe___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Malagarasi - "
-"Moyowosi___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Malay Peninsula "
-"Eastern Slope___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Maldives - "
-"Lakshadweep___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Malebo "
-"Pool___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Malukku___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mamore - Madre de "
-"Dios Piedmont___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mar Chiquita - "
-"Salinas Grandes___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Maracaibo___1___large lakes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mariana "
-"Islands___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Marquesas "
-"Islands___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Marshall "
-"Islands___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Mascarenes___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Matano - Southern "
-"Malili Lakes___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mayran - "
-"Viesca___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mediterranean "
-"Northwest Africa___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mekong "
-"Delta___2___large river deltas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Amu "
-"Darya___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle "
-"Amur___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle "
-"Brahmaputra___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle "
-"Missouri___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle "
-"Saskatchewan___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle "
-"Yangtze___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Zambezi - "
-"Luangwa___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Mindanao___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mobile "
-"Bay___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Mosquitia___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mount "
-"Nimba___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Mulanje___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Murray - "
-"Darling___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Namak___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Namib___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Namuda - "
-"Tapi___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New "
-"Caledonia___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New Guinea "
-"Central Mountains___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New Guinea North "
-"Coast___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New "
-"Zealand___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Nicobar "
-"Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Niger "
-"Delta___2___large river deltas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Nile "
-"Delta___2___large river deltas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Norfolk "
-"Island___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|North Andean "
-"Pacific Slopes - Rio Atrato___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeast US & "
-"Southeast Canada Atlantic Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeastern "
-"Borneo___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeastern "
-"Caatinga & Coastal Drainages___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeastern Mata "
-"Atlantica___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern "
-"Anatolia___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern "
-"Annam___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Baltic "
-"Drainages___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern British "
-"Isles___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Central "
-"Asian Highlands___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Central "
-"Sumatra - Western Malaysia___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Deccan "
-"Plateau___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Eastern "
-"Rift___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Gulf of "
-"Guinea Drainages - Bioko___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Hormuz "
-"Drainages___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern "
-"Philippine Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Upper "
-"Guinea___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northwestern "
-"Borneo___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northwestern "
-"Madagascar___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Norwegian Sea "
-"Drainages___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ob___11___polar "
-"freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ogasarawa Islands "
-"- Kazan Archipelago___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ogooue - Nyanga - "
-"Kouilou - Niari___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Okavango___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Okhotsk "
-"Coast___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Oman "
-"Mountains___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Oregon & Northern "
-"California Coastal___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Oregon "
-"Lakes___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco Delta & "
-"Coastal Drainages___2___large river deltas"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco Guiana "
-"Shield___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco High "
-"Andes___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco "
-"Llanos___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco "
-"Piedmont___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Orontes___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Orumiyeh___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ouachita "
-"Highlands___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ozark "
-"Highlands___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Palawan - "
-"Busuanga - Mindoro___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Paleo___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Pangani___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Panuco___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Papaloapan___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Papuan "
-"Peninsula___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Paraguay___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Paraiba do "
-"Sul___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Parnaiba___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Patagonia___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Pecos___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Pilbara___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Pitcairn "
-"Island___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Puerto Rico - "
-"Virgin Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Qaidan___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Quintana Roo - "
-"Motagua___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rapa___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ribeira de "
-"Iguape___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio "
-"Balsas___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio "
-"Conchos___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio "
-"Negro___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio "
-"Salado___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio San Juan "
-"(Mexico)___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio "
-"Santiago___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio "
-"Tuira___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|S. "
-"Francisco___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|S. Tome & "
-"Principe - Annobon___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sabine - "
-"Galveston___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sacramento - San "
-"Joaquin___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Sahara___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|\"Sakhalin, "
-"Hokkaido, & Sikhote - Alin Coast\"___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Samoas___-1___No "
-"Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|San Juan "
-"(Nicaragua/Costa Rica)___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Sangha___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Santa "
-"Maria___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Scotia - "
-"Fundy___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Senegal - "
-"Gambia___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Seychelles___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Shebelle - "
-"Juba___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Shilka (Amur)"
-"___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sierra Madre del "
-"Sur___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sinai___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Sinaloa___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sitang - "
-"Irawaddy___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Society "
-"Islands___-1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Socotra___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Solomon "
-"Islands___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Song "
-"Hong___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Songhua "
-"Jiang___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Sonora___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|South America "
-"Caribbean Drainages - Trinidad___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|South Andean "
-"Pacific Slopes___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern "
-"Borneo___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern "
-"Ghats___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern "
-"Korean Peninsula___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern Mata "
-"Atlantica___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"Anatolia___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"Annam___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Baltic "
-"Lowlands___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"California Coastal - Baja California___4___xeric freshwaters and endorheic "
-"(closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Central "
-"Sumatra___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Deccan "
-"Plateau___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Eastern "
-"Rift___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Gulf of "
-"Guinea Drainages___8___tropical and subtropical coastal rivers"
+"Winnipeg Lakes"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Hudson "
-"Bay___5___temperate coastal rivers"
+"Bay"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"Iberia___7___temperate floodplain rivers and wetlands"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Hudson Bay"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"Kalahari___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Canadian Arctic "
+"Archipelago"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"Madagascar___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Hudson "
+"Bay - Ungava"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Sumatra "
-"- Western Java___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gulf of St."
+"Lawrence Coastal Drainages"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"Tasmania___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Canadian Atlantic "
+"Islands"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
-"Temperate Highveld___6___temperate upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Laurentian Great "
+"Lakes"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|St.Lawrence"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Upper "
-"Guinea___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeast US & "
+"Southeast Canada Atlantic Drainages"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southwest New "
-"Guinea - Trans-Fly Lowland___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Scotia - Fundy"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southwestern "
-"Arabian Coast___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Columbia Glaciated"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southwestern "
-"Australia___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Columbia "
+"Unglaciated"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Snake"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sri Lanka Dry "
-"Zone___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Oregon & Northern "
+"California Coastal"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Oregon Lakes"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sri Lanka Wet "
-"Zone___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sacramento - San "
+"Joaquin"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lahontan"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bonneville"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Death Valley"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|St."
-"Lawrence___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Vegas - Virgin"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sudanic Congo - "
-"Oubangi___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Colorado"
 msgstr ""
 
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Sulawesi___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Taimyr___11___polar freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|\"Tana, Athi & "
-"Coastal Drainages\"___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tapajos - "
-"Juruena___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tarim___4___xeric "
-"freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Teays - Old "
-"Ohio___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Tennessee___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Thrace___5___temperate coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tibetan Plateau "
-"Endorheic Dranages___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Titicaca___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tocantins - "
-"Araguaia___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tonga___-1___No "
-"Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tramandai - "
-"Mampituba___8___tropical and subtropical coastal rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tuamotu "
-"Islands___0"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tubuai Islands___-"
-"1___No Data"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Tumba___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Turan "
-"Plain___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ucayali - "
-"Urubamba Piedmont___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Uele___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Amu "
-"Darya___4___xeric freshwaters and endorheic (closed) basins"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Brahmaputra___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Congo___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Congo "
-"Rapids___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Danube___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Huang "
-"He___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Huang He "
-"Corridor___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Indus___3___montane freshwaters"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Irtysh___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Lancang "
-"(Mekong)___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Lualaba___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Mackenzie___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Mississippi___7___temperate floodplain rivers and wetlands"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Missouri___6___temperate upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Niger___9___tropical and subtropical upland rivers"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Nile___10___tropical and subtropical floodplain rivers and wetland complexes"
-msgstr ""
-
-msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Parana___9___tropical and subtropical upland rivers"
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gila"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Rio Grande "
-"- Bravo___6___temperate upland rivers"
+"- Bravo"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Pecos"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio Conchos"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Salween___9___tropical and subtropical upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Rio Grande "
+"- Bravo"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Saskatchewan___6___temperate upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuatro Cienegas"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio Salado"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Snake___6___temperate upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio San Juan "
+"(Mexico)"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Tigris & "
-"Euphrates___7___temperate floodplain rivers and wetlands"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|West Texas Gulf"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Uruguay___9___tropical and subtropical upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|East Texas Gulf"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Usumacinta___9___tropical and subtropical upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sabine - Galveston"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Yangtze___6___temperate upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Missouri"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper "
-"Yukon___11___polar freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Missouri"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Zambezi "
-"Floodplains___10___tropical and subtropical floodplain rivers and wetland "
-"complexes"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|US Southern Plains"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|US Southern "
-"Plains___6___temperate upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ouachita Highlands"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Valdivian "
-"Lakes___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central Prairie"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Vanuatu___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ozark Highlands"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Vardar___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Mississippi"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Vegas - "
-"Virgin___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Mississippi"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Vogelkop - "
-"Bomberai___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Teays - Old Ohio"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cumberland"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tennessee"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mobile Bay"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Volga - "
-"Ural___7___temperate floodplain rivers and wetlands"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|West Florida Gulf"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Apalachicola"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Volga Delta - "
-"Northern Caspian Drainages___1___large lakes"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Florida Peninsula"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Volta___10___tropical and subtropical floodplain rivers and wetland complexes"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Appalachian "
+"Piedmont"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Wake Island___0"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chesapeake Bay"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Wallis - "
-"Futuna___0"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
+"California Coastal - Baja California"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sonora"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|West Caroline "
-"Islands___-1___No Data"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Guzman - "
+"Samalayuca"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sinaloa"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|West Florida "
-"Gulf___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mayran - Viesca"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio Santiago"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|West Texas "
-"Gulf___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lerma - Chapala"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Amazon "
-"Piedmont___3___montane freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Llanos El Salado"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Panuco"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Anatolia___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ameca - Manantlan"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio Balsas"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Caspian "
-"Drainages___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sierra Madre del "
+"Sur"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Papaloapan"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Equatorial Crater Lakes___3___montane freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coatzacoalcos"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Ghats___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Grijalva - "
+"Usumacinta"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Hudson "
-"Bay___11___polar freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Usumacinta"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Yucatan"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bermuda"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Iberia___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chiapas - Fonseca"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Madagascar___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Quintana Roo - "
+"Motagua"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mosquitia"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Mongolia___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Estero Real - "
+"Tempisque"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Orange___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|San Juan "
+"(Nicaragua/Costa Rica)"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chiriqui"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Red Sea "
-"Drainages___4___xeric freshwaters and endorheic (closed) basins"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Isthmus Caribbean"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Santa Maria"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chagres"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio Tuira"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Taiwan___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuba - Cayman "
+"Islands"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
-"Transcaucasia___5___temperate coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bahama Archipelago"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Jamaica"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Hispaniola"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Puerto Rico - "
+"Virgin Islands"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Windward & "
-"Leeward Islands___8___tropical and subtropical coastal rivers"
+"Leeward Islands"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Xi "
-"Yiang___10___tropical and subtropical floodplain rivers and wetland complexes"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cocos Island "
+"(Costa Rica)"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Xingu___9___tropical and subtropical upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|North Andean "
+"Pacific Slopes - Rio Atrato"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Yaghistan___3___montane freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Magdalena - Sinu"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Maracaibo"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Yenisei___11___polar freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|South America "
+"Caribbean Drainages - Trinidad"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|"
-"Yucatan___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco High Andes"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Yunnan "
-"Lakes___3___montane freshwaters"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco Piedmont"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco Llanos"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco Guiana "
+"Shield"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orinoco Delta & "
+"Coastal Drainages"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Essequibo"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Guianas"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas High "
+"Andes"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Amazon "
+"Piedmont"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rio Negro"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas Guiana "
+"Shield"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas Lowlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ucayali - "
+"Urubamba Piedmont"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mamore - Madre de "
+"Dios Piedmont"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Guapore - Itenez"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tapajos - Juruena"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madeira Brazilian "
+"Shield"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Xingu"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amazonas Estuary "
+"& Coastal Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tocantins - "
+"Araguaia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Parnaiba"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeastern "
+"Caatinga & Coastal Drainages"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|S. Francisco"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeastern Mata "
+"Atlantica"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Paraiba do Sul"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ribeira de Iguape"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern Mata "
+"Atlantica"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Uruguay"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Uruguay"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Laguna dos Patos"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tramandai - "
+"Mampituba"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central Andean "
+"Pacific Slopes"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Titicaca"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Atacama"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mar Chiquita - "
+"Salinas Grandes"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuyan - "
+"Desaguadero"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|South Andean "
+"Pacific Slopes"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chaco"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Paraguay"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Parana"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Parana"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Iguassu"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bonaerensean "
+"Drainages"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Patagonia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Valdivian Lakes"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Galapagos Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Juan Fernandez "
+"Island"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Fluminense"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Iceland - Jan "
+"Mayen"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern British "
+"Isles"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cantabric Coast - "
+"Languedoc"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central & Western "
+"Europe"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Norwegian Sea "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Baltic "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Barents Sea "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Baltic "
+"Lowlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Onega - Lake "
+"Ladoga"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Volga - Ural"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Caspian "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Iberia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Iberia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Iberia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gulf of Venice "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Italian Peninsula "
+"& Islands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Danube"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dniester - Lower "
+"Danube"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dalmatia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeast "
+"Adriatic Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ionian Drainages"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Vardar"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Thrace"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Aegean Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dnieper - South "
+"Bug"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Crimea Peninsula"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Don"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kuban"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Anatolia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Anatolia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central Anatolia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Anatolia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
+"Transcaucasia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kura - South "
+"Caspian Drainages"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sinai"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal Levant"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orontes"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Jordan River"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southwestern "
+"Arabian Coast"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Arabian Interior"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Tigris & "
+"Euphrates"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Tigris & "
+"Euphrates"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Oman Mountains"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Van"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Orumiyeh"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Caspian Highlands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Namak"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kavir & Lut "
+"Deserts"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Esfahan"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Turan Plain"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Hormuz "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Caspian Marine"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Volga Delta - "
+"Northern Caspian Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Atlantic "
+"Northwest Africa"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mediterranean "
+"Northwest Africa"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sahara"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dry Sahel"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Niger - "
+"Benue"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Niger Delta"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Niger"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Inner Niger Delta"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Senegal - Gambia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Fouta - Djalon"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Upper "
+"Guinea"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Upper "
+"Guinea"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mount Nimba"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eburneo"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ashanti"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Volta"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bight Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Gulf of "
+"Guinea Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western "
+"Equatorial Crater Lakes"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Chad"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Victoria "
+"Basin"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Nile"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Nile"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Nile Delta"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ethiopian "
+"Highlands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Tana"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Red Sea "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Eastern "
+"Rift"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Horn of Africa"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Turkana"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Shebelle - Juba"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ogooue - Nyanga - "
+"Kouilou - Niari"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Gulf of "
+"Guinea Drainages - Bioko"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sangha"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sudanic Congo - "
+"Oubangi"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Uele"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuvette Centrale"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tumba"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Congo Rapids"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Congo"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Albertine "
+"Highlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Tanganyika"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Malagarasi - "
+"Moyowosi"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bangweulu - Mweru"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Lualaba"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kasai"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mai Ndombe"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Malebo Pool"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Congo Rapids"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Congo"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cuanza"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Namib"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Etosha"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Karstveld Sink "
+"Holes"
 msgstr ""
 
 msgid ""
 "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Zambezian "
-"Headwaters___9___tropical and subtropical upland rivers"
+"Headwaters"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Zambezian "
-"Highveld___9___tropical and subtropical upland rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Zambezi "
+"Floodplains"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kafue"
 msgstr ""
 
 msgid ""
-"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Zambezian "
-"Lowveld___8___tropical and subtropical coastal rivers"
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Zambezi - "
+"Luangwa"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Malawi"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Zambezian Highveld"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Zambezi"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mulanje"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Zimbabwe "
+"Highlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal East "
+"Africa"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Rukwa"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Eastern "
+"Rift"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|\"Tana, Athi & "
+"Coastal Drainages\""
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Pangani"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Okavango"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kalahari"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Kalahari"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Orange"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Karoo"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Drakensberg - "
+"Maloti Highlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
+"Temperate Highveld"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Zambezian Lowveld"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Amatolo - "
+"Winterberg Highlands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cape Fold"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Madagascar"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northwestern "
+"Madagascar"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madagascar "
+"Eastern Highlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern "
+"Madagascar"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madagascar "
+"Eastern Lowlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Comoros - Mayotte"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Seychelles"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mascarenes"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|S. Tome & "
+"Principe - Annobon"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Irgyz -Turgai"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ob"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Irtysh"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chuya"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Yenisei"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Baikal"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Taimyr"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lena"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kolyma"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Anadyr"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|East Chukotka"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Koryakia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kamchatka & "
+"Northern Kurils"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Okhotsk Coast"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal Amur"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Amur"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Amur"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Argun"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Shilka (Amur)"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Songhua Jiang"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Inner Mongolia "
+"Endorheic Basins"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Mongolia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Dzungaria"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Balkash - Alakul"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tarim"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower & Middle "
+"Syr Darya"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Issyk Kul - "
+"Upper Chu"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Central "
+"Asian Highlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Aral Sea Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Amu Darya"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Amu Darya"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Qaidan"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Huang He"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Huang He "
+"Corridor"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Huang He Great "
+"Bend"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Huang He"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Liao He"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Yellow "
+"Sea Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern "
+"Korean Peninsula"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Hamgyong - Sanmaek"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|\"Sakhalin, "
+"Hokkaido, & Sikhote - Alin Coast\""
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Honshu - Shikoku "
+"- Kyushu"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Biwa Ko"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Baluchistan"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Helmand - Sistan"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower & Middle "
+"Indus"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Yaghistan"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Indus Himalayan "
+"Foothills"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Indus"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tibetan Plateau "
+"Endorheic Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Namuda - Tapi"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ganges Delta & "
+"Plain"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ganges Himalayan "
+"Foothills"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Brahmaputra"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Brahmaputra"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Deccan "
+"Plateau"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Deccan "
+"Plateau"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Ghats"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern Ghats"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sri Lanka Dry Zone"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sri Lanka Wet Zone"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chin Hills - "
+"Arakan Coast"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sitang - Irawaddy"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Salween"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower & Middle "
+"Salween"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Inle Lake"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Lancang "
+"(Mekong)"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Er Hai"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Lancang "
+"(Mekong)"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Khorat Plateau "
+"(Mekong)"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kratie - Stung "
+"Treng (Mekong)"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mekong Delta"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Annam"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Gulf of "
+"Thailand Drainages"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chao Phraya"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mae Khlong"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Malay Peninsula "
+"Eastern Slope"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Central "
+"Sumatra - Western Malaysia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Aceh"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Indian Ocean "
+"Slope of Sumatra & Java"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Central "
+"Sumatra"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Sumatra "
+"- Western Java"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central & Eastern "
+"Java"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kapuas"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northwestern "
+"Borneo"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Borneo Highlands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northeastern "
+"Borneo"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Borneo"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southeastern "
+"Borneo"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Malukku"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lesser Sunda "
+"Islands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Sulawesi"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Matano - Southern "
+"Malili Lakes"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Poso"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mindanao"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Lanao"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern "
+"Philippine Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Palawan - "
+"Busuanga - Mindoro"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Western Taiwan"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Taiwan"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Hainan"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Northern Annam"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Song Hong"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Yunnan Lakes"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Xi Yiang"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Upper Yangtze"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Middle Yangtze"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lower Yangtze"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Coastal Fujian - "
+"Zeijang"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Andaman Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Nicobar Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southwestern "
+"Australia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Pilbara"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Kimberley"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Paleo"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Arafura - "
+"Carpentaria"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lake Eyre Basin"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Eastern Coastal "
+"Australia"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Murray - Darling"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bass Strait "
+"Drainages"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southern Tasmania"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New Zealand"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Vogelkop - "
+"Bomberai"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New Guinea North "
+"Coast"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New Guinea "
+"Central Mountains"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Southwest New "
+"Guinea - Trans-Fly Lowland"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Papuan Peninsula"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Bismarck "
+"Archipelago"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Solomon Islands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Vanuatu"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|New Caledonia"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Fiji"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Wallis - Futuna"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Samoas"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Society Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tubuai Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Marquesas Islands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Rapa"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Hawaiian Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|East Caroline "
+"Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|West Caroline "
+"Islands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Azores"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cape Verde"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Canary Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Madeira "
+"Archipelago"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Socotra"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Maldives - "
+"Lakshadweep"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Chagos"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cocos Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Christmas Island"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Ogasarawa Islands "
+"- Kazan Archipelago"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Mariana Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Central Caroline "
+"Islands"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Wake Island"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Marshall Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Lord Howe Island"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Norfolk Island"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tonga"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Cook Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Tuamotu Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Gambier Islands"
+msgstr ""
+
+msgid ""
+"choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Pitcairn Island"
+msgstr ""
+
+msgid "choice|/resources/fieldoptions/TncFreshwaterEcoRegions.tsv|Greenland"
 msgstr ""
 
 msgid ""
