@@ -33,18 +33,13 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 	{
 		setLayout(new BasicGridLayout(0, columnCount));
 		choiceItems = choiceItemsToUse;		
+		codeList = new CodeList();
 		setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		setForeground(EAM.READONLY_FOREGROUND_COLOR);
 	}
 
 	public String getText()
 	{
-		CodeList codeList = new CodeList();
-		for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex )
-		{
-			codeList.add(choiceItems[choiceIndex].getCode());
-		}
-		
 		return codeList.toString();
 	}
 	
@@ -53,7 +48,7 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 		removeAll();
 		try
 		{
-			CodeList codeList = new CodeList(codesToUse);
+			codeList = new CodeList(codesToUse);
 			for (int choiceIndex = 0; choiceIndex < choiceItems.length; ++choiceIndex)
 			{
 				if (codeList.contains(choiceItems[choiceIndex].getCode()))
@@ -73,4 +68,5 @@ public class ReadOnlyCodeListComponent extends MiradiPanel
 	}
 	
 	protected ChoiceItem choiceItems[];
+	private CodeList codeList;
 }
