@@ -160,7 +160,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			actions.add(new MultiTableExpandColumnAction(this));
 		if(model.isColumnCollapsable(modelColumn))
 			actions.add(new MultiTableCollapseColumnAction(this));
-		if(model.isFullTimeEmployeePercentageAvailable(row, modelColumn))
+		if(model.isFullTimeEmployeeFractionAvailable(row, modelColumn))
 			actions.add(new FullTimeEmployeeDaysPerYearAction(this));
 		return actions;
 	}
