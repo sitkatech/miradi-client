@@ -48,11 +48,12 @@ public class TestFullTimeEmployeeCalculationsInsideModel extends TestCaseWithPro
 
 	private void verifyCalculatedFullTimeEmployeeDays(double fullTimeEmployeeDaysPerYear, DateUnit dateUnit, double fraction, double assignedDayCount)
 	{
+		final double TOLERANCE = 0.00001;
 		double calculatedValue = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeDays(dateUnit, fraction, fullTimeEmployeeDaysPerYear);
-		assertEquals("wrong calculated full time employee days value?", assignedDayCount, calculatedValue);
+		assertEquals("wrong calculated full time employee days value?", assignedDayCount, calculatedValue, TOLERANCE);
 		
 		double calculatedFraction = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeFraction(dateUnit, assignedDayCount, fullTimeEmployeeDaysPerYear);
-		assertEquals("wrong calculated full time employee fraction?", fraction, calculatedFraction);
+		assertEquals("wrong calculated full time employee fraction?", fraction, calculatedFraction, TOLERANCE);
 	}
 	
 	public void testGetNumberOfMonthsIn()
