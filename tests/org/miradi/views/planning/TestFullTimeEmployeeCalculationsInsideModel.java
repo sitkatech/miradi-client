@@ -34,19 +34,19 @@ public class TestFullTimeEmployeeCalculationsInsideModel extends TestCaseWithPro
 	public void testCalculateFullTimeEmployeeDays()
 	{
 		verifyCalculatedFullTimeEmployeeDays(240, year2009, 1.0, 240);
-		verifyCalculatedFullTimeEmployeeDays(60, q12009, 1.0, 240);
-		verifyCalculatedFullTimeEmployeeDays(20, jan2009, 1.0, 240);
+		verifyCalculatedFullTimeEmployeeDays(240, q12009, 1.0, 60);
+		verifyCalculatedFullTimeEmployeeDays(240, jan2009, 1.0, 20);
 		
-		verifyCalculatedFullTimeEmployeeDays(120, year2009, 0.5, 240);
-		verifyCalculatedFullTimeEmployeeDays(30, q12009, 0.5, 240);
-		verifyCalculatedFullTimeEmployeeDays(10, jan2009, 0.5, 240);
+		verifyCalculatedFullTimeEmployeeDays(240, year2009, 0.5, 120);
+		verifyCalculatedFullTimeEmployeeDays(240, q12009, 0.5, 30);
+		verifyCalculatedFullTimeEmployeeDays(240, jan2009, 0.5, 10);
 		
-		verifyCalculatedFullTimeEmployeeDays(60, year2009, 0.5, 120);
-		verifyCalculatedFullTimeEmployeeDays(15, q12009, 0.5, 120);
-		verifyCalculatedFullTimeEmployeeDays(5, jan2009, 0.5, 120);
+		verifyCalculatedFullTimeEmployeeDays(120, year2009, 0.5, 60);
+		verifyCalculatedFullTimeEmployeeDays(120, q12009, 0.5, 15);
+		verifyCalculatedFullTimeEmployeeDays(120, jan2009, 0.5, 5);
 	}
 
-	private void verifyCalculatedFullTimeEmployeeDays(double assignedDayCount, DateUnit dateUnit, double fraction, double fullTimeEmployeeDaysPerYear)
+	private void verifyCalculatedFullTimeEmployeeDays(double fullTimeEmployeeDaysPerYear, DateUnit dateUnit, double fraction, double assignedDayCount)
 	{
 		double calculatedValue = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeDays(dateUnit, fraction, fullTimeEmployeeDaysPerYear);
 		assertEquals("wrong calculated full time employee days value?", assignedDayCount, calculatedValue);
