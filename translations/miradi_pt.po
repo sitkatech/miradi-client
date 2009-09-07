@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-07 13:56-0500\n"
+"POT-Creation-Date: 2009-09-07 16:23-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3948,7 +3948,7 @@ msgstr ""
 msgid "Paste"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:67
+#: miradi/source/org/miradi/dialogfields/ReadOnlyCodeListComponent.java:62
 #: miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:48
 #: miradi/source/org/miradi/dialogfields/StringMapProjectResourceFilterEditorField.java:79
 #: miradi/source/org/miradi/dialogfields/RefListComponent.java:73
