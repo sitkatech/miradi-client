@@ -570,7 +570,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		double value = Double.parseDouble(doubleAsString);
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
-		double percent  = (value * getNumberOfMonthsRepresentedByColumn(modelColumn)) / fullTimeEmployeeDaysPerYear;
+		double percent = (value * getNumberOfMonthsRepresentedByColumn(modelColumn)) / fullTimeEmployeeDaysPerYear;
 		
 		return new OptionalDouble(percent);
 	}
@@ -578,16 +578,17 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private int getNumberOfMonthsRepresentedByColumn(int modelColumn)
 	{
 		final int MONTHS_PER_YEAR = 12;
-		final int MONTHS_PER_QUARTER = 3;
+		final int QUARTERS_PER_YEAR = 4;
+		final int YEAR_PER_YEAR = 1;
 		DateUnit dateUnit = getDateUnit(modelColumn);
 		if (dateUnit.isMonth())
-			return 1;
+			return MONTHS_PER_YEAR;
 	
 		if (dateUnit.isQuarter())
-			return MONTHS_PER_QUARTER;
+			return QUARTERS_PER_YEAR;
 	
 		if (dateUnit.isYear())
-			return MONTHS_PER_YEAR;
+			return YEAR_PER_YEAR;
 		
 		throw new RuntimeException(EAM.text("Should Now Allow Full Time Employee To Be Calculated For ") + "DateUnit = " + dateUnit);
 	}
