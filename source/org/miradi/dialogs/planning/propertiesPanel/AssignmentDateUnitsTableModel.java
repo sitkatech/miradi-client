@@ -584,9 +584,9 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return (value * numberOfRepresentedColumnDateUnitByYear) / fullTimeEmployeeDaysPerYear;
 	}
 	
-	public static double calculateReverseFullTimeEmployeeFraction(double percent, double fullTimeEmployeeDaysPerYear,	int numberOfRepresentedColumnDateUnitByYear)
+	public static double calculateReverseFullTimeEmployeeFraction(double fraction, double fullTimeEmployeeDaysPerYear,	int numberOfRepresentedColumnDateUnitByYear)
 	{
-		return (percent * fullTimeEmployeeDaysPerYear) / numberOfRepresentedColumnDateUnitByYear;
+		return (fraction * fullTimeEmployeeDaysPerYear) / numberOfRepresentedColumnDateUnitByYear;
 	}
 	
 	public static int getNumberSlotsPerYear(DateUnit dateUnit)
