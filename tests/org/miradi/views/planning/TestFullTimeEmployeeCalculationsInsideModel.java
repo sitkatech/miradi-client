@@ -67,9 +67,9 @@ public class TestFullTimeEmployeeCalculationsInsideModel extends TestCaseWithPro
 		verifyCalculatedFullTimeEmployeeFraction(jan2009, 5, 120, 0.5);
 	}
 	
-	private void verifyCalculatedFullTimeEmployeeFraction(DateUnit dateUnit, double value, double fullTimeEmployeeDaysPerYear, double expectedValue) throws Exception
+	private void verifyCalculatedFullTimeEmployeeFraction(DateUnit dateUnit, double assignedDayCount, double fullTimeEmployeeDaysPerYear, double expectedValue) throws Exception
 	{
-		double fraction = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeFraction(dateUnit, value, fullTimeEmployeeDaysPerYear);
+		double fraction = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeFraction(dateUnit, assignedDayCount, fullTimeEmployeeDaysPerYear);
 		assertEquals("wrong calculated full time employee fraction?", expectedValue, fraction);
 	}
 	
