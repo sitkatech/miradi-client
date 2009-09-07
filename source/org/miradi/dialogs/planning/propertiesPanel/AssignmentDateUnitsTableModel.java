@@ -584,7 +584,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return (value * numberOfDateUnitsInOneYear) / fullTimeEmployeeDaysPerYear;
 	}
 	
-	public static double calculateFullTimeEmployeeDays(DateUnit dateUnit, double fraction,	double fullTimeEmployeeDaysPerYear)
+	public static double calculateFullTimeEmployeeDays(DateUnit dateUnit, double fraction, double fullTimeEmployeeDaysPerYear)
 	{
 		int numberOfDateUnitsInOneYear = getNumberOfDateUnitsInYear(dateUnit);
 		return (fraction * fullTimeEmployeeDaysPerYear) / numberOfDateUnitsInOneYear;

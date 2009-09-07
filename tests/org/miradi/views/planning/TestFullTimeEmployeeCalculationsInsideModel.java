@@ -31,16 +31,33 @@ public class TestFullTimeEmployeeCalculationsInsideModel extends TestCaseWithPro
 		super(name);
 	}
 
-	public void testCalculateFullTimeEmployeeFraction()
+	public void testCalculateFullTimeEmployeeDays()
 	{
-		//FIXME test FTE calcs here. Method has been verified to fail already.
+		verifyCalculatedFullTimeEmployeeDays(year2009, 1.0, 240, 240);
+		verifyCalculatedFullTimeEmployeeDays(q12009, 1.0, 240, 60);
+		verifyCalculatedFullTimeEmployeeDays(jan2009, 1.0, 240, 20);
+		
+		verifyCalculatedFullTimeEmployeeDays(year2009, 0.5, 240, 120);
+		verifyCalculatedFullTimeEmployeeDays(q12009, 0.5, 240, 30);
+		verifyCalculatedFullTimeEmployeeDays(jan2009, 0.5, 240, 10);
+		
+		verifyCalculatedFullTimeEmployeeDays(year2009, 0.5, 120, 60);
+		verifyCalculatedFullTimeEmployeeDays(q12009, 0.5, 120, 15);
+		verifyCalculatedFullTimeEmployeeDays(jan2009, 0.5, 120, 5);
+	}
+
+	private void verifyCalculatedFullTimeEmployeeDays(DateUnit dateUnit, double fraction, double fullTimeEmployeeDaysPerYear, double expectedValue)
+	{
+		double calculatedValue = AssignmentDateUnitsTableModel.calculateFullTimeEmployeeDays(dateUnit, fraction, fullTimeEmployeeDaysPerYear);
+		assertEquals("wrong calculated full time employee days value?", expectedValue, calculatedValue);
 	}
 	
 	public void testGetNumberOfMonthsIn()
 	{
-		verifyNumberFoMonthsInDateUnit(new DateUnit("YEARFROM:2009-01"), 1);
-		verifyNumberFoMonthsInDateUnit(new DateUnit("2009Q1"), 4);
-		verifyNumberFoMonthsInDateUnit(new DateUnit("2009-01"), 12);
+		verifyNumberFoMonthsInDateUnit(year2009, 1);
+		verifyNumberFoMonthsInDateUnit(q12009, 4);
+		verifyNumberFoMonthsInDateUnit(jan2009, 12);
+
 		verifyThrowsException(new DateUnit());
 		verifyThrowsException(new DateUnit("2009-01-02"));
 	}
@@ -62,4 +79,8 @@ public class TestFullTimeEmployeeCalculationsInsideModel extends TestCaseWithPro
 		{
 		}
 	}
+	
+	private static final DateUnit year2009 = new DateUnit("YEARFROM:2009-01");
+	private static final DateUnit q12009 = new DateUnit("2009Q1");
+	private static final DateUnit jan2009 = new DateUnit("2009-01");
 }
