@@ -557,7 +557,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double fraction)
 	{
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
-		int numberOfRepresentedColumnDateUnitByYear = getNumberSlotsPerYear(getDateUnit(modelColumn));
+		int numberOfRepresentedColumnDateUnitByYear = getNumberOfMonthsIn(getDateUnit(modelColumn));
 		double value = calculateFullTimeEmployeeDays(fraction, fullTimeEmployeeDaysPerYear, numberOfRepresentedColumnDateUnitByYear);
 		
 		setValueAt(new TaglessChoiceItem(value), row, modelColumn);
@@ -573,7 +573,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		
 		double value = Double.parseDouble(doubleAsString);
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
-		int numberOfRepresentedColumnDateUnitByYear = getNumberSlotsPerYear(getDateUnit(modelColumn));
+		int numberOfRepresentedColumnDateUnitByYear = getNumberOfMonthsIn(getDateUnit(modelColumn));
 		double fraction = calculateFullTimeEmployeeFraction(numberOfRepresentedColumnDateUnitByYear, value, fullTimeEmployeeDaysPerYear);
 		
 		return new OptionalDouble(fraction);
@@ -589,7 +589,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return (fraction * fullTimeEmployeeDaysPerYear) / numberOfRepresentedColumnDateUnitByYear;
 	}
 	
-	public static int getNumberSlotsPerYear(DateUnit dateUnit)
+	public static int getNumberOfMonthsIn(DateUnit dateUnit)
 	{
 		final int MONTHS_PER_YEAR = 12;
 		final int QUARTERS_PER_YEAR = 4;
