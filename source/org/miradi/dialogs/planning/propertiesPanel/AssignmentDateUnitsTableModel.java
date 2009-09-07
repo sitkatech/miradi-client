@@ -554,11 +554,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 	
 	@Override
-	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double percent)
+	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double fraction)
 	{
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
 		int numberOfRepresentedColumnDateUnitByYear = getNumberSlotsPerYear(getDateUnit(modelColumn));
-		double value = calculateReverseFullTimeEmployeeFraction(percent, fullTimeEmployeeDaysPerYear, numberOfRepresentedColumnDateUnitByYear);
+		double value = calculateReverseFullTimeEmployeeFraction(fraction, fullTimeEmployeeDaysPerYear, numberOfRepresentedColumnDateUnitByYear);
 		
 		setValueAt(new TaglessChoiceItem(value), row, modelColumn);
 	}
