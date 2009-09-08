@@ -822,6 +822,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 			setData(targetRef, Target.TAG_STRESS_REFS, stressRefs);
 			
 			createThreatStressRatings(targetRef, stressRef);
+			importField(stressNode, STRESS_OVERRIDE_RANK, stressRef, Stress.TAG_DETAIL);
+			importField(stressNode, STRESS_COMMENT, stressRef, Stress.TAG_COMMENTS);
 			populateThreatStressRatings(stressNode, targetRef, stressRef);
 		}
 	}

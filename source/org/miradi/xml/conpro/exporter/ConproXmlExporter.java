@@ -782,6 +782,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeOptionalRatingCodeElement(out, STRESS_SCOPE, stress.getData(Stress.TAG_SCOPE));
 			writeOptionalRatingCodeElement(out, STRESS_TO_TARGET_RANK, stress.getCalculatedStressRating());
 			writeOptionalElement(out, STRESS_OVERRIDE_RANK, stress.getData(Stress.TAG_DETAIL));
+			writeOptionalElement(out, STRESS_COMMENT, stress, Stress.TAG_COMMENTS);
 			writeThreatStressRatings(out, stress);
 			
 			writeEndElement(out, STRESS);

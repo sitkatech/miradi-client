@@ -555,6 +555,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateStress(Stress stress) throws Exception
 	{
 		fillObjectUsingCommand(stress, Stress.TAG_LABEL, "SomeStressLabel");
+		fillObjectUsingCommand(stress, Stress.TAG_DETAIL, "Some Stress Details");
+		fillObjectUsingCommand(stress, Stress.TAG_COMMENTS, "Some Stress Comments");
 		fillObjectUsingCommand(stress, Stress.TAG_SEVERITY, StatusQuestion.GOOD);
 		fillObjectUsingCommand(stress, Stress.TAG_SCOPE, StatusQuestion.GOOD);
 	}
