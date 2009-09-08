@@ -92,7 +92,7 @@ public class ConProMiradiCodeMapHelper
 		indicatorRatingSourceMap.put(RatingSourceQuestion.ROUGH_GUES_CODE, "Rough Guess");
 		indicatorRatingSourceMap.put(RatingSourceQuestion.EXPERT_KNOWLEGE_CODE, "Expert Knowledge");
 		indicatorRatingSourceMap.put(RatingSourceQuestion.EXTERNAL_RESEARCH_CODE, "External Research");
-		indicatorRatingSourceMap.put(RatingSourceQuestion.ONSITE_RESEARCH_CODE, "Internal Research");
+		indicatorRatingSourceMap.put(RatingSourceQuestion.ONSITE_RESEARCH_CODE, "Onsite Research");
 		
 		trendMap = new HashMap<String, String>();
 		trendMap.put(TrendQuestion.NOT_SPECIFIED_CODE, "Not Specified");
