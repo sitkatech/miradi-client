@@ -147,6 +147,7 @@ public interface ConProMiradiXml
 	public static final String ACTIVITY = "activity";
 	public static final String ACTIVITY_START_DATE = "start_date";
 	public static final String ACTIVITY_END_DATE = "end_date";
+	public static final String ACTIVITY_DETAILS = "detail";
 	public static final String PRIORITY = "priority";
 	public static final String STATUS = "status";
 	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";
