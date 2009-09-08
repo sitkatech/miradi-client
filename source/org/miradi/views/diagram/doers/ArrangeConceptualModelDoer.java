@@ -34,10 +34,7 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		if(!isInDiagram())
 			return false;
 		
-		if(getCurrentDiagramObject().getType() != ConceptualModelDiagram.getObjectType())
-			return false;
-		
-		return true;
+		return ConceptualModelDiagram.is(getCurrentDiagramObject().getType());
 	}
 
 	@Override
