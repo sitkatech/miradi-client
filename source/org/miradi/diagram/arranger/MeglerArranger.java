@@ -52,7 +52,6 @@ public class MeglerArranger
 	public MeglerArranger(DiagramObject diagramToArrange)
 	{
 		diagram = diagramToArrange;
-		
 	}
 
 	public void arrange() throws Exception

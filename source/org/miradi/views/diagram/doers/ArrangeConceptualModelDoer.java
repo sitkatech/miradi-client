@@ -63,5 +63,4 @@ public class ArrangeConceptualModelDoer extends ViewDoer
 		DiagramObject currentDiagramObject = getDiagramView().getCurrentDiagramObject();
 		return currentDiagramObject;
 	}
-	
 }
