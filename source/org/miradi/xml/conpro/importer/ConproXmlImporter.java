@@ -251,6 +251,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 					
 			importField(activityNode, NAME, activityRef, Task.TAG_LABEL);
 			importWhenOverride(activityNode, activityRef);
+			importField(activityNode, ACTIVITY_DETAILS, activityRef, Task.TAG_DETAILS);
 			importProgressReports(activityNode, activityRef, Task.TAG_PROGRESS_REPORT_REFS);
 		}
 		

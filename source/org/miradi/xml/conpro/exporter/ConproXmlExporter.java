@@ -212,6 +212,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 				writeElement(out, ACTIVITY_START_DATE, whenTotal.getStartDate().toString());
 				writeElement(out, ACTIVITY_END_DATE, whenTotal.getEndDate().toString());
 			}
+			writeOptionalElement(out, ACTIVITY_DETAILS, activity, Task.TAG_DETAILS);
 			writeProgressReports(out, activity.getProgressReportRefs());
 			
 			writeEndElement(out, ACTIVITY);

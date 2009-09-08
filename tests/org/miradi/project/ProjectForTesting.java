@@ -359,6 +359,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return diagramFactorGroupBox;	 
 	}
 	
+	public Task createAndPopulateActivity() throws Exception
+	{
+		Task activity = createActivity();
+		populateTask(activity, "Some Activity");
+		
+		return activity;
+	}
+	
 	public ProjectResource createProjectResource() throws Exception
 	{
 		ORef projectResourceRef = createObject(ProjectResource.getObjectType());
@@ -641,6 +649,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateTask(Task task, String customLabel) throws Exception
 	{
 		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
+		fillObjectUsingCommand(task, Task.TAG_DETAILS, "Some Task details");
 		addResourceAssignment(task, 10.0, new DateUnit());
 	}
 	
@@ -751,7 +760,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateDraftStrategy();
 		createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();
-		
+		createAndPopulateActivity();
 	}
 
 	public void switchToStressBaseMode() throws Exception
