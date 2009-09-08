@@ -32,6 +32,7 @@ import javax.swing.filechooser.FileFilter;
 import org.martus.util.DirectoryUtils;
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.ValidationException;
@@ -188,7 +189,18 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		ConceptualModelDiagram conceptualModel = ConceptualModelDiagram.find(filledProject, conceptualModelRef);
 		new ConceptualModelByTargetSplitter(filledProject).splitByTarget(conceptualModel, highOrAboveRankedThreatsTag);
 		
+		invokeMeglerArranger(filledProject, conceptualModelRefs);
 		selectFirstDiagramInAlphabeticallySortedList(filledProject);
+	}
+
+	private void invokeMeglerArranger(Project filledProject, ORefList conceptualModelRefs) throws Exception
+	{
+		for(int index = 0; index < conceptualModelRefs.size(); ++index)
+		{
+			ConceptualModelDiagram diagramToArrange = ConceptualModelDiagram.find(filledProject, conceptualModelRefs.get(index));
+			MeglerArranger meglerArranger = new MeglerArranger(diagramToArrange);
+			meglerArranger.arrange();
+		}
 	}
 
 	private void selectFirstDiagramInAlphabeticallySortedList(Project filledProject) throws Exception
