@@ -90,6 +90,7 @@ public interface ConProMiradiXml
 	public static final String STRESS_SCOPE = "stress_scope";
 	public static final String STRESS_OVERRIDE_RANK = "stress_ovrd_rank";
 	public static final String STRESS_TO_TARGET_RANK = "stress_to_target_rank";
+	public static final String STRESS_COMMENT = "stress_comment";
 	public static final String THREAT_STRESS_RATINGS = "threat_stress_ratings";
 	public static final String THREAT_STRESS_RATING = "threat_stress_rating";
 	public static final String CONTRIBUTING_RANK = "contrib_rank";
