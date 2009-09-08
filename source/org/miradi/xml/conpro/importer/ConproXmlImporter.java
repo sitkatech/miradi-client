@@ -399,6 +399,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			ORef measurementRef = getProject().createObject(Measurement.getObjectType());
 			
 			importField(measurementNode, MEASUREMENT_SUMMARY, measurementRef, Measurement.TAG_SUMMARY);
+			importField(measurementNode, MEASUREMENT_COMMENT, measurementRef, Measurement.TAG_COMMENTS);
 			importField(measurementNode, MEASUREMENT_DATE, measurementRef, Measurement.TAG_DATE);
 			importCodeField(measurementNode, MEASUREMENT_STATUS_CONFIDENCE, measurementRef, Measurement.TAG_STATUS_CONFIDENCE, getCodeMapHelper().getConProToMiradiStatusConfidenceMap());
 			importCodeField(measurementNode, MEASUREMENT_TREND, measurementRef, Measurement.TAG_TREND, getCodeMapHelper().getConProToMiradiTrendMap());

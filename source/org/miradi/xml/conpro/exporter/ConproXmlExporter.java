@@ -294,6 +294,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 				
 			writeStartElementWithAttribute(out, MEASUREMENT, SEQUENCE, ++sequenceCounter);
 			writeLabelElement(out, MEASUREMENT_SUMMARY, measurement, Measurement.TAG_SUMMARY);
+			writeOptionalElement(out, MEASUREMENT_COMMENT, measurement, Measurement.TAG_COMMENTS);
 			writeOptionalElement(out, MEASUREMENT_DATE, measurementDate);
 			writeOptionalElement(out, MEASUREMENT_STATUS_CONFIDENCE,  measurementStatusConfidenceCode);
 			writeOptionalElement(out, MEASUREMENT_TREND, measurementTrendCode);
