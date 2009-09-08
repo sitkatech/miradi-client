@@ -175,4 +175,5 @@ public interface ConProMiradiXml
 	public static final String MEASUREMENT_STATUS_CONFIDENCE = "source";
 	public static final String MEASUREMENT_TREND = "trend";
 	public static final String MEASUREMENT_RATING = "rating";
+	public static final String MEASUREMENT_COMMENT = "comment";
 }
