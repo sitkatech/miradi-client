@@ -82,7 +82,7 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		Shape oldClip = g.getClip();
 		try
 		{
-			g.setClip(groupHeaderArea);
+			g.clipRect(groupHeaderArea.x, groupHeaderArea.y, groupHeaderArea.width, groupHeaderArea.height);
 			Graphics2D g2 = (Graphics2D) g;
 			Rectangle fontBounds = g.getFont().getStringBounds(text, g2.getFontRenderContext()).getBounds();
 			int textX = groupHeaderArea.x + groupHeaderArea.width/2 - fontBounds.width/2;
