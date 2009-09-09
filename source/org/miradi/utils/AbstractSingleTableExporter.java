@@ -31,6 +31,11 @@ public abstract class AbstractSingleTableExporter extends AbstractTableExporter
 	{
 		super(projectToUse, uniqueModelIdentifierToUse);
 	}
+	
+	public AbstractSingleTableExporter(Project projectToUse)
+	{
+		super(projectToUse);
+	}
 
 	public int convertToModelColumn(int tableColumn)
 	{

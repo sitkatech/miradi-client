@@ -124,7 +124,7 @@ public abstract class AbstractTableExporter implements TableExporter
 		return codeListAsString.toString();
 	}
 	
-	private Project getProject()
+	protected Project getProject()
 	{
 		return project;
 	}

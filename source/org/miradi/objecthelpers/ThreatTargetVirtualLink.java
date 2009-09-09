@@ -86,6 +86,16 @@ public class ThreatTargetVirtualLink
 	
 	public ORef findThreatStressRatingReferringToStress(ORef threatRef, ORef targetRef, ORef stressRef) throws Exception
 	{
+		ORef threatStressRatingRef = findThreatStressRating(threatRef, targetRef, stressRef);
+		if (threatStressRatingRef.isValid())
+			return threatStressRatingRef;
+		
+		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
+	}
+
+	//TODO this method needs to use threat and stress to get all referring TSRs, and then return the intersection of the referrers
+	public ORef findThreatStressRating(ORef threatRef, ORef targetRef,	ORef stressRef)
+	{
 		ORefList threatStressRatingRefsToUse = getThreatStressRatingRefs(threatRef, targetRef);
 		for(int index = 0; index < threatStressRatingRefsToUse.size(); ++index)
 		{
@@ -95,7 +105,7 @@ public class ThreatTargetVirtualLink
 				return threatStressRatingRef;
 		}
 		
-		throw new Exception("Stress has no matching Threat Stress Rating.  Stress ref = " + stressRef); 
+		return ORef.createInvalidWithType(ThreatStressRating.getObjectType());
 	}
 	
 	public ORefList getThreatStressRatingRefs(ORef threatRef, ORef targetRef)

@@ -19,12 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
+import java.util.Vector;
+
+import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.TableExporter;
+import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
 public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 {
@@ -38,7 +44,43 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	{
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_VIEW_CODE))
 			exportThreatRating(writer);
-				
+		
+		if (reportTemplateContent.contains(ReportTemplateContentQuestion.THREAT_RATING_DETAILS_CODE))
+			exportThreatRatingDetails(writer);
+	}
+	
+	private void exportThreatRatingDetails(RtfWriter wrtier) throws Exception
+	{
+		if (getProject().isStressBaseMode())
+			exportThreatStressRatingDetailsTable(wrtier);
+		else
+			exportSimpleThreatRatingDetailsTable(wrtier);
+	}
+	
+	private void exportThreatStressRatingDetailsTable(RtfWriter writer) throws Exception
+	{
+		Vector<Target> targetColumns = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		Cause[] threatRows =  getProject().getCausePool().getDirectThreats();
+		for(Target targetForColumn : targetColumns)
+		{
+			if (targetForColumn.getStressRefs().hasData())
+				exportThreatStressRatings(writer, targetForColumn, threatRows);
+		}
+	}
+
+	private void exportThreatStressRatings(RtfWriter writer, Target targetForColumn, Cause[] threatRows) throws Exception
+	{
+		for (int threatRowIndex = 0; threatRowIndex < threatRows.length; ++threatRowIndex)
+		{
+			Cause threatForRow = threatRows[threatRowIndex];
+			ThreatStressRatingDetailsTableExporter exporter = new ThreatStressRatingDetailsTableExporter(getProject(), targetForColumn, threatForRow);
+			exportTable(writer, exporter, ReportTemplateContentQuestion.getThreatRatingDetailsLabel());
+		}
+	}
+	
+	private void exportSimpleThreatRatingDetailsTable(RtfWriter writer) throws Exception
+	{
+		//FIXME need to export simple threat rating details
 	}
 
 	private void exportThreatRating(RtfWriter writer) throws Exception
