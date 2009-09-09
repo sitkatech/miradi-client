@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 17:20-0500\n"
+"POT-Creation-Date: 2009-09-09 18:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -278,7 +278,7 @@ msgid "Tab|Action Plan"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/AbstractAccountingCodeManagementPanel.java:45
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:92
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:93
 msgid "Accounting Codes"
 msgstr "Kode Akuntansi"
 
@@ -292,7 +292,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:87
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:88
 msgid "Funding Sources"
 msgstr "Sumber Pendanaan"
 
@@ -419,7 +419,7 @@ msgid "Scope and Vision"
 msgstr "Cakupan dan Visi "
 
 #: miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:30
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:127
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
 msgid "Organization"
 msgstr "Organisasi "
 
@@ -1271,6 +1271,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:55
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
+#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:83
 #: miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
 msgid "Stress"
 msgstr "Tekanan "
@@ -1515,7 +1516,7 @@ msgstr ""
 "bentuk oval pipih warna ungu."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:107
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:108
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:67
 msgid "Monitoring Plan"
 msgstr "Rencana Pemantauan "
@@ -1621,7 +1622,7 @@ msgid ""
 msgstr "Tim Proyek Awal – Orang-orang yang mencetuskan dan memelopori proyek."
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:186
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:102
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:103
 msgid "Work Plan"
 msgstr "Rencana Kerja"
 
@@ -2502,7 +2503,7 @@ msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
 #: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:78
 msgid "Legend Table"
 msgstr "Tabel Keterangan Gambar"
 
@@ -3795,34 +3796,38 @@ msgstr "FOS"
 msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:67
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
 #, fuzzy
 msgid "Target Viability - Table"
 msgstr "Target Viability - Table"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:72
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
 #, fuzzy
 msgid "Target Viability - Details"
 msgstr "Target Viability - Details"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 msgid "Progress Report"
 msgstr "Laporan Kemajuan"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:97
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:98
 msgid "Resources"
 msgstr "Sumber Daya"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:112
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:113
 msgid "Strategic Plan"
 msgstr "Rencana Strategis "
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:117
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:101
 msgid "Threat Ratings"
 msgstr "Peringkat Ancaman"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:122
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+msgid "Threat Rating Details"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
 msgid "Team"
 msgstr "Tim"
 
@@ -6205,6 +6210,7 @@ msgid ""
 msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:359
+#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:86
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Ancaman"
@@ -6394,15 +6400,15 @@ msgstr "XML (*.xml) "
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png) "
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "Could not find tableColumn in map. tableColumn = "
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "."
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "UniqueModelIdentifier="
 msgstr ""
 
@@ -8336,6 +8342,12 @@ msgstr "Keparahan"
 
 msgid "FieldLabel|33.Comments|Comments"
 msgstr "Komentar"
+
+msgid "FieldLabel|33.Contribution|Contribution"
+msgstr ""
+
+msgid "FieldLabel|33.Irreversibility|Irreversibility"
+msgstr ""
 
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
 msgstr "Peringkat Ringkasan "
