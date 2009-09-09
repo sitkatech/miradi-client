@@ -126,6 +126,26 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		return singleSection.add(component);
 	}
 	
+	protected void setTabEnabled(String panelDescription, boolean shouldEnable)
+	{
+		int tabAt = findTabByDescription(panelDescription);
+		if(tabAt < 0)
+			return;
+		
+		tabPanel.setEnabledAt(tabAt, shouldEnable);
+		if(tabPanel.getSelectedIndex() == tabAt)
+			tabPanel.setSelectedIndex(-1);
+	}
+
+	private int findTabByDescription(String panelDescription)
+	{
+		for(int tab = 0; tab < tabPanel.getTabCount(); ++tab)
+			if(tabPanel.getTitleAt(tab).equals(panelDescription))
+				return tab;
+		
+		return -1;
+	}
+
 	class SimpleObjectDataInputPanel extends ObjectDataInputPanel
 	{
 		public SimpleObjectDataInputPanel(Project projectToUse, int objectTypeToUse, String titleToUse)
