@@ -166,6 +166,16 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		super.becomeInactive();
 	}
 	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		if (grid != null)
+			grid.becomeActive();
+		
+		activateCurrentTab();
+	}
+	
 	class FactorPropertiesTabbedPane extends PanelTabbedPane
 	{
 		@Override
