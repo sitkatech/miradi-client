@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 13:55-0500\n"
+"POT-Creation-Date: 2009-09-09 14:11-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -927,7 +927,7 @@ msgid "Button|Save"
 msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/CreateProjectDialog.java:257
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractAssignmentEditorComponent.java:86
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractAssignmentEditorComponent.java:85
 #: miradi/source/org/miradi/dialogs/planning/TableHeaderWithExpandCollapseIcons.java:181
 msgid "An unexpected error has occurred"
 msgstr ""
@@ -6161,7 +6161,7 @@ msgid "Fraction:"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:216
-msgid "Must be between 0.00 and 1.00"
+msgid "Must be a positive number"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/AbstractExpandColumnAction.java:29
