@@ -861,10 +861,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		DiagramLink diagramLink = DiagramLink.find(getProject(), diagramLinkRef);		
 		ORefList groupBoxLinkReferrerRefs = diagramLink.findObjectsThatReferToUs(DiagramLink.getObjectType());
-		for (int index = 0; index < groupBoxLinkReferrerRefs.size(); ++index)
-		{
-			return groupBoxLinkReferrerRefs.get(index);
-		}
+		if (groupBoxLinkReferrerRefs.size() > 0)
+			return groupBoxLinkReferrerRefs.get(0);
 		
 		return diagramLinkRef;
 	}
