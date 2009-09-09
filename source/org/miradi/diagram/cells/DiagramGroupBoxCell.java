@@ -96,12 +96,12 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			return;
 		
 		int gridSize = getProject().getGridSize();
-		shortScopeHeight = 2 * gridSize;
+		heightOfTextArea = 2 * gridSize;
 		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
-		Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - shortScopeHeight);
+		Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - heightOfTextArea);
 		location = getProject().getSnapped(location);
 		int widthWithCushion = (int)groupBoxBounds.getWidth() + 2*gridSize;
-		int heightWithCushion = (int)groupBoxBounds.getHeight() + shortScopeHeight  + gridSize;
+		int heightWithCushion = (int)groupBoxBounds.getHeight() + heightOfTextArea  + gridSize;
 		
 		Dimension size = new Dimension(widthWithCushion, heightWithCushion);
 		int forcedEvenSnappedWidth = getProject().forceNonZeroEvenSnap(size.width);
@@ -209,6 +209,6 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	private DiagramFactor diagramFactor;
 	private DiagramModel model;
-	private int shortScopeHeight;
+	private int heightOfTextArea;
 	private ChoiceQuestion diagramFactorBackgroundQuestion;
 }
