@@ -149,6 +149,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -721,6 +722,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			setToDefaultMode(setCommand);
 			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactor.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
 				handleTextBoxZOrderChanged(setCommand.getObjectORef());
+			
+			if(event.isSetDataCommandWithThisTypeAndTag(GroupBox.getObjectType(), GroupBox.TAG_LABEL))
+				getDiagramModel().updateGroupBoxCells();
 			
 			forceDiagramComponentRepaint();
 		}
