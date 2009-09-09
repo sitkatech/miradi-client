@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 17:20-0500\n"
+"POT-Creation-Date: 2009-09-09 18:50-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -263,7 +263,7 @@ msgid "Tab|Action Plan"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/AbstractAccountingCodeManagementPanel.java:45
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:92
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:93
 msgid "Accounting Codes"
 msgstr "会计编码"
 
@@ -277,7 +277,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:87
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:88
 msgid "Funding Sources"
 msgstr "资金来源"
 
@@ -401,7 +401,7 @@ msgid "Scope and Vision"
 msgstr "范围及愿景 \t\t"
 
 #: miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:30
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:127
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
 msgid "Organization"
 msgstr "组织 \t\t"
 
@@ -1224,6 +1224,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:55
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
+#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:83
 #: miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
 msgid "Stress"
 msgstr "压力"
@@ -1447,7 +1448,7 @@ msgstr ""
 "性、经济性、可行性和恰当性。在Miradi中，方法是以紫色扁椭圆形来代表的。"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:107
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:108
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:67
 msgid "Monitoring Plan"
 msgstr "监控计划 \t\t"
@@ -1548,7 +1549,7 @@ msgid ""
 msgstr "初始项目团队——指构思并启动项目的人们。"
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:186
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:102
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:103
 msgid "Work Plan"
 msgstr "工作计划"
 
@@ -2387,7 +2388,7 @@ msgid "Was expecting a %s, instead got:\n"
 msgstr ""
 
 #: miradi/source/org/miradi/rtf/legend/RtfLegendExporter.java:100
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:77
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:78
 msgid "Legend Table"
 msgstr "图例表格 "
 
@@ -3650,34 +3651,38 @@ msgstr "FOS "
 msgid "Results Chains"
 msgstr "结果链 \t\t"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:67
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:68
 #, fuzzy
 msgid "Target Viability - Table"
 msgstr "Target Viability - Table"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:72
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:73
 #, fuzzy
 msgid "Target Viability - Details"
 msgstr "Target Viability - Details"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:82
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:83
 msgid "Progress Report"
 msgstr "进度报告 "
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:97
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:98
 msgid "Resources"
 msgstr "资源"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:112
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:113
 msgid "Strategic Plan"
 msgstr "策略计划 \t\t"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:117
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:101
 msgid "Threat Ratings"
 msgstr "威胁因子评级"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:122
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+msgid "Threat Rating Details"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
 msgid "Team"
 msgstr "团队"
 
@@ -6040,6 +6045,7 @@ msgid ""
 msgstr "选择哪个策略和活动与本分目标相关联"
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:359
+#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:86
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "威胁因子"
@@ -6220,15 +6226,15 @@ msgstr "XML (*.xml)"
 msgid "FileFilter|PNG (*.png)"
 msgstr "PNG (*.png) \t\t"
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "Could not find tableColumn in map. tableColumn = "
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "."
 msgstr ""
 
-#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:41
+#: miradi/source/org/miradi/utils/AbstractSingleTableExporter.java:46
 msgid "UniqueModelIdentifier="
 msgstr ""
 
@@ -8152,6 +8158,12 @@ msgstr "严重性 \t\t"
 
 msgid "FieldLabel|33.Comments|Comments"
 msgstr "评论 \t\t"
+
+msgid "FieldLabel|33.Contribution|Contribution"
+msgstr ""
+
+msgid "FieldLabel|33.Irreversibility|Irreversibility"
+msgstr ""
 
 msgid "FieldLabel|34.PseudoThreatRating|Summary Rating"
 msgstr "评级概要 \t\t"
