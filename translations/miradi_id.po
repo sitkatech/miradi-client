@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 14:11-0500\n"
+"POT-Creation-Date: 2009-09-09 14:20-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6710,7 +6710,7 @@ msgstr "Sifat-sifat Ancaman Langsung"
 msgid "(Error)"
 msgstr "(Kesalahan) "
 
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:607
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:590
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
 msgstr ""
 
