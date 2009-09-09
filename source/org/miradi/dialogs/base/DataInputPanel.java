@@ -19,12 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.project.Project;
 
 public class DataInputPanel extends DisposablePanel
 {
 	public DataInputPanel(Project projectToUse)
 	{
-		super();
+		setBackground(AppPreferences.getDataPanelBackgroundColor());
 	}
 }

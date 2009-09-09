@@ -28,7 +28,6 @@ import org.martus.swing.UiScrollPane;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.MultiTablePanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -105,6 +104,8 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 			setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_ALWAYS);
 			setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
 			widthSetter = new PersistentWidthSetterComponent(contents.getMainWindow(), this, contents.getUniqueTableIdentifier(), getPreferredSize().width);
+			widthSetter.setForeground(contents.getTableHeader().getForeground());
+			widthSetter.setBackground(contents.getTableHeader().getBackground());
 		}
 		
 		public PersistentWidthSetterComponent getWidthSetterComponent()
@@ -180,11 +181,11 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		DataInputPanel tablesPanel = new DataInputPanel(getProject());
 		tablesPanel.setLayout(new GridLayoutPlus(2, 4));
 	
-		tablesPanel.add(new PanelTitleLabel(""));
-		tablesPanel.add(new PanelTitleLabel(""));
+		tablesPanel.add(new FillerPanel());
+		tablesPanel.add(new FillerPanel());
 		AboveBudgetColumnsBar aboveTableButtonRow = new AboveBudgetColumnsBar(assignmentDateUnitsTable);
 		tablesPanel.add(aboveTableButtonRow);
-		tablesPanel.add(new PanelTitleLabel(""));
+		tablesPanel.add(new FillerPanel());
 		
 		addTableToPanel(tablesPanel, abstractSummaryTable);
 		UiScrollPane dateUnitsTableScrollPanel = addTableToPanel(tablesPanel, assignmentDateUnitsTable);
@@ -193,6 +194,14 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		
 		add(tablesPanel, BorderLayout.CENTER);
 		add(createButtonBar(), BorderLayout.BEFORE_FIRST_LINE);
+	}
+	
+	class FillerPanel extends JPanel
+	{
+		public FillerPanel()
+		{
+			setBackground(AppPreferences.getDataPanelBackgroundColor());
+		}
 	}
 	
 	private UiScrollPane addTableToPanel(JPanel tables, AbstractComponentTable table)

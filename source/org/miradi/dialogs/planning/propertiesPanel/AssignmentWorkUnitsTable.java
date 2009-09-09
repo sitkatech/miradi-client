@@ -7,6 +7,7 @@ import javax.swing.Action;
 import org.miradi.actions.ActionAssignResource;
 import org.miradi.actions.ActionRemoveAssignment;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 
 public class AssignmentWorkUnitsTable extends AssignmentDateUnitsTable
 {
@@ -24,5 +25,11 @@ public class AssignmentWorkUnitsTable extends AssignmentDateUnitsTable
 		actions.add(null);
 		actions.addAll(super.getActionsForRightClickMenu(row, tableColumn));
 		return actions;
+	}
+
+	@Override
+	public String getColumnGroupCode(int tableColumn)
+	{
+		return CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE;
 	}
 }

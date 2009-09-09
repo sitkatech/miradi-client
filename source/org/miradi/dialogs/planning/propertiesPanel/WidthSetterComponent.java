@@ -70,6 +70,9 @@ public class WidthSetterComponent extends JComponent
 	{
 		Graphics2D g2 = (Graphics2D)g;
 	
+		g2.setColor(getBackground());
+		g2.fillRect(0, 0, getWidth() - RIGHT_INDENT, getHeight() - 1);
+
 		g2.setColor(getForeground());
 		g2.drawLine(0, 0, getWidth() - RIGHT_INDENT, 0);
 		g2.drawLine(0, getHeight() - 1, getWidth() - RIGHT_INDENT, getHeight() - 1);

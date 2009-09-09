@@ -39,7 +39,7 @@ import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 
-public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface
+abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface
 {
 	public AssignmentDateUnitsTable(MainWindow mainWindowToUse, AssignmentDateUnitsTableModel modelToUse) throws Exception
 	{
@@ -99,6 +99,8 @@ public class AssignmentDateUnitsTable extends AbstractComponentTable implements 
 	{
 		return getColumnModel().getColumn(column).getWidth();
 	}
+	
+	abstract public String getColumnGroupCode(int tableColumn);
 	
 	public int getColumnAlignment()
 	{
