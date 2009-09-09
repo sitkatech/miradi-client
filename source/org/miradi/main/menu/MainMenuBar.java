@@ -364,7 +364,10 @@ public class MainMenuBar extends JMenuBar
 
 		addMenuItem(actions, menu, ActionCreateConceptualModel.class);
 		addMenuItem(actions, menu, ActionRenameConceptualModel.class);
-		addMenuItem(actions, menu, ActionArrangeConceptualModel.class);
+		if(Miradi.isDemoMode())
+		{
+			addMenuItem(actions, menu, ActionArrangeConceptualModel.class);
+		}
 		addMenuItem(actions, menu, ActionDeleteConceptualModel.class);
 
 		menu.addSeparator();

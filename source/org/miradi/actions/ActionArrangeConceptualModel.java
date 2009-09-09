@@ -32,7 +32,7 @@ public class ActionArrangeConceptualModel extends ViewAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Arrange Conceptual Model Page");
+		return EAM.text("Action|Auto-Arrange Diagram (BETA)");
 	}
 
 	public String getToolTipText()
