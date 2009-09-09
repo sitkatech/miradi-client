@@ -126,26 +126,6 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 		return singleSection.add(component);
 	}
 	
-	@Override
-	public void becomeActive()
-	{
-		super.becomeActive();
-		for(AbstractObjectDataInputPanel panel : getSubPanels())
-		{
-			panel.becomeActive();
-		}
-	}
-	
-	@Override
-	public void becomeInactive()
-	{
-		for(AbstractObjectDataInputPanel panel : getSubPanels())
-		{
-			panel.becomeInactive();
-		}
-		super.becomeInactive();
-	}
-	
 	class SimpleObjectDataInputPanel extends ObjectDataInputPanel
 	{
 		public SimpleObjectDataInputPanel(Project projectToUse, int objectTypeToUse, String titleToUse)
