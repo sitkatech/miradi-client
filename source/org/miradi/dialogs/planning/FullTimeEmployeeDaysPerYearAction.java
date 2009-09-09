@@ -186,7 +186,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 	    		final String LEADING_0_TO_ALLOW_DECIMAL_WITHOUT_0 = "0";
 				String total = LEADING_0_TO_ALLOW_DECIMAL_WITHOUT_0 + fractionField.getText() + str; 
 	    		 double parsed = Double.parseDouble(total);
-	    		 if (0.0 <= parsed && parsed <= 1.0)
+	    		 if (0.0 <= parsed)
 	    		 {
 	    			 super.insertString(offset, str, attr);
 	    			 clearErrorField();
@@ -213,7 +213,7 @@ public class FullTimeEmployeeDaysPerYearAction extends AbstractAction
 		private void displayError()
 		{
 			errorField.setBackground(Color.RED);
-			errorField.setText(EAM.text("Must be between 0.00 and 1.00"));
+			errorField.setText(EAM.text("Must be a positive number"));
 		}
 	}
 	
