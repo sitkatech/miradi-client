@@ -75,4 +75,21 @@ abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTab
 	{
 		return ResourceAssignment.is(assignment);
 	}
+	
+	@Override
+	public boolean isFullTimeEmployeeFractionAvailable(int row, int modelColumn)
+	{
+		if (!isCellEditable(row, modelColumn))
+			return false;
+		
+		DateUnit dateUnit = getDateUnit(modelColumn);
+		if (dateUnit.isYear())
+			return true;
+		if (dateUnit.isQuarter())
+			return true;
+		if (dateUnit.isMonth())
+			return true;
+			
+		return false;
+	}
 }

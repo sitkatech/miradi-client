@@ -537,23 +537,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	}
 	
 	@Override
-	public boolean isFullTimeEmployeeFractionAvailable(int row, int modelColumn)
-	{
-		if (!isCellEditable(row, modelColumn))
-			return false;
-		
-		DateUnit dateUnit = getDateUnit(modelColumn);
-		if (dateUnit.isYear())
-			return true;
-		if (dateUnit.isQuarter())
-			return true;
-		if (dateUnit.isMonth())
-			return true;
-			
-		return false;
-	}
-	
-	@Override
 	public void updateFullTimeEmployeeDaysPerYearFraction(int row, int modelColumn, double fraction)
 	{
 		double fullTimeEmployeeDaysPerYear = getFullTimeEmployeeDaysPerYear(getProject());
