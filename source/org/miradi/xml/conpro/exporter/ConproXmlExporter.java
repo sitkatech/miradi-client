@@ -158,6 +158,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeElement(out, SELECTED, Boolean.toString(!strategy.isStatusDraft()));
 			writeOptionalElement(out, COMMENT, strategy, Strategy.TAG_COMMENTS);
 			writeOptionalElement(out, LEGACY_TNC_STRATEGY_RATING , strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+			writeOptionalElement(out, STRATEGY_TOTAL_COST, strategy.getTotalBudgetCost().toString());
 			writeProgressReports(out, strategy.getProgressReportRefs());
 			writeActivities(out, strategy.getActivityRefs());
 						
@@ -212,6 +213,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 				writeElement(out, ACTIVITY_START_DATE, whenTotal.getStartDate().toString());
 				writeElement(out, ACTIVITY_END_DATE, whenTotal.getEndDate().toString());
 			}
+			writeOptionalElement(out, ACTIVITY_TOTAL_COST, activity.getTotalBudgetCost().toString());
 			writeOptionalElement(out, ACTIVITY_DETAILS, activity, Task.TAG_DETAILS);
 			writeProgressReports(out, activity.getProgressReportRefs());
 			

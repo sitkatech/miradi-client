@@ -48,6 +48,7 @@ import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.GroupBox;
@@ -652,7 +653,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
 		fillObjectUsingCommand(task, Task.TAG_DETAILS, "Some Task details");
-		addResourceAssignment(task, 10.0, new DateUnit());
+		addResourceAssignment(task, createAndPopulateProjectResource(), 10.0, new DateUnit());
+
+		addExpenseWithValue(task);
 	}
 	
 	public void populateMeasurement(Measurement measurement) throws Exception
@@ -704,6 +707,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_OBJECTIVE_IDS, objectiveIds.toString());
 		
 		fillObjectUsingCommand(strategy, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING, "good, tnc legacy strategy rating");
+		
+		addExpenseWithValue(strategy);
 	}
 	
 	public void populateProgressReport(ProgressReport progressReport) throws Exception
@@ -1241,7 +1246,26 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		return MultiCalendar.createFromIsoDateString(date);
 	}
-
+	
+	public void addExpenseWithValue(BaseObject baseObject) throws Exception
+	{
+		DateUnitEffort dateUnitEffort = new DateUnitEffort(new DateUnit(), 12.0);
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(dateUnitEffort);
+		addExpenseAssignment(baseObject, dateUnitEffortList);
+	}
+	
+	public void addExpenseAssignment(BaseObject baseObject, DateUnitEffortList dateUnitEffortList) throws Exception
+	{
+		ORef expenseRef = createObject(ExpenseAssignment.getObjectType());
+		ExpenseAssignment assignment = ExpenseAssignment.find(this, expenseRef);
+		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		
+		ORefList currentAssignmentRefList = baseObject.getExpenseAssignmentRefs();
+		currentAssignmentRefList.add(assignment.getRef());
+		baseObject.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
+	}
+	
 	public ResourceAssignment addResourceAssignment(BaseObject baseObject, double units, int startYear, int endYear) throws Exception
 	{
 		ProjectResource projectResource = createAndPopulateProjectResource();
@@ -1256,6 +1280,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		dateUnitEffort.setUnitQuantity(units);
 		
 		return addResourceAssignment(parentObject, projectResource, dateUnitEffort);
+	}
+	
+	private ResourceAssignment addResourceAssignment(BaseObject parentObject, ProjectResource projectResource, double units, DateUnit dateUnit) throws Exception
+	{
+		ResourceAssignment resourceAssignment = addResourceAssignment(parentObject, units, dateUnit);
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
+		
+		return resourceAssignment;
 	}
 	
 	public ResourceAssignment addResourceAssignment(BaseObject parentObject, double units,  DateUnit dateUnit) throws Exception

@@ -59,11 +59,13 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
 import org.miradi.objects.Indicator;
@@ -205,6 +207,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importField(strategyNode, LEGACY_TNC_STRATEGY_RATING, strategyRef, Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 			importProgressReports(strategyNode, strategyRef, Strategy.TAG_PROGRESS_REPORT_REFS);
 			importActivities(strategyNode, strategyRef);
+			importTotalCost(strategyNode, STRATEGY_TOTAL_COST, strategyRef);
 			
 			createDiagramFactorAndAddToDiagram(strategyRef);
 		}
@@ -251,6 +254,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 					
 			importField(activityNode, NAME, activityRef, Task.TAG_LABEL);
 			importWhenOverride(activityNode, activityRef);
+			importTotalCost(activityNode, ACTIVITY_TOTAL_COST, activityRef);
 			importField(activityNode, ACTIVITY_DETAILS, activityRef, Task.TAG_DETAILS);
 			importProgressReports(activityNode, activityRef, Task.TAG_PROGRESS_REPORT_REFS);
 		}
@@ -269,6 +273,19 @@ public class ConproXmlImporter implements ConProMiradiXml
 			setData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 			setIdListFromRefListData(activityRef, ResourceAssignment.TAG_RESOURCE_ASSIGNMENT_IDS, new ORefList(resourceAssignmentRef), ResourceAssignment.getObjectType());
 		}
+	}
+
+	private void importTotalCost(Node node, String totalCostElementName, ORef ref) throws Exception
+	{
+		String totalCostAsString = getNodeContent(node, totalCostElementName);
+		if (totalCostAsString.length() == 0)
+			return;
+		
+		double totalCost = Double.parseDouble(totalCostAsString);
+		ORef expenseAssignmentRef = getProject().createObject(ExpenseAssignment.getObjectType());
+		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(new DateUnit(), totalCost);
+		setData(expenseAssignmentRef, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		setData(ref, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, new ORefList(expenseAssignmentRef));
 	}
 
 	private DateUnitEffortList createDateUnitEffortList(String startDateAsString, String endDateAsString) throws Exception

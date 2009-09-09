@@ -25,6 +25,7 @@ import java.io.IOException;
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -237,7 +238,8 @@ public class TestConproXmlImporter extends TestCaseWithProject
 		}
 		catch (Exception e)
 		{
-			fail("Emty project could not be imported?");	
+			EAM.logException(e);
+			fail("Emty project could not be imported?");
 		}
 	}
 

@@ -110,6 +110,7 @@ public interface ConProMiradiXml
 	public static final String STRATEGY_THREAT_TARGET_ASSOCIATIONS = "strategy_threat_target_associations";
 	public static final String STRATEGY_THREAT_TARGET_ASSOCIATION = "strategy_threat_target_association";
 	public static final String STRATEGY_ID = "strategy_id";
+	public static final String STRATEGY_TOTAL_COST = "total_cost";
 	public static final String KEY_ATTRIBUTES = "key_attributes";
 	public static final String KEY_ATTRIBUTE = "key_attribute";
 	public static final String CATEGORY = "category";
@@ -149,6 +150,7 @@ public interface ConProMiradiXml
 	public static final String ACTIVITY_START_DATE = "start_date";
 	public static final String ACTIVITY_END_DATE = "end_date";
 	public static final String ACTIVITY_DETAILS = "detail";
+	public static final String ACTIVITY_TOTAL_COST = "total_cost";
 	public static final String PRIORITY = "priority";
 	public static final String STATUS = "status";
 	public static final String SEE_DETAILS_FIELD_METHOD_NAME = "See Details field";

@@ -23,7 +23,6 @@ package org.miradi.objecthelpers;
 import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Task;
@@ -79,14 +78,8 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 	
 	public void testRollupExpenseAssignmentsWithNoQuantities() throws Exception
 	{
-		ORef expenseRef = getProject().createObject(ExpenseAssignment.getObjectType());
-		ExpenseAssignment assignment = ExpenseAssignment.find(getProject(), expenseRef);
-		assignment.setData(ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
-
 		Task activityWithExpenseAssignment = getProject().createActivity();
-		ORefList currentAssignmentRefList = activityWithExpenseAssignment.getExpenseAssignmentRefs();
-		currentAssignmentRefList.add(assignment.getRef());
-		activityWithExpenseAssignment.setData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, currentAssignmentRefList.toString());
+		getProject().addExpenseAssignment(activityWithExpenseAssignment, new DateUnitEffortList());
 		
 		assertNotEquals("Ignored the expense assignment who?", 0, activityWithExpenseAssignment.getTotalTimePeriodCostsMap().size());
 	}
