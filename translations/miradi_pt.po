@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 11:39-0500\n"
+"POT-Creation-Date: 2009-09-09 12:37-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -3564,7 +3564,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:279
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:459
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:462
 msgid "Menu|Group Box"
 msgstr ""
 
@@ -3721,15 +3721,15 @@ msgstr ""
 msgid "MenuBar|Actions"
 msgstr ""
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:471
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:474
 msgid "MenuBar|View"
 msgstr ""
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:521
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:524
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:539
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:542
 msgid "MenuBar|Help"
 msgstr ""
 
@@ -4238,7 +4238,7 @@ msgid "TT|Move the selected item down"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:35
-msgid "Action|Arrange Conceptual Model Page"
+msgid "Action|Auto-Arrange Diagram (BETA)"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:40
