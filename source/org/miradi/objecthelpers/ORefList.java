@@ -224,6 +224,11 @@ public class ORefList
 		return data.size();
 	}
 	
+	public boolean hasData()
+	{
+		return !isEmpty();
+	}
+	
 	public boolean isEmpty()
 	{
 		return (size() == 0);

@@ -70,7 +70,7 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		return Integer.toString(calculatedValue);
 	}
 	
-	protected ChoiceItem convertThreatRatingCodeToChoiceItem(String valueToConvert)
+	public static ChoiceItem convertThreatRatingCodeToChoiceItem(String valueToConvert)
 	{
 		ChoiceItem foundChoiceItem = new ThreatRatingQuestion().findChoiceByCode(valueToConvert);
 		if (foundChoiceItem == null)
@@ -79,6 +79,6 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 		return foundChoiceItem;
 	}
 	
-	private ChoiceItem emptyChoiceItem;
+	private static ChoiceItem emptyChoiceItem;
 	protected StressBasedThreatRatingFramework frameWork;
 }

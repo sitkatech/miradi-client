@@ -45,16 +45,16 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	private void resetTargetAndThreats()
 	{
 		threatRows =  getProject().getCausePool().getDirectThreats();
-		targetColumns = getOnlyTargetsInConceptualModelDiagrams().toArray(new Target[0]);
+		targetColumns = getOnlyTargetsInConceptualModelDiagrams(getProject()).toArray(new Target[0]);
 	}
 
-	private Vector<Target> getOnlyTargetsInConceptualModelDiagrams()
+	public static Vector<Target> getOnlyTargetsInConceptualModelDiagrams(Project projectToUse)
 	{
 		Vector<Target> targetsInConceptualModelDiagrams = new Vector();
-		Target[] allTargets =  getProject().getTargetPool().getSortedTargets();
+		Target[] allTargets =  projectToUse.getTargetPool().getSortedTargets();
 		for (int index = 0; index < allTargets.length; ++index)
 		{
-			ORefList diagramRefsContainingTarget = DiagramObject.getDiagramRefsContainingFactor(getProject(), allTargets[index].getRef());
+			ORefList diagramRefsContainingTarget = DiagramObject.getDiagramRefsContainingFactor(projectToUse, allTargets[index].getRef());
 			ORef conceptualModelDiagramRef = diagramRefsContainingTarget.getRefForType(ConceptualModelDiagram.getObjectType());
 			if (!conceptualModelDiagramRef.isInvalid())
 				targetsInConceptualModelDiagrams.add(allTargets[index]);
@@ -102,7 +102,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 		if(threatIndex < 0 || targetIndex < 0)
 			return false;
 		
-		Factor threat = getDirectThreats()[threatIndex];
+		Factor threat = getThreat(threatIndex);
 		Factor target = getTargets()[targetIndex];
 		return getProject().areLinked(threat, target);
 	}
@@ -145,7 +145,7 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 	
 	public String getThreatName(int threatIndex)
 	{
-		return getDirectThreats()[threatIndex].getLabel();
+		return getThreat(threatIndex).getLabel();
 	}
 	
 	public String getTargetName(int targetIndex)
@@ -155,7 +155,12 @@ abstract public class AbstractThreatTargetTableModel extends AbstractTableModel
 
 	public ORef getThreatRef(int threatIndex)
 	{
-		return getDirectThreats()[threatIndex].getRef();
+		return getThreat(threatIndex).getRef();
+	}
+
+	public Factor getThreat(int row)
+	{
+		return getDirectThreats()[row];
 	}
 
 	public ORef getTargetRef(int targetIndex)

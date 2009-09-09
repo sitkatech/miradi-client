@@ -36,7 +36,6 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	{
 		super(projectToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
-		project = projectToUse;
 		model = modelToUse;
 		fullyExpandedTreePaths = model.getFullyExpandedTreePathList();
 		removeRootNode();
@@ -113,11 +112,6 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		return getSafeValue(value);
 	}
 	
-	private Project getProject()
-	{
-		return project;
-	}
-	
 	public GenericTreeTableModel getModel()
 	{
 		return model;
@@ -125,5 +119,4 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 	
 	private GenericTreeTableModel model;
 	private Vector<TreePath> fullyExpandedTreePaths;
-	private Project project;
 }
