@@ -59,10 +59,8 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 	{
 		super.setObjectRefs(orefsToUse);
 		
-		viabilityRatingsSubPanel.setVisible(true);
 		ORef foundRef = new ORefList(orefsToUse).getRefForType(KeyEcologicalAttribute.getObjectType());
-		if (foundRef.isInvalid())
-			viabilityRatingsSubPanel.setVisible(false);
+		setTabEnabled(viabilityRatingsSubPanel.getPanelDescription(), foundRef.isValid());
 	}
 	
 	private static ORef getInvalidTargetRef()
