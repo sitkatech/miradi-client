@@ -345,10 +345,15 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		closeActivePropertiesDialog();
 		
 		activePropertiesDlg = newDialog;
-		activePropertiesPanel = (ModelessDialogPanel)newDialog.getWrappedPanel();
 		activePropertiesDlg.pack();
 		Utilities.centerDlg(activePropertiesDlg);
 		activePropertiesDlg.setVisible(true);
+	}
+
+	private ModelessDialogPanel getActivePropertiesPanel(
+			ModelessDialogWithClose newDialog)
+	{
+		return (ModelessDialogPanel)newDialog.getWrappedPanel();
 	}
 	
 	protected UiLabel createScreenShotLabel()
@@ -587,7 +592,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 			return;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		BaseObject objectBeingEdited = activePropertiesPanel.getObject();
+		BaseObject objectBeingEdited = getActivePropertiesPanel().getObject();
 		if(objectBeingEdited == null)
 			return;
 		if(cmd.getObjectType() != objectBeingEdited.getType())
@@ -600,12 +605,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	
 	public void closeActivePropertiesDialog()
 	{
-		if(activePropertiesPanel != null && activePropertiesPanel.isDisplayable())
-		{
-			activePropertiesPanel.dispose();
-		}
-		activePropertiesPanel = null;
-
 		if(activePropertiesDlg != null && activePropertiesDlg.isDisplayable())
 		{
 			activePropertiesDlg.setVisible(false);
@@ -624,12 +623,16 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		getTopLevelAncestor().validate();
 	}
 
+	private ModelessDialogPanel getActivePropertiesPanel()
+	{
+		return getActivePropertiesPanel(activePropertiesDlg);
+	}
+
 	private MainWindow mainWindow;
 	private NullDoer nullDoer;
 	private HashMap<Class, Doer> actionToDoerMap;
 	private boolean isActive;
 	
-	private ModelessDialogPanel activePropertiesPanel;
 	private ModelessDialogWithClose activePropertiesDlg;
  
 }
