@@ -27,6 +27,7 @@ import javax.swing.Action;
 import org.miradi.actions.ActionCreateExpense;
 import org.miradi.actions.ActionDeleteExpense;
 import org.miradi.main.MainWindow;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 
 public class AssignmentExpensesTable extends AssignmentDateUnitsTable
 {
@@ -44,5 +45,11 @@ public class AssignmentExpensesTable extends AssignmentDateUnitsTable
 		actions.add(null);
 		actions.addAll(super.getActionsForRightClickMenu(row, tableColumn));
 		return actions;
+	}
+
+	@Override
+	public String getColumnGroupCode(int tableColumn)
+	{
+		return CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE;
 	}
 }
