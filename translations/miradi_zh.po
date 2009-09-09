@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 16:21-0500\n"
+"POT-Creation-Date: 2009-09-09 17:17-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -550,15 +550,15 @@ msgstr "选择要克隆的总目标 \t\t"
 msgid "Are you sure you want to delete this Objective?"
 msgstr "您是否确定要删除本分目标？"
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:386
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:387
 msgid "Unknown error displaying diagram"
 msgstr "显示图表时出现未知错误 \t\t"
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:456
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:457
 msgid "Found Corrupted Data:"
 msgstr "发现损坏的数据： \t\t"
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:949
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:953
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
