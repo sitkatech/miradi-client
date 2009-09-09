@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 11:39-0500\n"
+"POT-Creation-Date: 2009-09-09 12:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -3811,7 +3811,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:279
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:459
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:462
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
@@ -3978,15 +3978,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:471
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:474
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:521
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:524
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:539
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:542
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
@@ -4503,7 +4503,7 @@ msgid "TT|Move the selected item down"
 msgstr "下移选定的条目 \t\t"
 
 #: miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:35
-msgid "Action|Arrange Conceptual Model Page"
+msgid "Action|Auto-Arrange Diagram (BETA)"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionArrangeConceptualModel.java:40
