@@ -96,7 +96,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 			return;
 		
 		int gridSize = getProject().getGridSize();
-		heightOfTextArea = 2 * gridSize;
+		heightOfTextArea = (getLabelLineCount() + 1) * gridSize;
 		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
 		Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - heightOfTextArea);
 		location = getProject().getSnapped(location);
@@ -116,6 +116,13 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		
 		updateFromDiagramFactor();
 		model.sortLayers();
+	}
+
+	private int getLabelLineCount()
+	{
+		String label = getWrappedFactor().getLabel() + "AvoidSplitTrimmingTrailingNewlines";
+		String[] lines = label.split("\\n");
+		return lines.length;
 	}
 
 	private void saveLocationAndSize(Point location, Dimension size)

@@ -39,7 +39,7 @@ public class GroupBoxPropertiesPanel extends ObjectDataInputPanel
 
 		setObjectRefs(new ORef[] {diagramFactor.getWrappedORef(), diagramFactor.getRef()});
 		
-		addField(createStringField(GroupBox.TAG_LABEL));
+		addField(createExpandableField(GroupBox.TAG_LABEL));
 		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion()));
 		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion()));
 		addField(createChoiceField(DiagramFactor.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
