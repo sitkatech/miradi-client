@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-09 17:17-0500\n"
+"POT-Creation-Date: 2009-09-09 17:20-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -558,7 +558,7 @@ msgstr "显示图表时出现未知错误 \t\t"
 msgid "Found Corrupted Data:"
 msgstr "发现损坏的数据： \t\t"
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:953
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:951
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
