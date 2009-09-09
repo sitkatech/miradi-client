@@ -19,7 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.indicator;
 
-import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Rectangle;
 
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
@@ -40,22 +41,11 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		super(mainWindowToUse.getProject(), orefToUse);
 		
 		mainWindow = mainWindowToUse;
-		setLayout(new BorderLayout());
+		cardLayout = new CardLayout();
+		setLayout(cardLayout);
 		createPropertiesPanels();
 	}
 	
-	// TODO: Why not create and add all the panels instead of only adding one?
-	// If we changed it to work more like the other Overlaid panels,
-	// a lot of this code would disappear
-	public void dispose()
-	{
-		super.dispose();
-		indicatorPropertiesPanel.dispose();
-		measurementPropertiesPanel.dispose();
-		futureStatusPropertiesPanel.dispose();
-		blankPropertiesPanel.dispose();
-	}
-
 	@Override
 	public void becomeActive()
 	{
@@ -72,47 +62,6 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		super.becomeInactive();
 	}
 	
-	private void createPropertiesPanels() throws Exception
-	{
-		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow(), getPicker());
-		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
-		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
-		
-	}
-	
-	public String getPanelDescription()
-	{
-		return PANEL_DESCRIPTION;
-	}
-
-	public void setObjectRefs(ORef[] orefsToUse)
-	{
-		deactivateCurrentPanel();
-		
-		super.setObjectRefs(orefsToUse);
-		currentPanel = findPanel(orefsToUse);
-		removeAll();
-		add(currentPanel, BorderLayout.CENTER);
-
-		if(isActive)
-			activateCurrentPanel();
-
-		indicatorPropertiesPanel.setObjectRefs(orefsToUse);
-		measurementPropertiesPanel.setObjectRefs(orefsToUse);
-		futureStatusPropertiesPanel.setObjectRefs(orefsToUse);
-		
-		if(getTopLevelAncestor() != null)
-			getTopLevelAncestor().validate();
-		
-		// NOTE: The following are an attempt to fix a reported problem 
-		// where the screen was not fully repainted when switching objects
-		// This code is duplicated in PlanningTreePropertiesPanel.java
-		// and in TargetViabilityTreePropertiesPanel.java
-		validate();
-		repaint();
-	}
-
 	private void activateCurrentPanel()
 	{
 		if(currentPanel != null)
@@ -123,6 +72,57 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	{
 		if(currentPanel != null)
 			currentPanel.becomeInactive();
+	}
+	
+	private boolean isMultiPropertiesPanelActive()
+	{
+		return isActive;
+	}
+	
+	private void createPropertiesPanels() throws Exception
+	{
+		indicatorPropertiesPanel = new IndicatorPropertiesPanel(getMainWindow(), getPicker());
+		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
+		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
+		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
+		
+		addPanel(indicatorPropertiesPanel);
+		addPanel(measurementPropertiesPanel);
+		addPanel(futureStatusPropertiesPanel);
+		addPanel(blankPropertiesPanel);
+		
+	}
+	
+	public String getPanelDescription()
+	{
+		return PANEL_DESCRIPTION;
+	}
+
+	public void setObjectRefs(ORef[] orefsToUse)
+	{
+		super.setObjectRefs(orefsToUse);
+
+		deactivateCurrentPanel();
+		
+		currentPanel = findPanel(orefsToUse);
+		cardLayout.show(this, currentPanel.getPanelDescription());
+		if (isMultiPropertiesPanelActive())
+			activateCurrentPanel();
+		
+		scrollRectToVisible(new Rectangle(0,0,0,0));
+		
+		// NOTE: The following are an attempt to fix a reported problem 
+		// where the screen was not fully repainted when switching objects
+		// This code is duplicated in PlanningTreePropertiesPanel.java
+		// and in TargetViabilityTreePropertiesPanel.java
+		validate();
+		repaint();
+	}
+
+	@Override
+	public void selectSectionForTag(String tag)
+	{
+		currentPanel.selectSectionForTag(tag);
 	}
 	
 	private AbstractObjectDataInputPanel findPanel(ORef[] orefsToUse)
@@ -158,6 +158,7 @@ public class SimpleViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	
 	public static final String PANEL_DESCRIPTION = "Planning Properties Panel";
 	
+	private CardLayout cardLayout;
 	private MainWindow mainWindow;
 	private boolean isActive;
 	
