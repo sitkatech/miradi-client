@@ -92,18 +92,15 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel implements CommandExecutedListener, MiradiTabContentsPanelInterface
 {
-	
 	public AbstractObjectDataInputPanel(Project projectToUse, int objectType, BaseId idToUse)
 	{
 		this(projectToUse,new ORef(objectType, idToUse));
 	}
 	
-	
 	public AbstractObjectDataInputPanel(Project projectToUse, ORef orefToUse)
 	{
 		this(projectToUse, new ORef[] {orefToUse});
 	}
-	
 	
 	public AbstractObjectDataInputPanel(Project projectToUse, ORef[] orefsToUse)
 	{
@@ -119,7 +116,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		setBorder(new EmptyBorder(VERTICAL_MARGIN,HORIZONTAL_MARGIN,VERTICAL_MARGIN,HORIZONTAL_MARGIN));
 		
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
-
 	}
 	
 	public void dispose()
@@ -255,12 +251,20 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void becomeActive()
 	{
 		super.becomeActive();
+		for(AbstractObjectDataInputPanel panel : getSubPanels())
+		{
+			panel.becomeActive();
+		}
 		getPicker().becomeActive();
 	}
 	
 	public void becomeInactive()
 	{
 		getPicker().becomeInactive();
+		for(AbstractObjectDataInputPanel panel : getSubPanels())
+		{
+			panel.becomeInactive();
+		}
 		super.becomeInactive();
 	}
 
@@ -325,7 +329,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		subPanel.setBorder(BorderFactory.createCompoundBorder(cushion, titledBorder));
 		addSubPanelWithoutTitledBorder(subPanel);
 	}
-
 
 	public void addSubPanelWithoutTitledBorder(AbstractObjectDataInputPanel subPanel)
 	{
@@ -832,7 +835,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		private boolean isActive;
 	}
 
-	protected Vector<AbstractObjectDataInputPanel> getSubPanels()
+	private Vector<AbstractObjectDataInputPanel> getSubPanels()
 	{
 		return subPanels; 
 	}
@@ -851,13 +854,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		addLabel(label);
 	}
 
-
 	public void addLabel(String translatedText)
 	{
 		UiLabel label = new PanelTitleLabel(translatedText);
 		addLabel(label);
 	}
-
 
 	public void addLabel(int objectType, String fieldTag)
 	{
@@ -865,14 +866,12 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		addLabel(label);
 	}
 
-
 	public void addLabel(int objectType, String fieldTag, Icon icon)
 	{
 		UiLabel label = new PanelFieldLabel(objectType, fieldTag);
 		label.setIcon(icon);
 		addLabel(label);
 	}
-
 
 	public void addLabel(UiLabel label)
 	{
