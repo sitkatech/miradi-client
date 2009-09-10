@@ -225,7 +225,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	protected boolean doesCommandForceRebuild(CommandExecutedEvent event)
 	{
-		if(didAffectResourceAssignmentsAndExpenseAssignments(event))
+		if(wereAssignmentNodesAddedOrRemoved(event))
 			return true;
 		
 		if(didAffectTaskInTree(event))
@@ -262,7 +262,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		return event.isDeleteCommandForThisType(objectType);
 	}
 
-	private boolean didAffectResourceAssignmentsAndExpenseAssignments(CommandExecutedEvent event)
+	private boolean wereAssignmentNodesAddedOrRemoved(CommandExecutedEvent event)
 	{
 		try
 		{
