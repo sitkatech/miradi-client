@@ -82,10 +82,15 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 		if (modelColumn == STRESS_NAME_COLUMN_INDEX)
 			return EAM.text("Stress");
 
-		if (modelColumn == THREAT_NAME_COLUMN_INDEX)
+		if (isThreatNameColumn(modelColumn))
 			return EAM.text("Threat");
 
 		return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(modelColumn));
+	}
+
+	private boolean isThreatNameColumn(int modelColumn)
+	{
+		return modelColumn == THREAT_NAME_COLUMN_INDEX;
 	}
 
 	public String getColumnGroupName(int modelColumn)
@@ -104,12 +109,11 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 		String columnTag = getColumnTag(modelColumn);
 		Stress stressForRow = (Stress) getBaseObjectForRow(row);
 		
-		if (isThreatNameColumn(stressForRow, columnTag))
+		if (isThreatNameColumn(modelColumn))
 			return new TaglessChoiceItem(threat.getFullName());
 		
 		if (isStressNameColumn(stressForRow, columnTag))
 			return new TaglessChoiceItem(stressForRow.getFullName());
-		
 		
 		if (columnTag.equals(ThreatStressRating.TAG_CONTRIBUTION))
 			return getContribution(stressForRow);
@@ -193,11 +197,6 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 		rowTypes.add(getRowType(0));
 		
 		return rowTypes;
-	}
-	
-	private boolean isThreatNameColumn(BaseObject baseObjectForRow, String columnTag)
-	{
-		return (Cause.is(baseObjectForRow) && columnTag.equals(Cause.TAG_LABEL));
 	}
 	
 	private boolean isStressNameColumn(BaseObject baseObjectForRow, String columnTag)
