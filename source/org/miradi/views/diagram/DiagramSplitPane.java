@@ -250,8 +250,11 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			reloadDiagramCards(ref.getObjectType());
 			DiagramComponent diagramComponent = findByRef(ref);
 			getLegendPanel().resetCheckBoxes();
-			if (diagramComponent != null)			
+			if (diagramComponent != null)
+			{
 				add(diagramComponent);
+				getDiagramModel().updateGroupBoxCells();
+			}
 		}
 		
 		private void displayResultsChainHelpText()
