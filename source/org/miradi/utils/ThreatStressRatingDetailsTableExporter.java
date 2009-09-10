@@ -45,17 +45,19 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 		
 		target = targetToUse;
 		threat = threatToUse;
-		loadStressesFromTarget(targetToUse);
+		stressesForRows = loadStressesFromTarget(targetToUse);
 	}
 
-	private void loadStressesFromTarget(Target targetToUse)
+	private Vector<Stress> loadStressesFromTarget(Target targetToUse)
 	{
-		stressesForRows = new Vector();
+		Vector stresses = new Vector();
 		for (int index = 0; index < targetToUse.getStressRefs().size(); ++index)
 		{
 			Stress stress = Stress.find(getProject(), targetToUse.getStressRefs().get(index));
-			stressesForRows.add(stress);
+			stresses.add(stress);
 		}
+		
+		return stresses;
 	}
 	
 	@Override
