@@ -22,10 +22,9 @@ package org.miradi.dialogs.threatrating.upperPanel;
 import java.util.Comparator;
 
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLink;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
 public class TargetThreatLinkTableModel extends MainThreatTableModel
@@ -66,10 +65,13 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			Factor threat = getDirectThreat(row);
-			Target target = getTarget(column);
+			ORef threatRef = getDirectThreat(row).getRef();
+			ORef targetRef = getTarget(column).getRef();
 			ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
-			int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threat.getRef(), target.getRef());
+			if (threatTargetVirtualLink.getThreatStressRatingRefs(threatRef, targetRef).isEmpty())
+				return null;
+			
+			int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
