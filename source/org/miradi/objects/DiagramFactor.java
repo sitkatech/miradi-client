@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.CreateDiagramFactorParameter;
 import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -189,6 +190,11 @@ public class DiagramFactor extends BaseObject
 	public ORefList getGroupBoxChildrenRefs()
 	{
 		return groupBoxChildrenRefs.getRefList();
+	}
+	
+	public ORefSet getGroupBoxChildrenSet()
+	{
+		return new ORefSet(getGroupBoxChildrenRefs());
 	}
 	
 	public ORef getOwningGroupBoxRef()

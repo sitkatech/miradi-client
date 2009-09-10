@@ -46,6 +46,7 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectUnzipper;
 import org.miradi.utils.ConceptualModelByTargetSplitter;
 import org.miradi.utils.CpmzFileFilterForChooserDialog;
+import org.miradi.utils.GroupBoxHelper;
 import org.miradi.utils.HtmlViewPanelWithMargins;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.umbrella.ExportCpmzDoer;
@@ -191,6 +192,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		
 		invokeMeglerArranger(filledProject, conceptualModelRefs);
 		selectFirstDiagramInAlphabeticallySortedList(filledProject);
+		new GroupBoxHelper(filledProject).matchGroupBoxChildrenTagsToParent();
 	}
 
 	private void invokeMeglerArranger(Project filledProject, ORefList conceptualModelRefs) throws Exception

@@ -108,4 +108,9 @@ public class ORefSet extends HashSet<ORef>
 	{
 		add(baseObject.getRef());
 	}
+	
+	public boolean hasData()
+	{
+		return !isEmpty();
+	}
 }
