@@ -65,6 +65,8 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 	{
 		public void mouseClicked(MouseEvent e)
 		{
+			table.stopCellEditing();
+
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
 			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), EAM.text("Project Resource"));
