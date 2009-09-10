@@ -52,12 +52,12 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 			exportThreatRatingDetails(writer);
 	}
 	
-	private void exportThreatRatingDetails(RtfWriter wrtier) throws Exception
+	private void exportThreatRatingDetails(RtfWriter writer) throws Exception
 	{
 		if (getProject().isStressBaseMode())
-			exportStressBasedThreatRatingDetails(wrtier);
+			exportStressBasedThreatRatingDetails(writer);
 		else
-			exportSimpleThreatRatingDetails(wrtier);
+			exportSimpleThreatRatingDetails(writer);
 	}
 	
 	private void exportStressBasedThreatRatingDetails(RtfWriter writer) throws Exception
