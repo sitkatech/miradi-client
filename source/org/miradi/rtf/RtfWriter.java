@@ -162,7 +162,6 @@ public class RtfWriter
 	{
 		writeTableHeader(exportableTable);
 		writeTableBody(exportableTable);
-		pageBreak();
 	}
 
 	private void writeTableBody(TableExporter exportableTable) throws Exception

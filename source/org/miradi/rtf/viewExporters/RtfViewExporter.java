@@ -37,7 +37,7 @@ abstract public class RtfViewExporter
 	
 	protected void exportObjectTableModel(RtfWriter writer, ObjectTableModel objectTableModel, String translatedTableName) throws Exception
 	{
-		exportTable(writer, new ObjectTableModelExporter(objectTableModel), translatedTableName);
+		exportTableWithPageBreak(writer, new ObjectTableModelExporter(objectTableModel), translatedTableName);
 	}
 	
 	protected void exportTable(RtfWriter writer, TableExporter tableExporter, String translatedTableName) throws Exception
@@ -51,6 +51,12 @@ abstract public class RtfViewExporter
 		
 		createRtfManagementRtfExporter().writeManagement(tableExporter, writer);
 		writer.newParagraph();
+	}
+
+	protected void exportTableWithPageBreak(RtfWriter writer, TableExporter tableExporter, String translatedTableName) throws Exception
+	{
+		exportTable(writer, tableExporter, translatedTableName);
+		writer.pageBreak();
 	}
 	
 	private RtfManagementExporter createRtfManagementRtfExporter()
