@@ -29,6 +29,7 @@ import org.miradi.ids.TemporaryIdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.PointList;
@@ -124,6 +125,11 @@ public class CommandSetObjectData extends Command
 	public CommandSetObjectData(BaseObject baseObject, String fieldTag, ORefList refList)
 	{
 		this(baseObject.getRef(), fieldTag, refList.toString());
+	}
+	
+	public CommandSetObjectData(BaseObject baseObject, String fieldTag, ORefSet refSet)
+	{
+		this(baseObject, fieldTag, refSet.toRefList());
 	}
 	
 	public CommandSetObjectData(BaseObject baseObject, String fieldTag, String dataValue)
