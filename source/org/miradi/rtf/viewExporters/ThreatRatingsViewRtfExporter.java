@@ -24,6 +24,7 @@ import java.util.Vector;
 import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Cause;
@@ -54,10 +55,21 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	
 	private void exportThreatRatingDetails(RtfWriter writer) throws Exception
 	{
+		writeThreatRatingDetailHeader(writer);
 		if (getProject().isStressBaseMode())
 			exportStressBasedThreatRatingDetails(writer);
 		else
 			exportSimpleThreatRatingDetails(writer);
+	}
+
+	private void writeThreatRatingDetailHeader(RtfWriter writer) throws Exception
+	{
+		writer.startBlock();
+		writer.writeHeading1Style();
+		writer.writeEncoded(EAM.text("Threat Rating Details"));
+		writer.writeParCommand();
+		writer.endBlock();
+		writer.newParagraph();
 	}
 	
 	private void exportStressBasedThreatRatingDetails(RtfWriter writer) throws Exception
