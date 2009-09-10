@@ -491,6 +491,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
 			
 			importCodeField(viabilityAssessmentNode, DESIRED_VIABILITY_RATING, indicatorRef, Indicator.TAG_FUTURE_STATUS_RATING, getCodeMapHelper().getConProToMiradiRankingMap());
+			importCodeField(viabilityAssessmentNode, SOURCE_INDICATOR_RATINGS, indicatorRef, Indicator.TAG_RATING_SOURCE, getCodeMapHelper().getConProToMiradiIndicatorRatingSourceMap());
 			importField(viabilityAssessmentNode, DESIRED_RATING_DATE, indicatorRef, Indicator.TAG_FUTURE_STATUS_DATE);
 			importField(viabilityAssessmentNode, KEA_AND_INDICATOR_COMMENT, indicatorRef, Indicator.TAG_DETAIL);
 			importField(viabilityAssessmentNode, INDICATOR_RATING_COMMENT, indicatorRef, Indicator.TAG_VIABILITY_RATINGS_COMMENT);
@@ -942,8 +943,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void importCodeField(Node node, String[] elements, ORef ref, String tag, HashMap<String, String> map) throws Exception
 	{
-		String rawCode = getPathData(node, elements);
-		importCodeField(ref, tag, map, rawCode);
+		String trimedRawCode = getPathData(node, elements).trim();
+		importCodeField(ref, tag, map, trimedRawCode);
 	}
 
 	private void importCodeField(ORef ref, String tag, HashMap<String, String> map, String rawCode) throws Exception
