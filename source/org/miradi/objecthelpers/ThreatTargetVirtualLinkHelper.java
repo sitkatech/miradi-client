@@ -30,9 +30,9 @@ import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.utils.ThreatStressRatingHelper;
 import org.miradi.utils.Utility;
 
-public class ThreatTargetVirtualLink
+public class ThreatTargetVirtualLinkHelper
 {
-	public ThreatTargetVirtualLink(Project projectToUse)
+	public ThreatTargetVirtualLinkHelper(Project projectToUse)
 	{
 		project = projectToUse;
 	}

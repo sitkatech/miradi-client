@@ -25,7 +25,7 @@ import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Target;
@@ -120,7 +120,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	{
 		ORefSet upstreamThreatRefs = threatTargetChainObject.getUpstreamThreatRefsFromTarget(target);
 		Vector<Integer> calculatedSummaryRatingValues = new Vector();
-		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		for(ORef threatRef : upstreamThreatRefs)
 		{
 			int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, target.getRef());
@@ -134,7 +134,7 @@ public class StressBasedThreatRatingFramework extends ThreatRatingFramework
 	{
 		ORefSet downStreamTargets = threatTargetChainObject.getDownstreamTargetRefsFromThreat(threat);
 		Vector<Integer> calculatedSummaryRatingValues = new Vector();
-		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		for(ORef targetRef : downStreamTargets)
 		{
 			int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threat.getRef(), targetRef);

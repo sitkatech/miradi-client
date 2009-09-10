@@ -23,7 +23,7 @@ import java.util.Comparator;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
@@ -67,7 +67,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		{
 			ORef threatRef = getDirectThreat(row).getRef();
 			ORef targetRef = getTarget(column).getRef();
-			ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+			ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 			if (threatTargetVirtualLink.getThreatStressRatingRefs(threatRef, targetRef).isEmpty())
 				return null;
 			

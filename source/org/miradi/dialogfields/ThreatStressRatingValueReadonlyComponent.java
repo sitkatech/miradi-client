@@ -35,7 +35,7 @@ import org.miradi.icons.RatingIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
@@ -67,7 +67,7 @@ public class ThreatStressRatingValueReadonlyComponent extends MiradiPanel
 		ORef targetRef = selectedHeirearchy.getRefForType(Target.getObjectType());
 		String threatRatingBundleValueCode = "";
 		if (!threatRef.isInvalid() && !targetRef.isInvalid())
-			threatRatingBundleValueCode = new ThreatTargetVirtualLink(getProject()).getCalculatedThreatRatingBundleValue(threatRef, targetRef);
+			threatRatingBundleValueCode = new ThreatTargetVirtualLinkHelper(getProject()).getCalculatedThreatRatingBundleValue(threatRef, targetRef);
 		
 		setText(threatRatingBundleValueCode);
 	}

@@ -26,7 +26,7 @@ import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Stress;
@@ -147,7 +147,7 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 	
 	private ThreatStressRating findThreatStressRating(Stress stress)
 	{
-		ThreatTargetVirtualLink virtualLink = new ThreatTargetVirtualLink(getProject());
+		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		ORef threatStressRatingRef = virtualLink.findThreatStressRating(threat.getRef(), target.getRef(), stress.getRef());
 		
 		return ThreatStressRating.find(getProject(), threatStressRatingRef);

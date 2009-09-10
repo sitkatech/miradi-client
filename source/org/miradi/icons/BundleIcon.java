@@ -29,7 +29,7 @@ import java.awt.RenderingHints;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
@@ -49,7 +49,7 @@ public class BundleIcon extends AbstractMiradiIcon
 	{
 		threat = threatToUse;
 		target = targetToUse;
-		threatTargetVirualLink = new ThreatTargetVirtualLink(getProject());
+		threatTargetVirualLink = new ThreatTargetVirtualLinkHelper(getProject());
 	}
 
 	public void paintIcon(Component c, Graphics g, int x, int y)
@@ -141,5 +141,5 @@ public class BundleIcon extends AbstractMiradiIcon
 	private Cause threat;
 	private Target target;
 	private AppPreferences preferences;
-	private ThreatTargetVirtualLink threatTargetVirualLink;
+	private ThreatTargetVirtualLinkHelper threatTargetVirualLink;
 }
