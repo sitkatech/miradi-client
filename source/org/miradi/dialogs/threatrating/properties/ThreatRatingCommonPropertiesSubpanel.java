@@ -36,11 +36,16 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		super(projectToUse, ORef.INVALID);
 		
 		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
-		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("Target-Threat Rating"));
+		PanelTitleLabel rollupLabel = new PanelTitleLabel(getTargetThreatRatingLabel());
 		add(rollupLabel);
 		add(rollupField.getComponent());
 		
 		updateFieldsFromProject();
+	}
+
+	public static String getTargetThreatRatingLabel()
+	{
+		return EAM.text("Target-Threat Rating");
 	}
 	
 	@Override
