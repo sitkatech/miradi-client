@@ -73,9 +73,14 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 		for (int index = 0; index < threats.length; ++index)
 		{
 			Cause threat = threats[index];
-			ThreatStressRatingDetailsTableExporter exporter = new ThreatStressRatingDetailsTableExporter(getProject(), targetForColumn, threat);
-			exportTable(writer, exporter, targetForColumn.getFullName());
+			exportThreatStressRatingDetails(writer, targetForColumn, threat);
 		}
+	}
+
+	private void exportThreatStressRatingDetails(RtfWriter writer, Target targetForColumn, Cause threat) throws Exception
+	{
+		ThreatStressRatingDetailsTableExporter exporter = new ThreatStressRatingDetailsTableExporter(getProject(), targetForColumn, threat);
+		exportTable(writer, exporter, targetForColumn.getFullName());
 	}
 	
 	private void exportSimpleThreatRatingDetails(RtfWriter writer) throws Exception
