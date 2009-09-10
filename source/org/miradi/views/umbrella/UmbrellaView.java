@@ -183,6 +183,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
@@ -585,22 +586,29 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 
 	void closeActivePropertiesDialogIfWeDeletedItsObject(Command rawCommand)
 	{
-		if(activePropertiesDlg == null)
-			return;
-		
 		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
 			return;
 		
 		CommandDeleteObject cmd = (CommandDeleteObject)rawCommand;
-		BaseObject objectBeingEdited = getActivePropertiesPanel().getObject();
-		if(objectBeingEdited == null)
-			return;
-		if(cmd.getObjectType() != objectBeingEdited.getType())
-			return;
-		if(cmd.getObjectId() != objectBeingEdited.getId())
-			return;
 		
-		closeActivePropertiesDialog();
+		if(isActivePropertiesDialogEditing(cmd.getObjectRef()))
+			closeActivePropertiesDialog();
+	}
+	
+	private boolean isActivePropertiesDialogEditing(ORef ref)
+	{
+		if(activePropertiesDlg == null)
+			return false;
+		
+		ModelessDialogPanel panel = getActivePropertiesPanel();
+		if(panel == null)
+			return false;
+		
+		BaseObject objectBeingEdited = panel.getObject();
+		if(objectBeingEdited == null)
+			return false;
+		
+		return (ref.equals(objectBeingEdited.getRef()));
 	}
 	
 	public void closeActivePropertiesDialog()
