@@ -211,8 +211,21 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	
 	private ChoiceItem convertToChoiceItem(int codeAsInt)
 	{
-		String code = Integer.toString(codeAsInt);
+		String code = getSafeThreatRatingCode(codeAsInt);
 		return convertToChoiceItem(code);
+	}
+	
+	private String getSafeThreatRatingCode(int codeAsInt)
+	{
+		switch (codeAsInt)
+		{
+			case 1: return "1";
+			case 2: return "2";
+			case 3: return "3";
+			case 4: return "4";
+
+			default: return "";
+		}
 	}
 
 	public ChoiceItem convertToChoiceItem(String code)
