@@ -29,7 +29,6 @@ import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ProjectMetadata;
@@ -123,9 +122,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		if (targetRef.isInvalid())
 			return blankPropertiesPanel;
 		
-		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		ORefList threatStressRatingRefs = virtualLink.getThreatStressRatingRefs(causeRef, targetRef);
-		if (threatStressRatingRefs.isEmpty())
+		if (ThreatTargetVirtualLinkHelper.haveNoThreatRatingData(getProject(), cause, targetRef))
 			return blankPropertiesPanel;
 		
 		if (getProject().isStressBaseMode())

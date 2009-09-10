@@ -21,7 +21,9 @@ package org.miradi.objecthelpers;
 
 import java.util.Vector;
 
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.main.EAM;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
@@ -127,5 +129,24 @@ public class ThreatTargetVirtualLinkHelper
 		return project;
 	}
 	
+	public static boolean haveNoThreatRatingData(Project projectToUse, Cause threat, ORef targetRef)
+	{
+		try
+		{
+			ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(projectToUse);
+			if (projectToUse.isStressBaseMode())
+				return threatTargetVirtualLink.getThreatStressRatingRefs(threat.getRef(), targetRef).isEmpty();
+	
+			ThreatTargetChainObject chain = new ThreatTargetChainObject(projectToUse);
+			ORefSet downStreamTargets = chain.getDownstreamTargetRefsFromThreat(threat);
+			return !downStreamTargets.contains(targetRef);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
 	private Project project;
 }
