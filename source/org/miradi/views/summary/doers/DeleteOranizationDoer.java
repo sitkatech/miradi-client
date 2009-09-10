@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Organization;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
 public class DeleteOranizationDoer extends DeletePoolObjectDoer
@@ -28,5 +30,11 @@ public class DeleteOranizationDoer extends DeletePoolObjectDoer
 	protected String getCustomText()
 	{
 		return EAM.text("Organization");
+	}
+
+	@Override
+	protected boolean canDelete(BaseObject singleSelectedObject)
+	{
+		return Organization.is(singleSelectedObject);
 	}
 }

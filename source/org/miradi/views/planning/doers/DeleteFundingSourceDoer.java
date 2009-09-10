@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.FundingSource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
@@ -36,6 +37,12 @@ public class DeleteFundingSourceDoer extends DeletePoolObjectDoer
 	protected void doWork(BaseObject objectToDelete) throws Exception
 	{
 		clearFromAssignment(objectToDelete, ResourceAssignment.TAG_FUNDING_SOURCE);
+	}
+
+	@Override
+	protected boolean canDelete(BaseObject singleSelectedObject)
+	{
+		return FundingSource.is(singleSelectedObject);
 	}
 }
 
