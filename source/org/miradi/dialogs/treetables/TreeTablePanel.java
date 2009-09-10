@@ -171,6 +171,9 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 	{
 	}
 	
+	// TODO: We think this method is not necessary
+	// Currently this method returns true if the modified object is of the passed type,
+	// or if the modified object is of the type that is selected in the tree, which is confusing
 	protected boolean isSelectedObjectModification(CommandExecutedEvent event, int typeToCheck)
 	{
 		if (! event.isSetDataCommand())
