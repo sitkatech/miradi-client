@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.awt.event.FocusEvent;
+
 import javax.swing.event.UndoableEditEvent;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.text.BadLocationException;
@@ -72,5 +74,13 @@ public class ObjectStringInputField extends ObjectTextInputField
 		newValue.replaceAll("\n", " ");
 		super.setText(newValue);
 	}
+
+	public void focusGained(FocusEvent e)
+	{
+		super.focusGained(e);
+		field.setSelectionStart(0);
+		field.setSelectionEnd(field.getSize().width);
+	}
+	
 }
 
