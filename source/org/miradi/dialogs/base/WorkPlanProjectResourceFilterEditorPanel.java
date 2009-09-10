@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -31,7 +32,13 @@ public class WorkPlanProjectResourceFilterEditorPanel extends ObjectDataInputPan
 	{
 		super(projectToUse, orefToUse);
 		
-		addField(createStringMapProjectResourceFilterCodeListEditor(orefToUse.getObjectType(), tagToUse , question));
+		addLabel("");
+		addLabel(EAM.text("<html>Selecting one or more resources below<br>\n" +
+				"will filter the display to only include <br>\n" +
+				"work unit and budget total values for <br>\n" +
+				"items that are assigned to those resources."));
+		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Resources:"));
+		addFieldWithCustomLabel(createStringMapProjectResourceFilterCodeListEditor(orefToUse.getObjectType(), tagToUse, question), label);
 		
 		updateFieldsFromProject();
 	}
