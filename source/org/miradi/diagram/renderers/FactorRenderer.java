@@ -111,9 +111,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			{
 				priority = framework.getThreatThreatRatingValue(node.getWrappedFactorRef());
 			}
-			if(node.isTarget())
+			if(node.isTarget() || node.isHumanWelfareTarget())
 			{
-				Target target = (Target)node.getWrappedFactor();
+				AbstractTarget target = (AbstractTarget)node.getWrappedFactor();
 				String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
 				StatusQuestion question = new StatusQuestion();
 				rating = question.findChoiceByCode(ratingCode);
