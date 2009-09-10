@@ -120,7 +120,7 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 	
 	protected void saveColumnSequence() throws Exception
 	{
-		columnSequenceSaver.saveColumnSequences();
+		columnSequenceSaver.saveColumnSequence();
 	}
 
 	public void updateToReflectNewColumns() throws Exception
