@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import org.miradi.dialogs.threatrating.properties.ThreatRatingCommonPropertiesSubpanel;
+import org.miradi.dialogs.threatrating.upperPanel.ThreatSummaryColumnTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -59,7 +59,7 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 			return getThreatColumnName();
 		
 		if (getColumnTag(modelColumn).equals(Stress.PSEUDO_STRESS_RATING))
-			return ThreatRatingCommonPropertiesSubpanel.getTargetThreatRatingLabel(); 
+			return ThreatSummaryColumnTableModel.getThreatSummartRatingLabel(); 
 
 		return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(modelColumn));
 	}
