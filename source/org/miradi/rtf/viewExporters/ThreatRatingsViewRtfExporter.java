@@ -74,7 +74,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 		{
 			Cause threatForRow = threatRows[threatRowIndex];
 			ThreatStressRatingDetailsTableExporter exporter = new ThreatStressRatingDetailsTableExporter(getProject(), targetForColumn, threatForRow);
-			exportTable(writer, exporter, ReportTemplateContentQuestion.getThreatRatingDetailsLabel());
+			exportTable(writer, exporter, targetForColumn.getFullName());
 		}
 	}
 	
