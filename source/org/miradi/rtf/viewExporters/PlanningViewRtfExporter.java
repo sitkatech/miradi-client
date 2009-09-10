@@ -103,7 +103,7 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	private void exportTab(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName, ExportablePlanningTreeTableModel model) throws Exception
 	{
 		MultiTableCombinedAsOneExporter multiExporter = createMultiModelExporter(getProject(), model, rowColumnProvider);	
-		exportTable(writer, multiExporter, translatedTableName);
+		exportTableWithPageBreak(writer, multiExporter, translatedTableName);
 	}
 	
 	public static MultiTableCombinedAsOneExporter createTables(Project project, RowColumnProvider rowColumnProvider) throws Exception
@@ -153,6 +153,6 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 	
 	private void exportReport(RtfWriter writer, RowColumnProvider rowColumnProvider, String translatedTableName) throws Exception
 	{
-		exportTable(writer, createTables(getProject(), rowColumnProvider), translatedTableName);
+		exportTableWithPageBreak(writer, createTables(getProject(), rowColumnProvider), translatedTableName);
 	}
 }
