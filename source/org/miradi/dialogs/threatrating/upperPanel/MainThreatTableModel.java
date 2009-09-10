@@ -19,14 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.upperPanel;
 
-import java.awt.Color;
-
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.ColumnTagProvider;
 
@@ -36,7 +35,7 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 	{
 		super(projectToUse);
 		
-		emptyChoiceItem = new ChoiceItem("Not Specified", "", Color.WHITE);
+		emptyChoiceItem = new EmptyChoiceItem();
 		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
 	
