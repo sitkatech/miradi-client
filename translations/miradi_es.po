@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-10 11:05-0500\n"
+"POT-Creation-Date: 2009-09-10 11:28-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -1271,7 +1271,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:55
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
-#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:83
+#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:85
 #: miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
 msgid "Stress"
 msgstr "Presión"
@@ -2486,7 +2486,7 @@ msgstr "Ubicar el alcance en el diagrama"
 msgid "No date range for date Unit = "
 msgstr ""
 
-#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLink.java:53
+#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:53
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:80
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
@@ -6237,7 +6237,7 @@ msgid ""
 msgstr "Seleccionar las estrategias y actividades relevantes para esta meta. "
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:359
-#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:86
+#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:88
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Amenaza "
