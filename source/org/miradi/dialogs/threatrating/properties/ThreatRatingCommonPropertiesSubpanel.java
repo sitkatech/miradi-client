@@ -43,7 +43,7 @@ public class ThreatRatingCommonPropertiesSubpanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	public static String getTargetThreatRatingLabel()
+	private String getTargetThreatRatingLabel()
 	{
 		return EAM.text("Target-Threat Rating");
 	}
