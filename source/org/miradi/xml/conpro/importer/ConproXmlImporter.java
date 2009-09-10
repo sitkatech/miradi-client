@@ -58,7 +58,7 @@ import org.miradi.objecthelpers.RelevancyOverride;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.StringRefMap;
-import org.miradi.objecthelpers.ThreatTargetVirtualLink;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -861,7 +861,7 @@ public class ConproXmlImporter implements ConProMiradiXml
 
 	private void populateThreatStressRatings(Node stressNode, ORef targetRef, ORef stressRef) throws Exception
 	{
-		ThreatTargetVirtualLink threatTargetVirtualLink = new ThreatTargetVirtualLink(getProject());
+		ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 		NodeList threatStressRatingNodes = getNodes(stressNode, THREAT_STRESS_RATINGS, THREAT_STRESS_RATING);
 		for (int nodeIndex = 0; nodeIndex < threatStressRatingNodes.getLength(); ++nodeIndex)
 		{
