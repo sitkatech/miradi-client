@@ -25,7 +25,6 @@ import java.util.Vector;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
@@ -37,13 +36,12 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 
-public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableExporter
+public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRatingDetailsTableExporter
 {
 	public ThreatStressRatingDetailsTableExporter(Project projectToUse, Target targetToUse, Cause threatToUse)
 	{
-		super(projectToUse);
+		super(projectToUse, targetToUse, columnTags);
 		
-		target = targetToUse;
 		threat = threatToUse;
 		stressesForRows = loadStressesFromTarget(targetToUse);
 	}
@@ -67,18 +65,6 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 	}
 
 	@Override
-	public int getColumnCount()
-	{
-		return columnTags.length;
-	}
-
-	@Override
-	public int getModelDepth(int row, int modelColumn)
-	{
-		return 0;
-	}
-
-	@Override
 	public String getModelColumnName(int modelColumn)
 	{
 		if (modelColumn == STRESS_NAME_COLUMN_INDEX)
@@ -88,26 +74,6 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 			return getThreatColumnName();
 
 		return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(modelColumn));
-	}
-	
-	public static String getThreatColumnName()
-	{
-		return EAM.text("Threat");
-	}
-
-	private boolean isThreatNameColumn(int modelColumn)
-	{
-		return modelColumn == THREAT_NAME_COLUMN_INDEX;
-	}
-
-	public String getColumnGroupName(int modelColumn)
-	{
-		return getModelColumnName(modelColumn);
-	}
-
-	private String getColumnTag(int column)
-	{
-		return columnTags[column];
 	}
 	
 	@Override
@@ -153,57 +119,15 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 	private ThreatStressRating findThreatStressRating(Stress stress)
 	{
 		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		ORef threatStressRatingRef = virtualLink.findThreatStressRating(threat.getRef(), target.getRef(), stress.getRef());
+		ORef threatStressRatingRef = virtualLink.findThreatStressRating(threat.getRef(), getTargetRef(), stress.getRef());
 		
 		return ThreatStressRating.find(getProject(), threatStressRatingRef);
 	}
 
 	@Override
-	public int getMaxDepthCount()
-	{
-		return 0;
-	}
-	
-	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
 		return stressesForRows.get(row);
-	}
-	
-	@Override
-	public int getRowType(int row)
-	{
-		return getBaseObjectForRow(row).getType();
-	}
-
-	@Override
-	public String getModelTextAt(int row, int modelColumn)
-	{
-		return "";
-	}
-
-	@Override
-	public ORefList getAllRefs(int objectType)
-	{
-		ORefList allObjectRefs = new ORefList();
-		for (int row = 0; row < getRowCount(); ++row)
-		{
-			allObjectRefs.add(getBaseObjectForRow(row).getRef());
-		}
-		
-		return allObjectRefs;
-	}
-
-	@Override
-	public Vector<Integer> getAllTypes()
-	{
-		if (getRowCount() == 0)
-			return new Vector<Integer>();
-		
-		Vector<Integer> rowTypes = new Vector<Integer>();
-		rowTypes.add(getRowType(0));
-		
-		return rowTypes;
 	}
 	
 	private boolean isStressNameColumn(BaseObject baseObjectForRow, String columnTag)
@@ -212,13 +136,10 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 	} 
 	
 	private Cause threat;
-	private Target target;
-	
 	private Vector<Stress> stressesForRows;
-	private static final int THREAT_NAME_COLUMN_INDEX = 0;
-	private static final int STRESS_NAME_COLUMN_INDEX = 1;
 	
-	private final String[] columnTags = new String[]{
+	private static final int STRESS_NAME_COLUMN_INDEX = 1;
+	private static final String[] columnTags = new String[]{
 			Cause.TAG_LABEL, 
 			Stress.TAG_LABEL, 
 			Stress.TAG_SEVERITY, 
