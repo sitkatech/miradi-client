@@ -19,9 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning.doers;
 
-import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.CodeListEditorPanel;
-import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
@@ -51,10 +50,9 @@ abstract public class AbstractPlanningViewConfigurationCodeListEditorDoer extend
 
 			ChoiceQuestion configurationQuestion = getProject().getQuestion(getConfigurationQuestion());
 			CodeListEditorPanel codeListPanel = new CodeListEditorPanel(getProject(), planningConfigurationRef, getConfigurationTag(), configurationQuestion, getGridColumnCount());
-			ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
+			ModelessDialogWithClose dialog = new ModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 			dialog.setScrollableMainPanel(codeListPanel);
-			Utilities.centerDlg(dialog);
-			dialog.setVisible(true);
+			getView().showFloatingPropertiesDialog(dialog);
 		}
 		catch (Exception e)
 		{
