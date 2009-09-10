@@ -174,7 +174,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			if(isTreeExpansionCommand(event))
 				restoreTreeExpansionState();
 			
-			if(isSelectedObjectModification(event, ResourceAssignment.getObjectType()))
+			if(event.isSetDataCommand())
 				validate();
 		
 			repaintToGrowIfTreeIsTaller();
