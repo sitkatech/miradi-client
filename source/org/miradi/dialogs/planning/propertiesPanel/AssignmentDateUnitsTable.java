@@ -133,6 +133,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumnIndex);
 		getWorkUnitsTableModel().respondToExpandOrCollapseColumnEvent(modelColumn);
+		saveColumnSequence();
 	}
 
 	public Vector<Action> getActionsForRightClickMenu(int row, int tableColumn)

@@ -118,6 +118,11 @@ abstract public class TableWithColumnWidthAndSequenceSaver extends TableWithRowH
 		return getColumnName(tableColumn);
 	}
 	
+	protected void saveColumnSequence() throws Exception
+	{
+		columnSequenceSaver.saveColumnSequences();
+	}
+
 	public void updateToReflectNewColumns() throws Exception
 	{
 		reloadColumnSequences();

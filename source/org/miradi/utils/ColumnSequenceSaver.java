@@ -132,7 +132,7 @@ public class ColumnSequenceSaver extends MouseAdapter
 		return currentColumnTagSequences;
 	}
 	
-	private void saveColumnSequences() throws Exception
+	public void saveColumnSequences() throws Exception
 	{		
 		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
 		CommandSetObjectData setColumnSequence = new CommandSetObjectData(tableSettings.getRef(), TableSettings.TAG_COLUMN_SEQUENCE_CODES, getCurrentSequence().toString());
