@@ -81,7 +81,12 @@ public class TaggedObjectSet extends BaseObject
 	{
 		return new ORefSet(getTaggedObjectRefs());
 	}
-	
+		
+	public static boolean is(BaseObject object)
+	{
+		return is(object.getRef());
+	}
+
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

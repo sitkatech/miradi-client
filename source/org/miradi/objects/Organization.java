@@ -76,6 +76,11 @@ public class Organization extends BaseObject
 		return getData(TAG_SHORT_LABEL);
 	}
 		
+	public static boolean is(BaseObject object)
+	{
+		return is(object.getRef());
+	}
+
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
