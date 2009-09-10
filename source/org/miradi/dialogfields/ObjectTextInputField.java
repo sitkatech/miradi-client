@@ -21,7 +21,6 @@ package org.miradi.dialogfields;
 
 
 import java.awt.Color;
-import java.awt.event.FocusEvent;
 
 import javax.swing.JComponent;
 import javax.swing.text.DefaultCaret;
@@ -87,13 +86,6 @@ public class ObjectTextInputField extends ObjectDataInputField
 		field.setBackground(bg);
 	}
 
-	public void focusGained(FocusEvent e)
-	{
-		super.focusGained(e);
-		field.setSelectionStart(0);
-		field.setSelectionEnd(field.getSize().width);
-	}
-	
 	private Actions getActions()
 	{
 		return EAM.getMainWindow().getActions();

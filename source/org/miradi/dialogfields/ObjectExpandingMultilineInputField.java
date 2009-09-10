@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.awt.event.FocusEvent;
+
 import org.martus.swing.UiTextArea;
 import org.miradi.ids.BaseId;
 import org.miradi.project.Project;
@@ -36,4 +38,11 @@ public class ObjectExpandingMultilineInputField extends ObjectMultilineInputFiel
 		return (UiTextArea)getComponent();
 	}
 
+	public void focusGained(FocusEvent e)
+	{
+		super.focusGained(e);
+		field.setSelectionStart(0);
+		field.setSelectionEnd(field.getSize().width);
+	}
+	
 }
