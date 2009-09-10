@@ -45,6 +45,8 @@ import org.miradi.objects.RatingCriterion;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.utils.EnhancedJsonArray;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
@@ -189,15 +191,45 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	{
 		return getNumericValue(bundle, getScopeCriterion());
 	}
+	
+	public ChoiceItem getScopeChoiceItem(ThreatRatingBundle bundle)
+	{
+		int numericValue = getScopeNumericValue(bundle);
+		return convertToChoiceItem(numericValue);
+	}
 
 	public int getSeverityNumericValue(ThreatRatingBundle bundle)
 	{
 		return getNumericValue(bundle, getSeverityCriterion());
 	}
+	
+	public ChoiceItem getSeverityChoiceItem(ThreatRatingBundle bundle)
+	{
+		int numericValue = getSeverityNumericValue(bundle);
+		return convertToChoiceItem(numericValue);
+	}
+	
+	private ChoiceItem convertToChoiceItem(int codeAsInt)
+	{
+		String code = Integer.toString(codeAsInt);
+		return convertToChoiceItem(code);
+	}
+
+	public ChoiceItem convertToChoiceItem(String code)
+	{
+		ChoiceQuestion question = getProject().getQuestion(ThreatRatingQuestion.class);
+		return question.findChoiceByCode(code);
+	}
 
 	public int getIrreversibilityNumericValue(ThreatRatingBundle bundle)
 	{
 		return getNumericValue(bundle, getIrreversibilityCriterion());
+	}
+	
+	public ChoiceItem getIrreversibilityChoiceItem(ThreatRatingBundle bundle)
+	{
+		int numericValue = getIrreversibilityNumericValue(bundle);
+		return convertToChoiceItem(numericValue);
 	}
 
 	private int getNumericValue(ThreatRatingBundle bundle, RatingCriterion criterion)

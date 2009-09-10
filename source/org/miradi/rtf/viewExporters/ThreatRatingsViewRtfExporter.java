@@ -21,14 +21,17 @@ package org.miradi.rtf.viewExporters;
 
 import java.util.Vector;
 
+import org.miradi.diagram.ThreatTargetChainObject;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.dialogs.threatrating.upperPanel.ThreatRatingMultiTablePanel;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.SimpleThreatRatingDetailsTableExporter;
 import org.miradi.utils.TableExporter;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
@@ -68,24 +71,26 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 		}
 	}
 
-	private void exportStressBasedThreatRatingDetailsRow(RtfWriter writer, Target targetForColumn, Cause[] threats) throws Exception
+	private void exportStressBasedThreatRatingDetailsRow(RtfWriter writer, Target target, Cause[] threats) throws Exception
 	{
 		for (int index = 0; index < threats.length; ++index)
 		{
 			Cause threat = threats[index];
-			exportThreatStressRatingDetails(writer, targetForColumn, threat);
+			ThreatStressRatingDetailsTableExporter exporter = new ThreatStressRatingDetailsTableExporter(getProject(), target, threat);
+			exportTable(writer, exporter, target.getFullName());
 		}
 	}
 
-	private void exportThreatStressRatingDetails(RtfWriter writer, Target targetForColumn, Cause threat) throws Exception
-	{
-		ThreatStressRatingDetailsTableExporter exporter = new ThreatStressRatingDetailsTableExporter(getProject(), targetForColumn, threat);
-		exportTable(writer, exporter, targetForColumn.getFullName());
-	}
-	
 	private void exportSimpleThreatRatingDetails(RtfWriter writer) throws Exception
 	{
-		//FIXME need to export simple threat rating details
+		Vector<Target> targets = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
+		ThreatTargetChainObject chain = new ThreatTargetChainObject(getProject());
+		for(Target target : targets)
+		{
+			ORefSet upstreamThreats = chain.getUpstreamThreatRefsFromTarget(target);
+			SimpleThreatRatingDetailsTableExporter exporter = new SimpleThreatRatingDetailsTableExporter(getProject(), target, upstreamThreats.toRefList());
+			exportTable(writer, exporter, target.getFullName());		
+		}
 	}
 
 	private void exportThreatRating(RtfWriter writer) throws Exception

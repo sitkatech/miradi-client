@@ -22,7 +22,6 @@ package org.miradi.utils;
 
 import java.util.Vector;
 
-import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -33,37 +32,26 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.project.Project;
+import org.miradi.project.threatrating.SimpleThreatRatingFramework;
+import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
 
-public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableExporter
+public class SimpleThreatRatingDetailsTableExporter extends AbstractSingleTableExporter
 {
-	public ThreatStressRatingDetailsTableExporter(Project projectToUse, Target targetToUse, Cause threatToUse)
+	public SimpleThreatRatingDetailsTableExporter(Project projectToUse, Target targetToUse, ORefList threatRefsToUse)
 	{
 		super(projectToUse);
 		
 		target = targetToUse;
-		threat = threatToUse;
-		stressesForRows = loadStressesFromTarget(targetToUse);
+		threatRefs = threatRefsToUse;
 	}
 
-	private Vector<Stress> loadStressesFromTarget(Target targetToUse)
-	{
-		Vector stresses = new Vector();
-		for (int index = 0; index < targetToUse.getStressRefs().size(); ++index)
-		{
-			Stress stress = Stress.find(getProject(), targetToUse.getStressRefs().get(index));
-			stresses.add(stress);
-		}
-		
-		return stresses;
-	}
-	
 	@Override
 	public int getRowCount()
 	{
-		return stressesForRows.size();
+		return threatRefs.size();
 	}
 
 	@Override
@@ -81,18 +69,10 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 	@Override
 	public String getModelColumnName(int modelColumn)
 	{
-		if (modelColumn == STRESS_NAME_COLUMN_INDEX)
-			return EAM.text("Stress");
-
 		if (isThreatNameColumn(modelColumn))
-			return getThreatColumnName();
+			return ThreatStressRatingDetailsTableExporter.getThreatColumnName();
 
 		return EAM.fieldLabel(Stress.getObjectType(), getColumnTag(modelColumn));
-	}
-	
-	public static String getThreatColumnName()
-	{
-		return EAM.text("Threat");
 	}
 
 	private boolean isThreatNameColumn(int modelColumn)
@@ -114,50 +94,42 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 	public ChoiceItem getModelChoiceItemAt(int row, int modelColumn)
 	{
 		String columnTag = getColumnTag(modelColumn);
-		Stress stressForRow = (Stress) getBaseObjectForRow(row);
-		
+		Cause threatForRow = (Cause) getBaseObjectForRow(row);
 		if (isThreatNameColumn(modelColumn))
-			return new TaglessChoiceItem(threat.getFullName());
+			return new TaglessChoiceItem(threatForRow.getFullName());
 		
-		if (isStressNameColumn(stressForRow, columnTag))
-			return new TaglessChoiceItem(stressForRow.getFullName());
-		
-		if (columnTag.equals(ThreatStressRating.TAG_CONTRIBUTION))
-			return getContribution(stressForRow);
-		
-		if (columnTag.equals(ThreatStressRating.TAG_IRREVERSIBILITY))
-			return getIrreversibility(stressForRow);
-		
-		String valueToConvert = stressForRow.getData(columnTag);
-		return TargetThreatLinkTableModel.convertThreatRatingCodeToChoiceItem(valueToConvert);
-	}
-
-	private ChoiceItem getIrreversibility(Stress stressForRow)
-	{
-		ThreatStressRating threatStressRating = findThreatStressRating(stressForRow);
-		if (threatStressRating == null)
-			return new EmptyChoiceItem();
+		try
+		{	
+			SimpleThreatRatingFramework simpleThreatRatingFramework = getProject().getSimpleThreatRatingFramework();
+			ThreatRatingBundle bundle = simpleThreatRatingFramework.getBundle(threatForRow.getRef(), getTargetRef());
+			if (columnTag.equals(Stress.TAG_SEVERITY))
+				return simpleThreatRatingFramework.getSeverityChoiceItem(bundle);
 			
-		return threatStressRating.getIrreversibility();
+			if (columnTag.equals(Stress.TAG_SCOPE))
+				return simpleThreatRatingFramework.getScopeChoiceItem(bundle);
+			
+			if (columnTag.equals(ThreatStressRating.TAG_IRREVERSIBILITY))
+				return simpleThreatRatingFramework.getIrreversibilityChoiceItem(bundle);
+			
+			if (columnTag.equals(Stress.PSEUDO_STRESS_RATING))
+			{
+				String threatRatingBundleValueCode = new ThreatTargetVirtualLinkHelper(getProject()).getCalculatedThreatRatingBundleValue(threatForRow.getRef(), getTargetRef());
+				return simpleThreatRatingFramework.convertToChoiceItem(threatRatingBundleValueCode);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+
+		return new EmptyChoiceItem();
 	}
 
-	private ChoiceItem getContribution(Stress stressForRow)
+	private ORef getTargetRef()
 	{
-		ThreatStressRating threatStressRating = findThreatStressRating(stressForRow);
-		if (threatStressRating == null)
-			return new EmptyChoiceItem();
-		
-		return threatStressRating.getContribution();
+		return target.getRef();
 	}
 	
-	private ThreatStressRating findThreatStressRating(Stress stress)
-	{
-		ThreatTargetVirtualLinkHelper virtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-		ORef threatStressRatingRef = virtualLink.findThreatStressRating(threat.getRef(), target.getRef(), stress.getRef());
-		
-		return ThreatStressRating.find(getProject(), threatStressRatingRef);
-	}
-
 	@Override
 	public int getMaxDepthCount()
 	{
@@ -167,7 +139,8 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
-		return stressesForRows.get(row);
+		ORef threatRef = threatRefs.get(row);
+		return Cause.find(getProject(), threatRef);
 	}
 	
 	@Override
@@ -206,25 +179,14 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractSingleTableE
 		return rowTypes;
 	}
 	
-	private boolean isStressNameColumn(BaseObject baseObjectForRow, String columnTag)
-	{
-		return (Stress.is(baseObjectForRow) && columnTag.equals(Stress.TAG_LABEL));
-	} 
-	
-	private Cause threat;
+	private ORefList threatRefs;
 	private Target target;
-	
-	private Vector<Stress> stressesForRows;
 	private static final int THREAT_NAME_COLUMN_INDEX = 0;
-	private static final int STRESS_NAME_COLUMN_INDEX = 1;
-	
 	private final String[] columnTags = new String[]{
-			Cause.TAG_LABEL, 
-			Stress.TAG_LABEL, 
-			Stress.TAG_SEVERITY, 
-			Stress.TAG_SCOPE, 
-			Stress.PSEUDO_STRESS_RATING, 
-			ThreatStressRating.TAG_CONTRIBUTION, 
-			ThreatStressRating.TAG_IRREVERSIBILITY, 
+								Cause.TAG_LABEL,  
+								Stress.TAG_SCOPE,
+								Stress.TAG_SEVERITY,
+								ThreatStressRating.TAG_IRREVERSIBILITY,
+								Stress.PSEUDO_STRESS_RATING,
 			};
 }
