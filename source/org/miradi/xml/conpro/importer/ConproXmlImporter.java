@@ -943,8 +943,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 	
 	private void importCodeField(Node node, String[] elements, ORef ref, String tag, HashMap<String, String> map) throws Exception
 	{
-		String trimedRawCode = getPathData(node, elements).trim();
-		importCodeField(ref, tag, map, trimedRawCode);
+		String trimmedRawCode = getPathData(node, elements).trim();
+		importCodeField(ref, tag, map, trimmedRawCode);
 	}
 
 	private void importCodeField(ORef ref, String tag, HashMap<String, String> map, String rawCode) throws Exception
