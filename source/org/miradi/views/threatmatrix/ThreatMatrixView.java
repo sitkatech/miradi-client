@@ -38,7 +38,6 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.rtf.RtfWriter;
@@ -175,11 +174,6 @@ public class ThreatMatrixView extends CardedView
 	protected String getCurrentCardChoiceName()
 	{
 		return getProject().getMetadata().getData(ProjectMetadata.TAG_THREAT_RATING_MODE);
-	}
-	
-	public SimpleThreatRatingFramework getThreatRatingFramework()
-	{
-		return getProject().getSimpleThreatRatingFramework();
 	}
 	
 	@Override
