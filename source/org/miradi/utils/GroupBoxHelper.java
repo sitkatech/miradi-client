@@ -44,7 +44,7 @@ public class GroupBoxHelper
 		for(TaggedObjectSet taggedObjectSet : allTaggedObjectSets)
 		{
 			ORefSet taggedObjectRefs = taggedObjectSet.getTaggedObjectRefsSet();
-			ORefSet groupBoxesToTag = findGroupBoxesToTag(taggedObjectRefs);
+			ORefSet groupBoxesToTag = findAllContainingGroupBoxes(taggedObjectRefs);
 			if (groupBoxesToTag.hasData())
 			{
 				tagGroupBoxes(taggedObjectSet, groupBoxesToTag);
@@ -60,7 +60,7 @@ public class GroupBoxHelper
 		getProject().executeCommand(tagGroupBoxes);
 	}
 	
-	private ORefSet findGroupBoxesToTag(ORefSet taggedFactorRefs)
+	private ORefSet findAllContainingGroupBoxes(ORefSet taggedFactorRefs)
 	{	
 		ORefList diagramFactors = getProject().getDiagramFactorPool().getRefList();
 		ORefSet groupBoxesToTag = new ORefSet();
