@@ -192,7 +192,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		
 		invokeMeglerArranger(filledProject, conceptualModelRefs);
 		selectFirstDiagramInAlphabeticallySortedList(filledProject);
-		new GroupBoxHelper(filledProject).matchGroupBoxChildrenTagsToParent();
+		new GroupBoxHelper(filledProject).setGroupBoxTagsToMatchChildren();
 	}
 
 	private void invokeMeglerArranger(Project filledProject, ORefList conceptualModelRefs) throws Exception

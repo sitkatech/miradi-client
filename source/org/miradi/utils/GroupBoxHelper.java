@@ -37,7 +37,7 @@ public class GroupBoxHelper
 		project = projectToUse;
 	}
 	
-	public void matchGroupBoxChildrenTagsToParent() throws Exception
+	public void setGroupBoxTagsToMatchChildren() throws Exception
 	{
 		Vector<TaggedObjectSet> allTaggedObjectSets = getProject().getTaggedObjectSetPool().getAllTaggedObjectSets();
 		for(TaggedObjectSet taggedObjectSet : allTaggedObjectSets)
