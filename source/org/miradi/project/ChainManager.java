@@ -69,10 +69,10 @@ public class ChainManager
 		return relatedFactors;
 	}
 	
-	Project getProject()
+	private Project getProject()
 	{
 		return project;
 	}
 	
-	Project project;
+	private Project project;
 }
