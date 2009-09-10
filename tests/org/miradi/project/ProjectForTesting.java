@@ -76,6 +76,7 @@ import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
+import org.miradi.questions.RatingSourceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
@@ -313,6 +314,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		populateStrategy(strategy);
 		
 		return strategy;
+	}
+	
+	public Indicator createAndPopulateIndicatorContainingWhiteSpacePaddedCode() throws Exception
+	{
+		Indicator indicator = createIndicator();
+		final String STRING_TO_TRIM = "\n\t  \t";
+		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, STRING_TO_TRIM + RatingSourceQuestion.ONSITE_RESEARCH_CODE + STRING_TO_TRIM);
+		
+		return indicator;
 	}
 
 	public Strategy createAndPopulateDraftStrategy() throws Exception
@@ -622,6 +632,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
 		fillObjectUsingCommand(indicator, Indicator.TAG_DETAIL, "Some Indicator detail");
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENT, "Some Indicator viability ratings comment");
+		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.ONSITE_RESEARCH_CODE);
 		
 		Task task = createAndPopulateTask("Some Method Name");
 		IdList taskIds = new IdList(Task.getObjectType());
@@ -768,6 +779,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		createAndPopulateStrategy();
 		createAndPopulateStrategyThreatTargetAssociation();
 		createAndPopulateActivity();
+		createAndPopulateIndicatorContainingWhiteSpacePaddedCode();
 	}
 
 	public void switchToStressBaseMode() throws Exception
