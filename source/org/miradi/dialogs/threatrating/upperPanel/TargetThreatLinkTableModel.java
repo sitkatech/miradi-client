@@ -25,6 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 
 public class TargetThreatLinkTableModel extends MainThreatTableModel
@@ -65,13 +66,13 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 	{
 		try
 		{
-			ORef threatRef = getDirectThreat(row).getRef();
+			Cause threat = (Cause) getDirectThreat(row);
 			ORef targetRef = getTarget(column).getRef();
-			ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
-			if (threatTargetVirtualLink.getThreatStressRatingRefs(threatRef, targetRef).isEmpty())
+			if (ThreatTargetVirtualLinkHelper.haveNoThreatRatingData(getProject(), threat, targetRef))
 				return null;
 			
-			int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
+			ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
+			int calculatedValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threat.getRef(), targetRef);
 			return convertIntToString(calculatedValue);
 		}
 		catch (Exception e)
