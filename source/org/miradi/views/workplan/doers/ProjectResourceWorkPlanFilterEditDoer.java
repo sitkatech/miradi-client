@@ -23,6 +23,7 @@ package org.miradi.views.workplan.doers;
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.WorkPlanProjectResourceFilterEditorPanel;
+import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProjectResourceQuestion;
@@ -34,5 +35,11 @@ public class ProjectResourceWorkPlanFilterEditDoer extends AbstractWorkPlanStrin
 	{
 		ChoiceQuestion columnConfigurationQuestion = new ProjectResourceQuestion(getProject());
 		return new WorkPlanProjectResourceFilterEditorPanel(getProject(), workPlanTableSettings.getRef(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion);
+	}
+
+	@Override
+	protected String getDialogTitle()
+	{
+		return EAM.text("Title|Select Resources");
 	}
 }

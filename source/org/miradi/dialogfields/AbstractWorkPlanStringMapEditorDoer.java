@@ -24,7 +24,6 @@ import org.miradi.dialogs.base.ModelessDialogWithClose;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
 import org.miradi.views.ObjectsDoer;
 
@@ -50,7 +49,7 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 		{
 			TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
 			ObjectDataInputPanel codeListPanel = createEditorPanel(workPlanTableSettings);
-			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), codeListPanel, EAM.text("Editor"));
+			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), codeListPanel, getDialogTitle());
 			getView().showFloatingPropertiesDialog(dialog);
 		}
 		catch (Exception e)
@@ -64,5 +63,6 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 		return WorkPlanTreeTablePanel.getTabSpecificModelIdentifier();
 	}
 
+	abstract protected String getDialogTitle();
 	abstract protected ObjectDataInputPanel createEditorPanel(TableSettings workPlanTableSettings);
 }

@@ -22,6 +22,7 @@ package org.miradi.views.planning.doers;
 
 import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogs.base.WorkPlanColumnConfigurationEditorPanel;
+import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
@@ -34,5 +35,11 @@ public class WorkPlanColumnsEditorDoer extends AbstractWorkPlanStringMapEditorDo
 		ChoiceQuestion columnConfigurationQuestion = getProject().getQuestion(WorkPlanColumnConfigurationQuestion.class);
 		
 		return new WorkPlanColumnConfigurationEditorPanel(getProject(), workPlanTableSettings.getRef(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion);
+	}
+
+	@Override
+	protected String getDialogTitle()
+	{
+		return EAM.text("Title|Select Budget Columns");
 	}
 }
