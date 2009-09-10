@@ -35,7 +35,6 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 	{
 		super(projectToUse);
 		
-		emptyChoiceItem = new EmptyChoiceItem();
 		frameWork = new StressBasedThreatRatingFramework(getProject());
 	}
 	
@@ -73,11 +72,10 @@ abstract public class MainThreatTableModel extends AbstractThreatTargetTableMode
 	{
 		ChoiceItem foundChoiceItem = new ThreatRatingQuestion().findChoiceByCode(valueToConvert);
 		if (foundChoiceItem == null)
-			return emptyChoiceItem;
+			return new EmptyChoiceItem();
 		
 		return foundChoiceItem;
 	}
 	
-	private static ChoiceItem emptyChoiceItem;
 	protected StressBasedThreatRatingFramework frameWork;
 }
