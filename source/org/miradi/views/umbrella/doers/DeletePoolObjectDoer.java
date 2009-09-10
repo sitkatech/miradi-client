@@ -38,7 +38,11 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 		if(!super.isAvailable())
 			return false;
 		
-		return (getObjects().length == 1);
+		BaseObject singleSelectedObject = getSingleSelectedObject();
+		if (singleSelectedObject == null)
+			return false;
+		
+		return canDelete(singleSelectedObject);
 	}
 
 	public void doIt() throws CommandFailedException
@@ -93,4 +97,5 @@ abstract public class DeletePoolObjectDoer extends ObjectsDoer
 	}
 
 	abstract protected String getCustomText();	
+	abstract protected boolean canDelete(BaseObject singleSelectedObject);
 }

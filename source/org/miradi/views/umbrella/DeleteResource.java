@@ -31,6 +31,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
@@ -43,7 +44,11 @@ public class DeleteResource extends ObjectsDoer
 		if(!super.isAvailable())
 			return false;
 		
-		return (getObjects().length == 1);
+		BaseObject singleSelectedObject = getSingleSelectedObject();
+		if (singleSelectedObject == null)
+			return false;
+		
+		return (ProjectResource.is(singleSelectedObject));
 	}
 
 	public void doIt() throws CommandFailedException

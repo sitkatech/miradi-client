@@ -26,6 +26,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
 public class DeleteTaggedObjectSetDoer extends DeletePoolObjectDoer
@@ -47,5 +48,11 @@ public class DeleteTaggedObjectSetDoer extends DeletePoolObjectDoer
 			CommandSetObjectData removeTagFromSelection =  CommandSetObjectData.createRemoveORefCommand(diagramObject, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, objectToDelete.getRef());
 			getProject().executeCommand(removeTagFromSelection);
 		}
+	}
+
+	@Override
+	protected boolean canDelete(BaseObject singleSelectedObject)
+	{
+		return TaggedObjectSet.is(singleSelectedObject);
 	}
 }

@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.reports.doers;
 
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.ReportTemplate;
 import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
 public class DeleteReportTemplateDoer extends DeletePoolObjectDoer
@@ -28,5 +30,11 @@ public class DeleteReportTemplateDoer extends DeletePoolObjectDoer
 	protected String getCustomText()
 	{
 		return EAM.text("Report Template");
+	}
+
+	@Override
+	protected boolean canDelete(BaseObject singleSelectedObject)
+	{
+		return ReportTemplate.is(singleSelectedObject);
 	}
 }
