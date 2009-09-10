@@ -23,6 +23,7 @@ package org.miradi.utils;
 import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -46,11 +47,17 @@ public class GroupBoxHelper
 			ORefSet groupBoxesToTag = findGroupBoxesToTag(taggedObjectRefs);
 			if (groupBoxesToTag.hasData())
 			{
-				taggedObjectRefs.addAll(groupBoxesToTag);
-				CommandSetObjectData tagGroupBoxes = new CommandSetObjectData(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedObjectRefs);
-				getProject().executeCommand(tagGroupBoxes);
+				tagGroupBoxes(taggedObjectSet, groupBoxesToTag);
 			}
 		}
+	}
+
+	private void tagGroupBoxes(TaggedObjectSet taggedObjectSet, ORefSet groupBoxesToTag) throws Exception, CommandFailedException
+	{
+		ORefSet taggedObjectRefs = taggedObjectSet.getTaggedObjectRefsSet();
+		taggedObjectRefs.addAll(groupBoxesToTag);
+		CommandSetObjectData tagGroupBoxes = new CommandSetObjectData(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedObjectRefs);
+		getProject().executeCommand(tagGroupBoxes);
 	}
 	
 	private ORefSet findGroupBoxesToTag(ORefSet taggedFactorRefs)
