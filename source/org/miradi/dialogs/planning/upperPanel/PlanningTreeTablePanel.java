@@ -57,6 +57,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
@@ -167,16 +168,19 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			
 			if (doesCommandForceRebuild(event))
 				rebuildEntireTreeAndTable();
-			
-			if(doesAffectTableRowHeight(event))
+			else if(doesAffectTableRowHeight(event))
+			{
+				tree.updateAutomaticRowHeights();
 				mainTable.updateAutomaticRowHeights();
-			
+			}
+			else if(event.isSetDataCommand())
+			{
+				validate();
+			}
+		
 			if(isTreeExpansionCommand(event))
 				restoreTreeExpansionState();
 			
-			if(event.isSetDataCommand())
-				validate();
-		
 			repaintToGrowIfTreeIsTaller();
 		}
 		catch(Exception e)
@@ -195,7 +199,16 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
 		ORef affectedObjectRef = setCommand.getObjectORef();
 		
-		return isAffectedRefFoundInMainTableModel(affectedObjectRef);
+		if(isAffectedRefFoundInMainTableModel(affectedObjectRef))
+			return true;
+		
+		if(ResourceAssignment.is(affectedObjectRef))
+			return true;
+		
+		if(ExpenseAssignment.is(affectedObjectRef))
+			return true;
+		
+		return false;
 	}
 
 	private boolean isAffectedRefFoundInMainTableModel(ORef affectedObjectRef)
@@ -251,15 +264,20 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 
 	private boolean didAffectResourceAssignmentsAndExpenseAssignments(CommandExecutedEvent event)
 	{
-		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
-			return true;
-		
-		if (event.isSetDataCommandWithThisTypeAndTag(ResourceAssignment.getObjectType(), ResourceAssignment.TAG_RESOURCE_ID))
-			return true;
+		try
+		{
+			CodeList rowCodes = getRowColumnProvider().getRowListToShow();
+			if (rowCodes.contains(ResourceAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
+				return true;
 			
+			if (rowCodes.contains(ExpenseAssignment.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
+				return true;
+		}
+		catch(Exception e)
+		{
+			EAM.logStackTrace();
+		}
+		
 		return false;
 	}
 
