@@ -52,23 +52,23 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 	private void exportThreatRatingDetails(RtfWriter wrtier) throws Exception
 	{
 		if (getProject().isStressBaseMode())
-			exportThreatStressRatingDetailsTable(wrtier);
+			exportStressBasedThreatRatingDetails(wrtier);
 		else
-			exportSimpleThreatRatingDetailsTable(wrtier);
+			exportSimpleThreatRatingDetails(wrtier);
 	}
 	
-	private void exportThreatStressRatingDetailsTable(RtfWriter writer) throws Exception
+	private void exportStressBasedThreatRatingDetails(RtfWriter writer) throws Exception
 	{
 		Vector<Target> targetColumns = TargetThreatLinkTableModel.getOnlyTargetsInConceptualModelDiagrams(getProject());
 		Cause[] threatRows =  getProject().getCausePool().getDirectThreats();
 		for(Target targetForColumn : targetColumns)
 		{
 			if (targetForColumn.getStressRefs().hasData())
-				exportThreatStressRatings(writer, targetForColumn, threatRows);
+				exportStressBasedThreatRatingDetailsRow(writer, targetForColumn, threatRows);
 		}
 	}
 
-	private void exportThreatStressRatings(RtfWriter writer, Target targetForColumn, Cause[] threatRows) throws Exception
+	private void exportStressBasedThreatRatingDetailsRow(RtfWriter writer, Target targetForColumn, Cause[] threatRows) throws Exception
 	{
 		for (int threatRowIndex = 0; threatRowIndex < threatRows.length; ++threatRowIndex)
 		{
@@ -78,7 +78,7 @@ public class ThreatRatingsViewRtfExporter extends RtfViewExporter
 		}
 	}
 	
-	private void exportSimpleThreatRatingDetailsTable(RtfWriter writer) throws Exception
+	private void exportSimpleThreatRatingDetails(RtfWriter writer) throws Exception
 	{
 		//FIXME need to export simple threat rating details
 	}
