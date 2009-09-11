@@ -480,12 +480,11 @@ public class ConproXmlImporter implements ConProMiradiXml
 			setData(targetRef, Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaIds.toString());
 			
 			ORef indicatorRef = getNodeAsRef(viabilityAssessmentNode, INDICATOR_ID, Indicator.getObjectType());
-			
-			ORefSet allKeaIndicatorRefSet = new ORefSet(indicatorRef);
+			ORefSet allKeaIndicatorRefsTobeImported = new ORefSet(indicatorRef);
 			KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(getProject(), keaRef);
 			ORefList currentKeaIndicators = kea.getIndicatorRefs();
-			allKeaIndicatorRefSet.addAllRefs(currentKeaIndicators);
-			ORefList indicatorRefList = new ORefList(allKeaIndicatorRefSet);
+			allKeaIndicatorRefsTobeImported.addAllRefs(currentKeaIndicators);
+			ORefList indicatorRefList = new ORefList(allKeaIndicatorRefsTobeImported);
 			setData(keaRef, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorRefList.convertToIdList(Indicator.getObjectType()).toString());
 			
 			importIndicatorThresholds(viabilityAssessmentNode, indicatorRef);		
