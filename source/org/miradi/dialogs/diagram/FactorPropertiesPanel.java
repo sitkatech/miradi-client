@@ -474,8 +474,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	
 	private ObjectDataInputField createTargetStatusField(Factor factor)
 	{
-		ObjectDataInputField field =  grid.createReadOnlyChoiceField(ObjectType.TARGET, Target.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion());
-		return field;
+		return grid.createReadOnlyChoiceField(factor.getType(), AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion());
 	}
 	
 	class FactorInputPanel extends ObjectDataInputPanel
