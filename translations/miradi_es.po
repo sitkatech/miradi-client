@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 16:04-0500\n"
+"POT-Creation-Date: 2009-09-11 17:38-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6538,7 +6538,7 @@ msgid "Desired Value/Status"
 msgstr "Valor/estado deseado"
 
 #: miradi/source/org/miradi/dialogs/viability/FactorPropertiesViabilityTreeManagementPanel.java:49
-#: miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:144
+#: miradi/source/org/miradi/dialogs/viability/TargetViabilityManagementPanel.java:145
 msgid "Tab|Indicators"
 msgstr "Indicadores"
 
