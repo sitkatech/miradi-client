@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 17:38-0500\n"
+"POT-Creation-Date: 2009-09-11 18:08-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -29,11 +29,11 @@ msgstr "[Sin nombre]"
 msgid "Label|(Undefined Resource)"
 msgstr "(Recurso sin definir)"
 
-#: miradi/source/org/miradi/objects/AccountingCode.java:73
+#: miradi/source/org/miradi/objects/AccountingCode.java:70
 msgid "Label|(Undefined Accounting Code)"
 msgstr "(Código contable sin definir)"
 
-#: miradi/source/org/miradi/objects/FundingSource.java:73
+#: miradi/source/org/miradi/objects/FundingSource.java:70
 msgid "Label|(Undefined Funding Source)"
 msgstr ""
 
