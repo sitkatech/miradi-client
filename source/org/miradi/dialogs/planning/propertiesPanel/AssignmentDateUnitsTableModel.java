@@ -40,6 +40,7 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.Task;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectCalendar;
 import org.miradi.project.ProjectTotalCalculator;
@@ -62,6 +63,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		provider = providerToUse;
 		resourceRefsFilter = new ORefSet();
 		treeModelIdentifierAsTag = treeModelIdentifierAsTagToUse;
+		currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 		
 		restoreDateUnits();
 	}
@@ -669,7 +671,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		OptionalDouble optionalDouble = getOptionalDoubleAt(row, column);
 		if (optionalDouble.hasValue())
 		{
-			return new TaglessChoiceItem(optionalDouble);
+			String formattedDouble = getCurrencyFormatter().format(optionalDouble.getValue());
+			return new TaglessChoiceItem(formattedDouble);
 		}
 		
 		return new EmptyChoiceItem();
@@ -723,6 +726,11 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		return treeModelIdentifierAsTag;
 	}
+	
+	private CurrencyFormat getCurrencyFormatter()
+	{
+		return currencyFormatter;
+	}
 
 	abstract public Color getCellBackgroundColor(int column);
 	
@@ -741,4 +749,5 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private Vector<DateUnit> dateUnits;
 	private RowColumnBaseObjectProvider provider;
 	private String treeModelIdentifierAsTag;
+	private CurrencyFormat currencyFormatter;
 }
