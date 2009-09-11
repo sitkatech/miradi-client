@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 18:26-0500\n"
+"POT-Creation-Date: 2009-09-11 18:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6728,8 +6728,8 @@ msgid "Resource (Who)"
 msgstr "Sumber Daya (Siapa) "
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:54
-msgid "Cost/Unit"
-msgstr "Biaya/Unit "
+msgid "Daily Rate"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:87
 msgid "Title|Measurement Properties"
@@ -30777,6 +30777,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Cost/Unit"
+#~ msgstr "Biaya/Unit "
 
 #~ msgid ""
 #~ "choice|/resources/fieldoptions/TncMarineEcoRegions.tsv|Adriatic Sea "
