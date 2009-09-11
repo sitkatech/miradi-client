@@ -129,17 +129,17 @@ public class ThreatTargetVirtualLinkHelper
 		return project;
 	}
 	
-	public static boolean haveNoThreatRatingData(Project projectToUse, Cause threat, ORef targetRef)
+	public static boolean canSupportThreatRatings(Project projectToUse, Cause threat, ORef targetRef)
 	{
 		try
 		{
 			ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(projectToUse);
 			if (projectToUse.isStressBaseMode())
-				return threatTargetVirtualLink.getThreatStressRatingRefs(threat.getRef(), targetRef).isEmpty();
+				return threatTargetVirtualLink.getThreatStressRatingRefs(threat.getRef(), targetRef).hasData();
 	
 			ThreatTargetChainObject chain = new ThreatTargetChainObject(projectToUse);
 			ORefSet downStreamTargets = chain.getDownstreamTargetRefsFromThreat(threat);
-			return !downStreamTargets.contains(targetRef);
+			return downStreamTargets.contains(targetRef);
 		}
 		catch (Exception e)
 		{
