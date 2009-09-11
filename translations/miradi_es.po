@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 13:35-0500\n"
+"POT-Creation-Date: 2009-09-11 16:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -4001,7 +4001,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/diagram/DiagramContextMenuHandler.java:279
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:462
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:466
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
 
@@ -4054,7 +4054,7 @@ msgstr "Software de manejo adaptivo para proyectos de conservación"
 msgid "Information"
 msgstr "Información"
 
-#: miradi/source/org/miradi/main/MainWindow.java:482
+#: miradi/source/org/miradi/main/MainWindow.java:487
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -4064,11 +4064,11 @@ msgstr ""
 " Probablemente esté intentando cargar un proyecto anterior que contiene "
 "comandos obsoletos que ya no se admiten."
 
-#: miradi/source/org/miradi/main/MainWindow.java:487
+#: miradi/source/org/miradi/main/MainWindow.java:492
 msgid "That project is in use by another copy of this application"
 msgstr "Otra copia de esta aplicación está usando ese proyecto."
 
-#: miradi/source/org/miradi/main/MainWindow.java:491
+#: miradi/source/org/miradi/main/MainWindow.java:496
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "this application"
@@ -4076,32 +4076,32 @@ msgstr ""
 "Ese proyecto no puede abrirse porque se creó con una versión más nueva de "
 "esta aplicación."
 
-#: miradi/source/org/miradi/main/MainWindow.java:495
+#: miradi/source/org/miradi/main/MainWindow.java:500
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Ese proyecto no puede abrirse hasta que se migre al formato de datos actual."
 
-#: miradi/source/org/miradi/main/MainWindow.java:500
+#: miradi/source/org/miradi/main/MainWindow.java:505
 msgid "Unknown error prevented opening that project"
 msgstr "Un error desconocido impidió que se abriera ese proyecto."
 
-#: miradi/source/org/miradi/main/MainWindow.java:633
+#: miradi/source/org/miradi/main/MainWindow.java:640
 msgid ""
 "WorkPlan/Financial data outside project begin/end dates will not be shown"
 msgstr ""
 "Los datos financieros/del plan de trabajo fuera de las fechas de inicio/fin "
 "del proyecto no se mostrarán."
 
-#: miradi/source/org/miradi/main/MainWindow.java:663
+#: miradi/source/org/miradi/main/MainWindow.java:670
 msgid "WARNING: Project end date before start date."
 msgstr "ADVERTENCIA: Fecha de fin del proyecto anterior a la fecha de inicio"
 
-#: miradi/source/org/miradi/main/MainWindow.java:1009
+#: miradi/source/org/miradi/main/MainWindow.java:1016
 msgid "Unable to launch external web browser"
 msgstr "No se pudo iniciar el navegador web externo."
 
-#: miradi/source/org/miradi/main/MainWindow.java:1026
+#: miradi/source/org/miradi/main/MainWindow.java:1033
 msgid ""
 "<HTML>Data exchange between Miradi and ConPro is not available in this "
 "version of Miradi. <BR> It is currently being tested, and should be "
@@ -4177,15 +4177,15 @@ msgstr "Editar"
 msgid "MenuBar|Actions"
 msgstr "Acciones"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:474
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:478
 msgid "MenuBar|View"
 msgstr "Ver"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:524
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:528
 msgid "MenuBar|Step-by-Step"
 msgstr "Paso a paso"
 
-#: miradi/source/org/miradi/main/menu/MainMenuBar.java:542
+#: miradi/source/org/miradi/main/menu/MainMenuBar.java:546
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
