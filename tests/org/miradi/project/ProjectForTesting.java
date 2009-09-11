@@ -561,6 +561,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ChoiceQuestion question = getQuestion(ThreatClassificationQuestion.class);
 		final int FIRST_CODE = 0;
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
+		
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.addRef(createAndPopulateIndicator().getRef());	
+		fillObjectUsingCommand(cause, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
 	}
 	
 	public void populateStress(Stress stress) throws Exception

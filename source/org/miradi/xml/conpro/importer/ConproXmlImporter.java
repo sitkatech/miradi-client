@@ -346,16 +346,28 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importRelevantIndicators(Node objectiveNode, ORef objectiveRef) throws Exception
 	{
 		RelevancyOverrideSet relevantIndicators = new RelevancyOverrideSet();
-		NodeList indicatorIdNodes = getNodes(objectiveNode, INDICATORS, INDICATOR_ID);
+		ORefSet indicatorRefs = getIndicators(objectiveNode);
+		for(ORef indicatorRef : indicatorRefs)
+		{
+			relevantIndicators.add(new RelevancyOverride(indicatorRef, true));
+		}
+		
+		setData(objectiveRef, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+	}
+	
+	private ORefSet getIndicators(Node objectNodeWithIndicators) throws Exception
+	{
+		ORefSet indicatorRefs = new ORefSet();
+		NodeList indicatorIdNodes = getNodes(objectNodeWithIndicators, INDICATORS, INDICATOR_ID);
 		for (int nodeIndex = 0; nodeIndex < indicatorIdNodes.getLength(); ++nodeIndex) 
 		{
 			Node indicatorNode = indicatorIdNodes.item(nodeIndex);
 			BaseId indicatorId = new BaseId(indicatorNode.getTextContent());
 			ORef indicatorRef = new ORef(Indicator.getObjectType(), indicatorId);
-			relevantIndicators.add(new RelevancyOverride(indicatorRef, true));
+			indicatorRefs.add(indicatorRef);
 		}
 		
-		setData(objectiveRef, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicators.toString());
+		return indicatorRefs;
 	}
 
 	private void importMethods() throws Exception
@@ -460,6 +472,8 @@ public class ConproXmlImporter implements ConProMiradiXml
 			
 			importField(threatNode, NAME, threatRef, Cause.TAG_LABEL);
 			importField(threatNode, THREAT_TAXONOMY_CODE, threatRef, Cause.TAG_TAXONOMY_CODE);
+			ORefSet indicatorRefs = getIndicators(threatNode);
+			setData(threatRef, Cause.TAG_INDICATOR_IDS, indicatorRefs.toIdList(Indicator.getObjectType()).toString());
 			
 			createDiagramFactorAndAddToDiagram(threatRef);
 		}

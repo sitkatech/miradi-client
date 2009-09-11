@@ -23,6 +23,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.miradi.ids.IdList;
 import org.miradi.objects.BaseObject;
 
 public class ORefSet extends HashSet<ORef>
@@ -90,6 +91,11 @@ public class ORefSet extends HashSet<ORef>
 	public ORefList toRefList()
 	{
 		return new ORefList(toArray(new ORef[0]));
+	}
+	
+	public IdList toIdList(int objectType)
+	{
+		return toRefList().convertToIdList(objectType);
 	}
 	
 	public ORefSet getFilteredBy(int typeToFilterOn)
