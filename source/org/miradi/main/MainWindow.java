@@ -386,9 +386,14 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 		finally
 		{
 			allowActionUpdates();
-			mainMenuBar.updateMenuOptions();
+			updateMenuOptions();
 			updateActionsAndStatusBar();
 		}
+	}
+
+	private void updateMenuOptions()
+	{
+		mainMenuBar.updateMenuOptions();
 	}
 
 	public void updateToolBar()
@@ -592,6 +597,8 @@ public class MainWindow extends JFrame implements CommandExecutedListener, Clipb
 	{
 		updateAfterCommand(event);
 		warnOnceIfLowOnMemory();
+		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadata.getObjectType(), ProjectMetadata.TAG_TARGET_MODE))
+			updateMenuOptions();
 	}
 	
 	private void warnOnceIfLowOnMemory()
