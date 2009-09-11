@@ -335,9 +335,13 @@ public class MainMenuBar extends JMenuBar
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDirectThreat.class),KeyEvent.VK_D));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertIntermediateResult.class),KeyEvent.VK_R));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertThreatReductionResult.class),KeyEvent.VK_R));
-				menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertScopeBox.class), KeyEvent.VK_B));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertScopeBox.class), KeyEvent.VK_B));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTarget.class),KeyEvent.VK_T));
-		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertHumanWelfareTarget.class), KeyEvent.VK_H));
+		if (getMainWindow().getProject().getMetadata().isHumanWelfareTargetMode())
+		{
+			menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertHumanWelfareTarget.class), KeyEvent.VK_H));
+		}
+		
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTextBox.class), KeyEvent.VK_X));
 		menu.addSeparator();
 
