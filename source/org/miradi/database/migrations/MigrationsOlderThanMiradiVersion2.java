@@ -36,7 +36,16 @@ import org.miradi.database.DataUpgraderDiagramObjectLinkAdder;
 import org.miradi.database.JSONFile;
 import org.miradi.database.ObjectManifest;
 import org.miradi.diagram.DiagramModel;
-import org.miradi.diagram.factortypes.FactorType;
+import org.miradi.diagram.factortypes.FactorTypeActivity;
+import org.miradi.diagram.factortypes.FactorTypeCause;
+import org.miradi.diagram.factortypes.FactorTypeGroupBox;
+import org.miradi.diagram.factortypes.FactorTypeIntermediateResult;
+import org.miradi.diagram.factortypes.FactorTypeScopeBox;
+import org.miradi.diagram.factortypes.FactorTypeStrategy;
+import org.miradi.diagram.factortypes.FactorTypeStress;
+import org.miradi.diagram.factortypes.FactorTypeTarget;
+import org.miradi.diagram.factortypes.FactorTypeTextBox;
+import org.miradi.diagram.factortypes.FactorTypeThreatReductionResult;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -61,7 +70,6 @@ import org.miradi.utils.PointList;
 
 public class MigrationsOlderThanMiradiVersion2
 {
-
 	public static void upgradeToVersion40() throws Exception
 	{
 		CreateScopeBoxesSuroundingTargetsMigration migration = new CreateScopeBoxesSuroundingTargetsMigration(DataUpgrader.getTopJsonDir());
@@ -1216,9 +1224,45 @@ public class MigrationsOlderThanMiradiVersion2
 	{
 		File factorFile = new File(factorDir, Integer.toString(id.asInt()));
 		JSONObject factorJson = JSONFile.read(factorFile);
-		int type = FactorType.getFactorTypeFromString(factorJson.getString("Type"));
+		int type = MigrationsOlderThanMiradiVersion2.getFactorTypeFromString(factorJson.getString("Type"));
 		
 		return new ORef(type, id);
+	}
+	
+	private static int getFactorTypeFromString(String factorType) throws Exception
+	{
+		//Note : if you change this method you could effect the migration from 19 -> 20
+		if (factorType.equals(FactorTypeTarget.TARGET_TYPE))
+			return ObjectType.TARGET;
+		
+		else if (factorType.equals(FactorTypeCause.CAUSE_TYPE))
+			return ObjectType.CAUSE;
+		
+		else if (factorType.equals(FactorTypeStrategy.STRATEGY_TYPE))
+			return ObjectType.STRATEGY;
+		
+		else if (factorType.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
+			return ObjectType.INTERMEDIATE_RESULT;
+		
+		else if (factorType.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
+			return ObjectType.THREAT_REDUCTION_RESULT;
+		
+		else if (factorType.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
+			return ObjectType.TEXT_BOX;
+		
+		else if (factorType.equals(FactorTypeScopeBox.SCOPE_BOX_TYPE))
+			return ObjectType.SCOPE_BOX;
+		
+		else if (factorType.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
+			return ObjectType.GROUP_BOX;
+		
+		else if (factorType.equals(FactorTypeStress.STRESS_TYPE))
+			return ObjectType.STRESS;
+		
+		else if (factorType.equals(FactorTypeActivity.ACTIVITY_TYPE))
+			return ObjectType.TASK;
+		
+		throw new RuntimeException("Unknown factor type: " + factorType);
 	}
 
 	private static void possiblyNotifyUserAfterUpgradingToVersion19() throws Exception
