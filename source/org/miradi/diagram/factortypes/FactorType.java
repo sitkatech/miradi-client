@@ -34,7 +34,6 @@ import org.miradi.icons.TargetIcon;
 import org.miradi.icons.TextBoxIcon;
 import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.GroupBox;
@@ -200,42 +199,6 @@ public abstract class FactorType
 		throw new RuntimeException("Unknown factor type: " + factor.getRef());
 	}
 	
-	public static int getFactorTypeFromString(String factorType) throws Exception
-	{
-		//Note : if you change this method you could effect the migration from 19 -> 20
-		if (factorType.equals(FactorTypeTarget.TARGET_TYPE))
-			return ObjectType.TARGET;
-		
-		else if (factorType.equals(FactorTypeCause.CAUSE_TYPE))
-			return ObjectType.CAUSE;
-		
-		else if (factorType.equals(FactorTypeStrategy.STRATEGY_TYPE))
-			return ObjectType.STRATEGY;
-		
-		else if (factorType.equals(FactorTypeIntermediateResult.INTERMEDIATE_RESULT))
-			return ObjectType.INTERMEDIATE_RESULT;
-		
-		else if (factorType.equals(FactorTypeThreatReductionResult.THREAT_REDUCTION_RESULT))
-			return ObjectType.THREAT_REDUCTION_RESULT;
-		
-		else if (factorType.equals(FactorTypeTextBox.TEXT_BOX_TYPE))
-			return ObjectType.TEXT_BOX;
-		
-		else if (factorType.equals(FactorTypeScopeBox.SCOPE_BOX_TYPE))
-			return ObjectType.SCOPE_BOX;
-		
-		else if (factorType.equals(FactorTypeGroupBox.GROUP_BOX_TYPE))
-			return ObjectType.GROUP_BOX;
-		
-		else if (factorType.equals(FactorTypeStress.STRESS_TYPE))
-			return ObjectType.STRESS;
-		
-		else if (factorType.equals(FactorTypeActivity.ACTIVITY_TYPE))
-			return ObjectType.TASK;
-		
-		throw new RuntimeException("Unknown factor type: " + factorType);
-	}
-
 	public abstract String toString();
 
 }
