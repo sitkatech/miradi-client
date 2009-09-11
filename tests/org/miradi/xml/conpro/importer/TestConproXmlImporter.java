@@ -25,11 +25,16 @@ import java.io.IOException;
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
 import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objects.Cause;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
@@ -212,6 +217,45 @@ public class TestConproXmlImporter extends TestCaseWithProject
 
 		int highestId3 = getProject().getNodeIdAssigner().getHighestAssignedId();
 		assertEquals("wrong id less than current highest id?", highestId2, highestId3);
+	}
+	
+	public void testProjectWithSharedIndicator() throws Exception
+	{
+		File xmlFile = createTempFileFromName("$$$$conproVersion2BeforeImport.xml");
+		ProjectForTesting projectToFill = new ProjectForTesting("ProjectToFill");
+		
+		Indicator indicatorToBeShared = projectToFill.createIndicator();
+		IdList indicatorIds = new IdList(Indicator.getObjectType());
+		indicatorIds.add(indicatorToBeShared.getId());
+		
+		DiagramFactor diagramFactorThreat = projectToFill.createDiagramFactorAndAddToDiagram(Cause.getObjectType());
+		Cause threat = (Cause) diagramFactorThreat.getWrappedFactor();
+		projectToFill.fillObjectUsingCommand(threat, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());
+		projectToFill.enableAsThreat(threat);
+		
+		DiagramFactor diagramFactorTarget = projectToFill.createDiagramFactorAndAddToDiagram(Target.getObjectType());
+		projectToFill.createDiagramLink(diagramFactorThreat, diagramFactorTarget);
+		
+		Target target = (Target) diagramFactorTarget.getWrappedFactor();
+		projectToFill.turnOnTncMode(target);
+		projectToFill.populateTarget(target);
+		ORefList keaRefs = target.getKeyEcologicalAttributeRefs();
+		KeyEcologicalAttribute kea = KeyEcologicalAttribute.find(projectToFill, keaRefs.get(0));
+		projectToFill.fillObjectUsingCommand(kea, KeyEcologicalAttribute.TAG_INDICATOR_IDS, indicatorIds.toString());
+		try
+		{
+			exportProject(xmlFile, projectToFill);
+			importProject(xmlFile, new ProjectForTesting("ImportedProject"));
+			fail("Project import should have failed since the indicator is shared between the cause and kea");
+		}
+		catch (Exception ignoreExpectedException)
+		{
+		}
+		finally
+		{
+			xmlFile.delete();
+			projectToFill.close();
+		}
 	}
 	
 	public void testEmptyProject() throws Exception
