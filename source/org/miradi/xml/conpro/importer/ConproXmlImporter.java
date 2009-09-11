@@ -1286,7 +1286,10 @@ public class ConproXmlImporter implements ConProMiradiXml
 			String indicatorId = getAttributeValue(indicatorNode, ID);
 			ORef indicatorRef = new ORef(Indicator.getObjectType(), new BaseId(indicatorId));
 			Indicator indicator = Indicator.find(getProject(), indicatorRef);
-			if (!indicator.isViabilityIndicator())
+			if (indicator.findObjectsThatReferToUs().size() > 1)
+				throw new Exception("Indicator has more than one referrer");
+			
+			if (!indicator.hasReferrers())
 				indicatorIds.addRef(indicatorRef);
 		}
 		
