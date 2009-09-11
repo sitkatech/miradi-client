@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-10 11:28-0500\n"
+"POT-Creation-Date: 2009-09-11 09:53-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -243,7 +243,11 @@ msgstr ""
 msgid "Tab|Custom"
 msgstr ""
 
-#: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:32
+#: miradi/source/org/miradi/views/planning/doers/WorkPlanColumnsEditorDoer.java:43
+msgid "Title|Select Budget Columns"
+msgstr ""
+
+#: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:46
 msgid "Funding Source"
 msgstr "Fuente de financiamiento"
@@ -266,12 +270,12 @@ msgstr "Se completó la importación."
 msgid "Unable to process file: verify file format"
 msgstr "No se pudo procesar el archivo: verifique el formato del archivo."
 
-#: miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:54
+#: miradi/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:53
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:92
 msgid "Selection Dialog"
 msgstr "Cuadro de diálogo de selección"
 
-#: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:32
+#: miradi/source/org/miradi/views/planning/doers/DeleteAccountingCodeDoer.java:33
 msgid "Accounting Code"
 msgstr "Código contable"
 
@@ -417,7 +421,7 @@ msgstr ""
 msgid "Scope and Vision"
 msgstr "Alcance y visión"
 
-#: miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:30
+#: miradi/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:133
 msgid "Organization"
 msgstr "Organización"
@@ -549,7 +553,7 @@ msgstr "¿Está seguro de que desea eliminar este objeto anidado?"
 msgid "Control Bar"
 msgstr "Barra de control"
 
-#: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:330
+#: miradi/source/org/miradi/views/diagram/DiagramSplitPane.java:333
 #: miradi/source/org/miradi/diagram/DiagramModel.java:801
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
@@ -612,7 +616,7 @@ msgstr "Editar informes de progreso"
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr "¿Está seguro de que desea eliminar este informe de progreso?"
 
-#: miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:36
+#: miradi/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
 #: miradi/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:41
 msgid "Tag"
 msgstr ""
@@ -815,6 +819,10 @@ msgstr "No se puede enlazar un grupo a un elemento que éste contenga."
 msgid "Tab|Work Plan"
 msgstr ""
 
+#: miradi/source/org/miradi/views/workplan/doers/ProjectResourceWorkPlanFilterEditDoer.java:43
+msgid "Title|Select Resources"
+msgstr ""
+
 #: miradi/source/org/miradi/views/TabbedView.java:226
 #: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
 msgid "Instructions"
@@ -855,11 +863,11 @@ msgstr ""
 msgid "Edit Progress Percents"
 msgstr "Editar porcentajes de progreso"
 
-#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:116
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:117
 msgid " was empty"
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:263
+#: miradi/source/org/miradi/views/umbrella/doers/ImportCpmzDoer.java:265
 msgid "Import"
 msgstr "Importar"
 
@@ -887,24 +895,24 @@ msgstr ""
 "Nombre actual del paso del asistente:\n"
 " %s"
 
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:63
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:53
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:68
 #: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:35
 msgid "Yes"
 msgstr "Sí"
 
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:49
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:63
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:53
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:68
 #: miradi/source/org/miradi/questions/TncProjectSharingQuestion.java:34
 msgid "No"
 msgstr "No"
 
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:50
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:54
 #, fuzzy
 msgid "Delete %s"
 msgstr "Delete %s"
 
-#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:51
+#: miradi/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:55
 #, fuzzy
 msgid ""
 "\n"
@@ -1083,14 +1091,14 @@ msgstr ""
 "tenga permiso para escribir en él, o bien, esté usando caracteres  inválidos "
 "en el nombre del archivo"
 
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:60
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:65
 msgid ""
 "This project resource is being used in the Work Plan and Financial Budget."
 msgstr ""
 "Este recurso del proyecto se utiliza en el Plan de trabajo y presupuesto "
 "financiero."
 
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:62
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:67
 msgid ""
 "\n"
 "Are you sure you want to delete this resource?"
@@ -1098,7 +1106,7 @@ msgstr ""
 "\n"
 "¿Está seguro de que desea eliminar este recurso? "
 
-#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:64
+#: miradi/source/org/miradi/views/umbrella/DeleteResource.java:69
 msgid "Delete Resource"
 msgstr "Eliminar recurso "
 
@@ -1271,7 +1279,7 @@ msgstr ""
 
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:55
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
-#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:85
+#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
 #: miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
 msgid "Stress"
 msgstr "Presión"
@@ -2090,7 +2098,7 @@ msgstr ""
 "seleccionado como RTF.\n"
 " "
 
-#: miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:30
+#: miradi/source/org/miradi/views/reports/doers/DeleteReportTemplateDoer.java:32
 #: miradi/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:39
 msgid "Report Template"
 msgstr "Plantilla de informe "
@@ -2486,9 +2494,9 @@ msgstr "Ubicar el alcance en el diagrama"
 msgid "No date range for date Unit = "
 msgstr ""
 
-#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:53
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:73
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:80
+#: miradi/source/org/miradi/objecthelpers/ThreatTargetVirtualLinkHelper.java:55
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:78
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetThreatLinkTableModel.java:81
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/TargetSummaryRowTableModel.java:71
 #: miradi/source/org/miradi/dialogs/viability/IndicatorTreeModel.java:72
 #: miradi/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:103
@@ -2520,6 +2528,11 @@ msgstr "Plan de proyecto para "
 #: miradi/source/org/miradi/rtf/ProjectRtfExporter.java:61
 msgid "Version: "
 msgstr "Versión: "
+
+#: miradi/source/org/miradi/rtf/viewExporters/ThreatRatingsViewRtfExporter.java:69
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+msgid "Threat Rating Details"
+msgstr ""
 
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:36
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:55
@@ -3853,10 +3866,6 @@ msgstr "Plan estratégico"
 msgid "Threat Ratings"
 msgstr "Calificaciones de amenazas"
 
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
-msgid "Threat Rating Details"
-msgstr ""
-
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
 msgid "Team"
 msgstr "Equipo "
@@ -4412,12 +4421,6 @@ msgstr "Pegar"
 #: miradi/source/org/miradi/dialogfields/ReadOnlyRefListHtmlComponent.java:78
 msgid "Internal Error"
 msgstr "Error interno"
-
-#: miradi/source/org/miradi/dialogfields/AbstractWorkPlanStringMapEditorDoer.java:53
-#: miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
-#: miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
-msgid "Editor"
-msgstr "Editor"
 
 #: miradi/source/org/miradi/dialogfields/ObjectCodeListField.java:50
 msgid "Select..."
@@ -6237,7 +6240,7 @@ msgid ""
 msgstr "Seleccionar las estrategias y actividades relevantes para esta meta. "
 
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:359
-#: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:88
+#: miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Amenaza "
@@ -6468,7 +6471,7 @@ msgstr "Nombre de la amenaza"
 msgid "Stress Name"
 msgstr "Nombre de la presión"
 
-#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommonPropertiesSubpanel.java:39
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommonPropertiesSubpanel.java:48
 msgid "Target-Threat Rating"
 msgstr ""
 
@@ -6489,7 +6492,7 @@ msgstr "Title|Simple Threat Rating"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Calificación de amenaza basada en la presión"
 
-#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:44
+#: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:49
 msgid "Summary Threat Rating"
 msgstr "Calificación de amenazas inmediatas"
 
@@ -6836,7 +6839,7 @@ msgstr "Propiedades de la fuente de financiamiento"
 msgid "Title|Simple Viability"
 msgstr "Viabilidad simple"
 
-#: miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:70
+#: miradi/source/org/miradi/dialogs/tablerenderers/WhoColumnTableCellEditorFactory.java:72
 msgid "Project Resource"
 msgstr ""
 
@@ -6858,11 +6861,31 @@ msgstr "Seleccione Localización…"
 msgid "Error occured while saving data location"
 msgstr "Se produjo un error al grabar la localización de los datos."
 
-#: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:42
+#: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:36
+msgid "<html>Select which budget column groups to display."
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:38
+msgid "Column groups:"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:47
 msgid "Work Plan Column Editor"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:42
+#: miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:36
+msgid ""
+"<html>Selecting one or more resources below<br>\n"
+"will filter the display to only include <br>\n"
+"work unit and budget total values for <br>\n"
+"items that are assigned to those resources."
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:40
+msgid "Resources:"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:49
 msgid "Project Resource Filter Editor"
 msgstr ""
 
@@ -6969,6 +6992,11 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/base/MiradiDirectoryChooser.java:52
 msgid "Folder Chooser"
 msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:41
+#: miradi/source/org/miradi/dialogs/base/CodeListEditorPanel.java:41
+msgid "Editor"
+msgstr "Editor"
 
 #: miradi/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:49
 msgid "Title|Scope Box Properties"
