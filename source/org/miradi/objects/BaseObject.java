@@ -399,6 +399,26 @@ abstract public class BaseObject
 		return combineShortLabelAndLabel(getShortLabel(), getLabel());
 	}
 	
+	protected String toFullNameWithCode(String codeToUse)
+	{
+		String result = "";
+		if(codeToUse.length() > 0)
+			result += codeToUse + ": ";
+		
+		result += toString();
+		
+		return result;
+	}
+	
+	protected String toString(String defaultValue)
+	{
+		String result = getLabel();
+		if(result.length() > 0)
+			return result;
+		
+		return defaultValue;
+	}
+	
 	public void setLabel(String newLabel) throws Exception
 	{
 		label.set(newLabel);

@@ -67,22 +67,13 @@ public class AccountingCode extends BaseObject
 	
 	public String toString()
 	{
-		String result = getLabel();
-		if(result.length() > 0)
-			return combineShortLabelAndLabel(code.get(), result);
-		return EAM.text("Label|(Undefined Accounting Code)");
+		return toString(EAM.text("Label|(Undefined Accounting Code)"));
 	}
 	
 	@Override
 	public String getFullName()
 	{
-		String result = "";
-		String codeText = code.get();
-		if(codeText.length() > 0)
-			result += codeText + ": ";
-		result += toString();
-		
-		return result;
+		return toFullNameWithCode(code.get());
 	}
 	
 	public static boolean is(BaseObject baseObject)
