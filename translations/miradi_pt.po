@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 09:53-0500\n"
+"POT-Creation-Date: 2009-09-11 13:05-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -52,7 +52,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:114
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:122
 msgid ""
 "<HTML>The TNC ecoregion field has been changed from a single text field to "
 "three picklists. <BR>Miradi has attempted to migrate the ecoregion data, but "
@@ -60,7 +60,7 @@ msgid ""
 "and verify that the ecoregion(s) are correct for this project.</HTML>"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:124
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:132
 msgid ""
 "<HTML>The TNC Operating Unit field has been changed from a text field to a "
 "picklist. <BR>Miradi has attemped to migrate existing data, but it may not "
@@ -68,7 +68,7 @@ msgid ""
 "that the Operating Unit is set correctly for this project.</HTML>"
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:150
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:158
 msgid ""
 "<html>Miradi now allows you to specify what currency is being used for "
 "budgeting, <br>and to specify Fiscal Years that are different from Calendar "
@@ -82,7 +82,7 @@ msgid ""
 "about options for realigning it to match your <br>fiscal year."
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:865
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:873
 msgid ""
 "<html>This version of Miradi has changed the Strategy rating options.<br>The "
 "Duration and Cost fields have been removed, and the <br>Impact and "
@@ -90,7 +90,7 @@ msgid ""
 "Strategy ratings to ensure they are appropriate."
 msgstr ""
 
-#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1229
+#: miradi/source/org/miradi/database/migrations/MigrationsOlderThanMiradiVersion2.java:1273
 msgid ""
 "One or more Goals that were associated with KEA Indicators have been "
 "deleted. Please create new Goals as needed, or use the new Future Status "
@@ -5783,27 +5783,27 @@ msgstr ""
 msgid "File to import does not validate."
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:599
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:612
 msgid "Not all classification Codes could imported."
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1210
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1223
 msgid "Placeholder - From ConPro"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1214
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1227
 msgid "Objective Holder"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1220
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1233
 msgid "Indicator Holder"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1317
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1330
 msgid "High/Very-High Threat Chains"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1318
+#: miradi/source/org/miradi/xml/conpro/importer/ConproXmlImporter.java:1331
 msgid "Low/Medium/Unrated Threat Chains"
 msgstr ""
 
@@ -6599,7 +6599,7 @@ msgstr ""
 msgid "Viability Analysis Mode"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:517
+#: miradi/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:516
 msgid "Factor Properties"
 msgstr ""
 
