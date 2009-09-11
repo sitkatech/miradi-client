@@ -33,7 +33,7 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 		super();
 		
 		twoLevelFileLoader = twoLevelFileLoaderToUse;
-		choices = loadChoices();
+		choices = new Vector<ChoiceItem>(Arrays.asList(loadChoices()));
 		twoLevelFileLoader = null;
 	}
 	
@@ -69,9 +69,14 @@ public class TwoLevelQuestion extends DynamicChoiceQuestion
 	
 	public ChoiceItem[] getChoices()
 	{
+		return choices.toArray(new ChoiceItem[0]);
+	}
+	
+	protected Vector<ChoiceItem> getRawChoices()
+	{
 		return choices;
 	}
 	
-	private ChoiceItem[] choices;
+	private Vector<ChoiceItem> choices;
 	private TwoLevelFileLoader twoLevelFileLoader;
 }

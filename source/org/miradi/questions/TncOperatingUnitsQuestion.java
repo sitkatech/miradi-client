@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import java.util.Vector;
+
 import org.miradi.objecthelpers.TncOperatingUnitsFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
@@ -28,5 +30,19 @@ public class TncOperatingUnitsQuestion extends TwoLevelQuestion
 	{
 		super(new TncOperatingUnitsFileLoader(TwoLevelFileLoader.TNC_OPERATING_UNITS_FILE));
 		sortChoices();
+		moveSupersededChoiceToEnd();
 	}
+
+	private void moveSupersededChoiceToEnd()
+	{
+		ChoiceItem superseded = findChoiceByCode(TNC_SUPERSEDED_OU_CODE);
+		if(superseded == null)
+			throw new RuntimeException("Missing TNC Superseded OU choice");
+		
+		Vector<ChoiceItem> choices = getRawChoices();
+		choices.remove(superseded);
+		choices.add(superseded);
+	}
+	
+	private static final String TNC_SUPERSEDED_OU_CODE = "OBSOLETE";
 }
