@@ -38,7 +38,6 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[] 
 		{
-				createChoiceItem(Desire.TAG_FULL_TEXT),
 				createChoiceItem(Indicator.PSEUDO_TAG_METHODS), 
 				createChoiceItem(Indicator.PSEUDO_TAG_FACTOR),
 				createChoiceItem(Indicator.TAG_PRIORITY),
@@ -50,6 +49,7 @@ public class CustomPlanningColumnsQuestion extends StaticChoiceQuestion
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
 				createChoiceItem(Factor.TAG_COMMENTS),
+				createChoiceItem(Desire.TAG_FULL_TEXT),
 		};
 	}
 
