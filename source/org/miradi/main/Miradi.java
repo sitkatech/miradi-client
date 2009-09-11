@@ -89,6 +89,8 @@ public class Miradi
 
 		EAM.setExceptionLoggingDestination();
 		EAM.possiblyLogTooLowInitialMemory();
+		
+		StaticQuestionManager.initialize();
 
 		Miradi.start(args);
 	}
