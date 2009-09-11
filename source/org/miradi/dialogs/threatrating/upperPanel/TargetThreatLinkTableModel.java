@@ -68,7 +68,7 @@ public class TargetThreatLinkTableModel extends MainThreatTableModel
 		{
 			Cause threat = (Cause) getDirectThreat(row);
 			ORef targetRef = getTarget(column).getRef();
-			if (ThreatTargetVirtualLinkHelper.haveNoThreatRatingData(getProject(), threat, targetRef))
+			if (!ThreatTargetVirtualLinkHelper.canSupportThreatRatings(getProject(), threat, targetRef))
 				return null;
 			
 			ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());

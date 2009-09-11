@@ -122,7 +122,7 @@ public class ThreatRatingMultiPropertiesPanel extends ObjectDataInputPanel
 		if (targetRef.isInvalid())
 			return blankPropertiesPanel;
 		
-		if (ThreatTargetVirtualLinkHelper.haveNoThreatRatingData(getProject(), cause, targetRef))
+		if (!ThreatTargetVirtualLinkHelper.canSupportThreatRatings(getProject(), cause, targetRef))
 			return blankPropertiesPanel;
 		
 		if (getProject().isStressBaseMode())
