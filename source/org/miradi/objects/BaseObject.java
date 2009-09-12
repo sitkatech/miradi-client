@@ -498,10 +498,22 @@ abstract public class BaseObject
 	
 	public OptionalDouble getTotalBudgetCost() throws Exception
 	{
-		final TimePeriodCosts totalTimePeriodCosts = getTotalTimePeriodCostsMap().calculateTimePeriodCosts(new DateUnit());
-		return totalTimePeriodCosts.calculateTotalCost(getProject());
+		TimePeriodCostsMap totalTimePeriodCostsMap = getTotalTimePeriodCostsMap();
+		return totalTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
 	}
 
+	public OptionalDouble getTotalBudgetCostWithoutRollup() throws Exception
+	{
+		TimePeriodCostsMap assignmentTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(TAG_RESOURCE_ASSIGNMENT_IDS);
+		TimePeriodCostsMap expenseTimePeriodCostsMap = getTotalTimePeriodCostsMapForAssignments(TAG_EXPENSE_ASSIGNMENT_REFS);
+		
+		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
+		mergedTimePeriodCostsMap.mergeNonConflicting(expenseTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.mergeNonConflicting(assignmentTimePeriodCostsMap);
+		
+		return mergedTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
+	}
+	
 	public int getTotalShareCount()
 	{
 		return 1;

@@ -22,6 +22,7 @@ package org.miradi.objecthelpers;
 import java.util.HashMap;
 import java.util.Set;
 
+import org.miradi.project.Project;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.OptionalDouble;
 
@@ -55,6 +56,12 @@ public class TimePeriodCostsMap
 			return new TimePeriodCosts();
 		
 		return timePeriodCosts;
+	}
+	
+	public OptionalDouble calculateTotalBudgetCost(Project project) throws Exception
+	{
+		final TimePeriodCosts totalTimePeriodCosts = calculateTimePeriodCosts(new DateUnit());
+		return totalTimePeriodCosts.calculateTotalCost(project);
 	}
 	
 	public TimePeriodCosts calculateTimePeriodCosts(DateUnit dateUnitToUse) throws Exception
