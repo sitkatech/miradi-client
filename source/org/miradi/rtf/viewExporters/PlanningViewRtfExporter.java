@@ -27,10 +27,10 @@ import org.miradi.dialogs.planning.ProjectResourceRowColumnProvider;
 import org.miradi.dialogs.planning.RowColumnProvider;
 import org.miradi.dialogs.planning.StrategicRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProviderWithBudgetColumns;
-import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.BudgetDetailsExportableTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.ExpenseAmountsExportableTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningWorkUnitsExportableTableModel;
 import org.miradi.dialogs.planning.upperPanel.AccountingCodeTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.ExportablePlanningTreeTableModel;
 import org.miradi.dialogs.planning.upperPanel.FundingSourceTreeTableModel;
@@ -134,17 +134,17 @@ public class PlanningViewRtfExporter extends RtfViewExporter
 		}
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE))
 		{
-			PlanningWorkUnitsTableModel workUnitsModel = new PlanningWorkUnitsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			PlanningWorkUnitsExportableTableModel workUnitsModel = new PlanningWorkUnitsExportableTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, workUnitsModel, model, workUnitsModel.getUniqueTableModelIdentifier()));
 		}
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE))
 		{
-			ExpenseAmountsTableModel expensesModel = new ExpenseAmountsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			ExpenseAmountsExportableTableModel expensesModel = new ExpenseAmountsExportableTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, expensesModel, model, expensesModel.getUniqueTableModelIdentifier()));
 		}
 		if (columnsToShow.contains(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE))
 		{
-			BudgetDetailsTableModel budgetDetailsModel = new BudgetDetailsTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
+			BudgetDetailsExportableTableModel budgetDetailsModel = new BudgetDetailsExportableTableModel(project, model, model.getUniqueTreeTableModelIdentifier());;
 			multiModelExporter.addExportable(new PlanningViewMainModelExporter(project, budgetDetailsModel, model, budgetDetailsModel.getUniqueTableModelIdentifier()));
 		}
 		
