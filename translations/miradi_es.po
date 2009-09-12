@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 18:46-0500\n"
+"POT-Creation-Date: 2009-09-11 19:22-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6737,6 +6737,18 @@ msgstr ""
 msgid "Title|Contributing Factor Properties"
 msgstr "Title|Contributing Factor Properties"
 
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAmountsExportableTableModel.java:37
+msgid ""
+"Total\n"
+"Expenses"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/BudgetDetailsExportableTableModel.java:37
+msgid ""
+"Total\n"
+"Budget Details"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:48
 msgid "Title|Direct Threat Properties"
 msgstr "Propiedades de amenaza directa  "
@@ -6748,6 +6760,12 @@ msgstr "(Error)"
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AssignmentDateUnitsTableModel.java:592
 msgid "Should Now Allow Full Time Employee To Be Calculated For "
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningWorkUnitsExportableTableModel.java:37
+msgid ""
+"Total\n"
+"Work Units"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:51
