@@ -34,7 +34,6 @@ import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.arranger.MeglerArranger;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.exceptions.CpmzVersionTooOldException;
 import org.miradi.exceptions.ValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -76,29 +75,8 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		if(!Project.isValidProjectFilename(newProjectFilename))
 			throw new Exception("Illegal project name: " + newProjectFilename);
 			
-		Project projectToFill = new Project();
-		projectToFill.setLocalDataLocation(EAM.getHomeDirectory());
-		projectToFill.createOrOpen(newProjectFilename);
-
 		File newProjectDir = new File(EAM.getHomeDirectory(), newProjectFilename);
-		try 
-		{
-			importProject(importFile, projectToFill, newProjectDir);
-		}
-		catch (CpmzVersionTooOldException e)
-		{
-			deleteIncompleteProject(projectToFill);
-			throw new CpmzVersionTooOldException(e);
-		}
-		catch (Exception e)
-		{
-			deleteIncompleteProject(projectToFill);
-			throw new Exception(e);
-		}
-		finally
-		{
-			projectToFill.close();
-		}
+		importProject(importFile, newProjectDir);
 	}
 
 	private void deleteIncompleteProject(Project projectToFill)	throws Exception
@@ -108,20 +86,19 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		DirectoryUtils.deleteEntireDirectoryTree(projectDirectory);
 	}
 
-	//TODO this method needs to have a project dir parameter only.  the project should not created when importing mpz,  just when importing project.xml
-	private void importProject(File zipFileToImport, Project projectToFill, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
+	private void importProject(File zipFileToImport, File newProjectDir) throws ZipException, IOException, Exception, ValidationException
 	{
 		ZipFile zipFile = new ZipFile(zipFileToImport);
-		byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
-		if (extractXmlBytes.length == 0)
-			throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
-		
 		try
 		{
+			byte[] extractXmlBytes = extractXmlBytes(zipFile, ExportCpmzDoer.PROJECT_XML_FILE_NAME);
+			if (extractXmlBytes.length == 0)
+				throw new Exception(ExportCpmzDoer.PROJECT_XML_FILE_NAME + EAM.text(" was empty"));
+			
 			if (zipContainsMpzProject(zipFile))
-				importProjectFromMpzEntry(projectToFill, zipFile, newProjectDir);
+				importProjectFromMpzEntry(zipFile, newProjectDir);
 			else
-				importProjectFromXmlEntry(projectToFill, zipFile);
+				importProjectFromXmlEntry(zipFile, newProjectDir);
 		}
 		finally
 		{
@@ -129,52 +106,74 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		}
 	}
 
-	private void importProjectFromMpzEntry(Project projectToFill, ZipFile zipFile, File newProjectDir) throws Exception
+	private void importProjectFromMpzEntry(ZipFile zipFile, File newProjectDir) throws Exception
 	{
 		ZipEntry mpzEntry = zipFile.getEntry(ExportCpmzDoer.PROJECT_ZIP_FILE_NAME);
 		InputStream inputStream = zipFile.getInputStream(mpzEntry);
 		try
 		{
-			ProjectUnzipper.unzipToProjectDirectory(EAM.getHomeDirectory(), projectToFill.getFilename(), inputStream);
+			ProjectUnzipper.unzipToProjectDirectory(newProjectDir.getParentFile(), newProjectDir.getName(), inputStream);
 		}
 		finally
 		{
-			projectToFill.close();
 			inputStream.close();
 		}
 		
-		importConproProjectNumbers(projectToFill, zipFile, newProjectDir);
+		importConproProjectNumbers(zipFile, newProjectDir);
 	}
 
-	private void importConproProjectNumbers(Project projectToFill, ZipFile zipFile, File newProjectDir) throws Exception
+	private void importConproProjectNumbers(ZipFile zipFile, File newProjectDir) throws Exception
 	{
+		Project projectToFill = new Project();
 		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
 		projectToFill.openProject(newProjectDir.getName());
-		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
 		try
 		{
-			new ConproXmlImporter(projectToFill).importConProjectNumbers(projectAsInputStream);
+			ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+			try
+			{
+				new ConproXmlImporter(projectToFill).importConProjectNumbers(projectAsInputStream);
+			}
+			finally
+			{
+				projectAsInputStream.close();
+			}
+
+			projectToFill.close();
 		}
-		finally
+		catch(Exception e)
 		{
-			projectAsInputStream.close();
+			deleteIncompleteProject(projectToFill);
 		}
 	}
 
-	private void importProjectFromXmlEntry(Project projectToFill, ZipFile zipFile) throws Exception, IOException
+	private void importProjectFromXmlEntry(ZipFile zipFile, File newProjectDir) throws Exception, IOException
 	{
-		ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+		Project projectToFill = new Project();
+		projectToFill.setLocalDataLocation(newProjectDir.getParentFile());
+		projectToFill.createOrOpen(newProjectDir.getName());
 		try
 		{
-			ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
-			conProXmlImporter.importConProProject(projectAsInputStream);
-			ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
-			splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
+			ByteArrayInputStreamWithSeek projectAsInputStream = getProjectAsInputStream(zipFile);
+			try
+			{
+				ConproXmlImporter conProXmlImporter = new ConproXmlImporter(projectToFill);
+				conProXmlImporter.importConProProject(projectAsInputStream);
+				ORef highOrAboveRankedThreatsTag = conProXmlImporter.getHighOrAboveRankedThreatsTag();
+				splitMainDiagramByTargets(projectToFill, highOrAboveRankedThreatsTag);
+			}
+			finally
+			{
+				projectAsInputStream.close();
+			}
+
+			projectToFill.close();
 		}
-		finally
+		catch(Exception e)
 		{
-			projectAsInputStream.close();
+			deleteIncompleteProject(projectToFill);
 		}
+
 	}
 	
 	private ByteArrayInputStreamWithSeek getProjectAsInputStream(ZipFile zipFile) throws Exception
