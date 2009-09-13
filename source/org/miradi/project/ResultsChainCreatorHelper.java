@@ -49,6 +49,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.FactorLink;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
@@ -489,6 +490,9 @@ public class ResultsChainCreatorHelper
 	private boolean canAddTypeToResultsChain(DiagramFactor diagramFactor)
 	{
 		if (diagramFactor.getWrappedType() == ObjectType.TARGET)
+			return true;
+		
+		if (HumanWelfareTarget.is(diagramFactor.getWrappedType()))
 			return true;
 		
 		if (diagramFactor.getWrappedType() == ObjectType.CAUSE)
