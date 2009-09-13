@@ -286,8 +286,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 	{
 		Point nodeLocation = selectedFactorCell.getLocation();
 		int x = Math.max(0, nodeLocation.x - DEFAULT_MOVE - nodeWidth);
-		if (selectedFactorCell.isHumanWelfareTarget())
-			x = (x - DEFAULT_MOVE + DEFAULT_ABSTRACT_TARGET_RIGHT_MARGIN);
 		
 		return new Point(x, nodeLocation.y);
 	}
