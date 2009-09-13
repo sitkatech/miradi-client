@@ -223,6 +223,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 	
 	private Point getNonTargetDeltaPoint(FactorCell[] selectedFactors, int factorType, int factorWidth)
 	{
+		//TODO why are we asking if factorType is not target, the question was already answered in calling method
 		if (selectedFactors.length > 0 && !(factorType == ObjectType.TARGET))
 			return getLocationSelectedNonTargetNode(selectedFactors[0], factorWidth);
 		
