@@ -102,8 +102,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
 			else if (isSplitableLink(selectedFactors, selectedDiagramLinks, diagramFactor))
 				linkCreator.splitSelectedLinkToIncludeFactor(getDiagramModel(), selectedDiagramLinks[0], diagramFactor);
-			else
-				notLinkingToAnyFactors();
 			
 			selectNewFactor(factorRef);
 			ensureNewFactorIsVisible(diagramFactor);
@@ -326,10 +324,6 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return true; 
 	}
 	
-	protected void notLinkingToAnyFactors() throws CommandFailedException
-	{
-	}
-
 	protected void doExtraSetup(DiagramFactor newlyInsertedDiagramFactor, FactorCell[] selectedFactorCells) throws Exception
 	{
 	}
