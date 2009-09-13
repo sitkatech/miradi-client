@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-11 21:07-0500\n"
+"POT-Creation-Date: 2009-09-13 10:43-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -1790,11 +1790,11 @@ msgstr ""
 msgid "[No Project]"
 msgstr ""
 
-#: miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:171
+#: miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:172
 msgid "[New Results Chain]"
 msgstr ""
 
-#: miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:193
+#: miradi/source/org/miradi/project/ResultsChainCreatorHelper.java:194
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:71
 #: miradi/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
 msgid "Results Chain"
