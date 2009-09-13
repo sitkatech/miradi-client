@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Cause;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.GroupBox;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -125,6 +126,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	public static boolean isAcceptableFactor(int type)
 	{
 		return (type == Target.getObjectType() || 
+				type == HumanWelfareTarget.getObjectType() ||
 				type == Cause.getObjectType() || 
 				type == Strategy.getObjectType() ||
 				type == IntermediateResult.getObjectType() || 
