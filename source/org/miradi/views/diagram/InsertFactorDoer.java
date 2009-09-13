@@ -38,6 +38,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.GroupBox;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Stress;
@@ -98,7 +99,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		{
 			LinkCreator linkCreator = new LinkCreator(getProject());
 			ORef factorRef = diagramFactor.getWrappedORef();
-			if((selectedFactors.length > 0) && (getTypeToInsert()!= ObjectType.TARGET) && (getTypeToInsert()!= ObjectType.GROUP_BOX))
+			if((selectedFactors.length > 0) && (!isLinkToSelfType()))
 				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
 			else if (isSplitableLink(selectedFactors, selectedDiagramLinks, diagramFactor))
 				linkCreator.splitSelectedLinkToIncludeFactor(getDiagramModel(), selectedDiagramLinks[0], diagramFactor);
@@ -117,6 +118,18 @@ abstract public class InsertFactorDoer extends LocationDoer
 			getProject().executeEndTransaction();
 		}
 	}
+	
+	private boolean isLinkToSelfType()
+	{
+		if (Target.is(getTypeToInsert()))
+			return true;
+		
+		if (GroupBox.is(getTypeToInsert()))
+			return true;
+		
+		return HumanWelfareTarget.is(getTypeToInsert());
+	}
+	
 	private boolean isSplitableLink(FactorCell[] selectedFactors, DiagramLink[] selectedDiagramLinks, DiagramFactor diagramFactor)
 	{
 		if (!LinkCreator.isValidLinkableType(diagramFactor.getWrappedType()))
