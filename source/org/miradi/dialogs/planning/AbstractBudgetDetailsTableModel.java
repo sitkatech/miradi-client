@@ -94,7 +94,7 @@ abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnit
 	}
 
 	@Override
-	protected TaglessChoiceItem createFormatedChoiceItem(OptionalDouble optionalDouble)
+	protected TaglessChoiceItem createFormattedChoiceItem(OptionalDouble optionalDouble)
 	{
 		return new CurrencyFormattedChoiceItem(getCurrencyFormatter(), optionalDouble.getValue());
 	}
