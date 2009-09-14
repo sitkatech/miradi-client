@@ -34,6 +34,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.KeyEcologicalAttribute;
 import org.miradi.objects.Measurement;
@@ -50,6 +51,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
 		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
+		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(mainWindow, getPicker());
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
@@ -57,6 +59,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 		addPanel(blankPropertiesPanel);
 		addPanel(targetPropertiesPanel);
+		addPanel(humanWelfareTargetPropertiesPanel);
 		addPanel(targetViabilityKeaPropertiesPanel);
 		addPanel(targetViabilityIndicatorPropertiesPanel);
 		addPanel(targetViabilityMeasurementPropertiesPanel);
@@ -127,6 +130,8 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		int objectType = orefsToUse[0].getObjectType();
 		if(Target.is(objectType))
 			return targetPropertiesPanel;
+		if(HumanWelfareTarget.is(objectType))
+			return humanWelfareTargetPropertiesPanel;
 		if(objectType == KeyEcologicalAttribute.getObjectType())
 			return targetViabilityKeaPropertiesPanel;
 		if(objectType == Indicator.getObjectType())
@@ -158,6 +163,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	private AbstractObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
+	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private IndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
