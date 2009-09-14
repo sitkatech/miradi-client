@@ -172,6 +172,7 @@ public class ImportCpmzDoer extends ImportProjectDoer
 		catch(Exception e)
 		{
 			deleteIncompleteProject(projectToFill);
+			throw e;
 		}
 
 	}
