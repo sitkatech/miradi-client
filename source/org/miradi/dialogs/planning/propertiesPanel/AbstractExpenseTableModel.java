@@ -33,7 +33,9 @@ import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.Project;
+import org.miradi.questions.CurrencyFormattedChoiceItem;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTableModel
@@ -90,5 +92,11 @@ abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTable
 	protected int getAssignmentType()
 	{
 		return ExpenseAssignment.getObjectType();
+	}
+
+	@Override
+	protected TaglessChoiceItem createFormatedChoiceItem(OptionalDouble optionalDouble)
+	{
+		return new CurrencyFormattedChoiceItem(getCurrencyFormatter(), optionalDouble.getValue());
 	}
 }

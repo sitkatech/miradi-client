@@ -670,12 +670,14 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		OptionalDouble optionalDouble = getOptionalDoubleAt(row, column);
 		if (optionalDouble.hasValue())
-		{
-			String formattedDouble = getCurrencyFormatter().format(optionalDouble.getValue());
-			return new TaglessChoiceItem(formattedDouble);
-		}
+			return createFormatedChoiceItem(optionalDouble);
 		
 		return new EmptyChoiceItem();
+	}
+	
+	protected TaglessChoiceItem createFormatedChoiceItem(OptionalDouble optionalDouble)
+	{
+		return new TaglessChoiceItem(optionalDouble.getValue());
 	}
 	
 	private OptionalDouble getOptionalDoubleAt(int row, int column)
@@ -727,7 +729,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return treeModelIdentifierAsTag;
 	}
 	
-	private CurrencyFormat getCurrencyFormatter()
+	protected CurrencyFormat getCurrencyFormatter()
 	{
 		return currencyFormatter;
 	}
