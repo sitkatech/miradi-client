@@ -42,7 +42,6 @@ import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.CurrencyFormat;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 
 abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface, RowColumnBaseObjectProvider
@@ -54,9 +53,8 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		setAllColumnsToUseDoubleClickEditors();
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		CurrencyFormat currencyFormatter = getProject().getCurrencyFormatterWithCommas();
 		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
-		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
+		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		numericRendererFactory = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 

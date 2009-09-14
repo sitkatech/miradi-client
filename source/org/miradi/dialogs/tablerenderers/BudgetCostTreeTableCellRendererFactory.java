@@ -25,12 +25,11 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.project.CurrencyFormat;
 import org.miradi.questions.ChoiceItem;
 
 public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRendererFactory
 {
-	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
+	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 	}

@@ -50,7 +50,6 @@ import org.miradi.dialogs.tablerenderers.ProgressTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.tablerenderers.WhoColumnTableCellEditorFactory;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
@@ -68,8 +67,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 		masterTree = masterTreeToUse;
 		defaultRendererFactory = new MultiLineObjectTableCellRendererFactory(this, fontProvider);
-		CurrencyFormat currencyFormatter = masterTree.getProject().getCurrencyFormatterWithCommas();
-		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
+		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
 		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
