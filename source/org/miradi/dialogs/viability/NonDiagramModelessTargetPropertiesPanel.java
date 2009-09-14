@@ -29,9 +29,11 @@ import org.miradi.questions.StatusQuestion;
 
 public class NonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public NonDiagramModelessTargetPropertiesPanel(Project projectToUse, int objectTypeToUse)
+	public NonDiagramModelessTargetPropertiesPanel(Project projectToUse, int targetTypeToUse)
 	{
-		super(projectToUse, objectTypeToUse);
+		super(projectToUse, targetTypeToUse);
+		
+		targetType = targetTypeToUse;
 		
 		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
 		addSubPanelWithTitledBorder(targetCoreSubPanel);
@@ -53,6 +55,11 @@ public class NonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPane
 	@Override
 	public String getPanelDescription()
 	{
-		return "";
+		if (Target.is(targetType))
+			return EAM.text("Title|Target Properties");
+		
+		return EAM.text("Title|Human Welfare Target Properties");
 	}
+	
+	private int targetType;
 }
