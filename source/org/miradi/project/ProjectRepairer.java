@@ -40,7 +40,6 @@ import org.miradi.objects.FactorLink;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.ThreatStressRating;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ProjectRepairer
@@ -176,7 +175,6 @@ public class ProjectRepairer
 		}
 		
 		detectAndReportOrphans(FactorLink.getObjectType(), DiagramLink.getObjectType());
-		detectAndReportOrphans(ThreatStressRating.getObjectType(), FactorLink.getObjectType());
 		detectAndReportOrphans(Cause.getObjectType(), DiagramFactor.getObjectType());
 
 // NOTE: This is appropriate for testing, but not for production
