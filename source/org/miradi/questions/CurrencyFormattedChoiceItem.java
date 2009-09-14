@@ -30,7 +30,7 @@ public class CurrencyFormattedChoiceItem extends TaglessChoiceItem
 	{
 		super(formatterToUse.format(valueToUse));
 	
-		labelAsDouble = valueToUse;
+		value = valueToUse;
 	}
 	
 	@Override
@@ -39,8 +39,8 @@ public class CurrencyFormattedChoiceItem extends TaglessChoiceItem
 		DecimalFormat formatter = new DecimalFormat();
 		formatter.setGroupingUsed(false);
 		
-		return formatter.format(labelAsDouble);
+		return formatter.format(value);
 	}
 
-	private double labelAsDouble;
+	private double value;
 }
