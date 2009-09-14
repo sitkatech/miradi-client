@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 10:07-0500\n"
+"POT-Creation-Date: 2009-09-14 10:10-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6551,7 +6551,7 @@ msgstr "Atribut Ekologi Kunci (AEK) "
 msgid "Title|Key Ecological Attribute Properties"
 msgstr "Sifat-sifat Atribut Ekologi Kunci "
 
-#: miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:88
+#: miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:86
 msgid "Title|Target Viability Properties"
 msgstr "Sifat-sifat Kelangsungan Target "
 
