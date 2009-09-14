@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
@@ -28,11 +27,5 @@ public class NonDiagramKeaModeTargetPropertiesPanel extends NonDiagramModelessTa
 	public NonDiagramKeaModeTargetPropertiesPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Key Attribute Mode Target Properties");
 	}
 }
