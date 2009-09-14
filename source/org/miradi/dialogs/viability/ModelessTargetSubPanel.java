@@ -21,26 +21,30 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.Factor;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.HabitatAssociationQuestion;
 
 public class ModelessTargetSubPanel extends ObjectDataInputPanel
 {
-	public ModelessTargetSubPanel(Project projectToUse)
+	public ModelessTargetSubPanel(Project projectToUse, int targetType)
 	{
-		super(projectToUse, Target.getObjectType());
+		super(projectToUse, targetType);
 		
-		addField(createMultilineField(Target.TAG_CURRENT_STATUS_JUSTIFICATION));
+		addField(createMultilineField(targetType, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION));
 		
-		addField(createStringField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME));
-		addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, getProject().getQuestion(HabitatAssociationQuestion.class), 1));
-		addField(createReadOnlyObjectList(Target.getObjectType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
-		addField(createReadOnlyObjectList(Target.getObjectType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
+		if (Target.is(targetType))
+		{
+			addField(createStringField(Target.getObjectType(), Target.TAG_SPECIES_LATIN_NAME));
+			addField(createCodeListField(Target.getObjectType(), Target.TAG_HABITAT_ASSOCIATION, getProject().getQuestion(HabitatAssociationQuestion.class), 1));
+		}
+		
+		addField(createReadOnlyObjectList(Target.getObjectType(), AbstractTarget.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
+		addField(createReadOnlyObjectList(Target.getObjectType(), AbstractTarget.PSEUDO_TAG_RESULTS_CHAIN_REFS));
 
-		addField(createMultilineField(Target.getObjectType(), Factor.TAG_TEXT));
-		addField(createMultilineField(Target.getObjectType(), Factor.TAG_COMMENTS));
+		addField(createMultilineField(Target.getObjectType(), AbstractTarget.TAG_TEXT));
+		addField(createMultilineField(Target.getObjectType(), AbstractTarget.TAG_COMMENTS));
 
 		updateFieldsFromProject();
 	}
@@ -50,5 +54,4 @@ public class ModelessTargetSubPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Details");
 	}
-
 }

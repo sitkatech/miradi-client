@@ -35,13 +35,13 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		
 		targetType = targetTypeToUse;
 		
-		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject());
+		TargetCoreSubPanel targetCoreSubPanel = new TargetCoreSubPanel(getProject(), targetType);
 		addSubPanelWithTitledBorder(targetCoreSubPanel);
 		
 		createSingleSection(EAM.text("Status"));
 		addFieldsOnOneLine("", new ObjectDataInputField[]{createStatusField()});
 		
-		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject());
+		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject(), targetType);
 		addSubPanelWithTitledBorder(modelessTargetSubPanel);
 		
 		updateFieldsFromProject();
