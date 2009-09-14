@@ -24,7 +24,6 @@ import java.awt.Rectangle;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.dialogs.base.FormBaseDataPanel;
 import org.miradi.dialogs.base.OverlaidObjectDataInputPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
@@ -36,7 +35,6 @@ import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.viability.IndicatorPropertiesPanel;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
-import org.miradi.forms.HumanWelfareTargetPropertiesForm;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -113,7 +111,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
-		humanWelfareTargetPropertiesPanel = new FormBaseDataPanel(getProject(), new HumanWelfareTargetPropertiesForm());
+		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTarget.getObjectType());
 		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
 		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
 		intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
@@ -280,7 +278,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
-	private FormBaseDataPanel humanWelfareTargetPropertiesPanel; 
+	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel; 
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
 	private PlanningViewDirectThreatPropertiesPanel threatPropertiesPanel;
