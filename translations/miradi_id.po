@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 10:37-0500\n"
+"POT-Creation-Date: 2009-09-14 10:46-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -2570,7 +2570,7 @@ msgstr "Status Saat Ini "
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:334
-#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
+#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Target"
 
@@ -6519,7 +6519,7 @@ msgstr "Indikator "
 msgid "Label|Methods"
 msgstr "Metode "
 
-#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
+#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
 msgid "Human Welfare Target"
 msgstr ""
 
@@ -6559,16 +6559,16 @@ msgstr "Sifat-sifat Atribut Ekologi Kunci "
 msgid "Title|Target Viability Properties"
 msgstr "Sifat-sifat Kelangsungan Target "
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:41
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:42
 msgid "Status"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:59
-msgid "Title|Target Properties"
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:60
+msgid "Title|Human Welfare Target Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:61
-msgid "Title|Human Welfare Target Properties"
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:62
+msgid "Title|Target Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:55
