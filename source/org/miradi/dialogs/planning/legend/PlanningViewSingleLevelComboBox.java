@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.legend;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Strategy;
@@ -57,7 +58,6 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 
 	public CodeList getColumnListToShow() throws Exception
 	{
-		
 		String propertyName = getSelectedItemProperty();
 		if (propertyName.equals(Goal.OBJECT_NAME))
 			return ColumnManager.getGoalColumns();
@@ -80,7 +80,7 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		if (propertyName.equals(Task.OBJECT_NAME))
 			return ColumnManager.getTaskColumns();
 		
-		if (propertyName.equals(Target.OBJECT_NAME))
+		if (propertyName.equals(Target.OBJECT_NAME) || propertyName.equals(HumanWelfareTarget.OBJECT_NAME))
 			return ColumnManager.getTargetColumns();
 		
 		if (propertyName.equals(Cause.OBJECT_NAME_THREAT))
@@ -112,5 +112,4 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		EAM.logVerbose("From " + existingValue + " to " + currentChoiceItem.getCode());
 		return true;
 	}
-
 }
