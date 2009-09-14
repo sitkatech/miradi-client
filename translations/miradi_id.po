@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 10:04-0500\n"
+"POT-Creation-Date: 2009-09-14 10:07-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6537,18 +6537,6 @@ msgstr "Peringkat Kelangsungan "
 msgid "Title|Indicator Properties"
 msgstr "Sifat-sifat Indikator "
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:41
-msgid "Status"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:59
-msgid "Title|Target Properties"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:61
-msgid "Title|Human Welfare Target Properties"
-msgstr ""
-
 #: miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:49
 #: miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:42
 #: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:37
@@ -6566,6 +6554,18 @@ msgstr "Sifat-sifat Atribut Ekologi Kunci "
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:88
 msgid "Title|Target Viability Properties"
 msgstr "Sifat-sifat Kelangsungan Target "
+
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:41
+msgid "Status"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:59
+msgid "Title|Target Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:61
+msgid "Title|Human Welfare Target Properties"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:51
 msgid "Details"
