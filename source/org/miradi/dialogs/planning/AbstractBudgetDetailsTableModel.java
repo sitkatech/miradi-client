@@ -33,6 +33,8 @@ import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.CurrencyFormattedChoiceItem;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.OptionalDouble;
 
 abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnitsTableModel
@@ -91,6 +93,12 @@ abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnit
 		throw new RuntimeException(getErrorMessage());
 	}
 
+	@Override
+	protected TaglessChoiceItem createFormatedChoiceItem(OptionalDouble optionalDouble)
+	{
+		return new CurrencyFormattedChoiceItem(getCurrencyFormatter(), optionalDouble.getValue());
+	}
+	
 	private String getErrorMessage()
 	{
 		return EAM.text("This model is not for a single assignment and has no assignment information");
