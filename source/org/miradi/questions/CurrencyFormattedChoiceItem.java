@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import java.text.DecimalFormat;
+
 import org.miradi.project.CurrencyFormat;
 
 public class CurrencyFormattedChoiceItem extends TaglessChoiceItem
@@ -34,7 +36,10 @@ public class CurrencyFormattedChoiceItem extends TaglessChoiceItem
 	@Override
 	public String getCode()
 	{
-		return Double.toString(labelAsDouble);
+		DecimalFormat formatter = new DecimalFormat();
+		formatter.setGroupingUsed(false);
+		
+		return formatter.format(labelAsDouble);
 	}
 
 	private double labelAsDouble;
