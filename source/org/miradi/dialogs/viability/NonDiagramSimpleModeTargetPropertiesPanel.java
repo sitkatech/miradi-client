@@ -19,22 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.viability;
 
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.questions.StatusQuestion;
 
 public class NonDiagramSimpleModeTargetPropertiesPanel extends AbstractNonDiagramModelessTargetPropertiesPanel
 {
 	public NonDiagramSimpleModeTargetPropertiesPanel(Project projectToUse)
 	{
 		super(projectToUse, Target.getObjectType());
-	}
-
-	protected ObjectDataInputField createStatusField()
-	{
-		return createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
 	}
 
 	@Override
