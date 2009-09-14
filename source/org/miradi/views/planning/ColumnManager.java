@@ -29,6 +29,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
@@ -210,7 +211,7 @@ public class ColumnManager
 		if (propertyName.equals(Measurement.OBJECT_NAME))
 			return ColumnManager.getMeasurementColumns();
 		
-		if (propertyName.equals(Target.OBJECT_NAME))
+		if (propertyName.equals(Target.OBJECT_NAME) || propertyName.equals(HumanWelfareTarget.OBJECT_NAME))
 			return ColumnManager.getTargetColumns();
 		
 		if (propertyName.equals(Cause.OBJECT_NAME_THREAT) || propertyName.equals(Cause.OBJECT_NAME_CONTRIBUTING_FACTOR))
