@@ -27,7 +27,7 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 
-abstract public class AbstractNonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPanelWithSections
+public class AbstractNonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public AbstractNonDiagramModelessTargetPropertiesPanel(Project projectToUse, int objectTypeToUse)
 	{
@@ -49,4 +49,10 @@ abstract public class AbstractNonDiagramModelessTargetPropertiesPanel extends Ob
 	{
 		return createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
 	} 
+	
+	@Override
+	public String getPanelDescription()
+	{
+		return "";
+	}
 }
