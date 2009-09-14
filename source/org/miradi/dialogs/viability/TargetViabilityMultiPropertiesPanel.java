@@ -49,8 +49,8 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		setLayout(cardLayout);
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
-		targetSimpleModePropertiesPanel = new NonDiagramSimpleModeTargetPropertiesPanel(getProject());
-		targetKeaModePropertiesPanel = new NonDiagramKeaModeTargetPropertiesPanel(getProject());
+		targetSimpleModePropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
+		targetKeaModePropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(mainWindow, getPicker());
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
@@ -168,8 +168,8 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	private CardLayout cardLayout;
 	private AbstractObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
-	private NonDiagramSimpleModeTargetPropertiesPanel targetSimpleModePropertiesPanel;
-	private NonDiagramKeaModeTargetPropertiesPanel targetKeaModePropertiesPanel;
+	private NonDiagramAbstractTargetPropertiesPanel targetSimpleModePropertiesPanel;
+	private NonDiagramAbstractTargetPropertiesPanel targetKeaModePropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private IndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
