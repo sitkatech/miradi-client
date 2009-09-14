@@ -164,6 +164,11 @@ public class OptionalDouble
 		return "";
 	}
 	
+	public String toUnformattedString()
+	{
+		return getRawValue().toString();
+	}
+	
 	private boolean hasValue;
 	private Double optionalDouble;
 }

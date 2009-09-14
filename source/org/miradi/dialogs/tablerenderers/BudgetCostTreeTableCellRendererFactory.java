@@ -24,7 +24,6 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.miradi.dialogs.planning.upperPanel.PlanningUpperMultiTable;
 import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.CurrencyFormat;
@@ -32,7 +31,7 @@ import org.miradi.questions.ChoiceItem;
 
 public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRendererFactory
 {
-	public BudgetCostTreeTableCellRendererFactory(PlanningUpperMultiTable providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
+	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		currencyFormatter = currencyFormatterToUse;
@@ -41,7 +40,7 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 	public Component getTableCellRendererComponent(JTable table, Object rawValue, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		ChoiceItem choice = (ChoiceItem)rawValue;
-		String value = formatCurrency(choice.getLabel());
+		String value = formatCurrency(choice.getCode());
 		
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
 		String text = annotateIfOverride(row, tableColumn, renderer, value);

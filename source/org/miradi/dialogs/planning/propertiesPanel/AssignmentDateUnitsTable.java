@@ -34,12 +34,18 @@ import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.dialogs.tablerenderers.BasicTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.BudgetCostTreeTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
+import org.miradi.dialogs.tablerenderers.FontForObjectTypeProvider;
 import org.miradi.dialogs.tablerenderers.NumericTableCellRendererFactory;
+import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
+import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
+import org.miradi.project.CurrencyFormat;
 import org.miradi.utils.DoubleClickAutoSelectCellEditor;
 
-abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface
+abstract public class AssignmentDateUnitsTable extends AbstractComponentTable implements RightClickActionProvider, TableWithExpandableColumnsInterface, RowColumnBaseObjectProvider
 {
 	public AssignmentDateUnitsTable(MainWindow mainWindowToUse, AssignmentDateUnitsTableModel modelToUse) throws Exception
 	{
@@ -48,7 +54,10 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		setAllColumnsToUseDoubleClickEditors();
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		renderer = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
+		CurrencyFormat currencyFormatter = getProject().getCurrencyFormatterWithCommas();
+		FontForObjectTypeProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
+		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider, currencyFormatter);
+		numericRendererFactory = new NumericTableCellRendererFactory(modelToUse, new DefaultFontProvider(getMainWindow()));
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 
 		addRightClickHandler();
@@ -70,9 +79,14 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 	}
 	
 	@Override
-	public TableCellRenderer getCellRenderer(int row, int column)
+	public TableCellRenderer getCellRenderer(int row, int tableColumn)
 	{
-		renderer.setCellBackgroundColor(getColumnBackGroundColor(column));
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+		BasicTableCellRendererFactory renderer = numericRendererFactory;
+		if(getWorkUnitsTableModel().isCurrencyColumn(modelColumn))
+			renderer = currencyRendererFactory;
+
+		renderer.setCellBackgroundColor(getColumnBackGroundColor(tableColumn));
 		return renderer;	
 	}
 	
@@ -158,8 +172,23 @@ abstract public class AssignmentDateUnitsTable extends AbstractComponentTable im
 		return convertColumnIndexToModel(selectedTableColumn);
 	}
 	
+	public BaseObject getBaseObjectForRowColumn(int row, int column)
+	{
+		return getWorkUnitsTableModel().getBaseObjectForRow(row);
+	}
+	
+	public int getProportionShares(int row)
+	{
+		return getWorkUnitsTableModel().getProportionShares(row);
+	}
+	
+	public boolean areBudgetValuesAllocated(int row)
+	{
+		return getWorkUnitsTableModel().areBudgetValuesAllocated(row);
+	}
+	
 	public static final String UNIQUE_IDENTIFIER = "WorkUnitsTable";
 
-	private BasicTableCellRendererFactory renderer;
-
+	private BasicTableCellRendererFactory numericRendererFactory;
+	private BasicTableCellRendererFactory currencyRendererFactory;
 }
