@@ -19,8 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.awt.Component;
 import javax.swing.DefaultCellEditor;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import org.miradi.questions.ChoiceItem;
 
 public class DoubleClickAutoSelectCellEditor extends DefaultCellEditor 
 {
@@ -29,6 +33,14 @@ public class DoubleClickAutoSelectCellEditor extends DefaultCellEditor
 		super(textField);
 		setClickCountToStart(2);
 		delegate = new EditorDeletegate();
+	}
+	
+	@Override
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
+	{
+		ChoiceItem choiceItem = (ChoiceItem) value;
+		
+		return super.getTableCellEditorComponent(table, choiceItem.getCode(), isSelected, row, column);
 	}
 	
 	final class EditorDeletegate extends EditorDelegate
