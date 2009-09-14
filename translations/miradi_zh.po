@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 10:10-0500\n"
+"POT-Creation-Date: 2009-09-14 10:31-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2454,7 +2454,7 @@ msgstr "当前状况 \t\t"
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
 #: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:334
-#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:39
+#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:51
 msgid "Target"
 msgstr "对象"
 
@@ -6345,7 +6345,11 @@ msgstr "指示物 \t\t"
 msgid "Label|Methods"
 msgstr "方法 \t\t"
 
-#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:49
+#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
+msgid "Human Welfare Target"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:37
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:129
@@ -6393,7 +6397,7 @@ msgstr ""
 msgid "Title|Human Welfare Target Properties"
 msgstr ""
 
-#: miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:51
+#: miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:55
 msgid "Details"
 msgstr ""
 
