@@ -66,7 +66,7 @@ public class ProjectAsXmlExporter extends XmlExporter
 	}
 
 	@Override
-	protected void exportProject(UnicodeWriter out) throws Exception
+	public void exportProject(UnicodeWriter out) throws Exception
 	{
 		out.writeln("<MiradiProject>");
 		out.writeln("<FileName>" + XmlUtilities.getXmlEncoded(getProject().getFilename()) + "</FileName>");

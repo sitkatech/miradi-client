@@ -174,10 +174,15 @@ public class ConproXmlImporter implements ConProMiradiXml
 	private void importXml() throws Exception
 	{
 		importProjectSummaryElement();
-		
+
+		// NOTE: Must import methods before strategies, because methods have specific ids
+		// which could conflict with activities that had been imported already
+		// TODO: Should assign all our own ids and keep a map of theirs to ours,
+		// to avoid any possible conflicts
+		importMethods();
+
 		importStrategies();
 		importThreats();
-		importMethods();
 		importIndicators();
 		importObjectives();
 		importTargets();
