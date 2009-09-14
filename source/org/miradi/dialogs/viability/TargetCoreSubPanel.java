@@ -21,26 +21,44 @@ package org.miradi.dialogs.viability;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.icons.AbstractMiradiIcon;
+import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.ViabilityModeQuestion;
 
 public class TargetCoreSubPanel extends ObjectDataInputPanel
 {
-	public TargetCoreSubPanel(Project projectToUse)
+	public TargetCoreSubPanel(Project projectToUse, int targetType)
 	{
-		super(projectToUse, Target.getObjectType());
+		super(projectToUse, targetType);
 	
-		ObjectDataInputField shortLabelField = createShortStringField(Target.getObjectType(), Target.TAG_SHORT_LABEL);
-		ObjectDataInputField labelField = createExpandableField(Target.getObjectType(), Target.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Target"), new TargetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		ObjectDataInputField shortLabelField = createShortStringField(targetType, AbstractTarget.TAG_SHORT_LABEL);
+		ObjectDataInputField labelField = createExpandableField(targetType, AbstractTarget.TAG_LABEL);
+		addFieldsOnOneLine(getAbstractTargetLabel(targetType), getAbstractTargetIcon(targetType), new ObjectDataInputField[]{shortLabelField, labelField,});
 		
-		addField(createChoiceField(ObjectType.TARGET, Target.TAG_VIABILITY_MODE, new ViabilityModeQuestion()));
+		addField(createChoiceField(targetType, AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion()));
 		
 		updateFieldsFromProject();
+	}
+
+	private String getAbstractTargetLabel(int targetType)
+	{
+		if (Target.is(targetType))
+			return EAM.text("Target");
+		
+		return EAM.text("Human Welfare Target");
+	}
+
+	private AbstractMiradiIcon getAbstractTargetIcon(int targetType)
+	{
+		if (Target.is(targetType))
+			return new TargetIcon();
+		
+		return new HumanWelfareTargetIcon();
 	}
 
 	@Override
