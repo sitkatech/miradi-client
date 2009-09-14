@@ -19,11 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.xml.conpro.importer;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeWriter;
 import org.martus.util.inputstreamwithseek.FileInputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -39,6 +44,7 @@ import org.miradi.objects.Objective;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.Target;
+import org.miradi.objects.Task;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.project.ProjectForTesting;
@@ -52,6 +58,49 @@ public class TestConproXmlImporter extends TestCaseWithProject
 	public TestConproXmlImporter(String name)
 	{
 		super(name);
+	}
+	
+	public void testAvoidConflictingActivityAndMethodIds() throws Exception
+	{
+		getProject().createActivity();
+		Task method = getProject().createMethod();
+		
+		ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+		UnicodeWriter writer = new UnicodeWriter(bytes);
+		new ConproXmlExporter(getProject()).exportProject(writer);
+		writer.flush();
+		bytes.close();
+		String xml = new String(bytes.toByteArray(), "UTF-8");
+		
+		ProjectForTesting firstTry = new ProjectForTesting(getName());
+		importXmlStringIntoProject(xml, firstTry);
+
+		ORefList taskRefs = firstTry.getPool(Task.getObjectType()).getORefList();
+		taskRefs.remove(method.getRef());
+		ORef conflictingRef = taskRefs.get(0);
+		
+		String oldMethodId = "<method id='" + method.getId() + "'";
+		assertTrue("Couldn't find old method id in xml", xml.contains(oldMethodId));
+		String newMethodId = "<method id='" + conflictingRef.getObjectId() + "'";
+		xml = xml.replace(oldMethodId, newMethodId);
+		
+		ProjectForTesting secondTry = new ProjectForTesting(getName());
+		importXmlStringIntoProject(xml, secondTry);
+	}
+
+	private void importXmlStringIntoProject(String xml,
+			ProjectForTesting firstTry) throws UnsupportedEncodingException,
+			Exception, IOException
+	{
+		InputStreamWithSeek in = new StringInputStreamWithSeek(xml);
+		try
+		{
+			new ConproXmlImporter(firstTry).importConProProject(in);
+		}
+		finally
+		{
+			in.close();
+		}
 	}
 	
 	public void testImportConProProject() throws Exception

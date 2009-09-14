@@ -87,7 +87,7 @@ public abstract class XmlExporter
 		return project;
 	}
 	
-	abstract protected void exportProject(UnicodeWriter out) throws Exception;
+	abstract public void exportProject(UnicodeWriter out) throws Exception;
 	
 	private Project project;
 }
