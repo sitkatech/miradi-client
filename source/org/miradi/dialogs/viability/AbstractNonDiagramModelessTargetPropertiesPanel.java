@@ -23,7 +23,9 @@ package org.miradi.dialogs.viability;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
+import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.StatusQuestion;
 
 abstract public class AbstractNonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
@@ -43,5 +45,8 @@ abstract public class AbstractNonDiagramModelessTargetPropertiesPanel extends Ob
 		updateFieldsFromProject();
 	}
 	
-	abstract protected ObjectDataInputField createStatusField(); 
+	private ObjectDataInputField createStatusField()
+	{
+		return createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
+	} 
 }
