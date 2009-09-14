@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 10:01-0500\n"
+"POT-Creation-Date: 2009-09-14 10:04-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6542,11 +6542,6 @@ msgstr "Valor/estado deseado"
 msgid "Tab|Indicators"
 msgstr "Indicadores"
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:36
-#, fuzzy
-msgid "Title|Simple Mode Target Properties"
-msgstr "Title|Simple Mode Target Properties"
-
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:44
 msgid "Label|Methods"
 msgstr "Métodos"
@@ -6569,8 +6564,16 @@ msgstr "Calificaciones de viabilidad"
 msgid "Title|Indicator Properties"
 msgstr "Propiedades del indicador"
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:39
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:41
 msgid "Status"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:59
+msgid "Title|Target Properties"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:61
+msgid "Title|Human Welfare Target Properties"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:49
@@ -6590,11 +6593,6 @@ msgstr "Propiedades de los atributos ecológicos clave"
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:88
 msgid "Title|Target Viability Properties"
 msgstr "Propiedades de viabilidad del objeto"
-
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:36
-#, fuzzy
-msgid "Title|Key Attribute Mode Target Properties"
-msgstr "Title|Key Attribute Mode Target Properties"
 
 #: miradi/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:51
 msgid "Details"
@@ -31047,6 +31045,14 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#, fuzzy
+#~ msgid "Title|Simple Mode Target Properties"
+#~ msgstr "Title|Simple Mode Target Properties"
+
+#, fuzzy
+#~ msgid "Title|Key Attribute Mode Target Properties"
+#~ msgstr "Title|Key Attribute Mode Target Properties"
 
 #~ msgid "Cost/Unit"
 #~ msgstr "Costo/unidad"
