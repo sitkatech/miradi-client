@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 10:31-0500\n"
+"POT-Creation-Date: 2009-09-14 10:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -6381,7 +6381,7 @@ msgstr "关键生态学属性(KEA) \t\t"
 msgid "Title|Key Ecological Attribute Properties"
 msgstr "关键生态学属性的特性 \t\t"
 
-#: miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:86
+#: miradi/source/org/miradi/dialogs/viability/TargetViabilityMultiPropertiesPanel.java:89
 msgid "Title|Target Viability Properties"
 msgstr "对象存活属性 \t\t"
 
