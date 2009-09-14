@@ -22,7 +22,7 @@ package org.miradi.dialogs.viability;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
-public class NonDiagramKeaModeTargetPropertiesPanel extends NonDiagramModelessTargetPropertiesPanel
+public class NonDiagramKeaModeTargetPropertiesPanel extends NonDiagramAbstractTargetPropertiesPanel
 {
 	public NonDiagramKeaModeTargetPropertiesPanel(Project projectToUse)
 	{
