@@ -49,16 +49,14 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		setLayout(cardLayout);
 		
 		blankPropertiesPanel = new BlankPropertiesPanel(getProject());
-		targetSimpleModePropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
-		targetKeaModePropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
+		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
 		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(mainWindow, getPicker());
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		futureStatusPropertiesPanel = new IndicatorFutureStatusSubPanel(getProject());
 		
 		addPanel(blankPropertiesPanel);
-		addPanel(targetSimpleModePropertiesPanel);
-		addPanel(targetKeaModePropertiesPanel);
+		addPanel(targetPropertiesPanel);
 		addPanel(targetViabilityKeaPropertiesPanel);
 		addPanel(targetViabilityIndicatorPropertiesPanel);
 		addPanel(targetViabilityMeasurementPropertiesPanel);
@@ -128,7 +126,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		
 		int objectType = orefsToUse[0].getObjectType();
 		if(Target.is(objectType))
-			return getTargetPropertiesPanel(orefsToUse[0]);
+			return targetPropertiesPanel;
 		if(objectType == KeyEcologicalAttribute.getObjectType())
 			return targetViabilityKeaPropertiesPanel;
 		if(objectType == Indicator.getObjectType())
@@ -141,15 +139,6 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 		return blankPropertiesPanel;
 	}
 
-	private AbstractObjectDataInputPanel getTargetPropertiesPanel(ORef targetRef)
-	{
-		Target target = Target.find(getProject(), targetRef);
-		if (target.isViabilityModeTNC())
-			return targetKeaModePropertiesPanel;
-		
-		return targetSimpleModePropertiesPanel;
-	}
-	
 	@Override
 	public void setFocusOnFirstField()
 	{
@@ -168,8 +157,7 @@ public class TargetViabilityMultiPropertiesPanel extends OverlaidObjectDataInput
 	private CardLayout cardLayout;
 	private AbstractObjectDataInputPanel currentCard;
 	private BlankPropertiesPanel blankPropertiesPanel;
-	private NonDiagramAbstractTargetPropertiesPanel targetSimpleModePropertiesPanel;
-	private NonDiagramAbstractTargetPropertiesPanel targetKeaModePropertiesPanel;
+	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
 	private IndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;

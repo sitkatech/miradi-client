@@ -112,8 +112,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		strategyPropertiesPanel = new StrategyPropertiesPanel(getMainWindow(), objectPicker);
 		taskPropertiesInputPanel = new PlanningViewTaskPropertiesPanel(getMainWindow(), objectPicker);
 		measurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
-		targetSimpleModePropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
-		targetKeaModePropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
+		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), Target.getObjectType());
 		humanWelfareTargetPropertiesPanel = new FormBaseDataPanel(getProject(), new HumanWelfareTargetPropertiesForm());
 		threatPropertiesPanel = new PlanningViewDirectThreatPropertiesPanel(getProject());
 		contributingFactorPropertiesPanel = new PlanningViewContributingFactorPropertiesPanel(getProject());
@@ -133,8 +132,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		addPanel(strategyPropertiesPanel);
 		addPanel(taskPropertiesInputPanel);
 		addPanel(measurementPropertiesPanel);
-		addPanel(targetSimpleModePropertiesPanel);
-		addPanel(targetKeaModePropertiesPanel);
+		addPanel(targetPropertiesPanel);
 		addPanel(humanWelfareTargetPropertiesPanel);
 		addPanel(threatPropertiesPanel);
 		addPanel(contributingFactorPropertiesPanel);
@@ -206,7 +204,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 			return measurementPropertiesPanel;
 		
 		if (Target.getObjectType() == objectType)
-			return getTargetPropertiesPanel(firstRef);
+			return targetPropertiesPanel;
 		
 		if (HumanWelfareTarget.is(objectType))
 			return humanWelfareTargetPropertiesPanel;
@@ -238,15 +236,6 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 		return blankPropertiesPanel;
 	}
 
-	private AbstractObjectDataInputPanel getTargetPropertiesPanel(ORef targetRef)
-	{
-		Target target = Target.find(getProject(), targetRef);
-		if (target.isViabilityModeTNC())
-			return targetKeaModePropertiesPanel;
-		
-		return targetSimpleModePropertiesPanel;
-	}
-	
 	private MinimalFactorPropertiesPanel getCausePropertiesPanel(ORef causeRef)
 	{
 		Cause cause = Cause.find(getProject(), causeRef);
@@ -290,8 +279,7 @@ public class PlanningTreeMultiPropertiesPanel extends OverlaidObjectDataInputPan
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
-	private NonDiagramAbstractTargetPropertiesPanel targetSimpleModePropertiesPanel;
-	private NonDiagramAbstractTargetPropertiesPanel targetKeaModePropertiesPanel;
+	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private FormBaseDataPanel humanWelfareTargetPropertiesPanel; 
 	private PlanningViewIntermediateResultPropertiesPanel intermediateResultPropertiesPanel;
 	private PlanningViewThreatReductionResultPropertiesPanel threatReductionResultPropertiesPanel;
