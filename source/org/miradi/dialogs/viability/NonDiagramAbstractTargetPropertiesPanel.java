@@ -23,6 +23,7 @@ package org.miradi.dialogs.viability;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
@@ -55,10 +56,10 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 	@Override
 	public String getPanelDescription()
 	{
-		if (Target.is(targetType))
-			return EAM.text("Title|Target Properties");
-		
-		return EAM.text("Title|Human Welfare Target Properties");
+		if (HumanWelfareTarget.is(targetType))
+			return EAM.text("Title|Human Welfare Target Properties");
+
+		return EAM.text("Title|Target Properties");
 	}
 	
 	private int targetType;

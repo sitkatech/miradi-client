@@ -26,7 +26,7 @@ import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.TargetIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Target;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.project.Project;
 import org.miradi.questions.ViabilityModeQuestion;
 
@@ -47,18 +47,18 @@ public class TargetCoreSubPanel extends ObjectDataInputPanel
 
 	private String getAbstractTargetLabel(int targetType)
 	{
-		if (Target.is(targetType))
-			return EAM.text("Target");
+		if (HumanWelfareTarget.is(targetType))		
+			return EAM.text("Human Welfare Target");	
 		
-		return EAM.text("Human Welfare Target");
+		return EAM.text("Target");
 	}
 
 	private AbstractMiradiIcon getAbstractTargetIcon(int targetType)
 	{
-		if (Target.is(targetType))
-			return new TargetIcon();
+		if (HumanWelfareTarget.is(targetType))
+			return new HumanWelfareTargetIcon();	
 		
-		return new HumanWelfareTargetIcon();
+		return new TargetIcon();
 	}
 
 	@Override
