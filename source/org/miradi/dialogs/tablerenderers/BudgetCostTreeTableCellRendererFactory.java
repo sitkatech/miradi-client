@@ -24,7 +24,6 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 
-import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.questions.ChoiceItem;
@@ -34,7 +33,6 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 	public BudgetCostTreeTableCellRendererFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectTypeProvider fontProviderToUse, CurrencyFormat currencyFormatterToUse)
 	{
 		super(providerToUse, fontProviderToUse);
-		currencyFormatter = currencyFormatterToUse;
 	}
 
 	public Component getTableCellRendererComponent(JTable table, Object rawValue, boolean isSelected, boolean hasFocus, int row, int tableColumn)
@@ -49,32 +47,6 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		return renderer;
 	}
 	
-	public String formatCurrency(String costAsString)
-	{
-		try
-		{
-			double cost = toDouble(costAsString);
-			if(cost == 0.0)
-				return "";
-			
-			return currencyFormatter.format(cost);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return EAM.text("(Error)");
-		}
-	}
-	
-	private double toDouble(String valueAsString) throws Exception
-	{
-		if(valueAsString == null || valueAsString.length() == 0)
-			return 0.0;
-		
-		return Double.parseDouble(valueAsString);
-	}
-
-
 	private String annotateIfOverride(int row, int tableColumn, JLabel labelComponent, Object value)
 	{
 		if(value == null)
@@ -87,6 +59,4 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 		
 		return baseText;
 	}
-	
-	private CurrencyFormat currencyFormatter;
 }
