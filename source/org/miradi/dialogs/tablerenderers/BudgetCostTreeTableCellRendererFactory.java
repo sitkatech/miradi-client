@@ -40,10 +40,9 @@ public class BudgetCostTreeTableCellRendererFactory extends NumericTableCellRend
 	public Component getTableCellRendererComponent(JTable table, Object rawValue, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		ChoiceItem choice = (ChoiceItem)rawValue;
-		String value = formatCurrency(choice.getCode());
 		
-		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		String text = annotateIfOverride(row, tableColumn, renderer, value);
+		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, rawValue, isSelected, hasFocus, row, tableColumn);
+		String text = annotateIfOverride(row, tableColumn, renderer, rawValue);
 		renderer.setText(text);
 		renderer.setIcon(choice.getIcon());
 		
