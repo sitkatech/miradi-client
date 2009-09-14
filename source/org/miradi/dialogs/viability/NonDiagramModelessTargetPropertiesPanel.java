@@ -27,9 +27,9 @@ import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 
-public class AbstractNonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPanelWithSections
+public class NonDiagramModelessTargetPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public AbstractNonDiagramModelessTargetPropertiesPanel(Project projectToUse, int objectTypeToUse)
+	public NonDiagramModelessTargetPropertiesPanel(Project projectToUse, int objectTypeToUse)
 	{
 		super(projectToUse, objectTypeToUse);
 		

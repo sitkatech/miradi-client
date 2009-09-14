@@ -23,7 +23,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
 
-public class NonDiagramSimpleModeTargetPropertiesPanel extends AbstractNonDiagramModelessTargetPropertiesPanel
+public class NonDiagramSimpleModeTargetPropertiesPanel extends NonDiagramModelessTargetPropertiesPanel
 {
 	public NonDiagramSimpleModeTargetPropertiesPanel(Project projectToUse)
 	{
