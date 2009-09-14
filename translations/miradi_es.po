@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-13 10:43-0500\n"
+"POT-Creation-Date: 2009-09-14 10:01-0500\n"
 "PO-Revision-Date: 2009-02-14 19:43-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Spanish\n"
@@ -6542,7 +6542,7 @@ msgstr "Valor/estado deseado"
 msgid "Tab|Indicators"
 msgstr "Indicadores"
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:43
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramSimpleModeTargetPropertiesPanel.java:36
 #, fuzzy
 msgid "Title|Simple Mode Target Properties"
 msgstr "Title|Simple Mode Target Properties"
@@ -6569,15 +6569,15 @@ msgstr "Calificaciones de viabilidad"
 msgid "Title|Indicator Properties"
 msgstr "Propiedades del indicador"
 
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramModelessTargetPropertiesPanel.java:39
+msgid "Status"
+msgstr ""
+
 #: miradi/source/org/miradi/dialogs/viability/TargetPropertiesKeaViabilityTreeManagementPanel.java:49
 #: miradi/source/org/miradi/dialogs/viability/ViabilityViewTreeManagementPanel.java:42
 #: miradi/source/org/miradi/dialogs/indicator/SimpleViabilityManagementPanel.java:37
 msgid "Tab|Viability"
 msgstr "Viabilidad"
-
-#: miradi/source/org/miradi/dialogs/viability/AbstractNonDiagramModelessTargetPropertiesPanel.java:37
-msgid "Status"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:41
 msgid "Key Ecological Attribute (KEA)"
@@ -6591,7 +6591,7 @@ msgstr "Propiedades de los atributos ecológicos clave"
 msgid "Title|Target Viability Properties"
 msgstr "Propiedades de viabilidad del objeto"
 
-#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:44
+#: miradi/source/org/miradi/dialogs/viability/NonDiagramKeaModeTargetPropertiesPanel.java:36
 #, fuzzy
 msgid "Title|Key Attribute Mode Target Properties"
 msgstr "Title|Key Attribute Mode Target Properties"
