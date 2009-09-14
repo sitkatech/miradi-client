@@ -26,11 +26,11 @@ import org.miradi.project.CurrencyFormat;
 
 public class CurrencyFormattedChoiceItem extends TaglessChoiceItem
 {
-	public CurrencyFormattedChoiceItem(CurrencyFormat formatterToUse, double labelAsDoubleToUse)
+	public CurrencyFormattedChoiceItem(CurrencyFormat formatterToUse, double valueToUse)
 	{
-		super(formatterToUse.format(labelAsDoubleToUse));
+		super(formatterToUse.format(valueToUse));
 	
-		labelAsDouble = labelAsDoubleToUse;
+		labelAsDouble = valueToUse;
 	}
 	
 	@Override
