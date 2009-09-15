@@ -88,6 +88,11 @@ abstract public class AbstractCodeListEditorField extends ObjectDataInputField i
 		codeListEditor.setDisabledCodes(codesToDiable);
 	}
 	
+	public CodeListFieldComponent getCodeListEditor()
+	{
+		return codeListEditor;
+	}
+	
 	protected CodeListFieldComponent codeListEditor;
 	protected MiradiScrollPane component;
 }

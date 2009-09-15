@@ -43,7 +43,7 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 		{
 			for(ListSelectionListener listSelectionListener : listSelectionListeners)
 			{
-				ListSelectionEvent event = new ListSelectionEvent("DUMMY EVENT",0,0, false);
+				ListSelectionEvent event = new ListSelectionEvent(choiceItem.getCode(),0,0, false);
 				listSelectionListener.valueChanged(event);
 			}
 		}
@@ -51,7 +51,13 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 	
 	public void addListSelectionListener(ListSelectionListener listSelectionListenerToAdd)
 	{
-		listSelectionListeners.add(listSelectionListenerToAdd);
+		if (!listSelectionListeners.contains(listSelectionListenerToAdd))
+			listSelectionListeners.add(listSelectionListenerToAdd);
+	}
+	
+	public void removeListSelectionListener(ListSelectionListener listSelectionListenerToAdd)
+	{
+		listSelectionListeners.remove(listSelectionListenerToAdd);
 	}
 
 	private boolean shouldSkipNotification()
