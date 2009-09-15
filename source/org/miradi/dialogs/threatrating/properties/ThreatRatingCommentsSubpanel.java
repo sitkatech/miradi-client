@@ -23,6 +23,7 @@ package org.miradi.dialogs.threatrating.properties;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ProjectMetadata;
@@ -34,6 +35,7 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ORef.INVALID);
 		
+		addLabel(EAM.text("Label|Comments"));
 		commentsField = new ThreatRatingCommentsEditorComponent(getProject(), actions);
 		add(commentsField.getComponent());
 		
