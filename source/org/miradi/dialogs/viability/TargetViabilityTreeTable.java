@@ -40,6 +40,7 @@ import org.miradi.dialogs.treetables.ObjectTreeTable;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
 import org.miradi.objects.Indicator;
@@ -99,7 +100,7 @@ public class TargetViabilityTreeTable extends TreeTableWithStateSaving implement
 			columnTag == Target.TAG_VIABILITY_MODE || 
 			columnTag == ViabilityTreeModel.VIRTUAL_TAG_STATUS ||
 			columnTag == BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE ||
-			columnTag == Target.PSEUDO_TAG_TARGET_VIABILITY || 
+			columnTag == AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY || 
 			columnTag == KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS || 
 			columnTag == Measurement.TAG_STATUS_CONFIDENCE ||
 			columnTag == KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE;
