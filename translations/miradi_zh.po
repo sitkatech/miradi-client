@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 14:11-0500\n"
+"POT-Creation-Date: 2009-09-15 15:57-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -771,7 +771,7 @@ msgstr "新的减少威胁因子的结果 \t\t"
 msgid "Title|View Layers"
 msgstr "视图层 \t\t"
 
-#: miradi/source/org/miradi/views/diagram/LayerPanel.java:50
+#: miradi/source/org/miradi/views/diagram/LayerPanel.java:63
 msgid "Layers"
 msgstr "层 \t\t"
 
