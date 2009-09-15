@@ -35,7 +35,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
-import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.views.ObjectsDoer;
 
 public class DeleteResource extends ObjectsDoer
@@ -69,9 +68,6 @@ public class DeleteResource extends ObjectsDoer
 		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
 		if(!EAM.confirmDialog(EAM.text("Delete Resource"), (String[])dialogText.toArray(new String[0]), buttons))
 			return;
-		
-		if (resource.getRoleCodes().contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
-			displayTeamMemberBeingDeletedMessage();
 		
 		try
 		{
