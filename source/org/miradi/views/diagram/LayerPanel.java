@@ -29,9 +29,22 @@ public class LayerPanel extends ModelessDialogPanel
 {
 	public LayerPanel(MainWindow mainWindowToUse)
 	{
-		add(createLegendPanel(mainWindowToUse));
+		legendPanel = createLegendPanel(mainWindowToUse);
+		add(legendPanel);
 	}
 
+	@Override
+	public void dispose()
+	{
+		if (legendPanel != null)
+		{
+			legendPanel.dispose();
+			legendPanel = null;
+		}
+		
+		super.dispose();
+	}
+	
 	private LegendPanel createLegendPanel(MainWindow mainWindowToUse)
 	{
 		if (mainWindowToUse.getDiagramView().isResultsChainTab())
@@ -49,4 +62,6 @@ public class LayerPanel extends ModelessDialogPanel
 	{
 		return EAM.text("Layers");
 	}
+	
+	private LegendPanel legendPanel;
 }
