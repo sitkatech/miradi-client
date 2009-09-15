@@ -28,7 +28,7 @@ public class ActionViewPlanning extends MainWindowAction
 {
 	public ActionViewPlanning(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), IconManager.getPlanningIcon());
+		super(mainWindowToUse, getLabel(), IconManager.getStrategicPlanIcon());
 	}
 
 	private static String getLabel()
