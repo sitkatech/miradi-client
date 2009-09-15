@@ -35,6 +35,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.views.ObjectsDoer;
 
 public class DeleteResource extends ObjectsDoer
@@ -68,7 +69,10 @@ public class DeleteResource extends ObjectsDoer
 		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
 		if(!EAM.confirmDialog(EAM.text("Delete Resource"), (String[])dialogText.toArray(new String[0]), buttons))
 			return;
-
+		
+		if (resource.getRoleCodes().contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
+			displayTeamMemberBeingDeletedMessage();
+		
 		try
 		{
 			Project project = getProject();
@@ -114,5 +118,13 @@ public class DeleteResource extends ObjectsDoer
 			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 		
 		return commands;
+	}
+	
+	public static void displayTeamMemberBeingDeletedMessage()
+	{
+		EAM.okDialog(EAM.text("Remove Team Member"), new String[] {
+			EAM.text("You are removing this resource from the project team, " +
+					 "so he/she will no longer appear in " +
+					 "the list of Team Members in the Summary View. ")});
 	}
 }

@@ -19,7 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.resource;
 
-import org.miradi.commands.CommandSetObjectData;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
+import org.miradi.dialogfields.ObjectCodeEditorField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -33,6 +36,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.utils.CodeList;
+import org.miradi.views.umbrella.DeleteResource;
 
 public class ResourcePropertiesPanel extends ObjectDataInputPanel
 {
@@ -40,6 +44,8 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	{
 		super(projectToUse, ObjectType.PROJECT_RESOURCE, idToEdit);
 
+		teamMemberCheckBoxHandler = new TeamMemberHandler();
+		
 		ResourceTypeQuestion resourceTypeQuestion = new ResourceTypeQuestion();
 		addField(createRadioChoiceField(ProjectResource.getObjectType(), idToEdit, ProjectResource.TAG_RESOURCE_TYPE, resourceTypeQuestion));
 
@@ -100,29 +106,6 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		{
 			updateVisibilityOfRoleCodeField();
 		}
-		
-		if(!event.isSetDataCommandWithThisTypeAndTag(ObjectType.PROJECT_RESOURCE, ProjectResource.TAG_ROLE_CODES))
-			return;
-			
-		try
-		{
-			CommandSetObjectData cmd = (CommandSetObjectData)event.getCommand();
-			CodeList oldCodes = new CodeList(cmd.getPreviousDataValue());
-			CodeList newCodes = new CodeList(cmd.getDataValue());
-			oldCodes.subtract(newCodes);
-			if(!oldCodes.contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
-				return;
-			
-			EAM.okDialog(EAM.text("Remove Team Member"), new String[] {
-					EAM.text("You are removing this resource from the project team, " +
-							"so he/she will no longer appear in " +
-							"the list of Team Members in the Summary View. ")});
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
-		
 	}
 	
 	private void updateVisibilityOfRoleCodeField()
@@ -136,6 +119,46 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		boolean isPerson = beingEdited.isPerson();
 		roleCodeField.setEditable(isPerson);
 	}
+	
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		
+		roleCodeField.getCodeListEditor().addListSelectionListener(teamMemberCheckBoxHandler);
+	}
+	
+	@Override
+	public void becomeInactive()
+	{
+		roleCodeField.getCodeListEditor().removeListSelectionListener(teamMemberCheckBoxHandler);
+		
+		super.becomeInactive();
+	}
+	
+	class TeamMemberHandler implements ListSelectionListener
+	{
+		public void valueChanged(ListSelectionEvent event)
+		{
+			try
+			{
+				String code = event.getSource().toString();
+				if (!code.equals(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
+					return;
 
-	private ObjectDataInputField roleCodeField;
+				CodeList newRoleCodes = new CodeList(roleCodeField.getCodeListEditor().getText());
+				if(newRoleCodes.contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
+					return;
+
+				DeleteResource.displayTeamMemberBeingDeletedMessage();
+			}
+			catch(Exception e)
+			{
+				EAM.logException(e);
+			}
+		}
+	}
+
+	private ObjectCodeEditorField roleCodeField;
+	private TeamMemberHandler teamMemberCheckBoxHandler; 
 }
