@@ -115,12 +115,4 @@ public class DeleteResource extends ObjectsDoer
 		
 		return commands;
 	}
-	
-	public static void displayTeamMemberBeingDeletedMessage()
-	{
-		EAM.okDialog(EAM.text("Remove Team Member"), new String[] {
-			EAM.text("You are removing this resource from the project team, " +
-					 "so he/she will no longer appear in " +
-					 "the list of Team Members in the Summary View. ")});
-	}
 }
