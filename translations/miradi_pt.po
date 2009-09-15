@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 19:17-0500\n"
+"POT-Creation-Date: 2009-09-15 08:58-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -8198,6 +8198,9 @@ msgid "FieldLabel|52.TargetStatus|Target Viability Status"
 msgstr ""
 
 msgid "FieldLabel|52.ViabilityMode|Viability Mode"
+msgstr ""
+
+msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr ""
 
 msgid ""
