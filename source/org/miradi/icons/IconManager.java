@@ -271,8 +271,16 @@ public class IconManager
 		return deleteIcon;
 	}
 
+	public static Icon getStrategicPlanIcon()
+	{
+		if(strategicPlanIcon == null)
+			strategicPlanIcon = new DeleteIcon();
+		return new StrategicPlanIcon();
+	}
+
 	private static Icon expandIcon;
 	private static Icon collapseIcon;
 	private static Icon resourceIcon;
 	private static Icon deleteIcon;
+	private static Icon strategicPlanIcon;
 }
