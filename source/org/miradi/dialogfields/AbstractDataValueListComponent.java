@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
+import java.util.Vector;
+
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -31,16 +33,25 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 	{
 		super(questionToUse, columnCount);
 		
-		listSelectionListener = listener;
+		listSelectionListeners = new Vector();
+		addListSelectionListener(listener);
 	}
 	
 	public void valueChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
 		if (!shouldSkipNotification())
 		{
-			ListSelectionEvent event = new ListSelectionEvent("DUMMY EVENT",0,0, false);
-			listSelectionListener.valueChanged(event);
+			for(ListSelectionListener listSelectionListener : listSelectionListeners)
+			{
+				ListSelectionEvent event = new ListSelectionEvent("DUMMY EVENT",0,0, false);
+				listSelectionListener.valueChanged(event);
+			}
 		}
+	}
+	
+	public void addListSelectionListener(ListSelectionListener listSelectionListenerToAdd)
+	{
+		listSelectionListeners.add(listSelectionListenerToAdd);
 	}
 
 	private boolean shouldSkipNotification()
@@ -63,5 +74,5 @@ abstract public class AbstractDataValueListComponent extends AbstractListCompone
 	abstract public void setText(String codesToUse);
 	
 	private boolean skipNotification;
-	protected ListSelectionListener listSelectionListener;
+	private Vector<ListSelectionListener> listSelectionListeners;
 }
