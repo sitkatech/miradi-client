@@ -135,7 +135,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 		super.becomeInactive();
 	}
 	
-	public static void displayTeamMemberBeingDeletedMessage()
+	public static void notifyUserThatResourceIsNoLongerPartOfTeam()
 	{
 		EAM.okDialog(EAM.text("Remove Team Member"), new String[] {
 			EAM.text("You are removing this resource from the project team, " +
@@ -157,7 +157,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 				if(newRoleCodes.contains(ResourceRoleQuestion.TEAM_MEMBER_ROLE_CODE))
 					return;
 
-					displayTeamMemberBeingDeletedMessage();
+					notifyUserThatResourceIsNoLongerPartOfTeam();
 			}
 			catch(Exception e)
 			{
