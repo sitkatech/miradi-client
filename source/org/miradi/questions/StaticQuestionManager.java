@@ -82,7 +82,6 @@ public class StaticQuestionManager
 		addQuestion(new RtfLegendObjectsQuestion());
 		addQuestion(new TncProjectSharingQuestion());
 		addQuestion(new TextBoxZOrderQuestion());
-		addQuestion(new CustomPlanningRowsQuestion());
 		addQuestion(new CustomPlanningColumnsQuestion());
 		addQuestion(new TncProjectPlaceTypeQuestion());
 		addQuestion(new ScopeBoxColorQuestion());

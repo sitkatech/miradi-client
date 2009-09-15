@@ -48,7 +48,7 @@ abstract public class AbstractPlanningViewConfigurationCodeListEditorDoer extend
 			ViewData viewData = ViewData.find(getProject(), currentViewDataRef);
 			ORef planningConfigurationRef = viewData.getORef(ViewData.TAG_PLANNING_CUSTOM_PLAN_REF);
 
-			ChoiceQuestion configurationQuestion = getProject().getQuestion(getConfigurationQuestion());
+			ChoiceQuestion configurationQuestion = getConfigurationQuestion();
 			CodeListEditorPanel codeListPanel = new CodeListEditorPanel(getProject(), planningConfigurationRef, getConfigurationTag(), configurationQuestion, getGridColumnCount());
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(EAM.getMainWindow(), EAM.text("Selection Dialog"));
 			dialog.setScrollableMainPanel(codeListPanel);
@@ -64,5 +64,5 @@ abstract public class AbstractPlanningViewConfigurationCodeListEditorDoer extend
 
 	abstract protected String getConfigurationTag();
 
-	abstract protected Class getConfigurationQuestion();
+	abstract protected ChoiceQuestion getConfigurationQuestion();
 }

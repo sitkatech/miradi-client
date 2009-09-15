@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.objects.PlanningViewConfiguration;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningRowsQuestion;
 
 public class PlanningRowsEditorDoer extends AbstractPlanningViewConfigurationCodeListEditorDoer
@@ -37,8 +38,8 @@ public class PlanningRowsEditorDoer extends AbstractPlanningViewConfigurationCod
 	}
 
 	@Override
-	protected Class getConfigurationQuestion()
+	protected ChoiceQuestion getConfigurationQuestion()
 	{
-		return CustomPlanningRowsQuestion.class;
+		return new CustomPlanningRowsQuestion(getProject());
 	}
 }
