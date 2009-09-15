@@ -96,7 +96,7 @@ public class PlanningViewConfiguration extends BaseObject
 	void clear()
 	{
 		super.clear();
-		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION, getQuestion(CustomPlanningRowsQuestion.class));
+		rowConfigurationList = new CodeListData(TAG_ROW_CONFIGURATION, new CustomPlanningRowsQuestion(getProject()));
 		colConfigurationList = new CodeListData(TAG_COL_CONFIGURATION, getQuestion(CustomPlanningColumnsQuestion.class));
 		
 		addField(TAG_ROW_CONFIGURATION, rowConfigurationList);

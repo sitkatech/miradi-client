@@ -16,8 +16,10 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+ */ 
 package org.miradi.questions;
+
+import java.util.Vector;
 
 import javax.swing.Icon;
 
@@ -55,41 +57,61 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatReductionResult;
+import org.miradi.project.Project;
 
-public class CustomPlanningRowsQuestion extends StaticChoiceQuestion
+public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 {
-	public CustomPlanningRowsQuestion()
+	public CustomPlanningRowsQuestion(Project projectToUse)
 	{
-		super(getRowChoices());
+		super();
+
+		project = projectToUse;
 	}
 
-	private static ChoiceItem[] getRowChoices()
+	@Override
+	public ChoiceItem[] getChoices()
+	{
+		return getRowChoices().toArray(new ChoiceItem[0]);
+	}
+
+	private Vector<ChoiceItem> getRowChoices()
 	{	
-		return new ChoiceItem[]
-		{
-				createChoiceItem(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon()),
-				createChoiceItem(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon()),
-				createChoiceItem(Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon()),
-				createChoiceItem(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, new HumanWelfareTargetIcon()),
-				createChoiceItem(Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon()),
-				createChoiceItem(Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon()),
-				createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()),
-				createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon()), 
-				createChoiceItem(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon()),
-				createChoiceItem(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, new IntermediateResultIcon()),
-				createChoiceItem(Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon()),
-				createChoiceItem(Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon()),
-				createChoiceItem(Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon()),
-				createChoiceItem(Task.getObjectType(), Task.METHOD_NAME, new MethodIcon()),
-				createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()),
-				createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()),
-				createChoiceItem(ResourceAssignment.getObjectType(), ResourceAssignment.OBJECT_NAME, new AssignmentIcon()),
-				createChoiceItem(ExpenseAssignment.getObjectType(), ExpenseAssignment.OBJECT_NAME, new ExpenseAssignmentIcon()),
-		};
+		Vector<ChoiceItem> choiceItems = new Vector();
+
+		choiceItems.add(createChoiceItem(ConceptualModelDiagram.getObjectType(), ConceptualModelDiagram.OBJECT_NAME, new ConceptualModelIcon()));
+		choiceItems.add(createChoiceItem(ResultsChainDiagram.getObjectType(), ResultsChainDiagram.OBJECT_NAME, new ResultsChainIcon()));
+		choiceItems.add(createChoiceItem(Target.getObjectType(), Target.OBJECT_NAME, new TargetIcon()));
+		
+		if (getProject().getMetadata().isHumanWelfareTargetMode())
+			choiceItems.add(createChoiceItem(HumanWelfareTarget.getObjectType(), HumanWelfareTarget.OBJECT_NAME, new HumanWelfareTargetIcon()));
+		
+		choiceItems.add(createChoiceItem(Goal.getObjectType(), Goal.OBJECT_NAME, new GoalIcon()));
+		choiceItems.add(createChoiceItem(Objective.getObjectType(), Objective.OBJECT_NAME, new ObjectiveIcon()));
+		choiceItems.add(createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()));
+		choiceItems.add(createChoiceItem(Cause.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon())); 
+		choiceItems.add(createChoiceItem(ThreatReductionResult.getObjectType(), ThreatReductionResult.OBJECT_NAME, new ThreatReductionResultIcon()));
+		choiceItems.add(createChoiceItem(IntermediateResult.getObjectType(), IntermediateResult.OBJECT_NAME, new IntermediateResultIcon()));
+		choiceItems.add(createChoiceItem(Strategy.getObjectType(), Strategy.OBJECT_NAME, new StrategyIcon()));
+		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.ACTIVITY_NAME, new ActivityIcon()));
+		choiceItems.add(createChoiceItem(Indicator.getObjectType(), Indicator.OBJECT_NAME, new IndicatorIcon()));
+		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.METHOD_NAME, new MethodIcon()));
+		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()));
+		choiceItems.add(createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()));
+		choiceItems.add(createChoiceItem(ResourceAssignment.getObjectType(), ResourceAssignment.OBJECT_NAME, new AssignmentIcon()));
+		choiceItems.add(createChoiceItem(ExpenseAssignment.getObjectType(), ExpenseAssignment.OBJECT_NAME, new ExpenseAssignmentIcon()));
+		
+		return choiceItems;
 	}
 
 	private static ChoiceItem createChoiceItem(int objectType, String objectName, Icon iconToUse)
 	{
 		return new ChoiceItem(objectName, EAM.fieldLabel(objectType, objectName), iconToUse);
 	}
+
+	private Project getProject()
+	{
+		return project;
+	}
+
+	private Project project;
 }
