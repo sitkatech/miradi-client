@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 18:28-0500\n"
+"POT-Creation-Date: 2009-09-14 19:07-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2474,43 +2474,43 @@ msgstr ""
 msgid "April to March"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:43
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
 msgid "Goals Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:44
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 msgid "Objectives Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:45
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
 msgid "Targets Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:46
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:54
 msgid "Human Welfare Targets Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:47
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:56
 msgid "Direct Threats Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:48
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
 msgid "Strategies Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
 msgid "Activities Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
 msgid "Indicators Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:60
 msgid "Methods Only"
 msgstr ""
 
-#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:52
+#: miradi/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:61
 msgid "Assigned Resources Only"
 msgstr ""
 
