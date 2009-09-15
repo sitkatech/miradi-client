@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-14 19:07-0500\n"
+"POT-Creation-Date: 2009-09-14 19:17-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -6464,6 +6464,10 @@ msgstr "Title|Simple Threat Rating"
 #: miradi/source/org/miradi/dialogs/threatrating/properties/StressBasedThreatRatingPropertiesPanel.java:65
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Peringkat Ancaman Berdasarkan Tekanan "
+
+#: miradi/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommentsSubpanel.java:38
+msgid "Label|Comments"
+msgstr ""
 
 #: miradi/source/org/miradi/dialogs/threatrating/upperPanel/ThreatSummaryColumnTableModel.java:49
 msgid "Summary Threat Rating"
