@@ -16,40 +16,63 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+ */ 
 package org.miradi.questions;
 
+import java.util.Vector;
+
 import org.miradi.main.EAM;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Goal;
+import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
+import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
+import org.miradi.project.Project;
 
-public class PlanningViewSingleLevelQuestion extends StaticChoiceQuestion
+public class PlanningViewSingleLevelQuestion extends DynamicChoiceQuestion
 {
-	public PlanningViewSingleLevelQuestion()
+	public PlanningViewSingleLevelQuestion(Project projectToUse)
 	{
-		super(getSingleLevelChoices());
+		super();
+		
+		project = projectToUse;
 	}
 
-	private static ChoiceItem[] getSingleLevelChoices()
+	private Vector<ChoiceItem> getSingleLevelChoices()
 	{
-		return new ChoiceItem[] {
-				new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")),
-				new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objectives Only")),
-				new ChoiceItem(Target.OBJECT_NAME, EAM.text("Targets Only")),
-				new ChoiceItem(HumanWelfareTarget.OBJECT_NAME, EAM.text("Human Welfare Targets Only")),
-				new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")),
-				new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategies Only")),
-				new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activities Only")),
-				new ChoiceItem(Indicator.OBJECT_NAME, EAM.text("Indicators Only")),
-				new ChoiceItem(Task.METHOD_NAME, EAM.text("Methods Only")),
-				new ChoiceItem(ResourceAssignment.OBJECT_NAME, EAM.text("Assigned Resources Only")),
-		};
+		Vector<ChoiceItem> choices = new Vector();
+
+		choices.add(new ChoiceItem(Goal.OBJECT_NAME, EAM.text("Goals Only")));
+		choices.add(new ChoiceItem(Objective.OBJECT_NAME, EAM.text("Objectives Only")));
+		choices.add(new ChoiceItem(Target.OBJECT_NAME, EAM.text("Targets Only")));
+		
+		if (getProject().getMetadata().isHumanWelfareTargetMode())
+			choices.add(new ChoiceItem(HumanWelfareTarget.OBJECT_NAME, EAM.text("Human Welfare Targets Only")));
+		
+		choices.add(new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")));
+		choices.add(new ChoiceItem(Strategy.OBJECT_NAME, EAM.text("Strategies Only")));
+		choices.add(new ChoiceItem(Task.ACTIVITY_NAME, EAM.text("Activities Only")));
+		choices.add(new ChoiceItem(Indicator.OBJECT_NAME, EAM.text("Indicators Only")));
+		choices.add(new ChoiceItem(Task.METHOD_NAME, EAM.text("Methods Only")));
+		choices.add(new ChoiceItem(ResourceAssignment.OBJECT_NAME, EAM.text("Assigned Resources Only")));
+	
+		return choices;
 	}
+
+	@Override
+	public ChoiceItem[] getChoices()
+	{
+		return getSingleLevelChoices().toArray(new ChoiceItem[0]);
+	}
+	
+	private Project getProject()
+	{
+		return project;
+	}
+	
+	private Project project;
 }

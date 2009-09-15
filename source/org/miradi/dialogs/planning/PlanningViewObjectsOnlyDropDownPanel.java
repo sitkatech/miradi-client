@@ -88,7 +88,7 @@ public class PlanningViewObjectsOnlyDropDownPanel extends PlanningViewCustomButt
 	private void setComboBoxSelection(String code)
 	{		
 		ChoiceItem currentSelection = (ChoiceItem)singleLevelCombo.getSelectedItem();
-		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion();
+		PlanningViewSingleLevelQuestion question = new PlanningViewSingleLevelQuestion(getProject());
 		ChoiceItem choiceItemToSelect = question.findChoiceByCode(code);
 		if (currentSelection.equals(choiceItemToSelect))
 			return;
