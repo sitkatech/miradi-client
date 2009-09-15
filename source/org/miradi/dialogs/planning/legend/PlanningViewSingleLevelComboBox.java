@@ -40,7 +40,7 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 {
 	public PlanningViewSingleLevelComboBox(Project projectToUse) throws Exception
 	{
-		super(projectToUse, new PlanningViewSingleLevelQuestion().getChoices());
+		super(projectToUse, new PlanningViewSingleLevelQuestion(projectToUse).getChoices());
 	}
 	
 	public CodeList getRowListToShow() throws Exception
@@ -80,7 +80,10 @@ public class PlanningViewSingleLevelComboBox extends PlanningViewComboBox
 		if (propertyName.equals(Task.OBJECT_NAME))
 			return ColumnManager.getTaskColumns();
 		
-		if (propertyName.equals(Target.OBJECT_NAME) || propertyName.equals(HumanWelfareTarget.OBJECT_NAME))
+		if (propertyName.equals(Target.OBJECT_NAME))
+			return ColumnManager.getTargetColumns();
+		
+		if (getProject().getMetadata().isHumanWelfareTargetMode() && propertyName.equals(HumanWelfareTarget.OBJECT_NAME))
 			return ColumnManager.getTargetColumns();
 		
 		if (propertyName.equals(Cause.OBJECT_NAME_THREAT))
