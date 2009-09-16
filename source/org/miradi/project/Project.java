@@ -36,6 +36,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.database.DataUpgrader;
 import org.miradi.database.ProjectServer;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.FutureVersionException;
 import org.miradi.exceptions.OldVersionException;
@@ -57,6 +58,7 @@ import org.miradi.objecthelpers.CreateObjectParameter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.StringMap;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.AssignmentPool;
 import org.miradi.objectpools.CausePool;
@@ -103,6 +105,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.RareProjectData;
 import org.miradi.objects.ScopeBox;
+import org.miradi.objects.TableSettings;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.TextBox;
 import org.miradi.objects.ThreatRatingCommentsData;
@@ -119,8 +122,10 @@ import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.BudgetTimePeriodQuestion;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
@@ -687,9 +692,28 @@ public class Project
 		createDefaultProjectDataObject(FosProjectData.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectData.getObjectType());
 		createDefaultProjectDataObject(ThreatRatingCommentsData.getObjectType());
+		turnOnBudgetRelatedColumnsInWorkPlan();
 		
 		ensureAllConceptualModelPagesHaveLabels();
 		ensureAllDiagramFactorsAreVisible();
+	}
+
+	private void turnOnBudgetRelatedColumnsInWorkPlan() throws Exception
+	{
+		if (TableSettings.exists(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier()))
+			return;
+		
+		TableSettings newTableSettings = TableSettings.findOrCreate(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+		CodeList budgetColumnCodes = new CodeList();
+		budgetColumnCodes.add(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+		budgetColumnCodes.add(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+		budgetColumnCodes.add(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+		
+		StringMap newTableSettingsMap = new StringMap();
+		newTableSettingsMap.add(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, budgetColumnCodes.toString());
+		
+		CommandSetObjectData setColumnCodes = new CommandSetObjectData(newTableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, newTableSettingsMap.toString());
+		executeWithoutRecording(setColumnCodes);
 	}
 
 	public void ensureAllDiagramFactorsAreVisible() throws Exception
