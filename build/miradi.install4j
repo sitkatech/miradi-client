@@ -15,7 +15,11 @@
         <language id="es" customLocalizationFile="" />
       </additionalLanguages>
     </languages>
-    <searchSequence />
+    <searchSequence>
+      <registry />
+      <envVar name="JAVA_HOME" />
+      <envVar name="JDK_HOME" />
+    </searchSequence>
     <variables />
   </application>
   <files>
