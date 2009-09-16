@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-16 09:19-0500\n"
+"POT-Creation-Date: 2009-09-16 15:13-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -2168,7 +2168,6 @@ msgid "Version: "
 msgstr ""
 
 #: miradi/source/org/miradi/rtf/viewExporters/ThreatRatingsViewRtfExporter.java:69
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
 msgid "Threat Rating Details"
 msgstr ""
 
@@ -3441,8 +3440,11 @@ msgid "Strategic Plan"
 msgstr ""
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:101
-msgid "Threat Ratings"
+msgid "Threat Ratings - Table"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+msgid "Threat Ratings - Details"
 msgstr ""
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
@@ -6419,6 +6421,10 @@ msgstr ""
 
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:96
 msgid "Diagram"
+msgstr ""
+
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:101
+msgid "Threat Ratings"
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
