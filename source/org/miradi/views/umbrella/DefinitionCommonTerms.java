@@ -51,6 +51,11 @@ public class DefinitionCommonTerms
 		"all native biodiversity within functional landscapes. In Miradi, a target is represented by a large green oval."));
 		defs.put("Definition:ConservationTargets", def);
 		
+		def = Definition.createDefinitionFromTextString(EAM.text("Human Welfare Targets"), 
+				EAM.text("Human Welfare Targets - A limited suite of elements " +
+						"chosen to represent and encompass the desired human values of the system. " +
+						"In Miradi, represented by tan ovals."));
+		defs.put("Definition:HumanWelfareTargets", def);
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Stress"), EAM.text("Stress - An impaired aspect of a conservation target " +
 		"that results directly or indirectly from human activities " +
