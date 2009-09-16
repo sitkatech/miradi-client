@@ -84,8 +84,8 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 				ActionCollapseAllRows.class, 
 				ActionPlanningCreationMenu.class,	
 				ActionDeletePlanningViewTreeNode.class,
-				ActionWorkPlanBudgetColumnsEditor.class,
 				ActionFilterWorkPlanByProjectResource.class,
+				ActionWorkPlanBudgetColumnsEditor.class,
 		};
 	}
 	
