@@ -115,12 +115,12 @@ public class ReportTemplateContentQuestion extends StaticChoiceQuestion
 
 	public static String getThreatRatingsLabel()
 	{
-		return EAM.text("Threat Ratings");
+		return EAM.text("Threat Ratings - Table");
 	}
 	
 	public static String getThreatRatingDetailsLabel()
 	{
-		return EAM.text("Threat Rating Details");
+		return EAM.text("Threat Ratings - Details");
 	}
 	
 	public static String getTeamLabel()
