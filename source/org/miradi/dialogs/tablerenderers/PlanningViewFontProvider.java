@@ -75,7 +75,7 @@ public class PlanningViewFontProvider extends FontForObjectTypeProvider
 			font = font.deriveFont(Font.ITALIC);
 
 		if (task.isMethod())
-			font = font.deriveFont(Font.BOLD);
+			font = font.deriveFont(Font.BOLD + font.getStyle());
 		
 		return font;
 	}
