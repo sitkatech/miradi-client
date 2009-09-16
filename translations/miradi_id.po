@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-16 15:43-0500\n"
+"POT-Creation-Date: 2009-09-16 15:52-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -822,7 +822,7 @@ msgid "Tab|Work Plan"
 msgstr ""
 
 #: miradi/source/org/miradi/views/workplan/doers/ProjectResourceWorkPlanFilterEditDoer.java:43
-msgid "Title|Select Resources"
+msgid "Title|Filter by Resource(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/views/TabbedView.java:226
@@ -5144,11 +5144,11 @@ msgid "Action|ContextSensitive|Help"
 msgstr "Bantuan "
 
 #: miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:35
-msgid "Action|Edit Project Resource Filter..."
+msgid "Action|Filter by Resource..."
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:40
-msgid "TT|Edit project resources to filter by"
+msgid "TT|Filter to only display budget data for the selected resource(s)"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionDeleteMethod.java:35
