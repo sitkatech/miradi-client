@@ -20,14 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.database;
 
 import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Vector;
 
 import org.miradi.database.migrations.ConvertHighLevelEstimatesIntoAssignments;
 import org.miradi.database.migrations.MigrationsForMiradi3;
+import org.miradi.database.migrations.ShareSameLabeledScopeBoxesMigration;
 import org.miradi.database.migrations.UpdateTncOpertingUnitMigration;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.utils.CodeList;
@@ -41,6 +45,96 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 	public TestDataUpgraderForMiradi3(String name)
 	{
 		super(name);
+	}
+	
+	public void testShareSameLabeledScopeBoxesAcrossAllDiagramsForEmptyProject() throws Exception
+	{
+		createJsonDir();
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		ShareSameLabeledScopeBoxesMigration.shareSameLabeledScopeBoxesAcrossAllDiagrams();		
+	}
+	
+	public void testShareSameLabeledScopeBoxesAcrossAllDiagrams() throws Exception
+	{
+		File jsonDir = createJsonDir();
+		
+		String conceptualModel = "{\"SelectedTaggedObjectSetRefs\":\"\",\"Detail\":\"\",\"AssignmentIds\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[33]}\",\"TimeStampModified\":\"1253125566109\",\"DiagramFactorLinkIds\":\"\",\"ExpenseRefs\":\"\",\"HiddenTypes\":\"\",\"Label\":\"[Main Diagram]\",\"Id\":9,\"ShortLabel\":\"\",\"ProgressReportRefs\":\"\"}";
+		
+		String resultsChainDiagramObject1 = "{\"SelectedTaggedObjectSetRefs\":\"\",\"Detail\":\"\",\"AssignmentIds\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[42,44]}\",\"TimeStampModified\":\"1253125709324\",\"DiagramFactorLinkIds\":\"\",\"ExpenseRefs\":\"\",\"HiddenTypes\":\"\",\"Label\":\"[New Results Chain]\",\"Id\":38,\"ShortLabel\":\"\",\"ProgressReportRefs\":\"\"}";
+		String resultsChainDiagramObject2 = "{\"SelectedTaggedObjectSetRefs\":\"\",\"Detail\":\"\",\"AssignmentIds\":\"\",\"DiagramFactorIds\":\"{\\\"Ids\\\":[37]}\",\"TimeStampModified\":\"1253125558183\",\"DiagramFactorLinkIds\":\"\",\"ExpenseRefs\":\"\",\"HiddenTypes\":\"\",\"Label\":\"[New Results Chain]\",\"Id\":34,\"ShortLabel\":\"\",\"ProgressReportRefs\":\"\"}";
+		
+		String scopeBoxToBeShared = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"ScopeBox\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1253125745208\",\"Id\":32,\"Label\":\"ScopeBoxWithSameLabel\",\"ProgressReportRefs\":\"\",\"ScopeBoxColorCode\":\"\"}";
+		String scopeBoxToBeDeleted = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"ScopeBox\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1253125738517\",\"Id\":36,\"Label\":\"ScopeBoxWithSameLabel\",\"ProgressReportRefs\":\"\",\"ScopeBoxColorCode\":\"\"}";
+		String scopeBoxOnRc1 = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"ScopeBox\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1253125583641\",\"Id\":41,\"Label\":\"New Scope Box\",\"ProgressReportRefs\":\"\",\"ScopeBoxColorCode\":\"\"}";
+		String scopeBoxOnRc2 = "{\"ObjectiveIds\":\"\",\"Comments\":\"\",\"IndicatorIds\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Type\":\"ScopeBox\",\"ShortLabel\":\"\",\"Text\":\"\",\"TimeStampModified\":\"1253125734375\",\"Id\":43,\"Label\":\"ScopeBoxWithSameLabel\",\"ProgressReportRefs\":\"\",\"ScopeBoxColorCode\":\"\"}";
+		
+		String scopeBoxDiagramFactorOnCm = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":50,\\\"ObjectId\\\":32}\",\"FontColor\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Location\":\"{\\\"Y\\\":270,\\\"X\\\":210}\",\"FontSize\":\"\",\"BackgroundColor\":\"\",\"TimeStampModified\":\"1253125571085\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"Id\":33,\"Label\":\"\",\"ProgressReportRefs\":\"\",\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":120,\\\"Width\\\":180}\"}";
+		String scopeBoxDiagramFactorOnRc2 = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":50,\\\"ObjectId\\\":36}\",\"FontColor\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Location\":\"{\\\"Y\\\":105,\\\"X\\\":135}\",\"FontSize\":\"\",\"BackgroundColor\":\"\",\"TimeStampModified\":\"1253125560164\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"Id\":37,\"Label\":\"\",\"ProgressReportRefs\":\"\",\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":240,\\\"Width\\\":180}\"}";
+		String scopeBoxDiagramFactor1OnRc1 = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":50,\\\"ObjectId\\\":43}\",\"FontColor\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Location\":\"{\\\"Y\\\":255,\\\"X\\\":225}\",\"FontSize\":\"\",\"BackgroundColor\":\"\",\"TimeStampModified\":\"1253125712160\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"Id\":44,\"Label\":\"\",\"ProgressReportRefs\":\"\",\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":240,\\\"Width\\\":180}\"}";
+		String scopeBoxDiagramFactor2OnRc1 = "{\"WrappedFactorRef\":\"{\\\"ObjectType\\\":50,\\\"ObjectId\\\":41}\",\"FontColor\":\"\",\"AssignmentIds\":\"\",\"ExpenseRefs\":\"\",\"Location\":\"{\\\"Y\\\":180,\\\"X\\\":225}\",\"FontSize\":\"\",\"BackgroundColor\":\"\",\"TimeStampModified\":\"1253125586368\",\"GroupBoxChildrenRefs\":\"\",\"TextBoxZOrderCode\":\"\",\"Id\":42,\"Label\":\"\",\"ProgressReportRefs\":\"\",\"FontStyle\":\"\",\"Size\":\"{\\\"Height\\\":60,\\\"Width\\\":120}\"}";
+
+		final int SCOPE_BOX_TYPE = 50;
+		int[] scopeBoxIds = createAndPopulateObjectDir(jsonDir, SCOPE_BOX_TYPE, new String[]{scopeBoxToBeShared, scopeBoxToBeDeleted, scopeBoxOnRc1, scopeBoxOnRc2, });
+		
+		final int CONCEPTUAL_MODEL_TYPE = 19;
+		createAndPopulateObjectDir(jsonDir, CONCEPTUAL_MODEL_TYPE, new String[]{conceptualModel, });
+		
+		final int RESULTS_CHAIN_TYPE = 24;
+		createAndPopulateObjectDir(jsonDir, RESULTS_CHAIN_TYPE, new String[]{resultsChainDiagramObject1, resultsChainDiagramObject2, });
+		
+		final int DIAGRAM_FACTOR_TYPE = 18;
+		int[] diagramFactorScopeBoxIds = createAndPopulateObjectDir(jsonDir, DIAGRAM_FACTOR_TYPE, new String[]{scopeBoxDiagramFactorOnCm, scopeBoxDiagramFactor1OnRc1, scopeBoxDiagramFactor2OnRc1, scopeBoxDiagramFactorOnRc2, });
+		
+
+		DataUpgrader.initializeStaticDirectory(tempDirectory);
+		ShareSameLabeledScopeBoxesMigration.shareSameLabeledScopeBoxesAcrossAllDiagrams();
+		
+		
+		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, 32);
+		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, 41);
+		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, 43);
+		
+		verifyScopeBoxFileWasRemoved(jsonDir, SCOPE_BOX_TYPE, scopeBoxIds[1]);
+		
+		verifyDiagramFactorWrappedFactorRef(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorScopeBoxIds[0], scopeBoxIds[0]);
+		verifyDiagramFactorWrappedFactorRef(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorScopeBoxIds[1], scopeBoxIds[3]);
+		verifyDiagramFactorWrappedFactorRef(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorScopeBoxIds[2], scopeBoxIds[2]);
+		verifyDiagramFactorWrappedFactorRef(jsonDir, DIAGRAM_FACTOR_TYPE, diagramFactorScopeBoxIds[3], scopeBoxIds[0]);
+	}
+	
+	private void verifyDiagramFactorWrappedFactorRef(File jsonDir, final int DIAGRAM_FACTOR_TYPE, int diagramFactorId, int expectedWrappedId) throws Exception, ParseException
+	{
+		File diagramFactorDir = DataUpgrader.getObjectsDir(jsonDir, DIAGRAM_FACTOR_TYPE);
+		File diagramFactorJsonFile = new File(diagramFactorDir, Integer.toString(diagramFactorId));		
+		
+		File manifestFile = new File(diagramFactorDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		
+		EnhancedJsonObject diagramFactorJson = new EnhancedJsonObject(readFile(diagramFactorJsonFile));
+		ORef wrappedRef = diagramFactorJson.getRef("WrappedFactorRef");
+		assertEquals("wrong wrapped scope box id?", expectedWrappedId, wrappedRef.getObjectId().asInt());
+	}
+
+	private void verifyScopeBoxFileWasRemoved(File jsonDir, final int objectType, int objectId) throws Exception
+	{
+		verifyScopeBoxExistance(jsonDir, objectType, objectId, false);
+	}
+	
+	private void verifyScopeBoxFileWasNotRemoved(File jsonDir, final int objectType, int objectId) throws Exception
+	{
+		verifyScopeBoxExistance(jsonDir, objectType, objectId, true);
+	}
+
+	private void verifyScopeBoxExistance(File jsonDir, final int objectType, int objectId, boolean expectedExistanceBoolean) throws IOException, ParseException
+	{
+		File objectDir = DataUpgrader.getObjectsDir(jsonDir, objectType);
+		File objectFile = new File(objectDir, Integer.toString(objectId));
+		assertEquals("object was removed?", expectedExistanceBoolean, objectFile.exists());
+		
+		File manifestFile = new File(objectDir, "manifest");
+		assertTrue("manifest file could not be found?", manifestFile.exists());
+		ObjectManifest manifestObject = new ObjectManifest(JSONFile.read(manifestFile));
+		assertEquals("manifest does not contain key?", expectedExistanceBoolean, manifestObject.has(objectId));
 	}
 	
 	public void testUpdateTncOperatingUnitCodesWithNoOparatingUnitCodes() throws Exception
