@@ -125,7 +125,7 @@ public class EAM
 		{
 			String html = Translation.getHtmlContent(htmlFileName);
 			html = html.replace(findToReplace, replacementForStr1);
-			displayHtmlWarningDialog(findToReplace, replacementForStr1, html);
+			displayHtmlWarningDialog(html);
 		}
 		catch (Exception e)
 		{
