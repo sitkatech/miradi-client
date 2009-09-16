@@ -7,7 +7,7 @@
   compression="9" lzmaCompression="true" pack200Compression="true" excludeSignedFromPacking="true" 
   keepModificationTimes="false" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" 
   version="3.0" allPathsRelative="true" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" 
-  macSignature="????" installerName="" javaMinVersion="1.5" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
       <additionalLanguages>
@@ -15,11 +15,7 @@
         <language id="es" customLocalizationFile="" />
       </additionalLanguages>
     </languages>
-    <searchSequence>
-      <registry />
-      <envVar name="JAVA_HOME" />
-      <envVar name="JDK_HOME" />
-    </searchSequence>
+    <searchSequence />
     <variables />
   </application>
   <files>
