@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-15 15:57-0500\n"
+"POT-Creation-Date: 2009-09-16 09:19-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -1999,15 +1999,15 @@ msgstr "标准报告 \t\t"
 msgid "Custom Reports"
 msgstr "定制报告 \t\t"
 
-#: miradi/source/org/miradi/project/Project.java:172
+#: miradi/source/org/miradi/project/Project.java:177
 msgid " A project by this name already exists: "
 msgstr "已存在使用相同名称的项目: \t\t"
 
-#: miradi/source/org/miradi/project/Project.java:178
+#: miradi/source/org/miradi/project/Project.java:183
 msgid "A file or folder exist by the same name:"
 msgstr ""
 
-#: miradi/source/org/miradi/project/Project.java:915
+#: miradi/source/org/miradi/project/Project.java:939
 msgid "[No Project]"
 msgstr "[无项目] \t\t"
 
