@@ -86,4 +86,10 @@ public class MigrationsForMiradi3
 	
 		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 48);
 	}
+	
+	public static void upgradeToVersion49() throws Exception
+	{
+		ShareSameLabeledScopeBoxesMigration.shareSameLabeledScopeBoxesAcrossAllDiagrams();
+		DataUpgrader.writeLocalVersion(DataUpgrader.getTopDirectory(), 49);
+	}
 }
