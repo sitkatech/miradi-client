@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-16 15:13-0500\n"
+"POT-Creation-Date: 2009-09-16 15:37-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -242,7 +242,7 @@ msgid "Tab|Custom"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/WorkPlanColumnsEditorDoer.java:43
-msgid "Title|Select Budget Columns"
+msgid "Title|Edit Columns"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:33
@@ -5986,11 +5986,11 @@ msgid "TT|Delete the selected Accounting Code"
 msgstr "Hapus Kode Akuntansi terpilih "
 
 #: miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:35
-msgid "Action|Edit Budget Columns..."
+msgid "Action|Edit Columns..."
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionWorkPlanBudgetColumnsEditor.java:40
-msgid "TT|Change visible budget columns"
+msgid "TT|Change which columns are shown"
 msgstr ""
 
 #: miradi/source/org/miradi/actions/ActionNudgeDown.java:34
@@ -6860,7 +6860,7 @@ msgid "Error occured while saving data location"
 msgstr "Terjadi kesalahan saat menyimpan lokasi data "
 
 #: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:36
-msgid "<html>Select which budget column groups to display."
+msgid "<html>Select which column groups to display."
 msgstr ""
 
 #: miradi/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:38
