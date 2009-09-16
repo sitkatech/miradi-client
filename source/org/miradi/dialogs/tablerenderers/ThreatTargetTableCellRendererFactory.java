@@ -30,6 +30,7 @@ import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.icons.BundleIcon;
 import org.miradi.icons.ColoredIcon;
 import org.miradi.main.AppPreferences;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
@@ -64,14 +65,18 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 	{
 		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
 		TargetThreatLinkTableModel model = targetThreatLinkTable.getTargetThreatLinkTableModel();
+		Cause threat = (Cause)model.getDirectThreat(row);
+		Target target = model.getTarget(modelColumn);
+
+		if(!ThreatTargetVirtualLinkHelper.canSupportThreatRatings(model.getProject(), threat, target.getRef()))
+			return null;
+		
 		if(model.getProject().isStressBaseMode())
 		{
 			stressBasedIcon.setColor(choice.getColor());
 			return stressBasedIcon;
 		}
 		
-		Cause threat = (Cause)model.getDirectThreat(row);
-		Target target = model.getTarget(modelColumn);
 		if (threat != null && target != null)
 		{
 			simpleIcon.setThreatTarget(threat, target);
