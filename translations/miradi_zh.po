@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-16 09:19-0500\n"
+"POT-Creation-Date: 2009-09-16 15:13-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -2409,7 +2409,6 @@ msgid "Version: "
 msgstr "版本："
 
 #: miradi/source/org/miradi/rtf/viewExporters/ThreatRatingsViewRtfExporter.java:69
-#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
 msgid "Threat Rating Details"
 msgstr ""
 
@@ -3687,9 +3686,12 @@ msgid "Strategic Plan"
 msgstr "策略计划 \t\t"
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:118
-#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:101
-msgid "Threat Ratings"
-msgstr "威胁因子评级"
+msgid "Threat Ratings - Table"
+msgstr ""
+
+#: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:123
+msgid "Threat Ratings - Details"
+msgstr ""
 
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:128
 msgid "Team"
@@ -6716,6 +6718,10 @@ msgstr "系统范围"
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:96
 msgid "Diagram"
 msgstr "图表"
+
+#: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:101
+msgid "Threat Ratings"
+msgstr "威胁因子评级"
 
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:112
 msgid "Data Location"
