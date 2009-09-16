@@ -23,8 +23,8 @@ package org.miradi.dialogs.viability;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
+import org.miradi.objects.AbstractTarget;
 import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Target;
 import org.miradi.project.Project;
 import org.miradi.questions.StatusQuestion;
 
@@ -40,7 +40,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		addSubPanelWithTitledBorder(targetCoreSubPanel);
 		
 		createSingleSection(EAM.text("Status"));
-		addFieldsOnOneLine("", new ObjectDataInputField[]{createStatusField()});
+		addFieldsOnOneLine("", new ObjectDataInputField[]{createReadOnlyStatusField()});
 		
 		ModelessTargetSubPanel modelessTargetSubPanel = new ModelessTargetSubPanel(getProject(), targetType);
 		addSubPanelWithTitledBorder(modelessTargetSubPanel);
@@ -48,9 +48,9 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		updateFieldsFromProject();
 	}
 	
-	private ObjectDataInputField createStatusField()
+	private ObjectDataInputField createReadOnlyStatusField()
 	{
-		return createRatingChoiceField(Target.TAG_TARGET_STATUS, getProject().getQuestion(StatusQuestion.class));
+		return createReadOnlyChoiceField(targetType, AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY,getProject().getQuestion(StatusQuestion.class));
 	} 
 	
 	@Override
