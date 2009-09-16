@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-16 15:37-0500\n"
+"POT-Creation-Date: 2009-09-16 15:43-0500\n"
 "PO-Revision-Date: 2009-02-14 19:00-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Indonesian\n"
@@ -7861,8 +7861,8 @@ msgstr "Kemajuan "
 msgid "FieldLabel|12.EffortDatesTotal|When"
 msgstr "Kapan "
 
-msgid "FieldLabel|12.TaskBudgetDetail|Budget Details"
-msgstr "Rincian Anggaran "
+msgid "FieldLabel|12.TaskBudgetDetail|Budget Totals"
+msgstr ""
 
 msgid "FieldLabel|12.StatusValue|Status"
 msgstr "Status "
@@ -7935,13 +7935,13 @@ msgstr ""
 msgid "FieldLabel|12.WhoOverrideRefs|Who"
 msgstr ""
 
-msgid "FieldLabel|12.MetaWorkUnitColumnCode|Work Unit Detail"
+msgid "FieldLabel|12.MetaWorkUnitColumnCode|Work Units"
 msgstr ""
 
-msgid "FieldLabel|12.MetaExpenseAmountColumnCode|Expense Amount Detail"
+msgid "FieldLabel|12.MetaExpenseAmountColumnCode|Expenses"
 msgstr ""
 
-msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Details"
+msgid "FieldLabel|12.MetaBudgetDetailColumnCode|Budget Totals"
 msgstr ""
 
 msgid "FieldLabel|12.ResourceType|Resource Type"
@@ -30809,6 +30809,9 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "FieldLabel|12.TaskBudgetDetail|Budget Details"
+#~ msgstr "Rincian Anggaran "
 
 #, fuzzy
 #~ msgid "Title|Simple Mode Target Properties"
