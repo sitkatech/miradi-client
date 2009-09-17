@@ -106,12 +106,12 @@ public class ShareSameLabeledScopeBoxesMigration
 
 	private static ORef findDiagramScopeBoxToUpdate(EnhancedJsonObject diagramFactorJsonToUpdate, ORef wrappedRefToMatch) throws Exception
 	{
-		String labelToMatch = getLabel(wrappedRefToMatch);
+		String scopeBoxLabelToMatch = getScopeBoxLabel(wrappedRefToMatch);
 
 		ORef wrappedRef = diagramFactorJsonToUpdate.optRef(WRAPPED_REF_TAG);
-		String label = getLabel(wrappedRef);
+		String scopeBoxLabel = getScopeBoxLabel(wrappedRef);
 		
-		boolean sameLabel = labelToMatch.equals(label);
+		boolean sameLabel = scopeBoxLabelToMatch.equals(scopeBoxLabel);
 		boolean wasNotAlreadyShared = !wrappedRefToMatch.equals(wrappedRef);
 		if (sameLabel && wasNotAlreadyShared)
 		{	
@@ -137,7 +137,7 @@ public class ShareSameLabeledScopeBoxesMigration
 		scopeBoxFileToDelete.delete();
 	}
 
-	private static String getLabel(ORef scopeBoxRef) throws Exception
+	private static String getScopeBoxLabel(ORef scopeBoxRef) throws Exception
 	{
 		File scopeBoxJsonFileToMatch = new File(getScopeBoxDir(), Integer.toString(scopeBoxRef.getObjectId().asInt()));
 		EnhancedJsonObject scopeBoxJsonMatch = DataUpgrader.readFile(scopeBoxJsonFileToMatch);
