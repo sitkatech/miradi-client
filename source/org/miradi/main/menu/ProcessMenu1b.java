@@ -37,8 +37,8 @@ public class ProcessMenu1b extends MiradiMenu
 		
 		addMenuItem(ActionJumpSummaryWizardDefineProjecScope.class, KeyEvent.VK_D);
 		addMenuItem(ActionJumpDevelopMap.class, KeyEvent.VK_M);
-		addMenuItem(ActionJumpSummaryWizardDefineProjectVision.class, KeyEvent.VK_E);
 		addMenuItem(ActionJumpDiagramWizardDefineTargetsStep.class, KeyEvent.VK_I);
+		addMenuItem(ActionJumpSummaryWizardDefineProjectVision.class, KeyEvent.VK_A);
 		addMenuItem(ActionJumpTargetViabilityMethodChoiceStep.class, KeyEvent.VK_V);
 	}
 }

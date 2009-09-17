@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.wizard.diagram;
 
 import org.miradi.actions.jump.ActionJumpSummaryWizardDefineProjectVision;
-import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.DiagramWizardStep;
 import org.miradi.wizard.WizardPanel;
@@ -44,6 +43,6 @@ public class DiagramWizardVisionStep extends DiagramWizardStep
 	@Override
 	public String getSubHeading()
 	{
-		return EAM.text("Refine vision statement");
+		return null;
 	}
 }
