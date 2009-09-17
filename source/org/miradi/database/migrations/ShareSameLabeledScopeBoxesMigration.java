@@ -112,8 +112,8 @@ public class ShareSameLabeledScopeBoxesMigration
 		String label = getLabel(wrappedRef);
 		
 		boolean sameLabel = labelToMatch.equals(label);
-		boolean wasNotAlreadyUpdated = !wrappedRefToMatch.equals(wrappedRef);
-		if (sameLabel && wasNotAlreadyUpdated)
+		boolean wasNotAlreadyShared = !wrappedRefToMatch.equals(wrappedRef);
+		if (sameLabel && wasNotAlreadyShared)
 		{	
 			return wrappedRef;
 		}
