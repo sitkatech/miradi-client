@@ -92,7 +92,10 @@ abstract public class PlanningTreeManagementPanel extends ObjectListManagementPa
 	{
 		String uniqueTreeTableModelIdentifier = getPlanningTreeTablePanel().getTree().getTreeTableModel().getUniqueTreeTableModelIdentifier();
 		RowColumnProvider rowColumnProvider = getPlanningTreeTablePanel().getRowColumnProvider();
-		PlanningTreeTableModel planningTreeTableModel = createPlanningTreeTablePanel(uniqueTreeTableModelIdentifier, rowColumnProvider).getPlanningTreeTableModel();
+		PlanningTreeTablePanel thisPlanningTreeTablePanel = createPlanningTreeTablePanel(uniqueTreeTableModelIdentifier, rowColumnProvider);
+		PlanningTreeTableModel planningTreeTableModel = thisPlanningTreeTablePanel.getPlanningTreeTableModel();
+		thisPlanningTreeTablePanel.dispose();
+		
 		return ExportablePlanningTreeTablePanel.createPrintablePlanningTreeTablePanel(getMainWindow(), rowColumnProvider, planningTreeTableModel);
 	}
 	
