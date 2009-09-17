@@ -384,6 +384,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 	{
 		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
 		int selectedColumn = mainTable.getColumnModel().getSelectionModel().getMinSelectionIndex();
+		mainTable.clearSelection();
+		mainTable.getColumnModel().getSelectionModel().clearSelection();
 
 		// TODO: Perhaps possibly detect exactly what changed and 
 		// only rebuild the columns or the rows rather than always doing both
@@ -659,7 +661,8 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			try
 			{
 				table.getSelectionModel().setSelectionInterval(row, row);
-				table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
+				if(column < table.getColumnCount())
+					table.getColumnModel().getSelectionModel().setSelectionInterval(column, column);
 			}
 			finally 
 			{
