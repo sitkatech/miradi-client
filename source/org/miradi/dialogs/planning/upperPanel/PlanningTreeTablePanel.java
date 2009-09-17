@@ -567,7 +567,6 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 			return;
 		
 		getPropertiesPanel().setObjectRefs(getPicker().getSelectionHierarchy().toArray(), selectedColumnTag);
-		getPropertiesPanel().selectSectionForTag(selectedColumnTag);
 	}
 	
 	public PlanningTreeTableModel getPlanningTreeTableModel()
