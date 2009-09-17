@@ -369,10 +369,10 @@ public class WizardManager
 				SummaryWizardDefineProjectVision.class,
 				DiagramOverviewStep.class,
 				DiagramWizardProjectScopeStep.class,
-				DiagramWizardVisionStep.class,
 
 				DiagramWizardDefineTargetsStep.class,
 				DiagramWizardReviewAndModifyTargetsStep.class,
+				DiagramWizardVisionStep.class,
 				
 				TargetViabilityOverviewStep.class,
 				TargetViabilityMethodChoiceStep.class,
