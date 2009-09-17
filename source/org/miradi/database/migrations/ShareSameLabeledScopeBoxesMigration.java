@@ -67,7 +67,7 @@ public class ShareSameLabeledScopeBoxesMigration
 			EnhancedJsonObject diagramJson = DataUpgrader.readFile(diagramJsonFile);
 			IdList diagramFactorIds = diagramJson.optIdList(DIAGRAM_FACTOR_TYPE, DIAGRAM_FACTOR_IDS_TAG);
 			
-			Vector<File> diagramFactorScopeBoxJsons = extractDiagramFactorScopeBoxJsons(diagramFactorIds);
+			Vector<File> diagramFactorScopeBoxJsons = extractScopeBoxDiagramFactorJsonFiles(diagramFactorIds);
 			if (diagramFactorScopeBoxJsons.size() == 1)
 			{
 				File singleDiagramFactorScopeBox = diagramFactorScopeBoxJsons.get(0);
@@ -88,7 +88,7 @@ public class ShareSameLabeledScopeBoxesMigration
 			File diagramJsonFile = new File(diagramDir, Integer.toString(thisId.asInt()));
 			EnhancedJsonObject diagramJson = DataUpgrader.readFile(diagramJsonFile);
 			IdList diagramFactorIds = diagramJson.optIdList(DIAGRAM_FACTOR_TYPE, DIAGRAM_FACTOR_IDS_TAG);
-			Vector<File> diagramFactorScopeBoxJsons = extractDiagramFactorScopeBoxJsons(diagramFactorIds);
+			Vector<File> diagramFactorScopeBoxJsons = extractScopeBoxDiagramFactorJsonFiles(diagramFactorIds);
 			if (diagramFactorScopeBoxJsons.size() == 1)
 			{
 				EnhancedJsonObject scopeBoxDiagramFactorJsonToMatch = DataUpgrader.readFile(scopeBoxDiagramFactorJsonFileToUseToMatch);
@@ -145,7 +145,7 @@ public class ShareSameLabeledScopeBoxesMigration
 		return scopeBoxJsonMatch.optString(LABEL_TAG);
 	}
 
-	private static Vector<File> extractDiagramFactorScopeBoxJsons(IdList diagramFactorIds) throws Exception
+	private static Vector<File> extractScopeBoxDiagramFactorJsonFiles(IdList diagramFactorIds) throws Exception
 	{
 		Vector<File> diagramFactorScopeBoxJsons = new Vector();
 		for (int index = 0; index < diagramFactorIds.size(); ++index)
