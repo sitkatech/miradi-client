@@ -90,9 +90,9 @@ public class TestDataUpgraderForMiradi3 extends AbstractMigrationTestCase
 		ShareSameLabeledScopeBoxesMigration.shareSameLabeledScopeBoxesAcrossAllDiagrams();
 		
 		
-		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, 32);
-		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, 41);
-		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, 43);
+		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, scopeBoxIds[0]);
+		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, scopeBoxIds[2]);
+		verifyScopeBoxFileWasNotRemoved(jsonDir, SCOPE_BOX_TYPE, scopeBoxIds[3]);
 		
 		verifyScopeBoxFileWasRemoved(jsonDir, SCOPE_BOX_TYPE, scopeBoxIds[1]);
 		
