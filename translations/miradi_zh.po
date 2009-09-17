@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-16 18:52-0500\n"
+"POT-Creation-Date: 2009-09-16 19:00-0500\n"
 "PO-Revision-Date: 2009-02-14 19:04-0500\n"
 "Last-Translator: Kevin Smith <support@miradi.org>\n"
 "Language-Team: Chinese\n"
@@ -288,7 +288,7 @@ msgid "Tab|Monitoring Plan"
 msgstr ""
 
 #: miradi/source/org/miradi/views/planning/AbstractFundingSourceManagementPanel.java:45
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:88
 msgid "Funding Sources"
 msgstr "资金来源"
@@ -497,7 +497,7 @@ msgid "Biodiversity Features"
 msgstr "生物多样性特征 \t\t"
 
 #: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:61
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:60
 msgid "Scope"
@@ -517,7 +517,7 @@ msgid "Location"
 msgstr "地点 \t\t"
 
 #: miradi/source/org/miradi/views/summary/SummaryProjectPanel.java:87
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #: miradi/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:69
 msgid "Project"
@@ -1238,14 +1238,25 @@ msgstr ""
 "基础。在理论上——希望实践中也是如此——对所关注对象的保护将会使功能景观内的所有"
 "原有生物多样性得到保护。在Miradi中，对象是以绿色大椭圆形来表示的。"
 
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:54
+msgid "Human Welfare Targets"
+msgstr ""
+
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:55
+msgid ""
+"Human Welfare Targets - A limited suite of elements chosen to represent and "
+"encompass the desired human values of the system. In Miradi, represented by "
+"tan ovals."
+msgstr ""
+
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:81
 #: miradi/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:71
 #: miradi/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:42
 msgid "Stress"
 msgstr "压力"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:55
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 msgid ""
 "Stress - An impaired aspect of a conservation target that results directly "
 "or indirectly from human activities (e.g., low population size, reduced "
@@ -1257,21 +1268,21 @@ msgstr ""
 "地下水水平下降）使保护对象直接或间接受到损害的某个方面。 通常相当于主要生态属"
 "性的退化（如：生境的丧失）。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:63
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
 msgid "Ecosystems"
 msgstr "生态系统"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:63
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
 msgid ""
 "Ecosystems - The ecological systems that characterize the terrestrial, "
 "aquatic, and marine biodiversity of the project site. "
 msgstr "生态系统——指项目地点的独特的陆地、水体和海洋生物多样性生态体系。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:73
 msgid "Focal Species"
 msgstr "焦点物种"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:73
 msgid ""
 "Focal Species - These include species endemic to the ecoregion, area-"
 "sensitive (umbrella) species, commercially exploited species, flagship "
@@ -1284,11 +1295,11 @@ msgstr ""
 "种、旗舰物种、关键物种或受害物种。 被选为焦点对象的物种通常不是由关键生态系统"
 "代表的物种，因为它们需要多种生境，或者有特殊的保护要求。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:77
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
 msgid "Ecological Processes"
 msgstr "生态过程"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:77
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:82
 msgid ""
 "Ecological Processes - Ecological processes that create and maintain "
 "biodiversity. These could include pollination, seed dispersal, dispersal of "
@@ -1300,12 +1311,12 @@ msgstr ""
 "保护区大型哺乳动物的分散、洄游鱼类的运动、鸟类的垂直迁徙或为沿海捕鱼业建立保"
 "育及募集地区。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:85
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:73
 msgid "Direct Threat"
 msgstr "直接威胁因子"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:85
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
 msgid ""
 "Direct threat - A proximate agent or factor that directly degrades one or "
 "more conservation targets. In Miradi, a dirct threat is represented by a "
@@ -1314,11 +1325,11 @@ msgstr ""
 "直接威胁因子——指直接导致一个或多个保护对象退化的邻近动因或因素。 在Miradi中，"
 "直接威胁因子是以红色长方形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
 msgid "Classifications of Direct Threats"
 msgstr "直接威胁因子的分类"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:90
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
 msgid ""
 "Direct threats can be classified according to the new 'IUCN-CMP Unified "
 "Classifications of Direct Threats', available on the web at www."
@@ -1327,13 +1338,13 @@ msgstr ""
 "直接威胁因子的分类可以根据最新的“IUCN-CMP 直接威胁因子统一分类”，该标准可在此"
 "获得：www.conservationmeasures.org。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:74
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewContributingFactorPropertiesPanel.java:33
 msgid "Contributing Factor"
 msgstr "影响因素"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:96
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:101
 msgid ""
 "Contributing factor (Indirect threats and Opportunities) - A human-induced "
 "action or event that underlies or leads to one or more direct threats. In "
@@ -1342,14 +1353,14 @@ msgstr ""
 "影响因素（直接威胁因子和机会）——指人为引发的行动或事件，从而引发或导致了一个"
 "或多个直接威胁因子的产生。在Miradi中，影响因素是以橙色长方形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:102
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:70
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:46
 #: miradi/source/org/miradi/dialogs/diagram/ConceptualModelDiagramPanel.java:67
 msgid "Conceptual Model"
 msgstr "概念模型 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:102
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:107
 msgid ""
 "Conceptual model - A diagram of a set of relationships between certain "
 "factors that are believed to impact or lead to a conservation target."
@@ -1357,7 +1368,7 @@ msgstr ""
 "概念模型——指显示特定因素之间一系列关系的图表，这些因素被认为是影响或指向保护"
 "对象。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:108
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 msgid ""
 "Scope - The broad geographic or thematic focus of a project. In Miradi, a "
 "project's scope is represented by a green box around the targets."
@@ -1365,23 +1376,23 @@ msgstr ""
 "范围——指一个项目广泛的地理区域或主题焦点。在Miradi中，项目的范围是一围绕着对"
 "象的绿色框来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:111
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:116
 #, fuzzy
 msgid "Assigned Resource"
 msgstr "Assigned Resource"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:111
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:116
 msgid ""
 "Assigned Resource - A project resource that has been assigned to a specific "
 "activity, method, or task."
 msgstr ""
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:115
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
 msgid "Scope (Threat Ratings)"
 msgstr "范围（威胁因子评级）"
 
 # GA: Small typo in the English: continuatino
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:115
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:120
 #, fuzzy
 msgid ""
 "Scope (Threat Ratings) - A threat rating criterion that is most commonly "
@@ -1400,11 +1411,11 @@ msgstr ""
 "occurence. For species, measured as the proportion of the target's "
 "population."
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:124
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:129
 msgid "Vision"
 msgstr "愿景 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:124
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:129
 msgid ""
 "Vision - A general summary of the desired state or ultimate condition of the "
 "project area that a project is working to achieve."
@@ -1412,7 +1423,7 @@ msgstr ""
 "愿景——指对某个项目致力于在项目区域取得其所期望的状态或最终状况所做的整体概"
 "述。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:129
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 #: miradi/source/org/miradi/forms/objects/IndicatorSubForm.java:32
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:80
 #: miradi/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:38
@@ -1420,7 +1431,7 @@ msgstr ""
 msgid "Indicator"
 msgstr "指示物"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:129
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:134
 msgid ""
 "Indicator - A measurable entity related to a specific information need (for "
 "example, the status of a target, change in a threat, or progress towards an "
@@ -1432,12 +1443,12 @@ msgstr ""
 "或为达到某分目标而取得的进展等）。良好的指示物应满足的标准是：可测量性、精确"
 "性、一致性和敏感性。在Miradi中，指示物是以紫色三角形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:136
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
 #: miradi/source/org/miradi/forms/objects/KeyEcologicalAttributePropertiesForm.java:32
 msgid "KEA"
 msgstr "KEA"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:136
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
 msgid ""
 "KEA (Key Ecological Attribute) - An aspect of a target's biology or ecology "
 "that if present, defines a healthy target and if missing or altered, would "
@@ -1448,13 +1459,13 @@ msgstr ""
 "了一个健康的对象；而如果缺失或改变，就可能会导致对象随着时间完全消失或极度退"
 "化。在Miradi中，KEA是以绿色钥匙符号来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:85
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:104
 msgid "Method"
 msgstr "方法"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:141
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 msgid ""
 "Method - A specific technique used to collect data to measure an indicator.  "
 "A good method is accurate, reliable, cost-effective, feasible, and "
@@ -1463,14 +1474,14 @@ msgstr ""
 "方法——指用于收集资料来测量某个指示物的专门技术。好方法的特性是准确性、可靠"
 "性、经济性、可行性和恰当性。在Miradi中，方法是以紫色扁椭圆形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:108
 #: miradi/source/org/miradi/dialogs/viability/IndicatorMonitoringPlanSubPanel.java:67
 msgid "Monitoring Plan"
 msgstr "监控计划 \t\t"
 
 # GA: We think that 'play' in this string should be 'plan'.
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
 #, fuzzy
 msgid ""
 "Monitoring Plan - A plan for collecting information that you and others need "
@@ -1481,11 +1492,11 @@ msgstr ""
 "to know about your project. A good plan includes the indicators that you "
 "will track over time as well as the methods that you will use."
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:153
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:158
 msgid "Strategy Effectiveness"
 msgstr "策略实效"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:153
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:158
 msgid ""
 "Strategy Effectiveness - Information used to answer the question: Are the "
 "conservation actions we are taking achieving their desired results?"
@@ -1493,11 +1504,11 @@ msgstr ""
 "策略实效——指用于回答如下问题的信息：我们所采取的保护行动是否取得了期望的结"
 "果？"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:158
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:163
 msgid "Status Assessments"
 msgstr "状态评估"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:158
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:163
 msgid ""
 "Status Assessments - Information used to answer the questions how are key "
 "targets, threats, and other factors changing? Answers to these questions, "
@@ -1508,7 +1519,7 @@ msgstr ""
 "使还没有采取任何行动，回答这些问题对于确定是否有必要采取进一步行动是很重要"
 "的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:164
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 #: miradi/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:79
 #: miradi/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:45
@@ -1516,7 +1527,7 @@ msgstr ""
 msgid "Objective"
 msgstr "分目标 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:164
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
 msgid ""
 "Objective - A formal statement detailing a desired outcome of a project, "
 "such as reducing a critical threat. In Miradi, an objective is represented "
@@ -1525,11 +1536,11 @@ msgstr ""
 "分目标——指的是一个正式的声明，它详细列出了项目所期望的结果，如某种临界威胁因"
 "子的减少。在Miradi中，分目标是以蓝色小长方形来代表的。 "
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid "StrategicPlan"
 msgstr "策略计划"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:169
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 msgid ""
 "Strategic plan - An outline of how the project team proposes to change the "
 "world that contains a project's goals, objectives, and strategies."
@@ -1537,14 +1548,14 @@ msgstr ""
 "策略计划——指的是一个大纲，它概括了项目团队如何建议来改造世界，其中包括项目总"
 "目标、分目标和各种策略。 "
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:175
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
 #: miradi/source/org/miradi/forms/objects/StrategyCoreSubForm.java:33
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:77
 #: miradi/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:46
 msgid "Strategy"
 msgstr "策略 \t\t"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:175
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:180
 msgid ""
 "Strategy - A broad course of action designed to restore natural systems, "
 "reduce threats, and/or develop capacity.  A strategy is typically used as an "
@@ -1555,21 +1566,21 @@ msgstr ""
 "力。 策略通常是作为一个涵盖性的术语，用来描述一系列的专门保护行动。在Miradi"
 "中，策略是以黄色六边形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:182
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:187
 msgid "Initial Project Team"
 msgstr "初始项目团队"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:182
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:187
 msgid ""
 "Initial Project Team - The people who conceive of and initiate the project."
 msgstr "初始项目团队——指构思并启动项目的人们。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:186
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:103
 msgid "Work Plan"
 msgstr "工作计划"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:186
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:191
 msgid ""
 "Work Plan - A description of the specific activities/methods and tasks that "
 "you need to undertake your strategic and monitoring plans.  A good work plan "
@@ -1579,13 +1590,13 @@ msgstr ""
 "工作计划——描述了为实施您的策略和监控计划所需的专门活动/方法和任务。良好的工作"
 "计划显示了各个任务的时间表及执行顺序，以及执行各任务所需的特定资源。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:193
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:86
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:102
 msgid "Activity"
 msgstr "活动"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:193
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:198
 msgid ""
 "Activity - An action carried out to accomplish one or more of a project's "
 "strategies. In Miradi, an activity is represented by a yellow flattened oval."
@@ -1593,13 +1604,13 @@ msgstr ""
 "活动——指要实现一个或多个项目策略所展开的行动。在Miradi中，活动是以黄色扁椭圆"
 "形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:197
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:84
 #: miradi/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
 msgid "Task"
 msgstr "任务"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:197
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
 msgid ""
 "Task - A specific action required in service of an activity or method.  "
 "Tasks themselves can be broken into sub-tasks if necessary. In Miradi, a "
@@ -1608,11 +1619,11 @@ msgstr ""
 "任务——指为展开某个活动或实施某个方法所需的专门行动。如果有必要，任务本身可以"
 "分解成亚任务。在Miradi中，任务是以灰色扁椭圆形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
 msgid "Quarter"
 msgstr "季度"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:202
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
 msgid ""
 "Quarter - A planning period encompassing 3 months. If you are using a "
 "Western calendar, typically 1st quarter is Jan - Mar, 2nd quarter is Apr - "
@@ -1622,11 +1633,11 @@ msgstr ""
 "月，第二季度是从四月至六月，第三季度是从七月至九月，而第四季度是从十月至十二"
 "月。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:208
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
 msgid "Resource"
 msgstr "资源"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:208
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
 msgid ""
 "Resource - A person or item that is needed to complete an activity/method or "
 "a task. There are three main kinds of resources - human, material, and "
@@ -1635,11 +1646,11 @@ msgstr ""
 "资源——指为完成某活动/方法或任务所需的人或物品。资源主要有三种——人力、物力和财"
 "力。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Overall Threat Rating"
 msgstr "总体威胁因子评级"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:213
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid ""
 "Target-Threat Rating - The rating of the effect of a direct threat on a "
 "specific target. The target-threat rating is calculated using a rule-based "
@@ -1648,12 +1659,12 @@ msgstr ""
 "对象-威胁因子评级——指针对某直接威胁因子对某专门对象造成后果的评级。对象-威胁"
 "因子评级是按规则进行的，也就是将范围、严重性和不可逆性标准相结合来计算的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
 #: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:64
 msgid "Irreversibility"
 msgstr "不可逆性"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
 msgid ""
 "<html>Irreversibility - The degree to which the effects of a threat can be "
 "revcersed and the target affected by the threat restored. "
@@ -1661,12 +1672,12 @@ msgstr ""
 "<html>不可逆性——指某威胁因子效果的可逆性以及受威胁因子影响的对象可恢复性的程"
 "度。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 #: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:62
 msgid "Severity"
 msgstr "严重性"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 msgid ""
 "Severity - Within the scope, the level of damage to the target from the "
 "threat that can reasonably be expected given the continuation of current "
@@ -1679,11 +1690,11 @@ msgstr ""
 "计程度。对于生态系统及生态群落，通常是按照此对象在其范围内受破坏或退化的程度"
 "来衡量。对于物种，通常以在其范围内对象种群数量减少的程度来衡量。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:230
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
 msgid "Contribution"
 msgstr "影响作用"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:230
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
 msgid ""
 "Contribution - A threat rating criterion defined as the expected "
 "contribution of the source, acting alone, to the full expression of a stress "
@@ -1694,7 +1705,7 @@ msgstr ""
 "护情形保持不变），资源单独作用最大程度地应对某个压力（根据压力评估确定）所产"
 "生的预期影响作用。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:235
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
 #, fuzzy
 msgid ""
 "<html>Project (general) - Any set of actions undertaken by a group of people "
@@ -1727,11 +1738,11 @@ msgstr ""
 "at the bottom of the <code class='toolbarbutton'>&lt;Data Location&gt;</"
 "code> tab."
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:251
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:256
 msgid "CMP"
 msgstr "CMP "
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:251
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:256
 msgid ""
 "The Conservation Measures Partnership (CMP) - A consortium of some of the "
 "world's leading conservation organizations, CMP members work together to "
@@ -1741,11 +1752,11 @@ msgstr ""
 "保护监测联盟（CMP）——是世界领先保护组织的联盟。CMP会员共同致力于开发共同的标"
 "准和工具，如Miradi。在此可获得详情www.ConservationMeasures.org "
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:258
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid "OpenStandards"
 msgstr "开放标准"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:258
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:263
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -1755,11 +1766,11 @@ msgstr ""
 "保护实践的开放标准——指用于设计、管理、监控和保护项目并从中学习经验的一系列最"
 "佳的做法。Miradi入门。您可以在此下载开放标准www.ConservationMeasures.org "
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:265
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
 msgid "ImportZip"
 msgstr "导入Zip"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:265
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:270
 msgid ""
 "Zipped Project - A project folder that has been compressed using the zip "
 "format. To share files with other Miradi users, you can use the file/export/"
@@ -1774,11 +1785,11 @@ msgstr ""
 "意：如果您使用导出和导入命令，Miradi将自动为您压缩或解压文件夹。Mirad也会为在"
 "格式迁移过程中创建的项目备份文件而创建压缩文件。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:274
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:279
 msgid "Budget"
 msgstr "预算"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:274
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:279
 msgid ""
 "Budget - A forward looking projection of the expenses and anticipated "
 "funding sources for the activities/methods and tasks you need to implement "
@@ -1787,11 +1798,11 @@ msgstr ""
 "预算——指一种前瞻性估算，即针对为实施您的策略和监控计划而要展开的活动/方法和任"
 "务所需的开支和预期资金资源的估算。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:280
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid "ActualExpenditures"
 msgstr "实际开支"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:280
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:285
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -1800,11 +1811,11 @@ msgstr ""
 "实际开支——指一份回顾报告，回顾为实施您的策略和监控计划而要展开的活动/方法和任"
 "务所花费的金额。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:286
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 msgid "AccountingCodes"
 msgstr "会计编码"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:286
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:291
 msgid ""
 "Accounting Codes - A set of categories developed by an organization to "
 "categorize and track expenses.  They typically include hierarchical strings "
@@ -1813,11 +1824,11 @@ msgstr ""
 "会计编码——指由某个组织机构开发的一套用于分类和跟踪开支的分类系统。它们通常包"
 "括分梯级的数字串和/或字母（编码）串以及伴随的文字说明。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:292
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid "TabDelimitedFile"
 msgstr "制表符分隔文件"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:292
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:297
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
@@ -1826,16 +1837,16 @@ msgstr ""
 "制表符分隔文件——指一份由制表符分隔输入内容的软件文件。大多数文字处理器或数据"
 "表软件允许您创建表格并以制表符分隔文件的格式导出。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:299
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:304
 msgid "Funding Sources - The sources of money available to your project."
 msgstr "资金资源——指您的项目可获得的资金来源。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:303
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
 msgid "ThreatReductionResult"
 msgstr "威胁因子减少结果"
 
 # GA: We suspect that 'at threat reduction' should be 'a threat reduction'
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:303
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
 #, fuzzy
 msgid ""
 "Threat Reduction Result - A factor in a results chain that describes the "
@@ -1848,11 +1859,11 @@ msgstr ""
 "conservation strategies. In Miradi, a threat reduction result is represented "
 "by a purple rectangle."
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:306
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 msgid "IntermediateResult"
 msgstr "中途结果"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:306
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:311
 msgid ""
 "Intermediate Result - A factor in a results chain that describes a specific "
 "outcome that results from implementing one or more conservation strategies. "
@@ -1861,11 +1872,11 @@ msgstr ""
 "中途结果——指结果链中的一个因素，它描述的是由于实施了一个或多个保护策略而产生"
 "的特定结果。在Miradi中，中途结果是以蓝色长方形来代表的。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:309
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 msgid "NestedTarget"
 msgstr "嵌套对象"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:309
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:314
 msgid ""
 "Nested Target - Species, ecological communities, or ecological system "
 "targets whose conservation needs are subsumed in one or more focal "
@@ -1875,11 +1886,11 @@ msgstr ""
 "嵌套对象——指其保护需要是包含于一个或多个焦点保护对象之中的物种、生态群落或生"
 "态系统对象。通常包括了某个团队要关注和/或跟踪的生态地区对象。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:312
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 msgid "ViabilityRatings"
 msgstr "生存力评级"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:312
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:317
 msgid ""
 "Viability Ratings - A project's scale of what is very good, good, fair, or "
 "poor for a given indicator for a given target. Viability ratings are often "
@@ -1893,12 +1904,12 @@ msgstr ""
 "果是，项目团队对其假说做出了专门的规范，指明了是什么构成了\"已受保护\"对象以"
 "及哪些对象需要管理干预。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:320
 #, fuzzy
 msgid "Acceptable Range of Variation"
 msgstr "Acceptable Range of Variation"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:320
 msgid ""
 "Acceptable Range of Variation - Key ecological attributes of focal targets "
 "naturally vary over time. The acceptable range defines the limits of this "
@@ -1915,7 +1926,7 @@ msgstr ""
 "象是否属于\"已受保护\"。如果该属性落在此可接受范围以外，则其属于\"退化\"属"
 "性。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:318
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #: miradi/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:32
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:87
 #: miradi/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:43
@@ -1924,7 +1935,7 @@ msgid "Measurement"
 msgstr "测量 \t\t"
 
 # GA: Please remove space between 'A' and 'n' at the beginning of this string.
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:318
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:323
 #, fuzzy
 msgid ""
 "Measurement - An assessment of an indicator at a given point in time. "
@@ -1933,24 +1944,24 @@ msgstr ""
 "Measurement - An assessment of an indicator at a given point in time. "
 "Measurements can be either quantitative or qualitative."
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:326
 #, fuzzy
 msgid "Priority Rating"
 msgstr "Priority Rating"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:326
 msgid ""
 "Priority Rating - An assesment of the importance or urgency or collecting "
 "measurements for a given indicator."
 msgstr "优先评级——指对特定指示物的重要性、紧急性或收集测量结果的一种评估。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:324
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
 #: miradi/source/org/miradi/dialogs/viability/IndicatorFutureStatusSubPanel.java:79
 msgid "Desired Future Status"
 msgstr "期望的未来地位 \t\t"
 
 # GA: Two periods at end of English string.
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:324
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
 #, fuzzy
 msgid ""
 "Desired Future Status - A measurement or rating value for an indicator for a "
@@ -1961,17 +1972,17 @@ msgstr ""
 "key ecological attribute that the project intends to achieve at a specified "
 "time in the future. Generally equivalent to a project sub-goal."
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:329
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:334
 msgid "Threat Calculations"
 msgstr ""
 "未来期望状态——针对此项目欲在未来特定时间取得的关键生态学属性，对其指示物所作"
 "的测量或分级数值。通常相当于项目的亚目标。"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:332
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:337
 msgid "Bundle Rules"
 msgstr "规则集"
 
-#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:343
+#: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:348
 msgid "Undefined"
 msgstr "未定义"
 
@@ -2355,10 +2366,6 @@ msgstr "3) 在链中完成链接 \t\t"
 #: miradi/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:48
 msgid " 2) Connect threat to relevant targets"
 msgstr "2)将威胁因子链接到相关的对象 \t\t"
-
-#: miradi/source/org/miradi/wizard/diagram/DiagramWizardVisionStep.java:47
-msgid "Refine vision statement"
-msgstr "提炼愿景宣言 \t\t"
 
 #: miradi/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:47
 msgid "2) Construct initial results chain "
@@ -4661,8 +4668,8 @@ msgid "Identify stresses (optional)"
 msgstr "识别压力（可选项） \t\t"
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpSummaryWizardDefineProjectVision.java:35
-msgid "Agree on project vision"
-msgstr "就项目愿景达成一致 \t\t"
+msgid "Add Human Welfare Targets If Desired"
+msgstr ""
 
 #: miradi/source/org/miradi/actions/jump/ActionJumpScheduleOverviewStep.java:35
 msgid "Develop Project Schedule"
@@ -27987,6 +27994,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Refine vision statement"
+#~ msgstr "提炼愿景宣言 \t\t"
+
+#~ msgid "Agree on project vision"
+#~ msgstr "就项目愿景达成一致 \t\t"
 
 #~ msgid ""
 #~ "html|/resources/NextStepAfterCpmzImport.html|<ol><li>Your ConPro project "
