@@ -566,6 +566,7 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 		if (getPropertiesPanel() == null)
 			return;
 		
+		getPropertiesPanel().setObjectRefs(getPicker().getSelectionHierarchy().toArray(), selectedColumnTag);
 		getPropertiesPanel().selectSectionForTag(selectedColumnTag);
 	}
 	
