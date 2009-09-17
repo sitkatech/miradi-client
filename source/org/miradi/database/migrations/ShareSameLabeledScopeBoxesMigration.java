@@ -49,10 +49,10 @@ public class ShareSameLabeledScopeBoxesMigration
 			return;
 		
 		if (!getConceptualModelDir().exists())
-			throw new RuntimeException(EAM.text("Project is missing Conceptual Model Diagram."));
+			throw new RuntimeException(EAM.text("Project is missing Conceptual Model Diagram Directory."));
 		
 		if (!getConceptualModelManifestFile().exists())
-			throw new RuntimeException(EAM.text("Project is missing Conceptual Model Manifest"));
+			throw new RuntimeException(EAM.text("Project is missing Conceptual Model Manifest File"));
 		
 		shareAllMatchingScopeBoxesInAllDiagrams(getConceptualModelDir(), getConceptualModelIds());
 		shareAllMatchingScopeBoxesInAllDiagrams(getResultsChainDir(), getResultsChainIds());
@@ -65,7 +65,7 @@ public class ShareSameLabeledScopeBoxesMigration
 			BaseId thisDiagramId = diagramIds[index];
 			File diagramJsonFile = new File(diagramDir, Integer.toString(thisDiagramId.asInt()));
 			EnhancedJsonObject diagramJson = DataUpgrader.readFile(diagramJsonFile);
-			IdList diagramFactorIds = diagramJson.optIdList(DIAGRAM_FACTOR_TYPE, "DiagramFactorIds");
+			IdList diagramFactorIds = diagramJson.optIdList(DIAGRAM_FACTOR_TYPE, DIAGRAM_FACTOR_IDS_TAG);
 			
 			Vector<File> diagramFactorScopeBoxJsons = extractDiagramFactorScopeBoxJsons(diagramFactorIds);
 			if (diagramFactorScopeBoxJsons.size() == 1)
@@ -87,7 +87,7 @@ public class ShareSameLabeledScopeBoxesMigration
 			
 			File diagramJsonFile = new File(diagramDir, Integer.toString(thisId.asInt()));
 			EnhancedJsonObject diagramJson = DataUpgrader.readFile(diagramJsonFile);
-			IdList diagramFactorIds = diagramJson.optIdList(DIAGRAM_FACTOR_TYPE, "DiagramFactorIds");
+			IdList diagramFactorIds = diagramJson.optIdList(DIAGRAM_FACTOR_TYPE, DIAGRAM_FACTOR_IDS_TAG);
 			Vector<File> diagramFactorScopeBoxJsons = extractDiagramFactorScopeBoxJsons(diagramFactorIds);
 			if (diagramFactorScopeBoxJsons.size() == 1)
 			{
@@ -153,7 +153,7 @@ public class ShareSameLabeledScopeBoxesMigration
 			BaseId diagramFactorId = diagramFactorIds.get(index);
 			File diagramFactorJsonFile = new File(getDiagramFactorDir(), Integer.toString(diagramFactorId.asInt()));
 			EnhancedJsonObject diagramFactorJson = DataUpgrader.readFile(diagramFactorJsonFile);
-			ORef wrappedRef = diagramFactorJson.optRef("WrappedFactorRef");
+			ORef wrappedRef = diagramFactorJson.optRef(WRAPPED_FACTOR_REF_TAG);
 			if (wrappedRef.getObjectType() == SCOPE_BOX_TYPE)
 				diagramFactorScopeBoxJsons.add(diagramFactorJsonFile);
 		}
@@ -229,6 +229,8 @@ public class ShareSameLabeledScopeBoxesMigration
 	private static final String MANIFEST_FILE_NAME = "manifest";
 	private static final String WRAPPED_REF_TAG = "WrappedFactorRef";
 	private static final String LABEL_TAG = "Label";
+	private static final String DIAGRAM_FACTOR_IDS_TAG = "DiagramFactorIds";
+	private static final String WRAPPED_FACTOR_REF_TAG = "WrappedFactorRef";
 	
 	private static final int DIAGRAM_FACTOR_TYPE = 18;
 	private static final int CONCEPTUAL_MODEL_TYPE = 19;
