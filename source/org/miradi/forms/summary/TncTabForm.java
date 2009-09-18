@@ -23,6 +23,9 @@ import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.questions.TncProjectSharingQuestion;
 import org.miradi.views.summary.TNCSummaryPanel;
 
 
@@ -31,19 +34,21 @@ public class TncTabForm extends FieldPanelSpec
 {
 	public TncTabForm()
 	{
-		setTranslatedTitle(TNCSummaryPanel.PANEL_DESCRIPTION);
+		setTranslatedTitle(TNCSummaryPanel.getTncPanelDescription());
 		
 		int projectMetadataType = ProjectMetadata.getObjectType();
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		addLabelAndField(Xenodata.getObjectType(), Xenodata.TAG_PROJECT_ID);
+		addChoiceField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_SHARING_CODE, new TncProjectSharingQuestion());
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
-		
-		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
-		
+		addChoiceField(TncProjectData.getObjectType(), TncProjectData.TAG_PROJECT_PLACE_TYPES, new TncProjectPlaceTypeQuestion());
+		addChoiceField(TncProjectData.getObjectType(), TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES, new TncOrganizationalPrioritiesQuestion());
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENT);
+		addLabelAndField(TncProjectData.getObjectType(), TncProjectData.TAG_CON_PRO_PARENT_CHILD_PROJECT_TEXT);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_OPERATING_UNITS);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_MARINE_ECO_REGION);
 		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION);
+		addLabelAndField(projectMetadataType, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 	}
 }
