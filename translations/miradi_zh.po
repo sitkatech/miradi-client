@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 09:07-0500\n"
+"POT-Creation-Date: 2009-09-18 10:19-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -372,12 +372,12 @@ msgid "Project Settings"
 msgstr ""
 
 #: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:39
-#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
+#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "项目日期 \t\t"
 
 #: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:44
-#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:37
+#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:36
 msgid "Label|Workplan Dates"
 msgstr "工作计划日期 \t\t"
 
@@ -390,7 +390,7 @@ msgid "Label|FOS"
 msgstr "金融巡查官服务（FOS） \t\t"
 
 #: miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:39
-#: miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:42
+#: miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:41
 msgid "Label|Protected Area Categories"
 msgstr "受保护区域种类 \t\t"
 
@@ -429,7 +429,7 @@ msgid "Label|Rare Tracking"
 msgstr "Rare跟踪\t\t"
 
 #: miradi/source/org/miradi/views/summary/HumanStakeholderPanel.java:37
-#: miradi/source/org/miradi/forms/summary/ScopeTabHumanSubPanelForm.java:41
+#: miradi/source/org/miradi/forms/summary/ScopeTabHumanSubPanelForm.java:40
 msgid "Label|Human Stakeholder Pop Size"
 msgstr "人力利益相关者的群体规模 \t\t"
 
@@ -442,12 +442,12 @@ msgid "Label|WWF"
 msgstr "世界自然基金会（WWF） \t\t"
 
 #: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:46
-#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:42
+#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:41
 msgid "SWOT"
 msgstr "态势（SWOT） \t\t"
 
 #: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:50
-#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:51
+#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:50
 msgid "STEP"
 msgstr "可持续科技教育计划（STEP） \t\t"
 
@@ -469,7 +469,7 @@ msgid "TNC"
 msgstr "大自然保护协会 \t\t"
 
 #: miradi/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:39
-#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:35
+#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:34
 msgid "Label|Currency"
 msgstr "货币 \t\t"
 
@@ -486,7 +486,7 @@ msgid "Label|Campaign"
 msgstr "运动 \t\t"
 
 #: miradi/source/org/miradi/views/summary/BiodiversityPanel.java:37
-#: miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:41
+#: miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:40
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "生物多样性区域（公顷） \t\t"
 
@@ -2434,63 +2434,63 @@ msgstr "组织联系方式 \t\t"
 msgid "Progress Percents"
 msgstr "进展百分比 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:39
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:38
 msgid "(See Project tab)"
 msgstr "（参见项目标签） \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:39
 msgid "Project Number"
 msgstr "项目编号 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
 msgid "Country"
 msgstr "国家 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:42
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "(See Location tab)"
 msgstr "（参见地点标签） \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:43
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:42
 msgid "Related Projects"
 msgstr "相关的项目 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:44
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:43
 msgid "(see Project tab)"
 msgstr "（参见项目标签） \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:46
 msgid "Threats at Site"
 msgstr "现场威胁因子 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
 msgid "(see Diagram)"
 msgstr "（参见图表） \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
 msgid "Human Stakeholder Pop Size"
 msgstr "人力利益相关者的群体规模 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
 msgid "(see Scope tab)"
 msgstr "（参见范围标签） \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Biodiversity Area (ha)"
 msgstr "生物多样性区域（公顷） \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
 msgid "Habitat"
 msgstr "生境 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:53
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
 msgid "(see TNC tab for Ecoregions)"
 msgstr "（有关生态区参见TNC标签） \t\t"
 
-#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:31
+#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:30
 msgid "Financial"
 msgstr "财政 \t\t"
 
-#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:31
+#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:30
 msgid "Workplan"
 msgstr "工作计划 \t\t"
 

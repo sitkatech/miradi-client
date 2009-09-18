@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 09:07-0500\n"
+"POT-Creation-Date: 2009-09-18 10:19-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -390,12 +390,12 @@ msgid "Project Settings"
 msgstr ""
 
 #: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:39
-#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
+#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:34
 msgid "Label|Project Dates"
 msgstr "Tanggal Proyek "
 
 #: miradi/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:44
-#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:37
+#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:36
 msgid "Label|Workplan Dates"
 msgstr "Tanggal Rencana Kerja "
 
@@ -408,7 +408,7 @@ msgid "Label|FOS"
 msgstr "FOS "
 
 #: miradi/source/org/miradi/views/summary/ProtectedAreaPanel.java:39
-#: miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:42
+#: miradi/source/org/miradi/forms/summary/ScopeTabProtectedAreaSubPanelForm.java:41
 msgid "Label|Protected Area Categories"
 msgstr "Kategori Daerah Lindung "
 
@@ -447,7 +447,7 @@ msgid "Label|Rare Tracking"
 msgstr "Pelacakan Rare "
 
 #: miradi/source/org/miradi/views/summary/HumanStakeholderPanel.java:37
-#: miradi/source/org/miradi/forms/summary/ScopeTabHumanSubPanelForm.java:41
+#: miradi/source/org/miradi/forms/summary/ScopeTabHumanSubPanelForm.java:40
 msgid "Label|Human Stakeholder Pop Size"
 msgstr "Ukuran Populasi Manusia Pemilik Kepentingan "
 
@@ -460,12 +460,12 @@ msgid "Label|WWF"
 msgstr "WWF "
 
 #: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:46
-#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:42
+#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:41
 msgid "SWOT"
 msgstr "SWOT "
 
 #: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:50
-#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:51
+#: miradi/source/org/miradi/forms/summary/WcsTabForm.java:50
 msgid "STEP"
 msgstr "STEP "
 
@@ -487,7 +487,7 @@ msgid "TNC"
 msgstr "TNC "
 
 #: miradi/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:39
-#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:35
+#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:34
 msgid "Label|Currency"
 msgstr "Mata Uang "
 
@@ -504,7 +504,7 @@ msgid "Label|Campaign"
 msgstr "Kampanye "
 
 #: miradi/source/org/miradi/views/summary/BiodiversityPanel.java:37
-#: miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:41
+#: miradi/source/org/miradi/forms/summary/ScopeTabBiodiversitySubPanelForm.java:40
 msgid "Label|Biodiversity Area (hectares)"
 msgstr "Daerah Keanekaragaman Hayati (hektar) "
 
@@ -2550,63 +2550,63 @@ msgstr "Kontak Org "
 msgid "Progress Percents"
 msgstr "Persentase Kemajuan "
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:39
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:38
 msgid "(See Project tab)"
 msgstr "(Lihat tab Proyek) "
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:39
 msgid "Project Number"
 msgstr "Nomor Proyek "
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:40
 msgid "Country"
 msgstr "Negara "
 
-#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:42
+#: miradi/source/org/miradi/forms/summary/RareTabTrackingSubPanelForm.java:41
 msgid "(See Location tab)"
 msgstr "(Lihat tab Lokasi) "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:43
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:42
 msgid "Related Projects"
 msgstr "Proyek Terkait "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:44
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignPlanningSubPanelForm.java:43
 msgid "(see Project tab)"
 msgstr "(Lihat tab Proyek) "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:46
 msgid "Threats at Site"
 msgstr "Ancaman di Lokasi "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:47
 msgid "(see Diagram)"
 msgstr "(lihat Diagram) "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:48
 msgid "Human Stakeholder Pop Size"
 msgstr "Ukuran Populasi Manusia Pemilik Kepentingan "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:49
 msgid "(see Scope tab)"
 msgstr "(lihat tab Cakupan) "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:50
 msgid "Biodiversity Area (ha)"
 msgstr "Daerah Keanekaragaman Hayati (ha) "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:51
 msgid "Habitat"
 msgstr "Habitat "
 
-#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:53
+#: miradi/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:52
 msgid "(see TNC tab for Ecoregions)"
 msgstr "(lihat tab TNC untuk Wilayah Ekologi) "
 
-#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:31
+#: miradi/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:30
 msgid "Financial"
 msgstr "Keuangan "
 
-#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:31
+#: miradi/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:30
 msgid "Workplan"
 msgstr "Rencana Kerja "
 
