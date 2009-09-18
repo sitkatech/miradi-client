@@ -27,7 +27,7 @@ public class LocationTabForm extends FieldPanelSpec
 {
 	public LocationTabForm()
 	{
-		setTranslatedTitle(SummaryLocationPanel.PANEL_DESCRIPTION);
+		setTranslatedTitle(SummaryLocationPanel.getLocationPanelDescription());
 
 		int type = ProjectMetadata.getObjectType();
 
@@ -42,6 +42,5 @@ public class LocationTabForm extends FieldPanelSpec
 		addLabelAndField(type, ProjectMetadata.TAG_LOCATION_DETAIL);
 		addLabelAndField(type, ProjectMetadata.TAG_SITE_MAP_REFERENCE);
 		addLabelAndField(type, ProjectMetadata.TAG_LOCATION_COMMENTS);
-		
 	}
 }
