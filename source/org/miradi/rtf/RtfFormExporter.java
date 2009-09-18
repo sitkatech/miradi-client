@@ -75,7 +75,7 @@ public class RtfFormExporter
 		for (int index = 0; index < propertiesPanelSpec.getPanelCount(); ++index)
 		{
 			FieldPanelSpec fieldPanelSpec = propertiesPanelSpec.getPanel(index);
-			if (fieldPanelSpec.hasBorder())
+			if (fieldPanelSpec.hasTitle())
 				writeTitle(fieldPanelSpec);
 			
 			exportForm(fieldPanelSpec, indentation);
