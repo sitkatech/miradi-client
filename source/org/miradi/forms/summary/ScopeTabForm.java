@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.summary;
 
 import org.miradi.forms.PanelHolderSpec;
+import org.miradi.forms.TitlePanel;
+import org.miradi.views.summary.SummaryScopeTabPanel;
 
 public class ScopeTabForm extends PanelHolderSpec
 {
 	public ScopeTabForm()
 	{
+		addPanel(new TitlePanel(SummaryScopeTabPanel.getScopePanelDescription()));
 		addPanel(new ScopeTabScopeSubPanelForm());
 		addPanel(new ScopeTabBiodiversitySubPanelForm());
 		addPanel(new ScopeTabHumanSubPanelForm());
