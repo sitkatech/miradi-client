@@ -31,14 +31,11 @@ public class PlanningTabWorkPlanSubPanelForm extends FieldPanelSpec
 
 		int type = ProjectMetadata.getObjectType();
 		
-		addLabelAndFieldsWithLabels(EAM.text("Label|Project Dates"), type, 
-				new String[] {ProjectMetadata.TAG_START_DATE, ProjectMetadata.TAG_EXPECTED_END_DATE});
-		addLabelAndFieldsWithLabels(EAM.text("Label|Workplan Dates"), type, 
-				new String[] {ProjectMetadata.TAG_WORKPLAN_START_DATE, ProjectMetadata.TAG_WORKPLAN_END_DATE});
+		addLabelAndFieldsWithLabels(EAM.text("Label|Project Dates"), type, new String[] {ProjectMetadata.TAG_START_DATE, ProjectMetadata.TAG_EXPECTED_END_DATE});
+		addLabelAndFieldsWithLabels(EAM.text("Label|Workplan Dates"), type, new String[] {ProjectMetadata.TAG_WORKPLAN_START_DATE, ProjectMetadata.TAG_WORKPLAN_END_DATE});
 		
-		addLabelAndField(type, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT);
 		addLabelAndField(type, ProjectMetadata.TAG_FISCAL_YEAR_START);
+		addLabelAndField(type, ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
 		addLabelAndField(type, ProjectMetadata.TAG_PLANNING_COMMENTS);
-
 	}
 }
