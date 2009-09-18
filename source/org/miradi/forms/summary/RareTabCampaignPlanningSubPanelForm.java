@@ -28,7 +28,6 @@ public class RareTabCampaignPlanningSubPanelForm extends FieldPanelSpec
 {
 	public RareTabCampaignPlanningSubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(RareCampaignPlanningSummarySubPanel.PANEL_DESCRIPTION);
 	
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_CAMPAIGN_THEORY_OF_CHANGE);

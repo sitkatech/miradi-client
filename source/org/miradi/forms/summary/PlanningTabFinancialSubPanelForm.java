@@ -27,7 +27,6 @@ public class PlanningTabFinancialSubPanelForm extends FieldPanelSpec
 {
 	public PlanningTabFinancialSubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(EAM.text("Financial"));
 
 		int type = ProjectMetadata.getObjectType();

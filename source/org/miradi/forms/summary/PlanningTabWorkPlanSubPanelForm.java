@@ -27,7 +27,6 @@ public class PlanningTabWorkPlanSubPanelForm extends FieldPanelSpec
 {
 	public PlanningTabWorkPlanSubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(EAM.text("Workplan"));
 
 		int type = ProjectMetadata.getObjectType();

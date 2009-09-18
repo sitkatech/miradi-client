@@ -27,7 +27,6 @@ public class RareTabTeamInformationSubPanelForm extends FieldPanelSpec
 {
 	public RareTabTeamInformationSubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(RareTeamInformationSummarySubPanel.PANEL_DESCRIPTION);
 		
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_COURSE_MANAGER_NOTES);

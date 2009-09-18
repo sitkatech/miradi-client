@@ -33,7 +33,6 @@ public class ScopeTabProtectedAreaSubPanelForm extends FieldPanelSpec
 {
 	public ScopeTabProtectedAreaSubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(ProtectedAreaPanel.PANEL_DESCRIPTION);
 		
 		int type = ProjectMetadata.getObjectType();

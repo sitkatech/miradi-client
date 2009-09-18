@@ -27,7 +27,6 @@ public class LocationTabForm extends FieldPanelSpec
 {
 	public LocationTabForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(SummaryLocationPanel.PANEL_DESCRIPTION);
 
 		int type = ProjectMetadata.getObjectType();

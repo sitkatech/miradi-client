@@ -26,7 +26,6 @@ public class ViabilityProjectForm extends FieldPanelSpec
 {
 	public ViabilityProjectForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(SummaryProjectPanel.PANEL_DESCRIPTION);
 	}
 }
