@@ -31,7 +31,7 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSect
 {
 	public ConceptualModelPropertiesPanel(Project projectToUse, ORef diagramObjectRef)
 	{
-		super(projectToUse, ConceptualModelDiagram.getObjectType());
+		super(projectToUse, diagramObjectRef);
 		createSingleSection(EAM.text("CM Page"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(ConceptualModelDiagram.getObjectType(), DiagramObject.TAG_SHORT_LABEL);

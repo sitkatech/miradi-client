@@ -28,6 +28,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.utils.ObjectsActionButton;
 
@@ -35,9 +36,15 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 {
 	public ObjectDataInputPanelWithSections(Project projectToUse, int objectTypeToUse)
 	{
-		super(projectToUse, objectTypeToUse, BaseId.INVALID);
+		this(projectToUse, new ORef(objectTypeToUse, BaseId.INVALID));
+	}
+	
+	
+	public ObjectDataInputPanelWithSections(Project projectToUse, ORef refToUse)
+	{
+		super(projectToUse, refToUse);
 		
-		objectType = objectTypeToUse;
+		objectType = refToUse.getObjectType();
 		tabPanel = new PanelTabbedPane();
 		tabPanel.setTabPlacement(tabPanel.LEFT);
 		add(tabPanel, BorderLayout.CENTER);
@@ -70,6 +77,7 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	public void createSingleSection(String title)
 	{
 		singleSection = new SimpleObjectDataInputPanel(getProject(), objectType, title);
+		singleSection.setObjectRefs(getSelectedRefs());
 		addSubPanelWithTitledBorder(singleSection);
 	}
 	
