@@ -31,7 +31,7 @@ public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSection
 {
 	public ResultsChainPropertiesPanel(Project projectToUse, ORef resultsChainRef)
 	{
-		super(projectToUse, ResultsChainDiagram.getObjectType());
+		super(projectToUse, resultsChainRef);
 		createSingleSection(EAM.text("Results Chain"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(ResultsChainDiagram.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
