@@ -665,7 +665,7 @@
 <!-- ================================================================== -->
 <target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
 	<property name="rawdmgfile" value="/home/j2ee-hudson/Miradi/Miradi.dmg" />
-	<property name="dmgsizemegs" value="14" />
+	<property name="dmgsizemegs" value="15" />
 	<property name="dmgmount" value="/mounts/Miradi/dmgfile" />
 
 	<exec os="Linux"  executable="umount" failonerror="false">
