@@ -133,10 +133,6 @@ public class ThreatTargetVirtualLinkHelper
 	{
 		try
 		{
-			ThreatTargetVirtualLinkHelper threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(projectToUse);
-			if (projectToUse.isStressBaseMode())
-				return threatTargetVirtualLink.getThreatStressRatingRefs(threat.getRef(), targetRef).hasData();
-	
 			ThreatTargetChainObject chain = new ThreatTargetChainObject(projectToUse);
 			ORefSet downStreamTargets = chain.getDownstreamTargetRefsFromThreat(threat);
 			return downStreamTargets.contains(targetRef);
