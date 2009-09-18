@@ -242,6 +242,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			else
 				rawValue = baseObject.getData(columnTag);
 			
+			if (rawValue == null)
+				return new EmptyChoiceItem();
+			
 			if(columnTag.equals(Indicator.TAG_PRIORITY))
 				return new PriorityRatingQuestion().findChoiceByCode(rawValue);
 			
