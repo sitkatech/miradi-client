@@ -61,11 +61,6 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		return getTranslatedTitle().length() > 0;
 	}
 
-	public void setHasBorder()
-	{
-		hasBorder = true;
-	}
-
 	public String getTranslatedTitle()
 	{
 		return translatedTitle;
