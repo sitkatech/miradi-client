@@ -34,14 +34,14 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objectpools.RatingCriterionPool;
 import org.miradi.objectpools.ValueOptionPool;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
 import org.miradi.objects.RatingCriterion;
+import org.miradi.objects.Target;
 import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
@@ -361,25 +361,15 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
 		FactorId threatId = bundle.getThreatId();
-		FactorId targetId = bundle.getTargetId();
-		Factor threat = Cause.find(project, new ORef(Cause.getObjectType(), threatId));
+		ORef threatRef = new ORef(Cause.getObjectType(), threatId);
+		Cause threat = Cause.find(project, threatRef);
 		if(threat == null)
 			return false;
 		
-		ORefList links = threat.findObjectsThatReferToUs(FactorLink.getObjectType());
-		for(int i = 0; i < links.size(); ++i)
-		{
-			FactorLink link = (FactorLink)project.findObject(links.get(i));
-			FactorId fromId = new FactorId(link.getFromFactorRef().getObjectId().asInt());
-			FactorId toId = new FactorId(link.getToFactorRef().getObjectId().asInt());
-			if(fromId.equals(threatId) && toId.equals(targetId))
-				return true;
-
-			if(link.isBidirectional() && fromId.equals(targetId) && toId.equals(threatId))
-				return true;
-		}
-		
-		return false;
+		ORef targetRef = new ORef(Target.getObjectType(), bundle.getTargetId());
+		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
+	
+		return helper.canSupportThreatRatings(getProject(), threat, targetRef);		
 	}
 	
 	public ValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)
