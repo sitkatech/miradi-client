@@ -21,6 +21,7 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.objects.Indicator;
+import org.miradi.questions.ProgressReportShortStatusQuestion;
 
 public class IndicatorMonitoringPlanSubForm extends FieldPanelSpec
 {
@@ -30,5 +31,6 @@ public class IndicatorMonitoringPlanSubForm extends FieldPanelSpec
 		addLabelAndField(type, Indicator.PSEUDO_TAG_FACTOR);
 		addLabelAndField(type, Indicator.PSEUDO_TAG_METHODS);
 		addLabelAndField(type, Indicator.TAG_PRIORITY);
+		addChoiceField(type, Indicator.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportShortStatusQuestion());
 	}
 }
