@@ -58,6 +58,11 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 
 	public String getPanelDescription()
 	{
+		return getScopePanelDescription();
+	}
+
+	public static String getScopePanelDescription()
+	{
 		return EAM.text("Scope");
 	}
 	
