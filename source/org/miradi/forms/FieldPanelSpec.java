@@ -56,11 +56,6 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 		return rows.get(index);
 	}
 
-	public boolean hasBorder()
-	{
-		return hasBorder;
-	}
-	
 	public boolean hasTitle()
 	{
 		return getTranslatedTitle().length() > 0;
@@ -140,6 +135,6 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	}
 
 	private Vector<FormRow> rows;
-	private boolean hasBorder;
+	boolean hasBorder;
 	private String translatedTitle;
 }
