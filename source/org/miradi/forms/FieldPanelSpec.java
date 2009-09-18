@@ -130,6 +130,5 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	}
 
 	private Vector<FormRow> rows;
-	boolean hasBorder;
 	private String translatedTitle;
 }
