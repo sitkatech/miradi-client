@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 10:46-0500\n"
+"POT-Creation-Date: 2009-09-18 10:52-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -385,7 +385,7 @@ msgstr "工作计划日期 \t\t"
 msgid "Work Plan Settings"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:71
+#: miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:55
 msgid "Label|FOS"
 msgstr "金融巡查官服务（FOS） \t\t"
 
@@ -437,7 +437,7 @@ msgstr "人力利益相关者的群体规模 \t\t"
 msgid "Human Stakeholders"
 msgstr "人力利益相关者 \t\t"
 
-#: miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:87
+#: miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:71
 msgid "Label|WWF"
 msgstr "世界自然基金会（WWF） \t\t"
 
@@ -451,7 +451,7 @@ msgstr "态势（SWOT） \t\t"
 msgid "STEP"
 msgstr "可持续科技教育计划（STEP） \t\t"
 
-#: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:78
+#: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:62
 msgid "Label|WCS"
 msgstr "野生动物保护协会（WCS） \t\t"
 

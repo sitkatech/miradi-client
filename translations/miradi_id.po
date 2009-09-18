@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 10:46-0500\n"
+"POT-Creation-Date: 2009-09-18 10:52-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -403,7 +403,7 @@ msgstr "Tanggal Rencana Kerja "
 msgid "Work Plan Settings"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:71
+#: miradi/source/org/miradi/views/summary/FOSSummaryPanel.java:55
 msgid "Label|FOS"
 msgstr "FOS "
 
@@ -455,7 +455,7 @@ msgstr "Ukuran Populasi Manusia Pemilik Kepentingan "
 msgid "Human Stakeholders"
 msgstr "Manusia Pemilik Kepentingan "
 
-#: miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:87
+#: miradi/source/org/miradi/views/summary/WWFSummaryPanel.java:71
 msgid "Label|WWF"
 msgstr "WWF "
 
@@ -469,7 +469,7 @@ msgstr "SWOT "
 msgid "STEP"
 msgstr "STEP "
 
-#: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:78
+#: miradi/source/org/miradi/views/summary/WCSSummaryPanel.java:62
 msgid "Label|WCS"
 msgstr "WCS "
 
