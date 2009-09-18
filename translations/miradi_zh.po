@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 10:19-0500\n"
+"POT-Creation-Date: 2009-09-18 10:31-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -415,7 +415,7 @@ msgstr "范围及愿景 \t\t"
 msgid "Organization"
 msgstr "组织 \t\t"
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:54
+#: miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:102
 msgid "Planning"
 msgstr "计划 \t\t"
@@ -509,7 +509,7 @@ msgstr "（纬度必须是-90.0000 到 +90.0000）"
 msgid "(Longitude must be -180.0000 to +180.0000)"
 msgstr "（经度必须是-180.0000 到 +180.0000）"
 
-#: miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:80
+#: miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:63
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
 msgid "Location"
 msgstr "地点 \t\t"
