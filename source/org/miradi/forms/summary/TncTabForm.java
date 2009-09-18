@@ -31,7 +31,6 @@ public class TncTabForm extends FieldPanelSpec
 {
 	public TncTabForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(TNCSummaryPanel.PANEL_DESCRIPTION);
 		
 		int projectMetadataType = ProjectMetadata.getObjectType();

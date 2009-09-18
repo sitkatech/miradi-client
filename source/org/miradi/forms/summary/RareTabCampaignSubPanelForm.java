@@ -28,7 +28,6 @@ public class RareTabCampaignSubPanelForm extends FieldPanelSpec
 {
 	public RareTabCampaignSubPanelForm()
 	{		
-		setHasBorder();
 		setTranslatedTitle(RareCampaignSummarySubPanel.PANEL_DESCRIPTION);
 	
 		addLabelAndField(RareProjectData.getObjectType(), RareProjectData.TAG_THREATS_ADDRESSED_NOTES);

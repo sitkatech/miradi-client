@@ -28,7 +28,6 @@ public class RareTabTrackingSubPanelForm extends FieldPanelSpec
 {
 	public RareTabTrackingSubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(RareTrackingSummarySubPanel.PANEL_DESCRIPTION);
 		
 		addLeftRightConstants(PROJECT_NUMBER_CONSTANT, SEE_PROJECT_TAB_CONSTANT);

@@ -27,7 +27,6 @@ public class ProjectTabForm extends FieldPanelSpec
 {
 	public ProjectTabForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(SummaryProjectPanel.PANEL_DESCRIPTION);
 
 		int type = ProjectMetadata.getObjectType();

@@ -32,7 +32,6 @@ public class ScopeTabBiodiversitySubPanelForm extends FieldPanelSpec
 {
 	public ScopeTabBiodiversitySubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(BiodiversityPanel.PANEL_DESCRIPTION);
 		
 		int type = ProjectMetadata.getObjectType();

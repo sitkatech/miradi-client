@@ -27,7 +27,6 @@ public class ScopeTabScopeSubPanelForm extends FieldPanelSpec
 {
 	public ScopeTabScopeSubPanelForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(ScopeAndVisionPanel.PANEL_DESCRIPTION);
 		
 		int type = ProjectMetadata.getObjectType();

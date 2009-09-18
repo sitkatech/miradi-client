@@ -25,6 +25,5 @@ public class TitlePanel extends FieldPanelSpec
 	public TitlePanel(String translatedTitle)
 	{
 		setTranslatedTitle(translatedTitle);
-		setHasBorder();
 	}
 }

@@ -27,7 +27,6 @@ public class WwfTabForm extends FieldPanelSpec
 {
 	public WwfTabForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(WWFSummaryPanel.PANEL_DESCRIPTION);
 
 		addLabelAndField(WwfProjectData.getObjectType(), WwfProjectData.TAG_MANAGING_OFFICES);

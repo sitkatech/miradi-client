@@ -27,7 +27,6 @@ public class FosTabForm extends FieldPanelSpec
 {
 	public FosTabForm()
 	{
-		setHasBorder();
 		setTranslatedTitle(FOSSummaryPanel.PANEL_DESCRIPTION);
 
 		addLabelAndField(FosProjectData.getObjectType(), FosProjectData.TAG_TRAINING_TYPE);
