@@ -48,13 +48,13 @@ public class TestFieldPanelSpec extends TestCaseEnhanced
 	public void testTitleAndBorder() throws Exception
 	{
 		FieldPanelSpec spec = new FieldPanelSpec();
-		assertFalse("Had border by default?", spec.hasBorder());
+		assertFalse("Had title by default?", spec.hasTitle());
 		assertEquals("Had title by default?", "", spec.getTranslatedTitle());
 	
 		String SAMPLE_TITLE = "Test Title";
 		spec.setHasBorder();
-		assertTrue("Didn't get a border?", spec.hasBorder());
 		spec.setTranslatedTitle(SAMPLE_TITLE);
 		assertEquals("Didn't get a title?", SAMPLE_TITLE, spec.getTranslatedTitle());
+		assertTrue("Didn't get a title?", spec.hasTitle());
 	}
 }

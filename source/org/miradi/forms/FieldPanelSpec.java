@@ -60,6 +60,11 @@ public class FieldPanelSpec extends PropertiesPanelSpec
 	{
 		return hasBorder;
 	}
+	
+	public boolean hasTitle()
+	{
+		return getTranslatedTitle().length() > 0;
+	}
 
 	public void setHasBorder()
 	{
