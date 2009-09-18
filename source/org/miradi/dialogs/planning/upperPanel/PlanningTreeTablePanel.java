@@ -166,8 +166,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 				rebuildEntireTreeAndTable();
 			}
 			
+			
 			if (doesCommandForceRebuild(event))
+			{
 				rebuildEntireTreeAndTable();
+			}
 			else if(doesAffectTableRowHeight(event))
 			{
 				tree.updateAutomaticRowHeights();
@@ -178,8 +181,11 @@ abstract public class PlanningTreeTablePanel extends TreeTablePanelWithSixButton
 				validate();
 			}
 		
+			
 			if(isTreeExpansionCommand(event))
+			{
 				restoreTreeExpansionState();
+			}
 			
 			repaintToGrowIfTreeIsTaller();
 		}
