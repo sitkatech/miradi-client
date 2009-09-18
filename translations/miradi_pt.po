@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-17 12:19-0500\n"
+"POT-Creation-Date: 2009-09-18 09:07-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -463,7 +463,7 @@ msgstr ""
 msgid "Biodiversity Features"
 msgstr ""
 
-#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:61
+#: miradi/source/org/miradi/views/summary/SummaryScopeTabPanel.java:66
 #: miradi/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:113
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:37
 #: miradi/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:60
