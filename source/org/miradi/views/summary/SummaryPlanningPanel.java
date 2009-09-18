@@ -51,6 +51,11 @@ public class SummaryPlanningPanel extends ObjectDataInputPanelWithSections
 
 	public String getPanelDescription()
 	{
+		return getPlanningPanelDescription();
+	}
+
+	public static String getPlanningPanelDescription()
+	{
 		return EAM.text("Planning");
 	}
 	

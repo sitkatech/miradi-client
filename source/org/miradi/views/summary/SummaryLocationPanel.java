@@ -55,7 +55,12 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return getLocationPanelDescription();
+	}
+
+	public static String getLocationPanelDescription()
+	{
+		return EAM.text("Location");
 	}
 	
 	@Override
@@ -76,6 +81,4 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
 		rtfFormExporter.exportForm(new LocationTabForm());
 	}
-	
-	public static final String PANEL_DESCRIPTION = EAM.text("Location");
 }
