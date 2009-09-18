@@ -63,7 +63,12 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return getWwfPanelDescription();
+	}
+	
+	public static String getWwfPanelDescription()
+	{
+		return EAM.text("Label|WWF"); 
 	}
 	
 	public Icon getIcon()
@@ -83,6 +88,4 @@ public class WWFSummaryPanel extends ObjectDataInputPanel
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
 		rtfFormExporter.exportForm(new WwfTabForm());
 	}
-	
-	public static final String PANEL_DESCRIPTION = EAM.text("Label|WWF");
 }

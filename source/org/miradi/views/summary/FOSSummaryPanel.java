@@ -47,7 +47,12 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 
 	public String getPanelDescription()
 	{
-		return PANEL_DESCRIPTION;
+		return getFosPanelDescription();
+	}
+
+	public static String getFosPanelDescription()
+	{
+		return EAM.text("Label|FOS");
 	}
 	
 	public Icon getIcon()
@@ -67,6 +72,4 @@ public class FOSSummaryPanel extends ObjectDataInputPanel
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
 		rtfFormExporter.exportForm(new FosTabForm());
 	}
-	
-	public static final String PANEL_DESCRIPTION = EAM.text("Label|FOS");
 }
