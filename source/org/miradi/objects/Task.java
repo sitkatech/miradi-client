@@ -259,6 +259,9 @@ public class Task extends Factor
 		if(fieldTag.equals(PSEUDO_TAG_INDICATOR_LABEL))
 			return getLabelOfTaskParent();
 		
+		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE) && isTask())
+			return null;
+		
 		return super.getPseudoData(fieldTag);
 	}
 
