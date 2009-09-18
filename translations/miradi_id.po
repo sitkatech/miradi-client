@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-18 10:19-0500\n"
+"POT-Creation-Date: 2009-09-18 10:31-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -433,7 +433,7 @@ msgstr "Cakupan dan Visi "
 msgid "Organization"
 msgstr "Organisasi "
 
-#: miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:54
+#: miradi/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
 #: miradi/source/org/miradi/dialogs/base/PreferencesPanel.java:102
 msgid "Planning"
 msgstr "Perencanaan "
@@ -527,7 +527,7 @@ msgstr "(Garis lintang harus berada pada posisi -90,0000 sampai +90,0000)"
 msgid "(Longitude must be -180.0000 to +180.0000)"
 msgstr "(Garis bujur harus berada pada posisi -180,0000 sampai +180,0000)"
 
-#: miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:80
+#: miradi/source/org/miradi/views/summary/SummaryLocationPanel.java:63
 #: miradi/source/org/miradi/questions/ReportTemplateContentQuestion.java:38
 msgid "Location"
 msgstr "Lokasi "
