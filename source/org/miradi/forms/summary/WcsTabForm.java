@@ -32,7 +32,7 @@ public class WcsTabForm extends FieldPanelSpec
 {
 	public WcsTabForm()
 	{
-		setTranslatedTitle(WCSSummaryPanel.PANEL_DESCRIPTION);
+		setTranslatedTitle(WCSSummaryPanel.getWcsPanelDescription());
 		
 		addLabelAndField(WcsProjectData.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_FOCUS);
 		addLabelAndField(WcsProjectData.getObjectType(), WcsProjectData.TAG_ORGANIZATIONAL_LEVEL);
