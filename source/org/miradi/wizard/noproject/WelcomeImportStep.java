@@ -67,12 +67,14 @@ public class WelcomeImportStep extends NoProjectWizardStep
 		{
 			setBackground(AppPreferences.getWizardBackgroundColor());
 			
-			String intro = EAM.text("<div class='WizardText'>" +
-					"To <strong>import</strong> a " +
-					"<a href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> " +
-					"file that was exported from Miradi, " +
-					"press the <code class='toolbarbutton'>&lt;Next&gt;</code>button below " +
-					"to choose the file.");
+			String intro = EAM.text(
+						"<div class='WizardText'>" +
+						"Miradi is able to import two different kinds of project files.<BR>" +
+						"MPZ files are <a href='Definition:ImportZip' class='definition'>Miradi Project Zip</a> files that were created by exporting a project from within Miradi. <BR>" +
+						"CPMZ files are used to import and export project data from ConPro, The Nature Conservancy's online project database.<BR><BR>" + 
+						"To import a MPZ, or CPMZ file, click the button for the appropriate file type, select the file in the dialog that pops up and then click <strong>import</strong>."
+			);
+
 			add(new FlexibleWidthHtmlViewer(getMainWindow(), hyperlinkHandler, intro));
 
 			String buttonsText = EAM.text("<div class='WizardText'>" +	
