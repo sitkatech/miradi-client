@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-20 11:22-0500\n"
+"POT-Creation-Date: 2009-09-20 11:46-0500\n"
 "PO-Revision-Date: 2008-07-01 12:54-0400\n"
 "Last-Translator: Kevin Smith <info@miradi.org>\n"
 "Language-Team: Portuguese\n"
@@ -1912,7 +1912,7 @@ msgid ""
 msgstr ""
 
 #: miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:136
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:126
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
 msgid "Unable to process request: "
 msgstr ""
 
@@ -2013,15 +2013,19 @@ msgstr ""
 msgid "Export to Miradi Zip..."
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
 msgid ""
-"<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
-"ImportZip' class='definition'>Miradi Project Zip</a> file that was exported "
-"from Miradi, press the <code class='toolbarbutton'>&lt;Next&gt;</code>button "
-"below to choose the file."
+"<div class='WizardText'>Miradi is able to import two different kinds of "
+"project files.<BR>MPZ files are <a href='Definition:ImportZip' "
+"class='definition'>Miradi Project Zip</a> files that were created by "
+"exporting a project from within Miradi. <BR>CPMZ files are used to import "
+"and export project data from ConPro, The Nature Conservancy's online project "
+"database.<BR><BR>To import a MPZ, or CPMZ file, click the button for the "
+"appropriate file type, select the file in the dialog that pops up and then "
+"click <strong>import</strong>."
 msgstr ""
 
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:78
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Import "

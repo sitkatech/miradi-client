@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-20 11:22-0500\n"
+"POT-Creation-Date: 2009-09-20 11:46-0500\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -2196,7 +2196,7 @@ msgstr ""
 "puntos, guiones y subrayado."
 
 #: miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:136
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:126
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
 msgid "Unable to process request: "
 msgstr "No se pudo procesar la solicitud:"
 
@@ -2307,22 +2307,20 @@ msgstr "Copiar a…"
 msgid "Export to Miradi Zip..."
 msgstr "Exportar al zip de Miradi…"
 
-# should "Definition:Importzip", "definition" be translated (even though they are inside <...>)?
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
 msgid ""
-"<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
-"ImportZip' class='definition'>Miradi Project Zip</a> file that was exported "
-"from Miradi, press the <code class='toolbarbutton'>&lt;Next&gt;</code>button "
-"below to choose the file."
+"<div class='WizardText'>Miradi is able to import two different kinds of "
+"project files.<BR>MPZ files are <a href='Definition:ImportZip' "
+"class='definition'>Miradi Project Zip</a> files that were created by "
+"exporting a project from within Miradi. <BR>CPMZ files are used to import "
+"and export project data from ConPro, The Nature Conservancy's online project "
+"database.<BR><BR>To import a MPZ, or CPMZ file, click the button for the "
+"appropriate file type, select the file in the dialog that pops up and then "
+"click <strong>import</strong>."
 msgstr ""
-"<div class='WizardText'>Para <strong>importar</strong> un <a "
-"href='Definition:ImportZip' class='definition'>archivo zip del proyecto "
-"Miradi</a> que se exportó de Miradi, oprima el botón <code "
-"class='toolbarbutton'>&lt;Siguiente&gt;</code>a continuación para "
-"seleccionar el archivo."
 
 # should "Import Miradi Project", "Miradi Project", "Import ConPro Project", and "ConPro/Miradi Exchange File" be translated (even though they are inside <...>)?
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:78
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Import "
@@ -30071,6 +30069,19 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+# should "Definition:Importzip", "definition" be translated (even though they are inside <...>)?
+#~ msgid ""
+#~ "<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
+#~ "ImportZip' class='definition'>Miradi Project Zip</a> file that was "
+#~ "exported from Miradi, press the <code class='toolbarbutton'>&lt;Next&gt;</"
+#~ "code>button below to choose the file."
+#~ msgstr ""
+#~ "<div class='WizardText'>Para <strong>importar</strong> un <a "
+#~ "href='Definition:ImportZip' class='definition'>archivo zip del proyecto "
+#~ "Miradi</a> que se exportó de Miradi, oprima el botón <code "
+#~ "class='toolbarbutton'>&lt;Siguiente&gt;</code>a continuación para "
+#~ "seleccionar el archivo."
 
 #~ msgid "FieldLabel|20.Label|Threat"
 #~ msgstr "Amenaza"

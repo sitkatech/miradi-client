@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-20 11:22-0500\n"
+"POT-Creation-Date: 2009-09-20 11:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -2082,7 +2082,7 @@ msgid ""
 msgstr "注：项目文件名包含字母、数字、空格、逗号、破折号，以及下划线。 \t\t"
 
 #: miradi/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:136
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:126
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:128
 msgid "Unable to process request: "
 msgstr "无法处理请求： \t\t"
 
@@ -2190,18 +2190,19 @@ msgstr "复制到… \t\t"
 msgid "Export to Miradi Zip..."
 msgstr "导出到Miradi压缩… \t\t"
 
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:70
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:71
 msgid ""
-"<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
-"ImportZip' class='definition'>Miradi Project Zip</a> file that was exported "
-"from Miradi, press the <code class='toolbarbutton'>&lt;Next&gt;</code>button "
-"below to choose the file."
+"<div class='WizardText'>Miradi is able to import two different kinds of "
+"project files.<BR>MPZ files are <a href='Definition:ImportZip' "
+"class='definition'>Miradi Project Zip</a> files that were created by "
+"exporting a project from within Miradi. <BR>CPMZ files are used to import "
+"and export project data from ConPro, The Nature Conservancy's online project "
+"database.<BR><BR>To import a MPZ, or CPMZ file, click the button for the "
+"appropriate file type, select the file in the dialog that pops up and then "
+"click <strong>import</strong>."
 msgstr ""
-"<div class='WizardText'>要 <strong>导入</strong>一个从Miradi导出 <a "
-"href='Definition:ImportZip' class='definition'>Miradi 项目压缩</a> 文件，点"
-"击 <code class='toolbarbutton'>&lt;下一步&gt;</code>按钮，来选择文件。 \t\t"
 
-#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:78
+#: miradi/source/org/miradi/wizard/noproject/WelcomeImportStep.java:80
 msgid ""
 "<div class='WizardText'><p><table><tr><td><input type='submit' name='Back' "
 "value='&lt; Previous'></input></td><td><input type='submit' name='Import "
@@ -27145,6 +27146,17 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid ""
+#~ "<div class='WizardText'>To <strong>import</strong> a <a href='Definition:"
+#~ "ImportZip' class='definition'>Miradi Project Zip</a> file that was "
+#~ "exported from Miradi, press the <code class='toolbarbutton'>&lt;Next&gt;</"
+#~ "code>button below to choose the file."
+#~ msgstr ""
+#~ "<div class='WizardText'>要 <strong>导入</strong>一个从Miradi导出 <a "
+#~ "href='Definition:ImportZip' class='definition'>Miradi 项目压缩</a> 文件，"
+#~ "点击 <code class='toolbarbutton'>&lt;下一步&gt;</code>按钮，来选择文件。 "
+#~ "\t\t"
 
 #~ msgid "FieldLabel|20.Label|Threat"
 #~ msgstr "威胁因子 \t\t"
