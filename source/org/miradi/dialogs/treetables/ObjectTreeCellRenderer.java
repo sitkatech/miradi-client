@@ -48,6 +48,7 @@ import org.miradi.icons.MethodIcon;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.ProjectResourceIcon;
 import org.miradi.icons.ResultsChainIcon;
+import org.miradi.icons.ScopeBoxIcon;
 import org.miradi.icons.StrategyIcon;
 import org.miradi.icons.StressIcon;
 import org.miradi.icons.TargetIcon;
@@ -67,6 +68,7 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Task;
 import org.miradi.objects.TextBox;
 
@@ -159,6 +161,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		accountingCodeRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(accountingCodeRenderer, new AccountingCodeIcon(), getPlainFont());
+		
+		scopeBoxRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(scopeBoxRenderer, new ScopeBoxIcon(), getPlainFont());
 	}
 	
 	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -227,6 +232,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = fundingSourceRenderer;
 		else if (AccountingCode.is(node.getType()))
 			renderer = accountingCodeRenderer;
+		else if (ScopeBox.is(node.getType()))
+			renderer = scopeBoxRenderer;
 		
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -306,5 +313,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer projectResourceRenderer;
 	private VariableHeightTreeCellRenderer fundingSourceRenderer;
 	private VariableHeightTreeCellRenderer accountingCodeRenderer;
+	private	VariableHeightTreeCellRenderer scopeBoxRenderer;
 	
 }
