@@ -38,6 +38,8 @@ import org.miradi.objects.Strategy;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.TestTranslations;
 import org.miradi.utils.Translation;
 
@@ -180,6 +182,15 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		createfilledProgressPercentAndAddToObjective(objective, "2009-01-23", "", "");
 		createfilledProgressPercentAndAddToObjective(objective, "", "21", "");
 		createfilledProgressPercentAndAddToObjective(objective, "", "", "some percent complete notes");
+		verifyExport();
+	}
+	
+	public void testExportingWithObsoleteOperatingUnitsCode() throws Exception
+	{
+		CodeList operatingUnitCodes = new CodeList();
+		operatingUnitCodes.add(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE);
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, operatingUnitCodes.toString());
+		
 		verifyExport();
 	}
 	

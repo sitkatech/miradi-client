@@ -74,6 +74,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyClassificationQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiMultiCalendar;
@@ -822,7 +823,7 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			writeTeamMembers(out);
 			writeEcoregionCodes(out);
 			writeCodeListElements(out, COUNTRIES, COUNTRY_CODE, getProjectMetadata(), ProjectMetadata.TAG_COUNTRIES);
-			writeCodeListElements(out, OUS, OU_CODE, getProjectMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+			writeOperatingUnitCodesWithoutObsoleteCode(out);
 			writeClassifications(out);
 			
 			writeElement(out, EXPORTER_NAME, MIRADI);
@@ -833,6 +834,15 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 			out.writeln();
 			
 		writeEndElement(out, PROJECT_SUMMARY);
+	}
+
+	private void writeOperatingUnitCodesWithoutObsoleteCode(UnicodeWriter out) throws Exception
+	{
+		CodeList operatingUnitCodes = getProjectMetadata().getCodeList(ProjectMetadata.TAG_TNC_OPERATING_UNITS);
+		if (operatingUnitCodes.contains(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE))
+			operatingUnitCodes.removeCode(TncOperatingUnitsQuestion.TNC_SUPERSEDED_OU_CODE);
+			
+		writeCodeListElements(out, OUS, OU_CODE, operatingUnitCodes);
 	}
 
 	private void writeThreatRatingMode(UnicodeWriter out) throws Exception
