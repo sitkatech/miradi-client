@@ -25,9 +25,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.martus.util.DirectoryUtils;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Cause;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
@@ -35,6 +38,7 @@ import org.miradi.objects.ProgressPercent;
 import org.miradi.objects.ProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StrategyClassificationQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
@@ -192,6 +196,22 @@ public class TestConproXmlExporter extends TestCaseWithProject
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, operatingUnitCodes.toString());
 		
 		verifyExport();
+	}
+	
+	public void testExportingThreatReductionResultReferringToInvalidThreat() throws Exception
+	{
+		Objective objective = getProject().createAndPopulateObjective();
+		ThreatReductionResult threatReductionResult = getProject().createThreatReductionResult();
+		
+		BaseId SOME_BOGUS_NON_EXISTING_ID = new BaseId(99999);
+		ORef someNonExistingThreatRef = new ORef(Cause.getObjectType(), SOME_BOGUS_NON_EXISTING_ID);
+		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, someNonExistingThreatRef.toString());
+		
+		IdList objectiveIds = new IdList(Objective.getObjectType());
+		objectiveIds.add(objective.getId());
+		getProject().fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_OBJECTIVE_IDS, objectiveIds.toString());
+		
+		verifyExport();	
 	}
 	
 	private void createfilledProgressPercentAndAddToObjective(Objective objective, String date, String percentComplete, String notes) throws Exception

@@ -372,10 +372,18 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		ThreatReductionResult threatReductionResult = (ThreatReductionResult) factor;
 		ORef relatedThreatRef = threatReductionResult.getRelatedThreatRef();
 		if (relatedThreatRef.isInvalid())
-			return " (" + translatedThreatLabel + ")";
+			return createDefaultThreatLabel(translatedThreatLabel);
 		
 		Cause threat = Cause.find(getProject(), relatedThreatRef);
+		if (threat == null)
+			return createDefaultThreatLabel(translatedThreatLabel);
+		
 		return createThreatAnnotationLabel(threat, translatedThreatLabel);
+	}
+
+	private String createDefaultThreatLabel(String translatedThreatLabel)
+	{
+		return " (" + translatedThreatLabel + ")";
 	}
 
 	private String createThreatAnnotationLabel(Factor threat, String translatedThreatLabel)

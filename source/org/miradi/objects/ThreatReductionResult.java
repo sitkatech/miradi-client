@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 
 public class ThreatReductionResult extends Factor
@@ -115,6 +116,16 @@ public class ThreatReductionResult extends Factor
 	public static boolean is(int objectType)
 	{
 		return objectType == getObjectType();
+	}
+	
+	public static ThreatReductionResult find(ObjectManager objectManager, ORef threatReductionResultRef)
+	{
+		return (ThreatReductionResult) objectManager.findObject(threatReductionResultRef);
+	}
+	
+	public static ThreatReductionResult find(Project project, ORef threatReductionResultRef)
+	{
+		return find(project.getObjectManager(), threatReductionResultRef);
 	}
 	
 	void clear()

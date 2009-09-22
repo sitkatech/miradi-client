@@ -68,6 +68,7 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
@@ -518,6 +519,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef fundingSourceRef = createObject(FundingSource.getObjectType());
 		return FundingSource.find(this, fundingSourceRef);
+	}
+	
+	public ThreatReductionResult createThreatReductionResult() throws Exception
+	{
+		ORef threatReductionResultRef = createObject(ThreatReductionResult.getObjectType());
+		return ThreatReductionResult.find(this, threatReductionResultRef);
 	}
 	
 	public void populateTarget(Target target) throws Exception
