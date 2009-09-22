@@ -44,5 +44,5 @@ public class TncOperatingUnitsQuestion extends TwoLevelQuestion
 		choices.add(superseded);
 	}
 	
-	private static final String TNC_SUPERSEDED_OU_CODE = "OBSOLETE";
+	public static final String TNC_SUPERSEDED_OU_CODE = "OBSOLETE";
 }
