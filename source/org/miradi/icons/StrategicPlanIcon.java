@@ -27,7 +27,7 @@ public class StrategicPlanIcon extends MiradiResourceImageIcon
 {
 	public StrategicPlanIcon()
 	{
-		super("icons/grid.png");
+		super("icons/stratplan16.png");
 	}
 
 }
