@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-22 09:53-0500\n"
+"POT-Creation-Date: 2009-09-22 10:22-0500\n"
 "PO-Revision-Date: 2009-09-16 17:41-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Indonesian\n"
@@ -2522,7 +2522,7 @@ msgstr "Status Saat Ini "
 
 #: miradi/source/org/miradi/forms/objects/TargetPropertiesForm.java:34
 #: miradi/source/org/miradi/questions/RtfLegendObjectsQuestion.java:72
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:334
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:335
 #: miradi/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:53
 msgid "Target"
 msgstr "Target"
@@ -6134,17 +6134,17 @@ msgid ""
 "TT|Choose which strategies and activities are relevant to this objective."
 msgstr "Pilih strategi dan aktivitas mana yang relevan dengan tujuan ini"
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:359
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:360
 #: miradi/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:59
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:34
 msgid "Threat"
 msgstr "Ancaman"
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:868
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:878
 msgid "Project Description:"
 msgstr ""
 
-#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:873
+#: miradi/source/org/miradi/xml/conpro/exporter/ConproXmlExporter.java:883
 msgid "Site/Scope Description:"
 msgstr ""
 
