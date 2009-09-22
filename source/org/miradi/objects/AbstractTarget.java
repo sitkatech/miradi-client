@@ -287,7 +287,7 @@ abstract public class AbstractTarget extends Factor
 		CodeList codes = new CodeList();
 		for(int i = 0; i < targets.length; ++i)
 		{
-			codes.add(targets[i].computeTNCViability());
+			codes.add(targets[i].getTargetViability());
 		}
 		return TNCViabilityFormula.getAverageRatingCode(codes);
 	}
