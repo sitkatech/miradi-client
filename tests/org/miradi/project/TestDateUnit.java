@@ -241,9 +241,9 @@ public class TestDateUnit extends TestCaseWithProject
 	public void testGetSuperDateUnitForFyQuarter() throws Exception
 	{
 		assertEquals("wrong year?", "YEARFROM:2009-01", quarter3In2009.getSuperDateUnit(1).toString());
-		assertEquals("wrong year?", "YEARFROM:2009-04", quarter3In2009.getSuperDateUnit(4).toString());
-		assertEquals("wrong year?", "YEARFROM:2009-07", quarter3In2009.getSuperDateUnit(7).toString());
-		assertEquals("wrong year?", "YEARFROM:2009-10", quarter3In2009.getSuperDateUnit(10).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-04", quarter3In2009.getSuperDateUnit(4).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-07", quarter3In2009.getSuperDateUnit(7).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-10", quarter3In2009.getSuperDateUnit(10).toString());
 	}
 	
 	public void testContains() throws Exception

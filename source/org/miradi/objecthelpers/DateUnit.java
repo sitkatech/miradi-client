@@ -308,12 +308,21 @@ public class DateUnit
 			return getMonthSuper();
 		
 		if(isQuarter())
-			return new DateUnit(YEAR_PREFIX_CODE + getDateUnitCode().substring(0, 4) + "-" + asTwoDigitString(fiscalYearFirstMonth));
+			return getQuarterSuper(fiscalYearFirstMonth);
 		
 		if(isYear())
 			return new DateUnit("");
 		
 		throw new RuntimeException("getSuperDateUnit called for unknown date unit: " + getDateUnitCode());
+	}
+
+	private DateUnit getQuarterSuper(int fiscalYearFirstMonth)
+	{
+		int year = getYear();
+		if (fiscalYearFirstMonth > 1)
+			year -= 1;
+		
+		return new DateUnit(YEAR_PREFIX_CODE + year + "-" + asTwoDigitString(fiscalYearFirstMonth));
 	}
 
 	private DateUnit getMonthSuper()
