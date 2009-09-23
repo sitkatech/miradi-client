@@ -240,10 +240,25 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testGetSuperDateUnitForFyQuarter() throws Exception
 	{
+		assertEquals("wrong year?", "YEARFROM:2009-01", quarter1In2009.getSuperDateUnit(1).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-04", quarter1In2009.getSuperDateUnit(4).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-07", quarter1In2009.getSuperDateUnit(7).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-10", quarter1In2009.getSuperDateUnit(10).toString());
+		
+		assertEquals("wrong year?", "YEARFROM:2009-01", quarter2In2009.getSuperDateUnit(1).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-04", quarter2In2009.getSuperDateUnit(4).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-07", quarter2In2009.getSuperDateUnit(7).toString());
+		assertEquals("wrong year?", "YEARFROM:2008-10", quarter2In2009.getSuperDateUnit(10).toString());
+		
 		assertEquals("wrong year?", "YEARFROM:2009-01", quarter3In2009.getSuperDateUnit(1).toString());
-		assertEquals("wrong year?", "YEARFROM:2008-04", quarter3In2009.getSuperDateUnit(4).toString());
-		assertEquals("wrong year?", "YEARFROM:2008-07", quarter3In2009.getSuperDateUnit(7).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-04", quarter3In2009.getSuperDateUnit(4).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-07", quarter3In2009.getSuperDateUnit(7).toString());
 		assertEquals("wrong year?", "YEARFROM:2008-10", quarter3In2009.getSuperDateUnit(10).toString());
+		
+		assertEquals("wrong year?", "YEARFROM:2009-01", quarter4In2009.getSuperDateUnit(1).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-04", quarter4In2009.getSuperDateUnit(4).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-07", quarter4In2009.getSuperDateUnit(7).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-10", quarter4In2009.getSuperDateUnit(10).toString());
 	}
 	
 	public void testContains() throws Exception
@@ -313,8 +328,10 @@ public class TestDateUnit extends TestCaseWithProject
 	private final DateUnit fiscalYear2005StartJuly = new DateUnit("YEARFROM:2005-07");
 	private final DateUnit fiscalYear2005StartOctober = new DateUnit("YEARFROM:2005-10");
 	private final DateUnit quarter1In2009 = new DateUnit("2009Q1");
+	private final DateUnit quarter2In2009 = new DateUnit("2009Q2");
 	private final DateUnit quarter3In2009 = new DateUnit("2009Q3");
 	private final DateUnit quarter4In2009 = new DateUnit("2009Q4");
+	
 	private final DateUnit quarter1In2006 = new DateUnit("2006Q1");;
 	
 	public static final DateUnit month01 = new DateUnit("2008-01");

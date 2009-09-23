@@ -318,8 +318,11 @@ public class DateUnit
 
 	private DateUnit getQuarterSuper(int fiscalYearFirstMonth)
 	{
+		Vector<DateUnit> monthSubUnits = getQuarterSubDateUnits();
+		DateUnit firstMonthOfQuarterDateUnit = monthSubUnits.get(0);
+		int firstMonthOfQuarter = firstMonthOfQuarterDateUnit.getMonth();
 		int year = getYear();
-		if (fiscalYearFirstMonth > 1)
+		if (fiscalYearFirstMonth > firstMonthOfQuarter)
 			year -= 1;
 		
 		return new DateUnit(YEAR_PREFIX_CODE + year + "-" + asTwoDigitString(fiscalYearFirstMonth));
