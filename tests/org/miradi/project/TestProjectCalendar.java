@@ -205,23 +205,9 @@ public class TestProjectCalendar extends TestCaseWithProject
 	
 	public void testGetShortDateUnitString()
 	{
-		int FISCAL_YEAR_START_JAN = 1;
-		int FISCAL_YEAR_START_APR = 4;
-		int FISCAL_YEAR_START_JUL = 7;
-		int FISCAL_YEAR_START_OCT = 10;
-
 		DateUnit totalDateUnit = new DateUnit();
 		assertEquals("wrong string for total (fiscal year jan.)?", "Total", getProjectCalendar().getShortDateUnit(totalDateUnit, FISCAL_YEAR_START_JAN));
 		assertEquals("wrong string for total (fiscal year oct.)?", "Total", getProjectCalendar().getShortDateUnit(totalDateUnit, FISCAL_YEAR_START_OCT));
-		
-		DateUnit dateUnit2005 = new DateUnit("YEARFROM:2005-01");
-		assertEquals("wrong year?", "2005", getProjectCalendar().getShortDateUnit(dateUnit2005, FISCAL_YEAR_START_JAN));
-		
-		DateUnit fY2005 = new DateUnit("YEARFROM:2005-01");
-		assertEquals("Fiscal year start wasn't ignored?", "FY05", getProjectCalendar().getShortDateUnit(fY2005, FISCAL_YEAR_START_APR));
-		assertEquals("Fiscal year start wasn't ignored?", "FY05", getProjectCalendar().getShortDateUnit(fY2005, FISCAL_YEAR_START_JUL));
-		assertEquals("Fiscal year start wasn't ignored?", "FY05", getProjectCalendar().getShortDateUnit(fY2005, FISCAL_YEAR_START_OCT));		
-		
 		
 		DateUnit quarter1Of2009 = new DateUnit("2009Q1");
 		assertEquals("wrong quarter?", "Q1", getProjectCalendar().getShortDateUnit(quarter1Of2009, FISCAL_YEAR_START_JAN));
@@ -275,9 +261,41 @@ public class TestProjectCalendar extends TestCaseWithProject
 		assertEquals("wrong day?", "31", getProjectCalendar().getShortDateUnit(lastDayOfDecember, FISCAL_YEAR_START_JAN));
 		assertEquals("wrong day (Fiscal year Oct.)?", "31", getProjectCalendar().getShortDateUnit(lastDayOfDecember, FISCAL_YEAR_START_OCT));
 	}
+	
+	public void testGetShortDateUnitStringForYearWithMismatchedFiscalYearStart()
+	{
+		assertEquals("Wrong Fiscal year", "2005", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-01"), FISCAL_YEAR_START_APR));
+		assertEquals("Wrong Fiscal year", "2005", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-01"), FISCAL_YEAR_START_JUL));
+		assertEquals("Wrong Fiscal year", "2005", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-01"), FISCAL_YEAR_START_OCT));				
+		
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-04"), FISCAL_YEAR_START_JAN));
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-04"), FISCAL_YEAR_START_JUL));
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-04"), FISCAL_YEAR_START_OCT));
+		
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-07"), FISCAL_YEAR_START_JAN));
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-07"), FISCAL_YEAR_START_APR));
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-07"), FISCAL_YEAR_START_OCT));
+		
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-10"), FISCAL_YEAR_START_JAN));
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-10"), FISCAL_YEAR_START_APR));
+		assertEquals("Wrong Fiscal year", "2005-2006", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-10"), FISCAL_YEAR_START_JUL));
+	}
+	
+	public void testGetShortDateUnitStringForYear()
+	{
+		assertEquals("Wrong year", "2005", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-01"), FISCAL_YEAR_START_JAN));
+		assertEquals("Wrong Fiscal year", "FY06", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-04"), FISCAL_YEAR_START_APR));
+		assertEquals("Wrong Fiscal year", "FY06", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-07"), FISCAL_YEAR_START_JUL));
+		assertEquals("Wrong Fiscal year", "FY06", getProjectCalendar().getShortDateUnit(new DateUnit("YEARFROM:2005-10"), FISCAL_YEAR_START_OCT));
+	}
 
 	private ProjectCalendar getProjectCalendar()
 	{
 		return getProject().getProjectCalendar();
 	}
+	
+	private static final int FISCAL_YEAR_START_JAN = 1;
+	private static final int FISCAL_YEAR_START_APR = 4;
+	private static final int FISCAL_YEAR_START_JUL = 7;
+	private static final int FISCAL_YEAR_START_OCT = 10;
 }
