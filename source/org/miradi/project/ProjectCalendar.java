@@ -198,11 +198,16 @@ public class ProjectCalendar implements CommandExecutedListener
 	private static String getYearString(DateUnit dateUnit, int fiscalYearFirstMonth)
 	{
 		String yearString = dateUnit.getYearYearString();
-		if (fiscalYearFirstMonth == 1)
+		int yearStartMonth = dateUnit.getYearStartMonth();
+		if (yearStartMonth == 1)
 			return yearString;
-	
-		int fiscalYear = Integer.parseInt(yearString);
-		return getFiscalYearString(fiscalYear);
+		
+		int year = Integer.parseInt(yearString);
+		int fiscalYear = year + 1;
+		if (yearStartMonth == fiscalYearFirstMonth)
+			return getFiscalYearString(fiscalYear);
+		
+		return Integer.toString(year) + "-" +Integer.toString(fiscalYear);
 	}
 
 	public static String getFullDateRangeString(DateRange dateRange, int fiscalYearFirstMonth)

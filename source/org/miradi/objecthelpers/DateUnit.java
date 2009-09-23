@@ -205,7 +205,7 @@ public class DateUnit
 		return getDateUnitCode().substring(startAt, startAt+4);
 	}
 	
-	private int getYearStartMonth()
+	public int getYearStartMonth()
 	{
 		int startAt = YEAR_PREFIX_CODE.length() + 5;
 		return Integer.parseInt(getDateUnitCode().substring(startAt, startAt+2));
