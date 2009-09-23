@@ -67,6 +67,8 @@ public class ScheduleView extends TabbedView
 	public void deleteTabs() throws Exception
 	{
 		// lightweight tabs...nothing to dispose yet
+		
+		super.deleteTabs();
 	}
 
 	

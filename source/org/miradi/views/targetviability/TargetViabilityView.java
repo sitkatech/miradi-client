@@ -74,6 +74,8 @@ public class TargetViabilityView extends TabbedView
 	{
 		viabilityPanel.dispose();
 		viabilityPanel = null;
+		
+		super.deleteTabs();
 	}
 
 	

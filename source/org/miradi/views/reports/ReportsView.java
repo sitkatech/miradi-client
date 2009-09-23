@@ -90,6 +90,8 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel = null;
 		
 		standardReportPanel = null;
+		
+		super.deleteTabs();
 	}
 
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;

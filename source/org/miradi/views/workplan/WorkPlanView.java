@@ -102,6 +102,8 @@ public class WorkPlanView extends TabbedView
 		
 		fundingSourceManagementPanel.dispose();
 		fundingSourceManagementPanel = null;
+		
+		super.deleteTabs();
 	}
 
 	@Override

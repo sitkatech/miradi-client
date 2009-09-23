@@ -75,7 +75,11 @@ abstract public class TabbedView extends UmbrellaView
 	}
 
 	public abstract void createTabs() throws Exception;
-	public abstract void deleteTabs() throws Exception;
+	
+	public void deleteTabs() throws Exception
+	{
+		tabPanels.clear();
+	}
 	
 	public JPopupMenu getTabPopupMenu()
 	{
@@ -256,7 +260,7 @@ abstract public class TabbedView extends UmbrellaView
 		addTab(name, null, contents);
 	}
 
-	public void addTab(String name, Icon icon, Component contents)
+	private void addTab(String name, Icon icon, Component contents)
 	{
 		tabs.addTab(name, icon, contents);
 	}

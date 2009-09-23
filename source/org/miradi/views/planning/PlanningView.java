@@ -135,6 +135,7 @@ public class PlanningView extends TabbedView
 		resourceManagementPanel.dispose();
 		resourceManagementPanel = null;
 		
+		super.deleteTabs();
 	}
 
 	public String cardName()

@@ -76,6 +76,7 @@ public class MapView extends TabbedView
 	public void deleteTabs() throws Exception
 	{
 		// lightweight tabs...nothing to dispose yet
+		super.deleteTabs();
 	}
 
 	public WizardPanel createWizardPanel() throws Exception
