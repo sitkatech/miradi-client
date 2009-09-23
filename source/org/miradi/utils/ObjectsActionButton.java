@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
+import java.util.HashSet;
+
 import org.miradi.actions.ObjectsAction;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -28,16 +30,31 @@ public class ObjectsActionButton extends PanelButton
 	public ObjectsActionButton(ObjectsAction action, ObjectPicker picker)
 	{
 		super(action);
-		action.addPicker(picker);
+		pickers = new HashSet<ObjectPicker>();
+		setPicker(picker);
 	}
 	
 	public void setPicker(ObjectPicker pickerToUse)
 	{
-		((ObjectsAction)getAction()).addPicker(pickerToUse);
+		if(pickerToUse == null)
+			return;
+		
+		getObjectsAction().addPicker(pickerToUse);
+		pickers.add(pickerToUse);
 	}
-	
+
 	public void dispose()
 	{
-		((ObjectsAction)getAction()).addPicker(null);
+		for(ObjectPicker picker : pickers)
+		{
+			getObjectsAction().removePicker(picker);
+		}
 	}
+	
+	private ObjectsAction getObjectsAction()
+	{
+		return ((ObjectsAction)getAction());
+	}
+	
+	private HashSet<ObjectPicker> pickers;
 }

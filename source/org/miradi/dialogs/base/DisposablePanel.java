@@ -42,21 +42,21 @@ public class DisposablePanel extends JPanel
 	public DisposablePanel(LayoutManager2 layoutToUse)
 	{
 		super(layoutToUse);
-		objectsActionsToRelease = new Vector();
+		objectsActionButtonsToDispose = new Vector();
 	}
 	
 	public ObjectsActionButton createObjectsActionButton(ObjectsAction action, ObjectPicker picker)
 	{
-		objectsActionsToRelease.add(action);
-		return new ObjectsActionButton(action, picker);
+		ObjectsActionButton objectsActionButton = new ObjectsActionButton(action, picker);
+		objectsActionButtonsToDispose.add(objectsActionButton);
+		return objectsActionButton;
 	}
 	
 	public void dispose()
 	{
-		for(int i = 0; i < objectsActionsToRelease.size(); ++i)
+		for(int i = 0; i < objectsActionButtonsToDispose.size(); ++i)
 		{
-			ObjectsAction action = objectsActionsToRelease.get(i);
-			action.addPicker(null);
+			objectsActionButtonsToDispose.get(i).dispose();
 		}
 	}
 	
@@ -94,6 +94,6 @@ public class DisposablePanel extends JPanel
 		dialog.setVisible(true);
 	}
 	
-	Vector<ObjectsAction> objectsActionsToRelease;
+	Vector<ObjectsActionButton> objectsActionButtonsToDispose;
 
 }
