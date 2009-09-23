@@ -706,8 +706,8 @@ public class ConproXmlExporter extends XmlExporter implements ConProMiradiXml
 		writeOptionalRatingCodeElement(out, THREAT_IRREVERSIBILITY, getIrreversibility(simpleThreatFramework, bundle));
 		
 		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
-		String simpleThreatRatingComment = threatRatingCommentsData.getSimpleThreatRatingComment(threatRef, targetRef);
-		writeOptionalElement(out, THREAT_TARGET_COMMENT, simpleThreatRatingComment);
+		String threatRatingComment = threatRatingCommentsData.findComment(threatRef, targetRef);
+		writeOptionalElement(out, THREAT_TARGET_COMMENT, threatRatingComment);
 		
 		writeEndElement(out, THREAT_TARGET_ASSOCIATION);
 	}
