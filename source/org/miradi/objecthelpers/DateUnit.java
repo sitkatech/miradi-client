@@ -291,15 +291,15 @@ public class DateUnit
 		throw new Exception("Can't call getSubDateUnits for DateUnit: " + getDateUnitCode());
 	}
 
-	public DateUnit getSafeSuperDateUnit()
+	public DateUnit getSafeSuperDateUnit(int fiscalYearFirstMonth)
 	{
 		if (isProjectTotal())
 			return null;
 		
-		return getSuperDateUnit();
+		return getSuperDateUnit(fiscalYearFirstMonth);
 	}
 	
-	public DateUnit getSuperDateUnit()
+	public DateUnit getSuperDateUnit(int fiscalYearFirstMonth)
 	{
 		if(isDay())
 			return new DateUnit(getDateUnitCode().substring(0, 7));
@@ -308,7 +308,7 @@ public class DateUnit
 			return getMonthSuper();
 		
 		if(isQuarter())
-			return new DateUnit(YEAR_PREFIX_CODE + getDateUnitCode().substring(0, 4) + "-01");
+			return new DateUnit(YEAR_PREFIX_CODE + getDateUnitCode().substring(0, 4) + "-" + asTwoDigitString(fiscalYearFirstMonth));
 		
 		if(isYear())
 			return new DateUnit("");
@@ -399,14 +399,14 @@ public class DateUnit
 		return getDateUnitCode().toString();
 	}
 	
-	public Vector<DateUnit> getSuperDateUnitHierarchy()
+	public Vector<DateUnit> getSuperDateUnitHierarchy(int fiscalYearFirstMonth)
 	{
 		Vector<DateUnit> superDateUnits = new Vector();
-		DateUnit superDateUnit = getSafeSuperDateUnit();
+		DateUnit superDateUnit = getSafeSuperDateUnit(fiscalYearFirstMonth);
 		while(superDateUnit != null)
 		{
 			superDateUnits.add(superDateUnit);
-			superDateUnit = superDateUnit.getSafeSuperDateUnit();
+			superDateUnit = superDateUnit.getSafeSuperDateUnit(fiscalYearFirstMonth);
 		}
 		
 		return superDateUnits;

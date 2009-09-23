@@ -220,22 +220,30 @@ public class TestDateUnit extends TestCaseWithProject
 	
 	public void testGetSuperDateUnit() throws Exception
 	{
-		assertEquals(new DateUnit("2005-07"), new DateUnit("2005-07-15").getSuperDateUnit());
-		assertEquals(new DateUnit("2005Q3"), new DateUnit("2005-07").getSuperDateUnit());
-		assertEquals(new DateUnit("YEARFROM:2005-01"), new DateUnit("2005Q3").getSuperDateUnit());
-		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-01").getSuperDateUnit());
-		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-04").getSuperDateUnit());
-		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-07").getSuperDateUnit());
-		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-10").getSuperDateUnit());
+		assertEquals(new DateUnit("2005-07"), new DateUnit("2005-07-15").getSuperDateUnit(1));
+		assertEquals(new DateUnit("2005Q3"), new DateUnit("2005-07").getSuperDateUnit(1));
+		assertEquals(new DateUnit("YEARFROM:2005-01"), new DateUnit("2005Q3").getSuperDateUnit(1));
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-01").getSuperDateUnit(1));
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-04").getSuperDateUnit(4));
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-07").getSuperDateUnit(7));
+		assertEquals(new DateUnit(""), new DateUnit("YEARFROM:2005-10").getSuperDateUnit(10));
 		
 		try
 		{
-			new DateUnit("abc").getSuperDateUnit();
+			new DateUnit("abc").getSuperDateUnit(1);
 			fail("Should have thrown for bogus date unit");
 		}
 		catch(RuntimeException ignoreExpected)
 		{
 		}
+	}
+	
+	public void testGetSuperDateUnitForFyQuarter() throws Exception
+	{
+		assertEquals("wrong year?", "YEARFROM:2009-01", quarter1In2009.getSuperDateUnit(1).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-04", quarter1In2009.getSuperDateUnit(4).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-07", quarter1In2009.getSuperDateUnit(7).toString());
+		assertEquals("wrong year?", "YEARFROM:2009-10", quarter1In2009.getSuperDateUnit(10).toString());
 	}
 	
 	public void testContains() throws Exception
