@@ -69,7 +69,7 @@ public class ProjectCalendar implements CommandExecutedListener
 		return DateRange.combine(startDateRange, endDateRange);
 	}
 	
-	private int getFiscalYearFirstMonth()
+	public int getFiscalYearFirstMonth()
 	{
 		return getProject().getMetadata().getFiscalYearFirstMonth();
 	}
