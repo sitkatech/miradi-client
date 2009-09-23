@@ -119,8 +119,6 @@ public interface ConProMiradiXml
 	public static final String TARGET_ID = "target_id";
 	public static final String INDICATOR_ID = "indicator_id";
 	public static final String KEA_ID = "kea_id";
-	public static final String FACTOR_TYPE = "factor_type";
-	public static final String FACTOR_NAME = "factor_name";
 	public static final String INDICATOR_DESCRIPTION_POOR = "indicator_description_poor";
 	public static final String INDICATOR_DESCRIPTION_FAIR = "indicator_description_fair";
 	public static final String INDICATOR_DESCRIPTION_GOOD = "indicator_description_good";
