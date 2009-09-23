@@ -575,6 +575,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			disposeOfTabPriorToRemovingIt(i);
 		}
+		
+		super.deleteTabs();
 	}
 
 	private void disposeOfTabPriorToRemovingIt(int i)

@@ -128,6 +128,8 @@ public class SummaryView extends TabbedView
 			panel.dispose();
 		}
 		tabPanels.clear();
+		
+		super.deleteTabs();
 	}
 	
 	private void addSummaryDoersToMap()
