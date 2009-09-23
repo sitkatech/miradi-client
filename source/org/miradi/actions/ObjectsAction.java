@@ -62,7 +62,7 @@ public class ObjectsAction extends ViewAction implements ListSelectionListener
 	public void addPicker(ObjectPicker newPicker)
 	{
 		if(newPicker == null)
-			return;
+			throw new RuntimeException("Cannot add null picker");
 		
 		pickers.add(newPicker);
 		newPicker.addSelectionChangeListener(this);
