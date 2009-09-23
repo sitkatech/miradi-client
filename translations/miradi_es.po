@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-22 11:46-0500\n"
+"POT-Creation-Date: 2009-09-23 09:28-0500\n"
 "PO-Revision-Date: 2009-09-16 17:48-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Spanish\n"
@@ -2102,11 +2102,11 @@ msgstr "Cadena de resultados"
 msgid "Total"
 msgstr "Total"
 
-#: miradi/source/org/miradi/project/ProjectCalendar.java:291
+#: miradi/source/org/miradi/project/ProjectCalendar.java:296
 msgid "Fiscal Year|FY"
 msgstr ""
 
-#: miradi/source/org/miradi/project/ProjectCalendar.java:296
+#: miradi/source/org/miradi/project/ProjectCalendar.java:301
 msgid "Quarter Prefix|Q"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-22 11:46-0500\n"
+"POT-Creation-Date: 2009-09-23 09:28-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -1990,11 +1990,11 @@ msgstr "结果链 \t\t"
 msgid "Total"
 msgstr "总计 \t\t"
 
-#: miradi/source/org/miradi/project/ProjectCalendar.java:291
+#: miradi/source/org/miradi/project/ProjectCalendar.java:296
 msgid "Fiscal Year|FY"
 msgstr ""
 
-#: miradi/source/org/miradi/project/ProjectCalendar.java:296
+#: miradi/source/org/miradi/project/ProjectCalendar.java:301
 msgid "Quarter Prefix|Q"
 msgstr ""
 
