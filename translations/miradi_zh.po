@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-23 13:36-0500\n"
+"POT-Creation-Date: 2009-09-23 17:46-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -420,7 +420,7 @@ msgstr "组织 \t\t"
 msgid "Planning"
 msgstr "计划 \t\t"
 
-#: miradi/source/org/miradi/views/summary/SummaryView.java:158
+#: miradi/source/org/miradi/views/summary/SummaryView.java:160
 msgid "Work plan start date is before project start date"
 msgstr "工作计划起始日期早于项目起始日期 \t\t"
 
@@ -568,7 +568,7 @@ msgstr "显示图表时出现未知错误 \t\t"
 msgid "Found Corrupted Data:"
 msgstr "发现损坏的数据： \t\t"
 
-#: miradi/source/org/miradi/views/diagram/DiagramView.java:951
+#: miradi/source/org/miradi/views/diagram/DiagramView.java:953
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "因素属性 \t\t"
@@ -801,7 +801,7 @@ msgstr ""
 msgid "Title|Filter by Resource(s)"
 msgstr ""
 
-#: miradi/source/org/miradi/views/TabbedView.java:226
+#: miradi/source/org/miradi/views/TabbedView.java:230
 #: miradi/source/org/miradi/dialogs/base/ModelessDialogWithDirections.java:77
 msgid "Instructions"
 msgstr "说明 \t\t"
