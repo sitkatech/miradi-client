@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-23 17:46-0500\n"
+"POT-Creation-Date: 2009-09-23 19:34-0500\n"
 "PO-Revision-Date: 2009-09-16 11:23-0800\n"
 "Last-Translator: ab\n"
 "Language-Team: Chinese\n"
@@ -6408,18 +6408,6 @@ msgstr ""
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:39
 msgid "Title|Intermediate Result Properties"
 msgstr "标题|中途结果属性"
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:67
-msgid "Label|Work Units"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:68
-msgid "Label|Expenses"
-msgstr ""
-
-#: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AboveBudgetColumnsBar.java:69
-msgid "Label|Budget Totals"
-msgstr ""
 
 #: miradi/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:43
 msgid "Acct Code"
