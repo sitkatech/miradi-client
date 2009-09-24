@@ -27,5 +27,6 @@ public class TncMarineEcoRegionQuestion extends TwoLevelQuestion
 	public TncMarineEcoRegionQuestion()
 	{
 		super(new TncMarineEcoRegionFileLoader(TwoLevelFileLoader.TNC_MARINE_ECO_REGION_FILE));
+		sortChoices();
 	}
 }

@@ -27,5 +27,6 @@ public class TncFreshwaterEcoRegionQuestion extends TwoLevelQuestion
 	public TncFreshwaterEcoRegionQuestion()
 	{
 		super(new TncFreshwaterEcoRegionFileLoader(TwoLevelFileLoader.TNC_FRESHWATER_ECO_REGION_FILE));
+		sortChoices();
 	}
 }
