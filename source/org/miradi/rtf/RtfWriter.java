@@ -160,6 +160,7 @@ public class RtfWriter
 	
 	public void writeRtfTable(TableExporter exportableTable) throws Exception
 	{
+		writeAboveTableHeaderHeader(exportableTable);
 		writeTableHeader(exportableTable);
 		writeTableBody(exportableTable);
 	}
@@ -256,6 +257,31 @@ public class RtfWriter
 		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
 		{
 			String header = exportableTable.getColumnName(columnIndex);
+			writeRaw(PRE_TABLE_HEADER_CELL_COMMAND);
+			writeRaw(styleFormattingCommand);
+			startBlock();
+			writeRaw(PRE_TABLE_HEADER_CELL_DATA_COMMAND);
+			writeEncoded(header);
+			endBlock();
+			
+			writeRaw(CELL_COMMAND);
+			newLine();
+		}
+		
+		writeRaw(ROW_COMMAND);
+		newLine();
+		newLine();
+		writePlainCommand();
+	}
+	
+	private void writeAboveTableHeaderHeader(TableExporter exportableTable) throws Exception
+	{
+		writelnRaw(TABLE_ROW_HEADER);
+		writeCellCommandsWithoutBackground(exportableTable);
+		String styleFormattingCommand = getRtfStyleManager().getStyleFormatingCommand(RtfStyleManager.COLUMN_HEADER_STYLE_TAG);
+		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
+		{
+			String header = exportableTable.getAboveColumnHeaderText(columnIndex);
 			writeRaw(PRE_TABLE_HEADER_CELL_COMMAND);
 			writeRaw(styleFormattingCommand);
 			startBlock();

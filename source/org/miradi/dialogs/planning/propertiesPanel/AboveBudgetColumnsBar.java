@@ -35,9 +35,12 @@ import javax.swing.JScrollPane;
 
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
+import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 
 public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeTablePanel implements AdjustmentListener
 {
@@ -64,11 +67,34 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		g.setColor(getBackground());
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		DateUnit forever = new DateUnit();
-		drawColumnGroupHeader(g, findColumnGroupBounds(getWorkUnitsColumnGroups()), EAM.text("Label|Work Units"), AppPreferences.getWorkUnitsBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroupBounds(getExpensesColumnGroups()), EAM.text("Label|Expenses"), AppPreferences.getExpenseAmountBackgroundColor(forever));
-		drawColumnGroupHeader(g, findColumnGroupBounds(getBudgetTotalsColumnGroups()), EAM.text("Label|Budget Totals"), AppPreferences.getBudgetDetailsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(getWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabel(), AppPreferences.getWorkUnitsBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(getExpensesColumnGroups()), getExpensesAboveColumnLabel(), AppPreferences.getExpenseAmountBackgroundColor(forever));
+		drawColumnGroupHeader(g, findColumnGroupBounds(getBudgetTotalsColumnGroups()), getBudgetTotalsAboveColumnLabel(), AppPreferences.getBudgetDetailsBackgroundColor(forever));
 	}
 
+	public static String getWorkUnitsAboveColumnLabel()
+	{
+		return getChoiceLabel(CustomPlanningColumnsQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
+	}
+
+	public static String getExpensesAboveColumnLabel()
+	{
+		return getChoiceLabel(CustomPlanningColumnsQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);
+	}
+
+	public static String getBudgetTotalsAboveColumnLabel()
+	{
+		return getChoiceLabel(CustomPlanningColumnsQuestion.META_BUDGET_DETAIL_COLUMN_CODE);
+	}
+	
+	private static String getChoiceLabel(String metaResourceAssignmentColumnCode)
+	{
+		ChoiceQuestion question = StaticQuestionManager.getQuestion(WorkPlanColumnConfigurationQuestion.class);
+		ChoiceItem choiceItem = question.findChoiceByCode(metaResourceAssignmentColumnCode);
+		
+		return choiceItem.getLabel();
+	}
+	
 	private void drawColumnGroupHeader(Graphics g, Rectangle groupHeaderArea, String text, Color backgroundColor)
 	{
 		if(groupHeaderArea == null)

@@ -43,6 +43,8 @@ public interface TableExporter
 
 	public String getColumnName(int tableColumn);
 	
+	public String getAboveColumnHeaderText(int tableColumn);
+	
 	public String getColumnGroupName(int modelColumn);
 
 	public int getMaxDepthCount();
