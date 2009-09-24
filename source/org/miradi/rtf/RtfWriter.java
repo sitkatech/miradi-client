@@ -160,9 +160,22 @@ public class RtfWriter
 	
 	public void writeRtfTable(TableExporter exportableTable) throws Exception
 	{
-		writeTableHeader(exportableTable, new AboveColumnHeaderLabelProvider());
+		if (hasAnyAboveColumnHeaderLabels(exportableTable))
+			writeTableHeader(exportableTable, new AboveColumnHeaderLabelProvider());
+		
 		writeTableHeader(exportableTable, new ColumnHeaderLabelProvider());
 		writeTableBody(exportableTable);
+	}
+
+	private boolean hasAnyAboveColumnHeaderLabels(TableExporter exportableTable)
+	{
+		for (int columnIndex = 0; columnIndex < exportableTable.getColumnCount(); ++columnIndex)
+		{
+			if (exportableTable.getAboveColumnHeaderText(columnIndex).length() > 0)
+				return true;
+		}
+		
+		return false;
 	}
 
 	private void writeTableBody(TableExporter exportableTable) throws Exception
