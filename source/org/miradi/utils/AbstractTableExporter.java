@@ -159,6 +159,11 @@ public abstract class AbstractTableExporter implements TableExporter
 		return getModelColumnName(modelColumn);
 	}
 	
+	public String getAboveColumnHeaderText(int tableColumn)
+	{
+		return "";
+	}
+	
 	abstract public int getMaxDepthCount();
 	abstract public int getColumnCount();
 	abstract public int getRowCount();
