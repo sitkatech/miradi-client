@@ -187,6 +187,11 @@ WORK PLAN
 - Replaced old High Level Estimate with the ability to assign resources
   directly to Strategies and Indicators
 - Budget values can be filtered to only show data for specific resources
+- Resources tab shows budgets by resource, along with work that has not 
+  yet been assigned to any resource
+- Accounting Codes tab now shows budgets totaled by accounting code
+- Funding Sources tab now shows budgets totaled by funding source
+
 
 REPORTS/RTF EXPORT
 - Hard line breaks are now preserved
