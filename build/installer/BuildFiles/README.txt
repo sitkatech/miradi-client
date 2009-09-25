@@ -157,6 +157,8 @@ SUMMARY
 - TNC tab field changes to better match ConPro
 
 DIAGRAM
+- Now allow Human Welfare Targets (as opposed to Biodiversity Targets)
+  (Must enable HWT mode via Edit/Preferences)
 - Pasted factors now retain their tags
 - Can now toggle factors between Direct Threat and Contributing Factor
 - Scope Boxes are now manually controlled instead of automatic
@@ -173,6 +175,7 @@ STRATEGIC PLAN
 - No longer have Control Bar at left side of view
 - Now has tabs for Custom and Lists subviews
 - Streamlined buttons that create/delete objects
+- Reduced duplication of objects in the tree
 
 WORK PLAN
 - New Work Plan View
@@ -183,11 +186,15 @@ WORK PLAN
 - Allows directly editing budget data in the upper table
 - Replaced old High Level Estimate with the ability to assign resources
   directly to Strategies and Indicators
+- Budget values can be filtered to only show data for specific resources
 
-REPORTS
+REPORTS/RTF EXPORT
+- Hard line breaks are now preserved
 
 CPMZ IMPORT/EXPORT
 - New CPMZ file version (can no longer import/export old format CPMZ files)
+- Imported "all on one page" diagram is now automatically arranged, 
+  reducing the number and crossing of links
 
 
 Version 2.4.1 was a minor release with these fixes over 2.4:
