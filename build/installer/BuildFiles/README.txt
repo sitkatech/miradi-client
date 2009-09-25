@@ -145,7 +145,7 @@ INSTALLER
 - Updated Marine Example project
 
 APPWIDE
-- Lower panel sections are now "side-tabs"
+- Lower panel sections are now "side-tabs" to improve usability
 - Normal data migrations no longer ask about replacing existing copy
 - Trees now have tooltips for entries in the Item column
 - Now allow entering pre-1970 dates for measurements, progress reports, etc
@@ -159,7 +159,6 @@ WELCOME
 
 SUMMARY
 - TNC tab:
-  - Field changes to better match ConPro
   - Updated Operating Unit and Ecoregion lists
   - Project Priority and Type fields 
 
@@ -175,7 +174,6 @@ DIAGRAM
 - Group Boxes now reserve space for as many lines of text as the 
   name has hard line breaks
 
-
 VIABILITY
 - Project overall rollup now includes Simple-mode Target ratings
 
@@ -185,8 +183,8 @@ THREAT RATING
 
 STRATEGIC PLAN
 - Renamed Planning View to Strategic Plan View
-- No longer have Control Bar at left side of view
 - Now has tabs for Custom and Lists subviews
+- No longer have Control Bar at left side of view
 - Streamlined buttons that create/delete objects
 - Reduced duplication of objects in the tree
 - Progress columns in tables now show shorter text strings
@@ -194,16 +192,16 @@ STRATEGIC PLAN
 - No longer show "Not Specified" in Progress column for Task rows
 
 WORK PLAN
-- New Work Plan View
+- Entirely new view to handle budgeting
 - New concept: Expenses, which are monetary expenditures that are not 
   tied to a Resource; eliminated "Materials" resource type because those 
-  generally would be better as expenses
+  generally would be better recorded as expenses
 - Shows Work Units, Expenses, and Budget Totals in columns that can be 
   expanded or collapsed to view data at different time scales (years, 
   quarters, months, or individual days)
-- Allows directly editing budget data in the upper table
-- Replaced old High Level Estimate with the ability to assign resources
-  directly to Strategies and Indicators
+- Budget data can be edited directly in the upper table in some cases
+- Replaced old High Level Estimate feature with the ability to assign 
+  resources directly to Strategies and Indicators
 - Budget values can be filtered to only show data for specific resources
 - Resources tab shows budgets by resource, along with work that has not 
   yet been assigned to any resource
@@ -214,17 +212,17 @@ WORK PLAN
 - Pop-up calculator allows entering work unit data as Full Time 
   Employee (FTE) fractions instead of days
 
-
 REPORTS/RTF EXPORT
 - New Threat Rating Details section
 - Hard line breaks are now preserved
 
 CPMZ IMPORT/EXPORT
 - New CPMZ file version (can no longer import/export old format CPMZ files)
+- Many more fields and objects transfer between Miradi and ConPro
 - Imported "all on one page" diagram is now automatically arranged, 
   reducing the number and crossing of links
 
-
+-----------------------------------------------------------------------------
 Version 2.4.1 was a minor release with these fixes over 2.4:
 
 PLANNING VIEW
