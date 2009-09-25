@@ -142,6 +142,7 @@ Changes
 Here are the most notable improvements of version 3.0 over 2.4.1:
 
 INSTALLER
+- On Windows, now requires Java 6 (will download it if necessary)
 - Updated Marine Example project
 
 APPWIDE
