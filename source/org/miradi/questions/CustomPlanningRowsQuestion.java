@@ -24,11 +24,9 @@ import java.util.Vector;
 import javax.swing.Icon;
 
 import org.miradi.icons.ActivityIcon;
-import org.miradi.icons.AssignmentIcon;
 import org.miradi.icons.ConceptualModelIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.ExpenseAssignmentIcon;
 import org.miradi.icons.GoalIcon;
 import org.miradi.icons.HumanWelfareTargetIcon;
 import org.miradi.icons.IndicatorIcon;
@@ -44,14 +42,12 @@ import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.Goal;
 import org.miradi.objects.HumanWelfareTarget;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.IntermediateResult;
 import org.miradi.objects.Measurement;
 import org.miradi.objects.Objective;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.ResultsChainDiagram;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
@@ -97,8 +93,6 @@ public class CustomPlanningRowsQuestion extends DynamicChoiceQuestion
 		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.METHOD_NAME, new MethodIcon()));
 		choiceItems.add(createChoiceItem(Task.getObjectType(), Task.OBJECT_NAME, new TaskIcon()));
 		choiceItems.add(createChoiceItem(Measurement.getObjectType(), Measurement.OBJECT_NAME, new MeasurementIcon()));
-		choiceItems.add(createChoiceItem(ResourceAssignment.getObjectType(), ResourceAssignment.OBJECT_NAME, new AssignmentIcon()));
-		choiceItems.add(createChoiceItem(ExpenseAssignment.getObjectType(), ExpenseAssignment.OBJECT_NAME, new ExpenseAssignmentIcon()));
 		
 		return choiceItems;
 	}
