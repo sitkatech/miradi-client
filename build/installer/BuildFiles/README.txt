@@ -147,6 +147,7 @@ APPWIDE
 - Lower panel sections are now "side-tabs"
 - Normal data migrations no longer ask about replacing existing copy
 - Trees now have tooltips for entries in the Item column
+- Now allow entering pre-1970 dates for measurements, progress reports, etc
 
 WELCOME
 - Project tree now allows create/delete/rename folders
@@ -175,6 +176,13 @@ STRATEGIC PLAN
 
 WORK PLAN
 - New Work Plan View
+- New concept: Expenses, which are monetary expenditures that are not 
+  tied to a Resource
+- Shows Work Units, Expenses, and Budget Totals in columns that can be 
+  expanded or collapsed to view data at different time scales
+- Allows directly editing budget data in the upper table
+- Replaced old High Level Estimate with the ability to assign resources
+  directly to Strategies and Indicators
 
 REPORTS
 
