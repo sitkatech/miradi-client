@@ -148,13 +148,18 @@ APPWIDE
 - Normal data migrations no longer ask about replacing existing copy
 - Trees now have tooltips for entries in the Item column
 - Now allow entering pre-1970 dates for measurements, progress reports, etc
+- File/Save As dialog now treats Enter as OK instead of cancel
+- Clicking in a multi-line field no longer auto-selects all the text
 
 WELCOME
 - Project tree now allows create/delete/rename folders
 - Project tree allows moving projects between folders
 
 SUMMARY
-- TNC tab field changes to better match ConPro
+- TNC tab:
+  - Field changes to better match ConPro
+  - Updated Operating Unit and Ecoregion lists
+  - Project Priority and Type fields 
 
 DIAGRAM
 - Now allow Human Welfare Targets (as opposed to Biodiversity Targets)
@@ -164,6 +169,9 @@ DIAGRAM
 - Scope Boxes are now manually controlled instead of automatic
 - Can now have multiple Scope Boxes per diagram
 - Fixed various minor issues including bend point dragging
+- Fixed export as image to show bidirectional links correctly
+- Group Boxes now reserve space for as many lines of text as the 
+  name has hard line breaks
 
 
 VIABILITY
@@ -176,13 +184,17 @@ STRATEGIC PLAN
 - Now has tabs for Custom and Lists subviews
 - Streamlined buttons that create/delete objects
 - Reduced duplication of objects in the tree
+- Progress columns in tables now show shorter text strings
+- Now show Percent Complete data for Goal rows
 
 WORK PLAN
 - New Work Plan View
 - New concept: Expenses, which are monetary expenditures that are not 
-  tied to a Resource
+  tied to a Resource; eliminated "Materials" resource type because those 
+  generally would be better as expenses
 - Shows Work Units, Expenses, and Budget Totals in columns that can be 
-  expanded or collapsed to view data at different time scales
+  expanded or collapsed to view data at different time scales (years, 
+  quarters, months, or individual days)
 - Allows directly editing budget data in the upper table
 - Replaced old High Level Estimate with the ability to assign resources
   directly to Strategies and Indicators
@@ -191,9 +203,14 @@ WORK PLAN
   yet been assigned to any resource
 - Accounting Codes tab now shows budgets totaled by accounting code
 - Funding Sources tab now shows budgets totaled by funding source
+- All budgeting is now done in days, so no longer support resource costs
+  in other units
+- Pop-up calculator allows entering work unit data as Full Time 
+  Employee (FTE) fractions instead of days
 
 
 REPORTS/RTF EXPORT
+- New Threat Rating Details section
 - Hard line breaks are now preserved
 
 CPMZ IMPORT/EXPORT
