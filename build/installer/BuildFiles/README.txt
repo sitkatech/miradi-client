@@ -4,7 +4,7 @@ Copyright 2005-2009, Foundations of Success, Bethesda, Maryland
      (on behalf of the Conservation Measures Partnership, "CMP") and
      Beneficent Technology, Inc. ("Benetech"), Palo Alto, California.
 
-VERSION 2.4.1
+VERSION 3.0
 
 License and Copying
 
@@ -135,6 +135,52 @@ Upgrading From Earlier Versions
 If you installed an earlier version of Miradi, you can just 
 install this new version right over it. Your projects will be 
 migrated automatically when you first open them with the new version.
+
+---------------------
+Changes
+
+Here are the most notable improvements of version 3.0 over 2.4.1:
+
+WINDOWS INSTALLER
+
+APPWIDE
+- Lower panel sections are now "side-tabs"
+- Normal data migrations no longer ask about replacing existing copy
+- Trees now have tooltips for entries in the Item column
+
+WELCOME
+- Project tree now allows create/delete/rename folders
+- Project tree allows moving projects between folders
+
+SUMMARY
+- TNC tab field changes to better match ConPro
+
+DIAGRAM
+- Pasted factors now retain their tags
+- Can now toggle factors between Direct Threat and Contributing Factor
+- Scope Boxes are now manually controlled instead of automatic
+- Can now have multiple Scope Boxes per diagram
+- Fixed various minor issues including bend point dragging
+
+
+VIABILITY
+
+THREAT RATING
+
+STRATEGIC PLAN
+- Renamed Planning View to Strategic Plan View
+- No longer have Control Bar at left side of view
+- Now has tabs for Custom and Lists subviews
+- Streamlined buttons that create/delete objects
+
+WORK PLAN
+- New Work Plan View
+
+REPORTS
+
+CPMZ IMPORT/EXPORT
+- New CPMZ file version (can no longer import/export old format CPMZ files)
+
 
 Version 2.4.1 was a minor release with these fixes over 2.4:
 
