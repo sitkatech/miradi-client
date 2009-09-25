@@ -141,7 +141,8 @@ Changes
 
 Here are the most notable improvements of version 3.0 over 2.4.1:
 
-WINDOWS INSTALLER
+INSTALLER
+- Updated Marine Example project
 
 APPWIDE
 - Lower panel sections are now "side-tabs"
@@ -150,6 +151,7 @@ APPWIDE
 - Now allow entering pre-1970 dates for measurements, progress reports, etc
 - File/Save As dialog now treats Enter as OK instead of cancel
 - Clicking in a multi-line field no longer auto-selects all the text
+- Updated wizard and help content to reflect new features
 
 WELCOME
 - Project tree now allows create/delete/rename folders
@@ -175,8 +177,11 @@ DIAGRAM
 
 
 VIABILITY
+- Project overall rollup now includes Simple-mode Target ratings
 
 THREAT RATING
+- No longer allow creating new links, because Threats no longer have to 
+  be linked directly to Targets
 
 STRATEGIC PLAN
 - Renamed Planning View to Strategic Plan View
@@ -186,6 +191,7 @@ STRATEGIC PLAN
 - Reduced duplication of objects in the tree
 - Progress columns in tables now show shorter text strings
 - Now show Percent Complete data for Goal rows
+- No longer show "Not Specified" in Progress column for Task rows
 
 WORK PLAN
 - New Work Plan View
