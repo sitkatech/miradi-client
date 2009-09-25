@@ -56,14 +56,14 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 			return LINK_LAYER;
 		
 		if (cell.isScopeBox() )
-			return SCOPE_BOX_GROUP_BOX_LAYER;
+			return SCOPE_BOX_LAYER;
 		
 		FactorCell factorCell = (FactorCell) cell;
 		if (factorCell.isTextBox())
 			return getTextBoxLayer(factorCell.getDiagramFactor());
 		
 		if (factorCell.isGroupBox())
-			return SCOPE_BOX_GROUP_BOX_LAYER;
+			return GROUP_BOX_LAYER;
 			
 		if (factorCell.isActivity() || factorCell.isStress())
 			return ACTIVITY_STRESS_LAYER;
@@ -79,8 +79,9 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		return BACK_TEXT_BOX_LAYER;
 	}
 
-	private static final String FRONT_TEXT_BOX_LAYER = "Layer1";
-	private static final String SCOPE_BOX_GROUP_BOX_LAYER = "Layer2";
+	private static final String FRONT_TEXT_BOX_LAYER = "Layer0";
+	private static final String SCOPE_BOX_LAYER = "Layer1";
+	private static final String GROUP_BOX_LAYER = "Layer2";
 	private static final String DEFAULT_LAYER = "Layer3";
 	private static final String LINK_LAYER = "Layer4";
 	private static final String ACTIVITY_STRESS_LAYER = "Layer5";
