@@ -33,7 +33,7 @@ class ObjectSchemaElement extends SchemaElement
 		fields = new Vector<FieldSchemaElement>();
 	}
 	
-	public void createNumericAttribute(String attributeNameToUse)
+	public void createIdAttribute(String attributeNameToUse)
 	{
 		AttributeSchemaElement attribute = new IdAttributeSchemaElement();
 		attributes.add(attribute);
