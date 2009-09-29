@@ -27,6 +27,7 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 	public ProjectSummarySchemaElement()
 	{
 		super("ProjectSummary");
+	
 		createTextField(ProjectMetadata.TAG_PROJECT_NAME);
 		createDateField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE);
 		createTextField(ProjectMetadata.TAG_OTHER_ORG_PROJECT_NUMBER);
@@ -36,5 +37,4 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createTextField(ProjectMetadata.TAG_PROJECT_STATUS);
 		createTextField(ProjectMetadata.TAG_NEXT_STEPS);
 	}
-
 }
