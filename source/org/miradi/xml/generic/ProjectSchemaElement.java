@@ -43,14 +43,13 @@ class ProjectSchemaElement extends SchemaElement
 		// RARE
 		// FOS
 		
-
 		objectTypes.add(new ObjectContainerSchemaElement(new ConceptualModelSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ResultsChainSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new DiagramFactorSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new DiagramLinkSchemaElement()));
 				
 		objectTypes.add(new ObjectContainerSchemaElement(new BiodiversityTargetObjectSchemaElement()));
-		// HWT
+		objectTypes.add(new ObjectContainerSchemaElement(new HumanWelfareTargetSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new CauseObjectSchemaElement()));
 		// Strategy
 		// TRR
