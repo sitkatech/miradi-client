@@ -104,6 +104,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new CountriesFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	protected void createCodeListField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new CodeListFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	public String getObjectTypeName()
 	{
