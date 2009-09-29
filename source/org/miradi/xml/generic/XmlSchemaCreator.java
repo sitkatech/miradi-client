@@ -114,6 +114,10 @@ public class XmlSchemaCreator
 		writer.printlnIndented("element miradi:height { xsd:integer } ");
 		writer.endBlock();
 		
+		writer.defineAlias("Codes.element", "element miradi:Codes");
+		writer.startBlock();
+		writer.printlnIndented("element miradi:Code { text }* ");
+		writer.endBlock();
 		
 		writer.flush();
     }
