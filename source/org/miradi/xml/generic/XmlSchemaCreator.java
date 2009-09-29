@@ -36,7 +36,7 @@ public class XmlSchemaCreator
 		Translation.initialize();
 	}
 
-	private void printXmlRncSchema(SchemaWriter writer) throws Exception
+	public void printXmlRncSchema(SchemaWriter writer) throws Exception
 	{
 		ProjectSchemaElement rootElement = new ProjectSchemaElement();
 		writer.println("namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/1'");
