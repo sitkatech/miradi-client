@@ -110,6 +110,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new CodeListFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	protected void createFiscalYearStartField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new FiscalYearStartFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	public String getObjectTypeName()
 	{

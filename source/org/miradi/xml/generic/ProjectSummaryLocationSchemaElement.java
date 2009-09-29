@@ -37,5 +37,4 @@ public class ProjectSummaryLocationSchemaElement extends ObjectSchemaElement
 		createTextField(ProjectMetadata.TAG_SITE_MAP_REFERENCE);
 		createTextField(ProjectMetadata.TAG_LOCATION_COMMENTS);
 	}
-
 }

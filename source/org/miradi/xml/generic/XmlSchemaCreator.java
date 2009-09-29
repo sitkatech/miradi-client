@@ -45,6 +45,7 @@ public class XmlSchemaCreator
 		
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}' }");
+		writer.println("vocabulary_fiscal_year_start = \"\" | \"4\" | \"7\" | \"10\"");
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");

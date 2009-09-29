@@ -32,18 +32,16 @@ public class ProjectSummaryPlanningSchemaElement extends ObjectSchemaElement
 		createDateField(ProjectMetadata.TAG_EXPECTED_END_DATE);
 		createDateField(ProjectMetadata.TAG_WORKPLAN_START_DATE);
 		createDateField(ProjectMetadata.TAG_WORKPLAN_END_DATE);
-//		TAG_WORKPLAN_TIME_UNIT, getQuestion(BudgetTimePeriodQuestion.class));
-//		TAG_FISCAL_YEAR_START
-//		TAG_PLANNING_COMMENTS);
-
-		// TAG_CURRENCY_TYPE
-		// TAG_CURRENCY_SYMBOL
-		// TAG_CURRENCY_DECIMAL_PLACES
-		// TAG_TOTAL_BUDGET_FOR_FUNDING
-		// TAG_BUDGET_SECURED_PERCENT
-//		TAG_KEY_FUNDING_SOURCES);
-//		TAG_FINANCIAL_COMMENTS);
+		createFiscalYearStartField(ProjectMetadata.TAG_FISCAL_YEAR_START);
+		createNumericField(ProjectMetadata.TAG_FULL_TIME_EMPLOYEE_DAYS_PER_YEAR);
+		createTextField(ProjectMetadata.TAG_PLANNING_COMMENTS);
 		
+		createTextField(ProjectMetadata.TAG_CURRENCY_TYPE);
+		createTextField(ProjectMetadata.TAG_CURRENCY_SYMBOL);
+		createNumericField(ProjectMetadata.TAG_CURRENCY_DECIMAL_PLACES);
+		createNumericField(ProjectMetadata.TAG_TOTAL_BUDGET_FOR_FUNDING);
+		createNumericField(ProjectMetadata.TAG_BUDGET_SECURED_PERCENT);
+		createTextField(ProjectMetadata.TAG_KEY_FUNDING_SOURCES);
+		createTextField(ProjectMetadata.TAG_FINANCIAL_COMMENTS);
 	}
-
 }
