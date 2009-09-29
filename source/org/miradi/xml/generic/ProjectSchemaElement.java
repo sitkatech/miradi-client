@@ -31,17 +31,17 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes = new Vector<ObjectSchemaElement>();
 		
 		objectTypes.add(new ProjectSummarySchemaElement());
-		// ProjectResource
-		// OtherOrganization
+		objectTypes.add(new ProjectResourceObjectSchemaElement());
+		objectTypes.add(new OrganizationObjectSchemaElement());
 		objectTypes.add(new ProjectSummaryScopeSchemaElement());
 		objectTypes.add(new ProjectSummaryLocationSchemaElement());
 		objectTypes.add(new ProjectSummaryPlanningSchemaElement());
 
-		// TNC
-		// WWF
+		objectTypes.add(new TncProjectDataSchemaElement());
+		objectTypes.add(new WwfProjectDataSchemaElement());
 		objectTypes.add(new WcsDataSchemaElement());
-		// RARE
-		// FOS
+		objectTypes.add(new RareProjectDataSchemaElement());
+		objectTypes.add(new FosProjectDataSchemaElement());
 		
 		objectTypes.add(new ObjectContainerSchemaElement(new ConceptualModelSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ResultsChainSchemaElement()));
@@ -51,39 +51,30 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new BiodiversityTargetObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new HumanWelfareTargetSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new CauseObjectSchemaElement()));
-		// Strategy
-		// TRR
-		// IR
-		// Group Box
-		// Text Box
-		// Scope Box
-		
-		// KEA
-		// Stress
-		// Subtarget
-		// Goal
-		// Objective
+		objectTypes.add(new ObjectContainerSchemaElement(new StrategyObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ThreatReductionResultsObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new IntermediateResultObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new GroupBoxObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new TextBoxOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ScopeBoxOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new KeyEcologicalAttributeOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new StressOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new SubTargetOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new GoalOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ObjectiveSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new IndicatorObjectSchemaElement()));
-		
-		// ThreatRating
-		
-		// Activity
-		// Method
-		// Task
-		
-		// ResourceAssignment
-		// ExpenseAssignment
-		
-		// ProgressReport
-		// ProgressPercent
-		// Measurement
-		
-		// AccountingCode
-		// FundingSource
-		
-		// ReportTemplate
-		// PlanningCustomization
-		// TaggedObjectSet
+		objectTypes.add(new ObjectContainerSchemaElement(new ActivityOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new MethodOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new TaskOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ResourceAssignmentOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ExpenseAssignmentOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ProgressReportOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ProgressPercentOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ThreatStressRatingOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ThreatRatingCommentsDataOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new MeasurementOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new AccountingCodeOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceOjectSchemaElement()));
 	}
 	
 	public void output(SchemaWriter writer) throws IOException
