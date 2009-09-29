@@ -27,15 +27,12 @@ public class IdAttributeSchemaElement extends AttributeSchemaElement
 	public IdAttributeSchemaElement(String typeNameOfIdToUse)
 	{
 		super("Id");
-		typeNameOfId = typeNameOfIdToUse;
 	}
 
 	@Override
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.print("{ " + typeNameOfId + "Id.element }");
+		writer.print("{xsd:integer}");
 	}
-
-	private String typeNameOfId;
 }
