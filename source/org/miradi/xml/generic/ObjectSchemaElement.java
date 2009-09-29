@@ -35,7 +35,7 @@ class ObjectSchemaElement extends SchemaElement
 	
 	public void createNumericAttribute(String attributeNameToUse)
 	{
-		AttributeSchemaElement attribute = new IdAttributeSchemaElement(attributeNameToUse);
+		AttributeSchemaElement attribute = new IdAttributeSchemaElement();
 		attributes.add(attribute);
 	}
 	
