@@ -27,7 +27,7 @@ abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
 	public BaseObjectSchemaElement(String objectTypeNameToUse)
 	{
 		super(objectTypeNameToUse);
-		createNumericAttribute(objectTypeNameToUse);
+		createIdAttribute(objectTypeNameToUse);
 		createTextField(BaseObject.TAG_LABEL);
 	}
 
