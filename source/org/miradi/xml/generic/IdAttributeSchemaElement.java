@@ -24,7 +24,7 @@ import java.io.IOException;
 
 public class IdAttributeSchemaElement extends AttributeSchemaElement
 {
-	public IdAttributeSchemaElement(String typeNameOfIdToUse)
+	public IdAttributeSchemaElement()
 	{
 		super("Id");
 	}
