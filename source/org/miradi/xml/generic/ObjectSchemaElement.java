@@ -105,9 +105,9 @@ class ObjectSchemaElement extends SchemaElement
 		fields.add(field);
 	}
 	
-	protected void createCodeListField(String fieldNameToUse)
+	protected void createCodeListField(String fieldNameToUse, String vocabularyName)
 	{
-		FieldSchemaElement field = new CodeListFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		FieldSchemaElement field = new CodeListFieldSchemaElement(getObjectTypeName(), fieldNameToUse, vocabularyName);
 		fields.add(field);
 	}
 	
@@ -133,16 +133,20 @@ class ObjectSchemaElement extends SchemaElement
 			attributeElement.output(writer);
 			if(i < attributes.size() - 1)
 				writer.print(" &");
+			
 			writer.println();
 		}
+		
 		if(attributes.size() > 0 && fields.size() > 0)
 			writer.printlnIndented("&");
+		
 		for(int i = 0; i < fields.size(); ++i)
 		{
 			FieldSchemaElement fieldElement = fields.get(i);
 			fieldElement.output(writer);
 			if(i < fields.size() - 1)
 				writer.print(" &");
+			
 			writer.println();
 		}
 		writer.endBlock();
