@@ -25,5 +25,7 @@ public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
 	public ProjectResourceObjectSchemaElement()
 	{
 		super("ProjectResource");
+		
+		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_RESOURCE_TYPE);
 	}
 }

@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.main.Miradi;
+import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
@@ -124,6 +126,7 @@ public class XmlSchemaCreator
 		
 		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_TYPE, RESOURCE_TYPE_ELEMENT_NAME);
 		
 		writer.flush();
     }
@@ -159,5 +162,6 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
 	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
 	
-	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = "ProtectedAreaCategories";
+	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
+	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
 }
