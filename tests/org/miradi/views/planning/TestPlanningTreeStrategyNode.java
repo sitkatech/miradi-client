@@ -19,10 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.treenodes.WorkPlanProjectNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Task;
 
 public class TestPlanningTreeStrategyNode extends TestPlanningTree
@@ -39,13 +37,6 @@ public class TestPlanningTreeStrategyNode extends TestPlanningTree
 		assertTrue("wrong type returned?", isActivity(activityRefs.get(0)));
 	}
 	
-	public void testAssignments() throws Exception
-	{
-		WorkPlanProjectNode root = createCompleteTree();
-		ORefSet refsInTree = root.getAllRefsInTree();
-		assertTrue("Didn't add assignment to tree?", refsInTree.contains(getStrategyResourceAssignment().getRef()));
-	}
-
 	private boolean isActivity(ORef ref)
 	{
 		Task task = (Task) project.findObject(ref);

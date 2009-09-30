@@ -41,13 +41,6 @@ public class TestPlanningTreeActivityNode extends TestPlanningTree
 		assertEquals("wrong type returned?", Task.getObjectType(), taskRefs.get(0).getObjectType());
 	}
 
-	public void testAssignments() throws Exception
-	{
-		WorkPlanProjectNode root = createCompleteTree();
-		ORefSet refsInTree = root.getAllRefsInTree();
-		assertTrue("Didn't add assignment to tree?", refsInTree.contains(getSubtaskResourceAssignment().getRef()));
-	}
-
 	public void testSubtasks() throws Exception
 	{
 		WorkPlanProjectNode root = createCompleteTree();
