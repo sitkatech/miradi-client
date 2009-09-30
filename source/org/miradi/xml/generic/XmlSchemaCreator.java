@@ -26,6 +26,7 @@ import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
+import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
@@ -55,6 +56,7 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_TYPE, new ResourceTypeQuestion());
+		defineVocabulary(writer, VOCABULARY_RESOURCE_ROLE_CODES, new ResourceRoleQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -127,6 +129,7 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_TYPE, RESOURCE_TYPE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
 		
 		writer.flush();
     }
@@ -161,7 +164,9 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start";
 	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
 	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
+	public static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
+	public static final String RESOURCE_ROLE_CODES_ELEMENT_NAME = ProjectResource.TAG_ROLE_CODES;
 }

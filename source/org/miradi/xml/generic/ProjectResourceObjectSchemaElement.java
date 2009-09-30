@@ -20,6 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.ProjectResource;
+
 public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ProjectResourceObjectSchemaElement()
@@ -27,5 +29,25 @@ public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
 		super("ProjectResource");
 		
 		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_RESOURCE_TYPE);
+		createTextField(ProjectResource.TAG_GIVEN_NAME);
+		createTextField(ProjectResource.TAG_SUR_NAME);
+		createTextField(ProjectResource.TAG_INITIALS);
+		createCodeListField(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_RESOURCE_ROLE_CODES);
+		createTextField(ProjectResource.TAG_ORGANIZATION);
+		createTextField(ProjectResource.TAG_POSITION);
+		createTextField(ProjectResource.TAG_LOCATION);
+		createTextField(ProjectResource.TAG_PHONE_NUMBER);
+		createTextField(ProjectResource.TAG_PHONE_NUMBER_MOBILE);
+		createTextField(ProjectResource.TAG_PHONE_NUMBER_HOME);
+		createTextField(ProjectResource.TAG_PHONE_NUMBER_OTHER);
+		createTextField(ProjectResource.TAG_EMAIL);
+		createTextField(ProjectResource.TAG_ALTERNATIVE_EMAIL);
+		createTextField(ProjectResource.TAG_IM_ADDRESS);
+		createTextField(ProjectResource.TAG_IM_SERVICE);
+		createDateField(ProjectResource.TAG_DATE_UPDATED);
+		createNumericField(ProjectResource.TAG_COST_PER_UNIT);
+		createTextField(ProjectResource.TAG_COMMENTS);
+		createTextField(ProjectResource.TAG_CUSTOM_FIELD_1);
+		createTextField(ProjectResource.TAG_CUSTOM_FIELD_2);
 	}
 }
