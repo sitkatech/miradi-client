@@ -43,7 +43,7 @@ public class ProjectSummaryScopeSchemaElement extends ObjectSchemaElement
 		createTextField(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
 		createTextField(ProjectMetadata.TAG_SOCIAL_CONTEXT);
 
-		createCodeListField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, XmlSchemaCreator.VOCABULARY_PROTECTED_AREA_CATEGORIES);
+		createCodeListField(XmlSchemaCreator.PROTECTED_AREA_CATEGORIES_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_PROTECTED_AREA_CATEGORIES);
 		createTextField(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
 		createTextField(WcpaProjectData.TAG_LEGAL_STATUS);
 		createTextField(WcpaProjectData.TAG_LEGISLATIVE);
