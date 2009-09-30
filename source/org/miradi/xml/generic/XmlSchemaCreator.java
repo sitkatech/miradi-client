@@ -23,6 +23,7 @@ package org.miradi.xml.generic;
 import org.miradi.main.Miradi;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
+import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
@@ -49,8 +50,9 @@ public class XmlSchemaCreator
 		
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}' }");
-		defineVocabulary(writer, "vocabulary_fiscal_year_start", new FiscalYearStartQuestion());
-		defineVocabulary(writer, "vocabulary_resource_type", new ResourceTypeQuestion());
+		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
+		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
+		defineVocabulary(writer, VOCABULARY_RESOURCE_TYPE, new ResourceTypeQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -120,13 +122,19 @@ public class XmlSchemaCreator
 		writer.printlnIndented("element miradi:height { xsd:integer } ");
 		writer.endBlock();
 		
-		writer.defineAlias("Codes.element", "element miradi:Codes");
-		writer.startBlock();
-		writer.printlnIndented("element miradi:Code { text }* ");
-		writer.endBlock();
+		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
+		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
 		
 		writer.flush();
     }
+
+	private void defineVocabularyDefinedAlias(SchemaWriter writer, String vocabularyFiscalYearStartElementName, String elementName)
+	{
+		writer.defineAlias(elementName + ".element", "element miradi:" + elementName + "");
+		writer.startBlock();
+		writer.printlnIndented("element miradi:code { " + vocabularyFiscalYearStartElementName + " }* ");
+		writer.endBlock();
+	}
 	
 	private void defineIdElement(SchemaWriter writer, String baseName)
 	{
@@ -135,13 +143,21 @@ public class XmlSchemaCreator
 	
 	private void defineVocabulary(SchemaWriter writer, String vocabularyName, ChoiceQuestion question)
 	{
-		writer.write(vocabularyName + " = ");
+		writer.print(vocabularyName + " = ");
 		CodeList codes = question.getAllCodes();
 		for(int index = 0; index < codes.size(); ++index)
 		{
 			writer.write("\"" + codes.get(index)+ "\"");
 			if (index < codes.size() - 1)
-				writer.write("|");
+				writer.print("|");
 		}
+		
+		writer.println();
 	}
+	
+	public static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start";
+	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
+	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
+	
+	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = "ProtectedAreaCategories";
 }
