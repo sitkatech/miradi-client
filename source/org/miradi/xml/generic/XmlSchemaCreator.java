@@ -21,9 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.main.Miradi;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -57,6 +59,7 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_TYPE, new ResourceTypeQuestion());
 		defineVocabulary(writer, VOCABULARY_RESOURCE_ROLE_CODES, new ResourceRoleQuestion());
+		defineVocabulary(writer, VOCABULARY_HIDDEN_TYPES, new DiagramLegendQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -81,6 +84,7 @@ public class XmlSchemaCreator
 		defineIdElement(writer, "Objective");
 		defineIdElement(writer, "Indicator");
 		defineIdElement(writer, "KeyEcologicalAttribute");
+		defineIdElement(writer, TAGGED_OBJECT_SET_ELEMENT_NAME);
 		
 		writer.defineAlias("WrappedByDiagramFactorId.element", "element WrappedByDiagramFactorId");
 		writer.startBlock();
@@ -130,6 +134,7 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_TYPE, RESOURCE_TYPE_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_ROLE_CODES, RESOURCE_ROLE_CODES_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_HIDDEN_TYPES, HIDDEN_TYPES_ELEMENT_NAME);
 		
 		writer.flush();
     }
@@ -165,8 +170,11 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
 	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
 	public static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
+	public static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
 	public static final String RESOURCE_ROLE_CODES_ELEMENT_NAME = ProjectResource.TAG_ROLE_CODES;
+	public static final String HIDDEN_TYPES_ELEMENT_NAME = DiagramObject.TAG_HIDDEN_TYPES;
+	public static final String TAGGED_OBJECT_SET_ELEMENT_NAME = "TaggedObjectSet";
 }

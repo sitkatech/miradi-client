@@ -26,5 +26,4 @@ public class ConceptualModelSchemaElement extends DiagramSchemaElement
 	{
 		super("ConceptualModel");
 	}
-
 }
