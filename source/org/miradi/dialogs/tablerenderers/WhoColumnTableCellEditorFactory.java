@@ -41,6 +41,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ProjectResourceQuestion;
+import org.miradi.utils.MiradiScrollPane;
 
 public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implements TableCellEditor
 {
@@ -69,10 +70,11 @@ public class WhoColumnTableCellEditorFactory extends AbstractCellEditor implemen
 
 			final BaseObject baseObjectForRow = table.getBaseObjectForRowColumn(table.getSelectedRow(), table.getSelectedColumn());
 			StandAloneCodeListComponent codeListEditor = new StandAloneCodeListComponent(baseObjectForRow, new ProjectResourceQuestion(getProject()));
+			MiradiScrollPane codeListEditorScrollPane = new MiradiScrollPane(codeListEditor);
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), EAM.text("Project Resource"));
 			String dialogObjectDescription = ObjectTreeTable.getToolTipString(baseObjectForRow);
 			dialog.add(new PanelTitleLabel(dialogObjectDescription), BorderLayout.BEFORE_FIRST_LINE);
-			dialog.add(codeListEditor, BorderLayout.CENTER);
+			dialog.add(codeListEditorScrollPane, BorderLayout.CENTER);
 			dialog.pack();
 			getMainWindow().getCurrentView().showFloatingPropertiesDialog(dialog);
 		}
