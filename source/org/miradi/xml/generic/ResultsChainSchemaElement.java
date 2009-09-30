@@ -26,5 +26,4 @@ public class ResultsChainSchemaElement extends DiagramSchemaElement
 	{
 		super("ResultsChain");
 	}
-
 }
