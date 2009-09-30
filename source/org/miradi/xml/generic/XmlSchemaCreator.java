@@ -21,6 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.main.Miradi;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.FiscalYearStartQuestion;
+import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
 
 public class XmlSchemaCreator
@@ -45,7 +49,8 @@ public class XmlSchemaCreator
 		
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}' }");
-		writer.println("vocabulary_fiscal_year_start = \"\" | \"4\" | \"7\" | \"10\"");
+		defineVocabulary(writer, "vocabulary_fiscal_year_start", new FiscalYearStartQuestion());
+		defineVocabulary(writer, "vocabulary_resource_type", new ResourceTypeQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -126,5 +131,17 @@ public class XmlSchemaCreator
 	private void defineIdElement(SchemaWriter writer, String baseName)
 	{
 		writer.println(baseName + "Id.element = element " + baseName + "Id { xsd:integer }");
+	}
+	
+	private void defineVocabulary(SchemaWriter writer, String vocabularyName, ChoiceQuestion question)
+	{
+		writer.write(vocabularyName + " = ");
+		CodeList codes = question.getAllCodes();
+		for(int index = 0; index < codes.size(); ++index)
+		{
+			writer.write("\"" + codes.get(index)+ "\"");
+			if (index < codes.size() - 1)
+				writer.write("|");
+		}
 	}
 }
