@@ -19,10 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.planning;
 
-import org.miradi.dialogs.planning.treenodes.WorkPlanProjectNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Task;
 
@@ -41,13 +39,6 @@ public class TestPlanningTreeIndicatorNode extends TestPlanningTree
 		assertTrue("wrong type returned?", isMethod(methodRefs.get(0)));
 	}
 	
-	public void testAssignments() throws Exception
-	{
-		WorkPlanProjectNode root = createCompleteTree();
-		ORefSet refsInTree = root.getAllRefsInTree();
-		assertTrue("Didn't add assignment to tree?", refsInTree.contains(getIndicatorResourceAssignment().getRef()));
-	}
-
 	private boolean isMethod(ORef ref)
 	{
 		Task task = (Task) project.findObject(ref);
