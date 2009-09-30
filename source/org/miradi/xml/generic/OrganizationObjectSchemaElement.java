@@ -20,10 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Organization;
+
 public class OrganizationObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public OrganizationObjectSchemaElement()
 	{
 		super("Organization");
+		
+		createTextField(Organization.TAG_LABEL);
+		createTextField(Organization.TAG_SHORT_LABEL);
+		createTextField(Organization.TAG_ROLES_DESCRIPTION);
+		createTextField(Organization.TAG_CONTACT_FIRST_NAME);
+		createTextField(Organization.TAG_CONTACT_LAST_NAME);
+		createTextField(Organization.TAG_EMAIL);
+		createTextField(Organization.TAG_PHONE_NUMBER);
+		createTextField(Organization.TAG_COMMENTS);
 	}
 }
