@@ -57,7 +57,7 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new GroupBoxObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new TextBoxOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ScopeBoxOjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new KeyEcologicalAttributeOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new KeyEcologicalAttributeObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new StressOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new SubTargetOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new GoalObjectSchemaElement()));
@@ -72,7 +72,7 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new ProgressPercentOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ThreatStressRatingOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ThreatRatingCommentsDataOjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new MeasurementOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new MeasurementObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new AccountingCodeObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceObjectSchemaElement()));
 	}
