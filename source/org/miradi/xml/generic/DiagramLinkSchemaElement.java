@@ -27,12 +27,12 @@ public class DiagramLinkSchemaElement extends BaseObjectSchemaElement
 	public DiagramLinkSchemaElement()
 	{
 		super("DiagramLink");
-//		TAG_WRAPPED_ID
+
+		createWrappedByDiagramLinkIdField(DiagramLink.TAG_WRAPPED_ID);
 		createLinkableFactorIdField(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
 		createLinkableFactorIdField(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		createDiagramPointListField(DiagramLink.TAG_BEND_POINTS);
-//		TAG_GROUPED_DIAGRAM_LINK_REFS
-//		TAG_COLOR
+		createIdListField(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, "DiagramLink");
+		createCodeListField(XmlSchemaCreator.DIAGRAM_LINK_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_LINK_COLOR);
 	}
-
 }
