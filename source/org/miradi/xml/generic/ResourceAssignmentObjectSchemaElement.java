@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class ScopeBoxOjectSchemaElement extends FactorObjectSchemaElement
+public class ResourceAssignmentObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public ScopeBoxOjectSchemaElement()
+	public ResourceAssignmentObjectSchemaElement()
 	{
-		super("ScopeBox");
+		super("ResourceAssignment");
 	}
 }

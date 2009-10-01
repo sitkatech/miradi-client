@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class TextBoxOjectSchemaElement extends FactorObjectSchemaElement
+public class ProgressReportObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public TextBoxOjectSchemaElement()
+	public ProgressReportObjectSchemaElement()
 	{
-		super("TextBox");
+		super("ProgressReport");
 	}
 }

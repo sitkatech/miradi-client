@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class TaskOjectSchemaElement extends FactorObjectSchemaElement
+public class MethodObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public TaskOjectSchemaElement()
+	public MethodObjectSchemaElement()
 	{
-		super("Task");
+		super("Method");
 	}
 }
