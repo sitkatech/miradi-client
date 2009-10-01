@@ -74,7 +74,7 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new ThreatRatingCommentsDataOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new MeasurementOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new AccountingCodeObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceObjectSchemaElement()));
 	}
 	
 	public void output(SchemaWriter writer) throws IOException

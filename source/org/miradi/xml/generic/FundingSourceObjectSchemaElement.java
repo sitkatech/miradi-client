@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class FundingSourceOjectSchemaElement extends FactorObjectSchemaElement
+public class FundingSourceObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public FundingSourceOjectSchemaElement()
+	public FundingSourceObjectSchemaElement()
 	{
 		super("FundingSource");
 	}
