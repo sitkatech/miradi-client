@@ -63,7 +63,7 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new GoalOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ObjectiveSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new IndicatorObjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new ActivityOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ActivityObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new MethodOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new TaskOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ResourceAssignmentOjectSchemaElement()));
