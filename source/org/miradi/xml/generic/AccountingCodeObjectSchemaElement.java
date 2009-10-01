@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class AccountingCodeOjectSchemaElement extends FactorObjectSchemaElement
+public class AccountingCodeObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public AccountingCodeOjectSchemaElement()
+	public AccountingCodeObjectSchemaElement()
 	{
 		super("AccountingCode");
 	}
