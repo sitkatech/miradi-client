@@ -181,7 +181,7 @@ public class XmlSchemaCreator
 		CodeList codes = question.getAllCodes();
 		for(int index = 0; index < codes.size(); ++index)
 		{
-			writer.write("\"" + codes.get(index)+ "\"");
+			writer.write("'" + codes.get(index)+ "'");
 			if (index < codes.size() - 1)
 				writer.print("|");
 		}
