@@ -60,7 +60,7 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new KeyEcologicalAttributeOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new StressOjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new SubTargetOjectSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new GoalOjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new GoalObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ObjectiveSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new IndicatorObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ActivityObjectSchemaElement()));
