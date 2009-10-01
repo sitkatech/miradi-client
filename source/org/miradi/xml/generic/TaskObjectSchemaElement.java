@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class ResourceAssignmentOjectSchemaElement extends FactorObjectSchemaElement
+public class TaskObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public ResourceAssignmentOjectSchemaElement()
+	public TaskObjectSchemaElement()
 	{
-		super("ResourceAssignment");
+		super("Task");
 	}
 }
