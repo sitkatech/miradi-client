@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class ProgressPercentOjectSchemaElement extends FactorObjectSchemaElement
+public class ThreatStressRatingObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public ProgressPercentOjectSchemaElement()
+	public ThreatStressRatingObjectSchemaElement()
 	{
-		super("ProgressPercent");
+		super("ThreatStressRating");
 	}
 }
