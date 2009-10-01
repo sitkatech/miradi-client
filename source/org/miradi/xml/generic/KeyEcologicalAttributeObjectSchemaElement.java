@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class MeasurementOjectSchemaElement extends FactorObjectSchemaElement
+public class KeyEcologicalAttributeObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public MeasurementOjectSchemaElement()
+	public KeyEcologicalAttributeObjectSchemaElement()
 	{
-		super("Measurement");
+		super("KeyEcologicalAttribute");
 	}
 }
