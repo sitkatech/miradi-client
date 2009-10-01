@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class SubTargetOjectSchemaElement extends FactorObjectSchemaElement
+public class SubTargetObjectSchemaElement extends FactorObjectSchemaElement
 {
-	public SubTargetOjectSchemaElement()
+	public SubTargetObjectSchemaElement()
 	{
 		super("SubTarget");
 	}
