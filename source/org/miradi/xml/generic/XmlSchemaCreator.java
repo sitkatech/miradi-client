@@ -29,6 +29,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ScopeBox;
+import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
@@ -44,6 +45,8 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxColorQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StressScopeChoiceQuestion;
+import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
@@ -86,6 +89,8 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new ViabilityModeQuestion());
 		defineVocabulary(writer, VOCABULARY_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_COLOR, new ScopeBoxColorQuestion());
+		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
+		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -177,6 +182,8 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_SCOPE_BOX_COLOR, SCOPE_BOX_COLOR_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_STRESS_SEVERITY, STRESS_SEVERITY_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_STRESS_SCOPE, STRESS_SCOPE_ELEMENT_NAME);
 		
 		writer.flush();
     }
@@ -208,21 +215,23 @@ public class XmlSchemaCreator
 		writer.println();
 	}
 	
-	public static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start";
-	public static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
-	public static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
-	public static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
-	public static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
-	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
-	public static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
-	public static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
-	public static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
+	private static final String VOCABULARY_FISCAL_YEAR_START = "vocabulary_fiscal_year_start";
+	private static final String VOCABULARY_PROTECTED_AREA_CATEGORIES = "vocabulary_protected_area_categories";
+	private static final String VOCABULARY_RESOURCE_TYPE = "vocabulary_resource_type";
+	private static final String VOCABULARY_RESOURCE_ROLE_CODES = "vocabulary_resource_role_codes";
+	private static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
+	private static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
+	private static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
+	private static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
+	private static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
+	private static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
+	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
+	private static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
+	private static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
 	public static final String VOCABULARY_TAXONOMY_CODE = "vocabulary_taxonomy_code";
-	public static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";
+	private static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";
+	public static final String VOCABULARY_STRESS_SEVERITY = "vocabulary_stress_severity";
+	public static final String VOCABULARY_STRESS_SCOPE = "vocabulary_stress_scope";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -242,4 +251,6 @@ public class XmlSchemaCreator
 	public static final String TARGET_VIABILITY_MODE_ELEMENT_NAME = AbstractTarget.TAG_VIABILITY_MODE;
 	public static final String CAUSE_TAXONOMY_ELEMENT_NAME = Cause.TAG_TAXONOMY_CODE;
 	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = ScopeBox.TAG_SCOPE_BOX_COLOR_CODE;
+	public static final String STRESS_SEVERITY_ELEMENT_NAME = Stress.TAG_SEVERITY;
+	public static final String STRESS_SCOPE_ELEMENT_NAME = Stress.TAG_SCOPE;
 }
