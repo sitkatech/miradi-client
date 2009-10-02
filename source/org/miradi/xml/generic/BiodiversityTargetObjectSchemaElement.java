@@ -29,7 +29,7 @@ public class BiodiversityTargetObjectSchemaElement extends TargetObjectSchemaEle
 		super("BiodiversityTarget");
 
 		createIdListField(Target.TAG_STRESS_REFS, "Stress");
-		createCodeListField(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME, XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
+		createCodeListField(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION);
 		createTextField(Target.TAG_SPECIES_LATIN_NAME);
 	}
 }
