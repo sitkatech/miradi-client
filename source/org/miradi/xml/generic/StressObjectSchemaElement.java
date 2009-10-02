@@ -25,5 +25,8 @@ public class StressObjectSchemaElement extends FactorObjectSchemaElement
 	public StressObjectSchemaElement()
 	{
 		super("Stress");
+		
+		createCodeField(XmlSchemaCreator.STRESS_SEVERITY_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRESS_SEVERITY);
+		createCodeField(XmlSchemaCreator.STRESS_SCOPE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_STRESS_SEVERITY);
 	}
 }
