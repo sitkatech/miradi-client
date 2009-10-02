@@ -41,6 +41,7 @@ import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
@@ -101,6 +102,7 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE, new StrategyFeasibilityQuestion());
 		defineVocabulary(writer, VOCABULARY_PRIORITY_RATING_CODE, new PriorityRatingQuestion());
 		defineVocabulary(writer, VOCABULARY_STATUS_CODE, new StatusQuestion());
+		defineVocabulary(writer, VOCABULARY_KEA_TYPE, new KeyEcologicalAttributeTypeQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -259,6 +261,7 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
 	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
 	public static final String VOCABULARY_STATUS_CODE = "vocabulary_statuc_code";
+	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
