@@ -28,11 +28,12 @@ abstract public class TargetObjectSchemaElement extends FactorObjectSchemaElemen
 	public TargetObjectSchemaElement(String objectTypeNameToUse)
 	{
 		super(objectTypeNameToUse);
-//		TAG_TARGET_STATUS
-//		TAG_VIABILITY_MODE
-//		TAG_CURRENT_STATUS_JUSTIFICATION
-//		TAG_SUB_TARGET_REFS
-		createIdListField(AbstractTarget.TAG_GOAL_IDS, "Goal");
-		createIdListField(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, "KeyEcologicalAttribute");
+		
+		createCodeListField(XmlSchemaCreator.TARGET_STATUS_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_TARGET_STATUS);
+		createCodeListField(XmlSchemaCreator.TARGET_VIABILITY_MODE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_TARGET_VIABILITY_MODE);
+		createTextField(AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
+		createIdListField(AbstractTarget.TAG_SUB_TARGET_REFS, XmlSchemaCreator.SUB_TARGET_ID_ELEMENT_NAME);
+		createIdListField(AbstractTarget.TAG_GOAL_IDS, XmlSchemaCreator.GOAL_ELEMENT_NAME);
+		createIdListField(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, XmlSchemaCreator.KEA_ID_ELEMENT_NAME);
 	}
 }
