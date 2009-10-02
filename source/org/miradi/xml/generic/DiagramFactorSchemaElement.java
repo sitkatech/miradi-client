@@ -32,10 +32,10 @@ public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
 		createDiagramPointField(DiagramFactor.TAG_LOCATION);
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);
 		createIdListField(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, "DiagramFactor");
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);		
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);		
 		createTextField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE);		
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
-		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
 	}
 }
