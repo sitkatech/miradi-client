@@ -24,18 +24,14 @@ import java.io.IOException;
 
 public class CodeListFieldSchemaElement extends FieldSchemaElement
 {
-	protected CodeListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String vocabularyNameToUse)
+	protected CodeListFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
 		super(objectTypeNameToUse, fieldNameToUse);
-		
-		vocabularyName = vocabularyNameToUse;
 	}
 
 	public void output(SchemaWriter writer) throws IOException
 	{
 		super.output(writer);
-		writer.write(" { " + vocabularyName + " }");
+		writer.write(" { " + getFieldName() + ".element }");
 	}
-	
-	private String vocabularyName;
 }

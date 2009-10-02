@@ -46,7 +46,7 @@ class FieldSchemaElement extends SchemaElement
 		return objectTypeName;
 	}
 
-	private String getFieldName()
+	protected String getFieldName()
 	{
 		return fieldName;
 	}
