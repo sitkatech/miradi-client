@@ -20,10 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Task;
+
 public class TaskObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public TaskObjectSchemaElement()
 	{
 		super("Task");
+		
+		createIdListField(Task.TAG_EXPENSE_ASSIGNMENT_REFS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createIdListField(Task.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 	}
 }
