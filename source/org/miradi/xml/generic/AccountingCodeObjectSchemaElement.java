@@ -20,10 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.AccountingCode;
+
 public class AccountingCodeObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public AccountingCodeObjectSchemaElement()
 	{
 		super("AccountingCode");
+		
+		createTextField(AccountingCode.TAG_CODE);
+		createTextField(AccountingCode.TAG_COMMENTS);
 	}
 }

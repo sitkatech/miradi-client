@@ -20,10 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.FundingSource;
+
 public class FundingSourceObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public FundingSourceObjectSchemaElement()
 	{
 		super("FundingSource");
+		
+		createTextField(FundingSource.TAG_CODE);
+		createTextField(FundingSource.TAG_COMMENTS);
 	}
 }
