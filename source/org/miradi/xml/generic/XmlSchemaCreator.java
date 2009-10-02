@@ -106,6 +106,7 @@ public class XmlSchemaCreator
 		defineIdElement(writer, "Indicator");
 		defineIdElement(writer, KEA_ID_ELEMENT_NAME);
 		defineIdElement(writer, TAGGED_OBJECT_SET_ELEMENT_NAME);
+		defineIdElement(writer, SUB_TARGET_ID_ELEMENT_NAME);
 		
 		writer.defineAlias("WrappedByDiagramLinkId.element", "element WrappedByDiagramLinkId");
 		writer.startBlock();
