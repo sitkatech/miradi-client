@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class ProgressReportObjectSchemaElement extends FactorObjectSchemaElement
+public class ProgressReportObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ProgressReportObjectSchemaElement()
 	{

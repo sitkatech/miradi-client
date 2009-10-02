@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class ThreatStressRatingObjectSchemaElement extends FactorObjectSchemaElement
+public class ThreatStressRatingObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ThreatStressRatingObjectSchemaElement()
 	{

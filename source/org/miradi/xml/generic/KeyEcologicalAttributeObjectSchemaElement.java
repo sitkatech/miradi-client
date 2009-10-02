@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-public class KeyEcologicalAttributeObjectSchemaElement extends FactorObjectSchemaElement
+public class KeyEcologicalAttributeObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public KeyEcologicalAttributeObjectSchemaElement()
 	{
