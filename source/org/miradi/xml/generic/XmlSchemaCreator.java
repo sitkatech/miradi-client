@@ -41,6 +41,7 @@ import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.DiagramLinkColorQuestion;
 import org.miradi.questions.FiscalYearStartQuestion;
 import org.miradi.questions.HabitatAssociationQuestion;
+import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
@@ -98,6 +99,8 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE, new StrategyImpactQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE, new StrategyFeasibilityQuestion());
+		defineVocabulary(writer, VOCABULARY_PRIORITY_RATING_CODE, new PriorityRatingQuestion());
+		defineVocabulary(writer, VOCABULARY_STATUS_CODE, new StatusQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -254,6 +257,8 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_STRESS_SCOPE = "vocabulary_stress_scope";
 	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
 	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
+	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
+	public static final String VOCABULARY_STATUS_CODE = "vocabulary_statuc_code";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
