@@ -34,6 +34,6 @@ public class ThreatReductionResultsThreatIdSchemaElement extends FieldSchemaElem
 	{
 		super.output(writer);
 		
-		writer.print("{ ThreatReductionResultThreatId.element }");
+		writer.print("{ ThreatReductionResultThreatId.element }?");
 	}
 }
