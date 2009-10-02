@@ -20,10 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Factor;
+
 public class IntermediateResultObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public IntermediateResultObjectSchemaElement()
 	{
 		super("IntermediateResult");
+		
+		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
 	}
 }

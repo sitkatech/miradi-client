@@ -20,10 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Factor;
+
 public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public ThreatReductionResultsObjectSchemaElement()
 	{
 		super("ThreatReductionResults");
+		
+		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
 	}
 }

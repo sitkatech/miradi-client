@@ -33,8 +33,5 @@ public class FactorObjectSchemaElement extends BaseObjectSchemaElement
 		createTextField(Factor.TAG_TEXT);
 		createTextField(Factor.TAG_COMMENTS);
 		createIdListField(Factor.TAG_INDICATOR_IDS, "Indicator");
-		
-		// TODO: Push down to exclude targets
-		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
 	}
 }
