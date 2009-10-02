@@ -119,6 +119,8 @@ public class XmlSchemaCreator
 		defineIdElement(writer, TAGGED_OBJECT_SET_ELEMENT_NAME);
 		defineIdElement(writer, SUB_TARGET_ID_ELEMENT_NAME);
 		defineIdElement(writer, THREAT_ID_ELEMENT_NAME);
+		defineIdElement(writer, ACCOUNTING_CODE_ID_ELEMENT_NAME);
+		defineIdElement(writer, FUNDING_SOURCE_ID_ELEMENT_NAME);
 		
 		writer.defineAlias("WrappedByDiagramLinkId.element", "element WrappedByDiagramLinkId");
 		writer.startBlock();
@@ -247,7 +249,9 @@ public class XmlSchemaCreator
 	public static final String TAGGED_OBJECT_SET_ELEMENT_NAME = "TaggedObjectSet";
 	public static final String KEA_ID_ELEMENT_NAME = "KeyEcologicalAttribute";
 	public static final String SUB_TARGET_ID_ELEMENT_NAME = "SubTarget";
-	public static final String THREAT_ID_ELEMENT_NAME = "threat";
+	private static final String THREAT_ID_ELEMENT_NAME = "threat";
+	private static final String FUNDING_SOURCE_ID_ELEMENT_NAME = "FundingSource";
+	private static final String ACCOUNTING_CODE_ID_ELEMENT_NAME = "AccountingCode";
 	public static final String GOAL_ELEMENT_NAME = "Goal";
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;

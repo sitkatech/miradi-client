@@ -62,6 +62,18 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new ThreatReductionResultsThreatIdSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+	
+	public void createFundingSourceIdField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new FundingSourceIdSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
+	public void createAccountingCodeIdField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new AccountingCodeIdSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
 
 	protected void createWrappedByDiagramFactorIdField(String fieldNameToUse)
 	{
