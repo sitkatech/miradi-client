@@ -39,7 +39,9 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElement
 //		createTextField(Indicator.TAG_FUTURE_STATUS_RATING);
 		createTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createTextField(Indicator.TAG_FUTURE_STATUS_COMMENT);
-
+		
+		createIdListField(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 	}
 
 }
