@@ -29,6 +29,7 @@ import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ScopeBox;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceQuestion;
@@ -45,6 +46,9 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.questions.ScopeBoxColorQuestion;
 import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.StrategyFeasibilityQuestion;
+import org.miradi.questions.StrategyImpactQuestion;
+import org.miradi.questions.StrategyTaxonomyQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
@@ -87,10 +91,13 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, new HabitatAssociationQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new ViabilityModeQuestion());
-		defineVocabulary(writer, VOCABULARY_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		defineVocabulary(writer, VOCABULARY_CAUSE_TAXONOMY_CODE, new ThreatClassificationQuestion());
 		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_COLOR, new ScopeBoxColorQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
+		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
+		defineVocabulary(writer, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE, new StrategyImpactQuestion());
+		defineVocabulary(writer, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE, new StrategyFeasibilityQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -106,14 +113,14 @@ public class XmlSchemaCreator
 		defineIdElement(writer, "TextBox");
 		defineIdElement(writer, "ScopeBox");
 		
-		defineIdElement(writer, "Activity");
+		defineIdElement(writer, ACITIVTY_ID_ELEMENT_NAME);
 		defineIdElement(writer, "Stress");
 		
 		defineIdElement(writer, "DiagramLink");
 		defineIdElement(writer, "FactorLink");
 		 
-		defineIdElement(writer, "Goal");
-		defineIdElement(writer, "Objective");
+		defineIdElement(writer, GOAL_ELEMENT_NAME);
+		defineIdElement(writer, OBJECTIVE_ID_ELEMENT_NAME);
 		defineIdElement(writer, "Indicator");
 		defineIdElement(writer, KEA_ID_ELEMENT_NAME);
 		defineIdElement(writer, TAGGED_OBJECT_SET_ELEMENT_NAME);
@@ -121,6 +128,9 @@ public class XmlSchemaCreator
 		defineIdElement(writer, THREAT_ID_ELEMENT_NAME);
 		defineIdElement(writer, ACCOUNTING_CODE_ID_ELEMENT_NAME);
 		defineIdElement(writer, FUNDING_SOURCE_ID_ELEMENT_NAME);
+		defineIdElement(writer, PROGRESS_REPORT_ID_ELEMENT_NAME);
+		defineIdElement(writer, EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		defineIdElement(writer, RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		
 		writer.defineAlias("WrappedByDiagramLinkId.element", "element WrappedByDiagramLinkId");
 		writer.startBlock();
@@ -237,10 +247,13 @@ public class XmlSchemaCreator
 	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
 	private static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	private static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
-	public static final String VOCABULARY_TAXONOMY_CODE = "vocabulary_taxonomy_code";
+	public static final String VOCABULARY_CAUSE_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
+	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";
 	private static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";
 	public static final String VOCABULARY_STRESS_SEVERITY = "vocabulary_stress_severity";
 	public static final String VOCABULARY_STRESS_SCOPE = "vocabulary_stress_scope";
+	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
+	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -252,7 +265,12 @@ public class XmlSchemaCreator
 	private static final String THREAT_ID_ELEMENT_NAME = "threat";
 	private static final String FUNDING_SOURCE_ID_ELEMENT_NAME = "FundingSource";
 	private static final String ACCOUNTING_CODE_ID_ELEMENT_NAME = "AccountingCode";
+	public static final String ACITIVTY_ID_ELEMENT_NAME = "Activity";
+	public static final String OBJECTIVE_ID_ELEMENT_NAME = "Objective";
 	public static final String GOAL_ELEMENT_NAME = "Goal";
+	public static final String PROGRESS_REPORT_ID_ELEMENT_NAME = "ProgressReport";
+	public static final String EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME = "ExpneseAssignment";
+	public static final String RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME = "ResourceAssignment";
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_BACKGROUND_COLOR;
@@ -262,6 +280,9 @@ public class XmlSchemaCreator
 	public static final String TARGET_STATUS_ELEMENT_NAME = AbstractTarget.TAG_TARGET_STATUS;
 	public static final String TARGET_VIABILITY_MODE_ELEMENT_NAME = AbstractTarget.TAG_VIABILITY_MODE;
 	public static final String CAUSE_TAXONOMY_ELEMENT_NAME = Cause.TAG_TAXONOMY_CODE;
+	public static final String STRATEGY_TAXONOMY_ELEMENT_NAME = Strategy.TAG_TAXONOMY_CODE;
+	public static final String STRATEGY_IMPACT_RATING_ELEMENT_NAME = Strategy.TAG_IMPACT_RATING;
+	public static final String STRATEGY_FEASIBILITY_RATING_ELEMENT_NAME = Strategy.TAG_FEASIBILITY_RATING;
 	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = ScopeBox.TAG_SCOPE_BOX_COLOR_CODE;
 	public static final String STRESS_SEVERITY_ELEMENT_NAME = Stress.TAG_SEVERITY;
 	public static final String STRESS_SCOPE_ELEMENT_NAME = Stress.TAG_SCOPE;
