@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Cause;
 import org.miradi.objects.Factor;
 
 public class CauseObjectSchemaElement extends FactorObjectSchemaElement
@@ -27,10 +28,9 @@ public class CauseObjectSchemaElement extends FactorObjectSchemaElement
 	public CauseObjectSchemaElement()
 	{
 		super("Cause");
-//		TAG_IS_DIRECT_THREAT
-//		TAG_TAXONOMY_CODE
-		
+
+		createBooleanField(Cause.TAG_IS_DIRECT_THREAT);
+		createCodeField(XmlSchemaCreator.CAUSE_TAXONOMY_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_TAXONOMY_CODE);
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
 	}
-
 }
