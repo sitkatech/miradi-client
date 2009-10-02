@@ -27,6 +27,7 @@ public class DiagramFactorSchemaElement extends BaseObjectSchemaElement
 	public DiagramFactorSchemaElement()
 	{
 		super("DiagramFactor");
+		
 		createWrappedByDiagramFactorIdField(DiagramFactor.TAG_WRAPPED_REF);
 		createDiagramPointField(DiagramFactor.TAG_LOCATION);
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);

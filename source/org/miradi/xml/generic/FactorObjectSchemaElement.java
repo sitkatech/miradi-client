@@ -28,6 +28,7 @@ public class FactorObjectSchemaElement extends BaseObjectSchemaElement
 	public FactorObjectSchemaElement(String objectTypeName)
 	{
 		super(objectTypeName);
+
 		createTextField(Factor.TAG_SHORT_LABEL);
 		createTextField(Factor.TAG_TEXT);
 		createTextField(Factor.TAG_COMMENTS);
@@ -36,5 +37,4 @@ public class FactorObjectSchemaElement extends BaseObjectSchemaElement
 		// TODO: Push down to exclude targets
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
 	}
-
 }

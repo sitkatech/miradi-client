@@ -22,16 +22,14 @@ package org.miradi.xml.generic;
 
 import org.miradi.objects.Target;
 
-public class BiodiversityTargetObjectSchemaElement extends
-		TargetObjectSchemaElement
+public class BiodiversityTargetObjectSchemaElement extends TargetObjectSchemaElement
 {
 	public BiodiversityTargetObjectSchemaElement()
 	{
 		super("BiodiversityTarget");
+
 		createIdListField(Target.TAG_STRESS_REFS, "Stress");
-//		TAG_HABITAT_ASSOCIATION
-		
+		createCodeListField(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME, XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		createTextField(Target.TAG_SPECIES_LATIN_NAME);
 	}
-
 }
