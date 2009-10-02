@@ -20,16 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.Factor;
-import org.miradi.objects.ThreatReductionResult;
+import java.io.IOException;
 
-public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchemaElement
+public class ThreatReductionResultsThreatIdSchemaElement extends FieldSchemaElement
 {
-	public ThreatReductionResultsObjectSchemaElement()
+	protected ThreatReductionResultsThreatIdSchemaElement(String objectTypeNameToUse, String fieldNameToUse)
 	{
-		super("ThreatReductionResults");
+		super(objectTypeNameToUse, fieldNameToUse);
+	}
+
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
 		
-		createThreatReductionResultsThreatIdField(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
-		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
+		writer.print("{ ThreatReductionResultThreatId.element }");
 	}
 }
