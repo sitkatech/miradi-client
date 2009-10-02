@@ -28,6 +28,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
@@ -41,6 +42,7 @@ import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.ProtectedAreaCategoryQuestion;
 import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
+import org.miradi.questions.ScopeBoxColorQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
@@ -83,6 +85,7 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new ViabilityModeQuestion());
 		defineVocabulary(writer, VOCABULARY_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_COLOR, new ScopeBoxColorQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -173,6 +176,7 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_TARGET_VIABILITY_MODE, TARGET_VIABILITY_MODE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_SCOPE_BOX_COLOR, SCOPE_BOX_COLOR_ELEMENT_NAME);
 		
 		writer.flush();
     }
@@ -218,6 +222,7 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	public static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
 	public static final String VOCABULARY_TAXONOMY_CODE = "vocabulary_taxonomy_code";
+	public static final String VOCABULARY_SCOPE_BOX_COLOR = "vocabulary_scope_box_color";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -236,4 +241,5 @@ public class XmlSchemaCreator
 	public static final String TARGET_STATUS_ELEMENT_NAME = AbstractTarget.TAG_TARGET_STATUS;
 	public static final String TARGET_VIABILITY_MODE_ELEMENT_NAME = AbstractTarget.TAG_VIABILITY_MODE;
 	public static final String CAUSE_TAXONOMY_ELEMENT_NAME = Cause.TAG_TAXONOMY_CODE;
+	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = ScopeBox.TAG_SCOPE_BOX_COLOR_CODE;
 }

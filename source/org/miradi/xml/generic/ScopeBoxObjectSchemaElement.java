@@ -25,5 +25,7 @@ public class ScopeBoxObjectSchemaElement extends FactorObjectSchemaElement
 	public ScopeBoxObjectSchemaElement()
 	{
 		super("ScopeBox");
+		
+		createCodeListField(XmlSchemaCreator.SCOPE_BOX_COLOR_ELEMENT_NAME);
 	}
 }
