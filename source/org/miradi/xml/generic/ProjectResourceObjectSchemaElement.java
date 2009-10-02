@@ -28,11 +28,11 @@ public class ProjectResourceObjectSchemaElement extends BaseObjectSchemaElement
 	{
 		super("ProjectResource");
 		
-		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_RESOURCE_TYPE);
+		createCodeListField(XmlSchemaCreator.RESOURCE_TYPE_ELEMENT_NAME);
 		createTextField(ProjectResource.TAG_GIVEN_NAME);
 		createTextField(ProjectResource.TAG_SUR_NAME);
 		createTextField(ProjectResource.TAG_INITIALS);
-		createCodeListField(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_RESOURCE_ROLE_CODES);
+		createCodeListField(XmlSchemaCreator.RESOURCE_ROLE_CODES_ELEMENT_NAME);
 		createTextField(ProjectResource.TAG_ORGANIZATION);
 		createTextField(ProjectResource.TAG_POSITION);
 		createTextField(ProjectResource.TAG_LOCATION);

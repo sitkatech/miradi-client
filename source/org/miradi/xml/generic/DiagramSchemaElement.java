@@ -31,7 +31,7 @@ abstract public class DiagramSchemaElement extends BaseObjectSchemaElement
 		createTextField(DiagramObject.TAG_DETAIL);
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
 		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "DiagramLink");
-		createCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_HIDDEN_TYPES);
+		createCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME);
 		createIdListField(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, XmlSchemaCreator.TAGGED_OBJECT_SET_ELEMENT_NAME);
 	}
 }
