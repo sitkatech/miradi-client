@@ -260,7 +260,7 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
 	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
 	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
-	public static final String VOCABULARY_STATUS_CODE = "vocabulary_statuc_code";
+	public static final String VOCABULARY_STATUS_CODE = "vocabulary_status_code";
 	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
