@@ -32,5 +32,6 @@ public class ResourceAssignmentObjectSchemaElement extends BaseObjectSchemaEleme
 		createIdField(ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME);
 		createFundingSourceIdField(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
 		createAccountingCodeIdField(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
+		createDateUnitEffortsField(ResourceAssignment.TAG_DATEUNIT_EFFORTS);
 	}
 }

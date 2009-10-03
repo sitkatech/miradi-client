@@ -20,16 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.ExpenseAssignment;
-
-public class ExpenseAssignmentObjectSchemaElement extends BaseObjectSchemaElement
+public class DateUnitTotalSchemaElement extends ObjectSchemaElement
 {
-	public ExpenseAssignmentObjectSchemaElement()
+	public DateUnitTotalSchemaElement()
 	{
-		super("ExpenseAssignment");
+		super("ProjectTotal");
 		
-		createFundingSourceIdField(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
-		createAccountingCodeIdField(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
-		createDateUnitEffortsField(ExpenseAssignment.TAG_DATEUNIT_EFFORTS);
+		createProjectTotalAttribute("ProjectTotal");
 	}
 }
