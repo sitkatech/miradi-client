@@ -71,6 +71,9 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new ProgressReportObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ProgressPercentObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new ThreatStressRatingObjectSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new ThreatTargetThreatRatingElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new SimpleThreatRatingSchemaElement()));
+		objectTypes.add(new ObjectContainerSchemaElement(new StressBasedThreatRatingElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new MeasurementObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new AccountingCodeObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceObjectSchemaElement()));
