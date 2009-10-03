@@ -108,7 +108,7 @@ public class XmlSchemaCreator
 		defineIdElement(writer, "ResultsChain");
 
 		defineIdElement(writer, "DiagramFactor");
-		defineIdElement(writer, "BiodiversityTarget");
+		defineIdElement(writer, BIODIVERSITY_ID_ELEMENT_NAME);
 		defineIdElement(writer, "HumanWelfareTarget");
 		defineIdElement(writer, "Cause");
 		defineIdElement(writer, "Strategy");
@@ -119,14 +119,14 @@ public class XmlSchemaCreator
 		defineIdElement(writer, "ScopeBox");
 		
 		defineIdElement(writer, ACITIVTY_ID_ELEMENT_NAME);
-		defineIdElement(writer, "Stress");
+		defineIdElement(writer, STRESS_ID_ELEMENT_NAME);
 		
 		defineIdElement(writer, "DiagramLink");
 		defineIdElement(writer, "FactorLink");
 		 
 		defineIdElement(writer, GOAL_ELEMENT_NAME);
 		defineIdElement(writer, OBJECTIVE_ID_ELEMENT_NAME);
-		defineIdElement(writer, "Indicator");
+		defineIdElement(writer, INDICATOR_ID_ELEMENT_NAME);
 		defineIdElement(writer, KEA_ID_ELEMENT_NAME);
 		defineIdElement(writer, TAGGED_OBJECT_SET_ELEMENT_NAME);
 		defineIdElement(writer, SUB_TARGET_ID_ELEMENT_NAME);
@@ -136,6 +136,7 @@ public class XmlSchemaCreator
 		defineIdElement(writer, PROGRESS_REPORT_ID_ELEMENT_NAME);
 		defineIdElement(writer, EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
+		defineIdElement(writer, THREAT_STRESS_RATING_ID_ELEMENT_NAME);
 		
 		writer.defineAlias("WrappedByDiagramLinkId.element", "element WrappedByDiagramLinkId");
 		writer.startBlock();
@@ -279,6 +280,9 @@ public class XmlSchemaCreator
 	public static final String PROGRESS_REPORT_ID_ELEMENT_NAME = "ProgressReport";
 	public static final String EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME = "ExpneseAssignment";
 	public static final String RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME = "ResourceAssignment";
+	public static final String THREAT_STRESS_RATING_ID_ELEMENT_NAME = "ThreatStressRating";
+	public static final String INDICATOR_ID_ELEMENT_NAME = "Indicator";
+	public static final String BIODIVERSITY_ID_ELEMENT_NAME = "BiodiversityTarget";
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_BACKGROUND_COLOR;
@@ -294,4 +298,5 @@ public class XmlSchemaCreator
 	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = ScopeBox.TAG_SCOPE_BOX_COLOR_CODE;
 	public static final String STRESS_SEVERITY_ELEMENT_NAME = Stress.TAG_SEVERITY;
 	public static final String STRESS_SCOPE_ELEMENT_NAME = Stress.TAG_SCOPE;
+	public static final String STRESS_ID_ELEMENT_NAME = "Stress";
 }
