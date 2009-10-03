@@ -39,6 +39,42 @@ class ObjectSchemaElement extends SchemaElement
 		attributes.add(attribute);
 	}
 	
+	public void createDateAttribute(String attributeNameToUse)
+	{
+		AttributeSchemaElement attribute = new DateAttributeSchemaElement();
+		attributes.add(attribute);
+	}
+	
+	public void createMonthAttribute(String attributeNameToUse)
+	{
+		AttributeSchemaElement attribute = new MonthAttributeSchemaElement();
+		attributes.add(attribute);
+	}
+	
+	public void createStartMonthAttribute(String attributeNameToUse)
+	{
+		AttributeSchemaElement attribute = new StartMonthAttributeSchemaElement();
+		attributes.add(attribute);
+	}
+	
+	public void createStartYearAttribute(String attributeNameToUse)
+	{
+		AttributeSchemaElement attribute = new StartYearAttributeSchemaElement();
+		attributes.add(attribute);
+	}
+	
+	public void createYearAttribute(String attributeNameToUse)
+	{
+		AttributeSchemaElement attribute = new YearAttributeSchemaElement();
+		attributes.add(attribute);
+	}
+	
+	public void createProjectTotalAttribute(String attributeNameToUse)
+	{
+		AttributeSchemaElement attribute = new ProjectTotalAttributeSchemaElement();
+		attributes.add(attribute);
+	}
+	
 	public void createTextField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new TextFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
@@ -54,6 +90,18 @@ class ObjectSchemaElement extends SchemaElement
 	public void createDateField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new DateFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
+	protected void createDateUnitField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new DateUnitFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
+		fields.add(field);
+	}
+	
+	protected void createDateUnitEffortsField(String fieldNameToUse)
+	{
+		FieldSchemaElement field = new DateUnitEffortsFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
 

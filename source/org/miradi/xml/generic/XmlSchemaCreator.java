@@ -82,6 +82,11 @@ public class XmlSchemaCreator
 		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		
+		writer.println("vocabulary_project_total = xsd:NMTOKEN { pattern = 'Total' } ");
+		writer.println("vocabulary_start_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
+		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
+		writer.println("vocabulary_start_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } ");
+		writer.println("vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}' }");
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
@@ -278,6 +283,10 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE = "vocabulary_simple_threat_rating_scope_code";
 	public static final String VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE = "vocabulary_simple_threat_rating_severitiy_code";
 	public static final String VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE = "vocabulary_simple_threat_rating_irreversibility_code";
+	public static final String VOCABULARY_MONTH = "vocabulary_month";
+	public static final String VOCABULARY_START_MONTH = "vocabulary_start_month";
+	public static final String VOCABULARY_YEAR = "vocabulary_year";
+	public static final String VOCABULARY_START_YEAR = "vocabulary_start_year";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
