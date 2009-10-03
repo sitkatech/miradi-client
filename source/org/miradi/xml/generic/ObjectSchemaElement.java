@@ -56,6 +56,12 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new DateFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
+
+	protected void createThreatTargetThreatRatingField()
+	{
+		FieldSchemaElement field = new ThreatTargetThreatRatingFieldSchemaElement(getObjectTypeName());
+		fields.add(field);
+	}
 	
 	public void createThreatReductionResultsThreatIdField(String fieldNameToUse)
 	{
