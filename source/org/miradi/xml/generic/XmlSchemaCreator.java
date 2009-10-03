@@ -32,6 +32,7 @@ import org.miradi.objects.ScopeBox;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
+import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
@@ -51,6 +52,8 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.StrategyFeasibilityQuestion;
 import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.questions.StressContributionQuestion;
+import org.miradi.questions.StressIrreversibilityQuestion;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
@@ -103,6 +106,8 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_PRIORITY_RATING_CODE, new PriorityRatingQuestion());
 		defineVocabulary(writer, VOCABULARY_STATUS_CODE, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_KEA_TYPE, new KeyEcologicalAttributeTypeQuestion());
+		defineVocabulary(writer, VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE, new StressContributionQuestion());
+		defineVocabulary(writer, VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE, new StressIrreversibilityQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -110,7 +115,7 @@ public class XmlSchemaCreator
 		defineIdElement(writer, "DiagramFactor");
 		defineIdElement(writer, BIODIVERSITY_ID_ELEMENT_NAME);
 		defineIdElement(writer, "HumanWelfareTarget");
-		defineIdElement(writer, "Cause");
+		defineIdElement(writer, CAUSE_ID_ELEMENT_NAME);
 		defineIdElement(writer, "Strategy");
 		defineIdElement(writer, "ThreatReductionResult");
 		defineIdElement(writer, "IntermediateResult");
@@ -263,6 +268,8 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
 	public static final String VOCABULARY_STATUS_CODE = "vocabulary_status_code";
 	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
+	public static final String VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE = "vocabulary_irreversibility_code";
+	public static final String VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE = "vocabulary_contribution_code";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -271,7 +278,7 @@ public class XmlSchemaCreator
 	public static final String TAGGED_OBJECT_SET_ELEMENT_NAME = "TaggedObjectSet";
 	public static final String KEA_ID_ELEMENT_NAME = "KeyEcologicalAttribute";
 	public static final String SUB_TARGET_ID_ELEMENT_NAME = "SubTarget";
-	private static final String THREAT_ID_ELEMENT_NAME = "threat";
+	public static final String THREAT_ID_ELEMENT_NAME = "threat";
 	private static final String FUNDING_SOURCE_ID_ELEMENT_NAME = "FundingSource";
 	private static final String ACCOUNTING_CODE_ID_ELEMENT_NAME = "AccountingCode";
 	public static final String ACITIVTY_ID_ELEMENT_NAME = "Activity";
@@ -299,4 +306,7 @@ public class XmlSchemaCreator
 	public static final String STRESS_SEVERITY_ELEMENT_NAME = Stress.TAG_SEVERITY;
 	public static final String STRESS_SCOPE_ELEMENT_NAME = Stress.TAG_SCOPE;
 	public static final String STRESS_ID_ELEMENT_NAME = "Stress";
+	private static final String CAUSE_ID_ELEMENT_NAME = "Cause";
+	public static final String THREAT_STRESS_RATING_IRREVERSIBILITY_CODE = ThreatStressRating.TAG_IRREVERSIBILITY;
+	public static final String THREAT_STRESS_RATING_CONTRIBUTION_CODE = ThreatStressRating.TAG_CONTRIBUTION;
 }

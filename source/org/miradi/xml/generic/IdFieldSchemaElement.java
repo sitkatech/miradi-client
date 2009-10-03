@@ -20,18 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import org.miradi.objects.ThreatStressRating;
-	
-public class ThreatStressRatingObjectSchemaElement extends BaseObjectSchemaElement
+import java.io.IOException;
+
+public class IdFieldSchemaElement extends FieldSchemaElement
 {
-	public ThreatStressRatingObjectSchemaElement()
+	protected IdFieldSchemaElement(String objectTypeNameToUse, String fieldNameToUse, String idNameToUse)
 	{
-		super("ThreatStressRating");
+		super(objectTypeNameToUse, fieldNameToUse);
 		
-		createIdField(ThreatStressRating.TAG_THREAT_REF, XmlSchemaCreator.THREAT_ID_ELEMENT_NAME);
-		createIdField(ThreatStressRating.TAG_STRESS_REF, XmlSchemaCreator.STRESS_ID_ELEMENT_NAME);
-		createBooleanField(ThreatStressRating.TAG_IS_ACTIVE);
-		createCodeField(ThreatStressRating.TAG_CONTRIBUTION, XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
-		createCodeField(ThreatStressRating.TAG_IRREVERSIBILITY, XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
+		idName = idNameToUse;
 	}
+	
+	@Override
+	public void output(SchemaWriter writer) throws IOException
+	{
+		super.output(writer);
+		
+		writer.print("{ " + idName + "Id.element }");
+	}
+	
+	private String idName;
 }
