@@ -20,10 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.ResourceAssignment;
+
 public class ResourceAssignmentObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ResourceAssignmentObjectSchemaElement()
 	{
 		super("ResourceAssignment");
+		
+		createIdField(ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME);
+		createFundingSourceIdField(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
+		createAccountingCodeIdField(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
 	}
 }
