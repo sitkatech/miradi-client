@@ -168,9 +168,7 @@ class ObjectSchemaElement extends SchemaElement
 			AttributeSchemaElement attributeElement = attributes.get(i);
 			attributeElement.output(writer);
 			if(i < attributes.size() - 1)
-				writer.print(" &");
-			
-			writer.println();
+				writer.println(" &");
 		}
 		
 		if(attributes.size() > 0 && fields.size() > 0)
