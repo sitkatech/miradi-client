@@ -34,6 +34,6 @@ public class StartMonthAttributeSchemaElement extends AttributeSchemaElement
 	{
 		super.output(writer);
 		
-		writer.print("{vocabulary_start_month}");
+		writer.print("{vocabulary_month}");
 	}
 }

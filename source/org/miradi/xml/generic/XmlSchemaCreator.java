@@ -83,9 +83,7 @@ public class XmlSchemaCreator
 		rootElement.output(writer);
 		
 		writer.println("vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
-		writer.println("vocabulary_start_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
-		writer.println("vocabulary_start_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } ");
 		writer.println("vocabulary_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } ");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
 		writer.printlnIndented("vocabulary_iso_country_code = xsd:NMTOKEN { pattern = '[A-Z]{3}' }");
