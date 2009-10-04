@@ -148,7 +148,6 @@ public class XmlSchemaCreator
 		defineIdElement(writer, PROGRESS_REPORT_ID_ELEMENT_NAME);
 		defineIdElement(writer, EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
-		defineIdElement(writer, THREAT_STRESS_RATING_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ID_ELEMENT_NAME);
 		
 		writer.defineAlias("WrappedByDiagramLinkId.element", "element WrappedByDiagramLinkId");
@@ -302,7 +301,6 @@ public class XmlSchemaCreator
 	public static final String PROGRESS_REPORT_ID_ELEMENT_NAME = "ProgressReport";
 	public static final String EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME = "ExpneseAssignment";
 	public static final String RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME = "ResourceAssignment";
-	public static final String THREAT_STRESS_RATING_ID_ELEMENT_NAME = "ThreatStressRating";
 	public static final String RESOURCE_ID_ELEMENT_NAME = "Resource";
 	public static final String INDICATOR_ID_ELEMENT_NAME = "Indicator";
 	public static final String BIODIVERSITY_TARGET_ID_ELEMENT_NAME = "BiodiversityTarget";
