@@ -27,8 +27,6 @@ public class SimpleThreatRatingSchemaElement extends ObjectSchemaElement
 	{
 		super("SimpleThreatRating");
 		
-		createIdField("TargetId", XmlSchemaCreator.BIODIVERSITY_TARGET_ID_ELEMENT_NAME);
-		createIdField("ThreatId", XmlSchemaCreator.THREAT_ID_ELEMENT_NAME);
 		createCodeField("Scope", XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE);
 		createCodeField("Severity", XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE);
 		createCodeField("Irreversibility", XmlSchemaCreator.VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE);
