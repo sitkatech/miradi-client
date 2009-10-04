@@ -34,6 +34,6 @@ public class StartYearAttributeSchemaElement extends AttributeSchemaElement
 	{
 		super.output(writer);
 		
-		writer.print("{vocabulary_start_year}");
+		writer.print("{vocabulary_year}");
 	}
 }
