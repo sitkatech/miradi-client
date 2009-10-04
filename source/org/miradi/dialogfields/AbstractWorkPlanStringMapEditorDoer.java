@@ -50,6 +50,7 @@ abstract public class AbstractWorkPlanStringMapEditorDoer extends ObjectsDoer
 			TableSettings workPlanTableSettings = TableSettings.findOrCreate(getProject(), getTabSpecificModelIdentifier());
 			ObjectDataInputPanel codeListPanel = createEditorPanel(workPlanTableSettings);
 			ModelessDialogWithClose dialog = new ModelessDialogWithClose(getMainWindow(), codeListPanel, getDialogTitle());
+			dialog.setScrollableMainPanel(codeListPanel);
 			getView().showFloatingPropertiesDialog(dialog);
 		}
 		catch (Exception e)
