@@ -26,7 +26,7 @@ public class DateUnitMonthSchemaElement extends ObjectSchemaElement
 	{
 		super("Month");
 		
-		createMonthAttribute("Month");
 		createYearAttribute("Year");
+		createMonthAttribute("Month");
 	}
 }
