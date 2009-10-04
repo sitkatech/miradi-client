@@ -27,7 +27,7 @@ public class DateUnitEffortsSchemaElement extends ObjectSchemaElement
 	{
 		super("DateUnitEfforts");
 	
-		createNumericField("NumberOfUnits");
 		createDateUnitField("DateUnit");
+		createNumericField("NumberOfUnits");
 	}
 }
