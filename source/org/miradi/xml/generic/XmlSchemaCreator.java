@@ -82,7 +82,7 @@ public class XmlSchemaCreator
 		writer.defineAlias("start", rootElement.getProjectElementName() + ".element");
 		rootElement.output(writer);
 		
-		writer.println("vocabulary_project_total = xsd:NMTOKEN { pattern = 'Total' } ");
+		writer.println("vocabulary_work_units_full_project_timespan = xsd:NMTOKEN { pattern = 'Total' } ");
 		writer.println("vocabulary_start_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' } ");
 		writer.println("vocabulary_start_month = xsd:NMTOKEN { pattern = '[0-9]{2}' } ");

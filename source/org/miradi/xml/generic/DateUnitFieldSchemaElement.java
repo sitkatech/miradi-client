@@ -34,6 +34,6 @@ public class DateUnitFieldSchemaElement extends FieldSchemaElement
 	{
 		super.output(writer);
 		
-		writer.write("{Date.element | Month.element | Quarter.element | Year.element | ProjectTotal.element }");
+		writer.write("{Date.element | Month.element | Quarter.element | Year.element | WorkUnitsFullProjectTimespan.element }");
 	}
 }

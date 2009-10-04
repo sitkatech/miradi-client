@@ -24,8 +24,8 @@ public class DateUnitTotalSchemaElement extends ObjectSchemaElement
 {
 	public DateUnitTotalSchemaElement()
 	{
-		super("ProjectTotal");
+		super("WorkUnitsFullProjectTimespan");
 		
-		createProjectTotalAttribute("ProjectTotal");
+		createProjectTotalAttribute("WorkUnitsFullProjectTimespan");
 	}
 }

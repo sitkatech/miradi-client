@@ -26,7 +26,7 @@ public class ProjectTotalAttributeSchemaElement extends AttributeSchemaElement
 {
 	public ProjectTotalAttributeSchemaElement()
 	{
-		super("ProjectTotal");
+		super("WorkUnitsFullProjectTimespan");
 	}
 	
 	@Override
@@ -34,6 +34,6 @@ public class ProjectTotalAttributeSchemaElement extends AttributeSchemaElement
 	{
 		super.output(writer);
 		
-		writer.write("{ vocabulary_project_total }");
+		writer.write("{ vocabulary_work_units_full_project_timespan }");
 	}
 }
