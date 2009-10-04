@@ -24,8 +24,8 @@ public class DateUnitDateSchemaElement extends ObjectSchemaElement
 {
 	public DateUnitDateSchemaElement()
 	{
-		super("Date");
+		super("WorkUnitsDay");
 		
-		createDateAttribute("Date");
+		createDateAttribute("WorkUnitsDay");
 	}
 }
