@@ -39,42 +39,6 @@ class ObjectSchemaElement extends SchemaElement
 		attributes.add(attribute);
 	}
 	
-	public void createDateAttribute(String attributeNameToUse)
-	{
-		AttributeSchemaElement attribute = new DateAttributeSchemaElement();
-		attributes.add(attribute);
-	}
-	
-	public void createMonthAttribute(String attributeNameToUse)
-	{
-		AttributeSchemaElement attribute = new MonthAttributeSchemaElement();
-		attributes.add(attribute);
-	}
-	
-	public void createStartMonthAttribute(String attributeNameToUse)
-	{
-		AttributeSchemaElement attribute = new StartMonthAttributeSchemaElement();
-		attributes.add(attribute);
-	}
-	
-	public void createStartYearAttribute(String attributeNameToUse)
-	{
-		AttributeSchemaElement attribute = new StartYearAttributeSchemaElement();
-		attributes.add(attribute);
-	}
-	
-	public void createYearAttribute(String attributeNameToUse)
-	{
-		AttributeSchemaElement attribute = new YearAttributeSchemaElement();
-		attributes.add(attribute);
-	}
-	
-	public void createProjectTotalAttribute(String attributeNameToUse)
-	{
-		AttributeSchemaElement attribute = new ProjectTotalAttributeSchemaElement();
-		attributes.add(attribute);
-	}
-	
 	public void createTextField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new TextFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
