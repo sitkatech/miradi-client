@@ -20,10 +20,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.Desire;
+import org.miradi.objects.Goal;
+import org.miradi.objects.Objective;
+
 public class ObjectiveSchemaElement extends BaseObjectSchemaElement
 {
 	public ObjectiveSchemaElement()
 	{
 		super("Objective");
+		
+		createTextField(Objective.TAG_SHORT_LABEL);
+		createTextField(Desire.TAG_FULL_TEXT);
+
+		createIdListField("RelevantIndicatorIds", "Indicator");
+		createIdListField("RelevantStrategyIds", "Strategy");
+		
+		createIdListField("ProgressPercentIds", XmlSchemaCreator.PROGRESS_PERCENT_ID_ELEMENT_NAME);
+		createTextField(Goal.TAG_COMMENTS);
 	}
 }
