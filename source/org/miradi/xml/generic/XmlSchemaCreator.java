@@ -277,7 +277,7 @@ public class XmlSchemaCreator
 
 	private void defineDateUnitEfforts(SchemaWriter writer)
 	{
-		writer.defineAlias("DateUnitEfforts.element", "element miradi:DateUnitEfforts");
+		writer.defineAlias("DateUnitWorkUnits.element", "element miradi:DateUnitWorkUnits");
 		writer.startBlock();
 		writer.printlnIndented("element miradi:WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &");
 		writer.printlnIndented("element miradi:NumberOfUnits { xsd:decimal }");
