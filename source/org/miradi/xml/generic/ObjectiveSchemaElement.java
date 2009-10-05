@@ -32,10 +32,8 @@ public class ObjectiveSchemaElement extends BaseObjectSchemaElement
 		
 		createTextField(Objective.TAG_SHORT_LABEL);
 		createTextField(Desire.TAG_FULL_TEXT);
-
 		createIdListField("RelevantIndicatorIds", "Indicator");
 		createIdListField("RelevantStrategyIds", "Strategy");
-		
 		createIdListField("ProgressPercentIds", XmlSchemaCreator.PROGRESS_PERCENT_ID_ELEMENT_NAME);
 		createTextField(Goal.TAG_COMMENTS);
 	}
