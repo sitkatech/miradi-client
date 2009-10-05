@@ -168,6 +168,7 @@ public class XmlSchemaCreator
 		defineIdElement(writer, ACCOUNTING_CODE_ID_ELEMENT_NAME);
 		defineIdElement(writer, FUNDING_SOURCE_ID_ELEMENT_NAME);
 		defineIdElement(writer, PROGRESS_REPORT_ID_ELEMENT_NAME);
+		defineIdElement(writer, PROGRESS_PERCENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 		defineIdElement(writer, RESOURCE_ID_ELEMENT_NAME);
@@ -340,6 +341,7 @@ public class XmlSchemaCreator
 	public static final String OBJECTIVE_ID_ELEMENT_NAME = "Objective";
 	public static final String GOAL_ELEMENT_NAME = "Goal";
 	public static final String PROGRESS_REPORT_ID_ELEMENT_NAME = "ProgressReport";
+	public static final String PROGRESS_PERCENT_ID_ELEMENT_NAME = "ProgressPercent";
 	public static final String EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME = "ExpenseAssignment";
 	public static final String RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME = "ResourceAssignment";
 	public static final String RESOURCE_ID_ELEMENT_NAME = "Resource";
