@@ -37,8 +37,8 @@ public class IndicatorObjectSchemaElement extends BaseObjectSchemaElement
 		createCodeField(Indicator.TAG_FUTURE_STATUS_RATING, XmlSchemaCreator.VOCABULARY_STATUS_CODE);
 		createTextField(Indicator.TAG_FUTURE_STATUS_DETAIL);
 		createTextField(Indicator.TAG_FUTURE_STATUS_COMMENT);	
-		createIdListField(Indicator.TAG_PROGRESS_REPORT_REFS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
-		createIdListField(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
+		createIdListField(PROGRESS_REPORT_IDS, XmlSchemaCreator.PROGRESS_REPORT_ID_ELEMENT_NAME);
+		createIdListField(EXPENSE_IDS, XmlSchemaCreator.EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME);
 		createIdListField(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, XmlSchemaCreator.RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME);
 	}
 }

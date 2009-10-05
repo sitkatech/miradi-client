@@ -28,8 +28,8 @@ public class ExpenseAssignmentObjectSchemaElement extends BaseObjectSchemaElemen
 	{
 		super("ExpenseAssignment");
 		
-		createFundingSourceIdField(ExpenseAssignment.TAG_FUNDING_SOURCE_REF);
-		createAccountingCodeIdField(ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
+		createFundingSourceIdField(FUNDING_SOURCE_ID);
+		createAccountingCodeIdField(ACCOUNTING_CODE_ID);
 		createDateUnitEffortsField(ExpenseAssignment.TAG_DATEUNIT_EFFORTS);
 	}
 }

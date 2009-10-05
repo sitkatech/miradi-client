@@ -29,7 +29,7 @@ public class StressBasedThreatRatingElement extends ObjectSchemaElement
 		super("StressBasedThreatRating");
 		
 		createBooleanField(ThreatStressRating.TAG_IS_ACTIVE);
-		createIdField(ThreatStressRating.TAG_STRESS_REF, XmlSchemaCreator.STRESS_ID_ELEMENT_NAME);
+		createIdField("StressId", XmlSchemaCreator.STRESS_ID_ELEMENT_NAME);
 		createCodeField(ThreatStressRating.TAG_CONTRIBUTION, XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE);
 		createCodeField(ThreatStressRating.TAG_IRREVERSIBILITY, XmlSchemaCreator.VOCABULARY_THREAT_STRESS_RATING_IRREVERSIBILITY_CODE);
 	}

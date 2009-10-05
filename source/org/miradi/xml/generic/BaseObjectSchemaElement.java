@@ -31,4 +31,9 @@ abstract public class BaseObjectSchemaElement extends ObjectSchemaElement
 		createIdAttribute(objectTypeNameToUse);
 		createTextField(BaseObject.TAG_LABEL);
 	}
+	
+	protected static final String FUNDING_SOURCE_ID = "FundingSourceId";
+	protected static final String ACCOUNTING_CODE_ID = "AccountingCodeId";
+	protected static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
+	protected static final String EXPENSE_IDS = "ExpenseIds";
 }

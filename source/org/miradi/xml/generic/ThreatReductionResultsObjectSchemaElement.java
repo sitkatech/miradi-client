@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.miradi.objects.Factor;
-import org.miradi.objects.ThreatReductionResult;
 
 public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchemaElement
 {
@@ -29,7 +28,7 @@ public class ThreatReductionResultsObjectSchemaElement extends FactorObjectSchem
 	{
 		super("ThreatReductionResults");
 		
-		createThreatReductionResultsThreatIdField(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
+		createThreatReductionResultsThreatIdField("RelatedDirectThreatId");
 		createIdListField(Factor.TAG_OBJECTIVE_IDS, "Objective");
 	}
 }

@@ -28,7 +28,7 @@ public class BiodiversityTargetObjectSchemaElement extends TargetObjectSchemaEle
 	{
 		super("BiodiversityTarget");
 
-		createIdListField(Target.TAG_STRESS_REFS, "Stress");
+		createIdListField("StressIds", "Stress");
 		createCodeListField(XmlSchemaCreator.BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME);
 		createTextField(Target.TAG_SPECIES_LATIN_NAME);
 	}
