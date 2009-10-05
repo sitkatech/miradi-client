@@ -33,6 +33,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.TncProjectData;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
@@ -58,6 +59,12 @@ import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.questions.TncFreshwaterEcoRegionQuestion;
+import org.miradi.questions.TncMarineEcoRegionQuestion;
+import org.miradi.questions.TncOperatingUnitsQuestion;
+import org.miradi.questions.TncOrganizationalPrioritiesQuestion;
+import org.miradi.questions.TncProjectPlaceTypeQuestion;
+import org.miradi.questions.TncTerrestrialEcoRegionQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
@@ -115,6 +122,12 @@ public class XmlSchemaCreator
 		defineVocabulary(writer, VOCABULARY_SIMPLE_THREAT_RATING_SCOPE_CODE, new ThreatRatingQuestion());
 		defineVocabulary(writer, VOCABULARY_SIMPLE_THREAT_RATING_SEVERITY_CODE, new ThreatRatingQuestion());
 		defineVocabulary(writer, VOCABULARY_SIMPLE_THREAT_RATING_IRREVERSIBILITY_CODE, new ThreatRatingQuestion());
+		defineVocabulary(writer, VOCABULARY_TNC_PROJECT_PLACE_TYPES, new TncProjectPlaceTypeQuestion());
+		defineVocabulary(writer, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES, new TncOrganizationalPrioritiesQuestion());
+		defineVocabulary(writer, VOCABULARY_TNC_OPERATING_UNTIS, new TncOperatingUnitsQuestion());
+		defineVocabulary(writer, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, new TncTerrestrialEcoRegionQuestion());
+		defineVocabulary(writer, VOCABULARY_TNC_MARINE_ECO_REGION, new TncMarineEcoRegionQuestion());
+		defineVocabulary(writer, VOCABULARY_TNC_FRESHWATER_ECO_REGION, new TncFreshwaterEcoRegionQuestion());
 		
 		defineIdElement(writer, "ConceptualModel");
 		defineIdElement(writer, "ResultsChain");
@@ -221,6 +234,12 @@ public class XmlSchemaCreator
 		defineVocabularyDefinedAlias(writer, VOCABULARY_SCOPE_BOX_COLOR, SCOPE_BOX_COLOR_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_STRESS_SEVERITY, STRESS_SEVERITY_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_STRESS_SCOPE, STRESS_SCOPE_ELEMENT_NAME);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_PROJECT_PLACE_TYPES, TNC_PROJECT_PLACE_TYPES);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES, TNC_ORGANIZATIONAL_PRIORITIES);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_OPERATING_UNTIS, TNC_OPERATING_UNITS);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);
+		defineVocabularyDefinedAlias(writer, VOCABULARY_TNC_FRESHWATER_ECO_REGION, TNC_FRESHWATER_ECO_REGION);
 		
 		writer.flush();
     }
@@ -284,6 +303,12 @@ public class XmlSchemaCreator
 	public static final String VOCABULARY_START_MONTH = "vocabulary_start_month";
 	public static final String VOCABULARY_YEAR = "vocabulary_year";
 	public static final String VOCABULARY_START_YEAR = "vocabulary_start_year";
+	public static final String VOCABULARY_TNC_PROJECT_PLACE_TYPES = "vocabulary_tnc_project_place_types";
+	public static final String VOCABULARY_TNC_ORGANIZATIONAL_PRIORITIES = "vocabulary_tnc_organizational_priorities";
+	public static final String VOCABULARY_TNC_OPERATING_UNTIS = "vocabulary_tnc_operating_units";
+	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";
+	public static final String VOCABULARY_TNC_MARINE_ECO_REGION = "vocabulary_tnc_marine_eco_region";
+	public static final String VOCABULARY_TNC_FRESHWATER_ECO_REGION = "vocabulary_tnc_freshwater_eco_region";
 	
 	public static final String PROTECTED_AREA_CATEGORIES_ELEMENT_NAME = ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES;
 	public static final String RESOURCE_TYPE_ELEMENT_NAME = ProjectResource.TAG_RESOURCE_TYPE;
@@ -323,4 +348,10 @@ public class XmlSchemaCreator
 	private static final String CAUSE_ID_ELEMENT_NAME = "Cause";
 	public static final String THREAT_STRESS_RATING_IRREVERSIBILITY_CODE = ThreatStressRating.TAG_IRREVERSIBILITY;
 	public static final String THREAT_STRESS_RATING_CONTRIBUTION_CODE = ThreatStressRating.TAG_CONTRIBUTION;
+	public static final String TNC_PROJECT_PLACE_TYPES = TncProjectData.TAG_PROJECT_PLACE_TYPES;
+	public static final String TNC_ORGANIZATIONAL_PRIORITIES = TncProjectData.TAG_ORGANIZATIONAL_PRIORITIES;
+	public static final String TNC_OPERATING_UNITS = ProjectMetadata.TAG_TNC_OPERATING_UNITS;
+	public static final String TNC_TERRESTRIAL_ECO_REGION = ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION;
+	public static final String TNC_MARINE_ECO_REGION = ProjectMetadata.TAG_TNC_MARINE_ECO_REGION;
+	public static final String TNC_FRESHWATER_ECO_REGION = ProjectMetadata.TAG_TNC_FRESHWATER_ECO_REGION;
 }
