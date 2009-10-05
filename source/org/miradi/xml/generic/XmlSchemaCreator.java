@@ -279,7 +279,7 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias("DateUnitEfforts.element", "element miradi:DateUnitEfforts");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &");
+		writer.printlnIndented("element miradi:WorkUnitsDateUnit{WorkUnitsDay.element | WorkUnitsMonth.element | WorkUnitsQuarter.element | WorkUnitsYear.element | WorkUnitsFullProjectTimespan.element } &");
 		writer.printlnIndented("element miradi:NumberOfUnits { xsd:decimal }");
 		writer.endBlock();
 	}
@@ -288,7 +288,7 @@ public class XmlSchemaCreator
 	{
 		writer.defineAlias("DateUnitExpense.element", "element miradi:DateUnitExpense");
 		writer.startBlock();
-		writer.printlnIndented("element miradi:DateUnitEffortsDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element } &");
+		writer.printlnIndented("element miradi:ExpensesDateUnit{ExpensesDay.element | ExpensesMonth.element | ExpensesQuarter.element | ExpensesYear.element | ExpensesFullProjectTimespan.element } &");
 		writer.printlnIndented("element miradi:Expense { xsd:decimal }");
 		writer.endBlock();
 	}
