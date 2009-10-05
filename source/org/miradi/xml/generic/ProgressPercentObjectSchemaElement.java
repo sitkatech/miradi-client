@@ -20,10 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+import org.miradi.objects.ProgressPercent;
+
 public class ProgressPercentObjectSchemaElement extends BaseObjectSchemaElement
 {
 	public ProgressPercentObjectSchemaElement()
 	{
 		super("ProgressPercent");
+		
+		createDateField(ProgressPercent.TAG_DATE);
+		createNumericField(ProgressPercent.TAG_PERCENT_COMPLETE);
+		createTextField(ProgressPercent.TAG_PERCENT_COMPLETE_NOTES);
 	}
 }
