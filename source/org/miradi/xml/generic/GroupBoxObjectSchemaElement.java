@@ -20,10 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
+
 public class GroupBoxObjectSchemaElement extends FactorObjectSchemaElement
 {
 	public GroupBoxObjectSchemaElement()
 	{
 		super("GroupBox");
+		
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME);		
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
+		createCodeListField(XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME);
 	}
 }
