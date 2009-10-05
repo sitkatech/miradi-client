@@ -299,7 +299,7 @@ public class XmlSchemaCreator
 	public static final String OBJECTIVE_ID_ELEMENT_NAME = "Objective";
 	public static final String GOAL_ELEMENT_NAME = "Goal";
 	public static final String PROGRESS_REPORT_ID_ELEMENT_NAME = "ProgressReport";
-	public static final String EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME = "ExpneseAssignment";
+	public static final String EXPENSE_ASSIGNMENT_ID_ELEMENT_NAME = "ExpenseAssignment";
 	public static final String RESOURCE_ASSIGNMENT_ID_ELEMENT_NAME = "ResourceAssignment";
 	public static final String RESOURCE_ID_ELEMENT_NAME = "Resource";
 	public static final String INDICATOR_ID_ELEMENT_NAME = "Indicator";
