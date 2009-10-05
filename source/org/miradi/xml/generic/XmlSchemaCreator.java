@@ -292,7 +292,7 @@ public class XmlSchemaCreator
 	public static final String TAGGED_OBJECT_SET_ELEMENT_NAME = "TaggedObjectSet";
 	public static final String KEA_ID_ELEMENT_NAME = "KeyEcologicalAttribute";
 	public static final String SUB_TARGET_ID_ELEMENT_NAME = "SubTarget";
-	public static final String THREAT_ID_ELEMENT_NAME = "threat";
+	public static final String THREAT_ID_ELEMENT_NAME = "Threat";
 	private static final String FUNDING_SOURCE_ID_ELEMENT_NAME = "FundingSource";
 	private static final String ACCOUNTING_CODE_ID_ELEMENT_NAME = "AccountingCode";
 	public static final String ACITIVTY_ID_ELEMENT_NAME = "Activity";
