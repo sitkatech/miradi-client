@@ -231,6 +231,12 @@ public class XmlSchemaCreator
 		writer.printlnIndented("element miradi:height { xsd:integer } ");
 		writer.endBlock();
 		
+		defineFullProjectTimeSpanElement(writer);
+		defineYearElement(writer);
+		defineQuarterElement(writer);
+		defineMonthElement(writer);
+		defineWorkUnitsDayElement(writer);
+		
 		defineVocabularyDefinedAlias(writer, VOCABULARY_FISCAL_YEAR_START, "FiscalYearStartMonth");
 		defineVocabularyDefinedAlias(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, PROTECTED_AREA_CATEGORIES_ELEMENT_NAME);
 		defineVocabularyDefinedAlias(writer, VOCABULARY_RESOURCE_TYPE, RESOURCE_TYPE_ELEMENT_NAME);
@@ -259,6 +265,49 @@ public class XmlSchemaCreator
 		
 		writer.flush();
     }
+
+	private void defineFullProjectTimeSpanElement(SchemaWriter writer)
+	{
+		writer.defineAlias("WorkUnitsFullProjectTimespan.element", "element miradi:WorkUnitsFullProjectTimespan");
+		writer.startBlock();
+		writer.printlnIndented("attribute WorkUnitsFullProjectTimespan { vocabulary_work_units_full_project_timespan }");
+		writer.endBlock();
+	}
+
+	private void defineWorkUnitsDayElement(SchemaWriter writer)
+	{
+		writer.defineAlias("WorkUnitsDay.element", "element miradi:WorkUnitsDay");
+		writer.startBlock();
+		writer.printlnIndented("attribute Date {vocabulary_date}");
+		writer.endBlock();
+	}
+
+	private void defineQuarterElement(SchemaWriter writer)
+	{
+		writer.defineAlias("Quarter.element", "element miradi:Quarter");
+		writer.startBlock();
+		writer.printlnIndented("attribute Year {vocabulary_year} &");
+		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
+		writer.endBlock();
+	}
+
+	private void defineYearElement(SchemaWriter writer)
+	{
+		writer.defineAlias("Year.element", "element miradi:Year");
+		writer.startBlock();
+		writer.printlnIndented("attribute StartYear {vocabulary_year} &");
+		writer.printlnIndented("attribute StartMonth {vocabulary_month}");
+		writer.endBlock();
+	}
+
+	private void defineMonthElement(SchemaWriter writer)
+	{
+		writer.defineAlias("Month.element", "element miradi:Month");
+		writer.startBlock();
+		writer.printlnIndented("attribute Year {vocabulary_year} &");
+		writer.printlnIndented("attribute Month {vocabulary_month}");
+		writer.endBlock();
+	}
 
 	private void defineVocabularyDefinedAlias(SchemaWriter writer, String vocabularyFiscalYearStartElementName, String elementName)
 	{

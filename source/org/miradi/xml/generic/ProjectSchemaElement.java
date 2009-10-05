@@ -77,12 +77,6 @@ class ProjectSchemaElement extends SchemaElement
 		objectTypes.add(new ObjectContainerSchemaElement(new AccountingCodeObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new FundingSourceObjectSchemaElement()));
 		objectTypes.add(new ObjectContainerSchemaElement(new DateUnitEffortsSchemaElement()));
-		
-		objectTypes.add(new ObjectContainerSchemaElement(new DateUnitDateSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new DateUnitMonthSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new DateUnitQuarterSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new DateUnitYearSchemaElement()));
-		objectTypes.add(new ObjectContainerSchemaElement(new DateUnitTotalSchemaElement()));
 	}
 	
 	public void output(SchemaWriter writer) throws IOException
